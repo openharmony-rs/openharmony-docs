@@ -92,11 +92,11 @@ The parameter is invalid. Details about the invalid parameter and the reason are
 
 **错误描述**
 
-传入参数有误。
+参数无效。错误信息中包含无效参数及其原因的详细信息。例如：“参数‘targetNode’无效：该参数不能是已销毁的节点。”
 
 **可能原因**
 
-如果传入null、undefined或其他无效参数，请查看错误信息以了解具体原因。
+传入的参数为null、undefined或其他无效值，具体原因可查看错误信息。
 
 **处理步骤**
 

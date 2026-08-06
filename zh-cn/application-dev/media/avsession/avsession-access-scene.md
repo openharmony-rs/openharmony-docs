@@ -31,7 +31,7 @@ AVSession会对后台音频播放、VoIP通话进行约束。因此，长音频�
 
 ## 创建不同类型的会话
 
-AVSession在构造方法中支持不同的类型参数，由 [AVSessionType](../../reference/apis-avsession-kit/arkts-apis-avsession-t.md#avsessiontype10) 定义，不同的类型代表了不同场景的控制能力，对于播控中心来说，会展示不同的控制模版。
+AVSession在构造方法中支持不同的类型参数，由 [AVSessionType](../../reference/apis-avsession-kit/arkts-apis-avsession-t.md#avsessiontype10) 定义，不同的类型代表了不同场景的控制能力，对于播控中心来说，会展示不同的控制模板。
 
 - audio类型，播控中心的控制样式为：收藏、上一首、播放/暂停、下一首、循环模式。
 
@@ -536,7 +536,7 @@ struct Index {
   
             // 设置支持的快进快退的时长设置给AVSession。
             let metadata: AVSessionManager.AVMetadata = {
-              assetId: '0', // Specified by the application, used to identify the media asset in the application media library.
+              assetId: '0', // 由应用指定，用于标识应用媒体库里的媒体。
               title: 'TITLE',
               mediaImage: 'IMAGE',
               skipIntervals: AVSessionManager.SkipIntervals.SECONDS_10,
@@ -549,12 +549,12 @@ struct Index {
               // ...
             });
   
-            session.on('fastForward', (time ?: number) => {
+            session.on('fastForward', (time?: number) => {
               console.info(`on fastForward , do fastForward task`);
               // ...
               // do some tasks ···
             });
-            session.on('rewind', (time ?: number) => {
+            session.on('rewind', (time?: number) => {
               console.info(`on rewind , do rewind task`);
               // ...
               // do some tasks ···
@@ -719,8 +719,8 @@ struct Index {
           let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
           // ...
 
-          session.on('seek', (position: number) => {
-            console.info(`on seek , the time is ${JSON.stringify(position)}`);
+          session.on('seek', (time: number) => {
+            console.info(`on seek , the time is ${time}`);
             // ...
 
             // 由于应用内seek可能会触发较长的缓冲等待，可以先把状态设置为 Buffering。
@@ -742,7 +742,7 @@ struct Index {
             // 应用内更新新的位置后，也需要同步更新状态给系统。
             playbackState.state = AVSessionManager.PlaybackState.PLAYBACK_STATE_PLAY; // 播放状态。
             playbackState.position = {
-              elapsedTime: position, // 已经播放的位置，以ms为单位。
+              elapsedTime: time, // 已经播放的位置，以ms为单位。
               updateTime: new Date().getTime(), // 应用更新当前位置的时间戳，以ms为单位。
             }
             session.setAVPlaybackState(playbackState, (err) => {

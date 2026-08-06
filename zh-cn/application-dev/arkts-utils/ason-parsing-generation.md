@@ -17,7 +17,7 @@ ASON.stringify方法还支持将Map和Set对象转换为字符串，可转换的
 ## 使用示例
 
 使用ASON提供的接口，对[Sendable对象](arkts-sendable.md)进行序列化、反序列化。
-<!-- @[example_serialize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectRelated/entry/src/main/ets/managers/AsonParsingGeneration.ets) --> 
+<!-- @[example_serialize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableObjectRelated/entry/src/main/ets/managers/AsonParsingGeneration.ets) --> 
 
 ``` TypeScript
 import { ArkTSUtils, collections } from '@kit.ArkTS';
@@ -38,7 +38,7 @@ struct Index {
           middle: { anchor: '__container__', align: HorizontalAlign.Center }
         })
         .onClick(() => {
-          console.info(ArkTSUtils.ASON.parse('{}'));
+          console.info(`ASON parse object result is ${ArkTSUtils.ASON.parse('{}')}`)
           console.info(ArkTSUtils.ASON.stringify(new collections.Array(1, 2, 3)));
 
           let options2: ArkTSUtils.ASON.ParseOptions = {

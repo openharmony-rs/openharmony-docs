@@ -6,7 +6,7 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-UIPickerComponent容器是用于实现用户选择操作的组件。它支持从一组有限的选项中让用户进行单选，采用立体滚轮样式提供直观的视觉反馈和流畅的滑动体验。该组件支持选项按需定制，包括文本类型、图片类型和图文组合类型，可根据业务需求提供更丰富的信息展示，可广泛应用于时间选择、日期选择、地区选择、状态选择等多种场景，帮助开发者快速构建符合HarmonyOS设计规范的选择交互。
+UIPickerComponent容器是用于实现用户选择操作的组件。它支持从一组有限的选项中让用户进行单选，采用立体滚轮样式提供直观的视觉反馈和流畅的滑动体验。该组件支持选项按需定制，包括文本类型、图片类型和图文组合类型，可根据业务需求提供更丰富的信息展示，可广泛应用于时间选择、日期选择、地区选择、状态选择等多种场景。
 
 >  **说明：**
 >
@@ -372,17 +372,21 @@ struct UIPickerComponentEventsExample {
   private dataArray: string[] = ['待办', '进行中', '已完成'];
   @State onChangeDesc: string = '';
   @State onScrollStopDesc: string = '';
+  @State index: number = 0;
 
   build() {
     Column() {
       Row() {
-        UIPickerComponent() {
+        UIPickerComponent({
+          selectedIndex: this.index
+        }) {
           ForEach(this.dataArray, (item: string) => {
             Text(item)
           })
         }
         // 配置onChange事件回调
         .onChange((selectedIndex: number) => {
+          this.index = selectedIndex;
           this.onChangeDesc = 'on change: ' + selectedIndex;
         })
         // 配置onScrollStop事件回调
@@ -1517,7 +1521,9 @@ struct UIPickerComponentItemHeightExample {
       Text('当前itemHeight：' + (this.pickerItemHeight ? this.pickerItemHeight.value + 'vp' : '默认值(40vp)'))
         .fontSize(16)
 
-      UIPickerComponent() {
+      UIPickerComponent({
+        selectedIndex: this.selectedIndex
+      }) {
         ForEach(this.dataArray, (item: string) => {
           Text(item)
         })
@@ -1564,6 +1570,7 @@ struct UIPickerComponentItemHeightExample {
 struct UIPickerComponentDisplayedCountExample {
   private dataArray: string[] = [];
   @State visibleCount: number = 7;
+  @State selectedIndex: number = 0;
 
   aboutToAppear(): void {
     for (let i = 1; i <= 12; i++) {
@@ -1576,11 +1583,16 @@ struct UIPickerComponentDisplayedCountExample {
       Text('displayedItemCount: ' + this.visibleCount)
         .fontSize(16)
 
-      UIPickerComponent() {
+      UIPickerComponent({
+        selectedIndex: this.selectedIndex
+      }) {
         ForEach(this.dataArray, (item: string) => {
           Text(item)
         })
       }
+      .onChange((selectedIndex: number) => {
+        this.selectedIndex = selectedIndex
+      })
       .width('70%')
       .displayedItemCount(this.visibleCount)
 

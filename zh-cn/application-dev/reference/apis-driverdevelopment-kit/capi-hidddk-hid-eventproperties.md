@@ -27,7 +27,7 @@ typedef struct Hid_EventProperties {...} Hid_EventProperties
 | 名称 | 描述 |
 | -- | -- |
 | struct [Hid_EventTypeArray](capi-hidddk-hid-eventtypearray.md) hidEventTypes | 事件类型属性编码数组，包含设备支持的事件类型集合，用于配置HID设备可触发的事件。 |
-| struct [Hid_KeyCodeArray](capi-hidddk-hid-keycodearray.md) hidKeys | 键值属性编码数组，包含设备支持的按键编码集合。 |
+| struct [Hid_KeyCodeArray](capi-hidddk-hid-keycodearray.md) hidKeys | 键值属性编码数组，包含设备支持的按键编码集合，用于配置HID设备支持的按键功能。 |
 | struct [Hid_AbsAxesArray](capi-hidddk-hid-absaxesarray.md) hidAbs | 绝对坐标属性编码数组，用于配置绝对坐标输入（如触摸屏、手柄摇杆）。 |
 | struct [Hid_RelAxesArray](capi-hidddk-hid-relaxesarray.md) hidRelBits | 相对坐标属性编码数组，用于配置相对坐标输入（如鼠标移动）。 |
 | struct [Hid_MscEventArray](capi-hidddk-hid-msceventarray.md) hidMiscellaneous | 其他特殊事件属性编码数组，用于配置特殊输入事件（如音量调节、电源键）。 |

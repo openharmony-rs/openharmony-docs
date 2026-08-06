@@ -26,7 +26,7 @@ import { DriverExtensionAbility, DriverExtensionContext } from '@kit.DriverDevel
 在使用DriverExtensionContext的功能前，需要通过DriverExtensionAbility子类实例获取。
 
 ```ts
-  let context : DriverExtensionContext | undefined;
+  let context: DriverExtensionContext | undefined;
   class EntryAbility extends DriverExtensionAbility {
     onInit() {
       context = this.context; // 获取DriverExtensionContext
@@ -40,13 +40,15 @@ updateDriverState(): void
 
 驱动状态上报。预留接口，暂不提供具体功能。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Driver.ExternalDevice
 
 **示例：**
 
   ```ts
   // 当前代码实现依赖上一节代码实现
-  if (context != null) {
+  if (context !== undefined) {
     context.updateDriverState();
   }
   ```

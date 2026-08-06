@@ -37,7 +37,7 @@ isInstanceOf\<T extends CommonMethod\<T>>(instance: T, componentName: string): b
 | 参数名       | 类型                        | 必填 | 说明                                                         |
 | ------------ | --------------------------- | ---- | ------------------------------------------------------------ |
 | instance     | T  | 是   | 要检查的实例，T为继承自[通用属性](./ts-component-general-attributes.md)（CommonMethod）的组件属性类型。               |
-| componentName | string                      | 是   | 要检查的组件类型名称，取值为组件类名（如 'Text'、'Button' 等），需与组件类名完全一致（区分大小写）。                                        |
+| componentName | string                      | 是   | 要检查的组件类型名称，取值为组件类名（如 'Text'、'Button' 等），需与组件类名完全一致（区分大小写）。传入无效或不存在的组件类名时返回false。                                        |
 
 **返回值：**
 

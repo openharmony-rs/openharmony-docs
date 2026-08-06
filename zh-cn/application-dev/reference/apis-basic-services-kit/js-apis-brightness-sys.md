@@ -25,7 +25,7 @@ import { brightness } from '@kit.BasicServicesKit';
 
 setValue(value: number): void
 
-设置系统的屏幕亮度。适用于需要固定屏幕亮度的场景，例如阅读应用、视频播放应用、夜间模式等。
+设置系统的屏幕亮度。适用于需要固定屏幕亮度的场景，例如阅读应用、视频播放应用、夜间模式等。若需要连续调节亮度，建议使用setValue(value: number, continuous: boolean)接口。
 
 **系统接口：** 此接口为系统接口。
 
@@ -72,7 +72,7 @@ setValue(value: number, continuous: boolean): void
 | 参数名 | 类型   | 必填 | 说明                    |
 | ------ | ------ | ---- | ----------------------- |
 | value  | number | 是   | 亮度的值。取值范围：(0, 255]。超出时会设置为系统定义的亮度最小或最大值。 |
-| continuous  | boolean | 是   | 亮度调节是否连续。true表示亮度调节连续，false表示亮度调节不连续，默认为false。 |
+| continuous  | boolean | 是   | 亮度调节是否连续。true表示亮度调节连续，false表示亮度调节不连续。 |
 
 **错误码：**
 

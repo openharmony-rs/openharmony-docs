@@ -213,7 +213,8 @@ By combining the methods for [creating an XComponent](#creating-an-xcomponent) a
   Obtains SurfaceHolder on the native side and binds the surface lifecycle callback.
 
   <!-- @[surface_holder_declarative_c_bind](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
-  ``` c++
+  
+  ``` C++
   napi_value PluginManager::BindNode(napi_env env, napi_callback_info info)
   {
       size_t argc = 2;
@@ -239,6 +240,7 @@ By combining the methods for [creating an XComponent](#creating-an-xcomponent) a
   ```
   
 - Use the custom component node of ArkTS to create components and use **XComponentController** to manage the lifecycle of the surface.
+  <!-- @[xcomponent_type_node_controller_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/ets/pages/XComponentTypeNodeController.ets) -->
   ``` typescript
   // Override XComponentController to set lifecycle callbacks.
   class MyXComponentController extends XComponentController {
@@ -342,7 +344,8 @@ By combining the methods for [creating an XComponent](#creating-an-xcomponent) a
   Code for binding the surface lifecycle callback on the native side:
 
   <!-- @[surface_holder_declarative_c_bind](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
-  ``` c++
+  
+  ``` C++
   napi_value PluginManager::BindNode(napi_env env, napi_callback_info info)
   {
       size_t argc = 2;
@@ -463,10 +466,10 @@ By combining the methods for [creating an XComponent](#creating-an-xcomponent) a
       OH_ArkUI_SurfaceCallback_SetSurfaceChangedEvent(callback, OnSurfaceChangedNative); // Register the OnSurfaceChanged callback.
       OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent(callback, OnSurfaceDestroyedNative); // Register the OnSurfaceDestroyed callback.
       OH_ArkUI_SurfaceHolder_AddSurfaceCallback(holder, callback); // Add the SurfaceCallback callback.
-      if (!nodeAPI->addNodeEventReceiver(xc, onEvent)) {           // Add an event listener and return the success code 0.
+      if (nodeAPI->addNodeEventReceiver(xc, onEvent)) {            // Add an event listener. If 0 is returned, the operation is successful. If a non-zero value is returned, the operation fails.
           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "addNodeEventReceiver error");
       }
-      if (!nodeAPI->registerNodeEvent(xc, NODE_TOUCH_EVENT, 0, nullptr)) { // Register the touch event using the C API. The return code 0 indicates success.
+      if (nodeAPI->registerNodeEvent(xc, NODE_TOUCH_EVENT, 0, nullptr)) { // Register the touch event using the C API. The return code 0 indicates success, and a non-zero value indicates failure.
           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "registerTouchEvent error");
       }
       nodeAPI->addChild(column, xc); // Mount XComponent to Column.
@@ -668,7 +671,7 @@ The differences in obtaining the NativeWindow are as follows:
 
 ### Listening to Interaction Events
 
-When using **OH_NativeXComponent** to listen to interaction events, you can only use the related APIs of **OH_NativeXComponent** to listen to basic events such as touch, mouse, and key events. However, when using the APIs related to **OH_ArkUI_SurfaceHolder**, you can listen to advanced gestures such as long press and drag in addition to basic events.
+When using **OH_NativeXComponent** to listen to interaction events, you can only use the related APIs of **OH_NativeXComponent** to listen to basic events such as touch, mouse, and key events. When using the ArkUI NDK API (through ArkUI_NodeHandle), you can listen to both basic events and advanced gestures such as long press and drag.
 
 - OH_NativeXComponent
 
@@ -693,10 +696,10 @@ When using **OH_NativeXComponent** to listen to interaction events, you can only
   <!-- @[surface_holder_declarative_register_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
   
   ``` C++
-  if (!nodeAPI->addNodeEventReceiver(handle, onEvent)) { // Add an event listener. The return code 0 indicates success.
+  if (nodeAPI->addNodeEventReceiver(handle, onEvent)) { // Add an event listener. If 0 is returned, the operation is successful. If a non-zero value is returned, the operation fails.
       OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "addNodeEventReceiver error");
   }
-  if (!nodeAPI->registerNodeEvent(handle, NODE_TOUCH_EVENT, 0, nullptr)) { // Register the touch event using the C API. The return code 0 indicates success.
+  if (nodeAPI->registerNodeEvent(handle, NODE_TOUCH_EVENT, 0, nullptr)) { // Register the touch event using the C API. The return code 0 indicates success, and a non-zero value indicates failure.
       OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "registerTouchEvent error");
   }
   ```
@@ -987,11 +990,11 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
         napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
         std::string nodeId = value2String(env, args[0]);
         ArkUI_NodeHandle handle;
-        OH_ArkUI_GetNodeHandleFromNapiValue(env, args[1], &handle);             // Obtain nodeHandle.
-        OH_ArkUI_SurfaceHolder *holder = OH_ArkUI_SurfaceHolder_Create(handle); // Obtain SurfaceHolder.
+        OH_ArkUI_GetNodeHandleFromNapiValue(env, args[1], &handle);             // Obtain the nodeHandle object.
+        OH_ArkUI_SurfaceHolder *holder = OH_ArkUI_SurfaceHolder_Create(handle); // Obtain the SurfaceHolder object.
         nodeHandleMap_[nodeId] = handle;
         surfaceHolderMap_[handle] = holder;
-        auto callback = OH_ArkUI_SurfaceCallback_Create(); // Create a SurfaceCallback.
+        auto callback = OH_ArkUI_SurfaceCallback_Create(); // Create a SurfaceCallback object.
         callbackMap_[holder] = callback;
         auto render = new EGLRender();
         OH_ArkUI_SurfaceHolder_SetUserData(holder, render); // Store the render object in holder.
@@ -1002,10 +1005,10 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
         OH_ArkUI_SurfaceCallback_SetSurfaceHideEvent(callback, OnSurfaceHideNative);           // Register the OnSurfaceHide callback.
         OH_ArkUI_XComponent_RegisterOnFrameCallback(handle, OnFrameCallbackNative);            // Register the OnFrameCallback callback.
         OH_ArkUI_SurfaceHolder_AddSurfaceCallback(holder, callback);                     // Register the SurfaceCallback callback.
-        if (!nodeAPI->addNodeEventReceiver(handle, onEvent)) { // Add an event listener. The return code 0 indicates success.
+        if (nodeAPI->addNodeEventReceiver(handle, onEvent)) { // Add an event listener. If 0 is returned, the operation is successful. If a non-zero value is returned, the operation fails.
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "addNodeEventReceiver error");
         }
-        if (!nodeAPI->registerNodeEvent(handle, NODE_TOUCH_EVENT, 0, nullptr)) { // Register the touch event using the C API. The return code 0 indicates success.
+        if (nodeAPI->registerNodeEvent(handle, NODE_TOUCH_EVENT, 0, nullptr)) { // Register the touch event using the C API. The return code 0 indicates success, and a non-zero value indicates failure.
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "registerTouchEvent error");
         }
         provider_ = OH_ArkUI_AccessibilityProvider_Create(handle); // Create an object of the ArkUI_AccessibilityProvider type.
@@ -1619,25 +1622,35 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
     ```
 5. Configure the specific CMakeLists to use the CMake toolchain to compile the C++ source code into a dynamic link library file.
 
+    <!-- @[cmake_lists](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/CMakeLists.txt) -->
+
     ```CMake
     # the minimum version of CMake.
-    cmake_minimum_required(VERSION 3.5.0)
-    project(LCNXComponent2)
+    cmake_minimum_required(VERSION 3.4.1)
+    project(XComponent)
     
     set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+    add_definitions(-DOHOS_PLATFORM)
     
     if(DEFINED PACKAGE_FIND_FILE)
         include(${PACKAGE_FIND_FILE})
     endif()
     
-    include_directories(${NATIVERENDER_ROOT_PATH}
-                        ${NATIVERENDER_ROOT_PATH}/render
-                        ${NATIVERENDER_ROOT_PATH}/manager)
+    include_directories(
+        ${NATIVERENDER_ROOT_PATH}
+        ${NATIVERENDER_ROOT_PATH}/include
+        ${NATIVERENDER_ROOT_PATH}/render
+        ${NATIVERENDER_ROOT_PATH}/manager
+    )
     
     add_library(nativerender SHARED
-                render/EGLRender.cpp
-                manager/plugin_manager.cpp
-                napi_init.cpp)
+        render/EGLRender.cpp
+        render/egl_core.cpp
+        render/plugin_render.cpp
+        manager/plugin_manager.cpp
+        napi_init.cpp
+    )
+    
     find_library(
         # Set the name of the path variable.
         EGL-lib
@@ -1680,7 +1693,8 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
         uv
     )
     
-    target_link_libraries(nativerender PUBLIC ${EGL-lib} ${GLES-lib} ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib} libnative_window.so)
+    target_link_libraries(nativerender PUBLIC
+        ${EGL-lib} ${GLES-lib} ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib} libnative_window.so)
     ```
 
     For details about the implementation of the preceding example, see <!--RP3-->[NativeXComponent](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeXComponentSample)<!--RP3End-->.
@@ -1843,15 +1857,15 @@ The following demonstrates how to create an **XComponent** of the surface type o
    ```
 
 <!--RP1-->
-##  
+## Samples
 
- 
+The following samples are provided to help you better understand how to use Native XComponent:
 
--  [XComponent3D (API version 10) ](https://gitc
--  
--  
+- [XComponent3D (API version 10) ](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/XComponent3D)
+- [OpenGL Triangular Pyramid (API Version 10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkOpenGL)
+- [NativeXComponent (API version 19)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeXComponentSample)
 
- 
+The following samples are provided to help you better understand how to use ArkTS XComponent:
 
 - [ArkTSXComponent(API version 12)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ArkTSXComponent)
 <!--RP1End-->

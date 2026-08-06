@@ -7,7 +7,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 
-子组件中被\@Link装饰的变量与其父组件中对应的数据源建立双向数据绑定。
+子组件中被[\@Link](../../reference/apis-arkui/arkui-ts/ts-state-management-link.md#link)装饰的变量与其父组件中对应的数据源建立双向数据绑定。
 
 在阅读\@Link文档前，建议先熟悉[\@State](./arkts-state.md)的基本用法。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。常见问题请参考[状态管理常见问题](./arkts-state-management-faq.md)。
 
@@ -95,6 +95,8 @@
     > **说明：**
     >
     > 从API version 23开始，添加对\@Link数据源错误的校验，运行时错误变为编译期报错。详情参见[UI相关应用崩溃常见问题](../arkts-stability-crash-issues.md)。
+    >
+    > 从API版本26.0.0开始，\@Link的数据源如果不是状态变量，会抛出错误码[140123](../../reference/apis-arkui/errorcode-stateManagement.md#140123-link装饰变量的数据源不是状态变量)。
 
     【反例】
   

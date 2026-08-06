@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @rongShao-Z; @wind_-->
-<!--Designer: @yylong; @yangcan18-->
+<!--Owner: @rongShao-Z; @wind_-->
+<!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -70,8 +70,8 @@ ListItemGroup组件参数。
 | space               | number&nbsp;\|&nbsp;string                          | 否   | 是 | 列表项间距。只作用于ListItem与ListItem之间，不作用于header与ListItem、footer与ListItem之间。<br/>默认值：0<br/>单位：vp <br/>**说明：**<br/>设置为负数或者大于等于List内容区长度时，按默认值显示。如果同时设置了spaceWidth和space，则spaceWidth优先生效。当spaceWidth为undefined或null时，space生效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
 | spaceWidth          | [Dimension](ts-types.md#dimension10)                          | 否   | 是 | 列表项间距。只作用于ListItem与ListItem之间，不作用于header与ListItem、footer与ListItem之间。<br/>默认值：0<br/>单位：vp <br/>**说明：**<br/>设置为负数或者大于等于List内容区长度时，按默认值显示。如果同时设置了spaceWidth和space，则spaceWidth优先生效。当spaceWidth为undefined或null时，space生效。<br/>**起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。  |
 | style<sup>10+</sup> | [ListItemGroupStyle](#listitemgroupstyle10枚举说明) | 否   | 是 | 设置ListItemGroup组件卡片样式。<br/>默认值：ListItemGroupStyle.NONE<br/>设置为ListItemGroupStyle.NONE时无样式。<br/>设置为ListItemGroupStyle.CARD时，建议配合[ListItem](ts-container-listitem.md)的ListItemStyle.CARD同时使用，显示默认卡片样式。 <br/>卡片样式下，ListItemGroup默认规格：左右外边距12vp，上下左右内边距4vp。<br/>卡片样式下，为卡片内的列表选项提供了默认的focused、hover、pressed、selected和disabled样式。<br/>**说明：**<br/>当设置为ListItemGroupStyle.CARD时，List的listDirection属性值须为Axis.Vertical，如果设置为Axis.Horizontal，会导致显示混乱；List属性[alignListItem](ts-container-list.md#alignlistitem9)默认为ListItemAlign.Center，居中对齐显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| headerStyle | [ListItemGroupHeaderFooterStyle](#listitemgroupheaderfooterstyle) | 否   | 是 | 设置ListItemGroup头部样式。<br/>默认值：ListItemGroupHeaderFooterStyle.NONE<br/>设置为ListItemGroupHeaderFooterStyle.FLOATING时，头部组件在滚动时悬浮显示。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
-| footerStyle | [ListItemGroupHeaderFooterStyle](#listitemgroupheaderfooterstyle) | 否   | 是 | 设置ListItemGroup尾部样式。<br/>默认值：ListItemGroupHeaderFooterStyle.NONE<br/>设置为ListItemGroupHeaderFooterStyle.FLOATING时，尾部组件在滚动时悬浮显示。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| headerStyle | [ListItemGroupHeaderFooterStyle](#listitemgroupheaderfooterstyle) | 否   | 是 | 设置ListItemGroup头部样式。<br/>默认值：ListItemGroupHeaderFooterStyle.NONE<br/>设置为ListItemGroupHeaderFooterStyle.NONE时无样式。<br/>设置为ListItemGroupHeaderFooterStyle.FLOATING时，头部组件在滚动时悬浮显示。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| footerStyle | [ListItemGroupHeaderFooterStyle](#listitemgroupheaderfooterstyle) | 否   | 是 | 设置ListItemGroup尾部样式。<br/>默认值：ListItemGroupHeaderFooterStyle.NONE<br/>设置为ListItemGroupHeaderFooterStyle.NONE时无样式。<br/>设置为ListItemGroupHeaderFooterStyle.FLOATING时，尾部组件在滚动时悬浮显示。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## 属性
 
@@ -674,3 +674,78 @@ struct ListItemGroupExample {
 ```
 
 ![list_multicolumn_layout](figures/list_multicolumn_layout.gif)
+
+### 示例5（设置悬浮态）
+
+该示例通过将ListItemGroup的[headerStyle](#listitemgroupoptions对象说明)设置为[ListItemGroupHeaderFooterStyle.FLOATING](#listitemgroupheaderfooterstyle)，实现分组头部在滚动时悬浮显示的效果。
+
+```ts
+// xxx.ets
+export interface ContactGroup {
+  letter: string;
+  names: string[];
+}
+
+@Entry
+@Component
+struct Index {
+  private scroller: Scroller = new Scroller();
+  @State groups: ContactGroup[] = [];
+
+  aboutToAppear(): void {
+    this.groups = [
+      {
+        letter: 'A',
+        names: ['Alice', 'Anna', 'Aaron']
+      },
+      {
+        letter: 'B',
+        names: ['Bob', 'Bella', 'Brian']
+      },
+      {
+        letter: 'C',
+        names: ['Cindy', 'Charlie']
+      },
+      {
+        letter: 'D',
+        names: ['David', 'Diana', 'Doris']
+      }
+    ]
+  }
+
+  @Builder
+  private GroupHeader(letter: string) {
+    Row() {
+      Text(letter)
+        .fontSize("16.0fp")
+        .size({width: 40, height: 28})
+        .textAlign(TextAlign.Center)
+    }.margin({left: 14, right: 14})
+  }
+
+  build() {
+    List({ scroller: this.scroller , space: 8}) {
+      ForEach(this.groups, (group: ContactGroup) => {
+        ListItemGroup({ header: this.GroupHeader(group.letter), headerStyle: ListItemGroupHeaderFooterStyle.FLOATING }) {
+          ForEach(group.names, (name: string) => {
+            ListItem() {
+              Text(name)
+                .fontSize(16)
+                .fontColor('#182431')
+                .width('100%')
+                .height(72)
+                .padding({ left: 16 })
+            }
+          }, (name: string) => name)
+        }
+      }, (group: ContactGroup) => group.letter)
+    }
+    .height('100%')
+    .width('100%')
+    .scrollBar(BarState.Off)
+    .sticky(StickyStyle.Header)
+  }
+}
+```
+
+![image-listitemgroup-example05](figures/image-listitemgroup-example05.gif)

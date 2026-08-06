@@ -22,7 +22,7 @@ RenderNode提供了节点的增、删、查、改的能力，能够修改节点�
 
 > **说明：**
 >
-> - RenderNode中获取的子树结构由开发通过RenderNode的[appendChild](../reference/apis-arkui/js-apis-arkui-renderNode.md#appendchild)接口传入的参数构建。
+> - RenderNode中获取的子树结构由开发者通过RenderNode的[appendChild](../reference/apis-arkui/js-apis-arkui-renderNode.md#appendchild)接口传入的参数构建。
 >
 > - RenderNode如果要与系统直接结合显示，需通过FrameNode中获取的RenderNode进行挂载上树。
 
@@ -370,7 +370,7 @@ class MyRenderNode extends RenderNode {
       blue: 180
     });
     canvas.attachBrush(brush);
-    // 绘制矩阵
+    // 绘制矩形
     canvas.drawRect({
       left: 0,
       right: this.width,
@@ -658,6 +658,9 @@ static napi_value OnDraw(napi_env env, napi_callback_info info)
     OH_Drawing_CanvasAttachPen(canvas, pen);
 
     OH_Drawing_CanvasDrawPath(canvas, path);
+    OH_Drawing_CanvasDetachPen(canvas);
+    OH_Drawing_PenDestroy(pen);
+    OH_Drawing_PathDestroy(path);
 
     return nullptr;
 }

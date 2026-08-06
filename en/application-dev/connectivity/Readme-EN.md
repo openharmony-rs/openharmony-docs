@@ -6,7 +6,7 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=dcae6f10c07044342acb5b2dc0416e100c5bcaa2 translatedAt=2026-06-17T06:39:10.141Z pushedAt=2026-06-22T07:24:04.778Z -->
+<!-- md-trans-meta sourceCommit=fe94af415ef5defe8f4e5287d31952687cad711e translatedAt=2026-07-28T06:44:12.312Z pushedAt=2026-07-28T07:13:09.610Z -->
 
 - [About This Kit](connectivity-kit-intro.md)
 
@@ -32,7 +32,7 @@
 
   - Bluetooth FAQs<!--bluetooth-faq-->
 
-    - [2900099 Bluetooth API Call Error](bluetooth/bluetooth-faq-2900099-errorcode.md)
+    - [2900099 Bluetooth API Call Error](bluetooth/bluetooth-faq-2900099-errorcode.md)<!--RP1--><!--RP1End-->
 
 - NFC<!--nfc-->
 
@@ -53,6 +53,8 @@
   - [STA Development](wlan/sta-development-guide.md)
 
   - [Wi-Fi Scanning Development](wlan/scan-development-guide.md)
+
+  - [Glossary](wlan-glossary.md)
 
 - Converged Short-Range<!--fusion-connectivity-->
 

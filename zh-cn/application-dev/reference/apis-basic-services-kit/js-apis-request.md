@@ -30,9 +30,9 @@ import { request } from '@kit.BasicServicesKit';
 >
 > **网络类型**：下载支持自定义网络类型，可以在[DownloadConfig](#downloadconfig)中通过networkType配置成以下网络类型。<br>
 >
-> **下载任务错误码**：下载[on('fail')](#onfail7)事件callback的错误参数、[getTaskInfo](#gettaskinfo9)返回值的failedReason字段取值。<br/>
+> **下载任务错误码**：下载[on('fail')](#onfail7)事件callback的错误参数、[getTaskInfo](#gettaskinfo9)返回值的failedReason字段取值。<br>
 >
-> **下载任务暂停原因**：下载相关[getTaskInfo](#gettaskinfo9)返回值的pausedReason字段取值。<br/>
+> **下载任务暂停原因**：下载相关[getTaskInfo](#gettaskinfo9)返回值的pausedReason字段取值。<br>
 >
 > **下载任务状态码**：下载相关[getTaskInfo](#gettaskinfo9)返回值的status字段取值。
 
@@ -41,7 +41,7 @@ import { request } from '@kit.BasicServicesKit';
 | EXCEPTION_PERMISSION<sup>9+</sup> | number |   201   | 通用错误码：权限校验失败。 |
 | EXCEPTION_PARAMCHECK<sup>9+</sup> | number |   401   | 通用错误码：参数检查失败。 |
 | EXCEPTION_UNSUPPORTED<sup>9+</sup> | number |   801   | 通用错误码：该设备不支持此API。 |
-| EXCEPTION_FILEIO<sup>9+</sup> | number |   13400001   | 特有错误码：文件操作异常。 |
+| EXCEPTION_FILEIO<sup>9+</sup> | number |   13400001   | 特有错误码：文件操作异常。具体请参考[13400001错误的处理方法](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faq-basics-service-kit-20)。 |
 | EXCEPTION_FILEPATH<sup>9+</sup> | number |   13400002   | 特有错误码：文件路径异常。 |
 | EXCEPTION_SERVICE<sup>9+</sup> | number |   13400003   | 特有错误码：服务异常。 |
 | EXCEPTION_OTHERS<sup>9+</sup> | number |   13499999   | 特有错误码：其他错误。 |
@@ -55,11 +55,11 @@ import { request } from '@kit.BasicServicesKit';
 | ERROR_INSUFFICIENT_SPACE<sup>7+</sup> | number |   5   | 下载任务错误码：存储空间不足。 |
 | ERROR_TOO_MANY_REDIRECTS<sup>7+</sup> | number |   6   | 下载任务错误码：网络重定向过多导致的错误。 |
 | ERROR_UNHANDLED_HTTP_CODE<sup>7+</sup> | number |   7   | 下载任务错误码：无法识别的HTTP代码。 |
-| ERROR_UNKNOWN<sup>7+</sup> | number |   8   | 下载任务错误码：未知错误。<br>例如：API version 12及以下版本，系统仅支持串行地尝试连接域名相关IP，不支持单个IP的连接时间控制。若DNS返回的首个IP被阻塞，可能会由于握手超时导致ERROR_UNKNOWN错误。 |
+| ERROR_UNKNOWN<sup>7+</sup> | number |   8   | 下载任务错误码：未知错误。<br>例如：API version 12及以下版本，系统仅支持串行地尝试连接域名相关IP，不支持单个IP的连接时间控制。若DNS返回的首个IP被阻塞，可能会由于握手超时导致ERROR_UNKNOWN错误。具体请参考[ERROR_UNKNOWN错误的处理方法](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faq-basics-service-kit-73)。 |
 | ERROR_OFFLINE<sup>9+</sup> | number |   9   | 下载任务错误码：网络未连接。 |
 | ERROR_UNSUPPORTED_NETWORK_TYPE<sup>9+</sup> | number |   10   | 下载任务错误码：网络类型不匹配。 |
 | PAUSED_QUEUED_FOR_WIFI<sup>7+</sup> | number |   0   | 下载任务暂停原因：文件大小超过了使用蜂窝网络会话允许的最大值，下载被暂停并等待WLAN连接。 |
-| PAUSED_WAITING_FOR_NETWORK<sup>7+</sup> | number |   1   | 下载任务暂停原因：网络问题导致下载暂停。<br/>例如：网络断开。 |
+| PAUSED_WAITING_FOR_NETWORK<sup>7+</sup> | number |   1   | 下载任务暂停原因：网络问题导致下载暂停。<br>例如：网络断开。 |
 | PAUSED_WAITING_TO_RETRY<sup>7+</sup> | number |   2   | 下载任务暂停原因：网络错误导致下载会话将被重试。 |
 | PAUSED_BY_USER<sup>9+</sup> | number |   3   | 下载任务暂停原因：用户暂停会话。 |
 | PAUSED_UNKNOWN<sup>7+</sup> | number |   4   | 下载任务暂停原因：未知原因导致暂停下载。 |
@@ -121,8 +121,8 @@ uploadFile(context: BaseContext, config: UploadConfig): Promise&lt;UploadTask&gt
     url: 'http://www.example.com', // 需要手动将url替换为真实服务器的HTTP协议地址
     header: { 'Accept': '*/*' },
     method: 'POST',
-    files: [{ filename: "test", name: "test", uri: "internal://cache/test.jpg", type: "image/jpeg" }], // 建议type填写HTTP协议规范的MIME类型
-    data: [{ name: "name123", value: "123" }],
+    files: [{ filename: 'test', name: 'test', uri: 'internal://cache/test.jpg', type: 'image/jpeg' }], // 建议type填写HTTP协议规范的MIME类型
+    data: [{ name: 'name123', value: '123' }],
   };
   try {
     request.uploadFile(context, uploadConfig).then((data: request.UploadTask) => {
@@ -180,9 +180,9 @@ uploadFile(context: BaseContext, config: UploadConfig, callback: AsyncCallback&l
   let uploadConfig: request.UploadConfig = {
     url: 'http://www.example.com', // 需要手动将url替换为真实服务器的HTTP协议地址
     header: { 'Accept': '*/*' },
-    method: "POST",
-    files: [{ filename: "test", name: "test", uri: "internal://cache/test.jpg", type: "image/jpeg" }], // 建议type填写HTTP协议规范的MIME类型
-    data: [{ name: "name123", value: "123" }],
+    method: 'POST',
+    files: [{ filename: 'test', name: 'test', uri: 'internal://cache/test.jpg', type: 'image/jpeg' }], // 建议type填写HTTP协议规范的MIME类型
+    data: [{ name: 'name123', value: '123' }],
   };
   try {
     request.uploadFile(context, uploadConfig, (err: BusinessError, data: request.UploadTask) => {
@@ -211,7 +211,7 @@ upload(config: UploadConfig): Promise&lt;UploadTask&gt;
 
 > **说明：**
 >
-> 从API version 6 开始支持，从API version 9 开始废弃，建议使用[request.uploadFile](#requestuploadfile9)替代。
+> 从API version 6开始支持，从API version 9开始废弃。建议使用[request.uploadFile](#requestuploadfile9)替代。
 
 **参数：**
 
@@ -240,9 +240,9 @@ upload(config: UploadConfig): Promise&lt;UploadTask&gt;
   let uploadConfig: request.UploadConfig = {
     url: 'http://www.example.com', // 需要手动将url替换为真实服务器的HTTP协议地址
     header: { 'Accept': '*/*' },
-    method: "POST",
-    files: [{ filename: "test", name: "test", uri: "internal://cache/test.jpg", type: "image/jpeg" }], // 建议type填写HTTP协议规范的MIME类型
-    data: [{ name: "name123", value: "123" }],
+    method: 'POST',
+    files: [{ filename: 'test', name: 'test', uri: 'internal://cache/test.jpg', type: 'image/jpeg' }], // 建议type填写HTTP协议规范的MIME类型
+    data: [{ name: 'name123', value: '123' }],
   };
   request.upload(uploadConfig).then((data: request.UploadTask) => {
     uploadTask = data;
@@ -266,7 +266,7 @@ upload(config: UploadConfig, callback: AsyncCallback&lt;UploadTask&gt;): void
 
 > **说明：**
 >
-> 从API version 6 开始支持，从API version 9 开始废弃，建议使用[request.uploadFile](#requestuploadfile9)替代。
+> 从API version 6开始支持，从API version 9开始废弃。建议使用[request.uploadFile](#requestuploadfile9)替代。
 
 **参数：**
 
@@ -290,9 +290,9 @@ upload(config: UploadConfig, callback: AsyncCallback&lt;UploadTask&gt;): void
   let uploadConfig: request.UploadConfig = {
     url: 'http://www.example.com', // 需要手动将url替换为真实服务器的HTTP协议地址
     header: { 'Accept': '*/*' },
-    method: "POST",
-    files: [{ filename: "test", name: "test", uri: "internal://cache/test.jpg", type: "image/jpeg" }], // 建议type填写HTTP协议规范的MIME类型
-    data: [{ name: "name123", value: "123" }],
+    method: 'POST',
+    files: [{ filename: 'test', name: 'test', uri: 'internal://cache/test.jpg', type: 'image/jpeg' }], // 建议type填写HTTP协议规范的MIME类型
+    data: [{ name: 'name123', value: '123' }],
   };
   request.upload(uploadConfig, (err: BusinessError, data: request.UploadTask) => {
     if (err) {
@@ -305,7 +305,7 @@ upload(config: UploadConfig, callback: AsyncCallback&lt;UploadTask&gt;): void
 
 ## UploadTask
 
-上传任务，使用下列方法前，需要先获取UploadTask对象，promise形式通过[request.uploadFile](#requestuploadfile9)获取，callback形式通过[request.uploadFile](#requestuploadfile9-1)获取。
+上传任务，使用下列方法前，需要先获取UploadTask对象，Promise形式通过[request.uploadFile](#requestuploadfile9)获取，callback形式通过[request.uploadFile](#requestuploadfile9-1)获取。
 
 
 
@@ -667,7 +667,7 @@ remove(): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 6开始支持，从API version 9开始废弃，建议使用[delete](#delete9)替代。
+> 从API version 6开始支持，从API version 9开始废弃。建议使用[delete](#delete9)替代。
 
 **返回值：**
 
@@ -706,7 +706,7 @@ remove(callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从API version 6开始支持，从API version 9开始废弃，建议使用[delete](#delete9-1)替代。
+> 从API version 6开始支持，从API version 9开始废弃。建议使用[delete](#delete9-1)替代。
 
 **参数：**
 
@@ -744,7 +744,7 @@ remove(callback: AsyncCallback&lt;boolean&gt;): void
 | 名称   | 类型     | 只读 | 可选 | 说明                            |
 |------|--------|----|----|-------------------------------|
 | url | string | 否 | 否 | 资源地址。从API 6到API 14，最大长度为2048个字符；从API 15开始，最大长度为8192个字符。超出最大长度时任务创建失败。支持[HTTP拦截](../../basic-services/request/app-file-upload-download.md#http拦截)功能。 |
-| header | Object | 否 | 否 | 添加要包含在上传请求中的HTTP或HTTPS标志头。 |
+| header | Object | 否 | 否 | 添加要包含在上传请求中的HTTP或HTTPS标头。 |
 | method | string | 否 | 否 |  HTTP请求方法：POST、PUT，缺省为POST。使用POST新增资源，使用PUT修改资源。 |
 | index<sup>11+</sup> | number | 否 | 是 | 任务的路径索引，通常用于断点续传场景指定文件路径索引，默认值为0。 |
 | begins<sup>11+</sup> | number | 否 | 是 | 上传任务开始时读取的文件起点，单位为字节（B），通常用于断点续传场景。默认值为0，取值范围为[0, 文件大小]，取值范围为闭区间，表示从头开始传输。超出范围时任务创建失败。|
@@ -858,7 +858,7 @@ downloadFile(context: BaseContext, config: DownloadConfig): Promise&lt;DownloadT
        let downloadTask: request.DownloadTask = data;
     }).catch((err: BusinessError) => {
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
-    })
+    });
   } catch (err) {
     console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   }
@@ -937,7 +937,7 @@ download(config: DownloadConfig): Promise&lt;DownloadTask&gt;
 
 > **说明：**
 >
-> 从API version 6 开始支持，从API version 9 开始废弃，建议使用[request.downloadFile](#requestdownloadfile9)替代。
+> 从API version 6开始支持，从API version 9开始废弃。建议使用[request.downloadFile](#requestdownloadfile9)替代。
 
 **参数：**
 
@@ -986,7 +986,7 @@ download(config: DownloadConfig, callback: AsyncCallback&lt;DownloadTask&gt;): v
 
 > **说明：**
 >
-> 从API version 6 开始支持，从API version 9 开始废弃，建议使用[request.downloadFile](#requestdownloadfile9-1)替代。
+> 从API version 6开始支持，从API version 9开始废弃。建议使用[request.downloadFile](#requestdownloadfile9-1)替代。
 
 **参数：**
 
@@ -1020,12 +1020,12 @@ download(config: DownloadConfig, callback: AsyncCallback&lt;DownloadTask&gt;): v
 
 ## DownloadTask
 
-下载任务，使用下列方法前，需要先获取DownloadTask对象，promise形式通过[request.downloadFile](#requestdownloadfile9)获取，callback形式通过[request.downloadFile](#requestdownloadfile9-1)获取。
+下载任务，使用下列方法前，需要先获取DownloadTask对象，Promise形式通过[request.downloadFile](#requestdownloadfile9)获取，callback形式通过[request.downloadFile](#requestdownloadfile9-1)获取。
 
 
 ### on('progress')
 
-on(type: 'progress', callback: (receivedSize: number, totalSize: number) =&gt; void): void
+on(type: 'progress', callback: (receivedSize: number, totalSize: number) => void): void
 
 订阅下载任务进度事件，使用callback异步回调。
 
@@ -1202,7 +1202,7 @@ off(type: 'complete' | 'pause' | 'remove', callback?: () =&gt; void): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | type | string | 是 | 取消订阅的事件类型。<br/>- 取值为'complete'，表示下载任务完成。<br/>- 取值为'pause'，表示下载任务暂停。<br/>- 取值为'remove'，表示下载任务移除。 |
+  | type | string | 是 | 取消订阅的事件类型。<br>- 取值为'complete'，表示下载任务完成。<br>- 取值为'pause'，表示下载任务暂停。<br>- 取值为'remove'，表示下载任务移除。 |
   | callback | function | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码：**
@@ -1387,7 +1387,7 @@ delete(): Promise&lt;boolean&gt;
   
 > **说明：**
 >
-> 由于不存在401报错场景，在api12中 `401 the parameters check fails` 这个错误码被移除。
+> 由于不存在401报错场景，在API version 12中 `401 the parameters check fails` 这个错误码被移除。
 
 **返回值：**
 
@@ -1439,7 +1439,7 @@ delete(callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 由于不存在401报错场景，在api12中 `401 the parameters check fails` 这个错误码被移除。
+> 由于不存在401报错场景，在API version 12中 `401 the parameters check fails` 这个错误码被移除。
 
 **参数：**
 
@@ -1495,7 +1495,7 @@ getTaskInfo(): Promise&lt;DownloadInfo&gt;
 
 > **说明：**
 >
-> 由于不存在401报错场景，在api12中 `401 the parameters check fails` 这个错误码被移除。
+> 由于不存在401报错场景，在API version 12中 `401 the parameters check fails` 这个错误码被移除。
 
 **返回值：**
 
@@ -1549,7 +1549,7 @@ getTaskInfo(callback: AsyncCallback&lt;DownloadInfo&gt;): void
 
 > **说明：**
 >
-> 由于不存在401报错场景，在api12中 `401 the parameters check fails` 这个错误码被移除。
+> 由于不存在401报错场景，在API version 12中 `401 the parameters check fails` 这个错误码被移除。
 
 **参数：**
 
@@ -1582,6 +1582,7 @@ getTaskInfo(callback: AsyncCallback&lt;DownloadInfo&gt;): void
           console.error(`Failed to query the download task. Code: ${err.code}, message: ${err.message}`);
         } else {
           console.info('Succeeded in querying the download task');
+        }
       });
     }).catch((err: BusinessError) => {
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
@@ -1603,7 +1604,7 @@ getTaskMimeType(): Promise&lt;string&gt;
 
 > **说明：**
 >
-> 由于不存在401报错场景，在api12中 `401 the parameters check fails` 这个错误码被移除。
+> 由于不存在401报错场景，在API version 12中 `401 the parameters check fails` 这个错误码被移除。
 
 **返回值：**
 
@@ -1634,7 +1635,7 @@ getTaskMimeType(): Promise&lt;string&gt;
       downloadTask.getTaskMimeType().then((data: string) => {
         console.info('Succeeded in querying the download MimeType');
       }).catch((err: BusinessError) => {
-        console.error(`Failed to query the download MimeType. Code: ${err.code}, message: ${err.message}`)
+        console.error(`Failed to query the download MimeType. Code: ${err.code}, message: ${err.message}`);
       });
     }).catch((err: BusinessError) => {
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
@@ -1656,7 +1657,7 @@ getTaskMimeType(callback: AsyncCallback&lt;string&gt;): void
 
 > **说明：**
 >
-> 由于不存在401报错场景，在api12中 `401 the parameters check fails` 这个错误码被移除。
+> 由于不存在401报错场景，在API version 12中 `401 the parameters check fails` 这个错误码被移除。
 
 **参数：**
 
@@ -1711,7 +1712,7 @@ suspend(): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 由于不存在401报错场景，在api12中 `401 the parameters check fails` 这个错误码被移除。
+> 由于不存在401报错场景，在API version 12中 `401 the parameters check fails` 这个错误码被移除。
 
 **返回值：**
 
@@ -1764,7 +1765,7 @@ suspend(callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 由于不存在401报错场景，在api12中 `401 the parameters check fails` 这个错误码被移除。
+> 由于不存在401报错场景，在API version 12中 `401 the parameters check fails` 这个错误码被移除。
 
 **参数：**
 
@@ -1819,7 +1820,7 @@ restore(): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 由于不存在401报错场景，在api12中 `401 the parameters check fails` 这个错误码被移除。
+> 由于不存在401报错场景，在API version 12中 `401 the parameters check fails` 这个错误码被移除。
 
 **返回值：**
 
@@ -1848,7 +1849,7 @@ restore(): Promise&lt;boolean&gt;
     request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
       let downloadTask: request.DownloadTask = data;
       downloadTask.restore().then((result: boolean) => {
-        console.info('Succeeded in resuming the download task.')
+        console.info('Succeeded in resuming the download task.');
       }).catch((err: BusinessError) => {
         console.error(`Failed to resume the download task. Code: ${err.code}, message: ${err.message}`);
       });
@@ -1872,7 +1873,7 @@ restore(callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 由于不存在401报错场景，在api12中 `401 the parameters check fails` 这个错误码被移除。
+> 由于不存在401报错场景，在API version 12中 `401 the parameters check fails` 这个错误码被移除。
 
 **参数：**
 
@@ -1927,7 +1928,7 @@ remove(): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 6开始支持，从API version 9开始废弃，建议使用[delete](#delete9-2)替代。
+> 从API version 6开始支持，从API version 9开始废弃。建议使用[delete](#delete9-2)替代。
 
 **返回值：**
 
@@ -1966,7 +1967,7 @@ remove(callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从API version 6开始支持，从API version 9开始废弃，建议使用[delete](#delete9-3)替代。
+> 从API version 6开始支持，从API version 9开始废弃。建议使用[delete](#delete9-3)替代。
 
 **参数：**
 
@@ -2007,7 +2008,7 @@ query(): Promise&lt;DownloadInfo&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[getTaskInfo](#gettaskinfo9)替代。
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[getTaskInfo](#gettaskinfo9)替代。
 
 **返回值：**
 
@@ -2027,9 +2028,9 @@ query(): Promise&lt;DownloadInfo&gt;
 
   ```js
   downloadTask.query().then((downloadInfo) => {    
-    console.info('Succeeded in querying the download task.')
+    console.info('Succeeded in querying the download task.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to query the download task. Code: ${err.code}, message: ${err.message}`)
+    console.error(`Failed to query the download task. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -2046,7 +2047,7 @@ query(callback: AsyncCallback&lt;DownloadInfo&gt;): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[getTaskInfo](#gettaskinfo9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[getTaskInfo](#gettaskinfo9-1)替代。
 
 **参数：**
 
@@ -2065,8 +2066,8 @@ query(callback: AsyncCallback&lt;DownloadInfo&gt;): void
 **示例：**
 
   ```js
-  downloadTask.query((err: BusinessError, downloadInfo: request.DownloadInfo)=>{
-    if(err) {
+  downloadTask.query((err: BusinessError, downloadInfo: request.DownloadInfo) => {
+    if (err) {
       console.error(`Failed to query the download task. Code: ${err.code}, message: ${err.message}`);
     } else {
       console.info('Succeeded in querying the download task.');
@@ -2087,7 +2088,7 @@ queryMimeType(): Promise&lt;string&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[getTaskMimeType](#gettaskmimetype9)替代。
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[getTaskMimeType](#gettaskmimetype9)替代。
 
 **返回值：**
 
@@ -2109,7 +2110,7 @@ queryMimeType(): Promise&lt;string&gt;
   downloadTask.queryMimeType().then((data: string) => {    
     console.info('Succeeded in querying the download MimeType.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to query the download MimeType. Code: ${err.code}, message: ${err.message}`)
+    console.error(`Failed to query the download MimeType. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -2126,7 +2127,7 @@ queryMimeType(callback: AsyncCallback&lt;string&gt;): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[getTaskMimeType](#gettaskmimetype9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[getTaskMimeType](#gettaskmimetype9-1)替代。
 
 **参数：**
 
@@ -2145,8 +2146,8 @@ queryMimeType(callback: AsyncCallback&lt;string&gt;): void
 **示例：**
 
   ```js
-  downloadTask.queryMimeType((err: BusinessError, data: string)=>{
-    if(err) {
+  downloadTask.queryMimeType((err: BusinessError, data: string) => {
+    if (err) {
       console.error(`Failed to query the download mimeType. Code: ${err.code}, message: ${err.message}`);
     } else {
       console.info('Succeeded in querying the download mimeType.');
@@ -2167,7 +2168,7 @@ pause(): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[suspend](#suspend9)替代。
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[suspend](#suspend9)替代。
 
 **返回值：**
 
@@ -2206,7 +2207,7 @@ pause(callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[suspend](#suspend9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[suspend](#suspend9-1)替代。
 
 **参数：**
 
@@ -2226,7 +2227,7 @@ pause(callback: AsyncCallback&lt;void&gt;): void
 
   ```js
   downloadTask.pause((err: BusinessError) => {
-    if(err) {
+    if (err) {
       console.error(`Failed to pause the download task. Code: ${err.code}, message: ${err.message}`);
       return;
     }
@@ -2247,7 +2248,7 @@ resume(): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[restore](#restore9)替代。
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[restore](#restore9)替代。
 
 **返回值：**
 
@@ -2267,7 +2268,7 @@ resume(): Promise&lt;void&gt;
 
   ```js
   downloadTask.resume().then(() => {
-    console.info('Succeeded in resuming the download task.')
+    console.info('Succeeded in resuming the download task.');
   }).catch((err: BusinessError) => {
     console.error(`Failed to resume the download task. Code: ${err.code}, message: ${err.message}`);
   });
@@ -2286,7 +2287,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[restore](#restore9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[restore](#restore9-1)替代。
 
 **参数：**
 
@@ -2323,12 +2324,12 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 | 名称   | 类型     | 只读 | 可选 | 说明                            |
 |------|--------|----|----|-------------------------------|
 | url | string | 否 | 否 | 资源地址。从API 6到API 14，最大长度为2048个字符；从API 15开始，最大长度为8192个字符。超出最大长度时任务创建失败。支持[HTTP拦截](../../basic-services/request/app-file-upload-download.md#http拦截)功能。 |
-| header | Object | 否 | 是 | 添加要包含在下载请求中的HTTP或HTTPS标志头。默认值为空。|
+| header | Object | 否 | 是 | 添加要包含在下载请求中的HTTP或HTTPS标头。默认值为空。|
 | enableMetered | boolean | 否 | 是 | 表示设置是否允许在按流量计费的连接下下载任务的配置信息。true表示允许，false表示不允许。默认值为false。当networkType为NETWORK_MOBILE \| NETWORK_WIFI时，此参数不生效。<br>**说明：**<br> Wi-Fi为非计费网络，数据流量为计费网络。|
 | enableRoaming | boolean | 否 | 是 | 表示设置是否允许在漫游网络中下载任务的配置信息。true表示允许，false表示不允许。默认值为false。<br>当networkType为NETWORK_MOBILE \| NETWORK_WIFI时，该参数不生效。|
 | description | string | 否 | 是 | 设置下载会话的描述。默认值为空字符串。 |
 | filePath<sup>7+</sup> | string | 否 | 是 | 设置下载路径。默认为调用方（即传入的context）对应的缓存路径。默认文件名从url的最后一个"/"后截取。<br>-&nbsp;FA模型下使用[Context.getCacheDir](../apis-ability-kit/js-apis-inner-app-context.md#contextgetcachedir)方法获取应用存储路径。<br>-&nbsp;Stage模型下使用[Context (Stage模型的上下文基类)](../apis-ability-kit/js-apis-inner-application-context.md)中AbilityContext的类获取文件路径。|
-| networkType | number | 否 | 是 | 设置允许下载的网络类型，通过[网络类型常量](#常量)的位运算方式决定允许的网络类型，支持如下几种设置方式: <br>- 仅支持蜂窝网络下载，参数为NETWORK_MOBILE或0x00000001 <br>- 仅支持WLAN网络下载，参数为NETWORK_WIFI或0x00010000<br>- 参数默认值，支持蜂窝/WLAN网络下载，参数为NETWORK_MOBILE \| NETWORK_WIFI或0x00010001。<br>当参数为NETWORK_MOBILE \| NETWORK_WIFI时，enableMetered和enableRoaming参数不生效。|
+| networkType | number | 否 | 是 | 设置允许下载的网络类型，通过[网络类型常量](#常量)的位运算方式决定允许的网络类型，支持如下几种设置方式： <br>- 仅支持蜂窝网络下载，参数为NETWORK_MOBILE或0x00000001 <br>- 仅支持WLAN网络下载，参数为NETWORK_WIFI或0x00010000<br>- 参数默认值，支持蜂窝/WLAN网络下载，参数为NETWORK_MOBILE \| NETWORK_WIFI或0x00010001。<br>当参数为NETWORK_MOBILE \| NETWORK_WIFI时，enableMetered和enableRoaming参数不生效。|
 | title | string | 否 | 是 | 设置下载任务名称。默认值为download。 |
 | background<sup>9+</sup> | boolean | 否 | 是 | 后台任务通知开关，启用后可在通知中显示下载状态。true表示启用，false表示禁用。默认值为false。 |
 
@@ -2352,7 +2353,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 | description | string | 否 | 否 | 待下载任务的描述信息。 |
 | downloadedBytes | number | 否 | 否 | 实时下载大小，单位为字节（B）。 |
 
-## request.agent<sup>10+</sup>
+## agent<sup>10+</sup>
 
 request.agent提供基于任务的后台上传下载代理能力。开发者通过[request.agent.create](#requestagentcreate10)创建任务并排入队列，通过[Task](#requestagenttask10)对象管理任务生命周期（启动、暂停、恢复、停止、移除）。支持前台和后台两种任务模式：前台任务在应用切到后台一段时间后会显示失败或暂停，后台任务不受影响。支持断点续传、网络条件控制、自动重试、超时控制等特性。与基础的[request.uploadFile](#requestuploadfile9)/[request.downloadFile](#requestdownloadfile9)相比，request.agent提供更完善的任务管理和状态查询能力。
 
@@ -2433,10 +2434,10 @@ request.agent提供基于任务的后台上传下载代理能力。开发者通�
 | 名称   | 类型     | 只读 | 可选 | 说明                            |
 |------|--------|----|----|-------------------------------|
 | path | string | 否 | 否 | 文件路径。<br>- 相对路径，位于调用方的缓存路径下。<br>例如："./xxx/yyy/zzz.html"、"xxx/yyy/zzz.html"。<br>- internal协议路径，支持"internal://"及其子路径。internal为调用方（即传入的context）对应路径，"internal://cache"对应context.cacheDir。<br>例如："internal://cache/path/to/file.txt"。<br>- 应用沙箱目录，只支持到base及其子目录下。<br>例如："/data/storage/el1/base/path/to/file.txt"。<br>- file协议路径，必须匹配应用包名，只支持到base及其子目录下。<br>例如："file://com.example.test/data/storage/el2/base/file.txt"。<br>- 用户公共文件，仅支持上传任务。<br>例如："file://media/Photo/path/to/file.img"。仅支持前台任务。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| mimeType<sup>(deprecated)</sup> | string | 否 | 是 | 文件的mimeType，通过文件名获取，默认值为文件名后缀。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> 从 API version 18 开始废弃，建议使用contentType替代。 |
+| mimeType<sup>(deprecated)</sup> | string | 否 | 是 | 文件的mimeType，通过文件名获取，默认值为文件名后缀。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br> 从API version 10开始支持，从 API version 18开始废弃。建议使用contentType替代。 |
 | contentType<sup>18+</sup> | string | 否 | 是 | 文件内容类型，默认值为文件名后缀。该选项会被填写到HTTP表单指定的Content-Type字段中。 |
-| filename | string | 否 | 是 | 文件名，默认值通过路径获取。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| extras | object | 否 | 是 | 文件信息的附加内容，该参数不会体现在HTTP请求中。默认值为空。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| filename | string | 否 | 是 | 文件名，默认值通过路径获取。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| extras | object | 否 | 是 | 文件信息的附加内容，该参数不会体现在HTTP请求中。默认值为空。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 
 ## request.agent.FormItem<sup>10+</sup> 
@@ -2460,30 +2461,30 @@ request.agent提供基于任务的后台上传下载代理能力。开发者通�
 | 名称   | 类型     | 只读 | 可选 | 说明                            |
 |------|--------|----|----|-------------------------------|
 | action | [Action](#requestagentaction10) | 否 | 否 | 任务操作选项。<br>- UPLOAD表示上传任务。<br>- DOWNLOAD表示下载任务。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| url | string | 否 | 否 | 资源地址。从API 6到API 14，最大长度为2048个字符；从API 15开始，最大长度为8192个字符。超出最大长度时任务创建失败。支持[HTTP拦截](../../basic-services/request/app-file-upload-download.md#http拦截)功能。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| title | string | 否 | 是 | 任务标题，其最大长度为256个字符，默认值为小写的 upload 或 download，与上面的 action 保持一致。超出最大长度时任务创建失败。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| description | string | 否 | 是 | 任务的详细信息，其最大长度为1024个字符，默认值为空字符串。超出最大长度时任务创建失败。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| mode | [Mode](#requestagentmode10) | 是 | 否 | 任务模式，支持设置前台和后台任务，默认为后台任务。<br>- FOREGROUND表示前台任务。<br>- BACKGROUND表示后台任务。<br>从API version 20开始，下载到用户文件场景必须为request.agent.Mode.FOREGROUND，否则任务将无法正常创建或执行。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| overwrite | boolean | 否 | 是 | 下载过程中路径已存在时的解决方案选择，默认为false。<br/>- true，覆盖已存在的文件。<br/>- false，下载失败。<br/>从API version 20开始，下载到用户文件场景必须为true。<br/>设置为 `true` 时，不建议创建多个任务同时往同一个文件下载内容，会导致文件内容混乱。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| method | string | 否 | 是 | 上传或下载HTTP的标准方法，包括GET、POST和PUT，不区分大小写。<br/>- 上传时，使用PUT或POST，默认值为PUT。<br/>- 下载时，使用GET或POST，默认值为GET。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| headers | object | 否 | 是 | 添加要包含在任务中的HTTP协议标志头。<br/>- 上传请求，默认的Content-Type为"multipart/form-data"。<br/>- 下载请求，默认的Content-Type为"application/json"。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| data | string \| Array&lt;[FormItem](#requestagentformitem10)&gt; | 否 | 是 | - 下载时，data为字符串类型，通常情况下使用json格式（object将被转换为json文本），默认为空。<br/>- 上传时，data是表单项数组Array&lt;[FormItem](#requestagentformitem10)&gt;。从API version 15开始，创建单个任务可以上传最多100个文件。默认为空。超出文件数量限制时任务创建失败。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| saveas | string | 否 | 是 | 保存下载文件的路径，包括如下几种：<br/>- 相对路径，位于调用方的缓存路径下，如"./xxx/yyy/zzz.html"、"xxx/yyy/zzz.html"。<br/>- internal协议路径，支持"internal://"及其子路径，internal为调用方（传入的context）对应路径，"internal://cache"对应context.cacheDir。如"internal://cache/path/to/file.txt"。<br/>- 应用沙箱目录，只支持到base及其子目录下，如"/data/storage/el1/base/path/to/file.txt"。<br/>- file协议路径，支持应用文件和用户文件，应用文件必须匹配应用包名，只支持到base及其子目录下，如"file://com.example.test/data/storage/el2/base/file.txt"。用户文件必须为调用方创建好的用户文件uri。<br/>从API version 20开始，除[下载网络资源文件至用户文件](../../basic-services/request/app-file-upload-download.md#下载网络资源文件至用户文件)外，其他可默认为调用方（即传入的context）对应的缓存路径。默认文件名从url的最后一个"/"后截取。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| network | [Network](#requestagentnetwork10) | 否 | 是 | 网络选项，当前支持无线网络WIFI和蜂窝数据网络CELLULAR，默认为ANY（WIFI或CELLULAR）。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| metered | boolean | 否 | 是 | 是否允许在按流量计费的网络中工作，默认为false。<br/>- true：是 <br/>- false：否<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| roaming | boolean | 否 | 是 | 是否允许在漫游网络中工作，默认为true。<br/>- true：是 <br/>- false：否<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| retry | boolean | 否 | 是 | 是否为后台任务启用自动重试，仅应用于后台任务，默认为true。<br/>- true：是 <br/>- false：否<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| redirect | boolean | 否 | 是 | 是否允许重定向，默认为true。<br/>- true：是 <br/>- false：否<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| proxy<sup>12+</sup> | string | 否 | 是 | 设置代理地址，其最大长度为512个字符，默认为空。超出最大长度时任务创建失败。<br/>代理地址格式："http://\<domain or address\>:\<port\>" |
-| index | number | 否 | 是 | 任务的路径索引，通常情况下用于任务断点续传，默认为0。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| begins | number | 否 | 是 | 文件起点，单位为字节（B），通常情况下用于断点续传。默认值为0，取值范围为[0, 文件大小]，表示从头开始传输。超出范围时任务创建失败。<br/>- 下载时，请求读取服务器开始下载文件时的起点位置（HTTP协议中设置"Range"选项）。<br/>- 上传时，读取需上传的文件的起点位置。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| ends | number | 否 | 是 | 文件终点，单位为字节（B），通常情况下用于断点续传。默认值为-1，取值范围为[-1, 文件大小]，表示传输到整个文件末尾结束。超出范围时任务创建失败。<br/>- 下载时，请求读取服务器开始下载文件时的结束位置（HTTP协议中设置"Range"选项）。<br/>- 上传时，读取需上传的文件的结束位置。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| gauge | boolean | 否 | 是 | 后台任务的进度通知策略，仅应用于后台任务。 <br/>- false：仅发送完成或失败的通知。<br/>- true：发送进度、完成和失败的通知。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| precise | boolean | 否 | 是 | - 如果设置为true，在上传/下载无法获取文件大小时任务失败。<br/>- 如果设置为false，将文件大小设置为-1时任务继续。<br/>默认值为false。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| token | string | 否 | 是 | 任务令牌。查询带有token的任务需提供token并通过[request.agent.touch](#requestagenttouch10)查询，否则无法查询到指定任务。其最小为8个字节，最大为2048个字节。默认为空。超出范围时任务创建失败并返回错误码。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| url | string | 否 | 否 | 资源地址。从API 6到API 14，最大长度为2048个字符；从API 15开始，最大长度为8192个字符。超出最大长度时任务创建失败。支持[HTTP拦截](../../basic-services/request/app-file-upload-download.md#http拦截)功能。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| title | string | 否 | 是 | 任务标题，其最大长度为256个字符，默认值为小写的 upload 或 download，与上面的 action 保持一致。超出最大长度时任务创建失败。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| description | string | 否 | 是 | 任务的详细信息，其最大长度为1024个字符，默认值为空字符串。超出最大长度时任务创建失败。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| mode | [Mode](#requestagentmode10) | 否 | 是 | 任务模式，支持设置前台和后台任务，默认为后台任务。<br>- FOREGROUND表示前台任务。<br>- BACKGROUND表示后台任务。<br>从API version 20开始，下载到用户文件场景必须为request.agent.Mode.FOREGROUND，否则任务将无法正常创建或执行。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| overwrite | boolean | 否 | 是 | 下载过程中路径已存在时的解决方案选择，默认为false。<br>- true，覆盖已存在的文件。<br>- false，下载失败。<br>从API version 20开始，下载到用户文件场景必须为true。<br>设置为 `true` 时，不建议创建多个任务同时往同一个文件下载内容，会导致文件内容混乱。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| method | string | 否 | 是 | 上传或下载HTTP的标准方法，包括GET、POST和PUT，不区分大小写。<br>- 上传时，使用PUT或POST，默认值为PUT。<br>- 下载时，使用GET或POST，默认值为GET。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| headers | object | 否 | 是 | 添加要包含在任务中的HTTP协议标头。<br>- 上传请求，默认的Content-Type为"multipart/form-data"。<br>- 下载请求，默认的Content-Type为"application/json"。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| data | string \| Array&lt;[FormItem](#requestagentformitem10)&gt; | 否 | 是 | - 下载时，data为字符串类型，通常情况下使用json格式（object将被转换为json文本），默认为空。<br>- 上传时，data是表单项数组Array&lt;[FormItem](#requestagentformitem10)&gt;。从API version 15开始，创建单个任务可以上传最多100个文件。默认为空。超出文件数量限制时任务创建失败。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| saveas | string | 否 | 是 | 保存下载文件的路径，包括如下几种：<br>- 相对路径，位于调用方的缓存路径下，如"./xxx/yyy/zzz.html"、"xxx/yyy/zzz.html"。<br>- internal协议路径，支持"internal://"及其子路径，internal为调用方（传入的context）对应路径，"internal://cache"对应context.cacheDir。如"internal://cache/path/to/file.txt"。<br>- 应用沙箱目录，只支持到base及其子目录下，如"/data/storage/el1/base/path/to/file.txt"。<br>- file协议路径，支持应用文件和用户文件，应用文件必须匹配应用包名，只支持到base及其子目录下，如"file://com.example.test/data/storage/el2/base/file.txt"。用户文件必须为调用方创建好的用户文件uri。<br>从API version 20开始，除[下载网络资源文件至用户文件](../../basic-services/request/app-file-upload-download.md#下载网络资源文件至用户文件)外，其他可默认为调用方（即传入的context）对应的缓存路径。默认文件名从url的最后一个"/"后截取。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| network | [Network](#requestagentnetwork10) | 否 | 是 | 网络选项，当前支持无线网络WIFI和蜂窝数据网络CELLULAR，默认为ANY（WIFI或CELLULAR）。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| metered | boolean | 否 | 是 | 是否允许在按流量计费的网络中工作，默认为false。<br>- true：是 <br>- false：否<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| roaming | boolean | 否 | 是 | 是否允许在漫游网络中工作，默认为true。<br>- true：是 <br>- false：否<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| retry | boolean | 否 | 是 | 是否为后台任务启用自动重试，仅应用于后台任务，默认为true。<br>- true：是 <br>- false：否<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| redirect | boolean | 否 | 是 | 是否允许重定向，默认为true。<br>- true：是 <br>- false：否<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| proxy<sup>12+</sup> | string | 否 | 是 | 设置代理地址，其最大长度为512个字符，默认为空。超出最大长度时任务创建失败。<br>代理地址格式："http://\<domain or address\>:\<port\>" |
+| index | number | 否 | 是 | 任务的路径索引，通常情况下用于任务断点续传，默认为0。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| begins | number | 否 | 是 | 文件起点，单位为字节（B），通常情况下用于断点续传。默认值为0，取值范围为[0, 文件大小]，表示从头开始传输。超出范围时任务创建失败。<br>- 下载时，请求读取服务器开始下载文件时的起点位置（HTTP协议中设置"Range"选项）。<br>- 上传时，读取需上传的文件的起点位置。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| ends | number | 否 | 是 | 文件终点，单位为字节（B），通常情况下用于断点续传。默认值为-1，取值范围为[-1, 文件大小]，表示传输到整个文件末尾结束。超出范围时任务创建失败。<br>- 下载时，请求读取服务器开始下载文件时的结束位置（HTTP协议中设置"Range"选项）。<br>- 上传时，读取需上传的文件的结束位置。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| gauge | boolean | 否 | 是 | 后台任务的进度通知策略，仅应用于后台任务。 <br>- false：仅发送完成或失败的通知。<br>- true：发送进度、完成和失败的通知。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| precise | boolean | 否 | 是 | - 如果设置为true，在上传/下载无法获取文件大小时任务失败。<br>- 如果设置为false，将文件大小设置为-1时任务继续。<br>默认值为false。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| token | string | 否 | 是 | 任务令牌。查询带有token的任务需提供token并通过[request.agent.touch](#requestagenttouch10)查询，否则无法查询到指定任务。其最小为8个字节，最大为2048个字节。默认为空。超出范围时任务创建失败并返回错误码。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | priority<sup>11+</sup> | number | 否 | 是 | 任务的优先级。前台任务的优先级比后台任务高。任务模式相同的情况下，该配置项的数字越小优先级越高，默认值为0。 |
-| extras | object | 否 | 是 | 配置的附加功能，默认为空。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| multipart<sup>15+</sup> | boolean | 否 | 是 | 是否使用单个请求进行上传，单个请求上传时必定使用multipart/form-data。<br/>- false：每个文件使用一个请求传输。 <br/>- true：使用多文件单请求上传。 <br/>默认值为false。 |
+| extras | object | 否 | 是 | 配置的附加功能，默认为空。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| multipart<sup>15+</sup> | boolean | 否 | 是 | 是否使用单个请求进行上传，单个请求上传时必定使用multipart/form-data。<br>- false：每个文件使用一个请求传输。 <br>- true：使用多文件单请求上传。 <br>默认值为false。 |
 | notification<sup>15+</sup> | [Notification](#requestagentnotification15) | 否 | 是 | 通知栏自定义设置。默认值为`{}`。|
 | minSpeed<sup>20+</sup> | [MinSpeed](#requestagentminspeed20) | 否 | 是 | 最低限速自定义设置，默认不启用最低限速。|
 | timeout<sup>20+</sup> | [Timeout](#requestagenttimeout20) | 否 | 是 | 超时时间自定义设置，连接超时时间默认60秒，总超时时间默认604800秒（1周）。当retry参数为true时，[timeout](#requestagenttimeout20)事件会触发立即重试，导致[timeout](#requestagenttimeout20)在外部观察中被重试动作所掩盖，但内部[timeout](#requestagenttimeout20)条件已实际触发。若需显式观察[timeout](#requestagenttimeout20)事件，需关闭retry参数。 |
@@ -2533,7 +2534,7 @@ request.agent提供基于任务的后台上传下载代理能力。开发者通�
 
 > **说明：**
 >
-> API version 12及以下版本，只支持串行的尝试连接域名相关IP，且不支持单个IP的连接时间控制，如果DNS返回的首个IP是阻塞的，可能会导致握手超时，进而引发TIMEOUT错误。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+> API version 12及以下版本，只支持串行地尝试连接域名相关IP，且不支持单个IP的连接时间控制，如果DNS返回的首个IP是阻塞的，可能会导致握手超时，进而引发TIMEOUT错误。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 | 名称 | 值 | 说明                                                                             |
 | -------- | -------- |--------------------------------------------------------------------------------|
@@ -2559,8 +2560,8 @@ request.agent提供基于任务的后台上传下载代理能力。开发者通�
 | before | number | 否 | 是 | 结束的Unix时间戳（毫秒），默认为调用时刻。 |
 | after | number | 否 | 是 | 开始的Unix时间戳（毫秒），默认值为调用时刻减24小时。 |
 | state | [State](#requestagentstate10) | 否 | 是 | 指定任务的状态。如果未填写，则查询所有任务。 |
-| action | [Action](#requestagentaction10) | 否 | 是 | 任务操作选项。<br/>- UPLOAD表示上传任务。<br/>- DOWNLOAD表示下载任务。<br/>- 如果未填写，则查询所有任务。 |
-| mode | [Mode](#requestagentmode10) | 否 | 是 | 任务模式。<br/>- FOREGROUND表示前台任务。<br/>- BACKGROUND表示后台任务。<br/>- 如果未填写，则查询所有任务。 |
+| action | [Action](#requestagentaction10) | 否 | 是 | 任务操作选项。<br>- UPLOAD表示上传任务。<br>- DOWNLOAD表示下载任务。<br>- 如果未填写，则查询所有任务。 |
+| mode | [Mode](#requestagentmode10) | 否 | 是 | 任务模式。<br>- FOREGROUND表示前台任务。<br>- BACKGROUND表示后台任务。<br>- 如果未填写，则查询所有任务。 |
 
 ## request.agent.TaskInfo<sup>10+</sup>
 
@@ -2570,25 +2571,25 @@ request.agent提供基于任务的后台上传下载代理能力。开发者通�
 
 | 名称   | 类型     | 只读 | 可选 | 说明                            |
 |------|--------|----|----|-------------------------------|
-| saveas | string | 是 | 是 | 保存下载文件的路径。默认值为空。<br/>通过[request.agent.show](#requestagentshow10-1)、[request.agent.touch](#requestagenttouch10-1)进行查询。 |
-| url | string | 是 | 是 | 任务的url。<br/>- 通过[request.agent.show](#requestagentshow10-1)、[request.agent.touch](#requestagenttouch10-1)进行查询。 |
-| data | string \| Array&lt;[FormItem](#requestagentformitem10)&gt; | 是 | 是 | 任务的数据内容。<br/>- 下载时，data为字符串类型，通常情况下使用json格式。<br/>- 上传时，data是表单项数组Array\<FormItem\>。<br/>- 通过[request.agent.show](#requestagentshow10-1)、[request.agent.touch](#requestagenttouch10-1)进行查询。 |
+| saveas | string | 是 | 是 | 保存下载文件的路径。默认值为空。<br>通过[request.agent.show](#requestagentshow10-1)、[request.agent.touch](#requestagenttouch10-1)进行查询。 |
+| url | string | 是 | 是 | 任务的url。<br>- 通过[request.agent.show](#requestagentshow10-1)、[request.agent.touch](#requestagenttouch10-1)进行查询。 |
+| data | string \| Array&lt;[FormItem](#requestagentformitem10)&gt; | 是 | 是 | 任务的数据内容。<br>- 下载时，data为字符串类型，通常情况下使用json格式。<br>- 上传时，data是表单项数组Array\<FormItem\>。<br>- 通过[request.agent.show](#requestagentshow10-1)、[request.agent.touch](#requestagenttouch10-1)进行查询。 |
 | tid | string | 是 | 否 | 任务id。 |
 | title | string | 是 | 否 | 任务标题。 |
 | description | string | 是 | 否 | 任务描述。 |
-| action | [Action](#requestagentaction10) | 是 | 否 | 任务操作选项。<br/>- UPLOAD表示上传任务。<br/>- DOWNLOAD表示下载任务。 |
-| mode | [Mode](#requestagentmode10) | 是 | 否 | 任务模式。<br/>- FOREGROUND表示前台任务。<br/>- BACKGROUND表示后台任务。 |
+| action | [Action](#requestagentaction10) | 是 | 否 | 任务操作选项。<br>- UPLOAD表示上传任务。<br>- DOWNLOAD表示下载任务。 |
+| mode | [Mode](#requestagentmode10) | 是 | 否 | 任务模式。<br>- FOREGROUND表示前台任务。<br>- BACKGROUND表示后台任务。 |
 | priority<sup>11+</sup> | number | 是 | 否 | 任务配置中的优先级。前台任务的优先级比后台任务高。相同模式的任务，数字越小优先级越高。 |
 | mimeType | string | 是 | 否 | 任务配置中的MimeType。 |
 | progress | [Progress](#requestagentprogress10) | 是 | 否 | 任务的过程进度。 |
-| gauge | boolean | 是 | 否 | 后台任务的进度通知策略，仅应用于后台任务。<br/>- false：仅发送完成或失败的通知。<br/>- true：发送进度、完成和失败的通知。 |
-| ctime | number | 是 | 否 | 创建任务的Unix时间戳（毫秒），由当前设备的系统生成。<br/>说明：使用[request.agent.search](#requestagentsearch10-1)进行查询时，该值需处于[after,before]区间内才可正常查询到任务id，before和after信息详见[Filter](#requestagentfilter10)。|
+| gauge | boolean | 是 | 否 | 后台任务的进度通知策略，仅应用于后台任务。<br>- false：仅发送完成或失败的通知。<br>- true：发送进度、完成和失败的通知。 |
+| ctime | number | 是 | 否 | 创建任务的Unix时间戳（毫秒），由当前设备的系统生成。<br>说明：使用[request.agent.search](#requestagentsearch10-1)进行查询时，该值需处于[after,before]区间内才可正常查询到任务id，before和after信息详见[Filter](#requestagentfilter10)。|
 | mtime | number | 是 | 否 | 任务状态改变时的Unix时间戳（毫秒），由当前设备的系统生成。|
-| retry | boolean | 是 | 否 | 任务的重试开关，仅应用于后台任务。<br/>- true：是 <br/>- false：否 |
+| retry | boolean | 是 | 否 | 任务的重试开关，仅应用于后台任务。<br>- true：是 <br>- false：否 |
 | tries | number | 是 | 否 | 任务的尝试次数。 |
 | faults | [Faults](#requestagentfaults10) | 是 | 否 | 任务的失败原因。|
 | reason | string | 是 | 否 | 等待/失败/停止/暂停任务的原因。|
-| extras | object | 是 | 是 | 任务的额外部分。默认值为空。<br/>通过[request.agent.show](#requestagentshow10-1)、[request.agent.touch](#requestagenttouch10-1)进行查询。 |
+| extras | object | 是 | 是 | 任务的额外部分。默认值为空。<br>通过[request.agent.show](#requestagentshow10-1)、[request.agent.touch](#requestagenttouch10-1)进行查询。 |
 
 ## request.agent.HttpResponse<sup>12+</sup> 
 任务响应头的数据结构。
@@ -2600,9 +2601,9 @@ request.agent提供基于任务的后台上传下载代理能力。开发者通�
 | 名称   | 类型     | 只读 | 可选 | 说明                            |
 |------|--------|----|----|-------------------------------|
 | version | string | 是 | 否 | HTTP版本。 |
-| statusCode | number | 是 | 否 | Http响应状态码。 |
-| reason | string | 是 | 否 | Http响应原因。|
-| headers | Map&lt;string, Array&lt;string&gt;&gt; | 是 | 否 | Http响应头部。 |
+| statusCode | number | 是 | 否 | HTTP响应状态码。 |
+| reason | string | 是 | 否 | HTTP响应原因。|
+| headers | Map&lt;string, Array&lt;string&gt;&gt; | 是 | 否 | HTTP响应头部。 |
 
 ## request.agent.Notification<sup>15+</sup>
 
@@ -2678,7 +2679,7 @@ request.agent提供基于任务的后台上传下载代理能力。开发者通�
 
 | 名称   | 类型     | 只读 | 可选 | 说明                            |
 |------|--------|----|----|-------------------------------|
-| gauge | boolean | 否 | 是 | 后台任务的进度通知策略，仅应用于后台任务。 <br/>- true，显示进度、成功、失败通知。 <br/>- false，仅显示成功、失败通知。<br/>默认为false。 |
+| gauge | boolean | 否 | 是 | 后台任务的进度通知策略，仅应用于后台任务。 <br>- true，显示进度、成功、失败通知。 <br>- false，仅显示成功、失败通知。<br>默认为false。 |
 | notification<sup>15+</sup> | [Notification](#requestagentnotification15) | 否 | 否  | 通知栏自定义设置。默认值为`{}`                     |
 
 ## request.agent.WaitingReason<sup>20+</sup>
@@ -2703,7 +2704,7 @@ request.agent提供基于任务的后台上传下载代理能力。开发者通�
 | 名称      | 类型   | 只读 | 可选 | 说明                                                           |
 |---------|----------|----|----|--------------------------------------------------------------|
 | speed | number | 否 | 否 | 任务最低速度，单位为字节每秒（B/s），取值范围为[0, +∞)。若任务速度持续低于该值达到指定时长，则任务失败。设置为0表示不启用最低速度限制。 |
-| timeout | number | 否 | 否 | 允许低于最低速度的持续时间，单位为秒，取值范围为[0, +∞)。若任务速度持续低于设定值达到该时长，则任务失败。设置为0表示不启用最低速度限制。 |
+| duration | number | 否 | 否 | 允许低于最低速度的持续时间，单位为秒，取值范围为[0, +∞)。若任务速度持续低于设定值达到该时长，则任务失败。设置为0表示不启用最低速度限制。 |
 
 ## request.agent.Timeout<sup>20+</sup>
 
@@ -2718,7 +2719,7 @@ request.agent提供基于任务的后台上传下载代理能力。开发者通�
 
 
 ## request.agent.Task<sup>10+</sup>
-上传或下载任务。使用下列方法前，需要先获取Task对象，promise形式通过[request.agent.create](#requestagentcreate10-1)获取，callback形式通过[request.agent.create](#requestagentcreate10)获取。
+上传或下载任务。使用下列方法前，需要先获取Task对象，Promise形式通过[request.agent.create](#requestagentcreate10-1)获取，callback形式通过[request.agent.create](#requestagentcreate10)获取。
 
 ### 属性
 包括任务id和任务的配置信息。
@@ -3127,12 +3128,12 @@ on(event: 'resume', callback: (progress: [Progress](#requestagentprogress10)) =&
     task.start();
     // 等待1秒再执行下一步操作，以防异步乱序
     await new Promise<void>((resolve) => {
-      setTimeout(() => resolve(),1000)
+      setTimeout(() => resolve(), 1000);
     })
     task.pause();
     // 等待1秒再执行下一步操作，以防异步乱序
     await new Promise<void>((resolve) => {
-      setTimeout(() => resolve(),1000)
+      setTimeout(() => resolve(), 1000);
     })
     task.resume();
   }).catch((err: BusinessError) => {
@@ -3213,7 +3214,7 @@ on(event: 'remove', callback: (progress: [Progress](#requestagentprogress10)) =&
     task.start();
     // 等待1秒再执行下一步操作，以防异步乱序
     await new Promise<void>((resolve) => {
-      setTimeout(() => resolve(),1000)
+      setTimeout(() => resolve(), 1000);
     })
     request.agent.remove(task.tid);
   }).catch((err: BusinessError) => {
@@ -4438,7 +4439,7 @@ pause(callback: AsyncCallback&lt;void&gt;): void
     task.start();
     // 等待1秒再执行下一步操作，以防异步乱序
     await new Promise<void>((resolve) => {
-      setTimeout(() => resolve(),1000)
+      setTimeout(() => resolve(), 1000);
     })
     task.pause((err: BusinessError) => {
       if (err) {
@@ -4511,7 +4512,7 @@ pause(): Promise&lt;void&gt;
     task.start();
     // 等待1秒再执行下一步操作，以防异步乱序
     await new Promise<void>((resolve) => {
-      setTimeout(() => resolve(),1000)
+      setTimeout(() => resolve(), 1000);
     })
     task.pause().then(() => {
       console.info(`Succeeded in pausing a download task. `);
@@ -4585,12 +4586,12 @@ resume(callback: AsyncCallback&lt;void&gt;): void
     task.start();
     // 等待1秒再执行下一步操作，以防异步乱序
     await new Promise<void>((resolve) => {
-      setTimeout(() => resolve(),1000)
+      setTimeout(() => resolve(), 1000);
     })
     task.pause();
     // 等待1秒再执行下一步操作，以防异步乱序
     await new Promise<void>((resolve) => {
-      setTimeout(() => resolve(),1000)
+      setTimeout(() => resolve(), 1000);
     })
     task.resume((err: BusinessError) => {
       if (err) {
@@ -4666,12 +4667,12 @@ resume(): Promise&lt;void&gt;
     task.start();
     // 等待1秒再执行下一步操作，以防异步乱序
     await new Promise<void>((resolve) => {
-      setTimeout(() => resolve(),1000)
+      setTimeout(() => resolve(), 1000);
     })
     task.pause();
     // 等待1秒再执行下一步操作，以防异步乱序
     await new Promise<void>((resolve) => {
-      setTimeout(() => resolve(),1000)
+      setTimeout(() => resolve(), 1000);
     })
     task.resume().then(() => {
       console.info(`Succeeded in resuming a download task. `);
@@ -4743,7 +4744,7 @@ stop(callback: AsyncCallback&lt;void&gt;): void
     task.start();
     // 等待1秒再执行下一步操作，以防异步乱序
     await new Promise<void>((resolve) => {
-      setTimeout(() => resolve(),1000)
+      setTimeout(() => resolve(), 1000);
     })
     task.stop((err: BusinessError) => {
       if (err) {
@@ -4818,7 +4819,7 @@ stop(): Promise&lt;void&gt;
     task.start();
     // 等待1秒再执行下一步操作，以防异步乱序
     await new Promise<void>((resolve) => {
-      setTimeout(() => resolve(),1000)
+      setTimeout(() => resolve(), 1000);
     })
     task.stop().then(() => {
       console.info(`Succeeded in stopping a download task. `);
@@ -5102,7 +5103,7 @@ getTask(context: BaseContext, id: string, token?: string): Promise&lt;Task&gt;
 
   // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  request.agent.getTask(context, "123456").then((task: request.agent.Task) => {
+  request.agent.getTask(context, '123456').then((task: request.agent.Task) => {
     console.info(`Succeeded in querying a task. result: ${task.tid}`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to query a task, Code: ${err.code}, message: ${err.message}`);
@@ -5141,7 +5142,7 @@ remove(id: string, callback: AsyncCallback&lt;void&gt;): void
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  request.agent.remove("123456", (err: BusinessError) => {
+  request.agent.remove('123456', (err: BusinessError) => {
     if (err) {
       console.error(`Failed to remove a download task, Code: ${err.code}, message: ${err.message}`);
       return;
@@ -5188,7 +5189,7 @@ remove(id: string): Promise&lt;void&gt;
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  request.agent.remove("123456").then(() => {
+  request.agent.remove('123456').then(() => {
     console.info(`Succeeded in removing a download task. `);
   }).catch((err: BusinessError) => {
     console.error(`Failed to remove a download task, Code: ${err.code}, message: ${err.message}`);
@@ -5226,7 +5227,7 @@ show(id: string, callback: AsyncCallback&lt;TaskInfo&gt;): void
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  request.agent.show("123456", (err: BusinessError, taskInfo: request.agent.TaskInfo) => {
+  request.agent.show('123456', (err: BusinessError, taskInfo: request.agent.TaskInfo) => {
     if (err) {
       console.error(`Failed to show a upload task, Code: ${err.code}, message: ${err.message}`);
       return;
@@ -5271,7 +5272,7 @@ show(id: string): Promise&lt;TaskInfo&gt;
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  request.agent.show("123456").then((taskInfo: request.agent.TaskInfo) => {
+  request.agent.show('123456').then((taskInfo: request.agent.TaskInfo) => {
     console.info(`Succeeded in showing a upload task.`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to show a upload task, Code: ${err.code}, message: ${err.message}`);
@@ -5310,7 +5311,7 @@ touch(id: string, token: string, callback: AsyncCallback&lt;TaskInfo&gt;): void
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  request.agent.touch("123456", "token", (err: BusinessError, taskInfo: request.agent.TaskInfo) => {
+  request.agent.touch('123456', "token", (err: BusinessError, taskInfo: request.agent.TaskInfo) => {
     if (err) {
       console.error(`Failed to touch a upload task, Code: ${err.code}, message: ${err.message}`);
       return;
@@ -5356,7 +5357,7 @@ touch(id: string, token: string): Promise&lt;TaskInfo&gt;
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  request.agent.touch("123456", "token").then((taskInfo: request.agent.TaskInfo) => {
+  request.agent.touch('123456', "token").then((taskInfo: request.agent.TaskInfo) => {
     console.info(`Succeeded in touching a upload task. `);
   }).catch((err: BusinessError) => {
     console.error(`Failed to touch a upload task, Code: ${err.code}, message: ${err.message}`);
@@ -5576,8 +5577,8 @@ attachGroup(gid: string, tids: string[]): Promise\<void\>
   import { BusinessError } from '@kit.BasicServicesKit';
 
   // 准备分组id和任务id列表。
-  let groupId: string = "123456789";
-  let taskIds: string[] = ["1111", "2222", "3333", "4444"];
+  let groupId: string = '123456789';
+  let taskIds: string[] = ['1111', '2222', '3333', '4444'];
   // 调用 attachGroup 接口向分组中添加任务id列表。
   request.agent.attachGroup(groupId, taskIds).then(() => {
     console.info(`Succeeded in attaching tasks to the download task group.`);
@@ -5624,7 +5625,7 @@ deleteGroup(gid: string): Promise\<void\>
   import { BusinessError } from '@kit.BasicServicesKit';
 
   // 准备分组id。
-  let groupId: string = "123456789";
+  let groupId: string = '123456789';
   
   // 调用 deleteGroup 接口移除分组。
   request.agent.deleteGroup(groupId).then(() => {

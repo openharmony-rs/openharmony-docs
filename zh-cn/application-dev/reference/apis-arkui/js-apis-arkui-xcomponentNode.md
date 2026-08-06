@@ -87,11 +87,11 @@ XComponentNode销毁时触发该回调。
 
 changeRenderType(type: NodeRenderType): boolean
 
-动态修改XComponentNode的渲染类型。例如，当需要在组件上进行EGL/OpenGL ES直接绘制时可使用DISPLAY类型；当需要将渲染内容作为纹理参与合成（如实现半透明叠加效果或离屏渲染）时可切换为TEXTURE类型。
+动态修改XComponentNode的渲染类型。可在运行时动态切换渲染策略，适用于根据内容渲染需求选择不同渲染类型的场景。例如，当需要在组件上进行EGL/OpenGL ES直接绘制时可使用DISPLAY类型；当需要将渲染内容作为纹理参与合成（如实现半透明叠加效果或离屏渲染）时可切换为TEXTURE类型。
 
 > **说明：**
 >
-> 从API version 11开始支持，从API version 12开始废弃，建议使用新typeNode方式下XComponent对应的能力替代。
+> 从API version 11开始支持，从API version 12开始废弃，建议使用[appendChild](./js-apis-arkui-frameNode.md#appendchild12)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

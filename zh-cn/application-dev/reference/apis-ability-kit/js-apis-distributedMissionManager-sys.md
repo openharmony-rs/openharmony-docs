@@ -84,13 +84,13 @@ registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback, 
       },
       (error: BusinessError) => {
         if (error) {
-          console.error('registerMissionListener failed, cause: ' + JSON.stringify(error));
+          console.error(`Failed to register mission listener. Code: ${error.code}, message: ${error.message}`);
           return;
         }
         console.info('registerMissionListener finished');
       });
      } catch (error) {
-    console.error('registerMissionListener failed, cause: ' + JSON.stringify(error));
+    console.error(`Failed to register mission listener. Code: ${error.code}, message: ${error.message}`);
   }
   ```
 ## distributedMissionManager.registerMissionListener
@@ -343,7 +343,7 @@ startSyncRemoteMissions(parameter: MissionParameter): Promise&lt;void&gt;
 
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
-| parameter | [MissionParameter](#missionparameter10) | 是    | 同步信息，包含deviceId、fixConflict和tag字段。 |
+| parameter | [MissionParameter](#missionparameter10) | 是    | 同步信息，包含deviceId、fixConflict和tag字段。 tag为同步标识，用于区分不同同步会话，取值需满足场景需求。fixConflict表示是否解决冲突，建议在可能存在任务冲突的场景下设置为true以避免任务冲突问题。|
 
 **返回值：**
 
@@ -567,7 +567,7 @@ continueMission(parameter: ContinueDeviceInfo, options: ContinueCallback, callba
 
 continueMission(parameter: ContinueDeviceInfo, options: ContinueCallback): Promise&lt;void&gt;
 
-通过指定任务ID（missionId）的方式进行迁移任务。使用Promise异步回调。
+通过指定任务ID（missionId）的方式将任务从源设备迁移到目标设备。使用Promise异步回调。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS，ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -640,7 +640,7 @@ continueMission(parameter: ContinueDeviceInfo, options: ContinueCallback): Promi
 
 continueMission(parameter: ContinueMissionInfo, callback: AsyncCallback&lt;void&gt;): void;
 
-通过指定包名（bundleName）的方式进行迁移任务。使用callback异步回调。
+通过指定包名（bundleName）的方式将指定应用的任务从源设备迁移到目标设备。使用callback异步回调。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS，ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -703,7 +703,7 @@ continueMission(parameter: ContinueMissionInfo, callback: AsyncCallback&lt;void&
 
 continueMission(parameter: ContinueMissionInfo): Promise&lt;void&gt;
 
-通过指定包名（bundleName）的方式进行迁移任务。使用Promise异步回调。
+通过指定包名（bundleName）的方式将指定应用的任务从源设备迁移到目标设备。使用Promise异步回调。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS，ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -758,10 +758,10 @@ continueMission(parameter: ContinueMissionInfo): Promise&lt;void&gt;
       ).then(() => {
           console.info('continueMission finished successfully');
       }).catch((error: BusinessError) => {
-          console.error('continueMission failed, cause: ' + JSON.stringify(error));
+          console.error(`Failed to continue mission. Code: ${error.code}, message: ${error.message}`);
       });
   } catch (error) {
-      console.error('continueMission failed, cause: ' + JSON.stringify(error));
+      console.error(`Failed to continue mission. Code: ${error.code}, message: ${error.message}`);
   }
   ```
 

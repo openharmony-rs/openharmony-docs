@@ -27,7 +27,7 @@ enum ArkUI_NodeAttributeType
 NODE_TEXT_CONTENT = MAX_NODE_SCOPE_NUM * ARKUI_NODE_TEXT = 1000
 ```
 
-Text组件设置文本内容属性，支持属性设置，属性重置，属性获取接口。<br>
+Text组件设置文本内容属性，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -51,7 +51,7 @@ Text组件设置文本内容属性，支持属性设置，属性重置，属性�
 NODE_FONT_COLOR = 1001
 ```
 
-组件字体颜色属性，支持属性设置，属性重置和属性获取接口。<br>
+组件字体颜色属性，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -75,7 +75,7 @@ NODE_FONT_COLOR = 1001
 NODE_FONT_SIZE = 1002
 ```
 
-组件字体大小属性，支持属性设置，属性重置和属性获取接口。<br>
+组件字体大小属性，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -99,7 +99,7 @@ NODE_FONT_SIZE = 1002
 NODE_FONT_STYLE = 1003
 ```
 
-组件字体样式属性，支持属性设置，属性重置和属性获取接口。<br>
+组件字体样式属性，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -123,7 +123,7 @@ NODE_FONT_STYLE = 1003
 NODE_FONT_WEIGHT = 1004
 ```
 
-组件字体粗细属性，支持属性设置，属性重置和属性获取接口。<br>
+组件字体粗细属性，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -147,7 +147,7 @@ NODE_FONT_WEIGHT = 1004
 NODE_TEXT_LINE_HEIGHT = 1005
 ```
 
-文本行高属性，支持属性设置，属性重置，属性获取接口。<br>
+文本行高属性，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -163,7 +163,7 @@ NODE_TEXT_LINE_HEIGHT = 1005
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].f32 | 表示lineHeight值，单位为fp。 |
+| .value[0].f32 | 表示行高值，单位为fp。 |
 
 ## NODE_TEXT_DECORATION
 
@@ -171,7 +171,7 @@ NODE_TEXT_LINE_HEIGHT = 1005
 NODE_TEXT_DECORATION = 1006
 ```
 
-文本装饰线样式及其颜色属性，支持属性设置，属性重置和属性获取接口。适用于添加文本装饰效果，如下划线表示链接、删除线表示已删除内容、或上划线表示强调。<br>
+文本装饰线样式及其颜色属性，支持属性设置、属性重置和属性获取接口。适用于添加文本装饰效果，如下划线表示链接、删除线表示已删除内容、或上划线表示强调。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -201,7 +201,7 @@ NODE_TEXT_DECORATION = 1006
 NODE_TEXT_CASE = 1007
 ```
 
-文本大小写属性，支持属性设置，属性重置，属性获取接口。适用于控制文本显示格式，如显示标题时自动大写、或格式化用户输入为统一大小写。<br>
+文本大小写属性，支持属性设置、属性重置和属性获取接口。适用于控制文本显示格式，如显示标题时自动大写、或格式化用户输入为统一大小写。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -211,7 +211,7 @@ NODE_TEXT_CASE = 1007
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 表示文本大小写类型[ArkUI_TextCase](capi-text-common-h.md#arkui_textcase)。ARKUI_TEXT_CASE_NORMAL表示保持原样，ARKUI_TEXT_CASE_LOWER表示转换为小写，ARKUI_TEXT_CASE_UPPER表示转换为大写。默认值为ARKUI_TEXT_CASE_NORMAL。 |
+| .value[0].i32 | 表示文本大小写类型，具体枚举值请参考[ArkUI_TextCase](capi-text-common-h.md#arkui_textcase)。默认值为ARKUI_TEXT_CASE_NORMAL，表示保持原样。 |
 
 **返回：**
 
@@ -225,7 +225,7 @@ NODE_TEXT_CASE = 1007
 NODE_TEXT_LETTER_SPACING = 1008
 ```
 
-文本字符间距属性，支持属性设置，属性重置，属性获取接口。适用于调整文本排版效果，如设置标题字符间距以增强视觉效果、或调整特殊文本样式的排版美观度。<br>
+文本字符间距属性，支持属性设置、属性重置和属性获取接口。适用于调整文本排版效果，如设置标题字符间距以增强视觉效果、或调整特殊文本样式的排版美观度。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -249,7 +249,7 @@ NODE_TEXT_LETTER_SPACING = 1008
 NODE_TEXT_MAX_LINES = 1009
 ```
 
-文本最大行数属性，支持属性设置，属性重置，属性获取接口。<br>
+文本最大行数属性，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -297,7 +297,7 @@ NODE_TEXT_ALIGN = 1010
 NODE_TEXT_OVERFLOW = 1011
 ```
 
-文本超长时的显示方式属性，支持属性设置，属性重置，属性获取接口。适用于处理文本内容超出显示区域的场景，如单行标题显示时使用省略号、或卡片内容截断显示等。<br>
+文本超长时的显示方式属性，支持属性设置、属性重置和属性获取接口。适用于处理文本内容超出显示区域的场景，如单行标题显示时使用省略号、或卡片内容截断显示等。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -307,7 +307,7 @@ NODE_TEXT_OVERFLOW = 1011
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 表示文本超长时的显示方式，具体枚举值请参考[ArkUI_TextOverflow](capi-text-common-h.md#arkui_textoverflow)。默认值为ARKUI_TEXT_OVERFLOW_NONE，表示文本超长时不裁剪显示。。 |
+| .value[0].i32 | 表示文本超长时的显示方式，具体枚举值请参考[ArkUI_TextOverflow](capi-text-common-h.md#arkui_textoverflow)。默认值为ARKUI_TEXT_OVERFLOW_NONE，表示文本超长时不裁剪显示。 |
 
 **返回：**
 
@@ -321,7 +321,7 @@ NODE_TEXT_OVERFLOW = 1011
 NODE_FONT_FAMILY = 1012
 ```
 
-Text字体列表属性，支持属性设置，属性重置和属性获取。<br>
+Text字体列表属性，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -344,7 +344,7 @@ Text字体列表属性，支持属性设置，属性重置和属性获取。<br>
 NODE_TEXT_COPY_OPTION = 1013
 ```
 
-文本复制粘贴属性，支持属性设置，属性重置和属性获取接口。适用于控制文本复制粘贴行为，如密码输入框禁止复制、或敏感信息保护。<br>
+文本复制粘贴属性，支持属性设置、属性重置和属性获取接口。适用于控制文本复制粘贴行为，如密码输入框禁止复制、或敏感信息保护。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -368,7 +368,7 @@ NODE_TEXT_COPY_OPTION = 1013
 NODE_TEXT_BASELINE_OFFSET = 1014
 ```
 
-文本基线的偏移量属性，支持属性设置，属性重置和属性获取接口。适用于调整文本基线位置，如显示上下标时调整偏移量、或图文混排时实现文本与图片的精确对齐。<br>
+文本基线的偏移量属性，支持属性设置、属性重置和属性获取接口。适用于调整文本基线位置，如显示上下标时调整偏移量、或图文混排时实现文本与图片的精确对齐。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -392,7 +392,7 @@ NODE_TEXT_BASELINE_OFFSET = 1014
 NODE_TEXT_TEXT_SHADOW = 1015
 ```
 
-文字阴影效果属性，支持属性设置，属性重置和属性获取接口。<br>
+文字阴影效果属性，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -424,7 +424,7 @@ NODE_TEXT_TEXT_SHADOW = 1015
 NODE_TEXT_MIN_FONT_SIZE = 1016
 ```
 
-Text最小显示字号，支持属性设置，属性重置和属性获取。<br>
+Text最小显示字号，支持属性设置、属性重置和属性获取。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -448,7 +448,7 @@ Text最小显示字号，支持属性设置，属性重置和属性获取。<br>
 NODE_TEXT_MAX_FONT_SIZE = 1017
 ```
 
-Text最大显示字号，支持属性设置，属性重置和属性获取。<br>
+Text最大显示字号，支持属性设置、属性重置和属性获取。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -472,7 +472,7 @@ Text最大显示字号，支持属性设置，属性重置和属性获取。<br>
 NODE_TEXT_FONT = 1018
 ```
 
-Text样式，支持属性设置，属性重置和属性获取。<br>
+Text样式，支持属性设置、属性重置和属性获取。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -502,7 +502,7 @@ Text样式，支持属性设置，属性重置和属性获取。<br>
 NODE_TEXT_HEIGHT_ADAPTIVE_POLICY = 1019
 ```
 
-Text自适应高度的方式，支持属性设置，属性重置和属性获取。适用于文本内容动态变化的场景，如优先按最大行数限制高度、或优先按最小字号确保文本可读性等。<br>
+Text自适应高度的方式，支持属性设置、属性重置和属性获取。适用于文本内容动态变化的场景，如优先按最大行数限制高度、或优先按最小字号确保文本可读性等。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -526,7 +526,7 @@ Text自适应高度的方式，支持属性设置，属性重置和属性获取�
 NODE_TEXT_INDENT = 1020
 ```
 
-文本首行缩进属性，支持属性设置，属性重置，属性获取接口。<br>
+文本首行缩进属性，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -550,7 +550,7 @@ NODE_TEXT_INDENT = 1020
 NODE_TEXT_WORD_BREAK = 1021
 ```
 
-文本断行规则属性，支持属性设置，属性重置，属性获取接口。适用于控制文本换行方式，如英文单词完整断行、或中文任意字符断行等不同排版需求。<br>
+文本断行规则属性，支持属性设置、属性重置和属性获取接口。适用于控制文本换行方式，如英文单词完整断行、或中文任意字符断行等不同排版需求。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -574,7 +574,7 @@ NODE_TEXT_WORD_BREAK = 1021
 NODE_TEXT_ELLIPSIS_MODE = 1022
 ```
 
-设置文本省略位置，支持属性设置，属性重置，属性获取接口。适用于控制文本省略号显示位置，如尾部省略适合常规文本、头部省略适合路径显示、中间省略适合长标题等。<br>
+设置文本省略位置，支持属性设置、属性重置和属性获取接口。适用于控制文本省略号显示位置，如尾部省略适合常规文本、头部省略适合路径显示、中间省略适合长标题等。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -598,7 +598,7 @@ NODE_TEXT_ELLIPSIS_MODE = 1022
 NODE_TEXT_LINE_SPACING = 1023
 ```
 
-文本行间距属性，支持属性设置，属性重置，属性获取接口。适用于调整多行文本的间距，如优化阅读体验、或实现特定的排版风格效果。<br>
+文本行间距属性，支持属性设置、属性重置和属性获取接口。适用于调整多行文本的间距，如优化阅读体验、或实现特定的排版风格效果。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -614,7 +614,7 @@ NODE_TEXT_LINE_SPACING = 1023
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].f32 | 表示lineSpacing值，单位为fp。 |
+| .value[0].f32 | 表示行间距值，单位为fp。 |
 
 ## NODE_FONT_FEATURE
 
@@ -694,7 +694,7 @@ NODE_TEXT_ENABLE_DATA_DETECTOR_CONFIG = 1026
 NODE_TEXT_SELECTED_BACKGROUND_COLOR = 1027
 ```
 
-文本选中时的背景色属性，支持属性设置，属性重置和属性获取接口。<br>
+文本选中时的背景色属性，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -718,7 +718,7 @@ NODE_TEXT_SELECTED_BACKGROUND_COLOR = 1027
 NODE_TEXT_CONTENT_WITH_STYLED_STRING = 1028
 ```
 
-Text组件使用格式化字符串对象设置文本内容属性，支持属性设置，属性重置，属性获取接口。配置自定义[OH_Drawing_Typography](../apis-arkgraphics2d/capi-drawing-oh-drawing-typography.md)对象到Text组件，会跳过文本控件的布局测算阶段。注意事项：<br>1. 需要保证OH_ArkUI_StyledString对象、OH_Drawing_Typography对象的生命周期跟随Text组件生命周期，Text组件析构时重置OH_ArkUI_StyledString对象，否则会导致应用出现空指针崩溃。<br>2. 保证OH_Drawing_TypographyLayout方法调用时序在Text组件的布局测算之前。<br>3. 释放OH_ArkUI_StyledString对象、OH_Drawing_Typography对象时，需要同步调用Text组件的reset方法，否则会导致应用出现空指针崩溃。<br>
+Text组件使用格式化字符串对象设置文本内容属性，支持属性设置、属性重置和属性获取接口。配置自定义[OH_Drawing_Typography](../apis-arkgraphics2d/capi-drawing-oh-drawing-typography.md)对象到Text组件，会跳过文本控件的布局测算阶段。注意事项：<br>1. 需要保证OH_ArkUI_StyledString对象、OH_Drawing_Typography对象的生命周期跟随Text组件生命周期，Text组件析构时重置OH_ArkUI_StyledString对象，否则会导致应用出现空指针崩溃。<br>2. 保证OH_Drawing_TypographyLayout方法调用时序在Text组件的布局测算之前。<br>3. 释放OH_ArkUI_StyledString对象、OH_Drawing_Typography对象时，需要同步调用Text组件的reset方法，否则会导致应用出现空指针崩溃。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -766,7 +766,7 @@ Text组件设置文本纵向居中显示。<br>
 NODE_IMMUTABLE_FONT_WEIGHT = 1030
 ```
 
-组件字体粗细属性，支持属性设置，属性重置和属性获取接口。通过此接口设置的粗细属性不会跟随系统字体粗细变化。<br>
+组件字体粗细属性，支持属性设置、属性重置和属性获取接口。通过此接口设置的粗细属性不会跟随系统字体粗细变化。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 15
@@ -808,7 +808,7 @@ NODE_TEXT_LINE_COUNT = 1031
 NODE_TEXT_OPTIMIZE_TRAILING_SPACE = 1032
 ```
 
-设置文本排版时是否优化每行结尾的空格，支持属性设置，属性重置，属性获取接口。适用于优化文本排版效果，如去除结尾多余空格以实现更好的文本对齐。<br>
+设置文本排版时是否优化每行结尾的空格，支持属性设置、属性重置和属性获取接口。适用于优化文本排版效果，如去除结尾多余空格以实现更好的文本对齐。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 20
@@ -832,7 +832,7 @@ NODE_TEXT_OPTIMIZE_TRAILING_SPACE = 1032
 NODE_TEXT_LINEAR_GRADIENT = 1033
 ```
 
-设置文本线性渐变效果，支持属性设置，属性重置和属性获取接口。<br>
+设置文本线性渐变效果，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 20
@@ -868,7 +868,7 @@ NODE_TEXT_LINEAR_GRADIENT = 1033
 NODE_TEXT_RADIAL_GRADIENT = 1034
 ```
 
-设置文本径向渐变效果，支持属性设置，属性重置和属性获取接口。<br>
+设置文本径向渐变效果，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 20
@@ -906,7 +906,7 @@ NODE_TEXT_RADIAL_GRADIENT = 1034
 NODE_TEXT_VERTICAL_ALIGN = 1035
 ```
 
-设置文本内容垂直对齐方式，支持属性设置，属性重置和属性获取接口。<br>
+设置文本内容垂直对齐方式，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 20
@@ -930,7 +930,7 @@ NODE_TEXT_VERTICAL_ALIGN = 1035
 NODE_TEXT_CONTENT_ALIGN = 1036
 ```
 
-设置文本内容区垂直对齐方式，支持属性设置，属性重置和属性获取接口。<br>
+设置文本内容区垂直对齐方式，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 21
@@ -954,7 +954,7 @@ NODE_TEXT_CONTENT_ALIGN = 1036
 NODE_TEXT_MIN_LINES = 1037
 ```
 
-文本最小行数属性，支持属性设置，属性重置，属性获取接口。<br>
+文本最小行数属性，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 22
@@ -1002,7 +1002,7 @@ NODE_TEXT_ENABLE_SELECTED_DATA_DETECTOR = 1038
 NODE_TEXT_MIN_LINE_HEIGHT = 1040
 ```
 
-设置文本最小行高，支持属性设置，属性重置和属性获取接口。适用于限制文本行高的最小值，如确保文本可读性、或防止行高过小导致文字重叠显示。<br>
+设置文本最小行高，支持属性设置、属性重置和属性获取接口。适用于限制文本行高的最小值，如确保文本可读性、或防止行高过小导致文字重叠显示。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 22
@@ -1026,7 +1026,7 @@ NODE_TEXT_MIN_LINE_HEIGHT = 1040
 NODE_TEXT_MAX_LINE_HEIGHT = 1041
 ```
 
-设置文本最大行高，支持属性设置，属性重置和属性获取接口。适用于限制文本行高的最大值，如控制文本布局紧凑度、或防止行高过大导致显示空间浪费。<br>
+设置文本最大行高，支持属性设置、属性重置和属性获取接口。适用于限制文本行高的最大值，如控制文本布局紧凑度、或防止行高过大导致显示空间浪费。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 22
@@ -1050,7 +1050,7 @@ NODE_TEXT_MAX_LINE_HEIGHT = 1041
 NODE_TEXT_LINE_HEIGHT_MULTIPLE = 1042
 ```
 
-设置倍数行高模式的倍数值，支持属性设置，属性重置和属性获取接口。适用于相对字号设置行高，如实现动态排版、或字号变化时自动调整行高。<br>
+设置倍数行高模式的倍数值，支持属性设置、属性重置和属性获取接口。适用于相对字号设置行高，如实现动态排版、或字号变化时自动调整行高。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 22
@@ -1128,7 +1128,7 @@ NODE_TEXT_BIND_SELECTION_MENU = 1045
 NODE_TEXT_TEXT_SELECTION = 1046
 ```
 
-设置文本选择区域，设置后选中区域将被高亮显示，支持属性设置，属性重置和属性获取接口。<br>
+设置文本选择区域，设置后选中区域将被高亮显示，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 23
@@ -1180,7 +1180,7 @@ NODE_TEXT_ORPHAN_CHAR_OPTIMIZATION = 1047
 NODE_TEXT_COMPRESS_LEADING_PUNCTUATION = 1048
 ```
 
-文本行首标点压缩开关，支持属性设置，属性重置和属性获取接口。适用于中文排版场景，压缩行首标点以提升排版美观度和阅读体验。<br>
+文本行首标点压缩开关，支持属性设置、属性重置和属性获取接口。适用于中文排版场景，压缩行首标点以提升排版美观度和阅读体验。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 23
@@ -1252,7 +1252,7 @@ NODE_TEXT_FALLBACK_LINE_SPACING = 1050
 NODE_TEXT_MARQUEE_OPTIONS = 1051
 ```
 
-文本跑马灯模式配置项，支持属性设置，属性重置，属性获取接口。适用于长文本滚动显示场景，如通知提醒、标题滚动显示等。<br>
+文本跑马灯模式配置项，支持属性设置、属性重置和属性获取接口。适用于长文本滚动显示场景，如通知提醒、标题滚动显示等。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 23
@@ -1342,7 +1342,7 @@ NODE_TEXT_CONTROLLER = 1054
 NODE_TEXT_PUNCTUATION_OVERFLOW = 1055
 ```
 
-设置Text组件是否启用行尾标点符号悬挂，支持属性设置，属性重置和属性获取。适用于中文排版场景，将行尾标点符号外挂显示以优化排版效果。<br>
+设置Text组件是否启用行尾标点符号悬挂，支持属性设置、属性重置和属性获取。适用于中文排版场景，将行尾标点符号外挂显示以优化排版效果。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 26.0.0
@@ -1392,7 +1392,7 @@ NODE_TEXT_TAIL_INDENTS = 1056
 NODE_SPAN_CONTENT = MAX_NODE_SCOPE_NUM * ARKUI_NODE_SPAN = 2000
 ```
 
-文本内容属性，支持属性设置，属性重置，属性获取接口。<br>
+文本内容属性，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -1416,7 +1416,7 @@ NODE_SPAN_CONTENT = MAX_NODE_SCOPE_NUM * ARKUI_NODE_SPAN = 2000
 NODE_SPAN_TEXT_BACKGROUND_STYLE = 2001
 ```
 
-文本背景色属性，支持属性设置，属性重置，属性获取接口。<br>
+文本背景色属性，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -1447,7 +1447,7 @@ NODE_SPAN_TEXT_BACKGROUND_STYLE = 2001
 NODE_SPAN_BASELINE_OFFSET = 2002
 ```
 
-文本基线的偏移量属性，支持属性设置，属性重置和属性获取接口。适用于调整Span文本的基线位置，如显示上下标、或实现特殊排版效果。<br>
+文本基线的偏移量属性，支持属性设置、属性重置和属性获取接口。适用于调整Span文本的基线位置，如显示上下标、或实现特殊排版效果。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -1529,7 +1529,7 @@ NODE_SPAN_FONT_WEIGHT = 2004
 NODE_IMAGE_SPAN_SRC = MAX_NODE_SCOPE_NUM * ARKUI_NODE_IMAGE_SPAN = 3000
 ```
 
-imageSpan组件图片地址属性，支持属性设置，属性重置，属性获取接口。<br>
+imageSpan组件图片地址属性，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -1555,7 +1555,7 @@ imageSpan组件图片地址属性，支持属性设置，属性重置，属性�
 NODE_IMAGE_SPAN_VERTICAL_ALIGNMENT = 3001
 ```
 
-图片基于文本的对齐方式属性，支持属性设置，属性重置，属性获取接口。<br>
+图片基于文本的对齐方式属性，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -1579,7 +1579,7 @@ NODE_IMAGE_SPAN_VERTICAL_ALIGNMENT = 3001
 NODE_IMAGE_SPAN_ALT = 3002
 ```
 
-imageSpan组件占位图地址属性，支持属性设置，属性重置，属性获取接口。<br>
+imageSpan组件占位图地址属性，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -1605,7 +1605,7 @@ imageSpan组件占位图地址属性，支持属性设置，属性重置，属�
 NODE_IMAGE_SPAN_BASELINE_OFFSET = 3003
 ```
 
-imageSpan组件的基线偏移量属性，支持属性设置，属性重置和属性获取接口。偏移量数值为正数时向上偏移，负数时向下偏移，默认值0，单位为fp。适用于图文混排时调整图片与文本的相对位置，实现精确的排版对齐效果。<br>
+imageSpan组件的基线偏移量属性，支持属性设置、属性重置和属性获取接口。偏移量数值为正数时向上偏移，负数时向下偏移，默认值0，单位为fp。适用于图文混排时调整图片与文本的相对位置，实现精确的排版对齐效果。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 13
@@ -1629,7 +1629,7 @@ imageSpan组件的基线偏移量属性，支持属性设置，属性重置和�
 NODE_IMAGE_SPAN_COLOR_FILTER = 3004
 ```
 
-图片滤镜效果属性，支持属性设置，属性重置，属性获取接口。<br>
+图片滤镜效果属性，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 22
@@ -1657,7 +1657,7 @@ NODE_IMAGE_SPAN_COLOR_FILTER = 3004
 NODE_IMAGE_SPAN_SUPPORT_SVG2 = 3005
 ```
 
-通过启用SVG新解析能力开关设置SVG解析功能支持的范围，支持属性设置，属性重置，属性获取接口。ImageSpan组件创建后，不支持动态修改该属性的值。<br>
+通过启用SVG新解析能力开关设置SVG解析功能支持的范围，支持属性设置、属性重置和属性获取接口。ImageSpan组件创建后，不支持动态修改该属性的值。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 22

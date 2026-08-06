@@ -26,20 +26,18 @@ import { ChipSize, ChipGroup } from '@kit.ArkUI';
 
 ## ChipGroup
 
-```ts
-ChipGroup({
-  items: ChipGroupItemOptions[],
-  itemStyle?: ChipItemStyle,
-  selectedIndexes?: Array<number>,
-  multiple?: boolean,
-  chipGroupSpace?: ChipGroupSpaceOptions,
-  chipGroupPadding?: ChipGroupPaddingOptions,
-  backgroundSystemMaterial?: uiMaterial.Material,
-  selectedBackgroundSystemMaterial?: uiMaterial.Material,
-  onChange?: Callback<Array<number>>,
-  suffix?: Callback<void>
+ChipGroup({ <br> 
+  items: ChipGroupItemOptions[], <br> 
+  itemStyle?: ChipItemStyle, <br> 
+  selectedIndexes?: Array<number\>, <br> 
+  multiple?: boolean, <br> 
+  chipGroupSpace?: ChipGroupSpaceOptions, <br> 
+  chipGroupPadding?: ChipGroupPaddingOptions, <br> 
+  backgroundSystemMaterial?: uiMaterial.Material, <br> 
+  selectedBackgroundSystemMaterial?: uiMaterial.Material, <br> 
+  onChange?: Callback<Array<number\>\>, <br> 
+  suffix?: Callback<void\> <br> 
 })
-```
 
 **装饰器类型：**@Component
 
@@ -50,15 +48,15 @@ ChipGroup({
 | 名称            | 类型                                            | 必填 | 装饰器类型 | 说明                                                                                     |
 | --------------- | ----------------------------------------------- | ---- | ------------------------------------------------------------                             | ------------------------------------------------------------                             |
 | items           | [ChipGroupItemOptions[]](#chipgroupitemoptions) | 是   | @Require &nbsp;@Prop | 每个Chip的特定属性，参考[ChipGroupItemOptions[]](#chipgroupitemoptions)类型。<br>若为undefined时，ChipGroup默认为空。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| itemStyle       | [ChipItemStyle](#chipitemstyle)                 | 否   | @Prop | `Chip`的`style`属性，如颜色，大小等，参考[ChipItemStyle](#chipitemstyle)类型。<br>默认值：<br>{  size: ChipSize.NORMAL, backgroundColor: $r('sys.color.ohos_id_color_button_normal'), fontColor: $r('sys.color.ohos_id_color_text_primary'), selectedFontColor: $r('sys.color.ohos_id_color_text_primary_contrary'), selectedBackgroundColor: $r('sys.color.ohos_id_color_emphasize') }<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| selectedIndexes | Array&lt;number&gt;                             | 否   | @Prop | 被选中Chip的索引。<br>取值范围：索引值为非负整数，且不能超过items数组长度减1。<br>传入负数、超出数组范围的索引值或非整数时，该索引值不生效。<br>默认值：[0]<br>若multiple=false，selectedIndexes为空数组时默认选中第1个；selectedIndexes包含多个元素时仅第一个索引生效。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| multiple        | boolean                                         | 否   | @Prop | 是否选中多个`Chip`。<br>`true`：支持多个`Chip`选中；`false`：仅支持单个`Chip`选中。<br>默认值：`false`<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| chipGroupSpace  | [ChipGroupSpaceOptions](#chipgroupspaceoptions) | 否   | @Prop | 左右内边距及Chip之间间距。参考[ChipGroupSpaceOptions](#chipgroupspaceoptions)类型。<br>默认值：{ itemSpace: 8, startSpace: 16, endSpace: 16 }<br>单位：vp<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| chipGroupPadding  | [ChipGroupPaddingOptions](#chipgrouppaddingoptions) | 否   | @Prop | 设置ChipGroup的上下内边距，以控制整体高度。类型为[ChipGroupPaddingOptions](#chipgrouppaddingoptions)。<br>默认值：{ top: 14, bottom: 14 }<br>单位：vp<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| itemStyle       | [ChipItemStyle](#chipitemstyle)                 | 否   | @Prop | `Chip`的`style`属性，如颜色、大小等，参考[ChipItemStyle](#chipitemstyle)类型。当需要自定义Chip的外观样式（如改变背景色、字体颜色、尺寸）时传入此参数。<br>默认值：<br>{  size: ChipSize.NORMAL, backgroundColor: $r('sys.color.ohos_id_color_button_normal'), fontColor: $r('sys.color.ohos_id_color_text_primary'), selectedFontColor: $r('sys.color.ohos_id_color_text_primary_contrary'), selectedBackgroundColor: $r('sys.color.ohos_id_color_emphasize') }<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| selectedIndexes | Array&lt;number&gt;                             | 否   | @Prop | 被选中Chip的索引，索引从0开始计数。<br>取值范围：索引值为非负整数，且不能超过items数组长度减1。<br>传入负数、超出数组范围的索引值或非整数时，该索引值不生效。<br>默认值：[0]<br>若multiple=false，selectedIndexes为空数组时默认选中第1个；selectedIndexes包含多个元素时仅第一个索引生效。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| multiple        | boolean                                         | 否   | @Prop | 是否选中多个`Chip`。<br>`true`：支持多个`Chip`选中，适用于需要同时选择多个选项的场景（如多标签选择、多条件筛选）；`false`：仅支持单个`Chip`选中，适用于单选场景（如单项选择）。<br>默认值：`false`<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| chipGroupSpace  | [ChipGroupSpaceOptions](#chipgroupspaceoptions) | 否   | @Prop | 左右内边距及Chip之间间距。参考[ChipGroupSpaceOptions](#chipgroupspaceoptions)类型。当默认间距无法满足布局要求或需要根据UI设计调整Chip之间的间隔时传入此参数。<br>默认值：{ itemSpace: 8, startSpace: 16, endSpace: 16 }<br>单位：vp<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| chipGroupPadding  | [ChipGroupPaddingOptions](#chipgrouppaddingoptions) | 否   | @Prop | 设置ChipGroup的上下内边距，以控制整体高度。类型为[ChipGroupPaddingOptions](#chipgrouppaddingoptions)。当需要调整ChipGroup组件的垂直空间占用或匹配特定UI设计要求时传入此参数。<br>默认值：{ top: 14, bottom: 14 }<br>单位：vp<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | 否 | @Prop | 设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[border](ts-universal-attributes-border.md#border)、[shadow](ts-universal-attributes-image-effect.md#shadow)视觉属性。设置自动反色的系统材质时，fontColor如果使用系统预定义的可反色颜色资源（如`$r('sys.color.font_primary')`），颜色自动适配到材质背景色的反色。当设置backgroundSystemMaterial时，应将backgroundColor设为Color.Transparent，否则会与系统材质冲突。<br>默认值：undefined<br>值为undefined时，不应用材质样式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 | selectedBackgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | 否 | @Prop | 设置组件选中状态的系统材质样式。不同材质具有不同的效果，能够影响组件选中时的[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[border](ts-universal-attributes-border.md#border)、[shadow](ts-universal-attributes-image-effect.md#shadow)视觉属性。设置自动反色的系统材质时，selectedFontColor如果使用系统预定义的可反色颜色资源（如`$r('sys.color.font_primary')`），颜色自动适配到材质背景色的反色。当设置selectedBackgroundSystemMaterial时，应将selectedBackgroundColor设为Color.Transparent，否则会与系统材质冲突。<br>默认值：undefined<br>值为undefined时，不应用选中状态的材质样式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
-| onChange        | Callback\<Array\<number>>  | 否   | -  | Chip状态改变时的回调方法，用于监听Chip选中状态的变更。该回调在selectedIndexes属性更新后触发，开发者可在回调中获取最新的选中状态并执行相应操作，如更新UI、保存选中数据、触发业务逻辑等。当需要响应Chip选中状态变化时传入此参数，不传入时不监听状态变化。<br>若为undefined，不触发该回调。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                              |
-| suffix          | Callback\<void\>                                        | 否   | @BuilderParam | 支持开发者自定义builder，如需在组件最右侧显示自定义内容可配置suffix属性，使用属性suffix需引用[IconGroupSuffix](#icongroupsuffix)接口。<br>默认不传入时，没有suffix。<br>值为undefined时，没有suffix。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| onChange        | [Callback](ts-types.md#callback12)\<Array\<number>>  | 否   | -  | Chip状态改变时的回调方法，用于监听Chip选中状态的变更。该回调在selectedIndexes属性更新后触发，开发者可在回调中获取最新的选中状态并执行相应操作，如更新UI、保存选中数据、触发业务逻辑等。当需要监听用户选择Chip的操作并执行相应业务逻辑时传入此参数。不传入时，无法接收Chip状态变化的通知。<br>若为undefined，不触发该回调。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                              |
+| suffix          | [Callback](ts-types.md#callback12)\<void\>                                        | 否   | @BuilderParam | 支持开发者自定义builder，如需在组件最右侧显示自定义内容可配置suffix属性，使用属性suffix需引用[IconGroupSuffix](#icongroupsuffix)接口。<br>默认不传入时，没有suffix。<br>值为undefined时，没有suffix。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 > **说明：**
 >
@@ -83,10 +81,10 @@ ChipGroupItemOptions定义每个Chip的非通用属性。
 | label        | [LabelOptions](#labeloptions) | 否  | 否  | 设置Chip项显示的文本内容及样式。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                            |
 | suffixIcon<sup>(deprecated)</sup>   | [IconOptions](#iconoptions) | 否  | 是 | 后缀Image图标属性。当需要在Chip后显示Image图标以提供额外操作或状态提示时设置此参数。<br>默认值：不显示后缀Image图标。<br>值为undefined时，按默认值处理。<br>**说明**：当suffixIcon有传入参数时，allowClose不生效。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**说明：** 从API version 12开始支持，从API version 14开始废弃。建议使用[suffixImageIcon](#suffiximageiconoptions14)替代。 |
 | suffixSymbol | [ChipSymbolGlyphOptions](ohos-arkui-advanced-Chip.md#chipsymbolglyphoptions12) | 否  | 是  | 后缀SymbolGlyph图标属性。当需要在Chip后显示SymbolGlyph图标以提供额外操作或状态提示时设置此参数。<br>**说明**：当suffixSymbol有传入参数时，allowClose不生效。suffixSymbol与suffixImageIcon为互斥属性，同一Chip项中只能配置其中一个，若同时配置仅优先级最高的生效（优先级：suffixSymbol > suffixImageIcon）。<br>默认值：不显示后缀SymbolGlyph图标。<br>值为undefined时，按默认值处理。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| allowClose   | boolean                       | 否  | 是  | 删除图标是否显示。<br>false表示删除图标不显示，true表示删除图标显示。<br>当需要允许用户删除或移除Chip项时设置此参数为true，适用于编辑模式、可配置标签列表等场景。<br>默认值：false<br>值为undefined时，按默认值处理。<br>**说明**：当suffixSymbol有传入参数时，allowClose不生效；当suffixSymbol没有传入参数而suffixIcon或suffixImageIcon有传入参数时，allowClose不生效；当suffixSymbol、suffixIcon和suffixImageIcon都没有传入参数时，allowClose决定是否显示删除图标。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| allowClose   | boolean                       | 否  | 是  | 关闭图标是否显示。<br>false表示关闭图标不显示，true表示关闭图标显示。<br>当需要允许用户删除或移除Chip项时设置此参数为true，适用于编辑模式、可配置标签列表等场景。<br>默认值：false<br>值为undefined时，按默认值处理。<br>**说明**：当suffixSymbol有传入参数时，allowClose不生效；当suffixSymbol没有传入参数而suffixIcon或suffixImageIcon有传入参数时，allowClose不生效；当suffixSymbol、suffixIcon和suffixImageIcon都没有传入参数时，allowClose决定是否显示关闭图标。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | suffixImageIcon<sup>14+</sup> | [SuffixImageIconOptions](#suffiximageiconoptions14) | 否 | 是 | 后缀Image图标属性。当需要在Chip后显示图标以提供额外操作或状态提示时设置此参数。<br>**说明**：当suffixImageIcon有传入参数时，allowClose不生效；当suffixSymbol和suffixImageIcon同时配置时，仅suffixSymbol生效，suffixImageIcon不生效。<br>默认值：不显示后缀Image图标。<br>值为undefined时，按默认值处理。<br> **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | suffixSymbolOptions<sup>14+</sup> | [ChipSuffixSymbolGlyphOptions](ohos-arkui-advanced-Chip.md#chipsuffixsymbolglyphoptions14) | 否 | 是 | 后缀Symbol图标属性，用于配置后缀Symbol图标的交互功能和无障碍属性。当需要为后缀Symbol图标添加点击事件或无障碍支持时设置此参数。<br>默认值：使用[ChipSuffixSymbolGlyphOptions](ohos-arkui-advanced-Chip.md#chipsuffixsymbolglyphoptions14)的默认值。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
-| closeOptions<sup>14+</sup> | [CloseOptions](ohos-arkui-advanced-Chip.md#closeoptions14) | 否 | 是 | 默认删除图标的无障碍朗读功能和字体大小属性。当需要为删除图标提供自定义的无障碍朗读内容和字体大小时设置此参数。<br>默认值：参考[CloseOptions](ohos-arkui-advanced-Chip.md#closeoptions14)中的默认配置。 <br>值为undefined时，按默认值处理。<br> **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
+| closeOptions<sup>14+</sup> | [CloseOptions](ohos-arkui-advanced-Chip.md#closeoptions14) | 否 | 是 | 默认关闭图标的无障碍朗读功能和字体大小属性。当需要为关闭图标提供自定义的无障碍朗读内容和字体大小时设置此参数。<br>默认值：参考[CloseOptions](ohos-arkui-advanced-Chip.md#closeoptions14)中的默认配置。 <br>值为undefined时，按默认值处理。<br> **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | accessibilityDescription<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | ChipGroup中Chip项的无障碍描述。此描述用于向用户详细解释ChipGroup中Chip项，开发人员应为该Chip项的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的结果。特别是当这些结果无法仅从该Chip项的属性和无障碍文本中直接获知时。如果该Chip项同时具备label文本属性和无障碍说明属性，当其被选中时，系统将首先播报该Chip项的label文本属性，随后播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。<br> **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | accessibilityLevel<sup>14+</sup> | string | 否 | 是 | ChipGroup中Chip项无障碍重要性。用于控制ChipGroup中Chip项是否可被无障碍辅助服务所识别。<br>支持的值为：<br>"auto"：ChipGroup中Chip项会转换为“yes”，适用于大多数场景。<br>"yes"：ChipGroup中Chip项可被无障碍辅助服务所识别，适用于需要明确启用无障碍访问的场景。<br>"no"：ChipGroup中Chip项不可被无障碍辅助服务所识别，适用于纯装饰性图标的场景。<br>"no-hide-descendants"：ChipGroup中Chip项及其所有子组件不可被无障碍辅助服务所识别，适用于需要隐藏整个区域的场景。<br>默认值："auto"<br>值为undefined时，按默认值处理。<br> **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 
@@ -109,7 +107,7 @@ ChipItemStyle定义了Chip的通用属性。
 
 | 名称                    | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ----------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| size                    | [ChipSize](ohos-arkui-advanced-Chip.md#chipsize) \| [SizeOptions](ts-types.md#sizeoptions) | 否   | 是   | Chip尺寸，使用时需要从Chip组件引入ChipSize类型。<br>默认值：ChipSize.NORMAL或{ height: 0, width: 0 }<br> 为undefined时，使用默认值。 |
+| size                    | [ChipSize](ohos-arkui-advanced-Chip.md#chipsize) \| [SizeOptions](ts-types.md#sizeoptions) | 否   | 是   | Chip尺寸，使用时需要从Chip组件引入ChipSize类型。ChipSize.NORMAL适用于大多数标准场景；ChipSize.SMALL适用于紧凑布局或空间受限场景；SizeOptions适用于需要自定义精确尺寸的特殊场景。<br>默认值：ChipSize.NORMAL或{ height: 0, width: 0 }<br> 为undefined时，使用默认值。 |
 | backgroundColor         | [ResourceColor](ts-types.md#resourcecolor)                   | 否   | 是   | Chip背景颜色。<br>默认值：$r('sys.color.ohos_id_color_button_normal')<br>**说明**：从API版本26.0.0开始，当设置backgroundSystemMaterial时，应将backgroundColor设为Color.Transparent，否则会与系统材质冲突；当backgroundSystemMaterial为undefined时，backgroundColor属性生效。<br>为undefined时，backgroundColor走默认值。 |
 | fontColor               | [ResourceColor](ts-types.md#resourcecolor)                   | 否   | 是   | Chip文字颜色。<br>默认值：$r('sys.color.ohos_id_color_text_primary')<br>**说明**：从API版本26.0.0开始，backgroundSystemMaterial设置自动反色的系统材质时，fontColor使用系统预定义的可反色颜色资源，文字颜色自动适配到材质背景色的反色。<br>为undefined时，fontColor走默认值。 |
 | selectedFontColor       | [ResourceColor](ts-types.md#resourcecolor)                   | 否   | 是   | Chip激活时的文字颜色。<br>默认值：$r('sys.color.ohos_id_color_text_primary_contrary')<br>**说明**：从API版本26.0.0开始，selectedBackgroundSystemMaterial设置自动反色的系统材质时，selectedFontColor使用系统预定义的可反色颜色资源（如`$r('sys.color.font_primary')`），颜色自动适配到材质背景色的反色。<br>为undefined时，selectedFontColor走默认值。 |
@@ -135,7 +133,7 @@ ChipGroupSpaceOptions定义了ChipGroup左右内边距，以及Chip与Chip之间
 
 | 名称       | 类型            | 只读 | 可选 | 说明                                             |
 | ---------- | -------------- | ---- | ------------------------------------------------ | ------------------------------------------------ |
-| itemSpace | string \| number  | 否  | 是  | Chip与Chip之间的间距（不支持百分比）。<br>取值范围：<br>number类型：大于等于0的数值（如：0、8、16、24.5）。<br>string类型：单位为fp\|vp\|px\|lpx且数值部分 大于等于0的字符串（如："8vp"、"16fp"、"12px"、"10lpx"）。<br>**说明**：传入负数、百分比或无效字符串格式时，使用默认值。 <br>默认值：8<br>单位：vp<br>值为undefined时，按默认值处理。 |
+| itemSpace | string \| number  | 否  | 是  | Chip与Chip之间的间距（不支持百分比）。<br>取值范围：<br>number类型：大于等于0的数值（如：0、8、16、24.5）。<br>string类型：单位为fp \| vp \| px \| lpx且数值部分大于等于0的字符串（如："8vp"、"16fp"、"12px"、"10lpx"）。<br>**说明**：传入负数、百分比或无效字符串格式时，使用默认值。 <br>默认值：8<br>单位：vp<br>值为undefined时，按默认值处理。 |
 | startSpace | [Length](ts-types.md#length)         | 否  | 是  | 左侧内边距（不支持百分比）。<br>传入负数、百分比或无效字符串格式时，使用默认值。<br>默认值：16<br>单位：vp<br>值为undefined时，按默认值处理。           |
 | endSpace   | [Length](ts-types.md#length)         | 否  | 是  | 右侧内边距（不支持百分比）。<br>传入负数、百分比或无效字符串格式时，使用默认值。<br>默认值：16<br>单位：vp<br>值为undefined时，按默认值处理。 |
 
@@ -170,7 +168,7 @@ ChipGroupPaddingOptions定义了ChipGroup的上下内边距，用于控制其整
 | ---- | ---- | --- | ---- | ---- |
 | action | [VoidCallback](ts-types.md#voidcallback12) | 否 | 是 | 后缀图标响应事件，用户点击后缀图标时触发回调。当需要为后缀图标添加自定义交互功能时设置此参数，如执行搜索、打开菜单、删除项等操作。<br>值为undefined时，无后缀图标响应事件。 |
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 后缀图标的无障碍文本属性。用于为用户进一步说明后缀图标，开发人员可为后缀图标的该属性设置相对较详细的解释文本，帮助用户理解将要执行的操作。如帮助用户理解将要执行的操作可能导致什么后果，尤其是当这些后果无法从后缀图标本身属性与无障碍文本中了解到时。若后缀图标既拥有文本属性又拥有无障碍说明属性，则后缀图标被选中时，先播报后缀图标的文本属性，再播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。 |
-| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 后缀图标的无障碍描述。此描述用于向用户详细解释后缀图标，开发人员应为后缀图标的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从后缀图标的属性和无障碍文本中直接获知时。如果后缀图标同时具备文本属性和无障碍说明属性，当后缀图标被选中时，系统将首先播报后缀图标的文本属性，随后播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。 |
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 后缀图标的无障碍描述。此描述用于向用户详细解释后缀图标，开发人员应为后缀图标的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果，特别是当这些后果无法仅从后缀图标的属性和无障碍文本中直接获知时。如果后缀图标同时具备文本属性和无障碍说明属性，当后缀图标被选中时，系统将首先播报后缀图标的文本属性，随后播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。 |
 | accessibilityLevel | string | 否 | 是 | 后缀图标无障碍重要性。用于控制后缀图标是否可被无障碍辅助服务所识别。当需要为无障碍辅助服务用户提供访问支持，或需要将装饰性图标从无障碍树中排除时设置此参数。<br>支持的值为：<br>"auto"：后缀图标存在action时转化为“yes”，不存在action时，转化为“no”，适用于大多数场景。<br>"yes"：后缀图标可被无障碍辅助服务所识别，适用于功能性图标。<br>"no"：后缀图标不可被无障碍辅助服务所识别，适用于纯装饰性图标。<br>"no-hide-descendants"：后缀图标及其所有子组件不可被无障碍辅助服务所识别，适用于需要隐藏整个区域的场景。<br>默认值："auto"<br>值为undefined时，按默认值处理。 |
 
 ## SymbolItemOptions<sup>14+</sup>
@@ -186,9 +184,9 @@ ChipGroup的后缀图标选项类型。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | --- | ---- | ---- |
 | symbol | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 否 | 尾部图标的SymbolGlyphModifier配置对象，用于设置图标的显示样式、渲染模式等。|
-| action | [VoidCallback](ts-types.md#voidcallback12) | 否 | 否 | 尾部图标响应事件，用户点击尾部图标时触发回调。当需要为尾部图标添加自定义交互功能时设置此参数，如执行特定操作、打开界面等。|
+| action | [VoidCallback](ts-types.md#voidcallback12) | 否 | 否 | 尾部图标响应事件，用户点击尾部图标时触发回调。当需要为尾部图标添加自定义交互功能时设置此参数，如执行特定操作、打开界面等。<br>值为undefined时，无尾部图标响应事件。|
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 尾部图标的无障碍文本属性。用于为用户进一步说明尾部图标，开发人员可为尾部图标的该属性设置相对较详细的解释文本，帮助用户理解将要执行的操作。如帮助用户理解将要执行的操作可能导致什么后果，尤其是当这些后果无法从尾部图标本身属性与无障碍文本中了解到时。若尾部图标既拥有文本属性又拥有无障碍说明属性，则尾部图标被选中时，先播报尾部图标的文本属性，再播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。|
-| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 尾部图标的无障碍描述。此描述用于向用户详细解释尾部图标，开发人员应为尾部图标的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从尾部图标的属性和无障碍文本中直接获知时。如果尾部图标同时具备文本属性和无障碍说明属性，当尾部图标被选中时，系统将首先播报尾部图标的文本属性，随后播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。|
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 尾部图标的无障碍描述。此描述用于向用户详细解释尾部图标，开发人员应为尾部图标的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果，特别是当这些后果无法仅从尾部图标的属性和无障碍文本中直接获知时。如果尾部图标同时具备文本属性和无障碍说明属性，当尾部图标被选中时，系统将首先播报尾部图标的文本属性，随后播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。|
 | accessibilityLevel | string | 否 | 是 | 尾部图标无障碍重要性。用于控制尾部图标是否可被无障碍辅助服务所识别。当需要为无障碍辅助服务用户提供访问支持，或需要将装饰性图标从无障碍树中排除时设置此参数。<br>支持的值为：<br>"auto"：尾部图标转化为“yes”，适用于大多数场景。<br>"yes"：尾部图标可被无障碍辅助服务所识别，适用于需要明确启用无障碍访问的场景。<br>"no"：尾部图标不可被无障碍辅助服务所识别，适用于纯装饰性图标的场景。<br>"no-hide-descendants"：尾部图标及其所有子组件不可被无障碍辅助服务所识别，适用于需要隐藏整个区域的场景。<br>默认值："auto"。<br>值为undefined时，按默认值处理。 |
 
 ## IconGroupSuffix
@@ -208,7 +206,7 @@ IconGroupSuffix({
 
 | 名称                        | 类型                    | 必填 | 装饰器类型 | 说明                                                              |
 | --------------------------- | ---------------------- | ---- | ----------------------------------------------| ----------------------------------------------|
-| items                       | Array<[IconItemOptions](#iconitemoptions) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) \| [ SymbolItemOptions](#symbolitemoptions14)> | 是   | @Require &nbsp;@Prop | 尾部区域显示的自定义项数组，支持IconItemOptions（Image图标）、SymbolGlyphModifier（Symbol图标）或SymbolItemOptions（Symbol图标配置）类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| items                       | Array<[IconItemOptions](#iconitemoptions) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) \| [SymbolItemOptions](#symbolitemoptions14)> | 是   | @Require &nbsp;@Prop | 尾部区域显示的自定义项数组，支持IconItemOptions（Image图标）、SymbolGlyphModifier（Symbol图标）或SymbolItemOptions（Symbol图标配置）类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | iconBackgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | 否 | @Prop | 设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[border](ts-universal-attributes-border.md#border)、[shadow](ts-universal-attributes-image-effect.md#shadow)视觉属性。设置自动反色的系统材质时，fontColor如果使用系统预定义的可反色颜色资源（如`$r('sys.color.font_primary')`），颜色自动适配到材质背景色的反色。<br>默认值：undefined<br>值为undefined时，不应用材质样式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 
 > **说明：**
@@ -227,9 +225,9 @@ IconGroupSuffix({
 | 名称     | 类型                            | 只读 | 可选 | 说明                                    |
 | -------- | --------------                 | ---- | ------------------------------           | ------------------------------           |
 | icon     | [IconOptions](#iconoptions)    | 否  | 否  | 自定义Builder icon。<br>Chip大小是ChipSize.SMALL时，icon的size默认值：{width: '16vp',height: '16vp'}。<br>Chip大小是ChipSize.NORMAL时，icon的size默认值：{width: '24vp',height: '24vp'}。<br> 如果想动态修改size，那么必须在引入[IconGroupSuffix](#icongroupsuffix)时，使用[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)类型。<br>值为undefined时，按默认值处理。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| action   | Callback\<void>        | 否  | 否  | 尾部图标点击事件回调，用户点击尾部图标时触发。当需要为尾部图标添加自定义交互功能时设置此参数，如执行特定操作、打开界面等。<br>为undefined时，不触发该回调。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。            |
+| action   | [Callback](ts-types.md#callback12)\<void>        | 否  | 否  | 尾部图标点击事件回调，用户点击尾部图标时触发。当需要为尾部图标添加自定义交互功能时设置此参数，如执行特定操作、打开界面等。<br>为undefined时，不触发该回调。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。            |
 | accessibilityText<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 尾部图标无障碍文本属性。用于为用户进一步说明尾部图标，开发人员可为尾部图标的该属性设置相对较详细的解释文本，帮助用户理解将要执行的操作。如帮助用户理解将要执行的操作可能导致什么后果，尤其是当这些后果无法从尾部图标本身属性与无障碍文本中了解到时。若尾部图标既拥有文本属性又拥有无障碍说明属性，则尾部图标被选中时，先播报尾部图标的文本属性，再播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
-| accessibilityDescription<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 尾部图标无障碍描述。此描述用于向用户详细解释尾部图标，开发人员应为尾部图标的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从尾部图标的属性和无障碍文本中直接获知时。如果尾部图标同时具备文本属性和无障碍说明属性，当尾部图标被选中时，系统将首先播报尾部图标的文本属性，随后播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
+| accessibilityDescription<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 尾部图标无障碍描述。此描述用于向用户详细解释尾部图标，开发人员应为尾部图标的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果，特别是当这些后果无法仅从尾部图标的属性和无障碍文本中直接获知时。如果尾部图标同时具备文本属性和无障碍说明属性，当尾部图标被选中时，系统将首先播报尾部图标的文本属性，随后播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | accessibilityLevel<sup>14+</sup> | string | 否 | 是 | 尾部图标无障碍重要性。用于控制尾部图标是否可被无障碍辅助服务所识别。当需要为无障碍辅助服务用户提供访问支持，或需要将装饰性图标从无障碍树中排除时设置此参数。<br>支持的值为：<br>"auto"：尾部图标转化为“yes”，适用于大多数场景。<br>"yes"：尾部图标可被无障碍辅助服务所识别，适用于功能性图标。<br>"no"：尾部图标不可被无障碍辅助服务所识别，适用于纯装饰性图标。<br>"no-hide-descendants"：尾部图标及其所有子组件不可被无障碍辅助服务所识别，适用于需要隐藏整个区域的场景。<br>默认值："auto"<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 
 ## IconOptions
@@ -245,7 +243,7 @@ IconOptions定义图标的通用属性。
 | 名称 | 类型                                   | 只读 | 可选 | 说明                                                         |
 | ---- | -------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | src  | [ResourceStr](ts-types.md#resourcestr) | 否   | 否   | 图标图片或图片地址引用请参考[Image](ts-basic-components-image.md#image-1)。 |
-| size | [SizeOptions](ts-types.md#sizeoptions) | 否   | 是   | 图标大小，不支持百分比。当需要自定义图标尺寸时设置此参数。不传入时使用系统默认尺寸。<br>默认值：undefined                |
+| size | [SizeOptions](ts-types.md#sizeoptions) | 否   | 是   | 图标大小，不支持百分比。当需要自定义图标尺寸时设置此参数。<br>默认值：<br>- ChipItemStyle.size为ChipSize.SMALL时，默认值为：{width: $r('sys.float.chip_small_icon_size'), height: $r('sys.float.chip_small_icon_size')}<br>- 其他情况下，默认值为：{width: $r('sys.float.chip_normal_icon_size'), height: $r('sys.float.chip_normal_icon_size')}   <br>值为undefined时，按默认值处理。   |
 
 ## LabelOptions
 
@@ -588,7 +586,7 @@ struct SectionItem {
 @Component
 export struct ChipGroupExample2 {
   @LocalBuilder
-  Suffix() {
+  suffixBuilder() {
     IconGroupSuffix({
       items: [
         {
@@ -693,7 +691,7 @@ export struct ChipGroupExample2 {
                   { label: { text: '选项8' } },
                   { label: { text: '选项9' } },
                 ],
-                suffix: this.Suffix,
+                suffix: this.suffixBuilder,
               })
             }
           }
@@ -771,7 +769,7 @@ struct SectionItem {
 @Component
 export struct ChipGroupExample2 {
   @LocalBuilder
-  Suffix() {
+  suffixBuilder() {
     IconGroupSuffix({
       items: [
         {
@@ -844,7 +842,7 @@ export struct ChipGroupExample2 {
                   { label: { text: '选项8' } },
                   { label: { text: '选项9' } },
                 ],
-                suffix: this.Suffix,
+                suffix: this.suffixBuilder,
                 multiple: true,
               })
             }
@@ -879,7 +877,7 @@ struct ChipGroupMaterialExample {
   @State selectedIndexes: Array<number> = [0];
 
   @LocalBuilder
-  suffix() {
+  suffixBuilder() {
     IconGroupSuffix({
       items: [new SymbolGlyphModifier($r('sys.symbol.magnifyingglass'))
       // 将fontColor设置为特殊系统资源值，启用自动反色能力。
@@ -920,7 +918,7 @@ struct ChipGroupMaterialExample {
           this.selectedIndexes = activatedChipsIndex;
         },
         suffix: () => {
-          this.suffix()
+          this.suffixBuilder()
         }
       })
     }
