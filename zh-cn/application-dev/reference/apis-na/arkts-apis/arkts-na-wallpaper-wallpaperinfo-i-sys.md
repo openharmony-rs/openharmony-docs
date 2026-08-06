@@ -4,6 +4,8 @@
 
 **起始版本：** 14
 
+**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+
 <!--Device-wallpaper-interface WallpaperInfo--><!--Device-wallpaper-interface WallpaperInfo-End-->
 
 **系统能力：** SystemCapability.MiscServices.Wallpaper
@@ -21,6 +23,8 @@ foldState: FoldState
 **类型：** FoldState
 
 **起始版本：** 14
+
+**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
 
 <!--Device-WallpaperInfo-foldState: FoldState--><!--Device-WallpaperInfo-foldState: FoldState-End-->
 
@@ -40,6 +44,8 @@ rotateState: RotateState
 
 **起始版本：** 14
 
+**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+
 <!--Device-WallpaperInfo-rotateState: RotateState--><!--Device-WallpaperInfo-rotateState: RotateState-End-->
 
 **系统能力：** SystemCapability.MiscServices.Wallpaper
@@ -57,6 +63,8 @@ source: string
 **类型：** string
 
 **起始版本：** 14
+
+**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
 
 <!--Device-WallpaperInfo-source: string--><!--Device-WallpaperInfo-source: string-End-->
 

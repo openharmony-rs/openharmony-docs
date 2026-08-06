@@ -4,6 +4,8 @@
 
 **起始版本：** 7
 
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
 **废弃版本：** 9
 
 <!--Device-wallpaper-interface RgbaColor--><!--Device-wallpaper-interface RgbaColor-End-->
@@ -13,14 +15,16 @@
 ## alpha
 
 ```TypeScript
-alpha: number
+alpha: long
 ```
 
 表示 alpha 值，范围为 0 到 255。
 
-**类型：** number
+**类型：** long
 
 **起始版本：** 7
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
 **废弃版本：** 9
 
@@ -31,14 +35,16 @@ alpha: number
 ## blue
 
 ```TypeScript
-blue: number
+blue: long
 ```
 
 表示蓝色值，范围为 0 到 255。
 
-**类型：** number
+**类型：** long
 
 **起始版本：** 7
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
 **废弃版本：** 9
 
@@ -49,14 +55,16 @@ blue: number
 ## green
 
 ```TypeScript
-green: number
+green: long
 ```
 
 表示绿色值，范围为 0 到 255。
 
-**类型：** number
+**类型：** long
 
 **起始版本：** 7
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
 **废弃版本：** 9
 
@@ -67,14 +75,16 @@ green: number
 ## red
 
 ```TypeScript
-red: number
+red: long
 ```
 
 表示红色值，范围为 0 到 255。
 
-**类型：** number
+**类型：** long
 
 **起始版本：** 7
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
 **废弃版本：** 9
 

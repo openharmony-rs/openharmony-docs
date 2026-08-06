@@ -1,0 +1,54 @@
+# IncrementalBackupTime（系统接口）
+
+记录最后一次增量备份时间，用于描述备份增量的时间点。
+
+**起始版本：** 12
+
+**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+
+<!--Device-backup-interface IncrementalBackupTime--><!--Device-backup-interface IncrementalBackupTime-End-->
+
+**系统能力：** SystemCapability.FileManagement.StorageService.Backup
+
+**系统接口：** 此接口为系统接口。
+
+## bundleName
+
+```TypeScript
+bundleName: string
+```
+
+应用名称。
+
+**类型：** string
+
+**起始版本：** 12
+
+**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+
+<!--Device-IncrementalBackupTime-bundleName: string--><!--Device-IncrementalBackupTime-bundleName: string-End-->
+
+**系统能力：** SystemCapability.FileManagement.StorageService.Backup
+
+**系统接口：** 此接口为系统接口。
+
+## lastIncrementalTime
+
+```TypeScript
+lastIncrementalTime: long
+```
+
+最后一次增量备份时间。
+
+**类型：** long
+
+**起始版本：** 12
+
+**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+
+<!--Device-IncrementalBackupTime-lastIncrementalTime: long--><!--Device-IncrementalBackupTime-lastIncrementalTime: long-End-->
+
+**系统能力：** SystemCapability.FileManagement.StorageService.Backup
+
+**系统接口：** 此接口为系统接口。
+

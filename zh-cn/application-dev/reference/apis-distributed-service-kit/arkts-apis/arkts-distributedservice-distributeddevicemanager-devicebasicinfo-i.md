@@ -1,0 +1,84 @@
+# DeviceBasicInfo
+
+分布式设备基本信息。
+
+**起始版本：** 10
+
+**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+
+<!--Device-distributedDeviceManager-interface DeviceBasicInfo--><!--Device-distributedDeviceManager-interface DeviceBasicInfo-End-->
+
+**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+
+## deviceId
+
+```TypeScript
+deviceId: string
+```
+
+设备标识符。实际值为udid-hash与appid和盐值基于sha256方式进行混淆后的值。
+
+**类型：** string
+
+**起始版本：** 10
+
+**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+
+<!--Device-DeviceBasicInfo-deviceId: string--><!--Device-DeviceBasicInfo-deviceId: string-End-->
+
+**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+
+## deviceName
+
+```TypeScript
+deviceName: string
+```
+
+设备名称。
+
+**类型：** string
+
+**起始版本：** 10
+
+**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+
+<!--Device-DeviceBasicInfo-deviceName: string--><!--Device-DeviceBasicInfo-deviceName: string-End-->
+
+**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+
+## deviceType
+
+```TypeScript
+deviceType: string
+```
+
+[设备类型]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+
+**类型：** string
+
+**起始版本：** 10
+
+**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+
+<!--Device-DeviceBasicInfo-deviceType: string--><!--Device-DeviceBasicInfo-deviceType: string-End-->
+
+**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+
+## networkId
+
+```TypeScript
+networkId?: string
+```
+
+设备网络标识。
+
+**类型：** string
+
+**起始版本：** 10
+
+**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+
+<!--Device-DeviceBasicInfo-networkId?: string--><!--Device-DeviceBasicInfo-networkId?: string-End-->
+
+**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+

@@ -1,0 +1,158 @@
+# CommonOptions
+
+CommonOptions定义日期时间选择器的通用选项。 > **说明：** > > - Date的使用请参考 > \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。 > > - DatePickerComponent的字体字号在14vp至16vp范围内自适应变化，当组件宽度过窄时，可能出现文本显示截断的情况。 > > - 参数缺省或者设置为undefined时，均保持默认值。 > > - 在[DateOptions]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_中设置start、end、selected时仅日期部分（年月日）设置生效， > 在[TimeOptions]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_中设置start、end、selected时仅时间部分（时分秒）设置生效。
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+
+<!--Device-unnamed-export declare class CommonOptions--><!--Device-unnamed-export declare class CommonOptions-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## enableHapticFeedback
+
+```TypeScript
+enableHapticFeedback?: boolean
+```
+
+启用或禁用触控反馈。 默认值：true - true：开启触控反馈。 - false：不开启触控反馈。 **说明**： 1. 设置为true后，其生效情况取决于系统的硬件是否支持。 2. 开启触控反馈时，需要在工程的\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_中配置requestPermissions 字段以开启振动权限，配置如下： "requestPermissions": [{"name": "ohos.permission.VIBRATE"}]
+
+**类型：** boolean
+
+**默认值：** true
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-CommonOptions-enableHapticFeedback?: boolean--><!--Device-CommonOptions-enableHapticFeedback?: boolean-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## end
+
+```TypeScript
+end?: Date
+```
+
+选择器的结束日期或时间。 默认值：Date(2100, 12, 31, 23, 59, 59) 取值范围：[Date(0, 0, 1, 0, 0, 0), Date(10000, 11, 31,23, 59, 59)]
+
+**类型：** Date
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-CommonOptions-end?: Date--><!--Device-CommonOptions-end?: Date-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## loop
+
+```TypeScript
+loop?: boolean
+```
+
+设置是否启用循环模式。 - true：启用循环模式。 - false：不启用循环模式。 默认值：true
+
+**类型：** boolean
+
+**默认值：** true
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-CommonOptions-loop?: boolean--><!--Device-CommonOptions-loop?: boolean-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## onChange
+
+```TypeScript
+onChange?: Callback<DatePickerComponentResult>
+```
+
+选择日期或时间后触发该回调。
+
+**类型：** Callback&lt;DatePickerComponentResult&gt;
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-CommonOptions-onChange?: Callback<DatePickerComponentResult>--><!--Device-CommonOptions-onChange?: Callback<DatePickerComponentResult>-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## onScrollStop
+
+```TypeScript
+onScrollStop?: Callback<DatePickerComponentResult>
+```
+
+选择器项被选中且滚动停止时触发该回调。
+
+**类型：** Callback&lt;DatePickerComponentResult&gt;
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-CommonOptions-onScrollStop?: Callback<DatePickerComponentResult>--><!--Device-CommonOptions-onScrollStop?: Callback<DatePickerComponentResult>-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## selected
+
+```TypeScript
+selected?: Date
+```
+
+选中的日期。 默认值为当前系统日期或时间。
+
+**类型：** Date
+
+**默认值：** current system date or time
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-CommonOptions-selected?: Date--><!--Device-CommonOptions-selected?: Date-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## start
+
+```TypeScript
+start?: Date
+```
+
+选择器的起始日期或时间。 默认值：Date(1970, 0, 1, 0, 0, 0) 取值范围：[Date(0, 0, 1, 0, 0, 0), Date(10000, 11, 31,23, 59, 59)]
+
+**类型：** Date
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-CommonOptions-start?: Date--><!--Device-CommonOptions-start?: Date-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+

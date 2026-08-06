@@ -1,0 +1,120 @@
+# CloudFileInfo
+
+应用本地和云端文件个数以及大小信息。
+
+**起始版本：** 20
+
+**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+
+<!--Device-cloudSyncManager-interface CloudFileInfo--><!--Device-cloudSyncManager-interface CloudFileInfo-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+## bothFileCount
+
+```TypeScript
+bothFileCount: int
+```
+
+本地已上传云端的文件总个数，取值范围[0, INT32\_MAX]，单位：个。
+
+**类型：** int
+
+**起始版本：** 20
+
+**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+
+<!--Device-CloudFileInfo-bothFileCount: int--><!--Device-CloudFileInfo-bothFileCount: int-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+## bothFileTotalSize
+
+```TypeScript
+bothFileTotalSize: long
+```
+
+本地已上传云端的文件总大小，取值范围[0, INT64\_MAX]，单位：Byte。
+
+**类型：** long
+
+**起始版本：** 20
+
+**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+
+<!--Device-CloudFileInfo-bothFileTotalSize: long--><!--Device-CloudFileInfo-bothFileTotalSize: long-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+## cloudFileCount
+
+```TypeScript
+cloudFileCount: int
+```
+
+本地未下载的云端文件总个数，取值范围[0, INT32\_MAX]，单位：个。
+
+**类型：** int
+
+**起始版本：** 20
+
+**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+
+<!--Device-CloudFileInfo-cloudFileCount: int--><!--Device-CloudFileInfo-cloudFileCount: int-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+## cloudFileTotalSize
+
+```TypeScript
+cloudFileTotalSize: long
+```
+
+本地未下载的云端文件总大小，取值范围[0, INT64\_MAX]，单位：Byte。
+
+**类型：** long
+
+**起始版本：** 20
+
+**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+
+<!--Device-CloudFileInfo-cloudFileTotalSize: long--><!--Device-CloudFileInfo-cloudFileTotalSize: long-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+## localFileCount
+
+```TypeScript
+localFileCount: int
+```
+
+本地未上传云端的文件总个数，取值范围[0, INT32\_MAX]，单位：个。
+
+**类型：** int
+
+**起始版本：** 20
+
+**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+
+<!--Device-CloudFileInfo-localFileCount: int--><!--Device-CloudFileInfo-localFileCount: int-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+## localFileTotalSize
+
+```TypeScript
+localFileTotalSize: long
+```
+
+本地未上传云端的文件总大小，取值范围[0, INT64\_MAX]，单位：Byte。
+
+**类型：** long
+
+**起始版本：** 20
+
+**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+
+<!--Device-CloudFileInfo-localFileTotalSize: long--><!--Device-CloudFileInfo-localFileTotalSize: long-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+

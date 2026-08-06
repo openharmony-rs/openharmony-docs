@@ -6,12 +6,11 @@
 function getColorsSync(wallpaperType: WallpaperType): Array<RgbaColor>
 ```
 
-获取指定类型壁纸的主要颜色信息。
-> **说明：**  
->  
-> 从 API version 9开始支持，从API version 23开始废弃。
+获取指定类型壁纸的主要颜色信息。 > **说明：** > > 从 API version 9开始支持，从API version 23开始废弃。
 
 **起始版本：** 9
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
 **废弃版本：** 23
 
@@ -25,7 +24,7 @@ function getColorsSync(wallpaperType: WallpaperType): Array<RgbaColor>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| wallpaperType | [WallpaperType](arkts-na-wallpaper-wallpapertype-e.md) | 是 |  |
+| wallpaperType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 |  |
 
 **返回值：**
 
@@ -49,6 +48,5 @@ try {
 } catch (error) {
     console.error(`failed to getColorsSync. Code: ${error.code}, Message: ${error.message}`);
 }
-
 ```
 

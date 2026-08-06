@@ -1,0 +1,287 @@
+# ActionMenuOptions
+
+操作菜单的选项。
+
+**起始版本：** 9
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+<!--Device-promptAction-interface ActionMenuOptions--><!--Device-promptAction-interface ActionMenuOptions-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## buttons
+
+```TypeScript
+buttons: [
+            Button,
+            Button?,
+            Button?,
+            Button?,
+            Button?,
+            Button?
+        ]
+```
+
+菜单中菜单项按钮的数组，结构为：{text:'button',&nbsp;color:&nbsp;'\#666666'}，支持1-6个按钮。按钮数量大于6个时，仅显示buttons数组中的前6个按钮（索引0到5），数组中索引大于5的按钮不显示。
+
+**类型：** [             Button,             Button?,             Button?,             Button?,             Button?,             Button?         ]
+
+**起始版本：** 9
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ActionMenuOptions-buttons: [            Button,            Button?,            Button?,            Button?,            Button?,            Button?        ]--><!--Device-ActionMenuOptions-buttons: [            Button,            Button?,            Button?,            Button?,            Button?,            Button?        ]-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## immersiveMode
+
+```TypeScript
+immersiveMode?: ImmersiveMode
+```
+
+设置页面内菜单蒙层效果。 \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_**说明：** \_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_- 默认值：ImmersiveMode.DEFAULT \_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_- 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。
+
+**类型：** ImmersiveMode
+
+**默认值：** ImmersiveMode.DEFAULT
+
+**起始版本：** 15
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ActionMenuOptions-immersiveMode?: ImmersiveMode--><!--Device-ActionMenuOptions-immersiveMode?: ImmersiveMode-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## isModal
+
+```TypeScript
+isModal?: boolean
+```
+
+菜单是否为模态窗口。值为true表示为模态窗口且有蒙层，不可与菜单周围其他控件进行交互，即蒙层区域无法事件透传。 值为false表示为非模态窗口且无蒙层，可以与菜单周围其他控件进行交互。 \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_默认值：true
+
+**类型：** boolean
+
+**默认值：** true
+
+**起始版本：** 11
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ActionMenuOptions-isModal?: boolean--><!--Device-ActionMenuOptions-isModal?: boolean-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## levelMode
+
+```TypeScript
+levelMode?: LevelMode
+```
+
+设置菜单显示层级。 \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_**说明：** \_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_- 默认值：LevelMode.OVERLAY \_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_- 当且仅当showInSubWindow属性设置为false时生效。
+
+**类型：** LevelMode
+
+**默认值：** LevelMode.OVERLAY
+
+**起始版本：** 15
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ActionMenuOptions-levelMode?: LevelMode--><!--Device-ActionMenuOptions-levelMode?: LevelMode-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## levelUniqueId
+
+```TypeScript
+levelUniqueId?: number
+```
+
+设置页面级菜单需要显示的层级下的\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。 \_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_取值范围：大于等于0的数字。 \_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_**说明：** \_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_- 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。
+
+**类型：** number
+
+**起始版本：** 15
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ActionMenuOptions-levelUniqueId?: number--><!--Device-ActionMenuOptions-levelUniqueId?: number-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## onDidAppear
+
+```TypeScript
+onDidAppear?: Callback<void>
+```
+
+菜单弹出后的事件回调。 \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_**说明：** \_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。 \_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_2.快速点击弹出，关闭菜单时，onWillDisappear在onDidAppear前生效。
+
+**类型：** Callback&lt;void&gt;
+
+**起始版本：** 20
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ActionMenuOptions-onDidAppear?: Callback<void>--><!--Device-ActionMenuOptions-onDidAppear?: Callback<void>-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## onDidDisappear
+
+```TypeScript
+onDidDisappear?: Callback<void>
+```
+
+菜单消失后的事件回调。 \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_**说明：** \_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。
+
+**类型：** Callback&lt;void&gt;
+
+**起始版本：** 20
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ActionMenuOptions-onDidDisappear?: Callback<void>--><!--Device-ActionMenuOptions-onDidDisappear?: Callback<void>-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## onWillAppear
+
+```TypeScript
+onWillAppear?: Callback<void>
+```
+
+菜单显示动效前的事件回调。 \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_**说明：** \_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。
+
+**类型：** Callback&lt;void&gt;
+
+**起始版本：** 20
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ActionMenuOptions-onWillAppear?: Callback<void>--><!--Device-ActionMenuOptions-onWillAppear?: Callback<void>-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## onWillDisappear
+
+```TypeScript
+onWillDisappear?: Callback<void>
+```
+
+菜单退出动效前的事件回调。 \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_**说明：** \_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。
+
+**类型：** Callback&lt;void&gt;
+
+**起始版本：** 20
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ActionMenuOptions-onWillDisappear?: Callback<void>--><!--Device-ActionMenuOptions-onWillDisappear?: Callback<void>-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## showInSubWindow
+
+```TypeScript
+showInSubWindow?: boolean
+```
+
+某操作菜单需要显示在主窗口之外时，是否在子窗口显示此菜单。值为true表示在子窗口显示菜单。 \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_默认值：false，在子窗口不显示菜单。 \_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_**说明：** \_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_ - showInSubWindow为true的菜单无法触发显示另一个showInSubWindow为true的菜单。 \_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_ - 若在UIExtension中设置showInSubWindow为true, 菜单将基于UIExtension的宿主窗口对齐。
+
+**类型：** boolean
+
+**默认值：** false
+
+**起始版本：** 11
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ActionMenuOptions-showInSubWindow?: boolean--><!--Device-ActionMenuOptions-showInSubWindow?: boolean-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## systemMaterial
+
+```TypeScript
+systemMaterial?: SystemUiMaterial
+```
+
+设置弹窗的系统材质。 \_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_默认值：\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_的style为 ImmersiveStyle.ULTRA\_THICK的\_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_对象。 设置undefined时与默认值保持一致。不同的材质具有不同的效果，可以影响弹窗的背景色、边框、阴影等视觉属性。
+
+**类型：** SystemUiMaterial
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ActionMenuOptions-systemMaterial?: SystemUiMaterial--><!--Device-ActionMenuOptions-systemMaterial?: SystemUiMaterial-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## title
+
+```TypeScript
+title?: string | Resource
+```
+
+标题文本。 \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_默认值：undefined，取值为undefined默认不显示标题。
+
+**类型：** string \| Resource
+
+**起始版本：** 9
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ActionMenuOptions-title?: string | Resource--><!--Device-ActionMenuOptions-title?: string | Resource-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+

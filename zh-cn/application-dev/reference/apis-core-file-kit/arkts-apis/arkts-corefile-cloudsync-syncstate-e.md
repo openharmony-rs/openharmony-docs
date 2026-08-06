@@ -1,0 +1,108 @@
+# SyncState
+
+端云同步状态，为枚举类型。 > **说明：** > > 以下同步状态发生变更时，如果应用注册了同步过程事件监听，则通过回调通知应用。
+
+**起始版本：** 12
+
+**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+
+<!--Device-cloudSync-enum SyncState--><!--Device-cloudSync-enum SyncState-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+## UPLOADING
+
+```TypeScript
+UPLOADING = 0
+```
+
+上行同步中。
+
+**起始版本：** 12
+
+**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+
+<!--Device-SyncState-UPLOADING = 0--><!--Device-SyncState-UPLOADING = 0-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+## UPLOAD_FAILED
+
+```TypeScript
+UPLOAD_FAILED = 1
+```
+
+上行同步失败。
+
+**起始版本：** 12
+
+**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+
+<!--Device-SyncState-UPLOAD_FAILED = 1--><!--Device-SyncState-UPLOAD_FAILED = 1-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+## DOWNLOADING
+
+```TypeScript
+DOWNLOADING = 2
+```
+
+下行同步中。
+
+**起始版本：** 12
+
+**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+
+<!--Device-SyncState-DOWNLOADING = 2--><!--Device-SyncState-DOWNLOADING = 2-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+## DOWNLOAD_FAILED
+
+```TypeScript
+DOWNLOAD_FAILED = 3
+```
+
+下行同步失败。
+
+**起始版本：** 12
+
+**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+
+<!--Device-SyncState-DOWNLOAD_FAILED = 3--><!--Device-SyncState-DOWNLOAD_FAILED = 3-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+## COMPLETED
+
+```TypeScript
+COMPLETED = 4
+```
+
+同步成功。
+
+**起始版本：** 12
+
+**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+
+<!--Device-SyncState-COMPLETED = 4--><!--Device-SyncState-COMPLETED = 4-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+## STOPPED
+
+```TypeScript
+STOPPED = 5
+```
+
+同步已停止。
+
+**起始版本：** 12
+
+**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+
+<!--Device-SyncState-STOPPED = 5--><!--Device-SyncState-STOPPED = 5-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+

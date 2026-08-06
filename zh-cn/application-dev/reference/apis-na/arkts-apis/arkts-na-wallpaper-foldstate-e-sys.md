@@ -4,6 +4,8 @@
 
 **起始版本：** 14
 
+**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+
 <!--Device-wallpaper-enum FoldState--><!--Device-wallpaper-enum FoldState-End-->
 
 **系统能力：** SystemCapability.MiscServices.Wallpaper
@@ -19,6 +21,8 @@ NORMAL = 0
 设备默认状态。
 
 **起始版本：** 14
+
+**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
 
 <!--Device-FoldState-NORMAL = 0--><!--Device-FoldState-NORMAL = 0-End-->
 
@@ -36,6 +40,8 @@ UNFOLD_ONCE_STATE = 1
 
 **起始版本：** 14
 
+**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+
 <!--Device-FoldState-UNFOLD_ONCE_STATE = 1--><!--Device-FoldState-UNFOLD_ONCE_STATE = 1-End-->
 
 **系统能力：** SystemCapability.MiscServices.Wallpaper
@@ -51,6 +57,8 @@ UNFOLD_TWICE_STATE = 2
 二次展开态。
 
 **起始版本：** 14
+
+**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
 
 <!--Device-FoldState-UNFOLD_TWICE_STATE = 2--><!--Device-FoldState-UNFOLD_TWICE_STATE = 2-End-->
 

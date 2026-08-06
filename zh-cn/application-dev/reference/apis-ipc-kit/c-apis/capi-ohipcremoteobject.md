@@ -1,0 +1,14 @@
+# OHIPCRemoteObject
+
+## 概述
+
+提供远端对象创建、销毁、数据发送、远端对象死亡状态监听等功能的C接口，适用于IPC（Inter-Process Communication，进程间通信）和RPC（Remote Procedure Call，远程过程调用）通信场景。
+
+**系统能力：** SystemCapability.Communication.IPC.Core
+
+**起始版本：** 12
+## 文件汇总
+
+| 名称 | 描述 |
+| -- | -- |
+| [ipc_cremote_object.h](capi-ipc-cremote-object-h.md) | 提供远端对象创建、销毁、数据发送、远端对象死亡状态监听等功能的C接口，适用于IPC（Inter-Process Communication，进程间通信）和RPC（Remote Procedure Call，远程过程调用）通信场景。 |

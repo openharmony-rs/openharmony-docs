@@ -10,6 +10,8 @@ function getId(wallpaperType: WallpaperType, callback: AsyncCallback<number>): v
 
 **起始版本：** 7
 
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
 **废弃版本：** 9
 
 <!--Device-wallpaper-function getId(wallpaperType: WallpaperType, callback: AsyncCallback<number>): void--><!--Device-wallpaper-function getId(wallpaperType: WallpaperType, callback: AsyncCallback<number>): void-End-->
@@ -20,8 +22,8 @@ function getId(wallpaperType: WallpaperType, callback: AsyncCallback<number>): v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| wallpaperType | [WallpaperType](arkts-na-wallpaper-wallpapertype-e.md) | 是 |  |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 |  |
+| wallpaperType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 |  |
+| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;number&gt; | 是 |  |
 
 **示例：**
 
@@ -35,7 +37,6 @@ wallpaper.getId(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError,
     }
     console.info(`success to getId: ${JSON.stringify(data)}`);
 });
-
 ```
 
 
@@ -49,6 +50,8 @@ function getId(wallpaperType: WallpaperType): Promise<number>
 
 **起始版本：** 7
 
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
 **废弃版本：** 9
 
 <!--Device-wallpaper-function getId(wallpaperType: WallpaperType): Promise<number>--><!--Device-wallpaper-function getId(wallpaperType: WallpaperType): Promise<number>-End-->
@@ -59,7 +62,7 @@ function getId(wallpaperType: WallpaperType): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| wallpaperType | [WallpaperType](arkts-na-wallpaper-wallpapertype-e.md) | 是 |  |
+| wallpaperType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 |  |
 
 **返回值：**
 
@@ -77,6 +80,5 @@ wallpaper.getId(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: Number) =>
   }).catch((error: BusinessError) => {
     console.error(`failed to getId because: ${JSON.stringify(error)}`);
 });
-
 ```
 

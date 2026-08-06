@@ -1,0 +1,134 @@
+# Storage（系统接口）
+
+持久化存储后端接口，提供基于键值对（key-value）的数据持久化能力，包括数据的读取、写入、清除和删除。PersistentStorage通过该接口实现AppStorage数据的本地持久化，适用于需要对应用数据进行灵活本地持久化存 储的场景。
+
+**起始版本：** 7
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+<!--Device-unnamed-declare class Storage--><!--Device-unnamed-declare class Storage-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+## clear
+
+```TypeScript
+clear(): void
+```
+
+清除所有存储数据。
+
+**起始版本：** 7
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+<!--Device-Storage-clear(): void--><!--Device-Storage-clear(): void-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+## constructor
+
+```TypeScript
+constructor(needCrossThread?: boolean, file?: string)
+```
+
+创建Storage实例的构造函数。
+
+**起始版本：** 7
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+<!--Device-Storage-constructor(needCrossThread?: boolean, file?: string)--><!--Device-Storage-constructor(needCrossThread?: boolean, file?: string)-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| needCrossThread | boolean | 否 | 是否需要跨线程访问存储。预留接口，暂不提供具体功能。 |
+| file | string | 否 | 指定存储文件名。预留接口，暂不提供具体功能。默认使用应用文件目录下的persistent\_\_\_ESCAPED\_UNDERSCORE\_\_\_storage作为存储文件。 |
+
+## delete
+
+```TypeScript
+delete(key: string): void
+```
+
+删除指定key对应的存储数据。
+
+**起始版本：** 7
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+<!--Device-Storage-delete(key: string): void--><!--Device-Storage-delete(key: string): void-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| key | string | 是 | 要删除的存储key名称。 |
+
+## get
+
+```TypeScript
+get(key: string): string | undefined
+```
+
+根据指定key从磁盘中读取对应的存储数据。
+
+**起始版本：** 7
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+<!--Device-Storage-get(key: string): string | undefined--><!--Device-Storage-get(key: string): string | undefined-End-->
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| key | string | 是 | 要获取的存储key名称。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| string | key对应的值；key不存在时返回undefined。 |
+
+## set
+
+```TypeScript
+set(key: string, val: any): void
+```
+
+将指定key对应的数据持久化存储到磁盘。
+
+**起始版本：** 7
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+<!--Device-Storage-set(key: string, val: any): void--><!--Device-Storage-set(key: string, val: any): void-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| key | string | 是 | 要设置的存储key名称。 |
+| val | any | 是 | 要存储的数据，支持string、number、boolean等基本类型以及可序列化的对象和数组，数据将被序列化后持久化到存储文件中。 |
+

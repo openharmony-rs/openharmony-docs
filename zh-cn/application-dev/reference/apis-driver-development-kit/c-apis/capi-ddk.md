@@ -1,0 +1,13 @@
+# Ddk
+
+## 概述
+
+Provides Base DDK APIs, including creating the shared memory, mapping the shared memory,<br> unmapping the shared memory, and destroying the shared memory.
+
+**起始版本：** 12
+## 文件汇总
+
+| 名称 | 描述 |
+| -- | -- |
+| [ddk_api.h](capi-ddk-api-h.md) | 声明主机侧访问的Base DDK接口。 |
+| [ddk_types.h](capi-ddk-types-h.md) | 提供基础DDK接口所使用的Base DDK类型，宏定义，枚举值和数据结构。 |

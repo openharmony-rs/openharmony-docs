@@ -1,0 +1,543 @@
+# KVManager
+
+数据管理实例，用于获取KVStore的相关信息。在调用KVManager的方法前，需要先通过 [createKVManager]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 构建一个KVManager实例。
+
+**起始版本：** 7
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** 9
+
+**替代接口：** ohos.data.distributedKVStore.KVManager
+
+<!--Device-distributedData-interface KVManager--><!--Device-distributedData-interface KVManager-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+## closeKVStore
+
+```TypeScript
+closeKVStore(appId: string, storeId: string, kvStore: KVStore, callback: AsyncCallback<void>): void
+```
+
+通过storeId的值关闭指定的KVStore数据库，使用callback异步回调。
+
+**起始版本：** 8
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** 9
+
+**替代接口：** ohos.data.distributedKVStore.KVManager#closeKVStore
+
+<!--Device-KVManager-closeKVStore(appId: string, storeId: string, kvStore: KVStore, callback: AsyncCallback<void>): void--><!--Device-KVManager-closeKVStore(appId: string, storeId: string, kvStore: KVStore, callback: AsyncCallback<void>): void-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| appId | string | 是 | 所调用数据库方的包名。 |
+| storeId | string | 是 | Unique identifier of the 要关闭的KVStore数据库。 The length cannot exceed [MAX\_\_\_ESCAPED\_UNDERSCORE\_\_\_STORE\_\_\_ESCAPED\_UNDERSCORE\_\_\_ID\_\_\_ESCAPED\_UNDERSCORE\_\_\_LENGTH]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_. |
+| kvStore | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 要关闭的KVStore数据库。 |
+| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数。 |
+
+**示例：**
+
+```TypeScript
+let kvStore;
+let kvManager;
+const options = {
+    createIfMissing: true,
+    encrypt: false,
+    backup: false,
+    autoSync: false,
+    kvStoreType: distributedData.KVStoreType.SINGLE_VERSION,
+    schema: undefined,
+    securityLevel: distributedData.SecurityLevel.S3,
+}
+try {
+    kvManager.getKVStore('storeId', options, async function (err, store) {
+        console.log('getKVStore success');
+        kvStore = store;
+        kvManager.closeKVStore('appId', 'storeId', kvStore, function (err, data) {
+            console.log('closeKVStore success');
+        });
+    });
+} catch (e) {
+    console.log('closeKVStore e ' + e);
+}
+```
+
+## closeKVStore
+
+```TypeScript
+closeKVStore(appId: string, storeId: string, kvStore: KVStore): Promise<void>
+```
+
+通过storeId的值关闭指定的KVStore数据库，使用Promise异步回调。
+
+**起始版本：** 8
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** 9
+
+**替代接口：** ohos.data.distributedKVStore.KVManager#closeKVStore
+
+<!--Device-KVManager-closeKVStore(appId: string, storeId: string, kvStore: KVStore): Promise<void>--><!--Device-KVManager-closeKVStore(appId: string, storeId: string, kvStore: KVStore): Promise<void>-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| appId | string | 是 | 所调用数据库方的包名。 |
+| storeId | string | 是 | Unique identifier of the 要关闭的KVStore数据库。 The length cannot exceed [MAX\_\_\_ESCAPED\_UNDERSCORE\_\_\_STORE\_\_\_ESCAPED\_UNDERSCORE\_\_\_ID\_\_\_ESCAPED\_UNDERSCORE\_\_\_LENGTH]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_. |
+| kvStore | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 要关闭的KVStore数据库。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+
+**示例：**
+
+```TypeScript
+let kvManager;
+let kvStore;
+const options = {
+    createIfMissing: true,
+    encrypt: false,
+    backup: false,
+    autoSync: false,
+    kvStoreType: distributedData.KVStoreType.SINGLE_VERSION,
+    schema: undefined,
+    securityLevel: distributedData.SecurityLevel.S3,
+}
+try {
+    kvManager.getKVStore('storeId', options).then(async (store) => {
+        console.log('getKVStore success');
+        kvStore = store;
+        kvManager.closeKVStore('appId', 'storeId', kvStore).then(() => {
+            console.log('closeKVStore success');
+        }).catch((err) => {
+            console.log('closeKVStore err ' + JSON.stringify(err));
+        });
+    }).catch((err) => {
+        console.log('CloseKVStore getKVStore err ' + JSON.stringify(err));
+    });
+} catch (e) {
+    console.log('closeKVStore e ' + e);
+}
+```
+
+## deleteKVStore
+
+```TypeScript
+deleteKVStore(appId: string, storeId: string, callback: AsyncCallback<void>): void
+```
+
+通过storeId的值删除指定的KVStore数据库，使用callback异步回调。
+
+**起始版本：** 8
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** 9
+
+**替代接口：** ohos.data.distributedKVStore.KVManager#deleteKVStore
+
+<!--Device-KVManager-deleteKVStore(appId: string, storeId: string, callback: AsyncCallback<void>): void--><!--Device-KVManager-deleteKVStore(appId: string, storeId: string, callback: AsyncCallback<void>): void-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| appId | string | 是 | 所调用数据库方的包名。 |
+| storeId | string | 是 | 要删除的数据库唯一标识符，长度不大于[MAX\_\_\_ESCAPED\_UNDERSCORE\_\_\_STORE\_\_\_ESCAPED\_UNDERSCORE\_\_\_ID\_\_\_ESCAPED\_UNDERSCORE\_\_\_LENGTH]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
+| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数。 |
+
+**示例：**
+
+```TypeScript
+let kvManager;
+let kvStore;
+const options = {
+    createIfMissing : true,
+    encrypt : false,
+    backup : false,
+    autoSync : true,
+    kvStoreType : distributedData.KVStoreType.SINGLE_VERSION,
+    schema : undefined,
+    securityLevel : distributedData.SecurityLevel.S3,
+}
+try {
+    kvManager.getKVStore('store', options, async function (err, store) {
+        console.log('getKVStore success');
+        kvStore = store;
+        kvManager.deleteKVStore('appId', 'storeId', function (err, data) {
+            console.log('deleteKVStore success');
+        });
+    });
+} catch (e) {
+    console.log('DeleteKVStore e ' + e);
+}
+```
+
+## deleteKVStore
+
+```TypeScript
+deleteKVStore(appId: string, storeId: string): Promise<void>
+```
+
+通过storeId的值删除指定的KVStore数据库，使用Promise异步回调。
+
+**起始版本：** 8
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** 9
+
+**替代接口：** ohos.data.distributedKVStore.KVManager#deleteKVStore
+
+<!--Device-KVManager-deleteKVStore(appId: string, storeId: string): Promise<void>--><!--Device-KVManager-deleteKVStore(appId: string, storeId: string): Promise<void>-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| appId | string | 是 | 所调用数据库方的包名。 |
+| storeId | string | 是 | 要删除的数据库唯一标识符，长度不大于[MAX\_\_\_ESCAPED\_UNDERSCORE\_\_\_STORE\_\_\_ESCAPED\_UNDERSCORE\_\_\_ID\_\_\_ESCAPED\_UNDERSCORE\_\_\_LENGTH]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+
+**示例：**
+
+```TypeScript
+let kvManager;
+let kvStore;
+const options = {
+    createIfMissing : true,
+    encrypt : false,
+    backup : false,
+    autoSync : true,
+    kvStoreType : distributedData.KVStoreType.SINGLE_VERSION,
+    schema : undefined,
+    securityLevel : distributedData.SecurityLevel.S3,
+}
+try {
+    kvManager.getKVStore('storeId', options).then(async (store) => {
+        console.log('getKVStore success');
+        kvStore = store;
+        kvManager.deleteKVStore('appId', 'storeId').then(() => {
+            console.log('deleteKVStore success');
+        }).catch((err) => {
+            console.log('deleteKVStore err ' + JSON.stringify(err));
+        });
+    }).catch((err) => {
+        console.log('getKVStore err ' + JSON.stringify(err));
+    });
+} catch (e) {
+    console.log('deleteKVStore e ' + e);
+}
+```
+
+## getAllKVStoreId
+
+```TypeScript
+getAllKVStoreId(appId: string, callback: AsyncCallback<string[]>): void
+```
+
+获取所有通过 [getKVStore]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 方法创建的且没有调用 [deleteKVStore]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_ 方法删除的KVStore数据库的storeId，使用callback异步回调。
+
+**起始版本：** 8
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** 9
+
+**替代接口：** ohos.data.distributedKVStore.KVManager#getAllKVStoreId
+
+<!--Device-KVManager-getAllKVStoreId(appId: string, callback: AsyncCallback<string[]>): void--><!--Device-KVManager-getAllKVStoreId(appId: string, callback: AsyncCallback<string[]>): void-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| appId | string | 是 | 所调用数据库方的包名。 |
+| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;string[]&gt; | 是 | 回调函数。返回所有创建的KvStore数据库的storeId。 |
+
+**示例：**
+
+```TypeScript
+let kvManager;
+try {
+    kvManager.getAllKVStoreId('appId', function (err, data) {
+        console.log('GetAllKVStoreId success');
+        console.log('GetAllKVStoreId size = ' + data.length);
+    });
+} catch (e) {
+    console.log('GetAllKVStoreId e ' + e);
+}
+```
+
+## getAllKVStoreId
+
+```TypeScript
+getAllKVStoreId(appId: string): Promise<string[]>
+```
+
+获取所有通过 [getKVStore]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 方法创建的且没有调用 [deleteKVStore]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_ 方法删除的KVStore数据库的storeId，使用Promise异步回调。
+
+**起始版本：** 8
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** 9
+
+**替代接口：** ohos.data.distributedKVStore.KVManager#getAllKVStoreId
+
+<!--Device-KVManager-getAllKVStoreId(appId: string): Promise<string[]>--><!--Device-KVManager-getAllKVStoreId(appId: string): Promise<string[]>-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| appId | string | 是 | 所调用数据库方的包名。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;string[]&gt; | Promise对象。返回所有创建的KvStore数据库的storeId。 |
+
+**示例：**
+
+```TypeScript
+let kvManager;
+try {
+    console.log('GetAllKVStoreId');
+    kvManager.getAllKVStoreId('appId').then((data) => {
+        console.log('getAllKVStoreId success');
+        console.log('size = ' + data.length);
+    }).catch((err) => {
+        console.log('getAllKVStoreId err ' + JSON.stringify(err));
+    });
+} catch(e) {
+    console.log('getAllKVStoreId e ' + e);
+}
+```
+
+## getKVStore
+
+```TypeScript
+getKVStore<T extends KVStore>(storeId: string, options: Options): Promise<T>
+```
+
+通过指定Options和storeId，创建并获取KVStore数据库，使用Promise异步回调。
+
+**起始版本：** 7
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** 9
+
+**替代接口：** ohos.data.distributedKVStore.KVManager#getKVStore
+
+<!--Device-KVManager-getKVStore<T extends KVStore>(storeId: string, options: Options): Promise<T>--><!--Device-KVManager-getKVStore<T extends KVStore>(storeId: string, options: Options): Promise<T>-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| storeId | string | 是 | 数据库唯一标识符，长度不大于[MAX\_\_\_ESCAPED\_UNDERSCORE\_\_\_STORE\_\_\_ESCAPED\_UNDERSCORE\_\_\_ID\_\_\_ESCAPED\_UNDERSCORE\_\_\_LENGTH]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
+| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建KVStore实例的配置信息。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;T&gt; | Promise对象。返回创建的KVStore数据库实例。 |
+
+**示例：**
+
+```TypeScript
+let kvStore;
+let kvManager;
+try {
+    const options = {
+        createIfMissing : true,
+        encrypt : false,
+        backup : false,
+        autoSync : true,
+        kvStoreType : distributedData.KVStoreType.SINGLE_VERSION,
+        securityLevel : distributedData.SecurityLevel.S3,
+    };
+    kvManager.getKVStore('storeId', options).then((store) => {
+        console.log("getKVStore success");
+        kvStore = store;
+    }).catch((err) => {
+        console.log("getKVStore err: "  + JSON.stringify(err));
+    });
+} catch (e) {
+    console.log("An unexpected error occurred. Error:" + e);
+}
+```
+
+## getKVStore
+
+```TypeScript
+getKVStore<T extends KVStore>(storeId: string, options: Options, callback: AsyncCallback<T>): void
+```
+
+通过指定Options和storeId，创建并获取KVStore数据库，使用callback异步回调。
+
+**起始版本：** 7
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** 9
+
+**替代接口：** ohos.data.distributedKVStore.KVManager#getKVStore
+
+<!--Device-KVManager-getKVStore<T extends KVStore>(storeId: string, options: Options, callback: AsyncCallback<T>): void--><!--Device-KVManager-getKVStore<T extends KVStore>(storeId: string, options: Options, callback: AsyncCallback<T>): void-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| storeId | string | 是 | 数据库唯一标识符，长度不大于[MAX\_\_\_ESCAPED\_UNDERSCORE\_\_\_STORE\_\_\_ESCAPED\_UNDERSCORE\_\_\_ID\_\_\_ESCAPED\_UNDERSCORE\_\_\_LENGTH]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
+| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建KVStore实例的配置信息。 |
+| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; | 是 | 回调函数。返回创建的KVStore数据库实例。 |
+
+**示例：**
+
+```TypeScript
+let kvStore;
+let kvManager;
+try {
+    const options = {
+        createIfMissing : true,
+        encrypt : false,
+        backup : false,
+        autoSync : true,
+        kvStoreType : distributedData.KVStoreType.SINGLE_VERSION,
+        securityLevel : distributedData.SecurityLevel.S3,
+    };
+    kvManager.getKVStore('storeId', options, function (err, store) {
+        if (err) {
+            console.log("getKVStore err: "  + JSON.stringify(err));
+            return;
+        }
+        console.log("getKVStore success");
+        kvStore = store;
+    });
+} catch (e) {
+    console.log("An unexpected error occurred. Error:" + e);
+}
+```
+
+## off
+
+```TypeScript
+off(event: 'distributedDataServiceDie', deathCallback?: Callback<void>): void
+```
+
+取消订阅服务状态变更通知。
+
+**起始版本：** 8
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** 9
+
+**替代接口：** ohos.data.distributedKVStore.KVManager#off
+
+<!--Device-KVManager-off(event: 'distributedDataServiceDie', deathCallback?: Callback<void>): void--><!--Device-KVManager-off(event: 'distributedDataServiceDie', deathCallback?: Callback<void>): void-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| event | 'distributedDataServiceDie' | 是 | 取消订阅的事件名，固定为'distributedDataServiceDie'，即服务状态变更事件。 |
+| deathCallback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 否 | 取消订阅的函数。如不设置callback，则取消所有已订阅的函数。 |
+
+**示例：**
+
+```TypeScript
+let kvManager;
+try {
+    console.log('KVManagerOff');
+    const deathCallback = function () {
+        console.log('death callback call');
+    }
+    kvManager.off('distributedDataServiceDie', deathCallback);
+} catch (e) {
+    console.log("An unexpected error occurred. Error:" + e);
+}
+```
+
+## on
+
+```TypeScript
+on(event: 'distributedDataServiceDie', deathCallback: Callback<void>): void
+```
+
+订阅服务状态变更通知。
+
+**起始版本：** 8
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** 9
+
+**替代接口：** ohos.data.distributedKVStore.KVManager#on
+
+<!--Device-KVManager-on(event: 'distributedDataServiceDie', deathCallback: Callback<void>): void--><!--Device-KVManager-on(event: 'distributedDataServiceDie', deathCallback: Callback<void>): void-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| event | 'distributedDataServiceDie' | 是 | 订阅的事件名，固定为'distributedDataServiceDie'，即服务状态变更事件。 |
+| deathCallback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数。 |
+
+**示例：**
+
+```TypeScript
+let kvManager;
+try {
+    console.log('KVManagerOn');
+    const deathCallback = function () {
+        console.log('death callback call');
+    }
+    kvManager.on('distributedDataServiceDie', deathCallback);
+} catch (e) {
+    console.log("An unexpected error occurred. Error:" + e);
+}
+```
+

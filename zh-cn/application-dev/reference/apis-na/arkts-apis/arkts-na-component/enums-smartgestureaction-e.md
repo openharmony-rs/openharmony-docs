@@ -1,0 +1,120 @@
+# SmartGestureAction
+
+Define the actions for smart gesture shortcut.
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+
+<!--Device-unnamed-export declare enum SmartGestureAction--><!--Device-unnamed-export declare enum SmartGestureAction-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## NONE
+
+```TypeScript
+NONE = 0
+```
+
+No action.
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SmartGestureAction-NONE = 0--><!--Device-SmartGestureAction-NONE = 0-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## PAGE_FORWARD
+
+```TypeScript
+PAGE_FORWARD = 1
+```
+
+Page forward action.
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SmartGestureAction-PAGE_FORWARD = 1--><!--Device-SmartGestureAction-PAGE_FORWARD = 1-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## SCROLL_FORWARD
+
+```TypeScript
+SCROLL_FORWARD = 2
+```
+
+Scroll forward action.
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SmartGestureAction-SCROLL_FORWARD = 2--><!--Device-SmartGestureAction-SCROLL_FORWARD = 2-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## SELECT
+
+```TypeScript
+SELECT = 3
+```
+
+Select action.
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SmartGestureAction-SELECT = 3--><!--Device-SmartGestureAction-SELECT = 3-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## CLICK
+
+```TypeScript
+CLICK = 4
+```
+
+Click action.
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SmartGestureAction-CLICK = 4--><!--Device-SmartGestureAction-CLICK = 4-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## BACK_PRESS
+
+```TypeScript
+BACK_PRESS = 5
+```
+
+Back press action.
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SmartGestureAction-BACK_PRESS = 5--><!--Device-SmartGestureAction-BACK_PRESS = 5-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+

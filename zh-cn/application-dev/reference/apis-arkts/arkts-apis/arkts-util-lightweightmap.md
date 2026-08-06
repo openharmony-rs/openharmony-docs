@@ -1,0 +1,16 @@
+# @ohos.util.LightWeightMap
+
+## 汇总
+
+### 类
+
+| 名称 | 说明 |
+| --- | --- |
+| [LightWeightMap](arkts-arkts-util-lightweightmap-lightweightmap-c.md) | LightWeightMap可用于存储具有关联关系的key-value键值对，其中key值唯一，每个key对应一个value。 |
+
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [LightWeightMapCbFn](arkts-arkts-lightweightmapcbfn-t.md) | LightWeightMap中forEach方法的回调函数。 |
+

@@ -1,0 +1,25 @@
+# SubmitCallback
+
+```TypeScript
+export type SubmitCallback = (enterKey: EnterKeyType, event: SubmitEvent) => void
+```
+
+软键盘按下回车键时的回调事件。
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-unnamed-export type SubmitCallback = (enterKey: EnterKeyType, event: SubmitEvent) => void--><!--Device-unnamed-export type SubmitCallback = (enterKey: EnterKeyType, event: SubmitEvent) => void-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| enterKey | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 软键盘输入法回车键类型。具体类型见EnterKeyType枚举说明。  |
+| event | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 当提交的时候，提供保持组件编辑状态的方法。EnterKeyType指定为NEW\_LINE时，默认保持编辑态。  |
+

@@ -10,6 +10,8 @@ function reset(wallpaperType: WallpaperType, callback: AsyncCallback<void>): voi
 
 **起始版本：** 7
 
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
 **废弃版本：** 9
 
 **需要权限：** ohos.permission.SET_WALLPAPER
@@ -22,8 +24,8 @@ function reset(wallpaperType: WallpaperType, callback: AsyncCallback<void>): voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| wallpaperType | [WallpaperType](arkts-na-wallpaper-wallpapertype-e.md) | 是 |  |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，移除壁纸成功，error为undefined，否则返回error信息。 |
+| wallpaperType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 |  |
+| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数，移除壁纸成功，error为undefined，否则返回error信息。 |
 
 **示例：**
 
@@ -37,7 +39,6 @@ wallpaper.reset(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError)
     }
     console.info(`success to reset.`);
 });
-
 ```
 
 
@@ -51,6 +52,8 @@ function reset(wallpaperType: WallpaperType): Promise<void>
 
 **起始版本：** 7
 
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
 **废弃版本：** 9
 
 **需要权限：** ohos.permission.SET_WALLPAPER
@@ -63,7 +66,7 @@ function reset(wallpaperType: WallpaperType): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| wallpaperType | [WallpaperType](arkts-na-wallpaper-wallpapertype-e.md) | 是 |  |
+| wallpaperType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 |  |
 
 **返回值：**
 
@@ -81,6 +84,5 @@ wallpaper.reset(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
 }).catch((error: BusinessError) => {
     console.error(`failed to reset because: ${JSON.stringify(error)}`);
 });
-
 ```
 

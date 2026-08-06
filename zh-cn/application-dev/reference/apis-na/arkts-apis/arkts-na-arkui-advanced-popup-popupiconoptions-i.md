@@ -1,0 +1,118 @@
+# PopupIconOptions
+
+PopupIconOptions定义图标的属性。
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+<!--Device-unnamed-export interface PopupIconOptions--><!--Device-unnamed-export interface PopupIconOptions-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## borderRadius
+
+```TypeScript
+borderRadius?: Length | BorderRadiuses
+```
+
+设置图标圆角。 默认值：\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_
+
+**类型：** Length \| BorderRadiuses
+
+**默认值：** $r('sys.float.ohos_id_corner_radius_default_s')
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PopupIconOptions-borderRadius?: Length | BorderRadiuses--><!--Device-PopupIconOptions-borderRadius?: Length | BorderRadiuses-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## fillColor
+
+```TypeScript
+fillColor?: ResourceColor
+```
+
+设置图标填充颜色。仅针对svg图源生效。 默认不改变图标颜色。
+
+**类型：** ResourceColor
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PopupIconOptions-fillColor?: ResourceColor--><!--Device-PopupIconOptions-fillColor?: ResourceColor-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## height
+
+```TypeScript
+height?: Dimension
+```
+
+设置图标高度。 默认值：32VP
+
+**类型：** Dimension
+
+**默认值：** 32.0_vp
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PopupIconOptions-height?: Dimension--><!--Device-PopupIconOptions-height?: Dimension-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## image
+
+```TypeScript
+image?: ResourceStr
+```
+
+设置图标内容。 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。 **ArkTS-Sta起始版本：** 23
+
+**类型：** ResourceStr
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PopupIconOptions-image?: ResourceStr--><!--Device-PopupIconOptions-image?: ResourceStr-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## width
+
+```TypeScript
+width?: Dimension
+```
+
+设置图标宽度。 默认值：32VP
+
+**类型：** Dimension
+
+**默认值：** 32.0_vp
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PopupIconOptions-width?: Dimension--><!--Device-PopupIconOptions-width?: Dimension-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+

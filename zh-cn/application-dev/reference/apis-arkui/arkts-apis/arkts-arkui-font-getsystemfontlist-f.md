@@ -1,0 +1,56 @@
+# getSystemFontList
+
+## getSystemFontList
+
+```TypeScript
+function getSystemFontList(): Array<string>
+```
+
+获取系统字体列表。 该接口仅在PC/2in1设备上生效，在其他设备上返回空数组。 推荐使用[getSystemFontFullNamesByType]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_接口获取系统最新支持的字体列表数据。 > **说明：** > > -getSystemFontList需要先通过[UIContext]\_\_\_JSDOC\_LINK\_DESC\_USD\_4\_\_\_中的 > \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_方法获取 > [Font]\_\_\_JSDOC\_LINK\_DESC\_USD\_5\_\_\_对象，然后通过该对象进行调用。且直接使用getSystemFontList可能导致 > \_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_的问题。 > > - 从API version 10开始，可以通过使用[UIContext]\_\_\_JSDOC\_LINK\_DESC\_USD\_6\_\_\_中的 > \_\_\_MD\_LINK\_DESC\_USD\_2\_\_\_方法获取当前UI上下文关联的 > [Font]\_\_\_JSDOC\_LINK\_DESC\_USD\_7\_\_\_对象。
+
+**起始版本：** 10
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** 18
+
+**替代接口：** ohos.arkui.UIContext.Font#getSystemFontList
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-font-function getSystemFontList(): Array<string>--><!--Device-font-function getSystemFontList(): Array<string>-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Array&lt;string&gt; | 系统的字体名列表。 |
+
+**示例：**
+
+```TypeScript
+// xxx.ets
+import { font } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct FontExample {
+  fontList: Array<string> = new Array<string>();
+
+  build() {
+    Column() {
+      Button("getSystemFontList")
+        .width('60%')
+        .height('6%')
+        .onClick(() => {
+          this.fontList = font.getSystemFontList(); // 建议使用 this.getUIContext().getFont().getSystemFontList()接口
+        })
+    }.width('100%')
+  }
+}
+```
+

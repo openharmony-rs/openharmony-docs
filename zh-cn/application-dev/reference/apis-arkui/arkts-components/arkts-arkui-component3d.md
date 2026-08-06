@@ -1,0 +1,30 @@
+# Component3D
+
+定义Component3D组件.
+
+## Component3D
+
+```TypeScript
+Component3D(sceneOptions?: SceneOptions)
+```
+
+构造函数使用的SceneOptions
+
+**起始版本：** 12
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Component3DInterface-(sceneOptions?: SceneOptions): Component3DAttribute--><!--Device-Component3DInterface-(sceneOptions?: SceneOptions): Component3DAttribute-End-->
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**参数:**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| sceneOptions | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 3D场景控制器  |
+
+## 汇总
+

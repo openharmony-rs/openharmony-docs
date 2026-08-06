@@ -10,6 +10,8 @@ function getMinHeight(callback: AsyncCallback<number>): void
 
 **起始版本：** 7
 
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
 **废弃版本：** 9
 
 <!--Device-wallpaper-function getMinHeight(callback: AsyncCallback<number>): void--><!--Device-wallpaper-function getMinHeight(callback: AsyncCallback<number>): void-End-->
@@ -20,7 +22,7 @@ function getMinHeight(callback: AsyncCallback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 |  |
+| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;number&gt; | 是 |  |
 
 **示例：**
 
@@ -34,7 +36,6 @@ wallpaper.getMinHeight((error: BusinessError, data: Number) => {
     }
     console.info(`success to getMinHeight: ${JSON.stringify(data)}`);
 });
-
 ```
 
 
@@ -47,6 +48,8 @@ function getMinHeight(): Promise<number>
 获取壁纸的最小高度值。
 
 **起始版本：** 7
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
 **废弃版本：** 9
 
@@ -70,6 +73,5 @@ wallpaper.getMinHeight().then((data: Number) => {
 }).catch((error: BusinessError) => {
     console.error(`failed to getMinHeight because: ${JSON.stringify(error)}`);
 });
-
 ```
 

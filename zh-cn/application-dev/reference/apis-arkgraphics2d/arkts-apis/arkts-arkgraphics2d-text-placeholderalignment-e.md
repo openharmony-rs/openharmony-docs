@@ -1,0 +1,138 @@
+# PlaceholderAlignment
+
+占位符相对于周围文本的纵向对齐方式。 ! \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_ > **说明：** > > 示意图展示了后三种对齐方式，前三种对齐方式在文本基线对齐方式上类似，比较位置是文本基线，即绿色线条部分。 > > !\_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_
+
+**起始版本：** 12
+
+**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+
+<!--Device-text-enum PlaceholderAlignment--><!--Device-text-enum PlaceholderAlignment-End-->
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+## OFFSET_AT_BASELINE
+
+```TypeScript
+OFFSET_AT_BASELINE = 0
+```
+
+基线与文本基线对齐。
+
+**起始版本：** 12
+
+**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PlaceholderAlignment-OFFSET_AT_BASELINE = 0--><!--Device-PlaceholderAlignment-OFFSET_AT_BASELINE = 0-End-->
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+## ABOVE_BASELINE
+
+```TypeScript
+ABOVE_BASELINE = 1
+```
+
+底部与文本基线对齐。
+
+**起始版本：** 12
+
+**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PlaceholderAlignment-ABOVE_BASELINE = 1--><!--Device-PlaceholderAlignment-ABOVE_BASELINE = 1-End-->
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+## BELOW_BASELINE
+
+```TypeScript
+BELOW_BASELINE = 2
+```
+
+顶部与文本基线对齐。
+
+**起始版本：** 12
+
+**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PlaceholderAlignment-BELOW_BASELINE = 2--><!--Device-PlaceholderAlignment-BELOW_BASELINE = 2-End-->
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+## TOP_OF_ROW_BOX
+
+```TypeScript
+TOP_OF_ROW_BOX = 3
+```
+
+顶部与文本顶部对齐。
+
+**起始版本：** 12
+
+**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PlaceholderAlignment-TOP_OF_ROW_BOX = 3--><!--Device-PlaceholderAlignment-TOP_OF_ROW_BOX = 3-End-->
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+## BOTTOM_OF_ROW_BOX
+
+```TypeScript
+BOTTOM_OF_ROW_BOX = 4
+```
+
+底部与文本底部对齐。
+
+**起始版本：** 12
+
+**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PlaceholderAlignment-BOTTOM_OF_ROW_BOX = 4--><!--Device-PlaceholderAlignment-BOTTOM_OF_ROW_BOX = 4-End-->
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+## CENTER_OF_ROW_BOX
+
+```TypeScript
+CENTER_OF_ROW_BOX = 5
+```
+
+文本居中对齐。
+
+**起始版本：** 12
+
+**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PlaceholderAlignment-CENTER_OF_ROW_BOX = 5--><!--Device-PlaceholderAlignment-CENTER_OF_ROW_BOX = 5-End-->
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+## FOLLOW_PARAGRAPH
+
+```TypeScript
+FOLLOW_PARAGRAPH = 6
+```
+
+Follow Paragraph setting,
+
+**起始版本：** 20
+
+**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PlaceholderAlignment-FOLLOW_PARAGRAPH = 6--><!--Device-PlaceholderAlignment-FOLLOW_PARAGRAPH = 6-End-->
+
+**系统能力：** SystemCapability.Graphics.Drawing
+

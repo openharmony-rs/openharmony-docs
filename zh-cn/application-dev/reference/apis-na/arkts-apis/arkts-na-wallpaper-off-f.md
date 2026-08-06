@@ -10,6 +10,8 @@ function off(type: 'colorChange', callback?: (colors: Array<RgbaColor>, wallpape
 
 **起始版本：** 7
 
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
 **废弃版本：** 9
 
 <!--Device-wallpaper-function off(type: 'colorChange', callback?: (colors: Array<RgbaColor>, wallpaperType: WallpaperType) => void): void--><!--Device-wallpaper-function off(type: 'colorChange', callback?: (colors: Array<RgbaColor>, wallpaperType: WallpaperType) => void): void-End-->
@@ -48,6 +50,5 @@ try {
 } catch (error) {
     console.error(`failed to off because: ${JSON.stringify(error)}`);
 }
-
 ```
 

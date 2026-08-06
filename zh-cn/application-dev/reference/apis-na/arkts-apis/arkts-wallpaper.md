@@ -1,11 +1,10 @@
 # @ohos.wallpaper
 
-壁纸管理服务为OpenHarmony系统服务，提供壁纸切换功能。从API 9开始壁纸管理的接口调整为系统API，壁纸的切换只能通过系统应用来完成。壁纸管理提供壁纸切换通道，使用壁纸的应用（如：桌面）需订阅壁纸变化通知并刷新壁纸显示。
-> **说明：**  
->  
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.wallpaper (壁纸)](arkts-wallpaper.md)。
+壁纸管理服务为OpenHarmony系统服务，提供壁纸切换功能。从API 9开始壁纸管理的接口调整为系统API，壁纸的切换只能通过系统应用来完成。壁纸管理提供壁纸切换通道，使用壁纸的应用（如：桌面）需订阅壁纸变化通知并刷新壁纸显示。 > **说明：** > > 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.wallpaper (壁纸)]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
 
 **起始版本：** 7
+
+**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
 
 <!--Device-unnamed-declare namespace wallpaper--><!--Device-unnamed-declare namespace wallpaper-End-->
 
@@ -52,12 +51,14 @@
 | [getPixelMap](arkts-na-wallpaper-getpixelmap-f-sys.md#getpixelmap-1) | 获取壁纸图片的像素图。 |
 | [getWallpaperByState](arkts-na-wallpaper-getwallpaperbystate-f-sys.md#getwallpaperbystate) | 获取指定壁纸类型、折展态、横竖屏的壁纸图片的像素图，如果指定的壁纸不存在，会逐步降级匹配，unfolded-land -> unfolded-port ->normal-port。使用promise异步回调。 |
 | [off](arkts-na-wallpaper-off-f-sys.md#off-1) | 取消订阅壁纸变化通知事件。不支持多线程并发调用。 |
+| [offWallpaperChange](arkts-na-wallpaper-offwallpaperchange-f-sys.md#offwallpaperchange) | 取消订阅壁纸变化通知事件。不支持多线程并发调用。 |
 | [on](arkts-na-wallpaper-on-f-sys.md#on-1) | 订阅壁纸变化通知事件。不支持多线程并发调用。 |
+| [onWallpaperChange](arkts-na-wallpaper-onwallpaperchange-f-sys.md#onwallpaperchange) | 订阅壁纸变化通知事件。不支持多线程并发调用。 |
 | [restore](arkts-na-wallpaper-restore-f-sys.md#restore) | 移除指定类型的壁纸，恢复为默认显示的壁纸。使用callback异步回调。 |
 | [restore](arkts-na-wallpaper-restore-f-sys.md#restore-1) | 移除指定类型的壁纸，恢复为默认显示的壁纸。使用promise异步回调。 |
 | [setAllWallpapers](arkts-na-wallpaper-setallwallpapers-f-sys.md#setallwallpapers) | 设置设备所有形态的壁纸。使用promise异步回调。（包括折展状态、横竖屏状态、资源路径，其中NORMAL-PORT为必选） |
-| [setCustomWallpaper](arkts-na-wallpaper-setcustomwallpaper-f-sys.md#setcustomwallpaper) | 将指定的zip资源包设置为桌面或锁屏的壁纸资源，仅当com.ohos.sceneboard存在时，支持使用该接口。且具有ohos.permission.GET_WALLPAPER权限的应用可以访问/data/wallpaper/目录获取设置的资源。使用callback异步回调。 |
-| [setCustomWallpaper](arkts-na-wallpaper-setcustomwallpaper-f-sys.md#setcustomwallpaper-1) | 将指定的zip资源包设置为桌面或锁屏的壁纸资源，仅当com.ohos.sceneboard存在时，支持使用该接口。且具有ohos.permission.GET_WALLPAPER权限的应用可以访问/data/wallpaper/目录获取设置的资源。使用Promise异步回调。 |
+| [setCustomWallpaper](arkts-na-wallpaper-setcustomwallpaper-f-sys.md#setcustomwallpaper) | 将指定的zip资源包设置为桌面或锁屏的壁纸资源，仅当com.ohos.sceneboard存在时，支持使用该接口。且具有ohos.permission.GET\_\_\_ESCAPED\_UNDERSCORE\_\_\_WALLPAPER权限的应用可以访问/data/wallpaper/目 录获取设置的资源。使用callback异步回调。 |
+| [setCustomWallpaper](arkts-na-wallpaper-setcustomwallpaper-f-sys.md#setcustomwallpaper-1) | 将指定的zip资源包设置为桌面或锁屏的壁纸资源，仅当com.ohos.sceneboard存在时，支持使用该接口。且具有ohos.permission.GET\_\_\_ESCAPED\_UNDERSCORE\_\_\_WALLPAPER权限的应用可以访问/data/wallpaper/目 录获取设置的资源。使用Promise异步回调。 |
 | [setImage](arkts-na-wallpaper-setimage-f-sys.md#setimage) | 将指定资源设置为指定类型的壁纸。使用callback异步回调。 |
 | [setImage](arkts-na-wallpaper-setimage-f-sys.md#setimage-1) | 将指定资源设置为指定类型的壁纸。使用promise异步回调。 |
 | [setVideo](arkts-na-wallpaper-setvideo-f-sys.md#setvideo) | 将视频资源设置为桌面或锁屏的动态壁纸。使用callback异步回调。 |
@@ -93,4 +94,10 @@
 | [RotateState](arkts-na-wallpaper-rotatestate-e-sys.md) | 定义设备的横竖屏状态枚举类型。 |
 | [WallpaperResourceType](arkts-na-wallpaper-wallpaperresourcetype-e-sys.md) | 定义壁纸资源的枚举类型。 |
 <!--DelEnd-->
+
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [WallpaperChangeObserver](arkts-na-wallpaper-wallpaperchangeobserver-t.md) | 定义壁纸变化的监听回调函数。 |
 

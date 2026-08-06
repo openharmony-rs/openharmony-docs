@@ -10,6 +10,8 @@ function setImage(source: string | image.PixelMap, wallpaperType: WallpaperType,
 
 **起始版本：** 9
 
+**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+
 **需要权限：** ohos.permission.SET_WALLPAPER
 
 <!--Device-wallpaper-function setImage(source: string | image.PixelMap, wallpaperType: WallpaperType, callback: AsyncCallback<void>): void--><!--Device-wallpaper-function setImage(source: string | image.PixelMap, wallpaperType: WallpaperType, callback: AsyncCallback<void>): void-End-->
@@ -23,8 +25,8 @@ function setImage(source: string | image.PixelMap, wallpaperType: WallpaperType,
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | source | string \| image.PixelMap | 是 | JPEG或PNG文件的Uri路径，或者PNG格式文件的位图。 |
-| wallpaperType | [WallpaperType](arkts-na-wallpaper-wallpapertype-e.md) | 是 | 壁纸类型。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，设置壁纸成功，error为undefined，否则返回error信息。 |
+| wallpaperType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 壁纸类型。 |
+| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数，设置壁纸成功，error为undefined，否则返回error信息。 |
 
 **错误码：**
 
@@ -69,7 +71,6 @@ imageSource.createPixelMap(opts).then((pixelMap: image.PixelMap) => {
 }).catch((error: BusinessError) => {
     console.error(`failed to createPixelMap. Code: ${error.code}, Message: ${error.message}`);
 });
-
 ```
 
 
@@ -82,6 +83,8 @@ function setImage(source: string | image.PixelMap, wallpaperType: WallpaperType)
 将指定资源设置为指定类型的壁纸。使用promise异步回调。
 
 **起始版本：** 9
+
+**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
 
 **需要权限：** ohos.permission.SET_WALLPAPER
 
@@ -96,7 +99,7 @@ function setImage(source: string | image.PixelMap, wallpaperType: WallpaperType)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | source | string \| image.PixelMap | 是 | JPEG或PNG文件的Uri路径，或者PNG格式文件的位图。 |
-| wallpaperType | [WallpaperType](arkts-na-wallpaper-wallpapertype-e.md) | 是 | 壁纸类型。 |
+| wallpaperType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 壁纸类型。 |
 
 **返回值：**
 
@@ -143,6 +146,5 @@ imageSource.createPixelMap(opts).then((pixelMap: image.PixelMap) => {
 }).catch((error: BusinessError) => {
     console.error(`failed to createPixelMap. Code: ${error.code}, Message: ${error.message}`);
 });
-
 ```
 

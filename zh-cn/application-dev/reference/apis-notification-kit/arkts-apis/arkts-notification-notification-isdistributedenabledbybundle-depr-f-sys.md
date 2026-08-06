@@ -1,0 +1,70 @@
+# isDistributedEnabledByBundle（系统接口）
+
+## isDistributedEnabledByBundle
+
+```TypeScript
+function isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback<boolean>): void
+```
+
+根据应用的包获取应用程序是否支持分布式通知（Callback形式）。
+
+**起始版本：** 8
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** 9
+
+**替代接口：** ohos.notificationManager/notificationManager#isDistributedEnabledByBundle
+
+**需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
+
+<!--Device-notification-function isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback<boolean>): void--><!--Device-notification-function isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback<boolean>): void-End-->
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| bundle | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 应用的包。 |
+| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;boolean&gt; | 是 | 查询指定应用是否支持分布式通知的回调函数。 |
+
+
+## isDistributedEnabledByBundle
+
+```TypeScript
+function isDistributedEnabledByBundle(bundle: BundleOption): Promise<boolean>
+```
+
+查询指定应用是否支持分布式通知（Promise形式）。
+
+**起始版本：** 8
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** 9
+
+**替代接口：** ohos.notificationManager/notificationManager#isDistributedEnabledByBundle
+
+**需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
+
+<!--Device-notification-function isDistributedEnabledByBundle(bundle: BundleOption): Promise<boolean>--><!--Device-notification-function isDistributedEnabledByBundle(bundle: BundleOption): Promise<boolean>-End-->
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| bundle | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 应用的包。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;boolean&gt; | Promise方式返回指定应用是否支持分布式通知的结果。 |
+

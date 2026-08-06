@@ -1,0 +1,32 @@
+# EnvDecorator
+
+```TypeScript
+declare type EnvDecorator = (value: SystemProperties) => PropertyDecorator
+```
+
+定义EnvDecorator属性装饰器类型。
+
+**起始版本：** 22
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-unnamed-declare type EnvDecorator = (value: SystemProperties) => PropertyDecorator--><!--Device-unnamed-declare type EnvDecorator = (value: SystemProperties) => PropertyDecorator-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 环境变量属性名，用于指定要获取的系统环境变量。  |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| PropertyDecorator | 属性装饰器，开发者无需关注该返回值。 |
+

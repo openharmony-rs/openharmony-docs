@@ -1,0 +1,56 @@
+# MenuOptions
+
+Defines the menu options.
+
+**继承/实现关系：** MenuOptions extends [ContextMenuOptions](common-contextmenuoptions-i.md)
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+<!--Device-unnamed-export declare interface MenuOptions extends ContextMenuOptions--><!--Device-unnamed-export declare interface MenuOptions extends ContextMenuOptions-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## showInSubWindow
+
+```TypeScript
+showInSubWindow?: boolean
+```
+
+Whether to display in the sub window.
+
+**类型：** boolean
+
+**默认值：** true for 2-in-1 devices and false for other devices
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-MenuOptions-showInSubWindow?: boolean--><!--Device-MenuOptions-showInSubWindow?: boolean-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## title
+
+```TypeScript
+title?: ResourceStr
+```
+
+Sets the title of the menu window.
+
+**类型：** ResourceStr
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-MenuOptions-title?: ResourceStr--><!--Device-MenuOptions-title?: ResourceStr-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+

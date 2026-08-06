@@ -10,6 +10,8 @@ function getWallpaperByState(wallpaperType: WallpaperType, foldState: FoldState,
 
 **起始版本：** 14
 
+**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+
 **需要权限：** ohos.permission.GET_WALLPAPER
 
 <!--Device-wallpaper-function getWallpaperByState(wallpaperType: WallpaperType, foldState: FoldState, rotateState: RotateState): Promise<image.PixelMap>--><!--Device-wallpaper-function getWallpaperByState(wallpaperType: WallpaperType, foldState: FoldState, rotateState: RotateState): Promise<image.PixelMap>-End-->
@@ -22,9 +24,9 @@ function getWallpaperByState(wallpaperType: WallpaperType, foldState: FoldState,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| wallpaperType | [WallpaperType](arkts-na-wallpaper-wallpapertype-e.md) | 是 | 壁纸类型。 |
-| foldState | [FoldState](arkts-na-wallpaper-foldstate-e-sys.md) | 是 | 折展状态类型。 |
-| rotateState | [RotateState](arkts-na-wallpaper-rotatestate-e-sys.md) | 是 | 横竖屏状态类型。 |
+| wallpaperType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 壁纸类型。 |
+| foldState | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 折展状态类型。 |
+| rotateState | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 横竖屏状态类型。 |
 
 **返回值：**
 
@@ -36,7 +38,7 @@ function getWallpaperByState(wallpaperType: WallpaperType, foldState: FoldState,
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter error. Possible causes:1.Mandatory parameters are left unspecified.2.The type must be WallpaperType, parameter range must be WALLPAPER_LOCKSCREEN or WALLPAPER_SYSTEM.3.The type must be FoldState, parameter range must be NORMAL or UNFOLD_ONCE_STATE or UNFOLD_TWICE_STATE.4.The type must be RotateState, parameter range must be PORTRAIT or LANDSCAPE. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter error. Possible causes:1.Mandatory parameters are left unspecified.2.The type must be WallpaperType, parameter range must be WALLPAPER\_\_\_ESCAPED\_UNDERSCORE\_\_\_LOCKSCREEN or WALLPAPER\_\_\_ESCAPED\_UNDERSCORE\_\_\_SYSTEM.3.The type must be FoldState, parameter range must be NORMAL or UNFOLD\_\_\_ESCAPED\_UNDERSCORE\_\_\_ONCE\_\_\_ESCAPED\_UNDERSCORE\_\_\_STATE or UNFOLD\_\_\_ESCAPED\_UNDERSCORE\_\_\_TWICE\_\_\_ESCAPED\_UNDERSCORE\_\_\_STATE.4.The type must be RotateState, parameter range must be PORTRAIT or LANDSCAPE. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | permission verification failed, application which is not a system application uses system API. |
 
@@ -52,6 +54,5 @@ wallpaper.getWallpaperByState(wallpaper.WallpaperType.WALLPAPER_SYSTEM,wallpaper
 }).catch((error: BusinessError) => {
   console.error(`failed to getWallpaperByState. Code: ${error.code}, Message: ${error.message}`);
 });
-
 ```
 

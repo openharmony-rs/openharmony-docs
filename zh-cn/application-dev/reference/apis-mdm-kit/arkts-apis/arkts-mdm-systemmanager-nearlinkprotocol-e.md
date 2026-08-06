@@ -1,0 +1,48 @@
+# NearLinkProtocol
+
+星闪协议枚举。
+
+**起始版本：** 20
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+<!--Device-systemManager-enum NearLinkProtocol--><!--Device-systemManager-enum NearLinkProtocol-End-->
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+## SSAP
+
+```TypeScript
+SSAP = 0
+```
+
+SSAP（SparkLink Service Access Protocol）协议。
+
+**起始版本：** 20
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-NearLinkProtocol-SSAP = 0--><!--Device-NearLinkProtocol-SSAP = 0-End-->
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+## DATA_TRANSFER
+
+```TypeScript
+DATA_TRANSFER = 1
+```
+
+数据传输协议。
+
+**起始版本：** 20
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-NearLinkProtocol-DATA_TRANSFER = 1--><!--Device-NearLinkProtocol-DATA_TRANSFER = 1-End-->
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+

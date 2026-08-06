@@ -1,0 +1,34 @@
+# BackupPriority（系统接口）
+
+控制备份和恢复的优先级顺序。
+
+**起始版本：** 12
+
+**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+
+<!--Device-backup-interface BackupPriority--><!--Device-backup-interface BackupPriority-End-->
+
+**系统能力：** SystemCapability.FileManagement.StorageService.Backup
+
+**系统接口：** 此接口为系统接口。
+
+## priority
+
+```TypeScript
+priority?: int
+```
+
+应用的优先级，数值越大优先级越高。
+
+**类型：** int
+
+**起始版本：** 12
+
+**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+
+<!--Device-BackupPriority-priority?: int--><!--Device-BackupPriority-priority?: int-End-->
+
+**系统能力：** SystemCapability.FileManagement.StorageService.Backup
+
+**系统接口：** 此接口为系统接口。
+
