@@ -41,8 +41,6 @@
 
 - WebNativeMessagingExtensionAbility仅用于浏览器扩展与应用通信场景，不支持如后台服务等其他场景使用。
 
-- 应用包名仅允许使用英文字母、数字、下划线（_）、点号（.），不可包含大写字母。
-
 ## 运作机制
 
 ### 整体流程
@@ -208,8 +206,6 @@ function sendMessageToNative() {
     └
    ```
 3. 在MyWebNativeMessageExtAbility.ets文件中，增加导入[WebNativeMessagingExtensionAbility](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md)的依赖包，自定义类继承WebNativeMessagingExtensionAbility组件并实现生命周期回调。
-
-  <!-- @[web_native_messaging_extension_ability](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb/WebExtension/ExtensionApp/entry/src/main/ets/MyWebNativeMessageExtAbility/MyWebNativeMessageExtAbility.ets) -->
 
    ```ts
    import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
