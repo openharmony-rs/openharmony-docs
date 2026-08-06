@@ -90,7 +90,7 @@ let faceAuthManager = new faceAuth.FaceAuthManager();
 
 setSurfaceId(surfaceId: string): void
 
-用于在录入人脸时设置人脸预览界面的SurfaceId。该接口需要配合[addCredential](../apis-basic-services-kit/js-apis-osAccount-sys.md#addcredential8)使用，通过[getXComponentSurfaceId](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9)方法获取Xcomponent组件的SurfaceId来显示人脸预览画面。
+用于在录入人脸时设置人脸预览界面的SurfaceId。该接口需要配合[addCredential](../apis-basic-services-kit/js-apis-osAccount-sys.md#addcredential8)使用，通过[getXComponentSurfaceId](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9)方法获取XComponent组件的SurfaceId来显示人脸预览画面。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.FaceAuth
 
