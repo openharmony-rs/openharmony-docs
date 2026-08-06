@@ -354,7 +354,7 @@ GSMA SGP.22规范，定义eUICC与SM-DP+之间的远程配置文件管理协议�
 
 ### SIM Application Toolkit；SIM应用工具包
 
-3GPP/ETSI定义的主动式命令机制，允许SIM卡主动与终端交互（下发菜单、刷新、呼叫控制等），终端通过信封命令上报事件、终端响应回应对主动指令。
+3GPP/ETSI定义的主动式命令机制，允许SIM卡主动与终端交互（下发菜单、刷新、呼叫控制等），终端通过信封命令上报事件、终端响应主动指令。
 
 ### SIM Authentication；SIM卡鉴权
 
