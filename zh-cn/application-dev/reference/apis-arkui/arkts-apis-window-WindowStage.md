@@ -2035,7 +2035,7 @@ export default class EntryAbility extends UIAbility {
 
 removeImageForRecent(): Promise&lt;void&gt;
 
-移除应用设置的在多任务中和Dock栏悬停时显示的图片，下次进多任务查看应用卡片时生效，使用Promise异步回调。调用该接口前，建议先通过[loadContent](#loadcontent9)方法或者[setUIContent](arkts-apis-window-Window.md#setuicontent9-1)方法完成页面加载。
+移除应用设置的在多任务中和Dock栏悬停时显示的图片，下次进多任务查看应用卡片时生效，使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
