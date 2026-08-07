@@ -43,7 +43,7 @@ CryptoExtensionAbility是Stage模型中扩展组件[ExtensionAbility](../../appl
 
 ### Provider与Ability管理
 
-一个Provider可以关联多个CryptoExtensionAbility。建议使用一对一匹配
+一个Provider可以关联多个CryptoExtensionAbility。建议使用时按一对一方式进行匹配。
 
 - Provider名称长度最大为128字节，建议包含外部密钥管理能力提供方信息以保证全局唯一。
 - 整个系统最多支持注册**10个**CryptoExtensionAbility Provider，超过限制时registerProvider接口返回HUKS_ERR_CODE_EXCEED_LIMIT。
@@ -163,7 +163,9 @@ CryptoExtensionAbility接口按职责可分为7个能力域，部分能力域在
 
 - 必实现属性：在PIN认证流程中，HUKS框架会传入propertyId（SKF_ExportPublicKey），调用onGetProperty获取公钥，用于加密后续传入的PIN。密钥管理扩展应用必须实现SKF_ExportPublicKey属性。
 
-> 建议：建议使用GM/T 0016-2023定义的SKF标准函数名作为propertyId，以保证不同厂商之间的互操作性。
+>**说明**
+>
+> 建议使用GM/T 0016-2023定义的SKF标准函数名作为propertyId，以保证不同厂商之间的互操作性。
 
 ### 资源标识
 
@@ -179,9 +181,9 @@ CryptoExtensionAbility接口按职责可分为7个能力域，部分能力域在
 
 ## 典型场景
 
-CryptoExtensionAbility接口按起始API版本分为两组：API22提供基础能力，API26在此基础上扩展增强能力。密钥管理扩展应用需根据目标API版本评估实现范围。
+CryptoExtensionAbility接口按起始API版本分为两组：API版本22提供基础能力，API版本26.0.0在此基础上扩展增强能力。密钥管理扩展应用需根据目标API版本评估实现范围。
 
-浏览器双向SSL登录在API版本22即可实现；若需在同一扩展中支持"在UKey上生成新证书并自动导入"，则需升级到API版本26并实现onGenerateKeyItem与onImportCertificate。
+浏览器双向SSL登录在API版本22即可实现；若需在同一扩展中支持“在UKey上生成新证书并自动导入”，则需升级到API版本26.0.0并实现onGenerateKeyItem与onImportCertificate。
 
 ### 基础能力
 
@@ -203,14 +205,14 @@ API版本22提供以下接口，支撑典型场景如浏览器双向SSL登录、
 
 ### 增强能力
 
-API版本26在API版本22的基础上新增以下接口，支持更灵活的资源标识、密钥本地化生成、密钥迁移等场景。
+API版本26.0.0在API版本22的基础上新增以下接口，支持更灵活的资源标识、密钥本地化生成、密钥迁移等场景。
 
 | 能力域 | 接口 | 起始版本 |
 | --- | --- | --- |
-| 资源标识 | onGetResourceId | 26+ |
-| 密钥生成/导入/导出 | onGenerateKeyItem、onExportKeyItem、onImportWrappedKeyItem | 26+ |
-| 证书查询与导入 | onImportCertificate | 26+ |
-| 属性查询与设置 | onSetProperty | 26+ |
+| 资源标识 | onGetResourceId | 26.0.0+ |
+| 密钥生成/导入/导出 | onGenerateKeyItem、onExportKeyItem、onImportWrappedKeyItem | 26.0.0+ |
+| 证书查询与导入 | onImportCertificate | 26.0.0+ |
+| 属性查询与设置 | onSetProperty | 26.0.0+ |
 
 在API版本22基础上新增可支撑的场景：
 
