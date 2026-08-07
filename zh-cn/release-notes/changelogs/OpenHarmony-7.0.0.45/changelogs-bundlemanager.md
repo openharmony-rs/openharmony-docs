@@ -34,12 +34,12 @@
 
 **适配指导**
 
-若设置默认浏览器，需要按照[受限权限申请指导](../../../application-dev/security/AccessToken/declare-permissions-in-acl.md)申请默认浏览器权限（ohos.permission.DEFAULT_WEB_BROWSER）。
+若设置默认浏览器，需要按照[受限权限申请指导](../../../application-dev/security/AccessToken/declare-permissions-in-acl.md)申请默认浏览器权限（ohos.permission.DEFAULT_WEB_BROWSER）。权限授权后，在配置文件中[声明权限](../../../application-dev/security/AccessToken/declare-permissions.md)。
 
 可申请默认浏览器权限的特殊场景和功能：
 
-默认浏览器权限面向浏览器类应用，用于将应用设置为系统默认浏览器，接管系统及第三方应用发出的网页链接打开请求，统一管理网页内容的跳转与展示。
+- 默认浏览器权限面向浏览器类应用，用于将应用设置为系统默认浏览器，接管系统及第三方应用发出的网页链接打开请求，统一管理网页内容的跳转与展示。
 
-仅满足浏览器品类标准，并通过安全、隐私、用户体验三项审核的应用方可申请此权限。
+- 仅满足浏览器品类标准，并通过安全、隐私、用户体验三项审核的应用方可申请此权限。
 
 权限授权后，在配置文件中[声明权限](../../../application-dev/security/AccessToken/declare-permissions.md)。
