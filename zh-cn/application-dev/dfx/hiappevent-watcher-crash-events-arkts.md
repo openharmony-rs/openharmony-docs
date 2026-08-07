@@ -70,11 +70,11 @@
       });
     }
     
-    if (deviceInfo.sdkApiVersion >= 24) {  // API Version 24及以后版本，支持设置页面切换日志
+    if (deviceInfo.sdkApiVersion >= 24) {
       let crashEventPolicy : hiAppEvent.EventPolicy = {
         "appCrashPolicy": { // 崩溃事件配置策略
-          "pageSwitchLogEnable": true, // 使能页面切换日志
-          "collectMinidump": true // native崩溃场景，使能minidump
+          "pageSwitchLogEnable": true, // 使能页面切换日志（起始版本为API Version 24）
+          "collectMinidump": true // native崩溃场景，使能minidump（起始版本为API Version 26.0.0）
         }
       };
       // 开发者可以设置崩溃事件配置策略
