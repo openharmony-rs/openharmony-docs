@@ -210,8 +210,8 @@
 | isSupportPrev          | boolean  | 否   | 否   | 是否支持上一首。true表示支持，false表示不支持。无默认值。|
 | isSupportQuickForward  | boolean  | 否   | 否   | 是否支持快进。true表示支持，false表示不支持。无默认值。|
 | isSupportQuickBackward | boolean  | 否   | 否   | 是否支持快退。true表示支持，false表示不支持。无默认值。|
-| quickForwardStep       | number     | 否   | 否   | 快进的步长，单位为毫秒（ms）。                           |
-| quickBackwardStep      | number     | 否   | 否   | 快退的步长，单位为毫秒（ms）。                        |
+| quickForwardStep       | number     | 否   | 否   | 快进的步长，单位：ms。                      |
+| quickBackwardStep      | number     | 否   | 否   | 快退的步长，单位：ms。                  |
 | isSupportSkipHead      | boolean  | 否   | 否   | 是否支持跳过开头。true表示支持，false表示不支持。无默认值。|
 | isSupportSkipTail      | boolean  | 否   | 否   | 是否支持跳过结尾。true表示支持，false表示不支持。无默认值。|
 | isSupportPlayMode      | boolean  | 否   | 否   | 是否支持切换播放模式。true表示支持，false表示不支持。无默认值。|
@@ -220,8 +220,8 @@
 | currentPlayRate        | string   | 否   | 否   | 当前的播放速率。                            |
 | isSupportSoundQuality  | boolean  | 否   | 否   | 是否支持声音质量。true表示支持，false表示不支持。无默认值。|
 | isSupportSoundEffect   | boolean  | 否   | 否   | 是否支持音效。true表示支持，false表示不支持。无默认值。|
-| totalDuration          | number     | 否   | 否   | 播放总时长，单位为毫秒（ms）。                            |
-| currentPlayDuration    | number     | 否   | 否   | 当前播放的时长，单位为毫秒（ms）。                         |
+| totalDuration          | number     | 否   | 否   | 播放总时长，单位：ms。                       |
+| currentPlayDuration    | number     | 否   | 否   | 当前播放的时长，单位：ms。                         |
 | isSupportProgress      | boolean  | 否   | 否   | 是否支持进度。true表示支持，false表示不支持。默认值为true。 |
 
 ## FavoriteData
@@ -257,7 +257,7 @@
 
 ## SettingContent
 
-设置内容的定义（音频模板里有定义设置页面，设置内容用于设置页的填充）。
+设置内容的定义。用于在音频模板的设置页面中展示或配置相关内容。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -354,7 +354,7 @@
 
 ## CustomElement
 
-“我的主页”自定义元素的定义。继承自[OperResult](#operresult)。
+“我的主页”（应用内用户个人主页）自定义元素的定义。继承自[OperResult](#operresult)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -386,7 +386,7 @@
 
 ## SearchPlayInfo
 
-搜播信息的定义。
+搜播（搜索播放）信息的定义。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
