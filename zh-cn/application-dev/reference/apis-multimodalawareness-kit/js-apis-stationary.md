@@ -70,7 +70,7 @@ type ActivityType = 'still' | 'relativeStill'
 
 on(activity: ActivityType, event: ActivityEvent, reportLatencyNs: number, callback: Callback&lt;ActivityResponse&gt;): void
 
-订阅设备状态变化事件。当设备满足指定状态条件时，系统会触发回调函数上报状态变化事件，适用于运动检测等场景。调用on()后，必须在不使用时调用off()取消订阅，避免多余的性能功耗开销。
+订阅设备状态变化事件。当设备满足指定状态条件时，系统会触发回调函数上报状态变化事件。调用on()后，必须在不使用时调用off()取消订阅，避免多余的性能功耗开销。
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Stationary
 

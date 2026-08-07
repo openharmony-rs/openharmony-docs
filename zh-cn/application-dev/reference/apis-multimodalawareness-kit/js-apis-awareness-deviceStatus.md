@@ -6,7 +6,7 @@
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
 
-本模块提供对设备状态的感知能力，通过传感器实时感知设备物理状态，可帮助开发者根据设备物理状态调整应用行为。适用于视频播放应用检测支架态后自动切换横屏播放、阅读应用根据设备姿态调整显示方向等场景，开发者可据此自动调整UI布局和功能模式，提升用户体验。
+本模块提供对设备状态的感知能力，通过传感器实时感知设备物理状态，可帮助开发者根据设备物理状态调整应用行为。
 
 > **说明：**
 >
@@ -72,7 +72,7 @@
 
 off(type: 'steadyStandingDetect', callback?: Callback&lt;SteadyStandingStatus&gt;): void
 
-取消订阅设备静止姿态感知（支架态）事件，用于应用在退出页面或不再需要监听支架态变化的场景。调用后释放相关资源。需要先调用on方法订阅后，才能调用此方法取消订阅。
+取消订阅设备静止姿态感知（支架态）事件，用于应用在退出页面或不再需要监听支架态变化的场景。调用后释放相关资源。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DeviceStatus
 
@@ -81,7 +81,7 @@ off(type: 'steadyStandingDetect', callback?: Callback&lt;SteadyStandingStatus&gt
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                           | 是   | 事件类型。取值为'steadyStandingDetect'，表示设备静止姿态（支架态）感知。 |
-| callback | Callback&lt;[SteadyStandingStatus](#steadystandingstatus)&gt; | 否   | 要注销的回调函数，需与订阅时传入的回调函数一致。如哦若不填，则取消当前监听该事件的所有回调函数。 |
+| callback | Callback&lt;[SteadyStandingStatus](#steadystandingstatus)&gt; | 否   | 要注销的回调函数，需与订阅时传入的回调函数一致。若不填，则取消当前监听该事件的所有回调函数。 |
 
 **错误码**：
 
