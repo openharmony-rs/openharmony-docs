@@ -31,8 +31,8 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | 名称 | 类型 | 只读 | 说明 |
 | -------- | -------- | -------- | -------- |
 | deviceType | string | 是 | 设备类型。详细请参考[deviceTypes标签](../../quick-start/module-configuration-file.md#devicetypes标签)。<br/>**原子化服务API**：从API版本11开始，该接口支持在原子化服务中使用。<br/>示例：<!--RP1-->wearable<!--RP1End-->|
-| manufacture | string | 是 | 设备厂家名称。<br/>示例：HUAWEI |
-| brand | string | 是 | 设备品牌名称。<br/>**原子化服务API**：从API版本11开始，该接口支持在原子化服务中使用。<br/>示例：HUAWEI |
+| manufacture | string | 是 | 设备厂家名称。 |
+| brand | string | 是 | 设备品牌名称。<br/>**原子化服务API**：从API版本11开始，该接口支持在原子化服务中使用。 |
 | marketName | string | 是 | 外部产品系列。<br/>示例：<!--RP2-->Mate XX<!--RP2End--> |
 | productSeries | string | 是 | 产品系列。<br/>示例：<!--RP3-->TAS<!--RP3End--> |
 | productModel | string | 是 | 认证型号。<br/>**原子化服务API**：从API版本11开始，该接口支持在原子化服务中使用。<br/>示例：<!--RP4-->TAS-AL00<!--RP4End--> |
@@ -56,7 +56,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | sdkMinorApiVersion | number | 是 | 系统软件Minor API版本。**从** API 26.0.0 版本开始，系统API版本格式：sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**起始版本**：26.0.0<br/>**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>示例：0 |
 | sdkPatchApiVersion | number | 是 | 系统软件Patch API版本。**从** API 26.0.0 版本开始，系统API版本格式：sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**起始版本**：26.0.0<br/>**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>示例：0 |
 | firstApiVersion | number | 是 | 首个版本系统软件API版本。<br/>示例：3 |
-| versionId | string | 是 | 版本ID。由deviceType、manufacture、brand、productSeries、osFullName、productModel、softwareModel、sdkApiVersion、incrementalVersion、buildType拼接组成。<br/>示例：wearable/HUAWEI/HUAWEI/TAS/OpenHarmony-5.0.0.1/TAS-AL00/TAS-AL00/12/default/release:nolog |
+| versionId | string | 是 | 版本ID。由deviceType、manufacture、brand、productSeries、osFullName、productModel、softwareModel、sdkApiVersion、incrementalVersion、buildType拼接组成。 |
 | buildType | string | 是 | 构建类型。<br/>示例：default |
 | buildUser | string | 是 | 构建用户。<br/>示例：default |
 | buildHost | string | 是 | 构建主机。<br/>示例：default |
@@ -94,11 +94,11 @@ import { deviceInfo } from '@kit.BasicServicesKit';
     console.info('the value of the deviceType is :' + deviceTypeInfo);
 
     let manufactureInfo: string = deviceInfo.manufacture;
-    // 输出结果：the value of the manufacture is :HUAWEI
+    // 输出结果：the value of the manufacture is :XXXX
     console.info('the value of the manufactureInfo is :' + manufactureInfo);
 
     let brandInfo: string = deviceInfo.brand;
-    // 输出结果：the value of the brand is :HUAWEI
+    // 输出结果：the value of the brand is :XXXX
     console.info('the value of the device brand is :' + brandInfo);
 
     let marketNameInfo: string = deviceInfo.marketName;
@@ -189,7 +189,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
     console.info('the value of the deviceInfo firstApiVersion is :' + firstApiVersionInfo);
 
     let versionIdInfo: string = deviceInfo.versionId;
-    // 输出结果：the value of the versionId is :wearable/HUAWEI/HUAWEI/TAS/OpenHarmony-5.0.0.1/TAS-AL00/TAS-AL00/12/default/release:nolog
+    // 输出结果：the value of the versionId is :wearable/XXXX/XXXX/TAS/OpenHarmony-5.0.0.1/TAS-AL00/TAS-AL00/12/default/release:nolog
     console.info('the value of the deviceInfo versionId is :' + versionIdInfo);
 
     let buildTypeInfo: string = deviceInfo.buildType;
