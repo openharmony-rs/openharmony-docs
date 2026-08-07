@@ -326,7 +326,9 @@
 
    ``` TypeScript
    import { avMusicTemplate } from '@kit.AVSessionKit';
+
    const TAG: string = 'ControllerManager';
+   
    export class ControllerManager {
      private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
      private userInfoChangeCallback: Callback<avMusicTemplate.UserInfo> = (userInfo: avMusicTemplate.UserInfo) => {
