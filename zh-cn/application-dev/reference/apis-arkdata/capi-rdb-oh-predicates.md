@@ -76,7 +76,7 @@ OH_Predicates *(*equalTo)(OH_Predicates *predicates, const char *field, OH_VObje
 | ------------------------- | ------------------------------------------------------------ |
 | OH_Predicates *predicates | 表示指向OH_Predicates实例的指针。                            |
 | const char *field         | 数据库表中的列名，不能为空指针。                                  |
-| [OH_VObject](capi-rdb-oh-vobject.md) *valueObject   | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针，指示要与谓词匹配的值。 |
+| OH_VObject *valueObject   | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针，指示要与谓词匹配的值。 |
 
 **返回：**
 
