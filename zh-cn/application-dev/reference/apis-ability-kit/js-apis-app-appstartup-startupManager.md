@@ -347,7 +347,6 @@ export default class EntryAbility extends UIAbility {
     } else {
       hilog.info(0x0000, 'testTag', 'libentry_001 uninitialized');
     }
-
     windowStage.loadContent('pages/Index', (err, data) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', `Failed to load the content. Cause error code: ${err.code}, error msg: ${err.message}`);
@@ -367,7 +366,7 @@ removeStartupTaskResult(startupTask: string): void
 
 - 输入为启动任务名时，删除指定启动任务的结果。
 
-- 输入为so文件时，将该so文件置为未加载，缓存中已加载的so文件不会被移除。
+- 输入为so文件名时，将该so文件置为未加载，缓存中已加载的so文件不会被移除。
 
 **系统能力**：SystemCapability.Ability.AppStartup
 
@@ -411,7 +410,6 @@ export default class EntryAbility extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
     startupManager.removeStartupTaskResult('StartupTask_001');
     startupManager.removeStartupTaskResult('libentry_001');
-
     windowStage.loadContent('pages/Index', (err, data) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', `Failed to load the content. Cause error code: ${err.code}, error msg: ${err.message}`);

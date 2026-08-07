@@ -6,7 +6,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-appManager模块提供App管理的能力，包括查询当前是否处于稳定性测试场景、查询是否为ram受限设备、获取应用程序的内存大小、获取有关运行进程的信息等。
+appManager模块提供App管理的能力，包括查询当前是否处于稳定性测试场景、查询是否为RAM受限设备、获取应用程序的内存大小、获取有关运行进程的信息等。
 
 > **说明：**
 >
@@ -119,7 +119,7 @@ isSharedBundleRunning(bundleName: string, versionCode: number): Promise\<boolean
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-const bundleName = 'this is a bundleName';
+const bundleName = 'com.example.myapplication';
 const versionCode = 1;
 
 appManager.isSharedBundleRunning(bundleName, versionCode).then((data) => {
@@ -165,7 +165,7 @@ isSharedBundleRunning(bundleName: string, versionCode: number, callback: AsyncCa
 ```ts
 import { appManager } from '@kit.AbilityKit';
 
-const bundleName = 'this is a bundleName';
+const bundleName = 'com.example.myapplication';
 const versionCode = 1;
 
 appManager.isSharedBundleRunning(bundleName, versionCode, (err, data) => {
@@ -1016,7 +1016,7 @@ getProcessMemoryByPid(pid: number, callback: AsyncCallback\<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pid | number | 是 | 表示进程id，详情参考[getRunningProcessInfoByBundleName](#appmanagergetrunningprocessinfobybundlename10)。 |
+| pid | number | 是 | 表示进程ID，详情参考[getRunningProcessInfoByBundleName](#appmanagergetrunningprocessinfobybundlename10)。 |
 | callback | AsyncCallback\<number> | 是 | 以回调方式返回接口运行结果及进程占用的内存大小（单位KB），可进行错误处理或其他自定义处理。 |
 
 **错误码**：
@@ -1067,7 +1067,7 @@ getProcessMemoryByPid(pid: number): Promise\<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pid | number | 是 | 表示进程id，详情参考[getRunningProcessInfoByBundleName](#appmanagergetrunningprocessinfobybundlename10)。  |
+| pid | number | 是 | 表示进程ID，详情参考[getRunningProcessInfoByBundleName](#appmanagergetrunningprocessinfobybundlename10)。  |
 
 **返回值：**
 
@@ -1225,7 +1225,7 @@ getRunningProcessInfoByBundleName(bundleName: string, userId: number, callback: 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 表示Bundle名称。 |
-| userId | number | 是 | 表示用户Id。 |
+| userId | number | 是 | 表示用户ID。 |
 | callback | AsyncCallback\<Array\<[ProcessInformation](js-apis-inner-application-processInformation.md)>> | 是 | 以回调方式返回接口运行结果及有关运行进程的信息，可进行错误处理或其他自定义处理。 |
 
 **错误码**：
@@ -1278,7 +1278,7 @@ getRunningProcessInfoByBundleName(bundleName: string, userId: number): Promise\<
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 表示Bundle名称。 |
-| userId | number | 是 | 表示用户Id。 |
+| userId | number | 是 | 表示用户ID。 |
 
 **返回值：**
 
@@ -1516,7 +1516,7 @@ preloadApplication(bundleName: string, userId: number, mode: PreloadMode, appInd
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 预加载的应用包名。 |
-| userId | number | 是 | 预加载的用户Id。 |
+| userId | number | 是 | 预加载的用户ID。 |
 | mode | [PreloadMode](#appmanagerpreloadmode12) | 是 | 预加载模式。 |
 | appIndex | number | 否 | 预加载应用分身的appIndex，该参数只能传0，当前不支持预加载分身应用。 |
 
@@ -1615,7 +1615,7 @@ try {
       hilog.error(0x0000, 'testTag', `getRunningMultiAppInfo error, code: ${err.code}, msg:${err.message}`);
     })
 } catch (err) {
-  hilog.error(0x0000, 'testTag', `getRunningMultiAppInfo error, code: ${err.code}, msg:${err.message}`);
+  hilog.error(0x0000, 'testTag', `getRunningMultiAppInfo error, code: ${(err as BusinessError).code}, msg:${(err as BusinessError).message}`);
 }
 ```
 
@@ -1742,7 +1742,7 @@ try {
       hilog.error(0x0000, 'testTag', `get pids error, code: ${err.code}, msg:${err.message}`);
     })
 } catch (err) {
-  hilog.error(0x0000, 'testTag', `get pids error, code: ${err.code}, msg:${err.message}`);
+  hilog.error(0x0000, 'testTag', `get pids error, code: ${(err as BusinessError).code}, msg:${(err as BusinessError).message}`);
 }
 ```
 
