@@ -11518,4 +11518,4 @@ struct WebComponent {
 ```
 
 > **Example description:** The `iframe_error.html` file used in the example is the same as that in the [setErrorPageEnabled](#seterrorpageenabled) example, and must be placed in the `resources/rawfile/` directory of the app resources.
-> <!--no_check-->
+<!--no_check-->

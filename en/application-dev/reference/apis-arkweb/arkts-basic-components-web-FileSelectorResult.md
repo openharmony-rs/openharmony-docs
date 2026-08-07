@@ -41,3 +41,4 @@ Notifies the Web component of the user-selected files through the passed file li
 | Name     | Type           | Mandatory | Description        |
 | -------- | --------------- | ---- | ------------ |
 | fileList | Array\<string\> | Yes | Array of file URI strings, used to pass the file paths selected by the user to the Web component. |
+<!--no_check-->
