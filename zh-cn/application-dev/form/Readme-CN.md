@@ -34,8 +34,8 @@
       - [卡片拉起应用UIAbility到后台（call事件）](arkts-ui-widget-event-call.md)
       - [卡片传递消息给应用（message事件）](arkts-ui-widget-event-formextensionability.md)
       - [通过router或call事件刷新卡片内容](arkts-ui-widget-event-uiability.md)
-    - [ArkTS卡片编辑开发指导](arkts-ui-widget-event-formeditextensionability.md)
-    - [应用内拉起卡片管理加桌开发指导](arkts-ui-widget-open-formmanager.md)
+    - [ArkTS卡片编辑](arkts-ui-widget-event-formeditextensionability.md)
+    - [在应用内将ArkTS卡片添加到桌面](arkts-ui-widget-open-formmanager.md)
     <!--RP1--><!--RP1End-->
     <!--RP2--><!--RP2End-->
     <!--RP4--><!--RP4End-->
