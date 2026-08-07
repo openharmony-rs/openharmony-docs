@@ -1,4 +1,4 @@
-# ArkTS卡片编辑概述
+# ArkTS卡片编辑开发指导
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @Qian-Win-->
