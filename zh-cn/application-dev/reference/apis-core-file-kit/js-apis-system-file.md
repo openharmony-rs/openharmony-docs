@@ -14,14 +14,14 @@
 > - 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 - demo程序URI说明：
-	- JS API的SO加载接口，传入的路径：common/dynamic_example.so。
-	- JS API的SO加载接口，传入的路径：internal://app/common/dynamic_example.so。
-	- 三方JS操作的路径信息：{应用安装路径}/{用户建的目录名}/{用户建的文件名}。
-	- srcUri和dstUri只能是internal://app/xxx格式。
-	- internal://app/dir1/xxx
-	  - internal://app：固定前缀，表示应用根目录。
-	  - dir1：开发者自己创建的。
-	  - xxx：开发者创建的文件名。
+  - JS API的SO加载接口，传入的路径：common/dynamic_example.so。
+  - JS API的SO加载接口，传入的路径：internal://app/common/dynamic_example.so。
+  - 三方JS操作的路径信息：{应用安装路径}/{用户建的目录名}/{用户建的文件名}。
+  - srcUri和dstUri只能是internal://app/xxx格式。
+  - internal://app/dir1/xxx
+    - internal://app：固定前缀，表示应用根目录。
+    - dir1：开发者自己创建的。
+    - xxx：开发者创建的文件名。
 
 ## 导入模块
 
