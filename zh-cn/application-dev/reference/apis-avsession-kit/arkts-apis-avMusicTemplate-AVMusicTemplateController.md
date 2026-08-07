@@ -91,7 +91,7 @@ export class ControllerManager {
 
 queryMediaTabContent(tabId: string): Promise&lt;MediaTabContent&gt;
 
-查询媒体标签内容。使用Promise异步回调。tabId可通过queryMainTabs方法获取。
+查询媒体标签内容。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -228,7 +228,7 @@ export class ControllerManager {
 
 queryCompilation(compilationId: string, pageIndex: number): Promise&lt;PageMediaEntity&gt;
 
-查询媒体内容合集。使用Promise异步回调。compilationId可通过queryCompilationByKeyword方法获取。
+查询媒体内容合集。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
