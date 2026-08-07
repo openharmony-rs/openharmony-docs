@@ -477,6 +477,12 @@ updateRemoteGrantStatus(remoteGrantStatus: RemoteGrantStatus): Promise&lt;void&g
 | -------- | -------- | -------- | -------- |
 | remoteGrantStatus | [RemoteGrantStatus](#remotegrantstatus) | 是 | 要设置的远程授权状态。 |
 
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[工具访问控制错误码](errorcode-abilityToolAccessCtrl-sys.md)。
