@@ -350,7 +350,7 @@ createSubWindow(name: string, callback: AsyncCallback&lt;Window&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
-| 1300002 | This window state is abnormal. Possible cause: The subWindow has been created and can not be created again.|
+| 1300002 | This window state is abnormal. Possible cause: The subWindow has been created and cannot be created again.|
 | 1300005 | This window stage is abnormal.<br>适用版本：9|
 
 **示例：**
@@ -463,7 +463,7 @@ createSubWindow(name: string): Promise&lt;Window&gt;
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
-| 1300002 | This window state is abnormal. Possible cause: The subWindow has been created and can not be created again.|
+| 1300002 | This window state is abnormal. Possible cause: The subWindow has been created and cannot be created again.|
 | 1300005 | This window stage is abnormal.<br>适用版本：9|
 
 **示例：**
@@ -566,7 +566,7 @@ createSubWindowWithOptions(name: string, options: SubWindowOptions): Promise&lt;
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. The subWindow has been created and can not be created again. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. The subWindow has been created and cannot be created again. |
 | 1300005 | This window stage is abnormal. |
 
 **示例：**
@@ -2380,10 +2380,10 @@ export default class EntryAbility extends UIAbility {
           console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
           return;
         }
-        console.info('onWindowStageCreate');
+        console.info('Succeeded in loading the content.');
       try {
         windowStage.setDefaultDensityEnabled(true);
-        console.info('Succeeded in loading the content.');
+        console.info('Succeeded in setting default density enabled.');
       } catch (exception) {
         console.error(`Failed to set default density enabled. Cause code: ${exception.code}, message: ${exception.message}`);
       }
@@ -2410,10 +2410,10 @@ export default class EntryAbility extends UIAbility {
           console.error(`Failed to load the content. Cause code: ${err?.code}, message: ${err?.message}`);
           return;
         }
-        console.info('onWindowStageCreate');
+        console.info('Succeeded in loading the content.');
       try {
         windowStage.setDefaultDensityEnabled(true);
-        console.info('Succeeded in loading the content.');
+        console.info('Succeeded in setting default density enabled.');
       } catch (exception) {
         let error = exception as BusinessError;
         console.error(`Failed to set default density enabled. Cause code: ${error.code}, message: ${error.message}`);
@@ -2457,7 +2457,7 @@ setCustomDensity(density: number): void
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300005 | This window stage is abnormal. |
 
 **示例：**

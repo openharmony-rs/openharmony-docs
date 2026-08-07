@@ -621,6 +621,7 @@ ArkTS-Sta: stopBackPress(isStopped: boolean | undefined)
 | 参数名 | 类型                                          | 必填  | 说明                                                                                  |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
 | isStopped  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt;<br>ArkTS-Sta: boolean \| undefined | 是   | 是否阻止返回键。<br>true表示阻止，false表示不阻止。<br>默认值：true。 <br>当不设置该属性或设置为undefined或设置异常值时，取默认值。|
+
 ### undoStyle<sup>20+</sup>
 
 ArkTS-Dyn: undoStyle(style: Optional&lt;UndoStyle&gt;)
@@ -1567,7 +1568,7 @@ RichEditorSymbolSpanStyle和RichEditorSymbolSpanStyleResult中fontWeight的转�
 |名称 |类型 | 只读 | 可选 | 说明|
 | -------------  | -----------------------            | ---- | ----------|-------------------------------------------------- |
 | margin | [Dimension](ts-types.md#dimension10) \| [Margin](ts-types.md#margin) | 否 | 是 | 外边距类型，用于描述组件不同方向的外边距。<br>默认值：四个方向外边距均为0。<br>参数为Dimension类型时，四个方向外边距同时生效。|
-| borderRadius | [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](ts-types.md#borderradiuses9) | 否 | 是 | 圆角类型，用于描述组件边框圆角半径。<br>默认值：圆角半径为0。<br>参数为Dimension类型时，不支持以Percentage形式设置 |
+| borderRadius | [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](ts-types.md#borderradiuses9) | 否 | 是 | 圆角类型，用于描述组件边框圆角半径。<br>默认值：圆角半径为0。<br>参数为Dimension类型时，不支持以Percentage形式设置。 |
 
 ## RichEditorOptions
 
@@ -2560,6 +2561,7 @@ SymbolSpan样式选项。
 | textVerticalAlign<sup>20+</sup> | [TextVerticalAlign](ts-text-common.md#textverticalalign20) |  否  | 是 | 设置文本段落在垂直方向的对齐方式。<br/>默认值：TextVerticalAlign.BASELINE <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
 | textDirection<sup>23+</sup> | [TextDirection](ts-text-common.md#textdirection22) |  否  | 是 | 设置文本方向。<br>默认值：TextDirection.DEFAULT<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
 | shaderStyle  | [ShaderStyle](ts-text-common.md#shaderstyle20) |  否  |  是  | 设置文本着色器效果。<br>默认值：undefined，不设置着色器效果。<br>该接口与[RichEditorTextStyle](#richeditortextstyle)中的strokeWidth同时设置时，该接口不生效，shaderStyle的优先级高于[RichEditorTextStyle](#richeditortextstyle)的fontColor。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0 |
+
 ## LeadingMarginPlaceholder<sup>11+</sup>
 
 前导边距占位符，用于表示文本段落左侧与组件边缘之间的距离。
@@ -7714,7 +7716,7 @@ struct RichEditorExample {
 ArkTS-Sta示例：
 
 ```ts
-import { Entry, Text, Column, Component, Button, RichEditorController, RichEditorOptions, RichEditor, Margin, Row } from '@ohos.arkui.component';
+import { Entry, Text, Column, Component, Button, RichEditorController, RichEditorOptions, RichEditor, Margin, Row } from '@kit.ArkUI';
 import { State } from '@ohos.arkui.stateManagement';
 
 @Entry
@@ -8010,10 +8012,7 @@ struct SingleLineDemo {
 ArkTS-Sta示例：
 
 ``` ts
-import { Entry, Component } from '@ohos.arkui.component';
-import { Column, Row, ClickEvent, Color } from '@ohos.arkui.component';
-import { Button, ButtonAttribute } from '@ohos.arkui.component';
-import { RichEditor, RichEditorController, RichEditorOptions, RichEditorTextSpanOptions } from '@ohos.arkui.component';
+import { Entry, Component, Column, Row, ClickEvent, Color, Button, ButtonAttribute, RichEditor, RichEditorController, RichEditorOptions, RichEditorTextSpanOptions } from '@kit.ArkUI';
 import { State } from '@ohos.arkui.stateManagement';
 
 @Entry
@@ -8158,7 +8157,7 @@ import {
   RichEditor,
   FlexAlign,
   TextVerticalAlign
-} from '@ohos.arkui.component';
+} from '@kit.ArkUI';
 import { LengthMetrics } from '@ohos.arkui.node'
 @Entry
 @Component
@@ -8287,7 +8286,7 @@ ArkTS-Sta示例：
 
 ``` ts
 // xxx.ets
-import { Entry, Text, Column, Component, RichEditor, RichEditorController, RichEditorTextSpanOptions, ColumnOptions, Divider } from '@ohos.arkui.component';
+import { Entry, Text, Column, Component, RichEditor, RichEditorController, RichEditorTextSpanOptions, ColumnOptions, Divider } from '@kit.ArkUI';
 import { State, Observed } from '@ohos.arkui.stateManagement';
 
 @Entry
