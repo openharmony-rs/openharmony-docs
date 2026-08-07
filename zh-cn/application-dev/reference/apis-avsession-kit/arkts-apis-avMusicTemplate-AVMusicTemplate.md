@@ -3143,61 +3143,61 @@ setCurrentSingle(single: Single): Promise&lt;void&gt;
 import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
-    private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
 
-    public async setCurrentSingle() {
-        let single: avMusicTemplate.Single = await this.createCurrentSingle()
-        this.template?.setCurrentSingle(single);
-    };
+  public async setCurrentSingle() {
+    let single: avMusicTemplate.Single = await this.createCurrentSingle()
+    this.template?.setCurrentSingle(single);
+  };
 
-    /**
-     * 模拟获取当前单曲。
-     *
-     * @returns 当前单曲。
-     */
-    private async createCurrentSingle(): Promise<avMusicTemplate.Single> {
-        let playInfo: avMusicTemplate.PlayInfo = {
-            playCounts: '100w',
-            isSupportNext: true,
-            isSupportPrev: false,
-            isSupportQuickForward: true,
-            isSupportQuickBackward: true,
-            quickForwardStep: 10,
-            quickBackwardStep: 10,
-            isSupportSkipHead: false,
-            isSupportSkipTail: true,
-            isSupportPlayMode: true,
-            isSupportPlayRate: true,
-            supportedPlayRate: ['1', '2', '3'],
-            currentPlayRate: '1',
-            isSupportSoundQuality: false,
-            isSupportSoundEffect: true,
-            totalDuration: 60,
-            currentPlayDuration: 10,
-            isSupportProgress: false,
-        }
-        let favoriteData: avMusicTemplate.FavoriteData = {
-            isSupportFav: true,
-            isFavorite: false,
-            favCounts: '1000+'
-        }
-        let single: avMusicTemplate.Single = {
-            mediaId: 'mediaId',
-            mediaType: avMusicTemplate.EntityType.SINGLE,
-            parentId: 'parentId',
-            parentMediaType: avMusicTemplate.EntityType.SINGLE,
-            title: '歌曲标题',
-            desc: '歌曲描述',
-            imageUrl: '',
-            playState: avMusicTemplate.PlaybackState.PLAYBACK_STATE_PREPARE,
-            isVip: false,
-            singer: '',
-            tags: [],
-            playInfo: playInfo,
-            favSubscribeData: favoriteData
-        }
-        return single;
-    };
+  /**
+   * 模拟获取当前单曲。
+   *
+   * @returns 当前单曲。
+   */
+  private async createCurrentSingle(): Promise<avMusicTemplate.Single> {
+    let playInfo: avMusicTemplate.PlayInfo = {
+      playCounts: '100w',
+      isSupportNext: true,
+      isSupportPrev: false,
+      isSupportQuickForward: true,
+      isSupportQuickBackward: true,
+      quickForwardStep: 10,
+      quickBackwardStep: 10,
+      isSupportSkipHead: false,
+      isSupportSkipTail: true,
+      isSupportPlayMode: true,
+      isSupportPlayRate: true,
+      supportedPlayRate: ['1', '2', '3'],
+      currentPlayRate: '1',
+      isSupportSoundQuality: false,
+      isSupportSoundEffect: true,
+      totalDuration: 60,
+      currentPlayDuration: 10,
+      isSupportProgress: false,
+    }
+    let favoriteData: avMusicTemplate.FavoriteData = {
+      isSupportFav: true,
+      isFavorite: false,
+      favCounts: '1000+'
+    }
+    let single: avMusicTemplate.Single = {
+      mediaId: 'mediaId',
+      mediaType: avMusicTemplate.EntityType.SINGLE,
+      parentId: 'parentId',
+      parentMediaType: avMusicTemplate.EntityType.SINGLE,
+      title: '歌曲标题',
+      desc: '歌曲描述',
+      imageUrl: '',
+      playState: avMusicTemplate.PlaybackState.PLAYBACK_STATE_PREPARE,
+      isVip: false,
+      singer: '',
+      tags: [],
+      playInfo: playInfo,
+      favSubscribeData: favoriteData
+    }
+    return single;
+  };
 }
 ```
 
