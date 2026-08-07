@@ -178,7 +178,7 @@ type TwoParamCallback\<T, G> = (data1: T, data2: G) => void
 
 ## EventProcess
 
-type EventProcess = (event: string, args: Record<string, Object>) => void
+type EventProcess = (event: string, args: Record\<string, Object>) => void
 
 定义处理事件和参数的通用函数类型。
 
@@ -191,4 +191,4 @@ type EventProcess = (event: string, args: Record<string, Object>) => void
 | 参数名   | 类型 | 必填 | 说明   |
 |-------|----| ---- |------|
 | event | string  | 是   | 请求事件。 |
-| args | Record<string, Object>  | 是   | 与事件关联的参数。 |
+| args | Record\<string, Object>  | 是   | 与事件关联的参数。 |
