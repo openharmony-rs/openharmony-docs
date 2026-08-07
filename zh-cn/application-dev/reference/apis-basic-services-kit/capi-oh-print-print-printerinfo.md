@@ -12,7 +12,7 @@ typedef struct {...} Print_PrinterInfo
 
 ## 概述
 
-Print_PrinterInfo表示打印机信息，包含打印机的状态、能力、默认属性以及标识信息（如打印机ID、名称、描述、位置、品牌型号、URI等），适用于应用在打印场景中获取和展示打印机详细信息的场景，帮助开发者根据打印机能力与属性选择合适的打印设备。
+Print_PrinterInfo表示打印机信息，包含打印机的状态、能力、默认属性以及标识信息（如打印机ID、名称、描述、位置、品牌型号、URI等），适用于应用在打印场景中获取和展示打印机详细信息的场景，帮助开发者根据打印机能力与属性选择合适的打印设备。可通过 [OH_Print_StartPrinterDiscovery](capi-ohprint-h.md#oh_print_startprinterdiscovery) 或 [OH_Print_QueryPrinterInfo](capi-ohprint-h.md#oh_print_queryprinterinfo) 获取。
 
 **起始版本：** 12
 
@@ -35,7 +35,7 @@ Print_PrinterInfo表示打印机信息，包含打印机的状态、能力、默
 | char *description | 打印机描述。 |
 | char *location | 打印机位置。 |
 | char *makeAndModel | 打印机品牌和型号信息。 |
-| char *printerUri | 打印机 URI。 |
+| char *printerUri | 打印机 URI，用于定位和访问打印机。格式形如 scheme://[user@]host[:port]/resource。 |
 | char *detailInfo | JSON 格式的详细信息。<br>支持的键包括：<br>- **printerAlias**：string 类型，表示打印机别名，**起始版本：** 24。<br>- **vendorId**：int 类型，表示 USB 打印机的 VID，取值范围 [0, 65535]，**起始版本：** 12。<br>- **productId**：int 类型，表示 USB 打印机的 PID，取值范围 [0, 65535]，**起始版本：** 12。<br>- **protocol**：string 数组，表示探测到的打印机支持的协议列表，取值包括 ipp、ipps、lpd、socket，**起始版本：** 24。<br>- **ipp**：string 类型，表示探测到的 IPP 协议对应的打印机 URI，**起始版本：** 24。<br>- **ipps**：string 类型，表示探测到的 IPPS 协议对应的打印机 URI，**起始版本：** 24。<br>- **lpd**：string 类型，表示探测到的 LPD 协议对应的打印机 URI，**起始版本：** 24。<br>- **socket**：string 类型，表示探测到的 Socket 协议对应的打印机 URI，**起始版本：** 24。 |
 
 

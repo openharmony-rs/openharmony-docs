@@ -30,7 +30,7 @@ typedef struct {...} Print_DefaultValue
 | [Print_DuplexMode](capi-ohprint-h.md#print_duplexmode) defaultDuplexMode | 默认双面模式，表示打印的单双面方式，具体取值由打印机支持的双面模式决定。 |
 | char *defaultMediaType | 默认介质类型，表示打印所使用的介质类型（如普通纸、光面纸等），具体取值由打印机支持的介质类型决定。 |
 | char *defaultPageSizeId | 默认纸张尺寸 ID，表示打印所使用的纸张尺寸标识（如"A4"、"Letter"等），具体取值由打印机支持的纸张尺寸决定。 |
-| [Print_Margin](capi-oh-print-print-margin.md) defaultMargin | 默认边距，表示打印输出页面的边距设置。 |
+| [Print_Margin](capi-oh-print-print-margin.md) defaultMargin | 默认边距，表示打印输出页面的边距设置，具体取值由打印机支持的边距决定。 |
 | char *defaultPaperSource | 默认纸张来源，表示打印所使用的纸张来源（如自动进纸器、手动进纸等），具体取值由打印机支持的纸张来源决定。 |
 | [Print_Quality](capi-ohprint-h.md#print_quality) defaultPrintQuality | 默认打印质量，表示打印输出的质量等级设置，具体取值由打印机支持的打印质量决定。 |
 | uint32_t defaultCopies | 默认份数，取值原则：不小于 1。 |
