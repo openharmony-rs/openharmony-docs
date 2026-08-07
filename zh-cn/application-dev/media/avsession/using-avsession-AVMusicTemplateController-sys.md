@@ -326,7 +326,7 @@
 
    ``` TypeScript
    import { avMusicTemplate } from '@kit.AVSessionKit';
-
+   
    const TAG: string = 'ControllerManager';
    
    export class ControllerManager {
