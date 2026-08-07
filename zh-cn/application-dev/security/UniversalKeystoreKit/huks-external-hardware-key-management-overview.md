@@ -11,7 +11,7 @@ HUKS提供统一的Ability扩展接口，让外部密钥管理能力能够接入
 
 - 密钥管理扩展能力实现方：负责将外部密钥管理能力接入HUKS框架，通过实现CryptoExtensionAbility回调接口完成能力开放。
 
-- 密钥管理扩展能力使用方：通过调用HUKS提供的huksExternalCrypto和huks模块标准接口，配合调用证书管理模块的标准接口拉起证书选择与PIN码认证等弹窗流程，使用外部密钥管理扩展能力。
+- 密钥管理扩展能力使用方：通过调用HUKS提供的huksExternalCrypto和huks模块标准接口，配合调用证书管理模块的标准接口拉起证书选择与PIN码认证等弹窗流程，使用外部密钥管理扩展能力（即为密钥管理扩展能力实现方提供的密钥扩展能力）。
 
 HUKS框架保持设备无关，既支持UKey物理设备，也支持软件形态，覆盖[浏览器双向SSL登录](huks-extension-ability-best-dev.md)等典型应用场景。
 
@@ -21,7 +21,7 @@ HUKS框架保持设备无关，既支持UKey物理设备，也支持软件形态
 
 ![huks_extension](figures/huks_extension.png)
 
-密钥管理扩展采用分层架构，自上而下划分为生态伙伴层、HarmonyOS Kit层、系统服务层与密钥管理扩展应用层，各层之间通过IPC协同。
+密钥管理扩展采用分层架构，自上而下划分为生态伙伴层、应用层、系统服务层与密钥管理扩展应用层，各层之间通过IPC协同。
 
 - 生态伙伴层：以上层应用（如浏览器）为代表，是密钥管理扩展能力的最终使用方。
 - HarmonyOS Kit层：包含Universal Keystore Kit与Device Certificate Kit，向应用提供统一的密钥管理与证书管理API。使用方通过Kit调用能力，无需感知底层密钥存放在何处、由谁提供。
@@ -42,7 +42,7 @@ HUKS框架保持设备无关，既支持UKey物理设备，也支持软件形态
 
   能力注册成功后，将通过HUKS和[证书管理](../DeviceCertificateKit/certManager-overview.md)的SDK开放给上层应用与系统模块使用，覆盖证书查询、PIN码认证、签名验签等典型操作。
 
-如此，浏览器等应用才能通过HUKS和[证书管理](../DeviceCertificateKit/certManager-overview.md)提供的API去使用密钥管理扩展应用提供的外部密钥管理能力，包括证书查询、PIN码认证、签名验签等操作。
+如此，密钥管理扩展能力使用方才能通过HUKS和[证书管理](../DeviceCertificateKit/certManager-overview.md)提供的API去使用密钥管理扩展应用提供的外部密钥管理能力，包括证书查询、PIN码认证、签名验签等操作。
 
 ## 文档组织
 

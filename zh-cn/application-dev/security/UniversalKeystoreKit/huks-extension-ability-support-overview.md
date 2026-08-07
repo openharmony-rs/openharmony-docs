@@ -13,7 +13,7 @@ CryptoExtensionAbility是Stage模型中扩展组件[ExtensionAbility](../../appl
 
 ## 整体流程
 
-密钥管理扩展应用从开发、接入到下线的完整生命周期分为三个阶段：
+密钥管理扩展应用从开发、注册到注销的完整生命周期分为三个阶段：
 
 1. 接口实现：继承CryptoExtensionAbility，根据业务需要实现[核心能力实现](#核心能力实现)中的回调接口，封装对底层外部密钥管理后端的调用。
 
@@ -35,7 +35,7 @@ CryptoExtensionAbility是Stage模型中扩展组件[ExtensionAbility](../../appl
 
 ### 可用性检测与注册/注销时机
 
-密钥管理扩展应用需根据接入的设备/服务形态，检测其可用性。当设备或服务可用时调用[registerProvider](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptoregisterprovider)接口注册CryptoExtensionAbility，不可用时调用[unregisterProvider](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptounregisterprovider)接口注销CryptoExtensionAbility，可参考[CryptoExtensionAbility注册与注销(ArkTS)](huks-extension-registration-and-unregistration-arkts-ndk.md)和[CryptoExtensionAbility注册与注销(C/C++)](huks-extension-registration-and-unregistration-arkts-ndk.md)。
+密钥管理扩展应用需根据接入的设备/服务形态，检测其可用性。当设备或服务可用时调用[registerProvider](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptoregisterprovider)接口注册CryptoExtensionAbility，不可用时调用[unregisterProvider](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptounregisterprovider)接口注销CryptoExtensionAbility，可参考[CryptoExtensionAbility注册与注销](huks-extension-registration-and-unregistration-arkts-ndk.md)。
 
 检测机制因设备形态而异：
 - UKey物理设备：监听USB插拔事件。
@@ -43,7 +43,7 @@ CryptoExtensionAbility是Stage模型中扩展组件[ExtensionAbility](../../appl
 
 ### Provider与Ability管理
 
-一个Provider可以关联多个CryptoExtensionAbility。
+一个Provider可以关联多个CryptoExtensionAbility。建议使用一对一匹配
 
 - Provider名称长度最大为128字节，建议包含外部密钥管理能力提供方信息以保证全局唯一。
 - 整个系统最多支持注册**10个**CryptoExtensionAbility Provider，超过限制时registerProvider接口返回HUKS_ERR_CODE_EXCEED_LIMIT。
@@ -69,10 +69,11 @@ CryptoExtensionAbility接口按职责可分为7个能力域，部分能力域在
 
 - [资源标识](#资源标识)和[句柄管理](#句柄管理)共同构成资源访问入口。上层应用可通过两种方式获得resourceId：一是通过证书管理能力拉起证书选择弹框，用户选择证书后获取keyUri（即resourceId）；二是通过CryptoExtensionAbility的getResourceId接口根据业务标识获取resourceId。获得resourceId后，再通过openResource获得handle；建议密钥管理扩展应用按(UID, handle)二元组维护应用级句柄与底层设备句柄的映射。
 - [认证状态管理](#认证状态管理)用于受PIN保护资源的访问控制：涉及私钥的操作（典型场景如签名、解密等）通常需要先完成PIN认证。是否强制要求由密钥管理扩展应用根据业务需要决定。
-- 公共操作（[属性查询与设置](#属性查询与设置)、[证书查询与导入](#证书查询与导入)、密钥管理中的生成/导出公钥）通常无需PIN认证。
-- 密钥会话通过三段式协议（initSession/updateSession/finishSession）处理签名/验签的中间状态，典型场景包括签名/验签、加解密等。
+- 公共操作（[属性查询与设置](#属性查询与设置)、[证书查询与导入](#证书查询与导入)、[密钥生成/导入/导出](#密钥生成导入导出)）通常无需PIN认证。
+- [密钥会话管理](#密钥会话管理)通过三段式协议（initSession/updateSession/finishSession）处理签名/验签的中间状态，典型场景包括签名/验签、加解密等。
 
-> **通用说明**：
+> **说明：**
+>
 > 1. CryptoExtensionAbility所有接口的params中都会携带调用方身份信息（通过HUKS_EXT_CRYPTO_TAG_UID标识）。密钥管理扩展应用可基于业务需要决定是否使用，例如在句柄管理、会话管理、认证管理等场景下基于UID进行隔离与校验。
 > 2. 接口函数的resultCode不支持自定义，必须按[HuksCryptoExtensionResultCode](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#hukscryptoextensionresultcode)枚举定义的错误码返回，否则可能导致异常。
 > 3. 从API版本26.0.0开始，厂商如需传递自定义的细粒度错误信息，可通过返回值的errInfo字段传入，errInfo为[HuksExternalErrorInfo](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalerrorinfo)类型。上层应用可通过[huksExternalCrypto.getErrorInfo](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptogeterrorinfo)接口获取。
