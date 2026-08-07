@@ -34,7 +34,7 @@
 
 **适配指导**
 
-若设置默认浏览器，需要按照[受限权限申请指导](../../../application-dev/security/AccessToken/declare-permissions-in-acl.md)进行默认浏览器权限（ohos.permission.DEFAULT_WEB_BROWSER）申请。
+若设置默认浏览器，需要按照[受限权限申请指导](../../../application-dev/security/AccessToken/declare-permissions-in-acl.md)申请默认浏览器权限（ohos.permission.DEFAULT_WEB_BROWSER）。
 
 可申请默认浏览器权限的特殊场景和功能：
 
