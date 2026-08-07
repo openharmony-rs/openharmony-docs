@@ -175,3 +175,4 @@ Obtains the file type information. Corresponds to `types` in the HTML [option](.
 | Type             | Description       |
 | --------------- | --------- |
 | Array\<Array\<[AcceptableFileType](./arkts-basic-components-web-i.md#acceptablefiletype23)\>> | File type information, which is a two-dimensional array structure containing detailed information about multiple groups of optional file types. Corresponds to the types attribute of the HTML option. |
+<!--no_check-->

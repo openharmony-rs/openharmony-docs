@@ -6,7 +6,7 @@
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=97b7cfe47e44ccd95055b91afef33a85efa622a9 translatedAt=2026-08-07T04:36:10.539Z pushedAt=2026-08-07T08:11:50.940Z -->
+<!-- md-trans-meta sourceCommit=97b7cfe47e44ccd95055b91afef33a85efa622a9 translatedAt=2026-08-07T04:36:10.539Z pushedAt=2026-08-07T10:15:04.631Z -->
 
 WebviewController is the core controller for various behaviors of the **Web** component, providing extensive functions such as page loading and navigation control, JavaScript interaction, lifecycle management, scroll control, page zoom and content search, message port communication, and cache and certificate management. A WebviewController object can control only one **Web** component, and methods on WebviewController (except static methods) can be called only after the **Web** component is bound to WebviewController.
 
@@ -10448,7 +10448,7 @@ Scroll Test
 
 static setActiveWebEngineVersion(engineVersion: ArkWebEngineVersion): void
 
-Sets the ArkWeb kernel version. If the system does not support the specified version, the setting does not take effect and the system default kernel is used (see [Constraints and Limitations](../../web/web-component-overview.md#constraints-and-limitations)). This API is a global static API and must be executed before **initializeWebEngine** is called. If any **Web** component has been loaded, the setting does not take effect. Typical use case: when features or compatibility requirements of a specific kernel version are needed, you can switch to the corresponding kernel version.
+Sets the ArkWeb kernel version. If the system does not support the specified version, the setting does not take effect and the system default kernel is used (see [Constraints](../../web/web-component-overview.md#constraints)). This API is a global static API and must be executed before **initializeWebEngine** is called. If any **Web** component has been loaded, the setting does not take effect. Typical use case: when features or compatibility requirements of a specific kernel version are needed, you can switch to the corresponding kernel version.
 
 **Legacy kernel adaptation**
 
@@ -11518,3 +11518,4 @@ struct WebComponent {
 ```
 
 > **Example description:** The `iframe_error.html` file used in the example is the same as that in the [setErrorPageEnabled](#seterrorpageenabled) example, and must be placed in the `resources/rawfile/` directory of the app resources.
+> <!--no_check-->

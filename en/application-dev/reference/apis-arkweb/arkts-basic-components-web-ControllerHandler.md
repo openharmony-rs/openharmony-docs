@@ -39,3 +39,4 @@ Sets the WebviewController object for the newly created Web component. If the ap
 | Name       | Type                                    | Mandatory| Description                                    |
 | ---------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | controller | [WebviewController](./arkts-apis-webview-WebviewController.md) | Yes | **WebviewController** object of the **Web** component. If opening a new window is not needed, set it to **null**.|
+<!--no_check-->

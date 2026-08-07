@@ -1,4 +1,4 @@
-# @ohos.web.WebNativeMessagingExtensionAbility (Web Native Messaging Extension Ability)
+# @ohos.web.webNativeMessagingExtensionAbility
 
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -6,7 +6,7 @@
 <!--Designer: @ringking0-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=297099253904002b9622394855cd624fb1a1072a translatedAt=2026-08-03T09:41:35.388Z pushedAt=2026-08-05T08:01:39.423Z -->
+<!-- md-trans-meta sourceCommit=297099253904002b9622394855cd624fb1a1072a translatedAt=2026-08-03T09:41:35.388Z pushedAt=2026-08-07T10:50:45.359Z -->
 
 WebNativeMessagingExtensionAbility is a base class for web native message communication extension provided by ArkWeb, inherited from ExtensionAbility. It allows web pages to establish a secure, bidirectional pipe communication channel with system native services through the Native Messaging mechanism. By inheriting this class and implementing its lifecycle callbacks (such as [onConnectNative](#onconnectnative), [onDisconnectNative](#ondisconnectnative), and [onDestroy](#ondestroy)), developers can detect connection establishment when a web page initiates a connection request, obtain the caller identity and bidirectional pipe file descriptors (see [ConnectionInfo](#connectioninfo)), and release resources when the connection is disconnected or the extension is destroyed. This capability is primarily used in scenarios where browser extensions communicate with apps, enabling efficient message passing and data exchange to enhance extension integration and functionality. The app side must manage pipe read/write operations, permission verification, and the Ability lifecycle on its own.
 

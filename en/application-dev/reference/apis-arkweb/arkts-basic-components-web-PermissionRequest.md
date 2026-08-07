@@ -85,3 +85,4 @@ Grants the permission requested by the web page.
 | Name      | Type           | Mandatory  | Description           |
 | --------- | --------------- | ---- | --------------- |
 | resources | Array\<string\> | Yes   | List of permission resources granted to the web page, which must be obtained through getAccessibleResource(). For the type, see [ProtectedResourceType](./arkts-basic-components-web-e.md#protectedresourcetype9). After this parameter is passed in, the web page will obtain access to the specified resources. If an empty list is passed in, all permission requests are denied. |
+<!--no_check-->

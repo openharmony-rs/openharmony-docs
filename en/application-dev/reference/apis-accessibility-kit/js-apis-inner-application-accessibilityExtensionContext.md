@@ -1,4 +1,4 @@
-# AccessibilityExtensionContext (Accessibility Extension Context)
+# AccessibilityExtensionContext
 
 <!--Kit: Accessibility Kit-->
 <!--Subsystem: BarrierFree-->
@@ -6,7 +6,7 @@
 <!--Designer: @z7o-->
 <!--Tester: @A_qqq-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=16a51cad246d07c6caba5c76444e9d073c5d43d6 translatedAt=2026-08-03T09:50:10.910Z pushedAt=2026-08-07T03:33:54.686Z -->
+<!-- md-trans-meta sourceCommit=16a51cad246d07c6caba5c76444e9d073c5d43d6 translatedAt=2026-08-03T09:50:10.910Z pushedAt=2026-08-07T10:46:05.722Z -->
 
 The **AccessibilityExtensionContext** module, inherited from **ExtensionContext**, provides context for **AccessibilityExtensionAbility**.
 
@@ -93,7 +93,7 @@ Provides attribute names and value types of a node element.
 | textType<sup>12+</sup>             | string                                                             | No  | No  | Accessibility text type of an element, which is configured by the **accessibilityTextHint** attribute of the component.|
 | offset<sup>12+</sup>             | number              | No  | No  | For scrollable components such as **List** and **Grid**, this attribute indicates the pixel offset of the content area relative to the top coordinate of the component. The unit is pixel (px). <br>Default value: **0**.|
 | hotArea<sup>12+</sup>             | [Rect](#rect)                                                              | No  | No  | Touchable area of an element.|
-| customComponentType<sup>18+</sup> | string | No | Yes | Custom component type. Corresponds to the [AccessibilityRoleType](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityroletype18-enum-description) of the element. The default value is an empty string. |
+| customComponentType<sup>18+</sup> | string | No | Yes | Custom component type. Corresponds to the [AccessibilityRoleType](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityroletype18) of the element. The default value is an empty string. |
 | accessibilityNextFocusId<sup>18+</sup> | number | No | Yes | ID of the next component to be focused. This attribute value set by the user on the control can be obtained from the AccessibilityElement object queried through findElement('elementId'). The default value is **-1**. |
 | accessibilityPreviousFocusId<sup>18+</sup> | number | No | Yes | ID of the previously focused component. This attribute value set by the user on the control can be obtained from the AccessibilityElement object queried through findElement('elementId'). The default value is **-1**. |
 | extraInfo<sup>18+</sup> | string | No | Yes | Extended attribute used to define properties of specific components. The default value is an empty string. It includes:<br>- CheckboxGroupSelectedStatus: indicates the selection state of the CheckboxGroup component, where **0** indicates selected, **1** indicates partially selected, and **2** indicates unselected.<br>- Row: row information of the focused item in the Grid component, indicating the row number of the item.<br>- Column: column information of the focused item in the Grid component, indicating the column number of the item.<br>- ListItemIndex: row information of the focused item in the List component, indicating the row number of the current item.<br>- SideBarContainerStates: indicates the expanded state of expandable components (SideBarContainer, Select), where **0** indicates collapsed and **1** indicates expanded.<br>- ToggleType: indicates the specific type of the Toggle component, where **0** indicates Checkbox, **1** indicates Switch, and **2** indicates Button.<br>- BindSheet: indicates the display height state of the BindSheet half-modal dialog box component, where **0** indicates large height display state, **1** indicates medium height display state, and **2** indicates small height display state.<br>- hasRegisteredHover: indicates whether the component has registered the onAccessibilityHover event callback. The value **1** indicates that the component has registered the event callback. This field is not used if the callback is not registered.<br>- direction: indicates the layout direction of the List component, where "vertical" indicates vertical and "horizontal" indicates horizontal.<br>- expandedState: indicates the expanded state of a ListItem in the List component, where "expanded" indicates expanded and "collapsed" indicates collapsed.<br>- componentTypeDescription: detailed information about the component type, serving as a supplementary description for componentType. |

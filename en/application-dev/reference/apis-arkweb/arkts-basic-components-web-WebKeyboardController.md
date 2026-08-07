@@ -89,3 +89,4 @@ close(): void
 Closes this custom keyboard.
 
 **System capability**: SystemCapability.Web.Webview.Core
+<!--no_check-->

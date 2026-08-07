@@ -65,3 +65,4 @@ Grants permission for the screen capture operation accessed by a web page. This 
 | Name   | Type                                    | Mandatory  | Description   |
 | ------ | ---------------------------------------- | ---- | ------- |
 | config | [ScreenCaptureConfig](./arkts-basic-components-web-i.md#screencaptureconfig10) | Yes | Screen capture configuration, which is used to set screen capture related parameters. |
+<!--no_check-->

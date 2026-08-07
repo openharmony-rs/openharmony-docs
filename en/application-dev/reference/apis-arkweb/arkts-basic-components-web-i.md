@@ -972,3 +972,4 @@ Custom AI session configuration object, used to define the lifecycle callbacks o
 | onCreateAISession | [OnCreateAISession](./arkts-basic-components-web-t.md#oncreateaisession) | No | No | Callback function triggered when an AI session is created. Returns **true** to skip the system default behavior, and **false** to continue executing the system default logic. |
 | onExecuteAIAction | [OnExecuteAIAction](./arkts-basic-components-web-t.md#onexecuteaiaction) | No | No | Callback function triggered when an AI session executes an action. |
 | onDestroyAISession | [OnDestroyAISession](./arkts-basic-components-web-t.md#ondestroyaisession) | No | No | Callback function triggered when an AI session is destroyed, used to clean up resources associated with the custom AI model. |
+<!--no_check-->

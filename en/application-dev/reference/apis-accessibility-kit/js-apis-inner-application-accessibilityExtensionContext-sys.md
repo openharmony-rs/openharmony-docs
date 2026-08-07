@@ -1,4 +1,4 @@
-# AccessibilityExtensionContext (Accessibility Extension Context)(System API)
+# AccessibilityExtensionContext (System API)
 
 <!--Kit: Accessibility Kit-->
 <!--Subsystem: BarrierFree-->
@@ -6,7 +6,7 @@
 <!--Designer: @z7o-->
 <!--Tester: @A_qqq-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=5afea8900a93c1d5d53117a86ba6b7c5d998328d translatedAt=2026-08-07T07:20:05.453Z pushedAt=2026-08-07T08:31:28.652Z -->
+<!-- md-trans-meta sourceCommit=5afea8900a93c1d5d53117a86ba6b7c5d998328d translatedAt=2026-08-07T07:20:05.453Z pushedAt=2026-08-07T09:55:09.663Z -->
 
 The **AccessibilityExtensionContext** module, inherited from **ExtensionContext**, provides context for **AccessibilityExtensionAbility**.
 
@@ -1288,7 +1288,7 @@ Before calling the APIs of AccessibilityElement, call [AccessibilityExtensionCon
 | accessibilityText<sup>20+</sup> | string                                                  | No  | Yes  | Accessibility text information of the element.|
 | accessibilityStateDescription<sup>23+</sup> | string                                      | No  | Yes  | Custom accessibility state announcement text of the element.<br>**Model restriction:** This API can be used only in the stage model.|
 | hotArea<sup>20+</sup>             | [Rect](js-apis-inner-application-accessibilityExtensionContext.md#rect)                                                              | No  | Yes  | Touchable area of the element.|
-| customComponentType<sup>20+</sup>             | string                                                             | No  | Yes  | Custom component type. Corresponds to the [AccessibilityRoleType](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityroletype18-enum-description) type of the element.|
+| customComponentType<sup>20+</sup>             | string                                                             | No  | Yes  | Custom component type. Corresponds to the [AccessibilityRoleType](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityroletype18) type of the element.|
 | accessibilityNextFocusId<sup>20+</sup>             | number                | No  | Yes  | ID of the next component to gain focus.<br>Default value: **-1**.|
 | accessibilityPreviousFocusId<sup>20+</sup>             | number                | No  | Yes  | ID of the previous component to gain focus.<br>Default value: **-1**.|
 | extraInfo<sup>20+</sup>             | string     | No  | Yes  | Extra information of the element. The value is a JSON string.|

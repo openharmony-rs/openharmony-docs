@@ -1,4 +1,4 @@
-# @ohos.accessibility (Accessibility)(System API)
+# @ohos.accessibility (Accessibility) (System API)
 
 <!--Kit: Accessibility Kit-->
 <!--Subsystem: BarrierFree-->
@@ -6,7 +6,7 @@
 <!--Designer: @z7o-->
 <!--Tester: @A_qqq-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=5afea8900a93c1d5d53117a86ba6b7c5d998328d translatedAt=2026-08-03T09:39:08.062Z pushedAt=2026-08-07T01:31:51.281Z -->
+<!-- md-trans-meta sourceCommit=5afea8900a93c1d5d53117a86ba6b7c5d998328d translatedAt=2026-08-03T09:39:08.062Z pushedAt=2026-08-07T10:41:03.882Z -->
 
 The **Accessibility** module provides accessibility event types and operations executable on accessibility nodes.
 

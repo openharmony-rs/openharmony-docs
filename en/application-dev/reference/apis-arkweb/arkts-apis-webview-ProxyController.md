@@ -6,7 +6,7 @@
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=5bd67952550947311c46c7276be4f0642b76503e translatedAt=2026-08-07T04:45:12.270Z pushedAt=2026-08-07T08:11:17.547Z -->
+<!-- md-trans-meta sourceCommit=5bd67952550947311c46c7276be4f0642b76503e translatedAt=2026-08-07T04:45:12.270Z pushedAt=2026-08-07T10:36:46.751Z -->
 
 ProxyController is a static class in the ArkWeb framework used to manage the proxy configuration of all Web components in an app. With ProxyController, developers can uniformly set or remove proxy configurations for all Web requests in the app, which is suitable for scenarios where Web traffic needs to be routed to a specific proxy server (such as enterprise network environments, content filtering, and traffic monitoring).
 
@@ -93,8 +93,8 @@ struct WebComponent {
       Column() {
         Button("applyProxyOverride").onClick(()=>{
           let proxyConfig:webview.ProxyConfig = new webview.ProxyConfig();
-          // 优先使用第一个代理配置https://proxy.XXX.com
-          // Fall back to direct server connection after proxy failure.
+          // Use the first proxy configuration https://proxy.XXX.com first
+          // Fall back to direct server connection insertDirectRule after proxy failure.
           try {
             proxyConfig.insertProxyRule("https://proxy.XXX.com", webview.ProxySchemeFilter.MATCH_ALL_SCHEMES);
           } catch (error) {

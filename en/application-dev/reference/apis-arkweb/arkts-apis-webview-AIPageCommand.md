@@ -6,7 +6,7 @@
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=dcc0abdade92c0b802a40194e56aabc12b399ebe translatedAt=2026-08-07T04:42:33.598Z pushedAt=2026-08-07T07:28:51.431Z -->
+<!-- md-trans-meta sourceCommit=dcc0abdade92c0b802a40194e56aabc12b399ebe translatedAt=2026-08-07T04:42:33.598Z pushedAt=2026-08-07T11:04:36.136Z -->
 
 `AIPageCommand` defines the JSON command protocol supported by [executeAIPageCommand](./arkts-apis-webview-WebviewController.md#executeaipagecommand), including the input parameter format and response format of different commands. Before calling this API, the app needs to serialize the command object into a JSON string.
 
@@ -759,11 +759,11 @@ Clears existing page annotations, obtains element positions based on the node id
 
 - During annotation, one or more layout rectangles of the element in the current viewport are obtained. If the element has no layout rectangle with a positive area, the element's bounding rectangle is used instead.
 
-- Hit testing uses the horizontal center point of the rectangle and a sampling point at <code>3/5</code> of its height. The element hit by the sampling point must be the target element or its descendant; otherwise, the rectangle is not drawn.
+- Hit testing uses the horizontal center point of the rectangle and a sampling point at `3/5` of its height. The element hit by the sampling point must be the target element or its descendant; otherwise, the rectangle is not drawn.
 
 - Elements in embedded frames are drawn after their coordinates are converted to the top-level page viewport coordinates.
 
-- Rectangles are clipped to the current viewport. An element is not drawn and is counted in <code>missingElementIds</code> if it is completely outside the viewport, its total visible area after clipping is less than <code>20px²</code>, it is occluded, the element cannot be found, or its coordinates cannot be converted.
+- Rectangles are clipped to the current viewport. An element is not drawn and is counted in `missingElementIds` if it is completely outside the viewport, its total visible area after clipping is less than `20px²`, it is occluded, the element cannot be found, or its coordinates cannot be converted.
 
 - An element may correspond to multiple rectangles. Annotation boxes are drawn per rectangle, while numeric labels are drawn per element. The text indicates the actual drawing order, starting from `1`.
 

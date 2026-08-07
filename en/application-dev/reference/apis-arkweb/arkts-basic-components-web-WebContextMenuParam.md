@@ -249,3 +249,4 @@ Obtains the type of the web element that the user long presses or right-clicks w
 | Type    | Description      |
 | ------ | ----------  |
 | [ContextMenuDataMediaType](./arkts-basic-components-web-e.md#contextmenudatamediatype22) | Media type of the web element, including image, video, audio, and other types, used to distinguish the type of web element tapped by the user. |
+<!--no_check-->

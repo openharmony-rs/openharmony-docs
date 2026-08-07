@@ -85,3 +85,4 @@ Sets the mouse event consumption result and bubbling control.
 **Example**
 
 For details about the sample code of the mouse event, see [onNativeEmbedMouseEvent](./arkts-basic-components-web-events.md#onnativeembedmouseevent20).
+<!--no_check-->

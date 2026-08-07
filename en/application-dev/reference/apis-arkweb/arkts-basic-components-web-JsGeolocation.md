@@ -43,3 +43,4 @@ Sets the geolocation permission status of a web page. This method must be called
 | origin | string | Yes | Web origin that initiates the location permission request, used to identify the source of a geolocation request from a specific website.<br>The origin format must comply with the format defined in RFC 6454. |
 | allow  | boolean | Yes  | Geolocation permission status.<br>The value **true** means to enable the geolocation permission, and **false** means the opposite.                            |
 | retain | boolean | Yes | Whether to allow the location permission state to be saved to the system. The location permissions saved to the system can be managed through the [GeolocationPermissions](./arkts-apis-webview-GeolocationPermissions.md) API.<br>The value **true** indicates that the location permission state is saved to the system, and **false** indicates that it is not saved to the system. |
+<!--no_check-->
