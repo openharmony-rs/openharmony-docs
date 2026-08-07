@@ -247,10 +247,10 @@ import { formInfo } from '@kit.FormKit';
 
 | 名称 | 类型 | 只读 | 可选  | 说明 |
 |-----|-----|------|-----|-------|
-| left   | number | 否 | 否   | 描述矩形的左上角顶点的 x 坐标，单位：vp，用于定位卡片区域的位置。范围参考[请求参数约束](../../form/arkts-ui-liveform-sceneanimation-overview.md#请求参数约束)。|
-| top    | number | 否 | 否   | 描述矩形的左上角顶点的 y 坐标，单位：vp，用于定位卡片区域的位置。范围参考[请求参数约束](../../form/arkts-ui-liveform-sceneanimation-overview.md#请求参数约束)。|
-| width  | number | 否 | 否   | 描述矩形的宽度，单位：vp，用于定义卡片区域的尺寸。范围参考[请求参数约束](../../form/arkts-ui-liveform-sceneanimation-overview.md#请求参数约束)。|
-| height | number | 否 | 否   | 描述矩形的高度，单位：vp，用于定义卡片区域的尺寸。范围参考[请求参数约束](../../form/arkts-ui-liveform-sceneanimation-overview.md#请求参数约束)。|
+| left   | number | 否 | 否   | 描述矩形的左上角顶点的 x 坐标，单位：vp，用于定位卡片区域的位置。范围参考[请求参数约束](../../form/arkts-ui-liveform-sceneanimation-development.md#请求参数约束)。|
+| top    | number | 否 | 否   | 描述矩形的左上角顶点的 y 坐标，单位：vp，用于定位卡片区域的位置。范围参考[请求参数约束](../../form/arkts-ui-liveform-sceneanimation-development.md#请求参数约束)。|
+| width  | number | 否 | 否   | 描述矩形的宽度，单位：vp，用于定义卡片区域的尺寸。范围参考[请求参数约束](../../form/arkts-ui-liveform-sceneanimation-development.md#请求参数约束)。|
+| height | number | 否 | 否   | 描述矩形的高度，单位：vp，用于定义卡片区域的尺寸。范围参考[请求参数约束](../../form/arkts-ui-liveform-sceneanimation-development.md#请求参数约束)。|
 
 ## FormLocation<sup>20+</sup>
 
