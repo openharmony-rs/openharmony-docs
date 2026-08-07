@@ -192,13 +192,13 @@ static napi_value CloseResource(napi_env env, napi_callback_info info)
 
 **证书管理服务获取**
 
-   适用场景：浏览器双向SSL认证等需要用户选择证书的场景。
+适用于浏览器双向SSL认证等需要用户选择证书的场景。
 
-   通过[openAuthorizeDialog](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)（由证书管理提供）展示证书列表，由用户选择证书。返回的[keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22)即为resourceId，每个证书链对应1个resourceId。
+通过[openAuthorizeDialog](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)（由证书管理提供）展示证书列表，由用户选择证书。返回的[keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22)即为resourceId，每个证书链对应1个resourceId。
 
 **通过getResourceId接口获取**
 
-   适用场景：从API版本26.0.0开始支持，适用于密钥生成、密钥导入等不需要证书选择的场景。
+从API版本26.0.0开始支持通过getResourceId接口获取resourceId的方式，适用于密钥生成、密钥导入等不需要证书选择的场景。
 
 ### 开发步骤
 
@@ -437,7 +437,7 @@ static napi_value GetProperty(napi_env env, napi_callback_info info)
 
 ## 属性设置
 
-从API版本22开始，huksExternalCrypto设置属性[setProperty](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptosetproperty)接口。
+从API版本22开始，huksExternalCrypto提供设置属性[setProperty](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptosetproperty)的接口。
 
 ### 规格说明
 
@@ -446,8 +446,6 @@ static napi_value GetProperty(napi_env env, napi_callback_info info)
 - resourceId为已通过[打开/关闭资源](#打开关闭资源)步骤打开的资源ID，长度为1-1024字节。
 
 - propertyId需要与密钥管理扩展约定调用规则，长度为1-100字节。建议采用GM/T 0016-2023标准中定义的SKF函数名称。
-
-> **PIN认证说明**：是否需要PIN认证取决于propertyId和密钥管理扩展的实现。设置设备名称等操作通常不需要，涉及密钥属性或敏感信息时，通常需要先完成PIN认证。
 
 ### 开发步骤
 

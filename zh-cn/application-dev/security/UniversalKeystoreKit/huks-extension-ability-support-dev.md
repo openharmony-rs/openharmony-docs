@@ -44,10 +44,10 @@
    ```
 
 4. 在工程Module对应的module.json5配置文件中注册CryptoExtensionAbility组件到[extensionAbilities](../../../application-dev/quick-start/module-configuration-file.md#extensionabilities标签)标签中。
-  - name标签表示ability名称，最大长度为127字节。配置多个ability时要求每个name标签必须是唯一的。
-  - srcEntry标签表示当前CryptoExtensionAbility组件所对应的代码路径。
-  - type标签需要设置为“crypto”。
-  - exported标签设置为false表示不允许三方应用调用。
+   - name标签表示ability名称，最大长度为127字节。配置多个ability时要求每个name标签必须是唯一的。
+   - srcEntry标签表示当前CryptoExtensionAbility组件所对应的代码路径。
+   - type标签需要设置为“crypto”。
+   - exported标签设置为false表示不允许三方应用调用。
 
    ```json5
    // entry/src/main/module.json5
@@ -76,7 +76,6 @@
 
    export class CryptoExtension extends CryptoExtensionAbility {
      // 建议的状态管理机制，仅供参考
-
      // 1. 句柄映射表：key = "${uid}:${handle}"，value = 底层UKey句柄
      private handleMap: Map<string, YourDriverHandle> = new Map();
 
@@ -140,7 +139,7 @@
    }
    ```
 
-## 接口实现
+## 开发示例
 
 ### onOpenResource
 
@@ -463,7 +462,7 @@ onInitSession用于初始化密钥会话。当调用成功时，返回值中的r
        result.resultCode = 0;
        result.handle = sessionHandle;
      } catch (error) {
-       // 记账失败，回滚驱动侧会话
+       // 缓存失败，回滚驱动侧会话
        if (driverSession !== null) {
          try { YourDriverInstance.YourDriver_onFinishSession(driverSession); } catch (_) {}
        }

@@ -85,7 +85,7 @@
 
 **签名：**
 
-1. 通过证书管理系统能力提供的[证书选择接口](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog)获取[keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22)作为resourceId，并作为密钥别名，打开资源后完成PIN码认证，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
+1. 通过证书管理系统能力提供的[openAuthorizeDialog](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取[keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22)作为resourceId，并作为密钥别名，打开资源后完成PIN码认证，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
 
 2. 指定待签名的明文数据。
 
@@ -97,7 +97,7 @@
 
 **验签：**
 
-1. 通过证书管理系统能力提供的[证书选择接口](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog)获取[keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22)作为resourceId，并作为密钥别名，然后打开资源，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
+1. 通过证书管理系统能力提供的[openAuthorizeDialog](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取[keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22)作为resourceId，并作为密钥别名，然后打开资源，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
 
 2. 获取待验证的签名。
 
