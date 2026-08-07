@@ -137,7 +137,7 @@ notifyMetadataBindingEvent(bundleName: string): Promise&lt;string&gt;
 
 | 类型                          | 说明        |
 | ---------------------------- | ---------- |
-| Promise&lt;string&gt; | Promise对象。返回当前所在页面的appLink信息（应用内跳转链接）。|
+| Promise&lt;string&gt; | Promise对象。返回当前所在页面的appLink信息。|
 
 **错误码**：
 
