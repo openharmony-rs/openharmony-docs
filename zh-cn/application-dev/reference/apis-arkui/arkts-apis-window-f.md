@@ -171,7 +171,7 @@ createWindow(config: Configuration): Promise&lt;Window&gt;
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801     | Capability not supported. createWindow cannot work correctly due to limited device capabilities.<br>适用版本：12+ |
-| 1300001 | Repeated operation. Possible cause: The window hasbeen created and can not be created again. |
+| 1300001 | Repeated operation. Possible cause: The window has been created and cannot be created again. |
 | 1300002 | This window state is abnormal. Possible cause: Invalid parent window type, parent window cannot be a subWindow.<br>适用版本：12+ |
 | 1300004 | Unauthorized operation. Possible cause: The window type in the configuration is invalid.<br>适用版本：12+ |
 | 1300006 | This window context is abnormal. |
