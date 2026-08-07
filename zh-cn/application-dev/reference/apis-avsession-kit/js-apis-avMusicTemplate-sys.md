@@ -21,7 +21,7 @@
 ## 导入模块
 
 ```ts
-import { avMusicTemplate } from '@kit.AVSessionKit';W
+import { avMusicTemplate } from '@kit.AVSessionKit';
 ```
 
 ## avMusicTemplate.createAVMusicTemplateController
