@@ -203,6 +203,7 @@ HiDebug C/C++接口功能独立，需要获取调试信息时直接调用。具�
    #include "hidebug/hidebug.h"
    #include "hilog/log.h"
    #include "test_backtrace.h"
+   #include "test_async_context.h"
    
    #undef LOG_TAG
    #define LOG_TAG "testTag"
@@ -233,6 +234,12 @@ HiDebug C/C++接口功能独立，需要获取调试信息时直接调用。具�
        OH_HiDebug_FreeThreadCpuUsage(&cpuUsage); // 释放内存，防止内存泄露。
        return nullptr;
    }
+   
+   napi_value TestAsyncContext(napi_env env, napi_callback_info info)
+   {
+       TestAsyncContextChain();
+       return nullptr;
+   }
    ```
 
    注册“TestHiDebugNdk”为ArkTS接口并初始化主线程的信号处理函数：
@@ -243,6 +250,7 @@ HiDebug C/C++接口功能独立，需要获取调试信息时直接调用。具�
    napi_property_descriptor desc[] = {
        { "testGetThreadCpuUsage", nullptr, TestGetThreadCpuUsage, nullptr, nullptr, nullptr, napi_default, nullptr },
        { "testBackTrace", nullptr, TestBackTrace, nullptr, nullptr, nullptr, napi_default, nullptr },
+       { "testAsyncContext", nullptr, TestAsyncContext, nullptr, nullptr, nullptr, napi_default, nullptr },
    };
    ```
 
@@ -252,6 +260,7 @@ HiDebug C/C++接口功能独立，需要获取调试信息时直接调用。具�
    ``` TypeScript
    export const testGetThreadCpuUsage: () => void;
    export const testBackTrace: () => void;
+   export const testAsyncContext: () => void;
    ```
 
 7. 编辑“Index.ets”文件，添加触发接口调用的按钮，示例代码如下：
@@ -280,6 +289,10 @@ HiDebug C/C++接口功能独立，需要获取调试信息时直接调用。具�
    function testGetThreadCpuUsage() : void {
      testNapi.testGetThreadCpuUsage();
    }
+   
+   function testAsyncContext() : void {
+     testNapi.testAsyncContext();
+   }
    ```
    添加按钮以触发接口调用：
    <!-- @[TestHidebugNdk_Buttons](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/ets/pages/Index.ets) -->
@@ -306,6 +319,17 @@ HiDebug C/C++接口功能独立，需要获取调试信息时直接调用。具�
      .height('5%')
      // 添加点击事件
      .onClick(testBackTrace);
+   
+   Button('testAsyncContext')
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('60%')
+     .height('5%')
+     // 添加点击事件
+     .onClick(testAsyncContext);
    ```
 
 步骤二：运行工程
