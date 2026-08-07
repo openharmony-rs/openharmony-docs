@@ -162,7 +162,7 @@ abilityToolAccessCtrl.grantToolPermissionsByUser(userAuthResult).then((data: Arr
 
 generateControllerDevicePackage(remoteUserAuthResult: RemoteUserAuthResults[]): Promise&lt;RemoteAuthPackage[]&gt;
 
-在主控设备上，生成远程授权结果包。根据用户远程授权结果生成远程授权包，生成的包可以发送到被控设备上，完成完整性校验后，执行权限授权。使用Promise异步回调。
+在主控设备上，根据用户远程授权结果生成远程授权结果包。生成的包可以发送到被控设备上，完成完整性校验后，执行权限授权。使用Promise异步回调。
 
 **起始版本：** 26.1.0
 
@@ -176,13 +176,13 @@ generateControllerDevicePackage(remoteUserAuthResult: RemoteUserAuthResults[]): 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| remoteUserAuthResult | Array&lt;[RemoteUserAuthResults](#remoteuserauthresults)&gt; | 是 | 用户远程授权结果列表，包含授权结果和权限信息。 |
+| remoteUserAuthResult | [RemoteUserAuthResults](#remoteuserauthresults)[] | 是 | 用户远程授权结果列表，包含授权结果和权限信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;Array&lt;[RemoteAuthPackage](#remoteauthpackage)&gt;&gt; | Promise对象。返回远程授权结果包列表。 |
+| Promise&lt;[RemoteAuthPackage](#remoteauthpackage)[]&gt; | Promise对象，返回远程授权结果包列表。 |
 
 **错误码：**
 
@@ -230,7 +230,7 @@ abilityToolAccessCtrl.generateControllerDevicePackage(remoteUserAuthResult).then
 
 generateControlledDevicePackage(permissionQuery: PermissionQuery[]): Promise&lt;RemoteAuthPackage[]&gt;
 
-在被控设备上，生成远程授权请求包。根据权限查询列表生成远程授权包，生成的包可以发送到主控设备上，完成完整性校验后，发起用户授权确认。使用Promise异步回调。
+在被控设备上，根据权限查询列表生成远程授权请求包。生成的包可以发送到主控设备上，完成完整性校验后，发起用户授权确认。使用Promise异步回调。
 
 **起始版本：** 26.1.0
 
@@ -244,13 +244,13 @@ generateControlledDevicePackage(permissionQuery: PermissionQuery[]): Promise&lt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| permissionQuery | Array&lt;[PermissionQuery](#permissionquery)&gt; | 是 | 权限查询列表，包含CLI和API操作信息、远程授权交互信息等。 |
+| permissionQuery | [PermissionQuery](#permissionquery)[] | 是 | 权限查询列表，包含CLI和API操作信息、远程授权交互信息等。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;Array&lt;[RemoteAuthPackage](#remoteauthpackage)&gt;&gt; | Promise对象。返回远程授权请求包列表。 |
+| Promise&lt;[RemoteAuthPackage](#remoteauthpackage)[]&gt; | Promise对象，返回远程授权请求包列表。 |
 
 **错误码：**
 
@@ -297,7 +297,7 @@ abilityToolAccessCtrl.generateControlledDevicePackage(permissionQuery).then((dat
 
 verifyControllerDevicePackage(ticketInfo: RemoteAuthPackage[], remoteInfo: RemoteInfo): Promise&lt;boolean[]&gt;
 
-验证来自主控设备的远程授权结果包。验证主控设备发送的远程授权消息凭据和远程设备信息，以确保授权结果合法。使用Promise异步回调。
+验证主控设备发送的远程授权结果包，检查消息凭据和远程设备信息以确保授权结果合法。使用Promise异步回调。
 
 **起始版本：** 26.1.0
 
@@ -311,14 +311,14 @@ verifyControllerDevicePackage(ticketInfo: RemoteAuthPackage[], remoteInfo: Remot
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| ticketInfo | Array&lt;[RemoteAuthPackage](#remoteauthpackage)&gt; | 是 | 远程授权包列表，包含远程消息、防重放挑战值和消息完整性凭据。 |
+| ticketInfo | [RemoteAuthPackage](#remoteauthpackage)[] | 是 | 远程授权包列表，包含远程消息、防重放挑战值和消息完整性凭据。 |
 | remoteInfo | [RemoteInfo](#remoteinfo) | 是 | 远端设备信息，包含设备角色、设备ID、华为账号ID等。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;Array&lt;boolean&gt;&gt; | Promise对象。返回验证结果列表，true表示验证通过，false表示验证失败。 |
+| Promise&lt;boolean[]&gt; | Promise对象。返回true表示验证通过；返回false表示验证失败。 |
 
 **错误码：**
 
@@ -360,7 +360,7 @@ abilityToolAccessCtrl.verifyControllerDevicePackage(ticketInfo, remoteInfo).then
 
 verifyControlledDevicePackage(ticketInfo: RemoteAuthPackage[]): Promise&lt;boolean[]&gt;
 
-验证来自被控设备的授权包。验证远程授权的消息凭据以确保授权请求合法。使用Promise异步回调。
+验证被控设备发送的授权包，检查消息凭据以确保授权请求合法。使用Promise异步回调。
 
 **起始版本：** 26.1.0
 
@@ -374,13 +374,13 @@ verifyControlledDevicePackage(ticketInfo: RemoteAuthPackage[]): Promise&lt;boole
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| ticketInfo | Array&lt;[RemoteAuthPackage](#remoteauthpackage)&gt; | 是 | 远程授权包列表，包含远程消息、防重放挑战值和消息完整性凭据。 |
+| ticketInfo | [RemoteAuthPackage](#remoteauthpackage)[] | 是 | 远程授权包列表，包含远程消息、防重放挑战值和消息完整性凭据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;Array&lt;boolean&gt;&gt; | Promise对象。返回验证结果列表，true表示验证通过，false表示验证失败。 |
+| Promise&lt;boolean[]&gt; | Promise对象。返回true表示验证通过；返回false表示验证失败。 |
 
 **错误码：**
 
@@ -417,7 +417,7 @@ abilityToolAccessCtrl.verifyControlledDevicePackage(ticketInfo).then((data: Arra
 
 getRemoteGrantStatus(): Promise&lt;RemoteGrantStatus&gt;
 
-获取远程授权状态。查询远程授权开关的使能状态，启用时设备可以向远程设备发起远程授权，禁用时不允许远程授权。使用Promise异步回调。
+查询远程授权开关的使能状态。启用时设备可以向远程设备发起远程授权，禁用时不允许远程授权。使用Promise异步回调。
 
 **起始版本：** 26.1.0
 
@@ -431,7 +431,7 @@ getRemoteGrantStatus(): Promise&lt;RemoteGrantStatus&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[RemoteGrantStatus](#remotegrantstatus)&gt; | Promise对象。返回远程授权开关状态。 |
+| Promise&lt;[RemoteGrantStatus](#remotegrantstatus)&gt; | Promise对象，返回远程授权开关状态。 |
 
 **错误码：**
 
@@ -514,11 +514,11 @@ abilityToolAccessCtrl.updateRemoteGrantStatus(abilityToolAccessCtrl.RemoteGrantS
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| challenge | string | 否 | 是 | 防重放挑战值，用于防止重放攻击。 |
-| remoteControlTicket | string | 否 | 是 | 可信设备的远程控制凭证，用于远程控制场景同账号下可信设备的身份验证。 |
-| controlledDeviceName | string | 否 | 是 | 被控设备的设备名称。 |
-| controllerDeviceName | string | 否 | 是 | 主控设备的设备名称。 |
-| signVerifyMsg | string | 否 | 是 | 签名认证需要的额外信息，如调用方包名，模块名等 |
+| challenge | string | 否 | 是 | 防重放挑战值，用于防止重放攻击。合法的challenge由[generateControlledDevicePackage](#abilitytoolaccessctrlgeneratecontrolleddevicepackage)接口获取。<br>默认值：空字符串。 |
+| remoteControlTicket | string | 否 | 是 | 可信设备的远程控制凭证，用于远程控制场景同账号下可信设备的身份验证。<br>默认值：空字符串。 |
+| controlledDeviceName | string | 否 | 是 | 被控设备的设备名称。<br>默认值：空字符串。 |
+| controllerDeviceName | string | 否 | 是 | 主控设备的设备名称。<br>默认值：空字符串。 |
+| signVerifyMsg | string | 否 | 是 | 签名认证需要的额外信息，如调用方包名，模块名等。<br>默认值：空字符串。 |
 
 ## CliCmdInfo
 
@@ -550,7 +550,7 @@ abilityToolAccessCtrl.updateRemoteGrantStatus(abilityToolAccessCtrl.RemoteGrantS
 | operationInfo | Array&lt;[OperationInfo](#operationinfo)&gt; | 否 | 否 | 操作信息列表，指定待查询的CLI命令或API接口。 |
 | needTicket | boolean | 否 | 是 | 是否需要生成ticket用于本地或远程授权。true表示需要生成ticket，false表示不需要。当设置为true时，仅在本次查询结果通过的情况下才会返回ticket信息。<br>默认值：false |
 | ticketExpireTimeMs | number | 否 | 是 | ticket过期时间，单位为毫秒。取值范围：1~86400000（24小时），超过最大值将返回错误码24010000。需配合needTicket参数使用，仅当needTicket为true时本参数生效。默认值10000适用于常规授权场景，长时间远程授权场景可适当延长。<br>默认值：10000 |
-| remoteInfo | [RemoteInfo](#remoteinfo) | 否 | 是 | 远端设备信息。用于远程授权场景，包含设备角色、设备ID、华为账号ID等远程设备相关信息。 |
+| remoteInfo | [RemoteInfo](#remoteinfo) | 否 | 是 | 远端设备信息。用于远程授权场景，包含设备角色、设备ID、华为账号ID等远程设备相关信息。<br>**起始版本：** 26.1.0 |
 | callerTokenId | number | 否 | 是 | 调用方进程的tokenId。当需要为其他进程查询或授权时，可指定目标进程的tokenId。<br>如果未传入该参数，默认获取调用方进程的tokenId。|
 | domainId | string | 否 | 是 | 域标识。<br>如果未传入该参数，则默认获取调用方当前的域标识。|
 
@@ -692,7 +692,7 @@ abilityToolAccessCtrl.updateRemoteGrantStatus(abilityToolAccessCtrl.RemoteGrantS
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| results | Array&lt;[RemoteUserAuthItem](#remoteuserauthitem)&gt; | 否 | 否 | 授权结果列表，包含权限名称和授权结果。 |
+| results | [RemoteUserAuthItem](#remoteuserauthitem)[] | 否 | 否 | 授权结果列表，包含权限名称和授权结果。 |
 | permissionQuery | [PermissionQuery](#permissionquery) | 否 | 否 | 权限查询信息，用于关联授权结果与查询请求。 |
 
 ## RemoteUserAuthItem
@@ -707,8 +707,8 @@ abilityToolAccessCtrl.updateRemoteGrantStatus(abilityToolAccessCtrl.RemoteGrantS
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| permission | string | 否 | 否 | 权限名称，指定授权的权限。 |
-| authResult | string | 否 | 否 | 授权结果，表示权限的授权状态。 |
+| permission | string | 否 | 否 | 权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
+| authResult | string | 否 | 否 | 授权结果，表示权限的授权状态。支持的取值包括DENIED（用户未授权）、GRANTED（已授权）、NOT_DETERMINED（未操作授权）、INVALID（无效权限）、RESTRICTED（限制授权）。 |
 
 ## AuthStatus
 
