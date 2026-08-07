@@ -785,6 +785,8 @@ With this permission, the application can set audio sound effects and manage aud
 
 Allows an application to access vehicle security and privacy service APIs.
 
+With this permission, the application can query vehicle privacy agreements or policies, driver-seat privacy mode, and trace removal status.
+
 **Permission level**: normal
 
 **Authorization mode**: system_grant
