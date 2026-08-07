@@ -1,4 +1,4 @@
-# 跨设备连接UIAbility开发指南
+# 跨设备连接UIAbility开发指南（仅对系统应用开放）
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
 <!--Owner: @hobbycao-->
