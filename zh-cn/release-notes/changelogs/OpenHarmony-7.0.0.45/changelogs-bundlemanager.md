@@ -13,10 +13,11 @@
 **变更影响**
 
 变更前：
-1. 只要声明支持打开HTTP协议即可展示在默认浏览器备选列表并且可以被设置为默认浏览器。
+
+仅声明支持打开HTTP协议，应用即可展示在默认浏览器备选列表并且可以被设置为默认浏览器。
 
 变更后：
-1. 需要申请默认浏览器权限（ohos.permission.DEFAULT_WEB_BROWSER）才可以展示在默认浏览器备选列表。
+1. 应用需要申请默认浏览器权限（ohos.permission.DEFAULT_WEB_BROWSER）才可以被展示在默认浏览器备选列表。
 2. 具备默认浏览器权限的应用才可以被设置为默认浏览器。
 
 **起始 API Level**
@@ -25,7 +26,7 @@
 
 **变更发生版本**
 
-默认浏览器权限管控将于下一版本起正式生效（7.0 版本暂不受限）。请有需要的开发者尽快申请该权限，以免影响功能。
+默认浏览器权限管控将于下一版本起正式生效（OpenHarmony 7.0 版本暂不受限）。请有需要的开发者尽快申请该权限，以免影响功能。
 
 **变更的接口/组件**
 
@@ -33,7 +34,7 @@
 
 **适配指导**
 
-如果有成为默认浏览器的诉求，需要按照受限权限申请指导进行默认浏览器权限（ohos.permission.DEFAULT_WEB_BROWSER）申请。
+若设置默认浏览器，需要按照受限权限申请指导进行默认浏览器权限（ohos.permission.DEFAULT_WEB_BROWSER）申请。
 
 受限权限申请指导：https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/declare-permissions-in-acl
 
