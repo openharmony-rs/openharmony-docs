@@ -40,7 +40,7 @@ GridItem(value?: GridItemOptions)
 
 | 参数名 | 类型                                      | 必填 | 说明                                                     |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value<sup>11+</sup>  | [GridItemOptions](#griditemoptions11对象说明) | 否   | 为GridItem提供可选参数，该对象内含有[GridItemStyle](#griditemstyle11枚举说明)枚举类型的style参数。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| value<sup>11+</sup>  | [GridItemOptions](#griditemoptions11对象说明) | 否   | 为GridItem提供可选参数，该对象内包含[GridItemStyle](#griditemstyle11枚举说明)枚举类型的style参数。不传入时使用默认样式，即GridItemStyle.NONE。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## 属性
 
@@ -132,7 +132,6 @@ ArkTS-Sta: columnEnd(value: int | undefined)
 | ------ | ------ | ---- | ------------------ |
 | value  | ArkTS-Dyn: number<br/>ArkTS-Sta: int \| undefined | 是   | 当前元素终点列号。<br/>需要指定GridItem起始行列号和所占行列数的场景推荐使用Grid的[GridLayoutOptions](ts-container-grid.md#gridlayoutoptions10对象说明)参数，详细可参考Grid的[示例1（固定行列Grid）](ts-container-grid.md#示例1固定行列grid)和[示例3（可滚动Grid设置跨行跨列节点）](ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。<br/>取值范围：[0, 总列数-1]<br/>取值为undefined时，按默认值处理。 |
 
-
 需要指定GridItem起始行列号和所占行列数的场景推荐使用Grid的[GridLayoutOptions](ts-container-grid.md#gridlayoutoptions10对象说明)参数，详细可参考Grid的[示例1（固定行列Grid）](ts-container-grid.md#示例1固定行列grid)和[示例3（可滚动Grid设置跨行跨列节点）](ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。
 
 起始行号、终点行号、起始列号、终点列号生效规则如下：
@@ -182,7 +181,7 @@ forceRebuild(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                                    |
 | ------ | ------- | ---- | ------------------------------------------------------- |
-| value  | boolean | 是   | 在触发组件build时是否重新创建此节点。<br/>默认值：false |
+| value  | boolean | 是   | 设置为true时，在触发组件build时重新创建此节点；设置为false时，不强制重新创建此节点。<br/>默认值：false |
 
 ### selectable<sup>8+</sup>
 
@@ -236,11 +235,11 @@ ArkTS-Sta：从API version 23开始，该属性支持[$$](../../../ui/state-mana
 
 | 参数名 | 类型    | 必填 | 说明                                     |
 | ------ | ------- | ---- | ---------------------------------------- |
-| value  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| Bindable\<boolean> \| undefined | 是   | 当前GridItem选中状态。设置为true时为选中状态，设置为false时为默认状态。<br/>默认值：false<br/>取值为undefined时，按默认值处理。 |
+| value | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| Bindable\<boolean> \| undefined | 是 | 当前GridItem选中状态。设置为true时为选中状态，设置为false时为非选中状态。<br/>默认值：false<br/>取值为undefined时，按默认值处理。 |
 
 ## GridItemOptions<sup>11+</sup>对象说明
 
-GridItem可选参数对象。
+GridItem样式对象，用于配置GridItem的样式选项。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -254,11 +253,11 @@ GridItem可选参数对象。
 
 | 名称  | 类型                  | 只读 | 可选 | 说明                         |
 | ----- | -------------------- | ---- | --- | ---------------------------- |
-| style | [GridItemStyle](#griditemstyle11枚举说明) | 否   | 是 | 设置GridItem样式。<br/>默认值：GridItemStyle.NONE<br/>设置为GridItemStyle.NONE时无样式。<br/>设置为GridItemStyle.PLAIN时，显示Hover、Press态样式。<br/>取值为undefined时，按默认值处理。 |
+| style | [GridItemStyle](#griditemstyle11枚举说明) | 否 | 是 | 设置GridItem样式。<br/>默认值：GridItemStyle.NONE<br/>设置为GridItemStyle.NONE时无样式。<br/>设置为GridItemStyle.PLAIN时，显示Hover、Press态样式。Hover态为鼠标悬停时的样式，Press态为按下时的样式。<br/>取值为undefined时，按默认值处理。 |
 
 ## GridItemStyle<sup>11+</sup>枚举说明
 
-GridItem样式枚举。
+GridItem样式枚举，用于定义GridItem的交互态样式。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -272,8 +271,8 @@ GridItem样式枚举。
 
 | 名称  |值| 说明                   |
 | ----- |----| ------------------------ |
-| NONE  |  0 | 无样式。                 |
-| PLAIN |  1 | 显示Hover、Press态样式。 |
+| NONE  |  0 | 无样式，不显示Hover、Press态样式。                 |
+| PLAIN |  1 | 显示Hover、Press态样式。Hover态为鼠标悬停时的样式，Press态为按下时的样式。 |
 
 > **说明：**
 >
@@ -324,7 +323,7 @@ attributeModifier(modifier: AttributeModifier\<GridItemAttribute> | AttributeMod
 ## 示例
 
 ### 示例1（GridItem设置自身位置）
-GridItem通过设置合理的ColumnStart、ColumnEnd、RowStart、RowEnd属性来设置自身位置。需要指定GridItem起始行列号和所占行列数的场景推荐使用Grid的[GridLayoutOptions](ts-container-grid.md#gridlayoutoptions10对象说明)参数，详细可参考Grid的[示例1（固定行列Grid）](ts-container-grid.md#示例1固定行列grid)和[示例3（可滚动Grid设置跨行跨列节点）](ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。
+GridItem通过设置合理的rowStart、rowEnd、columnStart、columnEnd属性来设置自身位置。需要指定GridItem起始行列号和所占行列数的场景推荐使用Grid的[GridLayoutOptions](ts-container-grid.md#gridlayoutoptions10对象说明)参数，详细可参考Grid的[示例1（固定行列Grid）](ts-container-grid.md#示例1固定行列grid)和[示例3（可滚动Grid设置跨行跨列节点）](ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。
 
 ArkTS-Dyn示例：
 
@@ -365,7 +364,7 @@ struct GridItemExample {
             .width('100%')
             .height('100%')
             .textAlign(TextAlign.Center)
-        }.columnStart(1).columnEnd(4) // 只设置列号，不会从第1列开始布局
+        }.columnStart(1).columnEnd(4) // 未设置行号，不按columnStart(1)定位；此处从第5行、索引为0的列开始并跨4列布局
       }
       .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
       .rowsTemplate('1fr 1fr 1fr 1fr 1fr')
@@ -444,10 +443,10 @@ struct GridItemExample {
   build() {
     Column({ space: 5 }) {
       Grid() {
-        ForEach(this.numbers, (day: string) => {
-          ForEach(this.numbers, (day: string) => {
+        ForEach(this.numbers, (rowItem: string) => {
+          ForEach(this.numbers, (item: string) => {
             GridItem({style:GridItemStyle.NONE}) {
-              Text(day)
+              Text(item)
                 .fontSize(16)
                 .width('100%')
                 .height('100%')
@@ -455,8 +454,8 @@ struct GridItemExample {
                 .focusable(true)
             }
             .backgroundColor(0xF9CF93)
-          }, (day: string) => day)
-        }, (day: string) => day)
+          }, (item: string) => item)
+        }, (rowItem: string) => rowItem)
       }
       .columnsTemplate('1fr 1fr 1fr')
       .rowsTemplate('1fr 1fr')
@@ -468,10 +467,10 @@ struct GridItemExample {
       .padding('4vp')
 
       Grid() {
-        ForEach(this.numbers, (day: string) => {
-          ForEach(this.numbers, (day: string) => {
+        ForEach(this.numbers, (rowItem: string) => {
+          ForEach(this.numbers, (item: string) => {
             GridItem({style:GridItemStyle.PLAIN}) {
-              Text(day)
+              Text(item)
                 .fontSize(16)
                 .width('100%')
                 .height('100%')
@@ -479,8 +478,8 @@ struct GridItemExample {
                 .focusable(true)
             }
             .backgroundColor(0xF9CF93)
-          }, (day: string) => day)
-        }, (day: string) => day)
+          }, (item: string) => item)
+        }, (rowItem: string) => rowItem)
       }
       .columnsTemplate('1fr 1fr 1fr')
       .rowsTemplate('1fr 1fr')
