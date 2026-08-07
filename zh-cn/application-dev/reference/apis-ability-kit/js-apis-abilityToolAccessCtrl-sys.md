@@ -482,7 +482,7 @@ updateRemoteGrantStatus(remoteGrantStatus: RemoteGrantStatus): Promise&lt;void&g
 **返回值：**
 
 | 类型 | 说明 |
-| -------- | -------- |
+| --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
@@ -562,6 +562,23 @@ abilityToolAccessCtrl.updateRemoteGrantStatus(abilityToolAccessCtrl.RemoteGrantS
 | callerTokenId | number | 否 | 是 | 调用方进程的tokenId。当需要为其他进程查询或授权时，可指定目标进程的tokenId。<br>如果未传入该参数，默认获取调用方进程的tokenId。|
 | domainId | string | 否 | 是 | 域标识。<br>如果未传入该参数，则默认获取调用方当前的域标识。|
 
+## RemoteInfo
+
+表示远端设备信息。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Security.Asset
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| role | [Role](#role) | 否 | 否 | 设备角色，表示设备是控制器还是受控设备。 |
+| remoteId | string | 否 | 否 | 远端设备ID，用于唯一标识远端设备。 |
+| domainId | string | 否 | 否 | 华为账号ID，用于标识设备登录的华为账号。 |
+| remoteControlParams | [RemoteControlParams](#remotecontrolparams) | 否 | 是 | 远程控制中的交互参数，包含防重放挑战值、远程控制凭证等信息。 |
+
 ## OperationInfo
 
 表示操作信息。
@@ -640,6 +657,22 @@ abilityToolAccessCtrl.updateRemoteGrantStatus(abilityToolAccessCtrl.RemoteGrantS
 | challenge | string | 否 | 否 | 挑战值，用于验证ticket的合法性。 |
 | ticket | string | 否 | 否 | ticket字符串，用于权限验证。 |
 
+## RemoteAuthPackage
+
+表示远程授权包。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Security.Asset
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| remoteMessage | string | 否 | 否 | 远程消息，用于传递远程授权相关的信息。 |
+| challenge | string | 否 | 否 | 防重放挑战值，用于保护授权包的安全性。 |
+| ticket | string | 否 | 否 | 远程消息的完整性签名信息，用于远程权限验证。 |
+
 ## UserAuthResult
 
 表示用户授权结果。
@@ -704,6 +737,22 @@ abilityToolAccessCtrl.updateRemoteGrantStatus(abilityToolAccessCtrl.RemoteGrantS
 | REMOTE_RESTRICTED | 4 | 远程受限制，远程设备的权限受限制。 |
 
 
+## Role
+
+表示设备角色枚举。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Security.Asset
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| CONTROLLER | 0x01 | 主控设备，发起远程控制的设备。 |
+| CONTROLLED | 0x02 | 被控设备，接受远程控制指令的设备。 |
+
+
 ## OperationType
 
 表示操作类型枚举。
@@ -718,3 +767,18 @@ abilityToolAccessCtrl.updateRemoteGrantStatus(abilityToolAccessCtrl.RemoteGrantS
 | -------- | -------- | -------- |
 | CLI | 0x01 | CLI命令操作。 |
 | API | 0x02 | API接口操作。 |
+
+## RemoteGrantStatus
+
+表示远程授权状态枚举。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Security.Asset
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| ENABLE | 0x01 | 启用远程授权，允许设备向远程设备授予权限。 |
+| DISABLE | 0x02 | 禁用远程授权，不允许远程授权。 |
