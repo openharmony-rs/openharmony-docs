@@ -7,7 +7,7 @@
 <!--Adviser: @HelloCrease-->
 <!--deprecated_code_no_check-->
 
-appManager模块提供App管理的能力，包括查询当前是否处于稳定性测试场景、查询是否为RAM受限设备、获取应用程序的内存大小、获取有关运行进程的信息等。
+appManager模块提供App管理的能力，包括注册应用状态观测器、获取前台应用信息、终止应用进程、清除应用数据、获取运行进程信息等。
 
 > **说明：**
 > 
@@ -37,7 +37,7 @@ registerApplicationStateObserver(observer: ApplicationStateObserver): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| observer | [ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md) | 是 | 表示程序状态观测器，用于观测应用的生命周期变化。 |
+| observer | [ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md) | 是 | 表示应用程序状态观测器，用于观测应用的生命周期变化。 |
 
 **返回值：**
 
@@ -78,7 +78,7 @@ registerApplicationStateObserver(observer: ApplicationStateObserver): number
 
 ## appManager.unregisterApplicationStateObserver
 
-unregisterApplicationStateObserver(observerId: number,  callback: AsyncCallback\<void>): void
+unregisterApplicationStateObserver(observerId: number, callback: AsyncCallback\<void>): void
 
 取消注册应用程序状态观测器。使用callback异步回调。
 
@@ -92,7 +92,7 @@ unregisterApplicationStateObserver(observerId: number,  callback: AsyncCallback\
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| observerId | number | 是 | 表示观察者的编号代码。 |
+| observerId | number | 是 | 表示观测器的数字代码。 |
 | callback | AsyncCallback\<void> | 是 | 取消注册的回调函数。 |
 
 **示例：**
@@ -129,7 +129,7 @@ unregisterApplicationStateObserver(observerId: number): Promise\<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| observerId | number | 是 | 表示观察者的编号代码。 |
+| observerId | number | 是 | 表示观测器的数字代码。 |
 
 **返回值：**
 
@@ -240,7 +240,7 @@ killProcessWithAccount(bundleName: string, accountId: number): Promise\<void\>
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 应用Bundle名称。 |
-| accountId | number | 是 | 系统账号的账号ID，详情参考[getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getcreatedosaccountscountdeprecated)。 |
+| accountId | number | 是 | 系统账号ID，详情参考[getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getcreatedosaccountscountdeprecated)。 |
 
 **返回值：**
 
@@ -287,7 +287,7 @@ killProcessWithAccount(bundleName: string, accountId: number, callback: AsyncCal
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 应用Bundle名称。 |
-| accountId | number | 是 | 系统账号的账号ID，详情参考[getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getcreatedosaccountscountdeprecated)。 |
+| accountId | number | 是 | 系统账号ID，详情参考[getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getcreatedosaccountscountdeprecated)。 |
 | callback | AsyncCallback\<void\> | 是 | 回调函数，当终止指定账号下的应用进程成功，err为undefined，否则为错误对象。 |
 
 **示例：**
@@ -547,7 +547,7 @@ getProcessRunningInformation(callback: AsyncCallback\<Array\<ProcessRunningInfo>
 
   appManager.getProcessRunningInformation((error, data) => {
     if (error && error.code !== 0) {
-      console.error(`getProcessRunningInformation fail, error: ${JSON.stringify(error)}`);
+      console.error(`GetProcessRunningInformation failed, error code: ${error.code}, error msg: ${error.message}.`);
     } else {
       console.info(`getProcessRunningInformation success, data: ${JSON.stringify(data)}`);
     }

@@ -13,7 +13,7 @@ The text selection panel is an operation panel that pops up after a user selects
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 24. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - This module is supported only on PCs/2-in-1 devices. You can use canIUse('SystemCapability.SelectionInput.Selection') to check whether the current device supports this function.
+> - This module is supported only on PCs/2-in-1 devices. You can use **canIUse('SystemCapability.SelectionInput.Selection')** to check whether the current device supports this function.
 
 ## Modules to Import
 

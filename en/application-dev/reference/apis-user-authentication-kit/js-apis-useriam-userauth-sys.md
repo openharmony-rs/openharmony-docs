@@ -6,25 +6,20 @@
 <!--Designer: @lichangting518-->
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=be48531bb599ab262690e4bcab7fffa1f7126656 translatedAt=2026-07-27T00:48:26.780Z pushedAt=2026-07-27T08:45:08.376Z -->
 
 The **userAuth** module is the core module for user authentication in OpenHarmony. It provides authentication capabilities in scenarios such as device unlocking, payment verification, and application login.
 
-This topic describes only the advanced capabilities provided by this module for system application and authentication widget developers. These APIs provide system-level features such as authentication widget management, custom notification sending, authentication result reuse query, and privacy password authentication.
+This topic describes only the advanced capabilities provided by this module for system application and authentication widget developers. These APIs provide system-level features such as authentication widget management, custom notification sending, authentication result reuse query, privacy password authentication, and remote authentication.
 
 You can use them in the following scenarios:
 
 - The system application needs to manage the lifecycle of custom authentication widgets.
-
 - The authentication widget needs to perform bidirectional communication with the authentication framework.
-
 - System notifications related to the authentication widget need to be sent.
-
 - Reusable authentication results need to be queried to implement seamless authentication.
-
 - The privacy password needs to be used for authentication.
-
 - A specific user or credential needs to be specified for authentication.
+- Remote authentication is required. When a remote device initiates authentication, the authentication page parameters need to be obtained and the authentication result needs to be returned.
 
 > **NOTE**<br>
 >
@@ -40,15 +35,14 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 ## AuthParam<sup>10+</sup>
 
-Represents the user authentication parameters. This API is used to configure user authentication parameters. This topic defines only the parameters specific to system APIs. For the complete parameter definitions, see [AuthParam](js-apis-useriam-userauth.md#authparam10).
+Represents the user authentication parameters. This API is used to set parameters for user authentication. This topic defines only the parameters specific to system APIs. For details about the complete parameter definition, see [AuthParam](js-apis-useriam-userauth.md#authparam10).
 
 **System capability**: SystemCapability.UserIAM.UserAuth.Core
 
 | Name          | Type                              | Read-Only| Optional| Description                                                        |
 | -------------- | ---------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| userId<sup>18+</sup> | number | No   | Yes   | ID of the target user to be authenticated. This parameter is passed when a specific user, rather than the currently logged-in user, needs to be authenticated. If not passed, the ID of the currently logged-in user is used by default. The value is a non-negative integer.<br>**System API:** This is a system API.|
-| credentialIdList<sup>23+</sup> | Uint8Array[] | No | Yes | List of IDs for credentials to be authenticated. This parameter is passed when only specific credentials, rather than all credentials of the user, need to be authenticated. If not passed or an empty array is passed, all credentials of the user are authenticated by default.<br>**System API:** This is a system API.<br>**Model restriction:** This API can be used only in the stage model.|
-
+| userId<sup>18+</sup> | number | No  | Yes  | ID of the target user to be authenticated, which specifies the user to be authenticated. This parameter is passed when a specific user instead of the current login user needs to be authenticated. If this parameter is not passed, the ID of the current login user is used by default. The value is a non-negative integer.<br>**System API**: This is a system API.|
+| credentialIdList<sup>23+</sup> | Uint8Array[] | No| Yes| Credential ID list, which is used to specify the credentials to be authenticated. This parameter is passed when only specific credentials instead of all credentials of the user need to be authenticated. If this parameter is not passed or an empty array is passed, all credentials of the user are authenticated by default.<br>**System API**: This is a system API.<br>**Model restriction:** This API can be used only in the stage model.|
 ## WindowModeType<sup>10+</sup>
 
 Enumerates the display types of the user authentication screen. This enum defines the display modes that can be used on the authentication screen and is used to control the window style of the system authentication widget.
@@ -64,14 +58,14 @@ Enumerates the display types of the user authentication screen. This enum define
 
 ## WidgetParam<sup>10+</sup>
 
-Represents the parameters for configuring the user authentication screen. This API is used to configure the display style and interaction mode of the authentication screen. This topic defines only the parameters specific to system APIs. For the complete parameter definitions, see [WidgetParam](js-apis-useriam-userauth.md#widgetparam10).
+Represents the information presented on the user authentication page. This API is used to configure the display style and interaction mode of the authentication screen. This topic defines only the parameters specific to system APIs. For details about the complete parameter definition, see [WidgetParam](js-apis-useriam-userauth.md#widgetparam10).
 
 **System capability**: SystemCapability.UserIAM.UserAuth.Core
 
 | Name                | Type                               | Read-Only| Optional| Description                                                        |
 | -------------------- | ----------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| windowMode           | [WindowModeType](#windowmodetype10) | No   | Yes   | Window type of the user authentication screen. **DIALOG_BOX** is suitable for most authentication scenarios (with better user experience), and **FULLSCREEN** is suitable for scenarios that require an immersive authentication experience or involve more authentication information. If not specified, the default value is **WindowModeType.DIALOG_BOX**.<br>**System API:** This is a system API. |
-| appWindow          | [window.Window](../apis-arkui/arkts-apis-window-Window.md) | No   | Yes   | Application window object. It is used to display the identity authentication dialog box as an application modal dialog. It is suitable for scenarios where the authentication dialog box needs to be controlled through a window object. If this parameter is provided, **uiContext** will be ignored.<br>**Since:** 26.0.0<br>**System API:** This is a system API.<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0. |
+| windowMode           | [WindowModeType](#windowmodetype10) | No  | Yes  | Window type of the authentication widget. **DIALOG_BOX** is applicable to most authentication scenarios (with good user experience), and **FULLSCREEN** is applicable to scenarios that require immersive authentication experience or scenarios where a large amount of authentication information needs to be displayed. If no value is passed, **WindowModeType.DIALOG_BOX** is used by default.<br>**System API**: This is a system API.|
+| appWindow          | [window.Window](../apis-arkui/arkts-apis-window-Window.md) | No  | Yes  | Application window object. This API is used to display the authentication dialog box as an application modal dialog. It is applicable to scenarios where the dialog box needs to be displayed by using the window object. If this parameter is provided, **uiContext** will be ignored. If this parameter is not passed, the display of the authentication dialog box is controlled by **uiContext**.<br>**Since:** 26.0.0<br>**System API**: This is a system API.<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 
 ## NoticeType<sup>10+</sup>
 
@@ -102,7 +96,7 @@ Sends a notification from the user authentication widget. When the unified authe
 | Name    | Type                       | Mandatory| Description      |
 | ---------- | --------------------------- | ---- | ---------- |
 | noticeType | [NoticeType](#noticetype10) | Yes  | Notification type. It identifies the source of a notification. Currently, **WIDGET_NOTICE (1)** is supported, indicating that the notification is from the authentication widget.|
-| eventData  | string                | Yes   | Event data, which is a JSON string that contains the specific content of the notification, such as the authentication type ready event. The data length ranges from 0 to 65536 bytes. The JSON object should contain fields such as **widgetContextId** (number type, widget context ID), **event** (string type, event type), **version** (string type, version number), and **payload** (object type, event payload object). |
+| eventData  | string                | Yes  | Event data. It is a string in JSON format, containing the notification details, such as the authentication type and ready event. The data length ranges from 0 to 65536 bytes. The JSON object must contain the following fields: **widgetContextId** (context ID of the component, number type), **event** (event type, string type), **version** (version number, string type), and **payload** (event payload object, object type).|
 
 **Error codes**
 
@@ -151,7 +145,7 @@ try {
 
 ## UserAuthWidgetMgr<sup>10+</sup>
 
-Defines the identity authentication widget manager. It is used to register custom identity authentication widgets with the **UserAuthWidgetMgr** for unified management and scheduling. Custom authentication widgets can receive commands from the user authentication framework and execute corresponding operations.
+Defines the authentication widget manager. It is used to register the custom authentication widget with the **UserAuthWidgetMgr** for unified management and scheduling. The custom authentication widget can receive commands from the user authentication framework and perform corresponding operations.
 
 ### on<sup>10+</sup>
 
@@ -216,7 +210,7 @@ Unsubscribes from command events from the user authentication framework. The aut
 | Name  | Type                                         | Mandatory| Description                                                        |
 | -------- | --------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | 'command'                                     | Yes  | Event type to subscribe to. The value **'command'** indicates that the event that the user authentication framework sends commands to the identity authentication widget is unsubscribed.|
-| callback | [IAuthWidgetCallback](#iauthwidgetcallback10) | No | Callback to unregister, which must be the same as the callback passed in the **on** method. If this parameter is not passed, all registered callbacks are unregistered. Before using the **off** API, ensure that the corresponding callback has been registered through the [on](#on10) method. |
+| callback | [IAuthWidgetCallback](#iauthwidgetcallback10) | No  | Callback function. Callback to be unregistered, which must be the same as that passed to the **on** method. If this parameter is not passed, all registered callbacks are unregistered. Before using this method, ensure that the corresponding callback has been registered using the [on](#on10) method.|
 
 **Error codes**
 
@@ -269,7 +263,7 @@ Obtains the authentication widget manager object. It is used to obtain the **Use
 
 | Name | Type  | Mandatory| Description                |
 | ------- | ------ | ---- | -------------------- |
-| version | number | Yes | Version number of the authentication widget. Currently, only version 1 is supported. The widget version determines the communication protocol and supported features between the widget and the framework. |
+| version | number | Yes  | Version number of the authentication widget. Currently, only version 1 is supported. The widget version determines the communication protocol and supported features between the widget and the framework.|
 
 **Return value**
 
@@ -322,7 +316,7 @@ Triggered to receive commands from the user authentication framework. The user a
 
 | Name | Type  | Mandatory| Description                              |
 | ------- | ------ | ---- | ---------------------------------- |
-| cmdData | string | Yes | Command data, which is a JSON string containing the command content sent by the user authentication framework to the authentication widget. The JSON structure includes corresponding fields based on different command types. Common fields include: **commandType** (string, command type), **authType** (array, list of authentication types), **result** (number, authentication result code), etc. The widget must parse this data and perform corresponding operations based on the command type. |
+| cmdData | string | Yes  | Command data. It is a JSON string, containing the command content sent by the user authentication framework to the authentication widget. The JSON structure contains fields based on the command type. Common fields include **commandType** (string, command type), **authType** (array, authentication type list), and **result** (number, authentication result code). The widget needs to parse the data and perform the corresponding operations based on the command type.|
 
 **Example**
 
@@ -348,13 +342,13 @@ try {
 
 ## UserAuthType<sup>8+</sup>
 
-Enumerates the credential types for identity authentication. This topic defines only the authentication types specific to system APIs. For the complete type definitions, see [UserAuthType](js-apis-useriam-userauth.md#userauthtype8).
+Enumerates the types of credentials for identity authentication. This topic defines only the authentication types specific to system APIs. For details about the complete type definition, see [UserAuthType](js-apis-useriam-userauth.md#userauthtype8).
 
 **System capability**: SystemCapability.UserIAM.UserAuth.Core
 
 | Name       | Value  | Description      |
 | ----------- | ---- | ---------- |
-| PRIVATE_PIN<sup>14+</sup>  | 16   | Privacy PIN. It is a special PIN authentication type, which is generally used for secondary access control after the screen is unlocked (that is, the user must be authenticated again before accessing a specific application or content after the device is unlocked). For example, a user can use a privacy password to protect the application lock (a feature that performs secondary authentication on application startup to prevent others from opening the user's applications) to prevent family members who know the lock screen password from accessing some of their applications.<br>**System API:** This is a system API. |
+| PRIVATE_PIN<sup>14+</sup>  | 16   | Privacy PIN. It is a special PIN authentication type, which is generally used for secondary access control after the screen is unlocked. (That is, after the device is unlocked, the user needs to be authenticated again before accessing specific apps or content.) For example, a user can use the privacy PIN to protect the application lock (the application lock is a secondary verification function for application startup, which can prevent others from opening the user's application), so as to prevent family members who know the lock screen password from accessing some applications of the user.<br>**System API**: This is a system API.|
 
 **Example**
 
@@ -462,7 +456,7 @@ try {
 
 ## UserAuthResultCode<sup>9+</sup>
 
-Enumerates the result codes. This topic defines only the error codes specific to system APIs. For the complete error code definitions, see [UserAuthResultCode](js-apis-useriam-userauth.md#userauthresultcode9).
+Enumerates the authentication result codes. This topic defines only the error codes specific to system APIs. For details about the complete error code definition, see [UserAuthResultCode](js-apis-useriam-userauth.md#userauthresultcode9).
 
 **System capability**: SystemCapability.UserIAM.UserAuth.Core
 
@@ -478,93 +472,93 @@ Enumerates the result codes. This topic defines only the error codes specific to
 
 type WidgetParamCallback = (challenge: Uint8Array) => WidgetParam
 
-Defines the callback for obtaining remote authentication widget parameters. This type is used in remote authentication scenarios. When the configuration parameters of the remote authentication widget need to be obtained, the system invokes this callback.
+Triggered to obtain remote authentication page parameters. This callback type is used in remote authentication scenarios. When the system needs to obtain the configuration parameters of the remote authentication page, it calls this callback function.
 
 **Since:** 26.0.0
 
-**System capability:** SystemCapability.UserIAM.UserAuth.Core
+**System capability**: SystemCapability.UserIAM.UserAuth.Core
 
-**System API:** This is a system API.
+**System API**: This is a system API.
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
-| Name | Type | Mandatory | Description |
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| challenge | Uint8Array | Yes | Random challenge value, which can be used to prevent replay attacks. The maximum length is 32 bytes. Uint8Array([]) can be passed. It is recommended that a random number generated by the [crypto framework](../apis-crypto-architecture-kit/js-apis-cryptoFramework.md) be used as the challenge value to enhance security. |
+| challenge | Uint8Array | Yes| Random challenge value, which can be used to prevent replay attacks. It cannot exceed 32 bytes and can be passed in **Uint8Array([])** format. You are advised to use the random number generated by the [crypto framework](../apis-crypto-architecture-kit/js-apis-cryptoFramework.md) as the challenge value to enhance security.|
 
 **Return value**
 
-| Type | Description |
+| Type| Description|
 | -------- | -------- |
-| [WidgetParam](js-apis-useriam-userauth.md#widgetparam10) | Configuration parameters of the user authentication widget, including the title and navigation button text. |
+| [WidgetParam](js-apis-useriam-userauth.md#widgetparam10) | User authentication page configuration parameters. It includes the title and navigation button text of the authentication page.|
 
 ## ResultCallback
 
 type ResultCallback = (challenge: Uint8Array, result: UserAuthResult) => void
 
-Defines the callback for returning remote authentication results. This type is used in remote authentication scenarios. After the remote authentication is complete, the system invokes this callback to return the authentication result.
+Triggered to return the remote authentication result. This callback type is used in remote authentication scenarios. After remote authentication is complete, the system calls this callback function to return the authentication result.
 
 **Since:** 26.0.0
 
-**System capability:** SystemCapability.UserIAM.UserAuth.Core
+**System capability**: SystemCapability.UserIAM.UserAuth.Core
 
-**System API:** This is a system API.
+**System API**: This is a system API.
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
-| Name | Type | Mandatory | Description |
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| challenge | Uint8Array | Yes | Challenge value. It is a one-time random number used to prevent replay attacks, which is consistent with the challenge value passed during authentication initiation. |
-| result | [UserAuthResult](js-apis-useriam-userauth.md#userauthresult10) | Yes | User authentication result, including the authentication result code and authentication token. |
+| challenge | Uint8Array | Yes| Challenge value. It is a one-time random number used to prevent replay attacks, and is the same as the challenge value passed during authentication initiation.|
+| result | [UserAuthResult](js-apis-useriam-userauth.md#userauthresult10) | Yes| User authentication result. It contains information such as the authentication result code and authentication token.|
 
 ## IRemoteAuthCallback
 
-Defines the remote authentication callback API. This API is used in remote authentication scenarios and provides the callback capabilities for obtaining remote authentication widget parameters and returning authentication results.
+Defines the callback of remote authentication. This API is used in remote authentication scenarios to obtain parameters of the remote authentication page and return the authentication result.
 
 **Since:** 26.0.0
 
-**System capability:** SystemCapability.UserIAM.UserAuth.Core
+**System capability**: SystemCapability.UserIAM.UserAuth.Core
 
-**System API:** This is a system API.
+**System API**: This is a system API.
 
 **Model restriction:** This API can be used only in the stage model.
 
-| Name | Type | Read-Only | Optional | Description |
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| onGetRemoteAuthWidgetParam | [WidgetParamCallback](#widgetparamcallback) | No | No | Callback for obtaining remote authentication widget parameters. When a remote device initiates an authentication request, the system invokes this callback to obtain the authentication widget configuration parameters. |
-| onRemoteAuthResult | [ResultCallback](#resultcallback) | No | No | Callback for returning remote authentication results. After the remote authentication is complete, the system invokes this callback to return the authentication result to the initiator. |
+| onGetRemoteAuthWidgetParam | [WidgetParamCallback](#widgetparamcallback) | No| No| Callback triggered to obtain remote authentication page parameters. When a remote device initiates an authentication request, the system calls this callback to obtain the configuration parameters on the authentication page.|
+| onRemoteAuthResult | [ResultCallback](#resultcallback) | No| No| Callback triggered to return the remote authentication result. After remote authentication is complete, the system calls this callback to return the authentication result to the initiator.|
 
 ## userAuth.registerRemoteAuthCallback
 
 registerRemoteAuthCallback(callback: IRemoteAuthCallback): void
 
-Registers a remote authentication callback. This API is used in remote authentication scenarios. After registration, the system can obtain the page parameters required for remote authentication through the callback and receive the authentication result after the authentication is complete. Duplicate registration is not allowed. When the callback is no longer needed, call [unregisterRemoteAuthCallback](#userauthunregisterremoteauthcallback) to unregister it to prevent the callback from being unable to be released.
+Registers a remote authentication callback. This API is used to register a callback in remote authentication scenarios. After the callback is registered, the system can obtain the page parameters required for remote authentication through the callback and receive the authentication result after the authentication is complete. Repeated registration is not allowed. If the callback is not used, call [unregisterRemoteAuthCallback](#userauthunregisterremoteauthcallback) to unregister it to avoid callback release failures.
 
 **Since:** 26.0.0
 
-**Required permissions:** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+**Required permissions**: ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
-**System capability:** SystemCapability.UserIAM.UserAuth.Core
+**System capability**: SystemCapability.UserIAM.UserAuth.Core
 
-**System API:** This is a system API.
+**System API**: This is a system API.
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
-| Name | Type | Mandatory | Description |
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callback | [IRemoteAuthCallback](#iremoteauthcallback) | Yes | Remote authentication callback API, which includes the callbacks for obtaining authentication widget parameters and returning authentication results. |
+| callback | [IRemoteAuthCallback](#iremoteauthcallback) | Yes| Remote authentication callback API. It contains the callback function for obtaining authentication page parameters and returning the authentication result.|
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [User Authentication Error Codes](errorcode-useriam.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [User Authentication Error Codes](errorcode-useriam.md).
 
-| ID | Error Message |
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Permission denied. Called by non-system application. |
@@ -603,23 +597,23 @@ try {
 
 unregisterRemoteAuthCallback(): void
 
-Unregisters the remote authentication callback. This API is used to unregister a previously registered remote authentication callback. After unregistration, the system no longer receives remote authentication page parameter requests or authentication result notification.
+Unregisters a remote authentication callback. This API is used to unregister a registered remote authentication callback. After the callback is unregistered, the system does not receive requests for page parameters or authentication result notifications for remote authentication.
 
 **Since:** 26.0.0
 
-**Required permissions:** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+**Required permissions**: ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
-**System capability:** SystemCapability.UserIAM.UserAuth.Core
+**System capability**: SystemCapability.UserIAM.UserAuth.Core
 
-**System API:** This is a system API.
+**System API**: This is a system API.
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [User Authentication Error Codes](errorcode-useriam.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [User Authentication Error Codes](errorcode-useriam.md).
 
-| ID | Error Message |
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Permission denied. Called by non-system application. |

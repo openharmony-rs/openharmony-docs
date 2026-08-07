@@ -793,7 +793,9 @@ try {
       console.error(`isAppRunning error, code: ${err.code}, msg:${err.message}`);
     });
 } catch (err) {
-  console.error(`isAppRunning error, code: ${err.code}, msg:${err.message}`);
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`isAppRunning error, code: ${code}, msg:${message}`);
 }
 ```
 

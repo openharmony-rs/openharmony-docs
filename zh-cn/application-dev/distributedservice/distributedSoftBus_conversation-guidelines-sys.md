@@ -1,4 +1,4 @@
-# 跨设备唤醒与消息传输开发指导
+# 跨设备唤醒与消息传输开发指南（仅对系统应用开放）
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @wangrui7-->
