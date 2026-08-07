@@ -146,7 +146,7 @@ static napi_value RegisterProvider(napi_env env, napi_callback_info info)
 }
 ```
 
-## 注册CryptoExtensionAbility并注册UIExtensionAbility
+## 注册CryptoExtensionAbility及UIExtensionAbility
 
 从API版本26.0.0开始，支持同步注册UIExtensionAbility到系统中，仅在ArkTS接口下支持。详细规格见[接入能力](huks-extension-ability-support-overview.md#接入能力)。
 

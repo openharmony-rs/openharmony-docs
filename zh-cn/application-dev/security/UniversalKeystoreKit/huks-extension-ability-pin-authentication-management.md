@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-PIN（Personal Identification Number）码是密钥管理扩展服务中的安全访问凭证，服务实现方可以采用"凭证+PIN码"的双因子认证模式：用户必须同时拥有有效的凭证（如物理设备、虚拟服务会话等）和正确的PIN码，才能访问服务内的密钥材料。
+PIN（Personal Identification Number）码是密钥管理扩展服务中的安全访问凭证，服务实现方可以采用“凭证+PIN码”的双因子认证模式：用户必须同时拥有有效的凭证（如物理设备、虚拟服务会话等）和正确的PIN码，才能访问服务内的密钥材料。
 
 PIN码作用如下：
 
