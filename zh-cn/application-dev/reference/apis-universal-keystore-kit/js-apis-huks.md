@@ -3942,7 +3942,7 @@ API version 11系统能力为SystemCapability.Security.Huks.Extension；从API v
 | 名称                           | 值   | 说明                                                         |
 | ------------------------------ | ---- | ------------------------------------------------------------ |
 | HUKS_KEY_SECURITY_LEVEL_TEE | 0    | 密钥在可信执行环境中生成并使用。 |
-| HUKS_KEY_SECURITY_LEVEL_SE | 1    | 密钥在安全环境中生成并使用。<br>**需要权限：** [ohos.permission.ACCESS_SE_KEY](../../security/AccessToken/restricted-permissions.md#ohospermissionaccess_se_key) |
+| HUKS_KEY_SECURITY_LEVEL_SE | 1    | 密钥在安全环境中生成并使用。<br>**需要权限：** ohos.permission.ACCESS_SE_KEY。 |
 
 ## HuksTagType
 
