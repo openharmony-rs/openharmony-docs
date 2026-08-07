@@ -1,12 +1,16 @@
 # Class (WebCookieManager)
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=5bd67952550947311c46c7276be4f0642b76503e translatedAt=2026-08-07T04:48:29.505Z pushedAt=2026-08-07T08:11:29.859Z -->
 
-Implements a **WebCookieManager** instance to manage behavior of cookies in **Web** components. All **Web** components in an application share a **WebCookieManager** instance. The cookie format complies with the [RFC2965](https://www.rfc-editor.org/rfc/rfc2965) standard. Currently, the cookie obtaining API of WebCookieManager does not support partitioned cookies.
+WebCookieManager is the cookie manager for Web components, providing global management capabilities for cookies in Web components. With this class, developers can obtain, set, save, and clear cookies, as well as control cookie permissions. All methods of this class are static, and all Web components in an app share a single WebCookieManager instance. The cookie format complies with the [RFC6265](https://www.rfc-editor.org/info/rfc6265/) standard.
+
+When browsing web pages in Privacy Mode, data such as cookies and caches are not written to local persistent storage. After the Web component in Privacy Mode is destroyed, this data is cleared and not retained.
 
 > **NOTE**
 >
@@ -32,11 +36,11 @@ Obtains the cookie value of the specified URL.
 
 > **NOTE**
 >
-> The system automatically deletes expired cookies. For data with the same key name, the new data overwrites the previous data.
-> 
-> To obtain the cookie value that can be used, pass a complete link to **fetchCookieSync()**.
-> 
-> **fetchCookieSync()** is used to obtain all cookie values. Cookie values are separated by semicolons. However, a specific cookie value cannot be obtained separately.
+> - The system automatically deletes expired cookies. For data with the same key name, the new data overwrites the previous data.
+>
+> - To obtain a usable cookie value, you are advised to pass a complete URL to fetchCookieSync.
+>
+> - fetchCookieSync is used to obtain all cookie values. Each cookie value is separated by "; ", but a specific cookie value cannot be obtained individually.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -44,7 +48,7 @@ Obtains the cookie value of the specified URL.
 
 | Name| Type  | Mandatory| Description                     |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | Yes  | URL of the cookie to obtain. A complete URL is recommended.|
+| url    | string | Yes   | URL for which the cookie is to be obtained. A complete URL is recommended. |
 | incognito    | boolean | No  | Whether to obtain the cookie in incognito mode. The value **true** means to obtain the cookie in incognito mode, and **false** means the opposite.<br>The default value is **false**.<br>If **undefined** or **null** is passed, error code **401** will be thrown.|
 
 **Return value**
@@ -91,6 +95,77 @@ struct WebComponent {
 }
 ```
 
+## fetchCookieSync
+
+static fetchCookieSync(url: string, incognito?: boolean, includePartitionedCookies?: boolean): string
+
+Obtains the cookies corresponding to a specified URL. The optional parameter incognito specifies whether to obtain cookies in Privacy Mode, and the optional parameter includePartitionedCookies specifies whether to obtain first-party partitioned cookies.
+
+> **NOTE**
+>
+> - The system automatically deletes expired cookies. For data with the same key name, the new data overwrites the previous data.
+>
+> - To obtain a usable cookie value, you are advised to pass a complete URL to fetchCookieSync.
+>
+> - fetchCookieSync is used to obtain all cookie values. Each cookie value is separated by "; ", but a specific cookie value cannot be obtained individually.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | ------ | ---- | :------------------------ |
+| url | string | Yes | URL of the cookie to obtain. A complete URL is recommended. |
+| incognito | boolean | No | Whether to obtain the in-memory cookies of the Web component in Privacy Mode. The value **true** indicates Privacy Mode, and **false** indicates Non-Privacy Mode.<br>Default value: **false**.<br>Passing **undefined** or **null** throws error code 401. |
+| includePartitionedCookies | boolean | No | Whether to allow obtaining first-party partitioned cookies. The value **true** indicates that first-party partitioned cookies are allowed, and **false** indicates that they are not allowed.<br>Default value: **false**.<br>Passing **undefined** or **null** throws error code 401. |
+
+**Return value**
+
+| Type | Description |
+| ------ | ------------------------- |
+| string | Cookies corresponding to the specified URL. |
+
+**Error codes**
+
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+
+| ID | Error Message |
+| -------- | ------------------------------------------------------ |
+| 17100002 | URL error. No valid cookie found for the specified URL. |
+
+**Example**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('fetchCookieSync')
+        .onClick(() => {
+          try {
+            let value = webview.WebCookieManager.fetchCookieSync('https://www.example.com', false, true);
+            console.info("fetchCookieSync cookie = " + value);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## fetchCookie<sup>11+</sup>
 
 static fetchCookie(url: string, callback: AsyncCallback\<string>): void
@@ -103,8 +178,8 @@ Obtains the cookie value of a specified URL. This API uses an asynchronous callb
 
 | Name| Type  | Mandatory| Description                     |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | Yes  | URL of the cookie to obtain. A complete URL is recommended.|
-| callback | AsyncCallback\<string> | Yes| Callback used to return the result.|
+| url    | string | Yes   | URL for which the cookie is to be obtained. A complete URL is recommended. |
+| callback | AsyncCallback\<string> | Yes | Callback used to obtain the cookie. |
 
 **Error codes**
 
@@ -163,7 +238,7 @@ Obtains the cookie value of a specified URL. This API uses a promise to return t
 
 | Name| Type  | Mandatory| Description                     |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | Yes  | URL of the cookie to obtain. A complete URL is recommended.|
+| url    | string | Yes  | URL for which the cookie is to be obtained. It is recommended to use a complete URL. |
 
 **Return value**
 
@@ -226,7 +301,7 @@ Obtains the cookie value of a specified URL. This API uses a promise to return t
 
 | Name| Type  | Mandatory| Description                     |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | Yes  | URL of the cookie to obtain. A complete URL is recommended.|
+| url    | string | Yes   | URL for which the cookie is to be obtained. A complete URL is recommended. |
 | incognito    | boolean | Yes  | Whether to obtain the cookie in incognito mode. The value **true** means to obtain the cookie in incognito mode, and **false** means the opposite.|
 
 **Return value**
@@ -278,6 +353,135 @@ struct WebComponent {
 }
 ```
 
+## fetchCookie
+
+static fetchCookie(url: string, incognito: boolean, includePartitionedCookies: boolean): Promise\<string>
+
+Obtains the cookies corresponding to a specified URL. The parameter incognito specifies whether to obtain cookies in Privacy Mode, and the parameter includePartitionedCookies specifies whether to obtain first-party partitioned cookies. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | ------ | ---- | :------------------------ |
+| url | string | Yes | URL of the cookie to obtain. A complete URL is recommended. |
+| incognito | boolean | Yes | Whether to obtain the in-memory cookies of the Web component in Privacy Mode. The value **true** indicates Privacy Mode, and **false** indicates Non-Privacy Mode.<br>Passing **undefined** or **null** throws error code 401. |
+| includePartitionedCookies | boolean | Yes | Whether to allow obtaining first-party partitioned cookies. The value **true** indicates that first-party partitioned cookies are allowed, and **false** indicates that they are not allowed.<br>Passing **undefined** or **null** throws error code 401. |
+
+**Return value**
+
+| Type | Description |
+| ------ | ------------------------- |
+| Promise\<string> | Promise used to obtain the cookies corresponding to the specified URL. |
+
+**Error codes**
+
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+
+| ID | Error Message |
+| -------- | ------------------------------------------------------ |
+| 17100002 | URL error. No valid cookie found for the specified URL. |
+
+**Example**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('fetchCookie')
+        .onClick(() => {
+          try {
+            webview.WebCookieManager.fetchCookie('https://www.example.com', false, true)
+              .then(cookie => {
+                console.info("fetchCookie cookie = " + cookie);
+              })
+              .catch((error: BusinessError) => {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              })
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+## fetchAllCookies<sup>23+</sup>
+
+static fetchAllCookies(incognito: boolean): Promise\<Array\<WebHttpCookie\>\>
+
+Obtains all cookies. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| --------- | ------- | -- | -------------------------------------- |
+| incognito | boolean | Yes | Whether to obtain all cookies of the Web component in Privacy Mode. The value **true** indicates Privacy Mode, and **false** indicates normal Non-Privacy Mode. |
+
+**Return value**
+
+| Type | Description |
+| ------ | ------------------------- |
+| Promise\<Array\<[WebHttpCookie](./arkts-apis-webview-i.md#webhttpcookie23)\>\> | Promise used to obtain all cookies and their corresponding field values. |
+
+**Example**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController()
+
+  build() {
+    Row() {
+      Column() {
+        Button('Config Cookie')
+        .onClick(() => {
+          try {
+            webview.WebCookieManager.configCookieSync('https://www.example.com', 'a=b');
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+
+        Button('Get All Cookies')
+        .onClick(() => {
+          webview.WebCookieManager.fetchAllCookies(false).then((cookies) => {
+            for (let i = 0; i < cookies.length; i++) {
+              console.info('fetchAllCookies cookie[' + i + '].name = ' + cookies[i].name);
+              console.info('fetchAllCookies cookie[' + i + '].value = ' + cookies[i].value);
+            }
+          })
+        })
+
+        Web({ src: 'https://www.example.com', controller: this.controller})
+      }
+    }
+  }
+}
+```
+
 ## configCookieSync<sup>11+</sup>
 
 static configCookieSync(url: string, value: string, incognito?: boolean): void
@@ -286,19 +490,19 @@ Sets a cookie for the specified URL.
 
 > **NOTE**
 >
-> You can set **url** in **configCookieSync** to a domain name so that the cookie is attached to the requests on the page.
+> - In configCookieSync, you can specify a domain name in the URL so that in-page requests also carry the cookie.
 >
-> It is recommended that cookie syncing be completed before the **Web** component is loaded.
+> - Cookies are periodically saved to the disk every 30 seconds. You can also use [saveCookieAsync](#savecookieasync) for force storage.
 >
-> If **configCookieSync()** is used to set cookies for two or more times, the cookies set each time are separated by semicolons.
+> - The value parameter must follow the format of the Set-Cookie HTTP response header. It is a key-value pair in the form of "key=value", optionally followed by a cookie property list separated by "; " (for example, "key=value; Max-Age=100").
 >
-> Cookies are periodically saved to the disk every 30s. You can also use the [saveCookieAsync](#savecookieasync) API to forcibly save cookies to the disk.
-> 
-> If a cookie with the same host, path, and name exists, it will be replaced by the new cookie. If the cookie has expired, it will not be stored. To set multiple cookies, call this method multiple times.
+> - If a cookie with the same host, path, and name exists, it will be replaced by the new cookie. If the cookie to set has expired, it will not be stored. To set multiple cookies, call this method multiple times.
 >
-> The **value** parameter must comply with the format of the Set-Cookie HTTP response header. The value is in the format of "key=value", followed by a list of cookie attributes separated by semicolons, for example, **"key=value;Max-Age=100"**.
+> - If configCookieSync is called twice or more to set cookies, each cookie set is separated by "; ".
 >
-> If the specified value contains the **Secure** attribute, the URL must use the **https://** protocol.
+> - If the specified value contains the "Secure" attribute, the URL must use the "https://" protocol.
+>
+> - To overwrite HttpOnly cookies, specify the HttpOnly attribute in the value.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -353,23 +557,21 @@ struct WebComponent {
 
 static configCookieSync(url: string, value: string, incognito: boolean, includeHttpOnly: boolean): void
 
-Sets a cookie value for a specified URL.
+Sets a single cookie value for a specified URL.
 
 > **NOTE**
 >
-> You can set **url** in **configCookieSync** to a domain name so that the cookie is attached to the requests on the page.
+> - In configCookieSync, you can specify a domain name in the URL so that in-page requests also carry the cookie.
 >
-> It is recommended that cookie syncing be completed before the **Web** component is loaded.
+> - Cookies are periodically saved to the disk every 30 seconds. You can also use [saveCookieAsync](#savecookieasync) for force storage.
 >
-> If **configCookieSync()** is used to set cookies for two or more times, the cookies set each time are separated by semicolons.
+> - The value parameter must follow the format of the Set-Cookie HTTP response header. It is a key-value pair in the form of "key=value", optionally followed by a cookie property list separated by "; " (for example, "key=value; Max-Age=100").
 >
-> Cookies are periodically saved to the disk every 30s. You can also use the [saveCookieAsync](#savecookieasync) API to forcibly save cookies to the disk.
-> 
-> If a cookie with the same host, path, and name exists, it will be replaced by the new cookie. If the cookie has expired, it will not be stored. To set multiple cookies, call this method multiple times.
+> - If a cookie with the same host, path, and name exists, it will be replaced by the new cookie. If the cookie to set has expired, it will not be stored. To set multiple cookies, call this method multiple times.
 >
-> The **value** parameter must comply with the format of the Set-Cookie HTTP response header. The value is in the format of "key=value", followed by a list of cookie attributes separated by semicolons, for example, **"key=value;Max-Age=100"**.
+> - If configCookieSync is called twice or more to set cookies, each cookie set is separated by "; ".
 >
-> If the specified value contains the **Secure** attribute, the URL must use the **https://** protocol.
+> - If the specified value contains the "Secure" attribute, the URL must use the "https://" protocol.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -425,7 +627,23 @@ struct WebComponent {
 
 static configCookie(url: string, value: string, callback: AsyncCallback\<void>): void
 
-Sets the value of a single cookie for a specified URL. This API uses an asynchronous callback to return the result.
+Sets a single cookie value for a specified URL. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> - In configCookie, you can specify a domain name in the URL so that in-page requests also carry the cookie.
+>
+> - Cookies are periodically saved to the disk every 30 seconds. You can also use [saveCookieAsync](#savecookieasync) for force storage.
+>
+> - The value parameter must follow the format of the Set-Cookie HTTP response header. It is a key-value pair in the form of "key=value", optionally followed by a cookie property list separated by "; " (for example, "key=value; Max-Age=100").
+>
+> - If a cookie with the same host, path, and name exists, it will be replaced by the new cookie. If the cookie to set has expired, it will not be stored. To set multiple cookies, call this method multiple times.
+>
+> - If configCookie is called twice or more to set cookies, each cookie set is separated by "; ".
+>
+> - If the specified value contains the "Secure" attribute, the URL must use the "https://" protocol.
+>
+> - To overwrite HttpOnly cookies, specify the HttpOnly attribute in the value.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -433,9 +651,9 @@ Sets the value of a single cookie for a specified URL. This API uses an asynchro
 
 | Name| Type  | Mandatory| Description                     |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | Yes  | URL of the cookie to obtain. A complete URL is recommended.|
+| url    | string | Yes   | URL of the cookie to set. A complete URL is recommended. |
 | value  | string | Yes  | Cookie value to set.     |
-| callback | AsyncCallback\<void> | Yes| Callback used to return the result.|
+| callback | AsyncCallback\<void> | Yes | Callback used to return the result of setting the cookie. |
 
 **Error codes**
 
@@ -483,7 +701,23 @@ struct WebComponent {
 
 static configCookie(url: string, value: string): Promise\<void>
 
-Sets the value of a single cookie for a specified URL. This API uses a promise to return the result.
+Sets a single cookie value for a specified URL. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - In configCookie, you can specify a domain name in the URL so that in-page requests also carry the cookie.
+>
+> - Cookies are periodically saved to the disk every 30 seconds. You can also use [saveCookieAsync](#savecookieasync) for force storage.
+>
+> - The value parameter must follow the format of the Set-Cookie HTTP response header. It is a key-value pair in the form of "key=value", optionally followed by a cookie property list separated by "; " (for example, "key=value; Max-Age=100").
+>
+> - If a cookie with the same host, path, and name exists, it will be replaced by the new cookie. If the cookie to set has expired, it will not be stored. To set multiple cookies, call this method multiple times.
+>
+> - If configCookie is called twice or more to set cookies, each cookie set is separated by "; ".
+>
+> - If the specified value contains the "Secure" attribute, the URL must use the "https://" protocol.
+>
+> - To overwrite HttpOnly cookies, specify the HttpOnly attribute in the value.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -491,7 +725,7 @@ Sets the value of a single cookie for a specified URL. This API uses a promise t
 
 | Name| Type  | Mandatory| Description                     |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | Yes  | URL of the cookie to obtain. A complete URL is recommended.|
+| url    | string | Yes  | URL of the cookie to set. A complete URL is recommended. |
 | value  | string | Yes  | Cookie value to set.     |
 
 **Return value**
@@ -548,7 +782,21 @@ struct WebComponent {
 
 static configCookie(url: string, value: string, incognito: boolean, includeHttpOnly: boolean): Promise\<void>
 
-Sets the value of a single cookie for a specified URL. This API uses a promise to return the result.
+Sets a single cookie value for a specified URL. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - In configCookie, you can specify a domain name in the URL so that in-page requests also carry the cookie.
+>
+> - Cookies are periodically saved to the disk every 30 seconds. You can also use [saveCookieAsync](#savecookieasync) for force storage.
+>
+> - The value parameter must follow the format of the Set-Cookie HTTP response header. It is a key-value pair in the form of "key=value", optionally followed by a cookie property list separated by "; " (for example, "key=value; Max-Age=100").
+>
+> - If a cookie with the same host, path, and name exists, it will be replaced by the new cookie. If the cookie to set has expired, it will not be stored. To set multiple cookies, call this method multiple times.
+>
+> - If configCookie is called twice or more to set cookies, each cookie set is separated by "; ".
+>
+> - If the specified value contains the "Secure" attribute, the URL must use the "https://" protocol.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -556,7 +804,7 @@ Sets the value of a single cookie for a specified URL. This API uses a promise t
 
 | Name| Type  | Mandatory| Description                     |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | Yes  | URL of the cookie to obtain. A complete URL is recommended.|
+| url    | string | Yes  | URL to which the cookie to set belongs. A complete URL is recommended. |
 | value  | string | Yes  | Cookie value to set.     |
 | incognito    | boolean | Yes  | Whether to set the cookies in incognito mode. The value **true** means to set the cookies in incognito mode, and **false** means the opposite.|
 | includeHttpOnly    | boolean | Yes  | Whether to overwrite cookies containing **HttpOnly**. The value **true** means to overwrite cookies containing **HttpOnly**, and **false** means the opposite.|
@@ -621,9 +869,9 @@ Synchronously saves all cookies (that can be obtained through **fetchCookie** an
 
 > **NOTE**
 >
-> **saveCookieSync** is used to forcibly write cookies that need to be persisted to disks. Session cookies are not persisted on PCs, 2-in-1 devices, or tablets, even if **saveCookieSync** is invoked.
+> - saveCookieSync is used to forcibly write cookies that need to be persisted to the disk. Session cookies are not persisted on PC/2-in-1 and tablet devices. Even if saveCookieSync is called, session cookies are not written to the disk.
 >
-> **saveCookieSync** blocks the caller until the operation is complete. During this period, I/O operations may be performed.
+> - saveCookieSync blocks the caller until the operation is complete, during which I/O operations may be performed.
 
 **Example**
 
@@ -661,7 +909,7 @@ Asynchronously saves all cookies (that can be obtained through **fetchCookie** a
 
 > **NOTE**
 >
-> Cookie information is stored in the application sandbox path **/proc/{pid}/root/data/storage/el2/base/cache/web/Cookies**.
+> - saveCookieAsync is used to forcibly write cookies that need to be persisted to the disk. Session cookies are not persisted on PC/2-in-1 and tablet devices. Even if saveCookieAsync is called, session cookies are not written to the disk.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -669,7 +917,7 @@ Asynchronously saves all cookies (that can be obtained through **fetchCookie** a
 
 | Name  | Type                  | Mandatory| Description                                              |
 | -------- | ---------------------- | ---- | :------------------------------------------------- |
-| callback | AsyncCallback\<void> | Yes  | Callback used to return whether the cookies are successfully saved.|
+| callback | AsyncCallback\<void> | Yes | Callback used to indicate whether the cookie is saved successfully. |
 
 **Error codes**
 
@@ -715,7 +963,11 @@ struct WebComponent {
 
 static saveCookieAsync(): Promise\<void>
 
-Saves all cookies (that can be obtained through **fetchCookie** and need to be persisted) to the disk using a promise.
+Saves all cookies that can be obtained through fetchCookie and need to be persisted to the disk. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - saveCookieAsync is used to forcibly write cookies that need to be persisted to the disk. Session cookies are not persisted on PC/2-in-1 and tablet devices. Even if saveCookieAsync is called, session cookies are not written to the disk.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -752,7 +1004,7 @@ struct WebComponent {
           try {
             webview.WebCookieManager.saveCookieAsync()
               .then(() => {
-                console.info("saveCookieAsyncCallback success!");
+                console.info("saveCookieAsync success!");
               })
               .catch((error: BusinessError) => {
                 console.error("error: " + error);
@@ -779,7 +1031,7 @@ Sets whether the **WebCookieManager** instance has the permission to send and re
 
 | Name| Type   | Mandatory| Description                                |
 | ------ | ------- | ---- | :----------------------------------- |
-| accept | boolean | Yes  | Whether the **WebCookieManager** instance has the permission to send and receive cookies. The default value is **true**, indicating that the **WebCookieManager** instance has the permission to send and receive cookies.|
+| accept | boolean | Yes | Whether to have the permission to send and receive cookies. The default value is **true**, indicating that the app has the permission to send and receive cookies. The value **false** indicates that the app does not have the permission to send and receive cookies. |
 
 **Error codes**
 
@@ -867,7 +1119,7 @@ Sets whether the **WebCookieManager** instance has the permission to send and re
 
 | Name| Type   | Mandatory| Description                                      |
 | ------ | ------- | ---- | :----------------------------------------- |
-| accept | boolean | Yes  | Whether to allow the setting and obtaining of third-party cookies.<br>The value **true** means to allow the setting and obtaining of third-party cookies, and **false** means the opposite.|
+| accept | boolean | Yes | Whether to allow sending and receiving third-party cookies.<br>The value **true** means allowed, and **false** means not allowed. |
 
 **Error codes**
 
@@ -991,7 +1243,7 @@ struct WebComponent {
 
 static clearAllCookiesSync(incognito?: boolean): void
 
-Deletes all cookies.
+Clears all cookies, including session cookies and persistent cookies. To clear only session cookies, use [clearSessionCookieSync](#clearsessioncookiesync11).
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1028,7 +1280,7 @@ struct WebComponent {
 
 static clearAllCookies(callback: AsyncCallback\<void>): void
 
-Clears all cookies. This API uses an asynchronous callback to return the result.
+Clears all cookies, including session cookies and persistent cookies. This API uses an asynchronous callback to return the result. To clear only session cookies, use [clearSessionCookie](#clearsessioncookie11).
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1036,7 +1288,7 @@ Clears all cookies. This API uses an asynchronous callback to return the result.
 
 | Name  | Type                  | Mandatory| Description                                              |
 | -------- | ---------------------- | ---- | :------------------------------------------------- |
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result.|
+| callback | AsyncCallback\<void> | Yes | Callback used to return the result, indicating whether all cookies are cleared successfully. |
 
 **Error codes**
 
@@ -1082,7 +1334,7 @@ struct WebComponent {
 
 static clearAllCookies(): Promise\<void>
 
-Clears all cookies. This API uses a promise to return the result.
+Clears all cookies, including session cookies and persistent cookies. This API uses a promise to return the result. To clear only session cookies, use [clearSessionCookie](#clearsessioncookie11-1).
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1173,7 +1425,7 @@ Clears all session cookies. This API uses an asynchronous callback to return the
 
 | Name  | Type                  | Mandatory| Description                                              |
 | -------- | ---------------------- | ---- | :------------------------------------------------- |
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result.|
+| callback | AsyncCallback\<void> | Yes | Callback function used to return whether all session cookies are cleared successfully. |
 
 **Error codes**
 
@@ -1279,9 +1531,9 @@ Sets whether to delay the initialization of the ArkWeb kernel. If this method is
 
 > **NOTE**
 >
-> This API is a global static method and must be called before the **Web** component is used and the ArkWeb kernel is initialized. Otherwise, the setting is invalid.
-> 
-> This API applies only to APIs that initialize the CookieManager after being called, for example, other APIs of the **WebCookieManager** class. When this API is called and the parameter is set to **true**, the ArkWeb kernel is not initialized during the initialization of CookieManager. You need to initialize the ArkWeb kernel later.
+> - This API is a global static method. It must be called before using ArkWeb components and initializing the ArkWeb kernel. Otherwise, the setting does not take effect.
+>
+> - This API applies only to APIs that initialize CookieManager when called, such as other APIs of this class WebCookieManager. After this API is called and set to **true**, calling applicable APIs skips the initialization of the ArkWeb kernel when initializing CookieManager. You need to initialize the ArkWeb kernel separately afterwards.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1317,67 +1569,6 @@ struct WebComponent {
 }
 ```
 
-## fetchAllCookies<sup>23+</sup>
-
-static fetchAllCookies(incognito: boolean): Promise\<Array\<WebHttpCookie\>\>
-
-Obtains all cookies. This API uses a promise to return the result.
-
-**System capability**: SystemCapability.Web.Webview.Core
-
-**Parameters**
-
-| Name| Type| Mandatory| Description|
-| --------- | ------- | -- | -------------------------------------- |
-| incognito | boolean | Yes| Whether to obtain all webview cookies in incognito mode. The value **true** indicates to obtain all webview cookies in incognito mode, and the value **false** indicates the opposite.|
-
-**Return value**
-
-| Type  | Description                     |
-| ------ | ------------------------- |
-| Promise\<Array\<[WebHttpCookie](./arkts-apis-webview-i.md#webhttpcookie23)\>\> | Promise object used to obtain all cookies and their corresponding field values.|
-
-**Example**
-
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController()
-
-  build() {
-    Row() {
-      Column() {
-        Button('Config Cookie')
-        .onClick(() => {
-          try {
-            webview.WebCookieManager.configCookieSync('https://www.example.com', 'a=b');
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-
-        Button('Get All Cookies')
-        .onClick(() => {
-          webview.WebCookieManager.fetchAllCookies(false).then((cookies) => {
-            for (let i = 0; i < cookies.length; i++) {
-              console.info('fetchAllCookies cookie[' + i + '].name = ' + cookies[i].name);
-              console.info('fetchAllCookies cookie[' + i + '].value = ' + cookies[i].value);
-            }
-          })
-        })
-
-        Web({ src: 'https://www.example.com', controller: this.controller})
-      }
-    }
-  }
-}
-```
-
 ## getCookie<sup>(deprecated)</sup>
 
 static getCookie(url: string): string
@@ -1394,7 +1585,7 @@ Obtains the cookie value of the specified URL.
 
 | Name| Type  | Mandatory| Description                     |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | Yes  | URL of the cookie to obtain. A complete URL is recommended.|
+| url    | string | Yes  | URL for which the cookie is to be obtained. A complete URL is recommended. |
 
 **Return value**
 

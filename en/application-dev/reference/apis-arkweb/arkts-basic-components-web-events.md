@@ -1,10 +1,16 @@
 # Events
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @zourongchun-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=97b7cfe47e44ccd95055b91afef33a85efa622a9 translatedAt=2026-08-07T04:38:57.977Z pushedAt=2026-08-07T08:12:15.995Z -->
+
+The Web component event module is a collection of event callback interfaces for the **Web** component in the ArkWeb framework, providing developers with mechanisms to listen to and respond to various runtime events of the **Web** component. These events cover the complete lifecycle of web page load (from load start to completion), JavaScript dialog box interactions, resource request interception and error handling, security authentication (HTTP Auth, SSL errors, client certificate), permission management, render process status, UI interactions (context menu, scrolling, scaling, full screen), window management, same-layer rendering, performance metrics, and multimedia device status. By registering corresponding event callbacks, developers can obtain key information, intercept or customize processing logic during the running of the **Web** component, achieving fine-grained control over web content and user experience optimization for the app.
+
+In embedded Web scenarios, if you need to intercept, customize, or monitor web page behaviors (such as customizing JavaScript dialog box styles, intercepting URL requests to return local data, handling SSL certificate errors, managing camera/microphone permissions, listening to page load progress, detecting render process exceptions, and implementing same-layer rendering interactions), use the event callback APIs provided by this module.
 
 The following universal events are supported: [onAppear](../apis-arkui/arkui-ts/ts-universal-events-show-hide.md#onappear), [onDisAppear](../apis-arkui/arkui-ts/ts-universal-events-show-hide.md#ondisappear), [onBlur](../apis-arkui/arkui-ts/ts-universal-focus-event.md#onblur), [onFocus](../apis-arkui/arkui-ts/ts-universal-focus-event.md#onfocus), [onDragEnd](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragend10), [onDragEnter](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragenter), [onDragStart](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart), [onDragMove](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragmove), [onDragLeave](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragleave), [onDrop](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondrop), [onHover](../apis-arkui/arkui-ts/ts-universal-events-hover.md#onhover), [onMouse](../apis-arkui/arkui-ts/ts-universal-mouse-key.md#onmouse), [onKeyEvent](../apis-arkui/arkui-ts/ts-universal-events-key.md#onkeyevent), [onTouch](../apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch), [onVisibleAreaChange](../apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareachange)
 
@@ -18,7 +24,7 @@ The following universal events are supported: [onAppear](../apis-arkui/arkui-ts/
 
 onAlert(callback: Callback\<OnAlertEvent, boolean\>)
 
-Triggered when **alert()** is invoked to display an alert dialog box on the web page. Call the [handleCancel](./arkts-basic-components-web-JsResult.md#handlecancel) or [handleConfirm](./arkts-basic-components-web-JsResult.md#handleconfirm) API when this callback is triggered. Otherwise, the render process is blocked.
+Triggered when a web page calls the alert() dialog box. If [handleCancel](./arkts-basic-components-web-JsResult.md#handlecancel) or [handleConfirm](./arkts-basic-components-web-JsResult.md#handleconfirm) is not called, the render process will be blocked.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -26,7 +32,7 @@ Triggered when **alert()** is invoked to display an alert dialog box on the web 
 
 | Name    | Type                  | Mandatory  | Description           |
 | ------- | --------------------- | ---- | --------------- |
-| callback     | Callback\<[OnAlertEvent](./arkts-basic-components-web-i.md#onalertevent12), boolean\>                | Yes   | Callback used when **alert()** is invoked to display an alert dialog box on the web page.<br>Return value: boolean<br> If the callback returns **true**, the application can use the custom dialog box (allows the confirm and cancel operations) and invoke the **JsResult** API to notify the **Web** component the confirmation result. If the callback returns **false**, the processing result of the dialog box is regarded as cancel.|
+| callback     | Callback\<[OnAlertEvent](./arkts-basic-components-web-events.md#onalertevent12), boolean\>                | Yes    | Triggered when a web page triggers the alert() dialog box. The return value is boolean. When the callback returns **true**, the app can invoke a custom dialog box (including confirmation and cancellation), and call JsResult to notify the Web component of the final result based on the user's confirmation or cancellation. When the callback returns **false**, the dialog box result is treated as cancelled. |
 
 **Example**
 
@@ -45,14 +51,15 @@ Triggered when **alert()** is invoked to display an alert dialog box on the web 
         Web({ src: $rawfile("index.html"), controller: this.controller })
           .onAlert((event) => {
             if (event) {
-              console.info("event.url:" + event.url);
-              console.info("event.message:" + event.message);
+              console.info('event.url:' + event.url);
+              console.info('event.message:' + event.message);
               this.uiContext.showAlertDialog({
                 title: 'onAlert',
                 message: 'text',
                 primaryButton: {
                   value: 'ok',
                   action: () => {
+                    // Calls handleConfirm to notify the Web component of the confirmation result.
                     event.result.handleConfirm();
                   }
                 },
@@ -69,6 +76,7 @@ Triggered when **alert()** is invoked to display an alert dialog box on the web 
   ```
 
   HTML file to be loaded:
+
   ```html
   <!--index.html-->
   <!DOCTYPE html>
@@ -154,6 +162,7 @@ Called when the page refresh is about to complete or the current page is closed.
   ```
 
   HTML file to be loaded:
+
   ```html
   <!--index.html-->
   <!DOCTYPE html>
@@ -177,7 +186,7 @@ Called when the page refresh is about to complete or the current page is closed.
 
 onConfirm(callback: Callback\<OnConfirmEvent, boolean\>)
 
-Triggered when **confirm()** is invoked by the web page. Call the [handleCancel](./arkts-basic-components-web-JsResult.md#handlecancel) or [handleConfirm](./arkts-basic-components-web-JsResult.md#handleconfirm) API when this callback is triggered. Otherwise, the render process is blocked.
+Triggered when a web page calls the confirm() dialog box. If [handleCancel](./arkts-basic-components-web-JsResult.md#handlecancel) or [handleConfirm](./arkts-basic-components-web-JsResult.md#handleconfirm) is not called, the render process will be blocked.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -204,20 +213,22 @@ Triggered when **confirm()** is invoked by the web page. Call the [handleCancel]
         Web({ src: $rawfile("index.html"), controller: this.controller })
           .onConfirm((event) => {
             if (event) {
-              console.info("event.url:" + event.url);
-              console.info("event.message:" + event.message);
+              console.info('event.url:' + event.url);
+              console.info('event.message:' + event.message);
               this.uiContext.showAlertDialog({
                 title: 'onConfirm',
                 message: 'text',
                 primaryButton: {
                   value: 'cancel',
                   action: () => {
+                    // The user taps Cancel, and handleCancel is called to notify the Web component of the cancellation result.
                     event.result.handleCancel();
                   }
                 },
                 secondaryButton: {
                   value: 'ok',
                   action: () => {
+                    // The user taps Confirm, and handleConfirm is called to notify the Web component of the confirmation result.
                     event.result.handleConfirm();
                   }
                 },
@@ -234,6 +245,7 @@ Triggered when **confirm()** is invoked by the web page. Call the [handleCancel]
   ```
 
   HTML file to be loaded:
+
   ```html
   <!--index.html-->
   <!DOCTYPE html>
@@ -266,7 +278,7 @@ Triggered when **confirm()** is invoked by the web page. Call the [handleCancel]
 
 onPrompt(callback: Callback\<OnPromptEvent, boolean\>)
 
-Triggered when **prompt()** is invoked by the web page. Call the [handleCancel](./arkts-basic-components-web-JsResult.md#handlecancel) or [handlePromptConfirm](./arkts-basic-components-web-JsResult.md#handlepromptconfirm9) API when this callback is triggered. Otherwise, the render process is blocked.
+Triggered when a web page calls the prompt() dialog box. If [handleCancel](./arkts-basic-components-web-JsResult.md#handlecancel) or [handlePromptConfirm](./arkts-basic-components-web-JsResult.md#handlepromptconfirm9) is not called, the render process will be blocked.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -303,6 +315,7 @@ Triggered when **prompt()** is invoked by the web page. Call the [handleCancel](
             buttonStyle: ButtonStyleMode.TEXTUAL,
             action: () => {
               console.info('Callback when the button is clicked');
+              // The user taps cancel. Calls handleCancel to notify the Web component of the cancellation result.
               this.result?.handleCancel()
             }
           },
@@ -310,12 +323,14 @@ Triggered when **prompt()** is invoked by the web page. Call the [handleCancel](
             value: 'OK',
             buttonStyle: ButtonStyleMode.TEXTUAL,
             action: () => {
+              // The user taps confirm. Calls handlePromptConfirm to notify the Web component of the confirmation result and pass the content entered by the user.
               this.result?.handlePromptConfirm(this.promptResult);
             }
           }
         ],
       }),
       onWillDismiss: () => {
+        // The dialog box is canceled. Calls handleCancel to notify the Web component of the cancellation result.
         this.result?.handleCancel();
         this.dialogController.close();
       }
@@ -357,6 +372,7 @@ Triggered when **prompt()** is invoked by the web page. Call the [handleCancel](
   ```
 
   HTML file to be loaded:
+
   ```html
   <!--index.html-->
   <!DOCTYPE html>
@@ -429,6 +445,7 @@ Triggered to notify the host application of a JavaScript console message.
   ```
 
   HTML file to be loaded:
+
   ```html
   <!-- index.html -->
   <!DOCTYPE html>
@@ -447,7 +464,7 @@ Triggered to notify the host application of a JavaScript console message.
 
 onDownloadStart(callback: Callback\<OnDownloadStartEvent\>)
 
-Triggered to instruct the main application to start downloading a file.
+Notifies the host app that a file download has started.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -455,7 +472,7 @@ Triggered to instruct the main application to start downloading a file.
 
 | Name               | Type  | Mandatory  | Description                               |
 | ------------------ | ------ | ---- | ----------------------------------- |
-| callback           | Callback\<[OnDownloadStartEvent](./arkts-basic-components-web-i.md#ondownloadstartevent12)\> | Yes   | Callback used when a download starts. |
+| callback           | Callback\<[OnDownloadStartEvent](./arkts-basic-components-web-i.md#ondownloadstartevent12)\> | Yes    | Callback invoked when a download starts.  |
 
 **Example**
 
@@ -910,6 +927,7 @@ For details about the component lifecycle, see [Lifecycle of the Web Components]
     }
   }
   ```
+
 ## onRenderProcessNotResponding<sup>12+</sup>
 
 onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCallback)
@@ -991,7 +1009,7 @@ Triggered when the rendering process transitions back to a normal operating stat
 
 onShowFileSelector(callback: Callback\<OnShowFileSelectorEvent, boolean\>)
 
-Triggered to process an HTML form whose input type is **file**. If this function is not called or returns **false**, the **Web** component provides the default **Select file** UI. If it returns **true**, the application can customize the response behavior for **Select file**.
+Used to process HTML forms with the **file** input type. If this function is not called or returns **false**, the **Web** component provides a default file selection UI. If **true** is returned, the app can customize the response behavior for file selection.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -999,7 +1017,7 @@ Triggered to process an HTML form whose input type is **file**. If this function
 
 | Name         | Type                                    | Mandatory  | Description             |
 | ------------ | ---------------------------------------- | ---- | ----------------- |
-| callback       | Callback\<[OnShowFileSelectorEvent](./arkts-basic-components-web-i.md#onshowfileselectorevent12), boolean\> | Yes   | Callback triggered to notify the **Web** component of the file selection result.<br>Return value: boolean<br> The value **true** means that you can invoke the system-provided dialog box. The value **false** means that the custom dialog box drawn in the function is ineffective.|
+| callback | Callback\<[OnShowFileSelectorEvent](./arkts-basic-components-web-i.md#onshowfileselectorevent12), boolean\> | Yes | Callback used to notify the Web component of the file selection result. The value **true** indicates that the app can customize the response behavior of file selection, and **false** indicates that the custom dialog box drawn in the function is invalid and the Web component uses the system default file selection UI. |
 
 **Example**
 
@@ -1130,6 +1148,7 @@ Triggered to process an HTML form whose input type is **file**. If this function
    ```
 
    HTML file to be loaded:
+
    ```html
    <!DOCTYPE html>
    <html>
@@ -1184,7 +1203,7 @@ Triggered to notify the **Web** component of the URL of the resource file to loa
 
 onScaleChange(callback: Callback\<OnScaleChangeEvent\>)
 
-Called when the page display scale changes.
+Triggered when the page display scale changes. Used to listen to user scaling behavior and provide a better page scaling experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1228,7 +1247,7 @@ Triggered when the **Web** component is about to access a URL. This API is used 
 
 | Name   | Type  | Mandatory  | Description                 |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnInterceptRequestEvent](./arkts-basic-components-web-i.md#oninterceptrequestevent12), [WebResourceResponse](./arkts-basic-components-web-WebResourceResponse.md)\> | Yes| Callback invoked when the **Web** component is about to load a URL.<br>The return value is [WebResourceResponse](./arkts-basic-components-web-WebResourceResponse.md). If response data is returned, the data is loaded based on the response data. If no response data is returned, null is returned, indicating that the data is loaded in the original mode.|
+| callback | Callback\<[OnInterceptRequestEvent](./arkts-basic-components-web-i.md#oninterceptrequestevent12), [WebResourceResponse](./arkts-basic-components-web-WebResourceResponse.md)\> | Yes | Triggered before the Web component loads a URL.<br>The return value is [WebResourceResponse](./arkts-basic-components-web-WebResourceResponse.md). If response data is returned, the resource is loaded based on the response data; if no response data is returned, null is returned, indicating that the resource is loaded in the original way. |
 
 **Example**
 
@@ -1240,7 +1259,7 @@ Triggered when the **Web** component is about to access a URL. This API is used 
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
-    responseWeb: WebResourceResponse = new WebResourceResponse();
+    responseWeb: webview.WebResourceResponse = new webview.WebResourceResponse();
     heads: Header[] = new Array();
     webData: string = "<!DOCTYPE html>\n" +
       "<html>\n" +
@@ -1296,7 +1315,7 @@ Triggered when the **Web** component is about to access a URL. This API is used 
 
 onHttpAuthRequest(callback: Callback\<OnHttpAuthRequestEvent, boolean\>)
 
-Triggered when an HTTP authentication request is received.
+Notifies that an HTTP authentication request has been received.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1304,7 +1323,7 @@ Triggered when an HTTP authentication request is received.
 
 | Name   | Type  | Mandatory  | Description                 |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnHttpAuthRequestEvent](./arkts-basic-components-web-i.md#onhttpauthrequestevent12), boolean\> | Yes| Callback invoked when the browser requires user credentials.<br>Return value: boolean<br> The value **true** means that the HTTP authentication is successful, and **false** means the opposite.  |
+| callback | Callback\<[OnHttpAuthRequestEvent](./arkts-basic-components-web-i.md#onhttpauthrequestevent12), boolean\> | Yes | Triggered when the browser requires user credentials.<br>The return value is a boolean. The value **true** indicates that HTTP authentication is successful, and **false** indicates that HTTP authentication fails. |
 
 **Example**
 
@@ -1359,13 +1378,14 @@ Triggered when an HTTP authentication request is received.
     }
   }
   ```
+
 ## onSslErrorEventReceive<sup>9+</sup>
 
 onSslErrorEventReceive(callback: Callback\<OnSslErrorEventReceiveEvent\>)
 
 Triggered to notify the host application when an SSL error occurs while loading the main-frame resource.
 
-To support errors for loading subframe resources, use the [OnSslErrorEvent](./arkts-basic-components-web-events.md#onsslerrorevent12) API.
+If sub-resource support is required, use the [OnSslErrorEvent](#onsslerrorevent12) API.
 
 > **NOTE**
 >
@@ -1584,8 +1604,9 @@ Triggered when an SSL client certificate request is received.
 
 > **NOTE**
 >
-> - The **Web** component can respond with [ClientAuthenticationHandler.confirm](./arkts-basic-components-web-ClientAuthenticationHandler.md#confirm10), [ClientAuthenticationHandler.cancel](./arkts-basic-components-web-ClientAuthenticationHandler.md#cancel9), or [ClientAuthenticationHandler.ignore](./arkts-basic-components-web-ClientAuthenticationHandler.md#ignore9).
-> - If **ClientAuthenticationHandler.confirm** or **ClientAuthenticationHandler.cancel** is called, the **Web** component stores the authentication result in the memory (within the application lifecycle) and does not call **onClientAuthenticationRequest()** again for the same host and port. If **onClientAuthenticationRequest.ignore** is called, the **Web** component does not store the authentication result.
+> - The **Web** component has three response modes: [ClientAuthenticationHandler.confirm](./arkts-basic-components-web-ClientAuthenticationHandler.md#confirm10) (continue), [ClientAuthenticationHandler.cancel](./arkts-basic-components-web-ClientAuthenticationHandler.md#cancel9) (cancel), or [ClientAuthenticationHandler.ignore](./arkts-basic-components-web-ClientAuthenticationHandler.md#ignore9) (ignore).
+> - If ClientAuthenticationHandler.confirm or ClientAuthenticationHandler.cancel is called, ArkWeb stores the authentication result in memory (within the lifecycle of the app) and does not call onClientAuthenticationRequest() again for the same host and port. If onClientAuthenticationRequest.ignore is called, ArkWeb does not store the authentication result.
+> - The **ohos.permission.ACCESS_CERT_MANAGER** permission is required.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1604,13 +1625,12 @@ Install a private credential to implement two-way authentication.
 import { webview } from '@kit.ArkWeb';
 import { common } from '@kit.AbilityKit';
 import { certificateManager } from '@kit.DeviceCertificateKit';
-import { promptAction } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
 struct Index {
-  controller: WebviewController = new webview.WebviewController();
+  controller: webview.WebviewController = new webview.WebviewController();
   uiContext : UIContext = this.getUIContext();
   context : Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
   uri: string = ''
@@ -1674,12 +1694,12 @@ struct Index {
     }
   }
 }
-```
 
 Interconnect with certificate management to implement two-way authentication.
-  
+
 1. Construct the singleton object **GlobalContext**.
     ```ts
+
     // GlobalContext.ets
     export class GlobalContext {
       private constructor() {}
@@ -1701,11 +1721,13 @@ Interconnect with certificate management to implement two-way authentication.
         this._objects.set(key, objectClass);
       }
     }
+
     ```
 
 2. Construct a **CertManagerService** object to interconnect with certificate management.
     <!--code_no_check-->
     ```ts
+
     // CertMgrService.ets
     import { bundleManager, common, Want } from "@kit.AbilityKit";
     import { BusinessError } from "@kit.BasicServicesKit";
@@ -1760,18 +1782,76 @@ Interconnect with certificate management to implement two-way authentication.
         return this.authUri;
       }
     }
+
     ```
-3. Implement two-way authentication.
+3. Store the context of the current ability in GlobalContext.
     <!--code_no_check-->
     ```ts
+
+    // EntryAbility.ets
+    import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    import { window } from '@kit.ArkUI';
+    import { GlobalContext } from '../pages/GlobalContext';
+
+    const DOMAIN = 0x0000;
+
+    export default class EntryAbility extends UIAbility {
+      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+          this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
+          GlobalContext.getContext().setObject("AbilityContext", this.context);
+        } catch (err) {
+          hilog.error(DOMAIN, 'testTag', 'Failed to set colorMode. Cause: %{public}s', JSON.stringify(err));
+        }
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
+      }
+
+      onDestroy(): void {
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onDestroy');
+      }
+
+      onWindowStageCreate(windowStage: window.WindowStage): void {
+        // Main window is created, set main page for this ability
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+
+        windowStage.loadContent('pages/Index', (err) => {
+          if (err.code) {
+            hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+            return;
+          }
+          hilog.info(DOMAIN, 'testTag', 'Succeeded in loading the content.');
+        });
+      }
+
+      onWindowStageDestroy(): void {
+        // Main window is destroyed, release UI related resources
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
+      }
+
+      onForeground(): void {
+        // Ability has brought to foreground
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onForeground');
+      }
+
+      onBackground(): void {
+        // Ability has back to background
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onBackground');
+      }
+    }
+
+    ```
+4. Implement the mutual authentication feature.
+    <!--code_no_check-->
+    ```ts
+
     import { webview } from '@kit.ArkWeb';
     import CertManagerService from './CertMgrService';
-    import { promptAction } from '@kit.ArkUI';
 
     @Entry
     @Component
     struct Index {
-      controller: WebviewController = new webview.WebviewController();
+      controller: webview.WebviewController = new webview.WebviewController();
       certManager = CertManagerService.getInstance();
 
       aboutToAppear(): void {
@@ -1822,9 +1902,9 @@ Interconnect with certificate management to implement two-way authentication.
         }
       }
     }
-    ```
 
 ## onVerifyPin<sup>22+</sup>
+
 onVerifyPin(callback: OnVerifyPinCallback)
 
 Triggered to notify the user of PIN verification. This API uses an asynchronous callback to return the result.
@@ -1849,7 +1929,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Entry
 @Component
 struct Index {
-  controller: WebviewController = new webview.WebviewController();
+  controller: webview.WebviewController = new webview.WebviewController();
   uiContext : UIContext = this.getUIContext();
   context : Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
 
@@ -1928,13 +2008,12 @@ struct Index {
     }
   }
 }
-```
 
 ## onPermissionRequest<sup>9+</sup>
 
 onPermissionRequest(callback: Callback\<OnPermissionRequestEvent\>)
 
-Triggered when a permission request is received. To call this API, you need to declare the **ohos.permission.CAMERA** and **ohos.permission.MICROPHONE** permissions.
+Notifies that a permission request has been received. The **ohos.permission.CAMERA** and **ohos.permission.MICROPHONE** permissions are required. Used to customize the permission request dialog box style, implement fine-grained permission control, and deny or grant permission requests under specific conditions, providing a better permission management experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1942,11 +2021,12 @@ Triggered when a permission request is received. To call this API, you need to d
 
 | Name   | Type  | Mandatory  | Description                 |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnPermissionRequestEvent](./arkts-basic-components-web-i.md#onpermissionrequestevent12)\> | Yes| Callback invoked when a permission request is received.|
+| callback | Callback\<[OnPermissionRequestEvent](./arkts-basic-components-web-events.md#onpermissionrequestevent12)\> | Yes | Callback invoked when a permission request is received. The event object contains information such as the requested permission type (for example, camera and microphone) and the request source. |
 
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1983,16 +2063,19 @@ Triggered when a permission request is received. To call this API, you need to d
                 primaryButton: {
                   value: 'deny',
                   action: () => {
+                    // The user taps deny, and deny is called to notify the Web component to reject the permission request.
                     event.request.deny();
                   }
                 },
                 secondaryButton: {
                   value: 'onConfirm',
                   action: () => {
+                    // The user taps confirm, and grant is called to notify the Web component to grant the permission.
                     event.request.grant(event.request.getAccessibleResource());
                   }
                 },
                 cancel: () => {
+                  // The user cancels the dialog box, and deny is called to notify the Web component to reject the permission request.
                   event.request.deny();
                 }
               })
@@ -2001,11 +2084,14 @@ Triggered when a permission request is received. To call this API, you need to d
       }
     }
   }
+
   ```
 
   HTML file to be loaded:
  ```html
+
   <!-- index.html -->
+
   <!DOCTYPE html>
   <html>
   <head>
@@ -2038,13 +2124,14 @@ Triggered when a permission request is received. To call this API, you need to d
   </script>
   </body>
   </html>
+
  ```
 
 ## onContextMenuShow<sup>9+</sup>
 
 onContextMenuShow(callback: Callback\<OnContextMenuShowEvent, boolean\>)
 
-Triggered when a context menu is displayed after the user clicks the right mouse button or long presses a specific element, such as an image or a link.
+Triggered when a specific element (such as an image or link) is long-pressed or right-clicked. Used to customize context menu items, implement functions such as copy, save, and share, and hide default menu items, providing a better context interaction experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -2052,11 +2139,12 @@ Triggered when a context menu is displayed after the user clicks the right mouse
 
 | Name   | Type  | Mandatory  | Description                 |
 | ------ | ------ | ---- | --------------------- |
-| callback  | Callback\<[OnContextMenuShowEvent](./arkts-basic-components-web-i.md#oncontextmenushowevent12), boolean\> | Yes| Callback invoked during a call to allow for the display of a custom context menu.<br>Return value: boolean<br> The value **true** means that a custom menu is triggered, and **false** means that the custom menu is ineffective.    |
+| callback | Callback\<[OnContextMenuShowEvent](./arkts-basic-components-web-i.md#oncontextmenushowevent12), boolean\> | Yes | Callback invoked to allow custom display of the context menu. The value **true** indicates that a custom menu is triggered, and **false** indicates that the custom menu is invalid and the system default menu will be used. |
 
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
   import { pasteboard } from '@kit.BasicServicesKit';
@@ -2114,6 +2202,15 @@ Triggered when a context menu is displayed after the user clicks the right mouse
           .height(50)
           .onClick(() => {
             this.result?.copyImage();
+            this.showMenu = false;
+          })
+        MenuItem({
+          content: 'Save image',
+        })
+          .width(100)
+          .height(50)
+          .onClick(() => {
+            this.result?.saveImage();
             this.showMenu = false;
           })
         MenuItem({
@@ -2177,6 +2274,7 @@ Triggered when a context menu is displayed after the user clicks the right mouse
           // Trigger a custom dialog box.
           .onContextMenuShow((event) => {
             if (event) {
+              // Save the result for subsequent menu operations.
               this.result = event.result
               console.info(TAG + "x coord = " + event.param.x());
               console.info(TAG + "link url = " + event.param.getLinkUrl());
@@ -2205,21 +2303,27 @@ Triggered when a context menu is displayed after the user clicks the right mouse
       }
     }
   }
+
   ```
 
   HTML file to be loaded:
   ```html
+
   <!-- index.html -->
+
   <!DOCTYPE html>
   <html lang="en">
   <body>
     <h1>onContextMenuShow</h1>
     <a href="http://www.example.com" style="font-size:27px">URL www.example.com</a>
+
     <!-- Place any image in the rawfile directory and name it example.png. -->
+
     <div><img src="example.png"></div>
     <p>Right-click text to display the context menu</p>
   </body>
   </html>
+
   ```
 
 ## onContextMenuHide<sup>11+</sup>
@@ -2234,11 +2338,12 @@ Triggered when a context menu is hidden after the user clicks the right mouse bu
 
 | Name   | Type  | Mandatory  | Description                 |
 | ------ | ------ | ---- | --------------------- |
-| callback  | [OnContextMenuHideCallback](./arkts-basic-components-web-t.md#oncontextmenuhidecallback11) | Yes| Callback related to menus.    |
+| callback  | [OnContextMenuHideCallback](./arkts-basic-components-web-t.md#oncontextmenuhidecallback11) | Yes | Triggered when the context menu is hidden.     |
 
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
@@ -2256,6 +2361,7 @@ Triggered when a context menu is hidden after the user clicks the right mouse bu
       }
     }
   }
+
   ```
 
 ## onScroll<sup>9+</sup>
@@ -2266,11 +2372,11 @@ Triggered to notify the global scrolling position of the web page.
 
 > **NOTE**
 >
-> The change of the partial scrolling position cannot trigger this callback.
+> This callback notifies the global scroll position of the page. Changes in local scroll positions do not trigger this callback.
 >
-> To determine whether a page is globally scrolled, print **window.pagYOffset** or **window.pagXOffset** before and after scrolling.
+> To determine whether the page is globally scrolling, print window.pageYOffset or window.pageXOffset before and after scrolling.
 >
-> If the web page is scrolled globally, the value of **window.pagYOffset** or **window.pagXOffset** changes after the web page is scrolled. Otherwise, the value does not change.
+> If it is global scrolling, the values of window.pageYOffset or window.pageXOffset change before and after scrolling; otherwise, they do not.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -2278,11 +2384,12 @@ Triggered to notify the global scrolling position of the web page.
 
 | Name   | Type  | Mandatory  | Description                 |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnScrollEvent](./arkts-basic-components-web-i.md#onscrollevent12)\> | Yes| Callback triggered when the page is scrolled to a specified position.|
+| callback | Callback\<[OnScrollEvent](./arkts-basic-components-web-i.md#onscrollevent12)\> | Yes | Callback invoked when the page scrolls to the specified position. |
 
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
@@ -2301,13 +2408,14 @@ Triggered to notify the global scrolling position of the web page.
       }
     }
   }
+
   ```
 
 ## onGeolocationShow
 
 onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
 
-Called to notify the user that the geolocation information obtaining request is received. To use this API, the **ohos.permission.LOCATION** and **ohos.permission.APPROXIMATELY_LOCATION** permissions must be configured. This API uses an asynchronous callback to return the result.
+Notifies the user that a geolocation information request has been received. The **ohos.permission.LOCATION** and **ohos.permission.APPROXIMATELY_LOCATION** permissions are required. This API uses an asynchronous callback to return the result. Used to display a custom location permission request dialog box, implement location service descriptions, and choose whether to grant authorization based on app requirements, providing a better location permission management experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -2320,6 +2428,7 @@ Called to notify the user that the geolocation information obtaining request is 
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2333,14 +2442,14 @@ Called to notify the user that the geolocation information obtaining request is 
     controller: webview.WebviewController = new webview.WebviewController();
     uiContext: UIContext = this.getUIContext();
 
-    // Component lifecycle function, which is triggered after a component instance is created.
+    // Component lifecycle function. Triggered after a component instance is created.
     aboutToAppear(): void {
       let context : Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
       if (!context) {
         console.error("context is undefined");
         return;
       }
-      // Request the location permission from the user.
+      // Request the location permission. This takes effect for the entire app.
       atManager.requestPermissionsFromUser(context, ["ohos.permission.LOCATION", "ohos.permission.APPROXIMATELY_LOCATION"]).then((data) => {
         console.info('data:' + JSON.stringify(data));
         console.info('data permissions:' + data.permissions);
@@ -2352,9 +2461,11 @@ Called to notify the user that the geolocation information obtaining request is 
 
     build() {
       Column() {
+        // The geolocationAccess attribute of the Web component defaults to true. It can be explicitly set to false to prevent the Web component from obtaining geolocation information.
         Web({ src: $rawfile('index.html'), controller: this.controller })
           .geolocationAccess(true)
           .onGeolocationShow((event) => {
+            // The location permission request notification takes effect only for the current Web component. Other Web components in the app are not affected.
             if (event) {
               this.uiContext.showAlertDialog({
                 title: 'title',
@@ -2362,12 +2473,14 @@ Called to notify the user that the geolocation information obtaining request is 
                 confirm: {
                   value: 'onConfirm',
                   action: () => {
-                    // The third parameter of invoke indicates whether to remember the selection status of the current dialog box. If the value is true, the dialog box will not be displayed next time.
+                    // Allow the location permission request for this site.
+                    // The third parameter of invoke indicates whether to remember the selection state of the current dialog box. If true is passed in, the dialog box will not be displayed again next time.
                     event.geolocation.invoke(event.origin, true, false);
                   }
                 },
                 cancel: () => {
-                  // The third parameter of invoke indicates whether to remember the selection status of the current dialog box. If the value is true, the dialog box will not be displayed next time.
+                  // Deny the location permission request for this site.
+                  // The third parameter of invoke indicates whether to remember the selection state of the current dialog box. If true is passed in, the dialog box will not be displayed again next time.
                   event.geolocation.invoke(event.origin, false, false);
                 }
               })
@@ -2376,10 +2489,12 @@ Called to notify the user that the geolocation information obtaining request is 
       }
     }
   }
+
   ```
 
   HTML file to be loaded:
   ```html
+
   <!DOCTYPE html>
   <html>
   <body>
@@ -2399,13 +2514,14 @@ Called to notify the user that the geolocation information obtaining request is 
   </script>
   </body>
   </html>
+
   ```
 
 ## onGeolocationHide
 
 onGeolocationHide(callback: () => void)
 
-Triggered to notify the user that the request for obtaining the geolocation information received when [onGeolocationShow](#ongeolocationshow) is called has been canceled.
+Notifies the user that the geolocation information request previously received when [onGeolocationShow](#ongeolocationshow) was called has been canceled. Used to clean up location-related resources and optimize resource usage.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -2418,6 +2534,7 @@ Triggered to notify the user that the request for obtaining the geolocation info
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
@@ -2436,13 +2553,14 @@ Triggered to notify the user that the request for obtaining the geolocation info
       }
     }
   }
+
   ```
 
 ## onFullScreenEnter<sup>9+</sup>
 
 onFullScreenEnter(callback: OnFullScreenEnterCallback)
 
-Triggered when the **Web** component enters full screen mode.
+Notifies the developer that the **Web** component has entered full-screen mode. Used to hide the status bar and navigation bar, adjust the page layout to fit full screen, and implement immersive video playback and other full-screen experiences.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -2450,11 +2568,12 @@ Triggered when the **Web** component enters full screen mode.
 
 | Name   | Type  | Mandatory  | Description                 |
 | ------ | ------ | ---- | --------------------- |
-| callback | [OnFullScreenEnterCallback](./arkts-basic-components-web-t.md#onfullscreenentercallback12) | Yes| Callback invoked when the **Web** component enters full screen mode.|
+| callback | [OnFullScreenEnterCallback](./arkts-basic-components-web-t.md#onfullscreenentercallback12) | Yes | Callback information when the Web component enters fullscreen, including the videoWidth, videoHeight, and handler fields. |
 
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
@@ -2470,19 +2589,20 @@ Triggered when the **Web** component enters full screen mode.
           .onFullScreenEnter((event) => {
             console.info("onFullScreenEnter videoWidth: " + event.videoWidth +
               ", videoHeight: " + event.videoHeight);
-            // The application can proactively exit fullscreen mode by calling this.handler.exitFullScreen().
+            // Save the handler for exiting fullscreen later.
             this.handler = event.handler;
           })
       }
     }
   }
+
   ```
 
 ## onFullScreenExit<sup>9+</sup>
 
 onFullScreenExit(callback: () => void)
 
-Triggered when the **Web** component exits full screen mode.
+Notifies the developer that the **Web** component has exited full-screen mode. Used to restore the status bar and navigation bar, adjust the page layout back to normal display, and implement smooth switching between full screen and normal display, providing a better full-screen interaction experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -2490,11 +2610,12 @@ Triggered when the **Web** component exits full screen mode.
 
 | Name   | Type  | Mandatory  | Description                 |
 | ------ | ------ | ---- | --------------------- |
-| callback | () => void | Yes| Callback invoked when the component exits full screen mode.|
+| callback | () => void | Yes | Callback invoked when exiting full-screen mode. No parameters. |
 
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
@@ -2510,7 +2631,7 @@ Triggered when the **Web** component exits full screen mode.
           .onFullScreenExit(() => {
             console.info("onFullScreenExit...")
             if (this.handler) {
-              this.handler.exitFullScreen();
+              this.handler.exitFullScreen(); // Exit the full-screen mode.
             }
           })
           .onFullScreenEnter((event) => {
@@ -2519,15 +2640,16 @@ Triggered when the **Web** component exits full screen mode.
       }
     }
   }
+
   ```
 
 ## onWindowNew<sup>9+</sup>
 
 onWindowNew(callback: Callback\<OnWindowNewEvent\>)
 
-Triggered to notify the user of a new window creation request, when **multiWindowAccess** is enabled.
+When the multiWindowAccess attribute is enabled, notifies the app that a new window request has been made. To obtain richer window information, you are advised to use onWindowNewExt.
 
-If the [setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9) API is not called, the render process will be blocked.
+If [setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9) is not called, the render process will be blocked.
 
 If no new window is created, set this parameter to **null** when invoking the [setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9) API to notify the **Web** component that no new window is created.
 
@@ -2546,6 +2668,7 @@ Note that the source of a new window request cannot be reliably traced. The requ
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
@@ -2600,10 +2723,13 @@ Note that the source of a new window request cannot be reliably traced. The requ
       }
     }
   }
+
   ```
 
   ```html
+
   <!-- Code of the window.html page -->
+
   <!DOCTYPE html>
   <html>
   <head>
@@ -2620,23 +2746,24 @@ Note that the source of a new window request cannot be reliably traced. The requ
   </script>
   </body>
   </html>
+
   ```
 
 ## onWindowNewExt<sup>23+</sup>
 
 onWindowNewExt(callback: Callback\<OnWindowNewExtEvent\>)
 
-Triggered to notify the user of a new window creation request when [multiWindowAccess](./arkts-basic-components-web-attributes.md#multiwindowaccess9) is enabled.
+When [multiWindowAccess](./arkts-basic-components-web-attributes.md#multiwindowaccess9) is enabled, notifies the app that a new window request has been made.
 
 > **NOTE**
 >
-> - If the [setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9) API is not called, the render process will be blocked.
+> - If [setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9) is not called, the render process will be blocked.
 >
-> - If no new window is created, the [setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9) API is called and set to **null**, notifying the web page that no new window is created.
+> - If no new window is created, call [setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9) and set it to null to notify the Web that no new window has been created.
 >
-> - The new window cannot be directly overlaid on the original **Web** component, and its URL (for example, address bar) must be clearly displayed in the same way as the main page to prevent confusion. If the URL display and verification mechanism cannot be ensured to be reliable, you need to disable the creation of new windows.
+> - The new window should not directly overlay the original **Web** component, and its URL should be clearly displayed in the same form as the main page (such as an address bar) to prevent user confusion. If the URL display and verification mechanism cannot be ensured to be reliable, consider prohibiting the creation of new windows.
 >
-> - The source of a new window request cannot be reliably traced. The request may be initiated by a third-party iframe. By default, the application needs to take defense measures such as sandbox isolation and permission restriction to ensure security.
+> - The source of a new window request cannot be reliably traced. It may be initiated by a third-party iframe. The app needs to take defensive measures such as sandbox isolation and permission restriction by default to ensure security.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -2649,6 +2776,7 @@ Triggered to notify the user of a new window creation request when [multiWindowA
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
@@ -2700,17 +2828,20 @@ Triggered to notify the user of a new window creation request when [multiWindowA
           })
           this.dialogController.open();
           // Return the WebviewController object corresponding to the new window to the web kernel.
-          // If the event.handler.setWebController API is not called, the render process will be blocked.
+          // Call event.handler.setWebController to avoid blocking the render process.
           // If no new window is created, set the value of event.handler.setWebController to null to notify the Web component that no new window is created.
           event.handler.setWebController(popController);
         })
       }
     }
   }
+
   ```
 
   ```html
+
   <!-- Code of the window.html page -->
+
     <!DOCTYPE html>
     <html>
     <head>
@@ -2727,13 +2858,14 @@ Triggered to notify the user of a new window creation request when [multiWindowA
     </script>
     </body>
     </html>
+
   ```
 
 ## onActivateContent<sup>20+</sup>
 
 onActivateContent(callback: Callback\<void>)
 
-Triggered to check whether a bound **Web** instance exists based on the name when a web page triggers **window.open(url, name)**. If the instance exists, it receives this callback to notify the application of displaying it on the front end. If it does not exist, the application is notified to create a new **Web** instance through [onWindowNew](#onwindownew9).
+When a web page triggers window.open(url, name), it searches for an existing bound **Web** instance based on the name. If one exists, that instance receives this callback to notify the app that it needs to be brought to the foreground. If one does not exist, the app is notified to create a new **Web** instance through [onWindowNew](#onwindownew9).
 
 > **NOTE**
 >
@@ -2751,6 +2883,7 @@ Triggered to check whether a bound **Web** instance exists based on the name whe
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
@@ -2808,10 +2941,13 @@ Triggered to check whether a bound **Web** instance exists based on the name whe
       }
     }
   }
+
   ```
 
   ```html
+
   <!-- Code of the window.html page -->
+
   <!DOCTYPE html>
   <html>
   <head>
@@ -2829,13 +2965,14 @@ Triggered to check whether a bound **Web** instance exists based on the name whe
   </script>
   </body>
   </html>
+
   ```
 
 ## onWindowExit<sup>9+</sup>
 
 onWindowExit(callback: () => void)
 
-Triggered when this window is closed. This API works in the same way as [onWindowNew](#onwindownew9). For security, applications should notify users that the pages they interact with are closed.
+Notifies the app that a window close request has been made. Similar to [onWindowNew](#onwindownew9), from a security perspective, the app should ensure that users are aware that the page they are interacting with has been closed.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -2848,6 +2985,7 @@ Triggered when this window is closed. This API works in the same way as [onWindo
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
@@ -2865,6 +3003,7 @@ Triggered when this window is closed. This API works in the same way as [onWindo
       }
     }
   }
+
   ```
 
 ## onSearchResultReceive<sup>9+</sup>
@@ -2884,6 +3023,7 @@ Triggered to notify the caller of the search result on the web page.
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
@@ -2904,13 +3044,14 @@ Triggered to notify the caller of the search result on the web page.
       }
     }
   }
+
   ```
 
 ## onDataResubmitted<sup>9+</sup>
 
 onDataResubmitted(callback: Callback\<OnDataResubmittedEvent\>)
 
-Triggered when the web form data can be resubmitted.
+Triggered when a web page form can be resubmitted.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -2923,6 +3064,7 @@ Triggered when the web form data can be resubmitted.
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2951,11 +3093,14 @@ Triggered when the web form data can be resubmitted.
       }
     }
   }
+
   ```
 
  HTML file to be loaded:
  ```html
+
   <!-- index.html -->
+
   <!DOCTYPE html>
   <html>
   <head>
@@ -2968,6 +3113,7 @@ Triggered when the web form data can be resubmitted.
     </form>
   </body>
   </html>
+
  ```
 
 ## onPageVisible<sup>9+</sup>
@@ -2987,6 +3133,7 @@ Triggered when the old page is not displayed and the new page is about to be vis
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
@@ -3004,6 +3151,7 @@ Triggered when the old page is not displayed and the new page is about to be vis
       }
     }
   }
+
   ```
 
 ## onInterceptKeyEvent<sup>9+</sup>
@@ -3018,11 +3166,12 @@ Triggered when the key event is intercepted and before it is consumed by the web
 
 | Name   | Type  | Mandatory  | Description                 |
 | ------ | ------ | ---- | --------------------- |
-| callback | (event:[KeyEvent](../apis-arkui/arkui-ts/ts-universal-events-key.md#keyevent)) => boolean| Yes| Key event that is triggered.<br>The return value is of the Boolean type. The value **true** means to pass the **KeyEvent** to the web kernel, and **false** means the opposite.|
+| callback | (event:[KeyEvent](../apis-arkui/arkui-ts/ts-universal-events-key.md#keyevent-object-description)) => boolean | Yes | KeyEvent event triggered.<br>The return value is of the boolean type. The value **true** indicates that the KeyEvent is passed into the Webview kernel, and **false** indicates that the KeyEvent is not passed into the Webview kernel. |
 
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
@@ -3044,6 +3193,7 @@ Triggered when the key event is intercepted and before it is consumed by the web
       }
     }
   }
+
   ```
 
 ## onTouchIconUrlReceived<sup>9+</sup>
@@ -3058,11 +3208,12 @@ Triggered when an apple-touch-icon URL is received.
 
 | Name   | Type  | Mandatory  | Description                 |
 | ------ | ------ | ---- | --------------------- |
-| callback  | Callback\<[OnTouchIconUrlReceivedEvent](./arkts-basic-components-web-i.md#ontouchiconurlreceivedevent12)\>  | Yes| Callback invoked when an apple-touch-icon URL is received.|
+| callback  | Callback\<[OnTouchIconUrlReceivedEvent](./arkts-basic-components-web-events.md#ontouchiconurlreceivedevent12)\>  | Yes | Callback invoked when an apple-touch-icon URL is received. |
 
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
@@ -3080,6 +3231,7 @@ Triggered when an apple-touch-icon URL is received.
       }
     }
   }
+
   ```
 
 ## onFaviconReceived<sup>9+</sup>
@@ -3099,6 +3251,7 @@ Triggered when this web page receives a new favicon.
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
   import { image } from '@kit.ImageKit';
@@ -3119,6 +3272,7 @@ Triggered when this web page receives a new favicon.
       }
     }
   }
+
   ```
 
 ## onAudioStateChanged<sup>10+</sup>
@@ -3138,6 +3292,7 @@ Triggered when the audio playback status on the web page changes.
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
@@ -3151,19 +3306,21 @@ Triggered when the audio playback status on the web page changes.
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onAudioStateChanged(event => {
+            // Update the audio playback state for later use.
             this.playing = event.playing;
             console.info('onAudioStateChanged playing: ' + this.playing);
           })
       }
     }
   }
+
   ```
 
 ## onFirstContentfulPaint<sup>10+</sup>
 
  onFirstContentfulPaint(callback: Callback\<OnFirstContentfulPaintEvent\>)
 
-Triggered when the first content paint occurs on the web page.
+Sets the callback triggered when the first contentful paint of the web page occurs.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -3171,11 +3328,12 @@ Triggered when the first content paint occurs on the web page.
 
 | Name   | Type  | Mandatory  | Description                 |
 | ------ | ------ | ---- | --------------------- |
-| callback    | Callback\<[OnFirstContentfulPaintEvent](./arkts-basic-components-web-i.md#onfirstcontentfulpaintevent12)\> | Yes| Callback invoked when the first content paint occurs on the web page.      |
+| callback| Callback\<[OnFirstContentfulPaintEvent](./arkts-basic-components-web-i.md#onfirstcontentfulpaintevent12)\> | Yes | Callback invoked to return performance metrics such as the navigation start timestamp and first contentful paint time.|
 
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
@@ -3197,6 +3355,7 @@ Triggered when the first content paint occurs on the web page.
       }
     }
   }
+
   ```
 
 ## onFirstMeaningfulPaint<sup>12+</sup>
@@ -3216,6 +3375,7 @@ Triggered when the first meaningful paint occurs on the web page.
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
@@ -3234,6 +3394,7 @@ Triggered when the first meaningful paint occurs on the web page.
       }
     }
   }
+
   ```
 
 ## onLargestContentfulPaint<sup>12+</sup>
@@ -3253,6 +3414,7 @@ Triggered when the largest content paint occurs on the web page.
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
@@ -3275,6 +3437,7 @@ Triggered when the largest content paint occurs on the web page.
       }
     }
   }
+
   ```
 
 ## onLoadIntercept<sup>10+</sup>
@@ -3282,6 +3445,16 @@ Triggered when the largest content paint occurs on the web page.
 onLoadIntercept(callback: Callback\<OnLoadInterceptEvent, boolean\>)
 
 Triggered when the **Web** component is about to access a URL. This API is used to determine whether to block the access.
+
+> **NOTE**
+>
+> - onLoadIntercept is a callback triggered synchronously before page navigation. The current navigation is suspended until the callback returns.
+>
+> - Do not directly call APIs that trigger new navigation in the callback (such as [refresh()](./arkts-apis-webview-WebviewController.md#refresh), [loadurl()](./arkts-apis-webview-WebviewController.md#loadurl), [setCustomUserAgent()](./arkts-apis-webview-WebviewController.md#setcustomuseragent10), etc.), as this may cause callback reentry or navigation state confusion.
+>
+> - If you need to reload the page after interception, call it asynchronously through methods such as [setTimeout()](../common/js-apis-timer.md#settimeout) after the callback returns.
+>
+> - onLoadIntercept cannot obtain complete headers. To obtain complete headers, you are advised to use [onInterceptRequest](#oninterceptrequest9) or obtain them through [onRequestStart](./arkts-apis-webview-WebSchemeHandler.md#onrequeststart12) of WebSchemeHandler.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -3294,6 +3467,7 @@ Triggered when the **Web** component is about to access a URL. This API is used 
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
@@ -3315,6 +3489,7 @@ Triggered when the **Web** component is about to access a URL. This API is used 
       }
     }
   }
+
   ```
 
 ## onRequestSelected
@@ -3334,6 +3509,7 @@ Triggered when the **Web** component obtains the focus. If the **Web** component
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
@@ -3351,12 +3527,13 @@ Triggered when the **Web** component obtains the focus. If the **Web** component
       }
     }
   }
+
   ```
 ## onScreenCaptureRequest<sup>10+</sup>
 
 onScreenCaptureRequest(callback: Callback\<OnScreenCaptureRequestEvent\>)
 
-Triggered when a screen capture request is received.
+Notifies that a screen capture request has been received. Used to control page screenshot permissions, implement privacy protection, prevent sensitive information leakage, and protect user privacy and data security.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -3364,11 +3541,12 @@ Triggered when a screen capture request is received.
 
 | Name   | Type  | Mandatory  | Description                 |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnScreenCaptureRequestEvent](./arkts-basic-components-web-i.md#onscreencapturerequestevent12)\> | Yes| Callback invoked when a screen capture request is received.|
+| callback | Callback\<[OnScreenCaptureRequestEvent](./arkts-basic-components-web-i.md#onscreencapturerequestevent12)\> | Yes | Callback invoked when a screen capture request is received. The event object contains information such as the request source URL and the requested capture mode. |
 
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
@@ -3389,16 +3567,19 @@ Triggered when a screen capture request is received.
                 primaryButton: {
                   value: 'deny',
                   action: () => {
+                    // The user taps Deny. Calls deny() to notify the Web component to reject the screen capture request.
                     event.handler.deny();
                   }
                 },
                 secondaryButton: {
                   value: 'onConfirm',
                   action: () => {
+                    // The user taps Confirm. Calls grant() to notify the Web component to allow screen capture, with the capture mode set to HOME_SCREEN.
                     event.handler.grant({ captureMode: WebCaptureMode.HOME_SCREEN });
                   }
                 },
                 cancel: () => {
+                  // The user cancels the dialog box. Calls deny() to notify the Web component to reject the screen capture request.
                   event.handler.deny();
                 }
               })
@@ -3407,6 +3588,7 @@ Triggered when a screen capture request is received.
       }
     }
   }
+
   ```
 
 ## onOverScroll<sup>10+</sup>
@@ -3426,6 +3608,7 @@ Triggered when the web page is overscrolled. It is used to notify the applicatio
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
@@ -3444,6 +3627,7 @@ Triggered when the web page is overscrolled. It is used to notify the applicatio
       }
     }
   }
+
   ```
 
 ## onControllerAttached<sup>10+</sup>
@@ -3468,6 +3652,7 @@ For details about the component lifecycle, see [Lifecycle of the Web Component](
 
 The following example uses **loadUrl** in the callback to load the web page.
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
@@ -3485,10 +3670,12 @@ The following example uses **loadUrl** in the callback to load the web page.
       }
     }
   }
+
   ```
 
 The following example uses **getWebId** in the callback.
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -3514,16 +3701,20 @@ The following example uses **getWebId** in the callback.
       }
     }
   }
+
   ```
   HTML file to be loaded:
   ```html
+
   <!-- index.html -->
+
   <!DOCTYPE html>
   <html>
       <body>
           <p>Hello World</p>
       </body>
   </html>
+
   ```
 
 ## onNavigationEntryCommitted<sup>11+</sup>
@@ -3543,6 +3734,7 @@ Triggered when a web page redirection request is submitted.
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
@@ -3564,6 +3756,7 @@ Triggered when a web page redirection request is submitted.
       }
     }
   }
+
   ```
 
 ## onSafeBrowsingCheckResult<sup>11+</sup>
@@ -3571,6 +3764,11 @@ Triggered when a web page redirection request is submitted.
 onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback)
 
 Called when the safe browsing check result is received.
+
+> **NOTE**
+>
+> - A release package is required. The debug package does not take effect.
+> - Enable minor mode and set web page content interception to trigger the callback.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -3583,6 +3781,7 @@ Called when the safe browsing check result is received.
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
@@ -3601,6 +3800,7 @@ Called when the safe browsing check result is received.
       }
     }
   }
+
   ```
 
 ## onSafeBrowsingCheckFinish<sup>21+</sup>
@@ -3608,6 +3808,11 @@ Called when the safe browsing check result is received.
 onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback)
 
 Called when the safe browsing check is complete.
+
+> **NOTE**
+>
+> - A release package is required. The debug package does not take effect.
+> - Enable minor mode and set web page content interception to trigger the callback.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -3620,6 +3825,7 @@ Called when the safe browsing check is complete.
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
@@ -3638,6 +3844,7 @@ Called when the safe browsing check is complete.
       }
     }
   }
+
   ```
 
 ## onNativeEmbedLifecycleChange<sup>11+</sup>
@@ -3645,6 +3852,10 @@ Called when the safe browsing check is complete.
 onNativeEmbedLifecycleChange(callback: (event: NativeEmbedDataInfo) => void)
 
 Triggered when the lifecycle of the same-layer tag changes.
+
+> **NOTE**
+>
+> - Both this API and onNativeEmbedVisibilityChange monitor the status of same-layer tags, but they monitor different dimensions.<br>onNativeEmbedLifecycleChange monitors lifecycle states (such as CREATE/UPDATE/DESTROY/ENTER_BFCACHE/LEAVE_BFCACHE), and is suitable for handling lifecycle events such as tag creation, destruction, and caching.<br>onNativeEmbedVisibilityChange monitors visibility changes within the viewport (Visible/Hidden), and is suitable for handling scenarios where tags scroll in and out of the viewport. The two can be used together or separately based on actual requirements.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -3657,6 +3868,7 @@ Triggered when the lifecycle of the same-layer tag changes.
 **Example**
 
 ```ts
+
 // EntryAbility.ets
 
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -3707,9 +3919,11 @@ export default class EntryAbility extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
   }
 }
+
 ```
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -3753,7 +3967,6 @@ export default class EntryAbility extends UIAbility {
           }
         })
 
-
         // Added in API version 12: The web kernel does not allow web pages loaded with non-HTTP and non-HTTPS protocols to enter BFCache.
         // Therefore, to test the ENTER_BFCACHE/LEAVE_BFCACHE states, you need to place the index.html on a web server and load it using the HTTP or HTTPS protocol. Example:
         // Web({ src: "http://xxxx/index.html", controller: this.controller })
@@ -3795,11 +4008,14 @@ export default class EntryAbility extends UIAbility {
       }
     }
   }
+
   ```
 
   HTML file to be loaded:
   ```html
+
   <!--index.html-->
+
   <!DOCTYPE html>
   <html>
   <head>
@@ -3814,6 +4030,7 @@ export default class EntryAbility extends UIAbility {
   </div>
   </body>
   </html>
+
   ```
 
 ## onNativeEmbedGestureEvent<sup>11+</sup>
@@ -3833,6 +4050,7 @@ Triggered when a finger touches a same-layer tag.
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
   import { NodeController, BuilderNode, NodeRenderType, FrameNode, UIContext } from "@kit.ArkUI";
@@ -3956,10 +4174,13 @@ Triggered when a finger touches a same-layer tag.
       }
     }
   }
+
   ```
 HTML file to be loaded:
   ```html
+
   <!--index.html-->
+
   <!DOCTYPE html>
   <html>
   <head>
@@ -3974,6 +4195,7 @@ HTML file to be loaded:
   </div>
   </body>
   </html>
+
   ```
 
 ## onIntelligentTrackingPreventionResult<sup>12+</sup>
@@ -3981,6 +4203,10 @@ HTML file to be loaded:
 onIntelligentTrackingPreventionResult(callback: OnIntelligentTrackingPreventionCallback)
 
 Triggered when the intelligent tracking prevention feature is enabled and the tracker cookie is blocked.
+
+> **NOTE**
+>
+> - A release package is required. The debug package does not take effect.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -3993,6 +4219,7 @@ Triggered when the intelligent tracking prevention feature is enabled and the tr
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -4021,6 +4248,7 @@ Triggered when the intelligent tracking prevention feature is enabled and the tr
       }
     }
   }
+
   ```
 
 ## onOverrideUrlLoading<sup>12+</sup>
@@ -4046,6 +4274,7 @@ Triggered when the URL is about to be loaded in the current web page, allowing t
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
@@ -4066,11 +4295,14 @@ Triggered when the URL is about to be loaded in the current web page, allowing t
       }
     }
   }
+
   ```
 
   HTML file to be loaded:
   ```html
+
   <!--index.html-->
+
   <!DOCTYPE html>
   <html>
   <head>
@@ -4081,6 +4313,7 @@ Triggered when the URL is about to be loaded in the current web page, allowing t
     <a href="about:blank">Click here</a>// to visit about:blank.
   </body>
   </html>
+
   ```
 
 ## onViewportFitChanged<sup>12+</sup>
@@ -4100,6 +4333,7 @@ Triggered when the **viewport-fit** configuration in the web page's **meta** tag
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
@@ -4125,11 +4359,14 @@ Triggered when the **viewport-fit** configuration in the web page's **meta** tag
       }
     }
   }
+
   ```
 
   HTML file to be loaded:
   ```html
+
   <!-- index.html -->
+
   <!DOCTYPE html>
   <html>
     <head>
@@ -4139,13 +4376,14 @@ Triggered when the **viewport-fit** configuration in the web page's **meta** tag
       <div style="position: absolute; bottom: 0; margin-bottom: env(safe-area-inset-bottom)"></div>
     </body>
   </html>
+
   ```
 
 ## onInterceptKeyboardAttach<sup>12+</sup>
 
 onInterceptKeyboardAttach(callback: WebKeyboardCallback)
 
-Triggered before any editable element (such as the **input** tag) on the web page invokes the soft keyboard. The application can use this API to intercept the display of the system's soft keyboard and configure a custom soft keyboard. (With this API, the application can determine whether to use the system's default soft keyboard, a system soft keyboard with a custom Enter key, or a completely application-defined soft keyboard).
+Triggered when an editable element (such as an input tag) in a web page needs to display the soft keyboard. The app can intercept the display of the system soft keyboard in the callback and configure a custom soft keyboard (based on this API, the app can decide to use the system default soft keyboard, the system soft keyboard with a customized Enter key, or a fully custom soft keyboard).
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -4158,6 +4396,7 @@ Triggered before any editable element (such as the **input** tag) on the web pag
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
   import { inputMethodEngine } from '@kit.IMEKit';
@@ -4178,7 +4417,9 @@ Triggered before any editable element (such as the **input** tag) on the web pag
       ])
 
       /**
+
        * Builder for a custom keyboard component.
+
        */
       @Builder
       customKeyboardBuilder() {
@@ -4264,11 +4505,14 @@ Triggered before any editable element (such as the **input** tag) on the web pag
       }
     }
   }
+
   ```
 
   HTML file to be loaded:
   ```html
+
   <!-- index.html -->
+
     <!DOCTYPE html>
     <html>
 
@@ -4317,13 +4561,14 @@ Triggered before any editable element (such as the **input** tag) on the web pag
     </body>
 
     </html>
+
   ```
 
 ## onNativeEmbedVisibilityChange<sup>12+</sup>
 
 onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback)
 
-Triggered when the visibility of a same-layer tag (such as an **\<embed>** tag or an **\<object>** tag) on a web page changes in the viewport. Same-layer tags are invisible by default. If a tag is visible when the page is loaded for the first time, it is reported. If a tag is invisible, it is not reported. Same-layer tags are considered invisible only when they are all invisible. Partially visible or all visible tags are considered visible. To obtain the visible status change caused by the CSS attributes (including visibility, display, and size change) of the same-layer tag, configure [nativeEmbedOptions](./arkts-basic-components-web-attributes.md#nativeembedoptions16) and set **supportCssDisplayChange** in [EmbedOptions](./arkts-basic-components-web-i.md#embedoptions16) to **true**.
+Triggered when the visibility of a same-layer tag (such as an \<embed\> tag or \<object\> tag) in a web page changes within the viewport. Same-layer tags are invisible by default. If they are already visible when the page is first loaded, this callback is reported; if they are invisible, it is not reported. A same-layer tag is considered invisible only when all same-layer tags are invisible; it is considered visible when partially or fully visible. To obtain visibility state changes caused by CSS properties of same-layer tags (including visibility, display, and size changes), configure [nativeEmbedOptions](./arkts-basic-components-web-attributes.md#nativeembedoptions16) and set the supportCssDisplayChange parameter in [EmbedOptions](./arkts-basic-components-web-i.md#embedoptions16) to **true**.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -4336,6 +4581,7 @@ Triggered when the visibility of a same-layer tag (such as an **\<embed>** tag o
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
   import { NodeController, BuilderNode, NodeRenderType, FrameNode, UIContext } from "@kit.ArkUI";
@@ -4441,11 +4687,14 @@ Triggered when the visibility of a same-layer tag (such as an **\<embed>** tag o
       }
     }
   }
+
   ```
 
   HTML file to be loaded:
   ```html
+
   <!-- index.html -->
+
   <!DOCTYPE html>
   <html>
   <head>
@@ -4460,6 +4709,7 @@ Triggered when the visibility of a same-layer tag (such as an **\<embed>** tag o
   </div>
   </body>
   </html>
+
   ```
 
 ## onNativeEmbedMouseEvent<sup>20+</sup>
@@ -4483,6 +4733,7 @@ Triggered when the following operations are performed on the same-layer tag:
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
   import { NodeController, BuilderNode, NodeRenderType, FrameNode, UIContext } from "@kit.ArkUI";
@@ -4588,10 +4839,13 @@ Triggered when the following operations are performed on the same-layer tag:
       }
     }
   }
+
   ```
 HTML file to be loaded:
   ```html
+
   <!--index.html-->
+
   <!DOCTYPE html>
   <html>
   <head>
@@ -4606,6 +4860,7 @@ HTML file to be loaded:
   </div>
   </body>
   </html>
+
   ```
 
 ## onNativeEmbedObjectParamChange<sup>21+</sup>
@@ -4625,6 +4880,7 @@ Called when the **param** element embedded in the same-layer rendering tag **obj
 **Example**
 
 ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
   import { NodeController, BuilderNode, NodeRenderType, FrameNode, UIContext } from '@kit.ArkUI';
@@ -4730,11 +4986,14 @@ Called when the **param** element embedded in the same-layer rendering tag **obj
       }
     }
   }
+
   ```
 
 HTML file to be loaded:
   ```html
+
   <!--index.html-->
+
   <!DOCTYPE html>
   <html>
   <head>
@@ -4751,19 +5010,21 @@ HTML file to be loaded:
   </div>
   </body>
   </html>
+
   ```
 
 ## onOverrideErrorPage<sup>20+</sup>
 
 onOverrideErrorPage(callback: OnOverrideErrorPageCallback)
 
-Triggered when an error occurs during web page loading of main resources. You can use this API to customize the error display page.
+Triggered when an error occurs during web page load. This callback can be used to set a custom error page to replace the default error page provided by ArkWeb. By default, it is triggered only when a mainframe load error occurs. After the subframe error page feature is enabled, it is also triggered when a subframe load error occurs.
 
 > **NOTE**
 >
-> This feature takes effect only after the default error page is enabled by calling the [setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled20) API.
->
-> If the error code obtained through [errorPageEvent.error.getErrorCode()](./arkts-basic-components-web-WebResourceError.md#geterrorcode) is greater than 0, it indicates an HTTP error. If the error code is less than 0, it indicates a network error.
+> - This feature takes effect only after the mainframe error page feature is enabled by calling [setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled20)<sup>20+</sup>. To also enable the subframe error page feature, call [setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled) and set includeSubframe to **true**.
+> - Use [errorPageEvent.request.isMainFrame()](./arkts-basic-components-web-WebResourceRequest.md#ismainframe) to determine whether the request source is mainframe or subframe, so that corresponding custom error pages can be set separately in the callback.
+> - An error code greater than 0 obtained through [errorPageEvent.error.getErrorCode()](./arkts-basic-components-web-WebResourceError.md#geterrorcode) indicates an HTTP protocol error, and an error code less than 0 indicates a network error.
+
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -4775,32 +5036,42 @@ Triggered when an error occurs during web page loading of main resources. You ca
 
 **Example**
 
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-    build() {
-      Column() {
-        Web({ src: "www.error-test.com", controller: this.controller })
-         .onControllerAttached(() => {
-              this.controller.setErrorPageEnabled(true);
-              if (!this.controller.getErrorPageEnabled()) {
-                  this.controller.setErrorPageEnabled(true);
-              }
-          })
-          .onOverrideErrorPage(event => {
-                let htmlStr = "<html><h1>error occur : ";
-                htmlStr += event.error.getErrorCode();
-                htmlStr += "</h1></html>";
-                return htmlStr;
-          })
-      }
+```ts
+
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: $rawfile("iframe_error.html"), controller: this.controller })
+        .onControllerAttached(() => {
+          // Enable the mainframe error page feature and the subframe error page feature simultaneously.
+          this.controller.setErrorPageEnabled(true, true);
+        })
+        .onOverrideErrorPage((event) => {
+          let errorCode: number = event.error.getErrorCode();
+          if (event.request.isMainFrame()) {
+            // The mainframe load fails. Return the mainframe custom error page.
+            return "<html><body><h1>Main page load failed</h1><p>Error code: " + errorCode + "</p></body></html>";
+          }
+          // The subframe load fails. Return the subframe custom error page.
+          return "<html><body><h1>Sub page load failed</h1><p>Error code: " + errorCode + "</p></body></html>";
+        })
     }
   }
-  ```
+}
+
+```
+
+> **NOTE**
+>
+> The `iframe_error.html` file used in the example is the same as that in the [setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled) example and must be placed in the `resources/rawfile/` directory of the app resources.
+
 
 ## onSslErrorReceive<sup>(deprecated)</sup>
 
@@ -4860,6 +5131,7 @@ Triggered when the **Web** component is about to access a URL. This API is used 
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
@@ -4880,6 +5152,7 @@ Triggered when the **Web** component is about to access a URL. This API is used 
       }
     }
   }
+
   ```
 
 ## onPdfLoadEvent<sup>20+</sup>
@@ -4899,6 +5172,7 @@ Called to notify the user of whether the PDF page is successfully loaded.
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
@@ -4917,6 +5191,7 @@ Called to notify the user of whether the PDF page is successfully loaded.
       }
     }
   }
+
   ```
 
 ## onPdfScrollAtBottom<sup>20+</sup>
@@ -4936,6 +5211,7 @@ Called to notify the user that the PDF page has been scrolled to the bottom.
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
@@ -4954,6 +5230,7 @@ Called to notify the user that the PDF page has been scrolled to the bottom.
       }
     }
   }
+
   ```
 
 ## onDetectedBlankScreen<sup>22+</sup>
@@ -4972,11 +5249,12 @@ Called when the **Web** component detects a blank screen.
 
 | Name       | Type   | Mandatory  | Description         |
 | ---------- | ------- | ---- | ------------- |
-| callback | [OnDetectBlankScreenCallback](./arkts-basic-components-web-t.md#ondetectblankscreencallback22) | Yes   | Callback triggered when the **Web** component detects a blank screen.|
+| callback | [OnDetectBlankScreenCallback](./arkts-basic-components-web-t.md#ondetectblankscreencallback22) | Yes | Callback invoked when a blank screen is detected. The event object contains diagnostic information such as the page URL, blank screen cause, and number of detected content nodes. |
 
 **Example**
 
   ```ts
+
   // onDetectedBlankScreen.ets
   import { webview } from '@kit.ArkWeb';
 
@@ -5002,6 +5280,7 @@ Called when the **Web** component detects a blank screen.
       }
     }
   }
+
   ```
 ## onRenderExited<sup>(deprecated)</sup>
 
@@ -5031,7 +5310,7 @@ For details, see [Lifecycle of the Web Component](../../web/web-event-sequence.m
 
 onCameraCaptureStateChange(callback: OnCameraCaptureStateChangeCallback)
 
-Triggered to notify the user of the camera state on the current web page, which can be **None**, **Active**, or **Paused**. This API uses an asynchronous callback to return the result.
+Notifies the app of the camera state on the current web page. The camera has three states: none, capturing, and paused. This API uses an asynchronous callback to return the result.
 
 You can use the **startCamera**, **stopCamera**, and **closeCamera** APIs to enable, pause, and stop the camera respectively. For details about how to use them, see [startCamera](arkts-apis-webview-WebviewController.md#startcamera12).
 
@@ -5049,11 +5328,12 @@ You can use the **startCamera**, **stopCamera**, and **closeCamera** APIs to ena
 
 | Name| Type   | Mandatory| Description                             |
 | ------ | ------- | ---- | --------------------------------- |
-| Callback  | [OnCameraCaptureStateChangeCallback](arkts-basic-components-web-t.md#oncameracapturestatechangecallback23) | Yes  | Callback triggered when the camera capture state changes. It returns the original and new states.|
+| callback  | [OnCameraCaptureStateChangeCallback](./arkts-basic-components-web-t.md#oncameracapturestatechangecallback23) | Yes   | Callback invoked when the camera capture state changes, returning the original state and the changed state. |
 
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -5129,11 +5409,14 @@ You can use the **startCamera**, **stopCamera**, and **closeCamera** APIs to ena
       }
     }
   }
+
   ```
 
   HTML file to be loaded:
   ```html
+
   <!-- index.html -->
+
   <!DOCTYPE html>
   <html>
    <head>
@@ -5162,15 +5445,16 @@ You can use the **startCamera**, **stopCamera**, and **closeCamera** APIs to ena
      </script>
    </body>
   </html>
+
   ```
 
 ## onMicrophoneCaptureStateChange<sup>23+</sup>
 
 onMicrophoneCaptureStateChange(callback: OnMicrophoneCaptureStateChangeCallback)
 
-Triggered to notify the user of the microphone state on the current web page, which can be **None**, **Active**, or **Paused**. This API uses an asynchronous callback to return the result.
+Notifies the app of the microphone state on the current web page. The microphone has three states: inactive, capturing, and paused. This API uses an asynchronous callback to return the result.
 
-You can use the **resumeMicrophone**, **pauseMicrophone**, and **stopMicrophone** APIs to resume, pause, and stop the microphone. For details about how to use them, see [resumeMicrophone](./arkts-apis-webview-WebviewController.md#resumemicrophone23).
+The microphone state can be switched through the three APIs: resumeMicrophone, pauseMicrophone, and stopMicrophone. These three APIs correspond to resuming, pausing, and stopping the microphone, respectively. For an example usage scenario, see [resumeMicrophone<sup>23+</sup>](./arkts-apis-webview-WebviewController.md#resumemicrophone23).
 
 > **NOTE**
 >
@@ -5192,11 +5476,12 @@ You can use the **resumeMicrophone**, **pauseMicrophone**, and **stopMicrophone*
 
 | Name| Type   | Mandatory| Description                             |
 | ------ | ------- | ---- | --------------------------------- |
-| Callback  | [OnMicrophoneCaptureStateChangeCallback](./arkts-basic-components-web-t.md#onmicrophonecapturestatechangecallback23) | Yes  | Callback triggered when the microphone capture state changes. It returns the original and new states.|
+| callback  | [OnMicrophoneCaptureStateChangeCallback](./arkts-basic-components-web-t.md#onmicrophonecapturestatechangecallback23) | Yes   | Callback used to return the result. Triggered when the microphone capture state changes, returning the original state and the changed state. |
 
 **Example**
 
   ```ts
+
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -5272,11 +5557,14 @@ You can use the **resumeMicrophone**, **pauseMicrophone**, and **stopMicrophone*
       }
     }
   }    
+
   ```
 
   HTML file to be loaded:
   ```html
+
   <!-- index.html -->
+
   <!DOCTYPE html>
   <html>
    <head>
@@ -5305,13 +5593,14 @@ You can use the **resumeMicrophone**, **pauseMicrophone**, and **stopMicrophone*
      </script>
    </body>
   </html>
+
   ```
 
 ## onTextSelectionChange<sup>23+</sup>
 
 onTextSelectionChange(callback: TextSelectionChangeCallback)
 
-Triggered when the text selection of the **Web** component changes. This API uses an asynchronous callback to return the result.
+Sets the callback triggered when the text selection of the **Web** component changes.
 
 > **NOTE**
 >
@@ -5327,11 +5616,12 @@ Triggered when the text selection of the **Web** component changes. This API use
 
 | Name  | Type                                                        | Mandatory  | Description                                  |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| callback | [TextSelectionChangeCallback](./arkts-basic-components-web-t.md#textselectionchangecallback23) | Yes   | Callback triggered when the text selection changes.|
+| callback | [TextSelectionChangeCallback](./arkts-basic-components-web-events.md#textselectionchangecallback23) | Yes | Invoked when the text selection changes. The callback parameter contains the currently selected text content. |
 
 **Example**
 
   ```ts
+
   // onTextSelectionChange.ets
   import { webview } from '@kit.ArkWeb';
 
@@ -5349,10 +5639,13 @@ Triggered when the text selection of the **Web** component changes. This API use
       }
     }
   }
+
   ```
   HTML file to be loaded:
   ```html
+
   <!-- index.html -->
+
   <!DOCTYPE html>
   <html>
   <head>
@@ -5362,6 +5655,7 @@ Triggered when the text selection of the **Web** component changes. This API use
       Sample text
   </body>
   </html>
+
   ```
 
 ## onFirstScreenPaint<sup>23+</sup>
@@ -5386,11 +5680,12 @@ Triggered when the first screen paint of a web page is complete.<br>
 
 | Name       | Type   | Mandatory  | Description         |
 | ---------- | ------- | ---- | ------------- |
-| callback | [OnFirstScreenPaintCallback](./arkts-basic-components-web-t.md#onfirstscreenpaintcallback23) | Yes   | Callback triggered when the first screen paint of the **Web** component is detected.|
+| callback | [OnFirstScreenPaintCallback](./arkts-basic-components-web-t.md#onfirstscreenpaintcallback23) | Yes | Triggered when the first screen paint is complete. The event object contains performance metrics such as the page URL, navigation start time, and first screen paint time. |
 
 **Example**
 
   ```ts
+
   // onFirstScreenPaint.ets
   import { webview } from '@kit.ArkWeb';
 
@@ -5410,4 +5705,307 @@ Triggered when the first screen paint of a web page is complete.<br>
       }
     }
   }
+
   ```
+
+## onInputmethodAttached
+
+onInputmethodAttached(callback: OnInputmethodAttachedCallback)
+
+Triggered when the web page successfully binds to an input method. This API uses an asynchronous callback to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name        | Type    | Mandatory   | Description          |
+| ---------- | ------- | ---- | ------------- |
+| callback | [OnInputmethodAttachedCallback](./arkts-basic-components-web-t.md#oninputmethodattachedcallback) | Yes    | Sets the callback triggered when the **Web** component detects that the input method has been successfully bound. |
+
+**Example**
+
+  ```ts
+
+  import { webview } from '@kit.ArkWeb'
+  import { inputMethod } from '@kit.IMEKit';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller }).onInputmethodAttached(() => {
+          inputMethod.getController().showTextInput();
+        })
+      }
+    }
+  }
+
+  ```
+
+  HTML file to be loaded.
+```html
+
+<!--test.html-->
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head><meta charset="UTF-8"><title>示例页面</title></head>
+  <body>
+    <div>
+      <label for="main-input">输入框</label>
+      <input type="text" id="main-input" name="keyword" placeholder="Enter keywords..." autofocus>
+    </div>
+  </body>
+</html>
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
