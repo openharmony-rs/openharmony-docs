@@ -214,7 +214,7 @@ onGetProperty(handle: string, propertyId: string, params: Array\<huksExternalCry
 | 参数名   | 类型  | 必填 | 说明  |
 | -------- | ----- | ---- | ------|
 | handle | string | 是   | 资源句柄。 |
-| propertyId | string | 是   | 查找操作的属性名称，是GMT 0016-2023中定义的SKF接口名，要业务针对接口名适配。 |
+| propertyId | string | 是   | 查找操作的属性名称。建议使用GMT 0016-2023中定义的SKF接口名，业务需要针对接口名适配。 |
 | params  | Array\<[huksExternalCrypto.HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> \| [HuksCryptoExtensionParam](#hukscryptoextensionparam)[] | 是 | 传入的参数，应用身份通过[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。 |
 
 **返回值：**

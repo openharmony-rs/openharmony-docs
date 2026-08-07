@@ -162,9 +162,8 @@ static napi_value RegisterProvider(napi_env env, napi_callback_info info)
 
 ```ts
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError, deviceInfo } from '@kit.BasicServicesKit';
 import { util } from '@kit.ArkTS';
-import { deviceInfo } from '@kit.BasicServicesKit';
 
 // 字符串 → UTF-8 字节流
 function stringToUint8Array(str: string): Uint8Array {

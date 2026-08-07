@@ -19,7 +19,7 @@ HUKS框架保持设备无关，既支持UKey物理设备，也支持软件形态
 
 ## 整体框架
 
-![huks_extension](figures/huks_extension.png)
+![huks_extension](figures/huks-extension.png)
 
 密钥管理扩展采用分层架构，自上而下划分为生态伙伴层、应用层、系统服务层与密钥管理扩展应用层，各层之间通过IPC协同。
 
