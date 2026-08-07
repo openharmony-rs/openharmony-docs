@@ -454,7 +454,6 @@ enum ArkUI_NodeEventType
 | NODE_GRID_ITEM_ON_SELECT = MAX_NODE_SCOPE_NUM * ARKUI_NODE_GRID_ITEM = 1014000 | 定义ARKUI_NODE_GRID_ITEM组件选中状态变化事件枚举值。<br> 事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中包含1个参数：<br><b>ArkUI_NodeComponentEvent.data[0].i32</b>：0：未选中，1：已选中。<br>**起始版本：** 23 |
 | NODE_PICKER_EVENT_ON_CHANGE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_PICKER | 定义Picker容器组件中选择某项时触发的事件。<br>事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中包含1个参数：<br><b>ArkUI_NodeComponentEvent.data[0].i32</b>：选中项的值。<br>**起始版本：** 23 |
 | NODE_PICKER_EVENT_ON_SCROLL_STOP = 1018001 | 定义Picker容器组件中选择某项且滚动停止时触发的事件。<br>事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中包含1个参数：<br><b>ArkUI_NodeComponentEvent.data[0].i32</b>：选中项的值。<br>**起始版本：** 23 |
-
 ### ArkUI_NodeDirtyFlag
 
 ```c
