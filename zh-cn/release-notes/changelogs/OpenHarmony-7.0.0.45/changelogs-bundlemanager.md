@@ -42,4 +42,4 @@
 
 仅满足浏览器品类标准，并通过安全、隐私、用户体验三项审核的应用方可申请此权限。
 
-权限授权后，在配置文件中[声明权限](../../../application-dev/security/AccessToken/declare-permissions)。
+权限授权后，在配置文件中[声明权限](../../../application-dev/security/AccessToken/declare-permissions.md)。
