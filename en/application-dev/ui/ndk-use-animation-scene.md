@@ -6,7 +6,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=087470085268b4c7968360a1498b1da15f27d467 translatedAt=2026-07-06T13:07:57.695Z pushedAt=2026-07-09T11:25:31.198Z -->
+<!-- md-trans-meta sourceCommit=27d0fa5fed547f5e93e0b56b8ad3e27d447b6bbd translatedAt=2026-08-05T10:08:21.570Z pushedAt=2026-08-06T06:17:03.625Z -->
 
 All examples in this document only provide the calling methods of core APIs. For the complete sample project, refer to <!--RP1-->[AnimationNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/AnimationNDK)<!--RP1End-->.
 
@@ -227,7 +227,7 @@ This example primarily demonstrates how to set transition parameters using the *
        nodeAPI->setAttribute(image, NODE_WIDTH, &textWidthItem);
        ArkUI_NumberValue textHeightValue[] = {{.f32 = 300}};
        ArkUI_AttributeItem textHeightItem = {.value = textHeightValue,
-                                             .size = sizeof(textWidthValue) / sizeof(ArkUI_NumberValue)};
+                                             .size = sizeof(textHeightValue) / sizeof(ArkUI_NumberValue)};
        nodeAPI->setAttribute(image, NODE_HEIGHT, &textHeightItem);
        ArkUI_NumberValue transformCenterValue[] = {0.0f, 0.0f, 0.0f, 0.5f, 0.5f};
        ArkUI_AttributeItem transformCenterItem = {.value = transformCenterValue,
@@ -316,7 +316,7 @@ This example demonstrates how to implement a shared element transition using the
        nodeAPI->setAttribute(firstImage, NODE_WIDTH, &textWidthItem);
        ArkUI_NumberValue textHeightValue[] = {{.f32 = 50}};
        ArkUI_AttributeItem textHeightItem = {.value = textHeightValue,
-                                             .size = sizeof(textWidthValue) / sizeof(ArkUI_NumberValue)};
+                                             .size = sizeof(textHeightValue) / sizeof(ArkUI_NumberValue)};
        nodeAPI->setAttribute(firstImage, NODE_HEIGHT, &textHeightItem);
        ArkUI_NumberValue borderRadiusValue[] = {{.f32 = 25}};
        ArkUI_AttributeItem borderRadiusItem = {.value = borderRadiusValue,
@@ -360,7 +360,7 @@ This example demonstrates how to implement a shared element transition using the
        nodeAPI->setAttribute(secondImage, NODE_WIDTH, &textWidthItem);
        ArkUI_NumberValue textHeightValue[] = {{.f32 = 200}};
        ArkUI_AttributeItem textHeightItem = {.value = textHeightValue,
-                                             .size = sizeof(textWidthValue) / sizeof(ArkUI_NumberValue)};
+                                             .size = sizeof(textHeightValue) / sizeof(ArkUI_NumberValue)};
        nodeAPI->setAttribute(secondImage, NODE_HEIGHT, &textHeightItem);
        ArkUI_NumberValue borderRadiusValue[] = {{.f32 = 50}};
        ArkUI_AttributeItem borderRadiusItem = {.value = borderRadiusValue,
