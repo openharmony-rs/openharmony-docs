@@ -7754,6 +7754,108 @@
 
 **起始版本**：26.1.0
 
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_PRIVACY_CONSENT
+
+允许应用签署整车隐私相关协议或政策。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_DRIVER_SEAT_PRIVACY
+
+允许应用设置主驾隐私模式的状态。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_CLEAR_TRACE
+
+允许应用设置车辆的一键除痕和更新除痕状态。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_SENSORTYPE_STATE
+
+允许应用设置敏感权限的有效期。
+
+获取该权限后，应用可以设置麦克风、车内摄像头、定位服务等涉及用户敏感数据的权限的有效期。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_REMOTELOCATION
+
+允许应用设置远程位置控制的开关状态。
+
+获取该权限后，应用可以开启或关闭远程查看车辆位置的开关。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_ANONYMIZE_VOICE
+
+允许应用使用声纹脱敏的能力。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_SUPER_PRIVACY
+
+允许应用设置车内隐私保护状态。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
 ## ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
 
 允许应用订阅通知服务。

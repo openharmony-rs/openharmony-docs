@@ -7724,6 +7724,108 @@ Allows an application to write vehicle and head unit configurations.
 
 **Since**: 26.1.0
 
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_PRIVACY_CONSENT
+
+Allows an application to sign vehicle privacy agreements or policies.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_DRIVER_SEAT_PRIVACY
+
+Allows an application to set the status of driver-seat privacy mode.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_CLEAR_TRACE
+
+Allows an application to configure trace removal and update the trace removal status.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_SENSORTYPE_STATE
+
+Allows an application to set the validity period of sensitive permissions.
+
+With this permission, the application can configure the validity period for permissions involving sensitive user data, such as the microphone, in-vehicle cameras, and location services.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_REMOTELOCATION
+
+Allows an application to configure the toggle switch status for remote location control.
+
+With this permission, the application can enable or disable remote viewing of the vehicle's location.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_ANONYMIZE_VOICE
+
+Allows an application to use voiceprint anonymization capabilities.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_SUPER_PRIVACY
+
+Allows an application to set the in-vehicle privacy protection status.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.1.0
+
 ## ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
 
 Allows an application to subscribe to the notification service.
