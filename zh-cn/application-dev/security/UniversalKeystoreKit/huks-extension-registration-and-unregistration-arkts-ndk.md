@@ -15,13 +15,13 @@
 
 ### 开发步骤
 
-#### ArkTS接口
+**ArkTS接口**
 
 1. 构造注册参数，包含[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)字段，值为Ability名称的UTF-8字节流，长度为1-128字节。
 
 2. 调用[registerProvider](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptoregisterprovider)接口，需捕获BusinessError处理失败。
 
-#### C++接口
+**C++接口**
 
 1. 在CMake脚本中链接相关动态库：
    ```txt
@@ -34,7 +34,7 @@
 
 ### 开发示例
 
-#### ArkTS接口
+**ArkTS接口**
 
 ```ts
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
@@ -74,7 +74,7 @@ async function testRegisterProvider(): Promise<void> {
 }
 ```
 
-#### C++接口
+**C++接口**
 
 以下工具函数被所有示例共用，建议在实际项目中放置于公共源文件：
 
@@ -231,13 +231,13 @@ async function testRegisterProvider(): Promise<void> {
 
 ### 开发步骤
 
-#### ArkTS接口
+**ArkTS接口**
 
 1. 构造注销参数，注销单个ability需要传入[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数。批量注销不需要传入[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数。
 
 2. 调用注销接口[unregisterProvider](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptounregisterprovider)。
 
-#### C++接口
+**C++接口**
 
 1. 在CMake脚本中链接相关动态库：
    ```txt
@@ -250,7 +250,7 @@ async function testRegisterProvider(): Promise<void> {
 
 ### 开发示例
 
-#### ArkTS接口
+**ArkTS接口**
 
 **注销单个ability**
 ```ts
@@ -324,7 +324,7 @@ async function testUnregisterProvider(): Promise<void> {
 }
 ```
 
-#### C++接口
+**C++接口**
 
 以下工具函数被所有示例共用，建议在实际项目中放置于公共源文件：
 

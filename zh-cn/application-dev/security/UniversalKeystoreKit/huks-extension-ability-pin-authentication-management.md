@@ -11,7 +11,7 @@ PIN（Personal Identification Number）码是密钥管理扩展服务中的安�
 
 PIN码作用如下：
 
-1. 防暴力破解：连续错误输入达到一定次数（与密钥管理扩展服务实现相关）后自动锁定。
+1. 防暴力破解：连续错误输入达到一定次数（与密钥管理扩展服务实现相关）后自动锁定，通过[onAuthUkeyPin](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#onauthukeypin)返回值中的retryCount字段查询剩余重试次数。
 
 2. 硬件级安全：PIN码验证在密钥管理扩展服务内完成，敏感信息不离开服务。
 
@@ -39,7 +39,7 @@ HUKS提供以下PIN码认证状态管理能力：
 
 ### 开发步骤
 
-#### ArkTS接口
+**ArkTS接口**
 
 1. 通过[获取资源ID](huks-extension-ability-general-operation.md#获取资源id)操作，得到resourceId，并传入该resourceId进行打开资源，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
 
@@ -47,7 +47,7 @@ HUKS提供以下PIN码认证状态管理能力：
 
 3. 操作执行完后，关闭资源，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
 
-#### C++接口
+**C++接口**
 
 1. 在CMake脚本中链接相关动态库：
    ```txt
@@ -64,7 +64,7 @@ HUKS提供以下PIN码认证状态管理能力：
 
 ### 开发示例
 
-#### ArkTS接口
+**ArkTS接口**
 
 ```ts
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
@@ -109,7 +109,7 @@ async function testGetUkeyPinAuthState() {
 }
 ```
 
-#### C++接口
+**C++接口**
 
 ```c++
 #include "huks/native_huks_external_crypto_api.h"

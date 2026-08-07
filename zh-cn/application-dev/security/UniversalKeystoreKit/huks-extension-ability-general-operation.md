@@ -31,7 +31,7 @@ HUKS在密钥管理扩展场景下提供一组“通用操作”接口，覆盖�
 
 ### 开发步骤
 
-#### ArkTS接口
+**ArkTS接口**
 
 1. 通过[获取资源ID](#获取资源id)，得到resourceId。
 
@@ -39,7 +39,7 @@ HUKS在密钥管理扩展场景下提供一组“通用操作”接口，覆盖�
 
 3. 操作执行完后，调用[closeResource](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptocloseresource)关闭资源。
 
-#### C++接口
+**C++接口**
 
 1. 在CMake脚本中链接相关动态库：
    ```txt
@@ -54,7 +54,7 @@ HUKS在密钥管理扩展场景下提供一组“通用操作”接口，覆盖�
 
 ### 开发示例
 
-#### ArkTS接口
+**ArkTS接口**
 
 ```ts
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
@@ -92,7 +92,7 @@ async function closeResource(): Promise<void> {
 }
 ```
 
-#### C++接口
+**C++接口**
 
 ```c++
 #include "huks/native_huks_external_crypto_api.h"
@@ -190,13 +190,13 @@ static napi_value CloseResource(napi_env env, napi_callback_info info)
 
 执行具体的密钥管理扩展操作前需先获取resourceId，用于标识要操作的密钥管理扩展资源。resourceId长度为1-1024字节，可通过以下两种路径获取：
 
-#### 证书管理服务获取
+**证书管理服务获取**
 
    适用场景：浏览器双向SSL认证等需要用户选择证书的场景。
 
    通过[openAuthorizeDialog](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)（由证书管理提供）展示证书列表，由用户选择证书。返回的[keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22)即为resourceId，每个证书链对应1个resourceId。
 
-#### 通过getResourceId接口获取
+**通过getResourceId接口获取**
 
    适用场景：从API版本26.0.0开始支持，适用于密钥生成、密钥导入等不需要证书选择的场景。
 
@@ -274,7 +274,7 @@ async function getResourceId(): Promise<string> {
 
 ### 开发步骤
 
-#### ArkTS接口
+**ArkTS接口**
 
 1. 通过[获取资源ID](#获取资源id)获取resourceId，并传入该resourceId进行打开资源。
 
@@ -282,7 +282,7 @@ async function getResourceId(): Promise<string> {
 
 3. 调用[getProperty](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptogetproperty)获取属性信息。
 
-#### C++接口
+**C++接口**
 
 1. 在CMake脚本中链接相关动态库：
    ```txt
@@ -301,7 +301,7 @@ async function getResourceId(): Promise<string> {
 
 ### 开发示例
 
-#### ArkTS接口
+**ArkTS接口**
 
 ```ts
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
@@ -336,7 +336,7 @@ async function getDeviceInfo(): Promise<void> {
 }
 ```
 
-#### C++接口
+**C++接口**
 
 ```c++
 #include "huks/native_huks_external_crypto_api.h"
@@ -493,15 +493,12 @@ getErrorInfo接口返回值类型为[HuksExternalErrorInfo](../../reference/apis
 | 密钥管理扩展返回错误信息 | 具体错误码（非0） | 扩展返回的描述（可能为空） |
 | 密钥管理扩展未返回错误信息 | 默认值0 | 默认值空字符串 |
 
-**注意事项：**
-
-1. 此接口仅返回密钥管理扩展的详细错误信息，HUKS内部错误通过接口异常抛出。
-
-2. 当密钥管理扩展未返回详细错误信息时（errno为0），errorDesc为空字符串，开发者应通过接口异常的错误码判断错误原因。
-
-3. 建议在操作失败后立即调用getErrorInfo获取详细错误信息。errno非0时，表示扩展返回了错误信息，开发者应优先使用errno定位问题。
-
-4. 错误信息覆盖范围：authUkeyPin、getUkeyPinAuthState、getProperty、setProperty、openResource、closeResource、clearUkeyPinAuthState、getResourceId等接口。
+> **注意：**
+> 
+> 1. 此接口仅返回密钥管理扩展的详细错误信息，HUKS内部错误通过接口异常抛出。
+> 2. 当密钥管理扩展未返回详细错误信息时（errno为0），errorDesc为空字符串，开发者应通过接口异常的错误码判断错误原因。
+> 3. 建议在操作失败后立即调用getErrorInfo获取详细错误信息。errno非0时，表示扩展返回了错误信息，开发者应优先使用errno定位问题。
+> 4. 错误信息覆盖范围：authUkeyPin、getUkeyPinAuthState、getProperty、setProperty、openResource、closeResource、clearUkeyPinAuthState、getResourceId等接口。
 
 ### 开发步骤
 

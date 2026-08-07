@@ -412,7 +412,7 @@ onClearUkeyPinAuthState用于重置PIN码认证状态。当调用成功时，返
     this.authStateMap.delete(authKey);
     result.resultCode = 0;
     return Promise.resolve(result);
-  }
+   }
    ```
 
 ### onInitSession
