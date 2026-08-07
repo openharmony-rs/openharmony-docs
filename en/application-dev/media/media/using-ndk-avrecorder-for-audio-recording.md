@@ -14,7 +14,7 @@ During application development, you can use the **state** property of the AVReco
 
 **Figure 1** Recording state transition
 
-![Recording state change](figures/recording-status-change-ndk.png)
+![Recording state change](figures/recording-status-change.png)
 
 For details about the states, see [OH_AVRecorder_State](../../reference/apis-media-kit/capi-avrecorder-base-h.md#oh_avrecorder_state).
 .
