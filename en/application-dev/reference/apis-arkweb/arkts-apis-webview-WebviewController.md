@@ -1,12 +1,14 @@
 # Class (WebviewController)
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @zourongchun-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=97b7cfe47e44ccd95055b91afef33a85efa622a9 translatedAt=2026-08-07T04:36:10.539Z pushedAt=2026-08-07T10:15:04.631Z -->
 
-Represents a **WebviewController** object used to control various behaviors of **Web** components, including page navigation, lifecycle status, and JavaScript interaction. A **WebviewController** object can control only one **Web** component, and the APIs (except static APIs) in the **WebviewController** can be invoked only after it has been bound to the target **Web** component.
+WebviewController is the core controller for various behaviors of the **Web** component, providing extensive functions such as page loading and navigation control, JavaScript interaction, lifecycle management, scroll control, page zoom and content search, message port communication, and cache and certificate management. A WebviewController object can control only one **Web** component, and methods on WebviewController (except static methods) can be called only after the **Web** component is bound to WebviewController.
 
 > **NOTE**
 >
@@ -30,13 +32,13 @@ Constructs a **WebviewController** object.
 
 > **NOTE**
 >
-> When no parameter is passed in **new webview.WebviewController()**, it indicates that the constructor is empty. If the C API is not used, no parameter needs to be passed.
-> 
-> When a valid string is passed in, such as **new webview.WebviewController("xxx")**, it can be used to distinguish multiple instances and invoke the methods of the corresponding instance.
-> 
-> When an empty parameter is passed in, such as **new webview.WebviewController("")** or **new webview.WebviewController(undefined)**, it is meaningless and cannot distinguish multiple instances. In this case, **undefined** is returned. You need to check whether the returned value is normal.
+> - No parameter: new webview.WebviewController() indicates an empty constructor. No parameter is required when the C API is not used.
 >
-> After the **Web** component is destroyed, the **WebViewController** is unbound, and exception 17100001 will be thrown when the non-static method of **WebViewController** is called. You need to pay attention to the calling time and capture exceptions to prevent abnormal process exit.
+> - Parameter is a valid string: new webview.WebviewController("xxx"), used for developers to distinguish multiple instances and call methods under the corresponding instance.
+>
+> - Empty parameter: new webview.WebviewController("") or new webview.WebviewController(undefined). In this scenario, the parameter is meaningless and cannot distinguish multiple instances. **undefined** is returned directly, and developers need to check whether the return value is normal.
+>
+> After the **Web** component is destroyed, it is unbound from WebViewController. Subsequently, calling non-static methods of WebviewController will throw a [17100001](../apis-arkweb/errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) exception. Pay attention to the call timing and catch exceptions to prevent abnormal process exit.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -70,7 +72,7 @@ class WebObj {
 @Entry
 @Component
 struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController()
+  controller: webview.WebviewController = new webview.WebviewController();
   @State webTestObj: WebObj = new WebObj();
 
   build() {
@@ -103,6 +105,7 @@ struct WebComponent {
 ```
 
 HTML file to be loaded:
+
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
@@ -130,7 +133,7 @@ HTML file to be loaded:
 
 static initializeWebEngine(): void
 
-Loads the dynamic link library (DLL) file of the web engine. This API can be called before the **Web** component is initialized to improve the startup performance. The frequently visited websites are automatically pre-connected.
+Loads the dynamic library file of the web engine through this API before the **Web** component is initialized, so as to improve startup performance. It also automatically preconnects to frequently visited websites in history.
 
 > **NOTE**
 >
@@ -141,7 +144,7 @@ Loads the dynamic link library (DLL) file of the web engine. This API can be cal
 
 **Example**
 
-The following code snippet exemplifies calling this API after the EntryAbility is created.
+This example uses EntryAbility to describe how to load the dynamic library of the **Web** component during the Ability creation phase.
 
 ```ts
 // EntryAbility.ets
@@ -267,7 +270,7 @@ Loads a specified URL.
 
 | Name | Type            | Mandatory| Description                 |
 | ------- | ---------------- | ---- | :-------------------- |
-| url     | string \| Resource | Yes  | URL to load.     |
+| url     | string \| Resource | Yes   | URL to load.      |
 | headers | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | No  | Additional HTTP request header of the URL.<br>Default value: **[]**.<br>If **undefined** or **null** is passed, error code **401** will be thrown.|
 
 **Error codes**
@@ -340,6 +343,7 @@ struct WebComponent {
 There are three methods for loading local resource files:
 
 1. Using $rawfile.
+
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -367,9 +371,10 @@ struct WebComponent {
 }
 ```
 
-2. Using resources protocol.
+2. Resource protocol.
 
-When **$rawfile** is used to load a URL contains a number sign (#), the content following the number sign is treated as a fragment. To avoid this issue, you can use the **resource://rawfile/** protocol prefix instead.
+Using the `resource://rawfile/` protocol prefix can avoid the issue where the URL is truncated by the number sign (#) when the conventional `$rawfile` method is used to handle URLs containing "#" for routing. When a URL contains a "#", the content following the "#" is treated as a fragment.
+
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -398,6 +403,7 @@ struct WebComponent {
 ```
 
 Create an **index.html** file in **src/main/resources/rawfile**.
+
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
@@ -430,6 +436,7 @@ Create an **index.html** file in **src/main/resources/rawfile**.
 3. Load the local file through the sandbox path. For details, see the sample code for loading the sandbox path in [Loading Web Pages](../../web/web-page-loading-with-web-components.md#loading-local-pages).
 
 HTML file to be loaded:
+
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
@@ -481,11 +488,13 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 17100001 | Init error. The WebviewController must be associated with a Web component.|
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048. <br/>Applicable versions: 9-10 |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **Example**
 
 When both **baseUrl** and **historyUrl** are empty:
+
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -548,7 +557,8 @@ struct WebComponent {
 }
 ```
 
-Specify **baseURL**.
+Specifies baseUrl.
+
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -582,6 +592,7 @@ struct WebComponent {
 ```
 
 Example of loading local resource:
+
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -591,7 +602,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
-  updataContent: string = '<body><div><image src="resource://rawfile/xxx.png" alt="image -- end" width="500" height="250"></image></div></body>'
+  updateContent: string = '<body><div><image src="resource://rawfile/xxx.png" alt="image -- end" width="500" height="250"></image></div></body>'
 
   build() {
     Column() {
@@ -599,7 +610,7 @@ struct WebComponent {
         .onClick(() => {
           try {
             // UTF-8 is charset.
-            this.controller.loadData(this.updataContent, "text/html", "UTF-8", " ", " ");
+            this.controller.loadData(this.updateContent, "text/html", "UTF-8", " ", " ");
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -611,6 +622,7 @@ struct WebComponent {
 ```
 
 Load the sandbox image.
+
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -702,7 +714,7 @@ struct WebComponent {
 
 forward(): void
 
-Moves to the next page based on the history stack. This API is generally used together with **accessForward**.
+Moves forward by one page in the history stack. Generally used together with [accessForward](#accessforward).
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -852,6 +864,8 @@ onActive(): void
 Called when the **Web** component enters the active state.
 
 The application can interact with the user while in the active foreground state, and it remains in this state until the focus is moved away from it due to some event (for example, an incoming call is received or the device screen is turned off).
+
+If the page was previously in the inactive state, the event listener registered through document.addEventListener('visibilitychange',...) in the H5 page will be triggered, and document.visibilityState changes from "hidden" to "visible".
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1279,6 +1293,7 @@ struct Index {
 ```
 
 HTML file to be loaded:
+
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
@@ -1312,6 +1327,7 @@ HTML file to be loaded:
     </body>
 </html>
 ```
+
 For more examples, see [Invoking Application Functions on the Frontend Page](../../web/web-in-page-app-function-invoking.md).
 
 ## runJavaScript
@@ -1322,11 +1338,11 @@ Executes a JavaScript script asynchronously in the context of the current page. 
 
 > **NOTE**
 >
-> - The JavaScript status is no longer retained during navigation operations (such as **loadUrl**). For example, the global variables and functions defined before **loadUrl** is called do not exist on the loaded page.
-> - You are advised to use **registerJavaScriptProxy** to maintain the JavaScript status during page navigation.
-> - Currently, objects cannot be transferred, but structs can be transferred.
-> - The asynchronous method cannot obtain the return value. You need to determine whether to use the synchronous or asynchronous method based on the specific scenario.
-> - The string data type passed from the frontend page to native is treated as JSON-formatted and need to be deserialized with JSON.parse.
+> - The JavaScript status is no longer retained during navigation operations (such as **loadUrl**). For example, the global variables and functions defined before **loadUrl** is called do not exist in the loaded page.
+> - It is recommended that the app use **registerJavaScriptProxy** to ensure that the JavaScript status can be retained across page navigation.
+> - Currently, passing objects is not supported. Passing structs is supported.
+> - Executing asynchronous methods cannot obtain return values. Determine whether to use synchronous or asynchronous methods based on the specific context.
+> - The string data type passed from the frontend page to the app side is treated as JSON-formatted data and needs to be deserialized with JSON.parse.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1345,6 +1361,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 | -------- | ------------------------------------------------------------ |
 | 17100001 | Init error. The WebviewController must be associated with a Web component.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| 17100003 | Calling a JS method that returns an empty ArrayBuffer via runJavaScript.                       |
 
 **Example**
 
@@ -1390,6 +1407,7 @@ struct WebComponent {
 ```
 
 HTML file to be loaded:
+
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
@@ -1417,11 +1435,11 @@ Executes a JavaScript script asynchronously in the context of the current page. 
 
 > **NOTE**
 >
-> - The JavaScript status is no longer retained during navigation operations (such as **loadUrl**). For example, the global variables and functions defined before **loadUrl** is called do not exist on the loaded page.
-> - You are advised to use **registerJavaScriptProxy** to maintain the JavaScript status during page navigation.
-> - Currently, objects cannot be transferred, but structs can be transferred.
-> - The asynchronous method cannot obtain the return value. You need to determine whether to use the synchronous or asynchronous method based on the specific scenario.
-> - The string data type passed from the frontend page to native is treated as JSON-formatted and need to be deserialized with JSON.parse.
+> - The JavaScript status is no longer retained during navigation operations (such as **loadUrl**). For example, the global variables and functions defined before **loadUrl** is called do not exist in the loaded page.
+> - It is recommended that the app use **registerJavaScriptProxy** to ensure that the JavaScript status can be retained across page navigation.
+> - Currently, passing objects is not supported. Passing structs is supported.
+> - Executing asynchronous methods cannot obtain return values. Determine whether to use synchronous or asynchronous methods based on the specific context.
+> - The string data type passed from the frontend page to the app side is treated as JSON-formatted data and needs to be deserialized with JSON.parse.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1445,6 +1463,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 | -------- | ------------------------------------------------------------ |
 | 17100001 | Init error. The WebviewController must be associated with a Web component.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| 17100003 | Calling a JS method that returns an empty ArrayBuffer via runJavaScript. |
 
 **Example**
 
@@ -1484,6 +1503,7 @@ struct WebComponent {
 ```
 
 HTML file to be loaded:
+
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
@@ -1511,7 +1531,7 @@ Executes a JavaScript script. This API uses an asynchronous callback to return t
 
 > **NOTE**
 >
-> - The string data type passed from the frontend page to native is treated as JSON-formatted and need to be deserialized with JSON.parse.
+> - The string data type passed from the frontend page to the app side is treated as JSON-formatted data and needs to be deserialized with JSON.parse.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1639,7 +1659,7 @@ struct WebComponent {
           try {
             let uiContext : UIContext = this.getUIContext();
             let context : Context | undefined = uiContext.getHostContext() as common.UIAbilityContext;
-            let filePath = context!.filesDir + 'test.txt';
+            let filePath = context!.filesDir + '/test.txt';
             // Create a file and open it.
             let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
             // Write data to the file.
@@ -1713,6 +1733,7 @@ struct WebComponent {
 ```
 
 HTML file to be loaded:
+
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
@@ -1732,11 +1753,11 @@ function test() {
 
 runJavaScriptExt(script: string | ArrayBuffer): Promise\<JsMessageExt>
 
-Executes a JavaScript script. This API uses a promise to return the script execution result. **runJavaScriptExt** can be invoked only after **loadUrl** is executed. For example, it can be invoked in **onPageEnd**.
+Executes a JavaScript script asynchronously and returns the script execution result through a promise. **runJavaScriptExt** can be invoked only after **loadUrl** is executed, for example, in [onPageEnd](arkts-basic-components-web-events.md#onpageend).
 
 > **NOTE**
 >
-> - The string data type passed from the frontend page to native is treated as JSON-formatted and need to be deserialized with JSON.parse.
+> - The string data type passed from the frontend page to the app side is treated as JSON-formatted data and needs to be deserialized with JSON.parse.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1860,7 +1881,7 @@ struct WebComponent {
           try {
             let uiContext : UIContext = this.getUIContext();
             let context : Context | undefined = uiContext.getHostContext() as common.UIAbilityContext;
-            let filePath = context!.filesDir + 'test.txt';
+            let filePath = context!.filesDir + '/test.txt';
             // Create a file and open it.
             let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
             // Write data to the file.
@@ -1930,6 +1951,7 @@ struct WebComponent {
 ```
 
 HTML file to be loaded:
+
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
@@ -2029,6 +2051,7 @@ struct WebComponent {
 ```
 
 HTML file to be loaded:
+
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
@@ -2163,6 +2186,7 @@ struct WebComponent {
 ```
 
 HTML file to be loaded:
+
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
@@ -2387,7 +2411,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 17100001 | Init error. The WebviewController must be associated with a Web component.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. <br/>Applicable version: 10+ |
 
 **Example**
 
@@ -2493,6 +2517,7 @@ struct WebComponent {
 ```
 
 HTML file to be loaded:
+
 ```html
 <!--index.html-->
 <!DOCTYPE html>
@@ -2515,6 +2540,7 @@ HTML file to be loaded:
 ```
 
 <!--code_no_check-->
+
 ```js
 // xxx.js
 var h5Port;
@@ -2560,7 +2586,7 @@ function PostMsgToEts(data) {
 
 requestFocus(): void
 
-Requests focus for this web page.
+Requests focus for the specified component.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -2694,7 +2720,7 @@ struct WebComponent {
 
 getWebId(): number
 
-Obtains the index value of this **Web** component, which can be used for **Web** component management.
+Obtains the index value of the **Web** component, which can be used for managing multiple **Web** components.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -2702,7 +2728,7 @@ Obtains the index value of this **Web** component, which can be used for **Web**
 
 | Type  | Description                 |
 | ------ | --------------------- |
-| number | Index value of the current **Web** component.|
+| number | Index of the Web component. |
 
 **Error codes**
 
@@ -2795,6 +2821,7 @@ struct WebComponent {
 ```
 
 You can customize **User-Agent** based on the default **User-Agent**.
+
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -2941,7 +2968,7 @@ Stores this web page. This API uses an asynchronous callback to return the resul
 | Name  | Type             | Mandatory| Description                                                        |
 | -------- | --------------------- | ---- | ------------------------------------------------------------ |
 | baseName | string                | Yes  | Save path of the web page. The value cannot be null.                                |
-| autoName | boolean               | Yes  | Whether to automatically generate a file name.<br>The value **false** means to name and store a file based on the **baseName** value. The value **true** means to automatically generate a file name based on the current URL and store the file in the **baseName** directory.|
+| autoName | boolean | Yes | Whether to automatically generate a file name.<br>The value **false** means the file is stored with the file name specified by **baseName**, and **true** means the file name is automatically generated based on the current URL and stored in the directory specified by **baseName**. |
 | callback | AsyncCallback\<string> | Yes  | Callback used to return the save path if the operation is successful and null otherwise.                  |
 
 **Error codes**
@@ -3003,7 +3030,7 @@ Stores this web page. This API uses a promise to return the result.
 | Name  | Type| Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | baseName | string   | Yes  | Save path of the web page. The value cannot be null.                                |
-| autoName | boolean  | Yes  | Whether to automatically generate a file name.<br>The value **false** means to name and store a file based on the **baseName** value. The value **true** means to automatically generate a file name based on the current URL and store the file in the **baseName** directory.|
+| autoName | boolean  | Yes   | Whether to automatically generate a file name.<br>The value **false** means the file is stored with the name specified by baseName, and **true** means the file name is automatically generated based on the current URL and stored in the directory specified by baseName. |
 
 **Return value**
 
@@ -3061,7 +3088,7 @@ struct WebComponent {
 
 getUrl(): string
 
-Obtains the URL of this page.
+Obtains the URL of the current page.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -3069,7 +3096,7 @@ Obtains the URL of this page.
 
 | Type  | Description               |
 | ------ | ------------------- |
-| string | URL of the current page.|
+| string | URL address of the current page. |
 
 **Error codes**
 
@@ -3268,6 +3295,7 @@ struct WebComponent {
 ```
 
 HTML file to be loaded:
+
 ```html
 <!--index.html-->
 <!DOCTYPE html>
@@ -3356,6 +3384,7 @@ struct WebComponent {
 ```
 
 HTML file to be loaded:
+
 ```html
 <!--index.html-->
 <!DOCTYPE html>
@@ -3377,6 +3406,7 @@ Scroll Test
 </body>
 </html>
 ```
+
 ## scrollByWithResult<sup>12+</sup>
 
 scrollByWithResult(deltaX: number, deltaY: number): boolean
@@ -3396,7 +3426,7 @@ Scrolls the page by the specified amount and returns value to indicate whether t
 
 | Type   | Description                                    |
 | ------- | --------------------------------------- |
-| boolean | Whether the current web page can be scrolled. The value **true** indicates that the current web page can be scrolled, and the value **false** indicates the opposite.<br>Default value: **false**.|
+| boolean | The value **true** indicates that the current web page can be scrolled, and **false** indicates that the current web page cannot be scrolled. |
 
 **Error codes**
 
@@ -3444,6 +3474,7 @@ struct WebComponent {
 ```
 
 HTML file to be loaded:
+
 ```html
 <!--index.html-->
 <!DOCTYPE html>
@@ -3465,6 +3496,7 @@ Scroll Test
 </body>
 </html>
 ```
+
 ## slideScroll
 
 slideScroll(vx:number, vy:number): void
@@ -3477,8 +3509,8 @@ Simulates a slide-to-scroll action on the page at the specified velocity.
 
 | Name| Type| Mandatory| Description              |
 | ------ | -------- | ---- | ---------------------- |
-| vx     | number   | Yes  | Horizontal velocity component of the slide-to-scroll action, where the positive direction is rightward.<br>Unit: vp/ms.|
-| vy     | number   | Yes  | Vertical velocity component of the slide-to-scroll action, where the positive direction is downward.<br>Unit: vp/ms.|
+| vx     | number   | Yes   | Horizontal velocity component of swipe scrolling, where rightward is the positive direction.<br>Unit: vp/s. |
+| vy     | number   | Yes   | Vertical velocity component of swipe scrolling, where downward is the positive direction.<br>Unit: vp/s. |
 
 **Error codes**
 
@@ -3518,6 +3550,7 @@ struct WebComponent {
 ```
 
 HTML file to be loaded:
+
 ```html
 <!--index.html-->
 <!DOCTYPE html>
@@ -3544,7 +3577,7 @@ Scroll Test
 
 getOriginalUrl(): string
 
-Obtains the original URL of this page.
+Obtains the original URL of the current page.
 
 Risk warning: If you want to obtain the URL for JavaScriptProxy communication API authentication, use [getLastJavascriptProxyCallingFrameUrl<sup>12+</sup>](#getlastjavascriptproxycallingframeurl12).
 
@@ -3554,7 +3587,7 @@ Risk warning: If you want to obtain the URL for JavaScriptProxy communication AP
 
 | Type  | Description                   |
 | ------ | ----------------------- |
-| string | Original URL of the current page.|
+| string | Original URL address of the current page. |
 
 **Error codes**
 
@@ -3697,6 +3730,7 @@ struct WebComponent {
 ```
 
 HTML file to be loaded:
+
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
@@ -3835,11 +3869,7 @@ struct WebComponent {
 
 removeCache(clearRom: boolean): void
 
-Removes all Webview cache files in an application.
-
-> **NOTE**
->
-> You can view the Webview cache in the **data/storage/el2/base/cache/web/Cache** directory.
+Removes all resource caches generated by Webview in the app.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -3890,11 +3920,7 @@ struct WebComponent {
 
 static removeAllCache(clearRom: boolean): void
 
-Removes all Webview cache files in an application.
-
-> **NOTE**
->
-> You can view the WebView cache files in the **data/app/el2/100/base/\<applicationPackageName\>/cache/web/** directory.
+Removes all resource caches generated by Webview (including private mode) in the app.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -3990,6 +4016,7 @@ struct WebComponent {
   }
 }
 ```
+
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
@@ -4113,7 +4140,7 @@ HTML file to be loaded:
 
 getBackForwardEntries(): BackForwardList
 
-Obtains the historical information list of the current webview.
+Obtains the historical information list of the current WebView.
 
 > **NOTE**
 >
@@ -4125,7 +4152,7 @@ Obtains the historical information list of the current webview.
 
 | Type                               | Description                       |
 | ----------------------------------- | --------------------------- |
-| [BackForwardList](./arkts-apis-webview-BackForwardList.md) | The historical information list of the current webview.|
+| [BackForwardList](./arkts-apis-webview-BackForwardList.md) | The history list of the current WebView. |
 
 **Error codes**
 
@@ -4167,7 +4194,7 @@ struct WebComponent {
 
 serializeWebState(): Uint8Array
 
-Serializes the page status history of the current Webview.
+Serializes the page status history of the current WebView.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -4175,7 +4202,7 @@ Serializes the page status history of the current Webview.
 
 | Type      | Description                                         |
 | ---------- | --------------------------------------------- |
-| Uint8Array | Serialized data of the page status history of the current WebView.|
+| Uint8Array | Serialized data of the page state history of the current WebView. |
 
 **Error codes**
 
@@ -4188,6 +4215,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 **Example**
 
 1. To perform operations on files, you must first import the **fs** module. For details, see [File Management](../apis-core-file-kit/js-apis-file-fs.md).
+
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -4226,6 +4254,7 @@ struct WebComponent {
 2. Modify the **EntryAbility.ets** file.
 
 Obtain the path of the application cache file.
+
 ```ts
 // xxx.ets
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -4266,6 +4295,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 **Example**
 
 1. To perform operations on files, you must first import the **fs** module. For details, see [File Management](../apis-core-file-kit/js-apis-file-fs.md).
+
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -4313,6 +4343,7 @@ struct WebComponent {
 2. Modify the **EntryAbility.ets** file.
 
 Obtain the path of the application cache file.
+
 ```ts
 // xxx.ets
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -4329,7 +4360,7 @@ export default class EntryAbility extends UIAbility {
 
 static customizeSchemes(schemes: Array\<WebCustomScheme\>): void
 
-Grants the cross-domain request and fetch request permissions for the specified URL schemes (also known as protocols) to the web kernel. A cross-domain fetch request for any of the specified URL schemes can be intercepted by the [onInterceptRequest](./arkts-basic-components-web-events.md#oninterceptrequest9) API, so that you can further process the request. It is recommended that this API be called before any **Web** component is initialized.
+Grants the cross-domain request and fetch request permissions for custom protocol URLs to the web kernel. When the Web performs a cross-domain fetch of a custom protocol URL, the fetch request can be intercepted by the [onInterceptRequest](./arkts-basic-components-web-events.md#oninterceptrequest9) event API, so that developers can further process the request. It is recommended to call this API before any **Web** component is initialized.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -4346,7 +4377,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 |  401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.    |
-| 17100020 | Failed to register custom schemes. |
+| 17100020 | Failed to register custom schemes. <br/>Supported versions: 12+ |
 
 **Example**
 
@@ -4390,7 +4421,7 @@ struct WebComponent {
 
 static customizeSchemes(schemes: Array\<WebCustomScheme\>, lazyInitWebEngine: boolean): void
 
-Grants the cross-domain request and fetch request permissions for the specified URL schemes (also known as protocols) to the web kernel. A cross-domain fetch request for any of the specified URL schemes can be intercepted by the [onInterceptRequest](./arkts-basic-components-web-events.md#oninterceptrequest9) API, so that you can further process the request. It is recommended that this API be called before any **Web** component is initialized.
+Grants the cross-domain request and fetch request permissions for custom protocol URLs to the web kernel. When the Web performs a cross-domain fetch of a custom protocol URL, the fetch request can be intercepted by the [onInterceptRequest](./arkts-basic-components-web-events.md#oninterceptrequest9) event API, so that developers can further process the request. It is recommended to call this API before any **Web** component is initialized.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -4607,7 +4638,7 @@ struct Index {
 
 getCertificate(callback: AsyncCallback<Array<cert.X509Cert>>): void
 
-Obtains the certificate information of this website. When the **Web** component is used to load an HTTPS website, SSL certificate verification is performed. This API uses an asynchronous callback to return the [X.509 certificate](../apis-device-certificate-kit/js-apis-cert.md#x509cert) of the current website.
+Obtains the certificate information of the current website. When the **Web** component is used to load an HTTPS website, SSL certificate verification is performed. This API uses an asynchronous callback to return the X.509 certificate (for the X509Cert certificate type definition, see [X509Cert](../apis-device-certificate-kit/js-apis-cert.md#x509cert)) of the current website, so that developers can display the website certificate information.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -4769,7 +4800,7 @@ struct Index {
 
 setAudioMuted(mute: boolean): void
 
-Mutes this web page.
+Mutes the web page. Typical use cases include: the app needs to control the web page volume (such as providing a mute switch), or needs to mute during background playback.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -4823,11 +4854,13 @@ Prefetches resources in the background for a page that is likely to be accessed 
 
 > **NOTE**
 >
-> - The downloaded page resources are cached for about 5 minutes. After this period, the **Web** component automatically releases the resources.
+> - The downloaded page resources are cached for about five minutes. After this period, the **Web** component automatically releases them.
 >
-> - **prefetchPage** can also prefetch 302 redirect pages.
+> - **prefetchPage** can also normally prefetch 302 redirect pages.
 >
-> - When a page is loaded after **prefetchPage** is executed, the prefetched resources are directly loaded from the cache.
+> - When **prefetchPage** is executed first and then the page is loaded, the prefetched resources are loaded directly from the cache.
+>
+> - **prefetchPage** caches all resources except those with the Cache-Control: no-store header. If a Vary response header or Cache-Control: no-store header exists, or the downloaded page resources have been cached for more than five minutes, the resources are revalidated before use.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -4835,9 +4868,9 @@ Prefetches resources in the background for a page that is likely to be accessed 
 
 | Name            | Type                            | Mandatory | Description                     |
 | ------------------| --------------------------------| ---- | ------------- |
-| url               | string                          | Yes   | URL to be preloaded.|
-| additionalHeaders | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | No   | Additional HTTP headers of the URL.<br>Default value: **[]**.|
-| prefetchOptions | [PrefetchOptions](./arkts-apis-webview-PrefetchOptions.md) | No   | Options for customizing the prefetch behavior.|
+| url               | string                          | Yes    | URL to preload.|
+| additionalHeaders | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | No    | Additional HTTP request headers for the URL.<br>Default value: [] |
+| prefetchOptions | [PrefetchOptions](./arkts-apis-webview-PrefetchOptions.md) | No    | Options for customizing the prefetch behavior.<br>The minimum interval between two prefetches is 500 ms. By default, Cache-Control: no-store in the response header is not ignored.|
 
 **Error codes**
 
@@ -4846,7 +4879,8 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 | ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17100001 | Init error. The WebviewController must be associated with a Web component.|
-| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.                      |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.          <br/>Applicable to version: 21           |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024. <br/>Applicable to version: 22+          |
 
 **Example**
 
@@ -4887,15 +4921,17 @@ Prefetches resources in the background for a page that is likely to be accessed 
 
 > **NOTE**
 >
-> - The downloaded page resources are cached for about 5 minutes. After this period, the **Web** component automatically releases the resources.
+> - The downloaded page resources are cached for about five minutes. After this period, the **Web** component automatically releases them.
 >
-> - **prefetchPage** can also prefetch 302 redirect pages.
+> - **prefetchPage** can also normally prefetch 302 redirect pages.
 >
-> - When a page is loaded after **prefetchPage** is executed, the prefetched resources are directly loaded from the cache.
+> - When **prefetchPage** is executed first and then the page is loaded, the prefetched resources are loaded directly from the cache.
 >
-> - If multiple URLs are specified for **prefetchPage**, only the first URL takes effect.
+> - When multiple URLs are prefetched consecutively with **prefetchPage**, only the first one takes effect.
 >
-> - **prefetchPage** cannot be executed twice within 500 ms.
+> - **prefetchPage** has a time limit. Multiple prefetches cannot be performed within 500 ms.
+>
+> - **prefetchPage** caches all resources except those with the Cache-Control: no-store header. If a Vary response header or Cache-Control: no-store header exists, or the downloaded page resources have been cached for more than five minutes, the resources are revalidated before use.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -4903,8 +4939,8 @@ Prefetches resources in the background for a page that is likely to be accessed 
 
 | Name            | Type                            | Mandatory | Description                     |
 | ------------------| --------------------------------| ---- | ------------- |
-| url               | string                          | Yes   | URL to be preloaded.|
-| additionalHeaders | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | No   | Additional HTTP headers of the URL.<br>Default value: **[]**.|
+| url | string | Yes | URL to preload.|
+| additionalHeaders | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | No | Additional HTTP request headers for the URL.<br>Default value: [] |
 
 **Error codes**
 
@@ -4913,7 +4949,8 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 | ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17100001 | Init error. The WebviewController must be associated with a Web component.|
-| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.                                                 |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.          <br/>Applicable version: 10-21        |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024. <br/>Applicable version: 22+          |
 
 **Example**
 
@@ -4949,7 +4986,9 @@ struct WebComponent {
 
 static prefetchResource(request: RequestInfo, additionalHeaders?: Array\<WebHeader>, cacheKey?: string, cacheValidTime?: number): void
 
-Prefetches resource requests based on specified request information and additional HTTP request headers, saves the requests to the memory cache, and specifies the cache key and validity period to accelerate loading. Currently, only POST requests whose Content-Type is application/x-www-form-urlencoded are supported. A maximum of six POST requests can be pre-obtained. To prefetch the seventh post request, call [clearPrefetchedResource](#clearprefetchedresource12) to clear the cache of unnecessary post requests. Otherwise, the cache of the earliest prefetched POST request will be automatically cleared. To use the prefetched resource cache, you need to add the key value **ArkWebPostCacheKey** to the header of the POST request. The content of the key value is the cacheKey of the corresponding cache.
+Prefetches resource requests based on specified request information and additional HTTP request headers, saves them to the memory cache, and specifies the cache key and validity period to accelerate loading. Currently, only POST requests with Content-Type of application/x-www-form-urlencoded are supported. A maximum of six POST requests can be prefetched. To prefetch a seventh one, use [clearPrefetchedResource](#clearprefetchedresource12) to clear unnecessary POST request caches. Otherwise, the earliest prefetched POST cache is automatically cleared. To use the prefetched resource cache, developers need to add the key-value pair "ArkWebPostCacheKey" to the request header of the actual POST request, with the value being the cacheKey of the corresponding cache.
+
+Resources in the memory cache are automatically managed by the kernel. When too many resources are injected, causing excessive memory pressure, the kernel automatically releases unused resources. However, injecting a large number of resources into the memory cache should still be avoided.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -4960,7 +4999,7 @@ Prefetches resource requests based on specified request information and addition
 | request           | [RequestInfo](./arkts-apis-webview-i.md#requestinfo12)   | Yes  | Information about the prefetched request.                                                     |
 | additionalHeaders | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | No  | Additional HTTP request header of the prefetched request.<br>If **undefined** or **null** is passed, error code **401** will be thrown.        |
 | cacheKey          | string                          | No  | Key used to query the cache of prefetched resources. The value can contain only letters and digits. If this parameter is not passed or is left empty, **url** is used by default.<br>If **undefined** or **null** is passed, error code **401** will be thrown.|
-| cacheValidTime    | number                          | No  | Validity period for caching prefetched resources.<br>Value range: (0, 2147483647]<br>Default value: **300s**<br>Unit: second.<br>If **undefined** or **null** is passed, error code **401** will be thrown.    |
+| cacheValidTime    | number                          | No   | Validity period of the prefetched resource cache.<br>Value range: (0, 2147483647].<br>Default value: 300s.<br>Unit: s.<br>If undefined or null is passed in, an exception with error code 401 is thrown.     |
 
 **Error codes**
 
@@ -4968,7 +5007,9 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 
 | ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.                                                 |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.<br>Supported versions: 12-21 |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.<br>Supported versions: 22+ |
 
 **Example**
 
@@ -4981,7 +5022,7 @@ export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     console.info("EntryAbility onCreate");
     webview.WebviewController.initializeWebEngine();
-    // Replace "https://www.example1.com/post?e=f&g=h" with a real URL to visit.
+    // During prefetching, replace "https://www.example1.com/post?e=f&g=h" with the actual website address to be accessed.
     webview.WebviewController.prefetchResource(
       {
         url: "https://www.example1.com/post?e=f&g=h",
@@ -5028,7 +5069,7 @@ struct WebComponent {
     Column() {
       Web({ src: "https://www.example.com/", controller: this.controller })
         .onAppear(() => {
-          // Replace "https://www.example1.com/post?e=f&g=h" with a real URL to visit.
+          // Replace "https://www.example1.com/post?e=f&g=h" with the actual website address during prefetching.
           webview.WebviewController.prefetchResource(
             {
               url: "https://www.example1.com/post?e=f&g=h",
@@ -5054,7 +5095,7 @@ struct WebComponent {
 
 static prepareForPageLoad(url: string, preconnectable: boolean, numSockets: number): void
 
-Preconnects to a URL. This API can be called before the URL is loaded, to resolve the DNS and establish a socket connection, without obtaining the resources.
+Preconnects to a URL. Call this API before loading the URL. It only performs DNS resolution and socket connection for the URL, without fetching the main resource or sub-resources.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -5062,8 +5103,8 @@ Preconnects to a URL. This API can be called before the URL is loaded, to resolv
 
 | Name         | Type   |  Mandatory | Description                                           |
 | ---------------| ------- | ---- | ------------- |
-| url            | string  | Yes  | URL to be preconnected.|
-| preconnectable | boolean | Yes  | Whether to perform preconnection, which involves DNS resolution and socket connection establishment. The value **true** means to perform pre-connection, and **false** means the opposite.|
+| url            | string  | Yes   | URL for preconnection.|
+| preconnectable | boolean | Yes   | Whether to perform preconnection. If the value is **true**, DNS resolution and socket connection preconnection are performed for the URL. If the value is **false**, no preconnection operation is performed.|
 | numSockets     | number  | Yes  | Number of sockets to be preconnected. The value must be greater than 0. A maximum of six socket connections are allowed.|
 
 **Error codes**
@@ -5072,7 +5113,8 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 
 | ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.                                                 |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.          <br/>Applicable versions: 10-21        |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024. <br/>Applicable versions: 22+          |
 | 17100013 | The number of preconnect sockets is invalid.                                                 |
 
 **Example**
@@ -5086,7 +5128,7 @@ export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     console.info("EntryAbility onCreate");
     webview.WebviewController.initializeWebEngine();
-    // Replace 'https://www.example.com' with a real URL for the API to work.
+    // During preconnection, replace 'https://www.example.com' with a real website address.
     webview.WebviewController.prepareForPageLoad("https://www.example.com", true, 2);
     AppStorage.setOrCreate("abilityWant", want);
     console.info("EntryAbility onCreate done");
@@ -5100,15 +5142,15 @@ setCustomUserAgent(userAgent: string): void
 
 Sets a custom user agent, which will overwrite the default user agent.
 
-When **src** of the **Web** component is set to a URL, set **User-Agent** in **onControllerAttached**. For details, see the following example. Avoid setting the **User-Agent** in **onLoadIntercept**. Otherwise, the setting may fail occasionally.
-
-When **src** of the **Web** component is set to an empty string, call **setCustomUserAgent** to set **User-Agent** and then use **loadUrl** to load a specific page.
-
-For details about the default **User-Agent**, see [Developing User-Agent](../../web/web-default-userAgent.md).
-
 > **NOTE**
 >
->If a URL is set for the **Web** component **src** and **User-Agent** is not set in the **onControllerAttached** callback, calling **setCustomUserAgent** may cause mismatches between the loaded page and the intended **User-Agent**.
+> - When **src** of the **Web** component is set to a URL, it is recommended to set **User-Agent** in the [onControllerAttached](./arkts-basic-components-web-events.md#oncontrollerattached10) callback. Do not set it in the **onLoadIntercept** callback, as this may cause the setting to fail or lead to unexpected results.
+>
+> - If **User-Agent** is not set in the **onControllerAttached** callback, calling **setCustomUserAgent** later may cause an anomaly where the loaded page does not match the actually set **User-Agent**.
+>
+> - When **src** of the **Web** component is not set to a URL, it is recommended to call **setCustomUserAgent** to set **User-Agent** first, and then use **loadUrl** to load a specific page.
+>
+> - For the definition and usage scenarios of the default **User-Agent**, see [User-Agent Development Guide](../../web/web-default-user-agent.md).
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -5212,7 +5254,7 @@ struct WebComponent {
 
 startDownload(url: string): void
 
-Downloads a file, such as an image, from the specified URL.
+Uses the download capability of the **Web** component to download a specified URL, for example, downloading a specified image from a web page.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -5229,7 +5271,8 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 | ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17100001 | Init error. The WebviewController must be associated with a Web component.|
-| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024. |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.          <br/>Applicable versions: 11-21        |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024. <br/>Applicable versions: 22+          |
 
 **Example**
 
@@ -5390,7 +5433,6 @@ For details about the default **User-Agent** definition, application scenarios, 
 | userAgent      | string  | Yes  | Information about the custom user agent. It is recommended that you obtain the current default user agent through [getDefaultUserAgent](#getdefaultuseragent14) and then customize the obtained user agent.|
 | hosts      | Array\<string>  | Yes  | List of domain names related to the custom user agent. Only the latest list is retained each time the API is called. The maximum number of entries is 20,000, and the excessive entries are automatically truncated.|
 
-
 **Example**
 
 ```ts
@@ -5440,7 +5482,7 @@ Sets the network connection timeout interval. You can use the **onErrorReceive**
 
 | Name         | Type   |  Mandatory | Description                                           |
 | ---------------| ------- | ---- | ------------- |
-| timeout        | number  | Yes  | Timeout interval of the socket connection, in seconds. The value must be an integer greater than 0.|
+| timeout | number | Yes | Socket connection timeout duration, in seconds. The value must be a positive integer. |
 
 **Error codes**
 
@@ -5489,7 +5531,7 @@ struct WebComponent {
 
 static warmupServiceWorker(url: string): void
 
-Warms up the ServiceWorker to enhance the loading speed of the first screen (only applicable to pages that will use ServiceWorker). This API is called before the URL is loaded.
+Warms up ServiceWorker to improve the loading speed of the first screen page (only for pages that use ServiceWorker). Call this API before loading the URL.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -5497,7 +5539,7 @@ Warms up the ServiceWorker to enhance the loading speed of the first screen (onl
 
 | Name         | Type   |  Mandatory | Description                                           |
 | ---------------| ------- | ---- | ------------- |
-| url            | string  | Yes  | URL of the ServiceWorker to warm up.|
+| url            | string  | Yes   | URL of the ServiceWorker to preload.|
 
 **Error codes**
 
@@ -5505,7 +5547,8 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 
 | ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.              |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.          <br/>Applicable versions: 12-21           |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024. <br/>Applicable versions: 22+          |
 
 **Example**
 
@@ -5629,7 +5672,7 @@ Enables intelligent tracking prevention.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
-**Device behavior differences**: This API can be used on phones, tablets, PCs, and 2-in-1 devices. Since API version 18, error code **801** is returned for other device types.
+**Device behavior differences:** This API is supported on phones, PCs/2-in-1 devices, tablets, and TVs. Since API version 18, it returns error code 801 on wearable devices.
 
 **Parameters**
 
@@ -5645,7 +5688,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 | -------- | ----------------------- |
 | 17100001 | Init error. The WebviewController must be associated with a Web component.|
 |  401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-|  801 | Capability not supported. |
+|  801 | Capability not supported. <br/>Applicable version: 18+ |
 
 **Example**
 
@@ -5680,17 +5723,17 @@ struct WebComponent {
 
 isIntelligentTrackingPreventionEnabled(): boolean
 
-Obtains whether intelligent tracking prevention is enabled on this web page.
+Obtains whether the **Web** component has enabled intelligent tracking prevention.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
-**Device behavior differences**: This API can be used on phones, tablets, PCs, and 2-in-1 devices. Since API version 18, error code **801** is returned for other device types.
+**Device behavior differences:** This API is supported on phones, PCs/2-in-1 devices, tablets, and TVs. Since API version 18, it returns error code 801 on wearable devices.
 
 **Return value**
 
 | Type   | Description                                    |
 | ------- | --------------------------------------- |
-| boolean | Whether intelligent tracking prevention is enabled on this web page.<br>The value **true** indicates that intelligent tracking prevention is enabled, and **false** indicates the opposite.<br>Default value: **false**.|
+| boolean | Whether the Web component has enabled the smart anti-tracking feature.<br>The value **true** indicates that the smart anti-tracking feature is enabled, and **false** indicates that it is not enabled.<br>Default value: **false** |
 
 **Error codes**
 
@@ -5699,7 +5742,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 | ID| Error Message                 |
 | -------- | ----------------------- |
 | 17100001 | Init error. The WebviewController must be associated with a Web component.|
-|  801 | Capability not supported. |
+|  801 | Capability not supported. <br/>Supported since: 18+ |
 
 **Example**
 
@@ -5738,7 +5781,7 @@ Adds a list of domain names that bypass intelligent tracking prevention.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
-**Device behavior differences**: This API can be used on phones, tablets, PCs, and 2-in-1 devices. Since API version 18, error code **801** is returned for other device types.
+**Device behavior differences:** This API is supported on phones, PCs/2-in-1 devices, tablets, and TVs. Since API version 18, it returns error code 801 on wearable devices.
 
 **Parameters**
 
@@ -5753,7 +5796,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message                 |
 | -------- | ------------------------ |
 |  401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-|  801     | Capability not supported. |
+|  801     | Capability not supported. <br/>Supported versions: 18+ |
 
 **Example**
 
@@ -5792,7 +5835,7 @@ Deletes the domain names from the list of domain names added through the **addIn
 
 **System capability**: SystemCapability.Web.Webview.Core
 
-**Device behavior differences**: This API can be used on phones, tablets, PCs, and 2-in-1 devices. Since API version 18, error code **801** is returned for other device types.
+**Device behavior differences:** This API is supported on phones, PCs/2-in-1 devices, tablets, and TVs. Since API version 18, it returns error code 801 on wearable devices.
 
 **Parameters**
 
@@ -5807,7 +5850,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message                 |
 | -------- | ------------------------ |
 |  401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-|  801     | Capability not supported. |
+|  801     | Capability not supported. <br/>Supported since: 18+  |
 
 **Example**
 
@@ -5846,7 +5889,7 @@ Deletes all domain names from the list of domain names added through the **addIn
 
 **System capability**: SystemCapability.Web.Webview.Core
 
-**Device behavior differences**: This API can be used on phones, tablets, PCs, and 2-in-1 devices. Since API version 18, error code **801** is returned for other device types.
+**Device behavior differences:** This API is supported on phones, PCs/2-in-1 devices, tablets, and TVs. Since API version 18, it returns error code 801 on wearable devices.
 
 **Error codes**
 
@@ -5854,7 +5897,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message                 |
 | -------- | ------------------------ |
-|  801     | Capability not supported. |
+|  801     | Capability not supported.  <br/>Supported since: 18+ |
 
 **Example**
 
@@ -5944,7 +5987,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 | -------- | ----------------------- |
 | 17100001 | Init error. The WebviewController must be associated with a Web component.|
 |  401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Parameter string is too long. 3.Parameter verification failed. |
-|  801 | Capability not supported. |
+|  801 | Capability not supported.  <br/>Supported since: 18+ |
 
 **Example**
 
@@ -5999,7 +6042,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
-|  801 | Capability not supported. |
+|  801 | Capability not supported.  <br/>Applicable versions: 18+ |
 
 **Example**
 
@@ -6056,7 +6099,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
-|  801 | Capability not supported. |
+|  801 | Capability not supported.  <br/>Supported since: 18+ |
 
 **Example**
 
@@ -6091,7 +6134,7 @@ struct WebComponent {
 
 static setRenderProcessMode(mode: RenderProcessMode): void
 
-Sets the ArkWeb render subprocess mode.
+Sets the ArkWeb rendering subprocess mode. You can select the appropriate mode based on the app's requirements for memory usage and rendering process isolation.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -6136,6 +6179,7 @@ struct WebComponent {
   }
 }
 ```
+
 ## getRenderProcessMode<sup>12+</sup>
 
 static getRenderProcessMode(): RenderProcessMode
@@ -6149,7 +6193,6 @@ Obtains the ArkWeb render subprocess mode.
 | Type                                     | Description                                                        |
 | ----------------------------------------- | ------------------------------------------------------------ |
 | [RenderProcessMode](./arkts-apis-webview-e.md#renderprocessmode12) | Render subprocess mode.<br>You can call **getRenderProcessMode()** to obtain the ArkWeb child render process mode of the current device. The enumerated value **0** indicates the single child render process mode, and **1** indicates the multi-child render process mode.<br>If the obtained value is not an enumerated value of **RenderProcessMode**, the multi-render subprocess mode is used by default.|
-
 
 **Example**
 
@@ -6227,7 +6270,7 @@ struct WebComponent {
 
 postUrl(url: string, postData: ArrayBuffer): void
 
-Loads the specified URL with **postData** using the POST method. If **url** is not a network URL, it will be loaded with [loadUrl](#loadurl) instead, and the **postData** parameter will be ignored.
+Loads a URL with postData using the "POST" method. If the URL is not a network URL, the [loadUrl](#loadurl) method is used to load the URL, and the postData parameter is ignored.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -6235,7 +6278,7 @@ Loads the specified URL with **postData** using the POST method. If **url** is n
 
 | Name | Type            | Mandatory| Description                 |
 | ------- | ---------------- | ---- | :-------------------- |
-| url     | string | Yes  | URL to load.     |
+| url     | string | Yes   | URL to load.      |
 | postData | ArrayBuffer | Yes  | Data to transfer using the POST method. The request must be encoded in "application/x-www-form-urlencoded" format.|
 
 **Error codes**
@@ -6312,7 +6355,7 @@ Creates a **PrintDocumentAdapter** instance to provide content for printing.
 
 | Type                | Description                     |
 | -------------------- | ------------------------- |
-| print.[PrintDocumentAdapter](../apis-basic-services-kit/js-apis-print.md#printdocumentadapter11) | **PrintDocumentAdapter** instance created.|
+| print.[PrintDocumentAdapter](../apis-basic-services-kit/js-apis-print.md#printdocumentadapter11) | Adapter for the print document, which controls the print behavior and print task. It can print the current web page content through the print service. |
 
 **Error codes**
 
@@ -6351,6 +6394,7 @@ struct WebComponent {
   }
 }
 ```
+
 ## isIncognitoMode<sup>11+</sup>
 
 isIncognitoMode(): boolean
@@ -6613,7 +6657,7 @@ Obtains whether the web page background is printed.
 
 | Type                | Description                     |
 | -------------------- | ------------------------- |
-| boolean              | Whether the web page background is printed.<br>The value **true** indicates that the web page background is printed, and **false** indicates the opposite.|
+| boolean              | Whether to print the web page background.<br>The value **true** means to print the web page background; **false** means not to print the web page background. |
 
 **Error codes**
 
@@ -6655,7 +6699,7 @@ struct WebComponent {
 
 getLastJavascriptProxyCallingFrameUrl(): string
 
-Obtains the URL of the last frame from which the JavaScript proxy object was called. You can inject a JavaScript object into the window object using APIs like [registerJavaScriptProxy](#registerjavascriptproxy) or [javaScriptProxy](./arkts-basic-components-web-attributes.md#javascriptproxy). This API can be used to obtain the URL of the frame of the object that is injected last time.
+Injects a JavaScript object into the window object through [registerJavaScriptProxy](#registerjavascriptproxy) or [javaScriptProxy](./arkts-basic-components-web-attributes.md#javascriptproxy). This API obtains the URL of the frame that last called the injected object.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -6663,7 +6707,7 @@ Obtains the URL of the last frame from which the JavaScript proxy object was cal
 
 | Type    | Description          |
 | ------ | ------------ |
-| string | URL of the last frame from which the JavaScript proxy object was called.|
+| string | URL of the frame of the last injected object. |
 
 **Error codes**
 
@@ -6767,6 +6811,7 @@ struct Index {
 ```
 
 HTML file to be loaded:
+
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
@@ -6801,7 +6846,7 @@ HTML file to be loaded:
 
 static pauseAllTimers(): void
 
-Pauses all WebView timers.
+Pauses all WebView timers. While the timers are paused, timer operations such as setInterval and setTimeout in the web page are suspended. It is recommended to pause timers when the app enters the background and resume them when the app returns to the foreground, so as to save resources. This API can be used in pair with [resumeAllTimers](#resumealltimers12)() to avoid timer state confusion.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -6836,6 +6881,7 @@ struct WebComponent {
   }
 }
 ```
+
 HTML file to be loaded:
 
 ```html
@@ -6908,6 +6954,7 @@ struct WebComponent {
   }
 }
 ```
+
 HTML file to be loaded:
 
 ```html
@@ -7167,7 +7214,7 @@ struct WebComponent {
 
 setWebSchemeHandler(scheme: string, handler: WebSchemeHandler): void
 
-Sets the [WebSchemeHandler](./arkts-apis-webview-WebSchemeHandler.md) class for the current Web component to intercept requests of the specified scheme.
+Sets a [WebSchemeHandler](./arkts-apis-webview-WebSchemeHandler.md) for the **Web** component. The [WebSchemeHandler](./arkts-apis-webview-WebSchemeHandler.md) class is used to intercept requests of a specified scheme.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -7220,7 +7267,7 @@ struct WebComponent {
 
 clearWebSchemeHandler(): void
 
-Clears all WebSchemeHandlers set for the current Web component.
+Clears all WebSchemeHandlers set for the **Web** component.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -7264,7 +7311,7 @@ struct WebComponent {
 
 setServiceWorkerWebSchemeHandler(scheme: string, handler: WebSchemeHandler): void
 
-Sets the WebSchemeHandler used to intercept ServiceWorker for all Web components of the current application.
+Sets a WebSchemeHandler for all **Web** components of the current app, used to intercept requests of a specified scheme in ServiceWorker.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -7360,6 +7407,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 | 17100001 | Init error. The WebviewController must be associated with a Web component.|
 
 **Example**
+
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -7546,7 +7594,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 
 The API is recommended for use in conjunction with dynamic components. Employ offline **Web** components to generate bytecode caches, and at the appropriate time, load service **Web** components to utilize these bytecode caches. The following is a code example:
 
-1. Save **UIContext** to localStorage in **EntryAbility**.
+1. First, store the [UIContext](../apis-arkui/arkts-apis-uicontext-uicontext.md) in [localStorage](../../ui/state-management/arkts-localstorage.md) in EntryAbility.
 
    ```ts
    // EntryAbility.ets
@@ -7625,6 +7673,7 @@ The API is recommended for use in conjunction with dynamic components. Employ of
 3. Write a component for generating bytecode caches. In this example, the local JavaScript resource content is read through the file reading API from a local file in the **rawfile** directory.
 
    <!--code_no_check-->
+
    ```ts
    // PrecompileWebview.ets
    import { BuilderData } from "./DynamicComponent";
@@ -7667,11 +7716,12 @@ The API is recommended for use in conjunction with dynamic components. Employ of
    }
    ```
 
-   JavaScript resources can also be obtained through [network requests](../apis-network-kit/js-apis-http.md). However, the HTTP response header obtained using this method is not in the standard HTTP response header format. Additional steps are required to convert the response header into the standard HTTP response header format before use. If the response header obtained through a network request is e-tag, convert it to E-Tag before using it.
+   JavaScript resources can also be obtained through [data request](../apis-network-kit/js-apis-http.md). However, the HTTP response headers obtained through this method are not in the standard HTTP response header format. You need to convert the response headers to the standard HTTP response header format before use. For example, if the response header obtained through data request is e-tag, it needs to be converted to E-Tag before use.
 
 4. Compile the code of the service component.
 
    <!--code_no_check-->
+
    ```ts
    // BusinessWebview.ets
    import { BuilderData } from "./DynamicComponent";
@@ -7715,6 +7765,7 @@ The API is recommended for use in conjunction with dynamic components. Employ of
 6. Use the component on the page.
 
    <!--code_no_check-->
+
    ```ts
    // Index.ets
    import { webview } from '@kit.ArkWeb';
@@ -7762,7 +7813,7 @@ To update the locally generated compiled bytecode, change the value of E-Tag or 
 
 onCreateNativeMediaPlayer(callback: CreateNativeMediaPlayerCallback): void
 
-Called when the [application takes over media playback of the web page](./arkts-basic-components-web-attributes.md#enablenativemediaplayer12) and a media file is played on the web page.
+Registers a callback function. After [enableNativeMediaPlayer](./arkts-basic-components-web-attributes.md#enablenativemediaplayer12) is used to enable the app to take over web page media playback, the registered callback function is triggered when media is played on the web page.
 
 If the application does not take over media playback on the web page, this callback is not invoked.
 
@@ -8026,9 +8077,11 @@ Obtains the full drawing result of the web page.
 
 > **NOTE**
 >
-> Only static images and texts in the rendering process can be captured.
-> 
-> If there is a video on the page, the placeholder image of the video is displayed when you take a snapshot. If there is no placeholder image, the page is blank.
+> - This API does not support concurrent calls.
+>
+> - Only supports taking snapshots of resources on the rendering process: static images and text.
+>
+> - If the page contains a video, a placeholder image of the video is displayed in the snapshot. If there is no placeholder image, a blank area is displayed.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -8106,13 +8159,16 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 17100001 | Init error. The WebviewController must be associated with a Web component.|
-| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.  |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.<br>Applicable to versions: 12-21  |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.<br>Applicable to versions: 22+  |
 
 **Example**
 
 When appropriate, use this API in conjunction with dynamic components. Offline **Web** components are used to inject resources into the engine's memory cache, and at the appropriate time, the service **Web** components load and utilize these resources. The following is a code example:
-1. Save **UIContext** to localStorage in **EntryAbility**.
+
+1. First, store the [UIContext](../apis-arkui/arkts-apis-uicontext-uicontext.md) in [localStorage](../../ui/state-management/arkts-localstorage.md) in EntryAbility.
 
    ```ts
    // EntryAbility.ets
@@ -8191,6 +8247,7 @@ When appropriate, use this API in conjunction with dynamic components. Offline *
 3. Write the component code for injecting resources. In this example, the local resource content reads the local file in the **rawfile** directory through the file reading API.
 
    <!--code_no_check-->
+
    ```ts
    // InjectWebview.ets
    import { webview } from '@kit.ArkWeb';
@@ -8245,6 +8302,7 @@ When appropriate, use this API in conjunction with dynamic components. Offline *
 4. Compile the code of the service component.
 
    <!--code_no_check-->
+
    ```ts
    // BusinessWebview.ets
    import { BuilderData } from "./DynamicComponent";
@@ -8288,7 +8346,7 @@ When appropriate, use this API in conjunction with dynamic components. Offline *
      },
      {
        localPath: "example.js",
-       urlList: [ // Only one URL is provided. This URL is used as both the resource origin and the network request address of the resource.
+       urlList: [ // Only one URL is provided, which serves as both the resource source and the network request address.
          "https://www.example.com/example.js",
        ],
        type: webview.OfflineResourceType.CLASSIC_JS,
@@ -8301,7 +8359,9 @@ When appropriate, use this API in conjunction with dynamic components. Offline *
    ```
 
 6. Use the component on the page.
+
    <!--code_no_check-->
+
    ```ts
    // Index.ets
    import { webview } from '@kit.ArkWeb';
@@ -8320,7 +8380,7 @@ When appropriate, use this API in conjunction with dynamic components. Offline *
      businessController: webview.WebviewController = new webview.WebviewController();
 
      aboutToAppear(): void {
-       // Initialize the Web component used to inject local resources and provide an empty HTML page as the URL.
+       // Initialize the Web component for injecting local resources. Provide an empty HTML page as the URL.
        this.injectNode = createNode(injectWebview,
            { url: "https://www.example.com/empty.html", controller: this.injectController, context: this.getUIContext()});
      }
@@ -8421,7 +8481,7 @@ struct WebComponent {
 
   build() {
     Column() {
-      // The setting takes effect before the URL is loaded.
+      // Takes effect before URL loading.
       Button('setHostIP')
         .onClick(() => {
           try {
@@ -8504,7 +8564,7 @@ struct Example{
 
 setUrlTrustList(urlTrustList: string): void
 
-Sets the URL trustlist of the web page. Only URLs in the trustlist can be loaded or redirected. Otherwise, the URL is blocked and an alarm page is displayed.
+Sets a URL trust list for the Web. Only URLs in the trust list are allowed to be loaded or navigated to. Otherwise, they are intercepted and an alert page is displayed.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -8512,13 +8572,14 @@ Sets the URL trustlist of the web page. Only URLs in the trustlist can be loaded
 
 | Name | Type   | Mandatory| Description                 |
 | ------- | ------ | ---- | :-------------------- |
-| urlTrustList | string | Yes  | URL trustlist, which is configured in JSON format. The maximum size is 10 MB.<br>**setUrlTrustList()** is used in overwrite mode. If it is called for multiple times, the latest setting overwrites the previous setting.<br>If this parameter is left blank, the trustlist is canceled and access to all URLs is allowed.<br>Example in JSON format:<br>{<br>&nbsp;&nbsp;"UrlPermissionList":&nbsp;[<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"scheme":&nbsp;"https",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"host":&nbsp;"www\.example1.com",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"port":&nbsp;443,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path":&nbsp;"pathA/pathB"<br>&nbsp;&nbsp;&nbsp;&nbsp;},<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"scheme":&nbsp;"http",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"host":&nbsp;"www\.example2.com",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"port":&nbsp;80,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path":&nbsp;"test1/test2/test3"<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;]<br>} |
+| urlTrustList | string | Yes | URL whitelist, configured in JSON format. The maximum size is 10 MB.<br/>The whitelist setting API uses an overwrite mode. When the API is called multiple times, the last setting takes effect.<br/>When this parameter is set to an empty string, the whitelist is canceled and access to all URLs is allowed.<br/>JSON format example:<br/>{<br/>&nbsp;&nbsp;"UrlPermissionList":&nbsp;[<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"scheme":&nbsp;"https",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"host":&nbsp;"www\.example1.com",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"port":&nbsp;443,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path":&nbsp;"pathA/pathB"<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"scheme":&nbsp;"http",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"host":&nbsp;"www\.example2.com",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"port":&nbsp;80,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path":&nbsp;"test1/test2/test3"<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;]<br/>} |
 
 **Parameters in JSON format**:
+
 | Name  | Type| Mandatory| Description                 |
 | -------- | -------- | ---- | ------------------------- |
 | scheme | string   | No| Optional parameter. The supported protocols are HTTP and HTTPS.|
-| host | string | Yes| Mandatory parameter. The URL is permitted only when its host field is the same as the rule field. Multiple rules for the same host at the same time are allowed.|
+| host | string | Yes | Mandatory parameter. Exact match: the request is allowed only when the host field of the URL exactly matches the rule field. Multiple rules can take effect simultaneously for the same host. |
 | port | number | No| Optional parameter.|
 | path | string | No| Optional parameter. This field uses prefix matching. For example, in **pathA/pathB/pathC**, **pathA/pathB/** is specified, and all level-3 directories such as **pathC** can be accessed, which must be a complete directory name or file name. Partial matching is not allowed.|
 
@@ -8532,6 +8593,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 | 17100001 | Init error. The WebviewController must be associated with a Web component.|
 
 **Example**
+
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -8557,7 +8619,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
         Button('Cancel the trustlist.')
           .onClick(() => {
             try {
-              // Input an empty string to setUrlTrustList() to disable the trustlist, and all URLs can be accessed.
+              // An empty string disables the whitelist mechanism, allowing access to all URLs.
               this.controller.setUrlTrustList("");
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -8583,7 +8645,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
           })
         Web({ src: 'http://untrust.example.com/test', controller: this.controller }).onControllerAttached(() => {
           try {
-            // Set the trustlist using onControllerAttached() to enable the trustlist before the URL starts to be loaded. The untrusted web page cannot be accessed, and an error page is displayed.
+            // Set the whitelist in the onControllerAttached callback to ensure it takes effect before the URL is loaded. In this case, untrusted web pages cannot be accessed, and an error page is displayed.
             this.controller.setUrlTrustList(this.urltrustList);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -8598,27 +8660,34 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 
 setPathAllowingUniversalAccess(pathList: Array\<string\>): void
 
-Sets a path list. When the file protocol accesses resources in the path list, cross-origin access to local files and other online resources is allowed. In addition, when a path list is set, the file protocol can access only the resources in the path list. The behavior of [fileAccess](./arkts-basic-components-web-attributes.md#fileaccess) will be overwritten by that of this API. The paths in the list must be any of the following:
+Sets a path list. When the file protocol accesses resources in the path list, cross-origin access to local files and other online resources is allowed. In addition, when a path list is set, the file protocol only allows access to resources in the path list. Typical use case: used when the **Web** component needs to be allowed to access local resource files across origins while restricting the access scope to ensure security. (The behavior of [fileAccess](./arkts-basic-components-web-attributes.md#fileaccess) will be overridden by the behavior of this API.)
 
-1. The path of subdirectory of the application file directory. (The application file directory is obtained using [Context.filesDir](../apis-ability-kit/js-apis-inner-application-context.md#context) in the Ability Kit.) For example:
+Using setPathAllowingUniversalAccess to relax cross-origin access restrictions on directories is a high-risk operation. Based on the principle of least privilege, the paths for el1 and el2 are fixed. The paths in the path list must conform to one of the following path formats:
+
+1. A subdirectory of the app file directory. (The app file directory is obtained through [Context.filesDir](../apis-ability-kit/js-apis-inner-application-context.md#properties) in Ability Kit.) For example:
 
 * /data/storage/el2/base/files/example
+
 * /data/storage/el2/base/haps/entry/files/example
 
-2. The path of application resource directory or its subdirectory. (The application resource directory is obtained from [Context.resourceDir](../apis-ability-kit/js-apis-inner-application-context.md#context) in the Ability Kit.) For example:
+2. The app resource directory or its subdirectory. (The app resource directory is obtained through [Context.resourceDir](../apis-ability-kit/js-apis-inner-application-context.md#properties) in Ability Kit.) For example:
 
-* /data/storage/el1/bundle/entry/resources/resfile
-* /data/storage/el1/bundle/entry/resources/resfile/example
+* /data/storage/el1/bundle/entry/resource/resfile
 
-3. Since API version 21, the application cache directory and its subdirectories are also supported. (The application cache directory is obtained through [Context.cacheDir](../apis-ability-kit/js-apis-inner-application-context.md#context) in Ability Kit). For example:
+* /data/storage/el1/bundle/entry/resource/resfile/example
+
+3. Since API version 21, the app cache directory and its subdirectory are also included. (The app cache directory is obtained through [Context.cacheDir](../apis-ability-kit/js-apis-inner-application-context.md#properties) in Ability Kit.) For example:
 
 * /data/storage/el2/base/cache
+
 * /data/storage/el2/base/haps/entry/cache/example
+
 * The **cache/web** directory is not allowed. If it is included, an exception with the code **401** will be thrown. If the **cache** directory is set, **cache/web** cannot be accessed.
 
-4. Since API version 21, the temporary application directory and its subdirectories are also supported. (The temporary application directory is obtained through [Context.tempDir](../apis-ability-kit/js-apis-inner-application-context.md#context) in Ability Kit). For example:
+4. Since API version 21, the app temporary directory and its subdirectory are also included. (The app temporary directory is obtained through [Context.tempDir](../apis-ability-kit/js-apis-inner-application-context.md#properties) in Ability Kit.) For example:
 
 * /data/storage/el2/base/temp
+
 * /data/storage/el2/base/haps/entry/temp/example
 
 If a path in the list is not of the preceding paths, error code 401 is reported and the path list fails to be set. When the path list is set to empty, the accessible files for the file protocol are subject to the behavior of the [fileAccess](./arkts-basic-components-web-attributes.md#fileaccess).
@@ -8678,6 +8747,7 @@ struct WebComponent {
 ```
 
 Load the HTML file, which is located in the application resource directory **resource/resfile/index.html**.
+
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
@@ -8724,7 +8794,9 @@ Load the HTML file, which is located in the application resource directory **res
 ```
 
 In the HTML file, use the file protocol to access the local JS file through **XMLHttpRequest**. The JS file is stored in **resource/resfile/js/script.js**.
+
 <!--code_no_check-->
+
 ```javascript
 const body = document.body;
 const element = document.createElement('div');
@@ -8851,6 +8923,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Parameter string is too long. 3.Parameter verification failed. |
 
 **Example**
+
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -8907,7 +8980,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 **Example**
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -8938,14 +9011,18 @@ struct Index {
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
                 // Obtain the sandbox path and set the PDF file name.
                 let filePath = context.filesDir + "/test.pdf";
-                let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-                fs.write(file.fd, result.pdfArrayBuffer().buffer).then((writeLen: number) => {
-                  console.info("createPDF write data to file succeed and size is:" + writeLen);
+                let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+                if (error) {
+                  console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                  return;
+                }
+                fileIo.write(file.fd, result.pdfArrayBuffer().buffer).then((writeLen: number) => {
+                  console.info("createPDF write data to file succeeded and size is:" + writeLen);
                 }).catch((err: BusinessError) => {
                   console.error("createPDF write data to file failed with error message: " + err.message +
                     ", error code: " + err.code);
                 }).finally(() => {
-                  fs.closeSync(file);
+                  fileIo.closeSync(file);
                 });
               } catch (resError) {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -8976,7 +9053,7 @@ Obtains the data stream of a specified web page using a promise.
 
 | Type                          | Description                         |
 | ------------------------------ | ----------------------------- |
-| Promise<[PdfData](./arkts-apis-webview-PdfData.md)> | Promise used to return the data stream of a web page.|
+| Promise<[PdfData](./arkts-apis-webview-PdfData.md)> | Promise used to return the result. It returns a web page PDF data stream (a PdfData object containing PDF binary data represented as an ArrayBuffer). |
 
 **Error codes**
 
@@ -8990,7 +9067,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 **Example**
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -9020,14 +9097,14 @@ struct Index {
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
                 // Obtain the sandbox path and set the PDF file name.
                 let filePath = context.filesDir + "/test.pdf";
-                let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-                fs.write(file.fd, result.pdfArrayBuffer().buffer).then((writeLen: number) => {
-                  console.info("createPDF write data to file succeed and size is:" + writeLen);
+                let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+                fileIo.write(file.fd, result.pdfArrayBuffer().buffer).then((writeLen: number) => {
+                  console.info("createPDF write data to file succeeded and size is:" + writeLen);
                 }).catch((err: BusinessError) => {
                   console.error("createPDF write data to file failed with error message: " + err.message +
                     ", error code: " + err.code);
                 }).finally(() => {
-                  fs.closeSync(file);
+                  fileIo.closeSync(file);
                 });
               } catch (resError) {
                 console.error(`ErrorCode: ${(resError as BusinessError).code},  Message: ${(resError as BusinessError).message}`);
@@ -9052,7 +9129,7 @@ Obtains the current scrolling offset (including the over-scrolling offset) of th
 
 | Type                           | Description                  |
 | :------------------------------ | ---------------------- |
-| [ScrollOffset](./arkts-apis-webview-i.md#scrolloffset13) | Current scrolling offset (including the over-scrolling offset) of the web page.|
+| [ScrollOffset](./arkts-apis-webview-i.md#scrolloffset13) | Current scroll offset of the web page (including the overscroll offset), containing x and y coordinates, in vp. |
 
 **Example**
 
@@ -9108,7 +9185,9 @@ struct WebComponent {
   }
 }
 ```
+
   HTML file to be loaded:
+
   ```html
   <!-- index.html -->
   <!DOCTYPE html>
@@ -9144,7 +9223,7 @@ Obtains the current scrolling offset of the web page (excluding the over-scrolli
 
 | Type                           | Description                  |
 | :------------------------------ | ---------------------- |
-| [ScrollOffset](./arkts-apis-webview-i.md#scrolloffset13) | Current scrolling offset of the web page (excluding the over-scrolling offset).|
+| [ScrollOffset](./arkts-apis-webview-i.md#scrolloffset13) | Current scroll offset of the web page (excluding over-scroll offset), which contains x and y coordinates, in vp. |
 
 **Error codes**
 
@@ -9181,6 +9260,7 @@ struct WebComponent {
   }
 }
 ```
+
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
@@ -9312,6 +9392,7 @@ struct WebComponent {
   }
 }
 ```
+
 ## on('controllerAttachStateChange')<sup>20+</sup>
 
 on(type: 'controllerAttachStateChange', callback: Callback&lt;ControllerAttachState&gt;): void
@@ -9400,6 +9481,7 @@ struct WebComponent {
   }
 }
 ```
+
 ## waitForAttached<sup>20+</sup>
 
 waitForAttached(timeout: number):Promise&lt;ControllerAttachState&gt;
@@ -9419,7 +9501,6 @@ Asynchronously waits for the **WebViewController** to be attached to the **Web**
 | Type                          | Description                         |
 | ------------------------------ | ----------------------------- |
 | Promise<[ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20)> | Promise used to return the current [ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20).|
-
 
 **Example**
 
@@ -9467,6 +9548,7 @@ static setWebDebuggingAccess(webDebuggingAccess: boolean, port: number): void
 Sets whether to enable wireless web debugging. By default, wireless web debugging is disabled.
 
 * If no port is specified, this API is equivalent to the [setWebDebuggingAccess](#setwebdebuggingaccess) API. In this case, ArkWeb starts a local domain socket listener.
+
 * When a port is specified, ArkWeb starts a TCP socket listener. In this case, you can debug the web page wirelessly. For details, see [Wireless Debugging](../../web/web-debugging-with-devtools.md#wireless-debugging).
 
 A port number smaller than 1024 is a well-known or system port and can be enabled only with privileges in the operating system. Therefore, the value of port must be greater than 1024. Otherwise, the API throws an exception.
@@ -9481,7 +9563,6 @@ NOTE: Enabling web debugging allows users to check and modify the internal statu
 | ------------------ | ------- | ---- | ------------- |
 | webDebuggingAccess | boolean | Yes  | Sets whether to enable web debugging.<br>The value **true** indicates that web page debugging is enabled, and **false** indicates the opposite.|
 | port               | number  | Yes  | Specifies the TCP port number of the DevTools service. If no port is specified, this API is equivalent to the [setWebDebuggingAccess] (#setwebdebuggingaccess) API.<br>Value range: (1024, 65535]<br>If the value of port is within the range of [0, 1024], the **BusinessError** exception is thrown. The error code is **17100023**.|
-
 
 **Error codes**
 
@@ -9840,6 +9921,10 @@ Sets the private network access check feature.
 
 After this feature is enabled, the **Web** component performs CORS preflight on private network requests (such as requests for accessing local servers or intranet resources). It sends an OPTIONS preflight request to obtain explicit authorization from the target server and then transmits the actual data. Disabling this feature will skip the security check.
 
+> **NOTE**
+>
+> The private network access check feature currently takes effect mainly for Web Worker scenarios.
+
 **System capability**: SystemCapability.Web.Webview.Core
 
 **Parameters**
@@ -9875,6 +9960,10 @@ struct WebComponent {
 static isPrivateNetworkAccessEnabled(): boolean
 
 Obtains whether the private network access check feature is enabled for the **Web** component.
+
+> **NOTE**
+>
+> The private network access check feature currently takes effect mainly for Web Worker scenarios.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -9924,11 +10013,11 @@ Obtains the prediction information about blankless loading (for details, see [Bl
 
 > **NOTE**
 >
-> - The default size of the persistent cache capacity is 30 MB (about 30 pages). You can set the cache capacity by calling [setBlanklessLoadingCacheCapacity](#setblanklessloadingcachecapacity20). For details, see the description of this API. When the maximum capacity is exceeded, the cache is updated based on the Least Recently Used (LRU) mechanism. The persistent cache data that has been stored for more than seven days is automatically cleared. After the cache is cleared, the optimization effect appears when the page is loaded for the third time.
-> - If the snapshot similarity (**similarity** in [BlanklessInfo](./arkts-apis-webview-i.md#blanklessinfo20)) is extremely low, check whether the **key** value is correct.
-> - After this API is called, page loading snapshot detection and transition frame generation calculation are enabled, which generates certain resource overhead.
-> - Blankless loading consumes certain resources, which depends on the resolution of the **Web** component. When the width and height of the resolution are respectively **w** and **h**, the peak memory usage increases by about **12 × w × h** B in the page-opening phase. After the page is opened, the memory is reclaimed, which does not affect the stable memory usage. When the size of the solid-state application cache is increased, the increased cache of each page is about **w × h/10** B and the cache is located in the application cache.
-> - Add the **ohos.permission.INTERNET** and **ohos.permission.GET_NETWORK_INFO** permissions to **module.json5**. For details, see [Declaring Permissions in the Configuration File](../../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
+> - Persistent cache capacity: The default size is 30 MB (approximately 30 pages). The cache capacity can be set through [setBlanklessLoadingCacheCapacity](#setblanklessloadingcachecapacity20). For details, see the description of that API. When the capacity is exceeded, the cache is updated based on the LRU (Least Recently Used) mechanism. Persistent cache data older than seven days is automatically cleared. The optimization effect starts from the third page load after the cache is cleared.
+> - If the snapshot similarity (that is, the similarity in [BlanklessInfo](./arkts-apis-webview-i.md#blanklessinfo20)) is extremely low, check whether the key value is passed correctly.
+> - After this API is called, page loading snapshot detection and transition frame generation calculation are enabled, which incurs certain resource overhead.
+> - Enabling blankless loading for a page incurs certain resource overhead, and the overhead is related to the resolution of the **Web** component. Assume that the width and height of the resolution are w and h respectively. The peak memory increases by approximately 12 * w * h B during the page opening phase. After the page is opened, the memory is reclaimed and does not affect the steady-state memory. The solid-state app cache size increases by approximately w * h / 10 B per page, and the cache is located at the app cache location.
+> - Add the following permissions to module.json5: ohos.permission.INTERNET and ohos.permission.GET_NETWORK_INFO. For details about how to add permissions, see [Declaring Permissions in the Configuration File](../../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -9944,7 +10033,7 @@ Obtains the prediction information about blankless loading (for details, see [Bl
 
 | Type                | Description                     |
 | -------------------- | ------------------------- |
-| [BlanklessInfo](./arkts-apis-webview-i.md#blanklessinfo20) | Prediction information about blankless loading, including the first screen similarity and first screen loading duration. The application determines whether to enable blankless loading based on the prediction information.|
+| [BlanklessInfo](./arkts-apis-webview-i.md#blanklessinfo20) | Prediction information object for the first screen loading of a page. The app uses this information to decide whether to enable blankless loading frame insertion. |
 
 **Error codes**
 
@@ -10213,7 +10302,7 @@ Sets the persistent cache capacity of the blankless loading solution and returns
 
 | Name  | Type   | Mandatory| Description                     |
 | -------- | ------- | ---- | -------------------------------------- |
-| capacity | number | Yes| Persistent cache capacity, in MB. The maximum value is 100 MB.<br>The value ranges from 0 to 100. If this parameter is set to **0**, no cache capacity is available and the functionality is disabled globally.<br>When a value less than 0 is set, the value **0** takes effect. When a value greater than 100 is set, the value **100** takes effect.|
+| capacity | number | Yes | Sets the persistent cache capacity, in MB. The maximum value cannot exceed 100 MB.<br>Valid value range: [0, 100]. When set to **0**, no cache space is available and the feature is globally disabled.<br>Behavior for invalid values: if the value is less than 0, the effective value is 0; if the value is greater than 100, the effective value is 100. |
 
 **Return value**
 
@@ -10331,6 +10420,7 @@ struct WebComponent {
 ```
 
 HTML file to be loaded:
+
 ```html
 <!--index.html-->
 <!DOCTYPE html>
@@ -10358,11 +10448,13 @@ Scroll Test
 
 static setActiveWebEngineVersion(engineVersion: ArkWebEngineVersion): void
 
-Sets the ArkWeb kernel version. If the system does not support the specified version, the setting is invalid. This API is a global static API and must be called before **initializeWebEngine** is called. If any **Web** component has been loaded, the setting of this API is invalid.
+Sets the ArkWeb kernel version. If the system does not support the specified version, the setting does not take effect and the system default kernel is used (see [Constraints](../../web/web-component-overview.md#constraints)). This API is a global static API and must be executed before **initializeWebEngine** is called. If any **Web** component has been loaded, the setting does not take effect. Typical use case: when features or compatibility requirements of a specific kernel version are needed, you can switch to the corresponding kernel version.
 
 **Legacy kernel adaptation**
 
-Since OpenHarmony 6.0, some ArkWeb APIs do not take effect when the legacy kernel is used. For details, see [Adaptation Guide for the M114 Kernel on OpenHarmony 6.0](https://gitcode.com/openharmony-tpc/chromium_src/blob/132_trunk/web/ReleaseNote/CompatibleWithLegacyWebEngine.md).
+Since OpenHarmony 6.0, some ArkWeb APIs do not take effect when the legacy kernel (M114) is used. For details, see [Adaptation Guide for the M114 Kernel on OpenHarmony 6.0](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/CompatibleWithLegacyWebEngine_6.0.md).
+
+Since OpenHarmony 7.0, some ArkWeb APIs do not take effect when the legacy kernel (M132) is used. For details, see [Adaptation Guide for the M132 Kernel on OpenHarmony 7.0](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/CompatibleWithLegacyWebEngine_7.0.md).
 
 > **NOTE**
 >
@@ -10389,9 +10481,9 @@ import { webview } from '@kit.ArkWeb';
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     console.info("EntryAbility onCreate")
-    webview.WebviewController.setActiveWebEngineVersion(webview.ArkWebEngineVersion.M114)
-    if (webview.WebviewController.getActiveWebEngineVersion() == webview.ArkWebEngineVersion.M114) {
-      console.info("Active Web Engine Version set to M114")
+    webview.WebviewController.setActiveWebEngineVersion(webview.ArkWebEngineVersion.M132)
+    if (webview.WebviewController.getActiveWebEngineVersion() == webview.ArkWebEngineVersion.M132) {
+      console.info("Active Web Engine Version set to M132")
     }
     console.info("EntryAbility onCreate done")
   }
@@ -10456,7 +10548,7 @@ static setAutoPreconnect(enabled: boolean): void
 
 Sets the automatic preconnection status of the Web kernel. If this API is not set, automatic preconnection is enabled by default.
 
-This API must be called before [initializeWebEngine()](#initializewebengine) is called to initialize the kernel or create a **Web** component.
+This API must be called before [initializeWebEngine()](#initializewebengine) initializes the kernel or a **Web** component is created. If any **Web** component has been loaded, the setting does not take effect.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -10522,6 +10614,7 @@ struct WebComponent {
   }
 }
 ```
+
 ## getSiteIsolationMode<sup>21+</sup>
 
 static getSiteIsolationMode(): SiteIsolationMode
@@ -10535,7 +10628,6 @@ Queries the currently effective site isolation mode.
 | Type                                     | Description                                                        |
 | ----------------------------------------- | ------------------------------------------------------------ |
 | [SiteIsolationMode](./arkts-apis-webview-e.md#siteisolationmode21) | Site isolation mode.<br>getSiteIsolationMode() queries the currently effective site isolation mode.|
-
 
 **Example**
 
@@ -10560,11 +10652,12 @@ struct WebComponent {
   }
 }
 ```
+
 ## setSiteIsolationMode<sup>21+</sup>
 
 setSiteIsolationMode(mode: SiteIsolationMode): void
 
-Sets the site isolation mode. Enumerates the site isolation modes. The site isolation mechanism isolates websites from different sources in different render processes to reduce the cross-domain attack surface. For example, on a PC, if site isolation is disabled, each tab page corresponds to a render process. After site isolation is enabled, iframes from different sources in a tab page can run in independent render processes.
+Sets the site isolation mode. The site isolation mechanism isolates websites from different origins in different rendering processes to reduce the cross-domain attack surface. For example, on devices such as PCs, when site isolation mode is not enabled, the original process model assigns one rendering process per tab. After site isolation is enabled, iframes from different origins within a tab can run in independent rendering processes.
 
 For third-party applications that load only trusted web pages, you can disable this functionality to improve performance, reduce memory usage, and reduce interception of cross-domain access. The default value varies according to the device. [SiteIsolationMode.STRICT](./arkts-apis-webview-e.md#siteisolationmode21) is used for PCs and tablets, and [SiteIsolationMode.PARTIAL](./arkts-apis-webview-e.md#siteisolationmode21) is used for phones. In [Secure Shield mode](../..//web/web-secure-shield-mode.md), strict site isolation is used.
 
@@ -10573,7 +10666,6 @@ For third-party applications that load only trusted web pages, you can disable t
 > Strict site isolation cannot be set in single-process mode.
 >
 > This API can be called only once during initialization. The site isolation mode cannot be repeatedly changed.
-
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -10592,7 +10684,6 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 | 17100001 |Init error. Possible causes: 1. Site Isolation mode is already set by the developer. 2. Site Isolation mode cannot be strict in single-render-process mode. 3. Site Isolation mode cannot be changed while Secure Shield mode is active.  |
 
 **Example**
-
 
 ```ts
 // xxx.ets
@@ -10650,11 +10741,12 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
+
 ## setSoftKeyboardBehaviorMode<sup>22+</sup>
 
 setSoftKeyboardBehaviorMode(mode: WebSoftKeyboardBehaviorMode): void
 
-Set the behavior mode of the soft keyboard. If this API is not explicitly called, the system automatically hides or shows the soft keyboard when the **Web** component loses or gains focus, or when its status becomes inactive or active.
+Sets the automatic control mode of the soft keyboard. When this API is not explicitly called, the system attempts to automatically hide or show the soft keyboard when the **Web** component loses or gains focus, or when its state switches to inactive or active. Typical use case: when you do not want the **Web** component to automatically hide or re-show the soft keyboard during inactive or active state switching, use DISABLE_AUTO_KEYBOARD_ON_ACTIVE; when you need to retain the default automatic management behavior, use DEFAULT.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -10712,6 +10804,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 | 17100001 | Init error. The WebviewController must be associated with a Web component.|
 
 **Example**
+
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -10729,6 +10822,10 @@ struct WebComponent {
   aboutToAppear(): void {
     let context: Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
     atManager.requestPermissionsFromUser(context, ['ohos.permission.MICROPHONE'], (err: BusinessError, data: PermissionRequestResult) => {
+      if (err) {
+        console.error(`ErrorCode: ${err.code}, Message: ${err.message}`);
+        return;
+      }
       console.info('data:' + JSON.stringify(data));
       console.info('data permissions:' + data.permissions);
       console.info('data authResults:' + data.authResults);
@@ -10830,6 +10927,12 @@ pauseMicrophone(): void
 
 Pauses microphone capture on the current web page.
 
+> **NOTE**
+>
+> Differences from resumeMicrophone and stopMicrophone:
+>
+> pauseMicrophone only pauses microphone capture and can be restored through resumeMicrophone; stopMicrophone stops capture and releases resources.
+
 **System capability**: SystemCapability.Web.Webview.Core
 
 **Error codes**
@@ -10868,13 +10971,13 @@ For the complete sample code, see [resumeMicrophone](#resumemicrophone23).
 
 static setUserAgentClientHintsEnabled(enabled: boolean): void
 
-Sets whether to enable the UserAgent Client Hints feature.
+Sets whether to enable the User-Agent Client Hints feature.
 
 > **NOTE**
 >
 > User-Agent Client Hints (UA-CH) is a privacy protection mechanism that replaces the traditional **User-Agent** string. It transfers client information through on-demand requests and structured data, reducing the risk of excessive tracking.
 >
-> If this method is not used, the UserAgent Client Hints feature is disabled by default.
+> If this method is not used, the User-Agent Client Hints feature is disabled by default.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -10882,7 +10985,7 @@ Sets whether to enable the UserAgent Client Hints feature.
 
 | Name             | Type   | Mandatory  |  Description|
 | ------------------ | ------- | ---- | ------------- |
-| enabled | boolean | Yes  | Whether to enable the UserAgent Client Hints feature.<br>**true** to enable, **false** otherwise.|
+| enabled | boolean | Yes | Whether to enable the User-Agent Client Hints feature.<br/>The value **true** means enabled, and **false** means disabled. |
 
 **Example**
 
@@ -10973,7 +11076,7 @@ struct WebComponent {
 
 static getUserAgentClientHintsEnabled(): boolean
 
-Checks whether the UserAgent Client Hints feature is enabled.
+Queries whether the User-Agent Client Hints feature is currently enabled.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -10981,7 +11084,7 @@ Checks whether the UserAgent Client Hints feature is enabled.
 
 | Type   | Description                                    |
 | ------- | --------------------------------------- |
-| boolean | Whether the UserAgent Client Hints feature is enabled. **true** if the feature is enabled, **false** otherwise.|
+| boolean | Whether the User-Agent Client Hints feature is enabled. The value **true** indicates enabled, and **false** indicates disabled. |
 
 **Example**
 
@@ -10995,17 +11098,15 @@ Sets the **UserAgentMetadata** corresponding to the **User-Agent**.
 
 > **NOTE**
 >
-> **UserAgentMetadata** is used to fill in the user agent client prompt. It provides the brand and version information of the client, the brand and major version of the underlying operating system, and details about the underlying device.
+> User-Agent Metadata is used to populate user agent client hints. It can provide the brand and version information of the client, the brand and major version of the underlying operating system, and detailed information about the underlying device.
 >
-> You can set the user agent by using **setCustomUserAgent**, **setAppCustomUserAgent**, or **setUserAgentForHosts**.
+> The user agent can be set through setCustomUserAgent, setAppCustomUserAgent, or setUserAgentForHosts.
 >
-> If **UserAgentMetadata** is not found based on the overwritten **User-Agent** and the overwritten **User-Agent** contains the default **User-Agent**, the default value is used.
+> If no UserAgentMetadata is found based on the overridden User-Agent, and the overridden User-Agent contains the system default User-Agent, the system default value is used.
 >
-> If **UserAgentMetadata** is empty but the overwritten **User-Agent** does not contain the default user agent, only low-level user agent client prompts are generated.
+> If no UserAgentMetadata is found based on the overridden User-Agent, but the overridden User-Agent does not contain the system default user agent, only low-level user agent client hints are generated.
 
 **System capability**: SystemCapability.Web.Webview.Core
-
-**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -11026,8 +11127,6 @@ Obtains the UserAgentMetadata information of a user agent.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
-**Model restriction**: This API can be used only in the stage model.
-
 **Parameters**
 
 | Name             | Type   | Mandatory  |  Description|
@@ -11038,7 +11137,7 @@ Obtains the UserAgentMetadata information of a user agent.
 
 | Type   | Description                                    |
 | ------- | --------------------------------------- |
-| metaData | [UserAgentMetadata](./arkts-apis-webview-UserAgentMetadata.md) corresponding to the user agent.|
+| UserAgentMetadata | [UserAgentMetadata](./arkts-apis-webview-UserAgentMetadata.md) corresponding to userAgent. |
 
 **Example**
 
@@ -11048,7 +11147,7 @@ For details about the sample code, see [setUserAgentClientHintsEnabled](#setuser
 
 setUrlTrustList(urlTrustList: string, allowOpaqueOrigin: boolean, supportWildcard: boolean): void
 
-Sets the URL trustlist of the web page. Only URLs in the trustlist can be loaded or redirected. Otherwise, the URL is blocked and an alarm page is displayed.
+Sets a URL trust list for the Web. Only URLs in the trust list are allowed to be loaded or navigated to. Otherwise, they are intercepted and an alert page is displayed. This API extends the control over opaque origin URLs and wildcard rules.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -11056,8 +11155,8 @@ Sets the URL trustlist of the web page. Only URLs in the trustlist can be loaded
 
 | Name | Type   | Mandatory| Description                 |
 | ------- | ------ | ---- | :-------------------- |
-| urlTrustList | string | Yes  | URL trustlist, which is configured in JSON format. The maximum size is 10 MB.<br>**setUrlTrustList()** is used in overwrite mode. If it is called for multiple times, the latest setting overwrites the previous setting.<br>If this parameter is left blank, the trustlist is canceled and access to all URLs is allowed.<br>Example in JSON format:<br>{<br>&nbsp;&nbsp;"UrlPermissionList":&nbsp;[<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"scheme":&nbsp;"https",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"host":&nbsp;"www\.example1.com",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"port":&nbsp;443,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path":&nbsp;"pathA/pathB"<br>&nbsp;&nbsp;&nbsp;&nbsp;},<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"scheme":&nbsp;"http",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"host":&nbsp;"www\.example2.com",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"port":&nbsp;80,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path":&nbsp;"test1/test2/test3"<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;]<br>} |
-| allowOpaqueOrigin | boolean | Yes| Whether to allow **loadUrl** to directly load [opaque origin URLs](https://mdn.org.cn/en-US/docs/Web/URI/Reference/Schemes) such as **javascript/data**. **true** to allow, and **false** otherwise.|
+| urlTrustList | string | Yes | URL whitelist configured in JSON format, with a maximum size of 10 MB.<br/>The whitelist setting uses an overwrite mode. When this API is called multiple times, the last setting takes effect.<br/>When this parameter is set to an empty string, the whitelist is canceled and all URLs are allowed.<br/>JSON format example:<br/>{<br/>&nbsp;&nbsp;"UrlPermissionList":&nbsp;[<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"scheme":&nbsp;"https",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"host":&nbsp;"www\.example1.com",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"port":&nbsp;443,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path":&nbsp;"pathA/pathB"<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"scheme":&nbsp;"http",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"host":&nbsp;"www\.example2.com",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"port":&nbsp;80,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path":&nbsp;"test1/test2/test3"<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;]<br/>} |
+| allowOpaqueOrigin | boolean | Yes | Whether to allow loadUrl to directly load [opaque origin URLs](https://mdn.org.cn/en-US/docs/Web/URI/Reference/Schemes) such as javascript/data. The value **true** means allowed, and **false** means not allowed. |
 | supportWildcard | boolean | Yes| Whether to support wildcard matching for **host** and **path**. For example, to allow access to **a.example.com** and **b.example.com** when ***.example.com** is configured in the trustlist. **true** to support, and **false** otherwise.|
 
 **Parameters in JSON format**:
@@ -11065,9 +11164,9 @@ Sets the URL trustlist of the web page. Only URLs in the trustlist can be loaded
 | Name  | Type| Mandatory| Description                 |
 | -------- | -------- | ---- | ------------------------- |
 | scheme | string | No| Optional parameter. The supported protocols are HTTP and HTTPS.|
-| host | string | Yes| Mandatory parameter.<br>When **supportWildcard** is set to **false**, exact match is performed. That is, the URL is allowed only when its **host** field is the same as the rule field. Multiple rules for the same host can take effect at the same time.<br>When **supportWildcard** is set to **true**, the wildcard character (\*) can be used to match any string. The matching rules are as follows:<br>1. **host** is segmented by periods (.).<br>2. A wildcard (*) can match only one segment. For example, **www.*.com** can match only **www.example.com** but not **www.example1.example2.com**.<br>3. Multiple wildcards can be used to match multiple segments. For example, **www.*.*** can match **www.example.com** but not **www.example1.example2.com**.<br>4. The wildcard can be used only separately. Multiple consecutive asterisks (*) or using the wildcard with other strings are not supported. For example, `**.example.com` and `*ww.example.com` are not supported.|
+| host | string | Yes | Mandatory parameter.<br/>When **supportWildcard** is **false**, exact match is used, meaning the URL host field must exactly match the rule field for the request to be allowed. Multiple rules can take effect simultaneously for the same host.<br/>When **supportWildcard** is **true**, the wildcard \* can be used for arbitrary string matching. The matching rules are as follows:<br/>1. The host is segmented by ".". <br/>2. A single wildcard \* matches only one segment. For example, `www.*.com` matches `www.example.com` but not `www.example1.example2.com`.<br/>3. Multiple wildcards can be used to match multiple segments. For example, `www.*.*` matches `www.example.com` but not `www.example1.example2.com`.<br/>4. Wildcards can only be used alone. Consecutive \* characters or combining \* with other strings is not supported, for example, `**.example.com` or `*ww.example.com`.<br/>5. Wildcards cannot be used for IP address matching. For example, `127.0.0.*` cannot match `127.0.0.1`.<br/>6. For non-ASCII hosts (such as Chinese domain names), IDN conversion must be performed in advance. |
 | port | number | No| Optional parameter.|
-| path | string | No| Optional parameter.<br>If **supportWildcard** is set to **false**, the prefix matching mode is used. For example, in **pathA/pathB/pathC**, **pathA/pathB/** is specified, and all level-3 directories such as **pathC** can be accessed, which must be a complete directory name or file name. Partial matching is not allowed.<br>When **supportWildcard** is set to **true**, the wildcard character (\*) can be used to match any string. The matching rules are as follows:<br>1. **path** is segmented by slashes (/).<br>2. If the wildcard (\*) is not the last segment, only one segment can be matched. For example, **pathA/*/pathD** can match only **pathA/pathB/pathD** but not **pathA/pathB/pathC/pathD**.<br>3. If the wildcard (\*) is the last segment, multiple subsequent segments can be matched. For example, **pathA/*** can match **pathA/pathB** and **pathA/pathB/pathC**, and can also match files, for example, **pathA/xxx.txt**.<br>4. The wildcard can be used only separately. Multiple asterisks (*) or using the wildcard with other strings are not supported. For example, `**/pathA/pathB` and `path*/pathB/pathC` are not supported.|
+| path | string | No | Optional field. If not set, this item is not matched.<br/>When **supportWildcard** is **false**, prefix matching is used. Taking `pathA/pathB/pathC` as an example: all content under the three-level directory `pathA/pathB/pathC` is allowed, where pathC must be a complete directory name or file name. Partial matching is not supported.<br/>When **supportWildcard** is **true**, the wildcard \* can be used for arbitrary string matching. The matching rules are as follows:<br/>1. The path is segmented by "/". <br/>2. If the wildcard \* is not the last segment, it matches only one segment. For example, `pathA/*/pathD` matches `pathA/pathB/pathD` but not `pathA/pathB/pathC/pathD`.<br/>3. If the wildcard \* is the last segment, it can match multiple subsequent segments. For example, `pathA/*` matches `pathA/pathB` and also `pathA/pathB/pathC`; it can also match files such as `pathA/xxx.txt`.<br/>4. Wildcards can only be used alone. Multiple \* characters or combining \* with other strings is not supported, for example, `**/pathA/pathB` or `path*/pathB/pathC`.<br/>5. The URL part in the rule must be URL-encoded. |
 
 **Error codes**
 
@@ -11075,10 +11174,11 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. JSON string exceeds 10MB limit.<br>3.JSON parsing failed (syntax errors, etc.)<br>4. UrlPermissionList field is missing.<br>5. URL rule validation failed:<br>- scheme must be http or https.<br>- host cannot be empty.<br>- port must be between 0-65535.<br>- path length cannot exceed 65536 characters. |
+| 401      | Parameter error. Possible causes:<br/>1. Mandatory parameters are left unspecified.<br/>2. JSON string exceeds 10MB limit.<br/>3. JSON parsing failed (syntax errors, etc.).<br/>4. UrlPermissionList field is missing.<br/>5. URL rule validation failed:<br/>- scheme must be http or https.<br/>- host cannot be empty.<br/>- port must be between 0-65535.<br/>- path length cannot exceed 65536 characters. |
 | 17100001 | Initialization error. The WebviewController must be associated with a Web component.|
 
 **Example**
+
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -11105,7 +11205,7 @@ struct WebComponent {
       Button('Setting the wildcardlist')
         .onClick(() => {
           try {
-            // Set a wildcard trustlist to allow access to all URLs.
+            // Set the wildcard allowlist so that all URLs are allowed for access.
             this.controller.setUrlTrustList(this.urlWildcardList, true, true);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -11114,7 +11214,7 @@ struct WebComponent {
       Button('Cancel the trustlist.')
         .onClick(() => {
           try {
-            // Input an empty string to setUrlTrustList() to disable the trustlist, and all URLs can be accessed.
+            // Pass an empty string to the allowlist to disable the allowlist mechanism, so that all URLs are allowed for access.
             this.controller.setUrlTrustList("");
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -11140,7 +11240,7 @@ struct WebComponent {
         })
       Web({ src: 'http://untrust.example.com/test', controller: this.controller }).onControllerAttached(() => {
         try {
-          // Set the trustlist using onControllerAttached() to enable the trustlist before the URL starts to be loaded. The untrusted web page cannot be accessed, and an error page is displayed.
+          // Set the allowlist in the onControllerAttached callback to ensure it takes effect before the URL is loaded. In this case, untrusted web pages cannot be accessed and an error page is displayed.
           this.controller.setUrlTrustList(this.urltrustList);
         } catch (error) {
           console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -11150,3 +11250,272 @@ struct WebComponent {
   }
 }
 ```
+
+## enableAdvancedSecurityMode
+
+static enableAdvancedSecurityMode(securityParams: SecurityParams): void
+
+Disables specific web engine capabilities by configuring security feature options to reduce the attack surface. Typical use cases include: apps with high security requirements (such as financial and government apps) should enable advanced security mode to disable unnecessary web engine capabilities.
+
+> **NOTE**
+>
+> - This API is a global static API. It only needs to be called once during the entire app lifecycle and does not need to be called repeatedly.
+> - It must be called before [initializeWebEngine()](#initializewebengine). Otherwise, the setting does not take effect.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | ------- | ---- | -------- |
+| securityParams | [SecurityParams](./arkts-apis-webview-SecurityParams.md) | Yes | Security feature option configuration. |
+
+**Example**
+
+```ts
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  aboutToAppear() {
+    webview.WebviewController.enableAdvancedSecurityMode({
+      disableJITCompilation: true,
+      disableWebAssembly: true,
+      disableWebGL: true,
+      disablePDFViewer: true,
+      disableMathML: true,
+      disableServiceWorker: true,
+      disableNonProxyUDP: true
+    });
+    webview.WebviewController.initializeWebEngine();
+  }
+
+  build() {
+    Column() {
+      Web({ src: 'https://www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+## executeAIPageCommand
+
+executeAIPageCommand(command: string): Promise\<string\>
+
+Executes `AIPageCommand` asynchronously. This API uses a promise to return the result. The command type and command parameters are specified through the `command` parameter in JSON string format.
+
+> **NOTE**
+>
+> - The return format varies for different commands. For details, see [AIPageCommand](./arkts-apis-webview-AIPageCommand.md) and [AIPageInteraction](./arkts-apis-webview-AIPageInteraction.md).
+> - When a command cannot be dispatched or has no result to return, the promise may return an empty string.
+> - When the return value is not empty, it is a JSON string. The app can parse it with `JSON.parse` before use.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------- | ------ | ---- | ---- |
+| command | string | Yes | Command parameter in JSON format. The parameter format varies for different commands. For query commands, see [AIPageCommand](./arkts-apis-webview-AIPageCommand.md). For interaction commands, see [AIPageInteraction](./arkts-apis-webview-AIPageInteraction.md). |
+
+**Return value**
+
+| Type | Description |
+| ---------------- | ---- |
+| Promise\<string\> | Promise used to return the command execution result in JSON format. The return format varies for different commands. When a command cannot be dispatched or has no return value, an empty string is returned. |
+
+**Error codes**
+
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+
+| ID | Error Message |
+| -------- | -------- |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+| 17100024 | Command format error. The command parameter does not conform to the JSON format requirements. |
+
+**Example**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+interface AIPageCommand {
+  method: string;
+}
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('executeAIPageCommand')
+        .onClick(async () => {
+          try {
+            let commandObj: AIPageCommand = { method: 'getFullDom' };
+            let command: string = JSON.stringify(commandObj);
+            let result: string = await this.controller.executeAIPageCommand(command);
+            console.info(`executeAIPageCommand result: ${result}`);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+## setErrorPageEnabled
+
+setErrorPageEnabled(enable: boolean, includeSubframe: boolean): void
+
+Sets whether to enable the mainframe error page feature, and controls whether to also enable the subframe error page feature.
+
+When **enable** is set to **true**, an error page is displayed when a mainframe loading error occurs: if the [onOverrideErrorPage](./arkts-basic-components-web-events.md#onoverrideerrorpage20) callback is set, the user-defined error page is displayed; if not, the default error page provided by ArkWeb is displayed. When both **enable** and **includeSubframe** are set to **true**, an error page is also displayed when a subframe loading error occurs, and the **onOverrideErrorPage** callback also takes effect for subframes.
+
+> **NOTE**
+>
+> - When **enable** is set to **false**, the error page feature for both mainframe and subframe is disabled regardless of the value of **includeSubframe**.
+> - When **includeSubframe** is set to **false**, the behavior of this API is the same as that of [setErrorPageEnabled](#seterrorpageenabled20)<sup>20+</sup>, that is, only the mainframe error page feature is enabled, and the subframe error page feature is not enabled.
+> - You can use [errorPageEvent.request.isMainFrame()](./arkts-basic-components-web-WebResourceRequest.md#ismainframe) to determine whether the error source is a mainframe or a subframe, so as to set the corresponding custom error page in the **onOverrideErrorPage** callback.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | ------- | ---- | -------------------------------------- |
+| enable | boolean | Yes | Whether to enable the mainframe error page feature. The value **true** means to enable it, and **false** means the opposite. When enabled, an error page is displayed when a mainframe loading error occurs.|
+| includeSubframe | boolean | Yes | Whether to also enable the subframe error page feature. The value **true** means to enable it, and **false** means the opposite. When enabled, an error page is also displayed when a subframe loading error occurs. This parameter takes effect only when **enable** is **true**.|
+
+**Error codes**
+
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+
+| ID | Error Message |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**Example**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: $rawfile("iframe_error.html"), controller: this.controller })
+        .onControllerAttached(() => {
+          // Enable the error page feature for mainframe and subframe.
+          this.controller.setErrorPageEnabled(true, true);
+        })
+        .onOverrideErrorPage((event) => {
+          if (event.request.isMainFrame()) {
+            return "<html><body><h1>Main page failed to load</h1><p>Error code:" + event.error.getErrorCode() + "</p></body></html>";
+          }
+          return "<html><body><h1>Subpage failed to load</h1><p>Error code:" + event.error.getErrorCode() + "</p></body></html>";
+        })
+    }
+  }
+}
+```
+
+```html
+<!-- resources/rawfile/iframe_error.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>iframe</title>
+</head>
+<body>
+<iframe src="https://error-test.com/" title="iframe_error.html" loading="lazy" referrerpolicy="no-referrer" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+</body>
+</html>
+```
+
+> **Example description:** The `iframe_error.html` file used in the example must be placed in the `resources/rawfile/` directory of the app resources. This HTML file contains an iframe that loads a failed URL, used to trigger the subframe error page.
+
+## getSubframeErrorPageEnabled
+
+getSubframeErrorPageEnabled(): boolean
+
+Queries whether the subframe error page feature is enabled.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type | Description |
+| -------------------- | ------------------------- |
+| boolean | Returns whether the subframe error page feature is enabled.<br>- **true**: The subframe error page feature is enabled (that is, both **enable** and **includeSubframe** are **true**).<br>- **false**: The subframe error page feature is not enabled (including the case where the error page feature is not enabled, or the error page feature is enabled but the subframe error page feature is not enabled).|
+
+**Error codes**
+
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+
+| ID | Error Message |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**Example**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: $rawfile("iframe_error.html"), controller: this.controller })
+        .onControllerAttached(() => {
+          // Enable the error page feature for mainframe and subframe.
+          this.controller.setErrorPageEnabled(true, true);
+          // Check whether the subframe error page feature is enabled.
+          let isSubframeEnabled: boolean = this.controller.getSubframeErrorPageEnabled();
+          console.info("Subframe error page enabled: " + isSubframeEnabled);
+
+          // Enable only the mainframe error page feature, not the subframe.
+          this.controller.setErrorPageEnabled(true, false);
+          let isSubframeEnabled2: boolean = this.controller.getSubframeErrorPageEnabled();
+          console.info("Subframe error page enabled after disable: " + isSubframeEnabled2);
+        })
+    }
+  }
+}
+```
+
+> **Example description:** The `iframe_error.html` file used in the example is the same as that in the [setErrorPageEnabled](#seterrorpageenabled) example, and must be placed in the `resources/rawfile/` directory of the app resources.
+<!--no_check-->

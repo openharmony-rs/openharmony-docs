@@ -1,12 +1,14 @@
 # Class (ProxyConfig)
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=5bd67952550947311c46c7276be4f0642b76503e translatedAt=2026-08-07T04:45:07.098Z pushedAt=2026-08-07T08:11:15.498Z -->
 
-Implements a **ProxyConfig** object to configure proxies.
+ProxyConfig is a class in the ArkWeb framework used to configure network proxy rules. It works with [ProxyController](./arkts-apis-webview-ProxyController.md) to implement proxy control over network requests of all Web components in an app. Through ProxyConfig, developers can flexibly define various proxy rules: specifying a particular proxy server for specific URLs, specifying direct server connections for certain URLs, defining rules to bypass the proxy, and more.
 
 > **NOTE**
 >
@@ -20,7 +22,31 @@ Implements a **ProxyConfig** object to configure proxies.
 
 insertProxyRule(proxyRule: string, schemeFilter?: ProxySchemeFilter): void
 
-Inserts a proxy rule for URLs matching **schemeFilter**. If **schemeFilter** is empty, all URLs use the specified proxy.
+Inserts a proxy rule. URLs matching schemeFilter will use the specified proxy. If the schemeFilter parameter is not specified, the default value MATCH_ALL_SCHEMES will be used, and all URLs will use the specified proxy.
+
+The proxy format is [scheme://]host[:port].
+
+The scheme is optional and must be HTTP, HTTPS, or SOCKS. The default value of scheme is HTTP.
+
+The host is a bracketed IPv6 literal, an IPv4 literal, or one or more labels separated by dots.
+
+The port number is optional. The default port is 80 for HTTP, 443 for HTTPS, and 1080 for SOCKS.
+
+For example:
+
+- example.com host: example.com
+
+- https://example.com  scheme: https  host: example.com
+
+- example.com:8888     host: example.com  port: 8888
+
+- https://example.com:8888  scheme: https  host: example.com  port: 8888
+
+- 192.168.1.1  host: 192.168.1.1
+
+- 192.168.1.1:8888  host: 192.168.1.1 port: 8888
+
+- [10:20:30:40:50:60:70:80]
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -47,7 +73,11 @@ For details about the sample code, see [removeProxyOverride](./arkts-apis-webvie
 
 insertDirectRule(schemeFilter?: ProxySchemeFilter): void
 
-Inserts a proxy rule to specify that URLs matching **schemeFilter** are directly connected to the server.
+Inserts a direct rule, specifying that URLs matching the schemeFilter condition will directly connect to the server.
+
+> **NOTE**
+>
+> - Both [insertBypassRule](#insertbypassrule15) and [bypassHostnamesWithoutPeriod](#bypasshostnameswithoutperiod15) can also implement direct URL connection. The difference lies in the matching dimension: this method matches by protocol type through schemeFilter; insertBypassRule matches by URL pattern through a bypassRule string; bypassHostnamesWithoutPeriod requires no parameters and automatically enables direct connection for hostnames without a period. You can choose the appropriate method based on the URL range that needs direct connection.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -73,7 +103,7 @@ For details about the sample code, see [removeProxyOverride](./arkts-apis-webvie
 
 insertBypassRule(bypassRule: string): void
 
-Inserts a bypass rule to specify the URLs that should bypass the proxy and directly connect to the server.
+Inserts a bypass rule, specifying which URLs should bypass the proxy and directly connect to the server. When [enableReverseBypass](#enablereversebypass15) is set to true, URLs matching bypassRule will use the proxy instead of bypassing it.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -81,7 +111,7 @@ Inserts a bypass rule to specify the URLs that should bypass the proxy and direc
 
 | Name         | Type    |  Mandatory | Description          |
 | ---------------| ------- | ---- | ------------- |
-| bypassRule     | string  | Yes  | Bypass rule used to specify the URLs that should bypass the proxy.|
+| bypassRule     | string  | Yes   | Bypass rule string that specifies the URL matching rule for bypassing the proxy. It supports host name or domain name formats (for example, "example.com" matches the domain and its subdomains). URLs matching the bypassRule bypass the proxy. |
 
 **Error codes**
 
@@ -99,7 +129,7 @@ For details about the sample code, see [removeProxyOverride](./arkts-apis-webvie
 
 bypassHostnamesWithoutPeriod(): void
 
-Specifies that host names without a period should bypass the proxy and directly connect to the server.
+Hostnames without a period character will bypass the proxy and directly connect to the server.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -175,7 +205,7 @@ Obtains proxy rules.
 
 | Type  | Description                     |
 | ------ | ------------------------- |
-| Array\<[ProxyRule](./arkts-apis-webview-ProxyRule.md)\> | Proxy rules.|
+| Array\<[ProxyRule](./arkts-apis-webview-ProxyRule.md)\> | Proxy rule. Each ProxyRule object represents a configured proxy rule. |
 
 **Example**
 
