@@ -4,7 +4,7 @@
 <!--Owner: @gcw_dyOv3Sds-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @zzs911-->
 
 ```c
 typedef struct OH_AVRecorder_Location {...} OH_AVRecorder_Location

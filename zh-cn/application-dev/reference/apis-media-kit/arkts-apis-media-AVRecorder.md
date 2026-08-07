@@ -4,7 +4,7 @@
 <!--Owner: @gcw_dyOv3Sds-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @zzs911-->
 
 
 AVRecorder是音视频录制管理类，用于音视频录制的全流程管理，支持音频录制、视频录制及音视频混合录制，可灵活配置编码参数、添加水印、设置元数据、监听录制状态和错误事件等。适用于录制音视频并保存到文件的场景，包括需要在音频流打断期间保持录制连续性、实时监控音频振幅等场景。在调用AVRecorder的方法前，需要先调用[createAVRecorder](arkts-apis-media-f.md#mediacreateavrecorder9)接口构建一个AVRecorder实例。典型录制流程：[createAVRecorder](arkts-apis-media-f.md#mediacreateavrecorder9) → [prepare](#prepare9) → [getInputSurface](#getinputsurface9)（纯视频/音视频录制时） → [start](#start9) → [pause](#pause9)/[resume](#resume9) → [stop](#stop9) → [release](#release9)。
@@ -13,8 +13,8 @@ AVRecorder是音视频录制管理类，用于音视频录制的全流程管理�
 
 > **说明：**
 >
-> - 本模块首批接口从API版本6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> - 本Interface首批接口从API版本9开始支持。
+> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本Interface首批接口从API version 9开始支持。
 > - 相机视频录制功能需配合相机模块使用，相机模块接口的使用详情请参考[相机管理](../apis-camera-kit/arkts-apis-camera.md)。
 
 ## 导入模块
@@ -29,7 +29,7 @@ import { media } from '@kit.MediaKit';
 
 | 名称    | 类型                                 | 只读 | 可选 | 说明               |
 | ------- | ------------------------------------ | ---- | ---- | ------------------ |
-| state9+ | [AVRecorderState](arkts-apis-media-t.md#avrecorderstate9) | 是   | 否   | 音视频录制的状态。<br>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
+| state9+ | [AVRecorderState](arkts-apis-media-t.md#avrecorderstate9) | 是   | 否   | 音视频录制的状态。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## prepare<sup>9+</sup>
 
@@ -49,7 +49,7 @@ prepare(config: AVRecorderConfig, callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                                   | 必填 | 说明                                  |
 | -------- | -------------------------------------- | ---- | ------------------------------------- |
-| config   | [AVRecorderConfig](arkts-apis-media-i.md#avrecorderconfig9) | 是   | 配置音视频录制的相关参数。纯音频录制时需设置audioSourceType，纯视频或音视频录制时需设置videoSourceType。 |
+| config   | [AVRecorderConfig](arkts-apis-media-i.md#avrecorderconfig9) | 是   | 配置音视频录制的相关参数。音频录制时需设置audioSourceType，视频录制时需设置videoSourceType。 |
 | callback | AsyncCallback\<void>                   | 是   | 回调函数。当prepare接口成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -115,7 +115,7 @@ prepare(config: AVRecorderConfig): Promise\<void>
 该权限为用户授权权限，需要通过调用[requestPermissionsFromUser()](../apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9)向用户申请。不涉及音频录制时，无需获取ohos.permission.MICROPHONE权限。
 
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -521,7 +521,7 @@ start(): Promise\<void>
 
 必须在[prepare](#prepare9-1)之后调用，调用成功后进入started状态。录制视频时，还需在[getInputSurface](#getinputsurface9-1)接口调用成功后，才能调用此接口。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -602,7 +602,7 @@ pause(): Promise\<void>
 
 必须在[start](#start9-1)之后调用，调用成功后进入paused状态，之后可以通过调用[resume](#resume9-1)接口来恢复录制。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -683,7 +683,7 @@ resume(): Promise\<void>
 
 必须在[pause](#pause9-1)之后调用，调用成功后进入started状态，之后可以再次调用[pause](#pause9-1)接口暂停录制，或调用[stop](#stop9-1)接口停止录制。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -768,7 +768,7 @@ stop(): Promise\<void>
 
 纯音频录制时，需要重新调用[prepare](#prepare9-1)接口才能重新录制；纯视频录制、音视频录制时，需要重新调用[prepare](#prepare9-1)和[getInputSurface](#getinputsurface9-1)接口才能重新录制。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -932,7 +932,7 @@ release(): Promise\<void>
 
 与[createAVRecorder](arkts-apis-media-f.md#mediacreateavrecorder9)配对使用，录制流程结束后应调用此接口释放资源。释放音视频录制资源之后，该AVRecorder实例不能再进行任何操作。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -1319,7 +1319,7 @@ on(type: 'stateChange', callback: OnAVRecorderStateChangeHandler): void
 
 订阅录制状态机[AVRecorderState](arkts-apis-media-t.md#avrecorderstate9)切换的回调事件。当AVRecorderState发生变化时，会通过回调方法通知用户。用户只能订阅一个回调方法，重复订阅时以最后一次订阅的回调接口为准。使用callback异步回调。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -1353,7 +1353,7 @@ off(type: 'stateChange', callback?: OnAVRecorderStateChangeHandler): void
 
 取消订阅录制状态机[AVRecorderState](arkts-apis-media-t.md#avrecorderstate9)切换的回调事件。使用callback异步回调。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -1362,7 +1362,7 @@ off(type: 'stateChange', callback?: OnAVRecorderStateChangeHandler): void
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | 录制状态机切换的回调类型，支持的事件：'stateChange'，用户操作和系统都会触发此事件。 |
-| callback<sup>12+</sup> | [OnAVRecorderStateChangeHandler](arkts-apis-media-t.md#onavrecorderstatechangehandler12) | 否   | 回调函数，用于接收录制状态机切换事件。如果指定参数则取消对应callback（callback对象不能是匿名函数），否则取消所有callback。<br>从API版本12开始支持此参数。 |
+| callback<sup>12+</sup> | [OnAVRecorderStateChangeHandler](arkts-apis-media-t.md#onavrecorderstatechangehandler12) | 否   | 回调函数，用于接收录制状态机切换事件。如果指定参数则取消对应callback（callback对象不能是匿名函数），否则取消所有callback。<br>从API version 12开始支持此参数。 |
 
 **示例：**
 
@@ -1378,7 +1378,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 用户只能订阅一个错误事件的回调方法，当用户重复订阅时，以最后一次订阅的回调接口为准。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -1422,7 +1422,7 @@ off(type: 'error', callback?: ErrorCallback): void
 
 取消订阅录制错误的回调事件。使用callback异步回调。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -1431,7 +1431,7 @@ off(type: 'error', callback?: ErrorCallback): void
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | 录制错误的回调类型，支持的事件：'error'。 |
-| callback<sup>12+</sup> | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，用于接收录制错误事件。如果指定参数则取消对应callback（callback对象不能是匿名函数），否则取消所有callback。<br>从API版本12开始支持此参数。                   |
+| callback<sup>12+</sup> | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，用于接收录制错误事件。如果指定参数则取消对应callback（callback对象不能是匿名函数），否则取消所有callback。<br>从API version 12开始支持此参数。                   |
 
 **示例：**
 
@@ -1490,7 +1490,7 @@ off(type: 'audioCapturerChange', callback?: Callback\<audio.AudioCapturerChangeI
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | 录音配置变化的回调类型，支持的事件：'audioCapturerChange'。 |
-| callback<sup>12+</sup> | Callback\<[audio.AudioCapturerChangeInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiocapturerchangeinfo9)> | 否 | 回调函数，用于接收变化后的录音配置全量信息。如果指定参数则取消对应callback（callback对象不能是匿名函数），否则取消所有callback。<br>从API版本12开始支持此参数。|
+| callback<sup>12+</sup> | Callback\<[audio.AudioCapturerChangeInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiocapturerchangeinfo9)> | 否 | 回调函数，用于接收变化后的录音配置全量信息。如果指定参数则取消对应callback（callback对象不能是匿名函数），否则取消所有callback。<br>从API version 12开始支持此参数。|
 
 **示例：**
 
