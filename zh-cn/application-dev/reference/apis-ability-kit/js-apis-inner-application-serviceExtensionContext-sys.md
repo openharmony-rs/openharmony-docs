@@ -354,8 +354,8 @@ startAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback\<
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden.        |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled. <br>适用版本：10+ |
-| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by EDM. |
 | 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
@@ -550,8 +550,8 @@ startAbilityWithAccount(want: Want, accountId: number, options?: StartOptions): 
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden.        |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled. <br>适用版本：10+ |
-| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by EDM. |
 | 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
@@ -964,8 +964,8 @@ startAbilityAsCaller(want: Want, callback: AsyncCallback\<void>): void
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden.        |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled. <br>适用版本：10+ |
-| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
+| 16000012 | The application is controlled.  |
+| 16000013 | The application is controlled by EDM.  |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
@@ -1042,8 +1042,8 @@ startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback\
 | 16000008 | The crowdtesting application expires. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled. <br>适用版本：10+ |
-| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
+| 16000012 | The application is controlled.  |
+| 16000013 | The application is controlled by EDM.  |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
@@ -1131,8 +1131,8 @@ startAbilityAsCaller(want: Want, options?: StartOptions): Promise\<void>
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden.        |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled. <br>适用版本：10+ |
-| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
+| 16000012 | The application is controlled.  |
+| 16000013 | The application is controlled by EDM.  |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
@@ -2576,7 +2576,7 @@ openLink(link: string, options?: OpenLinkOptions): Promise&lt;void&gt;
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
-| 16000010 | The call with the continuation and prepare continuation flag is forbidden.        |
+| 16000010 | The call with the continuation flag is forbidden. |
 | 16000011 | The context does not exist.        |
 | 16000012 | The application is controlled.        |
 | 16000013 | The application is controlled by EDM.       |
