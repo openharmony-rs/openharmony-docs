@@ -158,19 +158,19 @@ enum OH_AudioSuite_Result
 | 枚举项 | 描述 |
 | -- | -- |
 | AUDIOSUITE_SUCCESS = 0 | 调用成功。 |
-| AUDIOSUITE_ERROR_INVALID_PARAM = 1 | 输入参数无效。 |
-| AUDIOSUITE_ERROR_INVALID_STATE = 2 | 非法状态。 |
-| AUDIOSUITE_ERROR_SYSTEM = 3 | 系统通用错误。 |
-| AUDIOSUITE_ERROR_UNSUPPORTED_FORMAT = 4 | 不支持的音频格式，如不支持的编码类型、采样格式等。 |
+| AUDIOSUITE_ERROR_INVALID_PARAM = 1 | 输入参数无效。可能原因：参数类型错误或参数值超出有效范围。处理步骤：请检查参数类型和范围，详见API参考文档。 |
+| AUDIOSUITE_ERROR_INVALID_STATE = 2 | 非法状态。可能原因：接口调用顺序错误或状态转换不合法。处理步骤：请检查当前状态和接口调用顺序，确保符合API要求。 |
+| AUDIOSUITE_ERROR_SYSTEM = 3 | 系统通用错误。可能原因：系统资源不足、权限缺失或系统服务异常。处理步骤：请检查系统日志、重启应用或重启设备。如仍无法解决请联系技术支持。 |
+| AUDIOSUITE_ERROR_UNSUPPORTED_FORMAT = 4 | 不支持的音频格式，如不支持的编码类型、采样格式等。处理步骤：请检查音频编码类型、采样格式、声道布局等，详见API参考文档。 |
 | AUDIOSUITE_ERROR_ENGINE_NOT_EXIST = 5 | 引擎不存在。 |
 | AUDIOSUITE_ERROR_PIPELINE_NOT_EXIST = 6 | 管线不存在。 |
 | AUDIOSUITE_ERROR_NODE_NOT_EXIST = 7 | 节点不存在。 |
-| AUDIOSUITE_ERROR_UNSUPPORTED_CONNECT = 8 | 节点之间不支持连接。 |
-| AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION = 9 | 不支持的操作。例如，效果节点不支持设置音频格式。 |
-| AUDIOSUITE_ERROR_CREATED_EXCEED_SYSTEM_LIMITS = 10 | 创建管线或者节点超过系统最大数量限制。具体情况如下：<br> 引擎最多支持创建10条管线。在API版本26.0.0之前，实时预览管线最多创建1条；在API版本26.0.0及以后，不再对实时预览管线的数量做单独限制，但管线的总数仍不得超过10条。<br> 每一个管线中，输出节点的数量不超过1个，混音节点的数量不超过3个，音源分离节点的数量不超过1个。<br> 在API version 24之前，每一个管线中，输入节点的数量不超过5个，其余效果节点的数量不超过5个；在API version 24及以后，每一个管线中，输入节点的数量不超过15个，其余效果节点的数量不超过15个。 |
-| AUDIOSUITE_ERROR_REQUIRED_PARAMETERS_MISSING = 11 | 参数缺少必要参数。例如，输入节点未设置回调函数、输出节点未设置音频格式。 |
-| AUDIOSUITE_ERROR_TIMEOUT = 12 | 操作超时。 |
-| AUDIOSUITE_ERROR_MEMORY_ALLOC_FAILED = 13 | 内存申请失败。 |
+| AUDIOSUITE_ERROR_UNSUPPORTED_CONNECT = 8 | 节点之间不支持连接。可能原因：节点类型不匹配或连接顺序错误。处理步骤：请查看文档了解节点连接规则，确保节点间连接关系正确。 |
+| AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION = 9 | 不支持的操作。例如，效果节点不支持设置音频格式。处理步骤：请检查节点类型及其支持的操作，确保调用的接口符合节点能力。 |
+| AUDIOSUITE_ERROR_CREATED_EXCEED_SYSTEM_LIMITS = 10 | 创建管线或者节点超过系统最大数量限制。具体情况如下：<br> 引擎最多支持创建10条管线。在API版本26.0.0之前，实时预览管线最多创建1条；在API版本26.0.0及以后，不再对实时预览管线的数量做单独限制，但管线的总数仍不得超过10条。<br> 每一个管线中，输出节点的数量不超过1个，混音节点的数量不超过3个，音源分离节点的数量不超过1个。<br> 在API version 24之前，每一个管线中，输入节点的数量不超过5个，其余效果节点的数量不超过5个；在API version 24及以后，每一个管线中，输入节点的数量不超过15个，其余效果节点的数量不超过15个。处理步骤：请检查当前已创建的管线和节点数量，调整创建数量以满足系统限制。 |
+| AUDIOSUITE_ERROR_REQUIRED_PARAMETERS_MISSING = 11 | 缺少必要参数。例如，输入节点未设置回调函数、输出节点未设置音频格式。处理步骤：请检查并设置必要的参数，确保节点参数配置完整。 |
+| AUDIOSUITE_ERROR_TIMEOUT = 12 | 操作超时。可能原因：系统负载过高、处理数据量大或资源受限。处理步骤：建议稍后重试或关闭其他应用释放系统资源。 |
+| AUDIOSUITE_ERROR_MEMORY_ALLOC_FAILED = 13 | 内存申请失败。可能原因：系统内存不足或存在内存泄漏。处理步骤：请关闭其他应用释放内存，或检查应用是否存在内存泄漏。 |
 
 ### OH_Audio_SampleFormat
 
@@ -187,9 +187,9 @@ enum OH_Audio_SampleFormat
 | 枚举项 | 描述 |
 | -- | -- |
 | AUDIO_SAMPLE_U8 = 0 | Unsigned 8位。 |
-| AUDIO_SAMPLE_S16LE = 1 | Short 16位小端。 |
-| AUDIO_SAMPLE_S24LE = 2 | Short 24位小端。 |
-| AUDIO_SAMPLE_S32LE = 3 | Short 32位小端。 |
+| AUDIO_SAMPLE_S16LE = 1 | Signed 16位小端。 |
+| AUDIO_SAMPLE_S24LE = 2 | Signed 24位小端。 |
+| AUDIO_SAMPLE_S32LE = 3 | Signed 32位小端。 |
 | AUDIO_SAMPLE_F32LE = 4 | Float 32位小端。 |
 
 ### OH_Audio_EncodingType
