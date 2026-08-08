@@ -641,7 +641,7 @@ struct PasteboardTest {
 
 ## PasteDataRecord<sup>7+</sup>
 
-对于剪贴板中内容记录的抽象定义，称之为条目。剪贴板内容部分由一个或者多个条目构成，例如一条文本内容、一份HTML、一个URI或者一个Want。
+对于剪贴板中内容记录的抽象定义，称之为条目。剪贴板内容部分由一个或者多个条目构成，例如一条文本内容、一份HTML、一个URI或者一个Want。不支持在创建PasteDataRecord之后，通过修改属性值的方式修改PasteDataRecord主属性，应在创建PasteDataRecord时制定正确的主属性值。
 
 ### 属性
 
@@ -651,13 +651,13 @@ struct PasteboardTest {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| htmlText| string | 是 | 否 | HTML内容，需符合标准HTML格式。 |
-| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 否 | Want内容。 |
-| mimeType | string | 是 | 否 | 默认数据类型。 |
-| plainText | string | 是 | 否 | 纯文本内容。 |
-| uri | string | 是 | 否 | URI内容，需符合标准URI格式。 |
-| pixelMap<sup>9+</sup> | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 否 | PixelMap内容。 |
-| data<sup>9+</sup> | Record<string, ArrayBuffer> | 是 | 否 | 自定义数据内容。 |
+| htmlText| string | 否 | 否 | HTML内容，需符合标准HTML格式。写入HTML格式内容时 |
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 否 | 否 | Want内容。 |
+| mimeType | string | 否 | 否 | 默认数据类型。 |
+| plainText | string | 否 | 否 | 纯文本内容。 |
+| uri | string | 否 | 否 | URI内容，需符合标准URI格式。 |
+| pixelMap<sup>9+</sup> | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否 | 否 | PixelMap内容。 |
+| data<sup>9+</sup> | Record<string, ArrayBuffer> | 否 | 否 | 自定义数据内容。 |
 
 ### toPlainText<sup>9+</sup>
 
