@@ -1011,7 +1011,7 @@ publish(data: Array&lt;PublishedItem&gt;, bundleName: string, callback: AsyncCal
 | -------- | -------------------------- |
 | 202      | Permission verification failed. A non-system application calls a system API.|
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700012 | The data area does not exist.|
+| 15700012 | The data area is not exist.|
 | 15700013 | The DataShareHelper instance is already closed.|
 
 **示例：**
@@ -1063,7 +1063,7 @@ publish(data: Array&lt;PublishedItem&gt;, bundleName: string, version?: number):
 | -------- | -------------------------- |
 | 202      | Permission verification failed. A non-system application calls a system API.|
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700012 | The data area does not exist.|
+| 15700012 | The data area is not exist.|
 | 15700013 | The DataShareHelper instance is already closed.|
 
 **示例：**
