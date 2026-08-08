@@ -47,7 +47,7 @@ submitMetadata(metadata: string): void
 import { BusinessError } from '@kit.BasicServicesKit';
 import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 
-let metadata: string = '';
+let metadata: string = 'sample metadata';
 try {
   metadataBinding.submitMetadata(metadata);
 } catch (error) {
@@ -69,7 +69,7 @@ on(type: 'operationSubmitMetadata', bundleName: string, callback: Callback&lt;nu
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-|type| string|是|事件类型，type为'operationSubmitMetadata'，表示系统应用获取编码内容。|
+|type| string|是|事件类型，固定传入'operationSubmitMetadata'，表示系统应用获取编码内容。|
 |bundleName|string|是|应用包名，用于标识注册订阅事件的第三方应用。在事件发生时，系统将通过此包名识别并通知对应的注册应用。需确保传入的包名为有效的应用包名。|
 |callback|Callback&lt;number&gt;|是|回调函数，用于返回事件码。当事件值为1时表示截图事件，目前仅支持截图事件。注意：回调函数应快速执行，避免阻塞UI线程。| 
 
@@ -87,7 +87,7 @@ on(type: 'operationSubmitMetadata', bundleName: string, callback: Callback&lt;nu
 import { BusinessError } from '@kit.BasicServicesKit';
 import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 
-let bundleName: string = '';
+let bundleName: string = 'com.example.app';
 try {
   metadataBinding.on('operationSubmitMetadata', bundleName, (event: number) => {
     if (event == 1) {
@@ -114,7 +114,7 @@ off(type: 'operationSubmitMetadata', bundleName: string, callback?: Callback&lt;
 
 | 参数名   | 类型                             | 必填 | 说明                                                            |
 | -------- | -------------------------------- | ---- |---------------------------------------------------------------|
-|type|string|是| 事件类型，type为'operationSubmitMetadata'，表示系统应用获取编码内容。             |
+|type|string|是| 事件类型，固定传入'operationSubmitMetadata'，表示系统应用获取编码内容。             |
 |bundleName|string|是| 应用包名，标识注册应用的包名，需与订阅时传入的包名一致。|
 |callback|Callback&lt;number&gt;|否| 回调函数，用于返回事件码。需要取消监听的回调函数，需与订阅时传入的回调函数一致。建议在订阅时保存回调函数引用，在取消订阅时使用同一引用。若不填，则取消当前监听该事件的所有回调函数。 |
 
@@ -133,7 +133,7 @@ off(type: 'operationSubmitMetadata', bundleName: string, callback?: Callback&lt;
 import { BusinessError } from '@kit.BasicServicesKit';
 import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 
-let bundleName: string = '';
+let bundleName: string = 'com.example.app';
 try {
   metadataBinding.off('operationSubmitMetadata', bundleName);
 } catch (error) {

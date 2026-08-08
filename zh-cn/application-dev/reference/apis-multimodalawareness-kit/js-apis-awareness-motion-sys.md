@@ -401,7 +401,7 @@ offPickupChange(callback?: Callback&lt;PickupEvent&gt;): void
 
 | 参数名   | 类型                                             | 必填 | 说明                                   |
 | -------- | ------------------------------------------------ | ---- | -------------------------------------- |
-| callback | Callback&lt;[PickupEvent](#pickupevent)&gt;     | 否   | 需取消的拾取事件回调函数，若无此参数，则取消订阅拾取事件的所有回调函数。             |
+| callback | Callback&lt;[PickupEvent](#pickupevent)&gt;     | 否   | 需取消的回调函数，不传此参数时，则取消订阅拾取事件的所有回调函数。             |
 
 **错误码**：
 

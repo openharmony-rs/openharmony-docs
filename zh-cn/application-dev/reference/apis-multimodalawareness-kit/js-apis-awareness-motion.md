@@ -54,8 +54,8 @@ on(type: 'operatingHandChanged', callback: Callback&lt;OperatingHandStatus&gt;):
 如果设备不支持此功能，将返回801错误码。
 
 **需要权限**：
-- API版本20+：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
-- API版本15-19：ohos.permission.ACTIVITY_MOTION
+- API version 20+：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
+- API version 15-19：ohos.permission.ACTIVITY_MOTION
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -63,7 +63,7 @@ on(type: 'operatingHandChanged', callback: Callback&lt;OperatingHandStatus&gt;):
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                           | 是   | 事件类型。type为“operatingHandChanged”，表示操作手状态变化。 |
+| type     | string                           | 是   | 事件类型。固定传入'operatingHandChanged'，表示操作手状态变化。 |
 | callback | Callback&lt;[OperatingHandStatus](#operatinghandstatus)&gt; | 是   | 回调函数，返回操作手状态信息。 |
 
 **错误码**：
@@ -104,8 +104,8 @@ off(type: 'operatingHandChanged', callback?: Callback&lt;OperatingHandStatus&gt;
 取消订阅触控操作手感知事件。若未调用on()就调用off()，该方法会抛出异常。相关方法：on('operatingHandChanged')：订阅触控操作手感知事件。
 
 **需要权限**：
-- API版本20+：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
-- API版本15-19：ohos.permission.ACTIVITY_MOTION
+- API version 20+：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
+- API version 15-19：ohos.permission.ACTIVITY_MOTION
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -113,7 +113,7 @@ off(type: 'operatingHandChanged', callback?: Callback&lt;OperatingHandStatus&gt;
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                           | 是   | 事件类型。type为“operatingHandChanged”，表示操作手状态变化。 |
+| type     | string                           | 是   | 事件类型。固定传入'operatingHandChanged'，表示操作手状态变化。 |
 | callback | Callback&lt;[OperatingHandStatus](#operatinghandstatus)&gt; | 否   | 回调函数，返回操作手状态信息。需要取消监听的回调函数，需与订阅时传入的回调函数一致。若不填，则取消当前监听该事件的所有回调函数。 |
 
 **错误码**：
@@ -149,8 +149,8 @@ getRecentOperatingHandStatus(): OperatingHandStatus
 获取最新触控操作手状态。该方法直接返回最新的操作手状态，无需订阅事件即可调用。
 
 **需要权限**：
-- API版本20+：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
-- API版本15-19：ohos.permission.ACTIVITY_MOTION
+- API version 20+：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
+- API version 15-19：ohos.permission.ACTIVITY_MOTION
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -198,7 +198,7 @@ on(type: 'holdingHandChanged', callback: Callback&lt;HoldingHandStatus&gt;): voi
 
 | 参数名   | 类型                                              | 必填 | 说明                                   |
 | -------- | ------------------------------------------------- | ---- | -------------------------------------- |
-| type     | string                                            | 是   | 事件类型，type为"holdingHandChanged"，表示握持手状态变化。 |
+| type     | string                                            | 是   | 事件类型，固定传入'holdingHandChanged'，表示握持手状态变化。 |
 | callback | Callback&lt;[HoldingHandStatus](#holdinghandstatus20)&gt; | 是   | 回调函数，返回握持手状态信息。 |
 
 **错误码**：
@@ -244,7 +244,7 @@ off(type: 'holdingHandChanged', callback?: Callback&lt;HoldingHandStatus&gt;): v
 
 | 参数名   | 类型                                              | 必填 | 说明                                           |
 | -------- | ------------------------------------------------- | ---- | ---------------------------------------------- |
-| type     | string                                            | 是   | 事件类型，type为"holdingHandChanged"，表示握持手状态变化。         |
+| type     | string                                            | 是   | 事件类型，固定传入'holdingHandChanged'，表示握持手状态变化。         |
 | callback | Callback&lt;[HoldingHandStatus](#holdinghandstatus20)&gt; | 否   | 回调函数，返回握持手状态信息。需要取消监听的回调函数，需与订阅时传入的回调函数一致。若不填，则取消当前监听该事件的所有回调函数。 |
 
 **错误码**：
