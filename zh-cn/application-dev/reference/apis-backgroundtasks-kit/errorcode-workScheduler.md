@@ -111,3 +111,26 @@ Calling startWork failed.
 2. 请检查当前应用已创建的延迟任务数量是否超过10个。
 3. 请检查重复任务的重复时间设置是否满足20分钟的要求。
 
+
+## 9700006 frequencyInfo校验失败
+
+**错误信息**
+
+Check on frequencyInfo校验失败 failed.
+
+**错误描述**
+
+执行频率参数异常。
+
+**可能原因**
+
+1. frequencyInfo中，uid无效。
+2. frequencyInfo中，workId无效。
+3. frequencyInfo中，interval无效。
+
+**处理步骤**
+
+1. 请检查frequencyInfo中的uid是否与应用uid匹配。
+2. 请检查frequencyInfo中的workId是否与应用申请的延迟任务workId匹配。
+3. 请检查frequencyInfo中的interval值是否超出范围。
+
