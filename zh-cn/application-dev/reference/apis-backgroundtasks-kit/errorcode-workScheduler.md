@@ -116,17 +116,17 @@ Calling startWork failed.
 
 **错误信息**
 
-Check on frequencyInfo校验失败 failed.
+Check on frequencyInfo failed.
 
 **错误描述**
 
-执行频率参数异常。
+执行频率参数值超出有效范围。
 
 **可能原因**
 
-1. frequencyInfo中，uid无效。
-2. frequencyInfo中，workId无效。
-3. frequencyInfo中，interval无效。
+1. frequencyInfo中，uid不存在或格式不正确。
+2. frequencyInfo中，workId格式不正确或不存在。
+3. frequencyInfo中，interval值不在允许范围内或格式不正确。
 
 **处理步骤**
 

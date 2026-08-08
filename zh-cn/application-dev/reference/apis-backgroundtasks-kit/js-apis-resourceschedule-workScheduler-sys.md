@@ -36,7 +36,7 @@ import { workScheduler } from '@kit.BackgroundTasksKit';
 
 setExecFrequency(frequency: FrequencyInfo): void
 
-设置应用分组执行频率
+设置应用所在活跃分组的执行频率
 
 **起始版本：** 26.1.0
 
@@ -50,7 +50,7 @@ setExecFrequency(frequency: FrequencyInfo): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------- | ------- | ---- | ---------------------------------------- |
-| frequency | [FrequencyInfo](#frequencyInfo) | 是    | 应用分组执行频率信息。|
+| frequency | [FrequencyInfo](#frequencyInfo) | 是    | 应用所在活跃分组的执行频率信息。|
 
 **错误码：**
 
@@ -70,15 +70,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { workScheduler } from '@kit.BackgroundTasksKit';
 
 let frequencyInfo: workScheduler.FrequencyInfo = {
-  uid：20020220,
-  workId: 1,
-  interval：86400000
+  uid: 20020220,  // 该值为示例UID，并说明开发者需替换为实际应用的真实UID
+  workId: 1,  // 延迟任务ID
+  interval: 86400000 // 毫秒
 }
 try {
   workScheduler.setExecFrequency(frequencyInfo);
   console.info('workschedulerLog setExecFrequency success');
 } catch (error) {
-  console.error(`workschedulerLog resetExecFrequency failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+  console.error(`workschedulerLog setExecFrequency failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
 }
 ```
 
@@ -86,7 +86,7 @@ try {
 
 resetExecFrequency(frequency: FrequencyInfo): void
 
-取消设置应用分组执行频率
+重置应用所在活跃分组的执行频率
 
 **起始版本：** 26.1.0
 
@@ -100,7 +100,7 @@ resetExecFrequency(frequency: FrequencyInfo): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------- | ------- | ---- | ---------------------------------------- |
-| frequency | [FrequencyInfo](#frequencyInfo) | 是    | 应用分组执行频率信息。|
+| frequency | [FrequencyInfo](#frequencyInfo) | 是    | 应用所在活跃分组的执行频率信息。|
 
 **错误码：**
 
@@ -120,9 +120,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { workScheduler } from '@kit.BackgroundTasksKit';
 
 let frequencyInfo: workScheduler.FrequencyInfo = {
-  uid：20020220,
-  workId: 1,
-  interval：86400000
+  uid: 20020220,  // 该值为示例UID，并说明开发者需替换为实际应用的真实UID
+  workId: 1,  // 延迟任务ID
+  interval: 86400000  // 毫秒
 }
 try {
   workScheduler.resetExecFrequency(frequencyInfo);
@@ -134,7 +134,7 @@ try {
 
 ## FrequencyInfo
 
-执行频率的具体信息，用于设置或取消设置应用分组执行频率。
+执行频率的具体信息，用于设置或重置应用所在活跃分组的执行频率。
 
 **起始版本：** 26.1.0
 
@@ -146,14 +146,12 @@ try {
 
 >  **说明：**
 >
->  WorkInfo参数设置时需遵循以下规则：
+>  FrequencyInfo参数设置时需遵循以下规则：
 >
 >  1. uid、workId、interval为必填项。
 
-**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
-
-| 名称             | 类型                                | 只读   | 可选   | 说明               |
+| 名称             | 类型                              | 只读   | 可选   | 说明               |
 | --------------- | --------------------------------- | ---- | ---- | ---------------- |
-| uid          | number                            | 否    | 否    |应用UID。          |
-| workId          | number                            | 否    | 否    |延迟任务ID。          |
-| interval          | number                            | 否    | 否    |分组执行频率。          |
+| uid             | number                            | 否    | 否    |由系统自动分配的UID。          |
+| workId          | number                            | 否    | 否    |后台处理用的延迟任务ID。          |
+| interval        | number                            | 否    | 否    |活跃分组执行频率，单位：ms。         |
