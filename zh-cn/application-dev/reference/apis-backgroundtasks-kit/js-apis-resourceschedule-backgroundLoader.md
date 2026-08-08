@@ -11,7 +11,7 @@
 
 > **说明：** 
 >
-> - 本模块同时支持ArkTs-Dyn、ArkTS-Sta。
+> 本模块同时支持ArkTs-Dyn、ArkTS-Sta。
 >
 
 ## 导入模块
@@ -25,13 +25,13 @@ import { backgroundLoader } from '@kit.BackgroundTasksKit';
 
 **ArkTs-Sta起始版本：** 26.0.0
 
-**模型约束：**此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
 | 名称 | 类型 | 值 | 说明 |
 | -------- | -------- | -------- | -------- |
-| ON_START | string | 'onStart' | 在应用后台加载任务的onStart的回调方法中，实现页面数据的加载逻辑。代码示例参考[finishTask](#backgroundloaderfinishtask)函数的完整实例。 |
+| ON_START | string | 'onStart' | 应用需通过[Callee](../apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)将回调方法（名称为ON_START）注册至系统，后续由系统通过[Caller](../apis-ability-kit/js-apis-app-ability-uiAbility.md#caller)触发该回调。代码示例参考[finishTask](#backgroundloaderfinishtask)函数的完整实例。 |
 | ON_STOP | string | 'onStop' | 应用需要实现后台加载任务onStop的回调方法，处理后台加载任务被异常终止的情况。代码示例参考[finishTask](#backgroundloaderfinishtask)函数的完整实例。|
 
 ## backgroundLoader.registerTask
@@ -44,7 +44,7 @@ registerTask(taskInfo: TaskInfo): void
 
 **ArkTs-Sta起始版本：** 26.0.0
 
-**模型约束：**此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **需要权限**：ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -133,7 +133,7 @@ unregisterTask(taskInfo: TaskInfo): void
 
 **ArkTs-Sta起始版本：** 26.0.0
 
-**模型约束：**此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **需要权限**：ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -221,7 +221,7 @@ ArkTs-Sta: getTaskInfo(taskId: int): Promise\<TaskInfo>
 
 **ArkTs-Sta起始版本：** 26.0.0
 
-**模型约束：**此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **需要权限**：ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -295,7 +295,7 @@ finishTask(taskInfo: TaskInfo): void
 
 **ArkTs-Sta起始版本：** 26.0.0
 
-**模型约束：**此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **需要权限**：ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -463,7 +463,7 @@ ArkTS-Sta示例：
 
 **ArkTs-Sta起始版本：** 26.0.0
 
-**模型约束：**此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -475,13 +475,13 @@ ArkTS-Sta示例：
 
 ## TaskStopInfo
 
-系统回调应用的onStop[常量](#常量)方法中，若应用需要处理具体的任务停止原因，则需要从参数进行反序列化获得结构TaskStopInfo。具体示例参考[finishTask](#backgroundloaderfinishtask)函数的完整实例。
+当系统回调应用的ON_Stop时，若应用需要处理具体的任务停止原因，则需要从参数进行反序列化获得结构TaskStopInfo。具体示例参考[finishTask](#backgroundloaderfinishtask)函数的完整实例。
 
 **ArkTs-Dyn起始版本：** 26.0.0
 
 **ArkTs-Sta起始版本：** 26.0.0
 
-**模型约束：**此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -494,13 +494,13 @@ ArkTS-Sta示例：
 
 ## StopCode
 
-系统回调应用的onStop[常量](#常量)方法的TaskStopInfo参数结构体中的错误码枚举定义。
+TaskStopInfo结构体中的错误码枚举定义。
 
 **ArkTs-Dyn起始版本：** 26.0.0
 
 **ArkTs-Sta起始版本：** 26.0.0
 
-**模型约束：**此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
