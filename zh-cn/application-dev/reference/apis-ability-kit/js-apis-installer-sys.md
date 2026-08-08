@@ -200,11 +200,11 @@ install(hapFilePaths: Array&lt;string&gt;, installParam: InstallParam, callback:
 | 17700050 | Failed to install the HAP because enterprise normal/MDM bundle cannot be installed on non-enterprise device. |
 | 17700052 | Failed to install the HAP because debug bundle cannot be installed under non-developer mode. |
 | 17700054 | Failed to install the HAP because the HAP requests wrong permissions.|
-| 17700058 | Failed to install the HAP because the device has been controlled. |
+| 17700058 | Failed to install the HAP because the device has been controlled.<br>适用版本： 12+ |
 | 17700066 | Failed to install the HAP because installing the native package failed. |
 | 17700073 | Failed to install the HAP because an application with the same bundle name but different signature information exists on the device. |
 | 17700076 | Failed to install the HAP or HSP because the app distribution type is not allowed. |
-| 17700077 | Failed to install the HAP and restore to preinstalled bundle. |
+| 17700077 | Failed to install the HAP and restore to preinstalled bundle.<br>适用版本： 19+ |
 
 **示例：**
 
@@ -290,11 +290,11 @@ install(hapFilePaths: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;):
 | 17700050 | Failed to install the HAP because enterprise normal/MDM bundle cannot be installed on non-enterprise device. |
 | 17700052 | Failed to install the HAP because debug bundle cannot be installed under non-developer mode. |
 | 17700054 | Failed to install the HAP because the HAP requests wrong permissions.|
-| 17700058 | Failed to install the HAP because the device has been controlled. |
+| 17700058 | Failed to install the HAP because the device has been controlled.<br>适用版本： 12+ |
 | 17700066 | Failed to install the HAP because installing the native package failed. |
 | 17700073 | Failed to install the HAP because an application with the same bundle name but different signature information exists on the device. |
 | 17700076 | Failed to install the HAP or HSP because the app distribution type is not allowed. |
-| 17700077 | Failed to install the HAP and restore to preinstalled bundle. |
+| 17700077 | Failed to install the HAP and restore to preinstalled bundle.<br>适用版本： 19+ |
 
 **示例：**
 
@@ -384,11 +384,11 @@ install(hapFilePaths: Array\<string\>, installParam?: InstallParam) : Promise\<v
 | 17700050 | Failed to install the HAP because enterprise normal/MDM bundle cannot be installed on non-enterprise device. |
 | 17700052 | Failed to install the HAP because debug bundle cannot be installed under non-developer mode. |
 | 17700054 | Failed to install the HAP because the HAP requests wrong permissions.|
-| 17700058 | Failed to install the HAP because the device has been controlled. |
+| 17700058 | Failed to install the HAP because the device has been controlled.<br>适用版本： 12+ |
 | 17700066 | Failed to install the HAP because installing the native package failed. |
 | 17700073 | Failed to install the HAP because an application with the same bundle name but different signature information exists on the device. |
 | 17700076 | Failed to install the HAP or HSP because the app distribution type is not allowed. |
-| 17700077 | Failed to install the HAP and restore to preinstalled bundle. |
+| 17700077 | Failed to install the HAP and restore to preinstalled bundle.<br>适用版本： 19+ |
 
 **示例：**
 
@@ -454,8 +454,8 @@ uninstall(bundleName: string, installParam: InstallParam, callback: AsyncCallbac
 | 17700020 | The specified bundle is a pre-installed bundle and cannot be uninstalled. |
 | 17700040 | The specified bundle is a shared bundle and cannot be uninstalled. |
 | 17700045 | Failed to uninstall the HAP because uninstall is not allowed by the enterprise device management. |
-| 17700060 | The specified application cannot be uninstalled. |
-| 17700062 | Failed to uninstall the app because the app is locked. |
+| 17700060 | The specified application cannot be uninstalled.<br>适用版本： 13+ |
+| 17700062 | Failed to uninstall the app because the app is locked.<br>适用版本： 15+ |
 | 17700067 | Failed to uninstall the HAP because uninstalling the native package failed. |
 
 **示例：**
@@ -521,7 +521,7 @@ uninstall(bundleName: string, callback: AsyncCallback&lt;void&gt;): void
 | 17700020 | The specified bundle is a pre-installed bundle and cannot be uninstalled. |
 | 17700040 | The specified bundle is a shared bundle and cannot be uninstalled. |
 | 17700045 | Failed to uninstall the HAP because uninstall is not allowed by the enterprise device management. |
-| 17700060 | The specified application cannot be uninstalled. |
+| 17700060 | The specified application cannot be uninstalled.<br>适用版本： 13+ |
 | 17700067 | Failed to uninstall the HAP because uninstalling the native package failed. |
 
 **示例：**
@@ -588,8 +588,8 @@ uninstall(bundleName: string, installParam?: InstallParam) : Promise\<void\>
 | 17700020 | The specified bundle is a pre-installed bundle and cannot be uninstalled. |
 | 17700040 | The specified bundle is a shared bundle and cannot be uninstalled. |
 | 17700045 | Failed to uninstall the HAP because uninstall is not allowed by the enterprise device management. |
-| 17700060 | The specified application cannot be uninstalled. |
-| 17700062 | Failed to uninstall the app because the app is locked. |
+| 17700060 | The specified application cannot be uninstalled.<br>适用版本： 13+ |
+| 17700062 | Failed to uninstall the app because the app is locked.<br>适用版本： 15+ |
 | 17700067 | Failed to uninstall the HAP because uninstalling the native package failed. |
 
 **示例：**
