@@ -464,7 +464,7 @@ removeSlot(slotType: SlotType, callback: AsyncCallback\<void\>): void
 
 | 参数名     | 类型                  | 必填 | 说明                                                        |
 | -------- | --------------------- | ---- | ----------------------------------------------------------- |
-| slotType | [SlotType](#slottype)              | 是   | 通知渠道类型,目前分为社交通信、服务提醒、内容咨询和其他类型。 |
+| slotType | [SlotType](#slottype)              | 是   | 通知渠道类型，目前分为社交通信、服务提醒、内容咨询和其他类型。 |
 | callback | AsyncCallback\<void\> | 是   | 表示被指定的回调方法。                                        |
 
 **示例：**
@@ -496,7 +496,7 @@ removeSlot(slotType: SlotType): Promise\<void\>
 
 | 参数名     | 类型     | 必填 | 说明                                                        |
 | -------- | -------- | ---- | ----------------------------------------------------------- |
-| slotType | [SlotType](#slottype) | 是   | 通知渠道类型,目前分为社交通信、服务提醒、内容咨询和其他类型。 |
+| slotType | [SlotType](#slottype) | 是   | 通知渠道类型，目前分为社交通信、服务提醒、内容咨询和其他类型。 |
 
 **返回值：**
 
@@ -756,7 +756,7 @@ Notification.cancelGroup(groupName).then(() => {
 
 isSupportTemplate(templateName: string, callback: AsyncCallback\<boolean\>): void
 
-在使用[通知模板](js-apis-inner-notification-notificationTemplate.md)发布通知前，可以通过该接口查询是否支持对应的通知模板。使用callback异步回调。
+在使用[NotificationTemplate](js-apis-inner-notification-notificationTemplate.md)发布通知前，可以通过该接口查询是否支持对应的通知模板。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -788,7 +788,7 @@ Notification.isSupportTemplate(templateName, isSupportTemplateCallback);
 
 isSupportTemplate(templateName: string): Promise\<boolean\>
 
-在使用[通知模板](js-apis-inner-notification-notificationTemplate.md)发布通知前，可以通过该接口查询是否支持对应的通知模板。使用callback异步回调。
+在使用[NotificationTemplate](js-apis-inner-notification-notificationTemplate.md)发布通知前，可以通过该接口查询是否支持对应的通知模板。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 

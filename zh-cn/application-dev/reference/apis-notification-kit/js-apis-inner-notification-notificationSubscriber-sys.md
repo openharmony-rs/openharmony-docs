@@ -533,9 +533,9 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 
 | 名称   | 类型    | 只读 | 可选 | 说明             |
 | ------ | ------- | ---- | --- | ---------------- |
-| onSystemUpdate | [SystemUpdateCallback](#systemupdatecallback23) | 否 | 是 | 返回携带系统属性值的通知信息。 |
-| onEnabledSilentReminderChanged | [EnabledSilentReminderChangedCallback](#enabledsilentreminderchangedcallback24) | 否 | 是 | 返回应用通知静默提醒的使能状态变化。 |
-| onBadgeEnabledChanged | [BadgeEnabledChangedCallback](#badgeenabledchangedcallback12) | 否 | 是 | 返回应用角标的使能状态变化。 |
+| onSystemUpdate<sup>23+</sup> | [SystemUpdateCallback](#systemupdatecallback23) | 否 | 是 | 返回携带系统属性值的通知信息。 |
+| onEnabledSilentReminderChanged<sup>24+</sup> | [EnabledSilentReminderChangedCallback](#enabledsilentreminderchangedcallback24) | 否 | 是 | 返回应用通知静默提醒的使能状态变化。 |
+| onBadgeEnabledChanged<sup>12+</sup> | [BadgeEnabledChangedCallback](#badgeenabledchangedcallback12) | 否 | 是 | 返回应用角标的使能状态变化。 |
 | onNotificationSwitchChanged | [NotificationSwitchChangedCallback](#notificationswitchchangedcallback) | 否 | 是 | 返回由[notificationManager.setNotificationSwitch](js-apis-notificationManager-sys.md#notificationmanagersetnotificationswitch)接口设置的通知开关状态变化。<br> **起始版本：** 26.0.0<br> **模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## SubscribeCallbackData
@@ -627,7 +627,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 | ----------- | ------ | ---- | ---- | ------------ |
 | bundle      | string | 是   | 否   | 应用的包名。 |
 | uid         | number | 是   | 否   | 应用的uid。  |
-| enableStatus | [PriorityEnableStatus](js-apis-notificationManager-sys.md#priorityenablestatus23) | 是  | 否  | 应用通知的优先使能状态。 |
+| enableStatus | [notificationManager.PriorityEnableStatus](js-apis-notificationManager-sys.md#priorityenablestatus23) | 是  | 否  | 应用通知的优先使能状态。 |
 
 ## NotificationSwitchChangedCallbackData
 
