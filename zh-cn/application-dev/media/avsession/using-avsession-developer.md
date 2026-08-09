@@ -10,9 +10,9 @@
 
 ## 基本概念
 
-- 媒体会话元数据（AVMetadata）：用于描述媒体数据相关属性，包含标识当前媒体的ID（assetId），上一首媒体的ID（previousAssetId），下一首媒体的ID（nextAssetId），标题（title），艺术家（artist），专辑作者（author），专辑名称（album），词作者（writer），媒体时长（duration）等属性。
+- 媒体会话元数据（AVMetadata）：用于描述媒体数据相关属性，包含标识当前媒体的ID（assetId）、上一首媒体的ID（previousAssetId）、下一首媒体的ID（nextAssetId）、标题（title）、艺术家（artist）、专辑作者（author）、专辑名称（album）、词作者（writer）和媒体时长（duration）等属性。
 
-- 媒体播放状态（AVPlaybackState）：用于描述媒体播放状态的相关属性，包含当前媒体的播放状态（state）、播放位置（position）、播放倍速（speed）、缓冲时间（bufferedTime）、循环模式（loopMode）、是否收藏（isFavorite）、正在播放的媒体ID（activeItemId）、自定义媒体数据（extras）等属性。
+- 媒体播放状态（AVPlaybackState）：用于描述媒体播放状态的相关属性，包含当前媒体的播放状态（state）、播放位置（position）、播放倍速（speed）、缓冲时间（bufferedTime）、循环模式（loopMode）、是否收藏（isFavorite）、正在播放的媒体ID（activeItemId）和自定义媒体数据（extras）等属性。
 
 ## 接口说明
 

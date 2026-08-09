@@ -92,7 +92,7 @@ struct Index {
 
 ### 元数据信息
 
-元数据信息[AVMetadata](../../reference/apis-avsession-kit/arkts-apis-avsession-i.md#avmetadata10)包括：当前媒体的ID（assetId），上一首媒体的ID（previousAssetId），下一首媒体的ID（nextAssetId），标题（title），专辑作者（author），艺术家（artist），专辑名称（album），词作者（writer），媒体图片（mediaImage），媒体时长（duration）等。
+元数据信息[AVMetadata](../../reference/apis-avsession-kit/arkts-apis-avsession-i.md#avmetadata10)包括：当前媒体的ID（assetId）、上一首媒体的ID（previousAssetId）、下一首媒体的ID（nextAssetId）、标题（title）、专辑作者（author）、艺术家（artist）、专辑名称（album）、词作者（writer）、媒体图片（mediaImage）和媒体时长（duration）等。
 
 <!-- @[setAVMetadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SetAVMetadata.ets) -->
 
@@ -156,7 +156,7 @@ struct Index {
 >
 > - lyric字段仅支持LRC格式（时间标签+歌词信息，如[00:25.44]歌词信息）的歌词内容，若应用传入其他格式的歌词内容，系统播控中心存在解析失败从而导致歌词显示异常问题。
 >
-> - lyric字段和singleLyricText字段的大小均分别不允许超过40960字节，否则会由于系统传输限制导致歌词信息设置失效。
+> - lyric字段和singleLyricText字段的大小均不允许超过40960字节，否则会由于系统传输限制导致歌词信息设置失效。
 
 <!-- @[settingLyrics](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SettingLyrics.ets) -->
 
@@ -775,7 +775,7 @@ struct Index {
 应用正确接入AVSession后，可以通过注册控制指令的方式来实现监听蓝牙、有线耳机的按键事件，AVSession提供了如下两种实现方式：
 - 方式一（推荐使用）：
 
- 应用按需[注册需要的控制命令](#控制命令的处理)，目前支持转换的AVSession控制命令如下：
+  应用可以根据[控制命令的处理](#控制命令的处理)按需注册需要的控制命令，目前支持转换的AVSession控制命令如下：
   | 控制命令 | 功能说明   |
   | ------  | -------------------------|
   | play    | 播放命令。 |

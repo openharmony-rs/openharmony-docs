@@ -54,13 +54,13 @@ type AVCastControlCommandType = 'play' | 'pause' | 'stop' | 'playNext' | 'playPr
 | 'stop'           | 停止。无需传入参数。         |
 | 'playNext'       | 下一首。无需传入参数。       |
 | 'playPrevious'   | 上一首。无需传入参数。       |
-| 'fastForward'    | 快进。对应参数使用number类型，单位毫秒（ms）。       |
-| 'rewind'         | 快退。对应参数使用number类型，单位毫秒（ms）。        |
-| 'seek'           | 跳转到指定时间点。对应参数使用number类型，单位毫秒（ms）。 |
+| 'fastForward'    | 快进。对应参数使用number类型，单位为毫秒（ms）。       |
+| 'rewind'         | 快退。对应参数使用number类型，单位为毫秒（ms）。        |
+| 'seek'           | 跳转到指定时间点。对应参数使用number类型，单位为毫秒（ms）。 |
 | 'setVolume'      | 设置音量。对应参数使用number类型，可通过[AVPlaybackState.maxVolume](arkts-apis-avsession-i.md#avplaybackstate10)获取系统最大音量。     |
 | 'setSpeed'       | 设置播放倍速。在音视频投播场景下，远端设备使用DLNA协议连接时，不支持设置此项。对应参数使用[media.PlaybackSpeed](../apis-media-kit/arkts-apis-media-e.md#playbackspeed8)。 |
 | 'setLoopMode'    | 设置循环模式。对应参数使用[LoopMode](arkts-apis-avsession-e.md#loopmode10)。 |
-| 'toggleFavorite' | 切换收藏状态。对应参数使用[AVMetadata.assetId](arkts-apis-avsession-i.md#avmetadata10)。 |
+| 'toggleFavorite' | 切换收藏状态。对应参数使用[AVMetadata.assetId](arkts-apis-avsession-i.md#avmetadata10)指定媒体资源标识符。 |
 | 'toggleMute' | 切换静音状态。无需传入参数。 |
 
 ## ExtraInfo<sup>18+</sup>
@@ -120,7 +120,7 @@ type AVControlCommandType = 'play' | 'pause' | 'stop' | 'playNext' | 'playPrevio
 | 'playPrevious'   | 上一首。无需传入参数。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | 'fastForward'    | 快进。对应参数请参考[SkipIntervals](arkts-apis-avsession-e.md#skipintervals11)，表示快进的时间间隔。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | 'rewind'         | 快退。对应参数请参考[SkipIntervals](arkts-apis-avsession-e.md#skipintervals11)，表示快退的时间间隔。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| 'seek'           | 跳转到指定时间点。对应参数使用number类型，单位毫秒（ms）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| 'seek'           | 跳转到指定时间点。对应参数使用number类型，单位为毫秒（ms）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | 'setSpeed'       | 设置播放倍速。对应参数使用number类型。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | 'setLoopMode'    | 设置循环模式。对应参数使用[LoopMode](arkts-apis-avsession-e.md#loopmode10)。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | 'setTargetLoopMode' <sup>18+</sup>   | 设置目标循环模式。对应参数使用[LoopMode](arkts-apis-avsession-e.md#loopmode10)。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。  |

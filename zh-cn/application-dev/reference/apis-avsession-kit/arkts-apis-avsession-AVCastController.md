@@ -24,7 +24,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 getAVPlaybackState(callback: AsyncCallback\<AVPlaybackState>): void
 
-获取当前的远端播放状态。结果通过callback异步回调方式返回。
+获取当前的远端播放状态。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -58,7 +58,7 @@ avCastController.getAVPlaybackState((err: BusinessError, state: avSession.AVPlay
 
 getAVPlaybackState(): Promise\<AVPlaybackState>
 
-获取当前的远端播放状态。结果通过Promise异步回调方式返回。
+获取当前的远端播放状态。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -246,7 +246,7 @@ avCastController.getSupportedPlaySpeeds().then((nums: number[]) => {
 
 sendControlCommand(command: AVCastControlCommand): Promise\<void>
 
-通过控制器发送命令到其对应的会话。结果通过Promise异步回调方式返回。
+通过控制器发送命令到其对应的会话。使用Promise异步回调。
 
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -291,7 +291,7 @@ avCastController.sendControlCommand(avCommand).then(() => {
 
 sendControlCommand(command: AVCastControlCommand, callback: AsyncCallback\<void>): void
 
-通过会话控制器发送命令到其对应的会话。结果通过callback异步回调方式返回。
+通过会话控制器发送命令到其对应的会话。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -370,7 +370,7 @@ avCastController.sendCustomData({customData : "This is custom data"}).then(() =>
 
 prepare(item: AVQueueItem, callback: AsyncCallback\<void>): void
 
-准备播放媒体资源，即进行播放资源的加载和缓冲。结果通过callback异步回调方式返回。
+准备播放媒体资源，即进行播放资源的加载和缓冲。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -425,7 +425,7 @@ avCastController.prepare(playItem, (err: BusinessError) => {
 
 prepare(item: AVQueueItem): Promise\<void>
 
-准备播放媒体资源，即进行播放资源的加载和缓冲。结果通过Promise异步回调方式返回。
+准备播放媒体资源，即进行播放资源的加载和缓冲。使用Promise异步回调。
 
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -486,7 +486,7 @@ avCastController.prepare(playItem).then(() => {
 
 start(item: AVQueueItem, callback: AsyncCallback\<void>): void
 
-启动播放某个媒体资源。结果通过callback异步回调方式返回。
+启动播放某个媒体资源。使用callback异步回调。
 
 > **说明：**
 >
@@ -546,7 +546,7 @@ avCastController.start(playItem, (err: BusinessError) => {
 
 start(item: AVQueueItem): Promise\<void>
 
-启动播放某个媒体资源。结果通过Promise异步回调方式返回。
+启动播放某个媒体资源。使用Promise异步回调。
 
 > **说明：**
 >
@@ -610,7 +610,7 @@ avCastController.start(playItem).then(() => {
 
 getCurrentItem(callback: AsyncCallback\<AVQueueItem>): void
 
-获取当前投播的资源信息。结果通过callback异步回调方式返回。
+获取当前投播的资源信息。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -644,7 +644,7 @@ avCastController.getCurrentItem((err: BusinessError, value: avSession.AVQueueIte
 
 getCurrentItem(): Promise\<AVQueueItem>
 
-获取当前投播的资源信息。结果通过Promise异步回调方式返回。
+获取当前投播的资源信息。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -678,7 +678,7 @@ avCastController.getCurrentItem().then((value: avSession.AVQueueItem) => {
 
 getValidCommands(callback: AsyncCallback<Array\<AVCastControlCommandType>>): void
 
-获取当前支持的命令。结果通过callback异步回调方式返回。
+获取当前支持的命令。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -712,7 +712,7 @@ avCastController.getValidCommands((err: BusinessError, state: avSession.AVCastCo
 
 getValidCommands(): Promise<Array\<AVCastControlCommandType>>
 
-获取当前支持的命令。结果通过Promise异步回调方式返回。
+获取当前支持的命令。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -744,7 +744,7 @@ avCastController.getValidCommands().then((state: avSession.AVCastControlCommandT
 
 processMediaKeyResponse(assetId: string, response: Uint8Array): Promise\<void>
 
-在线DRM资源投播时，处理许可证响应。结果通过Promise异步回调方式返回。
+在线DRM资源投播时，处理许可证响应。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -793,7 +793,7 @@ let keyRequestCallback: avSession.KeyRequestCallback = async(assetId: string, re
 
 release(callback: AsyncCallback\<void>): void
 
-销毁当前controller，结果通过callback异步回调方式返回。
+销毁当前controller，使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -827,7 +827,7 @@ avCastController.release((err: BusinessError) => {
 
 release(): Promise\<void>
 
-销毁当前controller。结果通过Promise异步回调方式返回。
+销毁当前controller。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -875,7 +875,7 @@ on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', c
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件回调类型，支持事件`'playbackStateChange'`：当播放状态变化时，触发该事件。 |
-| filter   |  Array\<keyof AVPlaybackState>\|'all'| 是   | 'all'表示关注播放状态所有字段变化；Array\<keyof AVPlaybackState>表示关注Array中的字段变化。|
+| filter   |  Array\<keyof AVPlaybackState>\|'all'| 是   | Array\<keyof AVPlaybackState>表示关注Array中的字段变化。<br>'all'表示关注播放状态所有字段变化。|
 | callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void         | 是   | 回调函数，参数state是变化后的播放状态。 |
 
 **错误码：**
@@ -1148,7 +1148,7 @@ on(type: 'requestPlay', callback: Callback\<AVQueueItem>): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件回调类型，支持事件`'requestPlay'`：当请求播放状态变化时，触发该事件。 |
-| callback | Callback\<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)>                | 是   | 回调函数，参数AVQueueItem是当前正在播放的媒体内容。当监听事件注册成功，err为undefined，否则返回错误对象。  | 
+| callback | Callback\<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)>                | 是   | 回调函数，参数AVQueueItem是当前正在播放的媒体内容。  | 
 
 **错误码：**
 
@@ -1212,7 +1212,7 @@ on(type: 'endOfStream', callback: Callback\<void>): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------| ---- | ------------------------------------------------------------ |
 | type     | string                                                      | 是   | 事件回调类型，支持事件`'endOfStream'`：当资源播放结束时，触发该事件。 |
-| callback | Callback\<void\>                                            | 是   | 回调函数。当监听事件注册成功，err为undefined，否则返回错误对象。      |
+| callback | Callback\<void\>                                            | 是   | 回调函数，当资源播放结束时触发回调。      |
 
 **错误码：**
 
@@ -1408,7 +1408,7 @@ on(type: 'videoSizeChange', callback: (width: number, height: number) => void): 
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 事件回调类型，支持事件`'videoSizeChange'`：当视频尺寸变化时，触发该事件。 |
+| type     | string                                                       | 是   | 事件回调类型，支持事件`'videoSizeChange'`。当视频尺寸变化时，触发该事件。 |
 | callback | (width: number, height: number) => void   | 是   | 回调函数。                    |
 
 **错误码：**

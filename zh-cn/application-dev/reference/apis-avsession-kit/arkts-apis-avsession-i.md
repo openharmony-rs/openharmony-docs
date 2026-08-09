@@ -57,7 +57,7 @@
 | album           | string                  | 否   | 是   | 专辑名称。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。            |
 | writer          | string                  | 否   | 是   | 词作者。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。             |
 | composer        | string                  | 否   | 是   | 作曲者。             |
-| duration        | number                  | 否   | 是   | 媒体时长，单位毫秒（ms）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                  |
+| duration        | number                  | 否   | 是   | 媒体时长，单位为毫秒（ms）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                  |
 | mediaImage      | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) &#124; string | 否   | 是   | 图片的像素数据或者图片路径地址（本地路径或网络路径）。应用通过setAVMetadata设置图片数据。<br>- 设置的数据类型为PixelMap时，通过getAVMetadata获取的将为PixelMap。<br>- 设置为url图片路径，获取的为url图片路径。  <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                             |
 | bundleIcon<sup>18+</sup>      | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | 是   | 应用图标图片的像素数据。只读类型，不从应用侧设置。|
 | publishDate     | Date                    | 否   | 是   | 发行日期。          |
@@ -98,9 +98,9 @@
 | dataSrc<sup>12+</sup>     | [media.AVDataSrcDescriptor](../apis-media-kit/arkts-apis-media-i.md#avdatasrcdescriptor10)         | 否   | 是   | 播放列表数据源描述。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
 | pcmSrc<sup>20+</sup>     | boolean        | 否   | 是   | 播放列表是否使用PCM数据源。true表示使用PCM数据源，false表示不使用PCM数据源。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | drmScheme<sup>12+</sup>     | string        | 否   | 是   | 播放列表媒体支持的DRM方案，由uuid表示。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
-| duration     | number                  | 否   | 是   | 播放列表媒体播放时长，单位为毫秒。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| startPosition     | number                  | 否   | 是   | 播放列表媒体起始播放位置，单位为毫秒。音视频投播场景中，在投播直播资源时，此字段应置空或赋值为0。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| creditsPosition     | number                  | 否   | 是   | 播放列表媒体的片尾播放位置，单位为毫秒。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| duration     | number                  | 否   | 是   | 播放列表媒体播放时长，单位为毫秒（ms）。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| startPosition     | number                  | 否   | 是   | 播放列表媒体起始播放位置，单位为毫秒（ms）。音视频投播场景中，在投播直播资源时，此字段应置空或赋值为0。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| creditsPosition     | number                  | 否   | 是   | 播放列表媒体的片尾播放位置，单位为毫秒（ms）。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | appName     | string                  | 否   | 是   | 播放列表提供的应用的名字。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 |displayTags<sup>11+</sup>     | number | 否   | 是   | 媒体资源的金标类型，取值参考[DisplayTag](arkts-apis-avsession-e.md#displaytag11)。<br>在使用了cast+协议的音频投播场景下，不支持使用该属性。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 |launchClientData<sup>20+</sup> | string | 否 | 是 | 投播过程中应用程序向接收方发送的自定义数据。<br/>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast  <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
@@ -129,7 +129,7 @@
 | state        | [PlaybackState](arkts-apis-avsession-e.md#playbackstate10)       | 否 | 是  | 播放状态。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | speed        | number                                | 否 |是   | 播放倍速。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | position     | [PlaybackPosition](#playbackposition10) | 否 | 是   | 播放位置。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| bufferedTime | number                                | 否  | 是  | 缓冲时间，单位为毫秒。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| bufferedTime | number                                | 否  | 是  | 缓冲时间，单位为毫秒（ms）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | loopMode     | [LoopMode](arkts-apis-avsession-e.md#loopmode10)                 | 否  | 是 | 循环模式。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | isFavorite   | boolean                               | 否 | 是  | 表示是否收藏。true表示收藏，false表示不收藏。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | activeItemId | number                  | 否 |  是 | 正在播放的媒体ID。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -151,8 +151,8 @@
 
 | 名称        | 类型   | 只读 | 可选 | 说明               |
 | ----------- | ------ | ---- |---- | ------------------ |
-| elapsedTime | number | 否 | 否   | 已用时间，单位毫秒（ms）。 |
-| updateTime  | number | 否 | 否   | 更新时间，单位毫秒（ms）。 |
+| elapsedTime | number | 否 | 否   | 已用时间，单位为毫秒（ms）。 |
+| updateTime  | number | 否 | 否   | 更新时间，单位为毫秒（ms）。 |
 
 ## CallMetadata<sup>11+</sup>
 
@@ -231,8 +231,8 @@
 | 名称            | 类型                      | 只读 | 可选 | 说明               |
 | --------------- |-------------------------| ---- |  ---- |---------------------------------------------------------------------|
 | sessionType         | [AVSessionType](arkts-apis-avsession-t.md#avsessiontype10)  | 否 | 是  | 会话类型，默认值为audio。<br>当前仅支持的会话类型有audio和video。如果传入voice_call或video_call，将默认按照传入audio处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。            |
-| pickerStyle<sup>22+</sup>   |[AVCastPickerStyle](js-apis-avCastPickerParam.md#avcastpickerstyle12) | 否 | 是  | 设置组件样式。|
-| menuPosition<sup>22+</sup>  |[MenuPosition](#menuposition-22) | 否 | 是  | 当pickerStyle设置为STYLE_MENU时，可以设置弹出菜单的位置。|
+| pickerStyle<sup>22+</sup> |[AVCastPickerStyle](js-apis-avCastPickerParam.md#avcastpickerstyle12) | 否 | 是 | 设置组件样式。<br>Wearable设备上无需配置该属性，拉起的设备列表以全屏显示。|
+| menuPosition<sup>22+</sup>  |[MenuPosition](#menuposition22) | 否 | 是  | 当pickerStyle设置为STYLE_MENU时，可以设置弹出菜单的位置。|
 
 ## AudioCapabilities<sup>20+</sup>
 

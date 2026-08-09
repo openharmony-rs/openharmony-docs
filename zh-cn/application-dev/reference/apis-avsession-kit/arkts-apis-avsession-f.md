@@ -20,11 +20,11 @@ import { avSession } from '@kit.AVSessionKit';
 
 createAVSession(context: Context, tag: string, type: AVSessionType): Promise\<AVSession>
 
-创建会话对象，一个应用进程仅允许存在一个会话，重复创建会失败，结果通过Promise异步回调方式返回。
+创建会话对象，一个应用进程仅允许存在一个会话，重复创建会失败，使用Promise异步回调。
 
 > **说明：**
 > 
-> - 在业务执行阶段需要保持AVSession对象存活，避免后台管控静音、设备选择异常、通知/锁屏/胶囊播控卡片显示异常等情况。
+> 在业务执行阶段需要保持AVSession对象存活，避免后台管控静音、设备选择异常、通知/锁屏/胶囊播控卡片显示异常等情况。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -89,11 +89,11 @@ struct Index {
 
 createAVSession(context: Context, tag: string, type: AVSessionType, callback: AsyncCallback\<AVSession>): void
 
-创建会话对象，一个应用进程仅允许存在一个会话，重复创建会失败，结果通过callback异步回调方式返回。
+创建会话对象，一个应用进程仅允许存在一个会话，重复创建会失败，使用callback异步回调。
 
 > **说明：**
 > 
-> - 在业务执行阶段需要保持AVSession对象存活，避免后台管控静音、设备选择异常、通知/锁屏/胶囊播控卡片显示异常等情况。
+> 在业务执行阶段需要保持AVSession对象存活，避免后台管控静音、设备选择异常、通知/锁屏/胶囊播控卡片显示异常等情况。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -222,7 +222,7 @@ struct Index {
 
 getAllSessionDescriptors(): Promise\<Array\<Readonly\<AVSessionDescriptor>>>
 
-获取所有设置过媒体信息且注册过控制回调的会话的描述符信息。结果通过Promise异步回调方式返回。
+获取所有设置过媒体信息且注册过控制回调的会话的描述符信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES 或 ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC
 系统应用可以从ohos.permission.MANAGE_MEDIA_RESOURCES或ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC两个权限中选择一个进行申请，普通应用仅允许申请ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC受限权限。
@@ -233,7 +233,7 @@ getAllSessionDescriptors(): Promise\<Array\<Readonly\<AVSessionDescriptor>>>
 
 | 类型                                                         | 说明                                          |
 | ------------------------------------------------------------ | --------------------------------------------- |
-| Promise\<Array\<Readonly\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\>\>\> | Promise对象。返回所有会话描述的只读对象。 |
+| Promise\<Array\<Readonly\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)\>\>\> | Promise对象。返回所有会话描述的只读对象。 |
 
 **错误码：**
 
@@ -351,7 +351,7 @@ onSessionCreate(callback: Callback\<AVSessionDescriptor>): void
 
 | 参数名    | 类型                   | 必填 | 说明                                                         |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\> | 是   | 回调函数。参数为会话相关描述。 |
+| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)\> | 是   | 回调函数。参数为会话相关描述。 |
 
 **错误码：**
 
@@ -404,7 +404,7 @@ onSessionDestroy(callback: Callback\<AVSessionDescriptor>): void
 
 | 参数名   | 类型            | 必填 | 说明                                                         |
 | -------- | ---------------| ---- | ------------------------------------------------------------ |
-| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\> | 是   | 回调函数。参数为会话相关描述。 |
+| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)\> | 是   | 回调函数。参数为会话相关描述。 |
 
 **错误码：**
 
@@ -453,7 +453,7 @@ onTopSessionChange(callback: Callback\<AVSessionDescriptor>): void
 
 | 参数名   | 类型                 | 必填 | 说明                                                         |
 | -------- | --------------------| ---- | ------------------------------------------------------------ |
-| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\> | 是   | 回调函数。参数为会话相关描述。 |
+| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)\> | 是   | 回调函数。参数为会话相关描述。 |
 
 **错误码：**
 
@@ -504,7 +504,7 @@ offSessionCreate(callback?: Callback\<AVSessionDescriptor>): void
 
 | 参数名   | 类型       | 必填 | 说明       |
 | -------- | ----------| ---- | ----------|
-| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\> | 否   | 需要取消的回调函数，需与on接口注册时的回调函数一致。若不填写该参数，则取消所有已注册的回调。                               |
+| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)\> | 否   | 需要取消的回调函数，与on接口注册时的回调函数保持一致。如果不填写该参数，则取消所有已注册的回调。                               |
 
 **错误码：**
 
@@ -553,7 +553,7 @@ offSessionDestroy(callback?: Callback\<AVSessionDescriptor>): void
 
 | 参数名   | 类型        | 必填 | 说明                      |
 | -------- | -----------| ---- | -------------------------|
-| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\> | 否   | 需要取消的回调函数，需与on接口注册时的回调函数一致。若不填写该参数，则取消所有已注册的回调。|
+| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)\> | 否   | 需要取消的回调函数，与on接口注册时的回调函数保持一致。如果不填写该参数，则取消所有已注册的回调。|
 
 **错误码：**
 
@@ -602,7 +602,7 @@ offTopSessionChange(callback?: Callback\<AVSessionDescriptor>): void
 
 | 参数名   | 类型              | 必填 | 说明                        |
 | -------- | -----------------| ---- | ---------------------------- |
-| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\> | 否   | 需要取消的回调函数，需与on接口注册时的回调函数一致。若不填写该参数，则取消所有已注册的回调。 |
+| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)\> | 否   | 需要取消的回调函数，与on接口注册时的回调函数保持一致。如果不填写该参数，则取消所有已注册的回调。 |
 
 **错误码：**
 

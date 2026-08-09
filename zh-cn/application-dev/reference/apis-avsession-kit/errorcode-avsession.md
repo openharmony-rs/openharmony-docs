@@ -194,7 +194,7 @@ The desktop lyrics feature of this application is not enabled.
 
 **可能原因**
 
-未调用enableDesktopLyric接口启用该功能。
+未先调用enableDesktopLyric接口就启用该功能。
 
 **处理步骤**
 
