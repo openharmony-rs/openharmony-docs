@@ -44,7 +44,8 @@ Failed to create the AVMusicTemplate controller.
 
 **处理步骤**
 
-检查sessionId是否为空、是否合法（一个应用进程内，一个sessionId对应一个AVMusicTemplateController），或者是否有创建过该sessionId对应的AVMusicTemplate的应用。
+1. 检查sessionId是否为空、是否合法。一个应用进程内，一个sessionId对应一个AVMusicTemplateController。
+2. 是否有创建过该sessionId对应的AVMusicTemplate的应用。
 
 ## 35000003 模板监听未注册
 
@@ -63,7 +64,7 @@ Template listener not registered.
 **处理步骤**
 
 1. 检查应用是否正常创建AVMusicTemplate实例。
-2. 检查应用内音频模板相关功能（如AVMusicTemplate创建、控制器注册等）是否出现了异常。
+2. 检查应用内音频模板相关功能是否出现了异常。如AVMusicTemplate创建、控制器注册等。
 
 ## 35000004 未注册模板控制器回调
 
