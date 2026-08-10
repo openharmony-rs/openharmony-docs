@@ -141,7 +141,7 @@ setCurrentFunctions(funcs: FunctionType): Promise\<void\>
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 14400002 | Permission denied. The HDC is disabled by the system. Possible causes: The HDC (HarmonyOS Device Connector) feature is disabled in developer settings. Solution: Enable HDC in developer settings or check system configuration. |
+| 14400002 | Permission denied. The HDC is disabled by the system. |
 
 **示例：**
 
@@ -528,8 +528,8 @@ setDeviceFunctions(funcs: FunctionType): Promise\<void\>
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
 | 801      | Capability not supported. |
-| 14400002 | Permission denied. The HDC is disabled by the system. Possible causes: The HDC (HarmonyOS Device Connector) feature is disabled in developer settings. Solution: Enable HDC in developer settings or check system configuration. |
-| 14400006 | Unsupported operation. The function is not supported. Possible causes: The current device does not support this USB function. Solution: Check device capabilities and ensure the function is supported. |
+| 14400002 | Permission denied. The HDC is disabled by the system. |
+| 14400006 | Unsupported operation. The function is not supported. |
 
 **示例：**
 
@@ -714,7 +714,7 @@ setPortRoleTypes(portId: number, powerRole: PowerRoleType, dataRole: DataRoleTyp
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
 | 801      | Capability not supported. |
-| 14400003 | Unsupported operation. The current device does not support port role switching. Possible causes: The hardware does not support USB Type-C port role switching. Solution: Check device hardware capabilities. |
+| 14400003 | Unsupported operation. The current device does not support port role switching. |
 
 **示例：**
 

@@ -1228,7 +1228,7 @@ requestAccessoryRight(accessory: USBAccessory): Promise&lt;boolean&gt;
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported. [since 18]                                    |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
-| 14400005 | Database operation exception. Possible causes: 1. Database file is corrupted. 2. Database is locked by another process. 3. Insufficient storage space. |
+| 14400005 | Database operation exception. |
 | 14401001 | The target USBAccessory not matched. |
 
 **示例：**
@@ -1270,7 +1270,7 @@ cancelAccessoryRight(accessory: USBAccessory): void
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported. [since 18]                                    |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
-| 14400005 | Database operation exception. Possible causes: 1. Database file is corrupted. 2. Database is locked by another process. 3. Insufficient storage space. |
+| 14400005 | Database operation exception. |
 | 14401001 | The target USBAccessory not matched. |
 
 **示例：**
