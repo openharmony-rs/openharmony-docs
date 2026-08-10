@@ -8964,7 +8964,7 @@
 
 ## ohos.permission.AUTH_MODEL_DOWNLOAD
 
-允许系统应用将下载模型的授权结果通知给模型管理服务。
+允许系统应用将下载模型的授权结果发送给模型管理服务。
 
 **权限级别**：system_basic
 
