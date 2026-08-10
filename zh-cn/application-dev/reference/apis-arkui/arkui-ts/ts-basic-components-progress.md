@@ -45,15 +45,13 @@ Progress(options: ProgressOptions)
 
 进度条选项。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称                        | 类型                                | 只读 | 可选 | 说明                                     |
 | -------------------------- | ----------------------------------- | ---- | ---------------------------------------- | ---------------------------------------- |
-| value                      | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 指定当前进度值。设置小于0的数值时置为0，设置大于total的数值时置为total，设置非法值时按默认值处理。<br>默认值：0<br>取值范围：[0, total]<br>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23 |
-| total                      | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 是   | 指定进度总长。设置小于等于0的数值时置为100。<br>默认值：100<br>取值范围：[0, 2147483647]<br>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| type<sup>8+</sup>          | [ProgressType](#progresstype8枚举说明)   | 否   | 是   | 指定进度条类型。<br>默认值：ProgressType.Linear<br>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**说明：** 不同的type需分别对应相应的[style](#style8)属性设置，详细映射关系参考[ProgressStyleMap](#progressstylemap10对象说明)。<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23 |
+| value                      | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 指定当前进度值。设置小于0的数值时置为0，设置大于total的数值时置为total，设置非法值时按默认值处理。<br>默认值：0<br>取值范围：[0, total]<br>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23 |
+| total                      | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 是   | 指定进度总长。设置小于等于0的数值时置为100。<br>默认值：100<br>取值范围：[0, 2147483647]<br>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23 |
+| type<sup>8+</sup>          | ArkTS-Dyn: Type <br> ArkTS-Sta: [ProgressType](#progresstype8枚举说明)  | 否   | 是   | 指定进度条类型。Type继承于[ProgressStyleMap](#progressstylemap10对象说明)。<br>默认值：ProgressType.Linear<br>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**说明：** 不同的[ProgressType](#progresstype8枚举说明)需分别对应相应的[style](#style8)属性设置，详细映射关系参考[ProgressStyleMap](#progressstylemap10对象说明)。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23 |
 | style<sup>(deprecated)</sup> | [ProgressStyle](#progressstyle枚举说明) | 否   | 是   | 指定进度条样式。<br>从API version 7开始支持，从API version 8开始废弃。建议使用[type](#progresstype8枚举说明)替代。<br>默认值：ProgressStyle.Linear <br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn模式。<br>**ArkTS-Dyn起始版本：** 7|
 
 ## ProgressType<sup>8+</sup>枚举说明
@@ -106,17 +104,17 @@ Progress(options: ProgressOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn模式。
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Dyn起始版本：** 10
 
 | 名称        | 类型                                      |
 | --------- | ---------------------------------------- |
-| ProgressType.Linear | [LinearStyleOptions<sup>10+</sup>](#linearstyleoptions10)&nbsp; \| &nbsp;[ProgressStyleOptions](#progressstyleoptions8)&nbsp; |
-| ProgressType.Ring | [RingStyleOptions<sup>10+</sup>](#ringstyleoptions10)&nbsp; \| &nbsp;[ProgressStyleOptions](#progressstyleoptions8)&nbsp; |
-| ProgressType.Eclipse | [EclipseStyleOptions<sup>10+</sup>](#eclipsestyleoptions10)&nbsp;  \| &nbsp;[ProgressStyleOptions](#progressstyleoptions8)&nbsp; |
-| ProgressType.ScaleRing| [ScaleRingStyleOptions<sup>10+</sup>](#scaleringstyleoptions10)&nbsp; \| &nbsp;[ProgressStyleOptions](#progressstyleoptions8)&nbsp; |
-| ProgressType.Capsule | [CapsuleStyleOptions<sup>10+</sup>](#capsulestyleoptions10)&nbsp; \| &nbsp;[ProgressStyleOptions](#progressstyleoptions8)&nbsp; |
+| [ProgressType.Linear] | [LinearStyleOptions](#linearstyleoptions10)&nbsp; \| &nbsp;[ProgressStyleOptions](#progressstyleoptions8)&nbsp; |
+| [ProgressType.Ring] | [RingStyleOptions](#ringstyleoptions10)&nbsp; \| &nbsp;[ProgressStyleOptions](#progressstyleoptions8)&nbsp; |
+| [ProgressType.Eclipse] | [EclipseStyleOptions](#eclipsestyleoptions10)&nbsp;  \| &nbsp;[ProgressStyleOptions](#progressstyleoptions8)&nbsp; |
+| [ProgressType.ScaleRing] | [ScaleRingStyleOptions](#scaleringstyleoptions10)&nbsp; \| &nbsp;[ProgressStyleOptions](#progressstyleoptions8)&nbsp; |
+| [ProgressType.Capsule] | [CapsuleStyleOptions](#capsulestyleoptions10)&nbsp; \| &nbsp;[ProgressStyleOptions](#progressstyleoptions8)&nbsp; |
 
 ## 属性
 
@@ -180,7 +178,7 @@ ArkTS-Sta: color(value: ResourceColor | LinearGradient | undefined)
 
 ### style<sup>8+</sup>
 
-ArkTS-Dyn: style(value: ProgressStyleOptions \| CapsuleStyleOptions \| RingStyleOptions \| LinearStyleOptions \| ScaleRingStyleOptions \| EclipseStyleOptions)
+ArkTS-Dyn: style(value: Style)
 
 ArkTS-Sta: style(value: LinearStyleOptions \| RingStyleOptions \| CapsuleStyleOptions \| ProgressStyleOptions \| undefined)
 
@@ -200,7 +198,7 @@ ArkTS-Sta: style(value: LinearStyleOptions \| RingStyleOptions \| CapsuleStyleOp
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [ProgressStyleOptions<sup>8+</sup>](#progressstyleoptions8)&nbsp;\|&nbsp;[CapsuleStyleOptions<sup>10+</sup>](#capsulestyleoptions10)&nbsp;\|&nbsp;<br>[RingStyleOptions<sup>10+</sup>](#ringstyleoptions10)&nbsp;\|&nbsp;[LinearStyleOptions<sup>10+</sup>](#linearstyleoptions10)&nbsp;\|&nbsp;<br>[ScaleRingStyleOptions<sup>10+</sup>](#scaleringstyleoptions10)&nbsp;\|&nbsp;[EclipseStyleOptions<sup>10+</sup>](#eclipsestyleoptions10)<br> ArkTS-Sta: [ProgressStyleOptions<sup>8+</sup>](#progressstyleoptions8)&nbsp;\|&nbsp;[CapsuleStyleOptions<sup>10+</sup>](#capsulestyleoptions10)&nbsp;\|&nbsp;<br>[RingStyleOptions<sup>10+</sup>](#ringstyleoptions10)&nbsp;\|&nbsp;[LinearStyleOptions<sup>10+</sup>](#linearstyleoptions10)&nbsp;\|&nbsp;undefined | 是   | 组件的样式。<br>**说明：** 不同的type需分别对应相应的style属性设置，详细映射关系参考[ProgressStyleMap](#progressstylemap10对象说明)。<br>- CapsuleStyleOptions：设置Capsule的样式。<br>- RingStyleOptions：设置Ring的样式。<br>- LinearStyleOptions：设置Linear的样式。<br>- ScaleRingStyleOptions：设置ScaleRing的样式。<br>- EclipseStyleOptions：设置Eclipse的样式。<br>- ProgressStyleOptions：仅可设置各类型进度条的strokeWidth、scaleCount、scaleWidth，仅对支持这些样式设置的进度条生效。<br>设置undefined时显示为与进度条类型相对应的默认样式。 |
+| value  | ArkTS-Dyn: Style ArkTS-Sta: [ProgressStyleOptions<sup>8+</sup>](#progressstyleoptions8)&nbsp;\|&nbsp;[CapsuleStyleOptions<sup>10+</sup>](#capsulestyleoptions10)&nbsp;\|&nbsp;<br>[RingStyleOptions<sup>10+</sup>](#ringstyleoptions10)&nbsp;\|&nbsp;[LinearStyleOptions<sup>10+</sup>](#linearstyleoptions10)&nbsp;\|&nbsp;undefined | 是   | 组件的样式。Style继承于[ProgressStyleMap](#progressstylemap10对象说明)。<br>**说明：** 不同的[ProgressType](#progresstype8枚举说明)需分别对应相应的[style](#style8)属性设置，详细映射关系参考[ProgressStyleMap](#progressstylemap10对象说明)。<br>- CapsuleStyleOptions：设置Capsule的样式。<br>- RingStyleOptions：设置Ring的样式。<br>- LinearStyleOptions：设置Linear的样式。<br>- ScaleRingStyleOptions：设置ScaleRing的样式。<br>- EclipseStyleOptions：设置Eclipse的样式。<br>- ProgressStyleOptions：仅可设置各类型进度条的strokeWidth、scaleCount、scaleWidth，仅对支持这些样式设置的进度条生效。<br>设置undefined时显示为与进度条类型相对应的默认样式。 |
 
 ### contentModifier<sup>12+</sup>
 ArkTS-Dyn: contentModifier(modifier:ContentModifier\<ProgressConfiguration\>)
@@ -329,21 +327,19 @@ ArkTS-Sta: privacySensitive(isPrivacySensitiveMode: boolean | undefined)
 
 继承自[ScanEffectOptions](#scaneffectoptions10)和[CommonProgressStyleOptions](#commonprogressstyleoptions10)。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称          | 类型 | 只读 | 可选 | 说明 |
 | ------------- | ------- | ---- | -------- | -------- |
-| borderColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 内描边颜色。<br>默认值：<br>API version 10：'\#33006cde'<br>API version 11及以上：'\#33007dff' |
-| borderWidth | [Length](ts-types.md#length) | 否 | 是 | 内描边宽度。<br>默认值：1vp<br>取值范围：大于等于0的数值，不支持百分比设置。<br>超出取值范围或设置非法值时按默认值处理。|
-| content | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 文本内容，应用可自定义。<br>当需要在Capsule进度条上显示自定义文本时传入此参数；不传入时不显示文本内容（若需显示百分比文本，可设置showDefaultPercentage为true）。<br>从API version 20开始，支持Resource类型。 |
-| font | [Font](ts-types.md#font) | 否 | 是 | 文本样式。<br>默认值：<br>文本大小（不支持百分比设置）：12fp <br>其他文本参数跟随[Text](ts-basic-components-text.md)组件的主题值。|
-| fontColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 文本颜色。<br>默认值：'\#ff182431' |
-| showDefaultPercentage | boolean | 否 | 是 | 显示百分比文本的开关。开启后，进度条上显示当前进度的百分比。设置了content属性时该属性不生效。<br>true：表示显示百分比文本；false：表示不显示百分比文本。<br>默认值：false |
-| borderRadius<sup>18+</sup> |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | Capsule进度条圆角半径（不支持百分比设置）。<br>取值范围：[0, 组件高度/2]。默认值：组件高度 / 2。<br>设置非法数值时，按照默认值处理。 |
+| borderColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 内描边颜色。<br>默认值：<br>API version 10：'\#33006cde'<br>API version 11及以上：'\#33007dff' <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| borderWidth | [Length](ts-types.md#length) | 否 | 是 | 内描边宽度。<br>默认值：1vp<br>取值范围：大于等于0的数值，不支持百分比设置。<br>超出取值范围或设置非法值时按默认值处理。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| content | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 文本内容，应用可自定义。<br>当需要在Capsule进度条上显示自定义文本时传入此参数；不传入时不显示文本内容（若需显示百分比文本，可设置showDefaultPercentage为true）。<br>从API version 20开始，支持Resource类型。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| font | [Font](ts-types.md#font) | 否 | 是 | 文本样式。<br>默认值：<br>文本大小（不支持百分比设置）：12fp <br>其他文本参数跟随[Text](ts-basic-components-text.md)组件的主题值。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| fontColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 文本颜色。<br>默认值：'\#ff182431' <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| showDefaultPercentage | boolean | 否 | 是 | 显示百分比文本的开关。开启后，进度条上显示当前进度的百分比。设置了content属性时该属性不生效。<br>true：表示显示百分比文本；false：表示不显示百分比文本。<br>默认值：false <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| borderRadius<sup>18+</sup> |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | Capsule进度条圆角半径（不支持百分比设置）。<br>取值范围：[0, 组件高度/2]。默认值：组件高度 / 2。<br>设置非法数值时，按照默认值处理。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
 ## RingStyleOptions<sup>10+</sup>
 
