@@ -8933,7 +8933,7 @@ Allows an application on the rear armrest screen to connect to the head unit for
 
 ## ohos.permission.AUTH_MODEL_DOWNLOAD
 
-Allows a system application to notify the model management service of the authorization result for downloading models.
+Allows a system application to send the authorization results for model download requests to the model management service.
 
 **Permission level**: system_basic
 
