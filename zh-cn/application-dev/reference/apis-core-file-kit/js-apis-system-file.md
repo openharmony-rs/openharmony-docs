@@ -16,9 +16,9 @@
 以下ArkTS示例URI说明：
   1、URI只能是internal://app/xxx格式。
   2、internal://app/dir1/xxx
-    -internal://app：固定前缀，表示应用根目录。
-    -dir1：开发者自己创建的。
-    -xxx：开发者创建的文件名。
+    - internal://app：固定前缀，表示应用根目录。
+    - dir1：开发者自己创建的。
+    - xxx：开发者创建的文件名。
 
 ## 导入模块
 
