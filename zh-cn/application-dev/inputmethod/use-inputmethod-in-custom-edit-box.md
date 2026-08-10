@@ -62,7 +62,7 @@
 
    > **说明：**
    >
-   > 在PC/2in1、Tablet类型设备上，自绘编辑框通过监听输入法的insertText事件插入文本，但物理数字键的事件无法被消费，数字无法插入。开发者可配置物理数字键转软键盘，使编辑框正常接收数字物理键盘输入并触发insertText回调。配置方式见[自绘编辑框接收数字物理键盘输入配置](#自绘编辑框接收数字物理键盘输入配置)。
+   > 在PC/2in1、Tablet类型设备上，自绘编辑框通过监听输入法的insertText事件插入文本，但物理数字键的事件无法被消费，数字无法插入。开发者可配置自绘编辑框接收数字物理键盘输入能力，使自绘编辑框正常接收数字物理键盘输入。配置方式见[自绘编辑框接收数字物理键盘输入配置](#自绘编辑框接收数字物理键盘输入配置)。
 
    <!-- @[input_case_input_CustomInput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/components/CustomInput.ets) -->
    
@@ -143,6 +143,7 @@
 > **说明：**
 >
 > 此配置仅在PC/2in1、Tablet类型设备上生效。
+> <!--RP1--><!--RP1End-->
 
 ### 配置步骤
 
