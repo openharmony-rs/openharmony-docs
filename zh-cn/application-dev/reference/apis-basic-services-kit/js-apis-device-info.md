@@ -336,9 +336,11 @@ apiAvailable(version: string | number): boolean;
 检查指定的API版本在当前设备上是否可用。<br/>
 此方法提供跨不同OpenHarmony/分布式操作系统版本的兼容性检查。该方法根据输入格式和API版本范围自动选择版本检查方法。
 
-**起始版本**：26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**ArkTS-Sta起始版本：** 26.1.0
+
+**原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Startup.SystemInfo
 
