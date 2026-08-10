@@ -61,7 +61,7 @@ typedef bool (*OH_AudioAccessory_OpenInputStreamCallback)(OH_AudioAccessory *acc
 
 **返回值**
 
-返回 **true** 表示接受该输入流；返回 **false** 表示拒绝该输入流。
+返回 **true** 表示流打开成功；返回 **false** 表示流打开失败。
 
 ### OH_AudioAccessoryInputStream_StartCallback
 
@@ -75,6 +75,10 @@ typedef bool (*OH_AudioAccessoryInputStream_StartCallback)(OH_AudioAccessory *ac
 
 **起始版本：** 26.0.0
 
+**返回值**
+
+返回 **true** 表示启动事件处理成功；返回 **false** 表示启动事件处理失败。
+
 ### OH_AudioAccessoryInputStream_StopCallback
 
 ```c
@@ -86,6 +90,10 @@ typedef bool (*OH_AudioAccessoryInputStream_StopCallback)(OH_AudioAccessory *acc
 输入流停止后触发。此回调返回后应停止写入音频数据。流句柄仍有效，可再次启动。
 
 **起始版本：** 26.0.0
+
+**返回值**
+
+返回 **true** 表示停止事件处理成功；返回 **false** 表示停止事件处理失败。
 
 ### OH_AudioAccessoryInputStream_ReleaseCallback
 
@@ -99,6 +107,10 @@ typedef bool (*OH_AudioAccessoryInputStream_ReleaseCallback)(OH_AudioAccessory *
 
 **起始版本：** 26.0.0
 
+**返回值**
+
+返回 **true** 表示释放事件处理成功；返回 **false** 表示释放事件处理失败。
+
 ### OH_AudioAccessoryInputStream_GetLatencyCallback
 
 ```c
@@ -111,6 +123,10 @@ typedef bool (*OH_AudioAccessoryInputStream_GetLatencyCallback)(OH_AudioAccessor
 
 **起始版本：** 26.0.0
 
+**返回值**
+
+返回 **true** 表示获取时延成功；返回 **false** 表示获取时延失败。
+
 ### OH_AudioAccessoryInputStream_GetFramePositionCallback
 
 ```c
@@ -119,9 +135,13 @@ typedef bool (*OH_AudioAccessoryInputStream_GetFramePositionCallback)(OH_AudioAc
 
 **描述**
 
-框架需要获取当前采集位置时触发。**framePosition** 表示自最近一次成功启动输入流以来累计采集的音频帧数。**timestamp** 使用 `CLOCK_MONOTONIC` 时基，单位为纳秒。
+框架需要获取当前采集位置时触发。**framePosition** 表示自最近一次成功启动输入流以来累计采集的音频帧数。**timestamp** 使用 `CLOCK_MONOTONIC` 时基，单位为纳秒，表示 **framePosition** 所标识帧被采集时的单调时钟时间。
 
 **起始版本：** 26.0.0
+
+**返回值**
+
+返回 **true** 表示获取帧位置成功；返回 **false** 表示获取帧位置失败。
 
 ## 函数说明
 
@@ -197,7 +217,7 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_Write(OH_AudioAccessor
 
 **描述**
 
-向输入流写入音频数据。该接口为阻塞接口。每次调用必须写入20 ms音频数据，两次连续调用之间也应保持20 ms间隔。不支持写入非完整帧。最后一帧不足20 ms时，可丢弃或补零到20 ms后再写入。
+向输入流写入音频数据。该接口为阻塞接口。每次调用必须写入完整20ms的音频数据，调用方必须确保 **dataSize** 与当前流配置下20ms对应的字节数一致，两次连续调用之间也应保持20ms间隔。不支持写入非完整帧。最后一帧不足20ms时，可丢弃或补零到20ms后再写入。
 
 该接口对同一输入流不可重入，建议使用一个线程串行写入同一输入流。
 
@@ -205,7 +225,7 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_Write(OH_AudioAccessor
 
 **返回值**
 
-[OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result)：**AUDIOCOMMON_RESULT_SUCCESS** 表示执行成功；**AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM** 表示参数为空；**AUDIOCOMMON_RESULT_ERROR_FRAME_LENGTH_MISMATCH** 表示 **dataSize** 不符合当前流配置下20 ms音频数据大小；**AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE** 表示流未启动或必需回调未完整注册；**AUDIOCOMMON_RESULT_ERROR_SYSTEM** 表示音频服务进程死亡。
+[OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result)：**AUDIOCOMMON_RESULT_SUCCESS** 表示执行成功；**AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM** 表示参数为空；**AUDIOCOMMON_RESULT_ERROR_FRAME_LENGTH_MISMATCH** 表示 **dataSize** 与当前流配置下20ms音频数据不对应；**AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE** 表示流未启动或必须注册的流回调未全部注册；**AUDIOCOMMON_RESULT_ERROR_SYSTEM** 表示音频服务进程死亡。
 
 ### OH_AudioAccessoryInputStreamManager_GetWritableSize()
 
@@ -222,4 +242,3 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_GetWritableSize(OH_Aud
 **返回值**
 
 [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result)：**AUDIOCOMMON_RESULT_SUCCESS** 表示执行成功；**AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM** 表示参数为空；**AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE** 表示流已释放。
-

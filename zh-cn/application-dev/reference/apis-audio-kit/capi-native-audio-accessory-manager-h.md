@@ -8,7 +8,7 @@
 
 ## 概述
 
-声明音频配件管理器相关接口。可用于创建输入音频配件、上报关联MAC地址、注册降噪能力、连接或断开配件，以及销毁配件句柄。
+声明音频配件管理相关的接口。可用于管理音频配件的创建、连接、断开和销毁等功能。
 
 **引用文件：** <ohaudio/native_audio_accessory_manager.h>
 
@@ -26,19 +26,19 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_AudioAccessory_SetNoiseReductionCallback](#oh_audioaccessory_setnoisereductioncallback) | 系统请求变更降噪模式时触发的回调。 |
+| [OH_AudioAccessory_SetNoiseReductionCallback](#oh_audioaccessory_setnoisereductioncallback) | 音频配件降噪模式发生变更时触发的回调。 |
 
 ### 函数
 
 | 名称 | 描述 |
 | -- | -- |
 | [OH_AudioManager_GetAccessoryManager](#oh_audiomanager_getaccessorymanager) | 获取音频配件管理器实例。 |
-| [OH_AudioAccessoryManager_CreateInput](#oh_audioaccessorymanager_createinput) | 创建输入音频配件实例并注册其能力。 |
-| [OH_AudioAccessoryManager_SetAssociatedMacAddresses](#oh_audioaccessorymanager_setassociatedmacaddresses) | 设置音频配件的关联MAC地址列表。 |
+| [OH_AudioAccessoryManager_CreateInput](#oh_audioaccessorymanager_createinput) | 创建音频配件实例并注册其能力。 |
+| [OH_AudioAccessoryManager_SetAssociatedMacAddresses](#oh_audioaccessorymanager_setassociatedmacaddresses) | 设置与主音频配件组合使用的副配件MAC地址列表。 |
 | [OH_AudioAccessoryManager_RegisterNoiseReductionCapability](#oh_audioaccessorymanager_registernoisereductioncapability) | 注册音频配件的降噪能力。 |
 | [OH_AudioAccessoryManager_SetNoiseReductionMode](#oh_audioaccessorymanager_setnoisereductionmode) | 同步音频配件当前降噪模式。 |
-| [OH_AudioAccessoryManager_Connected](#oh_audioaccessorymanager_connected) | 将音频配件连接到音频框架。 |
-| [OH_AudioAccessoryManager_Disconnected](#oh_audioaccessorymanager_disconnected) | 将音频配件从音频框架断开连接。 |
+| [OH_AudioAccessoryManager_Connected](#oh_audioaccessorymanager_connected) | 将音频配件连接到音频系统。 |
+| [OH_AudioAccessoryManager_Disconnected](#oh_audioaccessorymanager_disconnected) | 将音频配件从音频系统断开连接。 |
 | [OH_AudioAccessoryManager_Destroy](#oh_audioaccessorymanager_destroy) | 销毁音频配件实例。 |
 
 ## 函数指针说明
@@ -51,7 +51,7 @@ typedef bool (*OH_AudioAccessory_SetNoiseReductionCallback)(OH_AudioAccessory *a
 
 **描述**
 
-配件连接后，当系统请求更改配件降噪模式时触发。
+当配件的降噪模式发生变更时触发，此回调可以在配件连接后的任意时间触发。
 
 **起始版本：** 26.0.0
 
@@ -60,7 +60,7 @@ typedef bool (*OH_AudioAccessory_SetNoiseReductionCallback)(OH_AudioAccessory *a
 | 名称 | 描述 |
 | -- | -- |
 | [OH_AudioAccessory](capi-native-audio-accessory-common-h.md) *accessory | 音频配件。 |
-| [OH_AudioNoiseReductionMode](capi-native-audio-common-h.md#oh_audionoisereductionmode) mode | 要设置的降噪模式。 |
+| [OH_AudioNoiseReductionMode](capi-native-audio-common-h.md#oh_audionoisereductionmode) mode | 配件当前的降噪模式。 |
 
 **返回值**
 
@@ -92,15 +92,13 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_CreateInput(OH_AudioAccessoryMana
 
 **描述**
 
-创建输入音频配件实例。输入流会在应用实际从该配件录音时由框架延迟创建。调用方必须在打开输入流回调中注册必需的流回调。
-
-框架会对 **accessoryName**、**manufacturer**、**modelNumber**、**macAddress** 和 **streamProperties** 进行深拷贝，调用方可在函数返回后释放这些缓冲区。
+创建音频配件实例并注册其能力。此函数仅用于创建音频配件实例，不会创建任何输入流。当应用请求从该音频配件采集音频时，系统会触发 **openInputStream** 回调函数。在一个音频配件的生命周期内，输入流可能被创建和释放多次。
 
 **起始版本：** 26.0.0
 
 **返回值**
 
-[OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result)：**AUDIOCOMMON_RESULT_SUCCESS** 表示执行成功；**AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM** 表示任意参数为空；**AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE** 表示管理器未初始化。
+[OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result)：**AUDIOCOMMON_RESULT_SUCCESS** 表示执行成功；**AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM** 表示参数无效，包括 **info**、**capabilities**、**openInputStream**、**outOwnedAccessory** 为空，信息未全部填写，或 **outOwnedAccessory** 已通过该接口创建；**AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE** 表示 **manager** 未通过 [OH_AudioManager_GetAccessoryManager](#oh_audiomanager_getaccessorymanager) 初始化。
 
 ### OH_AudioAccessoryManager_SetAssociatedMacAddresses()
 
@@ -110,13 +108,13 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_SetAssociatedMacAddresses(OH_Audi
 
 **描述**
 
-替换音频配件的关联MAC地址列表，用于1对2、1对4等多发射器场景。**count** 为0时，**macAddresses** 可为空，表示清除所有关联地址。同一数组中的重复地址会被忽略。
+设置与主音频配件组合使用的副配件MAC地址列表。此函数适用于多配件组合场景（如二合一、四合一），支持在配件创建后初始化副配件列表，并在副配件替换或断开连接时覆盖旧的MAC列表。录音期间可安全调用。**count** 为0时，**macAddresses** 可为空，表示清除副配件MAC列表。同一数组中的重复地址会被忽略。
 
 **起始版本：** 26.0.0
 
 **返回值**
 
-[OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result)：**AUDIOCOMMON_RESULT_SUCCESS** 表示执行成功；**AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM** 表示参数无效；**AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE** 表示配件未创建。
+[OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result)：**AUDIOCOMMON_RESULT_SUCCESS** 表示执行成功；**AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM** 表示参数无效，包括 **manager** 为空、**manager** 未初始化、**accessory** 为空，或 **macAddresses** 传入的个数与 **count** 不一致；**AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE** 表示 **accessory** 未通过 [OH_AudioAccessoryManager_CreateInput](#oh_audioaccessorymanager_createinput) 创建。
 
 ### OH_AudioAccessoryManager_RegisterNoiseReductionCapability()
 
@@ -132,7 +130,7 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_RegisterNoiseReductionCapability(
 
 **返回值**
 
-[OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result)：**AUDIOCOMMON_RESULT_SUCCESS** 表示执行成功；**AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM** 表示参数无效；**AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE** 表示配件未创建。
+[OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result)：**AUDIOCOMMON_RESULT_SUCCESS** 表示执行成功；**AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM** 表示参数无效，包括 **manager** 为空、**manager** 未初始化、**accessory** 为空、**capability** 为空，或 **supportedModes** 为空或 **supportedModeCount** 为0；**AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE** 表示 **accessory** 未通过 [OH_AudioAccessoryManager_CreateInput](#oh_audioaccessorymanager_createinput) 创建。
 
 ### OH_AudioAccessoryManager_SetNoiseReductionMode()
 
@@ -142,13 +140,13 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_SetNoiseReductionMode(OH_AudioAcc
 
 **描述**
 
-将配件当前降噪模式同步给框架，通常用于通过硬件按键或配套应用更改模式后的状态同步。
+由配件关联的服务或应用调用，将配件当前降噪模式更新到系统。通常在通过硬件按钮或配套应用更改降噪模式时使用，以确保系统侧的降噪模式与配件实际降噪模式保持一致。
 
 **起始版本：** 26.0.0
 
 **返回值**
 
-[OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result)：**AUDIOCOMMON_RESULT_SUCCESS** 表示执行成功；**AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM** 表示参数无效；**AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE** 表示配件未连接；**AUDIOCOMMON_RESULT_ERROR_UNSUPPORTED** 表示不支持该模式。
+[OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result)：**AUDIOCOMMON_RESULT_SUCCESS** 表示执行成功；**AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM** 表示 **accessory** 为空；**AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE** 表示 **accessory** 未创建或未连接；**AUDIOCOMMON_RESULT_ERROR_UNSUPPORTED** 表示设置的降噪模式未通过 [OH_AudioAccessoryManager_RegisterNoiseReductionCapability](#oh_audioaccessorymanager_registernoisereductioncapability) 注册。
 
 ### OH_AudioAccessoryManager_Connected()
 
@@ -158,7 +156,9 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_Connected(OH_AudioAccessoryManage
 
 **描述**
 
-将音频配件连接到音频框架。调用此函数前，必须注册所有必需能力。
+将音频配件连接到音频系统。调用此函数前，必须通过 [OH_AudioManager_GetAccessoryManager](#oh_audiomanager_getaccessorymanager) 获取音频配件管理器实例，并通过 [OH_AudioAccessoryManager_CreateInput](#oh_audioaccessorymanager_createinput) 创建 **accessory** 实例。
+
+建议音频配件管理程序优先接入智慧生活应用，为用户提供设备发现与连接体验的一致性；若以独立音频配件管理应用方式接入，需要申请ACL权限 **ohos.permission.MANAGE_AUDIO_ACCESSORY**。
 
 **所需权限：** ohos.permission.MANAGE_AUDIO_ACCESSORY
 
@@ -166,7 +166,7 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_Connected(OH_AudioAccessoryManage
 
 **返回值**
 
-[OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result)：**AUDIOCOMMON_RESULT_SUCCESS** 表示执行成功；**AUDIOCOMMON_RESULT_ERROR_PERMISSION_DENIED** 表示调用方没有所需权限；**AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM** 表示 **accessory** 为空；**AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE** 表示能力未注册或配件已连接；**AUDIOCOMMON_RESULT_ERROR_SYSTEM** 表示音频服务进程死亡。
+[OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result)：**AUDIOCOMMON_RESULT_SUCCESS** 表示执行成功；**AUDIOCOMMON_RESULT_ERROR_PERMISSION_DENIED** 表示调用方没有 **ohos.permission.MANAGE_AUDIO_ACCESSORY** 权限；**AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM** 表示参数无效，包括 **manager** 为空、**manager** 未初始化，或 **accessory** 为空；**AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE** 表示 **accessory** 未创建或已连接；**AUDIOCOMMON_RESULT_ERROR_SYSTEM** 表示音频服务进程死亡。
 
 ### OH_AudioAccessoryManager_Disconnected()
 
@@ -176,7 +176,7 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_Disconnected(OH_AudioAccessoryMan
 
 **描述**
 
-将音频配件从音频框架断开连接。
+将音频配件从音频系统断开连接。
 
 **所需权限：** ohos.permission.MANAGE_AUDIO_ACCESSORY
 
@@ -184,7 +184,7 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_Disconnected(OH_AudioAccessoryMan
 
 **返回值**
 
-[OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result)：**AUDIOCOMMON_RESULT_SUCCESS** 表示执行成功；**AUDIOCOMMON_RESULT_ERROR_PERMISSION_DENIED** 表示调用方没有所需权限；**AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM** 表示 **accessory** 为空；**AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE** 表示配件未连接；**AUDIOCOMMON_RESULT_ERROR_SYSTEM** 表示音频服务进程死亡。
+[OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result)：**AUDIOCOMMON_RESULT_SUCCESS** 表示执行成功；**AUDIOCOMMON_RESULT_ERROR_PERMISSION_DENIED** 表示调用方没有 **ohos.permission.MANAGE_AUDIO_ACCESSORY** 权限；**AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM** 表示 **accessory** 为空；**AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE** 表示 **accessory** 未连接；**AUDIOCOMMON_RESULT_ERROR_SYSTEM** 表示音频服务进程死亡。
 
 ### OH_AudioAccessoryManager_Destroy()
 
@@ -194,11 +194,10 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_Destroy(OH_AudioAccessoryManager 
 
 **描述**
 
-销毁音频配件实例。销毁前必须先断开配件连接。销毁成功后，配件句柄失效。
+销毁音频配件实例。销毁前必须先断开配件连接。
 
 **起始版本：** 26.0.0
 
 **返回值**
 
-[OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result)：**AUDIOCOMMON_RESULT_SUCCESS** 表示执行成功；**AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM** 表示 **accessory** 为空；**AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE** 表示配件仍处于连接状态。
-
+[OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result)：**AUDIOCOMMON_RESULT_SUCCESS** 表示执行成功；**AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM** 表示参数无效，包括 **manager** 为空、**manager** 未初始化，或 **accessory** 为空；**AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE** 表示 **accessory** 未断开连接。
