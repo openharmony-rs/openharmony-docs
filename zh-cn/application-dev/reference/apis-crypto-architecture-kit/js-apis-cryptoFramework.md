@@ -3052,9 +3052,11 @@ try {
 
 ### convertKey
 
-convertKey(pubKey: DataBlob | null, priKey: DataBlob | null, callback: AsyncCallback\<KeyPair\>): void
+convertKey(pubKey: DataBlob, priKey: DataBlob, callback: AsyncCallback\<KeyPair\>): void
 
-解析密钥数据，生成非对称密钥对象。使用callback异步回调。
+转换密钥数据为非对称密钥对对象。使用callback异步回调。
+
+**ArkTS模式**： 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3064,14 +3066,47 @@ convertKey(pubKey: DataBlob | null, priKey: DataBlob | null, callback: AsyncCall
 
 **ArkTS-Dyn起始版本：** 9
 
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明                                                         |
+| ------ | ------------------------- | ---- | ------------------------------------------------------------ |
+| pubKey | [DataBlob](#datablob)     | 是   | 公钥数据。                                           |
+| priKey | [DataBlob](#datablob)     | 是   | 私钥数据。                                           |
+| callback | AsyncCallback\<[KeyPair](#keypair)\> | 是   | 回调函数。转换成功时，err为undefined，data为转换后的密钥对；否则为错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[cryptoFramework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息                                                 |
+| -------- | --------------------------------------------------------- |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.          |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+|
+| 17630001 | Crypto operation error.          |
+
+### convertKey<sup>10+</sup>
+
+convertKey(pubKey: DataBlob | null, priKey: DataBlob | null, callback: AsyncCallback\<KeyPair\>): void
+
+解析密钥数据，生成非对称密钥对象。使用callback异步回调。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
+
+**ArkTS-Dyn起始版本：** 10
+
 **ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名     | 类型       | 必填 | 说明                           |
 | -------- | ----------- | ---- | ------------------------------ |
-| pubKey   | [DataBlob](#datablob) \| null<sup>10+</sup>    | 是   | 指定的公钥材料。如果公钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。        |
-| priKey   | [DataBlob](#datablob) \| null<sup>10+</sup>   | 是   | 指定的私钥材料。如果私钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。        |
+| pubKey   | [DataBlob](#datablob) \| null   | 是   | 指定的公钥材料。如果公钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。        |
+| priKey   | [DataBlob](#datablob) \| null  | 是   | 指定的私钥材料。如果私钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。        |
 | callback | AsyncCallback\<[KeyPair](#keypair)> | 是   | 回调函数。当获取非对称密钥成功，err为undefined，data为获取到的KeyPair；否则为错误对象。 |
 
 **错误码：**
@@ -3083,6 +3118,7 @@ convertKey(pubKey: DataBlob | null, priKey: DataBlob | null, callback: AsyncCall
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error.          |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -3111,9 +3147,11 @@ asyKeyGenerator.convertKey(pubKeyBlob, priKeyBlob, (err, keyPair) => {
 
 ### convertKey
 
-convertKey(pubKey: DataBlob | null, priKey: DataBlob | null): Promise\<KeyPair>
+convertKey(pubKey: DataBlob, priKey: DataBlob): Promise\<KeyPair\>
 
-解析密钥数据，生成非对称密钥对象。使用Promise异步回调。
+转换密钥数据为非对称密钥对对象。使用Promise异步回调。
+
+**ArkTS模式**： 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3123,14 +3161,52 @@ convertKey(pubKey: DataBlob | null, priKey: DataBlob | null): Promise\<KeyPair>
 
 **ArkTS-Dyn起始版本：** 9
 
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明                                                         |
+| ------ | ------------------------- | ---- | ------------------------------------------------------------ |
+| pubKey | [DataBlob](#datablob)     | 是   | 公钥数据。                                           |
+| priKey | [DataBlob](#datablob)     | 是   | 私钥数据。                                           |
+
+**返回值：**
+
+| 类型                            | 说明                                             |
+| ------------------------------- | ------------------------------------------------ |
+| Promise\<[KeyPair](#keypair)\> | Promise对象，返回获取到的非对称密钥对。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[cryptoFramework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息                                          |
+| -------- | ------------------------------------------------- |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.                                     |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+|
+| 17630001 | Crypto operation error.          |
+
+### convertKey<sup>10+</sup>
+
+convertKey(pubKey: DataBlob | null, priKey: DataBlob | null): Promise\<KeyPair>
+
+解析密钥数据，生成非对称密钥对象。使用Promise异步回调。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
+
+**ArkTS-Dyn起始版本：** 10
+
 **ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型    | 必填 | 说明             |
 | ------ | -------- | ---- | ---------------- |
-| pubKey | [DataBlob](#datablob) \| null<sup>10+</sup> | 是   | 指定的公钥材料。如果公钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。 |
-| priKey | [DataBlob](#datablob) \| null<sup>10+</sup> | 是   | 指定的私钥材料。如果私钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。 |
+| pubKey | [DataBlob](#datablob) \| null | 是   | 指定的公钥材料。如果公钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。 |
+| priKey | [DataBlob](#datablob) \| null | 是   | 指定的私钥材料。如果私钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。 |
 
 **返回值：**
 
@@ -3147,6 +3223,7 @@ convertKey(pubKey: DataBlob | null, priKey: DataBlob | null): Promise\<KeyPair>
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error.          |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -3221,8 +3298,8 @@ convertKeySync(pubKey: DataBlob | null, priKey: DataBlob | null): KeyPair
 
 | 参数名   | 类型    | 必填 | 说明             |
 | ------ | -------- | ---- | ---------------- |
-| pubKey | [DataBlob](#datablob) \| null<sup>10+</sup> | 是   | 指定公钥材料。如果公钥无需转换，请传入null。API 10前仅支持DataBlob，API 10起支持传入null。 |
-| priKey | [DataBlob](#datablob) \| null<sup>10+</sup> | 是   | 指定私钥材料。如果私钥无需转换，请传入null。API 10前仅支持DataBlob，API 10起支持传入null。 |
+| pubKey | [DataBlob](#datablob) \| null | 是   | 指定公钥材料。如果公钥无需转换，请传入null。API 10前仅支持DataBlob，API 10起支持传入null。 |
+| priKey | [DataBlob](#datablob) \| null | 是   | 指定私钥材料。如果私钥无需转换，请传入null。API 10前仅支持DataBlob，API 10起支持传入null。 |
 
 **返回值：**
 
@@ -3239,6 +3316,7 @@ convertKeySync(pubKey: DataBlob | null, priKey: DataBlob | null): KeyPair
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error.          |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -3309,6 +3387,7 @@ convertPemKey(pubKey: string | null, priKey: string | null): Promise\<KeyPair>
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error.          |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -3550,6 +3629,7 @@ convertPemKeySync(pubKey: string | null, priKey: string | null): KeyPair
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error.          |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -5086,6 +5166,45 @@ try {
 
 ### init
 
+init(opMode: CryptoMode, key: Key, params: ParamsSpec, callback: AsyncCallback\<void>): void
+
+初始化加解密的[cipher](#cipher)对象。使用callback异步回调。init、update、doFinal为三段式接口，需要成组使用。其中init和doFinal必选，update可选。
+
+必须在使用[createCipher](#cryptoframeworkcreatecipher)创建[Cipher](#cipher)实例后，才能使用本函数。
+
+**ArkTS模式**： 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本9-11：SystemCapability.Security.CryptoFramework
+
+**ArkTS-Dyn起始版本：** 9
+
+**参数：**
+
+| 参数名     | 类型                      | 必填 | 说明                                                         |
+| -------- | ------------------------- | ---- | ------------------------------------------------------------ |
+| opMode   | [CryptoMode](#cryptomode) | 是   | 加密或者解密模式。                                           |
+| key      | [Key](#key)               | 是   | 指定加密或解密的密钥。                                       |
+| params   | [ParamsSpec](#paramsspec) | 是   | 指定加密或解密的参数，例如IV。                               |
+| callback | AsyncCallback\<void>      | 是   | 回调函数。当加解密初始化成功，err为undefined，否则为错误对象。     |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[cryptoFramework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息                                                 |
+| -------- | --------------------------------------------------------- |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.                                            |
+| 17620002 | Failed to obtain the native object or convert parameters.                                          |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length. <br>适用版本：22+|
+| 17630001 | Crypto operation error.|
+
+### init<sup>10+</sup>
+
 init(opMode: CryptoMode, key: Key, params: ParamsSpec | null, callback: AsyncCallback\<void>): void
 
 初始化加解密的[cipher](#cipher)对象，使用callback异步回调获取结果。init、update、doFinal为三段式接口，需要成组使用。其中init和doFinal必选，update可选。
@@ -5096,9 +5215,9 @@ init(opMode: CryptoMode, key: Key, params: ParamsSpec | null, callback: AsyncCal
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Cipher
-- API版本9-11：SystemCapability.Security.CryptoFramework
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
 
@@ -5108,7 +5227,7 @@ init(opMode: CryptoMode, key: Key, params: ParamsSpec | null, callback: AsyncCal
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | opMode   | [CryptoMode](#cryptomode) | 是   | 要执行的操作（加密或解密）。                                           |
 | key      | [Key](#key)               | 是   | 用于加密或解密的密钥。                                       |
-| params   | [ParamsSpec](#paramsspec) \| null<sup>10+</sup> | 是   | 指定加密或解密的参数，对于ECB等没有参数的算法模式，请传入null。API 10之前只支持ParamsSpec， API 10之后增加支持null。 |
+| params   | [ParamsSpec](#paramsspec) \| null | 是   | 指定加密或解密的参数，对于ECB等没有参数的算法模式，请传入null。API 10之前只支持ParamsSpec， API 10之后增加支持null。 |
 | callback | AsyncCallback\<void>      | 是   | 回调函数。当加解密初始化成功，err为undefined，否则为错误对象。     |
 
 **错误码：**
@@ -5120,10 +5239,54 @@ init(opMode: CryptoMode, key: Key, params: ParamsSpec | null, callback: AsyncCal
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.                                            |
 | 17620002 | Failed to obtain the native object or convert parameters.                                          |
-| 17620003 | Parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length.|
+| 17620003 | Parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length. <br>适用版本：22+|
 | 17630001 | Crypto operation error.|
 
 ### init
+
+init(opMode: CryptoMode, key: Key, params: ParamsSpec): Promise\<void>
+
+初始化加解密的cipher对象。使用Promise异步回调。init、update、doFinal为三段式接口，需要成组使用。其中init和doFinal必选，update可选。
+
+必须在使用[createCipher](#cryptoframeworkcreatecipher)创建[Cipher](#cipher)实例后，才能使用本函数。
+
+**ArkTS模式**： 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本9-11：SystemCapability.Security.CryptoFramework
+
+**ArkTS-Dyn起始版本：** 9
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明                                                         |
+| ------ | ------------------------- | ---- | ------------------------------------------------------------ |
+| opMode | [CryptoMode](#cryptomode) | 是   | 加密或者解密模式。                                           |
+| key    | [Key](#key)               | 是   | 指定加密或解密的密钥。                                       |
+| params | [ParamsSpec](#paramsspec) | 是   | 指定加密或解密的参数，例如IV。                               |
+
+**返回值：**
+
+| 类型           | 说明                                   |
+| -------------- | -------------------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[cryptoFramework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息                                          |
+| -------- | ------------------------------------------------- |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.                                     |
+| 17620002 | Failed to obtain the native object or convert parameters.                                    |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length. <br>适用版本：22+|
+| 17630001 | Crypto operation error.|
+
+### init<sup>10+</sup>
 
 init(opMode: CryptoMode, key: Key, params: ParamsSpec | null): Promise\<void>
 
@@ -5135,9 +5298,9 @@ init(opMode: CryptoMode, key: Key, params: ParamsSpec | null): Promise\<void>
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Cipher
-- API版本9-11：SystemCapability.Security.CryptoFramework
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
 
@@ -5147,7 +5310,7 @@ init(opMode: CryptoMode, key: Key, params: ParamsSpec | null): Promise\<void>
 | ------ | ------------------------- | ---- | ------------------------------------------------------------ |
 | opMode | [CryptoMode](#cryptomode) | 是   | 要执行的操作（加密或解密）。                                           |
 | key    | [Key](#key)               | 是   | 用于加密或解密的密钥。                                       |
-| params | [ParamsSpec](#paramsspec) \| null<sup>10+</sup> | 是   | 指定加密或解密的参数，对于ECB等没有参数的算法模式，请传入null。API 10之前仅支持ParamsSpec，从API 10开始增加对null的支持。 |
+| params | [ParamsSpec](#paramsspec) \| null | 是   | 指定加密或解密的参数，对于ECB等没有参数的算法模式，请传入null。API 10之前仅支持ParamsSpec，从API 10开始增加对null的支持。 |
 
 **返回值：**
 
@@ -5164,7 +5327,7 @@ init(opMode: CryptoMode, key: Key, params: ParamsSpec | null): Promise\<void>
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.                                     |
 | 17620002 | Failed to obtain the native object or convert parameters.                                    |
-| 17620003 | Parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length.|
+| 17620003 | Parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length. <br>适用版本：22+|
 | 17630001 | Crypto operation error.|
 
 ### initSync<sup>12+</sup>
@@ -5200,7 +5363,7 @@ initSync(opMode: CryptoMode, key: Key, params: ParamsSpec | null): void
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.           |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
-| 17620003 | Parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length.|
+| 17620003 | Parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length. <br>适用版本：22+|
 | 17630001 | Crypto operation error. |
 
 ### update
@@ -5259,7 +5422,7 @@ ArkTS-Sta: update(data: DataBlob, callback: AsyncCallback\<DataBlob | null>): vo
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.                               |
 | 17620002 | Failed to obtain the native object or convert parameters.                            |
-| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long.|
+| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long. <br>适用版本：22+|
 | 17630001 | Crypto operation error.                     |
 
 ### update
@@ -5313,7 +5476,7 @@ ArkTS-Sta: update(data: DataBlob): Promise\<DataBlob | null>
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.                                |
 | 17620002 | Failed to obtain the native object or convert parameters.                               |
-| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long.|
+| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long. <br>适用版本：22+|
 | 17630001 | Crypto operation error.                      |
 
 ### updateSync<sup>12+</sup>
@@ -5357,10 +5520,45 @@ ArkTS-Sta: updateSync(data: DataBlob): DataBlob | null
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.           |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
-| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long.|
+| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long. <br>适用版本：22+|
 | 17630001 | Crypto operation error. |
 
 ### doFinal
+
+doFinal(data: DataBlob, callback: AsyncCallback\<DataBlob>): void
+
+完成加解密操作，对输入数据进行加密或解密，然后反馈输出数据。加解密操作完成后，数据无法更新。使用callback异步回调。
+
+**ArkTS模式**： 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本9-11：SystemCapability.Security.CryptoFramework
+
+**ArkTS-Dyn起始版本：** 9
+
+**参数：**
+
+| 参数名     | 类型                                  | 必填 | 说明                                                         |
+| -------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
+| data     | [DataBlob](#datablob)                 | 是   | 加密或解密的数据。不可传入{data: Uint8Array(空) }。       |
+| callback | AsyncCallback\<[DataBlob](#datablob)> | 是   | 回调函数。最终加/解密成功时，err为undefined，data为加/解密结果DataBlob；否则为错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[cryptoFramework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.           |
+| 17620002 | Failed to obtain the native object or convert parameters.          |
+| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long. <br>适用版本：22+|
+| 17630001 | Crypto operation error. |
+
+### doFinal<sup>10+</sup>
 
 ArkTS-Dyn: doFinal(data: DataBlob | null, callback: AsyncCallback\<DataBlob>): void
 
@@ -5387,9 +5585,9 @@ ArkTS-Sta: doFinal(data: DataBlob | null, callback: AsyncCallback\<DataBlob | nu
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Cipher
-- API版本9-11：SystemCapability.Security.CryptoFramework
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
 
@@ -5397,7 +5595,7 @@ ArkTS-Sta: doFinal(data: DataBlob | null, callback: AsyncCallback\<DataBlob | nu
 
 | 参数名     | 类型                                  | 必填 | 说明                                                         |
 | -------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
-| data     | [DataBlob](#datablob) \| null<sup>10+</sup>                 | 是   | 加密或解密的数据。在对称加解密中可为null，但不可传入{data: Uint8Array(空) }。API 10前仅支持DataBlob，API 10后增加null支持。       |
+| data     | [DataBlob](#datablob) \| null                 | 是   | 加密或解密的数据。在对称加解密中可为null，但不可传入{data: Uint8Array(空) }。API 10前仅支持DataBlob，API 10后增加null支持。       |
 | callback | ArkTS-Dyn: AsyncCallback\<[DataBlob](#datablob)><br>ArkTS-Sta: AsyncCallback\<[DataBlob](#datablob)> \| null | 是   | 回调函数。最终加/解密成功时，err为undefined，data为加/解密结果DataBlob；否则为错误对象。 |
 
 **错误码：**
@@ -5523,6 +5721,47 @@ function cipherByCallback() {
 
 ### doFinal
 
+doFinal(data: DataBlob): Promise\<DataBlob>
+
+完成加解密操作，对输入数据进行加密或解密，然后反馈输出数据。加解密操作完成后，数据无法更新。使用Promise异步回调。
+
+**ArkTS模式**： 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本9-11：SystemCapability.Security.CryptoFramework
+
+**ArkTS-Dyn起始版本：** 9
+
+**参数：**
+
+| 参数名 | 类型                  | 必填 | 说明                 |
+| ---- | --------------------- | ---- | -------------------- |
+| data | [DataBlob](#datablob) | 是   | 加密或者解密的数据。不可传入{data: Uint8Array(空) }。 |
+
+**返回值：**
+
+| 类型                            | 说明                                             |
+| ------------------------------- | ------------------------------------------------ |
+| Promise\<[DataBlob](#datablob)> | Promise对象，返回剩余数据的加/解密结果DataBlob。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[cryptoFramework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.                                |
+| 17620002 | Failed to obtain the native object or convert parameters.                               |
+| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long. <br>适用版本：22+|
+| 17630001 | Crypto operation error.                      |
+
+
+### doFinal<sup>10+</sup>
+
 ArkTS-Dyn: doFinal(data: DataBlob | null): Promise\<DataBlob>
 
 ArkTS-Sta: doFinal(data: DataBlob | null): Promise\<DataBlob | null>
@@ -5551,9 +5790,9 @@ ArkTS-Sta: doFinal(data: DataBlob | null): Promise\<DataBlob | null>
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Cipher
-- API版本9-11：SystemCapability.Security.CryptoFramework
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
 
@@ -5561,7 +5800,7 @@ ArkTS-Sta: doFinal(data: DataBlob | null): Promise\<DataBlob | null>
 
 | 参数名 | 类型                  | 必填 | 说明                 |
 | ---- | --------------------- | ---- | -------------------- |
-| data | [DataBlob](#datablob) \| null<sup>10+</sup> | 是   | 加密或者解密的数据。data参数允许为null，但不允许传入{data: Uint8Array(空) }。API 10之前只支持DataBlob，API 10之后增加支持null。 |
+| data | [DataBlob](#datablob) \| null | 是   | 加密或者解密的数据。data参数允许为null，但不允许传入{data: Uint8Array(空) }。API 10之前只支持DataBlob，API 10之后增加支持null。 |
 
 **返回值：**
 
@@ -5577,7 +5816,7 @@ ArkTS-Sta: doFinal(data: DataBlob | null): Promise\<DataBlob | null>
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.                                |
 | 17620002 | Failed to obtain the native object or convert parameters.                               |
-| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long.|
+| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long. <br>适用版本：22+|
 | 17630001 | Crypto operation error.                      |
 
 **示例：**
@@ -6047,6 +6286,7 @@ Sign实例不支持重复初始化。
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Incorrect key type. <br>适用版本：26.0.0+|
 
 ### init
 
@@ -6088,6 +6328,7 @@ Sign实例不支持重复初始化。
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Incorrect key type. <br>适用版本：26.0.0+|
 
 ### initSync<sup>12+</sup>
 
@@ -6121,6 +6362,7 @@ Sign实例不支持重复调用initSync。
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Incorrect key type. <br>适用版本：26.0.0+|
 
 ### update
 
@@ -6164,7 +6406,7 @@ update(data: DataBlob, callback: AsyncCallback\<void>): void
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.          |
-| 17620004 | Invalid function call. |
+| 17620004 | Invalid function call. <br>适用版本：26.0.0+|
 | 17630001 | Crypto operation error. |
 
 ### update
@@ -6214,7 +6456,7 @@ update(data: DataBlob): Promise\<void>
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
-| 17620004 | Invalid function call. |
+| 17620004 | Invalid function call. <br>适用版本：26.0.0+|
 | 17630001 | Crypto operation error. |
 
 ### updateSync<sup>12+</sup>
@@ -6256,14 +6498,14 @@ updateSync(data: DataBlob): void
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
-| 17620004 | Invalid function call. |
+| 17620004 | Invalid function call. <br>适用版本：26.0.0+|
 | 17630001 | Crypto operation error. |
 
 ### sign
 
 sign(data: DataBlob, callback: AsyncCallback\<DataBlob>): void
 
-对数据进行签名。使用callback异步回调。
+对数据进行签名，返回签名结果。使用callback异步回调。Sign类不支持重复调用sign。
 
 **ArkTS模式**： 该接口仅适用于ArkTS-Dyn。
 
@@ -6277,20 +6519,21 @@ sign(data: DataBlob, callback: AsyncCallback\<DataBlob>): void
 
 **参数：**
 
-| 参数名   | 类型                 | 必填 | 说明       |
-| -------- | -------------------- | ---- | ---------- |
-| data     | [DataBlob](#datablob)            | 是   | 传入的消息。 |
-| callback | AsyncCallback\<[DataBlob](#datablob)> | 是   | 回调函数，用于获取签名结果DataBlob数据。当签名成功，err为undefined，data为获取到的签名结果；否则为错误对象。 |
+| 参数名     | 类型                      | 必填 | 说明                                                         |
+| -------- | ------------------------- | ---- | ------------------------------------------------------------ |
+| data     | [DataBlob](#datablob)     | 是   | 待签名的数据。                                               |
+| callback | AsyncCallback\<[DataBlob](#datablob)> | 是   | 回调函数。签名成功时，err为undefined，data为签名结果；否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
-| 错误码ID | 错误信息               |
-| -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.          |
-| 17620002 | failed to convert parameters between arkts and c.         |
+| 错误码ID | 错误信息                                                 |
+| -------- | --------------------------------------------------------- |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.          |
+| 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+|
 | 17630001 | crypto operation error. |
 
 ### sign<sup>10+</sup>
@@ -6325,6 +6568,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+|
 | 17630001 | Crypto operation error. |
 
 ### sign
@@ -6404,6 +6648,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 ### signSync<sup>12+</sup>
 
@@ -6441,6 +6686,7 @@ signSync(data: DataBlob | null): DataBlob
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -6743,6 +6989,9 @@ setSignSpec(itemType: SignSpecItem, itemValue: number): void
 | 801 | This operation is not supported.          |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error. |
+| 17620002 | Failed to obtain the native object or convert parameters. <br>适用版本：26.0.0+|
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+|
+| 17620004 | Invalid function call. <br>适用版本：26.0.0+|
 
 **示例：**
 
@@ -6844,7 +7093,6 @@ setSignSpec(itemType: SignSpecItem, itemValue: number \| Uint8Array \| boolean):
 | 17630001 | Crypto operation error. |
 
 **示例：**
-
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
@@ -6938,6 +7186,7 @@ ArkTS-Sta: getSignSpec(itemType: SignSpecItem): string | int
 | 801 | This operation is not supported.          |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -7068,6 +7317,7 @@ init(pubKey: PubKey, callback: AsyncCallback\<void>): void
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Incorrect key type. <br>适用版本：26.0.0+|
 | 17630001 | Crypto operation error. |
 
 ### init
@@ -7108,6 +7358,7 @@ init(pubKey: PubKey): Promise\<void>
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Incorrect key type. <br>适用版本：26.0.0+|
 
 ### initSync<sup>12+</sup>
 
@@ -7139,6 +7390,7 @@ initSync(pubKey: PubKey): void
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Incorrect key type. <br>适用版本：26.0.0+|
 
 ### update
 
@@ -7182,7 +7434,7 @@ update(data: DataBlob, callback: AsyncCallback\<void>): void
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
-| 17620004 | Invalid function call. |
+| 17620004 | Invalid function call. <br>适用版本：26.0.0+|
 | 17630001 | Crypto operation error. |
 
 ### update
@@ -7232,7 +7484,7 @@ update(data: DataBlob): Promise\<void>
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
-| 17620004 | Invalid function call. |
+| 17620004 | Invalid function call. <br>适用版本：26.0.0+|
 | 17630001 | Crypto operation error. |
 
 ### updateSync<sup>12+</sup>
@@ -7274,7 +7526,7 @@ updateSync(data: DataBlob): void
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
-| 17620004 | Invalid function call. |
+| 17620004 | Invalid function call. <br>适用版本：26.0.0+|
 | 17630001 | Crypto operation error. |
 
 ### verify
@@ -7345,6 +7597,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+|
 | 17630001 | Crypto operation error. |
 
 ### verify
@@ -7426,6 +7679,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 ### verifySync<sup>12+</sup>
 
@@ -7464,6 +7718,7 @@ verifySync(data: DataBlob | null, signatureData: DataBlob): boolean
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -7806,7 +8061,7 @@ recover(signatureData: DataBlob): Promise\<DataBlob | null>
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
-| 17620004 | Invalid function call. |
+| 17620004 | Invalid function call. <br>适用版本：26.0.0+|
 | 17630001 | Crypto operation error. |
 
 **示例：**
@@ -7926,7 +8181,7 @@ recoverSync(signatureData: DataBlob): DataBlob | null
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
-| 17620004 | Invalid function call. |
+| 17620004 | Invalid function call. <br>适用版本：26.0.0+|
 | 17630001 | Crypto operation error. |
 
 ### setVerifySpec<sup>10+</sup>
@@ -7968,6 +8223,9 @@ setVerifySpec(itemType: SignSpecItem, itemValue: number): void
 | 801 | This operation is not supported.          |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error. |
+| 17620002 | Failed to obtain the native object or convert parameters. <br>适用版本：26.0.0+ |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+|
+| 17620004 | Invalid function call. <br>适用版本：26.0.0+|
 
 **示例：**
 
@@ -8169,6 +8427,7 @@ ArkTS-Sta: getVerifySpec(itemType: SignSpecItem): string | int
 | 801 | This operation is not supported.          |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
