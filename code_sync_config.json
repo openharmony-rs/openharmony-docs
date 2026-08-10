@@ -29066,9 +29066,9 @@
 						"start_line":148
 					},
 					{
-						"end_line":229,
+						"end_line":227,
 						"name":"napi_create_external_string_ascii",
-						"start_line":189
+						"start_line":188
 					},
 					{
 						"end_line":59,
