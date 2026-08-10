@@ -53,8 +53,8 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | featureVersion | number | 是 | Feature版本号，标识规划的新特性版本，值为osFullName中的第三位数值，建议直接使用deviceInfo.featureVersion获取，可提升效率，不建议开发者自主解析osFullName获取。<br/>示例：0 |
 | buildVersion | number | 是 | Build版本号，标识编译构建的版本号，值为osFullName中的第四位数值，建议直接使用deviceInfo.buildVersion获取，可提升效率，不建议开发者自主解析osFullName获取。<br/>示例：1 |
 | sdkApiVersion | number | 是 | 系统软件API版本。<br/>**原子化服务API**：从API版本14开始，该接口支持在原子化服务中使用。<br/>示例：12 |
-| sdkMinorApiVersion | number | 是 | 系统软件Minor API版本。**从** API 26.0.0 版本开始，系统API版本格式：sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**起始版本**：26.0.0<br/>**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>示例：0 |
-| sdkPatchApiVersion | number | 是 | 系统软件Patch API版本。**从** API 26.0.0 版本开始，系统API版本格式：sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**起始版本**：26.0.0<br/>**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>示例：0 |
+| sdkMinorApiVersion | number | 是 | 系统软件Minor API版本。从API 26.0.0 版本开始，系统API版本格式：sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**起始版本**：26.0.0<br/>**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>示例：0 |
+| sdkPatchApiVersion | number | 是 | 系统软件Patch API版本。从API 26.0.0 版本开始，系统API版本格式：sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**起始版本**：26.0.0<br/>**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>示例：0 |
 | firstApiVersion | number | 是 | 首个版本系统软件API版本。<br/>示例：3 |
 | versionId | string | 是 | 版本ID。由deviceType、manufacture、brand、productSeries、osFullName、productModel、softwareModel、sdkApiVersion、incrementalVersion、buildType拼接组成。 |
 | buildType | string | 是 | 构建类型。<br/>示例：default |
@@ -65,8 +65,8 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | udid<sup>7+</sup> | string | 是 | 设备Udid，该接口在执行期间会拉起临时进程，当系统负载较高时，可能引发阻塞风险。为确保应用主线程的响应性能，建议避免在主线程中调用。设备信息因设备而异且固定不变，可在首次获取后缓存在本地，避免每次使用时重复获取，以提升性能。<br/>**说明**：数据长度为65字节。可作为设备唯一识别码。<br/>**需要权限**：ohos.permission.sec.ACCESS_UDID(该权限只允许系统应用及企业类应用申请)<br/>示例：9D6AABD147XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXE5536412  |
 | distributionOSName<sup>10+</sup> | string | 是 | 发行版系统名称<!--Del-->，由发行方定义<!--DelEnd-->。<br/>示例：OpenHarmony |
 | distributionOSVersion<sup>10+</sup> | string | 是 | 发行版系统版本号<!--Del-->，由发行方定义<!--DelEnd-->。<!--RP11--><!--RP11End--><br/>示例：5.0.0  |
-| distributionOSApiVersion<sup>10+</sup> | number| 是 | 发行版系统API版本<!--Del-->，由发行方定义<!--DelEnd-->。<br/>示例：50001 |
-| distributionOSApiName<sup>13+</sup> | string | 是 | 发行版系统API版本名称<!--Del-->，由发行方定义<!--DelEnd-->。 |
+| distributionOSApiVersion<sup>10+</sup> | number| 是 | 发行版系统API版本<!--Del-->，由发行方定义<!--DelEnd-->。<!--RP15--><!--RP15End--><br>示例：50001 |
+| distributionOSApiName<sup>13+</sup> | string | 是 | 发行版系统API版本名称<!--Del-->，由发行方定义<!--DelEnd-->。<!--RP16--><br>示例：5.0.1<!--RP16End--> |
 | distributionOSReleaseType<sup>10+</sup> | string | 是 | 发行版系统类型<!--Del-->，由发行方定义<!--DelEnd-->。<br/>示例：Release |
 | ODID<sup>12+</sup> | string | 是 |开发者匿名设备标识符。<br/>**ODID值会在以下场景重新生成**：<br/>手机恢复出厂设置。<br/>同一设备上同一个开发者(developerId相同)的应用全部卸载后重新安装时。<br/>**ODID生成规则**：<br/>根据签名信息里developerId解析出的groupId生成，developerId规则为groupId.developerId，若无groupId则取整个developerId作为groupId。<br/>同一设备上运行的同一个开发者(developerId相同)的应用，ODID相同。<br/>同一个设备上不同开发者(developerId不同)的应用，ODID不同。<br/>不同设备上同一个开发者(developerId相同)的应用，ODID不同。<br/>不同设备上不同开发者(developerId不同)的应用，ODID不同。<br/>**说明**：数据长度为37字节(包含结束符)。<br/>示例：1234a567-XXXX-XXXX-XXXX-XXXXXXXXXXXX |
 | diskSN<sup>15+</sup> | string | 是 | 硬盘序列号，该接口在执行期间会拉起临时进程，当系统负载较高时，可能引发阻塞风险。为确保应用主线程的响应性能，建议避免在主线程中调用。设备信息因设备而异且固定不变，可在首次获取后缓存在本地，避免每次使用时重复获取，以提升性能。<br/> **说明** ：该字段只能在部分2in1设备上进行查询，其他设备查询结果为空。<br/> **需要权限**：ohos.permission.ACCESS_DISK_PHY_INFO <br/> 示例：2502EM400567 |
