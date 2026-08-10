@@ -1114,6 +1114,8 @@ type SystemUpdateCallback = (data: SubscribeCallbackData) => void
 
 ArkTS-Dyn示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onSystemUpdate: (data: notificationSubscribe.SubscribeCallbackData) => {
     let req = data.request;
@@ -1129,6 +1131,8 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onSystemUpdate: (data: notificationSubscribe.SubscribeCallbackData) => {
     let req = data.request;
