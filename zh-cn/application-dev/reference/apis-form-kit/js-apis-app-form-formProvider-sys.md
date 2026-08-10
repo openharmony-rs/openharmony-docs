@@ -50,6 +50,7 @@ requestPublishForm(want: Want, formBindingData: formBindingData.FormBindingData,
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
 | 16501002 | The number of forms exceeds the upper limit. <br/>适用版本：26.1.0+ |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>适用版本：26.1.0+ |
 | 16501017 | There is no space to publish form. <br/>适用版本：26.1.0+ |
 | 16501018 | This form does not support publishing. <br/>适用版本：26.1.0+ |
 
@@ -115,6 +116,7 @@ requestPublishForm(want: Want, callback: AsyncCallback&lt;string&gt;): void
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
 | 16501002 | The number of forms exceeds the upper limit. <br/>适用版本：26.1.0+ |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>适用版本：26.1.0+ |
 | 16501017 | There is no space to publish form. <br/>适用版本：26.1.0+ |
 | 16501018 | This form does not support publishing. <br/>适用版本：26.1.0+ |
 
@@ -181,6 +183,7 @@ requestPublishForm(want: Want, formBindingData?: formBindingData.FormBindingData
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
 | 16501002 | The number of forms exceeds the upper limit. <br/>适用版本：26.1.0+ |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>适用版本：26.1.0+ |
 | 16501017 | There is no space to publish form. <br/>适用版本：26.1.0+ |
 | 16501018 | This form does not support publishing. <br/>适用版本：26.1.0+ |
 
