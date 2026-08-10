@@ -256,20 +256,27 @@
     static int32_t GetTemporalLayerID(OH_AVBuffer *buffer)
     {
         int32_t layerID = -1;
+    #ifdef AVCODEC_SAMPLE_ENABLE_TEMPORAL_LAYER_ID
         OH_AVFormat *format = OH_AVBuffer_GetParameter(buffer);
-        OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_TEMPORAL_LAYER_ID, &layerID);
+        if (format != nullptr) {
+            OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_TEMPORAL_LAYER_ID, &layerID);
+            OH_AVFormat_Destroy(format);
+        }
+    #else
+        (void)buffer;
+    #endif
         return layerID;
     }
     
     void SampleCallback::OnNewOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
     {
-        if (userData == nullptr) {
-            return;
-        }
         // ...
     
         // 从AVBuffer中获取时域层级信息。
         int32_t layerID = GetTemporalLayerID(buffer);
+        if (layerID >= 0 && index % LIMIT_LOGD_FREQUENCY == 0) {
+            AVCODEC_SAMPLE_LOGD("Temporal layer ID: %{public}d", layerID);
+        }
     }
     ```
 
