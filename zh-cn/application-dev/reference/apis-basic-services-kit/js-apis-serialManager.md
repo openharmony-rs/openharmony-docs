@@ -114,8 +114,8 @@ ArkTS-Sta: hasSerialRight(portId: int): boolean
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14400005 | Database operation exception. Possible cause: Invalid portId provided. Solution: Call getPortList to get valid portIds first. |
-| 31400001 | Serial port management exception. Possible causes: 1. Failed to configure serial port; 2. Invalid serial port state; 3. System resource conflict. |
+| 14400005 | Database operation exception. |
+| 31400001 | Serial port management exception. |
 | 31400003 | PortId does not exist. |
 
 **示例：**
@@ -180,8 +180,8 @@ ArkTS-Sta: requestSerialRight(portId: int): Promise&lt;boolean&gt;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14400005 | Database operation exception. Possible cause: Invalid portId provided. Solution: Call getPortList to get valid portIds first. |
-| 31400001 | Serial port management exception. Possible causes: 1. Failed to configure serial port; 2. Invalid serial port state; 3. System resource conflict. |
+| 14400005 | Database operation exception. |
+| 31400001 | Serial port management exception. |
 | 31400003 | PortId does not exist. |
 
 **示例：**
@@ -263,7 +263,7 @@ ArkTS-Sta: open(portId: int): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 31400001 | Serial port management exception. Possible causes: 1. Failed to configure serial port; 2. Invalid serial port state; 3. System resource conflict. |
+| 31400001 | Serial port management exception. |
 | 31400002 | Access denied. Call requestSerialRight to request user authorization first. |
 | 31400003 | PortId does not exist. |
 | 31400004 | The serial port device is occupied. |
@@ -358,7 +358,7 @@ ArkTS-Sta: getAttribute(portId: int): Readonly&lt;[SerialAttribute](#serialattri
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 31400001 | Serial port management exception. Possible causes: 1. Failed to configure serial port; 2. Invalid serial port state; 3. System resource conflict. |
+| 31400001 | Serial port management exception. |
 | 31400003 | PortId does not exist. |
 | 31400005 | The serial port device is not opened. Call the open API first. |
 
@@ -460,7 +460,7 @@ ArkTS-Sta: setAttribute(portId: int, attribute: [SerialAttribute](#serialattribu
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 31400001 | Serial port management exception. Possible causes: 1. Failed to configure serial port; 2. Invalid serial port state; 3. System resource conflict. |
+| 31400001 | Serial port management exception. |
 | 31400003 | PortId does not exist. |
 | 31400005 | The serial port device is not opened. Call the open API first. |
 
@@ -567,7 +567,7 @@ ArkTS-Sta: read(portId: int, buffer: Uint8Array, timeout?: int): Promise&lt;int&
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 31400001 | Serial port management exception. Possible causes: 1. Failed to configure serial port; 2. Invalid serial port state; 3. System resource conflict. |
+| 31400001 | Serial port management exception. |
 | 31400003 | PortId does not exist. |
 | 31400005 | The serial port device is not opened. Call the open API first. |
 | 31400006 | Data transfer timed out. |
@@ -679,7 +679,7 @@ ArkTS-Sta: readSync(portId: int, buffer: Uint8Array, timeout?: int): int
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 31400001 | Serial port management exception. Possible causes: 1. Failed to configure serial port; 2. Invalid serial port state; 3. System resource conflict. |
+| 31400001 | Serial port management exception. |
 | 31400003 | PortId does not exist. |
 | 31400005 | The serial port device is not opened. Call the open API first. |
 | 31400006 | Data transfer timed out. |
@@ -783,7 +783,7 @@ ArkTS-Sta: write(portId: int, buffer: Uint8Array, timeout?: int): Promise&lt;int
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 31400001 | Serial port management exception. Possible causes: 1. Failed to configure serial port; 2. Invalid serial port state; 3. System resource conflict. |
+| 31400001 | Serial port management exception. |
 | 31400003 | PortId does not exist. |
 | 31400005 | The serial port device is not opened. Call the open API first. |
 | 31400006 | Data transfer timed out. |
@@ -890,7 +890,7 @@ ArkTS-Sta: writeSync(portId: int, buffer: Uint8Array, timeout?: int): int
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 31400001 | Serial port management exception. Possible causes: 1. Failed to configure serial port; 2. Invalid serial port state; 3. System resource conflict. |
+| 31400001 | Serial port management exception. |
 | 31400003 | PortId does not exist. |
 | 31400005 | The serial port device is not opened. Call the open API first. |
 | 31400006 | Data transfer timed out. |
@@ -1001,7 +1001,7 @@ ArkTS-Sta: close(portId: int): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 31400001 | Serial port management exception. Possible causes: 1. Failed to configure serial port; 2. Invalid serial port state; 3. System resource conflict. |
+| 31400001 | Serial port management exception. |
 | 31400003 | PortId does not exist. |
 | 31400005 | The serial port device is not opened. Call the open API first. |
 
@@ -1099,8 +1099,8 @@ ArkTS-Sta: cancelSerialRight(portId: int): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14400005 | Database operation exception. Possible cause: Invalid portId provided. Solution: Call getPortList to get valid portIds first. |
-| 31400001 | Serial port management exception. Possible causes: 1. Failed to configure serial port; 2. Invalid serial port state; 3. System resource conflict. |
+| 14400005 | Database operation exception. |
+| 31400001 | Serial port management exception. |
 | 31400002 | Access denied. Call requestSerialRight to request user authorization first. |
 | 31400003 | PortId does not exist. |
 

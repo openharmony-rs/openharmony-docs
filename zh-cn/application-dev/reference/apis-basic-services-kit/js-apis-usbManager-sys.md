@@ -52,8 +52,8 @@ usbFunctionsFromString(funcs: string): number
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. Solution: Check the parameter types and ensure all required parameters are provided. |
-| 202      | Permission denied. Normal application do not have permission to use system api. Possible causes: The application is not a system application or does not have required system permissions. Solution: Apply for the required system permissions or use public APIs. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 202      | Permission denied. Normal application do not have permission to use system api. |
 
 **示例：**
 
@@ -96,8 +96,8 @@ usbFunctionsToString(funcs: FunctionType): string
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. Solution: Check the parameter types and ensure all required parameters are provided. |
-| 202      | Permission denied. Normal application do not have permission to use system api. Possible causes: The application is not a system application or does not have required system permissions. Solution: Apply for the required system permissions or use public APIs. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 202      | Permission denied. Normal application do not have permission to use system api. |
 
 **示例：**
 
@@ -140,8 +140,8 @@ setCurrentFunctions(funcs: FunctionType): Promise\<void\>
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. Solution: Check the parameter types and ensure all required parameters are provided. |
-| 14400002 | Permission denied. The HDC is disabled by the system. Possible causes: The HDC (HarmonyOS Device Connector) feature is disabled in developer settings. Solution: Enable HDC in developer settings or check system configuration. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 14400002 | Permission denied. The HDC is disabled by the system. |
 
 **示例：**
 
@@ -183,8 +183,8 @@ getCurrentFunctions(): FunctionType
 
 | 错误码ID | 错误信息                                                                        |
 | -------- | ------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: No parameters are required for this interface. Solution: Remove any unnecessary parameters and call the interface without parameters. |
-| 202      | Permission denied. Normal application do not have permission to use system api. Possible causes: The application is not a system application or does not have required system permissions. Solution: Apply for the required system permissions or use public APIs. |
+| 401      | Parameter error. No parameters are required. |
+| 202      | Permission denied. Normal application do not have permission to use system api. |
 
 **示例：**
 
@@ -219,8 +219,8 @@ getPorts(): Array\<USBPort\>
 
 | 错误码ID | 错误信息                                                                        |
 | -------- | ------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: No parameters are required for this interface. Solution: Remove any unnecessary parameters and call the interface without parameters. |
-| 202      | Permission denied. Normal application do not have permission to use system api. Possible causes: The application is not a system application or does not have required system permissions. Solution: Apply for the required system permissions or use public APIs. |
+| 401      | Parameter error. No parameters are required. |
+| 202      | Permission denied. Normal application do not have permission to use system api. |
 
 **示例：**
 
@@ -261,8 +261,8 @@ getSupportedModes(portId: number): PortModeType
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. Solution: Check the parameter types and ensure all required parameters are provided. |
-| 202      | Permission denied. Normal application do not have permission to use system api. Possible causes: The application is not a system application or does not have required system permissions. Solution: Apply for the required system permissions or use public APIs. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 202      | Permission denied. Normal application do not have permission to use system api. |
 
 **示例：**
 
@@ -305,7 +305,7 @@ setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): 
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. Solution: Check the parameter types and ensure all required parameters are provided. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -358,10 +358,10 @@ addDeviceAccessRight(tokenId: string, deviceName: string): boolean
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. Solution: Check the parameter types and ensure all required parameters are provided. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 202      | Permission denied. Normal application do not have permission to use system api. Possible causes: The application is not a system application or does not have required system permissions. Solution: Apply for the required system permissions or use public APIs. |
-| 801      | Capability not supported. Possible causes: The current device or system does not support this USB capability. Solution: Check if the device supports this capability and ensure the system version meets the requirements. |
+| 202      | Permission denied. Normal application do not have permission to use system api. |
+| 801      | Capability not supported. |
 
 **示例：**
 
@@ -430,10 +430,10 @@ ArkTS-Sta: getFunctionsFromString(funcs: string): int
 
 | 错误码ID | 错误信息                                                                        |
 | -------- | ------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. Solution: Check the parameter types and ensure all required parameters are provided. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 202      | Permission denied. Normal application do not have permission to use system api. Possible causes: The application is not a system application or does not have required system permissions. Solution: Apply for the required system permissions or use public APIs. |
-| 801      | Capability not supported. Possible causes: The current device or system does not support this USB capability. Solution: Check if the device supports this capability and ensure the system version meets the requirements. |
+| 202      | Permission denied. Normal application do not have permission to use system api. |
+| 801      | Capability not supported. |
 
 **示例：**
 
@@ -480,10 +480,10 @@ ArkTS-Sta: getStringFromFunctions(funcs: int): string
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. Solution: Check the parameter types and ensure all required parameters are provided. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 202      | Permission denied. Normal application do not have permission to use system api. Possible causes: The application is not a system application or does not have required system permissions. Solution: Apply for the required system permissions or use public APIs. |
-| 801      | Capability not supported. Possible causes: The current device or system does not support this USB capability. Solution: Check if the device supports this capability and ensure the system version meets the requirements. |
+| 202      | Permission denied. Normal application do not have permission to use system api. |
+| 801      | Capability not supported. |
 
 **示例：**
 
@@ -532,12 +532,12 @@ ArkTS-Sta: setDeviceFunctions(funcs: int): Promise\<void\>
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. Solution: Check the parameter types and ensure all required parameters are provided. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 202      | Permission denied. Normal application do not have permission to use system api. Possible causes: The application is not a system application or does not have required system permissions. Solution: Apply for the required system permissions or use public APIs. |
-| 801      | Capability not supported. Possible causes: The current device or system does not support this USB capability. Solution: Check if the device supports this capability and ensure the system version meets the requirements. |
-| 14400002 | Permission denied. The HDC is disabled by the system. Possible causes: The HDC (HarmonyOS Device Connector) feature is disabled in developer settings. Solution: Enable HDC in developer settings or check system configuration. |
-| 14400006 | Unsupported operation. The function is not supported. Possible causes: The current device does not support this USB function. Solution: Check device capabilities and ensure the function is supported. |
+| 202      | Permission denied. Normal application do not have permission to use system api. |
+| 801      | Capability not supported. |
+| 14400002 | Permission denied. The HDC is disabled by the system. |
+| 14400006 | Unsupported operation. The function is not supported. |
 
 **示例：**
 
@@ -589,8 +589,8 @@ ArkTS-Sta: getDeviceFunctions(): int
 | 错误码ID | 错误信息                                                                        |
 | -------- | ------------------------------------------------------------------------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 202      | Permission denied. Normal application do not have permission to use system api. Possible causes: The application is not a system application or does not have required system permissions. Solution: Apply for the required system permissions or use public APIs. |
-| 801      | Capability not supported. Possible causes: The current device or system does not support this USB capability. Solution: Check if the device supports this capability and ensure the system version meets the requirements. |
+| 202      | Permission denied. Normal application do not have permission to use system api. |
+| 801      | Capability not supported. |
 | 14400004 | Service exception. Possible causes: <br>1. No accessory is plugged in.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Sta。 |
 
 **示例：**
@@ -634,8 +634,8 @@ getPortList(): Array\<USBPort\>
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 202      | Permission denied. Normal application do not have permission to use system api. Possible causes: The application is not a system application or does not have required system permissions. Solution: Apply for the required system permissions or use public APIs. |
-| 801      | Capability not supported. Possible causes: The current device or system does not support this USB capability. Solution: Check if the device supports this capability and ensure the system version meets the requirements. |
+| 202      | Permission denied. Normal application do not have permission to use system api. |
+| 801      | Capability not supported. |
 | 14400004 | Service exception. Possible causes: <br>1. No accessory is plugged in.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Sta。 |
 
 **示例：**
@@ -685,10 +685,10 @@ ArkTS-Sta: getPortSupportModes(portId: int): PortModeType
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. Solution: Check the parameter types and ensure all required parameters are provided. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 202      | Permission denied. Normal application do not have permission to use system api. Possible causes: The application is not a system application or does not have required system permissions. Solution: Apply for the required system permissions or use public APIs. |
-| 801      | Capability not supported. Possible causes: The current device or system does not support this USB capability. Solution: Check if the device supports this capability and ensure the system version meets the requirements. |
+| 202      | Permission denied. Normal application do not have permission to use system api. |
+| 801      | Capability not supported. |
 
 **示例：**
 
@@ -744,11 +744,11 @@ ArkTS-Sta: setPortRoleTypes(portId: int, powerRole: PowerRoleType, dataRole: Dat
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. Solution: Check the parameter types and ensure all required parameters are provided. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 202      | Permission denied. Normal application do not have permission to use system api. Possible causes: The application is not a system application or does not have required system permissions. Solution: Apply for the required system permissions or use public APIs. |
-| 801      | Capability not supported. Possible causes: The current device or system does not support this USB capability. Solution: Check if the device supports this capability and ensure the system version meets the requirements. |
-| 14400003 | Unsupported operation. The current device does not support port role switching. Possible causes: The hardware does not support USB Type-C port role switching. Solution: Check device hardware capabilities. |
+| 202      | Permission denied. Normal application do not have permission to use system api. |
+| 801      | Capability not supported. |
+| 14400003 | Unsupported operation. The current device does not support port role switching. |
 
 **示例：**
 
@@ -808,11 +808,11 @@ usbManager.requestAccessoryRight会触发弹窗请求用户授权；addAccessory
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 202      | Permission denied. Normal application do not have permission to use system api. Possible causes: The application is not a system application or does not have required system permissions. Solution: Apply for the required system permissions or use public APIs. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. Solution: Check the parameter types and ensure all required parameters are provided. |
-| 801      | Capability not supported. Possible causes: The current device or system does not support this USB capability. Solution: Check if the device supports this capability and ensure the system version meets the requirements. |
-| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. Solution: Ensure the USB accessory is properly plugged into the device and try again. |
-| 14400005 | Database operation exception. Possible causes: Database corruption or insufficient storage space. Solution: Check device storage space, clear cache, or restart the device. If the problem persists, contact support. |
+| 202      | Permission denied. Normal application do not have permission to use system api. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801      | Capability not supported. |
+| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
+| 14400005 | Database operation exception. |
 
 **示例：**
 
