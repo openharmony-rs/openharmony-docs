@@ -6,18 +6,24 @@
 <!--Designer: @inter515-->
 <!--Tester: @laonie666-->
 <!--Adviser: @Brilliantry_Rui-->
-
+<!-- md-trans-meta sourceCommit=dfdeddd048755ef82a0878ce3b1c104a522bb3dd translatedAt=2026-08-07T09:54:27.232Z pushedAt=2026-08-10T03:34:58.943Z -->
 
 The **UiTest** module provides UI automation test capabilities, such as component search and operation, coordinate clicking/sliding, key injections, screenshot, window management, multi-finger operations, and mouse/stylus/touchpad operations.
 
 This module provides the following functions:
 
 - [On<sup>9+</sup>](#on9): provides UI component feature description APIs for component filtering and matching.
+
 - [Component<sup>9+</sup>](#component9): represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection.
+
 - [Driver<sup>9+</sup>](#driver9): works as the entry class and provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot.
+
 - [UiWindow<sup>9+</sup>](#uiwindow9): represents a window object on the UI and provides APIs for obtaining window attributes, dragging windows, and adjusting window sizes.
+
 - [By<sup>(deprecated)</sup>](#bydeprecated): provides UI component feature description APIs for component filtering and matching. This API is supported since API version 8 and deprecated since API version 9. You are advised to use [On<sup>9+</sup>](#on9) instead.
+
 - [UiComponent<sup>(deprecated)</sup>](#uicomponentdeprecated): represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection. This API is supported since API version 8 and deprecated since API version 9. You are advised to use [Component<sup>9+</sup>](#component9) instead.
+
 - [UiDriver<sup>(deprecated)</sup>](#uidriverdeprecated): works as the entry class and provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot. This API is supported since API version 8 and deprecated since API version 9. You are advised to use [Driver<sup>9+</sup>](#driver9) instead.
 
 > **NOTE**
@@ -46,6 +52,7 @@ Enumerates the match patterns supported for component attributes.
 | ENDS_WITH             | 3 | Ends with the given value.<br>**Atomic service API**: This API can be used in atomic services since API version 11.      |
 | REG_EXP<sup>18+</sup> | 4 | Uses regular expression matching.<br>**Atomic service API**: This API can be used in atomic services since API version 18.      |
 | REG_EXP_ICASE<sup>18+</sup>          | 5 | Uses case-insensitive regular expression matching.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+
 ## ResizeDirection<sup>9+</sup>
 
 Enumerates the directions in which a window can be resized.
@@ -72,6 +79,7 @@ Provides the coordinates of a point.
 **System capability**: SystemCapability.Test.UiTest
 
 <!--Table: 10%; 10%; 10%; 70%-->
+
 | Name| Type  | Read-Only|  Optional| Description       |
 | ---- | ------ | ---- | ---- |-----------|
 | x    | number |  No  | No  | Horizontal coordinate of a coordinate point, in pixels. The value is an integer greater than or equal to 0.<br> **Note**: Since API version 20, this attribute is no longer read-only.<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -85,6 +93,7 @@ Provides bounds information of a component.
 **System capability**: SystemCapability.Test.UiTest
 
 <!--Table: 20%; 10%; 10%; 60%-->
+
 | Name  | Type  | Read-Only| Optional| Description                     |
 | ------ | ------ | ---- | ---- | ------------------------- |
 | left   | number |  No  | No|X coordinate of the upper left corner of the component border, in pixels. The value is an integer greater than or equal to 0.<br> **Note**: Since API version 20, this attribute is no longer read-only.<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -130,6 +139,7 @@ Provides the flag attributes of this window.
 **System capability**: SystemCapability.Test.UiTest
 
 <!--Table: 20%; 10%; 10%; 60%-->
+
 | Name                | Type   | Read-Only| Optional| Description                                                                                    |
 | -------------------- | ------- | ---- | ---- |----------------------------------------------------------------------------------------|
 | bundleName           | string  | No | Yes | Bundle name of the application to which the window belongs, which is used to filter the target window in multi-window scenarios. This parameter is left empty by default.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                       |
@@ -168,7 +178,6 @@ Describes the injected simulated mouse button.
 | MOUSE_BUTTON_RIGHT  | 1    | Right button on the mouse.  |
 | MOUSE_BUTTON_MIDDLE | 2    | Middle button on the mouse.|
 
-
 ## WindowChangeType<sup>22+</sup>
 
 Enumerates the window change event types that can be listened for.
@@ -183,7 +192,6 @@ Enumerates the window change event types that can be listened for.
 | WINDOW_ADDED  | 1    | Window adding event.  |
 | WINDOW_REMOVED | 2    | Window removing event.|
 | WINDOW_BOUNDS_CHANGED | 3    | Window bounds change event.|
-
 
 ## ComponentEventType<sup>22+</sup>
 
@@ -202,7 +210,6 @@ Enumerates the component operation event types that can be listened for.
 | COMPONENT_SCROLL_END  | 4    | Component scroll end event.  |
 | COMPONENT_TEXT_CHANGED | 5    | Text change event of the [text input component](../../ui/arkts-common-components-text-input.md).|
 
-
 ## WindowChangeOptions<sup>22+</sup>
 
 Describes the extended configuration of window change event listening, which is used to specify the listening process configuration and event filtering conditions.
@@ -215,7 +222,6 @@ Describes the extended configuration of window change event listening, which is 
 | ---------- | ------ | ---- | ---- | --------------------- |
 | timeout | number | No  | Yes  | Listening timeout interval, in milliseconds. The value is an integer greater than or equal to 500. The default value is **10000**. If the value is out of range, an error code is thrown.|
 | bundleName       | string | No  | Yes  | Bundle name of the window to be listened for. By default, all windows are listened for.      |
-
 
 ## ComponentEventOptions<sup>22+</sup>
 
@@ -237,6 +243,7 @@ Provides information about the UI event.
 **System capability**: SystemCapability.Test.UiTest
 
 <!--Table: 25%; 25%; 10%; 10%; 30%-->
+
 | Name      | Type  | Read-Only| Optional| Description                 |
 | ---------- | ------ | ---- | ---- | --------------------- |
 | bundleName | string | Yes  | No  | Bundle name of the application.<br>**Atomic service API**: This API can be used in atomic services since API version 11.     |
@@ -248,7 +255,6 @@ Provides information about the UI event.
 | componentId<sup>22+</sup>       | string | Yes  | Yes  | Component ID. If it is not a component operation event, an empty string is returned.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 | componentRect<sup>22+</sup>       | [Rect](#rect9) | Yes  | Yes  | Component border information. If it is not a component operation event, a [Rect](#rect9) object whose attribute values are all **0** is returned.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 
-
 ## TouchPadSwipeOptions<sup>18+</sup>
 
 Describes information about the touchpad swipe gesture option.
@@ -259,9 +265,8 @@ Describes information about the touchpad swipe gesture option.
 
 | Name      | Type  | Read-Only| Optional| Description                                                    |
 | ---------- | ------ |----|----|--------------------------------------------------------|
-| stay | boolean | No | Yes | Whether the swipe gesture stays on the touchpad for 1s before it is lifted. The value **true** indicates that the swipe gesture stays on the touchpad for 1s, and **false** indicates the opposite. The default value is **false**.|
+| stay | boolean | No | Yes | Whether to hold fingers on the touchpad for 1s after swiping. The value **true** indicates holding fingers on the touchpad for 1s after swiping; the value **false** indicates otherwise. The default value is **false**. |
 | speed       | number | No | Yes | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **2000**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value 2000 is used. If the value is a negative number, an error code indicating a parameter error is returned. |
-
 
 ## InputTextMode<sup>20+</sup>
 
@@ -275,7 +280,6 @@ Describes the text input mode.
 | ---------- | ------ |----|----|----------------------------------------------------------|
 | paste | boolean | No | Yes | Whether to copy and paste text. The value **true** means to copy and paste text, and **false** means to type text. Default value: **false**<br> **Note**: If the input text contains Chinese characters, special characters, or the text length exceeds 200 characters, the text is copied and pasted regardless of the value of this parameter.|
 | addition       | boolean | No | Yes | Whether to input text in addition mode. The value **true** means to input text in addition mode, and **false** means the opposite. Default value: **false**|
-
 
 ## KeyOptions
 
@@ -852,7 +856,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 // xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
-let on: On = ON.checked(true); // Use the static constructor ON to create an On object and specify the checked attribute of the target component.
+let on: On = ON.checked(true); // Use the static constructor ON to create an On object and specify the type attribute of the target component.
 ```
 
 ### checkable<sup>9+</sup>
@@ -883,7 +887,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. 1. Incorrect parameter types; 2. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1353,7 +1357,7 @@ let on: On = ON.originalText('123'); // Use the static constructor ON to create 
 
 ## Component<sup>9+</sup>
 
-Represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection. This module is available since API version 9.
+Represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection. This module is available since API version 9. This object can be obtained through APIs such as [Driver.findComponent](#findcomponent9), [Driver.findComponents](#findcomponents9), and [Driver.waitForComponent](#waitforcomponent9).
 
 All APIs provided in this class use a promise to return the result and must be invoked using **await**.
 
@@ -1878,7 +1882,6 @@ async function demo() {
 }
 ```
 
-
 ### isEnabled<sup>9+</sup>
 
 isEnabled(): Promise\<boolean>
@@ -2088,6 +2091,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
 
 **Example**
+
 ```ts
 // xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
@@ -2098,7 +2102,6 @@ async function mode_demo() {
   await text.inputText('123', { paste: true, addition: false });
 }
 ```
-
 
 ### clearText<sup>9+</sup>
 
@@ -2501,6 +2504,7 @@ async function demo() {
   let description = await button.getDescription();
 }
 ```
+
 ### getHint<sup>18+</sup>
 
 getHint(): Promise\<string>
@@ -2538,6 +2542,7 @@ async function demo() {
   let hints = await button.getHint();
 }
 ```
+
 ### getDisplayId<sup>20+</sup>
 
 getDisplayId(): Promise\<number>
@@ -2616,7 +2621,7 @@ async function demo() {
 
 ## Driver<sup>9+</sup>
 
-The **Driver** class is the main entrance of the UiTest framework. This class provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot.
+The **Driver** class is the main entrance of the UiTest framework. This class provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot. Call [Driver.create()](#create9) to create an instance.
 
 All APIs provided by this class, except **Driver.create()** and **Driver.createUIEventObserver()**, use an asynchronous method (promise) to return the result and must be invoked using **await**.  
 
@@ -3222,9 +3227,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
-  // Create a Driver object.
+  // Create the Driver object.
   let driver: Driver = Driver.create();
-  // Perform a tap operation at the coordinate (100,100).
+  // Perform a tap at coordinates (100, 100).
   await driver.click(100, 100);
 }
 ```
@@ -3541,7 +3546,7 @@ async function demo() {
   let driver: Driver = Driver.create();
   let options: TouchOptions = {
     duration: 2000, // The click duration is 2000 ms.
-    pressure: 0.8 // Touch pressure value.
+    pressure: 0.8  // Touch pressure value.
   };
   // Long-click the target coordinate point, and specify the touch duration and pressure.
   await driver.longClickAtWithOptions({ x: 100, y: 100, displayId: 0 }, options);
@@ -3592,7 +3597,7 @@ import { Driver } from '@kit.TestKit';
 async function demo() {
   // Create a Driver object.
   let driver: Driver = Driver.create();
-  // Swipe from coordinates (100, 100) to coordinates (200, 200) at a speed of 600 px/s.
+  // Swipe from coordinates (100,100) to (200,200) at a speed of 600 px/s.
   await driver.swipe(100, 100, 200, 200, 600);
 }
 ```
@@ -3686,10 +3691,10 @@ import { Driver, TouchOptions } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
   let options: TouchOptions = {
-    speed: 800,   // Swipe speed: 800 px/s
+    speed: 800,   // Swipe speed: 800 px/s.
     pressure: 0.5  // Touch pressure value.
   };
-  // Swipes from the start coordinate point to the target coordinate point, and specifies the swipe speed and touch pressure.
+  // Swipe from the start coordinates to the target coordinates, and specify the swipe speed and touch pressure.
   await driver.swipeBetweenWithOptions({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, options);
 }
 ```
@@ -3837,11 +3842,11 @@ import { Driver, TouchOptions } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
   let options: TouchOptions = {
-    speed: 800,     // Drag speed: 800 px/s
+    speed: 800,     // Drag speed: 800 px/s.
     duration: 2000, // Click duration before dragging: 2000 ms.
     pressure: 0.5   // Touch pressure value.
   };
-  // Drag from the start coordinate point to the target coordinate point, and specify the drag speed, click duration, and touch pressure.
+  // Drag from the start coordinates to the target coordinates, and specify the drag speed, click duration, and touch pressure.
   await driver.dragBetweenWithOptions({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, options);
 }
 ```
@@ -4567,7 +4572,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { Driver, PointerMatrix } from '@kit.TestKit';
 
 async function demo() {
-  // Create a Driver object.
+  // Create the Driver object.
   let driver: Driver = Driver.create();
   // Create a 2-finger 5-step sliding track matrix.
   let pointers: PointerMatrix = PointerMatrix.create(2, 5);
@@ -5136,7 +5141,7 @@ async function demo() {
 
 mouseDrag(from: Point, to: Point, speed?: number): Promise\<void>
 
-Drags the mouse pointer from the start point to the end point. This API uses a promise to return the result. Since API version 26.0.0, this API supports cross-screen mouse dragging.
+Drags the mouse pointer from the start point to the end point. This API uses a promise to return the result. For API version 26.0.0 and earlier, this API does not support cross-screen mouse dragging. The start point and end point must be on the same screen. Otherwise, error code 401 will be returned. Since API version 26.0.0, this API supports cross-screen mouse dragging.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5183,7 +5188,7 @@ async function demo() {
 
 mouseDrag(from: Point, to: Point, speed?: number, duration?: number): Promise\<void>
 
-Drags the mouse from the start point to the end point. You can specify the dragging speed and the duration before dragging. This API uses a promise to return the result. Since API version 26.0.0, this API supports cross-screen mouse dragging.
+Drags the mouse from the start point to the end point. You can specify the dragging speed and the duration before dragging. This API uses a promise to return the result. For API version 26.0.0 and earlier, this API does not support cross-screen mouse dragging. The start point and end point must be on the same screen. Otherwise, error code 401 will be returned. Since API version 26.0.0, this API supports cross-screen mouse dragging.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -5278,8 +5283,8 @@ async function demo() {
     duration: 2000  // Click duration before dragging: 2000 ms.
   };
   let keyOptions: KeyOptions = {
-    key1: 2072,  // Ctrl key
-    key2: 2019   // C key
+    key1: 2072,  // Ctrl key.
+    key2: 2019   // C key.
   };
   // Drag the mouse and press Ctrl+C.
   await driver.mouseDragWithOptions({ x: 100, y: 100 }, { x: 200, y: 200 }, touchOptions, keyOptions);
@@ -5325,7 +5330,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
-  // Create a Driver object.
+  // Create the Driver object.
   let driver: Driver = Driver.create();
   // Search for the target TextInput component.
   let text: Component = await driver.findComponent(ON.type('TextInput'));
@@ -5592,7 +5597,6 @@ Simulates a pen double-click operation. This API uses a promise to return the re
 | ------ |-----------------------------------------------|----|---------|
 | point      | [Point](#point9) | Yes | Coordinates of the double-clicked point.|
 
-
 **Return value**
 
 | Type            | Description             |
@@ -5680,10 +5684,9 @@ Simulates a continuous multi-point pen injection operation. This method is appli
 
 | Name| Type                                           | Mandatory| Description                                                               |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
-| pointers | [PointerMatrix](#pointermatrix9) | Yes |Scroll trajectory, including the number of fingers and an array of coordinates along the trajectory.<br>Note: Currently, only the single-finger operation is supported. The value of **fingers** in [PointerMatrix](#pointermatrix9) must be set to **1**.|
+| pointers | [PointerMatrix](#pointermatrix9) | Yes | Scroll trajectory, including the number of fingers and an array of coordinates along the trajectory. Note: Currently, only the single-finger operation is supported. The value of **fingers** in [PointerMatrix](#pointermatrix9) must be set to **1**. |
 | speed      | number| No | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.           |
 | pressure      | number | No | Injection pressure. The value range is [0.0, 1.0]. The default value is **1.0**. If the value is **null** or **undefined**, the default value is used. If the value is out of the value range, error code 401 is thrown.|
-
 
 **Return value**
 
@@ -5743,7 +5746,9 @@ Triggers a stylus key operation. This method is applicable to test scenarios whe
 **Supported parameter combinations**:
 
 - When the value of **mode** is [HANDWRITING](#penmode): the value of **key** can be [HANDWRITING](#penkey), and the value of **operation** can be [CLICK](#penkeyoperation) or [DOUBLE_CLICK](#penkeyoperation).
+
 - When the value of **mode** is [AIR_MOUSE](#penmode): the value of **key** can be [AIR_MOUSE](#penkey), and the value of **operation** can be [CLICK](#penkeyoperation) or [DOUBLE_CLICK](#penkeyoperation) (the **point** needs to be specified in **options**); the value of **key** can be [HANDWRITING](#penkey), and the value of **operation** can be [CLICK](#penkeyoperation) or [DOUBLE_CLICK](#penkeyoperation); the value of **key** can be [SMART](#penkey), and the value of **operation** can be [CLICK](#penkeyoperation).
+
 - If other parameter combinations are used, the 17000007 error code will be thrown.
 
 **Return value**
@@ -5902,8 +5907,8 @@ Simulates a multi-point knuckle scrolling operation. This API uses a promise to 
 
 | Name| Type                                        | Mandatory| Description                                                            |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
-| pointers  | [PointerMatrix](#pointermatrix9) | Yes  | Scroll trajectory, including the number of fingers and an array of coordinates along the trajectory.<br>Note: Currently, only the single-finger operation is supported. The value of **fingers** in [PointerMatrix](#pointermatrix9) must be set to **1**.|
-| speed    | number                           | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, the 17000007 error code is returned.|
+| pointers  | [PointerMatrix](#pointermatrix9) | Yes   | Scroll trajectory, including the number of fingers and an array of coordinates along the trajectory.<br>**Note:** Currently, only the single-finger operation is supported. The value of **fingers** in [PointerMatrix](#pointermatrix9) must be set to **1**.|
+| speed    | number                           | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 17000007 is returned.|
 
 **Return value**
 
@@ -5929,7 +5934,7 @@ import { Driver, PointerMatrix } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  // Simulate a knuckle gesture to draw an S on the display.
+  // Simulate a knuckle swipe to draw an 'S' on the screen.
   let pointers: PointerMatrix = PointerMatrix.create(1, 6);
   pointers.setPoint(0, 0, { x: 750, y: 300 });
   pointers.setPoint(0, 1, { x: 500, y: 100 });
@@ -6174,7 +6179,7 @@ async function demo() {
 
 ## UiWindow<sup>9+</sup>
 
-The **UiWindow** class represents a window on the UI and provides APIs for obtaining window attributes, dragging a window, and adjusting the window size.
+The **UiWindow** class represents a window on the UI and provides APIs for obtaining window attributes, dragging a window, and adjusting the window size. Objects of this class can be obtained through the [Driver.findWindow](#findwindow9) API. All APIs provided in this class use a promise to return the result and must be invoked using **await**.
 
 All APIs provided in this class use a promise to return the result and must be invoked using **await**.
 
@@ -6251,7 +6256,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
-  // Create a Driver object.
+  // Create the Driver object.
   let driver: Driver = Driver.create();
   // Search for the active window.
   let window: UiWindow = await driver.findWindow({ active: true });
@@ -7035,8 +7040,13 @@ async function demo() {
 
 ## By<sup>(deprecated)</sup>
 
-The UiTest framework provides a wide range of UI component feature description APIs in the **By** class to filter and match components.<br>
-The APIs provided by the **By** class exhibit the following features:<br>1. Allow one or more attributes as the match conditions. For example, you can specify both the **text** and **id** attributes to find the target component.<br>2. Provide multiple match patterns for component attributes.<br>3. Support absolute positioning and relative positioning for components. APIs such as [By.isBefore<sup>(deprecated)</sup>](#isbeforedeprecated) and [By.isAfter<sup>(deprecated)</sup>](#isafterdeprecated) can be used to specify the features of adjacent components to assist positioning.<br>All APIs provided in the **By** class are synchronous. You are advised to use the static constructor **BY** to create a **By** object in chain mode.
+The UiTest framework provides a wide range of UI component feature description APIs in the **By** class to filter and match components.
+
+The APIs provided by the **By** class exhibit the following features:
+1. Allow one or more attributes as the match conditions. For example, you can specify both the **text** and **id** attributes to find the target component.
+2. Provide multiple match patterns for component attributes.
+3. Support absolute positioning and relative positioning for components. APIs such as [By.isBefore<sup>(deprecated)</sup>](#isbeforedeprecated) and [By.isAfter<sup>(deprecated)</sup>](#isafterdeprecated) can be used to specify the features of adjacent components to assist positioning.
+All APIs provided in the **By** class are synchronous. You are advised to use the static constructor **BY** to create a **By** object in chain mode.
 
 > **NOTE**
 >
@@ -7083,7 +7093,6 @@ import { BY, By } from '@kit.TestKit';
 let by: By = BY.text('123'); // Use the static constructor BY to create a By object and specify the text attribute of the target component.
 ```
 
-
 ### key<sup>(deprecated)</sup>
 
 key(key: string): By
@@ -7116,7 +7125,6 @@ import { By, BY } from '@kit.TestKit';
 
 let by: By = BY.key('123'); // Use the static constructor BY to create a By object and specify the key attribute of the target component.
 ```
-
 
 ### id<sup>(deprecated)</sup>
 
@@ -7151,7 +7159,6 @@ import { By, BY } from '@kit.TestKit';
 let by: By = BY.id(123); // Use the static constructor BY to create a By object and specify the id attribute of the target component.
 ```
 
-
 ### type<sup>(deprecated)</sup>
 
 type(tp: string): By
@@ -7185,7 +7192,6 @@ import { By, BY } from '@kit.TestKit';
 let by: By = BY.type('Button'); // Use the static constructor BY to create a By object and specify the type attribute of the target component.
 ```
 
-
 ### clickable<sup>(deprecated)</sup>
 
 clickable(b?: boolean): By
@@ -7218,7 +7224,6 @@ import { By, BY } from '@kit.TestKit';
 
 let by: By = BY.clickable(true); // Use the static constructor BY to create a By object and specify the clickable attribute of the target component.
 ```
-
 
 ### scrollable<sup>(deprecated)</sup>
 
@@ -7383,7 +7388,7 @@ Specifies that the target component is located before the given attribute compon
 import { By, BY } from '@kit.TestKit';
 
 // Use the static constructor BY to create a by object and specify that the target component is located before the given attribute component.
-let by: By = BY.type('Button').isBefore(BY.text('123')); // Search for the first Button component located before the component whose text is 123.
+let by: By = BY.type('Button').isBefore(BY.text('123')); // Find the first Button component before the one whose text is "123".
 ```
 
 ### isAfter<sup>(deprecated)</sup>
@@ -7417,9 +7422,8 @@ Specifies that the target component is located after the given attribute compone
 import { By, BY } from '@kit.TestKit';
 
 // Use the static constructor BY to create a by object and specify that the target component is located before the given attribute component.
-let by: By = BY.type('Text').isAfter(BY.text('123')); // Search for the first Text component located after the component whose text is 123.
+let by: By = BY.type('Text').isAfter(BY.text('123')); // Find the first Text component after the component whose text is 123.
 ```
-
 
 ## UiComponent<sup>(deprecated)</sup>
 
@@ -7717,7 +7721,6 @@ async function demo() {
   }
 }
 ```
-
 
 ### isEnabled<sup>(deprecated)</sup>
 
@@ -8050,7 +8053,7 @@ async function demo() {
 
 assertComponentExist(by: By): Promise\<void>
 
-Asserts that a component that matches the given attributes exists on the current page. If the component does not exist, the API throws a JS exception, causing the current test case to fail. This API uses a promise to return the result.
+An assertion API used to assert that a control matching the given control attributes exists on the current screen. If the control does not exist, this API throws a JS exception, causing the current test case to fail. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -8158,7 +8161,6 @@ async function demo() {
   await driver.triggerKey(KeyCode.KEYCODE_BACK); // Back button
 }
 ```
-
 
 ### click<sup>(deprecated)</sup>
 
@@ -8329,7 +8331,6 @@ Captures the current screen of this **UiDriver** object and saves it as a PNG im
 | savePath | string | Yes  | File save path.|
 
 **Return value**
-
 
 | Type             | Description                                           |
 | ----------------- |-----------------------------------------------|
