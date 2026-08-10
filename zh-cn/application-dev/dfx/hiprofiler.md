@@ -842,6 +842,7 @@ smartperf工具暂时不支持该插件的trace数据解析，若需分析networ
 $ hiprofiler_cmd \
   -c - \
   -t 180 \
+  -o /data/local/tmp/hiprofiler_data.htrace \
   -s \
   -k \
 <<CONFIG
@@ -886,7 +887,7 @@ CONFIG
 $ hiprofiler_cmd \
   -c - \
   -t 180 \
-  -o /data/local/tmp/hiprofiler_data.txt \
+  -o /data/local/tmp/hiprofiler_data.htrace \
   -s \
   -k \
 <<CONFIG
@@ -902,7 +903,7 @@ plugin_configs {
   config_data {
   smb_pages: 16384
   max_stack_depth: 30
-  pid: 11237
+  process_name: "com.example.insight_test_stage"
   fp_unwind: true
   blocked: true
   offline_symbolization: true
@@ -931,7 +932,7 @@ CONFIG
 $ hiprofiler_cmd \
   -c - \
   -t 180 \
-  -o /data/local/tmp/hiprofiler_data.txt \
+  -o /data/local/tmp/hiprofiler_data.htrace \
   -s \
   -k \
 <<CONFIG
@@ -996,6 +997,7 @@ LocalHandle对象内存录制功能要求被测应用在启动时替换加载维
 $ hiprofiler_cmd \
   -c - \
   -t 180 \
+  -o /data/local/tmp/hiprofiler_data.htrace \
   -s \
   -k \
 <<CONFIG
@@ -1048,6 +1050,7 @@ CONFIG
 $ hiprofiler_cmd \
   -c - \
   -t 180 \
+  -o /data/local/tmp/hiprofiler_data.htrace \
   -s \
   -k \
 <<CONFIG
@@ -1095,6 +1098,7 @@ CONFIG
 $ hiprofiler_cmd \
   -c - \
   -t 180 \
+  -o /data/local/tmp/hiprofiler_data.htrace \
   -s \
   -k \
 <<CONFIG
@@ -1169,6 +1173,7 @@ CONFIG
 ```shell
 $ hiprofiler_cmd start \
   -c - \
+  -o /data/local/tmp/hiprofiler_data.htrace \
   -s \
   -k \
 <<CONFIG
