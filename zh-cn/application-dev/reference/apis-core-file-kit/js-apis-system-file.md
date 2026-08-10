@@ -14,11 +14,8 @@
 > - 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 以下ArkTS示例URI说明：
-  1、URI只能是internal://app/xxx格式。
-  2、internal://app/dir1/xxx
-    - internal://app：固定前缀，表示应用根目录。
-    - dir1：开发者自己创建的。
-    - xxx：开发者创建的文件名。
+  1. URI只能是internal://app/xxx格式。
+  2. `internal://app/`为固定前缀，表示应用根目录，`xxx`为开发者自行创建的目录或文件名。
 
 ## 导入模块
 
