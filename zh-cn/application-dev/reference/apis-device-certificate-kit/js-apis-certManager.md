@@ -466,7 +466,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to install private certificate. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to install private certificate. Code: ${error.code}, message: ${error.message}`);
 }
@@ -533,7 +533,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to install private certificate. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to install private certificate. Code: ${error.code}, message: ${error.message}`);
 }
@@ -648,7 +648,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to get private certificate. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to get private certificate. Code: ${error.code}, message: ${error.message}`);
 }
@@ -753,7 +753,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to uninstall private certificate. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to uninstall private certificate. Code: ${error.code}, message: ${error.message}`);
 }
@@ -822,7 +822,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to install user trusted certificate. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to install user trusted certificate. Code: ${error.code}, message: ${error.message}`);
 }
@@ -977,7 +977,7 @@ const req: certificateManager.CMSignatureSpec = {
   purpose: certificateManager.CmKeyPurpose.CM_KEY_PURPOSE_SIGN,
   padding: certificateManager.CmKeyPadding.CM_PADDING_PSS,
   digest: certificateManager.CmKeyDigest.CM_DIGEST_SHA256
-}
+};
 try {
   certificateManager.init(uri, req, (err, cmHandle) => {
     if (err != null) {
@@ -985,7 +985,7 @@ try {
     } else {
       console.info('Succeeded in initiating.');
     }
-  })
+  });
 } catch (error) {
   console.error(`Failed to init. Code: ${error.code}, message: ${error.message}`);
 }
@@ -1040,14 +1040,14 @@ const req: certificateManager.CMSignatureSpec = {
   purpose: certificateManager.CmKeyPurpose.CM_KEY_PURPOSE_VERIFY,
   padding: certificateManager.CmKeyPadding.CM_PADDING_PSS,
   digest: certificateManager.CmKeyDigest.CM_DIGEST_MD5
-}
+};
 try {
   certificateManager.init(uri, req).then((handle) => {
     console.info('Succeeded in initiating.');
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to init. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to init. Code: ${error.code}, message: ${error.message}`);
 }
@@ -1164,7 +1164,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to update. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to update. Code: ${error.code}, message: ${error.message}`);
 }
@@ -1341,7 +1341,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to finish signature. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 
   /* 签名的结果 */
   let signRes: Uint8Array = new Uint8Array([
@@ -1353,7 +1353,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to finish verification. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch(error) {
   console.error(`Failed to finish. Code: ${error.code}, message: ${error.message}`);
 }
@@ -1462,7 +1462,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to abort. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to abort. Code: ${error.code}, message: ${error.message}`);
 }
@@ -1523,7 +1523,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to get Public certificate. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to get Public certificate. Code: ${error.code}, message: ${error.message}`);
 }
@@ -1581,7 +1581,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to check if the application is authorized. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to check if the application is authorized. Code: ${error.code}, message: ${error.message}`);
 }
@@ -1634,7 +1634,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to get all user trusted certificates. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to get all user trusted certificates. Code: ${error.code}, message: ${error.message}`);
 }
@@ -1697,7 +1697,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to get current user trusted certificates. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to get current user trusted certificates. Code: ${error.code}, message: ${error.message}`);
 }
@@ -1757,7 +1757,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to get user trusted certificate. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to get user trusted certificate. Code: ${error.code}, message: ${error.message}`);
 }
@@ -1809,7 +1809,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to get all private certificates installed by the application. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to get all private certificates installed by the application. Code: ${error.code}, message: ${error.message}`);
 }
@@ -1856,7 +1856,7 @@ try {
   /* 获取系统CA的存储位置 */
   let property1: certificateManager.CertStoreProperty = {
     certType: certificateManager.CertType.CA_CERT_SYSTEM
-  }
+  };
   let systemCAPath = certificateManager.getCertificateStorePath(property1);
   console.info(`Success to get system ca path: ${systemCAPath}`);
 
@@ -1864,7 +1864,7 @@ try {
   let property2: certificateManager.CertStoreProperty = {
     certType: certificateManager.CertType.CA_CERT_USER,
     certScope: certificateManager.CertScope.CURRENT_USER
-  }
+  };
   let userCACurrentPath = certificateManager.getCertificateStorePath(property2);
   console.info(`Success to get current user's user ca path: ${userCACurrentPath}`);
 
@@ -1872,7 +1872,7 @@ try {
   let property3: certificateManager.CertStoreProperty = {
     certType: certificateManager.CertType.CA_CERT_USER,
     certScope: certificateManager.CertScope.GLOBAL_USER
-  }
+  };
   let globalCACurrentPath = certificateManager.getCertificateStorePath(property3);
   console.info(`Success to get global user's user ca path: ${globalCACurrentPath}`);
 
@@ -1880,7 +1880,7 @@ try {
   let property4: certificateManager.CertStoreProperty = {
     certType: certificateManager.CertType.CA_CERT_SYSTEM,
     certAlg: certificateManager.CertAlgorithm.SM
-  }
+  };
   let smSystemCAPath = certificateManager.getCertificateStorePath(property4);
   console.info(`Success to get SM system ca path: ${smSystemCAPath}`);
 } catch (error) {
@@ -1939,7 +1939,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let keyUri: string = 'test'; /* USB凭据的唯一标识符，此处省略 */
 let ukeyInfo: certificateManager.UkeyInfo = { /* USB凭据的属性信息，此处省略 */
   certPurpose: certificateManager.CertificatePurpose.PURPOSE_DEFAULT
-}
+};
 try {
   certificateManager.getUkeyCertificate(keyUri, ukeyInfo).then((cmResult) => {
     let list = cmResult.credentialDetailList;
@@ -1947,7 +1947,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to get detail of USB Key certificate. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to get detail of USB Key certificate. Code: ${error.code}, message: ${error.message}`);
 }
@@ -2005,7 +2005,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let ukeyProvider: string = 'testProvider'; /* USB凭据提供商，此处省略 */
 let ukeyInfo: certificateManager.UkeyInfo = { /* USB凭据的属性信息，此处省略 */
   certPurpose: certificateManager.CertificatePurpose.PURPOSE_DEFAULT
-}
+};
 try {
   certificateManager.getUkeyCertificateList(ukeyProvider, ukeyInfo).then((cmResult) => {
     let list: Array<certificateManager.Credential> = cmResult.credentialDetailList ?? [];
@@ -2013,7 +2013,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to get USB Key certificate list. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to get USB Key certificate list. Code: ${error.code}, message: ${error.message}`);
 }
