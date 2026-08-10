@@ -6,7 +6,7 @@
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=f49b12145b93fb1a0a3564baf1cfde447ea3a867 translatedAt=2026-07-29T01:30:49.827Z pushedAt=2026-07-30T03:36:42.439Z -->
+<!-- md-trans-meta sourceCommit=aee2f7468d1b3b04e493c7068f7ee7eaa8e0ca32 translatedAt=2026-08-07T09:44:48.034Z pushedAt=2026-08-07T11:30:49.571Z -->
 
 **AbilityDelegatorRegistry**, a module of the automatic test framework, is used to obtain [AbilityDelegator](js-apis-inner-application-abilityDelegator.md) and [AbilityDelegatorArgs](js-apis-inner-application-abilityDelegatorArgs.md)objects. With this module, you can use the [AbilityDelegator](js-apis-inner-application-abilityDelegator.md) object to add a [AbilityMonitor](../apis-ability-kit/js-apis-inner-application-abilityMonitor.md#abilitymonitor-1) object to monitor the lifecycle status changes of a specified ability. In addition, you can use the [AbilityDelegatorArgs](js-apis-inner-application-abilityDelegatorArgs.md) object to read the current test parameters. This module is applicable to automated testing scenarios, which can help you accurately capture lifecycle changes of abilities, improving testing efficiency and accuracy.
 
@@ -58,6 +58,7 @@ Obtains an [AbilityDelegator](js-apis-inner-application-abilityDelegator.md) obj
 ```ts
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // Obtain the AbilityDelegator object of the application.
 let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
@@ -68,9 +69,9 @@ let want: Want = {
 };
 
 // Start the specified ability.
-abilityDelegator.startAbility(want, (err) => {
+abilityDelegator.startAbility(want, (err: BusinessError) => {
   if (err) {
-    console.error(`Failed start ability, error: ${JSON.stringify(err)}`);
+    console.error(`Failed start ability. code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('Success start ability.');
   }

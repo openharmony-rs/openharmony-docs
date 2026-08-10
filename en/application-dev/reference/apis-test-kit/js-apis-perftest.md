@@ -6,7 +6,7 @@
 <!--Designer: @inter515-->
 <!--Tester: @laonie666-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=ccd90f4d8787134d0671ca7e8fee28f4cfe9091a translatedAt=2026-07-29T01:34:22.208Z pushedAt=2026-07-30T07:34:09.185Z -->
+<!-- md-trans-meta sourceCommit=dfdeddd048755ef82a0878ce3b1c104a522bb3dd translatedAt=2026-08-07T09:47:37.550Z pushedAt=2026-08-10T02:22:22.477Z -->
 
 PerfTest provides white-box performance test capabilities in test scenarios. It can automatically execute tests on specified code segments or scenarios and collect performance data such as time required, CPU usage, memory usage, latency, and frame rate.
 
@@ -99,7 +99,7 @@ Represents the measurement result data corresponding to the performance metric.
 
 ## PerfTest
 
-Represents the general entry of the white-box performance test framework. It provides capabilities such as test task creation, test code segment execution, data collection, and measurement result obtaining.
+Represents the general entry of the white-box performance test framework. It provides capabilities such as test task creation, test code segment execution, data collection, and measurement result obtaining. Call [PerfTest.create](#create) to create an instance.
 
 ### create
 
