@@ -202,7 +202,7 @@ async function demo() {
     for (let index = 0; index < 10000; index++) {
       num++;
     }
-    finish(true); //  Call the finish callback to notify that the code segment is executed successfully and as expected.
+    finish(true); // Call the finish callback to notify that the code segment is executed successfully and as expected.
   };
   let perfTestStrategy: PerfTestStrategy = {
     metrics: metrics,
