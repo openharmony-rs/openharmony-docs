@@ -74,9 +74,7 @@ struct ShortWebPage {
 
 **可能原因**
 
-点击全屏按钮Web组件进入全屏模式时，窗口的横竖屏状态不会主动发生变化。
-
-因此需要主动设置窗口方向为横屏。需要监听Web组件进入和退出全屏模式事件，在进入全屏模式时，设置窗口方向为横屏；在退出全屏模式时，设置窗口方向为竖屏。
+Web组件全屏模式仅改变内容布局，不触发应用窗口方向切换。
 
 **解决措施**
 
@@ -102,10 +100,10 @@ struct ShortWebPage {
 }
 ```
 
-使用Web组件进入全屏模式时，窗口的横竖屏状态不会主动发生变化，需要通过Web组件的onFullScreenEnter和onFullScreenExit方法，监听Web组件进入和退出全屏模式事件。
+使用Web组件进入全屏模式时，窗口的横竖屏状态不会主动发生变化，需要通过Web组件的[onFullScreenEnter](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfullscreenenter9)和[onFullScreenExit](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfullscreenexit9)方法，监听Web组件进入和退出全屏模式事件。
 
 ``` TypeScript
-Web({ src: "", controller: this.controller })
+Web({ src:$rawfile("video.html"), controller: this.controller }) // 注意替换
   .domStorageAccess(true)
   .expandSafeArea([SafeAreaType.SYSTEM])
   .onFullScreenEnter(() => {
@@ -186,7 +184,7 @@ struct WebVideo {
   build() {
     Column() {
       Web({
-        src:$rawfile("video.html"),
+        src:$rawfile("video.html"), // 注意替换
         controller: this.controller
       })
         .domStorageAccess(true)
