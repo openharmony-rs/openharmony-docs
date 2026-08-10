@@ -50,7 +50,7 @@ setExecFrequency(frequency: FrequencyInfo): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------- | ------- | ---- | ---------------------------------------- |
-| frequencyInfo | [FrequencyInfo](#FrequencyInfo) | 是    | 应用所在活跃分组的执行频率信息。|
+| frequencyInfo | [FrequencyInfo](#frequencyinfo) | 是    | 应用所在活跃分组的执行频率信息。|
 
 **错误码：**
 
