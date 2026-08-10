@@ -139,7 +139,7 @@ function hasSerialRightExample() {
 
 requestSerialRight(portId: number): Promise&lt;boolean&gt;
 
-请求应用访问串口设备的权限。应用退出时自动移除对串口设备的访问权限，在应用重启后需要重新申请授权。使用Promise异步回调。通常在首次访问串口设备前、检测到无权限时调用此接口向用户申请授权，如需移除权限请调用cancelSerialRight。
+请求应用访问串口设备的权限。应用退出时自动移除对串口设备的访问权限，在应用重启后需要重新申请授权。使用Promise异步回调。通常在首次访问串口设备前、检测到无权限时调用此接口向用户申请授权，如需移除权限请调用[cancelSerialRight](#serialmanagercancelserialright)。
 
 **前置条件：**
 - 需要先调用[getPortList](#serialmanagergetportlist)获取端口号
