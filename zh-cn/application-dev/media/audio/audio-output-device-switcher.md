@@ -168,5 +168,34 @@
 | DEFAULT | 1000 | 系统默认设备，清除强制切换，恢复系统默认路由规则。 |
 
    <!-- @[audioSessionManager_setMediaOutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceSwitcher.ets) -->
+   
+   ``` TypeScript
+   import { audio } from '@kit.AudioKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   // ...
+   
+   let audioManager = audio.getAudioManager();
+   let audioSessionManager = audioManager.getSessionManager();
+   // ...
+   
+     // 连接蓝牙耳机后，强制将媒体输出设备切换为扬声器。
+     audioSessionManager.setMediaOutputDevice(audio.DeviceType.SPEAKER).then(() => {
+       console.info('Succeeded in setting media output device to speaker.');
+       // ...
+     }).catch((err: BusinessError) => {
+       console.error(`Failed to set media output device. Code: ${err.code}, message: ${err.message}`);
+       // ...
+     });
+     // ...
+   
+     // 取消强制切换，将媒体输出设备选择权交还给系统默认路由规则。
+     audioSessionManager.setMediaOutputDevice(audio.DeviceType.DEFAULT).then(() => {
+       console.info('Succeeded in setting media output device to default.');
+       // ...
+     }).catch((err: BusinessError) => {
+       console.error(`Failed to set media output device. Code: ${err.code}, message: ${err.message}`);
+       // ...
+     });
+   ```
 
 以上为各功能实现的代码片段，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample)。
