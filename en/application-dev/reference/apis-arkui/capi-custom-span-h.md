@@ -6,7 +6,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=8a65b118b29a0c9d1936c3b96f0e90c33fab49ab translatedAt=2026-08-10T03:40:23.385Z pushedAt=2026-08-10T06:30:40.959Z -->
+<!-- md-trans-meta sourceCommit=8a65b118b29a0c9d1936c3b96f0e90c33fab49ab translatedAt=2026-08-10T03:40:23.385Z pushedAt=2026-08-10T08:09:33.143Z -->
 
 ## Overview
 
@@ -88,7 +88,7 @@ void OH_ArkUI_CustomSpanMeasureInfo_Dispose(ArkUI_CustomSpanMeasureInfo* info)
 
 **Description**
 
-Disposes of measurement information for a custom span.
+Disposes of measurement information of a custom span.
 
 > **NOTE**
 >

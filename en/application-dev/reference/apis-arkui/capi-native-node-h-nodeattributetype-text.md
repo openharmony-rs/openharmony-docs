@@ -6,7 +6,7 @@
 <!--Designer: @xiangyuan6; @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=a041db2b81d74e65102cd30ad9b031e923a1cd3e translatedAt=2026-08-04T10:56:02.294Z pushedAt=2026-08-07T08:02:39.951Z -->
+<!-- md-trans-meta sourceCommit=a041db2b81d74e65102cd30ad9b031e923a1cd3e translatedAt=2026-08-04T10:56:02.294Z pushedAt=2026-08-10T08:20:21.700Z -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -1576,7 +1576,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 ~ .value[19].f32 | 5 x 4 color filter matrix array, consisting of 20 floating-point elements arranged in row-major order. The first four columns of the matrix correspond to the color transformation coefficients of the red (R), green (G), blue (B), and alpha (A) channels respectively, and the fifth column is the offset for each channel. This parameter is used for color transformation processing on images, such as brightness, contrast, and hue adjustments. |
+| .value[0].f32 to .value[19].f32 | 5 x 4 color filter matrix array, consisting of 20 floating-point elements arranged in row-major order. The first four columns of the matrix correspond to the color transformation coefficients of the red (R), green (G), blue (B), and alpha (A) channels respectively, and the fifth column is the offset for each channel. This parameter is used for color transformation processing on images, such as brightness, contrast, and hue adjustments. |
 | .size | Indicates that the size of the filter array is 5 x 4.|
 | .object | Color filter pointer. The parameter type is [OH_Drawing_ColorFilter](../apis-arkgraphics2d/capi-drawing-oh-drawing-colorfilter.md).<br>Either **.object** or **.size** must be set.|
 
