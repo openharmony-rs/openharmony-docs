@@ -757,7 +757,6 @@ struct PasteboardTest {
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | htmlText| string | 否 | 否 | HTML内容，需符合标准HTML格式。要进行赋值，请使用[createData](#pasteboardcreatedata9)或[addentry](#addentry14) |
