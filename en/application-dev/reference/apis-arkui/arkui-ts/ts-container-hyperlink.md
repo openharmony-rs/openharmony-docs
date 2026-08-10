@@ -1,12 +1,14 @@
 # Hyperlink
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hddgzw-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=92567145241181b97abe57e944e177355e50f4eb translatedAt=2026-08-04T12:07:40.661Z pushedAt=2026-08-07T03:11:50.563Z -->
 
-The **Hyperlink** component implements a link from a location in the component to another location.
+The **Hyperlink** component supports two display forms: text and image. Tapping within the component area redirects to a specified web page. It is suitable for scenarios where external web links are opened within an app. This component must be used with the system browser.
 
 >  **NOTE**
 >
@@ -15,7 +17,7 @@ The **Hyperlink** component implements a link from a location in the component t
 
 ## Required Permissions
 
-If Internet access is required, you must apply for the **ohos.permission.INTERNET** permission. For details about how to apply for a permission, see [Declaring Permissions](../../../security/AccessToken/declare-permissions.md).
+When a network connection is required to redirect to the target web page, you need to apply for the **ohos.permission.INTERNET** permission. For details about how to apply, see [Declaring Permissions](../../../security/AccessToken/declare-permissions.md).
 
 ## Child Components
 
@@ -33,8 +35,8 @@ Hyperlink(address: string | Resource, content?: string | Resource)
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| address | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes| Web page to which the hyperlink is redirected.|
-| content | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No| Text displayed in the hyperlink.<br>Default value: **''**. If this parameter is not passed and the component does not have child components, the value of the **address** parameter is displayed by default.<br>**NOTE**<br>If this component has child components, the hyperlink text is not displayed.|
+| address | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes | Web page address that the **Hyperlink** component navigates to. |
+| content | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No | Text displayed for the hyperlink in the **Hyperlink** component.<br>Default value: **''**. If this parameter is not set and the component has no child components, the **address** parameter value is displayed by default.<br>**NOTE**<br>If the component has child components, the hyperlink text is not displayed. |
 
 ## Attributes
 
