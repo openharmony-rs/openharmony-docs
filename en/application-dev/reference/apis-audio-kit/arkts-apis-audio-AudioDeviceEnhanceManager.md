@@ -32,7 +32,7 @@ Checks whether the system supports the enhanced routing capabilities provided by
 >
 > - Enhanced routing capabilities include selecting input and output devices for applications or audio streams.
 > - Before calling enhanced routing-related APIs, applications should call this API to confirm system support. Even for devices of the same type, support may vary across different models due to hardware limitations.
-> - When the system does not support enhanced routing capabilities, calling the related APis will not take effect, and the system will select the default input and output devices for the application or audio stream.
+> - When the system does not support enhanced routing capabilities, calling the related APIs will not take effect, and the system will select the default input and output devices for the application or audio stream.
 
 **Since:** 26.0.0
 
