@@ -330,7 +330,13 @@ console.info('the value of the DeviceTypes is :' + deviceTypesInfoCar);
 
 ## deviceInfo.apiAvailable
 
+**ArkTS-Dyn：** 
+
 apiAvailable(version: string | number): boolean;
+
+**ArkTS-Sta：** 
+
+apiAvailable(version: string | int): boolean;
 
 <!--RP13-->
 检查指定的API版本在当前设备上是否可用。<br/>
