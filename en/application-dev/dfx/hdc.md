@@ -1787,7 +1787,7 @@ After a non-root user connects the device to the PC through USB on Linux or macO
 
 By default, a non-root user does not have the permission to operate USB devices. To enable the permission, perform the following steps:
 
-1. On masOS, stop the hdc service and run the **sudo** command to restart it.
+1. On macOS, stop the hdc service and run the **sudo** command to restart it.
 
    ```shell
    sudo hdc kill
