@@ -475,7 +475,7 @@ ArkTS-Sta示例：
 
 ## TaskStopInfo
 
-当系统回调应用的ON_Stop时，若应用需要处理具体的任务停止原因，则需要从参数进行反序列化获得结构TaskStopInfo。具体示例参考[finishTask](#backgroundloaderfinishtask)函数的完整实例。
+当系统回调应用的ON_STOP时，若应用需要处理具体的任务停止原因，则需要从参数进行反序列化获得结构TaskStopInfo。具体示例参考[finishTask](#backgroundloaderfinishtask)函数的完整实例。
 
 **ArkTs-Dyn起始版本：** 26.1.0
 
