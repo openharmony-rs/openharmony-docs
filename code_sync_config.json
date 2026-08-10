@@ -58903,9 +58903,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/sample_callback.cpp",
 				"functions":[
 					{
-						"end_line":207,
+						"end_line":220,
 						"name":"quick_start",
-						"start_line":171
+						"start_line":180
 					}
 				]
 			}
