@@ -21,9 +21,9 @@ import { backgroundLoader } from '@kit.BackgroundTasksKit';
 ```
 ## 常量
 
-**ArkTs-Dyn起始版本：** 26.0.0
+**ArkTs-Dyn起始版本：** 26.1.0
 
-**ArkTs-Sta起始版本：** 26.0.0
+**ArkTs-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,9 +40,9 @@ registerTask(taskInfo: TaskInfo): void
 
 注册后台加载任务，成功后会将任务添加到后台加载任务队列，满足触发条件后由系统调度执行。
 
-**ArkTs-Dyn起始版本：** 26.0.0
+**ArkTs-Dyn起始版本：** 26.1.0
 
-**ArkTs-Sta起始版本：** 26.0.0
+**ArkTs-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -129,9 +129,9 @@ unregisterTask(taskInfo: TaskInfo): void
 
 取消注册后台加载任务。
 
-**ArkTs-Dyn起始版本：** 26.0.0
+**ArkTs-Dyn起始版本：** 26.1.0
 
-**ArkTs-Sta起始版本：** 26.0.0
+**ArkTs-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -217,9 +217,9 @@ ArkTs-Sta: getTaskInfo(taskId: int): Promise\<TaskInfo>
 
 查询已经注册的后台加载任务，使用Promise形式返回。
 
-**ArkTs-Dyn起始版本：** 26.0.0
+**ArkTs-Dyn起始版本：** 26.1.0
 
-**ArkTs-Sta起始版本：** 26.0.0
+**ArkTs-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -291,9 +291,9 @@ finishTask(taskInfo: TaskInfo): void
 
 **超时时间限制**：应用需要确保后台加载任务在30秒内执行完成。 如果应用在执行后台加载任务时出现多次超时，系统将禁用后续的后台加载任务调度。
 
-**ArkTs-Dyn起始版本：** 26.0.0
+**ArkTs-Dyn起始版本：** 26.1.0
 
-**ArkTs-Sta起始版本：** 26.0.0
+**ArkTs-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -459,9 +459,9 @@ ArkTS-Sta示例：
 
 应用定义和指定的后台加载任务信息。
 
-**ArkTs-Dyn起始版本：** 26.0.0
+**ArkTs-Dyn起始版本：** 26.1.0
 
-**ArkTs-Sta起始版本：** 26.0.0
+**ArkTs-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -477,9 +477,9 @@ ArkTS-Sta示例：
 
 当系统回调应用的ON_Stop时，若应用需要处理具体的任务停止原因，则需要从参数进行反序列化获得结构TaskStopInfo。具体示例参考[finishTask](#backgroundloaderfinishtask)函数的完整实例。
 
-**ArkTs-Dyn起始版本：** 26.0.0
+**ArkTs-Dyn起始版本：** 26.1.0
 
-**ArkTs-Sta起始版本：** 26.0.0
+**ArkTs-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -496,9 +496,9 @@ ArkTS-Sta示例：
 
 TaskStopInfo结构体中的错误码枚举定义。
 
-**ArkTs-Dyn起始版本：** 26.0.0
+**ArkTs-Dyn起始版本：** 26.1.0
 
-**ArkTs-Sta起始版本：** 26.0.0
+**ArkTs-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
