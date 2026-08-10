@@ -322,6 +322,42 @@ The location of the widget is invalid.
 
 检查入参卡片位置是否在[FormLocation](js-apis-app-form-formInfo.md#formlocation20)配置列表。
 
+## 16501017 无空间发布卡片
+
+**错误信息**
+
+There is no space to publish form.
+
+**错误描述**
+
+发布卡片时，Host侧无空间容纳新卡片，系统会报此错误码。
+
+**可能原因**
+
+Host侧卡片数量已达上限，无法添加更多卡片。
+
+**处理步骤**
+
+删除不必要的卡片后重试发布。
+
+## 16501018 卡片不支持发布
+
+**错误信息**
+
+This form does not support publishing.
+
+**错误描述**
+
+发布卡片时，Host侧不允许该卡片发布，系统会报此错误码。
+
+**可能原因**
+
+Host侧控制规则不允许该卡片发布。
+
+**处理步骤**
+
+检查Host侧发布控制规则，确认该卡片是否允许发布。
+
 ## 2293761 内部服务错误
 
 **错误信息**
