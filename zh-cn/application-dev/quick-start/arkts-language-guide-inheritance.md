@@ -1132,20 +1132,21 @@ class StaticChild extends StaticBase {
     return StaticChild.getValue();  // 继承的静态方法
   }
 
-  // 注意：静态方法中不能使用super
-  static invalidMethod(): void {
-    super.baseMethod();  // 编译错误：super不能用于静态方法
+  // 静态方法中可通过super调用父类静态方法
+  static callViaSuper(): void {
+    super.baseMethod();  // 通过super调用父类静态方法
   }
 }
 
 StaticChild.combinedMethod();       // 'Base static method', 'Base static method'
 console.info(`${StaticChild.getTotalValue()}`);       // 30
 console.info(`${StaticChild.getInheritedValue()}`);   // 10
+StaticChild.callViaSuper();         // 'Base static method'
 
 // 静态方法调用规则：
 // 通过类名调用静态成员
 // 子类名可调用继承的静态成员
-// 不能在静态方法中使用super
+// 可通过super调用父类静态方法
 ```
 
 ### super关键字的使用场景与限制
