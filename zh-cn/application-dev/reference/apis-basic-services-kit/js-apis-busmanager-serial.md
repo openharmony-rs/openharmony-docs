@@ -675,7 +675,7 @@ port.getDsr().then((dsr: boolean) => {
 
 onDisconnect(callback: Callback&lt;void&gt;): void
 
-监听串口断开事件。使用callback异步回调。调用[close](#close)后，所有回调将被清除。用于监听串口连接断开事件，如USB虚拟串口拔出、设备断电、连接中断时及时处理异常状态、提示用户或尝试重连等场景。
+监听串口断开事件。使用callback异步回调。调用close后，所有回调将被清除。用于监听串口连接断开事件，如USB虚拟串口拔出、设备断电、连接中断时及时处理异常状态、提示用户或尝试重连等场景。
 
 **配对调用：**
 - 与offDisconnect()方法配对使用，offDisconnect()用于取消监听

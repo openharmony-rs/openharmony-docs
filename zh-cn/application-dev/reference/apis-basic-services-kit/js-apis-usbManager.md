@@ -483,7 +483,7 @@ setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): number
 
 > **说明：**
 >
-> 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface) claim通信接口。
+> 在调用该接口前需要调用[usbManager.claimInterface](#usbmanagerclaiminterface) claim通信接口。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
