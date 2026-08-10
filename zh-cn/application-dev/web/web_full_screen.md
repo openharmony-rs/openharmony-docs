@@ -80,7 +80,7 @@ struct ShortWebPage {
 
 **解决措施**
 
-在 module.json5中添加ohos.permission.INTERNET和ohos.permission.SET_ORIENTATION权限，分别用于允许Web组件加载在线视频资源和在视频全屏播放时自动切换横竖屏显示。
+需监听Web组件的全屏模式切换事件。在进入全屏时将窗口方向设为横屏，退出全屏时恢复为竖屏。可在module.json5中添加ohos.permission.INTERNET和ohos.permission.SET_ORIENTATION权限，分别用于允许Web组件加载在线视频资源和在视频全屏播放时自动切换横竖屏显示。
 ```json5
 {
   "module": {
