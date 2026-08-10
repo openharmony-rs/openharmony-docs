@@ -3300,7 +3300,7 @@ export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
 
   /**
-   * 向音频模板控制方同步标签页内容信息，用于容变化后刷标签页内新界面。
+   * 向音频模板控制方同步标签页内容信息，用于标签页内容变化后刷新界面。
    */
   public setTabContent() {
     let mediaEntity: avMusicTemplate.MediaEntity[] = [{
