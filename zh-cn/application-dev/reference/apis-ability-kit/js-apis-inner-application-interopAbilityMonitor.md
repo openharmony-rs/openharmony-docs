@@ -86,3 +86,23 @@ let monitor: abilityDelegatorRegistry.InteropAbilityMonitor = {
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.addInteropAbilityMonitorSync(monitor);
 ```
+
+## AbilityCallbackFn
+
+type AbilityCallbackFn = (ability: Any) => void
+
+当仅监听ability时触发的回调。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| ability | Any | 是 | 表示要注册监听的ability。 |
