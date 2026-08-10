@@ -4430,7 +4430,7 @@ ArkTS-Dyn示例：
             })
             this.dialogController.open();
             // 将新窗口对应WebviewController返回给Web内核。
-            // 若不调用event.handler.setWebController接口，会造成渲染进程阻塞。
+            // 若不调用event.handler.setWebController接口，会造成render进程阻塞。
             // 如果没有创建新窗口，调用event.handler.setWebController接口时设置成null，通知Web没有创建新窗口。
             event.handler.setWebController(popController);
           })
@@ -4604,7 +4604,7 @@ ArkTS-Dyn示例：
           })
           this.dialogController.open();
           // 将新窗口对应WebviewController返回给Web内核。
-          // 若不调用event.handler.setWebController接口，会造成渲染进程阻塞。
+          // 若不调用event.handler.setWebController接口，会造成render进程阻塞。
           // 如果没有创建新窗口，在调用event.handler.setWebController接口时应设置成null，以通知Web没有创建新窗口。
           event.handler.setWebController(popController);
         })
@@ -4780,7 +4780,7 @@ ArkTS-Dyn示例：
             })
             this.dialogController.open();
             // 将新窗口对应WebviewController返回给Web内核。
-            // 若不调用event.handler.setWebController接口，会造成渲染进程阻塞。
+            // 若不调用event.handler.setWebController接口，会造成render进程阻塞。
             event.handler.setWebController(popController);
           })
       }
