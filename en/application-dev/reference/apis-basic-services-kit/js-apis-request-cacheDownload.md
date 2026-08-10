@@ -1,10 +1,12 @@
 # @ohos.request.cacheDownload (Download and Cache)
+
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Request-->
 <!--Owner: @huaxin05-->
 <!--Designer: @hu-kai45-->
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=4a90601cded57b42372da2054925a095e5dfc517 translatedAt=2026-08-10T01:37:32.380Z pushedAt=2026-08-10T01:38:30.125Z -->
 
 The **request** module provides applications with the basic capabilities of file upload and download and background transfer proxy.
 
@@ -183,7 +185,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   try {
     // Download the resource. If the download is successful, the resource will be cached to the specified file in the application memory or sandbox directory. 
     cacheDownload.download("https://www.example.com", options);
-  } catch (err) {
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`Failed to download the resource. err code: ${err.code}, err message: ${err.message}`);
   }
   ```
@@ -225,7 +228,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   try {
     // Download the resource. If the download is successful, the resource will be cached to the specified file in the application memory or sandbox directory. 
     cacheDownload.download("https://www.example.com", options);
-  } catch (err) {
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`Failed to download the resource. err code: ${err.code}, err message: ${err.message}`);
   }
 
@@ -234,7 +238,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   try {
     // Cancel the download task when it is not required. The cached data is not affected.
     cacheDownload.cancel("https://www.example.com");
-  } catch (err) {
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`Failed to cancel the task. err code: ${err.code}, err message: ${err.message}`);
   }
   ```
@@ -273,7 +278,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   try {
     // Set the upper limit of the memory cache size. 
     cacheDownload.setMemoryCacheSize(10 * 1024 * 1024);
-  } catch (err) {
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`Failed to set memory cache size. err code: ${err.code}, err message: ${err.message}`);
   }
   ```
@@ -314,7 +320,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   try {
     // Set the upper limit of the file cache size. 
     cacheDownload.setFileCacheSize(100 * 1024 * 1024);
-  } catch (err) {
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`Failed to set file cache size. err code: ${err.code}, err message: ${err.message}`);
   }
   ```
@@ -353,7 +360,8 @@ Sets the size of the download information list.
   try {
     // Set the size of the download information list. 
     cacheDownload.setDownloadInfoListSize(2048);
-  } catch (err) {
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`Failed to set download information list size. err code: ${err.code}, err message: ${err.message}`);
   }
   ```
@@ -402,7 +410,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   try {
     // Set the size of the download information list. 
     cacheDownload.setDownloadInfoListSize(2048);
-  } catch (err) {
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`Failed to set download information list size. err code: ${err.code}, err message: ${err.message}`);
   }
 
@@ -412,7 +421,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   try {
     // Download the resource. If the download is successful, the resource will be cached to the specified file in the application memory or sandbox directory. 
     cacheDownload.download("https://www.example.com", options);
-  } catch (err) {
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`Failed to download the resource. err code: ${err.code}, err message: ${err.message}`);
   }
 
@@ -426,7 +436,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     } else {
       console.info(`CacheDownload get download info : ${JSON.stringify(downloadInfo)}`);
     }
-  } catch (err) {
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`Failed to get download info. err code: ${err.code}, err message: ${err.message}`);
   }
   ```
