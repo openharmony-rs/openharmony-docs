@@ -6,7 +6,7 @@
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=b33d67f4be19823da8fc8d0464c3e2f4ea32702e translatedAt=2026-07-07T08:40:46.032Z pushedAt=2026-07-07T12:16:15.121Z -->
+<!-- md-trans-meta sourceCommit=0a98ce16f37887e40e6b2d0e4ac5e2fbd6b63617 translatedAt=2026-08-10T01:27:10.353Z pushedAt=2026-08-10T02:26:07.108Z -->
 
 - [About This Kit](distributedservice-kit-intro.md)
 
