@@ -21,7 +21,7 @@ import { serial } from '@kit.BasicServicesKit';
 
 getSerialPortList(): Promise&lt;SerialPort[]&gt;
 
-查询串口设备列表，返回[SerialPort](#serialport)对象数组。使用Promise异步回调。用于需要识别可用串口设备的场景，如工业设备连接、物联网设备管理、嵌入式系统调试等应用。
+查询串口设备列表，返回[SerialPort](#serialport)对象数组。使用Promise异步回调。用于需要识别可用串口设备的场景，如工业设备连接、物联网设备管理、嵌入式系统调试等场景。
 
 **起始版本：** 26.0.0
 
@@ -295,7 +295,7 @@ port.onDataRead((data: Uint8Array) => {
 
 offDataRead(callback?: Callback&lt;Uint8Array&gt;): void
 
-取消监听串口接收数据事件。使用callback异步回调。用于不再需要监听串口数据接收时释放监听资源，如应用切换到其他功能、主动断开连接后清理监听等场景。
+取消监听串口接收数据事件。用于不再需要监听串口数据接收时释放监听资源，如应用切换到其他功能、主动断开连接后清理监听等场景。
 
 **配对调用：**
 - 与onDataRead()方法配对使用，用于取消onDataRead()注册的监听
@@ -496,6 +496,10 @@ getCts(): Promise&lt;boolean&gt;
 
 获取CTS（清除发送）信号状态。使用Promise异步回调。需在串口打开后调用。用于查询硬件流控的清除发送信号状态，判断是否可以发送数据，如启用RTS/CTS硬件流控时检查发送权、与支持硬件流控的设备通信前检查状态等场景。
 
+**调用顺序：**
+- 必须先调用open()打开串口，才能调用getCts()获取CTS信号
+- 未调用open()就调用getCts()会抛出错误码35700005（Port not open）
+
 **与getDsr的区别：** 
 - getCts查询CTS信号（清除发送），属于RTS/CTS硬件流控信号，用于判断是否可以发送数据；getDsr查询DSR信号（数据设备就绪），属于DTR/DSR设备状态信号，用于判断通信设备是否准备就绪。
 
@@ -671,7 +675,7 @@ port.getDsr().then((dsr: boolean) => {
 
 onDisconnect(callback: Callback&lt;void&gt;): void
 
-监听串口断开事件。使用callback异步回调。调用close后，所有回调将被清除。用于监听串口连接断开事件，如USB虚拟串口拔出、设备断电、连接中断时及时处理异常状态、提示用户或尝试重连等场景。
+监听串口断开事件。使用callback异步回调。调用[close](#close)后，所有回调将被清除。用于监听串口连接断开事件，如USB虚拟串口拔出、设备断电、连接中断时及时处理异常状态、提示用户或尝试重连等场景。
 
 **配对调用：**
 - 与offDisconnect()方法配对使用，offDisconnect()用于取消监听
