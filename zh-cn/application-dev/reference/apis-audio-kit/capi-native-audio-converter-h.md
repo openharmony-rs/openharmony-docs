@@ -118,8 +118,8 @@ OH_AudioConverter_Result OH_AudioConverter_Create(const OH_AudioConverter_Format
 > CH_LAYOUT_6POINT1_FRONT、CH_LAYOUT_7POINT0、CH_LAYOUT_7POINT0_FRONT、CH_LAYOUT_7POINT1、CH_LAYOUT_OCTAGONAL、
 > CH_LAYOUT_5POINT1POINT2、CH_LAYOUT_7POINT1_WIDE和CH_LAYOUT_7POINT1_WIDE_BACK。
 > - 支持采样格式（位深）：SAMPLE_U8 (8-bit unsigned PCM)、
-> SAMPLE_S16LE (16-bit short little-endian PCM)、SAMPLE_S24LE (24-bit short little-endian PCM)、
-> SAMPLE_S32LE (32-bit short little-endian PCM)和SAMPLE_F32LE (32-bit float little-endian PCM)。
+> SAMPLE_S16LE (16-bit signed little-endian PCM)、SAMPLE_S24LE (24-bit signed little-endian PCM)、
+> SAMPLE_S32LE (32-bit signed little-endian PCM)和SAMPLE_F32LE (32-bit float little-endian PCM)。
 
 **起始版本：** 26.0.0
 
