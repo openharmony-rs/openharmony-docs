@@ -42614,9 +42614,9 @@
 						"start_line":517
 					},
 					{
-						"end_line":542,
+						"end_line":543,
 						"name":"ts_strict_typing_required",
-						"start_line":528
+						"start_line":529
 					},
 					{
 						"end_line":561,
@@ -43094,9 +43094,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/StrictModeCheck.ets",
 				"functions":[
 					{
-						"end_line":37,
+						"end_line":36,
 						"name":"strictProperty_initialization",
-						"start_line":16
+						"start_line":17
 					},
 					{
 						"end_line":54,
@@ -61672,9 +61672,9 @@
 						"start_line":603
 					},
 					{
-						"end_line":1354,
+						"end_line":1317,
 						"name":"static_method_call",
-						"start_line":1308
+						"start_line":1270
 					},
 					{
 						"end_line":693,
