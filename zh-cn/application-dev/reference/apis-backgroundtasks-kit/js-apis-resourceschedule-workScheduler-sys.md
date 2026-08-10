@@ -84,7 +84,7 @@ try {
 
 ## workScheduler.resetExecFrequency
 
-resetExecFrequency(frequency: FrequencyInfo): void
+resetExecFrequency(uid: number): void
 
 重置应用所在活跃分组的执行频率
 
@@ -100,7 +100,7 @@ resetExecFrequency(frequency: FrequencyInfo): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------- | ------- | ---- | ---------------------------------------- |
-| frequency | [FrequencyInfo](#frequencyInfo) | 是    | 应用所在活跃分组的执行频率信息。|
+| uid | number | 是    | 由系统自动分配的UID。|
 
 **错误码：**
 
@@ -111,7 +111,7 @@ resetExecFrequency(frequency: FrequencyInfo): void
 | 201 | Permission denied. |
 | 202 | Not System App. |
 | 9700003 | System service operation failed. |
-| 9700006 | Check on frequency failed. |
+| 9700006 | Failed to check the uid. |
 
 **示例：**
 
@@ -119,13 +119,9 @@ resetExecFrequency(frequency: FrequencyInfo): void
 import { BusinessError } from '@kit.BasicServicesKit';
 import { workScheduler } from '@kit.BackgroundTasksKit';
 
-let frequencyInfo: workScheduler.FrequencyInfo = {
-  uid: 20020220,  // 该值为示例UID，并说明开发者需替换为实际应用的真实UID
-  workId: 1,  // 延迟任务ID
-  interval: 86400000  // 毫秒
-}
+let uid: number = 20020220,  // 该值为示例UID，并说明开发者需替换为实际应用的真实UID
 try {
-  workScheduler.resetExecFrequency(frequencyInfo);
+  workScheduler.resetExecFrequency(uid);
   console.info('workschedulerLog resetExecFrequency success');
 } catch (error) {
   console.error(`workschedulerLog resetExecFrequency failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
