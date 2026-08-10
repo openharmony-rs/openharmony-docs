@@ -6,7 +6,7 @@
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=0a98ce16f37887e40e6b2d0e4ac5e2fbd6b63617 translatedAt=2026-08-10T01:27:10.353Z pushedAt=2026-08-10T02:26:07.108Z -->
+<!-- md-trans-meta sourceCommit=0a98ce16f37887e40e6b2d0e4ac5e2fbd6b63617 translatedAt=2026-08-10T01:27:10.353Z pushedAt=2026-08-10T03:34:02.235Z -->
 
 - [About This Kit](distributedservice-kit-intro.md)
 
@@ -18,7 +18,7 @@
 
   <!--Del-->
 
-  - [Cross-Device UIAbility Connection Development (For System Applications Only)](abilityconnectmanager-guidelines-sys.md)
+  - [Cross-Device UIAbility Connection Development (for System Applications Only)](abilityconnectmanager-guidelines-sys.md)
 
   - [Distributed Extension Ability Development (for System Applications Only)](distributedextension-guidelines-sys.md)
 
