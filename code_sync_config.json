@@ -54582,6 +54582,11 @@
 						"end_line":139,
 						"name":"audioSuite_CreateBaseNodeTwo",
 						"start_line":118
+					},
+					{
+						"end_line":223,
+						"name":"audioSuite_IsSupportedSeparationNode",
+						"start_line":213
 					}
 				]
 			},
@@ -54952,6 +54957,11 @@
 						"end_line":263,
 						"name":"converter_destroy",
 						"start_line":261
+					},
+					{
+						"end_line":22,
+						"name":"format_conversion_header_file",
+						"start_line":20
 					}
 				]
 			}
@@ -65383,6 +65393,61 @@
 						"end_line":177,
 						"name":"Render_ConfigStream",
 						"start_line":163
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/audio/audio-suite-effects.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_effect/audio_effect.h",
+				"functions":[
+					{
+						"end_line":94,
+						"name":"audioSuite_SetEqualizerType",
+						"start_line":84
+					},
+					{
+						"end_line":135,
+						"name":"audioSuite_SetNoiseReductionType",
+						"start_line":130
+					},
+					{
+						"end_line":156,
+						"name":"audioSuite_SetSoundFieldType",
+						"start_line":149
+					},
+					{
+						"end_line":116,
+						"name":"audioSuite_SetVoiceBeautifierType",
+						"start_line":108
+					},
+					{
+						"end_line":177,
+						"name":"audioSuite_SetEnvironmentType",
+						"start_line":170
+					},
+					{
+						"end_line":230,
+						"name":"audioSuite_SetSpaceRenderParams",
+						"start_line":191
+					},
+					{
+						"end_line":255,
+						"name":"audioSuite_SetPureVoiceChangeOption",
+						"start_line":244
+					},
+					{
+						"end_line":277,
+						"name":"audioSuite_SetGeneralVoiceChangeType",
+						"start_line":269
+					},
+					{
+						"end_line":298,
+						"name":"audioSuite_SetTempoAndPitch",
+						"start_line":291
 					}
 				]
 			}
