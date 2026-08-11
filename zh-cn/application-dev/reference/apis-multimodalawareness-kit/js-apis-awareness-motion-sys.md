@@ -117,7 +117,7 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 | 名称               | 类型                   | 只读      | 可选       | 说明     |
 | -------------------| ----------------------| ----------|----------|--------|
 | physicalOrientation       | [PhysicalOrientation](#physicalorientation)   | 否        | 否         | 重力传感器报告的物理方向。|
-| logicalOrientation        | [LogicalOrientation](#logicalorientation)     | 否        | 是          | 智能算法调整后的逻辑方向。当智能算法无法确定方向时，该字段可能未空或不返回。|
+| logicalOrientation        | [LogicalOrientation](#logicalorientation)     | 否        | 是          | 智能算法调整后的逻辑方向。当智能算法无法确定方向时，该字段可能为空或不返回。|
 
 ## HoverHandDetectionArea
 

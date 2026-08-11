@@ -104,7 +104,7 @@ try {
 ## metadataBinding.off('operationSubmitMetadata')
 off(type: 'operationSubmitMetadata', bundleName: string, callback?: Callback&lt;number&gt;): void
 
-取消订阅系统获取编码内容的事件。需先调用on('operationSubmitMetadata')方法订阅事件，未订阅时调用不产生效果。取消订阅后，应用将不在接收编码内容传递事件。
+取消订阅系统获取编码内容的事件。需先调用on('operationSubmitMetadata')方法订阅事件，未订阅时调用不产生效果。取消订阅后，应用将不再接收编码内容传递事件。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
