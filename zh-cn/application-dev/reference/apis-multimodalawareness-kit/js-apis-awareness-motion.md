@@ -54,8 +54,8 @@ on(type: 'operatingHandChanged', callback: Callback&lt;OperatingHandStatus&gt;):
 如果设备不支持此功能，将返回801错误码。
 
 **需要权限**：
-- API version 20+：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
-- API version 15-19：ohos.permission.ACTIVITY_MOTION
+- API版本20+：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
+- API版本15-19：ohos.permission.ACTIVITY_MOTION
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -104,8 +104,8 @@ off(type: 'operatingHandChanged', callback?: Callback&lt;OperatingHandStatus&gt;
 取消订阅触控操作手感知事件。若未调用on()就调用off()，该方法会抛出异常。相关方法：on('operatingHandChanged')：订阅触控操作手感知事件。
 
 **需要权限**：
-- API version 20+：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
-- API version 15-19：ohos.permission.ACTIVITY_MOTION
+- API版本20+：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
+- API版本15-19：ohos.permission.ACTIVITY_MOTION
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -149,8 +149,8 @@ getRecentOperatingHandStatus(): OperatingHandStatus
 获取最新触控操作手状态。该方法直接返回最新的操作手状态，无需订阅事件即可调用。
 
 **需要权限**：
-- API version 20+：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
-- API version 15-19：ohos.permission.ACTIVITY_MOTION
+- API版本20+：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
+- API版本15-19：ohos.permission.ACTIVITY_MOTION
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
