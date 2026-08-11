@@ -350,7 +350,7 @@ ArkTS-Sta：apiAvailable(version: string | int): boolean
 
 | 参数名    | 类型                                      | 必填 | 说明                               |
 | --------- | ----------------------------------------- | ---- | ---------------------------------- |
-| version | string \| number | 是   | 需要校验的API版本号，支持整数版本号和点分版本号。整数版本号为正整数。点分版本号格式为x.x.x（如5.0.0或26.0.0），各段均为非负整数。传入无效值时返回false。|
+| version | ArkTS-Dyn:string \| number<br>ArkTS-Sta:string \| int | 是   | 需要校验的API版本号，支持整数版本号和点分版本号。整数版本号为正整数。点分版本号格式为x.x.x（如5.0.0或26.0.0），各段均为非负整数。传入无效值时返回false。|
 
 **返回值**：
 
@@ -369,13 +369,13 @@ if (deviceInfo.apiAvailable('26.0.0')) {
 }
 
 
-// Check API 5.0.1 (Distribution OS version, API 26.0.0-)
+// 检查API版本是否大于等于5.0.1 (Distribution OS version, API 26.0.0-)
 if (deviceInfo.apiAvailable('5.0.1')) {
   // 需要版本隔离的方法
 }
 
 
-// Check API 13 (OpenHarmony SDK version, API 26.0.0-)
+// 检查API版本是否大于等于13 (OpenHarmony SDK version, API 26.0.0-)
 if (deviceInfo.apiAvailable(13)) {
   // 需要版本隔离的方法
 }
