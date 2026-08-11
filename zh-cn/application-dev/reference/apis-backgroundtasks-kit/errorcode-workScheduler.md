@@ -116,21 +116,20 @@ Calling startWork failed.
 
 **错误信息**
 
-Check on frequencyInfo failed.
+Failed to check the execution frequency parameters.
 
 **错误描述**
-
-执行频率参数值超出有效范围。
+执行频率参数检查失败。
 
 **可能原因**
 
-1. frequencyInfo中，uid不存在或格式不正确。
-2. frequencyInfo中，workId格式不正确或不存在。
-3. frequencyInfo中，interval值不在允许范围内或格式不正确。
+1. uid不存在或格式不正确。
+2. workId格式不正确或不存在。
+3. interval值不在允许范围内或格式不正确。
 
 **处理步骤**
 
-1. 请检查frequencyInfo中的uid是否与应用uid匹配。
-2. 请检查frequencyInfo中的workId是否与应用申请的延迟任务workId匹配。
-3. 请检查frequencyInfo中的interval值是否超出范围。
+1. 请检查uid是否与应用uid匹配。
+2. 请检查workId是否与应用申请的延迟任务workId匹配。
+3. 请检查interval值是否超出范围。
 
