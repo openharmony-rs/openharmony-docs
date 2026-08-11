@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=ee3aff3c192b61804c6eafd655527edff9eb980a translatedAt=2026-08-10T09:36:35.000Z pushedAt=2026-08-10T12:35:05.169Z -->
+<!-- md-trans-meta sourceCommit=ee3aff3c192b61804c6eafd655527edff9eb980a translatedAt=2026-08-10T09:36:35.000Z pushedAt=2026-08-11T01:19:28.680Z -->
 
 > **NOTE**
 >
@@ -104,7 +104,7 @@ An error occurs when the cryptography framework interacts with a third-party alg
 
 Check whether the input parameters of the API or associated APIs are correct.
 
-Error 1763001 is often reported during decryption, which is analyzed in detail based on typical scenarios.
+Error 17630001 is often reported during decryption, which is analyzed in detail based on typical scenarios.
 
 ### Failed to Call doFinal During Decryption Using AES-GCM
 
@@ -169,7 +169,7 @@ Ensure that the **key** and **iv** parameters for encryption and decryption are 
 
 > **NOTE**
 >
-> - AES-CCM is an authentication and encryption mode. During encryption and decryption, the additional authentication data (AAD) and authentication tag must be specified. The length of ADD must be within the range of [1, 2048], in bytes.
+> - AES-CCM is an authentication and encryption mode. During encryption and decryption, the additional authentication data (AAD) and authentication tag must be specified. The length of AAD must be within the range of [1, 2048], in bytes.
 > - You are advised to use the **update** API to encrypt data and call the **doFinal** API to complete the encryption and obtain the tag.
 > - You are advised to use the **update** API to decrypt data and then call the **doFinal** API to complete the decryption. The **doFinal** API verifies the tag. If the verification fails, an exception is thrown.
 
