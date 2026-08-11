@@ -1155,7 +1155,7 @@ Navigation导航控制器，以栈的数据结构管理Navigation中所有的子
 >
 > 3.在应用处于后台状态下，调用NavPathStack的栈操作方法，会在应用再次回到前台状态时触发刷新。
 
-### constructor
+### constructor<sup>10+</sup>
 
 constructor()
 
@@ -2179,7 +2179,7 @@ setPathStack(pathStack: Array\<NavPathInfo\>, animated?: boolean): void
 
 路由页面信息。
 
-### constructor
+### constructor<sup>10+</sup>
 
 ArkTS-Dyn: constructor(name: string, param: unknown, onPop?: import('../api/@ohos.base').Callback\<PopInfo>, isEntry?: boolean)
 
