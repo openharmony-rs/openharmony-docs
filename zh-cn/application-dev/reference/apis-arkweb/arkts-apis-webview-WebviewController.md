@@ -16342,7 +16342,7 @@ getHitTest(): WebHitTestType
 
 > **说明：**
 >
-> 从API version 11开始支持，从API version 18开始废弃。建议使用[getLastHitTest](#getlasthittest18)替代。
+> 从API version 9开始支持，从API version 18开始废弃。建议使用[getLastHitTest](#getlasthittest18)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -16401,7 +16401,7 @@ getHitTestValue(): HitTestValue
 
 > **说明：**
 >
-> 从API version 11开始支持，从API version 18开始废弃。建议使用[getLastHitTest](#getlasthittest18)替代。
+> 从API version 9开始支持，从API version 18开始废弃。建议使用[getLastHitTest](#getlasthittest18)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
