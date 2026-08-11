@@ -9076,3 +9076,17 @@ Allows an application to use restricted networks, such as internal networks and 
 **Supported devices**: cars
 
 **Valid since**: 26.1.0
+
+## ohos.permission.ACCESS_SOFTBUS_SYS_HAP
+
+Allows a system application to connect to near-field devices and send/receive data.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices | cars | phones | wearables | tablets | TVs
+
+**Valid since**: 26.1.0
