@@ -16,13 +16,13 @@
 
 3. 调用[enableDesktopLyric](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#enabledesktoplyric23)接口启用歌词组件，需传入参数true打开歌词组件。
 
-4. 歌词组件使能打开后默认是隐藏（不显示），应用可以通过接口主动显示/隐藏歌词组件，具体接口如下：
+4. 歌词组件启用后默认是隐藏（不显示），应用可以通过接口主动显示/隐藏歌词组件，具体接口如下：
    
    **设置可见性：** 调用[setDesktopLyricVisible](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setdesktoplyricvisible23)接口，设置歌词组件是否显示。
 
    **查询可见性：** 调用[isDesktopLyricVisible](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#isdesktoplyricvisible23)接口，查询当前歌词组件是否显示。
 
-5. 歌词组件使能打开后默认是非锁定状态，应用可以通过接口主动锁定/解锁歌词组件，具体接口如下：
+5. 歌词组件启用后默认是非锁定状态，应用可以通过接口主动锁定/解锁歌词组件，具体接口如下：
 
    **设置锁定状态：** 调用[setDesktopLyricState](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setdesktoplyricstate23)接口，设置歌词窗口是否锁定（限制歌词窗口的拖动、设置等操作）。
    
