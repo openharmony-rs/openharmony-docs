@@ -759,13 +759,13 @@ struct PasteboardTest {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| htmlText | string | 是 | 否 | HTML内容。</br>**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23|
-| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 否 | Want内容。</br>**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23|
-| mimeType | string | 是 | 否 | 默认数据类型。</br>**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23|
-| plainText | string | 是 | 否 | 纯文本内容。</br>**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23|
-| uri | string | 是 | 否 | URI内容。</br>**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23|
-| pixelMap<sup>9+</sup> | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 否 | PixelMap内容。</br>**ArkTS-Dyn起始版本**：9</br>**ArkTS-Sta起始版本**：23 |
-| data<sup>9+</sup> | Record<string, ArrayBuffer> | 是 | 否 | 自定义数据内容。</br>**ArkTS-Dyn起始版本**：9</br>**ArkTS-Sta起始版本**：23 |
+| htmlText | string | 是 | 否 | HTML内容，需符合标准HTML格式。对此属性的修改无效，如需刷新属性值，请使用[addEntry](#addentry14)。</br>**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23|
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 否 | Want内容。对此属性的修改无效，如需刷新属性值，请使用[addEntry](#addentry14)。</br>**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23|
+| mimeType | string | 是 | 否 | 默认数据类型。对此属性的修改无效。</br>**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23|
+| plainText | string | 是 | 否 | 纯文本内容。对此属性的修改无效，如需刷新属性值，请使用[addEntry](#addentry14)。</br>**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23|
+| uri | string | 是 | 否 | URI内容，需符合标准URI格式。对此属性的修改无效，如需刷新属性值，请使用[addEntry](#addentry14)。</br>**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23|
+| pixelMap<sup>9+</sup> | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 否 | PixelMap内容。对此属性的修改无效，如需刷新属性值，请使用[addEntry](#addentry14)。</br>**ArkTS-Dyn起始版本**：9</br>**ArkTS-Sta起始版本**：23 |
+| data<sup>9+</sup> | Record<string, ArrayBuffer> | 是 | 否 | 自定义数据内容。对此属性的修改无效。</br>**ArkTS-Dyn起始版本**：9</br>**ArkTS-Sta起始版本**：23 |
 
 ### toPlainText<sup>9+</sup>
 
