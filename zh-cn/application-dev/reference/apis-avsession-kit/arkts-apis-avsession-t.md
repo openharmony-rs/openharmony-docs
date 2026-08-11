@@ -175,3 +175,20 @@ type TwoParamCallback\<T, G\> = (data1: T, data2: G) => void
 |-------|----| ---- |------|
 | data1 | T  | 是   | 回调函数接收的第一个数据参数，具体类型和含义由调用方定义。 |
 | data2 | G  | 是   | 回调函数接收的第二个数据参数，具体类型和含义由调用方定义。 |
+
+## EventProcess
+
+type EventProcess = (event: string, args: Record\<string, Object>) => void
+
+定义处理事件和参数的通用函数类型。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名   | 类型 | 必填 | 说明   |
+|-------|----| ---- |------|
+| event | string  | 是   | 请求事件。 |
+| args | Record\<string, Object>  | 是   | 与事件关联的参数。 |

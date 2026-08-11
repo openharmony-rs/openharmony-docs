@@ -6,7 +6,7 @@
 <!--Designer: @no86-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=d682c265ebaab7ba09f14d1bce2dfd9303f27af1 translatedAt=2026-07-29T01:31:49.551Z pushedAt=2026-07-29T11:55:39.838Z -->
+<!-- md-trans-meta sourceCommit=0ab2451f3e12ca62369db634d1dfd7a8226e9b2e translatedAt=2026-08-04T07:31:13.441Z pushedAt=2026-08-04T08:10:28.117Z -->
 
 This module provides word selection management capabilities, including creating, displaying, moving, hiding, and destroying panels, listening for word selection events using a mouse or touchpad, and retrieving the selected text. The typical usage process is as follows:
 
@@ -48,7 +48,7 @@ import { selectionManager } from '@kit.BasicServicesKit';
 
 on(type: 'selectionCompleted', callback: Callback\<SelectionInfo>): void
 
-Subscribes to the word selection completion event. This API uses an asynchronous callback to return the result.
+Subscribes to the word selection completion event. This API is used together with [off('selectionCompleted')](#selectionmanageroffselectioncompleted). [off('selectionCompleted')](#selectionmanageroffselectioncompleted) is used to unsubscribe from the event.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
@@ -88,7 +88,7 @@ try {
 
 off(type: 'selectionCompleted', callback?: Callback\<SelectionInfo>): void
 
-Unsubscribes from the word selection completion event. This method is used together with [on('selectionCompleted')](#selectionmanageronselectioncompleted). This API uses an asynchronous callback to return the result.
+Unsubscribes from the word selection completion event. This API is used together with [on('selectionCompleted')](#selectionmanageronselectioncompleted).
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
@@ -99,7 +99,7 @@ Unsubscribes from the word selection completion event. This method is used toget
 | Name  | Type                                       | Mandatory| Description                                                        |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                      | Yes   | Type of the event to unsubscribe from. The value is fixed to **'selectionCompleted'**.               |
-| callback | Callback\<[SelectionInfo](#selectioninfo)> | No   | Callback to be unregistered (that is, the callback instance registered using **on**). This callback is used to return [SelectionInfo](#selectioninfo). If this parameter is not specified, this API unregisters all callbacks for the specified type. |
+| callback | Callback\<[SelectionInfo](#selectioninfo)> | No | Callback to be unregistered, which the callback instance registered using **on**. If this parameter is not specified, this API unregisters all callbacks for the specified type. |
 
 **Example**
 
@@ -300,7 +300,7 @@ class SelectionAbilityStub extends rpc.RemoteObject {
 
 class ServiceExtAbility extends SelectionExtensionAbility {
   onConnect(want: Want): rpc.RemoteObject {
-    // // Configure the word selection panel, including the panel type, position, and size.
+    // Configure the word selection panel, including the panel type, position, and size.
     let panelInfo: PanelInfo = {
       panelType: PanelType.MENU_PANEL,
       x: 0,
@@ -360,7 +360,7 @@ Defines the information of a word selection event.
 
 ## Panel
 
-Describes a Panel object, which is created using [createPanel](#createpanel). This method can be used to set, display, hide, and move the panel, as well as subscribe to events. It is applicable to scenarios where a custom operation UI needs to be displayed to users after word selection is complete.
+Describes a **Panel** object, which is created using [createPanel](#createpanel). This method can be used to set, display, hide, and move the panel, as well as subscribe to events. It is applicable to scenarios where a custom operation UI needs to be displayed to users after word selection is complete.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
@@ -372,7 +372,7 @@ In the following APIs, you must first use [createPanel](#createpanel) to obtain 
 
 setUiContent(path: string): Promise\<void>
 
-Sets the UI content for the current word selection panel. This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel). This API uses a promise to return the result.
+Sets the UI content for the current word selection panel, for example, to display translation results, search suggestions, or custom action buttons. This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel). This API uses a promise to return the result.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
@@ -422,7 +422,7 @@ try {
 
 show(): Promise\<void>
 
-Shows the word selection panel. This API is used together with [hide](#hide). This API can be called only after a Panel instance is obtained by calling [createPanel](#createpanel). This API uses a promise to return the result.
+Shows the word selection panel. This API is used together with [hide](#hide). This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel). This API uses a promise to return the result.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
@@ -462,7 +462,7 @@ selectionPanel.show().then(() => {
 
 hide(): Promise\<void>
 
-Hides the word selection panel. This API is used together with [show](#show). This API can be called only after a Panel instance is obtained by calling [createPanel](#createpanel). This API uses a promise to return the result. If this API is not called proactively, the panel is automatically hidden when it loses focus.
+Hides the word selection panel. This API is used together with [show](#show). This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel). This API uses a promise to return the result. If this API is not called proactively, the panel is automatically hidden when it loses focus.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
@@ -556,7 +556,7 @@ RelativeContainer() {
 
 moveTo(x: number, y: number): Promise\<void>
 
-Moves the word selection panel to the specified coordinates on the screen. This API can be called only after a Panel instance is obtained by calling [createPanel](#createpanel). This API uses a promise to return the result.
+Moves the word selection panel to the specified coordinates in the global coordinate system of the screen. The panel can be moved to an extended screen. This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel). This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -570,8 +570,8 @@ Moves the word selection panel to the specified coordinates on the screen. This 
 
 | Name  | Type                  | Mandatory| Description    |
 | -------- | ---------------------- | ---- | -------- |
-| x | number | Yes  |X-axis coordinate of the target position, in px.|
-| y | number | Yes  |Y-axis coordinate of the target position, in px.|
+| x | number | Yes | X-coordinate of the target position in the global coordinate system of the screen, in px. The upper left corner of the main screen is the origin of the global coordinate system, and the positive direction of the X axis is rightward. The x-coordinate of an extended screen may be negative, depending on the screen layout. |
+| y | number | Yes | Y-coordinate of the target position in the global coordinate system of the screen, in px. The upper left corner of the main screen is the origin of the global coordinate system, and the positive direction of the Y axis is downward. The y-coordinate of an extended screen may be negative, depending on the screen layout. |
 
 **Return value**
 
@@ -613,7 +613,7 @@ try {
 
 moveToGlobalDisplay(x: number, y: number): Promise\<void>
 
-Moves the word selection panel to the specified coordinates in the global coordinates system of the screen. The panel can be moved to an extended screen. This API can be called only after a Panel instance is obtained by calling [createPanel](#createpanel). This API uses a promise to return the result.
+Moves the word selection panel to the specified coordinates in the global coordinates system of the screen. The panel can be moved to an extended screen. This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel). This API uses a promise to return the result.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
@@ -664,7 +664,7 @@ try {
 
 on(type: 'destroyed', callback: Callback\<void>): void
 
-Subscribes to the word selection panel destruction event. This API is used together with [off('destroyed')](#offdestroyed). This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel). This API uses an asynchronous callback to return the result.
+Subscribes to the word selection panel destruction event. This API is used together with [off('destroyed')](#offdestroyed). This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel).
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
@@ -675,7 +675,7 @@ Subscribes to the word selection panel destruction event. This API is used toget
 | Name  | Type                                       | Mandatory| Description                                          |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
 | type     | string                                      | Yes  | Event type, which is **'destroyed'**.|
-| callback | Callback\<void> | Yes   | Callback used to return the result, which is triggered when [destroyPanel](#destroypanel) is called to destroy the panel. The return value is null.       |
+| callback | Callback\<void> | Yes | Callback used to return the result, which is triggered when [destroyPanel](#destroypanel) is called to destroy the panel. |
 
 **Example**
 
@@ -696,7 +696,7 @@ try {
 
 off(type: 'destroyed', callback?: Callback\<void>): void
 
-Unsubscribes from the word selection panel destruction event. This API is used together with [on('destroyed')](#ondestroyed). This API can be called only after a Panel instance is obtained by calling [createPanel](#createpanel). This API uses an asynchronous callback to return the result.
+Unsubscribes from the word selection panel destruction event. This API is used together with [on('destroyed')](#ondestroyed). This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel).
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
@@ -707,7 +707,7 @@ Unsubscribes from the word selection panel destruction event. This API is used t
 | Name  | Type                                       | Mandatory| Description                                                        |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type   | string | Yes  | Type of the event to unsubscribe from. The value is fixed to **'destroyed'**. |
-| callback | Callback\<void> | No  | Callback to be unregistered (that is, the callback instance registered using on). The return value is null. If this parameter is not specified, this API unregisters all callbacks for the specified type. |
+| callback | Callback\<void> | No | Callback to be unregistered, which the callback instance registered using **on**. If this parameter is not specified, this API unregisters all callbacks for the specified type. |
 
 **Example**
 
@@ -726,7 +726,7 @@ try {
 
 on(type: 'hidden', callback: Callback\<void>): void
 
-Subscribes to the word selection panel hiding event. This API is used together with [off('hidden')](#offhidden). This event is triggered when the panel is hidden by calling [hide](#hide) or automatically hidden when it loses focus. This API can be called only after a Panel instance is obtained by calling [createPanel](#createpanel). This API uses an asynchronous callback to return the result.
+Subscribes to the word selection panel hiding event. This API is used together with [off('hidden')](#offhidden). This event is triggered when the panel is hidden by calling [hide](#hide) or automatically hidden when it loses focus. This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel).
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
@@ -737,7 +737,7 @@ Subscribes to the word selection panel hiding event. This API is used together w
 | Name  | Type                                       | Mandatory| Description                                          |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
 | type     | string                                      | Yes  | Event type, which is **'hidden'**.|
-| callback | Callback\<void> | Yes | Callback used to return the result, which is triggered when the panel is hidden. The return value is null. The panel can be hidden by calling [hide](#hide) or automatically hidden when it loses focus. |
+| callback | Callback\<void> | Yes | Callback used to return the result, which is triggered when the panel is hidden. The panel can be hidden by calling [hide](#hide) or automatically hidden when it loses focus. |
 
 **Example**
 
@@ -758,7 +758,7 @@ try {
 
 off(type: 'hidden', callback?: Callback\<void>): void
 
-Unsubscribes from the word selection panel hiding event. This API is used together with [on('hidden')](#onhidden). This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel). This API uses an asynchronous callback to return the result.
+Unsubscribes from the word selection panel hiding event. This API is used together with [on('hidden')](#onhidden). This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel).
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
@@ -769,7 +769,7 @@ Unsubscribes from the word selection panel hiding event. This API is used togeth
 | Name  | Type                                       | Mandatory| Description                                                        |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                      | Yes   | Type of the event to unsubscribe from. The value is fixed to **'hidden'**.               |
-| callback | Callback\<void> | No   | Callback to be unregistered (that is, the callback instance registered using **on**). The return value is null. If this parameter is not specified, this API unregisters all callbacks for the specified type. |
+| callback | Callback\<void> | No | Callback to be unregistered, which the callback instance registered using **on**. If this parameter is not specified, this API unregisters all callbacks for the specified type. |
 
 **Example**
 

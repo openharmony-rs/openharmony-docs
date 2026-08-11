@@ -1,10 +1,12 @@
 # Interfaces (Others)
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @zourongchun-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=37f8010684f98f039dd93a2bbbd1faa73c74fcbb translatedAt=2026-08-07T04:40:28.641Z pushedAt=2026-08-07T08:12:24.060Z -->
 
 > **NOTE**
 >
@@ -14,30 +16,30 @@
 
 ## WebOptions
 
-Defines web options through the [APIs](./arkts-basic-components-web.md).
+Defines Web options through the [API](./arkts-basic-components-web.md#api), including the web page resource URL, controller, rendering mode, and more.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
 | Name       | Type                         | Read-Only    | Optional  | Description                                    |
 | ---------- | ------------------------------|---- | ---- | ---------------------------------------- |
-| src        | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource)   | No   | No   | Address of a web page resource. To access local resource files, use the $rawfile or resource protocol. To load a local resource file (in HTML or TXT format) in the sandbox outside of the application package, use **file://** to specify the path of the sandbox.<br>**src** cannot be dynamically changed through a state variable (for example, @State). To change the value, call [loadUrl()](./arkts-apis-webview-WebviewController.md#loadurl).|
-| controller | [WebController](./arkts-basic-components-web-WebController.md) \| WebviewController  | No   | No  | Controller that controls various behaviors of **Web** components, including page navigation, declaration period status, and JavaScript interaction. **WebController** is deprecated since API version 9. You are advised to use [WebviewController](./arkts-basic-components-web-t.md#webviewcontroller9) instead.|
-| renderMode<sup>12+</sup> | [RenderMode](./arkts-basic-components-web-e.md#rendermode12)| No   | Yes  | Rendering mode.<br>**RenderMode.ASYNC_RENDER** (default, cannot be dynamically adjusted): The **Web** component is rendered asynchronously.<br>**RenderMode.SYNC_RENDER**: The **Web** component is rendered synchronously.|
-| incognitoMode<sup>11+</sup> | boolean | No   | Yes| Whether to enable incognito mode. The value **true** means to enable incognito mode, and **false** means the opposite.<br> Default value: **false**.<br>If **undefined** or **null** is passed, the value is **false**.|
-| sharedRenderProcessToken<sup>12+</sup> | string | No   | Yes| Token of the shared rendering process specified by the **Web** component. In multi-rendering process mode, the **Web** component with the same token preferentially attempts to reuse the rendering process bound to the token. The token is bound to the rendering process when the rendering process is initialized. When the rendering process is not associated with a **Web** component, its binding to the token is removed.<br> Default value: **""**. |
-| emulateTouchFromMouseEvent<sup>22+</sup> | boolean | No   | Yes|  Whether to convert mouse events into touch events.<br> Default value: **false**.|
+| src        | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource)   | No    | No    | Web page resource address. If a local resource file is accessed, use the resource protocol or $rawfile resource reference. If a local resource file in the sandbox path outside the app package is loaded (HTML and TXT file types are supported), use file:// sandbox file path.<br>src cannot be dynamically changed through a state variable (for example, @State). To change the address, reload the page through [loadUrl()](./arkts-apis-webview-WebviewController.md#loadurl). |
+| controller | [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController](./arkts-apis-webview-WebviewController.md)  | No    | No   | Controller used to control various behaviors of the Web component, including page navigation, lifecycle state, JavaScript interaction, etc. Since API version 9, WebController is no longer maintained. It is recommended to use [WebviewController](./arkts-basic-components-web-t.md#webviewcontroller9) instead. |
+| renderMode<sup>12+</sup> | [RenderMode](./arkts-basic-components-web-e.md#rendermode12)| No    | Yes   | Rendering mode of the current Web component. `RenderMode.ASYNC_RENDER` indicates asynchronous rendering, and `RenderMode.SYNC_RENDER` indicates synchronous rendering. Default value: `RenderMode.ASYNC_RENDER`. This mode does not support dynamic adjustment. |
+| incognitoMode<sup>11+</sup> | boolean | No    | Yes | Whether the current Webview is created in incognito mode. The value **true** indicates incognito mode, and **false** indicates normal mode.<br>Default value: **false**.<br>The value is **false** when undefined or null is passed in.<!--RP1--><!--RP1End--> |
+| sharedRenderProcessToken<sup>12+</sup> | string | No    | Yes | Token that specifies the shared render process for the current Web component. In multi-render-process mode, Web components with the same token preferentially attempt to reuse the bound render process. The binding occurs during the initialization phase of the render process. When a render process has no associated Web component, its binding relationship is removed.<br>Default value: **""**.  |
+| emulateTouchFromMouseEvent<sup>22+</sup> | boolean | No    | Yes |  Whether to convert mouse events to touch events. The value **true** indicates that mouse events are converted to touch events, which is suitable for scenarios where touch and mouse interaction behaviors need to be unified; **false** indicates that mouse events are not converted to touch events.<br>Default value: **false**. |
 
 ## WebMediaOptions<sup>10+</sup>
 
-Describes the web media options.
+Configures the media policy of the **Web** component, including the audio playback continuation validity period, audio exclusive mode, and more. It is suitable for scenarios where audio playback experience optimization and multi-instance audio management are required, improving media playback stability and user experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
 | Name            | Type     | Read-Only| Optional | Description                                      |
 | -------------- | ------- | ---- | ---- | ---------------------------------------- |
-| resumeInterval | number  | No| Yes| Validity period for automatically resuming a web audio paused by another application, in seconds. The value range is [-2147483648, 2147483647]. If **resumeInterval** is set to **0**, the playback is not automatically resumed. If **resumeInterval** is set to a value greater than 0, the playback is resumed in the specified period. If **resumeInterval** is set to a value less than 0, the playback is resumed in an unlimited period. Due to the approximate value, the validity period may have a deviation of less than 1 second.<br>**NOTE**<br>After an HLS video is interrupted, the video playback is automatically resumed when the video is returned to the foreground.|
-| audioExclusive | boolean | No| Yes| Whether the audio of multiple **Web** instances in an application is exclusive.<br>The value **true** indicates that the audio of multiple **Web** instances in an application is exclusive, and **false** indicates the opposite.<br>The default value is **true**.                      |
-| audioSessionType<sup>20+</sup> | [AudioSessionType](./arkts-basic-components-web-e.md#audiosessiontype20) | No| Yes| Web audio type in the application. The default value is [STREAM_USAGE_MUSIC](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage). This parameter changes the mapping between the component audio type and the system audio type, which affects the ArkWeb audio focus policy.|
+| resumeInterval | number | No | Yes | Validity period during which Web audio and video paused by other apps can automatically resume playback, in seconds. Value range: [-2147483648, 2147483647]. The value **0** means no automatic resumption; a value greater than **0** means an attempt to resume within the specified period; a value less than **0** means an attempt to resume within an unlimited period. Due to approximation, this validity period may have an error within one second.<br>**NOTE**<br>After an HLS video is interrupted, it will automatically resume when returning to the foreground, regardless of this time setting.<br/>Default value: **0**.|
+| audioExclusive | boolean | No | Yes | Whether the audio of multiple Web instances in an app is exclusive.<br>The value **true** means the audio of multiple Web instances in an app is exclusive, and **false** means the opposite.<br>Default value: **true**.|
+| audioSessionType<sup>20+</sup> | [AudioSessionType](./arkts-basic-components-web-e.md#audiosessiontype20) | No | Yes | Web audio type in the app. The default value corresponds to STREAM_USAGE_MUSIC in the system audio stream type [StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage). Used to change the mapping between the component audio type and the system audio type, affecting the ArkWeb audio focus policy.|
 
 ## ScriptItem<sup>11+</sup>
 
@@ -48,7 +50,7 @@ Describes the **ScriptItem** object registered with the **Web** component throug
 | Name        | Type          | Read-Only| Optional  | Description          |
 | ----------- | -------------- | --- | ------|--------------- |
 | script      | string         | No |  No   | JavaScript script to be registered and executed.|
-| scriptRules | Array\<string> | No |  No   | Matching rules for allowed sources.<br>1. To allow URLs from all sources, use the wildcard (\*).<br>2. If exact match is required, specify the exact URL, for example, **https:\//www\.example.com**.<br>3. For fuzzy match, you can use a wildcard (\*) in the website URL, for example, **https://*.example.com**. Websites such as "x,*.y.com" and "* foobar.com" are not allowed.<br>4. If the source is an IP address, follow rule 2.<br>5. For protocols other than HTTP/HTTPS (custom protocols), exact match and fuzzy match are not supported, and the protocol must end with **://**, for example, **resource://**.<br>6. If one of the preceding rules is not met in **scriptRules**, the **scriptRules** does not take effect.|
+| scriptRules | Array\<string> | No  |  No    | A set of matching rules for allowed sources.<br>1. To allow URLs from all sources, use the wildcard "\*".<br>2. To perform exact matching, specify the website address, for example, "https:\//www\.example.com".<br>3. To perform fuzzy matching, use the "\*" wildcard, for example, "https://*.example.com". Patterns such as "x.*.y.com" and "\*foobar.com" are not allowed.<br>4. If the source is an IP address, use rule 2.<br>5. For protocols other than HTTP/HTTPS (custom protocols), exact matching and fuzzy matching are not supported, and the rule must end with `://`, for example, "resource://".<br>6. In a set of scriptRules, if any rule does not meet the above requirements, the entire set of scriptRules does not take effect. |
 | urlRegexRules<sup>23+</sup>  | Array\<[UrlRegexRule](./arkts-basic-components-web-i.md#urlregexrule23)\> | No |  Yes   | Regular expression matching rules for allowed sources. **urlRegexRules** is used for matching only when **scriptRules** is set to **[]**.<br> **Model restriction**: This API can be used only in the stage model.|
 
 ## UrlRegexRule<sup>23+</sup>
@@ -66,7 +68,7 @@ Defines the URL regular expression rule.
 
 ## NestedScrollOptionsExt<sup>14+</sup>
 
-Implements a **NestedScrollOptionsExt** object to set up, down, left, and right nested scrolling options.
+Sets the nested scrolling rules of the **Web** component, supporting scrolling options in four directions: up, down, left, and right.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -79,21 +81,22 @@ Implements a **NestedScrollOptionsExt** object to set up, down, left, and right 
 
 ## NativeMediaPlayerConfig<sup>12+</sup>
 
-Represents the configuration for [enabling the application to take over web page media playback](./arkts-basic-components-web-attributes.md#enablenativemediaplayer12).
+Configures the [enableNativeMediaPlayer](./arkts-basic-components-web-attributes.md#enablenativemediaplayer12) API for the app to take over web page media playback, supporting whether to enable it and whether to override web page content. It is suitable for scenarios where custom media playback behavior is required, improving media playback integration and user experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
 | Name| Type| Read-Only| Optional| Description|
 |------|------|------|------|------|
-|  enable  | boolean | No| No| Whether to enable the application to take over web page media playback.<br> The value **true** means to enable the application to take over web page media playback, and **false** means the opposite.<br> Default value: **false**.|
-|  shouldOverlay | boolean | No| No| Whether the video player's display overlays the web page content when the application takes over the web page's video player.<br> The value **true** indicates that the video player's display overlays the web page content. This means that the height of the video layer is adjusted to cover the web page content. The value **false** indicates that the video player's display does not overlay the web page content. This means that the video player maintains its original height and is embedded within the web page.<br>Default value: **false**.|
+|  enable  | boolean | No | No | Whether to enable the app to take over web media playback.<br/> The value **true** indicates that the app takes over web media playback, and **false** indicates that this feature is disabled.<br/> Default value: **false** |
+|  shouldOverlay | boolean | No | No | Whether the player screen of the app-taken-over web video overlays the web content after the app takes over web media playback.<br/> The value **true** indicates that the video layer level is changed to overlay the web content, and **false** indicates that the original layer level is maintained and the video is embedded in the web page.<br>Default value: **false** |
 
 ## ExpandedMenuItemOptions<sup>(deprecated)</sup>
+
+Custom menu extension item.
 
 > **NOTE**
 >
 > This API is supported from API version 12 and deprecated from API version 20. You are advised to use [editMenuOptions](./arkts-basic-components-web-attributes.md#editmenuoptions12) instead.
-Represents the custom expanded menu item options.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -101,7 +104,7 @@ Represents the custom expanded menu item options.
 | ---------- | -----------------------------------------------------| ------ | ------ | ---------------- |
 | content   | [ResourceStr](../apis-arkui/arkui-ts/ts-types.md#resourcestr)  | No    | No    | Display content.    |
 | startIcon | [ResourceStr](../apis-arkui/arkui-ts/ts-types.md#resourcestr)  | No    | Yes    | Display icon. The default value is empty, and no icon is displayed.    |
-| action    | (selectedText: {plainText: string}) => void                    | No    | No    | Selected text.|
+| action    | (selectedText: {plainText: string}) => void                    | No     | No     | Callback invoked when the user selects a menu extension item. The callback parameter **selectedText** contains the **plainText** field, which indicates the text content selected by the user.|
 
 ## AdsBlockedDetails<sup>12+</sup>
 
@@ -132,7 +135,7 @@ Represents the selection menu option extension.
 
 ## PreviewMenuOptions<sup>20+</sup>
 
-Represents the options of the preview menu.
+Configures preview menu options, supporting the vibration effect when the menu pops up. It is suitable for scenarios where enhanced menu interaction feedback is required, improving user experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -142,7 +145,7 @@ Represents the options of the preview menu.
 
 ## EmbedOptions<sup>16+</sup>
 
-Represents the same-layer rendering configuration of the **Web** component.
+Configuration for Web same-layer rendering. Configures Web same-layer rendering options, including support for fixed size and CSS display properties. It is suitable for scenarios where same-layer element rendering optimization is required, improving rendering compatibility and flexibility.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -165,7 +168,7 @@ Defines the callback used when a web page triggers **alert()**.
 
 ## OnBeforeUnloadEvent<sup>12+</sup>
 
-Represents the callback invoked when this page is about to exit after the user refreshes or closes the page.
+Defines the callback triggered when the user is about to leave the current page in refresh or close scenarios. It is suitable for scenarios such as form editing, allowing developers to intercept the leave action and display a confirmation dialog, thereby preventing accidental loss of unsubmitted user data.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -174,7 +177,7 @@ Represents the callback invoked when this page is about to exit after the user r
 | url                   | string   | No| No | URL of the web page where the dialog box is displayed.                |
 | message               | string   | No| No | Message displayed in the dialog box.                             |
 | result                | [JsResult](./arkts-basic-components-web-JsResult.md) | No| No| User operation.                      |
-| isReload<sup>20+</sup>| boolean | No| Yes  | Whether the page is refreshed.<br>The value **true** indicates that the page is about to leave due to refreshing, and **false** indicates that the page is about to leave due to closing.<br>Default value: **false**.|
+| isReload<sup>20+</sup>| boolean | No | Yes | Whether the page is reloaded.<br>When the page is about to leave due to a reload, the value of isReload is **true**; when the page is about to leave due to being closed, the value of isReload is **false**.<br>Default value: **false**. |
 
 ## OnConfirmEvent<sup>12+</sup>
 
@@ -213,18 +216,18 @@ Represents the callback invoked to notify the host application of a JavaScript c
 
 ## OnErrorReceiveEvent<sup>12+</sup>
 
-Represents the callback triggered when an error occurs during web page loading.
+Defines the callback information triggered when an error occurs during web page loading, including the request and error details. It is suitable for scenarios where monitoring and handling web page loading errors are required, improving error handling timeliness and user experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
 | Name            | Type     | Read-Only| Optional  | Description                                      |
 | -------------- | ---- | ---- | ------|---------------------------------- |
 | request | [WebResourceRequest](./arkts-basic-components-web-WebResourceRequest.md) | No| No| Encapsulation of a web page request.     |
-| error   | [WebResourceError](./arkts-basic-components-web-WebResourceError.md)     | No| No| Encapsulation of a web page resource loading error.|
+| error   | [WebResourceError](./arkts-basic-components-web-WebResourceError.md)     | No | No | Encapsulated information about the web page resource loading error. |
 
 ## OnHttpErrorReceiveEvent<sup>12+</sup>
 
-Represents the callback triggered when an HTTP error occurs during web page resource loading.
+Defines the callback information triggered when the web page receives an HTTP error during resource loading, including the request and response details. It is suitable for scenarios where monitoring and handling HTTP errors are required, improving network error diagnosis accuracy and user experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -235,7 +238,7 @@ Represents the callback triggered when an HTTP error occurs during web page reso
 
 ## OnDownloadStartEvent<sup>12+</sup>
 
-Represents the callback invoked when the host application starts downloading a file.
+Defines the callback information for notifying the host app that a file download has started, including the URL, user agent, and file details. It is suitable for scenarios where monitoring and managing file downloads are required, improving download process controllability and user experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -245,11 +248,11 @@ Represents the callback invoked when the host application starts downloading a f
 | userAgent          | string | No| No| User agent used for download.                         |
 | contentDisposition | string | No| No| Content-Disposition response header returned by the server, which may be empty.|
 | mimetype           | string | No| No| MIME type of the content returned by the server.               |
-| contentLength      | number | No| No| Length of the content returned by the server.                        |
+| contentLength      | number | No | No | Length of the file returned by the server. Unit: byte.                       |
 
 ## OnRefreshAccessedHistoryEvent<sup>12+</sup>
 
-Defines the callback triggered when the navigation is complete.
+Defines the callback information triggered when navigation is complete, including the URL and refresh status. It is suitable for scenarios where monitoring page navigation history is required, improving navigation behavior tracking accuracy and user experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -261,7 +264,7 @@ Defines the callback triggered when the navigation is complete.
 
 ## OnRenderExitedEvent<sup>12+</sup>
 
-Represents the callback invoked when the rendering process exits.
+Defines the callback triggered when the rendering process exits. It is suitable for scenarios where monitoring rendering process exceptions is required, improving rendering stability and troubleshooting efficiency.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -271,7 +274,7 @@ Represents the callback invoked when the rendering process exits.
 
 ## OnShowFileSelectorEvent<sup>12+</sup>
 
-Represents the callback invoked to notify the file selector result.
+Defines the callback information for the file selector result, including the result and parameter details.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -282,7 +285,7 @@ Represents the callback invoked to notify the file selector result.
 
 ## OnResourceLoadEvent<sup>12+</sup>
 
-Represents the callback invoked when the URL is loaded.
+Defines the callback information triggered when a URL is loaded, including the resource URL. It is suitable for scenarios where monitoring resource loading behavior is required, improving resource management visibility and performance optimization.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -303,7 +306,7 @@ Represents the callback invoked when the display scale of this page changes.
 
 ## OnHttpAuthRequestEvent<sup>12+</sup>
 
-Represents the callback invoked when an HTTP authentication request is received.
+Defines the callback information triggered when an HTTP authentication request is received, including the host and realm information. It is suitable for scenarios where handling HTTP authentication is required, improving authentication process flexibility and security.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -315,7 +318,7 @@ Represents the callback invoked when an HTTP authentication request is received.
 
 ## OnInterceptRequestEvent<sup>12+</sup>
 
-Represents the callback invoked when the **Web** component is about to load a URL.
+Defines the callback information triggered before the **Web** component loads a URL, including the request details. It is suitable for scenarios where intercepting or modifying network requests is required, improving request control flexibility and security.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -325,7 +328,7 @@ Represents the callback invoked when the **Web** component is about to load a UR
 
 ## OnPermissionRequestEvent<sup>12+</sup>
 
-Represents the callback invoked when a permission request is received.
+Defines the callback information triggered when a permission request is received, including the request details. It is suitable for scenarios where handling permission grants is required, improving permission management flexibility and security.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -335,7 +338,7 @@ Represents the callback invoked when a permission request is received.
 
 ## OnScreenCaptureRequestEvent<sup>12+</sup>
 
-Represents the callback invoked when a screen capture request is received.
+Defines the callback information triggered when a screen capture request is received. It is suitable for scenarios where handling screen recording permissions is required, improving screen recording process controllability and security.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -345,7 +348,7 @@ Represents the callback invoked when a screen capture request is received.
 
 ## OnContextMenuShowEvent<sup>12+</sup>
 
-Represents the callback invoked during a call to allow for the display of a custom context menu.
+Defines the callback information triggered during a call to allow for the display of a custom context menu.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -356,7 +359,7 @@ Represents the callback invoked during a call to allow for the display of a cust
 
 ## OnSearchResultReceiveEvent<sup>12+</sup>
 
-Represents the callback invoked to notify the caller of the search result on the web page.
+Defines the callback information for the search result on the web page, including the match ordinal and total count. It is suitable for scenarios where monitoring in-page search behavior is required, improving search interaction visibility and user experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -364,11 +367,11 @@ Represents the callback invoked to notify the caller of the search result on the
 | ------------------ | ------- | --- | --- |----------------------------- |
 | activeMatchOrdinal | number  | No | No | Sequence number of the current match, which starts from 0.                      |
 | numberOfMatches    | number  | No | No | Total number of matches.                           |
-| isDoneCounting     | boolean | No | No | Whether the search operation on the current page is complete.<br>The value **true** indicates that the search operation on the current page is complete, and **false** indicates the opposite.<br>This API may be called multiple times until **isDoneCounting** is **true**.|
+| isDoneCounting     | boolean | No  | No  | Whether the current in-page search operation is complete.<br>The value **true** indicates that the current in-page search operation is complete, and **false** indicates the opposite.<br>This method may be called back multiple times until isDoneCounting is **true**. |
 
 ## OnScrollEvent<sup>12+</sup>
 
-Represents the callback invoked when the scrollbar scrolls to a specified position.
+Defines the callback information triggered when the scrollbar scrolls to a specified position, including the horizontal and vertical offsets.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -379,7 +382,7 @@ Represents the callback invoked when the scrollbar scrolls to a specified positi
 
 ## OnSslErrorEventReceiveEvent<sup>12+</sup>
 
-Represents the callback invoked when the web page receives an SSL error.
+Defines the callback information triggered when the web page receives an SSL error, including the error code and certificate chain. It is suitable for scenarios where handling SSL errors is required, improving security exception monitoring and handling capabilities.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -391,7 +394,7 @@ Represents the callback invoked when the web page receives an SSL error.
 
 ## SslErrorEvent<sup>12+</sup>
 
-Provides details about the callback invoked when an SSL error occurs during resource loading.
+Callback details triggered when an SSL error occurs during resource loading by the user, including the URL, error type, and certificate chain. It is suitable for scenarios where detailed analysis of SSL errors is required, improving security issue diagnosis and troubleshooting efficiency.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -402,13 +405,13 @@ Provides details about the callback invoked when an SSL error occurs during reso
 | url   | string                                 | No| No   | URL.          |
 | originalUrl   | string                         | No| No   | Original URL of the request.          |
 | referrer   | string                            | No| No   | Referrer URL.          |
-| isFatalError   | boolean                       | No| No   | Whether the error is a fatal error.<br>The value **true** indicates a fatal error, and **false** indicates a non-fatal error.          |
+| isFatalError   | boolean                       | No | No    | Whether the error is a fatal error. A fatal error prevents the page from loading and rendering properly (for example, certificate verification failure or protocol error), while a non-fatal error affects only the loading of some resources (for example, image loading failure).<br>The value **true** indicates a fatal error, and **false** indicates a non-fatal error.           |
 | isMainFrame   | boolean                        | No| No   | Whether the resource is a main resource.<br>The value **true** indicates a main resource, and **false** indicates a non-main resource.          |
 | certChainData<sup>20+</sup>   | Array<Uint8Array\>         | No| Yes| Certificate chain data.          |
 
 ## OnClientAuthenticationEvent<sup>12+</sup>
 
-Represents the callback invoked when an SSL client certificate is required from the user.
+Defines the callback information triggered when an SSL client certificate is required, including the host, port, and key type. It is suitable for scenarios where handling client certificate authentication is required, improving authentication process flexibility and security.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -416,12 +419,12 @@ Represents the callback invoked when an SSL client certificate is required from 
 | -------------- | ---- | ---- | ------------|---------------------------- |
 | handler  | [ClientAuthenticationHandler](./arkts-basic-components-web-ClientAuthenticationHandler.md) | No| No| User operation. |
 | host     | string                                   | No| No| Host name of the server that requests a certificate.   |
-| port     | number                                   | No| No| Port number of the server that requests a certificate.   |
-| keyTypes | Array<string\>                           | No| No| Acceptable asymmetric private key types.   |
+| port     | number                                   | No | No | Port number for requesting the certificate server. The valid range is 0-65535, and an exception is thrown when the value is out of range.    |
+| keyTypes | Array<string\>                           | No | No | Acceptable asymmetric key types.    |
 | issuers  | Array<string\>                           | No| No| Issuer of the certificate that matches the private key.|
 
-
 ## VerifyPinEvent<sup>22+</sup>
+
 Defines the callback triggered to notify the user of PIN verification.
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -433,7 +436,7 @@ Defines the callback triggered to notify the user of PIN verification.
 
 ## OnWindowNewEvent<sup>12+</sup>
 
-Represents the callback invoked when the web page requests the user to create a window.
+Defines the callback triggered when the web page requests the user to create a window. Starting from API version 23, you can use [OnWindowNewExtEvent](#onwindownewextevent23) to obtain more window information.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -446,7 +449,7 @@ Represents the callback invoked when the web page requests the user to create a 
 
 ## WindowFeatures<sup>23+</sup>
 
-Represents the feature information of the new window requested to be created by the web page, including the size and location.
+Provides the feature information of the new window requested to be created by the web page, including the size and location. It is suitable for scenarios where precise control of new window attributes is required, improving window layout accuracy and user experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -459,7 +462,7 @@ Represents the feature information of the new window requested to be created by 
 
 ## OnWindowNewExtEvent<sup>23+</sup>
 
-Defines the callback invoked when the web page requests the user to create a window.
+Defines the callback information triggered when the web page requests to create a window, including the window feature information and window opening method. It is suitable for scenarios where fine-grained control of new window behavior is required, improving window management customization and user experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -474,7 +477,7 @@ Defines the callback invoked when the web page requests the user to create a win
 
 ## OnTouchIconUrlReceivedEvent<sup>12+</sup>
 
-Represents the callback invoked when an apple-touch-icon URL is received.
+Defines the callback information triggered when an apple-touch-icon URL is received, including the URL and precomposed status. It is suitable for scenarios where obtaining web page icons is required, improving icon management flexibility and user experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -485,7 +488,7 @@ Represents the callback invoked when an apple-touch-icon URL is received.
 
 ## OnFaviconReceivedEvent<sup>12+</sup>
 
-Represents the callback invoked when this web page receives a new favicon.
+Defines the callback information triggered when the app receives a new favicon, including the icon PixelMap object. It is suitable for scenarios where obtaining web page favicons is required, improving icon management flexibility and user experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -501,11 +504,11 @@ Represents the callback invoked when the old page is not displayed and the new p
 
 | Name            | Type  | Read-Only  | Optional  | Description                                      |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
-| url  | string | No| No| URL of the new page that is able to be visible when the old page is not displayed.|
+| url  | string | No | No | URL address of the new page. |
 
 ## OnDataResubmittedEvent<sup>12+</sup>
 
-Represents the callback invoked when the web form data can be resubmitted.
+Defines the callback information triggered when the web form data can be resubmitted, including the submission handler. It is suitable for scenarios where handling form retry submission is required, improving form interaction reliability and user experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -515,7 +518,7 @@ Represents the callback invoked when the web form data can be resubmitted.
 
 ## OnAudioStateChangedEvent<sup>12+</sup>
 
-Represents the callback invoked when the audio playback status on the web page changes.
+Defines the callback information triggered when the audio playback status on the web page changes, including the playback status. It is suitable for scenarios where monitoring audio playback behavior is required, improving audio management visibility and user experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -525,7 +528,7 @@ Represents the callback invoked when the audio playback status on the web page c
 
 ## OnFirstContentfulPaintEvent<sup>12+</sup>
 
-Represents the callback invoked when the first content paint occurs on the web page.
+Defines the callback information for the first content paint on the web page, including the load time and paint time. It is suitable for scenarios where monitoring page rendering performance is required, improving performance optimization accuracy and user experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -536,7 +539,7 @@ Represents the callback invoked when the first content paint occurs on the web p
 
 ## OnLoadInterceptEvent<sup>12+</sup>
 
-Represents the callback invoked when the **Web** component is about to access a URL.
+Defines the callback information triggered when resource loading is intercepted, including the request details. It is suitable for scenarios where intercepting or handling resource loading is required, improving resource control flexibility and security.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -546,7 +549,7 @@ Represents the callback invoked when the **Web** component is about to access a 
 
 ## OnOverScrollEvent<sup>12+</sup>
 
-Represents the callback invoked when the web page is overscrolled.
+Defines the callback information triggered when the web page is overscrolled, including the horizontal and vertical offsets.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -557,52 +560,52 @@ Represents the callback invoked when the web page is overscrolled.
 
 ## JavaScriptProxy<sup>12+</sup>
 
-Represents the JavaScript object to be injected.
+Defines the JavaScript object to be injected, including the object name, method list, and permission configuration. It is suitable for scenarios where JavaScript-to-native interaction is required, improving cross-language call flexibility and security.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
 | Name            | Type     | Read-Only| Optional  | Description                                      |
 | -------------- | ---- | ---- | ------------|---------------------------- |
-| object     | object                                   | No| No   | Object to be registered. Methods can be declared, but attributes cannot.                  |
+| object     | object                                   | No | No    | Object participating in the registration. Only methods can be declared, not attributes. Methods must be of the function type.                   |
 | name       | string                                   | No| No   | Name of the object to be registered, which is the same as that invoked in the window.               |
 | methodList | Array\<string\>                          | No| No   | Synchronous methods of the JavaScript object to be registered at the application side.                |
-| controller | [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController<sup>9+</sup>](./arkts-apis-webview-WebviewController.md) | No| No   |  Controller. This API is deprecated since API version 9. You are advised to use **WebviewController** instead.|
+| controller | [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController](./arkts-apis-webview-WebviewController.md) | No | No    |  Controller. Since API version 9, WebController is no longer maintained. You are advised to use WebviewController instead. |
 | asyncMethodList<sup>12+</sup>  | Array\<string\>      | No| Yes   | Asynchronous methods of the JavaScript object to be registered at the application side. Asynchronous methods cannot obtain return values.  |
 | permission<sup>12+</sup>  | string  | No| Yes   | JSON string, which is empty by default. This string is used to configure JSBridge permission control and define the URL trustlist at the object and method levels.<br>The **permission** parameter of JavaScriptProxy supports the resource, HTTP, and HTTPS protocols, but does not support the file protocol.<br>For the example, see [Invoking Application Functions on the Frontend Page](../../web/web-in-page-app-function-invoking.md).|
 
 ## OnPageEndEvent<sup>12+</sup>
 
-Represents the callback invoked when the web page loading ends.
+Defines the callback information triggered when the web page loading ends, including the page URL. It is suitable for scenarios where monitoring page loading completion is required, improving page lifecycle management capabilities.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
 | Name            | Type     | Read-Only| Optional  | Description                                      |
 | -------------- | ---- | ---- | ------------|---------------------------- |
-| url | string | No| No| URL of the page.                      |
+| url | string | No | No | URL of the page after the web page is loaded. |
 
 ## OnPageBeginEvent<sup>12+</sup>
 
-Represents the callback invoked when the web page loading begins.
+Defines the callback information triggered when the web page loading begins, including the page URL. It is suitable for scenarios where monitoring page loading start is required, improving page lifecycle management capabilities.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
 | Name            | Type     | Read-Only| Optional  | Description                                      |
 | -------------- | ---- | ---- | ------------|---------------------------- |
-| url | string | No| No| URL of the page.                      |
+| url | string | No | No | URL of the page to be loaded when page loading starts. |
 
 ## OnProgressChangeEvent<sup>12+</sup>
 
-Represents the callback invoked when the web page loading progress changes.
+Defines the callback information triggered when the web page loading progress changes, including the new progress value. It is suitable for scenarios where monitoring page loading progress is required, improving loading process visibility and user experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
 | Name            | Type     | Read-Only| Optional  | Description                                      |
 | -------------- | ---- | ---- | ------------|---------------------------- |
-| newProgress | number | No| No| New loading progress. The value is an integer ranging from 0 to 100.                      |
+| newProgress | number | No | No | New loading progress, which is an integer in the range [0, 100]. |
 
 ## OnTitleReceiveEvent<sup>12+</sup>
 
-Represents the callback invoked when the document title of the web page is changed.
+Defines the callback information triggered when the document title of the web page is changed, including the title content and source. It is suitable for scenarios where monitoring page title changes is required, improving page information real-time performance and user experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -613,18 +616,18 @@ Represents the callback invoked when the document title of the web page is chang
 
 ## OnGeolocationShowEvent<sup>12+</sup>
 
-Represents the callback invoked when a request to obtain the geolocation information is received.
+Defines the callback information triggered when a request to obtain the geolocation information is received, including the origin information and geolocation object. It is suitable for scenarios where handling geolocation permissions is required.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
 | Name            | Type     | Read-Only| Optional   | Description                                      |
 | -------------- | ---- | ---- | -------------|--------------------------- |
-| origin | string | No| No| Index of the origin.                      |
+| origin | string | No | No | Origin of the web page that initiates the geolocation permission request, used to identify the source of the geolocation request from a specific website. |
 | geolocation | [JsGeolocation](./arkts-basic-components-web-JsGeolocation.md) | No| No| User operation.                      |
 
 ## NativeEmbedVisibilityInfo<sup>12+</sup>
 
-Provides visibility information about the same-layer tag.
+Provides visibility information about the same-layer tag, including the visibility status and tag ID. It is suitable for scenarios where monitoring same-layer element visibility is required, improving rendering state management accuracy and user experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -635,19 +638,19 @@ Provides visibility information about the same-layer tag.
 
 ## RenderProcessNotRespondingData<sup>12+</sup>
 
-Provides detailed information about the unresponsive rendering process.
+Provides detailed information about the unresponsive rendering process. It is suitable for scenarios where diagnosing rendering process exceptions is required, improving troubleshooting accuracy and efficiency.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
 | Name                    | Type  | Read-Only  | Optional| Description                                  |
 | ------------------------ | ---- | ---- | ---- | -------------------------------------- |
-| jsStack      | string | No| No| JavaScript call stack information of the web page.      |
+| jsStack | string | No | No | JavaScript call stack information of the web page. |
 | pid | number | No| No| Process ID of the web page.|
 | reason | [RenderProcessNotRespondingReason](./arkts-basic-components-web-e.md#renderprocessnotrespondingreason12) | No| No| Reason why the rendering process does not respond.|
 
 ## FullScreenEnterEvent<sup>12+</sup>
 
-Provides details about the event that the **Web** component to enter the full-screen mode.
+Provides the callback information for the **Web** component to enter the full-screen mode, including the video size and exit handler. It is suitable for scenarios where handling full-screen video is required, improving video playback immersive experience and controllability.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -659,21 +662,21 @@ Provides details about the event that the **Web** component to enter the full-sc
 
 ## LoadCommittedDetails<sup>11+</sup>
 
-Provides detailed information about the web page that has been submitted for redirection.
+Provides detailed information about the web page that has been submitted for redirection, including whether it is the main document, the navigation type, and more. It is suitable for scenarios where monitoring page navigation behavior is required, improving navigation state management accuracy and user experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
 | Name            | Type                                 | Read-Only| Optional  | Description                   |
 | -----------     | ------------------------------------ | ---- | -------|-------------- |
-| isMainFrame     | boolean                              | No| No  | Whether the document is the main document.<br>The value **true** indicates that the document is the main document, and **false** indicates the opposite.|
-| isSameDocument  | boolean                              | No| No   | Whether to navigate without changing the document.<br>The value **true** means to navigate without changing the document, and **false** means the opposite.<br>Example of navigation in the same document: 1. navigation shown in the example; 2. navigation triggered by **pushState** or **replaceState**; 3. navigation to a history entry on the same page. |
+| isMainFrame     | boolean                              | No  | No   | Whether it is the main document.<br>The value **true** indicates the main document, and **false** indicates a non-main document. |
+| isSameDocument  | boolean                              | No  | No    | Whether the web page navigation is performed without changing the document.<br>The value **true** indicates that the web page navigation is performed without changing the document, and **false** indicates that the web page navigation is performed with the document changed.<br>Examples of same-document navigation: 1. Reference fragment navigation; 2. Navigation triggered by pushState or replaceState; 3. History navigation within the same page.  |
 | didReplaceEntry | boolean                              | No| No   | Whether the submitted new entry replaces the existing entry.<br>The value **true** indicates that the submitted new entry replaces the existing entry, and **false** indicates the opposite.<br>In certain scenarios for navigation to a subdocument, although the existing entry is not replaced, some attributes are changed. |
 | navigationType  | [WebNavigationType](./arkts-basic-components-web-e.md#webnavigationtype11)  | No| No  | Navigation type.      |
-| url             | string                               | No| No   | URL of the current navigated-to web page.         |
+| url             | string                               | No  | No    | URL of the web page to navigate to.          |
 
 ## NativeEmbedInfo<sup>11+</sup>
 
-Provides detailed information about the same-layer tag.
+Provides detailed information about the same-layer tag, including the ID, type, size, and location. It is suitable for scenarios where obtaining same-layer element attributes is required, improving same-layer rendering customization and user experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -686,12 +689,12 @@ Provides detailed information about the same-layer tag.
 | height            | number                              | No   | Yes| Height of the same-layer tag, in px.         |
 | url               | string                              | No   | Yes| URL of the same-layer tag.           |
 | tag<sup>12+</sup> | string              | No   | Yes| Tag name, which is in uppercase.             |
-| params<sup>12+</sup>            | Map<string, string> | No   | Yes| List of key-value pairs contained in the **object** tag that form a map of the Object type. Use the methods provided by the Object type, such as **embed.info?.param?.["name"]** to operate the map object. |
+| params<sup>12+</sup>            | Map<string, string> | No    | Yes | List of key-value pairs of the params tag in the object tag. Use the methods provided by Object to operate this object, for example, `embed.info?.params?.["name"]`. |
 | position<sup>12+</sup>          | Position            | No   | Yes| Position of the same-layer tag relative to the upper left corner of the **Web** component as the coordinate origin, in pixels. This position is different from the standard position.|
 
 ## NativeEmbedParamItem<sup>21+</sup>
 
-Provides details about the **param** element embedded in the same-layer rendering tag **object**.
+Provides detailed information about the **param** element embedded in the same-layer rendering tag **object**, including the status and parameters. It is suitable for scenarios where monitoring param element changes is required, improving same-layer element management flexibility and accuracy.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -704,7 +707,7 @@ Provides details about the **param** element embedded in the same-layer renderin
 
 ## IntelligentTrackingPreventionDetails<sup>12+</sup>
 
-Provides detailed information about intelligent tracking prevention.
+Provides detailed information about intelligent tracking prevention, including the website domain and tracker domain. It is suitable for scenarios where monitoring ad blocking behavior is required, improving privacy protection transparency and controllability.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -715,7 +718,7 @@ Provides detailed information about intelligent tracking prevention.
 
 ## WebKeyboardCallbackInfo<sup>12+</sup>
 
-Represents input parameters of the callback used to intercept the soft keyboard started from editable elements on a web page, including [WebKeyboardController](./arkts-basic-components-web-WebKeyboardController.md) and editable element attributes.
+Input parameters of the callback used to intercept the soft keyboard started from editable elements on a web page, including [WebKeyboardController](./arkts-basic-components-web-WebKeyboardController.md) and the attributes of the editable element. It is suitable for scenarios where custom keyboard interaction is required, improving input experience customization and flexibility.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -726,7 +729,7 @@ Represents input parameters of the callback used to intercept the soft keyboard 
 
 ## WebKeyboardOptions<sup>12+</sup>
 
-Represents the return value of the callback that intercepts the soft keyboard started from editable elements on the web page. You can specify the types of the keyboard, and return the value to the Web kernel to control the startup of different types of soft keyboards.
+Return value of the callback that intercepts the soft keyboard started from editable elements on the web page, including the keyboard type and custom keyboard. It is suitable for scenarios where controlling soft keyboard behavior is required.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -736,10 +739,9 @@ Represents the return value of the callback that intercepts the soft keyboard st
 | enterKeyType | number | No| Yes| Type of the **Enter** key on the system soft keyboard. For details about the value range, see [EnterKeyType](../apis-ime-kit/js-apis-inputmethod.md#enterkeytype10). This parameter is optional and the default value is **UNSPECIFIED**. This parameter is valid only when **useSystemKeyboard** is set to **true** and **enterKeyType** is set to a valid value.|
 | customKeyboard | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | No| Yes| Builder of a custom keyboard. This parameter is required when **useSystemKeyboard** is set to **false**. After it is set, the **Web** component starts the custom keyboard as configured.|
 
-
 ## FirstMeaningfulPaint<sup>12+</sup>
 
-Provides detailed information about the first meaningful paint.
+Provides detailed information about the first meaningful paint on the web page, including the navigation time and paint time. It is suitable for scenarios where monitoring page rendering performance is required, improving performance optimization accuracy and user experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -750,7 +752,7 @@ Provides detailed information about the first meaningful paint.
 
 ## LargestContentfulPaint<sup>12+</sup>
 
-Provides detailed information about the largest contentful paint.
+Provides detailed information about the largest contentful paint on the web page, including the navigation time and various paint times. It is suitable for scenarios where monitoring page rendering performance is required, improving performance optimization accuracy and user experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -765,20 +767,20 @@ Provides detailed information about the largest contentful paint.
 
 ## NativeEmbedDataInfo<sup>11+</sup>
 
-Provides detailed information about the changes of the same-layer tag lifecycle.
+Provides detailed information about the changes of the same-layer tag lifecycle, including the status and tag information. It is suitable for scenarios where monitoring same-layer element lifecycle is required, improving rendering state management accuracy and user experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
 | Name            | Type                                 | Read-Only| Optional  | Description                   |
 | -----------     | ------------------------------------ | ---- | ---- | --------------------- |
 | status     | [NativeEmbedStatus](./arkts-basic-components-web-e.md#nativeembedstatus11)             | No   | Yes   | Lifecycle status of the same-layer tag.|
-| surfaceId  | string                              | No| Yes   | Surface ID of the native image. |
+| surfaceId  | string  | No | Yes    | SurfaceId of the NativeImage. |
 | embedId | string                              | No| Yes   | Unique ID of the same-layer tag. |
-| info  | [NativeEmbedInfo](./arkts-basic-components-web-i.md#nativeembedinfo11)  | No| Yes   | Detailed information about the same-layer tag.      |
+| info  | [NativeEmbedInfo](#nativeembedinfo11)  | No | Yes    | Detailed information about the same-layer tag.       |
 
 ## NativeEmbedTouchInfo<sup>11+</sup>
 
-Provides touch information of the same-layer tag.
+Provides detailed information about finger touch on a same-layer tag, including the tag ID and touch event. It is suitable for scenarios where handling same-layer element touch interaction is required, improving touch experience customization and flexibility.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -790,7 +792,7 @@ Provides touch information of the same-layer tag.
 
 ## NativeEmbedMouseInfo<sup>20+</sup>
 
-Provides detailed information about clicking or touching and holding a same-layer tag using the mouse or touchpad.
+Provides detailed information about clicking or touching and holding a same-layer tag using the mouse or touchpad, including the tag ID and mouse event. It is suitable for scenarios where handling same-layer element mouse interaction is required, improving mouse experience customization and flexibility.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -802,7 +804,7 @@ Provides detailed information about clicking or touching and holding a same-laye
 
 ## NativeEmbedParamDataInfo<sup>21+</sup>
 
-Provides details about the same-layer tag when the **param** element embedded in the **object** tag changes.
+Provides detailed information about the same-layer tag when the **param** element embedded in the **object** tag changes, including the tag ID and parameter items. It is suitable for scenarios where monitoring param element changes is required, improving same-layer element management flexibility and accuracy.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -810,11 +812,11 @@ Provides details about the same-layer tag when the **param** element embedded in
 | -----------     | ------------------------------------ | ---- | ---- | --------------------- |
 | embedId | string                              | No| No   | Unique ID of the same-layer tag. |
 | objectAttributeId      | string             | No   | Yes| ID of the same-layer tag.            |
-| paramItems  | Array\<[NativeEmbedParamItem](./arkts-basic-components-web-i.md#nativeembedparamitem21)\>   | No| Yes   | Details of the changed **param** element, including the status change type, ID, name, and value of each **param** element.      |
+| paramItems  | Array\<[NativeEmbedParamItem](#nativeembedparamitem21)\>   | No  | Yes    | Detailed information about the changed param elements, including the status change type, ID, parameter name, and parameter value of each param element.       |
 
 ## OnLoadStartedEvent<sup>20+</sup>
 
-Represents the callback invoked when the web page loading begins.
+Defines the callback information triggered when the web page loading begins, including the page URL. It is suitable for scenarios where monitoring page loading start is required, improving page lifecycle management capabilities.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -824,7 +826,7 @@ Represents the callback invoked when the web page loading begins.
 
 ## OnLoadFinishedEvent<sup>20+</sup>
 
-Represents the callback invoked when the web page loading ends.
+Defines the callback information triggered when the web page loading ends, including the page URL. It is suitable for scenarios where monitoring page loading completion is required, improving page lifecycle management capabilities.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -845,7 +847,7 @@ Defines the function triggered when the PDF loading is successful or fails.
 
 ## OnPdfScrollEvent<sup>20+</sup>
 
-Defines the function triggered when the PDF page is scrolled to the bottom.
+Defines the callback function triggered when the PDF page is scrolled to the bottom.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -855,7 +857,7 @@ Defines the function triggered when the PDF page is scrolled to the bottom.
 
 ## Header
 
-Represents the request/response header object returned by the **Web** component.
+Request/response header object returned by the **Web** component. It is suitable for scenarios where reading or modifying HTTP headers is required, improving network request handling flexibility and controllability.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -866,7 +868,7 @@ Represents the request/response header object returned by the **Web** component.
 
 ## ScreenCaptureConfig<sup>10+</sup>
 
-Provides the web screen capture configuration.
+Provides the web screen capture configuration options, including the capture mode. It is suitable for scenarios where custom web page screen recording behavior is required, improving screen recording flexibility and user experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -876,7 +878,7 @@ Provides the web screen capture configuration.
 
 ## BlankScreenDetectionEventInfo<sup>22+</sup>
 
-Defines the event information when a blank screen is detected.
+Provides the event information when a blank screen is detected, including the URL, reason, and details. It is suitable for scenarios where monitoring page blank screen issues is required, improving blank screen diagnosis accuracy and user experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -884,11 +886,11 @@ Defines the event information when a blank screen is detected.
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
 | url | string | No| No| URL of the page when a blank screen is detected.   |
 | blankScreenReason | [DetectedBlankScreenReason](./arkts-basic-components-web-e.md#detectedblankscreenreason22) | No| No| Reason for the blank screen issue, which depends on the detection method.   |
-| blankScreenDetails | [BlankScreenDetails](./arkts-basic-components-web-i.md#blankscreendetails22) | No| Yes| Details of the blank screen issue detected.<br>For example, if a near-blank screen issue is detected, the details contain the number of points that match the blank screen issue. Otherwise, this attribute does not exist.|
+| blankScreenDetails | [BlankScreenDetails](#blankscreendetails22) | No | Yes | Details of the blank screen detection result. When the detection strategy that detects nodes with content is used and the number of detected nodes with content does not exceed the threshold, this parameter contains detailed information such as the number of nodes with content that are hit. If this strategy is not used or the number of nodes exceeds the threshold, this parameter is empty. |
 
 ## BlankScreenDetails<sup>22+</sup>
 
-Defines details of the blank screen issue detected.
+Provides the result details when a blank screen is detected, including the number of nodes with content. It is suitable for scenarios where analyzing blank screen causes is required, improving blank screen diagnosis detail and accuracy.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -898,42 +900,42 @@ Defines details of the blank screen issue detected.
 
 ## BlankScreenDetectionConfig<sup>22+</sup>
 
-Defines the configuration options of the blank screen detection policy.
+Provides the policy configuration options for blank screen detection, including the detection timing, method, and threshold. It is suitable for scenarios where custom blank screen detection behavior is required, improving blank screen monitoring flexibility and accuracy.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
 | Name            | Type     | Read-Only| Optional  | Description                                      |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
-| enable | boolean | No| No| Whether to enable the blank screen policy.  |
-| detectionTiming | number[] | No| Yes| Interval for checking whether a blank screen occurs after the loading, in seconds.<br> <br>**NOTE**<br>1. Duplicate values are ignored.<br>2. The value must be greater than 0. Otherwise, the value is ignored.<br>Default value: **[1.0, 3.0, 5.0]**.|
+| enable | boolean | No | No | Whether to enable the white screen policy feature. The value **true** indicates enabled, and **false** indicates disabled. |
+| detectionTiming | number[] | No | Yes | Sets the timing (in seconds after loading) at which to detect whether a white screen occurs.<br>Unit: second.<br>Note:<br>1. Duplicate values are ignored.<br>2. The value must be greater than 0. Values less than 0 are ignored.<br>Default value: [1.0, 3.0, 5.0]. |
 | detectionMethods | [BlankScreenDetectionMethod](./arkts-basic-components-web-e.md#blankscreendetectionmethod22)[] | No| Yes| Methods of the detection policy. The value is an array.<br>**NOTE**<br>1. Duplicate values are ignored.<br>Default value: **[BlankScreenDetectionMethod.DETECTION_CONTENTFUL_NODES_SEVENTEEN]**. |
-| contentfulNodesCountThreshold | number | No| Yes| Threshold for number of detected contentful nodes. This parameter takes effect only when the contentful node detection policy is used.<br>The value ranges from 0 to the maximum number of nodes in the detection policy. If the value is less than or equal to the threshold, the near-blank screen is triggered.<br>Default value: **0**.|
+| contentfulNodesCountThreshold | number | No | Yes | This parameter takes effect only when the contentful node detection strategy is used.<br/>The value ranges from 0 to ${maximum nodes of the detection strategy}. If the value is less than or equal to the threshold, a near-white screen is triggered.<br/>Default value: 0.<br>Note: The maximum nodes of the detection strategy depend on the selected detection strategy.|
 
 ## CameraCaptureStateChangeInfo<sup>23+</sup>
 
-Defines the state information of the camera before and after the callback is triggered.
+Provides the state change information of the camera when the callback is triggered, including the state before the change and the new state. It is suitable for scenarios where monitoring camera state changes is required, improving camera management visibility and user experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
 | Name            | Type     | Read-Only| Optional  | Description                                      |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
-| originalState | [CameraCaptureState](./arkts-basic-components-web-e.md#cameracapturestate23) | No| No| Original state.  |
+| originalState | [CameraCaptureState](./arkts-basic-components-web-e.md#cameracapturestate23) | No | No | State before the change. |
 | newState | [CameraCaptureState](./arkts-basic-components-web-e.md#cameracapturestate23) | No| No| New state.  |
 
 ## MicrophoneCaptureStateChangeInfo<sup>23+</sup>
 
-Defines the state information of the microphone before and after the callback is triggered.
+Provides the state change information of the microphone when the callback is triggered, including the state before the change and the state after the change. It is suitable for scenarios where monitoring microphone state changes is required, improving microphone management visibility and user experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
 | Name            | Type     | Read-Only| Optional  | Description                                      |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
-| originalState | [MicrophoneCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | No| No| Original state.  |
+| originalState | [MicrophoneCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | No | No | State before the change. |
 | newState | [MicrophoneCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | No| No| New state.  |
 
 ## AcceptableFileType<sup>23+</sup>
 
-Defines the file types recommended by the web page when the file selector pulls files.
+Provides the file type information recommended by the file selector, including the MIME type and type array.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -944,12 +946,30 @@ Defines the file types recommended by the web page when the file selector pulls 
 
 ## FirstScreenPaint<sup>23+</sup>
 
-Defines the event information when the first screen paint is detected.
+Provides the event information when the first screen paint is detected, including the URL and paint time. It is suitable for scenarios where monitoring page first screen rendering performance is required, improving performance optimization accuracy and user experience.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
 | Name            | Type     | Read-Only| Optional  | Description                                      |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
 | url | string | No| No| URL of the first screen paint statistics.   |
-| navigationStartTime | number | No| No| Time when the navigation to the page specified by **url** starts.   |
-| firstScreenPaintTime | number | No| No| Time when the first screen paint of the page specified **url** is complete.   |
+| navigationStartTime | number | No | No | Time when navigation starts for the page pointed to by url.<br>Unit: ms. |
+| firstScreenPaintTime | number | No | No | Time when the first screen paint is completed for the page pointed to by url.<br>Unit: ms. |
+
+## AISessionEvent
+
+Custom AI session configuration object, used to define the lifecycle callbacks of an AI session, including creation, execution, and destruction.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name | Type | Read-Only | Optional | Description |
+| ---- | ---- | ---- | ---- | ---- |
+| aiSessionType | [AISessionType](./arkts-basic-components-web-e.md#aisessiontype) | No | No | AI session type. |
+| onCreateAISession | [OnCreateAISession](./arkts-basic-components-web-t.md#oncreateaisession) | No | No | Callback function triggered when an AI session is created. Returns **true** to skip the system default behavior, and **false** to continue executing the system default logic. |
+| onExecuteAIAction | [OnExecuteAIAction](./arkts-basic-components-web-t.md#onexecuteaiaction) | No | No | Callback function triggered when an AI session executes an action. |
+| onDestroyAISession | [OnDestroyAISession](./arkts-basic-components-web-t.md#ondestroyaisession) | No | No | Callback function triggered when an AI session is destroyed, used to clean up resources associated with the custom AI model. |
+<!--no_check-->

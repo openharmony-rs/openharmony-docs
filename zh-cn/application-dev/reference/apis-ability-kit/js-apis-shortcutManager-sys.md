@@ -187,6 +187,88 @@ struct ShortcutExample {
 }
 ```
 
+## shortcutManager.updateDesktopShortcutInfo
+
+updateDesktopShortcutInfo(shortcutInfo: ShortcutInfo, userId: number): Promise\<void>;
+
+更新指定用户的快捷方式信息。使用Promise异步回调。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.MANAGE_SHORTCUTS 或 (ohos.permission.MANAGE_SHORTCUTS 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
+
+ - 更新应用程序所属用户下的快捷方式时，需要申请ohos.permission.MANAGE_SHORTCUTS。
+
+ - 更新其他用户下的快捷方式时，需要申请ohos.permission.MANAGE_SHORTCUTS和ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS权限。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明         |
+| ---------- | ------ | ---- | -------------- |
+| shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1) | 是   | 快捷方式信息。 |
+| userId     | number | 是   | 用户id。可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。|
+
+**返回值：**
+
+| 类型                                       | 说明      |
+| ---------------------------------------- | ------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                                 |
+| -------- | ---------------------------------------- |
+| 201 | Verify permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+| 17700001 | The specified bundle name is not found. |
+| 17700004 | The specified user ID is not found.       |
+| 17700026 | The specified bundle is disabled. |
+| 17700061 | The specified app index is invalid. |
+| 18100002 | The specified shortcut to be updated is not found. |
+
+**示例：**
+
+```ts
+import { shortcutManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 请开发者替换为实际的快捷方式信息、用户id。
+let shortcutInfo: shortcutManager.ShortcutInfo = {
+  id: 'test1',
+  bundleName: 'com.example.myapplication',
+  moduleName: '',
+  hostAbility: '',
+  icon: '',
+  iconId: 1,
+  label: 'hello',
+  labelId: 1,
+  wants: [],
+  appIndex: 0,
+  sourceType: 0,
+};
+
+try {
+  shortcutManager.updateDesktopShortcutInfo(shortcutInfo, 100)
+    .then(() => {
+      hilog.info(0x0000, 'testTag', 'updateDesktopShortcutInfo successfully');
+    }).catch((err: Error) => {
+      hilog.error(0x0000, 'testTag', 'updateDesktopShortcutInfo failed. Cause: %{public}s', err.message);
+    });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'updateDesktopShortcutInfo failed. Cause: %{public}s', message);
+}
+```
+
 ## shortcutManager.getAllDesktopShortcutInfo
 
 getAllDesktopShortcutInfo(userId: number) : Promise<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)>>

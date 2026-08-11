@@ -224,7 +224,7 @@
 
 ## AVCastPickerOptions<sup>14+</sup>
 
-拉起的投播组件包含的配置属性。
+拉起的投播组件包含的配置属性。<br>从API版本26.0.0开始支持Wearable设备使用本属性。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
