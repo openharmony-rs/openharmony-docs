@@ -9062,3 +9062,17 @@ Allows an application to sign data using OEM certificates.
 **Supported devices**: cars
 
 **Valid since**: 26.1.0
+
+## ohos.permission.CONNECTIVITY_USE_RESTRICTED_NETWORKS
+
+Allows an application to use restricted networks, such as internal networks and specific vehicle networks.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.1.0
