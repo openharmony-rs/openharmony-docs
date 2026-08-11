@@ -6,6 +6,7 @@
 <!--Designer: @autojuan-->
 <!--Tester: @tinygreyy-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=be6e1e6a6bf1487b39860d8642a7f78c88d34d25 translatedAt=2026-08-04T07:48:32.547Z pushedAt=2026-08-04T08:23:41.234Z -->
 
 The **InterstitialDialogAction** component is a dialog box used in atomic services to temporarily display information that requires user attention or actions to be taken while maintaining the current context. Users can trigger corresponding actions by clicking different areas of the dialog box.
 
@@ -85,8 +86,8 @@ Defines the attributes specific to the dialog box and custom click actions for t
 | subtitleColor | [ResourceStr](ts-types.md#resourcestr) \| [Color](ts-appendix-enums.md#color) | No| Yes| Font color of the dialog box subtitle. <br>Default value: **$r('sys.color.ohos_id_color_text_secondary_contrary')**.|
 | backgroundImage | [Resource](ts-types.md#resource) | No| Yes| Background image of the dialog box. The default background color is a solid color background with the color value **#EBEEF5**.|
 | foregroundImage | [Resource](ts-types.md#resource) | No| Yes| Foreground image of the dialog box. The default value is empty, meaning no foreground image is displayed.|
-| iconStyle | [IconStyle](#iconstyle) | No| Yes| Style of the close button icon (light or dark).<br>Default value: **[IconStyle](#iconstyle).Light**|
-| titlePosition | [TitlePosition](#titleposition) | No| Yes| Vertical position of the title relative to the subtitle in the dialog box.<br>Default value: **[TitlePosition](#titleposition).Top**|
+| iconStyle | [IconStyle](#iconstyle) | No | Yes | Style of the close button icon (light or dark).<br>Default value: [IconStyle](#iconstyle).LIGHT |
+| titlePosition | [TitlePosition](#titleposition) | No | Yes | Position of the title in the dialog box, above or below the subtitle.<br>Default value: [TitlePosition](#titleposition).TOP |
 | onDialogClick | Callback\<void\> | No| Yes| Custom action triggered by clicking anywhere on the dialog box. The default value is to close the dialog box only.|
 | onDialogClose | Callback\<void\> | No| Yes| Custom action triggered by clicking the close button. The default value is to close the dialog box only.|
 
@@ -130,6 +131,7 @@ Defines the distance between the popup and the bottom in different scenario mode
 | OFFSET_FOR_NONE | 1 | Distance from the bottom of the window when there is no menu bar.<br>It sets the dialog box 44 vp away from the bottom of the window.|
 
 ## Events
+
 The [universal events](ts-component-general-events.md) are not supported.
 
 ## Example
@@ -139,6 +141,7 @@ The [universal events](ts-component-general-events.md) are not supported.
 In this example, color values are assigned to the title and subtitle using two different parameter types; the close button is set to dark color; the title is set above the subtitle; and the distance type is set to the distance used when there is no menu bar.
 
 <!--code_no_check-->
+
 ```ts
 // ../entryability/EntryAbility
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -149,6 +152,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let dialogUIContext: UIContext | null = null;
 
 export function getDialogUIContext(): UIContext | null {
+  if (dialogUIContext === null) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'dialogUIContext is null');
+  }
   return dialogUIContext;
 }
 
@@ -185,7 +191,7 @@ export default class EntryAbility extends UIAbility {
       dialogUIContext = windowClass.getUIContext();
     })
 
-    // Obtain the main window.
+    // Obtain the window.
     windowStage.getMainWindow((err, data) => {
       if (err.code) {
         console.error('Failed to obtain the main window. Cause: ' + JSON.stringify(err));
@@ -214,7 +220,9 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
 <!--code_no_check-->
+
 ```ts
 // Index.ets
 import { getDialogUIContext } from '../entryability/EntryAbility';
@@ -263,6 +271,7 @@ struct Index {
 In this example, color values are assigned to the title and subtitle using two different parameter types; the close button is set to light color; the title is set below the subtitle; and the distance type is set to the distance used when there is a menu bar.
 
 <!--code_no_check-->
+
 ```ts
 // ../entryability/EntryAbility
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -273,8 +282,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let dialogUIContext: UIContext | null = null;
 
 export function getDialogUIContext(): UIContext | null {
-  if (getDialogUIContext === null) {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'getDialogUIContext is null');
+  if (dialogUIContext === null) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'dialogUIContext is null');
   }
   return dialogUIContext;
 }
@@ -312,7 +321,7 @@ export default class EntryAbility extends UIAbility {
       dialogUIContext = windowClass.getUIContext();
     })
 
-    // Obtain the main window.
+    // Obtain the window.
     windowStage.getMainWindow((err, data) => {
       if (err.code) {
         console.error('Failed to obtain the main window. Cause: ' + JSON.stringify(err));
@@ -341,7 +350,9 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
 <!--code_no_check-->
+
 ```ts
 // Index.ets
 import { getDialogUIContext } from '../entryability/EntryAbility';

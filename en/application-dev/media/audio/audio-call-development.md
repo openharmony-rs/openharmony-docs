@@ -1,12 +1,14 @@
 # Developing Audio Call
+
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @zyy0412-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=e01ef8afa8258e6a0570f827ff9640e12715d93c translatedAt=2026-08-06T01:23:37.305Z pushedAt=2026-08-06T01:29:37.592Z -->
 
-During an audio call, audio output (playing the peer voice) and audio input (recording the local voice) are carried out simultaneously. You can use the AudioRenderer to implement audio output and the AudioCapturer to implement audio input.
+During an audio call, audio output (playing the peer voice) and audio input (recording the local voice) are carried out simultaneously. You can use the AudioRenderer to implement audio output and the AudioCapturer to implement audio input. Using both AudioRenderer and AudioCapturer simultaneously enables the audio call function.
 
 Before starting or stopping using the audio call service, the application needs to check the [audio scene](audio-call-overview.md#audio-scene) and [ringer mode](audio-call-overview.md#ringer-mode) to adopt proper audio management and prompt strategies.
 
@@ -82,9 +84,6 @@ async function initArguments(context: common.UIAbilityContext) {
     } catch (error) {
       console.error('Error reading file:', error);
 
-      if (globalLogUpdate) {
-        globalLogUpdate(`Error reading file: ${error}`, true);
-      }
       // This function does not return a callback result in API version 11, but does so in API version 12 and later versions.
       return audio.AudioDataCallbackResult.INVALID;
     }

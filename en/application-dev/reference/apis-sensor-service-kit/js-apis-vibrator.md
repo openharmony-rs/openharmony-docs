@@ -1,17 +1,18 @@
 # @ohos.vibrator (Vibrator)
+
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
 <!--Designer: @butterls-->
 <!--Tester: @murphy84-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=8744466c481cc35759279bfc1e86e803ae2f0e8a translatedAt=2026-08-04T06:44:23.309Z pushedAt=2026-08-04T06:56:40.553Z -->
 
 The **vibrator** module allows precise control over the vibration of device vibrators. With the APIs provided by this module, you can start vibration in various modes such as specified duration, preset effect, and custom effect and stop any or all of them.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
 
 ## Modules to Import
 
@@ -35,7 +36,7 @@ Starts vibration based on a specified effect and attribute. This API uses an asy
 
 | Name   | Type                                  | Mandatory| Description                                                        |
 | --------- | -------------------------------------- | ---- | :----------------------------------------------------------- |
-| effect    | [VibrateEffect](#vibrateeffect9)       | Yes  | Vibration effect. The following options are supported:<br>1. [VibratePreset](#vibratepreset9): triggers vibration according to preset vibration effects. This mode is suitable for short vibration scenarios in interactive feedback (such as tapping, long-pressing, sliding, dragging, etc.). This API is recommended to maintain consistency with the system's overall vibration feedback experience.<br>2. [VibrateFromFile](#vibratefromfile10): triggers vibration according to custom vibration configuration file. This mode is suitable for interactive feedback in complex scenarios requiring precise vibration patterns (such as realistic effects triggered by emoji packs, or feedback for in-game actions/mechanics).<br>3. [VibrateTime](#vibratetime9): triggers vibration of the specified duration, providing basic control over the start and stop of vibration. This mode does not support customization of vibration intensity, frequency, or other parameters. As a result, the vibration adjustment is relatively coarse and not suitable for delivering a refined experience.<br>4. [VibrateFromPattern<sup>18+</sup>](#vibratefrompattern18): starts vibration according to a custom vibration pattern. The usage scenario is the same as **VibrateFromFile**. **VibrateFromFile** utilizes predefined effects in a custom configuration file, passing specific vibration events to the API via file descriptors. By contrast, **VibrateFromPattern** enables more flexible vibration event combinations, delivering them to the API as a vibration event array.<br>|
+| effect    | [VibrateEffect](#vibrateeffect9)       | Yes  | Vibration effect. The following options are supported:<br>1. [VibratePreset](#vibratepreset9): triggers vibration according to preset vibration effects. This mode is suitable for short vibration scenarios in interactive feedback (such as tapping, long-pressing, sliding, and dragging). This API is recommended to maintain consistency with the system's overall vibration feedback experience.<br>2. [VibrateFromFile](#vibratefromfile10): triggers vibration according to custom vibration configuration file. This mode is suitable for interactive feedback in complex scenarios requiring precise vibration patterns (such as realistic effects triggered by emoji packs, or feedback for in-game actions/mechanics).<br>3. [VibrateTime](#vibratetime9): triggers vibration of the specified duration, providing basic control over the start and stop of vibration. This mode does not support customization of vibration intensity, frequency, or other parameters. As a result, the vibration adjustment is relatively coarse and not suitable for delivering a refined experience.<br>4. [VibrateFromPattern<sup>18+</sup>](#vibratefrompattern18): triggers vibration according to a custom vibration pattern. The usage scenario is the same as **VibrateFromFile**. **VibrateFromFile** utilizes predefined effects in a custom configuration file, passing specific vibration events to the API via file descriptors. By contrast, **VibrateFromPattern** enables more flexible vibration event combinations, delivering them to the API as a vibration event array.<br>|
 | attribute | [VibrateAttribute](#vibrateattribute9) | Yes  | Vibration attribute.                                              |
 | callback  | AsyncCallback&lt;void&gt;              | Yes  | Callback used to return the operation result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object, which contains the error code and error information.|
 
@@ -189,7 +190,7 @@ Starts vibration based on a specified effect and attribute. This API uses a prom
 
 | Name   | Type                                  | Mandatory| Description                                                        |
 | --------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
-| effect    | [VibrateEffect](#vibrateeffect9)       | Yes  | Vibration effect. The following options are supported:<br>1. [VibrateTime](#vibratetime9): triggers vibration according to preset vibration effects. This mode is suitable for short vibration scenarios in interactive feedback (such as tapping, long-pressing, sliding, dragging, etc.). This API is recommended to maintain consistency with the system's overall vibration feedback experience.<br>2. [VibratePreset](#vibratepreset9): triggers vibration according to custom vibration configuration file. This mode is suitable for interactive feedback in complex scenarios requiring precise vibration patterns (such as realistic effects triggered by emoji packs, or feedback for in-game actions/mechanics).<br>3. [VibrateFromFile](#vibratefromfile10): triggers vibration of the specified duration, providing basic control over the start and stop of vibration. This mode does not support customization of vibration intensity, frequency, or other parameters. As a result, the vibration adjustment is relatively coarse and not suitable for delivering a refined experience.<br>4. [VibrateFromPattern<sup>18+</sup>](#vibratefrompattern18): starts vibration according to a custom vibration pattern. The usage scenario is the same as **VibrateFromFile**. **VibrateFromFile** utilizes predefined effects in a custom configuration file, passing specific vibration events to the API via file descriptors. By contrast, **VibrateFromPattern** enables more flexible vibration event combinations, delivering them to the API as a vibration event array.|
+| effect    | [VibrateEffect](#vibrateeffect9)       | Yes   | Motor vibration effect, which supports four types:<br/>1. [VibratePreset](#vibratepreset9): triggers vibration according to preset vibration effects. This mode is suitable for short vibration scenarios in interactive feedback (such as tapping, long-pressing, sliding, and dragging). This API is recommended to maintain consistency with the system's overall vibration feedback experience.<br/>2. [VibrateFromFile](#vibratefromfile10): triggers vibration according to custom vibration configuration file. This mode is suitable for interactive feedback in complex scenarios requiring precise vibration patterns (such as realistic effects triggered by emoji packs, or feedback for in-game actions/mechanics).<br/>3. [VibrateTime](#vibratetime9): triggers vibration of the specified duration, providing basic control over the start and stop of vibration. This mode does not support customization of vibration intensity, frequency, or other parameters. As a result, the vibration adjustment is relatively coarse and not suitable for delivering a refined experience.<br/>4. [VibrateFromPattern<sup>18+</sup>](#vibratefrompattern18): triggers vibration according to a custom vibration pattern. The usage scenario is the same as **VibrateFromFile**. **VibrateFromFile** utilizes predefined effects in a custom configuration file, passing specific vibration events to the API via file descriptors. By contrast, **VibrateFromPattern** enables more flexible vibration event combinations, delivering them to the API as a vibration event array. |
 | attribute | [VibrateAttribute](#vibrateattribute9) | Yes  | Vibration attribute.                                              |
 
 **Return value**
@@ -957,7 +958,6 @@ For details about the error codes, see [Vibrator Error Codes](errorcode-vibrator
 | ------- | --------------------------------------------------------- |
 | [EffectInfo](#effectinfo19) | Whether the preset vibration effect is supported.|
 
-
 **Example**
 
    ```ts
@@ -973,7 +973,6 @@ For details about the error codes, see [Vibrator Error Codes](errorcode-vibrator
      console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
    }
    ```
-
 
 ## vibrator.getVibratorInfoSync<sup>19+</sup>
 
@@ -995,7 +994,6 @@ Queries the vibrator list of one or all devices.
 |-------------------------------| --------------------------------------------------------- |
 | Array&lt;[VibratorInfo](#vibratorinfo19)&gt; | Vibrator information.|
 
-
 **Example**
 
    ```ts
@@ -1010,7 +1008,6 @@ Queries the vibrator list of one or all devices.
      console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
    }
    ```
-
 
 ## vibrator.on<sup>19+</sup>
 
@@ -1035,7 +1032,6 @@ For details about the error codes, see [Vibrator Error Codes](errorcode-vibrator
 | -------- | ------------------------ |
 | 14600101 | Device operation failed. |
 
-
 **Example**
 
    ```ts
@@ -1056,7 +1052,6 @@ For details about the error codes, see [Vibrator Error Codes](errorcode-vibrator
      console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
    }
    ```
-
 
 ## vibrator.off<sup>19+</sup>
 
@@ -1081,7 +1076,6 @@ For details about the error codes, see [Vibrator Error Codes](errorcode-vibrator
 | -------- | ------------------------ |
 | 14600101 | Device operation failed. |
 
-
 **Example**
 
    ```ts
@@ -1104,13 +1098,11 @@ For details about the error codes, see [Vibrator Error Codes](errorcode-vibrator
    }
    ```
 
-
 ## VibratorStatusEvent<sup>19+</sup>
 
 Defines the vibrator status change event.
 
 **System capability**: SystemCapability.Sensors.MiscDevice
-
 
 | Name              | Type     | Read-Only| Optional| Description                              |
 |------------------|---------|----|----|----------------------------------|
@@ -1119,20 +1111,16 @@ Defines the vibrator status change event.
 | vibratorCount    | number  | No | No | Number of vibrators on the device.                      |
 | isVibratorOnline | boolean | No | No | Vibrator status. The value **true** indicates that the device is online, and the value **false** indicates the opposite.|
 
-
 ## VibratorInfoParam<sup>19+</sup>
 
 Defines the vibrator parameters. If **VibratorInfoParam** is left unspecified, an API applies to all vibrators of the local device by default.
 
 **System capability**: SystemCapability.Sensors.MiscDevice
 
-
 | Name| Type  | Read-Only| Optional| Description                                                        |
 | ---- | ------ | ---- | ---- |------------------------------------------------------------|
 | deviceId    | number | No  | Yes  | Device ID. The default value is **-1**, indicating the local device. Since API version 19, you can use [getVibratorInfoSync](#vibratorgetvibratorinfosync19) or [on](#vibratoron19) to query the device ID.|
 | vibratorId    | number | No  | Yes  | Vibrator ID. The default value is **0**, which indicates all vibrators of the local device. Since API version 19, you can use [getVibratorInfoSync](#vibratorgetvibratorinfosync19) or [on](#vibratoron19) to query the vibrator ID.    |
-
-
 
 ## EffectInfo<sup>19+</sup>
 
@@ -1140,11 +1128,9 @@ Defines the preset effect.
 
 **System capability**: SystemCapability.Sensors.MiscDevice
 
-
 | Name               | Type     | Read-Only| Optional| Description                           |
 |-------------------|---------|----|----|-------------------------------|
 | isEffectSupported | boolean | No | No | Whether the preset effect is supported. The value **true** indicates that the preset effect is supported, and the value **false** indicates the opposite.|
-
 
 ## VibratorInfo<sup>19+</sup>
 
@@ -1159,7 +1145,6 @@ Defines the vibrator information.
 | deviceName          | string  | No | No | Device name.    |
 | isHdHapticSupported | boolean | No | No | Whether HD vibration is supported. The value **true** indicates that HD vibration is supported, and the value **false** indicates the opposite.|
 | isLocalVibrator     | boolean | No | No | Whether the device is a local device. The value **true** indicates that the device is a local device, and the value **false** indicates the opposite.|
-
 
 ## vibrator.isHdHapticSupported<sup>12+</sup>
 
@@ -1585,6 +1570,7 @@ Enumerates the vibration scenarios.
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Sensors.MiscDevice
+
 <!--RP1-->
 
 | Type              | Description                                                   |
@@ -1672,7 +1658,6 @@ This API is supported since API version 8 and deprecated since API version 9. Yo
    })
    ```
 
-
 ## vibrator.vibrate<sup>(deprecated)</sup>
 
 vibrate(effectId: EffectId): Promise&lt;void&gt;
@@ -1709,7 +1694,6 @@ This API is supported since API version 8 and deprecated since API version 9. Yo
      console.error(`Failed to vibrate. Code: ${error.code}, message: ${error.message}`);
    });
    ```
-
 
 ## vibrator.vibrate<sup>(deprecated)</sup>
 
@@ -1790,7 +1774,6 @@ This API is supported since API version 8 and deprecated since API version 9. Yo
      console.error(`Failed to stop. Code: ${error.code}, message: ${error.message}`);
    });
    ```
-
 
 ## vibrator.stop<sup>(deprecated)</sup>
 

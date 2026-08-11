@@ -1,4 +1,4 @@
-# API (AutoExposure)
+# Interface (AutoExposure)
 
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
@@ -77,7 +77,7 @@ Sets the exposure mode. Before setting, check whether the device supports the sp
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
-**System Capability:** SystemCapability.Multimedia.Camera.Core
+**System capability:** SystemCapability.Multimedia.Camera.Core
 
 **Parameters**
 
@@ -162,7 +162,7 @@ The coordinate system is based on the horizontal device direction with the devic
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
-**System Capability**: SystemCapability.Multimedia.Camera.Core
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Parameters**
 
@@ -205,7 +205,7 @@ Before making the setting, it is recommended to first query the supported range 
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
-**System Capability**: SystemCapability.Multimedia.Camera.Core
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Parameters**
 
@@ -292,7 +292,7 @@ Obtains the current exposure metering mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 24.
 
-**System Capability:** SystemCapability.Multimedia.Camera.Core
+**System capability:** SystemCapability.Multimedia.Camera.Core
 
 **Return value**
 
@@ -335,7 +335,7 @@ Sets the exposure metering mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 24.
 
-**System Capability**: SystemCapability.Multimedia.Camera.Core
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Parameters**
 

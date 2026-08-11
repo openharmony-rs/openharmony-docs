@@ -1,24 +1,26 @@
 # Processing Web Page Content by Interacting with the System Clipboard
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @zourongchun-->
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=d866e238748ac7aac315cd2cec8b8c1b4d92d6a3 translatedAt=2026-07-30T07:11:30.205Z -->
 
-ArkWeb provides the capability of interacting with the system clipboard to cut, copy, and paste various types of data through the following methods: the [Menu](web-menu.md) component, keyboard shortcuts, and [W3C clipboard API and events](https://www.w3.org/TR/clipboard-apis/).
+You can use the ArkWeb component to interact with the system clipboard for copying and pasting various types of data. Cut, copy, and paste operations on web content are supported through [menus](web-menu.md), keyboard shortcuts, and the [W3C Clipboard API](https://www.w3.org/TR/clipboard-apis/).
 
 ## Using the Menu Component or Keyboard Shortcuts
 
-You can customize options in the menu. When a user selects a specific option, the [cut](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#cut9), [copy](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#copy9) and [copyImage](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#copyimage9) APIs can be called to cut or copy the text, HTML or image data to the system clipboard. The [paste](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#paste9) and [pasteAndMatchStyle](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#pasteandmatchstyle20) APIs can be used to paste the data to the input area of the web page.
+You can customize options in the menu. When a user selects a specific option, you can call APIs such as [cut](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#cut9), [copy](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#copy9), [copyImage](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#copyimage9), [paste](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#paste9), and [pasteAndMatchStyle](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#pasteandmatchstyle20) to cut or copy web content to the system clipboard, or paste content from the system clipboard into an editable area on the web page.
 
-For details about how to use them, see [Using Web Menus](web-menu.md).
+For details about how to use the menu APIs, see [Using Web Component Menus to Process Web Content](web-menu.md).
 
 When a device has a physical keyboard, a user can also use keyboard shortcuts **Ctrl+X** (cut), **Ctrl+C** (copy), and **Ctrl+V** (paste) to interact with the clipboard.
 
 > **NOTE**
 >
-> To access the clipboard content through the [paste](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#paste9) and [pasteAndMatchStyle](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#pasteandmatchstyle20) APIs, you need to [request permissions to access the pasteboard](../basic-services/pasteboard/get-pastedata-permission-guidelines.md): **ohos.permission.READ_PASTEBOARD**.
+> To read system clipboard data through the [paste](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#paste9) and [pasteAndMatchStyle](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#pasteandmatchstyle20) APIs, you must [request the clipboard permission](../basic-services/pasteboard/get-pastedata-permission-guidelines.md) `ohos.permission.READ_PASTEBOARD`.
 
 ## Using the W3C Asynchronous Clipboard API
 
@@ -48,7 +50,7 @@ await navigator.clipboard.write([clipboardItem]);
 const text = await navigator.clipboard.readText()
 ```
 
-- Use **read()** to read any type of content from the system clipboard.
+- Use **read** to read content of any type from the system clipboard.
 
 ```javascript
 // Read HTML from the clipboard.
@@ -58,7 +60,7 @@ const htmlBlob = await clipboardItems[0].getType('text/html');
 
 > **NOTE**
 >
-> To access the system clipboard content through **read()** and **readText()**, you need to [request permissions to access the pasteboard](../basic-services/pasteboard/get-pastedata-permission-guidelines.md): **ohos.permission.READ_PASTEBOARD**.
+> To read system clipboard data through the asynchronous clipboard API methods `read()` and `readText()`, you must [apply for the clipboard permission](../basic-services/pasteboard/get-pastedata-permission-guidelines.md) `ohos.permission.READ_PASTEBOARD`.
 
 <!-- @[web_clipboard_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebClipboard/entry/src/main/ets/pages/WebClipboard.ets) -->
 
@@ -77,7 +79,6 @@ struct WebComponent {
   }
 }
 ```
-
 
 Loaded HTML:
 
@@ -199,12 +200,11 @@ Configure permissions for the **module.json5** file.
 }
 ```
 
-
 ![clipboard_api](./figures/web-clipboard_api.gif)
 
 ## Using the W3C Clipboard Event API
 
-[Clipboard events](https://www.w3.org/TR/clipboard-apis/#clipboard-events-and-interfaces) describes the **cut**, **copy**, and **paste** events related to the clipboard. When a user performs the cut, copy, or paste operation, the corresponding event is triggered. By listening for these events, you can read and write the system clipboard or intercept the default behavior to change the copy or paste result.
+[Clipboard events](https://www.w3.org/TR/clipboard-apis/#clipboard-events-and-interfaces) describe the cut, copy, and paste events related to the clipboard. When a user performs a cut, copy, or paste operation, the corresponding event is triggered. By listening for these events, you can read from or write to the system clipboard, or intercept the default behavior to change the copy or paste result.
 
 <!-- @[web_clipboard_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebClipboard/entry/src/main/ets/pages/WebClipboardEvent.ets) -->
 
@@ -223,7 +223,6 @@ struct WebComponent {
   }
 }
 ```
-
 
 Loaded HTML:
 
@@ -260,7 +259,7 @@ Loaded HTML:
     // Listen to the copy event.
     inputArea.addEventListener('copy', (event) => {
         const selection = document.getSelection();
-        const copiedText = selection.toString() + "(Copied from ArkWeb)
+        const copiedText = selection.toString() + "(Copied from ArkWeb)"
         event.clipboardData.setData("text/plain", copiedText);
         event.preventDefault();
         resultText.textContent = `Copied content: "${copiedText}"`;
@@ -275,7 +274,7 @@ Loaded HTML:
     // Listen for the cut event.
     inputArea.addEventListener('cut', (event) => {
         const selection = document.getSelection();
-        const cutText = selection.toString() + "(Cut from ArkWeb)
+        const cutText = selection.toString() + "(Cut from ArkWeb)"
         event.clipboardData.setData("text/plain", cutText);
         selection.deleteFromDocument();
         event.preventDefault();
@@ -311,7 +310,6 @@ struct WebComponent {
   }
 }
 ```
-
 
 Loaded HTML:
 

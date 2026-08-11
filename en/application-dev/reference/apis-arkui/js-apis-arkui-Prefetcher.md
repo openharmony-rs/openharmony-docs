@@ -70,8 +70,8 @@ Called when the boundaries of the visible area change. This API works with the *
 
 | Name       | Type    | Mandatory| Description       |
 |------------|--------|----|-----------|
-| minVisible | number | Yes | Upper bound of the visible area.|
-| maxVisible | number | Yes | Lower bound of the visible area.|
+| minVisible | number | Yes | Index of the first data item in the current visible area.|
+| maxVisible | number | Yes | Index of the last data item in the current visible area.|
 
 ```typescript
 class MyPrefetcher implements IPrefetcher {
@@ -139,8 +139,8 @@ Called when the boundaries of the visible area change. This API works with the *
 
 | Name       | Type    | Mandatory| Description       |
 |------------|--------|----|-----------|
-| minVisible | number | Yes | Upper bound of the visible area.|
-| maxVisible | number | Yes | Lower bound of the visible area.|
+| minVisible | number | Yes | Index of the first data item in the current visible area.|
+| maxVisible | number | Yes | Index of the last data item in the current visible area.|
 
 ## IDataSourcePrefetching
 

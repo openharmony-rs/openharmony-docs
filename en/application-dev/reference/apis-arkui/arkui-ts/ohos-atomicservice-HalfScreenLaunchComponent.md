@@ -53,6 +53,13 @@ HalfScreenLaunchComponent({ content: Callback\<void>, appId: string, options?: A
 
 This example demonstrates how to start a top-up service in embedded mode.
 
+> **NOTE**
+>
+>Embedded atomic services run in separate processes, so their crashes and exceptions are not visible directly in the host's logs. Follow the steps below to view the complete error stack trace during local debugging: 
+>1. Open the HiLog panel in DevEco Studio. 
+>2. Switch the mode in the top-left corner to **User logs of selected app**. 
+>3. In the process list on the right, select the process of the launched atomic service. The package name has **embeddable** within its suffix segment.
+
 ```ts
 import { HalfScreenLaunchComponent } from '@kit.ArkUI';
 

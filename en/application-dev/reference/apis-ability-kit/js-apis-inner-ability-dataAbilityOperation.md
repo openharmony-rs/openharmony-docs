@@ -24,7 +24,7 @@ import ability from '@ohos.ability.ability';
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.FAModel
 
-| Name     | Template    | Read Only| Optional | Description      |
+| Name     | Type    | Read Only| Optional | Description      |
 | --------- | -------- |-----| ------| ---------- |
 | uri   | string | No |  No  | URI of the DataAbility. Example: 'dataability:///com.example.xxx.xxxx'. |
 | type   | [featureAbility.DataAbilityOperationType](js-apis-ability-featureAbility.md#dataabilityoperationtype7) | No | No  | Operation type. |

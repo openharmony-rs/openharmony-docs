@@ -2118,7 +2118,7 @@ toString(encoding?: string, start?: number, end?: number): string
 | -------- | -------- | -------- | -------- |
 | encoding | string | 否 | 字符编码格式。默认值：'utf8'。 |
 | start  | number | 否 |  开始位置。默认值：0。 |
-| end  | number | 否 |  结束位置。默认值：Buffer.length。 |
+| end  | number | 否 |  结束位置。默认值：this.length。 |
 
 **返回值：**
 
