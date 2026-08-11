@@ -1149,7 +1149,7 @@ remove(bundle: BundleOption, notificationKey: NotificationKey, reason: RemoveRea
 | --------------- |   ----------------------------------| ---- | -------------------- |
 | bundle          | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | 是   | 指定应用的包信息。           |
 | notificationKey | [NotificationKey](./js-apis-notification.md#notificationkeydeprecated) | 是   | 通知键值。             |
-| reason          | [RemoveReason](#removereason-deprecated)      | 是   | 通知删除原因。         |
+| reason          | [RemoveReason](#removereason)      | 是   | 通知删除原因。         |
 | callback        | AsyncCallback\<void\>               | 是   | 删除指定通知回调函数。 |
 
 **示例：**
@@ -1193,7 +1193,7 @@ remove(bundle: BundleOption, notificationKey: NotificationKey, reason: RemoveRea
 | --------------- | --------------- | ---- | ---------- |
 | bundle          | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)    | 是   | 指定应用的包信息。 |
 | notificationKey | [NotificationKey](./js-apis-notification.md#notificationkeydeprecated) | 是   | 通知键值。   |
-| reason          | [RemoveReason](#removereason-deprecated) | 是   | 通知删除原因。         |
+| reason          | [RemoveReason](#removereason) | 是   | 通知删除原因。         |
 
 **返回值：**
 
@@ -1238,7 +1238,7 @@ remove(hashCode: string, reason: RemoveReason, callback: AsyncCallback\<void\>):
 | 参数名     | 类型                  | 必填 | 说明                 |
 | -------- | --------------------- | ---- | -------------------- |
 | hashCode | string                | 是   | 通知唯一ID。可以通过[onConsume](js-apis-inner-notification-notificationSubscriber-sys.md#onconsume)回调的入参[SubscribeCallbackData](js-apis-inner-notification-notificationSubscriber-sys.md#subscribecallbackdata)获取其内部[NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1)对象中的hashCode。 |
-| reason   | [RemoveReason](#removereason-deprecated) | 是   | 通知删除原因。         |
+| reason   | [RemoveReason](#removereason) | 是   | 通知删除原因。         |
 | callback | AsyncCallback\<void\> | 是   | 删除指定通知回调函数。 |
 
 **示例：**
@@ -1276,7 +1276,7 @@ remove(hashCode: string, reason: RemoveReason): Promise\<void\>
 | 参数名     | 类型       | 必填 | 说明       |
 | -------- | ---------- | ---- | ---------- |
 | hashCode | string | 是   | 通知唯一ID。 |
-| reason   | [RemoveReason](#removereason-deprecated) | 是   | 通知删除原因。         |
+| reason   | [RemoveReason](#removereason) | 是   | 通知删除原因。         |
 
 **返回值：**
 
@@ -1634,7 +1634,7 @@ setDoNotDisturbDate(date: DoNotDisturbDate, callback: AsyncCallback\<void\>): vo
 
 | 参数名     | 类型                  | 必填 | 说明                   |
 | -------- | --------------------- | ---- | ---------------------- |
-| date     | [DoNotDisturbDate](#donotdisturbdate8-deprecated)      | 是   | 免打扰时间选项。         |
+| date     | [DoNotDisturbDate](#donotdisturbdate8)      | 是   | 免打扰时间选项。         |
 | callback | AsyncCallback\<void\> | 是   | 设置免打扰时间回调函数。 |
 
 **示例：**
@@ -1675,7 +1675,7 @@ setDoNotDisturbDate(date: DoNotDisturbDate): Promise\<void\>
 
 | 参数名 | 类型             | 必填 | 说明           |
 | ---- | ---------------- | ---- | -------------- |
-| date | [DoNotDisturbDate](#donotdisturbdate8-deprecated) | 是   | 免打扰时间选项。 |
+| date | [DoNotDisturbDate](#donotdisturbdate8) | 是   | 免打扰时间选项。 |
 
 **返回值：**
 
@@ -1717,7 +1717,7 @@ setDoNotDisturbDate(date: DoNotDisturbDate, userId: number, callback: AsyncCallb
 
 | 参数名     | 类型                  | 必填 | 说明                   |
 | -------- | --------------------- | ---- | ---------------------- |
-| date     | [DoNotDisturbDate](#donotdisturbdate8-deprecated)      | 是   | 免打扰时间选项。         |
+| date     | [DoNotDisturbDate](#donotdisturbdate8)      | 是   | 免打扰时间选项。         |
 | userId   | number                | 是   | 设置免打扰时间的用户ID。 |
 | callback | AsyncCallback\<void\> | 是   | 设置免打扰时间回调函数。 |
 
@@ -1760,7 +1760,7 @@ setDoNotDisturbDate(date: DoNotDisturbDate, userId: number): Promise\<void\>
 
 | 参数名   | 类型             | 必填 | 说明           |
 | ------ | ---------------- | ---- | -------------- |
-| date   | [DoNotDisturbDate](#donotdisturbdate8-deprecated) | 是   | 免打扰时间选项。 |
+| date   | [DoNotDisturbDate](#donotdisturbdate8) | 是   | 免打扰时间选项。 |
 | userId | number           | 是   | 设置免打扰时间的用户ID。 |
 
 **返回值：**
@@ -1806,7 +1806,7 @@ getDoNotDisturbDate(callback: AsyncCallback\<DoNotDisturbDate\>): void
 
 | 参数名     | 类型                              | 必填 | 说明                   |
 | -------- | --------------------------------- | ---- | ---------------------- |
-| callback | AsyncCallback\<[DoNotDisturbDate](#donotdisturbdate8-deprecated)\> | 是   | 查询免打扰时间回调函数。 |
+| callback | AsyncCallback\<[DoNotDisturbDate](#donotdisturbdate8)\> | 是   | 查询免打扰时间回调函数。 |
 
 **示例：**
 
@@ -1840,7 +1840,7 @@ getDoNotDisturbDate(): Promise\<DoNotDisturbDate\>
 
 | 类型                                              | 说明                                      |
 | ------------------------------------------------- | ----------------------------------------- |
-| Promise\<[DoNotDisturbDate](#donotdisturbdate8-deprecated)\> | 以Promise形式返回查询到的免打扰时间。 |
+| Promise\<[DoNotDisturbDate](#donotdisturbdate8)\> | 以Promise形式返回查询到的免打扰时间。 |
 
 **示例：**
 
@@ -1871,7 +1871,7 @@ getDoNotDisturbDate(userId: number, callback: AsyncCallback\<DoNotDisturbDate\>)
 
 | 参数名     | 类型                              | 必填 | 说明                   |
 | -------- | --------------------------------- | ---- | ---------------------- |
-| callback | AsyncCallback\<[DoNotDisturbDate](#donotdisturbdate8-deprecated)\> | 是   | 查询免打扰时间回调函数。 |
+| callback | AsyncCallback\<[DoNotDisturbDate](#donotdisturbdate8)\> | 是   | 查询免打扰时间回调函数。 |
 | userId   | number                            | 是   | 用户ID。 |
 
 **示例：**
@@ -1914,7 +1914,7 @@ getDoNotDisturbDate(userId: number): Promise\<DoNotDisturbDate\>
 
 | 类型                                              | 说明                                      |
 | ------------------------------------------------- | ----------------------------------------- |
-| Promise\<[DoNotDisturbDate](#donotdisturbdate8-deprecated)\> | 以Promise形式返回查询到的免打扰时间。 |
+| Promise\<[DoNotDisturbDate](#donotdisturbdate8)\> | 以Promise形式返回查询到的免打扰时间。 |
 
 **示例：**
 
@@ -2239,7 +2239,7 @@ getDeviceRemindType(callback: AsyncCallback\<DeviceRemindType\>): void
 
 | 参数名   | 类型                               | 必填 | 说明                       |
 | -------- | --------------------------------- | ---- | -------------------------- |
-| callback | AsyncCallback\<[DeviceRemindType](#deviceremindtype8-deprecated)\> | 是   | 获取通知提醒方式的回调函数。 |
+| callback | AsyncCallback\<[DeviceRemindType](#deviceremindtype8)\> | 是   | 获取通知提醒方式的回调函数。 |
 
 **示例：**
 
@@ -2273,7 +2273,7 @@ getDeviceRemindType(): Promise\<DeviceRemindType\>
 
 | 类型               | 说明            |
 | ------------------ | --------------- |
-| Promise\<[DeviceRemindType](#deviceremindtype8-deprecated)\> | Promise方式返回获取通知提醒方式的结果。 |
+| Promise\<[DeviceRemindType](#deviceremindtype8)\> | Promise方式返回获取通知提醒方式的结果。 |
 
 **示例：**
 
@@ -2287,8 +2287,7 @@ Notification.getDeviceRemindType().then((data: Notification.DeviceRemindType) =>
 });
 ```
 
-## DoNotDisturbDate<sup>8+</sup> <sup>deprecated</sup>
-
+## DoNotDisturbDate<sup>8+</sup>
 **系统能力**：SystemCapability.Notification.Notification
 
 > **说明：**
@@ -2302,7 +2301,7 @@ Notification.getDeviceRemindType().then((data: Notification.DeviceRemindType) =>
 | begin | Date                                   | 是   | 是   | 免打扰设置的起点时间。 |
 | end   | Date                                   | 是   | 是   | 免打扰设置的终点时间。 |
 
-## DoNotDisturbType<sup>8+</sup> <sup>deprecated</sup>
+## DoNotDisturbType<sup>8+</sup>
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2318,7 +2317,7 @@ Notification.getDeviceRemindType().then((data: Notification.DeviceRemindType) =>
 | TYPE_DAILY   | 2 | 以设置时间段(只看小时和分钟)每天执行勿扰。 |
 | TYPE_CLEARLY | 3 | 以设置时间段(明确年月日时分)执行勿扰。     |
 
-## DeviceRemindType<sup>8+</sup> <sup>deprecated</sup>
+## DeviceRemindType<sup>8+</sup>
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2335,7 +2334,7 @@ Notification.getDeviceRemindType().then((data: Notification.DeviceRemindType) =>
 | ACTIVE_REMIND        | 3   | 提醒设备正在使用。                 |
 
 
-## SourceType<sup>8+</sup> <sup>deprecated</sup>
+## SourceType<sup>8+</sup>
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2350,7 +2349,7 @@ Notification.getDeviceRemindType().then((data: Notification.DeviceRemindType) =>
 | TYPE_CONTINUOUS      | 1   | 连续通知。            |
 | TYPE_TIMER           | 2   | 计划通知。            |
 
-## RemoveReason <sup>deprecated</sup>
+## RemoveReason
 
 **系统能力**：SystemCapability.Notification.Notification
 
