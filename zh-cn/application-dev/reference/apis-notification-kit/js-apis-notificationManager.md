@@ -855,8 +855,8 @@ isNotificationEnabled(callback: AsyncCallback\<boolean\>): void
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.        |
-| 1600008  | The user does not exist.<br> 适用版本：11+                 |
-| 17700001 | The specified bundle name was not found.<br> 适用版本：11+ |
+| 1600008  | The user does not exist.                 |
+| 17700001 | The specified bundle name was not found. |
 
 **示例：**
 
@@ -899,8 +899,8 @@ isNotificationEnabled(): Promise\<boolean\>
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.        |
-| 1600008  | The user does not exist.<br> 适用版本：11+                 |
-| 17700001 | The specified bundle name was not found.<br> 适用版本：11+ |
+| 1600008  | The user does not exist.                 |
+| 17700001 | The specified bundle name was not found. |
 
 **示例：**
 
