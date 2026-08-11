@@ -63,7 +63,7 @@
       deviceStatus.on('steadyStandingDetect', (data: deviceStatus.SteadyStandingStatus) => {
          console.info(`succeeded to get status, now status = ${JSON.stringify(data)}`);
       });
-   } catch (err: BusinessError) {
+   } catch (err) {
       console.error(`on failed. Code: ${err.code}, message: ${err.message}`);
    }
    ```
@@ -100,7 +100,7 @@ off(type: 'steadyStandingDetect', callback?: Callback&lt;SteadyStandingStatus&gt
    ```ts
    try {
       deviceStatus.off('steadyStandingDetect');
-   } catch (err: BusinessError) {
+   } catch (err) {
       console.error(`off failed. Code: ${err.code}, message: ${err.message}`);
    }
    ```
@@ -117,13 +117,13 @@ off(type: 'steadyStandingDetect', callback?: Callback&lt;SteadyStandingStatus&gt
    // 以callback为回调函数，订阅设备静止姿态感知（支架态）事件
    try {
       deviceStatus.on('steadyStandingDetect', callback);
-   } catch (err: BusinessError) {
+   } catch (err) {
       console.error(`on failed. Code: ${err.code}, message: ${err.message}`);
    }
    // 取消该客户端订阅设备静止姿态感知（支架态）事件的特定回调函数
    try {
       deviceStatus.off('steadyStandingDetect', callback);
-   } catch (err: BusinessError) {
+   } catch (err) {
       console.error(`off failed. Code: ${err.code}, message: ${err.message}`);
    }
    ```

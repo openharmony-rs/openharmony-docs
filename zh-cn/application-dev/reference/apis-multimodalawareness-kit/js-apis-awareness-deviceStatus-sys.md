@@ -53,7 +53,7 @@ getDeviceRotationRadian(): Promise&lt;DeviceRotationRadian&gt;
       }).catch((err: BusinessError) => {
          console.error(`Failed to get device rotation radians. Code: ${err.code}, message: ${err.message}`);
       });
-   } catch (err: BusinessError) {
+   } catch (err) {
       console.error(`Failed to invoke. Code: ${err.code}, message: ${err.message}`);
    }
    ```

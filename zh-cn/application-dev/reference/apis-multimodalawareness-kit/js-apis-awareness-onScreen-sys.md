@@ -302,10 +302,10 @@ getPageContent(options?: [ContentOptions](#contentoptions)): Promise&lt;[PageCon
       onScreen.getPageContent(options).then((pageContent: onScreen.PageContent) => {
          console.info("get page content succeed, bundleName = " + pageContent.bundleName);
       }).catch((err: BusinessError) => {
-         console.error(`get page content failed, Code: ${error.code}, message: ${error.message}`);
+         console.error(`get page content failed, Code: ${err.code}, message: ${err.message}`);
       });
-   } catch (err: BusinessError) {
-      console.error(`get page content failed, Code: ${error.code}, message: ${error.message}`);
+   } catch (err) {
+      console.error(`get page content failed, Code: ${err.code}, message: ${err.message}`);
    }
    ```
 
@@ -362,18 +362,18 @@ sendControlEvent(event: [ControlEvent](#controlevent)): Promise&lt;void&gt;
             };
          }
       }).catch((err: BusinessError) => {
-         console.error(`get page content failed, Code: ${error.code}, message: ${error.message}`);
+         console.error(`get page content failed, Code: ${err.code}, message: ${err.message}`);
       });
-   } catch (err: BusinessError) {
-      console.error(`invoke failed, Code: ${error.code}, message: ${error.message}`);
+   } catch (err) {
+      console.error(`invoke failed, Code: ${err.code}, message: ${err.message}`);
    }
    if (event != undefined) {
       try {
          onScreen.sendControlEvent(event).catch((err: BusinessError) => {
-            console.error(`send control event failed, Code: ${error.code}, message: ${error.message}`);
+            console.error(`send control event failed, Code: ${err.code}, message: ${err.message}`);
          })
-      } catch (err: BusinessError) {
-         console.error(`invoke failed, Code: ${error.code}, message: ${error.message}`);
+      } catch (err) {
+         console.error(`invoke failed, Code: ${err.code}, message: ${err.message}`);
       }
    }
    ```
@@ -431,8 +431,8 @@ subscribe(capability: OnscreenAwarenessCap, callback: Callback&lt;OnscreenAwaren
       onScreen.subscribe(onscreenAwarenessCap, (info: onScreen.OnscreenAwarenessInfo[]) => {
          console.info(`subscribe resultCode: ${info[0].resultCode}`);
       }, onscreenAwarenessOptions);
-   } catch (err: BusinessError) {
-      console.error(`subscribe failed, Code: ${error.code}, message: ${error.message}`);
+   } catch (err) {
+      console.error(`subscribe failed, Code: ${err.code}, message: ${err.message}`);
    }
    ```
 
@@ -480,8 +480,8 @@ try {
   onScreen.unsubscribe(onscreenAwarenessCap, (info: onScreen.OnscreenAwarenessInfo[]) => {
     console.info(`unsubscribe resultCode: ${info[0].resultCode}`);
   });
-} catch (err: BusinessError) {
-  console.error(`unsubscribe failed, Code: ${error.code}, message: ${error.message}`);
+} catch (err) {
+  console.error(`unsubscribe failed, Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -543,8 +543,8 @@ try {
   let info: onScreen.OnscreenAwarenessInfo =
     await onScreen.trigger(onscreenAwarenessCap, onscreenAwarenessOptions);
   console.info(`trigger resultCode: ${info.resultCode}`);
-} catch (err: BusinessError) {
-  console.error(`trigger failed, Code: ${error.code}, message: ${error.message}`);
+} catch (err) {
+  console.error(`trigger failed, Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -606,8 +606,8 @@ let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
 try {
   let info: onScreen.OnscreenAwarenessInfo[] = await onScreen.capture(onscreenAwarenessCap);
   console.info(`capture resultCode: ${info[0].resultCode}`);
-} catch (err: BusinessError) {
-  console.error(`capture failed, Code: ${error.code}, message: ${error.message}`);
+} catch (err) {
+  console.error(`capture failed, Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -623,8 +623,8 @@ let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
 try {
   let info: onScreen.OnscreenAwarenessInfo[] = await onScreen.capture(onscreenAwarenessCap);
   console.info(`capture resultCode: ${info[0].resultCode}`);
-} catch (err: BusinessError) {
-  console.error(`capture failed, Code: ${error.code}, message: ${error.message}`);
+} catch (err) {
+  console.error(`capture failed, Code: ${err.code}, message: ${err.message}`);
 }
 ```
 ## onScreen.interact<sup>23+</sup>
@@ -695,8 +695,8 @@ let onscreenAwarenessOptions: onScreen.OnscreenAwarenessOptions = {
 try {
   let info: onScreen.OnscreenAwarenessInfo[] = await onScreen.interact(onscreenAwarenessCap, onscreenAwarenessOptions);
   console.info(`interact resultCode: ${info[0].resultCode}`);
-} catch (err: BusinessError) {
-  console.error(`interact failed, Code: ${error.code}, message: ${error.message}`);
+} catch (err) {
+  console.error(`interact failed, Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -726,8 +726,8 @@ let onscreenAwarenessOptions: onScreen.OnscreenAwarenessOptions = {
 try {
   let info: onScreen.OnscreenAwarenessInfo[] = await onScreen.interact(onscreenAwarenessCap, onscreenAwarenessOptions);
   console.info(`interact resultCode: ${info[0].resultCode}`);
-} catch (err: BusinessError) {
-  console.error(`interact failed, Code: ${error.code}, message: ${error.message}`);
+} catch (err) {
+  console.error(`interact failed, Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -789,8 +789,8 @@ let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
 try {
   let info: onScreen.OnscreenAwarenessInfo[] = await onScreen.apperceive(onscreenAwarenessCap);
   console.info(`apperceive resultCode: ${info[0].resultCode}`);
-} catch (err: BusinessError) {
-  console.error(`apperceive failed, Code: ${error.code}, message: ${error.message}`);
+} catch (err) {
+  console.error(`apperceive failed, Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -833,8 +833,8 @@ try {
    onScreen.onReadingScreenPermissionListener((info: onScreen.ReadingScreenPermissionStatus) => {
       console.info(`onReadingScreenPermissionListener succeeded, readingState: ${info.readingState}`);
    });
-} catch (err: BusinessError) {
-   console.error(`onReadingScreenPermissionListener failed, Code: ${error.code}, message: ${error.message}`);
+} catch (err) {
+   console.error(`onReadingScreenPermissionListener failed, Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -876,7 +876,7 @@ import onScreen from "@ohos.multimodalAwareness.onScreen";
 try {
   onScreen.offReadingScreenPermissionListener();
   console.info(`offReadingScreenPermissionListener succeeded.`);
-} catch (err: BusinessError) {
-  console.error(`offReadingScreenPermissionListener failed, Code: ${error.code}, message: ${error.message}`);
+} catch (err) {
+  console.error(`offReadingScreenPermissionListener failed, Code: ${err.code}, message: ${err.message}`);
 }
 ```

@@ -152,7 +152,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
          console.info(`result = ${data.distance}`);
       });
    } catch (err) {
-      console.error(`call onDistanceMeasure failed, Code: ${error.code}, message: ${error.message}`);
+      console.error(`call onDistanceMeasure failed, Code: ${err.code}, message: ${err.message}`);
    }
 ```
 
@@ -203,7 +203,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
          console.info(`result = ${data.distance}`);
       });
    } catch (err) {
-      console.error(`call offDistanceMeasure failed, Code: ${error.code}, message: ${error.message}`);
+      console.error(`call offDistanceMeasure failed, Code: ${err.code}, message: ${err.message}`);
    }
 ```
 
@@ -254,7 +254,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
          console.info(`result = ${data.position}`);
       });
    } catch (err) {
-      console.error(`call onIndoorOrOutdoorIdentify failed, Code: ${error.code}, message: ${error.message}`);
+      console.error(`call onIndoorOrOutdoorIdentify failed, Code: ${err.code}, message: ${err.message}`);
    }
 ```
 
@@ -305,6 +305,6 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
          console.info(`result = ${data.position}`);
       });
    } catch (err) {
-      console.error(`call offIndoorOrOutdoorIdentify failed, Code: ${error.code}, message: ${error.message}`);
+      console.error(`call offIndoorOrOutdoorIdentify failed, Code: ${err.code}, message: ${err.message}`);
    }
 ```
