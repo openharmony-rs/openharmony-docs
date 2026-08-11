@@ -78,8 +78,6 @@ static create(): MessageSequence
 - MessageSequence对象不能跨线程使用。
 - 建议在需要IPC/RPC通信时按需创建，避免频繁创建和释放。
 
-**配对调用：** 调用create()创建MessageSequence对象后，必须在使用完毕后调用reclaim()释放资源，未调用reclaim()会导致内存资源泄漏。
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
@@ -950,7 +948,7 @@ readInt(): number
 从MessageSequence实例中读取整数值。
 
 - 整数值占用4字节存储空间。
-- 存储范围：-2^31到2^31-1。
+- 存储范围：[-2^31, 2^31-1]。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -3835,7 +3833,7 @@ readRawDataBuffer(size: number): ArrayBuffer
 从MessageSequence读取原始数据。
 
 - 需与写入时的数据大小匹配。
-- 该接口是一次性接口,不允许在一次parcel通信中多次调用。
+- 该接口是一次性接口，不允许在一次parcel通信中多次调用。
 - 大数据量传输时注意系统资源占用。
 - 必须与[writeRawDataBuffer](#writerawdatabuffer11)配对使用。
 
