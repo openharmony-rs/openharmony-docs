@@ -741,7 +741,7 @@ type ReportExecuteActionEvent = (actionType: string, params: string) => void
 
 type ReportExecuteAbilityEvent = (want: WantAgent) => void
 
-通知播控中心拉起指定媒体应用界面事件。
+通知音频模板控制方拉起指定媒体应用界面事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -1716,7 +1716,7 @@ export class ControllerManager {
 
 onUserInfoChange(callback: Callback&lt;UserInfo&gt;): void
 
-注册用户信息改变的回调。当媒体应用的用户信息发生变化（如登录状态改变、用户资料更新等）时，通过音频模板控制器触发该回调，通知播控中心。使用callback异步回调。
+注册用户信息改变的回调。当媒体应用的用户信息发生变化（如登录状态改变、用户资料更新等）时，通过音频模板控制器触发该回调，通知音频模板控制方。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1897,7 +1897,7 @@ export class ControllerManager {
 
 onCurrentSingleChange(callback: Callback&lt;Single&gt;): void
 
-注册当前单曲改变的回调。当正在播放的单曲发生变化（如切换歌曲、开始播放新歌曲等）时，通过音频模板控制器触发该回调，通知播控中心。使用callback异步回调。
+注册当前单曲改变的回调。当正在播放的单曲发生变化（如切换歌曲、开始播放新歌曲等）时，通过音频模板控制器触发该回调，通知音频模板控制方。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2169,7 +2169,7 @@ export class ControllerManager {
 
 onPlaylistChange(callback: Callback&lt;PageMediaEntity&gt;): void
 
-注册上报播放列表改变的回调。当播放列表发生改变（如添加歌曲、删除歌曲、调整播放顺序等）时，通过音频模板控制器触发该回调，通知播控中心。使用callback异步回调。
+注册上报播放列表改变的回调。当播放列表发生改变（如添加歌曲、删除歌曲、调整播放顺序等）时，通过音频模板控制器触发该回调，通知音频模板控制方。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2635,7 +2635,7 @@ onExtensionAbilityChange(callback: ReportExecuteAbilityEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                       |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
-| callback | [ReportExecuteAbilityEvent](arkts-apis-avMusicTemplate-t.md#reportexecuteabilityevent) | 是   | 回调函数，通知播控中心拉起指定三方应用界面的事件，包含应用包名和界面名称等信息。 |
+| callback | [ReportExecuteAbilityEvent](arkts-apis-avMusicTemplate-t.md#reportexecuteabilityevent) | 是   | 回调函数，通知音频模板控制方拉起指定三方应用界面的事件，包含应用包名和界面名称等信息。 |
 
 **错误码：**
 
@@ -2682,7 +2682,7 @@ offExtensionAbilityChange(callback?: ReportExecuteAbilityEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                 |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
-| callback | [ReportExecuteAbilityEvent](arkts-apis-avMusicTemplate-t.md#reportexecuteabilityevent) | 否   | 通知播控中心拉起指定的媒体应用界面的事件回调。不填该参数则注销该类型对应的所有回调。 |
+| callback | [ReportExecuteAbilityEvent](arkts-apis-avMusicTemplate-t.md#reportexecuteabilityevent) | 否   | 通知音频模板控制方拉起指定的媒体应用界面的事件回调。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
