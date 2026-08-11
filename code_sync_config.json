@@ -65348,6 +65348,31 @@
 						"end_line":91,
 						"name":"SetPlaybackCaptureMode",
 						"start_line":88
+					},
+					{
+						"end_line":18,
+						"name":"PlaybackCaptureImport",
+						"start_line":15
+					},
+					{
+						"end_line":26,
+						"name":"PlaybackCaptureGlobalState",
+						"start_line":20
+					},
+					{
+						"end_line":54,
+						"name":"PlaybackCaptureReadDataCallback",
+						"start_line":49
+					},
+					{
+						"end_line":128,
+						"name":"RequestPlaybackCaptureStart",
+						"start_line":111
+					},
+					{
+						"end_line":74,
+						"name":"ReleasePlaybackCapture",
+						"start_line":56
 					}
 				]
 			},
@@ -65358,6 +65383,36 @@
 						"end_line":604,
 						"name":"SetPlaybackCaptureMode",
 						"start_line":601
+					},
+					{
+						"end_line":22,
+						"name":"header_file",
+						"start_line":19
+					},
+					{
+						"end_line":39,
+						"name":"PlaybackCaptureConstants",
+						"start_line":34
+					},
+					{
+						"end_line":48,
+						"name":"PlaybackCaptureGlobalState",
+						"start_line":43
+					},
+					{
+						"end_line":113,
+						"name":"PlaybackCaptureReadDataCallback",
+						"start_line":101
+					},
+					{
+						"end_line":142,
+						"name":"PlaybackCaptureStartCallback",
+						"start_line":115
+					},
+					{
+						"end_line":772,
+						"name":"StopPlaybackCapture",
+						"start_line":745
 					}
 				]
 			}
