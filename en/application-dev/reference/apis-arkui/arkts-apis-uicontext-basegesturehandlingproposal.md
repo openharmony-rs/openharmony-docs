@@ -6,7 +6,7 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=1679aa2b39603a323ce91f1907155d8cbd2b330b translatedAt=2026-08-11T01:52:47.083Z pushedAt=2026-08-11T04:23:12.623Z -->
+<!-- md-trans-meta sourceCommit=1679aa2b39603a323ce91f1907155d8cbd2b330b translatedAt=2026-08-11T01:52:47.083Z pushedAt=2026-08-11T06:04:50.152Z -->
 
 Base class for smart gesture handling. When the [registerMonitor](./arkts-apis-uicontext-smartgesturecontroller.md#registermonitor) API is used to dynamically customize smart gesture behaviors, the callback parameter is an instance of a specific subclass type.
 
@@ -79,4 +79,4 @@ struct SmartGestureControllerExample {
 }
 ```
 
-![smartgesture_01](figures/smartgesture_01.png)
+![smartgesture_01](figures/smartgesture_01.PNG)

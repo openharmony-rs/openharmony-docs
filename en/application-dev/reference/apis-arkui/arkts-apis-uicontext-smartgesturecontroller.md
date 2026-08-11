@@ -6,7 +6,7 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=1679aa2b39603a323ce91f1907155d8cbd2b330b translatedAt=2026-08-11T01:54:14.191Z pushedAt=2026-08-11T04:34:03.847Z -->
+<!-- md-trans-meta sourceCommit=1679aa2b39603a323ce91f1907155d8cbd2b330b translatedAt=2026-08-11T01:54:14.191Z pushedAt=2026-08-11T06:05:03.590Z -->
 
 Provides the capabilities of smart gestures enabling, listening, selected state control, and dynamic smart gesture behaviors decision. It is suitable for scenarios where an app integrates smart gestures, listens for the system's default gesture handling intent, and customizes gesture response behaviors, helping the app flexibly control the smart gesture interaction process.
 
@@ -82,7 +82,7 @@ struct SmartGestureControllerExample {
 }
 ```
 
-![smartgesture_01](figures/smartgesture_01.png)
+![smartgesture_01](figures/smartgesture_01.PNG)
 
 ## registerMonitor
 
@@ -165,7 +165,7 @@ struct SmartGestureControllerExample {
 }
 ```
 
-![smartgesture_01](figures/smartgesture_01.png)
+![smartgesture_01](figures/smartgesture_01.PNG)
 
 ## unregisterMonitor
 
@@ -239,7 +239,7 @@ struct SmartGestureControllerExample {
 }
 ```
 
-![smartgesture_01](figures/smartgesture_01.png)
+![smartgesture_01](figures/smartgesture_01.PNG)
 
 ## clearMonitors
 
@@ -307,7 +307,7 @@ struct SmartGestureControllerExample {
 }
 ```
 
-![smartgesture_01](figures/smartgesture_01.png)
+![smartgesture_01](figures/smartgesture_01.PNG)
 
 ## requestSelected
 
@@ -384,7 +384,7 @@ struct SmartGestureControllerExample {
 }
 ```
 
-![smartgesture_02](figures/smartgesture_02.png)
+![smartgesture_02](figures/smartgesture_02.PNG)
 
 ## clearSelected
 
@@ -450,7 +450,7 @@ struct SmartGestureControllerExample {
 }
 ```
 
-![smartgesture_02](figures/smartgesture_02.png)
+![smartgesture_02](figures/smartgesture_02.PNG)
 
 ## Example
 
@@ -603,4 +603,5 @@ struct SmartGestureControllerExample {
 }
 ```
 
-![smartgesture_06](figures/smartgesture_06.png)
+![smartgesture_06](figures/smartgesture_06.PNG)
+<!--no_check-->

@@ -6,7 +6,7 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=1679aa2b39603a323ce91f1907155d8cbd2b330b translatedAt=2026-08-11T01:54:30.200Z pushedAt=2026-08-11T04:26:16.801Z -->
+<!-- md-trans-meta sourceCommit=1679aa2b39603a323ce91f1907155d8cbd2b330b translatedAt=2026-08-11T01:54:30.200Z pushedAt=2026-08-11T06:05:04.811Z -->
 
 Base class for smart gesture handling with a target node.
 
@@ -82,4 +82,4 @@ struct SmartGestureControllerExample {
 }
 ```
 
-![smartgesture_01](figures/smartgesture_01.png)
+![smartgesture_01](figures/smartgesture_01.PNG)

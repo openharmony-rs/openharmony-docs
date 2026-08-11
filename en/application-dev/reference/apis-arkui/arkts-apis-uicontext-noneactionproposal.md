@@ -6,7 +6,7 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=1679aa2b39603a323ce91f1907155d8cbd2b330b translatedAt=2026-08-11T01:52:51.111Z pushedAt=2026-08-11T04:23:08.201Z -->
+<!-- md-trans-meta sourceCommit=1679aa2b39603a323ce91f1907155d8cbd2b330b translatedAt=2026-08-11T01:52:51.111Z pushedAt=2026-08-11T06:04:55.083Z -->
 
 Smart gesture no-action handling. When dynamically customizing smart gesture behavior through the [registerMonitor](./arkts-apis-uicontext-smartgesturecontroller.md#registermonitor) API, setting **selectedProposal** of the return value [Class (GestureHandlingResolution)](./arkts-apis-uicontext-gesturehandlingresolution.md) to an object of this type will not trigger any action.
 
@@ -93,4 +93,4 @@ struct SmartGestureControllerExample {
 }
 ```
 
-![smartgesture_07](figures/smartgesture_07.png)
+![smartgesture_07](figures/smartgesture_07.PNG)

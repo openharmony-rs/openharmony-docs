@@ -6,7 +6,7 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=1679aa2b39603a323ce91f1907155d8cbd2b330b translatedAt=2026-08-11T01:52:40.423Z pushedAt=2026-08-11T04:23:14.142Z -->
+<!-- md-trans-meta sourceCommit=1679aa2b39603a323ce91f1907155d8cbd2b330b translatedAt=2026-08-11T01:52:40.423Z pushedAt=2026-08-11T06:04:48.728Z -->
 
 Smart gesture back action handling. When dynamically customizing smart gesture behavior through the [registerMonitor](./arkts-apis-uicontext-smartgesturecontroller.md#registermonitor) API, setting **selectedProposal** of the return value [Class (GestureHandlingResolution)](./arkts-apis-uicontext-gesturehandlingresolution.md) to an object of this type navigates back to the previous page.
 
@@ -28,7 +28,7 @@ Constructor for smart gesture back action handling.
 
 **Example**
 
-This example implements customizing the smart gesture action handling as smart gesture back action handling in the smart gesture listening callback. For the complete example, see [Example 1 (Enable Smart Gestures and Customize Action Handling)](./arkts-apis-uicontext-smartgesturecontroller.md#example-1-enable-smart-gestures-and-customize-action-handling).
+This example implements customizing the smart gesture action handling as smart gesture back action handling in the smart gesture listening callback. For the complete example, see [Example 1 (Enabling Smart Gestures and Customizing Action Handling)](./arkts-apis-uicontext-smartgesturecontroller.md#example-1-enabling-smart-gestures-and-customizing-action-handling).
 
 ```ts
 import {
@@ -93,4 +93,4 @@ struct SmartGestureControllerExample {
 }
 ```
 
-![smartgesture_07](figures/smartgesture_07.png)
+![smartgesture_07](figures/smartgesture_07.PNG)
