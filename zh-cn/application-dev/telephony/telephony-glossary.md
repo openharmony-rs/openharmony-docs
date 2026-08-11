@@ -478,14 +478,6 @@ WCDMA/TD-SCDMA中标识UTRA载波频点的编号，以200kHz为单位换算绝�
 
 ## #
 
-### 3rd Generation Partnership Project (3GPP)；第三代合作伙伴计划
-
-制定GSM/UMTS/LTE/NR等移动通信标准的国际标准化组织，其规范覆盖SIM/USIM、IMS、SMS、USAT等，是3GPP体系网络（对应IMEI）的协议基础，与3GPP2并列运作。
-
-### 3rd Generation Partnership Project 2 (3GPP2)；第三代合作伙伴计划2
-
-制定cdmaOne/CDMA2000/EVDO等CDMA移动通信标准的标准化组织，与3GPP并行运作，其规范网络（对应MEID）的短信PDU结构与3GPP不同。
-
 ### 5G Core (5GC)；5G核心网
 
 3GPP R15起定义的5G核心网，采用服务化架构并支持网络切片与控制面/用户面分离，与NG-RAN配合构成SA组网，是5G完整能力的基础，区别于4G EPC核心网。
