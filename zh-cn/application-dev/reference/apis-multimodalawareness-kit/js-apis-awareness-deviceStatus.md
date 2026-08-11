@@ -81,7 +81,7 @@ off(type: 'steadyStandingDetect', callback?: Callback&lt;SteadyStandingStatus&gt
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                           | 是   | 事件类型。固定传入'steadyStandingDetect'，表示设备静止姿态（支架态）感知。 |
-| callback | Callback&lt;[SteadyStandingStatus](#steadystandingstatus)&gt; | 否   | 要注销的回调函数，需与订阅时传入的回调函数一致。API版本若不填，则取消当前监听该事件的所有回调函数。 |
+| callback | Callback&lt;[SteadyStandingStatus](#steadystandingstatus)&gt; | 否   | 要注销的回调函数，需与订阅时传入的回调函数一致。若不填，则取消当前监听该事件的所有回调函数。 |
 
 **错误码**：
 

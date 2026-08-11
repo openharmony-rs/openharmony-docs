@@ -70,7 +70,7 @@ type ActivityType = 'still' | 'relativeStill'
 
 on(activity: ActivityType, event: ActivityEvent, reportLatencyNs: number, callback: Callback&lt;ActivityResponse&gt;): void
 
-订阅设备状态变化事件。当设备满足指定状态条件时，系统会触发回调函数上报状态变化事件API版本。调用on()后，必须在不使用时调用off()取消订阅，避免多余的性能功耗开销。
+订阅设备状态变化事件。当设备满足指定状态条件时，系统会触发回调函数上报状态变化事件。调用on()后，必须在不使用时调用off()取消订阅，避免多余的性能功耗开销。
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Stationary
 
@@ -86,7 +86,7 @@ on(activity: ActivityType, event: ActivityEvent, reportLatencyNs: number, callba
 **示例：**
 
 ```ts
-let reportLatencyNs = 1000000000;
+let reportLatencyNs = 1000000000; // 单位：纳秒
 stationary.on('still', stationary.ActivityEvent.ENTER, reportLatencyNs, (data) => {
     console.info('data=' + JSON.stringify(data));
 });
@@ -96,7 +96,7 @@ stationary.on('still', stationary.ActivityEvent.ENTER, reportLatencyNs, (data) =
 
 once(activity: ActivityType, callback: Callback&lt;ActivityResponse&gt;): void
 
-查询设备状态。通过callback回调返回查询结果，仅执行一次。
+查询设备状态。通过callback回调返回查询结果，仅执行一次。使用callback异步回调。
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Stationary
 

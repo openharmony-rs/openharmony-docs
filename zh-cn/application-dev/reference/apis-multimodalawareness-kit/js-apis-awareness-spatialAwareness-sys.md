@@ -2,11 +2,11 @@
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
-<!--Designer: @zou_ye-->
+<!--Designer: @saga2025-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
 
-本模块提供对测距的感知能力，支持基于蓝牙、WIFI、超声、星闪等多种信号类型的测距功能。
+本模块提供对测距的感知能力，支持超声信号测试。
 
 > **说明：**
 >
@@ -65,9 +65,9 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 | 名称               | 类型            | 只读   | 可选   | 说明     |
 | -------------------| ---------------| -------|------  |-------------|
 | rank               | DistanceRank   | 是     | 否     | 表示距离档位。|
-| distance           | float          | 是     | 否     | 表示距离，取值范围：[]。|
-| confidence         | float          | 是     | 否     | 表示置信度，取值范围：[]。|
-| deviceId           | string         | 是     | 否     | 表示设备Id号，取值范围：[]。|
+| distance           | float          | 是     | 否     | 表示距离，结果≥0。|
+| confidence         | float          | 是     | 否     | 表示置信度，取值范围：[0,1]。|
+| deviceId           | string         | 是     | 否     | 表示设备Id号，字符串长度：[1,128]。|
 
 ## spatialAwareness.PositionRelativeToDoor
 
@@ -88,9 +88,9 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 | 名称               | 类型                   | 只读      | 可选       | 说明     |
 | -------------------| ----------------------| ----------|----------|--------|
-| doorLockCode       | int                   | 是        | 否         | 表示门锁校验码，取值范围：[]。|
+| doorLockCode       | int                   | 是        | 否         | 表示门锁校验码，结果≥0。|
 | position           | PositionRelativeToDoor| 是        | 否          | 表示门内外位置信息。|
-| deviceId           | string                | 是        | 否         | 表示设备Id号，取值范围：[]。  |
+| deviceId           | string                | 是        | 否         | 表示设备Id号，字符串长度：[1,128]。  |
 
 ## spatialAwareness.DistanceMeasurementConfigParams
 

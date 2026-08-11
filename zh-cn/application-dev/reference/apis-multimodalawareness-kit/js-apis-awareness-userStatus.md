@@ -2,7 +2,7 @@
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
-<!--Designer: @zou_ye-->
+<!--Designer: @saga2025-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
 
@@ -25,6 +25,10 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
 
+**起始版本**：20
+
+**废弃版本**：24
+
 | 名称                | 值  | 说明                   |
 | ------------------- | ---- | ---------------------- |
 | OTHERS  | 0    | 表示是成年人操作。 |
@@ -35,6 +39,10 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 表示用户年龄群组分类检测结果。
 
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
+
+**起始版本**：20
+
+**废弃版本**：24
 
 | 名称                | 类型   |只读|可选| 说明                   |
 | ------------------- | ---- |----|----| ---------------------- |
@@ -53,6 +61,10 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
 
 **设备行为差异**：该接口在Phone中可正常调用，在其他设备类型中返回801错误码。
+
+**起始版本**：20
+
+**废弃版本**：24
 
 > **说明：**
 >
@@ -102,6 +114,10 @@ off(type: 'userAgeGroupDetected', callback?: Callback&lt;UserClassification&gt;)
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
 
 **设备行为差异**：该接口在Phone中可正常调用，在其他设备类型中返回33900003错误码。
+
+**起始版本**：20
+
+**废弃版本**：24
 
 > **说明：**
 >

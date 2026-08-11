@@ -71,7 +71,7 @@ on(type: 'operationSubmitMetadata', bundleName: string, callback: Callback&lt;nu
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
 |type| string|是|事件类型，固定传入'operationSubmitMetadata'，表示系统应用获取编码内容。|
 |bundleName|string|是|应用包名，用于标识注册订阅事件的第三方应用。在事件发生时，系统将通过此包名识别并通知对应的注册应用。需确保传入的包名为有效的应用包名。|
-|callback|Callback&lt;number&gt;|是|回调函数，用于返回事件码。当事件值为1时表示截图事件，目前仅支持截图事件。注意：回调函数应快速执行，避免阻塞UI线程。| 
+|callback|Callback&lt;number&gt;|是|回调函数，用于返回事件码。当事件值为1时表示截图事件，目前仅支持截图事件，取值范围：1（截图事件）。注意：回调函数应快速执行，避免阻塞UI线程。| 
 
 **错误码**：
 
@@ -80,7 +80,7 @@ on(type: 'operationSubmitMetadata', bundleName: string, callback: Callback&lt;nu
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 32100001 | Internal handling failed. |
-| 32100004 | Subscribe Failed. Possible causes: 1. Abnormal system capability; 2. IPC communication abnormality; 3. Algorithm loading exception. |
+| 32100004 | Subscribe Failed. Possible causes: 1. Abnormal system capability. 2. IPC communication abnormality. 3. Algorithm loading exception. |
 
 **示例：**  
 ```ts
@@ -125,7 +125,7 @@ off(type: 'operationSubmitMetadata', bundleName: string, callback?: Callback&lt;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 32100001 | Internal handling failed. |
-| 32100005 | Unsubscribe Failed. Possible causes: 1. Abnormal system capability; 2. IPC communication abnormality. |
+| 32100005 | Unsubscribe Failed. Possible causes: 1. Abnormal system capability. 2. IPC communication abnormality. |
 
 **示例**：
 
