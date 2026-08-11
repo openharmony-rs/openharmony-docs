@@ -173,7 +173,7 @@ let sendCallback: AsyncCallback<sms.ISendShortMessageCallback> = (err: BusinessE
         console.error('sendCallback: err->${JSON.stringify(err)}');
         return;
     }
-    console.info('snedCallback: data->${JSON.stringify(data)}');
+    console.info('sendCallback: data->${JSON.stringify(data)}');
 };
 let deliveryCallback: AsyncCallback<sms.IDeliveryShortMessageCallback> = (err: BusinessError, data: sms.IDeliveryShortMessageCallback) => {
     if (err) {
@@ -239,7 +239,7 @@ let sendCallback: AsyncCallback<sms.ISendShortMessageCallback> = (err: BusinessE
         console.error('sendCallback: err->${JSON.stringify(err)}');
         return;
     }
-    console.info('snedCallback: data->${JSON.stringify(data)}');
+    console.info('sendCallback: data->${JSON.stringify(data)}');
 };
 let deliveryCallback: AsyncCallback<sms.IDeliveryShortMessageCallback> = (err: BusinessError, data: sms.IDeliveryShortMessageCallback) => {
     if (err) {
@@ -312,7 +312,7 @@ let sendCallback: AsyncCallback<sms.ISendShortMessageCallback> = (err: BusinessE
         console.error('sendCallback: err->${JSON.stringify(err)}');
         return;
     }
-    console.info('snedCallback: data->${JSON.stringify(data)}');
+    console.info('sendCallback: data->${JSON.stringify(data)}');
 };
 let deliveryCallback: AsyncCallback<sms.IDeliveryShortMessageCallback> = (err: BusinessError, data: sms.IDeliveryShortMessageCallback) => {
     if (err) {
@@ -604,7 +604,7 @@ promise.then((data: number) => {
 |       名称       | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | slotId           | number                                                       |  否  |  否  | 用于发送短信的SIM卡槽ID：<br>- 0：卡槽1<br>- 1：卡槽2      |
-| destinationHost  | string                                                       |  否  |  否  | 短信的发送地址。，格式为带国家代码的手机号，如'+861xxxxxxxxxx'           |
+| destinationHost  | string                                                       |  否  |  否  | 短信的发送地址，格式为带国家代码的手机号，如'+861xxxxxxxxxx'           |
 | content          | string \| Array&lt;number&gt;                                |  否  |  否  | 如果内容是字符串，则这是一条文本短信。如果内容是字节数组，则这是一条数据短信。 |
 | serviceCenter    | string                                                       |  否  |  是  | 短信中心地址，格式为带国家代码的手机号。默认使用SIM卡中的短信中心地址。                |
 | destinationPort  | number                                                       |  否  |  是  | 如果发送数据短信，destinationPort 是必需的。否则是可选的，不传入时不设置数据端口。   |
