@@ -1027,7 +1027,7 @@ async function usbSubmitTransfer() {
   }
   // 获取endpoint端点地址。
   let endpoint = device.configs?.[0]?.interfaces?.[0]?.endpoints.find((value) => {
-    return value.direction === 0 && value.type === 2
+    return value.direction === 0 && value.type === 2;
   });
   // 声明接口控制权，force参数为true表示强制获取。
   let ret: int = usbManager.claimInterface(devicePipe, device.configs?.[0]?.interfaces?.[0], true);
