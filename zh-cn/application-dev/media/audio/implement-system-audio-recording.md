@@ -379,7 +379,7 @@ C/C++开发建议搭配[OH_AudioStreamBuilderStruct](../../reference/apis-audio-
    >
    > - `OH_AudioCapturer_RequestPlaybackCaptureStart()`返回`AUDIOSTREAM_SUCCESS`仅表示启动请求提交成功。只有异步回调返回`AUDIOSTREAM_PLAYBACKCAPTURE_START_STATE_SUCCESS`时，才表示内录启动成功。
    > - 用户拒绝授权或系统未能拉起授权弹框时，回调返回`AUDIOSTREAM_PLAYBACKCAPTURE_START_STATE_NOT_AUTHORIZED`。
-   
+
 4. 停止并释放内录采集器。
 
    业务结束后，通过[OH_AudioCapturer_Stop()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_stop)停止采集，并通过[OH_AudioCapturer_Release()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_release)释放资源。
