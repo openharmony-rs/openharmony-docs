@@ -11,7 +11,7 @@
 
 ### Ability Privilege Level (APL)；能力权限等级
 
-OpenHarmony系统中表示调用方权限层级的标识。
+OpenHarmony系统中用于标识应用（Ability）权限层级的机制，定义了应用可访问系统资源和API的范围。
 
 ### Abstract Syntax Notation One (ASN.1)；抽象语法标记
 
@@ -25,7 +25,7 @@ OpenHarmony系统中表示调用方权限层级的标识。
 
 ### Cipher Block Chaining (CBC)；密码分组链接模式
 
-将前一组密文与当前组明文异或后再进行分组加密的工作模式。
+将前一组密文与当前组明文进行按位异或（XOR）后再进行分组加密的工作模式。
 
 ### Cipher-based Message Authentication Code (CMAC)；基于分组密码的消息认证码
 

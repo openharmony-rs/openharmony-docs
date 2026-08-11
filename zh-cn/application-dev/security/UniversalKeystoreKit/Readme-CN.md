@@ -82,7 +82,7 @@
       - [群组密钥(ArkTS)](huks-group-key-arkts.md)
       - [群组密钥(C/C++)](huks-group-key-ndk.md)
     <!--Del-->
-    - [指定用户身份操作(仅对系统应用开放)](huks-as-user-sys.md)
+    - [指定用户身份操作（仅对系统应用开放）](huks-as-user-sys.md)
     <!--DelEnd-->
 - 外部密钥管理扩展<!--huks-external-key-management-->
   - [外部密钥管理扩展简介](huks-external-hardware-key-management-overview.md)
@@ -121,5 +121,5 @@
   - [UKey流程示例指导](huks-ukey-best-dev.md)
   - 驱动HAP ExtensionAbility适配指导<!--huks-extension-ability-support-->
     - [CryptoExtensionAbility扩展能力介绍](huks-extension-ability-support-overview.md)
-    - [CryptoExtensionAbility适配开发指导](huks-extension-ability-support-dev.md)
-- [Universal Keystore Kit术语](universal-keystore-glossary.md)<!--RP4--><!--RP4End-->
+    - [CryptoExtensionAbility适配开发指导](huks-extension-ability-support-dev.md)<!--RP4--><!--RP4End-->
+- [Universal Keystore Kit术语](universal-keystore-glossary.md)
