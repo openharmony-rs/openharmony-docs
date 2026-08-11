@@ -4,7 +4,7 @@
 <!--Owner: @liyiming13-->
 <!--Designer: @liyiming13-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 
 ARM Neon是ARM架构的SIMD（Single Instruction Multiple Data）扩展实现，提供一条指令处理多个数据的并行处理能力，广泛用于多媒体编解码、2D/3D图形处理等领域，提高执行性能。
