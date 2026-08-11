@@ -357,7 +357,7 @@ getDefaultSmsSlotId\(callback: AsyncCallback&lt;number&gt;\): void
 | 参数名   | 类型                        | 必填 | 说明                                     |
 | -------- | --------------------------- | ---- | ---------------------------------------- |
 | callback | AsyncCallback&lt;number&gt; | 是   | 获取发送短信的默认SIM卡槽ID的回调函数。<br>- 0：卡槽1<br>- 1：卡槽2 |
- 	 
+
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
@@ -402,7 +402,7 @@ getDefaultSmsSlotId\(\): Promise&lt;number&gt;
 | 类型            | 说明                                                         |
 | --------------- | ------------------------------------------------------------ |
 | Promise&lt;number&gt; | 以Promise形式返回发送短信的默认SIM卡：<br>- 0：卡槽1<br>- 1：卡槽2 |
- 	 
+
 **错误码：**
 
 以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
