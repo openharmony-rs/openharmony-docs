@@ -13,6 +13,8 @@
 >
 > ShadowOptions的radius参数，在API版本26.0.0之前取值范围为[0, +∞)，设置的值为0时不绘制阴影(设置小于0的值时按值为0处理)；从API版本26.0.0开始取值范围变更为(-∞, +∞)，值小于0时不绘制阴影。
 
+ArkTS-Dyn示例：
+
 <!-- @[shadow_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Shadow/entry/src/main/ets/pages/Shadow.ets) -->
 
 ``` TypeScript
@@ -58,6 +60,62 @@ struct ShadowOptionDemo {
 }
 ```
 
+ArkTS-Sta示例：
 
+<!-- @[shadow_option](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ShadowStatic/entry/src/main/ets/pages/Shadow.ets) -->
+
+``` TypeScript
+import {
+  Entry,
+  Component,
+  Row,
+  Column,
+  Text,
+  FlexAlign,
+  Color,
+  ShadowOptions
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ShadowOptionDemo {
+  build(): void {
+    Row() {
+      Column() {
+        Column() {
+          Text('shadowOption').fontSize(12)
+        }
+        .width(100)
+        .aspectRatio(1)
+        .margin(10)
+        .justifyContent(FlexAlign.Center)
+        .backgroundColor(Color.White)
+        .borderRadius(20)
+        .shadow({ radius: 10, color: Color.Gray } as ShadowOptions)
+
+        Column() {
+          Text('shadowOption').fontSize(12)
+        }
+        .width(100)
+        .aspectRatio(1)
+        .margin(10)
+        .justifyContent(FlexAlign.Center)
+        .backgroundColor('#a8a888')
+        .borderRadius(20)
+        .shadow({
+          radius: 10,
+          color: Color.Gray,
+          offsetX: 20,
+          offsetY: 20
+        } as ShadowOptions)
+      }
+      .width('100%')
+      .height('100%')
+      .justifyContent(FlexAlign.Center)
+    }
+    .height('100%')
+  }
+}
+```
 
 ![zh-cn_image_0000001598502322](figures/Shadow-Effect.png)

@@ -12,7 +12,7 @@ ArkTS语言支持异步操作，API18版本开始支持异步任务的等待和�
 
 > **说明：**
 >
-> 使用异步方法需标记为async，调用时需用await修饰，确保时序正确。
+> 使用异步方法需标记为async，调用时可用await修饰，确保时序正确。
 
 ## 使用示例
 
@@ -37,16 +37,14 @@ ArkTS语言支持异步操作，API18版本开始支持异步任务的等待和�
    
    @Concurrent
    async function wait(conditionVariable: ArkTSUtils.locks.ConditionVariable) {
-     conditionVariable.wait().then(() => {
-       console.info(`TaskPool Thread Wait: success`);
-     });
+     await conditionVariable.wait();
+     console.info(`TaskPool Thread Wait: success`);
    }
    
    @Concurrent
    async function waitFor(conditionVariable: ArkTSUtils.locks.ConditionVariable) {
-     conditionVariable.waitFor(3000).then(() => {
-       console.info(`TaskPool Thread WaitFor: success`);
-     });
+     await conditionVariable.waitFor(3000);
+     console.info(`TaskPool Thread WaitFor: success`);
    }
    
    @Entry

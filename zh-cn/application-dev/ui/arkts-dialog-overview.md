@@ -60,7 +60,7 @@
 >
 > 系统弹窗由系统弹出，出于安全考虑，不支持自定义样式。
 >
-> 系统弹窗出现时，调用非系统弹窗的显示接口（例如：[promptAction](../reference/apis-arkui/js-apis-promptAction.md)的[openCustomDialog](../reference/apis-arkui/js-apis-promptAction.md#promptactionopencustomdialogdeprecated)、[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)的[open](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#open)等），禁止该类弹窗显示。
+> 系统弹窗出现时，调用非系统弹窗的显示接口（例如：[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12-1)、[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)的[open](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#open)等），禁止该类弹窗显示。
 
 ## 使用场景
 

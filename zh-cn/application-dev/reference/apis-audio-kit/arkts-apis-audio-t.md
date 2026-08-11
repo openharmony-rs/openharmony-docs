@@ -110,7 +110,7 @@ type AudioRendererWriteDataCallback = (data: ArrayBuffer) => AudioDataCallbackRe
 
 type AudioRendererWriteDataCallback = (data: ArrayBuffer) => AudioDataCallbackResult
 
-回调函数类型，用于音频渲染器的数据写入，回调函数结束后，音频服务会把data指向的数据放入队列里等待播放，因此请勿在回调外再次更改data指向的数据, 且务必保证往data填满待播放数据, 否则会导致音频服务播放杂音。
+回调函数类型，用于音频渲染器的数据写入，回调函数结束后，音频服务会把data指向的数据放入队列里等待播放，因此请勿在回调外再次更改data指向的数据，且务必保证往data填满待播放数据，否则会导致音频播放出现杂音。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 

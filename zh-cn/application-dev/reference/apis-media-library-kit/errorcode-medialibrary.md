@@ -84,6 +84,27 @@ MediaLibrary inner fail.
 
 清理后台或重启设备。
 
+
+## 23800302 打开文件失败
+
+**错误信息**
+
+Failed to open the file.
+
+**错误描述**
+
+媒体库打开文件失败。
+
+**可能原因**
+
+1. 因网络连接问题，无法访问云图库资产（Unable to access cloud images due to network connectivity issues）。
+
+2. 文件系统异常（File system malfunction）。
+
+**处理步骤**
+
+检查网络或文件访问路径。
+
 ## 23800151 场景参数校验不通过
 
 **错误信息**

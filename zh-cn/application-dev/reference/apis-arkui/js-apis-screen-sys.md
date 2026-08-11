@@ -2314,9 +2314,10 @@ screen.stopExpand(expandScreenIds).then(() => {
 | activeModeIndex   | ArkTS-Dyn: number <br> ArkTS-Sta: long                                         | 是   | 否   | 当前屏幕所处模式索引。模式索引的当前值和值的范围，会根据屏幕当前分辨率、刷新率和设备硬件差异产生变化。该参数为整数。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br> **ArkTS-Dyn起始版本：** 9   <br>  **ArkTS-Sta起始版本：** 23 |
 | orientation       | [Orientation](#orientation)                     | 是   | 否   | 屏幕方向。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br> **ArkTS-Dyn起始版本：** 9   <br>  **ArkTS-Sta起始版本：** 23 |
 | sourceMode<sup>10+</sup> | [ScreenSourceMode](#screensourcemode10)            | 是   | 否   | 屏幕来源模式。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br> **ArkTS-Dyn起始版本：** 10   <br>  **ArkTS-Sta起始版本：** 23     |
-| serialNumber<sup>15+</sup> | string        | 是   | 是   | 扩展屏幕的序列号，默认返回为空字符串。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core**ArkTS-Dyn起始版本：** 15   <br>  **ArkTS-Sta起始版本：** 23 |
-| densityDpi | ArkTS-Dyn: number <br> ArkTS-Sta: long         | 是   | 是   | 屏幕的物理像素密度，即每英寸的像素数。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0   <br>  **ArkTS-Sta起始版本：** 26.0.0 |
-| screenType | [ScreenType](#screentype)         | 是   | 是   | 屏幕的类型，默认值为BUILT_IN。<br>**系统能力：** SystemCapability.Window.SessionManager <br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.1.0   <br>  **ArkTS-Sta起始版本：** 26.1.0 |
+| serialNumber<sup>15+</sup> | string        | 是   | 是   | 扩展屏幕的序列号，默认返回为空字符串。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br> **ArkTS-Dyn起始版本：** 15   <br>  **ArkTS-Sta起始版本：** 23 |
+| densityDpi | ArkTS-Dyn: number <br> ArkTS-Sta: long         | 是   | 是   | 屏幕的物理像素密度，即每英寸的像素数。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br> **模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0   <br>  **ArkTS-Sta起始版本：** 26.0.0 |
+| isInUse | boolean        | 是   | 是   | 标识屏幕的使用状态。true表示屏幕使用中；false表示屏幕未使用；默认值为true。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0<br> |
+| screenType | [ScreenType](#screentype)         | 是   | 是   | 屏幕的类型，默认值为BUILT_IN。<br>**系统能力：** SystemCapability.Window.SessionManager <br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0   <br>  **ArkTS-Sta起始版本：** 26.0.0 |
 
 ### setOrientation
 
@@ -3083,9 +3084,9 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 
 

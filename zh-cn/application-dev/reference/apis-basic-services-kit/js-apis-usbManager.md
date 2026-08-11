@@ -295,7 +295,6 @@ requestRight(deviceName: string): Promise&lt;boolean&gt;
 **示例：**
 
 ```ts
-import { BusinessError } from '@ohos.base';
 function requestRight() {
   let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
   if (!devicesList || devicesList.length == 0) {
@@ -306,7 +305,7 @@ function requestRight() {
   let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name).then(ret => {
     console.info(`requestRight = ${ret}`);
-  }).catch((error: BusinessError) => {
+  }).catch((error) => {
     console.error(`Failed to request right. Code: ${error.code}, message: ${error.message}`);
   });
 }
@@ -817,7 +816,6 @@ ArkTS-Sta: usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceReques
 **示例：**
 
 ```ts
-import { BusinessError } from '@ohos.base';
 // 控制传输参数：根据USB协议规范、设备描述符或设备规格文档设置各字段值
 // bmRequestType：请求控制类型，常见取值示例：0x00（标准请求，主机向设备）、0x20（类请求，主机向设备）、0x40（厂商请求，主机向设备）、0x80（标准请求，设备向主机）
 // bRequest：具体控制请求命令（如获取描述符、设置地址等）
@@ -853,7 +851,7 @@ async function usbControlTransfer() {
   }
   usbManager.usbControlTransfer(devicePipe, param).then((ret: int) => {
     console.info(`usbControlTransfer = ${ret}`);
-  }).catch((error: BusinessError) => {
+  }).catch((error) => {
     console.error(`usbControlTransfer failed: ${error.code}, message: ${error.message}`);
   }).finally(() => {
     usbManager.closePipe(devicePipe);
@@ -912,7 +910,6 @@ ArkTS-Sta: bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint
 > 以下示例代码只是调用bulkTransfer接口的必要流程，实际调用时，设备开发者需要遵循设备相关协议进行调用，确保数据的正确传输和设备的兼容性。
 
 ```ts
-import { BusinessError } from '@ohos.base';
 // usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
 // 把获取到的设备对象作为参数传入usbManager.connectDevice；当usbManager.connectDevice接口成功返回之后；
 // 才可以调用第三个接口usbManager.claimInterface。当usbManager.claimInterface 调用成功以后,再调用该接口。
@@ -951,7 +948,7 @@ async function bulkTransfer() {
         if (i === device.configs?.[0]?.interfaces.length - 1) {
           usbManager.closePipe(devicePipe);
         }
-      }).catch((error: BusinessError) => {
+      }).catch((error) => {
         console.error(`Failed to transfer. Code: ${error.code}, message: ${error.message}`);
       });
     }
@@ -1004,7 +1001,6 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 
 <!--code_no_check-->
 ```ts
-import { BusinessError } from '@ohos.base';
 // usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
 // 把获取到的设备对象作为参数传入usbManager.connectDevice;当usbManager.connectDevice接口成功返回之后；
 // 才可以调用第三个接口usbManager.claimInterface.当usbManager.claimInterface 调用成功以后,再调用该接口。
@@ -1062,8 +1058,8 @@ async function usbSubmitTransfer() {
     };
     usbManager.usbSubmitTransfer(transferParams); 
     console.info('USB transfer request submitted.');
-  } catch (error: BusinessError) {
-    console.error(`USB transfer failed. Code: ${error.code}, message: ${error.message}`);
+  } catch (error) {
+    console.error('USB transfer failed:', error);
   }
 }
 ```
@@ -1590,7 +1586,6 @@ resetUsbDevice(pipe: USBDevicePipe): boolean
 **示例：**
 
 ```ts
-import { BusinessError } from '@ohos.base';
 async function resetUsbDevice() {
   let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
   if (!devicesList || devicesList.length == 0) {
@@ -1655,7 +1650,6 @@ controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: 
 **示例：**
 
 ```ts
-import { BusinessError } from '@ohos.base';
 let param: usbManager.USBControlParams = {
   request: 0x06,
   reqType: 0x80,
@@ -1684,7 +1678,7 @@ async function controlTransfer() {
   }
   usbManager.controlTransfer(devicePipe, param).then((ret: number) => {
     console.info(`controlTransfer = ${ret}`);
-  }).catch((error: BusinessError) => {
+  }).catch((error) => {
     console.error(`Failed to transfer. Code: ${error.code}, message: ${error.message}`);
   }).finally(() => {
     usbManager.closePipe(devicePipe);

@@ -256,7 +256,7 @@
 
 ## AVCastPickerOptions<sup>14+</sup>
 
-拉起的投播半模态窗口相关属性。
+拉起的投播半模态窗口相关属性。<br>从API版本26.0.0开始支持Wearable设备使用本属性。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -264,7 +264,7 @@
 | 名称       | 类型           | 只读 | 可选 | 说明                   |
 | ---------- | -------------- | ---- | ---- | ---------------------- |
 | sessionType         | [AVSessionType](arkts-apis-avsession-t.md#avsessiontype10)  | 否 | 是  | 会话类型，默认值为'audio'。<br>当前仅支持'audio'、'video'会话类型。如果传入'voice_call'、'video_call'，将按照传入默认值'audio'处理。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。   <br>**ArkTS-Dyn起始版本：** 14 <br>**ArkTS-Sta起始版本：** 23      |
-| pickerStyle<sup>22+</sup>   |[AVCastPickerStyle](js-apis-avCastPickerParam.md#avcastpickerstyle12) | 否 | 是  | 设置组件样式。<br>**ArkTS-Dyn起始版本：** 22 <br>**ArkTS-Sta起始版本：** 24|
+| pickerStyle<sup>22+</sup>   |[AVCastPickerStyle](js-apis-avCastPickerParam.md#avcastpickerstyle12) | 否 | 是  | 设置组件样式。<br>Wearable设备上无需配置该属性，拉起的设备列表以全屏显示。<br>**ArkTS-Dyn起始版本：** 22 <br>**ArkTS-Sta起始版本：** 24|
 | menuPosition<sup>22+</sup>  |[MenuPosition](#menuposition-22) | 否 | 是  | 当pickerStyle设置为STYLE_MENU时，可以设置弹出菜单的位置。<br>**ArkTS-Dyn起始版本：** 22 <br>**ArkTS-Sta起始版本：** 24|
 
 ## AudioCapabilities<sup>20+</sup>

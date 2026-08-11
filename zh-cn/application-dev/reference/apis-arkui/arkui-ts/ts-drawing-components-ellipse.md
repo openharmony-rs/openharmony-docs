@@ -34,7 +34,7 @@ new Ellipse(options?: EllipseOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [EllipseOptions](ts-drawing-components-ellipse.md#ellipseoptions18对象说明) | 否 | 椭圆绘制尺寸。 <br/>异常值undefined和null按照无效值处理，本次设置不生效。|
+| options | [EllipseOptions](ts-drawing-components-ellipse.md#ellipseoptions18对象说明) | 否 | 椭圆绘制尺寸。 <br/>异常值undefined和null按照无效值处理，本次设置不生效。<br>**说明：**从API version 18开始，使用EllipseOptions参数时需在Stage模型下使用。|
 
 ### Ellipse
 
@@ -52,7 +52,7 @@ Ellipse(options?: EllipseOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [EllipseOptions](ts-drawing-components-ellipse.md#ellipseoptions18对象说明) | 否 | 椭圆绘制尺寸。 <br/>异常值undefined和null按照无效值处理，本次设置不生效。|
+| options | [EllipseOptions](ts-drawing-components-ellipse.md#ellipseoptions18对象说明) | 否 | 椭圆绘制尺寸。 <br/>异常值undefined和null按照无效值处理，本次设置不生效。<br>**说明：**从API version 18开始，使用EllipseOptions参数时需在Stage模型下使用。|
 
 ## EllipseOptions<sup>18+</sup>对象说明
 
