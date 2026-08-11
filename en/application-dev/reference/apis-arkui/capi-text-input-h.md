@@ -1,14 +1,16 @@
 # text_input.h
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Zhang-Dong-hui-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=8a65b118b29a0c9d1936c3b96f0e90c33fab49ab translatedAt=2026-08-10T03:38:32.822Z pushedAt=2026-08-11T03:34:49.925Z -->
 
 ## Overview
 
-Defines enumerations and APIs related to **TextInput**.
+Defines enumerations and APIs related to **TextInput**, which supports multiple input type configurations (including text, numbers, passwords, emails, and phone numbers),  style customization of the clear button, auto-filling content type settings, and input box style selection. It is applicable to scenarios requiring user interaction input, such as login and registration, form filling, and search input, helping you quickly implement single-line text input that meets service requirements.
 
 **File to include:** <arkui/node_attributes/text_input.h>
 
@@ -28,7 +30,7 @@ Defines enumerations and APIs related to **TextInput**.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [ArkUI_TextInputType](#arkui_textinputtype) | ArkUI_TextInputType | Enumerates the input method types of a single-line text.|
+| [ArkUI_TextInputType](#arkui_textinputtype) | ArkUI_TextInputType | Enumerates the input types of single-line text. |
 | [ArkUI_CancelButtonStyle](#arkui_cancelbuttonstyle) | ArkUI_CancelButtonStyle | Enumerates the styles of the **Cancel** button.|
 | [ArkUI_TextInputContentType](#arkui_textinputcontenttype) | ArkUI_TextInputContentType | Enumerates autofill types.|
 | [ArkUI_TextInputStyle](#arkui_textinputstyle) | ArkUI_TextInputStyle | Enumerates text input styles.|
@@ -43,23 +45,23 @@ enum ArkUI_TextInputType
 
 **Description**
 
-Enumerates the input method types of a single-line text.
+Enumerates the input types of single-line text.
 
 **Since:** 12
 
 | Value| Description|
 | -- | -- |
-| ARKUI_TEXTINPUT_TYPE_NORMAL = 0 | Normal input mode.|
-| ARKUI_TEXTINPUT_TYPE_NUMBER = 2 | Number input mode.|
-| ARKUI_TEXTINPUT_TYPE_PHONE_NUMBER = 3 | Phone number input mode.|
-| ARKUI_TEXTINPUT_TYPE_EMAIL = 5 | Email address input mode.|
-| ARKUI_TEXTINPUT_TYPE_PASSWORD = 7 | Password input mode.|
-| ARKUI_TEXTINPUT_TYPE_NUMBER_PASSWORD = 8 | Numeric password input mode.|
-| ARKUI_TEXTINPUT_TYPE_SCREEN_LOCK_PASSWORD = 9 | Lock screen password input mode.|
-| ARKUI_TEXTINPUT_TYPE_USER_NAME = 10 | Username input mode.|
-| ARKUI_TEXTINPUT_TYPE_NEW_PASSWORD = 11 | New password input mode.|
-| ARKUI_TEXTINPUT_TYPE_NUMBER_DECIMAL = 12 | Number input mode with a decimal point.|
-| ARKUI_TEXTINPUT_TYPE_ONE_TIME_CODE = 14 | Verification code input mode.<br>**Since:** 20|
+| ARKUI_TEXTINPUT_TYPE_NORMAL = 0 | Normal input type with no special restrictions. |
+| ARKUI_TEXTINPUT_TYPE_NUMBER = 2 | Numeric input type. |
+| ARKUI_TEXTINPUT_TYPE_PHONE_NUMBER = 3 | Phone number input type.<br>It supports input of digits, spaces, +, -, *, #, (, ), with no length limit. |
+| ARKUI_TEXTINPUT_TYPE_EMAIL = 5 | Email address input type.<br>It supports digits, letters, underscores, decimal points, !, #, $, %, &, ', *, +, -, /, =, ?, ^, `, {, |, }, ~, and @ (only one @ character allowed). The email address format must follow the basic specification: the part before the @ character is the username, and the part after the @ character is the domain name. |
+| ARKUI_TEXTINPUT_TYPE_PASSWORD = 7 | Password input type.<br>By default, the input text is briefly displayed and then changed to dots. Since API version 12, on PCs/2-in-1 devices, the input text is directly displayed as dots.<br>On TV devices, the eye icon is hidden by default at the end of the input box. On other devices, the eye icon is shown by default at the end of the input box. |
+| ARKUI_TEXTINPUT_TYPE_NUMBER_PASSWORD = 8 | Numeric password input type.<br>By default, the input text is briefly displayed and then changed to dots. Since API version 12, on PCs/2-in-1 devices, the input text is directly displayed as dots.<br>On TV devices, the eye icon is hidden by default at the end of the input box. On other devices, the eye icon is shown by default at the end of the input box. |
+| ARKUI_TEXTINPUT_TYPE_SCREEN_LOCK_PASSWORD = 9 | Lock screen password input type.<br>It supports input of digits, letters, underscores, spaces, and special characters. The eye icon is shown at the end of the input box and the input text changes to dots by default. Since API version 12, on wearables, the input text is directly displayed as dots. The password input type does not support the underline style. |
+| ARKUI_TEXTINPUT_TYPE_USER_NAME = 10 | Username input type with no special restrictions.<br>When Password Vault is enabled, usernames can be auto-saved and auto-filled. |
+| ARKUI_TEXTINPUT_TYPE_NEW_PASSWORD = 11 | New password input type.<br>By default, the input text is briefly displayed and then changed to dots. Since API version 12, on PCs/2-in-1 devices, the input text is directly displayed as dots.<br>On TV devices, the eye icon is hidden by default at the end of the input box. On other devices, the eye icon is shown by default at the end of the input box. |
+| ARKUI_TEXTINPUT_TYPE_NUMBER_DECIMAL = 12 | Number input type with a decimal point.<br>It supports digits and a decimal point (only one decimal point allowed), and does not support negative numbers (including negative integers and negative decimals). |
+| ARKUI_TEXTINPUT_TYPE_ONE_TIME_CODE = 14 | Verification code input type with no special restrictions.<br>**Since:** 20 |
 
 ### ArkUI_CancelButtonStyle
 
@@ -75,9 +77,9 @@ Enumerates the styles of the **Cancel** button.
 
 | Value| Description|
 | -- | -- |
-| ARKUI_CANCELBUTTON_STYLE_CONSTANT = 0 | The **Cancel** button is always displayed.|
-| ARKUI_CANCELBUTTON_STYLE_INVISIBLE = 1 | The **Cancel** button is always hidden.|
-| ARKUI_CANCELBUTTON_STYLE_INPUT = 2 | The **Cancel** button is displayed when there is text input.|
+| ARKUI_CANCELBUTTON_STYLE_CONSTANT = 0 | The **Cancel** button is always displayed. It is suitable for scenarios where the **Cancel** button needs to be always displayed, such as search boxes and other input boxes that require frequent content clearing. |
+| ARKUI_CANCELBUTTON_STYLE_INVISIBLE = 1 | The **Cancel** button is always hidden. It is suitable for scenarios where the **Cancel** button is not needed. |
+| ARKUI_CANCELBUTTON_STYLE_INPUT = 2 | The **Cancel** button is displayed when there is text input and hidden when there is no text input. It is suitable for scenarios where the **Cancel** button is displayed on demand. This is the recommended default behavior. |
 
 ### ArkUI_TextInputContentType
 
@@ -88,6 +90,10 @@ enum ArkUI_TextInputContentType
 **Description**
 
 Enumerates autofill types.
+
+> **NOTE**
+>
+> Autofilling is a feature where the system automatically fills in input box content based on saved information in scenarios such as user login, registration, and form filling. It can only be used after Password Vault or contextual autofilling is enabled in system settings.
 
 **Since:** 12
 
@@ -125,7 +131,7 @@ Enumerates autofill types.
 | ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_FILE_NUMBER = 29 | Driver's license file number. Currently not supported for automatic saving and auto-filling.<br>**Since:** 18|
 | ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_PLATE = 30 | License plate number. The scenario-based autofill feature, when enabled, can automatically save and fill in license plate numbers.<br>**Since:** 18|
 | ARKUI_TEXTINPUT_CONTENT_TYPE_ENGINE_NUMBER = 31 | Vehicle registration engine number. Currently not supported for automatic saving and auto-filling.<br>**Since:** 18|
-| ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_CHASSIS_NUMBER = 32 | Chassis number. Currently not supported for automatic saving and auto-filling.<br>**Since:** 18|
+| ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_CHASSIS_NUMBER = 32 | **Chassis number.** Auto-save and auto-fill are not yet supported.<br>**Since:** 18 |
 
 ### ArkUI_TextInputStyle
 
@@ -141,5 +147,5 @@ Enumerates text input styles.
 
 | Value| Description|
 | -- | -- |
-| ARKUI_TEXTINPUT_STYLE_DEFAULT = 0 | Default style. The caret width is fixed at 1.5 vp, and the caret height is subject to the background height and font size of the selected text.|
-| ARKUI_TEXTINPUT_STYLE_INLINE = 1 | Inline style. The background height of the selected text is the same as the height of the text box.|
+| ARKUI_TEXTINPUT_STYLE_DEFAULT = 0 | Default style. The caret width is 1.5 vp, and the selection background height is related to the font size. This style is suitable for most input box scenarios. |
+| ARKUI_TEXTINPUT_STYLE_INLINE = 1 | Inline style. The text selection background height is the same as the input box height. This style is suitable for scenarios where the input box height is fixed and the text selection background height needs to be consistent with the input box height, such as input boxes in compact layouts or inline editing. |
