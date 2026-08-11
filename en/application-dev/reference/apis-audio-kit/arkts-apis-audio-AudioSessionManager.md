@@ -93,7 +93,7 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 
 | ID| Error Message|
 | ------- | ---------------------------------------------|
-| 6800301 | System error. Possible causes: 1.The audio session is not existed or has been released. 2.Audio server process died. |
+| 6800301 | System error. Possible causes: 1.The audio session does not exist or has been released. 2.Audio server process died. |
 
 **Example**
 
@@ -227,7 +227,7 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 | ID| Error Message|
 | ------- | ---------------------------------------------|
 | 6800101 | Parameter verification failed. |
-| 6800103 | Operation not permit at current state.|
+| 6800103 | Operation not permitted at current state.|
 | 6800301 | Audio client call audio service error, System error. |
 
 **Example**
@@ -380,7 +380,7 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 | ID  | Error Message|
 |---------| --------------------------------------------|
 | 6800101 | Parameter verification failed. |
-| 6800103 | Operation not permit at current state. Return by promise. |
+| 6800103 | Operation not permitted at current state. Return by promise. |
 
 **Example**
 
@@ -999,7 +999,7 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 
 | ID | Error Message |
 | ------- | ---------------------------------------------|
-| 6800103 | Operation not permit at current state, there is no audio capturer running. |
+| 6800103 | Operation not permitted at current state, there is no audio capturer running. |
 
 **Example**
 
