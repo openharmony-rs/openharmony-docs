@@ -856,7 +856,7 @@ observer.off('cellularDataFlowChange');
 
 on\(type: 'simStateChange', callback: Callback\<SimStateData\>\): void
 
-订阅SIM状态更改事件，使用callback方式作为异步方法。
+订阅SIM卡状态更改事件，使用callback方式作为异步方法。
 
 >**说明：**
 >
@@ -868,7 +868,7 @@ on\(type: 'simStateChange', callback: Callback\<SimStateData\>\): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| type     | string                                                       | 是   | SIM状态更改事件，参数固定为"simStateChange"。|
+| type     | string                                                       | 是   | SIM卡状态更改事件，参数固定为"simStateChange"。|
 | callback | Callback\<[SimStateData](#simstatedata7)\> | 是   | 回调函数，返回卡状态数据对象。 |
 
 **错误码：**
@@ -896,7 +896,7 @@ observer.on('simStateChange', (data: observer.SimStateData) => {
 
 on\(type: 'simStateChange', options: ObserverOptions, callback: Callback\<SimStateData\>\): void
 
-订阅指定卡槽位的sim状态更改事件，使用callback方式作为异步方法。
+订阅指定卡槽位的SIM卡状态更改事件，使用callback方式作为异步方法。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
@@ -904,7 +904,7 @@ on\(type: 'simStateChange', options: ObserverOptions, callback: Callback\<SimSta
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | SIM状态更改事件，参数固定为"simStateChange"。                 |
+| type     | string                                                       | 是   |SIM卡状态更改事件，参数固定为"simStateChange"。                 |
 | options   | [ObserverOptions](#observeroptions11)                       | 是   | 电话相关事件订阅参数可选项。                                  |
 | callback | Callback\<[SimStateData](#simstatedata7)\> | 是   | 回调函数，返回卡状态数据对象。 |
 
@@ -988,7 +988,7 @@ on\(type: 'iccAccountInfoChange', callback: Callback\<void\>\): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 卡账户变化事件，参数固定为"iccAccountInfoChange"。                 |
-| callback | Callback\<void\> | 是   | 回调函数。回调函数。当卡账户变化时触发。 |
+| callback | Callback\<void\> | 是   |回调函数。当卡账户变化时触发。 | |
 
 **错误码：**
 
