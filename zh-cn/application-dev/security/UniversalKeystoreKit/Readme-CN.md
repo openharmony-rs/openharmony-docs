@@ -121,4 +121,5 @@
   - [UKey流程示例指导](huks-ukey-best-dev.md)
   - 驱动HAP ExtensionAbility适配指导<!--huks-extension-ability-support-->
     - [CryptoExtensionAbility扩展能力介绍](huks-extension-ability-support-overview.md)
-    - [CryptoExtensionAbility适配开发指导](huks-extension-ability-support-dev.md)<!--RP4--><!--RP4End-->
+    - [CryptoExtensionAbility适配开发指导](huks-extension-ability-support-dev.md)
+- [Universal Keystore Kit术语](universal-keystore-glossary.md)<!--RP4--><!--RP4End-->
