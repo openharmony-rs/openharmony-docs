@@ -60,10 +60,10 @@ napi_create_reference这个接口内部实现会new一个C++对象，因此，�
 #define LOG_TAG "MY_TSFN_DEMO"
 
 /*
-  为构建一个 env 生命周期短于 native 生命周期的场景,
-  本示例需要使用worker, taskpool 或 napi_create_ark_runtime 等方法,
-  创建非主线程的ArkTS运行环境，并人为的提前结束掉该线程
-*/
+ * 为构建一个 env 生命周期短于 native 生命周期的场景,
+ * 本示例需要使用worker, taskpool 或 napi_create_ark_runtime 等方法,
+ * 创建非主线程的ArkTS运行环境，并人为的提前结束掉该线程
+ */
 
 
 // 定义一个数据结构，模拟存储tsfn的场景
