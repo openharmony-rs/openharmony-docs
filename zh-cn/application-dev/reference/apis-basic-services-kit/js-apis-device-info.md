@@ -347,7 +347,7 @@ ArkTS-Sta：apiAvailable(version: string | int): boolean
 **系统能力**：SystemCapability.Startup.SystemInfo
 
 **参数**：
-<!--Table: 20%; 30% 10%; 40%-->
+<!--Table: auto; 20% 10%; auto; -->
 | 参数名    | 类型      | 必填 | 说明                               |
 | --------- | ---------| ---- | ---------------------------------- |
 | version | ArkTS-Dyn：string \| number<br>ArkTS-Sta：string \| int | 是   | 需要校验的API版本号，支持整数版本号和点分版本号。整数版本号为正整数。点分版本号格式为x.x.x（如5.0.0或26.0.0），各段均为非负整数。传入无效值时返回false。|
