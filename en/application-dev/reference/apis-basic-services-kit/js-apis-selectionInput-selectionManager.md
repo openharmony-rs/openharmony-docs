@@ -121,7 +121,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service exception. |
+| 33600001   | Selection service invocation exception. |
 | 33600004   | The interface is called too frequently. |
 | 33600005   | The interface is called at the wrong time. |
 | 33600006   | The current application is prohibited from accessing content. |
