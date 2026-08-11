@@ -106,6 +106,7 @@ At MediaQuery Level 4, range query is imported so that you can use the operators
 | min-device-height | Minimum height of the device.|
 | max-device-height | Maximum height of the device.|
 | device-width | Width of the device.|
+| device-type | Device type.<br/>Options: **default**, **phone**, **tablet**, **tv**, **car**, **wearable**, **2in1** |
 | min-device-width | Minimum width of the device.|
 | max-device-width | Maximum width of the device.|
 | round-screen | Screen type. The value **true** means that the screen is round, and **false** means the opposite.|
