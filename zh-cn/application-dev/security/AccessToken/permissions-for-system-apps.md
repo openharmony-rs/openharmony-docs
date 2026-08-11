@@ -9095,7 +9095,7 @@
 **起始版本**：26.1.0
 
 ## ohos.permission.CONNECTIVITY_USE_RESTRICTED_NETWORKS
- 	 
+
 允许应用使用受限网络，如内部网络、特定的车载网络等。
 
 **权限级别**：system_basic
