@@ -25,15 +25,15 @@ Media Query is widely used on mobile devices. You may need to modify the applica
 
 Use **@media** to import query statements. The rule is as follows:
 
-```
+```css
 @media [media-type] [and|not|only] [(media-feature)] {
   CSS-Code;
 }
 ```
 
-@media screen and (round-screen: true) { … }: The condition is met when the device screen is round.
+@media screen and (round-screen: true) { ... }: The condition is met when the device screen is round.
 
-@media (max-height: 800) { … }: Range query. CSS level 3 is used.
+@media (max-height: 800) { ... }: Range query. CSS level 3 is used.
 
 @media (height <= 800) { ... }: Range query. CSS level 4 is used, and the statement is equivalent to that of CSS level 3.
 
@@ -44,13 +44,13 @@ Use **@media** to import query statements. The rule is as follows:
 
 Use **@import** to import a media query. The rule is as follows:
 
-```
+```css
 @import url [media-type] [and|not|only] [(media-feature)];
 ```
 
 Example:
 
-```
+```css
 @import '../common/style.css' screen and (min-width: 600) and (max-width: 1200);
 ```
 
@@ -109,6 +109,7 @@ At MediaQuery Level 4, range query is imported so that you can use the operators
 | min-device-height      | Minimum height of the device.                                |
 | max-device-height      | Maximum height of the device.                                |
 | device-width           | Width of the device.                                  |
+| device-type            | Device type.<br/>Options: **default**, **phone**, **tablet**, **tv**, **car**, **wearable**, **2in1** |
 | min-device-width       | Minimum width of the device.                                |
 | max-device-width       | Maximum width of the device.                                |
 | round-screen           | Screen type. The value **true** means that the screen is round, and **false** means the opposite. |

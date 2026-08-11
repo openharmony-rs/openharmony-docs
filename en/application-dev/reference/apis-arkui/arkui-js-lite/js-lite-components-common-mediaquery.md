@@ -67,6 +67,7 @@ You can use media logical operators to implement complex media query. The follow
 | aspect-ratio     | Ratio of the width to the height of the display area on the application page.<br>Example: **aspect-ratio: 1/2**|
 | min-aspect-ratio | Minimum ratio of the width to the height of the display area on the application page.                    |
 | max-aspect-ratio | Maximum ratio of the width to the height of the display area on the application page.                    |
+| device-type      | Device type. <br/>Options: **liteWearable**, **smartVision**                    |
 | round-screen     | Screen type. The value **true** means that the screen is round, and **false** means the opposite.|
 
 ## Sample Code for the Common Media Feature
