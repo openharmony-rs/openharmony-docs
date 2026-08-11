@@ -811,9 +811,9 @@ With this permission, the application can access device-side model runtime manag
 
 ## ohos.permission.UPDATE_SCOPE_FONT
 
-Allows an application to manage app-level and session-level fonts.
+Allows an application to manage application-level and session-level fonts.
 
-With this permission, the application can install, uninstall, and query app-level and session-level fonts, and register a font service status listener.
+With this permission, the application can use font management APIs to install, uninstall, and query application-level and session-level fonts, and register font service status listener.
 
 **Permission level**: normal
 
