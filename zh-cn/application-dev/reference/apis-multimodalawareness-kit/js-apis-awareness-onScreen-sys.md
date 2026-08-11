@@ -448,7 +448,7 @@ unsubscribe(capability: OnscreenAwarenessCap, callback?: Callback&lt;OnscreenAwa
 
 **设备行为差异**：该接口在Phone和Tablet中可正常调用，在其他设备类型中返回801错误码。
 
-**系统接口**：此接口为系统接口
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -497,7 +497,7 @@ trigger(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): P
 
 **设备行为差异**：该接口在Phone和Tablet中可正常调用，在其他设备类型中返回801错误码。
 
-**系统接口**：此接口为系统接口
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -560,7 +560,7 @@ capture(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): P
 
 **设备行为差异**：该接口仅支持 Phone、Tablet 以及 Car 设备（Car 设备下需满足 capList 为 UiTree），在其余设备类型中调用将返回801错误码。
 
-**系统接口**：此接口为系统接口
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -639,7 +639,7 @@ interact(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): 
 
 **设备行为差异**：该接口仅支持Phone、Tablet以及Car设备（Car 设备下需满足 capList 为 InjectEvent），在其余设备类型中调用将返回801错误码。
 
-**系统接口**：此接口为系统接口
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -743,7 +743,7 @@ apperceive(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions)
 
 **设备行为差异**：该接口在Phone和Tablet中可正常调用，在其他设备类型中返回801错误码。
 
-**系统接口**：此接口为系统接口
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -850,7 +850,7 @@ offReadingScreenPermissionListener(callback?: Callback&lt;ReadingScreenPermissio
 
 **设备行为差异**：该接口在Phone和Tablet中可正常调用，在其他设备类型中返回801错误码。
 
-**系统接口**：此接口为系统接口
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
