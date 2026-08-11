@@ -394,16 +394,6 @@ getDefaultSmsSlotId\(\): Promise&lt;number&gt;
 | --------------- | ------------------------------------------------------------ |
 | Promise&lt;number&gt; | 以Promise形式返回发送短信的默认SIM卡：<br>- 0：卡槽1<br>- 1：卡槽2 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
-
-| 错误码ID |                 错误信息                     |
-| -------- | -------------------------------------------- |
-| 8300002  | Operation failed. Cannot connect to service. |
-| 8300003  | System internal error.                       |
-| 8300999  | Unknown error code.                          |
-
 **示例：**
 
 ```ts
