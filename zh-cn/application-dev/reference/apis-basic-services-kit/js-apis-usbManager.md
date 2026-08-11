@@ -631,14 +631,12 @@ getRawDescriptor(pipe: USBDevicePipe): Uint8Array
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported. [since 18]                                    |
-| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. [since 23] [staticonly] |
-| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. [since 23] [staticonly] |
 
 **示例：**
 

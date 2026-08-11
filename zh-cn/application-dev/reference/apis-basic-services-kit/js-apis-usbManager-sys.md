@@ -587,14 +587,13 @@ getPortList(): Array\<USBPort\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. [since 18] |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
 | 801      | Capability not supported. [since 18] |
-| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. [since 23] [staticonly] |
 
 **示例：**
 
