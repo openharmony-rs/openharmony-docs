@@ -609,7 +609,7 @@ struct Index{
     Column()
       .width("100%")
       .height("100%")
-      .onClick(()=>{
+      .onClick(() => {
       console.info(`id:${this.getUIContext()?.getId()}`);
     })
   }
