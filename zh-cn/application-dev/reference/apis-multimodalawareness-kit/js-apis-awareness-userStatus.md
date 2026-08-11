@@ -25,9 +25,9 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
 
-**起始版本**：20
+**起始版本：** 20
 
-**废弃版本**：24
+**废弃版本：** 24
 
 | 名称                | 值  | 说明                   |
 | ------------------- | ---- | ---------------------- |
@@ -40,9 +40,9 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
 
-**起始版本**：20
+**起始版本：** 20
 
-**废弃版本**：24
+**废弃版本：** 24
 
 | 名称                | 类型   |只读|可选| 说明                   |
 | ------------------- | ---- |----|----| ---------------------- |
@@ -62,9 +62,9 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 **设备行为差异**：该接口在Phone中可正常调用，在其他设备类型中返回801错误码。
 
-**起始版本**：20
+**起始版本：** 20
 
-**废弃版本**：24
+**废弃版本：** 24
 
 > **说明：**
 >
@@ -115,9 +115,9 @@ off(type: 'userAgeGroupDetected', callback?: Callback&lt;UserClassification&gt;)
 
 **设备行为差异**：该接口在Phone中可正常调用，在其他设备类型中返回33900003错误码。
 
-**起始版本**：20
+**起始版本：** 20
 
-**废弃版本**：24
+**废弃版本：** 24
 
 > **说明：**
 >

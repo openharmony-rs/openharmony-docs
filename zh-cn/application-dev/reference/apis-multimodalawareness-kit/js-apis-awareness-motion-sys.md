@@ -8,7 +8,7 @@
 
 本模块提供对用户手势识别、设备姿态监听等动作感知能力，用于感知设备状态、识别用户行为，优化交互体验。
 
-**起始版本：**26.0.0
+**起始版本：** 26.0.0
 
 > **说明：**
 >
@@ -24,11 +24,11 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 
 拾取事件枚举。
 
-**起始版本：**26.0.0
+**起始版本：** 26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
-**系统接口**：此接口为系统接口，仅系统应用可调用。
+**系统接口**：此接口为系统接口。
 
 | 名称       | 值   | 说明                 |
 | ---------- | ---- |--------------------|
@@ -38,7 +38,7 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 
 旋转事件枚举。
 
-**起始版本：**26.0.0
+**起始版本：** 26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -56,7 +56,7 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 
 传感器检测到的物理方向枚举。
 
-**起始版本：**26.0.0
+**起始版本：** 26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -75,7 +75,7 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 
 由智能算法计算出的逻辑方向枚举。
 
-**起始版本：**26.0.0
+**起始版本：** 26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -93,7 +93,7 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 
 悬浮手动作枚举。
 
-**起始版本：**26.0.0
+**起始版本：** 26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -142,7 +142,7 @@ onPickupChange(callback: Callback&lt;PickupEvent&gt;): void
 
 订阅拾取传感器事件。当系统检测到设备被抬起时触发该事件并回调，可用于触发智能唤醒等场景使用。需与offPickupChange配对使用，使用完毕后应调用offPickupChange取消订阅以释放系统资源。
 
-**起始版本：**26.0.0
+**起始版本：** 26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -186,7 +186,7 @@ onRotateChange(callback: Callback&lt;RotateEvent&gt;): void
 
 订阅旋转传感器事件。当设备旋转导致方向变化时触发该事件回调，当需要实现屏幕方向自适应等功能时使用。需与offRotateChange配对使用，使用完毕后应调用offRotateChange取消订阅以释放系统资源。
 
-**起始版本：**26.0.0
+**起始版本：** 26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -232,7 +232,7 @@ onSmartRotateChange(callback: Callback&lt;SmartRotateEvent&gt;): void
 
 与onRotateChange相比，onSmartRotateChange不仅返回重力传感器检测的物理方向，还提供智能算法调整后的逻辑方向
 
-**起始版本：**26.0.0
+**起始版本：** 26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -281,7 +281,7 @@ onHoverHandChange(detectionArea: HoverHandDetectionArea, callback: Callback&lt;H
 >
 > 检测时长到期后，悬浮手事件检测将自动终止，不再上报悬浮手事件，需要开发者再次调用订阅此接口以重新开启检测。
 
-**起始版本：**26.0.0
+**起始版本：** 26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -337,7 +337,7 @@ onHoverHandChange(detectionArea: HoverHandDetectionArea, duration: int, callback
 >
 > 检测时长到期后，悬浮手事件检测将自动终止，不再上报悬浮手事件，需要开发者再次调用订阅此接口以重新开启检测。
 
-**起始版本：**26.0.0
+**起始版本：** 26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -391,7 +391,7 @@ offPickupChange(callback?: Callback&lt;PickupEvent&gt;): void
 
 取消订阅拾取传感器事件。需先调用onPickupChange订阅后才能取消，若未订阅则不生效。当应用不再需要监听拾取事件时使用，如页面销毁、应用进入后台或暂停相关功能时，应调用此接口取消订阅以释放系统资源。
 
-**起始版本：**26.0.0
+**起始版本：** 26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -450,7 +450,7 @@ offRotateChange(callback?: Callback&lt;RotateEvent&gt;): void
 
 取消订阅旋转传感器事件。需先调用onRotateChange订阅后才能取消，若未订阅则不生效。当应用不再需要监听旋转事件时使用，如页面销毁、应用进入后台或暂停相关功能时，应调用此接口取消订阅以释放系统资源。
 
-**起始版本：**26.0.0
+**起始版本：** 26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -509,7 +509,7 @@ offSmartRotateChange(callback?: Callback&lt;SmartRotateEvent&gt;): void
 
 取消订阅智能旋转传感器事件。需先调用onSmartRotateChange订阅后才能取消，若未订阅则不生效。当应用不再需要监听智能旋转事件时使用，如页面销毁、应用进入后台或暂停相关功能时，应调用此接口取消订阅以释放系统资源。
 
-**起始版本：**26.0.0
+**起始版本：** 26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -569,7 +569,7 @@ offHoverHandChange(callback?: Callback&lt;HoverHandAction&gt;): void
 
 取消订阅悬浮手事件。当应用不再需要监听悬浮手事件时使用，应调用此接口取消订阅以释放系统资源。
 
-**起始版本：**26.0.0
+**起始版本：** 26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
