@@ -6,12 +6,13 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=ee3aff3c192b61804c6eafd655527edff9eb980a translatedAt=2026-08-07T03:31:49.870Z pushedAt=2026-08-10T09:35:04.929Z -->
 
-Since API version 23, the algorithm library supports obtaining a public key based on a private key.
+Starting from API version 23, the algorithm library supports obtaining a public key object from a private key object.
 
 The following uses RSA as an example to describe how to obtain a public key based on a private key.
 
-For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-decrypt-spec.md#rsa).
+For the corresponding algorithm specifications, see [Asymmetric Key Encryption and Decryption Algorithm Specifications: RSA](crypto-encryption-decryption.md#rsa).
 
 ## How to Develop
 
@@ -20,7 +21,7 @@ For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-de
    The default number of primes for creating an RSA asymmetric key is **2**. The **PRIMES_2** parameter is omitted in the string parameter here.
 
 2. Call [AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1) to randomly generate an asymmetric key pair (**KeyPair**).
-   
+
    The **KeyPair** object includes a public key (**PubKey**) and a private key (**PriKey**).
 
 3. Call [PubKey.getEncoded](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getencoded) to obtain the binary data of the public key object in **KeyPair**.
@@ -34,7 +35,7 @@ For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-de
 - Example: Generate an RSA key pair asynchronously (by calling [getPubKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getpubkey23)):
 
   <!-- @[prikey_get_pubkey_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/PrikeyOperation/entry/src/main/ets/pages/prikeyGetPubkeyAsync.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -103,11 +104,10 @@ For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-de
   }
   ```
 
-
 - Example: Generate an RSA key pair synchronously (by calling [getPubKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getpubkeysync23)):
 
   <!-- @[prikey_get_pubkey_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/PrikeyOperation/entry/src/main/ets/pages/prikeyGetPubKeySync.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -175,3 +175,5 @@ For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-de
     }
   }
   ```
+
+  <!--no_check-->
