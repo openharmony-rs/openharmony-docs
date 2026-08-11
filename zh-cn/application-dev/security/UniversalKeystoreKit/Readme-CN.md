@@ -101,9 +101,9 @@
     - [密钥导入(ArkTS)](huks-extension-key-import-arkts.md)
     - [公钥导出(ArkTS)](huks-extension-key-export-arkts.md)
   - UKeyPIN码认证管理<!--huks-ukey-pin-authentication-management-->
-    - [UKeyPIN码认证介绍及规格](huks-ukey-pin-authentication-management-overview.md)
+    - [UKey PIN码认证介绍及规格](huks-ukey-pin-authentication-management-overview.md)
     <!--Del-->
-    - [UKeyPIN码认证(ArkTS)(仅对系统应用开放)](huks-ukey-pin-authentication-arkts-sys.md)
+    - [UKey PIN码认证(ArkTS)](huks-ukey-pin-authentication-arkts-sys.md)
     <!--DelEnd-->
     - [查询认证状态(ArkTS)](huks-query-authentication-status-arkts.md)
     - [查询认证状态(C/C++)](huks-query-authentication-status-ndk.md)
