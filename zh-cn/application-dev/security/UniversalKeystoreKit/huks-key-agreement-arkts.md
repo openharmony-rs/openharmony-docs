@@ -264,7 +264,7 @@ async function deleteKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
 }
 
 async function testAgree() {
-  /* 1.确定密钥别名并集成要参数集。A设备：srcKeyAliasFirst；B设备：srcKeyAliasSecond */
+  /* 1.确定密钥别名并集成密钥参数集。A设备：srcKeyAliasFirst；B设备：srcKeyAliasSecond */
   /* 2.设备A生成密钥 */
   await generateKeyItem(srcKeyAliasFirst, huksOptions);
   /* 3.设备B生成密钥 */
@@ -800,7 +800,7 @@ async function deleteKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
 }
 
 async function testAgree() {
-  /* 1.确定密钥别名并集成要参数集。A设备：srcKeyAliasFirst；B设备：srcKeyAliasSecond */
+  /* 1.确定密钥别名并集成密钥参数集。A设备：srcKeyAliasFirst；B设备：srcKeyAliasSecond */
   /* 2.设备A生成密钥 */
   await generateKeyItem(srcKeyAliasFirst, genHuksOptions);
   /* 3.设备B生成密钥 */
