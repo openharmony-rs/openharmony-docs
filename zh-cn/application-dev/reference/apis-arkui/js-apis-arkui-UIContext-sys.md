@@ -80,8 +80,6 @@ freezeUINode(id: string, isFrozen: boolean): void
 
 通过id设置组件冻结状态，防止组件被标记为脏从而触发布局更新。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 18 开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。 
@@ -205,8 +203,6 @@ ArkTS-Dyn: freezeUINode(uniqueId: number, isFrozen: boolean): void
 ArkTS-Sta: freezeUINode(uniqueId: int, isFrozen: boolean): void
 
 通过uniqueId设置组件的冻结状态，防止组件被标记为脏从而触发布局更新。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 18 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -525,8 +521,6 @@ getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean, optio
 >
 > start对应的组件和end对应的组件必须为同一棵组件树上的组件，且start对应的组件需要为end对应的组件的祖先组件。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。 
@@ -631,4 +625,3 @@ struct SnapshotExample {
 ```
 
 ![zh-cn_image_getWithRange](figures/image-getWithRange.gif)
-
