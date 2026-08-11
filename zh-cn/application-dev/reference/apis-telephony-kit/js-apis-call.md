@@ -29,7 +29,7 @@ dial\(phoneNumber: string, callback: AsyncCallback\<boolean\>\): void
 
 > **说明：**
 >
-> 从API version 6 开始支持，从API version 9 开始废弃，建议使用[call.makeCall](#callmakecall7)替代（替代接口能力仅对系统应用开放）。
+> 从API version 6 开始支持，从API version 9 开始废弃。替代接口能力仅对系统应用开放。
 
 **需要权限**：ohos.permission.PLACE_CALL（该权限仅系统应用可申请）
 
@@ -65,7 +65,7 @@ dial\(phoneNumber: string, options: DialOptions, callback: AsyncCallback\<boolea
 
 > **说明：**
 >
-> 从API version 6 开始支持，从API version 9 开始废弃，建议使用[call.makeCall](#callmakecall7)替代（替代接口能力仅对系统应用开放）。
+> 从API version 6 开始支持，从API version 9 开始废弃。替代接口能力仅对系统应用开放。
 **需要权限**：ohos.permission.PLACE_CALL（该权限仅系统应用可申请）
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
@@ -103,7 +103,7 @@ dial\(phoneNumber: string, options?: DialOptions\): Promise\<boolean\>
 
 > **说明：**
 >
-> 从API version 6 开始支持，从API version 9 开始废弃，建议使用[call.makeCall](#callmakecall7)替代（替代接口能力仅对系统应用开放）。
+> 从API version 6 开始支持，从API version 9 开始废弃。替代接口能力仅对系统应用开放。
 
 **需要权限**：ohos.permission.PLACE_CALL（该权限仅系统应用可申请）
 
@@ -118,7 +118,7 @@ dial\(phoneNumber: string, options?: DialOptions\): Promise\<boolean\>
 | 参数名      | 类型                        | 必填 | 说明                                   |
 | ----------- | --------------------------- | ---- | -------------------------------------- |
 | phoneNumber | string                      | 是   | 电话号码。                             |
-| options     | [DialOptions](#dialoptions) | 否   | 通话参数，选择为语音通话还是视频通话。不传时默认为语音通话。 |
+| options     | [DialOptions](#dialoptions) | 否   | 通话参数，选择为语音通话还是视频通话。默认值为语音通话。 |
 
 **返回值：**
 
@@ -137,7 +137,7 @@ let dialOptions: call.DialOptions = {
 call.dial("138xxxxxxxx", dialOptions).then((data: boolean) => {
     console.info(`dial success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-    console.error(`dial fail, promise: 本次操作异常，err->Code${err.code},message:${err.message}请稍后重试。`);
+    console.error(`dial fail, promise: 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
 });
 ```
 
@@ -181,7 +181,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // 从API15开始支持tel格式电话号码，如："tel:13xxxx"
 call.makeCall("138xxxxxxxx", (err: BusinessError) => {
     if (err) {
-        console.error(`makeCall fail, 本次操作异常，err->Code${err.code},message:${err.message}请稍后重试。`);
+        console.error(`makeCall fail, 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
     } else {
         console.info(`makeCall success`);
     }
@@ -235,7 +235,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 call.makeCall("138xxxxxxxx").then(() => {
     console.info(`makeCall success`);
 }).catch((err: BusinessError) => {
-    console.error(`makeCall fail, promise: 本次操作异常，err->Code${err.code},message:${err.message}请稍后重试。`);
+    console.error(`makeCall fail, promise: 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
 });
 ```
 
@@ -258,8 +258,8 @@ makeCall\(phoneNumber: string, options?: MakeCallOptions\): Promise\<void\>
 
 | 参数名      | 类型   | 必填 | 说明       |
 | ----------- | ------ | ---- | ---------- |
-| phoneNumber | string | 是   | 电话号码,支持数字格式和tel格式（如"tel:13xxxx"）。 |
-| options | [MakeCallOptions](#makecalloptions24) | 否   | 通话参数，用于设置是否隐藏拨号界面、是否支持自定义无障碍等。不填写时使用默认值。 |
+| phoneNumber | string | 是   | 电话号码，支持数字格式和tel格式（如"tel:13xxxx"）。 |
+| options | [MakeCallOptions](#makecalloptions24) | 否   | 通话参数。 |
 
 **返回值：**
 
@@ -293,7 +293,7 @@ let makeOptions: call.MakeCallOptions = {
 call.makeCall("138xxxxxxxx", makeOptions).then(() => {
     console.info(`makeCall success`);
 }).catch((err: BusinessError) => {
-    console.error(`makeCall fail, promise: 本次操作异常，err->Code${err.code},message:${err.message}请稍后重试。`);
+    console.error(`makeCall fail, promise: 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
 });
 ```
 
@@ -352,7 +352,7 @@ let context = this.getUIContext().getHostContext() as Context;
 call.makeCall(context, "138xxxxxxxx").then(() => {
     console.info(`makeCall success`);
 }).catch((err: BusinessError) => {
-    console.error(`makeCall fail, promise: 本次操作异常，err->Code${err.code},message:${err.message}请稍后重试。`);
+    console.error(`makeCall fail, promise: 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
 });
 ```
 
@@ -379,7 +379,7 @@ makeCallWithToken\(phoneNumber: string, options?: MakeCallOptions\): Promise\<st
 | 参数名      | 类型   | 必填 | 说明       |
 | ----------- | ------ | ---- | ---------- |
 | phoneNumber | string | 是   | 电话号码。 |
-| options | [MakeCallOptions](#makecalloptions24) | 否   | 通话参数，用于设置是否隐藏拨号界面、是否支持自定义无障碍等。不填写时使用默认值。 |
+| options | [MakeCallOptions](#makecalloptions24) | 否   | 通话参数。 |
 
 **返回值：**
 
@@ -389,11 +389,10 @@ makeCallWithToken\(phoneNumber: string, options?: MakeCallOptions\): Promise\<st
 
 **错误码：**
 
-以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Operation failed. Cannot connect to service. |
 | 8300003  | System internal error.                       |
@@ -414,7 +413,7 @@ let makeOptions: call.MakeCallOptions = {
 call.makeCallWithToken("138xxxxxxxx", makeOptions).then(() => {
   console.info(`makeCallWithToken success`);
 }).catch((err: BusinessError) => {
-  console.error(`makeCallWithToken fail, promise: 本次操作异常，err->Code${err.code},message:${err.message}请稍后重试。`);
+  console.error(`makeCallWithToken fail, promise: 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
 });
 ```
 
@@ -443,7 +442,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 call.hasCall((err: BusinessError, data: boolean) => {
     if (err) {
-        console.error(`hasCall fail, 本次操作异常，err->Code${err.code},message:${err.message}请稍后重试。`);
+        console.error(`hasCall fail, 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
     } else {
         console.info(`hasCall success, data->${JSON.stringify(data)}`);
     }
@@ -477,7 +476,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 call.hasCall().then(() => {
     console.info(`hasCall success`);
 }).catch((err: BusinessError) => {
-    console.error(`hasCall fail, promise: 本次操作异常，err->Code${err.code},message:${err.message}请稍后重试。`);
+    console.error(`hasCall fail, promise: 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
 });
 ```
 
@@ -532,7 +531,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 call.getCallState((err: BusinessError, data: call.CallState) => {
     if (err) {
-        console.error(`getCallState fail, 本次操作异常，err->Code${err.code},message:${err.message}请稍后重试。`);
+        console.error(`getCallState fail, 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
     } else {
         console.info(`getCallState success, data->${JSON.stringify(data)}`);
     }
@@ -566,7 +565,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 call.getCallState().then((data: call.CallState) => {
     console.info(`getCallState success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-    console.error(`getCallState fail, promise: 本次操作异常，err->Code${err.code},message:${err.message}请稍后重试。`);
+    console.error(`getCallState fail, promise: 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
 });
 ```
 
@@ -658,7 +657,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 call.isEmergencyPhoneNumber("138xxxxxxxx", (err: BusinessError, data: boolean) => {
     if (err) {
-        console.error(`isEmergencyPhoneNumber fail, 本次操作异常，err->Code${err.code},message:${err.message}请稍后重试。`);
+        console.error(`isEmergencyPhoneNumber fail, 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
     } else {
         console.info(`isEmergencyPhoneNumber success, data->${JSON.stringify(data)}`);
     }
@@ -706,7 +705,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let options: call.EmergencyNumberOptions = {slotId: 1};
 call.isEmergencyPhoneNumber("112", options, (err: BusinessError, data: boolean) => {
     if (err) {
-        console.error(`isEmergencyPhoneNumber fail, 本次操作异常，err->Code${err.code},message:${err.message}请稍后重试。`);
+        console.error(`isEmergencyPhoneNumber fail, 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
     } else {
         console.info(`isEmergencyPhoneNumber success, data->${JSON.stringify(data)}`);
     }
@@ -731,7 +730,7 @@ isEmergencyPhoneNumber\(phoneNumber: string, options?: EmergencyNumberOptions\):
 | 参数名      | 类型                                               | 必填 | 说明           |
 | ----------- | -------------------------------------------------- | ---- | -------------- |
 | phoneNumber | string                                             | 是   | 电话号码。     |
-| options     | [EmergencyNumberOptions](#emergencynumberoptions7) | 否   | 电话号码参数。不传时使用默认卡槽。 |
+| options     | [EmergencyNumberOptions](#emergencynumberoptions7) | 否   | 电话号码参数。 |
 
 **返回值：**
 
@@ -760,7 +759,7 @@ let options: call.EmergencyNumberOptions = {slotId: 1};
 call.isEmergencyPhoneNumber("138xxxxxxxx", options).then((data: boolean) => {
     console.info(`isEmergencyPhoneNumber success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-    console.error(`isEmergencyPhoneNumber fail, promise: 本次操作异常，err->Code${err.code},message:${err.message}请稍后重试。`);
+    console.error(`isEmergencyPhoneNumber fail, promise: 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
 });
 ```
 
@@ -804,7 +803,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 call.formatPhoneNumber("138xxxxxxxx", (err: BusinessError, data: string) => {
     if (err) {
-        console.error(`formatPhoneNumber fail, 本次操作异常，err->Code${err.code},message:${err.message}请稍后重试。`);
+        console.error(`formatPhoneNumber fail, 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
     } else {
         console.info(`formatPhoneNumber success, data->${JSON.stringify(data)}`);
     }
@@ -855,7 +854,7 @@ let options: call.NumberFormatOptions = {
 };
 call.formatPhoneNumber("138xxxxxxxx", options, (err: BusinessError, data: string) => {
     if (err) {
-        console.error(`formatPhoneNumber fail, 本次操作异常，err->Code${err.code},message:${err.message}请稍后重试。`);
+        console.error(`formatPhoneNumber fail, 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
     } else {
         console.info(`formatPhoneNumber success, data->${JSON.stringify(data)}`);
     }
@@ -913,7 +912,7 @@ let options: call.NumberFormatOptions = {
 call.formatPhoneNumber("138xxxxxxxx", options).then((data: string) => {
     console.info(`formatPhoneNumber success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-    console.error(`formatPhoneNumber fail, promise: 本次操作异常，err->Code${err.code},message:${err.message}请稍后重试。`);
+    console.error(`formatPhoneNumber fail, promise: 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
 });
 ```
 
@@ -958,7 +957,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 call.formatPhoneNumberToE164("138xxxxxxxx", "CN", (err: BusinessError, data: string) => {
     if (err) {
-        console.error(`formatPhoneNumberToE164 fail, 本次操作异常，err->Code${err.code},message:${err.message}请稍后重试。`);
+        console.error(`formatPhoneNumberToE164 fail, 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
     } else {
         console.info(`formatPhoneNumberToE164 success, data->${JSON.stringify(data)}`);
     }
@@ -1015,7 +1014,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 call.formatPhoneNumberToE164("138xxxxxxxx", "CN").then((data: string) => {
     console.info(`formatPhoneNumberToE164 success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-    console.error(`formatPhoneNumberToE164 fail, promise: 本次操作异常，err->Code${err.code},message:${err.message}请稍后重试。`);
+    console.error(`formatPhoneNumberToE164 fail, promise: 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
 });
 ```
 
@@ -1063,7 +1062,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 call.answerCall((err: BusinessError) => {
     if (err) {
-        console.error(`answerCall fail, 本次操作异常，err->Code${err.code},message:${err.message}请稍后重试。`);
+        console.error(`answerCall fail, 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
     } else {
         console.info(`answerCall success.`);
     }
@@ -1115,7 +1114,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 call.hangUpCall((err: BusinessError) => {
     if (err) {
-        console.error(`hangUpCall fail, 本次操作异常，err->Code${err.code},message:${err.message}请稍后重试。`);
+        console.error(`hangUpCall fail, 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
     } else {
         console.info(`hangUpCall success.`);
     }
@@ -1166,7 +1165,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 call.rejectCall((err: BusinessError) => {
     if (err) {
-        console.error(`rejectCall fail, 本次操作异常，err->Code${err.code},message:${err.message}请稍后重试。`);
+        console.error(`rejectCall fail, 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
     } else {
         console.info(`rejectCall success.`);
     }
@@ -1229,7 +1228,7 @@ call.getCallTransferInfo(type, number)
         console.info(`getCallTransferInfo success, data->${JSON.stringify(data)}`);
     })
     .catch((err:BusinessError) => {
-        console.error(`getCallTransferInfo fail, 本次操作异常，err->Code${err.code},message:${err.message}请稍后重试。`);
+        console.error(`getCallTransferInfo fail, 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
     });
 ```
 
@@ -1272,8 +1271,8 @@ call.getCallTransferInfo(type, number)
 
 |        名称              | 类型                               | 只读 | 可选 | 说明                                                                                             |
 | ------------------------ | ---------------------------------- | ---- | ---- | ----------------------------------------------------------------------------------------------- |
-| isHideDialScreen               | boolean                            | 否   | 是   | 是否隐藏拨号界面，默认为false。true表示隐藏，false表示不隐藏。   |
-| isCustomAccessibility               | boolean                            | 否   | 是   | 应用是否支持自定义无障碍功能，默认为false。true表示支持，false表示不支持。   <br>**起始版本:** 26.0.0 <br>**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| isHideDialScreen               | boolean                            | 否   | 是   | 是否隐藏拨号界面，true表示隐藏，false表示不隐藏。默认为false。   |
+| isCustomAccessibility               | boolean                            | 否   | 是   | 应用是否支持自定义无障碍功能，。true表示支持，false表示不支持。默认为false   <br>**起始版本:** 26.0.0 <br>**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 
 ## TelCallState<sup>21+</sup>
 
