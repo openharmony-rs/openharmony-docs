@@ -656,7 +656,7 @@ HTTP错误码映射关系：2300000 + curl错误码。更多常用错误码可�
 | 2300094 | Authentication error.                                          |
 | 2300997 | Cleartext traffic not permitted.                               |
 | 2300998 | It is not allowed to access this domain.                       |
-| 2300999 | Unknown error.                                                |
+| 2300999 | Internal error.                                                 |
 
 **示例：**
 
@@ -758,7 +758,7 @@ HTTP错误码映射关系：2300000 + curl错误码。更多常用错误码可�
 | 2300094 | Authentication error.                                          |
 | 2300997 | Cleartext traffic not permitted.                               |
 | 2300998 | It is not allowed to access this domain.                       |
-| 2300999 | Unknown error.                                                |
+| 2300999 | Internal error.                                                 |
 
 **示例：**
 
@@ -900,7 +900,7 @@ HTTP错误码映射关系：2300000 + curl错误码。更多常用错误码可�
 | 2300094 | Authentication error.                                          |
 | 2300997 | Cleartext traffic not permitted.                               |
 | 2300998 | It is not allowed to access this domain.                       |
-| 2300999 | Unknown error.                                                |
+| 2300999 | Internal error.                                                 |
 
 **示例：**
 
