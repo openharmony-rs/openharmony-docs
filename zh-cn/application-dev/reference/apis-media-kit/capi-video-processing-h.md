@@ -594,7 +594,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_UseAutoEffect(uint32_t type, bool e
 
 | 参数项 | 描述 |
 | -- | -- |
-| uint32_t type | 指定要使用的自动效果类型。 |
+| uint32_t type | 指定要使用的显示效果增强类型。 |
 | bool enable | 启用或禁用在随后创建的名为name的XComponent中的该类型效果。 |
 | const char *name | 指定XComponent的名称。如果当前应用有多个同名的XComponent，此参数仅对第一个活跃的XComponent生效。 |
 
@@ -620,7 +620,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_SetAutoEffectParam(uint32_t type, c
 
 | 参数项 | 描述 |
 | -- | -- |
-| uint32_t type | 指定要使用的自动效果类型。 |
+| uint32_t type | 指定要使用的显示效果增强类型。 |
 | const char *name | 指定XComponent的名称。如果当前应用有多个同名的XComponent，此参数仅对第一个活跃的XComponent生效。 |
 | const [OH_AVFormat](capi-videoprocessing-oh-avformat.md)* param | 根据type指定的参数，参见[video_processing_type.h](capi-video-processing-types-h.md#变量)中的变量。 |
 
