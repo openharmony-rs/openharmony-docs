@@ -33,7 +33,7 @@ importVCard\(context: Context, filePath: string, accountId: number, callback: As
 | 参数名   | 类型                        | 必填 | 说明                                   |
 | -------- | --------------------------- | ---- | -------------------------------------- |
 | context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)   | 是   | 应用上下文。 |
-| filePath   | string                      | 是   | VCF(vcard file)文件地址。 |
+| filePath   | string                      | 是   | VCF(VCard file)文件地址。 |
 | accountId | number | 是                  | 联系人账户ID。|
 | callback | AsyncCallback&lt;void&gt; | 是   |回调函数，返回导入成功或失败的状态码。   |
 
@@ -140,7 +140,7 @@ importVCard\(context: Context, filePath: string, callback: AsyncCallback\<void\>
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
 | context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)  | 是   | 应用上下文。|
-| filePath | string | 是   |  VCF(vcard file)文件地址。|
+| filePath | string | 是   |  VCF(VCard file)文件地址。|
 | callback | AsyncCallback&lt;void&gt; | 是   |回调函数，返回导入成功或失败的状态码。 |
 
 **错误码：**
@@ -234,7 +234,7 @@ class EntryAbility extends UIAbility {
 
 exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicates, options?: VCardBuilderOptions\): Promise\<string\>
 
-将联系人导出为 VCF(vcard file)文件。适用于联系人数据备份、跨设备迁移联系人、通过文件分享联系人等场景。使用Promise异步回调。
+将联系人导出为 VCF(VCard file)文件。适用于联系人数据备份、跨设备迁移联系人、通过文件分享联系人等场景。使用Promise异步回调。
 
 **需要权限**：ohos.permission.WRITE_CONTACTS 和 ohos.permission.READ_CONTACTS
 
