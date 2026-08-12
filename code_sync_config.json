@@ -37836,11 +37836,6 @@
 						"start_line":508
 					},
 					{
-						"end_line":1305,
-						"name":"override_access_permission",
-						"start_line":1270
-					},
-					{
 						"end_line":600,
 						"name":"super_call_parent_method",
 						"start_line":546
@@ -37964,6 +37959,11 @@
 						"end_line":526,
 						"name":"ts_class_structural_relation",
 						"start_line":511
+					},
+					{
+						"end_line":204,
+						"name":"ts_override_access_permission",
+						"start_line":163
 					}
 				]
 			}
@@ -43292,6 +43292,46 @@
 						"end_line":111,
 						"name":"ark_napi_create_external_string_ascii",
 						"start_line":108
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/quick-start/arkts-high-performance-programming.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":77,
+						"name":"constant_in_loop_better",
+						"start_line":61
+					},
+					{
+						"end_line":112,
+						"name":"outside_variable_better",
+						"start_line":104
+					},
+					{
+						"end_line":141,
+						"name":"avoid_optional_parameters_better",
+						"start_line":137
+					},
+					{
+						"end_line":173,
+						"name":"use_typearray_better",
+						"start_line":166
+					},
+					{
+						"end_line":224,
+						"name":"avoid_joint_type_better",
+						"start_line":220
+					},
+					{
+						"end_line":290,
+						"name":"exception_handling_better",
+						"start_line":271
 					}
 				]
 			}
