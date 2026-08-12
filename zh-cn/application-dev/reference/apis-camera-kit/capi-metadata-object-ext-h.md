@@ -62,7 +62,7 @@ Camera_ErrorCode OH_MetadataObjectExt_GetMetadataObjectType(const OH_Camera_Meta
 
 | 参数项 | 描述 |
 | -- | -- |
-| const[OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | OH_Camera_MetadataObjectExt实例的指针。 |
+| const [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | OH_Camera_MetadataObjectExt实例的指针。 |
 | [Camera_MetadataObjectType](capi-camera-h.md#camera_metadataobjecttype)* type | 元数据对象类型的指针，是一个Camera_MetadataObjectType实例。 |
 
 **返回：**
