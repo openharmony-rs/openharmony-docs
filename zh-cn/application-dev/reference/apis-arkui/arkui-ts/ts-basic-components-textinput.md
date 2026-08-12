@@ -1071,7 +1071,7 @@ showPassword(visible: boolean)
 
 lineBreakStrategy(strategy: LineBreakStrategy)
 
-设置折行规则。该属性在wordBreak不等于BREAK_ALL的时候生效，不支持连词符。未通过该接口设置时，默认为LineBreakStrategy.GREEDY。
+设置折行规则。该属性在wordBreak不等于BREAK_ALL的时候生效，不支持连字符。未通过该接口设置时，默认为LineBreakStrategy.GREEDY。
 
 适用于需要优化文本换行效果的场景：LineBreakStrategy.GREEDY适用于优先填充每行的快速换行；LineBreakStrategy.HIGH_QUALITY适用于追求更优视觉效果的排版；LineBreakStrategy.BALANCED适用于需要均匀分配各行内容的布局。
 

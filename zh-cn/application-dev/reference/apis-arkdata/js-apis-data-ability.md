@@ -1,4 +1,4 @@
-# @ohos.data.dataAbility（DataAbility谓词）
+# @ohos.data.dataAbility (DataAbility谓词)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
@@ -766,7 +766,7 @@ export default class EntryAbility extends UIAbility {
         name: 'RdbTest.db', // 数据库文件名
         securityLevel: relationalStore.SecurityLevel.S3,
       };
-      // 表结构：EMPLOYEE (NAME, AGE, SALARY, CODES)
+      // 表结构：EMPLOYEE (ID, NAME, AGE, SALARY, CODES)
       const SQL_CREATE_TABLE =
         'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)'; // 建表Sql语句
       store = await relationalStore.getRdbStore(context, STORE_CONFIG);

@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[应用程序包管理模块](js-apis-bundleManager.md)。
 
@@ -94,7 +94,7 @@ Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 | 名称           | 值   | 说明            |
 | -------------- | ---- | --------------- |
 | INTENT_PROFILE  | 1    | 意图框架配置文件。    |
-| CLOUD_PROFILE  | 8    | [端云同步](../apis-core-file-kit/js-apis-file-cloudsync.md)配置文件。**起始版本**：26.0.0    |
+| CLOUD_PROFILE  | 8    | [端云同步](../apis-core-file-kit/js-apis-file-cloudsync.md)配置文件。**起始版本：** 26.0.0    |
 
 ## AppDistributionType<sup>12+</sup>
 
@@ -904,7 +904,7 @@ queryAbilityInfoSync(want: Want, abilityFlags: number, userId?: number): Array\<
 
 | 类型                                                         | 说明                                 |
 | ------------------------------------------------------------ | ------------------------------------ |
-| Array\<[AbilityInfo](js-apis-bundleManager-abilityInfo.md)> | Array\<AbilityInfo>信息。 |
+| Array\<[AbilityInfo](js-apis-bundleManager-abilityInfo.md)> | 返回查询到的Ability信息列表。 |
 
 **错误码：**
 
@@ -985,7 +985,7 @@ queryAbilityInfo(wants: Array\<Want>, abilityFlags: number, userId?: number): Pr
 
 | 参数名      | 类型   | 必填 | 说明                                                  |
 | ------------ | ------ | ---- | ------------------------------------------------------- |
-| want         | Array\<[Want](js-apis-app-ability-want.md)>   | 是   | 表示包含要查询的应用Bundle名称的Want集合。                 |
+| wants         | Array\<[Want](js-apis-app-ability-want.md)>   | 是   | 表示包含要查询的应用Bundle名称的Want集合。                 |
 | abilityFlags | number | 是   | 表示指定返回的AbilityInfo所包含的信息，具体取值及不同含义参考[AbilityFlag](#abilityflag)。 |
 | userId       | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                       |
 
@@ -1061,7 +1061,7 @@ queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | want                  | [Want](js-apis-app-ability-want.md)                                                        | 是   | 表示包含要查询的应用Bundle名称的Want。                       |
 | extensionAbilityType  | [ExtensionAbilityType](js-apis-bundleManager.md#extensionabilitytype)                | 是   | 标识extensionAbility的类型。                                 |
-| extensionAbilityFlags | number                             | 是   | 表示用于指定将返回的ExtensionInfo对象中包含的信息的标志，具体取值及不同含义参考[ExtensionAbilityFlag](#extensionabilityflag)。    |
+| extensionAbilityFlags | number                             | 是   | 表示用于指定将返回的ExtensionAbilityInfo对象中包含的信息的标志，具体取值及不同含义参考[ExtensionAbilityFlag](#extensionabilityflag)。    |
 | userId                | number                                                       | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。                                                 |
 | callback              | AsyncCallback<Array\<[ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md)>> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到Array\<ExtensionAbilityInfo>；否则为错误对象。 |
 
@@ -1129,7 +1129,7 @@ queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | want                  | [Want](js-apis-app-ability-want.md)                                                        | 是   | 表示包含要查询的应用Bundle名称的Want。                       |
 | extensionAbilityType  | [ExtensionAbilityType](js-apis-bundleManager.md#extensionabilitytype)                | 是   | 标识extensionAbility的类型。                                 |
-| extensionAbilityFlags | number                             | 是   | 表示用于指定将返回的ExtensionInfo对象中包含的信息的标志，具体取值及不同含义参考[ExtensionAbilityFlag](#extensionabilityflag)。    |
+| extensionAbilityFlags | number                             | 是   | 表示用于指定将返回的ExtensionAbilityInfo对象中包含的信息的标志，具体取值及不同含义参考[ExtensionAbilityFlag](#extensionabilityflag)。    |
 | callback              | AsyncCallback<Array\<[ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md)>> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到Array\<ExtensionAbilityInfo>；否则为错误对象。 |
 
 **错误码：**
@@ -1194,7 +1194,7 @@ queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType
 | --------------------- | --------------------------------------------- | ---- | --------------------------------------------------------- |
 | want                  | [Want](js-apis-app-ability-want.md)                                         | 是   | 表示包含要查询的应用Bundle名称的Want。                    |
 | extensionAbilityType  | [ExtensionAbilityType](js-apis-bundleManager.md#extensionabilitytype) | 是   | 标识extensionAbility的类型。                              |
-| extensionAbilityFlags | number              | 是   | 表示用于指定将返回的ExtensionInfo对象中包含的信息的标志，具体取值及不同含义参考[ExtensionAbilityFlag](#extensionabilityflag)。 |
+| extensionAbilityFlags | number              | 是   | 表示用于指定将返回的ExtensionAbilityInfo对象中包含的信息的标志，具体取值及不同含义参考[ExtensionAbilityFlag](#extensionabilityflag)。 |
 | userId                | number                                        | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                                              |
 
 **返回值：**
@@ -1290,14 +1290,14 @@ queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: ExtensionAbility
 | --------------------- | --------------------------------------------- | ---- | --------------------------------------------------------- |
 | want                  | [Want](js-apis-app-ability-want.md)                                         | 是   | 表示包含要查询的应用Bundle名称的Want。                    |
 | extensionAbilityType  | [ExtensionAbilityType](js-apis-bundleManager.md#extensionabilitytype) | 是   | 标识extensionAbility的类型。                              |
-| extensionAbilityFlags | number              | 是   | 表示用于指定将返回的ExtensionInfo对象中包含的信息的标志，具体取值及不同含义参考[ExtensionAbilityFlag](#extensionabilityflag)。 |
+| extensionAbilityFlags | number              | 是   | 表示用于指定将返回的ExtensionAbilityInfo对象中包含的信息的标志，具体取值及不同含义参考[ExtensionAbilityFlag](#extensionabilityflag)。 |
 | userId                | number                                        | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                                              |
 
 **返回值：**
 
 | 类型                                                         | 说明                                          |
 | ------------------------------------------------------------ | --------------------------------------------- |
-| Array\<[ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md)> | Array\<ExtensionAbilityInfo>信息。 |
+| Array\<[ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md)> | 返回查询到的ExtensionAbility信息列表。 |
 
 **错误码：**
 
@@ -1498,7 +1498,7 @@ getBundleArchiveInfoSync(hapFilePath: string, bundleFlags: number): BundleInfo
 
 | 类型                                                        | 说明                        |
 | ----------------------------------------------------------- | --------------------------- |
-| [BundleInfo](js-apis-bundleManager-bundleInfo.md) | 返回BundleInfo对象。 |
+| [BundleInfo](js-apis-bundleManager-bundleInfo.md) | 返回查询到的应用包信息。 |
 
 **错误码：**
 
@@ -2963,7 +2963,7 @@ getPermissionDef(permissionName: string, callback: AsyncCallback\<PermissionDef>
 | 参数名           | 类型                                                         | 必填 | 说明                                                         |
 | -------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | permissionName | string                                                       | 是   | 表示权限名称。                                               |
-| callback       | AsyncCallback\<[PermissionDef](js-apis-bundleManager-permissionDef-sys.md)> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的Array\<PermissionDef>；否则为错误对象。 |
+| callback       | AsyncCallback\<[PermissionDef](js-apis-bundleManager-permissionDef-sys.md)> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的PermissionDef；否则为错误对象。 |
 
 **错误码：**
 
@@ -3020,7 +3020,7 @@ getPermissionDef(permissionName: string): Promise\<PermissionDef>
 
 | 类型                                                         | 说明                                       |
 | ------------------------------------------------------------ | ------------------------------------------ |
-| Promise\<[PermissionDef](js-apis-bundleManager-permissionDef-sys.md)> | Promise对象，返回Array\<PermissionDef>对象。 |
+| Promise\<[PermissionDef](js-apis-bundleManager-permissionDef-sys.md)> | Promise对象，返回查询到的权限结构体PermissionDef信息。 |
 
 **错误码：**
 
@@ -3075,7 +3075,7 @@ getPermissionDefSync(permissionName: string): PermissionDef;
 
 | 类型                                                         | 说明                                       |
 | ------------------------------------------------------------ | ------------------------------------------ |
-|[PermissionDef](js-apis-bundleManager-permissionDef-sys.md) | PermissionDef对象。 |
+|[PermissionDef](js-apis-bundleManager-permissionDef-sys.md) | 返回查询到的权限定义结构体PermissionDef信息。 |
 
 **错误码：**
 
@@ -3097,8 +3097,8 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let permissionName = "ohos.permission.GET_BUNDLE_INFO";
 try {
-  let PermissionDef = bundleManager.getPermissionDefSync(permissionName);
-  hilog.info(0x0000, 'testTag', 'getPermissionDefSync successfully. Data: %{public}s', JSON.stringify(PermissionDef));
+  let permissionDef = bundleManager.getPermissionDefSync(permissionName);
+  hilog.info(0x0000, 'testTag', 'getPermissionDefSync successfully. Data: %{public}s', JSON.stringify(permissionDef));
 } catch (err) {
   let message = (err as BusinessError).message;
   hilog.error(0x0000, 'testTag', 'getPermissionDefSync failed. Cause: %{public}s', message);
@@ -3126,7 +3126,7 @@ getAbilityLabel(bundleName: string, moduleName: string, abilityName: string, cal
 | bundleName  | string                 | 是   | 表示应用程序的bundleName。                                     |
 | moduleName  | string                 | 是   | 表示Module名称。                                     |
 | abilityName | string                 | 是   | 表示UIAbility组件的名称。                                    |
-| callback    | AsyncCallback\<string> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获指定组件的Label值；否则为错误对象。 |
+| callback    | AsyncCallback\<string> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取指定组件的Label值；否则为错误对象。 |
 
 **错误码：**
 
@@ -3485,7 +3485,7 @@ getSharedBundleInfo(bundleName: string, moduleName: string): Promise\<Array\<Sha
 
 获取调用方自身的信息时不需要权限。
 
-**系统接口：** 此接口为系统接口
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -3554,7 +3554,7 @@ getAllSharedBundleInfo(callback: AsyncCallback\<Array\<SharedBundleInfo\>\>): vo
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<Array\<[SharedBundleInfo](js-apis-bundleManager-sharedBundleInfo-sys.md)\>\> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获所有的共享包信息。 |
+| callback | AsyncCallback\<Array\<[SharedBundleInfo](js-apis-bundleManager-sharedBundleInfo-sys.md)\>\> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取所有的共享包信息。 |
 
 **错误码：**
 
@@ -3592,7 +3592,7 @@ getAllSharedBundleInfo(): Promise\<Array\<SharedBundleInfo\>\>
 
 获取所有的共享包信息。使用Promise异步回调。
 
-**系统接口：** 此接口为系统接口
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -3754,7 +3754,7 @@ getAppProvisionInfo(bundleName: string, userId?: number): Promise\<AppProvisionI
 
 获取调用方自身的信息时不需要权限。
 
-**系统接口：** 此接口为系统接口
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -3827,7 +3827,7 @@ getAppProvisionInfoSync(bundleName: string, userId?: number): AppProvisionInfo
 
 获取调用方自身的信息时不需要权限。
 
-**系统接口：** 此接口为系统接口
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -4149,7 +4149,7 @@ queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: string, extensio
 | --------------------- | ------------------------------- | ---- | --------------------------------------------------------- |
 | want                  | [Want](js-apis-app-ability-want.md)      | 是   | 表示包含要查询的应用Bundle名称的Want。                    |
 | extensionAbilityType  | string                          | 是   | 表示自定义extensionAbility的类型。                        |
-| extensionAbilityFlags | number| 是   | 表示返回的ExtensionInfo对象中需要包含的信息标志，具体取值及不同含义参考[ExtensionAbilityFlag](#extensionabilityflag)。 |
+| extensionAbilityFlags | number| 是   | 表示返回的ExtensionAbilityInfo对象中需要包含的信息标志，具体取值及不同含义参考[ExtensionAbilityFlag](#extensionabilityflag)。 |
 | userId                | number                          | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。 |
 
 **返回值：**
@@ -4445,7 +4445,7 @@ getAllPreinstalledApplicationInfo(): Promise\<Array\<PreinstalledApplicationInfo
 
 | 类型                                                         | 说明                                |
 | ------------------------------------------------------------ | ----------------------------------- |
-| Promise<Array\<[PreinstalledApplicationInfo](js-apis-bundleManager-ApplicationInfo-sys.md#preinstalledapplicationinfo12)>> | Promise对象，返回Array\<PreinstalledApplicationInfo>。 |
+| Promise<Array\<[PreinstalledApplicationInfo](js-apis-bundleManager-ApplicationInfo-sys.md#preinstalledapplicationinfo)>> | Promise对象，返回Array\<PreinstalledApplicationInfo>。 |
 
 **错误码：**
 
@@ -4494,7 +4494,7 @@ getAllNewPreinstalledApplicationInfo(): Promise\<Array\<PreinstalledApplicationI
 
 | 类型                                                         | 说明                                |
 | ------------------------------------------------------------ | ----------------------------------- |
-| Promise<Array\<[PreinstalledApplicationInfo](js-apis-bundleManager-ApplicationInfo-sys.md#preinstalledapplicationinfo12)>> | Promise对象，设备OTA升级期间当前用户下新增的所有预置应用信息。 |
+| Promise<Array\<[PreinstalledApplicationInfo](js-apis-bundleManager-ApplicationInfo-sys.md#preinstalledapplicationinfo)>> | Promise对象，设备OTA升级期间当前用户下新增的所有预置应用信息。 |
 
 **错误码：**
 
@@ -4543,7 +4543,7 @@ queryExtensionAbilityInfoSync(extensionAbilityType: string, extensionAbilityFlag
 | 参数名                | 类型                            | 必填 | 说明                                                      |
 | --------------------- | ------------------------------- | ---- | --------------------------------------------------------- |
 | extensionAbilityType  | string                          | 是   | 表示自定义extensionAbility的类型。                        |
-| extensionAbilityFlags | number| 是   | 表示返回的ExtensionInfo对象中需要包含的信息标志，具体取值及不同含义参考[ExtensionAbilityFlag](#extensionabilityflag)。 |
+| extensionAbilityFlags | number| 是   | 表示返回的ExtensionAbilityInfo对象中需要包含的信息标志，具体取值及不同含义参考[ExtensionAbilityFlag](#extensionabilityflag)。 |
 | userId                | number                          | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户ID。取值范围：大于等于0。 |
 
 **返回值：**
@@ -6452,7 +6452,7 @@ type PreinstalledApplicationInfo = _PreinstalledApplicationInfo
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_PreinstalledApplicationInfo](js-apis-bundleManager-ApplicationInfo-sys.md#preinstalledapplicationinfo12) |预置应用信息。 |
+| [_PreinstalledApplicationInfo](js-apis-bundleManager-ApplicationInfo-sys.md#preinstalledapplicationinfo) |预置应用信息。 |
 
 ## PluginBundleInfo<sup>19+</sup>
 

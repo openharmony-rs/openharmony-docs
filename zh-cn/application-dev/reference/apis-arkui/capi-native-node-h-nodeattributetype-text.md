@@ -211,7 +211,7 @@ NODE_TEXT_CASE = 1007
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 表示文本大小写类型[ArkUI_TextCase](capi-text-common-h.md#arkui_textcase)。ARKUI_TEXT_CASE_NORMAL表示保持原样，ARKUI_TEXT_CASE_LOWER表示转换为小写，ARKUI_TEXT_CASE_UPPER表示转换为大写。默认值为ARKUI_TEXT_CASE_NORMAL。 |
+| .value[0].i32 | 表示文本大小写类型，具体枚举值请参考[ArkUI_TextCase](capi-text-common-h.md#arkui_textcase)。默认值为ARKUI_TEXT_CASE_NORMAL，表示保持原样。 |
 
 **返回：**
 
@@ -307,7 +307,7 @@ NODE_TEXT_OVERFLOW = 1011
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 表示文本超长时的显示方式，具体枚举值请参考[ArkUI_TextOverflow](capi-text-common-h.md#arkui_textoverflow)。默认值为ARKUI_TEXT_OVERFLOW_NONE，表示文本超长时不裁剪显示。。 |
+| .value[0].i32 | 表示文本超长时的显示方式，具体枚举值请参考[ArkUI_TextOverflow](capi-text-common-h.md#arkui_textoverflow)。默认值为ARKUI_TEXT_OVERFLOW_NONE，表示文本超长时不裁剪显示。 |
 
 **返回：**
 

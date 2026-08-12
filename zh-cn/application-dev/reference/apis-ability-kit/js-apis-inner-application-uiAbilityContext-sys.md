@@ -330,6 +330,10 @@ startServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
 
 启动一个新的ServiceExtensionAbility。使用callback异步回调。
 
+> **说明：**
+>
+> 该接口不支持应用分身。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
@@ -402,6 +406,10 @@ export default class EntryAbility extends UIAbility {
 startServiceExtensionAbility(want: Want): Promise\<void>
 
 启动一个新的ServiceExtensionAbility。使用Promise异步回调。
+
+> **说明：**
+>
+> 该接口不支持应用分身。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -485,6 +493,8 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback:
 > 
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。  
 > 当accountId为当前用户时，无需进行权限校验。
+>
+> 该接口不支持应用分身。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -567,6 +577,8 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\
 > 
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。  
 > 当accountId为当前用户时，无需进行权限校验。
+>
+> 该接口不支持应用分身。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -957,6 +969,8 @@ connectServiceExtensionAbilityWithAccount(want: Want, accountId: number, options
 >
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。  
 > 当accountId为当前用户时，无需进行权限校验。
+>
+> 该接口不支持应用分身。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -1803,7 +1817,7 @@ startAbilityByCallWithAccount(want: Want, accountId: number): Promise&lt;Caller&
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[Caller](js-apis-app-ability-uiAbility.md#caller)&gt; | Promise对象，返回要通讯的caller对象。 |
+| Promise&lt;[Caller](js-apis-app-ability-uiAbility.md#caller)&gt; | Promise对象，返回要通信的caller对象。 |
 
 **错误码：**
 
@@ -2137,6 +2151,8 @@ requestModalUIExtension(pickerWant: Want): Promise\<void>
 > **说明：**
 >
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+>
+> 该接口不支持应用分身。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2219,7 +2235,9 @@ requestModalUIExtension(pickerWant: Want, callback: AsyncCallback\<void>): void
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。 
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+>
+> 该接口不支持应用分身。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2297,6 +2315,8 @@ requestModalUIExtensionWithAccount(pickerWant: Want, accountId: number): Promise
 > **说明：**
 >
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+>
+> 该接口不支持应用分身。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -2384,6 +2404,8 @@ connectAbilityWithAccount(want: Want, accountId: number, options: ConnectOptions
 > 当accountId为当前用户时，无需进行权限校验。
 >
 > 从API version 9开始支持，从API version 10开始废弃，建议使用[connectServiceExtensionAbilityWithAccount](#connectserviceextensionabilitywithaccount)替代。
+>
+> 该接口不支持应用分身。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

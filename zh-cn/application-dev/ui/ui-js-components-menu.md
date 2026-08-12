@@ -156,10 +156,9 @@ option{
 
 ```js
 // xxx.js
-import promptAction from '@ohos.promptAction';
 export default {
   cancel() {
-    promptAction.showToast({
+    this.getUIContext().getPromptAction().showToast({
       message: "cancel"
     })
   },

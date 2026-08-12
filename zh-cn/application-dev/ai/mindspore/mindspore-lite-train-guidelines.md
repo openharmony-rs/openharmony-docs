@@ -289,7 +289,7 @@ int GenerateInputDataWithRandom(OH_AI_TensorHandleArray inputs) {
   return OH_AI_STATUS_SUCCESS;
 }
 
-int ModelPredict(char* model_file) {
+int ModelPredict(const char* model_file) {
   // Create and init context, add CPU device info
   OH_AI_ContextHandle context = OH_AI_ContextCreate();
   if (context == NULL) {

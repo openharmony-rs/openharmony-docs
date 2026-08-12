@@ -3,7 +3,7 @@
 <!--Kit: Calendar Kit-->
 <!--Subsystem: Applications-->
 <!--Owner: @qq_42718467-->
-<!--Designer: @windsky6-->
+<!--Designer: @qq_42718467-->
 <!--Tester: @z30055209-->
 <!--Adviser: @ge-yafang-->
 
@@ -104,8 +104,6 @@
     ```
 
 4. 根据日历账户信息，创建一个日历账户Calendar对象。
-
-   创建日历账户之前，开发者需要先根据账户信息进行查询，如果账户不存在则抛出异常信息，捕获到异常再进行日历账户的创建，否则可能会出现账户重复创建的问题。
 
     <!-- @[calendarData_indexImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
     

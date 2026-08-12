@@ -20,6 +20,8 @@ shouldBuiltInRecognizerParallelWith(callback: ShouldBuiltInRecognizerParallelWit
 
 提供系统内置手势与响应链上其他组件的手势设置并行关系的回调事件。此接口对应的C API接口为[setInnerGestureParallelTo](../capi-arkui-nativemodule-arkui-nativegestureapi-1.md#setinnergestureparallelto)。
 
+当前该接口不支持将系统组合组件中的内置手势（如[Tabs](ts-container-tabs.md)组件等）与其他手势设置并行关系。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -129,7 +131,7 @@ type GestureRecognizerJudgeBeginCallback = (event: BaseGestureEvent, current: Ge
 | event | [BaseGestureEvent](./ts-gesture-common.md#basegestureevent11对象说明) | 是   | 当前基础手势事件信息。 |
 | current | [GestureRecognizer](ts-gesture-common.md#gesturerecognizer12) | 是   | 当前即将响应的识别器对象。 |
 | recognizers | Array\<[GestureRecognizer](ts-gesture-common.md#gesturerecognizer12)\> | 是   | 响应链上的其他手势识别器对象。 |
-| touchRecognizers<sup>20+</sup> | Array\<[TouchRecognizer](ts-gesture-common.md#touchrecognizer20)\> | 否   | 响应链上的Touch识别器对象。未传入时，表示在当前手势绑定组件及其子孙组件没有可响应的Touch识别器。|
+| touchRecognizers<sup>20+</sup> | Array\<[TouchRecognizer](ts-gesture-common.md#touchrecognizer20)\> | 否   | 响应链上的触摸识别器对象。未传入时，表示在当前手势绑定组件及其子孙组件没有可响应的触摸识别器。|
 
 **返回值：**
 
@@ -177,7 +179,7 @@ type TouchTestDoneCallback = (event: BaseGestureEvent, recognizers: Array\<Gestu
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| event | [BaseGestureEvent](./ts-gesture-common.md#basegestureevent11对象说明) | 是   | [触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)结束后的基础手势事件的信息。 <br>**说明：** <br>仅包含BaseGestureEvent的信息，不包含其子类拓展信息。<br>axisHorizontal和axisVertical的值为0。 |
+| event | [BaseGestureEvent](./ts-gesture-common.md#basegestureevent11对象说明) | 是   | [触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)结束后的基础手势事件的信息。 <br>**说明：** <br>仅包含BaseGestureEvent的信息，不包含其子类扩展信息。<br>axisHorizontal和axisVertical的值为0。 |
 | recognizers | Array\<[GestureRecognizer](ts-gesture-common.md#gesturerecognizer12)\> | 是   | [触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)结束后，所有手势识别器对象。 |
 
 ## onGestureCollectIntercept
@@ -225,7 +227,7 @@ type GestureCollectInterceptCallback = (recognizers: Array\<GestureRecognizer\>,
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | recognizers | Array\<[GestureRecognizer](ts-gesture-common.md#gesturerecognizer12)\> | 是   | 响应链上组件的手势识别器对象。 |
-| touchRecognizers | Array\<[TouchRecognizer](ts-gesture-common.md#touchrecognizer20)\> | 否 | 响应链上组件的触摸识别器对象。<br/>默认值为null，表示响应链上没有触摸识别器对象。 |
+| touchRecognizers | Array\<[TouchRecognizer](ts-gesture-common.md#touchrecognizer20)\> | 否 | 响应链上组件的触摸识别器对象。<br>默认值为null，表示响应链上没有触摸识别器对象。 |
 
 **返回值：**
 
@@ -504,7 +506,7 @@ struct Index {
               Column().width('100%').height('100%').backgroundColor(Color.Pink)
             }.tabBar(new SubTabBarStyle('pink'))
           }
-          .onAnimationStart((index: number, targetIndex: number) => {
+          .onAnimationStart((_index: number, targetIndex: number) => {
             console.info(`ets onGestureRecognizerJudgeBegin child: ${targetIndex}`);
             this.innerSelectedIndex = targetIndex;
           })
@@ -534,7 +536,7 @@ struct Index {
           Column().width('100%').height('100%').backgroundColor(Color.Brown)
         }.tabBar(this.tabBuilder(2, 'brown'))
       }
-      .onAnimationStart((index: number, targetIndex: number, event: TabsAnimationEvent) => {
+      .onAnimationStart((_index: number, targetIndex: number, _event: TabsAnimationEvent) => {
         // 切换动画开始时触发该回调。目标页签显示下划线。
         this.selectedIndex = targetIndex;
       })
@@ -731,7 +733,7 @@ struct FatherControlChild {
       })
       .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
         others: Array<GestureRecognizer>,
-        touchRecognizers?: Array<TouchRecognizer>) => { // 在识别器即将要成功时，查找子组件Touch识别器并取消其Touch事件
+        touchRecognizers?: Array<TouchRecognizer>) => { // 在识别器即将要成功时，查找子组件触摸识别器并取消其Touch事件
         if (current && touchRecognizers) {
           let target = current.getEventTargetInfo();
           if (target) {
@@ -797,7 +799,7 @@ struct FatherControlChild {
                 this.currentRecognizer.setEnabled(false)
               }
             }
-            this.lastOffset = event.offsetY
+            this.lastOffset = event.offsetY;
           })
       )
 

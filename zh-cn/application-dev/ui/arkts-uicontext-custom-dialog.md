@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-在广告、中奖、警告、软件更新等与用户交互响应操作的场景下，可以使用UIContext中获取到的PromptAction对象提供的[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)接口来实现自定义弹出框。相较于[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)优势点在于页面解耦，支持[动态刷新](../reference/apis-arkui/js-apis-arkui-ComponentContent.md#update)。
+在广告、中奖、警告、软件更新等与用户交互响应操作的场景下，可以使用UIContext中获取到的PromptAction对象提供的[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)接口来实现自定义弹出框。相较于[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)优势点在于页面解耦，支持动态刷新[update](../reference/apis-arkui/js-apis-arkui-ComponentContent.md#update)。
 
 > **说明：**
 > 
@@ -61,7 +61,7 @@
      .catch((error: BusinessError) => {
        let message = (error as BusinessError).message;
        let code = (error as BusinessError).code;
-       hilog.error(DOMAIN, 'testTag', 'testTag', 'OpenCustomDialog args error code is ${code}, message is ${message}');
+       hilog.error(DOMAIN, 'testTag', 'testTag', `OpenCustomDialog args error code is ${code}, message is ${message}`);
      })
    ```
 3. 关闭自定义弹出框。
@@ -75,7 +75,7 @@
    ``` TypeScript
    PromptActionClassNew.ctx.getPromptAction().closeCustomDialog(PromptActionClassNew.contentNode)
      .then(() => {
-       hilog.info(DOMAIN, 'testTag', 'testTag', 'CloseCustomDialog complete.g complete.');
+       hilog.info(DOMAIN, 'testTag', 'testTag', 'CloseCustomDialog complete.');
        if (this.contentNode !== null) {
          this.contentNode.dispose();   // 释放contentNode
        }
@@ -83,7 +83,7 @@
      .catch((error: BusinessError) => {
        let message = (error as BusinessError).message;
        let code = (error as BusinessError).code;
-       hilog.error(DOMAIN, 'testTag', 'testTag', 'CloseCustomDialog args error code is ${code}, message is ${message}');
+       hilog.error(DOMAIN, 'testTag', 'testTag', `CloseCustomDialog args error code is ${code}, message is ${message}`);
      })
    ```
 
@@ -111,7 +111,7 @@ PromptActionClassNew.ctx.getPromptAction().updateCustomDialog(PromptActionClassN
   .catch((error: BusinessError) => {
     let message = (error as BusinessError).message;
     let code = (error as BusinessError).code;
-    hilog.error(DOMAIN, 'testTag', 'testTag', 'UpdateCustomDialog args error code is ${code}, message is ${message}');
+    hilog.error(DOMAIN, 'testTag', 'testTag', `UpdateCustomDialog args error code is ${code}, message is ${message}`);
   })
 ```
 
@@ -294,7 +294,7 @@ export class PromptActionClassNew {
         .catch((error: BusinessError) => {
           let message = (error as BusinessError).message;
           let code = (error as BusinessError).code;
-          hilog.error(DOMAIN, 'testTag', 'testTag', 'OpenCustomDialog args error code is ${code}, message is ${message}');
+          hilog.error(DOMAIN, 'testTag', 'testTag', `OpenCustomDialog args error code is ${code}, message is ${message}`);
         })
     }
   }
@@ -309,7 +309,7 @@ export class PromptActionClassNew {
         .catch((error: BusinessError) => {
           let message = (error as BusinessError).message;
           let code = (error as BusinessError).code;
-          hilog.error(DOMAIN, 'testTag', 'testTag', 'CloseCustomDialog args error code is ${code}, message is ${message}');
+          hilog.error(DOMAIN, 'testTag', 'testTag', `CloseCustomDialog args error code is ${code}, message is ${message}`);
         })
     }
   }
@@ -326,7 +326,7 @@ export class PromptActionClassNew {
         .catch((error: BusinessError) => {
           let message = (error as BusinessError).message;
           let code = (error as BusinessError).code;
-          hilog.error(DOMAIN, 'testTag', 'testTag', 'UpdateCustomDialog args error code is ${code}, message is ${message}');
+          hilog.error(DOMAIN, 'testTag', 'testTag', `UpdateCustomDialog args error code is ${code}, message is ${message}`);
         })
     }
   }

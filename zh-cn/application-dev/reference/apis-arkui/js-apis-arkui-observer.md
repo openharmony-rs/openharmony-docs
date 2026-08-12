@@ -59,7 +59,7 @@ NavDestination组件状态。
 
 ## RouterPageState
 
-routerPage生命周期触发时对应的状态。RouterPageState用于[RouterPageInfo](#routerpageinfo)中，作为[routerPageUpdate](#uiobserveronrouterpageupdate11)无感监听的返回值。
+routerPage生命周期触发时对应的状态。RouterPageState用于[RouterPageInfo](#routerpageinfo)中，作为[routerPageUpdate](#uiobserveronrouterpageupdate)无感监听的返回值。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -539,7 +539,7 @@ struct Index {
                 .fontSize(16)
                 .textAlign(TextAlign.Center)
                 .margin({ top: 10 })
-            }, (item: string) => item)
+            }, (item: number) => item.toString())
           }.width('100%')
         }
         .id('testId')
@@ -582,7 +582,7 @@ struct Index {
 }
 ```
 
-## uiObserver.on('routerPageUpdate')<sup>11+</sup>
+## uiObserver.on('routerPageUpdate')
 
 on(type: 'routerPageUpdate', context: UIAbilityContext | UIContext, callback: Callback\<RouterPageInfo\>): void
 
@@ -636,7 +636,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## uiObserver.off('routerPageUpdate')<sup>11+</sup>
+## uiObserver.off('routerPageUpdate')
 
 off(type: 'routerPageUpdate', context: UIAbilityContext | UIContext, callback?: Callback\<RouterPageInfo\>): void
 
@@ -749,7 +749,7 @@ off(type: 'densityUpdate', context: UIContext, callback?: Callback\<DensityInfo\
 | callback | Callback\<[DensityInfo](#densityinfo12)\> | 否   | 需要被注销的回调函数。若不指定具体的回调函数，则注销指定UIContext下所有densityUpdate事件监听。 |
 
 ```ts
-import { uiObserver, UIContext } from '@kit.ArkUI';
+import { uiObserver } from '@kit.ArkUI';
 
 @Entry
 @Component

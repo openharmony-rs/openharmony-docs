@@ -1,4 +1,4 @@
-# EnterpriseAdminExtensionContext
+# EnterpriseAdminExtensionContext（企业设备管理扩展能力上下文环境）
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima; @weizai16-->
@@ -10,7 +10,7 @@ EnterpriseAdminExtensionContext是[EnterpriseAdminExtensionAbility](js-apis-Ente
 
 每个EnterpriseAdminExtensionAbility组件实例化时，系统都会自动创建对应的EnterpriseAdminExtensionContext。开发者可以通过EnterpriseAdminExtensionContext获取应用的沙箱路径、启动其他的组件。该上下文环境只能在当前EnterpriseAdminExtensionAbility中使用，不能传递到其他组件中使用。
 
-> **说明**：
+> **说明：**
 >
 > 本模块首批接口从API version 23 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
@@ -90,7 +90,7 @@ startAbilityByAdmin(admin: Want, want: Want): Promise\<void>
     "startWindowBackground": "$color:white",
     "exported": true,
     "permissions": [
-      "ohos.permission.START_UI_Ability"
+      "ohos.permission.START_UI_ABILITY"
     ]
   }
 ]

@@ -19,9 +19,9 @@
 import { scan } from '@kit.ConnectivityKit';
 ```
 
-## startScan
+## scan.startScan
 
-startScan(filters: Array&lt;ScanFilters&gt; | null, options?: ScanOptions): Promise&lt;void&gt;
+startScan(filters: ScanFilters[] | null, options?: ScanOptions): Promise&lt;void&gt;
 
 发起星闪扫描。使用Promise异步回调。
 
@@ -37,7 +37,7 @@ startScan(filters: Array&lt;ScanFilters&gt; | null, options?: ScanOptions): Prom
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| filters | Array&lt;[ScanFilters](#scanfilters)&gt; \| null | 是 | 扫描星闪广播的过滤条件集合，符合过滤条件的设备会被上报。若不使能过滤器则传入null。<br/>若该参数设置为null，将扫描所有可发现的周边星闪设备，但是不建议使用此方式，可能扫描到非预期设备，并增加功耗。 |
+| filters | [ScanFilters](#scanfilters)[] \| null | 是 | 扫描星闪广播的过滤条件集合，符合过滤条件的设备会被上报。若不使能过滤器则传入null。<br/>若该参数设置为null，将扫描所有可发现的周边星闪设备，但是不建议使用此方式，可能扫描到非预期设备，并增加功耗。 |
 | options | [ScanOptions](#scanoptions) | 否 | 表示扫描选项。默认为低功耗模式。 |
 
 **返回值：**
@@ -48,7 +48,7 @@ startScan(filters: Array&lt;ScanFilters&gt; | null, options?: ScanOptions): Prom
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -93,7 +93,7 @@ try {
 ```
 
 
-## stopScan
+## scan.stopScan
 
 stopScan(): Promise&lt;void&gt;
 
@@ -115,7 +115,7 @@ stopScan(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -141,9 +141,9 @@ try {
 ```
 
 
-## onDeviceFound
+## scan.onDeviceFound
 
-onDeviceFound(callback: Callback\<Array\<ScanResults\>\>): void
+onDeviceFound(callback: Callback\<ScanResults[]\>): void
 
 订阅星闪扫描结果。使用callback异步回调。
 
@@ -159,7 +159,7 @@ onDeviceFound(callback: Callback\<Array\<ScanResults\>\>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&zwnj;\<&zwnj;Array&zwnj;\<&zwnj;[ScanResults](#scanresults)&zwnj;\>&zwnj;\> | 是 | 回调函数，返回星闪扫描结果数组对象。扫描结果携带远端设备的随机地址。 |
+| callback | Callback&zwnj;\<&zwnj;&zwnj;[ScanResults](#scanresults)&zwnj;[]&zwnj;\> | 是 | 回调函数，返回星闪扫描结果数组对象。扫描结果携带远端设备的随机地址。 |
 
 **错误码：**
 
@@ -174,7 +174,7 @@ onDeviceFound(callback: Callback\<Array\<ScanResults\>\>): void
 import { scan } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let onReceiveEvent:(data: Array<scan.ScanResults>) => void = (data: Array<scan.ScanResults>) => {
+let onReceiveEvent:(data: scan.ScanResults[]) => void = (data: scan.ScanResults[]) => {
   console.info('scan result addr:' + data[0].address + 'name:' + data[0].deviceName);
 };
 try {
@@ -185,9 +185,9 @@ try {
 ```
 
 
-## offDeviceFound
+## scan.offDeviceFound
 
-offDeviceFound(callback?: Callback\<Array\<ScanResults\>\>): void
+offDeviceFound(callback?: Callback\<ScanResults[]\>): void
 
 取消订阅星闪扫描结果。使用callback异步回调。
 
@@ -201,7 +201,7 @@ offDeviceFound(callback?: Callback\<Array\<ScanResults\>\>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;Array&lt;&zwnj;[ScanResults](#scanresults)&zwnj;&gt;&gt; | 否 | 回调函数，返回星闪扫描结果数组对象。<br/>填写该参数则取消当前callback订阅。不填写该参数则取消该type对应的所有回调。 |
+| callback | Callback&lt;&zwnj;[ScanResults](#scanresults)&zwnj;[]&gt; | 否 | 回调函数，返回星闪扫描结果数组对象。<br/>填写该参数则取消当前callback订阅。不填写该参数则取消该type对应的所有回调。 |
 
 **错误码：**
 

@@ -39,7 +39,7 @@ showToast(options: ShowToastOptions): void
 import prompt from '@ohos.prompt'
 prompt.showToast({
   message: 'Message Info',
-    duration: 2000
+  duration: 2000
 });
 ```
 

@@ -747,11 +747,15 @@ settings.openNetworkManagerSettings(context).then((status) => {
 });
 ```
 
-## settings.enableAirplaneMode
+## settings.enableAirplaneMode<sup>(deprecated)</sup>
 
 enableAirplaneMode(enable: boolean, callback: AsyncCallback\<void>): void
 
 启用或禁用飞行模式。使用callback异步回调（暂不支持）。
+
+> **说明：**
+>
+> 从 API version 7开始支持，从API version 26.0.0开始废弃，此接口不再提供替代接口。
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
@@ -775,11 +779,15 @@ settings.enableAirplaneMode(isEnabled, (err:Error) => {
 })
 ```
 
-## settings.enableAirplaneMode
+## settings.enableAirplaneMode<sup>(deprecated)</sup>
 
 enableAirplaneMode(enable: boolean): Promise\<void>
 
 启用或禁用飞行模式。使用Promise异步回调（暂不支持）。
+
+> **说明：**
+>
+> 从 API version 7开始支持，从API version 26.0.0开始废弃，此接口不再提供替代接口。
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
@@ -806,11 +814,15 @@ settings.enableAirplaneMode(isEnabled).then(() => {
 })
 ```
 
-## settings.canShowFloating
+## settings.canShowFloating<sup>(deprecated)</sup>
 
 canShowFloating(callback: AsyncCallback\<boolean>): void
 
 检查应用是否能够以悬浮窗形式显示。使用callback异步回调（暂不支持）。
+
+> **说明：**
+>
+> 从 API version 7开始支持，从API version 26.0.0开始废弃，此接口不再提供替代接口。
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
@@ -832,11 +844,15 @@ settings.canShowFloating((err:Error, status: boolean) => {
 });
 ```
 
-## settings.canShowFloating
+## settings.canShowFloating<sup>(deprecated)</sup>
 
 canShowFloating(): Promise\<boolean>
 
 检查应用是否能够以悬浮窗形式显示。使用Promise异步回调（暂不支持）。
+
+> **说明：**
+>
+> 从 API version 7开始支持，从API version 26.0.0开始废弃，此接口不再提供替代接口。
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
@@ -854,11 +870,15 @@ settings.canShowFloating().then((status:boolean) => {
 });
 ```
 
-## settings.getUriSync<sup>8+</sup>
+## settings.getUriSync<sup>(deprecated)</sup>
 
 getUriSync(name: string): string
 
 获取数据项的URI（暂不支持）。
+
+> **说明：**
+>
+> 从 API version 8开始支持，从API version 26.0.0开始废弃，此接口不再提供替代接口。
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
@@ -889,7 +909,7 @@ getURI(name: string, callback: AsyncCallback\<object>): void
 
 > **说明：**
 >
-> 从 API version 7开始支持，从API version 9开始废弃，此接口不再提供代替接口。
+> 从 API version 7开始支持，从API version 9开始废弃，此接口不再提供替代接口。
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
@@ -916,7 +936,7 @@ getURI(name: string): Promise\<object>
 
 > **说明：**
 >
-> 从 API version 7开始支持，从API version 9开始废弃，此接口不再提供代替接口。
+> 从 API version 7开始支持，从API version 9开始废弃，此接口不再提供替代接口。
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
@@ -946,7 +966,7 @@ settings.getURI(settings.display.SCREEN_BRIGHTNESS_STATUS).then((uri:string) => 
 
 getValue(dataAbilityHelper: DataAbilityHelper, name: string, callback: AsyncCallback\<object>): void
 
-获取数据库中DEVICE_SHARD域指定数据项的值。使用callback异步回调。
+获取数据库中DEVICE_SHARED域指定数据项的值。使用callback异步回调。
 
 > **说明：**
 >

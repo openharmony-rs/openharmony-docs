@@ -448,7 +448,7 @@ onAction(event: Callback\<GestureEvent>): SwipeGestureHandler
 
 | 名称         | 类型                                   | 只读 | 可选 | 说明                 |
 | ------------ | -------------------------------------- | ---- | -----|--------------- |
-| fingers | number | 否 | 是 | 触发快滑的最少手指数。当单指快滑即可触发操作时设置为1；当需要降低误触、要求多指协同触发快滑时设置为2到10。不传入时默认值为1。<br>默认值：1 <br>取值范围：[1, 10]<br> |
+| fingers | number | 否 | 是 | 触发快滑的最少手指数。<br>取值范围：[1, 10]，超出范围时使用默认值。<br>当单指快滑即可触发操作时设置为1；当需要降低误触、要求多指协同触发快滑时设置为2到10。<br>默认值：1 |
 | direction | [SwipeDirection](./ts-basic-gestures-swipegesture.md#swipedirection枚举说明) | 否 | 是 | 触发快滑手势的滑动方向。SwipeDirection.All适用于任意方向快滑均可触发的场景；SwipeDirection.Horizontal适用于只响应水平快滑的场景，如左右翻页或轮播切换；SwipeDirection.Vertical适用于只响应竖直快滑的场景，如上下切换内容；SwipeDirection.None适用于暂不触发快滑手势的场景。不传入时默认值为SwipeDirection.All。<br>默认值：SwipeDirection.All |
 | speed | number | 否 | 是 | 识别快滑的最小速度。需要更灵敏地识别快滑时可设置较小的正数阈值；需要减少普通滑动被误识别为快滑时可设置较大的阈值。推荐先使用默认值，再根据交互灵敏度和误触情况调整。不传入时默认值为100vp/s。<br>默认值：100vp/s <br>取值范围：(0, +∞)，单位：vp/s。<br>**说明：** <br>当滑动速度的值小于等于0时，会被转化为默认值。 |
 | isFingerCountLimited<sup>15+</sup> | boolean | 否 | 是 | 是否检查触摸屏幕的手指数量。true表示检查触摸屏幕的手指数量，false表示不检查触摸屏幕的手指数量。如果触摸手指的数量不等于设置的触发快滑的最少手指数（即上述fingers参数），手势识别将失败。<br>默认值：false<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |

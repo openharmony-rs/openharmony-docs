@@ -6,11 +6,13 @@
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
+页面路由错误码用于标识页面跳转、页面替换和Navigation跳转等场景中的常见错误，帮助开发者快速定位路由配置、页面栈和参数传入问题。
+
 > **说明：**
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
-## 100002 路由页面跳转时输入的uri错误
+## 100002 路由页面跳转时输入的URI错误
 
 **错误信息**
 
@@ -18,15 +20,15 @@ Uri error. The URI of the page to redirect is incorrect or does not exist.
 
 **错误描述**
 
-当跳转页面输入的uri错误或者不存在，系统会产生此错误码。该错误码为string类型。
+当跳转页面输入的URI错误或者不存在，系统会产生此错误码。该错误码为string类型。
 
 **可能原因**
 
-输入的路由uri错误或者不存在。
+输入的路由URI错误或者不存在。
 
 **处理步骤**
 
-请检查输入的路由uri是否正确。
+请检查输入的路由URI是否正确。
 
 ## 100003 路由压入的page过多
 
@@ -40,7 +42,7 @@ Page stack error. Too many pages are pushed.
 
 **可能原因**
 
-压入pages过多。
+压入的页面数量超过32。
 
 **处理步骤**
 
@@ -84,7 +86,10 @@ Navigation跳转时，未注册创建NavDestination组件的builder函数，系�
 
 **处理步骤**
 
-请检查Navigation是否提供了创建NavDestination的builder函数。确认路由表已正确配置，并且跳转的目标页面中包含Navigation组件。
+请按以下步骤检查：
+1. 检查Navigation是否提供了创建NavDestination的builder函数。
+2. 确认路由表已正确配置。
+3. 确认跳转的目标页面中包含Navigation组件。
 
 ## 100006 Navigation跳转时目标页面不存在NavDestination组件
 
@@ -112,15 +117,15 @@ index value is invalid.
 
 **错误描述**
 
-传入的索引值非法。
+调用路由相关接口时传入的索引值非法。
 
 **可能原因**
 
-index为非法值。
+传入的索引值为非法值，如小于0或超出页面栈有效范围。
 
 **处理步骤**
 
-请检查传入的索引值。
+请检查传入的索引值是否为有效整数，且在当前页面栈的有效范围内。
 
 ## 106201 查询路由导航信息失败
 
@@ -130,7 +135,7 @@ Failed to query route navigation information.
 
 **错误描述**
 
-查询路由导航信息失败。
+当前节点未挂载在页面下时，查询路由导航信息失败，系统会产生此错误码。
 
 **可能原因**
 
@@ -148,17 +153,17 @@ buffer size is not large enough.
 
 **错误描述**
 
-传入的buffer size异常。
+传入的buffer size异常，单位：字节。
 
 **可能原因**
 
-给定的buffer size小于可以容纳目标的最小缓冲区大小。
+给定的buffer size小于容纳目标数据所需的最小缓冲区大小。
 
 **处理步骤**
 
-请检查给定的buffer size。
+请检查给定的buffer size是否满足最小缓冲区大小要求。
 
-## 200002 路由页面替换时输入的uri错误
+## 200002 路由页面替换时输入的URI错误
 
 **错误信息**
 
@@ -166,15 +171,15 @@ Uri error. The URI of the page to be used for replacement is incorrect or does n
 
 **错误描述**
 
-当替换页面输入的uri错误或不存在，系统会产生此错误码。该错误码为string类型。
+当替换页面输入的URI错误或不存在，系统会产生此错误码。该错误码为string类型。
 
 **可能原因**
 
-输入的路由uri错误或不存在。
+输入的路由URI错误或不存在。
 
 **处理步骤**
 
-请检查输入的路由uri是否正确。
+请检查输入的路由URI是否正确。
 
 ## 300001 Navigation跳转前静默安装hsp分包失败
 

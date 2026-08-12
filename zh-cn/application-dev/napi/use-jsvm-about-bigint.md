@@ -58,7 +58,7 @@ static JSVM_Value GetValueBigintWords(JSVM_Env env, JSVM_CallbackInfo info)
     uint64_t* words{nullptr};
     // 调用OH_JSVM_GetValueBigintWords接口获取wordCount
     JSVM_Status status = OH_JSVM_GetValueBigintWords(env, args[0], nullptr, &wordCount, nullptr);
-    OH_LOG_INFO(LOG_APP, "OH_JSVM_GetValueBigintWords wordCount:%{public}d.", wordCount);
+    OH_LOG_INFO(LOG_APP, "OH_JSVM_GetValueBigintWords wordCount:%{public}zu.", wordCount);
     if (wordCount == 0 || wordCount > MAX_MALLOC_SIZE) {
         OH_LOG_ERROR(LOG_APP, "Invalid wordCount: %{public}zu", wordCount);
         return nullptr;
@@ -253,7 +253,7 @@ JSVM GetValueBigintUint64 success
 
 ### OH_JSVM_CreateBigintInt64
 
-根据给定的uint64类型对象创建JavaScript BigInt对象。
+根据给定的int64_t类型对象创建JavaScript BigInt对象。
 
 cpp部分代码：
 
@@ -347,5 +347,5 @@ const char* SRC_CALL_NATIVE = R"JS(getBigintInt64(BigInt(-5555555555555555)))JS"
 
 预期的输出结果
 ```ts
-JSVM GetValueBigintUint64 success
+JSVM GetBigintInt64 success:1
 ```

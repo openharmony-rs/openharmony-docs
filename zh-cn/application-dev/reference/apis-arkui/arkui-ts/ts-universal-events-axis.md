@@ -109,7 +109,7 @@ getPinchAxisScaleValue(): number
 
 | 类型              |说明       |
 | ------- | --------------------------------- |
-| number | 双指缩放比例。<br> **说明：** 缩放比例指的是触控板双指缩放事件触发过程中双指当前的距离与双指最初按下时的距离的比值。<br>默认值：0<br>取值范围：[0, +∞)<br> |
+| number | 双指缩放比例。<br> **说明：** 缩放比例指的是触控板双指缩放事件触发过程中双指当前的距离与双指最初按下时的距离的比值；当前轴事件不包含捏合轴时，取默认值0。<br>默认值：0<br>取值范围：[0, +∞)<br> |
 
 ### hasAxis<sup>22+</sup>
 
@@ -209,7 +209,7 @@ struct GetCurrentLocalPositionExample {
 
   build() {
     Column() {
-      Button('获取滚轮位置相对于当前组件实时位置左上角的坐标').translate({ y: this.textOffsetY })
+      Button('获取鼠标光标位置相对于当前组件实时位置左上角的坐标').translate({ y: this.textOffsetY })
         .onAxisEvent((event?: AxisEvent) => {
           if (event) {
             // 先移动按钮位置，延迟后获取鼠标光标相对于组件实时位置左上角的坐标。

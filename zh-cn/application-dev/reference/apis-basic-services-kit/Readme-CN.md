@@ -20,7 +20,7 @@
     - [@ohos.busManager.serial (串口通信管理)](js-apis-busmanager-serial.md)
     - [@ohos.deviceInfo (设备信息)](js-apis-device-info.md)
     - [@ohos.power (系统电源管理)](js-apis-power.md)
-    - [@ohos.runningLock (Runninglock锁)](js-apis-runninglock.md)
+    - [@ohos.runningLock (RunningLock锁)](js-apis-runninglock.md)
     - [@ohos.thermal (热管理)](js-apis-thermal.md)
     - [@ohos.usbManager (USB管理)](js-apis-usbManager.md)
     - [@ohos.usbManager.serial (串口管理)](js-apis-serialManager.md)
@@ -61,7 +61,7 @@
   - 进程线程通信<!--process-thread-communi-arkts-->
     - [系统定义的公共事件](common_event/commonEventManager-definitions.md)
     <!--Del-->
-    - [系统定义的公共事件(系统接口)](common_event/commonEventManager-definitions-sys.md)
+    - [系统定义的公共事件（系统接口）](common_event/commonEventManager-definitions-sys.md)
     <!--DelEnd-->
     - [@ohos.commonEventManager (公共事件模块)](js-apis-commonEventManager.md)
     - [@ohos.events.emitter (Emitter)](js-apis-emitter.md)
@@ -107,7 +107,7 @@
     - [@system.request (上传下载)](js-apis-system-request.md)
     - [@ohos.screenLock (锁屏管理)](js-apis-screen-lock.md)
     <!--Del-->
-    - [@ohos.commonEvent (公共事件模块)(系统应用)(已废弃)](js-apis-commonEvent-sys.md)
+    - [@ohos.commonEvent (公共事件模块)(系统应用)](js-apis-commonEvent-sys.md)
     - [@ohos.usb (USB管理)(系统接口)](js-apis-usb-deprecated-sys.md)
     - [@ohos.systemParameter (系统属性)(系统接口)](js-apis-system-parameter-sys.md)
     <!--DelEnd-->
@@ -174,7 +174,7 @@
   - [热管理错误码](errorcode-thermal.md)
   - [上传下载错误码](errorcode-request.md)
   - [时间时区服务错误码](errorcode-time.md)
-  - [事件错误码](errorcode-CommonEventService.md)
+  - [公共事件错误码](errorcode-CommonEventService.md)
   <!--Del-->
   - [系统参数错误码](errorcode-system-parameterV9.md)
   <!--DelEnd-->

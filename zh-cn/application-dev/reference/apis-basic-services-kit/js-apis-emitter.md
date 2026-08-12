@@ -6,7 +6,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-本模块提供进程内线程间或线程内事件的发送与处理能力。开发者可以使用本模块的 API，订阅事件（持续订阅或单次订阅）、取消订阅事件，发送事件到事件队列中，以及查询事件的订阅数量，从而实现同一进程内不同线程之间、以及同一线程内的事件通信。
+本模块提供进程内线程间或线程内事件的发送与处理能力。开发者可以使用本模块的 API，订阅事件（持续订阅或单次订阅）、取消订阅事件，发送事件到事件队列中，以及查询事件的订阅数量，从而实现同一进程内不同线程之间、以及同一线程内的事件通信。适用于跨线程通信、模块解耦、事件驱动等场景，能够帮助开发者实现轻量级的发布-订阅模式，降低组件间的耦合度，提升代码的可维护性和可扩展性。
 
 提供两种事件处理入口，开发者可根据隔离需求选择：
 
@@ -289,7 +289,7 @@ off(eventId: string): void
 
 ```ts
 // 取消eventId为"eventId1"的所有事件回调处理函数
-emitter.off("eventId1");
+emitter.off('eventId1');
 ```
 
 ## emitter.off<sup>10+</sup>
@@ -353,7 +353,7 @@ let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
 };
 // 取消eventId为"eventId1"的事件回调处理函数，callback对象应使用订阅时的对象
 // 如果该回调处理函数没有被订阅，则不做任何处理
-emitter.off("eventId1", callback);
+emitter.off('eventId1', callback);
 ```
 
 ## emitter.off<sup>12+</sup>
@@ -399,7 +399,7 @@ let callback: Callback<emitter.GenericEventData<Sample>> = (eventData: emitter.G
 };
 // 取消eventId为"eventId1"的事件回调处理函数，callback对象应使用订阅时的对象
 // 如果该回调处理函数没有被订阅，则不做任何处理
-emitter.off("eventId1", callback);
+emitter.off('eventId1', callback);
 ```
 
 ## emitter.emit
@@ -1061,7 +1061,7 @@ emitter1.emit('eventId', eventData);
 
 emit(eventId: string, options: Options, data?: EventData): void
 
-发送指定优先级事件到当前Emitter类实例。。
+发送指定优先级事件到当前Emitter类实例。
 
 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../arkts-utils/serializable-overview.md)。目前不支持使用[@State装饰器](../../ui/state-management/arkts-state.md)、[@Observed装饰器](../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
 

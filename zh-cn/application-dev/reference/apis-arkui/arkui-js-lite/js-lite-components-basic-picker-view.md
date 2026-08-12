@@ -95,7 +95,7 @@ type=time：
   <text class="title">
     Selected：{{time}}
   </text>
-  <picker-view class="time-picker" type="time" ref="pickerViewObj" selected="{{defaultTime}}" @change="handleChange"></picker-view>
+  <picker-view class="time-picker" type="time" columns="2" ref="pickerViewObj" selected="{{defaultTime}}" @change="handleChange"></picker-view>
 </div>
 ```
 
@@ -132,6 +132,7 @@ export default {
   },
   onInit() {
     this.defaultTime = this.now();
+    this.time = this.defaultTime;
   },
   handleChange(data) {
     this.time = this.concat(data.hour, data.minute);

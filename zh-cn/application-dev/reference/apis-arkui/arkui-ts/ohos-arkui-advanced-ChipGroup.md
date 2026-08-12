@@ -26,20 +26,18 @@ import { ChipSize, ChipGroup } from '@kit.ArkUI';
 
 ## ChipGroup
 
-```ts
-ChipGroup({
-  items: ChipGroupItemOptions[],
-  itemStyle?: ChipItemStyle,
-  selectedIndexes?: Array<number>,
-  multiple?: boolean,
-  chipGroupSpace?: ChipGroupSpaceOptions,
-  chipGroupPadding?: ChipGroupPaddingOptions,
-  backgroundSystemMaterial?: uiMaterial.Material,
-  selectedBackgroundSystemMaterial?: uiMaterial.Material,
-  onChange?: Callback<Array<number>>,
-  suffix?: Callback<void>
+ChipGroup({ <br> 
+  items: ChipGroupItemOptions[], <br> 
+  itemStyle?: ChipItemStyle, <br> 
+  selectedIndexes?: Array<number\>, <br> 
+  multiple?: boolean, <br> 
+  chipGroupSpace?: ChipGroupSpaceOptions, <br> 
+  chipGroupPadding?: ChipGroupPaddingOptions, <br> 
+  backgroundSystemMaterial?: uiMaterial.Material, <br> 
+  selectedBackgroundSystemMaterial?: uiMaterial.Material, <br> 
+  onChange?: Callback<Array<number\>\>, <br> 
+  suffix?: Callback<void\> <br> 
 })
-```
 
 **装饰器类型：**@Component
 

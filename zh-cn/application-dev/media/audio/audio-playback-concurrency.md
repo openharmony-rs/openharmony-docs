@@ -18,7 +18,7 @@
 
 对于应用而言，为了确保为用户提供优质的音频焦点体验，应当注意以下几点：
 
-- 在启动播放或录制操作前，应根据音频的具体用途，选择并[使用合适的音频流类型](using-right-streamusage-and-sourcetype.md)，即准确设置[StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)或[SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)。
+- 在启动播放操作前，应根据音频的具体用途[选择合适的播放流类型](using-right-streamusage-for-playback.md)，即准确设置[StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)。
 
 - 在播放或录制的过程中，需通过监听音频焦点来[处理音频焦点变化](#处理音频焦点变化)事件，并在接收到音频焦点中断事件（[InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)）时，采取相应的处理措施。
 
@@ -66,7 +66,7 @@
 
 系统预设的默认音频焦点策略，主要依据音频流类型（即播放流的[StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)和录制流的[SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)）及音频流启动的顺序进行决策。
 
-为防止焦点变化不符合预期，应用在启动播放或录制前，应根据音频流的用途，准确设置StreamUsage或SourceType。关于各类型的详细说明，请参考[使用合适的音频流类型](using-right-streamusage-and-sourcetype.md)。
+为防止焦点变化不符合预期，应用在启动播放前，应根据音频流的用途准确设置StreamUsage。关于各类型的详细说明，请参考[选择合适的播放流类型](using-right-streamusage-for-playback.md)。
 
 常见的音频焦点场景示例如下：
 
@@ -163,7 +163,7 @@
 | 音乐         | STREAM_USAGE_MUSIC | 来电铃声     | STREAM_USAGE_RINGTONE | 开始响铃，音乐暂停播放。<br>不接通或者接通再挂断后，音乐恢复播放。 | 音乐应用注册焦点事件监听。接收到`INTERRUPT_HINT_PAUSE`事件时，直接暂停音乐播放，并更新UI界面。<br>当电话结束后，音频应用接收到`INTERRUPT_HINT_RESUME`事件，重新启动播放。 |
 | 音乐         | STREAM_USAGE_MUSIC | VoIP通话     | STREAM_USAGE_VOICE_COMMUNICATION | 通话接通时，音乐暂停播放。<br>通话挂断后，音乐恢复播放。 | 音乐应用注册焦点事件监听。<br>接收到`INTERRUPT_HINT_PAUSE`事件时，直接暂停音乐播放，并更新UI界面。<br>当通话结束后，音乐应用接收到`INTERRUPT_HINT_RESUME`事件，重新启动播放。 |
 
-**处理音频焦点示例:**
+**处理音频焦点示例：**
 
 为了带给用户更好的音频体验，针对不同的音频焦点事件内容，应用需要做出相应的处理操作。此处以[使用AudioRenderer开发音频播放功能(ArkTS)](using-audiorenderer-for-playback.md)为例，展示推荐应用采取的处理方法，提供伪代码供开发者参考。
 

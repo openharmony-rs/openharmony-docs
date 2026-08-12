@@ -2371,7 +2371,7 @@ onScroll(callback: Callback\<OnScrollEvent\>)
 
 onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
 
-通知用户收到地理位置信息获取请求，需配置"ohos.permission.LOCATION"、"ohos.permission.APPROXIMATELY_LOCATION"权限。使用callback异步回调。
+通知用户收到地理位置信息获取请求，需配置"ohos.permission.LOCATION"、"ohos.permission.APPROXIMATELY_LOCATION"权限。使用callback异步回调。用于显示自定义的位置权限申请弹窗、实现位置服务说明、根据应用需求选择是否授权，提供更好的位置权限管理体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2404,7 +2404,7 @@ onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
         console.error("context is undefined");
         return;
       }
-      // 向用户请求位置权限，对整个应用生效
+      // 请求位置权限，对整个应用生效
       atManager.requestPermissionsFromUser(context, ["ohos.permission.LOCATION", "ohos.permission.APPROXIMATELY_LOCATION"]).then((data) => {
         console.info('data:' + JSON.stringify(data));
         console.info('data permissions:' + data.permissions);
@@ -2429,13 +2429,13 @@ onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
                   value: 'onConfirm',
                   action: () => {
                     // 允许此站点位置权限请求
-                    // invoke的第三个参数表示是否记住当前弹窗的选择状态，如果传入true，则下次不再弹出对话框
+                    // invoke的第三个参数表示是否记住当前弹窗的选择状态，传入true则下次不再弹出对话框
                     event.geolocation.invoke(event.origin, true, false);
                   }
                 },
                 cancel: () => {
                   // 不允许此站点位置权限请求
-                  // invoke的第三个参数表示是否记住当前弹窗的选择状态，如果传入true，则下次不再弹出对话框
+                  // invoke的第三个参数表示是否记住当前弹窗的选择状态，传入true则下次不再弹出对话框
                   event.geolocation.invoke(event.origin, false, false);
                 }
               })
@@ -2473,7 +2473,7 @@ onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
 
 onGeolocationHide(callback: () => void)
 
-通知用户先前被调用[onGeolocationShow](#ongeolocationshow)时收到地理位置信息获取请求已被取消。
+通知用户先前被调用[onGeolocationShow](#ongeolocationshow)时收到地理位置信息获取请求已被取消。用于清理定位相关资源，优化资源使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2656,14 +2656,14 @@ onWindowNew(callback: Callback\<OnWindowNewEvent\>)
               this.dialogController.close();
             }
             let popController: webview.WebviewController = new webview.WebviewController();
+            // 将新窗口对应WebviewController返回给Web内核。
+            // 若不调用event.handler.setWebController接口，会造成渲染进程阻塞。
+            // 如果没有创建新窗口，调用event.handler.setWebController接口时设置成null，通知Web没有创建新窗口。
+            event.handler.setWebController(popController);
             this.dialogController = new CustomDialogController({
               builder: NewWebViewComp({ webviewController1: popController })
             })
             this.dialogController.open();
-            // 将新窗口对应WebviewController返回给Web内核。
-            // 若不调用event.handler.setWebController接口，会造成render进程阻塞。
-            // 如果没有创建新窗口，调用event.handler.setWebController接口时设置成null，通知Web没有创建新窗口。
-            event.handler.setWebController(popController);
           })
       }
     }
@@ -2763,14 +2763,14 @@ onWindowNewExt(callback: Callback\<OnWindowNewExtEvent\>)
             this.dialogController.close();
           }
           let popController: webview.WebviewController = new webview.WebviewController();
+          // 将新窗口对应WebviewController返回给Web内核。
+          // 若不调用event.handler.setWebController接口，会造成渲染进程阻塞。
+          // 如果没有创建新窗口，在调用event.handler.setWebController接口时应设置成null，以通知Web没有创建新窗口。
+          event.handler.setWebController(popController);
           this.dialogController = new CustomDialogController({
             builder: NewWebViewComp({ webviewController1: popController })
           })
           this.dialogController.open();
-          // 将新窗口对应WebviewController返回给Web内核。
-          // 若不调用event.handler.setWebController接口，会造成render进程阻塞。
-          // 如果没有创建新窗口，在调用event.handler.setWebController接口时应设置成null，以通知Web没有创建新窗口。
-          event.handler.setWebController(popController);
         })
       }
     }
@@ -2864,14 +2864,14 @@ onActivateContent(callback: Callback\<void>)
               this.dialogController.close()
             }
             let popController: webview.WebviewController = new webview.WebviewController();
+            // 将新窗口对应WebviewController返回给Web内核。
+            // 若不调用event.handler.setWebController接口，会造成渲染进程阻塞。
+            event.handler.setWebController(popController);
             this.dialogController = new CustomDialogController({
               builder: NewWebViewComp({ webviewController1: popController }),
               isModal: false
             })
             this.dialogController.open();
-            // 将新窗口对应WebviewController返回给Web内核。
-            // 若不调用event.handler.setWebController接口，会造成render进程阻塞。
-            event.handler.setWebController(popController);
           })
       }
     }
@@ -3352,6 +3352,12 @@ onLoadIntercept(callback: Callback\<OnLoadInterceptEvent, boolean\>)
 当Web组件加载url之前触发该回调，用于判断是否阻止此次访问。
 
 > **说明：**
+>
+> - onLoadIntercept是在页面导航前同步触发的回调，回调返回前当前导航处于挂起状态。
+>
+> - 禁止在回调中直接调用会触发新导航的接口（如[refresh()](./arkts-apis-webview-WebviewController.md#refresh)、[loadurl()](./arkts-apis-webview-WebviewController.md#loadurl)、[setCustomUserAgent()](./arkts-apis-webview-WebviewController.md#setcustomuseragent10)等），否则会导致回调重入或导航状态混乱。
+>
+> - 如需在拦截后重新加载页面，应在回调返回后通过[setTimeout()](../common/js-apis-timer.md#settimeout)等异步方法延迟调用。
 >
 > - onLoadIntercept无法获取到完整的headers，如需获取完整headers建议在[onInterceptRequest](#oninterceptrequest9)或者通过WebSchemeHandler的[onRequestStart](./arkts-apis-webview-WebSchemeHandler.md#onrequeststart12)中获取。
 

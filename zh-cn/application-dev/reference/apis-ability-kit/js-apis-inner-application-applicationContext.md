@@ -125,7 +125,7 @@ off(type: 'abilityLifecycle', callbackId: number,  callback: AsyncCallback\<void
 | ------------- | -------- | ---- | -------------------------- |
 | type | string | 是   | 此类型表示应用内UIAbility的生命周期，固定为'abilityLifecycle'。 |
 | callbackId    | number   | 是   | 通过[ApplicationContext.on('abilityLifecycle')](#applicationcontextonabilitylifecycle)接口注册监听应用内UIAbility的生命周期时返回的ID。 |
-| callback | AsyncCallback\<void> | 是   | 回调方法。当取消监听应用内生命周期成功，err为undefined，否则为错误对象。   |
+| callback | AsyncCallback\<void> | 是   | 回调方法。当取消监听应用内UIAbility的生命周期成功，err为undefined，否则为错误对象。   |
 
 **错误码**：
 
@@ -409,7 +409,7 @@ on(type: 'applicationStateChange', callback: ApplicationStateChangeCallback): vo
 | 参数名   | 类型                                                         | 必填 | 说明             |
 | -------- | ------------------------------------------------------------ | ---- | ---------------- |
 | type     | string                                   | 是   | 此类型表示当前应用进程状态变化，固定为'applicationStateChange'。 |
-| callback | [ApplicationStateChangeCallback](js-apis-app-ability-applicationStateChangeCallback.md) | 是   | 当前应用进程状态切换时触发的回调方法。 |
+| callback | [ApplicationStateChangeCallback](js-apis-app-ability-applicationStateChangeCallback.md) | 是   | 当前应用进程状态变化时触发的回调方法。 |
 
 **错误码**：
 
@@ -853,7 +853,7 @@ killAllProcesses(callback: AsyncCallback\<void\>): void
 
 | 参数名        | 类型     | 必填 | 说明                       |
 | ------------- | -------- | ---- | -------------------------- |
-| callback    | AsyncCallback\<void\>   | 是   | 回调函数。当终止应用所在的进程成功，err为undefined，否则为错误对象。 |
+| callback    | AsyncCallback\<void\>   | 是   | 回调函数。当终止应用的所有进程成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -1050,7 +1050,7 @@ clearUpApplicationData(callback: AsyncCallback\<void\>): void
 **参数：**
 | 参数名        | 类型     | 必填 | 说明                       |
 | ------------- | -------- | ---- | -------------------------- |
-| callback | AsyncCallback\<void> | 是   | 回调方法。清理应用本身的数据成功时，error为undefined，否则返回错误对象。  |
+| callback | AsyncCallback\<void> | 是   | 回调方法。当清理当前应用的应用文件路径下的所有数据，同时撤销应用向用户申请的权限成功时，error为undefined，否则返回错误对象。  |
 
 **错误码**：
 
@@ -1518,8 +1518,6 @@ enableDelayedProcessExit(): Promise\<void>
 
 **起始版本**：26.0.0
 
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -1572,8 +1570,6 @@ disableDelayedProcessExit(): Promise\<void>
 
 **起始版本**：26.0.0
 
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -1623,8 +1619,6 @@ startSelfUIAbility(want: Want): Promise\<void>
 当前进程延迟退出期间，在当前进程启动一个自身UIAbility，启动成功后，当前进程不再退出。
 
 **起始版本**：26.0.0
-
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 

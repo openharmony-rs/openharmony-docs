@@ -1,7 +1,7 @@
 # native_xcomponent_key_event.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
+<!--Owner: @pengzhiwen3-->
 <!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -209,7 +209,7 @@ enum OH_NativeXComponent_KeyCode
 | KEY_STOP = 2616 | 停止键。 |
 | KEY_AGAIN = 2617 | 重复键。 |
 | KEY_PROPS = 2618 | 属性键。 |
-| KEY_UNDO = 2619 | 撤消键。 |
+| KEY_UNDO = 2619 | 撤销键。 |
 | KEY_COPY = 2620 | 复制键。 |
 | KEY_OPEN = 2621 | 打开键。 |
 | KEY_PASTE = 2622 | 粘贴键。 |

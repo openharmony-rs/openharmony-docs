@@ -33,3 +33,18 @@
 | .pub_key     | 用于保存数据库密钥信息。<br>该文件仅在配置了数据库加密且未配置自定义加密参数时（即通过[StoreConfig](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#storeconfig)配置encrypt为true且未配置cryptoParam）存在。                                                  |
 | .db-dwr      | 用于保存文件头信息。                                       |
 | .db-compare      | 用于保存所有DDL语句。                                    |
+
+## 调用getRdbStore接口使用原始密钥打开加密关系型数据库时，入参encryptionKey如何配置
+
+在关系型数据库中，调用[getRdbStore](../reference/apis-arkdata/arkts-apis-data-relationalStore-f.md#relationalstoregetrdbstore)接口使用原始密钥打开加密库时，入参[CryptoParam.encryptionKey](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#cryptoparam14)需要按照如下操作配置：
+
+```ts
+import { relationalStore } from '@kit.ArkData'
+
+let password: string = "x'3605d7de19311edba4d3c88143c61cdd79dd5a58bc829c8b1234567891234567'"; // 需替换为实际的数据库口令密码
+let key = new Uint8Array(buffer.from(password, 'utf8').buffer); // 返回的是Uint8Array
+// 配置加密参数
+const cryptoParam: relationalStore.CryptoParam = {
+  encryptionKey: key, // 必填，指定密钥
+};
+```

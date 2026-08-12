@@ -29,7 +29,7 @@ arkweb_scheme_handler.h是ArkWeb中用于拦截和自定义网络请求的完整
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [ArkWeb_SchemeHandler_](capi-web-arkweb-schemehandler.md) | ArkWeb_SchemeHandler | 该类用于拦截指定scheme的请求。 |
-| [ArkWeb_ResourceHandler_](capi-web-arkweb-resourcehandler.md) | ArkWeb_ResourceHandler | 用于被拦截的URL请求。可以通过ArkWeb_ResourceHandler发送自定义请求头以及自定义请求体。 |
+| [ArkWeb_ResourceHandler_](capi-web-arkweb-resourcehandler.md) | ArkWeb_ResourceHandler | 用于被拦截的URL请求。可以通过ArkWeb_ResourceHandler发送自定义响应头以及自定义响应体。 |
 | [ArkWeb_Response_](capi-web-arkweb-response.md) | ArkWeb_Response | 为被拦截的请求构造一个ArkWeb_Response。 |
 | [ArkWeb_ResourceRequest_](capi-web-arkweb-resourcerequest.md) | ArkWeb_ResourceRequest | 对应内核的一个请求，可以通过OH_ArkWebResourceRequest_系列接口获取请求的URL、method、post data以及其他信息。如通过[OH_ArkWebResourceRequest_GetUrl](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcerequest_geturl)获取请求的URL。 |
 | [ArkWeb_RequestHeaderList_](capi-web-arkweb-requestheaderlist.md) | ArkWeb_RequestHeaderList | 请求头列表。 |
@@ -831,7 +831,7 @@ bool OH_ArkWebHttpBodyStream_IsChunked(const ArkWeb_HttpBodyStream* httpBodyStre
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 如果采用分块传输则返回true;否则返回false。 |
+| bool | 如果采用分块传输则返回true；否则返回false。 |
 
 ### OH_ArkWebHttpBodyStream_IsEof()
 
@@ -1862,7 +1862,7 @@ int32_t OH_ArkWebResourceHandler_DidFailWithError(const ArkWeb_ResourceHandler* 
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler.md)* resourceHandler | 用于被拦截的URL请求。可以通过ArkWeb_ResourceHandler发送自定义请求头以及自定义请求体。 |
+| const [ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler.md)* resourceHandler | 用于被拦截的URL请求。可以通过ArkWeb_ResourceHandler发送自定义响应头以及自定义响应体。 |
 | [ArkWeb_NetError](capi-arkweb-net-error-list-h.md#arkweb_neterror) errorCode | 该请求的错误码。请参考[arkweb_net_error_list.h](capi-arkweb-net-error-list-h.md)。 |
 
 **返回：**
@@ -1890,7 +1890,7 @@ int32_t OH_ArkWebResourceHandler_DidFailWithErrorV2(const ArkWeb_ResourceHandler
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler.md)* resourceHandler | 用于被拦截的URL请求。可以通过ArkWeb_ResourceHandler发送自定义请求头以及自定义请求体。 |
+| const [ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler.md)* resourceHandler | 用于被拦截的URL请求。可以通过ArkWeb_ResourceHandler发送自定义响应头以及自定义响应体。 |
 | [ArkWeb_NetError](capi-arkweb-net-error-list-h.md#arkweb_neterror) errorCode | 该请求的错误码。请参考[arkweb_net_error_list.h](capi-arkweb-net-error-list-h.md)。 |
 | bool completeIfNoResponse | 若之前未调用过[OH_ArkWebResourceHandler_DidReceiveResponse](#oh_arkwebresourcehandler_didreceiveresponse)，调用[OH_ArkWebResourceHandler_DidFailWithErrorV2](#oh_arkwebresourcehandler_didfailwitherrorv2)时，此次网络请求是否完成；值为true时，若之前未调用过[OH_ArkWebResourceHandler_DidReceiveResponse](#oh_arkwebresourcehandler_didreceiveresponse)，则会自动生成一个response以完成此次网络请求，网络错误码为-104；值为false时，将等待应用调用[OH_ArkWebResourceHandler_DidReceiveResponse](#oh_arkwebresourcehandler_didreceiveresponse)并传入response，不会直接完成此次网络请求。 |
 

@@ -1,4 +1,4 @@
-# @ohos.app.ability.AgentUIExtensionAbility (带界面的智能体拓展组件)
+# @ohos.app.ability.AgentUIExtensionAbility (带界面的智能体扩展组件)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->

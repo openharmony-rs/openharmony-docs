@@ -628,6 +628,27 @@ Peripherals connected to the host via a USB bus and:
 
 **Since**: 18
 
+## ohos.permission.ACCESS_DDK_USB_SERIAL
+
+Allows a peripheral extension driver to access the USB Serial DDK APIs.
+
+The USB Serial DDK APIs can be used to develop the following types of peripheral extension drivers:
+
+Peripherals connected to the host via a USB bus and:
+
+1. InterfaceClass of the peripheral is Communication Device Control Class (0x02) and InterfaceSubClass follows ACMSubClass model(0x02).
+2. The peripheral can simulate traditional serial communication through a USB interface.
+
+<!--RP101--><!--RP101End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices: ** PCs/2-in-1 devices | tablets
+
+**Since**: 18
+
 ## ohos.permission.kernel.SUPPORT_PLUGIN
 
 Allows an application to install plugins.
@@ -1315,6 +1336,21 @@ Allows an application to install the PCIe driver.
 **Authorization mode**: system_grant
 
 **Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.0
+
+## ohos.permission.ACCESS_GAME_BUDDY_SERVICE
+
+Allows an application to access the game buddy service. 
+With this permission, the application can utilize the APIs provided by the game buddy service, such as capturing screenshots of running games and capturing user voice data via the microphone.
+
+<!--RP93--><!--RP93End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones
 
 **Since**: 26.0.0
 

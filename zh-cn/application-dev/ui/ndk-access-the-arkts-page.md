@@ -118,7 +118,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
   arkUINativeNodeApi->setAttribute(stack, NODE_WIDTH, &item);
   ArkUI_NumberValue value_color[] = {{.u32 = 0xff112233}};
   ArkUI_AttributeItem item_color = {value_color, 1};
-  arkUINativeNodeApi->setAttribute(stack, NODE_BACKGROUND_COLOR, &item);
+  arkUINativeNodeApi->setAttribute(stack, NODE_BACKGROUND_COLOR, &item_color);
   ```
 
   获取NDK接口支持的属性范围可以通过查询[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)枚举值。
@@ -604,8 +604,8 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
     ``` C
     // ArkUIListItemNode.h
     // 提供列表项的封装类。
-    #ifndef MYAPPLICATION_ARKUISTACKNODE_H
-    #define MYAPPLICATION_ARKUISTACKNODE_H
+    #ifndef MYAPPLICATION_ARKUILISTITEMNODE_H
+    #define MYAPPLICATION_ARKUILISTITEMNODE_H
     
     #include "ArkUINode.h"
     
@@ -617,7 +617,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
     };
     } // namespace NativeModule
     
-    #endif // MYAPPLICATION_ARKUISTACKNODE_H
+    #endif // MYAPPLICATION_ARKUILISTITEMNODE_H
     ```
 
    5）实现文本组件。
@@ -705,7 +705,6 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
             textNode->SetTextContent(std::to_string(i));
             textNode->SetFontSize(fontSizes);
             textNode->SetFontColor(0xFF000000);
-            textNode->SetPercentWidth(1);
             textNode->SetPercentWidth(screenWidth);
             textNode->SetHeight(defaultHeight);
             textNode->SetBackgroundColor(0xFFfffacd);

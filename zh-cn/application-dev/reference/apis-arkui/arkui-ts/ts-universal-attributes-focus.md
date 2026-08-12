@@ -32,7 +32,7 @@ focusable(value: boolean): T
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 设置当前组件是否可以获焦，true表示组件可以获焦，false表示组件不可获焦。<br>**说明：**<br>存在默认交互逻辑的组件例如[Button](ts-basic-components-button.md)、[TextInput](ts-basic-components-textinput.md)等，默认即为可获焦，[Text](ts-basic-components-text.md)、[Image](ts-basic-components-image.md)等组件则默认状态为不可获焦。不可获焦状态下，无法触发[焦点事件](ts-universal-focus-event.md)。 |
+| value  | boolean | 是   | 设置当前组件是否可以获焦，true表示组件可以获焦，false表示组件不可获焦。<br>**说明：**<br>存在默认交互逻辑的组件例如[Button](ts-basic-components-button.md)、[TextInput](ts-basic-components-textinput.md)等，默认为可获焦，[Text](ts-basic-components-text.md)、[Image](ts-basic-components-image.md)等组件则默认为不可获焦。不可获焦状态下，无法触发[焦点事件](ts-universal-focus-event.md)。 |
 
 **返回值：**
 
@@ -44,7 +44,7 @@ focusable(value: boolean): T
 
 tabIndex(index: number): T
 
-自定义组件Tab键走焦能力。当组件未设置tabIndex时，默认按照预设的焦点移动规则进行焦点移动。
+设置组件的Tab键走焦能力。当组件未设置tabIndex时，默认按照预设的焦点移动规则进行焦点移动。
 
 >  **说明：**
 >
@@ -59,7 +59,7 @@ tabIndex(index: number): T
 <!--Table: 10%; 10%; 10%; 70%-->
 | 参数名 | 类型   | 必填 | 说明            |
 | ------ | ------ | ---- | ------------------------------------ |
-| index  | number | 是   | 自定义组件Tab键走焦能力。若有配置了tabIndex大于0的组件，则Tab键走焦只会在tabIndex大于0的组件内按照tabIndex的值从小到大并循环依次走焦。若没有配置tabIndex大于0的组件，则tabIndex等于0的组件按照组件预设的走焦规则走焦。<br>[UiExtension](../js-apis-arkui-uiExtension.md)组件未适配tabIndex，在含有[UiExtension](../js-apis-arkui-uiExtension.md)组件的[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)使用tabIndex会导致走焦错乱。<br>- tabIndex >= 0：表示元素是可聚焦的，并且可以通过Tab键走焦来访问到该元素。<br>- tabIndex < 0（通常是tabIndex = -1）：表示元素是可聚焦的，但是不能通过Tab键走焦来访问到该元素。<br> **说明：**<br> tabIndex与focusScopeId不能混用。|
+| index  | number | 是   | 设置组件的Tab键走焦顺序索引值。若有配置了tabIndex大于0的组件，则Tab键走焦只会在tabIndex大于0的组件内按照tabIndex的值从小到大并循环依次走焦。若没有配置tabIndex大于0的组件，则tabIndex等于0的组件按照组件预设的走焦规则走焦。<br>[UiExtension](../js-apis-arkui-uiExtension.md)组件未适配tabIndex，在含有[UiExtension](../js-apis-arkui-uiExtension.md)组件的[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)使用tabIndex会导致走焦错乱。<br>- tabIndex大于0：表示元素是可聚焦的，并且可以通过Tab键走焦来访问到该元素。<br>- tabIndex等于0：表示元素是可聚焦的，当层级页面不存在tabIndex大于0的节点时，可以通过Tab键走焦来访问到该元素。<br>- tabIndex小于0（通常是tabIndex等于-1）：表示元素是可聚焦的，但是不能通过Tab键走焦来访问到该元素。<br> **说明：**<br>tabIndex与focusScopeId不能混用，否则会导致走焦结果不符合预期。|
 
 **返回值：**
 
@@ -86,7 +86,7 @@ defaultFocus(value: boolean): T
 <!--Table: 10%; 10%; 10%; 70%-->
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 设置当前组件是否为当前[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)上的默认焦点，仅在初次创建的[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)第一次进入时生效。<br>**说明：** <br>值为true则表示为默认焦点，值为false时无效。<br>若[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)内无任何组件设置defaultFocus(true)，API version 11及之前，[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)的默认焦点是当前[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)上首个可获焦的非容器组件，API version 11之后，[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)的默认焦点就是[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)的根容器。<br>若某[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)内有多个组件设置了defaultFocus(true)，则以组件树深度遍历找到的第一个组件为默认焦点。 |
+| value  | boolean | 是   | 设置当前组件是否为当前[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)上的默认焦点，仅在初次创建的[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)第一次进入时生效。<br>**说明：** <br>值为true则表示为默认焦点，值为false时表示不为默认焦点。<br>若[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)内无任何组件设置defaultFocus(true)，API version 11及之前，[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)的默认焦点是当前[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)上首个可获焦的非容器组件，API version 11之后，[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)的默认焦点就是[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)的根容器。<br>若某[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)内有多个组件设置了defaultFocus(true)，则以组件树深度遍历找到的第一个组件为默认焦点。 |
 
 **返回值：**
 
@@ -179,7 +179,7 @@ focusBox(style: FocusBoxStyle): T
 
 requestFocus(value: string): boolean
 
-方法语句中可使用的全局接口，调用此接口可以主动让焦点在下一帧渲染时转移至参数指定的组件上。
+全局接口，使焦点在下一帧渲染时转移至参数指定的组件上。
 
 如果需要指定组件立刻获焦，推荐使用FocusController中的焦点同步转移接口[requestFocus](../arkts-apis-uicontext-focuscontroller.md#requestfocus12)。
 
@@ -235,8 +235,8 @@ focusScopePriority(scopeId: string, priority?: FocusPriority): T
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| scopeId  | string | 是   | 当前组件设置的获焦优先级生效的容器组件的id标识。<br>**说明：** <br>1.当前组件必须在scopeId所标识的容器内，或其所属容器在scopeId所标识的容器内。<br>2.组件不可重复设置多个优先级。<br>3.设置了focusScopeId的容器组件不可设置优先级。 |
-| priority  | [FocusPriority](#focuspriority12)  | 否   | 获焦优先级。<br>**说明：** <br>未设置priority时，默认为AUTO优先级。<br>优先级对走焦以及获焦组件的影响：<br>1.容器整体获焦（[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)切换/焦点切换到焦点组/容器组件使用requestFocus申请焦点）时，若容器内存在优先级为PREVIOUS的组件，则优先级为PREVIOUS的组件获焦，否则，由容器内上次获焦的组件获焦。<br>2.容器非整体获焦（非焦点组场景下使用Tab键/方向键走焦）时，若容器为首次获焦，则容器内优先级最高的组件获焦，若容器非首次获焦，不考虑优先级按照位置顺序走焦。 |
+| scopeId  | string | 是   | 当前组件设置的获焦优先级生效的容器组件的id标识。<br>**说明：** <br>1.当前组件必须在scopeId所标识的容器内，或其所属容器在scopeId所标识的容器内。<br>2.组件不可重复设置多个优先级。重复设置可能导致容器获焦时选择的优先组件不符合预期。<br>3.设置了focusScopeId的容器组件不可设置优先级，否则设置的优先级不生效。 |
+| priority  | [FocusPriority](#focuspriority12)  | 否   | 获焦优先级。<br>**说明：** <br>未设置priority时，默认为AUTO优先级。<br>优先级对走焦以及获焦组件的影响：<br>1.容器整体获焦（[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)切换/焦点切换到焦点组/容器组件使用requestFocus申请焦点）时，若容器内存在优先级为PREVIOUS的组件，则优先级为PREVIOUS的组件获焦，否则，由容器内上次获焦的组件获焦。<br>2.容器非整体获焦（非焦点组场景下使用Tab键/方向键走焦）时，若容器为首次获焦，则容器内优先级最高的组件获焦，若容器非首次获焦，不考虑优先级按照容器预设的走焦算法走焦。 |
 
 **返回值：**
 
@@ -257,7 +257,7 @@ focusScopePriority(scopeId: string, priority?: FocusPriority): T
 | 名称    | 值      | 说明        |
 | ----------- | ----- |-------- |
 | AUTO | 0|默认的优先级，缺省时组件的获焦优先级。 |
-| PRIOR | 2000|容器内优先获焦的优先级。优先级高于AUTO。 |
+| PRIOR | 2000|容器首次获焦时优先获焦的优先级。优先级高于AUTO。 |
 | PREVIOUS | 3000|上一次容器整体失焦时获焦节点的优先级。优先级高于PRIOR。 |
 
 ### KeyProcessingMode<sup>15+</sup>
@@ -291,8 +291,8 @@ focusScopeId(id: string, isGroup?: boolean): T
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| id  | string | 是   | 设置当前容器组件的id标识。<br>**说明：** <br>单个[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)下，id标识全局唯一，不可重复。 |
-| isGroup  | boolean | 否   | 设置当前容器组件是否为焦点组。true表示容器组件为焦点组，false表示容器组件不是焦点组。默认值为false。<br>**说明：** <br>焦点组不可嵌套，不可重复配置。<br> 焦点组不能和tabIndex混用。<br>配置焦点组的目的是使得容器及容器内的元素可以按照焦点组规则走焦。焦点组走焦规则：<br>1.焦点组容器内只能通过方向键走焦，Tab键会使焦点跳出焦点组容器。<br>2.通过方向键使焦点从焦点组容器外切换到焦点组容器内时，若焦点组容器内存在优先级为PREVIOUS的组件，则优先级为PREVIOUS的组件获焦，否则，由焦点组容器内上次获焦的组件获焦。|
+| id  | string | 是   | 设置当前容器组件的id标识。<br>**说明：** <br>单个[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)下，id标识全局唯一。若id重复，后设置的id不生效，后设置的组件不能成为该id对应的焦点域或焦点组，其内部针对该id设置的获焦优先级也不生效。 |
+| isGroup  | boolean | 否   | 设置当前容器组件是否为焦点组。true表示容器组件为焦点组，false表示容器组件不是焦点组。默认值为false。<br>**说明：** <br>焦点组不可嵌套。嵌套时，内层焦点组不会独立生效，主要按照外层焦点组规则走焦。<br>同一组件不能同时设置focusScopeId与tabIndex。混用不会抛出异常，但Tab键走焦会受tabIndex规则影响；tabIndex大于0时，焦点组可能被Tab键选中，无法按预期跳出。<br>配置焦点组的目的是使得容器及容器内的元素可以按照焦点组规则走焦。焦点组走焦规则：<br>1.焦点组容器内只能通过方向键走焦，Tab键会使焦点跳出焦点组容器。<br>2.通过方向键使焦点从焦点组容器外切换到焦点组容器内时，若焦点组容器内存在优先级为PREVIOUS的组件，则优先级为PREVIOUS的组件获焦，否则，由焦点组容器内上次获焦的组件获焦。|
 
 **返回值：**
 
@@ -304,7 +304,7 @@ focusScopeId(id: string, isGroup?: boolean): T
 
 focusScopeId(id: string, isGroup?: boolean, arrowStepOut?: boolean): T
 
-设置当前容器组件的id标识，以及是否为焦点组。新增参数arrowStepOut，用于设置能否使用方向键走焦出当前焦点组。
+设置当前容器组件的id标识，以及是否为焦点组。通过新增参数arrowStepOut设置能否使用方向键走焦出当前焦点组。
 
 **原子化服务API：**  从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -316,8 +316,8 @@ focusScopeId(id: string, isGroup?: boolean, arrowStepOut?: boolean): T
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| id  | string | 是   | 设置当前容器组件的id标识。<br>**说明：** <br>单个[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)下，id标识全局唯一，不可重复。|
-| isGroup  | boolean | 否   | 设置当前容器组件是否为焦点组。true表示容器组件为焦点组，false表示容器组件不是焦点组。默认值为false。<br>**说明：** <br>焦点组不可嵌套，不可重复配置。<br> 焦点组不能和tabIndex混用。<br>配置焦点组的目的是使得容器及容器内的元素可以按照焦点组规则走焦。焦点组走焦规则：<br>1.焦点组容器内只能通过方向键走焦，Tab键会使焦点跳出焦点组容器。<br>2.通过方向键使焦点从焦点组容器外切换到焦点组容器内时，若焦点组容器内存在优先级为PREVIOUS的组件，则优先级为PREVIOUS的组件获焦，否则，由焦点组容器内上次获焦的组件获焦。|
+| id  | string | 是   | 设置当前容器组件的id标识。<br>**说明：** <br>单个[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)下，id标识全局唯一。若id重复，后设置的id不生效，后设置的组件不能成为该id对应的焦点域或焦点组，其内部针对该id设置的获焦优先级也不生效。 |
+| isGroup  | boolean | 否   | 设置当前容器组件是否为焦点组。true表示容器组件为焦点组，false表示容器组件不是焦点组。默认值为false。<br>**说明：** <br>焦点组不可嵌套。嵌套时，内层焦点组不会独立生效，主要按照外层焦点组规则走焦。<br>同一组件不能同时设置focusScopeId与tabIndex。混用不会抛出异常，但Tab键走焦会受tabIndex规则影响；tabIndex大于0时，焦点组可能被Tab键选中，无法按预期跳出。<br>配置焦点组的目的是使得容器及容器内的元素可以按照焦点组规则走焦。焦点组走焦规则：<br>1.焦点组容器内只能通过方向键走焦，Tab键会使焦点跳出焦点组容器。<br>2.通过方向键使焦点从焦点组容器外切换到焦点组容器内时，若焦点组容器内存在优先级为PREVIOUS的组件，则优先级为PREVIOUS的组件获焦，否则，由焦点组容器内上次获焦的组件获焦。|
 | arrowStepOut  | boolean | 否   | 设置能否使用方向键走焦出当前焦点组。true表示可以使用方向键走焦出当前焦点组，false表示不能使用方向键走焦出当前焦点组。默认值为true。|
 
 **返回值：**
@@ -330,7 +330,7 @@ focusScopeId(id: string, isGroup?: boolean, arrowStepOut?: boolean): T
 
 tabStop(isTabStop: boolean): T
 
-设置当前容器组件的tabStop，可决定焦点在走焦时是否会停留在当前容器。
+设置当前容器组件的tabStop，可决定焦点在走焦时是否会停留在当前容器。未设置时，tabStop默认为false，走焦时焦点不会因tabStop停留在当前容器。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -383,7 +383,7 @@ nextFocus(nextStep: Optional\<FocusMovement>): T
 
 ## FocusMovement<sup>18+</sup>对象说明
 
-设置对应的按键对应的走焦目的组件，缺省则遵循默认走焦规则。
+设置按键对应的走焦目的组件，缺省则遵循默认走焦规则。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -393,7 +393,7 @@ nextFocus(nextStep: Optional\<FocusMovement>): T
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| forward  | string | 否 | 是 | 通过Tab键走焦到组件的id。<br>默认值为重置forward为空。 |
+| forward  | string | 否 | 是 | 通过Tab键走焦到组件的[id](ts-universal-attributes-component-id.md#id)。<br>默认值为重置forward为空。 |
 | backward  | string | 否 | 是 | 通过Shift+Tab键走焦到组件的id。<br>默认值为重置backward为空。 |
 | up  | string | 否 | 是 | 通过方向键上键走焦到组件的id。<br>默认值为重置up为空。 |
 | down  | string | 否 | 是 | 通过方向键下键走焦到组件的id。<br>默认值为重置down为空。 |
@@ -927,7 +927,7 @@ struct TabStop {
 
 从API version 18开始，该示例通过配置[nextFocus](#nextfocus18)实现自定义走焦规则。
 
-如果不配置[nextFocus](#nextfocus18)，默认的按下Tab键的走焦顺序为：M->A->B->C；配置了[nextFocus](#nextfocus18)以后，走焦顺序变更为：M->D->F->B。
+如果不配置[nextFocus](#nextfocus18)，默认的按下Tab键的走焦顺序为：M->A->B->C->D->E->F；配置了[nextFocus](#nextfocus18)以后，走焦顺序变更为：M->D->F->B->C。
 
 ```ts
 class MyButtonModifier implements AttributeModifier<ButtonAttribute> {

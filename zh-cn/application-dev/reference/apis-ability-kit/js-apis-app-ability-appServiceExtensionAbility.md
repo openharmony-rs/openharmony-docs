@@ -1,7 +1,7 @@
 # @ohos.app.ability.AppServiceExtensionAbility (应用后台服务扩展组件)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @yewei0794-->
+<!--Owner: @zhang_hao_zheng-->
 <!--Designer: @jsjzju-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
@@ -18,6 +18,7 @@ AppServiceExtensionAbility模块提供后台服务相关扩展能力，包括后
 
 - 当前仅支持2in1设备。
 - 应用集成AppServiceExtensionAbility的组件需要申请ACL权限（ohos.permission.SUPPORT_APP_SERVICE_EXTENSION）。该ACL权限当前只对企业普通应用开放申请，申请方式参考[权限申请指导](../../security/AccessToken/declare-permissions.md)。
+- 为保障系统安全性和稳定性，防止AppServiceExtensionAbility滥用系统资源，系统对其能力进行管控，不支持[@ohos.window (窗口)](../apis-arkui/arkts-apis-window.md)模块的引用。
 
 ## 生命周期
 
@@ -59,6 +60,8 @@ AppServiceExtensionAbility模块提供后台服务相关扩展能力，包括后
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**设备行为差异**：该属性仅在PC/2in1设备中可正常调用，在其他设备上不生效。
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | context | [AppServiceExtensionContext](js-apis-inner-application-appServiceExtensionContext.md)  | 否 | 否 | AppServiceExtensionAbility的上下文环境，继承自[ExtensionContext](js-apis-inner-application-extensionContext.md)。 |
@@ -75,6 +78,8 @@ onCreate(want: Want): void
 > 如果AppServiceExtensionAbility实例已创建，再次启动或连接该实例时不会触发onCreate()回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**设备行为差异**：该接口仅在PC/2in1设备中可正常执行回调，在其他设备上不执行回调。
 
 **参数：**
 
@@ -105,6 +110,8 @@ onDestroy(): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**设备行为差异**：该接口仅在PC/2in1设备中可正常执行回调，在其他设备上不执行回调。
+
 **示例：**
 
   ```ts
@@ -127,6 +134,8 @@ onRequest(want: Want, startId: number): void
 调用方每次使用[startAppServiceExtensionAbility()](js-apis-inner-application-uiAbilityContext.md#startappserviceextensionability20)拉起AppServiceExtensionAbility实例时，系统都会触发该回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**设备行为差异**：该接口仅在PC/2in1设备中可正常执行回调，在其他设备上不执行回调。
 
 **参数：**
 
@@ -160,6 +169,8 @@ onConnect(want: Want): rpc.RemoteObject
 应用需要在该接口中返回一个RemoteObject对象，用于客户端和服务端进行通信。当AppServiceExtensionAbility实例处于连接状态时，如果调用方发起新的连接，系统会返回缓存的RemoteObject对象，而不会重复回调onConnect()接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**设备行为差异**：该接口仅在PC/2in1设备中可正常执行回调，在其他设备上不执行回调。
 
 **参数：**
 
@@ -206,6 +217,8 @@ onDisconnect(want: Want): void
 当所有连接方断开与AppServiceExtensionAbility实例的连接时，系统会触发该回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**设备行为差异**：该接口仅在PC/2in1设备中可正常执行回调，在其他设备上不执行回调。
 
 **参数：**
 

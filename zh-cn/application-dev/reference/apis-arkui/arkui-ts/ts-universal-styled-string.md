@@ -393,7 +393,7 @@ setStyle(spanStyle: SpanStyle): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
+| 401      | The parameter check failed.   |
 
 ### removeStyle
 
@@ -1792,7 +1792,7 @@ struct StyledStringSetTextStyleDemo {
   build() {
     Column() {
       Column({ space: 10 }) {
-        // 显示配了字体各种样式的属性字符串，Text组件亦配置冲突部分生效属性字符串配置，未冲突区间生效Text组件属性设置值
+        // 显示配置了字体各种样式的属性字符串，Text组件亦配置冲突部分生效属性字符串配置，未冲突区间生效Text组件属性设置值
         Text(undefined, this.options)
           .fontColor(this.fontColor1)
           .font({ size: 20, weight: 500, style: FontStyle.Normal })

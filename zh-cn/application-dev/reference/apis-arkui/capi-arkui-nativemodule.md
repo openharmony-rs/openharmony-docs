@@ -16,13 +16,13 @@
 
 提供ArkUI在Native侧的通用按键事件能力。详细介绍请参考[绑定基础输入事件](../../ui/ndk-bind-input-events.md#按键事件)。
 
-提供ArkUI在Native侧注册手势回调的能力。详细介绍请参考[绑定手势事件](../../ui/ndk-bind-gesture-events.md)。
+提供ArkUI在Native侧的手势识别、手势事件处理及手势回调等能力。详细介绍请参考[绑定手势事件](../../ui/ndk-bind-gesture-events.md)。
 
-提供ArkUI在Native侧使用动画回调的能力。详细介绍请参考[使用动画](../../ui/ndk-use-animation.md)。
+提供ArkUI在Native侧的动画创建、控制及回调等能力。详细介绍请参考[使用动画](../../ui/ndk-use-animation.md)。
 
 提供ArkUI在Native侧的UI能力，如UI组件创建、销毁、树节点操作、属性设置、事件监听等。详细介绍请参考[接入ArkTS页面](../../ui/ndk-access-the-arkts-page.md)。
 
-上述能力适用于Native侧接入ArkTS页面并处理输入事件、拖拽、手势、动画和UI节点管理的场景，可帮助开发者在Native模块中完成ArkUI页面交互处理和组件树管理。
+上述能力适用于在Native侧处理输入事件、拖拽、手势、动画和UI组件操作等场景，可用于完成ArkUI页面交互处理和组件树管理。
 
 **起始版本：** 12
 
@@ -48,7 +48,7 @@
 | [native_dialog.h](capi-native-dialog-h.md) | 提供ArkUI在Native侧的自定义弹窗接口定义集合。 |
 | [native_gesture.h](capi-native-gesture-h.md) | 提供NativeGesture接口的类型定义。 |
 | [native_interface.h](capi-native-interface-h.md) | 提供NativeModule接口的统一入口函数。 |
-| [native_interface_focus.h](capi-native-interface-focus-h.md) | 定义焦点管理的相关接口，主要用于主动转移焦点、管理焦点转移的默认行为以及控制焦点激活态。 |
+| [native_interface_focus.h](capi-native-interface-focus-h.md) | 定义焦点管理的相关接口，用于主动转移焦点、控制焦点转移默认行为和焦点激活态。 |
 | [native_key_event.h](capi-native-key-event-h.md) | 提供NativeKeyEvent相关接口定义。 |
 | [native_material.h](capi-native-material-h.md) | 提供ArkUI在Native侧的沉浸式材质类型和API声明。 |
 | [native_node.h](capi-native-node-h.md) | 提供NativeNode接口的类型定义。 |

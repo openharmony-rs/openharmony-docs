@@ -124,11 +124,11 @@
 
 | PSS参数 | 枚举值 | 获取 | 设置 | 
 | -------- | -------- | -------- | -------- |
-| md | PSS_MD_NAME_STR | √ | - | 
-| mgf | PSS_MGF_NAME_STR | √ | - | 
-| mgf1_md | PSS_MGF1_MD_STR | √ | - | 
+| md | PSS_MD_NAME_STR | √ | － | 
+| mgf | PSS_MGF_NAME_STR | √ | － | 
+| mgf1_md | PSS_MGF1_MD_STR | √ | － | 
 | saltLen | PSS_SALT_LEN_NUM | √ | √ | 
-| trailer_field | PSS_TRAILER_FIELD_NUM | √ | - | 
+| trailer_field | PSS_TRAILER_FIELD_NUM | √ | － | 
 
 ### PKCS1模式下的OnlySign/OnlyVerify
 

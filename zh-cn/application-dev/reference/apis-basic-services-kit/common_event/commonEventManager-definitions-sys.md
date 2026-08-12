@@ -1,4 +1,4 @@
-# 系统定义的公共事件(系统接口)
+# 系统定义的公共事件（系统接口）
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->

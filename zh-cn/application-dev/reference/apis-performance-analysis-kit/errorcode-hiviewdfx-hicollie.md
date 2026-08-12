@@ -15,7 +15,7 @@
 
 **错误信息**
 
-Wrong thread context.The function can not be called from main thread.
+Wrong thread context. The function cannot be called from main thread.
 
 **错误描述**
 
@@ -109,7 +109,7 @@ Wrong timer id output param.
 
 **错误描述**
 
-错误的任务id值参数。
+错误的timer id值参数。
 
 **可能原因**
 

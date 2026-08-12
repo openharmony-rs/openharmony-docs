@@ -446,7 +446,7 @@ databaseAccess(databaseAccess: boolean)
 
 geolocationAccess(geolocationAccess: boolean)
 
-设置是否开启获取地理位置权限。当属性没有显式调用时，默认开启获取地理位置权限。具体使用方式参考[管理位置权限](../../web/web-geolocation-permission.md)。
+设置是否开启获取地理位置权限。当属性没有显式调用时，默认开启。具体使用方式参考[管理位置权限](../../web/web-geolocation-permission.md)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -454,7 +454,7 @@ geolocationAccess(geolocationAccess: boolean)
 
 | 参数名               | 类型    | 必填   | 说明            |
 | ----------------- | ------- | ---- | --------------- |
-| geolocationAccess | boolean | 是    | 设置是否开启获取地理位置权限。<br>true表示设置开启获取地理位置权限，false表示设置不开启获取地理位置权限。<br>传入undefined或null时为false。 |
+| geolocationAccess | boolean | 是    | 设置是否开启获取地理位置权限。<br>true表示开启，false表示不开启。<br>传入undefined或null时为false。 |
 
 **示例：**
 
@@ -1456,16 +1456,16 @@ struct WebComponent {
                         this.dialogController.close()
                     }
                     let popController: webview.WebviewController = new webview.WebviewController();
+                    // 将新窗口对应WebviewController返回给Web内核。
+                    // 若不调用event.handler.setWebController接口，会造成渲染进程阻塞。
+                    // 如果没有创建新窗口，调用event.handler.setWebController接口时设置成null，通知Web没有创建新窗口。
+                    event.handler.setWebController(popController);
                     this.dialogController = new CustomDialogController({
                         builder: NewWebViewComp({ webviewController1: popController }),
                         // isModal设置为false，防止新窗口被销毁而无法触发onActivateContent回调
                         isModal: false
                     })
                     this.dialogController.open();
-                    // 将新窗口对应WebviewController返回给Web内核。
-                    // 若不调用event.handler.setWebController接口，会造成render进程阻塞。
-                    // 如果没有创建新窗口，调用event.handler.setWebController接口时设置成null，通知Web没有创建新窗口。
-                    event.handler.setWebController(popController);
                 })
         }
     }
@@ -3262,7 +3262,7 @@ blurOnKeyboardHideMode(mode: BlurOnKeyboardHideMode)
 
 enableFollowSystemFontWeight(follow: boolean)
 
-设置Web组件是否开启字重跟随系统设置变化。当属性没有显式调用时，Web组件默认开启字重跟随系统设置变化。
+设置Web组件是否开启字重跟随系统设置变化。当属性没有显式调用时，Web组件默认字重不跟随系统设置变化。
 
 > **说明：**
 >
@@ -3274,7 +3274,7 @@ enableFollowSystemFontWeight(follow: boolean)
 
 | 参数名       | 类型                             | 必填 | 说明                                |
 | ------------ | ------------------------------- | ---- | ----------------------------------- |
-| follow | boolean | 是    | 设置Web组件是否开启字重跟随系统设置变化。<br>true表示字重跟随系统设置中的字体粗细变化，系统设置改变时字重跟随变化。false表示字重不再跟随系统设置中的字体粗细变化，系统设置改变时维持当前字重不变。<br>传入undefined或null时为true。 |
+| follow | boolean | 是    | 设置Web组件是否开启字重跟随系统设置变化。<br>true表示字重跟随系统设置中的字体粗细变化，系统设置改变时字重跟随变化。false表示字重不再跟随系统设置中的字体粗细变化，系统设置改变时维持当前字重不变。<br>传入undefined或null时为false。 |
 
 **示例：**
 
@@ -4620,7 +4620,7 @@ enableFullscreenVideoOverlay(enabled: boolean)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**设备行为差异：** 该接口在Phone/Tablet设备中可正常调用，在其他设备中无效。
+**设备行为差异：** 该接口在PC/2in1设备中无效果，在其他设备中可正常调用。
 
 **参数：**
 

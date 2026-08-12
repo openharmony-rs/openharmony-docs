@@ -512,7 +512,7 @@ usageStatistics.setAppGroup(bundleName, newGroup).then( () => {
 
 setAppGroup(bundleName: string, newGroup: GroupType, callback: AsyncCallback&lt;void&gt;): void
 
-将指定bundleName应用的分组设置为newGroup，仅支持当前应用为其他应用设置，使用CallBack异步回调。
+将指定bundleName应用的分组设置为newGroup，仅支持当前应用为其他应用设置，使用Callback异步回调。
 
 **需要权限**：ohos.permission.BUNDLE_ACTIVE_INFO
 
@@ -1272,8 +1272,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryDeviceEventStats(0, 20000000000000).then((res: Array<usageStatistics.DeviceEventStats>) => {
-  console.info('BUNDLE_ACTIVE queryDeviceEventStates promise success.');
-  console.info('BUNDLE_ACTIVE queryDeviceEventStates promise result ' + JSON.stringify(res));
+  console.info('BUNDLE_ACTIVE queryDeviceEventStats promise success.');
+  console.info('BUNDLE_ACTIVE queryDeviceEventStats promise result ' + JSON.stringify(res));
 }).catch((err: BusinessError) => {
   console.error('BUNDLE_ACTIVE queryDeviceEventStats promise failed. code is: ' + err.code + ',message is: ' + err.message);
 });
@@ -1439,7 +1439,7 @@ usageStatistics.queryNotificationEventStats(0, 20000000000000, (err: BusinessErr
 
 queryModuleUsageRecords(): Promise&lt;Array&lt;HapModuleInfo&gt;&gt;
 
-查询FA模型下各应用不用Hap包的使用记录（不超过1000条）。若Hap包中存在FA卡片，使用信息中也包含卡片信息。使用Promise异步回调。
+查询FA模型下各应用不同Hap包的使用记录（不超过1000条）。若Hap包中存在FA卡片，使用信息中也包含卡片信息。使用Promise异步回调。
 
 使用Promise形式返回不超过1000条FA使用记录，FA使用记录由近及远排序。
 
@@ -1451,7 +1451,7 @@ queryModuleUsageRecords(): Promise&lt;Array&lt;HapModuleInfo&gt;&gt;
 
 | 类型                                       | 说明                                 |
 | ---------------------------------------- | ---------------------------------- |
-| Promise&lt;Array&lt;[HapModuleInfo](#hapmoduleinfo)&gt;&gt; | Promise对象。返回FA模型下各应用不用Hap包的使用记录（不超过1000条）。 |
+| Promise&lt;Array&lt;[HapModuleInfo](#hapmoduleinfo)&gt;&gt; | Promise对象。返回FA模型下各应用不同Hap包的使用记录（不超过1000条）。 |
 
 **错误码**：
 
@@ -1492,7 +1492,7 @@ usageStatistics.queryModuleUsageRecords().then((res: Array<usageStatistics.HapMo
 
 queryModuleUsageRecords(callback: AsyncCallback&lt;Array&lt;HapModuleInfo&gt;&gt;): void
 
-查询FA模型下各应用不用Hap包的使用记录（不超过1000条）。若Hap包中存在FA卡片，使用信息中也包含卡片信息。使用CallBack异步回调。
+查询FA模型下各应用不同Hap包的使用记录（不超过1000条）。若Hap包中存在FA卡片，使用信息中也包含卡片信息。使用Callback异步回调。
 
 **需要权限**：ohos.permission.BUNDLE_ACTIVE_INFO
 
@@ -1502,7 +1502,7 @@ queryModuleUsageRecords(callback: AsyncCallback&lt;Array&lt;HapModuleInfo&gt;&gt
 
 | 参数名      | 类型                                       | 必填   | 说明                                  |
 | -------- | ---------------------------------------- | ---- | ----------------------------------- |
-| callback | AsyncCallback&lt;Array&lt;[HapModuleInfo](#hapmoduleinfo)&gt;&gt; | 是    | 回调函数，返回FA模型下各应用不用Hap包的使用记录（不超过1000条）。 |
+| callback | AsyncCallback&lt;Array&lt;[HapModuleInfo](#hapmoduleinfo)&gt;&gt; | 是    | 回调函数，返回FA模型下各应用不同Hap包的使用记录（不超过1000条）。 |
 
 **错误码**：
 
@@ -1544,7 +1544,7 @@ usageStatistics.queryModuleUsageRecords((err: BusinessError, res: Array<usageSta
 
 queryModuleUsageRecords(maxNum: number): Promise&lt;Array&lt;HapModuleInfo&gt;&gt;
 
-根据设置的maxNum，查询FA模型下各应用不用Hap包的使用记录。若Hap包中存在FA卡片，使用信息中也包含卡片信息。使用Promise异步回调。
+根据设置的maxNum，查询FA模型下各应用不同Hap包的使用记录。若Hap包中存在FA卡片，使用信息中也包含卡片信息。使用Promise异步回调。
 
 **需要权限**：ohos.permission.BUNDLE_ACTIVE_INFO
 
@@ -1560,7 +1560,7 @@ queryModuleUsageRecords(maxNum: number): Promise&lt;Array&lt;HapModuleInfo&gt;&g
 
 | 类型                                       | 说明                                 |
 | ---------------------------------------- | ---------------------------------- |
-| Promise&lt;Array&lt;[HapModuleInfo](#hapmoduleinfo)&gt;&gt; | Promise对象，返回不超过maxNum条，FA模型下各应用不用Hap包的使用记录。 |
+| Promise&lt;Array&lt;[HapModuleInfo](#hapmoduleinfo)&gt;&gt; | Promise对象，返回不超过maxNum条，FA模型下各应用不同Hap包的使用记录。 |
 
 **错误码**：
 
@@ -1600,7 +1600,7 @@ usageStatistics.queryModuleUsageRecords(1000).then((res: Array<usageStatistics.H
 
 queryModuleUsageRecords(maxNum: number, callback: AsyncCallback&lt;Array&lt;HapModuleInfo&gt;&gt;): void
 
-根据设置的maxNum，查询FA模型下各应用不用Hap包的使用记录。若Hap包中存在FA卡片，使用信息中也包含卡片信息。使用Callback异步回调。
+根据设置的maxNum，查询FA模型下各应用不同Hap包的使用记录。若Hap包中存在FA卡片，使用信息中也包含卡片信息。使用Callback异步回调。
 
 **需要权限**：ohos.permission.BUNDLE_ACTIVE_INFO
 
@@ -1611,7 +1611,7 @@ queryModuleUsageRecords(maxNum: number, callback: AsyncCallback&lt;Array&lt;HapM
 | 参数名      | 类型                                       | 必填   | 说明                                  |
 | -------- | ---------------------------------------- | ---- | ----------------------------------- |
 | maxNum   | number                                   | 是    |  使用记录的条数，取值范围为[1，1000]。 |
-| callback | AsyncCallback&lt;Array&lt;[HapModuleInfo](#hapmoduleinfo)&gt;&gt; | 是    | 回调方法，返回不超过maxNum条，FA模型下各应用不用Hap包的使用记录。 |
+| callback | AsyncCallback&lt;Array&lt;[HapModuleInfo](#hapmoduleinfo)&gt;&gt; | 是    | 回调方法，返回不超过maxNum条，FA模型下各应用不同Hap包的使用记录。 |
 
 **错误码**：
 
@@ -1955,7 +1955,7 @@ FA卡片的使用信息属性集合。
 
 ## AppStatsMap<sup>15+</sup>
 
-应用使用的具体信息(包含分身应用)。
+应用使用的具体信息（包含分身应用）。
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.App
 

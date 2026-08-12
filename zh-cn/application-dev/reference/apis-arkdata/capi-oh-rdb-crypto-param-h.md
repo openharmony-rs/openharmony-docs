@@ -169,7 +169,7 @@ int OH_Crypto_SetEncryptionKey(OH_Rdb_CryptoParam *param, const uint8_t *key, in
 | 参数项                                                  | 描述                                                         |
 | ------------------------------------------------------- | ------------------------------------------------------------ |
 | [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) *param | 表示指向[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)实例的指针。 |
-| const uint8_t *key                                      | 表示指向数组数据的指针。                                     |
+| const uint8_t *key                                      | 表示指向密钥数据的指针。                                     |
 | int32_t length                                          | 表示密钥数组的大小。                                         |
 
 **返回：**

@@ -8,11 +8,11 @@
 
 ArkTS引入了异步任务的等待和唤醒能力，以解决多线程任务时序控制问题。异步任务通过[ConditionVariable](../reference/apis-arkts/arkts-apis-arkts-utils-locks.md#conditionvariable18)对象实现等待和唤醒机制，该对象支持跨线程引用传递。
 
-ArkTS语言支持异步操作，现已增加异步任务的等待和唤醒功能。当异步任务收到唤醒通知或等待超时后，将继续执行。
+ArkTS语言支持异步操作，从API version 18开始支持异步任务的等待和唤醒功能。当异步任务收到唤醒通知或等待超时后，将继续执行。
 
 > **说明：**
 >
-> 使用异步方法需标记为async，调用时需用await修饰，确保时序正确。
+> 使用异步方法需标记为async，调用时可用await修饰，确保时序正确。
 
 ## 使用示例
 
@@ -37,16 +37,14 @@ ArkTS语言支持异步操作，现已增加异步任务的等待和唤醒功能
    
    @Concurrent
    async function wait(conditionVariable: ArkTSUtils.locks.ConditionVariable) {
-     conditionVariable.wait().then(() => {
-       console.info(`TaskPool Thread Wait: success`);
-     });
+     await conditionVariable.wait();
+     console.info(`TaskPool Thread Wait: success`);
    }
    
    @Concurrent
    async function waitFor(conditionVariable: ArkTSUtils.locks.ConditionVariable) {
-     conditionVariable.waitFor(3000).then(() => {
-       console.info(`TaskPool Thread WaitFor: success`);
-     });
+     await conditionVariable.waitFor(3000);
+     console.info(`TaskPool Thread WaitFor: success`);
    }
    
    @Entry

@@ -79,7 +79,7 @@ let publishCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`publish failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("publish success");
+        console.info('publish success');
     }
 }
 // 用户ID，使用时需替换为真实的userId。
@@ -90,9 +90,9 @@ let notificationRequest: notificationManager.NotificationRequest = {
     content: {
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
         normal: {
-            title: "test_title",
-            text: "test_text",
-            additionalText: "test_additionalText"
+            title: 'test_title',
+            text: 'test_text',
+            additionalText: 'test_additionalText'
         }
     }
 };
@@ -163,9 +163,9 @@ let notificationRequest: notificationManager.NotificationRequest = {
     content: {
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
         normal: {
-            title: "test_title",
-            text: "test_text",
-            additionalText: "test_additionalText"
+            title: 'test_title',
+            text: 'test_text',
+            additionalText: 'test_additionalText'
         }
     }
 };
@@ -174,7 +174,7 @@ let notificationRequest: notificationManager.NotificationRequest = {
 let userId: number = 1;
 
 notificationManager.publish(notificationRequest, userId).then(() => {
-    console.info("publish success");
+    console.info('publish success');
 }).catch((err: BusinessError) => {
     console.error(`publish failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -223,7 +223,7 @@ let addSlotCallBack = (err: BusinessError): void => {
     if (err) {
         console.error(`addSlot failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("addSlot success");
+        console.info('addSlot success');
     }
 }
 // 通知slot对象
@@ -281,7 +281,7 @@ let notificationSlot: notificationManager.NotificationSlot = {
     notificationType: notificationManager.SlotType.SOCIAL_COMMUNICATION
 };
 notificationManager.addSlot(notificationSlot).then(() => {
-    console.info("addSlot success");
+    console.info('addSlot success');
 }).catch((err: BusinessError) => {
     console.error(`addSlot failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -330,7 +330,7 @@ let addSlotsCallBack = (err: BusinessError): void => {
     if (err) {
         console.error(`addSlots failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("addSlots success");
+        console.info('addSlots success');
     }
 }
 // 通知slot对象
@@ -396,7 +396,7 @@ let notificationSlotArray: notificationManager.NotificationSlot[] = new Array();
 notificationSlotArray[0] = notificationSlot;
 
 notificationManager.addSlots(notificationSlotArray).then(() => {
-    console.info("addSlots success");
+    console.info('addSlots success');
 }).catch((err: BusinessError) => {
     console.error(`addSlots failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -446,11 +446,11 @@ let setNotificationEnableCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`setNotificationEnable failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setNotificationEnable success");
+        console.info('setNotificationEnable success');
     }
 }
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.setNotificationEnable(bundle, false, setNotificationEnableCallback);
 ```
@@ -500,10 +500,10 @@ setNotificationEnable(bundle: BundleOption, enable: boolean): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.setNotificationEnable(bundle, false).then(() => {
-    console.info("setNotificationEnable success");
+    console.info('setNotificationEnable success');
 }).catch((err: BusinessError) => {
     console.error(`setNotificationEnable failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -513,7 +513,7 @@ notificationManager.setNotificationEnable(bundle, false).then(() => {
 
 getAllNotificationEnabledBundles(): Promise<Array<BundleOption\>>
 
-获取允许通知的应用程序列表。使用Promise异步回调。
+获取允许通知的应用列表。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -525,7 +525,7 @@ getAllNotificationEnabledBundles(): Promise<Array<BundleOption\>>
 
 | 类型      | 说明        | 
 |---------|-----------|
-| Promise<Array<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>> | 返回允许通知的应用程序列表。 | 
+| Promise<Array<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>> | 返回允许通知的应用列表。 | 
 
 **错误码：**
 
@@ -559,7 +559,7 @@ notificationManager.getAllNotificationEnabledBundles().then((data: Array<notific
 
 getAllNotificationEnabledBundles(userId: number): Promise<Array<BundleOption\>>
 
-获取指定用户下允许通知的应用程序列表。使用Promise异步回调。
+获取指定用户下允许通知的应用列表。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -571,13 +571,13 @@ getAllNotificationEnabledBundles(userId: number): Promise<Array<BundleOption\>>
 
 | 参数名   | 类型             | 必填 | 说明           |
 | ------ | ---------------- | ---- | -------------- |
-| userId   | number | 是 | 要获取允许通知的应用程序列表的用户。 |
+| userId   | number | 是 | 要获取允许通知的应用列表的用户。 |
 
 **返回值：**
 
 | 类型      | 说明        | 
 |---------|-----------|
-| Promise<Array<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>> | 返回允许通知的应用程序列表。 | 
+| Promise<Array<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>> | 返回允许通知的应用列表。 | 
 
 **错误码：**
 
@@ -657,7 +657,7 @@ let isNotificationEnabledCallback = (err: BusinessError, data: boolean): void =>
 }
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 
 notificationManager.isNotificationEnabled(bundle, isNotificationEnabledCallback);
@@ -707,7 +707,7 @@ isNotificationEnabled(bundle: BundleOption): Promise\<boolean\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.isNotificationEnabled(bundle).then((data: boolean) => {
     console.info(`isNotificationEnabled success, data: ${JSON.stringify(data)}`);
@@ -867,11 +867,11 @@ let displayBadgeCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`displayBadge failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("displayBadge success");
+        console.info('displayBadge success');
     }
 }
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.displayBadge(bundle, false, displayBadgeCallback);
 ```
@@ -924,10 +924,10 @@ displayBadge(bundle: BundleOption, enable: boolean): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.displayBadge(bundle, false).then(() => {
-    console.info("displayBadge success");
+    console.info('displayBadge success');
 }).catch((err: BusinessError) => {
     console.error(`displayBadge failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -982,7 +982,7 @@ let isBadgeDisplayedCallback = (err: BusinessError, data: boolean): void => {
     }
 }
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.isBadgeDisplayed(bundle, isBadgeDisplayedCallback);
 ```
@@ -1034,7 +1034,7 @@ isBadgeDisplayed(bundle: BundleOption): Promise\<boolean\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 
 notificationManager.isBadgeDisplayed(bundle).then((data: boolean) => {
@@ -1092,13 +1092,13 @@ setSlotFlagsByBundle(bundle: BundleOption, slotFlags: number): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 
 let slotFlags: number = 1;
 
 notificationManager.setSlotFlagsByBundle(bundle, slotFlags).then(() => {
-    console.info("setSlotFlagsByBundle success");
+    console.info('setSlotFlagsByBundle success');
 }).catch((err: BusinessError) => {
     console.error(`setSlotFlagsByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -1152,11 +1152,11 @@ let setSlotByBundleCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`setSlotByBundle failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setSlotByBundle success");
+        console.info('setSlotByBundle success');
     }
 }
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 let notificationSlot: notificationManager.NotificationSlot = {
     notificationType: notificationManager.SlotType.SOCIAL_COMMUNICATION
@@ -1214,7 +1214,7 @@ setSlotByBundle(bundle: BundleOption, slot: NotificationSlot): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 
 let notificationSlot: notificationManager.NotificationSlot = {
@@ -1222,7 +1222,7 @@ let notificationSlot: notificationManager.NotificationSlot = {
 };
 
 notificationManager.setSlotByBundle(bundle, notificationSlot).then(() => {
-    console.info("setSlotByBundle success");
+    console.info('setSlotByBundle success');
 }).catch((err: BusinessError) => {
     console.error(`setSlotByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -1275,7 +1275,7 @@ getSlotFlagsByBundle(bundle: BundleOption): Promise\<number\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.getSlotFlagsByBundle(bundle).then((data : number) => {
     console.info(`getSlotFlagsByBundle success, data: ${JSON.stringify(data)}`);
@@ -1333,7 +1333,7 @@ let getSlotsByBundleCallback = (err: BusinessError, data: Array<notificationMana
     }
 }
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.getSlotsByBundle(bundle, getSlotsByBundleCallback);
 ```
@@ -1385,7 +1385,7 @@ getSlotsByBundle(bundle: BundleOption): Promise\<Array\<NotificationSlot>>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 
 notificationManager.getSlotsByBundle(bundle).then((data: Array<notificationManager.NotificationSlot>) => {
@@ -1445,7 +1445,7 @@ let getSlotNumByBundleCallback = (err: BusinessError, data: number): void => {
 }
 
 let bundle: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 
 notificationManager.getSlotNumByBundle(bundle, getSlotNumByBundleCallback);
@@ -1498,7 +1498,7 @@ getSlotNumByBundle(bundle: BundleOption): Promise\<number\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 
 notificationManager.getSlotNumByBundle(bundle).then((data: number) => {
@@ -1635,11 +1635,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { notificationSubscribe } from '@kit.NotificationKit';
 
 let bundleOption: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 let notificationKey: notificationSubscribe.NotificationKey = {
     id: 11,
-    label: ""
+    label: ''
 };
 let filter: notificationManager.NotificationFilter = {
     bundle: bundleOption,
@@ -1650,7 +1650,7 @@ let getActiveNotificationByFilterCallback = (err: BusinessError, data: notificat
     if (err) {
         console.error(`getActiveNotificationByFilter failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("getActiveNotificationByFilter success");
+        console.info('getActiveNotificationByFilter success');
     }
 }
 notificationManager.getActiveNotificationByFilter(filter, getActiveNotificationByFilterCallback);
@@ -1698,11 +1698,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { notificationSubscribe } from '@kit.NotificationKit';
 
 let bundleOption: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 let notificationKey: notificationSubscribe.NotificationKey = {
     id: 11,
-    label: ""
+    label: ''
 };
 let filter: notificationManager.NotificationFilter = {
     bundle: bundleOption,
@@ -1759,12 +1759,12 @@ let removeGroupByBundleCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`removeGroupByBundle failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("removeGroupByBundle success");
+        console.info('removeGroupByBundle success');
     }
 }
 
-let bundleOption: notificationManager.BundleOption = { bundle: "Bundle" };
-let groupName: string = "GroupName";
+let bundleOption: notificationManager.BundleOption = { bundle: 'Bundle' };
+let groupName: string = 'GroupName';
 
 notificationManager.removeGroupByBundle(bundleOption, groupName, removeGroupByBundleCallback);
 ```
@@ -1813,11 +1813,11 @@ removeGroupByBundle(bundle: BundleOption, groupName: string): Promise\<void\>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundleOption: notificationManager.BundleOption = { bundle: "Bundle" };
-let groupName: string = "GroupName";
+let bundleOption: notificationManager.BundleOption = { bundle: 'Bundle' };
+let groupName: string = 'GroupName';
 
 notificationManager.removeGroupByBundle(bundleOption, groupName).then(() => {
-    console.info("removeGroupByBundle success");
+    console.info('removeGroupByBundle success');
 }).catch((err: BusinessError) => {
     console.error(`removeGroupByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -1868,7 +1868,7 @@ let setDoNotDisturbDateCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`setDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setDoNotDisturbDate success");
+        console.info('setDoNotDisturbDate success');
     }
 }
 
@@ -1934,7 +1934,7 @@ let doNotDisturbDate: notificationManager.DoNotDisturbDate = {
     end: new Date(2021, 11, 15, 18, 0)
 };
 notificationManager.setDoNotDisturbDate(doNotDisturbDate).then(() => {
-    console.info("setDoNotDisturbDate success");
+    console.info('setDoNotDisturbDate success');
 }).catch((err: BusinessError) => {
     console.error(`setDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -1988,7 +1988,7 @@ let setDoNotDisturbDateCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`setDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setDoNotDisturbDate success");
+        console.info('setDoNotDisturbDate success');
     }
 }
 
@@ -2062,7 +2062,7 @@ let doNotDisturbDate: notificationManager.DoNotDisturbDate = {
 let userId: number = 1;
 
 notificationManager.setDoNotDisturbDate(doNotDisturbDate, userId).then(() => {
-    console.info("setDoNotDisturbDate success");
+    console.info('setDoNotDisturbDate success');
 }).catch((err: BusinessError) => {
     console.error(`setDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -2425,7 +2425,7 @@ let setDistributedEnableCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`setDistributedEnable failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setDistributedEnable success");
+        console.info('setDistributedEnable success');
     }
 };
 let enable: boolean = true;
@@ -2484,7 +2484,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let enable: boolean = true;
 notificationManager.setDistributedEnable(enable).then(() => {
-    console.info("setDistributedEnable success");
+    console.info('setDistributedEnable success');
 }).catch((err: BusinessError) => {
     console.error(`setDistributedEnable failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -2514,7 +2514,7 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: As
 | -------- | ------------------------ | ---- | -------------------------- |
 | bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)             | 是   | 应用的包信息。                   |
 | enable   | boolean                  | 是   | 指定应用是否支持分布式通知（true：支持，false：不支持）。|
-| callback | AsyncCallback\<void\> | 是   | 应用程序是否支持分布式通知的回调函数。 |
+| callback | AsyncCallback\<void\> | 是   | 应用是否支持分布式通知的回调函数。 |
 
 **错误码：**
 
@@ -2541,11 +2541,11 @@ let setDistributedEnableByBundleCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`setDistributedEnableByBundle failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setDistributedEnableByBundle success");
+        console.info('setDistributedEnableByBundle success');
     }
 };
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 let enable: boolean = true;
 notificationManager.setDistributedEnableByBundle(bundle, enable, setDistributedEnableByBundleCallback);
@@ -2606,11 +2606,11 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise\<vo
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 let enable: boolean = true;
 notificationManager.setDistributedEnableByBundle(bundle, enable).then(() => {
-    console.info("setDistributedEnableByBundle success");
+    console.info('setDistributedEnableByBundle success');
 }).catch((err: BusinessError) => {
     console.error(`setDistributedEnableByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -2620,7 +2620,7 @@ notificationManager.setDistributedEnableByBundle(bundle, enable).then(() => {
 
 isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<boolean>): void
 
-根据应用的包获取应用程序是否支持分布式通知。使用callback异步回调。
+根据应用的包获取应用是否支持分布式通知。使用callback异步回调。
 
 **起始版本：** 9
 
@@ -2670,7 +2670,7 @@ let isDistributedEnabledByBundleCallback = (err: BusinessError, data: boolean): 
     }
 };
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.isDistributedEnabledByBundle(bundle, isDistributedEnabledByBundleCallback);
 ```
@@ -2727,7 +2727,7 @@ isDistributedEnabledByBundle(bundle: BundleOption): Promise\<boolean>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.isDistributedEnabledByBundle(bundle).then((data: boolean) => {
     console.info(`isDistributedEnabledByBundle success, data: ${JSON.stringify(data)}`);
@@ -2896,11 +2896,11 @@ let callback = (err: BusinessError): void => {
     if (err) {
         console.error(`publishAsBundle failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("publishAsBundle success");
+        console.info('publishAsBundle success');
     }
 }
 // 被代理应用的包名
-let representativeBundle: string = "com.example.demo";
+let representativeBundle: string = 'com.example.demo';
 // 用户ID，使用时需替换为真实的userId。
 let userId: number = 100;
 // NotificationRequest对象
@@ -2909,9 +2909,9 @@ let request: notificationManager.NotificationRequest = {
     content: {
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
         normal: {
-            title: "test_title",
-            text: "test_text",
-            additionalText: "test_additionalText"
+            title: 'test_title',
+            text: 'test_text',
+            additionalText: 'test_additionalText'
         }
     }
 };
@@ -2980,7 +2980,7 @@ publishAsBundle(request: NotificationRequest, representativeBundle: string, user
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 被代理应用的包名
-let representativeBundle: string = "com.example.demo";
+let representativeBundle: string = 'com.example.demo';
 // 用户ID，使用时需替换为真实的userId。
 let userId: number = 100;
 // NotificationRequest对象
@@ -2989,14 +2989,14 @@ let request: notificationManager.NotificationRequest = {
     content: {
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
         normal: {
-            title: "test_title",
-            text: "test_text",
-            additionalText: "test_additionalText"
+            title: 'test_title',
+            text: 'test_text',
+            additionalText: 'test_additionalText'
         }
     }
 };
 notificationManager.publishAsBundle(request, representativeBundle, userId).then(() => {
-    console.info("publishAsBundle success");
+    console.info('publishAsBundle success');
 }).catch((err: BusinessError) => {
     console.error(`publishAsBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -3064,7 +3064,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 被代理应用的包信息
 let representativeBundle: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 // NotificationRequest对象
 let request: notificationManager.NotificationRequest = {
@@ -3072,14 +3072,14 @@ let request: notificationManager.NotificationRequest = {
     content: {
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
         normal: {
-            title: "test_title",
-            text: "test_text",
-            additionalText: "test_additionalText"
+            title: 'test_title',
+            text: 'test_text',
+            additionalText: 'test_additionalText'
         }
     }
 };
 notificationManager.publishAsBundle(representativeBundle, request).then(() => {
-    console.info("publishAsBundle success");
+    console.info('publishAsBundle success');
 }).catch((err: BusinessError) => {
     console.error(`publishAsBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -3132,11 +3132,11 @@ let cancelAsBundleCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`cancelAsBundle failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("cancelAsBundle success");
+        console.info('cancelAsBundle success');
     }
 }
 // 被代理应用的包名
-let representativeBundle: string = "com.example.demo";
+let representativeBundle: string = 'com.example.demo';
 // 用户ID，使用时需替换为真实的userId。
 let userId: number = 100;
 notificationManager.cancelAsBundle(0, representativeBundle, userId, cancelAsBundleCallback);
@@ -3190,11 +3190,11 @@ cancelAsBundle(id: number, representativeBundle: string, userId: number): Promis
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 被代理应用的包名
-let representativeBundle: string = "com.example.demo";
+let representativeBundle: string = 'com.example.demo';
 // 用户ID，使用时需替换为真实的userId。
 let userId: number = 100;
 notificationManager.cancelAsBundle(0, representativeBundle, userId).then(() => {
-    console.info("cancelAsBundle success");
+    console.info('cancelAsBundle success');
 }).catch((err: BusinessError) => {
     console.error(`cancelAsBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -3250,10 +3250,10 @@ cancelAsBundle(representativeBundle: BundleOption, id: number): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let representativeBundle: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 notificationManager.cancelAsBundle(representativeBundle, 1).then(() => {
-    console.info("cancelAsBundle success");
+    console.info('cancelAsBundle success');
 }).catch((err: BusinessError) => {
     console.error(`cancelAsBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -3305,11 +3305,11 @@ cancel(representativeBundle: BundleOption, id: number): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-  bundle: "bundleName"
+  bundle: 'bundleName'
 };
 let id: number = 1;
 notificationManager.cancel(bundle, id).then(() => {
-  console.info("cancel success");
+  console.info('cancel success');
 }).catch((err: BusinessError) => {
   console.error(`cancel failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -3364,11 +3364,11 @@ let setNotificationEnableSlotCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`setNotificationEnableSlot failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setNotificationEnableSlot success");
+        console.info('setNotificationEnableSlot success');
     }
 };
 notificationManager.setNotificationEnableSlot(
-    { bundle: "ohos.samples.notification", },
+    { bundle: 'ohos.samples.notification', },
     notificationManager.SlotType.SOCIAL_COMMUNICATION,
     true,
     setNotificationEnableSlotCallback);
@@ -3423,12 +3423,12 @@ let setNotificationEnableSlotCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`setNotificationEnableSlot failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setNotificationEnableSlot success");
+        console.info('setNotificationEnableSlot success');
     }
 };
 
 notificationManager.setNotificationEnableSlot(
-    { bundle: "ohos.samples.notification", },
+    { bundle: 'ohos.samples.notification', },
     notificationManager.SlotType.SOCIAL_COMMUNICATION,
     true,
     false,
@@ -3439,7 +3439,7 @@ notificationManager.setNotificationEnableSlot(
 
 setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean, isForceControl?: boolean): Promise\<void>
 
-设置指定应用的指定渠道类型的使能状态。使用promise异步回调。
+设置指定应用的指定渠道类型的使能状态。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3487,10 +3487,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // setNotificationEnableSlot
 notificationManager.setNotificationEnableSlot(
-    { bundle: "ohos.samples.notification", },
+    { bundle: 'ohos.samples.notification', },
     notificationManager.SlotType.SOCIAL_COMMUNICATION,
     true).then(() => {
-        console.info("setNotificationEnableSlot success");
+        console.info('setNotificationEnableSlot success');
     }).catch((err: BusinessError) => {
         console.error(`setNotificationEnableSlot failed, code is ${err.code}, message is ${err.message}`);
     });
@@ -3548,7 +3548,7 @@ let isNotificationSlotEnabledCallback = (err: BusinessError, data: boolean): voi
 };
 
 notificationManager.isNotificationSlotEnabled(
-    { bundle: "ohos.samples.notification", },
+    { bundle: 'ohos.samples.notification', },
     notificationManager.SlotType.SOCIAL_COMMUNICATION,
     isNotificationSlotEnabledCallback);
 ```
@@ -3601,7 +3601,7 @@ isNotificationSlotEnabled(bundle: BundleOption, type: SlotType): Promise\<boolea
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // isNotificationSlotEnabled
-notificationManager.isNotificationSlotEnabled({ bundle: "ohos.samples.notification", },
+notificationManager.isNotificationSlotEnabled({ bundle: 'ohos.samples.notification', },
     notificationManager.SlotType.SOCIAL_COMMUNICATION).then((data: boolean) => {
     console.info(`isNotificationSlotEnabled success, data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
@@ -3677,7 +3677,7 @@ notificationManager.isNotificationSlotEnabledByBundles(
 
 setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean, callback: AsyncCallback\<void\>): void
 
-设置是否将通知同步到未安装应用程序的设备(callback形式)。
+设置是否将通知同步到未安装应用的设备(callback形式)。
 
 **起始版本：** 9
 
@@ -3695,7 +3695,7 @@ setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean, callback: 
 | ------ | ----------------------------- | ---- | -------------- |
 | userId | number | 是   | 用户ID。   |
 | enable | boolean | 是   | 是否启用（true：使能，false：禁止）。   |
-| callback | AsyncCallback\<void\>    | 是   | 设置是否将通知同步到未安装应用程序的设备的回调函数。 |
+| callback | AsyncCallback\<void\>    | 是   | 设置是否将通知同步到未安装应用的设备的回调函数。 |
 
 **错误码：**
 
@@ -3724,7 +3724,7 @@ let setSyncNotificationEnabledWithoutAppCallback = (err: BusinessError): void =>
     if (err) {
         console.error(`setSyncNotificationEnabledWithoutApp failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setSyncNotificationEnabledWithoutApp success");
+        console.info('setSyncNotificationEnabledWithoutApp success');
     }
 }
 notificationManager.setSyncNotificationEnabledWithoutApp(userId, enable, setSyncNotificationEnabledWithoutAppCallback);
@@ -3735,7 +3735,7 @@ notificationManager.setSyncNotificationEnabledWithoutApp(userId, enable, setSync
 
 setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean): Promise\<void>
 
-设置是否将通知同步到未安装应用程序的设备(Promise形式)。
+设置是否将通知同步到未安装应用的设备(Promise形式)。
 
 **起始版本：** 9
 
@@ -3758,7 +3758,7 @@ setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean): Promise\<
 
 | 类型                                                        | 说明                                                         |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<void\> | 以Promise形式返回设置是否将通知同步到未安装应用程序的设备的结果。 |
+| Promise\<void\> | 以Promise形式返回设置是否将通知同步到未安装应用的设备的结果。 |
 
 **错误码：**
 
@@ -3795,7 +3795,7 @@ notificationManager.setSyncNotificationEnabledWithoutApp(userId, enable).then(()
 
 getSyncNotificationEnabledWithoutApp(userId: number, callback: AsyncCallback\<boolean>): void
 
-获取同步通知到未安装应用程序设备的开关是否开启(callback形式)。
+获取同步通知到未安装应用设备的开关是否开启(callback形式)。
 
 **起始版本：** 9
 
@@ -3812,7 +3812,7 @@ getSyncNotificationEnabledWithoutApp(userId: number, callback: AsyncCallback\<bo
 | 参数名 | 类型                          | 必填 | 说明           |
 | ------ | ----------------------------- | ---- | -------------- |
 | userId | number | 是   | 用户ID。   |
-| callback | AsyncCallback\<boolean\>         | 是   | 获取同步通知到未安装应用程序设备的开关是否开启的回调函数（true：开启，false：未开启）。 |
+| callback | AsyncCallback\<boolean\>         | 是   | 获取同步通知到未安装应用设备的开关是否开启的回调函数（true：开启，false：未开启）。 |
 
 **错误码：**
 
@@ -3851,7 +3851,7 @@ notificationManager.getSyncNotificationEnabledWithoutApp(userId, getSyncNotifica
 
 getSyncNotificationEnabledWithoutApp(userId: number): Promise\<boolean>
 
-获取同步通知到未安装应用程序设备的开关是否开启(Promise形式)。
+获取同步通知到未安装应用设备的开关是否开启(Promise形式)。
 
 **起始版本：** 9
 
@@ -3873,7 +3873,7 @@ getSyncNotificationEnabledWithoutApp(userId: number): Promise\<boolean>
 
 | 类型               | 说明                                                         |
 | ------------------ | ------------------------------------------------------------ |
-| Promise\<boolean\> | 以Promise形式返回获取同步通知到未安装应用程序设备的开关是否开启的结果（true：开启，false：未开启）。 |
+| Promise\<boolean\> | 以Promise形式返回获取同步通知到未安装应用设备的开关是否开启的结果（true：开启，false：未开启）。 |
 
 **错误码：**
 
@@ -3945,15 +3945,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let onCheckNotification = (info : notificationManager.NotificationCheckInfo): notificationManager.NotificationCheckResult => {
     console.info(`====>OnCheckNotification info: ${JSON.stringify(info)}`);
     if(info.notificationId == 1){
-        let result: notificationManager.NotificationCheckResult =  { code: 1, message: "testMsg1"};
+        let result: notificationManager.NotificationCheckResult =  { code: 1, message: 'testMsg1'};
         return result;
     } else {
-        let result: notificationManager.NotificationCheckResult =   { code: 0, message: "testMsg0"};
+        let result: notificationManager.NotificationCheckResult =   { code: 0, message: 'testMsg0'};
         return result;
     }
 }
 try{
-    notificationManager.on("checkNotification", onCheckNotification);
+    notificationManager.on('checkNotification', onCheckNotification);
 } catch (err){
     console.error(`notificationManager.on failed, code is ${err.code}, message is ${err.message}`);
 }
@@ -4005,10 +4005,10 @@ try{
   notificationManager.on('checkNotification',{
     contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_LIVE_VIEW,
     slotType: notificationManager.SlotType.LIVE_VIEW ,
-    extraInfoKeys: ["event"],
+    extraInfoKeys: ['event'],
   },
     async (checkInfo)=>{
-      return { code: 1, message: "INVALID_PARAMETERS"};
+      return { code: 1, message: 'INVALID_PARAMETERS'};
   },);
 } catch (err) {
   console.error(`notificationManager.on failed, code is ${err.code}, message is ${err.message}`);
@@ -4052,7 +4052,7 @@ off(type: 'checkNotification', callback?: (checkInfo: NotificationCheckInfo) => 
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try{
-    notificationManager.off("checkNotification");
+    notificationManager.off('checkNotification');
 } catch (err){
     console.error(`notificationManager.off failed, code is ${err.code}, message is ${err.message}`);
 }
@@ -4109,16 +4109,16 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 包信息
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 // 通知ID
 let notificationId = 1;
 // 按钮信息
 let buttonOptions: notificationManager.ButtonOptions = {
-    buttonName: "buttonName1",
+    buttonName: 'buttonName1',
 }
 notificationManager.triggerSystemLiveView(bundle, notificationId, buttonOptions).then(() => {
-  console.info("triggerSystemLiveView success");
+  console.info('triggerSystemLiveView success');
 }).catch((err: BusinessError) => {
   console.error(`triggerSystemLiveView failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -4175,7 +4175,7 @@ let subscriber: notificationManager.SystemLiveViewSubscriber  = {
     onResponse: onResponseCallback,
 };
 notificationManager.subscribeSystemLiveView(subscriber).then(() => {
-    console.info("subscribeSystemLiveView success");
+    console.info('subscribeSystemLiveView success');
 }).catch((err: BusinessError) => {
     console.error(`subscribeSystemLiveView failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -4232,13 +4232,13 @@ setDistributedEnabledByBundle(bundle: BundleOption, deviceType: string, enable: 
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
     uid: 1
 };
 let enable: boolean = true;
-let deviceType: string = "phone";
+let deviceType: string = 'phone';
 notificationManager.setDistributedEnabledByBundle(bundle, deviceType, enable).then(() => {
-    console.info("setDistributedEnabledByBundle success");
+    console.info('setDistributedEnabledByBundle success');
 }).catch((err: BusinessError) => {
     console.error(`setDistributedEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -4293,12 +4293,12 @@ setDistributedEnableByBundles(bundleEnableInfos: Array\<DistributedBundleEnableI
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle1: notificationManager.DistributedBundleEnableInfo = {
-    bundleName: "bundleName1",
+    bundleName: 'bundleName1',
     uid: 1,
     enable: true
 };
 let bundle2: notificationManager.DistributedBundleEnableInfo = {
-    bundleName: "bundleName2",
+    bundleName: 'bundleName2',
     uid: 2,
     enable: true
 };
@@ -4306,9 +4306,9 @@ let bundles: Array<notificationManager.DistributedBundleEnableInfo> = [
     bundle1,bundle2
 ]
 
-let deviceType: string = "liteWearable";
+let deviceType: string = 'liteWearable';
 notificationManager.setDistributedEnableByBundles(bundles, deviceType).then(() => {
-    console.info("setDistributedEnableByBundles success");
+    console.info('setDistributedEnableByBundles success');
 }).catch((err: BusinessError) => {
     console.error(`setDistributedEnableByBundles failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -4364,10 +4364,10 @@ isDistributedEnabledByBundle(bundle: BundleOption, deviceType: string): Promise<
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
     uid: 1
 };
-let deviceType: string = "phone";
+let deviceType: string = 'phone';
 notificationManager.isDistributedEnabledByBundle(bundle, deviceType).then((data: boolean) => {
     console.info(`isDistributedEnabledByBundle success, data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
@@ -4424,10 +4424,10 @@ setSmartReminderEnabled(deviceType: string, enable: boolean): Promise<void\>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let deviceType: string = "phone";
+let deviceType: string = 'phone';
 let enable: boolean = true;
 notificationManager.setSmartReminderEnabled(deviceType, enable).then(() => {
-    console.info("setSmartReminderEnabled success");
+    console.info('setSmartReminderEnabled success');
 }).catch((err: BusinessError) => {
     console.error(`setSmartReminderEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -4481,7 +4481,7 @@ isSmartReminderEnabled(deviceType: string): Promise<boolean\>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let deviceType: string = "phone";
+let deviceType: string = 'phone';
 notificationManager.isSmartReminderEnabled(deviceType).then((data: boolean) => {
     console.info(`isSmartReminderEnabled success， data:${data}`);
 }).catch((err: BusinessError) => {
@@ -4600,7 +4600,7 @@ getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise\<Notification
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 
 let slotType = notificationManager.SlotType.LIVE_VIEW;
@@ -4677,7 +4677,7 @@ let templates: Array<notificationManager.DoNotDisturbProfile> = [
 ]
 
 notificationManager.addDoNotDisturbProfile(templates).then(() => {
-  console.info("addDoNotDisturbProfile success.");
+  console.info('addDoNotDisturbProfile success.');
 }).catch((err: BusinessError) => {
   console.error(`addDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -4754,7 +4754,7 @@ let templates: Array<notificationManager.DoNotDisturbProfile> = [
 ]
 
 notificationManager.addDoNotDisturbProfile(templates, userId).then(() => {
-  console.info("addDoNotDisturbProfile success.");
+  console.info('addDoNotDisturbProfile success.');
 }).catch((err: BusinessError) => {
   console.error(`addDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -4813,7 +4813,7 @@ let templates: Array<notificationManager.DoNotDisturbProfile> = [
   }
 ]
 notificationManager.removeDoNotDisturbProfile(templates).then(() => {
-  console.info("removeDoNotDisturbProfile success.");
+  console.info('removeDoNotDisturbProfile success.');
 }).catch((err: BusinessError) => {
   console.error(`removeDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -4875,7 +4875,7 @@ let templates: Array<notificationManager.DoNotDisturbProfile> = [
   }
 ]
 notificationManager.removeDoNotDisturbProfile(templates, userId).then(() => {
-  console.info("removeDoNotDisturbProfile success.");
+  console.info('removeDoNotDisturbProfile success.');
 }).catch((err: BusinessError) => {
   console.error(`removeDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -5094,7 +5094,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let disabled: boolean = true;
-let bundleList: Array<string> = ["com.example.myapplication"];
+let bundleList: Array<string> = ['com.example.myapplication'];
 try {
   notificationManager.disableNotificationFeature(disabled, bundleList).then(() => {
     hilog.info(0x0000, 'testTag', '%{public}s', `disableNotificationFeature success.`);
@@ -5152,7 +5152,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let disabled: boolean = true;
-let bundleList: Array<string> = ["com.example.myapplication"];
+let bundleList: Array<string> = ['com.example.myapplication'];
 let userId: number = 1;
 try {
   notificationManager.disableNotificationFeature(disabled, bundleList, userId).then(() => {
@@ -5205,7 +5205,7 @@ setTargetDeviceStatus(deviceType: string, status: number): Promise\<void\>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-notificationManager.setTargetDeviceStatus("current", 1).then(() => {
+notificationManager.setTargetDeviceStatus('current', 1).then(() => {
   console.info(`Succeeded in setting target device status.`);
 }).catch((err: BusinessError) => {
   console.error(`Failed to set target device status. Code is ${err.code}, message is ${err.message}`);
@@ -5362,7 +5362,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName",
+    bundle: 'bundleName',
 };
 notificationManager.setSilentReminderEnabled(bundle, true).then(() => {
     hilog.info(0x0000, 'testTag', '%{public}s', `setSilentReminderEnabled success.`);
@@ -5416,7 +5416,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.isSilentReminderEnabled(bundle).then((data: notificationManager.SwitchState) => {
     hilog.info(0x0000, 'testTag', '%{public}s', `isSilentReminderEnabled success, switchState:  ${JSON.stringify(data)}.`);
@@ -5588,7 +5588,7 @@ export default class EntryAbility extends UIAbility {
 
   onForeground(): void {
     try {
-      let deviceType: string = "wearable";
+      let deviceType: string = 'wearable';
       notificationManager.isDistributedEnabled(deviceType).then((data: boolean) => {
         console.info('isDistributedEnabled succeeded, result = ' + data);
       }).catch((err: BusinessError) => {
@@ -5648,7 +5648,7 @@ export default class EntryAbility extends UIAbility {
   onForeground(): void {
     try {
       let isEnable: boolean = true;
-      let deviceType: string = "wearable";
+      let deviceType: string = 'wearable';
       notificationManager.setDistributedEnabled(isEnable, deviceType).then(() => {
         console.info('setDistributedEnabled succeeded.');
       }).catch((err: BusinessError) => {
@@ -5762,13 +5762,13 @@ export default class EntryAbility extends UIAbility {
   onForeground(): void {
     try {
       let bundle: notificationManager.BundleOption = {
-        bundle: "bundleName",
+        bundle: 'bundleName',
       };
       let ringtoneInfo: notificationManager.RingtoneInfo = {
         ringtoneType: notificationManager.RingtoneType.RINGTONE_TYPE_SYSTEM,
-        ringtoneTitle: "ringtoneName",
-        ringtoneFileName: "ringtonePath",
-        ringtoneUri: "ringtoneUri",
+        ringtoneTitle: 'ringtoneName',
+        ringtoneFileName: 'ringtonePath',
+        ringtoneUri: 'ringtoneUri',
       }
       notificationManager.setRingtoneInfoByBundle(bundle, ringtoneInfo).then(() => {
         console.info(`setRingtoneInfoByBundle bundle: ${JSON.stringify(bundle)}', ringtoneInfoJSON：' ${JSON.stringify(ringtoneInfo)}`);
@@ -5832,7 +5832,7 @@ export default class EntryAbility extends UIAbility {
   onForeground(): void {
     try {
       let bundle: notificationManager.BundleOption = {
-        bundle: "bundleName",
+        bundle: 'bundleName',
       };
       notificationManager.getRingtoneInfoByBundle(bundle)
         .then((ringtoneInfo: notificationManager.RingtoneInfo) => {
@@ -6004,7 +6004,7 @@ setReminderInfoByBundles(reminderInfos: Array\<NotificationReminderInfo\>): Prom
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName",
+    bundle: 'bundleName',
 };
 let reminderInfos: Array<notificationManager.NotificationReminderInfo> = [
     {
@@ -6813,7 +6813,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.setGeofenceEnabled(true).then(() => {
-  hilog.info(0x0000, 'testTag', '%{public}s', "setGeofenceEnabled success");
+  hilog.info(0x0000, 'testTag', '%{public}s', 'setGeofenceEnabled success');
 }).catch((err: BusinessError) => {
   hilog.error(0x0000, 'testTag', '%{public}s',`setGeofenceEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -6865,8 +6865,8 @@ getNotificationStatisticsByBundle(bundles: BundleOption[]): Promise\<BundleNotif
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundles: notificationManager.BundleOption[] = [
-  { bundle:"com.example.test01" },
-  { bundle:"com.example.test02" }
+  { bundle:'com.example.test01' },
+  { bundle:'com.example.test02' }
 ];
 notificationManager.getNotificationStatisticsByBundle(bundles).then(
   (data: notificationManager.BundleNotificationStatistics[]) => {
@@ -6924,10 +6924,10 @@ snoozeNotification(hashCode: string, delayTime: number): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 此处应改为开发者需要设定稍后提醒通知的唯一标识
-let hashCode: string = "hashCode";
+let hashCode: string = 'hashCode';
 let delayTime: number = 60;
 notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
-  console.info("snoozeNotification success.")
+  console.info('snoozeNotification success.')
 }).catch((err: BusinessError):void => {
   console.error(`snoozeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -7059,6 +7059,10 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 ## SlotType
 
+通知渠道类型。
+
+不同类型对应不同的[SlotLevel](js-apis-notificationManager.md#slotlevel)，决定通知的提醒行为。
+
 **系统能力**：SystemCapability.Notification.Notification
 
 | 名称                                | 值     | 说明                                                         |
@@ -7067,6 +7071,7 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 
 ## NotificationControlFlagStatus<sup>12+</sup>
+
 每个bit位都可以控制通知的提示方式。当notificationControlFlags和下表中枚举值进行按位或操作，则表示关闭其提示方式。
 
 **系统能力**：SystemCapability.Notification.Notification
@@ -7084,6 +7089,8 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 ## DoNotDisturbProfile<sup>12+</sup>
 
+勿扰模式的配置信息。
+
 **系统能力**：SystemCapability.Notification.Notification
 
 **系统接口**：此接口为系统接口。
@@ -7096,7 +7103,7 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 ## NotificationLiveViewContent<sup>11+</sup>
 
-type NotificationLiveViewContent = _NotificationLiveViewContent
+type NotificationLiveViewContent = _NotificationLiveViewContent 
 
 描述普通实况通知。
 
@@ -7134,7 +7141,7 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | 名称          | 类型                                                       | 只读 | 可选 | 说明              |
 | --------------| --------------------------------------------------------- | ---- | ---- | ----------------- |
 | bundleName   | string | 否 | 否 | 包名。          |
-| uid          | number | 否 | 否 | 应用程序的UID。          |
+| uid          | number | 否 | 否 | 应用的UID。          |
 | enable       | boolean| 否 | 是 | 是否支持跨设备协同，返回true表示支持，返回false表示不支持，默认为false。      |
 
 ## RingtoneType<sup>21+</sup>
@@ -7207,18 +7214,18 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 
 | 名称                 | 值  | 说明                               |
 | --------------------| --- | --------------------------------- |
-| PAYMENT_DUE   | "PAYMENT_DUE"   | 表示通知优先级类型为缴费还款。                 |
-| TRANSACTION_ALERT   | "TRANSACTION_ALERT"   | 表示通知优先级类型为动账提醒。                 |
-| EXPRESS_PROGRESS   | "EXPRESS_PROGRESS"   | 表示通知优先级类型为物流进展。                 |
-| MISS_CALL   | "MISS_CALL"   | 表示通知优先级类型为未接来电。                 |
-| TRAVEL_ALERT   | "TRAVEL_ALERT"   | 表示通知优先级类型为出行异常。                 |
-| ACCOUNT_ALERT   | "ACCOUNT_ALERT"   | 表示通知优先级类型为账号安全。                 |
-| APPOINTMENT_REMINDER   | "APPOINTMENT_REMINDER"   | 表示通知优先级类型为预约提醒。                 |
-| TRAFFIC_NOTICE   | "TRAFFIC_NOTICE"   | 表示通知优先级类型为交通违规。                 |
-| KEY_PROGRESS   | "KEY_PROGRESS"   | 表示通知优先级类型为关键进展通知。                 |
-| PUBLIC_EVENT   | "PUBLIC_EVENT"   | 表示通知优先级类型为重要公共事件。                 |
-| IOT_WARNING   | "IOT_WARNING"   | 表示通知优先级类型为预警通知。                 |
-| CUSTOM_KEYWORD   | "CUSTOM_KEYWORD"   | 表示通知优先级类型为用户自定义关键词。                 |
+| PAYMENT_DUE   | 'PAYMENT_DUE' | 表示通知优先级类型为缴费还款。                 |
+| TRANSACTION_ALERT   | 'TRANSACTION_ALERT' | 表示通知优先级类型为动账提醒。                 |
+| EXPRESS_PROGRESS   | 'EXPRESS_PROGRESS' | 表示通知优先级类型为物流进展。                 |
+| MISS_CALL   | 'MISS_CALL' | 表示通知优先级类型为未接来电。                 |
+| TRAVEL_ALERT   | 'TRAVEL_ALERT' | 表示通知优先级类型为出行异常。                 |
+| ACCOUNT_ALERT   | 'ACCOUNT_ALERT' | 表示通知优先级类型为账号安全。                 |
+| APPOINTMENT_REMINDER   | 'APPOINTMENT_REMINDER' | 表示通知优先级类型为预约提醒。                 |
+| TRAFFIC_NOTICE   | 'TRAFFIC_NOTICE' | 表示通知优先级类型为交通违规。                 |
+| KEY_PROGRESS   | 'KEY_PROGRESS' | 表示通知优先级类型为关键进展通知。                 |
+| PUBLIC_EVENT   | 'PUBLIC_EVENT' | 表示通知优先级类型为重要公共事件。                 |
+| IOT_WARNING   | 'IOT_WARNING' | 表示通知优先级类型为预警通知。                 |
+| CUSTOM_KEYWORD   | 'CUSTOM_KEYWORD' | 表示通知优先级类型为用户自定义关键词。                 |
 
 ## PriorityEnableStatus<sup>23+</sup>
 
@@ -7231,8 +7238,8 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | 名称                 | 值  | 说明                               |
 | --------------------| --- | --------------------------------- |
 | DISABLE    | 0   | 应用通知的优先级开关为关闭状态。 |
-| ENABLE_BY_INTELLIGENT  | 1  | 应用通知的优先级开关为智能识别状态。 |
-| ENABLE   | 2   | 应用通知的优先级开关为全部通知状态。 |
+| ENABLE_BY_INTELLIGENT  | 1  | 应用通知的优先级开关为智能识别状态。允许经智能识别、用户关键词匹配、应用规则匹配等方式设置为优先通知。 |
+| ENABLE   | 2   | 应用通知均设置为优先通知。 |
 
 ## NotificationIconButton<sup>23+</sup>
 

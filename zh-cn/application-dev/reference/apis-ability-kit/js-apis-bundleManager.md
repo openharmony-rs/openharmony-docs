@@ -916,7 +916,7 @@ getBundleInfo(bundleName: string, bundleFlags: number, userId: number, callback:
 | bundleName  | string | 是   | 表示要查询的应用Bundle名称。 |
 | [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 指定返回的BundleInfo所包含的信息。|
 | userId      | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。  |
-| callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的bundleInfo；否则为错误对象。 |
+| callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的BundleInfo；否则为错误对象。 |
 
 **错误码：**
 
@@ -1428,7 +1428,7 @@ getAppCloneIdentity(uid: number): Promise\<AppCloneIdentity>;
 
 | 类型                                                        | 说明                        |
 | ----------------------------------------------------------- | --------------------------- |
-| Promise\<[AppCloneIdentity](js-apis-bundleManager-bundleInfo.md#appcloneidentity14)> | Promise对象，返回AppCloneIdentity数组。 |
+| Promise\<[AppCloneIdentity](js-apis-bundleManager-bundleInfo.md#appcloneidentity14)> | Promise对象，返回AppCloneIdentity信息。 |
 
 **错误码：**
 
@@ -1771,8 +1771,6 @@ try {
     hilog.error(0x0000, 'testTag', 'getApplicationLabel failed: %{public}d  %{public}s', err.code, err.message);
   });
 } catch (err) {
-  let code = (err as BusinessError).code;
-  let message = (err as BusinessError).message;
   hilog.error(0x0000, 'testTag', 'getApplicationLabel failed: error %{public}d  %{public}s', err.code, err.message);
 }
 ```
@@ -1971,7 +1969,7 @@ type Metadata = _Metadata
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**: SystemCapability.BundleManager.BundleFramework.Core
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
@@ -2165,7 +2163,7 @@ ElementName信息。
 
 type Skill = _Skill.Skill
 
-skill信息。
+Skill信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2173,7 +2171,7 @@ skill信息。
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_Skill.Skill](js-apis-bundleManager-skill.md#skill-1) |skill信息。 |
+| [_Skill.Skill](js-apis-bundleManager-skill.md#skill-1) |Skill信息。 |
 
 ## SkillUrl<sup>12+</sup>
 

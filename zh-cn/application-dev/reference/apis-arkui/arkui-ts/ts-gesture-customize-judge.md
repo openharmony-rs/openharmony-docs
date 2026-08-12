@@ -339,7 +339,7 @@ struct GestureDetectorExample {
               })
           )
         )
-        .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
+        .onGestureJudgeBegin((_gestureInfo: GestureInfo, event: BaseGestureEvent) => {
           // 获取 fingerInfos 信息
           if (event?.fingerInfos) {
             this.fingerCount = event.fingerInfos.length;

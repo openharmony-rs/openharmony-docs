@@ -3840,11 +3840,7 @@ struct WebComponent {
 
 removeCache(clearRom: boolean): void
 
-清除与当前WebView上下文相关的资源缓存。
-
-> **说明：**
->
-> 可以通过在data/storage/el2/base/cache/web/Cache目录下查看Webview的缓存。
+清除应用内所有Webview产生的资源缓存。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3896,10 +3892,6 @@ struct WebComponent {
 static removeAllCache(clearRom: boolean): void
 
 清除应用内所有Webview(含隐私模式)产生的资源缓存。
-
-> **说明：**
->
-> 可以通过在data/app/el2/100/base/\<applicationPackageName\>/cache/web/目录下查看Webview的缓存。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -5116,15 +5108,15 @@ setCustomUserAgent(userAgent: string): void
 
 设置自定义用户代理，会覆盖系统的用户代理。
 
-当Web组件src设置了URL时，建议在onControllerAttached回调事件中设置User-Agent，设置方式请参考示例。不建议将User-Agent设置在onLoadIntercept回调事件中，会概率性出现设置失败。
-
-当Web组件src设置为空字符串时，建议先调用setCustomUserAgent方法设置User-Agent，再通过loadUrl加载具体页面。
-
-默认User-Agent定义与使用场景请参考[User-Agent开发指导](../../web/web-default-userAgent.md)
-
 > **说明：**
 >
->当Web组件src设置了URL，且未在onControllerAttached回调事件中设置User-Agent。再调用setCustomUserAgent方法时，可能会出现加载的页面与实际设置User-Agent不符的异常现象。
+> - 当Web组件src设置了URL时，建议在[onControllerAttached](./arkts-basic-components-web-events.md#oncontrollerattached10)回调中设置User-Agent。不要在onLoadIntercept回调中设置，否则可能会设置失败或导致不可预期的后果。
+>
+> - 若未在onControllerAttached回调中设置User-Agent，再调用setCustomUserAgent方法时，可能会出现加载的页面与实际设置User-Agent不符的异常现象。
+>
+> - 当Web组件src未设置URL时，建议先调用setCustomUserAgent方法设置User-Agent，再通过loadUrl加载具体页面。
+>
+> - 默认User-Agent定义与使用场景请参考[User-Agent开发指导](../../web/web-default-userAgent.md)
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
@@ -6330,7 +6322,7 @@ createWebPrintDocumentAdapter(jobName: string): print.PrintDocumentAdapter
 
 | 类型                 | 说明                      |
 | -------------------- | ------------------------- |
-| print.[PrintDocumentAdapter](../apis-basic-services-kit/js-apis-print.md#printdocumentadapter11) | 返回打印文档的适配器。 |
+| print.[PrintDocumentAdapter](../apis-basic-services-kit/js-apis-print.md#printdocumentadapter11) | 打印文档的适配器，用于控制打印行为和打印任务，可通过打印服务打印当前网页内容。 |
 
 **错误码：**
 
@@ -7282,7 +7274,7 @@ struct WebComponent {
 
 setServiceWorkerWebSchemeHandler(scheme: string, handler: WebSchemeHandler): void
 
-为当前应用的所有Web组件设置用于拦截ServiceWorker的WebSchemeHandler。
+为当前应用的所有Web组件设置WebSchemeHandler，用于拦截ServiceWorker中指定scheme的请求。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -8963,6 +8955,10 @@ struct Index {
                 // 获取沙箱路径，设置pdf文件名
                 let filePath = context.filesDir + "/test.pdf";
                 let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+                if (error) {
+                  console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                  return;
+                }
                 fileIo.write(file.fd, result.pdfArrayBuffer().buffer).then((writeLen: number) => {
                   console.info("createPDF write data to file succeeded and size is:" + writeLen);
                 }).catch((err: BusinessError) => {
@@ -9000,7 +8996,7 @@ createPdf(configuration: PdfConfiguration): Promise\<PdfData\>
 
 | 类型                           | 说明                          |
 | ------------------------------ | ----------------------------- |
-| Promise<[PdfData](./arkts-apis-webview-PdfData.md)> | Promise实例，返回网页数据流。 |
+| Promise<[PdfData](./arkts-apis-webview-PdfData.md)> | Promise实例，返回网页PDF数据流（PdfData对象，包含ArrayBuffer表示的PDF二进制数据）。 |
 
 **错误码：**
 
@@ -9595,7 +9591,7 @@ getHitTest(): WebHitTestType
 
 > **说明：**
 >
-> 从API version11开始支持，从API version 18开始废弃。建议使用[getLastHitTest](#getlasthittest18)替代。
+> 从API version 9开始支持，从API version 18开始废弃。建议使用[getLastHitTest](#getlasthittest18)替代。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -9650,7 +9646,7 @@ getHitTestValue(): HitTestValue
 
 > **说明：**
 >
-> 从API version11开始支持，从API version 18开始废弃。建议使用[getLastHitTest](#getlasthittest18)替代。
+> 从API version 9开始支持，从API version 18开始废弃。建议使用[getLastHitTest](#getlasthittest18)替代。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -9976,7 +9972,7 @@ getBlanklessInfoWithKey(key: string): BlanklessInfo
 
 | 类型                 | 说明                      |
 | -------------------- | ------------------------- |
-| [BlanklessInfo](./arkts-apis-webview-i.md#blanklessinfo20) | 页面首屏加载预测信息，主要包括首屏相似度预测值，首屏加载耗时预测值，应用需根据此信息来决策是否启用无白屏加载插帧。 |
+| [BlanklessInfo](./arkts-apis-webview-i.md#blanklessinfo20) | 页面首屏加载预测信息对象，应用需根据此信息来决策是否启用无白屏加载插帧。 |
 
 **错误码：**
 

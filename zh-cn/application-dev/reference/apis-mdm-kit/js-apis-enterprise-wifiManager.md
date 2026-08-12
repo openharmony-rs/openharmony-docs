@@ -16,7 +16,7 @@
 >
 > 本模块接口仅对设备管理应用开放，且调用接口前需激活设备管理应用，具体请参考[MDM Kit开发指南](../../mdm/mdm-kit-guide.md)。
 >
-> 全局通用限制类策略由restrictions统一提供，若要全局禁用Wi-Fi，请参考[@ohos.enterprise.restrictions （限制类策略）](js-apis-enterprise-restrictions.md)。
+> 全局通用限制类策略由restrictions统一提供，若要全局禁用Wi-Fi，请参考[@ohos.enterprise.restrictions（限制类策略）](js-apis-enterprise-restrictions.md)。
 
 ## 导入模块
 
@@ -51,7 +51,7 @@ isWifiActiveSync(admin: Want): boolean
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -102,7 +102,7 @@ setWifiProfileSync(admin: Want, profile: WifiProfile): void
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -808,6 +808,8 @@ turnOnWifi(admin: Want, isForce: boolean): void
 
 **冲突规则：** 任意MDM应用​通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated))接口禁用了Wi-Fi，则无法通过本接口直接打开Wi-Fi开关。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名  | 类型                                                    | 必填 | 说明                                                         |
@@ -817,7 +819,7 @@ turnOnWifi(admin: Want, isForce: boolean): void
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -862,6 +864,8 @@ turnOffWifi(admin: Want): void
 
 **冲突规则：** 任意MDM应用通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated))接口禁用了Wi-Fi，则无法通过本接口直接关闭Wi-Fi开关。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明                   |
@@ -870,7 +874,7 @@ turnOffWifi(admin: Want): void
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1016,7 +1020,7 @@ IP配置信息。
 
 表示EAP认证方式的枚举。
 
-> **说明**：
+> **说明：**
 >
 > 当前仅支持使用EAP_PEAP、EAP_TLS两种认证方式，其他暂不支持。
 

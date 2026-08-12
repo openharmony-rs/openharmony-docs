@@ -52,10 +52,10 @@ enum ArkUI_ImageRepeat
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_IMAGE_REPEAT_NONE = 0 | 不重复。 |
-| ARKUI_IMAGE_REPEAT_X = 1 | 在X轴方向重复。 |
-| ARKUI_IMAGE_REPEAT_Y = 2 | 在Y轴方向重复。 |
-| ARKUI_IMAGE_REPEAT_XY = 3 | 在X轴和Y轴方向重复。 |
+| ARKUI_IMAGE_REPEAT_NONE = 0 | 不重复铺设图片，图片按原样显示一次。 |
+| ARKUI_IMAGE_REPEAT_X = 1 | 在X轴方向重复铺设图片，使图片横向铺满显示区域。 |
+| ARKUI_IMAGE_REPEAT_Y = 2 | 在Y轴方向重复铺设图片，使图片纵向铺满显示区域。 |
+| ARKUI_IMAGE_REPEAT_XY = 3 | 在X轴和Y轴方向重复铺设图片，使图片铺满整个显示区域。 |
 
 ### ArkUI_ImageSize
 

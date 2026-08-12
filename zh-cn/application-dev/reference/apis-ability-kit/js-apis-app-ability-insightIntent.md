@@ -111,7 +111,7 @@ import { insightIntent } from '@kit.AbilityKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| queryType | [QueryType](#querytype) | 否 | 否 | 意图实体查询模式。 |
+| queryType | [QueryType](#querytype) | 否 | 否 | 意图实体查询方式。 |
 | parameters | Record\<string, Object> | 否 | 是 | 意图实体查询参数。该字段在[QueryType](#querytype)为[BY_PROPERTY](#querytype)时需要填写。 |
 
 ## AppIntentEntity

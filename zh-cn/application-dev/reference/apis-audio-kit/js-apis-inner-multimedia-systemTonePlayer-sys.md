@@ -180,7 +180,7 @@ stop(id: number): Promise&lt;void&gt;
 
 | 参数名 | 类型   | 必填 | 说明                      |
 | ------ | ------ | ---- | ------------------------- |
-| id     | number | 是   | Promise对象，返回streamID。 |
+| id     | number | 是   | 播放流ID，通过[start](#start)方法获取。 |
 
 **返回值：**
 
@@ -203,7 +203,7 @@ stop(id: number): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let streamID: number = 0; // streamID为start方法返回的streamID,此处只做初始化。
+let streamID: number = 0; // streamID为start方法返回的streamID，此处只做初始化。
 systemTonePlayer.stop(streamID).then(() => {
   console.info('Succeeded in doing stop.');
 }).catch((err: BusinessError) => {
@@ -366,7 +366,7 @@ systemTonePlayer.getSupportedHapticsFeatures().then((features: Array<systemSound
 
 setHapticsFeature(hapticsFeature: systemSoundManager.ToneHapticsFeature): void
 
-设置播放铃音时的振动风格。
+设置播放提示音时的振动风格。
 
 调用本接口前，应该先调用[getSupportedHapticsFeatures](#getsupportedhapticsfeatures13)查询支持的振动风格，如果设置不支持的振动风格，则设置失败。
 
@@ -410,7 +410,7 @@ systemTonePlayer.getSupportedHapticsFeatures().then((features: Array<systemSound
 
 getHapticsFeature(): systemSoundManager.ToneHapticsFeature
 
-获取播放铃音时的振动风格，同步返回振动风格枚举值。
+获取播放提示音时的振动风格，同步返回振动风格枚举值。
 
 **系统接口：** 该接口为系统接口。
 
@@ -450,7 +450,7 @@ try {
 
 on(type: 'playFinished', streamId: number, callback: Callback\<number>): void
 
-监听铃音播放完成事件（当铃音播放完成时触发）。使用callback异步回调。
+监听提示音播放完成事件（当提示音播放完成时触发）。使用callback异步回调。
 
 监听对象为传入的streamId对应音频流。当streamId传入0时，监听本播放器对应的所有音频流。
 
@@ -462,7 +462,7 @@ on(type: 'playFinished', streamId: number, callback: Callback\<number>): void
 
 | 参数名   | 类型                     | 必填 | 说明                                                         |
 | -------- | ----------------------- | ---- | --------------------------------------------------------------- |
-| type     | string                  | 是   | 事件回调类型，支持的事件为'playFinished'，当铃音播放完成时，触发该事件。 |
+| type     | string                  | 是   | 事件回调类型，支持的事件为'playFinished'，当提示音播放完成时，触发该事件。 |
 | streamId | number                  | 是   | 监听对象为指定streamId对应的音频流，streamId通过[start](#start)获取。当streamId传入0时，可监听当前播放器对应的所有音频流。 |
 | callback | Callback\<number>  | 是   | 'playFinished'的回调方法。返回播放完成的音频流的streamId。 |
 
@@ -499,7 +499,7 @@ systemTonePlayer.start().then((value: number) => {
 
 off(type: 'playFinished', callback?: Callback\<number>): void
 
-取消监听铃音播放完成事件。使用callback异步回调。
+取消监听提示音播放完成事件。使用callback异步回调。
 
 **系统接口：** 该接口为系统接口。
 
@@ -509,7 +509,7 @@ off(type: 'playFinished', callback?: Callback\<number>): void
 
 | 参数名 | 类型   | 必填 | 说明                                              |
 | ----- | ----- | ---- | ------------------------------------------------ |
-| type   | string | 是   | 事件回调类型，支持的事件为'playFinished'，当取消监听铃音播放完成事件时，触发该事件。 |
+| type   | string | 是   | 事件回调类型，支持的事件为'playFinished'，当取消监听提示音播放完成事件时，触发该事件。 |
 | callback | Callback\<number>    | 否   | 回调函数，返回结束事件的音频流的streamId。不填入此参数时，会取消该事件的所有监听。 |
 
 **错误码：**
@@ -541,7 +541,7 @@ systemTonePlayer.off('playFinished', playFinishedCallback);
 
 on(type: 'error', callback: ErrorCallback): void
 
-监听铃音播放过程中的错误事件（当铃音播放过程中发生错误时触发）。使用callback异步回调。
+监听提示音播放过程中的错误事件（当提示音播放过程中发生错误时触发）。使用callback异步回调。
 
 **系统接口：** 该接口为系统接口。
 
@@ -551,7 +551,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 | 参数名   | 类型          | 必填 | 说明                                 |
 | -------- | ------------- | ---- | ------------------------------------ |
-| type     | string        | 是   | 事件回调类型，支持的事件为'error'，当铃音播放过程中发生错误时，触发该事件。 |
+| type     | string        | 是   | 事件回调类型，支持的事件为'error'，当提示音播放过程中发生错误时，触发该事件。 |
 | callback | ErrorCallback | 是   | 回调函数，返回错误码和错误信息。错误码请参考AVPlayer的[on('error')](../apis-media-kit/arkts-apis-media-AVPlayer.md#onerror9)。 |
 
 **错误码：**
@@ -577,7 +577,7 @@ systemTonePlayer.on('error', (err: BusinessError) => {
 
 off(type: 'error', callback?: ErrorCallback): void
 
-取消监听铃音播放过程中的错误事件。使用callback异步回调。
+取消监听提示音播放过程中的错误事件。使用callback异步回调。
 
 **系统接口：** 该接口为系统接口。
 
@@ -587,7 +587,7 @@ off(type: 'error', callback?: ErrorCallback): void
 
 | 参数名   | 类型          | 必填 | 说明                                 |
 | -------- | ------------- | ---- | ------------------------------------ |
-| type     | string        | 是   | 事件回调类型，支持的事件为'error'，当取消监听铃音播放过程中的错误事件时，触发该事件。 |
+| type     | string        | 是   | 事件回调类型，支持的事件为'error'，当取消监听提示音播放过程中的错误事件时，触发该事件。 |
 | callback | ErrorCallback | 否   | 回调函数，返回错误码和错误信息。不填入此参数时，会取消该事件的所有监听。 |
 
 **错误码：**
