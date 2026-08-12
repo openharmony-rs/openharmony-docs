@@ -84,7 +84,7 @@ importVCard\(context: Context, filePath: string, accountId?: number\): Promise\<
 | 参数名   | 类型                        | 必填 | 说明                                   |
 | -------- | --------------------------- | ---- | -------------------------------------- |
 | context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)      | 是   | 应用上下文。 |
-| filePath   | string                      | 是   | VCF(vcard file)文件地址。 |
+| filePath   | string                      | 是   | VCF(VCard file)文件地址。 |
 | accountId   | number                      | 否   | 联系人账户ID。不传入时使用默认账户。|
 
 **返回值：**
@@ -191,7 +191,7 @@ exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicat
 | context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                    | 是   | 应用上下文。 |
 | predicates| [dataSharePredicates.DataSharePredicates](../../../application-dev/reference/apis-arkdata/js-apis-data-dataSharePredicates.md)| 是   | 查询语句。用于筛选要导出的联系人数据。 |
 |  options  | VCardBuilderOptions | 是   | VCard版本与编码类型。|
-| callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。生成的 VCF(vcard file)文件地址。                             |
+| callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。生成的 VCF(VCard file)文件地址。                             |
 
 **错误码：**
 
@@ -252,7 +252,7 @@ exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicat
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| Promise\<string\> | Promise对象，返回生成的VCF文件地址。 |
+| Promise\<string\> | Promise对象，返回生成的VCF(VCard file)文件地址。 |
 
 **错误码：**
 
@@ -296,7 +296,7 @@ class EntryAbility extends UIAbility {
 
 exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback\<string\>\): void
 
-将联系人导出为 VCF(vcard file)文件。适用于联系人数据备份、跨设备迁移联系人、通过文件分享联系人等场景。使用callback异步回调。
+将联系人导出为 VCF(VCard file)文件。适用于联系人数据备份、跨设备迁移联系人、通过文件分享联系人等场景。使用callback异步回调。
 
 **需要权限**：ohos.permission.WRITE_CONTACTS 和 ohos.permission.READ_CONTACTS
 
@@ -308,7 +308,7 @@ exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicat
 | ------ | ------ | ---- | -------------------------------------- |
 | context      | [Context](../apis-ability-kit/js-apis-inner-application-context.md)     | 是   | 应用上下文。 |
 | predicates   | [dataSharePredicates.DataSharePredicates](../../../application-dev/reference/apis-arkdata/js-apis-data-dataSharePredicates.md) | 是   | 查询语句。用于筛选要导出的联系人。 |
-| callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。生成的 VCF(vcard file)文件地址。|
+| callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。生成的 VCF(VCard file)文件地址。|
 
 **错误码：**
 
