@@ -318,7 +318,7 @@ readPixelsToBufferSync(dst: ArrayBuffer): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -860,7 +860,7 @@ readPixelsSync(area: PositionArea): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -1490,7 +1490,7 @@ writePixelsSync(area: PositionArea): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -1875,7 +1875,7 @@ writeBufferToPixelsSync(src: ArrayBuffer): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -2384,7 +2384,7 @@ ArkTS-Sta: opacity(rate: double, callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                 | 必填 | 说明                           |
 | -------- | -------------------- | ---- | ------------------------------ |
-| rate     | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 不透明度的值，取值范围是(0, 1]。1.0表示完全不透明，数值越接近0.0则透明度越高。  |
+| rate     | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 不透明度的值，取值范围是(0.0, 1.0]。1.0表示完全不透明，数值越接近0.0则透明度越高。  |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当设置透明比率成功，err为undefined，否则为错误对象。 |
 
 **示例：**
@@ -2450,7 +2450,7 @@ ArkTS-Sta: opacity(rate: double): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                        |
 | ------ | ------ | ---- | --------------------------- |
-| rate   | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 不透明度的值，取值范围是(0, 1]。1.0表示完全不透明，数值越接近0.0则透明度越高。|
+| rate   | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 不透明度的值，取值范围是(0.0, 1.0]。1.0表示完全不透明，数值越接近0.0则透明度越高。|
 
 **返回值：**
 
@@ -2513,11 +2513,11 @@ ArkTS-Sta: opacitySync(rate: double): void
 
 | 参数名   | 类型                 | 必填 | 说明                           |
 | -------- | -------------------- | ---- | ------------------------------ |
-| rate     | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 不透明度的值，取值范围是(0, 1]。1.0表示完全不透明，数值越接近0.0则透明度越高。   |
+| rate     | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 不透明度的值，取值范围是(0.0, 1.0]。1.0表示完全不透明，数值越接近0.0则透明度越高。   |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -2566,7 +2566,7 @@ extractAlphaPixelMap(): Promise\<PixelMap>
 > **说明：**
 >
 > - YUV格式不支持此接口。
-> - 若原PixelMap的格式是ALPHA_F16，则新生成的PixelMap将维持ALPHA_F16格式。
+> - 如果原PixelMap的格式是ALPHA_F16，则新生成的PixelMap将维持ALPHA_F16格式。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2639,7 +2639,7 @@ extractAlphaPixelMapSync(): PixelMap
 > **说明：**
 >
 > - YUV格式不支持此接口。
-> - 若原PixelMap的格式是ALPHA_F16，则新生成的PixelMap将维持ALPHA_F16格式。
+> - 如果原PixelMap的格式是ALPHA_F16，则新生成的PixelMap将维持ALPHA_F16格式。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2711,7 +2711,7 @@ createAlphaPixelmap(): Promise\<PixelMap>
 > **说明：**
 >
 > - YUV格式不支持此接口。
-> - 若原PixelMap的格式是ALPHA_F16，则新生成的PixelMap将维持ALPHA_F16格式。
+> - 如果原PixelMap的格式是ALPHA_F16，则新生成的PixelMap将维持ALPHA_F16格式。
 > - 从API版本26.0.0开始，建议使用[extractAlphaPixelMap](#extractalphapixelmap)代替，以获得更完善的异常处理能力。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
@@ -2767,7 +2767,7 @@ createAlphaPixelmap(callback: AsyncCallback\<PixelMap>): void
 > **说明：**
 >
 > - YUV格式不支持此接口。
-> - 若原PixelMap的格式是ALPHA_F16，则新生成的PixelMap将维持ALPHA_F16格式。
+> - 如果原PixelMap的格式是ALPHA_F16，则新生成的PixelMap将维持ALPHA_F16格式。
 > - 从API版本26.0.0开始，建议使用[extractAlphaPixelMap](#extractalphapixelmap)代替，以获得更完善的异常处理能力。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
@@ -2811,7 +2811,7 @@ createAlphaPixelmapSync(): PixelMap
 > **说明：**
 >
 > - YUV格式不支持此接口。
-> - 若原PixelMap的格式是ALPHA_F16，则新生成的PixelMap将维持ALPHA_F16格式。
+> - 如果原PixelMap的格式是ALPHA_F16，则新生成的PixelMap将维持ALPHA_F16格式。
 > - 从API版本26.0.0开始，建议使用[extractAlphaPixelMapSync](#extractalphapixelmapsync)代替，以获得更完善的异常处理能力。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -2830,7 +2830,7 @@ createAlphaPixelmapSync(): PixelMap
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -3047,7 +3047,7 @@ ArkTS-Dyn: scale(x: number, y: number, callback: AsyncCallback\<void>): void
 
 ArkTS-Sta: scale(x: double, y: double, callback: AsyncCallback\<void>): void
 
-根据输入的宽高的缩放倍数对图片进行缩放。使用callback异步回调。
+根据输入的宽高缩放倍数对图片进行缩放。使用callback异步回调。
 
 > **说明：**
 >
@@ -3117,7 +3117,7 @@ ArkTS-Dyn: scale(x: number, y: number): Promise\<void>
 
 ArkTS-Sta: scale(x: double, y: double): Promise\<void>
 
-根据输入的宽高的缩放倍数对图片进行缩放。使用Promise异步回调。
+根据输入的宽高缩放倍数对图片进行缩放。使用Promise异步回调。
 
 > **说明：**
 >
@@ -3186,7 +3186,7 @@ ArkTS-Dyn: scaleSync(x: number, y: number): void
 
 ArkTS-Sta: scaleSync(x: double, y: double): void
 
-根据输入的宽高的缩放倍数对图片进行缩放。同步返回结果。
+根据输入的宽高缩放倍数对图片进行缩放。同步返回结果。
 
 > **说明：**
 >
@@ -3211,7 +3211,7 @@ ArkTS-Sta: scaleSync(x: double, y: double): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -3293,7 +3293,7 @@ ArkTS-Sta: scale(x: double, y: double, level: AntiAliasingLevel): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -3364,7 +3364,7 @@ ArkTS-Sta: scaleSync(x: double, y: double, level: AntiAliasingLevel): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -3440,7 +3440,7 @@ ArkTS-Sta: createScaledPixelMap(x: double, y: double, level?: AntiAliasingLevel)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -3513,7 +3513,7 @@ ArkTS-Sta: createScaledPixelMapSync(x: double, y: double, level?: AntiAliasingLe
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -4197,7 +4197,7 @@ ArkTS-Sta: translateSync(x: double, y: double): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -4568,7 +4568,7 @@ ArkTS-Sta: rotateSync(angle: double): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -4899,7 +4899,7 @@ flipSync(horizontal: boolean, vertical: boolean): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -5256,7 +5256,7 @@ cropSync(region: Region): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -5441,7 +5441,7 @@ applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager, callback:
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------------------|
@@ -5495,7 +5495,7 @@ applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager): Promise\
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------------------|
@@ -5649,7 +5649,7 @@ getMetadata(key: HdrMetadataKey): HdrMetadataValue
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -5744,7 +5744,7 @@ setMetadata(key: HdrMetadataKey, value: HdrMetadataValue): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -5967,7 +5967,7 @@ unmarshalling(sequence: rpc.MessageSequence): Promise\<PixelMap>
 
 > **说明：**
 >
-> 如需使用同步方式反序列化并创建PixelMap可使用：[createPixelMapFromParcel](arkts-apis-image-f.md#imagecreatepixelmapfromparcel11)。
+> 如需使用同步方式反序列化并创建PixelMap可使用[createPixelMapFromParcel](arkts-apis-image-f.md#imagecreatepixelmapfromparcel11)。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -6240,7 +6240,7 @@ setMemoryNameSync(name: string): void
 
 > **说明：**
 >
-> 仅支持DMA和SHARE_MEMORY内存类型的PixelMap设置内存标识符，且SHARE_MEMORY内存的标识符设置仅在鸿蒙内核中支持。
+> HarmonyOS设备仅支持DMA和SHARE_MEMORY内存类型的PixelMap设置内存标识符，其他设备仅支持DMA内存类型的PixelMap设置内存标识符。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -6256,7 +6256,7 @@ setMemoryNameSync(name: string): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|

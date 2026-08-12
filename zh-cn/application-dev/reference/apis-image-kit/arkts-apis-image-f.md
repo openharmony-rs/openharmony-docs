@@ -47,7 +47,7 @@ createPicture(mainPixelmap : PixelMap): Picture
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -124,7 +124,7 @@ createPictureFromParcel(sequence: rpc.MessageSequence): Picture
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -718,7 +718,7 @@ createPixelMapSync(colors: ArrayBuffer, options: InitializationOptions): PixelMa
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -804,7 +804,7 @@ createPixelMapSync(options: InitializationOptions): PixelMap
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -1207,7 +1207,7 @@ createPixelMapFromSurface(surfaceId: string, region: Region): Promise\<PixelMap>
 
 > **说明：**
 >
-> - 当设备为折叠屏，且折叠状态切换时，可能因Surface自带旋转角度导致接口创建失败。需根据Surface的旋转角度相应调整传入的宽高值（如旋转90°或270°时互换宽与高）。如果需要截取整个Surface的区域，推荐使用[image.createPixelMapFromSurface](#imagecreatepixelmapfromsurface15)。
+> - 当设备为折叠屏，切换折叠状态时，可能因Surface自带旋转角度导致接口创建失败。需根据Surface的旋转角度相应调整传入的宽高值，如旋转90°或270°时互换宽与高。如果需要截取整个Surface的区域，推荐使用[image.createPixelMapFromSurface](#imagecreatepixelmapfromsurface15)。
 > - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -1277,7 +1277,7 @@ createPixelMapFromSurfaceSync(surfaceId: string, region: Region): PixelMap
 
 > **说明：**
 >
-> - 当设备为折叠屏，且折叠状态切换时，可能因Surface自带旋转角度导致接口创建失败。需根据Surface的旋转角度相应调整传入的宽高值（如旋转90°或270°时互换宽与高）。如果需要截取整个Surface的区域，推荐使用[image.createPixelMapFromSurfaceSync](#imagecreatepixelmapfromsurfacesync15)。
+> - 当设备为折叠屏，切换折叠状态时，可能因Surface自带旋转角度导致接口创建失败。需根据Surface的旋转角度相应调整传入的宽高值，如旋转90°或270°时互换宽与高。如果需要截取整个Surface的区域，推荐使用[image.createPixelMapFromSurfaceSync](#imagecreatepixelmapfromsurfacesync15)。
 > - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -1301,7 +1301,7 @@ createPixelMapFromSurfaceSync(surfaceId: string, region: Region): PixelMap
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -1373,7 +1373,7 @@ createPixelMapFromSurface(surfaceId: string): Promise\<PixelMap>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -1440,7 +1440,7 @@ createPixelMapFromSurfaceSync(surfaceId: string): PixelMap
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -1653,7 +1653,7 @@ createPremultipliedPixelMap(src: PixelMap, dst: PixelMap, callback: AsyncCallbac
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -1722,7 +1722,7 @@ createPremultipliedPixelMap(src: PixelMap, dst: PixelMap): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -1810,7 +1810,7 @@ createUnpremultipliedPixelMap(src: PixelMap, dst: PixelMap, callback: AsyncCallb
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -1879,7 +1879,7 @@ createUnpremultipliedPixelMap(src: PixelMap, dst: PixelMap): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -2698,7 +2698,7 @@ createAuxiliaryPicture(buffer: ArrayBuffer, size: Size, type: AuxiliaryPictureTy
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2844,7 +2844,7 @@ ArkTS-Sta: createImageReceiver(size: Size, format: ImageFormat, capacity: int): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -2959,7 +2959,7 @@ ArkTS-Sta: createImageCreator(size: Size, format: ImageFormat, capacity: int): I
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
