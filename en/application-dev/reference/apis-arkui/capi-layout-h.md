@@ -1,10 +1,12 @@
 # layout.h
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @fenglinbailu-->
 <!--Designer: @fenglinbailu-->
 <!--Tester: @l30014443-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=a46ac9ef46cf07a504c5b14bcdd2a1e59756a849 translatedAt=2026-08-10T03:32:59.790Z pushedAt=2026-08-10T07:02:02.915Z -->
 
 ## Overview
 
@@ -29,7 +31,7 @@ Defines layout-related enumerations and APIs.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md) | ArkUI_AlignmentRuleOption | Defines the alignment rule of the child components in the relative container.|
-| [ArkUI_GuidelineOption](capi-arkui-nativemodule-arkui-guidelineoption.md) | ArkUI_GuidelineOption | Defines the ID, direction, and position of a guideline (a guideline in the **RelativeContainer** component).|
+| [ArkUI_GuidelineOption](capi-arkui-nativemodule-arkui-guidelineoption.md) | ArkUI_GuidelineOption | Defines guideline configuration options, which specify the ID, direction, and position of a guideline (a guideline in the **RelativeContainer** component). |
 | [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md) | ArkUI_BarrierOption | Defines the ID, direction, and referenced component of a barrier.|
 | [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md) | ArkUI_PixelRoundPolicy | Defines a component pixel rounding policy.|
 | [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md) | ArkUI_PositionEdges | Provides position parameters relative to the boundaries of the container's content area.|
@@ -454,7 +456,6 @@ Enumerates pixel rounding calculation policies.
 | ARKUI_PIXELROUNDCALCPOLICY_NOFORCEROUND = 0 | No forced rounding calculation.|
 | ARKUI_PIXELROUNDCALCPOLICY_FORCECEIL | Round-up calculation.|
 | ARKUI_PIXELROUNDCALCPOLICY_FORCEFLOOR | Round-down calculation.|
-
 
 ## Function Description
 

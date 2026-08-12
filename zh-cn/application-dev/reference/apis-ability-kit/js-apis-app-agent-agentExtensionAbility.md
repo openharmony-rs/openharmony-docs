@@ -73,7 +73,7 @@ onCreate(want: Want): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want |  [Want](js-apis-app-ability-want.md) | 是 | 当前AgentExtensionAbility相关的[Want](js-apis-app-ability-want.md)类型信息，包括Ability名称、Bundle名称等。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 当前AgentExtensionAbility相关的[Want](js-apis-app-ability-want.md)类型信息，包括Ability名称、Bundle名称等。 |
 
 **示例：**
 
@@ -81,7 +81,7 @@ onCreate(want: Want): void
 import { AgentExtensionAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const TAG: string = '[AppServiceExtAbility]';
+const TAG: string = '[AgentExtensionAbility]';
 
 export default class AgentExt extends AgentExtensionAbility {
   // 创建AgentExtensionAbility
@@ -105,7 +105,7 @@ onConnect(want: Want, proxy: AgentHostProxy): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want |  [Want](js-apis-app-ability-want.md)| 是 | 当前AgentExtensionAbility相关的[Want](js-apis-app-ability-want.md)类型信息，包括Ability名称、Bundle名称等。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 当前AgentExtensionAbility相关的[Want](js-apis-app-ability-want.md)类型信息，包括Ability名称、Bundle名称等。 |
 | proxy | [AgentHostProxy](js-apis-inner-application-agentHostProxy.md) | 是 | [AgentHostProxy](js-apis-inner-application-agentHostProxy.md)对象，用于与客户端进行通信。 |
 
 
@@ -118,7 +118,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 const TAG: string = '[AgentExtensionAbility]';
 
 export default class AgentExt extends AgentExtensionAbility {
-  onConnect(want: Want, proxy: common.AgentHostProxy){
+  onConnect(want: Want, proxy: common.AgentHostProxy) {
     hilog.info(0x0000, TAG, `onConnect, want: ${want.abilityName}, bundlename: ${want.bundleName}`);
   }
 }
@@ -138,8 +138,8 @@ onDisconnect(want: Want, proxy: AgentHostProxy): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want |[Want](js-apis-app-ability-want.md)| 是 | 当前AgentExtensionAbility相关的[Want](js-apis-app-ability-want.md)类型信息，包括Ability名称、Bundle名称等。 |
-| proxy |[AgentHostProxy](js-apis-inner-application-agentHostProxy.md)| 是 | [AgentHostProxy](js-apis-inner-application-agentHostProxy.md)对象，用于与客户端进行通信。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 当前AgentExtensionAbility相关的[Want](js-apis-app-ability-want.md)类型信息，包括Ability名称、Bundle名称等。 |
+| proxy | [AgentHostProxy](js-apis-inner-application-agentHostProxy.md) | 是 | [AgentHostProxy](js-apis-inner-application-agentHostProxy.md)对象，用于与客户端进行通信。 |
 
 **示例：**
 
@@ -192,7 +192,7 @@ export default class AgentExt extends AgentExtensionAbility {
 
 onAuth(proxy: AgentHostProxy, handshakeData: string): void
 
-当AgentExtensionAbility接收到客户端发送的安全认证请求时，系统会触发该回调。服务端可以在此回调中处理接收到的安全认证请求，并通过[AgentHostProxy.authorize](js-apis-inner-application-agentHostProxy.md#authorize)向客户端发送安全认证请求。
+当AgentExtensionAbility接收到客户端发送的安全认证请求时，系统会触发该回调。服务端可以在此回调中处理接收到的安全认证请求，并通过[AgentHostProxy.authorize](js-apis-inner-application-agentHostProxy.md#authorize)向客户端发送安全认证响应。
 
 **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
 

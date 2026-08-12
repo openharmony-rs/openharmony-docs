@@ -6,7 +6,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-appManager模块提供App管理的能力，包括查询当前是否处于稳定性测试场景、查询是否为ram受限设备、获取应用程序的内存大小、获取有关运行进程的信息等。
+appManager模块提供App管理的能力，包括查询当前是否处于稳定性测试场景、查询是否为RAM受限设备、获取应用程序的内存大小、获取有关运行进程的信息等。
 
 > **说明：**
 >
@@ -108,8 +108,8 @@ isSharedBundleRunning(bundleName: string, versionCode: number): Promise\<boolean
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -119,7 +119,7 @@ isSharedBundleRunning(bundleName: string, versionCode: number): Promise\<boolean
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-const bundleName = 'this is a bundleName';
+const bundleName = 'com.example.myapplication';
 const versionCode = 1;
 
 appManager.isSharedBundleRunning(bundleName, versionCode).then((data) => {
@@ -155,8 +155,8 @@ isSharedBundleRunning(bundleName: string, versionCode: number, callback: AsyncCa
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -165,7 +165,7 @@ isSharedBundleRunning(bundleName: string, versionCode: number, callback: AsyncCa
 ```ts
 import { appManager } from '@kit.AbilityKit';
 
-const bundleName = 'this is a bundleName';
+const bundleName = 'com.example.myapplication';
 const versionCode = 1;
 
 appManager.isSharedBundleRunning(bundleName, versionCode, (err, data) => {
@@ -202,8 +202,8 @@ on(type: 'appForegroundState', observer: AppForegroundStateObserver): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -254,8 +254,8 @@ on(type: 'abilityFirstFrameState', observer: AbilityFirstFrameStateObserver, bun
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -305,8 +305,8 @@ off(type: 'appForegroundState', observer?: AppForegroundStateObserver): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -369,8 +369,8 @@ off(type: 'abilityFirstFrameState', observer?: AbilityFirstFrameStateObserver): 
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -435,8 +435,8 @@ on(type: 'applicationState', observer: ApplicationStateObserver, filter: AppStat
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module.|
 
@@ -516,8 +516,8 @@ getForegroundApplications(callback: AsyncCallback\<Array\<AppStateData>>): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -568,8 +568,8 @@ getForegroundApplications(): Promise\<Array\<AppStateData>>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 | 16000050 | Internal error. |
 
 **示例：**
@@ -623,8 +623,8 @@ killProcessWithAccount(bundleName: string, accountId: number): Promise\<void\>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -687,8 +687,8 @@ killProcessWithAccount(bundleName: string, accountId: number, clearPageStack: bo
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -749,8 +749,8 @@ killProcessWithAccount(bundleName: string, accountId: number, callback: AsyncCal
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -802,8 +802,8 @@ killProcessesByBundleName(bundleName: string, callback: AsyncCallback\<void>): v
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -865,8 +865,8 @@ killProcessesByBundleName(bundleName: string): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -916,8 +916,8 @@ clearUpApplicationData(bundleName: string, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -976,8 +976,8 @@ clearUpApplicationData(bundleName: string): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1016,7 +1016,7 @@ getProcessMemoryByPid(pid: number, callback: AsyncCallback\<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pid | number | 是 | 表示进程id，详情参考[getRunningProcessInfoByBundleName](#appmanagergetrunningprocessinfobybundlename10)。 |
+| pid | number | 是 | 表示进程ID，详情参考[getRunningProcessInfoByBundleName](#appmanagergetrunningprocessinfobybundlename10)。 |
 | callback | AsyncCallback\<number> | 是 | 以回调方式返回接口运行结果及进程占用的内存大小（单位KB），可进行错误处理或其他自定义处理。 |
 
 **错误码**：
@@ -1025,7 +1025,7 @@ getProcessMemoryByPid(pid: number, callback: AsyncCallback\<number>): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1067,7 +1067,7 @@ getProcessMemoryByPid(pid: number): Promise\<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pid | number | 是 | 表示进程id，详情参考[getRunningProcessInfoByBundleName](#appmanagergetrunningprocessinfobybundlename10)。  |
+| pid | number | 是 | 表示进程ID，详情参考[getRunningProcessInfoByBundleName](#appmanagergetrunningprocessinfobybundlename10)。  |
 
 **返回值：**
 
@@ -1081,7 +1081,7 @@ getProcessMemoryByPid(pid: number): Promise\<number>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1129,7 +1129,7 @@ getRunningProcessInfoByBundleName(bundleName: string, callback: AsyncCallback\<A
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1185,7 +1185,7 @@ getRunningProcessInfoByBundleName(bundleName: string): Promise\<Array\<ProcessIn
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1225,7 +1225,7 @@ getRunningProcessInfoByBundleName(bundleName: string, userId: number, callback: 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 表示Bundle名称。 |
-| userId | number | 是 | 表示用户Id。 |
+| userId | number | 是 | 表示用户ID。 |
 | callback | AsyncCallback\<Array\<[ProcessInformation](js-apis-inner-application-processInformation.md)>> | 是 | 以回调方式返回接口运行结果及有关运行进程的信息，可进行错误处理或其他自定义处理。 |
 
 **错误码**：
@@ -1234,7 +1234,7 @@ getRunningProcessInfoByBundleName(bundleName: string, userId: number, callback: 
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1278,7 +1278,7 @@ getRunningProcessInfoByBundleName(bundleName: string, userId: number): Promise\<
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 表示Bundle名称。 |
-| userId | number | 是 | 表示用户Id。 |
+| userId | number | 是 | 表示用户ID。 |
 
 **返回值：**
 
@@ -1292,7 +1292,7 @@ getRunningProcessInfoByBundleName(bundleName: string, userId: number): Promise\<
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1348,8 +1348,8 @@ isApplicationRunning(bundleName: string): Promise\<boolean>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1393,8 +1393,8 @@ isApplicationRunning(bundleName: string, callback: AsyncCallback\<boolean>): voi
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1467,8 +1467,8 @@ getRunningProcessInformationByBundleType(bundleType: bundleManager.BundleType): 
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1516,7 +1516,7 @@ preloadApplication(bundleName: string, userId: number, mode: PreloadMode, appInd
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 预加载的应用包名。 |
-| userId | number | 是 | 预加载的用户Id。 |
+| userId | number | 是 | 预加载的用户ID。 |
 | mode | [PreloadMode](#appmanagerpreloadmode12) | 是 | 预加载模式。 |
 | appIndex | number | 否 | 预加载应用分身的appIndex，该参数只能传0，当前不支持预加载分身应用。 |
 
@@ -1532,8 +1532,8 @@ preloadApplication(bundleName: string, userId: number, mode: PreloadMode, appInd
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 201 | The application does not have permission to call the interface. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 | 16300005 | The target bundle does not exist. |
@@ -1594,8 +1594,8 @@ getRunningMultiAppInfo(bundleName: string): Promise\<RunningMultiAppInfo>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000072 | App clone or multi-instance is not supported. |
 | 18500001 | The bundle does not exist or no patch has been applied. |
@@ -1615,7 +1615,7 @@ try {
       hilog.error(0x0000, 'testTag', `getRunningMultiAppInfo error, code: ${err.code}, msg:${err.message}`);
     })
 } catch (err) {
-  hilog.error(0x0000, 'testTag', `getRunningMultiAppInfo error, code: ${err.code}, msg:${err.message}`);
+  hilog.error(0x0000, 'testTag', `getRunningMultiAppInfo error, code: ${(err as BusinessError).code}, msg:${(err as BusinessError).message}`);
 }
 ```
 
@@ -1649,8 +1649,8 @@ terminateMission(missionId: number): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1721,8 +1721,8 @@ getSupportedProcessCachePids(bundleName: string): Promise\<Array\<number>>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 | 16000050 | Internal error. |
@@ -1742,7 +1742,7 @@ try {
       hilog.error(0x0000, 'testTag', `get pids error, code: ${err.code}, msg:${err.message}`);
     })
 } catch (err) {
-  hilog.error(0x0000, 'testTag', `get pids error, code: ${err.code}, msg:${err.message}`);
+  hilog.error(0x0000, 'testTag', `get pids error, code: ${(err as BusinessError).code}, msg:${(err as BusinessError).message}`);
 }
 ```
 
@@ -1777,8 +1777,8 @@ clearUpAppData(bundleName: string, appCloneIndex?: number): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 | 16000073 | The app clone index is invalid. |
@@ -1845,8 +1845,8 @@ setKeepAliveForBundle(bundleName: string, userId: number, enable: boolean): Prom
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 | 16000050 | Internal error. |
@@ -1909,8 +1909,8 @@ getKeepAliveBundles(type: KeepAliveAppType, userId?: number): Promise\<Array\<Ke
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 | 16000050 | Internal error. |
@@ -1969,8 +1969,8 @@ killProcessesInBatch(pids: Array\<number>): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 | 16000050 | Internal error. |
@@ -2031,8 +2031,8 @@ setKeepAliveForAppServiceExtension(bundleName: string, enabled: boolean): Promis
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 | 801 | Capability not supported. |
 | 16000050 | Internal error. |
 | 16000081 | Failed to obtain the target application information. |
@@ -2086,8 +2086,8 @@ getKeepAliveAppServiceExtensions(): Promise\<Array\<KeepAliveBundleInfo>>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 | 801 | Capability not supported. |
 | 16000050 | Internal error. |
 

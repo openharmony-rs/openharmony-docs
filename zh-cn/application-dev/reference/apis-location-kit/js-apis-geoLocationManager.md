@@ -3768,7 +3768,7 @@ startBluetoothSearch(request: BluetoothSearchRequestParams, callback: Callback&l
     }
   };
   let request: geoLocationManager.BluetoothSearchRequestParams = {
-    'rssiThreshold': -=100,
+    'rssiThreshold': -100,
     'deviceIdArray': ['98:56:07:E6:AA:46','4E:E6:D2:02:27:F9']
   };
    
