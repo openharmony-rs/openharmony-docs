@@ -57,12 +57,19 @@
     
     ``` C++
     static napi_value IsInSandbox(napi_env env, napi_callback_info info)
+    <!-- @[dlp_C_SetSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
+    static napi_value SetSandboxAppConfig(napi_env env, napi_callback_info info)
     {
-        bool isInSandbox = false; //true 表示当前应用在沙箱中，false 表示应用不在沙箱
-        DLP_ErrCode ret = OH_DLP_IsInSandbox(&isInSandbox);
-        if (ret == DLP_ErrCode::ERR_OH_SUCCESS) {
-            napi_value result = nullptr;
-            napi_get_boolean(env, isInSandbox, &result);
+        const char *configInfo = "configInfo"; //沙箱应用配置信息，用户可将配置信息json化后传入
+        DLP_ErrCode ret = OH_DLP_SetSandboxAppConfig(configInfo);
+        
+        napi_value result = nullptr;
+        napi_create_int32(env, ret, &result);
+        return result;
+    }
+    ```
             return result;
         }
         napi_value result = nullptr;
