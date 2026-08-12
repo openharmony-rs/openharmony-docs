@@ -3530,7 +3530,7 @@ export default class EntryAbility extends UIAbility {
           promise.then(() => {
             console.info('Succeeded in disabling the raise-by-click function.');
           });
-        } catch(err) {
+        } catch (err) {
           console.error(`Failed to disable the raise-by-click function. Cause code: ${err.code}, message: ${err.message}`);
         };
       });
