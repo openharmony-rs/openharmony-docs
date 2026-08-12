@@ -340,7 +340,7 @@ addDeviceAccessRight(tokenId: string, deviceName: string): boolean
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
-| 801      | Capability not supported. [since 18] |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 
 **示例：**
 
@@ -410,7 +410,7 @@ getFunctionsFromString(funcs: string): number
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
-| 801      | Capability not supported. [since 18] |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 
 **示例：**
 
@@ -458,7 +458,7 @@ getStringFromFunctions(funcs: FunctionType): string
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
-| 801      | Capability not supported. [since 18] |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 
 **示例：**
 
@@ -506,7 +506,7 @@ setDeviceFunctions(funcs: FunctionType): Promise\<void\>
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
-| 801      | Capability not supported. [since 18] |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 | 14400002 | Permission denied. The HDC is disabled by the system. |
 | 14400006 | Unsupported operation. The function is not supported. |
 
@@ -554,7 +554,7 @@ getDeviceFunctions(): FunctionType
 | -------- | ------------------------------------------------------------------------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
-| 801      | Capability not supported. [since 18] |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 
 **示例：**
 
@@ -591,9 +591,9 @@ getPortList(): Array\<USBPort\>
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. [since 18] |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  <br>适用版本：18+ |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
-| 801      | Capability not supported. [since 18] |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 
 **示例：**
 
@@ -637,9 +637,9 @@ getPortSupportModes(portId: number): PortModeType
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. [since 18] |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  <br>适用版本：18+ |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
-| 801      | Capability not supported. [since 18] |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 
 **示例：**
 
@@ -690,9 +690,9 @@ setPortRoleTypes(portId: number, powerRole: PowerRoleType, dataRole: DataRoleTyp
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. [since 18] |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  <br>适用版本：18+ |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
-| 801      | Capability not supported. [since 18] |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 | 14400003 | Unsupported operation. The current device does not support port role switching. |
 
 **示例：**
@@ -748,7 +748,7 @@ addAccessoryRight(tokenId: number, accessory: USBAccessory): void
 | 201      | The permission check failed. |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported. [since 18] |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
 | 14400005 | Database operation exception. |
 
