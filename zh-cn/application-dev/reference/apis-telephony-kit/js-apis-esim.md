@@ -1,7 +1,7 @@
 # @ohos.telephony.esim (eSIM卡管理)
 <!--Kit: Telephony Kit-->
 <!--Subsystem: Telephony-->
-<!--Owner: @yangyannanyangyannan-->
+<!--Owner: @Fanyl8-->
 <!--Designer: @ghxbob-->
 <!--Tester: @weitiantian-->
 <!--Adviser: @zhang_yixin13-->
@@ -62,7 +62,7 @@ console.info(`the esim is Supported:` + isSupported);
 
 addProfile\(profile: DownloadableProfile\): Promise\<boolean\>
 
-当用户需要开通新的运营商套餐或切换运营商时，应用可调用该接口引导用户下载并添加对应的eSIM配置文件。
+当用户需要激活新eSIM（如新开卡或换卡）时，调用此接口引导完成配置文件的下载与添加流程。
 
 **需要权限**：ohos.permission.SET_TELEPHONY_ESIM_STATE_OPEN
 
@@ -78,7 +78,7 @@ addProfile\(profile: DownloadableProfile\): Promise\<boolean\>
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| Promise\<boolean\> | 以Promise形式返回最终用户添加单个配置文件的结果。返回true表示成功，false表示失败。 |
+| Promise\<boolean\> | 以Promise形式返回用户添加单个配置文件的结果。返回true表示成功，false表示失败。 |
 
 **错误码：**
 
