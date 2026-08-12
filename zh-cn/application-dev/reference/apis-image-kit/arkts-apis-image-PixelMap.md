@@ -2882,8 +2882,7 @@ ArkTS-Sta: applyScale(x: double, y: double, level?: AntiAliasingLevel): Promise\
 
 > **说明：**
 >
-> - 建议宽高的缩放倍数取正数，否则会产生翻转效果。
-> - 缩放倍数 = 缩放后的图像尺寸 / 缩放前的图像尺寸。
+> 缩放倍数 = 缩放后的图像尺寸 / 缩放前的图像尺寸。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2901,8 +2900,8 @@ ArkTS-Sta: applyScale(x: double, y: double, level?: AntiAliasingLevel): Promise\
 
 | 参数名   | 类型                 | 必填 | 说明                                           |
 | -------- | -------------------- | ---- | ---------------------------------------------------------------------------------------- |
-| x        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。取值不能为0。                                |
-| y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。取值不能为0。                                |
+| x        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。<br>取值不能为0，建议取正数，否则会产生翻转效果。                                |
+| y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。<br>取值不能为0，建议取正数，否则会产生翻转效果。                                |
 | level    | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 采用的缩放算法。该参数对于ASTC格式的PixelMap不生效。默认值为AntiAliasingLevel.NONE。 |
 
 **返回值：**
@@ -2970,8 +2969,7 @@ ArkTS-Sta: applyScaleSync(x: double, y: double, level?: AntiAliasingLevel): void
 
 > **说明：**
 >
-> - 建议宽高的缩放倍数取正数，否则会产生翻转效果。
-> - 缩放倍数 = 缩放后的图像尺寸 / 缩放前的图像尺寸。
+> 缩放倍数 = 缩放后的图像尺寸 / 缩放前的图像尺寸。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2989,8 +2987,8 @@ ArkTS-Sta: applyScaleSync(x: double, y: double, level?: AntiAliasingLevel): void
 
 | 参数名   | 类型                 | 必填 | 说明                                           |
 | -------- | -------------------- | ---- | ---------------------------------------------------------------------------------------- |
-| x        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。取值不能为0。                                |
-| y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。取值不能为0。                                |
+| x        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。<br>取值不能为0，建议取正数，否则会产生翻转效果。                                |
+| y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。<br>取值不能为0，建议取正数，否则会产生翻转效果。                                |
 | level    | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 采用的缩放算法。该参数对于ASTC格式的PixelMap不生效。默认值为AntiAliasingLevel.NONE。 |
 
 **错误码：**
@@ -3051,7 +3049,6 @@ ArkTS-Sta: scale(x: double, y: double, callback: AsyncCallback\<void>): void
 
 > **说明：**
 >
-> - 建议宽高的缩放倍数取正数，否则会产生翻转效果。
 > - 宽高的缩放倍数 = 缩放后的图片宽高 / 缩放前的图片宽高。
 > - 从API版本26.0.0开始，建议使用[applyScale](#applyscale)代替，以获得更完善的异常处理能力。
 
@@ -3069,8 +3066,8 @@ ArkTS-Sta: scale(x: double, y: double, callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                 | 必填 | 说明                            |
 | -------- | -------------------- | ---- | ------------------------------- |
-| x        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。取值不能为0。 |
-| y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。取值不能为0。 |
+| x        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。<br>取值不能为0，建议取正数，否则会产生翻转效果。 |
+| y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。<br>取值不能为0，建议取正数，否则会产生翻转效果。 |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当对图片进行缩放成功，err为undefined，否则为错误对象。 |
 
 **示例：**
@@ -3121,7 +3118,6 @@ ArkTS-Sta: scale(x: double, y: double): Promise\<void>
 
 > **说明：**
 >
-> - 建议宽高的缩放倍数取正数，否则会产生翻转效果。
 > - 宽高的缩放倍数 = 缩放后的图片宽高 / 缩放前的图片宽高。
 > - 从API版本26.0.0开始，建议使用[applyScale](#applyscale)代替，以获得更完善的异常处理能力。
 
@@ -3139,8 +3135,8 @@ ArkTS-Sta: scale(x: double, y: double): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| x      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。取值不能为0。 |
-| y      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。取值不能为0。 |
+| x      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。<br>取值不能为0，建议取正数，否则会产生翻转效果。 |
+| y      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。<br>取值不能为0，建议取正数，否则会产生翻转效果。 |
 
 **返回值：**
 
@@ -3190,7 +3186,6 @@ ArkTS-Sta: scaleSync(x: double, y: double): void
 
 > **说明：**
 >
-> - 建议宽高的缩放倍数取正数，否则会产生翻转效果。
 > - 宽高的缩放倍数 = 缩放后的图片宽高 / 缩放前的图片宽高。
 > - 从API版本26.0.0开始，建议使用[applyScaleSync](#applyscalesync)代替，以获得更完善的异常处理能力。
 
@@ -3206,8 +3201,8 @@ ArkTS-Sta: scaleSync(x: double, y: double): void
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| x      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。取值不能为0。 |
-| y      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。取值不能为0。 |
+| x      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。<br>取值不能为0，建议取正数，否则会产生翻转效果。 |
+| y      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。<br>取值不能为0，建议取正数，否则会产生翻转效果。 |
 
 **错误码：**
 
@@ -3263,7 +3258,6 @@ ArkTS-Sta: scale(x: double, y: double, level: AntiAliasingLevel): Promise\<void>
 
 > **说明：**
 >
-> - 建议宽高的缩放倍数取正数，否则会产生翻转效果。
 > - 宽高的缩放倍数 = 缩放后的图片宽高 / 缩放前的图片宽高。
 > - 从API版本26.0.0开始，建议使用[applyScale](#applyscale)代替，以获得更完善的异常处理能力。
 
@@ -3281,8 +3275,8 @@ ArkTS-Sta: scale(x: double, y: double, level: AntiAliasingLevel): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| x      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。取值不能为0。 |
-| y      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。取值不能为0。 |
+| x      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。<br>取值不能为0，建议取正数，否则会产生翻转效果。 |
+| y      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。<br>取值不能为0，建议取正数，否则会产生翻转效果。 |
 | level  | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 是   | 采用的缩放算法。该参数对于ASTC格式的PixelMap不生效。 |
 
 **返回值：**
@@ -3342,7 +3336,6 @@ ArkTS-Sta: scaleSync(x: double, y: double, level: AntiAliasingLevel): void
 
 > **说明：**
 >
-> - 建议宽高的缩放倍数取正数，否则会产生翻转效果。
 > - 宽高的缩放倍数 = 缩放后的图片宽高 / 缩放前的图片宽高。
 > - 从API版本26.0.0开始，建议使用[applyScaleSync](#applyscalesync)代替，以获得更完善的异常处理能力。
 
@@ -3358,8 +3351,8 @@ ArkTS-Sta: scaleSync(x: double, y: double, level: AntiAliasingLevel): void
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| x      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。取值不能为0。 |
-| y      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。取值不能为0。 |
+| x      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。<br>取值不能为0，建议取正数，否则会产生翻转效果。 |
+| y      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。<br>取值不能为0，建议取正数，否则会产生翻转效果。 |
 | level  | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 是   | 采用的缩放算法。该参数对于ASTC格式的PixelMap不生效。 |
 
 **错误码：**
@@ -3428,8 +3421,8 @@ ArkTS-Sta: createScaledPixelMap(x: double, y: double, level?: AntiAliasingLevel)
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| x      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。取值不能为0。 |
-| y      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。取值不能为0。 |
+| x      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。<br>取值不能为0，建议取正数，否则会产生翻转效果。 |
+| y      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。<br>取值不能为0，建议取正数，否则会产生翻转效果。 |
 | level  | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 采用的缩放算法，默认值为AntiAliasingLevel.NONE。该参数对于ASTC格式的PixelMap不生效。 |
 
 **返回值：**
@@ -3501,8 +3494,8 @@ ArkTS-Sta: createScaledPixelMapSync(x: double, y: double, level?: AntiAliasingLe
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| x      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。取值不能为0。 |
-| y      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。取值不能为0。 |
+| x      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。<br>取值不能为0，建议取正数，否则会产生翻转效果。 |
+| y      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。<br>取值不能为0，建议取正数，否则会产生翻转效果。 |
 | level  | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 采用的缩放算法，默认值为AntiAliasingLevel.NONE。该参数对于ASTC格式的PixelMap不生效。 |
 
 **返回值：**
@@ -3578,8 +3571,8 @@ ArkTS-Sta: createCroppedAndScaledPixelMap(region: Region, x: double, y: double, 
 | 参数名   | 类型                 | 必填 | 说明                          |
 | -------- | ------------------- | ---- | ----------------------------- |
 | region   | [Region](arkts-apis-image-i.md#region8) | 是   | 裁剪的区域。取值范围不能超过图片的宽和高。单位：像素（px）。 |
-| x        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。取值不能为0。 |
-| y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。取值不能为0。 |
+| x        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。<br>取值不能为0，建议取正数，否则会产生翻转效果。 |
+| y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。<br>取值不能为0，建议取正数，否则会产生翻转效果。 |
 | level    | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 采用的缩放算法。默认值为AntiAliasingLevel.NONE。该参数对于ASTC格式的PixelMap不生效。 |
 
 **返回值：**
@@ -3670,8 +3663,8 @@ ArkTS-Sta: createCroppedAndScaledPixelMapSync(region: Region, x: double, y: doub
 | 参数名   | 类型                 | 必填 | 说明                          |
 | -------- | ------------------- | ---- | ----------------------------- |
 | region   | [Region](arkts-apis-image-i.md#region8) | 是   | 裁剪的区域。取值范围不能超过图片的宽和高。单位：像素（px）。 |
-| x        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。取值不能为0。 |
-| y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。取值不能为0。 |
+| x        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。<br>取值不能为0，建议取正数，否则会产生翻转效果。 |
+| y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。<br>取值不能为0，建议取正数，否则会产生翻转效果。 |
 | level    | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 采用的缩放算法。默认值为AntiAliasingLevel.NONE。该参数对于ASTC格式的PixelMap不生效。 |
 
 **返回值：**
