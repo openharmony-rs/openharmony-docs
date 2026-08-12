@@ -164,7 +164,7 @@ export default function abilityTest() {
     })
 
     /**
-     * 查找类型为'Image'的控件，并进行对其进行双指放大操作
+     * 查找类型为'Image'的控件，并对其进行双指放大操作
      */
     it('componentPinch', TestType.FUNCTION, async () => {
       let driver: Driver = Driver.create();
@@ -283,7 +283,7 @@ export default function abilityTest() {
     })
     /**
      * 基于控件的文本输入，指定以复制粘贴方式注入输入指定文本
-     * 指定以追加方式输入，即在输入文本签不清空原有内容
+     * 指定以追加方式输入，即在输入文本前不清空原有内容
      */
     it('componentInputTextAddition', TestType.FUNCTION, async () => {
       let driver = Driver.create();
