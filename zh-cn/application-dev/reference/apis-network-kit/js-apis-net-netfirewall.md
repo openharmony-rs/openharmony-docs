@@ -700,7 +700,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 | 名称         | 类型    | 只读 | 可选|说明                                      |
 | ------------ | --------|------|-----|------------------------------------- |
 | isWildcard   | boolean | 否  | 否|是否包含通配符。true表示包含，false表示不包含。                          |
-| domain       | string  | 否  |否 |当isWildcard为false时，需要确定的完整域， 例如"www.example.cn"。 |
+| domain       | string  | 否  |否 |当isWildcard为false时，需要确定的完整域，例如"www.example.com"。 |
 
 ## NetFirewallDnsParams
 
