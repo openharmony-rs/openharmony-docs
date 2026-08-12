@@ -22,7 +22,7 @@
 
   <!--Del-->
 
-  - [Managing System Windows (Stage Model Only) (for System Applications Only)](system-window-stage-sys.md)
+  - [System Window Development (Stage Model Only) (for System Applications Only)](system-window-stage-sys.md)
 
   <!--DelEnd-->
 
