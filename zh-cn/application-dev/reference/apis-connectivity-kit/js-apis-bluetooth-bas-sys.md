@@ -119,7 +119,7 @@ let deviceId: common.BluetoothAddress = {
 try {
     bas.getRemoteDeviceBatteryInfo(deviceId).then((batteryInfo: bas.BatteryInfo) => {
         console.info('getRemoteDeviceBatteryInfo, batteryInfo: [address: ' + batteryInfo.deviceId.address +
-		    ', batteryLevel: ' + batteryInfo.batteryLevel + ']');
+            ', batteryLevel: ' + batteryInfo.batteryLevel + ']');
     });
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
