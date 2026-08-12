@@ -42394,19 +42394,9 @@
 						"start_line":45
 					},
 					{
-						"end_line":77,
-						"name":"constant_in_loop_batter",
-						"start_line":61
-					},
-					{
 						"end_line":102,
 						"name":"outside_variable_poor",
 						"start_line":94
-					},
-					{
-						"end_line":112,
-						"name":"outside_variable_batter",
-						"start_line":104
 					},
 					{
 						"end_line":135,
@@ -42414,19 +42404,9 @@
 						"start_line":128
 					},
 					{
-						"end_line":141,
-						"name":"avoid_optional_parameters_batter",
-						"start_line":137
-					},
-					{
 						"end_line":164,
 						"name":"use_typearray_poor",
 						"start_line":157
-					},
-					{
-						"end_line":173,
-						"name":"use_typearray_batter",
-						"start_line":166
 					},
 					{
 						"end_line":204,
@@ -42439,18 +42419,38 @@
 						"start_line":216
 					},
 					{
-						"end_line":224,
-						"name":"avoid_joint_type_batter",
-						"start_line":220
-					},
-					{
 						"end_line":269,
 						"name":"exception_handling_poor",
 						"start_line":250
 					},
 					{
+						"end_line":77,
+						"name":"constant_in_loop_better",
+						"start_line":61
+					},
+					{
+						"end_line":112,
+						"name":"outside_variable_better",
+						"start_line":104
+					},
+					{
+						"end_line":141,
+						"name":"avoid_optional_parameters_better",
+						"start_line":137
+					},
+					{
+						"end_line":173,
+						"name":"use_typearray_better",
+						"start_line":166
+					},
+					{
+						"end_line":224,
+						"name":"avoid_joint_type_better",
+						"start_line":220
+					},
+					{
 						"end_line":290,
-						"name":"exception_handling_batter",
+						"name":"exception_handling_better",
 						"start_line":271
 					}
 				]
@@ -61817,11 +61817,6 @@
 						"start_line":508
 					},
 					{
-						"end_line":1305,
-						"name":"override_access_permission",
-						"start_line":1270
-					},
-					{
 						"end_line":600,
 						"name":"super_call_parent_method",
 						"start_line":546
@@ -61945,6 +61940,11 @@
 						"end_line":526,
 						"name":"ts_class_structural_relation",
 						"start_line":511
+					},
+					{
+						"end_line":204,
+						"name":"ts_override_access_permission",
+						"start_line":163
 					}
 				]
 			}
