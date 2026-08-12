@@ -6,7 +6,7 @@
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
-调用[avSession.createAVSession](arkts-apis-avsession-f.md#avsessioncreateavsession10)后，返回会话的实例，可以获得会话ID，完成设置元数据，播放状态信息等操作。
+应用调用[avSession.createAVSession](arkts-apis-avsession-f.md#avsessioncreateavsession10)创建会话。会话创建成功后，应用可获得会话实例，并通过该实例获取会话ID、设置元数据和播放状态等信息。
 
 > **说明：**
 >
@@ -56,7 +56,7 @@ setAVMetadata(data: AVMetadata): Promise\<void>
 
 | 参数名 | 类型                      | 必填 | 说明         |
 | ------ | ------------------------- | ---- | ------------ |
-| data   | [AVMetadata](arkts-apis-avsession-i.md#avmetadata10) | 是   | 会话元数据。 |
+| data   | [AVMetadata](arkts-apis-avsession-i.md#avmetadata10) | 是   | 会话元数据，包含媒体标识、标题、艺术家、专辑等信息。 |
 
 **返回值：**
 
@@ -119,7 +119,7 @@ setAVMetadata(data: AVMetadata, callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                                                 | 必填 | 说明                                                         |
 | -------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| data     | [AVMetadata](arkts-apis-avsession-i.md#avmetadata10) | 是   | 会话元数据。                                                 |
+| data     | [AVMetadata](arkts-apis-avsession-i.md#avmetadata10) | 是   | 会话元数据，包含媒体标识、标题、艺术家、专辑等信息。                                                 |
 | callback | AsyncCallback\<void>                                 | 是   | 回调函数。<br>ArkTS-Dyn：当元数据设置成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当元数据设置成功，err为null，否则返回错误对象。 |
 
 **错误码：**
@@ -183,7 +183,7 @@ setCallMetadata(data: CallMetadata): Promise\<void>
 
 | 参数名 | 类型                      | 必填 | 说明         |
 | ------ | ------------------------- | ---- | ------------ |
-| data   | [CallMetadata](arkts-apis-avsession-i.md#callmetadata11) | 是   | 通话会话元数据。 |
+| data   | [CallMetadata](arkts-apis-avsession-i.md#callmetadata11) | 是   | 通话会话元数据，包含联系人姓名、电话号码等信息。 |
 
 **返回值：**
 
@@ -236,12 +236,10 @@ class CallManager {
       phoneNumber: "111xxxxxxxx",
       avatar: imagePixel
     };
-    this.currentAVSession?.setCallMetadata(calldata, (err: BusinessError) => {
-      if (err) {
-        console.error(`Failed to set call metadata, code: ${err.code}, message: ${err.message}`);
-        return;
-      }
+    this.currentAVSession?.setCallMetadata(calldata).then(() => {
       console.info('Succeeded in setting call metadata.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to set call metadata, code: ${err.code}, message: ${err.message}`);
     });
   }
 }
@@ -263,7 +261,7 @@ setCallMetadata(data: CallMetadata, callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                      | 必填 | 说明                                  |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| data     | [CallMetadata](arkts-apis-avsession-i.md#callmetadata11) | 是   | 通话会话元数据。                          |
+| data     | [CallMetadata](arkts-apis-avsession-i.md#callmetadata11) | 是   | 通话会话元数据，包含联系人姓名、电话号码等信息。                          |
 | callback | AsyncCallback\<void>      | 是   | 回调函数。<br>ArkTS-Dyn：当通话元数据设置成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当通话元数据设置成功，err为null，否则返回错误对象。 |
 
 **错误码：**
@@ -337,13 +335,13 @@ setAVCallState(state: AVCallState): Promise\<void>
 
 | 参数名 | 类型                      | 必填 | 说明         |
 | ------ | ------------------------- | ---- | ------------ |
-| state   | [AVCallState](arkts-apis-avsession-i.md#avcallstate11) | 是   | 通话状态。 |
+| state   | [AVCallState](arkts-apis-avsession-i.md#avcallstate11) | 是   | 通话状态，包含通话状态值和静音状态。 |
 
 **返回值：**
 
 | 类型           | 说明                          |
 | -------------- | ----------------------------- |
-| Promise\<void> | Promise对象。当通话元数据设置成功，无返回结果，否则返回错误对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -383,8 +381,8 @@ setAVCallState(state: AVCallState, callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                      | 必填 | 说明                                  |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| state     | [AVCallState](arkts-apis-avsession-i.md#avcallstate11) | 是   | 通话状态。                          |
-| callback | AsyncCallback\<void>      | 是   | 回调函数。<br>ArkTS-Dyn：当通话元数据设置成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当通话元数据设置成功，err为null，否则返回错误对象。 |
+| state     | [AVCallState](arkts-apis-avsession-i.md#avcallstate11) | 是   | 通话状态，包含通话状态值和静音状态。                          |
+| callback | AsyncCallback\<void>      | 是   | 回调函数。<br>ArkTS-Dyn：当通话状态设置成功，回调参数err为undefined，否则返回错误对象。<br>ArkTS-Sta：当通话元数据设置成功，err为null，否则返回错误对象。 |
 
 **错误码：**
 
@@ -500,7 +498,7 @@ setAVPlaybackState(state: AVPlaybackState, callback: AsyncCallback\<void>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let PlaybackState: avSession.AVPlaybackState = {
+let playbackState: avSession.AVPlaybackState = {
   state:avSession.PlaybackState.PLAYBACK_STATE_PLAY,
   speed: 1.0,
   position:{elapsedTime:10, updateTime:(new Date()).getTime()},
@@ -508,7 +506,7 @@ let PlaybackState: avSession.AVPlaybackState = {
   loopMode:avSession.LoopMode.LOOP_MODE_SINGLE,
   isFavorite:true
 };
-currentAVSession.setAVPlaybackState(PlaybackState, (err: BusinessError) => {
+currentAVSession.setAVPlaybackState(playbackState, (err: BusinessError) => {
   if (err) {
     console.error(`Failed to set AVPlaybackState, code: ${err.code}, message: ${err.message}`);
     return;
@@ -523,7 +521,7 @@ setLaunchAbility(ability: WantAgent): Promise\<void>
 
 设置一个WantAgent用于拉起会话的Ability。使用Promise异步回调。
 
-通过点击播控组件可以跳转到对应的播放界面，默认跳转到[avSession.createAVSession](arkts-apis-avsession-f.md#avsessioncreateavsession10)接口传入的context所属的UIAbility界面。
+用户点击播控组件可跳转到对应的播放界面。如果未设置WantAgent，则默认跳转到[avSession.createAVSession](arkts-apis-avsession-f.md#avsessioncreateavsession10)接口传入的context所属的UIAbility界面。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -537,7 +535,7 @@ setLaunchAbility(ability: WantAgent): Promise\<void>
 
 | 参数名  | 类型                                          | 必填 | 说明     |
 | ------- | --------------| ---- | ----------------------------|
-| ability | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md) | 是   | 应用的相关属性信息，如bundleName，abilityName，deviceId等。 |
+| ability | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md) | 是   | 应用的相关属性信息，如bundleName、abilityName、deviceId等。设置后，点击播控组件可跳转到对应界面。 |
 
 **返回值：**
 
@@ -601,7 +599,7 @@ setLaunchAbility(ability: WantAgent, callback: AsyncCallback\<void>): void
 
 设置一个WantAgent用于拉起会话的Ability。使用callback异步回调。
 
-通过点击播控组件可以跳转到对应的播放界面，默认跳转到[avSession.createAVSession](arkts-apis-avsession-f.md#avsessioncreateavsession10)接口传入的context所属的UIAbility界面。
+用户点击播控组件可跳转到对应的播放界面。如果未设置WantAgent，则默认跳转到[avSession.createAVSession](arkts-apis-avsession-f.md#avsessioncreateavsession10)接口传入的context所属的UIAbility界面。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -613,7 +611,7 @@ setLaunchAbility(ability: WantAgent, callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                                          | 必填 | 说明     |
 | -------- | --------------| ---- | --------- |
-| ability  | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md) | 是   | 应用的相关属性信息，如bundleName，abilityName，deviceId等。  |
+| ability  | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md) | 是   | 应用的相关属性信息，如bundleName、abilityName、deviceId等。设置后，点击播控组件可跳转到对应界面。  |
 | callback | AsyncCallback\<void>                          | 是   | 回调函数。<br>ArkTS-Dyn：当Ability设置成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当Ability设置成功，err为null，否则返回错误对象。 |
 
 **错误码：**
@@ -784,7 +782,7 @@ currentAVSession.dispatchSessionEvent(eventName, {lyric : "This is lyric"}, (err
 
 setAVQueueItems(items: Array\<AVQueueItem>): Promise\<void>
 
-设置媒体播放列表名称。结果通过Promise异步回调方式返回。
+设置媒体播放列表名称。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -860,7 +858,7 @@ currentAVSession.setAVQueueItems(queueItemsArray).then(() => {
 
 setAVQueueItems(items: Array\<AVQueueItem>, callback: AsyncCallback\<void>): void
 
-设置媒体播放列表名称。结果通过callback异步回调方式返回。
+设置媒体播放列表名称。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -992,7 +990,7 @@ setAVQueueTitle(title: string, callback: AsyncCallback\<void>): void
 | 参数名   | 类型                                  | 必填 | 说明     |
 | -------- | --------------------- | ---- | ----------------------------|
 | title    | string                | 是   | 播放列表名称字段。                          |
-| callback | AsyncCallback\<void>  | 是   | 回调函数。<br>ArkTS-Dyn：当播放状态设置成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当播放状态设置成功，err为null，否则返回错误对象。 |
+| callback | AsyncCallback\<void>  | 是   | 回调函数。<br>ArkTS-Dyn：当播放列表名称设置成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当播放状态设置成功，err为null，否则返回错误对象。 |
 
 **错误码：**
 
@@ -1090,7 +1088,7 @@ ArkTS-Sta: setExtras(extras: Record<string, Object>, callback: AsyncCallback\<vo
 | 参数名  | 类型                                          | 必填 | 说明     |
 | ------- | --------------| ---- | ----------------------------|
 | extras | ArkTS-Dyn: {[key: string]: Object}<br>ArkTS-Sta: Record<string, Object> | 是   | 需要传递的自定义媒体数据包键值对。 |
-| callback | AsyncCallback\<void>                          | 是   | 回调函数。<br>ArkTS-Dyn：当自定义媒体数据包设置成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当自定义媒体数据包设置成功，err为null，否则返回错误对象。 |
+| callback | AsyncCallback\<void>                          | 是   | 回调函数。ArkTS-Dyn：当自定义媒体数据包设置成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当自定义媒体数据包设置成功，err为null，否则返回错误对象。 |
 
 > **说明：**
 >
@@ -1261,7 +1259,7 @@ offDesktopLyricVisibilityChanged(callback?: Callback\<boolean>): void
 
 | 参数名 | 类型                   | 必填 | 说明                            |
 | ------ | ---------------------- | ---- | -------------------------------- |
-| callback   | Callback\<boolean> | 否   | 回调函数。当事件监听取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有显示桌面歌词状态变更事件监听。 |
+| callback   | Callback\<boolean> | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有显示桌面歌词状态变更事件监听。 |
 
 **错误码：**
 
@@ -1346,7 +1344,7 @@ getDesktopLyricState(): Promise\<DesktopLyricState>
 
 | 类型           | 说明                          |
 | -------------- | ----------------------------- |
-| Promise\<[DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23)> |  Promise对象。返回桌面歌词状态。 |
+| Promise\<[DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23)> |  Promise对象。返回桌面歌词状态，包括歌词是否锁定等信息。 |
 
 **错误码：**
 
@@ -1430,7 +1428,7 @@ offDesktopLyricStateChanged(callback?: Callback\<DesktopLyricState>): void
 
 | 参数名 | 类型                   | 必填 | 说明                            |
 | ------ | ---------------------- | ---- | -------------------------------- |
-| callback   | Callback\<[DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23)> | 否   | 回调函数。当事件监听注销成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为注销所有桌面歌词状态变更事件监听。 |
+| callback   | Callback\<[DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23)> | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为注销所有桌面歌词状态变更事件监听。 |
 
 **错误码：**
 
@@ -1488,7 +1486,7 @@ sendCustomData(data: Record\<string, Object>): Promise\<void>
 **示例：**
 
 ```ts
-currentAVSession.sendCustomData({customData : "This is custom data"}).then(() => {
+await currentAVSession.sendCustomData({customData : "This is custom data"}).then(() => {
   console.info('Succeeded in sending custom data.');
 });
 ```
@@ -1498,6 +1496,8 @@ currentAVSession.sendCustomData({customData : "This is custom data"}).then(() =>
 enableDesktopLyric(enable: boolean): Promise\<void>
 
 当前会话是否启用桌面歌词功能。使用Promise异步回调。
+
+启用桌面歌词功能后，才能使用setDesktopLyricVisible、setDesktopLyricState、isDesktopLyricVisible、getDesktopLyricState等方法设置或查询桌面歌词状态。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1639,7 +1639,7 @@ onDesktopLyricVisibilityChanged(callback: Callback\<boolean>): void
 
 | 参数名 | 类型                   | 必填 | 说明                            |
 | ------ | ---------------------- | ---- | -------------------------------- |
-| callback   | Callback\<boolean> | 是   | 回调函数。返回true表示开启显示桌面歌词状态；返回false表示关闭显示桌面歌词状态。 |
+| callback   | Callback\<boolean> | 是   | 回调函数。返回true表示开启显示桌面歌词状态；返回false表示关闭显示桌面歌词状态，用于控制媒体播放、获取播放状态等操作。 |
 
 **错误码：**
 
@@ -1678,7 +1678,7 @@ offDesktopLyricVisibilityChanged(callback?: Callback\<boolean>): void
 
 | 参数名 | 类型                   | 必填 | 说明                            |
 | ------ | ---------------------- | ---- | -------------------------------- |
-| callback   | Callback\<boolean> | 否   | 回调函数。当事件监听注销成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为注销所有显示桌面歌词状态变更事件监听。 |
+| callback   | Callback\<boolean> | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为注销所有显示桌面歌词状态变更事件监听。 |
 
 **错误码：**
 
@@ -1762,7 +1762,7 @@ getDesktopLyricState(): Promise\<DesktopLyricState>
 
 | 类型           | 说明                          |
 | -------------- | ----------------------------- |
-| Promise\<[DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23)> |  Promise对象。返回桌面歌词状态。 |
+| Promise\<[DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23)> |  Promise对象。返回桌面歌词状态，用于控制投屏播放、发送媒体数据等操作。 |
 
 **错误码：**
 
@@ -1842,7 +1842,7 @@ offDesktopLyricStateChanged(callback?: Callback\<DesktopLyricState>): void
 
 | 参数名 | 类型                   | 必填 | 说明                            |
 | ------ | ---------------------- | ---- | -------------------------------- |
-| callback   | Callback\<[DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23)> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有桌面歌词状态变更事件监听。 |
+| callback   | Callback\<[DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23)> | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有桌面歌词状态变更事件监听。 |
 
 **错误码：**
 
@@ -2236,7 +2236,7 @@ getOutputDevice(): Promise\<OutputDeviceInfo>
 
 | 类型                                           | 说明                              |
 | ---------------| --------------------------------- |
-| Promise<[OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)> | Promise对象。返回播放设备信息。 |
+| Promise<[OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)> | Promise对象。返回播放设备信息，包括设备名称、设备类型、连接状态等。 |
 
 **错误码：**
 
@@ -2557,7 +2557,7 @@ on(type: 'play', callback: () => void): void
 | 参数名   | 类型                 | 必填 | 说明     |
 | -------- | -------------------- | ---- | --------- |
 | type     | string               | 是   | 事件回调类型，支持的事件为`'play'`，当播放命令被发送到会话时，触发该事件回调。 |
-| callback | () => void | 是   | 回调函数。<br>当事件监听注册成功，err为undefined，否则为错误对象。 |
+| callback | () => void | 是   | 回调函数。 |
 
 **错误码：**
 
@@ -2597,7 +2597,7 @@ onPlay(callback: Callback\<CommandInfo>): void
 
 | 参数名   | 类型                                                               | 必填 | 说明     |
 | -------- |------------------------------------------------------------------| ---- | --------- |
-| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 是   | 回调函数。当事件监听注册成功，err为undefined，否则为错误对象。                                        |
+| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 是   | 回调函数。  |
 
 **错误码：**
 
@@ -2639,7 +2639,7 @@ on(type: 'pause', callback: () => void): void
 | 参数名   | 类型                 | 必填 | 说明     |
 | -------- | -------------------- | ---- | --------- |
 | type     | string               | 是   | 事件回调类型，支持的事件为`'pause'`，当暂停命令被发送到会话时，触发该事件回调。 |
-| callback | () => void | 是   | 回调函数。<br>当事件监听注册成功，err为undefined，否则为错误对象。 |
+| callback | () => void | 是   | 回调函数。 |
 
 **错误码：**
 
@@ -2679,7 +2679,7 @@ onPause(callback: NoParamCallback): void
 
 | 参数名   | 类型                 | 必填 | 说明     |
 | -------- | -------------------- | ---- | --------- |
-| callback | NoParamCallback | 是   | 回调函数。<br>当事件监听注册成功，err为null，否则为错误对象。 |
+| callback | NoParamCallback | 是   | 回调函数。 |
 
 **错误码：**
 
@@ -2721,7 +2721,7 @@ on(type:'stop', callback: () => void): void
 | 参数名   | 类型                 | 必填 | 说明     |
 | -------- | -------------------- | ---- | --------- |
 | type     | string               | 是   | 事件回调类型，支持的事件是`'stop'`，当停止命令被发送到会话时，触发该事件回调。 |
-| callback | () => void | 是   | 回调函数。<br>当事件监听注册成功，err为undefined，否则为错误对象。 |
+| callback | () => void | 是   | 回调函数。 |
 
 **错误码：**
 
@@ -2761,7 +2761,7 @@ onStop(callback: NoParamCallback): void;
 
 | 参数名   | 类型                 | 必填 | 说明     |
 | -------- | -------------------- | ---- | --------- |
-| callback | NoParamCallback | 是   | 回调函数。<br>当事件监听注册成功，err为null，否则为错误对象。 |
+| callback | NoParamCallback | 是   | 回调函数。 |
 
 **错误码：**
 
@@ -2803,7 +2803,7 @@ on(type:'playNext', callback: () => void): void
 | 参数名   | 类型                 | 必填 | 说明     |
 | -------- | -------------------- | ---- | --------- |
 | type     | string               | 是   | 事件回调类型，支持的事件是`'playNext'`，当播放下一首命令被发送到会话时，触发该事件回调。 |
-| callback | () => void | 是   | 回调函数。<br>当事件监听注册成功，err为undefined，否则为错误对象。 |
+| callback | () => void | 是   | 回调函数。 |
 
 **错误码：**
 
@@ -2842,7 +2842,7 @@ onPlayNext(callback: Callback\<CommandInfo>): void
 
 | 参数名   | 类型       | 必填 | 说明     |
 | -------- | ---------- | ---- | --------- |
-| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 是   | 回调函数。当事件监听注册成功，err为undefined，否则为错误对象。     |
+| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 是   | 回调函数。  |
 
 **错误码：**
 
@@ -2884,7 +2884,7 @@ on(type:'playPrevious', callback: () => void): void
 | 参数名   | 类型                 | 必填 | 说明     |
 | -------- | -------------------- | ---- | --------- |
 | type     | string               | 是   | 事件回调类型，支持的事件是`'playPrevious'`，当播放上一首命令被发送到会话时，触发该事件回调。 |
-| callback | () => void | 是   | 回调函数。<br>当事件监听注册成功，err为undefined，否则为错误对象。 |
+| callback | () => void | 是   | 回调函数。 |
 
 **错误码：**
 
@@ -2924,7 +2924,7 @@ onPlayPrevious(callback: Callback\<CommandInfo>): void
 
 | 参数名   | 类型                 | 必填 | 说明     |
 | -------- | -------------------- | ---- | --------- |
-| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 是   | 回调函数。当事件监听注册成功，err为undefined，否则为错误对象。       |
+| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 是   | 回调函数。  |
 
 **错误码：**
 
@@ -2966,7 +2966,7 @@ on(type: 'fastForward', callback: (time?: number) => void): void
 | 参数名   | 类型                 | 必填 | 说明     |
 | -------- | -------------------- | ---- | --------- |
 | type     | string               | 是   | 事件回调类型，支持的事件是 `'fastForward'`，当快进命令被发送到会话时，触发该事件回调。 |
-| callback | (time?: number) => void | 是   | 回调函数。参数time是时间节点，单位为秒。    |
+| callback | (time?: number) => void | 是   | 回调函数。参数time是时间节点，单位为秒（s）。    |
 
 **错误码：**
 
@@ -3046,7 +3046,7 @@ on(type:'rewind', callback: (time?: number) => void): void
 | 参数名   | 类型                 | 必填 | 说明     |
 | -------- | -------------------- | ---- | --------- |
 | type     | string               | 是   | 事件回调类型，支持的事件是`'rewind'`，当快退命令被发送到会话时，触发该事件回调。 |
-| callback | (time?: number) => void | 是   | 回调函数。参数time是时间节点，单位为秒。      |
+| callback | (time?: number) => void | 是   | 回调函数。参数time是时间节点，单位为秒（s）。      |
 
 **错误码：**
 
@@ -3208,7 +3208,7 @@ off(type: 'playWithAssetId', callback?: Callback\<string>): void
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
 | type     | string               | 是   | 关闭对应的监听事件，支持的事件是`'playWithAssetId'`。 |
-| callback | Callback\<string> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。参数assetId是媒体ID。 |
+| callback | Callback\<string> | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。参数assetId是媒体ID。 |
 
 **错误码：**
 
@@ -3247,7 +3247,7 @@ offPlayWithAssetId(callback?: Callback\<string>): void
 
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
-| callback | Callback\<string> | 否   | 回调函数。当事件监听取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。参数assetId是媒体ID。 |
+| callback | Callback\<string> | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。参数assetId是媒体ID。 |
 
 **错误码：**
 
@@ -3285,7 +3285,7 @@ on(type: 'seek', callback: (time: number) => void): void
 | 参数名   | 类型                   | 必填 | 说明     |
 | -------- | ---------------------- | ---- | --------- |
 | type     | string                 | 是   | 事件回调类型，支持事件`'seek'`：当跳转节点命令被发送到会话时，触发该事件。 |
-| callback | (time: number) => void | 是   | 回调函数。参数time是时间节点，单位为毫秒。                   |
+| callback | (time: number) => void | 是   | 回调函数。参数time是时间节点，单位为毫秒（ms）。  |
 
 **错误码：**
 
@@ -3323,7 +3323,7 @@ onSeek(callback: Callback\<long>): void
 
 | 参数名   | 类型                   | 必填 | 说明     |
 | -------- | ---------------------- | ---- | --------- |
-| callback | Callback\<long> | 是   | 回调函数。参数time是时间节点，单位为毫秒。                   |
+| callback | Callback\<long> | 是   | 回调函数。参数time是时间节点，单位为毫秒（ms）。                   |
 
 **错误码：**
 
@@ -3596,7 +3596,7 @@ on(type: 'toggleFavorite', callback: (assetId: string) => void): void
 | 参数名   | 类型                      | 必填 | 说明     |
 | -------- | ------------------------- | ---- | --------- |
 | type     | string                    | 是   | 事件回调类型，支持事件`'toggleFavorite'`：当是否收藏的命令被发送到会话时，触发该事件。 |
-| callback | (assetId: string) => void | 是   | 回调函数。参数assetId是媒体ID。                              |
+| callback | (assetId: string) => void | 是   | 回调函数。参数assetId是媒体ID，与AVMetadata中的assetId一致。            |
 
 **错误码：**
 
@@ -3676,7 +3676,7 @@ session端可以选择对这个单项歌曲进行播放。
 | 参数名   | 类型                      | 必填 | 说明                                   |
 | -------- | ------------------------ | ---- | ------------------------------------- |
 | type     | string                   | 是   | 事件回调类型，支持事件`'skipToQueueItem'`：当播放列表选中单项的命令被发送到会话时，触发该事件。 |
-| callback | (itemId: number) => void | 是   | 回调函数。参数itemId是选中的播放列表项的ID。                                                |
+| callback | (itemId: number) => void | 是   | 回调函数。参数itemId是选中的播放列表项的ID，与setAVQueueItems设置的itemId对应。                                                |
 
 **错误码：**
 
@@ -4004,7 +4004,7 @@ off(type: 'play', callback?: () => void): void
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
 | type     | string               | 是   | 关闭对应的事件监听，支持的事件是`'play'`。|
-| callback | () => void | 否   | 回调函数。<br>当事件监听取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | () => void | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -4040,7 +4040,7 @@ offPlay(callback?: Callback\<CommandInfo>): void
 
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
-| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 否   | 回调函数。当事件监听取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                            |
+| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                            |
 
 **错误码：**
 
@@ -4080,7 +4080,7 @@ off(type: 'pause', callback?: () => void): void
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
 | type     | string               | 是   | 注销对应的事件监听，支持的事件是`'pause'`。 |
-| callback | () => void | 否   | 回调函数。<br>当事件监听注销成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
+| callback | () => void | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -4118,7 +4118,7 @@ offPause(callback?: NoParamCallback): void
 
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
-| callback | NoParamCallback | 否   | 回调函数。<br>当事件监听注销成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
+| callback | NoParamCallback | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -4158,7 +4158,7 @@ off(type: 'stop', callback?: () => void): void
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
 | type     | string               | 是   | 注销对应的事件监听，支持的事件是`'stop'`。 |
-| callback | () => void | 否   | 回调函数。<br>当事件监听注销成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
+| callback | () => void | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -4196,7 +4196,7 @@ offStop(callback?: NoParamCallback): void
 
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
-| callback | NoParamCallback | 否   | 回调函数。<br>当事件监听注销成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
+| callback | NoParamCallback | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。参数number是快进的时间，单位为秒（s）。 |
 
 **错误码：**
 
@@ -4236,7 +4236,7 @@ off(type: 'playNext', callback?: () => void): void
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
 | type     | string               | 是   | 注销对应的事件监听，支持的事件是 `'playNext'`。 |
-| callback | () => void | 否   | 回调函数。<br>当事件监听注销成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
+| callback | () => void | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -4272,7 +4272,7 @@ offPlayNext(callback?: Callback\<CommandInfo>): void
 
 | 参数名    | 类型        | 必填 | 说明                   |
 | -------- | ---------- | ---- | ---------------------- |
-| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 否   | 回调函数。当事件监听注销成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。                            |
+| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 否   | 回调函数。参数number是快退的时间，单位为秒（s）。<br>该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。                            |
 
 **错误码：**
 
@@ -4312,7 +4312,7 @@ off(type: 'playPrevious', callback?: () => void): void
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
 | type     | string               | 是   | 注销对应的事件监听，支持的事件是`'playPrevious'`。 |
-| callback | () => void | 否   | 回调函数。<br>当事件监听注销成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
+| callback | () => void | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -4348,7 +4348,7 @@ offPlayPrevious(callback?: Callback\<CommandInfo>): void
 
 | 参数名    | 类型     | 必填 | 说明                   |
 | -------- |--------| ---- | ---------------------- |
-| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)>  | 否   | 回调函数。当事件监听注销成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。                            |
+| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)>  | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。                            |
 
 **错误码：**
 
@@ -4388,7 +4388,7 @@ off(type: 'fastForward', callback?: () => void): void
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
 | type     | string               | 是   | 注销对应的事件监听，支持的事件是`'fastForward'`。 |
-| callback | () => void | 否   | 回调函数。<br>当事件监听注销成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
+| callback | () => void | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -4466,7 +4466,7 @@ off(type: 'rewind', callback?: () => void): void
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
 | type     | string               | 是   | 注销对应的事件监听，支持的事件是`'rewind'`。 |
-| callback | () => void | 否   | 回调函数。<br>当事件监听注销成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
+| callback | () => void | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -4504,7 +4504,7 @@ ArkTS-Sta: offRewind(callback?: TwoParamCallback\<long, CommandInfo>): void
 
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
-| callback | ArkTS-Dyn: TwoParamCallback\<number, [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)><br>ArkTS-Sta: TwoParamCallback\<long, [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 否   | 回调函数。当事件监听注销成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。                            |
+| callback | ArkTS-Dyn: TwoParamCallback\<number, [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)><br>ArkTS-Sta: TwoParamCallback\<long, [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。                            |
 
 **错误码：**
 
@@ -4542,7 +4542,7 @@ off(type: 'seek', callback?: (time: number) => void): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 注销对应的事件监听，支持关闭事件`'seek'`。                   |
-| callback | (time: number) => void | 否   | 回调函数，参数time是时间节点，单位为毫秒。<br>当事件监听注销成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
+| callback | (time: number) => void | 否   | 回调函数，参数time是时间节点，单位为毫秒（ms）。该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -4578,7 +4578,7 @@ offSeek(callback?: Callback\<long>): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | Callback\<long> | 否   | 回调函数，参数time是时间节点，单位为毫秒。<br>当事件监听注销成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
+| callback | Callback\<long> | 否   | 回调函数，参数time是时间节点，单位为毫秒（ms）。<br>当事件监听注销成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -4616,7 +4616,7 @@ off(type: 'setSpeed', callback?: (speed: number) => void): void
 | 参数名   | 类型                      | 必填 | 说明     |
 | -------- | ------------------------- | ---- | -------------------------|
 | type     | string                    | 是   | 注销对应的事件监听，支持关闭事件`'setSpeed'`。            |
-| callback | (speed: number) => void | 否   | 回调函数，参数speed是播放倍速。<br>ArkTS-Dyn：当事件监听注销成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当事件监听注销成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
+| callback | (speed: number) => void | 否   | 回调函数，参数speed是播放倍速。该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -4690,7 +4690,7 @@ off(type: 'setLoopMode', callback?: (mode: LoopMode) => void): void
 | 参数名   | 类型                                  | 必填 | 说明     |
 | -------- | ------------------------------------- | ---- | ----- |
 | type     | string | 是   | 注销对应的事件监听，支持注销事件`'setLoopMode'`。|
-| callback | (mode: [LoopMode](arkts-apis-avsession-e.md#loopmode10)) => void | 否   | 回调函数，参数mode是循环模式。<br>当事件监听注销成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
+| callback | (mode: [LoopMode](arkts-apis-avsession-e.md#loopmode10)) => void | 否   | 回调函数，参数mode是循环模式。该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -4764,7 +4764,7 @@ off(type: 'setTargetLoopMode', callback?: Callback\<LoopMode>): void
 | 参数名   | 类型                                  | 必填 | 说明     |
 | -------- | ------------------------------------- | ---- | ----- |
 | type     | string | 是   | 注销对应的事件监听，支持关闭事件`'setTargetLoopMode'`。|
-| callback | Callback<[LoopMode](arkts-apis-avsession-e.md#loopmode10)> | 否   | 回调函数，参数表示目标循环模式。当事件监听注销成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
+| callback | Callback<[LoopMode](arkts-apis-avsession-e.md#loopmode10)> | 否   | 回调函数，参数表示目标循环模式。该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -4799,7 +4799,7 @@ offSetTargetLoopMode(callback?: Callback\<LoopMode>): void
 
 | 参数名   | 类型                                  | 必填 | 说明     |
 | -------- | ------------------------------------- | ---- | ----- |
-| callback | Callback<[LoopMode](arkts-apis-avsession-e.md#loopmode10)> | 否   | 回调函数，参数表示目标循环模式。当事件监听注销成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
+| callback | Callback<[LoopMode](arkts-apis-avsession-e.md#loopmode10)> | 否   | 回调函数，参数表示目标循环模式。该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -4837,7 +4837,7 @@ off(type: 'toggleFavorite', callback?: (assetId: string) => void): void
 | 参数名   | 类型                      | 必填 | 说明     |
 | -------- | ------------------------- | ---- | -------------------------|
 | type     | string                    | 是   | 注销对应的事件监听，支持关闭事件`'toggleFavorite'`。            |
-| callback | (assetId: string) => void | 否   | 回调函数，参数assetId是媒体ID。<br>当事件监听注销成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
+| callback | (assetId: string) => void | 否   | 回调函数，参数assetId是媒体ID。该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -4913,7 +4913,7 @@ off(type: 'skipToQueueItem', callback?: (itemId: number) => void): void
 | 参数名   | 类型                      | 必填 | 说明    |
 | -------- | ------------------------ | ---- | ----------------------|
 | type     | string                   | 是   | 注销对应的事件监听，支持注销事件`'skipToQueueItem'`。    |
-| callback | (itemId: number) => void<br> | 否   | 回调函数，参数itemId是播放列表单项ID。<br>当事件监听注销成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
+| callback | (itemId: number) => void<br> | 否   | 回调函数，参数itemId是播放列表单项ID。该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -4989,7 +4989,7 @@ off(type: 'handleKeyEvent', callback?: (event: KeyEvent) => void): void
 | 参数名   | 类型  |   必填 | 说明     |
 | -------- | --------- | ---- | --------- |
 | type     | string    | 是   | 关闭对应的事件监听，支持关闭事件`'handleKeyEvent'`。             |
-| callback | (event: [KeyEvent](../apis-input-kit/js-apis-keyevent.md)) => void | 否   | 回调函数，参数event是按键事件。<br>当事件监听取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                              |
+| callback | (event: [KeyEvent](../apis-input-kit/js-apis-keyevent.md)) => void | 否   | 回调函数，参数event是按键事件。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                              |
 
 **错误码：**
 
@@ -5066,7 +5066,7 @@ off(type: 'outputDeviceChange', callback?: (state: ConnectionState, device: Outp
 | 参数名   | 类型 | 必填 | 说明   |
 | -------- | ------------------------| ---- | -----------------------|
 | type     | string                                                  | 是   | 关闭对应的事件监听，支持关闭事件`'outputDeviceChange'`。     |
-| callback | (state: [ConnectionState](arkts-apis-avsession-e.md#connectionstate10), device: [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)) => void | 否   | 回调函数，参数device是设备相关信息。<br>当事件监听取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                        |
+| callback | (state: [ConnectionState](arkts-apis-avsession-e.md#connectionstate10), device: [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)) => void | 否   | 回调函数，参数device是设备相关信息。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。     |
 
 **错误码：**
 
@@ -5292,7 +5292,7 @@ off(type: 'answer', callback?: Callback\<void>): void
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
 | type     | string               | 是   | 关闭对应的事件监听，支持的事件是`'answer'`。 |
-| callback | Callback\<void>     | 否   | 回调函数。<br>当事件监听取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | Callback\<void>     | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -5328,7 +5328,7 @@ offAnswer(callback?: NoParamCallback): void
 
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
-| callback | NoParamCallback     | 否   | 回调函数。<br>当事件监听取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | NoParamCallback     | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -5444,7 +5444,7 @@ off(type: 'hangUp', callback?: Callback\<void>): void
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
 | type     | string               | 是   | 关闭对应的事件监听，支持的事件是`'hangUp'`。 |
-| callback | Callback\<void>      | 否   | 回调函数。<br>当事件监听取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | Callback\<void>      | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -5480,7 +5480,7 @@ offHangUp(callback?: NoParamCallback): void
 
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
-| callback | NoParamCallback      | 否   | 回调函数。<br>当事件监听取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | NoParamCallback      | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -5596,7 +5596,7 @@ off(type: 'toggleCallMute', callback?: Callback\<void>): void
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
 | type     | string               | 是   | 关闭对应的事件监听，支持的事件是`'toggleCallMute'`。 |
-| callback | Callback\<void>    | 否   | 回调函数。<br>当事件监听取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | Callback\<void>    | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -5632,7 +5632,7 @@ offToggleCallMute(callback?: NoParamCallback): void
 
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
-| callback | NoParamCallback    | 否   | 回调函数。<br>当事件监听取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | NoParamCallback    | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -5760,7 +5760,7 @@ off(type: 'castDisplayChange', callback?: Callback\<CastDisplayInfo>): void
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
 | type     | string    | 是   | 关闭对应的事件监听，支持的事件是`'castDisplayChange'`。 |
-| callback | Callback<[CastDisplayInfo](arkts-apis-avsession-i.md#castdisplayinfo12)> | 否   | 回调函数。<br>当事件监听取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | Callback<[CastDisplayInfo](arkts-apis-avsession-i.md#castdisplayinfo12)> | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -5936,7 +5936,7 @@ getAllCastDisplays(): Promise<Array\<CastDisplayInfo>>
 
 | 类型                                            | 说明                              |
 | ----------------| --------------------------------- |
-| Promise<Array<[CastDisplayInfo](arkts-apis-avsession-i.md#castdisplayinfo12)>>| Promise对象，返回当前系统中所有支持扩展屏投播的显示设备。 |
+| Promise<Array<[CastDisplayInfo](arkts-apis-avsession-i.md#castdisplayinfo12)>>| Promise对象，返回当前系统中所有支持扩展屏投播的显示设备信息，包括设备ID、显示状态等。 |
 
 **错误码：**
 
@@ -6024,7 +6024,7 @@ off(type: 'playFromAssetId', callback?: (assetId: number) => void): void
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
 | type     | string               | 是   | 关闭对应的事件监听，支持的事件是`'playFromAssetId'`。 |
-| callback | (assetId: number) => void | 否   | 回调函数。<br>ArkTS-Dyn：当事件监听取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当事件监听取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。参数assetId是媒体ID。 |
+| callback | (assetId: number) => void | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。参数assetId是媒体ID。 |
 
 **错误码：**
 
