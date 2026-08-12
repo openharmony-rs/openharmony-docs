@@ -62,7 +62,7 @@ console.info(`the esim is Supported:` + isSupported);
 
 addProfile\(profile: DownloadableProfile\): Promise\<boolean\>
 
-使用场景：当用户需要开通新的运营商套餐或切换运营商时，应用可调用该接口引导用户下载并添加对应的eSIM配置文件。
+当用户需要开通新的运营商套餐或切换运营商时，应用可调用该接口引导用户下载并添加对应的eSIM配置文件。
 
 **需要权限**：ohos.permission.SET_TELEPHONY_ESIM_STATE_OPEN
 
