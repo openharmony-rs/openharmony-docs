@@ -137,7 +137,7 @@ int32_t OH_WindowManager_SetWindowNavigationBarEnabled(int32_t windowId, bool en
 
 **描述**
 
-设置主窗口是否显示三键导航栏<!--Del-->或工具栏。当前工具栏仅Car设备支持<!--DelEnd-->。<!--RP2--><!--RP2End-->
+设置主窗口是否显示三键导航栏<!--Del-->或工具栏。当前工具栏仅Car设备支持<!--DelEnd-->。<!--RP2-->除Car设备以外，此接口仅在导航区域只能表现为三键导航的设备上生效。<!--RP2End-->
 
 **起始版本：** 15
 
