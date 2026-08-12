@@ -2667,6 +2667,120 @@ try {
 }
 ```
 
+## securityManager.setDeviceSecurityLevelPolicy
+
+setDeviceSecurityLevelPolicy(level: DeviceSecurityLevelPolicy): void
+
+设置设备安全等级策略。适用于企业统一管控终端安全基线的场景，如要求设备仅保持在出厂默认安全等级。调用本接口前，可通过[common.isFeatureSupported](./js-apis-enterprise-common.md#commonisfeaturesupported)接口（入参为common.ManagedFeature.DEVICE_SECURITY_LEVEL）查询设备是否支持设备安全等级特性。
+
+> **说明：**
+>
+> 1. 设备安全等级是在PC/2in1设备上提供的分级安全机制，按照对系统安全性的影响程度划分为不同等级，系统安全性由高到低依次为DSL0、DSL1、DSL2。
+>
+> 2. DSL0：出厂默认安全，设备保持出厂时的默认安全配置，未对系统安全能力做降级，安全性最高。
+>
+> 3. DSL1：降低安全性，在DSL0的基础上适度放宽部分系统安全管控，安全性低于DSL0。
+>
+> 4. DSL2：宽松安全性，在DSL1的基础上进一步放宽系统安全管控，安全性最低。
+>
+> 5. 本接口用于设置用户可选择的设备安全等级范围，各策略对应的可选等级请参见[DeviceSecurityLevelPolicy](#devicesecuritylevelpolicy)。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| level | [DeviceSecurityLevelPolicy](#devicesecuritylevelpolicy) | 是 | 设备安全等级策略。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 9200001 | The application is not an administrator application of the device. |
+| 9200002 | The administrator application does not have permission to manage the device. |
+| 9200012 | Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { common, securityManager } from '@kit.MDMKit';
+
+// 调用本接口前，先查询设备是否支持设备安全等级特性
+let isSupported: boolean = common.isFeatureSupported(common.ManagedFeature.DEVICE_SECURITY_LEVEL);
+if (isSupported) {
+  try {
+    securityManager.setDeviceSecurityLevelPolicy(securityManager.DeviceSecurityLevelPolicy.ALLOW_BALANCED);
+    console.info('setDeviceSecurityLevelPolicy success');
+  } catch (err) {
+    console.error('setDeviceSecurityLevelPolicy fail: ' + JSON.stringify(err));
+  }
+} else {
+  console.info('The device security level feature is not supported.');
+}
+```
+
+## securityManager.getDeviceSecurityLevelPolicy
+
+getDeviceSecurityLevelPolicy(): DeviceSecurityLevelPolicy
+
+获取设备安全等级策略。
+
+> **说明：**
+>
+> 1. 本接口返回的设备安全等级策略为用户可选择的设备安全等级范围，分级机制及各策略对应的可选等级请参见[setDeviceSecurityLevelPolicy](#securitymanagersetdevicesecuritylevelpolicy)。
+>
+> 2. 设备未设置过该策略时，返回默认值DEFAULT_ENFORCED。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [DeviceSecurityLevelPolicy](#devicesecuritylevelpolicy) | 设备安全等级策略。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 9200001 | The application is not an administrator application of the device. |
+| 9200002 | The administrator application does not have permission to manage the device. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+
+try {
+  let policy = securityManager.getDeviceSecurityLevelPolicy();
+  console.info('getDeviceSecurityLevelPolicy policy: ' + policy);
+} catch (err) {
+  console.error('getDeviceSecurityLevelPolicy fail: ' + JSON.stringify(err));
+}
+```
+
 ## CertBlob
 
 证书信息。
@@ -2828,3 +2942,19 @@ try {
 | DEFAULT               | 0  | 系统内置认证方式单独解锁，使用系统内置的锁屏认证方式解锁设备。                         |
 | EXTENDED_AUTH_ONLY    | 1  | 三方自定义认证单独解锁，解锁设备时仅通过三方自定义认证方式进行身份验证，无需系统锁屏密码。                       |
 | EXTENDED_AUTH_REQUIRED | 2  | 三方自定义认证与系统内置认证融合解锁，解锁设备时需同时通过三方自定义认证方式和系统锁屏密码进行身份验证。           |
+
+## DeviceSecurityLevelPolicy
+
+设备安全等级策略枚举。
+
+**起始版本：** 26.0.1
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| DEFAULT_ENFORCED | 0 | 仅可选出厂默认安全（DSL0）。 |
+| ALLOW_BALANCED | 1 | 可选出厂默认安全（DSL0）和降低安全性（DSL1）。 |
+| ALLOW_FLEXIBLE | 2 | 可选出厂默认安全（DSL0）、降低安全性（DSL1）和宽松安全性（DSL2）。 |
