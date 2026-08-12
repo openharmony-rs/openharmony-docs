@@ -1633,6 +1633,8 @@ dlpPermission.queryDlpPolicy(dlpFd).then((policy) => {
 >
 > [registerPlugin](#registerplugin21)接口的参数需要继承该接口，[connectServer](#connectserver21)由SA（System Ability）侧调用，通过callback进行回传参数。
 
+**系统能力：** SystemCapability.Security.DataLossPrevention
+
 ### connectServer<sup>21+</sup>
 connectServer(requestId: string, requestData: string, callback: Callback\<string\>): void
 
@@ -1694,6 +1696,8 @@ let plugin: dlpPermission.DlpConnPlugin = new DataCapsulePlugin();
 > **说明：**
 >
 > registerPlugin接口将回调能力注册进SA（System Ability），而unregisterPlugin接口将回调能力从SA（System Ability）中注销。
+
+**系统能力：** SystemCapability.Security.DataLossPrevention
 
 ### constructor<sup>21+</sup>
 
