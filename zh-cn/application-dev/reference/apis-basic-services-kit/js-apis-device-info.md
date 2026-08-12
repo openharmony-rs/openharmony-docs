@@ -330,23 +330,27 @@ console.info('the value of the DeviceTypes is :' + deviceTypesInfoCar);
 
 ## deviceInfo.apiAvailable
 
-apiAvailable(version: string | number): boolean;
+ArkTS-Dyn: apiAvailable(version: string | number): boolean
+
+ArkTS-Sta: apiAvailable(version: string | int): boolean
 
 <!--RP13-->
 检查指定的API版本在当前设备上是否可用。<br/>
-此方法提供跨不同OpenHarmony/分布式操作系统版本的兼容性检查。该方法根据输入格式和API版本范围自动选择版本检查方法。
+此方法提供跨不同OpenHarmony/分布式操作系统版本的兼容性检查。它会根据输入格式和API版本范围自动选择合适的版本检查方法。
 
-**起始版本**：26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**ArkTS-Sta起始版本：** 26.1.0
+
+**原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Startup.SystemInfo
 
 **参数**：
 
-| 参数名    | 类型                                      | 必填 | 说明                               |
-| --------- | ----------------------------------------- | ---- | ---------------------------------- |
-| version | string \| number | 是   | 需要校验的API版本号，支持整数版本号和点分版本号。整数版本号为正整数。点分版本号格式为x.x.x（如5.0.0或26.0.0），各段均为非负整数。传入无效值时返回false。|
+| 参数名    | 类型      | 必填 | 说明                               |
+| --------- | ---------| ---- | ---------------------------------- |
+| version | ArkTS-Dyn: string \| number<br>ArkTS-Sta: string \| int | 是   | 需要校验的API版本号，支持整数格式版本号和字符串格式版本号。<br>- 字符串采用M.S.F格式（如 "26.0.0","5.0.1"）：<br>    - 对于API 26.0.0及以上版本（version >= 26.0.0）：代表OpenHarmony和发行版系统API版本。<br>    - 对于API 26.0.0以下版本（version < 26.0.0）:代表发行版系统API版本。<br>- 整数格式（如13）：代表OpenHarmony SDK API版本。（仅支持API 26以下）<br>M>=26, 0<=S<=90, 0<=F<=99。传入无效字面量时编译报错。|
 
 **返回值**：
 
@@ -365,13 +369,13 @@ if (deviceInfo.apiAvailable('26.0.0')) {
 }
 
 
-// Check API 5.0.1 (Distribution OS version, API 26.0.0-)
+// 检查API版本是否大于等于5.0.1 (Distribution OS version, API 26.0.0-)
 if (deviceInfo.apiAvailable('5.0.1')) {
   // 需要版本隔离的方法
 }
 
 
-// Check API 13 (OpenHarmony SDK version, API 26.0.0-)
+// 检查API版本是否大于等于13 (OpenHarmony SDK version, API 26.0.0-)
 if (deviceInfo.apiAvailable(13)) {
   // 需要版本隔离的方法
 }
