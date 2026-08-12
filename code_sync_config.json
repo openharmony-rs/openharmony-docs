@@ -66,7 +66,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":461,
+						"end_line":459,
 						"name":"perceive-adjust-authentication-process",
 						"start_line":407
 					}
@@ -33632,9 +33632,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":582,
+						"end_line":580,
 						"name":"obtain_auth_lock_state_capabilities",
-						"start_line":564
+						"start_line":562
 					}
 				]
 			}
