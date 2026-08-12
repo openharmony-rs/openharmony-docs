@@ -65,7 +65,7 @@ try {
 getRemoteDeviceBatteryInfo(deviceId: BluetoothAddress): Promise&lt;BatteryInfo&gt;
 
 查询远端设备的电量信息。
-- 使用此接口前建议使用[isBasSupported](#basisBasSupported)判断本机是否支持获取远端设备的电量。
+- 使用此接口前建议使用[isBasSupported](#basisBasSupported)查询本机是否支持获取远端设备的电量。
 - 只有支持蓝牙标准协议定义的电量服务（UUID：0000180F-0000-1000-8000-00805F9B34FB）的BLE远端设备才支持获取电量信息。
 - 对端蓝牙设备的电量信息变更通过[onBatteryChange](#basonbatterychange)的回调结果获取。
 - 此接口支持使用对端设备的实际MAC地址和随机MAC地址获取电量信息。
