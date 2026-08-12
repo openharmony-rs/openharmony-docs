@@ -65,6 +65,7 @@ try {
 getRemoteDeviceBatteryInfo(deviceId: BluetoothAddress): Promise&lt;BatteryInfo&gt;
 
 查询远端设备的电量信息。
+- 使用此接口前建议使用[isBasSupported](#basisBasSupported)判断本机是否支持获取远端设备的电量。
 - 只有支持蓝牙标准协议定义的电量服务（UUID：0000180F-0000-1000-8000-00805F9B34FB）的BLE远端设备才支持获取电量信息。
 - 对端蓝牙设备的电量信息变更通过[onBatteryChange](#basonbatterychange)的回调结果获取。
 - 此接口支持使用对端设备的实际MAC地址和随机MAC地址获取电量信息。
@@ -132,7 +133,7 @@ try {
 onBatteryChange(callback: Callback&lt;BatteryInfo&gt;): void
 
 订阅远端设备电量状态变化事件。
-- 只有支持蓝牙标准协议定义的电量服务（UUID：0000180F-0000-1000-8000-00805F9B34FB）的BLE远端设备才支持上报电量信息。
+- 只有支持蓝牙标准协议定义的电量服务（UUID：0000180F-0000-1000-8000-00805F9B34FB）的BLE远端设备才支持上报电量信息，不可与[connection.on('batteryChange')](#connectiononbatterychange12)混用。
 - 调用此接口会立即上报已连接电量服务设备的最新有效电量信息，后续仅当远端设备电量信息发生变化时上报电量信息。
 
 **起始版本**：26.0.0
@@ -181,6 +182,7 @@ try {
 offBatteryChange(callback?: Callback&lt;BatteryInfo&gt;): void
 
 取消订阅远端设备电量状态变化事件。
+- 不可与[connection.off('batteryChange')](#connectionoffbatterychange12)混用。
 
 **起始版本**：26.0.0
 
