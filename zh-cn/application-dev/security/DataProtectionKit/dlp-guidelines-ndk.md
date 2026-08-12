@@ -34,12 +34,13 @@
 
 2. 导入数据防泄漏服务的头文件和NAPI相关头文件。
     <!-- @[dlp_C_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/napi_init.cpp) -->
-   ``` c++
-   ```
-
-3. 查询当前DLP沙箱的权限信息。
-    <!-- @[dlp_C_GetDlpPermissionInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/napi_init.cpp) -->
-   ``` c++
+    
+    ``` C++
+    #include "napi/native_api.h"
+    #include <cstdint>
+    #include <cstdlib>
+    #include "DataProtectionKit/dlp_permission_api.h"
+    ```
    ```
 
 4. 获取指定DLP文件名的原始文件名。
