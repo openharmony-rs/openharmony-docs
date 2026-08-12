@@ -6,7 +6,7 @@
 <!--Designer: @ki_ja-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=e3c52b80ea412371fb2dea52b278788d7531f840 translatedAt=2026-07-16T06:49:36.128Z pushedAt=2026-07-20T09:33:35.824Z -->
+<!-- md-trans-meta sourceCommit=e5f4a12518daa36e56bebaf91a68665e9bbab092 translatedAt=2026-08-11T10:12:17.065Z pushedAt=2026-08-11T11:30:31.757Z -->
 
 ## How to Launch Application B During the Startup of Application A
 
@@ -220,7 +220,7 @@ export default class EntryAbility extends UIAbility {
       // Hide the bottom navigation area.
       windowClass.setSpecificSystemBarEnabled('navigationIndicator', false);
     } catch (exception) {
-      console.error('Failed to obtain isImmersiveLayout. Cause: ' + JSON.stringify(exception));
+      console.error('Failed to set status bar or navigation indicator bar invisible. Cause: ' + JSON.stringify(exception));
     }
   }
 }
@@ -250,7 +250,7 @@ export default class EntryAbility extends UIAbility {
       // Obtain the height of the status bar avoid area.
       let statusBarHeight = windowClass.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM).topRect.height;
     } catch (exception) {
-      console.error(`Failed to enable the listener for system avoid area changes. Cause code: ${exception.code}, message: ${exception.message}`);
+      console.error(`Failed to get window avoid area. Cause code: ${exception.code}, message: ${exception.message}`);
     }
   }
 }
@@ -538,7 +538,7 @@ If an app needs to respond immediately when the window mode changes (for example
       console.info(`Succeeded in enabling the listener for window status changes. Data: ${JSON.stringify(WindowStatusType)}`);
     });
   } catch (exception) {
-    console.error(`Failed to unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
+    console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
   }
   ```
 
@@ -571,6 +571,73 @@ The [setWindowPrivacyMode](../reference/apis-arkui/arkts-apis-window-Window.md#s
 For the PiP and floating ball windows, their privacy mode follows the parent window.
 
 To take a screenshot of a privacy window, you can use the [snapshotIgnorePrivacy()](../reference/apis-arkui/arkts-apis-window-Window.md#snapshotignoreprivacy18) API.
+
+## How to Implement a Blur Effect When the App Goes to the Background and Appears in the Multitasking Window
+
+Your app can listen to the main window lifecycle state and store the state using [AppStorage](../ui/state-management/arkts-appstorage.md). When the state is the foreground non-interactive state or the background state, set the [foregroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-foreground-blur-style.md#foregroundblurstyle) attribute for the component.
+
+The example code is as follows:
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info('Succeeded in loading the content.');
+    });
+    AppStorage.setOrCreate('windowStage', windowStage);
+    windowStage.on('windowStageEvent', (data) => {
+      console.info('Succeeded in enabling the listener for window stage event changes. Data : ' +
+        JSON.stringify(data));
+      // Perform corresponding processing based on the event state type.
+      if (data == window.WindowStageEventType.SHOWN) {
+        console.info('current window stage event is SHOWN');
+        AppStorage.setOrCreate('interact', true);
+        // When the app enters the foreground, it is in the interactive state by default.
+        // ...
+      } else if (data == window.WindowStageEventType.HIDDEN) {
+        console.info('current window stage event is HIDDEN');
+        AppStorage.setOrCreate('interact', false);
+        // When the app enters the background, it is in the non-interactive state by default.
+        // ...
+      } else if (data == window.WindowStageEventType.PAUSED) {
+        console.info('current window stage event is PAUSED');
+        AppStorage.setOrCreate('interact', false);
+        // When the foreground app enters the multitasking view and becomes non-interactive in the foreground, switch to the non-interactive state.
+        // ...
+      } else if (data == window.WindowStageEventType.RESUMED) {
+        console.info('current window stage event is RESUMED');
+        AppStorage.setOrCreate('interact', true);
+        // When the app returns to the foreground from the multitasking view and becomes interactive again, restore the interactive state.
+        // ...
+      }
+    });
+  }
+}
+```
+
+```ts
+// ets/pages/Index.ets
+@Entry
+@Component
+struct Index {
+  @StorageLink('interact') interact: boolean = true;
+  build() {
+    Column() {
+      Text('Text('Text Text')')
+        .fontSize(60)
+    }
+    .foregroundBlurStyle(this.interact ? BlurStyle.NONE : BlurStyle.COMPONENT_ULTRA_THICK) // The blur level can be customized.
+  }
+}
+```
 
 ## What Are the Position/Size Restrictions for APIs Such as resize and moveWindowTo
 
