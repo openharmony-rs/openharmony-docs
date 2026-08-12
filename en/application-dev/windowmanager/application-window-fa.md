@@ -6,7 +6,7 @@
 <!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=e3c52b80ea412371fb2dea52b278788d7531f840 translatedAt=2026-07-16T06:48:11.497Z pushedAt=2026-07-16T11:16:24.549Z -->
+<!-- md-trans-meta sourceCommit=d92a834fa37fa220b93af036aac498daf001d662 translatedAt=2026-08-11T10:10:31.776Z pushedAt=2026-08-12T02:23:28.840Z -->
 
 ## Basic Concepts
 
@@ -41,7 +41,7 @@ The common APIs involved in the above scenarios are shown in the following table
 | Window | setWindowBrightness(brightness: number, callback: AsyncCallback&lt;void&gt;): void | Sets the screen brightness value. |
 | Window | resize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void | Changes the current window size. |
 | Window | setWindowLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt; | Sets whether the layout of the main window or subwindow is an immersive layout. The value **true** indicates an immersive layout, and **false** indicates a non-immersive layout. |
-| Window | setWindowSystemBarEnable(names: Array&lt;'status'\|'navigation'&gt;): Promise&lt;void&gt; | Sets whether to show or hide the status bar, <!--RP1-->toolbar, or three-key navigation bar of the main window. The status bar is controlled by `status`, and the toolbar or three-key navigation bar is controlled by `navigation`. Currently, the show/hide setting for the toolbar is supported only on car devices.<!--RP1End--> This API uses a promise to return the result. For example, if this parameter is set to `['status',&nbsp;'navigation']`, all are shown; if set to `[]`, none are shown. |
+| Window | setWindowSystemBarEnable(names: Array&lt;'status'\|'navigation'&gt;): Promise&lt;void&gt; | Sets whether to show or hide the status bar<!--RP1-->, in addition to the toolbar and three-key navigation bar of the main window. The status bar is controlled by `status`, and the toolbar or three-key navigation bar is controlled by `navigation`. Currently, the show/hide setting for the toolbar is supported only on car devices. <!--RP1End-->This API uses a promise to return the result. For example, if this parameter is set to `['status',&nbsp;'navigation']`, all are shown; if set to `[]`, none are shown. |
 | Window | setWindowSystemBarProperties(systemBarProperties: SystemBarProperties): Promise&lt;void&gt; | Sets the properties of the status bar, toolbar, or three-key navigation bar of the main window. Currently, the property setting for the toolbar is supported only on car devices. This API uses a promise to return the result.<br>`systemBarProperties`: A collection of properties for the status bar, toolbar, or three-key navigation bar. |
 | Window | showWindow(callback: AsyncCallback\<void>): void | Shows the current window. |
 | Window | on(type: 'touchOutside', callback: Callback&lt;void&gt;): void | Enables listening for tap events outside the current window area. |
@@ -52,8 +52,8 @@ The common APIs involved in the above scenarios are shown in the following table
 You can create app subwindows as needed, such as dialogs, and perform operations like setting their attributes.
 
 > **NOTE**
-> The following scenarios are not recommended for using subwindows. It is advised to prioritize using the control [overlay](../reference/apis-arkui/arkui-ts/ts-universal-attributes-overlay.md) capability.
-> - On mobile devices (phones and tablets in non-freeform mode), subwindows cannot extend beyond the boundaries of the app's main window when it is in multi-window floating-window or split-screen mode, just like components.
+> The following scenarios are not recommended for using subwindows. You are advised to prioritize using the control [overlay](../reference/apis-arkui/arkui-ts/ts-universal-attributes-overlay.md) capability.
+> - On mobile devices (tablets in non-freeform mode and phones), subwindows cannot extend beyond the main window range when the main window is in multi-window floating window mode or split-screen mode, which is consistent with controls.
 > - In split-screen window and freeform window modes, controls have a better real-time following capability than subwindows when the main window position and size change.
 > - On some device platforms, due to actual system configuration restrictions, subwindows only have the system's default animation effects and rounded corner shadows, which apps cannot set, resulting in low flexibility.
 
@@ -153,7 +153,7 @@ Load and display the specific content of the subwindow through the `setUIContent
 
 4. Destroy the subwindow.
 
-When a subwindow is no longer needed, you can destroy it using the destroyWindow** API based on the scenario-specific implementation logic.
+When a subwindow is no longer needed, you can destroy it using the **destroyWindow** API based on the scenario-specific implementation logic.
 
    ```ts
    // When a subwindow is no longer needed, destroy it using the destroyWindow API based on the scenario-specific implementation logic.
