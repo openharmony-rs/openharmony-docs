@@ -239,4 +239,4 @@ try {
 | 名称       | 类型   | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
 | deviceId | [BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | 否    | 否    | 表示远端设备的MAC地址。 |
-| batteryLevel | int | 否    | 否    | 表示设备的电量值。取值范围为-1-100，-1表示没有电量信息。 |
+| batteryLevel | int | 否    | 否    | 表示设备的电量值。取值范围为-1至100，-1表示没有电量信息。 |
