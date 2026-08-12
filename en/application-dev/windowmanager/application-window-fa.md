@@ -6,7 +6,7 @@
 <!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=d92a834fa37fa220b93af036aac498daf001d662 translatedAt=2026-08-11T10:10:31.776Z pushedAt=2026-08-11T10:26:48.802Z -->
+<!-- md-trans-meta sourceCommit=d92a834fa37fa220b93af036aac498daf001d662 translatedAt=2026-08-11T10:10:31.776Z pushedAt=2026-08-12T02:23:28.840Z -->
 
 ## Basic Concepts
 
@@ -41,7 +41,7 @@ The common APIs involved in the above scenarios are shown in the following table
 | Window | setWindowBrightness(brightness: number, callback: AsyncCallback&lt;void&gt;): void | Sets the screen brightness value. |
 | Window | resize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void | Changes the current window size. |
 | Window | setWindowLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt; | Sets whether the layout of the main window or subwindow is an immersive layout. The value **true** indicates an immersive layout, and **false** indicates a non-immersive layout. |
-| Window | setWindowSystemBarEnable(names: Array&lt;'status'\|'navigation'&gt;): Promise&lt;void&gt; | Sets whether to show or hide the status bar, <!--RP1-->toolbar, or three-key navigation bar of the main window. The status bar is controlled by `status`, and the toolbar or three-key navigation bar is controlled by `navigation`. Currently, the show/hide setting for the toolbar is supported only on car devices.<!--RP1End--> This API uses a promise to return the result. For example, if this parameter is set to `['status',&nbsp;'navigation']`, all are shown; if set to `[]`, none are shown. |
+| Window | setWindowSystemBarEnable(names: Array&lt;'status'\|'navigation'&gt;): Promise&lt;void&gt; | Sets whether to show or hide the status bar<!--RP1-->, in addition to the toolbar and three-key navigation bar of the main window. The status bar is controlled by `status`, and the toolbar or three-key navigation bar is controlled by `navigation`. Currently, the show/hide setting for the toolbar is supported only on car devices. <!--RP1End-->This API uses a promise to return the result. For example, if this parameter is set to `['status',&nbsp;'navigation']`, all are shown; if set to `[]`, none are shown. |
 | Window | setWindowSystemBarProperties(systemBarProperties: SystemBarProperties): Promise&lt;void&gt; | Sets the properties of the status bar, toolbar, or three-key navigation bar of the main window. Currently, the property setting for the toolbar is supported only on car devices. This API uses a promise to return the result.<br>`systemBarProperties`: A collection of properties for the status bar, toolbar, or three-key navigation bar. |
 | Window | showWindow(callback: AsyncCallback\<void>): void | Shows the current window. |
 | Window | on(type: 'touchOutside', callback: Callback&lt;void&gt;): void | Enables listening for tap events outside the current window area. |
