@@ -28,21 +28,8 @@
 ## 开发步骤
 
 1. 在CMakeLists.txt中导入数据防泄漏的共享库，并链接该库。
+    <!-- @[dlp_C_makeLists](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/napi_init.cpp) -->
    ``` c++
-   cmake_minimum_required(VERSION 3.5.0)
-   project(DlpApiTest)
-
-   set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
-
-   if(DEFINED PACKAGE_FIND_FILE)
-       include(${PACKAGE_FIND_FILE})
-   endif()
-
-   include_directories(${NATIVERENDER_ROOT_PATH}
-                       ${NATIVERENDER_ROOT_PATH}/include)
-
-   add_library(entry SHARED napi_init.cpp)
-   target_link_libraries(entry PUBLIC libace_napi.z.so libohdlp_permission.so)
    ```
 
 2. 导入数据防泄漏服务的头文件和NAPI相关头文件。
