@@ -1662,7 +1662,7 @@ Icc账户信息。
 | ---------- | ------- | ---- |--- |---------------- |
 | simId      | number  |  否 |否 | SIM卡ID。与SIM卡绑定，从1开始递增。          |
 | slotIndex  | number  |  否  |否 | 卡槽ID。 <br/>- 0：卡槽1。<br/>- 1：卡槽2。|
-| isEsim     | boolean |  否 | 否| 标记卡是否是eSim。<br/>- true：是eSIM。<br/>- false：不是eSIM。 |
+| isEsim     | boolean |  否 | 否| 标记卡是否是eSIM。<br/>- true：是eSIM。<br/>- false：不是eSIM。 |
 | isActive   | boolean |  否 | 否| 卡是否被激活。<br/>- true：激活。<br/>- false：未激活。  |
 | iccId      | string  |  否 | 否| ICCID号码。        |
 | showName   | string  |  否 | 否| SIM卡显示名称。    |
