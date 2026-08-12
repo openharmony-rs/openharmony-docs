@@ -59,7 +59,7 @@ typedef bool (*OH_AudioAccessory_SetNoiseReductionCallback)(OH_AudioAccessory *a
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_AudioAccessory](capi-native-audio-accessory-common-h.md) *accessory | 音频配件。 |
+| OH_AudioAccessory *accessory | 音频配件。 |
 | [OH_AudioNoiseReductionMode](capi-native-audio-common-h.md#oh_audionoisereductionmode) mode | 配件当前的降噪模式。 |
 
 **返回值**
