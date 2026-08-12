@@ -34,7 +34,25 @@
     # the minimum version of CMake.
     cmake_minimum_required(VERSION 3.5.0)
     project(DlpApiTest)
+    <!-- @[dlp_C_GetDlpPermissionInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/napi_init.cpp) -->
     
+    ``` C++
+    static napi_value GetDlpPermissionInfo(napi_env env, napi_callback_info info)
+    {
+        DLP_FileAccess dlpFileAccess = NO_PERMISSION; //表示DLP文件授权类型
+        uint32_t flags = 0; //表示DLP文件的详细操作权限
+        DLP_ErrCode ret = OH_DLP_GetDlpPermissionInfo(&dlpFileAccess, &flags);
+        if (ret == DLP_ErrCode::ERR_OH_SUCCESS) {
+            napi_value result[2] = {nullptr};
+            napi_create_int32(env, dlpFileAccess, &result[0]);
+            napi_create_int32(env, flags, &result[1]);
+            return result[1];
+        }
+        napi_value result = nullptr;
+        napi_create_int32(env, ret, &result);
+        return result;
+    }
+    ```
     set(NATIVERENDER_ROOT_PATH &#36;{CMAKE_CURRENT_SOURCE_DIR})
     
     if(DEFINED PACKAGE_FIND_FILE)
