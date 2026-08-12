@@ -137,7 +137,7 @@
     - [FA模型的Context](application-context-fa.md)
     - [信息传递载体Want](want-fa.md)
     - [组件启动规则（FA模型）](component-startup-rules-fa.md)
-  - [进程模型](process-model-fa.md)
+  - [进程模型概述](process-model-fa.md)
   - [线程模型](thread-model-fa.md)
   <!--Del-->
   - [任务管理（仅对系统应用开放）](mission-management-fa-sys.md)
@@ -178,6 +178,6 @@
     - [Storage接口切换](storage-switch.md)
 <!--DelEnd-->
 - Native子进程开发指导<!--native-childprocess-development-->
-    - [创建Native子进程](capi-nativechildprocess-development-guideline.md)
+    - [创建/终止Native子进程（C/C++）](capi-nativechildprocess-development-guideline.md)
     - [获取Native子进程退出信息](capi-nativechildprocess-exit-info.md)
 - [Ability Kit术语](ability-terminology.md)

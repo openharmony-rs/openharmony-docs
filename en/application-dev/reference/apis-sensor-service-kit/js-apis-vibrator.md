@@ -190,7 +190,7 @@ Starts vibration based on a specified effect and attribute. This API uses a prom
 
 | Name   | Type                                  | Mandatory| Description                                                        |
 | --------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
-| effect    | [VibrateEffect](#vibrateeffect9)       | Yes   | Motor vibration effect, which supports four types:<br/>1. [VibratePreset](#vibratepreset9): triggers vibration according to preset vibration effects. This mode is suitable for short vibration scenarios in interactive feedback (such as tapping, long-pressing, sliding, and dragging). This API is recommended to maintain consistency with the system's overall vibration feedback experience.<br/>2. [VibrateFromFile](#vibratefromfile10): triggers vibration according to custom vibration configuration file. This mode is suitable for interactive feedback in complex scenarios requiring precise vibration patterns (such as realistic effects triggered by emoji packs, or feedback for in-game actions/mechanics).<br/>3. [VibrateTime](#vibratetime9): triggers vibration of the specified duration, providing basic control over the start and stop of vibration. This mode does not support customization of vibration intensity, frequency, or other parameters. As a result, the vibration adjustment is relatively coarse and not suitable for delivering a refined experience.<br/>4. [VibrateFromPattern<sup>18+</sup>](#vibratefrompattern18): triggers vibration according to a custom vibration pattern. The usage scenario is the same as **VibrateFromFile**. **VibrateFromFile** utilizes predefined effects in a custom configuration file, passing specific vibration events to the API via file descriptors. By contrast, **VibrateFromPattern** enables more flexible vibration event combinations, delivering them to the API as a vibration event array. |
+| effect    | [VibrateEffect](#vibrateeffect9)       | Yes   | Vibration effect, which supports four types:<br/>1. [VibratePreset](#vibratepreset9): triggers vibration according to preset vibration effects. This mode is suitable for short vibration scenarios in interactive feedback (such as tapping, long-pressing, sliding, and dragging). This API is recommended to maintain consistency with the system's overall vibration feedback experience.<br/>2. [VibrateFromFile](#vibratefromfile10): triggers vibration according to custom vibration configuration file. This mode is suitable for interactive feedback in complex scenarios requiring precise vibration patterns (such as realistic effects triggered by emoji packs, or feedback for in-game actions/mechanics).<br/>3. [VibrateTime](#vibratetime9): triggers vibration of the specified duration, providing basic control over the start and stop of vibration. This mode does not support customization of vibration intensity, frequency, or other parameters. As a result, the vibration adjustment is relatively coarse and not suitable for delivering a refined experience.<br/>4. [VibrateFromPattern<sup>18+</sup>](#vibratefrompattern18): triggers vibration according to a custom vibration pattern. The usage scenario is the same as **VibrateFromFile**. **VibrateFromFile** utilizes predefined effects in a custom configuration file, passing specific vibration events to the API via file descriptors. By contrast, **VibrateFromPattern** enables more flexible vibration event combinations, delivering them to the API as a vibration event array. |
 | attribute | [VibrateAttribute](#vibrateattribute9) | Yes  | Vibration attribute.                                              |
 
 **Return value**
@@ -715,7 +715,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 stopVibrationSync(): void
 
-Stops any form of motor vibration.
+Stops any form of vibration.
 
 **Required permissions**: ohos.permission.VIBRATE
 
@@ -740,7 +740,7 @@ For details about the error codes, see [Vibrator Error Codes](errorcode-vibrator
 
    // Use try catch to capture possible exceptions.
    try {
-     // Stop any form of motor vibration.
+     // Stop any form of vibration.
      vibrator.stopVibrationSync()
      console.info('Succeed in stopping vibration');
    } catch (error) {

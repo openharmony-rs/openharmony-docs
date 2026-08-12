@@ -2,15 +2,18 @@
 
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zzs_911-->
-<!--Designer: @stupig001-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @zzs911-->
+<!-- md-trans-meta sourceCommit=98c86f6f46673f0caaf107cfdd210b2b72550eae translatedAt=2026-08-11T04:14:19.776Z pushedAt=2026-08-11T06:20:47.917Z -->
 
 Screen capture enables you to collect screen data for scenarios like screen recording, meeting sharing, and live streaming. By calling the C APIs of the [AVScreenCapture](media-kit-intro.md#avscreencapture) module, you can collect audio and video data from both internal and external sources. The AVScreenCapture module works with the Window and Graphics modules to complete video capture.
 
 Starting from API version 22, the following capabilities are introduced to screen capture on PCs/2-in-1 devices:
+
 - Capture while the screen is off but not locked: This requires the ohos.permission.TIMEOUT_SCREENOFF_DISABLE_LOCK permission. For details about the permission configuration, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md).
+
 - Capture without privacy protection pop-ups: This requires the ohos.permission.CUSTOM_SCREEN_RECORDING permission. For details about the permission configuration, see [Requesting Restricted Permissions](../../security/AccessToken/restricted-permissions.md).
 
 ## Workflow Overview
@@ -45,7 +48,7 @@ The captured screen content can be output in the following forms:
 
 Link the dynamic libraries in the CMake script.
 
-```
+```CMake
 target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libnative_buffer.so libnative_media_core.so) 
 ```
 
@@ -76,6 +79,7 @@ After creating the AVScreenCapture instance, configure the required audio parame
 If microphone audio capture needs to be configured, do as follows:
 
 - Configure the ohos.permission.MICROPHONE permission. For details, see [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
+
 - Apply for a continuous task. For details, see [Continuous Task](../../task-management/continuous-task.md).
 
 When you save the captured content to a file, only internal capture is enabled by default. The microphone can be dynamically enabled or disabled during capture. Once enabled, both internal and external (microphone) audio can be recorded simultaneously.
@@ -95,7 +99,7 @@ OH_AudioCaptureInfo innerCapInfo = {
     .audioChannels = 2,
     .audioSource = OH_ALL_PLAYBACK
 };
-// Audio output specifications for screen capture.
+// Screen recording audio output specification configuration. audioBitrate ensures that the output file bit rate matches the configured expected bit rate, and has no strong correlation with audioSampleRate.
 OH_AudioEncInfo audioEncInfo = {
     .audioBitrate = 48000,
     .audioCodecformat = OH_AAC_LC
@@ -135,7 +139,7 @@ OH_VideoInfo videoInfo = {
 
 ### Initializing the AVScreenCapture Instance Configuration
 
-The AVScreenCapture instance configuration [OH_AVScreenRecorderConfig](../../reference/apis-media-kit/capi-avscreencapture-oh-avscreencaptureconfig.md) includes the capture data format [OH_VideoInfo](../../reference/apis-media-kit/capi-avscreencapture-oh-videoinfo.md), audio and video capture parameters [OH_AudioInfo](../../reference/apis-media-kit/capi-avscreencapture-oh-audioinfo.md), and screen capture mode [OH_CaptureMode](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode), which can be **OH_CAPTURE_HOME_SCREEN**, **OH_CAPTURE_SPECIFIED_SCREEN**, or **OH_CAPTURE_SPECIFIED_WINDOW**.
+The configuration information for an **AVScreenCapture** instance is [OH_AVScreenCaptureConfig](../../reference/apis-media-kit/capi-avscreencapture-oh-avscreencaptureconfig.md), which includes the recording data format [OH_VideoInfo](../../reference/apis-media-kit/capi-avscreencapture-oh-videoinfo.md), audio and video capture parameters [OH_AudioInfo](../../reference/apis-media-kit/capi-avscreencapture-oh-audioinfo.md), screen recording mode [OH_CaptureMode](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode), and more. The screen recording modes include **OH_CAPTURE_HOME_SCREEN**, **OH_CAPTURE_SPECIFIED_SCREEN**, and **OH_CAPTURE_SPECIFIED_WINDOW**.
 
 After configuration, call [OH_AVScreenCapture_Init](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_init) to apply the settings to the [OH_AVScreenCapture](../../reference/apis-media-kit/capi-avscreencapture-oh-avscreencapture.md) instance.
 
@@ -144,11 +148,11 @@ After configuration, call [OH_AVScreenCapture_Init](../../reference/apis-media-k
 > On PCs/2-in-1 devices, different screen capture modes trigger different pop-up behaviors. For details, see [PC/2-in-1 Pop-up Mode Configuration](#pc2-in-1-pop-up-mode-configuration).
 
 ```c++
-// Initialize the screen capture parameters by passing in an OH_AVScreenRecorderConfig struct.
+// Initialize screen recording and pass in the configuration OH_AVScreenCaptureConfig.
 OH_AVScreenCaptureConfig config = {
     .dataType = OH_ORIGINAL_STREAM,
     .audioInfo = audioInfo,
-    .captureMode = OH_CAPTURE_HOME_SCREEN, // Set the screen capture mode.
+    .captureMode = OH_CAPTURE_HOME_SCREEN, // Set the screen recording mode.
     .videoInfo = videoInfo
 };
 OH_AVScreenCapture_Init(capture, config);
@@ -156,7 +160,7 @@ OH_AVScreenCapture_Init(capture, config);
 
 ### Setting Callbacks for Data Updates, State Changes, and Error Reporting
 
-Callback functions are used to listen for events during screen capture, such as errors, audio/video stream generation, and state changes. For details, [Error Callback](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_avscreencaptureonerror), [Status Callback](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setstatecallback), and [Data Obtaining Callback](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setdatacallback).
+The callback functions are primarily used to listen for events such as errors, audio/video stream generation, and screen recording state changes during the recording process. For details, see the error callback [OH_AVScreenCaptureOnError](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_avscreencaptureonerror), state callback [OH_AVScreenCapture_SetStateCallback](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setstatecallback), and data callback [OH_AVScreenCapture_SetDataCallback](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setdatacallback).
 
 ```c++
 // Set callbacks.
@@ -181,10 +185,14 @@ void OnStateChange(struct OH_AVScreenCapture *capture, OH_AVScreenCaptureStateCo
 void OnBufferAvailable(OH_AVScreenCapture *capture, OH_AVBuffer *buffer, OH_AVScreenCaptureBufferType bufferType, int64_t timestamp, void *userData) {
     // Screen capture is in progress.
 }
-int *userData = nullptr;// User-defined data.
-OH_AVScreenCapture_SetErrorCallback(capture, OnError, userData);
-OH_AVScreenCapture_SetStateCallback(capture, OnStateChange, userData);
-OH_AVScreenCapture_SetDataCallback(capture, OnBufferAvailable, userData);
+
+void SetCallback(struct OH_AVScreenCapture *capture)
+{
+    int *userData = nullptr;// User-defined data.
+    OH_AVScreenCapture_SetErrorCallback(capture, OnError, userData);
+    OH_AVScreenCapture_SetStateCallback(capture, OnStateChange, userData);
+    OH_AVScreenCapture_SetDataCallback(capture, OnBufferAvailable, userData);
+}
 ```
 
 ### Starting Screen Capture
@@ -285,7 +293,7 @@ OH_AVScreenCapture_Release(capture);
 
 The system provides the following screen capture modes: [Capturing a Specified Screen](#capturing-a-specified-screen), [Capturing the Main Screen](#capturing-the-main-screen), and [Capturing a Specified Window](#capturing-a-specified-window-recommended).
 
-The screen capture mode uses the display ID (**displayId**) and window ID (**missionIds**). For details about how to obtain the display ID and window ID, see [Obtaining displayId](../../reference/apis-arkui/capi-oh-display-manager-h.md#oh_nativedisplaymanager_createalldisplays) and [Obtaining missionIds](../../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9).
+The screen recording mode uses the screen ID (**displayId**) and window ID (**missionIds**). For details on how to obtain them, see [OH_NativeDisplayManager_CreateAllDisplays](../../reference/apis-arkui/capi-oh-display-manager-h.md#oh_nativedisplaymanager_createalldisplays) and [getWindowProperties](../../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9), respectively.
 
 ### Capturing a Specified Screen
 
@@ -338,9 +346,12 @@ config.captureMode = OH_CAPTURE_SPECIFIED_WINDOW;
 config.videoInfo.videoCapInfo.displayId = 0;
 
 // (Optional) Pass a window ID if you want to capture a specific window.
-std::vector<int32_t> missionIds = {61}; // Window 61 is selected in the picker by default.
+int32_t* missionIds = new int32_t[1]{61}; // Indicates that the popup Picker selects window 61 by default.
 config.videoInfo.videoCapInfo.missionIDs = &missionIds[0];
-config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(missionIds.size());
+int32_t missionIdsLen = sizeof(missionIds) / sizeof(missionIds[0]);
+config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(missionIdsLen);
+
+// Execute "delete[] missionIds" after completing the parameter configuration.
 ```
 
 <!--RP2--><!--RP2End-->
@@ -357,9 +368,36 @@ config.captureMode = OH_CAPTURE_SPECIFIED_WINDOW;
 config.videoInfo.videoCapInfo.displayId = 0;
 
 // Pass multiple window IDs.
-vector<int32_t> missionIds = {60, 61}; // Windows 60 and 61 are to be captured simultaneously.
+int32_t* missionIds = new int32_t[2]{60, 61}; // Indicates that windows 60 and 61 are to be recorded simultaneously.
 config.videoInfo.videoCapInfo.missionIDs = &missionIds[0];
-config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(missionIds.size());
+int32_t missionIdsLen = sizeof(missionIds) / sizeof(missionIds[0]);
+config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(missionIdsLen);
+
+// Execute "delete[] missionIds" after completing the parameter configuration.
+```
+
+## Phone/Tablet Popup Mode Configuration
+
+Starting from API version 23, you can control whether to display the content sharing popup on Phone/Tablet devices through a policy.
+
+On PCs/2-in-1 devices, whether to display the content sharing popup is controlled by the recording mode. On Phone/Tablet devices, you can configure the content sharing popup mode through [OH_AVScreenCapture_StrategyForPickerPopUp](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup) without specifying a recording mode.
+
+```c++
+// Create an AVScreenCapture object.
+OH_AVScreenCapture* capture = OH_AVScreenCapture_Create();
+
+// Create a CaptureStrategy object.
+OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
+
+// Set whether to display the screen capture picker.
+// When set to true, the picker is displayed after screen recording starts.
+OH_AVScreenCapture_StrategyForPickerPopUp(strategy, true);
+
+// Set the CaptureStrategy for the AVScreenCapture instance.
+OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
+
+// Release the CaptureStrategy object.
+OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
 ```
 
 ## Additional Resources
