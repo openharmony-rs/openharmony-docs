@@ -30,7 +30,7 @@
 | [OH_AudioAccessoryInputStream_StartCallback](#oh_audioaccessoryinputstream_startcallback) | 输入流启动后触发的回调。 |
 | [OH_AudioAccessoryInputStream_StopCallback](#oh_audioaccessoryinputstream_stopcallback) | 输入流停止后触发的回调。 |
 | [OH_AudioAccessoryInputStream_ReleaseCallback](#oh_audioaccessoryinputstream_releasecallback) | 输入流释放时触发的回调。 |
-| [OH_AudioAccessoryInputStream_GetLatencyCallback](#oh_audioaccessoryinputstream_getlatencycallback) | 查询当前输入流时延的回调。 |
+| [OH_AudioAccessoryInputStream_GetLatencyCallback](#oh_audioaccessoryinputstream_getlatencycallback) | 查询当前输入流底层时延的回调。 |
 | [OH_AudioAccessoryInputStream_GetFramePositionCallback](#oh_audioaccessoryinputstream_getframepositioncallback) | 查询当前帧位置的回调。 |
 
 ### 函数
@@ -119,7 +119,7 @@ typedef bool (*OH_AudioAccessoryInputStream_GetLatencyCallback)(OH_AudioAccessor
 
 **描述**
 
-框架需要获取当前时延时触发，时延单位为毫秒。
+框架需要获取当前底层时延时触发，时延单位为毫秒。
 
 **起始版本：** 26.0.0
 
