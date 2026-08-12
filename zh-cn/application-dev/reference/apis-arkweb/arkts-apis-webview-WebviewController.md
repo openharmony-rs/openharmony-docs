@@ -19262,9 +19262,9 @@ setErrorPageEnabled(enable: boolean, includeSubframe: boolean): void
 > - 当includeSubframe设置为false时，本接口行为与[setErrorPageEnabled](#seterrorpageenabled20)<sup>20+</sup>一致，即仅启用mainframe错误页功能，不启用subframe错误页功能。
 > - 可通过[errorPageEvent.request.isMainFrame()](./arkts-basic-components-web-WebResourceRequest.md#ismainframe)判断错误来源是mainframe还是subframe，以便在onOverrideErrorPage回调中分别设置对应的自定义错误页。
 
-**ArkTS-Dyn起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -19289,18 +19289,22 @@ setErrorPageEnabled(enable: boolean, includeSubframe: boolean): void
 
 ArkTS-Dyn示例：
 ```ts
-// xxx.ets
 import { webview } from '@kit.ArkWeb';
+
 @Entry
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
+
   build() {
     Column() {
       Web({ src: $rawfile("iframe_error.html"), controller: this.controller })
         .onControllerAttached(() => {
           // 启用mainframe和subframe错误页功能
           this.controller.setErrorPageEnabled(true, true);
+          // 查询subframe错误页功能是否已启用
+          let isSubframeEnabled: boolean = this.controller.getSubframeErrorPageEnabled();
+          console.info("Subframe error page enabled: " + isSubframeEnabled);
         })
         .onOverrideErrorPage((event) => {
           if (event.request.isMainFrame()) {
@@ -19318,16 +19322,21 @@ ArkTS-Sta示例：
 'use static'
 import { webview } from '@kit.ArkWeb';
 import { Entry, Column, Component, Web, $rawfile } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController(undefined);
+
   build() {
     Column() {
       Web({ src: $rawfile("iframe_error.html"), controller: this.controller })
         .onControllerAttached(() => {
           // 启用mainframe和subframe错误页功能
           this.controller.setErrorPageEnabled(true, true);
+          // 查询subframe错误页功能是否已启用
+          let isSubframeEnabled: boolean = this.controller.getSubframeErrorPageEnabled();
+          console.info("Subframe error page enabled: " + isSubframeEnabled);
         })
         .onOverrideErrorPage((event) => {
           if (event.request.isMainFrame()) {
@@ -19363,9 +19372,9 @@ getSubframeErrorPageEnabled(): boolean
 
 查询是否启用了subframe错误页功能。
 
-**ArkTS-Dyn起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -19387,62 +19396,4 @@ getSubframeErrorPageEnabled(): boolean
 
 **示例：**
 
-ArkTS-Dyn示例：
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
-  build() {
-    Column() {
-      Web({ src: $rawfile("iframe_error.html"), controller: this.controller })
-        .onControllerAttached(() => {
-          // 启用mainframe和subframe错误页功能
-          this.controller.setErrorPageEnabled(true, true);
-          // 查询subframe错误页功能是否已启用
-          let isSubframeEnabled: boolean = this.controller.getSubframeErrorPageEnabled();
-          console.info("Subframe error page enabled: " + isSubframeEnabled);
-
-          // 仅启用mainframe错误页功能，不启用subframe
-          this.controller.setErrorPageEnabled(true, false);
-          let isSubframeEnabled2: boolean = this.controller.getSubframeErrorPageEnabled();
-          console.info("Subframe error page enabled after disable: " + isSubframeEnabled2);
-        })
-    }
-  }
-}
-```
-
-ArkTS-Sta示例：
-```ts
-'use static'
-import { webview } from '@kit.ArkWeb';
-import { Web, Column, Component, Entry, $rawfile } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
-  build() {
-    Column() {
-      Web({ src: $rawfile("iframe_error.html"), controller: this.controller })
-        .onControllerAttached(() => {
-          // 启用mainframe和subframe错误页功能
-          this.controller.setErrorPageEnabled(true, true);
-          // 查询subframe错误页功能是否已启用
-          let isSubframeEnabled: boolean = this.controller.getSubframeErrorPageEnabled();
-          console.info("Subframe error page enabled: " + isSubframeEnabled);
-
-          // 仅启用mainframe错误页功能，不启用subframe
-          this.controller.setErrorPageEnabled(true, false);
-          let isSubframeEnabled2: boolean = this.controller.getSubframeErrorPageEnabled();
-          console.info("Subframe error page enabled after disable: " + isSubframeEnabled2);
-        })
-    }
-  }
-}
-```
-
-> **示例说明：** 示例中使用的`iframe_error.html`文件与[setErrorPageEnabled](#seterrorpageenabled)示例中相同，需放置在应用资源的`resources/rawfile/`目录下。
+完整示例代码参考[setErrorPageEnabled](#seterrorpageenabled)。
