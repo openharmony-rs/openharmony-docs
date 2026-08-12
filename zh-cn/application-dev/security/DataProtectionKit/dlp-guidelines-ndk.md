@@ -29,11 +29,24 @@
 
 1. 在CMakeLists.txt中导入数据防泄漏的共享库，并链接该库。
     <!-- @[dlp_C_makeLists](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/CMakeLists.txt) -->
-   ```
-   
-3. 查询当前DLP沙箱的权限信息。
-    <!-- @[dlp_C_GetDlpPermissionInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/napi_init.cpp) -->
-   ```
+    
+    ``` Text
+    # the minimum version of CMake.
+    cmake_minimum_required(VERSION 3.5.0)
+    project(DlpApiTest)
+    
+    set(NATIVERENDER_ROOT_PATH &#36;{CMAKE_CURRENT_SOURCE_DIR})
+    
+    if(DEFINED PACKAGE_FIND_FILE)
+        include(&#36;{PACKAGE_FIND_FILE})
+    endif()
+    
+    include_directories(&#36;{NATIVERENDER_ROOT_PATH}
+                        &#36;{NATIVERENDER_ROOT_PATH}/include)
+    
+    add_library(entry SHARED napi_init.cpp)
+    target_link_libraries(entry PUBLIC libace_napi.z.so libohdlp_permission.so)
+    ```
 
 4. 获取指定DLP文件名的原始文件名。
     <!-- @[dlp_C_GetOriginalFileName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/napi_init.cpp) -->
