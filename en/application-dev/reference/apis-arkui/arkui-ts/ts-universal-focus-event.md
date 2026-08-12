@@ -1,10 +1,12 @@
 # Focus Event
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=4a385fbe4ecb2f00fa2216188478a1949854b133 translatedAt=2026-08-12T10:33:29.740Z pushedAt=2026-08-12T10:36:23.262Z -->
 
 A focus event is triggered when the page focus moves between components. It can be used to process related logic within the component.
 
@@ -79,7 +81,7 @@ struct FocusEventExample {
 
   build() {
     Column({ space: 20 }) {
-      // Activate the focus by pressing **Tab** on an external keyboard and navigate it among the three buttons using the up/down arrow keys. The focused button receives a color highlight, which disappears when focus moves away.
+      // When the focus moves among the three buttons, the button changes color when it gains focus and reverts to the original background color when it loses focus.
       Button('First Button')
         .backgroundColor(this.oneButtonColor)
         .width(260)

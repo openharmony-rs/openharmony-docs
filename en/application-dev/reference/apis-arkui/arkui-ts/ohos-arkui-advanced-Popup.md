@@ -1,10 +1,12 @@
 # Popup
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyi0309-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=2dfe38671273f661703aaa6ab2f67f5733a57714 translatedAt=2026-08-12T09:44:25.240Z pushedAt=2026-08-12T09:46:39.864Z -->
 
 The **Popup** component is used to display popups in a specific style.
 
@@ -33,8 +35,6 @@ Popup(options: PopupOptions): void
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
-
 **Parameters**
 
 | Name | Type                         | Mandatory| Description                 |
@@ -46,8 +46,6 @@ Popup(options: PopupOptions): void
 Defines the style parameters of the popup.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 | Name       | Type      | Read-Only     | Optional     | Description                           |
 | ----------- | ---------- | ------| --------------------------------- | --------------------------------- |
@@ -68,12 +66,10 @@ Provides text style settings.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
-
 | Name      | Type                                                        | Read-Only| Optional| Description        |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------ | ------------------ |
 | text       | [ResourceStr](ts-types.md#resourcestr)                       | No | No | Text content.    |
-| fontSize   | number \| string \| [Resource](ts-types.md#resource)         | No  | Yes | Text font size.<br>Default value: **$r('sys.float.ohos_id_text_size_body2')**<br>The string value must be convertible to a number (for example, **'10'**) or include a length unit (for example, **'10px'**); percentage-based strings are not supported.<br>Value range of number values: (0, +∞)|
+| fontSize   | number \| string \| [Resource](ts-types.md#resource)         | No   | Yes  | Font size of the text.<br />Default value: `$r('sys.float.ohos_id_text_size_body2')` <br/>For the string type, the value can be a string that can be converted to a number (such as '10') or a string with a length unit (such as '10px'). Setting a percentage string is not supported.<br/>For the number type, the value range is (0, +∞). When the type is number, the unit is fp. |
 | fontColor  | [ResourceColor](ts-types.md#resourcecolor)                   | No  | Yes | Text font color.<br>Default value: **$r('sys.color.ohos_id_color_text_secondary')**|
 | fontWeight | number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string | No  | Yes | Text font weight.<br>For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a heavier font weight. The default value is **400**.<br>For the string type, only strings of the number type are supported, for example, **"400"**, **"bold"**, **"bolder"**, **"lighter"**, **"regular"**, and **"medium"**, which correspond to the enumerated values in **FontWeight**.<br>Default value: **FontWeight.Regular**|
 
@@ -85,13 +81,11 @@ Defines the button attributes and events.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
-
 | Name     | Type                                                | Read-Only| Optional| Description                |
 | --------- | ---------------------------------------------------- | ---- | ---------------------- | ---------------------- |
 | text      | [ResourceStr](ts-types.md#resourcestr)               | No | No | Text of the button.        |
 | action    | () => void                                           | No  | Yes | Click callback of the button.|
-| fontSize  | number \| string \| [Resource](ts-types.md#resource) | No  | Yes | Font size of the button text.<br>Default value: **$r('sys.float.ohos_id_text_size_button2')**<br>The string value must be convertible to a number (for example, **'10'**) or include a length unit (for example, **'10px'**); percentage-based strings are not supported.<br>Invalid values are handled as default values.|
+| fontSize  | number \| string \| [Resource](ts-types.md#resource) | No   | Yes  | Font size of the button text.<br />Default value: `$r('sys.float.ohos_id_text_size_button2')`<br/>Optional values of the string type: a string that can be converted to a number (for example, '10') or a string with a length unit (for example, '10px'). Setting a percentage string is not supported.<br/>When the type is number, the unit is fp.<br/>The default value is used when an abnormal value is set. |
 | fontColor | [ResourceColor](ts-types.md#resourcecolor)           | No  | Yes | Font color of the button text.<br>Default value: **$r('sys.color.ohos_id_color_text_primary_activated')**|
 
 ##  PopupIconOptions
@@ -101,8 +95,6 @@ Defines the icon options.
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 | Name        | Type                                                        | Read-Only| Optional| Description                            |
 | ------------ | ------------------------------------------------------------ | ---- | ---------------------------------- | ---------------------------------- |
@@ -185,6 +177,7 @@ struct PopupExample {
 ![](figures/popup_7.png)
 
 ### Example 2: Implementing a Mirrored Layout
+
 This example shows how to implement a mirrored layout for a popup by configuring **direction**.
 
 ```ts
@@ -259,6 +252,7 @@ struct PopupPage {
 ![](figures/popup_8.png)
 
 ### Example 3: Setting the Custom Width
+
 This example demonstrates how to set the custom width for a popup using **maxWidth**.
 
 ```ts
