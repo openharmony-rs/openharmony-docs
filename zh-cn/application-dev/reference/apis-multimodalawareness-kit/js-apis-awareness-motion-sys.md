@@ -391,8 +391,6 @@ try {
 
 **起始版本：** 26.0.0
 
-**起始版本**：26.0.0
-
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
 **系统接口**：此接口为系统接口，仅系统应用可调用。
