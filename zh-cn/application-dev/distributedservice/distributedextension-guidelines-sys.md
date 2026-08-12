@@ -113,7 +113,7 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
               "name": "ohos.extension.DistributedExtension",
             }
           ],
-          "srcEntry": "./ets/common/MDSExtension.ts"
+          "srcEntry": "./ets/common/MDSExtension.ts",
         }
        ]
      }
