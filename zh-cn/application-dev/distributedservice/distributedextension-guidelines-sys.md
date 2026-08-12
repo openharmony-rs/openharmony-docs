@@ -95,64 +95,64 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
 
 1. 在配置文件中注册 `Extension`组件。
    
-   在应用配置文件 `module.json5`中新增 `"extensionAbilities"`字段，其中注册类型 `"type"`设置为 `"distributed"`，元数据信息["metadata"](../reference/apis-ability-kit/js-apis-bundleManager-metadata.md)新增一个 `"name"`为 `"ohos.extension.DistributedExtension"`的条目。
-   
-   DistributedExtensionAbility配置文件示例：
-   
-   ```json
-   "extensionAbilities": [
-     {
-       "name": "EntrydistributedAbility",
-       "srcEntry": "./ets/entrybackupability/EntryDistributedAbility.ets",
-       "type": "distributed",
-       "exported": false,
-       "metadata": [
-         {
-           "name": "ohos.extension.DistributedExtension",
-         }
-       ],
-       "srcEntry": "./ets/common/MDSExtension.ts",
-     }
-   ]
-   ```
+  在应用配置文件 `module.json5`中新增 `"extensionAbilities"`字段，其中注册类型 `"type"`设置为 `"distributed"`，元数据信息["metadata"](../reference/apis-ability-kit/js-apis-bundleManager-metadata.md)新增一个 `"name"`为 `"ohos.extension.DistributedExtension"`的条目。
+  
+  DistributedExtensionAbility配置文件示例：
+  
+  ```json
+  "extensionAbilities": [
+    {
+      "name": "EntrydistributedAbility",
+      "srcEntry": "./ets/entrybackupability/EntryDistributedAbility.ets",
+      "type": "distributed",
+      "exported": false,
+      "metadata": [
+        {
+          "name": "ohos.extension.DistributedExtension",
+        }
+      ],
+      "srcEntry": "./ets/common/MDSExtension.ts",
+    }
+  ]
+  ```
 2. 导入开发所需模块。
    
-   ```ts
-   import { AbilityConstant, Want } from '@kit.AbilityKit';
-   import { abilityConnectionManager, DistributedExtensionAbility } from '@kit.DistributedServiceKit';
-   ```
+  ```ts
+  import { AbilityConstant, Want } from '@kit.AbilityKit';
+  import { abilityConnectionManager, DistributedExtensionAbility } from '@kit.DistributedServiceKit';
+  ```
 3. 开发者可以自定义 `MDSExtension.ets`文件，类中继承 `DistributedExtensionAbility`，通过重写其 `onCreate、onDestroy`和 `onCollaborate`方法，使其达到在分布式能力扩展的创建、销毁和连接回调的使用。
    
-   下面的示例展示了一个空实现的 `MDSExtension.ets`文件，根据对应日志可观测其生命周期：
-   
-   ```ts
-   import { AbilityConstant, Want } from '@kit.AbilityKit';
-   import { abilityConnectionManager, DistributedExtensionAbility } from '@kit.DistributedServiceKit';   
-   
-   export default class DistributedExtension extends DistributedExtensionAbility {
-     onCreate(want: Want) {
-       console.info(`DistributedExtension Create ok`);
-       console.info(`DistributedExtension on Create want: ${JSON.stringify(want)}`);
-       console.info(`DistributedExtension on Create end`);
-     }
-   
-     onCollaborate(wantParam: Record<string, Object>) {
-       console.info(`DistributedExtension onCollabRequest Accept to the result of Ability collaborate`);
-       let sessionId = -1;
-       const collaborationValues = wantParam["CollaborationValues"] as abilityConnectionManager.CollaborationValues;
-       if (collaborationValues == undefined) {
-         return sessionId;
-       }
-   
-       console.info(`onCollab, collaborationValues: ${JSON.stringify(collaborationValues)}`);
-       return AbilityConstant.CollaborateResult.ACCEPT;
-     }
-   
-     onDestroy() {
-       console.info(`DistributedExtension onDestroy ok`);
-     }
-   }
-   ```
+  下面的示例展示了一个空实现的 `MDSExtension.ets`文件，根据对应日志可观测其生命周期：
+  
+  ```ts
+  import { AbilityConstant, Want } from '@kit.AbilityKit';
+  import { abilityConnectionManager, DistributedExtensionAbility } from '@kit.DistributedServiceKit';   
+  
+  export default class DistributedExtension extends DistributedExtensionAbility {
+    onCreate(want: Want) {
+      console.info(`DistributedExtension Create ok`);
+      console.info(`DistributedExtension on Create want: ${JSON.stringify(want)}`);
+      console.info(`DistributedExtension on Create end`);
+    }
+  
+    onCollaborate(wantParam: Record<string, Object>) {
+      console.info(`DistributedExtension onCollabRequest Accept to the result of Ability collaborate`);
+      let sessionId = -1;
+      const collaborationValues = wantParam["CollaborationValues"] as abilityConnectionManager.CollaborationValues;
+      if (collaborationValues == undefined) {
+        return sessionId;
+      }
+  
+      console.info(`onCollab, collaborationValues: ${JSON.stringify(collaborationValues)}`);
+      return AbilityConstant.CollaborateResult.ACCEPT;
+    }
+  
+    onDestroy() {
+      console.info(`DistributedExtension onDestroy ok`);
+    }
+  }
+  ```
 
 ## 常见问题
 
