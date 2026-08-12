@@ -1,4 +1,4 @@
-# Window Development Terminology
+# Glossary
 
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->

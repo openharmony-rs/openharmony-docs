@@ -76,7 +76,7 @@
 
 - [Window Metadata Configuration](window-config-m.md)
 
-- [Window Development Glossary](window-terminology.md)
+- [Glossary](window-terminology.md)
 
 - [Window Development FAQs](window-faqs.md)
 
