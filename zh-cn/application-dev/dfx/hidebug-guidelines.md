@@ -369,6 +369,33 @@ HiDebug提供修改转储堆快照级别的接口。
 | OH_HiDebug_StartProfiler | 按指定类型启动资源分配栈信息采集，须与OH_HiDebug_StopProfiler配对使用。<br/>**说明**：从API version 24开始，支持该接口。 |
 | OH_HiDebug_StopProfiler | 停止资源分配栈信息采集，须与OH_HiDebug_StartProfiler配对使用。<br/>**说明**：从API version 24开始，支持该接口。 |
 
+### 扩展资源 Profiler 配置（OH_HiDebug_ProfilerOptions）
+
+从API版本26.1.0开始，HiDebug提供基于不透明指针OH_HiDebug_ProfilerOptions的扩展配置能力。相较于OH_HiDebug_StartProfiler使用的OH_HiDebug_ResProfilerConfig透明结构体（仅支持maxDuration、filterSize、maxStackDepth、sampleInterval、statisticsInterval 5个字段），扩展配置接口支持配置异步嵌套深度与异步任务栈深度，且后续新增字段不会破坏ABI兼容性。
+
+使用流程：
+
+1. 调用OH_HiDebug_CreateProfilerOptions创建配置对象。
+2. 通过各Setter接口设置采集参数（未设置的参数使用默认值）。
+3. 调用OH_HiDebug_StartProfilerWithOptions启动采集。
+4. 采集结束（达到maxDuration自动停止，或调用OH_HiDebug_StopProfiler手动停止）后，通过回调获取结果文件路径。
+5. 调用OH_HiDebug_DestroyProfilerOptions释放配置对象。
+
+#### 接口说明（C/C++）
+
+| 接口名 | 描述 |
+| -------- | -------- |
+| OH_HiDebug_CreateProfilerOptions | 创建资源Profiler配置对象，用于扩展配置采集参数。须与OH_HiDebug_DestroyProfilerOptions配对使用。<br/>**说明**：从API版本26.1.0开始，支持该接口。 |
+| OH_HiDebug_DestroyProfilerOptions | 释放通过OH_HiDebug_CreateProfilerOptions创建的配置对象。<br/>**说明**：从API版本26.1.0开始，支持该接口。 |
+| OH_HiDebug_SetMaxDurationSec | 设置最大采集时长，单位秒，取值范围[1, 3600]。<br/>**说明**：从API版本26.1.0开始，支持该接口。 |
+| OH_HiDebug_SetFilterSize | 设置过滤阈值，单位字节，最小值为1。<br/>**说明**：从API版本26.1.0开始，支持该接口。 |
+| OH_HiDebug_SetMaxStackDepth | 设置最大回溯栈深度，单位帧，最大值为30。<br/>**说明**：从API版本26.1.0开始，支持该接口。 |
+| OH_HiDebug_SetStatisticsIntervalSec | 设置统计间隔，单位秒，最大值为3600。<br/>**说明**：从API版本26.1.0开始，支持该接口。 |
+| OH_HiDebug_SetSampleIntervalBytes | 设置采样间隔，单位字节，最小值为384。采样模式下，分配大小小于等于该间隔的按概率采样，大于的则全量采样。<br/>**说明**：从API版本26.1.0开始，支持该接口。 |
+| OH_HiDebug_SetMaxAsyncNestingDepth | 设置异步嵌套深度，取值范围[1, 16]。<br/>**说明**：从API版本26.1.0开始，支持该接口。 |
+| OH_HiDebug_SetMaxAsyncTaskStackDepth | 设置异步任务栈深度，取值范围[1, 256]。<br/>**说明**：从API版本26.1.0开始，支持该接口。 |
+| OH_HiDebug_StartProfilerWithOptions | 按指定类型与扩展配置启动资源分配栈信息采集，须与OH_HiDebug_StopProfiler配对使用。<br/>**说明**：从API版本26.1.0开始，支持该接口。 |
+
 ## 导出内存快照
 
 从API版本26.0.0开始，HiDebug支持注册内存导出监听器，用于在内存占用较高或通过[hidumper命令](hidumper.md#查询虚拟机堆内存)手动触发时导出应用内存快照，便于本地导出或上报。
