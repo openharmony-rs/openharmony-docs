@@ -988,7 +988,7 @@ on\(type: 'iccAccountInfoChange', callback: Callback\<void\>\): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 卡账户变化事件，参数固定为"iccAccountInfoChange"。                 |
-| callback | Callback\<void\> | 是   |回调函数。当卡账户变化时触发。 | |
+| callback | Callback\<void\> | 是   |回调函数。当卡账户变化时触发。 |
 
 **错误码：**
 
