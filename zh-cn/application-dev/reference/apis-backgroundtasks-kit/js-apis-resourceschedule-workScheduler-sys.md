@@ -61,7 +61,7 @@ setExecFrequency(frequency: FrequencyInfo): void
 | 201 | Permission denied. |
 | 202 | Not System App. |
 | 9700003 | System service operation failed. |
-| 9700006 | Check on frequency failed. |
+| 9700006 | Failed to check the execution frequency parameters. |
 
 **示例：**
 
@@ -111,7 +111,7 @@ resetExecFrequency(uid: number): void
 | 201 | Permission denied. |
 | 202 | Not System App. |
 | 9700003 | System service operation failed. |
-| 9700006 | Failed to check the uid. |
+| 9700006 | Failed to check the execution frequency parameters. |
 
 **示例：**
 
