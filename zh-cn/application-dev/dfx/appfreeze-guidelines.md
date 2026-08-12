@@ -176,7 +176,7 @@ NOTE: Current fault may be caused by the system's low memory or thermal throttli
 **NOTE信息说明：**
 
 - **从API version 20开始**，系统支持输出提示信息：Current fault may be caused by the system's low memory or thermal throttling, you may ignore it and analysis other faults。当整机资源告警（如整机低内存或热限频）时，系统会在NOTE中输出此信息，此时开发者可忽略应用冻屏故障。
-- **从API版本26.0.0开始**，系统支持输出提示信息：Current process has encountered fd leak which may lead to appfreeze, you may refer to resource overlimit event from hiAppEvent for further analysis。支持AppFreeze日志中关联[Resource Leak（资源泄漏）检测](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/resource-leak-guidelines)事件信息，若当前进程在发生冻屏故障前已存在内存泄漏，故障日志将提示泄漏事件，并指出其可能为导致冻屏的诱因，此时开发者可以优先解决资源泄露问题。
+- **从API版本26.0.0开始**，系统支持输出提示信息：Current process has encountered fd leak which may lead to appfreeze, you may refer to resource overlimit event from hiAppEvent for further analysis。支持AppFreeze日志中关联[Resource Leak（资源泄漏）检测](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/resource-leak-guidelines)事件信息，若当前进程在发生冻屏故障前已存在内存泄漏，故障日志将提示泄漏事件，并指出其可能为导致冻屏的诱因，此时开发者可以优先解决资源泄漏问题。
 - **从API版本26.0.0开始**，系统支持输出提示信息：Main thread is blocked by GC, which may be caused by high memory usage or system resource overload。
   - 如果[GC垃圾回收](../arkts-utils/gc-introduction.md)类型是Shared GC，系统不会输出此信息。
   - 如果在[GC垃圾回收](../arkts-utils/gc-introduction.md)期间，发生Appfreeze事件，并且GC垃圾回收类型是非Shared GC，系统会在NOTE中输出此信息，此时开发者可忽略应用冻屏故障。
