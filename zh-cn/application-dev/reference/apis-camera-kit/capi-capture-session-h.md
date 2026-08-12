@@ -447,6 +447,8 @@ Camera_ErrorCode OH_CaptureSession_BeginConfig(Camera_CaptureSession* session)
 
 开始捕获会话配置。
 
+注意：调用此接口后，OH_CaptureSession_SetSessionMode将不可使用，建议在BeginConfig之前调用SetSessionMode。
+
 **起始版本：** 11
 
 **参数：**
@@ -1342,6 +1344,8 @@ Camera_ErrorCode OH_CaptureSession_SetPhysicalAperture(const Camera_CaptureSessi
 
 设置物理光圈值。
 
+设置前，建议通过[OH_CaptureSession_GetSupportedPhysicalApertures](capi-capture-session-h.md#oh_capturesession_getsupportedphysicalapertures)获取支持的物理光圈列表。
+
 **起始版本：** 24
 
 **参数：**
@@ -1349,7 +1353,7 @@ Camera_ErrorCode OH_CaptureSession_SetPhysicalAperture(const Camera_CaptureSessi
 | 参数项 | 描述 |
 | -- | -- |
 | const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例。 |
-| double aperture | 待设置的光圈值。 |
+| double aperture | 待设置的光圈值。取值需在[OH_CaptureSession_GetSupportedPhysicalApertures](capi-capture-session-h.md#oh_capturesession_getsupportedphysicalapertures)返回的范围内。 |
 
 **返回：**
 
@@ -1394,6 +1398,8 @@ Camera_ErrorCode OH_CaptureSession_SetExposureBias(Camera_CaptureSession* sessio
 
 设置曝光补偿。
 
+设置前，建议通过[OH_CaptureSession_GetExposureBiasRange](capi-capture-session-h.md#oh_capturesession_getexposurebiasrange)获取支持配置的曝光补偿范围
+
 **起始版本：** 11
 
 **参数：**
@@ -1401,7 +1407,8 @@ Camera_ErrorCode OH_CaptureSession_SetExposureBias(Camera_CaptureSession* sessio
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例。 |
-| float exposureBias | 要设置的曝光补偿。 |
+| float exposureBias | 要设置的曝光补偿。取值范围需通过[OH_CaptureSession_GetExposureBiasRange](capi-capture-session-h.md#oh_capturesession_getexposurebiasrange)获取。
+参数 exposureBias 为 float 类型，其参数描述和函数描述（行1395）均未说明取值范围或取值原则。文档中存在 OH_CaptureSession_GetExposureBiasRange 接口可获取范围，但本接口未引用，用户无法得知有效取值区间。 |
 
 **返回：**
 
@@ -1477,7 +1484,7 @@ Camera_ErrorCode OH_CaptureSession_SetExposureDuration(const Camera_CaptureSessi
 | 参数项 | 描述 |
 | -- | -- |
 | const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
-| int32_t exposureDuration | 待设置的目标曝光时间。 |
+| int32_t exposureDuration | 待设置的目标曝光时间。取值范围需通过[OH_CaptureSession_GetSupportedExposureDurationRange](capi-capture-session-h.md#oh_capturesession_getsupportedexposuredurationrange)获取，单位：微秒。仅在[ExposureMode](capi-camera-h.md#camera_exposuremode).EXPOSURE_MODE_MANUAL手动曝光模式下设置生效。 |
 
 **返回：**
 
@@ -1766,6 +1773,8 @@ Camera_ErrorCode OH_CaptureSession_SetZoomRatio(Camera_CaptureSession* session, 
 
 设置缩放比例。
 
+设置前，建议通过[OH_CaptureSession_GetZoomRatioRange](capi-capture-session-h.md#oh_capturesession_getzoomratiorange)获取支持的缩放比例范围。
+
 **起始版本：** 11
 
 **参数：**
@@ -1773,7 +1782,7 @@ Camera_ErrorCode OH_CaptureSession_SetZoomRatio(Camera_CaptureSession* session, 
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例。 |
-| float zoom | 要设置的目标缩放比。<br> 设置可变焦距比到底层生效需要一定时间，获取正确设置的可变焦距比需要等待1~2帧的时间。 |
+| float zoom | 要设置的目标缩放比。取值范围需通过[OH_CaptureSession_GetZoomRatioRange](capi-capture-session-h.md#oh_capturesession_getzoomratiorange)获取。<br> 设置可变焦距比到底层生效需要一定时间，获取正确设置的可变焦距比需要等待1~2帧的时间。 |
 
 **返回：**
 
@@ -2207,7 +2216,7 @@ Camera_ErrorCode OH_CaptureSession_SetSmoothZoom(Camera_CaptureSession* session,
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例。 |
-| float targetZoom | 要设置的目标变焦比。 |
+| float targetZoom | 要设置的目标变焦比。 取值范围需通过[OH_CaptureSession_GetZoomRatioRange](capi-capture-session-h.md#oh_capturesession_getzoomratiorange)获取。|
 | [Camera_SmoothZoomMode](capi-camera-h.md#camera_smoothzoommode) smoothZoomMode | 平滑变焦模式。 |
 
 **返回：**
@@ -2301,6 +2310,8 @@ Camera_ErrorCode OH_CaptureSession_SetActiveColorSpace(Camera_CaptureSession* se
 **描述**
 
 设置当前色彩空间。
+
+设置的值需在[OH_CaptureSession_GetSupportedColorSpaces](capi-capture-session-h.md#oh_capturesession_getsupportedcolorspaces)获取的支持列表中
 
 **起始版本：** 12
 
@@ -2805,6 +2816,8 @@ Camera_ErrorCode OH_CaptureSession_GetSupportedEffectTypes(Camera_CaptureSession
 
 获取相机控制器支持的效果类型。
 
+调用[OH_CaptureSession_DeleteSupportedEffectTypes](capi-capture-session-h.md#oh_capturesession_deletesupportedeffecttypes)删除相机控制器效果类型列表。
+
 **起始版本：** 20
 
 **参数：**
@@ -3226,6 +3239,8 @@ Camera_ErrorCode OH_CaptureSession_SetOISModeCustom(const Camera_CaptureSession*
 
 为对应轴设置自定义光学防抖偏移值。
 
+设置前，建议通过[OH_CaptureSession_GetSupportedOISBiasRange](capi-capture-session-h.md#oh_capturesession_getsupportedoisbiasrange)获取对应轴支持的偏移范围。
+
 **起始版本：** 24
 
 **参数：**
@@ -3233,8 +3248,8 @@ Camera_ErrorCode OH_CaptureSession_SetOISModeCustom(const Camera_CaptureSession*
 | 参数项 | 描述 |
 | -- | -- |
 | const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
-| float pitchBias | 俯仰轴偏移值。 |
-| float yawBias | 偏航轴偏移值。 |
+| float pitchBias | 俯仰轴偏移值。 取值范围需通过[OH_CaptureSession_GetSupportedOISBiasRange](capi-capture-session-h.md#oh_capturesession_getsupportedoisbiasrange)获取。|
+| float yawBias | 偏航轴偏移值。 设置前，建议通过[OH_CaptureSession_GetSupportedOISBiasRange](capi-capture-session-h.md#oh_capturesession_getsupportedoisbiasrange)获取支持配置的偏移值范围。|
 
 **返回：**
 
