@@ -205,7 +205,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // bundleName需为已安装应用的包名
 let bundleName:string = ";";
 
-metadataBinding.notifyMetadataBindingEvent(bundleName).then(appLink:string) => {
+metadataBinding.notifyMetadataBindingEvent(bundleName).then((appLink:string) => {
     console.info('notify metadata:' + appLink);
 }).catch((error: BusinessError) => {
     console.error(`Failed to notify metadata. Code: ${error.code}, message: ${error.message}`);
