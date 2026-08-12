@@ -42,6 +42,7 @@
 5. 查询当前应用是否运行在DLP沙箱环境。
     <!-- @[dlp_C_IsInSandbox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/napi_init.cpp) -->
    ``` 
+   
 6. 设置沙箱应用配置信息。
     <!-- @[dlp_C_SetSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/napi_init.cpp) -->
    ``` 
