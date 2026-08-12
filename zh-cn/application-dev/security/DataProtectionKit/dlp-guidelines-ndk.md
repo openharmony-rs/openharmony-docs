@@ -28,7 +28,7 @@
 ## 开发步骤
 
 1. 在CMakeLists.txt中导入数据防泄漏的共享库，并链接该库。
-    <!-- @[dlp_C_makeLists](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @[dlp_C_makeLists](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/CMakeLists.txt) -->
    ``` 
    ```
 
@@ -37,6 +37,10 @@
     
    ``` 
    ```
+   
+3. 查询当前DLP沙箱的权限信息。
+    <!-- @[dlp_C_GetDlpPermissionInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/napi_init.cpp) -->
+   ``` 
 
 4. 获取指定DLP文件名的原始文件名。
     <!-- @[dlp_C_GetOriginalFileName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/napi_init.cpp) -->
