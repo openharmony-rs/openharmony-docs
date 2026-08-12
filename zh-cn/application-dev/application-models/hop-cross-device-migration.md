@@ -53,7 +53,7 @@
 
 1. 在[module.json5配置文件](../quick-start/module-configuration-file.md)的abilities标签中配置跨端迁移标签`continuable`。
 
-   ```json
+   ```json5
    {
      "module": {
        "abilities": [
@@ -377,7 +377,7 @@ export default class MigrationAbility extends UIAbility {
    > continueType在本应用中要保证唯一，字符串以字母、数字和下划线组成，最大长度127个字节，不支持中文。
    > continueType标签类型为字符串数组，如果配置了多个字段，当前仅第一个字段会生效。
 
-```json
+```json5
    {
      "module": {
        "abilities": [
@@ -416,7 +416,7 @@ export default class MigrationAbility extends UIAbility {
 
    不同BundleName的相同应用在设备A和设备B之间相互迁移，设备A应用的BundleName为com.demo.example1，设备B应用的BundleName为com.demo.example2。
 
-```JSON
+```JSON5
 {
   "module": {
     "abilities": [
@@ -432,7 +432,7 @@ export default class MigrationAbility extends UIAbility {
 }
 ```
 
-```JSON
+```JSON5
 {
   "module": {
     "abilities": [
@@ -452,7 +452,7 @@ export default class MigrationAbility extends UIAbility {
 ### 支持快速拉起目标应用
 默认情况下，发起迁移后不会立即拉起对端的目标应用，而是等待迁移数据从源端同步到对端后，才会拉起。为了发起迁移后能够立即拉起目标应用，做到及时响应，可以通过在continueType标签中添加“_ContinueQuickStart”后缀进行生效，这样待迁移数据从源端同步到对端后只恢复迁移数据即可，提升应用迁移体验。
 
-   ```json
+   ```json5
    {
      "module": {
        "abilities": [
