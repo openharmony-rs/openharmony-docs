@@ -256,20 +256,30 @@
     static int32_t GetTemporalLayerID(OH_AVBuffer *buffer)
     {
         int32_t layerID = -1;
+        // 该能力依赖 API 26 Native SDK 中的 OH_MD_KEY_VIDEO_ENCODER_TEMPORAL_LAYER_ID。
+        // 若编译找不到该 Key，请确认 SDK 路径并清理 CMake 缓存；兼容旧 SDK 时可在cmake中将
+        // AVCODEC_SAMPLE_ENABLE_TEMPORAL_LAYER_ID 设为 OFF。
+    #ifdef AVCODEC_SAMPLE_ENABLE_TEMPORAL_LAYER_ID
         OH_AVFormat *format = OH_AVBuffer_GetParameter(buffer);
-        OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_TEMPORAL_LAYER_ID, &layerID);
+        if (format != nullptr) {
+            OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_TEMPORAL_LAYER_ID, &layerID);
+            OH_AVFormat_Destroy(format);
+        }
+    #else
+        (void)buffer;
+    #endif
         return layerID;
     }
     
     void SampleCallback::OnNewOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
     {
-        if (userData == nullptr) {
-            return;
-        }
         // ...
     
         // 从AVBuffer中获取时域层级信息。
         int32_t layerID = GetTemporalLayerID(buffer);
+        if (layerID >= 0 && index % LIMIT_LOGD_FREQUENCY == 0) {
+            AVCODEC_SAMPLE_LOGD("Temporal layer ID: %{public}d", layerID);
+        }
     }
     ```
 

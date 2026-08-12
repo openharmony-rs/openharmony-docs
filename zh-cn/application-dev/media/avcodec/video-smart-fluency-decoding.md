@@ -82,11 +82,16 @@ int32_t VideoDecoder::Configure(const SampleInfo &sampleInfo)
         OH_AVFormat_SetIntValue(format, OH_MD_KEY_ENABLE_SYNC_MODE, sampleInfo.codecSyncMode);
     }
     if (sampleInfo.isSmartFluencySupported) {
-        // 在初始化阶段配置ADAPTIVE模式，确保解码过程MV信息输出到丢帧判决模块。
-        // MV信息输出需在初始化阶段使能ADAPTIVE模式，不支持运行态动态使能。
-        // 若中途动态切入ADAPTIVE模式，丢帧判决模块将无法获取MV信息，退化为按固定间隔丢帧。
+        // 该能力依赖 API 26 Native SDK 中的智能流畅 Key 和枚举。若编译提示符号未定义，
+        // 请确认 SDK 路径并清理 CMake 缓存；兼容旧 SDK 时可在 CMake 中将
+        // AVCODEC_SAMPLE_ENABLE_SMART_FLUENCY 设为 OFF。
+#ifdef AVCODEC_SAMPLE_ENABLE_SMART_FLUENCY
+        // Configure FULL before playback, then switch to ADAPTIVE at X2/X3.
         OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_MODE,
-                                OH_FRAME_RETENTION_MODE_ADAPTIVE);
+            OH_FRAME_RETENTION_MODE_FULL);
+#else
+        AVCODEC_SAMPLE_LOGW("Smart fluency is not enabled in current native SDK build");
+#endif
     }
 
     int ret = OH_VideoDecoder_Configure(decoder_, format);
@@ -106,13 +111,21 @@ int32_t VideoDecoder::Configure(const SampleInfo &sampleInfo)
 ``` C++
 int32_t VideoDecoder::OnUserSpeedChanged(double targetSpeed)
 {
+    // 该能力依赖 API 26 Native SDK 中的智能流畅 Key 和枚举。若编译提示符号未定义，
+    // 请确认 SDK 路径并清理 CMake 缓存；兼容旧 SDK 时可将 AVCODEC_SAMPLE_ENABLE_SMART_FLUENCY 设为 OFF。
+#ifndef AVCODEC_SAMPLE_ENABLE_SMART_FLUENCY
+    (void)targetSpeed;
+    AVCODEC_SAMPLE_LOGW("Smart fluency is not enabled in current native SDK build");
+    return AVCODEC_SAMPLE_ERR_OK;
+#else
     OH_AVFormat *param = OH_AVFormat_Create();
     CHECK_AND_RETURN_RET_LOG(param != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "AVFormat create failed");
 
     // 引入epsilon处理double类型的精度比较。
     const double EPSILON = 1e-6;
 
-    if (targetSpeed > 1.0 + EPSILON) {
+    const bool enableAdaptive = targetSpeed > 1.0 + EPSILON;
+    if (enableAdaptive) {
         // 场景：高倍速播放(如1.5x，2.0x，3.0x等)。
         // 策略：使能感知自适应模式。
         OH_AVFormat_SetIntValue(param, OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_MODE,
@@ -130,7 +143,13 @@ int32_t VideoDecoder::OnUserSpeedChanged(double targetSpeed)
     OH_AVFormat_Destroy(param);
     CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR,
                              "SetParameter failed, ret: %{public}d", ret);
+    if (enableAdaptive) {
+        AVCODEC_SAMPLE_LOGI("Smart fluency mode changed to ADAPTIVE, speed: %{public}.2f", targetSpeed);
+    } else {
+        AVCODEC_SAMPLE_LOGI("Smart fluency mode changed to FULL");
+    }
     return AVCODEC_SAMPLE_ERR_OK;
+#endif
 }
 ```
 
@@ -148,6 +167,13 @@ int32_t VideoDecoder::OnUserSpeedChanged(double targetSpeed)
 ``` C++
 int32_t VideoDecoder::OnThermalWarningReceived(double ratio)
 {
+    // 该能力依赖 API 26 Native SDK 中的智能流畅 Key 和枚举。若编译提示符号未定义，
+    // 请确认 SDK 路径并清理 CMake 缓存；兼容旧 SDK 时可将 AVCODEC_SAMPLE_ENABLE_SMART_FLUENCY 设为 OFF。
+#ifndef AVCODEC_SAMPLE_ENABLE_SMART_FLUENCY
+    (void)ratio;
+    AVCODEC_SAMPLE_LOGW("Smart fluency is not enabled in current native SDK build");
+    return AVCODEC_SAMPLE_ERR_OK;
+#else
     OH_AVFormat *param = OH_AVFormat_Create();
     CHECK_AND_RETURN_RET_LOG(param != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "AVFormat create failed");
 
@@ -164,5 +190,6 @@ int32_t VideoDecoder::OnThermalWarningReceived(double ratio)
     CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR,
                              "SetParameter failed, ret: %{public}d", ret);
     return AVCODEC_SAMPLE_ERR_OK;
+#endif
 }
 ```
