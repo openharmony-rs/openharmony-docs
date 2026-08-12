@@ -42,7 +42,7 @@
 - [资源分类与访问](resource-categories-and-access.md)
 - 学习ArkTS语言<!--learning-arkts-->
   - [初识ArkTS语言](arkts-get-started.md)
-  - 语法<!--arkts-language-guide-->
+  - ArkTS语法<!--arkts-language-guide-->
     - [基础知识](arkts-language-guide-basics.md)
     - [基本操作符](arkts-language-guide-basic-operators.md)
     - [字符串](arkts-language-guide-strings.md)
@@ -63,13 +63,13 @@
     - [高级运算符](arkts-language-guide-advanced-operators.md)
     - [模块系统](arkts-language-guide-module-system.md)
     - [注解](arkts-language-guide-annotations.md)
-  - [ArkTS语言规范](arkts-coding-style-guide.md)
+  - [ArkTS编程规范](arkts-coding-style-guide.md)
   - 从TypeScript到ArkTS的适配指导<!--typescript-to-arkts-migration-->
     - [ArkTS语法适配背景](arkts-migration-background.md)
     - [从TypeScript到ArkTS的适配规则](typescript-to-arkts-migration-guide.md)
     - [适配指导案例](arkts-more-cases.md)
   - [ArkTS静态背景](arkts-sta-background.md)
-  - [ArkTS静态语言介绍](introduction-to-arkts-sta.md)
+  - [静态ArkTS语言介绍](introduction-to-arkts-sta.md)
   - 从ArkTS-Dyn到ArkTS-Sta的适配指导<!--arkts-dyn-to-arkts-sta-migration-->
     - [ArkTS-Sta语法迁移规则](arkts-dyn-to-sta-syntax-rules.md)
     - [ArkTS Migration Visualizer使用指南](arkts-migration-visualizer-instructions.md)
@@ -78,9 +78,9 @@
       - [Constructor](builtin/arkts-dyn-to-sta-builtin-Constructor.md)
       - [ReadOnly](builtin/arkts-dyn-to-sta-builtin-ReadOnly.md)
       - [Annotations](builtin/arkts-dyn-to-sta-builtin-annotations.md)
-      - [stdlib1](builtin/arkts-dyn-to-sta-builtin-stdlib1.md)
-      - [stdlib2](builtin/arkts-dyn-to-sta-builtin-stdlib2.md)
-      - [stdlib3](builtin/arkts-dyn-to-sta-builtin-stdlib3.md)
+      - [StdLib1](builtin/arkts-dyn-to-sta-builtin-stdlib1.md)
+      - [StdLib2](builtin/arkts-dyn-to-sta-builtin-stdlib2.md)
+      - [StdLib3](builtin/arkts-dyn-to-sta-builtin-stdlib3.md)
       - [BigUint64Array](builtin/arkts-dyn-to-sta-builtin-BigUint64Array.md)
       - [BigInt64Array](builtin/arkts-dyn-to-sta-builtin-BigInt64Array.md)
       - [Float32Array](builtin/arkts-dyn-to-sta-builtin-Float32Array.md)
@@ -92,8 +92,8 @@
       - [Uint16Array](builtin/arkts-dyn-to-sta-builtin-Uint16Array.md)
       - [Uint32Array](builtin/arkts-dyn-to-sta-builtin-Uint32Array.md)
       - [Uint8ClampedArray](builtin/arkts-dyn-to-sta-builtin-Uint8ClampedArray.md)
-    - [ArkTS-Sta 并发迁移规则](arkts-dyn-to-sta-concurrency-rules.md)
-    - [ArkTS-Sta EAWorker迁移规则](arkts-dyn-to-sta-worker-migration-guide.md)
+    - [ArkTS-Sta并发迁移规则](arkts-dyn-to-sta-concurrency-rules.md)
+    - [ArkTS-Sta EAWorker迁移指导](arkts-dyn-to-sta-worker-migration-guide.md)
     - [ArkTS-Sta SDK迁移规则](arkts-dyn-to-sta-sdk-rules.md)
     - [ArkTS-Sta迁移工具使用指导](arkts-easytrans-cli-instructions.md)
     - [ArkTS-Sta迁移工具(EasyTrans)用户手册](arkts-easytrans-userguide.md)
