@@ -458,7 +458,10 @@ subscribe(capability: OnscreenAwarenessCap, callback: Callback&lt;OnscreenAwaren
 
 开启屏幕内容主动感知，并订阅屏幕感知结果。
 
-**需要权限**：ohos.permission.GET_SCREEN_CONTENT
+**需要权限**：
+
+- API版本26+：ohos.permission.ONSCREEN_AWARENESS.
+- API版本23-24：ohos.permission.GET_SCREEN_CONTENT.
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -480,7 +483,7 @@ subscribe(capability: OnscreenAwarenessCap, callback: Callback&lt;OnscreenAwaren
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.GET_SCREEN_CONTENT. |
+| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.ONSCREEN_AWARENESS or ohos.permission.GET_SCREEN_CONTENT. |
 | 202      | Permission check failed. A non-system application uses the system API. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
 | 34000001 | Service exception. |
@@ -516,7 +519,10 @@ unsubscribe(capability: OnscreenAwarenessCap, callback?: Callback&lt;OnscreenAwa
 
 关闭屏幕内容主动感知，并取消订阅屏幕感知结果。
 
-**需要权限**：ohos.permission.GET_SCREEN_CONTENT
+**需要权限**：
+
+- API版本26+：ohos.permission.ONSCREEN_AWARENESS.
+- API版本23-24：ohos.permission.GET_SCREEN_CONTENT.
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -535,7 +541,7 @@ unsubscribe(capability: OnscreenAwarenessCap, callback?: Callback&lt;OnscreenAwa
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.GET_SCREEN_CONTENT. |
+| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.ONSCREEN_AWARENESS or ohos.permission.GET_SCREEN_CONTENT. |
 | 202      | Permission check failed. A non-system application uses the system API. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
 | 34000001 | Service exception. |
@@ -563,7 +569,10 @@ trigger(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): P
 
 主动触发屏幕内容感知，获取当前屏幕感知结果。
 
-**需要权限**：ohos.permission.GET_SCREEN_CONTENT
+**需要权限**：
+
+- API版本26+：ohos.permission.ONSCREEN_AWARENESS.
+- API版本23-24：ohos.permission.GET_SCREEN_CONTENT.
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -588,7 +597,7 @@ trigger(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): P
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.GET_SCREEN_CONTENT. |
+| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.ONSCREEN_AWARENESS or ohos.permission.GET_SCREEN_CONTENT. |
 | 202      | Permission check failed. A non-system application uses the system API. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
 | 34000001 | Service exception. |
@@ -624,7 +633,10 @@ capture(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): P
 
 主动触发屏幕内容感知，获取页面信息。
 
-**需要权限**：ohos.permission.GET_SCREEN_CONTENT
+**需要权限**：
+
+- API版本26+：ohos.permission.ONSCREEN_AWARENESS.
+- API版本23-24：ohos.permission.GET_SCREEN_CONTENT.
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -656,7 +668,7 @@ capture接口支持的capList能力列表，如下：
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.GET_SCREEN_CONTENT. |
+| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.ONSCREEN_AWARENESS or ohos.permission.GET_SCREEN_CONTENT. |
 | 202      | Permission check failed. A non-system application uses the system API. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
 | 34000001 | Service exception. |
@@ -702,7 +714,10 @@ interact(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): 
 
 主动触发屏幕行为交互，实现对界面行为的识别与行为反馈。例如：当capList能力列表为JumpContext时，点击后通过反馈信息精准跳转至指定段落并实现文字高亮。当capList能力列表为InjectEvent时，点击后执行相应的点击事件。
 
-**需要权限**：ohos.permission.GET_SCREEN_CONTENT
+**需要权限**：
+
+- API版本26+：ohos.permission.ONSCREEN_AWARENESS.
+- API版本23-24：ohos.permission.GET_SCREEN_CONTENT.
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -734,7 +749,7 @@ interact接口支持的capList能力列表，如下：
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.GET_SCREEN_CONTENT. |
+| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.ONSCREEN_AWARENESS or ohos.permission.GET_SCREEN_CONTENT. |
 | 202      | Permission check failed. A non-system application uses the system API. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
 | 34000001 | Service exception. |
@@ -805,7 +820,10 @@ apperceive(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions)
 
 主动触发屏幕内容感知，获取屏幕内容进行快照分析。
 
-**需要权限**：ohos.permission.GET_SCREEN_CONTENT
+**需要权限**：
+
+- API版本26+：ohos.permission.ONSCREEN_AWARENESS.
+- API版本23-24：ohos.permission.GET_SCREEN_CONTENT.
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -839,7 +857,7 @@ apperceive接口支持的groupId能力列表，如下：
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.GET_SCREEN_CONTENT. |
+| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.ONSCREEN_AWARENESS or ohos.permission.GET_SCREEN_CONTENT. |
 | 202      | Permission check failed. A non-system application uses the system API. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
 | 34000001 | Service exception. |
