@@ -31,7 +31,7 @@ import { appManager } from '@kit.AbilityKit';
 | processName | string | 否 | 否 | 进程名称。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
 | bundleNames | Array&lt;string&gt; | 否 | 否 | 进程中所有运行的Bundle名称。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
 | state<sup>10+</sup> | [appManager.ProcessState](js-apis-app-ability-appManager.md#processstate10)| 否 | 否 | 当前进程运行状态。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
-| bundleType<sup>12+</sup> | [bundleManager.BundleType](js-apis-bundleManager.md#bundletype) | 否 | 否 | 当前进程运行的包类型。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| bundleType<sup>12+</sup> | [bundleManager.BundleType](js-apis-bundleManager.md#bundletype) | 否 | 否 | 当前进程运行的Bundle类型。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | appCloneIndex<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 应用分身索引，用于标识不同的分身应用实例。0表示主应用，正整数表示对应的分身实例索引。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | isPreload<sup>26+</sup> | boolean   | 否   | 是   | 进程是否为预加载。true表示进程当前处于预加载状态；false表示不是预加载进程，或预加载状态已被消费。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 26.0.0开始，该接口支持在原子化服务中使用。<br>**起始版本**：26.0.0  |
 
