@@ -654,6 +654,10 @@ static getUsingNumberingSystem(): string
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                     | 说明    |
