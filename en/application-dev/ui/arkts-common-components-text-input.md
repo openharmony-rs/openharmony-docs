@@ -1,76 +1,54 @@
 # Text Input (TextInput/TextArea/Search)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @kangshihui-->
+<!--Owner: @jiaxiaguang-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=16d5012cdda87180d94e0c1ee3584d2af7b86146 translatedAt=2026-07-29T12:47:34.065Z pushedAt=2026-07-31T01:56:14.396Z -->
 
+TextInput and TextArea are input box components used to respond to user input, such as input in comment sections, chat boxes, and forms. They can also be combined with other components to build functional pages, for example, login and registration pages. For details, see the API documentation for [TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md) and [TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md). Search is a special input box component called a search box, which includes a search icon in its default style. For details, see the API documentation for [Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md).
 
-The **TextInput** and **TextArea** components are input components used to accept input from the user, such as comments, chat messages, and table content. They can be used in combination with other components to meet more diversified purposes, for example, login and registration. For details, see [TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md) and [TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md). The **Search** component is a specialized input box (referred to as a "search box") with a default search icon in its style. For details, see [Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md).
-
-
->  **NOTE**
+> **NOTE**
 >
->  Only plain text style is supported. For rich text requirements, use the [RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md) component instead.
+> Only plain text styles are supported. To implement rich text styles, use the [RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md) component.
 
-## Creating a Text Box
+## Creating an Input Box
 
-**TextInput** is a single-line input box, **TextArea** a multi-line input box, and **Search** a search box. Use the following APIs to create these components:
+TextInput is a single-line input box, TextArea is a multiline input box, and Search is a search box. You can create these components using the following APIs.
 
-```ts
-TextInput(value?:{placeholder?: ResourceStr, text?: ResourceStr, controller?: TextInputController})
-```
-
-```ts
-TextArea(value?:{placeholder?: ResourceStr, text?: ResourceStr, controller?: TextAreaController})
-```
-
-```ts
-Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: SearchController, icon?: string})
-```
-
-- Single-line input box
+- A single-line input box.
 
   <!-- @[create_text_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CreatTextInput.ets) -->
-  
+
   ``` TypeScript
   TextInput()
   ```
 
   ![textinput-create](figures/textinput-create.png)
 
-
-- Multi-line input box
-
-  <!-- @[create_text_area](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CreatTextInput.ets) -->
-  
-  ``` TypeScript
-  TextArea()
-  ```
-
-  ![textarea-create](figures/textarea-create.png)
-
-- The **TextArea** component automatically wraps text so that each line does not have more than the width of the component.
+- A multiline input box. Text automatically wraps when it exceeds one line.
 
   <!-- @[create_text_area_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CreatTextInput.ets) -->
-  
+
   ``` TypeScript
-  /* Replace $r('app.string.CreatTextInput_textContent') with the actual resource file. In this example, the value in the resource file is
-   "I am TextArea I am TextArea I am TextArea I am TextArea." */
+  /*Replace $r('app.string.CreatTextInput_textContent') with the actual resource file. In this example, the value of the resource file is
+   * "I am TextArea I am TextArea I am TextArea I am TextArea"
+   */
   TextArea({ text: $r('app.string.CreatTextInput_textContent') })
     .width(300)
   ```
 
   ![textinput-default](figures/textinput-default.png)
 
-- Search box
+- Search box.
 
   <!-- @[create_text_search](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CreatTextInput.ets) -->
-  
+
   ``` TypeScript
   Search()
-    // Replace $r('app.string.Creat_TextInput_Content') with the actual resource file. In this example, the value in the resource file is "Search."
+    // Replace $r('app.string.Creat_TextInput_Content') with the actual resource file. In this example, the value of the resource file is "Search"
     .searchButton($r('app.string.Creat_TextInput_Content'))
   ```
 
@@ -78,11 +56,11 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
 
 ## Setting the Input Box Type
 
-The **type** attribute configures the input box type for **TextInput**, **TextArea**, and **Search**. The supported values vary slightly across components. The following examples use a single-line input box (**TextInput**).
+TextInput, TextArea, and Search all support setting the input box type through the `type` attribute, but the enum values vary slightly across components. The following uses the single-line input box as an example.
 
-The following types are available for **TextInput**: **Normal**, **Password**, **Email**, **Number**, **PhoneNumber**, **USER_NAME**, **NEW_PASSWORD**, **NUMBER_PASSWORD**, **<!--Del-->SCREEN_LOCK_PASSWORD**, **<!--DelEnd-->NUMBER_DECIMAL**, and URL input mode. You can set the [type](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#type) attribute as follows:
+TextInput offers the following types: Normal for basic input, Password for password input, and Email for email address input mode. Set the type through the [type](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#type) attribute:
 
-### Normal Input Mode (Default Type)
+### Normal Input Mode
 
 <!-- @[set_password_input_type_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetTextInputType.ets) -->
 
@@ -95,9 +73,10 @@ TextInput()
 
 ### Password Mode
 
-The password mode supports **Password**, **NUMBER_PASSWORD**, and **NEW_PASSWORD** input.
+This includes the `Password` password input mode, `NUMBER_PASSWORD` numeric password mode, and `NEW_PASSWORD` new password input mode.
 
-The following example is a password input box.
+The following example shows an input box in `Password` password input mode.
+
 <!-- @[set_password_input_type_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetTextInputType.ets) -->
 
 ``` TypeScript
@@ -109,7 +88,7 @@ TextInput()
 
 ### Email Address Input Mode
 
-The email address input mode allows only one at sign (@) in the input.
+In email address input mode, the input box can contain only one @ symbol.
 
 <!-- @[set_email_input_type_3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetTextInputType.ets) -->
 
@@ -120,144 +99,112 @@ TextInput()
 
 ![text_input_type_email](figures/text_input_type_email.PNG)
 
-### Numeric Input Mode
-The numeric input mode allows only digits (0-9).
-
-<!-- @[set_number_input_type_4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetTextInputType.ets) -->
-
-``` TypeScript
-TextInput()
-  .type(InputType.Number)
-```
-
-![text_input_type_number](figures/text_input_type_number.PNG)
-
-### Phone Number Input Mode
-
-The phone number input mode can contain digits, spaces, plus signs (+), minus signs (-), asterisks (*), number signs (#), and parentheses (()). No length limit applies.
-
-<!-- @[set_phonenumber_input_type_5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetTextInputType.ets) -->
-
-``` TypeScript
-TextInput()
-  .type(InputType.PhoneNumber)
-```
-
-![text_input_type_phone_number](figures/text_input_type_phone_number.PNG)
-
-### Numeric Input Mode with Decimal Points
-
-The numeric input mode with decimal points allows only digits (0-9) and a single decimal point (.).
-<!-- @[set_number_decimal_input_type_6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetTextInputType.ets) -->
-
-``` TypeScript
-TextInput()
-  .type(InputType.NUMBER_DECIMAL)
-```
-
-![text_input_type_number_decimal](figures/text_input_type_number_decimal.PNG)
-
-### URL Input Mode
-
-The URL input mode has no special restrictions on input.
-<!-- @[set_url_input_type_7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetTextInputType.ets) -->
-
-``` TypeScript
-TextInput()
-  .type(InputType.URL)
-```
-
-![text_input_type_url](figures/text_input_type_url.PNG)
-
 ## Setting the Input Box Style
 
-Both the **TextInput** and **TextArea** components support polymorphic styles, configured through the [style](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#style10) attribute. The following examples use **TextArea**.
+You can set the input box style through attributes such as style, placeholder, backgroundColor, and contentType. For richer styling, you can combine them with [universal attributes](../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md).
 
-**TextArea** supports two styles: default style (**TextContentStyle.DEFAULT**) and inline style (**TextContentStyle.INLINE**).
+### Setting Multi-State Styles for Input Boxes
 
-### Default Style
+TextInput and TextArea support multi-state styles for input boxes, which can be configured through the [style](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#style10) attribute. The following uses the multiline input box TextArea as an example.
 
-In the default style, the appearance of the input box remains consistent whether it is being edited or not.
-<!-- @[textArea_style_default](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetInputMultiTypeStyle.ets) -->
+TextArea offers the following two types: the default style, with the parameter value `TextContentStyle.DEFAULT`; and inline mode, also known as inline input style, with the parameter value `TextContentStyle.INLINE`.
 
-``` TypeScript
-TextArea()
-  .style(TextContentStyle.DEFAULT)
-```
+- For an input box with the default style, there is no visual difference between the editing state and the non-editing state.
+
+  <!-- @[textArea_style_default](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetInputMultiTypeStyle.ets) -->
+
+  ``` TypeScript
+  TextArea()
+    .style(TextContentStyle.DEFAULT)
+  ```
 
 ![textArea_style_default](figures/textArea_style_default.gif)
 
-### Inline Style
+- Inline mode, also known as inline input style. In inline mode, the input box has clearly distinct styles between the editing state and the non-editing state.
 
-Inline style is also called inline input style. The input box in inline style has clearly distinguishable styles between its editing state and non-editing state.
-<!-- @[textArea_style_inline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetInputMultiTypeStyle.ets) -->
+  <!-- @[textArea_style_inline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetInputMultiTypeStyle.ets) -->
+
+  ``` TypeScript
+  TextArea()
+    .style(TextContentStyle.INLINE)
+  ```
+
+  ![textArea_style_inline](figures/textArea_style_inline.gif)
+
+### Setting the Placeholder Text
+
+The following example shows the effect of the placeholder text when no input is provided.
+
+<!-- @[custom_text_input_with_place_holder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) -->
 
 ``` TypeScript
-TextArea()
-  .style(TextContentStyle.INLINE)
+// Replace $r('app.string.i_am_placeholder') with the actual resource file. In this example, the value of the resource file is "I am placeholder text".
+TextInput({ placeholder: $r('app.string.i_am_placeholder') })
 ```
 
-![textArea_style_inline](figures/textArea_style_inline.gif)
+![textinput-placeholder](figures/textinput-placeholder.png)
 
-## Setting Styles
+### Setting the Current Text Content of the Input Box
 
-- Set the placeholder text displayed when there is no input.
+The following example shows the effect of the current text content in the input box.
 
-  <!-- @[custom_text_input_with_place_holder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) -->
-  
-  ``` TypeScript
-  // Replace $r('app.string.i_am_placeholder') with the actual resource file. In this example, the value in the resource file is "I am placeholder text."
-  TextInput({ placeholder: $r('app.string.i_am_placeholder') })
-  ```
+<!-- @[custom_text_input_with_place_holder_and_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) --> 
 
-  ![textinput-placeholder](figures/textinput-placeholder.png)
+``` TypeScript
+TextInput({
+  // Replace $r('app.string.i_am_placeholder') with the actual resource file. In this example, the value of this resource file is "I am the placeholder text".
+  placeholder: $r('app.string.i_am_placeholder'),
+  // Replace $r('app.string.i_am_current_text_content') with the actual resource file. In this example, the value of this resource file is "I am the current text content".
+  text: $r('app.string.i_am_current_text_content')
+})
+```
 
+ ![textinput-border](figures/textinput-border.png)
 
-- Set the current text input.
+### Setting the Input Box Background Color
 
-  <!-- @[custom_text_input_with_place_holder_and_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) -->
-  
-  ``` TypeScript
-  TextInput({
-    // Replace $r('app.string.i_am_placeholder') with the actual resource file. In this example, the value in the resource file is "I am placeholder text."
-    placeholder: $r('app.string.i_am_placeholder'),
-    // Replace $r('app.string.i_am_current_text_content') with the actual resource file. In this example, the value in the resource file is "I am current text input."
-    text: $r('app.string.i_am_current_text_content')
-  })
-  ```
+The following example shows the effect of setting the input box background color.
 
-  ![textinput-border](figures/textinput-border.png)
+<!-- @[custom_text_input_background_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) --> 
 
-- Use **backgroundColor** to set the background color of the text box.
+``` TypeScript
+TextInput({
+  // Replace $r('app.string.i_am_placeholder') with the actual resource file. In this example, the value of the resource file is "I am placeholder text".
+  placeholder: $r('app.string.i_am_placeholder'),
+  // Replace $r('app.string.i_am_current_text_content') with the actual resource file. In this example, the value of the resource file is "I am the current text content".
+  text: $r('app.string.i_am_current_text_content')
+})
+  .backgroundColor(Color.Pink)
+```
 
-  <!-- @[custom_text_input_background_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) -->
-  
-  ``` TypeScript
-  TextInput({
-    // Replace $r('app.string.i_am_placeholder') with the actual resource file. In this example, the value in the resource file is "I am placeholder text."
-    placeholder: $r('app.string.i_am_placeholder'),
-    // Replace $r('app.string.i_am_current_text_content') with the actual resource file. In this example, the value in the resource file is "I am current text input."
-    text: $r('app.string.i_am_current_text_content')
-  })
-    .backgroundColor(Color.Pink)
-  ```
+![Text input with pink background](figures/textinput-pink-bg.png)
 
-  ![textinput-pink-bg](figures/textinput-pink-bg.png)
+### Setting the Auto-Fill Type of the Input Box
 
-  More styles can be implemented by leveraging the [universal attributes](../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md).
+The input box allows you to set the auto-fill type through the [contentType](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#contenttype12) attribute. For supported types, see [ContentType](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#contenttype12).
 
+<!-- @[auto_fill](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/AutoFill.ets) -->
 
-## Adding Events
+``` TypeScript
+// Replace $r('app.string.Auto_Fill_PlaceHolder') with the actual resource file. In this example, the value of the resource file is "Enter your email..."
+TextInput({ placeholder: $r('app.string.Auto_Fill_PlaceHolder') })
+  .width('95%')
+  .height(40)
+  .margin(20)
+  .contentType(ContentType.EMAIL_ADDRESS)
+```
 
-Input boxes capture user input and upload data. You can bind the following events: [onChange](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onchange) for retrieving updated text content when the input value changes, [onSubmit](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onsubmit) for retrieving text submitted by the user when the **Enter** key is pressed, [onTextSelectionChange](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#ontextselectionchange10) for retrieving handle positions during text selection or caret position during text editing. You can also bind universal events for basic interactive operations.
+## Binding Text Input Box Events
 
->  **NOTE**
+Text boxes are primarily used to obtain user input and process the information into data for uploading. Binding the [onChange](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onchange) event allows you to obtain the changed text content in the input box. Binding the [onSubmit](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onsubmit) event allows you to obtain the text submitted via the Enter key. Binding the [onTextSelectionChange](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#ontextselectionchange10) event allows you to obtain the position of the selection handles or the cursor position during editing. You can also use general events for corresponding interactive operations.
+
+> **NOTE**
 >
->  In password mode, when the [showPassword](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#showpassword12) attribute is set, add status synchronization logic in the [onSecurityStateChange](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onsecuritystatechange12) callback. For details, see the following example.
+> In password mode, when setting the [showPassword](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#showpassword12) attribute, you are advised to add state synchronization in the [onSecurityStateChange](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onsecuritystatechange12) callback. For details, see the following example.
 >
-> The [onWillInsert](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onwillinsert12), [onDidInsert](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#ondidinsert12), [onWillDelete](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onwilldelete12), and [onDidDelete](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#ondiddelete12) callbacks are supported with the system input method.
+> The [onWillInsert](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onwillinsert12), [onDidInsert](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#ondidinsert12), [onWillDelete](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onwilldelete12), and [onDidDelete](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#ondiddelete12) callbacks are supported only in system input method scenarios.
 >
-> [onWillChange](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onwillchange15) is triggered after [onWillInsert](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onwillinsert12) and [onWillDelete](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onwilldelete12), and before [onDidInsert](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#ondidinsert12) and [onDidDelete](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#ondiddelete12).
+> The callback timing of [onWillChange](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onwillchange15) is later than [onWillInsert](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onwillinsert12) and [onWillDelete](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onwilldelete12), and earlier than [onDidInsert](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#ondidinsert12) and [onDidDelete](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#ondiddelete12).
 
 <!-- @[TextInputAddEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/TextInputAddEvent.ets) -->
 
@@ -291,7 +238,6 @@ struct TextInputEventAdd {
           \n${this.textStr4}\n${this.textStr5}\n${this.textStr6}
           \n${this.textStr7}\n${this.textStr8}\n${this.textStr9}`)
           .fontSize(20)
-          .width('70%')
         TextInput({ text: this.text, placeholder: 'input your word...', controller: this.controller })
           .type(InputType.Password)
           .showPassword(this.passwordState)
@@ -301,34 +247,34 @@ struct TextInputEventAdd {
             this.textStr1 = `onChange is triggering: ${value}`;
           })
           .onSubmit((enterKey: EnterKeyType, event: SubmitEvent) => {
-            // Triggered when the Enter key is pressed.
+            // Triggered when the Enter key of the input method is pressed.
             hilog.info(DOMAIN, TAG, BUNDLE + 'onSubmit is triggering: ' + enterKey + event.text);
             this.textStr2 = `onSubmit is triggering: ${enterKey} ${event.text}`;
           })
           .onTextSelectionChange((selectionStart: number, selectionEnd: number) => {
-            // Triggered when the text selection position changes or the cursor position changes in the editing state.
+            // Triggered when the text selection position changes or the cursor position changes in editing state.
             hilog.info(DOMAIN, TAG, BUNDLE + 'onTextSelectionChange is triggering: ' + selectionStart + selectionEnd);
             this.textStr3 = `onTextSelectionChange is triggering: ${selectionStart} ${selectionEnd}`;
           })
           .onSecurityStateChange((isShowPassword: boolean) => {
-            // Triggered when the password visibility changes.
+            // Triggered when the password visibility state toggles.
             hilog.info(DOMAIN, TAG, BUNDLE + 'onSecurityStateChange is triggering: ' + isShowPassword);
             this.passwordState = isShowPassword;
             this.textStr4 = `onSecurityStateChange is triggering: ${isShowPassword}`;
           })
           .onWillInsert((info: InsertValue) => {
-            // Triggered when text is about to be inserted.
+            // Triggered before text is inserted.
             hilog.info(DOMAIN, TAG, BUNDLE + 'onWillInsert is triggering: ' + info.insertValue + info.insertOffset);
             this.textStr5 = `onWillInsert is triggering: ${info.insertValue} ${info.insertOffset}`;
             return true;
           })
           .onDidInsert((info: InsertValue) => {
-            // Triggered when the input is complete.
+            // Triggered after text insertion is complete.
             hilog.info(DOMAIN, TAG, BUNDLE + 'onDidInsert is triggering: ' + info.insertValue + info.insertOffset);
             this.textStr6 = `onDidInsert is triggering: ${info.insertValue} ${info.insertOffset}`;
           })
           .onWillDelete((info: DeleteValue) => {
-            // Triggered when text is about to be deleted.
+            // Triggered before text is deleted.
             hilog.info(DOMAIN, TAG, BUNDLE + 'onWillDelete is triggering: ' + info.deleteValue + info.deleteOffset);
             this.textStr7 = `onWillDelete is triggering: ${info.deleteValue} ${info.deleteOffset}`;
             return true;
@@ -339,7 +285,7 @@ struct TextInputEventAdd {
             this.textStr8 = `onDidDelete is triggering: ${info.deleteValue} ${info.deleteOffset}`;
           })
           .onFocus(() => {
-            // Bind a universal event. This callback is triggered when the text box gains focus.
+            // Triggered when the input box gains focus.
             hilog.info(DOMAIN, TAG, BUNDLE + 'onFocus is triggering');
             this.textStr9 = `onFocus is triggering`;
           })
@@ -350,37 +296,118 @@ struct TextInputEventAdd {
 }
 ```
 
-![text_input_event](figures/text_input_event.gif)
+![text input event](figures/text_input_event.gif)
 
-## Text Selection Menu
+## Text Menu Management
 
-When text is selected within a text box, a context menu appears with options such as **Cut**, **Copy**, **Translate**, and **Share**.
+The content carried by TextInput and TextArea components is plain text, without scenarios involving multiple span types such as images or mixed content. Therefore, only the system text menu is provided. You can customize system menu items through the [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#editmenuoptions12) API, including appending custom menu items, removing system menu items, modifying menu item content, and intercepting menu item tap events, thereby enabling customization of menu options within the system menu framework.
 
-**TextInput**:
+### System Menu
+
+When text in the input box is selected, a menu containing cut, copy, translate, and share options appears.
+
+TextInput:
 
 <!-- @[select_textinput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
 
 ``` TypeScript
-// Replace $r('app.string.show_selected_menu') with the actual resource file. In this example, the value in the resource file is "This is text used to show the selection menu."
+// Replace $r('app.string.show_selected_menu') with the actual resource file. In this example, the value of the resource file is "This is a piece of text used to demonstrate the selection menu."
 TextInput({ text: $r('app.string.show_selected_menu') })
 ```
 
 ![TextInput_select_menu](figures/TexInput_select_menu.jpg)
 
-**TextArea**:
+TextArea:
 
 <!-- @[select_textarea](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
 
 ``` TypeScript
-// Replace $r('app.string.show_selected_menu') with the actual resource file. In this example, the value in the resource file is "This is text used to show the selection menu."
+// Replace $r('app.string.show_selected_menu') with the actual resource file. In this example, the resource file has the value "This is a piece of text used to demonstrate the selected menu."
 TextArea({ text: $r('app.string.show_selected_menu') })
 ```
 
 ![TextArea_select_menu](figures/TextArea_select_menu.jpg)
 
-## Disabling System Service Menu Items
+### Custom Menu Items in the System Menu
 
-Since API version 20, use [disableSystemServiceMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20) to disable all system service menu items in the text selection menu.
+Starting from API version 12, this example uses the [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#editmenuoptions12) API to implement the functionality of setting the text content, icon, and callback for custom menu extension items. Starting from API version 20, you can configure menu data in the [onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#properties-1) callback.
+
+<!-- @[editMenu_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
+
+``` TypeScript
+onCreateMenu = (menuItems: Array<TextMenuItem>) => {
+  // Replace $r('app.media.startIcon') with the required image resource file.
+  // TextMenuItemId.autoFill is supported since API version 23.
+  const idsToFilter: TextMenuItemId[] = [
+    TextMenuItemId.autoFill
+  ]
+  const items = menuItems.filter(item => !idsToFilter.some(id => id.equals(item.id)))
+  let item1: TextMenuItem = {
+    content: 'create1',
+    icon: $r('app.media.startIcon'),
+    id: TextMenuItemId.of('create1'),
+  };
+  let item2: TextMenuItem = {
+    content: 'create2',
+    id: TextMenuItemId.of('create2'),
+    icon: $r('app.media.startIcon'),
+  };
+  items.push(item1);
+  items.unshift(item2);
+  return items;
+}
+onMenuItemClick = (menuItem: TextMenuItem, textRange: TextRange) => {
+  if (menuItem.id.equals(TextMenuItemId.of('create2'))) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'intercept id: create2 start:' + textRange.start + '; end:' + textRange.end);
+    return true;
+  }
+  if (menuItem.id.equals(TextMenuItemId.of('prepare1'))) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'intercept id: prepare1 start:' + textRange.start + '; end:' + textRange.end);
+    return true;
+  }
+  if (menuItem.id.equals(TextMenuItemId.COPY)) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'intercept COPY start:' + textRange.start + '; end:' + textRange.end);
+    return true;
+  }
+  if (menuItem.id.equals(TextMenuItemId.SELECT_ALL)) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'No interception SELECT_ALL start:' + textRange.start + '; end:' + textRange.end);
+    return false;
+  }
+  return false;
+}
+// Replace $r('app.media.startIcon') with the required image resource file.
+onPrepareMenu = (menuItems: Array<TextMenuItem>) => {
+  let item1: TextMenuItem = {
+    content: 'prepare1_' + this.endIndex,
+    icon: $r('app.media.startIcon'),
+    id: TextMenuItemId.of('prepare1'),
+  };
+  menuItems.unshift(item1);
+  return menuItems;
+}
+@State editMenuOptions: EditMenuOptions = {
+  onCreateMenu: this.onCreateMenu,
+  onMenuItemClick: this.onMenuItemClick,
+  onPrepareMenu: this.onPrepareMenu
+};
+```
+
+<!-- @[editMenu_textinput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
+
+``` TypeScript
+// Replace $r('app.string.show_selected_menu') with an actual resource file. In this example, the value of the resource file is "This is a piece of text used to demonstrate the selected menu."
+TextInput({ text: $r('app.string.show_selected_menu') })
+  .editMenuOptions(this.editMenuOptions)
+  .onTextSelectionChange((selectionStart: number, selectionEnd: number) => {
+    this.endIndex = selectionEnd;
+  })
+```
+
+<!--Del-->![TextInput-edit-menu-options](figures/TextInput-edit-menu-options.gif)<!--DelEnd-->
+
+### Hiding System Menu Items in the System Menu
+
+Starting from API version 20, you can use the [disableSystemServiceMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20) method to hide all system service menu items in the text selection menu. For details, see the API reference for [disableSystemServiceMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20). The following example is only one part of a complete sample project. To avoid affecting other page examples in the project, system service menus are disabled and restored only in the page's appear and disappear lifecycle callbacks. In actual scenarios, you can choose other timing, such as [onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate) and [onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy) of [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md).
 
 <!-- @[DisableSystemServiceMenuItems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/disablemenu/DisableSystemServiceMenuItems.ets) -->
 
@@ -403,7 +430,7 @@ struct DisableSystemServiceMenuItem {
   build() {
     Row() {
       Column() {
-        // Replace $r('app.string.ProhibitSelectMenu_content') with the actual resource file. In this example, the value in the resource file is "This is a TextInput. Long press to display the text selection menu."
+        // Replace $r('app.string.ProhibitSelectMenu_content') with the actual resource file. In this example, the value of the resource file is "This is a TextInput. Long press to display the text selection menu."
         TextInput({ text: $r('app.string.ProhibitSelectMenu_content') })
           .height(60)
           .fontStyle(FontStyle.Italic)
@@ -412,7 +439,7 @@ struct DisableSystemServiceMenuItem {
           .caretStyle({ width: '4vp' })
           .editMenuOptions({
             onCreateMenu: (menuItems: Array<TextMenuItem>) => {
-              // menuItems no longer contains disabled system menu items.
+              // menuItems does not include disabled system menu items.
               return menuItems
             },
             onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
@@ -428,7 +455,7 @@ struct DisableSystemServiceMenuItem {
 
 ![TextInput_disable_system_service_menu_items](figures/TextInput_disable_system_service_menu_items.gif)
 
-Since API version 20, use [disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20) to disable specified system service menu items in the text selection menu.
+Since API version 20, you can use the [disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20) method to disable specified system service menu items in the text selection menu. For details, see the API description of [disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20). The following example is only one part of a complete sample project. To avoid affecting other page samples in the project, system service menu items are disabled and restored only in the page's **aboutToAppear** and **aboutToDisappear** lifecycle callbacks. In actual scenarios, you can choose other timing, such as [onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate) and [onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy) of [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md).
 
 <!-- @[DisableMenuItems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/disablemenu/DisableMenuItems.ets) -->
 
@@ -451,7 +478,7 @@ struct DisableMenuItem {
   build() {
     Row() {
       Column() {
-        // Replace $r('app.string.ProhibitSelectMenu_content') with the actual resource file. In this example, the value in the resource file is "This is a TextInput. Long press to display the text selection menu."
+        // Replace $r('app.string.ProhibitSelectMenu_content') with the actual resource file. In this example, the value of the resource file is "This is a TextInput. Long press to display the text selection menu."
         TextInput({ text: $r('app.string.ProhibitSelectMenu_content') })
           .height(60)
           .fontStyle(FontStyle.Italic)
@@ -460,7 +487,7 @@ struct DisableMenuItem {
           .caretStyle({ width: '4vp' })
           .editMenuOptions({
             onCreateMenu: (menuItems: Array<TextMenuItem>) => {
-              // menuItems no longer contains search and translate items.
+              // menuItems does not include search, translation, and AI writing assistance.
               return menuItems;
             },
             onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
@@ -476,79 +503,41 @@ struct DisableMenuItem {
 
 ![Text_input_disable_menu_items](figures/Text_input_disable_menu_items.png)
 
-## Autofill
+### Displaying the Text Menu in a Subwindow
 
-You can specify the expected content type of a text box using the [contentType](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#contenttype12) attribute.
+The TextInput component controls the window in which the text menu is rendered by setting [TextMenuShowMode](../reference/apis-arkui/arkui-ts/ts-text-common.md#textmenushowmode16). In main window mode, the menu node is mounted to the root node of the main window, and the menu may be obscured by page content or affected by page scrolling. In subwindow mode, the menu node is mounted to the root node of an independent subwindow, and the menu floats above the main window, unaffected by the page layout.
 
-For details about the supported types, see [ContentType](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#contenttype12).
-<!-- @[auto_fill](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/AutoFill.ets) -->
-
-``` TypeScript
-// Replace $r('app.string.Auto_Fill_PlaceHolder') with the actual resource file. In this example, the value in the resource file is "Enter your email address..."
-TextInput({ placeholder: $r('app.string.Auto_Fill_PlaceHolder') })
-  .width('95%')
-  .height(40)
-  .margin(20)
-  .contentType(ContentType.EMAIL_ADDRESS)
-```
-
-## Setting Attributes
-
-- Setting the ellipsis position
-
-  You can control where the ellipsis appears when text overflows using the [ellipsisMode](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#ellipsismode18) attribute.
-
-  For the settings to work, the **ellipsisMode** attribute must be set to **TextOverflow.Ellipsis** together with the [textOverflow](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#textoverflow12) attribute. Setting **ellipsisMode** alone does not take effect.
-
-  <!-- @[set_omission_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetProperty.ets) -->
-  
-  ``` TypeScript
-  // Replace $r('app.string.Set_Omission_Property_textContent') with the actual resource file. In this example, the value in the resource file is "This is a text used to display the ellipsis mode."
-  TextInput({ text: $r('app.string.Set_Omission_Property_textContent') })
-    .textOverflow(TextOverflow.Ellipsis)
-    .ellipsisMode(EllipsisMode.END)
-    .style(TextInputStyle.Inline)
-    .fontSize(30)
-    .margin(30)
-  ```
-  ![TextInput_ellipsismode](figures/TextInput_ellipsismode.jpg)
-
-- Setting the text stroke
-
-  Starting from API version 20, you can add an outline (stroke) to the text in a text box using the [strokeWidth](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#strokewidth20) and [strokeColor](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#strokecolor20) attributes.
-
-  <!-- @[set_stroke_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetProperty.ets) -->
-  
-  ``` TypeScript
-  TextInput({ text: 'Text with stroke' })
-    .width('100%')
-    .height(60)
-    .borderWidth(1)
-    .fontSize(40)
-    .strokeWidth(LengthMetrics.px(3.0))
-    .strokeColor(Color.Red)
-  ```
-  ![TextInput_stroke](figures/TextInput_stroke.jpg)
-
-## Setting Text Line Spacing
-
-Starting from API version 20, you can adjust the spacing between lines of text using the [lineSpacing](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#linespacing20) attribute. When [LineSpacingOptions](../reference/apis-arkui/arkui-ts/ts-text-common.md#linespacingoptions20) is not configured, line spacing is applied both above the first line and below the last line. To restrict spacing to only between lines (that is, no extra space above the first or below the last line), set the **onlyBetweenLines** property to **true**.
-
-<!-- @[SetTextMargin](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetTextMargin.ets) -->
+<!-- @[set_menu_options_with_textmenushowmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/TextMenuShowSubWindow.ets) -->
 
 ``` TypeScript
-TextArea({
-  text: 'The line spacing of this TextArea is set to 20_px, and the spacing is effective only between the lines.'
-})
-  .fontSize(22)
-  .lineSpacing(LengthMetrics.px(20), { onlyBetweenLines: true })
+this.getUIContext()
+  .getTextMenuController()
+  .setMenuOptions(
+    {
+      showMode: TextMenuShowMode.PREFER_WINDOW
+    }
+  );
 ```
 
-![TextInput_line_spacing](figures/TextInput_line_spacing.jpg)
+<!-- @[textmenushowmode_create_textinput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/TextMenuShowSubWindow.ets) -->
 
-## Implementing Keyboard Avoidance
+``` TypeScript
+// Replace $r('app.string.Service_MenuItems_Text') with the actual resource file. In this example, the value of the resource file is "This is a piece of text. Long press to bring up the text selection menu."
+TextInput({ text: $r('app.string.Service_MenuItems_Text') })
+  .fontSize(15)
+  .margin({ top: 100 })
+  .copyOption(CopyOptions.InApp)
+```
 
-After the keyboard is displayed, scrollable container components activate keyboard avoidance only when switching between landscape and portrait modes. To enable keyboard avoidance for non-scrollable container components, nest them within a scrollable container component, such as [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md), [List](../reference/apis-arkui/arkui-ts/ts-container-list.md), or [Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md).
+<!--Del-->![TextInput-menu-subwindow](figures/TextInput-menu-subwindow.gif)<!--DelEnd-->
+
+## Setting Input Box Avoidance
+
+Examples of two scenarios are provided: keyboard avoidance and cursor avoidance.
+
+### Keyboard Avoidance
+
+After the keyboard is raised, keyboard avoidance takes effect for scrollable container components only when switching between landscape and portrait modes. If you want keyboard avoidance to also take effect for non-scrollable container components, nest them inside a scrollable container component, such as [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md), [List](../reference/apis-arkui/arkui-ts/ts-container-list.md), or [Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md).
 
 <!-- @[keyboard_avoid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/KeyboardAvoidance.ets) -->
 
@@ -574,14 +563,13 @@ struct KeyboardAvoid {
 }
 ```
 
-
 ![textinputkeyboardavoid](figures/TextInputKeyboardAvoid.gif)
 
-## Implementing Caret Avoidance
+### Cursor Avoidance
 
-The **OFFSET** and **RESIZE** modes of [keyBoardAvoidMode](../reference/apis-arkui/arkts-apis-uicontext-e.md#keyboardavoidmode11) do not allow for secondary avoidance actions after the keyboard has been lifted. To support additional caret avoidance actions, you can use the **OFFSET_WITH_CARET** and **RESIZE_CARET** options.<br>
+The OFFSET and RESIZE modes in the [keyBoardAvoidMode](../reference/apis-arkui/arkts-apis-uicontext-e.md#keyboardavoidmode11) enumeration do not support secondary avoidance after the keyboard is raised. If you want the cursor position to trigger secondary avoidance after being changed by a tap or through an API, consider using OFFSET_WITH_CARET and RESIZE_CARET to replace the original OFFSET and RESIZE modes.<br>
 
-**RESIZE_WITH_CARET** is recommended for scrollable containers, and **OFFSET_WITH_CARET** is recommended for non-scrollable containers.
+For scrollable containers, RESIZE_WITH_CARET is recommended; for non-scrollable containers, OFFSET_WITH_CARET should be used.
 
 <!-- @[cursor_avoid_part1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
@@ -596,11 +584,11 @@ import { KeyboardAvoidMode } from '@kit.ArkUI';
 ``` TypeScript
 // Used in UIAbility
 onWindowStageCreate(windowStage: window.WindowStage): void {
-  // The main window is created. Set a main page for this ability.
+  // Main window is created, set main page for this ability
   hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
   windowStage.loadContent('pages/Index', (err, data) => {
-    let keyboardAvoidMode = windowStage.getMainWindowSync().getUIContext().getKeyboardAvoidMode();
+    windowStage.getMainWindowSync().getUIContext().getKeyboardAvoidMode();
     windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.OFFSET_WITH_CARET);
     if (err.code) {
       hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
@@ -658,73 +646,6 @@ struct CursorAvoid {
 
 ![textinputkeyboardavoid](figures/caretavoid.gif)
 
-## FAQs
+<!--RP1--><!--RP1End-->
 
-### How Do I Set a Minimum Number of Lines for TextArea and Make It Expand Automatically?
-
-**Symptom**
-
-You want to set an initial height for a **TextArea** component that displays a minimum number of lines, and have the component expand vertically when the input text exceeds that height.
-
-**Solution**
-
-Set [minLines](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#minlines20) (available since API version 20), or set **height** to **"auto"** and use [constraintSize](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#constraintsize) to calculate the height.
-
-<!-- @[normal_question_text_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/NormalQuestion.ets) -->
-
-``` TypeScript
-import { MeasureUtils } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct TextExample {
-  private textAreaPadding = 12;
-  private setMaxLines = 3;
-  private resourceManager = this.getUIContext().getHostContext()?.resourceManager;
-  // Configure a resource whose name is NormalQuestion_change and value is a non-null character string in the resources\base\element\string.json file.
-  private changeText = this.resourceManager?.getStringByNameSync('NormalQuestion_change') as string;
-  @State fullText: string = this.changeText;
-  @State originText: string = this.changeText;
-  @State uiContext: UIContext = this.getUIContext();
-  @State uiContextMeasure: MeasureUtils = this.uiContext.getMeasureUtils();
-  textSize: SizeOptions = this.uiContextMeasure.measureTextSize({
-    textContent: this.originText,
-    fontSize: 18
-  });
-
-  build() {
-    Column() {
-      TextArea({ text: 'minLines: ' + this.fullText })
-        .fontSize(18)
-        .width(300)
-        .minLines(3)
-
-      Blank(50)
-
-      TextArea({ text: 'constraintSize: ' + this.fullText })
-        .fontSize(18)
-        .padding({ top: this.textAreaPadding, bottom: this.textAreaPadding })
-        .width(300)
-        .height('auto')
-        .constraintSize({
-          // Calculate the minimum height required to display the specified number of lines, including padding.
-          // If dynamic font scaling is involved (for example, for aging-friendly design), listen for font size changes and update the calculated height accordingly.
-          minHeight: this.textAreaPadding * 2 +
-            this.setMaxLines * this.getUIContext().px2vp(Number(this.textSize.height))
-        })
-
-      Blank(50)
-      // Replace $r('app.string.NormalQuestion_AddInput') with the actual resource file. In this example, the value in the resource file is "Add Input."
-      Button($r('app.string.NormalQuestion_AddInput'))
-        .onClick(() => {
-          this.fullText += this.changeText;
-        })
-    }
-    .justifyContent(FlexAlign.Center)
-    .width('100%')
-    .padding({ top: 30 })
-  }
-}
-```
-
-![textinputkeyboardavoid](figures/textareaHeight.gif)
+<!--no_check-->

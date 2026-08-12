@@ -6,7 +6,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=8e04af7309600701e46dd8d4785fc2a779865199 translatedAt=2026-07-25T10:14:55.714Z pushedAt=2026-07-25T10:49:07.502Z -->
+<!-- md-trans-meta sourceCommit=fd87a3fabd6b3d582616cc6b10933b62b2152e9f translatedAt=2026-07-29T12:41:35.624Z pushedAt=2026-07-30T01:12:51.805Z -->
 
 The frame animation allows you to adjust your animation properties on each frame, thanks to its per-frame callback. By leveraging the **onFrame** callback of [AnimatorResult](../reference/apis-arkui/js-apis-animator.md#animatorresult), you can dynamically set property values on each frame, creating smooth and natural animations. For details about the frame animation APIs, see [@ohos.animator (Animator)](../reference/apis-arkui/js-apis-animator.md).
 

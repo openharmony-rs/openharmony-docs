@@ -1,10 +1,12 @@
 # grid.h
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @rongShao-Z; @guozejun-->
 <!--Designer: @guozejun-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=cbf5851550afa52d321502e3e883e167845b30e3 translatedAt=2026-08-10T03:34:43.805Z pushedAt=2026-08-10T06:41:56.731Z -->
 
 ## Overview
 
@@ -30,7 +32,7 @@ Defines enumerations and APIs related to **Grid**.
 | -- | -- | -- |
 | [ArkUI_GridItemSize](capi-arkui-nativemodule-arkui-griditemsize.md) | ArkUI_GridItemSize | Defines the return value for the **onGetIrregularSizeByIndex** callback in **Grid** layout options.|
 | [ArkUI_GridItemRect](capi-arkui-nativemodule-arkui-griditemrect.md) | ArkUI_GridItemRect | Defines the return value for the **onGetRectByIndex** callback in **Grid** layout options.|
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md) | ArkUI_GridLayoutOptions | Defines the **Grid** layout options.|
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md) | ArkUI_GridLayoutOptions | Defines the **Grid** layout options, which are used to set the layout parameters of irregular grid items in the **Grid** component, including the irregular item index and layout callback. An irregular grid item refers to a grid item that spans across rows and columns or has a different size in the grid layout. |
 
 ### Enums
 
@@ -43,8 +45,8 @@ Defines enumerations and APIs related to **Grid**.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_GridLayoutOptions* OH_ArkUI_GridLayoutOptions_Create()](#oh_arkui_gridlayoutoptions_create) | Creates **Grid** layout options.|
-| [void OH_ArkUI_GridLayoutOptions_Dispose(ArkUI_GridLayoutOptions* option)](#oh_arkui_gridlayoutoptions_dispose) | Disposes of the **Grid** layout option.|
+| [ArkUI_GridLayoutOptions* OH_ArkUI_GridLayoutOptions_Create()](#oh_arkui_gridlayoutoptions_create) | Creates **Grid** layout options. Call **OH_ArkUI_GridLayoutOptions_Dispose** to destroy it after use. |
+| [void OH_ArkUI_GridLayoutOptions_Dispose(ArkUI_GridLayoutOptions* option)](#oh_arkui_gridlayoutoptions_dispose) | Disposes of the **Grid** layout options to release resources. |
 | [int32_t OH_ArkUI_GridLayoutOptions_SetIrregularIndexes(ArkUI_GridLayoutOptions* option, uint32_t* irregularIndexes, int32_t size)](#oh_arkui_gridlayoutoptions_setirregularindexes) | Sets the irregular grid item index array for the grid layout.|
 | [int32_t OH_ArkUI_GridLayoutOptions_GetIrregularIndexes(ArkUI_GridLayoutOptions* option, uint32_t* irregularIndexes, int32_t* size)](#oh_arkui_gridlayoutoptions_getirregularindexes) | Obtains the irregular grid item index array for the grid layout. When **OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback** is not set, the grid item specified in this parameter occupies an entire row of the grid that scrolls vertically or an entire column of the grid that scrolls horizontally.|
 | [void OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback(ArkUI_GridLayoutOptions* option, void* userData, ArkUI_GridItemSize(\*callback)(int32_t itemIndex, void* userData))](#oh_arkui_gridlayoutoptions_registergetirregularsizebyindexcallback) | Registers a callback to obtain the row and column span for the grid item at the specified index.|
@@ -57,6 +59,7 @@ Defines enumerations and APIs related to **Grid**.
 ```c
 enum ArkUI_GridItemAlignment
 ```
+
 **Description**
 
 Enumerates the alignment modes of the [GridItem](../apis-arkui/arkui-ts/ts-container-griditem.md) component.
@@ -68,7 +71,6 @@ Enumerates the alignment modes of the [GridItem](../apis-arkui/arkui-ts/ts-conta
 | GRID_ITEM_ALIGNMENT_DEFAULT = 0 | Use the default alignment mode of the grid.|
 | GRID_ITEM_ALIGNMENT_STRETCH  = 1  | Use the height of the tallest grid item in a row as the height for all other grid items in that row.|
 
-
 ### ArkUI_GridItemStyle
 
 ```c
@@ -76,7 +78,6 @@ enum ArkUI_GridItemStyle
 ```
 
 **Description**
-
 
 Enumerates styles of grid items.
 
@@ -97,7 +98,7 @@ ArkUI_GridLayoutOptions* OH_ArkUI_GridLayoutOptions_Create()
 
 **Description**
 
-Creates **Grid** layout options.
+Creates **Grid** layout options. Call **OH_ArkUI_GridLayoutOptions_Dispose** to dispose of it after use.
 
 **Since:** 22
 
@@ -105,7 +106,7 @@ Creates **Grid** layout options.
 
 | Type                               | Description|
 |-----------------------------------| -- |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* | Pointer to the **Grid** layout option array.|
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* | Pointer to the created **Grid** layout option array. |
 
 ### OH_ArkUI_GridLayoutOptions_Dispose()
 
@@ -115,17 +116,15 @@ void OH_ArkUI_GridLayoutOptions_Dispose(ArkUI_GridLayoutOptions* option)
 
 **Description**
 
-Disposes of the **Grid** layout option.
+Disposes of the **Grid** layout options to release resources.
 
 **Since:** 22
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout option array.|
-
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout option array to dispose of. |
 
 ### OH_ArkUI_GridLayoutOptions_SetIrregularIndexes()
 
@@ -139,14 +138,13 @@ Sets the irregular grid item index array for the grid layout.
 
 **Since:** 22
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout option array.|
-| uint32_t* irregularIndexes |  Pointer to the **GridItem** index array.|
-| int32_t size | Size of the **GridItem** index array.|
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout option array to set. |
+| uint32_t* irregularIndexes | Pointer to the array of irregular grid item indexes used to set the **Grid** layout options. |
+| int32_t size | Number of elements in the **irregularIndexes** array. |
 
 **Returns**
 
@@ -166,14 +164,13 @@ Obtains the irregular grid item index array for the grid layout. When **OH_ArkUI
 
 **Since:** 22
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout option array.|
-| uint32_t* irregularIndexes |  Pointer to the **GridItem** index array.|
-| int32_t size | Size of the **GridItem** index array.|
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout option array to be obtained. |
+| uint32_t* irregularIndexes | Pointer to the buffer for receiving the irregular grid item index array. |
+| int32_t* size | Number of elements that the **irregularIndexes** buffer can hold. Pass the buffer capacity before calling, and it will be updated to the actual number of indexes actually written after a successful call. |
 
 **Returns**
 
@@ -193,14 +190,13 @@ Registers a callback to obtain the row and column span for the grid item at the 
 
 **Since:** 22
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout option array.|
 | void* userData | Pointer to the user-defined data.|
-| ArkUI_GridItemSize (\*callback)(int32_t itemIndex, void* userData) | Pointer to the callback that returns the row and column span for the grid item at the specified index.<br> **itemIndex**: grid item index, whose value range is obtained from [OH_ArkUI_GridLayoutOptions_SetIrregularIndexes](#oh_arkui_gridlayoutoptions_setirregularindexes).|
+| [ArkUI_GridItemSize](capi-arkui-nativemodule-arkui-griditemsize.md) (\*callback)(int32_t itemIndex, void* userData) | Pointer to the callback used to obtain the row and column count occupied by a specified item based on the index.<br> **itemIndex**: grid item index, with the value range from [OH_ArkUI_GridLayoutOptions_SetIrregularIndexes](#oh_arkui_gridlayoutoptions_setirregularindexes). |
 
 ### OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback()
 
@@ -214,11 +210,10 @@ Registers a callback to obtain the starting row, starting column, row span, and 
 
 **Since:** 22
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout option array.|
 | void* userData | Pointer to the user-defined data.|
-| ArkUI_GridItemRect (\*callback)(int32_t itemIndex, void* userData) | Pointer to the callback that returns the starting row, starting column, row span, and column span for the grid item at the specified index.<br>   **itemIndex**: grid item index.|
+| [ArkUI_GridItemRect](capi-arkui-nativemodule-arkui-griditemrect.md) (\*callback)(int32_t itemIndex, void* userData) | Pointer to the callback used to obtain the start row and column and the occupied row and column count of the specified item based on the index.<br>   **itemIndex**: grid item index. |

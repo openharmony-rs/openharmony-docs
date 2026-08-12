@@ -1,14 +1,16 @@
 # scroll.h
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @shengu_lancer; @yylong; @rongShao-Z-->
-<!--Designer: @yylong-->
+<!--Owner: @shengu_lancer; @rongShao-Z-->
+<!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=b6f38d021a31abc28b1dd271b68098ebc074e7ab translatedAt=2026-08-10T03:35:22.075Z pushedAt=2026-08-11T01:15:40.925Z -->
 
 ## Overview
 
-Defines the enumerations related to the **Scroll** component.
+Defines the enumerations related to the **Scroll** component, such as the scrolling direction, edge effect, scrollbar state, content clipping, nested scrolling, scrolling state, and scrolling source, which are used to configure and listen for the behavior of the **Scroll** component and related scrollable components.
 
 **File to include:** <arkui/node_attributes/scroll.h>
 
@@ -29,7 +31,7 @@ Defines the enumerations related to the **Scroll** component.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [ArkUI_EdgeEffect](#arkui_edgeeffect) | ArkUI_EdgeEffect | Enumerates the effects used at the edges of the component when the boundary of the scrollable content is reached.|
-| [ArkUI_BarState](#arkui_barstate) | ArkUI_BarState | Enumerates the text control scrollbar states.|
+| [ArkUI_BarState](#arkui_barstate) | ArkUI_BarState | Enumerates the scrollbar states of the **TextArea** and **TextEditor** components. |
 | [ArkUI_EffectEdge](#arkui_effectedge) | ArkUI_EffectEdge | Enumerates the edges for which the effect takes effect when the boundary of the scrollable content is reached.|
 | [ArkUI_ScrollDirection](#arkui_scrolldirection) | ArkUI_ScrollDirection | Enumerates the scrolling directions of the [Scroll](../apis-arkui/arkui-ts/ts-container-scroll.md) component.|
 | [ArkUI_ScrollSnapAlign](#arkui_scrollsnapalign) | ArkUI_ScrollSnapAlign | Enumerates the alignment modes of list items when scrolling ends.|
@@ -52,7 +54,6 @@ enum ArkUI_EdgeEffect
 
 **Description**
 
-
 Enumerates the effects used at the edges of the component when the boundary of the scrollable content is reached. The default value is **ARKUI_EDGE_EFFECT_NONE** for the **Grid**, **Scroll**, and **WaterFlow** components, and **ARKUI_EDGE_EFFECT_SPRING** for the **List** component.
 
 **Since:** 12
@@ -71,8 +72,7 @@ enum ArkUI_BarState
 
 **Description**
 
-
-Enumerates the text control scrollbar states.
+Enumerates the scrollbar states of the **TextArea** and **TextEditor** components.
 
 **Since:** 22
 
@@ -89,7 +89,6 @@ enum ArkUI_EffectEdge
 ```
 
 **Description**
-
 
 Enumerates the edges for which the effect takes effect when the boundary of the scrollable content is reached.
 
@@ -108,7 +107,6 @@ enum ArkUI_ScrollDirection
 
 **Description**
 
-
 Enumerates the scrolling directions of the [Scroll](../apis-arkui/arkui-ts/ts-container-scroll.md) component.
 
 **Since:** 12
@@ -118,7 +116,7 @@ Enumerates the scrolling directions of the [Scroll](../apis-arkui/arkui-ts/ts-co
 | ARKUI_SCROLL_DIRECTION_VERTICAL = 0 | Vertical scrolling only.|
 | ARKUI_SCROLL_DIRECTION_HORIZONTAL = 1 | Horizontal scrolling only.|
 | ARKUI_SCROLL_DIRECTION_NONE = 3 | Scrolling disabled.|
-| ARKUI_SCROLL_DIRECTION_FREE = 4 | Free scrolling in both directions.<br>**Since:** 20|
+| ARKUI_SCROLL_DIRECTION_FREE = 4 | Free scrolling. This value supports both vertical and horizontal scrolling, and is available only in the **Scroll** component.<br>**Since:** 20 |
 
 ### ArkUI_ScrollSnapAlign
 
@@ -127,7 +125,6 @@ enum ArkUI_ScrollSnapAlign
 ```
 
 **Description**
-
 
 Enumerates the alignment modes of list items when scrolling ends.
 
@@ -148,7 +145,6 @@ enum ArkUI_ScrollBarDisplayMode
 
 **Description**
 
-
 Enumerates the scrollbar display modes.
 
 **Since:** 12
@@ -167,7 +163,6 @@ enum ArkUI_ContentClipMode
 
 **Description**
 
-
 Enumerates the content clipping modes of scrollable components.
 
 **Since:** 18
@@ -185,7 +180,6 @@ enum ArkUI_ScrollNestedMode
 ```
 
 **Description**
-
 
 Enumerates nested scrolling modes.
 
@@ -206,7 +200,6 @@ enum ArkUI_ScrollEdge
 
 **Description**
 
-
 Enumerates the edges to which the component scrolls.
 
 **Since:** 12
@@ -225,7 +218,6 @@ enum ArkUI_ScrollAlignment
 ```
 
 **Description**
-
 
 Enumerates how the list item to scroll to is aligned with the container.
 
@@ -246,7 +238,6 @@ enum ArkUI_ScrollState
 
 **Description**
 
-
 Enumerates the scrolling states.
 
 **Since:** 12
@@ -264,7 +255,6 @@ enum ArkUI_ScrollSource
 ```
 
 **Description**
-
 
 Enumerates scroll sources.
 
@@ -288,7 +278,6 @@ enum ArkUI_ScrollSnapAnimationSpeed
 ```
 
 **Description**
-
 
 Enumerates scroll snap animation speeds for list components.
 

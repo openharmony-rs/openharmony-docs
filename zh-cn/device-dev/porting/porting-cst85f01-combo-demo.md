@@ -1,4 +1,4 @@
-# 物联网解决方案之芯海cst85芯片移植案例
+# 物联网解决方案之芯海cst85系列芯片移植案例
 
 本文介绍基于芯海cst85芯片的cst85_wblink开发板移植OpenHarmony LiteOS-M轻量系统的移植案例。开发了Wi-Fi连接样例和XTS测试样例，同时实现了wifi_lite, lwip, startup, utils, xts, hdf等部件基于OpenHarmony LiteOS-M内核的适配。移植架构上采用Board和SoC分离的方案，工具链采用NewLib C库，LiteOS-M内核编译采用gn结合Kconfig图形化配置的方式。
 
@@ -6,7 +6,7 @@
 
 ### 目录规划
 
-本方案目录结构使用[Board和SoC解耦的设计思路](https://gitee.com/openharmony-sig/sig-content/blob/master/devboard/docs/board-soc-arch-design.md)：
+本方案目录结构使用[Board和SoC解耦的设计思路](https://gitcode.com/openharmony-sig/sig-content/blob/master/devboard/docs/board-soc-arch-design.md)：
 
 ```text
 device
@@ -28,10 +28,11 @@ vendor
 ```
 
 ### 产品定义
-以vendor/chipsea/iotlink_demo为例，这里描述了产品使用的内核、单板、子系统等信息。其中，内核、单板型号、单板厂商需要提前规划好，也是预编译指令所关注的信息。这里填入的信息与规划的目录相对应。例如：
+以//vendor/chipsea/iotlink_demo为例，这里描述了产品使用的内核、单板、子系统等信息。其中，内核、单板型号、单板厂商需要提前规划好，也是预编译指令所关注的信息。这里填入的信息与规划的目录相对应。例如：
 ```json5
 {
    "product_name": "iotlink_demo",        // 产品名
+   "type": "mini",                        // 构建系统的类型：mini
    "version": "3.0",                      // 系统版本：3.0
    "device_company": "chipsea",           // 单板厂商：chipsea
    "board": "cst85_wblink",               // 单板名：cst85_wblink
@@ -253,10 +254,10 @@ LOSCFG_PLATFORM_EXC=y
 
    ```gn
    config("public") {
-     include_dirs = []                       --- 公共头文件
-     ldflags = []                            --- 链接参数，包括ld文件
-     libs = []                               --- 链接库
-     defines = []                            --- 定义
+     include_dirs = []                       # 公共头文件
+     ldflags = []                            # 链接参数，包括ld文件
+     libs = []                               # 链接库
+     defines = []                            # 定义
    }
    ```
 
@@ -328,20 +329,20 @@ static void OsVectorInit(void)
 ```
 
 #### 中断向量表地址对齐
-在Cortex-M的相关文档已经说明，中断向量表的地址最小是32字对齐，也就是0x80。
+在Cortex-M的相关文档已经说明，中断向量表的地址最小是0x80对齐。
 
 举例来说，如果需要21个中断，因为系统中断有16个，所以总共就有37个中断，需要37\*4个表项，一个0x80已经不够了，需要两个0x80，也就是0x100才能覆盖的住。
 
 而在cst85f01的适配中，我们的中断向量LIMIT为128个(target_config.h中定义的)：
 ```c
-#define LOSCFG_PLATFORM_HWI_LIMIT                           128
+#define LOSCFG_PLATFORM_HWI_LIMIT       128
 ```
 我们需要128个中断，加上系统中断，总共(128+16)=144个中断，需要144\*4个表项，这些表项总共需要4个0x80才能盖的住，也即必须是0x200对齐才行。否则，会出现系统重启的现象。
 
 为此，我们需要把中断对齐覆盖为0x200：
 ```c
 #ifndef LOSCFG_ARCH_HWI_VECTOR_ALIGN
-#define LOSCFG_ARCH_HWI_VECTOR_ALIGN                         0x200
+#define LOSCFG_ARCH_HWI_VECTOR_ALIGN    0x200
 #endif
 ```
 
@@ -352,9 +353,9 @@ XTS测试中的syspara的测试对kv的存储涉及到文件的读写，所以�
 适配过程中，需要在`device/soc/chipsea/cst85/liteos_m/components/drivers/littlefs`增加适配接口。
 
 ```c
-  #define LFS_DEFAULT_START_ADDR 0x081E3000 ---littlefs 起始地址
-  #define LFS_DEFAULT_BLOCK_SIZE 4096       ---块大小
-  #define LFS_DEFAULT_BLOCK_COUNT 25        ---块数量
+  #define LFS_DEFAULT_START_ADDR 0x081E3000    // littlefs 起始地址
+  #define LFS_DEFAULT_BLOCK_SIZE 4096          // 块大小
+  #define LFS_DEFAULT_BLOCK_COUNT 25           // 块数量
 
 ```
 
@@ -408,7 +409,7 @@ int32_t hal_vfs_init(void)
 
 ### C库适配
 
-在轻量系统中，C库适配比较复杂，设计思路请参考[LiteOS-M内核支持musl与newlib平滑切换方案](https://gitee.com/arvinzzz/ohos_kernel_design_specification/blob/master/liteos_m/%E6%94%AF%E6%8C%81newlib/%E5%86%85%E6%A0%B8%E9%80%82%E9%85%8Dnewlib%E6%96%B9%E6%A1%88%E6%80%9D%E8%B7%AF.md)，自带`newlib`的C库，那么系统移植整体采用`newlib`的C库。在`vendor/chipsea/iotlink_demo/kernel_configs/debug.config`选中LOSCFG_LIBC_NEWLIB=y即可。
+在轻量系统中，C库适配比较复杂，设计思路请参考[LiteOS-M内核支持musl与newlib平滑切换方案](https://gitcode.com/arvinzzz/ohos_kernel_design_specification/blob/master/liteos_m/%E6%94%AF%E6%8C%81newlib/%E5%86%85%E6%A0%B8%E9%80%82%E9%85%8Dnewlib%E6%96%B9%E6%A1%88%E6%80%9D%E8%B7%AF.md)，自带`newlib`的C库，那么系统移植整体采用`newlib`的C库。在`vendor/chipsea/iotlink_demo/kernel_configs/debug.config`选中LOSCFG_LIBC_NEWLIB=y即可。
 
 
 ### printf适配
@@ -574,7 +575,7 @@ module_switch = defined(LOSCFG_NET_LWIP_SACK)
 module_name = "lwip"
 kernel_module(module_name) {
   sources = LWIP_PORTING_FILES + LWIPNOAPPSFILES -
-  [ "$LWIPDIR/api/sockets.c" ] + [ "porting/src/ethernetif.c" ] // 增加ethernetif.c文件，用以适配ethernet网卡的初始化适配
+  [ "$LWIPDIR/api/sockets.c" ] + [ "porting/src/ethernetif.c" ] # 增加ethernetif.c文件，用以适配ethernet网卡的初始化适配
   defines = [ "LITEOS_LWIP=1" ]
   defines += [ "CHECKSUM_BY_HARDWARE=1" ]
 }
@@ -592,11 +593,11 @@ config("public") {
 #ifndef _PORTING_LWIPOPTS_H_
 #define _PORTING_LWIPOPTS_H_
 
-#include_next "lwip/lwipopts.h"                 --- 保持原来的配置项不变
+#include_next "lwip/lwipopts.h"               // 保持原来的配置项不变
 
 #define LWIP_NETIF_STATUS_CALLBACK      1
 #define LWIP_CHECKSUM_ON_COPY           0
-#define CHECKSUM_GEN_UDP                0     --- 新增硬件适配选项
+#define CHECKSUM_GEN_UDP                0     // 新增硬件适配选项
 
 #endif /* _PORTING_LWIPOPTS_H_ */
 
@@ -634,7 +635,7 @@ static err_t net_if_init(struct netif *net_if)
 
 ### startup子系统
 
-为了运行XTS或者APP_FEATURE_INIT等应用框架，我们适配了startup子系统的bootstrap_lite和syspara_lite组件。
+为了运行XTS或者APP_FEATURE_INIT等应用框架，我们适配了startup子系统的bootstrap_lite和init组件。
 
 在`vendor/chipsea/iotlink_demo/config.json`中新增对应的配置选项。
 
@@ -656,7 +657,9 @@ static err_t net_if_init(struct netif *net_if)
 }
 ```
 
-适配`bootstrap_lite`部件时，需要在连接脚本文件`//device/soc/chipsea/cst85/liteos_m/sdk/bsp/out/cst85f01/cst85f01.ld`中手动新增如下段：
+适配`bootstrap_lite`部件时，需要在链接脚本中手动新增如下段。
+> cst85 的链接脚本位于芯海提供的 SDK 中（通常为 `cst85f01.ld`）。
+> 注意：应修改**源链接脚本**（纳入版本管理的 `.ld` 模板），而不是 `out/` 构建产物目录下的同名文件——后者每次构建都会被重新生成，手动改动会丢失。
 
 ```text
        __zinitcall_bsp_start = .;
@@ -781,6 +784,7 @@ static_library("bootstrap") {
     "system_init.c",
   ]
   ....
+}
 ```
 
 由于`Init`函数是没有显式调用它，所以需要将它强制链接到最终的镜像。在这里，我们通过在 `device/board/chipsea/cst85_wblink/liteos_m/config.gni` 中如下配置ld_flags:
@@ -805,7 +809,7 @@ static_library("bootstrap") {
 
 ```json
 {
-  "subsystem": "commonlibrary",
+  "subsystem": "utils",
   "components": [
     {
       "component": "kv_store",
@@ -817,7 +821,7 @@ static_library("bootstrap") {
 }
 ```
 
-与适配`syspara_lite`部件类似，适配`kv_store`部件时，键值对会写到文件中。在轻量系统中，文件操作相关接口有`POSIX`接口与`HalFiles`接口这两套实现。因为对接内核的文件系统，采用`POSIX`相关的接口，所以`features`需要增加`enable_ohos_utils_native_lite_kv_store_use_posix_kv_api = true`。如果对接`HalFiles`相关的接口实现的，则无须修改。
+与适配`init`部件的系统参数持久化类似，适配`kv_store`部件时，键值对会写到文件中。在轻量系统中，文件操作相关接口有`POSIX`接口与`HalFiles`接口这两套实现。因为对接内核的文件系统，采用`POSIX`相关的接口，所以`features`需要增加`enable_ohos_utils_native_lite_kv_store_use_posix_kv_api = true`。如果对接`HalFiles`相关的接口实现的，则无须修改。
 
 
 ### xts子系统

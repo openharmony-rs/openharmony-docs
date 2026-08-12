@@ -6,6 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=7bf845a7c8933b8c5015a7da3dfa1923d0e9dc57 translatedAt=2026-08-07T03:30:14.711Z pushedAt=2026-08-10T09:20:09.720Z -->
 
 For details about the algorithm specifications, see [ECDH](crypto-key-agreement-overview.md#ecdh).
 
@@ -13,7 +14,7 @@ For details about the algorithm specifications, see [ECDH](crypto-key-agreement-
 
 1. Call [OH_CryptoAsymKeyGenerator_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_create), [OH_CryptoAsymKeyGenerator_Generate](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_generate), and [OH_CryptoAsymKeyGenerator_Convert](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_convert) to generate a 256-bit asymmetric key (**keyPair**) of the ECC type.
 
-   For details about how to generate an ECC asymmetric key pair, see the following example. To learn more, see [ECC](crypto-asym-key-generation-conversion-spec.md#ecc) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly-ndk.md). There may be differences between the input parameters in the reference documents and those in the following example.
+For details about how to generate an ECC asymmetric key, refer to the following example and see [Asymmetric Key Generation and Conversion Specifications: ECC](crypto-key-generation-conversion.md#ecc) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly-ndk.md). Note that the reference documents may differ from the current example in input parameters.
 
 2. Call [OH_CryptoKeyAgreement_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-key-agreement-h.md#oh_cryptokeyagreement_create) and specify the string parameter **ECC256** to create a key protocol generator of the ECC type with the key length of 256 bits.
 
@@ -46,7 +47,7 @@ static OH_Crypto_ErrCode compareSecrets(const Crypto_DataBlob *secret1, const Cr
     return CRYPTO_OPERTION_ERROR;
 }
 
-static OH_Crypto_ErrCode CovertKeyPairByBlob(OH_CryptoAsymKeyGenerator *eccGen, OH_CryptoKeyPair **keyPair)
+static OH_Crypto_ErrCode ConvertKeyPairByBlob(OH_CryptoAsymKeyGenerator *eccGen, OH_CryptoKeyPair **keyPair)
 {
     uint8_t pubKeyArray[] = {48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7,
         3, 66, 0, 4, 83, 96, 142, 9, 86, 214, 126, 106, 247, 233, 92, 125, 4, 128, 138, 105, 246,
@@ -75,7 +76,7 @@ OH_Crypto_ErrCode doTestEcdhKeyAgreement()
         return ret;
     }
 
-    ret = CovertKeyPairByBlob(eccGen, &keyPairA);
+    ret = ConvertKeyPairByBlob(eccGen, &keyPairA);
     if (ret != CRYPTO_SUCCESS) {
         goto goto_cleanup;
     }
@@ -119,3 +120,5 @@ goto_cleanup:
     return ret;
 }
 ```
+
+<!--no_check-->

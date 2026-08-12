@@ -1,10 +1,12 @@
 # list.h
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @rongShao-Z; @wind_-->
-<!--Designer: @yylong-->
+<!--Owner: @rongShao-Z; @wind_-->
+<!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=b6f38d021a31abc28b1dd271b68098ebc074e7ab translatedAt=2026-08-10T03:34:57.926Z pushedAt=2026-08-10T07:31:03.761Z -->
 
 ## Overview
 
@@ -28,7 +30,7 @@ Defines enumerations and APIs related to **List**.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md) | ArkUI_ListChildrenMainSize | Defines the **ChildrenMainSize** information of the **List** component.|
+| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md) | ArkUI_ListChildrenMainSize | Defines the main axis size information of the child component of the **List** component. |
 
 ### Enums
 
@@ -42,12 +44,12 @@ Defines enumerations and APIs related to **List**.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListChildrenMainSize* OH_ArkUI_ListChildrenMainSizeOption_Create()](#oh_arkui_listchildrenmainsizeoption_create) | Creates a **ListChildrenMainSize** instance.|
-| [void OH_ArkUI_ListChildrenMainSizeOption_Dispose(ArkUI_ListChildrenMainSize* option)](#oh_arkui_listchildrenmainsizeoption_dispose) | Disposes of a **ListChildrenMainSize** instance.|
+| [ArkUI_ListChildrenMainSize* OH_ArkUI_ListChildrenMainSizeOption_Create()](#oh_arkui_listchildrenmainsizeoption_create) | Creates a **ListChildrenMainSize** instance. Call **OH_ArkUI_ListChildrenMainSizeOption_Dispose** to release resources after use. |
+| [void OH_ArkUI_ListChildrenMainSizeOption_Dispose(ArkUI_ListChildrenMainSize* option)](#oh_arkui_listchildrenmainsizeoption_dispose) | Disposes of a **ListChildrenMainSize** instance created by **OH_ArkUI_ListChildrenMainSizeOption_Create**. The instance cannot be accessed after disposal. |
 | [int32_t OH_ArkUI_ListChildrenMainSizeOption_SetDefaultMainSize(ArkUI_ListChildrenMainSize* option, float defaultMainSize)](#oh_arkui_listchildrenmainsizeoption_setdefaultmainsize) | Sets the default size of the list item in the **List** component along the main axis. The vertical direction indicates the height, and the horizontal direction indicates the width.|
 | [float OH_ArkUI_ListChildrenMainSizeOption_GetDefaultMainSize(ArkUI_ListChildrenMainSize* option)](#oh_arkui_listchildrenmainsizeoption_getdefaultmainsize) | Obtains the default size of the list item in the **List** component along the main axis. The vertical direction indicates the height, and the horizontal direction indicates the width.|
-| [void OH_ArkUI_ListChildrenMainSizeOption_Resize(ArkUI_ListChildrenMainSize* option, int32_t totalSize)](#oh_arkui_listchildrenmainsizeoption_resize) | Adjusts the capacity of the child item size array in the **List** component along the main axis.|
-| [int32_t OH_ArkUI_ListChildrenMainSizeOption_Splice(ArkUI_ListChildrenMainSize* option, int32_t index, int32_t deleteCount, int32_t addCount)](#oh_arkui_listchildrenmainsizeoption_splice) | Adjusts the child item size array in the **List** component along the main axis.|
+| [void OH_ArkUI_ListChildrenMainSizeOption_Resize(ArkUI_ListChildrenMainSize* option, int32_t totalSize)](#oh_arkui_listchildrenmainsizeoption_resize) | Adjusts the length of the main axis size array of child items in the **List** component. When the array is expanded, the initial value of new elements is **-1**. |
+| [int32_t OH_ArkUI_ListChildrenMainSizeOption_Splice(ArkUI_ListChildrenMainSize* option, int32_t index, int32_t deleteCount, int32_t addCount)](#oh_arkui_listchildrenmainsizeoption_splice) | Deletes **deleteCount** elements from the main axis size array of child items in the **List** component starting at the specified index position, and inserts **addCount** elements with an initial value of **-1** at that position. If the value of **deleteCount** exceeds the number of remaining elements, deletion proceeds to the end of the array. |
 | [int32_t OH_ArkUI_ListChildrenMainSizeOption_UpdateSize(ArkUI_ListChildrenMainSize* option, int32_t index, float mainSize)](#oh_arkui_listchildrenmainsizeoption_updatesize) | Updates the size at the specified index in the child item size array of the **List** component along the main axis. The vertical direction indicates the height, and the horizontal direction indicates the width.|
 | [float OH_ArkUI_ListChildrenMainSizeOption_GetMainSize(ArkUI_ListChildrenMainSize* option, int32_t index)](#oh_arkui_listchildrenmainsizeoption_getmainsize) | Obtains the size at the specified index in the child item size array of the **List** component along the main axis. The vertical direction indicates the height, and the horizontal direction indicates the width.|
 
@@ -60,7 +62,6 @@ enum ArkUI_ListItemAlignment
 ```
 
 **Description**
-
 
 Enumerates the alignment modes of items along the cross axis. The default value is **ARKUI_LIST_ITEM_ALIGNMENT_START**.
 
@@ -80,7 +81,6 @@ enum ArkUI_StickyStyle
 
 **Description**
 
-
 Enumerates the modes for pinning the header to the top or the footer to the bottom.
 
 **Since:** 12
@@ -99,7 +99,6 @@ enum ArkUI_ListItemGroupArea
 ```
 
 **Description**
-
 
 Enumerates the areas in the [ListItemGroup](./arkui-ts/ts-container-listitemgroup.md) component. The default value is **ARKUI_LIST_ITEM_GROUP_AREA_OUTSIDE**.
 
@@ -123,8 +122,7 @@ ArkUI_ListChildrenMainSize* OH_ArkUI_ListChildrenMainSizeOption_Create()
 
 **Description**
 
-
-Creates a **ListChildrenMainSize** instance.
+Creates a **ListChildrenMainSize** instance. After use, call [OH_ArkUI_ListChildrenMainSizeOption_Dispose](#oh_arkui_listchildrenmainsizeoption_dispose) to release resources.
 
 **Since:** 12
 
@@ -142,11 +140,9 @@ void OH_ArkUI_ListChildrenMainSizeOption_Dispose(ArkUI_ListChildrenMainSize* opt
 
 **Description**
 
-
-Disposes of a **ListChildrenMainSize** instance.
+Disposes of a **ListChildrenMainSize** instance created by [OH_ArkUI_ListChildrenMainSizeOption_Create](#oh_arkui_listchildrenmainsizeoption_create). The instance cannot be accessed after disposal.
 
 **Since:** 12
-
 
 **Parameters**
 
@@ -162,18 +158,16 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_SetDefaultMainSize(ArkUI_ListChildre
 
 **Description**
 
-
 Sets the default size of the list item in the [List](./arkui-ts/ts-container-list.md) component along the main axis. The vertical direction indicates the height, and the horizontal direction indicates the width.
 
 **Since:** 12
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | Pointer to the **ListChildrenMainSize** instance.|
-| float defaultMainSize | Default size of the list item along the main axis, in vp.|
+| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | Pointer to the **ListChildrenMainSize** instance. **ARKUI_ERROR_CODE_PARAM_INVALID** is returned when the parameter is a null pointer. |
+| float defaultMainSize | Default size of the list item along the main axis, in vp. The value must be greater than or equal to 0. |
 
 **Returns**
 
@@ -189,11 +183,9 @@ float OH_ArkUI_ListChildrenMainSizeOption_GetDefaultMainSize(ArkUI_ListChildrenM
 
 **Description**
 
-
 Obtains the default size of the list item in the [List](./arkui-ts/ts-container-list.md) component along the main axis. The vertical direction indicates the height, and the horizontal direction indicates the width.
 
 **Since:** 12
-
 
 **Parameters**
 
@@ -215,18 +207,16 @@ void OH_ArkUI_ListChildrenMainSizeOption_Resize(ArkUI_ListChildrenMainSize* opti
 
 **Description**
 
-
-Adjusts the capacity of the child item size array in the [List](./arkui-ts/ts-container-list.md) component along the main axis.
+Adjusts the length of the main axis size array of child items in the [List](./arkui-ts/ts-container-list.md) component. When the array is expanded, the initial value of new elements is **-1**.
 
 **Since:** 12
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | Pointer to the **ListChildrenMainSize** instance.|
-| int32_t totalSize | Capacity of the target array.|
+| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | Pointer to the **ListChildrenMainSize** instance. No operation is performed when the parameter is a null pointer. |
+| int32_t totalSize | Target array length. The value range is greater than 0. No operation is performed when a value less than or equal to 0 is passed in. |
 
 ### OH_ArkUI_ListChildrenMainSizeOption_Splice()
 
@@ -236,20 +226,18 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_Splice(ArkUI_ListChildrenMainSize* o
 
 **Description**
 
-
-Adjusts the child item size array in the [List](./arkui-ts/ts-container-list.md) component along the main axis.
+Deletes **deleteCount** elements from the main axis size array of child items in the [List](./arkui-ts/ts-container-list.md) component starting from the specified index position, and inserts **addCount** elements with an initial value of **-1** at that position. If the value of **deleteCount** exceeds the number of remaining elements, deletion proceeds to the end of the array.
 
 **Since:** 12
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | Pointer to the **ListChildrenMainSize** instance.|
-| int32_t index | Start index.|
-| int32_t deleteCount | Number of elements to be deleted from the start position.|
-| int32_t addCount | Number of elements to be added from the start position.|
+| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | Pointer to the **ListChildrenMainSize** instance. **ARKUI_ERROR_CODE_PARAM_INVALID** is returned when the parameter is a null pointer. |
+| int32_t index | Start index of the operation. The value ranges from 0 to the current array length minus 1. |
+| int32_t deleteCount | Number of elements to delete starting from the start position. The value is greater than or equal to 0. If the number exceeds the remaining elements, deletion proceeds to the end of the array. |
+| int32_t addCount | Number of elements to add starting from the start position. The value is greater than or equal to 0. The initial value of new elements is **-1**. |
 
 **Returns**
 
@@ -265,19 +253,17 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_UpdateSize(ArkUI_ListChildrenMainSiz
 
 **Description**
 
-
 Updates the size at the specified index in the child item size array of the [List](./arkui-ts/ts-container-list.md) component along the main axis. The vertical direction indicates the height, and the horizontal direction indicates the width.
 
 **Since:** 12
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | Pointer to the **ListChildrenMainSize** instance.|
-| int32_t index | Array index of the target element.|
-| float mainSize | Size along the main axis, in vp.|
+| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | Pointer to the **ListChildrenMainSize** instance. **ARKUI_ERROR_CODE_PARAM_INVALID** is returned when the parameter is a null pointer. |
+| int32_t index | Array index of the target element. The value ranges from 0 to the current array length minus 1. |
+| float mainSize | Main axis size value to set, in vp. The value must be greater than or equal to 0. |
 
 **Returns**
 
@@ -293,21 +279,19 @@ float OH_ArkUI_ListChildrenMainSizeOption_GetMainSize(ArkUI_ListChildrenMainSize
 
 **Description**
 
-
 Obtains the size at the specified index in the child item size array of the [List](./arkui-ts/ts-container-list.md) component along the main axis. The vertical direction indicates the height, and the horizontal direction indicates the width.
 
 **Since:** 12
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | Pointer to the **ListChildrenMainSize** instance.|
-| int32_t index | Array index of the target element.|
+| int32_t index | Array index of the target element. The value ranges from 0 to the current array length minus 1. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| float | Value at the specified index. If a parameter error occurs, **-1** is returned.|
+| float | Main axis size value at the specified index in the array, in vp. **-1** is returned if **option** is a null pointer or **index** is out of the array range. |

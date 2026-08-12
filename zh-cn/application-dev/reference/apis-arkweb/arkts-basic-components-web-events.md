@@ -2666,14 +2666,14 @@ onWindowNew(callback: Callback\<OnWindowNewEvent\>)
               this.dialogController.close();
             }
             let popController: webview.WebviewController = new webview.WebviewController();
-            this.dialogController = new CustomDialogController({
-              builder: NewWebViewComp({ webviewController1: popController })
-            })
-            this.dialogController.open();
             // 将新窗口对应WebviewController返回给Web内核。
             // 若不调用event.handler.setWebController接口，会造成渲染进程阻塞。
             // 如果没有创建新窗口，调用event.handler.setWebController接口时设置成null，通知Web没有创建新窗口。
             event.handler.setWebController(popController);
+            this.dialogController = new CustomDialogController({
+              builder: NewWebViewComp({ webviewController1: popController })
+            })
+            this.dialogController.open();
           })
       }
     }
@@ -2773,14 +2773,14 @@ onWindowNewExt(callback: Callback\<OnWindowNewExtEvent\>)
             this.dialogController.close();
           }
           let popController: webview.WebviewController = new webview.WebviewController();
-          this.dialogController = new CustomDialogController({
-            builder: NewWebViewComp({ webviewController1: popController })
-          })
-          this.dialogController.open();
           // 将新窗口对应WebviewController返回给Web内核。
           // 若不调用event.handler.setWebController接口，会造成渲染进程阻塞。
           // 如果没有创建新窗口，在调用event.handler.setWebController接口时应设置成null，以通知Web没有创建新窗口。
           event.handler.setWebController(popController);
+          this.dialogController = new CustomDialogController({
+            builder: NewWebViewComp({ webviewController1: popController })
+          })
+          this.dialogController.open();
         })
       }
     }
@@ -2874,14 +2874,14 @@ Web页面触发window.open(url, name)时，会根据name查找是否存在已绑
               this.dialogController.close()
             }
             let popController: webview.WebviewController = new webview.WebviewController();
+            // 将新窗口对应WebviewController返回给Web内核。
+            // 若不调用event.handler.setWebController接口，会造成渲染进程阻塞。
+            event.handler.setWebController(popController);
             this.dialogController = new CustomDialogController({
               builder: NewWebViewComp({ webviewController1: popController }),
               isModal: false
             })
             this.dialogController.open();
-            // 将新窗口对应WebviewController返回给Web内核。
-            // 若不调用event.handler.setWebController接口，会造成渲染进程阻塞。
-            event.handler.setWebController(popController);
           })
       }
     }
@@ -3363,6 +3363,12 @@ onLoadIntercept(callback: Callback\<OnLoadInterceptEvent, boolean\>)
 当Web组件加载url之前触发该回调，用于判断是否阻止此次访问。
 
 > **说明：**
+>
+> - onLoadIntercept是在页面导航前同步触发的回调，回调返回前当前导航处于挂起状态。
+>
+> - 禁止在回调中直接调用会触发新导航的接口（如[refresh()](./arkts-apis-webview-WebviewController.md#refresh)、[loadurl()](./arkts-apis-webview-WebviewController.md#loadurl)、[setCustomUserAgent()](./arkts-apis-webview-WebviewController.md#setcustomuseragent10)等），否则会导致回调重入或导航状态混乱。
+>
+> - 如需在拦截后重新加载页面，应在回调返回后通过[setTimeout()](../common/js-apis-timer.md#settimeout)等异步方法延迟调用。
 >
 > - onLoadIntercept无法获取到完整的headers，如需获取完整headers建议在[onInterceptRequest](#oninterceptrequest9)或者通过WebSchemeHandler的[onRequestStart](./arkts-apis-webview-WebSchemeHandler.md#onrequeststart12)中获取。
 

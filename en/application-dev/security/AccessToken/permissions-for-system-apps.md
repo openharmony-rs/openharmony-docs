@@ -7598,6 +7598,20 @@ Allows a system application to launch another application to a specified page st
 
 **Valid since**: 26.0.0
 
+## ohos.permission.vehicle.CAR_DETACHABLE_SCREEN_MANAGEMENT
+
+Allows an application to obtain the information and status of the rear control screen and establish a communication channel with it.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.1.0
+
 ## ohos.permission.vehicle.CAR_MODE_MANAGEMENT
 
 Allows an application to obtain and set the car scenario mode.
@@ -7699,6 +7713,108 @@ Allows an application to read vehicle and head unit configurations.
 ## ohos.permission.vehicle.WRITE_CAR_CDC_CONFIG
 
 Allows an application to write vehicle and head unit configurations.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_PRIVACY_CONSENT
+
+Allows an application to sign vehicle privacy agreements or policies.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_DRIVER_SEAT_PRIVACY
+
+Allows an application to set the status of driver-seat privacy mode.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_CLEAR_TRACE
+
+Allows an application to configure trace removal and update the trace removal status.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_SENSORTYPE_STATE
+
+Allows an application to set the validity period of sensitive permissions.
+
+With this permission, the application can configure the validity period for permissions involving sensitive user data, such as the microphone, in-vehicle cameras, and location services.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_REMOTELOCATION
+
+Allows an application to configure the toggle switch status for remote location control.
+
+With this permission, the application can enable or disable remote viewing of the vehicle's location.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_ANONYMIZE_VOICE
+
+Allows an application to use voiceprint anonymization capabilities.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_SUPER_PRIVACY
+
+Allows an application to set the in-vehicle privacy protection status.
 
 **Permission level**: system_basic
 
@@ -8860,3 +8976,117 @@ Allows an application to mount the media library sandbox within appspawn.
 **Supported devices**: wearables | TVs | tablets | phones | PCs/2-in-1 devices | cars | lite wearables | smartlocks | routers
 
 **Since**: 26.1.0
+
+## ohos.permission.MUTE_VOIP_CAPTURE
+
+Allows an application to mute the VoIP capture streams of other applications.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | tablets | TVs | PCs/2-in-1 devices | cars | wearables
+
+**Valid since**: 26.0.0
+
+## ohos.permission.MUTE_VOIP_PLAYBACK
+
+Allows an application to mute the VoIP playback streams of other applications.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | tablets | TVs | PCs/2-in-1 devices | cars | wearables
+
+**Valid since**: 26.0.0
+
+## ohos.permission.VOIP_CAPTURE_CONCURRENCY
+
+Allows an application to enable the VoIP recording stream while another application is recording VoIP calls.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | tablets | TVs | PCs/2-in-1 devices | cars | wearables
+
+**Valid since**: 26.0.0
+
+## ohos.permission.vehicle.DEVICE_AUTH
+
+Allows an application on the rear armrest screen to connect to the head unit for device authentication.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.1.0
+
+## ohos.permission.ACCESS_FILE_MONITOR_DIR
+
+Allows an application to obtain file management data using the sandbox.
+
+With this permission, the application can query the database using the sandbox in the client process to reduce query time.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PC/2in1 | Phone | Tablet | TV | Smartlock | Car
+
+**Since**: 26.1.0
+
+## ohos.permission.vehicle.VEHICLE_OEMCERTSIGN
+
+Allows an application to sign data using OEM certificates.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.1.0
+
+## ohos.permission.CONNECTIVITY_USE_RESTRICTED_NETWORKS
+
+Allows an application to use restricted networks, such as internal networks and specific vehicle networks.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.1.0
+
+## ohos.permission.ACCESS_SOFTBUS_SYS_HAP
+
+Allows a system application to connect to near-field devices and send/receive data.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices | cars | phones | wearables | tablets | TVs
+
+**Valid since**: 26.1.0

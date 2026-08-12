@@ -7286,6 +7286,73 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+
+### getReadOnlyFdWithCached
+
+getReadOnlyFdWithCached(): Promise&lt;number&gt;
+
+以只读方式打开当前文件。若打开的是云图库中的视频文件，则视频将被缓存至图库沙箱。其他类型的资源文件不会被缓存。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**返回值：**
+
+| 类型                    | 说明            |
+| --------------------- | ------------- |
+| Promise&lt;number&gt; | Promise对象，返回文件描述符。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201    | Permission denied. |
+| 202     | Called by non-system application.         |
+| 23800151     | Scene parameters validate failed, possible causes: The image and video files corresponding to the photoasset do not exist.        |
+| 23800302       | Failed to open the file. Possible causes: 1. Unable to access cloud images due to network connectivity issues; 2. File system malfunction. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getReadOnlyFdDemo');
+  try {
+    // 需要保证设备中存在可读取图片视频文件。
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    let fetchOptions: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: predicates
+    };
+    let assetResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    let photoAsset: photoAccessHelper.PhotoAsset = await assetResult.getFirstObject();
+    if (photoAsset === undefined) {
+      console.error('photoAsset is undefined');
+      return;
+    }
+    let fd: number = await photoAsset.getReadOnlyFdWithCached();
+    if (fd !== undefined) {
+      console.info('File fd: ' + fd);
+      photoAsset.close(fd);
+    } else {
+      console.error('Failed To Get ReadOnlyFd With Cached fd: ' + fd);
+    }
+  } catch (err) {
+    console.error(`Failed To Get ReadOnly Fd With Cached err: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ## SharedPhotoAsset<sup>13+</sup>
 
 共享图片资产。

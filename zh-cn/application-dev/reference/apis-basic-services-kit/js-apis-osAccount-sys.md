@@ -334,7 +334,7 @@ isOsAccountConstraintEnabled(localId: number, constraint: string): Promise&lt;bo
 | 参数名     | 类型   | 必填 | 说明                                |
 | ---------- | ------ | ---- | ---------------------------------- |
 | localId    | number | 是   | 系统账号ID。  |
-| constraint | string | 是   | 指定的[约束](js-apis-osAccount.md#系统账号约束列表)名称。 |
+| constraint | string | 是   | 指定的[约束](appendix-osAccount-constraints.md)名称。 |
 
 **返回值：**
 
@@ -625,7 +625,7 @@ setOsAccountConstraints(localId: number, constraints: Array&lt;string&gt;, enabl
 | 参数名      | 类型                      | 必填 | 说明                                             |
 | ----------- | ------------------------- | ---- | ----------------------------------------------- |
 | localId     | number                    | 是   | 系统账号ID。               |
-| constraints | Array&lt;string&gt;       | 是   | 待设置/删除的[约束](js-apis-osAccount.md#系统账号约束列表)列表。        |
+| constraints | Array&lt;string&gt;       | 是   | 待设置/删除的[约束](appendix-osAccount-constraints.md)列表。        |
 | enable      | boolean                   | 是   | 设置(true)/删除(false)。                          |
 | callback    | AsyncCallback&lt;void&gt; | 是   | 回调函数。如果设置成功，err为null，否则为错误对象。 |
 
@@ -682,7 +682,7 @@ setOsAccountConstraints(localId: number, constraints: Array&lt;string&gt;, enabl
 | 参数名      | 类型                | 必填 | 说明                                         |
 | ----------- | ------------------- | ---- | -------------------------------------------- |
 | localId     | number              | 是   | 系统账号ID。           |
-| constraints | Array&lt;string&gt; | 是   | 待设置/删除的[约束](js-apis-osAccount.md#系统账号约束列表)列表。    |
+| constraints | Array&lt;string&gt; | 是   | 待设置/删除的[约束](appendix-osAccount-constraints.md)列表。    |
 | enable      | boolean             | 是   | 设置(true)/删除(false)。                     |
 
 **返回值：**
@@ -1052,7 +1052,7 @@ getEnabledOsAccountConstraints(localId: number): Promise&lt;Array&lt;string&gt;&
 
 | 类型                               | 说明                                                       |
 | ---------------------------------- | ---------------------------------------------------------- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回指定系统账号已使能的全部[约束](js-apis-osAccount.md#系统账号约束列表)。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回指定系统账号已使能的全部[约束](appendix-osAccount-constraints.md)。 |
 
 **错误码：**
 
@@ -2104,7 +2104,7 @@ onConstraintChanged(constraints: string[], callback: Callback&lt;ConstraintChang
 
 | 参数名     | 类型                   | 必填 | 说明      |
 | --------  | ---------------------- | ---- | -------- |
-| constraints  | string[] | 是   | 表示待订阅的[约束](js-apis-osAccount.md#系统账号约束列表)列表。 |
+| constraints  | string[] | 是   | 表示待订阅的[约束](appendix-osAccount-constraints.md)列表。 |
 | callback | Callback&lt;[ConstraintChangeInfo](#constraintchangeinfo23)&gt;  | 是   | 表示用于接收约束变更事件的回调函数。 |
 
 
@@ -2547,8 +2547,8 @@ getOsAccountConstraintSourceTypes(localId: number, constraint: string, callback:
 | 参数名   | 类型                       | 必填 | 说明                                                         |
 | -------- | -------------------------- | ---- | ------------------------------------------------------------ |
 | localId     | number | 是   |  要查询的系统账号ID。 |
-| constraint     | string | 是   |  要查询的[约束](js-apis-osAccount.md#系统账号约束列表)名称。 |
-| callback | AsyncCallback&lt;Array&lt;[ConstraintSourceTypeInfo](#constraintsourcetypeinfo9)&gt;&gt;     | 是   | 回调函数。如果成功，err为null，data为指定系统账号的指定[约束](js-apis-osAccount.md#系统账号约束列表)来源信息；否则为错误对象。                      |
+| constraint     | string | 是   |  要查询的[约束](appendix-osAccount-constraints.md)名称。 |
+| callback | AsyncCallback&lt;Array&lt;[ConstraintSourceTypeInfo](#constraintsourcetypeinfo9)&gt;&gt;     | 是   | 回调函数。如果成功，err为null，data为指定系统账号的指定[约束](appendix-osAccount-constraints.md)来源信息；否则为错误对象。                      |
 
 **错误码：**
 
@@ -2599,13 +2599,13 @@ getOsAccountConstraintSourceTypes(localId: number, constraint: string): Promise&
 | 参数名  | 类型   | 必填 | 说明         |
 | ------- | ------ | ---- | ------------ |
 | localId     | number | 是   |  要查询的系统账号ID。 |
-| constraint     | string | 是   |  要查询的[约束](js-apis-osAccount.md#系统账号约束列表)名称。 |
+| constraint     | string | 是   |  要查询的[约束](appendix-osAccount-constraints.md)名称。 |
 
 **返回值：**
 
 | 类型                  | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ |
-| Promise&lt;Array&lt;[ConstraintSourceTypeInfo](#constraintsourcetypeinfo9)&gt;&gt; | Promise对象，返回指定系统账号的指定[约束](js-apis-osAccount.md#系统账号约束列表)来源信息。 |
+| Promise&lt;Array&lt;[ConstraintSourceTypeInfo](#constraintsourcetypeinfo9)&gt;&gt; | Promise对象，返回指定系统账号的指定[约束](appendix-osAccount-constraints.md)来源信息。 |
 
 **错误码：**
 
@@ -2981,8 +2981,8 @@ try {
 | --- | --- | --- | --- | --- |
 | challenge | Uint8Array | 否 | 是 | 随机挑战值，可用于防止重放攻击，长度不得超过32字节，默认为undefined。|
 | isReuseNeeded | boolean | 否 | 是 | 是否需要复用先前的授权，默认为true。<br/>如果为true且存在有效的授权结果，则将复用该结果；否则，将执行新的授权。 |
-| isInteractionAllowed | boolean | 否 | 是 | 是否允许用户交互，默认为true 。<br/>如果为true，则允许在交互上下文中显示授权对话框；如果为false，则不允许显示授权对话框。<br>**注意**：此选项仅在调用者位于前台时生效。如果调用者在后台，则不允许用户交互。 |
-| interactionContext | Context | 否 | 是 | 用户交互上下文配置，默认为undefined。<br/>- 未指定上下文时，授权对话框以模态系统模式显示。<br/>- 指定[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)或[UIExtensionContext](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md)时，以模态应用模式显示。<br/> - 未提供有效上下文时，授权对话框无法显示。<br>**注意**：仅当isInteractionAllowed为true时生效。 |
+| isInteractionAllowed | boolean | 否 | 是 | 是否允许用户交互，默认为true 。<br/>如果为true，则允许在交互上下文中显示授权对话框；如果为false，则不允许显示授权对话框。<br>**注意:** 此选项仅在调用者位于前台时生效。如果调用者在后台，则不允许用户交互。 |
+| interactionContext | Context | 否 | 是 | 用户交互上下文配置，默认为undefined。<br/>- 未指定上下文时，授权对话框以模态系统模式显示。<br/>- 指定[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)或[UIExtensionContext](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md)时，以模态应用模式显示。<br/> - 未提供有效上下文时，授权对话框无法显示。<br>**注意:** 仅当isInteractionAllowed为true时生效。 |
 ## AuthorizationResultCode<sup>24+</sup>
 
 表示授权结果码的枚举。
@@ -7587,7 +7587,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 | 名称      | 类型   | 只读 | 可选 | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
-| constraint | string | 否 | 否 | 发生变更的[约束](js-apis-osAccount.md#系统账号约束列表)。 |
+| constraint | string | 否 | 否 | 发生变更的[约束](appendix-osAccount-constraints.md)。 |
 | isEnabled | boolean | 否 | 否 | 发生变更的约束的使能状态。默认：false。<br>true表示目标约束已使能；false表示目标约束未使能。 |
 
 ## CreateOsAccountOptions<sup>12+</sup>

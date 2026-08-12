@@ -781,6 +781,20 @@ With this permission, the application can set audio sound effects and manage aud
 
 **Since**: 26.0.0
 
+## ohos.permission.vehicle.ACCESS_CAR_SECURITY_PRIVACY
+
+Allows an application to access vehicle security and privacy service APIs.
+
+With this permission, the application can query vehicle privacy agreements or policies, driver-seat privacy mode, and trace removal status.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: cars
+
+**Since**: 26.1.0
+
 ## ohos.permission.DCAS_RUN_MODEL
 
 Allows an application to access device-side model runtime management.

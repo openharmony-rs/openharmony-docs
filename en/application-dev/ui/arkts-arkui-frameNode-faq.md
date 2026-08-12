@@ -6,7 +6,7 @@
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=d784589cd7b20886b918d468e5c959bee7adcbe3 translatedAt=2026-07-25T10:16:05.141Z pushedAt=2026-07-25T10:49:26.970Z -->
+<!-- md-trans-meta sourceCommit=82cbd61bf5a97c687ddb974e4186cc744a8f06f2 translatedAt=2026-07-29T12:42:24.980Z pushedAt=2026-07-30T01:35:40.404Z -->
 
 This topic addresses common issues related to imperative nodes.
 
@@ -28,7 +28,7 @@ Go to the error log as prompted, view the error cause, and rectify the fault. Fo
 
 **Sample Code**
 
-This example shows how to throw a [dispose](../reference/apis-arkui/js-apis-arkui-frameNode.md#dispose12) exception in FrameNode. After the sample code is executed, a JS crash error is reported. Go to the error scenario as prompted. The error cause is that [getMeasuredSize](../reference/apis-arkui/js-apis-arkui-frameNode.md#getmeasuredsize12) cannot be called after **dispose** is called. In this example, deleting the code related to **dispose** will allow the application to run normally.
+This example shows how to throw a [dispose](../reference/apis-arkui/js-apis-arkui-frameNode.md#dispose12) exception in FrameNode. After the sample code is executed, a JS crash error is reported. Go to the error scenario as prompted as shown in the figure below. The error cause is that [getMeasuredSize](../reference/apis-arkui/js-apis-arkui-frameNode.md#getmeasuredsize12) cannot be called after **dispose** is called. In this example, deleting the code related to **dispose** will allow the application to run normally.
 
 ```ts
 import { NodeController, FrameNode } from '@kit.ArkUI';
@@ -59,7 +59,7 @@ struct FrameNodeTypeTest {
 
 ![attributeModifier_error](figures/frameNode_error.png)
 
-## cppcrash Occurs After ArkUI_NodeHandle Created on the Native Side Calls disposeNode
+## cppcrash Occurs After Calling disposeNode on ArkUI_NodeHandle Created on the Native Side 
 
 **Problem**
 

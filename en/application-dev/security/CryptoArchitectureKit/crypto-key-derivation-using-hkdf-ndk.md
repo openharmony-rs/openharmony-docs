@@ -6,6 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=205f3acb276420a792c1ba70147af638f33c6902 translatedAt=2026-08-07T03:30:38.708Z pushedAt=2026-08-10T09:22:24.387Z -->
 
 For details about the corresponding algorithm specifications, see [HKDF](crypto-key-derivation-overview.md#hkdf).
 
@@ -14,8 +15,11 @@ For details about the corresponding algorithm specifications, see [HKDF](crypto-
 1. Call [OH_CryptoKdfParams_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdfparams_create) with the string parameter **HKDF** to create a key derivation parameter object.
 
 2. Call [OH_CryptoKdfParams_SetParam](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdfparams_setparam) to set the parameters required by HKDF. Example:
+
    - **CRYPTO_KDF_KEY_DATABLOB**: original key material used to generate a derived key.
+
    - **CRYPTO_KDF_SALT_DATABLOB**: salt value.
+
    - **CRYPTO_KDF_INFO_DATABLOB**: (optional) application-specific information.
 
 3. Call [OH_CryptoKdf_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdf_create) with the string parameter **HKDF|SHA256|EXTRACT_AND_EXPAND** to create a key derivation function object.
@@ -39,7 +43,9 @@ static OH_Crypto_ErrCode setParams(OH_CryptoKdfParams **params)
     };
     OH_Crypto_ErrCode ret = OH_CryptoKdfParams_SetParam(*params, CRYPTO_KDF_KEY_DATABLOB, &key);
     if (ret != CRYPTO_SUCCESS) {
-        goto end;
+        OH_CryptoKdfParams_Destroy(*params);
+        *params = nullptr;
+        return ret;
     }
 
     // Set the salt value.
@@ -50,7 +56,9 @@ static OH_Crypto_ErrCode setParams(OH_CryptoKdfParams **params)
     };
     ret = OH_CryptoKdfParams_SetParam(*params, CRYPTO_KDF_SALT_DATABLOB, &salt);
     if (ret != CRYPTO_SUCCESS) {
-        goto end;
+        OH_CryptoKdfParams_Destroy(*params);
+        *params = nullptr;
+        return ret;
     }
 
     // (Optional) Set application-specific information.
@@ -61,12 +69,11 @@ static OH_Crypto_ErrCode setParams(OH_CryptoKdfParams **params)
     };
     ret = OH_CryptoKdfParams_SetParam(*params, CRYPTO_KDF_INFO_DATABLOB, &info);
     if (ret != CRYPTO_SUCCESS) {
-        goto end;
+        OH_CryptoKdfParams_Destroy(*params);
+        *params = nullptr;
+        return ret;
     }
-end:
-    OH_CryptoKdfParams_Destroy(*params);
-    *params = nullptr;
-    return ret;
+    return CRYPTO_SUCCESS;
 }
 
 OH_Crypto_ErrCode doTestHkdf()
