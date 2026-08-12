@@ -34,14 +34,14 @@
 
 因此，应用在处理预览流数据或者录像流数据时，需处理色彩空间否则会导致处理后的数据存在偏色、过曝等效果异常问题。具体原因可能存在如下情况：
 
-1.应用未主动设置色彩空间默认SDR的色彩空间，处理相机输出流数未配置正确的色彩空间信息。
+1. 应用未主动设置色彩空间默认SDR的色彩空间，处理相机输出流数未配置正确的色彩空间信息。
 
-2.应用主动设置空间，处理相机输出流数据色彩空间配置错误。
+2. 应用主动设置空间，处理相机输出流数据色彩空间配置错误。
 
 ## 问题分析
 
-通过[getSupportedColorSpace](../../reference/apis-camera-kit/arkts-apis-camera-ColorManagementQuery.md#getsupportedcolorspaces12)查询当前会话生效的色彩空间，处理相机输出流数据时配置正常的色彩空间信息。
+通过[getSupportedColorSpace](../../reference/apis-camera-kit/arkts-apis-camera-ColorManagementQuery.md#getsupportedcolorspaces12)查询当前会话生效的色彩空间，处理相机输出流数据时配置正确的色彩空间信息。
 
-1.[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)使用场景，通过[setColorSpace](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md#setcolorspace10)设置图像的色彩空间属性。
+1. [PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)使用场景，通过[setColorSpace](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md#setcolorspace10)设置图像的色彩空间属性。
 
-2.[NativeWindow](../../reference/apis-arkgraphics2d/capi-nativewindow.md)使用场景，可先通过[OH_NativeWindow_GetColorSpace](../../reference/apis-arkgraphics2d/capi-external-window-h.md#oh_nativewindow_getcolorspace)获取OHNativeWindow色彩空间属性，再通过[OH_NativeWindow_SetColorSpace](../../reference/apis-arkgraphics2d/capi-external-window-h.md#oh_nativewindow_setcolorspace)设置OHNativeWindow色彩空间属性。
+2. [NativeWindow](../../reference/apis-arkgraphics2d/capi-nativewindow.md)使用场景，可先通过[OH_NativeWindow_GetColorSpace](../../reference/apis-arkgraphics2d/capi-external-window-h.md#oh_nativewindow_getcolorspace)获取OHNativeWindow色彩空间属性，再通过[OH_NativeWindow_SetColorSpace](../../reference/apis-arkgraphics2d/capi-external-window-h.md#oh_nativewindow_setcolorspace)设置OHNativeWindow色彩空间属性。
