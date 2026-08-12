@@ -32,7 +32,7 @@ async obtainingAuthLockState() : Promise<string> {
   try {
     Logger.info(`get auth lock state start`);
     const authLockState : userAuth.AuthLockState = await userAuth.getAuthLockState(userAuth.UserAuthType.PIN);
-    if (authLockState.lockoutDuration === userAuth.PERMANENT_LOCKOUT_DURATION) {
+    if (authLockState.isLocked && authLockState.lockoutDuration === userAuth.PERMANENT_LOCKOUT_DURATION) {
       Logger.info('the authentication of given authType is permanent locked.');
     }
     const authLockStateContent : string = JSON.stringify(authLockState);
