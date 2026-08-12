@@ -245,7 +245,7 @@ exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicat
 | 参数名   | 类型                        | 必填 | 说明                                   |
 | -------- | --------------------------- | ---- | -------------------------------------- |
 | context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)               | 是   | 应用上下文。 |
-| predicates | [dataSharePredicates.DataSharePredicates](../../../application-dev/reference/apis-arkdata/js-apis-data-dataSharePredicates.md) | 是   | 查询语句，用于筛选要导出的联系人数据。 |
+| predicates | [dataSharePredicates.DataSharePredicates](../../../application-dev/reference/apis-arkdata/js-apis-data-dataSharePredicates.md) | 是   | 查询语句。用于筛选要导出的联系人数据。 |
 | options   | VCardBuilderOptions | 否   | VCard版本与编码类型。 |  
 
 **返回值：**
