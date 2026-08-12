@@ -668,7 +668,7 @@ isActiveSync(volumeType: AudioVolumeType): boolean
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
 

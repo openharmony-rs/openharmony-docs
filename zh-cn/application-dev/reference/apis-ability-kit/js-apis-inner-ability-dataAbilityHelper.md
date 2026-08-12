@@ -1479,6 +1479,9 @@ dataAbilityHelper.executeBatch('dataability:///com.example.jsapidemo.UserDataAbi
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
+**模型约束**：
+API版本11+：此接口可在Stage模型和FA模型下使用。
+
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 7

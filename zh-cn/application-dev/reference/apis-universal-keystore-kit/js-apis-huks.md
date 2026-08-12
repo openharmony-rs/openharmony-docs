@@ -93,6 +93,8 @@ generateKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\
 
 基于密钥不出[TEE](../../security/UniversalKeystoreKit/huks-concepts.md#可信执行环境tee)原则，此接口不会返回密钥材料内容，只用于表示此次调用是否成功。
 
+<!--RP7--><!--RP7End-->
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -102,7 +104,7 @@ generateKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\
 | 参数名   | 类型                        | 必填 | 说明                                          |
 | -------- | --------------------------- | ---- | --------------------------------------------- |
 | keyAlias | string                      | 是   | 密钥别名。密钥别名的最大长度为128字节，建议不包含个人信息等敏感词汇。 |
-| options  | [HuksOptions](#huksoptions) | 是   | 用于存放生成key所需TAG。其中密钥使用的算法、密钥用途、密钥长度为必选参数。 |
+| options  | [HuksOptions](#huksoptions) | 是   | 用于存放生成key所需TAG。其中密钥使用的算法、密钥用途、密钥长度为必选参数。<!--RP8--><!--RP8End--> |
 | callback | AsyncCallback\<void>        | 是   | 回调函数。当生成密钥成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -111,6 +113,7 @@ generateKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
+| 201 | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>适用版本：26.0.0+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
 | 12000001 | algorithm mode is not supported. |
@@ -267,6 +270,8 @@ generateKeyItem(keyAlias: string, options: HuksOptions) : Promise\<void>
 
 基于密钥不出[TEE](../../security/UniversalKeystoreKit/huks-concepts.md#可信执行环境tee)原则，此接口不会返回密钥材料内容，只用于表示此次调用是否成功。
 
+<!--RP7--><!--RP7End-->
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Huks.Extension
@@ -276,7 +281,7 @@ generateKeyItem(keyAlias: string, options: HuksOptions) : Promise\<void>
 | 参数名   | 类型                        | 必填 | 说明                     |
 | -------- | --------------------------- | ---- | ------------------------ |
 | keyAlias | string                      | 是   | 密钥别名。密钥别名的最大长度为128字节，建议不包含个人信息等敏感词汇。               |
-| options  | [HuksOptions](#huksoptions) | 是   | 用于存放生成key所需TAG。其中密钥使用的算法、密钥用途、密钥长度为必选参数。 |
+| options  | [HuksOptions](#huksoptions) | 是   | 用于存放生成key所需TAG。其中密钥使用的算法、密钥用途、密钥长度为必选参数。<!--RP8--><!--RP8End--> |
 
 **返回值：**
 
@@ -290,6 +295,7 @@ generateKeyItem(keyAlias: string, options: HuksOptions) : Promise\<void>
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
+| 201 | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>适用版本：26.0.0+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
 | 12000001 | algorithm mode is not supported. |
@@ -352,6 +358,8 @@ deleteKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<v
 
 删除密钥。使用callback异步回调。
 
+<!--RP9--><!--RP9End-->
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Huks.Core
@@ -370,6 +378,7 @@ deleteKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<v
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
+| 201 | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>适用版本：26.0.0+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
 | 12000004 | operating file failed. |
@@ -484,6 +493,8 @@ deleteKeyItem(keyAlias: string, options: HuksOptions) : Promise\<void>
 
 删除密钥。使用Promise异步回调。
 
+<!--RP9--><!--RP9End-->
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Huks.Extension
@@ -507,6 +518,7 @@ deleteKeyItem(keyAlias: string, options: HuksOptions) : Promise\<void>
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
+| 201 | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>适用版本：26.0.0+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
 | 12000004 | operating file failed. |
@@ -1011,6 +1023,8 @@ anonAttestKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallbac
 
 该操作需要联网进行，且耗时较长。返回12000012错误码时，可能是由于网络异常导致。此时如果没有联网，需要提示用户网络没有连接，如果已经联网，可能是由于网络抖动导致失败，建议重试。
 
+<!--RP10--><!--RP10End-->
+
 <!--RP1--><!--RP1End-->
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -1031,6 +1045,7 @@ anonAttestKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallbac
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
+| 201 | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>适用版本：26.0.0+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
 | 12000001 | algorithm mode is not supported. |
@@ -1148,6 +1163,8 @@ anonAttestKeyItem(keyAlias: string, options: HuksOptions) : Promise\<HuksReturnR
 
 该操作需要联网进行，且耗时较长。返回12000012错误码时，可能是由于网络异常导致。此时如果没有联网，需要提示用户网络没有连接，如果已经联网，可能是由于网络抖动导致失败，建议重试。
 
+<!--RP10--><!--RP10End-->
+
 <!--RP1--><!--RP1End-->
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -1173,6 +1190,7 @@ anonAttestKeyItem(keyAlias: string, options: HuksOptions) : Promise\<HuksReturnR
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
+| 201 | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>适用版本：26.0.0+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
 | 12000001 | algorithm mode is not supported. |
@@ -1404,6 +1422,8 @@ importWrappedKeyItem(keyAlias: string, wrappingKeyAlias: string, options: HuksOp
 
 安全导入密钥。使用callback异步回调。
 
+<!--RP11--><!--RP11End-->
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Huks.Core
@@ -1425,6 +1445,7 @@ API version 9-11系统能力为SystemCapability.Security.Huks.Extension；从API
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
+| 201 | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>适用版本：26.0.0+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
 | 12000001 | algorithm mode is not supported. |
@@ -1624,6 +1645,8 @@ importWrappedKeyItem(keyAlias: string, wrappingKeyAlias: string, options: HuksOp
 
 安全导入密钥。使用Promise异步回调。
 
+<!--RP11--><!--RP11End-->
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Huks.Extension
@@ -1648,6 +1671,7 @@ importWrappedKeyItem(keyAlias: string, wrappingKeyAlias: string, options: HuksOp
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
+| 201 | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>适用版本：26.0.0+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
 | 12000001 | algorithm mode is not supported. |
@@ -1690,6 +1714,8 @@ exportKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<H
 
 导出密钥。使用callback异步回调。
 
+<!--RP12--><!--RP12End-->
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Huks.Core
@@ -1710,6 +1736,7 @@ API version 9-11系统能力为SystemCapability.Security.Huks.Extension；从API
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
+| 201 | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>适用版本：26.0.0+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
 | 12000001 | algorithm mode is not supported. |
@@ -1753,6 +1780,8 @@ exportKeyItem(keyAlias: string, options: HuksOptions) : Promise\<HuksReturnResul
 
 导出密钥。使用Promise异步回调。
 
+<!--RP12--><!--RP12End-->
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Huks.Extension
@@ -1776,6 +1805,7 @@ exportKeyItem(keyAlias: string, options: HuksOptions) : Promise\<HuksReturnResul
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
+| 201 | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>适用版本：26.0.0+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
 | 12000001 | algorithm mode is not supported. |
@@ -1816,6 +1846,8 @@ wrapKeyItem(keyAlias: string, params: HuksOptions): Promise\<HuksReturnResult>
 
 加密导出密钥。使用Promise异步回调。
 
+<!--RP13--><!--RP13End-->
+
 <!--Del-->该功能暂不支持。<!--DelEnd-->
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
@@ -1841,6 +1873,7 @@ wrapKeyItem(keyAlias: string, params: HuksOptions): Promise\<HuksReturnResult>
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
+| 201 | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>适用版本：26.0.0+ |
 | 801 | api is not supported. |
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
@@ -1857,6 +1890,8 @@ wrapKeyItem(keyAlias: string, params: HuksOptions): Promise\<HuksReturnResult>
 unwrapKeyItem(keyAlias: string, params: HuksOptions, wrappedKey: Uint8Array): Promise\<HuksReturnResult>
 
 加密导入密钥。使用Promise异步回调。
+
+<!--RP14--><!--RP14End-->
 
 <!--Del-->该功能暂不支持。<!--DelEnd-->
 
@@ -1884,6 +1919,7 @@ unwrapKeyItem(keyAlias: string, params: HuksOptions, wrappedKey: Uint8Array): Pr
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
+| 201 | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>适用版本：26.0.0+ |
 | 801 | api is not supported. |
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
@@ -2059,6 +2095,8 @@ getKeyItemProperties(keyAlias: string, options: HuksOptions, callback: AsyncCall
 
 获取密钥属性。使用callback异步回调。
 
+<!--RP15--><!--RP15End-->
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Huks.Core
@@ -2079,6 +2117,7 @@ API version 9-11系统能力为SystemCapability.Security.Huks.Extension；从API
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
+| 201 | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>适用版本：26.0.0+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
 | 12000001 | algorithm mode is not supported. |
@@ -2120,6 +2159,8 @@ getKeyItemProperties(keyAlias: string, options: HuksOptions) : Promise\<HuksRetu
 
 获取密钥属性。使用Promise异步回调。
 
+<!--RP15--><!--RP15End-->
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Huks.Extension
@@ -2143,6 +2184,7 @@ getKeyItemProperties(keyAlias: string, options: HuksOptions) : Promise\<HuksRetu
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
+| 201 | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>适用版本：26.0.0+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
 | 12000001 | algorithm mode is not supported. |
@@ -2503,6 +2545,8 @@ initSession操作密钥接口。使用callback异步回调。
 
 huks.initSession、huks.updateSession、huks.finishSession为三段式接口，需要一起使用。
 
+<!--RP16--><!--RP16End-->
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Huks.Core
@@ -2521,6 +2565,7 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
+| 201 | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>适用版本：26.0.0+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
 | 12000001 | algorithm mode is not supported. |
@@ -2548,6 +2593,8 @@ initSession操作密钥接口。使用Promise异步回调。
 
 huks.initSession、huks.updateSession、huks.finishSession为三段式接口，需要一起使用。
 
+<!--RP16--><!--RP16End-->
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Huks.Extension
@@ -2571,6 +2618,7 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
+| 201 | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>适用版本：26.0.0+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
 | 12000001 | algorithm mode is not supported. |
@@ -3894,7 +3942,7 @@ API version 11系统能力为SystemCapability.Security.Huks.Extension；从API v
 | 名称                           | 值   | 说明                                                         |
 | ------------------------------ | ---- | ------------------------------------------------------------ |
 | HUKS_KEY_SECURITY_LEVEL_TEE | 0    | 密钥在可信执行环境中生成并使用。 |
-| HUKS_KEY_SECURITY_LEVEL_SE | 1    | 密钥在安全环境中生成并使用。 |
+| HUKS_KEY_SECURITY_LEVEL_SE | 1    | 密钥在安全环境中生成并使用。<br>**需要权限：** ohos.permission.ACCESS_SE_KEY。 |
 
 ## HuksTagType
 

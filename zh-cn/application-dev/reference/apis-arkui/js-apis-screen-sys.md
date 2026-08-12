@@ -135,7 +135,7 @@ let screenClass: screen.Screen | null = null;
 // 获取所有屏幕对象
 let promise: Promise<Array<screen.Screen>> = screen.getAllScreens();
 promise.then((data: Array<screen.Screen>) => {
-  if(data.length > 0){
+  if (data.length > 0) {
     screenClass = data[0];
   }
   console.info(`Succeeded in getting all screens. Data: ${JSON.stringify(data)}`);
@@ -152,7 +152,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let screenClass: screen.Screen | null = null;
 let promise: Promise<Array<screen.Screen>> = screen.getAllScreens();
 promise.then((data: Array<screen.Screen>) => {
-  if(data.length > 0){
+  if (data.length > 0) {
     screenClass = data[0];
   }
   console.info(`Succeeded in getting all screens. Data: ${JSON.stringify(data)}`);
@@ -504,9 +504,9 @@ ArkTS-Sta: makeMirror(mainScreen:long, mirrorScreen:Array&lt;long&gt;, callback:
 
 | 参数名       | 类型                        | 必填 | 说明                 |
 | ------------ | --------------------------- | ---- |--------------------|
-| mainScreen   | ArkTS-Dyn: number <br> ArkTS-Sta: long                      | 是   | 主屏幕ID，该参数仅支持整数输入。  |
-| mirrorScreen | ArkTS-Dyn: Array&lt;number&gt; <br> ArkTS-Sta: Array&lt;long&gt;         | 是   | 镜像屏幕ID集合，其中ID应为整数。 |
-| callback     | ArkTS-Dyn: AsyncCallback&lt;number&gt; <br> ArkTS-Sta: AsyncCallback&lt;long&gt; | 是   | 回调函数。返回镜像屏幕的群组ID，其中ID为整数。  |
+| mainScreen   | ArkTS-Dyn: number <br> ArkTS-Sta: long                      | 是   | 主屏幕ID，该参数仅支持非负整数输入。  |
+| mirrorScreen | ArkTS-Dyn: Array&lt;number&gt; <br> ArkTS-Sta: Array&lt;long&gt;         | 是   | 镜像屏幕ID集合，其中ID应为正整数。 |
+| callback     | ArkTS-Dyn: AsyncCallback&lt;number&gt; <br> ArkTS-Sta: AsyncCallback&lt;long&gt; | 是   | 回调函数。返回镜像屏幕的群组ID，其中ID为正整数。  |
 
 **错误码：**
 
@@ -576,14 +576,14 @@ ArkTS-Sta: makeMirror(mainScreen:long, mirrorScreen:Array&lt;long&gt;): Promise&
 
 | 参数名       | 类型                | 必填 | 说明                 |
 | ------------ | ------------------- | ---- |--------------------|
-| mainScreen   | ArkTS-Dyn: number <br> ArkTS-Sta: long              | 是   | 主屏幕ID，该参数仅支持整数输入。  |
-| mirrorScreen | ArkTS-Dyn: Array&lt;number&gt; <br> ArkTS-Sta: Array&lt;long&gt; | 是   | 镜像屏幕ID集合。其中ID应为整数。 |
+| mainScreen   | ArkTS-Dyn: number <br> ArkTS-Sta: long              | 是   | 主屏幕ID，该参数仅支持非负整数输入。  |
+| mirrorScreen | ArkTS-Dyn: Array&lt;number&gt; <br> ArkTS-Sta: Array&lt;long&gt; | 是   | 镜像屏幕ID集合。其中ID应为正整数。 |
 
 **返回值：**
 
 | 类型                  | 说明                              |
 | --------------------- |---------------------------------|
-| ArkTS-Dyn: Promise&lt;number&gt; <br> ArkTS-Sta: Promise&lt;long&gt; | Promise对象。返回镜像屏幕的群组ID，其中ID为整数。 |
+| ArkTS-Dyn: Promise&lt;number&gt; <br> ArkTS-Sta: Promise&lt;long&gt; | Promise对象。返回镜像屏幕的群组ID，其中ID为正整数。 |
 
 **错误码：**
 
@@ -722,7 +722,7 @@ ArkTS-Sta: stopMirror(mirrorScreen:Array&lt;long&gt;): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | --------------------- | ----------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1041,7 +1041,7 @@ ArkTS-Sta: destroyVirtualScreen(screenId:long, callback: AsyncCallback&lt;void&g
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| screenId | ArkTS-Dyn: number <br> ArkTS-Sta: long                    | 是   | 屏幕的ID，该参数仅支持整数输入。                                                   |
+| screenId | ArkTS-Dyn: number <br> ArkTS-Sta: long                    | 是   | 虚拟屏幕的ID，该参数仅支持整数输入。                                                   |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当销毁虚拟屏幕成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -1111,13 +1111,13 @@ ArkTS-Sta: destroyVirtualScreen(screenId:long): Promise&lt;void&gt;
 
 | 参数名   | 类型   | 必填 | 说明       |
 | -------- | ------ | ---- | ---------- |
-| screenId | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是   | 屏幕的ID，该参数仅支持整数输入。 |
+| screenId | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是   | 虚拟屏幕的ID，该参数仅支持整数输入。 |
 
 **返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1182,7 +1182,7 @@ ArkTS-Sta: setVirtualScreenSurface(screenId:long, surfaceId: string, callback: A
 
 | 参数名    | 类型                      | 必填 | 说明                                                         |
 | --------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| screenId  | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是   | 屏幕的ID，该参数仅支持整数输入。                                                   |
+| screenId  | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是   | 虚拟屏幕的ID，该参数仅支持整数输入。                                                   |
 | surfaceId | string                    | 是   | 代表虚拟屏幕的surface标识符，surfaceId值可自行定义，由用户指定某一实际存在的surface对应的surfaceId。 |
 | callback  | AsyncCallback&lt;void&gt; | 是   | 回调函数。当设置虚拟屏幕surface成功，err为undefined，否则为错误对象。 |
 
@@ -1211,15 +1211,15 @@ struct Index {
   xComponentController: XComponentController = new XComponentController();
 
   setVirtualScreenSurface = () => {
-    let screenId: number = 1;// 屏幕ID需通过getAllScreens()获取或从createVirtualScreen()返回值获取
+    let screenId: number = 1; // 屏幕ID需通过getAllScreens()获取或从createVirtualScreen()返回值获取
     let surfaceId = this.xComponentController.getXComponentSurfaceId();
     // 设置虚拟屏幕的surface
     screen.setVirtualScreenSurface(screenId, surfaceId, (err: BusinessError) => {
-    const errCode: number = err.code;
-    if (errCode) {
-      console.error(`Failed to set the surface for the virtual screen. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
+      const errCode: number = err.code;
+      if (errCode) {
+        console.error(`Failed to set the surface for the virtual screen. Code: ${err.code}, message: ${err.message}`);
+        return;
+      }
       console.info('Succeeded in setting the surface for the virtual screen.');
     });
   }
@@ -1280,14 +1280,14 @@ ArkTS-Sta: setVirtualScreenSurface(screenId:long, surfaceId: string): Promise&lt
 
 | 参数名    | 类型   | 必填 | 说明          |
 | --------- | ------ | ---- | ------------- |
-| screenId  | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是   | 屏幕的ID，该参数仅支持整数输入。    |
+| screenId  | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是   | 虚拟屏幕的ID，该参数仅支持整数输入。    |
 | surfaceId | string | 是   | 代表虚拟屏幕的surface标识符，surfaceId值可自行定义，由用户指定某一实际存在的surface对应的surfaceId。 |
 
 **返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1314,7 +1314,7 @@ struct Index {
   xComponentController: XComponentController = new XComponentController();
 
   setVirtualScreenSurface = () => {
-    let screenId: number = 1;// 屏幕ID需通过getAllScreens()获取或从createVirtualScreen()返回值获取
+    let screenId: number = 1; // 屏幕ID需通过getAllScreens()获取或从createVirtualScreen()返回值获取
     let surfaceId = this.xComponentController.getXComponentSurfaceId();
     // 设置虚拟屏幕的surface
     screen.setVirtualScreenSurface(screenId, surfaceId).then(() => {
@@ -1382,7 +1382,7 @@ ArkTS-Sta: setScreenPrivacyMaskImage(screenId:long, image?: image.PixelMap): Pro
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1584,7 +1584,7 @@ setScreenRotationLocked(isLocked: boolean): Promise&lt;void&gt;
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1697,7 +1697,7 @@ ArkTS-Dyn: setMultiScreenMode(primaryScreenId: number, secondaryScreenId: number
 
 ArkTS-Sta: setMultiScreenMode(primaryScreenId: long, secondaryScreenId: long, secondaryScreenMode: MultiScreenMode): Promise&lt;void&gt;
 
-设置扩展屏幕的显示模式（镜像/扩展），使用Promise异步回调。primaryScreenId和secondaryScreenId均为0时，仅在扩展屏显示。
+设置扩展屏幕的显示模式（镜像/扩展），使用Promise异步回调。primaryScreenId和secondaryScreenId均为0时，仅在扩展屏幕显示。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1711,7 +1711,7 @@ ArkTS-Sta: setMultiScreenMode(primaryScreenId: long, secondaryScreenId: long, se
 
 | 参数名       | 类型                 | 必填 | 说明                |
 | ------------ | ------------------- | ---- |--------------------|
-| primaryScreenId   | ArkTS-Dyn: number <br> ArkTS-Sta: long           | 是  | 主屏的ID，该参数应为非负整数。如果输入的数字包含小数部分，向下取整。|
+| primaryScreenId   | ArkTS-Dyn: number <br> ArkTS-Sta: long           | 是  | 主屏幕的ID，该参数应为非负整数。如果输入的数字包含小数部分，向下取整。|
 | secondaryScreenId | ArkTS-Dyn: number <br> ArkTS-Sta: long           | 是  | 扩展屏幕的ID，该参数应为非负整数。如果输入的数字包含小数部分，向下取整。|
 | secondaryScreenMode | [MultiScreenMode](#multiscreenmode13)  | 是  | 扩展屏幕的显示模式。|
 
@@ -1719,7 +1719,7 @@ ArkTS-Sta: setMultiScreenMode(primaryScreenId: long, secondaryScreenId: long, se
 
 | 类型               | 说明                     |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1744,7 +1744,7 @@ let secondaryScreenId: number = 12; // 扩展屏ID
 let screenMode: screen.MultiScreenMode = screen.MultiScreenMode.SCREEN_MIRROR;
 // 设置扩展屏幕的显示模式为镜像模式
 screen.setMultiScreenMode(primaryScreenId, secondaryScreenId, screenMode).then(() => {
-  console.info('Succeeded in setting multi screen mode. Data: ');
+  console.info('Succeeded in setting multi screen mode.');
 }).catch((err: BusinessError) => {
   console.error(`Failed to set multi screen mode. Code: ${err.code}, message: ${err.message}`);
 });
@@ -1769,7 +1769,7 @@ screen.setMultiScreenMode(primaryScreenId, secondaryScreenId, screenMode).then((
 
 setMultiScreenRelativePosition(mainScreenOptions: MultiScreenPositionOptions, secondaryScreenOptions: MultiScreenPositionOptions): Promise&lt;void&gt;
 
-仅在扩展模式下，设置主屏和扩展屏幕的位置信息，使用Promise异步回调。通过设置startX和startY坐标，可确定各屏幕在虚拟显示空间中的相对位置，实现屏幕排列布局。例如，设置扩展屏幕的startX为主屏幕宽度值，可实现扩展屏幕位于主屏幕右侧的布局。
+仅在扩展模式下，设置主屏幕和扩展屏幕的位置信息，使用Promise异步回调。通过设置startX和startY坐标，可确定各屏幕在虚拟显示空间中的相对位置，实现屏幕排列布局。例如，设置扩展屏幕的startX为主屏幕宽度值，可实现扩展屏幕位于主屏幕右侧的布局。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1783,14 +1783,14 @@ setMultiScreenRelativePosition(mainScreenOptions: MultiScreenPositionOptions, se
 
 | 参数名       | 类型                 | 必填 | 说明               |
 | ------------ | ------------------- | ---- |--------------------|
-| mainScreenOptions      | [MultiScreenPositionOptions](#multiscreenpositionoptions13)  | 是  | 主屏的位置信息。|
+| mainScreenOptions      | [MultiScreenPositionOptions](#multiscreenpositionoptions13)  | 是  | 主屏幕的位置信息。|
 | secondaryScreenOptions | [MultiScreenPositionOptions](#multiscreenpositionoptions13)  | 是  | 扩展屏幕的位置信息。|
 
 **返回值：**
 
 | 类型                | 说明                       |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。   |
+| Promise&lt;void&gt; | Promise对象，无返回结果。   |
 
 **错误码：**
 
@@ -1856,7 +1856,7 @@ screen.setMultiScreenRelativePosition(mainScreenOptions, secondaryScreenOptions)
 
 resizeVirtualScreen(screenId: number, width: number, height: number): Promise&lt;void&gt;
 
-修改指定虚拟屏的尺寸，使用Promise异步回调。
+修改指定虚拟屏幕的尺寸，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1883,7 +1883,7 @@ resizeVirtualScreen(screenId: number, width: number, height: number): Promise&lt
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API. |
-| 801     | Capability not supported. Function can not work because the current device does not support this ability. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1400001 | Invalid display or screen. |
 | 1400003 | This display manager service works abnormally. |
 | 1400004 | Parameter error. Possible cause: 1. Invalid parameter range. |
@@ -1925,7 +1925,7 @@ ArkTS-Sta: makeMirrorWithRegion(mainScreen:long, mirrorScreen:Array&lt;long&gt;,
 
 | 参数名       | 类型                | 必填 | 说明                 |
 | ------------ | ------------------- | ---- |--------------------|
-| mainScreen   | ArkTS-Dyn: number <br> ArkTS-Sta: long              | 是   | 主屏幕ID，该参数仅支持正整数输入。  |
+| mainScreen   | ArkTS-Dyn: number <br> ArkTS-Sta: long              | 是   | 主屏幕ID，该参数仅支持非负整数输入。  |
 | mirrorScreen | ArkTS-Dyn: Array&lt;number&gt; <br> ArkTS-Sta: Array&lt;long&gt; | 是   | 镜像屏幕ID集合。其中ID应为正整数。  |
 | mainScreenRegion | [Rect](#rect19) | 是   | 主屏创建镜像的矩形区域。         |
 
@@ -2035,6 +2035,7 @@ class ExpandOption {
   startX: number = 0;
   startY: number = 0;
 }
+// 屏幕ID需通过getAllScreens()获取
 let mainScreenOption: ExpandOption = { screenId: 0, startX: 0, startY: 0 };
 let otherScreenOption: ExpandOption = { screenId: 1, startX: 1080, startY: 0 };
 let expandOptionArray : ExpandOption[] = [ mainScreenOption, otherScreenOption ];
@@ -2151,6 +2152,7 @@ stopExpand(expandScreen:Array&lt;number&gt;, callback: AsyncCallback&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 屏幕ID需通过getAllScreens()获取
 let expandScreenIds: Array<number> = [1, 2, 3]; // 扩展屏幕ID集合
 // 停止屏幕的扩展模式
 screen.stopExpand(expandScreenIds, (err: BusinessError) => {
@@ -2191,7 +2193,7 @@ stopExpand(expandScreen:Array&lt;number&gt;): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | --------------------- | ----------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2232,8 +2234,8 @@ screen.stopExpand(expandScreenIds).then(() => {
 | 名称     | 类型 | 只读 | 可选 | 说明                |
 | -------- | -------- | ---- | ---- | ------------------- |
 | screenId | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 屏幕的ID，该参数应为整数。          |
-| startX   | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 屏幕的起始X轴坐标，该参数应为整数。 |
-| startY   | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 屏幕的起始Y轴坐标，该参数应为整数。 |
+| startX   | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 屏幕的起始X轴坐标，单位为px，该参数应为整数。 |
+| startY   | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 屏幕的起始Y轴坐标，单位为px，该参数应为整数。 |
 
 ## MultiScreenMode<sup>13+</sup>
 
@@ -2267,8 +2269,8 @@ screen.stopExpand(expandScreenIds).then(() => {
 | 名称    | 类型     | 只读 | 可选  | 说明                |
 | -------- | -------- | ---- | ---- | ------------------- |
 | id       | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 屏幕的ID，该参数应为非负整数，否则会作为非法参数报错。|
-| startX   | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 屏幕的起始X轴坐标。以两块屏幕外接矩形的左上顶点为原点，向右为正方向。该参数应为非负整数，否则会作为非法参数报错。 |
-| startY   | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 屏幕的起始Y轴坐标。以两块屏幕外接矩形的左上顶点为原点，向下为正方向。该参数应为非负整数，否则会作为非法参数报错。 |
+| startX   | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 屏幕的起始X轴坐标。以两块屏幕外接矩形的左上顶点为原点，向右为正方向。单位为px，该参数应为非负整数，否则会作为非法参数报错。 |
+| startY   | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 屏幕的起始Y轴坐标。以两块屏幕外接矩形的左上顶点为原点，向下为正方向。单位为px，该参数应为非负整数，否则会作为非法参数报错。 |
 
 ## VirtualScreenOption
 
@@ -2314,9 +2316,10 @@ screen.stopExpand(expandScreenIds).then(() => {
 | activeModeIndex   | ArkTS-Dyn: number <br> ArkTS-Sta: long                                         | 是   | 否   | 当前屏幕所处模式索引。模式索引的当前值和值的范围，会根据屏幕当前分辨率、刷新率和设备硬件差异产生变化。该参数为整数。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br> **ArkTS-Dyn起始版本：** 9   <br>  **ArkTS-Sta起始版本：** 23 |
 | orientation       | [Orientation](#orientation)                     | 是   | 否   | 屏幕方向。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br> **ArkTS-Dyn起始版本：** 9   <br>  **ArkTS-Sta起始版本：** 23 |
 | sourceMode<sup>10+</sup> | [ScreenSourceMode](#screensourcemode10)            | 是   | 否   | 屏幕来源模式。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br> **ArkTS-Dyn起始版本：** 10   <br>  **ArkTS-Sta起始版本：** 23     |
-| serialNumber<sup>15+</sup> | string        | 是   | 是   | 扩展屏幕的序列号，默认返回为空字符串。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core**ArkTS-Dyn起始版本：** 15   <br>  **ArkTS-Sta起始版本：** 23 |
-| densityDpi | ArkTS-Dyn: number <br> ArkTS-Sta: long         | 是   | 是   | 屏幕的物理像素密度，即每英寸的像素数。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0   <br>  **ArkTS-Sta起始版本：** 26.0.0 |
-| screenType | [ScreenType](#screentype)         | 是   | 是   | 屏幕的类型，默认值为BUILT_IN。<br>**系统能力：** SystemCapability.Window.SessionManager <br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.1.0   <br>  **ArkTS-Sta起始版本：** 26.1.0 |
+| serialNumber<sup>15+</sup> | string        | 是   | 是   | 扩展屏幕的序列号，默认返回为空字符串。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br> **ArkTS-Dyn起始版本：** 15   <br>  **ArkTS-Sta起始版本：** 23 |
+| densityDpi | ArkTS-Dyn: number <br> ArkTS-Sta: long         | 是   | 是   | 屏幕的物理像素密度，即每英寸的像素数。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br> **模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0   <br>  **ArkTS-Sta起始版本：** 26.0.0 |
+| isInUse | boolean        | 是   | 是   | 标识屏幕的使用状态。true表示屏幕使用中；false表示屏幕未使用；默认值为true。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0<br> |
+| screenType | [ScreenType](#screentype)         | 是   | 是   | 屏幕的类型，默认值为BUILT_IN。<br>**系统能力：** SystemCapability.Window.SessionManager <br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0   <br>  **ArkTS-Sta起始版本：** 26.0.0 |
 
 ### setOrientation
 
@@ -2457,7 +2460,7 @@ setOrientation(orientation: Orientation): Promise&lt;void&gt;
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2575,7 +2578,7 @@ setOrientation(orientation: Orientation, orientationOptions?: OrientationOptions
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise\<void> | 无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2778,7 +2781,7 @@ ArkTS-Sta: setScreenActiveMode(modeIndex: long): Promise&lt;void&gt;
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2994,7 +2997,7 @@ ArkTS-Sta: setDensityDpi(densityDpi: double): Promise&lt;void&gt;
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3083,9 +3086,9 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 
 

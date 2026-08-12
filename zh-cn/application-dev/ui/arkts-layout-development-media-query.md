@@ -364,7 +364,7 @@ struct MediaQueryExample {
 
   **图1** 竖屏  
 
-![portralit](figures/portralit.jpg)
+![portrait](figures/portrait.jpg)
 
   **图2** 横屏  
 
@@ -577,7 +577,7 @@ struct MediaQueryFlex {
 
   **图3** 竖屏  
 
-![portralit](figures/PortraitWidthFlex.png)
+![portrait](figures/PortraitWidthFlex.png)
 
   **图4** 横屏  
 
