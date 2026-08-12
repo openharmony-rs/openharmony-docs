@@ -1268,7 +1268,7 @@ call.getCallTransferInfo(type, number)
 |        名称              | 类型                               | 只读 | 可选 | 说明                                                                                             |
 | ------------------------ | ---------------------------------- | ---- | ---- | ----------------------------------------------------------------------------------------------- |
 | isHideDialScreen               | boolean                            | 否   | 是   | 是否隐藏拨号界面，true表示隐藏，false表示不隐藏。默认为false。   |
-| isCustomAccessibility               | boolean                            | 否   | 是   | 应用是否支持自定义无障碍功能，。true表示支持，false表示不支持。默认为false   <br>**起始版本:** 26.0.0 <br>**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| isCustomAccessibility               | boolean                            | 否   | 是   | 应用是否支持自定义无障碍功能。true表示支持，false表示不支持。默认为false   <br>**起始版本:** 26.0.0 <br>**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 
 ## TelCallState<sup>21+</sup>
 
