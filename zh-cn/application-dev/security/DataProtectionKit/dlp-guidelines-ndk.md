@@ -30,71 +30,23 @@
 1. 在CMakeLists.txt中导入数据防泄漏的共享库，并链接该库。
     <!-- @[dlp_C_makeLists](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/CMakeLists.txt) -->
     
-    ``` Text
-    # the minimum version of CMake.
-    cmake_minimum_required(VERSION 3.5.0)
-    project(DlpApiTest)
-    
-    set(NATIVERENDER_ROOT_PATH &#36;{CMAKE_CURRENT_SOURCE_DIR})
-    
-    if(DEFINED PACKAGE_FIND_FILE)
-        include(&#36;{PACKAGE_FIND_FILE})
-    endif()
-    
-    include_directories(&#36;{NATIVERENDER_ROOT_PATH}
-                        &#36;{NATIVERENDER_ROOT_PATH}/include)
-    
-    add_library(entry SHARED napi_init.cpp)
-    target_link_libraries(entry PUBLIC libace_napi.z.so libohdlp_permission.so)
-    ```
+2. 查询当前DLP沙箱的权限信息。
+    <!-- @[dlp_C_makeLists](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/CMakeLists.txt) -->
+   
+3. 查询当前DLP沙箱的权限信息。
+    <!-- @[dlp_C_GetDlpPermissionInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/napi_init.cpp) -->
 
 4. 获取指定DLP文件名的原始文件名。
     <!-- @[dlp_C_GetOriginalFileName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/napi_init.cpp) -->
-    
-    ``` C++
-    static napi_value GetOriginalFileName(napi_env env, napi_callback_info info)
+
+5. 查询当前应用是否运行在DLP沙箱环境。
     <!-- @[dlp_C_IsInSandbox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/napi_init.cpp) -->
-    
-    ``` C++
-    static napi_value IsInSandbox(napi_env env, napi_callback_info info)
-    <!-- @[dlp_C_SetSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/napi_init.cpp) -->
-    
-    ``` C++
-    static napi_value SetSandboxAppConfig(napi_env env, napi_callback_info info)
-    {
-        const char *configInfo = "configInfo"; //沙箱应用配置信息，用户可将配置信息json化后传入
-        DLP_ErrCode ret = OH_DLP_SetSandboxAppConfig(configInfo);
-        
-        napi_value result = nullptr;
-        napi_create_int32(env, ret, &result);
-        return result;
-    }
-    ```
-            return result;
-        }
-        napi_value result = nullptr;
-        napi_create_int32(env, ret, &result);
-        return result;
-    }
-    ```
-            napi_create_string_utf8(env, originalFileName, NAPI_AUTO_LENGTH, &result);
-            return result;
-        }
-        napi_value result = nullptr;
-        napi_create_int32(env, ret, &result);
-        free(originalFileName); //处理完后手动释放originalFileName
-        return result;
-    }
-    ```
    
 6. 设置沙箱应用配置信息。
     <!-- @[dlp_C_SetSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/napi_init.cpp) -->
-   ``` 
 
 7. 获取沙箱应用配置信息。
-    <!-- @[dlp_C_GetSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/napi_init.cpp) -->
-   ``` 
+    <!-- @[dlp_C_GetSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/napi_init.cpp) --> 
 
 8. 清理沙箱应用配置信息。
     <!-- @[dlp_C_CleanSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/napi_init.cpp) -->
-   ``` 
