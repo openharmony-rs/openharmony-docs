@@ -2150,6 +2150,115 @@ try {
 }
 ```
 
+
+## securityManager.setDeviceSecurityLevelPolicy
+
+setDeviceSecurityLevelPolicy(level: DeviceSecurityLevelPolicy): void
+
+设置设备安全级别策略。适用于企业统一管控终端安全基线的场景，如要求设备仅保持在出厂默认安全级别。
+
+> **说明：**
+>
+> 1. 设备安全级别是在PC/2in1设备上提供的分级安全机制，按照对系统安全性的影响程度划分为不同等级，系统安全性由高到低依次为DSL0、DSL1、DSL2。
+>
+> 2. DSL0：出厂默认安全，设备保持出厂时的默认安全配置，未对系统安全能力做降级，安全性最高。
+>
+> 3. DSL1：降低安全性，在DSL0的基础上适度放宽部分系统安全管控，安全性低于DSL0。
+>
+> 4. DSL2：宽松安全性，在DSL1的基础上进一步放宽系统安全管控，安全性最低。
+>
+> 5. 本接口用于设置用户可选择的设备安全级别范围，各策略对应的可选等级请参见[DeviceSecurityLevelPolicy](#devicesecuritylevelpolicy)。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| level | [DeviceSecurityLevelPolicy](#devicesecuritylevelpolicy) | 是 | 设备安全级别策略。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 9200001 | The application is not an administrator application of the device. |
+| 9200002 | The administrator application does not have permission to manage the device. |
+| 9200012 | Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+
+try {
+    securityManager.setDeviceSecurityLevelPolicy(securityManager.DeviceSecurityLevelPolicy.ALLOW_BALANCED);
+    console.info('setDeviceSecurityLevelPolicy success');
+} catch (err) {
+    console.error('setDeviceSecurityLevelPolicy fail: ' + JSON.stringify(err));
+}
+```
+
+## securityManager.getDeviceSecurityLevelPolicy
+
+getDeviceSecurityLevelPolicy(): DeviceSecurityLevelPolicy
+
+获取设备安全级别策略。
+
+> **说明：**
+>
+> 1. 本接口返回的设备安全级别策略为用户可选择的设备安全级别范围，分级机制及各策略对应的可选等级请参见[setDeviceSecurityLevelPolicy](#securitymanagersetdevicesecuritylevelpolicy)。
+>
+> 2. 设备未设置过该策略时，返回默认值DEFAULT_ENFORCED。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [DeviceSecurityLevelPolicy](#devicesecuritylevelpolicy) | 设备安全级别策略。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 9200001 | The application is not an administrator application of the device. |
+| 9200002 | The administrator application does not have permission to manage the device. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+
+try {
+    let policy = securityManager.getDeviceSecurityLevelPolicy();
+    console.info('getDeviceSecurityLevelPolicy policy: ' + policy);
+} catch (err) {
+    console.error('getDeviceSecurityLevelPolicy fail: ' + JSON.stringify(err));
+}
+```
+
 ## CertBlob
 
 证书信息。
@@ -2244,3 +2353,19 @@ try {
 | ----------- | -------- | ------------------------------- |
 | SCRYPT_HKDF_AES | 0  | SCRYPT-HKDF-AES组合加密算法。 |
 | SCRYPT_HKDF_SM4 | 1  | SCRYPT-HKDF-SM4组合加密算法。 |
+
+## DeviceSecurityLevelPolicy
+
+设备安全级别策略枚举。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| DEFAULT_ENFORCED | 0 | 仅可选出厂默认安全（DSL0）。 |
+| ALLOW_BALANCED | 1 | 可选出厂默认安全（DSL0）和降低安全性（DSL1）。 |
+| ALLOW_FLEXIBLE | 2 | 可选出厂默认安全（DSL0）、降低安全性（DSL1）和宽松安全性（DSL2）。 |
