@@ -1,4 +1,4 @@
-# metadata_object_ext.h 
+# metadata_object_ext.h
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
