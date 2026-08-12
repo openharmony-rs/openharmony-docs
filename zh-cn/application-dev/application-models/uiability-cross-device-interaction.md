@@ -411,7 +411,6 @@ Call功能主要接口如下表所示。具体的API详见[Caller](../reference/
             hilog.info(DOMAIN_NUMBER, TAG, 'caller callWithResult succeed');
             let result: MyParcelable = new MyParcelable(0, '');
             data.readParcelable(result);
-            data.reclaim();
             backMsg = result.str;
             hilog.info(DOMAIN_NUMBER, TAG, `caller result is [${result.num}, ${result.str}]`);
           }
