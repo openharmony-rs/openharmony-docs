@@ -95,26 +95,26 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
 
 1. 在配置文件中注册 `Extension`组件。
    
-  在应用配置文件 `module.json5`中新增 `"extensionAbilities"`字段，其中注册类型 `"type"`设置为 `"distributed"`，元数据信息["metadata"](../reference/apis-ability-kit/js-apis-bundleManager-metadata.md)新增一个 `"name"`为 `"ohos.extension.DistributedExtension"`的条目。
+   在应用配置文件 `module.json5`中新增 `"extensionAbilities"`字段，其中注册类型 `"type"`设置为 `"distributed"`，元数据信息["metadata"](../reference/apis-ability-kit/js-apis-bundleManager-metadata.md)新增一个 `"name"`为 `"ohos.extension.DistributedExtension"`的条目。
   
-  DistributedExtensionAbility配置文件示例：
+   DistributedExtensionAbility配置文件示例：
    
-  ```json
-  "extensionAbilities": [
-    {
-      "name": "EntrydistributedAbility",
-      "srcEntry": "./ets/entrybackupability/EntryDistributedAbility.ets",
-      "type": "distributed",
-      "exported": false,
-      "metadata": [
-        {
-          "name": "ohos.extension.DistributedExtension",
-        }
-      ],
-      "srcEntry": "./ets/common/MDSExtension.ts",
-    }
-  ]
-  ```
+    ```json
+    "extensionAbilities": [
+      {
+        "name": "EntrydistributedAbility",
+        "srcEntry": "./ets/entrybackupability/EntryDistributedAbility.ets",
+        "type": "distributed",
+        "exported": false,
+        "metadata": [
+          {
+            "name": "ohos.extension.DistributedExtension",
+          }
+        ],
+        "srcEntry": "./ets/common/MDSExtension.ts",
+      }
+    ]
+    ```
 2. 导入开发所需模块。
    
    ```ts
