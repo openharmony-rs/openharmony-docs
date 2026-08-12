@@ -47,6 +47,9 @@
 | [VideoProcessing_ErrorCode OH_VideoProcessingCallback_BindOnError(VideoProcessing_Callback* callback,OH_VideoProcessingCallback_OnError onError)](#oh_videoprocessingcallback_bindonerror) | 绑定回调函数[OH_VideoProcessingCallback_OnError](capi-video-processing-types-h.md#oh_videoprocessingcallback_onerror)到回调对象。绑定完成之后，需要调用 [OH_VideoProcessing_RegisterCallback](capi-video-processing-h.md#oh_videoprocessing_registercallback)，将回调对象注册到视频处理实例，才能使其生效。 |
 | [VideoProcessing_ErrorCode OH_VideoProcessingCallback_BindOnState(VideoProcessing_Callback* callback,OH_VideoProcessingCallback_OnState onState)](#oh_videoprocessingcallback_bindonstate) | 绑定回调函数[OH_VideoProcessingCallback_OnState](capi-video-processing-types-h.md#oh_videoprocessingcallback_onstate)到回调对象。绑定完成之后，需要调用 [OH_VideoProcessing_RegisterCallback](capi-video-processing-h.md#oh_videoprocessing_registercallback)，将回调对象注册到视频处理实例，才能使其生效。 |
 | [VideoProcessing_ErrorCode OH_VideoProcessingCallback_BindOnNewOutputBuffer(VideoProcessing_Callback* callback,OH_VideoProcessingCallback_OnNewOutputBuffer onNewOutputBuffer)](#oh_videoprocessingcallback_bindonnewoutputbuffer) | 绑定回调函数[OH_VideoProcessingCallback_OnNewOutputBuffer](capi-video-processing-types-h.md#oh_videoprocessingcallback_onnewoutputbuffer)到回调对象。绑定完成之后，需要调用 [OH_VideoProcessing_RegisterCallback](capi-video-processing-h.md#oh_videoprocessing_registercallback)，将回调对象注册到视频处理实例，才能使其生效。 |
+| [bool OH_VideoProcessing_IsAutoEffectSupported(uint32_t type)](#oh_videoprocessing_isautoeffectsupported) | 查询是否支持自动效果。 |
+| [VideoProcessing_ErrorCode OH_VideoProcessing_UseAutoEffect(uint32_t type, bool enable, const char *name)](#oh_videoprocessing_useautoeffect) | 指定在即将创建的名为name的XComponent中是否需要该类型的效果。在内部映射中记录type、enable和name之间的映射关系。此接口应在[OH_VideoProcessing_SetAutoEffectParam](#oh_videoprocessing_setautoeffectparam)之前调用。 |
+| [VideoProcessing_ErrorCode OH_VideoProcessing_SetAutoEffectParam(uint32_t type, const char *name, const OH_AVFormat *param)](#oh_videoprocessing_setautoeffectparam) | 设置与XComponent关联的自动效果参数。当前自动效果仅对最后调用的XComponent生效。 |
 
 ## 函数说明
 
@@ -550,5 +553,81 @@ VideoProcessing_ErrorCode OH_VideoProcessingCallback_BindOnNewOutputBuffer(Video
 | 类型 | 说明 |
 | -- | -- |
 | [VideoProcessing_ErrorCode](capi-video-processing-types-h.md#videoprocessing_errorcode) | 如果函数绑定成功，返回VIDEO_PROCESSING_SUCCESS。<br> 如果callback为空，返回VIDEO_PROCESSING_ERROR_INVALID_PARAMETER。 |
+
+### OH_VideoProcessing_IsAutoEffectSupported()
+
+```c
+bool OH_VideoProcessing_IsAutoEffectSupported(uint32_t type)
+```
+
+**描述**
+
+查询是否支持自动效果。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| uint32_t type | 要查询的自动效果类型。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| bool | 如果支持该自动效果返回true，否则返回false。 |
+
+### OH_VideoProcessing_UseAutoEffect()
+
+```c
+VideoProcessing_ErrorCode OH_VideoProcessing_UseAutoEffect(uint32_t type, bool enable, const char *name)
+```
+
+**描述**
+
+指定在即将创建的名为name的XComponent中是否需要该类型的效果。在内部映射中记录type、enable和name之间的映射关系。此接口应在[OH_VideoProcessing_SetAutoEffectParam](#oh_videoprocessing_setautoeffectparam)之前调用。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| uint32_t type | 指定要使用的自动效果类型。 |
+| bool enable | 启用或禁用在随后创建的名为name的XComponent中的该类型效果。 |
+| const char *name | 指定XComponent的名称。如果当前应用有多个同名的XComponent，此参数仅对第一个活跃的XComponent生效。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [VideoProcessing_ErrorCode](capi-video-processing-types-h.md#videoprocessing_errorcode) | 如果操作成功，返回VIDEO_PROCESSING_SUCCESS。<br> 如果type不是[VIDEO_PROCESSING_TYPE_AUTOEFFECT_AISR](capi-video-processing-types-h.md#变量)或name为空，返回VIDEO_PROCESSING_ERROR_INVALID_VALUE。<br> 如果[OH_VideoProcessing_IsAutoEffectSupported](#oh_videoprocessing_isautoeffectsupported)对该type返回false，或该name已通过调用本函数注册过，返回VIDEO_PROCESSING_ERROR_OPERATION_NOT_PERMITTED。 |
+
+### OH_VideoProcessing_SetAutoEffectParam()
+
+```c
+VideoProcessing_ErrorCode OH_VideoProcessing_SetAutoEffectParam(uint32_t type, const char *name, const OH_AVFormat *param)
+```
+
+**描述**
+
+设置与XComponent关联的自动效果参数。当前自动效果仅对最后调用的XComponent生效。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| uint32_t type | 指定要使用的自动效果类型。 |
+| const char *name | 指定XComponent的名称。如果当前应用有多个同名的XComponent，此参数仅对第一个活跃的XComponent生效。 |
+| const [OH_AVFormat](capi-videoprocessing-oh-avformat.md)* param | 根据type指定的参数，参见[video_processing_type.h](capi-video-processing-types-h.md#变量)中的变量。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [VideoProcessing_ErrorCode](capi-video-processing-types-h.md#videoprocessing_errorcode) | 如果操作成功，返回VIDEO_PROCESSING_SUCCESS。<br> 如果name为空或param值无效，返回VIDEO_PROCESSING_ERROR_INVALID_VALUE。<br> 如果[OH_VideoProcessing_IsAutoEffectSupported](#oh_videoprocessing_isautoeffectsupported)对该type返回false，或name不匹配任何已注册的name，或VPE实例尚未创建或未对该name调用过[OH_VideoProcessing_UseAutoEffect](#oh_videoprocessing_useautoeffect)，返回VIDEO_PROCESSING_ERROR_OPERATION_NOT_PERMITTED。<br> 如果发生内部算法错误，返回VIDEO_PROCESSING_ERROR_UNKNOWN。 |
 
 
