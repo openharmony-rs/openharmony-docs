@@ -53,12 +53,23 @@
     
     ``` C++
     static napi_value GetOriginalFileName(napi_env env, napi_callback_info info)
+    <!-- @[dlp_C_IsInSandbox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
+    static napi_value IsInSandbox(napi_env env, napi_callback_info info)
     {
-        const char *fileName = "test.txt.dlp"; //表示dlp文件名，用以获取原始文件名
-        char *originalFileName = nullptr; //表示原始文件名
-        DLP_ErrCode ret = OH_DLP_GetOriginalFileName(fileName, &originalFileName);
+        bool isInSandbox = false; //true 表示当前应用在沙箱中，false 表示应用不在沙箱
+        DLP_ErrCode ret = OH_DLP_IsInSandbox(&isInSandbox);
         if (ret == DLP_ErrCode::ERR_OH_SUCCESS) {
             napi_value result = nullptr;
+            napi_get_boolean(env, isInSandbox, &result);
+            return result;
+        }
+        napi_value result = nullptr;
+        napi_create_int32(env, ret, &result);
+        return result;
+    }
+    ```
             napi_create_string_utf8(env, originalFileName, NAPI_AUTO_LENGTH, &result);
             return result;
         }
