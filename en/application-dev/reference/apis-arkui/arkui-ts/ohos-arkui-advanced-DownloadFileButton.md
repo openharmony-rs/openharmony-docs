@@ -7,7 +7,7 @@
 <!--Tester: @yangjiayong2686--> 
 <!--Adviser: @yaoyao1798-->
 
-**DownloadFileButton** is a download button that, when clicked, allows you to obtain the storage location of the current application in the public **Download** directory.
+**DownloadFileButton** provides a download button with a unified style for file download scenarios.
 
 
 > **NOTE**
