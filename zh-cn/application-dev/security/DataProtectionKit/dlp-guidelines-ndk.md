@@ -46,107 +46,36 @@
    ```
 
 2. 导入数据防泄漏服务的头文件和NAPI相关头文件。
+    <!-- @[dlp_C_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/napi_init.cpp) -->
    ``` c++
-   #include "napi/native_api.h"
-   #include <cstdint>
-   #include <cstdlib>
-   #include "DataProtectionKit/dlp_permission_api.h"
    ```
 
 3. 查询当前DLP沙箱的权限信息。
+    <!-- @[dlp_C_GetDlpPermissionInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/napi_init.cpp) -->
    ``` c++
-   static napi_value GetDlpPermissionInfo(napi_env env, napi_callback_info info)
-   {
-       DLP_FileAccess dlpFileAccess = NO_PERMISSION;
-       uint32_t flags = 0;
-       DLP_ErrCode ret = OH_DLP_GetDlpPermissionInfo(&dlpFileAccess, &flags);
-       if (ret == DLP_ErrCode::ERR_OH_SUCCESS) {
-           napi_value result[2] = {nullptr};
-           napi_create_int32(env, dlpFileAccess, &result[0]);
-           napi_create_int32(env, flags, &result[1]);
-           return result[1];
-       }
-       napi_value result = nullptr;
-       napi_create_int32(env, ret, &result);
-       return result;
-   }
    ```
 
 4. 获取指定DLP文件名的原始文件名。
+    <!-- @[dlp_C_GetOriginalFileName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/napi_init.cpp) -->
    ``` c++
-   static napi_value GetOriginalFileName(napi_env env, napi_callback_info info)
-   {
-       const char *fileName = "test.txt.dlp";
-       char *originalFileName = nullptr;
-       DLP_ErrCode ret = OH_DLP_GetOriginalFileName(fileName, &originalFileName);
-       if (ret == DLP_ErrCode::ERR_OH_SUCCESS) {
-           napi_value result = nullptr;
-           napi_create_string_utf8(env, originalFileName, NAPI_AUTO_LENGTH, &result);
-           return result;
-       }
-       napi_value result = nullptr;
-       napi_create_int32(env, ret, &result);
-       free(originalFileName);
-       return result;
-   }
    ``` 
 
 5. 查询当前应用是否运行在DLP沙箱环境。
+    <!-- @[dlp_C_IsInSandbox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/napi_init.cpp) -->
    ``` c++
-   static napi_value IsInSandbox(napi_env env, napi_callback_info info)
-   {
-       bool isInSandbox = false;
-       DLP_ErrCode ret = OH_DLP_IsInSandbox(&isInSandbox);
-       if (ret == DLP_ErrCode::ERR_OH_SUCCESS) {
-           napi_value result = nullptr;
-           napi_get_boolean(env, isInSandbox, &result);
-           return result;
-       }
-       napi_value result = nullptr;
-       napi_create_int32(env, ret, &result);
-       return result;
-   }
    ``` 
 
 6. 设置沙箱应用配置信息。
+    <!-- @[dlp_C_SetSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/napi_init.cpp) -->
    ``` c++
-   static napi_value SetSandboxAppConfig(napi_env env, napi_callback_info info)
-   {
-       const char *configInfo = "configInfo";
-       DLP_ErrCode ret = OH_DLP_SetSandboxAppConfig(configInfo);
-    
-       napi_value result = nullptr;
-       napi_create_int32(env, ret, &result);
-       return result;
-   }
    ``` 
 
 7. 获取沙箱应用配置信息。
+    <!-- @[dlp_C_GetSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/napi_init.cpp) -->
    ``` c++
-   static napi_value GetSandboxAppConfig(napi_env env, napi_callback_info info)
-   {
-       char *configInfo = nullptr;
-       DLP_ErrCode ret = OH_DLP_GetSandboxAppConfig(&configInfo);
-       if (ret == DLP_ErrCode::ERR_OH_SUCCESS) {
-           napi_value result = nullptr;
-           napi_create_string_utf8(env, configInfo, NAPI_AUTO_LENGTH, &result);
-           return result;
-       }
-       napi_value result = nullptr;
-       napi_create_int32(env, ret, &result);
-       free(configInfo);
-       return result;
-   }
    ``` 
 
 8. 清理沙箱应用配置信息。
+    <!-- @[dlp_C_CleanSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/napi_init.cpp) -->
    ``` c++
-   static napi_value CleanSandboxAppConfig(napi_env env, napi_callback_info info)
-   {
-       DLP_ErrCode ret = OH_DLP_CleanSandboxAppConfig();
-    
-       napi_value result = nullptr;
-       napi_create_int32(env, ret, &result);
-       return result;
-   }
    ``` 
