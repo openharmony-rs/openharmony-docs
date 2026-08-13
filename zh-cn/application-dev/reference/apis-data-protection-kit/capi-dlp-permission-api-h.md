@@ -48,7 +48,7 @@
 enum DLP_ErrCode
 ```
 
-**描述**
+**描述：**
 
 DLP错误码的枚举。
 
@@ -70,7 +70,7 @@ DLP错误码的枚举。
 enum DLP_FileAccess
 ```
 
-**描述**
+**描述：**
 
 DLP文件授权类型的枚举。
 
@@ -92,7 +92,7 @@ DLP文件授权类型的枚举。
 DLP_ErrCode OH_DLP_GetDlpPermissionInfo(DLP_FileAccess *dlpFileAccess, uint32_t *flags)
 ```
 
-**描述**
+**描述：**
 
 查询当前DLP沙箱的权限信息。
 
@@ -118,7 +118,7 @@ DLP_ErrCode OH_DLP_GetDlpPermissionInfo(DLP_FileAccess *dlpFileAccess, uint32_t 
 DLP_ErrCode OH_DLP_GetOriginalFileName(const char *fileName, char **originalFileName)
 ```
 
-**描述**
+**描述：**
 
 获取指定DLP文件名的原始文件名。
 
@@ -144,7 +144,7 @@ DLP_ErrCode OH_DLP_GetOriginalFileName(const char *fileName, char **originalFile
 DLP_ErrCode OH_DLP_IsInSandbox(bool *isInSandbox)
 ```
 
-**描述**
+**描述：**
 
 查询当前应用是否运行在DLP沙箱环境。
 
@@ -169,7 +169,7 @@ DLP_ErrCode OH_DLP_IsInSandbox(bool *isInSandbox)
 DLP_ErrCode OH_DLP_SetSandboxAppConfig(const char *configInfo)
 ```
 
-**描述**
+**描述：**
 
 设置沙箱应用配置信息。
 
@@ -194,7 +194,7 @@ DLP_ErrCode OH_DLP_SetSandboxAppConfig(const char *configInfo)
 DLP_ErrCode OH_DLP_GetSandboxAppConfig(char **configInfo)
 ```
 
-**描述**
+**描述：**
 
 获取沙箱应用配置信息。
 
@@ -219,7 +219,7 @@ DLP_ErrCode OH_DLP_GetSandboxAppConfig(char **configInfo)
 DLP_ErrCode OH_DLP_CleanSandboxAppConfig()
 ```
 
-**描述**
+**描述：**
 
 清理沙箱应用配置信息。
 
