@@ -68,8 +68,6 @@ ArkTS-Dyn示例：
 
 <!-- @[pasteboard_permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/Index.ets) -->
 
-<div class="same-source-code">
-
 ``` TypeScript
 import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
 import { abilityAccessCtrl, common, Permissions } from '@kit.AbilityKit';
@@ -184,10 +182,6 @@ struct Index {
   }
 }
 ```
-
-<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/Index.ets?same_code_link_text=pasteboard_permission" target="_blank" rel="nofollow">Index.ets</a></p>
-
-</div>
 
 ArkTS-Sta示例：
 
@@ -323,7 +317,3 @@ struct Index {
   }
 }
 ```
-
-<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Pasteboard_Sta/Pasteboard_Static_Sample/entry/src/main/ets/pages/Index.ets?same_code_link_text=pasteboard_permission" target="_blank" rel="nofollow">Index.ets</a></p>
-
-</div>
