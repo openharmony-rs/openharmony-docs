@@ -4048,6 +4048,8 @@ offPreferredInputDeviceChangeByFilter(callback?: Callback\<AudioDeviceDescriptor
 
 **ArkTS-Sta起始版本：** 26.0.0
 
+**参数：**
+
 | 参数名   | 类型                                   | 必填 | 说明                                                         |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
 | callback | Callback\<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)> | 否 | 回调函数，返回优先级最高的输入设备信息。 |
@@ -4255,6 +4257,8 @@ off(type: 'preferredOutputDeviceChangeByFilter', callback?: Callback\<AudioDevic
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
 **ArkTS-Dyn起始版本：** 21
+
+**参数：**
 
 | 参数名   | 类型                                   | 必填 | 说明                                                         |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -4748,7 +4752,7 @@ getActiveOutputDeviceDescriptors(): Promise&lt;AudioDeviceDescriptors&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 202 | Not system application. |
+| 202 | Not a system application. |
 
 **示例：**
 
@@ -5925,7 +5929,7 @@ setHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean
 | 参数名                 | 类型                                                         | 必填 | 说明                      |
 | ----------------------| ------------------------------------------------------------ | ---- | ------------------------- |
 | deviceDescriptor | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor)         | 是   | 设备描述符。 |
-| enable                | boolean                                                      | 是   | 表示开启/关闭头动跟踪。true为开启，false为关闭。  |
+| enabled                | boolean                                                      | 是   | 表示开启/关闭头动跟踪。true为开启，false为关闭。  |
 
 **返回值：**
 
@@ -6990,9 +6994,9 @@ isCollaborativePlaybackSupported(): boolean
 
 **返回值：**
 
-| 类型    | 必填 | 说明                                                    |
-| ------- |------|------------------------------------------------------- |
-| boolean |  是  | 表示系统是否支持移动全景声能力，true表示支持，false表示不支持。 |
+| 类型    | 说明                                                    |
+| ------- |------------------------------------------------------- |
+| boolean | 表示系统是否支持移动全景声能力，true表示支持，false表示不支持。 |
 
 **错误码：**
 
@@ -7052,7 +7056,7 @@ setCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 201     | Not system application.                     |
+| 202    | Not system application.                     |
 | 6800101 | Parameter verification failed. Possible causes:1. The specified device is not an A2DP device.2. The specified device is not connected.|
 | 801     | Capability not supported.                   |
 
@@ -7107,9 +7111,9 @@ isCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor)
 
 **返回值：**
 
-| 类型    | 必填 | 说明                                                    |
-| ------- |------|------------------------------------------------------- |
-| boolean |  是  | 返回指定设备移动全景声是否开启/关闭，true表示开启，false表示关闭。   |
+| 类型    | 说明                                                    |
+| ------- |------------------------------------------------------- |
+| boolean | 返回指定设备移动全景声是否开启/关闭，true表示开启，false表示关闭。   |
 
 **错误码：**
 
