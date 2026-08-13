@@ -1,7 +1,7 @@
 # Using AVPlayer to Play Streaming Media (ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @xushubo; @chennotfound-->
+<!--Owner: @chennotfound-->
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
@@ -109,15 +109,16 @@ HLS streams currently support playback at multiple bit rates. By default, the AV
     import { media } from '@kit.MediaKit';
     // Define the class member avPlayer.
     private avPlayer: media.AVPlayer | null = null;
+    private bitrate: number = 0;
 
     // Create an AVPlayer instance.
     this.avPlayer = await media.createAVPlayer();
-    // Check whether the bit rate setting takes effect.
+    // Listen for the bitrateDone event.
     this.avPlayer.on('bitrateDone', (bitrate: number) => {
       console.info('bitrateDone called, and bitrate value is: ' + bitrate);
     })
     // Set the playback bit rate.
-    this.bitrate: number = 96000;
+    this.bitrate = 96000;
     this.avPlayer.setBitrate(this.bitrate);
     ```
 
@@ -207,7 +208,7 @@ If the network is disconnected when the AVPlayer is playing streaming media, the
 Refer to the following example to play a complete streaming video.
 
 1. Create a project, download the [sample project](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia), and copy its resources to the corresponding directories.
-    ```
+    ```txt
     AVPlayerArkTSAudio
     entry/src/main/ets/
     └── pages
@@ -344,7 +345,7 @@ struct Index {
     let playbackStrategy : media.PlaybackStrategy = {preferredBufferDuration: 20};
     // Set the media source and playback strategy for the AVPlayer.
     this.avPlayer.setMediaSource(mediaSource, playbackStrategy);
-    * */
+    **/
 
     // Case 5: HLS bit rate switching.
     /*
@@ -359,7 +360,7 @@ struct Index {
     this.avPlayer.on('bitrateDone', (bitrate: number) => {
       console.info('bitrateDone called, and bitrate value is: ' + bitrate);
     })
-    * */
+    **/
 
     // Case 6: DASH audio and video track switching.
     /*
@@ -380,7 +381,7 @@ struct Index {
         console.error(`getTrackDescription fail, error:${error}`);
       }
     });
-    * */
+    **/
   }
 
   // HLS bit rate switching.
@@ -414,7 +415,7 @@ struct Index {
     } catch (error) {
       console.error(`${this.tag}: deselectTrack failed, error message is = ${JSON.stringify(error.message)}`);
     }
-    * */
+    **/
   }
 
   avPlay(): void {
