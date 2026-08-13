@@ -8,11 +8,11 @@
 
 ## 问题现象
 
-应用在后处理或视频编码场景，未正常处理色彩空间，导致图片效果异常（偏色、亮度过曝等）。
+应用处于后处理或视频编码场景时，未正常处理色彩空间，导致图片效果异常（偏色、亮度过曝等）。
 
 ## 可能原因
 
-相机应用可通过[SetColorSpace](../../reference/apis-camera-kit/arkts-apis-camera-ColorManagement.md#setcolorspace12)接口配置不同的色彩空间参数来支持P3广色域以及HDR的功能。若应用不主动设置色彩空间，拍照、录像模式均默认为SDR拍摄。针对应用在不同模式使能HDR效果，需要设置的色彩空间和相机输出流[Profile](../../reference/apis-camera-kit/arkts-apis-camera-i.md#profile)中的格式[CameraFormat](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraformat)一一对应关系可参考下表。
+相机应用可通过[SetColorSpace](../../reference/apis-camera-kit/arkts-apis-camera-ColorManagement.md#setcolorspace12)接口配置不同的色彩空间参数来支持P3广色域以及HDR的功能。若应用不主动设置色彩空间，拍照、录像模式均默认为SDR拍摄。应用在不同模式使能HDR效果时，需要设置的色彩空间和相机输出流[Profile](../../reference/apis-camera-kit/arkts-apis-camera-i.md#profile)中的[CameraFormat](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraformat)对应关系可参考下表。
 
 拍照模式：
 
