@@ -35179,9 +35179,9 @@
 						"start_line":179
 					},
 					{
-						"end_line":350,
+						"end_line":346,
 						"name":"set_cameraTracking_enabled",
-						"start_line":334
+						"start_line":330
 					},
 					{
 						"end_line":424,
