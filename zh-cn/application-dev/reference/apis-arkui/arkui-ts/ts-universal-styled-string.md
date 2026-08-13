@@ -3956,8 +3956,8 @@ struct TailIndentsExample {
 
 ArkTS-Sta示例：
 ```ts
-import { Column,Component, Entry, LengthMetrics, Text, StyledString,
-  TextController, ParagraphStyle, StyledStringKey, ParagraphStyleInterface, TextAlign } from '@kit.ArkUI';
+import { Column,Component, Entry, LengthMetrics, Text, StyledString, TextController,
+  ParagraphStyle, StyledStringKey, ParagraphStyleInterface, TextAlign, TextStyle, Color } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -3967,10 +3967,8 @@ struct TailIndentsExample {
       {
         start: 0,
         length: 120,
-        styledKey: StyledStringKey.PARAGRAPH_STYLE,
-        styledValue: new ParagraphStyle({
-          tailIndents: LengthMetrics.vp(0),
-        } as ParagraphStyleInterface),
+        styledKey: StyledStringKey.FONT,
+        styledValue: new TextStyle({ fontSize: LengthMetrics.vp(20) }),
       },
     ])
 
@@ -3984,6 +3982,12 @@ struct TailIndentsExample {
           tailIndents: LengthMetrics.vp(100),
         } as ParagraphStyleInterface),
       },
+      {
+        start: 0,
+        length: 120,
+        styledKey: StyledStringKey.FONT,
+        styledValue: new TextStyle({ fontSize: LengthMetrics.vp(20) }),
+      },
     ])
 
   styledString3:StyledString =
@@ -3995,6 +3999,12 @@ struct TailIndentsExample {
         styledValue: new ParagraphStyle({
           tailIndents: [LengthMetrics.vp(100), LengthMetrics.vp(50), LengthMetrics.vp(20)],
         } as ParagraphStyleInterface),
+      },
+      {
+        start: 0,
+        length: 120,
+        styledKey: StyledStringKey.FONT,
+        styledValue: new TextStyle({ fontSize: LengthMetrics.vp(20) }),
       },
     ])
 
@@ -4008,24 +4018,27 @@ struct TailIndentsExample {
         .onAppear(() => {
           this.txtController1.setStyledString(this.styledString1);
         })
-        .borderWidth(1)
         .textAlign(TextAlign.End)
+        .borderWidth(1)
+        .borderColor(Color.Blue)
         .width('100%')
 
       Text(undefined, { controller: this.txtController2 })
         .onAppear(() => {
           this.txtController2.setStyledString(this.styledString2);
         })
-        .borderWidth(1)
         .textAlign(TextAlign.End)
+        .borderWidth(1)
+        .borderColor(Color.Blue)
         .width('100%')
 
       Text(undefined, { controller: this.txtController3 })
         .onAppear(() => {
           this.txtController3.setStyledString(this.styledString3);
         })
-        .borderWidth(1)
         .textAlign(TextAlign.End)
+        .borderWidth(1)
+        .borderColor(Color.Blue)
         .width('100%')
     }
   }
