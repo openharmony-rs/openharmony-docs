@@ -169,6 +169,8 @@ getDLPPermissionInfo(): Promise&lt;DLPPermissionInfo&gt;
 
 查询当前DLP沙箱的权限信息，包括文件授权类型及可执行操作（如查看、编辑、复制等）。仅支持在DLP沙箱应用中调用，使用Promise异步回调。
 
+建议先调用[isInSandbox](#dlppermissionisinsandbox)判断当前是否处于沙箱环境。
+
 在DLP沙箱中处理文件时，可根据权限信息判断当前用户可以执行哪些操作，避免调用无权限的功能。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
@@ -328,6 +330,8 @@ console.info('dlpSuffix:', dlpSuffix);
 on(type: 'openDLPFile', listener: Callback&lt;AccessedDLPFileInfo&gt;): void
 
 监听打开DLP文件。调用成功后，当DLP文件被打开时会触发回调通知当前应用。仅支持在非DLP沙箱应用中调用。
+
+在页面销毁或不再需要监听时，应调用[off('openDLPFile')](#dlppermissionoffopendlpfile)取消订阅以释放资源。
 
  当应用需要在DLP文件打开后执行特定操作（如记录日志、更新界面）时，可注册该监听。
 
@@ -649,7 +653,7 @@ dlpPermission.isInSandbox().then((inSandbox) => { // 是否在沙箱内。
 
 cancelRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt;
 
-取消沙箱保留状态，即恢复DLP文件关闭时自动卸载沙箱策略。仅支持在DLP沙箱应用中调用。使用Promise异步回调。
+取消沙箱保留状态，即恢复DLP文件关闭时自动卸载沙箱策略。使用Promise异步回调。
 
 该接口用于取消沙箱保留状态，恢复默认行为以释放系统资源，适用于不再频繁访问DLP文件的场景。
 
@@ -1307,7 +1311,7 @@ DLP文件授权类型的枚举。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| resultCode | number | 否 | 否 | 表示打开DLP权限管理应用并退出后返回的结果码。取值范围为0到3。|
+| resultCode | number | 否 | 否 | 表示打开DLP权限管理应用并退出后返回的结果码。取值范围为0到3。0表示成功，其它表示失败。|
 | want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 否 | 否 | 表示打开DLP权限管理应用并退出后返回的数据。 |
 
 ## RetentionSandboxInfo
