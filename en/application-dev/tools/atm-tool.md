@@ -61,7 +61,7 @@ atm perm -c -i ********* -p ohos.permission.CAMERA
 # Resets the user_grant permission status of a specified application process.
 atm perm -r -i *********
 
-# Resets the user_grant permission status of a application process in the specified bundle.
+# Resets the user_grant permission status of an application process in the specified bundle.
 atm perm -r -b com.ohos.bundlename
 ```
 
@@ -105,7 +105,7 @@ atm toggle [-h] [-u -s -i <user-id> -k <status>] [-u -o -i <user-id>]
 | ----------------------------------------------------------------- | ----------------------------------- | 
 | -h                                                     | Displays help information.             | 
 | -u&nbsp;-s&nbsp;-i \<user-id\>&nbsp;-k \<status\> | Sets the toggle status (specified by **status**) of the permission usage records. The **-u**, **-s**, **-i** and **-k** parameters are mandatory. The return value indicates whether the operation is successful.| 
-| -u&nbsp;-o&nbsp;-i \<user-id\>&nbsp; | Obtains the toggle status of the permission usage records for a specified user. The **-**, **-o**, and **-i** parameters are mandatory.| 
+| -u&nbsp;-o&nbsp;-i \<user-id\>&nbsp; | Obtains the toggle status of the permission usage records for a specified user. The **-u**, **-o**, and **-i** parameters are mandatory.| 
 
 Example:
 

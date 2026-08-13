@@ -45,3 +45,5 @@ For system applications that provide basic capabilities, the system provides an 
 > 2. For an application that requests a constrained background task, only the priority of reclaiming the application process is increased. If system resources are severely insufficient, the application process may still be terminated.
 
 <!--RP4--><!--RP4End-->
+
+<!--no_check-->
