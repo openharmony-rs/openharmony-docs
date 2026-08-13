@@ -254,7 +254,6 @@ async function isNeedGetPermissionFromUser(): Promise<boolean> {
 @Component
 struct Index {
   // ...
-
   async handlePaste(): Promise<void> {
     if (!await isNeedGetPermissionFromUser()) {
       hilog.info(0xFF00, '[Sample_pasteboard]', 'No neded to bring up the permission pop-up window');
