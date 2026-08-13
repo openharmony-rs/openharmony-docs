@@ -1027,7 +1027,7 @@ enableDepthFusion(enabled: boolean): void
 
 启用深度融合功能。
 
-进行设置之前，需要先检查设备是否支持深度融合，可使用方法[isDepthFusionSupported](#isdepthfusionsupported14)
+进行设置之前，需要先检查设备是否支持深度融合，可使用方法[isDepthFusionSupported](#isdepthfusionsupported14)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1641,7 +1641,7 @@ deferImageDelivery(type: DeferredDeliveryImageType): void
 
 开启相关类型分段式能力。
 
-设置之前，需要调用isDeferredImageDeliverySupported判断当前模式是否支持相关分段式能力。
+设置之前，需要调用[isDeferredImageDeliverySupported](#isdeferredimagedeliverysupported11)判断当前模式是否支持相关分段式能力。
 
 **系统接口：** 此接口为系统接口。
 
@@ -8238,7 +8238,7 @@ setLightPaintingType(type: LightPaintingType): void
 
 设置当前生效的流光快门模式类型。
 
-可以先通过getSupportedLightPaintingTypes获取当前设备所支持的流光快门模式类型。
+可以先通过[getSupportedLightPaintingTypes](#getsupportedlightpaintingtypes12)获取当前设备所支持的流光快门模式类型。
 
 **系统接口：** 此接口为系统接口。
 
