@@ -188,7 +188,6 @@ ArkTS-Sta示例：
 <!-- @[pasteboard_permission](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Pasteboard_Sta/Pasteboard_Static_Sample/entry/src/main/ets/pages/Index.ets) -->
 
 ```TypeScript
-import { TestJs } from './PasteboardModel'
 import abilityAccessCtrl, { Context, PermissionRequestResult, Permissions } from '@ohos.abilityAccessCtrl'
 import { BusinessError } from '@ohos.base'
 import common from '@ohos.app.ability.common'

@@ -95,7 +95,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
   }
   export async function getPlainData(): Promise<string> {
     try {
-      //从系统剪贴板中读取数据
+      // 从系统剪贴板中读取数据
       let data = await systemPasteboard.getData();
       // 从剪贴板数据中获取条目数量
       let recordCount = data.getRecordCount();
@@ -137,7 +137,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
   }
   export async function getPlainData(type: string): Promise<string> {
     try {
-      // 从系统剪贴板中读取数据
+      //从系统剪贴板中读取数据
       let data = await systemPasteboard.getData();
       let recordCount = data.getRecordCount();
       let result = '';
