@@ -10,7 +10,7 @@
 
 声明音频配件输入流管理器相关接口。
 
-该文件接口用于管理音频配件的输入音频流，包括回调注册、数据写入和缓冲区查询等功能。
+本文件提供的接口用于管理音频配件的输入音频流，包括回调注册、音频数据写入和缓冲区查询等功能。
 
 **引用文件：** <ohaudio/native_audio_accessory_input_stream_manager.h>
 
@@ -33,7 +33,7 @@
 | [OH_AudioAccessoryInputStream_StopCallback](#oh_audioaccessoryinputstream_stopcallback) | 输入流停止事件回调函数。 |
 | [OH_AudioAccessoryInputStream_ReleaseCallback](#oh_audioaccessoryinputstream_releasecallback) | 输入流释放事件回调函数。 |
 | [OH_AudioAccessoryInputStream_GetLatencyCallback](#oh_audioaccessoryinputstream_getlatencycallback) | 查询输入流当前时延的回调函数。 |
-| [OH_AudioAccessoryInputStream_GetFramePositionCallback](#oh_audioaccessoryinputstream_getframepositioncallback) | 查询输入流当前帧位置的回调函数。 |
+| [OH_AudioAccessoryInputStream_GetFramePositionCallback](#oh_audioaccessoryinputstream_getframepositioncallback) | 查询输入流当前采集位置（帧位置）的回调函数。 |
 
 ### 函数
 
@@ -59,9 +59,9 @@ typedef bool (*OH_AudioAccessory_OpenInputStreamCallback)(OH_AudioAccessory *acc
 
 音频配件打开输入流的回调函数。
 
-**触发时机：** 当应用请求从该音频配件采集音频时，音频框架调用此回调。框架传递正在打开的音频流信息，以便配件准备相应的数据通路。
+**触发时机：** 当应用请求从该音频配件采集音频时，音频框架调用此回调。框架传递正在打开的输入流信息，以便配件准备相应的音频数据传输通道。
 
-**使用要求：** 在此回调中，需调用OH_AudioAccessoryInputStreamManager_RegisterStartCallback、OH_AudioAccessoryInputStreamManager_RegisterStopCallback、OH_AudioAccessoryInputStreamManager_RegisterReleaseCallback、OH_AudioAccessoryInputStreamManager_RegisterLatencyCallback和OH_AudioAccessoryInputStreamManager_RegisterFramePositionCallback注册必需的流回调。此回调是唯一允许注册回调的时机。
+**使用要求：** 在此回调中，需注册输入流的启动、停止、释放、时延查询和帧位置查询回调。只能在此回调执行期间注册这些输入流回调。
 
 **起始版本：** 26.0.0
 
@@ -69,9 +69,9 @@ typedef bool (*OH_AudioAccessory_OpenInputStreamCallback)(OH_AudioAccessory *acc
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_AudioAccessory *accessory | 打开流的音频配件。 |
-| OH_AudioAccessoryInputStream *stream | 新创建的输入流句柄。使用此句柄通过Register...Callback注册回调。 |
-| OH_AudioStreamInfo *streamInfo | 正在打开的流的音频流信息指针。此参数描述请求的流格式，<br>配件可使用此信息配置数据通路。 |
+| OH_AudioAccessory *accessory | 正在打开输入流的音频配件。 |
+| OH_AudioAccessoryInputStream *stream | 新创建的输入流句柄。使用此句柄注册输入流相关回调。 |
+| OH_AudioStreamInfo *streamInfo | 正在打开的输入流的音频流信息指针。此参数描述请求的流格式，<br>配件可使用此信息配置音频数据传输通道。 |
 
 **返回值**
 
@@ -89,7 +89,7 @@ typedef bool (*OH_AudioAccessoryInputStream_StartCallback)(OH_AudioAccessory *ac
 
 输入流启动事件回调函数。
 
-**触发时机：** 流成功启动并准备好接收音频数据后触发。此回调返回后，可以调用Write()发送音频数据。
+**触发时机：** 输入流成功启动并准备好接收音频数据后触发。此回调返回后，可以调用OH_AudioAccessoryInputStreamManager_Write发送音频数据。
 
 **起始版本：** 26.0.0
 
@@ -97,7 +97,7 @@ typedef bool (*OH_AudioAccessoryInputStream_StartCallback)(OH_AudioAccessory *ac
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_AudioAccessory *accessory | 拥有该流的音频配件。 |
+| OH_AudioAccessory *accessory | 该输入流所属的音频配件。 |
 | OH_AudioAccessoryInputStream *stream | 已启动的输入流句柄。 |
 
 **返回值**
@@ -116,7 +116,7 @@ typedef bool (*OH_AudioAccessoryInputStream_StopCallback)(OH_AudioAccessory *acc
 
 输入流停止事件回调函数。
 
-**触发时机：** 流停止后触发。此回调返回后，应停止调用Write()。流句柄仍然有效，可以再次启动。
+**触发时机：** 输入流停止后触发。此回调返回后，应停止调用OH_AudioAccessoryInputStreamManager_Write。输入流句柄仍然有效，可以再次启动。
 
 **起始版本：** 26.0.0
 
@@ -124,7 +124,7 @@ typedef bool (*OH_AudioAccessoryInputStream_StopCallback)(OH_AudioAccessory *acc
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_AudioAccessory *accessory | 拥有该流的音频配件。 |
+| OH_AudioAccessory *accessory | 该输入流所属的音频配件。 |
 | OH_AudioAccessoryInputStream *stream | 已停止的输入流句柄。 |
 
 **返回值**
@@ -143,7 +143,7 @@ typedef bool (*OH_AudioAccessoryInputStream_ReleaseCallback)(OH_AudioAccessory *
 
 输入流释放事件回调函数。
 
-**触发时机：** 流正在被释放时触发。这是流的最后一个回调。此回调返回后，流句柄不再有效，不得继续使用。
+**触发时机：** 输入流正在释放资源时触发。这是该输入流的最后一个回调。此回调返回后，输入流句柄不再有效，不应继续使用。
 
 **起始版本：** 26.0.0
 
@@ -151,8 +151,8 @@ typedef bool (*OH_AudioAccessoryInputStream_ReleaseCallback)(OH_AudioAccessory *
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_AudioAccessory *accessory | 拥有该流的音频配件。 |
-| OH_AudioAccessoryInputStream *stream | 已释放的输入流（录音/采集流）句柄。 |
+| OH_AudioAccessory *accessory | 该输入流所属的音频配件。 |
+| OH_AudioAccessoryInputStream *stream | 即将释放的输入流（录音/采集流）句柄。 |
 
 **返回值**
 
@@ -170,7 +170,7 @@ typedef bool (*OH_AudioAccessoryInputStream_GetLatencyCallback)(OH_AudioAccessor
 
 查询输入流当前时延的回调函数。
 
-**触发时机：** 当框架需要获取配件流上报的当前时延值时触发。
+**触发时机：** 当框架需要获取音频配件输入流当前时延值时触发。
 
 **起始版本：** 26.0.0
 
@@ -178,7 +178,7 @@ typedef bool (*OH_AudioAccessoryInputStream_GetLatencyCallback)(OH_AudioAccessor
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_AudioAccessory *accessory | 拥有该流的音频配件。 |
+| OH_AudioAccessory *accessory | 该输入流所属的音频配件。 |
 | OH_AudioAccessoryInputStream *stream | 输入流句柄。 |
 | int32_t *latency | 输出参数，返回时延值，单位为毫秒（ms）。 |
 
@@ -196,9 +196,9 @@ typedef bool (*OH_AudioAccessoryInputStream_GetFramePositionCallback)(OH_AudioAc
 
 **描述**
 
-查询输入流当前帧位置的回调函数。
+查询输入流当前采集位置的回调函数。
 
-**触发时机：** 当框架需要获取该音频配件（外部音频设备，如大疆 Mic 2）上的输入流上报的当前采集位置时触发。
+**触发时机：** 当框架需要获取该音频配件（外部音频设备，如大疆 Mic 2）上的输入流当前采集位置时触发。
 
 **起始版本：** 26.0.0
 
@@ -206,10 +206,10 @@ typedef bool (*OH_AudioAccessoryInputStream_GetFramePositionCallback)(OH_AudioAc
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_AudioAccessory *accessory | 拥有该流的音频配件（外部音频设备，如大疆 Mic 2）。 |
+| OH_AudioAccessory *accessory | 该输入流所属的音频配件（外部音频设备，如大疆 Mic 2）。 |
 | OH_AudioAccessoryInputStream *stream | 输入流句柄。 |
-| int64_t *framePosition | 输出参数，返回自该输入流最近一次成功启动以来累计采集的音频帧数。 |
-| int64_t *timestamp | 输出参数，返回与framePosition对应的采集时间戳。<br>时间戳需使用CLOCK_MONOTONIC时间基准，以纳秒（ns）为单位，<br>表示framePosition所标识帧被采集时的单调时钟时间。 |
+| int64_t *framePosition | 输出参数，返回自该输入流最近一次成功启动以来已采集的音频帧总数。 |
+| int64_t *timestamp | 输出参数，返回与framePosition对应的采集时间戳。<br>时间戳需使用CLOCK_MONOTONIC时间基准，单位为纳秒（ns），<br>表示该采集位置对应的音频帧被采集时的单调时钟时间。 |
 
 **返回值**
 
@@ -227,9 +227,9 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_RegisterStartCallback(
 
 **描述**
 
-注册输入流启动事件回调函数。应用需要通过音频配件输入流采集音频时，需注册此回调。如果未注册，音频框架将拒绝创建输入流并触发清理。
+注册输入流启动事件回调函数。应用需要通过音频配件输入流采集音频时，需注册此回调。如果未注册，音频框架将拒绝创建输入流并清理相关资源。
 
-此函数需在OH_AudioAccessory_OpenInputStreamCallback执行期间调用。在其他任何时间调用此函数将返回AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE。
+此函数需在OH_AudioAccessory_OpenInputStreamCallback执行期间调用。在其他时间调用此函数将返回AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE。
 
 **起始版本：** 26.0.0
 
@@ -244,7 +244,7 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_RegisterStartCallback(
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数为空。<br>AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE：在OH_AudioAccessory_OpenInputStreamCallback外部调用或流已释放。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数为空。<br>AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE：未在OH_AudioAccessory_OpenInputStreamCallback执行期间调用，或输入流已经释放。 |
 
 ### OH_AudioAccessoryInputStreamManager_RegisterStopCallback()
 
@@ -254,9 +254,9 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_RegisterStopCallback(O
 
 **描述**
 
-注册输入流停止事件回调函数。应用需要通过音频配件输入流采集音频时，需注册此回调。如果未注册，音频框架将拒绝创建输入流并触发清理。
+注册输入流停止事件回调函数。应用需要通过音频配件输入流采集音频时，需注册此回调。如果未注册，音频框架将拒绝创建输入流并清理相关资源。
 
-此函数需在OH_AudioAccessory_OpenInputStreamCallback执行期间调用。在其他任何时间调用此函数将返回AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE。
+此函数需在OH_AudioAccessory_OpenInputStreamCallback执行期间调用。在其他时间调用此函数将返回AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE。
 
 **起始版本：** 26.0.0
 
@@ -271,7 +271,7 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_RegisterStopCallback(O
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数为空。<br>AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE：在OH_AudioAccessory_OpenInputStreamCallback外部调用或流已释放。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数为空。<br>AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE：未在OH_AudioAccessory_OpenInputStreamCallback执行期间调用，或输入流已经释放。 |
 
 ### OH_AudioAccessoryInputStreamManager_RegisterReleaseCallback()
 
@@ -281,9 +281,9 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_RegisterReleaseCallbac
 
 **描述**
 
-注册输入流释放事件回调函数。应用需要通过音频配件输入流采集音频时，需注册此回调。如果未注册，音频框架将拒绝创建输入流并触发清理。
+注册输入流释放事件回调函数。应用需要通过音频配件输入流采集音频时，需注册此回调。如果未注册，音频框架将拒绝创建输入流并清理相关资源。
 
-此函数需在OH_AudioAccessory_OpenInputStreamCallback执行期间调用。在其他任何时间调用此函数将返回AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE。
+此函数需在OH_AudioAccessory_OpenInputStreamCallback执行期间调用。在其他时间调用此函数将返回AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE。
 
 **起始版本：** 26.0.0
 
@@ -298,7 +298,7 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_RegisterReleaseCallbac
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数为空。<br>AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE：在OH_AudioAccessory_OpenInputStreamCallback外部调用或流已释放。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数为空。<br>AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE：未在OH_AudioAccessory_OpenInputStreamCallback执行期间调用，或输入流已经释放。 |
 
 ### OH_AudioAccessoryInputStreamManager_RegisterLatencyCallback()
 
@@ -308,9 +308,9 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_RegisterLatencyCallbac
 
 **描述**
 
-注册输入流时延查询回调函数。应用需要通过音频配件输入流采集音频时，需注册此回调。如果未注册，音频框架将拒绝创建输入流并触发清理。
+注册输入流时延查询回调函数。应用需要通过音频配件输入流采集音频时，需注册此回调。如果未注册，音频框架将拒绝创建输入流并清理相关资源。
 
-此函数需在OH_AudioAccessory_OpenInputStreamCallback执行期间调用。在其他任何时间调用此函数将返回AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE。
+此函数需在OH_AudioAccessory_OpenInputStreamCallback执行期间调用。在其他时间调用此函数将返回AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE。
 
 **起始版本：** 26.0.0
 
@@ -325,7 +325,7 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_RegisterLatencyCallbac
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数为空。<br>AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE：在OH_AudioAccessory_OpenInputStreamCallback外部调用或流已释放。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数为空。<br>AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE：未在OH_AudioAccessory_OpenInputStreamCallback执行期间调用，或输入流已经释放。 |
 
 ### OH_AudioAccessoryInputStreamManager_RegisterFramePositionCallback()
 
@@ -335,9 +335,9 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_RegisterFramePositionC
 
 **描述**
 
-注册输入流帧位置查询回调函数。应用需要通过音频配件输入流采集音频时，需注册此回调。如果未注册，音频框架将拒绝创建输入流并触发清理。
+注册输入流帧位置查询回调函数，用于查询输入流当前采集位置。应用需要通过音频配件输入流采集音频时，需注册此回调。如果未注册，音频框架将拒绝创建输入流并清理相关资源。
 
-此函数需在OH_AudioAccessory_OpenInputStreamCallback执行期间调用。在其他任何时间调用此函数将返回AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE。
+此函数需在OH_AudioAccessory_OpenInputStreamCallback执行期间调用。在其他时间调用此函数将返回AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE。
 
 **起始版本：** 26.0.0
 
@@ -352,7 +352,7 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_RegisterFramePositionC
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数为空。<br>AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE：在OH_AudioAccessory_OpenInputStreamCallback外部调用或流已释放。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数为空。<br>AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE：未在OH_AudioAccessory_OpenInputStreamCallback执行期间调用，或输入流已经释放。 |
 
 ### OH_AudioAccessoryInputStreamManager_Write()
 
@@ -364,13 +364,13 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_Write(OH_AudioAccessor
 
 向音频配件输入流写入音频数据。
 
-调用后，函数在整帧数据写入成功或发生错误后返回。每次调用需写入完整20ms的音频数据。调用方需确保dataSize与当前流配置下20ms对应的字节数一致。如果音频数据帧长度与当前流配置不匹配，本函数返回AUDIOCOMMON_RESULT_ERROR_FRAME_LENGTH_MISMATCH。调用方需以20ms的节奏调用此函数，即每次调用提交20ms音频数据，连续两次调用之间的间隔也需为20ms。
+调用后，函数在一帧音频数据写入成功或发生错误后返回。每次调用需写入完整20ms的音频数据。调用方需确保dataSize与当前输入流配置下20ms音频数据对应的字节数一致。如果音频数据帧长度与当前输入流配置不匹配，本函数返回AUDIOCOMMON_RESULT_ERROR_FRAME_LENGTH_MISMATCH。调用方需按20ms间隔调用此函数，即每次提交20ms音频数据，连续两次调用之间的间隔也需为20ms。
 
-如果流缓冲区当前没有足够的可写空间容纳整帧数据，本函数将等待可写空间满足要求或返回错误。此接口不支持部分帧写入。如果最后一帧不足20ms的音频数据，调用方可以丢弃该帧或用零填充至20ms后再调用本函数。
+如果输入流缓冲区当前没有足够的可写空间容纳一帧数据，本函数将等待可写空间满足要求或返回错误。此接口不支持部分帧写入。如果最后一帧不足20ms的音频数据，调用方可以丢弃该帧或用零填充至20ms后再调用本函数。
 
-**调用上下文与并发：**
+**并发限制：**
 
-本函数对同一流不可重入。建议调用方仅使用一个线程串行地向同一流写入音频数据。如果本函数与同一流的停止或释放回调并发调用，当停止或释放操作先于本函数获取锁完成时，本函数返回AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE。
+同一输入流不支持并发调用本函数。建议调用方仅使用一个线程串行地向同一输入流写入音频数据。如果本函数与同一输入流的停止或释放回调并发调用，当停止或释放操作先完成时，本函数返回AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE。
 
 **起始版本：** 26.0.0
 
@@ -386,7 +386,7 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_Write(OH_AudioAccessor
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数为空。<br>AUDIOCOMMON_RESULT_ERROR_FRAME_LENGTH_MISMATCH：音频数据帧长度与当前流配置不匹配。<br>AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE：流未启动或需注册的流回调未全部注册。<br>AUDIOCOMMON_RESULT_ERROR_SYSTEM：音频服务进程死亡。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数为空。<br>AUDIOCOMMON_RESULT_ERROR_FRAME_LENGTH_MISMATCH：音频数据帧长度与当前输入流配置不匹配。<br>AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE：输入流未启动或需注册的流回调未全部注册。<br>AUDIOCOMMON_RESULT_ERROR_SYSTEM：音频服务进程死亡。 |
 
 ### OH_AudioAccessoryInputStreamManager_GetWritableSize()
 
@@ -398,7 +398,7 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_GetWritableSize(OH_Aud
 
 获取音频配件输入流缓冲区的可写大小。
 
-调用方可使用此函数在调用OH_AudioAccessoryInputStreamManager_Write之前探测当前缓冲区可用空间。返回的可写大小仅反映当前状态，函数返回后可能立即发生变化。
+调用方可使用此函数在调用OH_AudioAccessoryInputStreamManager_Write之前查询当前缓冲区可用空间。返回的可写大小仅反映查询时的状态，函数返回后可能立即发生变化。
 
 **起始版本：** 26.0.0
 
@@ -413,4 +413,4 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_GetWritableSize(OH_Aud
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数为空。<br>AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE：流已释放。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数为空。<br>AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE：输入流已经释放。 |
