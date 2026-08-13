@@ -635,6 +635,8 @@ beacon围栏请求参数。transitionCallback与fenceExtensionAbilityName任选�
 
 **系统能力**：SystemCapability.Location.Location.Geocoder
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | locale | string | 否 | 是 | 表示位置描述信息的语言，“zh”代表中文，“en”代表英文。默认值从设置中的“语言和地区”获取。 |
@@ -728,6 +730,7 @@ on(type: 'locationChange', request: LocationRequest | ContinuousLocationRequest,
 |801 | Capability not supported. Failed to call ${geoLocationManager.on('locationChange')} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                           |
 |3301100 | The location switch is off.                                                 |
+|3301200 | Failed to obtain the geographical location. <br/> 适用版本：9-17 |
 
 **示例**
 
@@ -777,8 +780,6 @@ onLocationChange(request: LocationRequest | ContinuousLocationRequest, callback:
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
 **系统能力**：SystemCapability.Location.Location.Core
-
-**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -861,10 +862,12 @@ off(type: 'locationChange', callback?: Callback&lt;Location&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.  从API 26.0.0开始无需申请权限，不涉及此错误码。|
+|201 | Permission verification failed. The application does not have the permission required to call the API.  <br/> 适用版本：9-24|
 |401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
 |801 | Capability not supported. Failed to call ${geoLocationManager.off('locationChange')} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                           |
+|3301100 | The location switch is off. <br/> 适用版本：9-17                                                |
+|3301200 | Failed to obtain the geographical location. <br/> 适用版本：9-17 |
 
 **示例**
 
@@ -901,8 +904,6 @@ offLocationChange(callback?: Callback\<Location\>): void
 **起始版本：** 26.0.0
 
 **系统能力**：SystemCapability.Location.Location.Core
-
-**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1159,11 +1160,12 @@ on(type: 'cachedGnssLocationsChange', request: CachedGnssLocationsRequest, callb
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|201 | Permission verification failed. The application does not have the permission required to call the API.                    |
 |401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
 |801 | Capability not supported. Failed to call ${geoLocationManager.on('cachedGnssLocationsChange')} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                           |
 |3301100 | The location switch is off.                                                 |
+|3301200 | Failed to obtain the geographical location. <br/> 适用版本：9-17 |
 
 **示例**
 
@@ -1215,6 +1217,7 @@ off(type: 'cachedGnssLocationsChange', callback?: Callback&lt;Array&lt;Location&
 |801 | Capability not supported. Failed to call ${geoLocationManager.off('cachedGnssLocationsChange')} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                           |
 |3301100 | The location switch is off.                                                 |
+|3301200 | Failed to obtain the geographical location. <br/> 适用版本：9-17 |
 
 **示例**
 
@@ -1490,7 +1493,7 @@ on(type: 'gnssFenceStatusChange', request: GeofenceRequest, want: WantAgent): vo
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|201 | Permission verification failed. The application does not have the permission required to call the API. <br/> 适用版本：9-24              |
 |401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
 |801 | Capability not supported. Failed to call ${geoLocationManager.on('gnssFenceStatusChange')} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                           |
@@ -1716,7 +1719,7 @@ getCurrentLocation(request: CurrentLocationRequest | SingleLocationRequest, call
 |801 | Capability not supported. Failed to call ${geoLocationManager.getCurrentLocation} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                           |
 |3301100 | The location switch is off.                                                 |
-|3301200 | Failed to obtain the geographical location.  |
+|3301200 | Failed to obtain the geographical location.   |
 
 **示例**
 
@@ -2745,6 +2748,7 @@ GNSS地理围栏功能依赖GNSS定位芯片（仅部分型号支持），如果
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
+|201 | Permission verification failed. The application does not have the permission required to call the API. <br/> 适用版本：12-24              |
 |401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
 |801 | Capability not supported. Failed to call ${geoLocationManager.removeGnssGeofence} due to limited device capabilities.          |
 |3301000 | The location service is unavailable. |
@@ -3212,7 +3216,7 @@ removeBeaconFence(beaconFence?: BeaconFence): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.  从26.0.0开始无需申请权限，不涉及此错误码。 |
+|201 | Permission verification failed. The application does not have the permission required to call the API.  <br/> 适用版本：20-24 |
 |801 | Capability not supported. Failed to call ${geoLocationManager.removeBeaconFence} due to limited device capabilities.          |
 |3501602 | Failed to delete the fence due to incorrect beacon fence information. |
 
