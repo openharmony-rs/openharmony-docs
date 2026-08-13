@@ -308,7 +308,7 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function getDeviceInfo(): Promise<void> {
-  // 假设已通过 openResource 打开了 resourceId
+  // 假设已通过openResource打开resourceId
   const testResourceId = JSON.stringify({
     providerName: 'testProviderName',
     bundleName: 'com.example.cryptoapplication',
@@ -403,20 +403,20 @@ static napi_value GetProperty(napi_env env, napi_callback_info info)
         }
         
         /* 5.从输出参数集中提取结果
-         * 输出参数集由函数内部分配，查询到的属性数据放在 OH_HUKS_EXT_CRYPTO_TAG_EXTRA_DATA TAG 中。
-         * 下面展示如何遍历返回的 params 并安全提取返回的属性字符串（示例）。
+         * 输出参数集由函数内部分配，查询到的属性数据放在OH_HUKS_EXT_CRYPTO_TAG_EXTRA_DATA TAG中。
+         * 下面展示如何遍历返回的params并安全提取返回的属性字符串（示例）。
          */
         if (paramSetOut != nullptr && paramSetOut->paramsCnt > 0) {
             for (uint32_t i = 0; i < paramSetOut->paramsCnt; i++) {
                 OH_Huks_ExternalCryptoParam *param = &paramSetOut->params[i];
-                /* 返回数据约定：GetProperty 的结果放在 OH_HUKS_EXT_CRYPTO_TAG_EXTRA_DATA TAG 中（示例使用 JSON 文本） */
+                /* 返回数据约定：GetProperty的结果放在OH_HUKS_EXT_CRYPTO_TAG_EXTRA_DATA TAG中（示例使用JSON文本） */
                 if (param->tag == OH_HUKS_EXT_CRYPTO_TAG_EXTRA_DATA) {
-                    /* 注意：param->blob.data 可能不是以 '\0' 结尾，需拷贝并手动添加终止符 */
+                    /* 注意：param->blob.data可能不是以'\0'结尾，需拷贝并手动添加终止符 */
                     char *outStr = (char *)malloc(param->blob.size + 1);
                     if (outStr != NULL) {
                         memcpy(outStr, param->blob.data, param->blob.size);
                         outStr[param->blob.size] = '\0';
-                        // 解析 outStr（例如使用 JSON 解析库），示例：
+                        // 解析outStr（例如使用JSON解析库），示例：
                         // parse_json(outStr);
                         free(outStr);
                     }

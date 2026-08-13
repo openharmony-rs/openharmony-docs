@@ -77,7 +77,7 @@ async function closeResource(resourceId: string): Promise<void> {
 
 async function extensionKeyGeneration(): Promise<void> {
   try {
-    // 1. 获取 resourceId
+    // 1. 获取resourceId
     const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
       {
         tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME,
@@ -93,7 +93,7 @@ async function extensionKeyGeneration(): Promise<void> {
       },
     ];
     const resourceId: string = await huksExternalCrypto.getResourceId(providerName, extProperties);
-    const keyAlias = resourceId;  // keyAlias 即为 resourceId
+    const keyAlias = resourceId;  // keyAlias即为resourceId
 
     // 2. 构造密钥参数
     const properties: Array<huks.HuksParam> = [
@@ -187,7 +187,7 @@ async function closeResource(resourceId: string): Promise<void> {
 
 async function extensionKeyImport(): Promise<void> {
   try {
-    // 1. 获取 resourceId
+    // 1. 获取resourceId
     const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
       {
         tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME,
@@ -302,7 +302,7 @@ async function closeResource(resourceId: string): Promise<void> {
 
 async function extensionKeyExport(): Promise<Uint8Array> {
   try {
-    // 1. 获取 resourceId
+    // 1. 获取resourceId
     const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
       {
         tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME,
@@ -318,7 +318,7 @@ async function extensionKeyExport(): Promise<Uint8Array> {
       },
     ];
     const resourceId: string = await huksExternalCrypto.getResourceId(providerName, extProperties);
-    const keyAlias = resourceId;  // keyAlias 即为 resourceId
+    const keyAlias = resourceId;  // keyAlias即为resourceId
 
     // 2. 打开资源
     await openResource(resourceId, []);
