@@ -35,12 +35,12 @@
 | 名称 | 描述 |
 | -- | -- |
 | [OH_AudioManager_GetAccessoryManager](#oh_audiomanager_getaccessorymanager) | 获取音频配件管理器实例。 |
-| [OH_AudioAccessoryManager_CreateInput](#oh_audioaccessorymanager_createinput) | 创建音频配件实例并注册其能力。 |
+| [OH_AudioAccessoryManager_CreateInput](#oh_audioaccessorymanager_createinput) | 创建音频配件实例，并设置其支持的音频流能力。 |
 | [OH_AudioAccessoryManager_SetAssociatedMacAddresses](#oh_audioaccessorymanager_setassociatedmacaddresses) | 设置与主音频配件组合使用的副配件MAC地址列表。 |
 | [OH_AudioAccessoryManager_RegisterNoiseReductionCapability](#oh_audioaccessorymanager_registernoisereductioncapability) | 注册音频配件的降噪能力。 |
 | [OH_AudioAccessoryManager_SetNoiseReductionMode](#oh_audioaccessorymanager_setnoisereductionmode) | 设置音频配件的降噪模式。 |
 | [OH_AudioAccessoryManager_Connected](#oh_audioaccessorymanager_connected) | 将音频配件连接到音频系统。 |
-| [OH_AudioAccessoryManager_Disconnected](#oh_audioaccessorymanager_disconnected) | 将音频配件从音频系统断开连接。 |
+| [OH_AudioAccessoryManager_Disconnected](#oh_audioaccessorymanager_disconnected) | 断开音频配件连接。 |
 | [OH_AudioAccessoryManager_Destroy](#oh_audioaccessorymanager_destroy) | 销毁音频配件实例。 |
 
 ## 函数指针说明
@@ -106,7 +106,7 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_CreateInput(OH_AudioAccessoryMana
 
 **描述**
 
-创建音频配件实例并注册其能力。
+创建音频配件实例，并设置其支持的音频流能力。
 
 此函数仅用于创建音频配件实例，不会创建任何输入流。函数执行成功时，系统通过outOwnedAccessory指针返回创建好的OH_AudioAccessory句柄。当应用请求从该音频配件采集音频时，系统会触发openInputStream回调函数。在一个音频配件的生命周期内，输入流可能被创建和释放多次。
 
@@ -143,7 +143,7 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_SetAssociatedMacAddresses(OH_Audi
 此函数适用于多配件组合场景（如二合一、四合一），支持动态管理配件组合：
 
 - 初始化：配件创建后，调用此接口设置初始副配件列表。
-- 动态更新：副配件替换或断开连接时，调用此接口覆盖旧的MAC列表
+- 动态更新：副配件替换或断开连接时，调用此接口覆盖旧的MAC列表。
 - 线程安全：录音期间可安全调用。
 - 限制：此接口仅用于更新副配件MAC地址列表，不用于更新主配件MAC地址。主配件断开连接或主配件MAC地址变化时，应先断开并销毁原有配件句柄，再使用新的主配件信息重新创建配件实例。
 
@@ -155,7 +155,7 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_SetAssociatedMacAddresses(OH_Audi
 | -- | -- |
 | OH_AudioAccessoryManager *manager | 指向通过OH_AudioManager_GetAccessoryManager获取的音频配件管理器实例。 |
 | OH_AudioAccessory *accessory | 指向主配件句柄的指针。 |
-| const char **macAddresses | 副配件MAC地址数组。<br>**当count为0时可以为空**，表示清除副配件MAC列表（例如所有副配件断开连接时）。<br>每个元素必须符合以下规则：<br>- 必须是以冒号分隔的十六进制表示的NUL终止ASCII字符串，例如"00:11:22:33:44:55"。<br>  接受大写和小写十六进制数字（A-F / a-f）。<br>- 必须为非空、非零长度字符串。<br>- 同一数组中的重复地址将被忽略，仅每个唯一地址的首次出现生效。 |
+| const char **macAddresses | 副配件MAC地址数组。<br>**当count为0时可以为空**，表示清除副配件MAC列表（例如所有副配件断开连接时）。<br>每个元素需符合以下规则：<br>- 格式为以冒号分隔的十六进制表示的NUL终止ASCII字符串，例如"00:11:22:33:44:55"。<br>  接受大写和小写十六进制数字（A-F / a-f）。<br>- 需为非空、非零长度字符串。<br>- 同一数组中的重复地址将被忽略，仅每个唯一地址的首次出现生效。 |
 | uint32_t count | MAC地址数组中的元素数量。 |
 
 **返回值**
@@ -211,7 +211,7 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_SetNoiseReductionMode(OH_AudioAcc
 | -- | -- |
 | OH_AudioAccessoryManager *manager | 指向通过OH_AudioManager_GetAccessoryManager获取的音频配件管理器实例。 |
 | OH_AudioAccessory *accessory | 指向通过OH_AudioAccessoryManager_CreateInput获取的音频配件实例。 |
-| [OH_AudioNoiseReductionMode](capi-native-audio-common-h.md#oh_audionoisereductionmode) mode | 要设置的降噪模式。必须是通过RegisterNoiseReductionCapability注册的模式之一。 |
+| [OH_AudioNoiseReductionMode](capi-native-audio-common-h.md#oh_audionoisereductionmode) mode | 要设置的降噪模式。应为通过RegisterNoiseReductionCapability注册的模式之一。 |
 
 **返回值**
 
@@ -229,9 +229,9 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_Connected(OH_AudioAccessoryManage
 
 将音频配件连接到音频系统。
 
-调用此函数前，必须通过OH_AudioManager_GetAccessoryManager获取的音频配件管理器实例，并通过OH_AudioAccessoryManager_CreateInput创建accessory实例。
+调用此函数前，需通过OH_AudioManager_GetAccessoryManager获取的音频配件管理器实例，并通过OH_AudioAccessoryManager_CreateInput创建accessory实例。
 
-**建议：** 建议音频配件管理程序优先接入智慧生活应用，为用户提供设备发现与连接体验的一致性；若以独立音频配件管理应用方式，需要申请ACL权限ohos.permission.MANAGE_AUDIO_ACCESSORY
+**建议：** 建议音频配件管理程序优先接入智慧生活应用，为用户提供设备发现与连接体验的一致性；若以独立音频配件管理应用方式，需要申请ACL权限ohos.permission.MANAGE_AUDIO_ACCESSORY。
 
 **需要权限：** ohos.permission.MANAGE_AUDIO_ACCESSORY
 
@@ -258,7 +258,7 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_Disconnected(OH_AudioAccessoryMan
 
 **描述**
 
-将音频配件从音频系统断开连接。
+断开音频配件连接。
 
 **需要权限：** ohos.permission.MANAGE_AUDIO_ACCESSORY
 
@@ -287,7 +287,7 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_Destroy(OH_AudioAccessoryManager 
 
 销毁音频配件实例。
 
-销毁前必须先断开配件连接。
+销毁前需先断开配件连接。
 
 **起始版本：** 26.0.0
 
