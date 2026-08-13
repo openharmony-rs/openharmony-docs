@@ -126,7 +126,6 @@ async function isNeedGetPermissionFromUser(): Promise<boolean> {
 @Component
 struct Index {
   // ...
-
   build() {
     Row() {
       Column() {
