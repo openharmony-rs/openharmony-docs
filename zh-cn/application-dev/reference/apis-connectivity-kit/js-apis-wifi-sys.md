@@ -29,7 +29,7 @@ enableWifi(): boolean
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_CONNECTION，仅系统应用可用。，仅系统应用可用。
+**需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_CONNECTION，仅系统应用可用。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -155,7 +155,7 @@ WLAN配置信息。
 | randomMacType | number | 是 | 否 | 随机MAC类型。 <br> **系统接口：** 此接口为系统接口。 |
 | randomMacAddr | string | 是 | 否 | 随机MAC地址。 <br> **系统接口：** 此接口为系统接口。 |
 | ipType | [IpType](#iptype7) | 是 | 否 | IP地址类型。 <br> **系统接口：** 此接口为系统接口。 |
-| family<sup>20+</sup> | number | 否 | 是 | ip协议版本。 <br> **系统接口：** 此接口为系统接口。 |
+| family<sup>20+</sup> | number | 否 | 是 | IP协议版本。 <br> **系统接口：** 此接口为系统接口。 |
 | staticIp | [IpConfig](#ipconfig7) | 否 | 是 | 静态IPv4配置信息。 <br> **系统接口：** 此接口为系统接口。 |
 | staticIpv6<sup>20+</sup> | [Ipv6Config](#ipv6config20) | 否 | 是 | 静态IPv6配置信息。 <br> **系统接口：** 此接口为系统接口。 |
 
@@ -916,7 +916,7 @@ try {
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | 是 | 否 | 热点的SSID，编码格式为UTF-8，长度范围1-32字节。 |
 | securityType | [WifiSecurityType](js-apis-wifi.md#wifisecuritytypedeprecated) | 是 | 否 | 加密类型。 |
-| band | number | 是 | 否 | 热点的频段。1: 2.4G, 2: 5G, 3: 双模频段 |
+| band | number | 是 | 否 | 热点的频段。1: 2.4G，2: 5G，3: 双模频段。 |
 | preSharedKey | string | 是 | 否 | 热点的密钥。长度范围8-63个字符。 |
 | maxConn | number | 是 | 否 | 最大设备连接数。 |
 

@@ -390,7 +390,7 @@ getSupportedFeatures(): number
 | 0x0002 | 5&nbsp;GHz带宽特性。 |
 | 0x0004 | GAS/ANQP特性。 |
 | 0x0008 | WiFi-Direct特性。 |
-| 0x0010 | SoftAP特性。 |
+| 0x0010 | Soft AP特性。 |
 | 0x0040 | Wi-Fi&nbsp;AWare组网特性。 |
 | 0x8000 | AP&nbsp;STA共存特性。 |
 | 0x8000000 | WPA3-Personal&nbsp;SAE特性。 |
@@ -863,7 +863,7 @@ try {
 
 startWifiDetection(): void
 
-发起WiFi网络探测，用于检测当前Wi-Fi连接的网络连通性（如是否可访问互联网、是否存在Portal认证页面等），帮助系统判断当前网络是否可用。适用于网络连接后需要验证网络质量的场景。
+发起Wi-Fi网络探测，用于检测当前Wi-Fi连接的网络连通性（如是否可访问互联网、是否存在Portal认证页面等），帮助系统判断当前网络是否可用。适用于网络连接后需要验证网络质量的场景。
 
 **系统接口：** 此接口为系统接口。
 
