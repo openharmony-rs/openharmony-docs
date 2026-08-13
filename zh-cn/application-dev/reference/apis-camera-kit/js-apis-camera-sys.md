@@ -1027,7 +1027,7 @@ enableDepthFusion(enabled: boolean): void
 
 启用深度融合功能。
 
-进行设置之前，需要先检查设备是否支持深度融合，可使用方法[isDepthFusionSupported](#isdepthfusionsupported14)。
+进行设置之前先使用[isDepthFusionSupported](#isdepthfusionsupported14)检查设备是否支持深度融合。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1197,7 +1197,7 @@ enableSketch(enabled: boolean): void
 
 使能画中画。
 
-进行设置之前，需要先检查设备是否支持画中画，可使用方法[isSketchSupported](#issketchsupported11)。
+进行设置之前先使用方法[isSketchSupported](#issketchsupported11)检查设备是否支持画中画。
 
 **系统接口：** 此接口为系统接口。
 

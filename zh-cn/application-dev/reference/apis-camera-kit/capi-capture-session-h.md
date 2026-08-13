@@ -1351,7 +1351,7 @@ Camera_ErrorCode OH_CaptureSession_SetPhysicalAperture(const Camera_CaptureSessi
 | 参数项 | 描述 |
 | -- | -- |
 | const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例。 |
-| double aperture | 待设置的光圈值。取值需在[OH_CaptureSession_GetSupportedPhysicalApertures](capi-capture-session-h.md#oh_capturesession_getsupportedphysicalapertures)返回的范围内。 |
+| double aperture | 待设置的光圈值。 |
 
 **返回：**
 
@@ -1405,7 +1405,7 @@ Camera_ErrorCode OH_CaptureSession_SetExposureBias(Camera_CaptureSession* sessio
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例。 |
-| float exposureBias | 要设置的曝光补偿。取值范围需通过[OH_CaptureSession_GetExposureBiasRange](capi-capture-session-h.md#oh_capturesession_getexposurebiasrange)获取。 |
+| float exposureBias | 要设置的曝光补偿。 |
 
 **返回：**
 
@@ -1779,7 +1779,7 @@ Camera_ErrorCode OH_CaptureSession_SetZoomRatio(Camera_CaptureSession* session, 
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例。 |
-| float zoom | 要设置的目标缩放比。取值范围需通过[OH_CaptureSession_GetZoomRatioRange](capi-capture-session-h.md#oh_capturesession_getzoomratiorange)获取。<br> 设置可变焦距比到底层生效需要一定时间，获取正确设置的可变焦距比需要等待1~2帧的时间。 |
+| float zoom | 要设置的目标缩放比。<br> 设置可变焦距比到底层生效需要一定时间，获取正确设置的可变焦距比需要等待1~2帧的时间。 |
 
 **返回：**
 
@@ -3245,8 +3245,8 @@ Camera_ErrorCode OH_CaptureSession_SetOISModeCustom(const Camera_CaptureSession*
 | 参数项 | 描述 |
 | -- | -- |
 | const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
-| float pitchBias | 俯仰轴偏移值。取值范围需通过[OH_CaptureSession_GetSupportedOISBiasRange](capi-capture-session-h.md#oh_capturesession_getsupportedoisbiasrange)获取。 |
-| float yawBias | 偏航轴偏移值。取值范围需通过[OH_CaptureSession_GetSupportedOISBiasRange](capi-capture-session-h.md#oh_capturesession_getsupportedoisbiasrange)获取。 |
+| float pitchBias | 俯仰轴偏移值。 |
+| float yawBias | 偏航轴偏移值。 |
 
 **返回：**
 
