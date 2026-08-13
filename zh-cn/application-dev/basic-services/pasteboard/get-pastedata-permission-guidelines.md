@@ -184,7 +184,9 @@ struct Index {
 
 ArkTS-Sta示例：
 
-<!-- @[pasteboard_permission](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Pasteboard_Sta/Pasteboard_Static_Sample/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @[pasteboard_permission](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Pasteboard_Sta/Pasteboard_Static_Sample/entry/src/main/ets/pages/Index.ets) -->
+
+<div class="same-source-code">
 
 ``` TypeScript
 import abilityAccessCtrl, { Context, PermissionRequestResult, Permissions } from '@ohos.abilityAccessCtrl'
@@ -203,7 +205,7 @@ const patterns: pasteboard.Pattern[] = [pasteboard.Pattern.URL, pasteboard.Patte
 const context = EntryAbility.getContext();
 let options: dataPreferences.Options = { name: 'myStore' };
 let mdataPreferences: dataPreferences.Preferences = dataPreferences.getPreferencesSync(context, options);
-
+// ...
 async function isNeedGetPermissionFromUser(): Promise<boolean> {
   try {
     let hasData: boolean = await systemPasteboard.hasData();
@@ -253,6 +255,7 @@ async function isNeedGetPermissionFromUser(): Promise<boolean> {
 @Component
 struct Index {
   // ...
+
   async handlePaste(): Promise<void> {
     if (!await isNeedGetPermissionFromUser()) {
       hilog.info(0xFF00, '[Sample_pasteboard]', 'No neded to bring up the permission pop-up window');
@@ -313,3 +316,7 @@ struct Index {
   }
 }
 ```
+
+<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Pasteboard_Sta/Pasteboard_Static_Sample/entry/src/main/ets/pages/Index.ets?same_code_link_text=pasteboard_permission" target="_blank" rel="nofollow">Index.ets</a></p>
+
+</div>
