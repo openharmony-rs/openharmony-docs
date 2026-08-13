@@ -66,6 +66,7 @@ dial\(phoneNumber: string, options: DialOptions, callback: AsyncCallback\<boolea
 > **说明：**
 >
 > 从API version 6 开始支持，从API version 9 开始废弃。替代接口能力仅对系统应用开放。
+
 **需要权限**：ohos.permission.PLACE_CALL（该权限仅系统应用可申请）
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
