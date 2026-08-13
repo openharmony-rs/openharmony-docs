@@ -480,7 +480,7 @@ dlpPermission.off('uninstallDLPSandbox', (info: dlpPermission.DLPSandboxState) =
 
 addDLPLinkFile(linkFileName: string): Promise&lt;void&gt;
 
-在FUSE文件系统(Filesystem in Userspace)添加link文件。FUSE是一种用户空间文件系统框架，允许在用户空间实现自定义文件系统逻辑。link文件是FUSE中映射到DLP密文的虚拟文件，对该文件的读写操作会同步到实际DLP文件。使用Promise异步回调。
+在FUSE文件系统（Filesystem in Userspace）添加link文件。FUSE是一种用户空间文件系统框架，允许在用户空间实现自定义文件系统逻辑。link文件是FUSE中映射到DLP密文的虚拟文件，对该文件的读写操作会同步到实际DLP文件。使用Promise异步回调。
 
 在调用addDLPLinkFile后需要调用[deleteDLPLinkFile](#deletedlplinkfile)移除DLP link文件。
 
@@ -1354,7 +1354,7 @@ closeDLPFile(): Promise&lt;void&gt;
 
 关闭DLPFile，释放对象。使用Promise异步回调。
 
-调用[openDLPFile](#dlppermissionopendlpfile11)成功后返回DLPFile对象，必须在使用完毕后调用closeDLPFile()释放资源。
+调用[generateDLPFile](#dlppermissiongeneratedlpfile)/[openDLPFile](#dlppermissionopendlpfile11)成功后返回DLPFile对象，必须在使用完毕后调用closeDLPFile()释放资源。
 
 文件所有者决定关闭DLP文件时使用此接口。
 
@@ -1577,7 +1577,7 @@ ExampleFunction();
 
 generateDLPFile(plaintextFd: number, ciphertextFd: number, property: DLPProperty, callback: AsyncCallback&lt;DLPFile&gt;): void
 
-DLP管理应用调用该接口，将明文文件加密生成权限受控文件，仅在授权列表内的用户可以打开，授权又分为完全控制权限和只读权限。获取DLPFile管理对象，使用callback异步回调。使用完DLPFile对象后，应调用closeDLPFile释放对象，避免资源泄露。
+DLP管理应用调用该接口，将明文文件加密生成权限受控文件，仅在授权列表内的用户可以打开，授权又分为完全控制权限和只读权限。获取DLPFile管理对象，使用callback异步回调。使用完DLPFile对象后，应调用[closeDLPFile](#closedlpfile)释放对象，避免资源泄露。
 
 调用generateDLPFile()成功后返回DLPFile对象，必须在使用完毕后调用closeDLPFile()释放资源。
 
@@ -1811,7 +1811,7 @@ dlpPermission.openDLPFile(file, appId, async (err, res) => { // 打开DLP文件�
 | -------- | -------- | -------- | -------- | -------- |
 | appIndex | number | 否 | 否 | 表示DLP沙箱应用索引。 |
 | tokenID | number | 否 | 否 | 表示DLP沙箱应用的tokenID。 |
-| bindAppIndex<sup>24+</sup> | number | 否 | 是 | 表示被绑定的DLP沙箱应用的应用索引。默认不返回，仅当沙箱应用是预览时返回。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| bindAppIndex<sup>24+</sup> | number | 否 | 是 | 表示被绑定的DLP沙箱应用的应用索引。默认不返回，仅当沙箱应用是文件预览（Preview）时返回。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## DLPSandboxState
 
