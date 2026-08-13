@@ -9104,3 +9104,17 @@ Allows a system application to connect to near-field devices and send/receive da
 **Supported devices**: PCs/2-in-1 devices | cars | phones | wearables | tablets | TVs
 
 **Valid since**: 26.1.0
+
+## ohos.permission.SET_WORK_SCHEDULER_PROPERTY
+
+Allows a system application to modify the delayed task parameters of specified applications.
+    
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices | cars | phones | tablets | TVs | wearables
+
+**Valid since**: 26.1.0
