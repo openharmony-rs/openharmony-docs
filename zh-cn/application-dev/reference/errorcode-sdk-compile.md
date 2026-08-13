@@ -114,7 +114,7 @@ The {apiName} API is supported since SDK version {sinceVersion}. However, the cu
 
 **处理步骤**
 
-选择一下任一方案消除兼容性风险：
+选择以下任一方案消除兼容性风险：
 
 方案一：使用apiAvailable接口判断当前设备是否支持该API，在支持时调用，不支持时走降级逻辑。
 参考API文档说明：[apiAvailable](./apis-basic-services-kit/js-apis-device-info.md#deviceinfoapiavailable)。
@@ -139,7 +139,7 @@ The {apiName} API is available since SDK version {sinceVersion}. However, the cu
 
 **处理步骤**
 
-选择一下任一方案消除兼容性风险：
+选择以下任一方案消除兼容性风险：
 
 方案一：使用apiAvailable接口判断当前设备是否支持该API，在支持时调用，不支持时走降级逻辑。
 参考API文档说明：[apiAvailable](./apis-basic-services-kit/js-apis-device-info.md#deviceinfoapiavailable)。
@@ -170,7 +170,7 @@ apiAvailable接口参数格式不符合规范，包括：参数包含非法字�
 
 **可能原因**
 
-1、参数中包含了除数字和点意外的非法字符，例如：`apiAvailable("12a3")`、`apiAvailable("12#3")`。
+1、参数中包含了除数字和点以外的非法字符，例如：`apiAvailable("12a3")`、`apiAvailable("12#3")`。
 
 2、整数版本号不在1~25范围内，或M.S.F格式中M小于26，例如：`apiAvailable(0)`、`apiAvailable(26)`、`apiAvailable("25.0.1")`。
 
@@ -198,7 +198,7 @@ apiAvailable接口参数格式不符合规范，包括：参数包含非法字�
 
 4、参考API文档说明：[apiAvailable](./apis-basic-services-kit/js-apis-device-info.md#deviceinfoapiavailable)。
 
-## 11706014 无线版本号
+## 11706014 无效版本号
 
 **错误信息**
 
@@ -222,7 +222,7 @@ Invalid {osName} version.
 
 1、检查传入的version参数格式是否符合上述两种格式之一。
 
-2、确认使用的SDK版本是否在sdApiVersionMap.json文件的列表中。
+2、确认使用的SDK版本是否在sdkApiVersionMap.json文件的列表中。
 
 sdkApiVersionMap.json文件位于DevEco Studio安装目录下sdk/default/hms/ets/build-tools/ts-checker-hooks/目录中。
 
