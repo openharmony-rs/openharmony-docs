@@ -42,16 +42,16 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { util } from '@kit.ArkTS';
 
-// 字符串 → UTF-8 字节流
+// 字符串 → UTF-8字节流
 function stringToUint8Array(str: string): Uint8Array {
     return new util.TextEncoder().encodeInto(str);
 }
 
-// 注册 Provider（仅注册 CryptoExtensionAbility，不注册自定义 PIN 弹窗）
+// 注册Provider（仅注册CryptoExtensionAbility，不注册自定义PIN弹窗）
 async function registerProvider(): Promise<void> {
-  // providerName 建议包含厂商+产品信息以保证全局唯一
+  // providerName建议包含厂商+产品信息以保证全局唯一
   const providerName = 'VendorA_ProductX';
-  // abilityName 须与 module.json5 中 extensionAbilities.name 保持一致
+  // abilityName须与module.json5中extensionAbilities.name保持一致
   const abilityName = 'CryptoExtensionAbility1';
 
   const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
@@ -122,9 +122,9 @@ struct OH_Huks_Blob StringToBlob(const std::string &str)
 ```c++
 static napi_value RegisterProvider(napi_env env, napi_callback_info info)
 {
-    // providerName 建议包含厂商+产品信息以保证全局唯一
+    // providerName建议包含厂商+产品信息以保证全局唯一
     auto providerName = StringToBlob("VendorA_ProductX");
-    // abilityName 须与 module.json5 中 extensionAbilities.name 保持一致
+    // abilityName须与module.json5中extensionAbilities.name保持一致
     auto abilityName = StringToBlob("CryptoExtensionAbility1");
 
     struct OH_Huks_ExternalCryptoParam params[] = {
@@ -166,23 +166,23 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError, deviceInfo } from '@kit.BasicServicesKit';
 import { util } from '@kit.ArkTS';
 
-// 字符串 → UTF-8 字节流
+// 字符串 → UTF-8字节流
 function stringToUint8Array(str: string): Uint8Array {
   return new util.TextEncoder().encodeInto(str);
 }
 
-// 自定义 PIN 弹窗 UIExtensionAbility 列表
+// 自定义PIN弹窗UIExtensionAbility列表
 const abilityInfoList: Array<{ abilityName: string; index: string }> = [
   { abilityName: 'UiAbility1', index: '' },
   { abilityName: 'UiAbility2', index: 'string2' },
 ];
 
-// 注册 Provider 并注册自定义 PIN 弹窗 UIExtensionAbility
+// 注册Provider并注册自定义PIN弹窗UIExtensionAbility
 async function registerProvider(): Promise<void> {
   try {
-    /* 1.构造注册参数 ability name */
+    /* 1.构造注册参数ability name */
     const providerName = "testProvider";
-    /* 2.构造 ability info */
+    /* 2.构造ability info */
     const abilityInfo = '[' +
        '{"abilityName":"UiAbility1","index":""},' +
        '{"abilityName":"UiAbility2","index":"string2"}]';
@@ -258,7 +258,7 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { util } from '@kit.ArkTS';
 
-// 字符串 → UTF-8 字节流
+// 字符串 → UTF-8字节流
 function stringToUint8Array(str: string): Uint8Array {
   return new util.TextEncoder().encodeInto(str);
 }
@@ -297,7 +297,7 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { util } from '@kit.ArkTS';
 
-// 字符串 → UTF-8 字节流
+// 字符串 → UTF-8字节流
 function stringToUint8Array(str: string): Uint8Array {
   return new util.TextEncoder().encodeInto(str);
 }
@@ -307,7 +307,7 @@ async function unregisterProvider(): Promise<void> {
   // providerName 须与注册时使用的名称一致
   const providerName = 'testProvider';
 
-  // 批量注销：extProperties 留空或不指定 HUKS_EXT_CRYPTO_TAG_ABILITY_NAME
+  // 批量注销：extProperties留空或不指定HUKS_EXT_CRYPTO_TAG_ABILITY_NAME
   const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [];
 
   try {
@@ -401,7 +401,7 @@ static napi_value UnregisterAllAbilities(napi_env env, napi_callback_info info)
 {
     auto providerName = StringToBlob("VendorA_ProductX");
 
-    // 批量注销：extProperties 留空
+    // 批量注销：extProperties留空
     struct OH_Huks_ExternalCryptoParam params[] = {};
 
     struct OH_Huks_ExternalCryptoParamSet *providerParamSet = nullptr;

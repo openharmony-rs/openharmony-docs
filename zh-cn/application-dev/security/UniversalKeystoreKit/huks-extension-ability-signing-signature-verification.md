@@ -198,11 +198,11 @@ async function signAndVerify() {
   try {
     // 签名流程
     await huksExternalCrypto.openResource(keyAlias);
-    // ... 进行 PIN 认证 ...
+    // 进行PIN认证
     await sign(keyAlias);
     await huksExternalCrypto.closeResource(keyAlias);
 
-    // 验签流程（不需要 PIN 认证）
+    // 验签流程（不需要PIN认证）
     await huksExternalCrypto.openResource(keyAlias);
     await verify(keyAlias);
     await huksExternalCrypto.closeResource(keyAlias);
