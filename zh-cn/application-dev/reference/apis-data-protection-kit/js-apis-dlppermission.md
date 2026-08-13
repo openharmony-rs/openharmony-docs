@@ -103,14 +103,14 @@ isDLPFile(fd: number): Promise&lt;boolean&gt;
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { fileIo } from '@kit.CoreFileKit';
 
-let uri = "file://docs/storage/Users/currentUser/Documents/test.txt.dlp";
+let uri = 'file://docs/storage/Users/currentUser/Documents/test.txt.dlp';
 let file: number | undefined = undefined;
 file = fileIo.openSync(uri).fd;
 dlpPermission.isDLPFile(file).then((isDLPFile: boolean) => {
     console.info(JSON.stringify(isDLPFile));
-}).catch((error: BusinessError)=> {
-    console.error(error.message);
-}).finally(()=> {
+}).catch((error: BusinessError) => {
+    console.error(`Failed to check if file is DLP file. Code: ${error.code}, message: ${error.message}`);
+}).finally(() => {
     if (file !== undefined) {
         fileIo.closeSync(file);
     }
@@ -201,8 +201,8 @@ dlpPermission.isInSandbox().then(async (inSandbox) => { // 是否在沙箱内。
     dlpPermission.getDLPPermissionInfo().then((permissionInfo: dlpPermission.DLPPermissionInfo) => {
       console.info('permissionInfo', JSON.stringify(permissionInfo));
     }).catch((error: BusinessError)=> {
-      console.error(JSON.stringify(error));
-    })
+      console.error(`Failed to get DLP permission info. Code: ${error.code}, message: ${error.message}`);
+    });
   }
 });
 ```
@@ -472,7 +472,7 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 
 dlpPermission.isInSandbox((err, isInSandbox) => {
   if (err) {
-    console.error('isInSandbox error', err.code, err.message);
+    console.error(`Failed to check sandbox status. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('isInSandbox：', JSON.stringify(isInSandbox));
   }
@@ -814,7 +814,7 @@ getRetentionSandboxList(bundleName: string, callback: AsyncCallback&lt;Array&lt;
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
 
-dlpPermission.getRetentionSandboxList("bundleName", (err, sandboxList) => {
+dlpPermission.getRetentionSandboxList('bundleName', (err, sandboxList) => {
   if (err) {
     console.error(`Failed to get retention sandbox list. Code: ${err.code}, message: ${err.message}`);
   } else {
@@ -829,7 +829,7 @@ getRetentionSandboxList(callback: AsyncCallback&lt;Array&lt;RetentionSandboxInfo
 
 查询当前应用的保留沙箱信息列表。使用callback异步回调。
 
-该接口用于查询指定应用的保留沙箱列表，以便查看或管理当前处于保留状态的沙箱环境。仅支持在非DLP沙箱应用中调用。
+该接口用于查询当前应用的保留沙箱列表，以便查看或管理当前处于保留状态的沙箱环境。仅支持在非DLP沙箱应用中调用。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -857,7 +857,7 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 
 dlpPermission.getRetentionSandboxList((err, retentionSandboxList) => {
   if (err) {
-    console.error('getRetentionSandboxList error,', err.code, err.message);
+    console.error(`Failed to get retention sandbox list. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('retentionSandboxList', JSON.stringify(retentionSandboxList));
   }
@@ -1159,7 +1159,7 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 dlpPermission.isDLPFeatureProvided().then((isFeatureProvided) => { // 查询当前系统是否提供加密保护特性。
   console.info('isFeatureProvided', JSON.stringify(isFeatureProvided));
 }).catch((err: BusinessError) => {
-  console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错。
+  console.error(`Failed to check if DLP feature is provided. Code: ${(err as BusinessError).code}, message: ${(err as BusinessError).message}`);
 });
 ```
 
@@ -1391,7 +1391,7 @@ import { fileIo } from '@kit.CoreFileKit';
 
 let plaintextFd: number | undefined = undefined;
 let dlpFd: number | undefined = undefined;
-let plainFilePath: string = "file://docs/storage/Users/currentUser/Documents/test.txt";
+let plainFilePath: string = 'file://docs/storage/Users/currentUser/Documents/test.txt';
 let dlpFilePath: string = "file://docs/storage/Users/currentUser/Documents/test.txt.dlp";
 plaintextFd = fileIo.openSync(plainFilePath, fileIo.OpenMode.READ_ONLY).fd; // 打开明文文件。
 dlpFd = fileIo.openSync(dlpFilePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE).fd; // 打开DLP文件。
@@ -1796,7 +1796,7 @@ static unregisterPlugin(): void
   
 提供将回调从SA（System Ability）侧注销的能力。
 
-该接口可用于应用退出时注销回调释放资源，确保回调能力正确释放。
+该接口可用于应用退出时注销回调以释放资源。
 
 > **说明：**
 >
@@ -2007,7 +2007,7 @@ setControlledAppLists(appLists: Array&lt;string&gt;, userId?: number): Promise&l
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let appList: Array<string> = ["appId1", "appId2"];
+let appList: Array<string> = ['appId1', 'appId2'];
 let userId: number = 100;
 dlpPermission.setControlledAppLists(appList, userId).then(() => {
   console.info("Successfully set controlled appLists.");
