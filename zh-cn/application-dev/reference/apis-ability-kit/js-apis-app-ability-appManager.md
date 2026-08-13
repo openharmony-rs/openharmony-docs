@@ -317,12 +317,15 @@ getRunningProcessInformation(): Promise\<Array\<ProcessInformation>>
 
 > **说明：**
 >
-> - 对于API version 11之前的版本，该接口需要申请权限ohos.permission.GET_RUNNING_INFO（该权限仅系统应用可申请）。
-> - 从API version 11开始，该接口仅用于获取调用方自身的进程信息，不再需要申请权限。
+> 从API version 11开始，该接口仅用于获取调用方自身的进程信息，不再需要申请权限。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**需要权限**：
+
+API版本9-10：ohos.permission.GET_RUNNING_INFO（该权限仅系统应用可申请）
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -363,12 +366,15 @@ getRunningProcessInformation(callback: AsyncCallback\<Array\<ProcessInformation>
 
 > **说明：**
 >
-> - 对于API version 11之前的版本，该接口需要申请权限ohos.permission.GET_RUNNING_INFO（该权限仅系统应用可申请）。
-> - 从API version 11开始，该接口仅用于获取调用方自身的进程信息，不再需要申请权限。
+> 从API version 11开始，该接口仅用于获取调用方自身的进程信息，不再需要申请权限。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**需要权限**：
+
+API版本9-10：ohos.permission.GET_RUNNING_INFO（该权限仅系统应用可申请）
 
 **ArkTS-Dyn起始版本：** 9
 
