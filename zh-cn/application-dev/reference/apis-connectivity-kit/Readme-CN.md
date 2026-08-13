@@ -74,6 +74,8 @@
   - 头文件<!--connectivity-headerfile-->
     - [oh_bluetooth.h](capi-oh-bluetooth-h.md)
     - [oh_wifi.h](capi-oh-wifi-h.md)
+  - 结构体<!--connectivity-struct-->
+       - [wifi_oh_wifilinkedinfo](capi-wifi-oh-wifilinkedinfo.md)
 - 错误码<!--connectivity-arkts-errcode-->
   - [蓝牙服务子系统错误码](errorcode-bluetoothManager.md)
   - [WIFI错误码](errorcode-wifi.md)
