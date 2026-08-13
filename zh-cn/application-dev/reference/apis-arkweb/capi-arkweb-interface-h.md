@@ -75,7 +75,7 @@ ArkWeb_AnyNativeAPI* OH_ArkWeb_GetNativeAPI(ArkWeb_NativeAPIVariantKind type)
 
 **描述：**
 
-根据传入的API类型，获取对应的Native API结构体。
+根据传入的API类型，获取对应的Native API结构体。该接口可能返回空指针，开发者在使用返回值前必须进行判空处理，避免空指针解引用导致应用崩溃。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
