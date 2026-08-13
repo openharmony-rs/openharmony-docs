@@ -59,6 +59,50 @@ async function GetMainPixelmap(pictureObj : image.Picture) {
 }
 ```
 
+## setMainPixelmap
+
+setMainPixelmap(pixelmap: PixelMap): void
+
+设置Picture的主图。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**参数：**
+
+| 参数名       | 类型                | 必填 | 说明             |
+| ------------ | ------------------- | ---- | ---------------- |
+| pixelmap | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | PixelMap对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 7700204 | Parameter error. The pixelmap object is null or has been released.|
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function setMainPixelmap(picture : image.Picture, pixelmap : image.PixelMap) {
+  if (picture == null || pixelmap == null) {
+    console.error('picture or pixelmap is null');
+    return;
+  }
+  try {
+    picture.setMainPixelmap(pixelmap);
+  } catch(error) {
+    console.error(`Failed to do setMainPixelmap. error.code: ${error.code} ,error.message: ${error.message}`);
+  }
+}
+```
+
 ## getHdrComposedPixelmap<sup>13+</sup>
 
 getHdrComposedPixelmap(): Promise\<PixelMap>
@@ -231,7 +275,7 @@ getGainmapPixelmap(): PixelMap | null
 
 | 类型                      | 说明                                   |
 | ------------------------- | -------------------------------------- |
-| [PixelMap](arkts-apis-image-PixelMap.md) \| null | 返回Pixelmap对象，如果没有则返回null。 |
+| [PixelMap](arkts-apis-image-PixelMap.md) \| null | 返回PixelMap对象，如果没有则返回null。 |
 
 **示例：**
 

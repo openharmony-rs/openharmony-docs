@@ -181,7 +181,7 @@ onConnect(want: Want): rpc.RemoteObject
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [rpc.RemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject) | RemoteObject对象，用于客户端和服务端通信。 |
+| [rpc.RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject) | RemoteObject对象，用于客户端和服务端通信。 |
 
 **示例：**
 
@@ -197,7 +197,8 @@ onConnect(want: Want): rpc.RemoteObject
       super(des);
     }
 
-    onConnect(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption) {
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, options: rpc.MessageOption): boolean {
+      return true;
     }
   }
 

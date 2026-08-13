@@ -18,11 +18,14 @@ childProcessManager模块提供子进程管理能力，支持子进程创建和�
 
 ## 约束限制
 
-- 通过本模块中接口创建的子进程有如下限制：
-  - 创建的子进程不支持创建UI界面。  
-  - 创建的子进程不支持依赖Context的API调用（包括Context模块自身API及将Context实例作为入参的API）。  
-  - 创建的子进程内不支持再次创建子进程。  
+### 功能限制
+
+- 创建的子进程不支持创建UI界面。
+- 创建的子进程不支持依赖Context的API调用（包括Context模块自身API及将Context实例作为入参的API）。
+- 仅允许在主进程中创建子进程，子进程内不支持再次创建子进程。
   
+### 规格限制
+
 - 通过本模块中定义的创建子进程的接口和[native_child_process.h](capi-native-child-process-h.md)中定义的创建子进程的接口启动的子进程总数最大为512个（系统资源充足情况下），其中[startChildProcess](#childprocessmanagerstartchildprocess)接口在SELF_FORK模式下启动的子进程不计入总数内。
 
 ## 导入模块
@@ -78,9 +81,9 @@ startChildProcess(srcEntry: string, startMode: StartMode): Promise&lt;number&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-| 16000050 | Internal error. Possible causes: 1. System internal exception; 2. Resource allocation failed. |
+| 16000050 | Internal error. |
 | 16000061  | Operation not supported. |
-| 16000062  | The number of child processes exceeds the upper limit. Please reduce the number of child processes and try again. |
+| 16000062  | The number of child processes exceeds the upper limit. |
 
 **示例：**
 
@@ -148,9 +151,9 @@ startChildProcess(srcEntry: string, startMode: StartMode, callback: AsyncCallbac
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-| 16000050 | Internal error. Possible causes: 1. System internal exception; 2. Resource allocation failed. |
+| 16000050 | Internal error. |
 | 16000061  | Operation not supported. |
-| 16000062  | The number of child processes exceeds the upper limit. Please reduce the number of child processes and try again. |
+| 16000062  | The number of child processes exceeds the upper limit. |
 
 **示例：**
 
@@ -227,9 +230,9 @@ startArkChildProcess(srcEntry: string, args: ChildProcessArgs, options?: ChildPr
 | ------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 801 | Capability not supported. |
-| 16000050 | Internal error. Possible causes: 1. System internal exception; 2. Resource allocation failed. |
+| 16000050 | Internal error. |
 | 16000061  | Operation not supported. |
-| 16000062  | The number of child processes exceeds the upper limit. Please reduce the number of child processes and try again. |
+| 16000062  | The number of child processes exceeds the upper limit. <br>适用版本：13+ |
 
 **示例：**
 
@@ -345,13 +348,13 @@ startNativeChildProcess(entryPoint: string, args: ChildProcessArgs, options?: Ch
 | ------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 16000050 | Internal error. Possible causes: 1. System internal exception; 2. Resource allocation failed. |
+| 16000050 | Internal error. |
 | 16000061  | Operation not supported. |
-| 16000062  | The number of child processes exceeds the upper limit. Please reduce the number of child processes and try again. |
+| 16000062  | The number of child processes exceeds the upper limit. |
 
 **示例：**
 
-子进程部分，详见[Native子进程开发指导（C/C++）- 创建支持参数传递的Native子进程](../../application-models/capi-nativechildprocess-development-guideline.md#创建支持参数传递的native子进程)：
+子进程部分，详见[子进程开发指导（ArkTS）- 创建支持参数传递的Native子进程](../../application-models/arkts-child-process-development-guideline.md#创建支持参数传递的native子进程)：
 
 ```c++
 #include <AbilityKit/native_child_process.h>

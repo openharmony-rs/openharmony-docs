@@ -6,7 +6,7 @@
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
 
-设备状态感知框架提供设备状态感知能力，包括绝对静止和相对静止，可检测设备是否处于静止或相对静止状态，适用于需要根据设备静止状态优化应用性能、智能省电、场景识别等场景。
+设备状态感知框架提供设备状态感知能力，包括绝对静止和相对静止，适用于需要根据设备静止状态优化应用性能、智能省电、场景识别等场景。
 
 > **说明：**
 >
@@ -70,7 +70,7 @@ type ActivityType = 'still' | 'relativeStill'
 
 on(activity: ActivityType, event: ActivityEvent, reportLatencyNs: number, callback: Callback&lt;ActivityResponse&gt;): void
 
-设备状态管理，订阅设备状态变化事件。当设备满足指定状态条件时，系统会触发回调函数上报状态变化事件，用于持续监听设备状态变化事件。调用on()后，必须在不使用时调用off()取消订阅，避免多余的性能功耗开销。
+订阅设备状态变化事件。当设备满足指定状态条件时，系统会触发回调函数上报状态变化事件。调用on()后，必须在不使用时调用off()取消订阅，避免多余的性能功耗开销。
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Stationary
 
@@ -78,7 +78,7 @@ on(activity: ActivityType, event: ActivityEvent, reportLatencyNs: number, callba
 
 | 参数名                  | 类型                                               | 必填 | 说明                          |
 | -------------------- | -------------------------------------------------- | ---- | ---------------------------- |
-| activity  | [ActivityType](#activitytype)  | 是   | 设备状态能力类型。              |
+| activity  | [ActivityType](#activitytype)  | 是   | 设备状态类型。              |
 | event  | [ActivityEvent](#activityevent)  | 是   | 事件类型。              |
 | reportLatencyNs  | number  | 是   | 报告延时，单位：纳秒（ns），取值范围[1000000000, 3000000000]。超出范围时返回错误。建议根据业务场景选择合适的值，较小值可提高实时性但会增加功耗，较大值可降低功耗但会降低响应速度。              |
 | callback             | Callback<[ActivityResponse](#activityresponse)\>  | 是   | 回调函数，用于接收设备状态变化结果。    |
@@ -86,7 +86,7 @@ on(activity: ActivityType, event: ActivityEvent, reportLatencyNs: number, callba
 **示例：**
 
 ```ts
-let reportLatencyNs = 1000000000;
+let reportLatencyNs = 1000000000; // 单位：纳秒
 stationary.on('still', stationary.ActivityEvent.ENTER, reportLatencyNs, (data) => {
     console.info('data=' + JSON.stringify(data));
 });
@@ -96,7 +96,7 @@ stationary.on('still', stationary.ActivityEvent.ENTER, reportLatencyNs, (data) =
 
 once(activity: ActivityType, callback: Callback&lt;ActivityResponse&gt;): void
 
-设备状态管理，查询设备状态。仅执行一次回调，用于一次性查询当前状态。
+查询设备状态。通过callback回调返回查询结果，仅执行一次。使用callback异步回调。
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Stationary
 
@@ -104,7 +104,7 @@ once(activity: ActivityType, callback: Callback&lt;ActivityResponse&gt;): void
 
 | 参数名                  | 类型                                               | 必填 | 说明                          |
 | -------------------- | -------------------------------------------------- | ---- | ---------------------------- |
-| activity  | [ActivityType](#activitytype)  | 是   | 设备状态能力类型。              |
+| activity  | [ActivityType](#activitytype)  | 是   | 设备状态类型。              |
 | callback             | Callback<[ActivityResponse](#activityresponse)\>  | 是   | 回调函数，用于接收设备状态查询结果。    |
 
 **示例：**
@@ -119,7 +119,7 @@ stationary.once('still', (data) => {
 
 off(activity: ActivityType, event: ActivityEvent, callback?: Callback&lt;ActivityResponse&gt;): void
 
-设备状态管理，取消订阅设备状态服务。取消订阅后，将停止接收该状态相关的回调函数调用。调用off()时需要使用与on()相同的activity和event参数，才能正确取消对应的订阅。
+取消订阅设备状态服务。取消订阅后，将停止接收该状态相关的回调函数调用。调用off()时需要使用与on()相同的activity和event参数。
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Stationary
 
@@ -127,7 +127,7 @@ off(activity: ActivityType, event: ActivityEvent, callback?: Callback&lt;Activit
 
 | 参数名                  | 类型                                               | 必填 | 说明                          |
 | -------------------- | -------------------------------------------------- | ---- | ---------------------------- |
-| activity  | [ActivityType](#activitytype)  | 是   | 设备状态能力类型。              |
+| activity  | [ActivityType](#activitytype)  | 是   | 设备状态类型。              |
 | event  | [ActivityEvent](#activityevent)  | 是   | 事件类型。              |
 | callback | Callback<[ActivityResponse](#activityresponse)\>  | 否   | 要移除的回调函数。未传递callback参数或传递undefined时，移除该进程下订阅该类型的所有callback。  |
 

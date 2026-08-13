@@ -57,6 +57,8 @@ import { screenshot } from '@kit.ArkUI';
 
 **起始版本：** 26.0.0
 
+**系统接口：** 此接口为系统接口。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -76,8 +78,8 @@ import { screenshot } from '@kit.ArkUI';
 
 | 名称                 | 类型          |  只读 |  可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| width  | number | 否   | 否   | 表示截取图像的宽度，单位为px，该参数应为整数。 |
-| height | number | 否   | 否   | 表示截取图像的高度，单位为px，该参数应为整数。 |
+| width  | number | 否   | 否   | 表示截取图像的宽度，单位为px，该参数应为正整数。 |
+| height | number | 否   | 否   | 表示截取图像的高度，单位为px，该参数应为正整数。 |
 
 ## screenshot.save
 
@@ -92,8 +94,8 @@ save(options: ScreenshotOptions, callback: AsyncCallback&lt;image.PixelMap&gt;):
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **需要权限：**
-- API版本26.1.0+：ohos.permission.CUSTOM_SCREEN_CAPTURE 或 ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
-- API版本22-26.0.0：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
+- API版本26.0.0+：ohos.permission.CUSTOM_SCREEN_CAPTURE 或 ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
+- API版本22-24：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
 - API版本7-21：ohos.permission.CAPTURE_SCREEN。
 
 **参数：**
@@ -157,8 +159,8 @@ save(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **需要权限：**
-- API版本26.1.0+：ohos.permission.CUSTOM_SCREEN_CAPTURE 或 ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
-- API版本22-26.0.0：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
+- API版本26.0.0+：ohos.permission.CUSTOM_SCREEN_CAPTURE 或 ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
+- API版本22-24：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
 - API版本7-21：ohos.permission.CAPTURE_SCREEN。
 
 **参数：**
@@ -207,8 +209,8 @@ save(options?: ScreenshotOptions): Promise&lt;image.PixelMap&gt;
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **需要权限：**
-- API版本26.1.0+：ohos.permission.CUSTOM_SCREEN_CAPTURE 或 ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
-- API版本22-26.0.0：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
+- API版本26.0.0+：ohos.permission.CUSTOM_SCREEN_CAPTURE 或 ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
+- API版本22-24：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
 - API版本7-21：ohos.permission.CAPTURE_SCREEN。
 
 **参数：**
@@ -328,7 +330,7 @@ try {
   promise.then((pixelMapArray: Array<image.PixelMap>) => {
     for (let i = 0; i < pixelMapArray.length; i++) {
       const pixelMap = pixelMapArray[i];
-      console.info(`succeeded in saving screenshot ${i}. Pixel bytes number: ${pixelMap.getPixelBytesNumber()}`);
+      console.info(`Succeeded in saving screenshot ${i}. Pixel bytes number: ${pixelMap.getPixelBytesNumber()}`);
       pixelMap.release();
     }
   }).catch((err: BusinessError) => {

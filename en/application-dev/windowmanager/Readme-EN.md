@@ -22,7 +22,7 @@
 
   <!--Del-->
 
-  - [Managing System Windows (Stage Model Only) (for System Applications Only)](system-window-stage-sys.md)
+  - [System Window Development (Stage Model Only) (for System Applications Only)](system-window-stage-sys.md)
 
   <!--DelEnd-->
 
@@ -76,7 +76,7 @@
 
 - [Window Metadata Configuration](window-config-m.md)
 
-- [Window Development Glossary](window-terminology.md)
+- [Glossary](window-terminology.md)
 
 - [Window Development FAQs](window-faqs.md)
 

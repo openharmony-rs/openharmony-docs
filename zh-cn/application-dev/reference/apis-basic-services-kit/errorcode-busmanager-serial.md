@@ -60,7 +60,7 @@ Invalid parameter.
 
 **可能原因**
 
-1. 波特率取值不在支持的范围内（标准值为9600/19200/38400/57600/115200等常用波特率，或[1, 115200]范围内的正整数）。
+1. 波特率取值不在支持的范围内（标准值为9600/19200/38400/57600/115200等常用波特率，或[1, 115200]范围内的正整数，单位：baud）。
 
 2. 写入数据长度超出(0, 4096]范围（单位：字节）。
 
@@ -70,7 +70,7 @@ Invalid parameter.
 
 **处理步骤**
 
-1. 检查波特率是否为支持的常用波特率（如9600/19200/38400/57600/115200），或是否为[1, 115200]范围内的正整数。
+1. 检查波特率是否为支持的常用波特率（如9600/19200/38400/57600/115200），或是否为[1, 115200]范围内的正整数，单位：baud。
 
 2. 检查写入数据长度是否在(0, 4096]范围内（单位：字节）。
 
@@ -138,7 +138,7 @@ Port not open.
 操作串口通信相关接口时，串口端口未打开。
 
 **状态转换说明：**
-- 调用open()后，串口处于打开状态，可以调用[onDataRead](js-apis-busmanager-serial.md#ondataread)、[write](js-apis-busmanager-serial.md#write)等接口。onDataRead需与offDataRead配对调用，在close()前应先调用offDataRead取消订阅
+- 调用open()后，串口处于打开状态，可以调用[onDataRead](js-apis-busmanager-serial.md#ondataread)、[write](js-apis-busmanager-serial.md#write)等接口。onDataRead需与offDataRead配对调用，onDisconnect需与offDisconnect配对调用。在close()前应先调用offDataRead和offDisconnect取消订阅。
 - 调用close()后，串口处于关闭状态，上述接口将无法使用。
 - 必须在串口打开状态下才能进行读写等操作。
 

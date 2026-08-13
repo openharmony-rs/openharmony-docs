@@ -11,8 +11,10 @@ InputMethodExtensionContext模块是InputMethodExtensionAbility的上下文环�
 > **说明：**
 >
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 
 > 本模块接口仅可在Stage模型下使用。
-> 本模块接口为系统接口。
+> 
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.InputMethodExtensionContext (InputMethodExtensionContext)](js-apis-inputmethod-extension-context.md)。
 
 ## 导入模块
 
@@ -590,6 +592,10 @@ class MyInputMethodExtensionAbility extends InputMethodExtensionAbility {
 disconnectAbility(connection: number): Promise&lt;void&gt;
 
 断开与ServiceExtensionAbility的连接。使用Promise异步回调。
+
+> **说明：**
+>
+> 从 API version 9开始支持，从API version 10开始废弃。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

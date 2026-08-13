@@ -6,7 +6,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @mateng_Holtens-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=c8954d33bacbdec6df88d8586db7cc9b9d8a799e translatedAt=2026-07-29T12:49:57.352Z pushedAt=2026-07-30T02:49:38.380Z -->
+<!-- md-trans-meta sourceCommit=993e2cd5feeb4b1a97a3c4f7355d9c8a69a1ee2c translatedAt=2026-08-01T00:32:09.574Z pushedAt=2026-08-01T01:42:19.205Z -->
 
 **RichEditor** is a component that supports rich media content and interactive text editing. It is typically used to respond to user input operations on mixed text and image content, such as a comment section that accepts rich media input. For detailed usage, refer to the API documentation of the [RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md) component.
 
@@ -316,7 +316,7 @@ build() {
 
 ### Adding a Symbol Span
 
-Use the [addSymbolSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#addsymbolspan11) API to add symbol content. This API enables addition of special characters, such as mathematical symbols in academic papers.
+Use the [addSymbolSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#addsymbolspan11) API to add symbol content. This API enables addition of Symbol vector icons, such as inserting icons, signs, and other visual symbolic elements into text.
 
 When a symbol is added while the component is focused and the cursor is blinking, the cursor moves to the right of the newly inserted symbol.
 
@@ -711,15 +711,14 @@ Starting from API version 20, you can set whether to enable auto spacing between
 
 This API can be used to optimize text layout and improve the readability of text within the component. When auto spacing is enabled, appropriate gaps are created between Chinese and Western text, making it easier to distinguish different languages and reducing visual interference.
 
-<!-- @[richEditor_enableAutoSpacing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) --> 
+<!-- @[richEditor_enableAutoSpacing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->  
 
 ``` TypeScript
 @Component
 struct EnableAutoSpacing {
   controller: RichEditorController = new RichEditorController();
   options: RichEditorOptions = { controller: this.controller };
-  @State
-  enableAutoSpace:boolean = false;
+  @State enableAutoSpace: boolean = false;
 
   build() {
     Column() {
@@ -803,7 +802,7 @@ You can register callbacks to listen for component events.
 
 ### Adding Callbacks for Before and After Text and Image Changes
 
-Use the [onWillChange](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#onwillchange12) API to add a callback invoked before text or image changes. This callback is applicable to real-time data verification and notification. For example, it can be used to enable features such as detecting sensitive words and displaying an alert dialog box when the character limit is approached, as well as real-time character count statistics and limitation.
+Use the [onWillChange](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#onwillchange12) API to add a callback that can be triggered before text or image changes. This callback is suitable for real-time data verification and user alerts. For example, when users input text, you can implement content detection within the callback; if sensitive words are detected, an alert dialog box should be displayed immediately. Additionally, it is applicable to real-time character count statistics and restrictions. For input scenarios with a character limit, you can count the number of characters entered in real time within the callback and provide corresponding prompts when the limit is approached.
 
 Use the [onDidChange](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#ondidchange12) API to add a callback invoked after text or image changes. This callback applies to content saving and synchronization. For example, it can be used to automatically save the latest content to the local host or synchronize it to the server. The callback can also be used to update and re-render content status. For example, in a to‑do list application, after a user edits a task description in rich‑text format, the callback can update the display style of that task in the list.
 
@@ -1145,7 +1144,7 @@ build() {
 }
 ```
 
-<!--Del-->![alt text](figures/richeditor_image_oncut_paste_copy.gif)<!--DelEnd-->
+![alt text](figures/richeditor_image_oncut_paste_copy.gif)
 
 For details about more events, see [RichEditor Events](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#events).
 
@@ -1157,7 +1156,7 @@ You can configure interaction element attributes through APIs to respond to chan
 
 You can set the caret and selection handle colors in the text box using the [caretColor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#caretcolor12) API.
 
-This feature allows for a more distinct visual representation of the caret and text selection, which can significantly aid users in navigating through complex UI that incorporate various input fields. It also improves user experience by allowing the caret color to match the overall style of the application page.
+This feature allows for a more distinct visual representation of the caret and handle, which can significantly aid users in navigating through complex UI that incorporate various input fields. It also improves user experience by allowing the caret color to match the overall style of the application page.
 
 <!-- @[richEditor_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) --> 
 
@@ -1510,7 +1509,7 @@ You can set custom context menu on text selection using the [bindSelectionMenu](
 
 By default, the context menu on text selection includes copy, cut, and select-all options. You can add custom items to provide enhanced interactions, for example, a Translate option for multilingual support, or a Bold option to emphasize the selected text.
 
-If the custom menu is too long, consider embedding a **Scroll** component to prevent the keyboard from being blocked.
+If the custom menu is too long, consider embedding a **Scroll** component to prevent the menu from being blocked by the keyboard.
 
 <!-- @[richEditor_bindSelectionMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) --> 
 
@@ -1588,5 +1587,3 @@ SystemMenu() {
 ![alt text](figures/richeditor_image_bindselectionmenu.gif)
 
 <!--RP1--><!--RP1End-->
-
-<!--no_check-->

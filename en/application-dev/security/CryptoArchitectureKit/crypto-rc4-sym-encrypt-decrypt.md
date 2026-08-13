@@ -6,20 +6,21 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=7bf845a7c8933b8c5015a7da3dfa1923d0e9dc57 translatedAt=2026-08-07T03:32:16.004Z pushedAt=2026-08-10T09:35:48.174Z -->
 
 The Crypto framework supports encryption and decryption with an RC4 symmetric key since API version 26.0.0.
 
-For details about the algorithm specifications, see [Symmetric Key Encryption and Decryption Algorithm Specifications: RC4](crypto-sym-encrypt-decrypt-spec.md#rc4).
+For the corresponding algorithm specifications, see [Symmetric Key Encryption and Decryption Algorithm Specifications: RC4](crypto-encryption-decryption.md#rc4).
 
-RC4 is a stream cipher algorithm and does not require a block cipher mode or padding. The same cipher string parameter (RC4_8 to RC4_4096) is used for encryption and decryption.
+RC4 is a stream cipher algorithm and does not require a block cipher mode or padding.
 
 **Encryption**
 
 1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator), [SymKeyGenerator.generateSymKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkey-1), or [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to generate a symmetric key (SymKey) with the RC4 algorithm and a key length ranging from 8 bits to 4096 bits (for example, RC4_128).
-   
-   In addition to the example in this topic, [RC4](crypto-sym-key-generation-conversion-spec.md#rc4) and [Converting Binary Data into a Symmetric Key](crypto-convert-binary-data-to-sym-key.md) may help you better understand how to generate an RC4 symmetric key pair. Note that the input parameters in the reference documents may be different from those in the example below.
 
-2. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) and specify a character string parameter (for example, **'RC4_128'**, which supports RC4_8 to RC4_4096) to create a **Cipher** instance whose symmetric key type is RC4 for encryption.
+   For details about how to generate an RC4 symmetric key, refer to the example below, together with [Symmetric Key Generation and Conversion Specifications: RC4](crypto-key-generation-conversion.md#rc4) and [Converting Binary Data into a Symmetric Key](crypto-convert-binary-data-to-sym-key.md). Note that the reference documents may differ from the current example in input parameters. Pay attention to these differences when reading.
+
+2. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with a string parameter (for example, **'RC4'**) to create a **Cipher** instance of the RC4 symmetric key type for encryption.
 
 3. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. Specifically, set the mode to **cryptoFramework.CryptoMode.ENCRYPT_MODE** (encryption) and key to **SymKey** (the key used for encryption). RC4 is a stream cipher. If there are no encryption/decryption parameters such as IV, **null** will be passed.
 
@@ -27,15 +28,16 @@ RC4 is a stream cipher algorithm and does not require a block cipher mode or pad
 
 **Decryption**
 
-1. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) and specify a character string parameter (for example, **'RC4_128'**, which supports RC4_8 to RC4_4096) to create a **Cipher** instance whose symmetric key type is RC4 for decryption.
+1. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with a string parameter (for example, **'RC4'**) to create a **Cipher** instance of the RC4 symmetric key type for decryption.
 
 2. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. Specifically, set the mode to **cryptoFramework.CryptoMode.DECRYPT_MODE** (decryption) and key to **SymKey** (the key used for decryption). If there is no encryption or decryption parameter, **null** will be passed.
 
 3. To decrypt a small amount of data, simply call [Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1).
 
 - Example (using asynchronous APIs):
+
   <!-- @[encrypt_decrypt_rc4_asynchronous](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceArkTs/entry/src/main/ets/pages/rc4_encryption_decryption/rc4_encryption_decryption_asynchronous.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -82,8 +84,9 @@ RC4 is a stream cipher algorithm and does not require a block cipher mode or pad
   ```
 
 - Example (using synchronous APIs):
+
   <!-- @[encrypt_decrypt_rc4_synchronous](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceArkTs/entry/src/main/ets/pages/rc4_encryption_decryption/rc4_encryption_decryption_synchronous.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -128,3 +131,5 @@ RC4 is a stream cipher algorithm and does not require a block cipher mode or pad
     }
   }
   ```
+
+  <!--no_check-->
