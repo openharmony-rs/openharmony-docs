@@ -96,7 +96,7 @@
      // 5. 句柄生成计数器
      private handleCounter: number = 0;
 
-     // 从 Array 类型 params 中提取UID
+     // 从Array类型params中提取UID
      private extractUid(params: Array<huksExternalCrypto.HuksExternalCryptoParam> | HuksCryptoExtensionParam[]): string | undefined {
        const arr = params as Array<huksExternalCrypto.HuksExternalCryptoParam>;
        const param = arr.find(p =>
@@ -105,7 +105,7 @@
        return param?.value?.toString();
      }
 
-     // 从 huks.HuksOptions / HuksCryptoExtensionParams 类型 params 中提取UID
+     // 从huks.HuksOptions/HuksCryptoExtensionParams类型params中提取UID
      private extractUidFromSessionParams(params: huks.HuksOptions | HuksCryptoExtensionParams): string | undefined {
        const props = (params as huks.HuksOptions).properties as Array<huksExternalCrypto.HuksExternalCryptoParam> | undefined;
        if (!props) return undefined;
@@ -120,7 +120,7 @@
        return [uid, ...parts].join(':');
      }
 
-     // 生成唯一 handle
+     // 生成唯一handle
      private generateUniqueHandle(): string {
        this.handleCounter += 1;
        return `handle-${this.handleCounter}-${Date.now()}`;
@@ -159,7 +159,7 @@ onOpenResource用于打开指定资源（如建立会话或连接），handle为
        return Promise.resolve(result);
      }
 
-     // 解析 resource index，API版本不同解析方式也不同
+     // 解析resource index，API版本不同解析方式也不同
      const apiVersion = deviceInfo.sdkApiVersion;
      const index = apiVersion >= 26 ? resourceId : JSON.parse(resourceId)['index'];
 
@@ -266,7 +266,7 @@ onGetProperty用于获取指定资源的属性信息，handle为资源句柄，p
          transformation: transformation,
          size: pkData.length
        }));
-       // 返回用来加密传pin的公钥和加密算法信息，详见导出公钥文档
+       // 返回用来加密传PIN的公钥和加密算法信息，详见导出公钥文档
        result.resultCode = 0;
        result.property = [{
          tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_EXTRA_DATA,
@@ -275,7 +275,7 @@ onGetProperty用于获取指定资源的属性信息，handle为资源句柄，p
        return Promise.resolve(result);
      }
 
-      // 其他 propertyId 委托驱动处理
+      // 其他propertyId委托驱动处理
       try {
         const driverHandle = this.handleMap.get(this.makeStorageKey(uid, handle));
         if (driverHandle === undefined) {
@@ -317,14 +317,14 @@ onAuthUkeyPin用于在使用私钥进行签名之前验证PIN码。加密后的P
        return Promise.resolve(result);
      }
 
-     // 1. 取密文
+     // 1. 获取密文
      const pinParam = params.find(p =>
        p.tag === huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_UKEY_PIN
      );
      if (pinParam === undefined) return Promise.resolve(result);
      const encryptedPin = pinParam.value as Uint8Array;
 
-     // 2. 用 onGetProperty 中保存的私钥解密
+     // 2. 用onGetProperty中保存的私钥解密
      if (this.pinDecryptKey === null) {
        result.resultCode = HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_PIN_NO_AUTH;
        return Promise.resolve(result);
@@ -515,7 +515,6 @@ onUpdateSession用于分段传输大批量数据。当调用成功时，返回�
 onFinishSession用于传输最后一段明文，在验签操作中用于传输签名。当调用成功时，返回值中的resultCode成员需设置为0。调用失败时，resultCode携带错误码信息。
 
    ```ts
-
    onFinishSession(initHandle: string, params: huks.HuksOptions | HuksCryptoExtensionParams): Promise<HuksCryptoExtensionResult> {
      const result: HuksCryptoExtensionResult = {
        resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
@@ -613,7 +612,6 @@ onEnumCertificates用于枚举证书列表。当调用成功时，返回值中�
 从API版本26.0.0开始，onImportCertificate用于导入证书到密钥管理扩展服务中。certInfo包含待导入的证书信息，包括证书用途、资源ID和证书数据。当调用成功时，返回值中的resultCode成员设置为0。调用失败时，resultCode携带错误码信息。
 
    ```ts
-
    onImportCertificate(handle: string, params: HuksCryptoExtensionParam[], certInfo: HuksCryptoExtensionCertInfo): Promise<HuksCryptoExtensionResult> {
      const result: HuksCryptoExtensionResult = {
        resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
