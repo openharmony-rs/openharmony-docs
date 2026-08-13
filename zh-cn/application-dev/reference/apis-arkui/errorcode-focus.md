@@ -14,7 +14,7 @@
 
 **错误信息**
 
-the component cannot be focused.
+The node cannot be focused.
 
 **错误描述**
 
