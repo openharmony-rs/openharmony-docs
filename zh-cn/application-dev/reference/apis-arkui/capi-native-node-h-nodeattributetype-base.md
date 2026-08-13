@@ -129,12 +129,6 @@ NODE_BACKGROUND_IMAGE_SIZE_WITH_STYLE = 31
 
 **起始版本：** 12
 
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| .value[0].i32 | 背景图片的宽高样式，取[ArkUI_ImageSize](capi-image-h.md#arkui_imagesize)枚举值。不同枚举值决定了背景图片的缩放和裁剪方式，如按原图大小显示、保持宽高比覆盖组件区域、保持宽高比完整显示等。 |
-
 **返回：**
 
 | 类型 | 说明 |
