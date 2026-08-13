@@ -22,6 +22,7 @@
 2. 在cryptoability目录，右键选择“New > ArkTS File”，新建一个文件，名称可以自己定义，例如CryptoAbility.ets。
 
    其目录结构如下所示：
+
    ```txt
    ├── ets
    │   └── cryptoability
@@ -29,6 +30,7 @@
    ```
 
 3. 开发CryptoExtensionAbility需要配置[ohos.permission.CRYPTO_EXTENSION_REGISTER](../AccessToken/restricted-permissions.md#ohospermissioncrypto_extension_register)权限，该权限属于[受限开放权限](../AccessToken/restricted-permissions.md)，请按照[申请受限权限](../AccessToken/declare-permissions-in-acl.md)指引申请。
+
    ```json5
    // entry/src/main/module.json5
    {
@@ -44,6 +46,7 @@
    ```
 
 4. 在工程Module对应的module.json5配置文件中注册CryptoExtensionAbility组件到[extensionAbilities](../../../application-dev/quick-start/module-configuration-file.md#extensionabilities标签)标签中。
+
    - name标签表示ability名称，最大长度为127字节。配置多个ability时要求每个name标签必须是唯一的。
    - srcEntry标签表示当前CryptoExtensionAbility组件所对应的代码路径。
    - type标签需要设置为“crypto”。
@@ -141,7 +144,7 @@
 
 ## 开发示例
 
-### onOpenResource
+### 调用onOpenResource打开资源
 
 onOpenResource用于打开指定资源（如建立会话或连接），handle为资源句柄。当调用成功时，返回值中的resultCode成员需设置为0，handle成员非空；调用失败时，resultCode携带错误码信息。
 
@@ -188,7 +191,7 @@ onOpenResource用于打开指定资源（如建立会话或连接），handle为
    }
    ```
 
-### onCloseResource
+### 调用onCloseResource关闭资源
 
 onCloseResource用于关闭指定资源（如释放会话或连接）,handle为待关闭资源的句柄。当调用成功时，返回值中的resultCode成员需设置为0；调用失败时，resultCode携带错误码信息。
 
@@ -224,7 +227,7 @@ onCloseResource用于关闭指定资源（如释放会话或连接）,handle为�
    }
    ```
 
-### onGetProperty
+### 调用onGetProperty获取资源信息
 
 onGetProperty用于获取指定资源的属性信息，handle为资源句柄，propertyId为待获取的属性标识。当调用成功时，返回值中的resultCode成员需设置为0，返回值中的property成员包含属性信息。调用失败时，resultCode携带错误码信息。
 
@@ -291,7 +294,7 @@ onGetProperty用于获取指定资源的属性信息，handle为资源句柄，p
    }
    ```
 
-### onAuthUkeyPin
+### 调用onAuthUkeyPin验证PIN码
 
 onAuthUkeyPin用于在使用私钥进行签名之前验证PIN码。加密后的PIN码通过param中传入[HUKS_EXT_CRYPTO_TAG_UKEY_PIN](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带，需使用onGetProperty中保存的私钥进行解密。
 
@@ -367,7 +370,7 @@ onAuthUkeyPin用于在使用私钥进行签名之前验证PIN码。加密后的P
    }
    ```
 
-### onGetUkeyPinAuthState
+### 调用onGetUkeyPinAuthState查询PIN码认证状态
 
 onGetUkeyPinAuthState用于查询PIN码认证状态。当调用成功时，返回值中的resultCode成员需设置为0，返回值中的authState设置为对应的认证状态。调用失败时，resultCode携带错误码信息。
 
@@ -391,7 +394,7 @@ onGetUkeyPinAuthState用于查询PIN码认证状态。当调用成功时，返�
    }
    ```
 
-### onClearUkeyPinAuthState
+### 调用onClearUkeyPinAuthState重置PIN码状态
 
 onClearUkeyPinAuthState用于重置PIN码认证状态。当调用成功时，返回值中的resultCode成员需设置为0。调用失败时，resultCode携带错误码信息。
 
@@ -414,7 +417,7 @@ onClearUkeyPinAuthState用于重置PIN码认证状态。当调用成功时，返
    }
    ```
 
-### onInitSession
+### 调用onInitSession初始化密钥会话
 
 onInitSession用于初始化密钥会话。当调用成功时，返回值中的resultCode成员需设置为0，handle成员非空。调用失败时，resultCode携带错误码信息。
 
@@ -472,7 +475,7 @@ onInitSession用于初始化密钥会话。当调用成功时，返回值中的r
    }
    ```
 
-### onUpdateSession
+### 调用onUpdateSession分段传输数据
 
 onUpdateSession用于分段传输大批量数据。当调用成功时，返回值中的resultCode成员需设置为0。调用失败时，resultCode携带错误码信息。
 
@@ -507,7 +510,7 @@ onUpdateSession用于分段传输大批量数据。当调用成功时，返回�
    }
    ```
 
-### onFinishSession
+### 调用onFinishSession完成数据传输
 
 onFinishSession用于传输最后一段明文，在验签操作中用于传输签名。当调用成功时，返回值中的resultCode成员需设置为0。调用失败时，resultCode携带错误码信息。
 
@@ -546,7 +549,7 @@ onFinishSession用于传输最后一段明文，在验签操作中用于传输�
    }
    ```
 
-### onExportCertificate
+### 调用onExportCertificate查询证书
 
 onExportCertificate用于查询某个resourceId下的证书。可以通过解析参数[HUKS_EXT_CRYPTO_TAG_PURPOSE](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)获取业务希望的证书类型。如未指定，密钥管理扩展应用实现方需设置默认类型（建议签名证书）。
 
@@ -576,7 +579,7 @@ onExportCertificate用于查询某个resourceId下的证书。可以通过解析
    }
    ```
 
-### onEnumCertificates
+### 调用onEnumCertificates查询证书列表
 
 onEnumCertificates用于枚举证书列表。当调用成功时，返回值中的resultCode成员需设置为0，返回值中的certs成员包含证书列表（类型为Array<[HuksCryptoExtensionCertInfo](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#hukscryptoextensioncertinfo)>）。调用失败时，resultCode携带错误码信息。
 
@@ -605,7 +608,7 @@ onEnumCertificates用于枚举证书列表。当调用成功时，返回值中�
    }
    ```
 
-### onImportCertificate
+### 调用onImportCertificate导入证书
 
 从API版本26.0.0开始，onImportCertificate用于导入证书到密钥管理扩展服务中。certInfo包含待导入的证书信息，包括证书用途、资源ID和证书数据。当调用成功时，返回值中的resultCode成员设置为0。调用失败时，resultCode携带错误码信息。
 
@@ -638,7 +641,7 @@ onEnumCertificates用于枚举证书列表。当调用成功时，返回值中�
    }
    ```
 
-### onSetProperty
+### 调用onSetProperty设置属性
 
 从API版本26.0.0开始，onSetProperty用于执行设置属性操作，handle为资源句柄，propertyId为待设置的属性标识，操作参数在params中传入。当调用成功时，返回值中的resultCode成员需设置为0，表示设置属性成功。调用失败时，resultCode携带错误码信息。
 
@@ -670,8 +673,7 @@ onEnumCertificates用于枚举证书列表。当调用成功时，返回值中�
    }
    ```
 
-
-### onGetResourceId
+### 调用onGetResourceId获取资源ID
 
 从API版本26.0.0开始，onGetResourceId用于获取密钥扩展能力的资源ID。当调用成功时，返回值中的resultCode成员需设置为0，resourceId成员非空。调用失败时，resultCode携带错误码信息。
 
@@ -708,7 +710,7 @@ onEnumCertificates用于枚举证书列表。当调用成功时，返回值中�
    }
    ```
 
-### onGenerateKeyItem
+### 调用onGenerateKeyItem生成密钥
 
 从API版本26.0.0开始，onGenerateKeyItem用于在密钥管理扩展服务中生成密钥对。params中的参数为可选参数，由密钥管理扩展应用实现方定义支持范围。如未传入相应参数，密钥管理扩展应用实现方需设置默认行为。当调用成功时，返回值中的resultCode成员需设置为0；调用失败时，resultCode携带错误码信息。
 
@@ -748,7 +750,7 @@ onEnumCertificates用于枚举证书列表。当调用成功时，返回值中�
    }
    ```
 
-### onExportKeyItem
+### 调用onExportKeyItem导出公钥
 
 从API版本26.0.0开始，onExportKeyItem用于导出指定密钥的公钥。params中的参数为可选参数，由密钥管理扩展应用定义支持范围。如未传入相应参数，密钥管理扩展应用实现方需设置默认行为。推荐传入密钥用途（HUKS_TAG_PURPOSE）参数，以便导出指定用途的公钥。当调用成功时，返回值中的resultCode成员需设置为0，outData携带导出的公钥数据；调用失败时，resultCode携带错误码信息。
 
@@ -787,7 +789,7 @@ onEnumCertificates用于枚举证书列表。当调用成功时，返回值中�
    }
    ```
 
-### onImportWrappedKeyItem
+### 调用onImportWrappedKeyItem导入密钥对
 
 从API版本26.0.0开始，onImportWrappedKeyItem用于导入加密封装的密钥对。params中的参数为可选参数，由密钥管理扩展应用实现方定义支持范围。如未传入相应参数，密钥管理扩展应用实现方需设置默认行为。wrappedHandle用于指定解封密钥的密钥资源句柄，wrappedKey为封装密钥数据。当调用成功时，返回值中的resultCode成员需设置为0；调用失败时，resultCode携带错误码信息。
 
