@@ -136,8 +136,8 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
     }
   }
   export async function getPlainData(type: string): Promise<string> {
+    //从系统剪贴板中读取数据
     try {
-      //从系统剪贴板中读取数据
       let data = await systemPasteboard.getData();
       let recordCount = data.getRecordCount();
       let result = '';
