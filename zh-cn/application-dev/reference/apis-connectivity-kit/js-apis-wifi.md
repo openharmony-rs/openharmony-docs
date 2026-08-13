@@ -6,12 +6,12 @@
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
 
-该模块主要提供WLAN基础功能、P2P（peer-to-peer）功能和WLAN消息通知的相应服务，让应用可以通过WLAN和其他设备互联互通。
+该模块主要提供WLAN基础功能（如WLAN扫描、连接管理、连接信息查询、信号强度获取等）、P2P（peer-to-peer）功能（如设备发现、群组创建与管理、P2P连接等）和WLAN消息通知的相应服务，适用于应用需要通过WLAN接入网络或与其他设备进行点对点数据传输和互联互通的场景。
 
 > **说明：**
 >
 > 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 从API Version 9 开始，该接口不再维护，推荐使用[@ohos.wifiManager (WLAN)](js-apis-wifiManager.md)等相关接口。
+> 从API version 9开始，该接口不再维护，推荐使用[@ohos.wifiManager (WLAN)](js-apis-wifiManager.md)等相关接口。
 
 
 ## 导入模块
@@ -58,11 +58,11 @@ try {
 
 scan(): boolean
 
-启动WLAN扫描。
+启动WLAN扫描。调用此方法启动扫描后，需等待扫描完成（可通过监听wifiScanStateChange事件获知），再通过getScanInfos获取扫描结果。
 
 > **说明：**
 >
-> 从API version 6开始支持，从API version 9开始废弃。建议使用[wifiManager.scan](js-apis-wifiManager.md#wifimanagerscandeprecated)替代。
+> 从API version 6开始支持，从API version 9开始废弃。建议使用[wifiManager.startScan](js-apis-wifiManager.md#wifimanagerstartscan21)替代。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.LOCATION
 
@@ -165,13 +165,13 @@ WLAN热点信息。
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | 否 | 否 | 热点的SSID，最大长度为32字节，编码格式为UTF-8。 |
 | bssid | string | 否 | 否 | 热点的BSSID，例如：00:11:22:33:44:55。 |
-| capabilities | string | 否 | 否 | 热点能力。 |
+| capabilities | string | 否 | 否 | 热点能力，包括支持的安全协议、加密方式等信息，格式如"[WPA2-PSK-CCMP][ESS]"。 |
 | securityType | [WifiSecurityType](#wifisecuritytypedeprecated) | 否 | 否 | WLAN加密类型。 |
 | rssi | number | 否 | 否 | 热点的信号强度(dBm)。 |
-| band | number | 否 | 否 | WLAN接入点的频段。1表示2.4GHZ；2表示5GHZ。|
-| frequency | number | 否 | 否 | WLAN接入点的频率。 |
-| channelWidth | number | 否 | 否 | WLAN接入点的带宽。 |
-| timestamp | number | 否 | 否 | 时间戳。 |
+| band | number | 否 | 否 | WLAN接入点的频段。1表示2.4GHZ；2表示5GHz。1表示2.4GHz；2表示5GHz。|
+| frequency | number | 否 | 否 | WLAN接入点的频率，单位：MHz。单位：MHz |
+| channelWidth | number | 否 | 否 | WLAN接入点的带宽，单位为MHz。 |
+| timestamp | number | 否 | 否 | 时间戳，单位为毫秒。 |
 
 
 ## WifiSecurityType<sup>(deprecated)</sup>
@@ -217,7 +217,7 @@ WLAN配置信息。
 
 addUntrustedConfig(config: WifiDeviceConfig): Promise&lt;boolean&gt;
 
-添加不可信网络配置，使用Promise异步回调。
+添加不可信网络配置（即候选网络配置，该类配置不会被系统自动连接），使用Promise异步回调。
 
 > **说明：**
 >
@@ -290,7 +290,7 @@ addUntrustedConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;boolean&
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | 是 | WLAN配置信息。 |
-  | callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当操作成功时，err为0，data表示操作结果，true: 成功， false: 失败。如果error为非0，表示处理出现错误。 |
+  | callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当操作成功时，err为0，data表示操作结果，true: 成功， false: 失败。如果err为非0，表示处理出现错误。 |
 
 **示例：**
 ```ts
@@ -403,7 +403,7 @@ removeUntrustedConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;boole
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | 是 | WLAN配置信息。 |
-  | callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当操作成功时，err为0，data表示操作结果，true: 成功， false: 失败。如果error为非0，表示处理出现错误。 |
+  | callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当操作成功时，err为0，data表示操作结果，true: 成功， false: 失败。如果err为非0，表示处理出现错误。 |
 
 **示例：**
 ```ts
@@ -456,7 +456,7 @@ getSignalLevel(rssi: number, band: number): number
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | rssi | number | 是 | 热点的信号强度(dBm)。 |
-  | band | number | 是 | WLAN接入点的频段。 |
+  | band | number | 是 | WLAN接入点的频段。1表示2.4GHZ；2表示5GHz。1表示2.4GHz；2表示5GHz。 |
 
 **返回值：**
 
@@ -518,7 +518,7 @@ getLinkedInfo(callback: AsyncCallback&lt;WifiLinkedInfo&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;[WifiLinkedInfo](#wifilinkedinfodeprecated)&gt; | 是 | 回调函数。当获取成功时，err为0，data表示WLAN连接信息。如果error为非0，表示处理出现错误。 |
+  | callback | AsyncCallback&lt;[WifiLinkedInfo](#wifilinkedinfodeprecated)&gt; | 是 | 回调函数。当获取成功时，err为0，data表示WLAN连接信息。如果err为非0，表示处理出现错误。 |
 
 **示例：**
 ```ts
@@ -542,7 +542,7 @@ wifi.getLinkedInfo().then(data => {
 
 ## WifiLinkedInfo<sup>(deprecated)</sup>
 
-提供WLAN连接的相关信息。
+提供P2P连接的相关信息。
 
 > **说明：**
 >
@@ -555,9 +555,9 @@ wifi.getLinkedInfo().then(data => {
 | ssid | string | 否 | 否 | 热点的SSID，最大长度为32字节，编码格式为UTF-8。 |
 | bssid | string | 否 | 否 | 热点的BSSID，例如：00:11:22:33:44:55。 |
 | rssi | number | 否 | 否 | 热点的信号强度(dBm)。 |
-| band | number | 否 | 否 | WLAN接入点的频段。1表示2.4GHZ；2表示5GHZ。|
+| band | number | 否 | 否 | WLAN接入点的频段。1表示2.4GHZ；2表示5GHz。1表示2.4GHz；2表示5GHz。|
 | linkSpeed | number | 否 | 否 | WLAN接入点的速度，单位Mbps。 |
-| frequency | number | 否 | 否 | WLAN接入点的频率。 |
+| frequency | number | 否 | 否 | WLAN接入点的频率，单位：MHz。单位：MHz |
 | isHidden | boolean | 否 | 否 | WLAN接入点是否是隐藏网络。true:是隐藏网络，false:不是隐藏网络。 |
 | isRestricted | boolean | 否 | 否 | WLAN接入点是否限制数据量。true: 限制，false:不限制。 |
 | macAddress | string | 否 | 否 | 设备的MAC地址。 |
@@ -612,7 +612,7 @@ isConnected(): boolean
 
 isFeatureSupported(featureId: number): boolean
 
-判断设备是否支持相关WLAN特性。
+判断设备是否支持指定featureId对应的WLAN特性。
 
 > **说明：**
 >
@@ -627,7 +627,7 @@ isFeatureSupported(featureId: number): boolean
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | featureId | number | 是 | 特性ID值。 |
+  | featureId | number | 是 | 特性ID值，取值请参考WLAN特性常量（如0x0001表示INFRASTRUCTURE_MODE等）。 |
 
 **返回值：**
 
@@ -658,7 +658,7 @@ getIpInfo(): IpInfo
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[wifiManager.getIpInfo](js-apis-wifiManager.md#wifimanagergetipinfo)替代。
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[IpInfo](js-apis-wifiManager.md#ipinfo)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -688,7 +688,7 @@ IP信息。
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[wifiManager.getIpInfo](js-apis-wifiManager.md#wifimanagergetipinfo)替代。
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[IpInfo](js-apis-wifiManager.md#ipinfo)替代。
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
 
@@ -700,7 +700,7 @@ IP信息。
 | primaryDns | number | 否 | 否 | 主DNS服务器IP地址。 |
 | secondDns | number | 否 | 否 | 备DNS服务器IP地址。 |
 | serverIp | number | 否 | 否 | DHCP服务端IP地址。 |
-| leaseDuration | number | 否 | 否 | IP地址租用时长。 |
+| leaseDuration | number | 否 | 否 | IP地址租用时长，单位为秒。 |
 
 
 ## wifi.getCountryCode<sup>(deprecated)</sup>
@@ -760,7 +760,7 @@ getP2pLinkedInfo(): Promise&lt;WifiP2pLinkedInfo&gt;
 
 ## WifiP2pLinkedInfo<sup>(deprecated)</sup>
 
-提供WLAN连接的相关信息。
+提供P2P连接的相关信息。
 
 > **说明：**
 >
@@ -772,7 +772,7 @@ getP2pLinkedInfo(): Promise&lt;WifiP2pLinkedInfo&gt;
 | -------- | -------- | -------- | -------- | -------- |
 | connectState | [P2pConnectState](#p2pconnectstatedeprecated) | 否 | 否 | P2P连接状态。 |
 | isGroupOwner | boolean | 否 | 否 | 是否是群主。true:是群主，false:不是群主。 |
-| groupOwnerAddr | string | 否 | 否 | 群组MAC地址。 |
+| groupOwnerAddr | string | 否 | 否 | 群组IP地址。 |
 
 
 ## P2pConnectState<sup>(deprecated)</sup>
@@ -809,7 +809,7 @@ getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfodeprecated)&gt; | 是 | 回调函数。当操作成功时，err为0，data表示P2P连接信息。如果error为非0，表示处理出现错误。 |
+  | callback | AsyncCallback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfodeprecated)&gt; | 是 | 回调函数。当操作成功时，err为0，data表示P2P连接信息。如果err为非0，表示处理出现错误。 |
 
 **示例：**
 ```ts
@@ -867,7 +867,7 @@ getCurrentGroup(callback: AsyncCallback&lt;WifiP2pGroupInfo&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;[WifiP2pGroupInfo](#wifip2pgroupinfodeprecated)&gt; | 是 | 回调函数。当操作成功时，err为0，data表示当前组信息。如果error为非0，表示处理出现错误。 |
+  | callback | AsyncCallback&lt;[WifiP2pGroupInfo](#wifip2pgroupinfodeprecated)&gt; | 是 | 回调函数。当操作成功时，err为0，data表示当前组信息。如果err为非0，表示处理出现错误。 |
 
 **示例：**
 ```ts
@@ -925,7 +925,7 @@ getP2pPeerDevices(callback: AsyncCallback&lt;WifiP2pDevice[]&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;[WifiP2pDevice](#wifip2pdevicedeprecated)[]&gt; | 是 | 回调函数。当操作成功时，err为0，data表示对端设备列表信息。如果error为非0，表示处理出现错误。 |
+  | callback | AsyncCallback&lt;[WifiP2pDevice](#wifip2pdevicedeprecated)[]&gt; | 是 | 回调函数。当操作成功时，err为0，data表示对端设备列表信息。如果err为非0，表示处理出现错误。 |
 
 **示例：**
 ```ts
@@ -960,7 +960,7 @@ wifi.getP2pPeerDevices().then(data => {
 | deviceAddress | string | 否 | 否 | 设备MAC地址。 |
 | primaryDeviceType | string | 否 | 否 | 主设备类型。 |
 | deviceStatus | [P2pDeviceStatus](#p2pdevicestatusdeprecated) | 否 | 否 | 设备状态。 |
-| groupCapabilitys | number | 否 | 否 | 群组能力。 |
+| groupCapabilitys | number | 否 | 否 | 群组能力，以位掩码形式表示群组支持的特性。 |
 
 
 ## P2pDeviceStatus<sup>(deprecated)</sup>
@@ -986,7 +986,7 @@ wifi.getP2pPeerDevices().then(data => {
 
 createGroup(config: WifiP2PConfig): boolean
 
-创建群组。
+创建群组。创建群组后，可调用removeGroup移除已创建的群组。
 
 > **说明：**
 >
@@ -1039,10 +1039,10 @@ try {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| deviceAddress | string | 否 | 否 | 设备地址。 |
+| deviceAddress | string | 否 | 否 | 设备地址，格式为MAC地址，例如：00:11:22:33:44:55。 |
 | netId | number | 否 | 否 | 网络ID。创建群组时-1表示创建临时组，-2表示创建永久组。 |
-| passphrase | string | 否 | 否 | 群组密钥。 |
-| groupName | string | 否 | 否 | 群组名称。 |
+| passphrase | string | 否 | 否 | 群组密钥，长度范围8-63个字符。 |
+| groupName | string | 否 | 否 | 群组名称，最大长度为32字节，编码格式为UTF-8。 |
 | goBand | [GroupOwnerBand](#groupownerbanddeprecated) | 否 | 否 | 群组带宽。 |
 
 
@@ -1059,8 +1059,8 @@ try {
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | GO_BAND_AUTO | 0 | 自动模式。 |
-| GO_BAND_2GHZ | 1 | 2GHZ。 |
-| GO_BAND_5GHZ | 2 | 5GHZ。 |
+| GO_BAND_2GHZ | 1 | 2GHz。 |
+| GO_BAND_5GHZ | 2 | 5GHz。 |
 
 
 ## wifi.removeGroup<sup>(deprecated)</sup>
@@ -1098,7 +1098,7 @@ try {
 
 p2pConnect(config: WifiP2PConfig): boolean
 
-执行P2P连接。
+执行P2P连接。调用前需先调用 startDiscoverDevices 发现对端设备，并建议注册 p2pConnectionChange、p2pPeerDeviceChange 等事件以获取连接状态变化。
 
 > **说明：**
 >
@@ -1113,7 +1113,7 @@ p2pConnect(config: WifiP2PConfig): boolean
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | config | [WifiP2PConfig](#wifip2pconfigdeprecated) | 是 | 连接配置信息。 |
+  | config | [WifiP2PConfig](#wifip2pconfigdeprecated) | 是 | 连接配置信息。需先调用startDiscoverDevices发现设备并通过getP2pPeerDevices获取对端设备地址后设置deviceAddress。 |
 
 **返回值：**
 
@@ -1224,7 +1224,7 @@ try {
 
 startDiscoverDevices(): boolean
 
-开始发现设备。
+开始发现设备。调用此方法后，可调用stopDiscoverDevices停止发现设备以释放资源。
 
 > **说明：**
 >
@@ -1296,11 +1296,11 @@ try {
 | -------- | -------- | -------- | -------- | -------- |
 | isP2pGo | boolean | 否 | 否 | 是否是群主。true:是群主，false:不是群主。 |
 | ownerInfo | [WifiP2pDevice](#wifip2pdevicedeprecated) | 否 | 否 | 群组的设备信息。 |
-| passphrase | string | 否 | 否 | 群组密钥。 |
+| passphrase | string | 否 | 否 | 群组密钥，长度范围8-63个字符。 |
 | interface | string | 否 | 否 | 接口名称。 |
-| groupName | string | 否 | 否 | 群组名称。 |
+| groupName | string | 否 | 否 | 群组名称，最大长度为32字节，编码格式为UTF-8。 |
 | networkId | number | 否 | 否 | 网络ID。 |
-| frequency | number | 否 | 否 | 群组的频率。 |
+| frequency | number | 否 | 否 | 群组的频率，单位：MHz。 |
 | clientDevices | [WifiP2pDevice](#wifip2pdevicedeprecated)[] | 否 | 否 | 接入的设备列表信息。 |
 | goIpAddress | string | 否 | 否 | 群组IP地址。 |
 

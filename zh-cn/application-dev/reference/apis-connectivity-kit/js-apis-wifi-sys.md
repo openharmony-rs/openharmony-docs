@@ -6,13 +6,13 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-该模块主要提供WLAN基础功能、P2P（peer-to-peer）功能和WLAN消息通知的相应服务，让应用可以通过WLAN和其他设备互联互通。
+该模块主要提供WLAN基础功能（如使能/去使能WLAN、网络配置管理、热点管理）、P2P（peer-to-peer）功能（如设备发现、连接管理、永久组管理）和WLAN消息通知（如连接状态变更、热点设备接入/离开等事件通知）等相应服务，适用于设备通过WLAN进行网络连接、热点共享、点对点数据传输及互联互通等场景，让应用可以通过WLAN和其他设备互联互通。
 
 > **说明：**
 >
 > 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.wifi (WLAN)](js-apis-wifi.md)
-> 从API Version 9 开始，该接口不再维护，推荐使用[@ohos.wifiManager (WLAN)](js-apis-wifiManager-sys.md)等相关接口。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.wifi (WLAN)](js-apis-wifi.md)。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[@ohos.wifiManager (WLAN)](js-apis-wifiManager-sys.md)替代。
 
 
 ## 导入模块
@@ -29,7 +29,7 @@ enableWifi(): boolean
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_CONNECTION，仅系统应用可用。
+**需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_CONNECTION，仅系统应用可用。，仅系统应用可用。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -55,7 +55,7 @@ try {
 
 disableWifi(): boolean
 
-去使能WLAN。
+禁用WLAN。
 
 **系统接口：** 此接口为系统接口。
 
@@ -149,15 +149,15 @@ WLAN配置信息。
 
 | **名称** | **类型** | **可读** | **可写** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
-| creatorUid | number | 是 | 否 | 创建用户的ID。 <br /> **系统接口：** 此接口为系统接口。 |
-| disableReason | number | 是 | 否 | 禁用原因。 <br /> **系统接口：** 此接口为系统接口。 |
-| netId | number | 是 | 否 | 分配的网络ID。 <br /> **系统接口：** 此接口为系统接口。 |
-| randomMacType | number | 是 | 否 | 随机MAC类型。 <br /> **系统接口：** 此接口为系统接口。 |
-| randomMacAddr | string | 是 | 否 | 随机MAC地址。 <br /> **系统接口：** 此接口为系统接口。 |
-| ipType | [IpType](#iptype7) | 是 | 否 | IP地址类型。 <br /> **系统接口：** 此接口为系统接口。 |
-| family<sup>20+</sup> | number | 否 | 是 | ip协议版本。 <br /> **系统接口：** 此接口为系统接口。 |
-| staticIp | [IpConfig](#ipconfig7) | 否 | 是 | 静态IPv4配置信息。 <br /> **系统接口：** 此接口为系统接口。 |
-| staticIpv6<sup>20+</sup> | [Ipv6Config](#ipv6config20) | 否 | 是 | 静态IPv6配置信息。 <br /> **系统接口：** 此接口为系统接口。 |
+| creatorUid | number | 是 | 否 | 创建用户的ID。 <br> **系统接口：** 此接口为系统接口。 |
+| disableReason | number | 是 | 否 | 禁用原因。 <br> **系统接口：** 此接口为系统接口。 |
+| netId | number | 是 | 否 | 分配的网络ID。 <br> **系统接口：** 此接口为系统接口。 |
+| randomMacType | number | 是 | 否 | 随机MAC类型。 <br> **系统接口：** 此接口为系统接口。 |
+| randomMacAddr | string | 是 | 否 | 随机MAC地址。 <br> **系统接口：** 此接口为系统接口。 |
+| ipType | [IpType](#iptype7) | 是 | 否 | IP地址类型。 <br> **系统接口：** 此接口为系统接口。 |
+| family<sup>20+</sup> | number | 否 | 是 | ip协议版本。 <br> **系统接口：** 此接口为系统接口。 |
+| staticIp | [IpConfig](#ipconfig7) | 否 | 是 | 静态IPv4配置信息。 <br> **系统接口：** 此接口为系统接口。 |
+| staticIpv6<sup>20+</sup> | [Ipv6Config](#ipv6config20) | 否 | 是 | 静态IPv6配置信息。 <br> **系统接口：** 此接口为系统接口。 |
 
 
 ## IpType<sup>7+</sup>
@@ -186,9 +186,9 @@ IPv4配置信息。
 
 | **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
-| ipAddress | number | 否 | 否 | IPv4地址。 |
-| gateway | number | 否 | 否 | 网关。 |
-| prefixLength | number | 否 | 否 | 前缀长度。 |
+| ipAddress | number | 否 | 否 | IPv4地址，以32位无符号整数表示（网络字节序）。 |
+| gateway | number | 否 | 否 | 网关，以32位无符号整数表示（网络字节序）。 |
+| prefixLength | number | 否 | 否 | 前缀长度，取值范围：0~32。 |
 | dnsServers | number[] | 否 | 否 | DNS服务器。 |
 | domains | Array&lt;string&gt; | 否 | 否 | 域信息。 |
 
@@ -205,7 +205,7 @@ IPv6配置信息。
 | -------- | -------- | -------- | -------- | -------- |
 | ipAddress | string | 否 | 否 | IPv6地址。 |
 | gateway | string| 否 | 否 | 网关。 |
-| prefixLength | number | 否 | 否 | 前缀长度。 |
+| prefixLength | number | 否 | 否 | 前缀长度，取值范围：0~32。 |
 | dnsServers | Array\<string> | 否 | 否 | DNS服务器。 |
 | domains | Array\<string> | 否 | 否 | 域信息。 |
 
@@ -228,7 +228,7 @@ addDeviceConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&gt;)
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
   | config | [WifiDeviceConfig](#wifideviceconfig) | 是 | WLAN配置信息。 |
-  | callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。当操作成功时，err为0，data为添加的网络配置ID，如果data值为-1，表示添加失败。当error为非0，表示处理出现错误。 |
+  | callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。当操作成功时，err为0，data为添加的网络配置ID，如果data值为-1，表示添加失败。当err为非0，表示处理出现错误。 |
 
 **示例：**
 
@@ -249,17 +249,21 @@ try {
         randomMacAddr:  "****",
         ipType: 0,
         staticIp: {
-            ipAddress: "",
-            gateway: "",
+            ipAddress: 0,
+            gateway: 0,
             dnsServers: [],
             domains: []
         }
     }
     wifi.addDeviceConfig(config,(error,result) => {
-        console.info("result:" + JSON.stringify(result));
-    });    
-}catch(error){
-    console.error("failed:" + JSON.stringify(error));
+        if (error) {
+            console.error(`failed: code: ${error.code}, message: ${error.message}`);
+            return;
+        }
+        console.info("result:" + JSON.stringify(result));
+    });    
+} catch (error) {
+    console.error(`failed: code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -296,8 +300,8 @@ import wifi from '@ohos.wifi';
 try {
     let networkId = 0;
     wifi.connectToNetwork(networkId);
-}catch(error){
-    console.error("failed:" + JSON.stringify(error));
+} catch (error) {
+    console.error(`failed: code: ${error.code}, message: ${error.message}`);
 }    
 ```
 
@@ -344,16 +348,16 @@ try {
         randomMacAddr:  "****",
         ipType: 0,
         staticIp: {
-            ipAddress: "",
-            gateway: "",
+            ipAddress: 0,
+            gateway: 0,
             dnsServers: [],
             domains: []
         }
     }
     wifi.connectToDevice(config);
             
-}catch(error){
-    console.error("failed:" + JSON.stringify(error));
+} catch (error) {
+    console.error(`failed: code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -382,8 +386,8 @@ import wifi from '@ohos.wifi';
 
 try {
     wifi.disconnect();
-}catch(error){
-    console.error("failed:" + JSON.stringify(error));
+} catch (error) {
+    console.error(`failed: code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -396,10 +400,10 @@ try {
 
 | 名称 | 类型 | 可读 | 可写 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| networkId | number | 是 | 否 | 网络配置ID。 <br /> **系统接口：** 此接口为系统接口。 |
-| chload | number | 是 | 否 | 连接负载，值越大表示负载越高。 <br /> **系统接口：** 此接口为系统接口。 |
-| snr | number | 是 | 否 | 信噪比。 <br /> **系统接口：** 此接口为系统接口。 |
-| suppState | [SuppState](#suppstate) | 是 | 否 | 请求状态。 <br /> **系统接口：** 此接口为系统接口。 |
+| networkId | number | 是 | 否 | 网络配置ID。 <br> **系统接口：** 此接口为系统接口。 |
+| chload | number | 是 | 否 | 连接负载，值越大表示负载越高。 <br> **系统接口：** 此接口为系统接口。 |
+| snr | number | 是 | 否 | 信噪比。 <br> **系统接口：** 此接口为系统接口。 |
+| suppState | [SuppState](#suppstate) | 是 | 否 | 请求状态。 <br> **系统接口：** 此接口为系统接口。 |
 
 
 ## SuppState
@@ -443,7 +447,7 @@ getSupportedFeatures(): number
 
   | **类型** | **说明** |
   | -------- | -------- |
-  | number | 支持的特性值。 |
+  | number | 支持的特性值，以位掩码形式返回，可通过位与操作判断是否支持特定特性（例如：(features & 0x0001) != 0 表示支持基础结构模式特性）。 |
 
 **特性ID值枚举：**
 
@@ -454,7 +458,7 @@ getSupportedFeatures(): number
 | 0x0004 | GAS/ANQP特性。 |
 | 0x0008 | Wifi-Direct特性。 |
 | 0x0010 | Soft&nbsp;AP特性。 |
-| 0x0040 | Wi-Fi&nbsp;AWare组网特性。 |
+| 0x0040 | Wi-Fi&nbsp;Aware组网特性。 |
 | 0x8000 | AP&nbsp;STA共存特性。 |
 | 0x8000000 | WPA3-Personal&nbsp;SAE特性。 |
 | 0x10000000 | WPA3-Enterprise&nbsp;Suite-B |
@@ -488,8 +492,8 @@ import wifi from '@ohos.wifi';
 try {
     let ret = wifi.getDeviceMacAddress();
     console.info("deviceMacAddress:" + JSON.stringify(ret));
-}catch(error){
-    console.error("failed:" + JSON.stringify(error));
+} catch (error) {
+    console.error(`failed: code: ${error.code}, message: ${error.message}`);
 }
 
 ```
@@ -519,8 +523,8 @@ import wifi from '@ohos.wifi';
 
 try {
     wifi.reassociate();
-}catch(error){
-    console.error("failed:" + JSON.stringify(error));
+} catch (error) {
+    console.error(`failed: code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -528,7 +532,7 @@ try {
 
 reconnect(): boolean
 
-重新连接网络。
+重新连接网络。与reassociate()的区别：reassociate()用于重新执行关联流程，reconnect()用于重新建立网络连接，请根据实际场景选择使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -548,8 +552,8 @@ import wifi from '@ohos.wifi';
 
 try {
     wifi.reconnect();
-}catch(error){
-    console.error("failed:" + JSON.stringify(error));
+} catch (error) {
+    console.error(`failed: code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -578,8 +582,8 @@ import wifi from '@ohos.wifi';
 try {
     let configs = wifi.getDeviceConfigs();
     console.info("configs:" + JSON.stringify(configs));
-}catch(error){
-    console.error("failed:" + JSON.stringify(error));
+} catch (error) {
+    console.error(`failed: code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -625,16 +629,16 @@ try {
         randomMacAddr:  "****",
         ipType: 0,
         staticIp: {
-            ipAddress: "",
-            gateway: "",
+            ipAddress: 0,
+            gateway: 0,
             dnsServers: [],
             domains: []
         }
     }
     let ret = wifi.updateNetwork(config);
     console.error("ret:" + ret);        
-}catch(error){
-    console.error("failed:" + JSON.stringify(error));
+} catch (error) {
+    console.error(`failed: code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -669,8 +673,8 @@ import wifi from '@ohos.wifi';
 try {
     let netId = 0;
     wifi.disableNetwork(netId);        
-}catch(error){
-    console.error("failed:" + JSON.stringify(error));
+} catch (error) {
+    console.error(`failed: code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -698,8 +702,8 @@ import wifi from '@ohos.wifi';
 
 try {
     wifi.removeAllNetwork();        
-}catch(error){
-    console.error("failed:" + JSON.stringify(error));
+} catch (error) {
+    console.error(`failed: code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -734,8 +738,8 @@ import wifi from '@ohos.wifi';
 try {
     let id = 0;
     wifi.removeDevice(id);        
-}catch(error){
-    console.error("failed:" + JSON.stringify(error));
+} catch (error) {
+    console.error(`failed: code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -763,8 +767,8 @@ import wifi from '@ohos.wifi';
 
 try {
     wifi.enableHotspot();    
-}catch(error){
-    console.error("failed:" + JSON.stringify(error));
+} catch (error) {
+    console.error(`failed: code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -792,8 +796,8 @@ import wifi from '@ohos.wifi';
 
 try {
     wifi.disableHotspot();    
-}catch(error){
-    console.error("failed:" + JSON.stringify(error));
+} catch (error) {
+    console.error(`failed: code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -822,8 +826,8 @@ import wifi from '@ohos.wifi';
 try {
     let ret = wifi.isHotspotDualBandSupported();
     console.info("result:" + ret);        
-}catch(error){
-    console.error("failed:" + JSON.stringify(error));
+} catch (error) {
+    console.error(`failed: code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -910,10 +914,10 @@ try {
 
 | **名称** | **类型** | **可读** | **可写** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
-| ssid | string | 是 | 否 | 热点的SSID，编码格式为UTF-8。 |
+| ssid | string | 是 | 否 | 热点的SSID，编码格式为UTF-8，长度范围1-32字节。 |
 | securityType | [WifiSecurityType](js-apis-wifi.md#wifisecuritytypedeprecated) | 是 | 否 | 加密类型。 |
-| band | number | 是 | 否 | 热点的带宽。1: 2.4G, 2: 5G, 3: 双模频段 |
-| preSharedKey | string | 是 | 否 | 热点的密钥。 |
+| band | number | 是 | 否 | 热点的频段。1: 2.4G, 2: 5G, 3: 双模频段 |
+| preSharedKey | string | 是 | 否 | 热点的密钥。长度范围8-63个字符。 |
 | maxConn | number | 是 | 否 | 最大设备连接数。 |
 
 
@@ -942,8 +946,8 @@ import wifi from '@ohos.wifi';
 try {
     let config = wifi.getHotspotConfig();
     console.info("result:" + JSON.stringify(config));        
-}catch(error){
-    console.error("failed:" + JSON.stringify(error));
+} catch (error) {
+    console.error(`failed: code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -972,8 +976,8 @@ import wifi from '@ohos.wifi';
 try {
     let stations = wifi.getStations();
     console.info("result:" + JSON.stringify(stations));        
-}catch(error){
-    console.error("failed:" + JSON.stringify(error));
+} catch (error) {
+    console.error(`failed: code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -996,7 +1000,7 @@ try {
 
 deletePersistentGroup(netId: number): boolean
 
-删除永久组。
+删除P2P永久组。永久组是设备间保存的P2P组配置，可在后续连接中复用而无需重新协商。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1015,7 +1019,7 @@ deletePersistentGroup(netId: number): boolean
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | boolean | true:操作执行成功，操作执行失败。 |
+  | boolean | true:操作执行成功，false:操作执行失败。 |
 
 **示例：**
 ```ts
@@ -1046,7 +1050,7 @@ setDeviceName(devName: string): boolean
 
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
-  | devName | string | 是 | 设备名称。 |
+  | devName | string | 是 | 设备名称。长度范围1-32字节。 |
 
 **返回值：**
 
@@ -1070,7 +1074,7 @@ try {
 
 on(type: "streamChange", callback: Callback&lt;number&gt;): void
 
-注册WIFI流更改事件。
+注册WLAN流更改事件。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1083,13 +1087,13 @@ on(type: "streamChange", callback: Callback&lt;number&gt;): void
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"streamChange"字符串。 |
-| callback | Callback&lt;number&gt; | 是 | 状态改变回调函数，返回0：无，1：向下，2：向上，3：双向。 |
+| callback | Callback&lt;number&gt; | 是 | 状态改变回调函数，返回0：无，1：下行，2：上行，3：双向。 |
 
 ## wifi.off('streamChange')<sup>7+</sup>
 
 off(type: "streamChange", callback?: Callback&lt;number&gt;): void
 
-取消注册WIFI流更改事件。
+取消注册WLAN流更改事件。当不传入callback时，取消所有注册；当传入callback时，仅取消与该callback匹配的注册。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1102,7 +1106,7 @@ off(type: "streamChange", callback?: Callback&lt;number&gt;): void
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"streamChange"字符串。 |
-| callback | Callback&lt;number&gt; | 否| 状态改变回调函数，返回0：无，1：向下，2：向上，3：双向。 |
+| callback | Callback&lt;number&gt; | 否 | 状态改变回调函数，返回0：无，1：下行，2：上行，3：双向。不填写时取消该事件所有已注册的回调。 |
 
 **示例：**
 ```ts
@@ -1125,7 +1129,7 @@ wifi.off("streamChange", recvStreamChangeFunc);
 
 on(type: "hotspotStaJoin", callback: Callback&lt;StationInfo&gt;): void
 
-注册wifi热点sta加入事件。
+注册WLAN热点sta加入事件。
 
 **需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT
 
@@ -1138,13 +1142,13 @@ on(type: "hotspotStaJoin", callback: Callback&lt;StationInfo&gt;): void
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"hotspotStaJoin"字符串。 |
-  | callback | Callback&lt;StationInfo&gt; | 是 | 状态改变回调函数。 |
+  | callback | Callback&lt;[StationInfo](#stationinfo7)&gt; | 是 | 状态改变回调函数。 |
 
 ## wifi.off('hotspotStaJoin')<sup>7+</sup>
 
 off(type: "hotspotStaJoin", callback?: Callback&lt;StationInfo&gt;): void
 
-取消注册wifi热点sta加入事件。
+取消注册WLAN热点sta加入事件。当不传入callback时，取消所有注册；当传入callback时，仅取消与该callback匹配的注册。
 
 **需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT
 
@@ -1157,7 +1161,7 @@ off(type: "hotspotStaJoin", callback?: Callback&lt;StationInfo&gt;): void
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"hotspotStaJoin"字符串。 |
-  | callback | Callback&lt;StationInfo&gt; | 否 | 状态改变回调函数。 |
+  | callback | Callback&lt;StationInfo&gt; | 否 | 当有设备接入热点时触发的回调函数，返回接入设备的信息。不填写时取消该事件所有已注册的回调。 |
 
   **示例：**
 ```ts
@@ -1192,13 +1196,13 @@ on(type: "hotspotStaLeave", callback: Callback&lt;StationInfo&gt;): void
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"hotspotStaLeave"字符串。 |
-  | callback | Callback&lt;StationInf&gt; | 是 | 状态改变回调函数。 |
+  | callback | Callback&lt;StationInfo&gt; | 是 | 当有设备接入热点时触发的回调函数，返回接入设备的信息。 |
 
 ## wifi.off('hotspotStaLeave')<sup>7+</sup>
 
 off(type: "hotspotStaLeave", callback?: Callback&lt;StationInfo&gt;): void
 
-取消注册wifi热点sta离开事件。
+取消注册wifi热点sta离开事件。当不传入callback时，取消所有注册；当传入callback时，仅取消与该callback匹配的注册。
 
 **需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT
 
@@ -1211,7 +1215,7 @@ off(type: "hotspotStaLeave", callback?: Callback&lt;StationInfo&gt;): void
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"hotspotStaLeave"字符串。 |
-  | callback | Callback&lt;StationInf&gt; | 否 | 状态改变回调函数。 |
+  | callback | Callback&lt;StationInfo&gt; | 否 | 当有设备接入热点时触发的回调函数，返回接入设备的信息。 |
 
   **示例：**
 ```ts

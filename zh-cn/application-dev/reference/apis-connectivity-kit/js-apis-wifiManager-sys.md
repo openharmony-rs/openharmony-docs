@@ -6,7 +6,7 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-该模块主要提供WLAN基础功能、P2P（peer-to-peer）功能和WLAN消息通知的相应服务，让应用可以通过WLAN和其他设备互联互通。
+该模块主要提供WLAN基础功能（如网络扫描、连接管理、热点共享）、P2P（peer-to-peer）功能和WLAN消息通知的相应服务，让应用可以通过WLAN和其他设备互联互通，适用于设备间数据传输、网络共享、热点连接等场景。
 
 > **说明：**
 >
@@ -24,11 +24,11 @@ import { wifiManager } from '@kit.ConnectivityKit';
 
 enableSemiWifi(): void
 
-使能WLAN半关闭（STA关闭、其他P2p、Hml可用），异步接口，需要通过注册"wifiStateChange"事件的回调来监听是否使能成功。
+使能WLAN半关闭（STA关闭、其他P2P、Hml可用），异步接口，需要通过注册"wifiStateChange"事件的回调来监听是否使能成功。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_CONNECTION  仅系统应用可用。
+**需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_CONNECTION，仅系统应用可用。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -68,7 +68,7 @@ setScanAlwaysAllowed(isScanAlwaysAllowed: boolean): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.SET_WIFI_CONFIG(仅系统应用可申请)
+**需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.SET_WIFI_CONFIG（仅系统应用可申请）
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -76,7 +76,7 @@ setScanAlwaysAllowed(isScanAlwaysAllowed: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| isScanAlwaysAllowed | boolean | 是 | 是否始终允许扫描。true:允许扫描，&nbsp;false:不允许扫描 |
+| isScanAlwaysAllowed | boolean | 是 | 是否始终允许扫描。true：允许扫描，&nbsp;false：不允许扫描 |
 
 **错误码：**
 
@@ -109,7 +109,7 @@ getScanAlwaysAllowed(): boolean
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.GET_WIFI_INFO 和 ohos.permission.GET_WIFI_CONFIG(仅系统应用可申请)
+**需要权限：** ohos.permission.GET_WIFI_INFO 和 ohos.permission.GET_WIFI_CONFIG（仅系统应用可申请）
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -152,16 +152,16 @@ WLAN配置信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| creatorUid | number | 否 | 是 | 创建用户的ID。 <br /> **系统接口：** 此接口为系统接口。 |
-| disableReason | number | 否 | 是 | 禁用原因： <br /> -1 - 未知原因，0 - 未禁用，1 - 关联拒绝，2 - 认证失败 <br /> 3 - DHCP失败，4 - 暂时无互联网连接 <br /> 5 - 认证无凭据，6 - 永久无互联网连接 <br /> 7 - 由WIFI管理器禁用，8 - 由于密码错误禁用 <br /> 9 - 认证无订阅，10 - 私有EAP认证错误 <br /> 11 - 未找到网络，12 - 连续失败 <br /> 13 - 由系统禁用，14 - EAP-AKA认证失败 <br /> 15 - 解除关联原因，16 - 禁用网络选择最大值<br /> **系统接口：** 此接口为系统接口。 |
-| randomMacType | number | 否 | 是 | MAC地址类型。0 - 随机MAC地址，1 - 设备MAC地址 <br /> **系统接口：** 此接口为系统接口。 |
-| randomMacAddr | string | 否 | 是 | MAC地址。<br /> **系统接口：** 此接口为系统接口。 |
-| ipType | [IpType](#iptype) | 否 | 是 | IP地址类型。 <br /> **系统接口：** 此接口为系统接口。 |
+| creatorUid | number | 否 | 是 | 创建用户的ID。 <br> **系统接口：** 此接口为系统接口。 |
+| disableReason | number | 否 | 是 | 禁用原因： <br> -1 - 未知原因，0 - 未禁用，1 - 关联拒绝，2 - 认证失败 <br> 3 - DHCP失败，4 - 暂时无互联网连接 <br> 5 - 认证无凭据，6 - 永久无互联网连接 <br> 7 - 由WIFI管理器禁用，8 - 由于密码错误禁用 <br> 9 - 认证无订阅，10 - 私有EAP认证错误 <br> 11 - 未找到网络，12 - 连续失败 <br> 13 - 由系统禁用，14 - EAP-AKA认证失败 <br> 15 - 解除关联原因，16 - 禁用网络选择最大值<br> **系统接口：** 此接口为系统接口。 |
+| randomMacType | number | 否 | 是 | MAC地址类型。0 - 随机MAC地址，1 - 设备MAC地址，默认值为0（随机MAC地址）。 <br /> **系统接口：** 此接口为系统接口。 |
+| randomMacAddr | string | 否 | 是 | MAC地址，格式为XX:XX:XX:XX:XX:XX。<br /> **系统接口：** 此接口为系统接口。 |
+| ipType | [IpType](#iptype) | 否 | 是 | IP地址类型，默认值为1（DHCP）。 <br /> **系统接口：** 此接口为系统接口。 |
 | staticIp | [IpConfig](#ipconfig) | 否 | 是 | 静态IP配置信息。 <br /> **系统接口：** 此接口为系统接口。 |
 | proxyConfig<sup>10+</sup> | [WifiProxyConfig](#wifiproxyconfig10) | 否 | 是 | 代理配置。  <br /> **系统接口：** 此接口为系统接口。|
 | configStatus<sup>12+</sup> | number | 否 | 是 | 返回当前网络是否允许参与选网。 <br />  1 - 允许参与选网，2 - 禁止参与 <br /> 3 - 永久禁止参与，4 - 未知 <br /> **系统接口：** 此接口为系统接口。|
-| isAutoConnectAllowed<sup>17+</sup> | boolean | 否 | 是 | 是否允许自动连接。false:不允许，true:允许自动连接。<br /> **系统接口：** 此接口为系统接口。|
-| isSecureWifi<sup>20+</sup> | boolean | 否 | 是 | 安全Wi-Fi检测。false:不是安全Wi-Fi，true:是安全Wi-Fi。<br /> **系统接口：** 此接口为系统接口。|
+| isAutoConnectAllowed<sup>17+</sup> | boolean | 否 | 是 | 是否允许自动连接。false:不允许，true:允许自动连接，默认值为true。<br /> **系统接口：** 此接口为系统接口。|
+| isSecureWifi<sup>20+</sup> | boolean | 否 | 是 | 安全Wi-Fi检测。false:不是安全Wi-Fi，true:是安全Wi-Fi，默认值为false。<br /> **系统接口：** 此接口为系统接口。|
 
 ## IpType
 
@@ -189,10 +189,10 @@ IP配置信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| ipAddress | number | 否 | 否 | IP地址。 |
-| gateway | number | 否 | 否 | 网关。 |
+| ipAddress | number | 否 | 否 | IP地址，以32位无符号整数表示（网络字节序）。 |
+| gateway | number | 否 | 否 | 网关地址，以32位无符号整数表示（网络字节序）。 |
 | prefixLength | number | 否 | 否 | 掩码。 |
-| dnsServers | number[] | 否 | 否 | DNS服务器。 |
+| dnsServers | number[] | 否 | 否 | DNS服务器地址数组，每个元素以32位无符号整数表示（网络字节序）。 |
 | domains | Array&lt;string&gt; | 否 | 否 | 域信息。 |
 
 
@@ -206,10 +206,10 @@ Wifi 代理配置。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| proxyMethod | ProxyMethod | 否 | 是 | 代理方法。 |
-| pacWebAddress | string | 否 | 是 | 自动配置代理的PAC web 地址。 |
+| proxyMethod | ProxyMethod | 否 | 是 | 代理方法，默认值为METHOD_NONE（不使用代理）。 |
+| pacWebAddress | string | 否 | 是 | 自动配置代理的PAC web 地址，需为有效的URL格式（如 http://example.com/proxy.pac）。 |
 | serverHostName | string | 否 | 是 | 手动配置代理的服务器主机名。 |
-| serverPort | number | 否 | 是 | 手动配置代理的服务器端口。 |
+| serverPort | number | 否 | 是 | 手动配置代理的服务器端口，取值范围[0, 65535]。 |
 | exclusionObjects | string | 否 | 是 | 手动配置代理的排除对象，对象用“,”分隔。|
 
 ## ProxyMethod<sup>10+</sup>
@@ -236,7 +236,7 @@ getDeviceConfig(networkId: number): WifiDeviceConfig
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.GET_WIFI_INFO 和 ohos.permission.GET_WIFI_CONFIG(仅系统应用可申请)
+**需要权限：** ohos.permission.GET_WIFI_INFO 和 ohos.permission.GET_WIFI_CONFIG（仅系统应用可申请）
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -280,7 +280,7 @@ getDeviceConfig(networkId: number): WifiDeviceConfig
 
 connectToDevice(config: WifiDeviceConfig): void
 
-连接到指定网络（如果当前已经连接到热点，请先使用disconnect（）接口断开连接）。
+连接到指定网络（如果当前已经连接到热点，请先使用disconnect()接口断开连接）。
 
 **系统接口：** 此接口为系统接口。
 
@@ -321,24 +321,24 @@ connectToDevice(config: WifiDeviceConfig): void
     wifiManager.connectToDevice(config);
         
   }catch(error){
-    console.error("failed:" + JSON.stringify(error));
+    console.error(`failed, code: ${error.code}, message: ${error.message}`);
   }
 ```
 
 ## WifiLinkedInfo
 
-提供WLAN连接的相关信息。
+提供WLAN扫描的相关信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| networkId | number | 否 | 否 | 网络配置ID。 <br /> **系统接口：** 此接口为系统接口。 |
+| networkId | number | 否 | 否 | 网络配置ID。 <br> **系统接口：** 此接口为系统接口。 |
 | chload | number | 否 | 否 | 连接负载，值越大表示负载越高。 <br /> **系统接口：** 此接口为系统接口。 |
-| snr | number | 否 | 否 | 信噪比。 <br /> **系统接口：** 此接口为系统接口。 |
+| snr | number | 否 | 否 | 信噪比，单位：dB。 <br /> **系统接口：** 此接口为系统接口。 |
 | suppState | [SuppState](#suppstate) | 否 | 否 | 请求状态。 <br /> **系统接口：** 此接口为系统接口。 |
-| isHiLinkProNetwork<sup>20+</sup> | boolean | 否 | 是 | 是否是HiLinkPro网络。true表示是HiLinkPro网络，false表示不是HiLinkPro网络。<br /> **系统接口：** 此接口为系统接口。 |
-| wifiTxRxValid | boolean | 否 | 是 | **起始版本：** 26.0.0。用于指示Wi-Fi的发送（Tx, Transmitting）和接收（Rx, Receiving）功能是否都在正常工作。<br /> **系统接口：** 此接口为系统接口。 |
+| isHiLinkProNetwork<sup>20+</sup> | boolean | 否 | 是 | 是否是HiLinkPro（华为设备互联网络协议）网络。true表示是HiLinkPro网络，false表示不是HiLinkPro网络。<br /> **系统接口：** 此接口为系统接口。 |
+| wifiTxRxValid | boolean | 否 | 是 | **起始版本：** 26.0.0。用于指示Wi-Fi的发送（Tx, Transmitting）和接收（Rx, Receiving）功能是否都在正常工作。<br> **系统接口：** 此接口为系统接口。 |
 
 ## SuppState
 
@@ -390,7 +390,7 @@ getSupportedFeatures(): number
 | 0x0002 | 5&nbsp;GHz带宽特性。 |
 | 0x0004 | GAS/ANQP特性。 |
 | 0x0008 | WiFi-Direct特性。 |
-| 0x0010 | Soft&nbsp;AP特性。 |
+| 0x0010 | SoftAP特性。 |
 | 0x0040 | Wi-Fi&nbsp;AWare组网特性。 |
 | 0x8000 | AP&nbsp;STA共存特性。 |
 | 0x8000000 | WPA3-Personal&nbsp;SAE特性。 |
@@ -438,7 +438,7 @@ getWifiDetailState(): WifiDetailState
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | [WifiDetailState](#wifidetailstate12) | Wifi枚举状态。 |
+  | [WifiDetailState](#wifidetailstate12) | Wifi开关的详细状态，包含已关闭、已激活、激活中、关闭中、半关闭中、已半关闭等状态。 |
 
 **错误码：**
 
@@ -487,7 +487,7 @@ try {
 
 reassociate(): void
 
-重新关联网络。
+重新关联网络。与reconnect()的区别：reassociate()用于在当前已关联状态下发起重新关联（如漫游至同一ESS内的其他AP），reconnect()用于在断开连接后重新发起连接。根据当前连接状态选择合适的方法。
 
 **系统接口：** 此接口为系统接口。
 
@@ -561,7 +561,7 @@ updateNetwork(config: WifiDeviceConfig): number
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.SET_WIFI_CONFIG(仅系统应用可申请)
+**需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.SET_WIFI_CONFIG（仅系统应用可申请）
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -667,13 +667,13 @@ disableNetwork(netId: number, blockDuration: number): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | netId | number | 是 | 网络配置ID。 |
-| blockDuration | number | 是 | 禁用网络时长，单位：秒。 |
+| blockDuration | number | 是 | 禁用网络时长，单位：秒。取值需大于0。 |
 
 **错误码：**
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
-| 错误码 | 错误信息 |
+| 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -863,7 +863,7 @@ try {
 
 startWifiDetection(): void
 
-发起WiFi网络探测。
+发起WiFi网络探测，用于检测当前Wi-Fi连接的网络连通性（如是否可访问互联网、是否存在Portal认证页面等），帮助系统判断当前网络是否可用。适用于网络连接后需要验证网络质量的场景。
 
 **系统接口：** 此接口为系统接口。
 
@@ -898,7 +898,7 @@ try {
 
 enableHiLinkHandshake(isHiLinkEnable: boolean, bssid: string, config: WifiDeviceConfig): void
 
-设置是否使能hiLink。
+设置是否使能HiLink。
 
 **系统接口：** 此接口为系统接口。
 
@@ -910,7 +910,7 @@ enableHiLinkHandshake(isHiLinkEnable: boolean, bssid: string, config: WifiDevice
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| isHiLinkEnable | boolean | 是 | 是否使能hiLink。true:使能，&nbsp;false:去使能。 |
+| isHiLinkEnable | boolean | 是 | 是否使能HiLink。true：使能，&nbsp;false：去使能。 |
 | bssid | string | 是 | 热点的mac地址，例如：00:11:22:33:44:55。 |
 | config | [WifiDeviceConfig](#wifideviceconfig) | 是 | WLAN的配置信息。config.bssid必须和第二个参数bssid保持一致。如果bssidType未指定值，则bssidType默认为随机设备地址类型。 |
 
@@ -951,9 +951,9 @@ try {
 
 factoryReset(): void
 
-**系统接口：** 此接口为系统接口。
+重置WiFi相关配置并关闭WiFi。
 
-重置wifi相关配置并关闭WiFi。
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和ohos.permission.SET_WIFI_CONFIG(仅系统应用可申请)
 
@@ -985,7 +985,7 @@ try {
 
 enableHotspot(): void
 
-使能热点，异步接口，是否打开成功需要注册并监听hotspotStateChange的回调。
+使能热点，异步接口，是否打开成功需要注册并监听hotspotStateChange的回调。调用前建议先通过isOpenSoftApAllowed接口检查当前是否允许操作热点开关，飞行模式等场景下可能无法使能热点。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1019,7 +1019,7 @@ try {
 
 disableHotspot(): void
 
-去使能热点 ，异步接口，是否关闭成功需要注册并监听hotspotStateChange的回调。
+去使能热点。该接口为异步接口，需注册并监听hotspotStateChange的回调来确认是否关闭成功。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1094,7 +1094,7 @@ try {
 
 isOpenSoftApAllowed(): boolean
 
-检查在某些情况下是否能够操作WLAN热点。当飞行模式开启时，如果系统不支持SoftAP和STA共存，也不支持信号桥接，则无法操作热点开关。
+检查在飞行模式等特定场景下是否能够操作WLAN热点。当飞行模式开启时，如果系统不支持SoftAP和STA共存，也不支持信号桥接，则无法操作热点开关。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1139,7 +1139,7 @@ setHotspotConfig(config: HotspotConfig): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.GET_WIFI_CONFIG(仅系统应用可申请)
+**需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.GET_WIFI_CONFIG（仅系统应用可申请）
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
 
@@ -1191,13 +1191,13 @@ try {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| ssid | string | 否 | 否 | 热点的SSID，编码格式为UTF-8。 |
+| ssid | string | 否 | 否 | 热点的SSID，编码格式为UTF-8，长度不超过32字节。 |
 | securityType | [WifiSecurityType](js-apis-wifiManager.md#wifisecuritytype)| 否 | 否 | 加密类型。 |
-| band | number | 否 | 否 | 热点的带宽。1: 2.4G, 2: 5G, 3: 双模频段 |
-| channel<sup>10+</sup> | number | 否 | 是 | 热点的信道（2.4G：1~14,5G：7~196）。 |
-| preSharedKey | string | 否 | 否 | 热点的密钥。 |
-| maxConn | number | 否 | 否 | 最大设备连接数。 |
-| ipAddress | string | 否 | 是 | DHCP服务器的IP地址。|
+| band | number | 否 | 否 | 热点的频段。1: 2.4G, 2: 5G, 3: 双频段 |
+| channel<sup>10+</sup> | number | 否 | 是 | 热点的信道（2.4GHz：1~14,5GHz：7~196）。 |
+| preSharedKey | string | 否 | 否 | 热点的密钥。WPA/WPA2-PSK 加密方式下长度为8-63个字符。 |
+| maxConn | number | 否 | 否 | 最大设备连接数。取值需大于0，具体上限取决于设备支持的最大连接数。 |
+| ipAddress | string | 否 | 是 | DHCP服务器的IP地址，未指定时使用系统默认地址（如192.168.43.1）。|
 
 ## wifiManager.getHotspotConfig
 
@@ -1207,7 +1207,7 @@ getHotspotConfig(): HotspotConfig
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.GET_WIFI_INFO 和 ohos.permission.GET_WIFI_CONFIG(仅系统应用可申请)
+**需要权限：** ohos.permission.GET_WIFI_INFO 和 ohos.permission.GET_WIFI_CONFIG（仅系统应用可申请）
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
 
@@ -1296,15 +1296,15 @@ try {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | name | string | 否 | 否 | 设备名称。 |
-| macAddress | string | 否 | 否 | MAC地址。 |
+| macAddress | string | 否 | 否 | MAC地址，格式为XX:XX:XX:XX:XX:XX。 |
 | macAddressType<sup>10+</sup> | [DeviceAddressType](js-apis-wifiManager.md#deviceaddresstype10) | 否 | 是 | MAC地址类型。 |
-| ipAddress | string | 否 | 否 | IP地址。 |
+| ipAddress | string | 否 | 否 | IP地址，格式为点分十进制（如192.168.1.1）。 |
 
 ## wifiManager.addHotspotBlockList<sup>11+</sup>
 
 addHotspotBlockList(stationInfo: StationInfo): void
 
-将设备添加到热点的阻止连接设备列表中，列表中的设备将不能访问热点。
+将设备添加到热点的阻止连接设备列表中，列表中的设备将不能访问热点。仅在设备作为热点（AP）模式下有效，需热点开启后调用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1352,7 +1352,7 @@ try {
 
 delHotspotBlockList(stationInfo: StationInfo): void
 
-将设备从热点的阻止列表中删除。
+将设备从热点的阻止列表中删除。仅在设备作为热点（AP）模式下有效，需热点开启后调用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1442,7 +1442,7 @@ try {
 
 deletePersistentGroup(netId: number): void
 
-删除指定网络ID的永久WLAN组配置。该接口用于清除已保存的WLAN网络配置信息，使其不再自动连接。
+删除指定网络ID的永久P2P组配置。该接口用于清除已保存的P2P组信息，使其不再自动连接。
 
 - 根据网络ID删除之前与P2P设备建立的永久组信息，后续与该P2P设备进行P2P连接时需要重新进行P2P协商。
 
@@ -1663,7 +1663,7 @@ off(type: 'streamChange', callback?: Callback&lt;number&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"streamChange"字符串。 |
-| callback | Callback&lt;number&gt; | 否 | 状态改变回调函数，返回0:无，1:向下，2:向上，3:双向。 |
+| callback | Callback&lt;number&gt; | 否 | 状态改变回调函数，返回0:无，1:向下，2:向上，3:双向。不填写该参数时，取消注册该事件的所有已注册回调。 |
 
 **错误码：**
 
@@ -1741,7 +1741,7 @@ off(type: 'deviceConfigChange', callback?: Callback&lt;number&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"deviceConfigChange"字符串。 |
-| callback | Callback&lt;number&gt; | 否 | 状态改变回调函数，返回值为 0: 添加配置。1: 更改配置。2: 删除配置。|
+| callback | Callback&lt;number&gt; | 否 | 状态改变回调函数，返回值为 0: 添加配置。1: 更改配置。2: 删除配置。不填写该参数时，取消注册该事件的所有已注册回调。|
 
 **错误码：**
 
@@ -1788,7 +1788,7 @@ on(type: 'hotspotStaJoin', callback: Callback&lt;StationInfo&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"hotspotStaJoin"字符串。 |
-| callback | Callback&lt;StationInfo&gt; | 是 | 状态改变回调函数。 |
+| callback | Callback&lt;[StationInfo](#stationinfo)&gt; | 是 | 状态改变回调函数。 |
 
 **错误码：**
 
@@ -1819,7 +1819,7 @@ off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"hotspotStaJoin"字符串。 |
-| callback | Callback&lt;StationInfo&gt; | 否 | 状态改变回调函数。 |
+| callback | Callback&lt;StationInfo&gt; | 否 | 状态改变回调函数。传入该参数时仅取消注册指定回调；不填写该参数时，取消注册该事件的所有已注册回调。 |
 
 **错误码：**
 
@@ -1866,7 +1866,7 @@ on(type: 'hotspotStaLeave', callback: Callback&lt;StationInfo&gt;): void
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"hotspotStaLeave"字符串。 |
-  | callback | Callback&lt;StationInfo&gt; | 是 | 状态改变回调函数。 |
+  | callback | Callback&lt;[StationInfo](#stationinfo)&gt; | 是 | 状态改变回调函数。 |
 
 **错误码：**
 
@@ -1897,7 +1897,7 @@ off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"hotspotStaLeave"字符串。 |
-| callback | Callback&lt;StationInfo&gt; | 否 | 状态改变回调函数。 |
+| callback | Callback&lt;StationInfo&gt; | 否 | 状态改变回调函数。传入该参数时仅取消注册指定回调；不填写该参数时，取消注册该事件的所有已注册回调。 |
 
 **错误码：**
 
@@ -1929,13 +1929,13 @@ wifiManager.off("hotspotStaLeave", recvHotspotStaLeaveFunc);
 
 ## WifiScanInfo
 
-提供WLAN连接的相关信息。
+提供WLAN扫描的相关信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| isHiLinkProNetwork<sup>20+</sup> | boolean | 否 | 是 | 是否是HiLinkPro网络。true表示是HiLinkPro网络，false表示不是HiLinkPro网络。<br /> **系统接口：** 此接口为系统接口。 |
+| isHiLinkProNetwork<sup>20+</sup> | boolean | 否 | 是 | 是否是HiLinkPro（华为设备互联网络协议）网络。true表示是HiLinkPro网络，false表示不是HiLinkPro网络。<br /> **系统接口：** 此接口为系统接口。 |
 
 ## wifiManager.isRandomMacDisabled<sup>21+</sup>
 
@@ -1953,7 +1953,7 @@ isRandomMacDisabled(): boolean
 
   | **类型** | **说明** |
   | -------- | -------- |
-  | boolean | true:禁用随机MAC地址; false:未禁用随机MAC地址。|
+  | boolean | true:禁用随机MAC地址; false:未禁用随机MAC地址，格式为XX:XX:XX:XX:XX:XX。|
 
 **错误码：**
 
