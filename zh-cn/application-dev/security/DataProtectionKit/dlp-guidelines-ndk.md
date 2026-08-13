@@ -41,8 +41,8 @@
         include(&#36;{PACKAGE_FIND_FILE})
     endif()
     
-    include_directories(&#36;{NATIVERENDER_ROOT_PATH}
-                        &#36;{NATIVERENDER_ROOT_PATH}/include)
+    include_directories(${NATIVERENDER_ROOT_PATH}
+                        ${NATIVERENDER_ROOT_PATH}/include)
     
     add_library(entry SHARED napi_init.cpp)
     target_link_libraries(entry PUBLIC libace_napi.z.so libohdlp_permission.so)
