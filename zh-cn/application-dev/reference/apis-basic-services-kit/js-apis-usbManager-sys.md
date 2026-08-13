@@ -53,7 +53,6 @@ usbFunctionsFromString(funcs: string): number
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 202      | Permission denied. Normal application do not have permission to use system api. |
 
 **示例：**
 
@@ -97,7 +96,6 @@ usbFunctionsToString(funcs: FunctionType): string
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 202      | Permission denied. Normal application do not have permission to use system api. |
 
 **示例：**
 
@@ -177,15 +175,6 @@ getCurrentFunctions(): FunctionType
 | ----------------------------- | --------------------------------- |
 | [FunctionType](#functiontype) | 当前的USB功能列表的数字组合掩码。如果开发者模式关闭且没有设备接入，则返回undefined，需要对返回值做判空处理。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                                        |
-| -------- | ------------------------------------------------------------------------------- |
-| 401      | Parameter error. No parameters are required. |
-| 202      | Permission denied. Normal application do not have permission to use system api. |
-
 **示例：**
 
 ```ts
@@ -212,15 +201,6 @@ getPorts(): Array\<USBPort\>
 | 类型                       | 说明                  |
 | -------------------------- | --------------------- |
 | Array<[USBPort](#usbport)> | USB端口描述信息列表。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                                        |
-| -------- | ------------------------------------------------------------------------------- |
-| 401      | Parameter error. No parameters are required. |
-| 202      | Permission denied. Normal application do not have permission to use system api. |
 
 **示例：**
 
@@ -262,7 +242,6 @@ getSupportedModes(portId: number): PortModeType
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 202      | Permission denied. Normal application do not have permission to use system api. |
 
 **示例：**
 
@@ -359,9 +338,9 @@ addDeviceAccessRight(tokenId: string, deviceName: string): boolean
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.   <br>适用版本：18+ |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
-| 801      | Capability not supported. |
+| 801      | Capability not supported.   <br>适用版本：18+ |
 
 **示例：**
 
@@ -431,9 +410,9 @@ ArkTS-Sta: getFunctionsFromString(funcs: string): int
 | 错误码ID | 错误信息                                                                        |
 | -------- | ------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  <br>适用版本：18+ |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
-| 801      | Capability not supported. |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 
 **示例：**
 
@@ -480,8 +459,7 @@ ArkTS-Sta: getStringFromFunctions(funcs: int): string
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 201      | Permission denied. |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
 | 801      | Capability not supported. |
 
@@ -532,8 +510,7 @@ ArkTS-Sta: setDeviceFunctions(funcs: int): Promise\<void\>
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 201      | Permission denied. |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
 | 801      | Capability not supported. |
 | 14400002 | Permission denied. The HDC is disabled by the system. |
@@ -588,7 +565,7 @@ ArkTS-Sta: getDeviceFunctions(): int
 
 | 错误码ID | 错误信息                                                                        |
 | -------- | ------------------------------------------------------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 201      | Permission denied. |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
 | 801      | Capability not supported. |
 | 14400004 | Service exception. Possible causes: <br>1. No accessory is plugged in.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Sta。 |
@@ -633,10 +610,10 @@ getPortList(): Array\<USBPort\>
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：18+ |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
-| 801      | Capability not supported. |
-| 14400004 | Service exception. Possible causes: <br>1. No accessory is plugged in.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Sta。 |
+| 801      | Capability not supported.   <br>适用版本：18+ |
+| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Sta。<br>适用版本：23+  |
 
 **示例：**
 
@@ -686,9 +663,9 @@ ArkTS-Sta: getPortSupportModes(portId: int): PortModeType
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.   <br>适用版本：18+ |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
-| 801      | Capability not supported. |
+| 801      | Capability not supported.   <br>适用版本：18+ |
 
 **示例：**
 
@@ -745,9 +722,9 @@ ArkTS-Sta: setPortRoleTypes(portId: int, powerRole: PowerRoleType, dataRole: Dat
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.   <br>适用版本：18+ |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
-| 801      | Capability not supported. |
+| 801      | Capability not supported.   <br>适用版本：18+ |
 | 14400003 | Unsupported operation. The current device does not support port role switching. |
 
 **示例：**
@@ -807,10 +784,10 @@ usbManager.requestAccessoryRight会触发弹窗请求用户授权；addAccessory
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 201      | The permission check failed. |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported. |
+| 801      | Capability not supported.   <br>适用版本：18+ |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
 | 14400005 | Database operation exception. |
 
