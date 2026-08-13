@@ -499,7 +499,7 @@ struct PrivateBuilder {
 }
 ```
 
-示例效果图
+示例效果图：
 
 ![arkts-builder-usage-scenario1](figures/arkts-builder-usage-scenario1.gif)
 
@@ -556,7 +556,7 @@ struct PrivateBuilder {
 }
 ```
 
-示例效果图
+示例效果图：
 
 ![arkts-builder-usage-scenario1](figures/arkts-builder-usage-scenario1-1.gif)
 
@@ -655,7 +655,7 @@ struct ParentDemo {
 }
 ```
 
-示例效果图
+示例效果图：
 
 ![arkts-builder-usage-scenario2](figures/arkts-builder-usage-scenario2.gif)
 
@@ -756,7 +756,7 @@ struct Parent {
 }
 ```
 
-示例效果图
+示例效果图：
 
 ![arkts-builder-usage-scenario2](figures/arkts-builder-usage-scenario2-2.gif)
 
@@ -817,7 +817,7 @@ struct ParentSample {
 }
 ```
 
-示例效果图
+示例效果图：
 
 ![arkts-builder-usage-scenario3](figures/arkts-builder-usage-scenario3.gif)
 
@@ -876,7 +876,7 @@ struct Parent {
 }
 ```
 
-示例效果图
+示例效果图：
 
 ![arkts-builder-usage-scenario3](figures/arkts-builder-usage-scenario3-2.gif)
 
@@ -943,7 +943,7 @@ struct customBuilderDemo {
   }
 }
 ```
-示例效果图
+示例效果图：
 
 ![arkts-builder-usage-scenario4](figures/arkts-builder-usage-scenario4.gif)
 
@@ -1291,7 +1291,7 @@ struct Parent {
 }
 ```
 
-示例效果图
+示例效果图：
 
 ![arkts-builder-usage-scenario5](figures/arkts-builder-usage-scenario5.gif)
 
@@ -1394,7 +1394,7 @@ struct ParentPage {
 }
 ```
 
-示例效果图
+示例效果图：
 
 ![arkts-builder-usage-scenario6](figures/arkts-builder-usage-scenario6.gif)
 
@@ -1492,7 +1492,7 @@ struct ParentPage {
 }
 ```
 
-示例效果图
+示例效果图：
 
 ![arkts-builder-usage-scenario6](figures/arkts-builder-usage-scenario6-2.gif)
 
@@ -1584,7 +1584,7 @@ struct ParentLocalPage {
   }
 }
 ```
-示例效果图
+示例效果图：
 
 ![arkts-builder-usage-scenario8](figures/arkts-builder-usage-scenario8.gif)
 
@@ -1883,7 +1883,7 @@ struct ReusableChildTwoPage {
 }
 ```
 
-示例效果图
+示例效果图：
 
 ![arkts-builder-usage-scenario7](figures/arkts-builder-usage-scenario7.gif)
 
@@ -2207,7 +2207,7 @@ struct Single {
 }
 ```
 
-示例效果图
+示例效果图：
 
 ![arkts-builder-refresh](figures/arkts-builder-refresh.gif)
 
