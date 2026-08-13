@@ -54,7 +54,7 @@ Operation not allowed for current phase.
 
 **错误描述**
 
-如果开发者在非[onDrop](./arkui-ts/ts-universal-events-drag-drop.md#ondrop)阶段调用仅支持该阶段调用的接口，会抛出此错误码。该错误码为string类型。
+当开发者在非[onDrop](./arkui-ts/ts-universal-events-drag-drop.md#ondrop)阶段调用仅支持该阶段调用的接口时，会抛出此错误码。该错误码为string类型。
 
 **可能原因**
 
