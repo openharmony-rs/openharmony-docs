@@ -9033,6 +9033,20 @@ Allows an application on the rear armrest screen to connect to the head unit for
 
 **Since**: 26.1.0
 
+## ohos.permission.AUTH_MODEL_DOWNLOAD
+
+Allows a system application to send the authorization results for model download requests to the model management service.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.1.0
+
 ## ohos.permission.ACCESS_FILE_MONITOR_DIR
 
 Allows an application to obtain file management data using the sandbox.
