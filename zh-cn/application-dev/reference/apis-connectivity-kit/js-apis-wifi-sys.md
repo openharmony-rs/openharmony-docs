@@ -29,7 +29,7 @@ enableWifi(): boolean
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_CONNECTION，仅系统应用可用。
+**需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_CONNECTION，仅系统应用可用。，仅系统应用可用。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -155,7 +155,7 @@ WLAN配置信息。
 | randomMacType | number | 是 | 否 | 随机MAC类型。 <br> **系统接口：** 此接口为系统接口。 |
 | randomMacAddr | string | 是 | 否 | 随机MAC地址。 <br> **系统接口：** 此接口为系统接口。 |
 | ipType | [IpType](#iptype7) | 是 | 否 | IP地址类型。 <br> **系统接口：** 此接口为系统接口。 |
-| family<sup>20+</sup> | number | 否 | 是 | IP协议版本。 <br> **系统接口：** 此接口为系统接口。 |
+| family<sup>20+</sup> | number | 否 | 是 | ip协议版本。 <br> **系统接口：** 此接口为系统接口。 |
 | staticIp | [IpConfig](#ipconfig7) | 否 | 是 | 静态IPv4配置信息。 <br> **系统接口：** 此接口为系统接口。 |
 | staticIpv6<sup>20+</sup> | [Ipv6Config](#ipv6config20) | 否 | 是 | 静态IPv6配置信息。 <br> **系统接口：** 此接口为系统接口。 |
 
@@ -249,21 +249,17 @@ try {
         randomMacAddr:  "****",
         ipType: 0,
         staticIp: {
-            ipAddress: 0,
-            gateway: 0,
+            ipAddress: "",
+            gateway: "",
             dnsServers: [],
             domains: []
         }
     }
     wifi.addDeviceConfig(config,(error,result) => {
-        if (error) {
-            console.error(`failed: code: ${error.code}, message: ${error.message}`);
-            return;
-        }
-        console.info("result:" + JSON.stringify(result));
-    });    
-} catch (error) {
-    console.error(`failed: code: ${error.code}, message: ${error.message}`);
+        console.info("result:" + JSON.stringify(result));
+    });    
+}catch(error){
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -300,8 +296,8 @@ import wifi from '@ohos.wifi';
 try {
     let networkId = 0;
     wifi.connectToNetwork(networkId);
-} catch (error) {
-    console.error(`failed: code: ${error.code}, message: ${error.message}`);
+}catch(error){
+    console.error("failed:" + JSON.stringify(error));
 }    
 ```
 
@@ -348,16 +344,16 @@ try {
         randomMacAddr:  "****",
         ipType: 0,
         staticIp: {
-            ipAddress: 0,
-            gateway: 0,
+            ipAddress: "",
+            gateway: "",
             dnsServers: [],
             domains: []
         }
     }
     wifi.connectToDevice(config);
             
-} catch (error) {
-    console.error(`failed: code: ${error.code}, message: ${error.message}`);
+}catch(error){
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -386,8 +382,8 @@ import wifi from '@ohos.wifi';
 
 try {
     wifi.disconnect();
-} catch (error) {
-    console.error(`failed: code: ${error.code}, message: ${error.message}`);
+}catch(error){
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -492,8 +488,8 @@ import wifi from '@ohos.wifi';
 try {
     let ret = wifi.getDeviceMacAddress();
     console.info("deviceMacAddress:" + JSON.stringify(ret));
-} catch (error) {
-    console.error(`failed: code: ${error.code}, message: ${error.message}`);
+}catch(error){
+    console.error("failed:" + JSON.stringify(error));
 }
 
 ```
@@ -523,8 +519,8 @@ import wifi from '@ohos.wifi';
 
 try {
     wifi.reassociate();
-} catch (error) {
-    console.error(`failed: code: ${error.code}, message: ${error.message}`);
+}catch(error){
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -552,8 +548,8 @@ import wifi from '@ohos.wifi';
 
 try {
     wifi.reconnect();
-} catch (error) {
-    console.error(`failed: code: ${error.code}, message: ${error.message}`);
+}catch(error){
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -582,8 +578,8 @@ import wifi from '@ohos.wifi';
 try {
     let configs = wifi.getDeviceConfigs();
     console.info("configs:" + JSON.stringify(configs));
-} catch (error) {
-    console.error(`failed: code: ${error.code}, message: ${error.message}`);
+}catch(error){
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -629,16 +625,16 @@ try {
         randomMacAddr:  "****",
         ipType: 0,
         staticIp: {
-            ipAddress: 0,
-            gateway: 0,
+            ipAddress: "",
+            gateway: "",
             dnsServers: [],
             domains: []
         }
     }
     let ret = wifi.updateNetwork(config);
     console.error("ret:" + ret);        
-} catch (error) {
-    console.error(`failed: code: ${error.code}, message: ${error.message}`);
+}catch(error){
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -673,8 +669,8 @@ import wifi from '@ohos.wifi';
 try {
     let netId = 0;
     wifi.disableNetwork(netId);        
-} catch (error) {
-    console.error(`failed: code: ${error.code}, message: ${error.message}`);
+}catch(error){
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -702,8 +698,8 @@ import wifi from '@ohos.wifi';
 
 try {
     wifi.removeAllNetwork();        
-} catch (error) {
-    console.error(`failed: code: ${error.code}, message: ${error.message}`);
+}catch(error){
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -738,8 +734,8 @@ import wifi from '@ohos.wifi';
 try {
     let id = 0;
     wifi.removeDevice(id);        
-} catch (error) {
-    console.error(`failed: code: ${error.code}, message: ${error.message}`);
+}catch(error){
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -767,8 +763,8 @@ import wifi from '@ohos.wifi';
 
 try {
     wifi.enableHotspot();    
-} catch (error) {
-    console.error(`failed: code: ${error.code}, message: ${error.message}`);
+}catch(error){
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -796,8 +792,8 @@ import wifi from '@ohos.wifi';
 
 try {
     wifi.disableHotspot();    
-} catch (error) {
-    console.error(`failed: code: ${error.code}, message: ${error.message}`);
+}catch(error){
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -826,8 +822,8 @@ import wifi from '@ohos.wifi';
 try {
     let ret = wifi.isHotspotDualBandSupported();
     console.info("result:" + ret);        
-} catch (error) {
-    console.error(`failed: code: ${error.code}, message: ${error.message}`);
+}catch(error){
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -916,7 +912,7 @@ try {
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | 是 | 否 | 热点的SSID，编码格式为UTF-8，长度范围1-32字节。 |
 | securityType | [WifiSecurityType](js-apis-wifi.md#wifisecuritytypedeprecated) | 是 | 否 | 加密类型。 |
-| band | number | 是 | 否 | 热点的频段。1: 2.4G，2: 5G，3: 双模频段。 |
+| band | number | 是 | 否 | 热点的频段。1: 2.4G, 2: 5G, 3: 双模频段 |
 | preSharedKey | string | 是 | 否 | 热点的密钥。长度范围8-63个字符。 |
 | maxConn | number | 是 | 否 | 最大设备连接数。 |
 
@@ -945,9 +941,9 @@ import wifi from '@ohos.wifi';
 
 try {
     let config = wifi.getHotspotConfig();
-    console.info("result:" + JSON.stringify(config));        
-} catch (error) {
-    console.error(`failed: code: ${error.code}, message: ${error.message}`);
+    console.info("result:" + JSON.stringify(config));
+}catch(error){
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -976,8 +972,8 @@ import wifi from '@ohos.wifi';
 try {
     let stations = wifi.getStations();
     console.info("result:" + JSON.stringify(stations));        
-} catch (error) {
-    console.error(`failed: code: ${error.code}, message: ${error.message}`);
+}catch(error){
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
