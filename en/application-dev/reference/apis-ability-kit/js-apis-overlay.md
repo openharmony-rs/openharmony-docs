@@ -1,4 +1,4 @@
-# @ohos.bundle.overlay (overlay feature module)
+# @ohos.bundle.overlay (overlay Module)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
@@ -6,7 +6,7 @@
 <!--Designer: @hanfeng6-->
 <!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=850c7d4f71d6bc50d82f299a21bb9cea3a266f3d translatedAt=2026-08-13T02:42:19.353Z pushedAt=2026-08-13T06:38:59.473Z -->
+<!-- md-trans-meta sourceCommit=850c7d4f71d6bc50d82f299a21bb9cea3a266f3d translatedAt=2026-08-13T02:42:19.353Z pushedAt=2026-08-13T07:42:56.544Z -->
 
 This module provides APIs for querying the [OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md) of an application with the overlay feature, and disabling and enabling the feature.
 

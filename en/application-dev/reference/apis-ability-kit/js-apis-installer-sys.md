@@ -1999,3 +1999,4 @@ Defines the parameters for installing or uninstalling a plugin.
 | ----------- | ------ | ---- |---- | ------------------------------------------------------------ |
 | userId      | number | No  | Yes  | User ID of the user for installing or uninstalling the plug-in program. It can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). Default value: the user that invokes the API.            |
 | parameters  | Array<[Parameters](#parameters15)> | No| Yes  | Extension parameters for installing or uninstalling the plugin. The default value is empty.           |
+<!--no_check-->
