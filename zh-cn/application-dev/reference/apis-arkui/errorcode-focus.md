@@ -50,7 +50,7 @@ This component has an unfocusable ancestor.
 
 **错误信息**
 
-the component is not on tree or does not exist.
+The node is not on the tree or does not exist.
 
 **错误描述**
 
