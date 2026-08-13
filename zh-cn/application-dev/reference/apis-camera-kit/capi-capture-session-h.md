@@ -1481,7 +1481,7 @@ Camera_ErrorCode OH_CaptureSession_SetExposureDuration(const Camera_CaptureSessi
 | 参数项 | 描述 |
 | -- | -- |
 | const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
-| int32_t exposureDuration | 待设置的目标曝光时间。取值范围需通过[OH_CaptureSession_GetSupportedExposureDurationRange](capi-capture-session-h.md#oh_capturesession_getsupportedexposuredurationrange)获取，单位：微秒(us)。仅在[ExposureMode](capi-camera-h.md#camera_exposuremode).EXPOSURE_MODE_MANUAL手动曝光模式下设置生效。 |
+| int32_t exposureDuration | 待设置的目标曝光时间。 |
 
 **返回：**
 
