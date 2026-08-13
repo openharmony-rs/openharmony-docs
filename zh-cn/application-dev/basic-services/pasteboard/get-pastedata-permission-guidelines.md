@@ -66,7 +66,7 @@ API version 12及之后，系统为提升用户隐私安全保护能力，剪贴
 
 ArkTS-Dyn示例：
 
-<!-- @[pasteboard_permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @[pasteboard_permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
@@ -125,13 +125,13 @@ async function isNeedGetPermissionFromUser(): Promise<boolean> {
 @Entry
 @Component
 struct Index {
-   // ...
+  // ...
   build() {
     Row() {
       Column() {
-         // ...
+        // ...
         Button('粘贴')
-           // ...
+          // ...
           .onClick(async () => {
             const context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
             if (!(await isNeedGetPermissionFromUser())) {
@@ -146,7 +146,7 @@ struct Index {
               for (const status of grantStatus) {
                 if (status === 0) {
                   // 用户授权，使用get操作读取剪贴板内容。
-                   // ...
+                  // ...
                   // 执行判断口令逻辑，如果是本应用口令，建议获取完数据后使用cleardata清除剪贴板口令内容
                   try {
                     await systemPasteboard.clearData();
@@ -173,20 +173,20 @@ struct Index {
               hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to request permissions from user.');
             }
           })
-         // ...
+        // ...
       }
-       // ...
+      // ...
     }
-     // ...
+    // ...
   }
 }
 ```
 
 ArkTS-Sta示例：
 
-<!-- @[pasteboard_permission](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Pasteboard_Sta/Pasteboard_Static_Sample/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @[pasteboard_permission](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Pasteboard_Sta/Pasteboard_Static_Sample/entry/src/main/ets/pages/Index.ets) -->
 
-```TypeScript
+``` TypeScript
 import abilityAccessCtrl, { Context, PermissionRequestResult, Permissions } from '@ohos.abilityAccessCtrl'
 import { BusinessError } from '@ohos.base'
 import common from '@ohos.app.ability.common'
@@ -305,11 +305,11 @@ struct Index {
           .onClick(() => {
             this.handlePaste();
           })
-         // ...
+        // ...
       }
-       // ...
+      // ...
     }
-     // ...
+    // ...
   }
 }
 ```
