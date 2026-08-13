@@ -192,7 +192,7 @@ apiAvailable接口参数格式不符合规范，包括：参数包含非法字�
 
  - M.S.F格式：M>=26且M<=99，S和F为0~99的整数，例如：`apiAvailable("26.0.1")`。
 
- - 版本范围表达式：仅允许使用数字、点和括号，例如：`apiAvailable("12,26.0.1")`。
+ - 版本范围表达式：仅允许使用数字、点和括号，例如：`apiAvailable("26.0.0")`。
 
 3、确保参数不为null或undefined。
 
@@ -224,9 +224,7 @@ Invalid {osName} version.
 
 2、确认使用的SDK版本是否在sdkApiVersionMap.json文件的列表中。
 
-sdkApiVersionMap.json文件位于DevEco Studio安装目录下sdk/default/hms/ets/build-tools/ts-checker-hooks/目录中。
-
-## 11706016 @Available装饰器中的版本号无效。
+## 11706016 @Available装饰器中的版本号无效
 
 **错误信息**
 
