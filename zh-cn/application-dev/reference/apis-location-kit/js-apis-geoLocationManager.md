@@ -12,7 +12,7 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API版本9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 本模块能力仅支持WGS-84坐标系。
 
 ## 申请权限
@@ -93,7 +93,7 @@ import { geoLocationManager } from '@kit.LocationKit';
 
 位置信息请求参数。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -110,7 +110,7 @@ import { geoLocationManager } from '@kit.LocationKit';
 
 当前位置信息请求参数。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -126,23 +126,21 @@ import { geoLocationManager } from '@kit.LocationKit';
 
 持续定位的请求参数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Location.Location.Core
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| interval | number | 否 | 否 | 表示上报位置信息的时间间隔，单位是秒。默认值为1，取值范围为大于等于0。等于0时对位置上报时间间隔无限制。|
-| locationScenario | [UserActivityScenario](#useractivityscenario12) &#124; [PowerConsumptionScenario](#powerconsumptionscenario12) | 否 | 否 | 表示定位的场景信息。取值范围见[UserActivityScenario](#useractivityscenario12)和[PowerConsumptionScenario](#powerconsumptionscenario12)的定义。 |
-| sportsType | [SportsType](#sportstype18) | 否 | 是 | 表示运动模式。取值范围见[SportsType](#sportstype18)定义。此参数仅在locationScenario设置为UserActivityScenario.SPORT时有效。默认值为0，表示该参数不生效。<br/>**起始版本：** 26.0.0 |
-| needPoi<sup>19+ | boolean | 否 | 是 | 表示是否需要获取当前位置附近的POI信息。false代表不需要获取当前位置附近的POI信息，true代表需要获取当前位置附近的POI信息。不设置时，默认值为false。<br/>该参数仅在精确位置功能场景（即同时授权了ohos.permission.APPROXIMATELY_LOCATION和ohos.permission.LOCATION 权限）下有效，模糊位置功能生效场景（即仅授权了ohos.permission.APPROXIMATELY_LOCATION 权限）下不返回POI信息。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
+| interval | number | 否 | 否 | 表示上报位置信息的时间间隔，单位是秒。默认值为1，取值范围为大于等于0。等于0时对位置上报时间间隔无限制。<br/>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。|
+| locationScenario | [UserActivityScenario](#useractivityscenario12) &#124; [PowerConsumptionScenario](#powerconsumptionscenario12) | 否 | 否 | 表示定位的场景信息。取值范围见[UserActivityScenario](#useractivityscenario12)和[PowerConsumptionScenario](#powerconsumptionscenario12)的定义。 <br/>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。|
+| sportsType | [SportsType](#sportstype18) | 否 | 是 | 表示运动模式。取值范围见[SportsType](#sportstype18)定义。此参数仅在locationScenario设置为UserActivityScenario.SPORT时有效。默认值为0，表示该参数不生效。<br/>**起始版本：** 26.0.0 <br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| needPoi<sup>19+ | boolean | 否 | 是 | 表示是否需要获取当前位置附近的POI信息。false代表不需要获取当前位置附近的POI信息，true代表需要获取当前位置附近的POI信息。不设置时，默认值为false。<br/>该参数仅在精确位置功能场景（即同时授权了ohos.permission.APPROXIMATELY_LOCATION和ohos.permission.LOCATION 权限）下有效，模糊位置功能生效场景（即仅授权了ohos.permission.APPROXIMATELY_LOCATION 权限）下不返回POI信息。<br/>**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。|
 
 
 ## SingleLocationRequest<sup>12+</sup>
 
 单次定位的请求参数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -150,7 +148,7 @@ import { geoLocationManager } from '@kit.LocationKit';
 | -------- | -------- | -------- | -------- | -------- |
 | locatingPriority | [LocatingPriority](#locatingpriority12) | 否 | 否 | 表示优先级信息。取值范围见[LocatingPriority](#locatingpriority12)的定义。|
 | locatingTimeoutMs | number | 否 | 否 | 表示超时时间，单位是毫秒，最小为1000毫秒。取值范围为大于等于1000。 |
-| needPoi<sup>19+ | boolean | 否 | 是 | 表示是否需要获取当前位置附近的POI信息。false代表不需要获取当前位置附近的POI信息，true代表需要获取当前位置附近的POI信息。不设置时，默认值为false。<br/>该参数仅在精确位置功能场景（即同时授权了ohos.permission.APPROXIMATELY_LOCATION和ohos.permission.LOCATION 权限）下有效，模糊位置功能生效场景（即仅授权了ohos.permission.APPROXIMATELY_LOCATION 权限）下不返回POI信息。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
+| needPoi<sup>19+ | boolean | 否 | 是 | 表示是否需要获取当前位置附近的POI信息。false代表不需要获取当前位置附近的POI信息，true代表需要获取当前位置附近的POI信息。不设置时，默认值为false。<br/>该参数仅在精确位置功能场景（即同时授权了ohos.permission.APPROXIMATELY_LOCATION和ohos.permission.LOCATION 权限）下有效，模糊位置功能生效场景（即仅授权了ohos.permission.APPROXIMATELY_LOCATION 权限）下不返回POI信息。<br/>**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。|
 
 
 ## SatelliteStatusInfo
@@ -230,24 +228,24 @@ GNSS围栏的配置参数。目前只支持圆形围栏。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| latitude | number| 否 | 否 | 表示纬度信息，正值表示北纬，负值表示南纬。取值范围为-90到90。仅支持WGS84坐标系。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| longitude | number| 否 | 否 | 表示经度信息，正值表示东经，负值表示西经。取值范围为-180到180。仅支持WGS84坐标系。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| altitude | number | 否 | 否 | 表示高度信息，单位米。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| accuracy | number | 否 | 否 | 表示精度信息，单位米。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| speed | number | 否 | 否 |表示速度信息，单位米每秒。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| timeStamp | number | 否 | 否 | 表示位置时间戳，UTC格式，单位毫秒。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| direction | number | 否 | 否 | 表示航向信息。单位是“度”，取值范围为0到360。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| timeSinceBoot | number | 否 | 否 | 表示获取位置成功的时间戳，值表示从本次开机到获取位置成功所经过的时间，单位为纳秒。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| additions | Array&lt;string&gt;| 否 | 是 | 附加信息。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| additionSize | number| 否 | 是 | 附加信息数量。取值范围为大于等于0。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| additionsMap<sup>12+</sup> | Map&lt;string, string&gt;| 否 | 是 | 附加信息。具体内容和顺序与additions一致。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| altitudeAccuracy<sup>12+</sup> |number | 否 | 是 | 表示高度信息的精度，单位米。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| speedAccuracy<sup>12+</sup> | number| 否 | 是 | 表示速度信息的精度，单位米每秒。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| directionAccuracy<sup>12+</sup> | number| 否 | 是 | 表示航向信息的精度。单位是“度”，取值范围为0到360。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| uncertaintyOfTimeSinceBoot<sup>12+</sup> | number| 否 | 是 | 表示位置时间戳的不确定度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| sourceType<sup>12+</sup> | [LocationSourceType](#locationsourcetype12) | 否 | 是 | 表示定位结果的来源。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| poi<sup>19+</PoiInfo> | [PoiInfo](#poiinfo19) | 否 | 是 | 表示当前位置附近的POI信息。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| isFromMock | Boolean | 否 | 是 | true：位置信息来自于位置模拟功能。<br/>false：位置信息不是来自于位置模拟功能。<br/>**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。 |
+| latitude | number| 否 | 否 | 表示纬度信息，正值表示北纬，负值表示南纬。取值范围为-90到90。仅支持WGS84坐标系。<br/>**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。 |
+| longitude | number| 否 | 否 | 表示经度信息，正值表示东经，负值表示西经。取值范围为-180到180。仅支持WGS84坐标系。<br/>**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。 |
+| altitude | number | 否 | 否 | 表示高度信息，单位米。<br/>**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。 |
+| accuracy | number | 否 | 否 | 表示精度信息，单位米。<br/>**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。 |
+| speed | number | 否 | 否 |表示速度信息，单位米每秒。<br/>**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。 |
+| timeStamp | number | 否 | 否 | 表示位置时间戳，UTC格式，单位毫秒。<br/>**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。 |
+| direction | number | 否 | 否 | 表示航向信息。单位是“度”，取值范围为0到360。<br/>**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。 |
+| timeSinceBoot | number | 否 | 否 | 表示获取位置成功的时间戳，值表示从本次开机到获取位置成功所经过的时间，单位为纳秒。<br/>**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。 |
+| additions | Array&lt;string&gt;| 否 | 是 | 附加信息。<br/>**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。 |
+| additionSize | number| 否 | 是 | 附加信息数量。取值范围为大于等于0。<br/>**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。 |
+| additionsMap<sup>12+</sup> | Map&lt;string, string&gt;| 否 | 是 | 附加信息。具体内容和顺序与additions一致。<br/>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
+| altitudeAccuracy<sup>12+</sup> |number | 否 | 是 | 表示高度信息的精度，单位米。<br/>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
+| speedAccuracy<sup>12+</sup> | number| 否 | 是 | 表示速度信息的精度，单位米每秒。<br/>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
+| directionAccuracy<sup>12+</sup> | number| 否 | 是 | 表示航向信息的精度。单位是“度”，取值范围为0到360。<br/>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
+| uncertaintyOfTimeSinceBoot<sup>12+</sup> | number| 否 | 是 | 表示位置时间戳的不确定度。<br/>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
+| sourceType<sup>12+</sup> | [LocationSourceType](#locationsourcetype12) | 否 | 是 | 表示定位结果的来源。<br/>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
+| poi<sup>19+</PoiInfo> | [PoiInfo](#poiinfo19) | 否 | 是 | 表示当前位置附近的POI信息。<br/>**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。 |
+| isFromMock | Boolean | 否 | 是 | true：位置信息来自于位置模拟功能。<br/>false：位置信息不是来自于位置模拟功能。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 
 ## GeofenceTransition<sup>12+</sup>
@@ -260,7 +258,7 @@ GNSS围栏的配置参数。目前只支持圆形围栏。
 | -------- | -------- | -------- | -------- | -------- |
 | geofenceId | number| 否 | 否 | 表示地理围栏ID。 |
 | transitionEvent | [GeofenceTransitionEvent](#geofencetransitionevent12) | 否 | 否 | 表示当前发生的地理围栏事件。 |
-| beaconFence<sup>20+</sup> | [BeaconFence](#beaconfence20) | 否 | 是 | beacon围栏的参数配置。仅beacon围栏使用。<br/>从API version 20开始，支持该字段。 |
+| beaconFence<sup>20+</sup> | [BeaconFence](#beaconfence20) | 否 | 是 | beacon围栏的参数配置。仅beacon围栏使用。<br/>从API版本20开始，支持该字段。 |
 
 
 ## GnssGeofenceRequest<sup>12+</sup>
@@ -295,7 +293,7 @@ GNSS地理围栏请求参数。
 
 位置请求中位置信息优先级类型。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -311,7 +309,7 @@ GNSS地理围栏请求参数。
 
 位置请求中定位场景类型。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -405,7 +403,7 @@ GNSS地理围栏请求参数。
 
 位置请求中的功耗场景类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -420,7 +418,7 @@ GNSS地理围栏请求参数。
 
 位置请求中的用户活动场景类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -440,7 +438,7 @@ GNSS地理围栏请求参数。
 
 单次位置请求中的优先级类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -454,7 +452,7 @@ GNSS地理围栏请求参数。
 
 持续定位过程中的错误信息。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -471,7 +469,7 @@ GNSS地理围栏请求参数。
 
 定位结果的来源。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -502,7 +500,7 @@ GNSS地理围栏请求参数。
 
 POI(Point of Interest, 兴趣点)信息。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -518,13 +516,13 @@ POI(Point of Interest, 兴趣点)信息。
 | locality | string | 否 | 否 | 表示POI所在的城市信息，一般是市。 |
 | subLocality | string | 否 | 否 | 表示POI所在的子城市信息，一般是区/县。 |
 | address | string | 否 | 否 | 表示POI的详细地址。 |
-| additionalInfo | string | 否 | 是 | 表示POI附加信息，本字符串为JSON格式。<br />**起始版本：** 26.0.0<br/>**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束**：此接口仅可在Stage模型下使用。 |
+| additionalInfo | string | 否 | 是 | 表示POI附加信息，本字符串为JSON格式。<br />**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## PoiInfo<sup>19+</sup>
 
 POI信息结构体。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -538,7 +536,7 @@ POI信息结构体。
 
 运动类型。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -554,7 +552,7 @@ POI信息结构体。
 
 beacon围栏信息类型。当前仅支持设备制造商数据过滤。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Geofence
 
@@ -567,7 +565,7 @@ beacon围栏信息类型。当前仅支持设备制造商数据过滤。
 
 beacon设备制造商数据。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Geofence
 
@@ -582,7 +580,7 @@ beacon设备制造商数据。
 
 beacon围栏的参数配置。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Geofence
 
@@ -596,7 +594,7 @@ beacon围栏的参数配置。
 
 beacon围栏请求参数。transitionCallback与fenceExtensionAbilityName任选其一，都不填则参数无效。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Geofence
 
@@ -613,7 +611,7 @@ beacon围栏请求参数。transitionCallback与fenceExtensionAbilityName任选�
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -631,7 +629,7 @@ beacon围栏请求参数。transitionCallback与fenceExtensionAbilityName任选�
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Geocoder
 
@@ -649,7 +647,7 @@ beacon围栏请求参数。transitionCallback与fenceExtensionAbilityName任选�
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Geocoder
   
@@ -671,7 +669,7 @@ beacon围栏请求参数。transitionCallback与fenceExtensionAbilityName任选�
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -705,7 +703,7 @@ on(type: 'locationChange', request: LocationRequest | ContinuousLocationRequest,
 
 开启位置变化订阅，并发起定位请求。使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -843,7 +841,7 @@ off(type: 'locationChange', callback?: Callback&lt;Location&gt;): void
 
 关闭位置变化订阅，并删除对应的定位请求。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：从API26.0.0开始无需申请权限，API版本小于26.0.0需申请ohos.permission.APPROXIMATELY_LOCATION
 
@@ -950,7 +948,7 @@ on(type: 'locationError', callback: Callback&lt;LocationError&gt;): void
 
 订阅持续定位过程中的错误码。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1012,7 +1010,7 @@ off(type: 'locationError', callback?: Callback&lt;LocationError&gt;): void
 
 取消订阅持续定位过程中的错误码。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1695,7 +1693,7 @@ getCurrentLocation(request: CurrentLocationRequest | SingleLocationRequest, call
 
 获取当前位置，使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1774,7 +1772,7 @@ getCurrentLocation(callback: AsyncCallback&lt;Location&gt;): void
 
 获取当前位置，使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1827,7 +1825,7 @@ getCurrentLocation(request?: CurrentLocationRequest | SingleLocationRequest): Pr
 
 获取当前位置，使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1905,7 +1903,7 @@ getLastLocation(): Location
 
 获取上一次位置。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1948,7 +1946,7 @@ isLocationEnabled(): boolean
 
 判断位置服务是否已经开启。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -2960,7 +2958,7 @@ isPoiServiceSupported(): boolean
 
 查询系统（即软件）是否支持POI服务。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -2988,7 +2986,7 @@ getPoiInfo(): Promise&lt;PoiInfo&gt;
 
 获取当前位置附近的POI信息。使用Promise异步回调。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
@@ -3036,7 +3034,7 @@ getDistanceBetweenLocations(location1: Location, location2: Location): number
 
 获取两个位置之间的直线距离。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -3103,7 +3101,7 @@ beacon围栏是指通过蓝牙beacon设备和手机应用配合，实现“虚�
 
 单应用添加beacon围栏上限为10，超过上限会导致添加beacon围栏失败，并抛出3501601错误码。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
@@ -3191,7 +3189,7 @@ removeBeaconFence(beaconFence?: BeaconFence): Promise&lt;void&gt;
 
 删除beacon围栏，并取消订阅地理围栏事件。使用Promise异步回调。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **需要权限**：从API26.0.0开始无需申请权限，API版本小于26.0.0需申请ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
@@ -3256,11 +3254,11 @@ removeBeaconFence(beaconFence?: BeaconFence): Promise&lt;void&gt;
   ```
 ## geoLocationManager.isBeaconFenceSupported<sup>20+</sup>
 
-isBeaconFenceSupported(): boolean;
+isBeaconFenceSupported(): boolean
 
 判断当前设备是否支持beacon围栏。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Geofence
 
@@ -3288,7 +3286,7 @@ isWlanBssidMatched(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, n
 
 判断指定的BSSID是否存在于最新的WLAN扫描结果里。使用Promise异步回调。
 
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
@@ -3344,7 +3342,7 @@ isGnssServiceSupported(): boolean
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -3383,7 +3381,7 @@ isGnssFenceServiceSupported(): boolean
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -3422,7 +3420,7 @@ isCachedGnssServiceSupported(): boolean
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -3510,7 +3508,7 @@ findMatchingWlan(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, nee
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
@@ -3568,7 +3566,7 @@ getCurrentDistrict(params?: DistrictRequestParams): Promise&lt;DistrictInfo&gt;
 
 **起始版本：** 26.0.0
   
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -3646,7 +3644,7 @@ getPostProcessingTrack(sportsType: SportsType): Promise&lt;Array&lt;Location&gt;
 
 **起始版本：** 26.0.0
   
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.LOCATION
 
@@ -3704,7 +3702,7 @@ getPostProcessingTrack(sportsType: SportsType): Promise&lt;Array&lt;Location&gt;
       .then((res) => {
         console.info('getPostProcessingTrack len: ' + JSON.stringify(res.length));
       }).catch((err: BusinessError) => {
-        console.info('getPostProcessingTrack err: ' + JSON.stringify(err));
+        console.error('getPostProcessingTrack err: ' + JSON.stringify(err));
       })
   }
 
@@ -3727,7 +3725,7 @@ startBluetoothSearch(request: BluetoothSearchRequestParams, callback: Callback&l
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -3791,7 +3789,7 @@ stopBluetoothSearch(callback?: Callback&lt;BluetoothScanResult&gt;): void
    
 **起始版本：** 26.0.0
    
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本 26.0.0开始，该接口支持在原子化服务中使用。
    
 **系统能力**：SystemCapability.Location.Location.Core
    
