@@ -22,7 +22,7 @@ An image component in builder is not ready for taking a snapshot. The check for 
 
 **可能原因**
 
-在进行截图操作前，若Image组件解码检查失败或节点图像加载失败。此时，调用截图接口，将可能触发相应的错误码。
+在进行截图操作前，若 Image 组件解码检查失败或节点图像加载失败，此时调用截图接口，将可能触发相应的错误码。
 
 **处理步骤**
 
