@@ -743,7 +743,7 @@ attestKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<H
 <!--RP6-->
 > **说明：** 
 >
-> 在使用非匿名证书密钥证明时生成的证书链可能包含设备标识符（具体实现需向厂商确认），如包含设备标识符，其使用、留存、销毁由开发者决定，建议开发者在其隐私声明中对其使用目的、留存策略和销毁方式进行说明。
+> 在使用非匿名证书密钥证明时生成的证书链可能包含设备标识符（具体实现需向厂商确认）。如包含设备标识符，其使用、留存、销毁由开发者决定，建议开发者在其隐私声明中对其使用目的、留存策略和销毁方式进行说明。
 <!--RP6End-->
 
 **需要权限：** ohos.permission.ATTEST_KEY，该权限仅系统应用可申请。
@@ -794,7 +794,7 @@ function stringToUint8Array(str: string) {
 let securityLevel = stringToUint8Array('sec_level');
 let challenge = stringToUint8Array('challenge_data');
 let versionInfo = stringToUint8Array('version_info');
-let keyAliasString = "key attest";
+let keyAliasString = 'key attest';
 
 async function generateKeyThenAttestKey() {
   let aliasString = keyAliasString;
@@ -886,7 +886,7 @@ attestKeyItem(keyAlias: string, options: HuksOptions) : Promise\<HuksReturnResul
 <!--RP6-->
 > **说明：** 
 >
-> 在使用非匿名证书密钥证明时生成的证书链可能包含设备标识符（具体实现需向厂商确认），如包含设备标识符，其使用、留存、销毁由开发者决定，建议开发者在其隐私声明中对其使用目的、留存策略和销毁方式进行说明。
+> 在使用非匿名证书密钥证明时生成的证书链可能包含设备标识符（具体实现需向厂商确认）。如包含设备标识符，其使用、留存、销毁由开发者决定，建议开发者在其隐私声明中对其使用目的、留存策略和销毁方式进行说明。
 <!--RP6End-->
 
 **参数：**
@@ -938,7 +938,7 @@ function stringToUint8Array(str: string) {
 let securityLevel = stringToUint8Array('sec_level');
 let challenge = stringToUint8Array('challenge_data');
 let versionInfo = stringToUint8Array('version_info');
-let keyAliasString = "key attest";
+let keyAliasString = 'key attest';
 
 /* 1. 生成密钥 */
 async function generateKey(alias: string) {
@@ -1021,7 +1021,7 @@ anonAttestKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallbac
 
 获取匿名化密钥证书。使用callback异步回调。
 
-该操作需要联网进行，且耗时较长。返回12000012错误码时，可能是由于网络异常导致。此时如果没有联网，需要提示用户网络没有连接，如果已经联网，可能是由于网络抖动导致失败，建议重试。
+该操作需要联网进行，且耗时较长。返回12000012错误码时，可能是由于网络异常导致。此时如果没有联网，需要提示用户网络没有连接；如果已经联网，可能是由于网络抖动导致失败，建议重试。
 
 <!--RP10--><!--RP10End-->
 
@@ -1076,7 +1076,7 @@ function stringToUint8Array(str: string): Uint8Array {
 let securityLevel = stringToUint8Array('sec_level');
 let challenge = stringToUint8Array('challenge_data');
 let versionInfo = stringToUint8Array('version_info');
-let keyAliasString = "key anon attest";
+let keyAliasString = 'key anon attest';
 
 async function generateKeyThenAttestKey(): Promise<void> {
   let aliasString = keyAliasString;
@@ -1161,7 +1161,7 @@ anonAttestKeyItem(keyAlias: string, options: HuksOptions) : Promise\<HuksReturnR
 
 获取匿名化密钥证书。使用Promise异步回调。
 
-该操作需要联网进行，且耗时较长。返回12000012错误码时，可能是由于网络异常导致。此时如果没有联网，需要提示用户网络没有连接，如果已经联网，可能是由于网络抖动导致失败，建议重试。
+该操作需要联网进行，且耗时较长。返回12000012错误码时，可能是由于网络异常导致。此时如果没有联网，需要提示用户网络没有连接；如果已经联网，可能是由于网络抖动导致失败，建议重试。
 
 <!--RP10--><!--RP10End-->
 
@@ -1223,7 +1223,7 @@ function stringToUint8Array(str: string): Uint8Array {
 let securityLevel = stringToUint8Array('sec_level');
 let challenge = stringToUint8Array('challenge_data');
 let versionInfo = stringToUint8Array('version_info');
-let keyAliasString = "key anon attest";
+let keyAliasString = 'key anon attest';
 
 /* 1. 生成密钥 */
 async function generateKey(alias: string): Promise<void> {
@@ -1362,7 +1362,7 @@ function stringToUint8Array(str: string): Uint8Array {
 }
 
 let challenge = stringToUint8Array('challenge_data');
-let keyAliasString = "key anon local attest";
+let keyAliasString = 'key anon local attest';
 
 /* 1. 生成密钥 */
 async function generateKey(alias: string) {
@@ -1436,7 +1436,7 @@ API version 9-11系统能力为SystemCapability.Security.Huks.Extension；从API
 | keyAlias         | string                      | 是   | 密钥别名，存放待导入密钥的别名。              |
 | wrappingKeyAlias | string                      | 是   | 密钥别名，对应密钥用于解密加密的密钥数据。    |
 | options          | [HuksOptions](#huksoptions) | 是   | 用于导入时所需TAG和需要导入的加密的密钥数据。其中密钥使用的算法、密钥用途、密钥长度为必选参数。 |
-| callback         | AsyncCallback\<void>        | 是   | 回调函数。不返回err值时表示接口使用成功时，其他时为错误。 |
+| callback         | AsyncCallback\<void>        | 是   | 回调函数。不返回err值时表示接口使用成功，否则为错误。 |
 
 **错误码：**
 
@@ -1471,11 +1471,11 @@ API version 9-11系统能力为SystemCapability.Security.Huks.Extension；从API
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
 
-let alias1 = "importAlias";
-let alias2 = "wrappingKeyAlias";
+let alias1 = 'importAlias';
+let alias2 = 'wrappingKeyAlias';
 
 /* 1. 生成ECC密钥 */
-async function TestGenFunc(alias: string, options: huks.HuksOptions) {
+async function testGenFunc(alias: string, options: huks.HuksOptions) {
   await genKey(alias, options)
     .then(() => {
       console.info(`callback: generateKeyItem success`);
@@ -1495,7 +1495,7 @@ function genKey(alias: string, options: huks.HuksOptions) {
 }
 
 /* 2. 导出公钥 */
-async function TestExportFunc(alias: string, options: huks.HuksOptions) {
+async function testExportFunc(alias: string, options: huks.HuksOptions) {
   await exportKey(alias, options)
     .then((data) => {
       console.info(`callback: exportKeyItem success, data = ${JSON.stringify(data)}`);
@@ -1515,7 +1515,7 @@ function exportKey(alias: string, options: huks.HuksOptions) {
 }
 
 /* 3. 安全导入密钥 */
-async function TestImportWrappedFunc(alias: string, wrappingAlias: string, options: huks.HuksOptions) {
+async function testImportWrappedFunc(alias: string, wrappingAlias: string, options: huks.HuksOptions) {
   await importWrappedKey(alias, wrappingAlias, options)
     .then(() => {
       console.info(`callback: importWrappedKeyItem success`);
@@ -1534,18 +1534,18 @@ function importWrappedKey(alias: string, wrappingAlias: string, options: huks.Hu
   });
 }
 
-async function TestImportWrappedKeyFunc(
+async function testImportWrappedKeyFunc(
   alias: string,
   wrappingAlias: string,
   genOptions: huks.HuksOptions,
   importOptions: huks.HuksOptions
 ) {
-  await TestGenFunc(wrappingAlias, genOptions);
-  await TestExportFunc(wrappingAlias, genOptions);
+  await testGenFunc(wrappingAlias, genOptions);
+  await testExportFunc(wrappingAlias, genOptions);
 
   /* 以下操作不需要调用HUKS接口，此处不给出具体实现：
    * 假设待导入的密钥为keyA。
-   * 1. 生成ECC公私钥keyB，公钥为keyB_pub, 私钥为keyB_pri。
+   * 1. 生成ECC公私钥keyB，公钥为keyB_pub，私钥为keyB_pri。
    * 2. 使用keyB_pri和wrappingAlias密钥中获取的公钥进行密钥协商，协商出共享密钥share_key。
    * 3. 随机生成密钥kek，用于加密keyA，采用AES-GCM加密，加密过程中需要记录：nonce1、aad1、加密后的密文keyA_enc、加密后的tag1。
    * 4. 使用share_key加密kek，采用AES-GCM加密，加密过程中需要记录：nonce2、aad2、加密后的密文kek_enc、加密后的tag2。
@@ -1559,7 +1559,7 @@ async function TestImportWrappedKeyFunc(
   /* 该处为示例代码，实际运行过程中，应使用实际导入密钥数据。数据构造方式由上注释可见说明 */
   let inputKey = new Uint8Array([0x02, 0x00, 0x00, 0x00]);
   importOptions.inData = inputKey;
-  await TestImportWrappedFunc(alias, wrappingAlias, importOptions);
+  await testImportWrappedFunc(alias, wrappingAlias, importOptions);
 }
 
 /* ECC密钥生成的参数集 */
@@ -1629,7 +1629,7 @@ function makeImportOptions() {
 function huksImportWrappedKey() {
   let genOptions = makeGenerateOptions();
   let importOptions = makeImportOptions();
-  TestImportWrappedKeyFunc(
+  testImportWrappedKeyFunc(
     alias1,
     alias2,
     genOptions,
@@ -1699,7 +1699,7 @@ import { huks } from '@kit.UniversalKeystoreKit';
 
 /* 处理流程与callback类似，主要差异点为如下函数： */
 /* 该处为示例代码，实际运行过程中，应使用实际导入密钥数据。数据构造方式由上注释可见说明 */
-async function TestImportWrappedFunc(alias: string, wrappingAlias: string, options: huks.HuksOptions) {
+async function testImportWrappedFunc(alias: string, wrappingAlias: string, options: huks.HuksOptions) {
   await huks.importWrappedKeyItem(alias, wrappingAlias, options)
     .then(() => {
       console.info(`promise: importWrappedKeyItem success`);
@@ -2977,7 +2977,7 @@ import { huks } from '@kit.UniversalKeystoreKit';
  * 以下以RSA密钥的callback功能使用为例
  */
 
-let keyAlias = "HuksDemoRSA";
+let keyAlias = 'HuksDemoRSA';
 let properties: Array<huks.HuksParam> = []
 let options: huks.HuksOptions = {
   properties: properties,
@@ -3395,7 +3395,7 @@ import { huks } from '@kit.UniversalKeystoreKit';
  *
  * 以下以RSA密钥的promise功能使用为例
  */
-let keyAlias = "HuksDemoRSA";
+let keyAlias = 'HuksDemoRSA';
 let genProperties: Array<huks.HuksParam> = [{
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_RSA
@@ -3868,7 +3868,7 @@ API version 10-11系统能力为SystemCapability.Security.Huks.Extension；从AP
 | 名称                            | 值   | 说明                           |
 | ------------------------------- | ---- | ------------------------------ |
 | HUKS_CHALLENGE_TYPE_NORMAL | 0    | 表示challenge为普通类型，默认32字节。 |
-| HUKS_CHALLENGE_TYPE_CUSTOM        | 1    | 表示challenge为用户自定义类型。支持使用多个密钥仅一次认证。 |
+| HUKS_CHALLENGE_TYPE_CUSTOM        | 1    | 表示challenge为用户自定义类型。支持多个密钥共享同一次用户认证。 |
 | HUKS_CHALLENGE_TYPE_NONE         | 2    | 表示免challenge类型。 |
 
 ## HuksChallengePosition<sup>9+</sup>
@@ -3966,7 +3966,7 @@ API version 11系统能力为SystemCapability.Security.Huks.Extension；从API v
 
 | 名称                                                        | 值                                       | 说明                                                         |
 | ----------------------------------------------------------- | ---------------------------------------- | ------------------------------------------------------------ |
-| HUKS_TAG_INVALID<sup>(deprecated)</sup>                     | HuksTagType.HUKS_TAG_TYPE_INVALID \| 0   | 表示非法的tag。<br/>**说明：** 从API version 8开始使用，从API version 9开始废弃。 <br> **系统能力：** SystemCapability.Security.Huks.Core |
+| HUKS_TAG_INVALID<sup>(deprecated)</sup>                     | HuksTagType.HUKS_TAG_TYPE_INVALID \| 0   | 表示非法的tag。<br/>**说明：** 从API version 8开始支持，从API version 9开始废弃。 <br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_ALGORITHM                                          | HuksTagType.HUKS_TAG_TYPE_UINT \| 1      | 表示算法的tag。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_PURPOSE                                            | HuksTagType.HUKS_TAG_TYPE_UINT \| 2      | 表示密钥用途的tag。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_KEY_SIZE                                           | HuksTagType.HUKS_TAG_TYPE_UINT \| 3      | 表示密钥长度的tag，单位：bit。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
@@ -3983,7 +3983,7 @@ API version 11系统能力为SystemCapability.Security.Huks.Extension；从API v
 | HUKS_TAG_ITERATION                                          | HuksTagType.HUKS_TAG_TYPE_UINT \| 14     | 表示密钥派生时的迭代次数。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_TAG_KEY_GENERATE_TYPE                                  | HuksTagType.HUKS_TAG_TYPE_UINT \| 15     | 表示生成密钥类型的tag。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_DERIVE_MAIN_KEY<sup>(deprecated)</sup>             | HuksTagType.HUKS_TAG_TYPE_BYTES \| 16    | 表示密钥派生时的主密钥。<br/>**说明：** 从API version 8开始支持，从API version 9开始废弃。   <br> **系统能力：** SystemCapability.Security.Huks.Extension |
-| HUKS_TAG_DERIVE_FACTOR<sup>(deprecated)</sup>               | HuksTagType.HUKS_TAG_TYPE_BYTES \| 17    | 表示密钥派生时的派生因子。<br/>**说明：**  从API version 8开始支持，从API version 9开始废弃。   <br> **系统能力：** SystemCapability.Security.Huks.Extension |
+| HUKS_TAG_DERIVE_FACTOR<sup>(deprecated)</sup>               | HuksTagType.HUKS_TAG_TYPE_BYTES \| 17    | 表示密钥派生时的派生因子。<br/>**说明：** 从API version 8开始支持，从API version 9开始废弃。   <br> **系统能力：** SystemCapability.Security.Huks.Extension |
 | HUKS_TAG_DERIVE_ALG<sup>(deprecated)</sup>                  | HuksTagType.HUKS_TAG_TYPE_UINT \| 18     | 表示密钥派生时的算法类型。<br/>**说明：** 从API version 8开始，从API version 9开始废弃。   <br> **系统能力：** SystemCapability.Security.Huks.Extension |
 | HUKS_TAG_AGREE_ALG                                          | HuksTagType.HUKS_TAG_TYPE_UINT \| 19     | 表示密钥协商时的算法类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_TAG_AGREE_PUBLIC_KEY_IS_KEY_ALIAS                      | HuksTagType.HUKS_TAG_TYPE_BOOL \| 20     | 表示密钥协商时的公钥别名。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
@@ -3995,10 +3995,10 @@ API version 11系统能力为SystemCapability.Security.Huks.Extension；从API v
 | HUKS_TAG_UNWRAP_ALGORITHM_SUITE<sup>9+</sup>                | HuksTagType.HUKS_TAG_TYPE_UINT \| 26     | 表示安全导入密钥的套件。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>9-11</sup>|
 | HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG<sup>10+</sup>      | HuksTagType.HUKS_TAG_TYPE_UINT \|29      | 表示派生密钥/协商密钥的存储类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>10-11</sup>|
 | HUKS_TAG_RSA_PSS_SALT_LEN_TYPE<sup>10+</sup>                | HuksTagType.HUKS_TAG_TYPE_UINT \|30      | 表示rsa_pss_salt_length的类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>10-11</sup>|
-| HUKS_TAG_ACTIVE_DATETIME<sup>(deprecated)</sup>             | HuksTagType.HUKS_TAG_TYPE_ULONG \| 201   |  原为证书业务预留字段，当前证书管理已独立，此字段废弃，不再预留。 <br> **说明：** 从API version 9开始废弃，无替代接口。       <br> **系统能力：** SystemCapability.Security.Huks.Extension |
-| HUKS_TAG_ORIGINATION_EXPIRE_DATETIME<sup>(deprecated)</sup> | HuksTagType.HUKS_TAG_TYPE_ULONG \| 202   | 原为证书业务预留字段，当前证书管理已独立，此字段废弃，不再预留。 <br> **说明：** 从API version 9开始废弃，无替代接口。             <br> **系统能力：** SystemCapability.Security.Huks.Core |
-| HUKS_TAG_USAGE_EXPIRE_DATETIME<sup>(deprecated)</sup>       | HuksTagType.HUKS_TAG_TYPE_ULONG \| 203   |  原为证书业务预留字段，当前证书管理已独立，此字段废弃，不再预留。 <br> **说明：** 从API version 9开始废弃，无替代接口。        <br> **系统能力：** SystemCapability.Security.Huks.Core |
-| HUKS_TAG_CREATION_DATETIME<sup>(deprecated)</sup>           | HuksTagType.HUKS_TAG_TYPE_ULONG \| 204   | 原为证书业务预留字段，当前证书管理已独立，此字段废弃，不再预留。 <br>  **说明：** 从API version 9开始废弃，无替代接口。  <br> **系统能力：** SystemCapability.Security.Huks.Core |
+| HUKS_TAG_ACTIVE_DATETIME<sup>(deprecated)</sup>             | HuksTagType.HUKS_TAG_TYPE_ULONG \| 201   |  原为证书业务预留字段，当前证书管理已独立，此字段废弃，不再预留。 <br> **说明：** 从API version 8开始支持，从API version 9开始废弃，无替代接口。<br> **系统能力：** SystemCapability.Security.Huks.Extension |
+| HUKS_TAG_ORIGINATION_EXPIRE_DATETIME<sup>(deprecated)</sup> | HuksTagType.HUKS_TAG_TYPE_ULONG \| 202   | 原为证书业务预留字段，当前证书管理已独立，此字段废弃，不再预留。 <br> **说明：** 从API version 8开始支持，从API version 9开始废弃，无替代接口。<br> **系统能力：** SystemCapability.Security.Huks.Core |
+| HUKS_TAG_USAGE_EXPIRE_DATETIME<sup>(deprecated)</sup>       | HuksTagType.HUKS_TAG_TYPE_ULONG \| 203   |  原为证书业务预留字段，当前证书管理已独立，此字段废弃，不再预留。 <br> **说明：** 从API version 8开始支持，从API version 9开始废弃，无替代接口。<br> **系统能力：** SystemCapability.Security.Huks.Core |
+| HUKS_TAG_CREATION_DATETIME<sup>(deprecated)</sup>           | HuksTagType.HUKS_TAG_TYPE_ULONG \| 204   | 原为证书业务预留字段，当前证书管理已独立，此字段废弃，不再预留。 <br>  **说明：** 从API version 8开始支持，从API version 9开始废弃，无替代接口。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_ALL_USERS                                          | HuksTagType.HUKS_TAG_TYPE_BOOL \| 301    | 预留。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_TAG_USER_ID                                            | HuksTagType.HUKS_TAG_TYPE_UINT \| 302    | 表示当前密钥属于哪个userID。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_TAG_NO_AUTH_REQUIRED                                   | HuksTagType.HUKS_TAG_TYPE_BOOL \| 303    | 预留。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
@@ -4042,20 +4042,20 @@ API version 11系统能力为SystemCapability.Security.Huks.Extension；从API v
 | HUKS_TAG_KEY_ROLE                                           | HuksTagType.HUKS_TAG_TYPE_UINT \| 1006   | 预留。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_TAG_KEY_FLAG                                           | HuksTagType.HUKS_TAG_TYPE_UINT \| 1007   | 表示密钥标志的tag。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_IS_ASYNCHRONIZED                                   | HuksTagType.HUKS_TAG_TYPE_UINT \| 1008   | 预留。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
-| HUKS_TAG_SECURE_KEY_ALIAS<sup>(deprecated)</sup>            | HuksTagType.HUKS_TAG_TYPE_BOOL \| 1009   | 原为预留字段。 <br> **说明：** 从API version 9开始废弃，无替代接口。                          <br> **系统能力：** SystemCapability.Security.Huks.Core |
-| HUKS_TAG_SECURE_KEY_UUID<sup>(deprecated)</sup>             | HuksTagType.HUKS_TAG_TYPE_BYTES \| 1010  | 原为预留字段。 <br> **说明：** 从API version 9开始废弃，无替代接口。                            <br> **系统能力：** SystemCapability.Security.Huks.Extension |
+| HUKS_TAG_SECURE_KEY_ALIAS<sup>(deprecated)</sup>            | HuksTagType.HUKS_TAG_TYPE_BOOL \| 1009   | 原为预留字段。 <br> **说明：** 从API version 8开始支持，从API version 9开始废弃，无替代接口。<br> **系统能力：** SystemCapability.Security.Huks.Core |
+| HUKS_TAG_SECURE_KEY_UUID<sup>(deprecated)</sup>             | HuksTagType.HUKS_TAG_TYPE_BYTES \| 1010  | 原为预留字段。 <br> **说明：** 从API version 8开始支持，从API version 9开始废弃，无替代接口。<br> **系统能力：** SystemCapability.Security.Huks.Extension |
 | HUKS_TAG_KEY_DOMAIN                                         | HuksTagType.HUKS_TAG_TYPE_UINT \| 1011   | 预留。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_IS_DEVICE_PASSWORD_SET<sup>11+</sup>                | HuksTagType.HUKS_TAG_TYPE_BOOL \| 1012   | 表示密钥锁屏密码访问控制字段，可限制密钥只有在用户设置了锁屏密码时可用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Extension |
-| HUKS_TAG_PROCESS_NAME<sup>(deprecated)</sup>                | HuksTagType.HUKS_TAG_TYPE_BYTES \| 10001 | 表示进程名称的tag。<br/>**说明：** 从API version 8开始支持，从API version 9开始废弃。          <br> **系统能力：** SystemCapability.Security.Huks.Core |
-| HUKS_TAG_PACKAGE_NAME<sup>(deprecated)</sup>                | HuksTagType.HUKS_TAG_TYPE_BYTES \| 10002 | 原为预留字段。 <br>**说明：** 从API version 9开始废弃，无替代接口。             <br> **系统能力：** SystemCapability.Security.Huks.Extension |
-| HUKS_TAG_ACCESS_TIME<sup>(deprecated)</sup>                 | HuksTagType.HUKS_TAG_TYPE_UINT \| 10003  | 原为预留字段。 <br> **说明：** 从API version 9开始废弃，无替代接口。                    <br> **系统能力：** SystemCapability.Security.Huks.Extension |
-| HUKS_TAG_USES_TIME<sup>(deprecated)</sup>                   | HuksTagType.HUKS_TAG_TYPE_UINT \| 10004  | 原为预留字段。 <br> **说明：** 从API version 9开始废弃，无替代接口。                 <br> **系统能力：** SystemCapability.Security.Huks.Extension |
-| HUKS_TAG_CRYPTO_CTX<sup>(deprecated)</sup>                  | HuksTagType.HUKS_TAG_TYPE_ULONG \| 10005 | 原为预留字段。 <br> **说明：** 从API version 9开始废弃，无替代接口。                <br> **系统能力：** SystemCapability.Security.Huks.Extension |
+| HUKS_TAG_PROCESS_NAME<sup>(deprecated)</sup>                | HuksTagType.HUKS_TAG_TYPE_BYTES \| 10001 | 表示进程名称的tag。<br/>**说明：** 从API version 8开始支持，从API version 9开始废弃。<br> **系统能力：** SystemCapability.Security.Huks.Core |
+| HUKS_TAG_PACKAGE_NAME<sup>(deprecated)</sup>                | HuksTagType.HUKS_TAG_TYPE_BYTES \| 10002 | 原为预留字段。 <br>**说明：** 从API version 8开始支持，从API version 9开始废弃，无替代接口。<br> **系统能力：** SystemCapability.Security.Huks.Extension |
+| HUKS_TAG_ACCESS_TIME<sup>(deprecated)</sup>                 | HuksTagType.HUKS_TAG_TYPE_UINT \| 10003  | 原为预留字段。 <br> **说明：** 从API version 8开始支持，从API version 9开始废弃，无替代接口。<br> **系统能力：** SystemCapability.Security.Huks.Extension |
+| HUKS_TAG_USES_TIME<sup>(deprecated)</sup>                   | HuksTagType.HUKS_TAG_TYPE_UINT \| 10004  | 原为预留字段。 <br> **说明：** 从API version 8开始支持，从API version 9开始废弃，无替代接口。<br> **系统能力：** SystemCapability.Security.Huks.Extension |
+| HUKS_TAG_CRYPTO_CTX<sup>(deprecated)</sup>                  | HuksTagType.HUKS_TAG_TYPE_ULONG \| 10005 | 原为预留字段。 <br> **说明：** 从API version 8开始支持，从API version 9开始废弃，无替代接口。<br> **系统能力：** SystemCapability.Security.Huks.Extension |
 | HUKS_TAG_KEY                                                | HuksTagType.HUKS_TAG_TYPE_BYTES \| 10006 | 预留。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
-| HUKS_TAG_KEY_VERSION<sup>(deprecated)</sup>                 | HuksTagType.HUKS_TAG_TYPE_UINT \| 10007  | 表示密钥版本的tag。<br/>**说明：** 从API version 8开始支持，从API version 9开始废弃。                   <br> **系统能力：** SystemCapability.Security.Huks.Extension |
-| HUKS_TAG_PAYLOAD_LEN<sup>(deprecated)</sup>                 | HuksTagType.HUKS_TAG_TYPE_UINT \| 10008  | 原为预留字段。 <br> **说明：** 从API version 9开始废弃，无替代接口。                          <br> **系统能力：** SystemCapability.Security.Huks.Extension |
+| HUKS_TAG_KEY_VERSION<sup>(deprecated)</sup>                 | HuksTagType.HUKS_TAG_TYPE_UINT \| 10007  | 表示密钥版本的tag。<br/>**说明：** 从API version 8开始支持，从API version 9开始废弃。<br> **系统能力：** SystemCapability.Security.Huks.Extension |
+| HUKS_TAG_PAYLOAD_LEN<sup>(deprecated)</sup>                 | HuksTagType.HUKS_TAG_TYPE_UINT \| 10008  | 原为预留字段。 <br> **说明：** 从API version 8开始支持，从API version 9开始废弃，无替代接口。<br> **系统能力：** SystemCapability.Security.Huks.Extension |
 | HUKS_TAG_AE_TAG                                             | HuksTagType.HUKS_TAG_TYPE_BYTES \| 10009 | 用于传入GCM模式中的AEAD数据的字段。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
-| HUKS_TAG_IS_KEY_HANDLE<sup>(deprecated)</sup>               | HuksTagType.HUKS_TAG_TYPE_ULONG \| 10010 | 原为预留字段。 <br> **说明：** 从API version 9开始废弃，无替代接口。              <br> **系统能力：** SystemCapability.Security.Huks.Core |
+| HUKS_TAG_IS_KEY_HANDLE<sup>(deprecated)</sup>               | HuksTagType.HUKS_TAG_TYPE_ULONG \| 10010 | 原为预留字段。 <br> **说明：** 从API version 8开始支持，从API version 9开始废弃，无替代接口。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_OS_VERSION<sup>(deprecated)</sup>                  | HuksTagType.HUKS_TAG_TYPE_UINT \| 10101  | 表示操作系统版本的tag。<br/>**说明：** 从API version 8开始支持，从API version 9开始废弃。      <br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_OS_PATCHLEVEL<sup>(deprecated)</sup>               | HuksTagType.HUKS_TAG_TYPE_UINT \| 10102  | 表示操作系统补丁级别的tag。<br/>**说明：** 从API version 8开始支持，从API version 9开始废弃。    <br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_SYMMETRIC_KEY_DATA                                 | HuksTagType.HUKS_TAG_TYPE_BYTES \| 20001 | 预留。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
@@ -4285,7 +4285,7 @@ let emptyOptions: huks.HuksOptions = {
 let result = huks.deleteKey(keyAlias, emptyOptions).then((data) => {
   console.info('delete key success');
 }).catch((err: BusinessError) => {
-  console.error("密钥删除失败，错误码是： " + err.code + " 错误码信息： " + err.message);
+  console.error(`密钥删除失败，错误码是：${err.code} 错误码信息：${err.message}`);
 });
 ```
 
@@ -4293,7 +4293,7 @@ let result = huks.deleteKey(keyAlias, emptyOptions).then((data) => {
 
 importKey(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<HuksResult>) : void
 
-导入明文密钥，使用callback方式回调异步返回结果。
+导入明文密钥。使用callback异步回调。
 
 > **说明：**
 >
@@ -4434,7 +4434,7 @@ let result = huks.importKey(keyAlias, huksOptions);
 
 exportKey(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<HuksResult>) : void
 
-导出密钥，使用callback方式回调异步返回的结果。
+导出密钥。使用callback异步回调。
 
 > **说明：**
 >
@@ -4826,14 +4826,14 @@ import { huks } from '@kit.UniversalKeystoreKit';
  * 以下以RSA2048密钥的callback操作使用为例
  */
 
-let keyAlias = "HuksDemoRSA";
+let keyAlias = 'HuksDemoRSA';
 let properties: Array<huks.HuksParam> = [];
 let options: huks.HuksOptions = {
   properties: properties,
   inData: new Uint8Array(0)
 };
 let handle: number = 0;
-let resultMessage = "";
+let resultMessage = '';
 
 /* 生成密钥 */
 async function generateKey() {
@@ -4874,25 +4874,25 @@ async function huksInit() {
 }
 
 async function huksUpdate() {
-  options.inData = stringToUint8Array("huksHmacTest");
+  options.inData = stringToUint8Array('huksHmacTest');
   await huks.update(handle, options.inData, options).then((data) => {
     if (data.errorCode === 0) {
-      resultMessage += "update success!";
+      resultMessage += 'update success!';
     } else {
-      resultMessage += "update fail!";
+      resultMessage += 'update fail!';
     }
   });
   console.info(resultMessage);
 }
 
 function huksFinish() {
-  options.inData = stringToUint8Array("HuksDemoHMAC");
+  options.inData = stringToUint8Array('HuksDemoHMAC');
   huks.finish(handle, options).then((data) => {
     if (data.errorCode === 0) {
-      resultMessage = "finish success!";
+      resultMessage = 'finish success!';
       console.info(resultMessage);
     } else {
-      resultMessage = "finish fail errorCode: " + data.errorCode;
+      resultMessage = `finish fail errorCode: ${data.errorCode}`;
       console.error(resultMessage);
     }
   });
@@ -4944,14 +4944,14 @@ import { huks } from '@kit.UniversalKeystoreKit';
  *
  * 以下以RSA2048密钥的promise操作使用为例
  */
-let keyAlias = "HuksDemoRSA";
+let keyAlias = 'HuksDemoRSA';
 let properties: Array<huks.HuksParam> = [];
 let options: huks.HuksOptions = {
   properties: properties,
   inData: new Uint8Array(0)
 };
 let handle: number = 0;
-let resultMessage = "";
+let resultMessage = '';
 
 function stringToUint8Array(str: string) {
   let arr: number[] = [];
@@ -4982,9 +4982,9 @@ async function generateKey() {
   }];
   huks.generateKey(keyAlias, options, (err, data) => {
     if (data.errorCode === 0) {
-      resultMessage = "generate success!";
+      resultMessage = 'generate success!';
     } else {
-      resultMessage = "generate fail errorCode: " + data.errorCode;
+      resultMessage = `generate fail errorCode: ${data.errorCode}`;
     }
   });
 }
@@ -4994,24 +4994,24 @@ async function huksInit() {
   return new Promise<huks.HuksHandle>((resolve, reject) => {
     huks.init(keyAlias, options, async (err, data) => {
       if (data.errorCode === 0) {
-        resultMessage = "init success!";
+        resultMessage = 'init success!';
         handle = data.handle;
       } else {
-        resultMessage = "init fail errorCode: " + data.errorCode;
+        resultMessage = `init fail errorCode: ${data.errorCode}`;
       }
     });
   });
 }
 
 async function huksUpdate() {
-  options.inData = stringToUint8Array("huksHmacTest");
+  options.inData = stringToUint8Array('huksHmacTest');
   new Promise<huks.HuksResult>((resolve, reject) => {
     huks.update(handle, options.inData, options, (err, data) => {
       if (data.errorCode === 0) {
-        resultMessage += "update success!";
+        resultMessage += 'update success!';
         console.info(resultMessage);
       } else {
-        resultMessage += "update fail!";
+        resultMessage += 'update fail!';
         console.error(resultMessage);
       }
     });
@@ -5019,13 +5019,13 @@ async function huksUpdate() {
 }
 
 async function huksFinish() {
-  options.inData = stringToUint8Array("0");
+  options.inData = stringToUint8Array('0');
   new Promise<huks.HuksResult>((resolve, reject) => {
     huks.finish(handle, options, (err, data) => {
       if (data.errorCode === 0) {
-        resultMessage = "finish success!";
+        resultMessage = 'finish success!';
       } else {
-        resultMessage = "finish fail errorCode: " + data.errorCode;
+        resultMessage = `finish fail errorCode: ${data.errorCode}`;
       }
     });
   });
@@ -5035,9 +5035,9 @@ async function huksFinish() {
 function huksAbort() {
   huks.abort(handle, options).then((data) => {
     if (data.errorCode === 0) {
-      console.info("abort success!");
+      console.info('abort success!');
     } else {
-      console.error("abort fail errorCode: " + data.errorCode);
+      console.error(`abort fail errorCode: ${data.errorCode}`);
     }
   });
 }
