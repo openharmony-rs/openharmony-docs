@@ -103,7 +103,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
       let result = '';
       for (let i = 0; i < recordCount; i++) {
         let record = data.getRecord(i).toPlainText();
-        hilog.info(0xFF00, '[Sample_pasteboard]', 'Get data success, record:' + record);
+        hilog.info(0xFF00, '[Sample_pasteboard]', `Get data success, record: ${record}`);
         result = record;
       }
       return result;
@@ -139,9 +139,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
     try {
       // 从系统剪贴板中读取数据
       let data = await systemPasteboard.getData();
-      // 从剪贴板数据中获取条目数量
       let recordCount = data.getRecordCount();
-      // 从剪贴板数据中获取对应条目信息
       let result = '';
       for (let i = 0; i < recordCount; i++) {
         let record = data.getRecord(i).toPlainText();
@@ -200,7 +198,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
       hilog.info(0xFF00, '[Sample_pasteboard]', 'Succeeded in setting UnifiedData.');
       // 存入成功，处理正常场景
     }).catch((err: BusinessError) => {
-      hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to set UnifiedData. Cause: ' + err.message);
+      hilog.error(0xFF00, '[Sample_pasteboard]', `Failed to set UnifiedData. Cause: ${err.message}`);
       // 处理异常场景
     });
     // 3.从系统剪贴板中读取这条text数据
@@ -213,7 +211,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
         }
       }
     }).catch((err: BusinessError) => {
-      hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to get UnifiedData. Cause: ' + err.message);
+      hilog.error(0xFF00, '[Sample_pasteboard]', `Failed to get UnifiedData. Cause: ${err.message}`);
       // 处理异常场景
     });
   }

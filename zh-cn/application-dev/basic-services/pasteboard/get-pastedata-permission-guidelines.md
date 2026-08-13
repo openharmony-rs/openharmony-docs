@@ -88,7 +88,7 @@ async function isNeedGetPermissionFromUser(): Promise<boolean> {
     }
     // 获取剪贴板的内容变化次数
     let result: number = systemPasteboard.getChangeCount();
-    hilog.info(0xFF00, '[Sample_pasteboard]', 'Succeeded in getting the ChangeCount. Result: ${result}');
+    hilog.info(0xFF00, '[Sample_pasteboard]', `Succeeded in getting the ChangeCount. Result: ${result}`);
     // 从 Preferences 中读取上次保存的 changeCount
     let storedChangeCount: number = dataPreferences ? Number(dataPreferences.getSync('pasteboardChangeCount', 0)) : 0;
     if (result === storedChangeCount) {
@@ -96,7 +96,7 @@ async function isNeedGetPermissionFromUser(): Promise<boolean> {
       return false;
     }
   } catch (err) {
-    hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to get the ChangeCount. Cause: ${err.message}');
+    hilog.error(0xFF00, '[Sample_pasteboard]', `Failed to get the ChangeCount. Cause: ${err.message}`);
     return false;
   };
 
@@ -104,7 +104,7 @@ async function isNeedGetPermissionFromUser(): Promise<boolean> {
   try {
     // (可选)判断是否有应用需要的数据类型
     let result: boolean = systemPasteboard.hasDataType(pasteboard.MIMETYPE_TEXT_PLAIN);
-    hilog.info(0xFF00, '[Sample_pasteboard]', 'Succeeded in checking the DataType. Result: ${result}');
+    hilog.info(0xFF00, '[Sample_pasteboard]', `Succeeded in checking the DataType. Result: ${result}`);
     if (!result) {
       // 剪贴板不存在应用所需数据类型，无需申请权限
       return false;
@@ -116,7 +116,7 @@ async function isNeedGetPermissionFromUser(): Promise<boolean> {
       return false;
     }
   } catch (err) {
-    hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to check the DataType. Cause:' + err.message);
+    hilog.error(0xFF00, '[Sample_pasteboard]', `Failed to check the DataType. Cause: ${err.message}`);
     return false;
   };
   return true;
@@ -193,7 +193,7 @@ import common from '@ohos.app.ability.common'
 import dataPreferences from '@ohos.data.preferences'
 import EntryAbility from '../entryability/EntryAbility'
 import { Entry, Text, Column, RichEditorController, Component, Scroller, Button, ClickEvent, Row, TextArea, RichEditorOptions } from '@ohos.arkui.component'
-import { hilog } from '@ohos.hilog'
+import hilog from '@ohos.hilog'
 import pasteboard from '@ohos.pasteboard'
 import { State } from '@ohos.arkui.stateManagement'
 
