@@ -1195,7 +1195,7 @@ try {
 | securityType | [WifiSecurityType](js-apis-wifiManager.md#wifisecuritytype)| 否 | 否 | 加密类型。 |
 | band | number | 否 | 否 | 热点的频段。1: 2.4G, 2: 5G, 3: 双频段 |
 | channel<sup>10+</sup> | number | 否 | 是 | 热点的信道（2.4GHz：1~14,5GHz：7~196）。 |
-| preSharedKey | string | 否 | 否 | 热点的密钥。WPA/WPA2-PSK 加密方式下长度为8-63个字符。 |
+| preSharedKey | string | 否 | 否 | 热点的密钥。WPA/WPA2-PSK加密方式下长度为8-63个字符。 |
 | maxConn | number | 否 | 否 | 最大设备连接数。取值需大于0，具体上限取决于设备支持的最大连接数。 |
 | ipAddress | string | 否 | 是 | DHCP服务器的IP地址，未指定时使用系统默认地址（如192.168.43.1）。|
 

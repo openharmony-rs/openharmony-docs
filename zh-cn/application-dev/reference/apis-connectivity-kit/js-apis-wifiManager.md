@@ -768,7 +768,7 @@ addCandidateConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&g
 添加候选网络配置，使用callback异步回调，使用前先使能WLAN。
 
 - 将指定的WLAN设备配置添加为候选网络。
-- 添加后的网络在没有连接记录的情况下无法触发自动回连。如需连接，可通过 connectToCandidateConfig 或 connectToCandidateConfigWithUserAction 方法发起连接，页面确认连接成功后即可实现自动回连。
+- 添加后的网络在没有连接记录的情况下无法触发自动回连。如需连接，可通过connectToCandidateConfig或connectToCandidateConfigWithUserAction方法发起连接，页面确认连接成功后即可实现自动回连。
 - 候选网络属于应用维度添加的网络配置，和系统网络配置是相互隔离的，在系统WLAN页面不可见。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
@@ -1388,7 +1388,7 @@ getSignalLevel(rssi: number, band: number): number
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
- | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
@@ -1415,7 +1415,7 @@ getLinkedInfo(): Promise&lt;WifiLinkedInfo&gt;
 
 **需要权限：** ohos.permission.GET_WIFI_INFO 。 
 
-当macType是1（设备MAC地址）时，获取 macAddress 还需申请ohos.permission.GET_WIFI_LOCAL_MAC权限（API8-15仅面向系统应用开放。从API 16开始，在PC/2in1设备上面向普通应用开放，在其余设备上仍仅面向系统应用开放），无该权限时，macAddress 返回为空。
+当macType是1（设备MAC地址）时，获取macAddress还需申请ohos.permission.GET_WIFI_LOCAL_MAC权限（API8-15仅面向系统应用开放。从API version 16开始，在PC/2in1设备上面向普通应用开放，在其余设备上仍仅面向系统应用开放），无该权限时，macAddress返回为空。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

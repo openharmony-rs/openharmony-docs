@@ -161,7 +161,7 @@ getPowerModel(callback: AsyncCallback&lt;PowerModel&gt;): void
 
 ## wifiext.setPowerModel<sup>(deprecated)</sup>
 
-setPowerModel(model: PowerModel): boolean;
+setPowerModel(model: PowerModel): boolean
 
  设置功率模式。可根据不同应用场景选择功率模式：如设备需要降低功耗时使用SLEEPING（睡眠模式），日常正常运行时使用GENERAL（常规模式），需要增强信号穿墙覆盖能力时使用THROUGH_WALL（穿墙模式）。
 
