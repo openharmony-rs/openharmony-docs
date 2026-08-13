@@ -367,12 +367,14 @@ The **Web** component provides the capability of adapting to the page layout. Fo
 To avoid white screen issues, you can handle the compatibility issue as follows:
 * Intercept special protocols.
 * If a white screen is displayed due to the **tel:** or **mailto:** protocol invoked by the HTML5 page, intercept the protocol and invoke the system dialing capability through **onInterceptRequest**.
-   ```c
+   ```ts
    .onInterceptRequest((event) => {
-       if (event.request.url.startsWith('tel:')) {
+       if (event.request.getRequestUrl().startsWith('tel:')) {
            // Invoke the system dialing capability.
-           call.makeCall({ phoneNumber: '123456' });
-           return { responseCode: 404 }; // Prevent the default behavior.
+           call.makeCall('123456');
+           let response = new WebResourceResponse();
+           response.setResponseCode(404);
+           return response; // Prevent the default behavior.
        }
        return null;  
    })
