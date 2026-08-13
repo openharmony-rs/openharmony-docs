@@ -3898,7 +3898,7 @@ struct TailIndentsExample {
     ])
 
   styledString3:StyledString =
-    new StyledString('设置tailIndents数组\n设置tailIndents数组\n设置tailIndents数组\n设置tailIndents数组\n设置tailIndents数组', [
+    new StyledString('设置tailIndents数组_设置tailIndents数组_设置tailIndents数组_设置tailIndents数组_设置tailIndents数组_设置tailIndents数组', [
       {
         start: 0,
         length: 120,
@@ -3937,6 +3937,7 @@ struct TailIndentsExample {
         .textAlign(TextAlign.End)
         .borderWidth(1)
         .borderColor(Color.Blue)
+        .width('100%')
 
       Text(undefined, { controller: this.txtController3 })
         .onAppear(() => {
@@ -3945,6 +3946,7 @@ struct TailIndentsExample {
         .textAlign(TextAlign.End)
         .borderWidth(1)
         .borderColor(Color.Blue)
+        .width('100%')
     }
     .height('100%')
     .width('100%')
