@@ -120,7 +120,7 @@ The component status is abnormal.
 
 ## 180005 未命中可响应事件的组件
 
-**错误信息**
+No component is hit to respond to the event.
 
 No component hit to response to the event.
 
