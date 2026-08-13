@@ -73,20 +73,25 @@ int32_t VideoDecoder::Configure(const SampleInfo &sampleInfo)
     OH_AVFormat *format = OH_AVFormat_Create();
     CHECK_AND_RETURN_RET_LOG(format != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "AVFormat create failed");
 
-    OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, sampleInfo.videoWidth);
-    OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, sampleInfo.videoHeight);
-    OH_AVFormat_SetDoubleValue(format, OH_MD_KEY_FRAME_RATE, sampleInfo.frameRate);
-    OH_AVFormat_SetIntValue(format, OH_MD_KEY_PIXEL_FORMAT, sampleInfo.pixelFormat);
-    OH_AVFormat_SetIntValue(format, OH_MD_KEY_ROTATION, sampleInfo.rotation);
-    if (sampleInfo.codecSyncMode) {
-        OH_AVFormat_SetIntValue(format, OH_MD_KEY_ENABLE_SYNC_MODE, sampleInfo.codecSyncMode);
+    OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, sampleInfo.video.videoWidth);
+    OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, sampleInfo.video.videoHeight);
+    OH_AVFormat_SetDoubleValue(format, OH_MD_KEY_FRAME_RATE, sampleInfo.video.frameRate);
+    OH_AVFormat_SetIntValue(format, OH_MD_KEY_PIXEL_FORMAT, sampleInfo.video.pixelFormat);
+    OH_AVFormat_SetIntValue(format, OH_MD_KEY_ROTATION, sampleInfo.video.rotation);
+    if (sampleInfo.codec.codecSyncMode) {
+        OH_AVFormat_SetIntValue(format, OH_MD_KEY_ENABLE_SYNC_MODE, sampleInfo.codec.codecSyncMode);
     }
-    if (sampleInfo.isSmartFluencySupported) {
-        // 在初始化阶段配置ADAPTIVE模式，确保解码过程MV信息输出到丢帧判决模块。
-        // MV信息输出需在初始化阶段使能ADAPTIVE模式，不支持运行态动态使能。
-        // 若中途动态切入ADAPTIVE模式，丢帧判决模块将无法获取MV信息，退化为按固定间隔丢帧。
+    if (sampleInfo.codec.isSmartFluencySupported) {
+        // 该能力依赖 API 26 Native SDK 中的智能流畅 Key 和枚举。若编译提示符号未定义，
+        // 请确认 SDK 路径并清理 CMake 缓存；兼容旧 SDK 时可在 CMake 中将
+        // AVCODEC_SAMPLE_ENABLE_SMART_FLUENCY 设为 OFF。
+#ifdef AVCODEC_SAMPLE_ENABLE_SMART_FLUENCY
+        // Configure FULL before playback, then switch to ADAPTIVE at X2/X3.
         OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_MODE,
-                                OH_FRAME_RETENTION_MODE_ADAPTIVE);
+            OH_FRAME_RETENTION_MODE_FULL);
+#else
+        AVCODEC_SAMPLE_LOGW("Smart fluency is not enabled in current native SDK build");
+#endif
     }
 
     int ret = OH_VideoDecoder_Configure(decoder_, format);
