@@ -553,7 +553,6 @@ onFinishSession用于传输最后一段明文，在验签操作中用于传输�
 onExportCertificate用于查询某个resourceId下的证书。可以通过解析参数[HUKS_EXT_CRYPTO_TAG_PURPOSE](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)获取业务希望的证书类型。如未指定，密钥管理扩展应用实现方需设置默认类型（建议签名证书）。
 
    ```ts
-
    onExportCertificate(resourceId: string, params?: Array<huksExternalCrypto.HuksExternalCryptoParam> | HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
     const result: HuksCryptoExtensionResult = {
       resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
@@ -753,7 +752,6 @@ onEnumCertificates用于枚举证书列表。当调用成功时，返回值中�
 从API版本26.0.0开始，onExportKeyItem用于导出指定密钥的公钥。params中的参数为可选参数，由密钥管理扩展应用定义支持范围。如未传入相应参数，密钥管理扩展应用实现方需设置默认行为。推荐传入密钥用途（HUKS_TAG_PURPOSE）参数，以便导出指定用途的公钥。当调用成功时，返回值中的resultCode成员需设置为0，outData携带导出的公钥数据；调用失败时，resultCode携带错误码信息。
 
    ```ts
-
    onExportKeyItem(handle: string, params: HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
     const result: HuksCryptoExtensionResult = {
       resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
