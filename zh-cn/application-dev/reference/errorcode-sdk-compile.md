@@ -117,8 +117,7 @@ The {apiName} API is supported since SDK version {sinceVersion}. However, the cu
 选择一下任一方案消除兼容性风险：
 
 方案一：使用apiAvailable接口判断当前设备是否支持该API，在支持时调用，不支持时走降级逻辑。
-
-        参考API文档说明：[apiAvailable](./apis-basic-services-kit/js-apis-device-info.md#deviceinfoapiavailable)。
+参考API文档说明：[apiAvailable](./apis-basic-services-kit/js-apis-device-info.md#deviceinfoapiavailable)。
 
 方案二：更换为低版本兼容的替代接口。        
 
@@ -143,8 +142,7 @@ The {apiName} API is available since SDK version {sinceVersion}. However, the cu
 选择一下任一方案消除兼容性风险：
 
 方案一：使用apiAvailable接口判断当前设备是否支持该API，在支持时调用，不支持时走降级逻辑。
-
-        参考API文档说明：[apiAvailable](./apis-basic-services-kit/js-apis-device-info.md#deviceinfoapiavailable)。
+参考API文档说明：[apiAvailable](./apis-basic-services-kit/js-apis-device-info.md#deviceinfoapiavailable)。
 
 方案二：更换为低版本兼容的替代接口。 
 
