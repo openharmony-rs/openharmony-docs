@@ -34,7 +34,7 @@ ArkTS-Sta: transmitInfrared(infraredFrequency: long, pattern: Array&lt;long&gt;)
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InfraredEmitter
 
-**ArkTS-Dyn起始版本**：12
+**ArkTS-Dyn起始版本**：15
 
 **ArkTS-Sta起始版本**：23
 
@@ -119,7 +119,7 @@ getInfraredFrequencies(): Array&lt;InfraredFrequency&gt;
 
 **设备行为差异**：该接口在支持红外发射器的Phone和TV设备上返回红外信号的频率范围，在其他不支持红外发射器的设备上返回一组最大和最小频率，且均为0Hz。建议使用[hasIrEmitter](#infraredemitterhasiremitter23)接口查询设备是否支持红外发射器。
 
-**ArkTS-Dyn起始版本**：12
+**ArkTS-Dyn起始版本**：15
 
 **ArkTS-Sta起始版本**：23
 
@@ -190,13 +190,13 @@ struct Index {
 }
 ```
 
-##  InfraredFrequency
+## InfraredFrequency
 
 红外信号的频率范围。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InfraredEmitter
 
-**ArkTS-Dyn起始版本**：12
+**ArkTS-Dyn起始版本**：15
 
 **ArkTS-Sta起始版本**：23
 

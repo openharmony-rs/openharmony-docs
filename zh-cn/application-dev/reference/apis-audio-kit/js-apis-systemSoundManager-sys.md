@@ -32,7 +32,7 @@ import { systemSoundManager } from '@kit.AudioKit';
 | TONE_CATEGORY_TEXT_MESSAGE<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 2   | 短信铃声类别。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | TONE_CATEGORY_NOTIFICATION<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 4   | 通知铃声类别。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | TONE_CATEGORY_ALARM<sup>12+</sup>        | ArkTS-Dyn: number<br>ArkTS-Sta: int | 8   | 闹钟铃声类别。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
-| TONE_CATEGORY_CONTACTS<sup>20+</sup>     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 16  | 联系人铃声类别。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| TONE_CATEGORY_CONTACTS<sup>20+</sup>     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 16  | 联系人铃声类别。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 | TONE_CATEGORY_NOTIFICATION_APP<sup>22+</sup>     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 32  | 应用级通知铃声类别。<br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 23 |
 
 ## RingtoneType
@@ -2335,9 +2335,9 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, externalUri: string
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400102     | Operation is not allowed, e.g. ringtone to add is not customized. |
 | 5400103  | I/O error. Possible causes: 1. The target file size exceeds 2 GB; 2. Failed to find the specified file; 3. System sound manager service error.|
-| 20700004 | Data size exceeds the limit. Note:This error is returned when the file size is between 200MB and 2GB.|
-| 20700005 | The number of files exceeds the limit. |
-| 20700006 | Insufficient ROM space. |
+| 20700004 | Data size exceeds the limit. Note:This error is returned when the file size is between 200MB and 2GB.<br>适用版本：20+|
+| 20700005 | The number of files exceeds the limit.<br>适用版本：20+ |
+| 20700006 | Insufficient ROM space.<br>适用版本：20+ |
 
 **示例：**
 
@@ -2411,9 +2411,9 @@ ArkTS-Sta: addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, fd: int,
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400102     | Operation is not allowed, e.g. ringtone to add is not customized. |
 | 5400103  | I/O error. Possible causes: 1. The target file size exceeds 2 GB; 2. Failed to find the specified file; 3. Ringtone library error. 4. System sound manager service error.|
-| 20700004 | Data size exceeds the limit. Note: This error is returned when the file size is between 200MB and 2GB.|
-| 20700005 | The number of files exceeds the limit. |
-| 20700006 | Insufficient ROM space. |
+| 20700004 | Data size exceeds the limit. Note: This error is returned when the file size is between 200MB and 2GB.<br>适用版本：20+|
+| 20700005 | The number of files exceeds the limit.<br>适用版本：20+ |
+| 20700006 | Insufficient ROM space.<br>适用版本：20+ |
 
 **示例：**
 

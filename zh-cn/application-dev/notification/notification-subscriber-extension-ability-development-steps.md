@@ -143,7 +143,7 @@
 11. 需要申请权限[ohos.permission.ACCESS_BLUETOOTH](../security/AccessToken/permissions-for-all-user.md#ohospermissionaccess_bluetooth)。如何配置和申请权限，具体操作请参考[声明权限](../security/AccessToken/declare-permissions.md)和[向用户申请授权](../security/AccessToken/request-user-authorization.md)。
 
     ArkTS-Dyn示例：
-    <!--@[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWearableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->  
+    <!--@[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWearableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)--> 
     
     ``` TypeScript
     import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -181,7 +181,7 @@
         }
         this.connectPromise = new Promise((resolve) => {
           let option: socket.SppOptions = {
-            uuid: '00009999-0000-1000-8000-00805F9B34FB',
+            uuid: '00009999-0000-1000-8000-00805F9B34FB', // UUID of the server to connect to, ensure server support
             secure: false,
             type: socket.SppType.SPP_RFCOMM
           };
@@ -350,7 +350,7 @@
     ```
 
     ArkTS-Sta示例：
-    <!--@[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/ThirdpartyWearableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->    
+    <!--@[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/ThirdpartyWearableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->  
     
     ``` TypeScript
     import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -388,7 +388,7 @@
         }
         this.connectPromise = new Promise((resolve) => {
           let option: socket.SppOptions = {
-            uuid: '00009999-0000-1000-8000-00805F9B34FB',
+            uuid: '00009999-0000-1000-8000-00805F9B34FB', // UUID of the server to connect to, ensure server support
             secure: false,
             type: socket.SppType.SPP_RFCOMM
           };
@@ -555,4 +555,3 @@
       }
     }
     ```
-注意：请勿频繁建立连接，可能会影响功能。

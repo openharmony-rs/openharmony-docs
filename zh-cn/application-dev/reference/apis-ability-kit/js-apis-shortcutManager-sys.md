@@ -6,7 +6,7 @@
 <!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
-本模块提供系统应用对于快捷方式的增加、删除，以及查询能力，包括[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)信息的增加、删除以及查询等。
+本模块提供系统应用对于快捷方式的增加、删除，以及查询能力，包括[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1)信息的增加、删除以及查询等。
 
 > **说明：**
 >
@@ -45,7 +45,7 @@ ArkTS-Sta: addDesktopShortcutInfo(shortcutInfo: ShortcutInfo, userId: int): Prom
 
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
-| shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md) | 是   | 快捷方式信息。 |
+| shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1) | 是   | 快捷方式信息。 |
 | userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户id。可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。|
 
 **返回值：**
@@ -169,7 +169,7 @@ ArkTS-Sta: deleteDesktopShortcutInfo(shortcutInfo: ShortcutInfo, userId: int): P
 
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
-| shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md) | 是   | 快捷方式信息。 |
+| shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1) | 是   | 快捷方式信息。 |
 | userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户id。可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。|
 
 **返回值：**
@@ -381,7 +381,7 @@ ArkTS-Sta: getAllDesktopShortcutInfo(userId: int): Promise<Array\<ShortcutInfo>>
 
 | 类型                                                         | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Promise<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)>> | Promise对象，返回应用配置文件中定义的快捷方式信息。 |
+| Promise<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1)>> | Promise对象，返回应用配置文件中定义的快捷方式信息。 |
 
 **错误码：**
 

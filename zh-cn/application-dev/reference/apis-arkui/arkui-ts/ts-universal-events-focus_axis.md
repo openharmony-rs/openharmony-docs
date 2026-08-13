@@ -46,7 +46,7 @@ ArkTS-Sta: onFocusAxisEvent(event: Callback\<FocusAxisEvent> | undefined): this
 
 ## FocusAxisEvent对象说明
 
-焦点轴事件的对象说明，继承于[BaseEvent](ts-gesture-customize-judge.md#baseevent8)。
+焦点轴事件的对象说明，继承于[BaseEvent](ts-universal-events-click.md#baseevent8)。
 
 ### 属性
 

@@ -75,7 +75,7 @@ ArkTS-Sta: startChildProcess(srcEntry: string, startMode: StartMode): Promise&lt
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | srcEntry | string | 是 | 子进程源文件路径，只支持源文件放在entry类型的模块中。传入带`.ets`后缀的srcEntry表示动态子进程源文件路径，传入不带`.ets`后缀的srcEntry表示静态子进程源文件路径。<br/>- 拉起ArkTS-Dyn类型子进程时，以src/main为根目录。例如子进程文件在entry模块下src/main/ets/process/DemoProcess.ets，则srcEntry为"./ets/process/DemoProcess.ets"。<br/>- 拉起ArkTS-Sta类型子进程时，srcEntry需要传入子进程文件相对于工程根目录的路径，且不带文件后缀。例如子进程文件相对于工程根目录的路径为`Project/entry/src/main/ets/process/StaticDemoProcess.ets`，则srcEntry为`entry/src/main/ets/process/StaticDemoProcess`。如果该子进程文件中继承ChildProcess基类的类名与文件名不一致，需要在末尾追加`:className`，例如`entry/src/main/ets/process/StaticDemoProcess:className`。<br>另外，需要确保子进程源文件被其它文件引用到，防止被构建工具优化掉（详见下方示例代码）。 |
-| startMode | [StartMode](#startmode) | 是 | 子进程启动模式。SELF_FORK（值为0）：从App自身进程Fork子进程，继承父进程资源，不能使用Binder IPC；APP_SPAWN_FORK（值为1）：从AppSpawn Fork子进程，不继承父进程资源，可使用Binder IPC。 |
+| startMode | [StartMode](#startmode) | 是 | 子进程启动模式。SELF_FORK（值为0）：从App自身进程Fork子进程，继承父进程资源，不能使用Binder IPC和其他进程通信，否则会导致子进程崩溃退出；APP_SPAWN_FORK（值为1）：从AppSpawn Fork子进程，不继承父进程资源，可使用Binder IPC和其他进程通信。 |
 
 **返回值：**
 
@@ -264,7 +264,7 @@ ArkTS-Sta: startChildProcess(srcEntry: string, startMode: StartMode, callback: A
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | srcEntry | string | 是 | 子进程源文件路径，只支持源文件放在entry类型的模块中。传入带`.ets`后缀的srcEntry表示动态子进程源文件路径，传入不带`.ets`后缀的srcEntry表示静态子进程源文件路径。<br/>- 拉起ArkTS-Dyn类型子进程时，以src/main为根目录。例如子进程文件在entry模块下src/main/ets/process/DemoProcess.ets，则srcEntry为"./ets/process/DemoProcess.ets"。<br/>- 拉起ArkTS-Sta类型子进程时，srcEntry需要传入子进程文件相对于工程根目录的路径，且不带文件后缀。例如子进程文件相对于工程根目录的路径为`Project/entry/src/main/ets/process/StaticDemoProcess.ets`，则srcEntry为`entry/src/main/ets/process/StaticDemoProcess`。如果该子进程文件中继承ChildProcess基类的类名与文件名不一致，需要在末尾追加`:className`，例如`entry/src/main/ets/process/StaticDemoProcess:className`。<br>另外，需要确保子进程源文件被其它文件引用到，防止被构建工具优化掉（详见下方示例代码）。 |
-| startMode | [StartMode](#startmode) | 是 | 子进程启动模式。SELF_FORK（值为0）：从App自身进程Fork子进程，继承父进程资源，不能使用Binder IPC；APP_SPAWN_FORK（值为1）：从AppSpawn Fork子进程，不继承父进程资源，可使用Binder IPC。 |
+| startMode | [StartMode](#startmode) | 是 | 子进程启动模式。SELF_FORK（值为0）：从App自身进程Fork子进程，继承父进程资源，不能使用Binder IPC和其他进程通信，否则会导致子进程崩溃退出；APP_SPAWN_FORK（值为1）：从AppSpawn Fork子进程，不继承父进程资源，可使用Binder IPC和其他进程通信。 |
 | callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;int&gt; | 是 | 回调函数。当子进程启动成功，err为undefined，data为获取到的子进程pid；否则为错误对象。 |
 
 **错误码**：
@@ -538,13 +538,13 @@ struct Index {
               };
               childProcessManager.startArkChildProcess('module1/ets/process/DemoProcess.ets', args, options)
                 .then((pid) => {
-                  console.info(`startChildProcess success, pid: ${pid}`);
+                  console.info(`startArkChildProcess success, pid: ${pid}`);
                 })
                 .catch((err: BusinessError) => {
-                  console.error(`startChildProcess business error, errorCode: ${err.code}, errorMsg:${err.message}`);
+                  console.error(`startArkChildProcess business error, errorCode: ${err.code}, errorMsg:${err.message}`);
                 })
             } catch (err: BusinessError) {
-              console.error(`startChildProcess error, errorCode: ${err.code}, errorMsg:${err.message}`);
+              console.error(`startArkChildProcess error, errorCode: ${err.code}, errorMsg:${err.message}`);
             }
           });
 
@@ -712,7 +712,7 @@ extern "C" {
  */
 void Main(NativeChildProcess_Args args)
 {
-    // 获取传入的entryPrams
+    // 获取传入的entryParams
     char *entryParams = args.entryParams;
     // 获取传入的fd列表，对应ChildProcessArgs中的args.fds
     NativeChildProcess_Fd *current = args.fdList.head;
@@ -760,13 +760,13 @@ struct Index {
               };
               childProcessManager.startNativeChildProcess("libentry.so:Main", args, options)
                 .then((pid) => {
-                  console.info(`startChildProcess success, pid: ${pid}`);
+                  console.info(`startNativeChildProcess success, pid: ${pid}`);
                 })
                 .catch((err: BusinessError) => {
-                  console.error(`startChildProcess business error, errorCode: ${err.code}, errorMsg:${err.message}`);
+                  console.error(`startNativeChildProcess business error, errorCode: ${err.code}, errorMsg:${err.message}`);
                 })
             } catch (err: BusinessError) {
-              console.error(`startChildProcess error, errorCode: ${err.code}, errorMsg:${err.message}`);
+              console.error(`startNativeChildProcess error, errorCode: ${err.code}, errorMsg:${err.message}`);
             }
           });
       }

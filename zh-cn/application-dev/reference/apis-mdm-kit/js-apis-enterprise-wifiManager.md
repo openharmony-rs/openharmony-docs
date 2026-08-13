@@ -14,7 +14,7 @@
 - 管理企业设备的Wi-Fi开关，统一网络策略
 
 **功能收益**：
-- 提高企业网络管理效率，减少IT运维成本
+- 提高企业网络管理效率，减少IT（Information Technology，信息技术）运维成本
 - 确保设备仅连接安全的Wi-Fi网络，降低安全风险
 - 实现网络策略统一管控，满足企业合规要求
 
@@ -919,6 +919,8 @@ Wi-Fi的SSID和BSSID信息。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 <!--Table: 10%; 10%; 10%; 10%; 60%-->
 | 名称          | 类型                             | 只读 | 可选 | 说明                                                        |
 | ------------- | --------------------------------| ---- | -----| ------------------------------------------------------ |
@@ -931,7 +933,7 @@ Wi-Fi配置信息。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称          | 类型                              | 只读 | 可选 | 说明                                                        |
 | ------------- | ----------------------------------| ---- | ----| ------------------------------------------------------- |
@@ -955,7 +957,7 @@ Wi-Fi配置信息。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称                      | 值   | 说明                                                         |
 | ------------------------- | ---- | ------------------------------------------------------------ |
@@ -976,6 +978,8 @@ Wi-Fi配置信息。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 
 
 | 名称    | 值   | 说明           |
@@ -989,6 +993,8 @@ Wi-Fi配置信息。
 IP配置信息。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 
 
@@ -1005,6 +1011,8 @@ IP配置信息。
 可扩展身份验证协议配置信息。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 
 
@@ -1036,6 +1044,8 @@ IP配置信息。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 
 
 | 名称           | 值   | 说明             |
@@ -1055,6 +1065,8 @@ IP配置信息。
 表示第二阶段认证方式的枚举。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 
 
