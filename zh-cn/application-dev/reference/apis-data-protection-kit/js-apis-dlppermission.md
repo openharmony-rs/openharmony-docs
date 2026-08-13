@@ -649,7 +649,7 @@ dlpPermission.isInSandbox().then((inSandbox) => { // 是否在沙箱内。
 
 cancelRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt;
 
-取消沙箱保留状态，即恢复DLP文件关闭时自动卸载沙箱策略。使用Promise异步回调。
+取消沙箱保留状态，即恢复DLP文件关闭时自动卸载沙箱策略。仅支持在DLP沙箱应用中调用。使用Promise异步回调。
 
 该接口用于取消沙箱保留状态，恢复默认行为以释放系统资源，适用于不再频繁访问DLP文件的场景。
 
@@ -902,7 +902,7 @@ dlpPermission.getDLPFileAccessRecords().then((accessRecords) => { // 获取DLP�
 
 getDLPFileAccessRecords(callback: AsyncCallback&lt;Array&lt;AccessedDLPFileInfo&gt;&gt;): void
 
-查询最近访问的DLP文件列表。调用成功后返回文件访问记录，用于追踪和管理DLP文件的使用情况。使用callback异步回调。
+查询最近访问的DLP文件列表。调用成功后返回文件访问记录，用于追踪和管理DLP文件的使用情况。仅支持在非DLP沙箱应用中调用。使用callback异步回调。
 
 该接口用于获取最近访问的DLP文件记录列表，便于审计追踪和文件使用情况管理。
 
@@ -1610,7 +1610,7 @@ dlpPermission.queryDlpPolicy(dlpFd).then((policy) => {
 | allowedOpenCount | number | 否 | 是 | 表示允许打开的次数，默认为0。无范围限制。 |
 | waterMarkConfig<sup>23+</sup> | boolean | 否 | 是 | 表示是否要求添加水印。true表示要求添加水印，false表示不要求添加水印，默认为空。 |
 | countdown<sup>23+</sup> | number | 否 | 是 | 表示文件可被查看的有效时间，超时后打开的文件将自动关闭，默认为0，单位：s。取值范围为[-2<sup>31</sup>, 2<sup>31</sup>-1]<br>**模型约束**：此接口仅可在Stage模型下使用。 |
-| extensionFields<sup>24+</sup> | Record<string, Object> | 否 | 是 | 表示DLP文件的扩展属性，默认为空。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| extensionFields<sup>24+</sup> | Record\<string, Object> | 否 | 是 | 表示DLP文件的扩展属性，默认为空。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## AuthUser<sup>21+</sup>
 
