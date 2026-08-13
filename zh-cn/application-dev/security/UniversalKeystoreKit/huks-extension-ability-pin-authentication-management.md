@@ -88,9 +88,9 @@ async function getUkeyPinAuthState(): Promise<huksExternalCrypto.HuksExternalPin
     /* 2.调用getUkeyPinAuthState */
     await huksExternalCrypto.getUkeyPinAuthState(testResourceId, extProperties)
       .then((data) => {
-        console.info(`promise: getUkeyPinAuthState success , data : ${data}`);
+        console.info(`promise: getUkeyPinAuthState success , data: ${data}`);
       }).catch((error: BusinessError) => {
-        console.error(`promise: getUkeyPinAuthState failed, errCode : ${error.code}, errMsg : ${error.message}`);
+        console.error(`promise: getUkeyPinAuthState failed, errCode: ${error.code}, errMsg: ${error.message}`);
       });
   } catch (error) {
     console.error('promise: getUkeyPinAuthState input arg invalid.');
@@ -204,7 +204,7 @@ async function clearUkeyPinAuthState(resourceId: string): Promise<void> {
       .then(() => {
         console.info('promise: clearUkeyPinAuthState success.');
       }).catch((error: BusinessError) => {
-        console.error(`promise: clearUkeyPinAuthState failed, errCode : ${error.code}, errMsg : ${error.message}`);
+        console.error(`promise: clearUkeyPinAuthState failed, errCode: ${error.code}, errMsg: ${error.message}`);
       });
   } catch (error) {
     console.error('promise: clearUkeyPinAuthState input arg invalid.');

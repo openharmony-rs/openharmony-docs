@@ -328,7 +328,7 @@ async function getDeviceInfo(): Promise<void> {
       .then((data) => {
         console.info(`promise: getProperty success, data: ${JSON.stringify(data)}`);
       }).catch((error: BusinessError) => {
-        console.error(`promise: getProperty failed, errCode : ${error.code}, errMsg : ${error.message}`);
+        console.error(`promise: getProperty failed, errCode: ${error.code}, errMsg: ${error.message}`);
       });
   } catch (error) {
     console.error('promise: getProperty input arg invalid.');
