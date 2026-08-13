@@ -203,7 +203,7 @@ async function registerProvider(): Promise<void> {
     },
   ];
 
-  // API 26起支持自定义PIN弹窗注册
+  // API版本26.0.0开始，支持自定义PIN弹窗注册
   if (deviceInfo.sdkApiVersion >= 26) {
     extProperties.push({
        tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_INFO,
