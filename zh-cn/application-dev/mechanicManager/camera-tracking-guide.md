@@ -127,23 +127,23 @@
 1. 启用摄像头的目标拍摄功能。
    <!-- @[set_cameraTracking_enabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
    
-    ```ts
-    try {
-    //检查前判断savedMechIds不为空
-    // 检查跟踪状态
-    const isEnabled = mechanicManager.getCameraTrackingEnabled();
+   ``` TypeScript
+   try {
+     //检查前判断savedMechIds不为空
+     // 检查跟踪状态
+     const isEnabled = mechanicManager.getCameraTrackingEnabled();
    
-    if (isEnabled == false) {
-        // 开启摄像头跟踪
-        mechanicManager.setCameraTrackingEnabled(true);
-        console.info('Camera tracking enabled');
-    }
+     if (isEnabled == false) {
+       // 开启摄像头跟踪
+       mechanicManager.setCameraTrackingEnabled(true);
+       console.info('Camera tracking enabled');
+     }
    
-    console.info('Is tracking currently enabled:', isEnabled);
-    } catch (err) {
-    console.error('Failed to enable camera tracking:', err);
-    }
-    ```
+     console.info('Is tracking currently enabled:', isEnabled);
+   } catch (err) {
+     console.error('Failed to enable camera tracking:', err);
+   }
+   ```
    
 2. 监听相机跟踪状态的变化。
    <!-- @[on_trackingStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
