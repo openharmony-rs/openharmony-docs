@@ -98,8 +98,8 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 
 dlpPermission.getDLPGatheringPolicy().then((gatheringPolicy: dlpPermission.GatheringPolicyType) => {
   console.info('gatheringPolicy: ', JSON.stringify(gatheringPolicy));
-}).catch((error: BusinessError)=> {
-  console.error(error.message);
+}).catch((error: BusinessError) => {
+  console.error(`Failed to get DLPGatheringPolicy. Code: ${error.code}, message: ${error.message}`);
 }); // 获取沙箱聚合策略。
 ```
 
@@ -142,7 +142,7 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 
 dlpPermission.getDLPGatheringPolicy((err, gatheringPolicy) => {
   if (err) {
-    console.error('getDLPGatheringPolicy error,', err.code, err.message);
+    console.error(`Failed to get DLPGatheringPolicy. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('gatheringPolicy：', JSON.stringify(gatheringPolicy));
   }
@@ -252,7 +252,7 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
 dlpPermission.installDLPSandbox('com.ohos.note', dlpPermission.DLPFileAccess.READ_ONLY, 100, uri, (err, res) => {
   if (err) {
-    console.error('installDLPSandbox error,', err.code, err.message);
+    console.error(`Failed to install DLPSandbox. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('res', JSON.stringify(res));
   }
@@ -364,13 +364,13 @@ dlpPermission.installDLPSandbox('com.ohos.note', dlpPermission.DLPFileAccess.REA
   console.info('dlpSandboxInfo：', JSON.stringify(dlpSandboxInfo));
   dlpPermission.uninstallDLPSandbox('com.ohos.note', 100, dlpSandboxInfo.appIndex, (err, res) => {
     if (err) {
-      console.error('uninstallDLPSandbox error,', err.code, err.message);
+      console.error(`Failed to uninstall DLPSandbox. Code: ${err.code}, message: ${err.message}`); 
     } else {
       console.info('res', JSON.stringify(res));
     }
   }); // 卸载DLP沙箱。
 }).catch((error: BusinessError)=> {
-  console.error(error.message);
+  console.error(`Failed to install or uninstall DLPSandbox. Code: ${error.code}, message: ${error.message}`);
 }); // 安装后卸载DLP沙箱。
 ```
 
@@ -414,7 +414,7 @@ DLP管理应用需要追踪沙箱的创建和销毁状态，以便维护沙箱�
 import { dlpPermission } from '@kit.DataProtectionKit';
 
 dlpPermission.on('uninstallDLPSandbox', (info: dlpPermission.DLPSandboxState) => {
-  console.info('uninstallDLPSandbox event', info.appIndex, info.bundleName)
+  console.info('uninstallDLPSandbox event', info.appIndex, info.bundleName);
 }); // 订阅。
 ```
 
@@ -524,7 +524,7 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { bundleManager } from '@kit.AbilityKit';
 
-async function ExampleFunction() {
+async function exampleFunction() {
   let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
   let file: number | undefined = undefined;
   let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
@@ -546,7 +546,7 @@ async function ExampleFunction() {
   }
 }
 
-ExampleFunction();
+exampleFunction();
 ```
 
 ### addDLPLinkFile
@@ -608,7 +608,7 @@ async function ExampleFunction() {
   dlpFile = await dlpPermission.openDLPFile(file, appId); // 打开DLP文件。
   dlpFile.addDLPLinkFile('test.txt.dlp.link', async (err, res) => {
     if (err) {
-      console.error('addDLPLinkFile error,', err.code, err.message);
+      console.error(`Failed to add DLPLinkFile. Code: ${err.code}, message: ${err.message}`);
     } else {
       console.info('res', JSON.stringify(res));
     }
@@ -745,7 +745,7 @@ async function ExampleFunction() {
   await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // 添加link文件。
   dlpFile.stopFuseLink(async (err, res) => {
     if (err) {
-      console.error('stopFuseLink error,', err.code, err.message);
+      console.error(`Failed to stop FuseLink. Code: ${err.code}, message: ${err.message}`);
     } else {
       console.info('res', JSON.stringify(res));
     }
@@ -885,7 +885,7 @@ async function ExampleFunction() {
   await dlpFile.stopFuseLink(); // 暂停link读写。
   dlpFile.resumeFuseLink(async (err, res) => {
     if (err) {
-      console.error('resumeFuseLink error,', err.code, err.message);
+      console.error(`Failed to resume FuseLink. Code: ${err.code}, message: ${err.message}`);
     } else {
       console.info('res', JSON.stringify(res));
     }
@@ -1030,7 +1030,7 @@ async function ExampleFunction() {
   await dlpFile.stopFuseLink(); // 暂停link读写。
   dlpFile.replaceDLPLinkFile('test_new.txt.dlp.link', async (err, res) => { // 替换link文件。
     if (err) {
-      console.error('replaceDLPLinkFile error,', err.code, err.message);
+      console.error(`Failed to replace DLPLinkFile. Code: ${err.code}, message: ${err.message}`);
     } else {
       console.info('res', JSON.stringify(res));
       await dlpFile?.resumeFuseLink(); // 恢复link读写。
@@ -1177,7 +1177,7 @@ async function ExampleFunction() {
   await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // 添加link文件。
   dlpFile.deleteDLPLinkFile('test.txt.dlp.link', async (err, res) => { // 删除link文件。
     if (err) {
-      console.error('deleteDLPLinkFile error,', err.code, err.message);
+      console.error(`Failed to delete DLPLinkFile. Code: ${err.code}, message: ${err.message}`);
     } else {
       console.info('res', JSON.stringify(res));
     }
@@ -1335,7 +1335,7 @@ async function ExampleFunction() {
   dlpFile = await dlpPermission.openDLPFile(file, appId); // 打开DLP文件。
   dlpFile.recoverDLPFile(destFile, async (err, res) => { // 还原DLP文件。
     if (err) {
-      console.error('recoverDLPFile error,', err.code, err.message);
+      console.error(`Failed to recover DLPFile. Code: ${err.code}, message: ${err.message}`);
     } else {
       console.info('res', JSON.stringify(res));
     }
@@ -1479,7 +1479,7 @@ async function ExampleFunction() {
   dlpFile = await dlpPermission.openDLPFile(file, appId); // 打开DLP文件。
   dlpFile.closeDLPFile((err, res) => { // 关闭DLP文件。
     if (err) {
-      console.error('closeDLPFile error,', err.code, err.message);
+      console.error(`Failed to close DLPFile. Code: ${err.code}, message: ${err.message}`);
     } else {
       console.info('res', JSON.stringify(res));
     }
@@ -1577,7 +1577,7 @@ ExampleFunction();
 
 generateDLPFile(plaintextFd: number, ciphertextFd: number, property: DLPProperty, callback: AsyncCallback&lt;DLPFile&gt;): void
 
-DLP管理应用调用该接口，将明文文件加密生成权限受控文件，仅在授权列表内的用户可以打开，授权又分为完全控制权限和只读权限。获取DLPFile管理对象，使用callback异步回调。使用完DLPFile对象后，应调用[closeDLPFile](#closedlpfile)释放对象，避免资源泄露。
+DLP管理应用调用该接口，将明文文件加密生成权限受控文件。仅授权列表内的用户可以打开该文件，授权又分为完全控制权限和只读权限。获取DLPFile管理对象，使用callback异步回调。使用完DLPFile对象后，应调用[closeDLPFile](#closedlpfile)释放对象，避免资源泄露。
 
 调用generateDLPFile()成功后返回DLPFile对象，必须在使用完毕后调用closeDLPFile()释放资源。
 
@@ -1637,7 +1637,7 @@ let dlpProperty: dlpPermission.DLPProperty = {
 };
 dlpPermission.generateDLPFile(file, dlp, dlpProperty, (err, res) => { // 生成DLP文件。
   if (err) {
-    console.error('generateDLPFile error,', err.code, err.message);
+    console.error(`Failed to generate DLPFile. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('res', JSON.stringify(res));
   }
@@ -1788,7 +1788,7 @@ appId = data.signatureInfo.appId; // appId通过应用包信息获取
 file = fileIo.openSync(uri).fd; // file通过文件打开获取fd
 dlpPermission.openDLPFile(file, appId, async (err, res) => { // 打开DLP文件。
   if (err) {
-    console.error('openDLPFile error,', err.code, err.message);
+    console.error(`Failed to open DLPFile. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('res', JSON.stringify(res));
   }
