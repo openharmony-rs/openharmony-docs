@@ -6,9 +6,9 @@
 <!--Tester: @weixin_45530366-->
 <!--Adviser: @Brilliantry_Rui-->
 
-CounterV2组件用于精确调节数值。
+CounterV2组件用于精确调节数值，包含列表型、紧凑型、数值内联型和日期内联型四种类型，适用于购物车数量调节、日期选择等场景。
 
-该组件基于[状态管理（V2）](../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)实现，相较于[状态管理（V1）](../../../ui/state-management/arkts-state-management-overview.md#状态管理v1)，状态管理（V2）增强了对数据对象的深度观察与管理能力，不再局限于组件层级。借助状态管理（V2），开发者可以通过该组件更灵活地控制Counter的数据和状态，实现更高效的用户界面刷新。
+该组件基于[状态管理（V2）](../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)实现，相较于[状态管理（V1）](../../../ui/state-management/arkts-state-management-overview.md#状态管理v1)，状态管理（V2）增强了对数据对象的深度观察与管理能力，不再局限于组件层级。借助状态管理（V2），开发者可以通过该组件更灵活地控制CounterV2的数据和状态，实现更高效的用户界面刷新。
 
 > **说明：**
 >
@@ -16,7 +16,7 @@ CounterV2组件用于精确调节数值。
 >
 > - 该组件接口仅可在Stage模型下使用。
 >
-> - 如果CounterV2设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到CounterV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议CounterV2设置通用属性和通用事件。
+> - 如果CounterV2设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到CounterV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议为CounterV2设置通用属性和通用事件。
 
 **起始版本：** 26.0.0
 
@@ -96,13 +96,13 @@ CounterV2Options定义CounterV2类型及样式。
 
 | 名称          | 类型         | 只读 | 可选 | 说明                            |
 | ------------- | ------------ | ---- | ---- | ------------------------------- |
-| type | [CounterV2Type](#counterv2type) | 否  | 否  | 指定当前CounterV2的类型。 |
+| type | [CounterV2Type](#counterv2type) | 否  | 否  | 指定当前CounterV2的类型。需配合对应的样式参数使用，具体对应关系见下表。 |
 | direction | [Direction](ts-appendix-enums.md#direction) | 否 | 是 | 布局方向。<br/>默认值：Direction.Auto<br>值为undefined时，按默认值处理。 |
-| numberOptions | [CounterV2NumberStyleOptions](#counterv2numberstyleoptions) | 否   | 是   | 列表型和紧凑型CounterV2的样式。<br>默认值：显示计数器为0的列表型或紧凑型CounterV2。<br>值为undefined时，按默认值处理。 |
-| inlineOptions | [CounterV2InlineStyleOptions](#counterv2inlinestyleoptions) | 否 | 是 | 数值内联型CounterV2的样式。<br>默认值：显示计数器为0的数值内联型CounterV2。<br>值为undefined时，按默认值处理。 |
-| dateOptions | [CounterV2DateStyleOptions](#counterv2datestyleoptions) | 否 | 是 | 日期内联型CounterV2的样式。<br>默认值：显示0001/01/01的日期内联型CounterV2。<br>值为undefined时，按默认值处理。 |
+| numberOptions | [CounterV2NumberStyleOptions](#counterv2numberstyleoptions) | 否   | 是   | 列表型和紧凑型CounterV2的样式。<br>默认值：undefined，显示数值为0的列表型或紧凑型CounterV2。<br>当需要自定义列表型或紧凑型CounterV2的标签、初始值、范围、步长等属性时传入此参数；当计数器初始值为0且不需要自定义配置时可以不传入，使用默认样式。<br>值为undefined时，按默认值处理。 |
+| inlineOptions | [CounterV2InlineStyleOptions](#counterv2inlinestyleoptions) | 否 | 是 | 数值内联型CounterV2的样式。<br>默认值：undefined，显示数值为0的数值内联型CounterV2。<br>当需要自定义数值内联型CounterV2的初始值、范围、步长、文本宽度、变化回调等属性时传入此参数；当计数器初始值为0且不需要自定义配置时可以不传入，使用默认样式。<br>值为undefined时，按默认值处理。 |
+| dateOptions | [CounterV2DateStyleOptions](#counterv2datestyleoptions) | 否 | 是 | 日期内联型CounterV2的样式。<br>默认值：undefined，显示0001/01/01的日期内联型CounterV2。<br>当需要自定义日期内联型CounterV2的初始日期、日期变化回调等属性时传入此参数；当需要显示默认日期0001/01/01且不需要自定义配置时可以不传入，使用默认样式。<br>值为undefined时，按默认值处理。 |
 
-选择不同的CounterV2类型，需要选择对应的CounterV2样式。
+选择不同的CounterV2类型，需要选择对应的CounterV2样式。若样式参数与类型不匹配，将使用该类型对应的默认样式。
 
 | CounterV2类型             | CounterV2样式        |
 | ----------------------- | ------------------ |
@@ -166,10 +166,10 @@ CounterV2CommonOptions定义了CounterV2的共通属性和事件。
 
 | 名称            | 类型                      | 只读 | 可选 | 说明                                                         |
 | --------------- | ------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| focusable       | boolean                   | 否  | 是  | 设置CounterV2是否可获焦。<br/>**说明：** <br/>该属性对列表型和紧凑型CounterV2生效。<br/>默认值：true<br/>true：CounterV2可获焦；false：CounterV2不可获焦。<br>值为undefined时，按默认值处理。 |
-| step            | ArkTS-Dyn: number <br>ArkTS-Sta: int                    | 否  | 是  | 设置CounterV2的步长。<br/>取值范围：大于等于1的整数。<br/>默认值：1<br>超出取值范围按默认值处理。 |
-| onHoverIncrease | [OnCounterV2HoverCallback](#oncounterv2hovercallback) | 否  | 是  | 鼠标进入或退出CounterV2组件的"增加按钮"时，触发该回调。<br/>默认值：undefined，表示不触发该回调。 |
-| onHoverDecrease | [OnCounterV2HoverCallback](#oncounterv2hovercallback) | 否  | 是  | 鼠标进入或退出CounterV2组件的"减小按钮"时，触发该回调。<br/>默认值：undefined，表示不触发该回调。 |
+| focusable       | boolean                   | 否  | 是  | 设置CounterV2是否可获焦。<br>**说明：** <br>该属性对列表型和紧凑型CounterV2生效。对数值内联型和日期内联型CounterV2不生效。<br>默认值：true<br>true：CounterV2可获焦；false：CounterV2不可获焦。<br>值为undefined时，按默认值处理。 |
+| step            | ArkTS-Dyn: number <br>ArkTS-Sta: int                    | 否  | 是  | 设置CounterV2的步长。<br>**说明：** <br>该属性对列表型、紧凑型和数值内联型CounterV2生效。对日期内联型CounterV2不生效。<br>取值范围：大于等于1的整数。<br>默认值：1<br>超出取值范围按默认值处理。<br>值为undefined时，按默认值处理。 |
+| onHoverIncrease | [OnCounterV2HoverCallback](#oncounterv2hovercallback) | 否  | 是  | 鼠标进入或退出CounterV2组件的“增加按钮”时，触发该回调。<br>使用场景：当需要在鼠标悬浮“增加按钮”时执行自定义操作（如改变按钮样式、显示提示信息等）时传入此回调。<br>**说明：** <br>该属性对列表型、紧凑型和数值内联型CounterV2生效。对日期内联型CounterV2不生效。<br>默认值：undefined，表示不触发该回调。<br>值为undefined时，按默认值处理。 |
+| onHoverDecrease | [OnCounterV2HoverCallback](#oncounterv2hovercallback) | 否  | 是  | 鼠标进入或退出CounterV2组件的“减少按钮”时，触发该回调。<br>使用场景：当需要在鼠标悬浮“减少按钮”时执行自定义操作（如改变按钮样式、显示提示信息等）时传入此回调。<br>**说明：** <br>该属性对列表型、紧凑型和数值内联型CounterV2生效。对日期内联型CounterV2不生效。<br>默认值：undefined，表示不触发该回调。<br>值为undefined时，按默认值处理。 |
 
 ## OnInlineCounterV2Change
 
@@ -191,13 +191,13 @@ ArkTS-Sta：type OnInlineCounterV2Change = (value: int) => void
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| value  | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 当前显示的数值。<br/>取值范围：(-∞, +∞) |
+| value  | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 当前显示的数值。<br>取值范围：[min, max]，其中min和max分别对应CounterV2的最小值和最大值。 |
 
 ## CounterV2InlineStyleOptions
 
 CounterV2InlineStyleOptions定义了数值内联型CounterV2的属性和事件。
 
-继承于[CounterV2CommonOptions](#counterv2commonoptions)。
+继承于[CounterV2CommonOptions](#counterv2commonoptions)，包含该接口所有属性。本节仅展示新增属性，继承属性请参见父接口。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -209,17 +209,21 @@ CounterV2InlineStyleOptions定义了数值内联型CounterV2的属性和事件�
 
 | 名称      | 类型                   | 只读 | 可选 | 说明                                                   |
 | --------- | ---------------------- | ---- | ---- | ------------------------------------------------------ |
-| value     | ArkTS-Dyn: number <br>ArkTS-Sta: int                 | 否  | 是  | 设置CounterV2的初始值。<br/>默认值：0<br>取值范围：[min, max]，其中min和max分别对应下述CounterV2的最小值和最大值。<br>超出取值范围时，如果值为undefined，按默认值处理，否则按最大值处理。 |
+| value     | ArkTS-Dyn: number <br>ArkTS-Sta: int                 | 否  | 是  | 设置CounterV2的初始值。<br>默认值：0<br>有效值范围：[min, max]，其中min和max分别对应CounterV2的最小值和最大值。<br>值为undefined时，按默认值处理。<br>边界处理：若value小于min则按min处理，若value大于max则按max处理。 |
 | min       | ArkTS-Dyn: number <br>ArkTS-Sta: int                 | 否  | 是  | 设置CounterV2的最小值。<br/>默认值：0<br>取值范围：<br>ArkTS-Dyn：[Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER]。<br>ArkTS-Sta：[Int.MIN_VALUE, Int.MAX_VALUE]内的整数。<br>超出取值范围，按照默认值处理。<br>值为undefined时，按默认值处理。 |
 | max       | ArkTS-Dyn: number <br>ArkTS-Sta: int                 | 否  | 是  | 设置CounterV2的最大值。<br/>默认值：999<br>取值范围：<br>ArkTS-Dyn：[Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER]。<br>ArkTS-Sta：[Int.MIN_VALUE, Int.MAX_VALUE]内的整数，超出取值范围，按照默认值处理。<br>超出取值范围，按照默认值处理。<br>值为undefined时，按默认值处理。 |
 | textWidth | ArkTS-Dyn: number <br>ArkTS-Sta: double                 | 否  | 是  | 设置数值文本的宽度。<br/>默认值：undefined<br/>取值范围：[0, +∞)<br/>单位：vp<br/>不设置该属性或者设置为undefined时，文本宽度由内容自适应撑开。小于0时，按0处理。 |
-| onChange  | [OnInlineCounterV2Change](#oninlinecounterv2change) | 否  | 是  | CounterV2的数值发生改变时触发该回调。<br/>默认值：undefined，表示不触发该回调。 |
+| onChange  | [OnInlineCounterV2Change](#oninlinecounterv2change) | 否  | 是  | 数值改变时，触发该回调。回调参数value表示当前显示的数值。<br>使用场景：当需要在数值变化时执行自定义操作（如更新关联数据、触发业务逻辑、记录日志等）时传入此回调。<br>默认值：undefined，表示数值改变时不触发该回调。<br>值为undefined时，按默认值处理。 |
+
+> **说明：**
+>
+> 1. min应小于等于max。若min大于max，则按max处理。
 
 ## CounterV2NumberStyleOptions
 
 CounterV2NumberStyleOptions定义了列表型和紧凑型CounterV2的属性和事件。
 
-继承于[CounterV2InlineStyleOptions](#counterv2inlinestyleoptions)。
+继承于[CounterV2InlineStyleOptions](#counterv2inlinestyleoptions)，包含该接口及[CounterV2CommonOptions](#counterv2commonoptions)所有属性。本节仅展示新增属性，继承属性请参见父接口。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -231,11 +235,11 @@ CounterV2NumberStyleOptions定义了列表型和紧凑型CounterV2的属性和�
 
 | 名称            | 类型                                   | 只读 | 可选 | 说明                                                         |
 | --------------- | -------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| label           | [ResourceStr](ts-types.md#resourcestr) | 否   | 是   | 设置CounterV2的说明文本。<br>默认值：' '<br>值为undefined时，按默认值处理。 |
-| onFocusIncrease | [VoidCallback](ts-types.md#voidcallback12)                             | 否   | 是   | 当CounterV2组件的"增加按钮"获取焦点时，触发该回调。<br>默认值：undefined，表示不触发该回调。 |
-| onFocusDecrease | [VoidCallback](ts-types.md#voidcallback12)                             | 否   | 是   | 当CounterV2组件的"减小按钮"获取焦点时，触发该回调。<br>默认值：undefined，表示不触发该回调。 |
-| onBlurIncrease  | [VoidCallback](ts-types.md#voidcallback12)                             | 否   | 是   | 当CounterV2组件的"增加按钮"失去焦点时，触发该回调。<br>默认值：undefined，表示不触发该回调。 |
-| onBlurDecrease  | [VoidCallback](ts-types.md#voidcallback12)                             | 否   | 是   | 当CounterV2组件的"减小按钮"失去焦点时，触发该回调。<br>默认值：undefined，表示不触发该回调。 |
+| label           | [ResourceStr](ts-types.md#resourcestr) | 否   | 是   | 设置CounterV2的说明文本。<br>默认值：''<br>说明：当需要在CounterV2旁边显示说明文字（如“价格”、“数量”等）时传入此参数。<br>值为undefined时，按默认值处理。 |
+| onFocusIncrease | [VoidCallback](ts-types.md#voidcallback12)                             | 否   | 是   | 当CounterV2组件的“增加按钮”获取焦点时，触发该回调。<br>使用场景：当需要在增加按钮获焦时执行自定义操作（如改变样式、记录日志等）时传入此回调。<br>默认值：undefined，表示不触发该回调。<br>值为undefined时，按默认值处理。 |
+| onFocusDecrease | [VoidCallback](ts-types.md#voidcallback12)                             | 否   | 是   | 当CounterV2组件的“减少按钮”获取焦点时，触发该回调。<br>使用场景：当需要在减少按钮获焦时执行自定义操作（如改变样式、记录日志等）时传入此回调。<br>默认值：undefined，表示不触发该回调。<br>值为undefined时，按默认值处理。 |
+| onBlurIncrease  | [VoidCallback](ts-types.md#voidcallback12)                             | 否   | 是   | 当CounterV2组件的“增加按钮”失去焦点时，触发该回调。<br>使用场景：当需要在增加按钮失焦时执行自定义操作（如验证输入、保存状态等）时传入此回调。<br>默认值：undefined，表示不触发该回调。<br>值为undefined时，按默认值处理。 |
+| onBlurDecrease  | [VoidCallback](ts-types.md#voidcallback12)                             | 否   | 是   | 当CounterV2组件的“减少按钮”失去焦点时，触发该回调。<br>使用场景：当需要在减少按钮失焦时执行自定义操作（如验证输入、保存状态等）时传入此回调。<br>默认值：undefined，表示不触发该回调。<br>值为undefined时，按默认值处理。 |
 
 ## CounterV2DateData
 
@@ -277,13 +281,13 @@ CounterV2DateData的构造函数用于初始化日期对象。
 | ---------- | ------ |  ------ | ---------------------------- |
 | year       | number |  是 | 设置日期内联型初始年份。<br/>取值范围：[1, 5000]<br/>超出取值范围按默认值处理。     |
 | month      | number |  是 | 设置日期内联型初始月份。<br/>取值范围：[1, 12]<br/>超出取值范围按默认值处理。     |
-| day        | number |  是 | 设置日期内联型初始日。<br/>取值范围：[1, 31]<br/>必须为合法日期，如month为2月时，day传入30将视为异常值，按默认值处理。       |
+| day        | number |  是 | 日期内联型的日。取值范围：[1, 31]。必须为合法日期，如month为2月时，day传入30将视为异常值，按默认值处理。超出取值范围按默认值处理。 |
 
 ### toString
 
 toString(): string
 
-以字符串格式返回当前日期值。格式为'YYYY-MM-DD'。
+以字符串格式返回当前日期值。格式为"YYYY-MM-DD"。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -297,7 +301,7 @@ toString(): string
 
 | 类型 | 说明 |
 | -------- | -------- |
-| string | 当前日期值。 |
+| string | 格式为“YYYY-MM-DD”的日期字符串，例如“2024-01-15”。 |
 
 ## OnDateCounterV2ChangeCallback
 
@@ -323,7 +327,7 @@ type OnDateCounterV2ChangeCallback = (date: CounterV2DateData) => void
 
 CounterV2DateStyleOptions定义日期内联型CounterV2的属性和事件。
 
-继承于[CounterV2CommonOptions](#counterv2commonoptions)。
+继承于[CounterV2CommonOptions](#counterv2commonoptions)，包含该接口所有属性。本节仅展示新增属性，继承属性请参见父接口。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -335,10 +339,10 @@ CounterV2DateStyleOptions定义日期内联型CounterV2的属性和事件。
 
 | 名称         | 类型                                | 只读 | 可选 | 说明                                                      |
 | ------------ | ----------------------------------- | ---- | ---- | --------------------------------------------------------- |
-| year         | ArkTS-Dyn: number <br>ArkTS-Sta: int                              | 否  | 是  | 设置日期内联型初始年份。<br/>默认值：1<br/>取值范围：[1, 5000]<br>超出取值范围按默认值处理。 |
-| month        | ArkTS-Dyn: number <br>ArkTS-Sta: int                              | 否  | 是  | 设置日期内联型初始月份。<br/>默认值：1<br/>取值范围：[1, 12]<br>超出取值范围按默认值处理。 |
-| day          | ArkTS-Dyn: number <br>ArkTS-Sta: int                              | 否  | 是  | 设置日期内联型初始日。<br/>默认值：1<br/>取值范围：[1, 31]<br/>必须为合法日期，如month为2月时，day传入30将视为异常值，按默认值处理。 |
-| onDateChange | [OnDateCounterV2ChangeCallback](#ondatecounterv2changecallback) | 否  | 是  | 当日期发生改变时，触发该回调。<br/>默认值：undefined，表示不触发该回调。 |
+| year         | ArkTS-Dyn: number <br>ArkTS-Sta: int                              | 否  | 是  | 设置日期内联型初始年份。<br>默认值：1<br>取值范围：[1, 5000]<br>超出取值范围按默认值处理。<br/>值为undefined时，按默认值处理。 |
+| month        | ArkTS-Dyn: number <br>ArkTS-Sta: int                              | 否  | 是  | 设置日期内联型初始月份。<br>默认值：1<br>取值范围：[1, 12]<br>超出取值范围按默认值处理。<br/>值为undefined时，按默认值处理。 |
+| day          | ArkTS-Dyn: number <br>ArkTS-Sta: int                              | 否  | 是  | 设置日期内联型初始日。<br>默认值：1<br>取值范围：[1, 31]<br>必须为合法日期，如month为2月时，day传入30将视为异常值，按默认值处理。<br>超出取值范围按默认值处理。<br/>值为undefined时，按默认值处理。 |
+| onDateChange | [OnDateCounterV2ChangeCallback](#ondatecounterv2changecallback) | 否  | 是  | 当日期改变时，触发该回调。回调参数date表示当前显示的日期值。<br>使用场景：当需要在日期变化时执行自定义操作（如更新关联数据、触发业务逻辑、记录日志等）时传入此回调。<br>默认值：undefined，表示不触发该回调。<br>值为undefined时，按默认值处理。 |
 
 ## 属性
 不支持[通用属性](ts-component-general-attributes.md)。
