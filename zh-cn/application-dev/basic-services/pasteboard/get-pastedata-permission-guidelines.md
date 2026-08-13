@@ -66,7 +66,7 @@ API version 12及之后，系统为提升用户隐私安全保护能力，剪贴
 
 ArkTS-Dyn示例：
 
-<!-- @[pasteboard_permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[pasteboard_permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
@@ -184,7 +184,7 @@ struct Index {
 
 ArkTS-Sta示例：
 
-<!-- @[pasteboard_permission](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Pasteboard_Sta/Pasteboard_Static_Sample/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[pasteboard_permission](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Pasteboard_Sta/Pasteboard_Static_Sample/entry/src/main/ets/pages/Index.ets) --> 
 
 ```TypeScript
 import abilityAccessCtrl, { Context, PermissionRequestResult, Permissions } from '@ohos.abilityAccessCtrl'
@@ -252,7 +252,7 @@ async function isNeedGetPermissionFromUser(): Promise<boolean> {
 @Entry
 @Component
 struct Index {
-   // ...
+  // ...
   async handlePaste(): Promise<void> {
     if (!await isNeedGetPermissionFromUser()) {
       hilog.info(0xFF00, '[Sample_pasteboard]', 'No neded to bring up the permission pop-up window');
