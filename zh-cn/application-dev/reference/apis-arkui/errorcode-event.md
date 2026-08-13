@@ -14,7 +14,7 @@
 
 **错误信息**
 
-Component does not support prevent function.
+Component does not support the preventDefault method.
 
 **错误描述**
 
