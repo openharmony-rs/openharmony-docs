@@ -1,5 +1,11 @@
 # onBadgeNumberQuery（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { notificationManager } from '@kit.NotificationKit';
+```
+
 ## onBadgeNumberQuery
 
 ```TypeScript
@@ -8,9 +14,11 @@ function onBadgeNumberQuery(callback: (bundle: BundleOption) => Promise<long>): 
 
 注册应用角标数量查询回调。
 
-**起始版本：** 22
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为22；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -24,19 +32,19 @@ function onBadgeNumberQuery(callback: (bundle: BundleOption) => Promise<long>): 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | ArkTS-Dyn: (bundle: BundleOption) =&gt; Promise&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：(bundle: BundleOption) =&gt; Promise&lt;long&gt; | 是 | 应用角标数量查询函数。 |
+| callback | (bundle: BundleOption) =&gt; Promise&lt;long&gt; | 是 | 应用角标数量查询函数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

@@ -12,6 +12,8 @@ Imports a key in plaintext. This API uses an asynchronous callback to return the
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-huks-function importKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback<void>): void--><!--Device-huks-function importKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback<void>): void-End-->
@@ -25,30 +27,30 @@ Imports a key in plaintext. This API uses an asynchronous callback to return the
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | keyAlias | string | 是 | Alias of the key. The value can contain up to 128 bytes and should not include sensitive data such as personal information. |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | Tags required for the import and key to import. The algorithm, key purpose, and key length are mandatory. |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | Callback used to return the result. If the operation is successful,**err** is **undefined**. Otherwise, **err** is an error object. |
+| options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | Tags required for the import and key to import. The algorithm, key purpose, and key length are mandatory. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified.2. Incorrect parameter types.3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
-| [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | algorithm mode is not supported |
-| [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | algorithm param is missing |
-| [12000003](../errorcode-huks.md#12000003-无效的密钥算法参数) | algorithm param is invalid |
-| [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
-| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
+| [12000018](../errorcode-huks.md#12000018-输入参数非法) | the group id specified by the access group tag is invalid<br>**适用版本：** 23+ |
+| [12000017](../errorcode-huks.md#12000017-同名密钥已存在) | The key with the same alias already exists<br>**适用版本：** 20+ |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine |
-| [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 9 - 19 |
-| [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
-| [12000013](../errorcode-huks.md#12000013-密钥设置生物访问控制时待绑定的凭据不存在) | queried credential does not exist |
-| [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |
+| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
+| [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
+| [12000003](../errorcode-huks.md#12000003-无效的密钥算法参数) | algorithm param is invalid |
+| [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | algorithm param is missing |
+| [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | algorithm mode is not supported |
 | [12000015](../errorcode-huks.md#12000015-调用其他系统服务失败) | Failed to obtain the security information via UserIAM |
-| [12000017](../errorcode-huks.md#12000017-同名密钥已存在) | The key with the same alias already exists\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 20+ |
-| [12000018](../errorcode-huks.md#12000018-输入参数非法) | the group id specified by the access group tag is invalid\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 23+ |
+| [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |
+| [12000013](../errorcode-huks.md#12000013-密钥设置生物访问控制时待绑定的凭据不存在) | queried credential does not exist |
+| [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
+| [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist<br>**适用版本：** 9 - 19 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 /* 以导入AES密钥为例 */
@@ -114,6 +116,8 @@ Imports a key in plaintext. This API uses a promise to return the result.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-huks-function importKeyItem(keyAlias: string, options: HuksOptions): Promise<void>--><!--Device-huks-function importKeyItem(keyAlias: string, options: HuksOptions): Promise<void>-End-->
@@ -125,7 +129,7 @@ Imports a key in plaintext. This API uses a promise to return the result.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | keyAlias | string | 是 | Alias of the key. The value can contain up to 128 bytes and should not include sensitive data such as personal information. |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | Tags required for the import and key to import. The algorithm, key purpose, and key length are mandatory. |
+| options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | Tags required for the import and key to import. The algorithm, key purpose, and key length are mandatory. |
 
 **返回值：**
 
@@ -137,23 +141,23 @@ Imports a key in plaintext. This API uses a promise to return the result.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified.2. Incorrect parameter types.3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
-| [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | algorithm mode is not supported |
-| [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | algorithm param is missing |
-| [12000003](../errorcode-huks.md#12000003-无效的密钥算法参数) | algorithm param is invalid |
-| [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
-| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
+| [12000018](../errorcode-huks.md#12000018-输入参数非法) | the group id specified by the access group tag is invalid<br>**适用版本：** 23+ |
+| [12000017](../errorcode-huks.md#12000017-同名密钥已存在) | The key with the same alias already exists<br>**适用版本：** 20+ |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine |
-| [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 9 - 19 |
-| [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
-| [12000013](../errorcode-huks.md#12000013-密钥设置生物访问控制时待绑定的凭据不存在) | queried credential does not exist |
-| [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |
+| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
+| [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
+| [12000003](../errorcode-huks.md#12000003-无效的密钥算法参数) | algorithm param is invalid |
+| [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | algorithm param is missing |
+| [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | algorithm mode is not supported |
 | [12000015](../errorcode-huks.md#12000015-调用其他系统服务失败) | Failed to obtain the security information via UserIAM |
-| [12000017](../errorcode-huks.md#12000017-同名密钥已存在) | The key with the same alias already exists\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 20+ |
-| [12000018](../errorcode-huks.md#12000018-输入参数非法) | the group id specified by the access group tag is invalid\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 23+ |
+| [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |
+| [12000013](../errorcode-huks.md#12000013-密钥设置生物访问控制时待绑定的凭据不存在) | queried credential does not exist |
+| [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
+| [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist<br>**适用版本：** 9 - 19 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 /* 以导入AES密钥为例 */

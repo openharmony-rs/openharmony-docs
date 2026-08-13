@@ -6,7 +6,7 @@ typedef struct OH_Drawing_FontFeature {...} OH_Drawing_FontFeature
 
 ## 概述
 
-This struct describes a font feature.
+描述文本字体特征结构体。
 
 **起始版本：** 12
 
@@ -20,7 +20,7 @@ This struct describes a font feature.
 
 | 名称 | 描述 |
 | -- | -- |
-| char* tag | Tag of the font feature. |
-| int value | Value of the font feature. |
+| char* tag | 字体特征的标签。 |
+| int value | 字体特征的值。 |
 
 

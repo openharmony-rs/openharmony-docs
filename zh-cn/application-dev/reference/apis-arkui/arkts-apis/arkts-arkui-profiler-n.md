@@ -6,6 +6,8 @@ inspector的性能分析（Profiler）工具。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare namespace Profiler--><!--Device-unnamed-declare namespace Profiler-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -19,7 +21,7 @@ inspector的性能分析（Profiler）工具。
 
 | 名称 | 说明 |
 | --- | --- |
-| [registerVsyncCallback](arkts-arkui-profiler-registervsynccallback-f-sys.md#registervsynccallback) | 为profiler注册vsync回调。 |
-| [unregisterVsyncCallback](arkts-arkui-profiler-unregistervsynccallback-f-sys.md#unregistervsynccallback) | 注销vsync回调。 |
+| [registerVsyncCallback](arkts-arkui-profiler-registervsynccallback-f-sys.md#registerVsyncCallback) | 为profiler注册vsync回调。 |
+| [unregisterVsyncCallback](arkts-arkui-profiler-unregistervsynccallback-f-sys.md#unregisterVsyncCallback) | 注销vsync回调。 |
 <!--DelEnd-->
 

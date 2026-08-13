@@ -2,9 +2,11 @@
 
 匹配规则类型枚举。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-hiSysEvent-enum RuleType--><!--Device-hiSysEvent-enum RuleType-End-->
 
@@ -20,9 +22,11 @@ WHOLE_WORD = 1
 
 全词匹配类型。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-RuleType-WHOLE_WORD = 1--><!--Device-RuleType-WHOLE_WORD = 1-End-->
 
@@ -38,9 +42,11 @@ PREFIX = 2
 
 前缀匹配类型。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-RuleType-PREFIX = 2--><!--Device-RuleType-PREFIX = 2-End-->
 
@@ -56,9 +62,11 @@ REGULAR = 3
 
 正则匹配类型。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-RuleType-REGULAR = 3--><!--Device-RuleType-REGULAR = 3-End-->
 

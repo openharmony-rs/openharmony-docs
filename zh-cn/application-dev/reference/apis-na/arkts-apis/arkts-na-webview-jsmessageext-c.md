@@ -6,6 +6,8 @@ The message for indicating the of result of JavaScript code execution.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-webview-class JsMessageExt--><!--Device-webview-class JsMessageExt-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -22,6 +24,8 @@ Get the array value of the the JavaScript code execution result.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-JsMessageExt-getArray(): Array<string | double | long | boolean>--><!--Device-JsMessageExt-getArray(): Array<string | double | long | boolean>-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -30,7 +34,7 @@ Get the array value of the the JavaScript code execution result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;string \| double \| long \| boolean&gt; | - Returns data of Array type |
+| Array&lt;string \| double \| long \| boolean&gt; | Returns data of Array type |
 
 **错误码：**
 
@@ -50,6 +54,8 @@ Get the array buffer value of the JavaScript code execution result.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-JsMessageExt-getArrayBuffer(): ArrayBuffer--><!--Device-JsMessageExt-getArrayBuffer(): ArrayBuffer-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -58,7 +64,7 @@ Get the array buffer value of the JavaScript code execution result.
 
 | 类型 | 说明 |
 | --- | --- |
-| ArrayBuffer | - Returns data of ArrayBuffer |
+| ArrayBuffer | Returns data of ArrayBuffer |
 
 **错误码：**
 
@@ -78,6 +84,8 @@ Get the boolean value of the JavaScript code execution result.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-JsMessageExt-getBoolean(): boolean--><!--Device-JsMessageExt-getBoolean(): boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -86,7 +94,7 @@ Get the boolean value of the JavaScript code execution result.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | - Returns data of Boolean type |
+| boolean | Returns data of Boolean type |
 
 **错误码：**
 
@@ -106,6 +114,8 @@ Get the exception or object of the the JavaScript code execution result and seri
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-JsMessageExt-getErrorDescription(): string | null--><!--Device-JsMessageExt-getErrorDescription(): string | null-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -114,7 +124,7 @@ Get the exception or object of the the JavaScript code execution result and seri
 
 | 类型 | 说明 |
 | --- | --- |
-| string | - if an exception occurs, or the returned type is object, return the |
+| string | if an exception occurs, or the returned type is object, return the serialized string in the format of "Not support type: &lt;{exception\|object}&gt;", Parts exceeding a length of 2048 will be truncated; otherwise, return null. |
 
 ## getNumber
 
@@ -128,6 +138,8 @@ Get the number value of the JavaScript code execution result.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-JsMessageExt-getNumber(): double | long--><!--Device-JsMessageExt-getNumber(): double | long-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -136,7 +148,7 @@ Get the number value of the JavaScript code execution result.
 
 | 类型 | 说明 |
 | --- | --- |
-| double | - Returns data of number type |
+| double | Returns data of number type |
 
 **错误码：**
 
@@ -156,6 +168,8 @@ Get the string value of the JavaScript code execution result.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-JsMessageExt-getString(): string--><!--Device-JsMessageExt-getString(): string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -164,7 +178,7 @@ Get the string value of the JavaScript code execution result.
 
 | 类型 | 说明 |
 | --- | --- |
-| string | - Returns data of string type |
+| string | Returns data of string type |
 
 **错误码：**
 
@@ -184,6 +198,8 @@ Get the type of the JavaScript code execution result.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-JsMessageExt-getType(): JsMessageType--><!--Device-JsMessageExt-getType(): JsMessageType-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -192,5 +208,5 @@ Get the type of the JavaScript code execution result.
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | - Returns data of JsMessageType type |
+| [JsMessageType](arkts-na-webview-jsmessagetype-e.md) | Returns data of JsMessageType type |
 

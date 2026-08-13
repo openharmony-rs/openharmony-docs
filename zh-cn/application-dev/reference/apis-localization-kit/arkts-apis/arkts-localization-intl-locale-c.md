@@ -38,7 +38,7 @@ constructor()
 
 **系统能力：** SystemCapability.Global.I18n
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { intl } from '@kit.LocalizationKit';
@@ -78,9 +78,9 @@ constructor(locale: string, options?: LocaleOptions)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | locale | string | 是 | 表示区域ID的字符串，由语言、脚本、国家地区组成。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 创建区域对象的配置项。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_默认值：所有属性都取默认值时的配置项。\_\_\_HTML\_TAG\_USD\_0\_\_\_**起始版本：** 12 |
+| options | [LocaleOptions](arkts-localization-intl-localeoptions-i.md) | 否 | 创建区域对象的配置项。 &lt;br&gt;默认值：所有属性都取默认值时的配置项。<br>**起始版本：** 12 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { intl } from '@kit.LocalizationKit';
@@ -118,9 +118,9 @@ maximize(): Locale
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 补齐完脚本、国家地区信息后的区域对象。 |
+| [Locale](arkts-localization-intl-locale-c.md) | 补齐完脚本、国家地区信息后的区域对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { intl } from '@kit.LocalizationKit';
@@ -166,9 +166,9 @@ minimize(): Locale
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 移除完脚本、国家地区信息后的区域对象。 |
+| [Locale](arkts-localization-intl-locale-c.md) | 移除完脚本、国家地区信息后的区域对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { intl } from '@kit.LocalizationKit';
@@ -216,7 +216,7 @@ toString(): string
 | --- | --- |
 | string | 区域对象的字符串。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { intl } from '@kit.LocalizationKit';
@@ -258,7 +258,7 @@ baseName: string
 calendar: string
 ```
 
-区域的日历信息，取值包括： "buddhist", "chinese", "coptic","dangi", "ethioaa", "ethiopic", "gregory", "hebrew", "indian", "islamic", "islamic-umalqura", "islamic-tbla", "islamic-civil", "islamic-rgsa", "iso8601", "japanese", "persian", "roc", "islamicc"。 不同取值表示的含义请参考\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+区域的日历信息，取值包括： "buddhist", "chinese", "coptic","dangi", "ethioaa", "ethiopic", "gregory", "hebrew", "indian", "islamic", "islamic-umalqura", "islamic-tbla", "islamic-civil", "islamic-rgsa", "iso8601", "japanese", "persian", "roc", "islamicc"。 不同取值表示的含义请参考[设置日历和历法表1](../../../internationalization/i18n-calendar.md)。
 
 **类型：** string
 
@@ -336,7 +336,7 @@ collation: string
 hourCycle: string
 ```
 
-区域的时制信息，取值包括： "h11"、"h12"、"h23"、"h24"。 不同取值的显示效果可参考\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+区域的时制信息，取值包括： "h11"、"h12"、"h23"、"h24"。 不同取值的显示效果可参考附录表5。
 
 **类型：** string
 

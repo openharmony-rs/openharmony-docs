@@ -6,11 +6,13 @@
 function createLocalWantAgent(info: LocalWantAgentInfo): WantAgent
 ```
 
-创建本地WantAgent实例。 > **说明：** > 本接口创建的本地WantAgent实例仅存储于WantAgent客户端，不受WantAgent服务端管理。使用该本地实例时，需要校验实例，以保证安全性。 > 本地WantAgent实例创建后，触发方法参见[wantAgent.triggerAsync]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_接口说明。
+创建本地WantAgent实例。 > **说明：** > 本接口创建的本地WantAgent实例仅存储于WantAgent客户端，不受WantAgent服务端管理。使用该本地实例时，需要校验实例，以保证安全性。 > 本地WantAgent实例创建后，触发方法参见[wantAgent.triggerAsync](arkts-ability-wantagent-triggerasync-f-sys.md#triggerAsync（系统接口）)接口说明。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -24,13 +26,13 @@ function createLocalWantAgent(info: LocalWantAgentInfo): WantAgent
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | Information about the local WantAgent object to create. |
+| info | LocalWantAgentInfo | 是 | Information about the local WantAgent object to create. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Returns the created WantAgent. |
+| [WantAgent](arkts-ability-wantagent-t.md) | Returns the created WantAgent. |
 
 **错误码：**
 
@@ -38,7 +40,7 @@ function createLocalWantAgent(info: LocalWantAgentInfo): WantAgent
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

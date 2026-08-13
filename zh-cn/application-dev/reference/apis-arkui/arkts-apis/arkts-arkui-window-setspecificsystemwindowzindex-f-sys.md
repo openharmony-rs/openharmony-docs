@@ -10,7 +10,9 @@ function setSpecificSystemWindowZIndex(windowType: WindowType, zIndex: int): Pro
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-window-function setSpecificSystemWindowZIndex(windowType: WindowType, zIndex: int): Promise<void>--><!--Device-window-function setSpecificSystemWindowZIndex(windowType: WindowType, zIndex: int): Promise<void>-End-->
 
@@ -22,8 +24,8 @@ function setSpecificSystemWindowZIndex(windowType: WindowType, zIndex: int): Pro
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| windowType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 窗口类型。仅支持TYPE\_\_\_ESCAPED\_UNDERSCORE\_\_\_WALLET\_\_\_ESCAPED\_UNDERSCORE\_\_\_SWIPE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CARD、TYPE\_\_\_ESCAPED\_UNDERSCORE\_\_\_VOICE\_\_\_ESCAPED\_UNDERSCORE\_\_\_INTERACTION、TYPE\_\_\_ESCAPED\_UNDERSCORE\_\_\_SCREENSHOT、TYPE\_\_\_ESCAPED\_UNDERSCORE\_\_\_SCREEN\_\_\_ESCAPED\_UNDERSCORE\_\_\_CONTROL、TYPE\_\_\_ESCAPED\_UNDERSCORE\_\_\_FLOAT\_\_\_ESCAPED\_UNDERSCORE\_\_\_NAVIGATION和TYPE\_\_\_ESCAPED\_UNDERSCORE\_\_\_MUTISCREEN\_\_\_ESCAPED\_UNDERSCORE\_\_\_COLLABORATION。 |
-| zIndex | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 系统窗口的层级。该参数仅支持整数输入，浮点数输入将向下取整。0和负数会使窗口在桌面以下。 |
+| windowType | WindowType | 是 | 窗口类型。仅支持TYPE_WALLET_SWIPE_CARD、TYPE_VOICE_INTERACTION、TYPE_SCREENSHOT、 TYPE_SCREEN_CONTROL、TYPE_FLOAT_NAVIGATION和TYPE_MUTISCREEN_COLLABORATION。 |
+| zIndex | int | 是 | 系统窗口的层级。该参数仅支持整数输入，浮点数输入将向下取整。0和负数会使窗口在桌面以下。 |
 
 **返回值：**
 
@@ -35,12 +37,12 @@ function setSpecificSystemWindowZIndex(windowType: WindowType, zIndex: int): Pro
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, non-system application uses system API. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Invalid window type. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, non-system application uses system API. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

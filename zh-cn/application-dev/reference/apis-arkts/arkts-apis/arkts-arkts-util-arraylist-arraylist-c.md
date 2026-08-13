@@ -2,11 +2,13 @@
 
 ArrayList是一种线性数据结构，底层基于数组实现，解决了固定大小数组无法动态扩容的限制。ArrayList会根据实际需要动态调整容量，每次扩容增加50%。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-<!--Device-unnamed-declare class ArrayList<T>--><!--Device-unnamed-declare class ArrayList<T>-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare class ArrayList--><!--Device-unnamed-declare class ArrayList-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -16,11 +18,13 @@ ArrayList是一种线性数据结构，底层基于数组实现，解决了固�
 $_iterator(): IterableIterator<T>
 ```
 
-返回一个迭代器，每一项都是一个JavaScript对象。
+返回一个迭代器，迭代器按照ArrayList中元素的顺序依次返回类型为T的元素。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -34,7 +38,7 @@ $_iterator(): IterableIterator<T>
 | --- | --- |
 | IterableIterator&lt;T&gt; |  |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let arrayList: ArrayList<int> = new ArrayList<int>();
@@ -75,6 +79,8 @@ while(!temp.done) {
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ArrayList-[Symbol.iterator](): IterableIterator<T>--><!--Device-ArrayList-[Symbol.iterator](): IterableIterator<T>-End-->
@@ -93,7 +99,7 @@ while(!temp.done) {
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The Symbol.iterator method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let arrayList = new ArrayList<number>();
@@ -132,9 +138,11 @@ add(element: T): boolean
 
 在ArrayList尾部插入元素。批量添加元素时，建议先调用increaseCapacityTo方法扩充容量，避免多次自动扩容带来的性能开销。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -160,7 +168,7 @@ add(element: T): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The add method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -211,11 +219,13 @@ let result5 = arrayList.add(false);
 clear(): void
 ```
 
-清除ArrayList中的所有元素，并把length置为0。
+清除ArrayList中的所有元素，并把length置为0。此方法不会释放预留的容量空间，如需释放容量请调用trimToCurrentLength方法。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -229,7 +239,7 @@ clear(): void
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The clear method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -261,9 +271,11 @@ clone(): ArrayList<T>
 
 克隆一个与ArrayList相同的实例，并返回克隆后的实例。修改克隆后的实例并不会影响原实例。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -275,7 +287,7 @@ clone(): ArrayList<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; | 返回ArrayList对象实例。 |
+| [ArrayList](arkts-arkts-util-arraylist-arraylist-c.md)&lt;T&gt; | 返回与原ArrayList内容相同的克隆实例，修改该克隆实例不会影响原实例。 |
 
 **错误码：**
 
@@ -283,7 +295,7 @@ clone(): ArrayList<T>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The clone method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -317,9 +329,11 @@ constructor()
 
 ArrayList的构造函数，用于创建一个空的ArrayList实例。该构造函数需通过new关键字调用，不可作为普通函数直接调用，否则将抛出异常。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -333,7 +347,7 @@ ArrayList的构造函数，用于创建一个空的ArrayList实例。该构造�
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The ArrayList's constructor cannot be directly invoked. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -353,11 +367,13 @@ let arrayList: ArrayList<string | int> = new ArrayList<string | int>();
 convertToArray(): Array<T>
 ```
 
-把当前ArrayList实例转换成数组，并返回转换后的数组。
+把当前ArrayList实例转换成数组，并返回转换后的数组。此操作不会修改原ArrayList实例，对返回数组的修改也不会影响原实例。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -369,7 +385,7 @@ convertToArray(): Array<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 返回数组类型。 |
+| Array&lt;T&gt; | 返回由ArrayList中所有元素组成的数组。 |
 
 **错误码：**
 
@@ -377,7 +393,7 @@ convertToArray(): Array<T>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The convertToArray method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -415,6 +431,8 @@ forEach(callbackFn: (value: T, index?: number, arrlist?: ArrayList<T>) => void, 
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ArrayList-forEach(callbackFn: (value: T, index?: number, arrlist?: ArrayList<T>) => void, thisArg?: Object): void--><!--Device-ArrayList-forEach(callbackFn: (value: T, index?: number, arrlist?: ArrayList<T>) => void, thisArg?: Object): void-End-->
@@ -425,8 +443,8 @@ forEach(callbackFn: (value: T, index?: number, arrlist?: ArrayList<T>) => void, 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, index?: number, arrlist?: ArrayList&lt;T&gt;) =&gt; void | 是 | 回调函数。 |
-| thisArg | Object | 否 | callbackFn被调用时用作this值，默认值为当前实例对象。 |
+| callbackFn | (value: T, index?: number, arrlist?: ArrayList&lt;T&gt;) =&gt; void | 是 | 对每个元素执行操作的回调函数。 |
+| thisArg | Object | 否 | callbackFn被调用时用作this值。当回调函数需要引用外部对象作为this上下文时传入此参数，不传入时默认值为undefined。 |
 
 **错误码：**
 
@@ -434,7 +452,7 @@ forEach(callbackFn: (value: T, index?: number, arrlist?: ArrayList<T>) => void, 
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The forEach method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let arrayList = new ArrayList<number>();
@@ -462,7 +480,9 @@ forEach(callbackFn: ArrayListForEachCb<T>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -474,9 +494,9 @@ forEach(callbackFn: ArrayListForEachCb<T>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; | 是 | 回调函数。 |
+| callbackFn | [ArrayListForEachCb](arkts-arkts-arraylistforeachcb-t.md)&lt;T&gt; | 是 | 回调函数。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { ArrayListForEachCb } from '@ohos.util.ArrayList';
@@ -494,21 +514,17 @@ arrayList.forEach(arrayListCb);
 
 ## getCapacity
 
-ArkTS-Dyn:
-```TypeScript
-getCapacity(): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getCapacity(): int
 ```
 
-获取当前实例的容量大小。
+返回当前实例的容量大小。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -520,7 +536,7 @@ getCapacity(): int
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 获取当前实例的容量大小。 |
+| int | 返回当前实例的容量大小。 |
 
 **错误码：**
 
@@ -528,7 +544,7 @@ getCapacity(): int
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getCapacity method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -556,21 +572,17 @@ console.info("result = ", result); // result = 10
 
 ## getIndexOf
 
-ArkTS-Dyn:
-```TypeScript
-getIndexOf(element: T): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getIndexOf(element: T): int
 ```
 
-返回指定元素第一次出现的下标，查找失败返回-1。
+返回指定元素第一次出现的下标，查找失败返回-1。与getLastIndexOf的区别在于，该方法返回元素首次出现的位置，getLastIndexOf返回元素最后一次出现的位置。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -582,13 +594,13 @@ getIndexOf(element: T): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| element | T | 是 | 指定元素。 |
+| element | T | 是 | 需要查找第一次出现位置的元素。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 返回指定元素第一次出现时的下标值，查找失败返回-1。 |
+| int | 返回指定元素第一次出现时的下标值，查找失败返回-1。 |
 
 **错误码：**
 
@@ -596,7 +608,7 @@ getIndexOf(element: T): int
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getIndexOf method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -629,21 +641,17 @@ console.info("result = ", result); // result = 0
 
 ## getLastIndexOf
 
-ArkTS-Dyn:
-```TypeScript
-getLastIndexOf(element: T): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getLastIndexOf(element: T): int
 ```
 
 返回指定元素最后一次出现的下标，查找失败返回-1。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -655,13 +663,13 @@ getLastIndexOf(element: T): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| element | T | 是 | 指定元素。 |
+| element | T | 是 | 需要查找最后一次出现位置的元素。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 返回指定元素最后一次出现时的下标值，查找失败返回-1。 |
+| int | 返回指定元素最后一次出现时的下标值，查找失败返回-1。 |
 
 **错误码：**
 
@@ -669,7 +677,7 @@ getLastIndexOf(element: T): int
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getLastIndexOf method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -707,11 +715,13 @@ console.info("result = ", result); // result = 5
 has(element: T): boolean
 ```
 
-判断此ArrayList中是否包含该指定元素。
+判断此ArrayList中是否包含指定元素。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -723,7 +733,7 @@ has(element: T): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| element | T | 是 | 指定元素。 |
+| element | T | 是 | 要判断是否包含的元素。 |
 
 **返回值：**
 
@@ -737,7 +747,7 @@ has(element: T): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The has method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let arrayList = new ArrayList<string>();
@@ -748,21 +758,17 @@ console.info('result:', result);  // result: true
 
 ## increaseCapacityTo
 
-ArkTS-Dyn:
-```TypeScript
-increaseCapacityTo(newCapacity: number): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 increaseCapacityTo(newCapacity: int): void
 ```
 
-如果传入的新容量大于或等于ArrayList中的元素个数，将容量变更为新容量。
+如果传入的新容量大于或等于ArrayList中的元素个数，将容量变更为新容量；如果传入的新容量小于ArrayList中的元素个数，则容量保持不变。当需要批量添加元素时，可预先调用此方法扩充容量，避免多次自动扩容带来的性能开销。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -774,7 +780,7 @@ increaseCapacityTo(newCapacity: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| newCapacity | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 新容量。 |
+| newCapacity | int | 是 | 新容量，需要大于或等于当前ArrayList中的元素个数才生效，否则容量不会变更。需要小于等于int32_max即2147483647。 |
 
 **错误码：**
 
@@ -782,7 +788,7 @@ increaseCapacityTo(newCapacity: int): void
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The increaseCapacityTo method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -812,21 +818,17 @@ console.info("result = ", arrayList.length); // result = 4
 
 ## insert
 
-ArkTS-Dyn:
-```TypeScript
-insert(element: T, index: number): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 insert(element: T, index: int): void
 ```
 
-在长度范围内指定位置index插入元素element。如果index超出范围，则插入失败。
+在长度范围内指定位置index插入元素element。调用成功后，ArrayList的length增加1，index位置及之后的元素依次向后移动一位。如果index超出范围，则抛出异常。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -839,16 +841,16 @@ insert(element: T, index: int): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | element | T | 是 | 被插入的元素。 |
-| index | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 被插入的位置索引。需要小于等于int32\_\_\_ESCAPED\_UNDERSCORE\_\_\_max即2147483647。 |
+| index | int | 是 | 被插入的下标，取值范围为[0, ArrayList.length]。需要小于等于int32_max即2147483647。超出范围时抛出异常。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range. |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The insert method cannot be bound. |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -880,9 +882,11 @@ isEmpty(): boolean
 
 判断该ArrayList是否为空。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -902,7 +906,7 @@ isEmpty(): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The isEmpty method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -934,11 +938,13 @@ console.info("result = ", result); // result =  false
 remove(element: T): boolean
 ```
 
-删除查找到的第一个指定元素。
+删除查找到的第一个指定元素。删除成功后，ArrayList的length减少1，被删除元素之后的元素依次向前移动一位。如果未找到指定元素，则不执行删除操作。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -950,7 +956,7 @@ remove(element: T): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| element | T | 是 | 指定元素。 |
+| element | T | 是 | 要删除的元素。 |
 
 **返回值：**
 
@@ -964,7 +970,7 @@ remove(element: T): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The remove method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -992,21 +998,17 @@ console.info("result = ", result); // result =  true
 
 ## removeByIndex
 
-ArkTS-Dyn:
-```TypeScript
-removeByIndex(index: number): T
-```
-
-ArkTS-Sta:
 ```TypeScript
 removeByIndex(index: int): T
 ```
 
-根据元素的下标值查找元素，返回元素后将其删除。
+根据指定下标删除元素，并返回被删除的元素。删除后，ArrayList的length减少1，被删除元素之后的元素依次向前移动一位。如果index超出范围，则抛出异常。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1018,7 +1020,7 @@ removeByIndex(index: int): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 指定元素的下标值。需要小于等于int32\_\_\_ESCAPED\_UNDERSCORE\_\_\_max即2147483647。 |
+| index | int | 是 | 指定元素的下标值，取值范围为[0, ArrayList.length-1]。需要小于等于int32_max即2147483647。 |
 
 **返回值：**
 
@@ -1030,10 +1032,10 @@ removeByIndex(index: int): T
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "index" is out of range. |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The removeByIndex method cannot be bound. |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "index" is out of range. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -1063,21 +1065,17 @@ console.info("result = ", result); // result = 5
 
 ## removeByRange
 
-ArkTS-Dyn:
-```TypeScript
-removeByRange(fromIndex: number, toIndex: number): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 removeByRange(fromIndex: int, toIndex: int): void
 ```
 
-删除指定范围内的元素，区间包含fromIndex，但不包含toIndex，即左闭右开区间[fromIndex, toIndex)。
+删除指定范围内的元素，即左闭右开区间[fromIndex, toIndex)。删除后，ArrayList的length减少对应的元素个数，toIndex之后的元素依次向前移动。如果fromIndex或toIndex超出范围， 则抛出异常。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1089,17 +1087,17 @@ removeByRange(fromIndex: int, toIndex: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fromIndex | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 起始下标。 |
-| toIndex | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 终止下标。 |
+| fromIndex | int | 是 | 起始下标，区间包含该下标。需要小于等于int32_max即2147483647。 |
+| toIndex | int | 是 | 终止下标，区间不包含该下标。需要小于等于int32_max即2147483647。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of fromIndex or toIndex is out of range. |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The removeByRange method cannot be bound. |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of fromIndex or toIndex is out of range. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -1130,11 +1128,13 @@ arrayList.removeByRange(2, 4);
 replaceAllElements(callbackFn: (value: T, index?: number, arrlist?: ArrayList<T>) => T, thisArg?: Object): void
 ```
 
-用户操作ArrayList中的元素，用操作后的元素替换原元素并返回操作后的元素。
+遍历ArrayList中的每个元素，对每个元素执行回调函数，用回调函数返回的值替换原元素。
 
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1146,8 +1146,8 @@ replaceAllElements(callbackFn: (value: T, index?: number, arrlist?: ArrayList<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, index?: number, arrlist?: ArrayList&lt;T&gt;) =&gt; T | 是 | 回调函数。 |
-| thisArg | Object | 否 | callbackFn被调用时用作this值，默认值为当前实例对象。 |
+| callbackFn | (value: T, index?: number, arrlist?: ArrayList&lt;T&gt;) =&gt; T | 是 | 用于操作元素并返回替换值的回调函数。 |
+| thisArg | Object | 否 | callbackFn被调用时用作this值。当回调函数需要引用外部对象作为this上下文时传入此参数，不传入时默认值为当前实例对象。 |
 
 **错误码：**
 
@@ -1155,7 +1155,7 @@ replaceAllElements(callbackFn: (value: T, index?: number, arrlist?: ArrayList<T>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The replaceAllElements method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let arrayList = new ArrayList<number>();
@@ -1175,11 +1175,13 @@ arrayList.replaceAllElements((value: number): number => {
 replaceAllElements(callbackFn: ArrayListReplaceCb<T>): void
 ```
 
-用户操作ArrayList中的元素，用操作后的元素替换原元素并返回操作后的元素。
+遍历ArrayList中的每个元素，对每个元素执行回调函数，用回调函数返回的值替换原元素。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -1191,9 +1193,9 @@ replaceAllElements(callbackFn: ArrayListReplaceCb<T>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; | 是 | 回调函数。 |
+| callbackFn | [ArrayListReplaceCb](arkts-arkts-arraylistreplacecb-t.md)&lt;T&gt; | 是 | 用于操作元素并返回替换值的回调函数。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { ArrayListReplaceCb } from '@ohos.util.ArrayList';
@@ -1216,11 +1218,13 @@ arrayList.replaceAllElements(arrayListCb);
 sort(comparator?: ArrayListComparatorFn<T>): void
 ```
 
-根据指定比较器所定义的顺序，对ArrayList中的元素进行排序。
+根据指定比较器所定义的顺序，对ArrayList中的元素进行排序。排序后，ArrayList的元素个数不变，元素位置按比较器定义的顺序重新排列。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1232,7 +1236,7 @@ sort(comparator?: ArrayListComparatorFn<T>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| comparator | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; | 否 | 回调函数，默认为升序排序的回调函数。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ API version 23开始发生兼容性变更，在API version 22及之前的版本其类型为：\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。\_\_\_HTML\_TAG\_USD\_0\_\_\_**起始版本：** 23 |
+| comparator | [ArrayListComparatorFn](arkts-arkts-arraylistcomparatorfn-t.md)&lt;T&gt; | 否 | 用于定义排序顺序的比较函数，默认为升序排序。当需要降序或自定义比较逻辑时传入此参数。&lt;br&gt;API version 23开始发生兼容性变更，在API version 22及之前的版本其类型为：`(firstValue: T, secondValue: T) => number`。<br>**起始版本：** 23 |
 
 **错误码：**
 
@@ -1240,7 +1244,7 @@ sort(comparator?: ArrayListComparatorFn<T>): void
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The sort method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -1281,21 +1285,17 @@ arrayList.sort();
 
 ## subArrayList
 
-ArkTS-Dyn:
-```TypeScript
-subArrayList(fromIndex: number, toIndex: number): ArrayList<T>
-```
-
-ArkTS-Sta:
 ```TypeScript
 subArrayList(fromIndex: int, toIndex: int): ArrayList<T>
 ```
 
-根据下标截取ArrayList中的一段元素，并返回这一段ArrayList实例，区间包含fromIndex，但不包含toIndex， 即左闭右开区间[fromIndex, toIndex)。
+根据下标截取ArrayList中的一段元素，并返回这一段ArrayList实例，即左闭右开区间[fromIndex, toIndex)。如果fromIndex或toIndex超出范围，则抛出异常。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1307,23 +1307,23 @@ subArrayList(fromIndex: int, toIndex: int): ArrayList<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fromIndex | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 起始下标。 |
-| toIndex | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 终止下标。 |
+| fromIndex | int | 是 | 起始下标，区间包含该下标，取值范围为[0, ArrayList.length-1]。 需要小于toIndex且小于等于int32_max即2147483647。超出范围时抛出异常。 |
+| toIndex | int | 是 | 终止下标，区间不包含该下标，取值范围为(fromIndex, ArrayList.length]。需要大于fromIndex且小于等于int32_max即2147483647。 超出范围时抛出异常。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; | 返回ArrayList对象实例。 |
+| [ArrayList](arkts-arkts-util-arraylist-arraylist-c.md)&lt;T&gt; | 返回包含[fromIndex, toIndex)范围内元素的ArrayList子列表实例。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of fromIndex or toIndex is out of range. |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The subArrayList method cannot be bound. |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of fromIndex or toIndex is out of range. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -1355,11 +1355,13 @@ console.info("result = ", result.length); // result = 2
 trimToCurrentLength(): void
 ```
 
-释放ArrayList中预留的空间，把容量调整为当前的元素个数。
+释放ArrayList中预留的空间，把容量调整为当前的元素个数。当ArrayList的容量远大于当前元素个数时（如经过多次删除操作后），可调用此方法释放多余空间以优化内存占用。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1373,7 +1375,7 @@ trimToCurrentLength(): void
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The trimToCurrentLength method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -1399,26 +1401,6 @@ arrayList.trimToCurrentLength();
 console.info("result = ", arrayList.length); // result = 4
 ```
 
-## index
-
-```TypeScript
-[index: int]: T
-```
-
-获取指定索引值对应位置的元素。
-
-**类型：** T
-
-**起始版本：** 12
-
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ArrayList-[index: int]: T--><!--Device-ArrayList-[index: int]: T-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
 ## length
 
 ```TypeScript
@@ -1431,7 +1413,9 @@ ArrayList的元素个数。
 
 **起始版本：** 8
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

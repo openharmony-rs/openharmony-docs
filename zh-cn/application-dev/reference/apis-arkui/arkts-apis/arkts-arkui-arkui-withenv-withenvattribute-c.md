@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-export declare class WithEnvAttribute--><!--Device-unnamed-export declare class WithEnvAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -22,6 +24,8 @@ customEnv<T>(key: CustomEnvKey<T>,  value: T): WithEnvAttribute
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -34,14 +38,14 @@ customEnv<T>(key: CustomEnvKey<T>,  value: T): WithEnvAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; | 是 | 自定义环境变量的键。 |
-| value | T | 是 | 自定义环境变量的值。value的类型T对应CustomEnvKey\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_的类型T。 |
+| key | [CustomEnvKey](../../apis-na/arkts-apis/arkts-na-decorator-customenvkey-c.md)&lt;T&gt; | 是 | 自定义环境变量的键。 |
+| value | T | 是 | 自定义环境变量的值。value的类型T对应CustomEnvKey&lt;T&gt;的类型T。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | WithEnvAttribute对象。 |
+| [WithEnvAttribute](arkts-arkui-arkui-withenv-withenvattribute-c.md) | WithEnvAttribute对象。 |
 
 ## env
 
@@ -49,11 +53,13 @@ customEnv<T>(key: CustomEnvKey<T>,  value: T): WithEnvAttribute
 env<T>(key: WritableSystemEnvKey<T>, value: T): WithEnvAttribute
 ```
 
-设置作用域内的系统环境变量。当前正式支持的系统环境变量键为WritableEnvKey.FONT\_SCALE、WritableEnvKey.DIRECTION。
+设置作用域内的系统环境变量。当前正式支持的系统环境变量键为WritableEnvKey.FONT_SCALE、WritableEnvKey.DIRECTION。
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -67,12 +73,12 @@ env<T>(key: WritableSystemEnvKey<T>, value: T): WithEnvAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; | 是 | 系统环境变量键。当前正式支持WritableEnvKey.FONT\_\_\_ESCAPED\_UNDERSCORE\_\_\_SCALE和WritableEnvKey.DIRECTION。 |
-| value | T | 是 | 系统环境变量值。value的类型T对应WritableSystemEnvKey\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_中的类型T。当key为WritableEnvKey.FONT\_\_\_ESCAPED\_UNDERSCORE\_\_\_SCALE时，value类型为number；当key为WritableEnvKey.DIRECTION时，value类型为Direction。 |
+| key | [WritableSystemEnvKey](../../apis-na/arkts-apis/arkts-na-decorator-writablesystemenvkey-c.md)&lt;T&gt; | 是 | 系统环境变量键。当前正式支持WritableEnvKey.FONT_SCALE和WritableEnvKey.DIRECTION。 |
+| value | T | 是 | 系统环境变量值。value的类型T对应WritableSystemEnvKey&lt;T&gt;中的类型T。当key为WritableEnvKey.FONT_SCALE时，value类型为number；当key为WritableEnvKey.DIRECTION时，value类型为Direction。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | WithEnvAttribute对象。 |
+| [WithEnvAttribute](arkts-arkui-arkui-withenv-withenvattribute-c.md) | WithEnvAttribute对象。 |
 

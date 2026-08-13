@@ -1,10 +1,12 @@
 # AVMusicTemplate
 
-调用[avMusicTemplate.createAVMusicTemplate]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_获取实例后，可获取其ID，启动音频模板界面，并配置数据获取 方法。随后，同步数据给模板控制方，以完成后续操作。 > **说明：** > > - 本模块仅适用于API version 23及以上版本的Car设备。
+调用[avMusicTemplate.createAVMusicTemplate](arkts-avsession-avmusictemplate-createavmusictemplate-f.md#createAVMusicTemplate)获取实例后，可获取其ID，启动音频模板界面，并配置数据获取 方法。随后，同步数据给模板控制方，以完成后续操作。 > **说明：** > > - 本模块仅适用于API version 23及以上版本的Car设备。
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-avMusicTemplate-class AVMusicTemplate--><!--Device-avMusicTemplate-class AVMusicTemplate-End-->
 
@@ -20,7 +22,9 @@ destroy(): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -50,7 +54,9 @@ offClearSearchHistory(callback?: ClearSearchHistoryEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -62,7 +68,7 @@ offClearSearchHistory(callback?: ClearSearchHistoryEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 清除搜索历史的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [ClearSearchHistoryEvent](arkts-avsession-avmusictemplate-clearsearchhistoryevent-t.md) | 否 | 清除搜索历史的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -82,7 +88,9 @@ offDownloadMediaEntity(callback?: DownloadMediaEntityEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -94,7 +102,7 @@ offDownloadMediaEntity(callback?: DownloadMediaEntityEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 下载媒体实体的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [DownloadMediaEntityEvent](arkts-avsession-avmusictemplate-downloadmediaentityevent-t.md) | 否 | 下载媒体实体的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -114,7 +122,9 @@ offExecuteAction(callback?: ExecuteActionEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -126,7 +136,7 @@ offExecuteAction(callback?: ExecuteActionEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 执行操作的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [ExecuteActionEvent](arkts-avsession-avmusictemplate-executeactionevent-t.md) | 否 | 执行操作的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -146,7 +156,9 @@ offFavoriteMediaEntity(callback?: FavoriteMediaEntityEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -158,7 +170,7 @@ offFavoriteMediaEntity(callback?: FavoriteMediaEntityEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 收藏媒体实体的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [FavoriteMediaEntityEvent](arkts-avsession-avmusictemplate-favoritemediaentityevent-t.md) | 否 | 收藏媒体实体的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -178,7 +190,9 @@ offHandleMemberPurchase(callback?: HandleMemberPurchaseEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -190,7 +204,7 @@ offHandleMemberPurchase(callback?: HandleMemberPurchaseEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 处理购买会员的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [HandleMemberPurchaseEvent](arkts-avsession-avmusictemplate-handlememberpurchaseevent-t.md) | 否 | 处理购买会员的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -210,7 +224,9 @@ offLogin(callback?: LoginEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -222,7 +238,7 @@ offLogin(callback?: LoginEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 登录事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [LoginEvent](arkts-avsession-avmusictemplate-loginevent-t.md) | 否 | 登录事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -242,7 +258,9 @@ offPlayForSearch(callback?: PlayForSearchEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -254,7 +272,7 @@ offPlayForSearch(callback?: PlayForSearchEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 搜播的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [PlayForSearchEvent](arkts-avsession-avmusictemplate-playforsearchevent-t.md) | 否 | 搜播的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -274,7 +292,9 @@ offPlayMediaEntity(callback?: PlayMediaEntityEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -286,7 +306,7 @@ offPlayMediaEntity(callback?: PlayMediaEntityEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 播放媒体实体的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [PlayMediaEntityEvent](arkts-avsession-avmusictemplate-playmediaentityevent-t.md) | 否 | 播放媒体实体的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -306,7 +326,9 @@ offProblemAndAdvice(callback?: ProblemAndAdviceEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -318,7 +340,7 @@ offProblemAndAdvice(callback?: ProblemAndAdviceEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 处理问题与建议的回调。不填该参数则注销该类型对应的所有回调。 |
+| callback | [ProblemAndAdviceEvent](arkts-avsession-avmusictemplate-problemandadviceevent-t.md) | 否 | 处理问题与建议的回调。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -338,7 +360,9 @@ offQueryCompilation(callback?: QueryCompilationEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -350,7 +374,7 @@ offQueryCompilation(callback?: QueryCompilationEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 查询合集的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [QueryCompilationEvent](arkts-avsession-avmusictemplate-querycompilationevent-t.md) | 否 | 查询合集的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -370,7 +394,9 @@ offQueryCompilationByKeyword(callback?: QueryCompilationByKeywordEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -382,7 +408,7 @@ offQueryCompilationByKeyword(callback?: QueryCompilationByKeywordEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 按关键字查询合集的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [QueryCompilationByKeywordEvent](arkts-avsession-avmusictemplate-querycompilationbykeywordevent-t.md) | 否 | 按关键字查询合集的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -402,7 +428,9 @@ offQueryCurrentSingle(callback?: QueryCurrentSingleEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -414,7 +442,7 @@ offQueryCurrentSingle(callback?: QueryCurrentSingleEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 查询当前单曲的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [QueryCurrentSingleEvent](arkts-avsession-avmusictemplate-querycurrentsingleevent-t.md) | 否 | 查询当前单曲的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -434,7 +462,9 @@ offQueryCustomContent(callback?: QueryCustomContentEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -446,7 +476,7 @@ offQueryCustomContent(callback?: QueryCustomContentEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 查询自定义内容的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [QueryCustomContentEvent](arkts-avsession-avmusictemplate-querycustomcontentevent-t.md) | 否 | 查询自定义内容的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -466,7 +496,9 @@ offQueryHotWords(callback?: QueryHotWordsEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -478,7 +510,7 @@ offQueryHotWords(callback?: QueryHotWordsEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 查询热词的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [QueryHotWordsEvent](arkts-avsession-avmusictemplate-queryhotwordsevent-t.md) | 否 | 查询热词的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -498,7 +530,9 @@ offQueryMainTabs(callback?: QueryMainTabsEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -510,7 +544,7 @@ offQueryMainTabs(callback?: QueryMainTabsEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 查询主标签事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [QueryMainTabsEvent](arkts-avsession-avmusictemplate-querymaintabsevent-t.md) | 否 | 查询主标签事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -530,7 +564,9 @@ offQueryMediaEntity(callback?: QueryMediaEntityEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -542,7 +578,7 @@ offQueryMediaEntity(callback?: QueryMediaEntityEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 查询媒体实体的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [QueryMediaEntityEvent](arkts-avsession-avmusictemplate-querymediaentityevent-t.md) | 否 | 查询媒体实体的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -562,7 +598,9 @@ offQueryMediaEntityByKeyword(callback?: QueryMediaEntityByKeywordEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -574,7 +612,7 @@ offQueryMediaEntityByKeyword(callback?: QueryMediaEntityByKeywordEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 按关键字查询媒体实体的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [QueryMediaEntityByKeywordEvent](arkts-avsession-avmusictemplate-querymediaentitybykeywordevent-t.md) | 否 | 按关键字查询媒体实体的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -594,7 +632,9 @@ offQueryMediaTabContent(callback?: QueryMediaTabContentEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -606,7 +646,7 @@ offQueryMediaTabContent(callback?: QueryMediaTabContentEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 查询媒体标签页内容的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [QueryMediaTabContentEvent](arkts-avsession-avmusictemplate-querymediatabcontentevent-t.md) | 否 | 查询媒体标签页内容的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -626,7 +666,9 @@ offQueryMemberPurchase(callback?: QueryMemberPurchaseEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -638,7 +680,7 @@ offQueryMemberPurchase(callback?: QueryMemberPurchaseEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 查询购买会员的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [QueryMemberPurchaseEvent](arkts-avsession-avmusictemplate-querymemberpurchaseevent-t.md) | 否 | 查询购买会员的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -658,7 +700,9 @@ offQueryPlaylist(callback?: QueryPlaylistEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -670,7 +714,7 @@ offQueryPlaylist(callback?: QueryPlaylistEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 查询播放列表的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [QueryPlaylistEvent](arkts-avsession-avmusictemplate-queryplaylistevent-t.md) | 否 | 查询播放列表的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -690,7 +734,9 @@ offQueryRecommendMediaEntityList(callback?: QueryRecommendMediaEntityListEvent):
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -702,7 +748,7 @@ offQueryRecommendMediaEntityList(callback?: QueryRecommendMediaEntityListEvent):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 查询推荐媒体列表的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [QueryRecommendMediaEntityListEvent](arkts-avsession-avmusictemplate-queryrecommendmediaentitylistevent-t.md) | 否 | 查询推荐媒体列表的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -722,7 +768,9 @@ offQuerySearchHistory(callback?: QuerySearchHistoryEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -734,7 +782,7 @@ offQuerySearchHistory(callback?: QuerySearchHistoryEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 查询搜索历史的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [QuerySearchHistoryEvent](arkts-avsession-avmusictemplate-querysearchhistoryevent-t.md) | 否 | 查询搜索历史的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -754,7 +802,9 @@ offRequestDialogInfo(callback?: RequestDialogInfoEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -766,7 +816,7 @@ offRequestDialogInfo(callback?: RequestDialogInfoEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 请求对话框信息的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [RequestDialogInfoEvent](arkts-avsession-avmusictemplate-requestdialoginfoevent-t.md) | 否 | 请求对话框信息的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -786,7 +836,9 @@ offSettingsChange(callback?: SettingsChangeEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -798,7 +850,7 @@ offSettingsChange(callback?: SettingsChangeEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 设置改变的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [SettingsChangeEvent](arkts-avsession-avmusictemplate-settingschangeevent-t.md) | 否 | 设置改变的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -818,7 +870,9 @@ onClearSearchHistory(callback: ClearSearchHistoryEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -830,7 +884,7 @@ onClearSearchHistory(callback: ClearSearchHistoryEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调函数，返回清除搜索历史的事件。 |
+| callback | [ClearSearchHistoryEvent](arkts-avsession-avmusictemplate-clearsearchhistoryevent-t.md) | 是 | 回调函数，返回清除搜索历史的事件。 |
 
 **错误码：**
 
@@ -850,7 +904,9 @@ onDownloadMediaEntity(callback: DownloadMediaEntityEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -862,7 +918,7 @@ onDownloadMediaEntity(callback: DownloadMediaEntityEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调函数，返回下载媒体实体的事件。 |
+| callback | [DownloadMediaEntityEvent](arkts-avsession-avmusictemplate-downloadmediaentityevent-t.md) | 是 | 回调函数，返回下载媒体实体的事件。 |
 
 **错误码：**
 
@@ -882,7 +938,9 @@ onExecuteAction(callback: ExecuteActionEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -894,7 +952,7 @@ onExecuteAction(callback: ExecuteActionEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调函数，返回执行操作的事件。 |
+| callback | [ExecuteActionEvent](arkts-avsession-avmusictemplate-executeactionevent-t.md) | 是 | 回调函数，返回执行操作的事件。 |
 
 **错误码：**
 
@@ -914,7 +972,9 @@ onFavoriteMediaEntity(callback: FavoriteMediaEntityEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -926,7 +986,7 @@ onFavoriteMediaEntity(callback: FavoriteMediaEntityEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调函数，返回收藏媒体实体的事件。 |
+| callback | [FavoriteMediaEntityEvent](arkts-avsession-avmusictemplate-favoritemediaentityevent-t.md) | 是 | 回调函数，返回收藏媒体实体的事件。 |
 
 **错误码：**
 
@@ -946,7 +1006,9 @@ onHandleMemberPurchase(callback: HandleMemberPurchaseEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -958,7 +1020,7 @@ onHandleMemberPurchase(callback: HandleMemberPurchaseEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调函数，返回处理购买会员的事件。 |
+| callback | [HandleMemberPurchaseEvent](arkts-avsession-avmusictemplate-handlememberpurchaseevent-t.md) | 是 | 回调函数，返回处理购买会员的事件。 |
 
 **错误码：**
 
@@ -978,7 +1040,9 @@ onLogin(callback: LoginEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -990,7 +1054,7 @@ onLogin(callback: LoginEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调函数，返回登录事件。 |
+| callback | [LoginEvent](arkts-avsession-avmusictemplate-loginevent-t.md) | 是 | 回调函数，返回登录事件。 |
 
 **错误码：**
 
@@ -1010,7 +1074,9 @@ onPlayForSearch(callback: PlayForSearchEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1022,7 +1088,7 @@ onPlayForSearch(callback: PlayForSearchEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调函数，返回搜播的事件。 |
+| callback | [PlayForSearchEvent](arkts-avsession-avmusictemplate-playforsearchevent-t.md) | 是 | 回调函数，返回搜播的事件。 |
 
 **错误码：**
 
@@ -1042,7 +1108,9 @@ onPlayMediaEntity(callback: PlayMediaEntityEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1054,7 +1122,7 @@ onPlayMediaEntity(callback: PlayMediaEntityEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调函数，返回播放媒体实体的事件。 |
+| callback | [PlayMediaEntityEvent](arkts-avsession-avmusictemplate-playmediaentityevent-t.md) | 是 | 回调函数，返回播放媒体实体的事件。 |
 
 **错误码：**
 
@@ -1074,7 +1142,9 @@ onProblemAndAdvice(callback: ProblemAndAdviceEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1086,7 +1156,7 @@ onProblemAndAdvice(callback: ProblemAndAdviceEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调函数，返回问题与建议的事件。 |
+| callback | [ProblemAndAdviceEvent](arkts-avsession-avmusictemplate-problemandadviceevent-t.md) | 是 | 回调函数，返回问题与建议的事件。 |
 
 **错误码：**
 
@@ -1106,7 +1176,9 @@ onQueryCompilation(callback: QueryCompilationEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1118,7 +1190,7 @@ onQueryCompilation(callback: QueryCompilationEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调函数，返回查询合集的事件。 |
+| callback | [QueryCompilationEvent](arkts-avsession-avmusictemplate-querycompilationevent-t.md) | 是 | 回调函数，返回查询合集的事件。 |
 
 **错误码：**
 
@@ -1138,7 +1210,9 @@ onQueryCompilationByKeyword(callback: QueryCompilationByKeywordEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1150,7 +1224,7 @@ onQueryCompilationByKeyword(callback: QueryCompilationByKeywordEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调函数，返回按关键字查询合集的事件。 |
+| callback | [QueryCompilationByKeywordEvent](arkts-avsession-avmusictemplate-querycompilationbykeywordevent-t.md) | 是 | 回调函数，返回按关键字查询合集的事件。 |
 
 **错误码：**
 
@@ -1170,7 +1244,9 @@ onQueryCurrentSingle(callback: QueryCurrentSingleEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1182,7 +1258,7 @@ onQueryCurrentSingle(callback: QueryCurrentSingleEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调函数，返回查询当前单曲的事件。 |
+| callback | [QueryCurrentSingleEvent](arkts-avsession-avmusictemplate-querycurrentsingleevent-t.md) | 是 | 回调函数，返回查询当前单曲的事件。 |
 
 **错误码：**
 
@@ -1202,7 +1278,9 @@ onQueryCustomContent(callback: QueryCustomContentEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1214,7 +1292,7 @@ onQueryCustomContent(callback: QueryCustomContentEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调函数，返回查询自定义内容的事件。 |
+| callback | [QueryCustomContentEvent](arkts-avsession-avmusictemplate-querycustomcontentevent-t.md) | 是 | 回调函数，返回查询自定义内容的事件。 |
 
 **错误码：**
 
@@ -1234,7 +1312,9 @@ onQueryHotWords(callback: QueryHotWordsEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1246,7 +1326,7 @@ onQueryHotWords(callback: QueryHotWordsEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调函数，返回查询热词的事件。 |
+| callback | [QueryHotWordsEvent](arkts-avsession-avmusictemplate-queryhotwordsevent-t.md) | 是 | 回调函数，返回查询热词的事件。 |
 
 **错误码：**
 
@@ -1266,7 +1346,9 @@ onQueryMainTabs(callback: QueryMainTabsEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1278,7 +1360,7 @@ onQueryMainTabs(callback: QueryMainTabsEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调函数，返回查询主标签事件。 |
+| callback | [QueryMainTabsEvent](arkts-avsession-avmusictemplate-querymaintabsevent-t.md) | 是 | 回调函数，返回查询主标签事件。 |
 
 **错误码：**
 
@@ -1298,7 +1380,9 @@ onQueryMediaEntity(callback: QueryMediaEntityEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1310,7 +1394,7 @@ onQueryMediaEntity(callback: QueryMediaEntityEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调函数，返回查询媒体实体的事件。 |
+| callback | [QueryMediaEntityEvent](arkts-avsession-avmusictemplate-querymediaentityevent-t.md) | 是 | 回调函数，返回查询媒体实体的事件。 |
 
 **错误码：**
 
@@ -1330,7 +1414,9 @@ onQueryMediaEntityByKeyword(callback: QueryMediaEntityByKeywordEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1342,7 +1428,7 @@ onQueryMediaEntityByKeyword(callback: QueryMediaEntityByKeywordEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调函数，返回按关键字查询媒体实体的事件。 |
+| callback | [QueryMediaEntityByKeywordEvent](arkts-avsession-avmusictemplate-querymediaentitybykeywordevent-t.md) | 是 | 回调函数，返回按关键字查询媒体实体的事件。 |
 
 **错误码：**
 
@@ -1362,7 +1448,9 @@ onQueryMediaTabContent(callback: QueryMediaTabContentEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1374,7 +1462,7 @@ onQueryMediaTabContent(callback: QueryMediaTabContentEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调函数，返回查询媒体标签页内容的事件。 |
+| callback | [QueryMediaTabContentEvent](arkts-avsession-avmusictemplate-querymediatabcontentevent-t.md) | 是 | 回调函数，返回查询媒体标签页内容的事件。 |
 
 **错误码：**
 
@@ -1394,7 +1482,9 @@ onQueryMemberPurchase(callback: QueryMemberPurchaseEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1406,7 +1496,7 @@ onQueryMemberPurchase(callback: QueryMemberPurchaseEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调函数，返回查询购买会员的事件。 |
+| callback | [QueryMemberPurchaseEvent](arkts-avsession-avmusictemplate-querymemberpurchaseevent-t.md) | 是 | 回调函数，返回查询购买会员的事件。 |
 
 **错误码：**
 
@@ -1426,7 +1516,9 @@ onQueryPlaylist(callback: QueryPlaylistEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1438,7 +1530,7 @@ onQueryPlaylist(callback: QueryPlaylistEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调函数，返回查询播放列表的事件。 |
+| callback | [QueryPlaylistEvent](arkts-avsession-avmusictemplate-queryplaylistevent-t.md) | 是 | 回调函数，返回查询播放列表的事件。 |
 
 **错误码：**
 
@@ -1458,7 +1550,9 @@ onQueryRecommendMediaEntityList(callback: QueryRecommendMediaEntityListEvent): v
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1470,7 +1564,7 @@ onQueryRecommendMediaEntityList(callback: QueryRecommendMediaEntityListEvent): v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调函数，返回查询推荐媒体列表的事件。 |
+| callback | [QueryRecommendMediaEntityListEvent](arkts-avsession-avmusictemplate-queryrecommendmediaentitylistevent-t.md) | 是 | 回调函数，返回查询推荐媒体列表的事件。 |
 
 **错误码：**
 
@@ -1490,7 +1584,9 @@ onQuerySearchHistory(callback: QuerySearchHistoryEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1502,7 +1598,7 @@ onQuerySearchHistory(callback: QuerySearchHistoryEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调函数，返回查询搜索历史的事件。 |
+| callback | [QuerySearchHistoryEvent](arkts-avsession-avmusictemplate-querysearchhistoryevent-t.md) | 是 | 回调函数，返回查询搜索历史的事件。 |
 
 **错误码：**
 
@@ -1522,7 +1618,9 @@ onRequestDialogInfo(callback: RequestDialogInfoEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1534,7 +1632,7 @@ onRequestDialogInfo(callback: RequestDialogInfoEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调函数，返回请求对话框信息的事件。 |
+| callback | [RequestDialogInfoEvent](arkts-avsession-avmusictemplate-requestdialoginfoevent-t.md) | 是 | 回调函数，返回请求对话框信息的事件。 |
 
 **错误码：**
 
@@ -1554,7 +1652,9 @@ onSettingsChange(callback: SettingsChangeEvent): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1566,7 +1666,7 @@ onSettingsChange(callback: SettingsChangeEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调函数，返回设置改变的事件。 |
+| callback | [SettingsChangeEvent](arkts-avsession-avmusictemplate-settingschangeevent-t.md) | 是 | 回调函数，返回设置改变的事件。 |
 
 **错误码：**
 
@@ -1586,7 +1686,9 @@ reportExecuteAction(actionType: string, params: string): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1625,7 +1727,9 @@ setCurrentSingle(single: Single): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1637,7 +1741,7 @@ setCurrentSingle(single: Single): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| single | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 当前单曲。 |
+| single | Single | 是 | 当前单曲。 |
 
 **返回值：**
 
@@ -1664,7 +1768,9 @@ setCustomElements(actionType: ActionType, customType: CustomType,
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1676,9 +1782,9 @@ setCustomElements(actionType: ActionType, customType: CustomType,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| actionType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 操作类型 |
-| customType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 自定义数据的类型 |
-| customElement | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 自定义数据 |
+| actionType | ActionType | 是 | 操作类型 |
+| customType | [CustomType](arkts-avsession-avmusictemplate-customtype-t.md) | 是 | 自定义数据的类型 |
+| customElement | [CustomElement](arkts-avsession-avmusictemplate-customelement-i.md) | 是 | 自定义数据 |
 
 **返回值：**
 
@@ -1704,7 +1810,9 @@ setDialogCommand(type: DialogControlType, dialogInfo: DialogInfo): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1716,8 +1824,8 @@ setDialogCommand(type: DialogControlType, dialogInfo: DialogInfo): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 对话框控制类型。 |
-| dialogInfo | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 对话框信息。 |
+| type | [DialogControlType](arkts-avsession-avmusictemplate-dialogcontroltype-t.md) | 是 | 对话框控制类型。 |
+| dialogInfo | [DialogInfo](arkts-avsession-avmusictemplate-dialoginfo-i.md) | 是 | 对话框信息。 |
 
 **返回值：**
 
@@ -1743,7 +1851,9 @@ setDownloadMediaEntityStatus(single: MediaEntity): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1755,7 +1865,7 @@ setDownloadMediaEntityStatus(single: MediaEntity): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| single | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 单曲。 |
+| single | [MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md) | 是 | 单曲。 |
 
 **返回值：**
 
@@ -1781,7 +1891,9 @@ setExtensionAbility(want: WantAgent): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1793,7 +1905,7 @@ setExtensionAbility(want: WantAgent): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 能力信息。 |
+| want | [WantAgent](../../apis-ability-kit/arkts-apis/arkts-ability-wantagent-t.md) | 是 | 能力信息。 |
 
 **返回值：**
 
@@ -1819,7 +1931,9 @@ setMediaEntities(entities: MediaEntity[]): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1831,7 +1945,7 @@ setMediaEntities(entities: MediaEntity[]): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| entities | \_\_\_MD\_LINK\_USD\_0\_\_\_[] | 是 | 媒体实体的数组。 |
+| entities | [MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md)[] | 是 | 媒体实体的数组。 |
 
 **返回值：**
 
@@ -1857,7 +1971,9 @@ setPlaylist(playlist: PageMediaEntity): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1869,7 +1985,7 @@ setPlaylist(playlist: PageMediaEntity): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| playlist | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 分页媒体实体。 |
+| playlist | [PageMediaEntity](arkts-avsession-avmusictemplate-pagemediaentity-i.md) | 是 | 分页媒体实体。 |
 
 **返回值：**
 
@@ -1895,7 +2011,9 @@ setSettings(settingItems: SettingItem[]): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1907,7 +2025,7 @@ setSettings(settingItems: SettingItem[]): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| settingItems | \_\_\_MD\_LINK\_USD\_0\_\_\_[] | 是 | 设置项数组。 |
+| settingItems | [SettingItem](arkts-avsession-avmusictemplate-settingitem-i.md)[] | 是 | 设置项数组。 |
 
 **返回值：**
 
@@ -1933,7 +2051,9 @@ setTabContent(tabId: string, tabContent: MediaTabContent): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1946,7 +2066,7 @@ setTabContent(tabId: string, tabContent: MediaTabContent): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | tabId | string | 是 | 标签的ID。 |
-| tabContent | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 媒体标签页内容。 |
+| tabContent | [MediaTabContent](arkts-avsession-avmusictemplate-mediatabcontent-i.md) | 是 | 媒体标签页内容。 |
 
 **返回值：**
 
@@ -1972,7 +2092,9 @@ setUserInfo(userInfo: UserInfo): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1984,7 +2106,7 @@ setUserInfo(userInfo: UserInfo): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| userInfo | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 用户信息。 |
+| userInfo | UserInfo | 是 | 用户信息。 |
 
 **返回值：**
 
@@ -2010,7 +2132,9 @@ startTemplate(): Promise<OperResult>
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2022,7 +2146,7 @@ startTemplate(): Promise<OperResult>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;OperResult&gt; | Promise对象，返回启动音频模板界面的操作结果。 |
+| Promise&lt;[OperResult](arkts-avsession-avmusictemplate-operresult-i.md)&gt; | Promise对象，返回启动音频模板界面的操作结果。 |
 
 **错误码：**
 
@@ -2042,7 +2166,9 @@ sessionId: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2062,7 +2188,9 @@ sessionTag: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

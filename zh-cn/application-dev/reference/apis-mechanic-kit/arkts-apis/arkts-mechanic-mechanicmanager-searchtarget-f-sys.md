@@ -8,9 +8,11 @@ function searchTarget(target: TargetInfo, params: SearchParams): Promise<SearchR
 
 Searching for a specified target.
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-mechanicManager-function searchTarget(target: TargetInfo, params: SearchParams): Promise<SearchResult>--><!--Device-mechanicManager-function searchTarget(target: TargetInfo, params: SearchParams): Promise<SearchResult>-End-->
 
@@ -22,26 +24,26 @@ Searching for a specified target.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| target | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | Target infomation. |
-| params | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | Parameters to use when searching. |
+| target | TargetInfo | 是 | Target infomation. |
+| params | SearchParams | 是 | Parameters to use when searching. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;SearchResult&gt; | Promise that return the Search result. |
+| Promise&lt;[SearchResult](arkts-mechanic-mechanicmanager-searchresult-i-sys.md)&gt; | Promise that return the Search result. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| 33300004 | Camera not opened. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 | [33300001](../errorcode-mechanic.md#33300001-系统错误) | Service exception. |
 | [33300002](../errorcode-mechanic.md#33300002-设备未连接) | Device not connected. |
 | [33300003](../errorcode-mechanic.md#33300003-功能不支持) | Feature not supported. |
-| 33300004 | Camera not opened. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let targetInfo: mechanicManager.TargetInfo = {

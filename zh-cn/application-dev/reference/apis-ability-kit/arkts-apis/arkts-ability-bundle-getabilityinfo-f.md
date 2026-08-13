@@ -26,9 +26,9 @@ function getAbilityInfo(bundleName: string, abilityName: string, callback: Async
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 应用Bundle名称。 |
 | abilityName | string | 是 | Ability名称。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;AbilityInfo&gt; | 是 | 程序启动作为入参的回调函数，返回Ability信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AbilityInfo](arkts-ability-abilityinfo-abilityinfo-depr-i.md)&gt; | 是 | 程序启动作为入参的回调函数，返回Ability信息。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import bundle from '@ohos.bundle';
@@ -77,9 +77,9 @@ function getAbilityInfo(bundleName: string, abilityName: string): Promise<Abilit
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;AbilityInfo&gt; | Promise形式返回Ability信息。 |
+| Promise&lt;[AbilityInfo](arkts-ability-abilityinfo-abilityinfo-depr-i.md)&gt; | Promise形式返回Ability信息。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import bundle from '@ohos.bundle';

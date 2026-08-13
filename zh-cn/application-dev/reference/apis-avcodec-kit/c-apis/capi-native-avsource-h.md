@@ -196,7 +196,7 @@ OH_AVFormat *OH_AVSource_GetSourceFormat(OH_AVSource *source)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVFormat * | 执行成功返回文件的基础信息，否则返回NULL。<br> 可能的故障原因：<br> 1. source指针无效。<br> 2. 空指针或非OH_AVSource实例。<br> 3. source没有初始化。 |
+| [OH_AVFormat *](capi-core-oh-avformat.md) | 执行成功返回文件的基础信息，否则返回NULL。<br> 可能的故障原因：<br> 1. source指针无效。<br> 2. 空指针或非OH_AVSource实例。<br> 3. source没有初始化。 |
 
 ### OH_AVSource_GetTrackFormat()
 
@@ -223,7 +223,7 @@ OH_AVFormat *OH_AVSource_GetTrackFormat(OH_AVSource *source, uint32_t trackIndex
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVFormat * | 执行成功返回轨道的基础信息，否则返回NULL。<br> 可能的故障原因：<br> 1. source指针无效，空指针或非OH_AVSource实例。<br> 2. 轨道的索引超出范围。<br> 3. source没有初始化。 |
+| [OH_AVFormat *](capi-core-oh-avformat.md) | 执行成功返回轨道的基础信息，否则返回NULL。<br> 可能的故障原因：<br> 1. source指针无效，空指针或非OH_AVSource实例。<br> 2. 轨道的索引超出范围。<br> 3. source没有初始化。 |
 
 ### OH_AVSource_GetCustomMetadataFormat()
 
@@ -249,6 +249,6 @@ OH_AVFormat *OH_AVSource_GetCustomMetadataFormat(OH_AVSource *source)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVFormat * | 执行成功返回元数据的基础信息，否则返回NULL。<br> 可能的故障原因：<br> 1. source指针无效。<br> 2. 空指针或非OH_AVSource实例。<br> 3. source没有初始化。 |
+| [OH_AVFormat *](capi-core-oh-avformat.md) | 执行成功返回元数据的基础信息，否则返回NULL。<br> 可能的故障原因：<br> 1. source指针无效。<br> 2. 空指针或非OH_AVSource实例。<br> 3. source没有初始化。 |
 
 

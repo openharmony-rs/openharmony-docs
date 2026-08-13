@@ -8,9 +8,11 @@ function rotateToEulerAngles(mechId: int, angles: EulerAngles, duration: int): P
 
 将机械设备旋转到绝对角度
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-mechanicManager-function rotateToEulerAngles(mechId: int, angles: EulerAngles, duration: int): Promise<Result>--><!--Device-mechanicManager-function rotateToEulerAngles(mechId: int, angles: EulerAngles, duration: int): Promise<Result>-End-->
 
@@ -22,9 +24,9 @@ function rotateToEulerAngles(mechId: int, angles: EulerAngles, duration: int): P
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mechId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 机械设备ID |
-| angles | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 绝对角度位置 |
-| duration | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 执行时间 |
+| mechId | int | 是 | 机械设备ID |
+| angles | [EulerAngles](arkts-mechanic-mechanicmanager-eulerangles-i-sys.md) | 是 | 绝对角度位置 |
+| duration | int | 是 | 执行时间 |
 
 **返回值：**
 
@@ -40,7 +42,7 @@ function rotateToEulerAngles(mechId: int, angles: EulerAngles, duration: int): P
 | [33300001](../errorcode-mechanic.md#33300001-系统错误) | Service exception. |
 | [33300002](../errorcode-mechanic.md#33300002-设备未连接) | Device not connected. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let degree: mechanicManager.EulerAngles = {

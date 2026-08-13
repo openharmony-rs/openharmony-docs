@@ -1,10 +1,12 @@
 # Tag
 
-枚举，关键资产支持的属性名称类型，用作[AssetMap]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_的键。 > **说明：** > > 以下为Tag类型的全量枚举值，每个接口可传的Tag枚举及对应的Value取值范围不同，详见 > \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+枚举，关键资产支持的属性名称类型，用作[AssetMap](arkts-assetstore-asset-assetmap-t.md#AssetMap)的键。 > **说明：** > > 以下为Tag类型的全量枚举值，每个接口可传的Tag枚举及对应的Value取值范围不同，详见 > [各个场景的开发指导](../../../security/AssetStoreKit/asset-store-kit-overview.md)。
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 <!--Device-asset-enum Tag--><!--Device-asset-enum Tag-End-->
 
@@ -21,6 +23,8 @@ SECRET = TagType.BYTES | 0x01
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -40,6 +44,8 @@ ALIAS = TagType.BYTES | 0x02
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Tag-ALIAS = TagType.BYTES | 0x02--><!--Device-Tag-ALIAS = TagType.BYTES | 0x02-End-->
@@ -57,6 +63,8 @@ ACCESSIBILITY = TagType.NUMBER | 0x03
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -76,6 +84,8 @@ REQUIRE_PASSWORD_SET = TagType.BOOL | 0x04
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Tag-REQUIRE_PASSWORD_SET = TagType.BOOL | 0x04--><!--Device-Tag-REQUIRE_PASSWORD_SET = TagType.BOOL | 0x04-End-->
@@ -93,6 +103,8 @@ AUTH_TYPE = TagType.NUMBER | 0x05
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -112,6 +124,8 @@ AUTH_VALIDITY_PERIOD = TagType.NUMBER | 0x06
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Tag-AUTH_VALIDITY_PERIOD = TagType.NUMBER | 0x06--><!--Device-Tag-AUTH_VALIDITY_PERIOD = TagType.NUMBER | 0x06-End-->
@@ -129,6 +143,8 @@ AUTH_CHALLENGE = TagType.BYTES | 0x07
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -148,6 +164,8 @@ AUTH_TOKEN = TagType.BYTES | 0x08
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Tag-AUTH_TOKEN = TagType.BYTES | 0x08--><!--Device-Tag-AUTH_TOKEN = TagType.BYTES | 0x08-End-->
@@ -165,6 +183,8 @@ SYNC_TYPE = TagType.NUMBER | 0x10
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -184,6 +204,8 @@ IS_PERSISTENT = TagType.BOOL | 0x11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-Tag-IS_PERSISTENT = TagType.BOOL | 0x11--><!--Device-Tag-IS_PERSISTENT = TagType.BOOL | 0x11-End-->
 
 **系统能力：** SystemCapability.Security.Asset
@@ -199,6 +221,8 @@ DATA_LABEL_CRITICAL_1 = TagType.BYTES | 0x20
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -218,6 +242,8 @@ DATA_LABEL_CRITICAL_2 = TagType.BYTES | 0x21
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Tag-DATA_LABEL_CRITICAL_2 = TagType.BYTES | 0x21--><!--Device-Tag-DATA_LABEL_CRITICAL_2 = TagType.BYTES | 0x21-End-->
@@ -235,6 +261,8 @@ DATA_LABEL_CRITICAL_3 = TagType.BYTES | 0x22
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -254,6 +282,8 @@ DATA_LABEL_CRITICAL_4 = TagType.BYTES | 0x23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Tag-DATA_LABEL_CRITICAL_4 = TagType.BYTES | 0x23--><!--Device-Tag-DATA_LABEL_CRITICAL_4 = TagType.BYTES | 0x23-End-->
@@ -271,6 +301,8 @@ DATA_LABEL_NORMAL_1 = TagType.BYTES | 0x30
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -290,6 +322,8 @@ DATA_LABEL_NORMAL_2 = TagType.BYTES | 0x31
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Tag-DATA_LABEL_NORMAL_2 = TagType.BYTES | 0x31--><!--Device-Tag-DATA_LABEL_NORMAL_2 = TagType.BYTES | 0x31-End-->
@@ -307,6 +341,8 @@ DATA_LABEL_NORMAL_3 = TagType.BYTES | 0x32
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -326,6 +362,8 @@ DATA_LABEL_NORMAL_4 = TagType.BYTES | 0x33
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Tag-DATA_LABEL_NORMAL_4 = TagType.BYTES | 0x33--><!--Device-Tag-DATA_LABEL_NORMAL_4 = TagType.BYTES | 0x33-End-->
@@ -343,6 +381,8 @@ DATA_LABEL_NORMAL_LOCAL_1 = TagType.BYTES | 0x34
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -362,6 +402,8 @@ DATA_LABEL_NORMAL_LOCAL_2 = TagType.BYTES | 0x35
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Tag-DATA_LABEL_NORMAL_LOCAL_2 = TagType.BYTES | 0x35--><!--Device-Tag-DATA_LABEL_NORMAL_LOCAL_2 = TagType.BYTES | 0x35-End-->
@@ -379,6 +421,8 @@ DATA_LABEL_NORMAL_LOCAL_3 = TagType.BYTES | 0x36
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -398,6 +442,8 @@ DATA_LABEL_NORMAL_LOCAL_4 = TagType.BYTES | 0x37
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Tag-DATA_LABEL_NORMAL_LOCAL_4 = TagType.BYTES | 0x37--><!--Device-Tag-DATA_LABEL_NORMAL_LOCAL_4 = TagType.BYTES | 0x37-End-->
@@ -415,6 +461,8 @@ RETURN_TYPE = TagType.NUMBER | 0x40
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -434,6 +482,8 @@ RETURN_LIMIT = TagType.NUMBER | 0x41
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Tag-RETURN_LIMIT = TagType.NUMBER | 0x41--><!--Device-Tag-RETURN_LIMIT = TagType.NUMBER | 0x41-End-->
@@ -451,6 +501,8 @@ RETURN_OFFSET = TagType.NUMBER | 0x42
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -470,6 +522,8 @@ RETURN_ORDERED_BY = TagType.NUMBER | 0x43
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Tag-RETURN_ORDERED_BY = TagType.NUMBER | 0x43--><!--Device-Tag-RETURN_ORDERED_BY = TagType.NUMBER | 0x43-End-->
@@ -487,6 +541,8 @@ CONFLICT_RESOLUTION = TagType.NUMBER | 0x44
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -506,6 +562,8 @@ UPDATE_TIME = TagType.BYTES | 0x45
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Tag-UPDATE_TIME = TagType.BYTES | 0x45--><!--Device-Tag-UPDATE_TIME = TagType.BYTES | 0x45-End-->
@@ -524,6 +582,8 @@ OPERATION_TYPE = TagType.NUMBER | 0x46
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-Tag-OPERATION_TYPE = TagType.NUMBER | 0x46--><!--Device-Tag-OPERATION_TYPE = TagType.NUMBER | 0x46-End-->
 
 **系统能力：** SystemCapability.Security.Asset
@@ -539,6 +599,8 @@ REQUIRE_ATTR_ENCRYPTED = TagType.BOOL | 0x47
 **起始版本：** 14
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -558,6 +620,8 @@ GROUP_ID = TagType.BYTES | 0x48
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 <!--Device-Tag-GROUP_ID = TagType.BYTES | 0x48--><!--Device-Tag-GROUP_ID = TagType.BYTES | 0x48-End-->
 
 **系统能力：** SystemCapability.Security.Asset
@@ -573,6 +637,8 @@ WRAP_TYPE = TagType.NUMBER | 0x49
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 <!--Device-Tag-WRAP_TYPE = TagType.NUMBER | 0x49--><!--Device-Tag-WRAP_TYPE = TagType.NUMBER | 0x49-End-->
 

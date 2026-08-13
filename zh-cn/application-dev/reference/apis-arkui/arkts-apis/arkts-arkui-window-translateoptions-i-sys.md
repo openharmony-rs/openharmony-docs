@@ -2,9 +2,11 @@
 
 平移参数。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-window-interface TranslateOptions--><!--Device-window-interface TranslateOptions-End-->
 
@@ -22,9 +24,11 @@ X轴的平移参数。该参数为浮点数，默认值为0.0，单位为px。
 
 **类型：** double
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TranslateOptions-x?: double--><!--Device-TranslateOptions-x?: double-End-->
 
@@ -42,9 +46,11 @@ Y轴的平移参数。该参数为浮点数，默认值为0.0，单位为px。
 
 **类型：** double
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TranslateOptions-y?: double--><!--Device-TranslateOptions-y?: double-End-->
 
@@ -62,9 +68,11 @@ Z轴的平移参数。该参数为浮点数，默认值为0.0，单位为px。
 
 **类型：** double
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TranslateOptions-z?: double--><!--Device-TranslateOptions-z?: double-End-->
 

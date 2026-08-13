@@ -14,7 +14,7 @@ function createDistributedObject(source: object): DistributedObject
 
 **废弃版本：** 9
 
-**替代接口：** [distributedDataObject.create](arkts-arkdata-distributeddataobject-create-f.md#create)
+**替代接口：** [create](arkts-arkdata-distributeddataobject-create-f.md#create)
 
 <!--Device-distributedDataObject-function createDistributedObject(source: object): DistributedObject--><!--Device-distributedDataObject-function createDistributedObject(source: object): DistributedObject-End-->
 
@@ -30,9 +30,9 @@ function createDistributedObject(source: object): DistributedObject
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 创建完成的分布式数据对象。 |
+| [DistributedObject](arkts-arkdata-distributeddataobject-distributedobject-i.md) | 创建完成的分布式数据对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 class SourceObject {

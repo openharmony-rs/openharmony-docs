@@ -6,7 +6,7 @@ typedef struct OH_Drawing_FontStyleStruct {...} OH_Drawing_FontStyleStruct
 
 ## 概述
 
-This struct describes a font style.
+定义字体样式信息的结构体。
 
 **起始版本：** 12
 
@@ -20,8 +20,8 @@ This struct describes a font style.
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Drawing_FontWeight](capi-drawing-text-typography-h.md#oh_drawing_fontweight) weight | Font weight. |
+| [OH_Drawing_FontWeight](capi-drawing-text-typography-h.md#oh_drawing_fontweight) weight | 字体字重。 |
 | [OH_Drawing_FontWidth](capi-drawing-text-typography-h.md#oh_drawing_fontwidth) width | 字宽。 |
-| [OH_Drawing_FontStyle](capi-drawing-text-typography-h.md#oh_drawing_fontstyle) slant | Font slant. |
+| [OH_Drawing_FontStyle](capi-drawing-text-typography-h.md#oh_drawing_fontstyle) slant | 字体斜体。 |
 
 

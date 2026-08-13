@@ -6,7 +6,7 @@ typedef struct OH_Drawing_FontAliasInfo {...} OH_Drawing_FontAliasInfo
 
 ## 概述
 
-This struct describes the information about a font alias.
+别名字体信息结构体。
 
 **起始版本：** 12
 
@@ -20,7 +20,7 @@ This struct describes the information about a font alias.
 
 | 名称 | 描述 |
 | -- | -- |
-| char* familyName | Pointer to the name of a font family. |
-| int weight | Font weight. If the value is greater than 0, only the fonts with the specified weight in the font family arecontained. If the value is 0, all the fonts in the font family are contained. |
+| char* familyName | 字体家族名。 |
+| int weight | 字体字重值，当字重值大于0时，表示此字体集只包含所指定字重的字体，当字重值等于0时，表示此字体集包含所有字体。 |
 
 

@@ -1,10 +1,12 @@
 # InputEventInterceptResult
 
-输入事件拦截结果接口，用于监听器回调[InputEventListener]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_返回是否拦截的决策。
+输入事件拦截结果接口，用于监听器回调[InputEventListener](arkts-arkui-inputeventlistener-t.md#InputEventListener)返回是否拦截的决策。
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare interface InputEventInterceptResult--><!--Device-unnamed-declare interface InputEventInterceptResult-End-->
 
@@ -23,6 +25,8 @@ action: InputEventInterceptAction
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

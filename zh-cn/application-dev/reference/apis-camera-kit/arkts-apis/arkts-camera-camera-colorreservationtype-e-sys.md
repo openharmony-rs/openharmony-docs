@@ -2,9 +2,11 @@
 
 Enumerates the color reservation types.
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-camera-enum ColorReservationType--><!--Device-camera-enum ColorReservationType-End-->
 
@@ -20,9 +22,11 @@ NONE = 0
 
 No color reservation.
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ColorReservationType-NONE = 0--><!--Device-ColorReservationType-NONE = 0-End-->
 
@@ -38,9 +42,11 @@ PORTRAIT = 1
 
 Portrait color reservation.
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ColorReservationType-PORTRAIT = 1--><!--Device-ColorReservationType-PORTRAIT = 1-End-->
 

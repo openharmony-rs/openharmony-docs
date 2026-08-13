@@ -1,16 +1,24 @@
 # getNotificationParameters
 
+## 导入模块
+
+```TypeScript
+import { notificationManager } from '@kit.NotificationKit';
+```
+
 ## getNotificationParameters
 
 ```TypeScript
 function getNotificationParameters(id: number, label?: string): Promise<NotificationParameters>
 ```
 
-获取通知[NotificationRequest]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_中wantAgent字段的部分信息。使用Promise异 步回调。
+获取通知[NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md#NotificationRequest)中wantAgent字段的部分信息。使用Promise异 步回调。
 
 **起始版本：** 24
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -23,7 +31,7 @@ function getNotificationParameters(id: number, label?: string): Promise<Notifica
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | id | number | 是 | 通知ID，用于标识目标通知。该值由发布通知时NotificationRequest的id字段指定。 |
-| label | string | 否 | 通知标签，默认为空。该值由发布通知时NotificationRequest的label字段指定。   - 若标签为空，则获取与指定通知ID匹配，标签为空的已发布通知的部分信息。   - 若标签不为空，则获取与指定通知ID和标签同时匹配的已发布通知的部分信息。 |
+| label | string | 否 | 通知标签，默认为空。该值由发布通知时NotificationRequest的label字段指定。 - 若标签为空，则获取与指定通知ID匹配，标签为空的已发布通知的部分信息。 - 若标签不为空，则获取与指定通知ID和标签同时匹配的已发布通知的部分信息。 |
 
 **返回值：**
 
@@ -40,7 +48,7 @@ function getNotificationParameters(id: number, label?: string): Promise<Notifica
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [1600007](../errorcode-notification.md#1600007-通知不存在) | The notification does not exist. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -48,7 +56,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let id: number = 0;
-let label: string = "";
+let label: string = '';
 notificationManager.getNotificationParameters(id, label).then((data: notificationManager.NotificationParameters) => {
   console.info(`Succeeded in getting notification parameters, data is ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
@@ -62,7 +70,7 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let id: int = 0;
-let label: string = "";
+let label: string = '';
 notificationManager.getNotificationParameters(id, label).then((data: notificationManager.NotificationParameters | null) => {
   console.info(`Succeeded in getting notification parameters, data is ${JSON.stringify(data)}`);
 }).catch((err: Error): void => {
@@ -78,11 +86,13 @@ notificationManager.getNotificationParameters(id, label).then((data: notificatio
 function getNotificationParameters(id: int, label?: string): Promise<NotificationParameters | null>
 ```
 
-获取通知[NotificationRequest]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_中wantAgent字段的部分信息。使用Promise异 步回调。
+获取通知[NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md#NotificationRequest)中wantAgent字段的部分信息。使用Promise异 步回调。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -95,7 +105,7 @@ function getNotificationParameters(id: int, label?: string): Promise<Notificatio
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | id | int | 是 | 通知ID，用于标识目标通知。该值由发布通知时NotificationRequest的id字段指定。 |
-| label | string | 否 | 通知标签，默认为空。该值由发布通知时NotificationRequest的label字段指定。   - 若标签为空，则获取与指定通知ID匹配，标签为空的已发布通知的部分信息。   - 若标签不为空，则获取与指定通知ID和标签同时匹配的已发布通知的部分信息。 |
+| label | string | 否 | 通知标签，默认为空。该值由发布通知时NotificationRequest的label字段指定。 - 若标签为空，则获取与指定通知ID匹配，标签为空的已发布通知的部分信息。 - 若标签不为空，则获取与指定通知ID和标签同时匹配的已发布通知的部分信息。 |
 
 **返回值：**
 

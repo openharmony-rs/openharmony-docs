@@ -6,13 +6,15 @@
 function dumpJsRawHeapData(needGC?: boolean): Promise<string>
 ```
 
-Ϊ��ǰ�߳�ת���������ԭʼ�ѿ��գ������ɵ�rawheap��ʽ�ļ���ʹ��Promise�첽�ص���ɡ����ļ���ͨ��rawheap-translator����ת��Ϊheapsnapshot��ʽ�ļ����н����� > **ע��** > > ϵͳͨ���ýӿ�ת����ջ����Ĵ�����Դ������ϸ������˵���Ƶ�ʺʹ��������������ɵ��ļ���������ɾ���� > > �����ڿ�����ģʽ�µ��øýӿڣ����������������ƣ������õĿ�����ѡ��ش򿪲������豸�󼴿���Ч��
+为当前线程转储虚拟机的原始堆快照，并生成的rawheap格式文件，使用Promise异步回调完成。该文件可通过rawheap-translator工具转化为heapsnapshot格式文件进行解析。 > **注意** > > 系统通过该接口转存快照会消耗大量资源，因此严格限制了调用频率和次数。处理完生成的文件后，请立即删除。 > > 建议在开发者模式下调用该接口，可免除调用配额限制，当设置的开发者选项开关打开并重启设备后即可生效。
 
-**起始版本：** 18
+**起始版本：** 26.1.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为26.1.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-hidebug-function dumpJsRawHeapData(needGC?: boolean): Promise<string>--><!--Device-hidebug-function dumpJsRawHeapData(needGC?: boolean): Promise<string>-End-->
 
@@ -22,28 +24,28 @@ function dumpJsRawHeapData(needGC?: boolean): Promise<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| needGC | boolean | 否 | ת���ѿ���ǰ�Ƿ���ҪGC��true����ҪGC��false������GC��Ĭ��ֵ��true�� |
+| needGC | boolean | 否 | 转储堆快照前是否需要GC。true：需要GC。false：不需GC。默认值：true。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise���󣬷������ɵĿ����ļ�·���� |
+| Promise&lt;string&gt; | Promise对象，返回生成的快照文件路径。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [11400106](../errorcode-hiviewdfx-hidebug.md#11400106-配额超限) | Quota exceeded. |
-| [11400107](../errorcode-hiviewdfx-hidebug.md#11400107-dump子进程fork失败) | Fork operation failed. |
-| [11400108](../errorcode-hiviewdfx-hidebug.md#11400108-等待dump子进程结束失败) | Failed to wait for the child process to finish. |
 | [11400109](../errorcode-hiviewdfx-hidebug.md#11400109-等待dump子进程超时) | Timeout while waiting for the child process to finish. |
-| [11400110](../errorcode-hiviewdfx-hidebug.md#11400110-磁盘空间不足) | Disk remaining space too low. |
+| [11400108](../errorcode-hiviewdfx-hidebug.md#11400108-等待dump子进程结束失败) | Failed to wait for the child process to finish. |
 | [11400111](../errorcode-hiviewdfx-hidebug.md#11400111-napi接口调用失败) | Napi interface call exception. |
-| [11400112](../errorcode-hiviewdfx-hidebug.md#11400112-重复dump采集) | Repeated data dump. |
+| [11400110](../errorcode-hiviewdfx-hidebug.md#11400110-磁盘空间不足) | Disk remaining space too low. |
+| [11400107](../errorcode-hiviewdfx-hidebug.md#11400107-dump子进程fork失败) | Fork operation failed. |
+| [11400106](../errorcode-hiviewdfx-hidebug-trace.md#11400106-接口调用配额已超出) | Quota exceeded. |
 | [11400113](../errorcode-hiviewdfx-hidebug.md#11400113-创建dump文件失败) | Failed to create dump file. |
+| [11400112](../errorcode-hiviewdfx-hidebug.md#11400112-重复dump采集) | Repeated data dump. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -62,15 +64,17 @@ hidebug.dumpJsRawHeapData().then((filePath: string) => {
 function dumpJsRawHeapData(needGC: boolean, needClean: boolean): Promise<string>
 ```
 
-Ϊ��ǰ�߳�ת���������ԭʼ�ѿ��գ���֧�����nodeId���档���ɵ��ļ�Ϊrawheap��ʽ��ʹ��Promise�첽�ص���ɡ����ļ���ͨ��rawheap-translator����ת��Ϊheapsnapshot��ʽ�ļ����н����� > **ע��** > > ϵͳͨ���ýӿ�ת����ջ����Ĵ�����Դ������ϸ������˵���Ƶ�ʺʹ��������������ɵ��ļ���������ɾ���� > > �����ڿ�����ģʽ�µ��øýӿڣ����������������ƣ������õĿ�����ѡ��ش򿪲������豸�󼴿���Ч��
+为当前线程转储虚拟机的原始堆快照，并支持清除nodeId缓存。生成的文件为rawheap格式，使用Promise异步回调完成。该文件可通过rawheap-translator工具转化为heapsnapshot格式文件进行解析。 > **注意** > > 系统通过该接口转存快照会消耗大量资源，因此严格限制了调用频率和次数。处理完生成的文件后，请立即删除。 > > 建议在开发者模式下调用该接口，可免除调用配额限制，当设置的开发者选项开关打开并重启设备后即可生效。
 
-**起始版本：** 24
+**起始版本：** 26.1.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为24；ArkTS-Sta起始版本为26.1.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-hidebug-function dumpJsRawHeapData(needGC: boolean, needClean: boolean): Promise<string>--><!--Device-hidebug-function dumpJsRawHeapData(needGC: boolean, needClean: boolean): Promise<string>-End-->
 
@@ -80,29 +84,29 @@ function dumpJsRawHeapData(needGC: boolean, needClean: boolean): Promise<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| needGC | boolean | 是 | ת���ѿ���ǰ�Ƿ���ҪGC��true����ҪGC��false������ҪGC�� |
-| needClean | boolean | 是 | ת���ѿ���ǰ�Ƿ���Ҫ���nodeId��true����Ҫ�����false������Ҫ����� |
+| needGC | boolean | 是 | 转储堆快照前是否需要GC。true：需要GC；false：不需要GC。 |
+| needClean | boolean | 是 | 转储堆快照前是否需要清除nodeId。true：需要清除；false：不需要清除。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise���󣬷������ɵĿ����ļ�·���� |
+| Promise&lt;string&gt; | Promise对象，返回生成的快照文件路径。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [11400106](../errorcode-hiviewdfx-hidebug.md#11400106-配额超限) | Quota exceeded. |
-| [11400107](../errorcode-hiviewdfx-hidebug.md#11400107-dump子进程fork失败) | Fork operation failed. |
-| [11400108](../errorcode-hiviewdfx-hidebug.md#11400108-等待dump子进程结束失败) | Failed to wait for the child process to finish. |
 | [11400109](../errorcode-hiviewdfx-hidebug.md#11400109-等待dump子进程超时) | Timeout while waiting for the child process to finish. |
-| [11400110](../errorcode-hiviewdfx-hidebug.md#11400110-磁盘空间不足) | Disk remaining space too low. |
+| [11400108](../errorcode-hiviewdfx-hidebug.md#11400108-等待dump子进程结束失败) | Failed to wait for the child process to finish. |
 | [11400111](../errorcode-hiviewdfx-hidebug.md#11400111-napi接口调用失败) | Napi interface call exception. |
-| [11400112](../errorcode-hiviewdfx-hidebug.md#11400112-重复dump采集) | Repeated data dump. |
+| [11400110](../errorcode-hiviewdfx-hidebug.md#11400110-磁盘空间不足) | Disk remaining space too low. |
+| [11400107](../errorcode-hiviewdfx-hidebug.md#11400107-dump子进程fork失败) | Fork operation failed. |
+| [11400106](../errorcode-hiviewdfx-hidebug-trace.md#11400106-接口调用配额已超出) | Quota exceeded. |
 | [11400113](../errorcode-hiviewdfx-hidebug.md#11400113-创建dump文件失败) | Failed to create dump file. |
+| [11400112](../errorcode-hiviewdfx-hidebug.md#11400112-重复dump采集) | Repeated data dump. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -122,11 +126,13 @@ hidebug.dumpJsRawHeapData(true, true).then((filePath: string) => {
 function dumpJsRawHeapData(needGC: boolean, needClean: boolean, processDump: boolean): Promise<Array<string>>
 ```
 
-Ϊ��ǰ�̻߳����������������������ԭʼ�ѿ��գ���֧�����nodeId���棬���ɵ��ļ�Ϊrawheap��ʽ��ʹ��Promise�첽�ص����ļ���ͨ��rawheap-translator����ת��Ϊheapsnapshot��ʽ�ļ����н����� > **ע��** > > ϵͳͨ���ýӿ�ת�����ջ����Ĵ�����Դ������ϸ������˵���Ƶ�ʺʹ��������������ɵ��ļ���������ɾ���� > > �����ڿ�����ģʽ�µ��øýӿڣ����������������ƣ������õĿ�����ѡ��ش򿪲������豸�󼴿���Ч��
+为当前线程或其所属进程生成虚拟机的原始堆快照，并支持清除nodeId缓存，生成的文件为rawheap格式。使用Promise异步回调。文件可通过rawheap-translator工具转换为heapsnapshot格式文件进行解析。 > **注意** > > 系统通过该接口转储快照会消耗大量资源，因此严格限制了调用频率和次数。处理完生成的文件后，请立即删除。 > > 建议在开发者模式下调用该接口，可免除调用配额限制，当设置的开发者选项开关打开并重启设备后即可生效。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -140,30 +146,30 @@ function dumpJsRawHeapData(needGC: boolean, needClean: boolean, processDump: boo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| needGC | boolean | 是 | ת���ѿ���ǰ�Ƿ���ҪGC��true����ҪGC��false������ҪGC�� |
-| needClean | boolean | 是 | ת���ѿ���ǰ�Ƿ���Ҫ���nodeId��true����Ҫ�����false������Ҫ����� |
-| processDump | boolean | 是 | �Ƿ�ת����ǰ�߳��������̵�ԭʼ�ѿ��ա�true��ת����ǰ�߳��������̵�ԭʼ�ѿ��ա� |
+| needGC | boolean | 是 | 转储堆快照前是否需要GC。true：需要GC；false：不需要GC。 |
+| needClean | boolean | 是 | 转储堆快照前是否需要清除nodeId。true：需要清除；false：不需要清除。 |
+| processDump | boolean | 是 | 是否转储当前线程所属进程的原始堆快照。true：转储当前线程所属进程的原始堆快照。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise���󣬷������ɵĿ����ļ�·�����顣 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回生成的快照文件路径数组。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [11400106](../errorcode-hiviewdfx-hidebug.md#11400106-配额超限) | Quota exceeded. |
-| [11400107](../errorcode-hiviewdfx-hidebug.md#11400107-dump子进程fork失败) | Fork operation failed. |
-| [11400108](../errorcode-hiviewdfx-hidebug.md#11400108-等待dump子进程结束失败) | Failed to wait for the child process to finish. |
 | [11400109](../errorcode-hiviewdfx-hidebug.md#11400109-等待dump子进程超时) | Timeout while waiting for the child process to finish. |
-| [11400110](../errorcode-hiviewdfx-hidebug.md#11400110-磁盘空间不足) | Disk remaining space too low. |
+| [11400108](../errorcode-hiviewdfx-hidebug.md#11400108-等待dump子进程结束失败) | Failed to wait for the child process to finish. |
 | [11400111](../errorcode-hiviewdfx-hidebug.md#11400111-napi接口调用失败) | Napi interface call exception. |
-| [11400112](../errorcode-hiviewdfx-hidebug.md#11400112-重复dump采集) | Repeated data dump. |
+| [11400110](../errorcode-hiviewdfx-hidebug.md#11400110-磁盘空间不足) | Disk remaining space too low. |
+| [11400107](../errorcode-hiviewdfx-hidebug.md#11400107-dump子进程fork失败) | Fork operation failed. |
+| [11400106](../errorcode-hiviewdfx-hidebug-trace.md#11400106-接口调用配额已超出) | Quota exceeded. |
 | [11400113](../errorcode-hiviewdfx-hidebug.md#11400113-创建dump文件失败) | Failed to create dump file. |
+| [11400112](../errorcode-hiviewdfx-hidebug.md#11400112-重复dump采集) | Repeated data dump. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { hidebug } from '@kit.PerformanceAnalysisKit';

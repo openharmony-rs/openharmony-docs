@@ -8,9 +8,11 @@ function createShareServiceStub(instance: ShareCenter): Promise<rpc.RemoteObject
 
 根据ShareCenter类的实例创建对应的RemoteObject对象，系统内部通过该对象调用ShareCenter的实现接口，使用Promise异步回调。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-cloudExtension-function createShareServiceStub(instance: ShareCenter): Promise<rpc.RemoteObject>--><!--Device-cloudExtension-function createShareServiceStub(instance: ShareCenter): Promise<rpc.RemoteObject>-End-->
 
@@ -22,7 +24,7 @@ function createShareServiceStub(instance: ShareCenter): Promise<rpc.RemoteObject
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| instance | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | ShareCenter类的实例。 |
+| instance | [ShareCenter](arkts-arkdata-cloudextension-sharecenter-i-sys.md) | 是 | ShareCenter类的实例。 |
 
 **返回值：**
 
@@ -30,7 +32,7 @@ function createShareServiceStub(instance: ShareCenter): Promise<rpc.RemoteObject
 | --- | --- |
 | Promise&lt;rpc.RemoteObject&gt; | Promise对象，返回ShareCenter的RemoteObject对象。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

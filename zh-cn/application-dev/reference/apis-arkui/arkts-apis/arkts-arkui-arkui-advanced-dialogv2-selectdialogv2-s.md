@@ -6,7 +6,7 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @ComponentV2
+**废弃版本：** -1
 
 <!--Device-unnamed-export declare struct SelectDialogV2--><!--Device-unnamed-export declare struct SelectDialogV2-End-->
 
@@ -15,31 +15,33 @@
 ## confirm
 
 ```TypeScript
-confirm?: AdvancedDialogV2Button
+@Param
+  confirm?: AdvancedDialogV2Button
 ```
 
 选择弹出框底部按钮。 默认不显示。
 
-**类型：** AdvancedDialogV2Button
+**类型：** [AdvancedDialogV2Button](arkts-arkui-arkui-advanced-dialogv2-advanceddialogv2button-c.md)
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @Param
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SelectDialogV2-confirm?: AdvancedDialogV2Button--><!--Device-SelectDialogV2-confirm?: AdvancedDialogV2Button-End-->
+<!--Device-SelectDialogV2-@Param  confirm?: AdvancedDialogV2Button--><!--Device-SelectDialogV2-@Param  confirm?: AdvancedDialogV2Button-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## content
 
 ```TypeScript
-content?: ResourceStr
+@Param
+  content?: ResourceStr
 ```
 
 选择弹出框内容。默认不显示。
@@ -50,20 +52,22 @@ content?: ResourceStr
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @Param
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SelectDialogV2-content?: ResourceStr--><!--Device-SelectDialogV2-content?: ResourceStr-End-->
+<!--Device-SelectDialogV2-@Param  content?: ResourceStr--><!--Device-SelectDialogV2-@Param  content?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## radioContent
 
 ```TypeScript
-radioContent: SheetInfo[]
+@Require
+  @Param
+  radioContent: SheetInfo[]
 ```
 
 选择弹出框的子项内容列表，每个选择项支持设置文本和选中的回调事件。
@@ -74,20 +78,21 @@ radioContent: SheetInfo[]
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @Require、@Param
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SelectDialogV2-radioContent: SheetInfo[]--><!--Device-SelectDialogV2-radioContent: SheetInfo[]-End-->
+<!--Device-SelectDialogV2-@Require  @Param  radioContent: SheetInfo[]--><!--Device-SelectDialogV2-@Require  @Param  radioContent: SheetInfo[]-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## selectedIndex
 
 ```TypeScript
-selectedIndex?: number
+@Param
+  selectedIndex?: number
 ```
 
 选择弹出框的选中项，基于0的索引（0表示第一个选项）。 默认值：-1，没有选中项。若设置数值不在取值范围，按没有选中项处理。 取值范围：小于选择弹出框的子项内容列表长度。
@@ -98,20 +103,22 @@ selectedIndex?: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @Param
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SelectDialogV2-selectedIndex?: number--><!--Device-SelectDialogV2-selectedIndex?: number-End-->
+<!--Device-SelectDialogV2-@Param  selectedIndex?: number--><!--Device-SelectDialogV2-@Param  selectedIndex?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## title
 
 ```TypeScript
-title: ResourceStr
+@Require
+  @Param
+  title: ResourceStr
 ```
 
 选择弹出框标题。 **说明：** 标题超过两行会显示“...”。
@@ -122,13 +129,13 @@ title: ResourceStr
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @Require、@Param
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-SelectDialogV2-title: ResourceStr--><!--Device-SelectDialogV2-title: ResourceStr-End-->
+<!--Device-SelectDialogV2-@Require  @Param  title: ResourceStr--><!--Device-SelectDialogV2-@Require  @Param  title: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

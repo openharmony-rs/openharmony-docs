@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-interface EmitterProperty--><!--Device-unnamed-interface EmitterProperty-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -18,11 +20,13 @@ annulusRegion?: ParticleAnnulusRegion
 
 环形发射器参数。需要对应index的发射器形状为环形才生效。
 
-**类型：** ParticleAnnulusRegion
+**类型：** [ParticleAnnulusRegion](arkts-arkui-particleannulusregion-i.md)
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,6 +50,8 @@ emitRate?: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -68,6 +74,8 @@ index : number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -84,11 +92,13 @@ position?: PositionT<number>
 
 发射器位置的数组，只支持number类型。 未传入时保持其当前的发射器位置。需传入两个有效参数，若其中一个为异常值，则position不生效。 x、y的取值范围：(-∞, +∞)。
 
-**类型：** PositionT&lt;number&gt;
+**类型：** [PositionT](arkts-arkui-positiont-t.md)&lt;number&gt;
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -106,11 +116,13 @@ size?: SizeT<number>
 
 发射窗口的大小，只支持number类型。 未传入时保持其当前发射窗口大小。需传入两个有效参数且都大于0，若其中一个为异常值，则size不生效。
 
-**类型：** SizeT&lt;number&gt;
+**类型：** [SizeT](arkts-arkui-sizet-t.md)&lt;number&gt;
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

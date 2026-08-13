@@ -2,9 +2,13 @@
 
 continueManager提供了应用跨端迁移的管理能力，如获取应用跨端迁移过程中快速拉起目标应用的结果。 > 本模块接口仅可在Stage模型下使用。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-declare namespace continueManager--><!--Device-unnamed-declare namespace continueManager-End-->
 
@@ -16,10 +20,10 @@ continueManager提供了应用跨端迁移的管理能力，如获取应用跨�
 
 | 名称 | 说明 |
 | --- | --- |
-| [off](arkts-ability-continuemanager-off-f.md#off) | 在应用快速拉起时，注销回调函数，不再获取快速拉起结果。使用callback异步回调。 |
-| [offPrepareContinue](arkts-ability-continuemanager-offpreparecontinue-f.md#offpreparecontinue) | Unregister prepareContinue event. |
-| [on](arkts-ability-continuemanager-on-f.md#on) | 在应用快速拉起时，注册回调函数以获取快速拉起结果。使用callback异步回调。 |
-| [onPrepareContinue](arkts-ability-continuemanager-onpreparecontinue-f.md#onpreparecontinue) | prepareContinue 事件，当在 continueType 中配置了“ContinueQuickStart”功能时，即可获取 |
+| [offPrepareContinue](arkts-ability-continuemanager-offpreparecontinue-f.md#offPrepareContinue) | Unregister prepareContinue event. |
+| off_prepareContinue | 在应用快速拉起时，注销回调函数，不再获取快速拉起结果。使用callback异步回调。 |
+| [onPrepareContinue](arkts-ability-continuemanager-onpreparecontinue-f.md#onPrepareContinue) | prepareContinue 事件，当在 continueType 中配置了“ContinueQuickStart”功能时，即可获取 |
+| on_prepareContinue | 在应用快速拉起时，注册回调函数以获取快速拉起结果。使用callback异步回调。 |
 
 ### 接口
 

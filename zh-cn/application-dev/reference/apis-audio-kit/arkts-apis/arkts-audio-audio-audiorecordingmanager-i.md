@@ -4,7 +4,9 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-audio-interface AudioRecordingManager--><!--Device-audio-interface AudioRecordingManager-End-->
 
@@ -20,7 +22,9 @@ enableSystemRecordController(show: boolean, config: SystemRecordControllerConfig
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -32,8 +36,8 @@ enableSystemRecordController(show: boolean, config: SystemRecordControllerConfig
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| show | boolean | 是 | 一个布尔值，指示是显示（true）还是隐藏(false)系统记录控制器面板 |
-| config | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 系统录像控制器面板配置 |
+| show | boolean | 是 | 一个布尔值，指示是显示（true）还是隐藏(false) 系统记录控制器面板 |
+| config | [SystemRecordControllerConfig](arkts-audio-audio-systemrecordcontrollerconfig-i.md) | 是 | 系统录像控制器面板配置 |
 
 **返回值：**
 

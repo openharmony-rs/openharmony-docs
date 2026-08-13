@@ -2,9 +2,11 @@
 
 ThemeControl将自定义Theme应用于App组件内，实现App组件风格跟随Theme切换。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-export declare class ThemeControl--><!--Device-unnamed-export declare class ThemeControl-End-->
 
@@ -13,18 +15,22 @@ ThemeControl将自定义Theme应用于App组件内，实现App组件风格跟随
 ## setDefaultTheme
 
 ```TypeScript
-static setDefaultTheme(theme: CustomTheme | undefined): void
+static setDefaultTheme(theme: CustomTheme): void
 ```
 
-将用户自定义Theme设置应用级默认主题，以实现应用风格跟随Theme切换。 需确保在页面build前执行。因运行于静态类型上下文中的ArkTS不存在全局作用域，因此需要在入口组件的static闭包或aboutToAppear生命周期函数中调用该接口。
+将用户自定义Theme设置应用级默认主题，以实现应用风格跟随Theme切换。若在页面中使用此接口设置应用级默认主题，需确保该接口在页面build前执行。若在UIAbility中使用此接口设置应用级默认主题，需确保该接口在 onWindowStageCreate阶段里windowStage. [loadContent](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)接口调用完成的回调函数中执行。详细代码可参考 [设置应用内组件自定义主题色](../../../ui/theme_skinning.md#设置应用内组件自定义主题色)。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ThemeControl-static setDefaultTheme(theme: CustomTheme | undefined): void--><!--Device-ThemeControl-static setDefaultTheme(theme: CustomTheme | undefined): void-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ThemeControl-static setDefaultTheme(theme: CustomTheme): void--><!--Device-ThemeControl-static setDefaultTheme(theme: CustomTheme): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -32,5 +38,5 @@ static setDefaultTheme(theme: CustomTheme | undefined): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| theme | \_\_\_MD\_LINK\_USD\_0\_\_\_ \| undefined | 是 |  |
+| theme | [CustomTheme](arkts-arkui-arkui-theme-customtheme-i.md) | 是 |  |
 

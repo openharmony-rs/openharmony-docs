@@ -6,7 +6,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [LightWeightSet](arkts-arkts-util-lightweightset-lightweightset-c.md) | LightWeightSet可用于存储一系列值的集合，存储元素中value值唯一。 |
+| [LightWeightSet](arkts-arkts-util-lightweightset-lightweightset-c.md) | LightWeightSet可用于存储一系列值，存储元素中value唯一。 |
 
 ### 类型
 

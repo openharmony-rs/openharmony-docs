@@ -1,10 +1,12 @@
 # File
 
-[UploadConfig]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_中的文件列表。
+[UploadConfig](arkts-basicservices-request-uploadconfig-i.md#UploadConfig)中的文件列表。
 
-**起始版本：** 6
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为6；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-request-interface File--><!--Device-request-interface File-End-->
 
@@ -20,9 +22,11 @@ multipart提交时，请求头中的文件名。
 
 **类型：** string
 
-**起始版本：** 6
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为6；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-File-filename: string--><!--Device-File-filename: string-End-->
 
@@ -38,9 +42,11 @@ multipart提交时，表单项目的名称，缺省为file。
 
 **类型：** string
 
-**起始版本：** 6
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为6；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-File-name: string--><!--Device-File-name: string-End-->
 
@@ -56,9 +62,11 @@ type: string
 
 **类型：** string
 
-**起始版本：** 6
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为6；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-File-type: string--><!--Device-File-type: string-End-->
 
@@ -74,9 +82,11 @@ uri: string
 
 **类型：** string
 
-**起始版本：** 6
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为6；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-File-uri: string--><!--Device-File-uri: string-End-->
 

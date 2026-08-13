@@ -4,7 +4,9 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-image-interface DecodingOptionsForThumbnail--><!--Device-image-interface DecodingOptionsForThumbnail-End-->
 
@@ -16,13 +18,15 @@
 generateThumbnailIfAbsent?: boolean
 ```
 
-指定图像无缩略图时是否生成缩略图。true表示生成，false表示不生成。默认值为true。 当图片文件中无缩略图且generateThumbnailIfAbsent为false时，返回undefined（抛出错误码 \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_）。
+指定图像无缩略图时是否生成缩略图。true表示生成，false表示不生成。默认值为true。 当图片文件中无缩略图且generateThumbnailIfAbsent为false时，返回undefined（抛出错误码 [7700303 图片不包含缩略图数据](../errorcode-image.md#7700303-图片不包含缩略图数据)）。
 
 **类型：** boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,7 +46,9 @@ maxGeneratedPixelDimension?: int
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

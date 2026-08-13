@@ -1,10 +1,12 @@
 # SwiperDynamicSyncSceneType
 
-Enum of SwiperDynamicSyncSceneType
+枚举值，表示动态帧率场景的类型。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-export const enum SwiperDynamicSyncSceneType--><!--Device-unnamed-export const enum SwiperDynamicSyncSceneType-End-->
 
@@ -16,13 +18,17 @@ Enum of SwiperDynamicSyncSceneType
 GESTURE = 0
 ```
 
-Scene type is GESTURE.
+手势操作场景。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-SwiperDynamicSyncSceneType-GESTURE = 0--><!--Device-SwiperDynamicSyncSceneType-GESTURE = 0-End-->
 
@@ -34,13 +40,17 @@ Scene type is GESTURE.
 ANIMATION = 1
 ```
 
-Scene type is ANIMATION.
+动画过渡场景。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-SwiperDynamicSyncSceneType-ANIMATION = 1--><!--Device-SwiperDynamicSyncSceneType-ANIMATION = 1-End-->
 

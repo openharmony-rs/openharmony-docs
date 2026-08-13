@@ -10,6 +10,8 @@ declare type ArcSliderTouchHandler = (event: TouchEvent) => void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-unnamed-declare type ArcSliderTouchHandler = (event: TouchEvent) => void--><!--Device-unnamed-declare type ArcSliderTouchHandler = (event: TouchEvent) => void-End-->
@@ -20,5 +22,5 @@ declare type ArcSliderTouchHandler = (event: TouchEvent) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 获得TouchEvent对象。  |
+| event | TouchEvent | 是 | 获得TouchEvent对象。 |
 

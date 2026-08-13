@@ -2,15 +2,22 @@
 
 ## 汇总
 
-### 函数
+### 类
 
 | 名称 | 说明 |
 | --- | --- |
-| [LazyColumnLayout](arkts-arkui-arkui-components-arklazycolumnlayout-lazycolumnlayout-f.md#lazycolumnlayout) | 定义LazyColumnLayout组件。 |
+| [LazyColumnLayoutAttribute](arkts-arkui-arkui-components-arklazycolumnlayout-lazycolumnlayoutattribute-c.md) | 定义懒加载列布局属性。 |
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
-| [LazyColumnLayoutAttribute](arkts-arkui-arkui-components-arklazycolumnlayout-lazycolumnlayoutattribute-i.md) | 定义懒列布局属性。 |
+| [LazyColumnLayoutInterface](arkts-arkui-arkui-components-arklazycolumnlayout-lazycolumnlayoutinterface-i.md) | 定义懒加载列布局组件。 |
+
+### 常量
+
+| 名称 | 说明 |
+| --- | --- |
+| [LazyColumnLayout](arkts-arkui-arkui-components-arklazycolumnlayout-con.md#LazyColumnLayout) | 定义懒式列布局组件。 |
+| [LazyColumnLayoutInstance](arkts-arkui-arkui-components-arklazycolumnlayout-con.md#LazyColumnLayoutInstance) | 定义懒加载列布局组件实例。 |
 

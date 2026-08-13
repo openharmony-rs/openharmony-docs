@@ -1,14 +1,16 @@
 # TextPickerTextStyle
 
-文本样式选项，继承自[PickerTextStyle]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+文本样式选项，继承自PickerTextStyle。
 
-**继承/实现关系：** TextPickerTextStyle extends [PickerTextStyle](../../apis-na/arkts-apis/arkts-na-component/common-pickertextstyle-i.md)
+**继承/实现关系：** TextPickerTextStyle extends PickerTextStyle
 
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
 
-<!--Device-unnamed-declare interface TextPickerTextStyle extends PickerTextStyle--><!--Device-unnamed-declare interface TextPickerTextStyle extends PickerTextStyle-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare interface TextPickerTextStyle--><!--Device-unnamed-declare interface TextPickerTextStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,13 +20,15 @@
 maxFontSize?: number | string | Resource
 ```
 
-设置文本最大显示字号，与minFontSize配合使用。当需要限制文本的最大显示尺寸以避免文本过大或需要实现字号自适应时传入此参数。 > **说明**：当设置minFontSize和maxFontSize时，font中的size将不生效。详细规则请参考Text组件的 > [maxFontSize]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_属性。
+设置文本最大显示字号，与minFontSize配合使用。当需要限制文本的最大显示尺寸以避免文本过大或需要实现字号自适应时传入此参数。 > **说明：**当设置minFontSize和maxFontSize时，font中的size将不生效。详细规则请参考Text组件的 > maxFontSize属性。
 
 **类型：** number \| string \| Resource
 
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,13 +44,15 @@ maxFontSize?: number | string | Resource
 minFontSize?: number | string | Resource
 ```
 
-设置文本最小显示字号，与maxFontSize配合使用。当需要限制文本的最小显示尺寸以避免文本过小或需要实现字号自适应时传入此参数。 > **说明**：当设置minFontSize和maxFontSize时，font中的size将不生效。默认最大行数为1，自适应高度方式为MIN\_FONT\_SIZE\_FIRST。详细 > 规则请参考Text组件的[minFontSize]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_属性。
+设置文本最小显示字号，与maxFontSize配合使用。当需要限制文本的最小显示尺寸以避免文本过小或需要实现字号自适应时传入此参数。 > **说明：**当设置minFontSize和maxFontSize时，font中的size将不生效。默认最大行数为1，自适应高度方式为MIN_FONT_SIZE_FIRST。详细 > 规则请参考Text组件的minFontSize属性。
 
 **类型：** number \| string \| Resource
 
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -62,13 +68,15 @@ minFontSize?: number | string | Resource
 overflow?: TextOverflow
 ```
 
-文本截断方式。当设置为MARQUEE时，该属性不生效。详细规则请参考Text组件的[textOverflow]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_属性。
+文本截断方式。当设置为MARQUEE时，该属性不生效。详细规则请参考Text组件的textOverflow属性。
 
 **类型：** TextOverflow
 
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

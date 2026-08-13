@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** [rpc.Parcelable](arkts-ipc-rpc-parcelable-i.md)
+**替代接口：** [Parcelable](arkts-ipc-rpc-parcelable-i.md#Parcelable)
 
 <!--Device-rpc-interface Sequenceable--><!--Device-rpc-interface Sequenceable-End-->
 
@@ -28,7 +28,7 @@ marshalling(dataOut: MessageParcel): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [rpc.Parcelable#marshalling](arkts-ipc-rpc-parcelable-i.md#marshalling)(dataOut:
+**替代接口：** [marshalling](arkts-ipc-rpc-parcelable-i.md#marshalling)(dataOut: MessageSequence)
 
 <!--Device-Sequenceable-marshalling(dataOut: MessageParcel): boolean--><!--Device-Sequenceable-marshalling(dataOut: MessageParcel): boolean-End-->
 
@@ -38,7 +38,7 @@ marshalling(dataOut: MessageParcel): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| dataOut | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 可序列对象将被封送到的MessageParcel对象。 |
+| dataOut | [MessageParcel](arkts-ipc-rpc-messageparcel-c.md) | 是 | 可序列对象将被封送到的MessageParcel对象。 |
 
 **返回值：**
 
@@ -46,7 +46,7 @@ marshalling(dataOut: MessageParcel): boolean
 | --- | --- |
 | boolean | true：封送成功，false：封送失败。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -98,7 +98,7 @@ unmarshalling(dataIn: MessageParcel): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [rpc.Parcelable#unmarshalling](arkts-ipc-rpc-parcelable-i.md#unmarshalling)(dataIn:
+**替代接口：** [unmarshalling](arkts-ipc-rpc-parcelable-i.md#unmarshalling)(dataIn: MessageSequence)
 
 <!--Device-Sequenceable-unmarshalling(dataIn: MessageParcel): boolean--><!--Device-Sequenceable-unmarshalling(dataIn: MessageParcel): boolean-End-->
 
@@ -108,7 +108,7 @@ unmarshalling(dataIn: MessageParcel): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| dataIn | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 已将可序列对象封送到其中的MessageParcel对象。 |
+| dataIn | [MessageParcel](arkts-ipc-rpc-messageparcel-c.md) | 是 | 已将可序列对象封送到其中的MessageParcel对象。 |
 
 **返回值：**
 
@@ -116,7 +116,7 @@ unmarshalling(dataIn: MessageParcel): boolean
 | --- | --- |
 | boolean | true：反序列化成功，false：反序列化失败。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';

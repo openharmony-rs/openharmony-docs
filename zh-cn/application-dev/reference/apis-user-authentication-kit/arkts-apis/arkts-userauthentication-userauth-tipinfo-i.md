@@ -8,7 +8,7 @@
 
 **废弃版本：** 11
 
-**替代接口：** [userAuth.AuthTipInfo](arkts-userauthentication-userauth-authtipinfo-i.md)
+**替代接口：** [AuthTipInfo](arkts-userauthentication-userauth-authtipinfo-i.md#AuthTipInfo)
 
 <!--Device-userAuth-interface TipInfo--><!--Device-userAuth-interface TipInfo-End-->
 
@@ -30,7 +30,7 @@ module: number
 
 **废弃版本：** 11
 
-**替代接口：** [userAuth.AuthTipInfo.tipType](arkts-userauthentication-userauth-authtipinfo-i.md#tiptype)
+**替代接口：** [tipType](arkts-userauthentication-userauth-authtipinfo-i.md#tipType)
 
 <!--Device-TipInfo-module: number--><!--Device-TipInfo-module: number-End-->
 
@@ -52,7 +52,7 @@ tip: number
 
 **废弃版本：** 11
 
-**替代接口：** [userAuth.AuthTipInfo.tipCode](arkts-userauthentication-userauth-authtipinfo-i.md#tipcode)
+**替代接口：** [tipCode](arkts-userauthentication-userauth-authtipinfo-i.md#tipCode)
 
 <!--Device-TipInfo-tip: number--><!--Device-TipInfo-tip: number-End-->
 

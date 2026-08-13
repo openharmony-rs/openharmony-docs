@@ -1,10 +1,12 @@
 # KeyCode
 
-按键编码。添加按键事件处理策略[addKeyEventPolicies]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_、删除按键事件处理策略 [removeKeyEventPolicies]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_、获取按键事件处理策略 [getKeyEventPolicies]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_和按键事件回调 [onKeyEvent]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_接口通过 按键编码映射到设备对应实际按键。
+按键编码。添加按键事件处理策略[addKeyEventPolicies](arkts-mdm-systemmanager-addkeyeventpolicies-f.md#addKeyEventPolicies)、删除按键事件处理策略 [removeKeyEventPolicies](arkts-mdm-systemmanager-removekeyeventpolicies-f.md#removeKeyEventPolicies)、获取按键事件处理策略 [getKeyEventPolicies](arkts-mdm-systemmanager-getkeyeventpolicies-f.md#getKeyEventPolicies)和按键事件回调 [onKeyEvent](../../apis-na/arkts-apis/arkts-na-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md#onKeyEvent)接口通过 按键编码映射到设备对应实际按键。
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-systemManager-enum KeyCode--><!--Device-systemManager-enum KeyCode-End-->
 
@@ -21,6 +23,8 @@ POWER = 0
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,6 +44,8 @@ VOLUME_UP = 1
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-KeyCode-VOLUME_UP = 1--><!--Device-KeyCode-VOLUME_UP = 1-End-->
@@ -57,6 +63,8 @@ VOLUME_DOWN = 2
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -76,6 +84,8 @@ BACK = 3
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-KeyCode-BACK = 3--><!--Device-KeyCode-BACK = 3-End-->
@@ -94,6 +104,8 @@ HOME = 4
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-KeyCode-HOME = 4--><!--Device-KeyCode-HOME = 4-End-->
@@ -111,6 +123,8 @@ RECENT = 5
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

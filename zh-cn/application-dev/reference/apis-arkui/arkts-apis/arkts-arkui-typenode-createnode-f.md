@@ -12,6 +12,8 @@ function createNode(context: UIContext, nodeType: 'Text'): Text
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -24,14 +26,14 @@ function createNode(context: UIContext, nodeType: 'Text'): Text
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'Text' | 是 | 创建Text类型的FrameNode节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Text类型的FrameNode节点。 |
+| Text | Text类型的FrameNode节点。 |
 
 
 ## createNode
@@ -46,6 +48,8 @@ function createNode(context: UIContext, nodeType: 'Column'): Column
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -58,14 +62,14 @@ function createNode(context: UIContext, nodeType: 'Column'): Column
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'Column' | 是 | 创建Column类型的FrameNode节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Column类型的FrameNode节点。 |
+| Column | Column类型的FrameNode节点。 |
 
 
 ## createNode
@@ -80,6 +84,8 @@ function createNode(context: UIContext, nodeType: 'Row'): Row
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -92,14 +98,14 @@ function createNode(context: UIContext, nodeType: 'Row'): Row
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'Row' | 是 | 创建Row类型的FrameNode节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Row类型的FrameNode节点。 |
+| Row | Row类型的FrameNode节点。 |
 
 
 ## createNode
@@ -114,6 +120,8 @@ function createNode(context: UIContext, nodeType: 'Stack'): Stack
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -126,14 +134,14 @@ function createNode(context: UIContext, nodeType: 'Stack'): Stack
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'Stack' | 是 | 创建Stack类型的FrameNode节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Stack类型的FrameNode节点。 |
+| Stack | Stack类型的FrameNode节点。 |
 
 
 ## createNode
@@ -148,6 +156,8 @@ function createNode(context: UIContext, nodeType: 'GridRow'): GridRow
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -160,14 +170,14 @@ function createNode(context: UIContext, nodeType: 'GridRow'): GridRow
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'GridRow' | 是 | 创建GridRow类型的FrameNode节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | GridRow类型的FrameNode节点。 |
+| GridRow | GridRow类型的FrameNode节点。 |
 
 
 ## createNode
@@ -182,6 +192,8 @@ function createNode(context: UIContext, nodeType: 'GridCol'): GridCol
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -194,14 +206,14 @@ function createNode(context: UIContext, nodeType: 'GridCol'): GridCol
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'GridCol' | 是 | 创建GridCol类型的FrameNode节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | GridCol类型的FrameNode节点。 |
+| GridCol | GridCol类型的FrameNode节点。 |
 
 
 ## createNode
@@ -216,6 +228,8 @@ function createNode(context: UIContext, nodeType: 'Flex'): Flex
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -228,14 +242,14 @@ function createNode(context: UIContext, nodeType: 'Flex'): Flex
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'Flex' | 是 | 创建Flex类型的FrameNode节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Flex类型的FrameNode节点。 |
+| Flex | Flex类型的FrameNode节点。 |
 
 
 ## createNode
@@ -250,6 +264,8 @@ function createNode(context: UIContext, nodeType: 'Swiper'): Swiper
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -262,14 +278,14 @@ function createNode(context: UIContext, nodeType: 'Swiper'): Swiper
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'Swiper' | 是 | 创建Swiper类型的FrameNode节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Swiper类型的FrameNode节点。 |
+| Swiper | Swiper类型的FrameNode节点。 |
 
 
 ## createNode
@@ -284,6 +300,8 @@ function createNode(context: UIContext, nodeType: 'Progress'): Progress
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -296,14 +314,14 @@ function createNode(context: UIContext, nodeType: 'Progress'): Progress
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'Progress' | 是 | 创建Progress类型的FrameNode节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Progress类型的FrameNode节点。 |
+| Progress | Progress类型的FrameNode节点。 |
 
 
 ## createNode
@@ -318,6 +336,8 @@ function createNode(context: UIContext, nodeType: 'Scroll'): Scroll
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -330,14 +350,14 @@ function createNode(context: UIContext, nodeType: 'Scroll'): Scroll
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'Scroll' | 是 | 创建Scroll类型的FrameNode节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Scroll类型的FrameNode节点。 |
+| Scroll | Scroll类型的FrameNode节点。 |
 
 
 ## createNode
@@ -352,6 +372,8 @@ function createNode(context: UIContext, nodeType: 'RelativeContainer'): Relative
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -364,14 +386,14 @@ function createNode(context: UIContext, nodeType: 'RelativeContainer'): Relative
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'RelativeContainer' | 是 | 创建RelativeContainer类型的FrameNode节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | RelativeContainer类型的FrameNode节点。 |
+| RelativeContainer | RelativeContainer类型的FrameNode节点。 |
 
 
 ## createNode
@@ -386,6 +408,8 @@ function createNode(context: UIContext, nodeType: 'Divider'): Divider
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -398,14 +422,14 @@ function createNode(context: UIContext, nodeType: 'Divider'): Divider
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'Divider' | 是 | 创建Divider类型的FrameNode节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Divider类型的FrameNode节点。 |
+| Divider | Divider类型的FrameNode节点。 |
 
 
 ## createNode
@@ -420,6 +444,8 @@ function createNode(context: UIContext, nodeType: 'LoadingProgress'): LoadingPro
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -432,14 +458,14 @@ function createNode(context: UIContext, nodeType: 'LoadingProgress'): LoadingPro
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'LoadingProgress' | 是 | 创建LoadingProgress类型的FrameNode节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | LoadingProgress类型的FrameNode节点。 |
+| LoadingProgress | LoadingProgress类型的FrameNode节点。 |
 
 
 ## createNode
@@ -454,6 +480,8 @@ function createNode(context: UIContext, nodeType: 'Search'): Search
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -466,14 +494,14 @@ function createNode(context: UIContext, nodeType: 'Search'): Search
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'Search' | 是 | 创建Search类型的FrameNode节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Search类型的FrameNode节点。 |
+| Search | Search类型的FrameNode节点。 |
 
 
 ## createNode
@@ -488,6 +516,8 @@ function createNode(context: UIContext, nodeType: 'Blank'): Blank
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -500,14 +530,14 @@ function createNode(context: UIContext, nodeType: 'Blank'): Blank
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'Blank' | 是 | 创建Blank类型的FrameNode节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Blank类型的FrameNode节点。 |
+| Blank | Blank类型的FrameNode节点。 |
 
 
 ## createNode
@@ -522,6 +552,8 @@ function createNode(context: UIContext, nodeType: 'Image'): Image
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -534,14 +566,14 @@ function createNode(context: UIContext, nodeType: 'Image'): Image
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'Image' | 是 | 创建Image类型的节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Image类型的FrameNode节点。 |
+| Image | Image类型的FrameNode节点。 |
 
 
 ## createNode
@@ -556,6 +588,8 @@ function createNode(context: UIContext, nodeType: 'List'): List
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -568,14 +602,14 @@ function createNode(context: UIContext, nodeType: 'List'): List
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'List' | 是 | 创建List类型的节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | List类型的FrameNode节点。 |
+| List | List类型的FrameNode节点。 |
 
 
 ## createNode
@@ -590,6 +624,8 @@ function createNode(context: UIContext, nodeType: 'ListItem'): ListItem
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -602,14 +638,14 @@ function createNode(context: UIContext, nodeType: 'ListItem'): ListItem
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'ListItem' | 是 | 创建ListItem类型的节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | ListItem类型的FrameNode节点。 |
+| ListItem | ListItem类型的FrameNode节点。 |
 
 
 ## createNode
@@ -624,6 +660,8 @@ function createNode(context: UIContext, nodeType: 'TextInput'): TextInput
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -636,14 +674,14 @@ function createNode(context: UIContext, nodeType: 'TextInput'): TextInput
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'TextInput' | 是 | 创建TextInput类型的节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | TextInput类型的FrameNode节点。 |
+| TextInput | TextInput类型的FrameNode节点。 |
 
 
 ## createNode
@@ -658,6 +696,8 @@ function createNode(context: UIContext, nodeType: 'Button'): Button
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -670,14 +710,14 @@ function createNode(context: UIContext, nodeType: 'Button'): Button
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'Button' | 是 | 创建Button类型的节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Button类型的FrameNode节点。 |
+| Button | Button类型的FrameNode节点。 |
 
 
 ## createNode
@@ -692,6 +732,8 @@ function createNode(context: UIContext, nodeType: 'ListItemGroup'): ListItemGrou
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -704,14 +746,14 @@ function createNode(context: UIContext, nodeType: 'ListItemGroup'): ListItemGrou
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'ListItemGroup' | 是 | 创建ListItemGroup类型的节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | ListItemGroup类型的FrameNode节点。 |
+| ListItemGroup | ListItemGroup类型的FrameNode节点。 |
 
 
 ## createNode
@@ -726,6 +768,8 @@ function createNode(context: UIContext, nodeType: 'WaterFlow'): WaterFlow
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -738,14 +782,14 @@ function createNode(context: UIContext, nodeType: 'WaterFlow'): WaterFlow
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'WaterFlow' | 是 | 创建WaterFlow类型的节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | WaterFlow类型的FrameNode节点。 |
+| WaterFlow | WaterFlow类型的FrameNode节点。 |
 
 
 ## createNode
@@ -760,6 +804,8 @@ function createNode(context: UIContext, nodeType: 'FlowItem'): FlowItem
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -772,14 +818,14 @@ function createNode(context: UIContext, nodeType: 'FlowItem'): FlowItem
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'FlowItem' | 是 | 创建FlowItem类型的节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | FlowItem类型的FrameNode节点。 |
+| FlowItem | FlowItem类型的FrameNode节点。 |
 
 
 ## createNode
@@ -794,6 +840,8 @@ function createNode(context: UIContext, nodeType: 'XComponent'): XComponent
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -806,14 +854,14 @@ function createNode(context: UIContext, nodeType: 'XComponent'): XComponent
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'XComponent' | 是 | 创建XComponent类型的节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | XComponent类型的FrameNode节点。 |
+| XComponent | XComponent类型的FrameNode节点。 |
 
 
 ## createNode
@@ -828,6 +876,8 @@ function createNode(context: UIContext, nodeType: 'XComponent', options: XCompon
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -840,15 +890,15 @@ function createNode(context: UIContext, nodeType: 'XComponent', options: XCompon
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'XComponent' | 是 | 创建XComponent类型的节点。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 定义XComponent的具体配置参数。 |
+| options | XComponentOptions | 是 | 定义XComponent的具体配置参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | XComponent类型的FrameNode节点。 |
+| XComponent | XComponent类型的FrameNode节点。 |
 
 
 ## createNode
@@ -863,6 +913,8 @@ function createNode(context: UIContext, nodeType: 'XComponent', parameters: Nati
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
@@ -875,15 +927,15 @@ function createNode(context: UIContext, nodeType: 'XComponent', parameters: Nati
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'XComponent' | 是 | 创建XComponent类型的节点。 |
-| parameters | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 定义XComponent的具体配置参数。 |
+| parameters | NativeXComponentParameters | 是 | 定义XComponent的具体配置参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | XComponent类型的FrameNode节点。 |
+| XComponent | XComponent类型的FrameNode节点。 |
 
 
 ## createNode
@@ -898,6 +950,8 @@ function createNode(context: UIContext, nodeType: 'Checkbox'): Checkbox
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -910,14 +964,14 @@ function createNode(context: UIContext, nodeType: 'Checkbox'): Checkbox
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'Checkbox' | 是 | 创建Checkbox类型的节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Checkbox类型的FrameNode节点。 |
+| Checkbox | Checkbox类型的FrameNode节点。 |
 
 
 ## createNode
@@ -932,6 +986,8 @@ function createNode(context: UIContext, nodeType: 'CheckboxGroup'): CheckboxGrou
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -944,14 +1000,14 @@ function createNode(context: UIContext, nodeType: 'CheckboxGroup'): CheckboxGrou
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'CheckboxGroup' | 是 | 创建CheckboxGroup类型的节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | CheckboxGroup类型的FrameNode节点。 |
+| CheckboxGroup | CheckboxGroup类型的FrameNode节点。 |
 
 
 ## createNode
@@ -966,6 +1022,8 @@ function createNode(context: UIContext, nodeType: 'Radio'): Radio
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -978,14 +1036,14 @@ function createNode(context: UIContext, nodeType: 'Radio'): Radio
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'Radio' | 是 | 创建Radio类型的节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Radio类型的FrameNode节点。 |
+| Radio | Radio类型的FrameNode节点。 |
 
 
 ## createNode
@@ -1000,6 +1058,8 @@ function createNode(context: UIContext, nodeType: 'Rating'): Rating
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -1012,14 +1072,14 @@ function createNode(context: UIContext, nodeType: 'Rating'): Rating
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'Rating' | 是 | 创建Rating类型的节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Rating类型的FrameNode节点。 |
+| Rating | Rating类型的FrameNode节点。 |
 
 
 ## createNode
@@ -1034,6 +1094,8 @@ function createNode(context: UIContext, nodeType: 'Select'): Select
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -1046,14 +1108,14 @@ function createNode(context: UIContext, nodeType: 'Select'): Select
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'Select' | 是 | 创建Select类型的节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Select类型的FrameNode节点。 |
+| Select | Select类型的FrameNode节点。 |
 
 
 ## createNode
@@ -1068,6 +1130,8 @@ function createNode(context: UIContext, nodeType: 'Slider'): Slider
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -1080,14 +1144,14 @@ function createNode(context: UIContext, nodeType: 'Slider'): Slider
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'Slider' | 是 | 创建Slider类型的节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Slider类型的FrameNode节点。 |
+| Slider | Slider类型的FrameNode节点。 |
 
 
 ## createNode
@@ -1102,6 +1166,8 @@ function createNode(context: UIContext, nodeType: 'Toggle', options?: ToggleOpti
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -1114,15 +1180,15 @@ function createNode(context: UIContext, nodeType: 'Toggle', options?: ToggleOpti
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'Toggle' | 是 | 创建Toggle类型的节点。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 创建Toggle节点的接口参数，仅可通过ToggleOptions中的type属性设置开关样式。不传入该参数时，需通过initialize接口设置Toggle的type属性。 |
+| options | ToggleOptions | 否 | 创建Toggle节点的接口参数，仅可通过ToggleOptions中的type属性设置开关样式。不传入该参数时，需通过initialize接口设置 Toggle的type属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Toggle类型的FrameNode节点。 |
+| Toggle | Toggle类型的FrameNode节点。 |
 
 
 ## createNode
@@ -1137,6 +1203,8 @@ function createNode(context: UIContext, nodeType: 'Marquee'): Marquee
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
@@ -1149,14 +1217,14 @@ function createNode(context: UIContext, nodeType: 'Marquee'): Marquee
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'Marquee' | 是 | 创建Marquee类型的节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Marquee类型的FrameNode节点。 |
+| Marquee | Marquee类型的FrameNode节点。 |
 
 
 ## createNode
@@ -1171,6 +1239,8 @@ function createNode(context: UIContext, nodeType: 'TextArea'): TextArea
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
@@ -1183,14 +1253,14 @@ function createNode(context: UIContext, nodeType: 'TextArea'): TextArea
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'TextArea' | 是 | 创建TextArea类型的节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | TextArea类型的FrameNode节点。 |
+| TextArea | TextArea类型的FrameNode节点。 |
 
 
 ## createNode
@@ -1205,6 +1275,8 @@ function createNode(context: UIContext, nodeType: 'SymbolGlyph'): SymbolGlyph
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
@@ -1217,14 +1289,14 @@ function createNode(context: UIContext, nodeType: 'SymbolGlyph'): SymbolGlyph
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'SymbolGlyph' | 是 | 创建SymbolGlyph类型的节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | SymbolGlyph类型的FrameNode节点。 |
+| SymbolGlyph | SymbolGlyph类型的FrameNode节点。 |
 
 
 ## createNode
@@ -1239,6 +1311,8 @@ function createNode(context: UIContext, nodeType: 'QRCode'): QRCode
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
@@ -1251,14 +1325,14 @@ function createNode(context: UIContext, nodeType: 'QRCode'): QRCode
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'QRCode' | 是 | 创建QRCode类型的节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | QRCode类型的FrameNode节点。 |
+| QRCode | QRCode类型的FrameNode节点。 |
 
 
 ## createNode
@@ -1273,6 +1347,8 @@ function createNode(context: UIContext, nodeType: 'Badge'): Badge
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
@@ -1285,14 +1361,14 @@ function createNode(context: UIContext, nodeType: 'Badge'): Badge
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'Badge' | 是 | 创建Badge类型的节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Badge类型的FrameNode节点。 |
+| Badge | Badge类型的FrameNode节点。 |
 
 
 ## createNode
@@ -1307,6 +1383,8 @@ function createNode(context: UIContext, nodeType: 'TextClock'): TextClock
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
@@ -1319,14 +1397,14 @@ function createNode(context: UIContext, nodeType: 'TextClock'): TextClock
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'TextClock' | 是 | 创建TextClock类型的节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | TextClock类型的FrameNode节点。 |
+| TextClock | TextClock类型的FrameNode节点。 |
 
 
 ## createNode
@@ -1341,6 +1419,8 @@ function createNode(context: UIContext, nodeType: 'TextTimer'): TextTimer
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
@@ -1353,14 +1433,14 @@ function createNode(context: UIContext, nodeType: 'TextTimer'): TextTimer
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'TextTimer' | 是 | 创建TextTimer类型的节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | TextTimer类型的FrameNode节点。 |
+| TextTimer | TextTimer类型的FrameNode节点。 |
 
 
 ## createNode
@@ -1375,6 +1455,8 @@ function createNode(context: UIContext, nodeType: 'Grid'): Grid
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
@@ -1387,14 +1469,14 @@ function createNode(context: UIContext, nodeType: 'Grid'): Grid
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'Grid' | 是 | 创建Grid类型的节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Grid类型的FrameNode节点。 |
+| Grid | Grid类型的FrameNode节点。 |
 
 
 ## createNode
@@ -1409,6 +1491,8 @@ function createNode(context: UIContext, nodeType: 'GridItem'): GridItem
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
@@ -1421,12 +1505,12 @@ function createNode(context: UIContext, nodeType: 'GridItem'): GridItem
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建对应节点时所需的UI上下文。 |
+| context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | nodeType | 'GridItem' | 是 | 创建GridItem类型的节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | GridItem类型的FrameNode节点。 |
+| GridItem | GridItem类型的FrameNode节点。 |
 

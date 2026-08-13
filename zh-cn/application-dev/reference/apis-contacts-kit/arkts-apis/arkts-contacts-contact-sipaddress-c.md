@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 <!--Device-contact-class SipAddress--><!--Device-contact-class SipAddress-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
@@ -16,13 +18,15 @@
 static readonly CUSTOM_LABEL: 0
 ```
 
-自定义邮箱类型，默认值为0。
+自定义会话发起协议(SIP)地址类型，默认值为0。
 
 **类型：** 0
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -36,13 +40,15 @@ static readonly CUSTOM_LABEL: 0
 static readonly INVALID_LABEL_ID: -1
 ```
 
-无效邮箱类型，默认值为-1。
+无效会话发起协议(SIP)地址类型，默认值为-1。
 
 **类型：** -1
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -64,6 +70,8 @@ static readonly SIP_HOME: 1
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-SipAddress-static readonly SIP_HOME: 1--><!--Device-SipAddress-static readonly SIP_HOME: 1-End-->
@@ -83,6 +91,8 @@ static readonly SIP_OTHER: 3
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -104,6 +114,8 @@ static readonly SIP_WORK: 2
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-SipAddress-static readonly SIP_WORK: 2--><!--Device-SipAddress-static readonly SIP_WORK: 2-End-->
@@ -116,13 +128,15 @@ static readonly SIP_WORK: 2
 labelId?: number
 ```
 
-邮箱的类型。
+会话发起协议(SIP)地址类型。
 
 **类型：** number
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -136,13 +150,15 @@ labelId?: number
 labelName?: string
 ```
 
-邮箱的类型名称。
+会话发起协议(SIP)地址类型名称。
 
 **类型：** string
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -163,6 +179,8 @@ sipAddress: string
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

@@ -19,7 +19,7 @@ function updateConnectStatus(
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.distributedDeviceManager:distributedDeviceManager.DeviceManager.getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync)
+**替代接口：** [getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getAvailableDeviceListSync)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -33,10 +33,10 @@ function updateConnectStatus(
 | --- | --- | --- | --- |
 | token | number | 是 | 注册后的token。 |
 | deviceId | string | 是 | 设备ID。 |
-| status | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 设备连接状态。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数。当通知设备成功，err为undefined，否则返回错误对象。 |
+| status | [DeviceConnectState](arkts-ability-continuationmanager-deviceconnectstate-e.md) | 是 | 设备连接状态。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当通知设备成功，err为undefined，否则返回错误对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { continuationManager } from '@kit.AbilityKit';
@@ -67,7 +67,7 @@ function updateConnectStatus(token: number, deviceId: string, status: DeviceConn
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.distributedDeviceManager:distributedDeviceManager.DeviceManager.getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync)
+**替代接口：** [getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getAvailableDeviceListSync)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -81,7 +81,7 @@ function updateConnectStatus(token: number, deviceId: string, status: DeviceConn
 | --- | --- | --- | --- |
 | token | number | 是 | 注册后的token。 |
 | deviceId | string | 是 | 设备ID。 |
-| status | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 设备连接状态。 |
+| status | [DeviceConnectState](arkts-ability-continuationmanager-deviceconnectstate-e.md) | 是 | 设备连接状态。 |
 
 **返回值：**
 
@@ -89,7 +89,7 @@ function updateConnectStatus(token: number, deviceId: string, status: DeviceConn
 | --- | --- |
 | Promise&lt;void&gt; | Promise形式返回接口调用结果。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { continuationManager } from '@kit.AbilityKit';

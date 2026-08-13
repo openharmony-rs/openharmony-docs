@@ -2,11 +2,13 @@
 
 定义弧形字母索引条的初始化参数。
 
-**起始版本：** 26.0.0
+**起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-<!--Device-unnamed-export declare interface ArcAlphabetIndexerInitInfo--><!--Device-unnamed-export declare interface ArcAlphabetIndexerInitInfo-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare interface ArcAlphabetIndexerInitInfo--><!--Device-unnamed-declare interface ArcAlphabetIndexerInitInfo-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -20,11 +22,13 @@ arrayValue: string[]
 
 **类型：** string[]
 
-**起始版本：** 26.0.0
+**起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ArcAlphabetIndexerInitInfo-arrayValue: string[]--><!--Device-ArcAlphabetIndexerInitInfo-arrayValue: string[]-End-->
 
@@ -33,20 +37,22 @@ arrayValue: string[]
 ## selected
 
 ```TypeScript
-selected: int | Bindable<int>
+selected: number
 ```
 
-初始选中项索引值，若超出索引值范围，则取默认值0。 该参数支持\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_双向绑定变量。
+初始选中项索引值，若超出索引值范围，则取默认值0。 该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。
 
-**类型：** int \| Bindable&lt;int&gt;
+**类型：** number
 
-**起始版本：** 26.0.0
+**起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**废弃版本：** -1
 
-<!--Device-ArcAlphabetIndexerInitInfo-selected: int | Bindable<int>--><!--Device-ArcAlphabetIndexerInitInfo-selected: int | Bindable<int>-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ArcAlphabetIndexerInitInfo-selected: number--><!--Device-ArcAlphabetIndexerInitInfo-selected: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 

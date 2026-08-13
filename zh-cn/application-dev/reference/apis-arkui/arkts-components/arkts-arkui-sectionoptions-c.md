@@ -6,6 +6,8 @@ FlowItem分组配置信息。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare class SectionOptions--><!--Device-unnamed-declare class SectionOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -16,13 +18,15 @@ FlowItem分组配置信息。
 columnsGap?: Dimension
 ```
 
-该分组的列间距，不设置该参数时默认使用瀑布流的[columnsGap]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_，设置非法值时使用0vp。
+该分组的列间距，不设置该参数时默认使用瀑布流的columnsGap，设置非法值时使用0vp。
 
 **类型：** Dimension
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -48,6 +52,8 @@ crossCount?: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -69,6 +75,8 @@ itemsCount: number
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -94,6 +102,8 @@ margin?: Margin | Dimension
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -108,13 +118,15 @@ margin?: Margin | Dimension
 onGetItemMainSizeByIndex?: GetItemMainSizeByIndex
 ```
 
-瀑布流组件布局过程中获取指定index的FlowItem的主轴大小，纵向瀑布流时为高度，横向瀑布流时为宽度，单位vp。不设置时，瀑布流按FlowItem的常规测量结果确定主轴大小。 **说明：** 1. 同时使用onGetItemMainSizeByIndex和FlowItem的宽高属性时，主轴大小以onGetItemMainSizeByIndex返回结果为准，onGetItemMainSizeByIndex会覆盖FlowItem的主轴长度。 2. 使用onGetItemMainSizeByIndex可以提高瀑布流跳转到指定位置或index时的效率，避免混用设置onGetItemMainSizeByIndex和未设置的分组，否则会导致布局异常。 3. onGetItemMainSizeByIndex返回负数时，FlowItem主轴大小为0。 4. 如果FlowItem主轴大小会随数据动态变化，应保证onGetItemMainSizeByIndex返回值与数据源保持一致。使用\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_时，数据变化后应调用[onDataChange]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_、[onDataReloaded]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_或[onDatasetChange]\_\_\_JSDOC\_LINK\_DESC\_USD\_4\_\_\_等方法通知框架数据已变化；使用\_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_时，应按Repeat的数据更新规则修改状态数组。
+瀑布流组件布局过程中获取指定index的FlowItem的主轴大小，纵向瀑布流时为高度，横向瀑布流时为宽度，单位vp。不设置时，瀑布流按FlowItem的常规测量结果确定主轴大小。 **说明：** 1. 同时使用onGetItemMainSizeByIndex和FlowItem的宽高属性时，主轴大小以onGetItemMainSizeByIndex返回结果为准，onGetItemMainSizeByIndex会覆盖FlowItem的主轴长度。 2. 使用onGetItemMainSizeByIndex可以提高瀑布流跳转到指定位置或index时的效率，避免混用设置onGetItemMainSizeByIndex和未设置的分组，否则会导致布局异常。 3. onGetItemMainSizeByIndex返回负数时，FlowItem主轴大小为0。 4. 如果FlowItem主轴大小会随数据动态变化，应保证onGetItemMainSizeByIndex返回值与数据源保持一致。使用[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)时，数据变化后应调用onDataChange、onDataReloaded或onDatasetChange等方法通知框架数据已变化；使用[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)时，应按Repeat的数据更新规则修改状态数组。
 
-**类型：** GetItemMainSizeByIndex
+**类型：** [GetItemMainSizeByIndex](arkts-arkui-getitemmainsizebyindex-t.md)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -130,13 +142,15 @@ onGetItemMainSizeByIndex?: GetItemMainSizeByIndex
 rowsGap?: Dimension
 ```
 
-该分组的行间距，不设置该参数时默认使用瀑布流的[rowsGap]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_，设置非法值时使用0vp。
+该分组的行间距，不设置该参数时默认使用瀑布流的rowsGap，设置非法值时使用0vp。
 
 **类型：** Dimension
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

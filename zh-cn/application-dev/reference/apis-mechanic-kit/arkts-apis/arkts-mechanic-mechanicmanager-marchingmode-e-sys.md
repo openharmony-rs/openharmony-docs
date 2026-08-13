@@ -4,7 +4,9 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-mechanicManager-export enum MarchingMode--><!--Device-mechanicManager-export enum MarchingMode-End-->
 
@@ -22,7 +24,9 @@ TURN_THEN_MOVE = 0
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-MarchingMode-TURN_THEN_MOVE = 0--><!--Device-MarchingMode-TURN_THEN_MOVE = 0-End-->
 
@@ -40,7 +44,9 @@ TURNING_MOVING = 1
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-MarchingMode-TURNING_MOVING = 1--><!--Device-MarchingMode-TURNING_MOVING = 1-End-->
 

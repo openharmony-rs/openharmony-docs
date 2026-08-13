@@ -14,7 +14,7 @@ export function getPreferredLanguageList(): Array<string>
 
 **废弃版本：** 9
 
-**替代接口：** [i18n.System.getPreferredLanguageList](arkts-localization-i18n-system-c.md#getpreferredlanguagelist)
+**替代接口：** [getPreferredLanguageList](arkts-localization-i18n-system-c.md#getPreferredLanguageList)
 
 <!--Device-i18n-export function getPreferredLanguageList(): Array<string>--><!--Device-i18n-export function getPreferredLanguageList(): Array<string>-End-->
 

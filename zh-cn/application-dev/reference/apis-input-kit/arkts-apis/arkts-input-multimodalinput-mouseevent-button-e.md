@@ -2,9 +2,11 @@
 
 鼠标按键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-export declare enum Button--><!--Device-unnamed-export declare enum Button-End-->
 
@@ -18,9 +20,11 @@ LEFT = 0
 
 鼠标左键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Button-LEFT = 0--><!--Device-Button-LEFT = 0-End-->
 
@@ -34,9 +38,11 @@ MIDDLE = 1
 
 鼠标中键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Button-MIDDLE = 1--><!--Device-Button-MIDDLE = 1-End-->
 
@@ -50,9 +56,11 @@ RIGHT = 2
 
 鼠标右键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Button-RIGHT = 2--><!--Device-Button-RIGHT = 2-End-->
 
@@ -66,9 +74,11 @@ SIDE = 3
 
 鼠标侧边键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Button-SIDE = 3--><!--Device-Button-SIDE = 3-End-->
 
@@ -82,9 +92,11 @@ EXTRA = 4
 
 鼠标扩展键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Button-EXTRA = 4--><!--Device-Button-EXTRA = 4-End-->
 
@@ -98,9 +110,11 @@ FORWARD = 5
 
 鼠标前进键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Button-FORWARD = 5--><!--Device-Button-FORWARD = 5-End-->
 
@@ -114,9 +128,11 @@ BACK = 6
 
 鼠标后退键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Button-BACK = 6--><!--Device-Button-BACK = 6-End-->
 
@@ -130,9 +146,11 @@ TASK = 7
 
 鼠标任务键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Button-TASK = 7--><!--Device-Button-TASK = 7-End-->
 

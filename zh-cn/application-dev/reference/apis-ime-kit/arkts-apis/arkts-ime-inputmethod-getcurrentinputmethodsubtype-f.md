@@ -8,9 +8,11 @@ function getCurrentInputMethodSubtype(): InputMethodSubtype
 
 获取当前输入法的子类型。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-inputMethod-function getCurrentInputMethodSubtype(): InputMethodSubtype--><!--Device-inputMethod-function getCurrentInputMethodSubtype(): InputMethodSubtype-End-->
 
@@ -20,9 +22,9 @@ function getCurrentInputMethodSubtype(): InputMethodSubtype
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回当前输入法子类型对象。 |
+| [InputMethodSubtype](arkts-ime-inputmethodsubtype-i.md) | 返回当前输入法子类型对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { InputMethodSubtype } from '@kit.IMEKit';

@@ -9,7 +9,9 @@ type ReportCustomElementsChangeEvent = (actionType: ActionType, customType: Cust
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -21,7 +23,7 @@ type ReportCustomElementsChangeEvent = (actionType: ActionType, customType: Cust
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| actionType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 操作类型  |
-| customType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 自定义信息类型  |
-| customElement | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 自定义数据  |
+| actionType | ActionType | 是 | 操作类型 |
+| customType | [CustomType](arkts-avsession-avmusictemplate-customtype-t.md) | 是 | 自定义信息类型 |
+| customElement | [CustomElement](arkts-avsession-avmusictemplate-customelement-i.md) | 是 | 自定义数据 |
 

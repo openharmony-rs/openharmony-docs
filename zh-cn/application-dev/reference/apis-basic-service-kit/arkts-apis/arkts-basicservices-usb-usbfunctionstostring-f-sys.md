@@ -14,7 +14,7 @@ function usbFunctionsToString(funcs: FunctionType): string
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.usbFunctionsToString](arkts-basicservices-usbmanager-usbfunctionstostring-f-sys.md#usbfunctionstostring)
+**替代接口：** [usbFunctionsToString](arkts-basicservices-usbmanager-usbfunctionstostring-f-sys.md#usbFunctionsToString（系统接口）)
 
 <!--Device-usb-function usbFunctionsToString(funcs: FunctionType): string--><!--Device-usb-function usbFunctionsToString(funcs: FunctionType): string-End-->
 
@@ -26,7 +26,7 @@ function usbFunctionsToString(funcs: FunctionType): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| funcs | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 功能列表对应数字掩码。 |
+| funcs | FunctionType | 是 | 功能列表对应数字掩码。 |
 
 **返回值：**
 
@@ -34,7 +34,7 @@ function usbFunctionsToString(funcs: FunctionType): string
 | --- | --- |
 | string | 转化后的字符串形式的功能列表。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let funcs = usb.FunctionType.ACM | usb.FunctionType.ECM;

@@ -2,9 +2,11 @@
 
 Search direction.
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-mechanicManager-export enum SearchDirection--><!--Device-mechanicManager-export enum SearchDirection-End-->
 
@@ -20,9 +22,11 @@ DEFAULT = 0
 
 System Default Direction.
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SearchDirection-DEFAULT = 0--><!--Device-SearchDirection-DEFAULT = 0-End-->
 
@@ -38,9 +42,11 @@ LEFTWARD = 1
 
 Leftward direction. Also indicates clockwise direction.
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SearchDirection-LEFTWARD = 1--><!--Device-SearchDirection-LEFTWARD = 1-End-->
 
@@ -56,9 +62,11 @@ RIGHTWARD = 2
 
 Rightward direction. Also indicates the counterclockwise direction.
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SearchDirection-RIGHTWARD = 2--><!--Device-SearchDirection-RIGHTWARD = 2-End-->
 

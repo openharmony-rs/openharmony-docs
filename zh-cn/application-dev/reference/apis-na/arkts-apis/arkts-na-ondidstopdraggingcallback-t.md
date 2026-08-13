@@ -10,6 +10,8 @@ On scroll callback using in scrollable onDidStopDragging.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-export type OnDidStopDraggingCallback = (willFling: boolean) => void--><!--Device-unnamed-export type OnDidStopDraggingCallback = (willFling: boolean) => void-End-->
@@ -20,5 +22,5 @@ On scroll callback using in scrollable onDidStopDragging.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| willFling | boolean | 是 | whether start fling animation.  |
+| willFling | boolean | 是 | whether start fling animation. |
 

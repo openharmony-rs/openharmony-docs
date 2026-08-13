@@ -1,10 +1,12 @@
 # GradientMode
 
-枚举，输入法渐变模式。 | 名称 | 值 | 说明 | | ------------ | -- | ------------------ | | NONE | 0 | 不使用渐变模式。 | | LINEAR\_GRADIENT | 1 | 线性渐变。 |
+枚举，输入法渐变模式。 | 名称 | 值 | 说明 | | ------------ | -- | ------------------ | | NONE | 0 | 不使用渐变模式。 | | LINEAR_GRADIENT | 1 | 线性渐变。 |
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-inputMethodEngine-export enum GradientMode--><!--Device-inputMethodEngine-export enum GradientMode-End-->
 
@@ -18,9 +20,11 @@ NONE = 0
 
 不使用渐变模式。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-GradientMode-NONE = 0--><!--Device-GradientMode-NONE = 0-End-->
 
@@ -34,9 +38,11 @@ LINEAR_GRADIENT = 1
 
 线性渐变。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-GradientMode-LINEAR_GRADIENT = 1--><!--Device-GradientMode-LINEAR_GRADIENT = 1-End-->
 

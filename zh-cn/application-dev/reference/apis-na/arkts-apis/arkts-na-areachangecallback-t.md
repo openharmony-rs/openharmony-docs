@@ -10,6 +10,8 @@ Defines the options for the AreaChangeEvent.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-export declare type AreaChangeCallback = (oldValue: Area, newValue: Area) => void--><!--Device-unnamed-export declare type AreaChangeCallback = (oldValue: Area, newValue: Area) => void-End-->
@@ -20,6 +22,6 @@ Defines the options for the AreaChangeEvent.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| oldValue | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | Component area information before the change.  |
-| newValue | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | Component area information after the change.  |
+| oldValue | [Area](../../apis-arkui/arkts-apis/arkts-arkui-area-i.md) | 是 | Component area information before the change. |
+| newValue | [Area](../../apis-arkui/arkts-apis/arkts-arkui-area-i.md) | 是 | Component area information after the change. |
 

@@ -1,10 +1,14 @@
 # @ohos.data.uniformDataStruct
 
-本模块为统一数据管理框架（Unified Data Management Framework，UDMF）的组成部分，针对多对多跨应用数据共享的不同业务场景提供了部分标准化数据类型 [UniformDataType]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_对应的数据结构，方便不同应用间进行数据交互， 减少数据类型适配的工作量。
+本模块为统一数据管理框架（Unified Data Management Framework，UDMF）的组成部分，针对多对多跨应用数据共享的不同业务场景提供了部分标准化数据类型 [UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md#UniformDataType)对应的数据结构，方便不同应用间进行数据交互， 减少数据类型适配的工作量。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-declare namespace uniformDataStruct--><!--Device-unnamed-declare namespace uniformDataStruct-End-->
 

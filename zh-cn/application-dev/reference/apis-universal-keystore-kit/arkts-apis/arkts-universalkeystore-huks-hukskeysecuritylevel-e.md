@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 <!--Device-huks-export enum HuksKeySecurityLevel--><!--Device-huks-export enum HuksKeySecurityLevel-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
@@ -21,6 +23,8 @@ HUKS_KEY_SECURITY_LEVEL_TEE = 0
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
@@ -39,6 +43,8 @@ HUKS_KEY_SECURITY_LEVEL_SE = 1
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_SE_KEY
 

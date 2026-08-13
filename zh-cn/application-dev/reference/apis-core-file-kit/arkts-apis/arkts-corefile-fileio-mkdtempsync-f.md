@@ -14,7 +14,7 @@ declare function mkdtempSync(prefix: string): string
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.file.fs:mkdtempSync](arkts-corefile-fileio-mkdtempsync-f.md#mkdtempsync)
+**替代接口：** [mkdtempSync](arkts-corefile-file-fs-mkdtempsync-f.md#mkdtempSync)
 
 <!--Device-unnamed-declare function mkdtempSync(prefix: string): string--><!--Device-unnamed-declare function mkdtempSync(prefix: string): string-End-->
 

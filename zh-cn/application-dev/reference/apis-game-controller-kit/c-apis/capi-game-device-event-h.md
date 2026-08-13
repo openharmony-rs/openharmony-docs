@@ -32,7 +32,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [typedef void(\* GameDevice_DeviceMonitorCallback)(const struct GameDevice_DeviceEvent* deviceEvent)](# gamedevice_devicemonitorcallback) |  GameDevice_DeviceMonitorCallback | 定义{@link OH_GameDevice_RegisterDeviceMonitor}中使用的回调函数。当设备上线或下线时，该回调函数将被调用。 |
+| [typedef void (\*GameDevice_DeviceMonitorCallback)(const struct GameDevice_DeviceEvent* deviceEvent)](#gamedevice_devicemonitorcallback) | GameDevice_DeviceMonitorCallback | 定义{@link OH_GameDevice_RegisterDeviceMonitor}中使用的回调函数。当设备上线或下线时，该回调函数将被调用。 |
 | [GameController_ErrorCode OH_GameDevice_DeviceEvent_GetChangedType(const struct GameDevice_DeviceEvent* deviceEvent, GameDevice_StatusChangedType* statusChangedType)](#oh_gamedevice_deviceevent_getchangedtype) | - | 从设备状态变化事件中获取状态变化类型。 |
 | [GameController_ErrorCode OH_GameDevice_DeviceEvent_GetDeviceInfo(const struct GameDevice_DeviceEvent* deviceEvent, GameDevice_DeviceInfo** deviceInfo)](#oh_gamedevice_deviceevent_getdeviceinfo) | - | 从设备状态变化事件中获取设备信息。 |
 | [GameController_ErrorCode OH_GameDevice_DestroyDeviceInfo(GameDevice_DeviceInfo** deviceInfo)](#oh_gamedevice_destroydeviceinfo) | - | 销毁设备信息实例。 |
@@ -82,10 +82,10 @@ enum GameDevice_DeviceType
 
 ## 函数说明
 
-###  GameDevice_DeviceMonitorCallback()
+### GameDevice_DeviceMonitorCallback()
 
 ```c
-typedef void(* GameDevice_DeviceMonitorCallback)(const struct GameDevice_DeviceEvent* deviceEvent)
+typedef void (*GameDevice_DeviceMonitorCallback)(const struct GameDevice_DeviceEvent* deviceEvent)
 ```
 
 **描述**
@@ -149,6 +149,11 @@ GameController_ErrorCode OH_GameDevice_DeviceEvent_GetDeviceInfo(const struct Ga
 | 类型 | 说明 |
 | -- | -- |
 | [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数deviceEvent为null，返回<br>     [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
+
+**参考：**
+
+[OH_GameDevice_DestroyDeviceInfo](capi-game-device-event-h.md#oh_gamedevice_destroydeviceinfo) 销毁设备信息实例。
+
 
 ### OH_GameDevice_DestroyDeviceInfo()
 

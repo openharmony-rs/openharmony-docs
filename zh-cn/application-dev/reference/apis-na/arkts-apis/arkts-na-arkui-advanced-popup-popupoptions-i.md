@@ -6,6 +6,8 @@ PopupOptions定义Popup的具体样式参数。
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-export interface PopupOptions--><!--Device-unnamed-export interface PopupOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -26,6 +28,8 @@ buttons?: [
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -49,6 +53,8 @@ direction?: Direction
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PopupOptions-direction?: Direction--><!--Device-PopupOptions-direction?: Direction-End-->
@@ -63,11 +69,13 @@ icon?: PopupIconOptions
 
 设置popup图标。 **说明：** 当width和height设置异常值或0时不显示。 默认不显示图标。
 
-**类型：** PopupIconOptions
+**类型：** [PopupIconOptions](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-popup-popupiconoptions-i.md)
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -81,7 +89,7 @@ icon?: PopupIconOptions
 maxWidth?: Dimension
 ```
 
-设置popup的最大宽度，通过此接口popup可以自定义宽度显示。 **说明：** 1. 在使用引用资源类型时，规定其参数类型要与属性方法本身类型一致。 2. maxWidth是数字类型，支持float和integer，例如\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_、\_\_\_INLINE\_CODE\_DESC\_USD\_1\_\_\_。 3. 当类型为Resource时，如果未设置单位，默认单位为px。 默认值：400vp
+设置popup的最大宽度，通过此接口popup可以自定义宽度显示。 **说明：** 1. 在使用引用资源类型时，规定其参数类型要与属性方法本身类型一致。 2. maxWidth是数字类型，支持float和integer，例如`\$r('app.float.maxWidth')`、`\$r('app.integer.maxWidth')`。 3. 当类型为Resource时，如果未设置单位，默认单位为px。 默认值：400vp
 
 **类型：** Dimension
 
@@ -90,6 +98,8 @@ maxWidth?: Dimension
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -105,11 +115,13 @@ message?: PopupTextOptions
 
 设置popup内容文本。 **说明：** message不支持设置fontWeight。 默认不显示内容文本。 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。 **ArkTS-Sta起始版本：** 23
 
-**类型：** PopupTextOptions
+**类型：** [PopupTextOptions](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-popup-popuptextoptions-i.md)
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -130,6 +142,8 @@ onClose?: VoidCallback
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -153,6 +167,8 @@ showClose?: boolean | Resource
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PopupOptions-showClose?: boolean | Resource--><!--Device-PopupOptions-showClose?: boolean | Resource-End-->
@@ -167,11 +183,13 @@ title?: PopupTextOptions
 
 设置popup标题文本。 默认不显示标题文本。
 
-**类型：** PopupTextOptions
+**类型：** [PopupTextOptions](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-popup-popuptextoptions-i.md)
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

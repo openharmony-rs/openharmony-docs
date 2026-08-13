@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager#SlotLevel
+**替代接口：** [SlotLevel](arkts-notification-notificationmanager-slotlevel-e.md#SlotLevel)
 
 <!--Device-notification-export enum SlotLevel--><!--Device-notification-export enum SlotLevel-End-->
 
@@ -28,7 +28,7 @@ LEVEL_NONE = 0
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager.SlotLevel#LEVEL_NONE
+**替代接口：** [LEVEL_NONE](arkts-notification-notificationmanager-slotlevel-e.md#LEVEL_NONE)
 
 <!--Device-SlotLevel-LEVEL_NONE = 0--><!--Device-SlotLevel-LEVEL_NONE = 0-End-->
 
@@ -48,7 +48,7 @@ LEVEL_MIN = 1
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager.SlotLevel#LEVEL_MIN
+**替代接口：** [LEVEL_MIN](arkts-notification-notificationmanager-slotlevel-e.md#LEVEL_MIN)
 
 <!--Device-SlotLevel-LEVEL_MIN = 1--><!--Device-SlotLevel-LEVEL_MIN = 1-End-->
 
@@ -68,7 +68,7 @@ LEVEL_LOW = 2
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager.SlotLevel#LEVEL_LOW
+**替代接口：** [LEVEL_LOW](arkts-notification-notificationmanager-slotlevel-e.md#LEVEL_LOW)
 
 <!--Device-SlotLevel-LEVEL_LOW = 2--><!--Device-SlotLevel-LEVEL_LOW = 2-End-->
 
@@ -88,7 +88,7 @@ LEVEL_DEFAULT = 3
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager.SlotLevel#LEVEL_DEFAULT
+**替代接口：** [LEVEL_DEFAULT](arkts-notification-notificationmanager-slotlevel-e.md#LEVEL_DEFAULT)
 
 <!--Device-SlotLevel-LEVEL_DEFAULT = 3--><!--Device-SlotLevel-LEVEL_DEFAULT = 3-End-->
 
@@ -108,7 +108,7 @@ LEVEL_HIGH = 4
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager.SlotLevel#LEVEL_HIGH
+**替代接口：** [LEVEL_HIGH](arkts-notification-notificationmanager-slotlevel-e.md#LEVEL_HIGH)
 
 <!--Device-SlotLevel-LEVEL_HIGH = 4--><!--Device-SlotLevel-LEVEL_HIGH = 4-End-->
 

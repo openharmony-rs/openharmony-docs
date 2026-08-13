@@ -6,9 +6,11 @@ export type SizeUpdateCallback = (size: window.Size, keyboardArea: KeyboardArea)
 
 当输入法面板大小变化时触发的回调。
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-inputMethodEngine-export type SizeUpdateCallback = (size: window.Size, keyboardArea: KeyboardArea) => void--><!--Device-inputMethodEngine-export type SizeUpdateCallback = (size: window.Size, keyboardArea: KeyboardArea) => void-End-->
 
@@ -20,6 +22,6 @@ export type SizeUpdateCallback = (size: window.Size, keyboardArea: KeyboardArea)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| size | window.Size | 是 | 当前面板大小，包含宽度和高度。  |
-| keyboardArea | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 当前面板的键盘区域大小。  |
+| size | window.Size | 是 | 当前面板大小，包含宽度和高度。 |
+| keyboardArea | [KeyboardArea](arkts-ime-inputmethodengine-keyboardarea-i.md) | 是 | 当前面板的键盘区域大小。 |
 

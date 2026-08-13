@@ -8,9 +8,11 @@ function createPixelMapFromSurface(surfaceId: string, region: Region): Promise<P
 
 Creates a PixelMap object from surface id.
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-image-function createPixelMapFromSurface(surfaceId: string, region: Region): Promise<PixelMap>--><!--Device-image-function createPixelMapFromSurface(surfaceId: string, region: Region): Promise<PixelMap>-End-->
 
@@ -21,7 +23,7 @@ Creates a PixelMap object from surface id.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | surfaceId | string | 是 | surface id. |
-| region | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | The region to surface. |
+| region | Region | 是 | The region to surface. |
 
 **返回值：**
 
@@ -34,10 +36,10 @@ Creates a PixelMap object from surface id.
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [62980115](../errorcode-image.md#62980115-图片无效参数) | If the image parameter invalid. |
-| [62980105](../errorcode-image.md#62980105-图片获取数据错误) | Failed to get the data. |
 | [62980178](../errorcode-image.md#62980178-pixelmap创建失败) | Failed to create the PixelMap. |
+| [62980105](../errorcode-image.md#62980105-图片获取数据错误) | Failed to get the data. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -76,9 +78,11 @@ function createPixelMapFromSurface(surfaceId: string): Promise<PixelMap>
 
 Creates a PixelMap object from surface id.
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-image-function createPixelMapFromSurface(surfaceId: string): Promise<PixelMap>--><!--Device-image-function createPixelMapFromSurface(surfaceId: string): Promise<PixelMap>-End-->
 
@@ -100,11 +104,11 @@ Creates a PixelMap object from surface id.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. |
-| [62980105](../errorcode-image.md#62980105-图片获取数据错误) | Failed to get the data. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | [62980178](../errorcode-image.md#62980178-pixelmap创建失败) | Failed to create the PixelMap. |
+| [62980105](../errorcode-image.md#62980105-图片获取数据错误) | Failed to get the data. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

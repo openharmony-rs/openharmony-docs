@@ -6,11 +6,13 @@
 function closeOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise<void>
 ```
 
-关闭当前打开的所有符合指定选项的企业DLP文件。使用Promise异步回调。 在需要批量关闭企业DLP文件、清理文件资源或应用退出前释放文件句柄时调用该接口。 > **说明：** > > 该接口仅能关闭调用方应用通过[generateDlpFileForEnterprise]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_生成的企业DLP文件。
+关闭当前打开的所有符合指定选项的企业DLP文件。使用Promise异步回调。 在需要批量关闭企业DLP文件、清理文件资源或应用退出前释放文件句柄时调用该接口。 > **说明：** > > 该接口仅能关闭调用方应用通过[generateDlpFileForEnterprise](arkts-dataprotection-dlppermission-generatedlpfileforenterprise-f-sys.md#generateDlpFileForEnterprise（系统接口）)生成的企业DLP文件。
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
 
@@ -24,7 +26,7 @@ function closeOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise<v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 企业DLP文件的查询选项。当需要按分类标签筛选关闭特定企业DLP文件时传入此参数，当需要关闭所有企业DLP文件时可不传此参数。不传入或传入空字符串时，关闭所有企业DLP文件。 |
+| options | [DlpFileQueryOptions](arkts-dataprotection-dlppermission-dlpfilequeryoptions-i.md) | 否 | 企业DLP文件的查询选项。当需要按分类标签筛选关闭特定企业DLP文件时传入此参数，当需要关闭所有企业DLP文件时可不传此参数。不传入或传入空 字符串时，关闭所有企业DLP文件。 |
 
 **返回值：**
 
@@ -36,12 +38,12 @@ function closeOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise<v
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { dlpPermission } from '@kit.DataProtectionKit';

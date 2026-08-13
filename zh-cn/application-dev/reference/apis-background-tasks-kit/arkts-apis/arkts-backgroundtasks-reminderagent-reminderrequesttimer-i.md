@@ -2,7 +2,7 @@
 
 倒计时实例对象，用于设置提醒的时间。
 
-**继承/实现关系：** ReminderRequestTimer extends [ReminderRequest](arkts-backgroundtasks-reminderagent-reminderrequest-i.md)
+**继承/实现关系：** ReminderRequestTimer extends [ReminderRequest](arkts-backgroundtasks-reminderagent-reminderrequest-i.md#ReminderRequest)
 
 **起始版本：** 7
 
@@ -10,9 +10,9 @@
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.reminderAgentManager:reminderAgentManager.ReminderRequestTimer](arkts-backgroundtasks-reminderagentmanager-reminderrequesttimer-i.md)
+**替代接口：** [ReminderRequestTimer](arkts-backgroundtasks-reminderagentmanager-reminderrequesttimer-i.md#ReminderRequestTimer)
 
-<!--Device-reminderAgent-interface ReminderRequestTimer extends ReminderRequest--><!--Device-reminderAgent-interface ReminderRequestTimer extends ReminderRequest-End-->
+<!--Device-reminderAgent-interface ReminderRequestTimer--><!--Device-reminderAgent-interface ReminderRequestTimer-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -32,7 +32,7 @@ triggerTimeInSeconds: number
 
 **废弃版本：** 9
 
-**替代接口：** [reminderAgentManager.ReminderRequestTimer.triggerTimeInSeconds](arkts-backgroundtasks-reminderagentmanager-reminderrequesttimer-i.md#triggertimeinseconds)
+**替代接口：** triggerTimeInSeconds
 
 <!--Device-ReminderRequestTimer-triggerTimeInSeconds: number--><!--Device-ReminderRequestTimer-triggerTimeInSeconds: number-End-->
 

@@ -8,7 +8,9 @@ export type KeyEventCallback = (event: KeyEvent) => boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-inputMethodEngine-export type KeyEventCallback = (event: KeyEvent) => boolean--><!--Device-inputMethodEngine-export type KeyEventCallback = (event: KeyEvent) => boolean-End-->
 
@@ -18,7 +20,7 @@ export type KeyEventCallback = (event: KeyEvent) => boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 按键事件对象，包含按键码、按键类型、事件时间等按键相关信息。  |
+| event | KeyEvent | 是 | 按键事件对象，包含按键码、按键类型、事件时间等按键相关信息。 |
 
 **返回值：**
 

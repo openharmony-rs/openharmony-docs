@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface OnContextMenuShowEvent--><!--Device-unnamed-declare interface OnContextMenuShowEvent-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -18,11 +20,13 @@ param: WebContextMenuParam
 
 菜单相关参数。
 
-**类型：** WebContextMenuParam
+**类型：** [WebContextMenuParam](arkts-arkweb-webcontextmenuparam-c.md)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -38,11 +42,13 @@ result: WebContextMenuResult
 
 菜单相应事件传入内核。
 
-**类型：** WebContextMenuResult
+**类型：** [WebContextMenuResult](arkts-arkweb-webcontextmenuresult-c.md)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

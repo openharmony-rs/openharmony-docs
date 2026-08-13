@@ -1,14 +1,16 @@
 # PageIntentDecoratorInfo
 
-PageIntentDecoratorInfo继承自[IntentDecoratorInfo]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_，用于描述 \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_ 装饰器支持的参数，例如目标页面的 \_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_名称。
+PageIntentDecoratorInfo继承自[IntentDecoratorInfo](arkts-ability-app-ability-insightintentdecorator-intentdecoratorinfo-i.md#IntentDecoratorInfo)，用于描述 @InsightIntentPage 装饰器支持的参数，例如目标页面的 [NavDestination](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10)名称。
 
-**继承/实现关系：** PageIntentDecoratorInfo extends [IntentDecoratorInfo](arkts-ability-app-ability-insightintentdecorator-intentdecoratorinfo-i.md)
+**继承/实现关系：** PageIntentDecoratorInfo extends [IntentDecoratorInfo](arkts-ability-app-ability-insightintentdecorator-intentdecoratorinfo-i.md#IntentDecoratorInfo)
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
-<!--Device-unnamed-declare interface PageIntentDecoratorInfo extends IntentDecoratorInfo--><!--Device-unnamed-declare interface PageIntentDecoratorInfo extends IntentDecoratorInfo-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare interface PageIntentDecoratorInfo--><!--Device-unnamed-declare interface PageIntentDecoratorInfo-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -18,13 +20,15 @@ PageIntentDecoratorInfo继承自[IntentDecoratorInfo]\_\_\_JSDOC\_LINK\_DESC\_US
 navDestinationName?: string
 ```
 
-表示与意图绑定 \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_的名称。
+表示与意图绑定 [NavDestination组件](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10)的名称。
 
 **类型：** string
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,13 +44,15 @@ navDestinationName?: string
 navigationId?: string
 ```
 
-表示与意图绑定的\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_的id属性。
+表示与意图绑定的[Navigation组件](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#属性)的id属性。
 
 **类型：** string
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -70,6 +76,8 @@ pagePath: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -91,6 +99,8 @@ uiAbility?: string
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

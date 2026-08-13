@@ -1,10 +1,12 @@
 # ColorSpaceManager
 
-当前色域对象实例。 下列API示例中都需先使用[create()]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_获取到ColorSpaceManager实例，再通过此实例调用对 应方法。
+当前色域对象实例。 下列API示例中都需先使用[create()](arkts-arkgraphics2d-colorspacemanager-create-f.md#create)获取到ColorSpaceManager实例，再通过此实例调用对应方法。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-colorSpaceManager-interface ColorSpaceManager--><!--Device-colorSpaceManager-interface ColorSpaceManager-End-->
 
@@ -18,9 +20,11 @@ getColorSpaceName(): ColorSpace
 
 获取色域类型。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ColorSpaceManager-getColorSpaceName(): ColorSpace--><!--Device-ColorSpaceManager-getColorSpaceName(): ColorSpace-End-->
 
@@ -30,15 +34,15 @@ getColorSpaceName(): ColorSpace
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回色域类型枚举值。 |
+| ColorSpace | 返回色域类型枚举值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [18600001](../errorcode-colorspace-manager.md#18600001-参数值异常) | The parameter value is abnormal.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 9 - 22 |
+| [18600001](../errorcode-colorspace-manager.md#18600001-参数值异常) | The parameter value is abnormal.<br>**适用版本：** 9 - 22 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 try {
@@ -52,21 +56,17 @@ try {
 
 ## getGamma
 
-ArkTS-Dyn:
-```TypeScript
-getGamma(): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getGamma(): double
 ```
 
 获取色域gamma值。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ColorSpaceManager-getGamma(): double--><!--Device-ColorSpaceManager-getGamma(): double-End-->
 
@@ -76,15 +76,15 @@ getGamma(): double
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：double | 返回色域gamma值。 |
+| double | 返回色域gamma值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [18600001](../errorcode-colorspace-manager.md#18600001-参数值异常) | The parameter value is abnormal.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 9 - 22 |
+| [18600001](../errorcode-colorspace-manager.md#18600001-参数值异常) | The parameter value is abnormal.<br>**适用版本：** 9 - 22 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 try {
@@ -98,21 +98,17 @@ try {
 
 ## getWhitePoint
 
-ArkTS-Dyn:
-```TypeScript
-getWhitePoint(): Array<number>
-```
-
-ArkTS-Sta:
 ```TypeScript
 getWhitePoint(): Array<double>
 ```
 
 获取色域白点值。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ColorSpaceManager-getWhitePoint(): Array<double>--><!--Device-ColorSpaceManager-getWhitePoint(): Array<double>-End-->
 
@@ -122,15 +118,15 @@ getWhitePoint(): Array<double>
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: Array&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：Array&lt;double&gt; | 返回色域白点值[x, y]。 |
+| Array&lt;double&gt; | 返回色域白点值[x, y]。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [18600001](../errorcode-colorspace-manager.md#18600001-参数值异常) | The parameter value is abnormal.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 9 - 22 |
+| [18600001](../errorcode-colorspace-manager.md#18600001-参数值异常) | The parameter value is abnormal.<br>**适用版本：** 9 - 22 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 try {

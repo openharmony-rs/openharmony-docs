@@ -10,7 +10,9 @@ function connectDevice(addrInfo: AddressInfo, params: ConnectParam): Promise<Att
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.CONNECT_MECHANIC_HARDWARE
 
@@ -26,14 +28,14 @@ function connectDevice(addrInfo: AddressInfo, params: ConnectParam): Promise<Att
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| addrInfo | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 地址信息。 |
-| params | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 操作参数。 |
+| addrInfo | [AddressInfo](arkts-mechanic-mechanicmanager-addressinfo-i-sys.md) | 是 | 地址信息。 |
+| params | [ConnectParam](arkts-mechanic-mechanicmanager-connectparam-i-sys.md) | 是 | 操作参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;AttachStateChangeInfo&gt; | Promise used to return the attach state change information. |
+| Promise&lt;[AttachStateChangeInfo](arkts-mechanic-mechanicmanager-attachstatechangeinfo-i.md)&gt; | Promise used to return the attach state change information. |
 
 **错误码：**
 

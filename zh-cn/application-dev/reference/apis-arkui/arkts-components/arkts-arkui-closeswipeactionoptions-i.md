@@ -1,10 +1,12 @@
 # CloseSwipeActionOptions
 
-收起[EXPANDED]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_状态[ListItem]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_回调事件集合，用于设置收起动画完成后回调事件。
+收起EXPANDED状态ListItem回调事件集合，用于设置收起动画完成后回调事件。
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare interface CloseSwipeActionOptions--><!--Device-unnamed-declare interface CloseSwipeActionOptions-End-->
 
@@ -23,6 +25,8 @@ onFinish?: ()=>void
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

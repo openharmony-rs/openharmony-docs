@@ -6,9 +6,11 @@ type NotifyNetDisconnectCallback = (deviceId: string, state: int) => void
 
 断开连接时的回调函数。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -22,6 +24,6 @@ type NotifyNetDisconnectCallback = (deviceId: string, state: int) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deviceId | string | 是 | Indicates the deviceId network disconnect.  |
-| state | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | Indicates the state of network.  |
+| deviceId | string | 是 | Indicates the deviceId network disconnect. |
+| state | int | 是 | Indicates the state of network. |
 

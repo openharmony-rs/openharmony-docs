@@ -1,12 +1,12 @@
 # ExceptionPrompt
 
-异常提示，适用于有异常需要提示异常内容的情况。 > **说明：** > > - 该组件仅可在Stage模型下使用。 > > - 如果ExceptionPrompt设置[通用属性]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_和[通用事件]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_， > 编译工具链会额外生成节点\_\_Common\_\_，并将通用属性或通用事件挂载在\_\_Common\_\_上，而不是直接应用到ExceptionPrompt本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议 > ExceptionPrompt设置通用属性和通用事件。
+异常提示，适用于有异常需要提示异常内容的情况。 > **说明：** > > - 该组件仅可在Stage模型下使用。 > > - 如果ExceptionPrompt设置通用属性和通用事件， > 编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到ExceptionPrompt本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议 > ExceptionPrompt设置通用属性和通用事件。
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
-**装饰器类型：** @Component
+**废弃版本：** -1
 
 <!--Device-unnamed-export declare struct ExceptionPrompt--><!--Device-unnamed-export declare struct ExceptionPrompt-End-->
 
@@ -23,6 +23,8 @@ The build function is a member function that must return an ArkTS component type
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,6 +48,8 @@ onActionTextClick?: () => void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -68,6 +72,8 @@ onTipClick?: () => void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -84,13 +90,13 @@ onTipClick?: () => void
 
 指定当前异常提示的配置信息。
 
-**类型：** PromptOptions
+**类型：** [PromptOptions](arkts-arkui-arkui-advanced-exceptionprompt-promptoptions-i.md)
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
-**装饰器类型：** @Prop
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

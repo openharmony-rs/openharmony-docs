@@ -10,7 +10,9 @@ Unregister prepareContinue event.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -22,8 +24,8 @@ Unregister prepareContinue event.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | the ability context. |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;ContinueResultInfo&gt; | 否 | Used to handle ('prepareContinue') command. |
+| context | [Context](arkts-ability-context-c.md) | 是 | the ability context. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[ContinueResultInfo](arkts-ability-continuemanager-continueresultinfo-i.md)&gt; | 否 | Used to handle ('prepareContinue') command. |
 
 **错误码：**
 
@@ -31,7 +33,7 @@ Unregister prepareContinue event.
 | --- | --- |
 | [16300501](../errorcode-DistributedSchedule.md#16300501-系统服务工作异常) | the system ability work abnormally. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@ohos.base';

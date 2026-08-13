@@ -8,9 +8,11 @@ function setShortcutVisibleForSelf(id: string, visible: boolean): Promise<void>
 
 设置当前应用指定的快捷方式是否显示。使用Promise异步回调。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-shortcutManager-function setShortcutVisibleForSelf(id: string, visible: boolean): Promise<void>--><!--Device-shortcutManager-function setShortcutVisibleForSelf(id: string, visible: boolean): Promise<void>-End-->
 
@@ -20,7 +22,7 @@ function setShortcutVisibleForSelf(id: string, visible: boolean): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | string | 是 | 快捷方式的ID，通过\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_中的shortcuts标签下的shortcutId字段获取，取值为长度不超过63字节的字符串。 |
+| id | string | 是 | 快捷方式的ID，通过[module.json5配置文件](../../../quick-start/module-configuration-file.md)中的shortcuts标 签下的shortcutId字段获取，取值为长度不超过63字节的字符串。 |
 | visible | boolean | 是 | 快捷方式是否显示。true：快捷方式显示；false：快捷方式不显示。 |
 
 **返回值：**
@@ -35,7 +37,7 @@ function setShortcutVisibleForSelf(id: string, visible: boolean): Promise<void>
 | --- | --- |
 | [17700070](../errorcode-bundle.md#17700070-指定的快捷方式id不合法) | The specified shortcut id is not exist. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例:
 

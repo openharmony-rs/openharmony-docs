@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBRequestTargetType](arkts-basicservices-usbmanager-usbrequesttargettype-e.md)
+**替代接口：** [USBRequestTargetType](arkts-basicservices-usbmanager-usbrequesttargettype-e.md#USBRequestTargetType)
 
 <!--Device-usb-export enum USBRequestTargetType--><!--Device-usb-export enum USBRequestTargetType-End-->
 
@@ -28,7 +28,7 @@ USB_REQUEST_TARGET_DEVICE = 0
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBRequestTargetType.USB_REQUEST_TARGET_DEVICE](arkts-basicservices-usbmanager-usbrequesttargettype-e.md#usb_request_target_device)
+**替代接口：** [USB_REQUEST_TARGET_DEVICE](arkts-basicservices-usbmanager-usbrequesttargettype-e.md#USB_REQUEST_TARGET_DEVICE)
 
 <!--Device-USBRequestTargetType-USB_REQUEST_TARGET_DEVICE = 0--><!--Device-USBRequestTargetType-USB_REQUEST_TARGET_DEVICE = 0-End-->
 
@@ -48,7 +48,7 @@ USB_REQUEST_TARGET_INTERFACE = 1
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBRequestTargetType.USB_REQUEST_TARGET_INTERFACE](arkts-basicservices-usbmanager-usbrequesttargettype-e.md#usb_request_target_interface)
+**替代接口：** [USB_REQUEST_TARGET_INTERFACE](arkts-basicservices-usbmanager-usbrequesttargettype-e.md#USB_REQUEST_TARGET_INTERFACE)
 
 <!--Device-USBRequestTargetType-USB_REQUEST_TARGET_INTERFACE = 1--><!--Device-USBRequestTargetType-USB_REQUEST_TARGET_INTERFACE = 1-End-->
 
@@ -68,7 +68,7 @@ USB_REQUEST_TARGET_ENDPOINT = 2
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBRequestTargetType.USB_REQUEST_TARGET_ENDPOINT](arkts-basicservices-usbmanager-usbrequesttargettype-e.md#usb_request_target_endpoint)
+**替代接口：** [USB_REQUEST_TARGET_ENDPOINT](arkts-basicservices-usbmanager-usbrequesttargettype-e.md#USB_REQUEST_TARGET_ENDPOINT)
 
 <!--Device-USBRequestTargetType-USB_REQUEST_TARGET_ENDPOINT = 2--><!--Device-USBRequestTargetType-USB_REQUEST_TARGET_ENDPOINT = 2-End-->
 
@@ -88,7 +88,7 @@ USB_REQUEST_TARGET_OTHER = 3
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBRequestTargetType.USB_REQUEST_TARGET_OTHER](arkts-basicservices-usbmanager-usbrequesttargettype-e.md#usb_request_target_other)
+**替代接口：** [USB_REQUEST_TARGET_OTHER](arkts-basicservices-usbmanager-usbrequesttargettype-e.md#USB_REQUEST_TARGET_OTHER)
 
 <!--Device-USBRequestTargetType-USB_REQUEST_TARGET_OTHER = 3--><!--Device-USBRequestTargetType-USB_REQUEST_TARGET_OTHER = 3-End-->
 

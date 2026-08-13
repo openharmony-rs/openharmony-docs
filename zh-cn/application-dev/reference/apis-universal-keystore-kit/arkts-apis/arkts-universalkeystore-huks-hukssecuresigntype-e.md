@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 <!--Device-huks-export enum HuksSecureSignType--><!--Device-huks-export enum HuksSecureSignType-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
@@ -21,6 +23,8 @@ HUKS_SECURE_SIGN_WITH_AUTHINFO = 1
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

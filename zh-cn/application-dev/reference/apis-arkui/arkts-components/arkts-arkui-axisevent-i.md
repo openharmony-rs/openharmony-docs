@@ -1,14 +1,16 @@
 # AxisEvent
 
-轴事件的对象说明，继承于[BaseEvent]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+轴事件的对象说明，继承于[BaseEvent](arkts-arkui-baseevent-i.md#BaseEvent)。
 
-**继承/实现关系：** AxisEvent extends [BaseEvent](../../apis-na/arkts-apis/arkts-na-component/common-baseevent-i.md)
+**继承/实现关系：** AxisEvent extends [BaseEvent](arkts-arkui-baseevent-i.md#BaseEvent)
 
 **起始版本：** 17
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为17。
 
-<!--Device-unnamed-declare interface AxisEvent extends BaseEvent--><!--Device-unnamed-declare interface AxisEvent extends BaseEvent-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare interface AxisEvent--><!--Device-unnamed-declare interface AxisEvent-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,6 +26,8 @@ getCurrentLocalPosition?(): Coordinate2D
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -36,7 +40,7 @@ getCurrentLocalPosition?(): Coordinate2D
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | - 点击位置相对于当前组件实时位置的左上角坐标。 |
+| Coordinate2D | 点击位置相对于当前组件实时位置的左上角坐标。 |
 
 ## getHorizontalAxisValue
 
@@ -50,6 +54,8 @@ getHorizontalAxisValue(): number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为17。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本17开始，该接口支持在原子化服务API中使用。
@@ -62,7 +68,7 @@ getHorizontalAxisValue(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 水平轴值。 |
+| number | 水平轴值。 &lt;br&gt;单位：vp |
 
 ## getPinchAxisScaleValue
 
@@ -76,6 +82,8 @@ getPinchAxisScaleValue(): number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
@@ -88,7 +96,7 @@ getPinchAxisScaleValue(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 双指缩放比例。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ **说明：** 缩放比例指的是触控板双指缩放事件触发过程中双指当前的距离与双指最初按下时的距离的比值。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_默认值：0 |
+| number | 双指缩放比例。&lt;br/&gt; **说明：** 缩放比例指的是触控板双指缩放事件触发过程中双指当前的距离与双指最初按下时的距离的比值。&lt;br/&gt;默认值：0 &lt;br/&gt;取值范围：[0, +∞)&lt;br/&gt; |
 
 ## getVerticalAxisValue
 
@@ -102,6 +110,8 @@ getVerticalAxisValue(): number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为17。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本17开始，该接口支持在原子化服务API中使用。
@@ -114,7 +124,7 @@ getVerticalAxisValue(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 垂直轴值。 |
+| number | 垂直轴值。 &lt;br&gt;单位：vp |
 
 ## hasAxis
 
@@ -128,6 +138,8 @@ hasAxis(axisType: AxisType): boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
@@ -140,13 +152,13 @@ hasAxis(axisType: AxisType): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| axisType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 轴事件的轴类型。 |
+| axisType | AxisType | 是 | 轴事件的轴类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 此轴事件是否包含指定的轴类型。 |
+| boolean | 此轴事件是否包含指定的轴类型。 &lt;br&gt;true：包含指定的轴类型；false：不包含指定的轴类型。 |
 
 ## action
 
@@ -161,6 +173,8 @@ action: AxisAction
 **起始版本：** 17
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为17。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -184,6 +198,8 @@ displayX: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为17。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本17开始，该接口支持在原子化服务API中使用。
@@ -206,6 +222,8 @@ displayY: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为17。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本17开始，该接口支持在原子化服务API中使用。
@@ -220,13 +238,15 @@ displayY: number
 eventHandleId?: number
 ```
 
-用于事件处理的唯一标识。 取值范围：[0, +∞) **说明：** 在使用[postInputEventWithStrategy]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_接口分发事件时会使用该字段，事件每分 发一次字段会增加100000。 多次使用相同的eventHandleId进行事件分发将导致事件响应异常。仅在构造事件的时候需要对此字段赋值，其余情况开发者无需处理。
+用于事件处理的唯一标识。 取值范围：[0, +∞) **说明：** 在使用[postInputEventWithStrategy](../arkts-apis/arkts-arkui-buildernode-c.md#postInputEventWithStrategy)接口分发事件时会使用该字段，事件每分 发一次字段会增加100000。 多次使用相同的eventHandleId进行事件分发将导致事件响应异常。仅在构造事件的时候需要对此字段赋值，其余情况开发者无需处理。
 
 **类型：** number
 
 **起始版本：** 24
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -242,13 +262,15 @@ eventHandleId?: number
 globalDisplayX?: number
 ```
 
-鼠标光标在\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_中的X坐标。 单位：vp 取值范围：[0, +∞)
+鼠标光标在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的X坐标。 单位：vp 取值范围：[0, +∞)
 
 **类型：** number
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -264,13 +286,15 @@ globalDisplayX?: number
 globalDisplayY?: number
 ```
 
-鼠标光标或手写笔位置在\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_中的Y坐标。 单位：vp 取值范围：[0, +∞)
+鼠标光标或手写笔位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。 单位：vp 取值范围：[0, +∞)
 
 **类型：** number
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -286,13 +310,15 @@ globalDisplayY?: number
 propagation: Callback<void>
 ```
 
-激活\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+激活[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)。
 
-**类型：** Callback&lt;void&gt;
+**类型：** [Callback](arkts-arkui-callback-i.md)&lt;void&gt;
 
 **起始版本：** 17
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为17。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -316,6 +342,8 @@ scrollStep?: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为17。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本17开始，该接口支持在原子化服务API中使用。
@@ -337,6 +365,8 @@ windowX: number
 **起始版本：** 17
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为17。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -360,6 +390,8 @@ windowY: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为17。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本17开始，该接口支持在原子化服务API中使用。
@@ -374,13 +406,15 @@ windowY: number
 x: number
 ```
 
-鼠标光标在被点击元素为基准的\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_中的X坐标。 单位：vp
+鼠标光标在被点击元素为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的X坐标。 单位：vp
 
 **类型：** number
 
 **起始版本：** 17
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为17。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -396,13 +430,15 @@ x: number
 y: number
 ```
 
-鼠标光标在被点击元素为基准的\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_中的Y坐标。 单位：vp
+鼠标光标在被点击元素为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的Y坐标。 单位：vp
 
 **类型：** number
 
 **起始版本：** 17
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为17。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

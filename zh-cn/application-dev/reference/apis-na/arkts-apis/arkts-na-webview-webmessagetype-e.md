@@ -1,10 +1,12 @@
 # WebMessageType
 
-Enum type supplied to \_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ for indicating the type of web message.
+Enum type supplied to [onMessageEventExt](arkts-na-webview-webmessageport-i.md#onMessageEventExt) for indicating the type of web message.
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-webview-enum WebMessageType--><!--Device-webview-enum WebMessageType-End-->
 
@@ -22,6 +24,8 @@ Unsupported data type.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-WebMessageType-NOT_SUPPORT--><!--Device-WebMessageType-NOT_SUPPORT-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -37,6 +41,8 @@ The string data type.
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WebMessageType-STRING--><!--Device-WebMessageType-STRING-End-->
 
@@ -54,6 +60,8 @@ The number data type.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-WebMessageType-NUMBER--><!--Device-WebMessageType-NUMBER-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -69,6 +77,8 @@ The boolean data type.
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WebMessageType-BOOLEAN--><!--Device-WebMessageType-BOOLEAN-End-->
 
@@ -86,6 +96,8 @@ The arraybuffer data type.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-WebMessageType-ARRAY_BUFFER--><!--Device-WebMessageType-ARRAY_BUFFER-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -102,6 +114,8 @@ The array data type.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-WebMessageType-ARRAY--><!--Device-WebMessageType-ARRAY-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -117,6 +131,8 @@ The error data type.
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WebMessageType-ERROR--><!--Device-WebMessageType-ERROR-End-->
 

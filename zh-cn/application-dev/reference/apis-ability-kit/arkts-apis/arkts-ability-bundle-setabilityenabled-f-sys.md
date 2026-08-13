@@ -14,7 +14,7 @@ function setAbilityEnabled(info: AbilityInfo, isEnable: boolean, callback: Async
 
 **废弃版本：** 9
 
-**替代接口：** [null]
+**替代接口：** null
 
 **需要权限：** ohos.permission.CHANGE_ABILITY_ENABLED_STATE
 
@@ -28,9 +28,9 @@ function setAbilityEnabled(info: AbilityInfo, isEnable: boolean, callback: Async
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | Ability信息，指示需要设置启用状态的Ability。 |
+| info | [AbilityInfo](arkts-ability-abilityinfo-abilityinfo-depr-i.md) | 是 | Ability信息，指示需要设置启用状态的Ability。 |
 | isEnable | boolean | 是 | 指定是否启用应用程序。true表示启用，false禁用。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 为返回操作结果而调用的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 为返回操作结果而调用的回调。 |
 
 
 ## setAbilityEnabled
@@ -47,7 +47,7 @@ function setAbilityEnabled(info: AbilityInfo, isEnable: boolean): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [null]
+**替代接口：** null
 
 **需要权限：** ohos.permission.CHANGE_ABILITY_ENABLED_STATE
 
@@ -61,7 +61,7 @@ function setAbilityEnabled(info: AbilityInfo, isEnable: boolean): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | Ability信息，指示需要设置启用状态的Ability。 |
+| info | [AbilityInfo](arkts-ability-abilityinfo-abilityinfo-depr-i.md) | 是 | Ability信息，指示需要设置启用状态的Ability。 |
 | isEnable | boolean | 是 | 指定是否启用应用程序。true表示启用，false禁用。 |
 
 **返回值：**

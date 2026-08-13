@@ -6,7 +6,7 @@ typedef struct OH_Drawing_FontStyleSet OH_Drawing_FontStyleSet
 
 ## 概述
 
-定义字体样式集, 用于字体样式族匹配。
+定义字体样式集，用于字体样式族匹配。
 
 **起始版本：** 12
 

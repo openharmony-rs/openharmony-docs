@@ -10,6 +10,8 @@ Declare the callback function type to be called when clicking the text on the le
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-declare type OnTipClickCallback = () => void--><!--Device-unnamed-declare type OnTipClickCallback = () => void-End-->

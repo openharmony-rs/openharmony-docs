@@ -16,6 +16,8 @@ TextPicker(options?: TextPickerOptions)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TextPickerInterface-(options?: TextPickerOptions): TextPickerAttribute--><!--Device-TextPickerInterface-(options?: TextPickerOptions): TextPickerAttribute-End-->
@@ -26,7 +28,19 @@ TextPicker(options?: TextPickerOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 配置文本选择器的参数。当需要自定义选择器的数据源、选中项、列宽等配置时传入此参数。参数缺省时 组件无法显示。  |
+| options | [TextPickerOptions](arkts-arkui-textpickeroptions-i.md) | 否 | 配置文本选择器的参数。当需要自定义选择器的数据源、选中项、列宽等配置时传入此参数。参数缺省时 组件无法显示。 |
 
 ## 汇总
 
+- [DividerOptions](arkts-arkui-divideroptions-i.md)
+- [PickerBackgroundStyle](arkts-arkui-pickerbackgroundstyle-i.md)
+- [TextCascadePickerRangeContent](arkts-arkui-textcascadepickerrangecontent-i.md)
+- [TextPickerDialogOptions](arkts-arkui-textpickerdialogoptions-i.md)
+- [TextPickerDialogOptionsExt](arkts-arkui-textpickerdialogoptionsext-i.md)
+- [TextPickerOptions](arkts-arkui-textpickeroptions-i.md)
+- [TextPickerRangeContent](arkts-arkui-textpickerrangecontent-i.md)
+- [TextPickerResult](arkts-arkui-textpickerresult-i.md)
+- [TextPickerTextStyle](arkts-arkui-textpickertextstyle-i.md)
+- [OnTextPickerChangeCallback](arkts-arkui-ontextpickerchangecallback-t.md)
+- [TextPickerEnterSelectedAreaCallback](arkts-arkui-textpickerenterselectedareacallback-t.md)
+- [TextPickerScrollStopCallback](arkts-arkui-textpickerscrollstopcallback-t.md)

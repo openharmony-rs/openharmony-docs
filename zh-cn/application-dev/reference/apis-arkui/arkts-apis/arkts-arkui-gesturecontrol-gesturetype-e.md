@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-GestureControl-enum GestureType--><!--Device-GestureControl-enum GestureType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -21,6 +23,8 @@ TAP_GESTURE = 0
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -40,6 +44,8 @@ LONG_PRESS_GESTURE = 1
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-GestureType-LONG_PRESS_GESTURE = 1--><!--Device-GestureType-LONG_PRESS_GESTURE = 1-End-->
@@ -57,6 +63,8 @@ PAN_GESTURE = 2
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -76,6 +84,8 @@ PINCH_GESTURE = 3
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-GestureType-PINCH_GESTURE = 3--><!--Device-GestureType-PINCH_GESTURE = 3-End-->
@@ -93,6 +103,8 @@ SWIPE_GESTURE = 4
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -112,6 +124,8 @@ ROTATION_GESTURE = 5
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-GestureType-ROTATION_GESTURE = 5--><!--Device-GestureType-ROTATION_GESTURE = 5-End-->
@@ -129,6 +143,8 @@ DRAG = 6
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -148,6 +164,8 @@ CLICK = 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-GestureType-CLICK = 7--><!--Device-GestureType-CLICK = 7-End-->
@@ -165,6 +183,8 @@ BOX_SELECT_GESTURE = 8
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -186,6 +206,8 @@ Web组件滚动手势，是一种特殊的滑动手势，用于控制Web组件�
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
@@ -206,6 +228,8 @@ TEXT_FIELD_SELECT_GESTURE = 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
@@ -220,11 +244,13 @@ TEXT_FIELD_SELECT_GESTURE = 10
 CONTEXT_MENU_HOVER_GESTURE = 11
 ```
 
-上下文菜单悬停手势是一种特殊的长按手势，用于在长按过程中触发菜单的hoverScale动画效果（需启用 [ContextMenuAnimationOptions]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_的hoverScaleInterruption属性以支持该行为）。
+上下文菜单悬停手势是一种特殊的长按手势，用于在长按过程中触发菜单的hoverScale动画效果（需启用 ContextMenuAnimationOptions的hoverScaleInterruption属性以支持该行为）。
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

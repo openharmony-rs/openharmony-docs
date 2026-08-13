@@ -8,9 +8,11 @@ function getCurrentFoldCreaseRegion(): FoldCreaseRegion
 
 在当前显示模式下获取折叠折痕区域。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -22,7 +24,7 @@ function getCurrentFoldCreaseRegion(): FoldCreaseRegion
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | FoldCreaseRegion对象，返回设备在当前显示模式下的折叠折痕区域。 |
+| [FoldCreaseRegion](arkts-arkui-display-foldcreaseregion-i.md) | FoldCreaseRegion对象，返回设备在当前显示模式下的折叠折痕区域。 |
 
 **错误码：**
 
@@ -30,7 +32,7 @@ function getCurrentFoldCreaseRegion(): FoldCreaseRegion
 | --- | --- |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let data: display.FoldCreaseRegion = display.getCurrentFoldCreaseRegion();

@@ -10,6 +10,8 @@ The callback of onInterceptKeyboardAttach event.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-unnamed-type WebKeyboardCallback = (keyboardCallbackInfo: WebKeyboardCallbackInfo) => WebKeyboardOptions--><!--Device-unnamed-type WebKeyboardCallback = (keyboardCallbackInfo: WebKeyboardCallbackInfo) => WebKeyboardOptions-End-->
@@ -20,11 +22,11 @@ The callback of onInterceptKeyboardAttach event.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| keyboardCallbackInfo | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | callback information of onInterceptKeyboardAttach.  |
+| keyboardCallbackInfo | [WebKeyboardCallbackInfo](arkts-arkweb-webkeyboardcallbackinfo-i.md) | 是 | callback information of onInterceptKeyboardAttach. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Return the web keyboard options of this web component. |
+| [WebKeyboardOptions](arkts-arkweb-webkeyboardoptions-i.md) | Return the web keyboard options of this web component. |
 

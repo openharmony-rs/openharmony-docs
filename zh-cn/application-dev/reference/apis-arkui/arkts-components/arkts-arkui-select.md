@@ -14,6 +14,8 @@ Select(options: Array<SelectOption>)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-SelectInterface-(options: Array<SelectOption>): SelectAttribute--><!--Device-SelectInterface-(options: Array<SelectOption>): SelectAttribute-End-->
@@ -24,7 +26,13 @@ Select(options: Array<SelectOption>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | Array&lt;SelectOption&gt; | 是 | 设置下拉选项。  |
+| options | Array&lt;SelectOption&gt; | 是 | 设置下拉选项。 |
 
 ## 汇总
 
+- [MenuItemConfiguration](arkts-arkui-menuitemconfiguration-i.md)
+- [MenuOutlineOptions](arkts-arkui-menuoutlineoptions-i.md)
+- [OnSelectCallback](arkts-arkui-onselectcallback-t.md)
+- [ArrowPosition](arkts-arkui-arrowposition-e.md)
+- [AvoidanceMode](arkts-arkui-avoidancemode-e.md)
+- [MenuAlignType](arkts-arkui-menualigntype-e.md)

@@ -1,6 +1,6 @@
 # UiComponent
 
-UiTest中，UiComponent类代表了UI界面上的一个控件，提供控件属性获取，控件点击，滑动查找，文本注入等API。 该类提供的所有方法都使用Promise方式作为异步方法，需使用await调用。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[Component\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_9+\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。
+UiTest中，UiComponent类代表了UI界面上的一个控件，提供控件属性获取，控件点击，滑动查找，文本注入等API。 该类提供的所有方法都使用Promise方式作为异步方法，需使用await调用。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[Component&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md#Component)替代。
 
 **起始版本：** 8
 
@@ -8,7 +8,7 @@ UiTest中，UiComponent类代表了UI界面上的一个控件，提供控件属�
 
 **废弃版本：** 9
 
-**替代接口：** [Component](arkts-test-uitest-component-c.md)
+**替代接口：** [Component](arkts-test-uitest-component-c.md#Component)
 
 <!--Device-unnamed-declare class UiComponent--><!--Device-unnamed-declare class UiComponent-End-->
 
@@ -20,7 +20,7 @@ UiTest中，UiComponent类代表了UI界面上的一个控件，提供控件属�
 click(): Promise<void>
 ```
 
-控件对象进行点击操作。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[click\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_9+\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。
+控件对象进行点击操作。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[click&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md#click)替代。
 
 **起始版本：** 8
 
@@ -28,7 +28,7 @@ click(): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [Component#click](arkts-test-uitest-component-c.md#click)
+**替代接口：** [click](arkts-test-uitest-component-c.md#click)
 
 <!--Device-UiComponent-click(): Promise<void>--><!--Device-UiComponent-click(): Promise<void>-End-->
 
@@ -38,9 +38,9 @@ click(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | - Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // xxx.test.ets
@@ -59,7 +59,7 @@ async function demo() {
 doubleClick(): Promise<void>
 ```
 
-控件对象进行双击操作。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[doubleClick\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_9+\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。
+控件对象进行双击操作。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[doubleClick&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md#doubleClick)替代。
 
 **起始版本：** 8
 
@@ -67,7 +67,7 @@ doubleClick(): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [Component#doubleClick](arkts-test-uitest-component-c.md#doubleclick)
+**替代接口：** [doubleClick](arkts-test-uitest-component-c.md#doubleClick)
 
 <!--Device-UiComponent-doubleClick(): Promise<void>--><!--Device-UiComponent-doubleClick(): Promise<void>-End-->
 
@@ -77,9 +77,9 @@ doubleClick(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | - Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // xxx.test.ets
@@ -98,7 +98,7 @@ async function demo() {
 getId(): Promise<number>
 ```
 
-获取控件对象的id值。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[getId\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_9+\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。
+获取控件对象的id值。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[getId&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md#getId)替代。
 
 **起始版本：** 8
 
@@ -106,7 +106,7 @@ getId(): Promise<number>
 
 **废弃版本：** 9
 
-**替代接口：** [Component#getId](arkts-test-uitest-component-c.md#getid)
+**替代接口：** [getId](arkts-test-uitest-component-c.md#getId)
 
 <!--Device-UiComponent-getId(): Promise<number>--><!--Device-UiComponent-getId(): Promise<number>-End-->
 
@@ -116,9 +116,9 @@ getId(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | - Promise对象，返回控件的id值。 |
+| Promise&lt;number&gt; | Promise对象，返回控件的id值。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // xxx.test.ets
@@ -137,7 +137,7 @@ async function demo() {
 getKey(): Promise<string>
 ```
 
-获取控件对象的key值。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[getId\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_9+\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。
+获取控件对象的key值。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[getId&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md#getId)替代。
 
 **起始版本：** 8
 
@@ -145,7 +145,7 @@ getKey(): Promise<string>
 
 **废弃版本：** 9
 
-**替代接口：** [Component#getId](arkts-test-uitest-component-c.md#getid)
+**替代接口：** [getId](arkts-test-uitest-component-c.md#getId)
 
 <!--Device-UiComponent-getKey(): Promise<string>--><!--Device-UiComponent-getKey(): Promise<string>-End-->
 
@@ -155,9 +155,9 @@ getKey(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | - Promise对象，返回控件的key值。 |
+| Promise&lt;string&gt; | Promise对象，返回控件的key值。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // xxx.test.ets
@@ -176,7 +176,7 @@ async function demo() {
 getText(): Promise<string>
 ```
 
-获取控件对象的文本信息。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[getText\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_9+\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。
+获取控件对象的文本信息。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[getText&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md#getText)替代。
 
 **起始版本：** 8
 
@@ -184,7 +184,7 @@ getText(): Promise<string>
 
 **废弃版本：** 9
 
-**替代接口：** [Component#getText](arkts-test-uitest-component-c.md#gettext)
+**替代接口：** [getText](arkts-test-uitest-component-c.md#getText)
 
 <!--Device-UiComponent-getText(): Promise<string>--><!--Device-UiComponent-getText(): Promise<string>-End-->
 
@@ -194,9 +194,9 @@ getText(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | - Promise对象，返回控件的文本信息。 |
+| Promise&lt;string&gt; | Promise对象，返回控件的文本信息。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // xxx.test.ets
@@ -215,7 +215,7 @@ async function demo() {
 getType(): Promise<string>
 ```
 
-获取控件对象的控件类型。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[getType\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_9+\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。
+获取控件对象的控件类型。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[getType&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md#getType)替代。
 
 **起始版本：** 8
 
@@ -223,7 +223,7 @@ getType(): Promise<string>
 
 **废弃版本：** 9
 
-**替代接口：** [Component#getType](arkts-test-uitest-component-c.md#gettype)
+**替代接口：** [getType](arkts-test-uitest-component-c.md#getType)
 
 <!--Device-UiComponent-getType(): Promise<string>--><!--Device-UiComponent-getType(): Promise<string>-End-->
 
@@ -233,9 +233,9 @@ getType(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | - Promise对象，返回控件的类型。 |
+| Promise&lt;string&gt; | Promise对象，返回控件的类型。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // xxx.test.ets
@@ -254,7 +254,7 @@ async function demo() {
 inputText(text: string): Promise<void>
 ```
 
-向控件中输入文本，仅针对可编辑的文本组件生效。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[inputText\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_9+\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。
+向控件中输入文本，仅针对可编辑的文本组件生效。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[inputText&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md#inputText)替代。
 
 **起始版本：** 8
 
@@ -262,7 +262,7 @@ inputText(text: string): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [Component#inputText](arkts-test-uitest-component-c.md#inputtext)(text:
+**替代接口：** [inputText](arkts-test-uitest-component-c.md#inputText)(text: string)
 
 <!--Device-UiComponent-inputText(text: string): Promise<void>--><!--Device-UiComponent-inputText(text: string): Promise<void>-End-->
 
@@ -278,9 +278,9 @@ inputText(text: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | - Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // xxx.test.ets
@@ -299,7 +299,7 @@ async function demo() {
 isClickable(): Promise<boolean>
 ```
 
-获取控件对象可点击状态。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[isClickable\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_9+\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。
+获取控件对象可点击状态。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[isClickable&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md#isClickable)替代。
 
 **起始版本：** 8
 
@@ -307,7 +307,7 @@ isClickable(): Promise<boolean>
 
 **废弃版本：** 9
 
-**替代接口：** [Component#isClickable](arkts-test-uitest-component-c.md#isclickable)
+**替代接口：** [isClickable](arkts-test-uitest-component-c.md#isClickable)
 
 <!--Device-UiComponent-isClickable(): Promise<boolean>--><!--Device-UiComponent-isClickable(): Promise<boolean>-End-->
 
@@ -317,9 +317,9 @@ isClickable(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | - Promise对象，返回控件对象可点击状态。true：可点击。false：不可点击。 |
+| Promise&lt;boolean&gt; | Promise对象，返回控件对象可点击状态。true：可点击。false：不可点击。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // xxx.test.ets
@@ -344,7 +344,7 @@ async function demo() {
 isEnabled(): Promise<boolean>
 ```
 
-获取控件使能状态。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[isEnabled\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_9+\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。
+获取控件使能状态。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[isEnabled&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md#isEnabled)替代。
 
 **起始版本：** 8
 
@@ -352,7 +352,7 @@ isEnabled(): Promise<boolean>
 
 **废弃版本：** 9
 
-**替代接口：** [Component#isEnabled](arkts-test-uitest-component-c.md#isenabled)
+**替代接口：** [isEnabled](arkts-test-uitest-component-c.md#isEnabled)
 
 <!--Device-UiComponent-isEnabled(): Promise<boolean>--><!--Device-UiComponent-isEnabled(): Promise<boolean>-End-->
 
@@ -362,9 +362,9 @@ isEnabled(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | - Promise对象，返回控件使能状态。true：使能。false：未使能。 |
+| Promise&lt;boolean&gt; | Promise对象，返回控件使能状态。true：使能。false：未使能。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // xxx.test.ets
@@ -387,7 +387,7 @@ async function demo() {
 isFocused(): Promise<boolean>
 ```
 
-判断控件对象是否获焦。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[isFocused\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_9+\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。
+判断控件对象是否获焦。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[isFocused&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md#isFocused)替代。
 
 **起始版本：** 8
 
@@ -395,7 +395,7 @@ isFocused(): Promise<boolean>
 
 **废弃版本：** 9
 
-**替代接口：** [Component#isFocused](arkts-test-uitest-component-c.md#isfocused)
+**替代接口：** [isFocused](arkts-test-uitest-component-c.md#isFocused)
 
 <!--Device-UiComponent-isFocused(): Promise<boolean>--><!--Device-UiComponent-isFocused(): Promise<boolean>-End-->
 
@@ -405,9 +405,9 @@ isFocused(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | - Promise对象，返回控件对象是否获焦。true：获焦。false：未获焦。 |
+| Promise&lt;boolean&gt; | Promise对象，返回控件对象是否获焦。true：获焦。false：未获焦。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // xxx.test.ets
@@ -437,7 +437,7 @@ async function demo() {
 isScrollable(): Promise<boolean>
 ```
 
-获取控件对象可滑动状态。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[isScrollable\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_9+\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。
+获取控件对象可滑动状态。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[isScrollable&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md#isScrollable)替代。
 
 **起始版本：** 8
 
@@ -445,7 +445,7 @@ isScrollable(): Promise<boolean>
 
 **废弃版本：** 9
 
-**替代接口：** [Component#isScrollable](arkts-test-uitest-component-c.md#isscrollable)
+**替代接口：** [isScrollable](arkts-test-uitest-component-c.md#isScrollable)
 
 <!--Device-UiComponent-isScrollable(): Promise<boolean>--><!--Device-UiComponent-isScrollable(): Promise<boolean>-End-->
 
@@ -455,9 +455,9 @@ isScrollable(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | - Promise对象，返回控件对象可滑动状态。true：可滑动。false：不可滑动。 |
+| Promise&lt;boolean&gt; | Promise对象，返回控件对象可滑动状态。true：可滑动。false：不可滑动。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // xxx.test.ets
@@ -482,7 +482,7 @@ async function demo() {
 isSelected(): Promise<boolean>
 ```
 
-获取控件对象被选中状态。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[isSelected\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_9+\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。
+获取控件对象被选中状态。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[isSelected&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md#isSelected)替代。
 
 **起始版本：** 8
 
@@ -490,7 +490,7 @@ isSelected(): Promise<boolean>
 
 **废弃版本：** 9
 
-**替代接口：** [Component#isSelected](arkts-test-uitest-component-c.md#isselected)
+**替代接口：** [isSelected](arkts-test-uitest-component-c.md#isSelected)
 
 <!--Device-UiComponent-isSelected(): Promise<boolean>--><!--Device-UiComponent-isSelected(): Promise<boolean>-End-->
 
@@ -500,9 +500,9 @@ isSelected(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | - Promise对象，返回控件对象被选中的状态。true：被选中。false：未被选中。 |
+| Promise&lt;boolean&gt; | Promise对象，返回控件对象被选中的状态。true：被选中。false：未被选中。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // xxx.test.ets
@@ -525,7 +525,7 @@ async function demo() {
 longClick(): Promise<void>
 ```
 
-控件对象进行长按操作。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[longClick\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_9+\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。
+控件对象进行长按操作。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[longClick&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md#longClick)替代。
 
 **起始版本：** 8
 
@@ -533,7 +533,7 @@ longClick(): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [Component#longClick](arkts-test-uitest-component-c.md#longclick)
+**替代接口：** [longClick](arkts-test-uitest-component-c.md#longClick)
 
 <!--Device-UiComponent-longClick(): Promise<void>--><!--Device-UiComponent-longClick(): Promise<void>-End-->
 
@@ -543,9 +543,9 @@ longClick(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | - Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // xxx.test.ets
@@ -564,7 +564,7 @@ async function demo() {
 scrollSearch(by: By): Promise<UiComponent>
 ```
 
-在控件上滑动查找目标控件（适用于List等支持滑动的控件）。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[scrollSearch\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_9+\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。
+在控件上滑动查找目标控件（适用于List等支持滑动的控件）。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[scrollSearch&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md#scrollSearch)替代。
 
 **起始版本：** 8
 
@@ -572,7 +572,7 @@ scrollSearch(by: By): Promise<UiComponent>
 
 **废弃版本：** 9
 
-**替代接口：** [Component#scrollSearch](arkts-test-uitest-component-c.md#scrollsearch)(on:
+**替代接口：** [scrollSearch](arkts-test-uitest-component-c.md#scrollSearch)(on: On)
 
 <!--Device-UiComponent-scrollSearch(by: By): Promise<UiComponent>--><!--Device-UiComponent-scrollSearch(by: By): Promise<UiComponent>-End-->
 
@@ -582,15 +582,15 @@ scrollSearch(by: By): Promise<UiComponent>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| by | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 目标控件的属性要求。 |
+| by | [By](arkts-test-uitest-by-c.md) | 是 | 目标控件的属性要求。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;\_\_\_MD\_LINK\_USD\_0\_\_\_&gt; | - Promise对象，返回目标控件对象。 |
+| Promise&lt;[UiComponent](arkts-test-uitest-uicomponent-c.md)&gt; | Promise对象，返回目标控件对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // xxx.test.ets

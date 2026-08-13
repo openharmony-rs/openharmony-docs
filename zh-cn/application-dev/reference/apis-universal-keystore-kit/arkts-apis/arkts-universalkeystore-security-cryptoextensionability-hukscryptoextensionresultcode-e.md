@@ -1,10 +1,12 @@
 # HuksCryptoExtensionResultCode
 
-[HuksCryptoExtensionResult]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_中的resultCode枚举值。
+[HuksCryptoExtensionResult](#HuksCryptoExtensionResultCode)中的resultCode枚举值。
 
 **起始版本：** 22
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-export const enum HuksCryptoExtensionResultCode--><!--Device-unnamed-export const enum HuksCryptoExtensionResultCode-End-->
 
@@ -21,6 +23,8 @@ HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL = 34800000
 **起始版本：** 22
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,6 +44,8 @@ UKey不存在。可能的原因： 1. UKey已被移除。 2. 密钥扩展陷入�
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-HuksCryptoExtensionResultCode-HUKS_CRYPTO_EXTENSION_ERR_UKEY_NOT_EXIST = 34800001--><!--Device-HuksCryptoExtensionResultCode-HUKS_CRYPTO_EXTENSION_ERR_UKEY_NOT_EXIST = 34800001-End-->
@@ -57,6 +63,8 @@ UKey驱动出现未知错误。
 **起始版本：** 22
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -76,6 +84,8 @@ UKey PIN码未认证，需要先认证Ukey PIN码。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-HuksCryptoExtensionResultCode-HUKS_CRYPTO_EXTENSION_ERR_PIN_NO_AUTH = 34800003--><!--Device-HuksCryptoExtensionResultCode-HUKS_CRYPTO_EXTENSION_ERR_PIN_NO_AUTH = 34800003-End-->
@@ -93,6 +103,8 @@ HUKS_CRYPTO_EXTENSION_ERR_HANDLE_NOT_EXIST = 34800004
 **起始版本：** 22
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -112,6 +124,8 @@ HUKS_CRYPTO_EXTENSION_ERR_HANDLE_UNAVAILABLE = 34800005
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-HuksCryptoExtensionResultCode-HUKS_CRYPTO_EXTENSION_ERR_HANDLE_UNAVAILABLE = 34800005--><!--Device-HuksCryptoExtensionResultCode-HUKS_CRYPTO_EXTENSION_ERR_HANDLE_UNAVAILABLE = 34800005-End-->
@@ -130,6 +144,8 @@ UKey PIN码错误，需要检查输入的PIN码。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-HuksCryptoExtensionResultCode-HUKS_CRYPTO_EXTENSION_ERR_PIN_INCORRECT = 34800006--><!--Device-HuksCryptoExtensionResultCode-HUKS_CRYPTO_EXTENSION_ERR_PIN_INCORRECT = 34800006-End-->
@@ -147,6 +163,8 @@ UKey PIN码被锁。可能的原因： PIN码输入错误次数过多。
 **起始版本：** 22
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -6,11 +6,13 @@
 function getAppVMMemoryInfo(): VMMemoryInfo
 ```
 
-��ȡVM�ڴ������Ϣ��
+获取VM内存相关信息。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-hidebug-function getAppVMMemoryInfo(): VMMemoryInfo--><!--Device-hidebug-function getAppVMMemoryInfo(): VMMemoryInfo-End-->
 
@@ -20,9 +22,9 @@ function getAppVMMemoryInfo(): VMMemoryInfo
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | ����VM�ڴ���Ϣ�� |
+| [VMMemoryInfo](arkts-performanceanalysis-hidebug-vmmemoryinfo-i.md) | 返回VM内存信息。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { hidebug } from '@kit.PerformanceAnalysisKit';

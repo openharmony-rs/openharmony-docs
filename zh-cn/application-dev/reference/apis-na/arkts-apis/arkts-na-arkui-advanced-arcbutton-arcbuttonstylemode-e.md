@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-export declare enum ArcButtonStyleMode--><!--Device-unnamed-export declare enum ArcButtonStyleMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
@@ -21,6 +23,8 @@ EMPHASIZED_LIGHT = 0
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ArcButtonStyleMode-EMPHASIZED_LIGHT = 0--><!--Device-ArcButtonStyleMode-EMPHASIZED_LIGHT = 0-End-->
 
@@ -38,6 +42,8 @@ EMPHASIZED_DARK = 1
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-ArcButtonStyleMode-EMPHASIZED_DARK = 1--><!--Device-ArcButtonStyleMode-EMPHASIZED_DARK = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
@@ -53,6 +59,8 @@ NORMAL_LIGHT = 2
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ArcButtonStyleMode-NORMAL_LIGHT = 2--><!--Device-ArcButtonStyleMode-NORMAL_LIGHT = 2-End-->
 
@@ -70,6 +78,8 @@ NORMAL_DARK = 3
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-ArcButtonStyleMode-NORMAL_DARK = 3--><!--Device-ArcButtonStyleMode-NORMAL_DARK = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
@@ -85,6 +95,8 @@ CUSTOM = 4
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ArcButtonStyleMode-CUSTOM = 4--><!--Device-ArcButtonStyleMode-CUSTOM = 4-End-->
 

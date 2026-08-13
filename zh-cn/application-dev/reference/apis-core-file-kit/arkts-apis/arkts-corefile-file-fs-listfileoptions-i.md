@@ -1,10 +1,12 @@
 # ListFileOptions
 
-可选项类型，支持listFile接口使用。
+可选项类型，支持ListFile接口使用。
 
-**起始版本：** 23
+**起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-export interface ListFileOptions--><!--Device-unnamed-export interface ListFileOptions-End-->
 
@@ -18,11 +20,15 @@ filter?: Filter
 
 文件过滤配置项。 可选，设置过滤条件。
 
-**类型：** Filter
+**类型：** [Filter](arkts-corefile-file-fs-filter-i.md)
 
-**起始版本：** 23
+**起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ListFileOptions-filter?: Filter--><!--Device-ListFileOptions-filter?: Filter-End-->
 
@@ -31,18 +37,22 @@ filter?: Filter
 ## listNum
 
 ```TypeScript
-listNum?: long
+listNum?: number
 ```
 
 列出文件名数量。可选，当设置0时，列出所有文件，默认为0。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
-<!--Device-ListFileOptions-listNum?: long--><!--Device-ListFileOptions-listNum?: long-End-->
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ListFileOptions-listNum?: number--><!--Device-ListFileOptions-listNum?: number-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -56,9 +66,13 @@ recursion?: boolean
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ListFileOptions-recursion?: boolean--><!--Device-ListFileOptions-recursion?: boolean-End-->
 

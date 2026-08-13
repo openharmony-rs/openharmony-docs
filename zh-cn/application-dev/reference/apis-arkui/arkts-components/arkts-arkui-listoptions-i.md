@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-interface ListOptions--><!--Device-unnamed-interface ListOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -16,7 +18,7 @@
 initialIndex?: number
 ```
 
-设置当前List初次加载时显示区域起始位置的item索引值。 默认值：0。当stackFromEnd为true时，默认值为总item个数-1。 **说明：** 设置为负数或超过了当前List最后一个item的索引值时视为无效取值，无效取值按默认值显示。 从API version 14开始，如果在List组件创建完成后首次布局前（如List的[onAttach]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_事件中），调用Scroller滚动控制器中不带动画的 scrollToIndex或scrollEdge方法，会覆盖initialIndex设置的值。 设置了initialIndex后，List从initialIndex对应的子组件开始布局，在这之前的子组件未参与布局，无法计算准确大小，因此通过 [currentOffset]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_接口获取到的List的滚动总偏移量通过估算得出，可能会有误差。可通过设置 [childrenMainSize]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_确保List的滚动总偏移量的准确性。
+设置当前List初次加载时显示区域起始位置的item索引值。 默认值：0。当stackFromEnd为true时，默认值为总item个数-1。 **说明：** 设置为负数或超过了当前List最后一个item的索引值时视为无效取值，无效取值按默认值显示。 从API version 14开始，如果在List组件创建完成后首次布局前（如List的onAttach事件中），调用Scroller滚动控制器中不带动画的 scrollToIndex或scrollEdge方法，会覆盖initialIndex设置的值。 设置了initialIndex后，List从initialIndex对应的子组件开始布局，在这之前的子组件未参与布局，无法计算准确大小，因此通过 currentOffset接口获取到的List的滚动总偏移量通过估算得出，可能会有误差。可通过设置 childrenMainSize确保List的滚动总偏移量的准确性。
 
 **类型：** number
 
@@ -25,6 +27,8 @@ initialIndex?: number
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -40,13 +44,15 @@ initialIndex?: number
 scroller?: Scroller
 ```
 
-可滚动组件的控制器。与List绑定后，可以通过它控制List的滚动。默认不绑定滚动控制器。 **说明：** 不允许和其他滚动类组件，如：[ArcList]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_、[List]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_、[Grid]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_、 [Scroll]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_和[WaterFlow]\_\_\_JSDOC\_LINK\_DESC\_USD\_4\_\_\_绑定同一个滚动控制对象。
+可滚动组件的控制器。与List绑定后，可以通过它控制List的滚动。默认不绑定滚动控制器。 **说明：** 不允许和其他滚动类组件，如：ArcList、List、Grid、 Scroll和WaterFlow绑定同一个滚动控制对象。
 
 **类型：** Scroller
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -72,6 +78,8 @@ space?: number | string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -95,6 +103,8 @@ spaceWidth?: Dimension
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

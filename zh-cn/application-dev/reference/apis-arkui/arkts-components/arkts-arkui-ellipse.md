@@ -16,6 +16,8 @@ use new function to set the value. Anonymous Object Rectification.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -28,7 +30,7 @@ use new function to set the value. Anonymous Object Rectification.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | ellipse options |
+| options | [EllipseOptions](arkts-arkui-ellipseoptions-i.md) | 否 | ellipse options |
 
 ## Ellipse
 
@@ -42,6 +44,8 @@ Ellipse(options?: EllipseOptions)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -54,7 +58,8 @@ Ellipse(options?: EllipseOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 椭圆绘制配置选项，包含宽度和高度设置。不传入时使用默认尺寸（宽度和高度均为0）。 \_\_\_HTML\_TAG\_USD\_0\_\_\_异常值undefined和null按照无效值处理，本次设置不生效。 |
+| options | [EllipseOptions](arkts-arkui-ellipseoptions-i.md) | 否 | 椭圆绘制配置选项，包含宽度和高度设置。不传入时使用默认尺寸（宽度和高度均为0）。 <br>异常值undefined和null按照无效值处理，本次设置不生效。 |
 
 ## 汇总
 
+- [EllipseOptions](arkts-arkui-ellipseoptions-i.md)

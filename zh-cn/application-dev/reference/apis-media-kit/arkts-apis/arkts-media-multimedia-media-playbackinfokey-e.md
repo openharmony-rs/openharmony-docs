@@ -2,9 +2,11 @@
 
 播放信息描述枚举。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-enum PlaybackInfoKey--><!--Device-unnamed-enum PlaybackInfoKey-End-->
 
@@ -18,9 +20,11 @@ SERVER_IP_ADDRESS = 'server_ip_address'
 
 表示服务器IP地址，其对应键值类型为string。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PlaybackInfoKey-SERVER_IP_ADDRESS = 'server_ip_address'--><!--Device-PlaybackInfoKey-SERVER_IP_ADDRESS = 'server_ip_address'-End-->
 
@@ -34,9 +38,11 @@ AVG_DOWNLOAD_RATE = 'average_download_rate'
 
 表示平均下载速率，其对应键值类型为number，单位为比特率（bps）。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PlaybackInfoKey-AVG_DOWNLOAD_RATE = 'average_download_rate'--><!--Device-PlaybackInfoKey-AVG_DOWNLOAD_RATE = 'average_download_rate'-End-->
 
@@ -50,9 +56,11 @@ DOWNLOAD_RATE = 'download_rate'
 
 表示1s的下载速率，其对应键值类型为number，单位为比特率（bps）。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PlaybackInfoKey-DOWNLOAD_RATE = 'download_rate'--><!--Device-PlaybackInfoKey-DOWNLOAD_RATE = 'download_rate'-End-->
 
@@ -66,9 +74,11 @@ IS_DOWNLOADING = 'is_downloading'
 
 表示下载状态，1表示在下载状态，0表示非下载状态（下载完成），其对应键值类型为number。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PlaybackInfoKey-IS_DOWNLOADING = 'is_downloading'--><!--Device-PlaybackInfoKey-IS_DOWNLOADING = 'is_downloading'-End-->
 
@@ -82,9 +92,11 @@ BUFFER_DURATION = 'buffer_duration'
 
 表示缓存数据的可播放时长，其对应键值类型为number，单位为秒（s）。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PlaybackInfoKey-BUFFER_DURATION = 'buffer_duration'--><!--Device-PlaybackInfoKey-BUFFER_DURATION = 'buffer_duration'-End-->
 

@@ -2,9 +2,11 @@
 
 表示被保活应用的应用类型。
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-appManager-export enum KeepAliveAppType--><!--Device-appManager-export enum KeepAliveAppType-End-->
 
@@ -18,11 +20,13 @@
 ALL = 0
 ```
 
-三方应用和系统应用。此选项只能作为[getKeepAliveBundles]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_接口的入参被调用。
+三方应用和系统应用。此选项只能作为[getKeepAliveBundles](arkts-ability-appmanager-getkeepalivebundles-f-sys.md#getKeepAliveBundles（系统接口）)接口的入参被调用。
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeepAliveAppType-ALL = 0--><!--Device-KeepAliveAppType-ALL = 0-End-->
 
@@ -38,9 +42,11 @@ THIRD_PARTY = 1
 
 三方应用。
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeepAliveAppType-THIRD_PARTY = 1--><!--Device-KeepAliveAppType-THIRD_PARTY = 1-End-->
 
@@ -56,9 +62,11 @@ SYSTEM = 2
 
 系统应用。
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeepAliveAppType-SYSTEM = 2--><!--Device-KeepAliveAppType-SYSTEM = 2-End-->
 

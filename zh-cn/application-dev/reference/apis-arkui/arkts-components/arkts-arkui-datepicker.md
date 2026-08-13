@@ -16,6 +16,8 @@ DatePicker(options?: DatePickerOptions)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-DatePickerInterface-(options?: DatePickerOptions): DatePickerAttribute--><!--Device-DatePickerInterface-(options?: DatePickerOptions): DatePickerAttribute-End-->
@@ -26,7 +28,12 @@ DatePicker(options?: DatePickerOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 配置日期选择器组件的参数。不传该参数时使用默认配置（start默认为Date('1970-01-01')， end默认为Date('2100-12-31')，selected默认为当前系统日期）。  |
+| options | [DatePickerOptions](arkts-arkui-datepickeroptions-i.md) | 否 | 配置日期选择器组件的参数。不传该参数时使用默认配置（start默认为Date('1970-01-01')， end默认为Date('2100-12-31')，selected默认为当前系统日期）。 |
 
 ## 汇总
 
+- [DatePickerDialogOptions](arkts-arkui-datepickerdialogoptions-i.md)
+- [DatePickerOptions](arkts-arkui-datepickeroptions-i.md)
+- [DatePickerResult](arkts-arkui-datepickerresult-i.md)
+- [LunarSwitchStyle](arkts-arkui-lunarswitchstyle-i.md)
+- [DatePickerMode](arkts-arkui-datepickermode-e.md)

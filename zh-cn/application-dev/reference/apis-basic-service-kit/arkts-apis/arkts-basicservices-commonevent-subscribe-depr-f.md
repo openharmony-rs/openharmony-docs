@@ -14,7 +14,7 @@ function subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback<Co
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.commonEventManager:commonEventManager.subscribe](arkts-basicservices-commoneventmanager-subscribe-f.md#subscribe)
+**替代接口：** [subscribe](arkts-basicservices-commoneventmanager-subscribe-f.md#subscribe)
 
 <!--Device-commonEvent-function subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback<CommonEventData>): void--><!--Device-commonEvent-function subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback<CommonEventData>): void-End-->
 
@@ -24,10 +24,10 @@ function subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback<Co
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| subscriber | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 表示订阅者对象。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;CommonEventData&gt; | 是 | 表示接收公共事件数据的回调方法。 |
+| subscriber | [CommonEventSubscriber](arkts-basicservices-commoneventsubscriber-commoneventsubscriber-i.md) | 是 | 表示订阅者对象。 |
+| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;[CommonEventData](arkts-basicservices-commoneventdata-commoneventdata-i.md)&gt; | 是 | 表示接收公共事件数据的回调方法。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import Base from '@ohos.base';

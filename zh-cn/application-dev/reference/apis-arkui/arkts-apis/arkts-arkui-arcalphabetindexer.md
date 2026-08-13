@@ -2,11 +2,11 @@
 
 ## 汇总
 
-### 函数
+### 类
 
 | 名称 | 说明 |
 | --- | --- |
-| [ArcAlphabetIndexer](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexer-f.md#arcalphabetindexer) | 创建弧形索引条实例，传入弧形索引条配置项参数。 |
+| [ArcAlphabetIndexerAttribute](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexerattribute-c.md) | 除支持通用属性外，还支持以下属性： 除支持通用事件外，还支持以下事件： |
 
 ### 接口
 
@@ -18,5 +18,5 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [OnSelectCallback](arkts-arkui-onselectcallback-t.md) | 定义[onSelect]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_中使用的回调类型。 |
+| [OnSelectCallback](arkts-arkui-onselectcallback-t.md) | 定义[onSelect](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexerattribute-c.md#onSelect)中使用的回调类型。 |
 

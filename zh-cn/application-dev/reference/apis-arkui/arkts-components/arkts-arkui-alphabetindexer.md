@@ -16,6 +16,8 @@ AlphabetIndexer(options: AlphabetIndexerOptions)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AlphabetIndexerInterface-(options: AlphabetIndexerOptions): AlphabetIndexerAttribute--><!--Device-AlphabetIndexerInterface-(options: AlphabetIndexerOptions): AlphabetIndexerAttribute-End-->
@@ -26,7 +28,12 @@ AlphabetIndexer(options: AlphabetIndexerOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 设置索引条组件参数。 |
+| options | [AlphabetIndexerOptions](arkts-arkui-alphabetindexeroptions-i.md) | 是 | 设置索引条组件参数。 |
 
 ## 汇总
 
+- [AlphabetIndexerOptions](arkts-arkui-alphabetindexeroptions-i.md)
+- [OnAlphabetIndexerPopupSelectCallback](arkts-arkui-onalphabetindexerpopupselectcallback-t.md)
+- [OnAlphabetIndexerRequestPopupDataCallback](arkts-arkui-onalphabetindexerrequestpopupdatacallback-t.md)
+- [OnAlphabetIndexerSelectCallback](arkts-arkui-onalphabetindexerselectcallback-t.md)
+- [IndexerAlign](arkts-arkui-indexeralign-e.md)

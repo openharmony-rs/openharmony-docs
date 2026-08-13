@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface TextPickerRangeContent--><!--Device-unnamed-declare interface TextPickerRangeContent-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -24,6 +26,8 @@ icon: string | Resource
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -38,7 +42,7 @@ icon: string | Resource
 text?: string | Resource
 ```
 
-文本信息。 > 默认值：空字符串 > **说明**： > > 1. 未设置该属性时，使用默认值。 > 2. 当文本长度大于列宽时，文本被截断。
+文本信息。 > 默认值：空字符串 > **说明：** > > 1. 未设置该属性时，使用默认值。 > 2. 当文本长度大于列宽时，文本被截断。
 
 **类型：** string \| Resource
 
@@ -47,6 +51,8 @@ text?: string | Resource
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

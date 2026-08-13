@@ -14,7 +14,7 @@ function addNotificationSlot(slot: NotificationSlot, callback: AsyncCallback<voi
 
 **废弃版本：** 9
 
-**替代接口：** [reminderAgentManager.addNotificationSlot](arkts-backgroundtasks-reminderagentmanager-addnotificationslot-f.md#addnotificationslot)
+**替代接口：** addNotificationSlot
 
 <!--Device-reminderAgent-function addNotificationSlot(slot: NotificationSlot, callback: AsyncCallback<void>): void--><!--Device-reminderAgent-function addNotificationSlot(slot: NotificationSlot, callback: AsyncCallback<void>): void-End-->
 
@@ -24,10 +24,10 @@ function addNotificationSlot(slot: NotificationSlot, callback: AsyncCallback<voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| slot | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | notification.slot实例，仅支持设置其type属性。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 异步回调。 |
+| slot | [NotificationSlot](../../apis-notification-kit/arkts-apis/arkts-notification-notificationslot-notificationslot-i.md) | 是 | notification.slot实例，仅支持设置其type属性。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 异步回调。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@ohos.base';
@@ -58,7 +58,7 @@ function addNotificationSlot(slot: NotificationSlot): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [reminderAgentManager.addNotificationSlot](arkts-backgroundtasks-reminderagentmanager-addnotificationslot-f.md#addnotificationslot)
+**替代接口：** addNotificationSlot
 
 <!--Device-reminderAgent-function addNotificationSlot(slot: NotificationSlot): Promise<void>--><!--Device-reminderAgent-function addNotificationSlot(slot: NotificationSlot): Promise<void>-End-->
 
@@ -68,7 +68,7 @@ function addNotificationSlot(slot: NotificationSlot): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| slot | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | notification.slot实例，仅支持设置其type属性。 |
+| slot | [NotificationSlot](../../apis-notification-kit/arkts-apis/arkts-notification-notificationslot-notificationslot-i.md) | 是 | notification.slot实例，仅支持设置其type属性。 |
 
 **返回值：**
 
@@ -76,7 +76,7 @@ function addNotificationSlot(slot: NotificationSlot): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise类型异步回调。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import notification from '@ohos.notification';

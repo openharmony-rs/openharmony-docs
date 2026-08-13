@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 <!--Device-contact-class PhoneNumber--><!--Device-contact-class PhoneNumber-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
@@ -16,13 +18,15 @@
 static readonly CUSTOM_LABEL: 0
 ```
 
-自定义邮箱类型，默认值为0。
+自定义电话类型，默认值为0。
 
 **类型：** 0
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -36,13 +40,15 @@ static readonly CUSTOM_LABEL: 0
 static readonly INVALID_LABEL_ID: -1
 ```
 
-无效邮箱类型，默认值为-1。
+无效电话类型，默认值为-1。
 
 **类型：** -1
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -64,6 +70,8 @@ static readonly NUM_ASSISTANT: 19
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PhoneNumber-static readonly NUM_ASSISTANT: 19--><!--Device-PhoneNumber-static readonly NUM_ASSISTANT: 19-End-->
@@ -83,6 +91,8 @@ static readonly NUM_CALLBACK: 8
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -104,6 +114,8 @@ static readonly NUM_CAR: 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PhoneNumber-static readonly NUM_CAR: 9--><!--Device-PhoneNumber-static readonly NUM_CAR: 9-End-->
@@ -123,6 +135,8 @@ static readonly NUM_COMPANY_MAIN: 10
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -144,6 +158,8 @@ static readonly NUM_FAX_HOME: 5
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PhoneNumber-static readonly NUM_FAX_HOME: 5--><!--Device-PhoneNumber-static readonly NUM_FAX_HOME: 5-End-->
@@ -163,6 +179,8 @@ static readonly NUM_FAX_WORK: 4
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -184,6 +202,8 @@ static readonly NUM_HOME: 1
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PhoneNumber-static readonly NUM_HOME: 1--><!--Device-PhoneNumber-static readonly NUM_HOME: 1-End-->
@@ -203,6 +223,8 @@ static readonly NUM_ISDN: 11
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -224,6 +246,8 @@ static readonly NUM_MAIN: 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PhoneNumber-static readonly NUM_MAIN: 12--><!--Device-PhoneNumber-static readonly NUM_MAIN: 12-End-->
@@ -243,6 +267,8 @@ static readonly NUM_MMS: 20
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -264,6 +290,8 @@ static readonly NUM_MOBILE: 2
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PhoneNumber-static readonly NUM_MOBILE: 2--><!--Device-PhoneNumber-static readonly NUM_MOBILE: 2-End-->
@@ -283,6 +311,8 @@ static readonly NUM_OTHER: 7
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -304,6 +334,8 @@ static readonly NUM_OTHER_FAX: 13
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PhoneNumber-static readonly NUM_OTHER_FAX: 13--><!--Device-PhoneNumber-static readonly NUM_OTHER_FAX: 13-End-->
@@ -323,6 +355,8 @@ static readonly NUM_PAGER: 6
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -344,6 +378,8 @@ static readonly NUM_RADIO: 14
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PhoneNumber-static readonly NUM_RADIO: 14--><!--Device-PhoneNumber-static readonly NUM_RADIO: 14-End-->
@@ -363,6 +399,8 @@ static readonly NUM_TELEX: 15
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -384,6 +422,8 @@ static readonly NUM_TTY_TDD: 16
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PhoneNumber-static readonly NUM_TTY_TDD: 16--><!--Device-PhoneNumber-static readonly NUM_TTY_TDD: 16-End-->
@@ -403,6 +443,8 @@ static readonly NUM_WORK: 3
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -424,6 +466,8 @@ static readonly NUM_WORK_MOBILE: 17
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PhoneNumber-static readonly NUM_WORK_MOBILE: 17--><!--Device-PhoneNumber-static readonly NUM_WORK_MOBILE: 17-End-->
@@ -444,6 +488,8 @@ static readonly NUM_WORK_PAGER: 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PhoneNumber-static readonly NUM_WORK_PAGER: 18--><!--Device-PhoneNumber-static readonly NUM_WORK_PAGER: 18-End-->
@@ -456,13 +502,15 @@ static readonly NUM_WORK_PAGER: 18
 labelId?: number
 ```
 
-邮箱的类型。
+电话号码的类型。
 
 **类型：** number
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -476,13 +524,15 @@ labelId?: number
 labelName?: string
 ```
 
-邮箱的类型名称。
+电话号码的类型名称。
 
 **类型：** string
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -503,6 +553,8 @@ phoneNumber: string
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

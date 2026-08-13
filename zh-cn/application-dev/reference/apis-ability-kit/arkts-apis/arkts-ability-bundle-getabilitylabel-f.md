@@ -26,9 +26,9 @@ function getAbilityLabel(bundleName: string, abilityName: string, callback: Asyn
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 应用Bundle名称。 |
 | abilityName | string | 是 | Ability名称。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;string&gt; | 是 | 程序启动作为入参的回调函数，返回应用名称信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 程序启动作为入参的回调函数，返回应用名称信息。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import bundle from '@ohos.bundle';
@@ -79,7 +79,7 @@ function getAbilityLabel(bundleName: string, abilityName: string): Promise<strin
 | --- | --- |
 | Promise&lt;string&gt; | Promise形式返回应用名称信息。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import bundle from '@ohos.bundle';

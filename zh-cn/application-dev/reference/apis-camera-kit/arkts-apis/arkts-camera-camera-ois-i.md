@@ -2,13 +2,15 @@
 
 OIS (Optical Image Stabilization) interface.
 
-**继承/实现关系：** OIS extends [OISQuery](arkts-camera-camera-oisquery-i.md)
+**继承/实现关系：** OIS extends [OISQuery](arkts-camera-camera-oisquery-i.md#OISQuery)
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
 
-<!--Device-camera-interface OIS extends OISQuery--><!--Device-camera-interface OIS extends OISQuery-End-->
+**废弃版本：** -1
+
+<!--Device-camera-interface OIS--><!--Device-camera-interface OIS-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -22,7 +24,9 @@ Sets the OIS mode.
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -36,7 +40,7 @@ Sets the OIS mode.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | The OIS mode to set. |
+| mode | [OISMode](arkts-camera-camera-oismode-e.md) | 是 | The OIS mode to set. |
 
 **错误码：**
 
@@ -47,12 +51,6 @@ Sets the OIS mode.
 
 ## setOISModeCustom
 
-ArkTS-Dyn:
-```TypeScript
-setOISModeCustom(pitch: number, yaw: number): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 setOISModeCustom(pitch: double, yaw: double): void
 ```
@@ -61,7 +59,9 @@ Sets custom OIS bias values for each axis.
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -75,8 +75,8 @@ Sets custom OIS bias values for each axis.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pitch | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：double | 是 | Bias value for pitch axis. |
-| yaw | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：double | 是 | Bias value for yaw axis. |
+| pitch | double | 是 | Bias value for pitch axis. |
+| yaw | double | 是 | Bias value for yaw axis. |
 
 **错误码：**
 

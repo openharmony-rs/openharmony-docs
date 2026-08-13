@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface FileMapping--><!--Device-unnamed-declare interface FileMapping-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -22,6 +24,8 @@ capacity(): number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FileMapping-capacity(): number--><!--Device-FileMapping-capacity(): number-End-->
@@ -32,17 +36,17 @@ capacity(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | - Size of the file mapping area, in bytes. |
+| number | Size of the file mapping area, in bytes. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900020 | Invalid argument |
-| 13900050 | Internal resource error |
 | 13900052 | Mmap buffer released |
+| 13900050 | Internal resource error |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let filePath = pathDir + "/test.txt";
@@ -66,6 +70,8 @@ flip(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FileMapping-flip(): void--><!--Device-FileMapping-flip(): void-End-->
@@ -77,10 +83,10 @@ flip(): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900020 | Invalid argument |
-| 13900050 | Internal resource error |
 | 13900052 | Mmap buffer released |
+| 13900050 | Internal resource error |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let filePath = pathDir + "/test.txt";
@@ -111,6 +117,8 @@ getLimit(): number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FileMapping-getLimit(): number--><!--Device-FileMapping-getLimit(): number-End-->
@@ -121,17 +129,17 @@ getLimit(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | - 当前可读写区域上界值，单位为Byte。 |
+| number | 当前可读写区域上界值，单位为Byte。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900020 | Invalid argument |
-| 13900050 | Internal resource error |
 | 13900052 | Mmap buffer released |
+| 13900050 | Internal resource error |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let filePath = pathDir + "/test.txt";
@@ -155,6 +163,8 @@ getPosition(): number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FileMapping-getPosition(): number--><!--Device-FileMapping-getPosition(): number-End-->
@@ -165,17 +175,17 @@ getPosition(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | - Current location of the file mapping area. |
+| number | Current location of the file mapping area. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900020 | Invalid argument |
-| 13900050 | Internal resource error |
 | 13900052 | Mmap buffer released |
+| 13900050 | Internal resource error |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let filePath = pathDir + "/test.txt";
@@ -199,6 +209,8 @@ msync(): Promise<void>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FileMapping-msync(): Promise<void>--><!--Device-FileMapping-msync(): Promise<void>-End-->
@@ -209,20 +221,20 @@ msync(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | - Promise对象。无返回值。 |
+| Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900011 | Out of memory |
-| 13900014 | Device or resource busy |
 | 13900020 | Invalid argument |
-| 13900050 | Internal resource error |
 | 13900052 | Mmap buffer released |
 | 13900055 | Mmap operation not supported |
+| 13900050 | Internal resource error |
+| 13900014 | Device or resource busy |
+| 13900011 | Out of memory |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -281,6 +293,8 @@ msync(position: number, length: number): Promise<void>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FileMapping-msync(position: number, length: number): Promise<void>--><!--Device-FileMapping-msync(position: number, length: number): Promise<void>-End-->
@@ -298,20 +312,20 @@ msync(position: number, length: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | - Promise对象。无返回值。 |
+| Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900011 | Out of memory |
-| 13900014 | Device or resource busy |
 | 13900020 | Invalid argument |
-| 13900050 | Internal resource error |
 | 13900052 | Mmap buffer released |
 | 13900055 | Mmap operation not supported |
+| 13900050 | Internal resource error |
+| 13900014 | Device or resource busy |
+| 13900011 | Out of memory |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -370,6 +384,8 @@ msyncSync(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FileMapping-msyncSync(): void--><!--Device-FileMapping-msyncSync(): void-End-->
@@ -380,14 +396,14 @@ msyncSync(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900011 | Out of memory |
-| 13900014 | Device or resource busy |
 | 13900020 | Invalid argument |
-| 13900050 | Internal resource error |
 | 13900052 | Mmap buffer released |
 | 13900055 | Mmap operation not supported |
+| 13900050 | Internal resource error |
+| 13900014 | Device or resource busy |
+| 13900011 | Out of memory |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -418,6 +434,8 @@ msyncSync(position: number, length: number): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FileMapping-msyncSync(position: number, length: number): void--><!--Device-FileMapping-msyncSync(position: number, length: number): void-End-->
@@ -435,14 +453,14 @@ msyncSync(position: number, length: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900011 | Out of memory |
-| 13900014 | Device or resource busy |
 | 13900020 | Invalid argument |
-| 13900050 | Internal resource error |
 | 13900052 | Mmap buffer released |
 | 13900055 | Mmap operation not supported |
+| 13900050 | Internal resource error |
+| 13900014 | Device or resource busy |
+| 13900011 | Out of memory |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -473,6 +491,8 @@ read(buffer: ArrayBuffer, length?: number): number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FileMapping-read(buffer: ArrayBuffer, length?: number): number--><!--Device-FileMapping-read(buffer: ArrayBuffer, length?: number): number-End-->
@@ -490,19 +510,19 @@ read(buffer: ArrayBuffer, length?: number): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | - 返回实际读取的数据长度，单位为Byte。 |
+| number | 返回实际读取的数据长度，单位为Byte。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900020 | Invalid argument |
-| 13900050 | Internal resource error |
-| 13900051 | Buffer read/write out of bounds |
 | 13900052 | Mmap buffer released |
 | 13900054 | Mmap buffer is inaccessible |
+| 13900050 | Internal resource error |
+| 13900051 | Buffer read/write out of bounds |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let filePath = pathDir + "/test.txt";
@@ -529,6 +549,8 @@ read(position: number, buffer: ArrayBuffer, length?: number): number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FileMapping-read(position: number, buffer: ArrayBuffer, length?: number): number--><!--Device-FileMapping-read(position: number, buffer: ArrayBuffer, length?: number): number-End-->
@@ -547,19 +569,19 @@ read(position: number, buffer: ArrayBuffer, length?: number): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | - 返回实际读取的数据长度，单位为Byte。 |
+| number | 返回实际读取的数据长度，单位为Byte。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900020 | Invalid argument |
-| 13900050 | Internal resource error |
-| 13900051 | Buffer read/write out of bounds |
 | 13900052 | Mmap buffer released |
 | 13900054 | Mmap buffer is inaccessible |
+| 13900050 | Internal resource error |
+| 13900051 | Buffer read/write out of bounds |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let filePath = pathDir + "/test.txt";
@@ -586,6 +608,8 @@ remaining(): number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FileMapping-remaining(): number--><!--Device-FileMapping-remaining(): number-End-->
@@ -596,17 +620,17 @@ remaining(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | - 剩余可读或可写的字节数，单位为Byte。 |
+| number | 剩余可读或可写的字节数，单位为Byte。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900020 | Invalid argument |
-| 13900050 | Internal resource error |
 | 13900052 | Mmap buffer released |
+| 13900050 | Internal resource error |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let filePath = pathDir + "/test.txt";
@@ -633,6 +657,8 @@ setLimit(limit: number): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FileMapping-setLimit(limit: number): void--><!--Device-FileMapping-setLimit(limit: number): void-End-->
@@ -650,10 +676,10 @@ setLimit(limit: number): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900020 | Invalid argument |
-| 13900050 | Internal resource error |
 | 13900052 | Mmap buffer released |
+| 13900050 | Internal resource error |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let filePath = pathDir + "/test.txt";
@@ -677,6 +703,8 @@ setPosition(position: number): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FileMapping-setPosition(position: number): void--><!--Device-FileMapping-setPosition(position: number): void-End-->
@@ -694,10 +722,10 @@ setPosition(position: number): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900020 | Invalid argument |
-| 13900050 | Internal resource error |
 | 13900052 | Mmap buffer released |
+| 13900050 | Internal resource error |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let filePath = pathDir + "/test.txt";
@@ -721,6 +749,8 @@ unmap(): Promise<void>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FileMapping-unmap(): Promise<void>--><!--Device-FileMapping-unmap(): Promise<void>-End-->
@@ -731,7 +761,7 @@ unmap(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | - Promise对象。无返回值。 |
+| Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 **错误码：**
 
@@ -740,7 +770,7 @@ unmap(): Promise<void>
 | 13900020 | Invalid argument |
 | 13900050 | Internal resource error |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -795,6 +825,8 @@ unmapSync(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FileMapping-unmapSync(): void--><!--Device-FileMapping-unmapSync(): void-End-->
@@ -808,7 +840,7 @@ unmapSync(): void
 | 13900020 | Invalid argument |
 | 13900050 | Internal resource error |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -834,6 +866,8 @@ write(data: ArrayBuffer, length?: number): number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FileMapping-write(data: ArrayBuffer, length?: number): number--><!--Device-FileMapping-write(data: ArrayBuffer, length?: number): number-End-->
@@ -851,20 +885,20 @@ write(data: ArrayBuffer, length?: number): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | - 返回实际写入的长度，单位为Byte。 |
+| number | 返回实际写入的长度，单位为Byte。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900020 | Invalid argument |
-| 13900050 | Internal resource error |
-| 13900051 | Buffer read/write out of bounds |
 | 13900052 | Mmap buffer released |
 | 13900053 | Read-only mmap buffer |
 | 13900054 | Mmap buffer is inaccessible |
+| 13900050 | Internal resource error |
+| 13900051 | Buffer read/write out of bounds |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let filePath = pathDir + "/test.txt";
@@ -892,6 +926,8 @@ write(position: number, data: ArrayBuffer, length?: number): number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FileMapping-write(position: number, data: ArrayBuffer, length?: number): number--><!--Device-FileMapping-write(position: number, data: ArrayBuffer, length?: number): number-End-->
@@ -910,20 +946,20 @@ write(position: number, data: ArrayBuffer, length?: number): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | - 返回实际写入的长度，单位为Byte。 |
+| number | 返回实际写入的长度，单位为Byte。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900020 | Invalid argument |
-| 13900050 | Internal resource error |
-| 13900051 | Buffer read/write out of bounds |
 | 13900052 | Mmap buffer released |
 | 13900053 | Read-only mmap buffer |
 | 13900054 | Mmap buffer is inaccessible |
+| 13900050 | Internal resource error |
+| 13900051 | Buffer read/write out of bounds |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let filePath = pathDir + "/test.txt";

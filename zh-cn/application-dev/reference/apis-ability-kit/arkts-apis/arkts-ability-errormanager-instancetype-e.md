@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 <!--Device-errorManager-export enum InstanceType--><!--Device-errorManager-export enum InstanceType-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
@@ -21,6 +23,8 @@ TASKPOOL = 2
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -40,6 +44,8 @@ WORKER = 1
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-InstanceType-WORKER = 1--><!--Device-InstanceType-WORKER = 1-End-->
@@ -58,6 +64,8 @@ MAIN = 0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-InstanceType-MAIN = 0--><!--Device-InstanceType-MAIN = 0-End-->
@@ -70,11 +78,13 @@ MAIN = 0
 CUSTOM = 3
 ```
 
-表示用户通过\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_从本机代码创建的虚拟机实例。
+表示用户通过[napi_create_ark_runtime](../../../reference/native-lib/napi.md#napi_create_ark_runtime)从本机代码创建的虚拟机实例。
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 

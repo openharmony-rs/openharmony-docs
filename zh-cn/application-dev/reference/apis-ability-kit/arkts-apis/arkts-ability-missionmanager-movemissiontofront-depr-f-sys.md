@@ -14,7 +14,7 @@ function moveMissionToFront(missionId: number, callback: AsyncCallback<void>): v
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.missionManager/missionManager#moveMissionToFront
+**替代接口：** [moveMissionToFront](arkts-ability-missionmanager-movemissiontofront-f-sys.md#moveMissionToFront（系统接口）)
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
@@ -29,9 +29,9 @@ function moveMissionToFront(missionId: number, callback: AsyncCallback<void>): v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | missionId | number | 是 | 任务ID。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数，当把指定任务id的任务切到前台成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，当把指定任务id的任务切到前台成功，err为undefined，否则为错误对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import missionManager from '@ohos.application.missionManager';
@@ -68,7 +68,7 @@ function moveMissionToFront(missionId: number, options: StartOptions, callback: 
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.missionManager/missionManager#moveMissionToFront
+**替代接口：** [moveMissionToFront](arkts-ability-missionmanager-movemissiontofront-f-sys.md#moveMissionToFront（系统接口）)
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
@@ -83,10 +83,10 @@ function moveMissionToFront(missionId: number, options: StartOptions, callback: 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | missionId | number | 是 | 任务ID。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 启动参数选项，用于指定任务切到前台时的窗口模式，设备ID等。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数，当把指定任务id的任务切到前台成功，err为undefined，否则为错误对象。 |
+| options | [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md) | 是 | 启动参数选项，用于指定任务切到前台时的窗口模式，设备ID等。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，当把指定任务id的任务切到前台成功，err为undefined，否则为错误对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import missionManager from '@ohos.application.missionManager';
@@ -123,7 +123,7 @@ function moveMissionToFront(missionId: number, options?: StartOptions): Promise<
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.missionManager/missionManager#moveMissionToFront
+**替代接口：** [moveMissionToFront](arkts-ability-missionmanager-movemissiontofront-f-sys.md#moveMissionToFront（系统接口）)
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
@@ -138,7 +138,7 @@ function moveMissionToFront(missionId: number, options?: StartOptions): Promise<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | missionId | number | 是 | 任务ID。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 启动参数选项，用于指定任务切到前台时的窗口模式，设备ID等。 |
+| options | [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md) | 否 | 启动参数选项，用于指定任务切到前台时的窗口模式，设备ID等。 |
 
 **返回值：**
 
@@ -146,7 +146,7 @@ function moveMissionToFront(missionId: number, options?: StartOptions): Promise<
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import missionManager from '@ohos.application.missionManager';

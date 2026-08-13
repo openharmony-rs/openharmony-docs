@@ -8,11 +8,13 @@ const ADDRESS_SANITIZER: string
 
 应用地址越界事件。系统事件名称常量。 **原子化服务API：** 从API version 12开始，该参数支持在原子化服务中使用。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-event-const ADDRESS_SANITIZER: string--><!--Device-event-const ADDRESS_SANITIZER: string-End-->
 
@@ -26,11 +28,13 @@ const APP_CRASH: string
 
 应用崩溃事件。系统事件名称常量。 **原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-event-const APP_CRASH: string--><!--Device-event-const APP_CRASH: string-End-->
 
@@ -44,11 +48,13 @@ const APP_FREEZE: string
 
 应用冻屏事件。系统事件名称常量。 **原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-event-const APP_FREEZE: string--><!--Device-event-const APP_FREEZE: string-End-->
 
@@ -62,11 +68,13 @@ const APP_HICOLLIE: string
 
 应用任务执行超时事件。系统事件名称常量。 **原子化服务API：** 从API version 21开始，该参数支持在原子化服务中使用。
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-event-const APP_HICOLLIE: string--><!--Device-event-const APP_HICOLLIE: string-End-->
 
@@ -80,11 +88,13 @@ const APP_KILLED: string
 
 应用终止事件。系统事件名称常量。 **原子化服务API：** 从API version 20开始，该参数支持在原子化服务中使用。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-event-const APP_KILLED: string--><!--Device-event-const APP_KILLED: string-End-->
 
@@ -98,11 +108,13 @@ const APP_LAUNCH: string
 
 应用启动耗时事件。系统事件名称常量。 **原子化服务API：** 从API version 12开始，该参数支持在原子化服务中使用。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-event-const APP_LAUNCH: string--><!--Device-event-const APP_LAUNCH: string-End-->
 
@@ -116,11 +128,13 @@ const AUDIO_JANK_FRAME: string
 
 应用音频卡顿事件。系统事件名称常量。 **原子化服务API：** 从API version 21开始，该参数支持在原子化服务中使用。
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-event-const AUDIO_JANK_FRAME: string--><!--Device-event-const AUDIO_JANK_FRAME: string-End-->
 
@@ -134,11 +148,13 @@ const BATTERY_USAGE: string
 
 应用24h功耗器件分解统计事件。系统事件名称常量。 **原子化服务API：** 从API version 12开始，该参数支持在原子化服务中使用。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-event-const BATTERY_USAGE: string--><!--Device-event-const BATTERY_USAGE: string-End-->
 
@@ -152,11 +168,13 @@ const CPU_USAGE_HIGH: string
 
 应用CPU高负载事件。系统事件名称常量。 **原子化服务API：** 从API version 12开始，该参数支持在原子化服务中使用。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-event-const CPU_USAGE_HIGH: string--><!--Device-event-const CPU_USAGE_HIGH: string-End-->
 
@@ -170,9 +188,11 @@ const DISTRIBUTED_SERVICE_START: string
 
 分布式服务启动事件。预留的应用事件名称常量。 **原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -188,11 +208,13 @@ const MAIN_THREAD_JANK: string
 
 应用主线程超时事件。系统事件名称常量。 **原子化服务API：** 从API version 12开始，该参数支持在原子化服务中使用。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-event-const MAIN_THREAD_JANK: string--><!--Device-event-const MAIN_THREAD_JANK: string-End-->
 
@@ -206,11 +228,13 @@ const RESOURCE_OVERLIMIT: string
 
 应用资源泄漏事件。系统事件名称常量。 **原子化服务API：** 从API version 12开始，该参数支持在原子化服务中使用。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-event-const RESOURCE_OVERLIMIT: string--><!--Device-event-const RESOURCE_OVERLIMIT: string-End-->
 
@@ -226,7 +250,9 @@ ArkWeb抛滑丢帧事件。系统事件名称常量。 **原子化服务API：**
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -242,11 +268,13 @@ const SCROLL_JANK: string
 
 应用滑动丢帧事件。系统事件名称常量。 **原子化服务API：** 从API version 12开始，该参数支持在原子化服务中使用。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-event-const SCROLL_JANK: string--><!--Device-event-const SCROLL_JANK: string-End-->
 
@@ -260,9 +288,11 @@ const USER_LOGIN: string
 
 用户登录事件。预留的应用事件名称常量。 **原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -278,9 +308,11 @@ const USER_LOGOUT: string
 
 用户登出事件。预留的应用事件名称常量。 **原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -298,7 +330,9 @@ const appFreezeWarning: string
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

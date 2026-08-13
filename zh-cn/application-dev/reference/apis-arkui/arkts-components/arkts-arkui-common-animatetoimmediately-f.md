@@ -10,6 +10,8 @@ declare function animateToImmediately(value: AnimateParam, event: () => void): v
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -22,6 +24,6 @@ declare function animateToImmediately(value: AnimateParam, event: () => void): v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | Animation settings. |
+| value | [AnimateParam](arkts-arkui-animateparam-i.md) | 是 | Animation settings. |
 | event | () =&gt; void | 是 | Closure function that displays the animation. The system automatically inserts a transition animation for state changes caused by the closure function. |
 

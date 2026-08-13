@@ -14,7 +14,7 @@ Matrix的逆函数，可以返回一个当前矩阵对象的逆矩阵，即效�
 
 **废弃版本：** 10
 
-**替代接口：** [matrix4.Matrix4Transit.invert](arkts-arkui-matrix4-matrix4transit-i.md#invert)
+**替代接口：** [invert](arkts-arkui-matrix4-matrix4transit-i.md#invert)
 
 <!--Device-matrix4-function invert(): Matrix4Transit--><!--Device-matrix4-function invert(): Matrix4Transit-End-->
 
@@ -24,5 +24,5 @@ Matrix的逆函数，可以返回一个当前矩阵对象的逆矩阵，即效�
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 当前矩阵的逆矩阵对象。 |
+| Matrix4Transit | 当前矩阵的逆矩阵对象。 |
 

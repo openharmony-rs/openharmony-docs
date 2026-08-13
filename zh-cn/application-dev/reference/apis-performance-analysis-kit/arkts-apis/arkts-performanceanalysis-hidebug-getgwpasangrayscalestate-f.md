@@ -6,11 +6,13 @@
 function getGwpAsanGrayscaleState(): number
 ```
 
-��ȡ��ǰGWP-ASanʣ��ʹ��������
+获取当前GWP-ASan剩余使能天数。
 
-**起始版本：** 20
+**起始版本：** 22
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为22。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 <!--Device-hidebug-function getGwpAsanGrayscaleState(): number--><!--Device-hidebug-function getGwpAsanGrayscaleState(): number-End-->
 
@@ -20,9 +22,9 @@ function getGwpAsanGrayscaleState(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | ��ȡ��ǰGWP-ASanʣ��ʹ������������ǰδʹ�ܣ�����ֵ0�� |
+| number | 获取当前GWP-ASan剩余使能天数。若当前未使能，返回值0。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -44,11 +46,13 @@ taskpool.execute(getGwpAsanStateTask).then((remainDays: Object) => {
 function getGwpAsanGrayscaleState(): int
 ```
 
-��ȡ��ǰGWP-ASanʣ��ʹ��������
+获取当前GWP-ASan剩余使能天数。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-hidebug-function getGwpAsanGrayscaleState(): int--><!--Device-hidebug-function getGwpAsanGrayscaleState(): int-End-->
 
@@ -58,9 +62,9 @@ function getGwpAsanGrayscaleState(): int
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | ��ȡ��ǰGWP-ASanʣ��ʹ������������ǰδʹ�ܣ�����ֵ0�� |
+| int | 获取当前GWP-ASan剩余使能天数。若当前未使能，返回值0。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { hidebug } from '@kit.PerformanceAnalysisKit';

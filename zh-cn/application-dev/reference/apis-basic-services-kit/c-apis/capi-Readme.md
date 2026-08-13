@@ -1,4 +1,6 @@
 - 头文件
+    - [oh_pasteboard_err_code.h](capi-oh-pasteboard-err-code-h.md)
+    - [oh_pasteboard.h](capi-oh-pasteboard-h.md)
     - [syscap_ndk.h](capi-syscap-ndk-h.md)
     - [deviceinfo.h](capi-deviceinfo-h.md)
     - [os_account.h](capi-os-account-h.md)
@@ -10,6 +12,7 @@
     - [oh_commonevent.h](capi-oh-commonevent-h.md)
     - [oh_commonevent_support.h](capi-oh-commonevent-support-h.md)
 - 模块
+    - [Pasteboard](capi-pasteboard.md)
     - [SyscapNdk](capi-syscapndk.md)
     - [DeviceInfo](capi-deviceinfo.md)
     - [OsAccount](capi-osaccount.md)
@@ -19,6 +22,10 @@
     - [Print](capi-print.md)
     - [OH_CommonEvent](capi-oh-commonevent.md)
 - 结构体
+    - [Pasteboard_ProgressInfo](capi-pasteboard-pasteboard-progressinfo.md)
+    - [Pasteboard_GetDataParams](capi-pasteboard-pasteboard-getdataparams.md)
+    - [OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md)
+    - [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)
     - [Scan_ScannerDevice](capi-oh-scan-scan-scannerdevice.md)
     - [Scan_PictureScanProgress](capi-oh-scan-scan-picturescanprogress.md)
     - [Scan_ScannerOptions](capi-oh-scan-scan-scanneroptions.md)

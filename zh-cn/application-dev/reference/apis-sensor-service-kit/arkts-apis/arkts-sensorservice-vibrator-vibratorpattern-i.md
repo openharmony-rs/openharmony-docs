@@ -1,10 +1,12 @@
 # VibratorPattern
 
-马达振动序列，每个events代表一个振动事件。通过[VibratorPatternBuilder.build]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_方法生成，作为 [VibrateFromPattern]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_的pattern参数传入 [startVibration]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_ 接口触发振动。
+马达振动序列，每个events代表一个振动事件。通过[VibratorPatternBuilder.build](arkts-sensorservice-vibrator-vibratorpatternbuilder-c.md#build)方法生成，作为 [VibrateFromPattern](arkts-sensorservice-vibrator-vibratefrompattern-i.md#VibrateFromPattern)的pattern参数传入 [startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startVibration) 接口触发振动。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-vibrator-interface VibratorPattern--><!--Device-vibrator-interface VibratorPattern-End-->
 
@@ -16,13 +18,15 @@
 events: Array<VibratorEvent>
 ```
 
-振动事件数组。由[VibratorPatternBuilder]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_的addContinuousEvent和addTransientEvent方法添加后 通过build方法生成。同一VibratorPattern中多个VibratorEvent的time值不能重叠。
+振动事件数组。由[VibratorPatternBuilder](arkts-sensorservice-vibrator-vibratorpatternbuilder-c.md#VibratorPatternBuilder)的addContinuousEvent和addTransientEvent方法添加后 通过build方法生成。同一VibratorPattern中多个VibratorEvent的time值不能重叠。
 
-**类型：** Array&lt;VibratorEvent&gt;
+**类型：** Array&lt;[VibratorEvent](arkts-sensorservice-vibrator-vibratorevent-i.md)&gt;
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-VibratorPattern-events: Array<VibratorEvent>--><!--Device-VibratorPattern-events: Array<VibratorEvent>-End-->
 
@@ -38,9 +42,11 @@ time: int
 
 **类型：** int
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-VibratorPattern-time: int--><!--Device-VibratorPattern-time: int-End-->
 

@@ -14,7 +14,7 @@ function unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.commonEventManager:commonEventManager.unsubscribe](arkts-basicservices-commoneventmanager-unsubscribe-f.md#unsubscribe)
+**替代接口：** [unsubscribe](arkts-basicservices-commoneventmanager-unsubscribe-f.md#unsubscribe)
 
 <!--Device-commonEvent-function unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback<void>): void--><!--Device-commonEvent-function unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback<void>): void-End-->
 
@@ -24,10 +24,10 @@ function unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| subscriber | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 表示订阅者对象。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 否 | 表示取消订阅的回调方法。 |
+| subscriber | [CommonEventSubscriber](arkts-basicservices-commoneventsubscriber-commoneventsubscriber-i.md) | 是 | 表示订阅者对象。 |
+| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 否 | 表示取消订阅的回调方法。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import Base from '@ohos.base';

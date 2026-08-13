@@ -2,9 +2,11 @@
 
 URLParams是一个用于解析、构造和操作URL参数的实用类。该类提供了统一的接口来处理URL查询参数。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-url-class URLParams--><!--Device-url-class URLParams-End-->
 
@@ -16,11 +18,13 @@ URLParams是一个用于解析、构造和操作URL参数的实用类。该类�
 $_iterator(): IterableIterator<[string, string]>
 ```
 
-返回一个ES6的迭代器，迭代器的每一项都是一个JavaScript Array。Array的第一项是name，Array的第二项是value。
+返回一个迭代器，迭代器的每一项都是一个Array。Array的第一项是name，Array的第二项是value。该方法与[Symbol.iterator]行为一致，均返回键值对的迭代器。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -32,9 +36,9 @@ $_iterator(): IterableIterator<[string, string]>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;[string, string]&gt; | 返回一个ES6的迭代器。 |
+| IterableIterator&lt;[string, string]&gt; | 返回一个迭代器，迭代器的每一项为包含name和value的[string, string]数组。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let paramsObject = new url.URLParams('fod=bay&edg=bap');
@@ -49,11 +53,13 @@ for (let pair of paramsObject) {
 [Symbol.iterator](): IterableIterator<[string, string]>
 ```
 
-获取一个ES6迭代器。迭代器的每一项都是一个JavaScript数组，数组的第一项和第二项分别是键和值。
+获取一个迭代器，迭代器的每一项都是一个JavaScript数组，数组的第一项和第二项分别是键和值。
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -65,9 +71,9 @@ for (let pair of paramsObject) {
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;[string, string]&gt; | 返回一个ES6迭代器。迭代器的每一项都是一个JavaScript Array。 |
+| IterableIterator&lt;[string, string]&gt; | 返回一个迭代器，迭代器的每一项为包含name和value的[string, string]数组。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 构造URLParams对象
@@ -88,11 +94,13 @@ for (let pair of iter) {
 append(name: string, value: string): void
 ```
 
-将新的键值对插入到查询字符串。与[set]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_方法不同，append不会替换已存在的键名对应的值， 而是追加一个新的键值对，允许同一键名存在多个值。如需替换已有键值，请使用set方法。
+将新的键值对插入到查询字符串。与[set](#set)方法不同，append不会替换已存在的键名对应的值， 而是追加一个新的键值对，允许同一键名存在多个值。如需替换已有键值，请使用set方法。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -107,7 +115,7 @@ append(name: string, value: string): void
 | name | string | 是 | 需要插入搜索参数的键名。 |
 | value | string | 是 | 需要插入搜索参数的值。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 解析URL字符串
@@ -130,6 +138,8 @@ ArkTS-Sta: constructor(init?: [string, string][] | Record&lt;string, string&gt; 
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-URLParams-constructor(init?: string[][] | Record<string, string> | string | URLParams)--><!--Device-URLParams-constructor(init?: string[][] | Record<string, string> | string | URLParams)-End-->
@@ -140,9 +150,9 @@ ArkTS-Sta: constructor(init?: [string, string][] | Record&lt;string, string&gt; 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| init | string[][] \| Record&lt;string, string&gt; \| string \| URLParams | 否 | 入参对象。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- string[][]：字符串二维数组。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- Record&lt;string, string&gt;：对象列表。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- string：URL查询参数字符串。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_3\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- URLParams：URLParams实例对象。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_4\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- 默认值：null。 |
+| init | string[][] \| Record&lt;string, string&gt; \| string \| [URLParams](arkts-arkts-url-urlparams-c.md) | 否 | 入参对象。 &lt;br/&gt;- string[][]：字符串二维数组。 &lt;br/&gt;- Record&lt;string, string&gt;：对象列表。 &lt;br/&gt;- string：URL查询参数字符串。 &lt;br/&gt;- URLParams：URLParams实例对象。 &lt;br/&gt;- 默认值：null。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -189,7 +199,9 @@ constructor(init?: [string, string][] | Record<string, string> | string | URLPar
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -201,7 +213,7 @@ constructor(init?: [string, string][] | Record<string, string> | string | URLPar
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| init | [string, string][] \| Record&lt;string, string&gt; \| string \| URLParams | 否 | init init |
+| init | [string, string][] \| Record&lt;string, string&gt; \| string \| [URLParams](arkts-arkts-url-urlparams-c.md) | 否 | init init |
 
 ## delete
 
@@ -211,9 +223,11 @@ delete(name: string): void
 
 删除指定名称的所有键值对。如果指定名称不存在，则不做任何操作。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -225,9 +239,9 @@ delete(name: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| name | string | 是 | 需要删除的键值名称。 |
+| name | string | 是 | 需要删除的键名。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 解析URL字符串
@@ -246,9 +260,11 @@ entries(): IterableIterator<[string, string]>
 
 返回一个ES6的迭代器，迭代器的每一项都是一个Array。Array的第一项是name，Array的第二项是value。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -262,7 +278,7 @@ entries(): IterableIterator<[string, string]>
 | --- | --- |
 | IterableIterator&lt;[string, string]&gt; | 返回一个ES6的迭代器。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -302,11 +318,13 @@ console.info(arr[1]); // value1
 forEach(callbackFn: (value: string, key: string, searchParams: URLParams) => void, thisArg?: Object): void
 ```
 
-通过回调函数来遍历URLParams实例对象上的键值对。
+通过回调函数按照插入顺序遍历URLParams实例对象上的键值对。
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -318,10 +336,10 @@ forEach(callbackFn: (value: string, key: string, searchParams: URLParams) => voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: string, key: string, searchParams: URLParams) =&gt; void | 是 | 回调函数。 |
+| callbackFn | (value: string, key: string, searchParams: URLParams) =&gt; void | 是 | 遍历键值对时执行的回调函数，对每个键值对调用一次。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值，默认值是本对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 解析URL
@@ -342,7 +360,9 @@ forEach(callbackFn: UrlCbFn): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -354,9 +374,9 @@ forEach(callbackFn: UrlCbFn): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调函数。 |
+| callbackFn | [UrlCbFn](arkts-arkts-url-urlcbfn-t.md) | 是 | 遍历键值对时执行的回调函数，对每个键值对调用一次。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let params = new url.URLParams("key1=value1&key2=value2")
@@ -384,6 +404,8 @@ get(name: string): string | null
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-URLParams-get(name: string): string | null--><!--Device-URLParams-get(name: string): string | null-End-->
@@ -394,7 +416,7 @@ get(name: string): string | null
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| name | string | 是 | 指定键值对的名称。 |
+| name | string | 是 | 指定键名。 |
 
 **返回值：**
 
@@ -402,7 +424,7 @@ get(name: string): string | null
 | --- | --- |
 | string | 返回第一个值，如果没找到，返回 null。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let paramsObject = new url.URLParams('name=Jonathan&age=18');
@@ -417,11 +439,13 @@ let absentValue = paramsObject.get('abc'); // undefined
 get(name: string): string | undefined
 ```
 
-根据指定的键获取第一个键值对的值。
+根据指定的键获取第一个键值对的值。 > **说明：** > > 若查找一个不存在的键值对名称时返回值为undefined。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -439,7 +463,7 @@ get(name: string): string | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 返回按名称找到的第一个值。 |
+| string | 返回按名称找到的第一个值。 如果未找到值，则返回undefined。 |
 
 ## getAll
 
@@ -447,11 +471,13 @@ get(name: string): string | undefined
 getAll(name: string): string[]
 ```
 
-获取指定名称的所有键对应值的集合。
+获取指定名称的所有键对应值的集合。若查找一个不存在的键值对名称时返回值为空数组。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -463,7 +489,7 @@ getAll(name: string): string[]
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| name | string | 是 | 指定的键值名称。 |
+| name | string | 是 | 指定的键名。 |
 
 **返回值：**
 
@@ -471,7 +497,7 @@ getAll(name: string): string[]
 | --- | --- |
 | string[] | 返回指定名称的所有键对应值的集合。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 解析URL并构造URLParams对象
@@ -490,9 +516,11 @@ has(name: string): boolean
 
 判断一个指定的键名对应的值是否存在。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -512,7 +540,7 @@ has(name: string): boolean
 | --- | --- |
 | boolean | 是否存在相对应的key值，存在返回true，否则返回false。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 解析URL字符串
@@ -529,11 +557,13 @@ let result = paramsObject.has('bard');
 keys(): IterableIterator<string>
 ```
 
-返回一个包含所有键值对的name的ES6迭代器。
+返回一个包含所有键值对的name的迭代器。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -545,9 +575,9 @@ keys(): IterableIterator<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;string&gt; | 返回一个包含所有键值对的name的ES6迭代器。 |
+| IterableIterator&lt;string&gt; | 返回一个包含所有键值对的name的迭代器。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 构造URLParams对象
@@ -568,11 +598,13 @@ for (let key of keys) {
 set(name: string, value: string): void
 ```
 
-将与name关联的URLSearchParams对象中的值设置为value。 如果存在名称为name的键值对，请将第一个键值对的值设置为value并删除所有其他值。如果不是，则将键值对附加到查询字符串。
+将与name关联的URLParams对象中的值设置为value。 如果存在名称为name的键值对，请将第一个键值对的值设置为value并删除所有其他值。如果不存在该键名，则将键值对附加到查询字符串。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -584,10 +616,10 @@ set(name: string, value: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| name | string | 是 | 将要设置的参数的键值名。 |
+| name | string | 是 | 将要设置的参数的键名。 |
 | value | string | 是 | 所要设置的参数值。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -601,11 +633,13 @@ paramsObject.set('baz', '3'); // Add a third parameter.
 sort(): void
 ```
 
-对包含在此对象中的所有键值对进行排序。排序顺序是根据键的Unicode代码点。该方法使用稳定的排序算法（保留具有相等键的键值对之间的相对顺序）。
+对包含在此对象中的所有键值对进行排序，适用于URL规范化场景（如URL签名、缓存键生成等需要参数顺序一致的场景）。 排序顺序是根据键的Unicode代码点。该方法使用稳定的排序算法（保留具有相等键的键值对之间的相对顺序）。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -613,7 +647,7 @@ sort(): void
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**示例：**
+## 示例
 
 ```TypeScript
 let paramsObject = new url.URLParams("c=3&a=9&b=4&d=2"); // Create a test URLParams object
@@ -629,9 +663,11 @@ toString(): string
 
 返回序列化为字符串的搜索参数，必要时对字符进行百分比编码。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -645,7 +681,7 @@ toString(): string
 | --- | --- |
 | string | 返回序列化为字符串的搜索参数，必要时对字符进行百分比编码。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 解析URL字符串
@@ -664,11 +700,13 @@ console.info(params.toString()); // Output 'fod=1&bard=2&fod=3'
 values(): IterableIterator<string>
 ```
 
-返回一个包含所有键值对的value的ES6迭代器。
+返回一个包含所有键值对的value的迭代器。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -680,9 +718,9 @@ values(): IterableIterator<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;string&gt; | 返回一个包含所有键值对的value的ES6迭代器。 |
+| IterableIterator&lt;string&gt; | 返回一个包含所有键值对的value的迭代器。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 构造URLParams对象

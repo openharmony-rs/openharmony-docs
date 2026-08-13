@@ -6,6 +6,8 @@ TextContentControllerBase
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare abstract class TextContentControllerBase--><!--Device-unnamed-declare abstract class TextContentControllerBase-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -22,6 +24,8 @@ Add a text.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
@@ -35,7 +39,7 @@ Add a text.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | text | string | 是 | text value. |
-| textOperationOptions | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | operation info. |
+| textOperationOptions | [TextContentControllerOptions](arkts-arkui-textcontentcontrolleroptions-i.md) | 否 | operation info. |
 
 **返回值：**
 
@@ -54,6 +58,8 @@ Clear the content of preview.
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -75,6 +81,8 @@ deleteBackward(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
@@ -95,6 +103,8 @@ Delete text in TextRange.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
@@ -107,7 +117,7 @@ Delete text in TextRange.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| range | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | range for deleting. |
+| range | TextRange | 否 | range for deleting. |
 
 ## getCaretOffset
 
@@ -115,11 +125,13 @@ Delete text in TextRange.
 getCaretOffset() : CaretOffset
 ```
 
-Get the index and relative position of the CaretOffset. \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_NOTE\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_: \_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_If this API is called when the caret position is updated in the current frame, it will not take effect. \_\_\_HTML\_TAG\_DESC\_USD\_4\_\_\_For the Search component, the returned position information is the offset of the first character relative to the search icon in the component. \_\_\_HTML\_TAG\_DESC\_USD\_5\_\_\_If no text is entered in the Search component, the return value contains the position information relative to the component. \_\_\_HTML\_TAG\_DESC\_USD\_6\_\_\_The location information in the return value is the location of the caret relative to the editable component. \_\_\_HTML\_TAG\_DESC\_USD\_7\_\_\_
+Get the index and relative position of the CaretOffset. &lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: &lt;br&gt;If this API is called when the caret position is updated in the current frame, it will not take effect. &lt;br&gt;For the Search component, the returned position information is the offset of the first character relative to the search icon in the component. &lt;br&gt;If no text is entered in the Search component, the return value contains the position information relative to the component. &lt;br&gt;The location information in the return value is the location of the caret relative to the editable component. &lt;/p&gt;
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -133,7 +145,7 @@ Get the index and relative position of the CaretOffset. \_\_\_HTML\_TAG\_DESC\_U
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | index and relative position of the CaretOffset. |
+| [CaretOffset](arkts-arkui-caretoffset-i.md) | index and relative position of the CaretOffset. |
 
 ## getSelection
 
@@ -147,6 +159,8 @@ Gets the selected range of text content.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
@@ -159,7 +173,7 @@ Gets the selected range of text content.
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | range for selecting. |
+| TextRange | range for selecting. |
 
 ## getTextContentLineCount
 
@@ -172,6 +186,8 @@ Get the lines number of the text content. The getTextContentLineCount type is us
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -193,11 +209,13 @@ Get the lines number of the text content. The getTextContentLineCount type is us
 getTextContentRect() : RectResult
 ```
 
-Get the start and end positions of the text content. \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_NOTE\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_: \_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_If no text is entered, the return value contains the position information, but the size is 0. \_\_\_HTML\_TAG\_DESC\_USD\_4\_\_\_The position information is the offset of the first character relative to the editable area. \_\_\_HTML\_TAG\_DESC\_USD\_5\_\_\_For the Search component, the returned position information is the offset of the first character relative to the search icon in the component. \_\_\_HTML\_TAG\_DESC\_USD\_6\_\_\_If there is input, the width in the return value is the fixed width of the editable area. \_\_\_HTML\_TAG\_DESC\_USD\_7\_\_\_
+Get the start and end positions of the text content. &lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: &lt;br&gt;If no text is entered, the return value contains the position information, but the size is 0. &lt;br&gt;The position information is the offset of the first character relative to the editable area. &lt;br&gt;For the Search component, the returned position information is the offset of the first character relative to the search icon in the component. &lt;br&gt;If there is input, the width in the return value is the fixed width of the editable area. &lt;/p&gt;
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -211,7 +229,7 @@ Get the start and end positions of the text content. \_\_\_HTML\_TAG\_DESC\_USD\
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Text content rect.The unit of the return value is pixel. |
+| [RectResult](arkts-arkui-rectresult-i.md) | Text content rect.The unit of the return value is pixel. |
 
 ## scrollToVisible
 
@@ -225,6 +243,8 @@ scrollToVisible(range?: TextRange): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
@@ -237,7 +257,7 @@ scrollToVisible(range?: TextRange): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| range | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 可见区范围。若该参数非法，则本方法不会生效。 |
+| range | TextRange | 否 | 可见区范围。 若该参数非法，则本方法不会生效。 |
 
 ## setStyledPlaceholder
 
@@ -251,6 +271,8 @@ setStyledPlaceholder(styledString: StyledString): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
@@ -263,5 +285,5 @@ setStyledPlaceholder(styledString: StyledString): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| styledString | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 设置提示文本样式的属性字符串若传入的入参无效，则本接口不生效 |
+| styledString | StyledString | 是 | 设置提示文本样式的属性字符串 若传入的入参无效，则本接口不生效 |
 

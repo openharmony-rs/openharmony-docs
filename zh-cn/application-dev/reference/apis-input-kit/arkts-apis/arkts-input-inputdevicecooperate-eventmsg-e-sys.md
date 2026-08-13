@@ -1,6 +1,6 @@
 # EventMsg（系统接口）
 
-键鼠穿越事件。 > **说明：** > > 从 API version 9开始支持，从API version 23开始废弃。建议使用[CooperateMessage]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替 > 代。
+键鼠穿越事件。 > **说明：** > > 从 API version 9开始支持，从API version 23开始废弃。建议使用[CooperateMessage](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-cooperatemessage-i-sys.md#CooperateMessage（系统接口）)替 > 代。
 
 **起始版本：** 9
 
@@ -8,7 +8,7 @@
 
 **废弃版本：** 23
 
-**替代接口：** ohos.cooperate/cooperate.CooperateState
+**替代接口：** [CooperateState](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-cooperatestate-e-sys.md#CooperateState（系统接口）)
 
 <!--Device-inputDeviceCooperate-enum EventMsg--><!--Device-inputDeviceCooperate-enum EventMsg-End-->
 
@@ -30,7 +30,7 @@ MSG_COOPERATE_INFO_START = 200
 
 **废弃版本：** 23
 
-**替代接口：** ohos.cooperate/cooperate.CooperateState#COOPERATE_ACTIVATE
+**替代接口：** [COOPERATE_ACTIVATE](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-cooperatestate-e-sys.md#COOPERATE_ACTIVATE)
 
 <!--Device-EventMsg-MSG_COOPERATE_INFO_START = 200--><!--Device-EventMsg-MSG_COOPERATE_INFO_START = 200-End-->
 
@@ -52,7 +52,7 @@ MSG_COOPERATE_INFO_SUCCESS = 201
 
 **废弃版本：** 23
 
-**替代接口：** ohos.cooperate/cooperate.CooperateState#COOPERATE_ACTIVATE_SUCCESS
+**替代接口：** [COOPERATE_ACTIVATE_SUCCESS](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-cooperatestate-e-sys.md#COOPERATE_ACTIVATE_SUCCESS)
 
 <!--Device-EventMsg-MSG_COOPERATE_INFO_SUCCESS = 201--><!--Device-EventMsg-MSG_COOPERATE_INFO_SUCCESS = 201-End-->
 
@@ -74,7 +74,7 @@ MSG_COOPERATE_INFO_FAIL = 202
 
 **废弃版本：** 23
 
-**替代接口：** ohos.cooperate/cooperate.CooperateState#COOPERATE_ACTIVATE_FAILURE
+**替代接口：** [COOPERATE_ACTIVATE_FAILURE](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-cooperatestate-e-sys.md#COOPERATE_ACTIVATE_FAILURE)
 
 <!--Device-EventMsg-MSG_COOPERATE_INFO_FAIL = 202--><!--Device-EventMsg-MSG_COOPERATE_INFO_FAIL = 202-End-->
 
@@ -96,7 +96,7 @@ MSG_COOPERATE_STATE_ON = 500
 
 **废弃版本：** 23
 
-**替代接口：** ohos.cooperate/cooperate.CooperateState#COOPERATE_PREPARE
+**替代接口：** [COOPERATE_PREPARE](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-cooperatestate-e-sys.md#COOPERATE_PREPARE)
 
 <!--Device-EventMsg-MSG_COOPERATE_STATE_ON = 500--><!--Device-EventMsg-MSG_COOPERATE_STATE_ON = 500-End-->
 
@@ -118,7 +118,7 @@ MSG_COOPERATE_STATE_OFF = 501
 
 **废弃版本：** 23
 
-**替代接口：** ohos.cooperate/cooperate.CooperateState#COOPERATE_UNPREPARE
+**替代接口：** [COOPERATE_UNPREPARE](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-cooperatestate-e-sys.md#COOPERATE_UNPREPARE)
 
 <!--Device-EventMsg-MSG_COOPERATE_STATE_OFF = 501--><!--Device-EventMsg-MSG_COOPERATE_STATE_OFF = 501-End-->
 

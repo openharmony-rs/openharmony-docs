@@ -2,9 +2,11 @@
 
 表示用于创建系统账号的可选参数。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-osAccount-interface CreateOsAccountOptions--><!--Device-osAccount-interface CreateOsAccountOptions-End-->
 
@@ -22,9 +24,11 @@ allowedPreinstalledBundles?: Array<string>
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 19
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为19；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-CreateOsAccountOptions-allowedPreinstalledBundles?: Array<string>--><!--Device-CreateOsAccountOptions-allowedPreinstalledBundles?: Array<string>-End-->
 
@@ -42,9 +46,11 @@ disallowedPreinstalledBundles?: Array<string>
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 19
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为19；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-CreateOsAccountOptions-disallowedPreinstalledBundles?: Array<string>--><!--Device-CreateOsAccountOptions-disallowedPreinstalledBundles?: Array<string>-End-->
 
@@ -55,18 +61,20 @@ disallowedPreinstalledBundles?: Array<string>
 ## shortName
 
 ```TypeScript
-shortName: string
+shortName?: string
 ```
 
 表示账号短名称（用作个人文件夹目录）。 **约束：** 1. 不允许出现的字符：&lt; &gt; | : " * ? / \ 2. 不允许独立出现的字符串：.或.. 3. 长度不超过255个字符。
 
 **类型：** string
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-<!--Device-CreateOsAccountOptions-shortName: string--><!--Device-CreateOsAccountOptions-shortName: string-End-->
+**废弃版本：** -1
+
+<!--Device-CreateOsAccountOptions-shortName?: string--><!--Device-CreateOsAccountOptions-shortName?: string-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -84,7 +92,9 @@ token?: Uint8Array
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 <!--Device-CreateOsAccountOptions-token?: Uint8Array--><!--Device-CreateOsAccountOptions-token?: Uint8Array-End-->
 

@@ -14,7 +14,7 @@ function getThermalLevel(): ThermalLevel
 
 **废弃版本：** 9
 
-**替代接口：** [thermal.getLevel](arkts-basicservices-thermal-getlevel-f.md#getlevel)
+**替代接口：** [getLevel](arkts-basicservices-thermal-getlevel-f.md#getLevel)
 
 <!--Device-thermal-function getThermalLevel(): ThermalLevel--><!--Device-thermal-function getThermalLevel(): ThermalLevel-End-->
 
@@ -24,9 +24,9 @@ function getThermalLevel(): ThermalLevel
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 热档位信息。 |
+| [ThermalLevel](arkts-basicservices-thermal-thermallevel-e.md) | 热档位信息。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let level = thermal.getThermalLevel();

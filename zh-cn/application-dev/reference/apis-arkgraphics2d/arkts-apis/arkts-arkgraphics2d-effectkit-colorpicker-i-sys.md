@@ -1,10 +1,12 @@
 # ColorPicker
 
-取色类，用于从一张图像数据中获取它的主要颜色。在调用ColorPicker的方法前，需要先通过 [createColorPicker]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_创建一个ColorPicker实例。
+取色类，用于从一张图像数据中获取它的主要颜色，适用于UI主题色提取、图片配色分析、智能配色推荐等场景， 可帮助开发者基于图片内容动态生成和谐的配色方案。在调用ColorPicker的方法前，需要先通过 [createColorPicker](arkts-arkgraphics2d-effectkit-createcolorpicker-f.md#createColorPicker)创建一个ColorPicker实例。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-effectKit-interface ColorPicker--><!--Device-effectKit-interface ColorPicker-End-->
 
@@ -16,11 +18,13 @@
 discriminatePictureLightDegree(): PictureLightDegree
 ```
 
-获取图片的明亮程度。
+获取图片的明亮程度。当无法判别图片明亮程度时，返回UNKNOWN_LIGHT_COLOR_DEGREE_PICTURE。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -36,9 +40,9 @@ discriminatePictureLightDegree(): PictureLightDegree
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | - 图像颜色明亮程度。 |
+| [PictureLightDegree](arkts-arkgraphics2d-effectkit-picturelightdegree-e-sys.md) | 图像颜色明亮程度。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { image } from "@kit.ImageKit";
@@ -68,12 +72,6 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 ## getAlphaZeroTransparentProportion
 
-ArkTS-Dyn:
-```TypeScript
-getAlphaZeroTransparentProportion(): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getAlphaZeroTransparentProportion(): double
 ```
@@ -82,7 +80,9 @@ getAlphaZeroTransparentProportion(): double
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
@@ -96,7 +96,7 @@ getAlphaZeroTransparentProportion(): double
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：double | 完全透明的像素占比，比例的取值范围为[0,1]。 |
+| double | 完全透明的像素占比，比例的取值范围为[0, 1]。 |
 
 **错误码：**
 
@@ -104,7 +104,7 @@ getAlphaZeroTransparentProportion(): double
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { image } from "@kit.ImageKit";
@@ -138,13 +138,15 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 getComplexityDegree(): PictureComplexityDegree
 ```
 
-获取图像内容复杂度。
+获取图像内容复杂度。当无法判别图像内容复杂度时，返回默认值UNKNOWN_COMPLEXITY_DEGREE_PICTURE。
 
-**起始版本：** 22
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为22；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**卡片能力：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
+**废弃版本：** -1
+
+**卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ColorPicker-getComplexityDegree(): PictureComplexityDegree--><!--Device-ColorPicker-getComplexityDegree(): PictureComplexityDegree-End-->
 
@@ -156,7 +158,7 @@ getComplexityDegree(): PictureComplexityDegree
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 图像内容复杂度。 |
+| [PictureComplexityDegree](arkts-arkgraphics2d-effectkit-picturecomplexitydegree-e-sys.md) | 图像内容复杂度。 |
 
 **错误码：**
 
@@ -164,7 +166,7 @@ getComplexityDegree(): PictureComplexityDegree
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { image } from "@kit.ImageKit";
@@ -198,11 +200,13 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 getDeepenImmersionColor(): Color
 ```
 
-生成与背景色融合且比背景色更深的强沉浸感颜色，并将结果写入[Color]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_里。该接口通过颜色混合算法，创建一种既与背景色协调又具有更强沉浸感的颜色效果。
+生成与背景色融合且比背景色更深的强沉浸感颜色，并将结果写入[Color](arkts-arkgraphics2d-effectkit-color-i.md#Color)里。该接口通过颜色混合算法，创建一种既与背景色协调又具有更强沉浸感的颜色效果。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -218,9 +222,9 @@ getDeepenImmersionColor(): Color
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | - Color实例，即图像强沉浸色对应的颜色值，失败时返回null。 |
+| Color | Color实例，即图像强沉浸色对应的颜色值。当图像处理失败或无法生成沉浸色时返回null。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { image } from "@kit.ImageKit";
@@ -254,11 +258,13 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 getImmersiveBackgroundColor(): Color
 ```
 
-生成能够创造沉浸式视觉效果的沉浸式背景色，并将结果写入[Color]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_里。该接口基于主色生成适合作为沉浸式背景的颜色值。
+生成能够创造沉浸式视觉效果的沉浸式背景色，并将结果写入[Color](arkts-arkgraphics2d-effectkit-color-i.md#Color)里。该接口基于主色生成适合作为沉浸式背景的颜色值。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -274,9 +280,9 @@ getImmersiveBackgroundColor(): Color
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | - Color实例，即图像沉浸式背景色对应的颜色值，失败时返回null。 |
+| Color | Color实例，即图像沉浸式背景色对应的颜色值。当图像处理失败或无法生成沉浸式背景色时返回null。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { image } from "@kit.ImageKit";
@@ -310,11 +316,13 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 getImmersiveForegroundColor(): Color
 ```
 
-生成能够创造沉浸式视觉效果的沉浸式前景色，并将结果写入[Color]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_里。该接口基于主色生成适合作为沉浸式前景的颜色值。
+生成能够创造沉浸式视觉效果的沉浸式前景色，并将结果写入[Color](arkts-arkgraphics2d-effectkit-color-i.md#Color)里。该接口基于主色生成适合作为沉浸式前景的颜色值。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -330,9 +338,9 @@ getImmersiveForegroundColor(): Color
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | - Color实例，即图像沉浸式前景色对应的颜色值，失败时返回null。 |
+| Color | Color实例，即图像沉浸式前景色对应的颜色值。当图像处理失败或无法生成沉浸式前景色时返回null。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { image } from "@kit.ImageKit";
@@ -366,11 +374,13 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 getMorandiShadowColor(): Color
 ```
 
-从图像的主色中获取莫兰迪阴影色，并将结果写入[Color]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。该接口通过特定的颜色转换算法，将主色调转换为具有莫兰迪风格的阴影色调。
+从图像的主色中获取莫兰迪阴影色，并将结果写入[Color](arkts-arkgraphics2d-effectkit-color-i.md#Color)。该接口通过特定的颜色转换算法，将主色调转换为具有莫兰迪风格的阴影色调。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -386,9 +396,9 @@ getMorandiShadowColor(): Color
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | - Color实例，即图像莫兰迪阴影色对应的颜色值，失败时返回null。 |
+| Color | Color实例，即图像莫兰迪阴影色对应的颜色值。当图像处理失败或无法获取莫兰迪阴影色时返回null。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { image } from "@kit.ImageKit";
@@ -422,11 +432,13 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 getReverseColor(): Color
 ```
 
-基于图像亮度判别结果生成反向颜色，并将结果写入[Color]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_里。根据 [discriminatePictureLightDegree]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_接口获取的图片明亮类型得到一个反色， 仅极亮色图片（EXTREMELY\_LIGHT\_COLOR\_PICTURE）类型返回黑色，其他类型返回白色。用于界面主题或对比度计算。
+基于图像亮度判别结果生成反向颜色，并将结果写入[Color](arkts-arkgraphics2d-effectkit-color-i.md#Color)里。根据 [discriminatePictureLightDegree](#discriminatePictureLightDegree)接口获取的图片明亮类型得到一个反色， 仅极亮色图片（EXTREMELY_LIGHT_COLOR_PICTURE）类型返回黑色，其他类型返回白色。用于界面主题或对比度计算。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -442,9 +454,9 @@ getReverseColor(): Color
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | - Color实例，即图像反向颜色对应的颜色值，失败时返回null。 |
+| Color | Color实例，即图像反向颜色对应的颜色值。当图像处理失败或无法生成反向颜色时返回null。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { image } from "@kit.ImageKit";
@@ -478,13 +490,15 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 getShadeDegree(): PictureShadeDegree
 ```
 
-获取图像颜色深浅度。
+获取图像颜色深浅度。当无法判别图像颜色深浅度时，返回默认值UNKNOWN_SHADE_DEGREE_PICTURE。
 
-**起始版本：** 22
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为22；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**卡片能力：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
+**废弃版本：** -1
+
+**卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ColorPicker-getShadeDegree(): PictureShadeDegree--><!--Device-ColorPicker-getShadeDegree(): PictureShadeDegree-End-->
 
@@ -496,7 +510,7 @@ getShadeDegree(): PictureShadeDegree
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 图像颜色深浅度。 |
+| [PictureShadeDegree](arkts-arkgraphics2d-effectkit-pictureshadedegree-e-sys.md) | 图像颜色深浅度。 |
 
 **错误码：**
 
@@ -504,7 +518,7 @@ getShadeDegree(): PictureShadeDegree
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { image } from "@kit.ImageKit";
@@ -534,23 +548,19 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 ## getTopProportionColorsAndPercentage
 
-ArkTS-Dyn:
-```TypeScript
-getTopProportionColorsAndPercentage(colorCount: number): Map<Color | null, number | null>
-```
-
-ArkTS-Sta:
 ```TypeScript
 getTopProportionColorsAndPercentage(colorCount: int): Map<Color | null, double | null>
 ```
 
-读取图像占比靠前的颜色值以及对应比例，个数由\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_指定，结果写入Color与其对应比例的字典中，使用同步方式返回。
+同步返回图像占比靠前的颜色值及其对应比例，个数由`colorCount`指定。
 
-**起始版本：** 22
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为22；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**卡片能力：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
+**废弃版本：** -1
+
+**卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ColorPicker-getTopProportionColorsAndPercentage(colorCount: int): Map<Color | null, double | null>--><!--Device-ColorPicker-getTopProportionColorsAndPercentage(colorCount: int): Map<Color | null, double | null>-End-->
 
@@ -562,13 +572,13 @@ getTopProportionColorsAndPercentage(colorCount: int): Map<Color | null, double |
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| colorCount | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 需要取主色及对应比例的个数，向下取整。在OpenHarmony 6.1之前，取值范围为[1, 10]，取色个数大于10视为取前10个；从OpenHarmony 6.1开始，取值范围为[1, 20]，取色个数大于20视为取前20个。 |
+| colorCount | int | 是 | 颜色值及对应比例的个数，向下取整。在OpenHarmony 6.1之前，取值范围为[1, 10]， 取色个数大于10视为取前10个；从OpenHarmony 6.1开始，取值范围为[1, 20]，取色个数大于20视为取前20个。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: Map&lt;Color \| null, number \| null&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：Map&lt;Color \| null, double \| null&gt; | 图像占比前\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_的颜色值与对应比例的字典，比例的取值范围为[0,1]。 |
+| Map&lt;Color \| null, double \| null&gt; | 图像占比前`colorCount`的颜色值与对应比例的字典，比例的取值范围为[0,1]。 - 当实际读取的特征色个数小于`colorCount`时，字典大小为实际特征色个数。 - 取色失败或取色个数小于1返回`Map()`。 |
 
 **错误码：**
 
@@ -576,7 +586,7 @@ getTopProportionColorsAndPercentage(colorCount: int): Map<Color | null, double |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { image } from "@kit.ImageKit";

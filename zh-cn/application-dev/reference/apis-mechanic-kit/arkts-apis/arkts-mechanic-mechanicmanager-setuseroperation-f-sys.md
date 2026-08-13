@@ -8,9 +8,11 @@ function setUserOperation(operation: Operation, mac: string, params: string): vo
 
 设置用户操作
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.CONNECT_MECHANIC_HARDWARE
 
@@ -24,7 +26,7 @@ function setUserOperation(operation: Operation, mac: string, params: string): vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| operation | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 操作类型 |
+| operation | Operation | 是 | 操作类型 |
 | mac | string | 是 | MAC address. |
 | params | string | 是 | Operation parameters. |
 
@@ -36,7 +38,7 @@ function setUserOperation(operation: Operation, mac: string, params: string): vo
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 | [33300001](../errorcode-mechanic.md#33300001-系统错误) | Service exception. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 console.info('User operate');

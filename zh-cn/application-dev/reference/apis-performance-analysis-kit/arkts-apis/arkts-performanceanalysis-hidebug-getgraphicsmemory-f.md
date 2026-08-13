@@ -6,13 +6,15 @@
 function getGraphicsMemory(): Promise<int>
 ```
 
-��ȡӦ���Դ��ܴ�С��gl + graph����ʹ��Promise�첽�ص���
+获取应用显存总大小（gl + graph），使用Promise异步回调。
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-hidebug-function getGraphicsMemory(): Promise<int>--><!--Device-hidebug-function getGraphicsMemory(): Promise<int>-End-->
 
@@ -22,7 +24,7 @@ function getGraphicsMemory(): Promise<int>
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: Promise&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：Promise&lt;int&gt; | promise���󣬷���Ӧ���Դ��ܴ�С����λΪKB�� |
+| Promise&lt;int&gt; | promise对象，返回应用显存总大小，单位为KB。 |
 
 **错误码：**
 
@@ -30,7 +32,7 @@ function getGraphicsMemory(): Promise<int>
 | --- | --- |
 | [11400104](../errorcode-hiviewdfx-hidebug-cpuusage.md#11400104-cpuusage统计异常) | Failed to get the application memory due to a remote exception. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

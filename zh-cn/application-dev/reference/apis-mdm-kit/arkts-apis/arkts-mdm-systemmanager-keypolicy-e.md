@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-systemManager-enum KeyPolicy--><!--Device-systemManager-enum KeyPolicy-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -22,6 +24,8 @@ INTERCEPTION = 0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-KeyPolicy-INTERCEPTION = 0--><!--Device-KeyPolicy-INTERCEPTION = 0-End-->
@@ -34,11 +38,13 @@ INTERCEPTION = 0
 CUSTOM = 1
 ```
 
-拦截并转发消息。 设置后会拦截当前按键事件，系统不会再处理该事件，同时通过 [EnterpriseAdminExtensionAbility.onKeyEvent]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 回调接口将发生的按键事件通知给MDM应用，通知MDM应用处理该事件的过程不会阻塞系统后续的其他事件处理。
+拦截并转发消息。 设置后会拦截当前按键事件，系统不会再处理该事件，同时通过 [EnterpriseAdminExtensionAbility.onKeyEvent](../../apis-na/arkts-apis/arkts-na-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md#onKeyEvent) 回调接口将发生的按键事件通知给MDM应用，通知MDM应用处理该事件的过程不会阻塞系统后续的其他事件处理。
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

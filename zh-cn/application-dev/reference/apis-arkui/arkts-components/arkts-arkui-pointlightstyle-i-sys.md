@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface PointLightStyle--><!--Device-unnamed-declare interface PointLightStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -27,6 +29,8 @@ bloom?: number
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -52,6 +56,8 @@ illuminated?: IlluminatedType
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PointLightStyle-illuminated?: IlluminatedType--><!--Device-PointLightStyle-illuminated?: IlluminatedType-End-->
@@ -68,13 +74,15 @@ lightSource?: LightSource
 
 设置光源属性，光源会影响到周围标记为可以被照亮的组件，并在组件上产生光效。 默认值：无光源
 
-**类型：** LightSource
+**类型：** [LightSource](arkts-arkui-lightsource-i-sys.md)
 
 **默认值：** undefined
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

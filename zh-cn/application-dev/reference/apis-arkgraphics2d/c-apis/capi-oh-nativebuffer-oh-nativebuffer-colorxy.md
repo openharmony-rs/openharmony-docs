@@ -20,7 +20,7 @@ typedef struct OH_NativeBuffer_ColorXY {...} OH_NativeBuffer_ColorXY
 
 | 名称 | 描述 |
 | -- | -- |
-| float x | 颜色X坐标 |
-| float y | 颜色Y坐标 |
+| float x | 基色X坐标 |
+| float y | 基色Y坐标 |
 
 

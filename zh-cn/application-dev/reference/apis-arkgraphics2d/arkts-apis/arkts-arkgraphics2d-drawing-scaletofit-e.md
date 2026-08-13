@@ -2,9 +2,11 @@
 
 源矩形到目标矩形的缩放方式枚举。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-drawing-enum ScaleToFit--><!--Device-drawing-enum ScaleToFit-End-->
 
@@ -18,9 +20,11 @@ FILL_SCALE_TO_FIT = 0
 
 将源矩形缩放以填充满整个目标矩形，可能会改变源矩形的长宽比。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ScaleToFit-FILL_SCALE_TO_FIT = 0--><!--Device-ScaleToFit-FILL_SCALE_TO_FIT = 0-End-->
 
@@ -34,9 +38,11 @@ START_SCALE_TO_FIT = 1
 
 保持源矩形的长宽比进行缩放，并对齐到目标矩形的左上方。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ScaleToFit-START_SCALE_TO_FIT = 1--><!--Device-ScaleToFit-START_SCALE_TO_FIT = 1-End-->
 
@@ -50,9 +56,11 @@ CENTER_SCALE_TO_FIT = 2
 
 保持源矩形的长宽比进行缩放，并居中对齐到目标矩形。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ScaleToFit-CENTER_SCALE_TO_FIT = 2--><!--Device-ScaleToFit-CENTER_SCALE_TO_FIT = 2-End-->
 
@@ -66,9 +74,11 @@ END_SCALE_TO_FIT = 3
 
 保持源矩形的长宽比进行缩放，并对齐到目标矩形的右下方。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ScaleToFit-END_SCALE_TO_FIT = 3--><!--Device-ScaleToFit-END_SCALE_TO_FIT = 3-End-->
 

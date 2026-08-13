@@ -8,7 +8,9 @@ type BadgeEnabledChangedCallback = (data: EnabledNotificationCallbackData) => vo
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -22,5 +24,5 @@ type BadgeEnabledChangedCallback = (data: EnabledNotificationCallbackData) => vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调返回监听到的角标使能状态信息。  |
+| data | [EnabledNotificationCallbackData](arkts-notification-notificationsubscriber-enablednotificationcallbackdata-i-sys.md) | 是 | 回调返回监听到的角标使能状态信息。 |
 

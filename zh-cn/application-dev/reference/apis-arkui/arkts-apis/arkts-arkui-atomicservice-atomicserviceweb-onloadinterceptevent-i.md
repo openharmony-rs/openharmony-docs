@@ -1,10 +1,12 @@
 # OnLoadInterceptEvent
 
-当资源加载被拦截时，加载拦截事件。
+定义Web组件加载url之前触发的加载拦截事件。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-export declare interface OnLoadInterceptEvent--><!--Device-unnamed-export declare interface OnLoadInterceptEvent-End-->
 
@@ -16,13 +18,15 @@
 data: WebResourceRequest
 ```
 
-Web resource request of event.
+网页请求的封装信息。
 
 **类型：** WebResourceRequest
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

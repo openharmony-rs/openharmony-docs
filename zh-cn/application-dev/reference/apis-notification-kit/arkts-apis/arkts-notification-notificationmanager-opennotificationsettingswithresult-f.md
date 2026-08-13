@@ -1,5 +1,11 @@
 # openNotificationSettingsWithResult
 
+## 导入模块
+
+```TypeScript
+import { notificationManager } from '@kit.NotificationKit';
+```
+
 ## openNotificationSettingsWithResult
 
 ```TypeScript
@@ -10,7 +16,9 @@ function openNotificationSettingsWithResult(context: UIAbilityContext): Promise<
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -18,17 +26,23 @@ function openNotificationSettingsWithResult(context: UIAbilityContext): Promise<
 
 **系统能力：** SystemCapability.Notification.NotificationSettings
 
+**参见：**
+
+requestEnableNotification 请求通知使能。
+
+isNotificationEnabled 查询当前应用通知授权状态。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 通知设置页面绑定Ability的上下文。 |
+| context | [UIAbilityContext](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md) | 是 | 通知设置页面绑定Ability的上下文。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;NotificationSetting&gt; | Promise对象，返回此应用的通知设置。 |
+| Promise&lt;[NotificationSetting](arkts-notification-notificationmanager-notificationsetting-i.md)&gt; | Promise对象，返回此应用的通知设置。 |
 
 **错误码：**
 
@@ -36,10 +50,10 @@ function openNotificationSettingsWithResult(context: UIAbilityContext): Promise<
 | --- | --- |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
-| [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [1600018](../errorcode-notification.md#1600018-通知设置页面已经拉起) | The notification settings window is already displayed. |
+| [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

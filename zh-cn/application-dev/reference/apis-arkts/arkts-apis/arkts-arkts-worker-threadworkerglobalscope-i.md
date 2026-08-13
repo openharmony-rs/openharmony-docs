@@ -2,13 +2,15 @@
 
 Worker线程用于与宿主线程通信的类。其中postMessage接口用于向宿主线程发送消息，close接口用于销毁Worker线程。 ThreadWorkerGlobalScope类继承GlobalScope9+。
 
-**继承/实现关系：** ThreadWorkerGlobalScope extends [GlobalScope](arkts-arkts-worker-globalscope-i.md)
+**继承/实现关系：** ThreadWorkerGlobalScope extends [GlobalScope](arkts-arkts-worker-globalscope-i.md#GlobalScope)
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
-<!--Device-unnamed-export interface ThreadWorkerGlobalScope extends GlobalScope--><!--Device-unnamed-export interface ThreadWorkerGlobalScope extends GlobalScope-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-export interface ThreadWorkerGlobalScope--><!--Device-unnamed-export interface ThreadWorkerGlobalScope-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -24,6 +26,8 @@ Worker线程调用宿主线程上注册的对象的指定方法，此调用对Wo
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ThreadWorkerGlobalScope-callGlobalCallObjectMethod(instanceName: string, methodName: string, timeout: number, ...args: Object[]): Object--><!--Device-ThreadWorkerGlobalScope-callGlobalCallObjectMethod(instanceName: string, methodName: string, timeout: number, ...args: Object[]): Object-End-->
@@ -35,8 +39,8 @@ Worker线程调用宿主线程上注册的对象的指定方法，此调用对Wo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | instanceName | string | 是 | 注册对象时使用的键，用于在宿主线程中查找对象。 |
-| methodName | string | 是 | 在已注册对象上调用的方法名。该方法不能使用async修饰，也不能基于底层异步机制返回结果，否则会抛出异常。 |
-| timeout | number | 是 | 表示从Worker线程发起调用开始到在主线程中执行目标方法的最大等待时间，单位为ms，取整数，取值范围为[1-5000]。也可取特殊值0，此时表示本次调用等待时间为5000ms。该值应为整数。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_单位：ms。 |
+| methodName | string | 是 | 在已注册对象上调用的方法名。该方法不能使用async修饰， 也不能基于底层异步机制返回结果，否则会抛出异常。 |
+| timeout | number | 是 | 表示从Worker线程发起调用开始到在主线程中执行目标方法的最大等待时间， 单位为ms，取整数，取值范围为[1-5000]。也可取特殊值0，此时表示本次调用等待时间为5000ms。 该值应为整数。 &lt;br&gt;单位：ms。 |
 | args | Object[] | 是 | 注册对象上所调用方法的参数数组。 |
 
 **返回值：**
@@ -49,13 +53,13 @@ Worker线程调用宿主线程上注册的对象的指定方法，此调用对Wo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
-| [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
 | [10200019](../errorcode-utils.md#10200019-调用未注册对象的方法错误) | The globalCallObject is not registered. |
-| [10200020](../errorcode-utils.md#10200020-调用注册对象上的方法类型错误) | The method to be called is not callable or is an async method or a generator. |
+| [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
 | [10200021](../errorcode-utils.md#10200021-全局调用等待超时错误) | The global call exceeds the timeout. |
+| [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
+| [10200020](../errorcode-utils.md#10200020-调用注册对象上的方法类型错误) | The method to be called is not callable or is an async method or a generator. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // Index.ets
@@ -114,6 +118,8 @@ close(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ThreadWorkerGlobalScope-close(): void--><!--Device-ThreadWorkerGlobalScope-close(): void-End-->
@@ -126,7 +132,7 @@ close(): void
 | --- | --- |
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // Index.ets
@@ -158,6 +164,8 @@ Worker线程通过转移对象所有权的方式向宿主线程发送消息。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ThreadWorkerGlobalScope-postMessage(messageObject: Object, transfer: ArrayBuffer[]): void--><!--Device-ThreadWorkerGlobalScope-postMessage(messageObject: Object, transfer: ArrayBuffer[]): void-End-->
@@ -168,17 +176,17 @@ Worker线程通过转移对象所有权的方式向宿主线程发送消息。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| messageObject | Object | 是 | 发送至宿主线程的数据，该数据对象必须是可序列化对象。支持的参数类型请参考序列化支持类型。 |
-| transfer | ArrayBuffer[] | 是 | 表示可转移的ArrayBuffer实例对象数组，该数组中对象的所有权会被转移到宿主线程，转移后该对象仅在宿主线程中可用。该数组不可传入null。 |
+| messageObject | Object | 是 | 发送至宿主线程的数据，该数据对象必须是可序列化对象。 支持的参数类型请参考序列化支持类型。 |
+| transfer | ArrayBuffer[] | 是 | 表示可转移的ArrayBuffer实例对象数组，该数组中对象的所有权 会被转移到宿主线程，转移后该对象仅在宿主线程中可用。该数组不可传入null。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 | [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
+| [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // Index.ets
@@ -214,6 +222,8 @@ Worker线程通过转移对象所有权或拷贝数据的方式向宿主线程�
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ThreadWorkerGlobalScope-postMessage(messageObject: Object, options?: PostMessageOptions): void--><!--Device-ThreadWorkerGlobalScope-postMessage(messageObject: Object, options?: PostMessageOptions): void-End-->
@@ -224,17 +234,17 @@ Worker线程通过转移对象所有权或拷贝数据的方式向宿主线程�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| messageObject | Object | 是 | 发送至宿主线程的数据，该数据对象必须是可序列化对象。支持的参数类型请参考序列化支持类型。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 当填入该参数时，其作用与传入ArrayBuffer[]相同，该数组中对象的所有权会被转移到宿主线程，在Worker线程中将变为不可用，仅在宿主线程中可用。若不填入该参数，默认设置为undefined，通过拷贝数据的方式传输信息到宿主线程。 |
+| messageObject | Object | 是 | 发送至宿主线程的数据，该数据对象必须是可序列化对象。 支持的参数类型请参考序列化支持类型。 |
+| options | [PostMessageOptions](arkts-arkts-worker-postmessageoptions-i.md) | 否 | 当填入该参数时，其作用与传入ArrayBuffer[]相同， 该数组中对象的所有权会被转移到宿主线程，在Worker线程中将变为不可用，仅在宿主线程中可用。 若不填入该参数，默认设置为undefined，通过拷贝数据的方式传输信息到宿主线程。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 | [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
+| [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // Index.ets
@@ -263,11 +273,13 @@ workerPort.onmessage = (e: MessageEvents): void => {
 postMessageAtFront?(message: Object, priority: Priority, transfer?: ArrayBuffer[]): void
 ```
 
-Worker线程通过转移对象所有权的方式向宿主线程发送插队消息，并插入到对应优先级队列的队头。 除Worker线程向主线程发送的场景外，该接口与postMessage功能一致。
+Worker线程通过转移对象所有权的方式向宿主线程发送插队消息，并插入到对应优先级队列的队头。 除Worker线程向主线程发送的场景外，该接口与postMessage功能一致。 > **说明：** > > - 如果是Worker线程向宿主线程发送插队的消息，消息能够插队并且按优先级进行发送。 > > - 如果是Worker线程之间发送插队的消息，消息只能插队，没有优先级。 > > - postMessage和postMessageWithSharedSendable接口向宿主线程发送消息，默认是HIGH优先级，无插队效果。
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -281,18 +293,18 @@ Worker线程通过转移对象所有权的方式向宿主线程发送插队消�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| message | Object | 是 | 发送至宿主线程的数据，该数据对象必须是可序列化或可共享。支持的序列化类型请参考序列化支持类型。支持的共享类型请参考Sendable支持的数据类型。 |
-| priority | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | Worker EventHandler的优先级。 |
-| transfer | ArrayBuffer[] | 否 | 表示可转移的ArrayBuffer实例对象数组，该数组中对象的所有权会被转移到主线程，转移后该对象仅在主线程中可用。该数组不可传入null。 |
+| message | Object | 是 | 发送至宿主线程的数据，该数据对象必须是可序列化或可共享。 支持的序列化类型请参考序列化支持类型。 支持的共享类型请参考Sendable支持的数据类型。 |
+| priority | [Priority](arkts-arkts-worker-priority-e.md) | 是 | Worker EventHandler的优先级。 |
+| transfer | ArrayBuffer[] | 否 | 表示可转移的ArrayBuffer实例对象数组，该数组中对象的所有权 会被转移到主线程，转移后该对象仅在主线程中可用。该数组不可传入null。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 | [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
+| [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // worker文件路径为：entry/src/main/ets/workers/Worker.ets
@@ -346,7 +358,7 @@ workerInstance.onmessage = (e: MessageEvents) => {
 }
 ```
 
-如果传递的参数是对象字面量的话，需要[显式标注对象字面量的类型](../../quick-start/typescript-to-arkts-migration-guide.md#需要显式标注对象字面量的类型)。
+如果传递的参数是对象字面量的话，需要[显式标注对象字面量的类型](../../../quick-start/typescript-to-arkts-migration-guide.md#需要显式标注对象字面量的类型)。
 
 ```TypeScript
 import { worker, ThreadWorkerGlobalScope, MessageEvents, ErrorEvent, Priority } from '@kit.ArkTS';
@@ -386,6 +398,8 @@ Worker线程向宿主线程发送消息，消息中的Sendable对象通过引用
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ThreadWorkerGlobalScope-postMessageWithSharedSendable(message: Object, transfer?: ArrayBuffer[]): void--><!--Device-ThreadWorkerGlobalScope-postMessageWithSharedSendable(message: Object, transfer?: ArrayBuffer[]): void-End-->
@@ -396,17 +410,17 @@ Worker线程向宿主线程发送消息，消息中的Sendable对象通过引用
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| message | Object | 是 | 发送至宿主线程的数据，该数据对象必须是可序列化或可共享。支持的序列化类型请参考序列化支持类型。支持的共享类型请参考Sendable支持的数据类型。 |
-| transfer | ArrayBuffer[] | 否 | 表示可转移的ArrayBuffer实例对象数组，该数组中对象的所有权会被转移到宿主线程，转移后该对象仅在宿主线程中可用。该数组不可传入null。默认值为空数组。 |
+| message | Object | 是 | 发送至宿主线程的数据，该数据对象必须是可序列化或可共享。 支持的序列化类型请参考序列化支持类型。 支持的共享类型请参考Sendable支持的数据类型。 |
+| transfer | ArrayBuffer[] | 否 | 表示可转移的ArrayBuffer实例对象数组，该数组中对象的所有权 会被转移到宿主线程，转移后该对象仅在宿主线程中可用。该数组不可传入null。默认值为空数组。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 | [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
+| [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // worker文件路径为：entry/src/main/ets/workers/Worker.ets
@@ -454,13 +468,15 @@ workerInstance.onmessage = (e: MessageEvents) => {
 onmessage?: (this: ThreadWorkerGlobalScope, ev: MessageEvents) => void
 ```
 
-当Worker线程收到来自其宿主线程通过postMessage接口发送的消息时调用的事件处理程序， 该事件处理程序在Worker线程中执行。其中this指调用者对象本身ThreadWorkerGlobalScope， ev类型为MessageEvents，表示收到的消息数据。
+回调函数。表示Worker线程收到来自其宿主线程通过postMessage或postMessageWithSharedSendable接口发送的消息时被调用的事件处理程序，处理程序在Worker线程中执行。 其中this指调用者对象本身ThreadWorkerGlobalScope，ev类型为MessageEvents，表示收到的宿主线程发送的消息数据。默认值为undefined。
 
 **类型：** (this: ThreadWorkerGlobalScope, ev: MessageEvents) =&gt; void
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -474,13 +490,15 @@ onmessage?: (this: ThreadWorkerGlobalScope, ev: MessageEvents) => void
 onmessageerror?: (this: ThreadWorkerGlobalScope, ev: MessageEvents) => void
 ```
 
-当Worker线程收到一条无法被反序列化的消息时调用的事件处理程序， 该事件处理程序在Worker线程中执行。其中this指调用者对象本身ThreadWorkerGlobalScope， ev类型为MessageEvents，表示收到的消息数据。
+回调函数。表示当Worker线程的Worker对象接收到一条无法被反序列化的消息时被调用的事件处理程序，处理程序在Worker线程中执行。其中this指调用者对象本身ThreadWorkerGlobalScope， ev类型为MessageEvents，表示收到的消息数据。默认值为undefined。
 
 **类型：** (this: ThreadWorkerGlobalScope, ev: MessageEvents) =&gt; void
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

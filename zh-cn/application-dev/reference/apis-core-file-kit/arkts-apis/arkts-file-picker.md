@@ -2,9 +2,11 @@
 
 选择器(Picker)是一个封装DocumentViewPicker、AudioViewPicker、PhotoViewPicker的API模块，具有选择与保存的能力。 应用可以选择使用以下API来实现文件的选择和保存的功能。该类接口，需要应用在界面UIAbility中调用，否则无法拉起FilePicker应用、 AudioPicker应用或PhotoPicker应用。调用本模块接口返回的URI数组， URI中的中文及非数字字母的特殊字符会被编码为对应的ASCII码并拼接到URI中。 > **说明：** > > 该模块接口从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare namespace picker--><!--Device-unnamed-declare namespace picker-End-->
 
@@ -25,7 +27,7 @@
 | [PhotoSaveOptions](arkts-corefile-picker-photosaveoptions-c.md) | 图片或视频的保存选项。 |
 | [PhotoSelectOptions](arkts-corefile-picker-photoselectoptions-c.md) | 图库选择选项。 |
 | [PhotoSelectResult](arkts-corefile-picker-photoselectresult-c.md) | 返回图库选择后的结果集。 |
-| [PhotoViewPicker](arkts-corefile-picker-photoviewpicker-c.md) | 图库选择器对象，用来支撑选择图片/视频和保存图片/视频等用户场景。选择文件推荐使用 [PhotoAccessHelper的PhotoViewPicker]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 在使用前，需要先创建PhotoViewPicker实例。 |
+| [PhotoViewPicker](arkts-corefile-picker-photoviewpicker-c.md) | 图库选择器对象，用来支撑选择图片/视频和保存图片/视频等用户场景。选择文件推荐使用 PhotoAccessHelper的PhotoViewPicker。 在使用前，需要先创建PhotoViewPicker实例。 |
 
 <!--Del-->
 ### 类（系统接口）

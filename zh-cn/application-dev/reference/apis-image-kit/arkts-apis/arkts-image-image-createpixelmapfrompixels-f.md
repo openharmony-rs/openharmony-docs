@@ -6,11 +6,13 @@
 function createPixelMapFromPixels(pixels: ArrayBuffer, param: InitializationOptions): Promise<PixelMap>
 ```
 
-Creates a PixelMap from existing pixel data. The pixel data will be copied and converted to the specified pixel format to initialize the PixelMap. The following pixel formats are not supported for PixelMap creation: RGBA\_1010102, YCBCR\_P010, YCRCB\_P010, ASTC\_4x4.
+Creates a PixelMap from existing pixel data. The pixel data will be copied and converted to the specified pixel format to initialize the PixelMap. The following pixel formats are not supported for PixelMap creation: RGBA_1010102, YCBCR_P010, YCRCB_P010, ASTC_4x4.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -26,8 +28,8 @@ Creates a PixelMap from existing pixel data. The pixel data will be copied and c
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pixels | ArrayBuffer | 是 | The pixel data buffer used to initialize the PixelMap.The format of the pixel data can be specified by InitializationOptions.srcPixelFormat.The size of the buffer should be: image width image height bytes per pixel. |
-| param | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | Initialization options for the PixelMap.If InitializationOptions.pixelFormat is set to ASTC\_\_\_ESCAPED\_UNDERSCORE\_\_\_4x4, it will be reset to the default value RGBA\_\_\_ESCAPED\_UNDERSCORE\_\_\_8888.If InitializationOptions.srcPixelFormat is set to ASTC\_\_\_ESCAPED\_UNDERSCORE\_\_\_4x4, it will be reset to the default value BGRA\_\_\_ESCAPED\_UNDERSCORE\_\_\_8888. |
+| pixels | ArrayBuffer | 是 | The pixel data buffer used to initialize the PixelMap. The format of the pixel data can be specified by InitializationOptions.srcPixelFormat. The size of the buffer should be: image width image height bytes per pixel. |
+| param | [InitializationOptions](arkts-image-image-initializationoptions-i.md) | 是 | Initialization options for the PixelMap. If InitializationOptions.pixelFormat is set to ASTC_4x4, it will be reset to the default value RGBA_8888. If InitializationOptions.srcPixelFormat is set to ASTC_4x4, it will be reset to the default value BGRA_8888. |
 
 **返回值：**
 
@@ -39,12 +41,12 @@ Creates a PixelMap from existing pixel data. The pixel data will be copied and c
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter.Possible cause: Size of the pixel data buffer does not match InitializationOptions.size. |
+| [7600305](../errorcode-image.md#7600305-创建pixelmap失败) | Failed to create the PixelMap. Possible causes: 1. Failed to perform pixel format conversion. 2. Internal data is corrupted. Please check the logs for detailed information. |
 | [7600207](../errorcode-image.md#7600207-不支持的数据格式) | Unsupported pixel format. |
-| [7600301](../errorcode-image.md#7600301-申请内存失败) | Failed to allocate memory.Possible causes: 1. The resulting PixelMap size is too large. 2. The system is out of memory. |
-| [7600305](../errorcode-image.md#7600305-创建pixelmap失败) | Failed to create the PixelMap.Possible causes:1. Failed to perform pixel format conversion.2. Internal data is corrupted. Please check the logs for detailed information. |
+| [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter. Possible cause: Size of the pixel data buffer does not match InitializationOptions.size. |
+| [7600301](../errorcode-image.md#7600301-申请内存失败) | Failed to allocate memory. Possible causes: 1. The resulting PixelMap size is too large. 2. The system is out of memory. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

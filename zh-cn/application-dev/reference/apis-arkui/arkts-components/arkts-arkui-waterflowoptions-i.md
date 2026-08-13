@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface WaterFlowOptions--><!--Device-unnamed-declare interface WaterFlowOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -23,6 +25,8 @@ footer?: CustomBuilder
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -44,6 +48,8 @@ footerContent?: ComponentContent
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -60,13 +66,15 @@ layoutMode?: WaterFlowLayoutMode
 
 设置WaterFlow的布局模式，根据使用场景选择更切合的模式。
 
-**类型：** WaterFlowLayoutMode
+**类型：** [WaterFlowLayoutMode](arkts-arkui-waterflowlayoutmode-e.md)
 
 **默认值：** ALWAYS_TOP_DOWN
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -82,13 +90,15 @@ layoutMode?: WaterFlowLayoutMode
 scroller?: Scroller
 ```
 
-可滚动组件的控制器，与可滚动组件绑定。 \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_说明\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_ \_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_不允许和其他滚动类组件，如：ArcList、List、Grid、Scroll和WaterFlow绑定同一个滚动控制对象。 \_\_\_HTML\_TAG\_DESC\_USD\_4\_\_\_
+可滚动组件的控制器，与可滚动组件绑定。 &lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt; &lt;br&gt;不允许和其他滚动类组件，如：ArcList、List、Grid、Scroll和WaterFlow绑定同一个滚动控制对象。 &lt;/p&gt;
 
 **类型：** Scroller
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -102,13 +112,15 @@ scroller?: Scroller
 sections?: WaterFlowSections
 ```
 
-设置FlowItem分组，实现同一个瀑布流组件内部各分组使用不同列数混合布局。适用于需要在不同区域使用不同列数布局的场景。不设置时使用统一列数布局。 \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_说明\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_ \_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_1. 使用分组混合布局时会忽略columnsTemplate和rowsTemplate属性。 \_\_\_HTML\_TAG\_DESC\_USD\_4\_\_\_2. 使用分组混合布局时不支持单独设置footer，可以使用最后一个分组作为尾部组件。 \_\_\_HTML\_TAG\_DESC\_USD\_5\_\_\_
+设置FlowItem分组，实现同一个瀑布流组件内部各分组使用不同列数混合布局。适用于需要在不同区域使用不同列数布局的场景。不设置时使用统一列数布局。 &lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt; &lt;br&gt;1. 使用分组混合布局时会忽略columnsTemplate和rowsTemplate属性。 &lt;br&gt;2. 使用分组混合布局时不支持单独设置footer，可以使用最后一个分组作为尾部组件。 &lt;/p&gt;
 
-**类型：** WaterFlowSections
+**类型：** [WaterFlowSections](arkts-arkui-waterflowsections-c.md)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

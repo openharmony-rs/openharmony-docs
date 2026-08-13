@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-webview-interface RectEvent--><!--Device-webview-interface RectEvent-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -23,6 +25,8 @@ height: double
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-RectEvent-height: double--><!--Device-RectEvent-height: double-End-->
 
@@ -42,6 +46,8 @@ width: double
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-RectEvent-width: double--><!--Device-RectEvent-width: double-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -60,6 +66,8 @@ x: double
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-RectEvent-x: double--><!--Device-RectEvent-x: double-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -77,6 +85,8 @@ y: double
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-RectEvent-y: double--><!--Device-RectEvent-y: double-End-->
 

@@ -2,9 +2,11 @@
 
 组件类型。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-update-export enum ComponentType--><!--Device-update-export enum ComponentType-End-->
 
@@ -20,9 +22,11 @@ OTA = 1
 
 OTA升级包，用于固件升级的完整升级包文件。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ComponentType-OTA = 1--><!--Device-ComponentType-OTA = 1-End-->
 

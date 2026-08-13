@@ -1,10 +1,12 @@
 # GestureListenerType
 
-表示需要监听的手势类型的枚举。
+此枚举类型用于指定需要监控的手势类型。
 
-**起始版本：** 26.0.0
+**起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-export const enum GestureListenerType--><!--Device-unnamed-export const enum GestureListenerType-End-->
 
@@ -16,13 +18,17 @@
 TAP = 0
 ```
 
-点击手势。
+点击手势
 
-**起始版本：** 26.0.0
+**起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 <!--Device-GestureListenerType-TAP = 0--><!--Device-GestureListenerType-TAP = 0-End-->
 
@@ -34,13 +40,17 @@ TAP = 0
 LONG_PRESS = 1
 ```
 
-长按手势。
+长按手势
 
-**起始版本：** 26.0.0
+**起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 <!--Device-GestureListenerType-LONG_PRESS = 1--><!--Device-GestureListenerType-LONG_PRESS = 1-End-->
 
@@ -52,13 +62,17 @@ LONG_PRESS = 1
 PAN = 2
 ```
 
-拖动手势。
+滑动手势
 
-**起始版本：** 26.0.0
+**起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 <!--Device-GestureListenerType-PAN = 2--><!--Device-GestureListenerType-PAN = 2-End-->
 
@@ -70,13 +84,17 @@ PAN = 2
 PINCH = 3
 ```
 
-捏合手势。
+缩放手势
 
-**起始版本：** 26.0.0
+**起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 <!--Device-GestureListenerType-PINCH = 3--><!--Device-GestureListenerType-PINCH = 3-End-->
 
@@ -88,13 +106,17 @@ PINCH = 3
 SWIPE = 4
 ```
 
-滑动手势。
+快滑手势
 
-**起始版本：** 26.0.0
+**起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 <!--Device-GestureListenerType-SWIPE = 4--><!--Device-GestureListenerType-SWIPE = 4-End-->
 
@@ -106,13 +128,17 @@ SWIPE = 4
 ROTATION = 5
 ```
 
-旋转手势。
+旋转手势
 
-**起始版本：** 26.0.0
+**起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 <!--Device-GestureListenerType-ROTATION = 5--><!--Device-GestureListenerType-ROTATION = 5-End-->
 

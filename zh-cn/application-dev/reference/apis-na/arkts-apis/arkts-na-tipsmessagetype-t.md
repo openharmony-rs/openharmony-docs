@@ -10,6 +10,8 @@ Defines the TipsMessageType property with ResourceStr and StyledString.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-export type TipsMessageType = ResourceStr | StyledString--><!--Device-unnamed-export type TipsMessageType = ResourceStr | StyledString-End-->

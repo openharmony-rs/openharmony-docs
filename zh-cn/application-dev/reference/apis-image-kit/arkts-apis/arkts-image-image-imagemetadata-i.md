@@ -4,7 +4,9 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-image-interface ImageMetadata--><!--Device-image-interface ImageMetadata-End-->
 
@@ -18,11 +20,13 @@ avisMetadata?: AvisMetadata
 
 AVIS图像元数据。
 
-**类型：** AvisMetadata
+**类型：** [AvisMetadata](arkts-image-image-avismetadata-c.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -38,11 +42,13 @@ dngMetadata?: DngMetadata
 
 DNG图像元数据。
 
-**类型：** DngMetadata
+**类型：** [DngMetadata](arkts-image-image-dngmetadata-c.md)
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -58,11 +64,13 @@ exifMetadata?: ExifMetadata
 
 Exif元数据。
 
-**类型：** ExifMetadata
+**类型：** [ExifMetadata](arkts-image-image-exifmetadata-c.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -78,11 +86,13 @@ gifMetadata?: GifMetadata
 
 GIF图像元数据。
 
-**类型：** GifMetadata
+**类型：** [GifMetadata](arkts-image-image-gifmetadata-c.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -98,11 +108,13 @@ heifsMetadata?: HeifsMetadata
 
 HEIF序列图像元数据类，用于存储图像的元数据。
 
-**类型：** HeifsMetadata
+**类型：** [HeifsMetadata](arkts-image-image-heifsmetadata-c.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -118,11 +130,13 @@ jfifMetadata?: JfifMetadata
 
 JFIF图像元数据。
 
-**类型：** JfifMetadata
+**类型：** [JfifMetadata](arkts-image-image-jfifmetadata-c.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -138,11 +152,13 @@ makerNoteHuaweiMetadata?: MakerNoteHuaweiMetadata
 
 来自Huawei相机的照片元数据。
 
-**类型：** MakerNoteHuaweiMetadata
+**类型：** [MakerNoteHuaweiMetadata](arkts-image-image-makernotehuaweimetadata-c.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -158,11 +174,13 @@ pngMetadata?: PngMetadata
 
 PNG图像元数据。
 
-**类型：** PngMetadata
+**类型：** [PngMetadata](arkts-image-image-pngmetadata-c.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -178,11 +196,13 @@ tiffMetadata?: TiffMetadata
 
 TIFF图像元数据。
 
-**类型：** TiffMetadata
+**类型：** [TiffMetadata](arkts-image-image-tiffmetadata-c.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -198,11 +218,13 @@ webPMetadata?: WebPMetadata
 
 WebP图像元数据类，用于存储图像的元数据。
 
-**类型：** WebPMetadata
+**类型：** [WebPMetadata](arkts-image-image-webpmetadata-c.md)
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -218,11 +240,13 @@ xmpMetadata?: XMPMetadata
 
 XMP元数据。
 
-**类型：** XMPMetadata
+**类型：** [XMPMetadata](arkts-image-image-xmpmetadata-c.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-export interface WatchEventListener--><!--Device-unnamed-export interface WatchEventListener-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -22,6 +24,8 @@ Specifies the callback function to be invoked.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-WatchEventListener-(event: WatchEvent): void--><!--Device-WatchEventListener-(event: WatchEvent): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -30,5 +34,5 @@ Specifies the callback function to be invoked.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | Event for the callback to invoke. |
+| event | [WatchEvent](arkts-corefile-file-fs-watchevent-i.md) | 是 | Event for the callback to invoke. |
 

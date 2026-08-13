@@ -1,5 +1,11 @@
 # setBadgeDisplayStatusByBundles（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { notificationManager } from '@kit.NotificationKit';
+```
+
 ## setBadgeDisplayStatusByBundles
 
 ```TypeScript
@@ -8,9 +14,11 @@ function setBadgeDisplayStatusByBundles(badges: Map<BundleOption, boolean>) : Pr
 
 批量设置指定应用是否显示角标。使用Promise异步回调。
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -36,14 +44,14 @@ function setBadgeDisplayStatusByBundles(badges: Map<BundleOption, boolean>) : Pr
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [1600012](../errorcode-notification.md#1600012-内存空间不足) | No memory space. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
-| [1600012](../errorcode-notification.md#1600012-内存空间不足) | No memory space. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

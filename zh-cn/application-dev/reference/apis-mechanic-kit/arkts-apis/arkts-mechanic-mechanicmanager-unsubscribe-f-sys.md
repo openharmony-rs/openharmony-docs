@@ -10,7 +10,9 @@ function unSubscribe(events: MechEventType[]): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-mechanicManager-function unSubscribe(events: MechEventType[]): void--><!--Device-mechanicManager-function unSubscribe(events: MechEventType[]): void-End-->
 
@@ -22,7 +24,7 @@ function unSubscribe(events: MechEventType[]): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| events | \_\_\_MD\_LINK\_USD\_0\_\_\_[] | 是 | 取消注册的事件列表。 |
+| events | [MechEventType](arkts-mechanic-mechanicmanager-mecheventtype-e-sys.md)[] | 是 | 取消注册的事件列表。 |
 
 **错误码：**
 

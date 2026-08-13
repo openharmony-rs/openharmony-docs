@@ -2,13 +2,15 @@
 
 手势处理器的基础类型。
 
-**继承/实现关系：** GestureHandler implements [GestureInterface<T>](GestureInterface<T>)
+**继承/实现关系：** GestureHandler implements GestureInterface<T>
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-<!--Device-unnamed-declare class GestureHandler<T> implements GestureInterface<T>--><!--Device-unnamed-declare class GestureHandler<T> implements GestureInterface<T>-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare class GestureHandler--><!--Device-unnamed-declare class GestureHandler-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -23,6 +25,8 @@ allowedTypes(types: Array<SourceTool>): T
 **起始版本：** 14
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -55,6 +59,8 @@ tag(tag: string): T
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

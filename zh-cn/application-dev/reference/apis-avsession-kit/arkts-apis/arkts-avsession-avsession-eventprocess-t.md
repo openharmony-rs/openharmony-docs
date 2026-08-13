@@ -8,7 +8,9 @@ The general process funcation with an event and arguments.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-avSession-type EventProcess = (event: string, args: Record<string, Object>) => void--><!--Device-avSession-type EventProcess = (event: string, args: Record<string, Object>) => void-End-->
 
@@ -18,6 +20,6 @@ The general process funcation with an event and arguments.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | string | 是 | 请求事件。  |
-| args | Record&lt;string, Object&gt; | 是 | arguments associated with event  |
+| event | string | 是 | 请求事件。 |
+| args | Record&lt;string, Object&gt; | 是 | arguments associated with event |
 

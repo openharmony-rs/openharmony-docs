@@ -8,9 +8,11 @@ function getCameraTrackingLayout(): CameraTrackingLayout
 
 获取当前摄像头跟踪布局
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-mechanicManager-function getCameraTrackingLayout(): CameraTrackingLayout--><!--Device-mechanicManager-function getCameraTrackingLayout(): CameraTrackingLayout-End-->
 
@@ -20,7 +22,7 @@ function getCameraTrackingLayout(): CameraTrackingLayout
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回当前布局 |
+| [CameraTrackingLayout](arkts-mechanic-mechanicmanager-cameratrackinglayout-e.md) | 返回当前布局 |
 
 **错误码：**
 
@@ -29,7 +31,7 @@ function getCameraTrackingLayout(): CameraTrackingLayout
 | [33300001](../errorcode-mechanic.md#33300001-系统错误) | Service exception. |
 | [33300002](../errorcode-mechanic.md#33300002-设备未连接) | Device not connected. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 console.info('Query layout');

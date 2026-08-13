@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 <!--Device-bundleManager-interface SignatureInfo--><!--Device-bundleManager-interface SignatureInfo-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -16,13 +18,15 @@
 readonly appId: string
 ```
 
-应用的appId，表示应用的唯一标识，详情信息可参考\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+应用的appId，表示应用的唯一标识，详情信息可参考[什么是appId](../../../quick-start/common-problem-of-application.md#什么是appid)。
 
 **类型：** string
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -36,13 +40,15 @@ readonly appId: string
 readonly appIdentifier: string
 ```
 
-应用的唯一标识。详情信息可参考\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+应用的唯一标识。详情信息可参考[什么是appIdentifier](../../../quick-start/common-problem-of-application.md#什么是appidentifier)。
 
 **类型：** string
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -64,6 +70,8 @@ readonly certificate?: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-SignatureInfo-readonly certificate?: string--><!--Device-SignatureInfo-readonly certificate?: string-End-->
@@ -83,6 +91,8 @@ readonly fingerprint: string
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

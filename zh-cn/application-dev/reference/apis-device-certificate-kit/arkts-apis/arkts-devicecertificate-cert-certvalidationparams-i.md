@@ -4,7 +4,9 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-cert-interface CertValidationParams--><!--Device-cert-interface CertValidationParams-End-->
 
@@ -16,7 +18,7 @@
 allowDownloadIntermediateCa?: boolean
 ```
 
-是否允许从网络下载中间CA证书。默认值为false。 - true：当构建证书链缺失中间证书时，尝试使用证书AIA扩展中颁发者地址下载颁发者证书，解决证书链不完整的问题； - false：不允许从网络下载中间的CA证书。 \_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_下载地址从证书的AIA扩展中获取，仅支持HTTP。若要使用网络进行下载，需要申请ohos.permission.INTERNET权限。关于权限配置的详细信息 ，请参见声明权限\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+是否允许从网络下载中间CA证书。默认值为false。 - true：当构建证书链缺失中间证书时，尝试使用证书AIA扩展中颁发者地址下载颁发者证书，解决证书链不完整的问题； - false：不允许从网络下载中间的CA证书。 &lt;br&gt;下载地址从证书的AIA扩展中获取，仅支持HTTP。若要使用网络进行下载，需要申请ohos.permission.INTERNET权限。关于权限配置的详细信息 ，请参见声明权限[Declaring Permissions](../../../security/AccessToken/declare-permissions.md)。
 
 **类型：** boolean
 
@@ -24,7 +26,9 @@ allowDownloadIntermediateCa?: boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,13 +44,15 @@ allowDownloadIntermediateCa?: boolean
 date?: string
 ```
 
-校验日期。格式为YYMMDDHHMMSSZ或YYYYMMDDHHMMSSZ，默认使用当前系统时间。 \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_支持自定义验证时间，适用于离线验证历史签名等场景。
+校验日期。格式为YYMMDDHHMMSSZ或YYYYMMDDHHMMSSZ，默认使用当前系统时间。 &lt;br&gt;支持自定义验证时间，适用于离线验证历史签名等场景。
 
 **类型：** string
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -68,7 +74,9 @@ emailAddresses?: Array<string>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -84,13 +92,15 @@ emailAddresses?: Array<string>
 hostnames?: Array<string>
 ```
 
-主机名列表。验证证书的主体备用名（SAN）或通用名（CN）是否包含指定的主机名。最大个数：100，每个主机名最大长度：128。 \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_只要匹配其中一个主机名即校验成功。
+主机名列表。验证证书的主体备用名（SAN）或通用名（CN）是否包含指定的主机名。最大个数：100，每个主机名最大长度：128。 &lt;br&gt;只要匹配其中一个主机名即校验成功。
 
 **类型：** Array&lt;string&gt;
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -106,13 +116,15 @@ hostnames?: Array<string>
 ignoreErrs?: Array<CertResult>
 ```
 
-允许忽略特定的验证错误。最大个数：8。 \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_可忽略的错误包括：ERR\_CERT\_NOT\_YET\_VALID、ERR\_CERT\_HAS\_EXPIRED、ERR\_UNKNOWN\_CRITICAL\_EXTENSION、ERR\_CRL\_NOT\_FOUND、 ERR\_CRL\_NOT\_YET\_VALID、ERR\_CRL\_HAS\_EXPIRED、ERR\_OCSP\_RESPONSE\_NOT\_FOUND、ERR\_NETWORK\_TIMEOUT。
+允许忽略特定的验证错误。最大个数：8。 &lt;br&gt;可忽略的错误包括：ERR_CERT_NOT_YET_VALID、ERR_CERT_HAS_EXPIRED、ERR_UNKNOWN_CRITICAL_EXTENSION、ERR_CRL_NOT_FOUND、 ERR_CRL_NOT_YET_VALID、ERR_CRL_HAS_EXPIRED、ERR_OCSP_RESPONSE_NOT_FOUND、ERR_NETWORK_TIMEOUT。
 
-**类型：** Array&lt;CertResult&gt;
+**类型：** Array&lt;[CertResult](arkts-devicecertificate-cert-certresult-e.md)&gt;
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -128,13 +140,15 @@ ignoreErrs?: Array<CertResult>
 keyUsage?: Array<KeyUsageType>
 ```
 
-密钥用途列表。验证证书的密钥用途扩展是否包含指定的用途。最大个数：9。 \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_证书必须包含所有指定的密钥用途才校验成功。
+密钥用途列表。验证证书的密钥用途扩展是否包含指定的用途。最大个数：9。 &lt;br&gt;证书必须包含所有指定的密钥用途才校验成功。
 
-**类型：** Array&lt;KeyUsageType&gt;
+**类型：** Array&lt;[KeyUsageType](arkts-devicecertificate-cert-keyusagetype-e.md)&gt;
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -158,7 +172,9 @@ partialChain?: boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -176,11 +192,13 @@ revokedParams?: X509CertRevokedParams
 
 证书吊销检查参数。用于检查证书是否被吊销。包含CRL列表、OCSP响应数据、是否允许在线检查等配置。
 
-**类型：** X509CertRevokedParams
+**类型：** [X509CertRevokedParams](arkts-devicecertificate-cert-x509certrevokedparams-i.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -204,7 +222,9 @@ trustSystemCa?: boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -220,13 +240,15 @@ trustSystemCa?: boolean
 trustedCerts?: Array<X509Cert>
 ```
 
-信任证书列表。指定信任的根证书或中间CA证书，作为验证的信任锚点。最大个数：100。 \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_验证时，证书链须追溯至信任证书，必须设置此参数或将trustSystemCa设为true。
+信任证书列表。指定信任的根证书或中间CA证书，作为验证的信任锚点。最大个数：100。 &lt;br&gt;验证时，证书链须追溯至信任证书，必须设置此参数或将trustSystemCa设为true。
 
-**类型：** Array&lt;X509Cert&gt;
+**类型：** Array&lt;[X509Cert](arkts-devicecertificate-cert-x509cert-i.md)&gt;
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -244,11 +266,13 @@ untrustedCerts?: Array<X509Cert>
 
 非信任证书列表。仅用于构建证书链的中间证书，不作为信任锚点。最大个数：100。
 
-**类型：** Array&lt;X509Cert&gt;
+**类型：** Array&lt;[X509Cert](arkts-devicecertificate-cert-x509cert-i.md)&gt;
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -264,13 +288,15 @@ untrustedCerts?: Array<X509Cert>
 userId?: Uint8Array
 ```
 
-用户ID。用于验证国密SM2证书时设置签名验证所需的用户标识符。最大长度：128。 \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_国密证书场景最常用的值为 [0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38] （对应ASCII字符串为"1234567812345678"，16字节）。 设置userId后不支持证书吊销检查。
+用户ID。用于验证国密SM2证书时设置签名验证所需的用户标识符。最大长度：128。 &lt;br&gt;国密证书场景最常用的值为 [0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38] （对应ASCII字符串为"1234567812345678"，16字节）。 设置userId后不支持证书吊销检查。
 
 **类型：** Uint8Array
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -294,7 +320,9 @@ validateDate?: boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

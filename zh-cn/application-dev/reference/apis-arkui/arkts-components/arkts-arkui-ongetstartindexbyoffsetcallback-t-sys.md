@@ -10,6 +10,8 @@ declare type OnGetStartIndexByOffsetCallback = (totalOffset: double) => StartLin
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-declare type OnGetStartIndexByOffsetCallback = (totalOffset: double) => StartLineInfo--><!--Device-unnamed-declare type OnGetStartIndexByOffsetCallback = (totalOffset: double) => StartLineInfo-End-->
@@ -20,11 +22,11 @@ declare type OnGetStartIndexByOffsetCallback = (totalOffset: double) => StartLin
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| totalOffset | double | 是 | 总滚动偏移量，即Grid当中第一个GridItem的顶部与Grid顶部之间的偏移量。\_\_\_HTML\_TAG\_USD\_0\_\_\_单位：vp  |
+| totalOffset | double | 是 | 总滚动偏移量，即Grid当中第一个GridItem的顶部与Grid顶部之间的偏移量。<br/>单位：vp |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 用于记录Grid页面内起始行的位置信息。 |
+| [StartLineInfo](arkts-arkui-startlineinfo-i-sys.md) | 用于记录Grid页面内起始行的位置信息。 |
 

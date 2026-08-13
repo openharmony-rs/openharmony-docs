@@ -2,9 +2,11 @@
 
 路径效果的绘制样式枚举。 | 名称 | 值 | 说明 | | ------ | - | ------------------ | | TRANSLATE | 0 | 不会随着路径旋转，只会平移。 | | ROTATE | 1 | 随着路径的旋转而旋转。 | | MORPH | 2 | 随着路径的旋转而旋转，并在转折处进行拉伸或压缩等操作以增加平滑度。 |
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-drawing-enum PathDashStyle--><!--Device-drawing-enum PathDashStyle-End-->
 
@@ -18,9 +20,11 @@ TRANSLATE = 0
 
 Translates only, not rotating with the path.
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PathDashStyle-TRANSLATE = 0--><!--Device-PathDashStyle-TRANSLATE = 0-End-->
 
@@ -34,9 +38,11 @@ ROTATE = 1
 
 Rotates with the path.
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PathDashStyle-ROTATE = 1--><!--Device-PathDashStyle-ROTATE = 1-End-->
 
@@ -50,9 +56,11 @@ MORPH = 2
 
 Rotates with the path and stretches or compresses at turns to enhance smoothness.
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PathDashStyle-MORPH = 2--><!--Device-PathDashStyle-MORPH = 2-End-->
 

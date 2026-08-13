@@ -10,6 +10,8 @@ Web组件进入全屏时触发的回调。
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-export type OnFullScreenEnterCallback = (event: FullScreenEnterEvent) => void--><!--Device-unnamed-export type OnFullScreenEnterCallback = (event: FullScreenEnterEvent) => void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -18,5 +20,5 @@ Web组件进入全屏时触发的回调。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | Web组件进入全屏的回调事件详情。  |
+| event | [FullScreenEnterEvent](arkts-na-web-fullscreenenterevent-i.md) | 是 | Web组件进入全屏的回调事件详情。 |
 

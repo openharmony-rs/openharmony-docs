@@ -1,10 +1,12 @@
 # WebNavigationType
 
-Enum type supplied to \_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ for the navigation's type.
+Enum type supplied to [navigationType](arkts-arkweb-loadcommitteddetails-i.md#navigationType) for the navigation's type.
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare enum WebNavigationType--><!--Device-unnamed-declare enum WebNavigationType-End-->
 
@@ -21,6 +23,8 @@ Unknown type.
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -40,6 +44,8 @@ A new entry was created due to a navigation happened on the main frame. Contains
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNavigationType-MAIN_FRAME_NEW_ENTRY = 1--><!--Device-WebNavigationType-MAIN_FRAME_NEW_ENTRY = 1-End-->
@@ -57,6 +63,8 @@ Navigate to an existing entry due to a navigation on the main frame. e.g. 1. His
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -76,6 +84,8 @@ A navigation happened on subframe which was triggered by user.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNavigationType-NAVIGATION_TYPE_NEW_SUBFRAME = 4--><!--Device-WebNavigationType-NAVIGATION_TYPE_NEW_SUBFRAME = 4-End-->
@@ -93,6 +103,8 @@ A navigation happened on the subframe automatically.
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

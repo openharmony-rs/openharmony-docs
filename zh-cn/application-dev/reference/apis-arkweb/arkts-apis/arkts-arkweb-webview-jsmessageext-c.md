@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-webview-class JsMessageExt--><!--Device-webview-class JsMessageExt-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -22,6 +24,8 @@ getArray(): Array<string | number | boolean>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-JsMessageExt-getArray(): Array<string | number | boolean>--><!--Device-JsMessageExt-getArray(): Array<string | number | boolean>-End-->
@@ -32,7 +36,7 @@ getArray(): Array<string | number | boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;string \| number \| boolean&gt; | - Returns data of Array type |
+| Array&lt;string \| number \| boolean&gt; | Returns data of Array type |
 
 **错误码：**
 
@@ -52,6 +56,8 @@ getArrayBuffer(): ArrayBuffer
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-JsMessageExt-getArrayBuffer(): ArrayBuffer--><!--Device-JsMessageExt-getArrayBuffer(): ArrayBuffer-End-->
@@ -62,7 +68,7 @@ getArrayBuffer(): ArrayBuffer
 
 | 类型 | 说明 |
 | --- | --- |
-| ArrayBuffer | - 返回原始二进制数据。 |
+| ArrayBuffer | 返回原始二进制数据。 |
 
 **错误码：**
 
@@ -82,6 +88,8 @@ getBoolean(): boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-JsMessageExt-getBoolean(): boolean--><!--Device-JsMessageExt-getBoolean(): boolean-End-->
@@ -92,7 +100,7 @@ getBoolean(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | - 返回布尔类型的数据。 |
+| boolean | 返回布尔类型的数据。 |
 
 **错误码：**
 
@@ -112,6 +120,8 @@ getErrorDescription(): string | null
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 <!--Device-JsMessageExt-getErrorDescription(): string | null--><!--Device-JsMessageExt-getErrorDescription(): string | null-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -120,7 +130,7 @@ getErrorDescription(): string | null
 
 | 类型 | 说明 |
 | --- | --- |
-| string | - If an exception occurs, or the returned type is object, return the |
+| string | If an exception occurs, or the returned type is object, return the serialized string in the format of "Not support type: &lt;{exception\|object}&gt;", Parts exceeding a length of 2048 will be truncated; otherwise, return null. |
 
 ## getNumber
 
@@ -134,6 +144,8 @@ getNumber(): number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-JsMessageExt-getNumber(): number--><!--Device-JsMessageExt-getNumber(): number-End-->
@@ -144,7 +156,7 @@ getNumber(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | - 返回数值类型的数据。 |
+| number | 返回数值类型的数据。 |
 
 **错误码：**
 
@@ -164,6 +176,8 @@ getString(): string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-JsMessageExt-getString(): string--><!--Device-JsMessageExt-getString(): string-End-->
@@ -174,7 +188,7 @@ getString(): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | - 返回字符串类型的数据。 |
+| string | 返回字符串类型的数据。 |
 
 **错误码：**
 
@@ -194,6 +208,8 @@ getType(): JsMessageType
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-JsMessageExt-getType(): JsMessageType--><!--Device-JsMessageExt-getType(): JsMessageType-End-->
@@ -204,5 +220,5 @@ getType(): JsMessageType
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | - runJavaScriptExt接口脚本执行后返回的结果的类型。 |
+| [JsMessageType](../../apis-na/arkts-apis/arkts-na-webview-jsmessagetype-e.md) | runJavaScriptExt接口脚本执行后返回的结果的类型。 |
 

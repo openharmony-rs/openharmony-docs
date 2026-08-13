@@ -6,9 +6,11 @@ type BundleStatsMap = Record<string, BundleStatsInfo>
 
 FA模型的使用信息属性集合。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-usageStatistics-type BundleStatsMap = Record<string, BundleStatsInfo>--><!--Device-usageStatistics-type BundleStatsMap = Record<string, BundleStatsInfo>-End-->
 

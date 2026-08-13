@@ -1,10 +1,12 @@
 # InputMethodSetting
 
-InputMethodSetting提供输入法配置与查询能力，面向前台应用提供以下功能： - **输入法变化订阅**：通过 [on('imeChange')]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 订阅输入法及子类型变化事件，当用户切换输入法时收到通知。 - **输入法列表查询**：通过 [getInputMethods]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_ 查询已激活/未激活输入法列表，通过 [getAllInputMethods]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_ 查询所有已安装输入法列表，通过 [listInputMethodSubtype]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_ 查询指定输入法的子类型列表。 - **面板可见性查询**：通过isPanelShown查询输入法面板是否显示。 - **输入法选择对话框**：通过showOptionalInputMethods显示输入法选择对话框（已废弃，建议使用InputMethodListDialog）。 需通过[getSetting]\_\_\_JSDOC\_LINK\_DESC\_USD\_4\_\_\_获取InputMethodSetting实例后使用。 下列API均需使用[getSetting]\_\_\_JSDOC\_LINK\_DESC\_USD\_5\_\_\_获取到InputMethodSetting实例后，通过实例调用。
+InputMethodSetting提供输入法配置与查询能力，面向前台应用提供以下功能： - **输入法变化订阅**：通过 on('imeChange') 订阅输入法及子类型变化事件，当用户切换输入法时收到通知。 - **输入法列表查询**：通过 [getInputMethods](arkts-ime-inputmethod-inputmethodsetting-i.md#getInputMethods) 查询已激活/未激活输入法列表，通过 [getAllInputMethods](arkts-ime-inputmethod-inputmethodsetting-i.md#getAllInputMethods) 查询所有已安装输入法列表，通过 [listInputMethodSubtype](arkts-ime-inputmethod-inputmethodsetting-i.md#listInputMethodSubtype) 查询指定输入法的子类型列表。 - **面板可见性查询**：通过isPanelShown查询输入法面板是否显示。 - **输入法选择对话框**：通过showOptionalInputMethods显示输入法选择对话框（已废弃，建议使用InputMethodListDialog）。 需通过[getSetting](arkts-ime-inputmethod-getsetting-f.md#getSetting)获取InputMethodSetting实例后使用。 下列API均需使用[getSetting](arkts-ime-inputmethod-getsetting-f.md#getSetting)获取到InputMethodSetting实例后，通过实例调用。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-inputMethod-interface InputMethodSetting--><!--Device-inputMethod-interface InputMethodSetting-End-->
 
@@ -18,9 +20,11 @@ enableInputMethod(bundleName: string, extensionName: string, enabledState: Enabl
 
 修改输入法的启用状态。使用promise异步回调。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.CONNECT_IME_ABILITY
 
@@ -36,7 +40,7 @@ enableInputMethod(bundleName: string, extensionName: string, enabledState: Enabl
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 输入法包名。 |
 | extensionName | string | 是 | 输入法扩展名。 |
-| enabledState | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 输入法启用状态。 |
+| enabledState | [EnabledState](arkts-ime-inputmethod-enabledstate-e.md) | 是 | 输入法启用状态。 |
 
 **返回值：**
 
@@ -48,13 +52,13 @@ enableInputMethod(bundleName: string, extensionName: string, enabledState: Enabl
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [12800019](../errorcode-inputmethod-framework.md#12800019-系统配置的默认输入法不支持此操作) | current operation cannot be applied to the preconfigured default input method. |
+| [12800018](../errorcode-inputmethod-framework.md#12800018-输入法未找到) | input method is not found. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | permissions check fails. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
-| [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause:a system error, such as null pointer, IPC exception. |
-| [12800018](../errorcode-inputmethod-framework.md#12800018-输入法未找到) | input method is not found. |
-| [12800019](../errorcode-inputmethod-framework.md#12800019-系统配置的默认输入法不支持此操作) | current operation cannot be applied to the preconfigured default input method. |
+| [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -85,13 +89,6 @@ enableInputMethodSafely();
 
 ## enableInputMethod
 
-ArkTS-Dyn:
-```TypeScript
-enableInputMethod(
-      bundleName: string, extensionName: string, enabledState: EnabledState, userId?: number): Promise<void>
-```
-
-ArkTS-Sta:
 ```TypeScript
 enableInputMethod(
       bundleName: string, extensionName: string, enabledState: EnabledState, userId?: int): Promise<void>
@@ -101,7 +98,9 @@ enableInputMethod(
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.CONNECT_IME_ABILITY
 
@@ -119,8 +118,8 @@ enableInputMethod(
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 输入法的包名。 |
 | extensionName | string | 是 | 输入法的扩展名。 |
-| enabledState | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 要修改的启用状态。 |
-| userId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 用户ID。如果不提供：如果调用者不是用户0的应用，该值默认为调用者的用户ID。如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+| enabledState | [EnabledState](arkts-ime-inputmethod-enabledstate-e.md) | 是 | 要修改的启用状态。 |
+| userId | int | 否 | 用户ID。如果不提供：如果调用者不是用户0的应用，该值默认为调用者的用户ID。如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
 
 **返回值：**
 
@@ -132,23 +131,17 @@ enableInputMethod(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [12800019](../errorcode-inputmethod-framework.md#12800019-系统配置的默认输入法不支持此操作) | current operation cannot be applied to the preconfigured default input method. |
+| [12800018](../errorcode-inputmethod-framework.md#12800018-输入法未找到) | input method is not found. |
+| [12800023](../errorcode-inputmethod-framework.md#12800023-指定的用户不存在) | the specified user does not exist. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | permissions check fails. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
-| [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause:a system error, such as null pointer, IPC exception. |
-| [12800018](../errorcode-inputmethod-framework.md#12800018-输入法未找到) | input method is not found. |
-| [12800019](../errorcode-inputmethod-framework.md#12800019-系统配置的默认输入法不支持此操作) | current operation cannot be applied to the preconfigured default input method. |
-| [12800023](../errorcode-inputmethod-framework.md#12800023-指定的用户不存在) | the specified user does not exist. |
+| [12800025](../errorcode-inputmethod-framework.md#12800025-跨用户操作被拒绝) | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+| [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | [12800024](../errorcode-inputmethod-framework.md#12800024-指定的用户未在前台) | the specified user is not in the foreground. |
-| [12800025](../errorcode-inputmethod-framework.md#12800025-跨用户操作被拒绝) | cross-user operation denied.Only user 0 applications are authorized for this operation. |
 
 ## getAllInputMethodsSync
 
-ArkTS-Dyn:
-```TypeScript
-getAllInputMethodsSync(userId?: number): Array<InputMethodProperty>
-```
-
-ArkTS-Sta:
 ```TypeScript
 getAllInputMethodsSync(userId?: int): Array<InputMethodProperty>
 ```
@@ -157,7 +150,9 @@ getAllInputMethodsSync(userId?: int): Array<InputMethodProperty>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -171,33 +166,27 @@ getAllInputMethodsSync(userId?: int): Array<InputMethodProperty>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| userId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 用户ID。如果不提供：如果调用者不是用户0的应用，该值默认为调用者的用户ID。如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+| userId | int | 否 | 用户ID。如果不提供：如果调用者不是用户0的应用，该值默认为调用者的用户ID。如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;InputMethodProperty&gt; | 返回所有输入法列表。 |
+| Array&lt;[InputMethodProperty](arkts-ime-inputmethod-inputmethodproperty-i.md)&gt; | 返回所有输入法列表。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
 | [12800001](../errorcode-inputmethod-framework.md#12800001-包管理服务异常) | bundle manager error. |
-| [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause:a system error, such as null pointer, IPC exception. |
 | [12800023](../errorcode-inputmethod-framework.md#12800023-指定的用户不存在) | the specified user does not exist. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
+| [12800025](../errorcode-inputmethod-framework.md#12800025-跨用户操作被拒绝) | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+| [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | [12800024](../errorcode-inputmethod-framework.md#12800024-指定的用户未在前台) | the specified user is not in the foreground. |
-| [12800025](../errorcode-inputmethod-framework.md#12800025-跨用户操作被拒绝) | cross-user operation denied.Only user 0 applications are authorized for this operation. |
 
 ## getCursorInfo
 
-ArkTS-Dyn:
-```TypeScript
-getCursorInfo(userId?: number): CursorInfo
-```
-
-ArkTS-Sta:
 ```TypeScript
 getCursorInfo(userId?: int): CursorInfo
 ```
@@ -206,7 +195,9 @@ getCursorInfo(userId?: int): CursorInfo
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -220,26 +211,26 @@ getCursorInfo(userId?: int): CursorInfo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| userId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 指定的用户ID。<如果调用者不是用户0应用，该值默认为调用者的用户ID。如果调用者是用户0应用，则该值默认为主屏幕的前台用户ID。 |
+| userId | int | 否 | 指定的用户ID。 <如果调用者不是用户0应用，该值默认为调用者的用户ID。 如果调用者是用户0应用，则该值默认为主屏幕的前台用户ID。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 指定用户下的光标信息。 |
+| [CursorInfo](arkts-ime-inputmethod-cursorinfo-i.md) | 指定用户下的光标信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
-| [12800003](../errorcode-inputmethod-framework.md#12800003-客户端应用异常) | input method client error. Possible causes:1. No edit box is bound to the current input method application under the specified user. |
-| [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible causes:a system error, such as null pointer, IPC exception. |
+| [12800003](../errorcode-inputmethod-framework.md#12800003-客户端应用异常) | input method client error. Possible causes: 1. No edit box is bound to the current input method application under the specified user. |
 | [12800023](../errorcode-inputmethod-framework.md#12800023-指定的用户不存在) | the specified user does not exist. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
+| [12800025](../errorcode-inputmethod-framework.md#12800025-跨用户操作被拒绝) | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+| [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible causes: a system error, such as null pointer, IPC exception. |
 | [12800024](../errorcode-inputmethod-framework.md#12800024-指定的用户未在前台) | the specified user is not in the foreground. |
-| [12800025](../errorcode-inputmethod-framework.md#12800025-跨用户操作被拒绝) | cross-user operation denied.Only user 0 applications are authorized for this operation. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -259,11 +250,13 @@ try {
 getDefaultInputMethodAbility(): InputMethodProperty
 ```
 
-获取默认输入法能力。为优化性能，返回的InputMethodProperty对象仅保证能够唯一标识输入法能力的\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_和\_\_\_INLINE\_CODE\_DESC\_USD\_1\_\_\_属性正确，其他属性可能为空。
+获取默认输入法能力。为优化性能，返回的InputMethodProperty对象仅保证能够唯一标识输入法能力的`name`和`id`属性正确，其他属性可能为空。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -277,16 +270,16 @@ getDefaultInputMethodAbility(): InputMethodProperty
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 默认输入法属性，仅保证\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_和\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_属性正确，其他属性可能为空。 |
+| [InputMethodProperty](arkts-ime-inputmethod-inputmethodproperty-i.md) | 默认输入法属性，仅保证`name`和`id`属性正确，其他属性可能为空。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
-| [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause:a system error, such as null pointer, IPC exception. |
+| [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -302,12 +295,6 @@ try {
 
 ## getInputMethodSubtypes
 
-ArkTS-Dyn:
-```TypeScript
-getInputMethodSubtypes(bundleName: string, userId?: number): Array<InputMethodSubtype>
-```
-
-ArkTS-Sta:
 ```TypeScript
 getInputMethodSubtypes(bundleName: string, userId?: int): Array<InputMethodSubtype>
 ```
@@ -316,7 +303,9 @@ getInputMethodSubtypes(bundleName: string, userId?: int): Array<InputMethodSubty
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -331,33 +320,27 @@ getInputMethodSubtypes(bundleName: string, userId?: int): Array<InputMethodSubty
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 指定输入法的包名。 |
-| userId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 用户ID。如果不提供：如果调用者不是用户0的应用，该值默认为调用者的用户ID。如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+| userId | int | 否 | 用户ID。如果不提供：如果调用者不是用户0的应用，该值默认为调用者的用户ID。如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;InputMethodSubtype&gt; | 返回指定输入法应用的所有子类型。 |
+| Array&lt;[InputMethodSubtype](arkts-ime-inputmethodsubtype-i.md)&gt; | 返回指定输入法应用的所有子类型。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
 | [12800001](../errorcode-inputmethod-framework.md#12800001-包管理服务异常) | bundle manager error. |
-| [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause:a system error, such as null pointer, IPC exception. |
 | [12800023](../errorcode-inputmethod-framework.md#12800023-指定的用户不存在) | the specified user does not exist. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
+| [12800025](../errorcode-inputmethod-framework.md#12800025-跨用户操作被拒绝) | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+| [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | [12800024](../errorcode-inputmethod-framework.md#12800024-指定的用户未在前台) | the specified user is not in the foreground. |
-| [12800025](../errorcode-inputmethod-framework.md#12800025-跨用户操作被拒绝) | cross-user operation denied.Only user 0 applications are authorized for this operation. |
 
 ## getInputMethodsSync
 
-ArkTS-Dyn:
-```TypeScript
-getInputMethodsSync(enable: boolean, userId?: number): Array<InputMethodProperty>
-```
-
-ArkTS-Sta:
 ```TypeScript
 getInputMethodsSync(enable: boolean, userId?: int): Array<InputMethodProperty>
 ```
@@ -366,7 +349,9 @@ getInputMethodsSync(enable: boolean, userId?: int): Array<InputMethodProperty>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -381,24 +366,24 @@ getInputMethodsSync(enable: boolean, userId?: int): Array<InputMethodProperty>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | enable | boolean | 是 | true表示返回已激活输入法列表，false表示返回未激活输入法列表。 |
-| userId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 用户ID。如果不提供：如果调用者不是用户0的应用，该值默认为调用者的用户ID。如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+| userId | int | 否 | 用户ID。如果不提供：如果调用者不是用户0的应用，该值默认为调用者的用户ID。如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;InputMethodProperty&gt; | 返回已激活/未激活输入法列表。 |
+| Array&lt;[InputMethodProperty](arkts-ime-inputmethod-inputmethodproperty-i.md)&gt; | 返回已激活/未激活输入法列表。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
 | [12800001](../errorcode-inputmethod-framework.md#12800001-包管理服务异常) | bundle manager error. |
-| [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause:a system error, such as null pointer, IPC exception. |
 | [12800023](../errorcode-inputmethod-framework.md#12800023-指定的用户不存在) | the specified user does not exist. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
+| [12800025](../errorcode-inputmethod-framework.md#12800025-跨用户操作被拒绝) | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+| [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | [12800024](../errorcode-inputmethod-framework.md#12800024-指定的用户未在前台) | the specified user is not in the foreground. |
-| [12800025](../errorcode-inputmethod-framework.md#12800025-跨用户操作被拒绝) | cross-user operation denied.Only user 0 applications are authorized for this operation. |
 
 ## isPanelShown
 
@@ -408,9 +393,11 @@ isPanelShown(panelInfo: PanelInfo): boolean
 
 查询指定类型的输入法面板是否处于显示状态。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-InputMethodSetting-isPanelShown(panelInfo: PanelInfo): boolean--><!--Device-InputMethodSetting-isPanelShown(panelInfo: PanelInfo): boolean-End-->
 
@@ -422,23 +409,23 @@ isPanelShown(panelInfo: PanelInfo): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| panelInfo | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 输入法面板的属性。 |
+| panelInfo | [PanelInfo](arkts-ime-inputmethod-panel-panelinfo-i.md) | 是 | 输入法面板的属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 面板显隐状态查询结果。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- true表示被查询的输入法面板处于显示状态。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- false表示被查询的输入法面板处于隐藏状态。 |
+| boolean | 面板显隐状态查询结果。&lt;br/&gt;- true表示被查询的输入法面板处于显示状态。&lt;br/&gt;- false表示被查询的输入法面板处于隐藏状态。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause:a system error, such as null pointer, IPC exception. |
+| [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { PanelInfo, PanelType, PanelFlag } from '@kit.IMEKit';
@@ -458,12 +445,6 @@ try {
 
 ## isPanelShown
 
-ArkTS-Dyn:
-```TypeScript
-isPanelShown(panelInfo: PanelInfo, displayId: number): boolean
-```
-
-ArkTS-Sta:
 ```TypeScript
 isPanelShown(panelInfo: PanelInfo, displayId: long): boolean
 ```
@@ -472,7 +453,9 @@ isPanelShown(panelInfo: PanelInfo, displayId: long): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -486,23 +469,23 @@ isPanelShown(panelInfo: PanelInfo, displayId: long): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| panelInfo | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 输入法面板的属性。 |
-| displayId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 屏幕ID。 |
+| panelInfo | [PanelInfo](arkts-ime-inputmethod-panel-panelinfo-i.md) | 是 | 输入法面板的属性。 |
+| displayId | long | 是 | 屏幕ID。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 面板显隐状态查询结果。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- true表示被查询的输入法面板处于显示状态。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- false表示被查询的输入法面板处于隐藏状态。 |
+| boolean | 面板显隐状态查询结果。&lt;br/&gt;- true表示被查询的输入法面板处于显示状态。&lt;br/&gt;- false表示被查询的输入法面板处于隐藏状态。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
-| [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause:a system error, such as null pointer, IPC exception. |
+| [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例:
 
@@ -534,68 +517,6 @@ let result: boolean = inputMethod.getSetting().isPanelShown(info, displayId);
 console.info('Succeeded in querying isPanelShown, result: ' + result);
 ```
 
-## off('imeShow')
-
-```TypeScript
-off(type: 'imeShow', callback?: (info: Array<InputWindowInfo>) => void): void
-```
-
-取消订阅输入法[Panel]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_固定态软键盘显示事件。
-
-**起始版本：** 10
-
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
-
-<!--Device-InputMethodSetting-off(type: 'imeShow', callback?: (info: Array<InputWindowInfo>) => void): void--><!--Device-InputMethodSetting-off(type: 'imeShow', callback?: (info: Array<InputWindowInfo>) => void): void-End-->
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'imeShow' | 是 | 设置监听类型，固定取值'imeShow'。 |
-| callback | (info: Array&lt;InputWindowInfo&gt;) =&gt; void | 否 | 取消订阅的回调函数。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_参数不填写时，取消订阅type对应的所有回调事件。 |
-
-**示例：**
-
-```TypeScript
-inputMethod.getSetting().off('imeShow');
-```
-
-## off('imeHide')
-
-```TypeScript
-off(type: 'imeHide', callback?: (info: Array<InputWindowInfo>) => void): void
-```
-
-取消订阅输入法[Panel]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_固定态软键盘隐藏事件。
-
-**起始版本：** 10
-
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
-
-<!--Device-InputMethodSetting-off(type: 'imeHide', callback?: (info: Array<InputWindowInfo>) => void): void--><!--Device-InputMethodSetting-off(type: 'imeHide', callback?: (info: Array<InputWindowInfo>) => void): void-End-->
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'imeHide' | 是 | 设置监听类型，固定取值'imeHide'。 |
-| callback | (info: Array&lt;InputWindowInfo&gt;) =&gt; void | 否 | 取消订阅的回调函数。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_参数不填写时，取消订阅type对应的所有回调事件。 |
-
-**示例：**
-
-```TypeScript
-inputMethod.getSetting().off('imeHide');
-```
-
 ## offImeChangeWithUserId
 
 ```TypeScript
@@ -606,7 +527,9 @@ offImeChangeWithUserId(callback?: ImeChangeWithUserIdCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -620,7 +543,7 @@ offImeChangeWithUserId(callback?: ImeChangeWithUserIdCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 回调函数，返回取消订阅的输入法属性对象、子类型对象及用户ID。参数不填写时，取消订阅所有的回调事件。 |
+| callback | [ImeChangeWithUserIdCallback](arkts-ime-inputmethod-imechangewithuseridcallback-t-sys.md) | 否 | 回调函数，返回取消订阅的输入法属性对象、子类型对象及用户ID。 参数不填写时，取消订阅所有的回调事件。 |
 
 **错误码：**
 
@@ -638,7 +561,9 @@ offImeHide(callback?: Callback<Array<InputWindowInfo>>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-InputMethodSetting-offImeHide(callback?: Callback<Array<InputWindowInfo>>): void--><!--Device-InputMethodSetting-offImeHide(callback?: Callback<Array<InputWindowInfo>>): void-End-->
 
@@ -650,9 +575,9 @@ offImeHide(callback?: Callback<Array<InputWindowInfo>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;Array&lt;InputWindowInfo&gt;&gt; | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;Array&lt;[InputWindowInfo](arkts-ime-inputmethod-inputwindowinfo-i.md)&gt;&gt; | 否 | 取消订阅的回调函数。 参数不填写时，取消订阅type对应的所有回调事件。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 inputMethod.getSetting().offImeHide();
@@ -668,7 +593,9 @@ offImeShow(callback?: Callback<Array<InputWindowInfo>>):void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -682,27 +609,29 @@ offImeShow(callback?: Callback<Array<InputWindowInfo>>):void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;Array&lt;InputWindowInfo&gt;&gt; | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;Array&lt;[InputWindowInfo](arkts-ime-inputmethod-inputwindowinfo-i.md)&gt;&gt; | 否 | 取消订阅的回调函数。 参数不填写时，取消订阅type对应的所有回调事件。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 inputMethod.getSetting().offImeShow();
 ```
 
-## on('imeShow')
+## off_imeHide
 
 ```TypeScript
-on(type: 'imeShow', callback: (info: Array<InputWindowInfo>) => void): void
+off(type: 'imeHide', callback?: (info: Array<InputWindowInfo>) => void): void
 ```
 
-订阅输入法[Panel]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_固定态软键盘显示事件。使用callback异步回调。
+取消订阅输入法[Panel](arkts-ime-inputmethodengine-panel-i.md#Panel)固定态软键盘隐藏事件。
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
-<!--Device-InputMethodSetting-on(type: 'imeShow', callback: (info: Array<InputWindowInfo>) => void): void--><!--Device-InputMethodSetting-on(type: 'imeShow', callback: (info: Array<InputWindowInfo>) => void): void-End-->
+**废弃版本：** -1
+
+<!--Device-InputMethodSetting-off(type: 'imeHide', callback?: (info: Array<InputWindowInfo>) => void): void--><!--Device-InputMethodSetting-off(type: 'imeHide', callback?: (info: Array<InputWindowInfo>) => void): void-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -712,36 +641,30 @@ on(type: 'imeShow', callback: (info: Array<InputWindowInfo>) => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'imeShow' | 是 | 设置监听类型，固定取值为'imeShow'。 |
-| callback | (info: Array&lt;InputWindowInfo&gt;) =&gt; void | 是 | 回调函数，返回输入法固定态软键盘信息。 |
+| type | 'imeHide' | 是 | 设置监听类型，固定取值'imeHide'。 |
+| callback | (info: Array&lt;[InputWindowInfo](arkts-ime-inputmethod-inputwindowinfo-i.md)&gt;) =&gt; void | 否 | 取消订阅的回调函数。 &lt;br&gt;参数不填写时，取消订阅type对应的所有回调事件。 |
 
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
-
-**示例：**
+## 示例
 
 ```TypeScript
-inputMethod.getSetting().on('imeShow', (info: Array<inputMethod.InputWindowInfo>) => {
-  console.info('Succeeded in subscribing imeShow event.');
-});
+inputMethod.getSetting().off('imeHide');
 ```
 
-## on('imeHide')
+## off_imeShow
 
 ```TypeScript
-on(type: 'imeHide', callback: (info: Array<InputWindowInfo>) => void): void
+off(type: 'imeShow', callback?: (info: Array<InputWindowInfo>) => void): void
 ```
 
-订阅输入法[Panel]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_固定态软键盘隐藏事件。使用callback异步回调。
+取消订阅输入法[Panel](arkts-ime-inputmethodengine-panel-i.md#Panel)固定态软键盘显示事件。
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
-<!--Device-InputMethodSetting-on(type: 'imeHide', callback: (info: Array<InputWindowInfo>) => void): void--><!--Device-InputMethodSetting-on(type: 'imeHide', callback: (info: Array<InputWindowInfo>) => void): void-End-->
+**废弃版本：** -1
+
+<!--Device-InputMethodSetting-off(type: 'imeShow', callback?: (info: Array<InputWindowInfo>) => void): void--><!--Device-InputMethodSetting-off(type: 'imeShow', callback?: (info: Array<InputWindowInfo>) => void): void-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -751,21 +674,13 @@ on(type: 'imeHide', callback: (info: Array<InputWindowInfo>) => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'imeHide' | 是 | 设置监听类型，固定取值为'imeHide'。 |
-| callback | (info: Array&lt;InputWindowInfo&gt;) =&gt; void | 是 | 回调函数，返回输入法固定态软键盘信息。 |
+| type | 'imeShow' | 是 | 设置监听类型，固定取值'imeShow'。 |
+| callback | (info: Array&lt;[InputWindowInfo](arkts-ime-inputmethod-inputwindowinfo-i.md)&gt;) =&gt; void | 否 | 取消订阅的回调函数。 &lt;br&gt;参数不填写时，取消订阅type对应的所有回调事件。 |
 
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
-
-**示例：**
+## 示例
 
 ```TypeScript
-inputMethod.getSetting().on('imeHide', (info: Array<inputMethod.InputWindowInfo>) => {
-  console.info('Succeeded in subscribing imeHide event.');
-});
+inputMethod.getSetting().off('imeShow');
 ```
 
 ## onImeChangeWithUserId
@@ -778,7 +693,9 @@ onImeChangeWithUserId(callback: ImeChangeWithUserIdCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -792,7 +709,7 @@ onImeChangeWithUserId(callback: ImeChangeWithUserIdCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调函数，返回输入法属性对象、子类型对象及用户ID。 |
+| callback | [ImeChangeWithUserIdCallback](arkts-ime-inputmethod-imechangewithuseridcallback-t-sys.md) | 是 | 回调函数，返回输入法属性对象、子类型对象及用户ID。 |
 
 **错误码：**
 
@@ -810,7 +727,9 @@ onImeHide(callback: Callback<Array<InputWindowInfo>>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-InputMethodSetting-onImeHide(callback: Callback<Array<InputWindowInfo>>): void--><!--Device-InputMethodSetting-onImeHide(callback: Callback<Array<InputWindowInfo>>): void-End-->
 
@@ -822,7 +741,7 @@ onImeHide(callback: Callback<Array<InputWindowInfo>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;Array&lt;InputWindowInfo&gt;&gt; | 是 | 回调函数，返回输入法固定态软键盘信息。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;Array&lt;[InputWindowInfo](arkts-ime-inputmethod-inputwindowinfo-i.md)&gt;&gt; | 是 | 回调函数，返回输入法固定态软键盘信息。 |
 
 **错误码：**
 
@@ -830,7 +749,7 @@ onImeHide(callback: Callback<Array<InputWindowInfo>>): void
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 inputMethod.getSetting().onImeHide((info: Array<inputMethod.InputWindowInfo>) => {
@@ -848,7 +767,9 @@ onImeShow(callback: Callback<Array<InputWindowInfo>>):void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -862,7 +783,7 @@ onImeShow(callback: Callback<Array<InputWindowInfo>>):void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;Array&lt;InputWindowInfo&gt;&gt; | 是 | 回调函数，返回输入法固定态软键盘信息。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;Array&lt;[InputWindowInfo](arkts-ime-inputmethod-inputwindowinfo-i.md)&gt;&gt; | 是 | 回调函数，返回输入法固定态软键盘信息。 |
 
 **错误码：**
 
@@ -870,10 +791,92 @@ onImeShow(callback: Callback<Array<InputWindowInfo>>):void
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 inputMethod.getSetting().onImeShow((info: Array<inputMethod.InputWindowInfo>) => {
+  console.info('Succeeded in subscribing imeShow event.');
+});
+```
+
+## on_imeHide
+
+```TypeScript
+on(type: 'imeHide', callback: (info: Array<InputWindowInfo>) => void): void
+```
+
+订阅输入法[Panel](arkts-ime-inputmethodengine-panel-i.md#Panel)固定态软键盘隐藏事件。使用callback异步回调。
+
+**起始版本：** 10
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
+
+<!--Device-InputMethodSetting-on(type: 'imeHide', callback: (info: Array<InputWindowInfo>) => void): void--><!--Device-InputMethodSetting-on(type: 'imeHide', callback: (info: Array<InputWindowInfo>) => void): void-End-->
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'imeHide' | 是 | 设置监听类型，固定取值为'imeHide'。 |
+| callback | (info: Array&lt;[InputWindowInfo](arkts-ime-inputmethod-inputwindowinfo-i.md)&gt;) =&gt; void | 是 | 回调函数，返回输入法固定态软键盘信息。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
+
+## 示例
+
+```TypeScript
+inputMethod.getSetting().on('imeHide', (info: Array<inputMethod.InputWindowInfo>) => {
+  console.info('Succeeded in subscribing imeHide event.');
+});
+```
+
+## on_imeShow
+
+```TypeScript
+on(type: 'imeShow', callback: (info: Array<InputWindowInfo>) => void): void
+```
+
+订阅输入法[Panel](arkts-ime-inputmethodengine-panel-i.md#Panel)固定态软键盘显示事件。使用callback异步回调。
+
+**起始版本：** 10
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
+
+<!--Device-InputMethodSetting-on(type: 'imeShow', callback: (info: Array<InputWindowInfo>) => void): void--><!--Device-InputMethodSetting-on(type: 'imeShow', callback: (info: Array<InputWindowInfo>) => void): void-End-->
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'imeShow' | 是 | 设置监听类型，固定取值为'imeShow'。 |
+| callback | (info: Array&lt;[InputWindowInfo](arkts-ime-inputmethod-inputwindowinfo-i.md)&gt;) =&gt; void | 是 | 回调函数，返回输入法固定态软键盘信息。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
+
+## 示例
+
+```TypeScript
+inputMethod.getSetting().on('imeShow', (info: Array<inputMethod.InputWindowInfo>) => {
   console.info('Succeeded in subscribing imeShow event.');
 });
 ```

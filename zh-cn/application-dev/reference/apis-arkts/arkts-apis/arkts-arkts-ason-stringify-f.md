@@ -12,6 +12,8 @@ function stringify(value: Object | null | undefined): string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ASON-function stringify(value: Object | null | undefined): string--><!--Device-ASON-function stringify(value: Object | null | undefined): string-End-->
@@ -22,7 +24,7 @@ function stringify(value: Object | null | undefined): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object \| null \| undefined | 是 | ArkTS对象数据。\_\_\_HTML\_TAG\_USD\_0\_\_\_**起始版本：** 18 |
+| value | Object \| null \| undefined | 是 | ArkTS对象数据。<br>**起始版本：** 18 |
 
 **返回值：**
 

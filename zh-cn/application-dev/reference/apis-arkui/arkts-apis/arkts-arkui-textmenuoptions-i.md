@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为16。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface TextMenuOptions--><!--Device-unnamed-declare interface TextMenuOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -18,11 +20,13 @@ showMode?: TextMenuShowMode
 
 菜单的显示模式。 默认值：TextMenuShowMode.DEFAULT
 
-**类型：** TextMenuShowMode
+**类型：** [TextMenuShowMode](arkts-arkui-textmenushowmode-e.md)
 
 **起始版本：** 16
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为16。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

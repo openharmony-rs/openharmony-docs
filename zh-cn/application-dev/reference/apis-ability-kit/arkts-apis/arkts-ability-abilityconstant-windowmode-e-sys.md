@@ -1,10 +1,12 @@
 # WindowMode
 
-启动UIAbility时窗口的创建模式，类型为枚举。可配合 [startAbility]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 方法使用。
+启动UIAbility时窗口的创建模式，类型为枚举。可配合 [startAbility](arkts-ability-uiabilitycontext-c.md#startAbility) 方法使用。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AbilityConstant-export enum WindowMode--><!--Device-AbilityConstant-export enum WindowMode-End-->
 
@@ -18,9 +20,11 @@ WINDOW_MODE_UNDEFINED = 0
 
 未定义窗口模式。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -38,9 +42,11 @@ WINDOW_MODE_FLOATING = 102
 
 自由悬浮形式窗口模式。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

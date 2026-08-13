@@ -8,11 +8,13 @@ function getAVSession(context: Context): Promise<AVSession>
 
 获取会话对象。使用Promise异步回调。 该接口可将当前进程已创建过的会话对象返回，如果没有创建过会话对象，该接口调用会失败并抛出异常。
 
-**起始版本：** 22
+**起始版本：** 24
 
-**ArkTS模式：** ArkTS-Dyn起始版本为22；ArkTS-Sta起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
 <!--Device-avSession-function getAVSession(context: Context): Promise<AVSession>--><!--Device-avSession-function getAVSession(context: Context): Promise<AVSession>-End-->
 
@@ -22,13 +24,13 @@ function getAVSession(context: Context): Promise<AVSession>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 需要使用UIAbilityContext，用于系统获取应用组件的相关信息。 |
+| context | Context | 是 | 需要使用UIAbilityContext，用于系统获取应用组件的相关信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;AVSession&gt; | Promise对象。回调返回会话实例对象，可用于获取会话ID、设置元数据及播放状态、发送按键事件等操作。 |
+| Promise&lt;[AVSession](arkts-avsession-avsession-avsession-i.md)&gt; | Promise对象。回调返回会话实例对象，可用于获取会话ID、设置元数据及播放状态、发送按键事件等操作。 |
 
 **错误码：**
 
@@ -37,7 +39,7 @@ function getAVSession(context: Context): Promise<AVSession>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { avSession } from '@kit.AVSessionKit';

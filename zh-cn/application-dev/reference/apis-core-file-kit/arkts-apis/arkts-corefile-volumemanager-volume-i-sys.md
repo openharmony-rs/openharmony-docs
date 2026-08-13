@@ -2,9 +2,11 @@
 
 获取所有卷。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-volumeManager-export interface Volume--><!--Device-volumeManager-export interface Volume-End-->
 
@@ -22,9 +24,11 @@ description: string
 
 **类型：** string
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Volume-description: string--><!--Device-Volume-description: string-End-->
 
@@ -42,9 +46,11 @@ diskId: string
 
 **类型：** string
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Volume-diskId: string--><!--Device-Volume-diskId: string-End-->
 
@@ -58,13 +64,15 @@ diskId: string
 fsType: string
 ```
 
-文件系统的类型，常见有ext2、vfat、NTFS等。 **说明**：从API version 24开始，支持ISO9660、UDF。
+文件系统的类型，常见有ext2、vfat、NTFS等。 **说明：**从API version 24开始，支持ISO9660、UDF。
 
 **类型：** string
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Volume-fsType: string--><!--Device-Volume-fsType: string-End-->
 
@@ -82,9 +90,11 @@ id: string
 
 **类型：** string
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Volume-id: string--><!--Device-Volume-id: string-End-->
 
@@ -102,9 +112,11 @@ path: string
 
 **类型：** string
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Volume-path: string--><!--Device-Volume-path: string-End-->
 
@@ -122,9 +134,11 @@ removable: boolean
 
 **类型：** boolean
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Volume-removable: boolean--><!--Device-Volume-removable: boolean-End-->
 
@@ -142,9 +156,11 @@ state: int
 
 **类型：** int
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Volume-state: int--><!--Device-Volume-state: int-End-->
 
@@ -162,9 +178,11 @@ uuid: string
 
 **类型：** string
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Volume-uuid: string--><!--Device-Volume-uuid: string-End-->
 

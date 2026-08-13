@@ -4,11 +4,13 @@
 declare type OnAlphabetIndexerRequestPopupDataCallback  = (index: number) => Array<string>
 ```
 
-[usingPopup]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_设置值为true，索引项被选中时触发的事件。
+[usingPopup](arkts-arkui-alphabetindexer-attribute.md#usingPopup)设置值为true，索引项被选中时触发的事件。
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -22,7 +24,7 @@ declare type OnAlphabetIndexerRequestPopupDataCallback  = (index: number) => Arr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | selected index  |
+| index | number | 是 | selected index |
 
 **返回值：**
 

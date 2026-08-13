@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 <!--Device-asset-interface SyncResult--><!--Device-asset-interface SyncResult-End-->
 
 **系统能力：** SystemCapability.Security.Asset
@@ -24,6 +26,8 @@ readonly failedCount?: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 <!--Device-SyncResult-readonly failedCount?: number--><!--Device-SyncResult-readonly failedCount?: number-End-->
 
 **系统能力：** SystemCapability.Security.Asset
@@ -34,13 +38,15 @@ readonly failedCount?: number
 readonly resultCode: number
 ```
 
-关键资产同步的结果码。同步成功时结果码为0，同步失败时结果码参考[ErrorCode]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+关键资产同步的结果码。同步成功时结果码为0，同步失败时结果码参考[ErrorCode](arkts-assetstore-asset-errorcode-e.md#ErrorCode)。
 
 **类型：** number
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 <!--Device-SyncResult-readonly resultCode: number--><!--Device-SyncResult-readonly resultCode: number-End-->
 
@@ -59,6 +65,8 @@ readonly totalCount?: number
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 <!--Device-SyncResult-readonly totalCount?: number--><!--Device-SyncResult-readonly totalCount?: number-End-->
 

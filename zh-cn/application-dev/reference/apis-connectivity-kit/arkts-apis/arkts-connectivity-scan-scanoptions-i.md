@@ -4,7 +4,9 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-scan-interface ScanOptions--><!--Device-scan-interface ScanOptions-End-->
 
@@ -22,7 +24,9 @@ duration?: int
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -36,13 +40,15 @@ duration?: int
 scanMode?: ScanMode
 ```
 
-扫描模式。 如果未设置“scanMode”，则默认值为“SCAN\_MODE\_LOW\_POWER”。 默认值： SCAN\_MODE\_LOW\_POWER。
+扫描模式。 如果未设置“scanMode”，则默认值为“SCAN_MODE_LOW_POWER”。 默认值： SCAN_MODE_LOW_POWER。
 
-**类型：** ScanMode
+**类型：** [ScanMode](arkts-connectivity-scan-scanmode-e.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -2,7 +2,7 @@
 
 ## 概述
 
-This file declares the data types of the canvas, brush, pen, bitmap, and path used to draw 2D graphics.
+文件中定义了用于绘制2D图形的数据类型，包括画布、画笔、画刷、位图和路径。这些数据类型提供了2D图形绘制能力，适用于需要在画布上绑定画笔和画刷绘制各种形状、图片和文字的场景，可以灵活定义路径和位图，帮助开发者高效实现自定义图形绘制、图像处理等功能，满足复杂的2D图形绘制需求。<br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
 
 **库：** libnative_drawing.so
 
@@ -18,11 +18,11 @@ This file declares the data types of the canvas, brush, pen, bitmap, and path us
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md) | OH_Drawing_Point2D | OH_Drawing_Point2D: 定义一个二维的坐标点。OH_Drawing_Corner_Radii: 定义一个圆角半径，该圆角半径由x轴方向和y轴方向上的半径组成。 |
+| [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md) | OH_Drawing_Point2D | OH_Drawing_Point2D: 定义一个二维的坐标点。<br/>OH_Drawing_Corner_Radii: 定义一个圆角半径，该圆角半径由x轴方向和y轴方向上的半径组成。 |
 | [OH_Drawing_Point3D](capi-drawing-oh-drawing-point3d.md) | OH_Drawing_Point3D | 定义一个三维的坐标点。 |
-| [OH_Drawing_RectStyle_Info](capi-drawing-oh-drawing-rectstyle-info.md) | OH_Drawing_RectStyle_Info | This struct describes the style of a rectangle. |
-| [OH_Drawing_Image_Info](capi-drawing-oh-drawing-image-info.md) | OH_Drawing_Image_Info | This struct describes the image information. |
-| [OH_Drawing_String](capi-drawing-oh-drawing-string.md) | OH_Drawing_String | This struct describes a string of characters encoded in UTF-16. |
+| [OH_Drawing_RectStyle_Info](capi-drawing-oh-drawing-rectstyle-info.md) | OH_Drawing_RectStyle_Info | 定义矩形框样式结构体。 |
+| [OH_Drawing_Image_Info](capi-drawing-oh-drawing-image-info.md) | OH_Drawing_Image_Info | 定义图片信息结构体。 |
+| [OH_Drawing_String](capi-drawing-oh-drawing-string.md) | OH_Drawing_String | 采用UTF-16编码的字符串信息结构体。 |
 | [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) | OH_Drawing_Canvas | 定义为一块矩形的画布，可以结合画笔和画刷在上面绘制各种形状、图片和文字。 |
 | [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md) | OH_Drawing_Pen | 定义为画笔，画笔用于描述绘制图形轮廓的样式和颜色。 |
 | [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) | OH_Drawing_Region | 定义一个区域，用于表示画布上的封闭区域，实现更精确的图形控制。 |
@@ -39,7 +39,7 @@ This file declares the data types of the canvas, brush, pen, bitmap, and path us
 | [OH_Drawing_RoundRect](capi-drawing-oh-drawing-roundrect.md) | OH_Drawing_RoundRect | 用于描述圆角矩形。 |
 | [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md) | OH_Drawing_Matrix | 定义一个矩阵，用于描述坐标变换。 |
 | [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md) | OH_Drawing_ShaderEffect | 定义一个着色器，用于描述绘制内容的源颜色。 |
-| [OH_Drawing_ShadowLayer](capi-drawing-oh-drawing-shadowlayer.md) | OH_Drawing_ShadowLayer | 定义一个阴影层，用于描述绘制内容的阴影层。 |
+| [OH_Drawing_ShadowLayer](capi-drawing-oh-drawing-shadowlayer.md) | OH_Drawing_ShadowLayer | 定义一个阴影层，用于描述绘制内容的阴影效果。 |
 | [OH_Drawing_Filter](capi-drawing-oh-drawing-filter.md) | OH_Drawing_Filter | 定义一个滤波器，用于存储颜色滤波器，蒙版滤波器和图像滤波器。 |
 | [OH_Drawing_MaskFilter](capi-drawing-oh-drawing-maskfilter.md) | OH_Drawing_MaskFilter | 定义蒙版滤波器。 |
 | [OH_Drawing_ColorFilter](capi-drawing-oh-drawing-colorfilter.md) | OH_Drawing_ColorFilter | 定义颜色滤波器，传入一个颜色并返回一个新的颜色。 |
@@ -50,16 +50,16 @@ This file declares the data types of the canvas, brush, pen, bitmap, and path us
 | [OH_Drawing_Typeface](capi-drawing-oh-drawing-typeface.md) | OH_Drawing_Typeface | 用于描述字形。 |
 | [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md) | OH_Drawing_TextBlob | 定义一个文本对象，表示将多个文本组合到一个不可变的容器中。每个文本行由字形和位置组成。 |
 | [OH_Drawing_Image](capi-drawing-oh-drawing-image.md) | OH_Drawing_Image | 定义一个用于描述绘制二维像素数组的图片。 |
-| [OH_Drawing_ImageFilter](capi-drawing-oh-drawing-imagefilter.md) | OH_Drawing_ImageFilter | 定义图像滤波器, 用于对构成图像像素的所有颜色位进行操作。 |
+| [OH_Drawing_ImageFilter](capi-drawing-oh-drawing-imagefilter.md) | OH_Drawing_ImageFilter | 定义图像滤波器，用于对构成图像像素的所有颜色位进行操作。 |
 | [OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md) | OH_Drawing_SamplingOptions | 定义一个采样选项，用于描述图片、位图等图像的采样方法。 |
 | [OH_Drawing_TextBlobBuilder](capi-drawing-oh-drawing-textblobbuilder.md) | OH_Drawing_TextBlobBuilder | 定义文本构建器，用于构建文本。 |
 | [OH_Drawing_GpuContext](capi-drawing-oh-drawing-gpucontext.md) | OH_Drawing_GpuContext | 定义图形处理器上下文，用于描述图形处理器后端上下文。 |
 | [OH_Drawing_Surface](capi-drawing-oh-drawing-surface.md) | OH_Drawing_Surface | 定义surface，用于管理画布绘制的内容。 |
-| [OH_Drawing_FontMgr](capi-drawing-oh-drawing-fontmgr.md) | OH_Drawing_FontMgr | 定义字体管理类, 用于字体管理。 |
-| [OH_Drawing_FontStyleSet](capi-drawing-oh-drawing-fontstyleset.md) | OH_Drawing_FontStyleSet | 定义字体样式集, 用于字体样式族匹配。 |
+| [OH_Drawing_FontMgr](capi-drawing-oh-drawing-fontmgr.md) | OH_Drawing_FontMgr | 定义字体管理类，用于字体管理。 |
+| [OH_Drawing_FontStyleSet](capi-drawing-oh-drawing-fontstyleset.md) | OH_Drawing_FontStyleSet | 定义字体样式集，用于字体样式族匹配。 |
 | [OH_Drawing_RecordCmdUtils](capi-drawing-oh-drawing-recordcmdutils.md) | OH_Drawing_RecordCmdUtils | 定义指令录制工具，用于生成录制指令。 |
-| [OH_Drawing_RecordCmd](capi-drawing-oh-drawing-recordcmd.md) | OH_Drawing_RecordCmd | 定义录制指令类, 用于存储录制指令的集合。 |
-| [OH_Drawing_Array](capi-drawing-oh-drawing-array.md) | OH_Drawing_Array | 定义数组对象, 用于存储多个同类型对象。 |
+| [OH_Drawing_RecordCmd](capi-drawing-oh-drawing-recordcmd.md) | OH_Drawing_RecordCmd | 定义录制指令类，用于存储录制指令的集合。 |
+| [OH_Drawing_Array](capi-drawing-oh-drawing-array.md) | OH_Drawing_Array | 定义数组对象，用于存储多个同类型对象。 |
 
 ### 枚举
 
@@ -67,7 +67,7 @@ This file declares the data types of the canvas, brush, pen, bitmap, and path us
 | -- | -- | -- |
 | [OH_Drawing_ColorFormat](#oh_drawing_colorformat) | OH_Drawing_ColorFormat | 用于描述位图像素的存储格式。 |
 | [OH_Drawing_AlphaFormat](#oh_drawing_alphaformat) | OH_Drawing_AlphaFormat | 用于描述位图像素的透明度分量。 |
-| [OH_Drawing_BlendMode](#oh_drawing_blendmode) | OH_Drawing_BlendMode | 混合模式枚举。混合模式的操作会为两种颜色（源色、目标色）生成一种新的颜色。这些操作在红、绿、蓝3个颜色通道上是相同的（透明度有另外的处理规则）。对于这些，我们使用透明度通道作为示例，而不是单独命名每个通道。为简洁起见，我们使用以下缩写：s  : source，源的缩写。d  : destination，目标的缩写。sa : source alpha，源透明度的缩写。da : destination alpha，目标透明度的缩写。计算结果用如下缩写表示：r  : 如果4个通道的计算方式相同，用r表示。ra : 如果只操作透明度通道，用ra表示。rc : 如果操作3个颜色通道，用rc表示。 |
+| [OH_Drawing_BlendMode](#oh_drawing_blendmode) | OH_Drawing_BlendMode | 混合模式枚举。混合模式的操作会为两种颜色（源色、目标色）生成一种新的颜色。<br>这些操作在红、绿、蓝3个颜色通道上是相同的（透明度有另外的处理规则）。<br>对于这些，我们使用透明度通道作为示例，而不是单独命名每个通道。为简洁起见，我们使用以下缩写：<br>s  : source，源的缩写。<br>d  : destination，目标的缩写。<br>sa : source alpha，源透明度的缩写。<br>da : destination alpha，目标透明度的缩写。<br>计算结果用如下缩写表示：<br>r  : 如果4个通道的计算方式相同，用r表示。<br>ra : 如果只操作透明度通道，用ra表示。<br>rc : 如果操作3个颜色通道，用rc表示。 |
 | [OH_Drawing_TextEncoding](#oh_drawing_textencoding) | OH_Drawing_TextEncoding | 文本编码类型枚举。 |
 
 ## 枚举类型说明
@@ -86,12 +86,12 @@ enum OH_Drawing_ColorFormat
 
 | 枚举项 | 描述 |
 | -- | -- |
-| COLOR_FORMAT_UNKNOWN |  |
-| COLOR_FORMAT_ALPHA_8 |  |
-| COLOR_FORMAT_RGB_565 |  |
-| COLOR_FORMAT_ARGB_4444 |  |
-| COLOR_FORMAT_RGBA_8888 |  |
-| COLOR_FORMAT_BGRA_8888 |  |
+| COLOR_FORMAT_UNKNOWN | 未知格式。<br>**起始版本：** 8 |
+| COLOR_FORMAT_ALPHA_8 | 每个像素用一个8位的量表示，8个比特位表示透明度。<br>**起始版本：** 8 |
+| COLOR_FORMAT_RGB_565 | 每个像素用一个16位的量表示，高位到低位依次是5个比特位表示红，6个比特位表示绿，5个比特位表示蓝。<br>**起始版本：** 8 |
+| COLOR_FORMAT_ARGB_4444 | 每个像素用一个16位的量表示，高位到低位依次是4个比特位表示透明度，4个比特位表示红，4个比特位表示绿，4个比特位表示蓝。<br>**起始版本：** 8 |
+| COLOR_FORMAT_RGBA_8888 | 每个像素用一个32位的量表示，高位到低位依次是8个比特位表示透明度，8个比特位表示红，8个比特位表示绿，8个比特位表示蓝。<br>**起始版本：** 8 |
+| COLOR_FORMAT_BGRA_8888 | 每个像素用一个32位的量表示，高位到低位依次是8个比特位表示蓝，8个比特位表示绿，8个比特位表示红，8个比特位表示透明度。<br>**起始版本：** 8 |
 
 ### OH_Drawing_AlphaFormat
 
@@ -107,10 +107,10 @@ enum OH_Drawing_AlphaFormat
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ALPHA_FORMAT_UNKNOWN |  |
-| ALPHA_FORMAT_OPAQUE |  |
-| ALPHA_FORMAT_PREMUL |  |
-| ALPHA_FORMAT_UNPREMUL |  |
+| ALPHA_FORMAT_UNKNOWN | 未知格式。<br>**起始版本：** 8 |
+| ALPHA_FORMAT_OPAQUE | 位图无透明度。<br>**起始版本：** 8 |
+| ALPHA_FORMAT_PREMUL | 每个像素的颜色组件已预先乘以透明度分量。<br>**起始版本：** 8 |
+| ALPHA_FORMAT_UNPREMUL | 每个像素的颜色组件未预先乘以透明度分量。<br>**起始版本：** 8 |
 
 ### OH_Drawing_BlendMode
 
@@ -120,41 +120,41 @@ enum OH_Drawing_BlendMode
 
 **描述**
 
-混合模式枚举。混合模式的操作会为两种颜色（源色、目标色）生成一种新的颜色。这些操作在红、绿、蓝3个颜色通道上是相同的（透明度有另外的处理规则）。对于这些，我们使用透明度通道作为示例，而不是单独命名每个通道。为简洁起见，我们使用以下缩写：s  : source，源的缩写。d  : destination，目标的缩写。sa : source alpha，源透明度的缩写。da : destination alpha，目标透明度的缩写。计算结果用如下缩写表示：r  : 如果4个通道的计算方式相同，用r表示。ra : 如果只操作透明度通道，用ra表示。rc : 如果操作3个颜色通道，用rc表示。
+混合模式枚举。混合模式的操作会为两种颜色（源色、目标色）生成一种新的颜色。<br>这些操作在红、绿、蓝3个颜色通道上是相同的（透明度有另外的处理规则）。<br>对于这些，我们使用透明度通道作为示例，而不是单独命名每个通道。为简洁起见，我们使用以下缩写：<br>s  : source，源的缩写。<br>d  : destination，目标的缩写。<br>sa : source alpha，源透明度的缩写。<br>da : destination alpha，目标透明度的缩写。<br>计算结果用如下缩写表示：<br>r  : 如果4个通道的计算方式相同，用r表示。<br>ra : 如果只操作透明度通道，用ra表示。<br>rc : 如果操作3个颜色通道，用rc表示。
 
 **起始版本：** 11
 
 | 枚举项 | 描述 |
 | -- | -- |
-| BLEND_MODE_CLEAR |  |
-| BLEND_MODE_SRC |  |
-| BLEND_MODE_DST |  |
-| BLEND_MODE_SRC_OVER |  |
-| BLEND_MODE_DST_OVER |  |
-| BLEND_MODE_SRC_IN |  |
-| BLEND_MODE_DST_IN |  |
-| BLEND_MODE_SRC_OUT |  |
-| BLEND_MODE_DST_OUT |  |
-| BLEND_MODE_SRC_ATOP |  |
-| BLEND_MODE_DST_ATOP |  |
-| BLEND_MODE_XOR |  |
-| BLEND_MODE_PLUS |  |
-| BLEND_MODE_MODULATE |  |
-| BLEND_MODE_SCREEN |  |
-| BLEND_MODE_OVERLAY |  |
-| BLEND_MODE_DARKEN |  |
-| BLEND_MODE_LIGHTEN |  |
-| BLEND_MODE_COLOR_DODGE |  |
-| BLEND_MODE_COLOR_BURN |  |
-| BLEND_MODE_HARD_LIGHT |  |
-| BLEND_MODE_SOFT_LIGHT |  |
-| BLEND_MODE_DIFFERENCE |  |
-| BLEND_MODE_EXCLUSION |  |
-| BLEND_MODE_MULTIPLY |  |
-| BLEND_MODE_HUE |  |
-| BLEND_MODE_SATURATION |  |
-| BLEND_MODE_COLOR |  |
-| BLEND_MODE_LUMINOSITY |  |
+| BLEND_MODE_CLEAR | 清除模式，r = 0。<br>**起始版本：** 11 |
+| BLEND_MODE_SRC | r = s（result的4个通道，都等于source的4个通道，即结果等于源。）<br>**起始版本：** 11 |
+| BLEND_MODE_DST | r = d（result的4个通道，都等于destination的4个通道，即结果等于目标。）<br>**起始版本：** 11 |
+| BLEND_MODE_SRC_OVER | r = s + (1 - sa) * d。<br>**起始版本：** 11 |
+| BLEND_MODE_DST_OVER | r = d + (1 - da) * s。<br>**起始版本：** 11 |
+| BLEND_MODE_SRC_IN | r = s * da。<br>**起始版本：** 11 |
+| BLEND_MODE_DST_IN | r = d * sa。<br>**起始版本：** 11 |
+| BLEND_MODE_SRC_OUT | r = s * (1 - da)。<br>**起始版本：** 11 |
+| BLEND_MODE_DST_OUT | r = d * (1 - sa)。<br>**起始版本：** 11 |
+| BLEND_MODE_SRC_ATOP | r = s * da + d * (1 - sa)。<br>**起始版本：** 11 |
+| BLEND_MODE_DST_ATOP | r = d * sa + s * (1 - da)。<br>**起始版本：** 11 |
+| BLEND_MODE_XOR | r = s * (1 - da) + d * (1 - sa)。<br>**起始版本：** 11 |
+| BLEND_MODE_PLUS | r = min(s + d, 1)。<br>**起始版本：** 11 |
+| BLEND_MODE_MODULATE | r = s * d。<br>**起始版本：** 11 |
+| BLEND_MODE_SCREEN | 滤色模式，r = s + d - s * d。<br>**起始版本：** 11 |
+| BLEND_MODE_OVERLAY | 叠加模式，根据目标像素的亮度，选择性地应用MULTIPLY或SCREEN模式，增强对比度。<br>**起始版本：** 11 |
+| BLEND_MODE_DARKEN | 变暗模式，rc = s + d - max(s * da, d * sa), ra = s + (1 - sa) * d。<br>**起始版本：** 11 |
+| BLEND_MODE_LIGHTEN | 变亮模式，rc = s + d - min(s * da, d * sa), ra = s + (1 - sa) * d。<br>**起始版本：** 11 |
+| BLEND_MODE_COLOR_DODGE | 颜色减淡模式，通过减小对比度使目标像素变亮以反映源像素。<br>**起始版本：** 11 |
+| BLEND_MODE_COLOR_BURN | 颜色加深模式，通过增加对比度使目标像素变暗以反映源像素。<br>**起始版本：** 11 |
+| BLEND_MODE_HARD_LIGHT | 强光模式，根据源像素的亮度，选择性地应用MULTIPLY或SCREEN模式。<br>**起始版本：** 11 |
+| BLEND_MODE_SOFT_LIGHT | 柔光模式，根据源像素的亮度，柔和地变亮或变暗目标像素。<br>**起始版本：** 11 |
+| BLEND_MODE_DIFFERENCE | 差值模式，rc = s + d - 2 * (min(s * da, d * sa)), ra = s + (1 - sa) * d。<br>**起始版本：** 11 |
+| BLEND_MODE_EXCLUSION | 排除模式，rc = s + d - two(s * d), ra = s + (1 - sa) * d。<br>**起始版本：** 11 |
+| BLEND_MODE_MULTIPLY | 正片叠底，r = s * (1 - da) + d * (1 - sa) + s * d。<br>**起始版本：** 11 |
+| BLEND_MODE_HUE | 色相模式，使用源像素的色相，目标像素的饱和度和亮度。<br>**起始版本：** 11 |
+| BLEND_MODE_SATURATION | 饱和度模式，使用源像素的饱和度，目标像素的色相和亮度。<br>**起始版本：** 11 |
+| BLEND_MODE_COLOR | 颜色模式，使用源像素的色相和饱和度，目标像素的亮度。<br>**起始版本：** 11 |
+| BLEND_MODE_LUMINOSITY | 亮度模式，使用源像素的亮度，目标像素的色相和饱和度。<br>**起始版本：** 11 |
 
 ### OH_Drawing_TextEncoding
 
@@ -170,9 +170,9 @@ enum OH_Drawing_TextEncoding
 
 | 枚举项 | 描述 |
 | -- | -- |
-| TEXT_ENCODING_UTF8 |  |
-| TEXT_ENCODING_UTF16 |  |
-| TEXT_ENCODING_UTF32 |  |
-| TEXT_ENCODING_GLYPH_ID |  |
+| TEXT_ENCODING_UTF8 | 单字节，表示UTF-8或ASCII。<br>**起始版本：** 12 |
+| TEXT_ENCODING_UTF16 | 双字节，表示大部分Unicode。<br>**起始版本：** 12 |
+| TEXT_ENCODING_UTF32 | 四字节，表示所有Unicode。<br>**起始版本：** 12 |
+| TEXT_ENCODING_GLYPH_ID | 双字节，表示字形索引。<br>**起始版本：** 12 |
 
 

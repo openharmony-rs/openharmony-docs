@@ -1,20 +1,24 @@
 # FlowItem
 
 ```TypeScript
-type FlowItem = FlowItemFrameNode
+type FlowItem = TypedFrameNode<FlowItemInterface, FlowItemAttribute>
 ```
 
-Define the FrameNode type for FlowItem.
+FlowItem类型的FrameNode节点类型。允许添加一个子组件。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-typeNode-type FlowItem = FlowItemFrameNode--><!--Device-typeNode-type FlowItem = FlowItemFrameNode-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-typeNode-type FlowItem = TypedFrameNode<FlowItemInterface, FlowItemAttribute>--><!--Device-typeNode-type FlowItem = TypedFrameNode<FlowItemInterface, FlowItemAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**属性类型：** FlowItemFrameNode
+**属性类型：** TypedFrameNode<FlowItemInterface, FlowItemAttribute>
 

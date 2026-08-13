@@ -10,6 +10,8 @@ export type OnCheckboxChangeCallback = (value: boolean) => void
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-export type OnCheckboxChangeCallback = (value: boolean) => void--><!--Device-unnamed-export type OnCheckboxChangeCallback = (value: boolean) => void-End-->
@@ -20,5 +22,5 @@ export type OnCheckboxChangeCallback = (value: boolean) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | boolean | 是 | 返回true表示已选中。返回false表示未选中。  |
+| value | boolean | 是 | 返回true表示已选中。返回false表示未选中。 |
 

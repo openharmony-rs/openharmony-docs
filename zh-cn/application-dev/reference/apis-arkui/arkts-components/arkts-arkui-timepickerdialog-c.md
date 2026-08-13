@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare class TimePickerDialog--><!--Device-unnamed-declare class TimePickerDialog-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -16,7 +18,7 @@
 static show(options?: TimePickerDialogOptions)
 ```
 
-定义时间滑动选择器弹窗并弹出。 > **说明：** > > 从API version 10开始，可以通过使用[UIContext]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_中的 > [showTimePickerDialog]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_来明确UI的执行上下文。
+定义时间滑动选择器弹窗并弹出。 > **说明：** > > 从API version 10开始，可以通过使用[UIContext](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#UIContext)中的 > [showTimePickerDialog](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#showTimePickerDialog)来明确UI的执行上下文。
 
 **起始版本：** 8
 
@@ -24,7 +26,7 @@ static show(options?: TimePickerDialogOptions)
 
 **废弃版本：** 18
 
-**替代接口：** ohos.arkui.UIContext.UIContext#showTimePickerDialog
+**替代接口：** [showTimePickerDialog](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#showTimePickerDialog)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -36,5 +38,5 @@ static show(options?: TimePickerDialogOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 配置时间选择器弹窗的参数。参数缺省时不弹出弹窗。 |
+| options | [TimePickerDialogOptions](arkts-arkui-timepickerdialogoptions-i.md) | 否 | 配置时间选择器弹窗的参数。参数缺省时不弹出弹窗。 |
 

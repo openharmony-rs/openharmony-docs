@@ -2,9 +2,11 @@
 
 通知栏自定义信息。
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-agent-interface Notification--><!--Device-agent-interface Notification-End-->
 
@@ -20,9 +22,11 @@ Disables the notification. If the value is false, a notification will be display
 
 **类型：** boolean
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Notification-disable?: boolean--><!--Device-Notification-disable?: boolean-End-->
 

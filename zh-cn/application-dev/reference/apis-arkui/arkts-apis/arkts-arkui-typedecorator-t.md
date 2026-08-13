@@ -10,6 +10,8 @@ export declare type TypeDecorator = <T>(type: TypeConstructor<T>) => PropertyDec
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -22,7 +24,7 @@ export declare type TypeDecorator = <T>(type: TypeConstructor<T>) => PropertyDec
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; | 是 | 标记类属性的类型，仅支持自定义class类型，传入其他类型会导致持久化失败。  |
+| type | [TypeConstructor](arkts-arkui-arkui-statemanagement-typeconstructor-i.md)&lt;T&gt; | 是 | 标记类属性的类型，仅支持自定义class类型，传入其他类型会导致持久化失败。 |
 
 **返回值：**
 

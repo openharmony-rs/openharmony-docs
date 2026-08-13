@@ -2,13 +2,15 @@
 
 开发者需要自定义class实现ContentModifier接口。
 
-**继承/实现关系：** TextClockConfiguration extends [CommonConfiguration<TextClockConfiguration>](CommonConfiguration<TextClockConfiguration>)
+**继承/实现关系：** TextClockConfiguration extends CommonConfiguration<TextClockConfiguration>
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-<!--Device-unnamed-declare interface TextClockConfiguration extends CommonConfiguration<TextClockConfiguration>--><!--Device-unnamed-declare interface TextClockConfiguration extends CommonConfiguration<TextClockConfiguration>-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare interface TextClockConfiguration--><!--Device-unnamed-declare interface TextClockConfiguration-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -25,6 +27,8 @@ started: boolean
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -48,6 +52,8 @@ timeValue: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -69,6 +75,8 @@ timeZoneOffset: number
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

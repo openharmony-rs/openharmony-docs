@@ -12,6 +12,8 @@ function remainingEnergy(): int
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-batteryInfo-function remainingEnergy(): int--><!--Device-batteryInfo-function remainingEnergy(): int-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
@@ -23,4 +25,12 @@ function remainingEnergy(): int
 | 类型 | 说明 |
 | --- | --- |
 | int | 返回当前设备电池的剩余容量，单位毫安时。 |
+
+## 示例
+
+```TypeScript
+// ArkTS-Sta示例
+let result = batteryInfo.remainingEnergy();
+console.info("The result is: " + result);
+```
 

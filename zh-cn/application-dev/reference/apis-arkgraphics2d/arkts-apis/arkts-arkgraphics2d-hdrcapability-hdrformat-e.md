@@ -2,9 +2,11 @@
 
 HDR格式枚举。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-hdrCapability-enum HDRFormat--><!--Device-hdrCapability-enum HDRFormat-End-->
 
@@ -16,11 +18,13 @@ HDR格式枚举。
 NONE = 0
 ```
 
-不支持HDR类型。 从API version 12开始，该接口支持在原子化服务中使用。
+不支持HDR类型。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -34,11 +38,13 @@ NONE = 0
 VIDEO_HLG = 1
 ```
 
-支持视频的HLG格式。 从API version 12开始，该接口支持在原子化服务中使用。
+支持视频的HLG格式。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -52,11 +58,13 @@ VIDEO_HLG = 1
 VIDEO_HDR10 = 2
 ```
 
-支持视频的HDR10格式。 从API version 12开始，该接口支持在原子化服务中使用。
+支持视频的HDR10格式。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -70,11 +78,13 @@ VIDEO_HDR10 = 2
 VIDEO_HDR_VIVID = 3
 ```
 
-支持视频的HDR\_VIVID格式。 从API version 12开始，该接口支持在原子化服务中使用。
+支持视频的HDR_VIVID格式。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -88,11 +98,13 @@ VIDEO_HDR_VIVID = 3
 IMAGE_HDR_VIVID_DUAL = 4
 ```
 
-支持图片的HDR\_VIVID格式，以dual JPEG格式存储。 从API version 12开始，该接口支持在原子化服务中使用。
+支持图片的HDR_VIVID格式，以dual JPEG格式存储。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -106,11 +118,13 @@ IMAGE_HDR_VIVID_DUAL = 4
 IMAGE_HDR_VIVID_SINGLE = 5
 ```
 
-支持图片的HDR\_VIVID格式，以single HEIF格式存储。 从API version 12开始，该接口支持在原子化服务中使用。
+支持图片的HDR_VIVID格式，以single HEIF格式存储。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -124,11 +138,13 @@ IMAGE_HDR_VIVID_SINGLE = 5
 IMAGE_HDR_ISO_DUAL = 6
 ```
 
-支持图片的HDR\_ISO格式，以dual JPEG格式存储。 从API version 12开始，该接口支持在原子化服务中使用。
+支持图片的HDR_ISO格式，以dual JPEG格式存储。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -142,11 +158,13 @@ IMAGE_HDR_ISO_DUAL = 6
 IMAGE_HDR_ISO_SINGLE = 7
 ```
 
-支持图片的HDR\_ISO格式，以single HEIF格式存储。 从API version 12开始，该接口支持在原子化服务中使用。
+支持图片的HDR_ISO格式，以single HEIF格式存储。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -160,11 +178,13 @@ IMAGE_HDR_ISO_SINGLE = 7
 VIDEO_AIHDR = 8
 ```
 
-支持视频的AIHDR格式。 从API version 24开始，该接口支持在原子化服务中使用。
+支持视频的AIHDR格式。
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

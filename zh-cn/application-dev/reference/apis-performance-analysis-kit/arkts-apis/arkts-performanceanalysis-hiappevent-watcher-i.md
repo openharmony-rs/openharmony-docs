@@ -1,10 +1,12 @@
 # Watcher
 
-提供事件观察者的参数选项。用于配置和管理事件的观察者，实现对特定事件的监听和处理。 > **说明：** > > 不建议在回调函数中执行[removeWatcher]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_的操作，watcher一旦被移除，则其原有的订阅回调功能也会随之失效，可能会造成某些事件发生后无订阅回调情况。
+提供事件观察者的参数选项。用于配置和管理事件的观察者，实现对特定事件的监听和处理。 > **说明：** > > 不建议在回调函数中执行[removeWatcher](arkts-performanceanalysis-hiappevent-removewatcher-f.md#removeWatcher)的操作，watcher一旦被移除，则其原有的订阅回调功能也会随之失效，可能会造成某些事件发生后无订阅回调情况。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-hiAppEvent-interface Watcher--><!--Device-hiAppEvent-interface Watcher-End-->
 
@@ -18,11 +20,13 @@ appEventFilters?: AppEventFilter[]
 
 订阅过滤条件，在需要对订阅事件进行过滤时传入。默认不过滤事件。
 
-**类型：** AppEventFilter[]
+**类型：** [AppEventFilter](arkts-performanceanalysis-hiappevent-appeventfilter-i.md)[]
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -36,13 +40,15 @@ appEventFilters?: AppEventFilter[]
 name: string
 ```
 
-观察者名称，用于唯一标识观察者。首字符必须为字母字符，中间字符必须为数字字符、字母字符或下划线字符，结尾字符必须为数字字符或字母字符，长度非空且不超过32个字符。如testName1、crash\_Watcher等。
+观察者名称，用于唯一标识观察者。首字符必须为字母字符，中间字符必须为数字字符、字母字符或下划线字符，结尾字符必须为数字字符或字母字符，长度非空且不超过32个字符。如testName1、crash_Watcher等。
 
 **类型：** string
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -58,11 +64,13 @@ onReceive?: (domain: string, appEventGroups: Array<AppEventGroup>) => void
 
 订阅实时回调函数，与回调函数onTrigger同时存在时，只触发此回调，函数入参说明如下： domain：回调事件的领域名称； appEventGroups：回调事件集合。
 
-**类型：** (domain: string, appEventGroups: Array&lt;AppEventGroup&gt;) =&gt; void
+**类型：** (domain: string, appEventGroups: Array&lt;[AppEventGroup](arkts-performanceanalysis-hiappevent-appeventgroup-i.md)&gt;) =&gt; void
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -80,9 +88,11 @@ onTrigger?: (curRow: int, curSize: int, holder: AppEventPackageHolder) => void
 
 **类型：** (curRow: int, curSize: int, holder: AppEventPackageHolder) =&gt; void
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -98,11 +108,13 @@ triggerCondition?: TriggerCondition
 
 订阅回调触发条件，需要与回调函数onTrigger一同传入才会生效。默认不触发。
 
-**类型：** TriggerCondition
+**类型：** [TriggerCondition](arkts-performanceanalysis-hiappevent-triggercondition-i.md)
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

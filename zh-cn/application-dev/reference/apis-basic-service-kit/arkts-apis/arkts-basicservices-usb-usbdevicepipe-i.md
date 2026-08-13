@@ -8,7 +8,7 @@ USB设备消息传输通道，用于确定设备。
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBDevicePipe](arkts-basicservices-usbmanager-usbdevicepipe-i.md)
+**替代接口：** [USBDevicePipe](arkts-basicservices-usbmanager-usbdevicepipe-i.md#USBDevicePipe)
 
 <!--Device-usb-interface USBDevicePipe--><!--Device-usb-interface USBDevicePipe-End-->
 
@@ -30,7 +30,7 @@ busNum: number
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBDevicePipe.busNum](arkts-basicservices-usbmanager-usbdevicepipe-i.md#busnum)
+**替代接口：** [busNum](arkts-basicservices-usbmanager-usbdevicepipe-i.md#busNum)
 
 <!--Device-USBDevicePipe-busNum: number--><!--Device-USBDevicePipe-busNum: number-End-->
 
@@ -52,7 +52,7 @@ devAddress: number
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBDevicePipe.devAddress](arkts-basicservices-usbmanager-usbdevicepipe-i.md#devaddress)
+**替代接口：** [devAddress](arkts-basicservices-usbmanager-usbdevicepipe-i.md#devAddress)
 
 <!--Device-USBDevicePipe-devAddress: number--><!--Device-USBDevicePipe-devAddress: number-End-->
 

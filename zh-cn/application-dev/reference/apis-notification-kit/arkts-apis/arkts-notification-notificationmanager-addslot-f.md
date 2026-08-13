@@ -1,5 +1,11 @@
 # addSlot
 
+## 导入模块
+
+```TypeScript
+import { notificationManager } from '@kit.NotificationKit';
+```
+
 ## addSlot
 
 ```TypeScript
@@ -8,32 +14,42 @@ function addSlot(type: SlotType, callback: AsyncCallback<void>): void
 
 创建指定类型的通知渠道。使用callback异步回调。 通知渠道NotificationSlot定义了通知的提醒方式（如提示音、振动、横幅等）和级别。 发布通知前，应用需先创建对应类型的通知渠道，或者发布通知时系统将自动创建对应类型的通知渠道。 同一类型的通知渠道只能创建一个。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-notificationManager-function addSlot(type: SlotType, callback: AsyncCallback<void>): void--><!--Device-notificationManager-function addSlot(type: SlotType, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 
+**参见：**
+
+getSlot 获取指定类型的通知渠道。
+
+removeSlot 删除当前应用指定类型的通知渠道。
+
+removeAllSlots 删除所有渠道通知。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 要创建的通知渠道的类型。不同的渠道类型对应不同的默认SlotLevel，影响通知的提醒方式。例如SOCIAL\_\_\_ESCAPED\_UNDERSCORE\_\_\_COMMUNICATION对应LEVEL\_\_\_ESCAPED\_UNDERSCORE\_\_\_HIGH（状态栏图标+横幅+提示音），CONTENT\_\_\_ESCAPED\_UNDERSCORE\_\_\_INFORMATION对应LEVEL\_\_\_ESCAPED\_UNDERSCORE\_\_\_MIN（状态栏不显示图标+无横幅+无提示音）。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数。当创建指定类型的通知渠道成功，err为undefined，否则为错误对象。 |
+| type | SlotType | 是 | 要创建的通知渠道的类型。不同的渠道类型对应不同的默认SlotLevel， 影响通知的提醒方式。例如SOCIAL_COMMUNICATION对应LEVEL_HIGH （状态栏图标+横幅+提示音），CONTENT_INFORMATION对应LEVEL_MIN （状态栏不显示图标+无横幅+无提示音）。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当创建指定类型的通知渠道成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [1600012](../errorcode-notification.md#1600012-内存空间不足) | No memory space. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
-| [1600012](../errorcode-notification.md#1600012-内存空间不足) | No memory space. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -76,19 +92,29 @@ function addSlot(type: SlotType): Promise<void>
 
 创建指定类型的通知渠道。使用Promise异步回调。 通知渠道NotificationSlot定义了通知的提醒方式（如提示音、振动、横幅等）和级别。 发布通知前，应用需先创建对应类型的通知渠道，或者发布通知时系统将自动创建对应类型的通知渠道。 同一类型的通知渠道只能创建一个。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-notificationManager-function addSlot(type: SlotType): Promise<void>--><!--Device-notificationManager-function addSlot(type: SlotType): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 
+**参见：**
+
+getSlot 获取指定类型的通知渠道。
+
+removeSlot 删除当前应用指定类型的通知渠道。
+
+removeAllSlots 删除当前应用的所有渠道通知。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 要创建的通知渠道的类型。不同的渠道类型对应不同的默认SlotLevel，影响通知的提醒方式。例如SOCIAL\_\_\_ESCAPED\_UNDERSCORE\_\_\_COMMUNICATION对应LEVEL\_\_\_ESCAPED\_UNDERSCORE\_\_\_HIGH（状态栏图标+横幅+提示音），CONTENT\_\_\_ESCAPED\_UNDERSCORE\_\_\_INFORMATION对应LEVEL\_\_\_ESCAPED\_UNDERSCORE\_\_\_MIN（状态栏不显示图标+无横幅+无提示音）。 |
+| type | SlotType | 是 | 要创建的通知渠道的类型。不同的渠道类型对应不同的默认SlotLevel， 影响通知的提醒方式。例如SOCIAL_COMMUNICATION对应LEVEL_HIGH （状态栏图标+横幅+提示音），CONTENT_INFORMATION对应LEVEL_MIN （状态栏不显示图标+无横幅+无提示音）。 |
 
 **返回值：**
 
@@ -100,13 +126,13 @@ function addSlot(type: SlotType): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [1600012](../errorcode-notification.md#1600012-内存空间不足) | No memory space. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
-| [1600012](../errorcode-notification.md#1600012-内存空间不足) | No memory space. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

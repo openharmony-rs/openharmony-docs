@@ -20,13 +20,21 @@
   <!--Del-->
   - [getCrossingSwitchState(系统接口)](arkts-distributedservice-cooperate-getcrossingswitchstate-f-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [off(系统接口)](arkts-distributedservice-cooperate-off-f-sys.md)<!--DelEnd-->
+  - [off_cooperate(系统接口)](arkts-distributedservice-cooperate-offcooperate-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [off_cooperateMessage(系统接口)](arkts-distributedservice-cooperate-offcooperatemessage-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [off_cooperateMouse(系统接口)](arkts-distributedservice-cooperate-offcooperatemouse-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [offCooperateMessage(系统接口)](arkts-distributedservice-cooperate-offcooperatemessage-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [offCooperateMouseEvent(系统接口)](arkts-distributedservice-cooperate-offcooperatemouseevent-f-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [on(系统接口)](arkts-distributedservice-cooperate-on-f-sys.md)<!--DelEnd-->
+  - [on_cooperate(系统接口)](arkts-distributedservice-cooperate-oncooperate-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [on_cooperateMessage(系统接口)](arkts-distributedservice-cooperate-oncooperatemessage-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [on_cooperateMouse(系统接口)](arkts-distributedservice-cooperate-oncooperatemouse-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [onCooperateMessage(系统接口)](arkts-distributedservice-cooperate-oncooperatemessage-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -149,9 +157,14 @@
   - [getPeerInfoById](arkts-distributedservice-abilityconnectionmanager-getpeerinfobyid-f.md)
   <!--Del-->
   - [getSurfaceId(系统接口)](arkts-distributedservice-abilityconnectionmanager-getsurfaceid-f-sys.md)<!--DelEnd-->
-  - [off](arkts-distributedservice-abilityconnectionmanager-off-f.md)
   <!--Del-->
-  - [off(系统接口)](arkts-distributedservice-abilityconnectionmanager-off-f-sys.md)<!--DelEnd-->
+  - [off_collaborateEvent(系统接口)](arkts-distributedservice-abilityconnectionmanager-offcollaborateevent-f-sys.md)<!--DelEnd-->
+  - [off_connect](arkts-distributedservice-abilityconnectionmanager-offconnect-f.md)
+  - [off_disconnect](arkts-distributedservice-abilityconnectionmanager-offdisconnect-f.md)
+  - [off_receiveData](arkts-distributedservice-abilityconnectionmanager-offreceivedata-f.md)
+  <!--Del-->
+  - [off_receiveImage(系统接口)](arkts-distributedservice-abilityconnectionmanager-offreceiveimage-f-sys.md)<!--DelEnd-->
+  - [off_receiveMessage](arkts-distributedservice-abilityconnectionmanager-offreceivemessage-f.md)
   <!--Del-->
   - [offCollaborateEvent(系统接口)](arkts-distributedservice-abilityconnectionmanager-offcollaborateevent-f-sys.md)<!--DelEnd-->
   - [offConnect](arkts-distributedservice-abilityconnectionmanager-offconnect-f.md)
@@ -160,9 +173,14 @@
   <!--Del-->
   - [offReceiveImage(系统接口)](arkts-distributedservice-abilityconnectionmanager-offreceiveimage-f-sys.md)<!--DelEnd-->
   - [offReceiveMessage](arkts-distributedservice-abilityconnectionmanager-offreceivemessage-f.md)
-  - [on](arkts-distributedservice-abilityconnectionmanager-on-f.md)
   <!--Del-->
-  - [on(系统接口)](arkts-distributedservice-abilityconnectionmanager-on-f-sys.md)<!--DelEnd-->
+  - [on_collaborateEvent(系统接口)](arkts-distributedservice-abilityconnectionmanager-oncollaborateevent-f-sys.md)<!--DelEnd-->
+  - [on_connect](arkts-distributedservice-abilityconnectionmanager-onconnect-f.md)
+  - [on_disconnect](arkts-distributedservice-abilityconnectionmanager-ondisconnect-f.md)
+  - [on_receiveData](arkts-distributedservice-abilityconnectionmanager-onreceivedata-f.md)
+  <!--Del-->
+  - [on_receiveImage(系统接口)](arkts-distributedservice-abilityconnectionmanager-onreceiveimage-f-sys.md)<!--DelEnd-->
+  - [on_receiveMessage](arkts-distributedservice-abilityconnectionmanager-onreceivemessage-f.md)
   <!--Del-->
   - [onCollaborateEvent(系统接口)](arkts-distributedservice-abilityconnectionmanager-oncollaborateevent-f-sys.md)<!--DelEnd-->
   - [onConnect](arkts-distributedservice-abilityconnectionmanager-onconnect-f.md)
@@ -219,10 +237,12 @@
   - [Server](arkts-distributedservice-linkenhance-server-i.md)
 - [@ohos.distributedsched.proxyChannelManager](arkts-distributedsched-proxychannelmanager.md)
   - [closeProxyChannel](arkts-distributedservice-proxychannelmanager-closeproxychannel-f.md)
-  - [off](arkts-distributedservice-proxychannelmanager-off-f.md)
+  - [off_channelStateChange](arkts-distributedservice-proxychannelmanager-offchannelstatechange-f.md)
+  - [off_receiveData](arkts-distributedservice-proxychannelmanager-offreceivedata-f.md)
   - [offChannelStateChange](arkts-distributedservice-proxychannelmanager-offchannelstatechange-f.md)
   - [offReceiveData](arkts-distributedservice-proxychannelmanager-offreceivedata-f.md)
-  - [on](arkts-distributedservice-proxychannelmanager-on-f.md)
+  - [on_channelStateChange](arkts-distributedservice-proxychannelmanager-onchannelstatechange-f.md)
+  - [on_receiveData](arkts-distributedservice-proxychannelmanager-onreceivedata-f.md)
   - [onChannelStateChange](arkts-distributedservice-proxychannelmanager-onchannelstatechange-f.md)
   - [onReceiveData](arkts-distributedservice-proxychannelmanager-onreceivedata-f.md)
   - [openProxyChannel](arkts-distributedservice-proxychannelmanager-openproxychannel-f.md)

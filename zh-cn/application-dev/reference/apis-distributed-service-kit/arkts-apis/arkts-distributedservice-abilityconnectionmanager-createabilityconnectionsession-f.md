@@ -9,9 +9,11 @@ function createAbilityConnectionSession(serviceName: string, context: Context, p
 
 创建应用间的协同会话。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.INTERNET and ohos.permission.GET_NETWORK_INFO and ohos.permission.SET_NETWORK_INFO and ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -26,25 +28,25 @@ function createAbilityConnectionSession(serviceName: string, context: Context, p
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | serviceName | string | 是 | 应用设置的服务名称（两端必须一致），最大长度为256字符。 |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 表示应用上下文。 |
-| peerInfo | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 对端的协同信息。 |
-| connectOptions | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 应用设置的连接选项。 |
+| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 表示应用上下文。 |
+| peerInfo | [PeerInfo](arkts-distributedservice-abilityconnectionmanager-peerinfo-i.md) | 是 | 对端的协同信息。 |
+| connectOptions | ConnectOptions | 是 | 应用设置的连接选项。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 成功创建的协同会话ID。 |
+| int | 成功创建的协同会话ID。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

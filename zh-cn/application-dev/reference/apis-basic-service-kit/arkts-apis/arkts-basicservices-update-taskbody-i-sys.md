@@ -2,9 +2,11 @@
 
 任务数据。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-update-export interface TaskBody--><!--Device-update-export interface TaskBody-End-->
 
@@ -20,11 +22,13 @@ errorMessages: Array<ErrorMessage>
 
 错误信息。
 
-**类型：** Array&lt;ErrorMessage&gt;
+**类型：** Array&lt;[ErrorMessage](arkts-basicservices-update-errormessage-i-sys.md)&gt;
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TaskBody-errorMessages: Array<ErrorMessage>--><!--Device-TaskBody-errorMessages: Array<ErrorMessage>-End-->
 
@@ -42,9 +46,11 @@ installMode: int
 
 **类型：** int
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TaskBody-installMode: int--><!--Device-TaskBody-installMode: int-End-->
 
@@ -62,9 +68,11 @@ progress: int
 
 **类型：** int
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TaskBody-progress: int--><!--Device-TaskBody-progress: int-End-->
 
@@ -78,13 +86,15 @@ progress: int
 status: UpgradeStatus
 ```
 
-升级状态。用于标识升级任务的当前执行阶段。包含下载状态（WAITING\_DOWNLOAD到DOWNLOAD\_FAIL）、安装状态（WAITING\_INSTALL到UPDATING）、生效状态（WAITING\_APPLY到 APPLYING）和最终结果（UPGRADE\_SUCCESS或UPGRADE\_FAIL），用于任务状态监控、进度展示和异常处理等场景。
+升级状态。用于标识升级任务的当前执行阶段。包含下载状态（WAITING_DOWNLOAD到DOWNLOAD_FAIL）、安装状态（WAITING_INSTALL到UPDATING）、生效状态（WAITING_APPLY到 APPLYING）和最终结果（UPGRADE_SUCCESS或UPGRADE_FAIL），用于任务状态监控、进度展示和异常处理等场景。
 
-**类型：** UpgradeStatus
+**类型：** [UpgradeStatus](arkts-basicservices-update-upgradestatus-e-sys.md)
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TaskBody-status: UpgradeStatus--><!--Device-TaskBody-status: UpgradeStatus-End-->
 
@@ -98,13 +108,15 @@ status: UpgradeStatus
 subStatus: int
 ```
 
-子状态，取值范围参考[UpgradeStatus]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_状态码。
+子状态，取值范围参考[UpgradeStatus](arkts-basicservices-update-upgradestatus-e-sys.md#UpgradeStatus（系统接口）)状态码。
 
 **类型：** int
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TaskBody-subStatus: int--><!--Device-TaskBody-subStatus: int-End-->
 
@@ -120,11 +132,13 @@ versionComponents: Array<VersionComponent>
 
 版本组件。
 
-**类型：** Array&lt;VersionComponent&gt;
+**类型：** Array&lt;[VersionComponent](arkts-basicservices-update-versioncomponent-i-sys.md)&gt;
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TaskBody-versionComponents: Array<VersionComponent>--><!--Device-TaskBody-versionComponents: Array<VersionComponent>-End-->
 
@@ -140,11 +154,13 @@ versionDigestInfo: VersionDigestInfo
 
 版本摘要。
 
-**类型：** VersionDigestInfo
+**类型：** [VersionDigestInfo](arkts-basicservices-update-versiondigestinfo-i-sys.md)
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TaskBody-versionDigestInfo: VersionDigestInfo--><!--Device-TaskBody-versionDigestInfo: VersionDigestInfo-End-->
 

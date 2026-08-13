@@ -2,9 +2,11 @@
 
 ASR AEC mode.
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-audio-enum AsrAecMode--><!--Device-audio-enum AsrAecMode-End-->
 
@@ -20,9 +22,11 @@ BYPASS = 0
 
 Bypass AEC.
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AsrAecMode-BYPASS = 0--><!--Device-AsrAecMode-BYPASS = 0-End-->
 
@@ -38,9 +42,11 @@ STANDARD = 1
 
 Using standard AEC.
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AsrAecMode-STANDARD = 1--><!--Device-AsrAecMode-STANDARD = 1-End-->
 

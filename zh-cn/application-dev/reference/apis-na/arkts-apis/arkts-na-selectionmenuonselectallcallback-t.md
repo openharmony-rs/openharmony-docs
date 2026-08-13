@@ -10,6 +10,8 @@ export type SelectionMenuOnSelectAllCallback = (event?: EditorEventInfo) => void
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-export type SelectionMenuOnSelectAllCallback = (event?: EditorEventInfo) => void--><!--Device-unnamed-export type SelectionMenuOnSelectAllCallback = (event?: EditorEventInfo) => void-End-->
@@ -20,5 +22,5 @@ export type SelectionMenuOnSelectAllCallback = (event?: EditorEventInfo) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 事件信息。  |
+| event | EditorEventInfo | 否 | 事件信息。 |
 

@@ -6,6 +6,8 @@ Worker构造函数的选项，用于为Worker添加其他信息。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-export interface WorkerOptions--><!--Device-unnamed-export interface WorkerOptions-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
@@ -16,13 +18,15 @@ Worker构造函数的选项，用于为Worker添加其他信息。
 name?: string
 ```
 
-Worker的名称。默认值为undefined，此时线程名称为'WorkerThread'。 非默认值情况下，对应的线程名称带有'WorkerThread\_'前缀。比如name为'testName'时，对应的线程名称为'WorkerThread\_testName'。 线程名称可通过HeapMemoryInfo的threadName获取。
+Worker的名称。默认值为undefined，此时线程名称为'WorkerThread'。 非默认值情况下，对应的线程名称带有'WorkerThread_'前缀。比如name为'testName'时，对应的线程名称为'WorkerThread_testName'。 线程名称可通过HeapMemoryInfo的threadName获取。
 
 **类型：** string
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -38,11 +42,13 @@ priority?: ThreadWorkerPriority
 
 表示Worker线程优先级。默认值为MEDIUM。
 
-**类型：** ThreadWorkerPriority
+**类型：** [ThreadWorkerPriority](arkts-arkts-worker-threadworkerpriority-e.md)
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -64,6 +70,8 @@ shared?: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WorkerOptions-shared?: boolean--><!--Device-WorkerOptions-shared?: boolean-End-->
@@ -83,6 +91,8 @@ Worker执行脚本的模式类型，暂不支持module类型，默认值为class
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

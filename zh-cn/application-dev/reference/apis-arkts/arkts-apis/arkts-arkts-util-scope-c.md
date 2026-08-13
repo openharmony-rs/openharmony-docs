@@ -8,7 +8,7 @@ Scope 接口用于描述字段的有效范围。
 
 **废弃版本：** 9
 
-**替代接口：** [util.ScopeHelper](arkts-arkts-util-scopehelper-c.md)
+**替代接口：** [ScopeHelper](arkts-arkts-util-scopehelper-c.md#ScopeHelper)
 
 <!--Device-util-class Scope--><!--Device-util-class Scope-End-->
 
@@ -28,7 +28,7 @@ clamp(value: ScopeType): ScopeType
 
 **废弃版本：** 9
 
-**替代接口：** [util.ScopeHelper.clamp](arkts-arkts-util-scopehelper-c.md#clamp)
+**替代接口：** [clamp](arkts-arkts-util-scopehelper-c.md#clamp)
 
 <!--Device-Scope-clamp(value: ScopeType): ScopeType--><!--Device-Scope-clamp(value: ScopeType): ScopeType-End-->
 
@@ -38,15 +38,15 @@ clamp(value: ScopeType): ScopeType
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 指定的值。 |
+| value | [ScopeType](arkts-arkts-util-scopetype-t.md) | 是 | 指定的值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 如果指定值小于下限，则返回 **lowerObj**；如果指定值大于上限，则返回 **upperObj**；如果 |
+| [ScopeType](arkts-arkts-util-scopetype-t.md) | 如果指定值小于下限，则返回 **lowerObj**；如果指定值大于上限，则返回 **upperObj**；如果 在此 **Scope** 范围内，则返回指定值。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 class Temperature implements util.ScopeComparable {
@@ -92,7 +92,7 @@ constructor(lowerObj: ScopeType, upperObj: ScopeType)
 
 **废弃版本：** 9
 
-**替代接口：** ohos.util.ScopeHelper.constructor
+**替代接口：** constructor
 
 <!--Device-Scope-constructor(lowerObj: ScopeType, upperObj: ScopeType)--><!--Device-Scope-constructor(lowerObj: ScopeType, upperObj: ScopeType)-End-->
 
@@ -102,10 +102,10 @@ constructor(lowerObj: ScopeType, upperObj: ScopeType)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| lowerObj | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | **Scope** 对象的下限。 |
-| upperObj | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | **Scope** 对象的上限。 |
+| lowerObj | [ScopeType](arkts-arkts-util-scopetype-t.md) | 是 | Scope** 对象的下限。 |
+| upperObj | [ScopeType](arkts-arkts-util-scopetype-t.md) | 是 | Scope** 对象的上限。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 class Temperature implements util.ScopeComparable {
@@ -149,7 +149,7 @@ contains(value: ScopeType): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [util.LRUCache.contains](arkts-arkts-util-lrucache-c.md#contains)
+**替代接口：** [contains](arkts-arkts-util-lrucache-c.md#contains)
 
 <!--Device-Scope-contains(value: ScopeType): boolean--><!--Device-Scope-contains(value: ScopeType): boolean-End-->
 
@@ -159,7 +159,7 @@ contains(value: ScopeType): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 指定的值。 |
+| value | [ScopeType](arkts-arkts-util-scopetype-t.md) | 是 | 指定的值。 |
 
 **返回值：**
 
@@ -167,7 +167,7 @@ contains(value: ScopeType): boolean
 | --- | --- |
 | boolean | 检查结果。如果值在此 **Scope** 范围内，则返回 **true**；否则返回 **false**。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 class Temperature implements util.ScopeComparable {
@@ -213,7 +213,7 @@ contains(range: Scope): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [util.LRUCache.contains](arkts-arkts-util-lrucache-c.md#contains)
+**替代接口：** [contains](arkts-arkts-util-lrucache-c.md#contains)
 
 <!--Device-Scope-contains(range: Scope): boolean--><!--Device-Scope-contains(range: Scope): boolean-End-->
 
@@ -223,7 +223,7 @@ contains(range: Scope): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| range | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 指定的 **Scope**。 |
+| range | [Scope](arkts-arkts-util-scope-c.md) | 是 | 指定的 **Scope**。 |
 
 **返回值：**
 
@@ -231,7 +231,7 @@ contains(range: Scope): boolean
 | --- | --- |
 | boolean | 检查结果。如果范围在此 **Scope** 范围内，则返回 **true**；否则返回 **false**。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 class Temperature implements util.ScopeComparable {
@@ -279,7 +279,7 @@ expand(lowerObj: ScopeType, upperObj: ScopeType): Scope
 
 **废弃版本：** 9
 
-**替代接口：** ohos.util.ScopeHelper.expand
+**替代接口：** expand
 
 <!--Device-Scope-expand(lowerObj: ScopeType, upperObj: ScopeType): Scope--><!--Device-Scope-expand(lowerObj: ScopeType, upperObj: ScopeType): Scope-End-->
 
@@ -289,16 +289,16 @@ expand(lowerObj: ScopeType, upperObj: ScopeType): Scope
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| lowerObj | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 下限。 |
-| upperObj | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 上限。 |
+| lowerObj | [ScopeType](arkts-arkts-util-scopetype-t.md) | 是 | 下限。 |
+| upperObj | [ScopeType](arkts-arkts-util-scopetype-t.md) | 是 | 上限。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 此 **Scope** 与给定上下限的并集。 |
+| [Scope](arkts-arkts-util-scope-c.md) | 此 **Scope** 与给定上下限的并集。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 class Temperature implements util.ScopeComparable {
@@ -345,7 +345,7 @@ expand(range: Scope): Scope
 
 **废弃版本：** 9
 
-**替代接口：** ohos.util.ScopeHelper.expand
+**替代接口：** expand
 
 <!--Device-Scope-expand(range: Scope): Scope--><!--Device-Scope-expand(range: Scope): Scope-End-->
 
@@ -355,15 +355,15 @@ expand(range: Scope): Scope
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| range | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 指定的 **Scope**。 |
+| range | [Scope](arkts-arkts-util-scope-c.md) | 是 | 指定的 **Scope**。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 此 **Scope** 与给定 **Scope** 的并集。 |
+| [Scope](arkts-arkts-util-scope-c.md) | 此 **Scope** 与给定 **Scope** 的并集。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 class Temperature implements util.ScopeComparable {
@@ -411,7 +411,7 @@ expand(value: ScopeType): Scope
 
 **废弃版本：** 9
 
-**替代接口：** ohos.util.ScopeHelper.expand
+**替代接口：** expand
 
 <!--Device-Scope-expand(value: ScopeType): Scope--><!--Device-Scope-expand(value: ScopeType): Scope-End-->
 
@@ -421,15 +421,15 @@ expand(value: ScopeType): Scope
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 指定的值。 |
+| value | [ScopeType](arkts-arkts-util-scopetype-t.md) | 是 | 指定的值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 此 **Scope** 与给定值的并集。 |
+| [Scope](arkts-arkts-util-scope-c.md) | 此 **Scope** 与给定值的并集。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 class Temperature implements util.ScopeComparable {
@@ -475,7 +475,7 @@ getLower(): ScopeType
 
 **废弃版本：** 9
 
-**替代接口：** [util.ScopeHelper.getLower](arkts-arkts-util-scopehelper-c.md#getlower)
+**替代接口：** [getLower](arkts-arkts-util-scopehelper-c.md#getLower)
 
 <!--Device-Scope-getLower(): ScopeType--><!--Device-Scope-getLower(): ScopeType-End-->
 
@@ -485,9 +485,9 @@ getLower(): ScopeType
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 此 **Scope** 的下限。 |
+| [ScopeType](arkts-arkts-util-scopetype-t.md) | 此 **Scope** 的下限。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 class Temperature implements util.ScopeComparable {
@@ -532,7 +532,7 @@ getUpper(): ScopeType
 
 **废弃版本：** 9
 
-**替代接口：** [util.ScopeHelper.getUpper](arkts-arkts-util-scopehelper-c.md#getupper)
+**替代接口：** [getUpper](arkts-arkts-util-scopehelper-c.md#getUpper)
 
 <!--Device-Scope-getUpper(): ScopeType--><!--Device-Scope-getUpper(): ScopeType-End-->
 
@@ -542,9 +542,9 @@ getUpper(): ScopeType
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 此 **Scope** 的上限。 |
+| [ScopeType](arkts-arkts-util-scopetype-t.md) | 此 **Scope** 的上限。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 class Temperature implements util.ScopeComparable {
@@ -589,7 +589,7 @@ intersect(range: Scope): Scope
 
 **废弃版本：** 9
 
-**替代接口：** ohos.util.ScopeHelper.intersect
+**替代接口：** intersect
 
 <!--Device-Scope-intersect(range: Scope): Scope--><!--Device-Scope-intersect(range: Scope): Scope-End-->
 
@@ -599,15 +599,15 @@ intersect(range: Scope): Scope
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| range | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 指定的 **Scope**。 |
+| range | [Scope](arkts-arkts-util-scope-c.md) | 是 | 指定的 **Scope**。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 此 **Scope** 与给定 **Scope** 的交集。 |
+| [Scope](arkts-arkts-util-scope-c.md) | 此 **Scope** 与给定 **Scope** 的交集。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 class Temperature implements util.ScopeComparable {
@@ -655,7 +655,7 @@ intersect(lowerObj: ScopeType, upperObj: ScopeType): Scope
 
 **废弃版本：** 9
 
-**替代接口：** ohos.util.ScopeHelper.intersect
+**替代接口：** intersect
 
 <!--Device-Scope-intersect(lowerObj: ScopeType, upperObj: ScopeType): Scope--><!--Device-Scope-intersect(lowerObj: ScopeType, upperObj: ScopeType): Scope-End-->
 
@@ -665,16 +665,16 @@ intersect(lowerObj: ScopeType, upperObj: ScopeType): Scope
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| lowerObj | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 下限。 |
-| upperObj | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 上限。 |
+| lowerObj | [ScopeType](arkts-arkts-util-scopetype-t.md) | 是 | 下限。 |
+| upperObj | [ScopeType](arkts-arkts-util-scopetype-t.md) | 是 | 上限。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 此 **Scope** 与给定上下限的交集。 |
+| [Scope](arkts-arkts-util-scope-c.md) | 此 **Scope** 与给定上下限的交集。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 class Temperature implements util.ScopeComparable {
@@ -721,7 +721,7 @@ toString(): string
 
 **废弃版本：** 9
 
-**替代接口：** [util.LRUCache.toString](arkts-arkts-util-lrucache-c.md#tostring)
+**替代接口：** [toString](arkts-arkts-util-lrucache-c.md#toString)
 
 <!--Device-Scope-toString(): string--><!--Device-Scope-toString(): string-End-->
 
@@ -733,7 +733,7 @@ toString(): string
 | --- | --- |
 | string | 包含此 **Scope** 的字符串表示形式。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 class Temperature implements util.ScopeComparable {

@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** grid_col/GridColOptions
+**替代接口：** grid_col/GridColOptions and grid_row/GridRowOptions
 
 <!--Device-unnamed-declare interface GridContainerOptions--><!--Device-unnamed-declare interface GridContainerOptions-End-->
 
@@ -30,7 +30,7 @@ columns?: number | "auto"
 
 **废弃版本：** 9
 
-**替代接口：** grid_col/GridColOptions
+**替代接口：** grid_col/GridColOptions and grid_row/GridRowOptions
 
 <!--Device-GridContainerOptions-columns?: number | "auto"--><!--Device-GridContainerOptions-columns?: number | "auto"-End-->
 
@@ -52,7 +52,7 @@ gutter?: number | string
 
 **废弃版本：** 9
 
-**替代接口：** grid_col/GridColOptions
+**替代接口：** grid_col/GridColOptions and grid_row/GridRowOptions
 
 <!--Device-GridContainerOptions-gutter?: number | string--><!--Device-GridContainerOptions-gutter?: number | string-End-->
 
@@ -74,7 +74,7 @@ margin?: number | string
 
 **废弃版本：** 9
 
-**替代接口：** grid_col/GridColOptions
+**替代接口：** grid_col/GridColOptions and grid_row/GridRowOptions
 
 <!--Device-GridContainerOptions-margin?: number | string--><!--Device-GridContainerOptions-margin?: number | string-End-->
 
@@ -88,7 +88,7 @@ sizeType?: SizeType
 
 设置设备宽度类型，用于响应式布局。 默认值：SizeType.Auto
 
-**类型：** SizeType
+**类型：** [SizeType](arkts-arkui-sizetype-e.md)
 
 **起始版本：** 7
 
@@ -96,7 +96,7 @@ sizeType?: SizeType
 
 **废弃版本：** 9
 
-**替代接口：** grid_col/GridColOptions
+**替代接口：** grid_col/GridColOptions and grid_row/GridRowOptions
 
 <!--Device-GridContainerOptions-sizeType?: SizeType--><!--Device-GridContainerOptions-sizeType?: SizeType-End-->
 

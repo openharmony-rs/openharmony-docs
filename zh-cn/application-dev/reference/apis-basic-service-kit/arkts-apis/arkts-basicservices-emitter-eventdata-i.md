@@ -2,9 +2,11 @@
 
 发送事件时传递的数据。
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-emitter-export interface EventData--><!--Device-emitter-export interface EventData-End-->
 
@@ -13,20 +15,20 @@
 ## data
 
 ```TypeScript
-data?: { [key: string]: any }
+data?: Record<string, RecordData> | ESValue
 ```
 
-发送事件时传递的数据，支持数据类型包括Array、ArrayBuffer、Boolean、DataView、Date、Error、Map、Number、Object、Primitive（除了symbol）、RegExp、Set 、String、TypedArray，数据大小最大为16MB，超出限制时事件发送失败。
+发送事件时传递的数据，支持数据类型包括Array、ArrayBuffer、Boolean、DataView、Date、Error、Map、Number、Object、Primitive（除了symbol）、RegExp、Set 、String、TypedArray，数据大小最大为16M。
 
-**类型：** { [key: string]: any }
+**类型：** Record&lt;string, [RecordData](arkts-basicservices-recorddata-t.md)&gt; \| ESValue
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
 
-<!--Device-EventData-data?: { [key: string]: any }--><!--Device-EventData-data?: { [key: string]: any }-End-->
+<!--Device-EventData-data?: Record<string, RecordData> | ESValue--><!--Device-EventData-data?: Record<string, RecordData> | ESValue-End-->
 
 **系统能力：** SystemCapability.Notification.Emitter
 

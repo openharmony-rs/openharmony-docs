@@ -10,6 +10,8 @@ The callback of onNativeEmbedVisibilityChange.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-export type OnNativeEmbedVisibilityChangeCallback = (nativeEmbedVisibilityInfo: NativeEmbedVisibilityInfo) => void--><!--Device-unnamed-export type OnNativeEmbedVisibilityChangeCallback = (nativeEmbedVisibilityInfo: NativeEmbedVisibilityInfo) => void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -18,5 +20,5 @@ The callback of onNativeEmbedVisibilityChange.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| nativeEmbedVisibilityInfo | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | callback information of onNativeEmbedVisibilityChange.  |
+| nativeEmbedVisibilityInfo | [NativeEmbedVisibilityInfo](arkts-na-web-nativeembedvisibilityinfo-i.md) | 是 | callback information of onNativeEmbedVisibilityChange. |
 

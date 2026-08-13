@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface DragPreviewOptions--><!--Device-unnamed-declare interface DragPreviewOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -18,11 +20,13 @@ mode?: DragPreviewMode | Array<DragPreviewMode>
 
 表示拖拽过程中背板图处理模式。 默认值：DragPreviewMode.AUTO 当组件同时设置DragPreviewMode.AUTO和其它枚举值时，以DragPreviewMode.AUTO为准，其它枚举值设置无效。
 
-**类型：** DragPreviewMode \| Array&lt;DragPreviewMode&gt;
+**类型：** [DragPreviewMode](arkts-arkui-dragpreviewmode-e.md) \| Array&lt;[DragPreviewMode](arkts-arkui-dragpreviewmode-e.md)&gt;
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -38,13 +42,15 @@ mode?: DragPreviewMode | Array<DragPreviewMode>
 numberBadge?: boolean | number
 ```
 
-控制数量角标是否显示，或强制设置显示的数量。当设置数量角标时取值范围为[0，2\_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_31\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_-1]，超过取值范围时会按默认状态处理。当设置为浮点数时，只显示整数部分。 **说明：** 在多选拖拽场景，需通过该接口设置拖拽对象的数量。 默认值：true。
+控制数量角标是否显示，或强制设置显示的数量。当设置数量角标时取值范围为[0，2&lt;sup&gt;31&lt;/sup&gt;-1]，超过取值范围时会按默认状态处理。当设置为浮点数时，只显示整数部分。 **说明：** 在多选拖拽场景，需通过该接口设置拖拽对象的数量。 默认值：true。
 
 **类型：** boolean \| number
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -62,11 +68,13 @@ sizeChangeEffect?: DraggingSizeChangeEffect
 
 用于选择长按浮起图与拖拽预览图过渡效果。 默认值：DraggingSizeChangeEffect.DEFAULT。
 
-**类型：** DraggingSizeChangeEffect
+**类型：** [DraggingSizeChangeEffect](arkts-arkui-draggingsizechangeeffect-e.md)
 
 **起始版本：** 19
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

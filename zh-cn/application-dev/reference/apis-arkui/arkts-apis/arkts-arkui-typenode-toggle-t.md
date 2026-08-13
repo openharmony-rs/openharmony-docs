@@ -1,20 +1,24 @@
 # Toggle
 
 ```TypeScript
-type Toggle = ToggleFrameNode
+type Toggle = TypedFrameNode<ToggleInterface, ToggleAttribute>
 ```
 
-Define the FrameNode type for Toggle.
+Toggle类型的FrameNode节点类型。
 
-**起始版本：** 23
+**起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-typeNode-type Toggle = ToggleFrameNode--><!--Device-typeNode-type Toggle = ToggleFrameNode-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+<!--Device-typeNode-type Toggle = TypedFrameNode<ToggleInterface, ToggleAttribute>--><!--Device-typeNode-type Toggle = TypedFrameNode<ToggleInterface, ToggleAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**属性类型：** ToggleFrameNode
+**属性类型：** TypedFrameNode<ToggleInterface, ToggleAttribute>
 

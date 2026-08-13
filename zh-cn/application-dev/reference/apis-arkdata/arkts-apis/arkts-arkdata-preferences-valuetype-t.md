@@ -1,30 +1,34 @@
 # ValueType
 
 ```TypeScript
-type ValueType = number | string | boolean | Array<number> | Array<string> | Array<boolean> | Uint8Array | object | bigint
+type ValueType = long | double | string | boolean | Array<long> | Array<double> | Array<string> | Array<boolean>
+    | Uint8Array | RecordData | bigint
 ```
 
-表示支持的值类型。
+Indicates possible value types
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
 
-<!--Device-preferences-type ValueType = number | string | boolean | Array<number> | Array<string> | Array<boolean> | Uint8Array | object | bigint--><!--Device-preferences-type ValueType = number | string | boolean | Array<number> | Array<string> | Array<boolean> | Uint8Array | object | bigint-End-->
+<!--Device-preferences-type ValueType = long | double | string | boolean | Array<long> | Array<double> | Array<string> | Array<boolean>    | Uint8Array | RecordData | bigint--><!--Device-preferences-type ValueType = long | double | string | boolean | Array<long> | Array<double> | Array<string> | Array<boolean>    | Uint8Array | RecordData | bigint-End-->
 
-**系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+**系统能力：** 
+- API版本23+：SystemCapability.DistributedDataManager.Preferences.Core
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 表示值类型为数字。 |
+| long | 表示值类型为long类型数字。 |
+| double | 表示值类型为double类型数字。 |
 | string | 表示值类型为字符串。 |
 | boolean | 表示值类型为布尔值。 |
-| Array&lt;number&gt; | 表示值类型为数字类型的数组。 |
+| Array&lt;long&gt; | 表示值类型为数字类型的数组。 |
+| Array&lt;double&gt; | 表示值类型为数字类型的数组。 |
 | Array&lt;string&gt; | 表示值类型为字符串类型的数组。 |
 | Array&lt;boolean&gt; | 表示值类型为布尔类型的数组。 |
-| Uint8Array | 表示值类型为8位无符号整型的数组。 [since 11] |
-| object | 表示值类型为对象。 [since 12] |
-| bigint | 表示值类型为任意精度格式的整数。 [since 12] |
+| Uint8Array | 表示值类型为8位无符号整型的数组。 |
+| RecordData | 表示值类型为RecordData。 |
+| bigint | 表示值类型为任意精度格式的整数。 |
 

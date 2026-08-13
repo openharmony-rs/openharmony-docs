@@ -1,14 +1,14 @@
 # Map
 
-一种基于键值对存储的非线性数据结构，能够高效地通过唯一键来存取对应的值。 > **说明** > > - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。 > 本节使用以下标识符来表示泛型的使用： - K：Key，键。 - V：Value，值。 K和V类型都需为 \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。 **装饰器类型**：\@Sendable
+一种基于键值对存储的非线性数据结构，能够高效地通过唯一键来存取对应的值。 > **说明：**> > - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。 > 本节使用以下标识符来表示泛型的使用： - K：Key，键。 - V：Value，值。 K和V类型都需为 [Sendable支持的数据类型](../../../arkts-utils/arkts-sendable.md#sendable支持的数据类型)。 **装饰器类型**：\@Sendable
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-**装饰器类型：** @Sendable
+**废弃版本：** -1
 
-<!--Device-collections-class Map<K, V>--><!--Device-collections-class Map<K, V>-End-->
+<!--Device-collections-class Map--><!--Device-collections-class Map-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -23,6 +23,8 @@
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -54,6 +56,8 @@ clear(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Map-clear(): void--><!--Device-Map-clear(): void-End-->
@@ -79,6 +83,8 @@ constructor(entries?: readonly (readonly [K, V])[] | null)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Map-constructor(entries?: readonly (readonly [K, V])[] | null)--><!--Device-Map-constructor(entries?: readonly (readonly [K, V])[] | null)-End-->
@@ -89,7 +95,7 @@ constructor(entries?: readonly (readonly [K, V])[] | null)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| entries | readonly (readonly [K, V])[] \| null | 否 | 键值对数组或其它可迭代对象。默认值为**null**，创建一个空Map对象。 |
+| entries | readonly (readonly [K, V])[] \| null | 否 | 键值对数组或其它可迭代对象。 默认值为**null**，创建一个空Map对象。 |
 
 **错误码：**
 
@@ -103,11 +109,13 @@ constructor(entries?: readonly (readonly [K, V])[] | null)
 constructor(iterable: Iterable<readonly [K, V]>)
 ```
 
-创建ArkTS Map对象的构造函数。
+构造函数，用于通过可迭代对象创建ArkTS Map对象。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -119,7 +127,7 @@ constructor(iterable: Iterable<readonly [K, V]>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| iterable | Iterable&lt;readonly [K, V]&gt; | 是 | 用于构造ArkTS Map的对象。 |
+| iterable | Iterable&lt;readonly [K, V]&gt; | 是 | 用于构造ArkTS Map的可迭代对象。 |
 
 **错误码：**
 
@@ -133,11 +141,13 @@ constructor(iterable: Iterable<readonly [K, V]>)
 delete(key: K): boolean
 ```
 
-删除该Map中指定元素。
+删除该Map中指定键对应的元素。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -155,7 +165,7 @@ delete(key: K): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 操作结果。如果元素存在并已被删除，则返回**true**； |
+| boolean | 操作结果。如果元素存在并已被删除，则返回**true**； 否则该元素不存在，返回**false**。 |
 
 **错误码：**
 
@@ -175,6 +185,8 @@ entries(): IterableIterator<[K, V]>
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -201,11 +213,13 @@ entries(): IterableIterator<[K, V]>
 forEach(callbackFn: (value: V, key: K, map: Map<K, V>) => void): void
 ```
 
-按插入顺序对该Map中的每个键/值对执行一次回调函数。
+按插入顺序对该Map中的每个键值对执行一次回调函数。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -232,11 +246,13 @@ forEach(callbackFn: (value: V, key: K, map: Map<K, V>) => void): void
 get(key: K): V | undefined
 ```
 
-返回该Map中的指定元素。
+返回该Map中指定键对应的元素。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -248,7 +264,7 @@ get(key: K): V | undefined
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | K | 是 | 指定key。 |
+| key | K | 是 | 要获取值的键。 |
 
 **返回值：**
 
@@ -269,11 +285,13 @@ get(key: K): V | undefined
 has(key: K): boolean
 ```
 
-判断该Map中是否存在指定元素。
+判断该Map中是否存在指定键。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -291,7 +309,7 @@ has(key: K): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 判断结果。如果存在指定元素，则返回**true**，否则返回 |
+| boolean | 判断结果。如果存在指定元素，则返回**true**，否则返回 **false**。 |
 
 **错误码：**
 
@@ -311,6 +329,8 @@ keys(): IterableIterator<K>
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -343,6 +363,8 @@ set(key: K, value: V): Map<K, V>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Map-set(key: K, value: V): Map<K, V>--><!--Device-Map-set(key: K, value: V): Map<K, V>-End-->
@@ -353,14 +375,14 @@ set(key: K, value: V): Map<K, V>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | K | 是 | 添加或更新指定元素的键。 |
-| value | V | 是 | 添加或更新指定元素的值。 |
+| key | K | 是 | 要添加或更新的键。 |
+| value | V | 是 | 要添加或更新的值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Map&lt;K, V&gt; | 新的Map对象。 |
+| Map&lt;K, V&gt; | 添加或更新键值对操作后的Map对象本身。 |
 
 **错误码：**
 
@@ -375,11 +397,13 @@ set(key: K, value: V): Map<K, V>
 values(): IterableIterator<V>
 ```
 
-返回一个Map迭代器对象，该对象包含此Map中每个元素的值。
+返回一个Map迭代器对象，该对象包含了此Map中每个元素的值。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -413,6 +437,8 @@ Map的元素个数。
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

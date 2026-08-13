@@ -2,9 +2,11 @@
 
 表示应用账号信息。
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-appAccount-interface AppAccountInfo--><!--Device-appAccount-interface AppAccountInfo-End-->
 
@@ -20,9 +22,11 @@ name: string
 
 **类型：** string
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AppAccountInfo-name: string--><!--Device-AppAccountInfo-name: string-End-->
 
@@ -38,9 +42,11 @@ owner: string
 
 **类型：** string
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AppAccountInfo-owner: string--><!--Device-AppAccountInfo-owner: string-End-->
 

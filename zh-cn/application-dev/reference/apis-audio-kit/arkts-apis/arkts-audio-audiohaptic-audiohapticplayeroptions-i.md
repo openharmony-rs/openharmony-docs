@@ -2,9 +2,11 @@
 
 音振播放器选项。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-audioHaptic-interface AudioHapticPlayerOptions--><!--Device-audioHaptic-interface AudioHapticPlayerOptions-End-->
 
@@ -20,9 +22,11 @@ muteAudio?: boolean
 
 **类型：** boolean
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioHapticPlayerOptions-muteAudio?: boolean--><!--Device-AudioHapticPlayerOptions-muteAudio?: boolean-End-->
 
@@ -38,9 +42,11 @@ muteHaptics?: boolean
 
 **类型：** boolean
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioHapticPlayerOptions-muteHaptics?: boolean--><!--Device-AudioHapticPlayerOptions-muteHaptics?: boolean-End-->
 

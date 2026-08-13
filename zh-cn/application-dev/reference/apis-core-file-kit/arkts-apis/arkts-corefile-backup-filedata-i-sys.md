@@ -2,9 +2,11 @@
 
 文件数据，包含一个已经打开的文件描述符，在与备份服务进行IPC时使用。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-backup-interface FileData--><!--Device-backup-interface FileData-End-->
 
@@ -22,9 +24,11 @@ fd: int
 
 **类型：** int
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FileData-fd: int--><!--Device-FileData-fd: int-End-->
 

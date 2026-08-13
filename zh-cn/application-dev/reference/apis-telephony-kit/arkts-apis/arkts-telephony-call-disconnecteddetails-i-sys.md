@@ -1,0 +1,60 @@
+# DisconnectedDetails（系统接口）
+
+通话结束原因。
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
+
+<!--Device-call-export interface DisconnectedDetails--><!--Device-call-export interface DisconnectedDetails-End-->
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**系统接口：** 此接口为系统接口。
+
+## message
+
+```TypeScript
+message: string
+```
+
+通话结束提示信息。
+
+**类型：** string
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
+
+<!--Device-DisconnectedDetails-message: string--><!--Device-DisconnectedDetails-message: string-End-->
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**系统接口：** 此接口为系统接口。
+
+## reason
+
+```TypeScript
+reason: DisconnectedReason
+```
+
+通话结束原因。
+
+**类型：** [DisconnectedReason](arkts-telephony-call-disconnectedreason-e-sys.md)
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
+
+<!--Device-DisconnectedDetails-reason: DisconnectedReason--><!--Device-DisconnectedDetails-reason: DisconnectedReason-End-->
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**系统接口：** 此接口为系统接口。
+

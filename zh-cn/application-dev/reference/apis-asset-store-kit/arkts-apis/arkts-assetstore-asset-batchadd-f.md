@@ -6,11 +6,13 @@
 function batchAdd(attributesArray: Array<AssetMap>): Promise<BatchResult>
 ```
 
-批量新增关键资产。使用Promise异步回调。 设置[Tag.IS\_PERSISTENT]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_属性时，需要申请ohos.permission.STORE\_PERSISTENT\_DATA权限，申请方式请参考 \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。 批量新增的关键资产必须具有相同的[Tag.GROUP\_ID]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_和[Tag.REQUIRE\_ATTR\_ENCRYPTED]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_属性。 批量新增的关键资产数量最大值为100。
+批量新增关键资产。使用Promise异步回调。 设置[Tag.IS_PERSISTENT](arkts-assetstore-asset-tagtype-e.md#TagType)属性时，需要申请ohos.permission.STORE_PERSISTENT_DATA权限，申请方式请参考 [声明权限](../../../security/AccessToken/declare-permissions.md)。 批量新增的关键资产必须具有相同的[Tag.GROUP_ID](arkts-assetstore-asset-tagtype-e.md#TagType)和[Tag.REQUIRE_ATTR_ENCRYPTED](arkts-assetstore-asset-tagtype-e.md#TagType)属性。 批量新增的关键资产数量最大值为100。
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-asset-function batchAdd(attributesArray: Array<AssetMap>): Promise<BatchResult>--><!--Device-asset-function batchAdd(attributesArray: Array<AssetMap>): Promise<BatchResult>-End-->
 
@@ -20,33 +22,33 @@ function batchAdd(attributesArray: Array<AssetMap>): Promise<BatchResult>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| attributesArray | Array&lt;AssetMap&gt; | 是 | 待新增关键资产的属性集合数组，包括关键资产明文、访问控制属性、自定义数据等。 |
+| attributesArray | Array&lt;[AssetMap](arkts-assetstore-asset-assetmap-t.md)&gt; | 是 | 待新增关键资产的属性集合数组，包括关键资产明文、访问控制属性、自定义数据等。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;BatchResult&gt; | Promise对象，返回批量操作结果，包含失败关键资产的错误信息。 |
+| Promise&lt;[BatchResult](arkts-assetstore-asset-batchresult-i.md)&gt; | Promise对象，返回批量操作结果，包含失败关键资产的错误信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [24000001](../errorcode-asset.md#24000001-关键资产服务不可用) | The ASSET service is unavailable. |
-| [24000005](../errorcode-asset.md#24000005-锁屏状态不匹配) | The screen lock status does not match. |
-| [24000006](../errorcode-asset.md#24000006-系统内存不足) | Insufficient memory. |
-| [24000007](../errorcode-asset.md#24000007-关键资产损坏) | The asset is corrupted. |
-| [24000008](../errorcode-asset.md#24000008-数据库操作失败) | The database operation failed. |
-| [24000009](../errorcode-asset.md#24000009-算法库操作失败) | The cryptography operation failed. |
-| [24000010](../errorcode-asset.md#24000010-进程通信错误) | IPC failed. |
-| [24000011](../errorcode-asset.md#24000011-包管理服务异常) | Calling the Bundle Manager service failed. |
-| [24000012](../errorcode-asset.md#24000012-账号系统服务异常) | Calling the OS Account service failed. |
-| [24000013](../errorcode-asset.md#24000013-访问控制服务异常) | Calling the Access Token service failed. |
 | [24000014](../errorcode-asset.md#24000014-文件操作失败) | The file operation failed. |
 | [24000015](../errorcode-asset.md#24000015-获取系统时间失败) | Getting the system time failed. |
-| [24000019](../errorcode-asset.md#24000019-属性值不一致) | Each value of \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ and \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_in the array is not consistent. |
+| [24000012](../errorcode-asset.md#24000012-账号系统服务异常) | Calling the OS Account service failed. |
+| [24000013](../errorcode-asset.md#24000013-访问控制服务异常) | Calling the Access Token service failed. |
+| [24000010](../errorcode-asset.md#24000010-进程通信错误) | IPC failed. |
+| [24000011](../errorcode-asset.md#24000011-包管理服务异常) | Calling the Bundle Manager service failed. |
+| [24000008](../errorcode-asset.md#24000008-数据库操作失败) | The database operation failed. |
+| [24000009](../errorcode-asset.md#24000009-算法库操作失败) | The cryptography operation failed. |
+| [24000006](../errorcode-asset.md#24000006-系统内存不足) | Insufficient memory. |
+| [24000007](../errorcode-asset.md#24000007-关键资产损坏) | The asset is corrupted. |
+| [24000005](../errorcode-asset.md#24000005-锁屏状态不匹配) | The screen lock status does not match. |
+| [24000001](../errorcode-asset.md#24000001-关键资产服务不可用) | The ASSET service is unavailable. |
+| [24000019](../errorcode-asset.md#24000019-属性值不一致) | Each value of [GROUP_ID](arkts-assetstore-asset-tag-e.md#GROUP_ID) and [REQUIRE_ATTR_ENCRYPTED](arkts-assetstore-asset-tag-e.md#REQUIRE_ATTR_ENCRYPTED) in the array is not consistent. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { asset } from '@kit.AssetStoreKit';

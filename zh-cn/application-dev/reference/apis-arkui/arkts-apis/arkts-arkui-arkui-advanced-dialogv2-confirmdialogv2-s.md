@@ -6,7 +6,7 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @ComponentV2
+**废弃版本：** -1
 
 <!--Device-unnamed-export declare struct ConfirmDialogV2--><!--Device-unnamed-export declare struct ConfirmDialogV2-End-->
 
@@ -15,7 +15,8 @@
 ## checkTips
 
 ```TypeScript
-checkTips?: ResourceStr
+@Param
+  checkTips?: ResourceStr
 ```
 
 checkbox的提示内容。 默认不显示。
@@ -26,20 +27,21 @@ checkbox的提示内容。 默认不显示。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @Param
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ConfirmDialogV2-checkTips?: ResourceStr--><!--Device-ConfirmDialogV2-checkTips?: ResourceStr-End-->
+<!--Device-ConfirmDialogV2-@Param  checkTips?: ResourceStr--><!--Device-ConfirmDialogV2-@Param  checkTips?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## checked
 
 ```TypeScript
-checked?: boolean
+@Param
+  checked?: boolean
 ```
 
 checked为true时，表示checkbox已选中，为false时，表示未选中。 默认值：false
@@ -50,20 +52,21 @@ checked为true时，表示checkbox已选中，为false时，表示未选中。 �
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @Param
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ConfirmDialogV2-checked?: boolean--><!--Device-ConfirmDialogV2-checked?: boolean-End-->
+<!--Device-ConfirmDialogV2-@Param  checked?: boolean--><!--Device-ConfirmDialogV2-@Param  checked?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## content
 
 ```TypeScript
-content?: ResourceStr
+@Param
+  content?: ResourceStr
 ```
 
 确认弹出框内容。 默认不显示。
@@ -74,92 +77,97 @@ content?: ResourceStr
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @Param
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ConfirmDialogV2-content?: ResourceStr--><!--Device-ConfirmDialogV2-content?: ResourceStr-End-->
+<!--Device-ConfirmDialogV2-@Param  content?: ResourceStr--><!--Device-ConfirmDialogV2-@Param  content?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onCheckedChange
 
 ```TypeScript
-onCheckedChange?: AdvancedDialogV2OnCheckedChange
+@Param
+  onCheckedChange?: AdvancedDialogV2OnCheckedChange
 ```
 
 checkbox的选中状态改变事件。 默认无事件。
 
-**类型：** AdvancedDialogV2OnCheckedChange
+**类型：** [AdvancedDialogV2OnCheckedChange](arkts-arkui-advanceddialogv2oncheckedchange-t.md)
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @Param
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ConfirmDialogV2-onCheckedChange?: AdvancedDialogV2OnCheckedChange--><!--Device-ConfirmDialogV2-onCheckedChange?: AdvancedDialogV2OnCheckedChange-End-->
+<!--Device-ConfirmDialogV2-@Param  onCheckedChange?: AdvancedDialogV2OnCheckedChange--><!--Device-ConfirmDialogV2-@Param  onCheckedChange?: AdvancedDialogV2OnCheckedChange-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## primaryButton
 
 ```TypeScript
-primaryButton?: AdvancedDialogV2Button
+@Param
+  primaryButton?: AdvancedDialogV2Button
 ```
 
 确认弹出框左侧按钮。 默认不显示。
 
-**类型：** AdvancedDialogV2Button
+**类型：** [AdvancedDialogV2Button](arkts-arkui-arkui-advanced-dialogv2-advanceddialogv2button-c.md)
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @Param
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ConfirmDialogV2-primaryButton?: AdvancedDialogV2Button--><!--Device-ConfirmDialogV2-primaryButton?: AdvancedDialogV2Button-End-->
+<!--Device-ConfirmDialogV2-@Param  primaryButton?: AdvancedDialogV2Button--><!--Device-ConfirmDialogV2-@Param  primaryButton?: AdvancedDialogV2Button-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## secondaryButton
 
 ```TypeScript
-secondaryButton?: AdvancedDialogV2Button
+@Param
+  secondaryButton?: AdvancedDialogV2Button
 ```
 
 确认弹出框右侧按钮。 默认不显示。
 
-**类型：** AdvancedDialogV2Button
+**类型：** [AdvancedDialogV2Button](arkts-arkui-arkui-advanced-dialogv2-advanceddialogv2button-c.md)
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @Param
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ConfirmDialogV2-secondaryButton?: AdvancedDialogV2Button--><!--Device-ConfirmDialogV2-secondaryButton?: AdvancedDialogV2Button-End-->
+<!--Device-ConfirmDialogV2-@Param  secondaryButton?: AdvancedDialogV2Button--><!--Device-ConfirmDialogV2-@Param  secondaryButton?: AdvancedDialogV2Button-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## title
 
 ```TypeScript
-title: ResourceStr
+@Require
+  @Param
+  title: ResourceStr
 ```
 
 确认弹出框标题。 **说明：** 标题超过两行会显示“...”。
@@ -170,13 +178,13 @@ title: ResourceStr
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @Require、@Param
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ConfirmDialogV2-title: ResourceStr--><!--Device-ConfirmDialogV2-title: ResourceStr-End-->
+<!--Device-ConfirmDialogV2-@Require  @Param  title: ResourceStr--><!--Device-ConfirmDialogV2-@Require  @Param  title: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

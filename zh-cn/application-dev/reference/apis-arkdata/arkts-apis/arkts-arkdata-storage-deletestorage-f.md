@@ -14,7 +14,7 @@ function deleteStorage(path: string, callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** ohos.preferences.preferences.deletePreferences
+**替代接口：** deletePreferences
 
 <!--Device-storage-function deleteStorage(path: string, callback: AsyncCallback<void>): void--><!--Device-storage-function deleteStorage(path: string, callback: AsyncCallback<void>): void-End-->
 
@@ -23,7 +23,7 @@ function deleteStorage(path: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 应用程序内部数据存储路径。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。 |
 
 
 ## deleteStorage
@@ -40,7 +40,7 @@ function deleteStorage(path: string): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.preferences.preferences.deletePreferences
+**替代接口：** deletePreferences
 
 <!--Device-storage-function deleteStorage(path: string): Promise<void>--><!--Device-storage-function deleteStorage(path: string): Promise<void>-End-->
 

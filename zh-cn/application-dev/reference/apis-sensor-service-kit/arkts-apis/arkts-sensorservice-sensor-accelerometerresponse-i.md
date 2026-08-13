@@ -1,96 +1,82 @@
 # AccelerometerResponse
 
-感应到加速度数据变化后的回调函数的响应对象，包含设备在x、y、z三轴方向上的加速度数据。
+加速度传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md#Response)。
 
-**起始版本：** 3
+**继承/实现关系：** AccelerometerResponse extends [Response](arkts-sensorservice-sensor-response-i.md#Response)
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**起始版本：** 23
 
-**废弃版本：** 8
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**替代接口：** ohos.sensor/sensor#AccelerometerResponse
+**废弃版本：** -1
 
-**需要权限：** ohos.permission.ACCELEROMETER
+<!--Device-sensor-interface AccelerometerResponse--><!--Device-sensor-interface AccelerometerResponse-End-->
 
-<!--Device-unnamed-export interface AccelerometerResponse--><!--Device-unnamed-export interface AccelerometerResponse-End-->
-
-**系统能力：** SystemCapability.Sensors.Sensor.Lite
+**系统能力：** SystemCapability.Sensors.Sensor
 
 ## x
 
 ```TypeScript
-x: number
+x: double
 ```
 
-施加在设备x轴的加速度。单位：m/s²。取值范围：取值为实际上报物理量，由硬件传感器决定。
+施加在设备x轴方向的加速度。单位：m/s²；取值为实际上报物理量。
 
-**类型：** number
+**类型：** double
 
-**起始版本：** 3
+**起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**废弃版本：** 8
+**废弃版本：** -1
 
-**替代接口：** ohos.sensor/sensor#AccelerometerResponse.x
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-**需要权限：** ohos.permission.ACCELEROMETER
+<!--Device-AccelerometerResponse-x: double--><!--Device-AccelerometerResponse-x: double-End-->
 
-**模型约束：** 此接口仅可在FA模型下使用。
-
-<!--Device-AccelerometerResponse-x: number--><!--Device-AccelerometerResponse-x: number-End-->
-
-**系统能力：** SystemCapability.Sensors.Sensor.Lite
+**系统能力：** SystemCapability.Sensors.Sensor
 
 ## y
 
 ```TypeScript
-y: number
+y: double
 ```
 
-施加在设备y轴的加速度。单位：m/s²。取值范围：取值为实际上报物理量，由硬件传感器决定。
+施加在设备y轴方向的加速度。单位：m/s²；取值为实际上报物理量。
 
-**类型：** number
+**类型：** double
 
-**起始版本：** 3
+**起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**废弃版本：** 8
+**废弃版本：** -1
 
-**替代接口：** ohos.sensor/sensor#AccelerometerResponse.y
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-**需要权限：** ohos.permission.ACCELEROMETER
+<!--Device-AccelerometerResponse-y: double--><!--Device-AccelerometerResponse-y: double-End-->
 
-**模型约束：** 此接口仅可在FA模型下使用。
-
-<!--Device-AccelerometerResponse-y: number--><!--Device-AccelerometerResponse-y: number-End-->
-
-**系统能力：** SystemCapability.Sensors.Sensor.Lite
+**系统能力：** SystemCapability.Sensors.Sensor
 
 ## z
 
 ```TypeScript
-z: number
+z: double
 ```
 
-施加在设备z轴的加速度。单位：m/s²。取值范围：取值为实际上报物理量，由硬件传感器决定。静止状态下z轴加速度约为9.8 m/s²（重力加速度）。
+施加在设备z轴方向的加速度。单位：m/s²；取值为实际上报物理量。
 
-**类型：** number
+**类型：** double
 
-**起始版本：** 3
+**起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**废弃版本：** 8
+**废弃版本：** -1
 
-**替代接口：** ohos.sensor/sensor#AccelerometerResponse.z
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-**需要权限：** ohos.permission.ACCELEROMETER
+<!--Device-AccelerometerResponse-z: double--><!--Device-AccelerometerResponse-z: double-End-->
 
-**模型约束：** 此接口仅可在FA模型下使用。
-
-<!--Device-AccelerometerResponse-z: number--><!--Device-AccelerometerResponse-z: number-End-->
-
-**系统能力：** SystemCapability.Sensors.Sensor.Lite
+**系统能力：** SystemCapability.Sensors.Sensor
 

@@ -2,9 +2,11 @@
 
 提供索引相关的能力，包括区域索引列表和文本索引值获取。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-i18n-export class IndexUtil--><!--Device-i18n-export class IndexUtil-End-->
 
@@ -18,9 +20,11 @@ addLocale(locale: string): void
 
 在当前区域的索引列表中，添加新区域的索引列表，形成复合列表。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -32,9 +36,9 @@ addLocale(locale: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| locale | string | 是 | \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，由语言、脚本、国家地区组成。 |
+| locale | string | 是 | [表示区域ID的字符串](../../../internationalization/i18n-locale-culture.md#实现原理)，由语言、脚本、国家地区组 成。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';
@@ -51,9 +55,11 @@ getIndex(text: string): string
 
 获取输入文本对应的索引值。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -73,7 +79,7 @@ getIndex(text: string): string
 | --- | --- |
 | string | 输入文本对应的索引值。无合适索引时返回空字符串。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';
@@ -90,9 +96,11 @@ getIndexList(): Array<string>
 
 获取当前区域的索引列表。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -106,7 +114,7 @@ getIndexList(): Array<string>
 | --- | --- |
 | Array&lt;string&gt; | 当前区域的索引列表。第一个元素和最后一个元素为“...”。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';

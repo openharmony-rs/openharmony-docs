@@ -2,9 +2,11 @@
 
 ASR voice mute mode.
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-audio-enum AsrVoiceMuteMode--><!--Device-audio-enum AsrVoiceMuteMode-End-->
 
@@ -20,9 +22,11 @@ OUTPUT_MUTE = 0
 
 Mute the local output stream.
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AsrVoiceMuteMode-OUTPUT_MUTE = 0--><!--Device-AsrVoiceMuteMode-OUTPUT_MUTE = 0-End-->
 
@@ -38,9 +42,11 @@ INPUT_MUTE = 1
 
 Mute the local MIC input stream.
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AsrVoiceMuteMode-INPUT_MUTE = 1--><!--Device-AsrVoiceMuteMode-INPUT_MUTE = 1-End-->
 
@@ -56,9 +62,11 @@ TTS_MUTE  = 2
 
 Send tts output stream to TX and mute the local output stream.
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AsrVoiceMuteMode-TTS_MUTE  = 2--><!--Device-AsrVoiceMuteMode-TTS_MUTE  = 2-End-->
 
@@ -74,9 +82,11 @@ CALL_MUTE = 3
 
 Mute the voice call stream.
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AsrVoiceMuteMode-CALL_MUTE = 3--><!--Device-AsrVoiceMuteMode-CALL_MUTE = 3-End-->
 
@@ -90,11 +100,13 @@ Mute the voice call stream.
 OUTPUT_MUTE_EX = 4
 ```
 
-Based on the OUTPUT\_MUTE, send output stream to voice call record.
+Based on the OUTPUT_MUTE, send output stream to voice call record.
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AsrVoiceMuteMode-OUTPUT_MUTE_EX = 4--><!--Device-AsrVoiceMuteMode-OUTPUT_MUTE_EX = 4-End-->
 

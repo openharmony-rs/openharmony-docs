@@ -4,7 +4,7 @@
 type AuthEventKey = 'result' | 'tip'
 ```
 
-表示认证事件类型的关键字，作为[on]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_接口的参数。 该类型为下表类型取值中的联合类型。
+表示认证事件类型的关键字，作为[on](arkts-userauthentication-userauth-authinstance-i.md#on)接口的参数。 该类型为下表类型取值中的联合类型。
 
 **起始版本：** 9
 

@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface XComponentOptions--><!--Device-unnamed-declare interface XComponentOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -18,11 +20,13 @@ controller: XComponentController
 
 绑定到组件的控制器，可用于调用组件的方法。 该参数仅在type为SURFACE或TEXTURE时有效。
 
-**类型：** XComponentController
+**类型：** [XComponentController](arkts-arkui-xcomponentcontroller-c.md)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -38,13 +42,15 @@ controller: XComponentController
 imageAIOptions?: ImageAIOptions
 ```
 
-给组件设置一个AI分析选项，通过此项可配置分析类型或绑定一个分析控制器，仅类型为SURFACE或TEXTURE时有效。未设置时不配置AI分析选项，可通过[enableAnalyzer]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_属性单独启用AI分析。
+给组件设置一个AI分析选项，通过此项可配置分析类型或绑定一个分析控制器，仅类型为SURFACE或TEXTURE时有效。未设置时不配置AI分析选项，可通过[enableAnalyzer](arkts-arkui-xcomponent-attribute.md#enableAnalyzer)属性单独启用AI分析。
 
 **类型：** ImageAIOptions
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -62,11 +68,13 @@ type: XComponentType
 
 组件的类型。
 
-**类型：** XComponentType
+**类型：** [XComponentType](../arkts-apis/arkts-arkui-xcomponenttype-e.md)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -12,6 +12,8 @@ declare function utimes(path: string, mtime: number): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare function utimes(path: string, mtime: number): void--><!--Device-unnamed-declare function utimes(path: string, mtime: number): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -27,10 +29,10 @@ declare function utimes(path: string, mtime: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| 13900020 | Invalid argument |
 | 13900001 | Operation not permitted |
 | 13900002 | No such file or directory |
 | 13900012 | Permission denied |
-| 13900020 | Invalid argument |
-| 13900027 | Read-only file system |
 | 13900042 | Unknown error |
+| 13900027 | Read-only file system |
 

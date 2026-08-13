@@ -2,13 +2,15 @@
 
 文件可读流，需要先通过fileIo.createReadStream方法来构建一个ReadStream实例。ReadStream继承自数据流基类stream.Readable。 ReadStream读到的数据为解码后的字符串，其编码格式当前仅支持'utf-8'。
 
-**继承/实现关系：** ReadStream extends [stream.Readable](../../apis-arkts/arkts-apis/arkts-arkts-stream-readable-c.md)
+**继承/实现关系：** ReadStream extends [stream.Readable](../../apis-arkts/arkts-apis/arkts-arkts-stream-readable-c.md#Readable)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-<!--Device-unnamed-declare class ReadStream extends stream.Readable--><!--Device-unnamed-declare class ReadStream extends stream.Readable-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare class ReadStream--><!--Device-unnamed-declare class ReadStream-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -23,6 +25,8 @@ close(): void
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-ReadStream-close(): void--><!--Device-ReadStream-close(): void-End-->
 
@@ -39,7 +43,7 @@ close(): void
 | 13900041 | Quota exceeded |
 | 13900042 | Unknown error |
 
-**示例：**
+## 示例
 
 ```TypeScript
 const filePath = pathDir + "/test.txt";
@@ -59,6 +63,8 @@ constructor()
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-ReadStream-constructor()--><!--Device-ReadStream-constructor()-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -75,6 +81,8 @@ seek(offset: number, whence?: WhenceType): number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-ReadStream-seek(offset: number, whence?: WhenceType): number--><!--Device-ReadStream-seek(offset: number, whence?: WhenceType): number-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -84,7 +92,7 @@ seek(offset: number, whence?: WhenceType): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | offset | number | 是 | Relative offset, in bytes. |
-| whence | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | Where to start the offset. The default value is **SEEK\_\_\_ESCAPED\_UNDERSCORE\_\_\_SET**, which indicates the beginning of the file. |
+| whence | [WhenceType](arkts-corefile-file-fs-whencetype-e.md) | 否 | Where to start the offset. The default value is **SEEK_SET**, which indicates the beginning of the file. |
 
 **返回值：**
 
@@ -96,12 +104,12 @@ seek(offset: number, whence?: WhenceType): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error |
 | 13900020 | Invalid argument |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error |
 | 13900026 | Illegal seek |
 | 13900042 | Unknown error |
 
-**示例：**
+## 示例
 
 ```TypeScript
 const filePath = pathDir + "/test.txt";
@@ -125,6 +133,8 @@ readonly bytesRead: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-ReadStream-readonly bytesRead: number--><!--Device-ReadStream-readonly bytesRead: number-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -142,6 +152,8 @@ readonly path: string
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-ReadStream-readonly path: string--><!--Device-ReadStream-readonly path: string-End-->
 

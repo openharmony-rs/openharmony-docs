@@ -4,7 +4,9 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-insightIntent-enum ReturnMode--><!--Device-insightIntent-enum ReturnMode-End-->
 
@@ -16,11 +18,13 @@
 CALLBACK = 0
 ```
 
-表示意图执行结果将由[意图执行基类]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_中的 [onExecuteInUIAbilityForegroundMode]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_ 接口或 [onExecuteInUIExtensionAbility]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_ 接口返回。
+表示意图执行结果将由[意图执行基类](arkts-ability-app-ability-insightintentexecutor-insightintentexecutor-c.md#InsightIntentExecutor)中的 [onExecuteInUIAbilityForegroundMode](arkts-ability-app-ability-insightintentexecutor-insightintentexecutor-c.md#onExecuteInUIAbilityForegroundMode) 接口或 [onExecuteInUIExtensionAbility](arkts-ability-app-ability-insightintentexecutor-insightintentexecutor-c.md#onExecuteInUIExtensionAbility) 接口返回。
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -36,11 +40,13 @@ CALLBACK = 0
 FUNCTION = 1
 ```
 
-表示意图执行结果会延迟返回，直到开发者主动调用[意图提供方管理能力]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_中的 [sendExecuteResult]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_接口或 [sendIntentResult]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_接口返回意图执行结 果。
+表示意图执行结果会延迟返回，直到开发者主动调用意图提供方管理能力中的 sendExecuteResult接口或 sendIntentResult接口返回意图执行结 果。
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

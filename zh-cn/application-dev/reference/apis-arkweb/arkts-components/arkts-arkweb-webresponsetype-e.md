@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare enum WebResponseType--><!--Device-unnamed-declare enum WebResponseType-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -22,6 +24,8 @@ LONG_PRESS = 1
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
 
+**废弃版本：** -1
+
 <!--Device-WebResponseType-LONG_PRESS = 1--><!--Device-WebResponseType-LONG_PRESS = 1-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -37,6 +41,8 @@ RIGHT_CLICK = 2
 **起始版本：** 21
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+
+**废弃版本：** -1
 
 <!--Device-WebResponseType-RIGHT_CLICK = 2--><!--Device-WebResponseType-RIGHT_CLICK = 2-End-->
 

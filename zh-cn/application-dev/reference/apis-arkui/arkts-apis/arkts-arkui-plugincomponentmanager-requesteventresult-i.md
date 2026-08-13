@@ -2,11 +2,13 @@
 
 注册request监听方法后，接收到请求事件时回应请求的数据类型。
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
-<!--Device-pluginComponentManager-export interface RequestEventResult--><!--Device-pluginComponentManager-export interface RequestEventResult-End-->
+**废弃版本：** -1
+
+<!--Device-pluginComponentManager-interface RequestEventResult--><!--Device-pluginComponentManager-interface RequestEventResult-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,13 +20,15 @@ data?: KVObject
 
 组件数据，以键值对形式存储，用于回应请求时传递的业务数据，键和值类型由业务定义。该字段为可选字段，不提供时默认不包含在返回结果中。
 
-**类型：** KVObject
+**类型：** [KVObject](../../apis-na/arkts-apis/arkts-na-plugincomponentmanager-kvobject-t.md)
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RequestEventResult-data?: KVObject--><!--Device-RequestEventResult-data?: KVObject-End-->
 
@@ -38,13 +42,15 @@ extraData?: KVObject
 
 request事件中传递的附加数据。该字段为可选字段，不提供时默认不包含在返回结果中。
 
-**类型：** KVObject
+**类型：** [KVObject](../../apis-na/arkts-apis/arkts-na-plugincomponentmanager-kvobject-t.md)
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RequestEventResult-extraData?: KVObject--><!--Device-RequestEventResult-extraData?: KVObject-End-->
 
@@ -60,11 +66,13 @@ template?: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RequestEventResult-template?: string--><!--Device-RequestEventResult-template?: string-End-->
 

@@ -20,7 +20,7 @@
 dateStyle?: string
 ```
 
-日期显示格式，取值包括： "long", "short", "medium", "full", "auto"。 不同取值的显示效果请参考\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+日期显示格式，取值包括： "long", "short", "medium", "full", "auto"。 不同取值的显示效果请参考附录表1。
 
 **类型：** string
 
@@ -72,7 +72,7 @@ day?: string
 dayPeriod?: string
 ```
 
-时段的显示格式，取值包括： "long", "short", "narrow", "auto"。 不同取值的显示效果请参考\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+时段的显示格式，取值包括： "long", "short", "narrow", "auto"。 不同取值的显示效果请参考附录表10。
 
 **类型：** string
 
@@ -98,7 +98,7 @@ dayPeriod?: string
 era?: string
 ```
 
-纪元的显示格式，取值包括： "long", "short", "narrow", "auto"。 不同取值的显示效果请参考\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+纪元的显示格式，取值包括： "long", "short", "narrow", "auto"。 不同取值的显示效果请参考附录表9。
 
 **类型：** string
 
@@ -202,7 +202,7 @@ true表示使用12小时制，false表示使用24小时制。 同时设置hour12
 hourCycle?: string
 ```
 
-时制格式，取值包括： "h11", "h12", "h23", "h24"。 不设置dateStyle或timeStyle参数时的显示效果请参考\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。 设置dateStyle或timeStyle参数时的显示效果请参考\_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_。
+时制格式，取值包括： "h11", "h12", "h23", "h24"。 不设置dateStyle或timeStyle参数时的显示效果请参考附录表5。 设置dateStyle或timeStyle参数时的显示效果请参考附录表6。
 
 **类型：** string
 
@@ -304,7 +304,7 @@ minute?: string
 month?: string
 ```
 
-月份的显示格式，取值包括： "numeric", "2-digit", "long", "short", "narrow", "auto"。 不同取值的显示效果请参考\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+月份的显示格式，取值包括： "numeric", "2-digit", "long", "short", "narrow", "auto"。 不同取值的显示效果请参考附录表7。
 
 **类型：** string
 
@@ -382,7 +382,7 @@ second?: string
 timeStyle?: string
 ```
 
-时间显示格式，取值包括： "long", "short", "medium", "full", "auto"。 不同取值的显示效果请参考\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+时间显示格式，取值包括： "long", "short", "medium", "full", "auto"。 不同取值的显示效果请参考附录表2。
 
 **类型：** string
 
@@ -434,7 +434,7 @@ timeZone?: string
 timeZoneName?: string
 ```
 
-时区名称的本地化表示，取值包括： "long", "short", "auto"。 不同取值的显示效果请参考\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+时区名称的本地化表示，取值包括： "long", "short", "auto"。 不同取值的显示效果请参考附录表8。
 
 **类型：** string
 
@@ -460,7 +460,7 @@ timeZoneName?: string
 weekday?: string
 ```
 
-星期的显示格式，取值包括： "long", "short", "narrow", "auto"。 不同取值的显示效果请参考\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+星期的显示格式，取值包括： "long", "short", "narrow", "auto"。 不同取值的显示效果请参考附录表4。
 
 **类型：** string
 
@@ -486,7 +486,7 @@ weekday?: string
 year?: string
 ```
 
-年份的显示格式，取值包括： "numeric", "2-digit"。 不同取值的显示效果请参考\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+年份的显示格式，取值包括： "numeric", "2-digit"。 不同取值的显示效果请参考附录表3。
 
 **类型：** string
 

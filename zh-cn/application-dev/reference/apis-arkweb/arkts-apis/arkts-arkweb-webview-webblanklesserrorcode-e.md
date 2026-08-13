@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 <!--Device-webview-enum WebBlanklessErrorCode--><!--Device-webview-enum WebBlanklessErrorCode-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -21,6 +23,8 @@ SUCCESS = 0
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 <!--Device-WebBlanklessErrorCode-SUCCESS = 0--><!--Device-WebBlanklessErrorCode-SUCCESS = 0-End-->
 
@@ -38,6 +42,8 @@ ERR_UNKNOWN = -1
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 <!--Device-WebBlanklessErrorCode-ERR_UNKNOWN = -1--><!--Device-WebBlanklessErrorCode-ERR_UNKNOWN = -1-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -53,6 +59,8 @@ ERR_INVALID_PARAM = -2
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 <!--Device-WebBlanklessErrorCode-ERR_INVALID_PARAM = -2--><!--Device-WebBlanklessErrorCode-ERR_INVALID_PARAM = -2-End-->
 
@@ -70,6 +78,8 @@ WebViewController未绑定组件。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 <!--Device-WebBlanklessErrorCode-ERR_CONTROLLER_NOT_INITED = -3--><!--Device-WebBlanklessErrorCode-ERR_CONTROLLER_NOT_INITED = -3-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -80,11 +90,13 @@ WebViewController未绑定组件。
 ERR_KEY_NOT_MATCH = -4
 ```
 
-未匹配到key值，对于 [setBlanklessLoadingWithKey]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_需与 [getBlanklessInfoWithKey]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_配套使用并且key值一致， 否则返回该错误码。
+未匹配到key值，对于 [setBlanklessLoadingWithKey](../../apis-na/arkts-apis/arkts-na-webview-webviewcontroller-c.md#setBlanklessLoadingWithKey)需与 [getBlanklessInfoWithKey](../../apis-na/arkts-apis/arkts-na-webview-webviewcontroller-c.md#getBlanklessInfoWithKey)配套使用并且key值一致， 否则返回该错误码。
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 <!--Device-WebBlanklessErrorCode-ERR_KEY_NOT_MATCH = -4--><!--Device-WebBlanklessErrorCode-ERR_KEY_NOT_MATCH = -4-End-->
 
@@ -96,11 +108,13 @@ ERR_KEY_NOT_MATCH = -4
 ERR_SIGNIFICANT_CHANGE = -5
 ```
 
-当相似度较低时，系统会判定为跳变太大， [setBlanklessLoadingWithKey]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_接口不会成功启 用插帧。
+当相似度较低时，系统会判定为跳变太大， [setBlanklessLoadingWithKey](../../apis-na/arkts-apis/arkts-na-webview-webviewcontroller-c.md#setBlanklessLoadingWithKey)接口不会成功启 用插帧。
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 <!--Device-WebBlanklessErrorCode-ERR_SIGNIFICANT_CHANGE = -5--><!--Device-WebBlanklessErrorCode-ERR_SIGNIFICANT_CHANGE = -5-End-->
 
@@ -112,11 +126,13 @@ ERR_SIGNIFICANT_CHANGE = -5
 ERR_DURATION_OUT_OF_RANGE = -6
 ```
 
-在[BlanklessLoadingParam]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_设置的历史帧失效时间超出范围。 此接口仅可在Stage模型下使用。
+在[BlanklessLoadingParam](../../apis-na/arkts-apis/arkts-na-webview-blanklessloadingparam-i.md#BlanklessLoadingParam)设置的历史帧失效时间超出范围。 此接口仅可在Stage模型下使用。
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -130,11 +146,13 @@ ERR_DURATION_OUT_OF_RANGE = -6
 ERR_EXPIRATION_TIME_OUT_OF_RANGE = -7
 ```
 
-在[BlanklessLoadingParam]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_设置的历史帧失效时间超出范围。 此接口仅可在Stage模型下使用。
+在[BlanklessLoadingParam](../../apis-na/arkts-apis/arkts-na-webview-blanklessloadingparam-i.md#BlanklessLoadingParam)设置的历史帧失效时间超出范围。 此接口仅可在Stage模型下使用。
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -286,6 +286,11 @@ GameController_ErrorCode OH_GamePad_PressedButtons_GetButtonInfo(const struct Ga
 | -- | -- |
 | [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数buttonEvent为null，或index小于0或大于等于按键总数，返回<br>     [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
 
+**参考：**
+
+[OH_GamePad_DestroyPressedButton](capi-game-pad-event-h.md#oh_gamepad_destroypressedbutton) 销毁按下的按键实例。
+
+
 ### OH_GamePad_DestroyPressedButton()
 
 ```c

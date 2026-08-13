@@ -2,13 +2,15 @@
 
 Video Conflict Functions object.
 
-**继承/实现关系：** VideoConflictFunctions extends [ZoomQuery](arkts-camera-camera-zoomquery-i.md), [MacroQuery](arkts-camera-camera-macroquery-i.md)
+**继承/实现关系：** VideoConflictFunctions extends [ZoomQuery](arkts-camera-camera-zoomquery-i.md#ZoomQuery), [MacroQuery](arkts-camera-camera-macroquery-i-sys.md#MacroQuery（系统接口）)
 
-**起始版本：** 13
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为13；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-<!--Device-camera-interface VideoConflictFunctions extends ZoomQuery, MacroQuery--><!--Device-camera-interface VideoConflictFunctions extends ZoomQuery, MacroQuery-End-->
+**废弃版本：** -1
+
+<!--Device-camera-interface VideoConflictFunctions--><!--Device-camera-interface VideoConflictFunctions-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

@@ -6,7 +6,7 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @ComponentV2
+**废弃版本：** -1
 
 <!--Device-unnamed-export declare struct LoadingDialogV2--><!--Device-unnamed-export declare struct LoadingDialogV2-End-->
 
@@ -15,7 +15,8 @@
 ## content
 
 ```TypeScript
-content?: ResourceStr
+@Param
+  content?: ResourceStr
 ```
 
 加载弹出框内容。 默认为空。 **说明：** 内容超过十行会显示“...”。
@@ -26,13 +27,13 @@ content?: ResourceStr
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @Param
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-LoadingDialogV2-content?: ResourceStr--><!--Device-LoadingDialogV2-content?: ResourceStr-End-->
+<!--Device-LoadingDialogV2-@Param  content?: ResourceStr--><!--Device-LoadingDialogV2-@Param  content?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

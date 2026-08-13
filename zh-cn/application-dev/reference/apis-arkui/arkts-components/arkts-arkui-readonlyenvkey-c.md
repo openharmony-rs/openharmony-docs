@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare class ReadonlyEnvKey--><!--Device-unnamed-declare class ReadonlyEnvKey-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -18,11 +20,13 @@ static readonly WINDOW_AVOID_AREA: ReadonlySystemEnvKey<window.UIEnvWindowAvoidA
 
 系统环境变量避让区域键，用于获取窗口的避让区域，单位为vp。
 
-**类型：** ReadonlySystemEnvKey&lt;window.UIEnvWindowAvoidAreaInfoVP&gt;
+**类型：** [ReadonlySystemEnvKey](arkts-arkui-readonlysystemenvkey-c.md)&lt;window.UIEnvWindowAvoidAreaInfoVP&gt;
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,11 +44,13 @@ static readonly WINDOW_AVOID_AREA_PX: ReadonlySystemEnvKey<window.UIEnvWindowAvo
 
 系统环境变量避让区域键，用于获取窗口的避让区域，单位px。
 
-**类型：** ReadonlySystemEnvKey&lt;window.UIEnvWindowAvoidAreaInfoPX&gt;
+**类型：** [ReadonlySystemEnvKey](arkts-arkui-readonlysystemenvkey-c.md)&lt;window.UIEnvWindowAvoidAreaInfoPX&gt;
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -62,11 +68,13 @@ static readonly WINDOW_DISPLAY_ID: ReadonlySystemEnvKey<long>
 
 系统环境变量屏幕ID键，用于获取窗口的屏幕ID。
 
-**类型：** ReadonlySystemEnvKey&lt;long&gt;
+**类型：** [ReadonlySystemEnvKey](arkts-arkui-readonlysystemenvkey-c.md)&lt;long&gt;
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -84,11 +92,13 @@ static readonly WINDOW_IS_FOCUSED: ReadonlySystemEnvKey<boolean>
 
 系统环境变量窗口焦点键，用于获取窗口是否获焦。
 
-**类型：** ReadonlySystemEnvKey&lt;boolean&gt;
+**类型：** [ReadonlySystemEnvKey](arkts-arkui-readonlysystemenvkey-c.md)&lt;boolean&gt;
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -104,11 +114,13 @@ static readonly WINDOW_IS_HIGHLIGHTED: ReadonlySystemEnvKey<boolean>
 
 系统环境变量窗口激活键，用于获取窗口是否被激活。
 
-**类型：** ReadonlySystemEnvKey&lt;boolean&gt;
+**类型：** [ReadonlySystemEnvKey](arkts-arkui-readonlysystemenvkey-c.md)&lt;boolean&gt;
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -124,11 +136,13 @@ static readonly WINDOW_SIZE: ReadonlySystemEnvKey<window.SizeInVP>
 
 系统环境变量窗口尺寸键，用于获取窗口的大小，单位为vp。
 
-**类型：** ReadonlySystemEnvKey&lt;window.SizeInVP&gt;
+**类型：** [ReadonlySystemEnvKey](arkts-arkui-readonlysystemenvkey-c.md)&lt;window.SizeInVP&gt;
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -146,11 +160,13 @@ static readonly WINDOW_SIZE_PX: ReadonlySystemEnvKey<window.Size>
 
 系统环境变量窗口尺寸键，用于获取窗口大小，单位px。
 
-**类型：** ReadonlySystemEnvKey&lt;window.Size&gt;
+**类型：** [ReadonlySystemEnvKey](arkts-arkui-readonlysystemenvkey-c.md)&lt;window.Size&gt;
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -168,11 +184,13 @@ static readonly WINDOW_SYSTEM_DENSITY: ReadonlySystemEnvKey<double>
 
 系统环境变量系统DPI键，用于获取窗口所在屏幕的系统DPI。
 
-**类型：** ReadonlySystemEnvKey&lt;double&gt;
+**类型：** [ReadonlySystemEnvKey](arkts-arkui-readonlysystemenvkey-c.md)&lt;double&gt;
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

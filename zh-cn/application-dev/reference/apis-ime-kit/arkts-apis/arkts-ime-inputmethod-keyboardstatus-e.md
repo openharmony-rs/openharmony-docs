@@ -2,9 +2,11 @@
 
 输入法软键盘状态。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-inputMethod-export enum KeyboardStatus--><!--Device-inputMethod-export enum KeyboardStatus-End-->
 
@@ -18,9 +20,11 @@ NONE = 0
 
 NONE。 **使用场景：**表示键盘状态尚未确定或无法判断时使用。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyboardStatus-NONE = 0--><!--Device-KeyboardStatus-NONE = 0-End-->
 
@@ -34,9 +38,11 @@ HIDE = 1
 
 隐藏状态。 **使用场景：**表示当前软键盘处于隐藏状态。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyboardStatus-HIDE = 1--><!--Device-KeyboardStatus-HIDE = 1-End-->
 
@@ -50,9 +56,11 @@ SHOW = 2
 
 显示状态。 **使用场景：**表示当前软键盘处于显示状态。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyboardStatus-SHOW = 2--><!--Device-KeyboardStatus-SHOW = 2-End-->
 

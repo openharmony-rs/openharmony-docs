@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 <!--Device-huks-export enum HuksKeyStorageType--><!--Device-huks-export enum HuksKeyStorageType-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
@@ -16,7 +18,7 @@
 HUKS_STORAGE_TEMP = 0
 ```
 
-表示通过本地直接管理密钥。 **说明：** 从API version 8开始支持，从API version 10开始废弃，由于开发者正常使用密钥管理过程中并不需要使用此TAG，故无替代接口。针对密钥派生场景，可使用 HUKS\_STORAGE\_ONLY\_USED\_IN\_HUKS 与 HUKS\_STORAGE\_KEY\_EXPORT\_ALLOWED。
+表示通过本地直接管理密钥。 **说明：** 从API version 8开始支持，从API version 10开始废弃，由于开发者正常使用密钥管理过程中并不需要使用此TAG，故无替代接口。针对密钥派生场景，可使用 HUKS_STORAGE_ONLY_USED_IN_HUKS 与 HUKS_STORAGE_KEY_EXPORT_ALLOWED。
 
 **起始版本：** 8
 
@@ -34,7 +36,7 @@ HUKS_STORAGE_TEMP = 0
 HUKS_STORAGE_PERSISTENT = 1
 ```
 
-表示通过HUKS service管理密钥。 **说明：** 从API version 8开始支持，从API version 10开始废弃，由于开发者正常使用密钥管理过程中并不需要使用此TAG，故无替代接口。针对密钥派生场景，可使用 HUKS\_STORAGE\_ONLY\_USED\_IN\_HUKS 与 HUKS\_STORAGE\_KEY\_EXPORT\_ALLOWED。
+表示通过HUKS service管理密钥。 **说明：** 从API version 8开始支持，从API version 10开始废弃，由于开发者正常使用密钥管理过程中并不需要使用此TAG，故无替代接口。针对密钥派生场景，可使用 HUKS_STORAGE_ONLY_USED_IN_HUKS 与 HUKS_STORAGE_KEY_EXPORT_ALLOWED。
 
 **起始版本：** 8
 
@@ -58,6 +60,8 @@ HUKS_STORAGE_ONLY_USED_IN_HUKS = 2
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksKeyStorageType-HUKS_STORAGE_ONLY_USED_IN_HUKS = 2--><!--Device-HuksKeyStorageType-HUKS_STORAGE_ONLY_USED_IN_HUKS = 2-End-->
@@ -77,6 +81,8 @@ HUKS_STORAGE_KEY_EXPORT_ALLOWED = 3
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

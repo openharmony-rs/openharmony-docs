@@ -1,6 +1,6 @@
 # DoNotDisturbType（系统接口）
 
-> **说明：** > 从 API version 8开始支持，从API version 9开始废弃。建议使用 [notificationManager.DoNotDisturbType]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。
+免打扰设置的时间类型。
 
 **起始版本：** 8
 
@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager#DoNotDisturbType
+**替代接口：** [DoNotDisturbType](arkts-notification-notificationmanager-donotdisturbtype-e-sys.md#DoNotDisturbType（系统接口）)
 
 <!--Device-notification-export enum DoNotDisturbType--><!--Device-notification-export enum DoNotDisturbType-End-->
 
@@ -30,7 +30,7 @@ TYPE_NONE = 0
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager.DoNotDisturbType#TYPE_NONE
+**替代接口：** [TYPE_NONE](arkts-notification-notificationmanager-donotdisturbtype-e-sys.md#TYPE_NONE)
 
 <!--Device-DoNotDisturbType-TYPE_NONE = 0--><!--Device-DoNotDisturbType-TYPE_NONE = 0-End-->
 
@@ -52,7 +52,7 @@ TYPE_ONCE = 1
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager.DoNotDisturbType#TYPE_ONCE
+**替代接口：** [TYPE_ONCE](arkts-notification-notificationmanager-donotdisturbtype-e-sys.md#TYPE_ONCE)
 
 <!--Device-DoNotDisturbType-TYPE_ONCE = 1--><!--Device-DoNotDisturbType-TYPE_ONCE = 1-End-->
 
@@ -74,7 +74,7 @@ TYPE_DAILY = 2
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager.DoNotDisturbType#TYPE_DAILY
+**替代接口：** [TYPE_DAILY](arkts-notification-notificationmanager-donotdisturbtype-e-sys.md#TYPE_DAILY)
 
 <!--Device-DoNotDisturbType-TYPE_DAILY = 2--><!--Device-DoNotDisturbType-TYPE_DAILY = 2-End-->
 
@@ -96,7 +96,7 @@ TYPE_CLEARLY = 3
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager.DoNotDisturbType#TYPE_CLEARLY
+**替代接口：** [TYPE_CLEARLY](arkts-notification-notificationmanager-donotdisturbtype-e-sys.md#TYPE_CLEARLY)
 
 <!--Device-DoNotDisturbType-TYPE_CLEARLY = 3--><!--Device-DoNotDisturbType-TYPE_CLEARLY = 3-End-->
 

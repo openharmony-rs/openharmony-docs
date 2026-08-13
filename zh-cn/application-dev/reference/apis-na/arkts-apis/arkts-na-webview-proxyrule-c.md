@@ -6,6 +6,8 @@ The ProxyRule used by insertProxyRule.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-webview-class ProxyRule--><!--Device-webview-class ProxyRule-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -22,6 +24,8 @@ Returns the scheme filter used for this rule.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-ProxyRule-getSchemeFilter(): ProxySchemeFilter--><!--Device-ProxyRule-getSchemeFilter(): ProxySchemeFilter-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -30,7 +34,7 @@ Returns the scheme filter used for this rule.
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | The scheme filter used for this rule. |
+| [ProxySchemeFilter](arkts-na-webview-proxyschemefilter-e.md) | The scheme filter used for this rule. |
 
 ## getUrl
 
@@ -43,6 +47,8 @@ Returns the proxy URL.
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ProxyRule-getUrl(): string--><!--Device-ProxyRule-getUrl(): string-End-->
 

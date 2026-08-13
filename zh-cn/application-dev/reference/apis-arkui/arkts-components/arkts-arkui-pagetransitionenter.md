@@ -14,6 +14,8 @@ PageTransitionEnter(value: PageTransitionOptions)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PageTransitionEnterInterface-(value: PageTransitionOptions): PageTransitionEnterInterface--><!--Device-PageTransitionEnterInterface-(value: PageTransitionOptions): PageTransitionEnterInterface-End-->
@@ -24,7 +26,7 @@ PageTransitionEnter(value: PageTransitionOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 配置入场动效的参数。  |
+| value | [PageTransitionOptions](arkts-arkui-pagetransitionoptions-i.md) | 是 | 配置入场动效的参数。 |
 
 ## PageTransitionEnter
 
@@ -38,6 +40,8 @@ PageTransitionEnter(event: PageTransitionCallback)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PageTransitionEnterInterface-onEnter(event: PageTransitionCallback): PageTransitionEnterInterface--><!--Device-PageTransitionEnterInterface-onEnter(event: PageTransitionCallback): PageTransitionEnterInterface-End-->
@@ -48,7 +52,11 @@ PageTransitionEnter(event: PageTransitionCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 入场动画的逐帧回调直到入场动画结束，progress从0变化到1。 |
+| event | [PageTransitionCallback](arkts-arkui-pagetransitioncallback-t.md) | 是 | 入场动画的逐帧回调直到入场动画结束，progress从0变化到1。 |
 
 ## 汇总
 
+- [PageTransitionOptions](arkts-arkui-pagetransitionoptions-i.md)
+- [PageTransitionCallback](arkts-arkui-pagetransitioncallback-t.md)
+- [RouteType](arkts-arkui-routetype-e.md)
+- [SlideEffect](arkts-arkui-slideeffect-e.md)

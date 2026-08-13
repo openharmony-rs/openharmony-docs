@@ -10,6 +10,8 @@ declare type OnTabsGestureSwipeCallback = (index: number, extraInfo: TabsAnimati
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -22,6 +24,6 @@ declare type OnTabsGestureSwipeCallback = (index: number, extraInfo: TabsAnimati
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 当前显示元素的索引，索引从0开始。 \_\_\_HTML\_TAG\_USD\_0\_\_\_取值范围：[0, 页签总数-1]  |
-| extraInfo | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 动画相关信息，只返回主轴方向上当前显示元素相对于Tabs起始位置的位移。  |
+| index | number | 是 | 当前显示元素的索引，索引从0开始。 <br/>取值范围：[0, 页签总数-1] |
+| extraInfo | [TabsAnimationEvent](arkts-arkui-tabsanimationevent-i.md) | 是 | 动画相关信息，只返回主轴方向上当前显示元素相对于Tabs起始位置的位移。 |
 

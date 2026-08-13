@@ -1,10 +1,12 @@
 # tags
 
-֧��traceʹ�ó����ı�ǩ���û���ͨ��hitraceץȡָ����ǩ��trace���ݡ� > **ע��** > > ���±�ǩʵ��ֵ��ϵͳ���壬������汾�����������ı䣬Ϊ������������ּ��������⣬��������Ӧֱ��ʹ�ñ�ǩ���ƶ��Ǳ�ǩ��ֵ��
+支持trace使用场景的标签，用户可通过hitrace抓取指定标签的trace内容。 > **注意** > > 以下标签实际值由系统定义，可能随版本升级而发生改变，为避免升级后出现兼容性问题，在生产中应直接使用标签名称而非标签数值。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-hidebug-namespace tags--><!--Device-hidebug-namespace tags-End-->
 
@@ -16,36 +18,36 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [ABILITY_MANAGER](arkts-performanceanalysis-tags-con.md#ability_manager) | ����������ǩ��hitrace�����й��߶�ӦtagName:ability�� |
-| [ARKUI](arkts-performanceanalysis-tags-con.md#arkui) | ArkUI������ܱ�ǩ��hitrace�����й��߶�ӦtagName:ace�� |
-| [ARK](arkts-performanceanalysis-tags-con.md#ark) | JSVM�������ǩ��hitrace�����й��߶�ӦtagName:ark�� |
-| [BLUETOOTH](arkts-performanceanalysis-tags-con.md#bluetooth) | ������ǩ��hitrace�����й��߶�ӦtagName:bluetooth�� |
-| [COMMON_LIBRARY](arkts-performanceanalysis-tags-con.md#common_library) | ��������ϵͳ��ǩ��hitrace�����й��߶�ӦtagName:commonlibrary�� |
-| [DISTRIBUTED_HARDWARE_DEVICE_MANAGER](arkts-performanceanalysis-tags-con.md#distributed_hardware_device_manager) | �ֲ�ʽӲ���豸������ǩ��hitrace�����й��߶�ӦtagName:devicemanager�� |
-| [DISTRIBUTED_AUDIO](arkts-performanceanalysis-tags-con.md#distributed_audio) | �ֲ�ʽ��Ƶ��ǩ��hitrace�����й��߶�ӦtagName:daudio�� |
-| [DISTRIBUTED_CAMERA](arkts-performanceanalysis-tags-con.md#distributed_camera) | �ֲ�ʽ�����ǩ��hitrace�����й��߶�ӦtagName:dcamera�� |
-| [DISTRIBUTED_DATA](arkts-performanceanalysis-tags-con.md#distributed_data) | �ֲ�ʽ���ݹ���ģ���ǩ��hitrace�����й��߶�ӦtagName:distributeddatamgr�� |
-| [DISTRIBUTED_HARDWARE_FRAMEWORK](arkts-performanceanalysis-tags-con.md#distributed_hardware_framework) | �ֲ�ʽӲ����ܱ�ǩ��hitrace�����й��߶�ӦtagName:dhfwk�� |
-| [DISTRIBUTED_INPUT](arkts-performanceanalysis-tags-con.md#distributed_input) | �ֲ�ʽ�����ǩ��hitrace�����й��߶�ӦtagName:dinput�� |
-| [DISTRIBUTED_SCREEN](arkts-performanceanalysis-tags-con.md#distributed_screen) | �ֲ�ʽ��Ļ��ǩ��hitrace�����й��߶�ӦtagName:dscreen�� |
-| [DISTRIBUTED_SCHEDULER](arkts-performanceanalysis-tags-con.md#distributed_scheduler) | �ֲ�ʽ��������ǩ��hitrace�����й��߶�ӦtagName:dsched�� |
-| [FFRT](arkts-performanceanalysis-tags-con.md#ffrt) | FFRT�����ǩ��hitrace�����й��߶�ӦtagName:ffrt�� |
-| [FILE_MANAGEMENT](arkts-performanceanalysis-tags-con.md#file_management) | �ļ�����ϵͳ��ǩ��hitrace�����й��߶�ӦtagName:filemanagement�� |
-| [GLOBAL_RESOURCE_MANAGER](arkts-performanceanalysis-tags-con.md#global_resource_manager) | ȫ����Դ������ǩ��hitrace�����й��߶�ӦtagName:gresource�� |
-| [GRAPHICS](arkts-performanceanalysis-tags-con.md#graphics) | ͼ��ģ���ǩ��hitrace�����й��߶�ӦtagName:graphic�� |
-| [HDF](arkts-performanceanalysis-tags-con.md#hdf) | HDF��ϵͳ��ǩ��hitrace�����й��߶�ӦtagName:hdf�� |
-| [MISC](arkts-performanceanalysis-tags-con.md#misc) | MISCģ���ǩ��hitrace�����й��߶�ӦtagName:misc�� |
-| [MULTIMODAL_INPUT](arkts-performanceanalysis-tags-con.md#multimodal_input) | ��ģ̬����ģ���ǩ��hitrace�����й��߶�ӦtagName:multimodalinput�� |
-| [NET](arkts-performanceanalysis-tags-con.md#net) | �����ǩ��hitrace�����й��߶�ӦtagName:net�� |
-| [NOTIFICATION](arkts-performanceanalysis-tags-con.md#notification) | ֪ͨģ���ǩ��hitrace�����й��߶�ӦtagName:notification�� |
-| [NWEB](arkts-performanceanalysis-tags-con.md#nweb) | Nweb��ǩ��hitrace�����й��߶�ӦtagName:nweb�� |
-| [OHOS](arkts-performanceanalysis-tags-con.md#ohos) | OHOSͨ�ñ�ǩ��hitrace�����й��߶�ӦtagName:ohos�� |
-| [POWER_MANAGER](arkts-performanceanalysis-tags-con.md#power_manager) | ��Դ������ǩ��hitrace�����й��߶�ӦtagName:power�� |
-| [RPC](arkts-performanceanalysis-tags-con.md#rpc) | RPC��ǩ��hitrace�����й��߶�ӦtagName:rpc�� |
-| [SAMGR](arkts-performanceanalysis-tags-con.md#samgr) | ϵͳ����������ǩ��hitrace�����й��߶�ӦtagName:samgr�� |
-| [WINDOW_MANAGER](arkts-performanceanalysis-tags-con.md#window_manager) | ���ڹ�����ǩ��hitrace�����й��߶�ӦtagName:window�� |
-| [AUDIO](arkts-performanceanalysis-tags-con.md#audio) | ��Ƶģ���ǩ��hitrace�����й��߶�ӦtagName:zaudio�� |
-| [CAMERA](arkts-performanceanalysis-tags-con.md#camera) | ���ģ���ǩ��hitrace�����й��߶�ӦtagName:zcamera�� |
-| [IMAGE](arkts-performanceanalysis-tags-con.md#image) | ͼƬģ���ǩ��hitrace�����й��߶�ӦtagName:zimage�� |
-| [MEDIA](arkts-performanceanalysis-tags-con.md#media) | ý��ģ���ǩ��hitrace�����й��߶�ӦtagName:zmedia�� |
+| [ABILITY_MANAGER](arkts-performanceanalysis-tags-con.md#ABILITY_MANAGER) | 能力管理标签，hitrace命令行工具对应tagName:ability。 |
+| [ARKUI](arkts-performanceanalysis-tags-con.md#ARKUI) | ArkUI开发框架标签，hitrace命令行工具对应tagName:ace。 |
+| [ARK](arkts-performanceanalysis-tags-con.md#ARK) | JSVM虚拟机标签，hitrace命令行工具对应tagName:ark。 |
+| [BLUETOOTH](arkts-performanceanalysis-tags-con.md#BLUETOOTH) | 蓝牙标签，hitrace命令行工具对应tagName:bluetooth。 |
+| [COMMON_LIBRARY](arkts-performanceanalysis-tags-con.md#COMMON_LIBRARY) | 公共库子系统标签，hitrace命令行工具对应tagName:commonlibrary。 |
+| [DISTRIBUTED_HARDWARE_DEVICE_MANAGER](arkts-performanceanalysis-tags-con.md#DISTRIBUTED_HARDWARE_DEVICE_MANAGER) | 分布式硬件设备管理标签，hitrace命令行工具对应tagName:devicemanager。 |
+| [DISTRIBUTED_AUDIO](arkts-performanceanalysis-tags-con.md#DISTRIBUTED_AUDIO) | 分布式音频标签，hitrace命令行工具对应tagName:daudio。 |
+| [DISTRIBUTED_CAMERA](arkts-performanceanalysis-tags-con.md#DISTRIBUTED_CAMERA) | 分布式相机标签，hitrace命令行工具对应tagName:dcamera。 |
+| [DISTRIBUTED_DATA](arkts-performanceanalysis-tags-con.md#DISTRIBUTED_DATA) | 分布式数据管理模块标签，hitrace命令行工具对应tagName:distributeddatamgr。 |
+| [DISTRIBUTED_HARDWARE_FRAMEWORK](arkts-performanceanalysis-tags-con.md#DISTRIBUTED_HARDWARE_FRAMEWORK) | 分布式硬件框架标签，hitrace命令行工具对应tagName:dhfwk。 |
+| [DISTRIBUTED_INPUT](arkts-performanceanalysis-tags-con.md#DISTRIBUTED_INPUT) | 分布式输入标签，hitrace命令行工具对应tagName:dinput。 |
+| [DISTRIBUTED_SCREEN](arkts-performanceanalysis-tags-con.md#DISTRIBUTED_SCREEN) | 分布式屏幕标签，hitrace命令行工具对应tagName:dscreen。 |
+| [DISTRIBUTED_SCHEDULER](arkts-performanceanalysis-tags-con.md#DISTRIBUTED_SCHEDULER) | 分布式调度器标签，hitrace命令行工具对应tagName:dsched。 |
+| [FFRT](arkts-performanceanalysis-tags-con.md#FFRT) | FFRT任务标签，hitrace命令行工具对应tagName:ffrt。 |
+| [FILE_MANAGEMENT](arkts-performanceanalysis-tags-con.md#FILE_MANAGEMENT) | 文件管理系统标签，hitrace命令行工具对应tagName:filemanagement。 |
+| [GLOBAL_RESOURCE_MANAGER](arkts-performanceanalysis-tags-con.md#GLOBAL_RESOURCE_MANAGER) | 全局资源管理标签，hitrace命令行工具对应tagName:gresource。 |
+| [GRAPHICS](arkts-performanceanalysis-tags-con.md#GRAPHICS) | 图形模块标签，hitrace命令行工具对应tagName:graphic。 |
+| [HDF](arkts-performanceanalysis-tags-con.md#HDF) | HDF子系统标签，hitrace命令行工具对应tagName:hdf。 |
+| [MISC](arkts-performanceanalysis-tags-con.md#MISC) | MISC模块标签，hitrace命令行工具对应tagName:misc。 |
+| [MULTIMODAL_INPUT](arkts-performanceanalysis-tags-con.md#MULTIMODAL_INPUT) | 多模态输入模块标签，hitrace命令行工具对应tagName:multimodalinput。 |
+| [NET](arkts-performanceanalysis-tags-con.md#NET) | 网络标签，hitrace命令行工具对应tagName:net。 |
+| [NOTIFICATION](arkts-performanceanalysis-tags-con.md#NOTIFICATION) | 通知模块标签，hitrace命令行工具对应tagName:notification。 |
+| [NWEB](arkts-performanceanalysis-tags-con.md#NWEB) | Nweb标签，hitrace命令行工具对应tagName:nweb。 |
+| [OHOS](arkts-performanceanalysis-tags-con.md#OHOS) | OHOS通用标签，hitrace命令行工具对应tagName:ohos。 |
+| [POWER_MANAGER](arkts-performanceanalysis-tags-con.md#POWER_MANAGER) | 电源管理标签，hitrace命令行工具对应tagName:power。 |
+| [RPC](arkts-performanceanalysis-tags-con.md#RPC) | RPC标签，hitrace命令行工具对应tagName:rpc。 |
+| [SAMGR](arkts-performanceanalysis-tags-con.md#SAMGR) | 系统能力管理标签，hitrace命令行工具对应tagName:samgr。 |
+| [WINDOW_MANAGER](arkts-performanceanalysis-tags-con.md#WINDOW_MANAGER) | 窗口管理标签，hitrace命令行工具对应tagName:window。 |
+| [AUDIO](arkts-performanceanalysis-tags-con.md#AUDIO) | 音频模块标签，hitrace命令行工具对应tagName:zaudio。 |
+| [CAMERA](arkts-performanceanalysis-tags-con.md#CAMERA) | 相机模块标签，hitrace命令行工具对应tagName:zcamera。 |
+| [IMAGE](arkts-performanceanalysis-tags-con.md#IMAGE) | 图片模块标签，hitrace命令行工具对应tagName:zimage。 |
+| [MEDIA](arkts-performanceanalysis-tags-con.md#MEDIA) | 媒体模块标签，hitrace命令行工具对应tagName:zmedia。 |
 

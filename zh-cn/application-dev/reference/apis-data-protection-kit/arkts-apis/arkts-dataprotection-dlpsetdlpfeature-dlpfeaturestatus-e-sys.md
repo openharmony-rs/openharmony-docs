@@ -6,6 +6,8 @@ DLP特性开关状态的枚举。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 <!--Device-dlpSetDlpFeature-export enum DlpFeatureStatus--><!--Device-dlpSetDlpFeature-export enum DlpFeatureStatus-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
@@ -23,6 +25,8 @@ NOT_ENABLED_FEATURE = 0
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -43,6 +47,8 @@ ENABLED_FEATURE = 1
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

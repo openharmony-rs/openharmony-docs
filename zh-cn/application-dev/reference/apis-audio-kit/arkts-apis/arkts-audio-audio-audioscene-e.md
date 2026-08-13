@@ -2,9 +2,11 @@
 
 表示音频场景的枚举。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-audio-enum AudioScene--><!--Device-audio-enum AudioScene-End-->
 
@@ -18,9 +20,11 @@ AUDIO_SCENE_DEFAULT = 0
 
 默认音频场景。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioScene-AUDIO_SCENE_DEFAULT = 0--><!--Device-AudioScene-AUDIO_SCENE_DEFAULT = 0-End-->
 
@@ -34,9 +38,11 @@ AUDIO_SCENE_RINGING = 1
 
 响铃模式。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioScene-AUDIO_SCENE_RINGING = 1--><!--Device-AudioScene-AUDIO_SCENE_RINGING = 1-End-->
 
@@ -50,9 +56,11 @@ AUDIO_SCENE_PHONE_CALL = 2
 
 电话模式。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioScene-AUDIO_SCENE_PHONE_CALL = 2--><!--Device-AudioScene-AUDIO_SCENE_PHONE_CALL = 2-End-->
 
@@ -66,9 +74,11 @@ AUDIO_SCENE_VOICE_CHAT = 3
 
 语音聊天模式。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioScene-AUDIO_SCENE_VOICE_CHAT = 3--><!--Device-AudioScene-AUDIO_SCENE_VOICE_CHAT = 3-End-->
 

@@ -2,9 +2,11 @@
 
 Options用于指定在压缩或解压Zip文件时的选项。
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-zlib-interface Options--><!--Device-zlib-interface Options-End-->
 
@@ -18,11 +20,13 @@ level?: CompressLevel
 
 压缩或解压时指定的压缩等级。
 
-**类型：** CompressLevel
+**类型：** [CompressLevel](arkts-basicservices-zlib-compresslevel-e.md)
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -38,11 +42,13 @@ memLevel?: MemLevel
 
 压缩时指定的使用内存等级。
 
-**类型：** MemLevel
+**类型：** [MemLevel](arkts-basicservices-zlib-memlevel-e.md)
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -58,13 +64,15 @@ parallel?: ParallelStrategy
 
 压缩策略。
 
-**类型：** ParallelStrategy
+**类型：** [ParallelStrategy](arkts-basicservices-zlib-parallelstrategy-e.md)
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Options-parallel?: ParallelStrategy--><!--Device-Options-parallel?: ParallelStrategy-End-->
 
@@ -78,13 +86,15 @@ pathSeparatorStrategy?: PathSeparatorStrategy
 
 并行策略。
 
-**类型：** PathSeparatorStrategy
+**类型：** [PathSeparatorStrategy](arkts-basicservices-zlib-pathseparatorstrategy-e.md)
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Options-pathSeparatorStrategy?: PathSeparatorStrategy--><!--Device-Options-pathSeparatorStrategy?: PathSeparatorStrategy-End-->
 
@@ -98,11 +108,13 @@ strategy?: CompressStrategy
 
 压缩时指定的压缩策略。
 
-**类型：** CompressStrategy
+**类型：** [CompressStrategy](arkts-basicservices-zlib-compressstrategy-e.md)
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

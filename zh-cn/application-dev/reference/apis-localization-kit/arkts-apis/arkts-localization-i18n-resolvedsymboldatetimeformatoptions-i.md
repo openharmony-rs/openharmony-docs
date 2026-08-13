@@ -2,13 +2,15 @@
 
 自定义符号时间日期格式化对象配置项的解析结果。继承自Intl.ResolvedDateTimeFormatOptions， 支持Intl.ResolvedDateTimeFormatOptions的所有配置项，并且功能与其一致。
 
-**继承/实现关系：** ResolvedSymbolDateTimeFormatOptions extends [Intl.ResolvedDateTimeFormatOptions](Intl.ResolvedDateTimeFormatOptions)
+**继承/实现关系：** ResolvedSymbolDateTimeFormatOptions extends Intl.ResolvedDateTimeFormatOptions
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
-<!--Device-i18n-export interface ResolvedSymbolDateTimeFormatOptions extends Intl.ResolvedDateTimeFormatOptions--><!--Device-i18n-export interface ResolvedSymbolDateTimeFormatOptions extends Intl.ResolvedDateTimeFormatOptions-End-->
+**废弃版本：** -1
+
+<!--Device-i18n-export interface ResolvedSymbolDateTimeFormatOptions--><!--Device-i18n-export interface ResolvedSymbolDateTimeFormatOptions-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -25,6 +27,8 @@ amPMSymbol?: string[]
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

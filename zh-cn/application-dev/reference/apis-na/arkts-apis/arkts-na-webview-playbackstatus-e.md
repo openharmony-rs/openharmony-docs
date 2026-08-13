@@ -1,10 +1,12 @@
 # PlaybackStatus
 
-\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_ 接口参数， 用于表示播放器的播放状态。
+[handleStatusChanged](../../../reference/apis-arkweb/arkts-apis-webview-NativeMediaPlayerHandler.md#handleStatusChanged) 接口参数， 用于表示播放器的播放状态。
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-webview-enum PlaybackStatus--><!--Device-webview-enum PlaybackStatus-End-->
 
@@ -22,6 +24,8 @@ PAUSED = 0
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-PlaybackStatus-PAUSED = 0--><!--Device-PlaybackStatus-PAUSED = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -37,6 +41,8 @@ PLAYING = 1
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PlaybackStatus-PLAYING = 1--><!--Device-PlaybackStatus-PLAYING = 1-End-->
 

@@ -40,7 +40,7 @@ userType?: UserType
 
 指示要设置的用户类型，默认为0。
 
-**类型：** UserType
+**类型：** [UserType](arkts-arkdata-distributeddata-usertype-e.md)
 
 **起始版本：** 7
 

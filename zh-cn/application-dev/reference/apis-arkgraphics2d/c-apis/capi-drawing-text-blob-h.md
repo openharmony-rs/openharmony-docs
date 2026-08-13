@@ -2,7 +2,7 @@
 
 ## 概述
 
-This file declares the functions related to the text blob in the drawing module.
+文件中定义了与文字相关的功能函数。<br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
 
 **库：** libnative_drawing.so
 
@@ -18,22 +18,22 @@ This file declares the functions related to the text blob in the drawing module.
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_Drawing_RunBuffer](capi-drawing-oh-drawing-runbuffer.md) | OH_Drawing_RunBuffer | This struct describes a run, which provides storage for glyphs and positions. |
+| [OH_Drawing_RunBuffer](capi-drawing-oh-drawing-runbuffer.md) | OH_Drawing_RunBuffer | 结构体用于描述一块内存，该内存用于存储文字和位置信息。 |
 
 ### 函数
 
 | 名称 | 描述 |
 | -- | -- |
 | [OH_Drawing_TextBlobBuilder* OH_Drawing_TextBlobBuilderCreate(void)](#oh_drawing_textblobbuildercreate) | 用于创建一个文本构造器对象。 |
-| [OH_Drawing_TextBlob* OH_Drawing_TextBlobCreateFromText(const void* text, size_t byteLength, const OH_Drawing_Font* font, OH_Drawing_TextEncoding textEncoding)](#oh_drawing_textblobcreatefromtext) | 使用文本创建一个文本对象。本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。text、font任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER；textEncoding不在枚举范围内返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。 |
-| [OH_Drawing_TextBlob* OH_Drawing_TextBlobCreateFromPosText(const void* text, size_t byteLength, OH_Drawing_Point2D* point2D, const OH_Drawing_Font* font, OH_Drawing_TextEncoding textEncoding)](#oh_drawing_textblobcreatefrompostext) | 使用文本创建文本对象，文本对象中每个字符的坐标由OH_Drawing_Point2D数组中对应的坐标信息决定。本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。text、point2D、font任意一个为NULL或byteLength等于0时返回OH_DRAWING_ERROR_INVALID_PARAMETER；textEncoding不在枚举范围内返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。 |
-| [OH_Drawing_TextBlob* OH_Drawing_TextBlobCreateFromString(const char* str, const OH_Drawing_Font* font, OH_Drawing_TextEncoding textEncoding)](#oh_drawing_textblobcreatefromstring) | 使用字符串创建文本对象。本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。str、font任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER；textEncoding不在枚举范围内返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。 |
-| [void OH_Drawing_TextBlobGetBounds(OH_Drawing_TextBlob* textBlob, OH_Drawing_Rect* rect)](#oh_drawing_textblobgetbounds) | 获取文本对象的边界范围。本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。textBlob、rect任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
-| [uint32_t OH_Drawing_TextBlobUniqueID(const OH_Drawing_TextBlob* textBlob)](#oh_drawing_textblobuniqueid) | 获取文本的标识符，该标识符是唯一的非零值。本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。textBlob为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
-| [const OH_Drawing_RunBuffer* OH_Drawing_TextBlobBuilderAllocRunPos(OH_Drawing_TextBlobBuilder* textBlobBuilder, const OH_Drawing_Font* font, int32_t count, const OH_Drawing_Rect* rect)](#oh_drawing_textblobbuilderallocrunpos) | 申请一块内存，用于存储文字和位置信息。返回的指针无需调用者管理，当调用[OH_Drawing_TextBlobBuilderMake](capi-drawing-text-blob-h.md#oh_drawing_textblobbuildermake)后禁止使用。本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。textBlobBuilder、font任意一个为NULL或者count小于等于0时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
-| [OH_Drawing_TextBlob* OH_Drawing_TextBlobBuilderMake(OH_Drawing_TextBlobBuilder* textBlobBuilder)](#oh_drawing_textblobbuildermake) | 用于从文本构造器中创建文本对象。本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。textBlobBuilder为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
-| [void OH_Drawing_TextBlobDestroy(OH_Drawing_TextBlob* textBlob)](#oh_drawing_textblobdestroy) | 用于销毁文本对象并回收该对象占有的内存。 |
-| [void OH_Drawing_TextBlobBuilderDestroy(OH_Drawing_TextBlobBuilder* textBlobBuilder)](#oh_drawing_textblobbuilderdestroy) | 用于销毁文本构造器对象并回收该对象占有的内存。 |
+| [OH_Drawing_TextBlob* OH_Drawing_TextBlobCreateFromText(const void* text, size_t byteLength, const OH_Drawing_Font* font, OH_Drawing_TextEncoding textEncoding)](#oh_drawing_textblobcreatefromtext) | 使用文本创建一个文本对象。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>text、font任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER；<br>textEncoding不在枚举范围内返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。 |
+| [OH_Drawing_TextBlob* OH_Drawing_TextBlobCreateFromPosText(const void* text, size_t byteLength, OH_Drawing_Point2D* point2D, const OH_Drawing_Font* font, OH_Drawing_TextEncoding textEncoding)](#oh_drawing_textblobcreatefrompostext) | 使用文本创建文本对象，文本对象中每个字符的坐标由OH_Drawing_Point2D数组中对应的坐标信息决定。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>text、point2D、font任意一个为NULL或byteLength等于0时返回OH_DRAWING_ERROR_INVALID_PARAMETER；<br>textEncoding不在枚举范围内返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。 |
+| [OH_Drawing_TextBlob* OH_Drawing_TextBlobCreateFromString(const char* str, const OH_Drawing_Font* font, OH_Drawing_TextEncoding textEncoding)](#oh_drawing_textblobcreatefromstring) | 使用字符串创建文本对象。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>str、font任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER；<br>textEncoding不在枚举范围内返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。 |
+| [void OH_Drawing_TextBlobGetBounds(OH_Drawing_TextBlob* textBlob, OH_Drawing_Rect* rect)](#oh_drawing_textblobgetbounds) | 获取文本对象的边界范围。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>textBlob、rect任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [uint32_t OH_Drawing_TextBlobUniqueID(const OH_Drawing_TextBlob* textBlob)](#oh_drawing_textblobuniqueid) | 获取文本的标识符，该标识符是唯一的非零值。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>textBlob为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [const OH_Drawing_RunBuffer* OH_Drawing_TextBlobBuilderAllocRunPos(OH_Drawing_TextBlobBuilder* textBlobBuilder, const OH_Drawing_Font* font, int32_t count, const OH_Drawing_Rect* rect)](#oh_drawing_textblobbuilderallocrunpos) | 申请一块内存，用于存储文字和位置信息。返回的指针无需调用者管理，当调用[OH_Drawing_TextBlobBuilderMake](capi-drawing-text-blob-h.md#oh_drawing_textblobbuildermake)后禁止使用。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>textBlobBuilder、font任意一个为NULL或者count小于等于0时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [OH_Drawing_TextBlob* OH_Drawing_TextBlobBuilderMake(OH_Drawing_TextBlobBuilder* textBlobBuilder)](#oh_drawing_textblobbuildermake) | 用于从文本构造器中创建文本对象。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>textBlobBuilder为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [void OH_Drawing_TextBlobDestroy(OH_Drawing_TextBlob* textBlob)](#oh_drawing_textblobdestroy) | 用于销毁文本对象并回收该对象占用的内存。 |
+| [void OH_Drawing_TextBlobBuilderDestroy(OH_Drawing_TextBlobBuilder* textBlobBuilder)](#oh_drawing_textblobbuilderdestroy) | 用于销毁文本构造器对象并回收该对象占用的内存。 |
 
 ## 函数说明
 
@@ -53,7 +53,7 @@ OH_Drawing_TextBlobBuilder* OH_Drawing_TextBlobBuilderCreate(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_TextBlobBuilder*](capi-drawing-oh-drawing-textblobbuilder.md) | 函数会返回一个指针，指针指向创建的文本构造器对象。 |
+| [OH_Drawing_TextBlobBuilder*](capi-drawing-oh-drawing-textblobbuilder.md) | 函数返回一个指针，指针指向创建的文本构造器对象。 |
 
 ### OH_Drawing_TextBlobCreateFromText()
 
@@ -63,7 +63,7 @@ OH_Drawing_TextBlob* OH_Drawing_TextBlobCreateFromText(const void* text, size_t 
 
 **描述**
 
-使用文本创建一个文本对象。本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。text、font任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER；textEncoding不在枚举范围内返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
+使用文本创建一个文本对象。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>text、font任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER；<br>textEncoding不在枚举范围内返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
 
 **起始版本：** 12
 
@@ -73,14 +73,14 @@ OH_Drawing_TextBlob* OH_Drawing_TextBlobCreateFromText(const void* text, size_t 
 | -- | -- |
 | const void* text | 指向文本的指针。 |
 | size_t byteLength | 文本的字节长度。 |
-| [const OH_Drawing_Font](capi-drawing-oh-drawing-font.md)* font | 指向字体对象[OH_Drawing_Font](capi-drawing-oh-drawing-font.md)的指针。 |
-| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) textEncoding | 文本编码类型[OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding)。 |
+| [const OH_Drawing_Font](capi-drawing-oh-drawing-font.md)* font | 指向字体对象OH_Drawing_Font的指针。 |
+| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) textEncoding | 文本编码类型。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_TextBlob*](capi-drawing-oh-drawing-textblob.md) | 函数返回一个指针，指针指向创建的文本对象[OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md)。 |
+| [OH_Drawing_TextBlob*](capi-drawing-oh-drawing-textblob.md) | 函数返回一个指针，指针指向创建的文本对象OH_Drawing_TextBlob。 |
 
 ### OH_Drawing_TextBlobCreateFromPosText()
 
@@ -90,7 +90,7 @@ OH_Drawing_TextBlob* OH_Drawing_TextBlobCreateFromPosText(const void* text, size
 
 **描述**
 
-使用文本创建文本对象，文本对象中每个字符的坐标由OH_Drawing_Point2D数组中对应的坐标信息决定。本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。text、point2D、font任意一个为NULL或byteLength等于0时返回OH_DRAWING_ERROR_INVALID_PARAMETER；textEncoding不在枚举范围内返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
+使用文本创建文本对象，文本对象中每个字符的坐标由OH_Drawing_Point2D数组中对应的坐标信息决定。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>text、point2D、font任意一个为NULL或byteLength等于0时返回OH_DRAWING_ERROR_INVALID_PARAMETER；<br>textEncoding不在枚举范围内返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
 
 **起始版本：** 12
 
@@ -100,15 +100,15 @@ OH_Drawing_TextBlob* OH_Drawing_TextBlobCreateFromPosText(const void* text, size
 | -- | -- |
 | const void* text | 指向文本的指针。 |
 | size_t byteLength | 文本的字节长度。 |
-| [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md)* point2D | 二维点[OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md)数组首地址，数组个数由{@link OH_Drawing_FontCountText}计算结果决定。 |
-| [const OH_Drawing_Font](capi-drawing-oh-drawing-font.md)* font | 指向字体对象[OH_Drawing_Font](capi-drawing-oh-drawing-font.md)的指针。 |
-| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) textEncoding | 文本编码类型[OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding)。 |
+| [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md)* point2D | 二维点OH_Drawing_Point2D数组首地址，数组个数由{@link OH_Drawing_FontCountText}的计算结果决定。 |
+| [const OH_Drawing_Font](capi-drawing-oh-drawing-font.md)* font | 指向字体对象OH_Drawing_Font的指针。 |
+| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) textEncoding | 文本编码类型OH_Drawing_TextEncoding。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_TextBlob*](capi-drawing-oh-drawing-textblob.md) | 函数返回一个指针，指针指向创建的文本对象[OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md)。 |
+| [OH_Drawing_TextBlob*](capi-drawing-oh-drawing-textblob.md) | 函数返回一个指针，指针指向创建的文本对象OH_Drawing_TextBlob。 |
 
 ### OH_Drawing_TextBlobCreateFromString()
 
@@ -118,7 +118,7 @@ OH_Drawing_TextBlob* OH_Drawing_TextBlobCreateFromString(const char* str, const 
 
 **描述**
 
-使用字符串创建文本对象。本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。str、font任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER；textEncoding不在枚举范围内返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
+使用字符串创建文本对象。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>str、font任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER；<br>textEncoding不在枚举范围内返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
 
 **起始版本：** 12
 
@@ -127,14 +127,14 @@ OH_Drawing_TextBlob* OH_Drawing_TextBlobCreateFromString(const char* str, const 
 | 参数项 | 描述 |
 | -- | -- |
 | const char* str | 指向字符串的指针。 |
-| [const OH_Drawing_Font](capi-drawing-oh-drawing-font.md)* font | 指向字体对象[OH_Drawing_Font](capi-drawing-oh-drawing-font.md)的指针。 |
-| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) textEncoding | 文本编码类型[OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding)。 |
+| [const OH_Drawing_Font](capi-drawing-oh-drawing-font.md)* font | 指向字体对象OH_Drawing_Font的指针。 |
+| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) textEncoding | 文本编码类型OH_Drawing_TextEncoding。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_TextBlob*](capi-drawing-oh-drawing-textblob.md) | 函数返回一个指针，指针指向创建的文本对象[OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md)。 |
+| [OH_Drawing_TextBlob*](capi-drawing-oh-drawing-textblob.md) | 函数返回一个指针，指针指向创建的文本对象OH_Drawing_TextBlob。 |
 
 ### OH_Drawing_TextBlobGetBounds()
 
@@ -144,7 +144,7 @@ void OH_Drawing_TextBlobGetBounds(OH_Drawing_TextBlob* textBlob, OH_Drawing_Rect
 
 **描述**
 
-获取文本对象的边界范围。本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。textBlob、rect任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+获取文本对象的边界范围。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>textBlob、rect任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
 **起始版本：** 12
 
@@ -152,8 +152,8 @@ void OH_Drawing_TextBlobGetBounds(OH_Drawing_TextBlob* textBlob, OH_Drawing_Rect
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md)* textBlob | 指向文本对象[OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md)的指针。 |
-| [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* rect | 指向矩形对象[OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)的指针，开发者可调用[OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)接口创建。 |
+| [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md)* textBlob | 指向文本对象OH_Drawing_TextBlob的指针。 |
+| [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* rect | 指向矩形对象OH_Drawing_Rect的指针，开发者可调用OH_Drawing_Rect接口创建。 |
 
 ### OH_Drawing_TextBlobUniqueID()
 
@@ -163,7 +163,7 @@ uint32_t OH_Drawing_TextBlobUniqueID(const OH_Drawing_TextBlob* textBlob)
 
 **描述**
 
-获取文本的标识符，该标识符是唯一的非零值。本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。textBlob为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+获取文本的标识符，该标识符是唯一的非零值。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>textBlob为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
 **起始版本：** 12
 
@@ -171,7 +171,7 @@ uint32_t OH_Drawing_TextBlobUniqueID(const OH_Drawing_TextBlob* textBlob)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md)* textBlob | 指向文本对象[OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md)的指针。 |
+| [const OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md)* textBlob | 指向文本对象OH_Drawing_TextBlob的指针。 |
 
 **返回：**
 
@@ -187,7 +187,7 @@ const OH_Drawing_RunBuffer* OH_Drawing_TextBlobBuilderAllocRunPos(OH_Drawing_Tex
 
 **描述**
 
-申请一块内存，用于存储文字和位置信息。返回的指针无需调用者管理，当调用[OH_Drawing_TextBlobBuilderMake](capi-drawing-text-blob-h.md#oh_drawing_textblobbuildermake)后禁止使用。本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。textBlobBuilder、font任意一个为NULL或者count小于等于0时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+申请一块内存，用于存储文字和位置信息。返回的指针无需调用者管理，当调用[OH_Drawing_TextBlobBuilderMake](capi-drawing-text-blob-h.md#oh_drawing_textblobbuildermake)后禁止使用。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>textBlobBuilder、font任意一个为NULL或者count小于等于0时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
 **起始版本：** 11
 
@@ -196,7 +196,7 @@ const OH_Drawing_RunBuffer* OH_Drawing_TextBlobBuilderAllocRunPos(OH_Drawing_Tex
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Drawing_TextBlobBuilder](capi-drawing-oh-drawing-textblobbuilder.md)* textBlobBuilder | 指向文本构造器对象的指针。 |
-| [const OH_Drawing_Font](capi-drawing-oh-drawing-font.md)* font | 指向字体对象的指针。 |
+| [const OH_Drawing_Font](capi-drawing-oh-drawing-font.md)* font | 指向字体对象OH_Drawing_Font的指针。 |
 | int32_t count | 文字的数量。 |
 | [const OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* rect | 文本的边界框，为NULL表示不设置边界框。 |
 
@@ -214,7 +214,7 @@ OH_Drawing_TextBlob* OH_Drawing_TextBlobBuilderMake(OH_Drawing_TextBlobBuilder* 
 
 **描述**
 
-用于从文本构造器中创建文本对象。本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。textBlobBuilder为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+用于从文本构造器中创建文本对象。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>textBlobBuilder为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
 **起始版本：** 11
 
@@ -228,7 +228,7 @@ OH_Drawing_TextBlob* OH_Drawing_TextBlobBuilderMake(OH_Drawing_TextBlobBuilder* 
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_TextBlob*](capi-drawing-oh-drawing-textblob.md) | 返回一个指针，指针指向创建的文本对象。 |
+| [OH_Drawing_TextBlob*](capi-drawing-oh-drawing-textblob.md) | 函数返回一个指针，指针指向创建的文本对象OH_Drawing_TextBlob。 |
 
 ### OH_Drawing_TextBlobDestroy()
 
@@ -238,7 +238,7 @@ void OH_Drawing_TextBlobDestroy(OH_Drawing_TextBlob* textBlob)
 
 **描述**
 
-用于销毁文本对象并回收该对象占有的内存。
+用于销毁文本对象并回收该对象占用的内存。
 
 **起始版本：** 11
 
@@ -246,7 +246,7 @@ void OH_Drawing_TextBlobDestroy(OH_Drawing_TextBlob* textBlob)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md)* textBlob | 指向文本对象的指针。 |
+| [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md)* textBlob | 指向文本对象OH_Drawing_TextBlob的指针。 |
 
 ### OH_Drawing_TextBlobBuilderDestroy()
 
@@ -256,7 +256,7 @@ void OH_Drawing_TextBlobBuilderDestroy(OH_Drawing_TextBlobBuilder* textBlobBuild
 
 **描述**
 
-用于销毁文本构造器对象并回收该对象占有的内存。
+用于销毁文本构造器对象并回收该对象占用的内存。
 
 **起始版本：** 11
 

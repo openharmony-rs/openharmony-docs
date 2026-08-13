@@ -19,9 +19,9 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [Region](capi-nativewindow-region.md) | Region | 表示本地窗口OHNativeWindow需要更新内容的矩形区域（脏区）。 |
-| [OHHDRMetaData](capi-nativewindow-ohhdrmetadata.md) | OHHDRMetaData | Defines the HDR metadata.(API10废弃) |
-| [OHExtDataHandle](capi-nativewindow-ohextdatahandle.md) | OHExtDataHandle | Defines the ExtData Handle(API10废弃) |
-| [OHIPCParcel](capi-nativewindow-ohipcparcel.md) | OHIPCParcel | 提供OHIPCParcel结构体声明，用于进程间通信。 |
+| [OHHDRMetaData](capi-nativewindow-ohhdrmetadata.md) | OHHDRMetaData | HDR元数据结构体定义。(API10废弃) |
+| [OHExtDataHandle](capi-nativewindow-ohextdatahandle.md) | OHExtDataHandle | 扩展数据句柄结构体定义。(API10废弃) |
+| [OHIPCParcel](capi-nativewindow-ohipcparcel.md) | OHIPCParcel | 提供对IPC序列化对象的访问功能。 |
 | [NativeWindow](capi-nativewindow-nativewindow.md) | - | 提供对OHNativeWindow的访问功能。 |
 | [NativeWindowBuffer](capi-nativewindow-nativewindowbuffer.md) | - | 提供对OHNativeWindowBuffer的访问功能。 |
 
@@ -33,7 +33,7 @@
 | [OHScalingMode](#ohscalingmode) | OHScalingMode | Indicates Scaling Mode.(API10废弃) |
 | [OHScalingModeV2](#ohscalingmodev2) | OHScalingModeV2 | Indicates Scaling Mode. |
 | [OHHDRMetadataKey](#ohhdrmetadatakey) | OHHDRMetadataKey | Enumerates the HDR metadata keys.(API10废弃) |
-| [OHSurfaceSource](#ohsurfacesource) | OHSurfaceSource | Indicates the source type of surface. |
+| [OHSurfaceSource](#ohsurfacesource) | OHSurfaceSource | 本地窗口内容来源类型枚举。 |
 
 ### 函数
 
@@ -187,17 +187,17 @@ enum OHSurfaceSource
 
 **描述**
 
-Indicates the source type of surface.
+本地窗口内容来源类型枚举。
 
 **起始版本：** 12
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_SURFACE_SOURCE_DEFAULT = 0 | the default source type of surface. |
-| OH_SURFACE_SOURCE_UI | the surface is created by ui. |
-| OH_SURFACE_SOURCE_GAME | the surface is created by game. |
-| OH_SURFACE_SOURCE_CAMERA | the surface is created by camera. |
-| OH_SURFACE_SOURCE_VIDEO | the surface is created by video. |
+| OH_SURFACE_SOURCE_DEFAULT = 0 | 窗口内容默认来源。 |
+| OH_SURFACE_SOURCE_UI | 窗口内容来自于UI。 |
+| OH_SURFACE_SOURCE_GAME | 窗口内容来自于游戏。 |
+| OH_SURFACE_SOURCE_CAMERA | 窗口内容来自于相机。 |
+| OH_SURFACE_SOURCE_VIDEO | 窗口内容来自于视频。 |
 
 
 ## 函数说明

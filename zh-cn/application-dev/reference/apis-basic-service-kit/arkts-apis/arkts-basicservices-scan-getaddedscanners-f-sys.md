@@ -8,9 +8,11 @@ function getAddedScanners(): Promise<ScannerDevice[]>
 
 获取已添加的扫描仪（系统API）。使用Promise异步回调。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -24,7 +26,7 @@ function getAddedScanners(): Promise<ScannerDevice[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;ScannerDevice[]&gt; | Promise used to return the array of added scanners. |
+| Promise&lt;[ScannerDevice](arkts-basicservices-scan-scannerdevice-i.md)[]&gt; | Promise used to return the array of added scanners. |
 
 **错误码：**
 
@@ -33,7 +35,7 @@ function getAddedScanners(): Promise<ScannerDevice[]>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { scan } from '@kit.BasicServicesKit';

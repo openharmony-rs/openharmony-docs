@@ -1,22 +1,24 @@
 # SaveRequest
 
 ```TypeScript
-export type SaveRequest = _AutoFillRequest.SaveRequest
+export type SaveRequest = _SaveRequest
 ```
 
 自动保存的请求信息。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
-<!--Device-autoFillManager-export type SaveRequest = _AutoFillRequest.SaveRequest--><!--Device-autoFillManager-export type SaveRequest = _AutoFillRequest.SaveRequest-End-->
+<!--Device-autoFillManager-export type SaveRequest = _SaveRequest--><!--Device-autoFillManager-export type SaveRequest = _SaveRequest-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-**属性类型：** _AutoFillRequest.SaveRequest
+**属性类型：** _SaveRequest
 

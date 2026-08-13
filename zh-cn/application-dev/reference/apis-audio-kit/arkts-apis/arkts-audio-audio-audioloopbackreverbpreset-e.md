@@ -2,9 +2,11 @@
 
 表示返听混响模式的枚举。
 
-**起始版本：** 21
+**起始版本：** 24
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 <!--Device-audio-enum AudioLoopbackReverbPreset--><!--Device-audio-enum AudioLoopbackReverbPreset-End-->
 
@@ -18,9 +20,11 @@ ORIGINAL = 1
 
 保持原始混响，不进行任何增强。
 
-**起始版本：** 21
+**起始版本：** 24
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 <!--Device-AudioLoopbackReverbPreset-ORIGINAL = 1--><!--Device-AudioLoopbackReverbPreset-ORIGINAL = 1-End-->
 
@@ -34,9 +38,11 @@ KTV = 2
 
 提供类似KTV的混响效果。
 
-**起始版本：** 21
+**起始版本：** 24
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 <!--Device-AudioLoopbackReverbPreset-KTV = 2--><!--Device-AudioLoopbackReverbPreset-KTV = 2-End-->
 
@@ -50,9 +56,11 @@ THEATER = 3
 
 提供类似剧场的混响效果（默认的混响模式）。
 
-**起始版本：** 21
+**起始版本：** 24
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 <!--Device-AudioLoopbackReverbPreset-THEATER = 3--><!--Device-AudioLoopbackReverbPreset-THEATER = 3-End-->
 
@@ -66,9 +74,11 @@ CONCERT = 4
 
 提供类似演唱会的混响效果。
 
-**起始版本：** 21
+**起始版本：** 24
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 <!--Device-AudioLoopbackReverbPreset-CONCERT = 4--><!--Device-AudioLoopbackReverbPreset-CONCERT = 4-End-->
 

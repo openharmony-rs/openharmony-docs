@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.reminderAgentManager:reminderAgentManager.ReminderRequest](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md)
+**替代接口：** [ReminderRequest](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#ReminderRequest)
 
 <!--Device-reminderAgent-interface ReminderRequest--><!--Device-reminderAgent-interface ReminderRequest-End-->
 
@@ -30,7 +30,7 @@ actionButton?: [ActionButton?, ActionButton?]
 
 **废弃版本：** 9
 
-**替代接口：** [reminderAgentManager.ReminderRequest.actionButton](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#actionbutton)
+**替代接口：** actionButton
 
 <!--Device-ReminderRequest-actionButton?: [ActionButton?, ActionButton?]--><!--Device-ReminderRequest-actionButton?: [ActionButton?, ActionButton?]-End-->
 
@@ -52,7 +52,7 @@ content?: string
 
 **废弃版本：** 9
 
-**替代接口：** [reminderAgentManager.ReminderRequest.content](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#content)
+**替代接口：** content
 
 <!--Device-ReminderRequest-content?: string--><!--Device-ReminderRequest-content?: string-End-->
 
@@ -74,7 +74,7 @@ expiredContent?: string
 
 **废弃版本：** 9
 
-**替代接口：** [reminderAgentManager.ReminderRequest.expiredContent](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#expiredcontent)
+**替代接口：** expiredContent
 
 <!--Device-ReminderRequest-expiredContent?: string--><!--Device-ReminderRequest-expiredContent?: string-End-->
 
@@ -96,7 +96,7 @@ maxScreenWantAgent?: MaxScreenWantAgent
 
 **废弃版本：** 9
 
-**替代接口：** [reminderAgentManager.ReminderRequest.maxScreenWantAgent](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#maxscreenwantagent)
+**替代接口：** maxScreenWantAgent
 
 <!--Device-ReminderRequest-maxScreenWantAgent?: MaxScreenWantAgent--><!--Device-ReminderRequest-maxScreenWantAgent?: MaxScreenWantAgent-End-->
 
@@ -118,7 +118,7 @@ notificationId?: number
 
 **废弃版本：** 9
 
-**替代接口：** [reminderAgentManager.ReminderRequest.notificationId](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#notificationid)
+**替代接口：** notificationId
 
 <!--Device-ReminderRequest-notificationId?: number--><!--Device-ReminderRequest-notificationId?: number-End-->
 
@@ -140,7 +140,7 @@ reminderType: ReminderType
 
 **废弃版本：** 9
 
-**替代接口：** [reminderAgentManager.ReminderRequest.reminderType](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#remindertype)
+**替代接口：** reminderType
 
 <!--Device-ReminderRequest-reminderType: ReminderType--><!--Device-ReminderRequest-reminderType: ReminderType-End-->
 
@@ -162,7 +162,7 @@ ringDuration?: number
 
 **废弃版本：** 9
 
-**替代接口：** [reminderAgentManager.ReminderRequest.ringDuration](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#ringduration)
+**替代接口：** ringDuration
 
 <!--Device-ReminderRequest-ringDuration?: number--><!--Device-ReminderRequest-ringDuration?: number-End-->
 
@@ -184,7 +184,7 @@ slotType?: notification.SlotType
 
 **废弃版本：** 9
 
-**替代接口：** [reminderAgentManager.ReminderRequest.slotType](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#slottype)
+**替代接口：** slotType
 
 <!--Device-ReminderRequest-slotType?: notification.SlotType--><!--Device-ReminderRequest-slotType?: notification.SlotType-End-->
 
@@ -206,7 +206,7 @@ snoozeContent?: string
 
 **废弃版本：** 9
 
-**替代接口：** [reminderAgentManager.ReminderRequest.snoozeContent](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#snoozecontent)
+**替代接口：** snoozeContent
 
 <!--Device-ReminderRequest-snoozeContent?: string--><!--Device-ReminderRequest-snoozeContent?: string-End-->
 
@@ -228,7 +228,7 @@ snoozeTimes?: number
 
 **废弃版本：** 9
 
-**替代接口：** [reminderAgentManager.ReminderRequest.snoozeTimes](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#snoozetimes)
+**替代接口：** snoozeTimes
 
 <!--Device-ReminderRequest-snoozeTimes?: number--><!--Device-ReminderRequest-snoozeTimes?: number-End-->
 
@@ -250,7 +250,7 @@ timeInterval?: number
 
 **废弃版本：** 9
 
-**替代接口：** [reminderAgentManager.ReminderRequest.timeInterval](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#timeinterval)
+**替代接口：** timeInterval
 
 <!--Device-ReminderRequest-timeInterval?: number--><!--Device-ReminderRequest-timeInterval?: number-End-->
 
@@ -272,7 +272,7 @@ title?: string
 
 **废弃版本：** 9
 
-**替代接口：** [reminderAgentManager.ReminderRequest.title](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#title)
+**替代接口：** title
 
 <!--Device-ReminderRequest-title?: string--><!--Device-ReminderRequest-title?: string-End-->
 
@@ -294,7 +294,7 @@ wantAgent?: WantAgent
 
 **废弃版本：** 9
 
-**替代接口：** [reminderAgentManager.ReminderRequest.wantAgent](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#wantagent)
+**替代接口：** wantAgent
 
 <!--Device-ReminderRequest-wantAgent?: WantAgent--><!--Device-ReminderRequest-wantAgent?: WantAgent-End-->
 

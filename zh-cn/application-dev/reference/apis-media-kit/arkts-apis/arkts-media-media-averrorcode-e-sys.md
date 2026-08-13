@@ -1,10 +1,12 @@
 # AVErrorCode
 
-\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_类型枚举。
+[Media错误码](../errorcode-media.md)类型枚举。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-media-enum AVErrorCode--><!--Device-media-enum AVErrorCode-End-->
 
@@ -18,9 +20,11 @@ AVERR_SESSION_NOT_EXIST = 5400109
 
 The parameter value means session does not exist
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AVErrorCode-AVERR_SESSION_NOT_EXIST = 5400109--><!--Device-AVErrorCode-AVERR_SESSION_NOT_EXIST = 5400109-End-->
 

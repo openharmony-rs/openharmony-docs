@@ -2,9 +2,11 @@
 
 Describes the accuracy of depth data.
 
-**起始版本：** 13
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为13；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-camera-enum DepthDataAccuracy--><!--Device-camera-enum DepthDataAccuracy-End-->
 
@@ -20,9 +22,11 @@ DEPTH_DATA_ACCURACY_RELATIVE = 0
 
 Relative accuracy, which is the depth map calculated based on the disparity.
 
-**起始版本：** 13
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为13；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DepthDataAccuracy-DEPTH_DATA_ACCURACY_RELATIVE = 0--><!--Device-DepthDataAccuracy-DEPTH_DATA_ACCURACY_RELATIVE = 0-End-->
 
@@ -38,9 +42,11 @@ DEPTH_DATA_ACCURACY_ABSOLUTE = 1
 
 Absolute accuracy, which is the depth map calculated from distance measurement.
 
-**起始版本：** 13
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为13；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DepthDataAccuracy-DEPTH_DATA_ACCURACY_ABSOLUTE = 1--><!--Device-DepthDataAccuracy-DEPTH_DATA_ACCURACY_ABSOLUTE = 1-End-->
 

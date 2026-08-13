@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 <!--Device-bundleManager-export enum AbilityType--><!--Device-bundleManager-export enum AbilityType-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -22,6 +24,8 @@ UI界面类型的Ability。表示基于Page模板开发的FA，用于提供与�
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在FA模型下使用。
 
 <!--Device-AbilityType-PAGE = 1--><!--Device-AbilityType-PAGE = 1-End-->
@@ -34,11 +38,13 @@ UI界面类型的Ability。表示基于Page模板开发的FA，用于提供与�
 SERVICE = 2
 ```
 
-后台服务类型的Ability，无UI界面。表示基于Service模板开发的[ParticleAbility]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_，用于提供后 台运行任务的能力，例如后台下载或者播放音乐。
+后台服务类型的Ability，无UI界面。表示基于Service模板开发的[ParticleAbility](arkts-ability-particleability.md#@ohos.ability.particleAbility)，用于提供后 台运行任务的能力，例如后台下载或者播放音乐。
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -52,11 +58,13 @@ SERVICE = 2
 DATA = 3
 ```
 
-表示基于Data模板开发的[ParticleAbility]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_，用于对外部提供统一的数据访问对象。
+表示基于Data模板开发的[ParticleAbility](arkts-ability-particleability.md#@ohos.ability.particleAbility)，用于对外部提供统一的数据访问对象。
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在FA模型下使用。
 

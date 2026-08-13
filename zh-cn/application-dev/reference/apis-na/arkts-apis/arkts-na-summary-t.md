@@ -10,6 +10,8 @@ Import the Summary type object for ui component.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-export type Summary = unifiedDataChannel.Summary--><!--Device-unnamed-export type Summary = unifiedDataChannel.Summary-End-->

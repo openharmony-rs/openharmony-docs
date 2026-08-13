@@ -2,9 +2,11 @@
 
 表示音频错误码的枚举。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-audio-enum AudioErrors--><!--Device-audio-enum AudioErrors-End-->
 
@@ -18,9 +20,11 @@ ERROR_INVALID_PARAM = 6800101
 
 无效入参。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioErrors-ERROR_INVALID_PARAM = 6800101--><!--Device-AudioErrors-ERROR_INVALID_PARAM = 6800101-End-->
 
@@ -34,9 +38,11 @@ ERROR_NO_MEMORY = 6800102
 
 分配内存失败。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioErrors-ERROR_NO_MEMORY = 6800102--><!--Device-AudioErrors-ERROR_NO_MEMORY = 6800102-End-->
 
@@ -50,9 +56,11 @@ ERROR_ILLEGAL_STATE = 6800103
 
 状态不支持。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioErrors-ERROR_ILLEGAL_STATE = 6800103--><!--Device-AudioErrors-ERROR_ILLEGAL_STATE = 6800103-End-->
 
@@ -66,9 +74,11 @@ ERROR_UNSUPPORTED = 6800104
 
 参数选项不支持。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioErrors-ERROR_UNSUPPORTED = 6800104--><!--Device-AudioErrors-ERROR_UNSUPPORTED = 6800104-End-->
 
@@ -82,9 +92,11 @@ ERROR_TIMEOUT       = 6800105
 
 处理超时。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioErrors-ERROR_TIMEOUT       = 6800105--><!--Device-AudioErrors-ERROR_TIMEOUT       = 6800105-End-->
 
@@ -98,9 +110,11 @@ ERROR_STREAM_LIMIT  = 6800201
 
 音频流数量达到限制。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioErrors-ERROR_STREAM_LIMIT  = 6800201--><!--Device-AudioErrors-ERROR_STREAM_LIMIT  = 6800201-End-->
 
@@ -114,9 +128,11 @@ ERROR_SYSTEM = 6800301
 
 系统处理异常。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioErrors-ERROR_SYSTEM = 6800301--><!--Device-AudioErrors-ERROR_SYSTEM = 6800301-End-->
 

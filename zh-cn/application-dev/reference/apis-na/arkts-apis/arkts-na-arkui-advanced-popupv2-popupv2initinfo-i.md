@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-export interface PopupV2InitInfo--><!--Device-unnamed-export interface PopupV2InitInfo-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -23,6 +25,8 @@ buttons?: [PopupV2Button | undefined, PopupV2Button | undefined]
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,6 +50,8 @@ direction?: Direction
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PopupV2InitInfo-direction?: Direction--><!--Device-PopupV2InitInfo-direction?: Direction-End-->
@@ -66,6 +72,8 @@ icon?: ResourceStr
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PopupV2InitInfo-icon?: ResourceStr--><!--Device-PopupV2InitInfo-icon?: ResourceStr-End-->
@@ -80,11 +88,13 @@ iconModifier?: ImageModifier
 
 设置图标属性，如图标颜色、大小、边框等。 默认值：undefined，使用系统图标属性。
 
-**类型：** ImageModifier
+**类型：** [ImageModifier](../../apis-arkui/arkts-components/arkts-arkui-imagemodifier-t.md)
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -98,7 +108,7 @@ iconModifier?: ImageModifier
 maxWidth?: Dimension
 ```
 
-设置PopupV2的最大宽度，通过此接口PopupV2可以自定义宽度显示。 默认值：400vp **说明：** 1. 在使用引用资源类型时，规定其参数类型要与属性方法本身类型一致。 2. maxWidth是数字类型，支持float和整型，例如\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_、\_\_\_INLINE\_CODE\_DESC\_USD\_1\_\_\_。 3. 当类型为Resource时，如果未设置单位，默认单位为px。
+设置PopupV2的最大宽度，通过此接口PopupV2可以自定义宽度显示。 默认值：400vp **说明：** 1. 在使用引用资源类型时，规定其参数类型要与属性方法本身类型一致。 2. maxWidth是数字类型，支持float和整型，例如`\$r('app.float.maxWidth')`、`\$r('app.integer.maxWidth')`。 3. 当类型为Resource时，如果未设置单位，默认单位为px。
 
 **类型：** Dimension
 
@@ -107,6 +117,8 @@ maxWidth?: Dimension
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -128,6 +140,8 @@ message: ResourceStr
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PopupV2InitInfo-message: ResourceStr--><!--Device-PopupV2InitInfo-message: ResourceStr-End-->
@@ -148,6 +162,8 @@ messageModifier?: TextModifier
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PopupV2InitInfo-messageModifier?: TextModifier--><!--Device-PopupV2InitInfo-messageModifier?: TextModifier-End-->
@@ -167,6 +183,8 @@ onClose?: VoidCallback
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -190,6 +208,8 @@ showClose?: boolean | Resource
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PopupV2InitInfo-showClose?: boolean | Resource--><!--Device-PopupV2InitInfo-showClose?: boolean | Resource-End-->
@@ -210,6 +230,8 @@ title?: ResourceStr
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PopupV2InitInfo-title?: ResourceStr--><!--Device-PopupV2InitInfo-title?: ResourceStr-End-->
@@ -229,6 +251,8 @@ titleModifier?: TextModifier
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

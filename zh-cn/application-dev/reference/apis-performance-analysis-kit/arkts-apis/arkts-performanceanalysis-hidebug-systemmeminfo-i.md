@@ -1,10 +1,12 @@
 # SystemMemInfo
 
-����ϵͳ�ڴ���Ϣ���������ڴ桢�����ڴ�Ϳ����ڴ档
+描述系统内存信息，包括总内存、空闲内存和可用内存。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-hidebug-interface SystemMemInfo--><!--Device-hidebug-interface SystemMemInfo-End-->
 
@@ -16,13 +18,15 @@
 availableMem: bigint
 ```
 
-ϵͳ���õ��ڴ棬��KBΪ��λ�����㷽ʽ��/proc/meminfo: MemAvailable��
+系统可用的内存，以KB为单位，计算方式：/proc/meminfo: MemAvailable。
 
 **类型：** bigint
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SystemMemInfo-availableMem: bigint--><!--Device-SystemMemInfo-availableMem: bigint-End-->
 
@@ -34,13 +38,15 @@ availableMem: bigint
 freeMem: bigint
 ```
 
-ϵͳ���е��ڴ棬��KBΪ��λ�����㷽ʽ��/proc/meminfo: MemFree��
+系统空闲的内存，以KB为单位，计算方式：/proc/meminfo: MemFree。
 
 **类型：** bigint
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SystemMemInfo-freeMem: bigint--><!--Device-SystemMemInfo-freeMem: bigint-End-->
 
@@ -52,13 +58,15 @@ freeMem: bigint
 totalMem: bigint
 ```
 
-ϵͳ�ܵ��ڴ棬��KBΪ��λ�����㷽ʽ��/proc/meminfo: MemTotal��
+系统总的内存，以KB为单位，计算方式：/proc/meminfo: MemTotal。
 
 **类型：** bigint
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SystemMemInfo-totalMem: bigint--><!--Device-SystemMemInfo-totalMem: bigint-End-->
 

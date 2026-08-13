@@ -2,9 +2,11 @@
 
 TabContent页面的切换信息。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-uiObserver-export interface TabContentInfo--><!--Device-uiObserver-export interface TabContentInfo-End-->
 
@@ -20,11 +22,15 @@ Tabs组件的id。
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TabContentInfo-id: string--><!--Device-TabContentInfo-id: string-End-->
 
@@ -33,40 +39,48 @@ Tabs组件的id。
 ## index
 
 ```TypeScript
-index: int
+index: number
 ```
 
-TabContent组件的下标索引。索引从0开始。 取值限定为整数。
+TabContent组件的下标索引。索引从0开始。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-TabContentInfo-index: int--><!--Device-TabContentInfo-index: int-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TabContentInfo-index: number--><!--Device-TabContentInfo-index: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## lastIndex
 
 ```TypeScript
-lastIndex?: int
+lastIndex?: number
 ```
 
-Tabs组件的lastIndex。 取值限定为整数。
+最近一次聚焦的TabsContent组件的下标索引。索引从0开始。仅在 [on('tabChange')](arkts-arkui-arkui-uicontext-uiobserver-c.md#on_navDestinationUpdate)的回调函数中存在。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-TabContentInfo-lastIndex?: int--><!--Device-TabContentInfo-lastIndex?: int-End-->
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TabContentInfo-lastIndex?: number--><!--Device-TabContentInfo-lastIndex?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,13 +92,17 @@ state: TabContentState
 
 TabContent组件的状态。
 
-**类型：** TabContentState
+**类型：** [TabContentState](arkts-arkui-uiobserver-tabcontentstate-e.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TabContentInfo-state: TabContentState--><!--Device-TabContentInfo-state: TabContentState-End-->
 
@@ -96,15 +114,19 @@ TabContent组件的状态。
 tabContentId: string
 ```
 
-TabContent组件的id。
+TabContent id.
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TabContentInfo-tabContentId: string--><!--Device-TabContentInfo-tabContentId: string-End-->
 
@@ -113,40 +135,48 @@ TabContent组件的id。
 ## tabContentUniqueId
 
 ```TypeScript
-tabContentUniqueId: int
+tabContentUniqueId: number
 ```
 
-TabContent组件的uniqueId。 取值限定为整数。
+TabContent uniqueId.
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-TabContentInfo-tabContentUniqueId: int--><!--Device-TabContentInfo-tabContentUniqueId: int-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TabContentInfo-tabContentUniqueId: number--><!--Device-TabContentInfo-tabContentUniqueId: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## uniqueId
 
 ```TypeScript
-uniqueId: int
+uniqueId: number
 ```
 
-Tabs组件的uniqueId。 取值限定为整数。
+Tabs组件的uniqueId。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-TabContentInfo-uniqueId: int--><!--Device-TabContentInfo-uniqueId: int-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TabContentInfo-uniqueId: number--><!--Device-TabContentInfo-uniqueId: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

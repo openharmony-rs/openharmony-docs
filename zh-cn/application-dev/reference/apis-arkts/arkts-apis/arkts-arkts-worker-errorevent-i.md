@@ -2,13 +2,15 @@
 
 错误事件类用于表示Worker执行过程中出现异常的详细信息，ErrorEvent类继承Event。
 
-**继承/实现关系：** ErrorEvent extends [Event](arkts-arkts-worker-event-i.md)
+**继承/实现关系：** ErrorEvent extends [Event](arkts-arkts-worker-event-i.md#Event)
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
-<!--Device-unnamed-export interface ErrorEvent extends Event--><!--Device-unnamed-export interface ErrorEvent extends Event-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-export interface ErrorEvent--><!--Device-unnamed-export interface ErrorEvent-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -26,6 +28,8 @@ readonly colno: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ErrorEvent-readonly colno: number--><!--Device-ErrorEvent-readonly colno: number-End-->
@@ -38,13 +42,15 @@ readonly colno: number
 readonly error: Object
 ```
 
-异常类型。
+异常对象。
 
 **类型：** Object
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -66,6 +72,8 @@ readonly filename: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ErrorEvent-readonly filename: string--><!--Device-ErrorEvent-readonly filename: string-End-->
@@ -86,6 +94,8 @@ readonly lineno: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ErrorEvent-readonly lineno: number--><!--Device-ErrorEvent-readonly lineno: number-End-->
@@ -105,6 +115,8 @@ readonly message: string
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

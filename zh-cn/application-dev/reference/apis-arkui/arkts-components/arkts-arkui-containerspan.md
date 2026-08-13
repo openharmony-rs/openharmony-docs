@@ -1,8 +1,8 @@
 # ContainerSpan
 
-[Text]{@link ./text}组件的子组件，用于统一管理多个[Span]{@link ./span}、[ImageSpan]{@link ./image_span}的背景色及圆角弧度，适用于需要为文本片段和图片组合设置统一背 景样式的场景。
+Text组件的子组件，用于统一管理多个Span、ImageSpan的背景色及圆角弧度，适用于需要为文本片段和图片组合设置统一背 景样式的场景。
 
-## 子组件 可以包含[Span]{@link ./span}、[ImageSpan]{@link ./image_span} 子组件。
+## 子组件 可以包含Span、ImageSpan 子组件。
 
 ## ContainerSpan
 
@@ -15,6 +15,8 @@ ContainerSpan()
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

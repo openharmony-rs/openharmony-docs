@@ -1,96 +1,82 @@
 # GyroscopeResponse
 
-陀螺仪传感器数据变化后的回调函数的响应对象，包含设备在x、y、z三轴方向的旋转角速度数据。
+陀螺仪传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md#Response)。
 
-**起始版本：** 6
+**继承/实现关系：** GyroscopeResponse extends [Response](arkts-sensorservice-sensor-response-i.md#Response)
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**起始版本：** 23
 
-**废弃版本：** 8
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**替代接口：** ohos.sensor/sensor#GyroscopeResponse
+**废弃版本：** -1
 
-**需要权限：** ohos.permission.GYROSCOPE
+<!--Device-sensor-interface GyroscopeResponse--><!--Device-sensor-interface GyroscopeResponse-End-->
 
-<!--Device-unnamed-export interface GyroscopeResponse--><!--Device-unnamed-export interface GyroscopeResponse-End-->
-
-**系统能力：** SystemCapability.Sensors.Sensor.Lite
+**系统能力：** SystemCapability.Sensors.Sensor
 
 ## x
 
 ```TypeScript
-x: number
+x: double
 ```
 
-x轴的旋转角速度。单位：rad/s。取值范围：取值为实际上报物理量，由硬件传感器决定。
+设备x轴方向的旋转角速度。单位：rad/s（弧度/秒）；取值为实际上报物理量。
 
-**类型：** number
+**类型：** double
 
-**起始版本：** 6
+**起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**废弃版本：** 8
+**废弃版本：** -1
 
-**替代接口：** ohos.sensor/sensor#GyroscopeResponse.x
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-**需要权限：** ohos.permission.GYROSCOPE
+<!--Device-GyroscopeResponse-x: double--><!--Device-GyroscopeResponse-x: double-End-->
 
-**模型约束：** 此接口仅可在FA模型下使用。
-
-<!--Device-GyroscopeResponse-x: number--><!--Device-GyroscopeResponse-x: number-End-->
-
-**系统能力：** SystemCapability.Sensors.Sensor.Lite
+**系统能力：** SystemCapability.Sensors.Sensor
 
 ## y
 
 ```TypeScript
-y: number
+y: double
 ```
 
-y轴的旋转角速度。单位：rad/s。取值范围：取值为实际上报物理量，由硬件传感器决定。
+设备y轴方向的旋转角速度。单位：rad/s（弧度/秒）；取值为实际上报物理量。
 
-**类型：** number
+**类型：** double
 
-**起始版本：** 6
+**起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**废弃版本：** 8
+**废弃版本：** -1
 
-**替代接口：** ohos.sensor/sensor#GyroscopeResponse.y
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-**需要权限：** ohos.permission.GYROSCOPE
+<!--Device-GyroscopeResponse-y: double--><!--Device-GyroscopeResponse-y: double-End-->
 
-**模型约束：** 此接口仅可在FA模型下使用。
-
-<!--Device-GyroscopeResponse-y: number--><!--Device-GyroscopeResponse-y: number-End-->
-
-**系统能力：** SystemCapability.Sensors.Sensor.Lite
+**系统能力：** SystemCapability.Sensors.Sensor
 
 ## z
 
 ```TypeScript
-z: number
+z: double
 ```
 
-z轴的旋转角速度。单位：rad/s。取值范围：取值为实际上报物理量，由硬件传感器决定。
+设备z轴方向的旋转角速度。单位：rad/s（弧度/秒）；取值为实际上报物理量。
 
-**类型：** number
+**类型：** double
 
-**起始版本：** 6
+**起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**废弃版本：** 8
+**废弃版本：** -1
 
-**替代接口：** ohos.sensor/sensor#GyroscopeResponse.z
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-**需要权限：** ohos.permission.GYROSCOPE
+<!--Device-GyroscopeResponse-z: double--><!--Device-GyroscopeResponse-z: double-End-->
 
-**模型约束：** 此接口仅可在FA模型下使用。
-
-<!--Device-GyroscopeResponse-z: number--><!--Device-GyroscopeResponse-z: number-End-->
-
-**系统能力：** SystemCapability.Sensors.Sensor.Lite
+**系统能力：** SystemCapability.Sensors.Sensor
 

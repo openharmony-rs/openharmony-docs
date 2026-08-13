@@ -2,9 +2,11 @@
 
 枚举，设备所支持的解码格式。
 
-**起始版本：** 19
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为19；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-avSession-enum DecoderType--><!--Device-avSession-enum DecoderType-End-->
 
@@ -18,11 +20,13 @@ OH_AVCODEC_MIMETYPE_VIDEO_AVC = 'video/avc'
 
 Defination of avc codec type.
 
-**起始版本：** 19
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为19；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-DecoderType-OH_AVCODEC_MIMETYPE_VIDEO_AVC = 'video/avc'--><!--Device-DecoderType-OH_AVCODEC_MIMETYPE_VIDEO_AVC = 'video/avc'-End-->
 
@@ -36,11 +40,13 @@ OH_AVCODEC_MIMETYPE_VIDEO_HEVC = 'video/hevc'
 
 Defination of hevc codec type.
 
-**起始版本：** 19
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为19；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-DecoderType-OH_AVCODEC_MIMETYPE_VIDEO_HEVC = 'video/hevc'--><!--Device-DecoderType-OH_AVCODEC_MIMETYPE_VIDEO_HEVC = 'video/hevc'-End-->
 
@@ -54,11 +60,13 @@ OH_AVCODEC_MIMETYPE_AUDIO_VIVID = 'audio/av3a'
 
 Defination of audio vivid codec type.
 
-**起始版本：** 19
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为19；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-DecoderType-OH_AVCODEC_MIMETYPE_AUDIO_VIVID = 'audio/av3a'--><!--Device-DecoderType-OH_AVCODEC_MIMETYPE_AUDIO_VIVID = 'audio/av3a'-End-->
 

@@ -8,9 +8,11 @@ function installFont(path: string): Promise<int>
 
 将指定路径下的字体文件安装到系统字体库中。使用Promise异步回调。 安装成功后，应用可以通过字体名称使用该字体。
 
-**起始版本：** 19
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为19；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.UPDATE_FONT
 
@@ -30,18 +32,18 @@ function installFont(path: string): Promise<int>
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: Promise&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：Promise&lt;int&gt; | Promise对象，返回安装结果。 |
+| Promise&lt;int&gt; | Promise对象，返回安装结果。 &lt;br&gt;- 返回0：安装成功，字体已添加到系统字体库。 &lt;br&gt;- 返回其他值：安装失败，请根据错误码排查原因。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system application. |
-| [31100101](../errorcode-font-manager.md#31100101-字体文件不存在) | Font does not exist. |
-| [31100102](../errorcode-font-manager.md#31100102-字体文件不支持安装) | Font is not supported. |
-| [31100103](../errorcode-font-manager.md#31100103-字体文件拷贝失败) | Font file copy failed. |
-| [31100104](../errorcode-font-manager.md#31100104-字体文件已安装) | Font file installed. |
-| [31100105](../errorcode-font-manager.md#31100105-已安装字体文件超过最大数量) | Exceeded maximum number of installed files. |
-| [31100106](../errorcode-font-manager.md#31100106-其他错误导致安装失败) | Other error. |
+| [31100106](../errorcode-font-manager.md#31100106-其他错误导致安装失败) | The system ability works abnormally. |
+| [31100104](../errorcode-font-manager.md#31100104-字体文件已安装) | The font file is installed. |
+| [31100105](../errorcode-font-manager.md#31100105-已安装字体文件超过最大数量) | Exceeded the maximum number of installed files. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [31100102](../errorcode-font-manager.md#31100102-字体文件不支持安装) | The font is not supported. |
+| [31100103](../errorcode-font-manager.md#31100103-字体文件拷贝失败) | Failed to copy the font file. |
+| [31100101](../errorcode-font-manager.md#31100101-字体文件不存在) | The font does not exist. |
 

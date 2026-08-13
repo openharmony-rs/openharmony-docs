@@ -8,9 +8,11 @@ function getUserDocumentDir(): string
 
 获取当前用户预授权文档目录的沙箱路径。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** 
 - API版本11：ohos.permission.READ_WRITE_DOCUMENTS_DIRECTORY
@@ -29,11 +31,11 @@ function getUserDocumentDir(): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 11+ |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken.<br>**适用版本：** 11+ |
 | 13900042 | Unknown error. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

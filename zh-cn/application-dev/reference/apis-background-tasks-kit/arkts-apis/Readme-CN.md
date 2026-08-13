@@ -114,11 +114,15 @@
   - [getTransientTaskInfo](arkts-backgroundtasks-backgroundtaskmanager-gettransienttaskinfo-f.md)
   <!--Del-->
   - [obtainAllContinuousTasks(系统接口)](arkts-backgroundtasks-backgroundtaskmanager-obtainallcontinuoustasks-f-sys.md)<!--DelEnd-->
-  - [off](arkts-backgroundtasks-backgroundtaskmanager-off-f.md)
+  - [off_continuousTaskActive](arkts-backgroundtasks-backgroundtaskmanager-offcontinuoustaskactive-f.md)
+  - [off_continuousTaskCancel](arkts-backgroundtasks-backgroundtaskmanager-offcontinuoustaskcancel-f.md)
+  - [off_continuousTaskSuspend](arkts-backgroundtasks-backgroundtaskmanager-offcontinuoustasksuspend-f.md)
   - [offContinuousTaskActive](arkts-backgroundtasks-backgroundtaskmanager-offcontinuoustaskactive-f.md)
   - [offContinuousTaskCancel](arkts-backgroundtasks-backgroundtaskmanager-offcontinuoustaskcancel-f.md)
   - [offContinuousTaskSuspend](arkts-backgroundtasks-backgroundtaskmanager-offcontinuoustasksuspend-f.md)
-  - [on](arkts-backgroundtasks-backgroundtaskmanager-on-f.md)
+  - [on_continuousTaskActive](arkts-backgroundtasks-backgroundtaskmanager-oncontinuoustaskactive-f.md)
+  - [on_continuousTaskCancel](arkts-backgroundtasks-backgroundtaskmanager-oncontinuoustaskcancel-f.md)
+  - [on_continuousTaskSuspend](arkts-backgroundtasks-backgroundtaskmanager-oncontinuoustasksuspend-f.md)
   - [onContinuousTaskActive](arkts-backgroundtasks-backgroundtaskmanager-oncontinuoustaskactive-f.md)
   - [onContinuousTaskCancel](arkts-backgroundtasks-backgroundtaskmanager-oncontinuoustaskcancel-f.md)
   - [onContinuousTaskSuspend](arkts-backgroundtasks-backgroundtaskmanager-oncontinuoustasksuspend-f.md)
@@ -171,6 +175,19 @@
   <!--Del-->
   - [ResourceType(系统接口)](arkts-backgroundtasks-backgroundtaskmanager-resourcetype-e-sys.md)<!--DelEnd-->
   - [UserAuthResult](arkts-backgroundtasks-backgroundtaskmanager-userauthresult-e.md)
+- [@ohos.resourceschedule.deviceStandby](arkts-resourceschedule-devicestandby.md)
+  <!--Del-->
+  - [getExemptedApps(系统接口)](arkts-backgroundtasks-devicestandby-getexemptedapps-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [releaseExemptionResource(系统接口)](arkts-backgroundtasks-devicestandby-releaseexemptionresource-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [requestExemptionResource(系统接口)](arkts-backgroundtasks-devicestandby-requestexemptionresource-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [ExemptedAppInfo(系统接口)](arkts-backgroundtasks-devicestandby-exemptedappinfo-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [ResourceRequest(系统接口)](arkts-backgroundtasks-devicestandby-resourcerequest-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [ResourceType(系统接口)](arkts-backgroundtasks-devicestandby-resourcetype-e-sys.md)<!--DelEnd-->
 - [@ohos.resourceschedule.usageStatistics](arkts-resourceschedule-usagestatistics.md)
   <!--Del-->
   - [isIdleState(系统接口)](arkts-backgroundtasks-usagestatistics-isidlestate-f-sys.md)<!--DelEnd-->
@@ -239,6 +256,6 @@
   <!--Del-->
   - [常量(系统接口)](arkts-backgroundtasks-workscheduler-con-sys.md)<!--DelEnd-->
 - application<!--arkts-backgroundtaskskit-application-->
-  - [application/WorkSchedulerExtensionContext](arkts-application/workschedulerextensioncontext.md)
+  - [WorkSchedulerExtensionContext](arkts-workschedulerextensioncontext.md)
     <!--Del-->
-    - [WorkSchedulerExtensionContext(系统接口)](workschedulerextensioncontext-workschedulerextensioncontext-c-sys.md)<!--DelEnd-->
+    - [WorkSchedulerExtensionContext(系统接口)](arkts-backgroundtasks-workschedulerextensioncontext-c-sys.md)<!--DelEnd-->

@@ -2,9 +2,11 @@
 
 增量数据中的清单文件信息，用于描述应用增量备份、恢复时对应文件的基础信息。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-backup-interface FileManifestData--><!--Device-backup-interface FileManifestData-End-->
 
@@ -22,9 +24,11 @@ manifestFd: int
 
 **类型：** int
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FileManifestData-manifestFd: int--><!--Device-FileManifestData-manifestFd: int-End-->
 

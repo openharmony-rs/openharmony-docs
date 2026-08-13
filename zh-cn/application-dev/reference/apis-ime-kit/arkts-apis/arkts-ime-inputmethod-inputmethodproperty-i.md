@@ -2,9 +2,11 @@
 
 输入法应用属性。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-inputMethod-interface InputMethodProperty--><!--Device-inputMethod-interface InputMethodProperty-End-->
 
@@ -16,13 +18,15 @@
 readonly enabledState?: EnabledState
 ```
 
-非必填。 - 当InputMethodProperty用于切换、查询等接口的入参时，开发者可不填写此字段，通过name和id即可唯一指定一个输入法扩展 - 当InputMethodProperty作为查询接口的返回值时（如[getCurrentInputMethod]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_），此字段表示该输入法启用状 态。
+非必填。 - 当InputMethodProperty用于切换、查询等接口的入参时，开发者可不填写此字段，通过name和id即可唯一指定一个输入法扩展 - 当InputMethodProperty作为查询接口的返回值时（如[getCurrentInputMethod](arkts-ime-inputmethod-getcurrentinputmethod-f.md#getCurrentInputMethod)），此字段表示该输入法启用状 态。
 
-**类型：** EnabledState
+**类型：** [EnabledState](arkts-ime-inputmethod-enabledstate-e.md)
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-InputMethodProperty-readonly enabledState?: EnabledState--><!--Device-InputMethodProperty-readonly enabledState?: EnabledState-End-->
 
@@ -38,9 +42,11 @@ extra?: object
 
 **类型：** object
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-InputMethodProperty-extra?: object--><!--Device-InputMethodProperty-extra?: object-End-->
 
@@ -52,13 +58,15 @@ extra?: object
 readonly icon?: string
 ```
 
-非必填。 - 当InputMethodProperty用于切换、查询等接口的入参时，开发者可不填写此字段，通过name和id即可唯一指定一个输入法扩展。 - 当InputMethodProperty作为查询接口的返回值时（如[getCurrentInputMethod]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_），此字段表示输入法图标数 据，可以通过iconId查询获取。
+非必填。 - 当InputMethodProperty用于切换、查询等接口的入参时，开发者可不填写此字段，通过name和id即可唯一指定一个输入法扩展。 - 当InputMethodProperty作为查询接口的返回值时（如[getCurrentInputMethod](arkts-ime-inputmethod-getcurrentinputmethod-f.md#getCurrentInputMethod)），此字段表示输入法图标数 据，可以通过iconId查询获取。
 
 **类型：** string
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-InputMethodProperty-readonly icon?: string--><!--Device-InputMethodProperty-readonly icon?: string-End-->
 
@@ -70,13 +78,15 @@ readonly icon?: string
 readonly iconId?: long
 ```
 
-非必填。 - 当InputMethodProperty用于切换、查询等接口的入参时，开发者可不填写此字段，通过name和id即可唯一指定一个输入法扩展。 - 当InputMethodProperty作为查询接口的返回值时（如[getCurrentInputMethod]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_），此字段表示icon字段的 资源号。
+非必填。 - 当InputMethodProperty用于切换、查询等接口的入参时，开发者可不填写此字段，通过name和id即可唯一指定一个输入法扩展。 - 当InputMethodProperty作为查询接口的返回值时（如[getCurrentInputMethod](arkts-ime-inputmethod-getcurrentinputmethod-f.md#getCurrentInputMethod)），此字段表示icon字段的 资源号。
 
 **类型：** long
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-InputMethodProperty-readonly iconId?: long--><!--Device-InputMethodProperty-readonly iconId?: long-End-->
 
@@ -92,9 +102,11 @@ readonly id: string
 
 **类型：** string
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-InputMethodProperty-readonly id: string--><!--Device-InputMethodProperty-readonly id: string-End-->
 
@@ -106,13 +118,15 @@ readonly id: string
 readonly label?: string
 ```
 
-非必填。 - 当InputMethodProperty用于切换、查询等接口的入参时，开发者可不填写此字段，通过name和id即可唯一指定一个输入法扩展。 - 当InputMethodProperty作为查询接口的返回值时（如[getCurrentInputMethod]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_），此字段表示输入法扩展对外 显示的名称，优先使用InputMethodExtensionAbility中配置的label，若未配置，自动使用应用入口ability的label；当应用入口ability未配置label时，自动使用应用AppScope中配置 的label。
+非必填。 - 当InputMethodProperty用于切换、查询等接口的入参时，开发者可不填写此字段，通过name和id即可唯一指定一个输入法扩展。 - 当InputMethodProperty作为查询接口的返回值时（如[getCurrentInputMethod](arkts-ime-inputmethod-getcurrentinputmethod-f.md#getCurrentInputMethod)），此字段表示输入法扩展对外 显示的名称，优先使用InputMethodExtensionAbility中配置的label，若未配置，自动使用应用入口ability的label；当应用入口ability未配置label时，自动使用应用AppScope中配置 的label。
 
 **类型：** string
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-InputMethodProperty-readonly label?: string--><!--Device-InputMethodProperty-readonly label?: string-End-->
 
@@ -124,13 +138,15 @@ readonly label?: string
 readonly labelId?: long
 ```
 
-非必填。 - 当InputMethodProperty用于切换、查询等接口的入参时，开发者可不填写此字段，通过name和id即可唯一指定一个输入法扩展。 - 当InputMethodProperty作为查询接口的返回值时（如[getCurrentInputMethod]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_），此字段表示label字段 的资源号。
+非必填。 - 当InputMethodProperty用于切换、查询等接口的入参时，开发者可不填写此字段，通过name和id即可唯一指定一个输入法扩展。 - 当InputMethodProperty作为查询接口的返回值时（如[getCurrentInputMethod](arkts-ime-inputmethod-getcurrentinputmethod-f.md#getCurrentInputMethod)），此字段表示label字段 的资源号。
 
 **类型：** long
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-InputMethodProperty-readonly labelId?: long--><!--Device-InputMethodProperty-readonly labelId?: long-End-->
 
@@ -152,7 +168,7 @@ readonly methodId: string
 
 **废弃版本：** 9
 
-**替代接口：** [inputMethod.InputMethodProperty#id](arkts-ime-inputmethod-inputmethodproperty-i.md#id)
+**替代接口：** [id](#id)
 
 <!--Device-InputMethodProperty-readonly methodId: string--><!--Device-InputMethodProperty-readonly methodId: string-End-->
 
@@ -168,9 +184,11 @@ readonly name: string
 
 **类型：** string
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-InputMethodProperty-readonly name: string--><!--Device-InputMethodProperty-readonly name: string-End-->
 
@@ -192,7 +210,7 @@ readonly packageName: string
 
 **废弃版本：** 9
 
-**替代接口：** [inputMethod.InputMethodProperty#name](arkts-ime-inputmethod-inputmethodproperty-i.md#name)
+**替代接口：** [name](#name)
 
 <!--Device-InputMethodProperty-readonly packageName: string--><!--Device-InputMethodProperty-readonly packageName: string-End-->
 

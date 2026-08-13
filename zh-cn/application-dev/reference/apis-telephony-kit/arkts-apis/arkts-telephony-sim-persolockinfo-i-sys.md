@@ -2,9 +2,11 @@
 
 Defines the personalized lock information.
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-sim-export interface PersoLockInfo--><!--Device-sim-export interface PersoLockInfo-End-->
 
@@ -20,11 +22,13 @@ lockType: PersoLockType
 
 Indicates the personalized lock type.
 
-**类型：** PersoLockType
+**类型：** [PersoLockType](arkts-telephony-sim-persolocktype-e-sys.md)
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PersoLockInfo-lockType: PersoLockType--><!--Device-PersoLockInfo-lockType: PersoLockType-End-->
 
@@ -42,9 +46,11 @@ Indicates the password.
 
 **类型：** string
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PersoLockInfo-password: string--><!--Device-PersoLockInfo-password: string-End-->
 

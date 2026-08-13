@@ -10,7 +10,9 @@ function getSharedHosts(): Promise<SharedHost[]>
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -26,7 +28,7 @@ function getSharedHosts(): Promise<SharedHost[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;SharedHost[]&gt; | Promise that resolves with the list of shared hosts. |
+| Promise&lt;[SharedHost](arkts-basicservices-print-sharedhost-i.md)[]&gt; | Promise that resolves with the list of shared hosts. |
 
 **错误码：**
 

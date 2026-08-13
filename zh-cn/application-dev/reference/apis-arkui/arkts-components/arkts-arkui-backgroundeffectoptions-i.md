@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface BackgroundEffectOptions--><!--Device-unnamed-declare interface BackgroundEffectOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -18,13 +20,15 @@ adaptiveColor?: AdaptiveColor
 
 背景模糊效果使用的取色模式，默认为DEFAULT。使用AVERAGE时color必须带有透明度，取色模式才生效。
 
-**类型：** AdaptiveColor
+**类型：** [AdaptiveColor](arkts-arkui-adaptivecolor-e.md)
 
 **默认值：** AdaptiveColor.DEFAULT
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,14 +46,15 @@ blurOptions?: BlurOptions
 
 灰阶模糊参数，默认为[0,0]。
 
-**类型：** BlurOptions
+**类型：** [BlurOptions](arkts-arkui-bluroptions-i.md)
 
-**默认值：** { grayScale: [0,1] } [since 11 - 11]
-@default { grayScale: [0,0] } [since 12]
+**默认值：** { grayScale: [0,1] } [since 11 - 11] @default { grayScale: [0,0] } [since 12]
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -75,6 +80,8 @@ brightness?: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -98,6 +105,8 @@ color?: ResourceColor
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -123,6 +132,8 @@ inactiveColor?: ResourceColor
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
@@ -137,15 +148,17 @@ inactiveColor?: ResourceColor
 policy?: BlurStyleActivePolicy
 ```
 
-模糊激活策略。 默认值：BlurStyleActivePolicy.ALWAYS\_ACTIVE
+模糊激活策略。 默认值：BlurStyleActivePolicy.ALWAYS_ACTIVE
 
-**类型：** BlurStyleActivePolicy
+**类型：** [BlurStyleActivePolicy](arkts-arkui-blurstyleactivepolicy-e.md)
 
 **默认值：** BlurStyleActivePolicy.ALWAYS_ACTIVE
 
 **起始版本：** 14
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -168,6 +181,8 @@ radius: number
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -192,6 +207,8 @@ saturation?: number
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

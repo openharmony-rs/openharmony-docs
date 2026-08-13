@@ -18,7 +18,7 @@ Navigator(value?: { target: string; type?: NavigationType })
 
 **废弃版本：** 13
 
-**替代接口：** <!--SUBSTITUTE_API-->NavPathInfo<!--/SUBSTITUTE_API-->
+**替代接口：** NavPathInfo
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -30,7 +30,7 @@ Navigator(value?: { target: string; type?: NavigationType })
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | { target: string; type?: NavigationType } | 否 | 跳转页面的信息。\_\_\_HTML\_TAG\_USD\_0\_\_\_target：指定跳转目标页面的路径。\_\_\_HTML\_TAG\_USD\_1\_\_\_type：指定路由方式。\_\_\_HTML\_TAG\_USD\_2\_\_\_默认值：NavigationType.Push  |
+| value | { target: string; type?: NavigationType } | 否 | 跳转页面的信息。<br/>target：指定跳转目标页面的路径。<br/>type：指定路由方式。<br/>默认值：NavigationType.Push |
 
 ## Navigator
 
@@ -46,7 +46,7 @@ Navigator()
 
 **废弃版本：** 13
 
-**替代接口：** <!--SUBSTITUTE_API-->NavigationAttribute<!--/SUBSTITUTE_API-->
+**替代接口：** NavigationAttribute
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -56,3 +56,4 @@ Navigator()
 
 ## 汇总
 
+- [NavigationType](arkts-arkui-navigationtype-e.md)

@@ -8,7 +8,7 @@
 
 **废弃版本：** 18
 
-**替代接口：** [usbManager.USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md)
+**替代接口：** [USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md#USBDeviceRequestParams)
 
 <!--Device-usbManager-interface USBControlParams--><!--Device-usbManager-interface USBControlParams-End-->
 
@@ -30,7 +30,7 @@ data: Uint8Array
 
 **废弃版本：** 18
 
-**替代接口：** [usbManager.USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md)
+**替代接口：** [USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md#USBDeviceRequestParams)
 
 <!--Device-USBControlParams-data: Uint8Array--><!--Device-USBControlParams-data: Uint8Array-End-->
 
@@ -52,7 +52,7 @@ index: number
 
 **废弃版本：** 18
 
-**替代接口：** [usbManager.USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md)
+**替代接口：** [USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md#USBDeviceRequestParams)
 
 <!--Device-USBControlParams-index: number--><!--Device-USBControlParams-index: number-End-->
 
@@ -74,7 +74,7 @@ reqType: USBControlRequestType
 
 **废弃版本：** 18
 
-**替代接口：** [usbManager.USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md)
+**替代接口：** [USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md#USBDeviceRequestParams)
 
 <!--Device-USBControlParams-reqType: USBControlRequestType--><!--Device-USBControlParams-reqType: USBControlRequestType-End-->
 
@@ -96,7 +96,7 @@ request: number
 
 **废弃版本：** 18
 
-**替代接口：** [usbManager.USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md)
+**替代接口：** [USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md#USBDeviceRequestParams)
 
 <!--Device-USBControlParams-request: number--><!--Device-USBControlParams-request: number-End-->
 
@@ -118,7 +118,7 @@ target: USBRequestTargetType
 
 **废弃版本：** 18
 
-**替代接口：** [usbManager.USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md)
+**替代接口：** [USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md#USBDeviceRequestParams)
 
 <!--Device-USBControlParams-target: USBRequestTargetType--><!--Device-USBControlParams-target: USBRequestTargetType-End-->
 
@@ -140,7 +140,7 @@ value: number
 
 **废弃版本：** 18
 
-**替代接口：** [usbManager.USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md)
+**替代接口：** [USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md#USBDeviceRequestParams)
 
 <!--Device-USBControlParams-value: number--><!--Device-USBControlParams-value: number-End-->
 

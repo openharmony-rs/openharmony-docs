@@ -1,6 +1,6 @@
 # ResultCode
 
-表示返回码的枚举。 > **说明：**\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_ > > 从API version 8开始支持，从API version 9开始废弃。相关信息建议查看 > \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_替代。
+表示返回码的枚举。 > **说明：**&lt;br/&gt; > > 从API version 8开始支持，从API version 9开始废弃。相关信息建议查看 > [账号管理错误码](../../apis-basic-services-kit/errorcode-account.md)替代。
 
 **起始版本：** 8
 

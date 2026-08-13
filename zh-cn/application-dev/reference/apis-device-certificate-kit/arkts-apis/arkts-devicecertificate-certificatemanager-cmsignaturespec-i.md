@@ -2,9 +2,11 @@
 
 表示签名、验签操作使用的参数集合，包括密钥使用目的、填充方式和摘要算法。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-certificateManager-export interface CMSignatureSpec--><!--Device-certificateManager-export interface CMSignatureSpec-End-->
 
@@ -16,13 +18,15 @@
 digest?: CmKeyDigest
 ```
 
-表示摘要算法的枚举。 默认值： CM\_DIGEST\_SHA256，表示使用SHA256摘要算法。
+表示摘要算法的枚举。 默认值： CM_DIGEST_SHA256，表示使用SHA256摘要算法。
 
-**类型：** CmKeyDigest
+**类型：** [CmKeyDigest](arkts-devicecertificate-certificatemanager-cmkeydigest-e.md)
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-CMSignatureSpec-digest?: CmKeyDigest--><!--Device-CMSignatureSpec-digest?: CmKeyDigest-End-->
 
@@ -34,13 +38,15 @@ digest?: CmKeyDigest
 padding?: CmKeyPadding
 ```
 
-表示填充方式的枚举 默认值： CM\_PADDING\_PSS，表示使用PSS填充方式。
+表示填充方式的枚举 默认值： CM_PADDING_PSS，表示使用PSS填充方式。
 
-**类型：** CmKeyPadding
+**类型：** [CmKeyPadding](arkts-devicecertificate-certificatemanager-cmkeypadding-e.md)
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-CMSignatureSpec-padding?: CmKeyPadding--><!--Device-CMSignatureSpec-padding?: CmKeyPadding-End-->
 
@@ -54,11 +60,13 @@ purpose: CmKeyPurpose
 
 表示密钥使用目的的枚举。
 
-**类型：** CmKeyPurpose
+**类型：** [CmKeyPurpose](arkts-devicecertificate-certificatemanager-cmkeypurpose-e.md)
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-CMSignatureSpec-purpose: CmKeyPurpose--><!--Device-CMSignatureSpec-purpose: CmKeyPurpose-End-->
 

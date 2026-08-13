@@ -6,7 +6,7 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @ObservedV2
+**废弃版本：** -1
 
 <!--Device-unnamed-export declare class AdvancedDialogV2Button--><!--Device-unnamed-export declare class AdvancedDialogV2Button-End-->
 
@@ -24,6 +24,8 @@ AdvancedDialogV2Button的构造函数。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -36,56 +38,63 @@ AdvancedDialogV2Button的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 按钮配置信息。 |
+| options | [AdvancedDialogV2ButtonOptions](arkts-arkui-arkui-advanced-dialogv2-advanceddialogv2buttonoptions-i.md) | 是 | 按钮配置信息。 |
 
 ## action
 
 ```TypeScript
-action?: AdvancedDialogV2ButtonAction
+@Trace
+  action?: AdvancedDialogV2ButtonAction
 ```
 
 按钮的点击事件。 默认无事件。
 
-**类型：** AdvancedDialogV2ButtonAction
+**类型：** [AdvancedDialogV2ButtonAction](arkts-arkui-advanceddialogv2buttonaction-t.md)
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AdvancedDialogV2Button-action?: AdvancedDialogV2ButtonAction--><!--Device-AdvancedDialogV2Button-action?: AdvancedDialogV2ButtonAction-End-->
+<!--Device-AdvancedDialogV2Button-@Trace  action?: AdvancedDialogV2ButtonAction--><!--Device-AdvancedDialogV2Button-@Trace  action?: AdvancedDialogV2ButtonAction-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## background
 
 ```TypeScript
-background?: ColorMetrics
+@Trace
+  background?: ColorMetrics
 ```
 
 按钮的背景。当buttonStyle和role为默认值时生效。 默认值跟随buttonStyle。
 
-**类型：** ColorMetrics
+**类型：** [ColorMetrics](../../apis-na/arkts-apis/arkts-na-graphics-colormetrics-c.md)
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AdvancedDialogV2Button-background?: ColorMetrics--><!--Device-AdvancedDialogV2Button-background?: ColorMetrics-End-->
+<!--Device-AdvancedDialogV2Button-@Trace  background?: ColorMetrics--><!--Device-AdvancedDialogV2Button-@Trace  background?: ColorMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## buttonStyle
 
 ```TypeScript
-buttonStyle?: ButtonStyleMode
+@Trace
+  buttonStyle?: ButtonStyleMode
 ```
 
 按钮的样式。 默认值：2in1设备为ButtonStyleMode.NORMAL，其他设备为ButtonStyleMode.TEXTUAL。
@@ -98,18 +107,21 @@ buttonStyle?: ButtonStyleMode
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AdvancedDialogV2Button-buttonStyle?: ButtonStyleMode--><!--Device-AdvancedDialogV2Button-buttonStyle?: ButtonStyleMode-End-->
+<!--Device-AdvancedDialogV2Button-@Trace  buttonStyle?: ButtonStyleMode--><!--Device-AdvancedDialogV2Button-@Trace  buttonStyle?: ButtonStyleMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## content
 
 ```TypeScript
-content: ResourceStr
+@Trace
+  content: ResourceStr
 ```
 
 按钮的内容。
@@ -120,18 +132,21 @@ content: ResourceStr
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AdvancedDialogV2Button-content: ResourceStr--><!--Device-AdvancedDialogV2Button-content: ResourceStr-End-->
+<!--Device-AdvancedDialogV2Button-@Trace  content: ResourceStr--><!--Device-AdvancedDialogV2Button-@Trace  content: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## defaultFocus
 
 ```TypeScript
-defaultFocus?: boolean
+@Trace
+  defaultFocus?: boolean
 ```
 
 是否为默认焦点。 true：按钮是默认焦点。 false：按钮不是默认焦点。 默认值：false
@@ -144,18 +159,21 @@ defaultFocus?: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AdvancedDialogV2Button-defaultFocus?: boolean--><!--Device-AdvancedDialogV2Button-defaultFocus?: boolean-End-->
+<!--Device-AdvancedDialogV2Button-@Trace  defaultFocus?: boolean--><!--Device-AdvancedDialogV2Button-@Trace  defaultFocus?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## enabled
 
 ```TypeScript
-enabled?: boolean
+@Trace
+  enabled?: boolean
 ```
 
 是否可用。 true：按钮可用。 false：按钮不可用。 默认值：true
@@ -168,40 +186,46 @@ enabled?: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AdvancedDialogV2Button-enabled?: boolean--><!--Device-AdvancedDialogV2Button-enabled?: boolean-End-->
+<!--Device-AdvancedDialogV2Button-@Trace  enabled?: boolean--><!--Device-AdvancedDialogV2Button-@Trace  enabled?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontColor
 
 ```TypeScript
-fontColor?: ColorMetrics
+@Trace
+  fontColor?: ColorMetrics
 ```
 
 按钮的字体颜色。当buttonStyle和role为默认值时生效。 默认值跟随buttonStyle。
 
-**类型：** ColorMetrics
+**类型：** [ColorMetrics](../../apis-na/arkts-apis/arkts-na-graphics-colormetrics-c.md)
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AdvancedDialogV2Button-fontColor?: ColorMetrics--><!--Device-AdvancedDialogV2Button-fontColor?: ColorMetrics-End-->
+<!--Device-AdvancedDialogV2Button-@Trace  fontColor?: ColorMetrics--><!--Device-AdvancedDialogV2Button-@Trace  fontColor?: ColorMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## role
 
 ```TypeScript
-role?: ButtonRole
+@Trace
+  role?: ButtonRole
 ```
 
 按钮的角色。 默认值：ButtonRole.NORMAL
@@ -214,18 +238,21 @@ role?: ButtonRole
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AdvancedDialogV2Button-role?: ButtonRole--><!--Device-AdvancedDialogV2Button-role?: ButtonRole-End-->
+<!--Device-AdvancedDialogV2Button-@Trace  role?: ButtonRole--><!--Device-AdvancedDialogV2Button-@Trace  role?: ButtonRole-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## textAlign
 
 ```TypeScript
-textAlign?: TextAlign
+@Trace
+  textAlign?: TextAlign
 ```
 
 按钮文本的对齐方式。 默认值：TextAlign.Start
@@ -238,11 +265,13 @@ textAlign?: TextAlign
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AdvancedDialogV2Button-textAlign?: TextAlign--><!--Device-AdvancedDialogV2Button-textAlign?: TextAlign-End-->
+<!--Device-AdvancedDialogV2Button-@Trace  textAlign?: TextAlign--><!--Device-AdvancedDialogV2Button-@Trace  textAlign?: TextAlign-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

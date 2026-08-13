@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 <!--Device-contact-class PostalAddress--><!--Device-contact-class PostalAddress-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
@@ -23,6 +25,8 @@ static readonly ADDR_HOME: 1
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -44,6 +48,8 @@ static readonly ADDR_OTHER: 3
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PostalAddress-static readonly ADDR_OTHER: 3--><!--Device-PostalAddress-static readonly ADDR_OTHER: 3-End-->
@@ -64,6 +70,8 @@ static readonly ADDR_WORK: 2
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PostalAddress-static readonly ADDR_WORK: 2--><!--Device-PostalAddress-static readonly ADDR_WORK: 2-End-->
@@ -76,13 +84,15 @@ static readonly ADDR_WORK: 2
 static readonly CUSTOM_LABEL: 0
 ```
 
-自定义邮箱类型，默认值为0。
+自定义邮政地址类型，默认值为0。
 
 **类型：** 0
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -96,13 +106,15 @@ static readonly CUSTOM_LABEL: 0
 static readonly INVALID_LABEL_ID: -1
 ```
 
-无效邮箱类型，默认值为-1。
+无效地址类型，默认值为-1。
 
 **类型：** -1
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -124,6 +136,8 @@ city?: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PostalAddress-city?: string--><!--Device-PostalAddress-city?: string-End-->
@@ -144,6 +158,8 @@ country?: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PostalAddress-country?: string--><!--Device-PostalAddress-country?: string-End-->
@@ -156,13 +172,15 @@ country?: string
 labelId?: number
 ```
 
-邮箱的类型。
+邮政地址的类型。
 
 **类型：** number
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -176,13 +194,15 @@ labelId?: number
 labelName?: string
 ```
 
-邮箱的类型名称。
+邮政地址类型名称。
 
 **类型：** string
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -204,6 +224,8 @@ neighborhood?: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PostalAddress-neighborhood?: string--><!--Device-PostalAddress-neighborhood?: string-End-->
@@ -223,6 +245,8 @@ pobox?: string
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -244,6 +268,8 @@ postalAddress: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PostalAddress-postalAddress: string--><!--Device-PostalAddress-postalAddress: string-End-->
@@ -263,6 +289,8 @@ postcode?: string
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -284,6 +312,8 @@ region?: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PostalAddress-region?: string--><!--Device-PostalAddress-region?: string-End-->
@@ -303,6 +333,8 @@ street?: string
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

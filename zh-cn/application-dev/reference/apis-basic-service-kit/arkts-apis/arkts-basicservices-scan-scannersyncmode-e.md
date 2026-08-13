@@ -2,9 +2,11 @@
 
 定义扫描仪同步码的枚举。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-scan-enum ScannerSyncMode--><!--Device-scan-enum ScannerSyncMode-End-->
 
@@ -18,9 +20,11 @@ UPDATE_STR = 'update'
 
 更新码，表示扫描仪id的变化。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ScannerSyncMode-UPDATE_STR = 'update'--><!--Device-ScannerSyncMode-UPDATE_STR = 'update'-End-->
 
@@ -34,9 +38,11 @@ DELETE_STR = 'delete'
 
 删除码，表示扫描仪掉线。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ScannerSyncMode-DELETE_STR = 'delete'--><!--Device-ScannerSyncMode-DELETE_STR = 'delete'-End-->
 

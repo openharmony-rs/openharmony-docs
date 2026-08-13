@@ -8,7 +8,9 @@ type OnFrameFetched = (frameInfo: FrameInfo, err?: BusinessError<void>) => void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -20,6 +22,6 @@ type OnFrameFetched = (frameInfo: FrameInfo, err?: BusinessError<void>) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| frameInfo | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 返回的缩略图信息。  |
-| err | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 否 | 获取缩略图时发生错误，默认值为null。  |
+| frameInfo | [FrameInfo](arkts-media-media-frameinfo-i.md) | 是 | 返回的缩略图信息。 |
+| err | [BusinessError](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-businesserror-c.md)&lt;void&gt; | 否 | 获取缩略图时发生错误，默认值为null。 |
 

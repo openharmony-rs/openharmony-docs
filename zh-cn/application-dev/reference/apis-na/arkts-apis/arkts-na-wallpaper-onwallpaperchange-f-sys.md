@@ -10,7 +10,9 @@ function onWallpaperChange(callback: WallpaperChangeObserver): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-wallpaper-function onWallpaperChange(callback: WallpaperChangeObserver): void--><!--Device-wallpaper-function onWallpaperChange(callback: WallpaperChangeObserver): void-End-->
 
@@ -22,7 +24,7 @@ function onWallpaperChange(callback: WallpaperChangeObserver): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 |  |
+| callback | [WallpaperChangeObserver](arkts-na-wallpaper-wallpaperchangeobserver-t.md) | 是 |  |
 
 **错误码：**
 

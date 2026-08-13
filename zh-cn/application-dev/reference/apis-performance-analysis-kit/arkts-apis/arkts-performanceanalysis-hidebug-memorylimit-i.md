@@ -1,10 +1,12 @@
 # MemoryLimit
 
-Ӧ�ý����ڴ����ơ�
+应用进程内存限制。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-hidebug-interface MemoryLimit--><!--Device-hidebug-interface MemoryLimit-End-->
 
@@ -16,13 +18,15 @@
 rssLimit: bigint
 ```
 
-Ӧ�ó�����̿��õ������ڴ����ƣ���KBΪ��λ��
+应用程序进程可用的物理内存限制，以KB为单位。
 
 **类型：** bigint
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-MemoryLimit-rssLimit: bigint--><!--Device-MemoryLimit-rssLimit: bigint-End-->
 
@@ -34,13 +38,15 @@ rssLimit: bigint
 vmHeapLimit: bigint
 ```
 
-��ǰ�̵߳� JS VM �Ѵ�С���ƣ���KBΪ��λ��
+当前线程的 JS VM 堆大小限制，以KB为单位。
 
 **类型：** bigint
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-MemoryLimit-vmHeapLimit: bigint--><!--Device-MemoryLimit-vmHeapLimit: bigint-End-->
 
@@ -52,13 +58,15 @@ vmHeapLimit: bigint
 vmTotalHeapSize: bigint
 ```
 
-��ǰ���̵� JS ���ڴ��С���ƣ���KBΪ��λ��
+当前进程的 JS 堆内存大小限制，以KB为单位。
 
 **类型：** bigint
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-MemoryLimit-vmTotalHeapSize: bigint--><!--Device-MemoryLimit-vmTotalHeapSize: bigint-End-->
 
@@ -70,13 +78,15 @@ vmTotalHeapSize: bigint
 vssLimit: bigint
 ```
 
-���̵������ڴ����ƣ���KBΪ��λ��
+进程的虚拟内存限制，以KB为单位。
 
 **类型：** bigint
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-MemoryLimit-vssLimit: bigint--><!--Device-MemoryLimit-vssLimit: bigint-End-->
 

@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.data.relationalStore:relationalStore.SubscribeType](arkts-arkdata-relationalstore-subscribetype-e.md)
+**替代接口：** [SubscribeType](arkts-arkdata-relationalstore-subscribetype-e.md#SubscribeType)
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -30,7 +30,7 @@ SUBSCRIBE_TYPE_REMOTE = 0
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.data.relationalStore:relationalStore.SubscribeType.SUBSCRIBE_TYPE_REMOTE](arkts-arkdata-relationalstore-subscribetype-e.md#subscribe_type_remote)
+**替代接口：** [SUBSCRIBE_TYPE_REMOTE](arkts-arkdata-relationalstore-subscribetype-e.md#SUBSCRIBE_TYPE_REMOTE)
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 

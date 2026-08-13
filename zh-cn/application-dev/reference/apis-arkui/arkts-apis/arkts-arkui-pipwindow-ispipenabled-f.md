@@ -8,9 +8,11 @@ function isPiPEnabled(): boolean
 
 判断当前设备是否支持画中画功能。
 
-**起始版本：** 11
+**起始版本：** 26.0.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -24,7 +26,7 @@ function isPiPEnabled(): boolean
 | --- | --- |
 | boolean | 当前系统是否支持画中画功能。true表示支持，false则表示不支持。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let enable: boolean = PiPWindow.isPiPEnabled();

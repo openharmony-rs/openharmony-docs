@@ -1,5 +1,11 @@
 # @ohos.application.NotificationSubscriberExtensionAbility
 
+## 导入模块
+
+```TypeScript
+import { NotificationSubscriberExtensionAbility } from '@kit.NotificationKit';
+```
+
 ## 汇总
 
 ### 类

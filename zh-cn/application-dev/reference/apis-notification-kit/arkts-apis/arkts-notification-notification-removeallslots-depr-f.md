@@ -14,7 +14,7 @@ function removeAllSlots(callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager#removeAllSlots
+**替代接口：** [removeAllSlots](arkts-notification-notificationmanager-removeallslots-f.md#removeAllSlots)
 
 <!--Device-notification-function removeAllSlots(callback: AsyncCallback<void>): void--><!--Device-notification-function removeAllSlots(callback: AsyncCallback<void>): void-End-->
 
@@ -24,7 +24,7 @@ function removeAllSlots(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 表示被指定的回调方法。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 表示被指定的回调方法。 |
 
 
 ## removeAllSlots
@@ -41,7 +41,7 @@ function removeAllSlots(): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager#removeAllSlots
+**替代接口：** [removeAllSlots](arkts-notification-notificationmanager-removeallslots-f.md#removeAllSlots)
 
 <!--Device-notification-function removeAllSlots(): Promise<void>--><!--Device-notification-function removeAllSlots(): Promise<void>-End-->
 

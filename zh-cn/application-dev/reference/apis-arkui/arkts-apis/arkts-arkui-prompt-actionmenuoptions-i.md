@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** ohos.promptAction/promptAction.ActionMenuOptions
+**替代接口：** [ActionMenuOptions](../../apis-na/arkts-apis/arkts-na-promptaction-actionmenuoptions-i.md#ActionMenuOptions)
 
 <!--Device-prompt-interface ActionMenuOptions--><!--Device-prompt-interface ActionMenuOptions-End-->
 
@@ -30,7 +30,7 @@ buttons: [Button, Button?, Button?, Button?, Button?, Button?]
 
 **废弃版本：** 9
 
-**替代接口：** ohos.promptAction/promptAction.ActionMenuOptions#buttons
+**替代接口：** [buttons](../../apis-na/arkts-apis/arkts-na-promptaction-actionmenuoptions-i.md#buttons)
 
 <!--Device-ActionMenuOptions-buttons: [Button, Button?, Button?, Button?, Button?, Button?]--><!--Device-ActionMenuOptions-buttons: [Button, Button?, Button?, Button?, Button?, Button?]-End-->
 
@@ -52,7 +52,7 @@ title?: string
 
 **废弃版本：** 9
 
-**替代接口：** ohos.promptAction/promptAction.ActionMenuOptions#title
+**替代接口：** [title](../../apis-na/arkts-apis/arkts-na-promptaction-actionmenuoptions-i.md#title)
 
 <!--Device-ActionMenuOptions-title?: string--><!--Device-ActionMenuOptions-title?: string-End-->
 

@@ -2,9 +2,11 @@
 
 定义打印机信息的接口。
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-print-interface PrinterInformation--><!--Device-print-interface PrinterInformation-End-->
 
@@ -20,9 +22,11 @@ alias?: string
 
 **类型：** string
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrinterInformation-alias?: string--><!--Device-PrinterInformation-alias?: string-End-->
 
@@ -36,11 +40,13 @@ capability?: PrinterCapabilities
 
 表示打印机能力。
 
-**类型：** PrinterCapabilities
+**类型：** [PrinterCapabilities](arkts-basicservices-print-printercapabilities-i.md)
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrinterInformation-capability?: PrinterCapabilities--><!--Device-PrinterInformation-capability?: PrinterCapabilities-End-->
 
@@ -56,9 +62,11 @@ description?: string
 
 **类型：** string
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrinterInformation-description?: string--><!--Device-PrinterInformation-description?: string-End-->
 
@@ -74,9 +82,11 @@ options?: string
 
 **类型：** string
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrinterInformation-options?: string--><!--Device-PrinterInformation-options?: string-End-->
 
@@ -90,11 +100,13 @@ preferences?: PrinterPreferences
 
 表示打印机首选项。
 
-**类型：** PrinterPreferences
+**类型：** [PrinterPreferences](arkts-basicservices-print-printerpreferences-i.md)
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrinterInformation-preferences?: PrinterPreferences--><!--Device-PrinterInformation-preferences?: PrinterPreferences-End-->
 
@@ -110,9 +122,11 @@ printerId: string
 
 **类型：** string
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrinterInformation-printerId: string--><!--Device-PrinterInformation-printerId: string-End-->
 
@@ -128,9 +142,11 @@ printerMake?: string
 
 **类型：** string
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrinterInformation-printerMake?: string--><!--Device-PrinterInformation-printerMake?: string-End-->
 
@@ -146,9 +162,11 @@ printerName: string
 
 **类型：** string
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrinterInformation-printerName: string--><!--Device-PrinterInformation-printerName: string-End-->
 
@@ -162,11 +180,13 @@ printerStatus: PrinterStatus
 
 表示当前打印机状态。
 
-**类型：** PrinterStatus
+**类型：** [PrinterStatus](arkts-basicservices-print-printerstatus-e.md)
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrinterInformation-printerStatus: PrinterStatus--><!--Device-PrinterInformation-printerStatus: PrinterStatus-End-->
 
@@ -180,11 +200,13 @@ selectedDriver?: PpdInfo
 
 表示添加打印机时选择的驱动的信息。 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**类型：** PpdInfo
+**类型：** [PpdInfo](arkts-basicservices-print-ppdinfo-i.md)
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -204,7 +226,9 @@ selectedProtocol?: string
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -222,9 +246,11 @@ uri?: string
 
 **类型：** string
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrinterInformation-uri?: string--><!--Device-PrinterInformation-uri?: string-End-->
 

@@ -6,7 +6,7 @@ typedef struct OHIPCParcel OHIPCParcel
 
 ## 概述
 
-提供OHIPCParcel结构体声明，用于进程间通信。
+提供对IPC序列化对象的访问功能。
 
 **起始版本：** 12
 

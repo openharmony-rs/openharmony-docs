@@ -2,11 +2,13 @@
 
 用于执行媒体查询操作。
 
-**起始版本：** 23
+**起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
-<!--Device-mediaquery-export interface MediaQueryResult--><!--Device-mediaquery-export interface MediaQueryResult-End-->
+**废弃版本：** -1
+
+<!--Device-mediaquery-interface MediaQueryResult--><!--Device-mediaquery-interface MediaQueryResult-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,15 +18,19 @@
 readonly matches: boolean
 ```
 
-是否符合匹配条件。true表示满足查询条件，false表示不满足查询条件。 此属性为只读属性。
+是否符合匹配条件。true表示满足查询条件，false表示不满足查询条件。
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-MediaQueryResult-readonly matches: boolean--><!--Device-MediaQueryResult-readonly matches: boolean-End-->
 
@@ -36,15 +42,19 @@ readonly matches: boolean
 readonly media: string
 ```
 
-媒体事件的匹配条件。 此属性为只读属性。
+媒体事件的匹配条件。
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-MediaQueryResult-readonly media: string--><!--Device-MediaQueryResult-readonly media: string-End-->
 

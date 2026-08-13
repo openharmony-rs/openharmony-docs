@@ -8,9 +8,11 @@ function notifyDebugAssertResult(sessionId: string, status: UserStatus): Promise
 
 将断言调试结果通知应用程序。使用Promise异步回调。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.NOTIFY_DEBUG_ASSERT_RESULT
 
@@ -27,7 +29,7 @@ function notifyDebugAssertResult(sessionId: string, status: UserStatus): Promise
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sessionId | string | 是 | 指示AssertFault的请求ID。 |
-| status | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 用户的操作状态。 |
+| status | [UserStatus](arkts-ability-abilitymanager-userstatus-e-sys.md) | 是 | 用户的操作状态。 |
 
 **返回值：**
 
@@ -39,12 +41,12 @@ function notifyDebugAssertResult(sessionId: string, status: UserStatus): Promise
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The application does not have permission to call the interface. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
-| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { abilityManager, UIExtensionAbility, wantConstant, Want, UIExtensionContentSession } from '@kit.AbilityKit';

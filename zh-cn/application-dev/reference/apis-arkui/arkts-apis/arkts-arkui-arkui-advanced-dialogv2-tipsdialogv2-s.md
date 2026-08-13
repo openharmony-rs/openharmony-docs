@@ -6,7 +6,7 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @ComponentV2
+**废弃版本：** -1
 
 <!--Device-unnamed-export declare struct TipsDialogV2--><!--Device-unnamed-export declare struct TipsDialogV2-End-->
 
@@ -15,7 +15,8 @@
 ## checkTips
 
 ```TypeScript
-checkTips?: ResourceStr
+@Param
+  checkTips?: ResourceStr
 ```
 
 选择框的提示内容。 默认不显示。
@@ -26,20 +27,21 @@ checkTips?: ResourceStr
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @Param
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TipsDialogV2-checkTips?: ResourceStr--><!--Device-TipsDialogV2-checkTips?: ResourceStr-End-->
+<!--Device-TipsDialogV2-@Param  checkTips?: ResourceStr--><!--Device-TipsDialogV2-@Param  checkTips?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## checked
 
 ```TypeScript
-checked?: boolean
+@Param
+  checked?: boolean
 ```
 
 checked为true时，表示选择框已选中。checked为false时，表示选择框未选中。 默认值：false
@@ -50,20 +52,21 @@ checked为true时，表示选择框已选中。checked为false时，表示选择
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @Param
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TipsDialogV2-checked?: boolean--><!--Device-TipsDialogV2-checked?: boolean-End-->
+<!--Device-TipsDialogV2-@Param  checked?: boolean--><!--Device-TipsDialogV2-@Param  checked?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## content
 
 ```TypeScript
-content?: ResourceStr
+@Param
+  content?: ResourceStr
 ```
 
 提示弹出框内容。 默认不显示。
@@ -74,68 +77,72 @@ content?: ResourceStr
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @Param
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TipsDialogV2-content?: ResourceStr--><!--Device-TipsDialogV2-content?: ResourceStr-End-->
+<!--Device-TipsDialogV2-@Param  content?: ResourceStr--><!--Device-TipsDialogV2-@Param  content?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## imageBorderColor
 
 ```TypeScript
-imageBorderColor?: ColorMetrics
+@Param
+  imageBorderColor?: ColorMetrics
 ```
 
 图片描边颜色。 默认值：Color.Black
 
-**类型：** ColorMetrics
+**类型：** [ColorMetrics](../../apis-na/arkts-apis/arkts-na-graphics-colormetrics-c.md)
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @Param
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TipsDialogV2-imageBorderColor?: ColorMetrics--><!--Device-TipsDialogV2-imageBorderColor?: ColorMetrics-End-->
+<!--Device-TipsDialogV2-@Param  imageBorderColor?: ColorMetrics--><!--Device-TipsDialogV2-@Param  imageBorderColor?: ColorMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## imageBorderWidth
 
 ```TypeScript
-imageBorderWidth?: LengthMetrics
+@Param
+  imageBorderWidth?: LengthMetrics
 ```
 
 图片描边宽度。 默认无描边效果。
 
-**类型：** LengthMetrics
+**类型：** [LengthMetrics](../../apis-na/arkts-apis/arkts-na-graphics-lengthmetrics-c.md)
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @Param
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TipsDialogV2-imageBorderWidth?: LengthMetrics--><!--Device-TipsDialogV2-imageBorderWidth?: LengthMetrics-End-->
+<!--Device-TipsDialogV2-@Param  imageBorderWidth?: LengthMetrics--><!--Device-TipsDialogV2-@Param  imageBorderWidth?: LengthMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## imageRes
 
 ```TypeScript
-imageRes: ResourceStr | PixelMap
+@Require
+  @Param
+  imageRes: ResourceStr | PixelMap
 ```
 
 展示的图片。
@@ -146,20 +153,21 @@ imageRes: ResourceStr | PixelMap
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @Require、@Param
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TipsDialogV2-imageRes: ResourceStr | PixelMap--><!--Device-TipsDialogV2-imageRes: ResourceStr | PixelMap-End-->
+<!--Device-TipsDialogV2-@Require  @Param  imageRes: ResourceStr | PixelMap--><!--Device-TipsDialogV2-@Require  @Param  imageRes: ResourceStr | PixelMap-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## imageSize
 
 ```TypeScript
-imageSize?: SizeOptions
+@Param
+  imageSize?: SizeOptions
 ```
 
 自定义图片尺寸。 默认值：64*64vp
@@ -170,92 +178,96 @@ imageSize?: SizeOptions
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @Param
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TipsDialogV2-imageSize?: SizeOptions--><!--Device-TipsDialogV2-imageSize?: SizeOptions-End-->
+<!--Device-TipsDialogV2-@Param  imageSize?: SizeOptions--><!--Device-TipsDialogV2-@Param  imageSize?: SizeOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onCheckedChange
 
 ```TypeScript
-onCheckedChange?: AdvancedDialogV2OnCheckedChange
+@Param
+  onCheckedChange?: AdvancedDialogV2OnCheckedChange
 ```
 
 选择框的选中状态改变事件。 默认无事件。
 
-**类型：** AdvancedDialogV2OnCheckedChange
+**类型：** [AdvancedDialogV2OnCheckedChange](arkts-arkui-advanceddialogv2oncheckedchange-t.md)
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @Param
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TipsDialogV2-onCheckedChange?: AdvancedDialogV2OnCheckedChange--><!--Device-TipsDialogV2-onCheckedChange?: AdvancedDialogV2OnCheckedChange-End-->
+<!--Device-TipsDialogV2-@Param  onCheckedChange?: AdvancedDialogV2OnCheckedChange--><!--Device-TipsDialogV2-@Param  onCheckedChange?: AdvancedDialogV2OnCheckedChange-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## primaryButton
 
 ```TypeScript
-primaryButton?: AdvancedDialogV2Button
+@Param
+  primaryButton?: AdvancedDialogV2Button
 ```
 
 提示弹出框左侧按钮。 默认不显示。
 
-**类型：** AdvancedDialogV2Button
+**类型：** [AdvancedDialogV2Button](arkts-arkui-arkui-advanced-dialogv2-advanceddialogv2button-c.md)
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @Param
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TipsDialogV2-primaryButton?: AdvancedDialogV2Button--><!--Device-TipsDialogV2-primaryButton?: AdvancedDialogV2Button-End-->
+<!--Device-TipsDialogV2-@Param  primaryButton?: AdvancedDialogV2Button--><!--Device-TipsDialogV2-@Param  primaryButton?: AdvancedDialogV2Button-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## secondaryButton
 
 ```TypeScript
-secondaryButton?: AdvancedDialogV2Button
+@Param
+  secondaryButton?: AdvancedDialogV2Button
 ```
 
 提示弹出框右侧按钮。 默认不显示。
 
-**类型：** AdvancedDialogV2Button
+**类型：** [AdvancedDialogV2Button](arkts-arkui-arkui-advanced-dialogv2-advanceddialogv2button-c.md)
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @Param
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TipsDialogV2-secondaryButton?: AdvancedDialogV2Button--><!--Device-TipsDialogV2-secondaryButton?: AdvancedDialogV2Button-End-->
+<!--Device-TipsDialogV2-@Param  secondaryButton?: AdvancedDialogV2Button--><!--Device-TipsDialogV2-@Param  secondaryButton?: AdvancedDialogV2Button-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## title
 
 ```TypeScript
-title?: ResourceStr
+@Param
+  title?: ResourceStr
 ```
 
 提示弹出框标题。 默认不显示。 **说明：** 标题超过两行会显示“...”。
@@ -266,13 +278,13 @@ title?: ResourceStr
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @Param
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-TipsDialogV2-title?: ResourceStr--><!--Device-TipsDialogV2-title?: ResourceStr-End-->
+<!--Device-TipsDialogV2-@Param  title?: ResourceStr--><!--Device-TipsDialogV2-@Param  title?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

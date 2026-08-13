@@ -8,7 +8,7 @@ Defines the Web controller.
 
 **废弃版本：** 9
 
-**替代接口：** ohos.web.webview.webview.WebviewController
+**替代接口：** WebviewController
 
 <!--Device-unnamed-declare class WebController--><!--Device-unnamed-declare class WebController-End-->
 
@@ -28,7 +28,7 @@ Checks whether the web page can go back.
 
 **废弃版本：** 9
 
-**替代接口：** ohos.web.webview.webview.WebviewController#accessBackward
+**替代接口：** accessBackward
 
 <!--Device-WebController-accessBackward(): boolean--><!--Device-WebController-accessBackward(): boolean-End-->
 
@@ -54,7 +54,7 @@ Checks whether the web page can go forward.
 
 **废弃版本：** 9
 
-**替代接口：** ohos.web.webview.webview.WebviewController#accessForward
+**替代接口：** accessForward
 
 <!--Device-WebController-accessForward(): boolean--><!--Device-WebController-accessForward(): boolean-End-->
 
@@ -80,7 +80,7 @@ Checks whether the web page can go back or forward the given number of steps.
 
 **废弃版本：** 9
 
-**替代接口：** ohos.web.webview.webview.WebviewController#accessStep
+**替代接口：** accessStep
 
 <!--Device-WebController-accessStep(step: number): boolean--><!--Device-WebController-accessStep(step: number): boolean-End-->
 
@@ -112,7 +112,7 @@ Goes back in the history of the web page.
 
 **废弃版本：** 9
 
-**替代接口：** ohos.web.webview.webview.WebviewController#backward
+**替代接口：** backward
 
 <!--Device-WebController-backward()--><!--Device-WebController-backward()-End-->
 
@@ -132,7 +132,7 @@ Clears the history in the Web.
 
 **废弃版本：** 9
 
-**替代接口：** ohos.web.webview.webview.WebviewController#clearHistory
+**替代接口：** clearHistory
 
 <!--Device-WebController-clearHistory(): void--><!--Device-WebController-clearHistory(): void-End-->
 
@@ -152,7 +152,7 @@ Constructor.
 
 **废弃版本：** 9
 
-**替代接口：** ohos.web.webview.webview.WebviewController#constructor
+**替代接口：** constructor
 
 <!--Device-WebController-constructor()--><!--Device-WebController-constructor()-End-->
 
@@ -172,7 +172,7 @@ Deletes a registered JavaScript object with given name.
 
 **废弃版本：** 9
 
-**替代接口：** ohos.web.webview.webview.WebviewController#deleteJavaScriptRegister
+**替代接口：** deleteJavaScriptRegister
 
 <!--Device-WebController-deleteJavaScriptRegister(name: string)--><!--Device-WebController-deleteJavaScriptRegister(name: string)-End-->
 
@@ -198,7 +198,7 @@ Goes forward in the history of the web page.
 
 **废弃版本：** 9
 
-**替代接口：** ohos.web.webview.webview.WebviewController#forward
+**替代接口：** forward
 
 <!--Device-WebController-forward()--><!--Device-WebController-forward()-End-->
 
@@ -218,7 +218,7 @@ Gets network cookie manager
 
 **废弃版本：** 9
 
-**替代接口：** ohos.web.webview.WebCookieManager
+**替代接口：** [WebCookieManager](../../apis-na/arkts-apis/arkts-na-webview-webcookiemanager-c.md#WebCookieManager)
 
 <!--Device-WebController-getCookieManager(): WebCookie--><!--Device-WebController-getCookieManager(): WebCookie-End-->
 
@@ -228,7 +228,7 @@ Gets network cookie manager
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ |  |
+| [WebCookie](arkts-arkweb-webcookie-c.md) |  |
 
 ## getHitTest
 
@@ -244,7 +244,7 @@ getHitTest(): HitTestType
 
 **废弃版本：** 9
 
-**替代接口：** ohos.web.webview.webview.WebviewController#getHitTest
+**替代接口：** getHitTest
 
 <!--Device-WebController-getHitTest(): HitTestType--><!--Device-WebController-getHitTest(): HitTestType-End-->
 
@@ -254,7 +254,7 @@ getHitTest(): HitTestType
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 点击测试类型。 |
+| [HitTestType](arkts-arkweb-hittesttype-e.md) | 点击测试类型。 |
 
 ## loadData
 
@@ -270,7 +270,7 @@ Loads the data or URL.
 
 **废弃版本：** 9
 
-**替代接口：** ohos.web.webview.webview.WebviewController#loadData
+**替代接口：** loadData
 
 <!--Device-WebController-loadData(options: { data: string, mimeType: string, encoding: string, baseUrl?: string, historyUrl?: string })--><!--Device-WebController-loadData(options: { data: string, mimeType: string, encoding: string, baseUrl?: string, historyUrl?: string })-End-->
 
@@ -296,7 +296,7 @@ Loads the given URL.
 
 **废弃版本：** 9
 
-**替代接口：** ohos.web.webview.webview.WebviewController#loadUrl
+**替代接口：** loadUrl
 
 <!--Device-WebController-loadUrl(options: { url: string | Resource, headers?: Array<Header> })--><!--Device-WebController-loadUrl(options: { url: string | Resource, headers?: Array<Header> })-End-->
 
@@ -306,7 +306,7 @@ Loads the given URL.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | { url: string \| Resource, headers?: Array&lt;Header&gt; } | 是 | The options with the URL and other information. |
+| options | { url: string \| Resource, headers?: Array&lt;[Header](arkts-arkweb-header-i.md)&gt; } | 是 | The options with the URL and other information. |
 
 ## onActive
 
@@ -314,7 +314,7 @@ Loads the given URL.
 onActive(): void
 ```
 
-Let the Web active. It is no longer maintained since API version 9, and it is recommended to use \_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ instead.
+Let the Web active. It is no longer maintained since API version 9, and it is recommended to use [onActive](#onActive) instead.
 
 **起始版本：** 8
 
@@ -322,7 +322,7 @@ Let the Web active. It is no longer maintained since API version 9, and it is re
 
 **废弃版本：** 9
 
-**替代接口：** ohos.web.webview.webview.WebviewController#onActive
+**替代接口：** onActive
 
 <!--Device-WebController-onActive(): void--><!--Device-WebController-onActive(): void-End-->
 
@@ -334,7 +334,7 @@ Let the Web active. It is no longer maintained since API version 9, and it is re
 onInactive(): void
 ```
 
-Let the Web inactive. It is no longer maintained since API version 9, and it is recommended to use \_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ instead.
+Let the Web inactive. It is no longer maintained since API version 9, and it is recommended to use [onInactive](#onInactive) instead.
 
 **起始版本：** 8
 
@@ -342,7 +342,7 @@ Let the Web inactive. It is no longer maintained since API version 9, and it is 
 
 **废弃版本：** 9
 
-**替代接口：** ohos.web.webview.webview.WebviewController#onInactive
+**替代接口：** onInactive
 
 <!--Device-WebController-onInactive(): void--><!--Device-WebController-onInactive(): void-End-->
 
@@ -362,7 +362,7 @@ refreshes the current URL.
 
 **废弃版本：** 9
 
-**替代接口：** ohos.web.webview.webview.WebviewController#refresh
+**替代接口：** refresh
 
 <!--Device-WebController-refresh()--><!--Device-WebController-refresh()-End-->
 
@@ -382,7 +382,7 @@ Registers the JavaScript object and method list.
 
 **废弃版本：** 9
 
-**替代接口：** ohos.web.webview.webview.WebviewController#registerJavaScriptProxy
+**替代接口：** registerJavaScriptProxy
 
 <!--Device-WebController-registerJavaScriptProxy(options: { object: object, name: string, methodList: Array<string> })--><!--Device-WebController-registerJavaScriptProxy(options: { object: object, name: string, methodList: Array<string> })-End-->
 
@@ -408,7 +408,7 @@ Gets the request focus.
 
 **废弃版本：** 9
 
-**替代接口：** ohos.web.webview.webview.WebviewController#requestFocus
+**替代接口：** requestFocus
 
 <!--Device-WebController-requestFocus()--><!--Device-WebController-requestFocus()-End-->
 
@@ -420,7 +420,7 @@ Gets the request focus.
 runJavaScript(options: { script: string, callback?: (result: string) => void })
 ```
 
-Asynchronously execute JavaScript in the context of the currently displayed page. The result of the script execution will be returned through an asynchronous callback. This method must be used on the UI thread, and the callback will also be invoked on the UI thread. \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_API Note\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_:\_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_ The state of JavaScript is no longer persisted across navigations like loadUrl. For example, global variables and functions defined before calling loadUrl will not exist in the loaded page. It is recommended that applications use registerJavaScriptProxy to ensure that the JavaScript state can be persisted across page navigations. \_\_\_HTML\_TAG\_DESC\_USD\_4\_\_\_
+Asynchronously execute JavaScript in the context of the currently displayed page. The result of the script execution will be returned through an asynchronous callback. This method must be used on the UI thread, and the callback will also be invoked on the UI thread. &lt;p&gt;&lt;strong&gt;API Note&lt;/strong&gt;:&lt;br&gt; The state of JavaScript is no longer persisted across navigations like loadUrl. For example, global variables and functions defined before calling loadUrl will not exist in the loaded page. It is recommended that applications use registerJavaScriptProxy to ensure that the JavaScript state can be persisted across page navigations. &lt;p&gt;
 
 **起始版本：** 8
 
@@ -428,7 +428,7 @@ Asynchronously execute JavaScript in the context of the currently displayed page
 
 **废弃版本：** 9
 
-**替代接口：** ohos.web.webview.webview.WebviewController#runJavaScript
+**替代接口：** runJavaScript
 
 <!--Device-WebController-runJavaScript(options: { script: string, callback?: (result: string) => void })--><!--Device-WebController-runJavaScript(options: { script: string, callback?: (result: string) => void })-End-->
 
@@ -454,7 +454,7 @@ Stops the current load.
 
 **废弃版本：** 9
 
-**替代接口：** ohos.web.webview.webview.WebviewController#stop
+**替代接口：** stop
 
 <!--Device-WebController-stop()--><!--Device-WebController-stop()-End-->
 
@@ -474,7 +474,7 @@ zoom(factor: number): void
 
 **废弃版本：** 9
 
-**替代接口：** ohos.web.webview.webview.WebviewController#zoom
+**替代接口：** zoom
 
 <!--Device-WebController-zoom(factor: number): void--><!--Device-WebController-zoom(factor: number): void-End-->
 

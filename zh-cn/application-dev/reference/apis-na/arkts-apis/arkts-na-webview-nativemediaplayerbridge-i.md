@@ -1,10 +1,12 @@
 # NativeMediaPlayerBridge
 
-\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_ 回调函数的返回值类型。接管网页媒体的播放器和ArkWeb内核之间的一个接口类。 ArkWeb内核通过该接口类的实例对象来控制应用创建的用来接管网页媒体的播放器。 > **说明：** > > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。 > > - 本Interface首批接口从API version 12开始支持。 > > - 示例效果请以真机运行为准。
+[CreateNativeMediaPlayerCallback](../../../reference/apis-arkweb/arkts-apis-webview-t.md#CreateNativeMediaPlayerCallback) 回调函数的返回值类型。接管网页媒体的播放器和ArkWeb内核之间的一个接口类。 ArkWeb内核通过该接口类的实例对象来控制应用创建的用来接管网页媒体的播放器。 > **说明：** > > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。 > > - 本Interface首批接口从API version 12开始支持。 > > - 示例效果请以真机运行为准。
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-webview-interface NativeMediaPlayerBridge--><!--Device-webview-interface NativeMediaPlayerBridge-End-->
 
@@ -18,11 +20,13 @@ enterFullscreen: ZeroParamFn<>
 
 播放器进入全屏。
 
-**类型：** ZeroParamFn&lt;&gt;
+**类型：** [ZeroParamFn](arkts-na-webview-zeroparamfn-t.md)&lt;&gt;
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-NativeMediaPlayerBridge-enterFullscreen: ZeroParamFn<>--><!--Device-NativeMediaPlayerBridge-enterFullscreen: ZeroParamFn<>-End-->
 
@@ -36,11 +40,13 @@ exitFullscreen: ZeroParamFn<>
 
 播放器退出全屏。
 
-**类型：** ZeroParamFn&lt;&gt;
+**类型：** [ZeroParamFn](arkts-na-webview-zeroparamfn-t.md)&lt;&gt;
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-NativeMediaPlayerBridge-exitFullscreen: ZeroParamFn<>--><!--Device-NativeMediaPlayerBridge-exitFullscreen: ZeroParamFn<>-End-->
 
@@ -54,11 +60,13 @@ pause: ZeroParamFn<>
 
 暂停播放。
 
-**类型：** ZeroParamFn&lt;&gt;
+**类型：** [ZeroParamFn](arkts-na-webview-zeroparamfn-t.md)&lt;&gt;
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-NativeMediaPlayerBridge-pause: ZeroParamFn<>--><!--Device-NativeMediaPlayerBridge-pause: ZeroParamFn<>-End-->
 
@@ -72,11 +80,13 @@ play: ZeroParamFn<>
 
 播放视频。
 
-**类型：** ZeroParamFn&lt;&gt;
+**类型：** [ZeroParamFn](arkts-na-webview-zeroparamfn-t.md)&lt;&gt;
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-NativeMediaPlayerBridge-play: ZeroParamFn<>--><!--Device-NativeMediaPlayerBridge-play: ZeroParamFn<>-End-->
 
@@ -90,11 +100,13 @@ release: ZeroParamFn<>
 
 销毁播放器。
 
-**类型：** ZeroParamFn&lt;&gt;
+**类型：** [ZeroParamFn](arkts-na-webview-zeroparamfn-t.md)&lt;&gt;
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-NativeMediaPlayerBridge-release: ZeroParamFn<>--><!--Device-NativeMediaPlayerBridge-release: ZeroParamFn<>-End-->
 
@@ -108,11 +120,13 @@ resumePlayer?: ResumePlayerFn
 
 通知应用销毁应用内播放器，并保存应用内播放器的状态信息。
 
-**类型：** ResumePlayerFn
+**类型：** [ResumePlayerFn](arkts-na-webview-resumeplayerfn-t.md)
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-NativeMediaPlayerBridge-resumePlayer?: ResumePlayerFn--><!--Device-NativeMediaPlayerBridge-resumePlayer?: ResumePlayerFn-End-->
 
@@ -126,11 +140,13 @@ seek: OneParamFn<double>
 
 播放跳转到某个时间点。
 
-**类型：** OneParamFn&lt;double&gt;
+**类型：** [OneParamFn](arkts-na-webview-oneparamfn-t.md)&lt;double&gt;
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-NativeMediaPlayerBridge-seek: OneParamFn<double>--><!--Device-NativeMediaPlayerBridge-seek: OneParamFn<double>-End-->
 
@@ -144,11 +160,13 @@ setMuted: OneParamFn<boolean>
 
 设置静音状态。
 
-**类型：** OneParamFn&lt;boolean&gt;
+**类型：** [OneParamFn](arkts-na-webview-oneparamfn-t.md)&lt;boolean&gt;
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-NativeMediaPlayerBridge-setMuted: OneParamFn<boolean>--><!--Device-NativeMediaPlayerBridge-setMuted: OneParamFn<boolean>-End-->
 
@@ -162,11 +180,13 @@ setPlaybackRate: OneParamFn<double>
 
 设置播放速度。
 
-**类型：** OneParamFn&lt;double&gt;
+**类型：** [OneParamFn](arkts-na-webview-oneparamfn-t.md)&lt;double&gt;
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-NativeMediaPlayerBridge-setPlaybackRate: OneParamFn<double>--><!--Device-NativeMediaPlayerBridge-setPlaybackRate: OneParamFn<double>-End-->
 
@@ -180,11 +200,13 @@ setVolume: OneParamFn<double>
 
 设置播放器音量值。
 
-**类型：** OneParamFn&lt;double&gt;
+**类型：** [OneParamFn](arkts-na-webview-oneparamfn-t.md)&lt;double&gt;
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-NativeMediaPlayerBridge-setVolume: OneParamFn<double>--><!--Device-NativeMediaPlayerBridge-setVolume: OneParamFn<double>-End-->
 
@@ -198,11 +220,13 @@ suspendPlayer?: SuspendPlayerFn
 
 通知应用销毁应用内播放器，并保存应用内播放器的状态信息。
 
-**类型：** SuspendPlayerFn
+**类型：** [SuspendPlayerFn](arkts-na-webview-suspendplayerfn-t.md)
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-NativeMediaPlayerBridge-suspendPlayer?: SuspendPlayerFn--><!--Device-NativeMediaPlayerBridge-suspendPlayer?: SuspendPlayerFn-End-->
 
@@ -216,11 +240,13 @@ updateRect: UpdateRectFn
 
 更新surface位置信息。
 
-**类型：** UpdateRectFn
+**类型：** [UpdateRectFn](arkts-na-webview-updaterectfn-t.md)
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-NativeMediaPlayerBridge-updateRect: UpdateRectFn--><!--Device-NativeMediaPlayerBridge-updateRect: UpdateRectFn-End-->
 

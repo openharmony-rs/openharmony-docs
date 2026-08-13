@@ -4,7 +4,9 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-notificationManager-export enum PriorityEnableStatus--><!--Device-notificationManager-export enum PriorityEnableStatus-End-->
 
@@ -22,7 +24,9 @@ DISABLE = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PriorityEnableStatus-DISABLE = 0--><!--Device-PriorityEnableStatus-DISABLE = 0-End-->
 
@@ -40,7 +44,9 @@ ENABLE_BY_INTELLIGENT = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PriorityEnableStatus-ENABLE_BY_INTELLIGENT = 1--><!--Device-PriorityEnableStatus-ENABLE_BY_INTELLIGENT = 1-End-->
 
@@ -58,7 +64,9 @@ ENABLE = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PriorityEnableStatus-ENABLE = 2--><!--Device-PriorityEnableStatus-ENABLE = 2-End-->
 

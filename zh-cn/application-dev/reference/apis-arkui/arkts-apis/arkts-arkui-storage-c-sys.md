@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare class Storage--><!--Device-unnamed-declare class Storage-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -23,6 +25,8 @@ clear(): void
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 <!--Device-Storage-clear(): void--><!--Device-Storage-clear(): void-End-->
 
@@ -42,6 +46,8 @@ constructor(needCrossThread?: boolean, file?: string)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 <!--Device-Storage-constructor(needCrossThread?: boolean, file?: string)--><!--Device-Storage-constructor(needCrossThread?: boolean, file?: string)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -53,7 +59,7 @@ constructor(needCrossThread?: boolean, file?: string)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | needCrossThread | boolean | 否 | 是否需要跨线程访问存储。预留接口，暂不提供具体功能。 |
-| file | string | 否 | 指定存储文件名。预留接口，暂不提供具体功能。默认使用应用文件目录下的persistent\_\_\_ESCAPED\_UNDERSCORE\_\_\_storage作为存储文件。 |
+| file | string | 否 | 指定存储文件名。预留接口，暂不提供具体功能。默认使用应用文件目录下的persistent_storage作为存储文件。 |
 
 ## delete
 
@@ -66,6 +72,8 @@ delete(key: string): void
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 <!--Device-Storage-delete(key: string): void--><!--Device-Storage-delete(key: string): void-End-->
 
@@ -90,6 +98,8 @@ get(key: string): string | undefined
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 <!--Device-Storage-get(key: string): string | undefined--><!--Device-Storage-get(key: string): string | undefined-End-->
 
@@ -118,6 +128,8 @@ set(key: string, val: any): void
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 <!--Device-Storage-set(key: string, val: any): void--><!--Device-Storage-set(key: string, val: any): void-End-->
 

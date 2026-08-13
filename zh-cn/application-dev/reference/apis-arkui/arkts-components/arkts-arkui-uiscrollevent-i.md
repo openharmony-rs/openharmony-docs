@@ -1,14 +1,16 @@
 # UIScrollEvent
 
-frameNode中[getEvent('Scroll')]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 方法的返回值，可用于给Scroll节点设置滚动事件。 UIScrollEvent继承于[UIScrollableCommonEvent]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_。
+frameNode中[getEvent('Scroll')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getEvent) 方法的返回值，可用于给Scroll节点设置滚动事件。 UIScrollEvent继承于UIScrollableCommonEvent。
 
-**继承/实现关系：** UIScrollEvent extends [UIScrollableCommonEvent](../../apis-na/arkts-apis/arkts-na-component/common-uiscrollablecommonevent-i.md)
+**继承/实现关系：** UIScrollEvent extends UIScrollableCommonEvent
 
 **起始版本：** 19
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
 
-<!--Device-unnamed-declare interface UIScrollEvent extends UIScrollableCommonEvent--><!--Device-unnamed-declare interface UIScrollEvent extends UIScrollableCommonEvent-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare interface UIScrollEvent--><!--Device-unnamed-declare interface UIScrollEvent-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,11 +20,13 @@ frameNode中[getEvent('Scroll')]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 方法的�
 setOnDidScroll(callback: ScrollOnScrollCallback | undefined): void
 ```
 
-[onDidScroll]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_事件的回调。 方法入参为undefined时，会重置事件回调。
+onDidScroll事件的回调。 方法入参为undefined时，会重置事件回调。
 
 **起始版本：** 19
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -36,7 +40,7 @@ setOnDidScroll(callback: ScrollOnScrollCallback | undefined): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ \| undefined | 是 | onDidScroll事件的回调函数。 |
+| callback | [ScrollOnScrollCallback](arkts-arkui-scrollonscrollcallback-t.md) \| undefined | 是 | onDidScroll事件的回调函数。 |
 
 ## setOnWillScroll
 
@@ -44,11 +48,13 @@ setOnDidScroll(callback: ScrollOnScrollCallback | undefined): void
 setOnWillScroll(callback: ScrollOnWillScrollCallback | undefined): void
 ```
 
-[onWillScroll]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_事件的回调。 方法入参为undefined时，会重置事件回调。
+onWillScroll事件的回调。 方法入参为undefined时，会重置事件回调。
 
 **起始版本：** 19
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -62,5 +68,5 @@ setOnWillScroll(callback: ScrollOnWillScrollCallback | undefined): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ \| undefined | 是 | onWillScroll事件的回调函数。 |
+| callback | [ScrollOnWillScrollCallback](arkts-arkui-scrollonwillscrollcallback-t.md) \| undefined | 是 | onWillScroll事件的回调函数。 |
 

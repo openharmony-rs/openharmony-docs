@@ -14,7 +14,7 @@ function registerMissionListener(listener: MissionListener): number
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.missionManager/missionManager#on
+**替代接口：** on
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
@@ -28,7 +28,7 @@ function registerMissionListener(listener: MissionListener): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| listener | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 系统任务监听器。 |
+| listener | [MissionListener](arkts-ability-missionlistener-i-sys.md) | 是 | 系统任务监听器。 |
 
 **返回值：**
 
@@ -36,7 +36,7 @@ function registerMissionListener(listener: MissionListener): number
 | --- | --- |
 | number | 监听器的index值，由系统创建，在注册系统任务状态监听器时分配，和监听器一一对应 。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import missionManager from '@ohos.application.missionManager';

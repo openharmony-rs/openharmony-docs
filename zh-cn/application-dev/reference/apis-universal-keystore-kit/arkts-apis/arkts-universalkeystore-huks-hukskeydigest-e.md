@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 <!--Device-huks-export enum HuksKeyDigest--><!--Device-huks-export enum HuksKeyDigest-End-->
 
 **系统能力：** 
@@ -23,6 +25,8 @@ HUKS_DIGEST_NONE = 0
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -44,6 +48,8 @@ HUKS_DIGEST_MD5 = 1
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksKeyDigest-HUKS_DIGEST_MD5 = 1--><!--Device-HuksKeyDigest-HUKS_DIGEST_MD5 = 1-End-->
@@ -63,6 +69,8 @@ HUKS_DIGEST_SM3 = 2
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -84,6 +92,8 @@ HUKS_DIGEST_SHA1 = 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksKeyDigest-HUKS_DIGEST_SHA1 = 10--><!--Device-HuksKeyDigest-HUKS_DIGEST_SHA1 = 10-End-->
@@ -103,6 +113,8 @@ HUKS_DIGEST_SHA224 = 11
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -124,6 +136,8 @@ HUKS_DIGEST_SHA256 = 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksKeyDigest-HUKS_DIGEST_SHA256 = 12--><!--Device-HuksKeyDigest-HUKS_DIGEST_SHA256 = 12-End-->
@@ -144,6 +158,8 @@ HUKS_DIGEST_SHA384 = 13
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksKeyDigest-HUKS_DIGEST_SHA384 = 13--><!--Device-HuksKeyDigest-HUKS_DIGEST_SHA384 = 13-End-->
@@ -163,6 +179,8 @@ HUKS_DIGEST_SHA512 = 14
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

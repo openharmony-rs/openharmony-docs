@@ -1,10 +1,12 @@
 # JsRawHeapTrimLevel
 
-ת���ѿ��յĲü������ö�١� TRIM\_LEVEL\_2���TRIM\_LEVEL\_1���ü�ʱ���������������ֵΪ6�롣ʹ��TRIM\_LEVEL\_1ʱ������ﵽ����ֵ���л���TRIM\_LEVEL\_2ʱ���ü�ʱ����ܻᳬ��6�룬����APP\_FREEZE�������¼���������Ӧ�ñ�ϵͳ��ֹ����ʱ������TRIM\_LEVEL\_1������вü��� �Ƽ�����ʹ��TRIM\_LEVEL\_1ȷ��Ӧ���ȶ���������Ҫ�����ײü�ʱ����TRIM\_LEVEL\_2��
+转储堆快照的裁剪级别的枚举。 TRIM_LEVEL_2相比TRIM_LEVEL_1，裁剪时间更长。冻屏的阈值为6秒。使用TRIM_LEVEL_1时，不会达到该阈值；切换至TRIM_LEVEL_2时，裁剪时间可能会超过6秒，触发APP_FREEZE（冻屏事件），导致应用被系统终止，此时回退至TRIM_LEVEL_1级别进行裁剪。 推荐优先使用TRIM_LEVEL_1确保应用稳定，仅在需要更彻底裁剪时尝试TRIM_LEVEL_2。
 
-**起始版本：** 20
+**起始版本：** 26.1.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为26.1.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+
+**废弃版本：** -1
 
 <!--Device-hidebug-enum JsRawHeapTrimLevel--><!--Device-hidebug-enum JsRawHeapTrimLevel-End-->
 
@@ -16,11 +18,13 @@
 TRIM_LEVEL_1 = 0
 ```
 
-LEVEL 1����ü�����Ҫ�ü��ַ�����
+LEVEL 1级别裁剪，主要裁剪字符串。
 
-**起始版本：** 20
+**起始版本：** 26.1.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为26.1.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+
+**废弃版本：** -1
 
 <!--Device-JsRawHeapTrimLevel-TRIM_LEVEL_1 = 0--><!--Device-JsRawHeapTrimLevel-TRIM_LEVEL_1 = 0-End-->
 
@@ -32,11 +36,13 @@ LEVEL 1����ü�����Ҫ�ü��ַ�����
 TRIM_LEVEL_2 = 1
 ```
 
-LEVEL 2����ü�����TRIM\_LEVEL\_1�Ļ����ϣ������˶����ַ��ʶ�Ĵ�С����8���ֽڼ��ٵ�4���ֽڡ�
+LEVEL 2级别裁剪，在TRIM_LEVEL_1的基础上，精简了对象地址标识的大小，从8个字节减少到4个字节。
 
-**起始版本：** 20
+**起始版本：** 26.1.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为26.1.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+
+**废弃版本：** -1
 
 <!--Device-JsRawHeapTrimLevel-TRIM_LEVEL_2 = 1--><!--Device-JsRawHeapTrimLevel-TRIM_LEVEL_2 = 1-End-->
 

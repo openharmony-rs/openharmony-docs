@@ -19,7 +19,7 @@ function remove(
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationSubscribe/notificationSubscribe#remove
+**替代接口：** [remove](arkts-notification-notificationsubscribe-remove-f-sys.md#remove（系统接口）)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -33,10 +33,10 @@ function remove(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundle | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 指定应用的包信息。 |
-| notificationKey | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 通知键值。 |
-| reason | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 通知删除原因。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 删除指定通知回调函数。 |
+| bundle | BundleOption | 是 | 指定应用的包信息。 |
+| notificationKey | NotificationKey | 是 | 通知键值。 |
+| reason | RemoveReason | 是 | 通知删除原因。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 删除指定通知回调函数。 |
 
 
 ## remove
@@ -53,7 +53,7 @@ function remove(bundle: BundleOption, notificationKey: NotificationKey, reason: 
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationSubscribe/notificationSubscribe#remove
+**替代接口：** [remove](arkts-notification-notificationsubscribe-remove-f-sys.md#remove（系统接口）)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -67,9 +67,9 @@ function remove(bundle: BundleOption, notificationKey: NotificationKey, reason: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundle | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 指定应用的包信息。 |
-| notificationKey | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 通知键值。 |
-| reason | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 通知删除原因。 |
+| bundle | BundleOption | 是 | 指定应用的包信息。 |
+| notificationKey | NotificationKey | 是 | 通知键值。 |
+| reason | RemoveReason | 是 | 通知删除原因。 |
 
 **返回值：**
 
@@ -92,7 +92,7 @@ function remove(hashCode: string, reason: RemoveReason, callback: AsyncCallback<
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationSubscribe/notificationSubscribe#remove
+**替代接口：** [remove](arkts-notification-notificationsubscribe-remove-f-sys.md#remove（系统接口）)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -106,9 +106,9 @@ function remove(hashCode: string, reason: RemoveReason, callback: AsyncCallback<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hashCode | string | 是 | 通知唯一ID。可以通过[onConsume]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_回调的入参[SubscribeCallbackData]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_获取其内部[NotificationRequest]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_对象中的hashCode。 |
-| reason | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 通知删除原因。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 删除指定通知回调函数。 |
+| hashCode | string | 是 | 通知唯一ID。可以通过[onConsume](arkts-notification-notificationsubscriber-notificationsubscriber-i-sys.md#onConsume) 回调的入参[SubscribeCallbackData](arkts-notification-notificationsubscriber-subscribecallbackdata-i-sys.md#SubscribeCallbackData（系统接口）)获取其内部 [NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md#NotificationRequest)对象中的hashCode。 |
+| reason | RemoveReason | 是 | 通知删除原因。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 删除指定通知回调函数。 |
 
 
 ## remove
@@ -125,7 +125,7 @@ function remove(hashCode: string, reason: RemoveReason): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationSubscribe/notificationSubscribe#remove
+**替代接口：** [remove](arkts-notification-notificationsubscribe-remove-f-sys.md#remove（系统接口）)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -140,7 +140,7 @@ function remove(hashCode: string, reason: RemoveReason): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | hashCode | string | 是 | 通知唯一ID。 |
-| reason | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 通知删除原因。 |
+| reason | RemoveReason | 是 | 通知删除原因。 |
 
 **返回值：**
 

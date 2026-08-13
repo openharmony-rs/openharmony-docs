@@ -16,6 +16,8 @@ TimePicker(options?: TimePickerOptions)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TimePickerInterface-(options?: TimePickerOptions): TimePickerAttribute--><!--Device-TimePickerInterface-(options?: TimePickerOptions): TimePickerAttribute-End-->
@@ -26,7 +28,13 @@ TimePicker(options?: TimePickerOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 配置时间选择组件的参数。当需要自定义初始选中时间、时间格式、时间范围等配置时传入此参数， 不传入时使用默认配置（初始选中时间为当前系统时间，时间格式默认为小时和分钟，时间范围默认为00:00-23:59（默认结束时间为23:59:59））。  |
+| options | [TimePickerOptions](arkts-arkui-timepickeroptions-i.md) | 否 | 配置时间选择组件的参数。当需要自定义初始选中时间、时间格式、时间范围等配置时传入此参数， 不传入时使用默认配置（初始选中时间为当前系统时间，时间格式默认为小时和分钟，时间范围默认为00:00-23:59（默认结束时间为23:59:59））。 |
 
 ## 汇总
 
+- [TimePickerDialogOptions](arkts-arkui-timepickerdialogoptions-i.md)
+- [TimePickerOptions](arkts-arkui-timepickeroptions-i.md)
+- [TimePickerResult](arkts-arkui-timepickerresult-i.md)
+- [DateTimeOptions](arkts-arkui-datetimeoptions-t.md)
+- [OnTimePickerChangeCallback](arkts-arkui-ontimepickerchangecallback-t.md)
+- [TimePickerFormat](arkts-arkui-timepickerformat-e.md)

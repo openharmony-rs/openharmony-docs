@@ -2,9 +2,11 @@
 
 路由跳转模式。
 
-**起始版本：** 23
+**起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 <!--Device-router-export enum RouterMode--><!--Device-router-export enum RouterMode-End-->
 
@@ -16,13 +18,15 @@
 Standard
 ```
 
-Default route mode. The page will be added to the top of the page stack.
+多实例模式，也是默认情况下的跳转模式。 目标页面会被添加到页面栈顶，无论栈中是否存在相同url的页面。适用于需要保留多个相同页面的场景，例如浏览商品详情页时每个商品各需要一个独立页面实例。 **说明：** 不使用路由跳转模式时，则按照默认的多实例模式进行跳转。适用于需要保持页面唯一实例的场景，例如主页、登录页等不应在栈中重复出现的页面。
 
-**起始版本：** 23
+**起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RouterMode-Standard--><!--Device-RouterMode-Standard-End-->
 
@@ -34,13 +38,15 @@ Default route mode. The page will be added to the top of the page stack.
 Single
 ```
 
-Single route mode. If the target page already has the same url page in the page stack, the same url page closest to the top of the stack will be moved to the top of the stack. If the target page url does not exist in the page stack, route will use default route mode.
+单实例模式。 如果目标页面的url已经存在于页面栈中，则该url页面移动到栈顶。 如果目标页面的url在页面栈中不存在同url页面，则按照默认的多实例模式进行跳转。
 
-**起始版本：** 23
+**起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RouterMode-Single--><!--Device-RouterMode-Single-End-->
 

@@ -8,7 +8,7 @@
 
 **废弃版本：** 11
 
-**替代接口：** [userAuth.UserAuthResult](arkts-userauthentication-userauth-userauthresult-i.md)
+**替代接口：** [UserAuthResult](arkts-userauthentication-userauth-userauthresult-i.md#UserAuthResult)
 
 <!--Device-userAuth-interface AuthResultInfo--><!--Device-userAuth-interface AuthResultInfo-End-->
 
@@ -30,7 +30,7 @@ lockoutDuration?: number
 
 **废弃版本：** 11
 
-**替代接口：** [userAuth.AuthLockState.lockoutDuration](arkts-userauthentication-userauth-authlockstate-i.md#lockoutduration)
+**替代接口：** [lockoutDuration](arkts-userauthentication-userauth-authlockstate-i.md#lockoutDuration)
 
 <!--Device-AuthResultInfo-lockoutDuration?: number--><!--Device-AuthResultInfo-lockoutDuration?: number-End-->
 
@@ -52,7 +52,7 @@ remainAttempts?: number
 
 **废弃版本：** 11
 
-**替代接口：** [userAuth.AuthLockState.remainingAuthAttempts](arkts-userauthentication-userauth-authlockstate-i.md#remainingauthattempts)
+**替代接口：** [remainingAuthAttempts](arkts-userauthentication-userauth-authlockstate-i.md#remainingAuthAttempts)
 
 <!--Device-AuthResultInfo-remainAttempts?: number--><!--Device-AuthResultInfo-remainAttempts?: number-End-->
 
@@ -74,7 +74,7 @@ result: number
 
 **废弃版本：** 11
 
-**替代接口：** [userAuth.UserAuthResult.result](arkts-userauthentication-userauth-userauthresult-i.md#result)
+**替代接口：** [result](arkts-userauthentication-userauth-userauthresult-i.md#result)
 
 <!--Device-AuthResultInfo-result: number--><!--Device-AuthResultInfo-result: number-End-->
 
@@ -96,7 +96,7 @@ token?: Uint8Array
 
 **废弃版本：** 11
 
-**替代接口：** [userAuth.UserAuthResult.token](arkts-userauthentication-userauth-userauthresult-i.md#token)
+**替代接口：** [token](arkts-userauthentication-userauth-userauthresult-i.md#token)
 
 <!--Device-AuthResultInfo-token?: Uint8Array--><!--Device-AuthResultInfo-token?: Uint8Array-End-->
 

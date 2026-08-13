@@ -1,10 +1,12 @@
 # TextDataDetectorConfig
 
-该配置只支持[Text]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_组件和[RichEditor]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_组件。
+该配置只支持Text组件和RichEditor组件。
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare interface TextDataDetectorConfig--><!--Device-unnamed-declare interface TextDataDetectorConfig-End-->
 
@@ -23,6 +25,8 @@ color?: ResourceColor
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,6 +50,8 @@ decoration?: DecorationStyleInterface
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -60,13 +66,15 @@ decoration?: DecorationStyleInterface
 enablePreviewMenu?: boolean
 ```
 
-设置是否开启文本识别长按显示预览菜单。true表示开启，false表示未开启。 默认值：false 当[copyOptions]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_设置为None时，若enablePreviewMenu设置为true，长按AI实体也不能显示预览菜单。 本接口实际支持的设备类型范围（Phone、Tablet）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car、Wearable）。因硬件形态限制，该接口在PC/2in1、TV、Car、 Wearable设备中调用功能不生效。
+设置是否开启文本识别长按显示预览菜单。true表示开启，false表示未开启。 默认值：false 当copyOptions设置为None时，若enablePreviewMenu设置为true，长按AI实体也不能显示预览菜单。 本接口实际支持的设备类型范围（Phone、Tablet）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car、Wearable）。因硬件形态限制，该接口在PC/2in1、TV、Car、 Wearable设备中调用功能不生效。
 
 **类型：** boolean
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -90,6 +98,8 @@ onDetectResultUpdate?: Callback<string>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -106,11 +116,13 @@ types: TextDataDetectorType[]
 
 设置文本识别的实体类型。设置types为null或者[]时，识别所有类型的实体，否则只识别指定类型的实体。
 
-**类型：** TextDataDetectorType[]
+**类型：** [TextDataDetectorType](arkts-arkui-textdatadetectortype-e.md)[]
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

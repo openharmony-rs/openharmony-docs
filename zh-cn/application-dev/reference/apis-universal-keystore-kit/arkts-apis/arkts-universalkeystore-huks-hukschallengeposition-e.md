@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 <!--Device-huks-export enum HuksChallengePosition--><!--Device-huks-export enum HuksChallengePosition-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
@@ -21,6 +23,8 @@ HUKS_CHALLENGE_POS_0 = 0
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -40,6 +44,8 @@ HUKS_CHALLENGE_POS_1 = 1
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksChallengePosition-HUKS_CHALLENGE_POS_1 = 1--><!--Device-HuksChallengePosition-HUKS_CHALLENGE_POS_1 = 1-End-->
@@ -58,6 +64,8 @@ HUKS_CHALLENGE_POS_2 = 2
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksChallengePosition-HUKS_CHALLENGE_POS_2 = 2--><!--Device-HuksChallengePosition-HUKS_CHALLENGE_POS_2 = 2-End-->
@@ -75,6 +83,8 @@ HUKS_CHALLENGE_POS_3 = 3
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

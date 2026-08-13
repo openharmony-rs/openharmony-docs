@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-export enum LevelMode--><!--Device-unnamed-export enum LevelMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -22,6 +24,8 @@ OVERLAY = 0
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-LevelMode-OVERLAY = 0--><!--Device-LevelMode-OVERLAY = 0-End-->
@@ -34,11 +38,13 @@ OVERLAY = 0
 EMBEDDED = 1
 ```
 
-弹窗节点为页面内路由/导航下的节点，随路由导航切换，弹窗随页面隐藏。 \_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_**说明：** \_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_1. 目前只支持挂载在Page或者[NavDestination]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_节点上，优先挂载在Page节点下， 只支持在这两种页面内顶层显示。 \_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_2. 该模式下新起的页面可以覆盖在弹窗上，页面返回后该弹窗依旧存在，弹窗内容不会丢失。 \_\_\_HTML\_TAG\_DESC\_USD\_4\_\_\_3. 该模式下需确保目标页面节点如Page节点已挂载上树，再拉起弹窗，否则弹窗将无法挂载到对应的页面节点内。
+弹窗节点为页面内路由/导航下的节点，随路由导航切换，弹窗随页面隐藏。 &lt;br /&gt;**说明：** &lt;br /&gt;1. 目前只支持挂载在Page或者NavDestination节点上，优先挂载在Page节点下， 只支持在这两种页面内顶层显示。 &lt;br /&gt;2. 该模式下新起的页面可以覆盖在弹窗上，页面返回后该弹窗依旧存在，弹窗内容不会丢失。 &lt;br/&gt;3. 该模式下需确保目标页面节点如Page节点已挂载上树，再拉起弹窗，否则弹窗将无法挂载到对应的页面节点内。
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -8,9 +8,11 @@ function notifyScreenshotEvent(eventType: ScreenshotEventType): Promise<void>
 
 通知屏幕截屏的事件类型，使用Promise异步回调。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-window-function notifyScreenshotEvent(eventType: ScreenshotEventType): Promise<void>--><!--Device-window-function notifyScreenshotEvent(eventType: ScreenshotEventType): Promise<void>-End-->
 
@@ -22,7 +24,7 @@ function notifyScreenshotEvent(eventType: ScreenshotEventType): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| eventType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 截屏事件类型。 |
+| eventType | [ScreenshotEventType](arkts-arkui-window-screenshoteventtype-e.md) | 是 | 截屏事件类型。 |
 
 **返回值：**
 
@@ -34,11 +36,11 @@ function notifyScreenshotEvent(eventType: ScreenshotEventType): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause: 1. Invalid parameter range. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-interface Progress--><!--Device-unnamed-interface Progress-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -24,6 +26,8 @@ readonly processedSize: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-Progress-readonly processedSize: number--><!--Device-Progress-readonly processedSize: number-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -41,6 +45,8 @@ readonly totalSize: number
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 <!--Device-Progress-readonly totalSize: number--><!--Device-Progress-readonly totalSize: number-End-->
 

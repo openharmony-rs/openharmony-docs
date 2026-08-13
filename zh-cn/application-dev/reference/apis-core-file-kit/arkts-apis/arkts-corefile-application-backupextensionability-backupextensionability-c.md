@@ -2,9 +2,11 @@
 
 备份恢复扩展能力。应用可通过该类实现自定义备份、恢复、进度上报和安全退出逻辑。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare class BackupExtensionAbility--><!--Device-unnamed-declare class BackupExtensionAbility-End-->
 
@@ -18,9 +20,11 @@ onBackup(): void
 
 Extension生命周期回调，在执行备份数据时回调，由开发者实现自定义备份数据处理。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -28,7 +32,7 @@ Extension生命周期回调，在执行备份数据时回调，由开发者实�
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
-**示例：**
+## 示例
 
 ```TypeScript
 class BackupExt extends BackupExtensionAbility {
@@ -46,9 +50,11 @@ onBackupEx(backupInfo: string): string | Promise<string>
 
 备份恢复框架在备份时向应用传递扩展参数，由开发者实现自定义备份处理。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -66,9 +72,9 @@ onBackupEx(backupInfo: string): string | Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 应用执行自定义备份操作的信息，返回值为JSON格式字符串， |
+| string | 应用执行自定义备份操作的信息，返回值为JSON格式字符串， 包含type、errorCode和errorInfo字段，支持同步返回或使用Promise异步返回。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BackupExtensionAbility } from '@kit.CoreFileKit';
@@ -153,9 +159,11 @@ onProcess(): string
 
 返回应用执行备份或恢复业务的进度信息。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -169,7 +177,7 @@ onProcess(): string
 | --- | --- |
 | string | 应用处理数据的进度信息，返回值为JSON格式字符串。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BackupExtensionAbility } from '@kit.CoreFileKit';
@@ -250,21 +258,17 @@ function appJob(progressInfo: MigrateProgressInfo, args: number) : string {
 
 ## onRelease
 
-ArkTS-Dyn:
-```TypeScript
-onRelease(scenario: number): Promise<void>
-```
-
-ArkTS-Sta:
 ```TypeScript
 onRelease(scenario: int): Promise<void>
 ```
 
 备份恢复框架安全退出回调，应用可在备份或恢复完成后清理临时文件。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -276,7 +280,7 @@ onRelease(scenario: int): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scenario | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 当前操作场景，值为1表示备份，值为2表示恢复。 |
+| scenario | int | 是 | 当前操作场景，值为1表示备份，值为2表示恢复。 |
 
 **返回值：**
 
@@ -284,7 +288,7 @@ onRelease(scenario: int): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 以清理文件为例
@@ -327,9 +331,11 @@ onRestore(bundleVersion: BundleVersion): void
 
 Extension生命周期回调，在执行恢复数据时回调，由开发者提供扩展的恢复数据操作。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -341,9 +347,9 @@ Extension生命周期回调，在执行恢复数据时回调，由开发者提�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleVersion | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 恢复时应用数据所在的版本信息。 |
+| bundleVersion | [BundleVersion](arkts-corefile-application-backupextensionability-bundleversion-i.md) | 是 | 恢复时应用数据所在的版本信息。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BackupExtensionAbility, BundleVersion } from '@kit.CoreFileKit';
@@ -363,9 +369,11 @@ onRestoreEx(bundleVersion: BundleVersion, restoreInfo: string): string | Promise
 
 Extension生命周期回调，在执行恢复数据时回调，由开发者实现自定义恢复数据处理。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -377,16 +385,16 @@ Extension生命周期回调，在执行恢复数据时回调，由开发者实�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleVersion | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 恢复时应用数据所在的版本信息。 |
+| bundleVersion | [BundleVersion](arkts-corefile-application-backupextensionability-bundleversion-i.md) | 是 | 恢复时应用数据所在的版本信息。 |
 | restoreInfo | string | 是 | 恢复时框架传递给应用的扩展信息，参数为JSON格式字符串。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 应用执行自定义恢复操作的信息，返回值为JSON格式字符串， |
+| string | 应用执行自定义恢复操作的信息，返回值为JSON格式字符串， 包含type、errorCode和errorInfo字段，支持同步返回或使用Promise异步返回。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BackupExtensionAbility, BundleVersion } from '@kit.CoreFileKit';
@@ -471,11 +479,13 @@ context: BackupExtensionContext
 
 BackupExtensionAbility的上下文环境，继承自ExtensionContext。
 
-**类型：** BackupExtensionContext
+**类型：** [BackupExtensionContext](arkts-corefile-file-backupextensioncontext-backupextensioncontext-c.md)
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

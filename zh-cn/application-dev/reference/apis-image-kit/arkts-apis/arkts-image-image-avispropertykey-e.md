@@ -1,10 +1,12 @@
 # AvisPropertyKey
 
-表示AVIS图片信息的枚举。 > **说明：** > > 返回字段类型具体参考\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+表示AVIS图片信息的枚举。 > **说明：** > > 返回字段类型具体参考[AvisMetadata](../../../reference/apis-image-kit/arkts-apis-image-AvisMetadata.md)。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-image-enum AvisPropertyKey--><!--Device-image-enum AvisPropertyKey-End-->
 
@@ -20,7 +22,9 @@ AVIS图片的每帧播放时长。 单位：毫秒（ms）。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -1,14 +1,16 @@
 # ColorResponse（系统接口）
 
-颜色传感器数据，继承于[Response]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。用于表示颜色传感器上报的响应数据，包含光照强度和色温信息。
+颜色传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md#Response)。用于表示颜色传感器上报的响应数据，包含光照强度和色温信息。
 
-**继承/实现关系：** ColorResponse extends [Response](arkts-sensorservice-sensor-response-i.md)
+**继承/实现关系：** ColorResponse extends [Response](arkts-sensorservice-sensor-response-i.md#Response)
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-<!--Device-sensor-interface ColorResponse extends Response--><!--Device-sensor-interface ColorResponse extends Response-End-->
+**废弃版本：** -1
+
+<!--Device-sensor-interface ColorResponse--><!--Device-sensor-interface ColorResponse-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
@@ -24,9 +26,11 @@ colorTemperature: double
 
 **类型：** double
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ColorResponse-colorTemperature: double--><!--Device-ColorResponse-colorTemperature: double-End-->
 
@@ -44,9 +48,11 @@ lightIntensity: double
 
 **类型：** double
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ColorResponse-lightIntensity: double--><!--Device-ColorResponse-lightIntensity: double-End-->
 

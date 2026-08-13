@@ -6,6 +6,8 @@ Provides basic information of web storage.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-webview-interface WebStorageOrigin--><!--Device-webview-interface WebStorageOrigin-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -23,6 +25,8 @@ Url source.
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WebStorageOrigin-origin: string--><!--Device-WebStorageOrigin-origin: string-End-->
 
@@ -42,6 +46,8 @@ the callback of getOriginUsage. Unit: byte.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-WebStorageOrigin-quota: double--><!--Device-WebStorageOrigin-quota: double-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -59,6 +65,8 @@ Specify the amount of storage for the source. Unit: byte.
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WebStorageOrigin-usage: double--><!--Device-WebStorageOrigin-usage: double-End-->
 

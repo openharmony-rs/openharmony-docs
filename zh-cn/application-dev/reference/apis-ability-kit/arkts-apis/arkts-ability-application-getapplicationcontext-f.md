@@ -12,6 +12,8 @@ export function getApplicationContext(): ApplicationContext
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
@@ -24,7 +26,7 @@ export function getApplicationContext(): ApplicationContext
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 应用上下文。 |
+| [ApplicationContext](arkts-ability-applicationcontext-c.md) | 应用上下文。 |
 
 **错误码：**
 
@@ -32,7 +34,7 @@ export function getApplicationContext(): ApplicationContext
 | --- | --- |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { AbilityConstant, UIAbility, application, Want } from '@kit.AbilityKit';

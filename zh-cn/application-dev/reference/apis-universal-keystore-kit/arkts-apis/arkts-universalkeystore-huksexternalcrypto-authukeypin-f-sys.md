@@ -12,6 +12,8 @@ PIN码认证。使用Promise异步回调。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 <!--Device-huksExternalCrypto-function authUkeyPin(resourceId: string, params: Array<HuksExternalCryptoParam>): Promise<void>--><!--Device-huksExternalCrypto-function authUkeyPin(resourceId: string, params: Array<HuksExternalCryptoParam>): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
@@ -22,8 +24,8 @@ PIN码认证。使用Promise异步回调。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resourceId | string | 是 | Ukey中某容器的资源ID，可通过[导出证书的接口]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_获取，其结果中附带resourceId。 |
-| params | Array&lt;HuksExternalCryptoParam&gt; | 是 | 操作时需传入的参数，必选TAG：[HUKS\_\_\_ESCAPED\_UNDERSCORE\_\_\_EXT\_\_\_ESCAPED\_UNDERSCORE\_\_\_CRYPTO\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_UKEY\_\_\_ESCAPED\_UNDERSCORE\_\_\_PIN]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
+| resourceId | string | 是 | Ukey中某容器的资源ID，可通过 [导出证书的接口](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-certificatemanagerdialog-openauthorizedialog-f.md#openAuthorizeDialog) 获取，其结果中附带resourceId。 |
+| params | Array&lt;[HuksExternalCryptoParam](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptoparam-i.md)&gt; | 是 | 操作时需传入的参数，必选TAG： [HUKS_EXT_CRYPTO_TAG_UKEY_PIN](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotagtype-e.md#HuksExternalCryptoTagType) 。 |
 
 **返回值：**
 
@@ -35,20 +37,20 @@ PIN码认证。使用Promise异步回调。
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application and is not allowed to use system applications. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported. |
-| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed. |
 | [12000006](../errorcode-huks.md#12000006-算法库操作失败) | the UKey driver operation failed. |
-| [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist. |
-| [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal.This error may occur if the process function is not found, or due to other issues. |
-| [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient. |
-| [12000018](../errorcode-huks.md#12000018-输入参数非法) | the input parameter is invalid. |
-| [12000020](../errorcode-huks.md#12000020-依赖的模块报错) | the provider operation failed. |
-| [12000021](../errorcode-huks.md#12000021-ukey-pin码被锁定) | the UKey PIN is locked. |
 | [12000022](../errorcode-huks.md#12000022-ukey-pin码错误) | the UKey PIN is incorrect. |
+| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed. |
+| [12000021](../errorcode-huks.md#12000021-ukey-pin码被锁定) | the UKey PIN is locked. |
+| [12000020](../errorcode-huks.md#12000020-依赖的模块报错) | the provider operation failed. |
+| [12000018](../errorcode-huks.md#12000018-输入参数非法) | the input parameter is invalid. |
+| [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application and is not allowed to use system applications. |
+| [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal. This error may occur if the process function is not found, or due to other issues. |
+| [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist. |
 | [12000024](../errorcode-huks.md#12000024-设备或资源繁忙) | the provider or UKey is busy. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';

@@ -22,7 +22,7 @@ function getSdkVersion(options: HuksOptions): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 空对象（此处传空即可）。 |
+| options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | 空对象（此处传空即可）。 |
 
 **返回值：**
 
@@ -30,7 +30,7 @@ function getSdkVersion(options: HuksOptions): string
 | --- | --- |
 | string | 返回sdk版本。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';

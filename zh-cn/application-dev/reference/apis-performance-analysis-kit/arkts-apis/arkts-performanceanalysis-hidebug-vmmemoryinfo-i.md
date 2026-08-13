@@ -1,10 +1,12 @@
 # VMMemoryInfo
 
-VM�ڴ���Ϣ��
+VM内存信息。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-hidebug-interface VMMemoryInfo--><!--Device-hidebug-interface VMMemoryInfo-End-->
 
@@ -16,13 +18,15 @@ VM�ڴ���Ϣ��
 allArraySize: bigint
 ```
 
-��ʾ��ǰ�������������������С����KBΪ��λ��
+表示当前虚拟机的所有数组对象大小，以KB为单位。
 
 **类型：** bigint
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-VMMemoryInfo-allArraySize: bigint--><!--Device-VMMemoryInfo-allArraySize: bigint-End-->
 
@@ -34,13 +38,15 @@ allArraySize: bigint
 heapUsed: bigint
 ```
 
-��ʾ��ǰ�����ʹ�õĶѴ�С����KBΪ��λ��
+表示当前虚拟机使用的堆大小，以KB为单位。
 
 **类型：** bigint
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-VMMemoryInfo-heapUsed: bigint--><!--Device-VMMemoryInfo-heapUsed: bigint-End-->
 
@@ -52,13 +58,15 @@ heapUsed: bigint
 totalHeap: bigint
 ```
 
-��ʾ��ǰ������Ķ��ܴ�С����KBΪ��λ��
+表示当前虚拟机的堆总大小，以KB为单位。
 
 **类型：** bigint
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-VMMemoryInfo-totalHeap: bigint--><!--Device-VMMemoryInfo-totalHeap: bigint-End-->
 

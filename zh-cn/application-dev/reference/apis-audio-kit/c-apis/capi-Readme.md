@@ -31,8 +31,6 @@
     - [AudioRenderer](capi-audiorenderer.md)
     - [OHAudio](capi-ohaudio.md)
     - [AudioCapturer](capi-audiocapturer.md)
-    - [AudioAccessoryManager](capi-audioaccessorymanager.md)
-    - [AudioAccessoryInputStreamManager](capi-audioaccessoryinputstreammanager.md)
 - 结构体
     - [OH_MIDIEvent](capi-ohmidi-oh-midievent.md)
     - [OH_MIDIDeviceInformation](capi-ohmidi-oh-midideviceinformation.md)

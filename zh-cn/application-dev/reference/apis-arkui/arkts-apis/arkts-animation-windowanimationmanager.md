@@ -2,9 +2,11 @@
 
 窗口动画管理器，可以监听应用启动退出时应用的动画窗口，提供启动退出过程中控件动画和应用窗口联动动画能力。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare namespace windowAnimationManager--><!--Device-unnamed-declare namespace windowAnimationManager-End-->
 
@@ -19,9 +21,9 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [minimizeWindowWithAnimation](arkts-arkui-windowanimationmanager-minimizewindowwithanimation-f-sys.md#minimizewindowwithanimation) | 最小化动画目标窗口，并返回动画完成的回调。使用callback异步回调。 |
-| [minimizeWindowWithAnimation](arkts-arkui-windowanimationmanager-minimizewindowwithanimation-f-sys.md#minimizewindowwithanimation-1) | 最小化动画目标窗口，并返回动画完成的回调。使用Promise异步回调。 |
-| [setController](arkts-arkui-windowanimationmanager-setcontroller-f-sys.md#setcontroller) | 设置窗口动画控制器。窗口动画控制器的说明请参考[WindowAnimationController]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 在使用windowAnimationManager的其他接口前，需要预先调用本接口设置窗口动画控制器。 |
+| [minimizeWindowWithAnimation](arkts-arkui-windowanimationmanager-minimizewindowwithanimation-f-sys.md#minimizeWindowWithAnimation) | 最小化动画目标窗口，并返回动画完成的回调。使用callback异步回调。 |
+| [minimizeWindowWithAnimation](arkts-arkui-windowanimationmanager-minimizewindowwithanimation-f-sys.md#minimizeWindowWithAnimation（系统接口）) | 最小化动画目标窗口，并返回动画完成的回调。使用Promise异步回调。 |
+| [setController](arkts-arkui-windowanimationmanager-setcontroller-f-sys.md#setController) | 设置窗口动画控制器。窗口动画控制器的说明请参考[WindowAnimationController](arkts-arkui-windowanimationmanager-windowanimationcontroller-i-sys.md#WindowAnimationController（系统接口）)。 在使用windowAnimationManager的其他接口前，需要预先调用本接口设置窗口动画控制器。 |
 <!--DelEnd-->
 
 <!--Del-->

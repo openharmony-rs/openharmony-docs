@@ -6,11 +6,13 @@
 function enableLeakWatcher(isEnabled: boolean, configs: Array<string>, callback: Callback<Array<string>>): void
 ```
 
-ʹ��ArkTS����й©��⡣ �˽ӿ�ͨ��һ�ε��ü��ɼ��ArkTS������ڴ�й©����֮ǰ��Ҫ�����ĸ�������enable��watch��check��dump���ķ������Ӽ�ࡣ
+使能ArkTS对象泄漏检测。 此接口通过一次调用即可检测ArkTS对象的内存泄漏，比之前需要调用四个函数（enable、watch、check、dump）的方法更加简洁。
 
-**起始版本：** 20
+**起始版本：** 26.1.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为26.1.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+
+**废弃版本：** -1
 
 <!--Device-jsLeakWatcher-function enableLeakWatcher(isEnabled: boolean, configs: Array<string>, callback: Callback<Array<string>>): void--><!--Device-jsLeakWatcher-function enableLeakWatcher(isEnabled: boolean, configs: Array<string>, callback: Callback<Array<string>>): void-End-->
 
@@ -20,19 +22,19 @@ function enableLeakWatcher(isEnabled: boolean, configs: Array<string>, callback:
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isEnabled | boolean | 是 | �Ƿ�ʹ��ArkTS�����ڴ�й©��⹦�ܡ�true������ArkTS�ڴ�й©��⹦�ܣ�false���ر�ArkTS�ڴ�й©��⹦�ܡ� |
-| configs | Array&lt;string&gt; | 是 | �����������ÿ��Ԫ��Ϊ�������������͡�\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_�������������XComponent��NodeContainer��Window��CustomComponent��Ability��\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_**˵��**���������������������ȫ������ |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;Array&lt;string&gt;&gt; | 是 | �ص����������ڽ���jsLeakWatcher.enableLeakWatcher�ӿڷ��ص��ڴ�й©�ļ��б���������ڴ�����ļ���\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_�ص������д���һ��������������0Ϊй©�б��ļ�������׺Ϊ.jsleaklist������1Ϊ������ڴ�����ļ�������׺Ϊ.rawheap�� |
+| isEnabled | boolean | 是 | 是否使能ArkTS对象内存泄漏检测功能。true：开启ArkTS内存泄漏检测功能；false：关闭ArkTS内存泄漏检测功能。 |
+| configs | Array&lt;string&gt; | 是 | 配置项，数组中每个元素为监测具体对象的类型。&lt;br&gt;可配置项包括：XComponent，NodeContainer，Window，CustomComponent 和Ability。&lt;br&gt;**说明：**传入空数组代表监测以上全部对象。 |
+| callback | Callback&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，用于接收jsLeakWatcher.enableLeakWatcher接口返回的内存泄漏文件列表和虚拟机内存快照文件。&lt;br&gt;回调函数中传入一个数组 对象，索引0为泄漏列表文件名，后缀为.jsleaklist；索引1为虚拟机内存快照文件名，后缀为.rawheap。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10801001](../errorcode-jsleakwatcher.md#10801001--参数isenabled无效) | The parameter isEnabled is invalid. |
-| [10801002](../errorcode-jsleakwatcher.md#10801002--参数config无效) | The parameter config is invalid. |
-| [10801003](../errorcode-jsleakwatcher.md#10801003--参数callback无效) | The parameter callback is invalid.Input parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types;3.Parameter verification failed. |
+| [10801001](../errorcode-jsleakwatcher.md#10801001-参数isenabled无效) | The parameter isEnabled is invalid. |
+| [10801002](../errorcode-jsleakwatcher.md#10801002-参数config无效) | The parameter config is invalid. |
+| [10801003](../errorcode-jsleakwatcher.md#10801003-参数callback无效) | The parameter callback is invalid. Input parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let config: Array<string> = ['XComponent'];
@@ -51,11 +53,13 @@ jsLeakWatcher.enableLeakWatcher(true, config, (filePath: Array<string>) => {
 function enableLeakWatcher(isEnabled: boolean, configs: LeakWatcherConfig, callback: Callback<Array<string>>): void
 ```
 
-ʹ��ArkTS����й©��⡣ �˽ӿ�ͨ��һ�ε��ü��ɼ��ArkTS������ڴ�й©����֮ǰ��Ҫ�����ĸ�������enable��watch��check��dump���ķ������Ӽ�ࣻͨ��configs��������������Զ������ü��������ԣ���Ƚ�֮ǰ����������й©������ܡ� > **ע��** > > ��ǰjsLeakWatcherй©������ܿ����ϴ󣬻ᵼ��Ӧ�ÿ��٣�������������ʱ�䣬���ٿ���Ƶ�ʡ�
+使能ArkTS对象泄漏检测。 此接口通过一次调用即可检测ArkTS对象的内存泄漏，比之前需要调用四个函数（enable、watch、check、dump）的方法更加简洁；通过configs可配置项参数，自定义设置监测项各属性，相比较之前极大提升了泄漏检测性能。 > **注意** > > 当前jsLeakWatcher泄漏检测性能开销较大，会导致应用卡顿，建议增大检测间隔时间，减少卡顿频率。
 
-**起始版本：** 24
+**起始版本：** 26.1.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为24；ArkTS-Sta起始版本为26.1.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+
+**废弃版本：** -1
 
 <!--Device-jsLeakWatcher-function enableLeakWatcher(isEnabled: boolean, configs: LeakWatcherConfig, callback: Callback<Array<string>>): void--><!--Device-jsLeakWatcher-function enableLeakWatcher(isEnabled: boolean, configs: LeakWatcherConfig, callback: Callback<Array<string>>): void-End-->
 
@@ -65,19 +69,19 @@ function enableLeakWatcher(isEnabled: boolean, configs: LeakWatcherConfig, callb
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isEnabled | boolean | 是 | �Ƿ�ʹ��ArkTS�����ڴ�й©��⹦�ܡ�\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_true������ArkTS�ڴ�й©��⹦�ܡ�\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_false���ر�ArkTS�ڴ�й©��⹦�ܡ� |
-| configs | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | LeakWatcherConfig�������ͣ������а�����������ڴ�й©���Ŀ��������ԡ�\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_**˵��**�������в������ʹ����ֵ���ֵ��������������ΪĬ��ֵ�� |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;Array&lt;string&gt;&gt; | 是 | �ص����������ڽ���й©���ĵ����ļ�·����\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_�ص������д���һ��������������0Ϊй©�б��ļ�������׺Ϊ.jsleaklist������1Ϊ������ڴ�����ļ�������׺Ϊ.rawheap�� |
+| isEnabled | boolean | 是 | 是否使能ArkTS对象内存泄漏检测功能。&lt;br&gt;true：开启ArkTS内存泄漏检测功能。&lt;br&gt;false：关闭ArkTS内存泄漏检测功能。 |
+| configs | [LeakWatcherConfig](arkts-performanceanalysis-jsleakwatcher-leakwatcherconfig-i.md) | 是 | LeakWatcherConfig对象类型，对象中包含多个用于内存泄漏监测的可配置属性。&lt;br&gt;**说明：**对象中参数类型传入空值或假值代表该属性设置 为默认值。 |
+| callback | Callback&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，用于接收泄漏检测的导出文件路径。&lt;br&gt;回调函数中传入一个数组 对象，索引0为泄漏列表文件名，后缀为.jsleaklist；索引1为虚拟机内存快照文件名，后缀为.rawheap。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10801001](../errorcode-jsleakwatcher.md#10801001--参数isenabled无效) | The parameter isEnabled is invalid. |
-| [10801002](../errorcode-jsleakwatcher.md#10801002--参数config无效) | The parameter config is invalid. |
-| [10801003](../errorcode-jsleakwatcher.md#10801003--参数callback无效) | The parameter callback is invalid.Input parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types;3.Parameter verification failed. |
+| [10801001](../errorcode-jsleakwatcher.md#10801001-参数isenabled无效) | The parameter isEnabled is invalid. |
+| [10801002](../errorcode-jsleakwatcher.md#10801002-参数config无效) | The parameter config is invalid. |
+| [10801003](../errorcode-jsleakwatcher.md#10801003-参数callback无效) | The parameter callback is invalid. Input parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 监测ArkTS对象CustomComponent和Window的内存泄漏

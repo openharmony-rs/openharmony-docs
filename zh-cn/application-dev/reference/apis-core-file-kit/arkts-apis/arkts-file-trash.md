@@ -1,12 +1,26 @@
 # @ohos.file.trash
 
-The **file.trash** module provides APIs for querying, recovering, or permanently deleting the files or directories in Recently deleted (trash). Currently, only local files and directories are supported. You can use **delete()** of [@ohos.file.fileAccess]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ to move a file or directory to the trash. > **NOTE** > > - Currently, the APIs of this module can be called only by **FileManager**.
+/*
+ Copyright (c) 2023 Huawei Device Co., Ltd.
+ Licensed under the Apache License, Version 2.0 (the "License"),
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ http://www.apache.org/licenses/LICENSE-2.0
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ /
+
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
 **废弃版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-declare namespace trash--><!--Device-unnamed-declare namespace trash-End-->
 
@@ -21,8 +35,8 @@ The **file.trash** module provides APIs for querying, recovering, or permanently
 
 | 名称 | 说明 |
 | --- | --- |
-| [completelyDelete](arkts-corefile-trash-completelydelete-f-sys.md#completelydelete) | Permanently deletes a file or directory from the **Recently deleted** list. |
-| [listFile](arkts-corefile-trash-listfile-f-sys.md#listfile) | Lists the files and directories in the **Recently deleted** list. |
+| [completelyDelete](arkts-corefile-trash-completelydelete-f-sys.md#completelyDelete) | Permanently deletes a file or directory from the **Recently deleted** list. |
+| [listFile](arkts-corefile-trash-listfile-f-sys.md#listFile) | Lists the files and directories in the **Recently deleted** list. |
 | [recover](arkts-corefile-trash-recover-f-sys.md#recover) | Recovers a file or directory from the trash. |
 <!--DelEnd-->
 

@@ -1,10 +1,12 @@
 # ThreatType
 
-Enum type supplied to \_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ for the website's threat type.
+Enum type supplied to threatType for the website's threat type.
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare enum ThreatType--><!--Device-unnamed-declare enum ThreatType-End-->
 
@@ -21,6 +23,8 @@ THREAT_ILLEGAL = 0
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -40,6 +44,8 @@ THREAT_FRAUD = 1
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ThreatType-THREAT_FRAUD = 1--><!--Device-ThreatType-THREAT_FRAUD = 1-End-->
@@ -57,6 +63,8 @@ THREAT_RISK = 2
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -76,6 +84,8 @@ THREAT_WARNING = 3
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ThreatType-THREAT_WARNING = 3--><!--Device-ThreatType-THREAT_WARNING = 3-End-->
@@ -94,6 +104,8 @@ THREAT_NONE = 4
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
 
+**废弃版本：** -1
+
 <!--Device-ThreatType-THREAT_NONE = 4--><!--Device-ThreatType-THREAT_NONE = 4-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -109,6 +121,8 @@ THREAT_UNPROCESSED = 5
 **起始版本：** 21
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+
+**废弃版本：** -1
 
 <!--Device-ThreatType-THREAT_UNPROCESSED = 5--><!--Device-ThreatType-THREAT_UNPROCESSED = 5-End-->
 

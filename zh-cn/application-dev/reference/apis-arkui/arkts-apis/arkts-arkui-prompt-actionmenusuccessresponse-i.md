@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** ohos.promptAction/promptAction.ActionMenuSuccessResponse
+**替代接口：** [ActionMenuSuccessResponse](../../apis-na/arkts-apis/arkts-na-promptaction-actionmenusuccessresponse-i.md#ActionMenuSuccessResponse)
 
 <!--Device-prompt-interface ActionMenuSuccessResponse--><!--Device-prompt-interface ActionMenuSuccessResponse-End-->
 
@@ -30,7 +30,7 @@ index: number
 
 **废弃版本：** 9
 
-**替代接口：** ohos.promptAction/promptAction.ActionMenuSuccessResponse#index
+**替代接口：** [index](../../apis-na/arkts-apis/arkts-na-promptaction-actionmenusuccessresponse-i.md#index)
 
 <!--Device-ActionMenuSuccessResponse-index: number--><!--Device-ActionMenuSuccessResponse-index: number-End-->
 

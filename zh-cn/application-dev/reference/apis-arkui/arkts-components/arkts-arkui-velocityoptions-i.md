@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface VelocityOptions--><!--Device-unnamed-declare interface VelocityOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -18,11 +20,13 @@ angle: ParticleTuple<number, number>
 
 表示速度的方向（单位为角度）。以元素几何中心为坐标原点，水平方向为X轴，正数表示顺时针方向旋转角度。 默认值：[0.0,0.0]
 
-**类型：** ParticleTuple&lt;number, number&gt;
+**类型：** [ParticleTuple](arkts-arkui-particletuple-t.md)&lt;number, number&gt;
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,11 +44,13 @@ speed: ParticleTuple<number, number>
 
 表示速度大小。 默认值：[0.0,0.0]
 
-**类型：** ParticleTuple&lt;number, number&gt;
+**类型：** [ParticleTuple](arkts-arkui-particletuple-t.md)&lt;number, number&gt;
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

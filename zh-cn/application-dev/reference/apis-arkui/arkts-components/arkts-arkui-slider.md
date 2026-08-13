@@ -14,6 +14,8 @@ Slider(options?: SliderOptions)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -26,7 +28,22 @@ Slider(options?: SliderOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 配置滑动条的参数。若不传入，则使用SliderOptions中各属性的默认值。  |
+| options | [SliderOptions](arkts-arkui-slideroptions-i.md) | 否 | 配置滑动条的参数。若不传入，则使用SliderOptions中各属性的默认值。 |
 
 ## 汇总
 
+- [ColorMetricsStop](arkts-arkui-colormetricsstop-i.md)
+- [SlideRange](arkts-arkui-sliderange-i.md)
+- [SliderBlockStyle](arkts-arkui-sliderblockstyle-i.md)
+- [SliderConfiguration](arkts-arkui-sliderconfiguration-i.md)
+- [SliderCustomContentOptions](arkts-arkui-slidercustomcontentoptions-i.md)
+- [SliderOptions](arkts-arkui-slideroptions-i.md)
+- [SliderPrefixOptions](arkts-arkui-sliderprefixoptions-i.md)
+- [SliderShowStepOptions](arkts-arkui-slidershowstepoptions-i.md)
+- [SliderStepItemAccessibility](arkts-arkui-sliderstepitemaccessibility-i.md)
+- [SliderSuffixOptions](arkts-arkui-slidersuffixoptions-i.md)
+- [SliderTriggerChangeCallback](arkts-arkui-slidertriggerchangecallback-t.md)
+- [SliderBlockType](arkts-arkui-sliderblocktype-e.md)
+- [SliderChangeMode](arkts-arkui-sliderchangemode-e.md)
+- [SliderInteraction](arkts-arkui-sliderinteraction-e.md)
+- [SliderStyle](arkts-arkui-sliderstyle-e.md)

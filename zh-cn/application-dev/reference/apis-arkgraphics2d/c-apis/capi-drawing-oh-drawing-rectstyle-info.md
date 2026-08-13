@@ -6,7 +6,7 @@ typedef struct OH_Drawing_RectStyle_Info {...} OH_Drawing_RectStyle_Info
 
 ## 概述
 
-This struct describes the style of a rectangle.
+定义矩形框样式结构体。
 
 **起始版本：** 12
 
@@ -20,10 +20,10 @@ This struct describes the style of a rectangle.
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t color |  |
-| double leftTopRadius |  |
-| double rightTopRadius |  |
-| double rightBottomRadius |  |
-| double leftBottomRadius |  |
+| uint32_t color | 矩形框的颜色。<br>**起始版本：** 12 |
+| double leftTopRadius | 矩形框的左上半径。<br>**起始版本：** 12 |
+| double rightTopRadius | 矩形框的右上半径。<br>**起始版本：** 12 |
+| double rightBottomRadius | 矩形框的右下半径。<br>**起始版本：** 12 |
+| double leftBottomRadius | 矩形框的左下半径。<br>**起始版本：** 12 |
 
 

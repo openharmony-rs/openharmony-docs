@@ -1,23 +1,27 @@
 # NodeIdentity
 
 ```TypeScript
-export declare type NodeIdentity = string | int
+export declare type NodeIdentity = string | number
 ```
 
-定义可用于标识节点的类型，string类型时为inspector id，number类型时为系统分配的唯一id。 set through .id attribute, and for the int type, it's the unique ID got from the FrameNode by getUniqueID method.
+定义节点标识类型。对于string类型，代表指定组件id，该id通过通用属性id设置。对于number类型， 代表系统分配的唯一标识的节点UniqueID，可通过[getUniqueId](../../apis-na/arkts-apis/arkts-na-framenode-c.md#getUniqueId)获取。
 
-**起始版本：** 26.0.0
+**起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-unnamed-export declare type NodeIdentity = string | int--><!--Device-unnamed-export declare type NodeIdentity = string | int-End-->
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-unnamed-export declare type NodeIdentity = string | number--><!--Device-unnamed-export declare type NodeIdentity = string | number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型 | 说明 |
 | --- | --- |
 | string |  |
-| int |  |
+| number |  |
 

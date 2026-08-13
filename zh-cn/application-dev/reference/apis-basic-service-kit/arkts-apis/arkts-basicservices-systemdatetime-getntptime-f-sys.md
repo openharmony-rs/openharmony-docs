@@ -8,9 +8,11 @@ function getNtpTime(): long
 
 使用同步方式获取基于上次更新的NTP时间所计算出的真实时间。
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-systemDateTime-function getNtpTime(): long--><!--Device-systemDateTime-function getNtpTime(): long-End-->
 
@@ -22,16 +24,16 @@ function getNtpTime(): long
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 基于上次更新的NTP时间所计算出的Unix纪元时间(ms)。 |
+| long | 基于上次更新的NTP时间所计算出的Unix纪元时间(ms)。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [13000002](../../apis-basic-services-kit/errorcode-time.md#13000002-未更新ntp时间) | updateNtpTime() is not called successfully. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

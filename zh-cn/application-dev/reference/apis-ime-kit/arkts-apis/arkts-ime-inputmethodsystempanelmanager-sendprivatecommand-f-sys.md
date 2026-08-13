@@ -10,7 +10,9 @@ function sendPrivateCommand(commandData: Record<string, CommandDataType>): Promi
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -36,6 +38,6 @@ function sendPrivateCommand(commandData: Record<string, CommandDataType>): Promi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [12800026](../errorcode-inputmethod-framework.md#12800026-输入法系统面板错误) | input method system panel error. Possible causes: 1. the system panel not connected. 2. ipc failed due to the large amount of data transferred or other reasons. 3. the caller is not system panel. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
-| [12800026](../errorcode-inputmethod-framework.md#12800026-输入法系统面板错误) | input method system panel error. Possible causes:1. the system panel not connected. 2. ipc failed due to the large amount of data transferred or other reasons.3. the caller is not system panel. |
 

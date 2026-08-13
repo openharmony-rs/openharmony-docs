@@ -2,9 +2,11 @@
 
 数据库结构信息。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-cloudExtension-export interface Database--><!--Device-cloudExtension-export interface Database-End-->
 
@@ -22,9 +24,11 @@ alias: string
 
 **类型：** string
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Database-alias: string--><!--Device-Database-alias: string-End-->
 
@@ -42,9 +46,11 @@ name: string
 
 **类型：** string
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Database-name: string--><!--Device-Database-name: string-End-->
 
@@ -60,11 +66,13 @@ tables: Array<Table>
 
 数据库中的表，包含数据详细信息。
 
-**类型：** Array&lt;Table&gt;
+**类型：** Array&lt;[Table](arkts-arkdata-cloudextension-table-i-sys.md)&gt;
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Database-tables: Array<Table>--><!--Device-Database-tables: Array<Table>-End-->
 

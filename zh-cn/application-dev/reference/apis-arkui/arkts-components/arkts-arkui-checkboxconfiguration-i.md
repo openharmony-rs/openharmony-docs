@@ -1,14 +1,16 @@
 # CheckBoxConfiguration
 
-开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+开发者需要自定义class实现ContentModifier接口。继承自CommonConfiguration。
 
-**继承/实现关系：** CheckBoxConfiguration extends [CommonConfiguration<CheckBoxConfiguration>](CommonConfiguration<CheckBoxConfiguration>)
+**继承/实现关系：** CheckBoxConfiguration extends CommonConfiguration<CheckBoxConfiguration>
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-<!--Device-unnamed-declare interface CheckBoxConfiguration extends CommonConfiguration<CheckBoxConfiguration>--><!--Device-unnamed-declare interface CheckBoxConfiguration extends CommonConfiguration<CheckBoxConfiguration>-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare interface CheckBoxConfiguration--><!--Device-unnamed-declare interface CheckBoxConfiguration-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -26,6 +28,8 @@ name: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -40,13 +44,15 @@ name: string
 selected: boolean
 ```
 
-指示多选框是否被选中，值为true时，多选框被选中。值为false时，多选框未选中。\_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_如果select属性没有设置默认值是false。\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_如果设置select属性，此值与设置select属性的值相同。
+指示多选框是否被选中，值为true时，多选框被选中。值为false时，多选框未选中。&lt;/br&gt;如果select属性没有设置默认值是false。&lt;/br&gt;如果设置select属性，此值与设置select属性的值相同。
 
 **类型：** boolean
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -69,6 +75,8 @@ triggerChange: Callback<boolean>
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

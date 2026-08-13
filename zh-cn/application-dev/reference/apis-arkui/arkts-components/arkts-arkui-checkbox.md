@@ -16,6 +16,8 @@ Checkbox(options?: CheckboxOptions)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -28,7 +30,10 @@ Checkbox(options?: CheckboxOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 配置多选框的参数。不传入该参数时，多选框使用默认配置。  |
+| options | [CheckboxOptions](arkts-arkui-checkboxoptions-i.md) | 否 | 配置多选框的参数。不传入该参数时，多选框使用默认配置。 |
 
 ## 汇总
 
+- [CheckBoxConfiguration](arkts-arkui-checkboxconfiguration-i.md)
+- [CheckboxOptions](arkts-arkui-checkboxoptions-i.md)
+- [OnCheckboxChangeCallback](arkts-arkui-oncheckboxchangecallback-t.md)

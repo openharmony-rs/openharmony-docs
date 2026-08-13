@@ -1,10 +1,12 @@
 # DialogPresenter
 
-提供统一的对话框接口。
+提供统一的Dialog API。
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.1.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-export class DialogPresenter--><!--Device-unnamed-export class DialogPresenter-End-->
 
@@ -16,13 +18,17 @@
 dismiss(target: int | ComponentContent<Object>): Promise<void>
 ```
 
-Dismisses a dialog box. Accepts either the dialog ID (returned by present) or the ComponentContent reference.
+关闭对话框。 接受对话ID（由当前返回）或ComponentContent引用。
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.1.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-DialogPresenter-dismiss(target: int | ComponentContent<Object>): Promise<void>--><!--Device-DialogPresenter-dismiss(target: int | ComponentContent<Object>): Promise<void>-End-->
 
@@ -32,13 +38,13 @@ Dismisses a dialog box. Accepts either the dialog ID (returned by present) or th
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| target | int \| ComponentContent&lt;Object&gt; | 是 | The dialog ID or ComponentContent to dismiss. |
+| target | int \| ComponentContent&lt;Object&gt; | 是 | 要取消的对话ID或组件内容。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
+| Promise&lt;void&gt; | 不会返回任何值的Promise。 |
 
 **错误码：**
 
@@ -53,13 +59,17 @@ Dismisses a dialog box. Accepts either the dialog ID (returned by present) or th
 present(options?: dialog.DialogStyleOptions): Promise<DialogResult>
 ```
 
-Presents a fixed-style dialog box.
+提供一个固定样式的对话框。
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.1.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-DialogPresenter-present(options?: dialog.DialogStyleOptions): Promise<DialogResult>--><!--Device-DialogPresenter-present(options?: dialog.DialogStyleOptions): Promise<DialogResult>-End-->
 
@@ -69,13 +79,13 @@ Presents a fixed-style dialog box.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | dialog.DialogStyleOptions | 否 | Dialog options. |
+| options | dialog.DialogStyleOptions | 否 | 对话框选项。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;DialogResult&gt; | Promise used to return the dialog result. |
+| Promise&lt;[DialogResult](arkts-arkui-arkui-dialog-dialogresult-i.md)&gt; | 用于返回对话结果的Promise。 |
 
 **错误码：**
 
@@ -90,13 +100,17 @@ Presents a fixed-style dialog box.
 present(content: CustomBuilder | CustomBuilderWithId | ComponentContent<Object>, options?: dialog.DialogCustomOptions): Promise<DialogResult>
 ```
 
-Presents a custom-style dialog box with the provided content. content参数支持CustomBuilder或ComponentContent联合类型： - CustomBuilder: Builder function for custom dialog content. - ComponentContent: ComponentContent supporting state-driven updates. isModal = true and showInSubWindow = true cannot be used at the same time.
+提供一个自定义样式的对话框，其中包含所提供的内容。 content参数通过联合类型接受CustomBuilder或ComponentContent： -CustomBuilder：自定义对话框内容的生成器函数。 - ComponentContent：支持状态驱动更新的ComponentContent。 > **说明：**> isModal = true和showInSubWindow = true不能同时使用。
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.1.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-DialogPresenter-present(content: CustomBuilder | CustomBuilderWithId | ComponentContent<Object>, options?: dialog.DialogCustomOptions): Promise<DialogResult>--><!--Device-DialogPresenter-present(content: CustomBuilder | CustomBuilderWithId | ComponentContent<Object>, options?: dialog.DialogCustomOptions): Promise<DialogResult>-End-->
 
@@ -106,14 +120,14 @@ Presents a custom-style dialog box with the provided content. content参数支�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | \_\_\_MD\_LINK\_USD\_0\_\_\_ \| CustomBuilderWithId \| ComponentContent&lt;Object&gt; | 是 | Custom dialog content. |
-| options | dialog.DialogCustomOptions | 否 | Custom dialog options. |
+| content | CustomBuilder \| [CustomBuilderWithId](arkts-arkui-custombuilderwithid-t.md) \| ComponentContent&lt;Object&gt; | 是 | 自定义对话框内容。 |
+| options | dialog.DialogCustomOptions | 否 | 自定义对话框选项。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;DialogResult&gt; | Promise used to return the dialog result. |
+| Promise&lt;[DialogResult](arkts-arkui-arkui-dialog-dialogresult-i.md)&gt; | 用于返回对话结果的Promise。 |
 
 **错误码：**
 
@@ -130,13 +144,17 @@ Presents a custom-style dialog box with the provided content. content参数支�
 update(content: ComponentContent<Object>, options?: dialog.DialogBaseOptions): Promise<void>
 ```
 
-Updates a presented custom dialog box.
+更新已呈现的自定义对话框。
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.1.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-DialogPresenter-update(content: ComponentContent<Object>, options?: dialog.DialogBaseOptions): Promise<void>--><!--Device-DialogPresenter-update(content: ComponentContent<Object>, options?: dialog.DialogBaseOptions): Promise<void>-End-->
 
@@ -146,14 +164,14 @@ Updates a presented custom dialog box.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;Object&gt; | 是 | The content used to identify the dialog. |
-| options | dialog.DialogBaseOptions | 否 | Options to update. |
+| content | ComponentContent&lt;Object&gt; | 是 | 用于标识对话框的内容。 |
+| options | dialog.DialogBaseOptions | 否 | 要更新的选项。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
+| Promise&lt;void&gt; | 不会返回任何值的Promise。 |
 
 **错误码：**
 

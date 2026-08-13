@@ -6,11 +6,13 @@
 function getAppNativeMemInfoWithCache(forceRefresh?: boolean): NativeMemInfo
 ```
 
-��ȡӦ�ý����ڴ���Ϣ����\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_�ӿ���ȣ��ýӿ�ʹ���˻�����ƣ���������ܡ��������Ч��Ϊ5���ӡ� > **ע��** > > ���ڶ�ȡ /proc/{pid}/smaps\_rollup �ȽϺ�ʱ�����鲻�����߳���ʹ�øýӿڡ�����ͨ��@ohos.taskpool��@ohos.worker�����첽�̣߳��Ա���Ӧ�ÿ��١�
+获取应用进程内存信息。与`getAppNativeMemInfo`接口相比，该接口使用了缓存机制，以提高性能。缓存的有效期为5分钟。 > **注意** > > 由于读取 /proc/{pid}/smaps_rollup 比较耗时，建议不在主线程中使用该接口。可以通过@ohos.taskpool或@ohos.worker开启异步线程，以避免应用卡顿。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-hidebug-function getAppNativeMemInfoWithCache(forceRefresh?: boolean): NativeMemInfo--><!--Device-hidebug-function getAppNativeMemInfoWithCache(forceRefresh?: boolean): NativeMemInfo-End-->
 
@@ -20,15 +22,15 @@ function getAppNativeMemInfoWithCache(forceRefresh?: boolean): NativeMemInfo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| forceRefresh | boolean | 否 | �Ƿ���Ҫ���ӻ�����Ч�ԣ�ǿ�Ƹ��»���ֵ��Ĭ��ֵ��false��true��ֱ�ӻ�ȡ��ǰ�ڴ����ݲ����»���ֵ��false��������Чʱ��ֱ�ӷ��ػ���ֵ������ʧЧʱ��ȡ��ǰ�ڴ����ݲ����»���ֵ�� |
+| forceRefresh | boolean | 否 | 是否需要无视缓存有效性，强制更新缓存值。默认值：false。 true：直接获取当前内存数据并更新缓存值。 false：缓存有效时，直接返回缓存值，缓存失效时获取当前内存数据并更新缓存值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Ӧ�ý����ڴ���Ϣ�� |
+| [NativeMemInfo](arkts-performanceanalysis-hidebug-nativememinfo-i.md) | 应用进程内存信息。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let nativeMemInfo: hidebug.NativeMemInfo = hidebug.getAppNativeMemInfoWithCache();

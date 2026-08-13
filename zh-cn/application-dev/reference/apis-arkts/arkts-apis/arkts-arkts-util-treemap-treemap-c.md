@@ -2,11 +2,13 @@
 
 TreeMap可用于存储具有关联关系的key-value键值对集合，存储元素中key值唯一，每个key对应一个value。 TreeMap底层使用红黑树实现，可以利用二叉树特性查找键值对，查找、插入和删除操作的时间复杂度为O(log n)。key值有序存储，可以实现高效的有序遍历。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-<!--Device-unnamed-declare class TreeMap<K, V>--><!--Device-unnamed-declare class TreeMap<K, V>-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare class TreeMap--><!--Device-unnamed-declare class TreeMap-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -20,7 +22,9 @@ $_iterator(): IterableIterator<[K, V]>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -34,7 +38,7 @@ $_iterator(): IterableIterator<[K, V]>
 | --- | --- |
 | IterableIterator&lt;[K, V]&gt; | TreeMap的迭代器。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let treeMap : TreeMap<string, int> = new TreeMap<string, int>();
@@ -69,6 +73,8 @@ for (let item of treeMap) {
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TreeMap-[Symbol.iterator](): IterableIterator<[K, V]>--><!--Device-TreeMap-[Symbol.iterator](): IterableIterator<[K, V]>-End-->
@@ -79,7 +85,7 @@ for (let item of treeMap) {
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;[K, V]&gt; | 返回一个迭代器。 |
+| IterableIterator&lt;[K, V]&gt; | 返回包含此映射中所有键值对的迭代器对象。 |
 
 **错误码：**
 
@@ -87,7 +93,7 @@ for (let item of treeMap) {
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The Symbol.iterator method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let treeMap = new TreeMap<string, number>();
@@ -136,9 +142,11 @@ clear(): void
 
 清除容器中的所有元素，并将length置为0。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -152,7 +160,7 @@ clear(): void
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The clear method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -189,6 +197,8 @@ TreeMap的构造函数，支持通过比较函数使元素按照自定义规则�
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TreeMap-constructor(comparator?: (firstValue: K, secondValue: K) => boolean)--><!--Device-TreeMap-constructor(comparator?: (firstValue: K, secondValue: K) => boolean)-End-->
@@ -199,7 +209,7 @@ TreeMap的构造函数，支持通过比较函数使元素按照自定义规则�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| comparator | (firstValue: K, secondValue: K) =&gt; boolean | 否 | 比较函数。comparator（可选）用户自定义的比较函数。firstValue（必填）前一项元素。secondValue（必填）后一项元素。 |
+| comparator | (firstValue: K, secondValue: K) =&gt; boolean | 否 | 用户自定义的比较函数，可通过比较关系对元素进行排序。默认值为null，表示不提供比较函数。当key为自定义类型时，必须提供比较函数，否则可能导致插入或查找异常。 firstValue（必填）参与比较的前一项元素，作为排序判断的第一个比较对象。 secondValue（必填）参与比较的后一项元素，作为排序判断的第二个比较对象。 |
 
 **错误码：**
 
@@ -207,7 +217,7 @@ TreeMap的构造函数，支持通过比较函数使元素按照自定义规则�
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The TreeMap's constructor cannot be directly invoked. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 默认构造
@@ -263,7 +273,9 @@ TreeMap的构造函数，支持通过比较函数使元素按照自定义规则�
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -275,9 +287,9 @@ TreeMap的构造函数，支持通过比较函数使元素按照自定义规则�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| comparator | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;K&gt; | 否 | 比较函数。comparator（可选）用户自定义的比较函数。 |
+| comparator | [TreeMapComparator](arkts-arkts-treemapcomparator-t.md)&lt;K&gt; | 否 | 比较函数。 comparator（可选）用户自定义的比较函数。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 默认构造
@@ -330,9 +342,11 @@ entries(): IterableIterator<[K, V]>
 
 返回包含此映射中键值对的新迭代器对象。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -344,7 +358,7 @@ entries(): IterableIterator<[K, V]>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;[K, V]&gt; |  |
+| IterableIterator&lt;[K, V]&gt; | 返回一个迭代器。 |
 
 **错误码：**
 
@@ -352,7 +366,7 @@ entries(): IterableIterator<[K, V]>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The entries method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -421,6 +435,8 @@ forEach(callbackFn: (value?: V, key?: K, map?: TreeMap<K, V>) => void, thisArg?:
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TreeMap-forEach(callbackFn: (value?: V, key?: K, map?: TreeMap<K, V>) => void, thisArg?: Object): void--><!--Device-TreeMap-forEach(callbackFn: (value?: V, key?: K, map?: TreeMap<K, V>) => void, thisArg?: Object): void-End-->
@@ -431,8 +447,8 @@ forEach(callbackFn: (value?: V, key?: K, map?: TreeMap<K, V>) => void, thisArg?:
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value?: V, key?: K, map?: TreeMap&lt;K, V&gt;) =&gt; void | 是 | 回调函数。callbackFn（必填）接受最多三个参数的函数。对每个元素调用的函数。 |
-| thisArg | Object | 否 | this值。thisArg（可选）当callbackFn被调用时作为this值使用的对象。如果省略thisArg，则使用undefined作为this值。 |
+| callbackFn | (value?: V, key?: K, map?: TreeMap&lt;K, V&gt;) =&gt; void | 是 | 回调函数。 callbackFn（必填）接受最多三个参数的函数。 对每个元素调用的函数。 |
+| thisArg | Object | 否 | callbackFn被调用时用作this值，默认值为undefined。 |
 
 **错误码：**
 
@@ -440,7 +456,7 @@ forEach(callbackFn: (value?: V, key?: K, map?: TreeMap<K, V>) => void, thisArg?:
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The forEach method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let treeMap = new TreeMap<string, number>();
@@ -476,7 +492,9 @@ forEach(callbackFn: TreeMapForEachCb<K, V>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -488,9 +506,9 @@ forEach(callbackFn: TreeMapForEachCb<K, V>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;K, V&gt; | 是 | 回调函数。 |
+| callbackFn | [TreeMapForEachCb](arkts-arkts-treemapforeachcb-t.md)&lt;K, V&gt; | 是 | 回调函数，用于遍历实例对象中的每个键值对并在回调中执行自定义操作。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { TreeMapForEachCb } from '@kit.ArkTS'
@@ -516,6 +534,8 @@ get(key: K): V
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TreeMap-get(key: K): V--><!--Device-TreeMap-get(key: K): V-End-->
@@ -540,7 +560,7 @@ get(key: K): V
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The get method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let treeMap = new TreeMap<string, number>();
@@ -557,11 +577,13 @@ console.info('result:', result); // result: 356
 get(key: K): V | undefined
 ```
 
-获取指定key所对应的value，若为空则返回undefined。
+获取指定key所对应的value，若指定key不存在则返回undefined。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -581,7 +603,7 @@ get(key: K): V | undefined
 | --- | --- |
 | V | 如果存在与key关联的值则返回该值，否则返回undefined。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let treeMap : TreeMap<string, int> = new TreeMap<string, int>();
@@ -598,9 +620,11 @@ getFirstKey(): K
 
 获取容器中排序第一的key，若容器为空则返回undefined。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -619,9 +643,9 @@ getFirstKey(): K
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getFirstKey method cannot be bound. |
-| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 23+  **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.<br>**适用版本：** 23+  **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -649,11 +673,13 @@ let result = treeMap.getFirstKey();
 getHigherKey(key: K): K
 ```
 
-获取容器中大于对比key值的最小键，如果不存在大于对比key值的键，则返回undefined。
+获取容器中大于指定key的最小key，如果不存在大于指定key的key，则返回undefined。
 
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -671,7 +697,7 @@ getHigherKey(key: K): K
 
 | 类型 | 说明 |
 | --- | --- |
-| K | 返回排序中大于对比key值的最小键，若不存在则返回undefined。 |
+| K | 返回排序中位于指定key后一位的键，不存在时返回undefined。 |
 
 **错误码：**
 
@@ -679,7 +705,7 @@ getHigherKey(key: K): K
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getHigherKey method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let treeMap = new TreeMap<number, string>();
@@ -702,7 +728,9 @@ getHigherKey(key: K): K | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -726,10 +754,10 @@ getHigherKey(key: K): K | undefined
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty. |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getHigherKey method cannot be bound. |
+| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let treeMap : TreeMap<string, int> = new TreeMap<string, int>();
@@ -747,9 +775,11 @@ getLastKey(): K
 
 获取容器中排序最后的key，若容器为空则返回undefined。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -768,9 +798,9 @@ getLastKey(): K
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getLastKey method cannot be bound. |
-| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 23+  **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.<br>**适用版本：** 23+  **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -804,6 +834,8 @@ getLowerKey(key: K): K
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TreeMap-getLowerKey(key: K): K--><!--Device-TreeMap-getLowerKey(key: K): K-End-->
@@ -820,7 +852,7 @@ getLowerKey(key: K): K
 
 | 类型 | 说明 |
 | --- | --- |
-| K | 返回排序中小于对比key值的最大键，若不存在则返回undefined。 |
+| K | 返回小于指定key的最大键，不存在时返回undefined。 |
 
 **错误码：**
 
@@ -828,7 +860,7 @@ getLowerKey(key: K): K
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getLowerKey method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let treeMap = new TreeMap<number, string>();
@@ -851,7 +883,9 @@ getLowerKey(key: K): K | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -875,10 +909,10 @@ getLowerKey(key: K): K | undefined
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty. |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getLowerKey method cannot be bound. |
+| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let treeMap : TreeMap<string, int> = new TreeMap<string, int>();
@@ -896,9 +930,11 @@ hasKey(key: K): boolean
 
 判断容器中是否包含指定key。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -924,7 +960,7 @@ hasKey(key: K): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The hasKey method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -954,9 +990,11 @@ hasValue(value: V): boolean
 
 判断容器中是否包含指定value。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -982,7 +1020,7 @@ hasValue(value: V): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The hasValue method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -1011,9 +1049,11 @@ isEmpty(): boolean
 
 判断容器是否为空。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1033,7 +1073,7 @@ isEmpty(): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The isEmpty method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -1060,9 +1100,11 @@ keys(): IterableIterator<K>
 
 返回包含此映射中所有键的新迭代器对象。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1074,7 +1116,7 @@ keys(): IterableIterator<K>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;K&gt; |  |
+| IterableIterator&lt;K&gt; | 返回包含此映射中所有键的迭代器对象。 |
 
 **错误码：**
 
@@ -1082,7 +1124,7 @@ keys(): IterableIterator<K>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The keys method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -1129,6 +1171,8 @@ remove(key: K): V
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TreeMap-remove(key: K): V--><!--Device-TreeMap-remove(key: K): V-End-->
@@ -1153,7 +1197,7 @@ remove(key: K): V
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The remove method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let treeMap = new TreeMap<string, number>();
@@ -1169,11 +1213,13 @@ console.info('result = ' + result); // result = 356
 remove(key: K): V | undefined
 ```
 
-删除指定key对应的元素。
+删除指定key对应的元素并返回其value值，若指定key不存在则返回undefined。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -1193,7 +1239,7 @@ remove(key: K): V | undefined
 | --- | --- |
 | V | 如果删除了元素则返回该元素的值，否则返回undefined。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let treeMap : TreeMap<string, int> = new TreeMap<string, int>();
@@ -1210,9 +1256,11 @@ replace(key: K, newValue: V): boolean
 
 对容器中指定key对应的键值对进行更新（替换）。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1224,14 +1272,14 @@ replace(key: K, newValue: V): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | K | 是 | 指定需要替换的key。 |
-| newValue | V | 是 | 替换的新值。 |
+| key | K | 是 | 指定需要替换value对应的key。 |
+| newValue | V | 是 | 替换的新值，将覆盖指定key对应的原有value。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 替换成功返回true，否则返回false。 |
+| boolean | 对指定key对应的元素替换成功返回true，否则返回false。 |
 
 **错误码：**
 
@@ -1239,7 +1287,7 @@ replace(key: K, newValue: V): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The replace method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -1268,9 +1316,11 @@ set(key: K, value: V): Object
 
 向容器中添加一组键值对数据，若key已存在则更新对应value值，若key不存在则新增键值对。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1297,7 +1347,7 @@ set(key: K, value: V): Object
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The set method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -1323,9 +1373,11 @@ setAll(map: TreeMap<K, V>): void
 
 将一个TreeMap中的所有元素添加到另一个TreeMap中。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1337,7 +1389,7 @@ setAll(map: TreeMap<K, V>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| map | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;K, V&gt; | 是 | 将参数map中的所有元素添加到调用setAll方法的TreeMap对象中。 |
+| map | [TreeMap](arkts-arkts-util-treemap-treemap-c.md)&lt;K, V&gt; | 是 | 将参数map中的所有元素添加到调用setAll方法的TreeMap对象中。 |
 
 **错误码：**
 
@@ -1345,7 +1397,7 @@ setAll(map: TreeMap<K, V>): void
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The setAll method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -1389,11 +1441,13 @@ map.forEach((value ?: int, key ?: string) : void => {
 values(): IterableIterator<V>
 ```
 
-返回包含此映射中键值的新迭代器对象。
+返回包含此映射中所有值的新迭代器对象。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1405,7 +1459,7 @@ values(): IterableIterator<V>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;V&gt; |  |
+| IterableIterator&lt;V&gt; | 返回包含此映射中所有值的迭代器对象。 |
 
 **错误码：**
 
@@ -1413,7 +1467,7 @@ values(): IterableIterator<V>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The values method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -1459,7 +1513,9 @@ TreeMap的元素个数。
 
 **起始版本：** 8
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

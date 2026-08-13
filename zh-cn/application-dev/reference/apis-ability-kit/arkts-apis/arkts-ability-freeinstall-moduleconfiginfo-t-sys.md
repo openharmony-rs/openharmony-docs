@@ -1,20 +1,22 @@
 # ModuleConfigInfo（系统接口）
 
 ```TypeScript
-export type ModuleConfigInfo = _PackInfo.ModuleConfigInfo
+export type ModuleConfigInfo = _ModuleConfigInfo
 ```
 
 包的module配置信息。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-<!--Device-freeInstall-export type ModuleConfigInfo = _PackInfo.ModuleConfigInfo--><!--Device-freeInstall-export type ModuleConfigInfo = _PackInfo.ModuleConfigInfo-End-->
+**废弃版本：** -1
+
+<!--Device-freeInstall-export type ModuleConfigInfo = _ModuleConfigInfo--><!--Device-freeInstall-export type ModuleConfigInfo = _ModuleConfigInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **系统接口：** 此接口为系统接口。
 
-**属性类型：** _PackInfo.ModuleConfigInfo
+**属性类型：** _ModuleConfigInfo
 

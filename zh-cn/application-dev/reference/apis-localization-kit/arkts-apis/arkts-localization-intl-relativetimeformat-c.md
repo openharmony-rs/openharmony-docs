@@ -36,7 +36,7 @@ constructor()
 
 **系统能力：** SystemCapability.Global.I18n
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { intl } from '@kit.LocalizationKit';
@@ -72,9 +72,9 @@ constructor(locale: string | Array<string>, options?: RelativeTimeFormatInputOpt
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | locale | string \| Array&lt;string&gt; | 是 | 区域ID或区域ID数组。输入是区域ID数组时，使用第一个有效的区域ID。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 创建相对时间格式化对象时的配置项。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_默认值：所有属性都取默认值时的配置项。 |
+| options | [RelativeTimeFormatInputOptions](arkts-localization-intl-relativetimeformatinputoptions-i.md) | 否 | 创建相对时间格式化对象时的配置项。 &lt;br&gt;默认值：所有属性都取默认值时的配置项。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { intl } from '@kit.LocalizationKit';
@@ -114,7 +114,7 @@ format(value: double, unit: string): string
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | double | 是 | 相对时间格式化的数值。 |
-| unit | string | 是 | 相对时间格式化的单位，\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_取值包括："year", "quarter", "month", "week", "day", "hour", "minute", "second"。 |
+| unit | string | 是 | 相对时间格式化的单位， &lt;br&gt;取值包括："year", "quarter", "month", "week", "day", "hour", "minute", "second"。 |
 
 **返回值：**
 
@@ -122,7 +122,7 @@ format(value: double, unit: string): string
 | --- | --- |
 | string | 格式化后的相对时间。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { intl } from '@kit.LocalizationKit';
@@ -160,7 +160,7 @@ formatToParts(value: double, unit: string): Array<object>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | double | 是 | 相对时间格式化的数值。 |
-| unit | string | 是 | 相对时间格式化的单位，\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_取值包括："year", "quarter", "month", "week", "day", "hour", "minute", "second"。 |
+| unit | string | 是 | 相对时间格式化的单位， &lt;br&gt;取值包括："year", "quarter", "month", "week", "day", "hour", "minute", "second"。 |
 
 **返回值：**
 
@@ -168,7 +168,7 @@ formatToParts(value: double, unit: string): Array<object>
 | --- | --- |
 | Array&lt;object&gt; | 格式化结果中各个部分的对象数组。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { intl } from '@kit.LocalizationKit';
@@ -204,9 +204,9 @@ resolvedOptions(): RelativeTimeFormatResolvedOptions
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 相对时间格式化对象的格式化配置项。 |
+| [RelativeTimeFormatResolvedOptions](arkts-localization-intl-relativetimeformatresolvedoptions-i.md) | 相对时间格式化对象的格式化配置项。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { intl } from '@kit.LocalizationKit';

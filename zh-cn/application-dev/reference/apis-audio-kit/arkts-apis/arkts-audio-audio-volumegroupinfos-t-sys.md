@@ -6,9 +6,11 @@ type VolumeGroupInfos = Array<Readonly<VolumeGroupInfo>>
 
 Array of VolumeGroupInfos, which is read-only.
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-audio-type VolumeGroupInfos = Array<Readonly<VolumeGroupInfo>>--><!--Device-audio-type VolumeGroupInfos = Array<Readonly<VolumeGroupInfo>>-End-->
 

@@ -1,0 +1,48 @@
+# ColumnFrameNode
+
+定义Column 类型的FrameNode。
+
+**继承/实现关系：** ColumnFrameNode extends TypedFrameNode<ColumnAttribute>
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
+
+<!--Device-typeNode-abstract class ColumnFrameNode--><!--Device-typeNode-abstract class ColumnFrameNode-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## initialize
+
+```TypeScript
+abstract initialize(options?: ColumnOptions | ColumnOptionsV2): ColumnAttribute
+```
+
+初始化Column类型的FrameNode。
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ColumnFrameNode-abstract initialize(options?: ColumnOptions | ColumnOptionsV2): ColumnAttribute--><!--Device-ColumnFrameNode-abstract initialize(options?: ColumnOptions | ColumnOptionsV2): ColumnAttribute-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| options | ColumnOptions \| ColumnOptionsV2 | 否 | Column节点的选项。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| ColumnAttribute |  |
+

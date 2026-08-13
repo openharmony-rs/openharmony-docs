@@ -1,10 +1,12 @@
 # SaveModeFlag
 
-状态保存标志，[enableAppRecovery]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_接口状态保存方式的参数，该类型为枚举。
+状态保存标志，[enableAppRecovery](arkts-ability-apprecovery-enableapprecovery-f.md#enableAppRecovery)接口状态保存方式的参数，该类型为枚举。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-appRecovery-enum SaveModeFlag--><!--Device-appRecovery-enum SaveModeFlag-End-->
 
@@ -18,9 +20,11 @@ SAVE_WITH_FILE = 0x0001
 
 每次状态保存都会写入到本地文件缓存。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -36,9 +40,11 @@ SAVE_WITH_SHARED_MEMORY = 0x0002
 
 状态先保存在内存中，应用故障退出时写入到本地文件缓存。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

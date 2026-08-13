@@ -8,9 +8,11 @@ function enableAppRecovery(restart?: RestartFlag, saveOccasion?: SaveOccasionFla
 
 使能应用恢复功能，参数按顺序填入。该接口调用后，应用从启动器启动时第一个Ability支持恢复。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -24,7 +26,7 @@ function enableAppRecovery(restart?: RestartFlag, saveOccasion?: SaveOccasionFla
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| restart | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 枚举类型，发生对应故障时是否重启，默认为重启。 |
-| saveOccasion | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 枚举类型，状态保存时机，默认为故障时保存。 |
-| saveMode | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 枚举类型，状态保存方式， 默认为文件缓存。 |
+| restart | [RestartFlag](arkts-ability-apprecovery-restartflag-e.md) | 否 | 枚举类型，发生对应故障时是否重启，默认为重启。 |
+| saveOccasion | [SaveOccasionFlag](arkts-ability-apprecovery-saveoccasionflag-e.md) | 否 | 枚举类型，状态保存时机，默认为故障时保存。 |
+| saveMode | [SaveModeFlag](arkts-ability-apprecovery-savemodeflag-e.md) | 否 | 枚举类型，状态保存方式， 默认为文件缓存。 |
 

@@ -6,9 +6,11 @@ export type ConnectOptions = _ConnectOptions
 
 在连接指定的后台服务时作为入参，用于接收与后台服务的连接状态。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -12,6 +12,8 @@ export function getAttribute(node: FrameNode, nodeType: 'Text'): TextAttribute |
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -24,14 +26,14 @@ export function getAttribute(node: FrameNode, nodeType: 'Text'): TextAttribute |
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 获取属性时所需的目标节点。 |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 获取属性时所需的目标节点。 |
 | nodeType | 'Text' | 是 | 获取Text节点类型的属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Text节点类型的属性，若获取失败，则返回undefined。 |
+| TextAttribute | Text节点类型的属性，若获取失败，则返回undefined。 |
 
 
 ## getAttribute
@@ -46,6 +48,8 @@ export function getAttribute(node: FrameNode, nodeType: 'Column'): ColumnAttribu
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -58,14 +62,14 @@ export function getAttribute(node: FrameNode, nodeType: 'Column'): ColumnAttribu
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 获取属性时所需的目标节点。 |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 获取属性时所需的目标节点。 |
 | nodeType | 'Column' | 是 | 获取Column节点类型的属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Column节点类型的属性，若获取失败，则返回undefined。 |
+| ColumnAttribute | Column节点类型的属性，若获取失败，则返回undefined。 |
 
 
 ## getAttribute
@@ -80,6 +84,8 @@ export function getAttribute(node: FrameNode, nodeType: 'Row'): RowAttribute | u
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -92,14 +98,14 @@ export function getAttribute(node: FrameNode, nodeType: 'Row'): RowAttribute | u
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 获取属性时所需的目标节点。 |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 获取属性时所需的目标节点。 |
 | nodeType | 'Row' | 是 | 获取Row节点类型的属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Row节点类型的属性，若获取失败，则返回undefined。 |
+| RowAttribute | Row节点类型的属性，若获取失败，则返回undefined。 |
 
 
 ## getAttribute
@@ -114,6 +120,8 @@ export function getAttribute(node: FrameNode, nodeType: 'Stack'): StackAttribute
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -126,14 +134,14 @@ export function getAttribute(node: FrameNode, nodeType: 'Stack'): StackAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 获取属性时所需的目标节点。 |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 获取属性时所需的目标节点。 |
 | nodeType | 'Stack' | 是 | 获取Stack节点类型的属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Stack节点类型的属性，若获取失败，则返回undefined。 |
+| StackAttribute | Stack节点类型的属性，若获取失败，则返回undefined。 |
 
 
 ## getAttribute
@@ -148,6 +156,8 @@ export function getAttribute(node: FrameNode, nodeType: 'Flex'): FlexAttribute |
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -160,14 +170,14 @@ export function getAttribute(node: FrameNode, nodeType: 'Flex'): FlexAttribute |
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 获取属性时所需的目标节点。 |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 获取属性时所需的目标节点。 |
 | nodeType | 'Flex' | 是 | 获取Flex节点类型的属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Flex节点类型的属性，若获取失败，则返回undefined。 |
+| FlexAttribute | Flex节点类型的属性，若获取失败，则返回undefined。 |
 
 
 ## getAttribute
@@ -182,6 +192,8 @@ export function getAttribute(node: FrameNode, nodeType: 'Swiper'): SwiperAttribu
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -194,14 +206,14 @@ export function getAttribute(node: FrameNode, nodeType: 'Swiper'): SwiperAttribu
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 获取属性时所需的目标节点。 |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 获取属性时所需的目标节点。 |
 | nodeType | 'Swiper' | 是 | 获取Swiper节点类型的属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Swiper节点类型的属性，若获取失败，则返回undefined。 |
+| SwiperAttribute | Swiper节点类型的属性，若获取失败，则返回undefined。 |
 
 
 ## getAttribute
@@ -216,6 +228,8 @@ export function getAttribute(node: FrameNode, nodeType: 'Progress'): ProgressAtt
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -228,14 +242,14 @@ export function getAttribute(node: FrameNode, nodeType: 'Progress'): ProgressAtt
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 获取属性时所需的目标节点。 |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 获取属性时所需的目标节点。 |
 | nodeType | 'Progress' | 是 | 获取Progress节点类型的属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Progress节点类型的属性，若获取失败，则返回undefined。 |
+| ProgressAttribute | Progress节点类型的属性，若获取失败，则返回undefined。 |
 
 
 ## getAttribute
@@ -250,6 +264,8 @@ function getAttribute(node: FrameNode, nodeType: 'Scroll'): ScrollAttribute | un
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
@@ -262,14 +278,14 @@ function getAttribute(node: FrameNode, nodeType: 'Scroll'): ScrollAttribute | un
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 获取属性时所需的目标节点。 |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 获取属性时所需的目标节点。 |
 | nodeType | 'Scroll' | 是 | 获取Scroll节点类型的属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Scroll节点类型的属性，若获取失败，则返回undefined。 |
+| ScrollAttribute | Scroll节点类型的属性，若获取失败，则返回undefined。 |
 
 
 ## getAttribute
@@ -284,6 +300,8 @@ export function getAttribute(node: FrameNode, nodeType: 'RelativeContainer'): Re
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -296,14 +314,14 @@ export function getAttribute(node: FrameNode, nodeType: 'RelativeContainer'): Re
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 获取属性时所需的目标节点。 |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 获取属性时所需的目标节点。 |
 | nodeType | 'RelativeContainer' | 是 | 获取RelativeContainer节点类型的属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | RelativeContainer节点类型的属性，若获取失败，则返回undefined。 |
+| RelativeContainerAttribute | RelativeContainer节点类型的属性，若获取失败，则返回undefined。 |
 
 
 ## getAttribute
@@ -312,11 +330,13 @@ export function getAttribute(node: FrameNode, nodeType: 'RelativeContainer'): Re
 export function getAttribute(node: FrameNode, nodeType: 'LoadingProgress'): LoadingProgressAttribute | undefined
 ```
 
-获取[LoadingProgress]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_节点的属性。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访 问，则返回undefined。该接口不支持声明式方式创建的节点。
+获取LoadingProgress节点的属性。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访 问，则返回undefined。该接口不支持声明式方式创建的节点。
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -330,14 +350,14 @@ export function getAttribute(node: FrameNode, nodeType: 'LoadingProgress'): Load
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 获取属性时所需的目标节点。 |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 获取属性时所需的目标节点。 |
 | nodeType | 'LoadingProgress' | 是 | 获取LoadingProgress节点类型的属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | LoadingProgress节点类型的属性，若获取失败，则返回undefined。 |
+| LoadingProgressAttribute | LoadingProgress节点类型的属性，若获取失败，则返回undefined。 |
 
 
 ## getAttribute
@@ -352,6 +372,8 @@ export function getAttribute(node: FrameNode, nodeType: 'Image'): ImageAttribute
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -364,14 +386,14 @@ export function getAttribute(node: FrameNode, nodeType: 'Image'): ImageAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 获取属性时所需的目标节点。 |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 获取属性时所需的目标节点。 |
 | nodeType | 'Image' | 是 | 获取Image节点类型的属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Image节点类型的属性，若获取失败，则返回undefined。 |
+| ImageAttribute | Image节点类型的属性，若获取失败，则返回undefined。 |
 
 
 ## getAttribute
@@ -386,6 +408,8 @@ export function getAttribute(node: FrameNode, nodeType: 'List'): ListAttribute |
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -398,14 +422,14 @@ export function getAttribute(node: FrameNode, nodeType: 'List'): ListAttribute |
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 获取属性时所需的目标节点。 |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 获取属性时所需的目标节点。 |
 | nodeType | 'List' | 是 | 获取List节点类型的属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | List节点类型的属性，若获取失败，则返回undefined。 |
+| ListAttribute | List节点类型的属性，若获取失败，则返回undefined。 |
 
 
 ## getAttribute
@@ -420,6 +444,8 @@ export function getAttribute(node: FrameNode, nodeType: 'ListItem'): ListItemAtt
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -432,14 +458,14 @@ export function getAttribute(node: FrameNode, nodeType: 'ListItem'): ListItemAtt
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 获取属性时所需的目标节点。 |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 获取属性时所需的目标节点。 |
 | nodeType | 'ListItem' | 是 | 获取ListItem节点类型的属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | ListItem节点类型的属性，若获取失败，则返回undefined。 |
+| ListItemAttribute | ListItem节点类型的属性，若获取失败，则返回undefined。 |
 
 
 ## getAttribute
@@ -454,6 +480,8 @@ export function getAttribute(node: FrameNode, nodeType: 'TextInput'): TextInputA
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -466,14 +494,14 @@ export function getAttribute(node: FrameNode, nodeType: 'TextInput'): TextInputA
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 获取属性时所需的目标节点。 |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 获取属性时所需的目标节点。 |
 | nodeType | 'TextInput' | 是 | 获取TextInput节点类型的属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | TextInput节点类型的属性，若获取失败，则返回undefined。 |
+| TextInputAttribute | TextInput节点类型的属性，若获取失败，则返回undefined。 |
 
 
 ## getAttribute
@@ -488,6 +516,8 @@ export function getAttribute(node: FrameNode, nodeType: 'Button'): ButtonAttribu
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -500,14 +530,14 @@ export function getAttribute(node: FrameNode, nodeType: 'Button'): ButtonAttribu
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 获取属性时所需的目标节点。 |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 获取属性时所需的目标节点。 |
 | nodeType | 'Button' | 是 | 获取Button节点类型的属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Button节点类型的属性，若获取失败，则返回undefined。 |
+| ButtonAttribute | Button节点类型的属性，若获取失败，则返回undefined。 |
 
 
 ## getAttribute
@@ -522,6 +552,8 @@ export function getAttribute(node: FrameNode, nodeType: 'ListItemGroup'): ListIt
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -534,14 +566,14 @@ export function getAttribute(node: FrameNode, nodeType: 'ListItemGroup'): ListIt
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 获取属性时所需的目标节点。 |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 获取属性时所需的目标节点。 |
 | nodeType | 'ListItemGroup' | 是 | 获取ListItemGroup节点类型的属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | ListItemGroup节点类型的属性，若获取失败，则返回undefined。 |
+| ListItemGroupAttribute | ListItemGroup节点类型的属性，若获取失败，则返回undefined。 |
 
 
 ## getAttribute
@@ -556,6 +588,8 @@ export function getAttribute(node: FrameNode, nodeType: 'WaterFlow'): WaterFlowA
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -568,14 +602,14 @@ export function getAttribute(node: FrameNode, nodeType: 'WaterFlow'): WaterFlowA
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 获取属性时所需的目标节点。 |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 获取属性时所需的目标节点。 |
 | nodeType | 'WaterFlow' | 是 | 获取WaterFlow节点类型的属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | WaterFlow节点类型的属性，若获取失败，则返回undefined。 |
+| WaterFlowAttribute | WaterFlow节点类型的属性，若获取失败，则返回undefined。 |
 
 
 ## getAttribute
@@ -590,6 +624,8 @@ export function getAttribute(node: FrameNode, nodeType: 'FlowItem'): FlowItemAtt
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -602,14 +638,14 @@ export function getAttribute(node: FrameNode, nodeType: 'FlowItem'): FlowItemAtt
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 获取属性时所需的目标节点。 |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 获取属性时所需的目标节点。 |
 | nodeType | 'FlowItem' | 是 | 获取FlowItem节点类型的属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | FlowItem节点类型的属性，若获取失败，则返回undefined。 |
+| FlowItemAttribute | FlowItem节点类型的属性，若获取失败，则返回undefined。 |
 
 
 ## getAttribute
@@ -624,6 +660,8 @@ export function getAttribute(node: FrameNode, nodeType: 'XComponent'): XComponen
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -636,14 +674,14 @@ export function getAttribute(node: FrameNode, nodeType: 'XComponent'): XComponen
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 获取属性时所需的目标节点。 |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 获取属性时所需的目标节点。 |
 | nodeType | 'XComponent' | 是 | 获取XComponent节点类型的属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | XComponent节点类型的属性，若获取失败，则返回undefined。 |
+| XComponentAttribute | XComponent节点类型的属性，若获取失败，则返回undefined。 |
 
 
 ## getAttribute
@@ -658,6 +696,8 @@ export function getAttribute(node: FrameNode, nodeType: 'Checkbox'): CheckboxAtt
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -670,14 +710,14 @@ export function getAttribute(node: FrameNode, nodeType: 'Checkbox'): CheckboxAtt
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 获取属性时所需的目标节点。 |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 获取属性时所需的目标节点。 |
 | nodeType | 'Checkbox' | 是 | 获取Checkbox节点类型的属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Checkbox节点类型的属性，若获取失败，则返回undefined。 |
+| CheckboxAttribute | Checkbox节点类型的属性，若获取失败，则返回undefined。 |
 
 
 ## getAttribute
@@ -692,6 +732,8 @@ export function getAttribute(node: FrameNode, nodeType: 'Radio'): RadioAttribute
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -704,14 +746,14 @@ export function getAttribute(node: FrameNode, nodeType: 'Radio'): RadioAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 获取属性时所需的目标节点。 |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 获取属性时所需的目标节点。 |
 | nodeType | 'Radio' | 是 | 获取Radio节点类型的属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Radio节点类型的属性，若获取失败，则返回undefined。 |
+| RadioAttribute | Radio节点类型的属性，若获取失败，则返回undefined。 |
 
 
 ## getAttribute
@@ -726,6 +768,8 @@ export function getAttribute(node: FrameNode, nodeType: 'Slider'): SliderAttribu
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -738,14 +782,14 @@ export function getAttribute(node: FrameNode, nodeType: 'Slider'): SliderAttribu
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 获取属性时所需的目标节点。 |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 获取属性时所需的目标节点。 |
 | nodeType | 'Slider' | 是 | 获取Slider节点类型的属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Slider节点类型的属性，若获取失败，则返回undefined。 |
+| SliderAttribute | Slider节点类型的属性，若获取失败，则返回undefined。 |
 
 
 ## getAttribute
@@ -760,6 +804,8 @@ export function getAttribute(node: FrameNode, nodeType: 'Toggle'): ToggleAttribu
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -772,14 +818,14 @@ export function getAttribute(node: FrameNode, nodeType: 'Toggle'): ToggleAttribu
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 获取属性时所需的目标节点。 |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 获取属性时所需的目标节点。 |
 | nodeType | 'Toggle' | 是 | 获取Toggle节点类型的属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Toggle节点类型的属性，若获取失败，则返回undefined。 |
+| ToggleAttribute | Toggle节点类型的属性，若获取失败，则返回undefined。 |
 
 
 ## getAttribute
@@ -794,6 +840,8 @@ export function getAttribute(node: FrameNode, nodeType: 'TextArea'): TextAreaAtt
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -806,14 +854,14 @@ export function getAttribute(node: FrameNode, nodeType: 'TextArea'): TextAreaAtt
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 获取属性时所需的目标节点。 |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 获取属性时所需的目标节点。 |
 | nodeType | 'TextArea' | 是 | 获取TextArea节点类型的属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | TextArea节点类型的属性，若获取失败，则返回undefined。 |
+| TextAreaAttribute | TextArea节点类型的属性，若获取失败，则返回undefined。 |
 
 
 ## getAttribute
@@ -828,6 +876,8 @@ export function getAttribute(node: FrameNode, nodeType: 'Grid'): GridAttribute |
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -840,14 +890,14 @@ export function getAttribute(node: FrameNode, nodeType: 'Grid'): GridAttribute |
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 获取属性时所需的目标节点。 |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 获取属性时所需的目标节点。 |
 | nodeType | 'Grid' | 是 | 获取Grid节点类型的属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Grid节点类型的属性，若获取失败，则返回undefined。 |
+| GridAttribute | Grid节点类型的属性，若获取失败，则返回undefined。 |
 
 
 ## getAttribute
@@ -862,6 +912,8 @@ export function getAttribute(node: FrameNode, nodeType: 'GridItem'): GridItemAtt
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -874,12 +926,12 @@ export function getAttribute(node: FrameNode, nodeType: 'GridItem'): GridItemAtt
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 获取属性时所需的目标节点。 |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 获取属性时所需的目标节点。 |
 | nodeType | 'GridItem' | 是 | 获取GridItem节点类型的属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | GridItem节点类型的属性，若获取失败，则返回undefined。 |
+| GridItemAttribute | GridItem节点类型的属性，若获取失败，则返回undefined。 |
 

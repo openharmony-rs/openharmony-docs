@@ -8,7 +8,9 @@ type InsertFn = (uri: string, valueBucket: ValuesBucket, callback: AsyncCallback
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -22,7 +24,7 @@ type InsertFn = (uri: string, valueBucket: ValuesBucket, callback: AsyncCallback
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | string | 是 | Indicates the position where the data is to insert.  |
-| valueBucket | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | Indicates the data to insert.  |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;int&gt; | 是 | Returns the index of the newly inserted data record.  |
+| uri | string | 是 | Indicates the position where the data is to insert. |
+| valueBucket | [ValuesBucket](arkts-arkdata-valuesbucket-t.md) | 是 | Indicates the data to insert. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;int&gt; | 是 | Returns the index of the newly inserted data record. |
 

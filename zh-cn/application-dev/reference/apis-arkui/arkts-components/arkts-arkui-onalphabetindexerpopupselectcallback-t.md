@@ -10,6 +10,8 @@ declare type OnAlphabetIndexerPopupSelectCallback = (index: number) => void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -22,5 +24,5 @@ declare type OnAlphabetIndexerPopupSelectCallback = (index: number) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | selected index  |
+| index | number | 是 | selected index |
 

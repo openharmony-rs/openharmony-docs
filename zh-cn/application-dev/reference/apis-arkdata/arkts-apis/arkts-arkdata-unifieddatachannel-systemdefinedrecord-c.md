@@ -1,14 +1,16 @@
 # SystemDefinedRecord
 
-SystemDefinedRecord是[UnifiedRecord]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_的子类，也是OpenHarmony系统特有数据类型的基类，用于描述仅在 OpenHarmony系统范围内流通的特有数据类型，推荐开发者优先使用SystemDefinedRecord的子类描述数据，如 [SystemDefinedForm]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_、 [SystemDefinedAppItem]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_、 [SystemDefinedPixelMap]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_等具体子类。
+SystemDefinedRecord是[UnifiedRecord](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md#UnifiedRecord)的子类，也是OpenHarmony系统特有数据类型的基类，用于描述仅在 OpenHarmony系统范围内流通的特有数据类型，推荐开发者优先使用SystemDefinedRecord的子类描述数据，如 [SystemDefinedForm](arkts-arkdata-unifieddatachannel-systemdefinedform-c.md#SystemDefinedForm)、 [SystemDefinedAppItem](arkts-arkdata-unifieddatachannel-systemdefinedappitem-c.md#SystemDefinedAppItem)、 [SystemDefinedPixelMap](arkts-arkdata-unifieddatachannel-systemdefinedpixelmap-c.md#SystemDefinedPixelMap)等具体子类。
 
-**继承/实现关系：** SystemDefinedRecord extends [UnifiedRecord](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md)
+**继承/实现关系：** SystemDefinedRecord extends [UnifiedRecord](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md#UnifiedRecord)
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-<!--Device-unifiedDataChannel-class SystemDefinedRecord extends UnifiedRecord--><!--Device-unifiedDataChannel-class SystemDefinedRecord extends UnifiedRecord-End-->
+**废弃版本：** -1
+
+<!--Device-unifiedDataChannel-class SystemDefinedRecord--><!--Device-unifiedDataChannel-class SystemDefinedRecord-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -24,7 +26,9 @@ details?: Record<string, int | long | double | string | Uint8Array>
 
 **起始版本：** 10
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

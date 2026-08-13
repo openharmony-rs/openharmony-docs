@@ -8,6 +8,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare class CustomDialogController--><!--Device-unnamed-declare class CustomDialogController-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -22,6 +24,8 @@ close()
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CustomDialogController-close()--><!--Device-CustomDialogController-close()-End-->
@@ -34,11 +38,13 @@ close()
 constructor(value: CustomDialogControllerOptions)
 ```
 
-自定义弹窗的构造器。 > **说明：** > > 自定义弹窗的所有参数，不支持动态刷新，但可以通过设置customStyle为true，并在自定义组件上设置背景色 > [backgroundColor]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_、背景模糊 > [backgroundBlurStyle]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_ > 、[尺寸设置]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_等属性，通过属性绑定的状态变量来实现动态刷新的效果。 > > 在CustomDialogController作为全局变量以实现全局自定义弹窗的场景下，若对controller重新赋值，则无法通过其关闭之前的弹窗。建议在重新赋值前先关闭弹窗。 > > 在自定义弹窗内拉起另一个自定义弹窗时，不建议直接关闭拉起方。
+自定义弹窗的构造器。 > **说明：** > > 自定义弹窗的所有参数，不支持动态刷新，但可以通过设置customStyle为true，并在自定义组件上设置背景色 > backgroundColor、背景模糊 > backgroundBlurStyle > 、尺寸设置等属性，通过属性绑定的状态变量来实现动态刷新的效果。 > > 在CustomDialogController作为全局变量以实现全局自定义弹窗的场景下，若对controller重新赋值，则无法通过其关闭之前的弹窗。建议在重新赋值前先关闭弹窗。 > > 在自定义弹窗内拉起另一个自定义弹窗时，不建议直接关闭拉起方。
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -50,7 +56,7 @@ constructor(value: CustomDialogControllerOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 配置自定义弹窗的参数。 |
+| value | [CustomDialogControllerOptions](arkts-arkui-customdialogcontrolleroptions-i.md) | 是 | 配置自定义弹窗的参数。 |
 
 ## getState
 
@@ -64,6 +70,8 @@ getState(): PromptActionCommonState
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -76,7 +84,7 @@ getState(): PromptActionCommonState
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回对应的弹窗状态。 |
+| [PromptActionCommonState](arkts-arkui-promptactioncommonstate-t.md) | 返回对应的弹窗状态。 |
 
 ## open
 
@@ -84,11 +92,13 @@ getState(): PromptActionCommonState
 open()
 ```
 
-显示自定义弹窗内容，允许多次使用，但如果弹窗为SubWindow模式（showInSubWindow为true），则该弹窗不允许再弹出SubWindow模式的弹窗。 > **说明：** > > 不支持在输入法类型窗口中使用子窗（showInSubwindow为true）的CustomDialog，详情见输入法框架的约束与限制说明 > [createPanel]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ > 。
+显示自定义弹窗内容，允许多次使用，但如果弹窗为SubWindow模式（showInSubWindow为true），则该弹窗不允许再弹出SubWindow模式的弹窗。 > **说明：** > > 不支持在输入法类型窗口中使用子窗（showInSubwindow为true）的CustomDialog，详情见输入法框架的约束与限制说明 > [createPanel](../../apis-ime-kit/arkts-apis/arkts-ime-inputmethodengine-inputmethodability-i.md#createPanel) > 。
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

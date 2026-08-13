@@ -1,10 +1,12 @@
 # ScrollType
 
-Enum type supplied to \_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ for indicating the type of scroll.
+Enum type supplied to [setScrollable](arkts-na-webview-webviewcontroller-c.md#setScrollable) for indicating the type of scroll.
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-webview-enum ScrollType--><!--Device-webview-enum ScrollType-End-->
 
@@ -21,6 +23,8 @@ Indicates scrolling the web page through scroll event, include touch screen, tou
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ScrollType-EVENT = 0--><!--Device-ScrollType-EVENT = 0-End-->
 

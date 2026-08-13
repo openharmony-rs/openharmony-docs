@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-adminManager-export enum ManagedEvent--><!--Device-adminManager-export enum ManagedEvent-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -21,6 +23,8 @@ MANAGED_EVENT_BUNDLE_ADDED = 0
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-ManagedEvent-MANAGED_EVENT_BUNDLE_ADDED = 0--><!--Device-ManagedEvent-MANAGED_EVENT_BUNDLE_ADDED = 0-End-->
 
@@ -38,6 +42,8 @@ MANAGED_EVENT_BUNDLE_REMOVED = 1
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-ManagedEvent-MANAGED_EVENT_BUNDLE_REMOVED = 1--><!--Device-ManagedEvent-MANAGED_EVENT_BUNDLE_REMOVED = 1-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -53,6 +59,8 @@ MANAGED_EVENT_APP_START = 2
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-ManagedEvent-MANAGED_EVENT_APP_START = 2--><!--Device-ManagedEvent-MANAGED_EVENT_APP_START = 2-End-->
 
@@ -70,6 +78,8 @@ MANAGED_EVENT_APP_STOP = 3
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-ManagedEvent-MANAGED_EVENT_APP_STOP = 3--><!--Device-ManagedEvent-MANAGED_EVENT_APP_STOP = 3-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -85,6 +95,8 @@ MANAGED_EVENT_SYSTEM_UPDATE = 4
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-ManagedEvent-MANAGED_EVENT_SYSTEM_UPDATE = 4--><!--Device-ManagedEvent-MANAGED_EVENT_SYSTEM_UPDATE = 4-End-->
 
@@ -102,6 +114,8 @@ MANAGED_EVENT_ACCOUNT_ADDED = 5
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 <!--Device-ManagedEvent-MANAGED_EVENT_ACCOUNT_ADDED = 5--><!--Device-ManagedEvent-MANAGED_EVENT_ACCOUNT_ADDED = 5-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -117,6 +131,8 @@ MANAGED_EVENT_ACCOUNT_SWITCHED = 6
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 <!--Device-ManagedEvent-MANAGED_EVENT_ACCOUNT_SWITCHED = 6--><!--Device-ManagedEvent-MANAGED_EVENT_ACCOUNT_SWITCHED = 6-End-->
 
@@ -134,6 +150,8 @@ MANAGED_EVENT_ACCOUNT_REMOVED = 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 <!--Device-ManagedEvent-MANAGED_EVENT_ACCOUNT_REMOVED = 7--><!--Device-ManagedEvent-MANAGED_EVENT_ACCOUNT_REMOVED = 7-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -149,6 +167,8 @@ MANAGED_EVENT_STARTUP_GUIDE_COMPLETED = 8
 **起始版本：** 24
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -168,6 +188,8 @@ MANAGED_EVENT_BOOT_COMPLETED = 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ManagedEvent-MANAGED_EVENT_BOOT_COMPLETED = 9--><!--Device-ManagedEvent-MANAGED_EVENT_BOOT_COMPLETED = 9-End-->
@@ -186,6 +208,8 @@ MANAGED_EVENT_BUNDLE_UPDATED = 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ManagedEvent-MANAGED_EVENT_BUNDLE_UPDATED = 10--><!--Device-ManagedEvent-MANAGED_EVENT_BUNDLE_UPDATED = 10-End-->
@@ -203,6 +227,8 @@ MANAGED_EVENT_POLICIES_CHANGED = 11
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -1,10 +1,12 @@
 # ScrollbarMode
 
-Enum type supplied to \_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ for indicating the web component scrollbar mode.
+Enum type supplied to [setScrollbarMode](arkts-na-webview-webviewcontroller-c.md#setScrollbarMode) for indicating the web component scrollbar mode.
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-webview-enum ScrollbarMode--><!--Device-webview-enum ScrollbarMode-End-->
 
@@ -22,6 +24,8 @@ The normal scrollbar mode, A scrollbar suspended above the content, appearing wh
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-ScrollbarMode-OVERLAY_LAYOUT_SCROLLBAR = 0--><!--Device-ScrollbarMode-OVERLAY_LAYOUT_SCROLLBAR = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -38,6 +42,8 @@ The Resident scrollbar mode, Always display a fixed position scrollbar in the co
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-ScrollbarMode-FORCE_DISPLAY_SCROLLBAR = 1--><!--Device-ScrollbarMode-FORCE_DISPLAY_SCROLLBAR = 1-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -53,6 +59,8 @@ Overlay VisualViewport scrollbars: appear on scroll, hide when idle. Rendered vi
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

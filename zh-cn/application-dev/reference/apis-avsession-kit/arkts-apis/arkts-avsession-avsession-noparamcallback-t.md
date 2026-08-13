@@ -6,9 +6,11 @@ type NoParamCallback = () => void
 
 定义无参数的回调函数类型。
 
-**起始版本：** 22
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为22；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-avSession-type NoParamCallback = () => void--><!--Device-avSession-type NoParamCallback = () => void-End-->
 

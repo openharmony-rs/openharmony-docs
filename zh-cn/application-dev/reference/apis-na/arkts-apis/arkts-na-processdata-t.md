@@ -10,6 +10,8 @@ export type ProcessData = _ProcessData
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-export type ProcessData = _ProcessData--><!--Device-unnamed-export type ProcessData = _ProcessData-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core

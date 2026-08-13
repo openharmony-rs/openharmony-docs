@@ -1,18 +1,20 @@
 # AppStateData
 
 ```TypeScript
-export type AppStateData = _AppStateData.default
+export type AppStateData = _AppStateData
 ```
 
 应用状态信息。
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-<!--Device-appManager-export type AppStateData = _AppStateData.default--><!--Device-appManager-export type AppStateData = _AppStateData.default-End-->
+**废弃版本：** -1
+
+<!--Device-appManager-export type AppStateData = _AppStateData--><!--Device-appManager-export type AppStateData = _AppStateData-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**属性类型：** _AppStateData.default
+**属性类型：** _AppStateData
 

@@ -2,9 +2,11 @@
 
 数据库的PBKDF2算法枚举。请使用枚举名称而非枚举值。
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-relationalStore-enum KdfAlgo--><!--Device-relationalStore-enum KdfAlgo-End-->
 
@@ -16,11 +18,13 @@
 KDF_SHA1 = 0
 ```
 
-PBKDF2\_HMAC\_SHA1算法。
+PBKDF2_HMAC_SHA1算法。
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KdfAlgo-KDF_SHA1 = 0--><!--Device-KdfAlgo-KDF_SHA1 = 0-End-->
 
@@ -32,11 +36,13 @@ PBKDF2\_HMAC\_SHA1算法。
 KDF_SHA256 = 1
 ```
 
-PBKDF2\_HMAC\_SHA256算法。
+PBKDF2_HMAC_SHA256算法。
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KdfAlgo-KDF_SHA256 = 1--><!--Device-KdfAlgo-KDF_SHA256 = 1-End-->
 
@@ -48,11 +54,13 @@ PBKDF2\_HMAC\_SHA256算法。
 KDF_SHA512 = 2
 ```
 
-PBKDF2\_HMAC\_SHA512算法。
+PBKDF2_HMAC_SHA512算法。
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KdfAlgo-KDF_SHA512 = 2--><!--Device-KdfAlgo-KDF_SHA512 = 2-End-->
 

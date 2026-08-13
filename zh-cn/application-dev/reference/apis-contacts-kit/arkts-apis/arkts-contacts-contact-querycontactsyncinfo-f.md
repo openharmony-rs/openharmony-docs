@@ -12,6 +12,8 @@ function queryContactSyncInfo(context: Context): Promise<Array<ContactSyncInfo>>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **需要权限：** ohos.permission.READ_CONTACTS
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -26,13 +28,13 @@ function queryContactSyncInfo(context: Context): Promise<Array<ContactSyncInfo>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 应用上下文Context。 |
+| context | Context | 是 | 应用上下文Context。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;ContactSyncInfo&gt;&gt; | 返回调用应用程序的联系人同步信息数组。如果没有正在同步的联系人，则返回null。 |
+| Promise&lt;Array&lt;[ContactSyncInfo](arkts-contacts-contact-contactsyncinfo-i.md)&gt;&gt; | 返回调用应用程序的联系人同步信息数组。如果没有正在同步的联系人，则返回null。 |
 
 **错误码：**
 
@@ -41,9 +43,9 @@ function queryContactSyncInfo(context: Context): Promise<Array<ContactSyncInfo>>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [16700001](../errorcode-contacts.md#16700001-系统内部错误) | General error. |
 
-**示例：**
+## 示例
 
-在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 ```TypeScript
 import { contact } from '@kit.ContactsKit';

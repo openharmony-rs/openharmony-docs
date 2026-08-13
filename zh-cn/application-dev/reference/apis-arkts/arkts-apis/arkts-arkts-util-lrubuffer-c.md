@@ -8,9 +8,9 @@ LruBuffer 算法在缓存空间不足时使用新数据替换最不常使用的�
 
 **废弃版本：** 9
 
-**替代接口：** [util.LRUCache](arkts-arkts-util-lrucache-c.md)
+**替代接口：** [LRUCache](arkts-arkts-util-lrucache-c.md#LRUCache)
 
-<!--Device-util-class LruBuffer<K, V>--><!--Device-util-class LruBuffer<K, V>-End-->
+<!--Device-util-class LruBuffer--><!--Device-util-class LruBuffer-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -28,7 +28,7 @@ LruBuffer 算法在缓存空间不足时使用新数据替换最不常使用的�
 
 **废弃版本：** 9
 
-**替代接口：** ohos.util.LRUCache.[Symbol.iterator]
+**替代接口：** iterator]
 
 <!--Device-LruBuffer-[Symbol.iterator](): IterableIterator<[K, V]>--><!--Device-LruBuffer-[Symbol.iterator](): IterableIterator<[K, V]>-End-->
 
@@ -40,7 +40,7 @@ LruBuffer 算法在缓存空间不足时使用新数据替换最不常使用的�
 | --- | --- |
 | IterableIterator&lt;[K, V]&gt; | 返回以键值对形式的二维数组。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let pro : util.LruBuffer<number,number> = new util.LruBuffer();
@@ -62,7 +62,7 @@ afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void
 
 **废弃版本：** 9
 
-**替代接口：** [util.LRUCache.afterRemoval](arkts-arkts-util-lrucache-c.md#afterremoval)
+**替代接口：** [afterRemoval](arkts-arkts-util-lrucache-c.md#afterRemoval)
 
 <!--Device-LruBuffer-afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void--><!--Device-LruBuffer-afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void-End-->
 
@@ -77,7 +77,7 @@ afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void
 | value | V | 是 | 被移除的值。 |
 | newValue | V | 是 | 如果调用了 **put()** 方法并且要添加的 key 已存在时该 key 的新值。其他情况下此参数为空。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 class ChildLruBuffer<K, V> extends util.LruBuffer<K, V> {
@@ -116,13 +116,13 @@ clear(): void
 
 **废弃版本：** 9
 
-**替代接口：** [util.LRUCache.clear](arkts-arkts-util-lrucache-c.md#clear)
+**替代接口：** [clear](arkts-arkts-util-lrucache-c.md#clear)
 
 <!--Device-LruBuffer-clear(): void--><!--Device-LruBuffer-clear(): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**示例：**
+## 示例
 
 ```TypeScript
 let pro : util.LruBuffer<number,number> = new util.LruBuffer();
@@ -145,7 +145,7 @@ constructor(capacity?: number)
 
 **废弃版本：** 9
 
-**替代接口：** ohos.util.LRUCache.constructor
+**替代接口：** constructor
 
 <!--Device-LruBuffer-constructor(capacity?: number)--><!--Device-LruBuffer-constructor(capacity?: number)-End-->
 
@@ -157,7 +157,7 @@ constructor(capacity?: number)
 | --- | --- | --- | --- |
 | capacity | number | 否 | 要创建的缓存的容量。默认值为 **64**。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let pro : util.LruBuffer<number,number> = new util.LruBuffer();
@@ -177,7 +177,7 @@ contains(key: K): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [util.LRUCache.contains](arkts-arkts-util-lrucache-c.md#contains)
+**替代接口：** [contains](arkts-arkts-util-lrucache-c.md#contains)
 
 <!--Device-LruBuffer-contains(key: K): boolean--><!--Device-LruBuffer-contains(key: K): boolean-End-->
 
@@ -195,7 +195,7 @@ contains(key: K): boolean
 | --- | --- |
 | boolean | 检查结果。如果缓存包含指定的 key，则返回 **true**；否则返回 **false**。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let pro : util.LruBuffer<number,number> = new util.LruBuffer();
@@ -219,7 +219,7 @@ createDefault(key: K): V
 
 **废弃版本：** 9
 
-**替代接口：** [util.LRUCache.createDefault](arkts-arkts-util-lrucache-c.md#createdefault)
+**替代接口：** [createDefault](arkts-arkts-util-lrucache-c.md#createDefault)
 
 <!--Device-LruBuffer-createDefault(key: K): V--><!--Device-LruBuffer-createDefault(key: K): V-End-->
 
@@ -237,7 +237,7 @@ createDefault(key: K): V
 | --- | --- |
 | V | key 对应的值。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let pro : util.LruBuffer<number,number> = new util.LruBuffer();
@@ -258,7 +258,7 @@ entries(): IterableIterator<[K, V]>
 
 **废弃版本：** 9
 
-**替代接口：** [util.LRUCache.entries](arkts-arkts-util-lrucache-c.md#entries)
+**替代接口：** [entries](arkts-arkts-util-lrucache-c.md#entries)
 
 <!--Device-LruBuffer-entries(): IterableIterator<[K, V]>--><!--Device-LruBuffer-entries(): IterableIterator<[K, V]>-End-->
 
@@ -270,7 +270,7 @@ entries(): IterableIterator<[K, V]>
 | --- | --- |
 | IterableIterator&lt;[K, V]&gt; | 可迭代的数组。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let pro : util.LruBuffer<number,number> = new util.LruBuffer();
@@ -292,7 +292,7 @@ get(key: K): V | undefined
 
 **废弃版本：** 9
 
-**替代接口：** [util.LRUCache.get](arkts-arkts-util-lrucache-c.md#get)
+**替代接口：** [get](arkts-arkts-util-lrucache-c.md#get)
 
 <!--Device-LruBuffer-get(key: K): V | undefined--><!--Device-LruBuffer-get(key: K): V | undefined-End-->
 
@@ -310,7 +310,7 @@ get(key: K): V | undefined
 | --- | --- |
 | V | key 对应的值。如果未找到匹配项，则返回 **undefined**。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let pro : util.LruBuffer<number,number> = new util.LruBuffer();
@@ -334,7 +334,7 @@ getCapacity(): number
 
 **废弃版本：** 9
 
-**替代接口：** [util.LRUCache.getCapacity](arkts-arkts-util-lrucache-c.md#getcapacity)
+**替代接口：** [getCapacity](arkts-arkts-util-lrucache-c.md#getCapacity)
 
 <!--Device-LruBuffer-getCapacity(): number--><!--Device-LruBuffer-getCapacity(): number-End-->
 
@@ -346,7 +346,7 @@ getCapacity(): number
 | --- | --- |
 | number | 缓存的容量。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let pro : util.LruBuffer<number,number> = new util.LruBuffer();
@@ -369,7 +369,7 @@ getCreateCount(): number
 
 **废弃版本：** 9
 
-**替代接口：** [util.LRUCache.getCreateCount](arkts-arkts-util-lrucache-c.md#getcreatecount)
+**替代接口：** [getCreateCount](arkts-arkts-util-lrucache-c.md#getCreateCount)
 
 <!--Device-LruBuffer-getCreateCount(): number--><!--Device-LruBuffer-getCreateCount(): number-End-->
 
@@ -379,9 +379,9 @@ getCreateCount(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | **createDefault()** 的返回值数量。 |
+| number | createDefault()** 的返回值数量。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let pro : util.LruBuffer<number,number> = new util.LruBuffer();
@@ -405,7 +405,7 @@ getMatchCount(): number
 
 **废弃版本：** 9
 
-**替代接口：** [util.LRUCache.getMatchCount](arkts-arkts-util-lrucache-c.md#getmatchcount)
+**替代接口：** [getMatchCount](arkts-arkts-util-lrucache-c.md#getMatchCount)
 
 <!--Device-LruBuffer-getMatchCount(): number--><!--Device-LruBuffer-getMatchCount(): number-End-->
 
@@ -417,7 +417,7 @@ getMatchCount(): number
 | --- | --- |
 | number | 查询值匹配的次数。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let pro : util.LruBuffer<number,number> = new util.LruBuffer();
@@ -442,7 +442,7 @@ getMissCount(): number
 
 **废弃版本：** 9
 
-**替代接口：** [util.LRUCache.getMissCount](arkts-arkts-util-lrucache-c.md#getmisscount)
+**替代接口：** [getMissCount](arkts-arkts-util-lrucache-c.md#getMissCount)
 
 <!--Device-LruBuffer-getMissCount(): number--><!--Device-LruBuffer-getMissCount(): number-End-->
 
@@ -454,7 +454,7 @@ getMissCount(): number
 | --- | --- |
 | number | 查询值未匹配的次数。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let pro : util.LruBuffer<number,number> = new util.LruBuffer();
@@ -479,7 +479,7 @@ getPutCount(): number
 
 **废弃版本：** 9
 
-**替代接口：** [util.LRUCache.getPutCount](arkts-arkts-util-lrucache-c.md#getputcount)
+**替代接口：** [getPutCount](arkts-arkts-util-lrucache-c.md#getPutCount)
 
 <!--Device-LruBuffer-getPutCount(): number--><!--Device-LruBuffer-getPutCount(): number-End-->
 
@@ -491,7 +491,7 @@ getPutCount(): number
 | --- | --- |
 | number | 向缓存添加的次数。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let pro : util.LruBuffer<number,number> = new util.LruBuffer();
@@ -515,7 +515,7 @@ getRemovalCount(): number
 
 **废弃版本：** 9
 
-**替代接口：** [util.LRUCache.getRemovalCount](arkts-arkts-util-lrucache-c.md#getremovalcount)
+**替代接口：** [getRemovalCount](arkts-arkts-util-lrucache-c.md#getRemovalCount)
 
 <!--Device-LruBuffer-getRemovalCount(): number--><!--Device-LruBuffer-getRemovalCount(): number-End-->
 
@@ -527,7 +527,7 @@ getRemovalCount(): number
 | --- | --- |
 | number | 从缓存中移除的次数。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let pro : util.LruBuffer<number,number> = new util.LruBuffer();
@@ -553,7 +553,7 @@ isEmpty(): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [util.LRUCache.isEmpty](arkts-arkts-util-lrucache-c.md#isempty)
+**替代接口：** [isEmpty](arkts-arkts-util-lrucache-c.md#isEmpty)
 
 <!--Device-LruBuffer-isEmpty(): boolean--><!--Device-LruBuffer-isEmpty(): boolean-End-->
 
@@ -565,7 +565,7 @@ isEmpty(): boolean
 | --- | --- |
 | boolean | 如果缓存不包含任何值，则返回 **true**。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let pro : util.LruBuffer<number,number> = new util.LruBuffer();
@@ -589,7 +589,7 @@ keys(): K[]
 
 **废弃版本：** 9
 
-**替代接口：** [util.LRUCache.keys](arkts-arkts-util-lrucache-c.md#keys)
+**替代接口：** [keys](arkts-arkts-util-lrucache-c.md#keys)
 
 <!--Device-LruBuffer-keys(): K[]--><!--Device-LruBuffer-keys(): K[]-End-->
 
@@ -601,7 +601,7 @@ keys(): K[]
 | --- | --- |
 | K[] | 此缓存中的所有 key，按从最近最多访问到最近最少访问的顺序排列。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let pro : util.LruBuffer<number,number> = new util.LruBuffer();
@@ -625,7 +625,7 @@ put(key: K, value: V): V
 
 **废弃版本：** 9
 
-**替代接口：** [util.LRUCache.put](arkts-arkts-util-lrucache-c.md#put)
+**替代接口：** [put](arkts-arkts-util-lrucache-c.md#put)
 
 <!--Device-LruBuffer-put(key: K, value: V): V--><!--Device-LruBuffer-put(key: K, value: V): V-End-->
 
@@ -644,7 +644,7 @@ put(key: K, value: V): V
 | --- | --- |
 | V | 添加的值。如果 key 已存在，则返回已存在的值；如果 **key** 或 **value** 传入 **null**，则抛出错误。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let pro : util.LruBuffer<number,number> = new util.LruBuffer();
@@ -667,7 +667,7 @@ remove(key: K): V | undefined
 
 **废弃版本：** 9
 
-**替代接口：** [util.LRUCache.remove](arkts-arkts-util-lrucache-c.md#remove)
+**替代接口：** [remove](arkts-arkts-util-lrucache-c.md#remove)
 
 <!--Device-LruBuffer-remove(key: K): V | undefined--><!--Device-LruBuffer-remove(key: K): V | undefined-End-->
 
@@ -683,9 +683,9 @@ remove(key: K): V | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| V | 包含被移除键值对的 **Optional** 对象。如果 key 不存在，则返回空的 **Optional** |
+| V | 包含被移除键值对的 **Optional** 对象。如果 key 不存在，则返回空的 **Optional** 对象；如果 **key** 传入 **null**，则抛出错误。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let pro : util.LruBuffer<number,number> = new util.LruBuffer();
@@ -709,7 +709,7 @@ toString(): string
 
 **废弃版本：** 9
 
-**替代接口：** [util.LRUCache.toString](arkts-arkts-util-lrucache-c.md#tostring)
+**替代接口：** [toString](arkts-arkts-util-lrucache-c.md#toString)
 
 <!--Device-LruBuffer-toString(): string--><!--Device-LruBuffer-toString(): string-End-->
 
@@ -721,7 +721,7 @@ toString(): string
 | --- | --- |
 | string | 此缓存的字符串表示形式。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let pro : util.LruBuffer<number,number> = new util.LruBuffer();
@@ -747,7 +747,7 @@ updateCapacity(newCapacity: number): void
 
 **废弃版本：** 9
 
-**替代接口：** [util.LRUCache.updateCapacity](arkts-arkts-util-lrucache-c.md#updatecapacity)
+**替代接口：** [updateCapacity](arkts-arkts-util-lrucache-c.md#updateCapacity)
 
 <!--Device-LruBuffer-updateCapacity(newCapacity: number): void--><!--Device-LruBuffer-updateCapacity(newCapacity: number): void-End-->
 
@@ -759,7 +759,7 @@ updateCapacity(newCapacity: number): void
 | --- | --- | --- | --- |
 | newCapacity | number | 是 | 缓存的新容量。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let pro : util.LruBuffer<number,number> = new util.LruBuffer();
@@ -780,7 +780,7 @@ values(): V[]
 
 **废弃版本：** 9
 
-**替代接口：** [util.LRUCache.values](arkts-arkts-util-lrucache-c.md#values)
+**替代接口：** [values](arkts-arkts-util-lrucache-c.md#values)
 
 <!--Device-LruBuffer-values(): V[]--><!--Device-LruBuffer-values(): V[]-End-->
 
@@ -792,7 +792,7 @@ values(): V[]
 | --- | --- |
 | V[] | 此缓存中的所有值，按从最近最多访问到最近最少访问的顺序排列。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let pro : util.LruBuffer<number|string,number|string> = new util.LruBuffer();
@@ -810,7 +810,7 @@ console.info("result = " + result);
 length: number
 ```
 
-此缓存中值的总数。
+当前缓冲区中值的总数。
 
 **类型：** number
 
@@ -820,7 +820,7 @@ length: number
 
 **废弃版本：** 9
 
-**替代接口：** ohos.util.LRUCache.length
+**替代接口：** length
 
 <!--Device-LruBuffer-length: number--><!--Device-LruBuffer-length: number-End-->
 

@@ -1,10 +1,12 @@
 # FocusMovement
 
-设置对应的按键对应的走焦目的组件，缺省则遵循默认走焦规则。 > **说明：** > > 直接使用focusControl可能导致\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_的问题，建议使用getUIContext()获取 > [UIContext]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_实例，并使用 > [getFocusController]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_获取绑定实例的focusControl。
+设置对应的按键对应的走焦目的组件，缺省则遵循默认走焦规则。 > **说明：** > > 直接使用focusControl可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取 > [UIContext](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#UIContext)实例，并使用 > [getFocusController](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#getFocusController)获取绑定实例的focusControl。
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare interface FocusMovement--><!--Device-unnamed-declare interface FocusMovement-End-->
 
@@ -23,6 +25,8 @@ backward?: string
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,6 +50,8 @@ down?: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -67,6 +73,8 @@ forward?: string
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -90,6 +98,8 @@ left?: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -112,6 +122,8 @@ right?: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -133,6 +145,8 @@ up?: string
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

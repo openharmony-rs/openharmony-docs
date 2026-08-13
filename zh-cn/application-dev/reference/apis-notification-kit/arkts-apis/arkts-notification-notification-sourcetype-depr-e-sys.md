@@ -1,6 +1,6 @@
 # SourceType（系统接口）
 
-> **说明：** > 从 API version 8开始支持，从API version 9开始废弃。建议使用 \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_替代。
+通知来源类型。
 
 **起始版本：** 8
 
@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager#SourceType
+**替代接口：** [SourceType](arkts-notification-notificationmanager-sourcetype-e-sys.md#SourceType（系统接口）)
 
 <!--Device-notification-export enum SourceType--><!--Device-notification-export enum SourceType-End-->
 
@@ -30,7 +30,7 @@ TYPE_NORMAL = 0
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager.SourceType#TYPE_NORMAL
+**替代接口：** [TYPE_NORMAL](arkts-notification-notificationmanager-sourcetype-e-sys.md#TYPE_NORMAL)
 
 <!--Device-SourceType-TYPE_NORMAL = 0--><!--Device-SourceType-TYPE_NORMAL = 0-End-->
 
@@ -52,7 +52,7 @@ TYPE_CONTINUOUS = 1
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager.SourceType#TYPE_CONTINUOUS
+**替代接口：** [TYPE_CONTINUOUS](arkts-notification-notificationmanager-sourcetype-e-sys.md#TYPE_CONTINUOUS)
 
 <!--Device-SourceType-TYPE_CONTINUOUS = 1--><!--Device-SourceType-TYPE_CONTINUOUS = 1-End-->
 
@@ -74,7 +74,7 @@ TYPE_TIMER = 2
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager.SourceType#TYPE_TIMER
+**替代接口：** [TYPE_TIMER](arkts-notification-notificationmanager-sourcetype-e-sys.md#TYPE_TIMER)
 
 <!--Device-SourceType-TYPE_TIMER = 2--><!--Device-SourceType-TYPE_TIMER = 2-End-->
 

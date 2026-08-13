@@ -14,7 +14,7 @@ function requestRight(deviceName: string): Promise<boolean>
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.requestRight](arkts-basicservices-usbmanager-requestright-f.md#requestright)
+**替代接口：** [requestRight](arkts-basicservices-usbmanager-requestright-f.md#requestRight)
 
 <!--Device-usb-function requestRight(deviceName: string): Promise<boolean>--><!--Device-usb-function requestRight(deviceName: string): Promise<boolean>-End-->
 
@@ -32,7 +32,7 @@ function requestRight(deviceName: string): Promise<boolean>
 | --- | --- |
 | Promise&lt;boolean&gt; | Promise对象，返回临时权限的申请结果。返回true表示临时权限申请成功；返回false则表示临时权限申请失败。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let devicesName= "1-1";

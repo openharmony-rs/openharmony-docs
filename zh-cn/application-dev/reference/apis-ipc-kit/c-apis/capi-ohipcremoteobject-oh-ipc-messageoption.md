@@ -6,7 +6,7 @@ struct OH_IPC_MessageOption {...}
 
 ## 概述
 
-Defines the IPC message options.
+IPC消息选项定义，用于配置IPC通信过程中的请求参数。
 
 **起始版本：** 12
 

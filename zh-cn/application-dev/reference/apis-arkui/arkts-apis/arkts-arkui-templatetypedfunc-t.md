@@ -8,6 +8,8 @@ declare type TemplateTypedFunc<T> = (item: T, index: number) => string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -20,8 +22,8 @@ declare type TemplateTypedFunc<T> = (item: T, index: number) => string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| item | T | 是 | arr中每一个数据项。T为开发者传入的数据类型。 \_\_\_HTML\_TAG\_USD\_0\_\_\_缺省时默认忽略该参数，请勿在闭包函数的实现中使用该参数，否则会编译报错。  |
-| index | number | 是 | 当前数据项对应的索引。 \_\_\_HTML\_TAG\_USD\_0\_\_\_缺省时默认忽略该参数，请勿在闭包函数的实现中使用该参数，否则会编译报错。  |
+| item | T | 是 | arr中每一个数据项。T为开发者传入的数据类型。 <br>缺省时默认忽略该参数，请勿在闭包函数的实现中使用该参数，否则会编译报错。 |
+| index | number | 是 | 当前数据项对应的索引。 <br>缺省时默认忽略该参数，请勿在闭包函数的实现中使用该参数，否则会编译报错。 |
 
 **返回值：**
 

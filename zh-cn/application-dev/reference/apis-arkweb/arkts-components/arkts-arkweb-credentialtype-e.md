@@ -1,10 +1,12 @@
 # CredentialType
 
-Enum type supplied to \_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ when ClientAuthenticationHandler#confirm being called.
+Enum type supplied to [CredentialType](#CredentialType) when ClientAuthenticationHandler#confirm being called.
 
 **起始版本：** 22
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare enum CredentialType--><!--Device-unnamed-declare enum CredentialType-End-->
 
@@ -22,6 +24,8 @@ User credential.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 <!--Device-CredentialType-CREDENTIAL_USER = 2--><!--Device-CredentialType-CREDENTIAL_USER = 2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -38,6 +42,8 @@ Application-specific credential.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 <!--Device-CredentialType-CREDENTIAL_APP = 3--><!--Device-CredentialType-CREDENTIAL_APP = 3-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -53,6 +59,8 @@ Hardware security key credential.
 **起始版本：** 22
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 <!--Device-CredentialType-CREDENTIAL_UKEY = 4--><!--Device-CredentialType-CREDENTIAL_UKEY = 4-End-->
 

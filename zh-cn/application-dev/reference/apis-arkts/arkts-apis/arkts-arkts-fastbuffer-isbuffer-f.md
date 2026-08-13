@@ -6,11 +6,13 @@
 function isBuffer(obj: Object): boolean
 ```
 
-判断\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_是否为FastBuffer。
+判断`obj`是否为FastBuffer。
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
@@ -22,7 +24,7 @@ function isBuffer(obj: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| obj | Object | 是 | 要判断是否为FastBuffer的对象。 |
+| obj | Object | 是 | 待判断是否为FastBuffer的对象。 |
 
 **返回值：**
 
@@ -30,7 +32,7 @@ function isBuffer(obj: Object): boolean
 | --- | --- |
 | boolean | 如果obj是FastBuffer，则返回true，否则返回false。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { fastbuffer } from '@kit.ArkTS';

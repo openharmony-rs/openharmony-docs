@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
 
+**废弃版本：** -1
+
 <!--Device-contact-enum FilterType--><!--Device-contact-enum FilterType-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
@@ -21,6 +23,8 @@ SHOW_FILTER = 0
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
@@ -40,6 +44,8 @@ DEFAULT_SELECT = 1
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
 <!--Device-FilterType-DEFAULT_SELECT = 1--><!--Device-FilterType-DEFAULT_SELECT = 1-End-->
@@ -57,6 +63,8 @@ SHOW_FILTER_AND_DEFAULT_SELECT = 2
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 

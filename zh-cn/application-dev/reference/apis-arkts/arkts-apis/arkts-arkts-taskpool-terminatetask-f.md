@@ -6,11 +6,13 @@
 function terminateTask(longTask: LongTask): void
 ```
 
-中止任务池中的长时任务，在长时任务执行完成后调用。中止后，执行长时任务的线程可能会被回收。
+终止任务池中的长时任务，在长时任务执行完成后调用。终止后，执行长时任务的线程可能会被回收。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -22,9 +24,9 @@ function terminateTask(longTask: LongTask): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| longTask | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 需要中止的长时任务。 |
+| longTask | [LongTask](arkts-arkts-taskpool-longtask-c.md) | 是 | 需要终止的长时任务。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 @Concurrent

@@ -16,6 +16,8 @@ SymbolSpan(value: Resource)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -30,7 +32,7 @@ SymbolSpan(value: Resource)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | SymbolSpan组件的资源引用，如 \$r('sys.symbol.ohos\_wifi')。仅支持系统预置的symbol资源，引用非symbol资源将显示异常。  |
+| value | Resource | 是 | SymbolSpan组件的资源引用，如 \$r('sys.symbol.ohos_wifi')。仅支持系统预置的symbol资源，引用非symbol资源将显示异常。 |
 
 ## 汇总
 

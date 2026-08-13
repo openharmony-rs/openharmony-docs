@@ -2,9 +2,11 @@
 
 属性转换控制器。使用其子接口之前得先创建系统窗口，参照示例代码。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-window-interface TransitionController--><!--Device-window-interface TransitionController-End-->
 
@@ -24,6 +26,8 @@ animationForHidden(context: TransitionContext): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 <!--Device-TransitionController-animationForHidden(context: TransitionContext): void--><!--Device-TransitionController-animationForHidden(context: TransitionContext): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
@@ -34,16 +38,16 @@ animationForHidden(context: TransitionContext): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 属性转换时的上下文。 |
+| context | [TransitionContext](arkts-arkui-window-transitioncontext-i-sys.md) | 是 | 属性转换时的上下文。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 12+ |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible cause:1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // xxx.ts
@@ -113,6 +117,8 @@ animationForShown(context: TransitionContext): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 <!--Device-TransitionController-animationForShown(context: TransitionContext): void--><!--Device-TransitionController-animationForShown(context: TransitionContext): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
@@ -123,16 +129,16 @@ animationForShown(context: TransitionContext): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 属性转换时的上下文。 |
+| context | [TransitionContext](arkts-arkui-window-transitioncontext-i-sys.md) | 是 | 属性转换时的上下文。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 12+ |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible cause:1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // xxx.ts
@@ -198,13 +204,15 @@ animationForHidden?: TransitionControllerCallback
 
 窗口隐藏时的自定义动画配置。
 
-**类型：** TransitionControllerCallback
+**类型：** [TransitionControllerCallback](arkts-arkui-transitioncontrollercallback-t-sys.md)
 
 **默认值：** undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TransitionController-animationForHidden?: TransitionControllerCallback--><!--Device-TransitionController-animationForHidden?: TransitionControllerCallback-End-->
 
@@ -220,13 +228,15 @@ animationForShown?: TransitionControllerCallback
 
 窗口显示时的自定义动画配置。
 
-**类型：** TransitionControllerCallback
+**类型：** [TransitionControllerCallback](arkts-arkui-transitioncontrollercallback-t-sys.md)
 
 **默认值：** undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TransitionController-animationForShown?: TransitionControllerCallback--><!--Device-TransitionController-animationForShown?: TransitionControllerCallback-End-->
 

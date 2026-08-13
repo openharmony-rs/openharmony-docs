@@ -1,10 +1,12 @@
 # ProxySchemeFilter
 
-Enum type supplied to \_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ for indicating the scheme filter for proxy.
+Enum type supplied to [insertProxyRule](../../apis-na/arkts-apis/arkts-na-webview-proxyconfig-c.md#insertProxyRule) for indicating the scheme filter for proxy.
 
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 <!--Device-webview-enum ProxySchemeFilter--><!--Device-webview-enum ProxySchemeFilter-End-->
 
@@ -21,6 +23,8 @@ MATCH_ALL_SCHEMES = 0
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
@@ -40,6 +44,8 @@ HTTP请求会使用代理。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ProxySchemeFilter-MATCH_HTTP = 1--><!--Device-ProxySchemeFilter-MATCH_HTTP = 1-End-->
@@ -57,6 +63,8 @@ HTTPS请求会使用代理。
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 

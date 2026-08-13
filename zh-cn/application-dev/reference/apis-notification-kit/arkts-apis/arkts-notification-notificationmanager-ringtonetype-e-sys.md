@@ -2,9 +2,11 @@
 
 描述自定义铃声类型。
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-notificationManager-export enum RingtoneType--><!--Device-notificationManager-export enum RingtoneType-End-->
 
@@ -20,9 +22,11 @@ RINGTONE_TYPE_SYSTEM = 0
 
 表示系统自定义铃声。
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-RingtoneType-RINGTONE_TYPE_SYSTEM = 0--><!--Device-RingtoneType-RINGTONE_TYPE_SYSTEM = 0-End-->
 
@@ -38,9 +42,11 @@ RINGTONE_TYPE_LOCAL = 1
 
 表示本地自定义铃声。
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-RingtoneType-RINGTONE_TYPE_LOCAL = 1--><!--Device-RingtoneType-RINGTONE_TYPE_LOCAL = 1-End-->
 
@@ -56,9 +62,11 @@ RINGTONE_TYPE_ONLINE = 2
 
 表示在线自定义铃声。
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-RingtoneType-RINGTONE_TYPE_ONLINE = 2--><!--Device-RingtoneType-RINGTONE_TYPE_ONLINE = 2-End-->
 
@@ -74,9 +82,11 @@ RINGTONE_TYPE_NONE = 3
 
 表示非自定义铃声。
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-RingtoneType-RINGTONE_TYPE_NONE = 3--><!--Device-RingtoneType-RINGTONE_TYPE_NONE = 3-End-->
 

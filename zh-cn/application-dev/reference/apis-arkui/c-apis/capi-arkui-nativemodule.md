@@ -13,14 +13,17 @@ Provides UI capabilities of ArkUI on the native side, such as UI component creat
 | [native_animate.h](capi-native-animate-h.md) | 提供ArkUI在Native侧的动画接口定义集合。native_animate.h中的接口需要在主线程上调用。 |
 | [native_type_visual.h](capi-native-type-visual-h.md) | Defines the visual effect types for the native module. |
 | [native_node.h](capi-native-node-h.md) | Provides type definitions for <b>NativeNode</b> APIs. |
+| [native_node_ani.h](capi-native-node-ani-h.md) | 提供ArkTS1.2的FrameNode转换NodeHandle的方式。 |
 | [native_key_event.h](capi-native-key-event-h.md) | Declares the APIs of **NativeKeyEvent**. |
 | [drag_and_drop.h](capi-drag-and-drop-h.md) | Declares the APIs of **NativeDrag**. |
+| [native_interface.h](capi-native-interface-h.md) | Provides a unified entry for the native module APIs. |
 | [native_interface_focus.h](capi-native-interface-focus-h.md) | Declares APIs for focus management, mainly used for actively transferring focus, managing the default focustransfer behavior, and controlling the focus activation state. |
 | [native_type.h](capi-native-type-h.md) | Defines the common types for the native module. |
 | [native_dialog.h](capi-native-dialog-h.md) | 提供ArkUI在Native侧的自定义弹窗接口定义集合。 |
 | [error_code.h](capi-error-code-h.md) | Defines the error code for the native module. |
 | [common_type.h](capi-common-type-h.md) | 定义ArkUI Native API的公共类型。 |
 | [drawable_descriptor.h](capi-drawable-descriptor-h.md) | 提供NativeDrawableDescriptor接口的类型定义。 |
+| [native_node_napi.h](capi-native-node-napi-h.md) | 提供ArkTS侧的{@link FrameNode}转换{@link NodeHandle}的方式。 |
 | [styled_string.h](capi-styled-string-h.md) | 在Native侧定义[ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype)为ARKUI_NODE_TEXT的组件的文本样式和文本布局管理器。 |
 | [custom_span.h](capi-custom-span-h.md) | Defines a set of CustomSpan enum and interface. |
 | [node_water_flow.h](capi-node-water-flow-h.md) | 定义WaterFlow组件相关的枚举和接口。 |
@@ -29,6 +32,7 @@ Provides UI capabilities of ArkUI on the native side, such as UI component creat
 | [navigation_router.h](capi-navigation-router-h.md) | 定义Navigation或Router组件的枚举和接口。 |
 | [node_scroll.h](capi-node-scroll-h.md) | 提供滚动方向、边缘效果、滚动条状态、内容裁剪、嵌套滚动、滚动状态和滚动来源等枚举，用于配置和监听Scroll组件及相关可滚动组件的行为。 |
 | [node_grid.h](capi-node-grid-h.md) | 定义Grid组件相关的枚举和接口。 |
+| [custom_attributes.h](capi-custom-attributes-h.md) | 为NativeNode API提供自定义节点事件定义。 |
 | [xcomponent.h](capi-xcomponent-h.md) | XComponent组件的枚举类型定义。 |
 | [rich_editor.h](capi-rich-editor-h.md) | Defines a set of RichEditor enum and interface. |
 | [image_span.h](capi-image-span-h.md) | Defines a set of ImageSpan enum and interface. |

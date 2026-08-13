@@ -1,20 +1,22 @@
 # KVObject
 
 ```TypeScript
-export type KVObject = Record<string, int | long | double | string | boolean | Array<KVObject> | KVObject>
+type KVObject = { [key: string]: number | string | boolean | [] | KVObject }
 ```
 
 以键值对形式存储信息，符合JSON格式。
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**废弃版本：** -1
 
-<!--Device-pluginComponentManager-export type KVObject = Record<string, int | long | double | string | boolean | Array<KVObject> | KVObject>--><!--Device-pluginComponentManager-export type KVObject = Record<string, int | long | double | string | boolean | Array<KVObject> | KVObject>-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-pluginComponentManager-type KVObject = { [key: string]: number | string | boolean | [] | KVObject }--><!--Device-pluginComponentManager-type KVObject = { [key: string]: number | string | boolean | [] | KVObject }-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**属性类型：** Record<string, int | long | double | string | boolean | Array<KVObject> | KVObject>
+**属性类型：** { [key: string]: number | string | boolean | [] | KVObject }
 

@@ -2,7 +2,7 @@
 
 ## 概述
 
-This file declares the functions related to the pixel map in the drawing module.
+声明与绘图模块中的像素图对象相关的函数。支持从图像框架定义的像素图对象中获取本模块定义的像素图对象，支持解除两者之间的关系。<br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
 
 **库：** libnative_drawing.so
 
@@ -25,9 +25,9 @@ This file declares the functions related to the pixel map in the drawing module.
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Drawing_PixelMap* OH_Drawing_PixelMapGetFromNativePixelMap(NativePixelMap_* nativePixelMap)](#oh_drawing_pixelmapgetfromnativepixelmap) | 从图像框架定义的像素图对象中获取本模块定义的像素图对象。对象使用完毕后，需调用[OH_Drawing_PixelMapDissolve](capi-drawing-pixel-map-h.md#oh_drawing_pixelmapdissolve)解除关系，否则会引发内存泄露问题。 |
-| [OH_Drawing_PixelMap* OH_Drawing_PixelMapGetFromOhPixelMapNative(OH_PixelmapNative* pixelmapNative)](#oh_drawing_pixelmapgetfromohpixelmapnative) | 从图像框架定义的像素图对象中获取本模块定义的像素图对象。对象使用完毕后，需调用[OH_Drawing_PixelMapDissolve](capi-drawing-pixel-map-h.md#oh_drawing_pixelmapdissolve)解除关系，否则会引发内存泄露问题。 |
-| [void OH_Drawing_PixelMapDissolve(OH_Drawing_PixelMap* pixelMap)](#oh_drawing_pixelmapdissolve) | 解除本模块定义的像素图对象和图像框架定义的像素图对象之间的关系，该关系通过调用 [OH_Drawing_PixelMapGetFromNativePixelMap](capi-drawing-pixel-map-h.md#oh_drawing_pixelmapgetfromnativepixelmap) 或[OH_Drawing_PixelMapGetFromOhPixelMapNative](capi-drawing-pixel-map-h.md#oh_drawing_pixelmapgetfromohpixelmapnative)建立。 |
+| [OH_Drawing_PixelMap* OH_Drawing_PixelMapGetFromNativePixelMap(NativePixelMap_* nativePixelMap)](#oh_drawing_pixelmapgetfromnativepixelmap) | 从图像框架定义的像素图对象中获取本模块定义的像素图对象。对象使用完毕后，调用[OH_Drawing_PixelMapDissolve](capi-drawing-pixel-map-h.md#oh_drawing_pixelmapdissolve)解除关系，否则会引发内存泄漏问题。 |
+| [OH_Drawing_PixelMap* OH_Drawing_PixelMapGetFromOhPixelMapNative(OH_PixelmapNative* pixelmapNative)](#oh_drawing_pixelmapgetfromohpixelmapnative) | 从图像框架定义的像素图对象中获取本模块定义的像素图对象。对象使用完毕后，调用[OH_Drawing_PixelMapDissolve](capi-drawing-pixel-map-h.md#oh_drawing_pixelmapdissolve)解除关系，否则会引发内存泄漏问题。 |
+| [void OH_Drawing_PixelMapDissolve(OH_Drawing_PixelMap* pixelMap)](#oh_drawing_pixelmapdissolve) | 解除本模块定义的像素图对象和图像框架定义的像素图对象之间的关系。必须先调用[OH_Drawing_PixelMapGetFromNativePixelMap](capi-drawing-pixel-map-h.md#oh_drawing_pixelmapgetfromnativepixelmap)或[OH_Drawing_PixelMapGetFromOhPixelMapNative](capi-drawing-pixel-map-h.md#oh_drawing_pixelmapgetfromohpixelmapnative)获取像素图对象并建立关联关系后，才能调用本方法解除该关系。 |
 
 ## 函数说明
 
@@ -39,7 +39,7 @@ OH_Drawing_PixelMap* OH_Drawing_PixelMapGetFromNativePixelMap(NativePixelMap_* n
 
 **描述**
 
-从图像框架定义的像素图对象中获取本模块定义的像素图对象。对象使用完毕后，需调用[OH_Drawing_PixelMapDissolve](capi-drawing-pixel-map-h.md#oh_drawing_pixelmapdissolve)解除关系，否则会引发内存泄露问题。
+从图像框架定义的像素图对象中获取本模块定义的像素图对象。对象使用完毕后，调用[OH_Drawing_PixelMapDissolve](capi-drawing-pixel-map-h.md#oh_drawing_pixelmapdissolve)解除关系，否则会引发内存泄漏问题。
 
 **起始版本：** 12
 
@@ -53,7 +53,7 @@ OH_Drawing_PixelMap* OH_Drawing_PixelMapGetFromNativePixelMap(NativePixelMap_* n
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_PixelMap*](capi-drawing-oh-drawing-pixelmap.md) | 函数会返回一个指向本模块定义的像素图对象[OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md)的指针。如果对象返回NULL，表示创建失败；可能的原因是NativePixelMap_为NULL。 |
+| [OH_Drawing_PixelMap*](capi-drawing-oh-drawing-pixelmap.md) | 返回一个指向本模块定义的像素图对象[OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md)的指针。如果返回NULL，表示获取失败；<br> 原因是参数nativePixelMap为NULL。 |
 
 ### OH_Drawing_PixelMapGetFromOhPixelMapNative()
 
@@ -63,7 +63,7 @@ OH_Drawing_PixelMap* OH_Drawing_PixelMapGetFromOhPixelMapNative(OH_PixelmapNativ
 
 **描述**
 
-从图像框架定义的像素图对象中获取本模块定义的像素图对象。对象使用完毕后，需调用[OH_Drawing_PixelMapDissolve](capi-drawing-pixel-map-h.md#oh_drawing_pixelmapdissolve)解除关系，否则会引发内存泄露问题。
+从图像框架定义的像素图对象中获取本模块定义的像素图对象。对象使用完毕后，调用[OH_Drawing_PixelMapDissolve](capi-drawing-pixel-map-h.md#oh_drawing_pixelmapdissolve)解除关系，否则会引发内存泄漏问题。
 
 **起始版本：** 12
 
@@ -77,7 +77,7 @@ OH_Drawing_PixelMap* OH_Drawing_PixelMapGetFromOhPixelMapNative(OH_PixelmapNativ
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_PixelMap*](capi-drawing-oh-drawing-pixelmap.md) | 函数会返回一个指向本模块定义的像素图对象[OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md)的指针。如果对象返回NULL，表示创建失败；可能的原因是OH_PixelmapNative为NULL。 |
+| [OH_Drawing_PixelMap*](capi-drawing-oh-drawing-pixelmap.md) | 返回一个指向本模块定义的像素图对象[OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md)的指针。如果返回NULL，表示获取失败；<br> 原因是参数pixelmapNative为NULL。 |
 
 ### OH_Drawing_PixelMapDissolve()
 
@@ -87,7 +87,7 @@ void OH_Drawing_PixelMapDissolve(OH_Drawing_PixelMap* pixelMap)
 
 **描述**
 
-解除本模块定义的像素图对象和图像框架定义的像素图对象之间的关系，该关系通过调用 [OH_Drawing_PixelMapGetFromNativePixelMap](capi-drawing-pixel-map-h.md#oh_drawing_pixelmapgetfromnativepixelmap) 或[OH_Drawing_PixelMapGetFromOhPixelMapNative](capi-drawing-pixel-map-h.md#oh_drawing_pixelmapgetfromohpixelmapnative)建立。
+解除本模块定义的像素图对象和图像框架定义的像素图对象之间的关系。必须先调用[OH_Drawing_PixelMapGetFromNativePixelMap](capi-drawing-pixel-map-h.md#oh_drawing_pixelmapgetfromnativepixelmap)或[OH_Drawing_PixelMapGetFromOhPixelMapNative](capi-drawing-pixel-map-h.md#oh_drawing_pixelmapgetfromohpixelmapnative)获取像素图对象并建立关联关系后，才能调用本方法解除该关系。
 
 **起始版本：** 12
 

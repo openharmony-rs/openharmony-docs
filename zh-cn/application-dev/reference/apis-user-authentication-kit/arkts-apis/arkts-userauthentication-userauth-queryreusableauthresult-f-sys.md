@@ -8,9 +8,11 @@ function queryReusableAuthResult(authParam: AuthParam): Uint8Array
 
 查询是否有可复用的身份认证结果。该接口用于在发起认证前查询是否存在满足复用条件的认证结果，若存在则直接返回可复用的AuthToken，无需用户再次进行认证交互。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
@@ -24,7 +26,7 @@ function queryReusableAuthResult(authParam: AuthParam): Uint8Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| authParam | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 用户认证相关参数。包含挑战值（challenge）、认证类型列表（authType）、认证信任等级（authTrustLevel）以及认证结果复用配置（reuseUnlockResult）。系统会根据这些参数判断是否存在满足条件的可复用认证结果。 |
+| authParam | AuthParam | 是 | 用户认证相关参数。包含挑战值（challenge）、认证类型列表（authType）、认证信任等级（authTrustLevel）以及认证结果复用配置（ reuseUnlockResult）。系统会根据这些参数判断是否存在满足条件的可复用认证结果。 |
 
 **返回值：**
 
@@ -36,13 +38,13 @@ function queryReusableAuthResult(authParam: AuthParam): Uint8Array
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [12500008](../errorcode-useriam.md#12500008-参数校验失败) | The parameter is out of range. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied. Called by non-system application. |
 | [12500002](../errorcode-useriam.md#12500002-身份认证系统通用错误码) | General operation error. |
-| [12500008](../errorcode-useriam.md#12500008-参数校验失败) | The parameter is out of range. |
 | [12500017](../errorcode-useriam.md#12500017-复用身份认证结果失败) | Failed to reuse authentication result. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

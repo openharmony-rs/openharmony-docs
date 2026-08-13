@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface ReaderIterator--><!--Device-unnamed-declare interface ReaderIterator-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -22,6 +24,8 @@ next(): ReaderIteratorResult
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-ReaderIterator-next(): ReaderIteratorResult--><!--Device-ReaderIterator-next(): ReaderIteratorResult-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -30,7 +34,7 @@ next(): ReaderIteratorResult
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 文件读取迭代器返回结果。 |
+| [ReaderIteratorResult](arkts-corefile-file-fs-readeriteratorresult-i.md) | 文件读取迭代器返回结果。 |
 
 **错误码：**
 
@@ -40,7 +44,7 @@ next(): ReaderIteratorResult
 | 13900037 | No data available |
 | 13900042 | Unknown error |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

@@ -2,9 +2,11 @@
 
 描述文件类型。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-update-export enum DescriptionType--><!--Device-update-export enum DescriptionType-End-->
 
@@ -20,9 +22,11 @@ CONTENT = 0
 
 内容。表示直接提供描述文本内容，适用于描述内容较短或需要即时展示的场景。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DescriptionType-CONTENT = 0--><!--Device-DescriptionType-CONTENT = 0-End-->
 
@@ -38,9 +42,11 @@ URI = 1
 
 链接。表示提供描述内容的链接地址，适用于描述内容较长或需要从外部资源获取的场景。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DescriptionType-URI = 1--><!--Device-DescriptionType-URI = 1-End-->
 

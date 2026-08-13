@@ -8,9 +8,11 @@ function continueMission(parameter: ContinueDeviceInfo, options: ContinueCallbac
 
 通过指定任务ID（missionId）的方式进行迁移任务。使用callback异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS and ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -26,25 +28,25 @@ function continueMission(parameter: ContinueDeviceInfo, options: ContinueCallbac
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| parameter | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 迁移信息。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 迁移任务完成回调函数。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数，迁移任务完成时，err为undefined，否则返回错误对象。 |
+| parameter | ContinueDeviceInfo | 是 | 迁移信息。 |
+| options | ContinueCallback | 是 | 迁移任务完成回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，迁移任务完成时，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [16300504](../errorcode-DistributedSchedule.md#16300504-远端未安装应用但支持免安装需使用免安装标识重试) | The application is not installed on the remote end but installation-free is supported, try again with freeInstall flag. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt;2. Incorrect parameter types; 3. Parameter verification failed. |
+| [16300505](../errorcode-DistributedSchedule.md#16300505-操作设备必须是迁移的应用所在的设备或需迁移到的目标设备) | The operation device must be the device where the application to be continuedis located or the target device to be continued. |
+| [16300506](../errorcode-DistributedSchedule.md#16300506-本地迁移任务已在进行中) | The local continuation task is already in progress. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not system-app, can not use system-api. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16300501](../errorcode-DistributedSchedule.md#16300501-系统服务工作异常) | The system ability work abnormally. |
 | [16300502](../errorcode-DistributedSchedule.md#16300502-获取指定的missionid的missioninfo失败) | Failed to get the missionInfo of the specified missionId. |
 | [16300503](../errorcode-DistributedSchedule.md#16300503-远端未安装应用且不支持免安装) | The application is not installed on the remote end and installation-free isnot supported. |
-| [16300504](../errorcode-DistributedSchedule.md#16300504-远端未安装应用但支持免安装需使用免安装标识重试) | The application is not installed on the remote end but installation-free is supported, try again with freeInstall flag. |
-| [16300505](../errorcode-DistributedSchedule.md#16300505-操作设备必须是迁移的应用所在的设备或需迁移到的目标设备) | The operation device must be the device where the application to be continuedis located or the target device to be continued. |
-| [16300506](../errorcode-DistributedSchedule.md#16300506-本地迁移任务已在进行中) | The local continuation task is already in progress. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -124,9 +126,11 @@ function continueMission(parameter: ContinueDeviceInfo, options: ContinueCallbac
 
 通过指定任务ID（missionId）的方式进行迁移任务。使用promise异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS and ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -142,8 +146,8 @@ function continueMission(parameter: ContinueDeviceInfo, options: ContinueCallbac
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| parameter | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 迁移信息。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 迁移任务完成回调函数。 |
+| parameter | ContinueDeviceInfo | 是 | 迁移信息。 |
+| options | ContinueCallback | 是 | 迁移任务完成回调函数。 |
 
 **返回值：**
 
@@ -155,17 +159,17 @@ function continueMission(parameter: ContinueDeviceInfo, options: ContinueCallbac
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [16300504](../errorcode-DistributedSchedule.md#16300504-远端未安装应用但支持免安装需使用免安装标识重试) | The application is not installed on the remote end but installation-free is supported, try again with freeInstall flag. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt;2. Incorrect parameter types; 3. Parameter verification failed. |
+| [16300505](../errorcode-DistributedSchedule.md#16300505-操作设备必须是迁移的应用所在的设备或需迁移到的目标设备) | The operation device must be the device where the application to be continuedis located or the target device to be continued. |
+| [16300506](../errorcode-DistributedSchedule.md#16300506-本地迁移任务已在进行中) | The local continuation task is already in progress. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not system-app, can not use system-api. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16300501](../errorcode-DistributedSchedule.md#16300501-系统服务工作异常) | The system ability work abnormally. |
 | [16300502](../errorcode-DistributedSchedule.md#16300502-获取指定的missionid的missioninfo失败) | Failed to get the missionInfo of the specified missionId. |
 | [16300503](../errorcode-DistributedSchedule.md#16300503-远端未安装应用且不支持免安装) | The application is not installed on the remote end and installation-free isnot supported. |
-| [16300504](../errorcode-DistributedSchedule.md#16300504-远端未安装应用但支持免安装需使用免安装标识重试) | The application is not installed on the remote end but installation-free is supported, try again with freeInstall flag. |
-| [16300505](../errorcode-DistributedSchedule.md#16300505-操作设备必须是迁移的应用所在的设备或需迁移到的目标设备) | The operation device must be the device where the application to be continuedis located or the target device to be continued. |
-| [16300506](../errorcode-DistributedSchedule.md#16300506-本地迁移任务已在进行中) | The local continuation task is already in progress. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -240,9 +244,11 @@ function continueMission(parameter: ContinueMissionInfo, callback: AsyncCallback
 
 通过指定包名（bundleName）的方式进行迁移任务。使用callback异步回调。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS and ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -258,24 +264,24 @@ function continueMission(parameter: ContinueMissionInfo, callback: AsyncCallback
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| parameter | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 迁移信息。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数，通过指定包名迁移任务完成时，err为undefined，否则为错误对象。 |
+| parameter | ContinueMissionInfo | 是 | 迁移信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，通过指定包名迁移任务完成时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not system-app, can not use system-api. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types; 3. Parameter verification failed. |
-| [16300501](../errorcode-DistributedSchedule.md#16300501-系统服务工作异常) | The system ability work abnormally. |
-| [16300503](../errorcode-DistributedSchedule.md#16300503-远端未安装应用且不支持免安装) | The application is not installed on the remote end and installation-free isnot supported. |
 | [16300504](../errorcode-DistributedSchedule.md#16300504-远端未安装应用但支持免安装需使用免安装标识重试) | The application is not installed on the remote end but installation-free is supported, try again with freeInstall flag. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt;2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16300505](../errorcode-DistributedSchedule.md#16300505-操作设备必须是迁移的应用所在的设备或需迁移到的目标设备) | The operation device must be the device where the application to be continuedis located or the target device to be continued. |
 | [16300506](../errorcode-DistributedSchedule.md#16300506-本地迁移任务已在进行中) | The local continuation task is already in progress. |
 | [16300507](../errorcode-DistributedSchedule.md#16300507-获取指定的bundlename的missioninfo失败) | Failed to get the missionInfo of the specified bundle name. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not system-app, can not use system-api. |
+| [16300501](../errorcode-DistributedSchedule.md#16300501-系统服务工作异常) | The system ability work abnormally. |
+| [16300503](../errorcode-DistributedSchedule.md#16300503-远端未安装应用且不支持免安装) | The application is not installed on the remote end and installation-free isnot supported. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -339,9 +345,11 @@ function continueMission(parameter: ContinueMissionInfo): Promise<void>
 
 通过指定包名（bundleName）的方式进行迁移任务。使用Promise异步回调。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS and ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -357,7 +365,7 @@ function continueMission(parameter: ContinueMissionInfo): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| parameter | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 迁移信息。 |
+| parameter | ContinueMissionInfo | 是 | 迁移信息。 |
 
 **返回值：**
 
@@ -369,17 +377,17 @@ function continueMission(parameter: ContinueMissionInfo): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not system-app, can not use system-api. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types; 3. Parameter verification failed. |
-| [16300501](../errorcode-DistributedSchedule.md#16300501-系统服务工作异常) | The system ability work abnormally. |
-| [16300503](../errorcode-DistributedSchedule.md#16300503-远端未安装应用且不支持免安装) | The application is not installed on the remote end and installation-free isnot supported. |
 | [16300504](../errorcode-DistributedSchedule.md#16300504-远端未安装应用但支持免安装需使用免安装标识重试) | The application is not installed on the remote end but installation-free is supported, try again with freeInstall flag. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt;2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16300505](../errorcode-DistributedSchedule.md#16300505-操作设备必须是迁移的应用所在的设备或需迁移到的目标设备) | The operation device must be the device where the application to be continuedis located or the target device to be continued. |
 | [16300506](../errorcode-DistributedSchedule.md#16300506-本地迁移任务已在进行中) | The local continuation task is already in progress. |
 | [16300507](../errorcode-DistributedSchedule.md#16300507-获取指定的bundlename的missioninfo失败) | Failed to get the missionInfo of the specified bundle name. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not system-app, can not use system-api. |
+| [16300501](../errorcode-DistributedSchedule.md#16300501-系统服务工作异常) | The system ability work abnormally. |
+| [16300503](../errorcode-DistributedSchedule.md#16300503-远端未安装应用且不支持免安装) | The application is not installed on the remote end and installation-free isnot supported. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

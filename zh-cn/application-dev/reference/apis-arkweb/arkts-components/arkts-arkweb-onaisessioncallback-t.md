@@ -10,6 +10,8 @@ AI会话操作结果回调函数类型。用于报告会话创建或执行的结
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-type OnAISessionCallback = (state: AISessionResultType, content: string) => void--><!--Device-unnamed-type OnAISessionCallback = (state: AISessionResultType, content: string) => void-End-->
@@ -20,6 +22,6 @@ AI会话操作结果回调函数类型。用于报告会话创建或执行的结
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| state | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | The current result state.  |
-| content | string | 是 | The detailed result or response content.  |
+| state | [AISessionResultType](arkts-arkweb-aisessionresulttype-e.md) | 是 | The current result state. |
+| content | string | 是 | The detailed result or response content. |
 

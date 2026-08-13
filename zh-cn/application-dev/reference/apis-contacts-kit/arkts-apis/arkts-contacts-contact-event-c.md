@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 <!--Device-contact-class Event--><!--Device-contact-class Event-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
@@ -16,13 +18,15 @@
 static readonly CUSTOM_LABEL: 0
 ```
 
-自定义邮箱类型，默认值为0。
+自定义事件类型，默认值为0。
 
 **类型：** 0
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -36,13 +40,15 @@ static readonly CUSTOM_LABEL: 0
 static readonly EVENT_ANNIVERSARY: 1
 ```
 
-自定义邮箱类型，默认值为0。
+周年纪念事件类型，默认值为1。
 
 **类型：** 1
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -64,6 +70,8 @@ static readonly EVENT_BIRTHDAY: 3
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Event-static readonly EVENT_BIRTHDAY: 3--><!--Device-Event-static readonly EVENT_BIRTHDAY: 3-End-->
@@ -76,13 +84,15 @@ static readonly EVENT_BIRTHDAY: 3
 static readonly EVENT_OTHER: 2
 ```
 
-自定义邮箱类型，默认值为0。
+其它事件类型，默认值为2。
 
 **类型：** 2
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -96,13 +106,15 @@ static readonly EVENT_OTHER: 2
 static readonly INVALID_LABEL_ID: -1
 ```
 
-无效邮箱类型，默认值为-1。
+无效事件类型，默认值为-1。
 
 **类型：** -1
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -124,6 +136,8 @@ eventDate: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Event-eventDate: string--><!--Device-Event-eventDate: string-End-->
@@ -136,13 +150,15 @@ eventDate: string
 labelId?: number
 ```
 
-邮箱的类型。
+事件的类型。
 
 **类型：** number
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -156,13 +172,15 @@ labelId?: number
 labelName?: string
 ```
 
-邮箱的类型名称。
+事件的类型名称。
 
 **类型：** string
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

@@ -2,13 +2,15 @@
 
 点击手势处理器对象类型。
 
-**继承/实现关系：** TapGestureHandler extends [GestureHandler<TapGestureHandler>](GestureHandler<TapGestureHandler>)
+**继承/实现关系：** TapGestureHandler extends GestureHandler<TapGestureHandler>
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-<!--Device-unnamed-declare class TapGestureHandler extends GestureHandler<TapGestureHandler>--><!--Device-unnamed-declare class TapGestureHandler extends GestureHandler<TapGestureHandler>-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare class TapGestureHandler--><!--Device-unnamed-declare class TapGestureHandler-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,6 +26,8 @@ constructor(options?: TapGestureHandlerOptions)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -36,7 +40,7 @@ constructor(options?: TapGestureHandlerOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 点击手势处理器配置参数。 |
+| options | [TapGestureHandlerOptions](arkts-arkui-tapgesturehandleroptions-i.md) | 否 | 点击手势处理器配置参数。 |
 
 ## onAction
 
@@ -50,6 +54,8 @@ onAction(event: Callback<GestureEvent>): TapGestureHandler
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -62,11 +68,11 @@ onAction(event: Callback<GestureEvent>): TapGestureHandler
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;GestureEvent&gt; | 是 | 点击手势处理器识别成功回调。 |
+| event | Callback&lt;[GestureEvent](arkts-arkui-gestureevent-i.md)&gt; | 是 | 点击手势处理器识别成功回调。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回当前点击手势处理器对象。 |
+| [TapGestureHandler](arkts-arkui-tapgesturehandler-c.md) | 返回当前点击手势处理器对象。 |
 

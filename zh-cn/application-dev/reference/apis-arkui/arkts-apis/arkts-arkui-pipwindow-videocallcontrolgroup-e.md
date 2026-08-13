@@ -1,10 +1,12 @@
 # VideoCallControlGroup
 
-视频通话控件组枚举。仅当[PiPTemplateType]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 为VIDEO\_CALL时使用。
+视频通话控件组枚举。仅当[PiPTemplateType](arkts-arkui-pipwindow-piptemplatetype-e.md#PiPTemplateType) 为VIDEO_CALL时使用。
 
-**起始版本：** 12
+**起始版本：** 26.0.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-PiPWindow-enum VideoCallControlGroup--><!--Device-PiPWindow-enum VideoCallControlGroup-End-->
 
@@ -18,11 +20,13 @@ MICROPHONE_SWITCH = 201
 
 打开/关闭麦克风控件组。
 
-**起始版本：** 12
+**起始版本：** 26.0.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-VideoCallControlGroup-MICROPHONE_SWITCH = 201--><!--Device-VideoCallControlGroup-MICROPHONE_SWITCH = 201-End-->
 
@@ -36,11 +40,13 @@ HANG_UP_BUTTON = 202
 
 挂断控件组。
 
-**起始版本：** 12
+**起始版本：** 26.0.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-VideoCallControlGroup-HANG_UP_BUTTON = 202--><!--Device-VideoCallControlGroup-HANG_UP_BUTTON = 202-End-->
 
@@ -54,11 +60,13 @@ CAMERA_SWITCH = 203
 
 打开/关闭摄像头控件组。
 
-**起始版本：** 12
+**起始版本：** 26.0.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-VideoCallControlGroup-CAMERA_SWITCH = 203--><!--Device-VideoCallControlGroup-CAMERA_SWITCH = 203-End-->
 
@@ -72,11 +80,13 @@ MUTE_SWITCH = 204
 
 静音控件组。
 
-**起始版本：** 12
+**起始版本：** 26.0.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-VideoCallControlGroup-MUTE_SWITCH = 204--><!--Device-VideoCallControlGroup-MUTE_SWITCH = 204-End-->
 

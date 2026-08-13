@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-advertising-export interface MultiSlotsAdLoadListener--><!--Device-advertising-export interface MultiSlotsAdLoadListener-End-->
 
 **系统能力：** SystemCapability.Advertising.Ads
@@ -22,6 +24,8 @@ onAdLoadFailure(errorCode: number, errorMsg: string): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MultiSlotsAdLoadListener-onAdLoadFailure(errorCode: number, errorMsg: string): void--><!--Device-MultiSlotsAdLoadListener-onAdLoadFailure(errorCode: number, errorMsg: string): void-End-->
@@ -35,7 +39,7 @@ onAdLoadFailure(errorCode: number, errorMsg: string): void
 | errorCode | number | 是 | 广告请求失败的错误码。 |
 | errorMsg | string | 是 | 广告请求失败的错误信息。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { advertising } from '@kit.AdsKit';
@@ -63,6 +67,8 @@ onAdLoadSuccess(adsMap: Map<string, Array<Advertisement>>): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MultiSlotsAdLoadListener-onAdLoadSuccess(adsMap: Map<string, Array<Advertisement>>): void--><!--Device-MultiSlotsAdLoadListener-onAdLoadSuccess(adsMap: Map<string, Array<Advertisement>>): void-End-->
@@ -75,7 +81,7 @@ onAdLoadSuccess(adsMap: Map<string, Array<Advertisement>>): void
 | --- | --- | --- | --- |
 | adsMap | Map&lt;string, Array&lt;Advertisement&gt;&gt; | 是 | 广告数据，是以广告位ID为键，存储请求到的广告内容的映射集合。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { advertising } from '@kit.AdsKit';

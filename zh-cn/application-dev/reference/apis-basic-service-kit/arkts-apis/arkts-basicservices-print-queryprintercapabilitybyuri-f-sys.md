@@ -10,7 +10,9 @@ function queryPrinterCapabilityByUri(printerUri: string, printerId: string): Pro
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -33,13 +35,13 @@ function queryPrinterCapabilityByUri(printerUri: string, printerId: string): Pro
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;PrinterCapabilities&gt; | - Promise对象，返回打印机能力。 |
+| Promise&lt;[PrinterCapabilities](arkts-basicservices-print-printercapabilities-i.md)&gt; | Promise对象，返回打印机能力。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [13100005](../../apis-basic-services-kit/errorcode-print.md#13100005-无效的打印机) | Can not find the printer in system. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
-| [13100005](../../apis-basic-services-kit/errorcode-print.md#13100005-无效的打印机) | Can not find the printer in system. |
 

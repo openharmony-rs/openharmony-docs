@@ -1,0 +1,30 @@
+# end（系统接口）
+
+## end
+
+```TypeScript
+function end(scene: string): void
+```
+
+用于标记用户场景结束，用户场景结束时调用此接口。
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-performanceMonitor-function end(scene: string): void--><!--Device-performanceMonitor-function end(scene: string): void-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| scene | string | 是 | 用户场景id，与begin配对严格保持一致，否则本次场景监测无效。 |
+

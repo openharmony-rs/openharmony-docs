@@ -1,10 +1,12 @@
 # AbilityLifecycleCallback
 
-[UIAbility]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_从创建到销毁过程其生命周期是动态变化的。 AbilityLifecycleCallback模块提供监听[UIAbility]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_生命周期变化的能力， 可用于统计每个UIAbility的运行时长、执行与UIAbility业务逻辑解耦的数据加载等场景。
+[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md#UIAbility)从创建到销毁过程其生命周期是动态变化的。 AbilityLifecycleCallback模块提供监听[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md#UIAbility)生命周期变化的能力， 可用于统计每个UIAbility的运行时长、执行与UIAbility业务逻辑解耦的数据加载等场景。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare class AbilityLifecycleCallback--><!--Device-unnamed-declare class AbilityLifecycleCallback-End-->
 
@@ -16,11 +18,13 @@
 onAbilityBackground(ability: UIAbility): void
 ```
 
-在UIAbility的[onBackground]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_触发后回调。
+在UIAbility的[onBackground](arkts-ability-app-ability-uiability-uiability-c.md#onBackground)触发后回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -34,11 +38,11 @@ onAbilityBackground(ability: UIAbility): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ability | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调事件对应的UIAbility对象。 |
+| ability | [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) | 是 | 回调事件对应的UIAbility对象。 |
 
-**示例：**
+## 示例
 
-参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
+参见AbilityLifecycleCallback使用示例。
 
 ## onAbilityContinue
 
@@ -46,11 +50,13 @@ onAbilityBackground(ability: UIAbility): void
 onAbilityContinue(ability: UIAbility): void
 ```
 
-在UIAbility的[onContinue]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_触发后回调。
+在UIAbility的[onContinue](arkts-ability-app-ability-uiability-uiability-c.md#onContinue)触发后回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -64,11 +70,11 @@ onAbilityContinue(ability: UIAbility): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ability | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调事件对应的UIAbility对象。 |
+| ability | [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) | 是 | 回调事件对应的UIAbility对象。 |
 
-**示例：**
+## 示例
 
-参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
+参见AbilityLifecycleCallback使用示例。
 
 ## onAbilityCreate
 
@@ -76,11 +82,13 @@ onAbilityContinue(ability: UIAbility): void
 onAbilityCreate(ability: UIAbility): void
 ```
 
-在UIAbility的[onCreate]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_触发后回调。
+在UIAbility的[onCreate](arkts-ability-app-ability-uiability-uiability-c.md#onCreate)触发后回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -94,11 +102,11 @@ onAbilityCreate(ability: UIAbility): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ability | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调事件对应的UIAbility对象。 |
+| ability | [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) | 是 | 回调事件对应的UIAbility对象。 |
 
-**示例：**
+## 示例
 
-参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
+参见AbilityLifecycleCallback使用示例。
 
 ## onAbilityDestroy
 
@@ -106,11 +114,13 @@ onAbilityCreate(ability: UIAbility): void
 onAbilityDestroy(ability: UIAbility): void
 ```
 
-在UIAbility的[onDestroy]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_触发后回调。
+在UIAbility的[onDestroy](arkts-ability-app-ability-uiability-uiability-c.md#onDestroy)触发后回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -124,11 +134,11 @@ onAbilityDestroy(ability: UIAbility): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ability | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调事件对应的UIAbility对象。 |
+| ability | [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) | 是 | 回调事件对应的UIAbility对象。 |
 
-**示例：**
+## 示例
 
-参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
+参见AbilityLifecycleCallback使用示例。
 
 ## onAbilityForeground
 
@@ -136,11 +146,13 @@ onAbilityDestroy(ability: UIAbility): void
 onAbilityForeground(ability: UIAbility): void
 ```
 
-在UIAbility的[onForeground]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_触发后回调。
+在UIAbility的[onForeground](arkts-ability-app-ability-uiability-uiability-c.md#onForeground)触发后回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -154,11 +166,11 @@ onAbilityForeground(ability: UIAbility): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ability | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调事件对应的UIAbility对象。 |
+| ability | [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) | 是 | 回调事件对应的UIAbility对象。 |
 
-**示例：**
+## 示例
 
-参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
+参见AbilityLifecycleCallback使用示例。
 
 ## onAbilitySaveState
 
@@ -166,11 +178,13 @@ onAbilityForeground(ability: UIAbility): void
 onAbilitySaveState?(ability: UIAbility): void
 ```
 
-在UIAbility的[onSaveState]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_触发后回调。
+在UIAbility的[onSaveState](arkts-ability-app-ability-uiability-uiability-c.md#onSaveState)触发后回调。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -184,11 +198,11 @@ onAbilitySaveState?(ability: UIAbility): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ability | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调事件对应的UIAbility对象。 |
+| ability | [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) | 是 | 回调事件对应的UIAbility对象。 |
 
-**示例：**
+## 示例
 
-参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
+参见AbilityLifecycleCallback使用示例。
 
 ## onAbilityWillBackground
 
@@ -196,11 +210,13 @@ onAbilitySaveState?(ability: UIAbility): void
 onAbilityWillBackground?(ability: UIAbility): void
 ```
 
-在UIAbility的[onBackground]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_触发前回调。
+在UIAbility的[onBackground](arkts-ability-app-ability-uiability-uiability-c.md#onBackground)触发前回调。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -214,11 +230,11 @@ onAbilityWillBackground?(ability: UIAbility): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ability | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调事件对应的UIAbility对象。 |
+| ability | [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) | 是 | 回调事件对应的UIAbility对象。 |
 
-**示例：**
+## 示例
 
-参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
+参见AbilityLifecycleCallback使用示例。
 
 ## onAbilityWillContinue
 
@@ -226,11 +242,13 @@ onAbilityWillBackground?(ability: UIAbility): void
 onAbilityWillContinue?(ability: UIAbility): void
 ```
 
-在UIAbility的[onContinue]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_触发前回调。
+在UIAbility的[onContinue](arkts-ability-app-ability-uiability-uiability-c.md#onContinue)触发前回调。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -244,11 +262,11 @@ onAbilityWillContinue?(ability: UIAbility): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ability | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调事件对应的UIAbility对象。 |
+| ability | [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) | 是 | 回调事件对应的UIAbility对象。 |
 
-**示例：**
+## 示例
 
-参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
+参见AbilityLifecycleCallback使用示例。
 
 ## onAbilityWillCreate
 
@@ -256,11 +274,13 @@ onAbilityWillContinue?(ability: UIAbility): void
 onAbilityWillCreate?(ability: UIAbility): void
 ```
 
-在UIAbility的[onCreate]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_触发前回调。
+在UIAbility的[onCreate](arkts-ability-app-ability-uiability-uiability-c.md#onCreate)触发前回调。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -274,11 +294,11 @@ onAbilityWillCreate?(ability: UIAbility): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ability | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调事件对应的UIAbility对象。 |
+| ability | [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) | 是 | 回调事件对应的UIAbility对象。 |
 
-**示例：**
+## 示例
 
-参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
+参见AbilityLifecycleCallback使用示例。
 
 ## onAbilityWillDestroy
 
@@ -286,11 +306,13 @@ onAbilityWillCreate?(ability: UIAbility): void
 onAbilityWillDestroy?(ability: UIAbility): void
 ```
 
-在UIAbility的[onDestroy]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_触发前回调。
+在UIAbility的[onDestroy](arkts-ability-app-ability-uiability-uiability-c.md#onDestroy)触发前回调。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -304,11 +326,11 @@ onAbilityWillDestroy?(ability: UIAbility): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ability | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调事件对应的UIAbility对象。 |
+| ability | [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) | 是 | 回调事件对应的UIAbility对象。 |
 
-**示例：**
+## 示例
 
-参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
+参见AbilityLifecycleCallback使用示例。
 
 ## onAbilityWillForeground
 
@@ -316,11 +338,13 @@ onAbilityWillDestroy?(ability: UIAbility): void
 onAbilityWillForeground?(ability: UIAbility): void
 ```
 
-在UIAbility的[onForeground]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_触发前回调。
+在UIAbility的[onForeground](arkts-ability-app-ability-uiability-uiability-c.md#onForeground)触发前回调。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -334,11 +358,11 @@ onAbilityWillForeground?(ability: UIAbility): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ability | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调事件对应的UIAbility对象。 |
+| ability | [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) | 是 | 回调事件对应的UIAbility对象。 |
 
-**示例：**
+## 示例
 
-参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
+参见AbilityLifecycleCallback使用示例。
 
 ## onAbilityWillSaveState
 
@@ -346,11 +370,13 @@ onAbilityWillForeground?(ability: UIAbility): void
 onAbilityWillSaveState?(ability: UIAbility): void
 ```
 
-在UIAbility的[onSaveState]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_触发前回调。
+在UIAbility的[onSaveState](arkts-ability-app-ability-uiability-uiability-c.md#onSaveState)触发前回调。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -364,11 +390,11 @@ onAbilityWillSaveState?(ability: UIAbility): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ability | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调事件对应的UIAbility对象。 |
+| ability | [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) | 是 | 回调事件对应的UIAbility对象。 |
 
-**示例：**
+## 示例
 
-参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
+参见AbilityLifecycleCallback使用示例。
 
 ## onNewWant
 
@@ -376,11 +402,13 @@ onAbilityWillSaveState?(ability: UIAbility): void
 onNewWant?(ability: UIAbility): void
 ```
 
-在UIAbility的[onNewWant]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_触发后回调。
+在UIAbility的[onNewWant](arkts-ability-app-ability-uiability-uiability-c.md#onNewWant)触发后回调。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -394,11 +422,11 @@ onNewWant?(ability: UIAbility): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ability | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调事件对应的UIAbility对象。 |
+| ability | [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) | 是 | 回调事件对应的UIAbility对象。 |
 
-**示例：**
+## 示例
 
-参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
+参见AbilityLifecycleCallback使用示例。
 
 ## onWillNewWant
 
@@ -406,11 +434,13 @@ onNewWant?(ability: UIAbility): void
 onWillNewWant?(ability: UIAbility): void
 ```
 
-在UIAbility的[onNewWant]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_触发前回调。
+在UIAbility的[onNewWant](arkts-ability-app-ability-uiability-uiability-c.md#onNewWant)触发前回调。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -424,11 +454,11 @@ onWillNewWant?(ability: UIAbility): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ability | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调事件对应的UIAbility对象。 |
+| ability | [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) | 是 | 回调事件对应的UIAbility对象。 |
 
-**示例：**
+## 示例
 
-参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
+参见AbilityLifecycleCallback使用示例。
 
 ## onWindowStageActive
 
@@ -438,9 +468,11 @@ onWindowStageActive(ability: UIAbility, windowStage: window.WindowStage): void
 
 在UIAbility主窗获焦时触发回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -454,12 +486,12 @@ onWindowStageActive(ability: UIAbility, windowStage: window.WindowStage): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ability | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调事件对应的UIAbility对象。 |
+| ability | [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) | 是 | 回调事件对应的UIAbility对象。 |
 | windowStage | window.WindowStage | 是 | 回调事件对应的UIAbility主窗管理器。 |
 
-**示例：**
+## 示例
 
-参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
+参见AbilityLifecycleCallback使用示例。
 
 ## onWindowStageCreate
 
@@ -467,11 +499,13 @@ onWindowStageActive(ability: UIAbility, windowStage: window.WindowStage): void
 onWindowStageCreate(ability: UIAbility, windowStage: window.WindowStage): void
 ```
 
-在UIAbility的[onWindowStageCreate]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_触发后回调。
+在UIAbility的[onWindowStageCreate](arkts-ability-app-ability-uiability-uiability-c.md#onWindowStageCreate)触发后回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -485,12 +519,12 @@ onWindowStageCreate(ability: UIAbility, windowStage: window.WindowStage): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ability | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调事件对应的UIAbility对象。 |
+| ability | [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) | 是 | 回调事件对应的UIAbility对象。 |
 | windowStage | window.WindowStage | 是 | 回调事件对应的UIAbility主窗管理器。 |
 
-**示例：**
+## 示例
 
-参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
+参见AbilityLifecycleCallback使用示例。
 
 ## onWindowStageDestroy
 
@@ -498,11 +532,13 @@ onWindowStageCreate(ability: UIAbility, windowStage: window.WindowStage): void
 onWindowStageDestroy(ability: UIAbility, windowStage: window.WindowStage): void
 ```
 
-在UIAbility的[onWindowStageDestroy]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_触发后回调。
+在UIAbility的[onWindowStageDestroy](arkts-ability-app-ability-uiability-uiability-c.md#onWindowStageDestroy)触发后回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -516,12 +552,12 @@ onWindowStageDestroy(ability: UIAbility, windowStage: window.WindowStage): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ability | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调事件对应的UIAbility对象 |
+| ability | [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) | 是 | 回调事件对应的UIAbility对象 |
 | windowStage | window.WindowStage | 是 | 回调事件对应的UIAbility主窗管理器。 |
 
-**示例：**
+## 示例
 
-参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
+参见AbilityLifecycleCallback使用示例。
 
 ## onWindowStageInactive
 
@@ -531,9 +567,11 @@ onWindowStageInactive(ability: UIAbility, windowStage: window.WindowStage): void
 
 在UIAbility主窗失焦时触发回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -547,12 +585,12 @@ onWindowStageInactive(ability: UIAbility, windowStage: window.WindowStage): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ability | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调事件对应的UIAbility对象。 |
+| ability | [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) | 是 | 回调事件对应的UIAbility对象。 |
 | windowStage | window.WindowStage | 是 | 回调事件对应的UIAbility主窗管理器。 |
 
-**示例：**
+## 示例
 
-参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
+参见AbilityLifecycleCallback使用示例。
 
 ## onWindowStageRestore
 
@@ -560,11 +598,13 @@ onWindowStageInactive(ability: UIAbility, windowStage: window.WindowStage): void
 onWindowStageRestore?(ability: UIAbility, windowStage: window.WindowStage): void
 ```
 
-在UIAbility的[onWindowStageRestore]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_触发后回调。
+在UIAbility的[onWindowStageRestore](arkts-ability-app-ability-uiability-uiability-c.md#onWindowStageRestore)触发后回调。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -578,12 +618,12 @@ onWindowStageRestore?(ability: UIAbility, windowStage: window.WindowStage): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ability | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调事件对应的UIAbility对象。 |
+| ability | [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) | 是 | 回调事件对应的UIAbility对象。 |
 | windowStage | window.WindowStage | 是 | 回调事件对应的UIAbility主窗管理器。 |
 
-**示例：**
+## 示例
 
-参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
+参见AbilityLifecycleCallback使用示例。
 
 ## onWindowStageWillCreate
 
@@ -591,11 +631,13 @@ onWindowStageRestore?(ability: UIAbility, windowStage: window.WindowStage): void
 onWindowStageWillCreate?(ability: UIAbility, windowStage: window.WindowStage): void
 ```
 
-在UIAbility的[onWindowStageCreate]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_触发前回调。
+在UIAbility的[onWindowStageCreate](arkts-ability-app-ability-uiability-uiability-c.md#onWindowStageCreate)触发前回调。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -609,12 +651,12 @@ onWindowStageWillCreate?(ability: UIAbility, windowStage: window.WindowStage): v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ability | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调事件对应的UIAbility对象。 |
+| ability | [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) | 是 | 回调事件对应的UIAbility对象。 |
 | windowStage | window.WindowStage | 是 | 回调事件对应的UIAbility主窗管理器。 |
 
-**示例：**
+## 示例
 
-参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
+参见AbilityLifecycleCallback使用示例。
 
 ## onWindowStageWillDestroy
 
@@ -622,11 +664,13 @@ onWindowStageWillCreate?(ability: UIAbility, windowStage: window.WindowStage): v
 onWindowStageWillDestroy?(ability: UIAbility, windowStage: window.WindowStage): void
 ```
 
-在UIAbility的[onWindowStageDestroy]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_触发前回调。
+在UIAbility的[onWindowStageDestroy](arkts-ability-app-ability-uiability-uiability-c.md#onWindowStageDestroy)触发前回调。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -640,12 +684,12 @@ onWindowStageWillDestroy?(ability: UIAbility, windowStage: window.WindowStage): 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ability | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调事件对应的UIAbility对象。 |
+| ability | [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) | 是 | 回调事件对应的UIAbility对象。 |
 | windowStage | window.WindowStage | 是 | 回调事件对应的UIAbility主窗管理器。 |
 
-**示例：**
+## 示例
 
-参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
+参见AbilityLifecycleCallback使用示例。
 
 ## onWindowStageWillRestore
 
@@ -653,11 +697,13 @@ onWindowStageWillDestroy?(ability: UIAbility, windowStage: window.WindowStage): 
 onWindowStageWillRestore?(ability: UIAbility, windowStage: window.WindowStage): void
 ```
 
-在UIAbility的[onWindowStageRestore]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_触发前回调。
+在UIAbility的[onWindowStageRestore](arkts-ability-app-ability-uiability-uiability-c.md#onWindowStageRestore)触发前回调。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -671,12 +717,12 @@ onWindowStageWillRestore?(ability: UIAbility, windowStage: window.WindowStage): 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ability | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调事件对应的UIAbility对象。 |
+| ability | [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) | 是 | 回调事件对应的UIAbility对象。 |
 | windowStage | window.WindowStage | 是 | 回调事件对应的UIAbility主窗管理器。 |
 
-**示例：**
+## 示例
 
-参见[AbilityLifecycleCallback使用示例](#abilitylifecyclecallback使用示例)。
+参见AbilityLifecycleCallback使用示例。
 
 ## onAbilitySaveState
 
@@ -684,13 +730,15 @@ onWindowStageWillRestore?(ability: UIAbility, windowStage: window.WindowStage): 
 onAbilitySaveState?: OnAbilitySaveStateFn
 ```
 
-在UIAbility的[onSaveState]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_触发后回调。
+在UIAbility的[onSaveState](arkts-ability-app-ability-uiability-uiability-c.md#onSaveState)触发后回调。
 
-**类型：** OnAbilitySaveStateFn
+**类型：** [OnAbilitySaveStateFn](arkts-ability-onabilitysavestatefn-t.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -704,13 +752,15 @@ onAbilitySaveState?: OnAbilitySaveStateFn
 onAbilityWillBackground?: OnAbilityWillBackgroundFn
 ```
 
-在UIAbility的[onBackground]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_触发前回调。
+在UIAbility的[onBackground](arkts-ability-app-ability-uiability-uiability-c.md#onBackground)触发前回调。
 
-**类型：** OnAbilityWillBackgroundFn
+**类型：** [OnAbilityWillBackgroundFn](arkts-ability-onabilitywillbackgroundfn-t.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -724,13 +774,15 @@ onAbilityWillBackground?: OnAbilityWillBackgroundFn
 onAbilityWillContinue?: OnAbilityWillContinueFn
 ```
 
-在UIAbility的[onContinue]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_触发前回调。
+在UIAbility的[onContinue](arkts-ability-app-ability-uiability-uiability-c.md#onContinue)触发前回调。
 
-**类型：** OnAbilityWillContinueFn
+**类型：** [OnAbilityWillContinueFn](arkts-ability-onabilitywillcontinuefn-t.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -744,13 +796,15 @@ onAbilityWillContinue?: OnAbilityWillContinueFn
 onAbilityWillCreate?: OnAbilityWillCreateFn
 ```
 
-在UIAbility的[onCreate]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_触发前回调。
+在UIAbility的[onCreate](arkts-ability-app-ability-uiability-uiability-c.md#onCreate)触发前回调。
 
-**类型：** OnAbilityWillCreateFn
+**类型：** [OnAbilityWillCreateFn](arkts-ability-onabilitywillcreatefn-t.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -764,13 +818,15 @@ onAbilityWillCreate?: OnAbilityWillCreateFn
 onAbilityWillDestroy?: OnAbilityWillDestroyFn
 ```
 
-在UIAbility的[onDestroy]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_触发前回调。
+在UIAbility的[onDestroy](arkts-ability-app-ability-uiability-uiability-c.md#onDestroy)触发前回调。
 
-**类型：** OnAbilityWillDestroyFn
+**类型：** [OnAbilityWillDestroyFn](arkts-ability-onabilitywilldestroyfn-t.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -784,13 +840,15 @@ onAbilityWillDestroy?: OnAbilityWillDestroyFn
 onAbilityWillForeground?: OnAbilityWillForegroundFn
 ```
 
-在UIAbility的[onForeground]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_触发前回调。
+在UIAbility的[onForeground](arkts-ability-app-ability-uiability-uiability-c.md#onForeground)触发前回调。
 
-**类型：** OnAbilityWillForegroundFn
+**类型：** [OnAbilityWillForegroundFn](arkts-ability-onabilitywillforegroundfn-t.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -804,13 +862,15 @@ onAbilityWillForeground?: OnAbilityWillForegroundFn
 onAbilityWillSaveState?: OnAbilityWillSaveStateFn
 ```
 
-在UIAbility的[onSaveState]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_触发前回调。
+在UIAbility的[onSaveState](arkts-ability-app-ability-uiability-uiability-c.md#onSaveState)触发前回调。
 
-**类型：** OnAbilityWillSaveStateFn
+**类型：** [OnAbilityWillSaveStateFn](arkts-ability-onabilitywillsavestatefn-t.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -824,13 +884,15 @@ onAbilityWillSaveState?: OnAbilityWillSaveStateFn
 onNewWant?: OnNewWantFn
 ```
 
-在UIAbility的[onNewWant]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_触发后回调。
+在UIAbility的[onNewWant](arkts-ability-app-ability-uiability-uiability-c.md#onNewWant)触发后回调。
 
-**类型：** OnNewWantFn
+**类型：** [OnNewWantFn](arkts-ability-onnewwantfn-t.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -844,13 +906,15 @@ onNewWant?: OnNewWantFn
 onWillNewWant?: OnWillNewWantFn
 ```
 
-在UIAbility的[onNewWant]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_触发前回调。
+在UIAbility的[onNewWant](arkts-ability-app-ability-uiability-uiability-c.md#onNewWant)触发前回调。
 
-**类型：** OnWillNewWantFn
+**类型：** [OnWillNewWantFn](arkts-ability-onwillnewwantfn-t.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -864,13 +928,15 @@ onWillNewWant?: OnWillNewWantFn
 onWindowStageRestore?: OnWindowStageRestoreFn
 ```
 
-在UIAbility的[onWindowStageRestore]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_触发后回调。
+在UIAbility的[onWindowStageRestore](arkts-ability-app-ability-uiability-uiability-c.md#onWindowStageRestore)触发后回调。
 
-**类型：** OnWindowStageRestoreFn
+**类型：** [OnWindowStageRestoreFn](arkts-ability-onwindowstagerestorefn-t.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -884,13 +950,15 @@ onWindowStageRestore?: OnWindowStageRestoreFn
 onWindowStageWillCreate?: OnWindowStageWillCreateFn
 ```
 
-在UIAbility的[onWindowStageCreate]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_触发前回调。
+在UIAbility的[onWindowStageCreate](arkts-ability-app-ability-uiability-uiability-c.md#onWindowStageCreate)触发前回调。
 
-**类型：** OnWindowStageWillCreateFn
+**类型：** [OnWindowStageWillCreateFn](arkts-ability-onwindowstagewillcreatefn-t.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -904,13 +972,15 @@ onWindowStageWillCreate?: OnWindowStageWillCreateFn
 onWindowStageWillDestroy?: OnWindowStageWillDestroyFn
 ```
 
-在UIAbility的[onWindowStageDestroy]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_触发前回调。
+在UIAbility的[onWindowStageDestroy](arkts-ability-app-ability-uiability-uiability-c.md#onWindowStageDestroy)触发前回调。
 
-**类型：** OnWindowStageWillDestroyFn
+**类型：** [OnWindowStageWillDestroyFn](arkts-ability-onwindowstagewilldestroyfn-t.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -924,13 +994,15 @@ onWindowStageWillDestroy?: OnWindowStageWillDestroyFn
 onWindowStageWillRestore?: OnWindowStageWillRestoreFn
 ```
 
-在UIAbility的[onWindowStageRestore]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_触发前回调。
+在UIAbility的[onWindowStageRestore](arkts-ability-app-ability-uiability-uiability-c.md#onWindowStageRestore)触发前回调。
 
-**类型：** OnWindowStageWillRestoreFn
+**类型：** [OnWindowStageWillRestoreFn](arkts-ability-onwindowstagewillrestorefn-t.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

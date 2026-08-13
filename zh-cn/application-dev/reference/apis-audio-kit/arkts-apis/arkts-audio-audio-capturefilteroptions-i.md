@@ -8,7 +8,7 @@
 
 **废弃版本：** 12
 
-**替代接口：** OH_AVScreenCapture
+**替代接口：** OH_AVScreenCapture in native interface.
 
 <!--Device-audio-interface CaptureFilterOptions--><!--Device-audio-interface CaptureFilterOptions-End-->
 
@@ -22,7 +22,7 @@ usages: Array<StreamUsage>
 
 Filter by stream usages. But not allow to capture voice streams.
 
-**类型：** Array&lt;StreamUsage&gt;
+**类型：** Array&lt;[StreamUsage](arkts-audio-audio-streamusage-e.md)&gt;
 
 **起始版本：** 11
 
@@ -30,7 +30,7 @@ Filter by stream usages. But not allow to capture voice streams.
 
 **废弃版本：** 12
 
-**替代接口：** OH_AVScreenCapture
+**替代接口：** OH_AVScreenCapture in native interface.
 
 <!--Device-CaptureFilterOptions-usages: Array<StreamUsage>--><!--Device-CaptureFilterOptions-usages: Array<StreamUsage>-End-->
 

@@ -4,11 +4,13 @@
 type RepeatClickInterval = 'Shortest' | 'Short' | 'Medium' | 'Long' | 'Longest'
 ```
 
-忽略重复点击功能开启时（[ignoreRepeatClick]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_设置为true)，忽略重复点击的配置(即设置的RepeatClickInterval的值)生效；忽略重复点击功能关闭时 （[ignoreRepeatClick]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_设置为false)，显示为正常类型。
+忽略重复点击功能开启时（[ignoreRepeatClick](arkts-accessibility-config-con-sys.md#ignoreRepeatClick)设置为true)，忽略重复点击的配置(即设置的RepeatClickInterval的值)生效；忽略重复点击功能关闭时 （[ignoreRepeatClick](arkts-accessibility-config-con-sys.md#ignoreRepeatClick)设置为false)，显示为正常类型。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-config-type RepeatClickInterval = 'Shortest' | 'Short' | 'Medium' | 'Long' | 'Longest'--><!--Device-config-type RepeatClickInterval = 'Shortest' | 'Short' | 'Medium' | 'Long' | 'Longest'-End-->
 

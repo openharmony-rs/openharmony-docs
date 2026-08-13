@@ -8,9 +8,11 @@ function getRotationAxesStatus(mechId: int): RotationAxesStatus
 
 获取当前转轴状态
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-mechanicManager-function getRotationAxesStatus(mechId: int): RotationAxesStatus--><!--Device-mechanicManager-function getRotationAxesStatus(mechId: int): RotationAxesStatus-End-->
 
@@ -22,13 +24,13 @@ function getRotationAxesStatus(mechId: int): RotationAxesStatus
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mechId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 机械设备ID |
+| mechId | int | 是 | 机械设备ID |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Rotation axis status. |
+| [RotationAxesStatus](arkts-mechanic-mechanicmanager-rotationaxesstatus-i-sys.md) | Rotation axis status. |
 
 **错误码：**
 
@@ -38,7 +40,7 @@ function getRotationAxesStatus(mechId: int): RotationAxesStatus
 | [33300001](../errorcode-mechanic.md#33300001-系统错误) | Service exception. |
 | [33300002](../errorcode-mechanic.md#33300002-设备未连接) | Device not connected. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 console.info('Query the rotation axis status');

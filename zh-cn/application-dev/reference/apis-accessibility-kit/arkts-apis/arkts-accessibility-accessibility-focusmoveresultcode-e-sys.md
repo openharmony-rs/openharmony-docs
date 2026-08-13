@@ -4,7 +4,9 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-export enum FocusMoveResultCode--><!--Device-unnamed-export enum FocusMoveResultCode-End-->
 
@@ -22,7 +24,9 @@ NOT_SUPPORTED = -1
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FocusMoveResultCode-NOT_SUPPORTED = -1--><!--Device-FocusMoveResultCode-NOT_SUPPORTED = -1-End-->
 
@@ -40,7 +44,9 @@ SEARCH_SUCCESS = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FocusMoveResultCode-SEARCH_SUCCESS = 0--><!--Device-FocusMoveResultCode-SEARCH_SUCCESS = 0-End-->
 
@@ -58,7 +64,9 @@ SEARCH_SUCCESS_NEXT_BYPASS_DESCENDANTS = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FocusMoveResultCode-SEARCH_SUCCESS_NEXT_BYPASS_DESCENDANTS = 1--><!--Device-FocusMoveResultCode-SEARCH_SUCCESS_NEXT_BYPASS_DESCENDANTS = 1-End-->
 
@@ -76,7 +84,9 @@ SEARCH_FAILURE = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FocusMoveResultCode-SEARCH_FAILURE = 2--><!--Device-FocusMoveResultCode-SEARCH_FAILURE = 2-End-->
 
@@ -94,7 +104,9 @@ SEARCH_FAILURE_IN_CHILD_TREE = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FocusMoveResultCode-SEARCH_FAILURE_IN_CHILD_TREE = 3--><!--Device-FocusMoveResultCode-SEARCH_FAILURE_IN_CHILD_TREE = 3-End-->
 
@@ -112,7 +124,9 @@ SEARCH_FAILURE_LOST_NODE = 4
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FocusMoveResultCode-SEARCH_FAILURE_LOST_NODE = 4--><!--Device-FocusMoveResultCode-SEARCH_FAILURE_LOST_NODE = 4-End-->
 
@@ -130,7 +144,9 @@ SEARCH_NEXT = 5
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FocusMoveResultCode-SEARCH_NEXT = 5--><!--Device-FocusMoveResultCode-SEARCH_NEXT = 5-End-->
 
@@ -148,7 +164,9 @@ DOUBLE_CHECK_CHILD_PROPERTY = 6
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FocusMoveResultCode-DOUBLE_CHECK_CHILD_PROPERTY = 6--><!--Device-FocusMoveResultCode-DOUBLE_CHECK_CHILD_PROPERTY = 6-End-->
 
@@ -166,7 +184,9 @@ DOUBLE_CHECK_CHILD_PROPERTY_AND_GET_LAST = 7
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FocusMoveResultCode-DOUBLE_CHECK_CHILD_PROPERTY_AND_GET_LAST = 7--><!--Device-FocusMoveResultCode-DOUBLE_CHECK_CHILD_PROPERTY_AND_GET_LAST = 7-End-->
 
@@ -184,7 +204,9 @@ SEARCH_FAILURE_IN_SCROLL = 8
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FocusMoveResultCode-SEARCH_FAILURE_IN_SCROLL = 8--><!--Device-FocusMoveResultCode-SEARCH_FAILURE_IN_SCROLL = 8-End-->
 

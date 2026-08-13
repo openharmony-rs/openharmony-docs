@@ -4,7 +4,9 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-osAccount-interface OsAccountSubProfileManager--><!--Device-osAccount-interface OsAccountSubProfileManager-End-->
 
@@ -14,12 +16,6 @@
 
 ## createOsAccountSubProfile
 
-ArkTS-Dyn:
-```TypeScript
-createOsAccountSubProfile(osAccountLocalId: number): Promise<OsAccountSubProfile>
-```
-
-ArkTS-Sta:
 ```TypeScript
 createOsAccountSubProfile(osAccountLocalId: int): Promise<OsAccountSubProfile>
 ```
@@ -28,7 +24,9 @@ createOsAccountSubProfile(osAccountLocalId: int): Promise<OsAccountSubProfile>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
@@ -44,27 +42,27 @@ createOsAccountSubProfile(osAccountLocalId: int): Promise<OsAccountSubProfile>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| osAccountLocalId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 目标系统账号的本地标识符。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_取值范围为全体整数。 |
+| osAccountLocalId | int | 是 | 目标系统账号的本地标识符。 &lt;br&gt;取值范围为全体整数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;OsAccountSubProfile&gt; | Promise对象，返回创建的子身份资料。 |
+| Promise&lt;[OsAccountSubProfile](arkts-basicservices-osaccount-osaccountsubprofile-i-sys.md)&gt; | Promise对象，返回创建的子身份资料。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [12300010](../../apis-basic-services-kit/errorcode-account.md#12300010-账号服务忙碌) | Service busy. Possible causes: The target OS account is being operated. |
+| [12300008](../../apis-basic-services-kit/errorcode-account.md#12300008-受限的账号) | Restricted OS account. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | The OS account not found. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [12300402](../../apis-basic-services-kit/errorcode-account.md#12300402-系统账号下的子身份资料数量已达到上限) | The number of sub-profiles under the OS account has reached limit. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 | [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
-| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | The OS account not found. |
-| [12300008](../../apis-basic-services-kit/errorcode-account.md#12300008-受限的账号) | Restricted OS account. |
-| [12300010](../../apis-basic-services-kit/errorcode-account.md#12300010-账号服务忙碌) | Service busy. Possible causes: The target OS account is being operated. |
-| [12300402](../../apis-basic-services-kit/errorcode-account.md#12300402-系统账号下的子身份资料数量已达到上限) | The number of sub-profiles under the OS account has reached limit. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -108,12 +106,6 @@ try {
 
 ## deleteOsAccountSubProfile
 
-ArkTS-Dyn:
-```TypeScript
-deleteOsAccountSubProfile(osAccountLocalId: number, subProfileId: number): Promise<void>
-```
-
-ArkTS-Sta:
 ```TypeScript
 deleteOsAccountSubProfile(osAccountLocalId: int, subProfileId: int): Promise<void>
 ```
@@ -122,7 +114,9 @@ deleteOsAccountSubProfile(osAccountLocalId: int, subProfileId: int): Promise<voi
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
@@ -138,8 +132,8 @@ deleteOsAccountSubProfile(osAccountLocalId: int, subProfileId: int): Promise<voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| osAccountLocalId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 目标系统账号的本地标识符。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_取值范围为全体整数。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_The value range is all integers. |
-| subProfileId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 子身份资料的标识符。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_取值范围为全体整数。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_The value range is all integers. |
+| osAccountLocalId | int | 是 | 目标系统账号的本地标识符。 &lt;br&gt;取值范围为全体整数。 &lt;br&gt;The value range is all integers. |
+| subProfileId | int | 是 | 子身份资料的标识符。 &lt;br&gt;取值范围为全体整数。 &lt;br&gt;The value range is all integers. |
 
 **返回值：**
 
@@ -151,15 +145,15 @@ deleteOsAccountSubProfile(osAccountLocalId: int, subProfileId: int): Promise<voi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [12300010](../../apis-basic-services-kit/errorcode-account.md#12300010-账号服务忙碌) | Service busy. Possible causes: The OS account or sub-profile is being operated. |
+| [12300403](../../apis-basic-services-kit/errorcode-account.md#12300403-受限的系统账号子身份资料) | Restricted sub-profile cannot be deleted. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 | [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
-| [12300010](../../apis-basic-services-kit/errorcode-account.md#12300010-账号服务忙碌) | Service busy. Possible causes: The OS account or sub-profile is being operated. |
 | [12300401](../../apis-basic-services-kit/errorcode-account.md#12300401-系统账号子身份资料不存在) | Sub-profile not found. |
-| [12300403](../../apis-basic-services-kit/errorcode-account.md#12300403-受限的系统账号子身份资料) | Restricted sub-profile cannot be deleted. |
 | [12300404](../../apis-basic-services-kit/errorcode-account.md#12300404-系统账号的前台子身份资料不允许被删除) | The foreground sub-profile cannot be deleted. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -205,12 +199,6 @@ try {
 
 ## getOsAccountForegroundSubProfileId
 
-ArkTS-Dyn:
-```TypeScript
-getOsAccountForegroundSubProfileId(): Promise<number>
-```
-
-ArkTS-Sta:
 ```TypeScript
 getOsAccountForegroundSubProfileId(): Promise<int>
 ```
@@ -219,7 +207,9 @@ getOsAccountForegroundSubProfileId(): Promise<int>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -233,7 +223,7 @@ getOsAccountForegroundSubProfileId(): Promise<int>
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: Promise&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：Promise&lt;int&gt; | Promise对象，返回系统账号的前台子身份资料标识符。 |
+| Promise&lt;int&gt; | Promise对象，返回系统账号的前台子身份资料标识符。 |
 
 **错误码：**
 
@@ -243,7 +233,7 @@ getOsAccountForegroundSubProfileId(): Promise<int>
 | [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300401](../../apis-basic-services-kit/errorcode-account.md#12300401-系统账号子身份资料不存在) | Sub-profile not found. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -285,12 +275,6 @@ try {
 
 ## getOsAccountForegroundSubProfileId
 
-ArkTS-Dyn:
-```TypeScript
-getOsAccountForegroundSubProfileId(osAccountLocalId: number): Promise<number>
-```
-
-ArkTS-Sta:
 ```TypeScript
 getOsAccountForegroundSubProfileId(osAccountLocalId: int): Promise<int>
 ```
@@ -299,7 +283,9 @@ getOsAccountForegroundSubProfileId(osAccountLocalId: int): Promise<int>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -313,24 +299,24 @@ getOsAccountForegroundSubProfileId(osAccountLocalId: int): Promise<int>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| osAccountLocalId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 系统账号的本地标识符。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_取值范围为全体整数。 |
+| osAccountLocalId | int | 是 | 系统账号的本地标识符。 &lt;br&gt;取值范围为全体整数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: Promise&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：Promise&lt;int&gt; | Promise对象，返回系统账号前台子身份资料的标识符。 |
+| Promise&lt;int&gt; | Promise对象，返回系统账号前台子身份资料的标识符。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | OS account not found. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 | [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
-| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | OS account not found. |
 | [12300401](../../apis-basic-services-kit/errorcode-account.md#12300401-系统账号子身份资料不存在) | The foreground sub-profile not found. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -374,12 +360,6 @@ try {
 
 ## getOsAccountLocalIdForSubProfile
 
-ArkTS-Dyn:
-```TypeScript
-getOsAccountLocalIdForSubProfile(subProfileId: number): Promise<number>
-```
-
-ArkTS-Sta:
 ```TypeScript
 getOsAccountLocalIdForSubProfile(subProfileId: int): Promise<int>
 ```
@@ -388,7 +368,9 @@ getOsAccountLocalIdForSubProfile(subProfileId: int): Promise<int>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -402,13 +384,13 @@ getOsAccountLocalIdForSubProfile(subProfileId: int): Promise<int>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| subProfileId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 子身份资料的标识符\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_取值范围为全体整数。 |
+| subProfileId | int | 是 | 子身份资料的标识符 &lt;br&gt;取值范围为全体整数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: Promise&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：Promise&lt;int&gt; | Promise对象，返回子身份资料所属系统账号的本地ID。 |
+| Promise&lt;int&gt; | Promise对象，返回子身份资料所属系统账号的本地ID。 |
 
 **错误码：**
 
@@ -418,7 +400,7 @@ getOsAccountLocalIdForSubProfile(subProfileId: int): Promise<int>
 | [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300401](../../apis-basic-services-kit/errorcode-account.md#12300401-系统账号子身份资料不存在) | Sub-profile not found. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -462,12 +444,6 @@ try {
 
 ## getOsAccountSubProfile
 
-ArkTS-Dyn:
-```TypeScript
-getOsAccountSubProfile(subProfileId: number): Promise<OsAccountSubProfile>
-```
-
-ArkTS-Sta:
 ```TypeScript
 getOsAccountSubProfile(subProfileId: int): Promise<OsAccountSubProfile>
 ```
@@ -476,7 +452,9 @@ getOsAccountSubProfile(subProfileId: int): Promise<OsAccountSubProfile>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_LOCAL_ACCOUNTS
 
@@ -492,13 +470,13 @@ getOsAccountSubProfile(subProfileId: int): Promise<OsAccountSubProfile>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| subProfileId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 子身份资料的标识符\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_取值范围为全体整数。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_The value should be an integer. |
+| subProfileId | int | 是 | 子身份资料的标识符 &lt;br&gt;取值范围为全体整数。 &lt;br&gt;The value should be an integer. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;OsAccountSubProfile&gt; | Promise对象，返回子身份资料对象信息。 |
+| Promise&lt;[OsAccountSubProfile](arkts-basicservices-osaccount-osaccountsubprofile-i-sys.md)&gt; | Promise对象，返回子身份资料对象信息。 |
 
 **错误码：**
 
@@ -509,7 +487,7 @@ getOsAccountSubProfile(subProfileId: int): Promise<OsAccountSubProfile>
 | [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300401](../../apis-basic-services-kit/errorcode-account.md#12300401-系统账号子身份资料不存在) | Sub-profile not found. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -553,12 +531,6 @@ try {
 
 ## getOsAccountSubProfile
 
-ArkTS-Dyn:
-```TypeScript
-getOsAccountSubProfile(osAccountLocalId: number, subProfileId: number): Promise<OsAccountSubProfile>
-```
-
-ArkTS-Sta:
 ```TypeScript
 getOsAccountSubProfile(osAccountLocalId: int, subProfileId: int): Promise<OsAccountSubProfile>
 ```
@@ -567,7 +539,9 @@ getOsAccountSubProfile(osAccountLocalId: int, subProfileId: int): Promise<OsAcco
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_LOCAL_ACCOUNTS and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -583,14 +557,14 @@ getOsAccountSubProfile(osAccountLocalId: int, subProfileId: int): Promise<OsAcco
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| osAccountLocalId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 系统账号的本地标识符。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_取值范围为全体整数。 |
-| subProfileId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 子身份资料的标识符。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_取值范围为全体整数。 |
+| osAccountLocalId | int | 是 | 系统账号的本地标识符。 &lt;br&gt;取值范围为全体整数。 |
+| subProfileId | int | 是 | 子身份资料的标识符。 &lt;br&gt;取值范围为全体整数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;OsAccountSubProfile&gt; | Promise对象，返回子身份资料对象信息。 |
+| Promise&lt;[OsAccountSubProfile](arkts-basicservices-osaccount-osaccountsubprofile-i-sys.md)&gt; | Promise对象，返回子身份资料对象信息。 |
 
 **错误码：**
 
@@ -601,7 +575,7 @@ getOsAccountSubProfile(osAccountLocalId: int, subProfileId: int): Promise<OsAcco
 | [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300401](../../apis-basic-services-kit/errorcode-account.md#12300401-系统账号子身份资料不存在) | Sub-profile not found. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -647,12 +621,6 @@ try {
 
 ## getOsAccountSubProfileIds
 
-ArkTS-Dyn:
-```TypeScript
-getOsAccountSubProfileIds(): Promise<number[]>
-```
-
-ArkTS-Sta:
 ```TypeScript
 getOsAccountSubProfileIds(): Promise<int[]>
 ```
@@ -661,7 +629,9 @@ getOsAccountSubProfileIds(): Promise<int[]>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_LOCAL_ACCOUNT_IDENTIFIERS
 
@@ -677,7 +647,7 @@ getOsAccountSubProfileIds(): Promise<int[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: Promise&lt;number[]&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：Promise&lt;int[]&gt; | Promise used to return the ID list of sub-profile. |
+| Promise&lt;int[]&gt; | Promise used to return the ID list of sub-profile. |
 
 **错误码：**
 
@@ -687,7 +657,7 @@ getOsAccountSubProfileIds(): Promise<int[]>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 | [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -729,12 +699,6 @@ try {
 
 ## getOsAccountSubProfileIds
 
-ArkTS-Dyn:
-```TypeScript
-getOsAccountSubProfileIds(osAccountLocalId: number): Promise<number[]>
-```
-
-ArkTS-Sta:
 ```TypeScript
 getOsAccountSubProfileIds(osAccountLocalId: int): Promise<int[]>
 ```
@@ -743,7 +707,9 @@ getOsAccountSubProfileIds(osAccountLocalId: int): Promise<int[]>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_LOCAL_ACCOUNT_IDENTIFIERS
 
@@ -759,24 +725,24 @@ getOsAccountSubProfileIds(osAccountLocalId: int): Promise<int[]>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| osAccountLocalId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 系统账号的本地标识符。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_取值范围为全体整数。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_The value should be an integer. |
+| osAccountLocalId | int | 是 | 系统账号的本地标识符。 &lt;br&gt;取值范围为全体整数。 &lt;br&gt;The value should be an integer. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: Promise&lt;number[]&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：Promise&lt;int[]&gt; | Promise used to return the ID list of sub-profile. |
+| Promise&lt;int[]&gt; | Promise used to return the ID list of sub-profile. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | OS account not found. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 | [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
-| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | OS account not found. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -828,7 +794,9 @@ offOsAccountSubProfileEvent(callback?: Callback<OsAccountSubProfileEventData>): 
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -842,7 +810,7 @@ offOsAccountSubProfileEvent(callback?: Callback<OsAccountSubProfileEventData>): 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;OsAccountSubProfileEventData&gt; | 否 | 需要取消订阅的回调。 |
+| callback | [Callback](arkts-basicservices-callback-t.md)&lt;[OsAccountSubProfileEventData](arkts-basicservices-osaccount-osaccountsubprofileeventdata-i-sys.md)&gt; | 否 | 需要取消订阅的回调。 |
 
 **错误码：**
 
@@ -851,7 +819,7 @@ offOsAccountSubProfileEvent(callback?: Callback<OsAccountSubProfileEventData>): 
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 | [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -895,7 +863,9 @@ onOsAccountSubProfileEvent(
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -909,18 +879,18 @@ onOsAccountSubProfileEvent(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| events | \_\_\_MD\_LINK\_USD\_0\_\_\_[] | 是 | 要订阅的事件数组 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;OsAccountSubProfileEventData&gt; | 是 | 事件发生时调用的回调。 |
+| events | [OsAccountSubProfileEvent](arkts-basicservices-osaccount-osaccountsubprofileevent-e-sys.md)[] | 是 | 要订阅的事件数组 |
+| callback | [Callback](arkts-basicservices-callback-t.md)&lt;[OsAccountSubProfileEventData](arkts-basicservices-osaccount-osaccountsubprofileeventdata-i-sys.md)&gt; | 是 | 事件发生时调用的回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid event. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 | [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
-| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid event. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -960,12 +930,6 @@ try {
 
 ## switchOsAccountSubProfile
 
-ArkTS-Dyn:
-```TypeScript
-switchOsAccountSubProfile(osAccountLocalId: number, subProfileId: number): Promise<void>
-```
-
-ArkTS-Sta:
 ```TypeScript
 switchOsAccountSubProfile(osAccountLocalId: int, subProfileId: int): Promise<void>
 ```
@@ -974,7 +938,9 @@ switchOsAccountSubProfile(osAccountLocalId: int, subProfileId: int): Promise<voi
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
@@ -990,8 +956,8 @@ switchOsAccountSubProfile(osAccountLocalId: int, subProfileId: int): Promise<voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| osAccountLocalId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 系统账号的本地标识符。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_取值范围为全体整数。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_The value range is all integers. |
-| subProfileId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 子身份资料的标识符。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_取值范围为全体整数。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_The value range is all integers. |
+| osAccountLocalId | int | 是 | 系统账号的本地标识符。 &lt;br&gt;取值范围为全体整数。 &lt;br&gt;The value range is all integers. |
+| subProfileId | int | 是 | 子身份资料的标识符。 &lt;br&gt;取值范围为全体整数。 &lt;br&gt;The value range is all integers. |
 
 **返回值：**
 
@@ -1003,15 +969,15 @@ switchOsAccountSubProfile(osAccountLocalId: int, subProfileId: int): Promise<voi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [12300010](../../apis-basic-services-kit/errorcode-account.md#12300010-账号服务忙碌) | Service busy. Possible causes: The OS account or sub-profile is being operated. |
+| [12300403](../../apis-basic-services-kit/errorcode-account.md#12300403-受限的系统账号子身份资料) | Restricted sub-profile cannot be switched to foreground. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 | [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
-| [12300010](../../apis-basic-services-kit/errorcode-account.md#12300010-账号服务忙碌) | Service busy. Possible causes: The OS account or sub-profile is being operated. |
 | [12300401](../../apis-basic-services-kit/errorcode-account.md#12300401-系统账号子身份资料不存在) | Sub-profile not found. |
-| [12300403](../../apis-basic-services-kit/errorcode-account.md#12300403-受限的系统账号子身份资料) | Restricted sub-profile cannot be switched to foreground. |
 | [12300405](../../apis-basic-services-kit/errorcode-account.md#12300405-已登录分布式账号的前台子身份不可直接切换到后台) | The foreground sub-profile bound with a logged-in distributed account cannot be directly switched to background. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

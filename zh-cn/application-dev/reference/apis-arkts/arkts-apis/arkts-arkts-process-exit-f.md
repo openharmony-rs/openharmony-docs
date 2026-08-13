@@ -14,7 +14,7 @@ function exit(code: number): void
 
 **废弃版本：** 9
 
-**替代接口：** [process.ProcessManager.exit](arkts-arkts-process-processmanager-c.md#exit)
+**替代接口：** [exit](arkts-arkts-process-processmanager-c.md#exit)
 
 <!--Device-process-function exit(code: number): void--><!--Device-process-function exit(code: number): void-End-->
 
@@ -26,7 +26,7 @@ function exit(code: number): void
 | --- | --- | --- | --- |
 | code | number | 是 | 进程的退出码。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 process.exit(0);

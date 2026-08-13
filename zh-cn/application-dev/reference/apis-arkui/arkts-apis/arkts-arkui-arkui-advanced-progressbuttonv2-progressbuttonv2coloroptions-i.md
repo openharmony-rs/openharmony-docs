@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-export declare interface ProgressButtonV2ColorOptions--><!--Device-unnamed-export declare interface ProgressButtonV2ColorOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -16,13 +18,15 @@
 backgroundColor?: ColorMetrics
 ```
 
-按钮背景颜色。\_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_默认值：\_\_\_ESCAPED\_DOLLAR\_DESC\_\_\_r('sys.color.ohos\_id\_color\_foreground\_contrary')
+按钮背景颜色。&lt;br/&gt;默认值：\\$r('sys.color.ohos_id_color_foreground_contrary')
 
-**类型：** ColorMetrics
+**类型：** [ColorMetrics](../../apis-na/arkts-apis/arkts-na-graphics-colormetrics-c.md)
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -38,13 +42,15 @@ backgroundColor?: ColorMetrics
 borderColor?: ColorMetrics
 ```
 
-按钮描边颜色。\_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_默认值：#330A59F7
+按钮描边颜色。&lt;br/&gt;默认值：#330A59F7
 
-**类型：** ColorMetrics
+**类型：** [ColorMetrics](../../apis-na/arkts-apis/arkts-na-graphics-colormetrics-c.md)
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -60,13 +66,15 @@ borderColor?: ColorMetrics
 progressColor?: ColorMetrics
 ```
 
-进度条颜色。\_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_默认值：#330A59F7
+进度条颜色。&lt;br/&gt;默认值：#330A59F7
 
-**类型：** ColorMetrics
+**类型：** [ColorMetrics](../../apis-na/arkts-apis/arkts-na-graphics-colormetrics-c.md)
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -82,13 +90,15 @@ progressColor?: ColorMetrics
 textColor?: ColorMetrics
 ```
 
-按钮文本颜色。\_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_默认值：系统默认值(#CE000000)
+按钮文本颜色。&lt;br/&gt;默认值：系统默认值(#CE000000)
 
-**类型：** ColorMetrics
+**类型：** [ColorMetrics](../../apis-na/arkts-apis/arkts-na-graphics-colormetrics-c.md)
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

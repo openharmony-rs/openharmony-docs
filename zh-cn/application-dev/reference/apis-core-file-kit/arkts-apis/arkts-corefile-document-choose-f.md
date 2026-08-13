@@ -53,7 +53,7 @@ declare function choose(callback: AsyncCallback<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;string&gt; | 是 | 异步获取对应文件URI（注：当前返回错误码） |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 异步获取对应文件URI（注：当前返回错误码） |
 
 
 ## choose
@@ -79,5 +79,5 @@ declare function choose(types: string[], callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | types | string[] | 是 | 限定选择文件的类型 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;string&gt; | 是 | 异步获取对应文件URI（注：当前返回错误码） |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 异步获取对应文件URI（注：当前返回错误码） |
 

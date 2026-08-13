@@ -8,7 +8,7 @@ Watcher是文件变化监听的实例，调用Watcher.stop()方法（同步或�
 
 **废弃版本：** 10
 
-**替代接口：** [@ohos.file.fs:Watcher](arkts-corefile-fileio-watcher-depr-i.md)
+**替代接口：** [Watcher](arkts-corefile-file-fs-watcher-i.md#Watcher)
 
 <!--Device-unnamed-declare interface Watcher--><!--Device-unnamed-declare interface Watcher-End-->
 
@@ -28,7 +28,7 @@ stop(): Promise<void>
 
 **废弃版本：** 10
 
-**替代接口：** [@ohos.file.fs:Watcher.stop](arkts-corefile-fileio-watcher-depr-i.md#stop)
+**替代接口：** [stop](arkts-corefile-file-fs-watcher-i.md#stop)
 
 <!--Device-Watcher-stop(): Promise<void>--><!--Device-Watcher-stop(): Promise<void>-End-->
 
@@ -40,7 +40,7 @@ stop(): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | return Promise |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let filePath = pathDir + "/test.txt";
@@ -66,7 +66,7 @@ stop(callback: AsyncCallback<void>): void
 
 **废弃版本：** 10
 
-**替代接口：** [@ohos.file.fs:Watcher.stop](arkts-corefile-fileio-watcher-depr-i.md#stop)
+**替代接口：** [stop](arkts-corefile-file-fs-watcher-i.md#stop)
 
 <!--Device-Watcher-stop(callback: AsyncCallback<void>): void--><!--Device-Watcher-stop(callback: AsyncCallback<void>): void-End-->
 
@@ -76,9 +76,9 @@ stop(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 以异步方法关闭watcher监听之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 以异步方法关闭watcher监听之后的回调。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let filePath = pathDir + "/test.txt";

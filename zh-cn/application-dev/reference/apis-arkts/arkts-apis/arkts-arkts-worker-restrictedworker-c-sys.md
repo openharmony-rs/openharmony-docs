@@ -1,14 +1,16 @@
 # RestrictedWorker（系统接口）
 
-RestrictedWorker类继承[ThreadWorker]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_，具有ThreadWorker中所有的方法。 RestrictedWorker主要用于提供受限的Worker线程运行环境，该线程运行环境中只允许导入Worker模块，不允许导入其他API。
+RestrictedWorker类继承[ThreadWorker](arkts-arkts-worker-threadworker-c.md#ThreadWorker)，具有ThreadWorker中所有的方法。 RestrictedWorker主要用于提供受限的Worker线程运行环境，该线程运行环境中只允许导入Worker模块，不允许导入其他API。
 
-**继承/实现关系：** RestrictedWorker extends [ThreadWorker](arkts-arkts-worker-threadworker-c.md)
+**继承/实现关系：** RestrictedWorker extends [ThreadWorker](arkts-arkts-worker-threadworker-c.md#ThreadWorker)
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
-<!--Device-worker-class RestrictedWorker extends ThreadWorker--><!--Device-worker-class RestrictedWorker extends ThreadWorker-End-->
+**废弃版本：** -1
+
+<!--Device-worker-class RestrictedWorker--><!--Device-worker-class RestrictedWorker-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -26,6 +28,8 @@ RestrictedWorker构造函数。使用其他方法前，均需先构造Restricted
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-RestrictedWorker-constructor(scriptURL: string, options?: WorkerOptions)--><!--Device-RestrictedWorker-constructor(scriptURL: string, options?: WorkerOptions)-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
@@ -37,7 +41,7 @@ RestrictedWorker构造函数。使用其他方法前，均需先构造Restricted
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | scriptURL | string | 是 | Worker线程文件的路径，路径规则详细参考文件路径注意事项。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 构造RestrictedWorker时的选项。 |
+| options | [WorkerOptions](arkts-arkts-worker-workeroptions-i.md) | 否 | 构造RestrictedWorker时的选项。 |
 
 **错误码：**
 

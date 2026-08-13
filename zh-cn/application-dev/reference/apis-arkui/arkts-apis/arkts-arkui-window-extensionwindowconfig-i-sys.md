@@ -2,9 +2,11 @@
 
 创建扩展窗口时需要配置的参数。
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-window-interface ExtensionWindowConfig--><!--Device-window-interface ExtensionWindowConfig-End-->
 
@@ -18,13 +20,15 @@
 subWindowOptions?: SubWindowOptions
 ```
 
-创建子窗口的参数。无默认参数，当windowAttribute配置为SUB\_WINDOW时必选，否则会导致窗口创建失败。
+创建子窗口的参数。无默认参数，当windowAttribute配置为SUB_WINDOW时必选，否则会导致窗口创建失败。
 
-**类型：** SubWindowOptions
+**类型：** [SubWindowOptions](arkts-arkui-window-subwindowoptions-i.md)
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,13 +44,15 @@ subWindowOptions?: SubWindowOptions
 systemWindowOptions?: SystemWindowOptions
 ```
 
-创建系统窗口的参数。无默认参数，当windowAttribute配置为SYSTEM\_WINDOW时必选，否则会导致窗口创建失败。
+创建系统窗口的参数。无默认参数，当windowAttribute配置为SYSTEM_WINDOW时必选，否则会导致窗口创建失败。
 
-**类型：** SystemWindowOptions
+**类型：** [SystemWindowOptions](arkts-arkui-window-systemwindowoptions-i-sys.md)
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -62,13 +68,15 @@ systemWindowOptions?: SystemWindowOptions
 windowAttribute: ExtensionWindowAttribute
 ```
 
-窗口的属性。用于配置创建的窗口是子窗口还是系统窗口。当windowAttribute配置为SUB\_WINDOW时须配置subWindowOptions，当windowAttribute配置为SYSTEM\_WINDOW时须配置 systemWindowOptions，否则创建窗口失败。
+窗口的属性。用于配置创建的窗口是子窗口还是系统窗口。当windowAttribute配置为SUB_WINDOW时须配置subWindowOptions，当windowAttribute配置为SYSTEM_WINDOW时须配置 systemWindowOptions，否则创建窗口失败。
 
-**类型：** ExtensionWindowAttribute
+**类型：** [ExtensionWindowAttribute](arkts-arkui-window-extensionwindowattribute-e-sys.md)
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -88,9 +96,11 @@ windowName: string
 
 **类型：** string
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -110,9 +120,11 @@ windowRect: Rect
 
 **类型：** Rect
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -12,6 +12,8 @@ function createRdbPredicates(name: string, dataAbilityPredicates: DataAbilityPre
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 <!--Device-dataAbility-function createRdbPredicates(name: string, dataAbilityPredicates: DataAbilityPredicates): rdb.RdbPredicates--><!--Device-dataAbility-function createRdbPredicates(name: string, dataAbilityPredicates: DataAbilityPredicates): rdb.RdbPredicates-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
@@ -21,7 +23,7 @@ function createRdbPredicates(name: string, dataAbilityPredicates: DataAbilityPre
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 数据库表中的表名，不能为空字符串。 |
-| dataAbilityPredicates | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | DataAbility谓词。 |
+| dataAbilityPredicates | [DataAbilityPredicates](arkts-arkdata-dataability-dataabilitypredicates-c.md) | 是 | DataAbility谓词。 |
 
 **返回值：**
 
@@ -29,7 +31,7 @@ function createRdbPredicates(name: string, dataAbilityPredicates: DataAbilityPre
 | --- | --- |
 | rdb.RdbPredicates | 返回RdbPredicates对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let dataAbilityPredicates = new dataAbility.DataAbilityPredicates()

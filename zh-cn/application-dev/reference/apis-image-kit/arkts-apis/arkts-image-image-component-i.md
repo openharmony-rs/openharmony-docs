@@ -2,9 +2,11 @@
 
 描述图像颜色分量。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-image-interface Component--><!--Device-image-interface Component-End-->
 
@@ -20,9 +22,11 @@ readonly byteBuffer: ArrayBuffer
 
 **类型：** ArrayBuffer
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Component-readonly byteBuffer: ArrayBuffer--><!--Device-Component-readonly byteBuffer: ArrayBuffer-End-->
 
@@ -38,9 +42,11 @@ readonly componentType: ComponentType
 
 **类型：** ComponentType
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Component-readonly componentType: ComponentType--><!--Device-Component-readonly componentType: ComponentType-End-->
 
@@ -56,9 +62,11 @@ readonly pixelStride: int
 
 **类型：** int
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Component-readonly pixelStride: int--><!--Device-Component-readonly pixelStride: int-End-->
 
@@ -70,13 +78,15 @@ readonly pixelStride: int
 readonly rowStride: int
 ```
 
-行距。单位：字节（Byte）。读取相机预览流数据时，需要按stride进行读取，使用详情请参考 \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+行距。单位：字节（Byte）。读取相机预览流数据时，需要按stride进行读取，使用详情请参考 [相机预览花屏解决方案](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-deal-stride-solution)。
 
 **类型：** int
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Component-readonly rowStride: int--><!--Device-Component-readonly rowStride: int-End-->
 

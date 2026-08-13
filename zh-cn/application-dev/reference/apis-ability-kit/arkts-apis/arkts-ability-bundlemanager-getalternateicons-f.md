@@ -6,11 +6,13 @@
 function getAlternateIcons(): Promise<Array<AlternateIconInfo>>
 ```
 
-查询当前应用在app.json5中\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_配置的备用图标信息。使用 Promise异步回调。
+查询当前应用在app.json5中[alternateIcons标签](../../../quick-start/app-configuration-file.md#alternateicons标签)配置的备用图标信息。使用 Promise异步回调。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -30,7 +32,7 @@ function getAlternateIcons(): Promise<Array<AlternateIconInfo>>
 | --- | --- |
 | [17700311](../errorcode-bundle.md#17700311-查询备用图标失败) | Failed to obtain the alternate icon. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { bundleManager } from '@kit.AbilityKit';

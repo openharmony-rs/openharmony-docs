@@ -1,5 +1,11 @@
 # getUserGrantedEnabledBundles（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { notificationExtensionSubscription } from '@kit.NotificationKit';
+```
+
 ## getUserGrantedEnabledBundles
 
 ```TypeScript
@@ -8,9 +14,11 @@ function getUserGrantedEnabledBundles(targetBundle: BundleOption): Promise<Bundl
 
 获取指定应用中“已获取的本机通知”通知开关开启的应用列表。使用Promise异步回调。
 
-**起始版本：** 22
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为22；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -24,7 +32,7 @@ function getUserGrantedEnabledBundles(targetBundle: BundleOption): Promise<Bundl
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| targetBundle | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 需要查询的目标应用信息。应用需要具有ohos.permission.SUBSCRIBE\_\_\_ESCAPED\_UNDERSCORE\_\_\_NOTIFICATION权限，并且实现[NotificationSubscriberExtensionAbility]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，否则返回1600022错误码。 |
+| targetBundle | BundleOption | 是 | 需要查询的目标应用信息。应用需要具有ohos.permission.SUBSCRIBE_NOTIFICATION权限， 并且实现[NotificationSubscriberExtensionAbility](arkts-notification-application-notificationsubscriberextensionability-notificationsubscriberextensionability-c.md#NotificationSubscriberExtensionAbility)， 否则返回1600022错误码。 |
 
 **返回值：**
 
@@ -37,12 +45,12 @@ function getUserGrantedEnabledBundles(targetBundle: BundleOption): Promise<Bundl
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [1600022](../errorcode-notification.md#1600022-无效的包信息) | The specified bundle is invalid. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

@@ -1,10 +1,12 @@
 # SslError
 
-Enum type supplied to \_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ when onSslErrorEventReceive being called.
+Enum type supplied to error when onSslErrorEventReceive being called.
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare enum SslError--><!--Device-unnamed-declare enum SslError-End-->
 
@@ -21,6 +23,8 @@ Invalid = 0
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -40,6 +44,8 @@ HostMismatch = 1
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-SslError-HostMismatch = 1--><!--Device-SslError-HostMismatch = 1-End-->
@@ -58,6 +64,8 @@ DateInvalid = 2
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-SslError-DateInvalid = 2--><!--Device-SslError-DateInvalid = 2-End-->
@@ -75,6 +83,8 @@ Untrusted = 3
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

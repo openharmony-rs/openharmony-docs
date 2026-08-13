@@ -2,9 +2,11 @@
 
 触摸屏手势类型。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-export declare enum TouchGestureAction--><!--Device-unnamed-export declare enum TouchGestureAction-End-->
 
@@ -20,9 +22,11 @@ SWIPE_DOWN = 0
 
 多指向下滑动。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TouchGestureAction-SWIPE_DOWN = 0--><!--Device-TouchGestureAction-SWIPE_DOWN = 0-End-->
 
@@ -38,9 +42,11 @@ SWIPE_UP = 1
 
 Multi-finger upward swipe.
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TouchGestureAction-SWIPE_UP = 1--><!--Device-TouchGestureAction-SWIPE_UP = 1-End-->
 
@@ -56,9 +62,11 @@ SWIPE_LEFT = 2
 
 Multi-finger leftward swipe.
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TouchGestureAction-SWIPE_LEFT = 2--><!--Device-TouchGestureAction-SWIPE_LEFT = 2-End-->
 
@@ -74,9 +82,11 @@ SWIPE_RIGHT = 3
 
 Multi-finger rightward swipe.
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TouchGestureAction-SWIPE_RIGHT = 3--><!--Device-TouchGestureAction-SWIPE_RIGHT = 3-End-->
 
@@ -92,9 +102,11 @@ PINCH_CLOSED = 4
 
 Multi-finger pinch closed.
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TouchGestureAction-PINCH_CLOSED = 4--><!--Device-TouchGestureAction-PINCH_CLOSED = 4-End-->
 
@@ -110,9 +122,11 @@ PINCH_OPENED = 5
 
 Multi-finger pinch opened.
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TouchGestureAction-PINCH_OPENED = 5--><!--Device-TouchGestureAction-PINCH_OPENED = 5-End-->
 
@@ -128,9 +142,11 @@ GESTURE_END = 6
 
 Gesture ended.
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TouchGestureAction-GESTURE_END = 6--><!--Device-TouchGestureAction-GESTURE_END = 6-End-->
 

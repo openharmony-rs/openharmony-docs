@@ -1,10 +1,12 @@
 # TextChangeEventInfo
 
-文本更改事件信息
+Text change event info
 
-**起始版本：** 24
+**起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 <!--Device-uiObserver-export interface TextChangeEventInfo--><!--Device-uiObserver-export interface TextChangeEventInfo-End-->
 
@@ -16,15 +18,19 @@
 content: string
 ```
 
-文本字段组件的当前内容。
+Current content of text field component.
 
 **类型：** string
 
-**起始版本：** 24
+**起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TextChangeEventInfo-content: string--><!--Device-TextChangeEventInfo-content: string-End-->
 
@@ -36,15 +42,19 @@ content: string
 id: string
 ```
 
-文本字段组件的ID。
+The id of text field component.
 
 **类型：** string
 
-**起始版本：** 24
+**起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TextChangeEventInfo-id: string--><!--Device-TextChangeEventInfo-id: string-End-->
 
@@ -53,20 +63,24 @@ id: string
 ## uniqueId
 
 ```TypeScript
-uniqueId: int
+uniqueId: number
 ```
 
-文本字段组件的唯一ID。
+The uniqueId of the text field component.
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 24
+**起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-TextChangeEventInfo-uniqueId: int--><!--Device-TextChangeEventInfo-uniqueId: int-End-->
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TextChangeEventInfo-uniqueId: number--><!--Device-TextChangeEventInfo-uniqueId: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

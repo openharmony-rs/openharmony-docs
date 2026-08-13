@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** ohos.data.distributedKVStore.FieldNode
+**替代接口：** FieldNode
 
 <!--Device-distributedData-class FieldNode--><!--Device-distributedData-class FieldNode-End-->
 
@@ -28,7 +28,7 @@ appendChild(child: FieldNode): boolean
 
 **废弃版本：** 9
 
-**替代接口：** ohos.data.distributedKVStore.FieldNode#appendChild
+**替代接口：** appendChild
 
 <!--Device-FieldNode-appendChild(child: FieldNode): boolean--><!--Device-FieldNode-appendChild(child: FieldNode): boolean-End-->
 
@@ -38,7 +38,7 @@ appendChild(child: FieldNode): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| child | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 要附加的域节点。 |
+| child | FieldNode | 是 | 要附加的域节点。 |
 
 **返回值：**
 
@@ -46,7 +46,7 @@ appendChild(child: FieldNode): boolean
 | --- | --- |
 | boolean | 返回true表示子节点成功添加到FieldNode；返回false则表示操作失败。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import ddm from '@ohos.data.distributedData';
@@ -82,7 +82,7 @@ constructor(name: string)
 
 **废弃版本：** 9
 
-**替代接口：** ohos.data.distributedKVStore.FieldNode#constructor
+**替代接口：** constructor
 
 <!--Device-FieldNode-constructor(name: string)--><!--Device-FieldNode-constructor(name: string)-End-->
 
@@ -110,7 +110,7 @@ default: string
 
 **废弃版本：** 9
 
-**替代接口：** ohos.data.distributedKVStore.FieldNode#default
+**替代接口：** default
 
 <!--Device-FieldNode-default: string--><!--Device-FieldNode-default: string-End-->
 
@@ -132,7 +132,7 @@ nullable: boolean
 
 **废弃版本：** 9
 
-**替代接口：** ohos.data.distributedKVStore.FieldNode#nullable
+**替代接口：** nullable
 
 <!--Device-FieldNode-nullable: boolean--><!--Device-FieldNode-nullable: boolean-End-->
 
@@ -154,7 +154,7 @@ type: number
 
 **废弃版本：** 9
 
-**替代接口：** ohos.data.distributedKVStore.FieldNode#type
+**替代接口：** type
 
 <!--Device-FieldNode-type: number--><!--Device-FieldNode-type: number-End-->
 

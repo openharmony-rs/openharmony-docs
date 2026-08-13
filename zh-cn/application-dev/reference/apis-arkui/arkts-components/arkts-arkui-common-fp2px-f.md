@@ -14,7 +14,7 @@ Converts a number in fp units to a number in px.
 
 **废弃版本：** 18
 
-**替代接口：** ohos.arkui.UIContext.UIContext#fp2px
+**替代接口：** fp2px
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

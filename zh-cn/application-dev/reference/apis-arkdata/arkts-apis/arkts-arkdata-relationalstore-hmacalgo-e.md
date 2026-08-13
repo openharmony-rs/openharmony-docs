@@ -2,9 +2,11 @@
 
 数据库的HMAC算法枚举。请使用枚举名称而非枚举值。
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-relationalStore-enum HmacAlgo--><!--Device-relationalStore-enum HmacAlgo-End-->
 
@@ -16,11 +18,13 @@
 SHA1 = 0
 ```
 
-HMAC\_SHA1算法。
+HMAC_SHA1算法。
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-HmacAlgo-SHA1 = 0--><!--Device-HmacAlgo-SHA1 = 0-End-->
 
@@ -32,11 +36,13 @@ HMAC\_SHA1算法。
 SHA256 = 1
 ```
 
-HMAC\_SHA256算法。
+HMAC_SHA256算法。
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-HmacAlgo-SHA256 = 1--><!--Device-HmacAlgo-SHA256 = 1-End-->
 
@@ -48,11 +54,13 @@ HMAC\_SHA256算法。
 SHA512 = 2
 ```
 
-HMAC\_SHA512算法。
+HMAC_SHA512算法。
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-HmacAlgo-SHA512 = 2--><!--Device-HmacAlgo-SHA512 = 2-End-->
 

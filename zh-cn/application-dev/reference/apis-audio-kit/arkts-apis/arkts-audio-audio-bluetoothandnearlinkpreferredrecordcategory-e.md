@@ -2,9 +2,11 @@
 
 表示在使用蓝牙或星闪进行录音时，应用程序的设备偏好分类枚举。
 
-**起始版本：** 21
+**起始版本：** 24
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 <!--Device-audio-enum BluetoothAndNearlinkPreferredRecordCategory--><!--Device-audio-enum BluetoothAndNearlinkPreferredRecordCategory-End-->
 
@@ -18,9 +20,11 @@ PREFERRED_NONE = 0
 
 无指定设备偏好。
 
-**起始版本：** 21
+**起始版本：** 24
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 <!--Device-BluetoothAndNearlinkPreferredRecordCategory-PREFERRED_NONE = 0--><!--Device-BluetoothAndNearlinkPreferredRecordCategory-PREFERRED_NONE = 0-End-->
 
@@ -34,9 +38,11 @@ PREFERRED_DEFAULT = 1
 
 更偏好使用蓝牙或星闪录音，是否使用低延迟或高质量录音取决于系统。
 
-**起始版本：** 21
+**起始版本：** 24
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 <!--Device-BluetoothAndNearlinkPreferredRecordCategory-PREFERRED_DEFAULT = 1--><!--Device-BluetoothAndNearlinkPreferredRecordCategory-PREFERRED_DEFAULT = 1-End-->
 
@@ -50,9 +56,11 @@ PREFERRED_LOW_LATENCY = 2
 
 更偏好使用蓝牙或星闪低延迟模式进行录音。
 
-**起始版本：** 21
+**起始版本：** 24
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 <!--Device-BluetoothAndNearlinkPreferredRecordCategory-PREFERRED_LOW_LATENCY = 2--><!--Device-BluetoothAndNearlinkPreferredRecordCategory-PREFERRED_LOW_LATENCY = 2-End-->
 
@@ -66,9 +74,11 @@ PREFERRED_HIGH_QUALITY = 3
 
 更偏好使用蓝牙或星闪高质量模式进行录音。
 
-**起始版本：** 21
+**起始版本：** 24
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 <!--Device-BluetoothAndNearlinkPreferredRecordCategory-PREFERRED_HIGH_QUALITY = 3--><!--Device-BluetoothAndNearlinkPreferredRecordCategory-PREFERRED_HIGH_QUALITY = 3-End-->
 

@@ -8,7 +8,7 @@
 
 **废弃版本：** 23
 
-**替代接口：** @ohos.file.fs:fileIo.WatchEvent
+**替代接口：** WatchEvent
 
 <!--Device-fileAccess-interface NotifyMessage--><!--Device-fileAccess-interface NotifyMessage-End-->
 

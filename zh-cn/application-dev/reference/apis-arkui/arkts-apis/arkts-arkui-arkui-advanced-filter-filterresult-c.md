@@ -6,6 +6,8 @@ This parameter specifies the selection result of a filtering dimension. The inde
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-export declare class FilterResult--><!--Device-unnamed-export declare class FilterResult-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -24,6 +26,8 @@ index: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -38,13 +42,15 @@ index: number
 name: ResourceStr
 ```
 
-筛选项维度名称。 默认值：空字符串。 **说明**：如果文本大于列宽时，文本被截断。
+筛选项维度名称。 默认值：空字符串。 **说明：**如果文本大于列宽时，文本被截断。
 
 **类型：** ResourceStr
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -60,13 +66,15 @@ name: ResourceStr
 value: ResourceStr
 ```
 
-该维度筛选项选中项目的值。 默认值：空字符串。 **说明**：如果文本大于列宽时，文本被截断。
+该维度筛选项选中项目的值。 默认值：空字符串。 **说明：**如果文本大于列宽时，文本被截断。
 
 **类型：** ResourceStr
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

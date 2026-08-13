@@ -8,7 +8,9 @@ type OnAbilityWillContinueFn = (ability: UIAbility) => void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-type OnAbilityWillContinueFn = (ability: UIAbility) => void--><!--Device-unnamed-type OnAbilityWillContinueFn = (ability: UIAbility) => void-End-->
 
@@ -18,5 +20,5 @@ type OnAbilityWillContinueFn = (ability: UIAbility) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ability | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 当前Ability对象。  |
+| ability | [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) | 是 | 当前Ability对象。 |
 

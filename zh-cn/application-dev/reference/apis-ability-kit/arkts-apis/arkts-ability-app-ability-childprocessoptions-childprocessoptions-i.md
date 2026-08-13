@@ -1,10 +1,12 @@
 # ChildProcessOptions
 
-子进程的启动配置选项。通过[childProcessManager]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_启动子进程时，可以通过 ChildProcessOptions配置子进程启动选项。
+子进程的启动配置选项。通过[childProcessManager](arkts-app-ability-childprocessmanager.md#@ohos.app.ability.childProcessManager)启动子进程时，可以通过 ChildProcessOptions配置子进程启动选项。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-export interface ChildProcessOptions--><!--Device-unnamed-export interface ChildProcessOptions-End-->
 
@@ -20,9 +22,11 @@ isolationMode?: boolean
 
 **类型：** boolean
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,9 +44,11 @@ isolationUid?: boolean
 
 **类型：** boolean
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

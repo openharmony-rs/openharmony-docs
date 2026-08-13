@@ -1,10 +1,12 @@
 # ParagraphStyle
 
-段落样式。
+段落样式，用于控制段落的整体布局行为，包括对齐方式、断行策略和最大行数等属性。ParagraphStyle作为[ParagraphBuilder](arkts-arkgraphics2d-text-paragraphbuilder-c.md#ParagraphBuilder)构造函数的必要参数，与 [TextStyle](arkts-arkgraphics2d-text-textstyle-i.md#TextStyle)（控制文本级别样式）分工协作，共同决定段落的最终排版效果。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-text-interface ParagraphStyle--><!--Device-text-interface ParagraphStyle-End-->
 
@@ -20,9 +22,11 @@ align?: TextAlign
 
 **类型：** TextAlign
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -40,9 +44,11 @@ autoSpace?: boolean
 
 **类型：** boolean
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -58,11 +64,13 @@ breakStrategy?: BreakStrategy
 
 断行策略，默认为GREEDY。
 
-**类型：** BreakStrategy
+**类型：** [BreakStrategy](arkts-arkgraphics2d-text-breakstrategy-e.md)
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -76,13 +84,15 @@ breakStrategy?: BreakStrategy
 compressHeadPunctuation?: boolean
 ```
 
-设置文本排版时是否使能行首标点压缩。true表示使能行首标点压缩，false表示不使能行首标点压缩，默认值为false。 **说明：** 1. 需要字体文件支持[FontFeature]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_中的"ss08"特性，否则无法压缩。 2. 在行首标点压缩范围内的标点才在本特性作用范围内。 行首压缩的标点范围: | 标点 | Unicode码位 | Unicode名称 | |---------|---------|-------------| | 「 | U+300C | LEFT CORNER BRACKET | | 『 | U+300E | LEFT WHITE CORNER BRACKET | | " | U+201C | LEFT DOUBLE QUOTATION MARK | | ' | U+2018 | LEFT SINGLE QUOTATION MARK | | （ | U+FF08 | FULLWIDTH LEFT PARENTHESIS | | 《 | U+300A | LEFT DOUBLE ANGLE BRACKET | | 〈 | U+3008 | LEFT ANGLE BRACKET | | 【 | U+3010 | LEFT BLACK LENTICULAR BRACKET | | 〖 | U+3016 | LEFT WHITE LENTICULAR BRACKET | | 〔 | U+3014 | LEFT TORTOISE SHELL BRACKET | | ［ | U+FF3B | FULLWIDTH LEFT SQUARE BRACKET | | ｛ | U+FF5B | FULLWIDTH LEFT CURLY BRACKET |
+设置文本排版时是否使能行首标点压缩。true表示使能行首标点压缩，false表示不使能行首标点压缩，默认值为false。 **说明：** 1. 需要字体文件支持[FontFeature](arkts-arkgraphics2d-text-fontfeature-i.md#FontFeature)中的"ss08"特性，否则无法压缩。 2. 在行首标点压缩范围内的标点才在本特性作用范围内。 行首压缩的标点范围: | 标点 | Unicode码位 | Unicode名称 | |---------|---------|-------------| | 「 | U+300C | LEFT CORNER BRACKET | | 『 | U+300E | LEFT WHITE CORNER BRACKET | | " | U+201C | LEFT DOUBLE QUOTATION MARK | | ' | U+2018 | LEFT SINGLE QUOTATION MARK | | （ | U+FF08 | FULLWIDTH LEFT PARENTHESIS | | 《 | U+300A | LEFT DOUBLE ANGLE BRACKET | | 〈 | U+3008 | LEFT ANGLE BRACKET | | 【 | U+3010 | LEFT BLACK LENTICULAR BRACKET | | 〖 | U+3016 | LEFT WHITE LENTICULAR BRACKET | | 〔 | U+3014 | LEFT TORTOISE SHELL BRACKET | | ［ | U+FF3B | FULLWIDTH LEFT SQUARE BRACKET | | ｛ | U+FF5B | FULLWIDTH LEFT CURLY BRACKET |
 
 **类型：** boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -102,7 +112,9 @@ fallbackLineSpacing?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -116,13 +128,15 @@ fallbackLineSpacing?: boolean
 firstLineHeadIndent?: double
 ```
 
-设置段落首行缩进，缩进值需大于等于0，默认值为0。
+设置段落首行缩进，缩进值需大于等于0，单位为物理像素px，默认值为0。
 
 **类型：** double
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -138,13 +152,15 @@ firstLineHeadIndent?: double
 headIndents?: Array<double>
 ```
 
-设置行首缩进数组，数组中每个元素代表一行缩进值，当实际文本行数超过缩进数组个数时，超过行的缩进为数组最后一个值，缩进值需全大于等于0，默认为空数组。
+设置行首缩进数组，数组中每个元素代表一行缩进值，当实际文本行数超过缩进数组个数时，超过行的缩进为数组最后一个值，缩进值需全大于等于0，单位为物理像素px，默认为空数组。
 
 **类型：** Array&lt;double&gt;
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -166,7 +182,9 @@ includeFontPadding?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -180,13 +198,15 @@ includeFontPadding?: boolean
 lineSpacing?: double
 ```
 
-行间距，单位为物理像素px，默认值为0。lineSpacing不受[TextStyle]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_中lineHeightMaximum和lineHeightMinimum限制。尾行默认保留行间 距，可通过设置[TextStyle]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_.textHeightBehavior为DISABLE\_ALL或DISABLE\_LAST\_ASCENT禁用尾行行间距。
+行间距，单位为物理像素px，默认值为0。lineSpacing不受[TextStyle](arkts-arkgraphics2d-text-textstyle-i.md#TextStyle)中lineHeightMaximum和lineHeightMinimum限制。尾行默认保留行间 距，可通过设置[ParagraphStyle](#ParagraphStyle)的textHeightBehavior为DISABLE_ALL或DISABLE_LAST_ASCENT禁用尾行行间距。
 
 **类型：** double
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -204,9 +224,11 @@ maxLines?: int
 
 **类型：** int
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -220,13 +242,15 @@ maxLines?: int
 orphanCharOptimization?: boolean
 ```
 
-设置文本排版时是否使能孤字优化。孤字优化通过更高效地处理孤立字符（段落尾行首字符）来改善文本布局。使能后，它会调整换行点以尽可能避免孤立字符。孤字优化特性需在[wordBreak]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_为 非BREAK\_ALL并且待排版文本首个[TextStyle]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_的[locale]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_为“zh-Hans”或“zh-Hant”时生效。true表示 使能孤字优化，false表示不使能孤字优化，默认值为false。
+设置文本排版时是否使能孤字优化。孤字优化通过更高效地处理孤立字符（段落尾行首字符）来改善文本布局。使能后，它会调整换行点以尽可能避免孤立字符。孤字优化特性需在[wordBreak](arkts-arkgraphics2d-text-wordbreak-e.md#WordBreak)为 非BREAK_ALL并且待排版文本首个[TextStyle](arkts-arkgraphics2d-text-textstyle-i.md#TextStyle)的locale为“zh-Hans”或“zh-Hant”时生效。true表示使能孤字优化，false表示不使能孤字优化，默认 值为false。
 
 **类型：** boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -242,13 +266,15 @@ orphanCharOptimization?: boolean
 punctuationOverflow?: boolean
 ```
 
-尾行标点悬挂
+设置文本排版时是否使能行尾标点悬挂。true表示使能行尾标点悬挂，允许行尾单个标点超出排版宽度而不换行，false表示不使能行尾标点悬挂，默认值为false。
 
 **类型：** boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -266,11 +292,13 @@ strutStyle?: StrutStyle
 
 支柱样式，默认为初始的StrutStyle。
 
-**类型：** StrutStyle
+**类型：** [StrutStyle](arkts-arkgraphics2d-text-strutstyle-i.md)
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -284,13 +312,15 @@ strutStyle?: StrutStyle
 tab?: TextTab
 ```
 
-表示段落中文本制表符后的文本对齐方式及位置，默认将制表符替换为一个空格。此参数与文本对齐方式（align属性）或省略号样式（[TextStyle]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_中的ellipsis属性）共同配置时 无效。
+表示段落中文本制表符后的文本对齐方式及位置，默认将制表符替换为一个空格。此参数与文本对齐方式（align属性）或省略号样式（[TextStyle](arkts-arkgraphics2d-text-textstyle-i.md#TextStyle)中的ellipsis属性）共同配置时 无效。
 
-**类型：** TextTab
+**类型：** [TextTab](arkts-arkgraphics2d-text-texttab-i.md)
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -304,13 +334,15 @@ tab?: TextTab
 tailIndents?: Array<double>
 ```
 
-设置行尾缩进数组，数组中每个元素代表一行缩进值，当实际文本行数超过缩进数组个数时，超过行的缩进为数组最后一个值，缩进值需全大于等于0，默认为空数组。
+设置行尾缩进数组，数组中每个元素代表一行缩进值，当实际文本行数超过缩进数组个数时，超过行的缩进为数组最后一个值，缩进值需全大于等于0，单位为物理像素px，默认为空数组。
 
 **类型：** Array&lt;double&gt;
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -330,9 +362,11 @@ textDirection?: TextDirection
 
 **类型：** TextDirection
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -348,11 +382,13 @@ textHeightBehavior?: TextHeightBehavior
 
 文本高度修饰符模式，默认为ALL。
 
-**类型：** TextHeightBehavior
+**类型：** [TextHeightBehavior](arkts-arkgraphics2d-text-textheightbehavior-e.md)
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -370,9 +406,11 @@ textStyle?: TextStyle
 
 **类型：** TextStyle
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -390,9 +428,11 @@ trailingSpaceOptimized?: boolean
 
 **类型：** boolean
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -406,13 +446,15 @@ trailingSpaceOptimized?: boolean
 verticalAlign?: TextVerticalAlign
 ```
 
-文本垂直对齐方式，开启行高缩放（即设置[TextStyle]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_的heightScale）或行内不同字号（即设置[TextStyle]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_的 fontSize）文本混排时生效。若行内有上下标文本（即设置[TextStyle]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_的badgeType属性文本），上下标文本将与普通文本一样参与垂直对齐。
+文本垂直对齐方式，默认为BASELINE，即文本基线对齐。开启行高缩放（即设置[TextStyle](arkts-arkgraphics2d-text-textstyle-i.md#TextStyle)的heightScale）或行内不同字号（即设置 [TextStyle](arkts-arkgraphics2d-text-textstyle-i.md#TextStyle)的fontSize）文本混排时生效。若行内有上下标文本（即设置[TextStyle](arkts-arkgraphics2d-text-textstyle-i.md#TextStyle)的badgeType属性文本）， 上下标文本将与普通文本一样参与垂直对齐。
 
 **类型：** TextVerticalAlign
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -426,13 +468,15 @@ verticalAlign?: TextVerticalAlign
 wordBreak?: WordBreak
 ```
 
-断词类型，默认为BREAK\_WORD。
+断词类型，默认为BREAK_WORD。
 
 **类型：** WordBreak
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 

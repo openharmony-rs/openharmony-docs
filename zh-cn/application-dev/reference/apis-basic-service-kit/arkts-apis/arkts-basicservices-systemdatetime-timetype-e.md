@@ -2,9 +2,11 @@
 
 定义获取时间的枚举类型。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-systemDateTime-enum TimeType--><!--Device-systemDateTime-enum TimeType-End-->
 
@@ -18,9 +20,11 @@ STARTUP = 0
 
 自系统启动以来经过的毫秒数，包括深度睡眠时间。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TimeType-STARTUP = 0--><!--Device-TimeType-STARTUP = 0-End-->
 
@@ -34,9 +38,11 @@ ACTIVE = 1
 
 自系统启动以来经过的毫秒数，不包括深度睡眠时间。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TimeType-ACTIVE = 1--><!--Device-TimeType-ACTIVE = 1-End-->
 

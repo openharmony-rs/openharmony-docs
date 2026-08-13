@@ -2,9 +2,11 @@
 
 备份和恢复过程中的通用回调。 备份服务通过这些回调向客户端通知备份或恢复阶段。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-backup-interface GeneralCallbacks--><!--Device-backup-interface GeneralCallbacks-End-->
 
@@ -23,6 +25,8 @@ onProcess(bundleName: string, process: string): void
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -43,18 +47,18 @@ onProcess(bundleName: string, process: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed,application which is not a system application uses system API. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3.Parameter verification failed. |
-| 13500006 | Tar error |
-| 13500008 | Untar error |
-| 13600001 | IPC error |
-| 13900001 | Operation not permitted |
-| 13900005 | I/O error |
-| 13900011 | Out of memory |
 | 13900020 | Invalid argument |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| 13900005 | I/O error |
+| 13500008 | Untar error |
+| 13900001 | Operation not permitted |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
+| 13500006 | Tar error |
 | 13900025 | No space left on device |
+| 13600001 | IPC error |
+| 13900011 | Out of memory |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { backup } from '@kit.CoreFileKit';
@@ -77,6 +81,8 @@ onResultReport(bundleName: string, result: string): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-GeneralCallbacks-onResultReport(bundleName: string, result: string): void--><!--Device-GeneralCallbacks-onResultReport(bundleName: string, result: string): void-End-->
@@ -96,13 +102,13 @@ onResultReport(bundleName: string, result: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed,application which is not a system application uses system API. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3.Parameter verification failed. |
-| 13600001 | IPC error |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 13900005 | I/O error |
-| 13900011 | Out of memory |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 | 13900025 | No space left on device |
+| 13600001 | IPC error |
 | 13900042 | Unknown error |
+| 13900011 | Out of memory |
 
 ## onAllBundlesEnd
 
@@ -112,11 +118,13 @@ onAllBundlesEnd: AsyncCallback<undefined>
 
 所有应用的备份或恢复完成或异常中止时触发的回调。
 
-**类型：** AsyncCallback&lt;undefined&gt;
+**类型：** [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;undefined&gt;
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-GeneralCallbacks-onAllBundlesEnd: AsyncCallback<undefined>--><!--Device-GeneralCallbacks-onAllBundlesEnd: AsyncCallback<undefined>-End-->
 
@@ -132,11 +140,13 @@ onBackupServiceDied: Callback<undefined>
 
 备份服务异常死亡时触发的回调。
 
-**类型：** Callback&lt;undefined&gt;
+**类型：** [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;undefined&gt;
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-GeneralCallbacks-onBackupServiceDied: Callback<undefined>--><!--Device-GeneralCallbacks-onBackupServiceDied: Callback<undefined>-End-->
 
@@ -152,11 +162,13 @@ onBackupSizeReport?: OnBackupSizeReport
 
 备份服务返回结果或进度信息时触发的回调。 返回框架扫描到的应用待备份数据量信息。
 
-**类型：** OnBackupSizeReport
+**类型：** [OnBackupSizeReport](arkts-corefile-backup-onbackupsizereport-t-sys.md)
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-GeneralCallbacks-onBackupSizeReport?: OnBackupSizeReport--><!--Device-GeneralCallbacks-onBackupSizeReport?: OnBackupSizeReport-End-->
 
@@ -167,18 +179,22 @@ onBackupSizeReport?: OnBackupSizeReport
 ## onBundleBegin
 
 ```TypeScript
-onBundleBegin: AsyncCallback<string, void | string>
+onBundleBegin: AsyncCallback<string, BundlePara>
 ```
 
 应用备份或恢复开始时触发的回调。 第一个字符串参数表示应用名称。 发生BusinessError时，第二个字符串参数 返回对应的应用名称。
 
-**类型：** AsyncCallback&lt;string, void \| string&gt;
+**类型：** [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string, [BundlePara](arkts-corefile-backup-bundlepara-t-sys.md)&gt;
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-<!--Device-GeneralCallbacks-onBundleBegin: AsyncCallback<string, void | string>--><!--Device-GeneralCallbacks-onBundleBegin: AsyncCallback<string, void | string>-End-->
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-GeneralCallbacks-onBundleBegin: AsyncCallback<string, BundlePara>--><!--Device-GeneralCallbacks-onBundleBegin: AsyncCallback<string, BundlePara>-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
@@ -187,18 +203,22 @@ onBundleBegin: AsyncCallback<string, void | string>
 ## onBundleEnd
 
 ```TypeScript
-onBundleEnd: AsyncCallback<string, void | string>
+onBundleEnd: AsyncCallback<string, BundlePara>
 ```
 
 应用备份或恢复成功结束或异常中止时触发的回调。 第一个字符串参数表示应用名称。 发生BusinessError时，第二个字符串参数 返回对应的应用名称。
 
-**类型：** AsyncCallback&lt;string, void \| string&gt;
+**类型：** [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string, [BundlePara](arkts-corefile-backup-bundlepara-t-sys.md)&gt;
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-<!--Device-GeneralCallbacks-onBundleEnd: AsyncCallback<string, void | string>--><!--Device-GeneralCallbacks-onBundleEnd: AsyncCallback<string, void | string>-End-->
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-GeneralCallbacks-onBundleEnd: AsyncCallback<string, BundlePara>--><!--Device-GeneralCallbacks-onBundleEnd: AsyncCallback<string, BundlePara>-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
@@ -212,11 +232,13 @@ onFileReady: AsyncCallback<File>
 
 备份服务向客户端发送文件时触发的回调。 File参数表示发送给客户端的文件。 返回的文件归备份服务所有，客户端关闭文件句柄后由备份服务清理。
 
-**类型：** AsyncCallback&lt;File&gt;
+**类型：** [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;File&gt;
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-GeneralCallbacks-onFileReady: AsyncCallback<File>--><!--Device-GeneralCallbacks-onFileReady: AsyncCallback<File>-End-->
 
@@ -232,11 +254,13 @@ onFileReadyBatch?: OnFileReadyBatch
 
 备份服务向客户端发送文件时触发的回调。 File参数表示发送给客户端的文件。 返回的文件归备份服务所有，客户端关闭文件句柄后由备份服务清理。
 
-**类型：** OnFileReadyBatch
+**类型：** [OnFileReadyBatch](arkts-corefile-backup-onfilereadybatch-t-sys.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -254,11 +278,13 @@ onMigrateResult?: AsyncCallback<string, void | string>
 
 文件迁移流程结束时触发的回调。 第一个字符串参数表示应用名称。 发生BusinessError时，第二个字符串参数 返回对应的应用名称。
 
-**类型：** AsyncCallback&lt;string, void \| string&gt;
+**类型：** [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string, void \| string&gt;
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -276,11 +302,13 @@ onProcess: OnProcess
 
 备份服务返回结果或进度信息时触发的回调。 返回应用的处理结果或进度信息。
 
-**类型：** OnProcess
+**类型：** [OnProcess](arkts-corefile-backup-onprocess-t-sys.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -298,11 +326,13 @@ onResultReport: OnResultReport
 
 备份服务返回结果信息时触发的回调。 第一个字符串参数表示触发回调的应用名称。 第二个字符串参数表示应用的处理结果。
 
-**类型：** OnResultReport
+**类型：** [OnResultReport](arkts-corefile-backup-onresultreport-t-sys.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

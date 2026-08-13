@@ -2,9 +2,11 @@
 
 标识拦截指定应用程序的不同策略。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-appControl-export enum ControlType--><!--Device-appControl-export enum ControlType-End-->
 
@@ -20,9 +22,11 @@ ALLOWED_LIST = 1
 
 允许运行指定功能的列表。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ControlType-ALLOWED_LIST = 1--><!--Device-ControlType-ALLOWED_LIST = 1-End-->
 
@@ -38,9 +42,11 @@ DISALLOWED_LIST = 2
 
 不允许运行指定功能的列表。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ControlType-DISALLOWED_LIST = 2--><!--Device-ControlType-DISALLOWED_LIST = 2-End-->
 

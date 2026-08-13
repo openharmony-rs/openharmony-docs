@@ -12,6 +12,8 @@ function getAllBundleInstallInfo(): Promise<Array<Record<string, Object>>>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
+**废弃版本：** -1
+
 **需要权限：** ohos.permission.GET_INSTALLED_BUNDLE_LIST
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -35,7 +37,7 @@ function getAllBundleInstallInfo(): Promise<Array<Record<string, Object>>>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例:
 
@@ -88,7 +90,9 @@ function getAllBundleInstallInfo(): Promise<Array<Record<string, RecordData>>>
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_INSTALLED_BUNDLE_LIST
 
@@ -104,7 +108,7 @@ function getAllBundleInstallInfo(): Promise<Array<Record<string, RecordData>>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;Record&lt;string, RecordData&gt;&gt;&gt; | The install information. |
+| Promise&lt;Array&lt;Record&lt;string, [RecordData](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt;&gt;&gt; | The install information. |
 
 **错误码：**
 

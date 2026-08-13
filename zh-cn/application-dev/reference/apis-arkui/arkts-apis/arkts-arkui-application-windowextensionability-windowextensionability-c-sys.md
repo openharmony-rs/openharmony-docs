@@ -40,9 +40,9 @@ onConnect(want: Want): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 当前ability的Want类型信息，包括ability名称、bundle名称等。 |
+| want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 当前ability的Want类型信息，包括ability名称、bundle名称等。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { WindowExtensionAbility } from '@kit.ArkUI';
@@ -81,9 +81,9 @@ onDisconnect(want: Want): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 当前Ability的Want类型信息，包括ability名称、bundle名称等。 |
+| want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 当前Ability的Want类型信息，包括ability名称、bundle名称等。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { WindowExtensionAbility } from '@kit.ArkUI';
@@ -124,7 +124,7 @@ onWindowReady(window: window.Window): void
 | --- | --- | --- | --- |
 | window | window.Window | 是 | 当前窗口实例。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { WindowExtensionAbility, window } from '@kit.ArkUI';
@@ -149,7 +149,7 @@ context: WindowExtensionContext
 
 Indicates window extension ability context.
 
-**类型：** WindowExtensionContext
+**类型：** [WindowExtensionContext](arkts-arkui-windowextensioncontext-t-sys.md)
 
 **起始版本：** 9
 

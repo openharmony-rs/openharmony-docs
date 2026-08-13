@@ -1,6 +1,6 @@
 # URLSearchParams
 
-URLSearchParams接口定义了一些处理URL查询字符串的实用方法，从API version 9开始废弃，建议使用[URLParams]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+URLSearchParams接口定义了一些处理URL查询字符串的实用方法，从API version 9开始废弃，建议使用[URLParams](arkts-arkts-url-urlparams-c.md#URLParams)。
 
 **起始版本：** 7
 
@@ -8,7 +8,7 @@ URLSearchParams接口定义了一些处理URL查询字符串的实用方法，�
 
 **废弃版本：** 9
 
-**替代接口：** ohos.url.URLParams
+**替代接口：** [URLParams](arkts-arkts-url-urlparams-c.md#URLParams)
 
 <!--Device-url-class URLSearchParams--><!--Device-url-class URLSearchParams-End-->
 
@@ -28,7 +28,7 @@ URLSearchParams接口定义了一些处理URL查询字符串的实用方法，�
 
 **废弃版本：** 9
 
-**替代接口：** ohos.url.URLParams.[Symbol.iterator]
+**替代接口：** iterator]
 
 <!--Device-URLSearchParams-[Symbol.iterator](): IterableIterator<[string, string]>--><!--Device-URLSearchParams-[Symbol.iterator](): IterableIterator<[string, string]>-End-->
 
@@ -38,9 +38,9 @@ URLSearchParams接口定义了一些处理URL查询字符串的实用方法，�
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;[string, string]&gt; | 返回一个ES6迭代器。迭代器的每一项都是一个JavaScript Array。 |
+| IterableIterator&lt;[string, string]&gt; | 返回一个迭代器，迭代器的每一项为包含name和value的[string, string]数组。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 const paramsObject = new url.URLSearchParams('fod=bay&edg=bap');
@@ -58,7 +58,7 @@ for (let pair of pairs) {
 append(name: string, value: string): void
 ```
 
-将新的键值对插入到查询字符串。
+将新的键值对插入到查询字符串。与set方法不同，append不会替换已存在的键名对应的值，而是追加一个新的键值对，允许同一键名存在多个值。如需替换已有键值，请使用set方法。
 
 **起始版本：** 7
 
@@ -66,7 +66,7 @@ append(name: string, value: string): void
 
 **废弃版本：** 9
 
-**替代接口：** ohos.url.URLParams.append
+**替代接口：** append
 
 <!--Device-URLSearchParams-append(name: string, value: string): void--><!--Device-URLSearchParams-append(name: string, value: string): void-End-->
 
@@ -79,7 +79,7 @@ append(name: string, value: string): void
 | name | string | 是 | 需要插入搜索参数的键名。 |
 | value | string | 是 | 需要插入搜索参数的值。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let urlObject = new url.URL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -101,7 +101,7 @@ URLSearchParams的构造函数。
 
 **废弃版本：** 9
 
-**替代接口：** ohos.url.URLParams.constructor
+**替代接口：** constructor
 
 <!--Device-URLSearchParams-constructor(init?: string[][] | Record<string, string> | string | URLSearchParams)--><!--Device-URLSearchParams-constructor(init?: string[][] | Record<string, string> | string | URLSearchParams)-End-->
 
@@ -111,9 +111,9 @@ URLSearchParams的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| init | string[][] \| Record&lt;string, string&gt; \| string \| URLSearchParams | 否 | 入参对象。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- string[][]：字符串二维数组。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- Record&lt;string, string&gt;：对象列表。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- string：字符串。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_3\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- URLSearchParams：对象。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_4\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- 默认值：undefined。 |
+| init | string[][] \| Record&lt;string, string&gt; \| string \| [URLSearchParams](arkts-arkts-url-urlsearchparams-c.md) | 否 | 入参对象。 &lt;br/&gt;- string[][]：字符串二维数组，每个内部数组包含两个元素，分别为键名和键值。 &lt;br/&gt;- Record&lt;string, string&gt;：对象列表。 &lt;br/&gt;- string：字符串，需遵循URL查询参数格式，如'key=value&key2=value2'。 &lt;br/&gt;- URLSearchParams：对象。 &lt;br/&gt;- 默认值：undefined。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let objectParams = new url.URLSearchParams([ ['user1', 'abc1'], ['query2', 'first2'], ['query3', 'second3'] ]);
@@ -129,7 +129,7 @@ let params = new url.URLSearchParams(urlObject.search);
 delete(name: string): void
 ```
 
-删除指定名称的键值对。
+删除指定名称的所有键值对。如果指定名称不存在，则不做任何操作。
 
 **起始版本：** 7
 
@@ -137,7 +137,7 @@ delete(name: string): void
 
 **废弃版本：** 9
 
-**替代接口：** ohos.url.URLParams.delete
+**替代接口：** delete
 
 <!--Device-URLSearchParams-delete(name: string): void--><!--Device-URLSearchParams-delete(name: string): void-End-->
 
@@ -149,7 +149,7 @@ delete(name: string): void
 | --- | --- | --- | --- |
 | name | string | 是 | 需要删除的键值名称。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let urlObject = new url.URL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -171,7 +171,7 @@ entries(): IterableIterator<[string, string]>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.url.URLParams.entries
+**替代接口：** entries
 
 <!--Device-URLSearchParams-entries(): IterableIterator<[string, string]>--><!--Device-URLSearchParams-entries(): IterableIterator<[string, string]>-End-->
 
@@ -183,7 +183,7 @@ entries(): IterableIterator<[string, string]>
 | --- | --- |
 | IterableIterator&lt;[string, string]&gt; | 返回一个ES6的迭代器。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let searchParamsObject = new url.URLSearchParams("keyName1=valueName1&keyName2=valueName2");
@@ -209,7 +209,7 @@ forEach(callbackFn: (value: string, key: string, searchParams: URLSearchParams) 
 
 **废弃版本：** 9
 
-**替代接口：** ohos.url.URLParams.forEach
+**替代接口：** forEach
 
 <!--Device-URLSearchParams-forEach(callbackFn: (value: string, key: string, searchParams: URLSearchParams) => void, thisArg?: Object): void--><!--Device-URLSearchParams-forEach(callbackFn: (value: string, key: string, searchParams: URLSearchParams) => void, thisArg?: Object): void-End-->
 
@@ -222,7 +222,7 @@ forEach(callbackFn: (value: string, key: string, searchParams: URLSearchParams) 
 | callbackFn | (value: string, key: string, searchParams: URLSearchParams) =&gt; void | 是 | 回调函数。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值，默认值是本对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 const myURLObject = new url.URL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -245,7 +245,7 @@ get(name: string): string | null
 
 **废弃版本：** 9
 
-**替代接口：** ohos.url.URLParams.get
+**替代接口：** get
 
 <!--Device-URLSearchParams-get(name: string): string | null--><!--Device-URLSearchParams-get(name: string): string | null-End-->
 
@@ -263,7 +263,7 @@ get(name: string): string | null
 | --- | --- |
 | string | 返回第一个值，如果没找到，返回 null。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let paramsObject = new url.URLSearchParams('name=Jonathan&age=18');
@@ -278,7 +278,7 @@ let getObj = paramsObject.get("abc"); // undefined
 getAll(name: string): string[]
 ```
 
-获取指定名称的所有键值对。
+获取指定名称的所有键对应值的集合。若查找一个不存在的键值对名称时返回值为空数组。
 
 **起始版本：** 7
 
@@ -286,7 +286,7 @@ getAll(name: string): string[]
 
 **废弃版本：** 9
 
-**替代接口：** ohos.url.URLParams.getAll
+**替代接口：** getAll
 
 <!--Device-URLSearchParams-getAll(name: string): string[]--><!--Device-URLSearchParams-getAll(name: string): string[]-End-->
 
@@ -302,9 +302,9 @@ getAll(name: string): string[]
 
 | 类型 | 说明 |
 | --- | --- |
-| string[] | 返回指定名称的所有键值对。 |
+| string[] | 返回指定名称的所有键对应值的集合。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let urlObject = new url.URL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -327,7 +327,7 @@ has(name: string): boolean
 
 **废弃版本：** 9
 
-**替代接口：** ohos.url.URLParams.has
+**替代接口：** has
 
 <!--Device-URLSearchParams-has(name: string): boolean--><!--Device-URLSearchParams-has(name: string): boolean-End-->
 
@@ -343,9 +343,9 @@ has(name: string): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 是否存在相对应的key值。存在返回true，否则返回false。 |
+| boolean | 是否存在相对应的key值，存在返回true，否则返回false。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let urlObject = new url.URL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -359,7 +359,7 @@ paramsObject.has('bard') === true;
 keys(): IterableIterator<string>
 ```
 
-返回一个所有键值对的name的ES6迭代器。
+返回一个所有键值对的name的迭代器。
 
 **起始版本：** 7
 
@@ -367,7 +367,7 @@ keys(): IterableIterator<string>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.url.URLParams.keys
+**替代接口：** keys
 
 <!--Device-URLSearchParams-keys(): IterableIterator<string>--><!--Device-URLSearchParams-keys(): IterableIterator<string>-End-->
 
@@ -377,9 +377,9 @@ keys(): IterableIterator<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;string&gt; | 返回一个所有键值对的name的ES6迭代器。 |
+| IterableIterator&lt;string&gt; | 返回一个所有键值对的name的迭代器。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let searchParamsObject = new url.URLSearchParams("key1=value1&key2=value2");
@@ -397,7 +397,7 @@ for (let key of keys) {
 set(name: string, value: string): void
 ```
 
-将与name关联的URLSearchParams对象中的值设置为value。如果存在名称为name的键值对，请将第一个键值对的值设置为value并删除所有其他值。如果不是，则将键值对附加到查询字符串。
+将与name关联的URLParams对象中的值设置为value。如果存在名称为name的键值对，请将第一个键值对的值设置为value并删除所有其他值。如果不存在该键名，则将键值对附加到查询字符串。
 
 **起始版本：** 7
 
@@ -405,7 +405,7 @@ set(name: string, value: string): void
 
 **废弃版本：** 9
 
-**替代接口：** ohos.url.URLParams.set
+**替代接口：** set
 
 <!--Device-URLSearchParams-set(name: string, value: string): void--><!--Device-URLSearchParams-set(name: string, value: string): void-End-->
 
@@ -418,7 +418,7 @@ set(name: string, value: string): void
 | name | string | 是 | 将要设置的参数的键值名。 |
 | value | string | 是 | 所要设置的参数值。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let urlObject = new url.URL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -432,7 +432,7 @@ paramsObject.set('baz', '3'); // Add a third parameter.
 sort(): void
 ```
 
-对包含在此对象中的所有键值对进行排序，并返回undefined。排序顺序是根据键的Unicode代码点。该方法使用稳定的排序算法 （即，将保留具有相等键的键值对之间的相对顺序）。
+对包含在此对象中的所有键值对进行排序。排序顺序是根据键的Unicode代码点。该方法使用稳定的排序算法 （即，将保留具有相等键的键值对之间的相对顺序）。
 
 **起始版本：** 7
 
@@ -440,13 +440,13 @@ sort(): void
 
 **废弃版本：** 9
 
-**替代接口：** ohos.url.URLParams.sort
+**替代接口：** sort
 
 <!--Device-URLSearchParams-sort(): void--><!--Device-URLSearchParams-sort(): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**示例：**
+## 示例
 
 ```TypeScript
 let searchParamsObject = new url.URLSearchParams("c=3&a=9&b=4&d=2"); // Create a test URLSearchParams object
@@ -468,7 +468,7 @@ toString(): string
 
 **废弃版本：** 9
 
-**替代接口：** ohos.url.URLParams.toString
+**替代接口：** toString
 
 <!--Device-URLSearchParams-toString(): string--><!--Device-URLSearchParams-toString(): string-End-->
 
@@ -480,7 +480,7 @@ toString(): string
 | --- | --- |
 | string | 返回序列化为字符串的搜索参数，必要时对字符进行百分比编码。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let urlObject = new url.URL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -495,7 +495,7 @@ console.info(params.toString()); // Output 'fod=1&bard=2&fod=3'
 values(): IterableIterator<string>
 ```
 
-返回一个所有键值对的value的ES6迭代器。
+返回一个所有键值对的value的迭代器。
 
 **起始版本：** 7
 
@@ -503,7 +503,7 @@ values(): IterableIterator<string>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.url.URLParams.values
+**替代接口：** values
 
 <!--Device-URLSearchParams-values(): IterableIterator<string>--><!--Device-URLSearchParams-values(): IterableIterator<string>-End-->
 
@@ -513,9 +513,9 @@ values(): IterableIterator<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;string&gt; | 返回一个所有键值对的value的ES6迭代器。 |
+| IterableIterator&lt;string&gt; | 返回一个所有键值对的value的迭代器。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let searchParams = new url.URLSearchParams("key1=value1&key2=value2");

@@ -2,9 +2,11 @@
 
 定义物理单位的枚举。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-scan-enum PhysicalUnit--><!--Device-scan-enum PhysicalUnit-End-->
 
@@ -18,9 +20,11 @@ SCAN_UNIT_NONE = 0
 
 无单位。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PhysicalUnit-SCAN_UNIT_NONE = 0--><!--Device-PhysicalUnit-SCAN_UNIT_NONE = 0-End-->
 
@@ -34,9 +38,11 @@ SCAN_UNIT_PIXEL = 1
 
 像素单位。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PhysicalUnit-SCAN_UNIT_PIXEL = 1--><!--Device-PhysicalUnit-SCAN_UNIT_PIXEL = 1-End-->
 
@@ -50,9 +56,11 @@ SCAN_UNIT_BIT = 2
 
 位单位。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PhysicalUnit-SCAN_UNIT_BIT = 2--><!--Device-PhysicalUnit-SCAN_UNIT_BIT = 2-End-->
 
@@ -66,9 +74,11 @@ SCAN_UNIT_MM = 3
 
 毫米单位。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PhysicalUnit-SCAN_UNIT_MM = 3--><!--Device-PhysicalUnit-SCAN_UNIT_MM = 3-End-->
 
@@ -82,9 +92,11 @@ SCAN_UNIT_DPI = 4
 
 DPI单位。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PhysicalUnit-SCAN_UNIT_DPI = 4--><!--Device-PhysicalUnit-SCAN_UNIT_DPI = 4-End-->
 
@@ -98,9 +110,11 @@ SCAN_UNIT_PERCENT = 5
 
 百分比单位。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PhysicalUnit-SCAN_UNIT_PERCENT = 5--><!--Device-PhysicalUnit-SCAN_UNIT_PERCENT = 5-End-->
 
@@ -114,9 +128,11 @@ SCAN_UNIT_MICROSECOND = 6
 
 微秒单位。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PhysicalUnit-SCAN_UNIT_MICROSECOND = 6--><!--Device-PhysicalUnit-SCAN_UNIT_MICROSECOND = 6-End-->
 

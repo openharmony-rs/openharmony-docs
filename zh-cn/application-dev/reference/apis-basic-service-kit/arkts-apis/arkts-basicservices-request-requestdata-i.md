@@ -1,16 +1,16 @@
 # RequestData
 
-**起始版本：** 3
+[UploadConfig](arkts-basicservices-request-uploadconfig-i.md#UploadConfig)中的表单数据。
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**起始版本：** 23
 
-**废弃版本：** 9
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**替代接口：** [@ohos.request:request.RequestData](arkts-basicservices-request-requestdata-i.md)
+**废弃版本：** -1
 
-<!--Device-unnamed-export interface RequestData--><!--Device-unnamed-export interface RequestData-End-->
+<!--Device-request-interface RequestData--><!--Device-request-interface RequestData-End-->
 
-**系统能力：** SystemCapability.MiscServices.Upload
+**系统能力：** SystemCapability.MiscServices.Download
 
 ## name
 
@@ -18,21 +18,19 @@
 name: string
 ```
 
-表示form 元素的名称。
+表示表单元素的名称。
 
 **类型：** string
 
-**起始版本：** 3
+**起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**废弃版本：** 9
-
-**替代接口：** ohos.request.agent.FormItem.name
+**废弃版本：** -1
 
 <!--Device-RequestData-name: string--><!--Device-RequestData-name: string-End-->
 
-**系统能力：** SystemCapability.MiscServices.Upload
+**系统能力：** SystemCapability.MiscServices.Download
 
 ## value
 
@@ -40,19 +38,17 @@ name: string
 value: string
 ```
 
-表示form 元素的值。
+表示表单元素的值。
 
 **类型：** string
 
-**起始版本：** 3
+**起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**废弃版本：** 9
-
-**替代接口：** ohos.request.agent.FormItem.value
+**废弃版本：** -1
 
 <!--Device-RequestData-value: string--><!--Device-RequestData-value: string-End-->
 
-**系统能力：** SystemCapability.MiscServices.Upload
+**系统能力：** SystemCapability.MiscServices.Download
 

@@ -6,9 +6,11 @@ export type RunningMultiAppInfo = _RunningMultiAppInfo
 
 应用多开在运行态的结构信息。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-appManager-export type RunningMultiAppInfo = _RunningMultiAppInfo--><!--Device-appManager-export type RunningMultiAppInfo = _RunningMultiAppInfo-End-->
 

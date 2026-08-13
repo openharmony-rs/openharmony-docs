@@ -1,12 +1,14 @@
 # Component3D属性/事件
 
-**继承/实现关系：** Component3DAttribute extends [CommonMethod<Component3DAttribute>](CommonMethod<Component3DAttribute>)
+**继承/实现关系：** Component3DAttribute extends CommonMethod<Component3DAttribute>
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-<!--Device-unnamed-declare class Component3DAttribute extends CommonMethod<Component3DAttribute>--><!--Device-unnamed-declare class Component3DAttribute extends CommonMethod<Component3DAttribute>-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare class Component3DAttribute--><!--Device-unnamed-declare class Component3DAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -22,6 +24,8 @@ customRender(uri: ResourceStr, selfRenderUpdate: boolean)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Component3DAttribute-customRender(uri: ResourceStr, selfRenderUpdate: boolean): Component3DAttribute--><!--Device-Component3DAttribute-customRender(uri: ResourceStr, selfRenderUpdate: boolean): Component3DAttribute-End-->
@@ -32,7 +36,7 @@ customRender(uri: ResourceStr, selfRenderUpdate: boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 渲染管线配置文件的路径 |
+| uri | ResourceStr | 是 | 渲染管线配置文件的路径 |
 | selfRenderUpdate | boolean | 是 | 每帧触发动效渲染 |
 
 ## environment
@@ -47,6 +51,8 @@ environment(uri: ResourceStr)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Component3DAttribute-environment(uri: ResourceStr): Component3DAttribute--><!--Device-Component3DAttribute-environment(uri: ResourceStr): Component3DAttribute-End-->
@@ -57,7 +63,7 @@ environment(uri: ResourceStr)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 3D环境资源的路径 |
+| uri | ResourceStr | 是 | 3D环境资源的路径 |
 
 ## renderHeight
 
@@ -71,6 +77,8 @@ renderHeight(value: Dimension)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Component3DAttribute-renderHeight(value: Dimension): Component3DAttribute--><!--Device-Component3DAttribute-renderHeight(value: Dimension): Component3DAttribute-End-->
@@ -81,7 +89,7 @@ renderHeight(value: Dimension)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | GPU渲染目标的高度，目标将上采样或下采样到视图高度. |
+| value | Dimension | 是 | GPU渲染目标的高度，目标将上采样或下采样到视图高度. |
 
 ## renderWidth
 
@@ -95,6 +103,8 @@ renderWidth(value: Dimension)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Component3DAttribute-renderWidth(value: Dimension): Component3DAttribute--><!--Device-Component3DAttribute-renderWidth(value: Dimension): Component3DAttribute-End-->
@@ -105,7 +115,7 @@ renderWidth(value: Dimension)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | GPU渲染目标的宽度，目标将上采样或下采样到视图宽度. |
+| value | Dimension | 是 | GPU渲染目标的宽度，目标将上采样或下采样到视图宽度. |
 
 ## shader
 
@@ -119,6 +129,8 @@ shader(uri: ResourceStr)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Component3DAttribute-shader(uri: ResourceStr): Component3DAttribute--><!--Device-Component3DAttribute-shader(uri: ResourceStr): Component3DAttribute-End-->
@@ -129,7 +141,7 @@ shader(uri: ResourceStr)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 自定义着色器的路径 |
+| uri | ResourceStr | 是 | 自定义着色器的路径 |
 
 ## shaderImageTexture
 
@@ -143,6 +155,8 @@ shaderImageTexture(uri: ResourceStr)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Component3DAttribute-shaderImageTexture(uri: ResourceStr): Component3DAttribute--><!--Device-Component3DAttribute-shaderImageTexture(uri: ResourceStr): Component3DAttribute-End-->
@@ -153,7 +167,7 @@ shaderImageTexture(uri: ResourceStr)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 着色器所用纹理的路径 |
+| uri | ResourceStr | 是 | 着色器所用纹理的路径 |
 
 ## shaderInputBuffer
 
@@ -166,6 +180,8 @@ shaderInputBuffer(buffer: Array<number>)
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

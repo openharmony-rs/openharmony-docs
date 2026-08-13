@@ -2,9 +2,11 @@
 
 打印纸张方向的枚举。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-print-enum PrintDirectionMode--><!--Device-print-enum PrintDirectionMode-End-->
 
@@ -18,9 +20,11 @@ DIRECTION_MODE_AUTO = 0
 
 表示自动选择纸张方向。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrintDirectionMode-DIRECTION_MODE_AUTO = 0--><!--Device-PrintDirectionMode-DIRECTION_MODE_AUTO = 0-End-->
 
@@ -34,9 +38,11 @@ DIRECTION_MODE_PORTRAIT = 1
 
 表示纵向打印。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrintDirectionMode-DIRECTION_MODE_PORTRAIT = 1--><!--Device-PrintDirectionMode-DIRECTION_MODE_PORTRAIT = 1-End-->
 
@@ -50,9 +56,11 @@ DIRECTION_MODE_LANDSCAPE = 2
 
 表示横向打印。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrintDirectionMode-DIRECTION_MODE_LANDSCAPE = 2--><!--Device-PrintDirectionMode-DIRECTION_MODE_LANDSCAPE = 2-End-->
 

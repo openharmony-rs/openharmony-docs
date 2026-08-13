@@ -6,11 +6,13 @@
 function anonAttestKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksReturnResult>): void
 ```
 
-获取匿名化密钥证书。使用callback异步回调。 该操作需要联网进行，且耗时较长。返回12000012错误码时，可能是由于网络异常导致。此时如果没有联网，需要提示用户网络没有连接，如果已经联网，可能是由于网络抖动导致失败，建议重试。 > **说明：** > > 获取[HuksKeySecurityLevel]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_中定义的SE安全级别密钥证书需要ohos.permission.ACCESS\_SE\_KEY权限。 \_\_\_MD\_COMMENT\_DESC\_USD\_1\_\_\_\_\_\_MD\_COMMENT\_DESC\_USD\_2\_\_\_
+获取匿名化密钥证书。使用callback异步回调。 该操作需要联网进行，且耗时较长。返回12000012错误码时，可能是由于网络异常导致。此时如果没有联网，需要提示用户网络没有连接，如果已经联网，可能是由于网络抖动导致失败，建议重试。 > **说明：** > > 获取[HuksKeySecurityLevel](arkts-universalkeystore-huks-hukskeysecuritylevel-e.md#HuksKeySecurityLevel)中定义的SE安全级别密钥证书需要ohos.permission.ACCESS_SE_KEY权限。 &lt;!--RP1--&gt;&lt;!--RP1End--&gt;
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -23,27 +25,27 @@ function anonAttestKeyItem(keyAlias: string, options: HuksOptions, callback: Asy
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | keyAlias | string | 是 | 密钥别名，存放待获取证书密钥的别名。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 用于获取证书时指定所需参数与数据。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;HuksReturnResult&gt; | 是 | 回调函数。当获取匿名化密钥证书成功时，err为undefined，data为获取到的HuksReturnResult；否则为错误对象。 |
+| options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | 用于获取证书时指定所需参数与数据。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[HuksReturnResult](arkts-universalkeystore-huks-huksreturnresult-i.md)&gt; | 是 | 回调函数。当获取匿名化密钥证书成功时，err为undefined，data为获取到的HuksReturnResult；否则 为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The application permissions are insufficient, possibly because the ohos.permission.ACCESS\_\_\_ESCAPED\_UNDERSCORE\_\_\_SE\_\_\_ESCAPED\_UNDERSCORE\_\_\_KEY permission is missing.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 26.0.0+ |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified.2. Incorrect parameter types.3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
-| [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | algorithm mode is not supported |
-| [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
-| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
 | [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine |
-| [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist |
-| [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
+| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
+| [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
+| [12000018](../errorcode-huks.md#12000018-输入参数非法) | the group id specified by the access group tag is invalid<br>**适用版本：** 23+ |
+| [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | algorithm mode is not supported |
+| [201](../../errorcode-universal.md#201-权限校验失败) | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>**适用版本：** 26.0.0+ |
 | [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |
-| [12000018](../errorcode-huks.md#12000018-输入参数非法) | the group id specified by the access group tag is invalid\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 23+ |
-| [12000026](../errorcode-huks.md#12000026-安全元件故障) | the secure element is not available\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 26.0.0+ |
+| [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
+| [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist |
+| [12000026](../errorcode-huks.md#12000026-安全元件故障) | the secure element is not available<br>**适用版本：** 26.0.0+ |
 
-**示例：**
+## 示例
 
 ```TypeScript
 /* 以获取RSA匿名化密钥证书为例 */
@@ -147,11 +149,13 @@ async function generateKeyThenAttestKey(): Promise<void> {
 function anonAttestKeyItem(keyAlias: string, options: HuksOptions): Promise<HuksReturnResult>
 ```
 
-获取匿名化密钥证书。使用Promise异步回调。 该操作需要联网进行，且耗时较长。返回12000012错误码时，可能是由于网络异常导致。此时如果没有联网，需要提示用户网络没有连接，如果已经联网，可能是由于网络抖动导致失败，建议重试。 > **说明：** > > 获取[HuksKeySecurityLevel]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_中定义的SE安全级别密钥证书需要ohos.permission.ACCESS\_SE\_KEY权限。 \_\_\_MD\_COMMENT\_DESC\_USD\_1\_\_\_\_\_\_MD\_COMMENT\_DESC\_USD\_2\_\_\_
+获取匿名化密钥证书。使用Promise异步回调。 该操作需要联网进行，且耗时较长。返回12000012错误码时，可能是由于网络异常导致。此时如果没有联网，需要提示用户网络没有连接，如果已经联网，可能是由于网络抖动导致失败，建议重试。 > **说明：** > > 获取[HuksKeySecurityLevel](arkts-universalkeystore-huks-hukskeysecuritylevel-e.md#HuksKeySecurityLevel)中定义的SE安全级别密钥证书需要ohos.permission.ACCESS_SE_KEY权限。 &lt;!--RP1--&gt;&lt;!--RP1End--&gt;
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -164,34 +168,34 @@ function anonAttestKeyItem(keyAlias: string, options: HuksOptions): Promise<Huks
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | keyAlias | string | 是 | 密钥别名，存放待获取证书密钥的别名。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 用于获取证书时指定所需参数与数据。 |
+| options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | 用于获取证书时指定所需参数与数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;HuksReturnResult&gt; | Promise对象，返回调用接口的结果。当调用成功时，HuksReturnResult的certChains成员为获取到的证书链。 |
+| Promise&lt;[HuksReturnResult](arkts-universalkeystore-huks-huksreturnresult-i.md)&gt; | Promise对象，返回调用接口的结果。当调用成功时，HuksReturnResult的certChains成员为获取到的证书链。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The application permissions are insufficient, possibly because the ohos.permission.ACCESS\_\_\_ESCAPED\_UNDERSCORE\_\_\_SE\_\_\_ESCAPED\_UNDERSCORE\_\_\_KEY permission is missing.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 26.0.0+ |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified.2. Incorrect parameter types.3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
-| [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | algorithm mode is not supported |
-| [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | algorithm param is missing\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 11+ |
-| [12000003](../errorcode-huks.md#12000003-无效的密钥算法参数) | algorithm param is invalid\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 11+ |
-| [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
-| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
+| [12000018](../errorcode-huks.md#12000018-输入参数非法) | the group id specified by the access group tag is invalid<br>**适用版本：** 23+ |
+| [201](../../errorcode-universal.md#201-权限校验失败) | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>**适用版本：** 26.0.0+ |
+| [12000026](../errorcode-huks.md#12000026-安全元件故障) | the secure element is not available<br>**适用版本：** 26.0.0+ |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine |
-| [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist |
-| [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
+| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
+| [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
+| [12000003](../errorcode-huks.md#12000003-无效的密钥算法参数) | algorithm param is invalid<br>**适用版本：** 11+ |
+| [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | algorithm param is missing<br>**适用版本：** 11+ |
+| [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | algorithm mode is not supported |
 | [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |
-| [12000018](../errorcode-huks.md#12000018-输入参数非法) | the group id specified by the access group tag is invalid\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 23+ |
-| [12000026](../errorcode-huks.md#12000026-安全元件故障) | the secure element is not available\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 26.0.0+ |
+| [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
+| [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist |
 
-**示例：**
+## 示例
 
 ```TypeScript
 /* 以获取RSA匿名化密钥证书为例 */

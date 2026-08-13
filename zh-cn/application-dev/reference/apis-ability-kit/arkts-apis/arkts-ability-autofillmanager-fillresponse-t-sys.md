@@ -1,22 +1,24 @@
 # FillResponse（系统接口）
 
 ```TypeScript
-export type FillResponse = _AutoFillRequest.FillResponse
+export type FillResponse = _FillResponse
 ```
 
 自动填充的响应信息。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-autoFillManager-export type FillResponse = _AutoFillRequest.FillResponse--><!--Device-autoFillManager-export type FillResponse = _AutoFillRequest.FillResponse-End-->
+<!--Device-autoFillManager-export type FillResponse = _FillResponse--><!--Device-autoFillManager-export type FillResponse = _FillResponse-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **系统接口：** 此接口为系统接口。
 
-**属性类型：** _AutoFillRequest.FillResponse
+**属性类型：** _FillResponse
 

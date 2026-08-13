@@ -8,7 +8,7 @@ USB设备信息。
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBDevice](arkts-basicservices-usbmanager-usbdevice-i.md)
+**替代接口：** [USBDevice](arkts-basicservices-usbmanager-usbdevice-i.md#USBDevice)
 
 <!--Device-usb-interface USBDevice--><!--Device-usb-interface USBDevice-End-->
 
@@ -30,7 +30,7 @@ busNum: number
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBDevice.busNum](arkts-basicservices-usbmanager-usbdevice-i.md#busnum)
+**替代接口：** [busNum](arkts-basicservices-usbmanager-usbdevice-i.md#busNum)
 
 <!--Device-USBDevice-busNum: number--><!--Device-USBDevice-busNum: number-End-->
 
@@ -52,7 +52,7 @@ clazz: number
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBDevice.clazz](arkts-basicservices-usbmanager-usbdevice-i.md#clazz)
+**替代接口：** [clazz](arkts-basicservices-usbmanager-usbdevice-i.md#clazz)
 
 <!--Device-USBDevice-clazz: number--><!--Device-USBDevice-clazz: number-End-->
 
@@ -66,7 +66,7 @@ configs: Array<USBConfig>
 
 设备配置描述符信息。
 
-**类型：** Array&lt;USBConfig&gt;
+**类型：** Array&lt;[USBConfig](arkts-basicservices-usb-usbconfig-i.md)&gt;
 
 **起始版本：** 8
 
@@ -74,7 +74,7 @@ configs: Array<USBConfig>
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBDevice.configs](arkts-basicservices-usbmanager-usbdevice-i.md#configs)
+**替代接口：** [configs](arkts-basicservices-usbmanager-usbdevice-i.md#configs)
 
 <!--Device-USBDevice-configs: Array<USBConfig>--><!--Device-USBDevice-configs: Array<USBConfig>-End-->
 
@@ -96,7 +96,7 @@ devAddress: number
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBDevice.devAddress](arkts-basicservices-usbmanager-usbdevice-i.md#devaddress)
+**替代接口：** [devAddress](arkts-basicservices-usbmanager-usbdevice-i.md#devAddress)
 
 <!--Device-USBDevice-devAddress: number--><!--Device-USBDevice-devAddress: number-End-->
 
@@ -118,7 +118,7 @@ manufacturerName: string
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBDevice.manufacturerName](arkts-basicservices-usbmanager-usbdevice-i.md#manufacturername)
+**替代接口：** [manufacturerName](arkts-basicservices-usbmanager-usbdevice-i.md#manufacturerName)
 
 <!--Device-USBDevice-manufacturerName: string--><!--Device-USBDevice-manufacturerName: string-End-->
 
@@ -140,7 +140,7 @@ name: string
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBDevice.name](arkts-basicservices-usbmanager-usbdevice-i.md#name)
+**替代接口：** [name](arkts-basicservices-usbmanager-usbdevice-i.md#name)
 
 <!--Device-USBDevice-name: string--><!--Device-USBDevice-name: string-End-->
 
@@ -162,7 +162,7 @@ productId: number
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBDevice.productId](arkts-basicservices-usbmanager-usbdevice-i.md#productid)
+**替代接口：** [productId](arkts-basicservices-usbmanager-usbdevice-i.md#productId)
 
 <!--Device-USBDevice-productId: number--><!--Device-USBDevice-productId: number-End-->
 
@@ -184,7 +184,7 @@ productName: string
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBDevice.productName](arkts-basicservices-usbmanager-usbdevice-i.md#productname)
+**替代接口：** [productName](arkts-basicservices-usbmanager-usbdevice-i.md#productName)
 
 <!--Device-USBDevice-productName: string--><!--Device-USBDevice-productName: string-End-->
 
@@ -206,7 +206,7 @@ protocol: number
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBDevice.protocol](arkts-basicservices-usbmanager-usbdevice-i.md#protocol)
+**替代接口：** [protocol](arkts-basicservices-usbmanager-usbdevice-i.md#protocol)
 
 <!--Device-USBDevice-protocol: number--><!--Device-USBDevice-protocol: number-End-->
 
@@ -228,7 +228,7 @@ serial: string
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBDevice.serial](arkts-basicservices-usbmanager-usbdevice-i.md#serial)
+**替代接口：** [serial](arkts-basicservices-usbmanager-usbdevice-i.md#serial)
 
 <!--Device-USBDevice-serial: string--><!--Device-USBDevice-serial: string-End-->
 
@@ -250,7 +250,7 @@ subClass: number
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBDevice.subClass](arkts-basicservices-usbmanager-usbdevice-i.md#subclass)
+**替代接口：** [subClass](arkts-basicservices-usbmanager-usbdevice-i.md#subClass)
 
 <!--Device-USBDevice-subClass: number--><!--Device-USBDevice-subClass: number-End-->
 
@@ -272,7 +272,7 @@ vendorId: number
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBDevice.vendorId](arkts-basicservices-usbmanager-usbdevice-i.md#vendorid)
+**替代接口：** [vendorId](arkts-basicservices-usbmanager-usbdevice-i.md#vendorId)
 
 <!--Device-USBDevice-vendorId: number--><!--Device-USBDevice-vendorId: number-End-->
 
@@ -294,7 +294,7 @@ version: string
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBDevice.version](arkts-basicservices-usbmanager-usbdevice-i.md#version)
+**替代接口：** [version](arkts-basicservices-usbmanager-usbdevice-i.md#version)
 
 <!--Device-USBDevice-version: string--><!--Device-USBDevice-version: string-End-->
 

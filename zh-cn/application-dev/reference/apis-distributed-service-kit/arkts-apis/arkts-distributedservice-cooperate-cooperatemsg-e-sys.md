@@ -8,7 +8,7 @@
 
 **废弃版本：** 11
 
-**替代接口：** [CooperateState](arkts-distributedservice-cooperate-cooperatestate-e-sys.md)
+**替代接口：** [CooperateState](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#CooperateState（系统接口）)
 
 <!--Device-cooperate-enum CooperateMsg--><!--Device-cooperate-enum CooperateMsg-End-->
 
@@ -30,7 +30,7 @@ COOPERATE_PREPARE = 0
 
 **废弃版本：** 11
 
-**替代接口：** [CooperateState.COOPERATE_PREPARE](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#cooperate_prepare)
+**替代接口：** [COOPERATE_PREPARE](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#COOPERATE_PREPARE)
 
 <!--Device-CooperateMsg-COOPERATE_PREPARE = 0--><!--Device-CooperateMsg-COOPERATE_PREPARE = 0-End-->
 
@@ -52,7 +52,7 @@ COOPERATE_UNPREPARE = 1
 
 **废弃版本：** 11
 
-**替代接口：** [CooperateState.COOPERATE_UNPREPARE](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#cooperate_unprepare)
+**替代接口：** [COOPERATE_UNPREPARE](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#COOPERATE_UNPREPARE)
 
 <!--Device-CooperateMsg-COOPERATE_UNPREPARE = 1--><!--Device-CooperateMsg-COOPERATE_UNPREPARE = 1-End-->
 
@@ -74,7 +74,7 @@ COOPERATE_ACTIVATE = 2
 
 **废弃版本：** 11
 
-**替代接口：** [CooperateState.COOPERATE_ACTIVATE](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#cooperate_activate)
+**替代接口：** [COOPERATE_ACTIVATE](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#COOPERATE_ACTIVATE)
 
 <!--Device-CooperateMsg-COOPERATE_ACTIVATE = 2--><!--Device-CooperateMsg-COOPERATE_ACTIVATE = 2-End-->
 
@@ -96,7 +96,7 @@ COOPERATE_ACTIVATE_SUCCESS = 3
 
 **废弃版本：** 11
 
-**替代接口：** [CooperateState.COOPERATE_ACTIVATE_SUCCESS](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#cooperate_activate_success)
+**替代接口：** [COOPERATE_ACTIVATE_SUCCESS](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#COOPERATE_ACTIVATE_SUCCESS)
 
 <!--Device-CooperateMsg-COOPERATE_ACTIVATE_SUCCESS = 3--><!--Device-CooperateMsg-COOPERATE_ACTIVATE_SUCCESS = 3-End-->
 
@@ -118,7 +118,7 @@ COOPERATE_ACTIVATE_FAIL = 4
 
 **废弃版本：** 11
 
-**替代接口：** [CooperateState.COOPERATE_ACTIVATE_FAILURE](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#cooperate_activate_failure)
+**替代接口：** [COOPERATE_ACTIVATE_FAILURE](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#COOPERATE_ACTIVATE_FAILURE)
 
 <!--Device-CooperateMsg-COOPERATE_ACTIVATE_FAIL = 4--><!--Device-CooperateMsg-COOPERATE_ACTIVATE_FAIL = 4-End-->
 
@@ -140,7 +140,7 @@ COOPERATE_DEACTIVATE_SUCCESS = 5
 
 **废弃版本：** 11
 
-**替代接口：** [CooperateState.COOPERATE_DEACTIVATE_SUCCESS](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#cooperate_deactivate_success)
+**替代接口：** [COOPERATE_DEACTIVATE_SUCCESS](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#COOPERATE_DEACTIVATE_SUCCESS)
 
 <!--Device-CooperateMsg-COOPERATE_DEACTIVATE_SUCCESS = 5--><!--Device-CooperateMsg-COOPERATE_DEACTIVATE_SUCCESS = 5-End-->
 
@@ -162,7 +162,7 @@ COOPERATE_DEACTIVATE_FAIL = 6
 
 **废弃版本：** 11
 
-**替代接口：** [CooperateState.COOPERATE_DEACTIVATE_FAILURE](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#cooperate_deactivate_failure)
+**替代接口：** [COOPERATE_DEACTIVATE_FAILURE](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#COOPERATE_DEACTIVATE_FAILURE)
 
 <!--Device-CooperateMsg-COOPERATE_DEACTIVATE_FAIL = 6--><!--Device-CooperateMsg-COOPERATE_DEACTIVATE_FAIL = 6-End-->
 
@@ -184,7 +184,7 @@ COOPERATE_SESSION_DISCONNECTED = 7
 
 **废弃版本：** 11
 
-**替代接口：** [CooperateState.COOPERATE_SESSION_DISCONNECTED](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#cooperate_session_disconnected)
+**替代接口：** [COOPERATE_SESSION_DISCONNECTED](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#COOPERATE_SESSION_DISCONNECTED)
 
 <!--Device-CooperateMsg-COOPERATE_SESSION_DISCONNECTED = 7--><!--Device-CooperateMsg-COOPERATE_SESSION_DISCONNECTED = 7-End-->
 

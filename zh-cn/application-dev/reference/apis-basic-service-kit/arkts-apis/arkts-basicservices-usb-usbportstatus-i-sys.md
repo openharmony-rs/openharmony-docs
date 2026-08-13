@@ -8,7 +8,7 @@ USB设备端口角色信息。
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBPortStatus](arkts-basicservices-usbmanager-usbportstatus-i-sys.md)
+**替代接口：** [USBPortStatus](arkts-basicservices-usbmanager-usbportstatus-i-sys.md#USBPortStatus（系统接口）)
 
 <!--Device-usb-interface USBPortStatus--><!--Device-usb-interface USBPortStatus-End-->
 
@@ -32,7 +32,7 @@ currentDataRole: number
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBPortStatus.currentDataRole](arkts-basicservices-usbmanager-usbportstatus-i-sys.md#currentdatarole)
+**替代接口：** [currentDataRole](arkts-basicservices-usbmanager-usbportstatus-i-sys.md#currentDataRole)
 
 <!--Device-USBPortStatus-currentDataRole: number--><!--Device-USBPortStatus-currentDataRole: number-End-->
 
@@ -56,7 +56,7 @@ currentMode: number
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBPortStatus.currentMode](arkts-basicservices-usbmanager-usbportstatus-i-sys.md#currentmode)
+**替代接口：** [currentMode](arkts-basicservices-usbmanager-usbportstatus-i-sys.md#currentMode)
 
 <!--Device-USBPortStatus-currentMode: number--><!--Device-USBPortStatus-currentMode: number-End-->
 
@@ -80,7 +80,7 @@ currentPowerRole: number
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBPortStatus.currentPowerRole](arkts-basicservices-usbmanager-usbportstatus-i-sys.md#currentpowerrole)
+**替代接口：** [currentPowerRole](arkts-basicservices-usbmanager-usbportstatus-i-sys.md#currentPowerRole)
 
 <!--Device-USBPortStatus-currentPowerRole: number--><!--Device-USBPortStatus-currentPowerRole: number-End-->
 

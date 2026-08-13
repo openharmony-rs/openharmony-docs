@@ -2,9 +2,11 @@
 
 提供文本换行相关的能力，包括可换行点的获取、移动和识别等。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-i18n-export class BreakIterator--><!--Device-i18n-export class BreakIterator-End-->
 
@@ -12,21 +14,17 @@
 
 ## current
 
-ArkTS-Dyn:
-```TypeScript
-current(): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 current(): int
 ```
 
 获取换行迭代器在当前处理文本中的位置。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -38,9 +36,9 @@ current(): int
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 获取换行迭代器在当前处理的文本中的位置。 |
+| int | 获取换行迭代器在当前处理的文本中的位置。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';
@@ -52,21 +50,17 @@ let currentPos = iterator.current(); // currentPos = 0
 
 ## first
 
-ArkTS-Dyn:
-```TypeScript
-first(): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 first(): int
 ```
 
 将换行迭代器移动到第一个可换行点。第一个可换行点总是在被处理文本的起始位置。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -78,9 +72,9 @@ first(): int
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 被处理文本的第一个可换行点的偏移量。 |
+| int | 被处理文本的第一个可换行点的偏移量。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';
@@ -92,21 +86,17 @@ let firstPos = iterator.first(); // firstPos = 0
 
 ## following
 
-ArkTS-Dyn:
-```TypeScript
-following(offset: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 following(offset: int): int
 ```
 
 将换行迭代器移动到指定位置后面一个可换行点。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -118,15 +108,15 @@ following(offset: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 将换行迭代器移动到文本指定位置的后面一个可换行点。 |
+| offset | int | 是 | 将换行迭代器移动到文本指定位置的后面一个可换行点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 换行迭代器移动后的位置。若offset所指定位置的下一个可换行点超出了文本的范围，则返回-1。 |
+| int | 换行迭代器移动后的位置。若offset所指定位置的下一个可换行点超出了文本的范围，则返回-1。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';
@@ -146,9 +136,11 @@ getLineBreakText(): string
 
 获取BreakIterator对象当前处理的文本。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -162,7 +154,7 @@ getLineBreakText(): string
 | --- | --- |
 | string | BreakIterator对象正在处理的文本。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';
@@ -174,21 +166,17 @@ let breakText: string = iterator.getLineBreakText(); // breakText = 'Apple is my
 
 ## isBoundary
 
-ArkTS-Dyn:
-```TypeScript
-isBoundary(offset: number): boolean
-```
-
-ArkTS-Sta:
 ```TypeScript
 isBoundary(offset: int): boolean
 ```
 
 判断指定位置是否为可换行点。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -200,15 +188,15 @@ isBoundary(offset: int): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 文本指定位置。 |
+| offset | int | 是 | 文本指定位置。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | true表示offset指定的文本位置是一个可换行点，false表示offset指定的文本位置不是一个可换行点。 |
+| boolean | true表示offset指定的文本位置是一个可换行点，false表示offset指定的文本位置不是一个可换行点。 &lt;br&gt;返回true时，会将换行迭代器移动到offset指定的位置，否则相当于调用following。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';
@@ -221,21 +209,17 @@ isBoundary = iterator.isBoundary(5); // isBoundary = false;
 
 ## last
 
-ArkTS-Dyn:
-```TypeScript
-last(): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 last(): int
 ```
 
 将换行迭代器移动到最后一个可换行点。最后一个可换行点总是在被处理文本末尾的下一个位置。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -247,9 +231,9 @@ last(): int
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 被处理文本的最后一个可换行点的偏移量。 |
+| int | 被处理文本的最后一个可换行点的偏移量。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';
@@ -261,21 +245,17 @@ let lastPos = iterator.last(); // lastPos = 27
 
 ## next
 
-ArkTS-Dyn:
-```TypeScript
-next(index?: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 next(index?: int): int
 ```
 
 将换行迭代器向后移动index个可换行点。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -287,15 +267,15 @@ next(index?: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 换行迭代器将要移动的可换行点数，取值为整数。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_正数表示向后移动index个可换行点，负数表示向前移动index个可换行点。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_默认值：1。 |
+| index | int | 否 | 换行迭代器将要移动的可换行点数，取值为整数。 &lt;br&gt;正数表示向后移动index个可换行点，负数表示向前移动index个可换行点。 &lt;br&gt;默认值：1。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 移动index个可换行点后，当前换行迭代器在文本中的位置。 |
+| int | 移动index个可换行点后，当前换行迭代器在文本中的位置。 &lt;br&gt;若移动index个可换行点后超出了所处理的文本的长度范围，返回-1。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';
@@ -309,21 +289,17 @@ pos = iterator.next(10); // pos = -1
 
 ## previous
 
-ArkTS-Dyn:
-```TypeScript
-previous(): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 previous(): int
 ```
 
 将换行迭代器向前移动一个可换行点。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -335,9 +311,9 @@ previous(): int
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 移动到前一个可换行点后，当前换行迭代器在文本中的位置。 |
+| int | 移动到前一个可换行点后，当前换行迭代器在文本中的位置。 &lt;br&gt;若移动后超出了所处理的文本的长度范围，返回-1。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';
@@ -357,9 +333,11 @@ setLineBreakText(text: string): void
 
 设置BreakIterator对象要处理的文本。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -373,7 +351,7 @@ setLineBreakText(text: string): void
 | --- | --- | --- | --- |
 | text | string | 是 | 输入文本。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';

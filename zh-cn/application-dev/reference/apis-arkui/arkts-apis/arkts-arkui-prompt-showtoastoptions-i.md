@@ -1,16 +1,16 @@
 # ShowToastOptions
 
-定义ShowToast的选项。
+文本提示框的选项。
 
-**起始版本：** 3
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
-**废弃版本：** 8
+**废弃版本：** 9
 
-**替代接口：** ohos.promptAction/promptAction.ShowToastOptions
+**替代接口：** [ShowToastOptions](../../apis-na/arkts-apis/arkts-na-promptaction-showtoastoptions-i.md#ShowToastOptions)
 
-<!--Device-unnamed-export interface ShowToastOptions--><!--Device-unnamed-export interface ShowToastOptions-End-->
+<!--Device-prompt-interface ShowToastOptions--><!--Device-prompt-interface ShowToastOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -20,17 +20,17 @@
 bottom?: string | number
 ```
 
-设置弹窗边框距离屏幕底部的位置。
+设置弹窗边框距离屏幕底部的位置，无上限值，默认单位vp。
 
 **类型：** string \| number
 
-**起始版本：** 5
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为5。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
-**废弃版本：** 8
+**废弃版本：** 9
 
-**替代接口：** ohos.promptAction/promptAction.ShowToastOptions#bottom
+**替代接口：** [bottom](../../apis-na/arkts-apis/arkts-na-promptaction-showtoastoptions-i.md#bottom)
 
 <!--Device-ShowToastOptions-bottom?: string | number--><!--Device-ShowToastOptions-bottom?: string | number-End-->
 
@@ -42,17 +42,17 @@ bottom?: string | number
 duration?: number
 ```
 
-默认值1500ms，建议区间：1500ms-10000ms。若小于1500ms则取默认值，最大取值为10000ms。
+默认值1500ms，取值区间：1500ms-10000ms。若小于1500ms则取默认值，若大于10000ms则取上限值10000ms。
 
 **类型：** number
 
-**起始版本：** 3
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
-**废弃版本：** 8
+**废弃版本：** 9
 
-**替代接口：** ohos.promptAction/promptAction.ShowToastOptions#duration
+**替代接口：** [duration](../../apis-na/arkts-apis/arkts-na-promptaction-showtoastoptions-i.md#duration)
 
 <!--Device-ShowToastOptions-duration?: number--><!--Device-ShowToastOptions-duration?: number-End-->
 
@@ -68,13 +68,13 @@ message: string
 
 **类型：** string
 
-**起始版本：** 3
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
-**废弃版本：** 8
+**废弃版本：** 9
 
-**替代接口：** ohos.promptAction/promptAction.ShowToastOptions#message
+**替代接口：** [message](../../apis-na/arkts-apis/arkts-na-promptaction-showtoastoptions-i.md#message)
 
 <!--Device-ShowToastOptions-message: string--><!--Device-ShowToastOptions-message: string-End-->
 

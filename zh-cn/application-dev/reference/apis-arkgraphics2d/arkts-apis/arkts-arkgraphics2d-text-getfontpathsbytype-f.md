@@ -10,7 +10,9 @@ function getFontPathsByType(fontType: SystemFontType): Array<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -22,7 +24,7 @@ function getFontPathsByType(fontType: SystemFontType): Array<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fontType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 指定的字体类型。 |
+| fontType | [SystemFontType](arkts-arkgraphics2d-text-systemfonttype-e.md) | 是 | 指定的字体类型。 |
 
 **返回值：**
 
@@ -30,7 +32,7 @@ function getFontPathsByType(fontType: SystemFontType): Array<string>
 | --- | --- |
 | Array&lt;string&gt; | 字体文件路径列表。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

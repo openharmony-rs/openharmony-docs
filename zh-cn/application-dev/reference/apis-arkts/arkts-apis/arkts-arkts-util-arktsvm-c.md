@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-util-class ArkTSVM--><!--Device-util-class ArkTSVM-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
@@ -22,13 +24,15 @@ static enableLocalHandleDetection(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ArkTSVM-static enableLocalHandleDetection(): void--><!--Device-ArkTSVM-static enableLocalHandleDetection(): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**示例：**
+## 示例
 
 ```TypeScript
 // napi_init.cpp C++侧示例代码
@@ -109,11 +113,13 @@ napi_value dangerous_function(napi_env env, napi_callback_info info) {
 static getAllVMHeapMemoryInfo(): Promise<HeapMemoryInfo[]>
 ```
 
-从 ArkTS-VM 和共享堆中获取所有堆内存信息。
+从 ArkTS-VM 和共享堆中获取所有堆内存信息。 > **说明：** > > 此接口在执行时会暂停所有VM线程运行以获取内存信息。由于需要等待所有VM线程暂停，高负载场景下调用此接口的耗时可能较高。
 
 **起始版本：** 24
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -125,9 +131,9 @@ static getAllVMHeapMemoryInfo(): Promise<HeapMemoryInfo[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;HeapMemoryInfo[]&gt; | 返回一个 promise，包含 ArkTS-VM 的 local 堆和共享堆中的所有堆内存信息。 |
+| Promise&lt;[HeapMemoryInfo](arkts-arkts-util-heapmemoryinfo-i.md)[]&gt; | 返回一个 promise，包含 ArkTS-VM 的 local 堆和共享堆中的所有堆内存信息。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { util } from '@kit.ArkTS';
@@ -156,13 +162,15 @@ static offVMHeapMemoryPressure(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ArkTSVM-static offVMHeapMemoryPressure(): void--><!--Device-ArkTSVM-static offVMHeapMemoryPressure(): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { util } from '@kit.ArkTS';
@@ -182,6 +190,8 @@ static onVMHeapMemoryPressure(callback: Callback<string>, heapMemoryThreshold: H
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ArkTSVM-static onVMHeapMemoryPressure(callback: Callback<string>, heapMemoryThreshold: HeapMemoryThreshold): boolean--><!--Device-ArkTSVM-static onVMHeapMemoryPressure(callback: Callback<string>, heapMemoryThreshold: HeapMemoryThreshold): boolean-End-->
@@ -192,8 +202,8 @@ static onVMHeapMemoryPressure(callback: Callback<string>, heapMemoryThreshold: H
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;string&gt; | 是 | 在 GC 后内存达到阈值时触发的回调。字符串参数表示内存压力事件的类型："LocalHeapMemPressure"、"SharedHeapMemPressure" 或 "ProcessHeapMemPressure"。 |
-| heapMemoryThreshold | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 表示 GC 后触发回调的堆内存百分比阈值。取值范围为 [70, 95]。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;string&gt; | 是 | 在 GC 后内存达到阈值时触发的回调。字符串参数表示内存压力事件的类型： "LocalHeapMemPressure"、"SharedHeapMemPressure" 或 "ProcessHeapMemPressure"。 |
+| heapMemoryThreshold | [HeapMemoryThreshold](arkts-arkts-util-heapmemorythreshold-i.md) | 是 | 表示 GC 后触发回调的堆内存百分比阈值。取值范围为 [70, 95]。 |
 
 **返回值：**
 
@@ -201,7 +211,7 @@ static onVMHeapMemoryPressure(callback: Callback<string>, heapMemoryThreshold: H
 | --- | --- |
 | boolean | 注册成功返回 { |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { util } from '@kit.ArkTS';
@@ -226,11 +236,13 @@ console.info('Registration result: ' + result);
 static setMultithreadingDetectionEnabled(enabled: boolean, options?: MultithreadingDetectionOptions):void
 ```
 
-设置是否开启多线程检测。当 **enabled** 设置为 **true** 时开启检测，多线程问题的 cppcrash 文件中将包含多线程相关的 详细信息。当 **enabled** 设置为 **false** 时关闭检测，相应的 cppcrash 文件中将不包含此类详细信息。
+设置是否开启多线程安全检测。当 **enabled** 设置为 **true** 时开启检测，多线程问题的 cppcrash 文件中将包含多线程相关的 详细信息。当 **enabled** 设置为 **false** 时关闭检测，相应的 cppcrash 文件中将不包含此类详细信息。
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -242,10 +254,10 @@ static setMultithreadingDetectionEnabled(enabled: boolean, options?: Multithread
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | boolean | 是 | 控制是否开启多线程检测。**true** 表示开启检测，**false** 表示关闭检测。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 可选的配置项。\_\_\_HTML\_TAG\_USD\_0\_\_\_**起始版本：** 26.0.0 |
+| enabled | boolean | 是 | 控制是否开启多线程安全检测。**true** 表示开启检测，**false** 表示关闭检测。 |
+| options | [MultithreadingDetectionOptions](arkts-arkts-util-multithreadingdetectionoptions-i.md) | 否 | 多线程安全检测的参数配置，此参数不填时， 对应各属性取MultithreadingDetectionOptions的默认值。<br>**起始版本：** 26.0.0 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { util } from '@kit.ArkTS';
@@ -274,11 +286,13 @@ util.ArkTSVM.setMultithreadingDetectionEnabled(true, {
 static setTrackGlobalRef(enable: boolean): void
 ```
 
-开启或关闭 napi\_ref 与全局 handle 之间关联关系的追踪。开启后，堆快照将包含 native 引用地址信息。关闭后（enable 为 false），将停止追踪，堆快照中不再显示 native 引用与全局 handle 之间的关联关系。
+开启或关闭 napi_ref 与全局 handle 之间关联关系的追踪。开启后，堆快照将包含 native 引用地址信息。关闭后（enable 为 false），将停止追踪，堆快照中不再显示 native 引用与全局 handle 之间的关联关系。
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -292,7 +306,7 @@ static setTrackGlobalRef(enable: boolean): void
 | --- | --- | --- | --- |
 | enable | boolean | 是 | 布尔标志位，指示是开启还是关闭追踪。**true** 表示开启追踪，**false** 表示关闭追踪。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // napi_init.cpp C++侧示例代码

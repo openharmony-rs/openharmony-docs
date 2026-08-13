@@ -12,6 +12,8 @@ declare function copy(srcUri: string, destUri: string, options?: CopyOptions): P
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare function copy(srcUri: string, destUri: string, options?: CopyOptions): Promise<void>--><!--Device-unnamed-declare function copy(srcUri: string, destUri: string, options?: CopyOptions): Promise<void>-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -22,7 +24,7 @@ declare function copy(srcUri: string, destUri: string, options?: CopyOptions): P
 | --- | --- | --- | --- |
 | srcUri | string | 是 | 待复制文件或目录的URI。 |
 | destUri | string | 是 | 目标文件或目录的URI。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | options中提供拷贝进度回调。不填该参数则无拷贝进度回调。 |
+| options | [CopyOptions](arkts-corefile-file-fs-copyoptions-i.md) | 否 | options中提供拷贝进度回调。不填该参数则无拷贝进度回调。 |
 
 **返回值：**
 
@@ -34,32 +36,32 @@ declare function copy(srcUri: string, destUri: string, options?: CopyOptions): P
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2.Incorrect parameter types. |
-| 13900001 | Operation not permitted |
-| 13900002 | No such file or directory |
-| 13900004 | Interrupted system call |
-| 13900005 | I/O error |
-| 13900008 | Bad file descriptor |
-| 13900010 | Try again |
-| 13900011 | Out of memory |
-| 13900012 | Permission denied by the file system |
-| 13900015 | File exists |
-| 13900018 | Not a directory |
-| 13900019 | Is a directory |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; &lt;br&gt;2.Incorrect parameter types. |
+| 13900038 | Value too large for defined data type |
+| 13900034 | Operation would block |
+| 13900044 | Network is unreachable<br>**适用版本：** 12+ |
+| 13900041 | Quota exceeded |
+| 13900042 | Unknown error |
 | 13900020 | Invalid argument |
 | 13900021 | File table overflow |
 | 13900022 | Too many open files |
-| 13900024 | File too large |
-| 13900025 | No space left on device |
-| 13900027 | Read-only file system |
+| 13900018 | Not a directory |
+| 13900019 | Is a directory |
 | 13900028 | Too many links |
 | 13900030 | File name too long |
 | 13900031 | Function not implemented |
-| 13900034 | Operation would block |
-| 13900038 | Value too large for defined data type |
-| 13900041 | Quota exceeded |
-| 13900042 | Unknown error |
-| 13900044 | Network is unreachable\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 12+ |
+| 13900024 | File too large |
+| 13900025 | No space left on device |
+| 13900027 | Read-only file system |
+| 13900004 | Interrupted system call |
+| 13900005 | I/O error |
+| 13900001 | Operation not permitted |
+| 13900002 | No such file or directory |
+| 13900012 | Permission denied by the file system |
+| 13900015 | File exists |
+| 13900008 | Bad file descriptor |
+| 13900010 | Try again |
+| 13900011 | Out of memory |
 
 
 ## copy
@@ -74,6 +76,8 @@ declare function copy(srcUri: string, destUri: string, callback: AsyncCallback<v
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare function copy(srcUri: string, destUri: string, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function copy(srcUri: string, destUri: string, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -84,37 +88,37 @@ declare function copy(srcUri: string, destUri: string, callback: AsyncCallback<v
 | --- | --- | --- | --- |
 | srcUri | string | 是 | 待复制文件或目录的URI。 |
 | destUri | string | 是 | 目标文件或目录的URI。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 异步拷贝之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 异步拷贝之后的回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2.Incorrect parameter types. |
-| 13900001 | Operation not permitted |
-| 13900002 | No such file or directory |
-| 13900004 | Interrupted system call |
-| 13900005 | I/O error |
-| 13900008 | Bad file descriptor |
-| 13900010 | Try again |
-| 13900011 | Out of memory |
-| 13900012 | Permission denied by the file system |
-| 13900015 | File exists |
-| 13900018 | Not a directory |
-| 13900019 | Is a directory |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; &lt;br&gt;2.Incorrect parameter types. |
+| 13900038 | Value too large for defined data type |
+| 13900034 | Operation would block |
+| 13900041 | Quota exceeded |
+| 13900042 | Unknown error |
 | 13900020 | Invalid argument |
 | 13900021 | File table overflow |
 | 13900022 | Too many open files |
-| 13900024 | File too large |
-| 13900025 | No space left on device |
-| 13900027 | Read-only file system |
+| 13900018 | Not a directory |
+| 13900019 | Is a directory |
 | 13900028 | Too many links |
 | 13900030 | File name too long |
 | 13900031 | Function not implemented |
-| 13900034 | Operation would block |
-| 13900038 | Value too large for defined data type |
-| 13900041 | Quota exceeded |
-| 13900042 | Unknown error |
+| 13900024 | File too large |
+| 13900025 | No space left on device |
+| 13900027 | Read-only file system |
+| 13900004 | Interrupted system call |
+| 13900005 | I/O error |
+| 13900001 | Operation not permitted |
+| 13900002 | No such file or directory |
+| 13900012 | Permission denied by the file system |
+| 13900015 | File exists |
+| 13900008 | Bad file descriptor |
+| 13900010 | Try again |
+| 13900011 | Out of memory |
 
 
 ## copy
@@ -129,6 +133,8 @@ declare function copy(srcUri: string, destUri: string, options: CopyOptions, cal
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare function copy(srcUri: string, destUri: string, options: CopyOptions, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function copy(srcUri: string, destUri: string, options: CopyOptions, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -139,36 +145,36 @@ declare function copy(srcUri: string, destUri: string, options: CopyOptions, cal
 | --- | --- | --- | --- |
 | srcUri | string | 是 | 待复制文件或目录的URI。 |
 | destUri | string | 是 | 目标文件或目录的URI。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 拷贝进度回调。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 异步拷贝之后的回调。 |
+| options | [CopyOptions](arkts-corefile-file-fs-copyoptions-i.md) | 是 | 拷贝进度回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 异步拷贝之后的回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2.Incorrect parameter types. |
-| 13900001 | Operation not permitted |
-| 13900002 | No such file or directory |
-| 13900004 | Interrupted system call |
-| 13900005 | I/O error |
-| 13900008 | Bad file descriptor |
-| 13900010 | Try again |
-| 13900011 | Out of memory |
-| 13900012 | Permission denied by the file system |
-| 13900015 | File exists |
-| 13900018 | Not a directory |
-| 13900019 | Is a directory |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; &lt;br&gt;2.Incorrect parameter types. |
+| 13900038 | Value too large for defined data type |
+| 13900034 | Operation would block |
+| 13900041 | Quota exceeded |
+| 13900042 | Unknown error |
 | 13900020 | Invalid argument |
 | 13900021 | File table overflow |
 | 13900022 | Too many open files |
-| 13900024 | File too large |
-| 13900025 | No space left on device |
-| 13900027 | Read-only file system |
+| 13900018 | Not a directory |
+| 13900019 | Is a directory |
 | 13900028 | Too many links |
 | 13900030 | File name too long |
 | 13900031 | Function not implemented |
-| 13900034 | Operation would block |
-| 13900038 | Value too large for defined data type |
-| 13900041 | Quota exceeded |
-| 13900042 | Unknown error |
+| 13900024 | File too large |
+| 13900025 | No space left on device |
+| 13900027 | Read-only file system |
+| 13900004 | Interrupted system call |
+| 13900005 | I/O error |
+| 13900001 | Operation not permitted |
+| 13900002 | No such file or directory |
+| 13900012 | Permission denied by the file system |
+| 13900015 | File exists |
+| 13900008 | Bad file descriptor |
+| 13900010 | Try again |
+| 13900011 | Out of memory |
 

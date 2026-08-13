@@ -14,7 +14,7 @@ function getArguments(): AbilityDelegatorArgs
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.app.ability.abilityDelegatorRegistry:abilityDelegatorRegistry.getArguments](arkts-test-abilitydelegatorregistry-getarguments-depr-f.md#getarguments)
+**替代接口：** [getArguments](arkts-test-abilitydelegatorregistry-getarguments-f.md#getArguments)
 
 <!--Device-abilityDelegatorRegistry-function getArguments(): AbilityDelegatorArgs--><!--Device-abilityDelegatorRegistry-function getArguments(): AbilityDelegatorArgs-End-->
 
@@ -24,9 +24,9 @@ function getArguments(): AbilityDelegatorArgs
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | [AbilityDelegatorArgs]{ |
+| [AbilityDelegatorArgs](../../apis-ability-kit/arkts-apis/arkts-ability-abilitydelegatorargs-abilitydelegatorargs-i.md) | [AbilityDelegatorArgs]{ |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';

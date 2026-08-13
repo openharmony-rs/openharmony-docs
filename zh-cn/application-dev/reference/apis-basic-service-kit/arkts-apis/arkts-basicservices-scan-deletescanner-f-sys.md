@@ -8,9 +8,11 @@ function deleteScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): P
 
 删除扫描仪（系统API）。使用Promise异步回调。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -25,7 +27,7 @@ function deleteScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): P
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uniqueId | string | 是 | 扫描仪的唯一ID。 |
-| discoveryMode | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 发现模式。 |
+| discoveryMode | [ScannerDiscoveryMode](arkts-basicservices-scan-scannerdiscoverymode-e.md) | 是 | 发现模式。 |
 
 **返回值：**
 
@@ -40,7 +42,7 @@ function deleteScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): P
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { scan } from '@kit.BasicServicesKit';

@@ -1,10 +1,12 @@
 # HuksExceptionErrCode
 
-表示错误码的枚举以及对应的错误信息，错误码表示错误类型，错误信息展示错误详情。 关于错误码的具体信息，可在\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_和 \_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_中查看。
+表示错误码的枚举以及对应的错误信息，错误码表示错误类型，错误信息展示错误详情。 关于错误码的具体信息，可在[通用错误码](../../errorcode-universal.md)和 [HUKS错误码](../errorcode-huks.md)中查看。
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 <!--Device-huks-export enum HuksExceptionErrCode--><!--Device-huks-export enum HuksExceptionErrCode-End-->
 
@@ -21,6 +23,8 @@ HUKS_ERR_CODE_PERMISSION_FAIL = 201
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -40,6 +44,8 @@ HUKS_ERR_CODE_NOT_SYSTEM_APP = 202
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_NOT_SYSTEM_APP = 202--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_NOT_SYSTEM_APP = 202-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
@@ -55,6 +61,8 @@ HUKS_ERR_CODE_ILLEGAL_ARGUMENT = 401
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -74,6 +82,8 @@ HUKS_ERR_CODE_NOT_SUPPORTED_API = 801
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_NOT_SUPPORTED_API = 801--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_NOT_SUPPORTED_API = 801-End-->
@@ -91,6 +101,8 @@ HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED = 12000001
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -110,6 +122,8 @@ HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT = 12000002
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT = 12000002--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT = 12000002-End-->
@@ -127,6 +141,8 @@ HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT = 12000003
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -146,6 +162,8 @@ HUKS_ERR_CODE_FILE_OPERATION_FAIL = 12000004
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_FILE_OPERATION_FAIL = 12000004--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_FILE_OPERATION_FAIL = 12000004-End-->
@@ -163,6 +181,8 @@ HUKS_ERR_CODE_COMMUNICATION_FAIL = 12000005
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -182,6 +202,8 @@ HUKS_ERR_CODE_CRYPTO_FAIL = 12000006
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_CRYPTO_FAIL = 12000006--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_CRYPTO_FAIL = 12000006-End-->
@@ -199,6 +221,8 @@ HUKS_ERR_CODE_KEY_AUTH_PERMANENTLY_INVALIDATED = 12000007
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -218,6 +242,8 @@ HUKS_ERR_CODE_KEY_AUTH_VERIFY_FAILED = 12000008
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_KEY_AUTH_VERIFY_FAILED = 12000008--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_KEY_AUTH_VERIFY_FAILED = 12000008-End-->
@@ -235,6 +261,8 @@ HUKS_ERR_CODE_KEY_AUTH_TIME_OUT = 12000009
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -254,6 +282,8 @@ HUKS_ERR_CODE_SESSION_LIMIT = 12000010
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_SESSION_LIMIT = 12000010--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_SESSION_LIMIT = 12000010-End-->
@@ -271,6 +301,8 @@ HUKS_ERR_CODE_ITEM_NOT_EXIST = 12000011
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -290,6 +322,8 @@ HUKS_ERR_CODE_EXTERNAL_ERROR = 12000012
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_EXTERNAL_ERROR = 12000012--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_EXTERNAL_ERROR = 12000012-End-->
@@ -307,6 +341,8 @@ HUKS_ERR_CODE_CREDENTIAL_NOT_EXIST = 12000013
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -326,6 +362,8 @@ HUKS_ERR_CODE_INSUFFICIENT_MEMORY = 12000014
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_INSUFFICIENT_MEMORY = 12000014--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_INSUFFICIENT_MEMORY = 12000014-End-->
@@ -343,6 +381,8 @@ HUKS_ERR_CODE_CALL_SERVICE_FAILED = 12000015
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -362,6 +402,8 @@ HUKS_ERR_CODE_DEVICE_PASSWORD_UNSET = 12000016
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_DEVICE_PASSWORD_UNSET = 12000016--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_DEVICE_PASSWORD_UNSET = 12000016-End-->
@@ -379,6 +421,8 @@ HUKS_ERR_CODE_KEY_ALREADY_EXIST = 12000017
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
@@ -398,6 +442,8 @@ HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018-End-->
@@ -415,6 +461,8 @@ HUKS_ERR_CODE_ITEM_EXISTS = 12000019
 **起始版本：** 22
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -434,6 +482,8 @@ HUKS_ERR_CODE_EXTERNAL_MODULE = 12000020
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_EXTERNAL_MODULE = 12000020--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_EXTERNAL_MODULE = 12000020-End-->
@@ -451,6 +501,8 @@ Ukey PIN码被锁。
 **起始版本：** 22
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -470,6 +522,8 @@ Ukey PIN码错误。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_PIN_INCORRECT = 12000022--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_PIN_INCORRECT = 12000022-End-->
@@ -487,6 +541,8 @@ Ukey PIN码未认证。
 **起始版本：** 22
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -506,6 +562,8 @@ HUKS_ERR_CODE_BUSY = 12000024
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_BUSY = 12000024--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_BUSY = 12000024-End-->
@@ -523,6 +581,8 @@ HUKS_ERR_CODE_EXCEED_LIMIT = 12000025
 **起始版本：** 22
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -542,6 +602,8 @@ HUKS_ERR_CODE_SE_FAULT = 12000026
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_SE_FAULT = 12000026--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_SE_FAULT = 12000026-End-->
@@ -559,6 +621,8 @@ HUKS_ERR_CODE_NETWORK_UNAVAILABLE = 12000027
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

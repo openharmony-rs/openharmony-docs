@@ -42,7 +42,7 @@ NOTIFY_ADD = 0
 NOTIFY_DELETE = 1
 ```
 
-表示删除文件（详见unregisterObserver(uri: string, callback: Callback\_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_)接口的示例1、示例2）。
+表示删除文件（详见unregisterObserver(uri: string, callback: Callback&lt;NotifyMessage&gt;)接口的示例1、示例2）。
 
 **起始版本：** 10
 

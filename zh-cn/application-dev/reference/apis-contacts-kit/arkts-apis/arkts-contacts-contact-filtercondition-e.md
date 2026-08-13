@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
 
+**废弃版本：** -1
+
 <!--Device-contact-enum FilterCondition--><!--Device-contact-enum FilterCondition-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
@@ -21,6 +23,8 @@ EQUAL_TO = 1
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
@@ -40,6 +44,8 @@ NOT_EQUAL_TO = 2
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
 <!--Device-FilterCondition-NOT_EQUAL_TO = 2--><!--Device-FilterCondition-NOT_EQUAL_TO = 2-End-->
@@ -57,6 +63,8 @@ IN = 3
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
@@ -76,6 +84,8 @@ IS_NOT_NULL = 0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
 <!--Device-FilterCondition-IS_NOT_NULL = 0--><!--Device-FilterCondition-IS_NOT_NULL = 0-End-->
@@ -94,6 +104,8 @@ NOT_IN = 4
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
 <!--Device-FilterCondition-NOT_IN = 4--><!--Device-FilterCondition-NOT_IN = 4-End-->
@@ -111,6 +123,8 @@ CONTAINS = 5
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 

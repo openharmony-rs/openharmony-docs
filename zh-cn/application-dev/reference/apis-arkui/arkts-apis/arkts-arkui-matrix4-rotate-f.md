@@ -14,7 +14,7 @@ Matrix的旋转函数，可以为当前矩阵增加x轴/y轴/z轴旋转效果。
 
 **废弃版本：** 10
 
-**替代接口：** [matrix4.Matrix4Transit.rotate](arkts-arkui-matrix4-matrix4transit-i.md#rotate)
+**替代接口：** [rotate](arkts-arkui-matrix4-matrix4transit-i.md#rotate)
 
 <!--Device-matrix4-function rotate(options: RotateOption): Matrix4Transit--><!--Device-matrix4-function rotate(options: RotateOption): Matrix4Transit-End-->
 
@@ -24,11 +24,11 @@ Matrix的旋转函数，可以为当前矩阵增加x轴/y轴/z轴旋转效果。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 设置旋转参数。 |
+| options | [RotateOption](arkts-arkui-matrix4-rotateoption-i.md) | 是 | 设置旋转参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 旋转后的矩阵对象。 |
+| Matrix4Transit | 旋转后的矩阵对象。 |
 

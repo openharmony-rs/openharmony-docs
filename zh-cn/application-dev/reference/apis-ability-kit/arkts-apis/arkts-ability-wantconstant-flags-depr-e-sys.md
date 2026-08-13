@@ -8,7 +8,7 @@ Flags说明。用于表示处理Want的方式。
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.wantConstant/wantConstant#Flags
+**替代接口：** [Flags](arkts-ability-wantconstant-flags-e.md#Flags)
 
 <!--Device-wantConstant-export enum Flags--><!--Device-wantConstant-export enum Flags-End-->
 

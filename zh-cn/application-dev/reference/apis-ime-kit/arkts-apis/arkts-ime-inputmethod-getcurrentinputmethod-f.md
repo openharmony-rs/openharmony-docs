@@ -8,9 +8,11 @@ function getCurrentInputMethod(): InputMethodProperty
 
 使用同步方法获取当前输入法。 **含义/功能**：获取当前正在使用的输入法属性信息。 **使用场景：**当应用需要知道当前活跃的输入法是哪个（如判断输入法名称、获取输入法id用于后续切换操作）时使用。 **使用后效果**：返回当前输入法的InputMethodProperty对象。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-inputMethod-function getCurrentInputMethod(): InputMethodProperty--><!--Device-inputMethod-function getCurrentInputMethod(): InputMethodProperty-End-->
 
@@ -20,9 +22,9 @@ function getCurrentInputMethod(): InputMethodProperty
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回当前输入法属性对象。 |
+| [InputMethodProperty](arkts-ime-inputmethod-inputmethodproperty-i.md) | 返回当前输入法属性对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod();

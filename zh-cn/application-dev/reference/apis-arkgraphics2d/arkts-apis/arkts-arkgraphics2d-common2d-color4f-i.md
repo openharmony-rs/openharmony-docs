@@ -1,10 +1,12 @@
 # Color4f
 
-ARGB格式的颜色描述。
+ARGB格式的颜色描述，颜色分量值为0.0~1.0的浮点数。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-common2D-interface Color4f--><!--Device-common2D-interface Color4f-End-->
 
@@ -20,9 +22,11 @@ alpha: double
 
 **类型：** double
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Color4f-alpha: double--><!--Device-Color4f-alpha: double-End-->
 
@@ -38,9 +42,11 @@ blue: double
 
 **类型：** double
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Color4f-blue: double--><!--Device-Color4f-blue: double-End-->
 
@@ -56,9 +62,11 @@ green: double
 
 **类型：** double
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Color4f-green: double--><!--Device-Color4f-green: double-End-->
 
@@ -74,9 +82,11 @@ red: double
 
 **类型：** double
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Color4f-red: double--><!--Device-Color4f-red: double-End-->
 

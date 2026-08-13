@@ -2,9 +2,11 @@
 
 定义SIM卡标签信息。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-sim-export interface SimLabel--><!--Device-sim-export interface SimLabel-End-->
 
@@ -20,9 +22,11 @@ index: int
 
 **类型：** int
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SimLabel-index: int--><!--Device-SimLabel-index: int-End-->
 
@@ -36,11 +40,13 @@ simType: SimType
 
 表示SIM卡类型。
 
-**类型：** SimType
+**类型：** [SimType](arkts-telephony-sim-simtype-e.md)
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SimLabel-simType: SimType--><!--Device-SimLabel-simType: SimType-End-->
 

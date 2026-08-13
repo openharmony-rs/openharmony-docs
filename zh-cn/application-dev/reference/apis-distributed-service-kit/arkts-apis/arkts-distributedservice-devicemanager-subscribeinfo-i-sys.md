@@ -22,7 +22,7 @@ capability: SubscribeCap
 
 发现能力。
 
-**类型：** SubscribeCap
+**类型：** [SubscribeCap](arkts-distributedservice-devicemanager-subscribecap-e-sys.md)
 
 **起始版本：** 7
 
@@ -44,7 +44,7 @@ freq: ExchangeFreq
 
 发现频率。
 
-**类型：** ExchangeFreq
+**类型：** [ExchangeFreq](arkts-distributedservice-devicemanager-exchangefreq-e-sys.md)
 
 **起始版本：** 7
 
@@ -110,7 +110,7 @@ medium: ExchangeMedium
 
 发现类型。
 
-**类型：** ExchangeMedium
+**类型：** [ExchangeMedium](arkts-distributedservice-devicemanager-exchangemedium-e-sys.md)
 
 **起始版本：** 7
 
@@ -132,7 +132,7 @@ mode: DiscoverMode
 
 发现模式。
 
-**类型：** DiscoverMode
+**类型：** [DiscoverMode](arkts-distributedservice-devicemanager-discovermode-e-sys.md)
 
 **起始版本：** 7
 

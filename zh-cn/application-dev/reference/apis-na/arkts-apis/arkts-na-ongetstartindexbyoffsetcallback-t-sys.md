@@ -10,6 +10,8 @@ export type OnGetStartIndexByOffsetCallback = (totalOffset: double) => StartLine
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-export type OnGetStartIndexByOffsetCallback = (totalOffset: double) => StartLineInfo--><!--Device-unnamed-export type OnGetStartIndexByOffsetCallback = (totalOffset: double) => StartLineInfo-End-->
@@ -22,11 +24,11 @@ export type OnGetStartIndexByOffsetCallback = (totalOffset: double) => StartLine
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| totalOffset | double | 是 | 总滚动偏移量，即Grid当中第一个GridItem的顶部与Grid顶部之间的偏移量。 单位：vp。  |
+| totalOffset | double | 是 | 总滚动偏移量，即Grid当中第一个GridItem的顶部与Grid顶部之间的偏移量。 单位：vp。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | - |
+| [StartLineInfo](arkts-na-grid-startlineinfo-i-sys.md) | - |
 

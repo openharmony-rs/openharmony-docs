@@ -10,6 +10,8 @@ declare type OnSwiperAnimationEndCallback = (index: number, extraInfo: SwiperAni
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -24,6 +26,6 @@ declare type OnSwiperAnimationEndCallback = (index: number, extraInfo: SwiperAni
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 当前显示元素的索引。多列Swiper时，index为最左侧组件的索引。  |
-| extraInfo | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 动画相关信息，只返回主轴方向上当前显示元素相对于Swiper起始位置的位移。  |
+| index | number | 是 | 当前显示元素的索引。多列Swiper时，index为最左侧组件的索引。 |
+| extraInfo | [SwiperAnimationEvent](arkts-arkui-swiperanimationevent-i.md) | 是 | 动画相关信息，只返回主轴方向上当前显示元素相对于Swiper起始位置的位移。 |
 

@@ -2,9 +2,11 @@
 
 表示远端分布式设备支持的会话类型枚举。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-avSession-enum DistributedSessionType--><!--Device-avSession-enum DistributedSessionType-End-->
 
@@ -20,9 +22,11 @@ TYPE_SESSION_REMOTE = 0
 
 远端设备会话。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DistributedSessionType-TYPE_SESSION_REMOTE = 0--><!--Device-DistributedSessionType-TYPE_SESSION_REMOTE = 0-End-->
 
@@ -38,9 +42,11 @@ TYPE_SESSION_MIGRATE_IN = 1
 
 迁移至本端的设备会话。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DistributedSessionType-TYPE_SESSION_MIGRATE_IN = 1--><!--Device-DistributedSessionType-TYPE_SESSION_MIGRATE_IN = 1-End-->
 
@@ -56,9 +62,11 @@ TYPE_SESSION_MIGRATE_OUT = 2
 
 迁移至远端的设备会话。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DistributedSessionType-TYPE_SESSION_MIGRATE_OUT = 2--><!--Device-DistributedSessionType-TYPE_SESSION_MIGRATE_OUT = 2-End-->
 

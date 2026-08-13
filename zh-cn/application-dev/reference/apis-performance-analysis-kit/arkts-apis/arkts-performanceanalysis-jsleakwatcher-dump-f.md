@@ -6,11 +6,13 @@
 function dump(filePath: string): Array<string>
 ```
 
-����й©�б���������ڴ���ա�
+导出泄漏列表和虚拟机内存快照。
 
-**起始版本：** 12
+**起始版本：** 26.1.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为26.1.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+
+**废弃版本：** -1
 
 <!--Device-jsLeakWatcher-function dump(filePath: string): Array<string>--><!--Device-jsLeakWatcher-function dump(filePath: string): Array<string>-End-->
 
@@ -20,15 +22,15 @@ function dump(filePath: string): Array<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| filePath | string | 是 | ������Ϣ���ɵ��ļ���ŵ�·����\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_**˵��**����API version 24��ʼ���������������ڣ����������µ�һ�ݿ�����Ϣ�� |
+| filePath | string | 是 | 导出信息生成的文件存放的路径。&lt;br&gt;**说明：**从API version 24开始，进程生命周期内，仅保留最新的一份快照信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;string&gt; | ����������ֱ�Ϊ�ļ�����׺Ϊ.jsleaklist��й©�б����ļ�����׺Ϊ.heapsnapshot������ڴ�����ļ��� |
+| Array&lt;string&gt; | 导出结果。分别为文件名后缀为.jsleaklist的泄漏列表和文件名后缀为.heapsnapshot虚拟机内存快照文件。 &lt;br&gt;**说明：**dump成功，返回泄漏列表文件路径和虚拟机内存快照路径；dump失败，返回空数组。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let context = this.getUIContext().getHostContext();

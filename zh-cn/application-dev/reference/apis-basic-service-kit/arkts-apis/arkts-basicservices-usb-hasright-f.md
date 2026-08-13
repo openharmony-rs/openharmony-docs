@@ -14,7 +14,7 @@ function hasRight(deviceName: string): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.hasRight](arkts-basicservices-usbmanager-hasright-f.md#hasright)
+**替代接口：** [hasRight](arkts-basicservices-usbmanager-hasright-f.md#hasRight)
 
 <!--Device-usb-function hasRight(deviceName: string): boolean--><!--Device-usb-function hasRight(deviceName: string): boolean-End-->
 
@@ -32,7 +32,7 @@ function hasRight(deviceName: string): boolean
 | --- | --- |
 | boolean | true表示有访问设备的权限，false表示没有访问设备的权限。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let devicesName= "1-1";

@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-interface WindowAnimationTarget--><!--Device-unnamed-interface WindowAnimationTarget-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -25,6 +27,8 @@ readonly abilityName: string
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 <!--Device-WindowAnimationTarget-readonly abilityName: string--><!--Device-WindowAnimationTarget-readonly abilityName: string-End-->
 
@@ -46,6 +50,8 @@ readonly bundleName: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 <!--Device-WindowAnimationTarget-readonly bundleName: string--><!--Device-WindowAnimationTarget-readonly bundleName: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -66,6 +72,8 @@ readonly missionId: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 <!--Device-WindowAnimationTarget-readonly missionId: number--><!--Device-WindowAnimationTarget-readonly missionId: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -80,11 +88,13 @@ readonly windowBounds: RRect
 
 动画窗口实际大小。
 
-**类型：** RRect
+**类型：** [RRect](arkts-arkui-rrect-i-sys.md)
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 <!--Device-WindowAnimationTarget-readonly windowBounds: RRect--><!--Device-WindowAnimationTarget-readonly windowBounds: RRect-End-->
 

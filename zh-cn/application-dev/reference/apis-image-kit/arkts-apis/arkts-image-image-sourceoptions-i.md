@@ -2,9 +2,11 @@
 
 ImageSource的初始化选项。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-image-interface SourceOptions--><!--Device-image-interface SourceOptions-End-->
 
@@ -16,13 +18,15 @@ ImageSource的初始化选项。
 sourceDensity: int
 ```
 
-图片资源像素密度。单位：ppi（像素/英寸）。 在解码参数[DecodingOptions]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_未设置desiredSize的前提下，当前参数SourceOptions.sourceDensity与 DecodingOptions.fitDensity非零时将对解码输出的pixelmap进行缩放。 缩放后宽计算公式如下(高同理)：(width * fitDensity + (sourceDensity >> 1)) / sourceDensity。
+图片资源像素密度。单位：ppi（像素/英寸）。 在解码参数[DecodingOptions](arkts-image-image-decodingoptions-i.md#DecodingOptions)未设置desiredSize的前提下，当前参数SourceOptions.sourceDensity与 DecodingOptions.fitDensity非零时将对解码输出的pixelmap进行缩放。 缩放后宽计算公式如下(高同理)：(width * fitDensity + (sourceDensity >> 1)) / sourceDensity。
 
 **类型：** int
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -40,11 +44,13 @@ sourcePixelFormat?: PixelMapFormat
 
 图片像素格式，默认值为UNKNOWN。
 
-**类型：** PixelMapFormat
+**类型：** [PixelMapFormat](arkts-image-image-pixelmapformat-e.md)
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -64,9 +70,11 @@ sourceSize?: Size
 
 **类型：** Size
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

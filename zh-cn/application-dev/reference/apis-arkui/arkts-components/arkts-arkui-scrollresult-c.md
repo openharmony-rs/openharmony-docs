@@ -1,10 +1,12 @@
 # ScrollResult
 
-[OnWillScrollCallback]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_返回值对象。
+[OnWillScrollCallback](arkts-arkui-onwillscrollcallback-t.md#OnWillScrollCallback)返回值对象。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare class ScrollResult--><!--Device-unnamed-declare class ScrollResult-End-->
 
@@ -23,6 +25,8 @@ offsetRemain: number
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

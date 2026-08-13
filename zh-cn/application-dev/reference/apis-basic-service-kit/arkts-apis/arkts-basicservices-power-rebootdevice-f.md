@@ -14,7 +14,7 @@ function rebootDevice(reason: string): void
 
 **废弃版本：** 9
 
-**替代接口：** [power.reboot](arkts-basicservices-power-reboot-f-sys.md#reboot)
+**替代接口：** [reboot](arkts-basicservices-power-reboot-f-sys.md#reboot（系统接口）)
 
 **需要权限：** ohos.permission.REBOOT
 
@@ -28,7 +28,7 @@ function rebootDevice(reason: string): void
 | --- | --- | --- | --- |
 | reason | string | 是 | 重启原因。例如，“updater”表示重启后进入更新模式。如果未指定该参数，系统将在重启后进入正常模式。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 power.rebootDevice('reboot_test');

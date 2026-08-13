@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-batteryInfo-export enum BatteryHealthState--><!--Device-batteryInfo-export enum BatteryHealthState-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
@@ -21,6 +23,8 @@ UNKNOWN
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-BatteryHealthState-UNKNOWN--><!--Device-BatteryHealthState-UNKNOWN-End-->
 
@@ -38,6 +42,8 @@ GOOD
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-BatteryHealthState-GOOD--><!--Device-BatteryHealthState-GOOD-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
@@ -53,6 +59,8 @@ OVERHEAT
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-BatteryHealthState-OVERHEAT--><!--Device-BatteryHealthState-OVERHEAT-End-->
 
@@ -70,6 +78,8 @@ OVERVOLTAGE
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-BatteryHealthState-OVERVOLTAGE--><!--Device-BatteryHealthState-OVERVOLTAGE-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
@@ -86,6 +96,8 @@ COLD
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-BatteryHealthState-COLD--><!--Device-BatteryHealthState-COLD-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
@@ -101,6 +113,8 @@ DEAD
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-BatteryHealthState-DEAD--><!--Device-BatteryHealthState-DEAD-End-->
 

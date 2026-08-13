@@ -1033,6 +1033,6 @@ OH_AVFormat *OH_AVCapability_GetFeatureProperties(OH_AVCapability *capability, O
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVFormat * | 返回指向OH_AVFormat实例的指针。 |
+| [OH_AVFormat *](capi-core-oh-avformat.md) | 返回指向OH_AVFormat实例的指针。 |
 
 

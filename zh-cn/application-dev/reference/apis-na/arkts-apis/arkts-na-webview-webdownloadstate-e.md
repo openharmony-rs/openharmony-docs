@@ -6,6 +6,8 @@ Defines the state for download.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-webview-enum WebDownloadState--><!--Device-webview-enum WebDownloadState-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -21,6 +23,8 @@ The web download is in progress.
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WebDownloadState-IN_PROGRESS = 0--><!--Device-WebDownloadState-IN_PROGRESS = 0-End-->
 
@@ -38,6 +42,8 @@ The web download has been completed.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-WebDownloadState-COMPLETED--><!--Device-WebDownloadState-COMPLETED-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -53,6 +59,8 @@ The web download was canceled.
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WebDownloadState-CANCELED--><!--Device-WebDownloadState-CANCELED-End-->
 
@@ -70,6 +78,8 @@ The web download was interrupted.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-WebDownloadState-INTERRUPTED--><!--Device-WebDownloadState-INTERRUPTED-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -85,6 +95,8 @@ The web download is pending.
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WebDownloadState-PENDING--><!--Device-WebDownloadState-PENDING-End-->
 
@@ -102,6 +114,8 @@ The web download has been paused.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-WebDownloadState-PAUSED--><!--Device-WebDownloadState-PAUSED-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -117,6 +131,8 @@ Unknown state.
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WebDownloadState-UNKNOWN--><!--Device-WebDownloadState-UNKNOWN-End-->
 

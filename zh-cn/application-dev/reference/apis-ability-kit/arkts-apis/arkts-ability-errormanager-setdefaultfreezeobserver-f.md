@@ -10,7 +10,9 @@ function setDefaultFreezeObserver(defaultObserver?: FreezeObserver) : FreezeObse
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -24,13 +26,13 @@ function setDefaultFreezeObserver(defaultObserver?: FreezeObserver) : FreezeObse
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| defaultObserver | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 默认冻屏观测器。 |
+| defaultObserver | [FreezeObserver](arkts-ability-errormanager-freezeobserver-t.md) | 否 | 默认冻屏观测器。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | - 返回原来的默认冻屏观测器。 |
+| [FreezeObserver](arkts-ability-errormanager-freezeobserver-t.md) | 返回原来的默认冻屏观测器。 |
 
 **错误码：**
 
@@ -38,7 +40,7 @@ function setDefaultFreezeObserver(defaultObserver?: FreezeObserver) : FreezeObse
 | --- | --- |
 | [16000205](../errorcode-ability.md#16000205-当前接口未在主线程中调用) | API未在主线程中调用。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

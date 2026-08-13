@@ -1,10 +1,12 @@
 # FilterBundleType（系统接口）
 
-表示要监听的的应用类型，该类型为枚举。可配合[AppStateFilter]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_过滤想要监听的应用类型。
+表示要监听的的应用类型，该类型为枚举。可配合[AppStateFilter](arkts-ability-appmanager-appstatefilter-i-sys.md#AppStateFilter（系统接口）)过滤想要监听的应用类型。
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-appManager-export enum FilterBundleType--><!--Device-appManager-export enum FilterBundleType-End-->
 
@@ -20,9 +22,11 @@ APP = 1 << 0
 
 应用。
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FilterBundleType-APP = 1 << 0--><!--Device-FilterBundleType-APP = 1 << 0-End-->
 
@@ -38,9 +42,11 @@ ATOMIC_SERVICE = 1 << 1
 
 原子化服务。
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FilterBundleType-ATOMIC_SERVICE = 1 << 1--><!--Device-FilterBundleType-ATOMIC_SERVICE = 1 << 1-End-->
 

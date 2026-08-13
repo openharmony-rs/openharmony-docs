@@ -8,7 +8,9 @@ Defines the callback type used in registering to listen for PrintJobState. The v
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-print-type PrintJobStateChangeCallback = (state: PrintJobState, job: PrintJob) => void--><!--Device-print-type PrintJobStateChangeCallback = (state: PrintJobState, job: PrintJob) => void-End-->
 
@@ -20,6 +22,6 @@ Defines the callback type used in registering to listen for PrintJobState. The v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| state | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | the state of print job  |
-| job | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | the information of the print job  |
+| state | [PrintJobState](arkts-basicservices-print-printjobstate-e.md) | 是 | the state of print job |
+| job | [PrintJob](arkts-basicservices-print-printjob-i-sys.md) | 是 | the information of the print job |
 

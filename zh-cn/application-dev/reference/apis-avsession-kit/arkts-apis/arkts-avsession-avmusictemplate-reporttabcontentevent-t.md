@@ -8,7 +8,9 @@ type ReportTabContentEvent = (tabId: string, tabContent: MediaTabContent) => voi
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -20,6 +22,6 @@ type ReportTabContentEvent = (tabId: string, tabContent: MediaTabContent) => voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| tabId | string | 是 | 标签页的ID。  |
-| tabContent | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 标签页的内容。  |
+| tabId | string | 是 | 标签页的ID。 |
+| tabContent | [MediaTabContent](arkts-avsession-avmusictemplate-mediatabcontent-i.md) | 是 | 标签页的内容。 |
 

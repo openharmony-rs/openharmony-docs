@@ -6,7 +6,7 @@ typedef struct OH_Drawing_Image_Info {...} OH_Drawing_Image_Info
 
 ## 概述
 
-This struct describes the image information.
+定义图片信息结构体。
 
 **起始版本：** 12
 
@@ -20,9 +20,9 @@ This struct describes the image information.
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t width |  |
-| int32_t height |  |
-| [OH_Drawing_ColorFormat](capi-drawing-types-h.md#oh_drawing_colorformat) colorType |  |
-| [OH_Drawing_AlphaFormat](capi-drawing-types-h.md#oh_drawing_alphaformat) alphaType |  |
+| int32_t width | 宽度，单位为像素。<br>**起始版本：** 12 |
+| int32_t height | 高度，单位为像素。<br>**起始版本：** 12 |
+| [OH_Drawing_ColorFormat](capi-drawing-types-h.md#oh_drawing_colorformat) colorType | 颜色类型[OH_Drawing_ColorFormat](capi-drawing-types-h.md#oh_drawing_colorformat)。<br>**起始版本：** 12 |
+| [OH_Drawing_AlphaFormat](capi-drawing-types-h.md#oh_drawing_alphaformat) alphaType | 透明度类型[OH_Drawing_AlphaFormat](capi-drawing-types-h.md#oh_drawing_alphaformat)。<br>**起始版本：** 12 |
 
 

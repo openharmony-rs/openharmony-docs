@@ -1,30 +1,36 @@
 # FrameCallback
 
-Class FrameCallback
+用于定义帧回调任务，可在下一帧渲染阶段或帧渲染任务结束后的空闲阶段执行。 > **说明：** > > - 以下API需要配合[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md#UIContext)中的[postFrameCallback](arkts-arkui-arkui-uicontext-uicontext-c.md#postFrameCallback)和 > [postDelayedFrameCallback](arkts-arkui-arkui-uicontext-uicontext-c.md#postDelayedFrameCallback)使用。开发者需要继承该类并重写 > [onFrame](#onFrame)或[onIdle](#onIdle)方法，实现具体的业务逻辑。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-<!--Device-unnamed-export declare abstract class FrameCallback--><!--Device-unnamed-export declare abstract class FrameCallback-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-export abstract class FrameCallback--><!--Device-unnamed-export abstract class FrameCallback-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onFrame
 
 ```TypeScript
-onFrame(frameTimeInNano: long): void
+onFrame(frameTimeInNano: number): void
 ```
 
-Call when a new display frame is being rendered.
+在下一帧进行渲染时，该方法将被执行。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FrameCallback-onFrame(frameTimeInNano: long): void--><!--Device-FrameCallback-onFrame(frameTimeInNano: long): void-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-FrameCallback-onFrame(frameTimeInNano: number): void--><!--Device-FrameCallback-onFrame(frameTimeInNano: number): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -32,23 +38,27 @@ Call when a new display frame is being rendered.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| frameTimeInNano | long | 是 | The frame time in nanoseconds. |
+| frameTimeInNano | number | 是 | 下一帧渲染开始执行的时间，以纳秒为单位。&lt;br/&gt;取值范围：[0, +∞) |
 
 ## onIdle
 
 ```TypeScript
-onIdle(timeLeftInNano: long): void
+onIdle(timeLeftInNano: number): void
 ```
 
-在下一帧空闲时回调。如果没有下一帧，会自动请求一帧。
+在下一帧渲染结束时，如果距离下一个Vsync信号到来还有1ms以上的剩余时间，该方法将被执行，否则将顺延至后面的帧。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FrameCallback-onIdle(timeLeftInNano: long): void--><!--Device-FrameCallback-onIdle(timeLeftInNano: long): void-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-FrameCallback-onIdle(timeLeftInNano: number): void--><!--Device-FrameCallback-onIdle(timeLeftInNano: number): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,5 +66,5 @@ onIdle(timeLeftInNano: long): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| timeLeftInNano | long | 是 | The remaining time from the deadline for this frame. |
+| timeLeftInNano | number | 是 | 这一帧剩余的空闲时间，以纳秒为单位。&lt;br/&gt;取值范围：[0, +∞) |
 

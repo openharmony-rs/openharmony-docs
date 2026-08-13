@@ -14,7 +14,7 @@ function isNotificationEnabled(bundle: BundleOption, callback: AsyncCallback<boo
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager#isNotificationEnabled
+**替代接口：** [isNotificationEnabled](arkts-notification-notificationmanager-isnotificationenabled-f-sys.md#isNotificationEnabled（系统接口）)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -28,8 +28,8 @@ function isNotificationEnabled(bundle: BundleOption, callback: AsyncCallback<boo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundle | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 指定应用的包信息。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;boolean&gt; | 是 | 获取通知使能状态回调函数。 |
+| bundle | BundleOption | 是 | 指定应用的包信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 获取通知使能状态回调函数。 |
 
 
 ## isNotificationEnabled
@@ -46,7 +46,7 @@ function isNotificationEnabled(bundle: BundleOption): Promise<boolean>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager#isNotificationEnabled
+**替代接口：** [isNotificationEnabled](arkts-notification-notificationmanager-isnotificationenabled-f-sys.md#isNotificationEnabled（系统接口）)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -60,7 +60,7 @@ function isNotificationEnabled(bundle: BundleOption): Promise<boolean>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundle | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 指定应用的包信息。 |
+| bundle | BundleOption | 是 | 指定应用的包信息。 |
 
 **返回值：**
 
@@ -83,7 +83,7 @@ function isNotificationEnabled(callback: AsyncCallback<boolean>): void
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager#isNotificationEnabled
+**替代接口：** [isNotificationEnabled](arkts-notification-notificationmanager-isnotificationenabled-f-sys.md#isNotificationEnabled（系统接口）)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -97,7 +97,7 @@ function isNotificationEnabled(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;boolean&gt; | 是 | 获取通知使能状态回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 获取通知使能状态回调函数。 |
 
 
 ## isNotificationEnabled
@@ -114,7 +114,7 @@ function isNotificationEnabled(): Promise<boolean>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager#isNotificationEnabled
+**替代接口：** [isNotificationEnabled](arkts-notification-notificationmanager-isnotificationenabled-f-sys.md#isNotificationEnabled（系统接口）)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -145,7 +145,7 @@ function isNotificationEnabled(userId: number, callback: AsyncCallback<boolean>)
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager#isNotificationEnabled
+**替代接口：** [isNotificationEnabled](arkts-notification-notificationmanager-isnotificationenabled-f-sys.md#isNotificationEnabled（系统接口）)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -160,7 +160,7 @@ function isNotificationEnabled(userId: number, callback: AsyncCallback<boolean>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | userId | number | 是 | 指定的用户ID。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;boolean&gt; | 是 | 获取通知使能状态回调函数（true：使能，false：禁止）。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 获取通知使能状态回调函数（true：使能，false：禁止）。 |
 
 
 ## isNotificationEnabled
@@ -177,7 +177,7 @@ function isNotificationEnabled(userId: number): Promise<boolean>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager#isNotificationEnabled
+**替代接口：** [isNotificationEnabled](arkts-notification-notificationmanager-isnotificationenabled-f-sys.md#isNotificationEnabled（系统接口）)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 

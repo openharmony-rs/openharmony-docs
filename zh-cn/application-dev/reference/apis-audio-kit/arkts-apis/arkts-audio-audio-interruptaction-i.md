@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** ohos.multimedia.audio.InterruptEvent
+**替代接口：** [InterruptEvent](arkts-audio-audio-interruptevent-i.md#InterruptEvent)
 
 <!--Device-audio-interface InterruptAction--><!--Device-audio-interface InterruptAction-End-->
 
@@ -20,9 +20,9 @@
 actionType: InterruptActionType
 ```
 
-事件返回类型。TYPE\_ACTIVATED为焦点触发事件，TYPE\_INTERRUPT为音频打断事件。
+事件返回类型。TYPE_ACTIVATED为焦点触发事件，TYPE_INTERRUPT为音频打断事件。
 
-**类型：** InterruptActionType
+**类型：** [InterruptActionType](arkts-audio-audio-interruptactiontype-e.md)
 
 **起始版本：** 7
 
@@ -30,7 +30,7 @@ actionType: InterruptActionType
 
 **废弃版本：** 9
 
-**替代接口：** ohos.multimedia.audio.InterruptEvent#eventType
+**替代接口：** eventType
 
 <!--Device-InterruptAction-actionType: InterruptActionType--><!--Device-InterruptAction-actionType: InterruptActionType-End-->
 
@@ -52,7 +52,7 @@ activated?: boolean
 
 **废弃版本：** 9
 
-**替代接口：** ohos.multimedia.audio.InterruptEvent#hintType
+**替代接口：** [hintType](arkts-audio-audio-interruptevent-i.md#hintType)
 
 <!--Device-InterruptAction-activated?: boolean--><!--Device-InterruptAction-activated?: boolean-End-->
 
@@ -66,7 +66,7 @@ hint?: InterruptHint
 
 打断事件提示。
 
-**类型：** InterruptHint
+**类型：** [InterruptHint](arkts-audio-audio-interrupthint-e.md)
 
 **起始版本：** 7
 
@@ -74,7 +74,7 @@ hint?: InterruptHint
 
 **废弃版本：** 9
 
-**替代接口：** ohos.multimedia.audio.InterruptEvent#hintType
+**替代接口：** [hintType](arkts-audio-audio-interruptevent-i.md#hintType)
 
 <!--Device-InterruptAction-hint?: InterruptHint--><!--Device-InterruptAction-hint?: InterruptHint-End-->
 
@@ -88,7 +88,7 @@ type?: InterruptType
 
 打断事件类型。
 
-**类型：** InterruptType
+**类型：** [InterruptType](arkts-audio-audio-interrupttype-e.md)
 
 **起始版本：** 7
 
@@ -96,7 +96,7 @@ type?: InterruptType
 
 **废弃版本：** 9
 
-**替代接口：** ohos.multimedia.audio.InterruptEvent#eventType
+**替代接口：** eventType
 
 <!--Device-InterruptAction-type?: InterruptType--><!--Device-InterruptAction-type?: InterruptType-End-->
 

@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 <!--Device-calendarManager-export enum AttendeeType--><!--Device-calendarManager-export enum AttendeeType-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
@@ -21,6 +23,8 @@ REQUIRED = 1
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -40,6 +44,8 @@ OPTIONAL = 2
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AttendeeType-OPTIONAL = 2--><!--Device-AttendeeType-OPTIONAL = 2-End-->
@@ -57,6 +63,8 @@ RESOURCE = 3
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 

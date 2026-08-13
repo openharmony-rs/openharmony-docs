@@ -2,9 +2,11 @@
 
 通过本模块接口，可以设置快捷键拉起Ability的延迟时间，如设置长按快捷键3s后再截屏等。 > **说明：** > > - 本模块接口为系统接口。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare namespace shortKey--><!--Device-unnamed-declare namespace shortKey-End-->
 
@@ -19,7 +21,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [setKeyDownDuration](arkts-input-shortkey-setkeydownduration-f-sys.md#setkeydownduration) | 设置快捷键拉起Ability的延迟时间，使用callback异步回调。 |
-| [setKeyDownDuration](arkts-input-shortkey-setkeydownduration-f-sys.md#setkeydownduration-1) | 设置快捷键拉起Ability的延迟时间，使用Promise异步回调。 |
+| [setKeyDownDuration](arkts-input-shortkey-setkeydownduration-f-sys.md#setKeyDownDuration) | 设置快捷键拉起Ability的延迟时间，使用callback异步回调。 |
+| [setKeyDownDuration](arkts-input-shortkey-setkeydownduration-f-sys.md#setKeyDownDuration（系统接口）) | 设置快捷键拉起Ability的延迟时间，使用Promise异步回调。 |
 <!--DelEnd-->
 

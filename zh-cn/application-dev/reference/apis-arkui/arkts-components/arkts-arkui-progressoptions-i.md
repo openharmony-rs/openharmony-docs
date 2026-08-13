@@ -6,7 +6,9 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
-<!--Device-unnamed-declare interface ProgressOptions<Type extends keyof ProgressStyleMap>--><!--Device-unnamed-declare interface ProgressOptions<Type extends keyof ProgressStyleMap>-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare interface ProgressOptions--><!--Device-unnamed-declare interface ProgressOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,9 +18,9 @@
 style?: ProgressStyle
 ```
 
-指定进度条样式。 从API version 7开始支持，从API version 8开始废弃。建议使用[type]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。 默认值：ProgressStyle.Linear
+指定进度条样式。 从API version 7开始支持，从API version 8开始废弃。建议使用[type](arkts-arkui-progresstype-e.md#ProgressType)替代。 默认值：ProgressStyle.Linear
 
-**类型：** ProgressStyle
+**类型：** [ProgressStyle](arkts-arkui-progressstyle-e.md)
 
 **起始版本：** 7
 
@@ -26,7 +28,7 @@ style?: ProgressStyle
 
 **废弃版本：** 8
 
-**替代接口：** [type](arkts-arkui-progressoptions-i.md#type)
+**替代接口：** [type](#type)
 
 <!--Device-ProgressOptions-style?: ProgressStyle--><!--Device-ProgressOptions-style?: ProgressStyle-End-->
 
@@ -46,6 +48,8 @@ total?: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -60,13 +64,15 @@ total?: number
 type?: Type
 ```
 
-指定进度条类型。 默认值：ProgressType.Linear **说明：** 不同的type需分别对应相应的[style]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_属性设置，详细映射关系参考 \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+指定进度条类型。 默认值：ProgressType.Linear **说明：** 不同的type需分别对应相应的style属性设置，详细映射关系参考 [ProgressStyleMap](../../../reference/apis-arkui/arkui-ts/ts-basic-components-progress.md#progressstylemap10)。
 
-**类型：** Type
+**类型：** [Type](../../apis-arkts/arkts-apis/arkts-arkts-util-type-e.md)
 
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -89,6 +95,8 @@ value: number
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

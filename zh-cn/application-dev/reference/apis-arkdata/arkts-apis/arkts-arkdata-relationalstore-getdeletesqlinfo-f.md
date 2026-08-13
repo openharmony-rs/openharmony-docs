@@ -8,9 +8,11 @@ function getDeleteSqlInfo(predicates: RdbPredicates):SqlInfo
 
 获取用于删除数据的SQL语句，此为同步接口。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-relationalStore-function getDeleteSqlInfo(predicates: RdbPredicates):SqlInfo--><!--Device-relationalStore-function getDeleteSqlInfo(predicates: RdbPredicates):SqlInfo-End-->
 
@@ -20,13 +22,13 @@ function getDeleteSqlInfo(predicates: RdbPredicates):SqlInfo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| predicates | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 与指定字段匹配的谓词。 |
+| predicates | RdbPredicates | 是 | 与指定字段匹配的谓词。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | SqlInfo对象，其中sql为返回的SQL语句，args为执行SQL中的参数信息。 |
+| [SqlInfo](arkts-arkdata-relationalstore-sqlinfo-i.md) | SqlInfo对象，其中sql为返回的SQL语句，args为执行SQL中的参数信息。 |
 
 **错误码：**
 
@@ -34,7 +36,7 @@ function getDeleteSqlInfo(predicates: RdbPredicates):SqlInfo
 | --- | --- |
 | [14800001](../errorcode-data-rdb.md#14800001-无效的参数) | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

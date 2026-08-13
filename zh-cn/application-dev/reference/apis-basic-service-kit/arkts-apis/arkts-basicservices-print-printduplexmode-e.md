@@ -2,9 +2,11 @@
 
 打印单双面模式的枚举。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-print-enum PrintDuplexMode--><!--Device-print-enum PrintDuplexMode-End-->
 
@@ -18,9 +20,11 @@ DUPLEX_MODE_NONE = 0
 
 表示单面打印。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrintDuplexMode-DUPLEX_MODE_NONE = 0--><!--Device-PrintDuplexMode-DUPLEX_MODE_NONE = 0-End-->
 
@@ -34,9 +38,11 @@ DUPLEX_MODE_LONG_EDGE = 1
 
 表示双面打印沿长边翻转。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrintDuplexMode-DUPLEX_MODE_LONG_EDGE = 1--><!--Device-PrintDuplexMode-DUPLEX_MODE_LONG_EDGE = 1-End-->
 
@@ -50,9 +56,11 @@ DUPLEX_MODE_SHORT_EDGE = 2
 
 表示双面打印沿短边翻转。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrintDuplexMode-DUPLEX_MODE_SHORT_EDGE = 2--><!--Device-PrintDuplexMode-DUPLEX_MODE_SHORT_EDGE = 2-End-->
 

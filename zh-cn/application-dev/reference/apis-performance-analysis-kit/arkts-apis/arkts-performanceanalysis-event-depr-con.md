@@ -14,7 +14,7 @@ const DISTRIBUTED_SERVICE_START: string
 
 **废弃版本：** 9
 
-**替代接口：** ohos.hiviewdfx.hiAppEvent/hiAppEvent.Event#DISTRIBUTED_SERVICE_START
+**替代接口：** DISTRIBUTED_SERVICE_START
 
 <!--Device-Event-const DISTRIBUTED_SERVICE_START: string--><!--Device-Event-const DISTRIBUTED_SERVICE_START: string-End-->
 
@@ -34,7 +34,7 @@ const USER_LOGIN: string
 
 **废弃版本：** 9
 
-**替代接口：** ohos.hiviewdfx.hiAppEvent/hiAppEvent.Event#USER_LOGIN
+**替代接口：** USER_LOGIN
 
 <!--Device-Event-const USER_LOGIN: string--><!--Device-Event-const USER_LOGIN: string-End-->
 
@@ -54,7 +54,7 @@ const USER_LOGOUT: string
 
 **废弃版本：** 9
 
-**替代接口：** ohos.hiviewdfx.hiAppEvent/hiAppEvent.Event#USER_LOGOUT
+**替代接口：** USER_LOGOUT
 
 <!--Device-Event-const USER_LOGOUT: string--><!--Device-Event-const USER_LOGOUT: string-End-->
 

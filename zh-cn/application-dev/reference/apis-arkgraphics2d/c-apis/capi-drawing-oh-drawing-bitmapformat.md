@@ -6,7 +6,7 @@ typedef struct OH_Drawing_BitmapFormat {...} OH_Drawing_BitmapFormat
 
 ## 概述
 
-This struct describes the pixel format of a bitmap, including the color type and alpha type.
+结构体用于描述位图像素的格式，包括颜色类型和透明度类型。
 
 **起始版本：** 8
 
@@ -20,7 +20,7 @@ This struct describes the pixel format of a bitmap, including the color type and
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Drawing_ColorFormat](capi-drawing-types-h.md#oh_drawing_colorformat) colorFormat | Storage format of bitmap pixels. |
-| [OH_Drawing_AlphaFormat](capi-drawing-types-h.md#oh_drawing_alphaformat) alphaFormat | Alpha format of bitmap pixels. |
+| [OH_Drawing_ColorFormat](capi-drawing-types-h.md#oh_drawing_colorformat) colorFormat | 描述位图像素的存储格式。 |
+| [OH_Drawing_AlphaFormat](capi-drawing-types-h.md#oh_drawing_alphaformat) alphaFormat | 描述位图像素的透明度分量。 |
 
 

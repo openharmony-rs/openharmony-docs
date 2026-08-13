@@ -1,20 +1,39 @@
-# @system.prompt
+# @ohos.prompt
+
+创建并显示文本提示框、对话框和操作菜单。 > **说明：** > > 从API version 9 开始，该接口不再维护，推荐使用新接口[@ohos.promptAction (弹窗)](../../apis-na/arkts-apis/arkts-na-promptaction-n.md#promptAction)。
+
+**起始版本：** 8
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** 9
+
+**替代接口：** [promptAction/promptAction](../../apis-na/arkts-apis/arkts-na-promptaction-n.md#promptAction)
+
+<!--Device-unnamed-declare namespace prompt--><!--Device-unnamed-declare namespace prompt-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 汇总
 
-### 类
+### 函数
 
 | 名称 | 说明 |
 | --- | --- |
-| [Prompt](arkts-arkui-prompt-prompt-c.md) | 创建并显示文本提示框、对话框和操作菜单。 |
+| [showActionMenu](arkts-arkui-prompt-showactionmenu-f.md#showActionMenu) | 创建并显示操作菜单，菜单响应结果异步返回。 |
+| [showActionMenu](arkts-arkui-prompt-showactionmenu-f.md#showActionMenu) | 创建并显示操作菜单，菜单响应后同步返回结果。 |
+| [showDialog](arkts-arkui-prompt-showdialog-f.md#showDialog) | 创建并显示对话框，对话框响应结果异步返回。 |
+| [showDialog](arkts-arkui-prompt-showdialog-f.md#showDialog) | 创建并显示对话框，对话框响应后同步返回结果。 |
+| [showToast](arkts-arkui-prompt-showtoast-f.md#showToast) | 创建并显示文本提示框。 |
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
-| [Button](arkts-arkui-prompt-button-i.md) | 定义按钮的提示信息。 |
-| [ShowActionMenuOptions](arkts-arkui-prompt-showactionmenuoptions-i.md) | 定义ShowActionMenu的选项。 |
-| [ShowDialogOptions](arkts-arkui-prompt-showdialogoptions-i.md) | 定义显示对话框的选项。 |
-| [ShowDialogSuccessResponse](arkts-arkui-prompt-showdialogsuccessresponse-i.md) | 定义ShowDialog的响应。 |
-| [ShowToastOptions](arkts-arkui-prompt-showtoastoptions-i.md) | 定义ShowToast的选项。 |
+| [ActionMenuOptions](arkts-arkui-prompt-actionmenuoptions-i.md) | 操作菜单的选项。 |
+| [ActionMenuSuccessResponse](arkts-arkui-prompt-actionmenusuccessresponse-i.md) | 操作菜单的响应结果。 |
+| [Button](arkts-arkui-prompt-button-i.md) | 菜单中的菜单项按钮。 |
+| [ShowDialogOptions](arkts-arkui-prompt-showdialogoptions-i.md) | 对话框的选项。 |
+| [ShowDialogSuccessResponse](arkts-arkui-prompt-showdialogsuccessresponse-i.md) | 对话框的响应结果。 |
+| [ShowToastOptions](arkts-arkui-prompt-showtoastoptions-i.md) | 文本提示框的选项。 |
 

@@ -1,10 +1,24 @@
-# @ohos.security.identifySensitiveContent
+# @ohos.security.identifySensitiveContent(Identify sensitive file)
 
-识别敏感内容通过输入的[Policy]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_来检测指定文件中的敏感信息。 系统根据提供的[Policy]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_策略（包括敏感标签、关键字集合和正则表达式）， 对文件内容进行关键字匹配和正则表达式匹配，返回匹配到的敏感内容结果。
+/*
+ Copyright (c) 2025 Huawei Device Co., Ltd.
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ http://www.apache.org/licenses/LICENSE-2.0
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ /
+
 
 **起始版本：** 21
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare namespace identifySensitiveContent--><!--Device-unnamed-declare namespace identifySensitiveContent-End-->
 
@@ -16,7 +30,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [scanFile](arkts-dataprotection-identifysensitivecontent-scanfile-f.md#scanfile) | 根据设置的策略，识别指定文件中的敏感内容，返回识别的结果数组，包含匹配的敏感标签、匹配内容及匹配数量。使用Promise异步回调。 |
+| [scanFile](arkts-dataprotection-identifysensitivecontent-scanfile-f.md#scanFile) | 根据设置的策略，识别指定文件中的敏感内容，返回识别的结果数组，包含匹配的敏感标签、匹配内容及匹配数量。使用Promise异步回调。 |
 
 ### 接口
 

@@ -2,9 +2,11 @@
 
 提供备份和恢复能力的模块。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare namespace backup--><!--Device-unnamed-declare namespace backup-End-->
 
@@ -19,14 +21,14 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [fileSystemServiceRequest](arkts-corefile-backup-filesystemservicerequest-f-sys.md#filesystemservicerequest) | 根据指定配置请求文件系统执行碎片清理。 |
-| [getBackupInfo](arkts-corefile-backup-getbackupinfo-f-sys.md#getbackupinfo) | 获取需要备份的应用信息。 |
-| [getBackupVersion](arkts-corefile-backup-getbackupversion-f-sys.md#getbackupversion) | 获取备份版本信息。 |
-| [getLocalCapabilities](arkts-corefile-backup-getlocalcapabilities-f-sys.md#getlocalcapabilities) | 获取描述本地能力的JSON文件。 |
-| [getLocalCapabilities](arkts-corefile-backup-getlocalcapabilities-f-sys.md#getlocalcapabilities-1) | 获取描述本地能力的JSON文件。 |
-| [getLocalCapabilities](arkts-corefile-backup-getlocalcapabilities-f-sys.md#getlocalcapabilities-2) | 获取描述本地能力的JSON文件。 |
-| [updateSendRate](arkts-corefile-backup-updatesendrate-f-sys.md#updatesendrate) | 更新备份应用发送文件描述符的速率。 |
-| [updateTimer](arkts-corefile-backup-updatetimer-f-sys.md#updatetimer) | 设置应用备份或恢复的时长。 |
+| [fileSystemServiceRequest](arkts-corefile-backup-filesystemservicerequest-f-sys.md#fileSystemServiceRequest) | 根据指定配置请求文件系统执行碎片清理。 |
+| [getBackupInfo](arkts-corefile-backup-getbackupinfo-f-sys.md#getBackupInfo) | 获取需要备份的应用信息。 |
+| [getBackupVersion](arkts-corefile-backup-getbackupversion-f-sys.md#getBackupVersion) | 获取备份版本信息。 |
+| [getLocalCapabilities](arkts-corefile-backup-getlocalcapabilities-f-sys.md#getLocalCapabilities) | 获取描述本地能力的JSON文件。 |
+| [getLocalCapabilities](arkts-corefile-backup-getlocalcapabilities-f-sys.md#getLocalCapabilities（系统接口）) | 获取描述本地能力的JSON文件。 |
+| [getLocalCapabilities](arkts-corefile-backup-getlocalcapabilities-f-sys.md#getLocalCapabilities（系统接口）) | 获取描述本地能力的JSON文件。 |
+| [updateSendRate](arkts-corefile-backup-updatesendrate-f-sys.md#updateSendRate) | 更新备份应用发送文件描述符的速率。 |
+| [updateTimer](arkts-corefile-backup-updatetimer-f-sys.md#updateTimer) | 设置应用备份或恢复的时长。 |
 <!--DelEnd-->
 
 <!--Del-->

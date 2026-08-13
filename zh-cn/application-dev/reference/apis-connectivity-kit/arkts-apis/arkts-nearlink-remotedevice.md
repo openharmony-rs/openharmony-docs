@@ -4,7 +4,11 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-declare namespace remoteDevice--><!--Device-unnamed-declare namespace remoteDevice-End-->
 
@@ -16,21 +20,21 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [createRemoteDevice](arkts-connectivity-remotedevice-createremotedevice-f.md#createremotedevice) | 创建远端设备实例。 |
-| [offAcbStateChange](arkts-connectivity-remotedevice-offacbstatechange-f.md#offacbstatechange) | 取消订阅星闪 ACB连接状态更改事件。 |
-| [offConnectionStateChange](arkts-connectivity-remotedevice-offconnectionstatechange-f.md#offconnectionstatechange) | 取消订阅星闪连接状态更改事件。 |
-| [offPairingStateChange](arkts-connectivity-remotedevice-offpairingstatechange-f.md#offpairingstatechange) | 取消订阅星闪配对状态更改事件。 |
-| [onAcbStateChange](arkts-connectivity-remotedevice-onacbstatechange-f.md#onacbstatechange) | 订阅NearLink ACB连接状态变化事件。ACB采用异步双向链路。 > **说明** > 如果该用户具有ohos.permission.GET\_\_\_ESCAPED\_UNDERSCORE\_\_\_NEARLINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_PEER\_\_\_ESCAPED\_UNDERSCORE\_\_\_MAC权限，则真实设备地址为 > 返回。 > 否则，将返回一个随机的设备地址。 只有授予了ohos.permission.NEARLINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_ACCESS权限的应用程序才能访问此事件。 如果应用被赋予了ohos.permission.GET\_\_\_ESCAPED\_UNDERSCORE\_\_\_NEARLINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_PEER\_\_\_ESCAPED\_UNDERSCORE\_\_\_MAC权限。 回调返回真实设备地址，否则返回随机设备地址。 |
-| [onConnectionStateChange](arkts-connectivity-remotedevice-onconnectionstatechange-f.md#onconnectionstatechange) | 订阅星闪连接状态更改事件。 如果用户有ohos.permission.GET\_\_\_ESCAPED\_UNDERSCORE\_\_\_NEARLINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_PEER\_\_\_ESCAPED\_UNDERSCORE\_\_\_MAC权限，则返回真实设备地址。否则返回一个随机的设备地址。 只有授予了ohos.permission.NEARLINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_ACCESS权限的应用程序才能访问此事件。 如果应用被赋予了ohos.permission.GET\_\_\_ESCAPED\_UNDERSCORE\_\_\_NEARLINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_PEER\_\_\_ESCAPED\_UNDERSCORE\_\_\_MAC权限。 回调返回真实设备地址，否则返回随机设备地址。 |
-| [onPairingStateChange](arkts-connectivity-remotedevice-onpairingstatechange-f.md#onpairingstatechange) | 订阅NearLink配对状态变更事件。 只有授予了ohos.permission.NEARLINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_ACCESS权限的应用程序才能访问此事件。 如果应用被赋予了ohos.permission.GET\_\_\_ESCAPED\_UNDERSCORE\_\_\_NEARLINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_PEER\_\_\_ESCAPED\_UNDERSCORE\_\_\_MAC权限。 回调返回真实设备地址，否则返回随机设备地址。 |
+| [createRemoteDevice](arkts-connectivity-remotedevice-createremotedevice-f.md#createRemoteDevice) | 创建远端设备实例。 |
+| [offAcbStateChange](arkts-connectivity-remotedevice-offacbstatechange-f.md#offAcbStateChange) | 取消订阅星闪 ACB连接状态更改事件。 |
+| [offConnectionStateChange](arkts-connectivity-remotedevice-offconnectionstatechange-f.md#offConnectionStateChange) | 取消订阅星闪连接状态更改事件。 |
+| [offPairingStateChange](arkts-connectivity-remotedevice-offpairingstatechange-f.md#offPairingStateChange) | 取消订阅星闪配对状态更改事件。 |
+| [onAcbStateChange](arkts-connectivity-remotedevice-onacbstatechange-f.md#onAcbStateChange) | 订阅NearLink ACB连接状态变化事件。ACB采用异步双向链路。 |
+| [onConnectionStateChange](arkts-connectivity-remotedevice-onconnectionstatechange-f.md#onConnectionStateChange) | 订阅星闪连接状态更改事件。 如果用户有ohos.permission.GET_NEARLINK_PEER_MAC权限，则返回真实设备地址。否则返回一个随机的设备地址。 只有授予了ohos.permission.NEARLINK_ACCESS权限的应用程序才能访问此事件。 如果应用被赋予了ohos.permission.GET_NEARLINK_PEER_MAC权限。 回调返回真实设备地址，否则返回随机设备地址。 |
+| [onPairingStateChange](arkts-connectivity-remotedevice-onpairingstatechange-f.md#onPairingStateChange) | 订阅NearLink配对状态变更事件。 只有授予了ohos.permission.NEARLINK_ACCESS权限的应用程序才能访问此事件。 如果应用被赋予了ohos.permission.GET_NEARLINK_PEER_MAC权限。 回调返回真实设备地址，否则返回随机设备地址。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [offPairingRequest](arkts-connectivity-remotedevice-offpairingrequest-f-sys.md#offpairingrequest) | 取消订阅来自远端星闪设备的配对请求事件。 |
-| [onPairingRequest](arkts-connectivity-remotedevice-onpairingrequest-f-sys.md#onpairingrequest) | 订阅来自远程NearLink设备的配对请求事件。 如果用户被赋予了ohos.permission.GET\_\_\_ESCAPED\_UNDERSCORE\_\_\_NEARLINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_PEER\_\_\_ESCAPED\_UNDERSCORE\_\_\_MAC权限。 回调返回真实设备地址，否则返回随机设备地址 只有授予了ohos.permission.NEARLINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_ACCESS权限的系统应用程序才能访问此事件。 如果应用被赋予了ohos.permission.GET\_\_\_ESCAPED\_UNDERSCORE\_\_\_NEARLINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_PEER\_\_\_ESCAPED\_UNDERSCORE\_\_\_MAC权限。 回调返回真实设备地址，否则返回随机设备地址。 |
+| [offPairingRequest](arkts-connectivity-remotedevice-offpairingrequest-f-sys.md#offPairingRequest) | 取消订阅来自远端星闪设备的配对请求事件。 |
+| [onPairingRequest](arkts-connectivity-remotedevice-onpairingrequest-f-sys.md#onPairingRequest) | 订阅来自远程NearLink设备的配对请求事件。 如果用户被赋予了ohos.permission.GET_NEARLINK_PEER_MAC权限。 回调返回真实设备地址，否则返回随机设备地址 只有授予了ohos.permission.NEARLINK_ACCESS权限的系统应用程序才能访问此事件。 如果应用被赋予了ohos.permission.GET_NEARLINK_PEER_MAC权限。 回调返回真实设备地址，否则返回随机设备地址。 |
 <!--DelEnd-->
 
 ### 接口

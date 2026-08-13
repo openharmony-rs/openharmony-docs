@@ -10,7 +10,9 @@ function getAllDisposedRules(): Array<DisposedRuleConfiguration>
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_DISPOSED_APP_STATUS or ohos.permission.GET_DISPOSED_APP_STATUS
 
@@ -24,17 +26,17 @@ function getAllDisposedRules(): Array<DisposedRuleConfiguration>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;DisposedRuleConfiguration&gt; | 应用已设置的拦截规则。 |
+| Array&lt;[DisposedRuleConfiguration](arkts-ability-appcontrol-disposedruleconfiguration-i-sys.md)&gt; | 应用已设置的拦截规则。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied. A non-system application is not allowed to call a system API. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { appControl } from '@kit.AbilityKit';

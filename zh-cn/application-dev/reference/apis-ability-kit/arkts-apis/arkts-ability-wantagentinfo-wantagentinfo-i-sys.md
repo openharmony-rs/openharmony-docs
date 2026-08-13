@@ -1,0 +1,38 @@
+# WantAgentInfo
+
+定义触发WantAgent所需要的信息，可以作为 getWantAgent的入参创建指定的 WantAgent对象。
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
+
+<!--Device-unnamed-export interface WantAgentInfo--><!--Device-unnamed-export interface WantAgentInfo-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## userId
+
+```TypeScript
+userId?: int
+```
+
+用户ID。 取值范围：大于等于0。 默认值为调用方所在用户ID。
+
+**类型：** int
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WantAgentInfo-userId?: int--><!--Device-WantAgentInfo-userId?: int-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**系统接口：** 此接口为系统接口。
+

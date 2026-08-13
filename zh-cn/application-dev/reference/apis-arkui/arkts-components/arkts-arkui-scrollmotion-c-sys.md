@@ -42,5 +42,5 @@ constructor(position: number, velocity: number, min: number, max: number, prop: 
 | velocity | number | 是 |  |
 | min | number | 是 |  |
 | max | number | 是 |  |
-| prop | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 |  |
+| prop | [SpringProp](arkts-arkui-springprop-c-sys.md) | 是 |  |
 

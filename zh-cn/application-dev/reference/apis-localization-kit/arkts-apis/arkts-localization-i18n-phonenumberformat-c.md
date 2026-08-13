@@ -2,9 +2,11 @@
 
 提供电话号码相关的能力，包括电话号码有效性判断、格式化和归属地获取。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-i18n-export class PhoneNumberFormat--><!--Device-i18n-export class PhoneNumberFormat-End-->
 
@@ -18,9 +20,11 @@ constructor(country: string, options?: PhoneNumberFormatOptions)
 
 创建电话号码格式化对象。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -32,10 +36,10 @@ constructor(country: string, options?: PhoneNumberFormatOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| country | string | 是 | 表示电话号码所属的国家地区代码，要求是\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 电话号码格式化时设置的配置项。默认值：NATIONAL。 |
+| country | string | 是 | 表示电话号码所属的国家地区代码，要求是 [合法的国家地区码](../../../internationalization/i18n-locale-culture.md#实现原理)。 |
+| options | [PhoneNumberFormatOptions](arkts-localization-i18n-phonenumberformatoptions-i.md) | 否 | 电话号码格式化时设置的配置项。默认值：NATIONAL。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';
@@ -50,11 +54,13 @@ let phoneNumberFormat: i18n.PhoneNumberFormat = new i18n.PhoneNumberFormat('CN',
 format(phoneNumber: string): string
 ```
 
-对电话号码进行格式化。 > **说明** > > 从API version 12开始，支持对拨号中的电话号码进行格式化。
+对电话号码进行格式化。 > **说明：**> > 从API version 12开始，支持对拨号中的电话号码进行格式化。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -66,7 +72,7 @@ format(phoneNumber: string): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| phoneNumber | string | 是 | 待格式化的电话号码。\_\_\_HTML\_TAG\_USD\_0\_\_\_**起始版本：** 12 |
+| phoneNumber | string | 是 | 待格式化的电话号码。<br>**起始版本：** 12 |
 
 **返回值：**
 
@@ -74,7 +80,7 @@ format(phoneNumber: string): string
 | --- | --- |
 | string | 格式化后的电话号码。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';
@@ -100,11 +106,13 @@ for (let i = 0; i < phoneNumber.length; i++) {
 getLocationName(phoneNumber: string, locale: string): string
 ```
 
-获取电话号码归属地。 > **说明** > > 从API version 23开始，支持对拨号中的电话号码实时获取归属地。
+获取电话号码归属地。 > **说明：**> > 从API version 23开始，支持对拨号中的电话号码实时获取归属地。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -116,8 +124,8 @@ getLocationName(phoneNumber: string, locale: string): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| phoneNumber | string | 是 | 电话号码。获取其他地区电话号码的归属地时，需要在电话号码前加00+国际区号。\_\_\_HTML\_TAG\_USD\_0\_\_\_**起始版本：** 12 |
-| locale | string | 是 | \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，由语言、脚本、国家地区组成。 |
+| phoneNumber | string | 是 | 电话号码。获取其他地区电话号码的归属地时，需要在电话号码前加00+国际区号。<br>**起始版本：** 12 |
+| locale | string | 是 | [表示区域ID的字符串](../../../internationalization/i18n-locale-culture.md#实现原理)，由语言、脚本、国家地区组 成。 |
 
 **返回值：**
 
@@ -125,7 +133,7 @@ getLocationName(phoneNumber: string, locale: string): string
 | --- | --- |
 | string | 电话号码归属地。无效号码时返回空字符串。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';
@@ -154,9 +162,11 @@ isValidNumber(phoneNumber: string): boolean
 
 判断电话号码是否为当前电话号码格式化对象中国家的有效号码。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -168,7 +178,7 @@ isValidNumber(phoneNumber: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| phoneNumber | string | 是 | 待判断的电话号码。\_\_\_HTML\_TAG\_USD\_0\_\_\_**起始版本：** 12 |
+| phoneNumber | string | 是 | 待判断的电话号码。<br>**起始版本：** 12 |
 
 **返回值：**
 
@@ -176,7 +186,7 @@ isValidNumber(phoneNumber: string): boolean
 | --- | --- |
 | boolean | true表示电话号码有效，false表示电话号码无效。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';

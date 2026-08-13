@@ -6,11 +6,13 @@ type SourceCloseCallback = (uuid: long) => void
 
 由应用实现此回调函数，应用应释放相关资源。 > **注意：** > > 客户端在处理完请求后应立刻返回。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-unnamed-type SourceCloseCallback = (uuid: long) => void--><!--Device-unnamed-type SourceCloseCallback = (uuid: long) => void-End-->
 
@@ -20,5 +22,5 @@ type SourceCloseCallback = (uuid: long) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uuid | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 资源句柄的标识。  |
+| uuid | long | 是 | 资源句柄的标识。 |
 

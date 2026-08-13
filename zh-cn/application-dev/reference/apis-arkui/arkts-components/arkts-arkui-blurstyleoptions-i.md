@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface BlurStyleOptions--><!--Device-unnamed-declare interface BlurStyleOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -18,13 +20,15 @@ adaptiveColor?: AdaptiveColor
 
 内容模糊效果使用的取色模式。 默认值：AdaptiveColor.DEFAULT
 
-**类型：** AdaptiveColor
+**类型：** [AdaptiveColor](arkts-arkui-adaptivecolor-e.md)
 
 **默认值：** AdaptiveColor.DEFAULT
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,13 +46,15 @@ blurOptions?: BlurOptions
 
 灰阶模糊参数。 默认值：grayscale: [0,0]
 
-**类型：** BlurOptions
+**类型：** [BlurOptions](arkts-arkui-bluroptions-i.md)
 
 **默认值：** { grayScale: [0,0] }
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -66,13 +72,15 @@ colorMode?: ThemeColorMode
 
 内容模糊效果使用的深浅色模式。 默认值：ThemeColorMode.SYSTEM
 
-**类型：** ThemeColorMode
+**类型：** [ThemeColorMode](arkts-arkui-themecolormode-e.md)
 
 **默认值：** ThemeColorMode.SYSTEM
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -97,6 +105,8 @@ scale?: number
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -1,18 +1,22 @@
 # CustomBuilderWithId
 
 ```TypeScript
-declare type CustomBuilderWithId = (id: int) => void
+declare type CustomBuilderWithId = (id: number) => void
 ```
 
-定义带id的自定义构建器。
+组件属性、方法参数可使用CustomBuilderWithId类型来自定义UI描述，并且可以指定组件ID生成用户自定义组件。
 
-**起始版本：** 23
+**起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-unnamed-declare type CustomBuilderWithId = (id: int) => void--><!--Device-unnamed-declare type CustomBuilderWithId = (id: int) => void-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+<!--Device-unnamed-declare type CustomBuilderWithId = (id: number) => void--><!--Device-unnamed-declare type CustomBuilderWithId = (id: number) => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -20,5 +24,5 @@ declare type CustomBuilderWithId = (id: int) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | int | 是 |  |
+| id | number | 是 |  |
 

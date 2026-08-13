@@ -6,6 +6,8 @@ PromptOptions定义options的类型。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-export interface PromptOptions--><!--Device-unnamed-export interface PromptOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -23,6 +25,8 @@ actionText?: ResourceStr
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,6 +50,8 @@ icon?: ResourceStr
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -67,6 +73,8 @@ isShown?: boolean
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -90,6 +98,8 @@ marginTop: Dimension
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -106,11 +116,13 @@ marginType: MarginType
 
 指定当前异常提示的边距样式。
 
-**类型：** MarginType
+**类型：** [MarginType](arkts-arkui-arkui-advanced-exceptionprompt-margintype-e.md)
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -128,11 +140,13 @@ symbolStyle?: SymbolGlyphModifier
 
 指定当前异常提示的异常Symbol图标样式，优先级大于icon。 默认不设置或设置为undefined，Symbol图标不显示。
 
-**类型：** SymbolGlyphModifier
+**类型：** [SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -148,13 +162,15 @@ symbolStyle?: SymbolGlyphModifier
 tip?: ResourceStr
 ```
 
-指定当前异常提示的文字提示内容。 支持默认内置四种状态文字资源如下： 1.无网络状态：显示网络未连接：引用ohos\_network\_not\_connected。 2.网络差状态：显示网络连接不稳定，请点击重试：引用ohos\_network\_connected\_unstable。 3.连不上服务器状态：显示无法连接到服务器，请点击重试：引用ohos\_unstable\_connect\_server。 4.有网但是获取不到内容状态：显示无法获取位置，请点击重试：引用ohos\_custom\_network\_tips\_left。 默认不设置或设置为undefined，文字提示内容不显示。
+指定当前异常提示的文字提示内容。 支持默认内置四种状态文字资源如下： 1.无网络状态：显示网络未连接：引用ohos_network_not_connected。 2.网络差状态：显示网络连接不稳定，请点击重试：引用ohos_network_connected_unstable。 3.连不上服务器状态：显示无法连接到服务器，请点击重试：引用ohos_unstable_connect_server。 4.有网但是获取不到内容状态：显示无法获取位置，请点击重试：引用ohos_custom_network_tips_left。 默认不设置或设置为undefined，文字提示内容不显示。
 
 **类型：** ResourceStr
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

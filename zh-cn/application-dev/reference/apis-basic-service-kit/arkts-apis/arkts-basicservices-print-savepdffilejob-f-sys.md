@@ -10,7 +10,9 @@ function savePdfFileJob(jobId: string, fd: int): Promise<void>
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -27,7 +29,7 @@ function savePdfFileJob(jobId: string, fd: int): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | jobId | string | 是 | 打印作业ID。 |
-| fd | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 文件描述符。 |
+| fd | int | 是 | 文件描述符。 |
 
 **返回值：**
 
@@ -39,8 +41,8 @@ function savePdfFileJob(jobId: string, fd: int): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| 13100007 | Save file failed. |
+| [13100006](../../apis-basic-services-kit/errorcode-print.md#13100006-无效的打印任务) | Invalid job ID. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
-| [13100006](../../apis-basic-services-kit/errorcode-print.md#13100006-无效的打印任务) | Invalid job ID. |
-| 13100007 | Save file failed. |
 

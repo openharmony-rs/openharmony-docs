@@ -10,6 +10,8 @@ declare type ReceiveCallback = import('../api/@ohos.base').Callback<Record<strin
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-declare type ReceiveCallback = import('../api/@ohos.base').Callback<Record<string, Object>>--><!--Device-unnamed-declare type ReceiveCallback = import('../api/@ohos.base').Callback<Record<string, Object>>-End-->

@@ -8,9 +8,11 @@ function setResidentProcessEnabled(bundleName: string, enable: boolean): Promise
 
 常驻进程支持按需启停。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-abilityManager-function setResidentProcessEnabled(bundleName: string, enable: boolean): Promise<void>--><!--Device-abilityManager-function setResidentProcessEnabled(bundleName: string, enable: boolean): Promise<void>-End-->
 
@@ -35,12 +37,12 @@ function setResidentProcessEnabled(bundleName: string, enable: boolean): Promise
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not a system application. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible cause: 1.Non empty package name needs to be provided;2.The second parameter needs to provide a Boolean type setting value. |
-| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: 1.Non empty package name needs to be provided; 2.The second parameter needs to provide a Boolean type setting value. |
 | [16200006](../errorcode-ability.md#16200006-没有权限设置常驻进程使能状态) | The caller application can only set the resident status of the configured process. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not a system application. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { abilityManager } from '@kit.AbilityKit';

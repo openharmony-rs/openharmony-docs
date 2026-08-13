@@ -1,6 +1,6 @@
 # @ohos.bundle.innerBundleManager
 
-本模块提供launcher应用使用的接口。 > **说明：** > > 本模块从API version 9开始不再支持。建议使用[launcherBundleManager]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ > 及[bundleMonitor]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_替代。 > > 本模块为系统接口。
+本模块提供launcher应用使用的接口。 > **说明：** > > 本模块从API version 9开始不再支持。建议使用[launcherBundleManager](arkts-bundle-launcherbundlemanager.md#@ohos.bundle.launcherBundleManager) > 及[bundleMonitor](arkts-bundle-bundlemonitor.md#@ohos.bundle.bundleMonitor)替代。 > > 本模块为系统接口。
 
 ## 汇总
 

@@ -14,7 +14,7 @@ Converts a number in units of px to a number in units of lpx.
 
 **废弃版本：** 18
 
-**替代接口：** ohos.arkui.UIContext.UIContext#px2lpx
+**替代接口：** px2lpx
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

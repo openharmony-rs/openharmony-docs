@@ -14,7 +14,7 @@ function publish(event: string, callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.commonEventManager:commonEventManager.publish](arkts-basicservices-commoneventmanager-publish-f.md#publish)(event:
+**替代接口：** [publish](arkts-basicservices-commoneventmanager-publish-f.md#publish)(event: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-commonEvent-function publish(event: string, callback: AsyncCallback<void>): void--><!--Device-commonEvent-function publish(event: string, callback: AsyncCallback<void>): void-End-->
 
@@ -25,9 +25,9 @@ function publish(event: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | string | 是 | 表示要发布的公共事件。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 表示发布公共事件的回调方法。 |
+| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 表示发布公共事件的回调方法。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import Base from '@ohos.base';
@@ -60,7 +60,7 @@ function publish(event: string, options: CommonEventPublishData, callback: Async
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.commonEventManager:commonEventManager.publish](arkts-basicservices-commoneventmanager-publish-f.md#publish)(event:
+**替代接口：** [publish](arkts-basicservices-commoneventmanager-publish-f.md#publish)(event: string, options: CommonEventPublishData, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-commonEvent-function publish(event: string, options: CommonEventPublishData, callback: AsyncCallback<void>): void--><!--Device-commonEvent-function publish(event: string, options: CommonEventPublishData, callback: AsyncCallback<void>): void-End-->
 
@@ -71,10 +71,10 @@ function publish(event: string, options: CommonEventPublishData, callback: Async
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | string | 是 | 表示要发布的公共事件。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 表示发布公共事件的属性。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 表示发布公共事件的回调方法。 |
+| options | [CommonEventPublishData](arkts-basicservices-commoneventpublishdata-commoneventpublishdata-i.md) | 是 | 表示发布公共事件的属性。 |
+| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 表示发布公共事件的回调方法。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import Base from '@ohos.base';

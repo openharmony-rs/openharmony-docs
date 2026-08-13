@@ -12,7 +12,7 @@ type AuthType = 'ALL' | 'FACE_ONLY'
 
 **废弃版本：** 8
 
-**替代接口：** [userAuth.UserAuthType](arkts-userauthentication-userauth-userauthtype-e.md)
+**替代接口：** [UserAuthType](arkts-userauthentication-userauth-userauthtype-e.md#UserAuthType)
 
 <!--Device-userAuth-type AuthType = 'ALL' | 'FACE_ONLY'--><!--Device-userAuth-type AuthType = 'ALL' | 'FACE_ONLY'-End-->
 
@@ -21,5 +21,5 @@ type AuthType = 'ALL' | 'FACE_ONLY'
 | 类型 | 说明 |
 | --- | --- |
 | 'ALL' | 预留参数，当前版本暂不支持ALL类型的认证。 |
-| 'FACE\_ONLY' | 人脸认证。 |
+| 'FACE_ONLY' | 人脸认证。 |
 

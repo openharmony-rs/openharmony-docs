@@ -8,7 +8,9 @@ type OnWindowStageRestoreFn = (ability: UIAbility, windowStage: window.WindowSta
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-type OnWindowStageRestoreFn = (ability: UIAbility, windowStage: window.WindowStage) => void--><!--Device-unnamed-type OnWindowStageRestoreFn = (ability: UIAbility, windowStage: window.WindowStage) => void-End-->
 
@@ -18,6 +20,6 @@ type OnWindowStageRestoreFn = (ability: UIAbility, windowStage: window.WindowSta
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ability | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 当前Ability对象。  |
-| windowStage | window.WindowStage | 是 | 当前WindowStage对象。  |
+| ability | [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) | 是 | 当前Ability对象。 |
+| windowStage | window.WindowStage | 是 | 当前WindowStage对象。 |
 

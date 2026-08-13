@@ -6,6 +6,8 @@ JS跨线程通信工具。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare namespace worker--><!--Device-unnamed-declare namespace worker-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
@@ -24,13 +26,13 @@ JS跨线程通信工具。
 
 | 名称 | 说明 |
 | --- | --- |
-| [RestrictedWorker](arkts-arkts-worker-restrictedworker-c-sys.md) | RestrictedWorker类继承[ThreadWorker]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，具有ThreadWorker中所有的方法。 RestrictedWorker主要用于提供受限的Worker线程运行环境，该线程运行环境中只允许导入Worker模块，不允许导入其他API。 |
+| [RestrictedWorker](arkts-arkts-worker-restrictedworker-c-sys.md) | RestrictedWorker类继承[ThreadWorker](arkts-arkts-worker-threadworker-c.md#ThreadWorker)，具有ThreadWorker中所有的方法。 RestrictedWorker主要用于提供受限的Worker线程运行环境，该线程运行环境中只允许导入Worker模块，不允许导入其他API。 |
 <!--DelEnd-->
 
 ### 常量
 
 | 名称 | 说明 |
 | --- | --- |
-| [parentPort](arkts-arkts-worker-con.md#parentport) | Worker线程用于与宿主线程通信的对象。 |
-| [workerPort](arkts-arkts-worker-con.md#workerport) | Worker线程用于与宿主线程通信的对象。 |
+| [parentPort](arkts-arkts-worker-con.md#parentPort) | Worker线程用于与宿主线程通信的对象。 |
+| [workerPort](arkts-arkts-worker-con.md#workerPort) | Worker线程用于与宿主线程通信的对象。 |
 

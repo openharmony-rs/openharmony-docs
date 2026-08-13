@@ -1,10 +1,12 @@
 # UIExtensionIntentInfo（系统接口）
 
-用于描述\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_所绑定的UIExtensionAbility组件信息。
+用于描述[使用配置文件开发的意图](../../../application-models/insight-intent-config-development.md)所绑定的UIExtensionAbility组件信息。
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-insightIntentDriver-interface UIExtensionIntentInfo--><!--Device-insightIntentDriver-interface UIExtensionIntentInfo-End-->
 
@@ -24,7 +26,9 @@ readonly abilityName: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

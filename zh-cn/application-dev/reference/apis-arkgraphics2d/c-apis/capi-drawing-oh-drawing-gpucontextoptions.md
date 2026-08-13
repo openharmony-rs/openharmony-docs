@@ -6,7 +6,7 @@ typedef struct OH_Drawing_GpuContextOptions {...} OH_Drawing_GpuContextOptions
 
 ## 概述
 
-This struct describes the options about the GPU context.
+定义有关图形处理器上下文的选项。
 
 **起始版本：** 12
 
@@ -22,6 +22,6 @@ This struct describes the options about the GPU context.
 
 | 名称 | 描述 |
 | -- | -- |
-| bool allowPathMaskCaching | Whether to allow path mask textures to be cached. The value **true** means to allow the path mask textures to becached, and **false** means the opposite. |
+| bool allowPathMaskCaching | 用于控制是否启用路径蒙版缓存，如果为true，则允许缓存路径蒙版纹理，如果为false，则不允许。 |
 
 

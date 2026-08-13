@@ -6,6 +6,8 @@ Toast的选项。
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-promptAction-export interface ShowToastOptions--><!--Device-promptAction-export interface ShowToastOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -16,13 +18,15 @@ Toast的选项。
 alignment?: Alignment
 ```
 
-对齐方式。 默认值：undefined，当未设置alignment且存在导航条或软键盘时，Toast会自动根据导航条或软键盘位置进行调整，可参考bottom的说明。 **说明：** 不同alignment下，Toast位置对齐效果，如下图所示。 !\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_ Toast的文本显示默认自左向右，不支持其他对齐方式。
+对齐方式。 默认值：undefined，当未设置alignment且存在导航条或软键盘时，Toast会自动根据导航条或软键盘位置进行调整，可参考bottom的说明。 **说明：** 不同alignment下，Toast位置对齐效果，如下图所示。  Toast的文本显示默认自左向右，不支持其他对齐方式。
 
 **类型：** Alignment
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -36,13 +40,15 @@ alignment?: Alignment
 backgroundBlurStyle?: BlurStyle
 ```
 
-Toast的背板模糊材质。 默认值：BlurStyle.COMPONENT\_ULTRA\_THICK **说明：** 设置为BlurStyle.NONE即可关闭背景虚化。当设置了backgroundBlurStyle为非NONE值时，则不要设置backgroundColor，否则颜色显示将不符合预期效果。
+Toast的背板模糊材质。 默认值：BlurStyle.COMPONENT_ULTRA_THICK **说明：** 设置为BlurStyle.NONE即可关闭背景虚化。当设置了backgroundBlurStyle为非NONE值时，则不要设置backgroundColor，否则颜色显示将不符合预期效果。
 
 **类型：** BlurStyle
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -64,6 +70,8 @@ Toast的背板颜色。 默认值：Color.Transparent **说明：** backgroundCo
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ShowToastOptions-backgroundColor?: ResourceColor--><!--Device-ShowToastOptions-backgroundColor?: ResourceColor-End-->
@@ -84,6 +92,8 @@ bottom?: string | double
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ShowToastOptions-bottom?: string | double--><!--Device-ShowToastOptions-bottom?: string | double-End-->
@@ -103,6 +113,8 @@ duration?: int
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -126,6 +138,8 @@ enableHoverMode?: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ShowToastOptions-enableHoverMode?: boolean--><!--Device-ShowToastOptions-enableHoverMode?: boolean-End-->
@@ -138,7 +152,7 @@ enableHoverMode?: boolean
 hoverModeArea?: HoverModeAreaType
 ```
 
-响应悬停态时，弹窗的显示区域。 默认值：HoverModeAreaType.BOTTOM\_SCREEN，默认显示在下半屏。
+响应悬停态时，弹窗的显示区域。 默认值：HoverModeAreaType.BOTTOM_SCREEN，默认显示在下半屏。
 
 **类型：** HoverModeAreaType
 
@@ -147,6 +161,8 @@ hoverModeArea?: HoverModeAreaType
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -168,6 +184,8 @@ message: string | Resource
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ShowToastOptions-message: string | Resource--><!--Device-ShowToastOptions-message: string | Resource-End-->
@@ -188,6 +206,8 @@ offset?: Offset
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ShowToastOptions-offset?: Offset--><!--Device-ShowToastOptions-offset?: Offset-End-->
@@ -200,13 +220,15 @@ offset?: Offset
 shadow?: ShadowOptions | ShadowStyle
 ```
 
-Toast的背板阴影。 默认值：ShadowStyle.OUTER\_DEFAULT\_MD
+Toast的背板阴影。 默认值：ShadowStyle.OUTER_DEFAULT_MD
 
 **类型：** ShadowOptions \| ShadowStyle
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -222,13 +244,15 @@ showMode?: ToastShowMode
 
 设置Toast层级。 默认值：ToastShowMode.DEFAULT，默认显示在应用内。
 
-**类型：** ToastShowMode
+**类型：** [ToastShowMode](arkts-na-promptaction-toastshowmode-e.md)
 
 **默认值：** ToastShowMode.DEFAULT
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -250,6 +274,8 @@ Set system-styled materials for toast. Different materials have different effect
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ShowToastOptions-systemMaterial?: SystemUiMaterial--><!--Device-ShowToastOptions-systemMaterial?: SystemUiMaterial-End-->
@@ -269,6 +295,8 @@ Toast的文本颜色。 默认值：Color.Black
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

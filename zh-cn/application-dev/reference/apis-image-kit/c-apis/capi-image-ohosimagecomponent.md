@@ -6,7 +6,7 @@ struct OhosImageComponent {...}
 
 ## 概述
 
-定义图像组成信息。
+定义图像组件信息。
 
 **起始版本：** 10
 

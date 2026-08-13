@@ -8,9 +8,11 @@ function isSupported(type: RunningLockType): boolean
 
 查询系统是否支持该类型的锁。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-runningLock-function isSupported(type: RunningLockType): boolean--><!--Device-runningLock-function isSupported(type: RunningLockType): boolean-End-->
 
@@ -20,7 +22,7 @@ function isSupported(type: RunningLockType): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 需要查询的锁的类型；该参数必须是一个枚举类。 |
+| type | [RunningLockType](arkts-basicservices-runninglock-runninglocktype-e.md) | 是 | 需要查询的锁的类型；该参数必须是一个枚举类。 |
 
 **返回值：**
 
@@ -32,9 +34,9 @@ function isSupported(type: RunningLockType): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Incorrect parameter types;2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 try {

@@ -1,14 +1,16 @@
 # ColorShaderStyle
 
-显示为纯色。ColorShaderStyle继承自[ShaderStyle]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+显示为纯色。ColorShaderStyle继承自[ShaderStyle](arkts-arkui-shaderstyle-c.md#ShaderStyle)。
 
-**继承/实现关系：** ColorShaderStyle extends [ShaderStyle](arkts-arkui-component/textcommon-shaderstyle-c.md)
+**继承/实现关系：** ColorShaderStyle extends [ShaderStyle](arkts-arkui-shaderstyle-c.md#ShaderStyle)
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
-<!--Device-unnamed-declare class ColorShaderStyle extends ShaderStyle--><!--Device-unnamed-declare class ColorShaderStyle extends ShaderStyle-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare class ColorShaderStyle--><!--Device-unnamed-declare class ColorShaderStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,6 +26,8 @@ constructor(color: ResourceColor)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -36,7 +40,7 @@ constructor(color: ResourceColor)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 显示为纯色效果。 |
+| color | ResourceColor | 是 | 显示为纯色效果。 |
 
 ## color
 
@@ -51,6 +55,8 @@ color: ResourceColor
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

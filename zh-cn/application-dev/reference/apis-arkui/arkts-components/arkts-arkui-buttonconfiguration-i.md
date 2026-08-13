@@ -1,14 +1,16 @@
 # ButtonConfiguration
 
-开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+开发者需要自定义class实现ContentModifier接口。继承自CommonConfiguration。
 
-**继承/实现关系：** ButtonConfiguration extends [CommonConfiguration<ButtonConfiguration>](CommonConfiguration<ButtonConfiguration>)
+**继承/实现关系：** ButtonConfiguration extends CommonConfiguration<ButtonConfiguration>
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-<!--Device-unnamed-declare interface ButtonConfiguration extends CommonConfiguration<ButtonConfiguration>--><!--Device-unnamed-declare interface ButtonConfiguration extends CommonConfiguration<ButtonConfiguration>-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare interface ButtonConfiguration--><!--Device-unnamed-declare interface ButtonConfiguration-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,13 +20,15 @@
 label: string
 ```
 
-Button的文本标签，用于标识按钮的功能。 **说明**：当文本字符的长度超过按钮本身的宽度时，文本将会被截断。
+Button的文本标签，用于标识按钮的功能。 **说明：**当文本字符的长度超过按钮本身的宽度时，文本将会被截断。
 
 **类型：** string
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -48,6 +52,8 @@ pressed: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -64,11 +70,13 @@ triggerClick: ButtonTriggerClickCallback
 
 点击事件回调，用于处理使用builder新构建出来组件的点击操作。
 
-**类型：** ButtonTriggerClickCallback
+**类型：** [ButtonTriggerClickCallback](arkts-arkui-buttontriggerclickcallback-t.md)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

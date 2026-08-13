@@ -6,6 +6,8 @@ Defines the configuration of creating pdf, related to {@Link createPdf} method.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-webview-interface PdfConfiguration--><!--Device-webview-interface PdfConfiguration-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -23,6 +25,8 @@ Number of the height.
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PdfConfiguration-height: double--><!--Device-PdfConfiguration-height: double-End-->
 
@@ -42,6 +46,8 @@ Number of the marginBottom.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-PdfConfiguration-marginBottom: double--><!--Device-PdfConfiguration-marginBottom: double-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -59,6 +65,8 @@ Number of the marginLeft.
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PdfConfiguration-marginLeft: double--><!--Device-PdfConfiguration-marginLeft: double-End-->
 
@@ -78,6 +86,8 @@ Number of the marginRight.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-PdfConfiguration-marginRight: double--><!--Device-PdfConfiguration-marginRight: double-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -95,6 +105,8 @@ Number of the marginTop.
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PdfConfiguration-marginTop: double--><!--Device-PdfConfiguration-marginTop: double-End-->
 
@@ -114,6 +126,8 @@ Number of the scaling.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-PdfConfiguration-scale?: double--><!--Device-PdfConfiguration-scale?: double-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -132,6 +146,8 @@ Whether background should be printed when creating pdf.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-PdfConfiguration-shouldPrintBackground?: boolean--><!--Device-PdfConfiguration-shouldPrintBackground?: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -149,6 +165,8 @@ Number of the width.
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PdfConfiguration-width: double--><!--Device-PdfConfiguration-width: double-End-->
 

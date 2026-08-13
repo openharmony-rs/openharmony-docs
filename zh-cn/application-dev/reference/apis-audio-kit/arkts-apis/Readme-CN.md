@@ -247,44 +247,62 @@
 - [@ohos.multimedia.avVolumePanel](arkts-multimedia-avvolumepanel.md)
   - [AVVolumePanelParameter](arkts-audio-multimedia-avvolumepanel-avvolumepanelparameter-c.md)
   - [AVVolumePanel](arkts-audio-multimedia-avvolumepanel-avvolumepanel-s.md)
-- [@ohos.multimedia.avVolumePanel](arkts-multimedia-avvolumepanel.md)
-  - [AVVolumePanelParameter](arkts-audio-multimedia-avvolumepanel-avvolumepanelparameter-c.md)
-  - [AVVolumePanel](arkts-audio-multimedia-avvolumepanel-avvolumepanel-s.md)
 - [@ohos.multimedia.systemSoundManager](arkts-multimedia-systemsoundmanager.md)
-  - [createCustomizedToneAttrs](arkts-audio-systemsoundmanager-createcustomizedtoneattrs-f.md)
+  <!--Del-->
+  - [createCustomizedToneAttrs(系统接口)](arkts-audio-systemsoundmanager-createcustomizedtoneattrs-f-sys.md)<!--DelEnd-->
   - [createSystemSoundPlayer](arkts-audio-systemsoundmanager-createsystemsoundplayer-f.md)
-  - [getSystemSoundManager](arkts-audio-systemsoundmanager-getsystemsoundmanager-f.md)
-  - [SystemSoundManager](arkts-audio-systemsoundmanager-systemsoundmanager-i.md)
-  - [ToneAttrs](arkts-audio-systemsoundmanager-toneattrs-i.md)
-  - [ToneHapticsAttrs](arkts-audio-systemsoundmanager-tonehapticsattrs-i.md)
-  - [ToneHapticsSettings](arkts-audio-systemsoundmanager-tonehapticssettings-i.md)
-  - [RingtoneOptions](arkts-audio-systemsoundmanager-ringtoneoptions-t.md)
-  - [RingtonePlayer](arkts-audio-systemsoundmanager-ringtoneplayer-t.md)
+  <!--Del-->
+  - [getSystemSoundManager(系统接口)](arkts-audio-systemsoundmanager-getsystemsoundmanager-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [SystemSoundManager(系统接口)](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [ToneAttrs(系统接口)](arkts-audio-systemsoundmanager-toneattrs-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [ToneHapticsAttrs(系统接口)](arkts-audio-systemsoundmanager-tonehapticsattrs-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [ToneHapticsSettings(系统接口)](arkts-audio-systemsoundmanager-tonehapticssettings-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [RingtoneOptions(系统接口)](arkts-audio-systemsoundmanager-ringtoneoptions-t-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [RingtonePlayer(系统接口)](arkts-audio-systemsoundmanager-ringtoneplayer-t-sys.md)<!--DelEnd-->
   - [SystemSoundPlayer](arkts-audio-systemsoundmanager-systemsoundplayer-t.md)
-  - [SystemToneOptions](arkts-audio-systemsoundmanager-systemtoneoptions-t.md)
-  - [SystemTonePlayer](arkts-audio-systemsoundmanager-systemtoneplayer-t.md)
-  - [ToneAttrsArray](arkts-audio-systemsoundmanager-toneattrsarray-t.md)
-  - [ToneHapticsAttrsArray](arkts-audio-systemsoundmanager-tonehapticsattrsarray-t.md)
-  - [MediaType](arkts-audio-systemsoundmanager-mediatype-e.md)
-  - [RingtoneType](arkts-audio-systemsoundmanager-ringtonetype-e.md)
-  - [SystemSoundError](arkts-audio-systemsoundmanager-systemsounderror-e.md)
+  <!--Del-->
+  - [SystemToneOptions(系统接口)](arkts-audio-systemsoundmanager-systemtoneoptions-t-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [SystemTonePlayer(系统接口)](arkts-audio-systemsoundmanager-systemtoneplayer-t-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [ToneAttrsArray(系统接口)](arkts-audio-systemsoundmanager-toneattrsarray-t-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [ToneHapticsAttrsArray(系统接口)](arkts-audio-systemsoundmanager-tonehapticsattrsarray-t-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [MediaType(系统接口)](arkts-audio-systemsoundmanager-mediatype-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [RingtoneType(系统接口)](arkts-audio-systemsoundmanager-ringtonetype-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [SystemSoundError(系统接口)](arkts-audio-systemsoundmanager-systemsounderror-e-sys.md)<!--DelEnd-->
   - [SystemSoundType](arkts-audio-systemsoundmanager-systemsoundtype-e.md)
-  - [SystemToneType](arkts-audio-systemsoundmanager-systemtonetype-e.md)
-  - [ToneCustomizedType](arkts-audio-systemsoundmanager-tonecustomizedtype-e.md)
-  - [ToneHapticsFeature](arkts-audio-systemsoundmanager-tonehapticsfeature-e.md)
-  - [ToneHapticsMode](arkts-audio-systemsoundmanager-tonehapticsmode-e.md)
-  - [ToneHapticsType](arkts-audio-systemsoundmanager-tonehapticstype-e.md)
-  - [常量](arkts-audio-systemsoundmanager-con-sys.md)
+  <!--Del-->
+  - [SystemToneType(系统接口)](arkts-audio-systemsoundmanager-systemtonetype-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [ToneCustomizedType(系统接口)](arkts-audio-systemsoundmanager-tonecustomizedtype-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [ToneHapticsFeature(系统接口)](arkts-audio-systemsoundmanager-tonehapticsfeature-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [ToneHapticsMode(系统接口)](arkts-audio-systemsoundmanager-tonehapticsmode-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [ToneHapticsType(系统接口)](arkts-audio-systemsoundmanager-tonehapticstype-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [常量(系统接口)](arkts-audio-systemsoundmanager-con-sys.md)<!--DelEnd-->
 - multimedia<!--arkts-audiokit-multimedia-->
-  - [multimedia/SystemSoundPlayer](arkts-multimedia/systemsoundplayer.md)
-    - [SystemSoundPlayer](systemsoundplayer-systemsoundplayer-i.md)
-  - [multimedia/ringtonePlayer](arkts-multimedia/ringtoneplayer.md)
+  - [SystemSoundPlayer](arkts-systemsoundplayer.md)
+    - [SystemSoundPlayer](arkts-audio-systemsoundplayer-i.md)
+  - [ringtonePlayer](arkts-ringtoneplayer.md)
     <!--Del-->
-    - [RingtoneOptions(系统接口)](ringtoneplayer-ringtoneoptions-i-sys.md)<!--DelEnd-->
+    - [RingtoneOptions(系统接口)](arkts-audio-ringtoneplayer-ringtoneoptions-i-sys.md)<!--DelEnd-->
     <!--Del-->
-    - [RingtonePlayer(系统接口)](ringtoneplayer-ringtoneplayer-i-sys.md)<!--DelEnd-->
-  - [multimedia/systemTonePlayer](arkts-multimedia/systemtoneplayer.md)
+    - [RingtonePlayer(系统接口)](arkts-audio-ringtoneplayer-ringtoneplayer-i-sys.md)<!--DelEnd-->
+  - [systemTonePlayer](arkts-systemtoneplayer.md)
     <!--Del-->
-    - [SystemToneOptions(系统接口)](systemtoneplayer-systemtoneoptions-i-sys.md)<!--DelEnd-->
+    - [SystemToneOptions(系统接口)](arkts-audio-systemtoneplayer-systemtoneoptions-i-sys.md)<!--DelEnd-->
     <!--Del-->
-    - [SystemTonePlayer(系统接口)](systemtoneplayer-systemtoneplayer-i-sys.md)<!--DelEnd-->
+    - [SystemTonePlayer(系统接口)](arkts-audio-systemtoneplayer-systemtoneplayer-i-sys.md)<!--DelEnd-->

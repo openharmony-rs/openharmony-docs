@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.Configuration/Configuration
+**替代接口：** [Configuration/Configuration](arkts-ability-app-ability-configuration-configuration-i.md#Configuration)
 
 <!--Device-unnamed-export interface Configuration--><!--Device-unnamed-export interface Configuration-End-->
 
@@ -20,7 +20,7 @@
 colorMode?: ConfigurationConstant.ColorMode
 ```
 
-表示深浅色模式，取值范围：浅色模式（COLOR\_MODE\_LIGHT），深色模式（COLOR\_MODE\_DARK）。默认为浅色。
+表示深浅色模式，取值范围：浅色模式（COLOR_MODE_LIGHT），深色模式（COLOR_MODE_DARK）。默认为浅色。
 
 **类型：** ConfigurationConstant.ColorMode
 
@@ -30,7 +30,7 @@ colorMode?: ConfigurationConstant.ColorMode
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.Configuration/Configuration#colorMode
+**替代接口：** [colorMode](arkts-ability-app-ability-configuration-configuration-i.md#colorMode)
 
 <!--Device-Configuration-colorMode?: ConfigurationConstant.ColorMode--><!--Device-Configuration-colorMode?: ConfigurationConstant.ColorMode-End-->
 
@@ -52,7 +52,7 @@ language?: string
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.Configuration/Configuration#language
+**替代接口：** [language](arkts-ability-app-ability-configuration-configuration-i.md#language)
 
 <!--Device-Configuration-language?: string--><!--Device-Configuration-language?: string-End-->
 

@@ -1,10 +1,12 @@
 # Stat
 
-文件具体信息，在调用Stat的方法前，需要先通过\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_方法（同步或异步）构建一个 Stat实例。
+文件具体信息，在调用Stat的方法前，需要先通过stat()方法（同步或异步）构建一个 Stat实例。
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare interface Stat--><!--Device-unnamed-declare interface Stat-End-->
 
@@ -21,6 +23,8 @@ isBlockDevice(): boolean
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 <!--Device-Stat-isBlockDevice(): boolean--><!--Device-Stat-isBlockDevice(): boolean-End-->
 
@@ -39,7 +43,7 @@ isBlockDevice(): boolean
 | 13900005 | I/O error |
 | 13900042 | Unknown error |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let filePath = pathDir + "/test.txt";
@@ -58,6 +62,8 @@ isCharacterDevice(): boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 <!--Device-Stat-isCharacterDevice(): boolean--><!--Device-Stat-isCharacterDevice(): boolean-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -75,7 +81,7 @@ isCharacterDevice(): boolean
 | 13900005 | I/O error |
 | 13900042 | Unknown error |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let filePath = pathDir + "/test.txt";
@@ -93,6 +99,8 @@ isDirectory(): boolean
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -113,7 +121,7 @@ isDirectory(): boolean
 | 13900005 | I/O error |
 | 13900042 | Unknown error |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let dirPath = pathDir + "/test";
@@ -132,6 +140,8 @@ isFIFO(): boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 <!--Device-Stat-isFIFO(): boolean--><!--Device-Stat-isFIFO(): boolean-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -149,7 +159,7 @@ isFIFO(): boolean
 | 13900005 | I/O error |
 | 13900042 | Unknown error |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let filePath = pathDir + "/test.txt";
@@ -167,6 +177,8 @@ isFile(): boolean
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -187,7 +199,7 @@ isFile(): boolean
 | 13900005 | I/O error |
 | 13900042 | Unknown error |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let filePath = pathDir + "/test.txt";
@@ -206,6 +218,8 @@ isSocket(): boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 <!--Device-Stat-isSocket(): boolean--><!--Device-Stat-isSocket(): boolean-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -223,7 +237,7 @@ isSocket(): boolean
 | 13900005 | I/O error |
 | 13900042 | Unknown error |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let filePath = pathDir + "/test.txt";
@@ -242,6 +256,8 @@ isSymbolicLink(): boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 <!--Device-Stat-isSymbolicLink(): boolean--><!--Device-Stat-isSymbolicLink(): boolean-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -259,7 +275,7 @@ isSymbolicLink(): boolean
 | 13900005 | I/O error |
 | 13900042 | Unknown error |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let filePath = pathDir + "/test.txt";
@@ -279,6 +295,8 @@ readonly atime: number
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -300,6 +318,8 @@ readonly atimeNs?:bigint
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
 
+**废弃版本：** -1
+
 <!--Device-Stat-readonly atimeNs?:bigint--><!--Device-Stat-readonly atimeNs?:bigint-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -317,6 +337,8 @@ readonly ctime: number
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 <!--Device-Stat-readonly ctime: number--><!--Device-Stat-readonly ctime: number-End-->
 
@@ -336,6 +358,8 @@ readonly ctimeNs?:bigint
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
 
+**废弃版本：** -1
+
 <!--Device-Stat-readonly ctimeNs?:bigint--><!--Device-Stat-readonly ctimeNs?:bigint-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -353,6 +377,8 @@ readonly gid: number
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 <!--Device-Stat-readonly gid: number--><!--Device-Stat-readonly gid: number-End-->
 
@@ -372,6 +398,8 @@ readonly ino: bigint
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 <!--Device-Stat-readonly ino: bigint--><!--Device-Stat-readonly ino: bigint-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -384,11 +412,13 @@ readonly location: LocationType
 
 文件的位置，表示该文件是本地文件或者云端文件。
 
-**类型：** LocationType
+**类型：** [LocationType](arkts-corefile-file-fs-locationtype-e.md)
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 <!--Device-Stat-readonly location: LocationType--><!--Device-Stat-readonly location: LocationType-End-->
 
@@ -400,13 +430,15 @@ readonly location: LocationType
 readonly mode: number
 ```
 
-表示文件权限，各特征位的含义如下： **说明**：以下值为八进制，取得的返回值为十进制，请换算后查看。 - 0o400：用户读。对于普通文件，所有者可读取文件；对于目录，所有者可读取目录项。 - 0o200：用户写。对于普通文件，所有者可写入文件；对于目录，所有者可创建/删除目录项。 - 0o100：用户执行。对于普通文件，所有者可执行文件；对于目录，所有者可在目录中搜索给定路径名。 - 0o040：用户组读。对于普通文件，所有用户组可读取文件；对于目录，所有用户组可读取目录项。 - 0o020：用户组写。对于普通文件，所有用户组可写入文件；对于目录，所有用户组可创建/删除目录项。 - 0o010：用户组执行。对于普通文件，所有用户组可执行文件；对于目录，所有用户组是否可在目录中搜索给定路径名。 - 0o004：其他读。对于普通文件，其余用户可读取文件；对于目录，其他用户组可读取目录项。 - 0o002：其他写。对于普通文件，其余用户可写入文件；对于目录，其他用户组可创建/删除目录项。 - 0o001：其他执行。对于普通文件，其余用户可执行文件；对于目录，其他用户组可在目录中搜索给定路径名。
+表示文件权限，各特征位的含义如下： **说明：**以下值为八进制，取得的返回值为十进制，请换算后查看。 - 0o400：用户读。对于普通文件，所有者可读取文件；对于目录，所有者可读取目录项。 - 0o200：用户写。对于普通文件，所有者可写入文件；对于目录，所有者可创建/删除目录项。 - 0o100：用户执行。对于普通文件，所有者可执行文件；对于目录，所有者可在目录中搜索给定路径名。 - 0o040：用户组读。对于普通文件，所有用户组可读取文件；对于目录，所有用户组可读取目录项。 - 0o020：用户组写。对于普通文件，所有用户组可写入文件；对于目录，所有用户组可创建/删除目录项。 - 0o010：用户组执行。对于普通文件，所有用户组可执行文件；对于目录，所有用户组是否可在目录中搜索给定路径名。 - 0o004：其他读。对于普通文件，其余用户可读取文件；对于目录，其他用户组可读取目录项。 - 0o002：其他写。对于普通文件，其余用户可写入文件；对于目录，其他用户组可创建/删除目录项。 - 0o001：其他执行。对于普通文件，其余用户可执行文件；对于目录，其他用户组可在目录中搜索给定路径名。
 
 **类型：** number
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -428,6 +460,8 @@ readonly mtime: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Stat-readonly mtime: number--><!--Device-Stat-readonly mtime: number-End-->
@@ -448,6 +482,8 @@ readonly mtimeNs?:bigint
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
 
+**废弃版本：** -1
+
 <!--Device-Stat-readonly mtimeNs?:bigint--><!--Device-Stat-readonly mtimeNs?:bigint-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -465,6 +501,8 @@ readonly size: number
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -485,6 +523,8 @@ readonly uid: number
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 <!--Device-Stat-readonly uid: number--><!--Device-Stat-readonly uid: number-End-->
 

@@ -1,10 +1,12 @@
 # DragStartRequestStatus
 
-定义应用是否可以发起拖拽的枚举类型。仅在[onDragStart]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_调用时有效。
+定义应用是否可以发起拖拽的枚举类型。仅在onDragStart调用时有效。
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 <!--Device-dragController-const enum DragStartRequestStatus--><!--Device-dragController-const enum DragStartRequestStatus-End-->
 
@@ -21,6 +23,8 @@ WAITING = 0
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -41,6 +45,8 @@ READY = 1
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

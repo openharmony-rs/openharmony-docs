@@ -14,7 +14,7 @@ declare function copyFileSync(src: string | number, dest: string | number, mode?
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.file.fs:copyFileSync](arkts-corefile-fileio-copyfilesync-f.md#copyfilesync)
+**替代接口：** [copyFileSync](arkts-corefile-file-fs-copyfilesync-f.md#copyFileSync)
 
 <!--Device-unnamed-declare function copyFileSync(src: string | number, dest: string | number, mode?: number): void--><!--Device-unnamed-declare function copyFileSync(src: string | number, dest: string | number, mode?: number): void-End-->
 
@@ -26,5 +26,5 @@ declare function copyFileSync(src: string | number, dest: string | number, mode?
 | --- | --- | --- | --- |
 | src | string \| number | 是 | 待复制文件的路径或待复制文件的描述符。 |
 | dest | string \| number | 是 | 目标文件路径或目标文件描述符。 |
-| mode | number | 否 | mode提供覆盖文件的选项，当前仅支持0，且默认为0。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_0：完全覆盖目标文件，未覆盖部分将被裁切掉。 |
+| mode | number | 否 | mode提供覆盖文件的选项，当前仅支持0，且默认为0。&lt;br/&gt;0：完全覆盖目标文件，未覆盖部分将被裁切掉。 |
 

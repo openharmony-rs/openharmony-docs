@@ -10,7 +10,9 @@ function updateEnabledBusinessIds(templateId: Uint8Array, enabledBusinessIds: in
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.USE_USER_IDM
 
@@ -26,8 +28,8 @@ function updateEnabledBusinessIds(templateId: Uint8Array, enabledBusinessIds: in
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| templateId | Uint8Array | 是 | 目标模板ID。要更新业务范围的模板的唯一标识，可通过[getTemplateStatus]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_获取。 |
-| enabledBusinessIds | ArkTS-Dyn: number[]  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int[] | 是 | 模板支持的业务ID集合。要启用的业务场景列表，如[BusinessId.DEFAULT]。不同业务ID对应不同的认证场景，应用可根据业务需求配置（厂商自定义业务ID需 ≥ 10000）。 |
+| templateId | Uint8Array | 是 | 目标模板ID。要更新业务范围的模板的唯一标识，可通过 [getTemplateStatus](arkts-userauthentication-companiondeviceauth-statusmonitor-i-sys.md#getTemplateStatus)获取。 |
+| enabledBusinessIds | int[] | 是 | 模板支持的业务ID集合。要启用的业务场景列表，如[BusinessId.DEFAULT]。不同业务ID对应不同的认证场景，应用可根据业务需求配置（厂商自定 义业务ID需 ≥ 10000）。 |
 
 **返回值：**
 
@@ -39,9 +41,39 @@ function updateEnabledBusinessIds(templateId: Uint8Array, enabledBusinessIds: in
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [32600001](../errorcode-useriam.md#32600001-系统服务工作异常) | The system service is not working properly. Please try again later. |
+| [32600003](../errorcode-useriam.md#32600003-业务id无效) | The business ID is invalid. |
+| [32600002](../errorcode-useriam.md#32600002-模板未找到) | The template is not found. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
-| [32600001](../errorcode-useriam.md#32600001-系统服务工作异常) | The system service is not working properly. Please try again later. |
-| [32600002](../errorcode-useriam.md#32600002-模板未找到) | The template is not found. |
-| [32600003](../errorcode-useriam.md#32600003-业务id无效) | The business ID is invalid. |
+
+## 示例
+
+ArkTS-Dyn示例：
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const templateId = new Uint8Array([1, 2, 3]);
+companionDeviceAuth.updateEnabledBusinessIds(templateId, [companionDeviceAuth.BusinessId.DEFAULT])
+  .then(() => {
+    console.info('business scope updated');
+  })
+  .catch((err: BusinessError) => {
+    console.error(`error has been captured. Code: ${err.code}, message: ${err.message}`);
+  })
+```
+
+ArkTS-Sta示例：
+
+```TypeScript
+const templateId = new Uint8Array([1, 2, 3]);
+companionDeviceAuth.updateEnabledBusinessIds(templateId, [companionDeviceAuth.BusinessId.DEFAULT])
+  .then(() => {
+    console.info('business scope updated');
+  })
+  .catch((err) => {
+    console.error(`error has been captured: code: ${err.code}, message: ${err.message}`);
+  })
+```
 

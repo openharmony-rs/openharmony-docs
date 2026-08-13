@@ -15,6 +15,8 @@ declare function listFileExt(
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-declare function listFileExt(  path: string,  options?: ListFileExtOptions): Promise<string[]>--><!--Device-unnamed-declare function listFileExt(  path: string,  options?: ListFileExtOptions): Promise<string[]>-End-->
@@ -26,7 +28,7 @@ declare function listFileExt(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 目录的应用沙箱路径。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 文件过滤选项。默认不进行过滤。 |
+| options | [ListFileExtOptions](arkts-corefile-file-fs-listfileextoptions-i.md) | 否 | 文件过滤选项。默认不进行过滤。 |
 
 **返回值：**
 
@@ -38,8 +40,8 @@ declare function listFileExt(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900002 | No such file or directory |
-| 13900011 | Out of memory |
-| 13900018 | Not a directory |
 | 13900020 | Invalid argument |
+| 13900002 | No such file or directory |
+| 13900018 | Not a directory |
+| 13900011 | Out of memory |
 

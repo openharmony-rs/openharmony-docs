@@ -2,9 +2,11 @@
 
 分布式硬件管理模块提供控制分布式硬件的能力，包括暂停、恢复和停止被控端分布式硬件业务。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare namespace hardwareManager--><!--Device-unnamed-declare namespace hardwareManager-End-->
 
@@ -19,9 +21,9 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [pauseDistributedHardware](arkts-distributedservice-hardwaremanager-pausedistributedhardware-f-sys.md#pausedistributedhardware) | 暂停被控端分布式硬件业务。使用promise异步回调。 |
-| [resumeDistributedHardware](arkts-distributedservice-hardwaremanager-resumedistributedhardware-f-sys.md#resumedistributedhardware) | 恢复被控端分布式硬件业务。使用promise异步回调。 |
-| [stopDistributedHardware](arkts-distributedservice-hardwaremanager-stopdistributedhardware-f-sys.md#stopdistributedhardware) | 停止被控端分布式硬件业务。使用promise异步回调。 |
+| [pauseDistributedHardware](arkts-distributedservice-hardwaremanager-pausedistributedhardware-f-sys.md#pauseDistributedHardware) | 暂停被控端分布式硬件业务。使用promise异步回调。 |
+| [resumeDistributedHardware](arkts-distributedservice-hardwaremanager-resumedistributedhardware-f-sys.md#resumeDistributedHardware) | 恢复被控端分布式硬件业务。使用promise异步回调。 |
+| [stopDistributedHardware](arkts-distributedservice-hardwaremanager-stopdistributedhardware-f-sys.md#stopDistributedHardware) | 停止被控端分布式硬件业务。使用promise异步回调。 |
 <!--DelEnd-->
 
 <!--Del-->

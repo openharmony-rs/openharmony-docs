@@ -14,7 +14,7 @@ declare function fsyncSync(fd: number): void
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.file.fs:fsyncSync](arkts-corefile-fileio-fsyncsync-f.md#fsyncsync)
+**替代接口：** [fsyncSync](arkts-corefile-file-fs-fsyncsync-f.md#fsyncSync)
 
 <!--Device-unnamed-declare function fsyncSync(fd: number): void--><!--Device-unnamed-declare function fsyncSync(fd: number): void-End-->
 

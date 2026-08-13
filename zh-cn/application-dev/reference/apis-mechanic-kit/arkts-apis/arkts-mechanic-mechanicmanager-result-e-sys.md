@@ -2,9 +2,11 @@
 
 Rotation execution results.
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-mechanicManager-export enum Result--><!--Device-mechanicManager-export enum Result-End-->
 
@@ -20,9 +22,11 @@ COMPLETED = 0
 
 Rotation completed.
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Result-COMPLETED = 0--><!--Device-Result-COMPLETED = 0-End-->
 
@@ -38,9 +42,11 @@ INTERRUPTED = 1
 
 Rotation was interrupted.
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Result-INTERRUPTED = 1--><!--Device-Result-INTERRUPTED = 1-End-->
 
@@ -56,9 +62,11 @@ LIMITED = 2
 
 Device reached limitation.
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Result-LIMITED = 2--><!--Device-Result-LIMITED = 2-End-->
 
@@ -74,9 +82,11 @@ TIMEOUT = 3
 
 Rotation time out.
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Result-TIMEOUT = 3--><!--Device-Result-TIMEOUT = 3-End-->
 
@@ -94,7 +104,9 @@ TERMINATE_OBSTACLE  = 4
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-Result-TERMINATE_OBSTACLE  = 4--><!--Device-Result-TERMINATE_OBSTACLE  = 4-End-->
 
@@ -112,7 +124,9 @@ TERMINATE_CLIFF = 5
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-Result-TERMINATE_CLIFF = 5--><!--Device-Result-TERMINATE_CLIFF = 5-End-->
 
@@ -128,9 +142,11 @@ SYSTEM_ERROR = 100
 
 Rotation failed due to system error.
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Result-SYSTEM_ERROR = 100--><!--Device-Result-SYSTEM_ERROR = 100-End-->
 

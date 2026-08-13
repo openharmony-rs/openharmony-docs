@@ -12,6 +12,8 @@ function unregisterVsyncCallback(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 <!--Device-Profiler-function unregisterVsyncCallback(): void--><!--Device-Profiler-function unregisterVsyncCallback(): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

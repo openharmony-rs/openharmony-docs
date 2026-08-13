@@ -2,9 +2,11 @@
 
 Buffer对象是处理二进制数据的缓冲区。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-buffer-class Buffer--><!--Device-buffer-class Buffer-End-->
 
@@ -22,11 +24,13 @@ compare(
     ): -1 | 0 | 1
 ```
 
-比较当前Buffer对象与目标Buffer对象，并返回Buffer在排序中的结果。
+比较当前Buffer对象与目标Buffer或Uint8Array对象，并返回在排序中的结果。
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -38,7 +42,7 @@ compare(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| target | \_\_\_MD\_LINK\_USD\_0\_\_\_ \| Uint8Array | 是 | 要比较的实例对象。 |
+| target | [Buffer](arkts-arkts-buffer-buffer-c.md) \| Uint8Array | 是 | 要比较的实例对象。 |
 | targetStart | number | 否 | target实例中开始的偏移量。默认值：0。 |
 | targetEnd | number | 否 | target实例中结束的偏移量（不包含结束位置）。默认值：目标对象的字节长度。 |
 | sourceStart | number | 否 | this实例中开始的偏移量。默认值：0。 |
@@ -48,15 +52,15 @@ compare(
 
 | 类型 | 说明 |
 | --- | --- |
-| -1 | 比较结果。如果两个Buffer对象相同，则返回0；如果当前对象在排序时位于目标对象之后，则返回1； |
+| -1 | 比较结果。如果两个Buffer对象相同，则返回0；如果当前对象在排序时位于目标对象之后，则返回1； 如果当前对象在排序时位于目标对象之前，则返回-1。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[targetStart/targetEnd/sourceStart/sourceEnd]" is out of range.It must be >= 0 and <= [right range]. Received value is: [targetStart/targetEnd/sourceStart/sourceEnd] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[targetStart/targetEnd/sourceStart/sourceEnd]" is out of range. It must be >= 0 and <= [right range]. Received value is: [targetStart/targetEnd/sourceStart/sourceEnd] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -84,11 +88,13 @@ compare(
     ): int
 ```
 
-比较当前Buffer对象与目标Buffer对象，并返回Buffer在排序中的结果。
+比较当前Buffer对象与目标Buffer或Uint8Array对象，并返回在排序中的结果。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -100,11 +106,11 @@ compare(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| target | \_\_\_MD\_LINK\_USD\_0\_\_\_ \| Uint8Array | 是 | 要比较的实例对象。 |
-| targetStart | int | 否 | \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_实例中开始的偏移量。默认值：0。 |
-| targetEnd | int | 否 | \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_实例中结束的偏移量（不包含结束位置）。默认值：目标对象的字节长度。 |
-| sourceStart | int | 否 | \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_实例中开始的偏移量。默认值：0。 |
-| sourceEnd | int | 否 | \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_实例中结束的偏移量（不包含结束位置）。默认值：当前对象的字节长度。 |
+| target | [Buffer](arkts-arkts-buffer-buffer-c.md) \| Uint8Array | 是 | 要比较的实例对象。 |
+| targetStart | int | 否 | `target`实例中开始的偏移量。取值范围：>= 0且<= target的字节长度。默认值：0。 |
+| targetEnd | int | 否 | `target`实例中结束的偏移量（不包含结束位置）。默认值：目标对象的字节长度。 |
+| sourceStart | int | 否 | `this`实例中开始的偏移量。默认值：0。 |
+| sourceEnd | int | 否 | `this`实例中结束的偏移量（不包含结束位置）。默认值：当前对象的字节长度。 |
 
 **返回值：**
 
@@ -116,9 +122,9 @@ compare(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[targetStart/targetEnd/sourceStart/sourceEnd]" is out of range.It must be >= 0 and <= [right range]. Received value is: [targetStart/targetEnd/sourceStart/sourceEnd] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[targetStart/targetEnd/sourceStart/sourceEnd]" is out of range. It must be >= 0 and <= [right range]. Received value is: [targetStart/targetEnd/sourceStart/sourceEnd] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -136,21 +142,17 @@ console.info(buf1.compare(buf2, 5, 6, 5).toString());
 
 ## copy
 
-ArkTS-Dyn:
-```TypeScript
-copy(target: Buffer | Uint8Array, targetStart?: number, sourceStart?: number, sourceEnd?: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 copy(target: Buffer | Uint8Array, targetStart?: int, sourceStart?: int, sourceEnd?: int): int
 ```
 
-将\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_实例中指定位置的数据复制到\_\_\_INLINE\_CODE\_DESC\_USD\_1\_\_\_的指定位置上，并返回复制的字节总长度。
+将`this`实例中指定位置的数据复制到`target`的指定位置上，并返回复制的字节总长度。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -162,24 +164,24 @@ copy(target: Buffer | Uint8Array, targetStart?: int, sourceStart?: int, sourceEn
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| target | \_\_\_MD\_LINK\_USD\_0\_\_\_ \| Uint8Array | 是 | 要复制到的Buffer或Uint8Array实例。 |
-| targetStart | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_实例中开始写入的偏移量。默认值：0。 |
-| sourceStart | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_实例中开始复制的偏移量。默认值: 0。 |
-| sourceEnd | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_实例中结束复制的偏移量（不包含结束位置）。默认值：当前对象的字节长度。 |
+| target | [Buffer](arkts-arkts-buffer-buffer-c.md) \| Uint8Array | 是 | 要复制到的Buffer或Uint8Array实例。 |
+| targetStart | int | 否 | `target`实例中开始写入的偏移量。取值范围：>= 0且<= target的字节长度。默认值：0。 |
+| sourceStart | int | 否 | `this`实例中开始复制的偏移量。默认值: 0。 |
+| sourceEnd | int | 否 | `this`实例中结束复制的偏移量（不包含结束位置）。默认值：当前对象的字节长度。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 复制的字节总长度。 |
+| int | 复制的字节总长度。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[targetStart/sourceStart/sourceEnd]" is out of range. It must be >= 0.Received value is: [targetStart/sourceStart/sourceEnd] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[targetStart/sourceStart/sourceEnd]" is out of range. It must be >= 0. Received value is: [targetStart/sourceStart/sourceEnd] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -198,21 +200,17 @@ console.info(buf2.toString('ascii', 0, 25));
 
 ## entries
 
-ArkTS-Dyn:
-```TypeScript
-entries(): IterableIterator<[number, number]>
-```
-
-ArkTS-Sta:
 ```TypeScript
 entries(): IterableIterator<[int, long]>
 ```
 
-返回一个包含key和value的迭代器。
+返回一个包含字节索引（key）和字节值（value）的迭代器。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -224,10 +222,10 @@ entries(): IterableIterator<[int, long]>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;[number, number]&gt; | 包含key和value的迭代器，同时两者皆为number类型。\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 9 - 10 |
-| ArkTS-Dyn: IterableIterator&lt;[number, number]&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：IterableIterator&lt;[int, long]&gt; | \_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 11+ |
+| IterableIterator&lt;[number, number]&gt; | 包含key和value的迭代器，同时两者皆为number类型。<br>**适用版本：** 9 - 10 |
+| IterableIterator&lt;[int, long]&gt; | <br>**适用版本：** 11+ |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -255,11 +253,13 @@ while (!next.done) {
 equals(otherBuffer: Uint8Array | Buffer): boolean
 ```
 
-比较\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_实例和otherBuffer实例是否相等。
+比较`this`实例和otherBuffer实例是否相等。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -271,7 +271,7 @@ equals(otherBuffer: Uint8Array | Buffer): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| otherBuffer | Uint8Array \| Buffer | 是 | 比较的目标对象。 |
+| otherBuffer | Uint8Array \| [Buffer](arkts-arkts-buffer-buffer-c.md) | 是 | 比较的目标对象。 |
 
 **返回值：**
 
@@ -279,7 +279,7 @@ equals(otherBuffer: Uint8Array | Buffer): boolean
 | --- | --- |
 | boolean | 相等则返回true，否则返回false。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -296,17 +296,6 @@ console.info(buf1.equals(buf3).toString());
 
 ## fill
 
-ArkTS-Dyn:
-```TypeScript
-fill(
-      value: string | Buffer | Uint8Array | number | number | number,
-      offset?: number,
-      end?: number,
-      encoding?: BufferEncoding
-    ): Buffer
-```
-
-ArkTS-Sta:
 ```TypeScript
 fill(
       value: string | Buffer | Uint8Array | int | double | long,
@@ -316,11 +305,13 @@ fill(
     ): Buffer
 ```
 
-使用value填充当前对象指定位置的数据，默认为循环填充，并返回填充后的Buffer对象。
+使用value填充当前对象指定位置的数据，当value的长度小于需要填充的范围时会重复value进行填充，并返回填充后的Buffer对象。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -332,40 +323,36 @@ fill(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ArkTS-Dyn: string \| Buffer \| Uint8Array \| number \| number \| number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：string \| Buffer \| Uint8Array \| int \| double \| long | 是 | 用于填充的值。\_\_\_HTML\_TAG\_USD\_0\_\_\_**起始版本：** 11 |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 起始偏移量。默认值：0。 |
-| end | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 结束偏移量（不包含结束位置）。默认值：当前对象的字节长度。 |
-| encoding | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 字符编码格式（value为string才有意义）。默认值：'utf8'。 |
+| value | string \| [Buffer](arkts-arkts-buffer-buffer-c.md) \| Uint8Array \| int \| double \| long | 是 | 用于填充的值。<br>**起始版本：** 11 |
+| offset | int | 否 | 起始偏移量。取值范围：>= 0且<= Buffer.length。默认值：0。 |
+| end | int | 否 | 结束偏移量（不包含结束位置）。默认值：当前对象的字节长度。 |
+| encoding | BufferEncoding | 否 | 字符编码格式（value为string才有意义）。默认值：'utf8'。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回填充后的Buffer对象。 |
+| [Buffer](arkts-arkts-buffer-buffer-c.md) | 返回填充后的Buffer对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[offset/end]" is out of range. It must be >= 0 and <=[right range]. Received value is: [offset/end] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[offset/end]" is out of range. It must be >= 0 and <= [right range]. Received value is: [offset/end] |
 
 ## includes
 
-ArkTS-Dyn:
-```TypeScript
-includes(value: string | number | number | number | Buffer | Uint8Array, byteOffset?: number, encoding?: BufferEncoding): boolean
-```
-
-ArkTS-Sta:
 ```TypeScript
 includes(value: string | int | double | long | Buffer | Uint8Array, byteOffset?: int, encoding?: BufferEncoding): boolean
 ```
 
 检查Buffer对象是否包含value值。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -377,9 +364,9 @@ includes(value: string | int | double | long | Buffer | Uint8Array, byteOffset?:
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ArkTS-Dyn: string \| number \| number \| number \| Buffer \| Uint8Array  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：string \| int \| double \| long \| Buffer \| Uint8Array | 是 | 要搜索的内容。\_\_\_HTML\_TAG\_USD\_0\_\_\_**起始版本：** 11 |
-| byteOffset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 字节偏移量。如果为负数，则从末尾开始计算偏移量。默认值：0。 |
-| encoding | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 字符编码格式（value为string才有意义）。默认值：'utf8'。 |
+| value | string \| int \| double \| long \| [Buffer](arkts-arkts-buffer-buffer-c.md) \| Uint8Array | 是 | 要搜索的内容。<br>**起始版本：** 11 |
+| byteOffset | int | 否 | 字节偏移量。如果为负数，则从末尾开始计算偏移量。默认值：0。 |
+| encoding | BufferEncoding | 否 | 字符编码格式（value为string才有意义）。默认值：'utf8'。 |
 
 **返回值：**
 
@@ -389,21 +376,17 @@ includes(value: string | int | double | long | Buffer | Uint8Array, byteOffset?:
 
 ## indexOf
 
-ArkTS-Dyn:
-```TypeScript
-indexOf(value: string | number | number | number | Buffer | Uint8Array, byteOffset?: number, encoding?: BufferEncoding): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 indexOf(value: string | int | double | long | Buffer | Uint8Array, byteOffset?: int, encoding?: BufferEncoding): int
 ```
 
 返回当前对象中首次出现value的索引，如果不包含value，则返回-1。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -415,33 +398,29 @@ indexOf(value: string | int | double | long | Buffer | Uint8Array, byteOffset?: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ArkTS-Dyn: string \| number \| number \| number \| Buffer \| Uint8Array  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：string \| int \| double \| long \| Buffer \| Uint8Array | 是 | 要查找的内容。\_\_\_HTML\_TAG\_USD\_0\_\_\_**起始版本：** 11 |
-| byteOffset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 字节偏移量。如果为负数，则从末尾开始计算偏移量。默认值：0。 |
-| encoding | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 字符编码格式（value为string才有意义）。默认值：'utf8'。 |
+| value | string \| int \| double \| long \| [Buffer](arkts-arkts-buffer-buffer-c.md) \| Uint8Array | 是 | 要查找的内容。<br>**起始版本：** 11 |
+| byteOffset | int | 否 | 字节偏移量。如果为负数，则从末尾开始计算偏移量。默认值：0。 |
+| encoding | BufferEncoding | 否 | 字符编码格式（value为string才有意义）。默认值：'utf8'。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 第一次出现位置。 |
+| int | 第一次出现位置。 |
 
 ## keys
 
-ArkTS-Dyn:
-```TypeScript
-keys(): IterableIterator<number>
-```
-
-ArkTS-Sta:
 ```TypeScript
 keys(): IterableIterator<int>
 ```
 
-返回包含key值的迭代器。
+返回一个包含字节索引（key）和字节值（value）的迭代器。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -453,9 +432,9 @@ keys(): IterableIterator<int>
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: IterableIterator&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：IterableIterator&lt;int&gt; | 返回一个包含key值的迭代器。 |
+| IterableIterator&lt;int&gt; | 返回包含Buffer中每个字节值的迭代器。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -477,21 +456,17 @@ for (const key of keys) {
 
 ## lastIndexOf
 
-ArkTS-Dyn:
-```TypeScript
-lastIndexOf(value: string | number | number | number | Buffer | Uint8Array, byteOffset?: number, encoding?: BufferEncoding): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 lastIndexOf(value: string | int | double | long | Buffer | Uint8Array, byteOffset?: int, encoding?: BufferEncoding): int
 ```
 
 返回this实例中最后一次出现value的索引，如果对象不包含value，则返回-1。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -503,33 +478,29 @@ lastIndexOf(value: string | int | double | long | Buffer | Uint8Array, byteOffse
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ArkTS-Dyn: string \| number \| number \| number \| Buffer \| Uint8Array  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：string \| int \| double \| long \| Buffer \| Uint8Array | 是 | 要搜索的内容。\_\_\_HTML\_TAG\_USD\_0\_\_\_**起始版本：** 11 |
-| byteOffset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 字节偏移量。如果为负数，则从末尾开始计算偏移量。默认值：Buffer.length。 |
-| encoding | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 字符编码格式（value为string才有意义）。默认值：'utf8'。 |
+| value | string \| int \| double \| long \| [Buffer](arkts-arkts-buffer-buffer-c.md) \| Uint8Array | 是 | 要搜索的内容。<br>**起始版本：** 11 |
+| byteOffset | int | 否 | 字节偏移量。如果为负数，则从末尾开始计算偏移量。默认值：Buffer.length。 |
+| encoding | BufferEncoding | 否 | 字符编码格式（value为string才有意义）。默认值：'utf8'。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 最后一次出现value值的索引。 |
+| int | 最后一次出现value值的索引。 |
 
 ## readBigInt64BE
 
-ArkTS-Dyn:
-```TypeScript
-readBigInt64BE(offset?: number): bigint
-```
-
-ArkTS-Sta:
 ```TypeScript
 readBigInt64BE(offset?: int): bigint
 ```
 
-从指定的\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_处读取有符号的大端序64位整数。
+从指定的`offset`处读取有符号的大端序64位整数。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -541,21 +512,21 @@ readBigInt64BE(offset?: int): bigint
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 8。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 8。当Buffer长度小于8时无法使用此方法。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| bigint | 读取出的内容。 |
+| bigint | 读取的有符号大端序64位整数值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8 . Received value is: [offset] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -573,21 +544,17 @@ console.info("result = " + result);
 
 ## readBigInt64LE
 
-ArkTS-Dyn:
-```TypeScript
-readBigInt64LE(offset?: number): bigint
-```
-
-ArkTS-Sta:
 ```TypeScript
 readBigInt64LE(offset?: int): bigint
 ```
 
-从指定的\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_处读取有符号的小端序64位整数。
+从指定的`offset`处读取有符号的小端序64位整数。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -599,21 +566,21 @@ readBigInt64LE(offset?: int): bigint
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 8，默认值：0。 |
+| offset | int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 8，默认值：0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| bigint | 读取出的内容。 |
+| bigint | 从Buffer中读取的有符号小端序64位整数值，可用于高精度整数运算的二进制数据处理。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8 . Received value is: [offset] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -631,21 +598,17 @@ console.info("result = " + result);
 
 ## readBigUInt64BE
 
-ArkTS-Dyn:
-```TypeScript
-readBigUInt64BE(offset?: number): bigint
-```
-
-ArkTS-Sta:
 ```TypeScript
 readBigUInt64BE(offset?: int): bigint
 ```
 
-从指定的\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_处读取无符号的大端序64位整数。
+从指定的`offset`处读取无符号的大端序64位整数。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -657,21 +620,21 @@ readBigUInt64BE(offset?: int): bigint
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 8，默认值：0。 |
+| offset | int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 8，默认值：0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| bigint | 读取出的内容。 |
+| bigint | 从Buffer中读取的无符号大端序64位整数值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8 . Received value is: [offset] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -688,21 +651,17 @@ console.info("result = " + result);
 
 ## readBigUInt64LE
 
-ArkTS-Dyn:
-```TypeScript
-readBigUInt64LE(offset?: number): bigint
-```
-
-ArkTS-Sta:
 ```TypeScript
 readBigUInt64LE(offset?: int): bigint
 ```
 
-从指定的\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_处读取无符号的小端序64位整数。
+从指定的`offset`处读取无符号的小端序64位整数。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -714,21 +673,21 @@ readBigUInt64LE(offset?: int): bigint
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 8，默认值：0。 |
+| offset | int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 8，默认值：0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| bigint | 读取出的内容。 |
+| bigint | 从Buffer中读取的无符号小端序64位整数值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8 . Received value is: [offset] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -746,21 +705,17 @@ console.info("result = " + result);
 
 ## readDoubleBE
 
-ArkTS-Dyn:
-```TypeScript
-readDoubleBE(offset?: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 readDoubleBE(offset?: int): double
 ```
 
-从指定的\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_处读取64位大端序双精度值。
+从指定的`offset`处读取64位大端序双精度值。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -772,21 +727,21 @@ readDoubleBE(offset?: int): double
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 8，默认值：0。 |
+| offset | int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 8，默认值：0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：double | 读取出的内容。 |
+| double | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8 . Received value is: [offset] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -802,21 +757,17 @@ console.info("result = " + result);
 
 ## readDoubleLE
 
-ArkTS-Dyn:
-```TypeScript
-readDoubleLE(offset?: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 readDoubleLE(offset?: int): double
 ```
 
-从指定的\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_处读取64位小端序双精度值。
+从指定的`offset`处读取64位小端序双精度值。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -828,21 +779,21 @@ readDoubleLE(offset?: int): double
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 8，默认值：0。 |
+| offset | int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 8，默认值：0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：double | 读取出的内容。 |
+| double | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8 . Received value is: [offset] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -858,21 +809,17 @@ console.info("result = " + result);
 
 ## readFloatBE
 
-ArkTS-Dyn:
-```TypeScript
-readFloatBE(offset?: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 readFloatBE(offset?: int): double
 ```
 
-从指定的\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_处读取32位大端序浮点数。
+从指定的`offset`处读取32位大端序浮点数。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -884,21 +831,21 @@ readFloatBE(offset?: int): double
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 4，默认值：0。 |
+| offset | int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 4，默认值：0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：double | 读取出的内容。 |
+| double | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4 . Received value is: [offset] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -914,21 +861,17 @@ console.info("result = " + result);
 
 ## readFloatLE
 
-ArkTS-Dyn:
-```TypeScript
-readFloatLE(offset?: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 readFloatLE(offset?: int): double
 ```
 
-从指定的\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_处读取32位小端序浮点数。
+从指定的`offset`处读取32位小端序浮点数。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -940,21 +883,21 @@ readFloatLE(offset?: int): double
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 4，默认值：0。 |
+| offset | int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 4，默认值：0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：double | 读取出的内容。 |
+| double | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4 . Received value is: [offset] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -970,21 +913,17 @@ console.info("result = " + result);
 
 ## readInt16BE
 
-ArkTS-Dyn:
-```TypeScript
-readInt16BE(offset?: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 readInt16BE(offset?: int): long
 ```
 
-从指定的\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_处读取有符号的大端序16位整数。
+从指定的`offset`处读取有符号的大端序16位整数。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -996,21 +935,21 @@ readInt16BE(offset?: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 2，默认值：0。 |
+| offset | int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 2，默认值：0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 读取出的内容。 |
+| long | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 2. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 2 . Received value is: [offset] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -1026,21 +965,17 @@ console.info("result = " + result);
 
 ## readInt16LE
 
-ArkTS-Dyn:
-```TypeScript
-readInt16LE(offset?: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 readInt16LE(offset?: int): long
 ```
 
-从指定的\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_处读取有符号的小端序16位整数。
+从指定的`offset`处读取有符号的小端序16位整数。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1052,21 +987,21 @@ readInt16LE(offset?: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 2，默认值：0。 |
+| offset | int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 2，默认值：0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 读取出的内容。 |
+| long | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 2. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 2 . Received value is: [offset] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -1082,21 +1017,17 @@ console.info("result = " + result);
 
 ## readInt32BE
 
-ArkTS-Dyn:
-```TypeScript
-readInt32BE(offset?: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 readInt32BE(offset?: int): long
 ```
 
-从指定的\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_处读取有符号的大端序32位整数。
+从指定的`offset`处读取有符号的大端序32位整数。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1108,21 +1039,21 @@ readInt32BE(offset?: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 4，默认值：0。 |
+| offset | int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 4，默认值：0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 读取出的内容。 |
+| long | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4 . Received value is: [offset] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -1138,21 +1069,17 @@ console.info("result = " + result);
 
 ## readInt32LE
 
-ArkTS-Dyn:
-```TypeScript
-readInt32LE(offset?: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 readInt32LE(offset?: int): long
 ```
 
-从指定的\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_处读取有符号的小端序32位整数。
+从指定的`offset`处读取有符号的小端序32位整数。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1164,21 +1091,21 @@ readInt32LE(offset?: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 4，默认值：0。 |
+| offset | int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 4，默认值：0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 读取出的内容。 |
+| long | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4 . Received value is: [offset] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -1194,21 +1121,17 @@ console.info("result = " + result);
 
 ## readInt8
 
-ArkTS-Dyn:
-```TypeScript
-readInt8(offset?: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 readInt8(offset?: int): long
 ```
 
-从指定的\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_处读取有符号的8位整数。
+从指定的`offset`处读取有符号的8位整数。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1220,21 +1143,21 @@ readInt8(offset?: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 1，默认值：0。 |
+| offset | int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 1，默认值：0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 读取出的内容。 |
+| long | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 1. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 1 . Received value is: [offset] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -1252,21 +1175,17 @@ console.info("result = " + result);
 
 ## readIntBE
 
-ArkTS-Dyn:
-```TypeScript
-readIntBE(offset: number, byteLength: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 readIntBE(offset: int, byteLength: int): long
 ```
 
-从指定的\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_处读取byteLength个字节，并将结果解释为支持最高48位精度的大端序、二进制补码有符号值。
+从指定的`offset`处读取byteLength个字节，并将结果解释为支持最高48位精度的大端序、二进制补码有符号值。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1278,22 +1197,22 @@ readIntBE(offset: int, byteLength: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 偏移量。取值范围：0 <= offset <= Buffer.length - byteLength，默认值：0。 |
-| byteLength | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 读取的字节数。取值范围：1 <= byteLength <= 6。 |
+| offset | int | 是 | 偏移量。取值范围：0 <= offset <= Buffer.length - byteLength，默认值：0。 |
+| byteLength | int | 是 | 读取的字节数。取值范围：1 <= byteLength <= 6。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 读取的内容。当offset为小数时，返回undefined。 |
+| long | 读取的内容。当offset为小数时，返回undefined。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -1310,21 +1229,17 @@ console.info("result = " + result);
 
 ## readIntLE
 
-ArkTS-Dyn:
-```TypeScript
-readIntLE(offset: number, byteLength: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 readIntLE(offset: int, byteLength: int): long
 ```
 
-从指定的\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_处读取\_\_\_INLINE\_CODE\_DESC\_USD\_1\_\_\_个字节，并将结果解释为支持最高48位精度的小端序、二进制补码有符号值。
+从指定的`offset`处读取`byteLength`个字节，并将结果解释为支持最高48位精度的小端序、二进制补码有符号值。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1336,22 +1251,22 @@ readIntLE(offset: int, byteLength: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 偏移量。取值范围：0 <= offset <= Buffer.length - byteLength，默认值：0。 |
-| byteLength | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 读取的字节数。取值范围：1 <= byteLength <= 6。 |
+| offset | int | 是 | 偏移量。取值范围：0 <= offset <= Buffer.length - byteLength，默认值：0。 |
+| byteLength | int | 是 | 读取的字节数。取值范围：1 <= byteLength <= 6。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 读取出的内容。当offset为小数时，返回undefined。 |
+| long | 读取出的内容。当offset为小数时，返回undefined。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -1367,21 +1282,17 @@ console.info("result = " + result);
 
 ## readUInt16BE
 
-ArkTS-Dyn:
-```TypeScript
-readUInt16BE(offset?: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 readUInt16BE(offset?: int): long
 ```
 
-从指定的\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_处读取无符号的大端序16位整数。
+从指定的`offset`处读取无符号的大端序16位整数。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1393,21 +1304,21 @@ readUInt16BE(offset?: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 2，默认值：0。 |
+| offset | int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 2，默认值：0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 读取出的内容。 |
+| long | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 2. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 2 . Received value is: [offset] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -1425,21 +1336,17 @@ console.info("result = " + result);
 
 ## readUInt16LE
 
-ArkTS-Dyn:
-```TypeScript
-readUInt16LE(offset?: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 readUInt16LE(offset?: int): long
 ```
 
-从指定的\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_处的buf读取无符号的小端序16位整数。
+从指定的`offset`处读取无符号的小端序16位整数。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1451,21 +1358,21 @@ readUInt16LE(offset?: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 2，默认值：0。 |
+| offset | int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 2，默认值：0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 读取出的内容。 |
+| long | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 2. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 2 . Received value is: [offset] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -1483,21 +1390,17 @@ console.info("result = " + result);
 
 ## readUInt32BE
 
-ArkTS-Dyn:
-```TypeScript
-readUInt32BE(offset?: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 readUInt32BE(offset?: int): long
 ```
 
-从指定的\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_处的buf读取无符号的大端序32位整数。
+从指定的`offset`处的buf读取无符号的大端序32位整数。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1509,21 +1412,21 @@ readUInt32BE(offset?: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 4，默认值：0。 |
+| offset | int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 4，默认值：0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 读取出的内容。 |
+| long | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4 . Received value is: [offset] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -1539,21 +1442,17 @@ console.info("result = " + result);
 
 ## readUInt32LE
 
-ArkTS-Dyn:
-```TypeScript
-readUInt32LE(offset?: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 readUInt32LE(offset?: int): long
 ```
 
-从指定的\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_处的buf读取无符号的小端序32位整数。
+从指定的`offset`处的buf读取无符号的小端序32位整数。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1565,21 +1464,21 @@ readUInt32LE(offset?: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 4，默认值：0。 |
+| offset | int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 4，默认值：0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 读取出的内容。 |
+| long | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4 . Received value is: [offset] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -1595,21 +1494,17 @@ console.info("result = " + result);
 
 ## readUInt8
 
-ArkTS-Dyn:
-```TypeScript
-readUInt8(offset?: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 readUInt8(offset?: int): long
 ```
 
-从\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_处读取8位无符号整型数。
+从指定的`offset`处读取8位无符号整型数。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1621,21 +1516,21 @@ readUInt8(offset?: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 1，默认值：0。 |
+| offset | int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 1，默认值：0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 读取出的内容。 |
+| long | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 1. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 1 . Received value is: [offset] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -1653,21 +1548,17 @@ console.info("result = " + result);
 
 ## readUIntBE
 
-ArkTS-Dyn:
-```TypeScript
-readUIntBE(offset: number, byteLength: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 readUIntBE(offset: int, byteLength: int): long
 ```
 
-从指定的\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_处的buf读取\_\_\_INLINE\_CODE\_DESC\_USD\_1\_\_\_个字节，并将结果解释为支持最高48位精度的无符号大端序整数。
+从指定的`offset`处的buf读取`byteLength`个字节，并将结果解释为支持最高48位精度的无符号大端序整数。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1679,22 +1570,22 @@ readUIntBE(offset: int, byteLength: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 偏移量。取值范围：0 <= offset <= Buffer.length - byteLength，默认值：0。 |
-| byteLength | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 要读取的字节数。读取的字节数。取值范围：1 <= byteLength <= 6。 |
+| offset | int | 是 | 偏移量。取值范围：0 <= offset <= Buffer.length - byteLength，默认值：0。 |
+| byteLength | int | 是 | 要读取的字节数。取值范围：1 <= byteLength <= 6。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 读取出的内容。当offset为小数时，返回undefined。 |
+| long | 读取出的内容。当offset为小数时，返回undefined。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -1710,21 +1601,17 @@ console.info("result = " + result);
 
 ## readUIntLE
 
-ArkTS-Dyn:
-```TypeScript
-readUIntLE(offset: number, byteLength: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 readUIntLE(offset: int, byteLength: int): long
 ```
 
-从指定的\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_处的buf读取\_\_\_INLINE\_CODE\_DESC\_USD\_1\_\_\_个字节，并将结果解释为支持最高48位精度的无符号小端序整数。
+从指定的`offset`处的buf读取`byteLength`个字节，并将结果解释为支持最高48位精度的无符号小端序整数。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1736,22 +1623,22 @@ readUIntLE(offset: int, byteLength: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 偏移量。取值范围：0 <= offset <= Buffer.length - byteLength，默认值：0。 |
-| byteLength | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 读取的字节数。取值范围：1 <= byteLength <= 6。 |
+| offset | int | 是 | 偏移量。取值范围：0 <= offset <= Buffer.length - byteLength，默认值：0。 |
+| byteLength | int | 是 | 读取的字节数。取值范围：1 <= byteLength <= 6。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 读取出的内容。当offset为小数时，返回undefined。 |
+| long | 读取出的内容。当offset为小数时，返回undefined。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -1767,21 +1654,17 @@ console.info("result = " + result);
 
 ## subarray
 
-ArkTS-Dyn:
-```TypeScript
-subarray(start?: number, end?: number): Buffer
-```
-
-ArkTS-Sta:
 ```TypeScript
 subarray(start?: int, end?: int): Buffer
 ```
 
 截取当前对象指定位置的数据并返回。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1793,16 +1676,16 @@ subarray(start?: int, end?: int): Buffer
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| start | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 截取开始位置。默认值：0。 |
-| end | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 截取结束位置（不包含结束位置）。默认值：当前对象的字节长度。在传入null时返回空Buffer。 |
+| start | int | 否 | 截取开始位置。默认值：0。 |
+| end | int | 否 | 截取结束位置（不包含结束位置）。默认值：当前对象的字节长度。在传入null时返回空Buffer。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回新的Buffer对象。当start < 0或end < 0时返回空Buffer。 |
+| [Buffer](arkts-arkts-buffer-buffer-c.md) | 返回新的Buffer对象。当start < 0或end < 0时返回空Buffer。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -1823,11 +1706,13 @@ console.info(buf2.toString('ascii', 0, buf2.length));
 swap16(): Buffer
 ```
 
-将当前对象转换为无符号的16位整数数组，并交换字节顺序。
+将当前对象转换为无符号的16位整数数组，并交换字节顺序。适用于需要在大端序和小端序之间转换16位数据的场景。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1839,7 +1724,7 @@ swap16(): Buffer
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 交换之后的Buffer对象。 |
+| [Buffer](arkts-arkts-buffer-buffer-c.md) | 交换之后的Buffer对象。 |
 
 **错误码：**
 
@@ -1847,7 +1732,7 @@ swap16(): Buffer
 | --- | --- |
 | [10200009](../errorcode-utils.md#10200009-buffer的长度错误) | The buffer size must be a multiple of 16-bits |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -1866,11 +1751,13 @@ console.info(buf1.toString('hex'));
 swap32(): Buffer
 ```
 
-将当前对象转换为无符号的32位整数数组，并交换字节顺序。
+将当前对象转换为无符号的32位整数数组，并交换字节顺序。适用于需要在大端序和小端序之间转换32位数据的场景。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1882,7 +1769,7 @@ swap32(): Buffer
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 交换之后的Buffer对象。 |
+| [Buffer](arkts-arkts-buffer-buffer-c.md) | 交换之后的Buffer对象。 |
 
 **错误码：**
 
@@ -1890,7 +1777,7 @@ swap32(): Buffer
 | --- | --- |
 | [10200009](../errorcode-utils.md#10200009-buffer的长度错误) | The buffer size must be a multiple of 32-bits |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -1909,11 +1796,13 @@ console.info(buf1.toString('hex'));
 swap64(): Buffer
 ```
 
-将当前对象转换为无符号的64位整数数组，并交换字节顺序。
+将当前对象转换为无符号的64位整数数组，并交换字节顺序。适用于需要在大端序和小端序之间转换64位数据的场景。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1925,7 +1814,7 @@ swap64(): Buffer
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 交换之后的Buffer对象。 |
+| [Buffer](arkts-arkts-buffer-buffer-c.md) | 交换之后的Buffer对象。 |
 
 **错误码：**
 
@@ -1933,7 +1822,7 @@ swap64(): Buffer
 | --- | --- |
 | [10200009](../errorcode-utils.md#10200009-buffer的长度错误) | The buffer size must be a multiple of 64-bits |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -1952,11 +1841,13 @@ console.info(buf1.toString('hex'));
 toJSON(): Object
 ```
 
-将Buffer转为JSON并返回。
+将Buffer转为JSON对象并返回，该对象包含type属性（值为'Buffer'）和data属性（值为按字节顺序排列的数组）。
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1970,7 +1861,7 @@ toJSON(): Object
 | --- | --- |
 | Object | JSON对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -1991,7 +1882,9 @@ toJSON(): jsonx.JsonElement
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -2005,7 +1898,7 @@ toJSON(): jsonx.JsonElement
 | --- | --- |
 | jsonx.JsonElement | 新的JsonElement对象，包含此Buffer的内容。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -2028,6 +1921,8 @@ toString(encoding?: string, start?: number, end?: number): string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Buffer-toString(encoding?: string, start?: number, end?: number): string--><!--Device-Buffer-toString(encoding?: string, start?: number, end?: number): string-End-->
@@ -2038,8 +1933,8 @@ toString(encoding?: string, start?: number, end?: number): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| encoding | string | 否 | 字符编码格式。默认值：'utf8'。 |
-| start | number | 否 | 开始位置。默认值：0。 |
+| encoding | string | 否 | 字符编码格式（`value`参数为string时才有意义）。默认值：'utf8'。 |
+| start | number | 否 | 开始位置，单位：字节。默认值：0。 |
 | end | number | 否 | 结束位置。默认值：Buffer.length。 |
 
 **返回值：**
@@ -2048,7 +1943,7 @@ toString(encoding?: string, start?: number, end?: number): string
 | --- | --- |
 | string | 字符串。当start >= Buffer.length或start > end时返回空字符串。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -2071,7 +1966,9 @@ toString(): string
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2097,7 +1994,9 @@ toString(encoding?: BufferEncoding, start?: int, end?: int): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2111,9 +2010,9 @@ toString(encoding?: BufferEncoding, start?: int, end?: int): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| encoding | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | encoding [encoding='utf8'] 使用的字符编码。 |
-| start | int | 否 | start [start = 0] 开始解码的字节偏移量。该值应为整数。 |
-| end | int | 否 | end [end = buf.length] 结束解码的字节偏移量（不包含结束位置）。该值应为整数。 |
+| encoding | BufferEncoding | 否 | encoding [encoding='utf8'] 使用的字符编码。 |
+| start | int | 否 | start [start = 0] 开始解码的字节偏移量。 该值应为整数。 |
+| end | int | 否 | end [end = buf.length] 结束解码的字节偏移量（不包含结束位置）。 该值应为整数。 |
 
 **返回值：**
 
@@ -2121,7 +2020,7 @@ toString(encoding?: BufferEncoding, start?: int, end?: int): string
 | --- | --- |
 | string | 解码后的字符串。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -2136,21 +2035,17 @@ console.info(buf1.toString('utf-8'));
 
 ## values
 
-ArkTS-Dyn:
-```TypeScript
-values(): IterableIterator<number>
-```
-
-ArkTS-Sta:
 ```TypeScript
 values(): IterableIterator<long>
 ```
 
 返回一个包含value的迭代器。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -2162,9 +2057,9 @@ values(): IterableIterator<long>
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: IterableIterator&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：IterableIterator&lt;long&gt; | 迭代器。 |
+| IterableIterator&lt;long&gt; | 迭代器。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -2188,21 +2083,17 @@ while (!next.done) {
 
 ## write
 
-ArkTS-Dyn:
-```TypeScript
-write(str: string, offset?: number, length?: number, encoding?: string): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 write(str: string, offset?: int, length?: int, encoding?: string): int
 ```
 
 在Buffer对象的offset偏移处写入指定编码的字符串，写入的字节长度为length。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -2215,23 +2106,23 @@ write(str: string, offset?: int, length?: int, encoding?: string): int
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | str | string | 是 | 要写入Buffer的字符串。 |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。默认值：0。 |
-| length | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 最大字节长度。默认值：（Buffer.length - offset）。 |
-| encoding | string | 否 | 字符编码。默认值：'utf8'。 |
+| offset | int | 否 | 偏移量。取值范围：>= 0且<= Buffer.length。默认值：0。 |
+| length | int | 否 | 最大字节长度。默认值：（Buffer.length - offset）。 |
+| encoding | string | 否 | 字符编码，支持的格式范围为BufferEncoding。默认值：'utf8'。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 写入的字节数。 |
+| int | 写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[offset/length]" is out of range. It must be >= 0 and <=buf.length. Received value is: [offset/length] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[offset/length]" is out of range. It must be >= 0 and <= buf.length. Received value is: [offset/length] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -2249,21 +2140,17 @@ console.info("length = " + length);
 
 ## writeBigInt64BE
 
-ArkTS-Dyn:
-```TypeScript
-writeBigInt64BE(value: bigint, offset?: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 writeBigInt64BE(value: bigint, offset?: int): int
 ```
 
 在Buffer对象的offset偏移处写入有符号的大端序64位BigInt型数据。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -2276,21 +2163,21 @@ writeBigInt64BE(value: bigint, offset?: int): int
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | bigint | 是 | 写入Buffer的数据。 |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 8。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 8。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 偏移量offset加上写入的字节数。 |
+| int | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -2303,21 +2190,17 @@ console.info("result = " + result);
 
 ## writeBigInt64LE
 
-ArkTS-Dyn:
-```TypeScript
-writeBigInt64LE(value: bigint, offset?: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 writeBigInt64LE(value: bigint, offset?: int): int
 ```
 
 在Buffer对象的offset偏移处写入有符号的小端序64位BigInt型数据。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -2330,21 +2213,21 @@ writeBigInt64LE(value: bigint, offset?: int): int
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | bigint | 是 | 写入Buffer的数据。 |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 8。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 8。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 偏移量offset加上写入的字节数。 |
+| int | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -2357,21 +2240,17 @@ console.info("result = " + result);
 
 ## writeBigUInt64BE
 
-ArkTS-Dyn:
-```TypeScript
-writeBigUInt64BE(value: bigint, offset?: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 writeBigUInt64BE(value: bigint, offset?: int): int
 ```
 
 在Buffer对象的offset偏移处写入无符号的大端序64位BigUInt型数据。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -2384,21 +2263,21 @@ writeBigUInt64BE(value: bigint, offset?: int): int
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | bigint | 是 | 写入Buffer的数据。 |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 8。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 8。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 偏移量offset加上写入的字节数。 |
+| int | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -2411,21 +2290,17 @@ console.info("result = " + result);
 
 ## writeBigUInt64LE
 
-ArkTS-Dyn:
-```TypeScript
-writeBigUInt64LE(value: bigint, offset?: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 writeBigUInt64LE(value: bigint, offset?: int): int
 ```
 
 在Buffer对象的offset偏移处写入无符号的小端序64位BigUInt型数据。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -2438,21 +2313,21 @@ writeBigUInt64LE(value: bigint, offset?: int): int
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | bigint | 是 | 写入Buffer的数据。 |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 8。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 8。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 偏移量offset加上写入的字节数。 |
+| int | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -2465,21 +2340,17 @@ console.info("result = " + result);
 
 ## writeDoubleBE
 
-ArkTS-Dyn:
-```TypeScript
-writeDoubleBE(value: number, offset?: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 writeDoubleBE(value: double, offset?: int): int
 ```
 
 在Buffer对象的offset偏移处写入大端序的64位双浮点型数据。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -2491,22 +2362,22 @@ writeDoubleBE(value: double, offset?: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：double | 是 | 写入Buffer的数据。 |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 8。 |
+| value | double | 是 | 写入Buffer的数据。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 8。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 偏移量offset加上写入的字节数。 |
+| int | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8 . Received value is: [offset] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -2519,21 +2390,17 @@ console.info("result = " + result);
 
 ## writeDoubleLE
 
-ArkTS-Dyn:
-```TypeScript
-writeDoubleLE(value: number, offset?: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 writeDoubleLE(value: double, offset?: int): int
 ```
 
 在Buffer对象的offset偏移处写入小端序的64位双浮点型数据。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -2545,22 +2412,22 @@ writeDoubleLE(value: double, offset?: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：double | 是 | 写入Buffer的数据。 |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 8。 |
+| value | double | 是 | 写入Buffer的数据。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 8。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 偏移量offset加上写入的字节数。 |
+| int | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8 . Received value is: [offset] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -2573,21 +2440,17 @@ console.info("result = " + result);
 
 ## writeFloatBE
 
-ArkTS-Dyn:
-```TypeScript
-writeFloatBE(value: number, offset?: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 writeFloatBE(value: double, offset?: int): int
 ```
 
 在Buffer对象的offset偏移处写入大端序的32位浮点型数据。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -2599,22 +2462,22 @@ writeFloatBE(value: double, offset?: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：double | 是 | 写入Buffer的数据。 |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 4。 |
+| value | double | 是 | 写入Buffer的数据。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 4。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 偏移量offset加上写入的字节数。 |
+| int | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4 . Received value is: [offset] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -2627,21 +2490,17 @@ console.info("result = " + result);
 
 ## writeFloatLE
 
-ArkTS-Dyn:
-```TypeScript
-writeFloatLE(value: number, offset?: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 writeFloatLE(value: double, offset?: int): int
 ```
 
 在Buffer对象的offset偏移处写入小端序的32位浮点型数据。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -2653,22 +2512,22 @@ writeFloatLE(value: double, offset?: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：double | 是 | 写入Buffer的数据。 |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 4。 |
+| value | double | 是 | 写入Buffer的数据。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 4。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 偏移量offset加上写入的字节数。 |
+| int | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4. Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4 . Received value is: [offset] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -2681,21 +2540,17 @@ console.info("result = " + result);
 
 ## writeInt16BE
 
-ArkTS-Dyn:
-```TypeScript
-writeInt16BE(value: number, offset?: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 writeInt16BE(value: long, offset?: int): int
 ```
 
 在Buffer对象的offset偏移处写入大端序的16位有符号整型数据。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -2707,22 +2562,22 @@ writeInt16BE(value: long, offset?: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 写入Buffer的数据。 |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 2。 |
+| value | long | 是 | 写入Buffer的数据。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 2。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 偏移量offset加上写入的字节数。 |
+| int | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -2735,21 +2590,17 @@ console.info("result = " + result);
 
 ## writeInt16LE
 
-ArkTS-Dyn:
-```TypeScript
-writeInt16LE(value: number, offset?: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 writeInt16LE(value: long, offset?: int): int
 ```
 
 在Buffer对象的offset偏移处写入小端序的16位有符号整型数据。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -2761,22 +2612,22 @@ writeInt16LE(value: long, offset?: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 写入Buffer的数据。 |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 2。 |
+| value | long | 是 | 写入Buffer的数据。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 2。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 偏移量offset加上写入的字节数。 |
+| int | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -2789,21 +2640,17 @@ console.info("result = " + result);
 
 ## writeInt32BE
 
-ArkTS-Dyn:
-```TypeScript
-writeInt32BE(value: number, offset?: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 writeInt32BE(value: long, offset?: int): int
 ```
 
 在Buffer对象的offset偏移处写入大端序的32位有符号整型数据。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -2815,22 +2662,22 @@ writeInt32BE(value: long, offset?: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 写入Buffer的数据。 |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 4。 |
+| value | long | 是 | 写入Buffer的数据。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 4。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 偏移量offset加上写入的字节数。 |
+| int | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -2843,21 +2690,17 @@ console.info("result = " + result);
 
 ## writeInt32LE
 
-ArkTS-Dyn:
-```TypeScript
-writeInt32LE(value: number, offset?: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 writeInt32LE(value: long, offset?: int): int
 ```
 
 在Buffer对象的offset偏移处写入小端序的32位有符号整型数据。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -2869,22 +2712,22 @@ writeInt32LE(value: long, offset?: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 写入Buffer的数据。 |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 4。 |
+| value | long | 是 | 写入Buffer的数据。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 4。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 偏移量offset加上写入的字节数。 |
+| int | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -2897,21 +2740,17 @@ console.info("result = " + result);
 
 ## writeInt8
 
-ArkTS-Dyn:
-```TypeScript
-writeInt8(value: number, offset?: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 writeInt8(value: long, offset?: int): int
 ```
 
 在Buffer对象的offset偏移处写入8位有符号整型数据。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -2923,22 +2762,22 @@ writeInt8(value: long, offset?: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 写入Buffer的数据。 |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 1。 |
+| value | long | 是 | 写入Buffer的数据。取值范围：-128 <= value <= 127（8位有符号整数）。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 1。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 偏移量offset加上写入的字节数。 |
+| int | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -2954,21 +2793,17 @@ console.info("result1 = " + result1);
 
 ## writeIntBE
 
-ArkTS-Dyn:
-```TypeScript
-writeIntBE(value: number, offset: number, byteLength: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 writeIntBE(value: long, offset: int, byteLength: int): int
 ```
 
 在Buffer对象的offset偏移处写入大端序的有符号数据，字节长度为byteLength。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -2980,23 +2815,23 @@ writeIntBE(value: long, offset: int, byteLength: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 写入Buffer的数据。 |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - byteLength。 |
-| byteLength | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 要写入的字节数。 |
+| value | long | 是 | 写入Buffer的数据。 |
+| offset | int | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - byteLength。 |
+| byteLength | int | 是 | 要写入的字节数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 偏移量offset加上写入的字节数。 |
+| int | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -3009,21 +2844,17 @@ console.info("result = " + result);
 
 ## writeIntLE
 
-ArkTS-Dyn:
-```TypeScript
-writeIntLE(value: number, offset: number, byteLength: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 writeIntLE(value: long, offset: int, byteLength: int): int
 ```
 
 在Buffer对象的offset偏移处写入小端序的有符号数据，字节长度为byteLength。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -3035,23 +2866,23 @@ writeIntLE(value: long, offset: int, byteLength: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 写入Buffer的数据。 |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - byteLength。 |
-| byteLength | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 要写入的字节数。 |
+| value | long | 是 | 写入Buffer的数据。 |
+| offset | int | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - byteLength。 |
+| byteLength | int | 是 | 要写入的字节数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 偏移量offset加上写入的字节数。 |
+| int | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -3064,21 +2895,17 @@ console.info("result = " + result);
 
 ## writeUInt16BE
 
-ArkTS-Dyn:
-```TypeScript
-writeUInt16BE(value: number, offset?: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 writeUInt16BE(value: long, offset?: int): int
 ```
 
 在Buffer对象的offset偏移处写入大端序的16位无符号整型数据。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -3090,22 +2917,22 @@ writeUInt16BE(value: long, offset?: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 写入Buffer的数据。 |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。默认值为0。取值范围：0 <= offset <= Buffer.length - 2。 |
+| value | long | 是 | 写入Buffer的数据。 |
+| offset | int | 否 | 偏移量。默认值为0。取值范围：0 <= offset <= Buffer.length - 2。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 偏移量offset加上写入的字节数。 |
+| int | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -3121,21 +2948,17 @@ console.info("result1 = " + result1);
 
 ## writeUInt16LE
 
-ArkTS-Dyn:
-```TypeScript
-writeUInt16LE(value: number, offset?: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 writeUInt16LE(value: long, offset?: int): int
 ```
 
 在Buffer对象的offset偏移处写入小端序的16位无符号整型数据。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -3147,22 +2970,22 @@ writeUInt16LE(value: long, offset?: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 写入Buffer的数据。 |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 2。 |
+| value | long | 是 | 写入Buffer的数据。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 2。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 偏移量offset加上写入的字节数。 |
+| int | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -3178,21 +3001,17 @@ console.info("result1 = " + result1);
 
 ## writeUInt32BE
 
-ArkTS-Dyn:
-```TypeScript
-writeUInt32BE(value: number, offset?: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 writeUInt32BE(value: long, offset?: int): int
 ```
 
 在Buffer对象的offset偏移处写入大端序的32位无符号整型数据。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -3204,22 +3023,22 @@ writeUInt32BE(value: long, offset?: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 写入Buffer的数据。 |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 4。 |
+| value | long | 是 | 写入Buffer的数据。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 4。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 偏移量offset加上写入的字节数。 |
+| int | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -3232,21 +3051,17 @@ console.info("result = " + result);
 
 ## writeUInt32LE
 
-ArkTS-Dyn:
-```TypeScript
-writeUInt32LE(value: number, offset?: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 writeUInt32LE(value: long, offset?: int): int
 ```
 
 在Buffer对象的offset偏移处写入小端序的32位无符号整型数据。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -3258,22 +3073,22 @@ writeUInt32LE(value: long, offset?: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 写入Buffer对象的数据。 |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 4。 |
+| value | long | 是 | 写入Buffer对象的数据。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 4。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 偏移量offset加上写入的字节数。 |
+| int | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -3286,21 +3101,17 @@ console.info("result = " + result);
 
 ## writeUInt8
 
-ArkTS-Dyn:
-```TypeScript
-writeUInt8(value: number, offset?: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 writeUInt8(value: long, offset?: int): int
 ```
 
 在Buffer对象的offset偏移处写入8位无符号整型数据。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -3312,22 +3123,22 @@ writeUInt8(value: long, offset?: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 写入Buffer的数据。 |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 1。 |
+| value | long | 是 | 写入Buffer的数据。取值范围：0 <= value <= 255（8位无符号整数）。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 1。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 偏移量offset加上写入的字节数。 |
+| int | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -3349,21 +3160,17 @@ console.info("result3 = " + result3);
 
 ## writeUIntBE
 
-ArkTS-Dyn:
-```TypeScript
-writeUIntBE(value: number, offset: number, byteLength: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 writeUIntBE(value: long, offset: int, byteLength: int): int
 ```
 
 在Buffer对象的offset偏移处写入大端序的无符号数据，字节长度为byteLength。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -3375,23 +3182,23 @@ writeUIntBE(value: long, offset: int, byteLength: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 写入Buffer的数据。 |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - byteLength。 |
-| byteLength | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 要写入的字节数。 |
+| value | long | 是 | 写入Buffer的数据。 |
+| offset | int | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - byteLength。 |
+| byteLength | int | 是 | 要写入的字节数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 偏移量offset加上写入的字节数。 |
+| int | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -3404,21 +3211,17 @@ console.info("result = " + result);
 
 ## writeUIntLE
 
-ArkTS-Dyn:
-```TypeScript
-writeUIntLE(value: number, offset: number, byteLength: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 writeUIntLE(value: long, offset: int, byteLength: int): int
 ```
 
 在Buffer对象的offset偏移处写入小端序的无符号数据，字节长度为byteLength。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -3430,23 +3233,23 @@ writeUIntLE(value: long, offset: int, byteLength: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 写入Buffer的数据。 |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - byteLength。 |
-| byteLength | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 要写入的字节数。 |
+| value | long | 是 | 写入Buffer的数据。 |
+| offset | int | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - byteLength。 |
+| byteLength | int | 是 | 要写入的字节数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 偏移量offset加上写入的字节数。 |
+| int | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <=[right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -3469,7 +3272,9 @@ ArrayBuffer对象。
 
 **起始版本：** 9
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -3483,37 +3288,19 @@ ArrayBuffer对象。
 byteOffset: number
 ```
 
-当前Buffer所在内存池的偏移量。\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_- 当Buffer通过内存池创建时（如使用[allocUninitializedFromPool]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_创 建Buffer，或使用buffer.from()传入字符串，且字符串长度加当前内存池偏移量小于4kb），返回相对于内存池的偏移量。\_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_- 当Buffer直接分配内存时（如使用 [alloc]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_），返回值为0。
+当前Buffer所在内存池的偏移量。&lt;br&gt;- 当Buffer通过内存池创建时（如使用[allocUninitializedFromPool](arkts-arkts-buffer-allocuninitializedfrompool-f.md#allocUninitializedFromPool)创 建Buffer，或使用buffer.from()传入字符串，且字符串长度加当前内存池偏移量小于4kb），返回相对于内存池的偏移量。&lt;br&gt;- 当Buffer直接分配内存时（如使用 [alloc](arkts-arkts-buffer-alloc-f.md#alloc)），返回值为0。
 
 **类型：** number
 
 **起始版本：** 9
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Buffer-byteOffset: number--><!--Device-Buffer-byteOffset: number-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-## index
-
-```TypeScript
-[index: int]: long
-```
-
-返回指定索引处的元素。
-
-**类型：** long
-
-**起始版本：** 23
-
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
-
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Buffer-[index: int]: long--><!--Device-Buffer-[index: int]: long-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -3529,7 +3316,9 @@ Buffer对象的字节长度。
 
 **起始版本：** 9
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

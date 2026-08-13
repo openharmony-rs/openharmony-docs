@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-contact-interface ContactSelectionOptions--><!--Device-contact-interface ContactSelectionOptions-End-->
 
 **系统能力：** SystemCapability.Applications.Contacts
@@ -18,11 +20,13 @@ filter?: ContactSelectionFilter
 
 联系人查询过滤器。 从API version 15 开始，该接口支持在原子化服务中使用。
 
-**类型：** ContactSelectionFilter
+**类型：** [ContactSelectionFilter](arkts-contacts-contact-contactselectionfilter-i.md)
 
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
@@ -36,13 +40,15 @@ filter?: ContactSelectionFilter
 isAutoDismissOnNavigation?: boolean
 ```
 
-联系人picker发生页面路由时是否自动关闭，比如应用退后台场景 默认值为false
+拉起picker的页面发生路由切换时是否允许自动关闭picker，true:允许自动关闭picker，false:不允许自动关闭picker，默认值为false。
 
 **类型：** boolean
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -66,6 +72,8 @@ isDisplayedByName?: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ContactSelectionOptions-isDisplayedByName?: boolean--><!--Device-ContactSelectionOptions-isDisplayedByName?: boolean-End-->
@@ -86,6 +94,8 @@ isMultiSelect?: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ContactSelectionOptions-isMultiSelect?: boolean--><!--Device-ContactSelectionOptions-isMultiSelect?: boolean-End-->
@@ -105,6 +115,8 @@ maxSelectable?: number
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 

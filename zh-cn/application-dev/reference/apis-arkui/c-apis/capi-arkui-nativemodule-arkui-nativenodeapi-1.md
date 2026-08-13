@@ -6,7 +6,7 @@ typedef struct ArkUI_NativeNodeAPI_1 {...} ArkUI_NativeNodeAPI_1
 
 ## 概述
 
-Declares a collection of native node APIs provided by ArkUI.The APIs related to the native node must be called in the main thread.
+ArkUI提供的Native侧Node类型接口集合。Node模块相关接口需要在主线程上调用。
 
 **起始版本：** 12
 
@@ -20,53 +20,53 @@ Declares a collection of native node APIs provided by ArkUI.The APIs related to 
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t version | Struct version.<br>**起始版本：** 12 |
+| int32_t version | 结构体版本，当前使用的ArkUI_NativeNodeAPI_1结构体的版本编号，由系统提供，开发者无需修改。<br>**起始版本：** 12 |
 
 
 ### 成员函数
 
 | 名称 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle (\*createNode)(ArkUI_NodeType type)](#createnode) | Creates a component based on [ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype) and returns the pointer to the created component. |
-| [void (\*disposeNode)(ArkUI_NodeHandle node)](#disposenode) | Destroys the component to which the specified pointer points. |
-| [int32_t (\*addChild)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child)](#addchild) | Adds a component to a parent node. |
-| [int32_t (\*removeChild)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child)](#removechild) | Removes a component from its parent node. |
-| [int32_t (\*insertChildAfter)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, ArkUI_NodeHandle sibling)](#insertchildafter) | Inserts a component to a parent node after the specified <b>sibling</b> node. |
-| [int32_t (\*insertChildBefore)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, ArkUI_NodeHandle sibling)](#insertchildbefore) | Inserts a component to a parent node before the specified <b>sibling</b> node. |
-| [int32_t (\*insertChildAt)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, int32_t position)](#insertchildat) | Inserts a component to the specified position in a parent node. |
-| [int32_t (\*setAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute, const ArkUI_AttributeItem* item)](#setattribute) | Sets the attribute of a node. |
-| [const ArkUI_AttributeItem* (\*getAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute)](#getattribute) | Obtains an attribute.The pointer returned by this API is an internal buffer pointer of the ArkUI framework. As such, you do not needto call <b>delete</b> to release the memory. However, the pointer must be used before this API is called nexttime. Otherwise, the pointer may be overwritten by other values. |
-| [int32_t (\*resetAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute)](#resetattribute) | Resets an attribute. |
-| [int32_t (\*registerNodeEvent)(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType,int32_t targetId, void* userData)](#registernodeevent) | Registers an event for the specified node.When the component is being displayed, this API must be called in the main thread. |
-| [void (\*unregisterNodeEvent)(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType)](#unregisternodeevent) | Unregisters an event for the specified node.When the component is being displayed, this API must be called in the main thread. |
-| [void (\*registerNodeEventReceiver)(void (\*eventReceiver)(ArkUI_NodeEvent* event))](#registernodeeventreceiver) | Registers an event receiver.The ArkUI framework collects component events generated during the process and calls back the events throughthe registered event receiver. <br> A new call to this API will overwrite the previously registered event receiver. <br> Do not directly save the <b>ArkUI_NodeEvent</b> object pointer. The data will be destroyed after thecallback is complete. <br> To bind with a component instance, you can use the <b>addNodeEventReceiver</b> function. <br> |
-| [void (\*unregisterNodeEventReceiver)()](#unregisternodeeventreceiver) | Unregisters the event receiver. |
-| [void (\*markDirty)(ArkUI_NodeHandle node, ArkUI_NodeDirtyFlag dirtyFlag)](#markdirty) | Forcibly marks the current node that needs to be measured, laid out, or rendered again.Regarding updates to system attributes, the ArkUI framework automatically marks the dirty area and performsmeasuring, layout, or rendering again. In this case, you do not need to call this API. |
-| [uint32_t (\*getTotalChildCount)(ArkUI_NodeHandle node)](#gettotalchildcount) | Obtains the number of subnodes. |
-| [ArkUI_NodeHandle (\*getChildAt)(ArkUI_NodeHandle node, int32_t position)](#getchildat) | Obtains a subnode. |
-| [ArkUI_NodeHandle (\*getFirstChild)(ArkUI_NodeHandle node)](#getfirstchild) | Obtains the first subnode. |
-| [ArkUI_NodeHandle (\*getLastChild)(ArkUI_NodeHandle node)](#getlastchild) | Obtains the last subnode. |
-| [ArkUI_NodeHandle (\*getPreviousSibling)(ArkUI_NodeHandle node)](#getprevioussibling) | Obtains the previous sibling node. |
-| [ArkUI_NodeHandle (\*getNextSibling)(ArkUI_NodeHandle node)](#getnextsibling) | Obtains the next sibling node. |
-| [int32_t (\*registerNodeCustomEvent)(ArkUI_NodeHandle node, ArkUI_NodeCustomEventType eventType, int32_t targetId, void* userData)](#registernodecustomevent) | Registers a custom event for a node. When the event is triggered, the value is returned through the entrypoint function registered by <b>registerNodeCustomEventReceiver</b>. |
-| [void (\*unregisterNodeCustomEvent)(ArkUI_NodeHandle node, ArkUI_NodeCustomEventType eventType)](#unregisternodecustomevent) | Unregisters a custom event for a node. |
-| [void (\*registerNodeCustomEventReceiver)(void (\*eventReceiver)(ArkUI_NodeCustomEvent* event))](#registernodecustomeventreceiver) | Registers a unified entry point function for custom node event callbacks.The ArkUI framework collects custom component events generated during the process and calls back the eventsthrough the registered <b>registerNodeCustomEventReceiver</b>. <br> A new call to this API will overwrite the previously registered event receiver.Do not directly save the <b>ArkUI_NodeCustomEvent</b> object pointer.The data will be destroyed after the callback is complete. <br> To bind with a component instance, you can use the <b>addNodeCustomEventReceiver</b> function. <br> |
-| [void (\*unregisterNodeCustomEventReceiver)()](#unregisternodecustomeventreceiver) | Unregisters the unified entry point function for custom node event callbacks. |
-| [int32_t (\*setMeasuredSize)(ArkUI_NodeHandle node, int32_t width, int32_t height)](#setmeasuredsize) | Sets the width and height for a component after the measurement. |
-| [int32_t (\*setLayoutPosition)(ArkUI_NodeHandle node, int32_t positionX, int32_t positionY)](#setlayoutposition) | Sets the position for a component. |
-| [ArkUI_IntSize (\*getMeasuredSize)(ArkUI_NodeHandle node)](#getmeasuredsize) | Obtains the width and height of a component after measurement. |
-| [ArkUI_IntOffset (\*getLayoutPosition)(ArkUI_NodeHandle node)](#getlayoutposition) | Obtains the position of a component after the layout is complete. |
-| [int32_t (\*measureNode)(ArkUI_NodeHandle node, ArkUI_LayoutConstraint* Constraint)](#measurenode) | Measures a node. You can use the <b>getMeasuredSize</b> API to obtain the size after the measurement. |
-| [int32_t (\*layoutNode)(ArkUI_NodeHandle node, int32_t positionX, int32_t positionY)](#layoutnode) | Lays outs a component and passes the expected position of the component relative to its parent component.When the component is being displayed, this API must be called in the main thread. |
-| [int32_t (\*addNodeEventReceiver)(ArkUI_NodeHandle node, void (\*eventReceiver)(ArkUI_NodeEvent* event))](#addnodeeventreceiver) | Adds a component event callback function to a component to receive component events generatedby the component.Unlike the global registration function <b>registerNodeEventReceiver</b>, this API allows multiple eventreceivers to be added to the same component. <br> The callback added by this API is triggered before the global callback registered by<b>registerNodeEventReceiver</b>. <br> Do not directly save the <b>ArkUI_NodeEvent</b> object pointer.The data will be destroyed after the callback is complete. <br> |
-| [int32_t (\*removeNodeEventReceiver)(ArkUI_NodeHandle node, void (\*eventReceiver)(ArkUI_NodeEvent* event))](#removenodeeventreceiver) | Removes the registered component event callback function from a component. |
-| [int32_t (\*addNodeCustomEventReceiver)(ArkUI_NodeHandle node, void (\*eventReceiver)(ArkUI_NodeCustomEvent* event))](#addnodecustomeventreceiver) | Adds a custom event callback function to a component to receive custom events(such as layout and drawing events) generated by the component.Unlike the global registration function <b>registerNodeCustomEventReceiver</b>, this API allowsmultiple event receivers to be added to the same component. <br> The callback added by this API is triggered before the global callback registered by<b>registerNodeCustomEventReceiver</b>. <br> Do not directly save the <b>ArkUI_NodeCustomEvent</b> object pointer.The data will be destroyed after the callback is complete. <br> |
-| [int32_t (\*removeNodeCustomEventReceiver)(ArkUI_NodeHandle node,void (\*eventReceiver)(ArkUI_NodeCustomEvent* event))](#removenodecustomeventreceiver) | Removes a registered custom event callback function from a component. |
-| [int32_t (\*setUserData)(ArkUI_NodeHandle node, void* userData)](#setuserdata) | Saves custom data on the specified component. |
-| [void* (\*getUserData)(ArkUI_NodeHandle node)](#getuserdata) | Obtains the custom data saved on the specified component. |
-| [int32_t (\*setLengthMetricUnit)(ArkUI_NodeHandle node, ArkUI_LengthMetricUnit unit)](#setlengthmetricunit) | Sets the unit for a component. |
-| [ArkUI_NodeHandle (\*getParent)(ArkUI_NodeHandle node)](#getparent) | Get the parent node. |
-| [int32_t (\*removeAllChildren)(ArkUI_NodeHandle parent)](#removeallchildren) | Uninstall all child nodes from the parent component. |
+| [ArkUI_NodeHandle (\*createNode)(ArkUI_NodeType type)](#createnode) | 基于[ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype)生成对应的组件并返回组件对象指针。 |
+| [void (\*disposeNode)(ArkUI_NodeHandle node)](#disposenode) | 销毁组件指针指向的组件对象。在非主线程调用时需要注意待销毁组件对象的生命周期，生命周期管理不当有可能导致应用崩溃，因此不建议在非主线程上调用本接口。 |
+| [int32_t (\*addChild)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child)](#addchild) | 将组件挂载到某个父节点之下。本接口属于节点操作接口，不建议在非主线程上调用。 |
+| [int32_t (\*removeChild)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child)](#removechild) | 将组件从父节点中移除。本接口属于节点操作接口，不建议在非主线程上调用。 |
+| [int32_t (\*insertChildAfter)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, ArkUI_NodeHandle sibling)](#insertchildafter) | 将组件挂载到某个父节点之下，挂载位置在<b>sibling</b>节点之后。本接口属于节点操作接口，不建议在非主线程上调用。 |
+| [int32_t (\*insertChildBefore)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, ArkUI_NodeHandle sibling)](#insertchildbefore) | 将组件挂载到某个父节点之下，挂载位置在<b>sibling</b>节点之前。本接口属于节点操作接口，不建议在非主线程上调用。 |
+| [int32_t (\*insertChildAt)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, int32_t position)](#insertchildat) | 将组件挂载到某个父节点之下，挂载位置由<b>position</b>指定。本接口属于节点操作接口，不建议在非主线程上调用。 |
+| [int32_t (\*setAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute, const ArkUI_AttributeItem* item)](#setattribute) | 属性设置函数，不建议在非主线程上调用。<br>     在实际业务场景下，如果组件设置的属性包含由开发者申请的堆内存，需确保组件不再使用后再调用对应释放接口。例如：[ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype)中的NODE_TEXT_CONTENT_WITH_STYLED_STRING。 |
+| [const ArkUI_AttributeItem* (\*getAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute)](#getattribute) | 属性获取函数。该接口返回的指针是ArkUI框架内部的缓冲区指针，不需要开发者主动调用delete释放内存，但是需要在该函数下一次被调用前使用，否则可能会被其他值所覆盖。 |
+| [int32_t (\*resetAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute)](#resetattribute) | 重置属性函数，不建议在非主线程上调用。 |
+| [int32_t (\*registerNodeEvent)(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType,int32_t targetId, void* userData)](#registernodeevent) | 注册节点事件函数。 |
+| [void (\*unregisterNodeEvent)(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType)](#unregisternodeevent) | 反注册节点事件函数。 |
+| [void (\*registerNodeEventReceiver)(void (\*eventReceiver)(ArkUI_NodeEvent* event))](#registernodeeventreceiver) | 注册事件回调统一入口函数。ArkUI框架会统一收集过程中产生的组件事件并通过注册的eventReceiver函数回调给开发者。<br> 重复调用时会覆盖前一次注册的函数。<br> 避免直接保存ArkUI_NodeEvent对象指针，数据会在回调结束后销毁。<br> 如果需要和组件实例绑定，可以使用addNodeEventReceiver函数接口。<br> |
+| [void (\*unregisterNodeEventReceiver)()](#unregisternodeeventreceiver) | 反注册事件回调统一入口函数。 |
+| [void (\*markDirty)(ArkUI_NodeHandle node, ArkUI_NodeDirtyFlag dirtyFlag)](#markdirty) | 强制标记当前节点，使其重新执行测量、布局或者绘制的区域。系统属性设置更新场景下，ArkUI框架会自动标记节点并重新执行测量，布局或者绘制，不需要开发者主动调用该函数。 |
+| [uint32_t (\*getTotalChildCount)(ArkUI_NodeHandle node)](#gettotalchildcount) | 获取子节点的个数。 |
+| [ArkUI_NodeHandle (\*getChildAt)(ArkUI_NodeHandle node, int32_t position)](#getchildat) | 获取子节点。 |
+| [ArkUI_NodeHandle (\*getFirstChild)(ArkUI_NodeHandle node)](#getfirstchild) | 获取第一个子节点。 |
+| [ArkUI_NodeHandle (\*getLastChild)(ArkUI_NodeHandle node)](#getlastchild) | 获取最后一个子节点。 |
+| [ArkUI_NodeHandle (\*getPreviousSibling)(ArkUI_NodeHandle node)](#getprevioussibling) | 获取上一个兄弟节点。 |
+| [ArkUI_NodeHandle (\*getNextSibling)(ArkUI_NodeHandle node)](#getnextsibling) | 获取下一个兄弟节点。 |
+| [int32_t (\*registerNodeCustomEvent)(ArkUI_NodeHandle node, ArkUI_NodeCustomEventType eventType, int32_t targetId, void* userData)](#registernodecustomevent) | 注册自定义节点事件函数。事件触发时通过registerNodeCustomEventReceiver注册的自定义事件入口函数返回。 |
+| [void (\*unregisterNodeCustomEvent)(ArkUI_NodeHandle node, ArkUI_NodeCustomEventType eventType)](#unregisternodecustomevent) | 反注册自定义节点事件函数。 |
+| [void (\*registerNodeCustomEventReceiver)(void (\*eventReceiver)(ArkUI_NodeCustomEvent* event))](#registernodecustomeventreceiver) | 注册自定义节点事件回调统一入口函数。ArkUI框架会统一收集过程中产生的自定义组件事件并通过注册的registerNodeCustomEventReceiver函数回调给开发者。<br> 重复调用时会覆盖前一次注册的函数。<br> 避免直接保存[ArkUI_NodeCustomEvent](capi-arkui-nativemodule-arkui-nodecustomevent.md)对象指针，数据会在回调结束后销毁。<br> 如果需要和组件实例绑定，可以使用addNodeCustomEventReceiver函数接口。<br> |
+| [void (\*unregisterNodeCustomEventReceiver)()](#unregisternodecustomeventreceiver) | 反注册自定义节点事件回调统一入口函数。 |
+| [int32_t (\*setMeasuredSize)(ArkUI_NodeHandle node, int32_t width, int32_t height)](#setmeasuredsize) | 在测算回调函数中设置组件的测算完成后的宽和高。 |
+| [int32_t (\*setLayoutPosition)(ArkUI_NodeHandle node, int32_t positionX, int32_t positionY)](#setlayoutposition) | 在布局回调函数中设置组件的位置。该接口优先级低于[ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype)中的NODE_POSITION。 |
+| [ArkUI_IntSize (\*getMeasuredSize)(ArkUI_NodeHandle node)](#getmeasuredsize) | 获取组件测算完成后的宽高尺寸。 |
+| [ArkUI_IntOffset (\*getLayoutPosition)(ArkUI_NodeHandle node)](#getlayoutposition) | 获取组件布局完成后该节点相对于父节点的偏移，单位为px。该偏移是父容器对该节点进行布局之后的结果，因此布局之后生效的offset属性和不参与布局的position属性不影响该偏移值。 |
+| [int32_t (\*measureNode)(ArkUI_NodeHandle node, ArkUI_LayoutConstraint* Constraint)](#measurenode) | 对目标组件进行测算，可以通过getMeasuredSize接口获取测算后的大小。 |
+| [int32_t (\*layoutNode)(ArkUI_NodeHandle node, int32_t positionX, int32_t positionY)](#layoutnode) | 对目标组件进行布局并传递该组件相对父组件的期望位置。 |
+| [int32_t (\*addNodeEventReceiver)(ArkUI_NodeHandle node, void (\*eventReceiver)(ArkUI_NodeEvent* event))](#addnodeeventreceiver) | 在组件上添加组件事件回调函数，用于接收该组件产生的组件事件。不同于registerNodeEventReceiver的全局注册函数，该函数允许在同一个组件上添加多个事件接收器。<br> 该函数添加的监听回调函数触发时机会先于registerNodeEventReceiver注册的全局回调函数。<br> 避免直接保存ArkUI_NodeEvent对象指针，数据会在回调结束后销毁。<br> |
+| [int32_t (\*removeNodeEventReceiver)(ArkUI_NodeHandle node, void (\*eventReceiver)(ArkUI_NodeEvent* event))](#removenodeeventreceiver) | 在组件上删除注册的组件事件回调函数。 |
+| [int32_t (\*addNodeCustomEventReceiver)(ArkUI_NodeHandle node, void (\*eventReceiver)(ArkUI_NodeCustomEvent* event))](#addnodecustomeventreceiver) | 在组件上添加自定义事件回调函数，用于接收该组件产生的自定义事件（如布局事件，绘制事件）。不同于registerNodeCustomEventReceiver的全局注册函数，该函数允许在同一个组件上添加多个事件接收器。<br> 该函数添加的监听回调函数触发时机会先于registerNodeCustomEventReceiver注册的全局回调函数。<br> 避免直接保存ArkUI_NodeCustomEvent对象指针，数据会在回调结束后销毁。<br> |
+| [int32_t (\*removeNodeCustomEventReceiver)(ArkUI_NodeHandle node,void (\*eventReceiver)(ArkUI_NodeCustomEvent* event))](#removenodecustomeventreceiver) | 在组件上删除注册的自定义事件回调函数。 |
+| [int32_t (\*setUserData)(ArkUI_NodeHandle node, void* userData)](#setuserdata) | 在组件上保存自定义数据。 |
+| [void* (\*getUserData)(ArkUI_NodeHandle node)](#getuserdata) | 获取在组件上保存的自定义数据。 |
+| [int32_t (\*setLengthMetricUnit)(ArkUI_NodeHandle node, ArkUI_LengthMetricUnit unit)](#setlengthmetricunit) | 指定组件的单位。 |
+| [ArkUI_NodeHandle (\*getParent)(ArkUI_NodeHandle node)](#getparent) | 获取父节点。 |
+| [int32_t (\*removeAllChildren)(ArkUI_NodeHandle parent)](#removeallchildren) | 从父组件上卸载所有子节点。 |
 
 ## 成员函数说明
 
@@ -78,7 +78,7 @@ ArkUI_NodeHandle (*createNode)(ArkUI_NodeType type)
 
 **描述**
 
-Creates a component based on [ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype) and returns the pointer to the created component.
+基于[ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype)生成对应的组件并返回组件对象指针。
 
 **起始版本：** 12
 
@@ -86,13 +86,13 @@ Creates a component based on [ArkUI_NodeType](capi-native-node-h.md#arkui_nodety
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype) type | Indicates the type of component to create. |
+| [ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype) type | 创建指定类型的UI组件节点。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) | Returns the pointer to the created component. If the component fails to be created, NULL is returned. |
+| ArkUI_NodeHandle | 返回创建完成的组件操作指针，如果创建失败返回NULL。需要开发者自行管理返回的组件对象指针的生命周期，否则有可能导致Use After Free等进程崩溃或内存泄漏问题。 |
 
 ### disposeNode()
 
@@ -102,7 +102,7 @@ void (*disposeNode)(ArkUI_NodeHandle node)
 
 **描述**
 
-Destroys the component to which the specified pointer points.
+销毁组件指针指向的组件对象。在非主线程调用时需要注意待销毁组件对象的生命周期，生命周期管理不当有可能导致应用崩溃，因此不建议在非主线程上调用本接口。
 
 **起始版本：** 12
 
@@ -110,7 +110,7 @@ Destroys the component to which the specified pointer points.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Indicates the pointer. |
+| ArkUI_NodeHandle node | 组件指针对象。 |
 
 ### addChild()
 
@@ -120,7 +120,7 @@ int32_t (*addChild)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child)
 
 **描述**
 
-Adds a component to a parent node.
+将组件挂载到某个父节点之下。本接口属于节点操作接口，不建议在非主线程上调用。
 
 **起始版本：** 12
 
@@ -128,14 +128,14 @@ Adds a component to a parent node.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) parent | Indicates the pointer to the parent node. |
-|  [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) child | Indicates the pointer to the child node. |
+| ArkUI_NodeHandle parent | 父节点指针。 |
+|  ArkUI_NodeHandle child | 子节点指针。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the error code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>             Returns [ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the following operations are not allowed on<br>                 BuilderNode generated nodes: setting or resetting attributes, setting events, or adding or editing subnodes.<br>             Returns [ARKUI_ERROR_CODE_NODE_IS_ADOPTED](capi-native-type-h.md#arkui_errorcode) if the child node has already been adopted. Add since api 22. |
+| int32_t | 错误码。<br>         <br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         <br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         <br>[ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) 不支持对ArkTS创建的节点执行对应的操作。<br>         <br>[ARKUI_ERROR_CODE_NODE_IS_ADOPTED](capi-native-type-h.md#arkui_errorcode) 节点已被接纳为附属节点。从API version 22开始支持。 |
 
 ### removeChild()
 
@@ -145,7 +145,7 @@ int32_t (*removeChild)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child)
 
 **描述**
 
-Removes a component from its parent node.
+将组件从父节点中移除。本接口属于节点操作接口，不建议在非主线程上调用。
 
 **起始版本：** 12
 
@@ -153,14 +153,14 @@ Removes a component from its parent node.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) parent | Indicates the pointer to the parent node. |
-|  [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) child | Indicates the pointer to the child node. |
+| ArkUI_NodeHandle parent | 父节点指针。 |
+|  ArkUI_NodeHandle child | 子节点指针。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the error code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>             Returns [ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the following operations are not allowed<br>     on BuilderNode generated nodes:<br>             setting or resetting attributes, setting events, or adding or editing subnodes. |
+| int32_t | 错误码。<br>         <br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         <br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         <br>[ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) 不支持对ArkTS创建的节点执行对应的操作。<br>         <br>[ARKUI_ERROR_CODE_ADAPTER_EXIST](capi-native-type-h.md#arkui_errorcode) NodeAdapter已经存在。 |
 
 ### insertChildAfter()
 
@@ -170,7 +170,7 @@ int32_t (*insertChildAfter)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, Ark
 
 **描述**
 
-Inserts a component to a parent node after the specified <b>sibling</b> node.
+将组件挂载到某个父节点之下，挂载位置在<b>sibling</b>节点之后。本接口属于节点操作接口，不建议在非主线程上调用。
 
 **起始版本：** 12
 
@@ -178,15 +178,15 @@ Inserts a component to a parent node after the specified <b>sibling</b> node.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) parent | Indicates the pointer to the parent node. |
-|  [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) child | Indicates the pointer to the child node. |
-|  [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) sibling | Indicates the pointer to the sibling node after which the target node is to be inserted.If the value is null, the node is inserted at the start of the parent node. |
+| ArkUI_NodeHandle parent | 父节点指针。 |
+|  ArkUI_NodeHandle child | 子节点指针。 |
+|  ArkUI_NodeHandle sibling | 前一个兄弟节点指针，如果为空则插入位置在最后面。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the error code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>             Returns [ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the following operations are not allowed on BuilderNode generated<br>                 nodes: setting or resetting attributes, setting events, or adding or editing subnodes.<br>             Returns [ARKUI_ERROR_CODE_NODE_IS_ADOPTED](capi-native-type-h.md#arkui_errorcode) if the child node has already been adopted. Add since api 22. |
+| int32_t | 错误码。<br>         <br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         <br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         <br>[ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) 不支持对ArkTS创建的节点执行对应的操作。<br>         <br>[ARKUI_ERROR_CODE_NODE_IS_ADOPTED](capi-native-type-h.md#arkui_errorcode) 节点已被接纳为附属节点。从API version 22开始支持。 |
 
 ### insertChildBefore()
 
@@ -196,7 +196,7 @@ int32_t (*insertChildBefore)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, Ar
 
 **描述**
 
-Inserts a component to a parent node before the specified <b>sibling</b> node.
+将组件挂载到某个父节点之下，挂载位置在<b>sibling</b>节点之前。本接口属于节点操作接口，不建议在非主线程上调用。
 
 **起始版本：** 12
 
@@ -204,15 +204,15 @@ Inserts a component to a parent node before the specified <b>sibling</b> node.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) parent | Indicates the pointer to the parent node. |
-|  [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) child | Indicates the pointer to the child node. |
-|  [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) sibling | Indicates the pointer to the sibling node before which the target node is to be inserted.If the value is null, the node is inserted at the end of the parent node. |
+| ArkUI_NodeHandle parent | 父节点指针。 |
+|  ArkUI_NodeHandle child | 子节点指针。 |
+|  ArkUI_NodeHandle sibling | 后一个兄弟节点指针，如果为空则插入位置在最后面。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the error code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>             Returns [ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the following operations are not allowed on BuilderNode generated<br>                 nodes: setting or resetting attributes, setting events, or adding or editing subnodes.<br>             Returns [ARKUI_ERROR_CODE_NODE_IS_ADOPTED](capi-native-type-h.md#arkui_errorcode) if the child node has already been adopted. Add since api 22. |
+| int32_t | 错误码。<br>         <br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         <br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         <br>[ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) 不支持对ArkTS创建的节点执行对应的操作。<br>         <br>[ARKUI_ERROR_CODE_NODE_IS_ADOPTED](capi-native-type-h.md#arkui_errorcode) 节点已被接纳为附属节点。从API version 22开始支持。 |
 
 ### insertChildAt()
 
@@ -222,7 +222,7 @@ int32_t (*insertChildAt)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, int32_
 
 **描述**
 
-Inserts a component to the specified position in a parent node.
+将组件挂载到某个父节点之下，挂载位置由<b>position</b>指定。本接口属于节点操作接口，不建议在非主线程上调用。
 
 **起始版本：** 12
 
@@ -230,15 +230,15 @@ Inserts a component to the specified position in a parent node.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) parent | Indicates the pointer to the parent node. |
-|  [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) child | Indicates the pointer to the child node. |
-|  int32_t position | Indicates the position to which the target child node is to be inserted. If the value is anegative number or invalid, the node is inserted at the end of the parent node. |
+| ArkUI_NodeHandle parent | 父节点指针。 |
+|  ArkUI_NodeHandle child | 子节点指针。 |
+|  int32_t position | 插入位置，取值范围为[-2147483648, 2147483647]，如果插入位置为负数或者不存在，则默认插入位置在最后面。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the error code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>             Returns [ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the following operations are not allowed on BuilderNode generated<br>                 nodes: setting or resetting attributes, setting events, or adding or editing subnodes.<br>             Returns [ARKUI_ERROR_CODE_NODE_IS_ADOPTED](capi-native-type-h.md#arkui_errorcode) if the child node has already been adopted. Add since api 22. |
+| int32_t | 错误码。<br>         <br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         <br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         <br>[ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) 不支持对ArkTS创建的节点执行对应的操作。<br>         <br>[ARKUI_ERROR_CODE_NODE_IS_ADOPTED](capi-native-type-h.md#arkui_errorcode) 节点已被接纳为附属节点。从API version 22开始支持。 |
 
 ### setAttribute()
 
@@ -248,7 +248,7 @@ int32_t (*setAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute
 
 **描述**
 
-Sets the attribute of a node.
+属性设置函数，不建议在非主线程上调用。<br>     在实际业务场景下，如果组件设置的属性包含由开发者申请的堆内存，需确保组件不再使用后再调用对应释放接口。例如：[ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype)中的NODE_TEXT_CONTENT_WITH_STYLED_STRING。
 
 **起始版本：** 12
 
@@ -256,15 +256,15 @@ Sets the attribute of a node.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Indicates the node whose attribute needs to be set. |
-|  [ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype) attribute | Indicates the type of attribute to set. |
-| value | Indicates the attribute value. |
+| ArkUI_NodeHandle node | 需要设置属性的节点对象。 |
+|  [ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype) attribute | 需要设置的属性类型。 |
+|  const ArkUI_AttributeItem* item | 需要设置的属性值。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the error code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>             Returns [ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the dynamic implementation library<br>             of the native API was not found.<br>             Returns [ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the following operations are not allowed<br>             on BuilderNode generated nodes:<br>             setting or resetting attributes, setting events, or adding or editing subnodes. |
+| int32_t | 错误码。<br>         <br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         <br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         <br>[ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) 组件不支持该属性。<br>         <br>[ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) 不支持对ArkTS创建的节点执行对应的操作。<br>         <br>[ARKUI_ERROR_CODE_ADAPTER_EXIST](capi-native-type-h.md#arkui_errorcode) NodeAdapter已经存在。 |
 
 ### getAttribute()
 
@@ -274,7 +274,7 @@ const ArkUI_AttributeItem* (*getAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttr
 
 **描述**
 
-Obtains an attribute.The pointer returned by this API is an internal buffer pointer of the ArkUI framework. As such, you do not needto call <b>delete</b> to release the memory. However, the pointer must be used before this API is called nexttime. Otherwise, the pointer may be overwritten by other values.
+属性获取函数。该接口返回的指针是ArkUI框架内部的缓冲区指针，不需要开发者主动调用delete释放内存，但是需要在该函数下一次被调用前使用，否则可能会被其他值所覆盖。
 
 **起始版本：** 12
 
@@ -282,14 +282,14 @@ Obtains an attribute.The pointer returned by this API is an internal buffer poin
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Indicates the node whose attribute needs to be obtained. |
-|  [ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype) attribute | Indicates the type of attribute to obtain. |
+| ArkUI_NodeHandle node | 需要获取属性的节点对象。 |
+|  [ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype) attribute | 需要获取的属性类型。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [const ArkUI_AttributeItem*](capi-arkui-nativemodule-arkui-attributeitem.md) | Returns the attribute value. If the operation fails, a null pointer is returned. |
+| const ArkUI_AttributeItem* | 当前属性类型的属性值，失败返回空指针。 |
 
 ### resetAttribute()
 
@@ -299,7 +299,7 @@ int32_t (*resetAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribu
 
 **描述**
 
-Resets an attribute.
+重置属性函数，不建议在非主线程上调用。
 
 **起始版本：** 12
 
@@ -307,14 +307,14 @@ Resets an attribute.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Indicates the node whose attribute needs to be reset. |
-|  [ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype) attribute | Indicates the type of attribute to reset. |
+| ArkUI_NodeHandle node | 需要重置属性的节点对象。 |
+|  [ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype) attribute | 需要重置的属性类型。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the error code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>             Returns [ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the dynamic implementation library<br>             of the native API was not found.<br>             Returns [ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the following operations are not allowed<br>             on BuilderNode generated nodes:<br>             setting or resetting attributes, setting events, or adding or editing subnodes. |
+| int32_t | 错误码。<br>         <br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         <br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         <br>[ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) 组件不支持该属性。<br>         <br>[ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) 不支持对ArkTS创建的节点执行对应的操作。 |
 
 ### registerNodeEvent()
 
@@ -324,7 +324,7 @@ int32_t (*registerNodeEvent)(ArkUI_NodeHandle node, ArkUI_NodeEventType eventTyp
 
 **描述**
 
-Registers an event for the specified node.When the component is being displayed, this API must be called in the main thread.
+注册节点事件函数。
 
 **起始版本：** 12
 
@@ -332,16 +332,16 @@ Registers an event for the specified node.When the component is being displayed,
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Indicates the target node. |
-|  [ArkUI_NodeEventType](capi-native-node-h.md#arkui_nodeeventtype) eventType | Indicates the type of event to register. |
-| int32_t targetId | Indicates the custom event ID, which is passed in the callback of [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)when the event is triggered. |
-|  void* userData | Indicates the custom event parameter, which is passed in the callback of [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) |
+| ArkUI_NodeHandle node | 需要注册事件的节点对象。 |
+|  [ArkUI_NodeEventType](capi-native-node-h.md#arkui_nodeeventtype) eventType | 需要注册的事件类型。 |
+| int32_t targetId | 自定义事件ID，当事件触发时在回调参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) 中携带回来。 |
+|  void* userData | 自定义事件参数，当事件触发时在回调参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) 中携带回来。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the error code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>             Returns [ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the dynamic implementation library<br>             of the native API was not found.<br>             Returns [ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the following operations are not allowed<br>             on BuilderNode generated nodes:<br>             setting or resetting attributes, setting events, or adding or editing subnodes. |
+| int32_t | 错误码。<br>         <br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         <br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         <br>[ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) 组件不支持该事件。<br>         <br>[ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) 不支持对ArkTS创建的节点执行对应的操作。 |
 
 ### unregisterNodeEvent()
 
@@ -351,7 +351,7 @@ void (*unregisterNodeEvent)(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType
 
 **描述**
 
-Unregisters an event for the specified node.When the component is being displayed, this API must be called in the main thread.
+反注册节点事件函数。
 
 **起始版本：** 12
 
@@ -359,8 +359,8 @@ Unregisters an event for the specified node.When the component is being displaye
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Indicates the target node. |
-|  [ArkUI_NodeEventType](capi-native-node-h.md#arkui_nodeeventtype) eventType | Indicates the type of event to unregister. |
+| ArkUI_NodeHandle node | 需要反注册事件的节点对象。 |
+|  [ArkUI_NodeEventType](capi-native-node-h.md#arkui_nodeeventtype) eventType | 需要反注册的事件类型。 |
 
 ### registerNodeEventReceiver()
 
@@ -370,7 +370,7 @@ void (*registerNodeEventReceiver)(void (*eventReceiver)(ArkUI_NodeEvent* event))
 
 **描述**
 
-Registers an event receiver.The ArkUI framework collects component events generated during the process and calls back the events throughthe registered event receiver. <br> A new call to this API will overwrite the previously registered event receiver. <br> Do not directly save the <b>ArkUI_NodeEvent</b> object pointer. The data will be destroyed after thecallback is complete. <br> To bind with a component instance, you can use the <b>addNodeEventReceiver</b> function. <br>
+注册事件回调统一入口函数。ArkUI框架会统一收集过程中产生的组件事件并通过注册的eventReceiver函数回调给开发者。<br> 重复调用时会覆盖前一次注册的函数。<br> 避免直接保存ArkUI_NodeEvent对象指针，数据会在回调结束后销毁。<br> 如果需要和组件实例绑定，可以使用addNodeEventReceiver函数接口。<br>
 
 **起始版本：** 12
 
@@ -378,7 +378,7 @@ Registers an event receiver.The ArkUI framework collects component events genera
 
 | 参数项 | 描述 |
 | -- | -- |
-| eventReceiver | Indicates the event receiver to register. |
+| eventReceiver | 事件回调统一入口函数。 |
 
 ### unregisterNodeEventReceiver()
 
@@ -388,7 +388,7 @@ void (*unregisterNodeEventReceiver)()
 
 **描述**
 
-Unregisters the event receiver.
+反注册事件回调统一入口函数。
 
 **起始版本：** 12
 
@@ -400,7 +400,7 @@ void (*markDirty)(ArkUI_NodeHandle node, ArkUI_NodeDirtyFlag dirtyFlag)
 
 **描述**
 
-Forcibly marks the current node that needs to be measured, laid out, or rendered again.Regarding updates to system attributes, the ArkUI framework automatically marks the dirty area and performsmeasuring, layout, or rendering again. In this case, you do not need to call this API.
+强制标记当前节点，使其重新执行测量、布局或者绘制的区域。系统属性设置更新场景下，ArkUI框架会自动标记节点并重新执行测量，布局或者绘制，不需要开发者主动调用该函数。
 
 **起始版本：** 12
 
@@ -408,8 +408,8 @@ Forcibly marks the current node that needs to be measured, laid out, or rendered
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Indicates the node for which you want to mark as dirty area. |
-|  [ArkUI_NodeDirtyFlag](capi-native-node-h.md#arkui_nodedirtyflag) dirtyFlag | Indicates type of dirty area. |
+| ArkUI_NodeHandle node | 需要标记重新执行测量、布局或者绘制的节点对象。 |
+|  [ArkUI_NodeDirtyFlag](capi-native-node-h.md#arkui_nodedirtyflag) dirtyFlag | 重新执行测量、布局或者绘制的类型。 |
 
 ### getTotalChildCount()
 
@@ -419,7 +419,7 @@ uint32_t (*getTotalChildCount)(ArkUI_NodeHandle node)
 
 **描述**
 
-Obtains the number of subnodes.
+获取子节点的个数。
 
 **起始版本：** 12
 
@@ -427,13 +427,13 @@ Obtains the number of subnodes.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Indicates the target node. |
+| ArkUI_NodeHandle node | 目标节点对象。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| uint32_t | the number of subnodes. If not, returns 0. |
+| uint32_t | 子节点的个数, 如果没有返回0。 |
 
 ### getChildAt()
 
@@ -443,7 +443,7 @@ ArkUI_NodeHandle (*getChildAt)(ArkUI_NodeHandle node, int32_t position)
 
 **描述**
 
-Obtains a subnode.
+获取子节点。
 
 **起始版本：** 12
 
@@ -451,14 +451,14 @@ Obtains a subnode.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Indicates the target node. |
-|  int32_t position | Indicates the position of the subnode. |
+| ArkUI_NodeHandle node | 目标节点对象。 |
+|  int32_t position | 子组件的位置。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) | Returns the pointer to the subnode if the subnode exists; returns <b>NULL</b> otherwise. |
+| ArkUI_NodeHandle | 返回组件的指针，如果没有返回NULL。 |
 
 ### getFirstChild()
 
@@ -468,7 +468,7 @@ ArkUI_NodeHandle (*getFirstChild)(ArkUI_NodeHandle node)
 
 **描述**
 
-Obtains the first subnode.
+获取第一个子节点。
 
 **起始版本：** 12
 
@@ -476,13 +476,13 @@ Obtains the first subnode.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Indicates the target node. |
+| ArkUI_NodeHandle node | 目标节点对象。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) | Returns the pointer to the subnode if the subnode exists; returns <b>NULL</b> otherwise. |
+| ArkUI_NodeHandle | 返回组件的指针，如果没有返回NULL。 |
 
 ### getLastChild()
 
@@ -492,7 +492,7 @@ ArkUI_NodeHandle (*getLastChild)(ArkUI_NodeHandle node)
 
 **描述**
 
-Obtains the last subnode.
+获取最后一个子节点。
 
 **起始版本：** 12
 
@@ -500,13 +500,13 @@ Obtains the last subnode.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Indicates the target node. |
+| ArkUI_NodeHandle node | 目标节点对象。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) | Returns the pointer to the subnode if the subnode exists; returns <b>NULL</b> otherwise. |
+| ArkUI_NodeHandle | 返回组件的指针，如果没有返回NULL。 |
 
 ### getPreviousSibling()
 
@@ -516,7 +516,7 @@ ArkUI_NodeHandle (*getPreviousSibling)(ArkUI_NodeHandle node)
 
 **描述**
 
-Obtains the previous sibling node.
+获取上一个兄弟节点。
 
 **起始版本：** 12
 
@@ -524,13 +524,13 @@ Obtains the previous sibling node.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Indicates the target node. |
+| ArkUI_NodeHandle node | 目标节点对象。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) | Returns the pointer to the subnode if the subnode exists; returns <b>NULL</b> otherwise. |
+| ArkUI_NodeHandle | 返回组件的指针，如果没有返回NULL。 |
 
 ### getNextSibling()
 
@@ -540,7 +540,7 @@ ArkUI_NodeHandle (*getNextSibling)(ArkUI_NodeHandle node)
 
 **描述**
 
-Obtains the next sibling node.
+获取下一个兄弟节点。
 
 **起始版本：** 12
 
@@ -548,13 +548,13 @@ Obtains the next sibling node.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Indicates the target node. |
+| ArkUI_NodeHandle node | 目标节点对象。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) | Returns the pointer to the subnode if the subnode exists; returns <b>NULL</b> otherwise. |
+| ArkUI_NodeHandle | 返回组件的指针，如果没有返回NULL。 |
 
 ### registerNodeCustomEvent()
 
@@ -564,7 +564,7 @@ int32_t (*registerNodeCustomEvent)(ArkUI_NodeHandle node, ArkUI_NodeCustomEventT
 
 **描述**
 
-Registers a custom event for a node. When the event is triggered, the value is returned through the entrypoint function registered by <b>registerNodeCustomEventReceiver</b>.
+注册自定义节点事件函数。事件触发时通过registerNodeCustomEventReceiver注册的自定义事件入口函数返回。
 
 **起始版本：** 12
 
@@ -572,16 +572,16 @@ Registers a custom event for a node. When the event is triggered, the value is r
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Indicates the target node. |
-|  [ArkUI_NodeCustomEventType](capi-native-node-h.md#arkui_nodecustomeventtype) eventType | Indicates the type of event to register. |
-|  int32_t targetId | Indicates the custom event ID, which is passed in the callback of [ArkUI_NodeCustomEvent](capi-arkui-nativemodule-arkui-nodecustomevent.md)when the event is triggered. |
-|  void* userData | Indicates the custom event parameter, which is passed in the callback of[ArkUI_NodeCustomEvent](capi-arkui-nativemodule-arkui-nodecustomevent.md) when the event is triggered. |
+| ArkUI_NodeHandle node | 需要注册事件的节点对象。 |
+|  [ArkUI_NodeCustomEventType](capi-native-node-h.md#arkui_nodecustomeventtype) eventType | 需要注册的事件类型。 |
+|  int32_t targetId | 自定义事件ID，当事件触发时在回调参数[ArkUI_NodeCustomEvent](capi-arkui-nativemodule-arkui-nodecustomevent.md) 中携带回来。 |
+|  void* userData | 自定义事件参数，当事件触发时在回调参数[ArkUI_NodeCustomEvent](capi-arkui-nativemodule-arkui-nodecustomevent.md) 中携带回来。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the error code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>             Returns [ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the dynamic implementation library<br>             of the native API was not found. |
+| int32_t | 错误码。<br>         <br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         <br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         <br>[ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) 组件不支持该事件。 |
 
 ### unregisterNodeCustomEvent()
 
@@ -591,7 +591,7 @@ void (*unregisterNodeCustomEvent)(ArkUI_NodeHandle node, ArkUI_NodeCustomEventTy
 
 **描述**
 
-Unregisters a custom event for a node.
+反注册自定义节点事件函数。
 
 **起始版本：** 12
 
@@ -599,8 +599,8 @@ Unregisters a custom event for a node.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Indicates the target node. |
-|  [ArkUI_NodeCustomEventType](capi-native-node-h.md#arkui_nodecustomeventtype) eventType | Indicates the type of event to unregister. |
+| ArkUI_NodeHandle node | 需要反注册事件的节点对象。 |
+|  [ArkUI_NodeCustomEventType](capi-native-node-h.md#arkui_nodecustomeventtype) eventType | 需要反注册的事件类型。 |
 
 ### registerNodeCustomEventReceiver()
 
@@ -610,7 +610,7 @@ void (*registerNodeCustomEventReceiver)(void (*eventReceiver)(ArkUI_NodeCustomEv
 
 **描述**
 
-Registers a unified entry point function for custom node event callbacks.The ArkUI framework collects custom component events generated during the process and calls back the eventsthrough the registered <b>registerNodeCustomEventReceiver</b>. <br> A new call to this API will overwrite the previously registered event receiver.Do not directly save the <b>ArkUI_NodeCustomEvent</b> object pointer.The data will be destroyed after the callback is complete. <br> To bind with a component instance, you can use the <b>addNodeCustomEventReceiver</b> function. <br>
+注册自定义节点事件回调统一入口函数。ArkUI框架会统一收集过程中产生的自定义组件事件并通过注册的registerNodeCustomEventReceiver函数回调给开发者。<br> 重复调用时会覆盖前一次注册的函数。<br> 避免直接保存[ArkUI_NodeCustomEvent](capi-arkui-nativemodule-arkui-nodecustomevent.md)对象指针，数据会在回调结束后销毁。<br> 如果需要和组件实例绑定，可以使用addNodeCustomEventReceiver函数接口。<br>
 
 **起始版本：** 12
 
@@ -618,7 +618,7 @@ Registers a unified entry point function for custom node event callbacks.The Ark
 
 | 参数项 | 描述 |
 | -- | -- |
-| eventReceiver | Indicates the event receiver to register. |
+| eventReceiver | 事件回调统一入口函数。 |
 
 ### unregisterNodeCustomEventReceiver()
 
@@ -628,7 +628,7 @@ void (*unregisterNodeCustomEventReceiver)()
 
 **描述**
 
-Unregisters the unified entry point function for custom node event callbacks.
+反注册自定义节点事件回调统一入口函数。
 
 **起始版本：** 12
 
@@ -640,7 +640,7 @@ int32_t (*setMeasuredSize)(ArkUI_NodeHandle node, int32_t width, int32_t height)
 
 **描述**
 
-Sets the width and height for a component after the measurement.
+在测算回调函数中设置组件的测算完成后的宽和高。
 
 **起始版本：** 12
 
@@ -648,15 +648,15 @@ Sets the width and height for a component after the measurement.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Indicates the target node. |
-|  int32_t width | Indicates the width. |
-|  int32_t height | Indicates the height. |
+| ArkUI_NodeHandle node | 目标节点对象。 |
+|  int32_t width | 设置的宽。 |
+|  int32_t height | 设置的高。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the error code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | 错误码。<br>         <br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         <br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### setLayoutPosition()
 
@@ -666,7 +666,7 @@ int32_t (*setLayoutPosition)(ArkUI_NodeHandle node, int32_t positionX, int32_t p
 
 **描述**
 
-Sets the position for a component.
+在布局回调函数中设置组件的位置。该接口优先级低于[ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype)中的NODE_POSITION。
 
 **起始版本：** 12
 
@@ -674,15 +674,15 @@ Sets the position for a component.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Indicates the target node. |
-|  int32_t positionX | Indicates the X coordinate. |
-|  int32_t positionY | Indicates the Y coordinate. |
+| ArkUI_NodeHandle node | 目标节点对象。 |
+|  int32_t positionX | x轴坐标。 |
+|  int32_t positionY | y轴坐标。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the error code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | 错误码。<br>         <br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         <br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### getMeasuredSize()
 
@@ -692,7 +692,7 @@ ArkUI_IntSize (*getMeasuredSize)(ArkUI_NodeHandle node)
 
 **描述**
 
-Obtains the width and height of a component after measurement.
+获取组件测算完成后的宽高尺寸。
 
 **起始版本：** 12
 
@@ -700,13 +700,13 @@ Obtains the width and height of a component after measurement.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Indicates the target node. |
+| ArkUI_NodeHandle node | 目标节点对象。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_IntSize](capi-arkui-nativemodule-arkui-intsize.md) | Returns the width and height of the component. |
+| ArkUI_IntSize | ArkUI_IntSize 组件的宽高。 |
 
 ### getLayoutPosition()
 
@@ -716,7 +716,7 @@ ArkUI_IntOffset (*getLayoutPosition)(ArkUI_NodeHandle node)
 
 **描述**
 
-Obtains the position of a component after the layout is complete.
+获取组件布局完成后该节点相对于父节点的偏移，单位为px。该偏移是父容器对该节点进行布局之后的结果，因此布局之后生效的offset属性和不参与布局的position属性不影响该偏移值。
 
 **起始版本：** 12
 
@@ -724,13 +724,13 @@ Obtains the position of a component after the layout is complete.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Indicates the target node. |
+| ArkUI_NodeHandle node | 目标节点对象。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md) | Returns the position of the component. |
+| ArkUI_IntOffset | ArkUI_IntOffset 组件的位置。 |
 
 ### measureNode()
 
@@ -740,7 +740,7 @@ int32_t (*measureNode)(ArkUI_NodeHandle node, ArkUI_LayoutConstraint* Constraint
 
 **描述**
 
-Measures a node. You can use the <b>getMeasuredSize</b> API to obtain the size after the measurement.
+对目标组件进行测算，可以通过getMeasuredSize接口获取测算后的大小。
 
 **起始版本：** 12
 
@@ -748,14 +748,14 @@ Measures a node. You can use the <b>getMeasuredSize</b> API to obtain the size a
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Indicates the target node. |
-|  [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the size constraint. |
+| ArkUI_NodeHandle node | 目标节点对象。 |
+|  ArkUI_LayoutConstraint* Constraint | 约束尺寸。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the error code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | 错误码。<br>         <br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         <br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### layoutNode()
 
@@ -765,7 +765,7 @@ int32_t (*layoutNode)(ArkUI_NodeHandle node, int32_t positionX, int32_t position
 
 **描述**
 
-Lays outs a component and passes the expected position of the component relative to its parent component.When the component is being displayed, this API must be called in the main thread.
+对目标组件进行布局并传递该组件相对父组件的期望位置。
 
 **起始版本：** 12
 
@@ -773,15 +773,15 @@ Lays outs a component and passes the expected position of the component relative
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Indicates the target node. |
-|  int32_t positionX | Indicates the X coordinate. |
-|  int32_t positionY | Indicates the Y coordinate. |
+| ArkUI_NodeHandle node | 目标节点对象。 |
+|  int32_t positionX | x轴坐标。 |
+|  int32_t positionY | y轴坐标。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the error code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | 错误码。<br>         <br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         <br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### addNodeEventReceiver()
 
@@ -791,7 +791,7 @@ int32_t (*addNodeEventReceiver)(ArkUI_NodeHandle node, void (*eventReceiver)(Ark
 
 **描述**
 
-Adds a component event callback function to a component to receive component events generatedby the component.Unlike the global registration function <b>registerNodeEventReceiver</b>, this API allows multiple eventreceivers to be added to the same component. <br> The callback added by this API is triggered before the global callback registered by<b>registerNodeEventReceiver</b>. <br> Do not directly save the <b>ArkUI_NodeEvent</b> object pointer.The data will be destroyed after the callback is complete. <br>
+在组件上添加组件事件回调函数，用于接收该组件产生的组件事件。不同于registerNodeEventReceiver的全局注册函数，该函数允许在同一个组件上添加多个事件接收器。<br> 该函数添加的监听回调函数触发时机会先于registerNodeEventReceiver注册的全局回调函数。<br> 避免直接保存ArkUI_NodeEvent对象指针，数据会在回调结束后销毁。<br>
 
 **起始版本：** 12
 
@@ -799,14 +799,14 @@ Adds a component event callback function to a component to receive component eve
 
 | 参数项 | 描述 |
 | -- | -- |
-| node | Indicates the component for which you want to add the event callback function. |
-| eventReceiver | Indicates the component event callback function to add. |
+| node | 用于添加组件事件回调函数的对象。 |
+| eventReceiver | 组件事件回调函数。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the error code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | 错误码。<br>         <br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         <br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### removeNodeEventReceiver()
 
@@ -816,7 +816,7 @@ int32_t (*removeNodeEventReceiver)(ArkUI_NodeHandle node, void (*eventReceiver)(
 
 **描述**
 
-Removes the registered component event callback function from a component.
+在组件上删除注册的组件事件回调函数。
 
 **起始版本：** 12
 
@@ -824,14 +824,14 @@ Removes the registered component event callback function from a component.
 
 | 参数项 | 描述 |
 | -- | -- |
-| node | Indicates the component from which you want to remove the event callback function. |
-| eventReceiver | Indicates the component event callback function to remove. |
+| node | 用于删除组件事件回调函数的对象。 |
+| eventReceiver | 待删除的组件事件回调函数。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the error code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | 错误码。<br>         <br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         <br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### addNodeCustomEventReceiver()
 
@@ -841,7 +841,7 @@ int32_t (*addNodeCustomEventReceiver)(ArkUI_NodeHandle node, void (*eventReceive
 
 **描述**
 
-Adds a custom event callback function to a component to receive custom events(such as layout and drawing events) generated by the component.Unlike the global registration function <b>registerNodeCustomEventReceiver</b>, this API allowsmultiple event receivers to be added to the same component. <br> The callback added by this API is triggered before the global callback registered by<b>registerNodeCustomEventReceiver</b>. <br> Do not directly save the <b>ArkUI_NodeCustomEvent</b> object pointer.The data will be destroyed after the callback is complete. <br>
+在组件上添加自定义事件回调函数，用于接收该组件产生的自定义事件（如布局事件，绘制事件）。不同于registerNodeCustomEventReceiver的全局注册函数，该函数允许在同一个组件上添加多个事件接收器。<br> 该函数添加的监听回调函数触发时机会先于registerNodeCustomEventReceiver注册的全局回调函数。<br> 避免直接保存ArkUI_NodeCustomEvent对象指针，数据会在回调结束后销毁。<br>
 
 **起始版本：** 12
 
@@ -849,14 +849,14 @@ Adds a custom event callback function to a component to receive custom events(su
 
 | 参数项 | 描述 |
 | -- | -- |
-| node | Indicates the component for which you want to add the custom event callback function. |
-| eventReceiver | Indicates the custom event callback function to add. |
+| node | 用于添加组件自定义事件回调函数的对象。 |
+| eventReceiver | 组件自定义事件回调函数。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the error code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | 错误码。<br>         <br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         <br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### removeNodeCustomEventReceiver()
 
@@ -866,7 +866,7 @@ int32_t (*removeNodeCustomEventReceiver)(ArkUI_NodeHandle node,void (*eventRecei
 
 **描述**
 
-Removes a registered custom event callback function from a component.
+在组件上删除注册的自定义事件回调函数。
 
 **起始版本：** 12
 
@@ -874,14 +874,14 @@ Removes a registered custom event callback function from a component.
 
 | 参数项 | 描述 |
 | -- | -- |
-| node | Indicates the component from which you want to remove the custom event callback function. |
-| eventReceiver | Indicates the custom event callback function to remove. |
+| node | 用于删除组件自定义事件回调函数的对象。 |
+| eventReceiver | 待删除的组件自定义事件回调函数。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the error code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | 错误码。<br>         <br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         <br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### setUserData()
 
@@ -891,7 +891,7 @@ int32_t (*setUserData)(ArkUI_NodeHandle node, void* userData)
 
 **描述**
 
-Saves custom data on the specified component.
+在组件上保存自定义数据。
 
 **起始版本：** 12
 
@@ -899,14 +899,14 @@ Saves custom data on the specified component.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Indicates the component on which the custom data will be saved. |
-|  void* userData | Indicates the custom data to be saved. |
+| ArkUI_NodeHandle node | 用于保存自定义数据的组件。 |
+|  void* userData | 要保存的自定义数据。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the error code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | 错误码。<br>         <br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         <br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### getUserData()
 
@@ -916,7 +916,7 @@ void* (*getUserData)(ArkUI_NodeHandle node)
 
 **描述**
 
-Obtains the custom data saved on the specified component.
+获取在组件上保存的自定义数据。
 
 **起始版本：** 12
 
@@ -924,13 +924,13 @@ Obtains the custom data saved on the specified component.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Indicates the target component. |
+| ArkUI_NodeHandle node | 保存了自定义数据的组件。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| void* | Returns the custom data. |
+| void* | 自定义数据。 |
 
 ### setLengthMetricUnit()
 
@@ -940,7 +940,7 @@ int32_t (*setLengthMetricUnit)(ArkUI_NodeHandle node, ArkUI_LengthMetricUnit uni
 
 **描述**
 
-Sets the unit for a component.
+指定组件的单位。
 
 **起始版本：** 12
 
@@ -948,14 +948,14 @@ Sets the unit for a component.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Indicates the component for which you want to set the unit. |
-|  [ArkUI_LengthMetricUnit](capi-native-type-h.md#arkui_lengthmetricunit) unit | Indicates the unit, which is an enumerated value of [ArkUI_LengthMetricUnit](capi-native-type-h.md#arkui_lengthmetricunit).The default value is <b>ARKUI_LENGTH_METRIC_UNIT_DEFAULT</b>. |
+| ArkUI_NodeHandle node | 用于指定单位的组件。 |
+|  [ArkUI_LengthMetricUnit](capi-native-type-h.md#arkui_lengthmetricunit) unit | 单位类型[ArkUI_LengthMetricUnit](capi-native-type-h.md#arkui_lengthmetricunit)，默认为 ARKUI_LENGTH_METRIC_UNIT_DEFAULT。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the error code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | 错误码。<br>         <br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         <br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### getParent()
 
@@ -965,7 +965,7 @@ ArkUI_NodeHandle (*getParent)(ArkUI_NodeHandle node)
 
 **描述**
 
-Get the parent node.
+获取父节点。
 
 **起始版本：** 12
 
@@ -973,13 +973,13 @@ Get the parent node.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | target node object. |
+| ArkUI_NodeHandle node | 目标节点对象。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) | Returns the pointer of the component, if not return NULL |
+| ArkUI_NodeHandle | 返回组件的指针，如果没有返回NULL。 |
 
 ### removeAllChildren()
 
@@ -989,7 +989,7 @@ int32_t (*removeAllChildren)(ArkUI_NodeHandle parent)
 
 **描述**
 
-Uninstall all child nodes from the parent component.
+从父组件上卸载所有子节点。
 
 **起始版本：** 12
 
@@ -997,12 +997,12 @@ Uninstall all child nodes from the parent component.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) parent | target node object. |
+| ArkUI_NodeHandle parent | 目标节点对象。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the error code.<br>            Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>            Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | 错误码。<br>         <br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         <br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
 
 

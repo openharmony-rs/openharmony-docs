@@ -8,7 +8,9 @@ The connection event supplied by system to indicate device state and information
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-avSession-type ConnectionEvent = (state: ConnectionState, device: OutputDeviceInfo) => void--><!--Device-avSession-type ConnectionEvent = (state: ConnectionState, device: OutputDeviceInfo) => void-End-->
 
@@ -18,6 +20,6 @@ The connection event supplied by system to indicate device state and information
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| state | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 设备连接状态。  |
-| device | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | device information  |
+| state | ConnectionState | 是 | 设备连接状态。 |
+| device | [OutputDeviceInfo](arkts-avsession-avsession-outputdeviceinfo-i.md) | 是 | device information |
 

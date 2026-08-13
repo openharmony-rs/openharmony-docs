@@ -16,6 +16,8 @@ Button()
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -36,6 +38,8 @@ Button(options: ButtonOptions)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -48,7 +52,7 @@ Button(options: ButtonOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 配置按钮的显示样式。  |
+| options | [ButtonOptions](arkts-arkui-buttonoptions-i.md) | 是 | 配置按钮的显示样式。 |
 
 ## Button
 
@@ -62,6 +66,8 @@ Button(label: ResourceStr, options?: ButtonOptions)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -74,8 +80,16 @@ Button(label: ResourceStr, options?: ButtonOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| label | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 按钮文本内容。\_\_\_HTML\_TAG\_USD\_0\_\_\_**说明：** 当文本字符的长度超过按钮本身的宽度时，文本将会被截断。  |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 配置按钮的显示样式。 \_\_\_HTML\_TAG\_USD\_0\_\_\_ 未设置时，则按照ButtonOptions中各参数的默认值配置。  |
+| label | ResourceStr | 是 | 按钮文本内容。<br/>**说明：** 当文本字符的长度超过按钮本身的宽度时，文本将会被截断。 |
+| options | [ButtonOptions](arkts-arkui-buttonoptions-i.md) | 否 | 配置按钮的显示样式。 <br/> 未设置时，则按照ButtonOptions中各参数的默认值配置。 |
 
 ## 汇总
 
+- [ButtonConfiguration](arkts-arkui-buttonconfiguration-i.md)
+- [ButtonOptions](arkts-arkui-buttonoptions-i.md)
+- [LabelStyle](arkts-arkui-labelstyle-i.md)
+- [ButtonTriggerClickCallback](arkts-arkui-buttontriggerclickcallback-t.md)
+- [ButtonRole](arkts-arkui-buttonrole-e.md)
+- [ButtonStyleMode](arkts-arkui-buttonstylemode-e.md)
+- [ButtonType](arkts-arkui-buttontype-e.md)
+- [ControlSize](arkts-arkui-controlsize-e.md)

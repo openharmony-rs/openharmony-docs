@@ -2,13 +2,15 @@
 
 Video Functions object.
 
-**继承/实现关系：** VideoFunctions extends [FlashQuery](arkts-camera-camera-flashquery-i.md), [AutoExposureQuery](arkts-camera-camera-autoexposurequery-i.md), [ManualExposureQuery](arkts-camera-camera-manualexposurequery-i.md), [FocusQuery](arkts-camera-camera-focusquery-i.md), [ZoomQuery](arkts-camera-camera-zoomquery-i.md), [StabilizationQuery](arkts-camera-camera-stabilizationquery-i.md), [BeautyQuery](arkts-camera-camera-beautyquery-i-sys.md), [ColorEffectQuery](arkts-camera-camera-coloreffectquery-i-sys.md), [ColorManagementQuery](arkts-camera-camera-colormanagementquery-i.md), [MacroQuery](arkts-camera-camera-macroquery-i.md), [SceneDetectionQuery](arkts-camera-camera-scenedetectionquery-i-sys.md)
+**继承/实现关系：** VideoFunctions extends [FlashQuery](arkts-camera-camera-flashquery-i.md#FlashQuery), [AutoExposureQuery](arkts-camera-camera-autoexposurequery-i.md#AutoExposureQuery), [ManualExposureQuery](arkts-camera-camera-manualexposurequery-i.md#ManualExposureQuery（系统接口）), [FocusQuery](arkts-camera-camera-focusquery-i.md#FocusQuery), [ZoomQuery](arkts-camera-camera-zoomquery-i.md#ZoomQuery), [StabilizationQuery](arkts-camera-camera-stabilizationquery-i.md#StabilizationQuery), [BeautyQuery](arkts-camera-camera-beautyquery-i-sys.md#BeautyQuery（系统接口）), [ColorEffectQuery](arkts-camera-camera-coloreffectquery-i-sys.md#ColorEffectQuery（系统接口）), [ColorManagementQuery](arkts-camera-camera-colormanagementquery-i.md#ColorManagementQuery), [MacroQuery](arkts-camera-camera-macroquery-i-sys.md#MacroQuery（系统接口）), [SceneDetectionQuery](arkts-camera-camera-scenedetectionquery-i-sys.md#SceneDetectionQuery（系统接口）)
 
-**起始版本：** 13
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为13；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-<!--Device-camera-interface VideoFunctions extends FlashQuery, AutoExposureQuery, ManualExposureQuery, FocusQuery, ZoomQuery, StabilizationQuery, BeautyQuery, ColorEffectQuery, ColorManagementQuery, MacroQuery, SceneDetectionQuery--><!--Device-camera-interface VideoFunctions extends FlashQuery, AutoExposureQuery, ManualExposureQuery, FocusQuery, ZoomQuery, StabilizationQuery, BeautyQuery, ColorEffectQuery, ColorManagementQuery, MacroQuery, SceneDetectionQuery-End-->
+**废弃版本：** -1
+
+<!--Device-camera-interface VideoFunctions--><!--Device-camera-interface VideoFunctions-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

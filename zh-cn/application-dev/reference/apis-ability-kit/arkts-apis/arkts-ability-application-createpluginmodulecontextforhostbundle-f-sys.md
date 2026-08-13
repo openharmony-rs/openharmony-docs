@@ -9,9 +9,11 @@ export function createPluginModuleContextForHostBundle(context: Context, pluginB
 
 根据入参Context、插件包名和插件模块名和应用包名，创建对应插件的Context，用于获取插件的基本信息。使用Promise异步回调。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -27,7 +29,7 @@ export function createPluginModuleContextForHostBundle(context: Context, pluginB
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 表示应用上下文。 |
+| context | [Context](arkts-ability-context-c.md) | 是 | 表示应用上下文。 |
 | pluginBundleName | string | 是 | 表示应用的插件包名。 |
 | pluginModuleName | string | 是 | 表示应用的插件模块名。 |
 | hostBundleName | string | 是 | 表示安装插件的应用包名。 |
@@ -36,7 +38,7 @@ export function createPluginModuleContextForHostBundle(context: Context, pluginB
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;\_\_\_MD\_LINK\_USD\_0\_\_\_&gt; | Promise对象。返回创建的Context，返回的Context中的属性processName和config与入参Context中的属性processName和config的值相 |
+| Promise&lt;[Context](arkts-ability-context-c.md)&gt; | Promise对象。返回创建的Context，返回的Context中的属性processName和config与入参Context中的属性processName和config的值相 同。 |
 
 **错误码：**
 
@@ -45,7 +47,7 @@ export function createPluginModuleContextForHostBundle(context: Context, pluginB
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { AbilityConstant, UIAbility, application, common, Context, Want } from '@kit.AbilityKit';
@@ -66,10 +68,8 @@ export default class EntryAbility extends UIAbility {
           let message: string = (error as BusinessError).message;
           console.error(`createPluginModuleContextForHostBundle failed, error.code: ${code}, error.message: ${message}`);
         });
-    } catch (error) {
-      let code: number = (error as BusinessError).code;
-      let message: string = (error as BusinessError).message;
-      console.error(`createPluginModuleContextForHostBundle failed, error.code: ${code}, error.message: ${message}`);
+    } catch (error: BusinessError) {
+      console.error(`createPluginModuleContextForHostBundle failed, error.code: ${error.code}, error.message: ${error.message}`);
     }
   }
 }

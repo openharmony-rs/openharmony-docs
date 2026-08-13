@@ -6,7 +6,9 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
 
-<!--Device-unnamed-export interface Callback<T>--><!--Device-unnamed-export interface Callback<T>-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-export interface Callback--><!--Device-unnamed-export interface Callback-End-->
 
 **系统能力：** SystemCapability.Base
 
@@ -19,6 +21,8 @@
 **起始版本：** 6
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

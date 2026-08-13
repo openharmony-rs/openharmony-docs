@@ -12,6 +12,8 @@ function getCalendarManager(context: Context) : CalendarManager
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -24,17 +26,17 @@ function getCalendarManager(context: Context) : CalendarManager
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 应用上下文Context。 |
+| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 应用上下文Context。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回创建的CalendarManager对象。 |
+| [CalendarManager](arkts-calendar-calendarmanager-calendarmanager-i.md) | 返回创建的CalendarManager对象。 |
 
-**示例：**
+## 示例
 
-示例中的mContext的获取方式请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+示例中的mContext的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 ```TypeScript
 // 获取上下文mContext
@@ -43,12 +45,10 @@ function getCalendarManager(context: Context) : CalendarManager
 // 文档后续示例代码都需要配置此文件才能正常运行
 import {
   abilityAccessCtrl,
-  AbilityConstant, 
   common, 
   PermissionRequestResult, 
   Permissions, 
-  UIAbility, 
-  Want
+  UIAbility
 } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { calendarManager } from '@kit.CalendarKit';

@@ -6,7 +6,7 @@
 function setInterface(pipe: USBDevicePipe, iface: USBInterface): number
 ```
 
-设置设备接口。 需要调用[usb.getDevices]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_获取设备列表以及interfaces；调用[usb.requestRight]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_获取设备请求权限；调 用[usb.connectDevice]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_得到devicepipe作为参数；调用[usb.claimInterface]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_注册通信接 口。
+设置设备接口。 需要调用[usb.getDevices](arkts-basicservices-usb-getdevices-f.md#getDevices)获取设备列表以及interfaces；调用[usb.requestRight](arkts-basicservices-usb-requestright-f.md#requestRight)获取设备请求权限；调 用[usb.connectDevice](arkts-basicservices-usb-connectdevice-f.md#connectDevice)得到devicepipe作为参数；调用[usb.claimInterface](arkts-basicservices-usb-claiminterface-f.md#claimInterface)注册通信接 口。
 
 **起始版本：** 8
 
@@ -14,7 +14,7 @@ function setInterface(pipe: USBDevicePipe, iface: USBInterface): number
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.setInterface](arkts-basicservices-usbmanager-setinterface-f.md#setinterface)
+**替代接口：** [setInterface](arkts-basicservices-usbmanager-setinterface-f.md#setInterface)
 
 <!--Device-usb-function setInterface(pipe: USBDevicePipe, iface: USBInterface): number--><!--Device-usb-function setInterface(pipe: USBDevicePipe, iface: USBInterface): number-End-->
 
@@ -24,8 +24,8 @@ function setInterface(pipe: USBDevicePipe, iface: USBInterface): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pipe | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 用于确定总线号和设备地址。 |
-| iface | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 用于确定需要设置的接口。 |
+| pipe | USBDevicePipe | 是 | 用于确定总线号和设备地址。 |
+| iface | USBInterface | 是 | 用于确定需要设置的接口。 |
 
 **返回值：**
 
@@ -33,7 +33,7 @@ function setInterface(pipe: USBDevicePipe, iface: USBInterface): number
 | --- | --- |
 | number | 设置设备接口成功返回0；设置设备接口失败返回其他错误码。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let ret = usb.setInterface(devicepipe, interfaces);

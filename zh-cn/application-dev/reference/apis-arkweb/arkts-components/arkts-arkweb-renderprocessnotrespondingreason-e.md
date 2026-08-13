@@ -1,10 +1,12 @@
 # RenderProcessNotRespondingReason
 
-Enum type supplied to \_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ when onRenderProcessNotResponding is called.
+Enum type supplied to [RenderProcessNotRespondingData](arkts-arkweb-renderprocessnotrespondingdata-i.md#RenderProcessNotRespondingData) when onRenderProcessNotResponding is called.
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare enum RenderProcessNotRespondingReason--><!--Device-unnamed-declare enum RenderProcessNotRespondingReason-End-->
 
@@ -22,6 +24,8 @@ Timeout for input sent to render process.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-RenderProcessNotRespondingReason-INPUT_TIMEOUT = 0--><!--Device-RenderProcessNotRespondingReason-INPUT_TIMEOUT = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -37,6 +41,8 @@ Timeout for navigation commit.
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-RenderProcessNotRespondingReason-NAVIGATION_COMMIT_TIMEOUT = 1--><!--Device-RenderProcessNotRespondingReason-NAVIGATION_COMMIT_TIMEOUT = 1-End-->
 

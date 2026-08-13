@@ -4,7 +4,9 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-export interface ComposeTitleBarV2MenuItemParams--><!--Device-unnamed-export interface ComposeTitleBarV2MenuItemParams-End-->
 
@@ -22,9 +24,13 @@ accessibilityDescription?: ResourceStr
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ComposeTitleBarV2MenuItemParams-accessibilityDescription?: ResourceStr--><!--Device-ComposeTitleBarV2MenuItemParams-accessibilityDescription?: ResourceStr-End-->
 
@@ -40,18 +46,17 @@ accessibilityLevel?: string
 
 **类型：** string
 
-**默认值：** auto .The options are as follows:<br/>
-"auto":The value is converted to "yes" or "no" based on the component.
-"yes": the current component is selectable for the accessibility service.
-"no": The current component is not selectable for the accessibility service.
-"no-hide-descendants":The current component and all its child components are not selectable<br/>
-for the accessibility service.
+**默认值：** auto .The options are as follows:<br/> "auto":The value is converted to "yes" or "no" based on the component. "yes": the current component is selectable for the accessibility service. "no": The current component is not selectable for the accessibility service. "no-hide-descendants":The current component and all its child components are not selectable<br/> for the accessibility service.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ComposeTitleBarV2MenuItemParams-accessibilityLevel?: string--><!--Device-ComposeTitleBarV2MenuItemParams-accessibilityLevel?: string-End-->
 
@@ -69,9 +74,13 @@ accessibilityText?: ResourceStr
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ComposeTitleBarV2MenuItemParams-accessibilityText?: ResourceStr--><!--Device-ComposeTitleBarV2MenuItemParams-accessibilityText?: ResourceStr-End-->
 
@@ -85,13 +94,17 @@ action?: OnActionCallback
 
 触发时的动作闭包，item属性不支持触发action事件。
 
-**类型：** OnActionCallback
+**类型：** [OnActionCallback](../../apis-na/arkts-apis/arkts-na-onactioncallback-t.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ComposeTitleBarV2MenuItemParams-action?: OnActionCallback--><!--Device-ComposeTitleBarV2MenuItemParams-action?: OnActionCallback-End-->
 
@@ -109,9 +122,13 @@ isEnabled?: boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ComposeTitleBarV2MenuItemParams-isEnabled?: boolean--><!--Device-ComposeTitleBarV2MenuItemParams-isEnabled?: boolean-End-->
 
@@ -129,9 +146,13 @@ label?: ResourceStr
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ComposeTitleBarV2MenuItemParams-label?: ResourceStr--><!--Device-ComposeTitleBarV2MenuItemParams-label?: ResourceStr-End-->
 
@@ -145,13 +166,17 @@ symbolStyle?: SymbolGlyphModifier
 
 Symbol图标资源，优先级大于value，item左侧头像不支持设置该属性。
 
-**类型：** SymbolGlyphModifier
+**类型：** [SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ComposeTitleBarV2MenuItemParams-symbolStyle?: SymbolGlyphModifier--><!--Device-ComposeTitleBarV2MenuItemParams-symbolStyle?: SymbolGlyphModifier-End-->
 
@@ -169,9 +194,13 @@ value: ResourceStr
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ComposeTitleBarV2MenuItemParams-value: ResourceStr--><!--Device-ComposeTitleBarV2MenuItemParams-value: ResourceStr-End-->
 

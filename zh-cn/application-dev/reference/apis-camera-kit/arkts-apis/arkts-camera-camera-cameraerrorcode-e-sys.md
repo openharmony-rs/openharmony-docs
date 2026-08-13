@@ -2,9 +2,11 @@
 
 相机错误码。 接口使用不正确以及on接口监听error状态返回。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-camera-enum CameraErrorCode--><!--Device-camera-enum CameraErrorCode-End-->
 
@@ -18,9 +20,11 @@ DEVICE_FREQUENTLY_SWITCHED = 7400111
 
 Camera frequently switched.
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-CameraErrorCode-DEVICE_FREQUENTLY_SWITCHED = 7400111--><!--Device-CameraErrorCode-DEVICE_FREQUENTLY_SWITCHED = 7400111-End-->
 
@@ -36,9 +40,11 @@ CAMERA_LENS_RETRACTED = 7400112
 
 Camera lens retracted.
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-CameraErrorCode-CAMERA_LENS_RETRACTED = 7400112--><!--Device-CameraErrorCode-CAMERA_LENS_RETRACTED = 7400112-End-->
 

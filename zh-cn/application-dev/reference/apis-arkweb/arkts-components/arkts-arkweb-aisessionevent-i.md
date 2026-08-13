@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface AISessionEvent--><!--Device-unnamed-declare interface AISessionEvent-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -18,11 +20,13 @@ aiSessionType: AISessionType
 
 AI会话类型。
 
-**类型：** AISessionType
+**类型：** [AISessionType](arkts-arkweb-aisessiontype-e.md)
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -36,13 +40,15 @@ AI会话类型。
 onCreateAISession: OnCreateAISession
 ```
 
-AI会话创建时触发的回调函数。返回\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_跳过系统默认行为，返回\_\_\_INLINE\_CODE\_DESC\_USD\_1\_\_\_继续执行系统默认逻辑。
+AI会话创建时触发的回调函数。返回`true`跳过系统默认行为，返回`false`继续执行系统默认逻辑。
 
-**类型：** OnCreateAISession
+**类型：** [OnCreateAISession](arkts-arkweb-oncreateaisession-t.md)
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -58,11 +64,13 @@ onDestroyAISession: OnDestroyAISession
 
 AI会话销毁时触发的回调函数，用于清理与自定义AI模型关联的资源。
 
-**类型：** OnDestroyAISession
+**类型：** [OnDestroyAISession](arkts-arkweb-ondestroyaisession-t.md)
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -78,11 +86,13 @@ onExecuteAIAction: OnExecuteAIAction
 
 AI会话执行操作时触发的回调函数。
 
-**类型：** OnExecuteAIAction
+**类型：** [OnExecuteAIAction](arkts-arkweb-onexecuteaiaction-t.md)
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -1,6 +1,6 @@
 # KvStoreResultSet
 
-提供获取KVStore数据库结果集的相关方法，包括查询和移动数据读取位置等。 在调用KvStoreResultSet的方法前，需要先通过 [getKVStore]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 构建一个KVStore实例。
+提供获取KVStore数据库结果集的相关方法，包括查询和移动数据读取位置等。 在调用KvStoreResultSet的方法前，需要先通过 getKVStore 构建一个KVStore实例。
 
 **起始版本：** 7
 
@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** ohos.data.distributedKVStore.KVStoreResultSet
+**替代接口：** [KVStoreResultSet](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md#KVStoreResultSet)
 
 <!--Device-distributedData-interface KvStoreResultSet--><!--Device-distributedData-interface KvStoreResultSet-End-->
 
@@ -28,7 +28,7 @@ getCount(): number
 
 **废弃版本：** 9
 
-**替代接口：** ohos.data.distributedKVStore.KVStoreResultSet#getCount
+**替代接口：** getCount
 
 <!--Device-KvStoreResultSet-getCount(): number--><!--Device-KvStoreResultSet-getCount(): number-End-->
 
@@ -40,7 +40,7 @@ getCount(): number
 | --- | --- |
 | number | 返回数据的总行数。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let kvStore;
@@ -73,7 +73,7 @@ getEntry(): Entry
 
 **废弃版本：** 9
 
-**替代接口：** ohos.data.distributedKVStore.KVStoreResultSet#getEntry
+**替代接口：** getEntry
 
 <!--Device-KvStoreResultSet-getEntry(): Entry--><!--Device-KvStoreResultSet-getEntry(): Entry-End-->
 
@@ -83,9 +83,9 @@ getEntry(): Entry
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回键值对。 |
+| Entry | 返回键值对。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let kvStore;
@@ -118,7 +118,7 @@ getPosition(): number
 
 **废弃版本：** 9
 
-**替代接口：** ohos.data.distributedKVStore.KVStoreResultSet#getPosition
+**替代接口：** getPosition
 
 <!--Device-KvStoreResultSet-getPosition(): number--><!--Device-KvStoreResultSet-getPosition(): number-End-->
 
@@ -130,7 +130,7 @@ getPosition(): number
 | --- | --- |
 | number | 返回当前读取位置。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let kvStore;
@@ -163,7 +163,7 @@ isAfterLast(): boolean
 
 **废弃版本：** 9
 
-**替代接口：** ohos.data.distributedKVStore.KVStoreResultSet#isAfterLast
+**替代接口：** isAfterLast
 
 <!--Device-KvStoreResultSet-isAfterLast(): boolean--><!--Device-KvStoreResultSet-isAfterLast(): boolean-End-->
 
@@ -175,7 +175,7 @@ isAfterLast(): boolean
 | --- | --- |
 | boolean | 返回true表示读取位置在最后一行之后；返回false表示读取位置不在最后一行之后。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let kvStore;
@@ -208,7 +208,7 @@ isBeforeFirst(): boolean
 
 **废弃版本：** 9
 
-**替代接口：** ohos.data.distributedKVStore.KVStoreResultSet#isBeforeFirst
+**替代接口：** isBeforeFirst
 
 <!--Device-KvStoreResultSet-isBeforeFirst(): boolean--><!--Device-KvStoreResultSet-isBeforeFirst(): boolean-End-->
 
@@ -220,7 +220,7 @@ isBeforeFirst(): boolean
 | --- | --- |
 | boolean | 返回true表示读取位置在第一行之前；返回false表示读取位置不在第一行之前。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let kvStore;
@@ -253,7 +253,7 @@ isFirst(): boolean
 
 **废弃版本：** 9
 
-**替代接口：** ohos.data.distributedKVStore.KVStoreResultSet#isFirst
+**替代接口：** isFirst
 
 <!--Device-KvStoreResultSet-isFirst(): boolean--><!--Device-KvStoreResultSet-isFirst(): boolean-End-->
 
@@ -265,7 +265,7 @@ isFirst(): boolean
 | --- | --- |
 | boolean | 返回true表示读取位置为第一行；返回false表示读取位置不是第一行。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let kvStore;
@@ -298,7 +298,7 @@ isLast(): boolean
 
 **废弃版本：** 9
 
-**替代接口：** ohos.data.distributedKVStore.KVStoreResultSet#isLast
+**替代接口：** isLast
 
 <!--Device-KvStoreResultSet-isLast(): boolean--><!--Device-KvStoreResultSet-isLast(): boolean-End-->
 
@@ -310,7 +310,7 @@ isLast(): boolean
 | --- | --- |
 | boolean | 返回true表示读取位置为最后一行；返回false表示读取位置不是最后一行。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let kvStore;
@@ -343,7 +343,7 @@ move(offset: number): boolean
 
 **废弃版本：** 9
 
-**替代接口：** ohos.data.distributedKVStore.KVStoreResultSet#move
+**替代接口：** move
 
 <!--Device-KvStoreResultSet-move(offset: number): boolean--><!--Device-KvStoreResultSet-move(offset: number): boolean-End-->
 
@@ -361,7 +361,7 @@ move(offset: number): boolean
 | --- | --- |
 | boolean | 返回true表示操作成功；返回false则表示操作失败。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let kvStore;
@@ -394,7 +394,7 @@ moveToFirst(): boolean
 
 **废弃版本：** 9
 
-**替代接口：** ohos.data.distributedKVStore.KVStoreResultSet#moveToFirst
+**替代接口：** moveToFirst
 
 <!--Device-KvStoreResultSet-moveToFirst(): boolean--><!--Device-KvStoreResultSet-moveToFirst(): boolean-End-->
 
@@ -406,7 +406,7 @@ moveToFirst(): boolean
 | --- | --- |
 | boolean | 返回true表示操作成功；返回false则表示操作失败。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let kvStore;
@@ -439,7 +439,7 @@ moveToLast(): boolean
 
 **废弃版本：** 9
 
-**替代接口：** ohos.data.distributedKVStore.KVStoreResultSet#moveToLast
+**替代接口：** moveToLast
 
 <!--Device-KvStoreResultSet-moveToLast(): boolean--><!--Device-KvStoreResultSet-moveToLast(): boolean-End-->
 
@@ -451,7 +451,7 @@ moveToLast(): boolean
 | --- | --- |
 | boolean | 返回true表示操作成功；返回false则表示操作失败。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let kvStore;
@@ -484,7 +484,7 @@ moveToNext(): boolean
 
 **废弃版本：** 9
 
-**替代接口：** ohos.data.distributedKVStore.KVStoreResultSet#moveToNext
+**替代接口：** moveToNext
 
 <!--Device-KvStoreResultSet-moveToNext(): boolean--><!--Device-KvStoreResultSet-moveToNext(): boolean-End-->
 
@@ -496,7 +496,7 @@ moveToNext(): boolean
 | --- | --- |
 | boolean | 返回true表示操作成功；返回false则表示操作失败。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let kvStore;
@@ -529,7 +529,7 @@ moveToPosition(position: number): boolean
 
 **废弃版本：** 9
 
-**替代接口：** ohos.data.distributedKVStore.KVStoreResultSet#moveToPosition
+**替代接口：** moveToPosition
 
 <!--Device-KvStoreResultSet-moveToPosition(position: number): boolean--><!--Device-KvStoreResultSet-moveToPosition(position: number): boolean-End-->
 
@@ -547,7 +547,7 @@ moveToPosition(position: number): boolean
 | --- | --- |
 | boolean | 返回true表示操作成功；返回false则表示操作失败。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let kvStore;
@@ -580,7 +580,7 @@ moveToPrevious(): boolean
 
 **废弃版本：** 9
 
-**替代接口：** ohos.data.distributedKVStore.KVStoreResultSet#moveToPrevious
+**替代接口：** moveToPrevious
 
 <!--Device-KvStoreResultSet-moveToPrevious(): boolean--><!--Device-KvStoreResultSet-moveToPrevious(): boolean-End-->
 
@@ -592,7 +592,7 @@ moveToPrevious(): boolean
 | --- | --- |
 | boolean | 返回true表示操作成功；返回false则表示操作失败。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let kvStore;

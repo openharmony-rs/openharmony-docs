@@ -6,7 +6,7 @@
 function connectDevice(device: USBDevice): Readonly<USBDevicePipe>
 ```
 
-打开USB设备。 需要调用[usb.getDevices]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_获取设备信息以及device，再调用[usb.requestRight]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_获取设备请求权限。
+打开USB设备。 需要调用[usb.getDevices](arkts-basicservices-usb-getdevices-f.md#getDevices)获取设备信息以及device，再调用[usb.requestRight](arkts-basicservices-usb-requestright-f.md#requestRight)获取设备请求权限。
 
 **起始版本：** 8
 
@@ -14,7 +14,7 @@ function connectDevice(device: USBDevice): Readonly<USBDevicePipe>
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.connectDevice](arkts-basicservices-usbmanager-connectdevice-f.md#connectdevice)
+**替代接口：** [connectDevice](arkts-basicservices-usbmanager-connectdevice-f.md#connectDevice)
 
 <!--Device-usb-function connectDevice(device: USBDevice): Readonly<USBDevicePipe>--><!--Device-usb-function connectDevice(device: USBDevice): Readonly<USBDevicePipe>-End-->
 
@@ -24,7 +24,7 @@ function connectDevice(device: USBDevice): Readonly<USBDevicePipe>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| device | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | USB设备信息。 |
+| device | USBDevice | 是 | USB设备信息。 |
 
 **返回值：**
 
@@ -32,7 +32,7 @@ function connectDevice(device: USBDevice): Readonly<USBDevicePipe>
 | --- | --- |
 | Readonly&lt;USBDevicePipe&gt; | 指定的传输通道对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let devicepipe= usb.connectDevice(device);

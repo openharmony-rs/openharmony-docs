@@ -2,9 +2,11 @@
 
 Enumerates the color effect types.
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-camera-enum ColorEffectType--><!--Device-camera-enum ColorEffectType-End-->
 
@@ -20,9 +22,11 @@ NORMAL = 0
 
 Regular color effect.
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ColorEffectType-NORMAL = 0--><!--Device-ColorEffectType-NORMAL = 0-End-->
 
@@ -38,9 +42,11 @@ BRIGHT = 1
 
 Bright color effect.
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ColorEffectType-BRIGHT = 1--><!--Device-ColorEffectType-BRIGHT = 1-End-->
 
@@ -56,9 +62,11 @@ SOFT = 2
 
 Soft color effect.
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ColorEffectType-SOFT = 2--><!--Device-ColorEffectType-SOFT = 2-End-->
 
@@ -74,9 +82,11 @@ BLACK_WHITE = 3
 
 Black and white color effect.
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ColorEffectType-BLACK_WHITE = 3--><!--Device-ColorEffectType-BLACK_WHITE = 3-End-->
 

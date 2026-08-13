@@ -8,11 +8,13 @@ function subscribeToEvent(subscriber: CommonEventSubscriber, callback: Callback<
 
 订阅公共事件，并返回订阅成功或失败信息。使用Promise异步回调。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-commonEventManager-function subscribeToEvent(subscriber: CommonEventSubscriber, callback: Callback<CommonEventData>): Promise<void>--><!--Device-commonEventManager-function subscribeToEvent(subscriber: CommonEventSubscriber, callback: Callback<CommonEventData>): Promise<void>-End-->
 
@@ -22,8 +24,8 @@ function subscribeToEvent(subscriber: CommonEventSubscriber, callback: Callback<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| subscriber | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 表示订阅者对象。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;CommonEventData&gt; | 是 | 表示接收公共事件数据的回调函数。 |
+| subscriber | CommonEventSubscriber | 是 | 表示订阅者对象。 |
+| callback | [Callback](arkts-basicservices-callback-t.md)&lt;CommonEventData&gt; | 是 | 表示接收公共事件数据的回调函数。 |
 
 **返回值：**
 
@@ -37,10 +39,10 @@ function subscribeToEvent(subscriber: CommonEventSubscriber, callback: Callback<
 | --- | --- |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [1500007](../../apis-basic-services-kit/errorcode-CommonEventService.md#1500007-ipc请求发送失败) | Failed to send the message to the common event service. |
-| [1500008](../../apis-basic-services-kit/errorcode-CommonEventService.md#1500008-公共事件服务端初始化失败) | Failed to initialize the common event service. |
 | [1500010](../../apis-basic-services-kit/errorcode-CommonEventService.md#1500010-订阅者数量超限) | The count of subscriber exceeds system specification. |
+| [1500008](../../apis-basic-services-kit/errorcode-CommonEventService.md#1500008-公共事件服务端初始化失败) | Failed to initialize the common event service. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

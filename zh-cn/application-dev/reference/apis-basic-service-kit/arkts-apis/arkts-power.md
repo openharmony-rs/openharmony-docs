@@ -2,9 +2,11 @@
 
 该模块主要提供重启、关机、查询屏幕状态等接口。开发者可以使用该模块的接口获取设备的活动状态、电源模式、亮灭屏状态等。
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare namespace power--><!--Device-unnamed-declare namespace power-End-->
 
@@ -16,31 +18,31 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [getPowerMode](arkts-basicservices-power-getpowermode-f.md#getpowermode) | 获取当前设备的电源模式。 |
-| [isActive](arkts-basicservices-power-isactive-f.md#isactive) | 检测当前设备是否处于活动状态。 - 有屏的设备亮屏时为活动状态，熄屏时为非活动状态。 - 无屏的设备非休眠时为活动状态，休眠时为非活动状态。 |
-| [isScreenOn](arkts-basicservices-power-isscreenon-f.md#isscreenon) | 检测当前设备的亮灭屏状态。使用callback异步回调。 |
-| [isScreenOn](arkts-basicservices-power-isscreenon-f.md#isscreenon-1) | 检测当前设备的亮灭屏状态。使用Promise异步回调。 |
-| [isStandby](arkts-basicservices-power-isstandby-f.md#isstandby) | 检测当前设备是否进入待机低功耗续航模式。 |
-| [rebootDevice](arkts-basicservices-power-rebootdevice-f.md#rebootdevice) | 重启系统。 |
+| [getPowerMode](arkts-basicservices-power-getpowermode-f.md#getPowerMode) | 获取当前设备的电源模式。 |
+| [isActive](arkts-basicservices-power-isactive-f.md#isActive) | 检测当前设备是否处于活动状态。 - 有屏的设备亮屏时为活动状态，熄屏时为非活动状态。 - 无屏的设备非休眠时为活动状态，休眠时为非活动状态。 |
+| [isScreenOn](arkts-basicservices-power-isscreenon-f.md#isScreenOn) | 检测当前设备的亮灭屏状态。使用callback异步回调。 |
+| [isScreenOn](arkts-basicservices-power-isscreenon-f.md#isScreenOn) | 检测当前设备的亮灭屏状态。使用Promise异步回调。 |
+| [isStandby](arkts-basicservices-power-isstandby-f.md#isStandby) | 检测当前设备是否进入待机低功耗续航模式。 |
+| [rebootDevice](arkts-basicservices-power-rebootdevice-f.md#rebootDevice) | 重启系统。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [getPowerConfig](arkts-basicservices-power-getpowerconfig-f-sys.md#getpowerconfig) | 按场景名称查询电源配置值。 |
+| [getPowerConfig](arkts-basicservices-power-getpowerconfig-f-sys.md#getPowerConfig) | 按场景名称查询电源配置值。 |
 | [hibernate](arkts-basicservices-power-hibernate-f-sys.md#hibernate) | 休眠设备。 |
 | [reboot](arkts-basicservices-power-reboot-f-sys.md#reboot) | 重启设备。 |
-| [refreshActivity](arkts-basicservices-power-refreshactivity-f-sys.md#refreshactivity) | 刷新设备活动状态（如：重设屏幕超时息屏时间等）。 只有设备在活动状态下生效，设备活动状态见[power.isActive]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_接口。 |
-| [registerShutdownCallback](arkts-basicservices-power-registershutdowncallback-f-sys.md#registershutdowncallback) | 订阅电源关机或重启的回调提醒。使用callback异步回调。 |
-| [setPowerConfig](arkts-basicservices-power-setpowerconfig-f-sys.md#setpowerconfig) | 根据场景名称设置电源配置值。 |
-| [setPowerKeyFilteringStrategy](arkts-basicservices-power-setpowerkeyfilteringstrategy-f-sys.md#setpowerkeyfilteringstrategy) | 设置电源键过滤策略，在电源服务订阅电源键事件后，用于配置电源键事件的处理方式。 电源键过滤策略见[power.PowerKeyFilteringStrategy]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_接口。 |
-| [setPowerMode](arkts-basicservices-power-setpowermode-f-sys.md#setpowermode) | 设置当前设备的电源模式。使用callback异步回调。 |
-| [setPowerMode](arkts-basicservices-power-setpowermode-f-sys.md#setpowermode-1) | 设置当前设备的电源模式。使用Promise异步回调。 |
-| [setScreenOffTime](arkts-basicservices-power-setscreenofftime-f-sys.md#setscreenofftime) | 设置熄屏超时时间。 |
+| [refreshActivity](arkts-basicservices-power-refreshactivity-f-sys.md#refreshActivity) | 刷新设备活动状态（如：重设屏幕超时息屏时间等）。 只有设备在活动状态下生效，设备活动状态见[power.isActive](arkts-basicservices-power-isactive-f.md#isActive)接口。 |
+| [registerShutdownCallback](arkts-basicservices-power-registershutdowncallback-f-sys.md#registerShutdownCallback) | 订阅电源关机或重启的回调提醒。使用callback异步回调。 |
+| [setPowerConfig](arkts-basicservices-power-setpowerconfig-f-sys.md#setPowerConfig) | 根据场景名称设置电源配置值。 |
+| [setPowerKeyFilteringStrategy](arkts-basicservices-power-setpowerkeyfilteringstrategy-f-sys.md#setPowerKeyFilteringStrategy) | 设置电源键过滤策略，在电源服务订阅电源键事件后，用于配置电源键事件的处理方式。 电源键过滤策略见[power.PowerKeyFilteringStrategy](arkts-basicservices-power-powerkeyfilteringstrategy-e.md#PowerKeyFilteringStrategy)接口。 |
+| [setPowerMode](arkts-basicservices-power-setpowermode-f-sys.md#setPowerMode) | 设置当前设备的电源模式。使用callback异步回调。 |
+| [setPowerMode](arkts-basicservices-power-setpowermode-f-sys.md#setPowerMode（系统接口）) | 设置当前设备的电源模式。使用Promise异步回调。 |
+| [setScreenOffTime](arkts-basicservices-power-setscreenofftime-f-sys.md#setScreenOffTime) | 设置熄屏超时时间。 |
 | [shutdown](arkts-basicservices-power-shutdown-f-sys.md#shutdown) | 系统关机。 |
 | [suspend](arkts-basicservices-power-suspend-f-sys.md#suspend) | 使设备进入睡眠状态。 |
-| [unregisterShutdownCallback](arkts-basicservices-power-unregistershutdowncallback-f-sys.md#unregistershutdowncallback) | 取消订阅电源关机或重启的回调提醒。使用callback同步回调。 |
+| [unregisterShutdownCallback](arkts-basicservices-power-unregistershutdowncallback-f-sys.md#unregisterShutdownCallback) | 取消订阅电源关机或重启的回调提醒。使用callback同步回调。 |
 | [wakeup](arkts-basicservices-power-wakeup-f-sys.md#wakeup) | 唤醒设备。 |
 <!--DelEnd-->
 

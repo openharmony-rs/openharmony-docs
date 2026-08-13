@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-interface ColumnOptions--><!--Device-unnamed-interface ColumnOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -16,13 +18,15 @@
 space?: string | number
 ```
 
-纵向布局元素垂直方向间距。 space为负数或者[justifyContent]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_设置为FlexAlign.SpaceBetween、FlexAlign.SpaceAround、 FlexAlign.SpaceEvenly时，space不生效。 取值范围：[0, +∞) 默认值：0 非法值：按默认值处理。 单位：vp **说明：** space取值是大于等于0的数字，或者可以转换为非负数字的字符串。
+纵向布局元素垂直方向间距。 space为负数或者justifyContent设置为FlexAlign.SpaceBetween、FlexAlign.SpaceAround、 FlexAlign.SpaceEvenly时，space不生效。 取值范围：[0, +∞) 默认值：0 非法值：按默认值处理。 单位：vp **说明：** space取值是大于等于0的数字，或者可以转换为非负数字的字符串。
 
 **类型：** string \| number
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

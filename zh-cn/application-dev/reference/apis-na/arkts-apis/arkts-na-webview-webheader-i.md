@@ -6,6 +6,8 @@ Defines the Web's request/response header.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-webview-interface WebHeader--><!--Device-webview-interface WebHeader-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -24,6 +26,8 @@ Gets the key of the request/response header.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-WebHeader-headerKey: string--><!--Device-WebHeader-headerKey: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -41,6 +45,8 @@ Gets the value of the request/response header.
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WebHeader-headerValue: string--><!--Device-WebHeader-headerValue: string-End-->
 

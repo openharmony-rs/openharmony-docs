@@ -12,6 +12,8 @@ Request focus to the specific component by param: 'id/key'.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-focusControl-function requestFocus(value: string): boolean--><!--Device-focusControl-function requestFocus(value: string): boolean-End-->

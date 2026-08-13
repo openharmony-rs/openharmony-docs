@@ -1,14 +1,16 @@
 # MenuItemConfiguration
 
-开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+开发者需要自定义class实现ContentModifier接口。继承自CommonConfiguration。
 
-**继承/实现关系：** MenuItemConfiguration extends [CommonConfiguration<MenuItemConfiguration>](CommonConfiguration<MenuItemConfiguration>)
+**继承/实现关系：** MenuItemConfiguration extends CommonConfiguration<MenuItemConfiguration>
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-<!--Device-unnamed-declare interface MenuItemConfiguration extends CommonConfiguration<MenuItemConfiguration>--><!--Device-unnamed-declare interface MenuItemConfiguration extends CommonConfiguration<MenuItemConfiguration>-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare interface MenuItemConfiguration--><!--Device-unnamed-declare interface MenuItemConfiguration-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,11 +20,13 @@
 triggerSelect(index: number, value: string): void
 ```
 
-下拉菜单选中某一项的回调函数。 \_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_**说明：** \_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_index会赋值给事件[onSelect]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 回调中的索引参数； value会返回给Select组件显示，同时会赋值给事件 [onSelect]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_回调中的文本参数。
+下拉菜单选中某一项的回调函数。 &lt;br/&gt;**说明：** &lt;br/&gt;index会赋值给事件onSelect 回调中的索引参数； value会返回给Select组件显示，同时会赋值给事件 onSelect回调中的文本参数。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -53,6 +57,8 @@ icon?: ResourceStr
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -74,6 +80,8 @@ index: number
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -97,6 +105,8 @@ selected: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -113,11 +123,13 @@ symbolIcon?: SymbolGlyphModifier
 
 下拉选项Symbol图片。 symbolIcon优先级高于icon。
 
-**类型：** SymbolGlyphModifier
+**类型：** [SymbolGlyphModifier](arkts-arkui-symbolglyphmodifier-t.md)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -140,6 +152,8 @@ value: ResourceStr
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

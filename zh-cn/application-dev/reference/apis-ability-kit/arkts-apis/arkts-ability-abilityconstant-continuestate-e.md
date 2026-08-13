@@ -1,10 +1,12 @@
 # ContinueState
 
-流转状态枚举值。用于表示当前应用任务流转的状态。可配合[UIAbilityContext]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_的 [setMissionContinueState]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_ 方法进行设置。
+流转状态枚举值。用于表示当前应用任务流转的状态。可配合[UIAbilityContext](arkts-ability-uiabilitycontext-c.md#UIAbilityContext)的 [setMissionContinueState](arkts-ability-uiabilitycontext-c.md#setMissionContinueState) 方法进行设置。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AbilityConstant-export enum ContinueState--><!--Device-AbilityConstant-export enum ContinueState-End-->
 
@@ -18,9 +20,11 @@ ACTIVE = 0
 
 指示当前应用任务流转处于激活状态。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -38,9 +42,11 @@ INACTIVE = 1
 
 指示当前应用任务流转处于未激活状态。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -1,10 +1,12 @@
 # Flags
 
-[Want.flags]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_字段常用的系统预置关键字。开发者可以通过这些预置关键字设置或获取应用跳转等场景中额外携带的标志位信息。
+Want.flags字段常用的系统预置关键字。开发者可以通过这些预置关键字设置或获取应用跳转等场景中额外携带的标志位信息。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-wantConstant-export enum Flags--><!--Device-wantConstant-export enum Flags-End-->
 
@@ -18,9 +20,11 @@ FLAG_AUTH_READ_URI_PERMISSION = 0x00000001
 
 表示临时授予接收方读取该URI指向的数据的权限。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -36,9 +40,11 @@ FLAG_AUTH_WRITE_URI_PERMISSION = 0x00000002
 
 表示临时授予接收方写入该URI指向的数据的权限。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -52,11 +58,13 @@ FLAG_AUTH_WRITE_URI_PERMISSION = 0x00000002
 FLAG_AUTH_PERSISTABLE_URI_PERMISSION = 0x00000040
 ```
 
-表示该URI可被接收方持久化。目标应用可以通过[fileShare.persistPermission]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_接口进行权限持久化。
+表示该URI可被接收方持久化。目标应用可以通过[fileShare.persistPermission](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileshare-persistpermission-f.md#persistPermission)接口进行权限持久化。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Flags-FLAG_AUTH_PERSISTABLE_URI_PERMISSION = 0x00000040--><!--Device-Flags-FLAG_AUTH_PERSISTABLE_URI_PERMISSION = 0x00000040-End-->
 
@@ -70,9 +78,11 @@ FLAG_INSTALL_ON_DEMAND = 0x00000800
 
 表示拉起原子化服务时开启免安装功能。 - 如果开启了免安装功能，当系统检测到被拉起的原子化服务未安装时，会自动安装原子化服务，再进行拉起。 - 如果未开启免安装功能，当原子化服务未安装时，将拉起失败。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -86,11 +96,13 @@ FLAG_INSTALL_ON_DEMAND = 0x00000800
 FLAG_ABILITY_ON_COLLABORATE = 0x00002000
 ```
 
-在多设备协同场景下，调用方应用通过DMS系统发起请求并且通过Flags字段携带此标志，协同方应用才会触发生命周期回调方法 [onCollaborate()]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+在多设备协同场景下，调用方应用通过DMS系统发起请求并且通过Flags字段携带此标志，协同方应用才会触发生命周期回调方法 [onCollaborate()](arkts-ability-app-ability-uiability-uiability-c.md#onCollaborate)。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Flags-FLAG_ABILITY_ON_COLLABORATE = 0x00002000--><!--Device-Flags-FLAG_ABILITY_ON_COLLABORATE = 0x00002000-End-->
 
@@ -102,11 +114,13 @@ FLAG_ABILITY_ON_COLLABORATE = 0x00002000
 FLAG_START_WITHOUT_TIPS = 0x40000000
 ```
 
-表示是否关闭匹配失败弹窗功能。 通过\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_时，如果没有能够匹配的应用，默认会弹出提示弹窗“暂无可用打开方式”。开发者可以通过该字段屏蔽该弹窗。
+表示是否关闭匹配失败弹窗功能。 通过[隐式方式拉起应用](../../../application-models/app-startup-overview.md)时，如果没有能够匹配的应用，默认会弹出提示弹窗“暂无可用打开方式”。开发者可以通过该字段屏蔽该弹窗。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Flags-FLAG_START_WITHOUT_TIPS = 0x40000000--><!--Device-Flags-FLAG_START_WITHOUT_TIPS = 0x40000000-End-->
 

@@ -1,10 +1,12 @@
 # BackgroundTheme
 
-导航栏背景色底色的可选项。
+导航栏背景底色的可选项。
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-export declare enum BackgroundTheme--><!--Device-unnamed-export declare enum BackgroundTheme-End-->
 
@@ -21,6 +23,8 @@ DARK = 1
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -40,6 +44,8 @@ LIGHT = 2
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-BackgroundTheme-LIGHT = 2--><!--Device-BackgroundTheme-LIGHT = 2-End-->
@@ -52,11 +58,13 @@ LIGHT = 2
 DEFAULT = 3
 ```
 
-背景底色为灰白色。颜色值\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_ 。
+背景底色为灰白色。颜色值`#F1F3F5` 。
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 

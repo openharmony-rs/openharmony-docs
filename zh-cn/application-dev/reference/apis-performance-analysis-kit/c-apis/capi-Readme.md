@@ -1,5 +1,7 @@
 - 头文件
     - [trace.h](capi-trace-h.md)
+    - [hicollie.h](capi-hicollie-h.md)
+    - [log.h](capi-log-h.md)
     - [hidebug_type.h](capi-hidebug-type-h.md)
     - [hidebug.h](capi-hidebug-h.md)
     - [hiappevent.h](capi-hiappevent-h.md)
@@ -8,10 +10,14 @@
     - [hiappevent_param.h](capi-hiappevent-param-h.md)
 - 模块
     - [HiTrace](capi-hitrace.md)
+    - [HiCollie](capi-hicollie.md)
+    - [HiLog](capi-hilog.md)
     - [HiDebug](capi-hidebug.md)
     - [HiAppEvent](capi-hiappevent.md)
 - 结构体
     - [HiTraceId](capi-hitrace-hitraceid.md)
+    - [HiCollie_DetectionParam](capi-hicollie-hicollie-detectionparam.md)
+    - [HiCollie_SetTimerParam](capi-hicollie-hicollie-settimerparam.md)
     - [HiDebug_ThreadCpuUsage](capi-hidebug-hidebug-threadcpuusage.md)
     - [HiDebug_SystemMemInfo](capi-hidebug-hidebug-systemmeminfo.md)
     - [HiDebug_NativeMemInfo](capi-hidebug-hidebug-nativememinfo.md)

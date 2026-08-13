@@ -6,7 +6,7 @@ typedef struct OH_Drawing_FontVariationInstanceCoordinate {...} OH_Drawing_FontV
 
 ## 概述
 
-字体变体坐标
+可变字体属性键值对。
 
 **起始版本：** 24
 
@@ -20,7 +20,7 @@ typedef struct OH_Drawing_FontVariationInstanceCoordinate {...} OH_Drawing_FontV
 
 | 名称 | 描述 |
 | -- | -- |
-| char* axisKey | String identified by the keyword in the variable font attribute key-value pair. |
-| double value | Value of the variable font attribute key-value pair. |
+| char* axisKey | 可变字体属性键值对中的关键字标识的字符串。 |
+| double value | 可变字体属性键值对的值。 |
 
 

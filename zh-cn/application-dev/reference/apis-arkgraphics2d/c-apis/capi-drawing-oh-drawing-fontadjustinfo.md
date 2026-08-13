@@ -6,7 +6,7 @@ typedef struct OH_Drawing_FontAdjustInfo {...} OH_Drawing_FontAdjustInfo
 
 ## 概述
 
-This struct describes the information about a font weight mapping.
+字重映射信息结构体。
 
 **起始版本：** 12
 
@@ -20,7 +20,7 @@ This struct describes the information about a font weight mapping.
 
 | 名称 | 描述 |
 | -- | -- |
-| int weight | Original font weight. |
-| int to | Font weight displayed in the application. |
+| int weight | 字体原本的字重值。 |
+| int to | 字体在应用中显示的字重值。 |
 
 

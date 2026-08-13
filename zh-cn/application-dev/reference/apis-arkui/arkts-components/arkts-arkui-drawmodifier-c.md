@@ -6,6 +6,8 @@ Defined the draw modifier of node. Provides draw callbacks for the associated No
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare class DrawModifier--><!--Device-unnamed-declare class DrawModifier-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -22,6 +24,8 @@ drawBehind Method. Executed before drawing associated Node.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -34,7 +38,11 @@ drawBehind Method. Executed before drawing associated Node.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| drawContext | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | The drawContext used to draw. |
+| drawContext | [DrawContext](arkts-arkui-drawcontext-t.md) | 是 | The drawContext used to draw. |
+
+## 示例
+
+请参考[示例1（通过DrawModifier进行自定义绘制）](#示例1通过drawmodifier进行自定义绘制)。
 
 ## drawContent
 
@@ -48,6 +56,8 @@ drawContent Method. Executed when associated Node is drawing, the default drawCo
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -60,7 +70,11 @@ drawContent Method. Executed when associated Node is drawing, the default drawCo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| drawContext | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | The drawContext used to draw. |
+| drawContext | [DrawContext](arkts-arkui-drawcontext-t.md) | 是 | The drawContext used to draw. |
+
+## 示例
+
+请参考[示例1（通过DrawModifier进行自定义绘制）](#示例1通过drawmodifier进行自定义绘制)。
 
 ## drawForeground
 
@@ -74,6 +88,8 @@ drawForeground(drawContext: DrawContext): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -86,7 +102,11 @@ drawForeground(drawContext: DrawContext): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| drawContext | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 用来绘制的drawContext |
+| drawContext | [DrawContext](arkts-arkui-drawcontext-t.md) | 是 | 用来绘制的drawContext |
+
+## 示例
+
+请参考[示例2（通过DrawModifier对容器的前景进行自定义绘制）](#示例2通过drawmodifier对容器的前景进行自定义绘制)。
 
 ## drawFront
 
@@ -100,6 +120,8 @@ drawFront Method. Executed after drawing associated Node.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -112,7 +134,11 @@ drawFront Method. Executed after drawing associated Node.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| drawContext | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | The drawContext used to draw. |
+| drawContext | [DrawContext](arkts-arkui-drawcontext-t.md) | 是 | The drawContext used to draw. |
+
+## 示例
+
+请参考[示例1（通过DrawModifier进行自定义绘制）](#示例1通过drawmodifier进行自定义绘制)。
 
 ## drawOverlay
 
@@ -126,6 +152,8 @@ drawOverlay(drawContext: DrawContext): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
@@ -138,7 +166,68 @@ drawOverlay(drawContext: DrawContext): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| drawContext | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 用于绘制的drawContext |
+| drawContext | [DrawContext](arkts-arkui-drawcontext-t.md) | 是 | 用于绘制的drawContext |
+
+## 示例
+
+```TypeScript
+// test.ets
+import { drawing } from '@kit.ArkGraphics2D';
+
+class MyOverlayDrawModifier extends DrawModifier {
+  public scaleX: number = 3;
+  public scaleY: number = 3;
+  uiContext: UIContext;
+
+  constructor(uiContext: UIContext) {
+    super();
+    this.uiContext = uiContext;
+  }
+
+  // 重载drawOverlay方法，实现自定义绘制遮罩层
+  drawOverlay(context: DrawContext): void {
+    const brush = new drawing.Brush();
+    brush.setColor({
+      alpha: 255,
+      red: 0,
+      green: 50,
+      blue: 100
+    });
+    context.canvas.attachBrush(brush);
+    const halfWidth = context.size.width / 2;
+    const halfHeight = context.size.height / 2;
+    context.canvas.drawRect({
+      left: this.uiContext.vp2px(halfWidth - 30 * this.scaleX),
+      top: this.uiContext.vp2px(halfHeight - 30 * this.scaleY),
+      right: this.uiContext.vp2px(halfWidth + 30 * this.scaleX),
+      bottom: this.uiContext.vp2px(halfHeight + 60 * this.scaleY)
+    });
+  }
+}
+
+@Entry
+@Component
+struct DrawModifierExample {
+  // 将自定义绘制遮罩层的类实例化，传入UIContext实例
+  private overlayModifier: MyOverlayDrawModifier = new MyOverlayDrawModifier(this.getUIContext());
+
+  build() {
+    Column() {
+      Text('此文本是子节点')
+        .fontSize(36)
+        .width('100%')
+        .height('100%')
+        .textAlign(TextAlign.Center)
+    }
+    .margin(50)
+    .width(280)
+    .height(300)
+    .backgroundColor(0x87CEEB)
+    // 调用此接口并传入自定义绘制遮罩层的类实例，即可实现自定义绘制遮罩层
+    .drawModifier(this.overlayModifier)
+  }
+}
+```
 
 ## invalidate
 
@@ -152,6 +241,8 @@ Invalidate the component, which will cause a re-render of the component.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -159,4 +250,8 @@ Invalidate the component, which will cause a re-render of the component.
 <!--Device-DrawModifier-invalidate(): void--><!--Device-DrawModifier-invalidate(): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 示例
+
+请参考[示例1（通过DrawModifier进行自定义绘制）](#示例1通过drawmodifier进行自定义绘制)。
 

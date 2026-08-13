@@ -1,10 +1,12 @@
 # GradientBackground
 
-供开发者设置品牌渐变色。
+品牌渐变色选项。
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-export interface GradientBackground--><!--Device-unnamed-export interface GradientBackground-End-->
 
@@ -16,13 +18,15 @@
 alpha?: GradientAlpha
 ```
 
-the opacity of background colors.
+设置渐变色显示区域的不透明度。
 
-**类型：** GradientAlpha
+**类型：** [GradientAlpha](arkts-arkui-atomicservice-atomicservicenavigation-gradientalpha-e.md)
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -36,13 +40,15 @@ the opacity of background colors.
 backgroundTheme?: BackgroundTheme
 ```
 
-the theme color of Background.
+导航栏背景底色。
 
-**类型：** BackgroundTheme
+**类型：** [BackgroundTheme](arkts-arkui-atomicservice-atomicservicenavigation-backgroundtheme-e.md)
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -56,13 +62,15 @@ the theme color of Background.
 mixMode?: MixMode
 ```
 
-the blend mode of background color.
+同时设置primaryColor和secondaryColor时此参数生效。表示双色渐变下两种颜色的融合方式。
 
-**类型：** MixMode
+**类型：** [MixMode](arkts-arkui-atomicservice-atomicservicenavigation-mixmode-e.md)
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -76,13 +84,15 @@ the blend mode of background color.
 primaryColor: ResourceColor
 ```
 
-the primaryColor of Background.
+单色渐变色彩值和双色渐变第一色彩值。
 
 **类型：** ResourceColor
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -96,13 +106,15 @@ the primaryColor of Background.
 secondaryColor?: ResourceColor
 ```
 
-the secondaryColor of Background.
+双色渐变色第二色彩值。
 
 **类型：** ResourceColor
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 

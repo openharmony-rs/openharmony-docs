@@ -2,9 +2,11 @@
 
 服务配置信息。根据云端返回的数据填充。
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-distributedDeviceManager-interface ServiceProfileInfo--><!--Device-distributedDeviceManager-interface ServiceProfileInfo-End-->
 
@@ -22,9 +24,11 @@ data?: string
 
 **类型：** string
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ServiceProfileInfo-data?: string--><!--Device-ServiceProfileInfo-data?: string-End-->
 
@@ -42,9 +46,11 @@ deviceId: string
 
 **类型：** string
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ServiceProfileInfo-deviceId: string--><!--Device-ServiceProfileInfo-deviceId: string-End-->
 
@@ -62,9 +68,11 @@ serviceId: string
 
 **类型：** string
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ServiceProfileInfo-serviceId: string--><!--Device-ServiceProfileInfo-serviceId: string-End-->
 
@@ -82,9 +90,11 @@ serviceType: string
 
 **类型：** string
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ServiceProfileInfo-serviceType: string--><!--Device-ServiceProfileInfo-serviceType: string-End-->
 

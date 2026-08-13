@@ -2,9 +2,11 @@
 
 Enumerates the beauty types.
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-camera-enum BeautyType--><!--Device-camera-enum BeautyType-End-->
 
@@ -20,9 +22,11 @@ AUTO = 0
 
 Automatic.
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-BeautyType-AUTO = 0--><!--Device-BeautyType-AUTO = 0-End-->
 
@@ -38,9 +42,11 @@ SKIN_SMOOTH = 1
 
 Skin smoothing.
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-BeautyType-SKIN_SMOOTH = 1--><!--Device-BeautyType-SKIN_SMOOTH = 1-End-->
 
@@ -56,9 +62,11 @@ FACE_SLENDER = 2
 
 Face slimming.
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-BeautyType-FACE_SLENDER = 2--><!--Device-BeautyType-FACE_SLENDER = 2-End-->
 
@@ -74,9 +82,11 @@ SKIN_TONE = 3
 
 Skin tone perfection.
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-BeautyType-SKIN_TONE = 3--><!--Device-BeautyType-SKIN_TONE = 3-End-->
 
@@ -92,9 +102,11 @@ SKIN_TONE_BRIGHT = 4
 
 Skin tone bright beauty type.
 
-**起始版本：** 22
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为22；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-BeautyType-SKIN_TONE_BRIGHT = 4--><!--Device-BeautyType-SKIN_TONE_BRIGHT = 4-End-->
 
@@ -110,9 +122,11 @@ EYE_BIG_EYES = 5
 
 Eye big eyes beauty type.
 
-**起始版本：** 22
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为22；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-BeautyType-EYE_BIG_EYES = 5--><!--Device-BeautyType-EYE_BIG_EYES = 5-End-->
 
@@ -128,9 +142,11 @@ HAIR_HAIRLINE = 6
 
 Hair hairline beauty type.
 
-**起始版本：** 22
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为22；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-BeautyType-HAIR_HAIRLINE = 6--><!--Device-BeautyType-HAIR_HAIRLINE = 6-End-->
 
@@ -146,9 +162,11 @@ FACE_MAKEUP = 7
 
 Face makeup beauty type.
 
-**起始版本：** 22
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为22；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-BeautyType-FACE_MAKEUP = 7--><!--Device-BeautyType-FACE_MAKEUP = 7-End-->
 
@@ -164,9 +182,11 @@ HEAD_SHRINK = 8
 
 Head shrink beauty type.
 
-**起始版本：** 22
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为22；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-BeautyType-HEAD_SHRINK = 8--><!--Device-BeautyType-HEAD_SHRINK = 8-End-->
 
@@ -182,9 +202,11 @@ NOSE_SLENDER = 9
 
 Nose slender beauty type.
 
-**起始版本：** 22
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为22；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-BeautyType-NOSE_SLENDER = 9--><!--Device-BeautyType-NOSE_SLENDER = 9-End-->
 

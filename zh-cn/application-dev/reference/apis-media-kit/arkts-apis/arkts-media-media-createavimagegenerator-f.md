@@ -12,6 +12,8 @@ function createAVImageGenerator(): Promise<AVImageGenerator>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-media-function createAVImageGenerator(): Promise<AVImageGenerator>--><!--Device-media-function createAVImageGenerator(): Promise<AVImageGenerator>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
@@ -20,7 +22,7 @@ function createAVImageGenerator(): Promise<AVImageGenerator>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;AVImageGenerator&gt; | Promise对象。异步返回AVImageGenerator实例，失败时返回null。可用于获取视频缩略图。 |
+| Promise&lt;[AVImageGenerator](arkts-media-media-avimagegenerator-i.md)&gt; | Promise对象。异步返回AVImageGenerator实例，失败时返回null。可用于获取视频缩略图。 |
 
 **错误码：**
 
@@ -28,7 +30,7 @@ function createAVImageGenerator(): Promise<AVImageGenerator>
 | --- | --- |
 | [5400101](../errorcode-media.md#5400101-内存分配失败) | No memory. Returned by promise. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -57,7 +59,9 @@ Creates an **AVImageGenerator** instance. This API uses a promise to return the 
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-media-function createAVImageGenerator(): Promise<AVImageGenerator | undefined>--><!--Device-media-function createAVImageGenerator(): Promise<AVImageGenerator | undefined>-End-->
 
@@ -67,7 +71,7 @@ Creates an **AVImageGenerator** instance. This API uses a promise to return the 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;AVImageGenerator \| undefined&gt; | Promise used to return the result. If the operation is |
+| Promise&lt;[AVImageGenerator](arkts-media-media-avimagegenerator-i.md) \| undefined&gt; | Promise used to return the result. If the operation is successful, an **AVImageGenerator** instance is returned; otherwise, **null** is returned. The API can be used to obtain a video thumbnail. |
 
 **错误码：**
 
@@ -88,6 +92,8 @@ function createAVImageGenerator(callback: AsyncCallback<AVImageGenerator>): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-media-function createAVImageGenerator(callback: AsyncCallback<AVImageGenerator>): void--><!--Device-media-function createAVImageGenerator(callback: AsyncCallback<AVImageGenerator>): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
@@ -96,7 +102,7 @@ function createAVImageGenerator(callback: AsyncCallback<AVImageGenerator>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;AVImageGenerator&gt; | 是 | 回调函数。异步返回AVImageGenerator实例，失败时返回null。可用于获取视频缩略图。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AVImageGenerator](arkts-media-media-avimagegenerator-i.md)&gt; | 是 | 回调函数。异步返回AVImageGenerator实例，失败时返回null。可用于获取视频缩略图。 |
 
 **错误码：**
 
@@ -104,7 +110,7 @@ function createAVImageGenerator(callback: AsyncCallback<AVImageGenerator>): void
 | --- | --- |
 | [5400101](../errorcode-media.md#5400101-内存分配失败) | No memory. Returned by callback. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -131,7 +137,9 @@ Creates an **AVImageGenerator** instance. This API uses an asynchronous callback
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-media-function createAVImageGenerator(callback: AsyncCallback<AVImageGenerator | undefined>): void--><!--Device-media-function createAVImageGenerator(callback: AsyncCallback<AVImageGenerator | undefined>): void-End-->
 
@@ -141,7 +149,7 @@ Creates an **AVImageGenerator** instance. This API uses an asynchronous callback
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;AVImageGenerator \| undefined&gt; | 是 | Callback used to return the result.If the operation is successful, an **AVImageGenerator** instance is returned; otherwise, **null** is returned.The API can be used to obtain a video thumbnail. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AVImageGenerator](arkts-media-media-avimagegenerator-i.md) \| undefined&gt; | 是 | Callback used to return the result. If the operation is successful, an **AVImageGenerator** instance is returned; otherwise, **null** is returned. The API can be used to obtain a video thumbnail. |
 
 **错误码：**
 

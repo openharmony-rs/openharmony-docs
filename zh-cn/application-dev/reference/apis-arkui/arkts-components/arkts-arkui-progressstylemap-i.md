@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface ProgressStyleMap--><!--Device-unnamed-declare interface ProgressStyleMap-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -18,11 +20,13 @@
 
 胶囊形进度条对应的进度条样式。
 
-**类型：** CapsuleStyleOptions \| ProgressStyleOptions
+**类型：** [CapsuleStyleOptions](arkts-arkui-capsulestyleoptions-i.md) \| [ProgressStyleOptions](arkts-arkui-progressstyleoptions-i.md)
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,11 +44,13 @@
 
 圆形进度条对应的进度条样式。
 
-**类型：** EclipseStyleOptions \| ProgressStyleOptions
+**类型：** [EclipseStyleOptions](arkts-arkui-eclipsestyleoptions-i.md) \| [ProgressStyleOptions](arkts-arkui-progressstyleoptions-i.md)
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -62,11 +68,13 @@
 
 线性进度条对应的进度条样式。
 
-**类型：** LinearStyleOptions \| ProgressStyleOptions
+**类型：** [LinearStyleOptions](arkts-arkui-linearstyleoptions-i.md) \| [ProgressStyleOptions](arkts-arkui-progressstyleoptions-i.md)
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -84,11 +92,13 @@
 
 环形无刻度进度条对应的进度条样式。
 
-**类型：** RingStyleOptions \| ProgressStyleOptions
+**类型：** [RingStyleOptions](arkts-arkui-ringstyleoptions-i.md) \| [ProgressStyleOptions](arkts-arkui-progressstyleoptions-i.md)
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -106,11 +116,13 @@
 
 环形有刻度进度条对应的进度条样式。
 
-**类型：** ScaleRingStyleOptions \| ProgressStyleOptions
+**类型：** [ScaleRingStyleOptions](arkts-arkui-scaleringstyleoptions-i.md) \| [ProgressStyleOptions](arkts-arkui-progressstyleoptions-i.md)
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -10,6 +10,8 @@ SSL错误事件的回调函数。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-unnamed-type OnSslErrorEventCallback = (sslErrorEvent: SslErrorEvent) => void--><!--Device-unnamed-type OnSslErrorEventCallback = (sslErrorEvent: SslErrorEvent) => void-End-->
@@ -20,5 +22,5 @@ SSL错误事件的回调函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sslErrorEvent | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | callback information of onSslErrorEvent.  |
+| sslErrorEvent | [SslErrorEvent](arkts-arkweb-sslerrorevent-i.md) | 是 | callback information of onSslErrorEvent. |
 

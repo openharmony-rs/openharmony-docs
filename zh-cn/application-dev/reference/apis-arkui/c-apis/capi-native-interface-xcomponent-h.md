@@ -1226,7 +1226,7 @@ int32_t OH_NativeXComponent_RegisterUIInputEventCallback(OH_NativeXComponent *co
 | -- | -- |
 | [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md) \*component | 表示指向[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例的指针。 |
 | void (\*callback)(OH_NativeXComponent \*component | 表示指向UI输入事件回调的指针。- event: 表示指向UI输入事件的指针。 |
-| ArkUI_UIInputEvent_Type type) | 表示当前UI输入事件的类型。 |
+| [ArkUI_UIInputEvent_Type](capi-ui-input-event-h.md#arkui_uiinputevent_type) type) | 表示当前UI输入事件的类型。 |
 
 **返回：**
 

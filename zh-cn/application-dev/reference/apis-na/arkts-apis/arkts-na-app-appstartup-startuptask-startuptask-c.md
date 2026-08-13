@@ -1,10 +1,12 @@
 # StartupTask
 
-The module provides capabilities related to startup tasks in \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_.
+The module provides capabilities related to startup tasks in [AppStartup](../../../application-models/app-startup.md).
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare class StartupTask--><!--Device-unnamed-declare class StartupTask-End-->
 
@@ -22,6 +24,8 @@ init(context: AbilityStageContext): Promise<Any> | Promise<void>
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-StartupTask-init(context: AbilityStageContext): Promise<Any> | Promise<void>--><!--Device-StartupTask-init(context: AbilityStageContext): Promise<Any> | Promise<void>-End-->
@@ -32,7 +36,7 @@ init(context: AbilityStageContext): Promise<Any> | Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | AbilityStage的上下文环境。 |
+| context | [AbilityStageContext](../../apis-ability-kit/arkts-apis/arkts-ability-abilitystagecontext-c.md) | 是 | AbilityStage的上下文环境。 |
 
 **返回值：**
 
@@ -51,6 +55,8 @@ onDependencyCompleted(dependency: string, result: Any): void
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

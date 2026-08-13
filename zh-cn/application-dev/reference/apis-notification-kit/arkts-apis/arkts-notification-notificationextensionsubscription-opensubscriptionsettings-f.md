@@ -1,5 +1,11 @@
 # openSubscriptionSettings
 
+## 导入模块
+
+```TypeScript
+import { notificationExtensionSubscription } from '@kit.NotificationKit';
+```
+
 ## openSubscriptionSettings
 
 ```TypeScript
@@ -8,9 +14,11 @@ function openSubscriptionSettings(context: UIAbilityContext): Promise<void>
 
 打开应用的通知扩展订阅授权页面，以半模态弹窗形式显示。用户可在该页面授权“允许获取本机通知”开关与“已获取的本机通知”应用开关。 使用Promise异步回调。
 
-**起始版本：** 22
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为22；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.SUBSCRIBE_NOTIFICATION
 
@@ -22,7 +30,7 @@ function openSubscriptionSettings(context: UIAbilityContext): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 通知设置页面绑定Ability的上下文。 |
+| context | [UIAbilityContext](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md) | 是 | 通知设置页面绑定Ability的上下文。 |
 
 **返回值：**
 
@@ -39,7 +47,7 @@ function openSubscriptionSettings(context: UIAbilityContext): Promise<void>
 | [1600018](../errorcode-notification.md#1600018-通知设置页面已经拉起) | The notification settings window is already displayed. |
 | [1600023](../errorcode-notification.md#1600023-应用未实现notificationsubscriberextensionability) | The application does not implement the NotificationSubscriberExtensionAbility. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

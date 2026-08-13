@@ -10,6 +10,8 @@ declare type WebviewController = import('../api/@ohos.web.webview').default.Webv
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-unnamed-declare type WebviewController = import('../api/@ohos.web.webview').default.WebviewController--><!--Device-unnamed-declare type WebviewController = import('../api/@ohos.web.webview').default.WebviewController-End-->

@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 <!--Device-huks-export enum HuksUnwrapSuite--><!--Device-huks-export enum HuksUnwrapSuite-End-->
 
 **系统能力：** 
@@ -23,6 +25,8 @@ HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING = 1
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -44,6 +48,8 @@ HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING = 2
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksUnwrapSuite-HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING = 2--><!--Device-HuksUnwrapSuite-HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING = 2-End-->
@@ -63,6 +69,8 @@ HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING = 5
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 

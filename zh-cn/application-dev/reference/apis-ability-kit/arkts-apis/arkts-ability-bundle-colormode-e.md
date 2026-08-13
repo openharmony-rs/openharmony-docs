@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** [null]
+**替代接口：** null
 
 <!--Device-bundle-export enum ColorMode--><!--Device-bundle-export enum ColorMode-End-->
 
@@ -28,7 +28,7 @@ AUTO_MODE = -1
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.ConfigurationConstant/ConfigurationConstant.ColorMode#COLOR_MODE_NOT_SET
+**替代接口：** [COLOR_MODE_NOT_SET](arkts-ability-configurationconstant-colormode-e.md#COLOR_MODE_NOT_SET)
 
 <!--Device-ColorMode-AUTO_MODE = -1--><!--Device-ColorMode-AUTO_MODE = -1-End-->
 
@@ -48,7 +48,7 @@ DARK_MODE = 0
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.ConfigurationConstant/ConfigurationConstant.ColorMode#COLOR_MODE_DARK
+**替代接口：** [COLOR_MODE_DARK](arkts-ability-configurationconstant-colormode-e.md#COLOR_MODE_DARK)
 
 <!--Device-ColorMode-DARK_MODE = 0--><!--Device-ColorMode-DARK_MODE = 0-End-->
 
@@ -68,7 +68,7 @@ LIGHT_MODE = 1
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.ConfigurationConstant/ConfigurationConstant.ColorMode#COLOR_MODE_LIGHT
+**替代接口：** [COLOR_MODE_LIGHT](arkts-ability-configurationconstant-colormode-e.md#COLOR_MODE_LIGHT)
 
 <!--Device-ColorMode-LIGHT_MODE = 1--><!--Device-ColorMode-LIGHT_MODE = 1-End-->
 

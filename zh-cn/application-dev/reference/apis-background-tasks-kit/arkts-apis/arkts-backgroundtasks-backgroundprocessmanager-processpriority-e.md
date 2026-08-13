@@ -2,9 +2,11 @@
 
 子进程压制档位。
 
-**起始版本：** 17
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为17；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-backgroundProcessManager-export enum ProcessPriority--><!--Device-backgroundProcessManager-export enum ProcessPriority-End-->
 
@@ -16,11 +18,13 @@
 PROCESS_BACKGROUND = 1
 ```
 
-该档位相较PROCESS\_INACTIVE压制效果更显著，获取到的CPU资源更少。推荐执行处于后台的图文页面等用户无感知业务的后台子进程时设置该档位。
+该档位相较PROCESS_INACTIVE压制效果更显著，获取到的CPU资源更少。推荐执行处于后台的图文页面等用户无感知业务的后台子进程时设置该档位。
 
-**起始版本：** 17
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为17；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ProcessPriority-PROCESS_BACKGROUND = 1--><!--Device-ProcessPriority-PROCESS_BACKGROUND = 1-End-->
 
@@ -34,9 +38,11 @@ PROCESS_INACTIVE = 2
 
 推荐正在执行播放音频、导航等用户可感知业务的后台子进程时设置该档位。
 
-**起始版本：** 17
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为17；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ProcessPriority-PROCESS_INACTIVE = 2--><!--Device-ProcessPriority-PROCESS_INACTIVE = 2-End-->
 

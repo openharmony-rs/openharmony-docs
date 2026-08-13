@@ -2,9 +2,11 @@
 
 表示声道混合模式类型的枚举。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-audio-enum ChannelBlendMode--><!--Device-audio-enum ChannelBlendMode-End-->
 
@@ -18,9 +20,11 @@ MODE_DEFAULT = 0
 
 无声道混合。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ChannelBlendMode-MODE_DEFAULT = 0--><!--Device-ChannelBlendMode-MODE_DEFAULT = 0-End-->
 
@@ -34,9 +38,11 @@ MODE_BLEND_LR = 1
 
 混合左右声道。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ChannelBlendMode-MODE_BLEND_LR = 1--><!--Device-ChannelBlendMode-MODE_BLEND_LR = 1-End-->
 
@@ -50,9 +56,11 @@ MODE_ALL_LEFT = 2
 
 从左声道覆盖到右声道混合。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ChannelBlendMode-MODE_ALL_LEFT = 2--><!--Device-ChannelBlendMode-MODE_ALL_LEFT = 2-End-->
 
@@ -66,9 +74,11 @@ MODE_ALL_RIGHT = 3
 
 从右声道覆盖到左声道混合。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ChannelBlendMode-MODE_ALL_RIGHT = 3--><!--Device-ChannelBlendMode-MODE_ALL_RIGHT = 3-End-->
 

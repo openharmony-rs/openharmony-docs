@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 <!--Device-featureAbility-export enum AbilityStartSetting--><!--Device-featureAbility-export enum AbilityStartSetting-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
@@ -21,6 +23,8 @@ BOUNDS_KEY = 'abilityBounds'
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -40,6 +44,8 @@ WINDOW_MODE_KEY = 'windowMode'
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在FA模型下使用。
 
 <!--Device-AbilityStartSetting-WINDOW_MODE_KEY = 'windowMode'--><!--Device-AbilityStartSetting-WINDOW_MODE_KEY = 'windowMode'-End-->
@@ -57,6 +63,8 @@ DISPLAY_ID_KEY = 'displayId'
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在FA模型下使用。
 

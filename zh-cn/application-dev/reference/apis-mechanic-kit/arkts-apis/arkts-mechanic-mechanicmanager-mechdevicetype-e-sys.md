@@ -2,9 +2,11 @@
 
 Enumerates the mechanical device types.
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-mechanicManager-export enum MechDeviceType--><!--Device-mechanicManager-export enum MechDeviceType-End-->
 
@@ -20,7 +22,9 @@ DESKTOP_GIMBAL_DEVICE = 1
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-MechDeviceType-DESKTOP_GIMBAL_DEVICE = 1--><!--Device-MechDeviceType-DESKTOP_GIMBAL_DEVICE = 1-End-->
 
@@ -38,7 +42,9 @@ WHEELED_BASE_DEVICE = 2
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-MechDeviceType-WHEELED_BASE_DEVICE = 2--><!--Device-MechDeviceType-WHEELED_BASE_DEVICE = 2-End-->
 

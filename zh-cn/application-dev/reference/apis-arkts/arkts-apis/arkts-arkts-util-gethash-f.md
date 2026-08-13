@@ -3,16 +3,20 @@
 ## getHash
 
 ```TypeScript
-function getHash(obj: RecordData): long
+function getHash(object: object): number
 ```
 
-Get the hash code of an object.
+获取对象的哈希值。 如果尚未获取过哈希值，则生成一个随机哈希值，保存到对象的 **hash** 字段中并返回。如果已经获取过哈希值，则返回保存在 **hash** 字段中的哈希值（同一对象返回相同的值）。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-<!--Device-util-function getHash(obj: RecordData): long--><!--Device-util-function getHash(obj: RecordData): long-End-->
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-util-function getHash(object: object): number--><!--Device-util-function getHash(object: object): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -20,11 +24,26 @@ Get the hash code of an object.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| obj | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | The object that need to get hash code. |
+| object | object | 是 | 要获取哈希值的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| long | Return a hash code of an object. |
+| number | 哈希值。 |
+
+## 示例
+
+```TypeScript
+interface Person {
+  name: string,
+  age: number
+}
+let obj: Person = { name: 'Jack', age: 20 };
+let result1 = util.getHash(obj);
+console.info('result1 is ' + result1);
+let result2 = util.getHash(obj);
+console.info('result2 is ' + result2);
+// 输出结果：result1 与 result2 的值相等，且为随机的Hash值。
+```
 

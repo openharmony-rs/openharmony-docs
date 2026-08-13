@@ -1,10 +1,12 @@
 # DensityInfo
 
-Density info.
+屏幕像素密度变化回调包含的信息。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-uiObserver-export class DensityInfo--><!--Device-uiObserver-export class DensityInfo-End-->
 
@@ -16,15 +18,19 @@ Density info.
 context: UIContext
 ```
 
-The context of the changed screen density.
+屏幕像素密度变化时页面对应的上下文信息。
 
-**类型：** UIContext
+**类型：** [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-DensityInfo-context: UIContext--><!--Device-DensityInfo-context: UIContext-End-->
 
@@ -33,20 +39,24 @@ The context of the changed screen density.
 ## density
 
 ```TypeScript
-density: double
+density: number
 ```
 
-The changed screen density.
+变化后的屏幕像素密度。 取值范围：[0, +∞)
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DensityInfo-density: double--><!--Device-DensityInfo-density: double-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-DensityInfo-density: number--><!--Device-DensityInfo-density: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

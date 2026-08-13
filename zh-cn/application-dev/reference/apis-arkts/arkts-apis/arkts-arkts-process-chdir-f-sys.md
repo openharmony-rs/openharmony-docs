@@ -12,6 +12,8 @@ function chdir(dir: string): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 <!--Device-process-function chdir(dir: string): void--><!--Device-process-function chdir(dir: string): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang

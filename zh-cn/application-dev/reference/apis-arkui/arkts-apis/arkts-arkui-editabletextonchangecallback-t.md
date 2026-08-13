@@ -10,6 +10,8 @@ declare type EditableTextOnChangeCallback = (value: string, previewText?: Previe
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -22,7 +24,7 @@ declare type EditableTextOnChangeCallback = (value: string, previewText?: Previe
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | string | 是 | Text displayed in the text box.  |
-| previewText | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | Information about the preview text, including its start position and text content.  |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | Information about the text change, including the selection range, text displayed in the text box, and preview text. |
+| value | string | 是 | Text displayed in the text box. |
+| previewText | [PreviewText](arkts-arkui-previewtext-i.md) | 否 | Information about the preview text, including its start position and text content. |
+| options | [TextChangeOptions](arkts-arkui-textchangeoptions-i.md) | 否 | Information about the text change, including the selection range, text displayed in the text box, and preview text. |
 

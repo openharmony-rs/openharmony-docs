@@ -1,0 +1,48 @@
+# ScrollFrameNode
+
+定义Scroll类型的FrameNode。
+
+**继承/实现关系：** ScrollFrameNode extends TypedFrameNode<ScrollAttribute>
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
+
+<!--Device-typeNode-abstract class ScrollFrameNode--><!--Device-typeNode-abstract class ScrollFrameNode-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## initialize
+
+```TypeScript
+abstract initialize(scroller?: Scroller): ScrollAttribute
+```
+
+初始化Scroll类型的FrameNode。
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ScrollFrameNode-abstract initialize(scroller?: Scroller): ScrollAttribute--><!--Device-ScrollFrameNode-abstract initialize(scroller?: Scroller): ScrollAttribute-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| scroller | Scroller | 否 | scroll的控制器。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| ScrollAttribute |  |
+

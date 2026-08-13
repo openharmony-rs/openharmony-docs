@@ -2,13 +2,15 @@
 
 支持通用事件。
 
-**继承/实现关系：** UnionEffectContainerAttribute extends [CommonMethod<UnionEffectContainerAttribute>](CommonMethod<UnionEffectContainerAttribute>)
+**继承/实现关系：** UnionEffectContainerAttribute extends CommonMethod<UnionEffectContainerAttribute>
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-<!--Device-unnamed-declare class UnionEffectContainerAttribute extends CommonMethod<UnionEffectContainerAttribute>--><!--Device-unnamed-declare class UnionEffectContainerAttribute extends CommonMethod<UnionEffectContainerAttribute>-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare class UnionEffectContainerAttribute--><!--Device-unnamed-declare class UnionEffectContainerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

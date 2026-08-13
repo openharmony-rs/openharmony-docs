@@ -6,11 +6,13 @@
 function getSignatureInfo(uid: int): SignatureInfo
 ```
 
-根据给定的uid获取对应应用的[签名信息]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+根据给定的uid获取对应应用的[签名信息](arkts-ability-bundleinfo-signatureinfo-i.md#SignatureInfo)。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_SIGNATURE_INFO
 
@@ -22,13 +24,13 @@ function getSignatureInfo(uid: int): SignatureInfo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uid | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 表示应用程序的UID。 |
+| uid | int | 是 | 表示应用程序的UID。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回SignatureInfo对象。 |
+| SignatureInfo | 返回SignatureInfo对象。 |
 
 **错误码：**
 
@@ -37,7 +39,7 @@ function getSignatureInfo(uid: int): SignatureInfo
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [17700021](../errorcode-bundle.md#17700021-指定的uid无效) | The uid is not found. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { bundleManager } from '@kit.AbilityKit';

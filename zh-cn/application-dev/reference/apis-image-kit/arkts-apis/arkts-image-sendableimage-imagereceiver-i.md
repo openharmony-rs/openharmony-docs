@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-sendableImage-interface ImageReceiver--><!--Device-sendableImage-interface ImageReceiver-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
@@ -22,6 +24,8 @@ getReceivingSurfaceId(): Promise<string>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-ImageReceiver-getReceivingSurfaceId(): Promise<string>--><!--Device-ImageReceiver-getReceivingSurfaceId(): Promise<string>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
@@ -32,7 +36,7 @@ getReceivingSurfaceId(): Promise<string>
 | --- | --- |
 | Promise&lt;string&gt; | 异步返回Surface ID。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { sendableImage } from '@kit.ImageKit';
@@ -53,7 +57,7 @@ async function GetReceivingSurfaceId() {
 }
 ```
 
-## on('imageArrival')
+## on_imageArrival
 
 ```TypeScript
 on(type: 'imageArrival', callback: AsyncCallback<void>): void
@@ -65,6 +69,8 @@ on(type: 'imageArrival', callback: AsyncCallback<void>): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-ImageReceiver-on(type: 'imageArrival', callback: AsyncCallback<void>): void--><!--Device-ImageReceiver-on(type: 'imageArrival', callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
@@ -74,9 +80,9 @@ on(type: 'imageArrival', callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'imageArrival' | 是 | 注册事件的类型，固定为'imageArrival'，接收图片时触发。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 注册的事件回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 注册的事件回调。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { sendableImage } from '@kit.ImageKit';
@@ -100,11 +106,13 @@ async function On() {
 readLatestImage(): Promise<Image>
 ```
 
-从ImageReceiver读取最新的图片。使用promise异步回调。 > **注意**： > > 此接口需要在[on]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_回调触发后调用，才能正常的接收到数据。且此接口返回的[Image]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_对象使 > 用完毕后需要调用[release]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_方法释放，释放后才可以继续接收新的数据。
+从ImageReceiver读取最新的图片。使用promise异步回调。 > **注意**： > > 此接口需要在[on](#on_imageArrival)回调触发后调用，才能正常的接收到数据。且此接口返回的[Image](arkts-image-sendableimage-image-i.md#Image)对象使 > 用完毕后需要调用[release](arkts-image-sendableimage-pixelmap-i.md#release)方法释放，释放后才可以继续接收新的数据。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-ImageReceiver-readLatestImage(): Promise<Image>--><!--Device-ImageReceiver-readLatestImage(): Promise<Image>-End-->
 
@@ -116,7 +124,7 @@ readLatestImage(): Promise<Image>
 | --- | --- |
 | Promise&lt;Image&gt; | 异步返回最新图片。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { sendableImage } from '@kit.ImageKit';
@@ -143,11 +151,13 @@ async function ReadLatestImage() {
 readNextImage(): Promise<Image>
 ```
 
-从ImageReceiver读取下一张图片。使用promise异步回调。 > **注意**： > > 此接口需要在[on]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_回调触发后调用，才能正常的接收到数据。且此接口返回的[Image]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_对象使 > 用完毕后需要调用[release]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_方法释放，释放后才可以继续接收新的数据。
+从ImageReceiver读取下一张图片。使用promise异步回调。 > **注意**： > > 此接口需要在[on](#on_imageArrival)回调触发后调用，才能正常的接收到数据。且此接口返回的[Image](arkts-image-sendableimage-image-i.md#Image)对象使 > 用完毕后需要调用[release](arkts-image-sendableimage-pixelmap-i.md#release)方法释放，释放后才可以继续接收新的数据。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-ImageReceiver-readNextImage(): Promise<Image>--><!--Device-ImageReceiver-readNextImage(): Promise<Image>-End-->
 
@@ -159,7 +169,7 @@ readNextImage(): Promise<Image>
 | --- | --- |
 | Promise&lt;Image&gt; | 异步返回下一张图片。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { sendableImage } from '@kit.ImageKit';
@@ -192,6 +202,8 @@ release(): Promise<void>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-ImageReceiver-release(): Promise<void>--><!--Device-ImageReceiver-release(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
@@ -202,7 +214,7 @@ release(): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | 异步返回操作结果。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { sendableImage } from '@kit.ImageKit';
@@ -237,6 +249,8 @@ readonly capacity: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-ImageReceiver-readonly capacity: number--><!--Device-ImageReceiver-readonly capacity: number-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
@@ -255,6 +269,8 @@ readonly format: image.ImageFormat
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-ImageReceiver-readonly format: image.ImageFormat--><!--Device-ImageReceiver-readonly format: image.ImageFormat-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
@@ -272,6 +288,8 @@ readonly size: image.Size
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-ImageReceiver-readonly size: image.Size--><!--Device-ImageReceiver-readonly size: image.Size-End-->
 

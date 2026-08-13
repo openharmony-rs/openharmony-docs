@@ -1,10 +1,12 @@
 # VibratorStatusEvent
 
-振动设备上线、下线状态事件信息。当马达设备上线或下线时，通过[vibrator.on]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_回调传递此对象。
+振动设备上线、下线状态事件信息。当马达设备上线或下线时，通过vibrator.on回调传递此对象。
 
-**起始版本：** 19
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为19；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-vibrator-interface VibratorStatusEvent--><!--Device-vibrator-interface VibratorStatusEvent-End-->
 
@@ -16,13 +18,15 @@
 deviceId: int
 ```
 
-设备的ID。可用于 [startVibration]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 和[stopVibration]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_等接口指定目标设备。
+设备的ID。可用于 [startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startVibration) 和[stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopVibration)等接口指定目标设备。
 
 **类型：** int
 
-**起始版本：** 19
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为19；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-VibratorStatusEvent-deviceId: int--><!--Device-VibratorStatusEvent-deviceId: int-End-->
 
@@ -38,9 +42,11 @@ isVibratorOnline: boolean
 
 **类型：** boolean
 
-**起始版本：** 19
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为19；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-VibratorStatusEvent-isVibratorOnline: boolean--><!--Device-VibratorStatusEvent-isVibratorOnline: boolean-End-->
 
@@ -56,9 +62,11 @@ timestamp: long
 
 **类型：** long
 
-**起始版本：** 19
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为19；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-VibratorStatusEvent-timestamp: long--><!--Device-VibratorStatusEvent-timestamp: long-End-->
 
@@ -74,9 +82,11 @@ vibratorCount: int
 
 **类型：** int
 
-**起始版本：** 19
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为19；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-VibratorStatusEvent-vibratorCount: int--><!--Device-VibratorStatusEvent-vibratorCount: int-End-->
 

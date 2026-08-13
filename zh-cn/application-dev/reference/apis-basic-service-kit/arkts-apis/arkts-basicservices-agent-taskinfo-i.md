@@ -2,9 +2,11 @@
 
 查询结果的任务信息数据结构，提供普通查询和系统查询，两种字段的可见范围不同。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-agent-interface TaskInfo--><!--Device-agent-interface TaskInfo-End-->
 
@@ -20,9 +22,11 @@ readonly action: Action
 
 **类型：** Action
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TaskInfo-readonly action: Action--><!--Device-TaskInfo-readonly action: Action-End-->
 
@@ -34,13 +38,15 @@ readonly action: Action
 readonly ctime: long
 ```
 
-创建任务的Unix时间戳（毫秒），由当前设备的系统生成。 说明：使用 [request.agent.search]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_进行 查询时，该值需处于[after,before]区间内才可正常查询到任务id，before和after信息详见 [Filter]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_。
+创建任务的Unix时间戳（毫秒），由当前设备的系统生成。 说明：使用 [request.agent.search](arkts-basicservices-agent-search-f.md#search)进行 查询时，该值需处于[after,before]区间内才可正常查询到任务id，before和after信息详见 [Filter](arkts-basicservices-agent-filter-i.md#Filter)。
 
 **类型：** long
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TaskInfo-readonly ctime: long--><!--Device-TaskInfo-readonly ctime: long-End-->
 
@@ -52,13 +58,15 @@ readonly ctime: long
 readonly data?: string | Array<FormItem>
 ```
 
-任务值。 - 通过[request.agent.show]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_、 [request.agent.touch]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_进行查询 。
+任务值。 - 通过[request.agent.show](arkts-basicservices-agent-show-f.md#show)、 [request.agent.touch](arkts-basicservices-agent-touch-f.md#touch)进行查询 。
 
-**类型：** string \| Array&lt;FormItem&gt;
+**类型：** string \| Array&lt;[FormItem](arkts-basicservices-agent-formitem-i.md)&gt;
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TaskInfo-readonly data?: string | Array<FormItem>--><!--Device-TaskInfo-readonly data?: string | Array<FormItem>-End-->
 
@@ -74,9 +82,11 @@ readonly description: string
 
 **类型：** string
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TaskInfo-readonly description: string--><!--Device-TaskInfo-readonly description: string-End-->
 
@@ -85,18 +95,20 @@ readonly description: string
 ## extras
 
 ```TypeScript
-readonly extras?: object
+readonly extras?: Record<string, string>
 ```
 
-任务的额外部分。
+The extras of a task. For frontend, nothing now.
 
-**类型：** object
+**类型：** Record&lt;string, string&gt;
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-<!--Device-TaskInfo-readonly extras?: object--><!--Device-TaskInfo-readonly extras?: object-End-->
+**废弃版本：** -1
+
+<!--Device-TaskInfo-readonly extras?: Record<string, string>--><!--Device-TaskInfo-readonly extras?: Record<string, string>-End-->
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -108,11 +120,13 @@ readonly faults: Faults
 
 任务的失败原因。
 
-**类型：** Faults
+**类型：** [Faults](arkts-basicservices-agent-faults-e.md)
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TaskInfo-readonly faults: Faults--><!--Device-TaskInfo-readonly faults: Faults-End-->
 
@@ -128,9 +142,11 @@ readonly gauge: boolean
 
 **类型：** boolean
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TaskInfo-readonly gauge: boolean--><!--Device-TaskInfo-readonly gauge: boolean-End-->
 
@@ -146,9 +162,11 @@ readonly mimeType: string
 
 **类型：** string
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TaskInfo-readonly mimeType: string--><!--Device-TaskInfo-readonly mimeType: string-End-->
 
@@ -162,11 +180,13 @@ readonly mode: Mode
 
 任务模式。 - FOREGROUND表示前台任务。 - BACKGROUND表示后台任务。
 
-**类型：** Mode
+**类型：** [Mode](arkts-basicservices-agent-mode-e.md)
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TaskInfo-readonly mode: Mode--><!--Device-TaskInfo-readonly mode: Mode-End-->
 
@@ -182,9 +202,11 @@ readonly mtime: long
 
 **类型：** long
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TaskInfo-readonly mtime: long--><!--Device-TaskInfo-readonly mtime: long-End-->
 
@@ -200,9 +222,11 @@ readonly priority: int
 
 **类型：** int
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TaskInfo-readonly priority: int--><!--Device-TaskInfo-readonly priority: int-End-->
 
@@ -218,9 +242,11 @@ readonly progress: Progress
 
 **类型：** Progress
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TaskInfo-readonly progress: Progress--><!--Device-TaskInfo-readonly progress: Progress-End-->
 
@@ -236,9 +262,11 @@ readonly reason: string
 
 **类型：** string
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TaskInfo-readonly reason: string--><!--Device-TaskInfo-readonly reason: string-End-->
 
@@ -254,9 +282,11 @@ readonly retry: boolean
 
 **类型：** boolean
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TaskInfo-readonly retry: boolean--><!--Device-TaskInfo-readonly retry: boolean-End-->
 
@@ -272,9 +302,11 @@ readonly saveas?: string
 
 **类型：** string
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TaskInfo-readonly saveas?: string--><!--Device-TaskInfo-readonly saveas?: string-End-->
 
@@ -290,9 +322,11 @@ readonly tid: string
 
 **类型：** string
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TaskInfo-readonly tid: string--><!--Device-TaskInfo-readonly tid: string-End-->
 
@@ -308,9 +342,11 @@ readonly title: string
 
 **类型：** string
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TaskInfo-readonly title: string--><!--Device-TaskInfo-readonly title: string-End-->
 
@@ -326,9 +362,11 @@ readonly tries: int
 
 **类型：** int
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TaskInfo-readonly tries: int--><!--Device-TaskInfo-readonly tries: int-End-->
 
@@ -340,13 +378,15 @@ readonly tries: int
 readonly url?: string
 ```
 
-任务的url。 - 通过[request.agent.show]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_、 [request.agent.touch]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_进行查询 。
+任务的url。 - 通过[request.agent.show](arkts-basicservices-agent-show-f.md#show)、 [request.agent.touch](arkts-basicservices-agent-touch-f.md#touch)进行查询 。
 
 **类型：** string
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TaskInfo-readonly url?: string--><!--Device-TaskInfo-readonly url?: string-End-->
 

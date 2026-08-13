@@ -4,7 +4,9 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-notificationManager-export enum PriorityNotificationType--><!--Device-notificationManager-export enum PriorityNotificationType-End-->
 
@@ -20,7 +22,9 @@ OTHER = 'OTHER'
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PriorityNotificationType-OTHER = 'OTHER'--><!--Device-PriorityNotificationType-OTHER = 'OTHER'-End-->
 
@@ -36,7 +40,9 @@ PRIMARY_CONTACT = 'PRIMARY_CONTACT'
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PriorityNotificationType-PRIMARY_CONTACT = 'PRIMARY_CONTACT'--><!--Device-PriorityNotificationType-PRIMARY_CONTACT = 'PRIMARY_CONTACT'-End-->
 
@@ -52,7 +58,9 @@ AT_ME = 'AT_ME'
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PriorityNotificationType-AT_ME = 'AT_ME'--><!--Device-PriorityNotificationType-AT_ME = 'AT_ME'-End-->
 
@@ -68,7 +76,9 @@ URGENT_MESSAGE = 'URGENT_MESSAGE'
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PriorityNotificationType-URGENT_MESSAGE = 'URGENT_MESSAGE'--><!--Device-PriorityNotificationType-URGENT_MESSAGE = 'URGENT_MESSAGE'-End-->
 
@@ -84,7 +94,9 @@ SCHEDULE_REMINDER = 'SCHEDULE_REMINDER'
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PriorityNotificationType-SCHEDULE_REMINDER = 'SCHEDULE_REMINDER'--><!--Device-PriorityNotificationType-SCHEDULE_REMINDER = 'SCHEDULE_REMINDER'-End-->
 

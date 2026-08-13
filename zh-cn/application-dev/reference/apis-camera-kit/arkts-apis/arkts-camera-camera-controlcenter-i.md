@@ -1,14 +1,16 @@
 # ControlCenter
 
-ControlCenter继承自[ControlCenterQuery]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。 控制中心类，用于使能相机控制器。
+ControlCenter继承自[ControlCenterQuery](arkts-camera-camera-controlcenterquery-i.md#ControlCenterQuery)。 控制中心类，用于使能相机控制器。
 
-**继承/实现关系：** ControlCenter extends [ControlCenterQuery](arkts-camera-camera-controlcenterquery-i.md)
+**继承/实现关系：** ControlCenter extends [ControlCenterQuery](arkts-camera-camera-controlcenterquery-i.md#ControlCenterQuery)
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-<!--Device-camera-interface ControlCenter extends ControlCenterQuery--><!--Device-camera-interface ControlCenter extends ControlCenterQuery-End-->
+**废弃版本：** -1
+
+<!--Device-camera-interface ControlCenter--><!--Device-camera-interface ControlCenter-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -20,11 +22,13 @@ enableControlCenter(enabled: boolean): void
 
 使能相机控制器。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ControlCenter-enableControlCenter(enabled: boolean): void--><!--Device-ControlCenter-enableControlCenter(enabled: boolean): void-End-->
 

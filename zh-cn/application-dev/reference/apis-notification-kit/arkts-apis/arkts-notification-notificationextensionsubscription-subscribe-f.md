@@ -1,5 +1,11 @@
 # subscribe
 
+## 导入模块
+
+```TypeScript
+import { notificationExtensionSubscription } from '@kit.NotificationKit';
+```
+
 ## subscribe
 
 ```TypeScript
@@ -8,9 +14,11 @@ function subscribe(info: NotificationExtensionSubscriptionInfo[]): Promise<void>
 
 订阅通知扩展。使用蓝牙模块相关接口获取蓝牙设备的唯一地址后方可订阅。使用Promise异步回调。
 
-**起始版本：** 22
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为22；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.SUBSCRIBE_NOTIFICATION
 
@@ -18,11 +26,17 @@ function subscribe(info: NotificationExtensionSubscriptionInfo[]): Promise<void>
 
 **系统能力：** SystemCapability.Notification.Notification
 
+**参见：**
+
+unsubscribe 取消通知扩展订阅。
+
+getSubscribeInfo 获取应用通知扩展订阅信息。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | \_\_\_MD\_LINK\_USD\_0\_\_\_[] | 是 | 订阅的信息列表（数组）。 |
+| info | NotificationExtensionSubscriptionInfo[] | 是 | 订阅的信息列表（数组）。 |
 
 **返回值：**
 
@@ -39,7 +53,7 @@ function subscribe(info: NotificationExtensionSubscriptionInfo[]): Promise<void>
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [1600023](../errorcode-notification.md#1600023-应用未实现notificationsubscriberextensionability) | The application does not implement the NotificationSubscriberExtensionAbility. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -67,7 +81,7 @@ let infos: notificationExtensionSubscription.NotificationExtensionSubscriptionIn
   }
 ];
 notificationExtensionSubscription.subscribe(infos).then(() => {
-  console.info("subscribe success");
+  console.info('subscribe success');
 }).catch((err: Error) => {
   let error = err as BusinessError
   console.error(`subscribe fail, code is ${error.code}, message is ${error.message}`);

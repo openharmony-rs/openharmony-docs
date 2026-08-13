@@ -2,9 +2,11 @@
 
 本模块提供应用账号信息的添加、删除、修改和查询基础能力，并支持应用间鉴权和分布式数据同步功能。
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare namespace appAccount--><!--Device-unnamed-declare namespace appAccount-End-->
 
@@ -16,7 +18,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [createAppAccountManager](arkts-basicservices-appaccount-createappaccountmanager-f.md#createappaccountmanager) | 创建应用账号管理器对象。 |
+| [createAppAccountManager](arkts-basicservices-appaccount-createappaccountmanager-f.md#createAppAccountManager) | 创建应用账号管理器对象。 |
 
 ### 类
 

@@ -4,7 +4,9 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-inputEventClient-interface KeyboardController--><!--Device-inputEventClient-interface KeyboardController-End-->
 
@@ -20,7 +22,9 @@ pressKey(keyCode: KeyCode): Promise<void>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
@@ -34,7 +38,7 @@ pressKey(keyCode: KeyCode): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| keyCode | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 要按下的按键键码。 |
+| keyCode | [KeyCode](arkts-input-multimodalinput-keycode-keycode-e.md) | 是 | 要按下的按键键码。 |
 
 **返回值：**
 
@@ -46,11 +50,11 @@ pressKey(keyCode: KeyCode): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 | [4300001](../errorcode-inputeventclient.md#4300001-状态错误) | The key is already pressed and is not the most recently pressed key. |
 | [3800001](../errorcode-infraredemitter.md#3800001-多模输入服务内部错误) | Input service exception. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { inputEventClient, KeyCode } from '@kit.InputKit';
@@ -93,7 +97,9 @@ releaseKey(keyCode: KeyCode): Promise<void>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
@@ -107,7 +113,7 @@ releaseKey(keyCode: KeyCode): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| keyCode | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 要抬起的按键键码。 |
+| keyCode | [KeyCode](arkts-input-multimodalinput-keycode-keycode-e.md) | 是 | 要抬起的按键键码。 |
 
 **返回值：**
 
@@ -119,11 +125,11 @@ releaseKey(keyCode: KeyCode): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 | [4300001](../errorcode-inputeventclient.md#4300001-状态错误) | The key is not pressed. |
 | [3800001](../errorcode-infraredemitter.md#3800001-多模输入服务内部错误) | Input service exception. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
-**示例：**
+## 示例
 
-参见[pressKey](#presskey)示例。
+参见[pressKey](#pressKey)示例。
 

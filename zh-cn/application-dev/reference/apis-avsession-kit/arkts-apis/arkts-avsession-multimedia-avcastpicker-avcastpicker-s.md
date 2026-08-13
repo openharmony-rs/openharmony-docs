@@ -1,160 +1,174 @@
 # AVCastPicker
 
-本模块提供创建投播组件AVCastPicker的功能，提供设备发现连接的统一入口。 > **说明：** > > - 示例效果请以真机为准，当前DevEco Studio预览器无实际投播功能。\_\_\_MD\_COMMENT\_DESC\_USD\_0\_\_\_ > > - 当前组件的使用，依赖于设备支持“设备选择界面”。当前暂无OpenHarmony设备支持，需要OEM厂商实现具体的“设备选择界面”。\_\_\_MD\_COMMENT\_DESC\_USD\_1\_\_\_
+本模块提供创建投播组件AVCastPicker的功能，提供设备发现连接的统一入口。 > **说明：** > > - 示例效果请以真机为准，当前DevEco Studio预览器无实际投播功能。&lt;!--Del--&gt; > > - 当前组件的使用，依赖于设备支持“设备选择界面”。当前暂无OpenHarmony设备支持，需要OEM厂商实现具体的“设备选择界面”。&lt;!--DelEnd--&gt;
 
-**起始版本：** 23
+**起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
-**装饰器类型：** @Component
+**废弃版本：** -1
 
 <!--Device-unnamed-declare struct AVCastPicker--><!--Device-unnamed-declare struct AVCastPicker-End-->
-
-**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
-
-## build
-
-```TypeScript
-build(): void
-```
-
-构造组件。
-
-**起始版本：** 23
-
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
-
-**装饰器类型：** @Builder
-
-<!--Device-AVCastPicker-build(): void--><!--Device-AVCastPicker-build(): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 ## activeColor
 
 ```TypeScript
-activeColor?: Color | int | string
+@Prop
+  activeColor?: Color | number | string
 ```
 
 设备连接成功状态下投播组件的颜色。 未设置时，系统将优先根据normalColor的颜色匹配；如果normalColor也未设置，将采用colorMode下的颜色设置。
 
-**类型：** Color \| int \| string
+**类型：** [Color](../../apis-na/arkts-apis/arkts-na-enums-color-e.md) \| number \| string
 
-**起始版本：** 23
+**起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
-<!--Device-AVCastPicker-activeColor?: Color | int | string--><!--Device-AVCastPicker-activeColor?: Color | int | string-End-->
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-AVCastPicker-@Prop  activeColor?: Color | number | string--><!--Device-AVCastPicker-@Prop  activeColor?: Color | number | string-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 ## colorMode
 
 ```TypeScript
-colorMode?: AVCastPickerColorMode
+@Prop
+  colorMode?: AVCastPickerColorMode
 ```
 
 显示模式。默认值为AUTO。 - 当colorMode设置为AUTO时，跟随系统的深浅色模式的默认色值。 - 当colorMode设置为DARK、LIGHT时，使用对应模式的系统预设色值。
 
-**类型：** AVCastPickerColorMode
+**类型：** [AVCastPickerColorMode](arkts-avsession-multimedia-avcastpickerparam-avcastpickercolormode-e.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-<!--Device-AVCastPicker-colorMode?: AVCastPickerColorMode--><!--Device-AVCastPicker-colorMode?: AVCastPickerColorMode-End-->
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-AVCastPicker-@Prop  colorMode?: AVCastPickerColorMode--><!--Device-AVCastPicker-@Prop  colorMode?: AVCastPickerColorMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 ## customPicker
 
 ```TypeScript
-customPicker?: CustomBuilder
+@Prop
+  customPicker?: CustomBuilder
 ```
 
-自定义样式。建议使用自定义组件样式，可有效提升组件显示速度。 If not set, system will show the default appearance for different device type.
+自定义样式。建议使用自定义组件样式，可有效提升组件显示速度。
 
 **类型：** CustomBuilder
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-**装饰器类型：** @BuilderParam
+**废弃版本：** -1
 
-<!--Device-AVCastPicker-customPicker?: CustomBuilder--><!--Device-AVCastPicker-customPicker?: CustomBuilder-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-AVCastPicker-@Prop  customPicker?: CustomBuilder--><!--Device-AVCastPicker-@Prop  customPicker?: CustomBuilder-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 ## normalColor
 
 ```TypeScript
-normalColor?: Color | int | string
+@Prop
+  normalColor?: Color | number | string
 ```
 
 正常状态下投播组件的颜色。 未设置时，将采用colorMode下的颜色设置。
 
-**类型：** Color \| int \| string
+**类型：** [Color](../../apis-na/arkts-apis/arkts-na-enums-color-e.md) \| number \| string
 
-**起始版本：** 23
+**起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
-<!--Device-AVCastPicker-normalColor?: Color | int | string--><!--Device-AVCastPicker-normalColor?: Color | int | string-End-->
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-AVCastPicker-@Prop  normalColor?: Color | number | string--><!--Device-AVCastPicker-@Prop  normalColor?: Color | number | string-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 ## onStateChange
 
 ```TypeScript
-onStateChange?: OnPickerStateCallback
+onStateChange?: (state: AVCastPickerState) => void
 ```
 
 投播状态更改回调。
 
-**类型：** OnPickerStateCallback
+**类型：** (state: AVCastPickerState) =&gt; void
 
-**起始版本：** 23
+**起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
-<!--Device-AVCastPicker-onStateChange?: OnPickerStateCallback--><!--Device-AVCastPicker-onStateChange?: OnPickerStateCallback-End-->
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-AVCastPicker-onStateChange?: (state: AVCastPickerState) => void--><!--Device-AVCastPicker-onStateChange?: (state: AVCastPickerState) => void-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 ## pickerStyle
 
 ```TypeScript
-pickerStyle?: AVCastPickerStyle
+@Prop
+  pickerStyle?: AVCastPickerStyle
 ```
 
-投播样式。 - 当sessionType是audio或者video时，默认值为STYLE\_PANEL。 - 当sessionType是voice\_call或者video\_call时，默认值为STYLE\_MENU，且不可修改为STYLE\_PANEL。
+投播样式。 - 当sessionType是audio或者video时，默认值为STYLE_PANEL。 - 当sessionType是voice_call或者video_call时，默认值为STYLE_MENU，且不可修改为STYLE_PANEL。
 
-**类型：** AVCastPickerStyle
+**类型：** [AVCastPickerStyle](arkts-avsession-multimedia-avcastpickerparam-avcastpickerstyle-e.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-<!--Device-AVCastPicker-pickerStyle?: AVCastPickerStyle--><!--Device-AVCastPicker-pickerStyle?: AVCastPickerStyle-End-->
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-AVCastPicker-@Prop  pickerStyle?: AVCastPickerStyle--><!--Device-AVCastPicker-@Prop  pickerStyle?: AVCastPickerStyle-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 ## sessionType
 
 ```TypeScript
-sessionType?: string
+@Prop
+  sessionType?: string
 ```
 
-会话类型，可参考[AVSessionType]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。默认值为当前应用创建的AVSessionType。
+会话类型，可参考[AVSessionType](arkts-avsession-avsession-avsessiontype-t.md#AVSessionType)。默认值为当前应用创建的AVSessionType。
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-<!--Device-AVCastPicker-sessionType?: string--><!--Device-AVCastPicker-sessionType?: string-End-->
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-AVCastPicker-@Prop  sessionType?: string--><!--Device-AVCastPicker-@Prop  sessionType?: string-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 

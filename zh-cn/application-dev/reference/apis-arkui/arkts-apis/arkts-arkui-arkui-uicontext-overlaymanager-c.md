@@ -1,30 +1,36 @@
 # OverlayManager
 
-提供绘制浮层的能力。 > **说明：** > > - 本Class首批接口从API version 12开始支持。 > - 以下API需先使用UIContext中的[getOverlayManager()]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_方法获取到 > OverlayManager对象，再通过该对象调用对应方法。 > > - OverlayManager上节点的层级在Page页面层级之上，在Dialog、Popup、Menu、BindSheet、BindContentCover和Toast等之下。 > > - OverlayManager上节点安全区域内外的绘制方式与Page一致，键盘避让方式与Page一致。 > > - 与OverlayManager相关的属性推荐采用AppStorage来进行应用全局存储，以免切换页面后属性值发生变化从而导致业务错误。
+class OverlayManager
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-<!--Device-unnamed-export declare class OverlayManager--><!--Device-unnamed-export declare class OverlayManager-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-export class OverlayManager--><!--Device-unnamed-export class OverlayManager-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## addComponentContent
 
 ```TypeScript
-addComponentContent<T>(content: ComponentContent<T>, index?: int): void
+addComponentContent(content: ComponentContent, index?: number): void
 ```
 
-在OverlayManager上新增指定节点。
+Adds a specified ComponentContent node to the OverlayManager.
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-OverlayManager-addComponentContent<T>(content: ComponentContent<T>, index?: int): void--><!--Device-OverlayManager-addComponentContent<T>(content: ComponentContent<T>, index?: int): void-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-OverlayManager-addComponentContent(content: ComponentContent, index?: number): void--><!--Device-OverlayManager-addComponentContent(content: ComponentContent, index?: number): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -32,24 +38,28 @@ addComponentContent<T>(content: ComponentContent<T>, index?: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; | 是 | 在OverlayManager的指定节点上添加此content。 \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_**说明：** \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 新增的节点默认处于页面居中，按层级堆叠。 |
-| index | int | 否 |  |
+| content | ComponentContent | 是 | Content to add to the target node on the **OverlayManager**.&lt;br&gt; **NOTE：**&lt;br&gt; By default, the new node is centered on the page and stacked according to its stacking level. |
+| index | number | 否 |  |
 
 ## addComponentContentWithOrder
 
 ```TypeScript
-addComponentContentWithOrder<T>(content: ComponentContent<T>, levelOrder?: LevelOrder): void
+addComponentContentWithOrder(content: ComponentContent, levelOrder?: LevelOrder): void
 ```
 
-创建浮层节点时，指定显示顺序。 支持在浮层节点创建时指定显示的顺序。
+Creates a floating layer node with the specified display order. This API allows you to define the stacking order of the nodes when they are created.
 
-**起始版本：** 23
+**起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-OverlayManager-addComponentContentWithOrder<T>(content: ComponentContent<T>, levelOrder?: LevelOrder): void--><!--Device-OverlayManager-addComponentContentWithOrder<T>(content: ComponentContent<T>, levelOrder?: LevelOrder): void-End-->
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+<!--Device-OverlayManager-addComponentContentWithOrder(content: ComponentContent, levelOrder?: LevelOrder): void--><!--Device-OverlayManager-addComponentContentWithOrder(content: ComponentContent, levelOrder?: LevelOrder): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -57,8 +67,8 @@ addComponentContentWithOrder<T>(content: ComponentContent<T>, levelOrder?: Level
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; | 是 | 在OverlayManager的指定节点上添加此content。 \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_**说明：** \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 新增的节点默认处于页面居中位置，按层级堆叠。 |
-| levelOrder | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 |  |
+| content | ComponentContent | 是 | Content to add to the target node on the **OverlayManager**. &lt;br&gt;**NOTE：**&lt;br&gt; By default, the new node is centered on the page and stacked according to its stacking level. |
+| levelOrder | [LevelOrder](../../apis-na/arkts-apis/arkts-na-promptaction-levelorder-c.md) | 否 |  |
 
 ## hideAllComponentContents
 
@@ -66,13 +76,17 @@ addComponentContentWithOrder<T>(content: ComponentContent<T>, levelOrder?: Level
 hideAllComponentContents(): void
 ```
 
-隐藏OverlayManager上的所有ComponentContent。
+Hide all ComponentContents on the OverlayManager.
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-OverlayManager-hideAllComponentContents(): void--><!--Device-OverlayManager-hideAllComponentContents(): void-End-->
 
@@ -81,18 +95,22 @@ hideAllComponentContents(): void
 ## hideComponentContent
 
 ```TypeScript
-hideComponentContent<T>(content: ComponentContent<T>): void
+hideComponentContent(content: ComponentContent): void
 ```
 
-隐藏OverlayManager上的指定节点。
+Hide the ComponentContent.
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-OverlayManager-hideComponentContent<T>(content: ComponentContent<T>): void--><!--Device-OverlayManager-hideComponentContent<T>(content: ComponentContent<T>): void-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-OverlayManager-hideComponentContent(content: ComponentContent): void--><!--Device-OverlayManager-hideComponentContent(content: ComponentContent): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -100,23 +118,27 @@ hideComponentContent<T>(content: ComponentContent<T>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; | 是 | 在OverlayManager上隐藏此content。 |
+| content | ComponentContent | 是 | Content to hide on the **OverlayManager**. |
 
 ## openOrderOverlay
 
 ```TypeScript
-openOrderOverlay(content: ComponentContent<Object>, options?: OrderOverlayOptions): Promise<void>
+openOrderOverlay(content: ComponentContent, options?: OrderOverlayOptions): Promise<void>
 ```
 
 打开具有指定ComponentContent和选项的浮层。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-OverlayManager-openOrderOverlay(content: ComponentContent<Object>, options?: OrderOverlayOptions): Promise<void>--><!--Device-OverlayManager-openOrderOverlay(content: ComponentContent<Object>, options?: OrderOverlayOptions): Promise<void>-End-->
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-OverlayManager-openOrderOverlay(content: ComponentContent, options?: OrderOverlayOptions): Promise<void>--><!--Device-OverlayManager-openOrderOverlay(content: ComponentContent, options?: OrderOverlayOptions): Promise<void>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -124,14 +146,14 @@ openOrderOverlay(content: ComponentContent<Object>, options?: OrderOverlayOption
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;Object&gt; | 是 | 该内容将被添加到OverlayManager中。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | Options for the overlay. |
+| content | ComponentContent | 是 | OverlayManager新增节点需要添加的内容。 &lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：。 &lt;br&gt;默认情况下，新节点在页面中居中，并根据其堆叠级别进行堆叠。 &lt;/p&gt; |
+| options | [OrderOverlayOptions](arkts-arkui-arkui-uicontext-orderoverlayoptions-i.md) | 否 |  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | the promise returned by the function. |
+| Promise&lt;void&gt; | 函数返回的promise。 |
 
 **错误码：**
 
@@ -142,18 +164,22 @@ openOrderOverlay(content: ComponentContent<Object>, options?: OrderOverlayOption
 ## removeComponentContent
 
 ```TypeScript
-removeComponentContent<T>(content: ComponentContent<T>): void
+removeComponentContent(content: ComponentContent): void
 ```
 
-删除overlay上的指定节点。
+Removes a specified ComponentContent node from the OverlayManager
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-OverlayManager-removeComponentContent<T>(content: ComponentContent<T>): void--><!--Device-OverlayManager-removeComponentContent<T>(content: ComponentContent<T>): void-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-OverlayManager-removeComponentContent(content: ComponentContent): void--><!--Device-OverlayManager-removeComponentContent(content: ComponentContent): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -161,7 +187,7 @@ removeComponentContent<T>(content: ComponentContent<T>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; | 是 | 在OverlayManager上删除此content。 |
+| content | ComponentContent | 是 | Content to remove from the **OverlayManager**. |
 
 ## showAllComponentContents
 
@@ -169,13 +195,17 @@ removeComponentContent<T>(content: ComponentContent<T>): void
 showAllComponentContents(): void
 ```
 
-显示OverlayManager上所有的ComponentContent。
+Show all ComponentContents on the OverlayManager.
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-OverlayManager-showAllComponentContents(): void--><!--Device-OverlayManager-showAllComponentContents(): void-End-->
 
@@ -184,18 +214,22 @@ showAllComponentContents(): void
 ## showComponentContent
 
 ```TypeScript
-showComponentContent<T>(content: ComponentContent<T>): void
+showComponentContent(content: ComponentContent): void
 ```
 
-在OverlayManager上显示指定节点。
+Show the ComponentContent.
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-OverlayManager-showComponentContent<T>(content: ComponentContent<T>): void--><!--Device-OverlayManager-showComponentContent<T>(content: ComponentContent<T>): void-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-OverlayManager-showComponentContent(content: ComponentContent): void--><!--Device-OverlayManager-showComponentContent(content: ComponentContent): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -203,5 +237,5 @@ showComponentContent<T>(content: ComponentContent<T>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; | 是 | 在OverlayManager上显示此content。 |
+| content | ComponentContent | 是 | Content to show on the **OverlayManager**. |
 

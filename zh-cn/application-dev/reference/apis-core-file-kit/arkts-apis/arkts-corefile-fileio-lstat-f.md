@@ -14,7 +14,7 @@ declare function lstat(path: string): Promise<Stat>
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.file.fs:lstat](arkts-corefile-fileio-lstat-f.md#lstat)
+**替代接口：** [lstat](arkts-corefile-file-fs-lstat-f.md#lstat)
 
 <!--Device-unnamed-declare function lstat(path: string): Promise<Stat>--><!--Device-unnamed-declare function lstat(path: string): Promise<Stat>-End-->
 
@@ -30,7 +30,7 @@ declare function lstat(path: string): Promise<Stat>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Stat&gt; | promise对象，返回文件对象，表示文件的具体信息，详情见stat。 |
+| Promise&lt;[Stat](arkts-corefile-fileio-stat-depr-i.md)&gt; | promise对象，返回文件对象，表示文件的具体信息，详情见stat。 |
 
 
 ## lstat
@@ -47,7 +47,7 @@ declare function lstat(path: string, callback: AsyncCallback<Stat>): void
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.file.fs:lstat](arkts-corefile-fileio-lstat-f.md#lstat)
+**替代接口：** [lstat](arkts-corefile-file-fs-lstat-f.md#lstat)
 
 <!--Device-unnamed-declare function lstat(path: string, callback: AsyncCallback<Stat>): void--><!--Device-unnamed-declare function lstat(path: string, callback: AsyncCallback<Stat>): void-End-->
 
@@ -58,5 +58,5 @@ declare function lstat(path: string, callback: AsyncCallback<Stat>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 目标文件的应用沙箱路径。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;Stat&gt; | 是 | 回调函数，返回文件的具体信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[Stat](arkts-corefile-fileio-stat-depr-i.md)&gt; | 是 | 回调函数，返回文件的具体信息。 |
 

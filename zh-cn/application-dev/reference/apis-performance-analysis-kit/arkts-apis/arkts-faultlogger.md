@@ -1,6 +1,6 @@
-# @ohos.faultLogger(故障日志获取)
+# @ohos.faultLogger
 
-应用可以使用faultLogger接口查询系统侧缓存的当前应用的故障日志。接口以应用包名和系统分配的UID作为唯一键值。 系统侧保存的应用故障日志数量受系统日志的压力限制， 推荐使用[@ohos.hiviewdfx.hiAppEvent]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_订阅APP\_CRASH及APP\_FREEZE等故障事件。 > **说明：** > > 本模块接口从API version 18开始废弃使用, 该接口不再维护。后续版本推荐使用 > [@ohos.hiviewdfx.hiAppEvent]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_订阅APP\_CRASH，APP\_FREEZE事件。 > > 查阅\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_， > 了解使用hiAppEvent订阅APP\_CRASH的具体信息。 > > 查阅\_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_， > 了解使用hiAppEvent订阅APP\_FREEZE的具体信息。
+应用可以使用faultLogger接口查询系统侧缓存的当前应用的故障日志。接口以应用包名和系统分配的UID作为唯一键值。 系统侧保存的应用故障日志数量受系统日志的压力限制， 推荐使用[@ohos.hiviewdfx.hiAppEvent](arkts-performanceanalysis-hiappevent-n.md#hiAppEvent)订阅APP_CRASH及APP_FREEZE等故障事件。 > **说明：** > > 本模块接口从API version 18开始废弃使用, 该接口不再维护。后续版本推荐使用 > [@ohos.hiviewdfx.hiAppEvent](arkts-performanceanalysis-hiappevent-n.md#hiAppEvent)订阅APP_CRASH，APP_FREEZE事件。 > > 查阅[从Faultlogger接口迁移崩溃事件](../../../dfx/hiappevent-watcher-crash-events-arkts.md#从faultlogger接口迁移崩溃事件)， > 了解使用hiAppEvent订阅APP_CRASH的具体信息。 > > 查阅[从Faultlogger接口迁移应用冻屏事件](../../../dfx/hiappevent-watcher-freeze-events-arkts.md#从faultlogger接口迁移应用冻屏事件)， > 了解使用hiAppEvent订阅APP_FREEZE的具体信息。
 
 **起始版本：** 8
 
@@ -8,7 +8,7 @@
 
 **废弃版本：** 18
 
-**替代接口：** ohos.hiviewdfx.hiAppEvent
+**替代接口：** hiAppEvent
 
 <!--Device-unnamed-declare namespace FaultLogger--><!--Device-unnamed-declare namespace FaultLogger-End-->
 
@@ -21,9 +21,9 @@
 | 名称 | 说明 |
 | --- | --- |
 | [query](arkts-performanceanalysis-faultlogger-query-f.md#query) | 获取当前应用故障信息，该方法通过回调方式获取故障信息数组，故障信息数组内最多上报10份故障信息。 |
-| [query](arkts-performanceanalysis-faultlogger-query-f.md#query-1) | 获取当前应用故障信息，该方法通过Promise方式返回故障信息数组，故障信息数组内最多上报10份故障信息。 |
-| [querySelfFaultLog](arkts-performanceanalysis-faultlogger-queryselffaultlog-f.md#queryselffaultlog) | 获取当前应用故障信息，该方法通过回调方式获取故障信息数组，故障信息数组内最多上报10份故障信息。 |
-| [querySelfFaultLog](arkts-performanceanalysis-faultlogger-queryselffaultlog-f.md#queryselffaultlog-1) | 获取当前应用故障信息，该方法通过Promise方式返回故障信息数组，故障信息数组内最多上报10份故障信息。 |
+| [query](arkts-performanceanalysis-faultlogger-query-f.md#query) | 获取当前应用故障信息，该方法通过Promise方式返回故障信息数组，故障信息数组内最多上报10份故障信息。 |
+| [querySelfFaultLog](arkts-performanceanalysis-faultlogger-queryselffaultlog-f.md#querySelfFaultLog) | 获取当前应用故障信息，该方法通过回调方式获取故障信息数组，故障信息数组内最多上报10份故障信息。 |
+| [querySelfFaultLog](arkts-performanceanalysis-faultlogger-queryselffaultlog-f.md#querySelfFaultLog) | 获取当前应用故障信息，该方法通过Promise方式返回故障信息数组，故障信息数组内最多上报10份故障信息。 |
 
 ### 接口
 

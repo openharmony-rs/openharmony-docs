@@ -1,10 +1,12 @@
 # TextShadow
 
-字体阴影。
+文本阴影。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-text-interface TextShadow--><!--Device-text-interface TextShadow-End-->
 
@@ -20,9 +22,11 @@ blurRadius?: double
 
 **类型：** double
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -36,13 +40,15 @@ blurRadius?: double
 color?: common2D.Color
 ```
 
-字体阴影的颜色，默认为黑色Color(255, 0, 0, 0)。
+文本阴影的颜色，默认为黑色Color(255, 0, 0, 0)。
 
 **类型：** common2D.Color
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -56,13 +62,15 @@ color?: common2D.Color
 point?: common2D.Point
 ```
 
-字体阴影基于当前文本的偏移位置，横、纵坐标要大于等于零，单位为物理像素px。
+文本阴影基于当前文本的偏移位置，横、纵坐标要大于等于零，单位为物理像素px，默认为common2D.Point(0, 0)。
 
 **类型：** common2D.Point
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 

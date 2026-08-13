@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare enum EffectType--><!--Device-unnamed-declare enum EffectType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -16,11 +18,13 @@
 DEFAULT = 0
 ```
 
-使用\_\_\_MD\_COMMENT\_DESC\_USD\_0\_\_\_父级EffectComponent定义的\_\_\_MD\_COMMENT\_DESC\_USD\_1\_\_\_效果模板进行定义。
+使用&lt;!--Del--&gt;父级EffectComponent定义的&lt;!--DelEnd--&gt;效果模板进行定义。
 
 **起始版本：** 14
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -41,6 +45,8 @@ WINDOW_EFFECT = 1
 **起始版本：** 14
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

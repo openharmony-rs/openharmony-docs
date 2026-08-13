@@ -2,9 +2,11 @@
 
 打印机状态的枚举。
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-print-enum PrinterStatus--><!--Device-print-enum PrinterStatus-End-->
 
@@ -18,9 +20,11 @@ PRINTER_IDLE = 0
 
 表示打印机空闲状态。
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrinterStatus-PRINTER_IDLE = 0--><!--Device-PrinterStatus-PRINTER_IDLE = 0-End-->
 
@@ -34,9 +38,11 @@ PRINTER_BUSY = 1
 
 表示打印机忙碌状态。
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrinterStatus-PRINTER_BUSY = 1--><!--Device-PrinterStatus-PRINTER_BUSY = 1-End-->
 
@@ -50,9 +56,11 @@ PRINTER_UNAVAILABLE = 2
 
 表示打印机脱机状态。
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrinterStatus-PRINTER_UNAVAILABLE = 2--><!--Device-PrinterStatus-PRINTER_UNAVAILABLE = 2-End-->
 

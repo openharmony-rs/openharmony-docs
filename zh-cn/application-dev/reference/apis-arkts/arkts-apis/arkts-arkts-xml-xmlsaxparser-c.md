@@ -1,10 +1,12 @@
 # XmlSAXParser
 
-XmlSAXParser类用于以流式方式解析XML文本。适用于需要边读取边处理的场景，支持从[stream.Readable]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 流中读取XML数据并 进行解析。 > **说明：** > > - 本接口采用流式解析的方式，理论上可以解析任意大小的XML文本。但考虑到实际性能表现，建议单次解析的数据大小不超过300MB，以避免解析时间过长影响使用体验。
+XmlSAXParser类用于以流式方式解析XML文本。适用于需要边读取边处理的场景，支持从[stream.Readable](arkts-arkts-stream-readable-c.md#Readable) 流中读取XML数据并 进行解析。 > **说明：** > > - 本接口采用流式解析的方式，理论上可以解析任意大小的XML文本。但考虑到实际性能表现，建议单次解析的数据大小不超过300MB，以避免解析时间过长影响使用体验。
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 <!--Device-xml-class XmlSAXParser--><!--Device-xml-class XmlSAXParser-End-->
 
@@ -16,11 +18,13 @@ XmlSAXParser类用于以流式方式解析XML文本。适用于需要边读取�
 constructor(inputStream: stream.Readable, encoding?: string)
 ```
 
-XmlSAXParser的构造函数。 > **说明：** > > - \_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_参数必须传入继承自[Readable]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_且实现 > [Doread]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_的类。可以传入其他模块中满足该条件的类，如 > [ReadStream]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_。
+构造并返回一个XmlSAXParser对象，用于以SAX方式从可读流中流式解析XML文本。 > **说明：** > > - `inputStream`参数必须传入继承自[Readable](arkts-arkts-stream-readable-c.md#Readable)且实现 > [Doread](arkts-arkts-stream-readable-c.md#doRead)的类。可以传入其他模块中满足该条件的类，如 > [ReadStream](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-readstream-c.md#ReadStream)。
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -37,7 +41,7 @@ XmlSAXParser的构造函数。 > **说明：** > > - \_\_\_INLINE\_CODE\_DESC\_U
 | inputStream | stream.Readable | 是 | 用于读取XML数据的可读流实例。 |
 | encoding | string | 否 | 编码格式，默认为'utf-8'（目前仅支持'utf-8'）。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -81,11 +85,13 @@ let saxParser = new xml.XmlSAXParser(readableStream, 'utf-8');
 parse(xmlSAXHandler: XmlSAXHandler): void
 ```
 
-使用SAX（Simple API for XML）方式解析XML数据。 > **说明：** > > - 在调用parse函数后，用户可以通过控制流的方式来控制解析进度。任意数据块被推入后，解析器会解析相应的进度。具体流控制方式详见 > [@ohos.util.stream (数据流基类stream)]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。 > > - 可以配合自动控制数据的流使用，如[ReadStream]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_，此时用户不再需要手动控制数据。 > > - parse接口注册了流的on监听器，会自动读取流中的数据。不建议再对流的监听器进行操作或者读取数据，以免发生冲突导致接口能力失效。
+使用SAX（Simple API for XML）方式解析XML数据。 > **说明：** > > - 在调用parse函数后，用户可以通过控制流的方式来控制解析进度。任意数据块被推入后，解析器会解析相应的进度。具体流控制方式详见 > [@ohos.util.stream (数据流基类stream)](arkts-util-stream.md#@ohos.util.stream)。 > > - 可以配合自动控制数据的流使用，如[ReadStream](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-readstream-c.md#ReadStream)，此时用户不再需要手动控制数据。 > > - parse接口注册了流的on监听器，会自动读取流中的数据。不建议再对流的监听器进行操作或者读取数据，以免发生冲突导致接口能力失效。
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -99,9 +105,9 @@ parse(xmlSAXHandler: XmlSAXHandler): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| xmlSAXHandler | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | SAX处理器对象。 |
+| xmlSAXHandler | [XmlSAXHandler](arkts-arkts-xml-xmlsaxhandler-i.md) | 是 | SAX处理器对象。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

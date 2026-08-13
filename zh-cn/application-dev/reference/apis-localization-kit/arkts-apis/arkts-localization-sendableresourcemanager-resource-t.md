@@ -10,6 +10,8 @@ export type Resource = _Resource
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-sendableResourceManager-export type Resource = _Resource--><!--Device-sendableResourceManager-export type Resource = _Resource-End-->

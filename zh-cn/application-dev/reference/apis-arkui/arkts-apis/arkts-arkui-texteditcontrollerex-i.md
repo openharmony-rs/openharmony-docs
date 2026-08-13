@@ -1,14 +1,16 @@
 # TextEditControllerEx
 
-文本扩展编辑控制器。 继承自[TextBaseController]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+文本扩展编辑控制器。 继承自[TextBaseController](arkts-arkui-textbasecontroller-i.md#TextBaseController)。
 
-**继承/实现关系：** TextEditControllerEx extends [TextBaseController](arkts-arkui-component/textcommon-textbasecontroller-i.md)
+**继承/实现关系：** TextEditControllerEx extends [TextBaseController](arkts-arkui-textbasecontroller-i.md#TextBaseController)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-<!--Device-unnamed-declare interface TextEditControllerEx extends TextBaseController--><!--Device-unnamed-declare interface TextEditControllerEx extends TextBaseController-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare interface TextEditControllerEx--><!--Device-unnamed-declare interface TextEditControllerEx-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -23,6 +25,8 @@ getCaretOffset(): number
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -50,6 +54,8 @@ getPreviewText?(): PreviewText
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -62,7 +68,7 @@ getPreviewText?(): PreviewText
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 预上屏信息，包含预上屏起始位置索引和预上屏文本内容。 |
+| [PreviewText](arkts-arkui-previewtext-i.md) | 预上屏信息，包含预上屏起始位置索引和预上屏文本内容。 |
 
 ## isEditing
 
@@ -75,6 +81,8 @@ isEditing(): boolean
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -102,6 +110,8 @@ setCaretOffset(offset: number): boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -120,7 +130,7 @@ setCaretOffset(offset: number): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 光标是否设置成功。 |
+| boolean | 光标是否设置成功。 &lt;br&gt;true表示光标设置成功，false表示设置失败。 |
 
 ## stopEditing
 
@@ -133,6 +143,8 @@ stopEditing(): void
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

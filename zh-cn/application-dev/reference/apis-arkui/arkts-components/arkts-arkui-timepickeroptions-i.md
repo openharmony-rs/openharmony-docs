@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface TimePickerOptions--><!--Device-unnamed-declare interface TimePickerOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -24,6 +26,8 @@ end?: Date
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -38,15 +42,17 @@ end?: Date
 format?: TimePickerFormat
 ```
 
-指定需要显示的TimePicker的格式。 默认值：TimePickerFormat.HOUR\_MINUTE
+指定需要显示的TimePicker的格式。 默认值：TimePickerFormat.HOUR_MINUTE
 
-**类型：** TimePickerFormat
+**类型：** [TimePickerFormat](arkts-arkui-timepickerformat-e.md)
 
 **默认值：** HOUR_MINUTE
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -62,13 +68,15 @@ format?: TimePickerFormat
 selected?: Date
 ```
 
-设置选中项的时间。 默认值：当前系统时间 从API version 10开始，该参数支持\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_双向绑定变量。
+设置选中项的时间。 默认值：当前系统时间 从API version 10开始，该参数支持[\$\$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
 
 **类型：** Date
 
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -89,6 +97,8 @@ start?: Date
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

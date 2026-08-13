@@ -6,11 +6,13 @@
 declare function CustomEnv<T>(key: CustomEnvKey<T>): PropertyDecorator
 ```
 
-用于获取自定义环境变量。 开发者指南见：\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+用于获取自定义环境变量。 开发者指南见：[\@CustomEnv开发者指南](../../../ui/arkts-custom-env-property.md)。
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -24,7 +26,7 @@ declare function CustomEnv<T>(key: CustomEnvKey<T>): PropertyDecorator
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; | 是 | 自定义环境变量Key，用于标识要获取的自定义环境变量。 |
+| key | [CustomEnvKey](arkts-arkui-customenvkey-c.md)&lt;T&gt; | 是 | 自定义环境变量Key，用于标识要获取的自定义环境变量。 |
 
 **返回值：**
 

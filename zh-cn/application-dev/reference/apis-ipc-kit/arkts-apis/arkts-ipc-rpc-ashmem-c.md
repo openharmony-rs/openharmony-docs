@@ -2,101 +2,15 @@
 
 提供与匿名共享内存对象相关的方法，包括创建、关闭、映射和取消映射Ashmem、从Ashmem读取数据和写入数据、获取Ashmem大小、设置Ashmem保护。 共享内存只适用与本设备内跨进程通信。 - 大数据传输：传输大量数据(如图片、文件)时使用共享内存提升效率。 - 跨进程数据共享：多个进程需要共享访问同一块内存数据。 - 传输效率问题：大数据通过共享内存传输避免序列化开销，提升传输效率。 - 内存复用问题：多进程可共享访问同一内存，避免数据拷贝。 - 提升传输性能：共享内存机制大幅提升大数据传输效率。 - 减少内存占用：避免数据多次拷贝，节省内存资源。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-rpc-class Ashmem--><!--Device-rpc-class Ashmem-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
-
-## PROT_EXEC
-
-```TypeScript
-static get PROT_EXEC(): int
-```
-
-The mapped memory is executable.
-
-**起始版本：** 23
-
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
-
-<!--Device-Ashmem-static get PROT_EXEC(): int--><!--Device-Ashmem-static get PROT_EXEC(): int-End-->
-
-**系统能力：** SystemCapability.Communication.IPC.Core
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| int | Return vaule indicating the mapped memory is executable. |
-
-## PROT_NONE
-
-```TypeScript
-static get PROT_NONE(): int
-```
-
-The mapped memory is inaccessible.
-
-**起始版本：** 23
-
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
-
-<!--Device-Ashmem-static get PROT_NONE(): int--><!--Device-Ashmem-static get PROT_NONE(): int-End-->
-
-**系统能力：** SystemCapability.Communication.IPC.Core
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| int | Return vaule indicating the mapped memory is inaccessible. |
-
-## PROT_READ
-
-```TypeScript
-static get PROT_READ(): int
-```
-
-The mapped memory is readable.
-
-**起始版本：** 23
-
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
-
-<!--Device-Ashmem-static get PROT_READ(): int--><!--Device-Ashmem-static get PROT_READ(): int-End-->
-
-**系统能力：** SystemCapability.Communication.IPC.Core
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| int | Return vaule indicating the mapped memory is readable. |
-
-## PROT_WRITE
-
-```TypeScript
-static get PROT_WRITE(): int
-```
-
-The mapped memory is writable.
-
-**起始版本：** 23
-
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
-
-<!--Device-Ashmem-static get PROT_WRITE(): int--><!--Device-Ashmem-static get PROT_WRITE(): int-End-->
-
-**系统能力：** SystemCapability.Communication.IPC.Core
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| int | Return vaule indicating the mapped memory is writable. |
 
 ## closeAshmem
 
@@ -106,15 +20,17 @@ closeAshmem(): void
 
 关闭这个Ashmem。 > **说明：** > > 关闭Ashmem对象前需要先解除地址映射。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Ashmem-closeAshmem(): void--><!--Device-Ashmem-closeAshmem(): void-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -130,21 +46,17 @@ try {
 
 ## create
 
-ArkTS-Dyn:
-```TypeScript
-static create(name: string, size: number): Ashmem
-```
-
-ArkTS-Sta:
 ```TypeScript
 static create(name: string, size: int): Ashmem
 ```
 
 静态方法，根据指定的名称和大小创建Ashmem对象。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Ashmem-static create(name: string, size: int): Ashmem--><!--Device-Ashmem-static create(name: string, size: int): Ashmem-End-->
 
@@ -155,21 +67,21 @@ static create(name: string, size: int): Ashmem
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | Ashmem名称，用于查询Ashmem信息，其长度不能为0。 |
-| size | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | Ashmem的大小，其大小应大于0，以字节为单位。 |
+| size | int | 是 | Ashmem的大小，其大小应大于0，以字节为单位。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回创建的Ashmem对象；如果创建失败，返回null。 |
+| [Ashmem](arkts-ipc-rpc-ashmem-c.md) | 返回创建的Ashmem对象；如果创建失败，返回null。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.The number of parameters is incorrect;2.The parameter type does not match;3.The Ashmem name passed is empty;4.The Ashmem size passed is less than or equal to 0. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The Ashmem name passed is empty; 4.The Ashmem size passed is less than or equal to 0. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -196,9 +108,11 @@ static create(ashmem: Ashmem): Ashmem
 
 静态方法，通过复制现有Ashmem对象的文件描述符(fd)来创建Ashmem对象。两个Ashmem对象指向同一个共享内存区域。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Ashmem-static create(ashmem: Ashmem): Ashmem--><!--Device-Ashmem-static create(ashmem: Ashmem): Ashmem-End-->
 
@@ -208,21 +122,21 @@ static create(ashmem: Ashmem): Ashmem
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ashmem | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 已存在的Ashmem对象。 |
+| ashmem | [Ashmem](arkts-ipc-rpc-ashmem-c.md) | 是 | 已存在的Ashmem对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回创建的Ashmem对象。 |
+| [Ashmem](arkts-ipc-rpc-ashmem-c.md) | 返回创建的Ashmem对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.The number of parameters is incorrect;2.The passed parameter is not an Ashmem object;3.The ashmem instance for obtaining packaging is empty. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The passed parameter is not an Ashmem object; 3.The ashmem instance for obtaining packaging is empty. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -255,7 +169,7 @@ static createAshmem(name: string, size: number): Ashmem
 
 **废弃版本：** 9
 
-**替代接口：** [create](arkts-ipc-rpc-ashmem-c.md#create)()
+**替代接口：** create()
 
 <!--Device-Ashmem-static createAshmem(name: string, size: number): Ashmem--><!--Device-Ashmem-static createAshmem(name: string, size: number): Ashmem-End-->
 
@@ -272,9 +186,9 @@ static createAshmem(name: string, size: number): Ashmem
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回创建的Ashmem对象；如果创建失败，返回null。 |
+| [Ashmem](arkts-ipc-rpc-ashmem-c.md) | 返回创建的Ashmem对象；如果创建失败，返回null。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -304,7 +218,7 @@ static createAshmemFromExisting(ashmem: Ashmem): Ashmem
 
 **废弃版本：** 9
 
-**替代接口：** [create](arkts-ipc-rpc-ashmem-c.md#create)()
+**替代接口：** create()
 
 <!--Device-Ashmem-static createAshmemFromExisting(ashmem: Ashmem): Ashmem--><!--Device-Ashmem-static createAshmemFromExisting(ashmem: Ashmem): Ashmem-End-->
 
@@ -314,15 +228,15 @@ static createAshmemFromExisting(ashmem: Ashmem): Ashmem
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ashmem | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 已存在的Ashmem对象。 |
+| ashmem | [Ashmem](arkts-ipc-rpc-ashmem-c.md) | 是 | 已存在的Ashmem对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回创建的Ashmem对象。 |
+| [Ashmem](arkts-ipc-rpc-ashmem-c.md) | 返回创建的Ashmem对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -340,21 +254,17 @@ try {
 
 ## getAshmemSize
 
-ArkTS-Dyn:
-```TypeScript
-getAshmemSize(): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getAshmemSize(): int
 ```
 
 获取Ashmem对象的内存大小。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Ashmem-getAshmemSize(): int--><!--Device-Ashmem-getAshmemSize(): int-End-->
 
@@ -364,9 +274,9 @@ getAshmemSize(): int
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 返回Ashmem对象的内存大小。 |
+| int | 返回Ashmem对象的内存大小。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -395,7 +305,7 @@ mapAshmem(mapType: number): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [mapTypedAshmem](arkts-ipc-rpc-ashmem-c.md#maptypedashmem)(mapType:
+**替代接口：** [mapTypedAshmem](#mapTypedAshmem)(mapType: int)
 
 <!--Device-Ashmem-mapAshmem(mapType: number): boolean--><!--Device-Ashmem-mapAshmem(mapType: number): boolean-End-->
 
@@ -413,7 +323,7 @@ mapAshmem(mapType: number): boolean
 | --- | --- |
 | boolean | true：映射成功，false：映射失败。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -442,7 +352,7 @@ mapReadAndWriteAshmem(): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [mapReadWriteAshmem](arkts-ipc-rpc-ashmem-c.md#mapreadwriteashmem)()
+**替代接口：** [mapReadWriteAshmem](#mapReadWriteAshmem)()
 
 <!--Device-Ashmem-mapReadAndWriteAshmem(): boolean--><!--Device-Ashmem-mapReadAndWriteAshmem(): boolean-End-->
 
@@ -454,7 +364,7 @@ mapReadAndWriteAshmem(): boolean
 | --- | --- |
 | boolean | true：映射成功，false：映射失败。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -483,7 +393,7 @@ mapReadOnlyAshmem(): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [mapReadonlyAshmem](arkts-ipc-rpc-ashmem-c.md#mapreadonlyashmem)()
+**替代接口：** mapReadonlyAshmem()
 
 <!--Device-Ashmem-mapReadOnlyAshmem(): boolean--><!--Device-Ashmem-mapReadOnlyAshmem(): boolean-End-->
 
@@ -495,7 +405,7 @@ mapReadOnlyAshmem(): boolean
 | --- | --- |
 | boolean | true：映射成功，false：映射失败。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -518,9 +428,11 @@ mapReadWriteAshmem(): void
 
 在此进程虚拟地址空间上创建可读写的共享文件映射。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Ashmem-mapReadWriteAshmem(): void--><!--Device-Ashmem-mapReadWriteAshmem(): void-End-->
 
@@ -532,7 +444,7 @@ mapReadWriteAshmem(): void
 | --- | --- |
 | [1900001](../errorcode-rpc.md#1900001-系统调用mmap失败) | Failed to call mmap. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -557,9 +469,11 @@ mapReadonlyAshmem(): void
 
 在此进程虚拟地址空间上创建只读的共享文件映射。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Ashmem-mapReadonlyAshmem(): void--><!--Device-Ashmem-mapReadonlyAshmem(): void-End-->
 
@@ -571,7 +485,7 @@ mapReadonlyAshmem(): void
 | --- | --- |
 | [1900001](../errorcode-rpc.md#1900001-系统调用mmap失败) | Failed to call mmap. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -590,21 +504,17 @@ try {
 
 ## mapTypedAshmem
 
-ArkTS-Dyn:
-```TypeScript
-mapTypedAshmem(mapType: number): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 mapTypedAshmem(mapType: int): void
 ```
 
 在此进程的虚拟地址空间上创建共享文件映射，映射区域大小由此Ashmem对象指定。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Ashmem-mapTypedAshmem(mapType: int): void--><!--Device-Ashmem-mapTypedAshmem(mapType: int): void-End-->
 
@@ -614,16 +524,16 @@ mapTypedAshmem(mapType: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mapType | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 指定映射的内存区域的保护等级。 |
+| mapType | int | 是 | 指定映射的内存区域的保护等级。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.The number of parameters is incorrect;2.The parameter type does not match;3.The passed mapType exceeds the maximum protection level. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The passed mapType exceeds the maximum protection level. |
 | [1900001](../errorcode-rpc.md#1900001-系统调用mmap失败) | Failed to call mmap. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -646,7 +556,7 @@ try {
 readAshmem(size: number, offset: number): number[]
 ```
 
-从此Ashmem对象关联的共享文件中读取数据。 > **说明：** > > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_进行映射。
+从此Ashmem对象关联的共享文件中读取数据。 > **说明：** > > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapReadWriteAshmem)进行映射。
 
 **起始版本：** 9
 
@@ -654,7 +564,7 @@ readAshmem(size: number, offset: number): number[]
 
 **废弃版本：** 11
 
-**替代接口：** [readDataFromAshmem](arkts-ipc-rpc-ashmem-c.md#readdatafromashmem)(size:
+**替代接口：** [readDataFromAshmem](#readDataFromAshmem)(size: int, offset: int)
 
 <!--Device-Ashmem-readAshmem(size: number, offset: number): number[]--><!--Device-Ashmem-readAshmem(size: number, offset: number): number[]-End-->
 
@@ -677,10 +587,10 @@ readAshmem(size: number, offset: number): number[]
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.The number of parameters is incorrect;2.The parameter type does not match. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
 | [1900004](../errorcode-rpc.md#1900004-共享内存读数据失败) | Failed to read data from the shared memory. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -703,21 +613,17 @@ try {
 
 ## readDataFromAshmem
 
-ArkTS-Dyn:
-```TypeScript
-readDataFromAshmem(size: number, offset: number): ArrayBuffer
-```
-
-ArkTS-Sta:
 ```TypeScript
 readDataFromAshmem(size: int, offset: int): ArrayBuffer
 ```
 
-从此Ashmem对象关联的共享文件中读取数据。 > **说明：** > > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_进行映射。
+从此Ashmem对象关联的共享文件中读取数据。 > **说明：** > > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapReadWriteAshmem)进行映射。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Ashmem-readDataFromAshmem(size: int, offset: int): ArrayBuffer--><!--Device-Ashmem-readDataFromAshmem(size: int, offset: int): ArrayBuffer-End-->
 
@@ -727,8 +633,8 @@ readDataFromAshmem(size: int, offset: int): ArrayBuffer
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| size | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 要读取的数据的大小，以字节为单位。 |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 要读取的数据在此Ashmem对象关联的内存区间的起始位置。 |
+| size | int | 是 | 要读取的数据的大小，以字节为单位。 |
+| offset | int | 是 | 要读取的数据在此Ashmem对象关联的内存区间的起始位置。 |
 
 **返回值：**
 
@@ -740,10 +646,10 @@ readDataFromAshmem(size: int, offset: int): ArrayBuffer
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.The number of parameters is incorrect;2.The parameter type does not match. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
 | [1900004](../errorcode-rpc.md#1900004-共享内存读数据失败) | Failed to read data from the shared memory. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -776,7 +682,7 @@ try {
 readFromAshmem(size: number, offset: number): number[]
 ```
 
-从此Ashmem对象关联的共享文件中读取数据。 > **说明：** > > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_进行映射。
+从此Ashmem对象关联的共享文件中读取数据。 > **说明：** > > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapReadWriteAshmem)进行映射。
 
 **起始版本：** 8
 
@@ -784,7 +690,7 @@ readFromAshmem(size: number, offset: number): number[]
 
 **废弃版本：** 9
 
-**替代接口：** [readDataFromAshmem](arkts-ipc-rpc-ashmem-c.md#readdatafromashmem)(size:
+**替代接口：** [readDataFromAshmem](#readDataFromAshmem)(size: int, offset: int)
 
 <!--Device-Ashmem-readFromAshmem(size: number, offset: number): number[]--><!--Device-Ashmem-readFromAshmem(size: number, offset: number): number[]-End-->
 
@@ -803,7 +709,7 @@ readFromAshmem(size: number, offset: number): number[]
 | --- | --- |
 | number[] | 返回读取的数据。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -837,7 +743,7 @@ setProtection(protectionType: number): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [setProtectionType](arkts-ipc-rpc-ashmem-c.md#setprotectiontype)(protectionType:
+**替代接口：** [setProtectionType](#setProtectionType)(protectionType: int)
 
 <!--Device-Ashmem-setProtection(protectionType: number): boolean--><!--Device-Ashmem-setProtection(protectionType: number): boolean-End-->
 
@@ -855,7 +761,7 @@ setProtection(protectionType: number): boolean
 | --- | --- |
 | boolean | true：设置成功，false：设置失败。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -873,21 +779,17 @@ try {
 
 ## setProtectionType
 
-ArkTS-Dyn:
-```TypeScript
-setProtectionType(protectionType: number): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 setProtectionType(protectionType: int): void
 ```
 
 设置映射内存区域的保护等级。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Ashmem-setProtectionType(protectionType: int): void--><!--Device-Ashmem-setProtectionType(protectionType: int): void-End-->
 
@@ -897,16 +799,16 @@ setProtectionType(protectionType: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| protectionType | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 要设置的保护类型。 |
+| protectionType | int | 是 | 要设置的保护类型。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.The number of parameters is incorrect;2.The parameter type does not match. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
 | [1900002](../errorcode-rpc.md#1900002-系统调用ioctl失败) | Failed to call ioctl. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -931,15 +833,17 @@ unmapAshmem(): void
 
 删除该Ashmem对象的地址映射。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Ashmem-unmapAshmem(): void--><!--Device-Ashmem-unmapAshmem(): void-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -959,7 +863,7 @@ try {
 writeAshmem(buf: number[], size: number, offset: number): void
 ```
 
-将数据写入此Ashmem对象关联的共享文件。 > **说明：** > > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_进行映射。
+将数据写入此Ashmem对象关联的共享文件。 > **说明：** > > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapReadWriteAshmem)进行映射。
 
 **起始版本：** 9
 
@@ -967,7 +871,7 @@ writeAshmem(buf: number[], size: number, offset: number): void
 
 **废弃版本：** 11
 
-**替代接口：** [writeDataToAshmem](arkts-ipc-rpc-ashmem-c.md#writedatatoashmem)(buf:
+**替代接口：** [writeDataToAshmem](#writeDataToAshmem)(buf: ArrayBuffer, size: int, offset: int)
 
 <!--Device-Ashmem-writeAshmem(buf: number[], size: number, offset: number): void--><!--Device-Ashmem-writeAshmem(buf: number[], size: number, offset: number): void-End-->
 
@@ -985,10 +889,10 @@ writeAshmem(buf: number[], size: number, offset: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.The number of parameters is incorrect;2.The parameter type does not match;3.The element does not exist in the array. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The element does not exist in the array. |
 | [1900003](../errorcode-rpc.md#1900003-共享内存写数据失败) | Failed to write data to the shared memory. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1009,21 +913,17 @@ try {
 
 ## writeDataToAshmem
 
-ArkTS-Dyn:
-```TypeScript
-writeDataToAshmem(buf: ArrayBuffer, size: number, offset: number): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 writeDataToAshmem(buf: ArrayBuffer, size: int, offset: int): void
 ```
 
-将数据写入此Ashmem对象关联的共享文件。 > **说明：** > > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_进行映射。
+将数据写入此Ashmem对象关联的共享文件。 > **说明：** > > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapReadWriteAshmem)进行映射。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Ashmem-writeDataToAshmem(buf: ArrayBuffer, size: int, offset: int): void--><!--Device-Ashmem-writeDataToAshmem(buf: ArrayBuffer, size: int, offset: int): void-End-->
 
@@ -1034,17 +934,17 @@ writeDataToAshmem(buf: ArrayBuffer, size: int, offset: int): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buf | ArrayBuffer | 是 | 写入Ashmem对象的数据。 |
-| size | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 要写入的数据大小，以字节为单位。 |
-| offset | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 要写入的数据在此Ashmem对象关联的内存区间的起始位置。 |
+| size | int | 是 | 要写入的数据大小，以字节为单位。 |
+| offset | int | 是 | 要写入的数据在此Ashmem对象关联的内存区间的起始位置。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.The number of parameters is incorrect;2.The parameter type does not match;3.Failed to obtain arrayBuffer information. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.Failed to obtain arrayBuffer information. |
 | [1900003](../errorcode-rpc.md#1900003-共享内存写数据失败) | Failed to write data to the shared memory. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1074,7 +974,7 @@ try {
 writeToAshmem(buf: number[], size: number, offset: number): boolean
 ```
 
-将数据写入此Ashmem对象关联的共享文件。 > **说明：** > > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_进行映射。
+将数据写入此Ashmem对象关联的共享文件。 > **说明：** > > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapReadWriteAshmem)进行映射。
 
 **起始版本：** 8
 
@@ -1082,7 +982,7 @@ writeToAshmem(buf: number[], size: number, offset: number): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [writeDataToAshmem](arkts-ipc-rpc-ashmem-c.md#writedatatoashmem)(buf:
+**替代接口：** [writeDataToAshmem](#writeDataToAshmem)(buf: ArrayBuffer, size: int, offset: int)
 
 <!--Device-Ashmem-writeToAshmem(buf: number[], size: number, offset: number): boolean--><!--Device-Ashmem-writeToAshmem(buf: number[], size: number, offset: number): boolean-End-->
 
@@ -1102,7 +1002,7 @@ writeToAshmem(buf: number[], size: number, offset: number): boolean
 | --- | --- |
 | boolean | true：如果数据写入成功，false：在其他情况下，如数据写入越界或未获得写入权限。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1136,6 +1036,8 @@ static readonly PROT_EXEC: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 <!--Device-Ashmem-static readonly PROT_EXEC: number--><!--Device-Ashmem-static readonly PROT_EXEC: number-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
@@ -1155,6 +1057,8 @@ static readonly PROT_NONE: number
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 <!--Device-Ashmem-static readonly PROT_NONE: number--><!--Device-Ashmem-static readonly PROT_NONE: number-End-->
 
@@ -1176,6 +1080,8 @@ static readonly PROT_READ: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 <!--Device-Ashmem-static readonly PROT_READ: number--><!--Device-Ashmem-static readonly PROT_READ: number-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
@@ -1195,6 +1101,8 @@ static readonly PROT_WRITE: number
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 <!--Device-Ashmem-static readonly PROT_WRITE: number--><!--Device-Ashmem-static readonly PROT_WRITE: number-End-->
 

@@ -1,6 +1,6 @@
 # HuksErrorCode
 
-表示错误码的枚举。 > **说明：** > > 从API version 9开始废弃，建议使用[HuksExceptionErrCode\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_9+\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。
+表示错误码的枚举。 > **说明：** > > 从API version 9开始废弃，建议使用[HuksExceptionErrCode&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-huksexceptionerrcode-e.md#HuksExceptionErrCode)替代。
 
 **起始版本：** 8
 
@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** [null]
+**替代接口：** null
 
 <!--Device-huks-export enum HuksErrorCode--><!--Device-huks-export enum HuksErrorCode-End-->
 

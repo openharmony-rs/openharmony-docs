@@ -1,10 +1,12 @@
 # InstallationResult
 
-应用安装结果。 该对象目前在 [EnterpriseAdminExtensionAbility.onMarketAppInstallResult]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 作为回调入参使用。
+应用安装结果。 该对象目前在 [EnterpriseAdminExtensionAbility.onMarketAppInstallResult](../../apis-na/arkts-apis/arkts-na-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md#onMarketAppInstallResult) 作为回调入参使用。
 
 **起始版本：** 22
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 <!--Device-common-export interface InstallationResult--><!--Device-common-export interface InstallationResult-End-->
 
@@ -23,6 +25,8 @@ message: string
 **起始版本：** 22
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -43,6 +47,8 @@ result: Result
 **起始版本：** 22
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -8,9 +8,11 @@ function getAllSystemHotkeys(): Promise<Array<HotkeyOptions>>
 
 获取所有系统快捷键，使用Promise异步回调。
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-inputConsumer-function getAllSystemHotkeys(): Promise<Array<HotkeyOptions>>--><!--Device-inputConsumer-function getAllSystemHotkeys(): Promise<Array<HotkeyOptions>>-End-->
 
@@ -20,7 +22,7 @@ function getAllSystemHotkeys(): Promise<Array<HotkeyOptions>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;HotkeyOptions&gt;&gt; | Promise对象，返回所有系统快捷键的列表。 |
+| Promise&lt;Array&lt;[HotkeyOptions](arkts-input-inputconsumer-hotkeyoptions-i.md)&gt;&gt; | Promise对象，返回所有系统快捷键的列表。 |
 
 **错误码：**
 
@@ -28,7 +30,7 @@ function getAllSystemHotkeys(): Promise<Array<HotkeyOptions>>
 | --- | --- |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBControlParams](arkts-basicservices-usbmanager-usbcontrolparams-i.md)
+**替代接口：** [USBControlParams](arkts-basicservices-usbmanager-usbcontrolparams-i.md#USBControlParams)
 
 <!--Device-usb-interface USBControlParams--><!--Device-usb-interface USBControlParams-End-->
 
@@ -30,7 +30,7 @@ data: Uint8Array
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBControlParams.data](arkts-basicservices-usbmanager-usbcontrolparams-i.md#data)
+**替代接口：** [data](arkts-basicservices-usbmanager-usbcontrolparams-i.md#data)
 
 <!--Device-USBControlParams-data: Uint8Array--><!--Device-USBControlParams-data: Uint8Array-End-->
 
@@ -52,7 +52,7 @@ index: number
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBControlParams.index](arkts-basicservices-usbmanager-usbcontrolparams-i.md#index)
+**替代接口：** [index](arkts-basicservices-usbmanager-usbcontrolparams-i.md#index)
 
 <!--Device-USBControlParams-index: number--><!--Device-USBControlParams-index: number-End-->
 
@@ -74,7 +74,7 @@ reqType: USBControlRequestType
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBControlParams.reqType](arkts-basicservices-usbmanager-usbcontrolparams-i.md#reqtype)
+**替代接口：** [reqType](arkts-basicservices-usbmanager-usbcontrolparams-i.md#reqType)
 
 <!--Device-USBControlParams-reqType: USBControlRequestType--><!--Device-USBControlParams-reqType: USBControlRequestType-End-->
 
@@ -96,7 +96,7 @@ request: number
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBControlParams.request](arkts-basicservices-usbmanager-usbcontrolparams-i.md#request)
+**替代接口：** [request](arkts-basicservices-usbmanager-usbcontrolparams-i.md#request)
 
 <!--Device-USBControlParams-request: number--><!--Device-USBControlParams-request: number-End-->
 
@@ -118,7 +118,7 @@ target: USBRequestTargetType
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBControlParams.target](arkts-basicservices-usbmanager-usbcontrolparams-i.md#target)
+**替代接口：** [target](arkts-basicservices-usbmanager-usbcontrolparams-i.md#target)
 
 <!--Device-USBControlParams-target: USBRequestTargetType--><!--Device-USBControlParams-target: USBRequestTargetType-End-->
 
@@ -140,7 +140,7 @@ value: number
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBControlParams.value](arkts-basicservices-usbmanager-usbcontrolparams-i.md#value)
+**替代接口：** [value](arkts-basicservices-usbmanager-usbcontrolparams-i.md#value)
 
 <!--Device-USBControlParams-value: number--><!--Device-USBControlParams-value: number-End-->
 

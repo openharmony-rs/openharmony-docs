@@ -8,7 +8,9 @@ type OnProcess = (bundleName: string, process: string) => void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -22,6 +24,6 @@ type OnProcess = (bundleName: string, process: string) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | 触发回调的应用名称。  |
-| process | string | 是 | 应用备份或恢复的进度信息。  |
+| bundleName | string | 是 | 触发回调的应用名称。 |
+| process | string | 是 | 应用备份或恢复的进度信息。 |
 

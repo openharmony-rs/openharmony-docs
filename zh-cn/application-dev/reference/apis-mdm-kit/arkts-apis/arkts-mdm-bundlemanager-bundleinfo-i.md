@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 <!--Device-bundleManager-interface BundleInfo--><!--Device-bundleManager-interface BundleInfo-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -23,6 +25,8 @@ readonly appIndex: number
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -44,6 +48,8 @@ readonly appInfo: ApplicationInfo
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-BundleInfo-readonly appInfo: ApplicationInfo--><!--Device-BundleInfo-readonly appInfo: ApplicationInfo-End-->
@@ -63,6 +69,8 @@ readonly firstInstallTime?: number
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -84,6 +92,8 @@ readonly installTime: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-BundleInfo-readonly installTime: number--><!--Device-BundleInfo-readonly installTime: number-End-->
@@ -96,13 +106,15 @@ readonly installTime: number
 readonly minCompatibleVersionCode: number
 ```
 
-分布式场景下的应用包兼容的最低版本，对应\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_中配置的minCompatibleVersionCode字段。
+分布式场景下的应用包兼容的最低版本，对应[app.json5](../../../quick-start/app-configuration-file.md)中配置的minCompatibleVersionCode字段。
 
 **类型：** number
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -116,13 +128,15 @@ readonly minCompatibleVersionCode: number
 readonly name: string
 ```
 
-应用包的名称，对应\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_中配置的bundleName字段。
+应用包的名称，对应[app.json5](../../../quick-start/app-configuration-file.md)中配置的bundleName字段。
 
 **类型：** string
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -144,6 +158,8 @@ readonly signatureInfo: SignatureInfo
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-BundleInfo-readonly signatureInfo: SignatureInfo--><!--Device-BundleInfo-readonly signatureInfo: SignatureInfo-End-->
@@ -156,13 +172,15 @@ readonly signatureInfo: SignatureInfo
 readonly targetVersion: number
 ```
 
-应用运行目标版本，对应\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_中配置的targetAPIVersion字段。
+应用运行目标版本，对应[app.json5](../../../quick-start/app-configuration-file.md)中配置的targetAPIVersion字段。
 
 **类型：** number
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -184,6 +202,8 @@ readonly updateTime: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-BundleInfo-readonly updateTime: number--><!--Device-BundleInfo-readonly updateTime: number-End-->
@@ -196,13 +216,15 @@ readonly updateTime: number
 readonly vendor: string
 ```
 
-应用包的供应商，对应\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_中配置的vendor字段。
+应用包的供应商，对应[app.json5](../../../quick-start/app-configuration-file.md)中配置的vendor字段。
 
 **类型：** string
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -216,13 +238,15 @@ readonly vendor: string
 readonly versionCode: number
 ```
 
-应用包的版本号，对应\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_中配置的versionCode字段。
+应用包的版本号，对应[app.json5](../../../quick-start/app-configuration-file.md)中配置的versionCode字段。
 
 **类型：** number
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -236,13 +260,15 @@ readonly versionCode: number
 readonly versionName: string
 ```
 
-应用包的版本文本描述信息，对应\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_中配置的versionName字段。
+应用包的版本文本描述信息，对应[app.json5](../../../quick-start/app-configuration-file.md)中配置的versionName字段。
 
 **类型：** string
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

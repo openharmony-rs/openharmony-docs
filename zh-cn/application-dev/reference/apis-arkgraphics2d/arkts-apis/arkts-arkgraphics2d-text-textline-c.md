@@ -1,10 +1,12 @@
 # TextLine
 
-描述段落基础文本行结构的载体。 下列API示例中都需先使用[Paragraph]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_类的[getTextLines()]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_接口或者 [LineTypeset]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_类的[createLine()]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_接口获取到TextLine对象实例，再通过此实例调用对 应方法。
+描述段落基础文本行结构的载体。 下列API示例中都需先使用[Paragraph](arkts-arkgraphics2d-text-paragraph-c.md#Paragraph)类的[getTextLines()](arkts-arkgraphics2d-text-paragraph-c.md#getTextLines)接口或者 [LineTypeset](arkts-arkgraphics2d-text-linetypeset-c.md#LineTypeset)类的[createLine()](arkts-arkgraphics2d-text-linetypeset-c.md#createLine)接口获取到TextLine对象实例，再通过此实例调用对 应方法。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-text-class TextLine--><!--Device-text-class TextLine-End-->
 
@@ -22,6 +24,8 @@ createTruncatedLine(width: double, ellipsisMode: EllipsisMode, ellipsis: string)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TextLine-createTruncatedLine(width: double, ellipsisMode: EllipsisMode, ellipsis: string): TextLine--><!--Device-TextLine-createTruncatedLine(width: double, ellipsisMode: EllipsisMode, ellipsis: string): TextLine-End-->
@@ -33,16 +37,16 @@ createTruncatedLine(width: double, ellipsisMode: EllipsisMode, ellipsis: string)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | width | double | 是 | 截断后的行宽度，浮点数，单位为物理像素px。 |
-| ellipsisMode | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 截断的类型，当前仅支持头部截断START和尾部截断END。 |
+| ellipsisMode | EllipsisMode | 是 | 截断的类型，当前仅支持头部截断START和尾部截断END。 |
 | ellipsis | string | 是 | 截断的标记字符串。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 截断的文本行对象。 |
+| [TextLine](arkts-arkgraphics2d-text-textline-c.md) | 截断的文本行对象。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -137,11 +141,13 @@ struct Index {
 createTruncatedLine(width: double, ellipsisMode: EllipsisMode, ellipsis: string): TextLine | undefined
 ```
 
-创建一个截断的文本行对象
+创建一个截断的文本行对象。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TextLine-createTruncatedLine(width: double, ellipsisMode: EllipsisMode, ellipsis: string): TextLine | undefined--><!--Device-TextLine-createTruncatedLine(width: double, ellipsisMode: EllipsisMode, ellipsis: string): TextLine | undefined-End-->
 
@@ -151,15 +157,15 @@ createTruncatedLine(width: double, ellipsisMode: EllipsisMode, ellipsis: string)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| width | double | 是 | 截断后的行宽度 |
-| ellipsisMode | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 省略的类型，当前不支持中部省略 |
-| ellipsis | string | 是 | 用于省略的文字 |
+| width | double | 是 | 截断后的行宽度，浮点数，单位为物理像素px。 |
+| ellipsisMode | EllipsisMode | 是 | 截断的类型，当前仅支持头部截断START和尾部截断END。 |
+| ellipsis | string | 是 | 截断的标记字符串。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Truncated text line object. |
+| [TextLine](arkts-arkgraphics2d-text-textline-c.md) | 截断的文本行对象。 |
 
 ## enumerateCaretOffsets
 
@@ -169,9 +175,11 @@ enumerateCaretOffsets(callback: CaretOffsetsCallback): void
 
 枚举文本行中每个字符的偏移量和索引值。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -183,9 +191,9 @@ enumerateCaretOffsets(callback: CaretOffsetsCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 用户自定义函数。回调方法参数包括文本行中每个字符的偏移量和索引值。 |
+| callback | [CaretOffsetsCallback](arkts-arkgraphics2d-text-caretoffsetscallback-t.md) | 是 | 用户自定义函数。回调方法参数包括文本行中每个字符的偏移量和索引值。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -207,21 +215,17 @@ lines[0].enumerateCaretOffsets((offset: double, index: int, leadingEdge: boolean
 
 ## getAlignmentOffset
 
-ArkTS-Dyn:
-```TypeScript
-getAlignmentOffset(alignmentFactor: number, alignmentWidth: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getAlignmentOffset(alignmentFactor: double, alignmentWidth: double): double
 ```
 
 获取文本行根据对齐因子和对齐宽度计算的对齐所需偏移量。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -233,16 +237,16 @@ getAlignmentOffset(alignmentFactor: double, alignmentWidth: double): double
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| alignmentFactor | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：double | 是 | 对齐因子，即对齐的程度，浮点数。小于等于0.0表示左对齐，大于0.0小于0.5表示偏左对齐，0.5表示居中对齐，大于0.5小于1.0表示偏右对齐，大于等于1.0表示右对齐。 |
-| alignmentWidth | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：double | 是 | 对齐宽度，即文本行的宽度，浮点数，单位为物理像素px。小于文本行的实际宽度时，返回0。 |
+| alignmentFactor | double | 是 | 对齐因子，即对齐的程度，浮点数。小于等于0.0表示左对齐，大于0.0小于0.5表示偏左对齐，0.5表示居中对齐，大于0.5小于1.0表示偏右对齐，大于等于 1.0表示右对齐。 |
+| alignmentWidth | double | 是 | 对齐宽度，即文本行的宽度，浮点数，单位为物理像素px。小于文本行的实际宽度时，返回0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：double | 计算得到的对齐所需偏移量，浮点数，单位为物理像素px。 |
+| double | 计算得到的对齐所需偏移量，浮点数，单位为物理像素px。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let alignmentOffset = lines[0].getAlignmentOffset(0.5, 500);
@@ -250,21 +254,17 @@ let alignmentOffset = lines[0].getAlignmentOffset(0.5, 500);
 
 ## getGlyphCount
 
-ArkTS-Dyn:
-```TypeScript
-getGlyphCount(): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getGlyphCount(): int
 ```
 
 获取文本行中字形的数量。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -276,9 +276,9 @@ getGlyphCount(): int
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 该文本行中字形数量，整数。 |
+| int | 该文本行中字形数量，整数。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let glyphCount = lines[0].getGlyphCount();
@@ -292,9 +292,11 @@ getGlyphRuns(): Array<Run>
 
 获取文本行的排版单元数组。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -306,9 +308,9 @@ getGlyphRuns(): Array<Run>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;Run&gt; | 该文本行中的文本排版单元数组。 |
+| Array&lt;[Run](arkts-arkgraphics2d-text-run-c.md)&gt; | 该文本行中的文本排版单元数组。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let runs = lines[0].getGlyphRuns();
@@ -320,11 +322,13 @@ let runs = lines[0].getGlyphRuns();
 getImageBounds(): common2D.Rect
 ```
 
-获取文本行的图像边界。文本行图像边界与排版字体、排版字号、字符本身都有关，相当于视觉边界。例如字符串为" a b "，'a'字符前面有1个空格，'b'字符后面有1个空格，用户在界面上只能看到"a b"，图像边界即为不包括带行首 和末尾空格的边界。例如字符串为"j"或"E"，视觉边界不同，即与字符本身有关，"j"字符串的视觉边界宽度小于"E"字符串的视觉边界宽度，"j"字符串的视觉边界高度大于"E"字符串的视觉边界高度。 > **说明：** > > 示意图展示了字符串为" a b "的图像边界。 > > !\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_ > > 示意图展示了字符串为"j"或"E"的图像边界。 > > ! > \_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_
+获取文本行的图像边界。文本行图像边界与排版字体、排版字号、字符本身都有关，相当于视觉边界。例如字符串为" a b "，'a'字符前面有1个空格，'b'字符后面有1个空格，用户在界面上只能看到"a b"，图像边界即为不包括带行首 和末尾空格的边界。例如字符串为"j"或"E"，视觉边界不同，即与字符本身有关，"j"字符串的视觉边界宽度小于"E"字符串的视觉边界宽度，"j"字符串的视觉边界高度大于"E"字符串的视觉边界高度。 > **说明：** > > 示意图展示了字符串为" a b "的图像边界。 > >  > > 示意图展示了字符串为"j"或"E"的图像边界。 > > 
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -336,9 +340,9 @@ getImageBounds(): common2D.Rect
 
 | 类型 | 说明 |
 | --- | --- |
-| common2D.Rect | Image boundary of a text line, in physical pixels (px). |
+| common2D.Rect | 文本行的图像边界，单位为物理像素px。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let imageBounds = lines[0].getImageBounds();
@@ -346,21 +350,17 @@ let imageBounds = lines[0].getImageBounds();
 
 ## getOffsetForStringIndex
 
-ArkTS-Dyn:
-```TypeScript
-getOffsetForStringIndex(index: number): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getOffsetForStringIndex(index: int): double
 ```
 
 获取文本行中给定字符串索引处的偏移量。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -372,15 +372,15 @@ getOffsetForStringIndex(index: int): double
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 要获取偏移量的字符串索引，整数。 |
+| index | int | 是 | 要获取偏移量的字符串索引，整数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：double | 给定字符串索引处的偏移量，浮点数，单位为物理像素px。 |
+| double | 给定字符串索引处的偏移量，浮点数，单位为物理像素px。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let offset = lines[0].getOffsetForStringIndex(3);
@@ -388,21 +388,17 @@ let offset = lines[0].getOffsetForStringIndex(3);
 
 ## getStringIndexForPosition
 
-ArkTS-Dyn:
-```TypeScript
-getStringIndexForPosition(point: common2D.Point): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getStringIndexForPosition(point: common2D.Point): int
 ```
 
 获取给定位置在原始字符串中的字符索引。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -414,15 +410,15 @@ getStringIndexForPosition(point: common2D.Point): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| point | common2D.Point | 是 | 要查找索引的位置。 |
+| point | common2D.Point | 是 | 要查找字符索引的坐标位置，坐标相对于文本行的左上角原点，单位为物理像素px。其中x为水平坐标，y为垂直坐标。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 给定位置在文本行中对应的字符串索引，整数。 |
+| int | 给定位置在文本行中对应的字符串索引，整数。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let point : common2D.Point = { x: 15.0, y: 2.0 };
@@ -437,9 +433,11 @@ getTextRange(): Range
 
 获取该行文本在整个段落文本中的索引区间。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -451,9 +449,9 @@ getTextRange(): Range
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 该行文本在整个段落文本中的索引区间。 |
+| Range | 该行文本在整个段落文本中的索引区间。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let textRange = lines[0].getTextRange();
@@ -461,21 +459,17 @@ let textRange = lines[0].getTextRange();
 
 ## getTrailingSpaceWidth
 
-ArkTS-Dyn:
-```TypeScript
-getTrailingSpaceWidth(): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getTrailingSpaceWidth(): double
 ```
 
 获取文本行尾部空白字符的宽度。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -487,9 +481,9 @@ getTrailingSpaceWidth(): double
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：double | 文本行尾部空白字符的宽度，浮点数，单位为物理像素px。 |
+| double | 文本行尾部空白字符的宽度，浮点数，单位为物理像素px。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let trailingSpaceWidth = lines[0].getTrailingSpaceWidth();
@@ -501,11 +495,13 @@ let trailingSpaceWidth = lines[0].getTrailingSpaceWidth();
 getTypographicBounds(): TypographicBounds
 ```
 
-获取文本行的排版边界。文本行排版边界与排版字体、排版字号有关，与字符本身无关。例如字符串为" a b "，'a'字符前面有1个空格，'b'字符后面有1个空格，排版边界就包括行首和末尾空格的边界。例如字符串为"j"或"E"，排版 边界相同，即与字符本身无关。 > **说明：** > > 示意图展示了字符串为" a b "的排版边界。 > > ! > \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_ > > 示意图展示了字符串为"j"或"E"的排版边界。 > > ! > \_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_
+获取文本行的排版边界。文本行排版边界与排版字体、排版字号有关，与字符本身无关。例如字符串为" a b "，'a'字符前面有1个空格，'b'字符后面有1个空格，排版边界就包括行首和末尾空格的边界。例如字符串为"j"或"E"，排版 边界相同，即与字符本身无关。 > **说明：** > > 示意图展示了字符串为" a b "的排版边界。 > >  > > 示意图展示了字符串为"j"或"E"的排版边界。 > > ! > [TypographicBounds-Character.png](../../../reference/apis-arkgraphics2d/figures/TypographicBounds-Character.png)
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -517,9 +513,9 @@ getTypographicBounds(): TypographicBounds
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 文本行的排版边界。 |
+| [TypographicBounds](arkts-arkgraphics2d-text-typographicbounds-i.md) | 文本行的排版边界。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let bounds = lines[0].getTypographicBounds();
@@ -528,21 +524,17 @@ console.info('textLine ascent:' + bounds.ascent + ', descent:' + bounds.descent 
 
 ## paint
 
-ArkTS-Dyn:
-```TypeScript
-paint(canvas: drawing.Canvas, x: number, y: number): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 paint(canvas: drawing.Canvas, x: double, y: double): void
 ```
 
 在画布上以坐标点(x, y)为左上角位置绘制该文本行。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -555,10 +547,10 @@ paint(canvas: drawing.Canvas, x: double, y: double): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | canvas | drawing.Canvas | 是 | 绘制的目标canvas。 |
-| x | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：double | 是 | 绘制的左上角位置的横坐标，浮点数，单位为物理像素px。 |
-| y | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：double | 是 | 绘制的左上角位置的纵坐标，浮点数，单位为物理像素px。 |
+| x | double | 是 | 绘制的左上角位置的横坐标，浮点数，单位为物理像素px。 |
+| y | double | 是 | 绘制的左上角位置的纵坐标，浮点数，单位为物理像素px。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

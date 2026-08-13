@@ -2,13 +2,15 @@
 
 窗格属性。
 
-**继承/实现关系：** PanelAttribute extends [CommonMethod<PanelAttribute>](CommonMethod<PanelAttribute>)
+**继承/实现关系：** PanelAttribute extends CommonMethod<PanelAttribute>
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
-<!--Device-unnamed-declare class PanelAttribute extends CommonMethod<PanelAttribute>--><!--Device-unnamed-declare class PanelAttribute extends CommonMethod<PanelAttribute>-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare class PanelAttribute--><!--Device-unnamed-declare class PanelAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +38,7 @@ backgroundMask(color: ResourceColor)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 指定Panel的背景蒙层。 |
+| color | ResourceColor | 是 | 指定Panel的背景蒙层。 |
 
 ## customHeight
 
@@ -62,7 +64,7 @@ customHeight(value: Dimension | PanelHeight)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | \_\_\_MD\_LINK\_USD\_0\_\_\_ \| PanelHeight | 是 | 指定PanelType.CUSTOM状态下的高度。 |
+| value | Dimension \| [PanelHeight](arkts-arkui-panelheight-e.md) | 是 | 指定PanelType.CUSTOM状态下的高度。 |
 
 ## dragBar
 
@@ -192,7 +194,7 @@ mode(value: PanelMode)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 设置可滑动面板的初始状态。 |
+| value | [PanelMode](arkts-arkui-panelmode-e.md) | 是 | 设置可滑动面板的初始状态。 |
 
 ## onChange
 
@@ -202,31 +204,52 @@ onChange(
     /**
      * Width of content area.
      *
-     ***/
+     * @syscap SystemCapability.ArkUI.ArkUI.Full
+     * @since 7
+     */
     /**
      * Width of content area.
      *
-     ******/
+     * @syscap SystemCapability.ArkUI.ArkUI.Full
+     * @FaAndStageModel
+     * @atomicservice
+     * @since 11 dynamiconly
+     * @deprecated since 12
+     */
       width: number,
 
     /**
      * Height of content area.
      *
-     ***/
+     * @syscap SystemCapability.ArkUI.ArkUI.Full
+     * @since 7
+     */
     /**
      * Height of content area.
      *
-     ******/
+     * @syscap SystemCapability.ArkUI.ArkUI.Full
+     * @FaAndStageModel
+     * @atomicservice
+     * @since 11 dynamiconly
+     * @deprecated since 12
+     */
       height: number,
 
     /**
      * Initial state.
      *
-     ***/
+     * @syscap SystemCapability.ArkUI.ArkUI.Full
+     * @since 7
+     */
     /**
      * Initial state.
      *
-     ******/
+     * @syscap SystemCapability.ArkUI.ArkUI.Full
+     * @FaAndStageModel
+     * @atomicservice
+     * @since 11 dynamiconly
+     * @deprecated since 12
+     */
       mode: PanelMode,
     ) => void,
   )
@@ -242,7 +265,7 @@ onChange(
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-PanelAttribute-onChange(    event: (    /**     * Width of content area.     *     ***/    /**     * Width of content area.     *     ******/      width: number,    /**     * Height of content area.     *     ***/    /**     * Height of content area.     *     ******/      height: number,    /**     * Initial state.     *     ***/    /**     * Initial state.     *     ******/      mode: PanelMode,    ) => void,  ): PanelAttribute--><!--Device-PanelAttribute-onChange(    event: (    /**     * Width of content area.     *     ***/    /**     * Width of content area.     *     ******/      width: number,    /**     * Height of content area.     *     ***/    /**     * Height of content area.     *     ******/      height: number,    /**     * Initial state.     *     ***/    /**     * Initial state.     *     ******/      mode: PanelMode,    ) => void,  ): PanelAttribute-End-->
+<!--Device-PanelAttribute-onChange(    event: (    /**     * Width of content area.     *     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @since 7     */    /**     * Width of content area.     *     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @FaAndStageModel     * @atomicservice     * @since 11 dynamiconly     * @deprecated since 12     */      width: number,    /**     * Height of content area.     *     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @since 7     */    /**     * Height of content area.     *     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @FaAndStageModel     * @atomicservice     * @since 11 dynamiconly     * @deprecated since 12     */      height: number,    /**     * Initial state.     *     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @since 7     */    /**     * Initial state.     *     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @FaAndStageModel     * @atomicservice     * @since 11 dynamiconly     * @deprecated since 12     */      mode: PanelMode,    ) => void,  ): PanelAttribute--><!--Device-PanelAttribute-onChange(    event: (    /**     * Width of content area.     *     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @since 7     */    /**     * Width of content area.     *     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @FaAndStageModel     * @atomicservice     * @since 11 dynamiconly     * @deprecated since 12     */      width: number,    /**     * Height of content area.     *     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @since 7     */    /**     * Height of content area.     *     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @FaAndStageModel     * @atomicservice     * @since 11 dynamiconly     * @deprecated since 12     */      height: number,    /**     * Initial state.     *     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @since 7     */    /**     * Initial state.     *     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @FaAndStageModel     * @atomicservice     * @since 11 dynamiconly     * @deprecated since 12     */      mode: PanelMode,    ) => void,  ): PanelAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -354,5 +377,5 @@ type(value: PanelType)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 设置可滑动面板的类型。 |
+| value | [PanelType](arkts-arkui-paneltype-e.md) | 是 | 设置可滑动面板的类型。 |
 

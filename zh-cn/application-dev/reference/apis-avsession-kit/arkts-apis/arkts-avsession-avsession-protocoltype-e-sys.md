@@ -2,9 +2,11 @@
 
 远端设备支持的协议类型的枚举。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-avSession-enum ProtocolType--><!--Device-avSession-enum ProtocolType-End-->
 
@@ -18,9 +20,11 @@ TYPE_CAST_PLUS_MIRROR = 1
 
 Cast+的镜像模式。 **系统接口：** 该接口为系统接口。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ProtocolType-TYPE_CAST_PLUS_MIRROR = 1--><!--Device-ProtocolType-TYPE_CAST_PLUS_MIRROR = 1-End-->
 

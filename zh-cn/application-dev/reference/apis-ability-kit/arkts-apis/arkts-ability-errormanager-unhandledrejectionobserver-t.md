@@ -1,18 +1,20 @@
 # UnhandledRejectionObserver
 
 ```TypeScript
-export type UnhandledRejectionObserver = (reason: Error | any, promise: Promise<any>) => void
+export type UnhandledRejectionObserver = (reason: Error | Any, promise: Promise<Any>) => void
 ```
 
-定义异常监听，用于捕获Promise异步操作失败的原因。
+当发生未处理的拒绝时，系统将调用此观测器。
 
-**起始版本：** 12
+**起始版本：** 24
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
 
-<!--Device-errorManager-export type UnhandledRejectionObserver = (reason: Error | any, promise: Promise<any>) => void--><!--Device-errorManager-export type UnhandledRejectionObserver = (reason: Error | any, promise: Promise<any>) => void-End-->
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-errorManager-export type UnhandledRejectionObserver = (reason: Error | Any, promise: Promise<Any>) => void--><!--Device-errorManager-export type UnhandledRejectionObserver = (reason: Error | Any, promise: Promise<Any>) => void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -20,6 +22,6 @@ export type UnhandledRejectionObserver = (reason: Error | any, promise: Promise<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| reason | Error \| any | 是 | 通常是\_\_\_INLINE\_CODE\_USD\_0\_\_\_类型，表示被拒绝的理由。  |
-| promise | Promise&lt;any&gt; | 是 | 被拒绝的promise。  |
+| reason | Error \| Any | 是 | 拒绝的原因，通常为Error类型 |
+| promise | Promise&lt;Any&gt; | 是 | 被拒绝的Promise |
 

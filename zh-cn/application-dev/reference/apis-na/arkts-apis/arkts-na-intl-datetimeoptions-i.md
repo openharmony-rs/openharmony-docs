@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-intl-export interface DateTimeOptions--><!--Device-intl-export interface DateTimeOptions-End-->
 
 **系统能力：** SystemCapability.Global.I18n
@@ -16,13 +18,15 @@
 dateStyle?: string
 ```
 
-日期显示格式，取值包括： "long", "short", "medium", "full", "auto"。 不同取值的显示效果请参考\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+日期显示格式，取值包括： "long", "short", "medium", "full", "auto"。 不同取值的显示效果请参考附录表1。
 
 **类型：** string
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DateTimeOptions-dateStyle?: string--><!--Device-DateTimeOptions-dateStyle?: string-End-->
 
@@ -42,6 +46,8 @@ day?: string
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-DateTimeOptions-day?: string--><!--Device-DateTimeOptions-day?: string-End-->
 
 **系统能力：** SystemCapability.Global.I18n
@@ -52,13 +58,15 @@ day?: string
 dayPeriod?: string
 ```
 
-时段的显示格式，取值包括： "long", "short", "narrow", "auto"。 不同取值的显示效果请参考\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+时段的显示格式，取值包括： "long", "short", "narrow", "auto"。 不同取值的显示效果请参考附录表10。
 
 **类型：** string
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DateTimeOptions-dayPeriod?: string--><!--Device-DateTimeOptions-dayPeriod?: string-End-->
 
@@ -70,13 +78,15 @@ dayPeriod?: string
 era?: string
 ```
 
-纪元的显示格式，取值包括： "long", "short", "narrow", "auto"。 不同取值的显示效果请参考\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+纪元的显示格式，取值包括： "long", "short", "narrow", "auto"。 不同取值的显示效果请参考附录表9。
 
 **类型：** string
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DateTimeOptions-era?: string--><!--Device-DateTimeOptions-era?: string-End-->
 
@@ -96,6 +106,8 @@ formatMatcher?: string
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-DateTimeOptions-formatMatcher?: string--><!--Device-DateTimeOptions-formatMatcher?: string-End-->
 
 **系统能力：** SystemCapability.Global.I18n
@@ -113,6 +125,8 @@ hour?: string
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DateTimeOptions-hour?: string--><!--Device-DateTimeOptions-hour?: string-End-->
 
@@ -132,6 +146,8 @@ true表示使用12小时制，false表示使用24小时制。 同时设置hour12
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-DateTimeOptions-hour12?: boolean--><!--Device-DateTimeOptions-hour12?: boolean-End-->
 
 **系统能力：** SystemCapability.Global.I18n
@@ -142,13 +158,15 @@ true表示使用12小时制，false表示使用24小时制。 同时设置hour12
 hourCycle?: string
 ```
 
-时制格式，取值包括： "h11", "h12", "h23", "h24"。 不设置dateStyle或timeStyle参数时的显示效果请参考\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。 设置dateStyle或timeStyle参数时的显示效果请参考\_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_。
+时制格式，取值包括： "h11", "h12", "h23", "h24"。 不设置dateStyle或timeStyle参数时的显示效果请参考附录表5。 设置dateStyle或timeStyle参数时的显示效果请参考附录表6。
 
 **类型：** string
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DateTimeOptions-hourCycle?: string--><!--Device-DateTimeOptions-hourCycle?: string-End-->
 
@@ -168,6 +186,8 @@ locale?: string
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-DateTimeOptions-locale?: string--><!--Device-DateTimeOptions-locale?: string-End-->
 
 **系统能力：** SystemCapability.Global.I18n
@@ -185,6 +205,8 @@ localeMatcher?: string
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DateTimeOptions-localeMatcher?: string--><!--Device-DateTimeOptions-localeMatcher?: string-End-->
 
@@ -204,6 +226,8 @@ minute?: string
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-DateTimeOptions-minute?: string--><!--Device-DateTimeOptions-minute?: string-End-->
 
 **系统能力：** SystemCapability.Global.I18n
@@ -214,13 +238,15 @@ minute?: string
 month?: string
 ```
 
-月份的显示格式，取值包括： "numeric", "2-digit", "long", "short", "narrow", "auto"。 不同取值的显示效果请参考\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+月份的显示格式，取值包括： "numeric", "2-digit", "long", "short", "narrow", "auto"。 不同取值的显示效果请参考附录表7。
 
 **类型：** string
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DateTimeOptions-month?: string--><!--Device-DateTimeOptions-month?: string-End-->
 
@@ -240,6 +266,8 @@ numberingSystem?: string
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-DateTimeOptions-numberingSystem?: string--><!--Device-DateTimeOptions-numberingSystem?: string-End-->
 
 **系统能力：** SystemCapability.Global.I18n
@@ -258,6 +286,8 @@ second?: string
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-DateTimeOptions-second?: string--><!--Device-DateTimeOptions-second?: string-End-->
 
 **系统能力：** SystemCapability.Global.I18n
@@ -268,13 +298,15 @@ second?: string
 timeStyle?: string
 ```
 
-时间显示格式，取值包括： "long", "short", "medium", "full", "auto"。 不同取值的显示效果请参考\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+时间显示格式，取值包括： "long", "short", "medium", "full", "auto"。 不同取值的显示效果请参考附录表2。
 
 **类型：** string
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DateTimeOptions-timeStyle?: string--><!--Device-DateTimeOptions-timeStyle?: string-End-->
 
@@ -294,6 +326,8 @@ timeZone?: string
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-DateTimeOptions-timeZone?: string--><!--Device-DateTimeOptions-timeZone?: string-End-->
 
 **系统能力：** SystemCapability.Global.I18n
@@ -304,13 +338,15 @@ timeZone?: string
 timeZoneName?: string
 ```
 
-时区名称的本地化表示，取值包括： "long", "short", "auto"。 不同取值的显示效果请参考\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+时区名称的本地化表示，取值包括： "long", "short", "auto"。 不同取值的显示效果请参考附录表8。
 
 **类型：** string
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DateTimeOptions-timeZoneName?: string--><!--Device-DateTimeOptions-timeZoneName?: string-End-->
 
@@ -322,13 +358,15 @@ timeZoneName?: string
 weekday?: string
 ```
 
-星期的显示格式，取值包括： "long", "short", "narrow", "auto"。 不同取值的显示效果请参考\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+星期的显示格式，取值包括： "long", "short", "narrow", "auto"。 不同取值的显示效果请参考附录表4。
 
 **类型：** string
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DateTimeOptions-weekday?: string--><!--Device-DateTimeOptions-weekday?: string-End-->
 
@@ -340,13 +378,15 @@ weekday?: string
 year?: string
 ```
 
-年份的显示格式，取值包括： "numeric", "2-digit"。 不同取值的显示效果请参考\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+年份的显示格式，取值包括： "numeric", "2-digit"。 不同取值的显示效果请参考附录表3。
 
 **类型：** string
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DateTimeOptions-year?: string--><!--Device-DateTimeOptions-year?: string-End-->
 

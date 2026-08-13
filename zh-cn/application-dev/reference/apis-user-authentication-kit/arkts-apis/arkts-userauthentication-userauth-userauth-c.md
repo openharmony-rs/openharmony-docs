@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** [userAuth.AuthInstance](arkts-userauthentication-userauth-authinstance-i.md)
+**替代接口：** [AuthInstance](arkts-userauthentication-userauth-authinstance-i.md#AuthInstance)
 
 <!--Device-userAuth-class UserAuth--><!--Device-userAuth-class UserAuth-End-->
 
@@ -33,7 +33,7 @@ auth(
 
 **废弃版本：** 9
 
-**替代接口：** [userAuth.AuthInstance.start](arkts-userauthentication-userauth-authinstance-i.md#start)
+**替代接口：** [start](arkts-userauthentication-userauth-authinstance-i.md#start)
 
 **需要权限：** ohos.permission.ACCESS_BIOMETRIC
 
@@ -46,9 +46,9 @@ auth(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | challenge | Uint8Array | 是 | 挑战值，可以传Uint8Array([])。 |
-| authType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 认证类型，当前支持FACE和FINGERPRINT。 |
-| authTrustLevel | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 认证信任等级。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调函数。 |
+| authType | [UserAuthType](arkts-userauthentication-userauth-userauthtype-e.md) | 是 | 认证类型，当前支持FACE和FINGERPRINT。 |
+| authTrustLevel | AuthTrustLevel | 是 | 认证信任等级。 |
+| callback | IUserAuthCallback | 是 | 回调函数。 |
 
 **返回值：**
 
@@ -56,7 +56,7 @@ auth(
 | --- | --- |
 | Uint8Array | ContextId，作为取消认证[cancelAuth]{ |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { userAuth } from '@kit.UserAuthenticationKit';
@@ -93,7 +93,7 @@ cancelAuth(contextID: Uint8Array): number
 
 **废弃版本：** 9
 
-**替代接口：** [userAuth.AuthInstance.cancel](arkts-userauthentication-userauth-authinstance-i.md#cancel)
+**替代接口：** [cancel](arkts-userauthentication-userauth-authinstance-i.md#cancel)
 
 **需要权限：** ohos.permission.ACCESS_BIOMETRIC
 
@@ -105,7 +105,7 @@ cancelAuth(contextID: Uint8Array): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| contextID | Uint8Array | 是 | 上下文的标识，通过[auth]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_接口获取。 |
+| contextID | Uint8Array | 是 | 上下文的标识，通过[auth](#auth)接口获取。 |
 
 **返回值：**
 
@@ -113,7 +113,7 @@ cancelAuth(contextID: Uint8Array): number
 | --- | --- |
 | number | 取消认证的结果，结果为SUCCESS时表示取消成功，其他返回值参见[ResultCode]{ |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { userAuth } from '@kit.UserAuthenticationKit';
@@ -143,13 +143,13 @@ constructor()
 
 **废弃版本：** 9
 
-**替代接口：** [userAuth.getAuthInstance](arkts-userauthentication-userauth-getauthinstance-f.md#getauthinstance)
+**替代接口：** [getAuthInstance](arkts-userauthentication-userauth-getauthinstance-f.md#getAuthInstance)
 
 <!--Device-UserAuth-constructor()--><!--Device-UserAuth-constructor()-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { userAuth } from '@kit.UserAuthenticationKit';
@@ -171,7 +171,7 @@ getAvailableStatus(authType: UserAuthType, authTrustLevel: AuthTrustLevel): numb
 
 **废弃版本：** 9
 
-**替代接口：** [userAuth.getAvailableStatus](arkts-userauthentication-userauth-getavailablestatus-f.md#getavailablestatus)
+**替代接口：** [getAvailableStatus](arkts-userauthentication-userauth-getavailablestatus-f.md#getAvailableStatus)
 
 **需要权限：** ohos.permission.ACCESS_BIOMETRIC
 
@@ -183,8 +183,8 @@ getAvailableStatus(authType: UserAuthType, authTrustLevel: AuthTrustLevel): numb
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| authType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 认证类型，当前支持FACE和FINGERPRINT。 |
-| authTrustLevel | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 认证信任等级。 |
+| authType | [UserAuthType](arkts-userauthentication-userauth-userauthtype-e.md) | 是 | 认证类型，当前支持FACE和FINGERPRINT。 |
+| authTrustLevel | AuthTrustLevel | 是 | 认证信任等级。 |
 
 **返回值：**
 
@@ -192,7 +192,7 @@ getAvailableStatus(authType: UserAuthType, authTrustLevel: AuthTrustLevel): numb
 | --- | --- |
 | number | 查询结果，结果为SUCCESS时表示支持，其他返回值参见[ResultCode]{ |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { userAuth } from '@kit.UserAuthenticationKit';
@@ -232,7 +232,7 @@ getVersion(): number
 | --- | --- |
 | number | 认证器版本信息。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { userAuth } from '@kit.UserAuthenticationKit';

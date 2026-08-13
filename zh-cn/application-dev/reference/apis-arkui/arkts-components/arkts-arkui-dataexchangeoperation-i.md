@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-interface DataExchangeOperation--><!--Device-unnamed-interface DataExchangeOperation-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -18,11 +20,13 @@ index: ExchangeIndex
 
 交换位置。取值范围是[0, 数据源长度-1]。超出取值范围时渲染异常。
 
-**类型：** ExchangeIndex
+**类型：** [ExchangeIndex](arkts-arkui-exchangeindex-i.md)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,11 +44,13 @@ key?: ExchangeKey
 
 分配新的键值，默认使用原键值。
 
-**类型：** ExchangeKey
+**类型：** [ExchangeKey](arkts-arkui-exchangekey-i.md)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -62,11 +68,13 @@ type: DataOperationType.EXCHANGE
 
 数据交换类型。
 
-**类型：** DataOperationType.EXCHANGE
+**类型：** [DataOperationType.EXCHANGE](arkts-arkui-dataoperationtype-e.md)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

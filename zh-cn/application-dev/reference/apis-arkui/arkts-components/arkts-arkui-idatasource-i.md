@@ -6,6 +6,8 @@ LazyForEach的数据源，开发者需要实现该接口以提供数据访问和
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface IDataSource--><!--Device-unnamed-declare interface IDataSource-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -21,6 +23,8 @@ getData(index: number): any
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -52,6 +56,8 @@ registerDataChangeListener(listener: DataChangeListener): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-IDataSource-registerDataChangeListener(listener: DataChangeListener): void--><!--Device-IDataSource-registerDataChangeListener(listener: DataChangeListener): void-End-->
@@ -62,7 +68,7 @@ registerDataChangeListener(listener: DataChangeListener): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| listener | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 数据变化监听器，用于在数据源发生变化时通知组件刷新。 |
+| listener | [DataChangeListener](arkts-arkui-datachangelistener-i.md) | 是 | 数据变化监听器，用于在数据源发生变化时通知组件刷新。 |
 
 ## totalCount
 
@@ -75,6 +81,8 @@ totalCount(): number
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -100,6 +108,8 @@ unregisterDataChangeListener(listener: DataChangeListener): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-IDataSource-unregisterDataChangeListener(listener: DataChangeListener): void--><!--Device-IDataSource-unregisterDataChangeListener(listener: DataChangeListener): void-End-->
@@ -110,5 +120,5 @@ unregisterDataChangeListener(listener: DataChangeListener): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| listener | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 数据变化监听器，用于在数据源发生变化时通知组件刷新。 |
+| listener | [DataChangeListener](arkts-arkui-datachangelistener-i.md) | 是 | 数据变化监听器，用于在数据源发生变化时通知组件刷新。 |
 

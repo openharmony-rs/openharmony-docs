@@ -2,9 +2,11 @@
 
 Navigation组件信息。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-uiObserver-export interface NavigationInfo--><!--Device-uiObserver-export interface NavigationInfo-End-->
 
@@ -16,15 +18,19 @@ Navigation组件信息。
 navigationId: string
 ```
 
-包含NavDestination组件的Navigation组件的id。
+Navigation组件的id。
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-NavigationInfo-navigationId: string--><!--Device-NavigationInfo-navigationId: string-End-->
 
@@ -38,13 +44,17 @@ pathStack: NavPathStack
 
 Navigation组件的导航控制器。
 
-**类型：** NavPathStack
+**类型：** [NavPathStack](../../apis-na/arkts-apis/arkts-na-navigation-navpathstack-c.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-NavigationInfo-pathStack: NavPathStack--><!--Device-NavigationInfo-pathStack: NavPathStack-End-->
 
@@ -53,20 +63,24 @@ Navigation组件的导航控制器。
 ## uniqueId
 
 ```TypeScript
-uniqueId?: int
+uniqueId?: number
 ```
 
-The uniqueId of the navigation.
+Navigation组件的uniqueId，可以通过queryNavigationInfo获取。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-NavigationInfo-uniqueId?: int--><!--Device-NavigationInfo-uniqueId?: int-End-->
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-NavigationInfo-uniqueId?: number--><!--Device-NavigationInfo-uniqueId?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -1,10 +1,12 @@
 # HttpAuthHandler
 
-Defines the http auth request result, related to \_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ method.
+Defines the http auth request result, related to onHttpAuthRequest method.
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare class HttpAuthHandler--><!--Device-unnamed-declare class HttpAuthHandler-End-->
 
@@ -21,6 +23,8 @@ cancel(): void
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -40,6 +44,8 @@ confirm(userName: string, password: string): boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HttpAuthHandler-confirm(userName: string, password: string): boolean--><!--Device-HttpAuthHandler-confirm(userName: string, password: string): boolean-End-->
@@ -57,7 +63,7 @@ confirm(userName: string, password: string): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | **true** is returned if the authentication is successful; otherwise, **false** is returned. |
+| boolean | true** is returned if the authentication is successful; otherwise, **false** is returned. |
 
 ## constructor
 
@@ -70,6 +76,8 @@ Constructor.
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -89,6 +97,8 @@ isHttpAuthInfoSaved(): boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HttpAuthHandler-isHttpAuthInfoSaved(): boolean--><!--Device-HttpAuthHandler-isHttpAuthInfoSaved(): boolean-End-->
@@ -99,5 +109,5 @@ isHttpAuthInfoSaved(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | **true** is suitable for use; otherwise, **false** is not suitable for use. |
+| boolean | true** is suitable for use; otherwise, **false** is not suitable for use. |
 

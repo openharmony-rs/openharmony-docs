@@ -1,12 +1,14 @@
 # AutoFinalizer
 
-提供一个可通过开发者自定义回调释放由开发者管理的资源的接口。
+提供一个可通过开发者自定义回调释放由开发者管理的资源的接口。 > **说明：** > > AutoFinalizer&lt;T&gt;需要和AutoFinalizerCleaner&lt;T&gt;一起使用，只实现该接口类没有任何功能。
 
 **起始版本：** 22
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
-<!--Device-util-interface AutoFinalizer<T>--><!--Device-util-interface AutoFinalizer<T>-End-->
+**废弃版本：** -1
+
+<!--Device-util-interface AutoFinalizer--><!--Device-util-interface AutoFinalizer-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -21,6 +23,8 @@ onFinalization(heldValue: T): void
 **起始版本：** 22
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 

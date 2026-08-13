@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface SpatialPosition--><!--Device-unnamed-declare interface SpatialPosition-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -20,11 +22,13 @@ leftBottom: DepthVector3
 
 三维空间中的左下角角位置。
 
-**类型：** DepthVector3
+**类型：** [DepthVector3](arkts-arkui-depthvector3-i-sys.md)
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -44,11 +48,13 @@ leftTop: DepthVector3
 
 三维空间中的左上角位置。
 
-**类型：** DepthVector3
+**类型：** [DepthVector3](arkts-arkui-depthvector3-i-sys.md)
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -68,11 +74,13 @@ rightBottom: DepthVector3
 
 三维空间中的右下角位置。
 
-**类型：** DepthVector3
+**类型：** [DepthVector3](arkts-arkui-depthvector3-i-sys.md)
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -92,11 +100,13 @@ rightTop: DepthVector3
 
 3D空间中的右上角位置。
 
-**类型：** DepthVector3
+**类型：** [DepthVector3](arkts-arkui-depthvector3-i-sys.md)
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
