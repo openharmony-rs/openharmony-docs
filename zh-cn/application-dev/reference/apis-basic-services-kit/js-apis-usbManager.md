@@ -342,7 +342,7 @@ removeRight(deviceName: string): boolean
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported.  <br>适用版本：18|
+| 801      | Capability not supported.  <br>适用版本：18+ |
 
 **示例：**
 
@@ -751,7 +751,7 @@ ArkTS-Sta: getFileDescriptor(pipe: USBDevicePipe): int
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported.  <br>适用版本：18 |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 
 **示例：**
 
@@ -815,7 +815,7 @@ ArkTS-Sta: usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceReques
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported.  <br>适用版本：18|
+| 801      | Capability not supported.  <br>适用版本：18+ |
 
 **示例：**
 
@@ -1367,7 +1367,7 @@ cancelAccessoryRight(accessory: USBAccessory): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported.  <br>适用版本：18|
+| 801      | Capability not supported.  <br>适用版本：18+ |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
 | 14400005 | Database operation exception. |
 | 14401001 | The target USBAccessory not matched. |
@@ -1415,7 +1415,7 @@ getAccessoryList(): Array<Readonly&lt;USBAccessory&gt;>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 801      | Capability not supported.  <br>适用版本：18 |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
 
 **示例：**
@@ -1462,7 +1462,7 @@ openAccessory(accessory: USBAccessory): USBAccessoryHandle
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported.  <br>适用版本：18 |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 | 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
 | 14401001 | The target USBAccessory not matched. |
@@ -1519,7 +1519,7 @@ closeAccessory(accessoryHandle: USBAccessoryHandle): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.  <br>适用版本：18  |
+| 801      | Capability not supported.  <br>适用版本：18+  |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
 
 **示例：**
