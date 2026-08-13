@@ -1284,7 +1284,7 @@ getRecord(index: number): PasteDataRecord
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 12900001 | The index is out of the record. |
+| 12900001 | The index is out of range. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -1399,7 +1399,7 @@ removeRecord(index: number): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 12900001 | The index is out of the record. |
+| 12900001 | The index is out of range. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 
 **示例：**
@@ -1432,7 +1432,7 @@ replaceRecord(index: number, record: PasteDataRecord): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 12900001 | The index is out of the record. |
+| 12900001 | The index is out of range. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 
 **示例：**
@@ -1476,7 +1476,7 @@ systemPasteboard.getData((err: BusinessError, pasteData: pasteboard.PasteData) =
 
 pasteComplete(): void
 
-通知剪贴板服务数据使用已完成，可释放跨设备通道等资源。应在pasteStart之后、完成数据处理后调用，避免资源浪费。未调用可能导致跨设备通道长时间占用，影响后续跨设备粘贴操作。
+通知剪贴板服务数据使用已完成，可释放跨设备通道等资源。应在调用pasteStart之后、完成数据处理后调用，避免资源浪费。未调用可能导致跨设备通道长时间占用，影响后续跨设备粘贴操作。
 
 pasteComplete与其他接口的使用步骤可参考：
 1. getData()获取剪贴板数据
