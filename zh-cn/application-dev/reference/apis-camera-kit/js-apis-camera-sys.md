@@ -1197,7 +1197,7 @@ enableSketch(enabled: boolean): void
 
 使能画中画。
 
-进行设置之前先使用方法[isSketchSupported](#issketchsupported11)检查设备是否支持画中画。
+进行设置之前先使用[isSketchSupported](#issketchsupported11)检查设备是否支持画中画。
 
 **系统接口：** 此接口为系统接口。
 
