@@ -7,9 +7,10 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-CryptoExtensionAbility是Stage模型中扩展组件[ExtensionAbility](../../application-models/extensionability-overview.md)的派生类，用于底层外部密钥管理能力的实现差异，将外部密钥管理能力接入HUKS框架，向上层应用提供签名验签、密钥使用、证书查询、PIN认证等能力。
+CryptoExtensionAbility作为Stage模型中扩展组件[ExtensionAbility](../../application-models/extensionability-overview.md)的派生类，适配底层外部密钥管理能力的实现差异，将外部密钥管理能力接入HUKS框架，向上层应用提供签名验签、密钥使用、证书查询、PIN认证等能力。
 
-本文档面向**密钥管理扩展应用开发者**，说明密钥管理扩展应用在实现CryptoExtensionAbility时需要关注的接口、状态管理和约束限制。详细API参数和各接口建议返回的错误码请参考[@ohos.security.CryptoExtensionAbility](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md)。
+
+本文档面向**密钥管理扩展应用开发者**（实现方），说明密钥管理扩展应用在实现CryptoExtensionAbility时需要关注的接口、状态管理和约束限制。详细API参数和各接口建议返回的错误码请参考[@ohos.security.CryptoExtensionAbility](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md)。
 
 ## 整体流程
 
@@ -80,19 +81,21 @@ CryptoExtensionAbility接口按职责可分为7个能力域，部分能力域在
 
 ### 句柄管理
 
-针对同一个密钥管理扩展资源（例如容器下的密钥），需要通过句柄管理访问的生命周期。
+针对同一个密钥管理扩展资源（例如容器下的密钥），需要通过句柄管理来控制资源访问的生命周期。
 
 - 打开资源：通过[onOpenResource](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#onopenresource)接口打开resourceId标识的资源。
-  - 密钥管理扩展应用需在内部建立resourceId与新句柄的映射（具体实现由接入的设备/服务决定，如UKey打开会话、数字盾启动服务等），并返回给HUKS，句柄值由密钥管理扩展应用自行生成并保证唯一性。
-  - 业务身份通过params参数中的HUKS_EXT_CRYPTO_TAG_UID携带，**建议密钥管理扩展应用基于此UID做句柄资源的隔离存储**。
 
-- 关闭资源：通过[onCloseResource](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#oncloseresource)接口关闭handle对应的资源，密钥管理扩展应用需在内部释放 resourceId与句柄的映射关系（具体实现由接入的设备/服务决定，如UKey关闭会话等），并通知HUKS资源已关闭。
+   密钥管理扩展应用需在内部建立resourceId与新句柄的映射（具体实现由接入的设备/服务决定，如UKey打开会话、数字盾启动服务等），并返回给HUKS，句柄值由密钥管理扩展应用自行生成并保证唯一性。
+
+   业务身份通过params参数中的HUKS_EXT_CRYPTO_TAG_UID携带，建议密钥管理扩展应用基于此UID做句柄资源的隔离存储。
+
+- 关闭资源：通过[onCloseResource](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#oncloseresource)接口关闭handle对应的资源，密钥管理扩展应用需在内部释放resourceId与句柄的映射关系（具体实现由接入的设备/服务决定，如UKey关闭会话等），并通知HUKS资源已关闭。
 
 - 句柄映射：
-  - 建议支持多个OpenHarmony应用可同时打开/关闭同一资源，**每个应用应获得独立的映射句柄**。例如：OpenHarmony应用1打开资源A后，OpenHarmony应用2也可以再次打开资源A。
-  - 建议支持多个应用操作同一资源时（例如签名），**互不影响**，各自维护独立的句柄与会话。例如：OpenHarmony应用1使用私钥签名后，OpenHarmony应用2完成PIN认证后，也可以使用私钥签名，两者互不影响。
+  - 建议支持多个OpenHarmony应用可同时打开/关闭同一资源，每个应用应获得独立的映射句柄。例如：OpenHarmony应用1打开资源A后，OpenHarmony应用2也可以再次打开资源A。
+  - 建议支持多个应用操作同一资源时（例如签名），互不影响，各自维护独立的句柄与会话。例如：OpenHarmony应用1使用私钥签名后，OpenHarmony应用2完成PIN认证后，也可以使用私钥签名，两者互不影响。
 
->**说明**
+> **说明：**
 >
 > 句柄资源存储的key建议为`(UID, handle)`二元组，避免不同应用间的句柄冲突。
 
@@ -100,13 +103,11 @@ CryptoExtensionAbility接口按职责可分为7个能力域，部分能力域在
 
 支持应用维度的PIN码认证状态管理（认证/查询/重置）。每个OpenHarmony应用需独立完成PIN认证。
 
-- 认证状态维度：建议PIN认证以GM/T 0016-2023中定义的Application为单位，不同Application需独立认证。
-  - OpenHarmony应用1完成Application A的PIN认证后，OpenHarmony应用2访问Application A仍需独立认证。
-  - 同一应用访问不同Application，也需分别进行认证。
+- 认证状态维度：建议PIN认证以GM/T 0016-2023中定义的Application为单位，不同Application需独立认证。OpenHarmony应用1完成Application A的PIN认证后，OpenHarmony应用2访问Application A仍需独立认证。同一应用访问不同Application，也需分别进行认证。
 
 - PIN加密传输：调用方传入的PIN是通过[onGetProperty](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#ongetproperty)中导出的公钥加密后的密文，密钥管理扩展应用在[onAuthUkeyPin](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#onauthukeypin)中需先使用对应私钥解密，再调用底层驱动进行验证。[onGetUkeyPinAuthState](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#ongetukeypinauthstate)用于查询PIN认证状态。
 
-- 重置认证状态范围：[onClearUkeyPinAuthState](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#onclearukeypinauthstate)用于清除**应用维度的认证状态**（不解除外部密钥管理能力或设备本身的PIN锁定）。例如UKey物理PIN解锁需通过UKey物理按键或厂商私有通道完成，**不通过CryptoExtensionAbility接口暴露**。
+- 重置认证状态范围：[onClearUkeyPinAuthState](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#onclearukeypinauthstate)用于清除应用维度的认证状态（不解除外部密钥管理能力或设备本身的PIN锁定）。例如UKey物理PIN解锁需通过UKey物理按键或厂商私有通道完成，不通过CryptoExtensionAbility接口暴露。
 
 ### 密钥生成/导入/导出
 
@@ -163,7 +164,7 @@ CryptoExtensionAbility接口按职责可分为7个能力域，部分能力域在
 
 - 必实现属性：在PIN认证流程中，HUKS框架会传入propertyId（SKF_ExportPublicKey），调用onGetProperty获取公钥，用于加密后续传入的PIN。密钥管理扩展应用必须实现SKF_ExportPublicKey属性。
 
->**说明**
+> **说明：**
 >
 > 建议使用GM/T 0016-2023定义的SKF标准函数名作为propertyId，以保证不同厂商之间的互操作性。
 
@@ -173,9 +174,7 @@ CryptoExtensionAbility接口按职责可分为7个能力域，部分能力域在
 
 - 接口职责：密钥管理扩展应用根据上层应用传入的业务标识，返回对应的resourceId，使上层应用后续可通过openResource等接口访问该资源。
 
-- **实现要点**：
-  - 上层应用调用时会在params中携带Ability名称、Bundle名称、业务标识（通过[HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)传入）等参数。密钥管理扩展应用需基于业务标识区分上层应用要访问的资源，并将该业务标识映射为对应的resourceId。
-  - 业务标识的具体形态由密钥管理扩展应用根据底层资源管理方式自行定义。
+- 实现要点：上层应用调用时会在params中携带Ability名称、Bundle名称、业务标识（通过[HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)传入）等参数。密钥管理扩展应用需基于业务标识区分上层应用要访问的资源，并将该业务标识映射为对应的resourceId。业务标识的具体形态由密钥管理扩展应用根据底层资源管理方式自行定义。
 
 - 返回结构：成功时通过result.resourceId字段返回资源ID，标识密钥管理扩展服务中的某个具体资源，可供上层应用用于后续 openResource等接口的入参。
 
@@ -217,7 +216,7 @@ API版本26.0.0在API版本22的基础上新增以下接口，支持更灵活的
 在API版本22基础上新增可支撑的场景：
 
 - 自定义业务标识：通过onGetResourceId，上层应用可基于业务标识（如证书序列号、容器名、密钥别名等）获取resourceId，不再局限于通过证书管理弹窗获取。
-- 本地化密钥生成：通过 onGenerateKeyItem，在外部密钥管理资源内直接生成密钥对，避免密钥在传输过程中泄露。
-- 密钥迁移：通过 onImportWrappedKeyItem，配合外部密钥管理资源内的传输密钥（wrappingHandle），安全导入外部生成的密钥对，支撑新设备初始化、密钥备份恢复等场景。
-- 证书本地化管理：通过 onImportCertificate，将证书导入外部密钥管理资源，便于集中管理。
+- 本地化密钥生成：通过onGenerateKeyItem，在外部密钥管理资源内直接生成密钥对，避免密钥在传输过程中泄露。
+- 密钥迁移：通过onImportWrappedKeyItem，配合外部密钥管理资源内的传输密钥（wrappingHandle），安全导入外部生成的密钥对，支撑新设备初始化、密钥备份恢复等场景。
+- 证书本地化管理：通过onImportCertificate，将证书导入外部密钥管理资源，便于集中管理。
 - 属性配置：通过onSetProperty，设置密钥管理扩展服务的可配置属性（不仅限于查询）。
