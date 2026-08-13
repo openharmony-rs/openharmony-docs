@@ -615,15 +615,15 @@ struct ListItemExample2 {
   @Builder
   itemEnd() {
     Row() {
-      Button('Delete').margin('4vp')
-      Button('Set').margin('4vp').onClick(() => {
+      Button('Delete').margin(4)
+      Button('Set').margin(4).onClick(() => {
         try {
           this.scroller.closeAllSwipeActions();
         } catch (error) {
           console.error(`Failed to close all swipe actions. Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
         }
       })
-    }.padding('4vp').justifyContent(FlexAlign.SpaceEvenly)
+    }.padding(4).justifyContent(FlexAlign.SpaceEvenly)
   }
 
   build() {
@@ -769,7 +769,7 @@ ArkTS-Dyn示例：
 struct ListItemExample3 {
   build() {
     Column() {
-      List({ space: '4vp', initialIndex: 0 }) {
+      List({ space: 4, initialIndex: 0 }) {
         ListItemGroup({ style: ListItemGroupStyle.CARD }) {
           ForEach([ListItemStyle.CARD, ListItemStyle.CARD, ListItemStyle.NONE], (itemStyle: ListItemStyle, index?: number) => {
             ListItem({ style: itemStyle }) {
@@ -862,11 +862,11 @@ class BuilderParams {
 @Builder
 function itemBuilder(params: BuilderParams) {
   Row() {
-    Button(params.text).margin('4vp')
-    Button('Set').margin('4vp').onClick(() => {
+    Button(params.text).margin(4)
+    Button('Set').margin(4).onClick(() => {
       params.scroller.closeAllSwipeActions();
     })
-  }.padding('4vp').justifyContent(FlexAlign.SpaceEvenly)
+  }.padding(4).justifyContent(FlexAlign.SpaceEvenly)
 }
 
 @Component
@@ -1055,8 +1055,8 @@ struct ListItemExample5 {
   @Builder
   itemAction(str: string) {
     Row() {
-      Button(str).margin('4vp')
-    }.padding('4vp').justifyContent(FlexAlign.SpaceEvenly)
+      Button(str).margin(4)
+    }.padding(4).justifyContent(FlexAlign.SpaceEvenly)
   }
 
   build() {
