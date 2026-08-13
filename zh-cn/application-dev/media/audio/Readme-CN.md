@@ -16,7 +16,7 @@
   - [音频播放开发概述](audio-playback-overview.md)
   - [选择合适的播放流类型](using-right-streamusage-for-playback.md)
   - [推荐使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)
-  - [使用AudioRenderer开发音频播放功能(ArkTs)](using-audiorenderer-for-playback.md)
+  - [使用AudioRenderer开发音频播放功能(ArkTS)](using-audiorenderer-for-playback.md)
   <!--Del-->
   - [使用TonePlayer开发音频播放功能(仅对系统应用开放)](using-toneplayer-for-playback-sys.md)
   <!--DelEnd-->
@@ -70,6 +70,7 @@
   - [实时预览(C/C++)](audio-suite-real-time-rendering.md)
   - [音频格式转换(C/C++)](audio-suite-format-converter.md)
   - [空间渲染(C/C++)](audio-suite-space-render.md)
+  - [音频效果(C/C++)](audio-suite-effects.md)
 - MIDI设备通信<!--midi-->
   - [OH_MIDI概述(C/C++)](midi-overview.md)
   - [使用OH_MIDI进行MIDI开发(C/C++)](using-ohmidi.md)
@@ -79,5 +80,7 @@
   - [使用OpenSL ES开发音频录制功能(C/C++)](using-opensl-es-for-recording.md)
 - Audio Kit常见问题<!--audio-issues-->
   - [使用音频快照获取问题定位信息](audio-runtime-debugging-info.md)
+  - [播放无声定位指导](audio-playback-no-sound-troubleshooting.md)
+  - [播放卡顿、杂音定位指导](audio-playback-performance-troubleshooting.md)
   - [录音无声定位指导](audio-recording-no-audio-troubleshooting.md)
 - [Audio Kit术语](audio-glossary.md)

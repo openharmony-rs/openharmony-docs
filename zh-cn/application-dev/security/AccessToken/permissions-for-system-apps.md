@@ -7754,6 +7754,108 @@
 
 **起始版本**：26.1.0
 
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_PRIVACY_CONSENT
+
+允许应用签署整车隐私相关协议或政策。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_DRIVER_SEAT_PRIVACY
+
+允许应用设置主驾隐私模式的状态。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_CLEAR_TRACE
+
+允许应用设置车辆的一键除痕和更新除痕状态。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_SENSORTYPE_STATE
+
+允许应用设置敏感权限的有效期。
+
+获取该权限后，应用可以设置麦克风、车内摄像头、定位服务等涉及用户敏感数据的权限的有效期。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_REMOTELOCATION
+
+允许应用设置远程位置控制的开关状态。
+
+获取该权限后，应用可以开启或关闭远程查看车辆位置的开关。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_ANONYMIZE_VOICE
+
+允许应用使用声纹脱敏的能力。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_SUPER_PRIVACY
+
+允许应用设置车内隐私保护状态。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
 ## ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
 
 允许应用订阅通知服务。
@@ -8959,5 +9061,91 @@
 **是否支持证书授权**：true
 
 **支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.AUTH_MODEL_DOWNLOAD
+
+允许系统应用将下载模型的授权结果发送给模型管理服务。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.1.0
+
+## ohos.permission.ACCESS_FILE_MONITOR_DIR
+
+允许应用通过沙箱模式获取文件管理数据。
+
+获取权限后，应用可在客户端进程中通过沙箱模式查询数据库，减少查询时间。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：PC/2in1 | Phone | Tablet | TV | Smartlock | Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.VEHICLE_OEMCERTSIGN
+
+允许应用使用OEM证书对数据进行签名。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.CONNECTIVITY_USE_RESTRICTED_NETWORKS
+
+允许应用使用受限网络，如内部网络、特定的车载网络等。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.ACCESS_SOFTBUS_SYS_HAP
+
+允许系统应用与近场设备建立连接并完成数据收发。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：PC/2in1 | Car | Phone | Wearable | Tablet | TV
+
+**起始版本**：26.1.0
+
+## ohos.permission.SET_WORK_SCHEDULER_PROPERTY
+
+允许系统应用修改指定应用的延迟任务参数。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：PC/2-in-1 | Car | Phone | Tablet | TV | Wearable
 
 **起始版本**：26.1.0

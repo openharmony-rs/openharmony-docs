@@ -82,7 +82,7 @@
       - [群组密钥(ArkTS)](huks-group-key-arkts.md)
       - [群组密钥(C/C++)](huks-group-key-ndk.md)
     <!--Del-->
-    - [指定用户身份操作(仅对系统应用开放)](huks-as-user-sys.md)
+    - [指定用户身份操作（仅对系统应用开放）](huks-as-user-sys.md)
     <!--DelEnd-->
 - 密钥管理扩展<!--huks-key-management-extension-->
   - [密钥管理扩展介绍](huks-external-hardware-key-management-overview.md)
@@ -98,3 +98,4 @@
 - 应用场景<!--huks-application-scenarios-->
   - [浏览器双向SSL登录](huks-extension-ability-best-dev.md)
 <!--RP4--><!--RP4End-->
+- [Universal Keystore Kit术语](universal-keystore-glossary.md)

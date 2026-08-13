@@ -337,6 +337,8 @@ bm quickfix -r -b com.ohos.app
 delete quick fix successfully
 ```
 
+快速修复命令出现失败，请参考[包管理快速修复命令的错误码](../reference/apis-ability-kit/bm-quickfix-errorcode.md)。
+
 ## 共享库查询命令（dump-shared）
 
 ```bash
