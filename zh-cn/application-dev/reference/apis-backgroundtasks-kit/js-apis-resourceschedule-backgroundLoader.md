@@ -35,7 +35,7 @@ import { backgroundLoader } from '@kit.BackgroundTasksKit';
 
 registerTask(taskInfo: TaskInfo): void
 
-注册后台加载任务，成功后会将任务添加到后台加载任务队列，满足触发条件后由系统调度执行。多次注册以最后一次为准。
+注册后台加载任务，成功后会将任务添加到后台加载任务队列，满足触发条件后由系统调度执行。多次注册会覆盖原有任务，仅最后一次生效。
 
 **起始版本：**  26.1.0
 
@@ -226,7 +226,7 @@ finishTask(taskInfo: TaskInfo): void
 
 ```ts
   import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
-  impor应用定义和指定的后台加载任务信息。t { backgroundLoader } from '@kit.BackgroundTasksKit';
+  import { backgroundLoader } from '@kit.BackgroundTasksKit';
   import { rpc } from '@kit.IPCKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
