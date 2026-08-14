@@ -94,9 +94,9 @@ insert?(uri: string, valueBucket: ValuesBucket, callback: AsyncCallback&lt;numbe
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ----- | ------ | ------ | ------ |
-| uri |string | 是  | 指示要插入的数据的路径。 |
-| valueBucket |[ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket) | 是 | 指示要插入的数据。 |
-| callback |AsyncCallback&lt;number&gt; | 是 | 回调函数。返回插入数据记录的索引。 |
+| uri | string | 是  | 指示要插入的数据的路径。 |
+| valueBucket | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket) | 是 | 指示要插入的数据。 |
+| callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。返回插入数据记录的索引。 |
 
 **示例：**
 
