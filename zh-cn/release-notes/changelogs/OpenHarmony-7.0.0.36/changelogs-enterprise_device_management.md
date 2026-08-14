@@ -70,6 +70,7 @@ try {
 **适配指导**
 
 接口默认行为变更。使用上述接口的开发者，如果业务代码使用了错误码类型判断，则需要适配。
+
 以 `applicationManager.addAllowedNotificationBundles`为例，适配方法如下：
 ```ts
 import { applicationManager } from '@kit.MDMKit';
