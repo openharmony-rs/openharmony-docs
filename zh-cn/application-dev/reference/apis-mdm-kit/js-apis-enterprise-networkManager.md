@@ -508,7 +508,7 @@ getGlobalProxyForAccount(admin: Want | null, accountId: number): connection.Http
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。API version 20之前，调用本接口获取指定用户下的网络代理。当设备存在多个MDM应用时，传入admin查询对应admin设置的策略。从API version 20开始，admin新增支持传入null，传入null时查询整机实际生效的策略。 |
 | accountId | number                                                  | 是   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。|
 
 **返回值：**
@@ -1110,14 +1110,14 @@ import { networkManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 let apnInfo: Record<string, string> = {
   // 需根据实际情况进行替换
   "apnName": "CTNET",
   "apn": "CTNET",
   "mnc": "11",
-  "mcc": "460",
+  "mcc": "460"
 };
 try {
   networkManager.addApn(wantTemp, apnInfo);
@@ -1167,7 +1167,7 @@ import { networkManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 let apnId: string = "1"; // 需根据实际情况进行替换
 try {
@@ -1219,14 +1219,14 @@ import { networkManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 let apnInfo: Record<string, string> = {
   // 需根据实际情况进行替换
   "apnName": "CTNET",
   "apn": "CTNET",
   "mnc": "11",
-  "mcc": "460",
+  "mcc": "460"
 };
 let apnId: string = "1"; // 需根据实际情况进行替换
 try {
@@ -1277,7 +1277,7 @@ import { networkManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 let apnId: string = "1"; // 需根据实际情况进行替换
 try {
@@ -1332,14 +1332,14 @@ import { networkManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 let apnInfo: Record<string, string> = {
   // 需根据实际情况进行替换
   "apnName": "CTNET",
   "apn": "CTNET",
   "mnc": "11",
-  "mcc": "460",
+  "mcc": "460"
 };
 try {
   let queryResult: Array<string> = networkManager.queryApn(wantTemp, apnInfo);
@@ -1393,7 +1393,7 @@ import { networkManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 let apnId: string = "1"; // 需根据实际情况进行替换
 try {
@@ -1447,7 +1447,7 @@ import { networkManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 let config: networkManager.InterfaceConfig = {
   // 需根据实际情况进行替换
@@ -1476,6 +1476,7 @@ API version 21及之前版本，仅支持IPv4。从API version 22开始，支持
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称      | 类型                    | 只读 | 可选 | 说明                                                         |
 | --------- | ----------------------- | ---- | ---- |------------------------------------------------------------ |
@@ -1500,6 +1501,7 @@ API version 21及之前版本，仅支持IPv4。从API version 22开始，支持
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称       | 类型              | 只读 | 可选 | 说明                                                         |
 | ---------- | ----------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -1516,6 +1518,7 @@ API version 21及之前版本，仅支持IPv4。从API version 22开始，支持
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称   | 值   | 说明     |
 | ------ | ---- | -------- |
@@ -1529,6 +1532,7 @@ API version 21及之前版本，仅支持IPv4。从API version 22开始，支持
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称  | 值   | 说明         |
 | ----- | ---- | ------------ |
@@ -1542,6 +1546,7 @@ API version 21及之前版本，仅支持IPv4。从API version 22开始，支持
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 值   | 说明           |
 | ---- | ---- | -------------- |
@@ -1556,6 +1561,7 @@ API version 21及之前版本，仅支持IPv4。从API version 22开始，支持
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称  | 值   | 说明                                  |
 | ----- | ---- | ------------------------------------- |
@@ -1567,6 +1573,7 @@ API version 21及之前版本，仅支持IPv4。从API version 22开始，支持
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称      | 类型                    | 只读 | 可选 | 说明                                                         |
 | --------- | ----------------------- | ---- | ---- |------------------------------------------------------------ |
@@ -1582,6 +1589,7 @@ API version 21及之前版本，仅支持IPv4。从API version 22开始，支持
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 值   | 说明           |
 | ---- | ---- | -------------- |
