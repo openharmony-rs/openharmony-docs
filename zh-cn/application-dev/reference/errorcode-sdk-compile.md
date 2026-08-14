@@ -101,7 +101,7 @@ XXX can't support atomicservice application.
 **错误信息**
 
 The {apiName} API is supported since SDK version {sinceVersion}. However, the current compatible SDK version is {compatibleSdkVersion}.
- It is recommended to use apiAvailable to safeguard API compatibility.
+It is recommended to use apiAvailable to safeguard API compatibility.
 
 **错误描述**
 
@@ -110,6 +110,7 @@ The {apiName} API is supported since SDK version {sinceVersion}. However, the cu
 **可能原因**
 
 调用接口的最低支持SDK版本高于应用的兼容SDK版本。
+
 应用的兼容SDK版本参考工程根目录的build-profile.json5文件中的"compatibleSdkVersion"字段。
 
 **处理步骤**
@@ -117,6 +118,7 @@ The {apiName} API is supported since SDK version {sinceVersion}. However, the cu
 选择以下任一方案消除兼容性风险：
 
 方案一：使用apiAvailable接口判断当前设备是否支持该API，在支持时调用，不支持时走降级逻辑。
+
 参考API文档说明：[apiAvailable](./apis-basic-services-kit/js-apis-device-info.md#deviceinfoapiavailable)。
 
 方案二：更换为低版本兼容的替代接口。        
@@ -126,7 +128,7 @@ The {apiName} API is supported since SDK version {sinceVersion}. However, the cu
 **错误信息**
 
 The {apiName} API is available since SDK version {sinceVersion}. However, the current compatible SDK version is {compatibleSdkVersion}.
- It is recommended to use apiAvailable to safeguard API compatibility.
+It is recommended to use apiAvailable to safeguard API compatibility.
 
 **错误描述**
 
@@ -135,6 +137,7 @@ The {apiName} API is available since SDK version {sinceVersion}. However, the cu
 **可能原因**
 
 @Available装饰器中声明的SDK版本高于应用的兼容SDK版本。
+
 应用的兼容SDK版本参考工程根目录的build-profile.json5文件中的"compatibleSdkVersion"字段。
 
 **处理步骤**
@@ -142,6 +145,7 @@ The {apiName} API is available since SDK version {sinceVersion}. However, the cu
 选择以下任一方案消除兼容性风险：
 
 方案一：使用apiAvailable接口判断当前设备是否支持该API，在支持时调用，不支持时走降级逻辑。
+
 参考API文档说明：[apiAvailable](./apis-basic-services-kit/js-apis-device-info.md#deviceinfoapiavailable)。
 
 方案二：更换为低版本兼容的替代接口。 
@@ -152,11 +156,9 @@ The {apiName} API is available since SDK version {sinceVersion}. However, the cu
 
 1、Invalid parameters for apiAvailable.Only digits and dots are allowed.
 
-2、Invalid parameters for apiAvailable.The api version must be a decimal integer between 1 and 25.
- The M.S.F format must meet the following requirements: The value must be in the three decimal format, M must be greater than or equal to 26, and S and F must be decimal integers between 0 and 99.
+2、Invalid parameters for apiAvailable.The api version must be a decimal integer between 1 and 25.The M.S.F format must meet the following requirements: The value must be in the three decimal format, M must be greater than or equal to 26, and S and F must be decimal integers between 0 and 99.
 
-3、Invalid parameters for apiAvailable.The api version must be a decimal integer between 1 and 25.
-The M.S.F format must meet the following requirements: The value must be in the three decimal format, M must be decimal integers between 1 and 99, and S and F must be decimal integers between 0 and 99.
+3、Invalid parameters for apiAvailable.The api version must be a decimal integer between 1 and 25.The M.S.F format must meet the following requirements: The value must be in the three decimal format, M must be decimal integers between 1 and 99, and S and F must be decimal integers between 0 and 99.
 
 4、Invalid parameters for apiAvailable.Only digits, dots, and left and right parentheses are allowed.
 
