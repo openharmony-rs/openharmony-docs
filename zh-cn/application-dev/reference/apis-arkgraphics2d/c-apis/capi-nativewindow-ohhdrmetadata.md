@@ -6,7 +6,7 @@ typedef struct OHHDRMetaData {...} OHHDRMetaData
 
 ## 概述
 
-Defines the HDR metadata.
+HDR元数据结构体定义。
 
 **起始版本：** 9
 

@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface CustomSpanDrawInfo--><!--Device-unnamed-declare interface CustomSpanDrawInfo-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -16,13 +18,15 @@
 baseline: number
 ```
 
-自定义绘制Span的所在行的基线偏移量。 单位：\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_
+自定义绘制Span的所在行的基线偏移量。 单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 **类型：** number
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -38,13 +42,15 @@ baseline: number
 lineBottom: number
 ```
 
-自定义绘制Span相对于Text组件的下边距。 单位：\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_
+自定义绘制Span相对于Text组件的下边距。 单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 **类型：** number
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -60,13 +66,15 @@ lineBottom: number
 lineTop: number
 ```
 
-自定义绘制Span相对于Text组件的上边距。 单位：\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_
+自定义绘制Span相对于Text组件的上边距。 单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 **类型：** number
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -82,13 +90,15 @@ lineTop: number
 x: number
 ```
 
-自定义绘制Span相对于挂载组件的偏移。 单位：\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_
+自定义绘制Span相对于挂载组件的偏移。 单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 **类型：** number
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

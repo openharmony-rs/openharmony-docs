@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-webview-enum SourceType--><!--Device-webview-enum SourceType-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -22,6 +24,8 @@ URL = 0
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-SourceType-URL = 0--><!--Device-SourceType-URL = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -37,6 +41,8 @@ MSE = 1
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SourceType-MSE = 1--><!--Device-SourceType-MSE = 1-End-->
 

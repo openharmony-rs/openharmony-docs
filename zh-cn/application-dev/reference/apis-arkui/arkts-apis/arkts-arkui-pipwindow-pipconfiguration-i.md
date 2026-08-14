@@ -2,9 +2,11 @@
 
 创建画中画控制器时的参数。
 
-**起始版本：** 11
+**起始版本：** 26.0.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-PiPWindow-interface PiPConfiguration--><!--Device-PiPWindow-interface PiPConfiguration-End-->
 
@@ -16,13 +18,15 @@
 componentController: XComponentController
 ```
 
-表示原始[XComponent]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_控制器。
+表示原始XComponent控制器。
 
-**类型：** XComponentController
+**类型：** [XComponentController](../../apis-na/arkts-apis/arkts-na-xcomponent-xcomponentcontroller-c.md)
 
-**起始版本：** 11
+**起始版本：** 26.0.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -36,13 +40,15 @@ componentController: XComponentController
 contentHeight?: int
 ```
 
-原始内容高度，单位为px。用于确定画中画窗口比例。当 [使用typeNode的方式]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_创建 PiPController时，不传值则默认为1080。当[不使用typeNode的方式]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_创建PiPController时，不传 值则默认为[XComponent]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_组件的高度。
+原始内容高度，单位为px。用于确定画中画窗口比例。当 [使用typeNode的方式](arkts-arkui-pipwindow-create-f.md#create)创建 PiPController时，不传值则默认为1080。当[不使用typeNode的方式](arkts-arkui-pipwindow-create-f.md#create)创建PiPController时，不传 值则默认为XComponent组件的高度。
 
 **类型：** int
 
-**起始版本：** 11
+**起始版本：** 26.0.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -56,13 +62,15 @@ contentHeight?: int
 contentWidth?: int
 ```
 
-原始内容宽度，单位为px。用于确定画中画窗口比例。当 [使用typeNode的方式]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_创建 PiPController时，不传值则默认为1920。当[不使用typeNode的方式]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_创建PiPController时，不传 值则默认为[XComponent]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_组件的宽度。
+原始内容宽度，单位为px。用于确定画中画窗口比例。当 [使用typeNode的方式](arkts-arkui-pipwindow-create-f.md#create)创建 PiPController时，不传值则默认为1920。当[不使用typeNode的方式](arkts-arkui-pipwindow-create-f.md#create)创建PiPController时，不传 值则默认为XComponent组件的宽度。
 
 **类型：** int
 
-**起始版本：** 11
+**起始版本：** 26.0.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -78,11 +86,13 @@ context: BaseContext
 
 表示上下文环境。
 
-**类型：** BaseContext
+**类型：** [BaseContext](../../apis-ability-kit/arkts-apis/arkts-ability-basecontext-c.md)
 
-**起始版本：** 11
+**起始版本：** 26.0.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -98,13 +108,15 @@ controlGroups?: Array<PiPControlGroup>
 
 画中画控制面板的可选控件组列表，应用可以对此进行配置以决定是否显示。应用未配置时，面板显示基础控件（如视频播放控件组的播放/暂停控件）；应用选择配置时，则最多可以选择三个控件，超出三个create接口抛出401错误码。
 
-**类型：** Array&lt;PiPControlGroup&gt;
+**类型：** Array&lt;[PiPControlGroup](arkts-arkui-pipwindow-pipcontrolgroup-t.md)&gt;
 
-**起始版本：** 12
+**起始版本：** 26.0.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PiPConfiguration-controlGroups?: Array<PiPControlGroup>--><!--Device-PiPConfiguration-controlGroups?: Array<PiPControlGroup>-End-->
 
@@ -122,11 +134,13 @@ cornerAdsorptionEnabled?: boolean
 
 **默认值：** true
 
-**起始版本：** 22
+**起始版本：** 26.0.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为22；ArkTS-Sta起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PiPConfiguration-cornerAdsorptionEnabled?: boolean--><!--Device-PiPConfiguration-cornerAdsorptionEnabled?: boolean-End-->
 
@@ -140,13 +154,15 @@ customUIController?: NodeController
 
 自定义UI控制器，用于实现在画中画界面的自定义UI功能。此参数不填时，默认不使用自定义UI功能
 
-**类型：** NodeController
+**类型：** [NodeController](../../apis-na/arkts-apis/arkts-na-nodecontroller-c.md)
 
-**起始版本：** 12
+**起始版本：** 26.0.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PiPConfiguration-customUIController?: NodeController--><!--Device-PiPConfiguration-customUIController?: NodeController-End-->
 
@@ -162,11 +178,13 @@ defaultWindowSizeType?: int
 
 **类型：** int
 
-**起始版本：** 19
+**起始版本：** 26.0.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为19；ArkTS-Sta起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PiPConfiguration-defaultWindowSizeType?: int--><!--Device-PiPConfiguration-defaultWindowSizeType?: int-End-->
 
@@ -178,17 +196,19 @@ defaultWindowSizeType?: int
 handleId?: int
 ```
 
-navigation控件下的子页面ID，点击"恢复全屏窗口"按钮后，恢复到指定的页面。 只适用于UIAbility使用[Navigation]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_管理页面的场景，可以设置为Navigation下的子页面ID。 默认为-1，恢复Navigation栈顶页面。推荐使用方法[getUniqueId()]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_获取页面ID。 使用[Navigation]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_模块内页面路由时， 推荐使用\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_， 否则可能会出现[getUniqueId()]\_\_\_JSDOC\_LINK\_DESC\_USD\_4\_\_\_获取页面ID不准确的情况。
+navigation控件下的子页面ID，点击"恢复全屏窗口"按钮后，恢复到指定的页面。 只适用于UIAbility使用Navigation管理页面的场景，可以设置为Navigation下的子页面ID。 默认为-1，恢复Navigation栈顶页面。推荐使用方法getUniqueId()获取页面ID。 使用Navigation模块内页面路由时， 推荐使用[系统路由表](../../../ui/arkts-navigation-cross-package.md#系统路由表)， 否则可能会出现getUniqueId()获取页面ID不准确的情况。
 
 **类型：** int
 
 **默认值：** -1
 
-**起始版本：** 22
+**起始版本：** 26.0.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为22；ArkTS-Sta起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PiPConfiguration-handleId?: int--><!--Device-PiPConfiguration-handleId?: int-End-->
 
@@ -202,13 +222,15 @@ localStorage?: LocalStorage
 
 页面级别的UI状态存储单元。多实例下可用来跟踪主窗实例的UI状态存储对象，不传值则无法通过画中画窗口获取主窗的UI状态存储对象。
 
-**类型：** LocalStorage
+**类型：** [LocalStorage](../../apis-na/arkts-apis/arkts-na-localstorage-localstorage-c.md)
 
-**起始版本：** 17
+**起始版本：** 26.0.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为17；ArkTS-Sta起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
-**原子化服务API：** 从API版本17开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PiPConfiguration-localStorage?: LocalStorage--><!--Device-PiPConfiguration-localStorage?: LocalStorage-End-->
 
@@ -220,13 +242,15 @@ localStorage?: LocalStorage
 navigationId?: string
 ```
 
-navigation控件ID，不传值则默认不需要缓存页面。 1、UIAbility使用[Navigation]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_管理页面时，需要设置Navigation控件的id属性，并将该id设置给画中画控制器，确 保还原场景下能够从画中画窗口恢复到原页面。 2、UIAbility使用[Router]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_管理页面时，无需设置navigationId。 3、UIAbility只有单页面时，无需设置navigationId，还原场景下也能够从画中画窗口恢复到原页面。
+navigation控件ID，不传值则默认不需要缓存页面。 1、UIAbility使用Navigation管理页面时，需要设置Navigation控件的id属性，并将该id设置给画中画控制器，确 保还原场景下能够从画中画窗口恢复到原页面。 2、UIAbility使用[Router](arkts-router.md#@ohos.router)管理页面时，无需设置navigationId。 3、UIAbility只有单页面时，无需设置navigationId，还原场景下也能够从画中画窗口恢复到原页面。
 
 **类型：** string
 
-**起始版本：** 11
+**起始版本：** 26.0.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -242,11 +266,13 @@ templateType?: PiPTemplateType
 
 模板类型，用以区分视频播放、视频通话、视频会议或视频直播，不传值则默认为视频播放模板。
 
-**类型：** PiPTemplateType
+**类型：** [PiPTemplateType](arkts-arkui-pipwindow-piptemplatetype-e.md)
 
-**起始版本：** 11
+**起始版本：** 26.0.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

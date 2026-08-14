@@ -1,22 +1,24 @@
 # AbilityStageContext
 
 ```TypeScript
-export type AbilityStageContext = _AbilityStageContext.default
+export type AbilityStageContext = _AbilityStageContext
 ```
 
-[AbilityStage]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_组件上下文，继承自Context。
+[AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md#AbilityStage)组件上下文，继承自Context。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
-<!--Device-common-export type AbilityStageContext = _AbilityStageContext.default--><!--Device-common-export type AbilityStageContext = _AbilityStageContext.default-End-->
+<!--Device-common-export type AbilityStageContext = _AbilityStageContext--><!--Device-common-export type AbilityStageContext = _AbilityStageContext-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**属性类型：** _AbilityStageContext.default
+**属性类型：** _AbilityStageContext
 

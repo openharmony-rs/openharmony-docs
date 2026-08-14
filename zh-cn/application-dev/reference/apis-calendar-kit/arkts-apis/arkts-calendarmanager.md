@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare namespace calendarManager--><!--Device-unnamed-declare namespace calendarManager-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
@@ -16,7 +18,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [getCalendarManager](arkts-calendar-calendarmanager-getcalendarmanager-f.md#getcalendarmanager) | 根据上下文获取CalendarManager对象，用于管理日历。 |
+| [getCalendarManager](arkts-calendar-calendarmanager-getcalendarmanager-f.md#getCalendarManager) | 根据上下文获取CalendarManager对象，用于管理日历。 |
 
 ### 类
 
@@ -29,10 +31,10 @@
 | 名称 | 说明 |
 | --- | --- |
 | [Attendee](arkts-calendar-calendarmanager-attendee-i.md) | 会议日程参与者。 |
-| [Calendar](arkts-calendar-calendarmanager-calendar-i.md) | 下列API示例中需先通过 [createCalendar()]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 、[getCalendar()]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_中任一方法获取 Calendar对象，再通过此对象调用对应方法，对该Calendar下的日程进行创建、删除、修改、查询等操作。 |
+| [Calendar](arkts-calendar-calendarmanager-calendar-i.md) | 下列API示例中需先通过 [createCalendar()](arkts-calendar-calendarmanager-calendarmanager-i.md#createCalendar) 、[getCalendar()](arkts-calendar-calendarmanager-calendarmanager-i.md#getCalendar)中任一方法获取 Calendar对象，再通过此对象调用对应方法，对该Calendar下的日程进行创建、删除、修改、查询等操作。 |
 | [CalendarAccount](arkts-calendar-calendarmanager-calendaraccount-i.md) | 日历账户信息。 |
 | [CalendarConfig](arkts-calendar-calendarmanager-calendarconfig-i.md) | 日历配置信息。 |
-| [CalendarManager](arkts-calendar-calendarmanager-calendarmanager-i.md) | 下列API示例中需先通过[getCalendarManager()]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_方法获取CalendarManager对象，再通过此对象调用对应方法，进行 Calendar的创建、删除、修改、查询等操作。 |
+| [CalendarManager](arkts-calendar-calendarmanager-calendarmanager-i.md) | 下列API示例中需先通过[getCalendarManager()](arkts-calendar-calendarmanager-getcalendarmanager-f.md#getCalendarManager)方法获取CalendarManager对象，再通过此对象调用对应方法，进行 Calendar的创建、删除、修改、查询等操作。 |
 | [Event](arkts-calendar-calendarmanager-event-i.md) | 日程对象，包含日程标题、开始时间、结束时间等信息。 |
 | [EventService](arkts-calendar-calendarmanager-eventservice-i.md) | 日程服务。 |
 | [Location](arkts-calendar-calendarmanager-location-i.md) | 日程地点。 |

@@ -12,6 +12,8 @@ function convertToUIAbilityContext(sendableContext: SendableContext): common.UIA
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -24,7 +26,7 @@ function convertToUIAbilityContext(sendableContext: SendableContext): common.UIA
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sendableContext | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 |  |
+| sendableContext | SendableContext | 是 |  |
 
 **返回值：**
 
@@ -36,9 +38,9 @@ function convertToUIAbilityContext(sendableContext: SendableContext): common.UIA
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | If the input parameter invalid. Possible causes: 1.Incorrect parameter types;2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 
-**示例：**
+## 示例
 
 主线程传递Context：
 

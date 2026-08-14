@@ -6,7 +6,7 @@ typedef struct OH_NativeColorSpaceManager OH_NativeColorSpaceManager
 
 ## 概述
 
-提供OH_NativeColorSpaceManager结构体声明。
+声明色彩空间管理对象，提供获取色彩空间基础属性的能力。
 
 **起始版本：** 20
 

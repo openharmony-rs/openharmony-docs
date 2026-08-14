@@ -2,9 +2,11 @@
 
 Enumerates audio interrupt request result type.
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-audio-enum InterruptRequestResultType--><!--Device-audio-enum InterruptRequestResultType-End-->
 
@@ -20,9 +22,11 @@ INTERRUPT_REQUEST_GRANT = 0
 
 Request audio interrupt success
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-InterruptRequestResultType-INTERRUPT_REQUEST_GRANT = 0--><!--Device-InterruptRequestResultType-INTERRUPT_REQUEST_GRANT = 0-End-->
 
@@ -38,9 +42,11 @@ INTERRUPT_REQUEST_REJECT = 1
 
 Request audio interrupt fail, may have higher priority type
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-InterruptRequestResultType-INTERRUPT_REQUEST_REJECT = 1--><!--Device-InterruptRequestResultType-INTERRUPT_REQUEST_REJECT = 1-End-->
 

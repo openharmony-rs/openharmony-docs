@@ -10,7 +10,9 @@ function onApplicationFocusStateChange(callback: Callback<boolean>): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -22,9 +24,9 @@ function onApplicationFocusStateChange(callback: Callback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;boolean&gt; | 是 | 回调函数。返回当前应用进程获焦状态的变化。true表示当前应用进程变为获焦状态；false表示当前应用进程变为失焦状态。 |
+| callback | [Callback](arkts-arkui-window-callback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回当前应用进程获焦状态的变化。true表示当前应用进程变为获焦状态；false表示当前应用进程变为失焦状态。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { window } from '@kit.ArkUI';
@@ -33,7 +35,7 @@ try {
   window.onApplicationFocusStateChange((data) =>{
       console.info(`Succeeded in enabling the listener for application focus state changes. Data: ${data}`);
   })
-} catch(exception){
+} catch (exception){
   console.error(`Failed to enable the listener for application focus state changes. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```

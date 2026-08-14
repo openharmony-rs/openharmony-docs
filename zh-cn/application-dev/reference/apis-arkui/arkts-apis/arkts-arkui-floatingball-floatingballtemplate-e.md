@@ -2,9 +2,11 @@
 
 闪控球模板类型的枚举。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-floatingBall-enum FloatingBallTemplate--><!--Device-floatingBall-enum FloatingBallTemplate-End-->
 
@@ -18,9 +20,11 @@ STATIC = 1
 
 静态布局，支持标题和图标。使用此模板时，FloatingBallParams中的title参数和icon参数必传。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FloatingBallTemplate-STATIC = 1--><!--Device-FloatingBallTemplate-STATIC = 1-End-->
 
@@ -34,9 +38,11 @@ NORMAL = 2
 
 普通文本布局，支持标题和内容。使用此模板时，FloatingBallParams中的title参数必传。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FloatingBallTemplate-NORMAL = 2--><!--Device-FloatingBallTemplate-NORMAL = 2-End-->
 
@@ -50,9 +56,11 @@ EMPHATIC = 3
 
 强调文本布局，支持图标、标题和内容。使用此模板时，FloatingBallParams中的title参数必传。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FloatingBallTemplate-EMPHATIC = 3--><!--Device-FloatingBallTemplate-EMPHATIC = 3-End-->
 
@@ -66,9 +74,11 @@ SIMPLE = 4
 
 纯文本布局，只支持标题。使用此模板时，FloatingBallParams中的title参数必传。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FloatingBallTemplate-SIMPLE = 4--><!--Device-FloatingBallTemplate-SIMPLE = 4-End-->
 

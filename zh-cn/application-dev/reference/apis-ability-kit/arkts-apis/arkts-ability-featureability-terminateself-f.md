@@ -12,6 +12,8 @@ function terminateSelf(callback: AsyncCallback<void>): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在FA模型下使用。
 
 <!--Device-featureAbility-function terminateSelf(callback: AsyncCallback<void>): void--><!--Device-featureAbility-function terminateSelf(callback: AsyncCallback<void>): void-End-->
@@ -22,9 +24,9 @@ function terminateSelf(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数。当停止当前的Ability成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当停止当前的Ability成功，err为undefined，否则为错误对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { featureAbility } from '@kit.AbilityKit';
@@ -50,6 +52,8 @@ function terminateSelf(): Promise<void>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在FA模型下使用。
 
 <!--Device-featureAbility-function terminateSelf(): Promise<void>--><!--Device-featureAbility-function terminateSelf(): Promise<void>-End-->
@@ -62,7 +66,7 @@ function terminateSelf(): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { featureAbility } from '@kit.AbilityKit';

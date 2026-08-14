@@ -6,7 +6,7 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @ObservedV2
+**废弃版本：** -1
 
 <!--Device-unnamed-declare class ArcSliderStyleOptions--><!--Device-unnamed-declare class ArcSliderStyleOptions-End-->
 
@@ -24,6 +24,8 @@ ArcSliderStyleOptions的构造函数。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ArcSliderStyleOptions-constructor(options?: ArcSliderStyleOptionsConstructorOptions)--><!--Device-ArcSliderStyleOptions-constructor(options?: ArcSliderStyleOptionsConstructorOptions)-End-->
@@ -34,12 +36,13 @@ ArcSliderStyleOptions的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | ArcSliderStyleOptions的构造信息。不传入时，ArcSliderStyleOptions的各项子属性均取其默认值。 |
+| options | [ArcSliderStyleOptionsConstructorOptions](arkts-arkui-arkui-advanced-arcslider-arcsliderstyleoptionsconstructoroptions-i.md) | 否 | ArcSliderStyleOptions的构造信息。不传入时，ArcSliderStyleOptions的各项子属性均取其默认值。 |
 
 ## activeTrackThickness
 
 ```TypeScript
-activeTrackThickness?: number
+@Trace
+  activeTrackThickness?: number
 ```
 
 放大状态下弧形Slider的描边粗细，单位：vp。 默认值：24 取值范围：[24, 36]，异常值按默认值处理。
@@ -52,16 +55,19 @@ activeTrackThickness?: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ArcSliderStyleOptions-activeTrackThickness?: number--><!--Device-ArcSliderStyleOptions-activeTrackThickness?: number-End-->
+<!--Device-ArcSliderStyleOptions-@Trace  activeTrackThickness?: number--><!--Device-ArcSliderStyleOptions-@Trace  activeTrackThickness?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## selectedColor
 
 ```TypeScript
-selectedColor?: string
+@Trace
+  selectedColor?: string
 ```
 
 设置描边高亮色。 默认值：#FF5EA1FF
@@ -74,16 +80,19 @@ selectedColor?: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ArcSliderStyleOptions-selectedColor?: string--><!--Device-ArcSliderStyleOptions-selectedColor?: string-End-->
+<!--Device-ArcSliderStyleOptions-@Trace  selectedColor?: string--><!--Device-ArcSliderStyleOptions-@Trace  selectedColor?: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## trackBlur
 
 ```TypeScript
-trackBlur?: number
+@Trace
+  trackBlur?: number
 ```
 
 设置描边背景模糊值，单位：vp。 默认值：20 设置小于0的值时，按照默认值处理。
@@ -96,16 +105,19 @@ trackBlur?: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ArcSliderStyleOptions-trackBlur?: number--><!--Device-ArcSliderStyleOptions-trackBlur?: number-End-->
+<!--Device-ArcSliderStyleOptions-@Trace  trackBlur?: number--><!--Device-ArcSliderStyleOptions-@Trace  trackBlur?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## trackColor
 
 ```TypeScript
-trackColor?: string
+@Trace
+  trackColor?: string
 ```
 
 设置描边背景色。 默认值：#33FFFFFF
@@ -118,16 +130,19 @@ trackColor?: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ArcSliderStyleOptions-trackColor?: string--><!--Device-ArcSliderStyleOptions-trackColor?: string-End-->
+<!--Device-ArcSliderStyleOptions-@Trace  trackColor?: string--><!--Device-ArcSliderStyleOptions-@Trace  trackColor?: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## trackThickness
 
 ```TypeScript
-trackThickness?: number
+@Trace
+  trackThickness?: number
 ```
 
 正常状态下弧形Slider的描边粗细，单位：vp。 默认值：5 取值范围：[5, 16]，异常值按默认值处理。
@@ -140,9 +155,11 @@ trackThickness?: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ArcSliderStyleOptions-trackThickness?: number--><!--Device-ArcSliderStyleOptions-trackThickness?: number-End-->
+<!--Device-ArcSliderStyleOptions-@Trace  trackThickness?: number--><!--Device-ArcSliderStyleOptions-@Trace  trackThickness?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 

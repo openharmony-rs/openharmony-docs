@@ -1,10 +1,12 @@
 # ConsoleMessage
 
-Encompassed message information as parameters to \_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ method.
+Encompassed message information as parameters to onConsole method.
 
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare class ConsoleMessage--><!--Device-unnamed-declare class ConsoleMessage-End-->
 
@@ -24,7 +26,7 @@ Constructor.
 
 **废弃版本：** 9
 
-**替代接口：** ohos.web.ConsoleMessage#constructor
+**替代接口：** constructor
 
 <!--Device-ConsoleMessage-constructor(message: string, sourceId: string, lineNumber: number, messageLevel: MessageLevel)--><!--Device-ConsoleMessage-constructor(message: string, sourceId: string, lineNumber: number, messageLevel: MessageLevel)-End-->
 
@@ -37,7 +39,7 @@ Constructor.
 | message | string | 是 | ConsoleMessage的日志输出信息。 |
 | sourceId | string | 是 | 网页源文件的路径和文件名。 |
 | lineNumber | number | 是 | ConsoleMessage的行号。 |
-| messageLevel | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | ConsoleMessage的日志级别。 |
+| messageLevel | [MessageLevel](arkts-arkweb-messagelevel-e.md) | 是 | ConsoleMessage的日志级别。 |
 
 ## constructor
 
@@ -50,6 +52,8 @@ ConsoleMessage的构造函数。
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -68,6 +72,8 @@ getLineNumber(): number
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -93,6 +99,8 @@ getMessage(): string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ConsoleMessage-getMessage(): string--><!--Device-ConsoleMessage-getMessage(): string-End-->
@@ -117,6 +125,8 @@ getMessageLevel(): MessageLevel
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ConsoleMessage-getMessageLevel(): MessageLevel--><!--Device-ConsoleMessage-getMessageLevel(): MessageLevel-End-->
@@ -127,7 +137,7 @@ getMessageLevel(): MessageLevel
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回ConsoleMessage的信息级别。 |
+| [MessageLevel](arkts-arkweb-messagelevel-e.md) | 返回ConsoleMessage的信息级别。 |
 
 ## getSource
 
@@ -141,6 +151,8 @@ getSource() : ConsoleMessageSource
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-ConsoleMessage-getSource() : ConsoleMessageSource--><!--Device-ConsoleMessage-getSource() : ConsoleMessageSource-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -149,7 +161,7 @@ getSource() : ConsoleMessageSource
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回ConsoleMessage的日志来源。 |
+| [ConsoleMessageSource](arkts-arkweb-consolemessagesource-e.md) | 返回ConsoleMessage的日志来源。 |
 
 ## getSourceId
 
@@ -162,6 +174,8 @@ getSourceId(): string
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

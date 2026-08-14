@@ -8,7 +8,9 @@ Callback function for transition controller
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare type TransitionControllerCallback = (context: window.TransitionContext) => void--><!--Device-unnamed-declare type TransitionControllerCallback = (context: window.TransitionContext) => void-End-->
 
@@ -20,5 +22,5 @@ Callback function for transition controller
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | window.TransitionContext | 是 | The transition context  |
+| context | [window.TransitionContext](arkts-arkui-window-transitioncontext-i-sys.md) | 是 | The transition context |
 

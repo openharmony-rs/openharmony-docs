@@ -2,9 +2,11 @@
 
 代理提醒对象，用于设置提醒类型、响铃时长等具体信息。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-reminderAgentManager-interface ReminderRequest--><!--Device-reminderAgentManager-interface ReminderRequest-End-->
 
@@ -16,7 +18,7 @@
 forceDistributed?: boolean
 ```
 
-通知是否强制进行全场景跨设备协同显示，默认为false。具体请参考 [NotificationRequest.forceDistributed]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ - 设置为true时：通知将在所有协同设备上显示。 - 设置为false时：通知将按照协同管控名单显示。 **系统接口：** 此接口为系统接口。
+通知是否强制进行全场景跨设备协同显示，默认为false。具体请参考 [NotificationRequest.forceDistributed](../../apis-notification-kit/arkts-apis/arkts-notification-notificationrequest-notificationrequest-i-sys.md#forceDistributed) - 设置为true时：通知将在所有协同设备上显示。 - 设置为false时：通知将按照协同管控名单显示。 **系统接口：** 此接口为系统接口。
 
 **类型：** boolean
 
@@ -24,7 +26,9 @@ forceDistributed?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ReminderRequest-forceDistributed?: boolean--><!--Device-ReminderRequest-forceDistributed?: boolean-End-->
 
@@ -38,7 +42,7 @@ forceDistributed?: boolean
 notDistributed?: boolean
 ```
 
-通知是否不进行全场景跨设备协同显示，默认为false。具体请参考 [NotificationRequest.notDistributed]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ - 设置为true时：通知仅在本设备上显示。 - 设置为false时：通知将在所有协同设备上显示。 **系统接口：** 此接口为系统接口。
+通知是否不进行全场景跨设备协同显示，默认为false。具体请参考 [NotificationRequest.notDistributed](../../apis-notification-kit/arkts-apis/arkts-notification-notificationrequest-notificationrequest-i-sys.md#notDistributed) - 设置为true时：通知仅在本设备上显示。 - 设置为false时：通知将在所有协同设备上显示。 **系统接口：** 此接口为系统接口。
 
 **类型：** boolean
 
@@ -46,7 +50,9 @@ notDistributed?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ReminderRequest-notDistributed?: boolean--><!--Device-ReminderRequest-notDistributed?: boolean-End-->
 

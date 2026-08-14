@@ -4,9 +4,9 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
-**装饰器类型：** @ObservedV2
+**废弃版本：** -1
 
 <!--Device-unnamed-export declare class EditableSaveButtonV2--><!--Device-unnamed-export declare class EditableSaveButtonV2-End-->
 
@@ -22,9 +22,13 @@ EditableSaveButtonV2的构造函数。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-EditableSaveButtonV2-constructor(options?: EditableSaveButtonV2Options)--><!--Device-EditableSaveButtonV2-constructor(options?: EditableSaveButtonV2Options)-End-->
 
@@ -34,12 +38,13 @@ EditableSaveButtonV2的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 保存按钮配置选项。 |
+| options | [EditableSaveButtonV2Options](arkts-arkui-arkui-advanced-editabletitlebarv2-editablesavebuttonv2options-i.md) | 否 | 保存按钮配置选项。 |
 
 ## defaultFocus
 
 ```TypeScript
-public defaultFocus: boolean
+@Trace
+  public defaultFocus: boolean
 ```
 
 是否默认获取焦点。 true：获焦。 false：不获焦。 默认值：false。
@@ -50,18 +55,23 @@ public defaultFocus: boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-EditableSaveButtonV2-public defaultFocus: boolean--><!--Device-EditableSaveButtonV2-public defaultFocus: boolean-End-->
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-EditableSaveButtonV2-@Trace  public defaultFocus: boolean--><!--Device-EditableSaveButtonV2-@Trace  public defaultFocus: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## isRequired
 
 ```TypeScript
-public isRequired: boolean
+@Trace
+  public isRequired: boolean
 ```
 
 是否显示保存按钮。 true：显示保存按钮。 false：不显示保存按钮。 默认值：true。
@@ -72,31 +82,40 @@ public isRequired: boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-EditableSaveButtonV2-public isRequired: boolean--><!--Device-EditableSaveButtonV2-public isRequired: boolean-End-->
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-EditableSaveButtonV2-@Trace  public isRequired: boolean--><!--Device-EditableSaveButtonV2-@Trace  public isRequired: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onAction
 
 ```TypeScript
-public onAction?: OnActionCallback
+@Trace
+  public onAction?: OnActionCallback
 ```
 
 点击保存按钮的回调函数。未设置时点击按钮无响应。
 
-**类型：** OnActionCallback
+**类型：** [OnActionCallback](arkts-arkui-onactioncallback-t.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-EditableSaveButtonV2-public onAction?: OnActionCallback--><!--Device-EditableSaveButtonV2-public onAction?: OnActionCallback-End-->
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-EditableSaveButtonV2-@Trace  public onAction?: OnActionCallback--><!--Device-EditableSaveButtonV2-@Trace  public onAction?: OnActionCallback-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

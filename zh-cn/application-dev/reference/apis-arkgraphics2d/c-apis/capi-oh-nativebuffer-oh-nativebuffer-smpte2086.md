@@ -24,7 +24,7 @@ typedef struct OH_NativeBuffer_Smpte2086 {...} OH_NativeBuffer_Smpte2086
 | [OH_NativeBuffer_ColorXY](capi-oh-nativebuffer-oh-nativebuffer-colorxy.md) displayPrimaryGreen | 绿基色 |
 | [OH_NativeBuffer_ColorXY](capi-oh-nativebuffer-oh-nativebuffer-colorxy.md) displayPrimaryBlue | 蓝基色 |
 | [OH_NativeBuffer_ColorXY](capi-oh-nativebuffer-oh-nativebuffer-colorxy.md) whitePoint | 白点 |
-| float maxLuminance | 最大亮度 |
-| float minLuminance | 最小亮度 |
+| float maxLuminance | 最大的光亮度 |
+| float minLuminance | 最小的光亮度 |
 
 

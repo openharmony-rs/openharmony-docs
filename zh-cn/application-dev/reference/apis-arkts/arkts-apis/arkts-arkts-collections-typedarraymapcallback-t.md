@@ -11,6 +11,8 @@ ArkTS TypedArray转换映射函数类型。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-collections-type TypedArrayMapCallback<ElementType, ArrayType> =    (value: ElementType, index: number, array: ArrayType) => ElementType--><!--Device-collections-type TypedArrayMapCallback<ElementType, ArrayType> =    (value: ElementType, index: number, array: ArrayType) => ElementType-End-->
@@ -21,9 +23,9 @@ ArkTS TypedArray转换映射函数类型。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ElementType | 是 | 当前映射的ArkTS TypedArray元素。  |
-| index | number | 是 | 当前映射的ArkTS TypedArray元素索引，从0开始。  |
-| array | ArrayType | 是 | 当前映射的ArkTS TypedArray实例。  |
+| value | ElementType | 是 | 当前映射的ArkTS TypedArray元素。 |
+| index | number | 是 | 当前映射的ArkTS TypedArray元素索引，从0开始。 |
+| array | ArrayType | 是 | 当前映射的ArkTS TypedArray实例。 |
 
 **返回值：**
 

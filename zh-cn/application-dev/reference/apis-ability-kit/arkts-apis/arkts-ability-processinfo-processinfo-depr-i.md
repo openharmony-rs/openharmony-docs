@@ -1,0 +1,54 @@
+# ProcessInfo
+
+定义进程信息，可以通过getProcessInfo 获取当前Ability运行的进程信息。
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
+
+<!--Device-unnamed-export interface ProcessInfo--><!--Device-unnamed-export interface ProcessInfo-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## pid
+
+```TypeScript
+pid: int
+```
+
+进程ID。
+
+**类型：** int
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
+
+<!--Device-ProcessInfo-pid: int--><!--Device-ProcessInfo-pid: int-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## processName
+
+```TypeScript
+processName: string
+```
+
+进程名称。
+
+**类型：** string
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
+
+<!--Device-ProcessInfo-processName: string--><!--Device-ProcessInfo-processName: string-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+

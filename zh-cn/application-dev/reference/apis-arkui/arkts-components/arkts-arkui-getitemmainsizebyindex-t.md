@@ -10,6 +10,8 @@ declare type GetItemMainSizeByIndex = (index: number) => number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -22,7 +24,7 @@ declare type GetItemMainSizeByIndex = (index: number) => number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | FlowItem在WaterFlow中的索引。\_\_\_HTML\_TAG\_USD\_0\_\_\_取值范围：[0, 子组件总数-1]  |
+| index | number | 是 | FlowItem在WaterFlow中的索引。<br/>取值范围：[0, 子组件总数-1] |
 
 **返回值：**
 

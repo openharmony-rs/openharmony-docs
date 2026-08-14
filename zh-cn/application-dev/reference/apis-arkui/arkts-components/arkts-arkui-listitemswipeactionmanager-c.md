@@ -6,6 +6,8 @@ ListItem划出菜单的管理器。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare class ListItemSwipeActionManager--><!--Device-unnamed-declare class ListItemSwipeActionManager-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -22,6 +24,8 @@ static collapse(node: FrameNode): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
@@ -34,7 +38,7 @@ static collapse(node: FrameNode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | ListItem节点对象。 |
+| node | FrameNode | 是 | ListItem节点对象。 |
 
 **错误码：**
 
@@ -55,6 +59,8 @@ static expand(node: FrameNode, direction: ListItemSwipeActionDirection): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
@@ -67,8 +73,8 @@ static expand(node: FrameNode, direction: ListItemSwipeActionDirection): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | ListItem节点对象。 |
-| direction | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | ListItem划出菜单的展开方向。 |
+| node | FrameNode | 是 | ListItem节点对象。 |
+| direction | [ListItemSwipeActionDirection](arkts-arkui-listitemswipeactiondirection-e.md) | 是 | ListItem划出菜单的展开方向。 |
 
 **错误码：**
 

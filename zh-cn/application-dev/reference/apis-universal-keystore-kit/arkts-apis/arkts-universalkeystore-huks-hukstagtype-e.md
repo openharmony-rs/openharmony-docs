@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 <!--Device-huks-export enum HuksTagType--><!--Device-huks-export enum HuksTagType-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
@@ -21,6 +23,8 @@ HUKS_TAG_TYPE_INVALID = 0 << 28
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -40,6 +44,8 @@ HUKS_TAG_TYPE_INT = 1 << 28
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksTagType-HUKS_TAG_TYPE_INT = 1 << 28--><!--Device-HuksTagType-HUKS_TAG_TYPE_INT = 1 << 28-End-->
@@ -57,6 +63,8 @@ HUKS_TAG_TYPE_UINT = 2 << 28
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -76,6 +84,8 @@ HUKS_TAG_TYPE_ULONG = 3 << 28
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksTagType-HUKS_TAG_TYPE_ULONG = 3 << 28--><!--Device-HuksTagType-HUKS_TAG_TYPE_ULONG = 3 << 28-End-->
@@ -94,6 +104,8 @@ HUKS_TAG_TYPE_BOOL = 4 << 28
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksTagType-HUKS_TAG_TYPE_BOOL = 4 << 28--><!--Device-HuksTagType-HUKS_TAG_TYPE_BOOL = 4 << 28-End-->
@@ -111,6 +123,8 @@ HUKS_TAG_TYPE_BYTES = 5 << 28
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-export default class AdsServiceExtensionAbility--><!--Device-unnamed-export default class AdsServiceExtensionAbility-End-->
 
 **系统能力：** SystemCapability.Advertising.Ads
@@ -24,6 +26,8 @@ onLoadAd(adParam: advertising.AdRequestParams, adOptions: advertising.AdOptions,
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-AdsServiceExtensionAbility-onLoadAd(adParam: advertising.AdRequestParams, adOptions: advertising.AdOptions, respCallback: RespCallback)--><!--Device-AdsServiceExtensionAbility-onLoadAd(adParam: advertising.AdRequestParams, adOptions: advertising.AdOptions, respCallback: RespCallback)-End-->
 
 **系统能力：** SystemCapability.Advertising.Ads
@@ -36,9 +40,9 @@ onLoadAd(adParam: advertising.AdRequestParams, adOptions: advertising.AdOptions,
 | --- | --- | --- | --- |
 | adParam | advertising.AdRequestParams | 是 | 广告请求参数。 |
 | adOptions | advertising.AdOptions | 是 | 广告配置参数。 |
-| respCallback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 广告请求回调。 |
+| respCallback | [RespCallback](arkts-ads-advertising-adsserviceextensionability-respcallback-i.md) | 是 | 广告请求回调。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { AdsServiceExtensionAbility, advertising, RespCallback } from '@kit.AdsKit';
@@ -66,6 +70,8 @@ onLoadAdWithMultiSlots(adParams: advertising.AdRequestParams[], adOptions: adver
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-AdsServiceExtensionAbility-onLoadAdWithMultiSlots(adParams: advertising.AdRequestParams[], adOptions: advertising.AdOptions,     respCallback: RespCallback)--><!--Device-AdsServiceExtensionAbility-onLoadAdWithMultiSlots(adParams: advertising.AdRequestParams[], adOptions: advertising.AdOptions,     respCallback: RespCallback)-End-->
 
 **系统能力：** SystemCapability.Advertising.Ads
@@ -78,9 +84,9 @@ onLoadAdWithMultiSlots(adParams: advertising.AdRequestParams[], adOptions: adver
 | --- | --- | --- | --- |
 | adParams | advertising.AdRequestParams[] | 是 | 广告请求参数。 |
 | adOptions | advertising.AdOptions | 是 | 广告配置参数。 |
-| respCallback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 广告请求回调。 |
+| respCallback | [RespCallback](arkts-ads-advertising-adsserviceextensionability-respcallback-i.md) | 是 | 广告请求回调。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { AdsServiceExtensionAbility, advertising, RespCallback } from '@kit.AdsKit';

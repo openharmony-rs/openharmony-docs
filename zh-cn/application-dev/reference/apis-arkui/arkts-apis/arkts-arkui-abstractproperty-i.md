@@ -6,7 +6,9 @@ AbstractProperty是AppStorage/LocalStorage中属性的引用，提供读取、�
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-<!--Device-unnamed-declare interface AbstractProperty<T>--><!--Device-unnamed-declare interface AbstractProperty<T>-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare interface AbstractProperty--><!--Device-unnamed-declare interface AbstractProperty-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,11 +18,13 @@ AbstractProperty是AppStorage/LocalStorage中属性的引用，提供读取、�
 get(): T
 ```
 
-读取\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_/ \_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_中所引用属性的数据。
+读取[AppStorage](../../../ui/state-management/arkts-appstorage.md)/ [LocalStorage](../../../ui/state-management/arkts-localstorage.md)中所引用属性的数据。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -40,11 +44,13 @@ get(): T
 info(): string
 ```
 
-读取\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_/ \_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_中所引用属性的属性名。
+读取[AppStorage](../../../ui/state-management/arkts-appstorage.md)/ [LocalStorage](../../../ui/state-management/arkts-localstorage.md)中所引用属性的属性名。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -64,11 +70,13 @@ info(): string
 set(newValue: T): void
 ```
 
-更新\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_/ \_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_中所引用属性的数据，newValue必须是T类型，可以为null或undefined。
+更新[AppStorage](../../../ui/state-management/arkts-appstorage.md)/ [LocalStorage](../../../ui/state-management/arkts-localstorage.md)中所引用属性的数据，newValue必须是T类型，可以为null或undefined。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

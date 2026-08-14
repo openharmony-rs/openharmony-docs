@@ -1,10 +1,12 @@
 # CustomComponentContext
 
-\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_类提供对组件级服务的访问，包括复用池。通过 [UIUtils.getCustomComponentContext]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_获取实例。
+`CustomComponentContext`类提供对组件级服务的访问，包括复用池。通过 [UIUtils.getCustomComponentContext](arkts-arkui-arkui-statemanagement-uiutils-c.md#getCustomComponentContext)获取实例。
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-export declare interface CustomComponentContext--><!--Device-unnamed-export declare interface CustomComponentContext-End-->
 
@@ -16,11 +18,13 @@
 getReusePool(): IReusePool | undefined
 ```
 
-返回该自定义组件拥有的全局复用池。如果组件或其上层组件没有通过\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_和\_\_\_INLINE\_CODE\_DESC\_USD\_1\_\_\_配置全局复用池，则返回\_\_\_INLINE\_CODE\_DESC\_USD\_2\_\_\_。配置全局复用池方式请参考 \_\_\_MD\_LINK\_DESC\_USD\_3\_\_\_。
+返回该自定义组件拥有的全局复用池。如果组件或其上层组件没有通过`reusePool`和`poolAccepts`配置全局复用池，则返回`undefined`。配置全局复用池方式请参考 [全局复用开发指南](../../../ui/state-management/arkts-global-reuse-pool.md)。
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -34,9 +38,9 @@ getReusePool(): IReusePool | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 当前组件配置全局复用池时，返回复用池信息，否则返回\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
+| [IReusePool](arkts-arkui-arkui-statemanagement-ireusepool-i.md) | 当前组件配置全局复用池时，返回复用池信息，否则返回`undefined`。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { UIUtils } from '@kit.ArkUI';

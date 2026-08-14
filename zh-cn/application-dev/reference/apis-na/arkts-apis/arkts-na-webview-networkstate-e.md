@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-webview-enum NetworkState--><!--Device-webview-enum NetworkState-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -21,6 +23,8 @@ EMPTY = 0
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-NetworkState-EMPTY = 0--><!--Device-NetworkState-EMPTY = 0-End-->
 
@@ -38,6 +42,8 @@ IDLE = 1
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-NetworkState-IDLE = 1--><!--Device-NetworkState-IDLE = 1-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -54,6 +60,8 @@ LOADING = 2
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-NetworkState-LOADING = 2--><!--Device-NetworkState-LOADING = 2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -69,6 +77,8 @@ NETWORK_ERROR = 3
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-NetworkState-NETWORK_ERROR = 3--><!--Device-NetworkState-NETWORK_ERROR = 3-End-->
 

@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** [userAuth.UserAuthResultCode](arkts-userauthentication-userauth-userauthresultcode-e.md)
+**替代接口：** [UserAuthResultCode](arkts-userauthentication-userauth-userauthresultcode-e.md#UserAuthResultCode)
 
 <!--Device-userAuth-enum ResultCode--><!--Device-userAuth-enum ResultCode-End-->
 
@@ -28,7 +28,7 @@ SUCCESS = 0
 
 **废弃版本：** 9
 
-**替代接口：** [userAuth.UserAuthResultCode.SUCCESS](arkts-userauthentication-userauth-userauthresultcode-e.md#success)
+**替代接口：** [SUCCESS](arkts-userauthentication-userauth-userauthresultcode-e.md#SUCCESS)
 
 <!--Device-ResultCode-SUCCESS = 0--><!--Device-ResultCode-SUCCESS = 0-End-->
 
@@ -48,7 +48,7 @@ FAIL = 1
 
 **废弃版本：** 9
 
-**替代接口：** [userAuth.UserAuthResultCode.FAIL](arkts-userauthentication-userauth-userauthresultcode-e.md#fail)
+**替代接口：** [FAIL](arkts-userauthentication-userauth-userauthresultcode-e.md#FAIL)
 
 <!--Device-ResultCode-FAIL = 1--><!--Device-ResultCode-FAIL = 1-End-->
 
@@ -68,7 +68,7 @@ GENERAL_ERROR = 2
 
 **废弃版本：** 9
 
-**替代接口：** [userAuth.UserAuthResultCode.GENERAL_ERROR](arkts-userauthentication-userauth-userauthresultcode-e.md#general_error)
+**替代接口：** [GENERAL_ERROR](arkts-userauthentication-userauth-userauthresultcode-e.md#GENERAL_ERROR)
 
 <!--Device-ResultCode-GENERAL_ERROR = 2--><!--Device-ResultCode-GENERAL_ERROR = 2-End-->
 
@@ -88,7 +88,7 @@ CANCELED = 3
 
 **废弃版本：** 9
 
-**替代接口：** [userAuth.UserAuthResultCode.CANCELED](arkts-userauthentication-userauth-userauthresultcode-e.md#canceled)
+**替代接口：** [CANCELED](arkts-userauthentication-userauth-userauthresultcode-e.md#CANCELED)
 
 <!--Device-ResultCode-CANCELED = 3--><!--Device-ResultCode-CANCELED = 3-End-->
 
@@ -108,7 +108,7 @@ TIMEOUT = 4
 
 **废弃版本：** 9
 
-**替代接口：** [userAuth.UserAuthResultCode.TIMEOUT](arkts-userauthentication-userauth-userauthresultcode-e.md#timeout)
+**替代接口：** [TIMEOUT](arkts-userauthentication-userauth-userauthresultcode-e.md#TIMEOUT)
 
 <!--Device-ResultCode-TIMEOUT = 4--><!--Device-ResultCode-TIMEOUT = 4-End-->
 
@@ -128,7 +128,7 @@ TYPE_NOT_SUPPORT = 5
 
 **废弃版本：** 9
 
-**替代接口：** [userAuth.UserAuthResultCode.TYPE_NOT_SUPPORT](arkts-userauthentication-userauth-userauthresultcode-e.md#type_not_support)
+**替代接口：** [TYPE_NOT_SUPPORT](arkts-userauthentication-userauth-userauthresultcode-e.md#TYPE_NOT_SUPPORT)
 
 <!--Device-ResultCode-TYPE_NOT_SUPPORT = 5--><!--Device-ResultCode-TYPE_NOT_SUPPORT = 5-End-->
 
@@ -148,7 +148,7 @@ TRUST_LEVEL_NOT_SUPPORT = 6
 
 **废弃版本：** 9
 
-**替代接口：** [userAuth.UserAuthResultCode.TRUST_LEVEL_NOT_SUPPORT](arkts-userauthentication-userauth-userauthresultcode-e.md#trust_level_not_support)
+**替代接口：** [TRUST_LEVEL_NOT_SUPPORT](arkts-userauthentication-userauth-userauthresultcode-e.md#TRUST_LEVEL_NOT_SUPPORT)
 
 <!--Device-ResultCode-TRUST_LEVEL_NOT_SUPPORT = 6--><!--Device-ResultCode-TRUST_LEVEL_NOT_SUPPORT = 6-End-->
 
@@ -168,7 +168,7 @@ BUSY = 7
 
 **废弃版本：** 9
 
-**替代接口：** [userAuth.UserAuthResultCode.BUSY](arkts-userauthentication-userauth-userauthresultcode-e.md#busy)
+**替代接口：** [BUSY](arkts-userauthentication-userauth-userauthresultcode-e.md#BUSY)
 
 <!--Device-ResultCode-BUSY = 7--><!--Device-ResultCode-BUSY = 7-End-->
 
@@ -188,7 +188,7 @@ INVALID_PARAMETERS = 8
 
 **废弃版本：** 9
 
-**替代接口：** [userAuth.UserAuthResultCode.INVALID_PARAMETERS](arkts-userauthentication-userauth-userauthresultcode-e.md#invalid_parameters)
+**替代接口：** [INVALID_PARAMETERS](arkts-userauthentication-userauth-userauthresultcode-e.md#INVALID_PARAMETERS)
 
 <!--Device-ResultCode-INVALID_PARAMETERS = 8--><!--Device-ResultCode-INVALID_PARAMETERS = 8-End-->
 
@@ -208,7 +208,7 @@ LOCKED = 9
 
 **废弃版本：** 9
 
-**替代接口：** [userAuth.UserAuthResultCode.LOCKED](arkts-userauthentication-userauth-userauthresultcode-e.md#locked)
+**替代接口：** [LOCKED](arkts-userauthentication-userauth-userauthresultcode-e.md#LOCKED)
 
 <!--Device-ResultCode-LOCKED = 9--><!--Device-ResultCode-LOCKED = 9-End-->
 
@@ -228,7 +228,7 @@ NOT_ENROLLED = 10
 
 **废弃版本：** 9
 
-**替代接口：** [userAuth.UserAuthResultCode.NOT_ENROLLED](arkts-userauthentication-userauth-userauthresultcode-e.md#not_enrolled)
+**替代接口：** [NOT_ENROLLED](arkts-userauthentication-userauth-userauthresultcode-e.md#NOT_ENROLLED)
 
 <!--Device-ResultCode-NOT_ENROLLED = 10--><!--Device-ResultCode-NOT_ENROLLED = 10-End-->
 

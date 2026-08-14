@@ -6,11 +6,13 @@
 function castAudio(session: SessionToken | 'all', audioDevices: Array<audio.AudioDeviceDescriptor>, callback: AsyncCallback<void>): void
 ```
 
-投播会话到指定设备列表。结果通过callback异步回调方式返回。 需要导入\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_模块获取AudioDeviceDescriptor的相关描述。
+投播会话到指定设备列表。结果通过callback异步回调方式返回。 需要导入`ohos.multimedia.audio`模块获取AudioDeviceDescriptor的相关描述。
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -24,22 +26,22 @@ function castAudio(session: SessionToken | 'all', audioDevices: Array<audio.Audi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| session | \_\_\_MD\_LINK\_USD\_0\_\_\_ \| 'all' | 是 | 会话令牌。SessionToken表示单个token；字符串\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_指所有token。 |
+| session | [SessionToken](arkts-avsession-avsession-sessiontoken-i-sys.md) \| 'all' | 是 | 会话令牌。SessionToken表示单个token；字符串`'all'`指所有token。 |
 | audioDevices | Array&lt;audio.AudioDeviceDescriptor&gt; | 是 | 媒体设备列表。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数。当投播成功，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当投播成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 | [6600104](../errorcode-avsession.md#6600104-远端会话连接失败) | The remote session connection failed. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
@@ -65,11 +67,13 @@ if (audioDevices !== undefined) {
 function castAudio(session: SessionToken | 'all', audioDevices: Array<audio.AudioDeviceDescriptor>): Promise<void>
 ```
 
-投播会话到指定设备列表。结果通过Promise异步回调方式返回。 调用此接口之前，需要导入\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_模块获取AudioDeviceDescriptor的相关描述。
+投播会话到指定设备列表。结果通过Promise异步回调方式返回。 调用此接口之前，需要导入`ohos.multimedia.audio`模块获取AudioDeviceDescriptor的相关描述。
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -83,7 +87,7 @@ function castAudio(session: SessionToken | 'all', audioDevices: Array<audio.Audi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| session | \_\_\_MD\_LINK\_USD\_0\_\_\_ \| 'all' | 是 | 会话令牌。SessionToken表示单个token；字符串\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_指所有token。 |
+| session | [SessionToken](arkts-avsession-avsession-sessiontoken-i-sys.md) \| 'all' | 是 | 会话令牌。SessionToken表示单个token；字符串`'all'`指所有token。 |
 | audioDevices | Array&lt;audio.AudioDeviceDescriptor&gt; | 是 | 媒体设备列表。 |
 
 **返回值：**
@@ -96,14 +100,14 @@ function castAudio(session: SessionToken | 'all', audioDevices: Array<audio.Audi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 | [6600104](../errorcode-avsession.md#6600104-远端会话连接失败) | The remote session connection failed. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';

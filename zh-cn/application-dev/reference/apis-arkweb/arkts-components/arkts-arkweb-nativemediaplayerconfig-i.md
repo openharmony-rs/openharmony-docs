@@ -1,10 +1,12 @@
 # NativeMediaPlayerConfig
 
-用于[开启应用接管网页媒体播放功能]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_的配置信息。
+用于开启应用接管网页媒体播放功能的配置信息。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare interface NativeMediaPlayerConfig--><!--Device-unnamed-declare interface NativeMediaPlayerConfig-End-->
 
@@ -23,6 +25,8 @@ enable: boolean
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -43,6 +47,8 @@ shouldOverlay: boolean
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

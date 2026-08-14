@@ -10,7 +10,9 @@ Sets retry options for all tasks. Used when task-specific retry configuration is
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -22,9 +24,9 @@ Sets retry options for all tasks. Used when task-specific retry configuration is
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | Task retry configurations.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_Default value: Refer to the default value of RetryOptions. |
+| options | [RetryOptions](arkts-basicservices-cachedownload-retryoptions-i.md) | 否 | Task retry configurations. &lt;br&gt;Default value: Refer to the default value of RetryOptions. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare abstract class LeadingMarginSpan--><!--Device-unnamed-declare abstract class LeadingMarginSpan-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -22,6 +24,8 @@ abstract getLeadingMargin(): LengthMetrics
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
@@ -34,7 +38,7 @@ abstract getLeadingMargin(): LengthMetrics
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 文本段落的缩进。不支持百分比。 |
+| LengthMetrics | 文本段落的缩进。不支持百分比。 &lt;br&gt;默认值：0 |
 
 ## onDraw
 
@@ -48,6 +52,8 @@ abstract onDraw(context: DrawContext, drawInfo: LeadingMarginSpanDrawInfo): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
@@ -60,6 +66,6 @@ abstract onDraw(context: DrawContext, drawInfo: LeadingMarginSpanDrawInfo): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 图形绘制上下文。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_DrawContext的canvas方法获取的是组件的画布，绘制时不会超出组件的范围。 |
-| drawInfo | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 自定义绘制信息。 |
+| context | DrawContext | 是 | 图形绘制上下文。 &lt;br&gt;DrawContext的canvas方法获取的是组件的画布，绘制时不会超出组件的范围。 |
+| drawInfo | [LeadingMarginSpanDrawInfo](arkts-arkui-leadingmarginspandrawinfo-i.md) | 是 | 自定义绘制信息。 |
 

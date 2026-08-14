@@ -8,9 +8,11 @@ function isHdHapticSupported(): boolean
 
 查询当前设备是否支持高清振动。 适用于在触发高清振动前确认设备是否支持，避免在不支持的设备上调用VibrateFromFile或VibrateFromPattern类型振动导致振动效果不佳或返回错误码801。返回true表示设备支持高清振动，可使用 VibrateFromFile和VibrateFromPattern类型触发振动；返回false表示不支持，使用自定义振动类型将返回错误码801或效果不佳。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-vibrator-function isHdHapticSupported(): boolean--><!--Device-vibrator-function isHdHapticSupported(): boolean-End-->
 
@@ -28,7 +30,7 @@ function isHdHapticSupported(): boolean
 | --- | --- |
 | [14600101](../errorcode-vibrator.md#14600101-操作设备失败) | Device operation failed. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { vibrator } from '@kit.SensorServiceKit';

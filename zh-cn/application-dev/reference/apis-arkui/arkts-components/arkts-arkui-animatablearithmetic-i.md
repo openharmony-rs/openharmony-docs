@@ -6,7 +6,9 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
-<!--Device-unnamed-declare interface AnimatableArithmetic<T>--><!--Device-unnamed-declare interface AnimatableArithmetic<T>-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare interface AnimatableArithmetic--><!--Device-unnamed-declare interface AnimatableArithmetic-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,6 +24,8 @@ equals(rhs: AnimatableArithmetic<T>): boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -34,7 +38,7 @@ equals(rhs: AnimatableArithmetic<T>): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rhs | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; | 是 | 和自身比较相等的另一个数据对象。 |
+| rhs | [AnimatableArithmetic](arkts-arkui-animatablearithmetic-i.md)&lt;T&gt; | 是 | 和自身比较相等的另一个数据对象。 |
 
 **返回值：**
 
@@ -54,6 +58,8 @@ multiply(scale: number): AnimatableArithmetic<T>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -72,7 +78,7 @@ multiply(scale: number): AnimatableArithmetic<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; | 乘法运算的结果。 |
+| [AnimatableArithmetic](arkts-arkui-animatablearithmetic-i.md)&lt;T&gt; | 乘法运算的结果。 |
 
 ## plus
 
@@ -86,6 +92,8 @@ plus(rhs: AnimatableArithmetic<T>): AnimatableArithmetic<T>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -98,13 +106,13 @@ plus(rhs: AnimatableArithmetic<T>): AnimatableArithmetic<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rhs | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; | 是 | 加法运算的对象。 |
+| rhs | [AnimatableArithmetic](arkts-arkui-animatablearithmetic-i.md)&lt;T&gt; | 是 | 加法运算的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; | 加法运算的结果。 |
+| [AnimatableArithmetic](arkts-arkui-animatablearithmetic-i.md)&lt;T&gt; | 加法运算的结果。 |
 
 ## subtract
 
@@ -118,6 +126,8 @@ subtract(rhs: AnimatableArithmetic<T>): AnimatableArithmetic<T>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -130,11 +140,11 @@ subtract(rhs: AnimatableArithmetic<T>): AnimatableArithmetic<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rhs | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; | 是 | 减法运算的对象。 |
+| rhs | [AnimatableArithmetic](arkts-arkui-animatablearithmetic-i.md)&lt;T&gt; | 是 | 减法运算的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; | 减法运算的结果。 |
+| [AnimatableArithmetic](arkts-arkui-animatablearithmetic-i.md)&lt;T&gt; | 减法运算的结果。 |
 

@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface PathOptions--><!--Device-unnamed-declare interface PathOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -16,13 +18,15 @@
 commands?: ResourceStr
 ```
 
-路径绘制的命令字符串，符合\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_，单位为px。 默认值：空字符串 异常值按照默认值处理。
+路径绘制的命令字符串，符合[SVG路径描述规范](../../../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg路径描述规范)，单位为px。 默认值：空字符串 异常值按照默认值处理。
 
 **类型：** ResourceStr
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -46,6 +50,8 @@ height?: Length
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -67,6 +73,8 @@ width?: Length
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-webview-enum MediaPlaybackState--><!--Device-webview-enum MediaPlaybackState-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -21,6 +23,8 @@ NONE = 0
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-MediaPlaybackState-NONE = 0--><!--Device-MediaPlaybackState-NONE = 0-End-->
 
@@ -38,6 +42,8 @@ PLAYING = 1
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-MediaPlaybackState-PLAYING = 1--><!--Device-MediaPlaybackState-PLAYING = 1-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -54,6 +60,8 @@ PAUSED = 2
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-MediaPlaybackState-PAUSED = 2--><!--Device-MediaPlaybackState-PAUSED = 2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -69,6 +77,8 @@ STOPPED = 3
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-MediaPlaybackState-STOPPED = 3--><!--Device-MediaPlaybackState-STOPPED = 3-End-->
 

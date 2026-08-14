@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface ImageAttachmentInterface--><!--Device-unnamed-declare interface ImageAttachmentInterface-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -18,11 +20,13 @@ colorFilter?: ColorFilterType
 
 获取属性字符串的图片颜色滤镜效果。
 
-**类型：** ColorFilterType
+**类型：** [ColorFilterType](arkts-arkui-colorfiltertype-t.md)
 
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,11 +44,13 @@ layoutStyle?: ImageAttachmentLayoutStyle
 
 设置图片布局。不传入时使用默认布局（外边距、内边距和圆角均为0）。
 
-**类型：** ImageAttachmentLayoutStyle
+**类型：** [ImageAttachmentLayoutStyle](arkts-arkui-imageattachmentlayoutstyle-i.md)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -68,6 +74,8 @@ objectFit?: ImageFit
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -89,6 +97,8 @@ size?: SizeOptions
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -112,6 +122,8 @@ value: PixelMap
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -133,6 +145,8 @@ verticalAlign?: ImageSpanAlignment
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

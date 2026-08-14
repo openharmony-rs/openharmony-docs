@@ -1,10 +1,12 @@
 # FileSelectorResult
 
-定义文件选择器结果，与 \_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 方法相关联。
+定义文件选择器结果，与 onFileSelectorShow 方法相关联。
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare class FileSelectorResult--><!--Device-unnamed-declare class FileSelectorResult-End-->
 
@@ -21,6 +23,8 @@ FileSelectorResult的构造函数。
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -39,6 +43,8 @@ handleFileList(fileList: Array<string>): void
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

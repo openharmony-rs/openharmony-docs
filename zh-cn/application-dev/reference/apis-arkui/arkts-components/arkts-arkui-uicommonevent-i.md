@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface UICommonEvent--><!--Device-unnamed-declare interface UICommonEvent-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -16,11 +18,13 @@
 setOnAppear(callback: Callback<void> | undefined): void
 ```
 
-设置[onAppear]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_挂载显示事件的回调。
+设置[onAppear](arkts-arkui-commonmethod-c.md#onAppear)挂载显示事件的回调。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -34,7 +38,7 @@ setOnAppear(callback: Callback<void> | undefined): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; \| undefined | 是 | 挂载显示事件的回调函数。 |
+| callback | [Callback](arkts-arkui-callback-i.md)&lt;void&gt; \| undefined | 是 | 挂载显示事件的回调函数。 |
 
 ## setOnBlur
 
@@ -42,11 +46,13 @@ setOnAppear(callback: Callback<void> | undefined): void
 setOnBlur(callback: Callback<void> | undefined): void
 ```
 
-设置[onBlur]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_失焦事件的回调。
+设置[onBlur](arkts-arkui-commonmethod-c.md#onBlur)失焦事件的回调。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -60,7 +66,7 @@ setOnBlur(callback: Callback<void> | undefined): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; \| undefined | 是 | 失焦事件的回调。 |
+| callback | [Callback](arkts-arkui-callback-i.md)&lt;void&gt; \| undefined | 是 | 失焦事件的回调。 |
 
 ## setOnClick
 
@@ -68,11 +74,13 @@ setOnBlur(callback: Callback<void> | undefined): void
 setOnClick(callback: Callback<ClickEvent> | undefined): void
 ```
 
-设置[点击事件]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_的回调。
+设置点击事件的回调。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -86,7 +94,7 @@ setOnClick(callback: Callback<ClickEvent> | undefined): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;ClickEvent&gt; \| undefined | 是 | 点击事件的回调函数。 |
+| callback | [Callback](arkts-arkui-callback-i.md)&lt;[ClickEvent](arkts-arkui-clickevent-i.md)&gt; \| undefined | 是 | 点击事件的回调函数。 |
 
 ## setOnDisappear
 
@@ -94,11 +102,13 @@ setOnClick(callback: Callback<ClickEvent> | undefined): void
 setOnDisappear(callback: Callback<void> | undefined): void
 ```
 
-设置[onDisAppear]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_卸载消失事件的回调。
+设置[onDisAppear](arkts-arkui-commonmethod-c.md#onDisAppear)卸载消失事件的回调。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -112,7 +122,7 @@ setOnDisappear(callback: Callback<void> | undefined): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; \| undefined | 是 | 卸载消失事件的回调。 |
+| callback | [Callback](arkts-arkui-callback-i.md)&lt;void&gt; \| undefined | 是 | 卸载消失事件的回调。 |
 
 ## setOnFocus
 
@@ -120,11 +130,13 @@ setOnDisappear(callback: Callback<void> | undefined): void
 setOnFocus(callback: Callback<void> | undefined): void
 ```
 
-设置[onFocus]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_获焦事件的回调。
+设置[onFocus](arkts-arkui-commonmethod-c.md#onFocus)获焦事件的回调。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -138,7 +150,7 @@ setOnFocus(callback: Callback<void> | undefined): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; \| undefined | 是 | 获焦事件的回调。 |
+| callback | [Callback](arkts-arkui-callback-i.md)&lt;void&gt; \| undefined | 是 | 获焦事件的回调。 |
 
 ## setOnHover
 
@@ -146,11 +158,13 @@ setOnFocus(callback: Callback<void> | undefined): void
 setOnHover(callback: HoverCallback | undefined): void
 ```
 
-设置[onHover]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_悬浮事件的回调。
+设置[onHover](arkts-arkui-commonmethod-c.md#onHover)悬浮事件的回调。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -164,7 +178,7 @@ setOnHover(callback: HoverCallback | undefined): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ \| undefined | 是 | 悬浮事件的回调函数。 |
+| callback | [HoverCallback](arkts-arkui-hovercallback-t.md) \| undefined | 是 | 悬浮事件的回调函数。 |
 
 ## setOnKeyEvent
 
@@ -172,11 +186,13 @@ setOnHover(callback: HoverCallback | undefined): void
 setOnKeyEvent(callback: Callback<KeyEvent> | undefined): void
 ```
 
-设置[按键事件]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_的回调。
+设置按键事件的回调。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -190,7 +206,7 @@ setOnKeyEvent(callback: Callback<KeyEvent> | undefined): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;KeyEvent&gt; \| undefined | 是 | 按键事件的回调函数。 |
+| callback | [Callback](arkts-arkui-callback-i.md)&lt;[KeyEvent](arkts-arkui-keyevent-i.md)&gt; \| undefined | 是 | 按键事件的回调函数。 |
 
 ## setOnMouse
 
@@ -198,11 +214,13 @@ setOnKeyEvent(callback: Callback<KeyEvent> | undefined): void
 setOnMouse(callback: Callback<MouseEvent> | undefined): void
 ```
 
-设置[onMouse]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_鼠标事件的回调。
+设置[onMouse](arkts-arkui-commonmethod-c.md#onMouse)鼠标事件的回调。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -216,7 +234,7 @@ setOnMouse(callback: Callback<MouseEvent> | undefined): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;MouseEvent&gt; \| undefined | 是 | 鼠标事件的回调函数。 |
+| callback | [Callback](arkts-arkui-callback-i.md)&lt;[MouseEvent](arkts-arkui-mouseevent-i.md)&gt; \| undefined | 是 | 鼠标事件的回调函数。 |
 
 ## setOnSizeChange
 
@@ -224,11 +242,13 @@ setOnMouse(callback: Callback<MouseEvent> | undefined): void
 setOnSizeChange(callback: SizeChangeCallback | undefined): void
 ```
 
-设置[onSizeChange]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_组件区域变化事件的回调。
+设置[onSizeChange](arkts-arkui-commonmethod-c.md#onSizeChange)组件区域变化事件的回调。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -242,7 +262,7 @@ setOnSizeChange(callback: SizeChangeCallback | undefined): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ \| undefined | 是 | 组件区域变化事件的回调函数。 |
+| callback | [SizeChangeCallback](arkts-arkui-sizechangecallback-t.md) \| undefined | 是 | 组件区域变化事件的回调函数。 |
 
 ## setOnTouch
 
@@ -250,11 +270,13 @@ setOnSizeChange(callback: SizeChangeCallback | undefined): void
 setOnTouch(callback: Callback<TouchEvent> | undefined): void
 ```
 
-设置[触摸事件]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_的回调。
+设置触摸事件的回调。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -268,7 +290,7 @@ setOnTouch(callback: Callback<TouchEvent> | undefined): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;TouchEvent&gt; \| undefined | 是 | 触摸事件的回调函数。 |
+| callback | [Callback](arkts-arkui-callback-i.md)&lt;[TouchEvent](arkts-arkui-touchevent-i.md)&gt; \| undefined | 是 | 触摸事件的回调函数。 |
 
 ## setOnVisibleAreaApproximateChange
 
@@ -276,11 +298,13 @@ setOnTouch(callback: Callback<TouchEvent> | undefined): void
 setOnVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: VisibleAreaChangeCallback | undefined): void
 ```
 
-设置限制回调间隔的 [onVisibleAreaChange]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 可见区域变化事件的回调。
+设置限制回调间隔的 [onVisibleAreaChange](arkts-arkui-commonmethod-c.md#onVisibleAreaChange) 可见区域变化事件的回调。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -294,6 +318,6 @@ setOnVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: Visib
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 可见区域变化相关的参数。 |
-| event | \_\_\_MD\_LINK\_USD\_0\_\_\_ \| undefined | 是 | 可见区域变化事件的回调函数。当组件可见面积与自身面积的比值接近options中设置的阈值时触发该回调。 |
+| options | [VisibleAreaEventOptions](arkts-arkui-visibleareaeventoptions-i.md) | 是 | 可见区域变化相关的参数。 |
+| event | [VisibleAreaChangeCallback](arkts-arkui-visibleareachangecallback-t.md) \| undefined | 是 | 可见区域变化事件的回调函数。当组件可见面积与自身面积的比值接近options中设置的阈值时触发该回调。 |
 

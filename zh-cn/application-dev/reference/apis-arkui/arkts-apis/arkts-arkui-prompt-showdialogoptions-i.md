@@ -1,12 +1,16 @@
 # ShowDialogOptions
 
-定义显示对话框的选项。
+对话框的选项。
 
-**起始版本：** 3
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
-<!--Device-unnamed-export interface ShowDialogOptions--><!--Device-unnamed-export interface ShowDialogOptions-End-->
+**废弃版本：** 9
+
+**替代接口：** [ShowDialogOptions](../../apis-na/arkts-apis/arkts-na-promptaction-showdialogoptions-i.md#ShowDialogOptions)
+
+<!--Device-prompt-interface ShowDialogOptions--><!--Device-prompt-interface ShowDialogOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,57 +20,19 @@
 buttons?: [Button, Button?, Button?]
 ```
 
-对话框中按钮的数组，结构为：{text:'button', color: '#666666'}，支持1-6个按钮。大于6个按钮时弹窗不显示。
+对话框中按钮的数组，结构为：{text:'button', color: '#666666'}，支持1-3个按钮。其中第一个为positiveButton，第二个为negativeButton，第三个为 neutralButton。
 
 **类型：** [Button, Button?, Button?]
 
-**起始版本：** 3
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**废弃版本：** 9
+
+**替代接口：** [buttons](../../apis-na/arkts-apis/arkts-na-promptaction-showdialogoptions-i.md#buttons)
 
 <!--Device-ShowDialogOptions-buttons?: [Button, Button?, Button?]--><!--Device-ShowDialogOptions-buttons?: [Button, Button?, Button?]-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## cancel
-
-```TypeScript
-cancel?: (data: string, code: string) => void
-```
-
-接口调用失败的回调函数。
-
-**类型：** (data: string, code: string) =&gt; void
-
-**起始版本：** 3
-
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ShowDialogOptions-cancel?: (data: string, code: string) => void--><!--Device-ShowDialogOptions-cancel?: (data: string, code: string) => void-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## complete
-
-```TypeScript
-complete?: (data: string) => void
-```
-
-接口调用结束的回调函数。
-
-**类型：** (data: string) =&gt; void
-
-**起始版本：** 3
-
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ShowDialogOptions-complete?: (data: string) => void--><!--Device-ShowDialogOptions-complete?: (data: string) => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,37 +42,19 @@ complete?: (data: string) => void
 message?: string
 ```
 
-文本内容。
+内容文本。
 
 **类型：** string
 
-**起始版本：** 3
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**废弃版本：** 9
+
+**替代接口：** [message](../../apis-na/arkts-apis/arkts-na-promptaction-showdialogoptions-i.md#message)
 
 <!--Device-ShowDialogOptions-message?: string--><!--Device-ShowDialogOptions-message?: string-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## success
-
-```TypeScript
-success?: (data: ShowDialogSuccessResponse) => void
-```
-
-接口调用成功的回调函数。
-
-**类型：** (data: ShowDialogSuccessResponse) =&gt; void
-
-**起始版本：** 3
-
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-ShowDialogOptions-success?: (data: ShowDialogSuccessResponse) => void--><!--Device-ShowDialogOptions-success?: (data: ShowDialogSuccessResponse) => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -120,11 +68,13 @@ title?: string
 
 **类型：** string
 
-**起始版本：** 3
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**废弃版本：** 9
+
+**替代接口：** [title](../../apis-na/arkts-apis/arkts-na-promptaction-showdialogoptions-i.md#title)
 
 <!--Device-ShowDialogOptions-title?: string--><!--Device-ShowDialogOptions-title?: string-End-->
 

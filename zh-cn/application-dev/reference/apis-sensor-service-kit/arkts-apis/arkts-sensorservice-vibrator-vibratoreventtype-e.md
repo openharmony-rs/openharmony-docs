@@ -1,10 +1,12 @@
 # VibratorEventType
 
-振动事件类型。用于[VibratorEvent]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_的eventType字段指定振动事件的类型。
+振动事件类型。用于[VibratorEvent](arkts-sensorservice-vibrator-vibratorevent-i.md#VibratorEvent)的eventType字段指定振动事件的类型。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-vibrator-enum VibratorEventType--><!--Device-vibrator-enum VibratorEventType-End-->
 
@@ -18,9 +20,11 @@ CONTINUOUS = 0
 
 表示长振。适用于需要持续振动反馈的场景（如引擎振动、拉弓振动等）。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-VibratorEventType-CONTINUOUS = 0--><!--Device-VibratorEventType-CONTINUOUS = 0-End-->
 
@@ -34,9 +38,11 @@ TRANSIENT = 1
 
 表示短振。适用于需要短暂振动反馈的场景（如点击、按键反馈等）。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-VibratorEventType-TRANSIENT = 1--><!--Device-VibratorEventType-TRANSIENT = 1-End-->
 

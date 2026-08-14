@@ -1,14 +1,16 @@
 # CapsuleStyleOptions
 
-胶囊样式选项。 继承自[ScanEffectOptions]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_和[CommonProgressStyleOptions]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_。
+胶囊样式选项。 继承自[ScanEffectOptions](arkts-arkui-scaneffectoptions-i.md#ScanEffectOptions)和[CommonProgressStyleOptions](arkts-arkui-commonprogressstyleoptions-i.md#CommonProgressStyleOptions)。
 
-**继承/实现关系：** CapsuleStyleOptions extends [ScanEffectOptions](../arkts-apis/arkts-arkui-component/progress-scaneffectoptions-i.md), [CommonProgressStyleOptions](../arkts-apis/arkts-arkui-component/progress-commonprogressstyleoptions-i.md)
+**继承/实现关系：** CapsuleStyleOptions extends [ScanEffectOptions](arkts-arkui-scaneffectoptions-i.md#ScanEffectOptions), [CommonProgressStyleOptions](arkts-arkui-commonprogressstyleoptions-i.md#CommonProgressStyleOptions)
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
-<!--Device-unnamed-declare interface CapsuleStyleOptions extends ScanEffectOptions, CommonProgressStyleOptions--><!--Device-unnamed-declare interface CapsuleStyleOptions extends ScanEffectOptions, CommonProgressStyleOptions-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare interface CapsuleStyleOptions--><!--Device-unnamed-declare interface CapsuleStyleOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -25,6 +27,8 @@ borderColor?: ResourceColor
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -50,6 +54,8 @@ Capsule进度条圆角半径（不支持百分比设置）。 取值范围：[0,
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -71,6 +77,8 @@ borderWidth?: Length
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -94,6 +102,8 @@ content?: ResourceStr
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -108,13 +118,15 @@ content?: ResourceStr
 font?: Font
 ```
 
-文本样式。 默认值： 文本大小（不支持百分比设置）：12fp 其他文本参数跟随[Text]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_组件的主题值。
+文本样式。 默认值： 文本大小（不支持百分比设置）：12fp 其他文本参数跟随Text组件的主题值。
 
 **类型：** Font
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -137,6 +149,8 @@ fontColor?: ResourceColor
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -161,6 +175,8 @@ showDefaultPercentage?: boolean
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -10,6 +10,8 @@ The context of vpn extension. It allows access to vpnExtension-specific resource
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-common-export type VpnExtensionContext = _VpnExtensionContext.default--><!--Device-common-export type VpnExtensionContext = _VpnExtensionContext.default-End-->

@@ -2,9 +2,11 @@
 
 意图执行的返回结果。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-insightIntent-interface ExecuteResult--><!--Device-insightIntent-interface ExecuteResult-End-->
 
@@ -18,11 +20,13 @@ interactionInfo?: InteractionInfo
 
 意图执行完成后返回的交互信息。
 
-**类型：** InteractionInfo
+**类型：** [InteractionInfo](arkts-ability-insightintent-interactioninfo-i-sys.md)
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.1.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

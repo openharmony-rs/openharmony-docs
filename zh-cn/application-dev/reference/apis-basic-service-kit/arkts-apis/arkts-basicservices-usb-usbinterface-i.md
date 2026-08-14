@@ -1,6 +1,6 @@
 # USBInterface
 
-一个[USBConfig]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_中可以含有多个USBInterface，每个USBInterface提供一个功能。
+一个[USBConfig](arkts-basicservices-usb-usbconfig-i.md#USBConfig)中可以含有多个USBInterface，每个USBInterface提供一个功能。
 
 **起始版本：** 8
 
@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBInterface](arkts-basicservices-usbmanager-usbinterface-i.md)
+**替代接口：** [USBInterface](arkts-basicservices-usbmanager-usbinterface-i.md#USBInterface)
 
 <!--Device-usb-interface USBInterface--><!--Device-usb-interface USBInterface-End-->
 
@@ -30,7 +30,7 @@ alternateSetting: number
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBInterface.alternateSetting](arkts-basicservices-usbmanager-usbinterface-i.md#alternatesetting)
+**替代接口：** [alternateSetting](arkts-basicservices-usbmanager-usbinterface-i.md#alternateSetting)
 
 <!--Device-USBInterface-alternateSetting: number--><!--Device-USBInterface-alternateSetting: number-End-->
 
@@ -52,7 +52,7 @@ clazz: number
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBInterface.clazz](arkts-basicservices-usbmanager-usbinterface-i.md#clazz)
+**替代接口：** [clazz](arkts-basicservices-usbmanager-usbinterface-i.md#clazz)
 
 <!--Device-USBInterface-clazz: number--><!--Device-USBInterface-clazz: number-End-->
 
@@ -74,7 +74,7 @@ endpoints: Array<USBEndpoint>
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBInterface.endpoints](arkts-basicservices-usbmanager-usbinterface-i.md#endpoints)
+**替代接口：** [endpoints](arkts-basicservices-usbmanager-usbinterface-i.md#endpoints)
 
 <!--Device-USBInterface-endpoints: Array<USBEndpoint>--><!--Device-USBInterface-endpoints: Array<USBEndpoint>-End-->
 
@@ -96,7 +96,7 @@ id: number
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBInterface.id](arkts-basicservices-usbmanager-usbinterface-i.md#id)
+**替代接口：** [id](arkts-basicservices-usbmanager-usbinterface-i.md#id)
 
 <!--Device-USBInterface-id: number--><!--Device-USBInterface-id: number-End-->
 
@@ -118,7 +118,7 @@ name: string
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBInterface.name](arkts-basicservices-usbmanager-usbinterface-i.md#name)
+**替代接口：** [name](arkts-basicservices-usbmanager-usbinterface-i.md#name)
 
 <!--Device-USBInterface-name: string--><!--Device-USBInterface-name: string-End-->
 
@@ -140,7 +140,7 @@ protocol: number
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBInterface.protocol](arkts-basicservices-usbmanager-usbinterface-i.md#protocol)
+**替代接口：** [protocol](arkts-basicservices-usbmanager-usbinterface-i.md#protocol)
 
 <!--Device-USBInterface-protocol: number--><!--Device-USBInterface-protocol: number-End-->
 
@@ -162,7 +162,7 @@ subClass: number
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBInterface.subClass](arkts-basicservices-usbmanager-usbinterface-i.md#subclass)
+**替代接口：** [subClass](arkts-basicservices-usbmanager-usbinterface-i.md#subClass)
 
 <!--Device-USBInterface-subClass: number--><!--Device-USBInterface-subClass: number-End-->
 

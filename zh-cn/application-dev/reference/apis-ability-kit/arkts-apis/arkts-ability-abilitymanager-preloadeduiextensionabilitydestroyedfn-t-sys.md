@@ -4,11 +4,13 @@
 export type PreloadedUIExtensionAbilityDestroyedFn = (preloadId: int) => void
 ```
 
-预加载[UIExtensionAbility]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_被销毁时的回调函数类型。
+预加载[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md#UIExtensionAbility)被销毁时的回调函数类型。
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -22,5 +24,5 @@ export type PreloadedUIExtensionAbilityDestroyedFn = (preloadId: int) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| preloadId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | The preload UIExtensionAbility ID.  |
+| preloadId | int | 是 | The preload UIExtensionAbility ID. |
 

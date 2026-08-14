@@ -6,11 +6,13 @@
 function allocUninitializedFromPool(size: int): Buffer
 ```
 
-创建指定大小未初始化的Buffer对象。内存从缓冲池分配，缓冲池为预分配的内存区域，适用于创建较小Buffer时减少频繁内存分配的开销，提升性能。对于需要独立内存的场景，建议使用[allocUninitialized]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。 创建的Buffer内容未知，需要使用[fill]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_函数来初始化Buffer对象。
+创建指定大小未初始化的Buffer对象。内存从缓冲池分配，缓冲池为预分配的内存区域，适用于创建较小Buffer时减少频繁内存分配的开销，提升性能。对于需要独立内存的场景，建议使用[allocUninitialized](arkts-arkts-buffer-allocuninitialized-f.md#allocUninitialized)。 创建的Buffer内容未知，需要使用[fill](arkts-arkts-buffer-buffer-c.md#fill)函数来初始化Buffer对象。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -22,15 +24,15 @@ function allocUninitializedFromPool(size: int): Buffer
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| size | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 指定的Buffer对象长度，单位：字节。 |
+| size | int | 是 | 指定的Buffer对象长度，单位：字节。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 未初始化的Buffer实例。 |
+| [Buffer](arkts-arkts-buffer-buffer-c.md) | 未初始化的Buffer实例。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

@@ -10,7 +10,9 @@ function createAVMusicTemplate(accessType: AVMusicTemplateType): AVMusicTemplate
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -22,13 +24,13 @@ function createAVMusicTemplate(accessType: AVMusicTemplateType): AVMusicTemplate
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| accessType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频模板类型。 |
+| accessType | [AVMusicTemplateType](arkts-avsession-avmusictemplate-avmusictemplatetype-e.md) | 是 | 音频模板类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 音频模板对象，可用于获取会话ID。 |
+| [AVMusicTemplate](arkts-avsession-avmusictemplate-avmusictemplate-c.md) | 音频模板对象，可用于获取会话ID。 |
 
 **错误码：**
 

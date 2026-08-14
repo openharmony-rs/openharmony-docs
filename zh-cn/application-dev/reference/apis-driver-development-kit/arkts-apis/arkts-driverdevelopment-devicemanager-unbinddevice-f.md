@@ -14,7 +14,7 @@ function unbindDevice(deviceId: number, callback: AsyncCallback<number>): void
 
 **废弃版本：** 19
 
-**替代接口：** [deviceManager.unbindDriverWithDeviceId](arkts-driverdevelopment-devicemanager-unbinddriverwithdeviceid-f.md#unbinddriverwithdeviceid)(deviceId:
+**替代接口：** [unbindDriverWithDeviceId](arkts-driverdevelopment-devicemanager-unbinddriverwithdeviceid-f.md#unbindDriverWithDeviceId)(deviceId: long)
 
 **需要权限：** ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
 
@@ -27,17 +27,17 @@ function unbindDevice(deviceId: number, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | deviceId | number | 是 | 设备ID，通过queryDevices获得。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;number&gt; | 是 | 回调函数。当解绑设备成功时，err为undefined，data为设备ID；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数。当解绑设备成功时，err为undefined，data为设备ID；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The permission check failed. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | [22900001](../../apis-driverdevelopment-kit/errorcode-deviceManager.md#22900001-扩展外设驱动服务异常或bustype参数错误) | ExternalDeviceManager service exception. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { deviceManager } from '@kit.DriverDevelopmentKit';
@@ -45,7 +45,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   // 12345678为示例deviceId，应用开发时可通过queryDevices查询到相应设备的deviceId作为入参
-  deviceManager.unbindDevice(12345678, (error : BusinessError, data : number) => {
+  deviceManager.unbindDevice(12345678, (error: BusinessError, data: number) => {
     if (error) {
       console.error(`unbindDevice async fail. Code is ${error.code}, message is ${error.message}`);
       return;
@@ -72,7 +72,7 @@ function unbindDevice(deviceId: number): Promise<number>
 
 **废弃版本：** 19
 
-**替代接口：** [deviceManager.unbindDriverWithDeviceId](arkts-driverdevelopment-devicemanager-unbinddriverwithdeviceid-f.md#unbinddriverwithdeviceid)(deviceId:
+**替代接口：** [unbindDriverWithDeviceId](arkts-driverdevelopment-devicemanager-unbinddriverwithdeviceid-f.md#unbindDriverWithDeviceId)(deviceId: long)
 
 **需要权限：** ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
 
@@ -96,11 +96,11 @@ function unbindDevice(deviceId: number): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The permission check failed. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 | [22900001](../../apis-driverdevelopment-kit/errorcode-deviceManager.md#22900001-扩展外设驱动服务异常或bustype参数错误) | ExternalDeviceManager service exception. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { deviceManager } from '@kit.DriverDevelopmentKit';
@@ -108,9 +108,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   // 12345678为示例deviceId，应用开发时可通过queryDevices查询到相应设备的deviceId作为入参
-  deviceManager.unbindDevice(12345678).then((data : number) => {
+  deviceManager.unbindDevice(12345678).then((data: number) => {
     console.info(`unbindDevice success, Device_Id is ${data}.`);
-  }, (error : BusinessError) => {
+  }, (error: BusinessError) => {
     console.error(`unbindDevice async fail. Code is ${error.code}, message is ${error.message}`);
   });
 } catch (error) {

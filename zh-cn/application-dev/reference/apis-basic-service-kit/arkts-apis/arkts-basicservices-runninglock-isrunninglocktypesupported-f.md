@@ -14,7 +14,7 @@ function isRunningLockTypeSupported(type: RunningLockType, callback: AsyncCallba
 
 **废弃版本：** 9
 
-**替代接口：** [runningLock.isSupported](arkts-basicservices-runninglock-issupported-f.md#issupported)
+**替代接口：** [isSupported](arkts-basicservices-runninglock-issupported-f.md#isSupported)
 
 <!--Device-runningLock-function isRunningLockTypeSupported(type: RunningLockType, callback: AsyncCallback<boolean>): void--><!--Device-runningLock-function isRunningLockTypeSupported(type: RunningLockType, callback: AsyncCallback<boolean>): void-End-->
 
@@ -24,10 +24,10 @@ function isRunningLockTypeSupported(type: RunningLockType, callback: AsyncCallba
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 需要查询的锁的类型。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;boolean&gt; | 是 | 回调函数。当查询成功，err为undefined，data为获取到的支持情况，返回true表示支持，返回false表示不支持；否则为错误对象。 |
+| type | [RunningLockType](arkts-basicservices-runninglock-runninglocktype-e.md) | 是 | 需要查询的锁的类型。 |
+| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。当查询成功，err为undefined，data为获取到的支持情况，返回true表示支持，返回false表示不支持；否则为错误对象 。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND, (err: Error, data: boolean) => {
@@ -54,7 +54,7 @@ function isRunningLockTypeSupported(type: RunningLockType): Promise<boolean>
 
 **废弃版本：** 9
 
-**替代接口：** [runningLock.isSupported](arkts-basicservices-runninglock-issupported-f.md#issupported)
+**替代接口：** [isSupported](arkts-basicservices-runninglock-issupported-f.md#isSupported)
 
 <!--Device-runningLock-function isRunningLockTypeSupported(type: RunningLockType): Promise<boolean>--><!--Device-runningLock-function isRunningLockTypeSupported(type: RunningLockType): Promise<boolean>-End-->
 
@@ -64,7 +64,7 @@ function isRunningLockTypeSupported(type: RunningLockType): Promise<boolean>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 需要查询的锁的类型。 |
+| type | [RunningLockType](arkts-basicservices-runninglock-runninglocktype-e.md) | 是 | 需要查询的锁的类型。 |
 
 **返回值：**
 
@@ -72,7 +72,7 @@ function isRunningLockTypeSupported(type: RunningLockType): Promise<boolean>
 | --- | --- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示支持；返回false表示不支持。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND)

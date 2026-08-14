@@ -1,5 +1,11 @@
 # getSlots
 
+## 导入模块
+
+```TypeScript
+import { notificationManager } from '@kit.NotificationKit';
+```
+
 ## getSlots
 
 ```TypeScript
@@ -8,30 +14,40 @@ function getSlots(callback: AsyncCallback<Array<NotificationSlot>>): void
 
 获取当前应用的所有通知渠道。使用callback异步回调。 用于批量查询当前应用已创建的所有通知渠道的配置信息，包括各渠道的类型、提醒方式、级别等设置。 适用于需要查看所有渠道配置的场景。需先通过addSlot创建对应类型的通知渠道，否则获取结果为空。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-notificationManager-function getSlots(callback: AsyncCallback<Array<NotificationSlot>>): void--><!--Device-notificationManager-function getSlots(callback: AsyncCallback<Array<NotificationSlot>>): void-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 
+**参见：**
+
+addSlot 创建通知频道。
+
+removeSlot 删除指定类型的通知渠道。
+
+removeAllSlots 删除所有通知渠道。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;Array&lt;NotificationSlot&gt;&gt; | 是 | 回调函数。当获取通知渠道成功，err为undefined，data为获取到的NotificationSlot数组，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;NotificationSlot&gt;&gt; | 是 | 回调函数。当获取通知渠道成功， err为undefined，data为获取到的NotificationSlot数组，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -74,13 +90,23 @@ function getSlots(): Promise<Array<NotificationSlot>>
 
 获取当前应用的所有通知渠道。使用Promise异步回调。 用于批量查询当前应用已创建的所有通知渠道的配置信息，包括各渠道的类型、提醒方式、级别等设置。 适用于需要查看所有渠道配置的场景。需先通过addSlot创建对应类型的通知渠道，否则获取结果为空。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-notificationManager-function getSlots(): Promise<Array<NotificationSlot>>--><!--Device-notificationManager-function getSlots(): Promise<Array<NotificationSlot>>-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
+
+**参见：**
+
+addSlot 创建通知频道。
+
+removeSlot 删除指定类型的通知渠道。
+
+removeAllSlots 删除所有通知渠道。
 
 **返回值：**
 
@@ -96,7 +122,7 @@ function getSlots(): Promise<Array<NotificationSlot>>
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

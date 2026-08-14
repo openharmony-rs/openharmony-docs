@@ -10,6 +10,8 @@ declare type TouchTestDoneCallback = (event: BaseGestureEvent, recognizers: Arra
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -22,6 +24,6 @@ declare type TouchTestDoneCallback = (event: BaseGestureEvent, recognizers: Arra
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | \_\_\_MD\_LINK\_USD\_0\_\_\_结束后的基础手势事件的信息。 \_\_\_HTML\_TAG\_USD\_1\_\_\_ **说明：** \_\_\_HTML\_TAG\_USD\_2\_\_\_仅包含BaseGestureEvent的信息，不包含其子类拓展信息。\_\_\_HTML\_TAG\_USD\_3\_\_\_axisHorizontal和axisVertical的值为0。  |
-| recognizers | Array&lt;GestureRecognizer&gt; | 是 | \_\_\_MD\_LINK\_USD\_0\_\_\_结束后， 所有手势识别器对象。  |
+| event | BaseGestureEvent | 是 | [触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)结束后的基础手势事件的信息。 <br/> **说明：** <br/>仅包含BaseGestureEvent的信息，不包含其子类拓展信息。<br/>axisHorizontal和axisVertical的值为0。 |
+| recognizers | Array&lt;GestureRecognizer&gt; | 是 | [触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)结束后， 所有手势识别器对象。 |
 

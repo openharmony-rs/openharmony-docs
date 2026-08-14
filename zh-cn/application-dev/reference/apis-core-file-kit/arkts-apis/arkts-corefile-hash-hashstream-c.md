@@ -1,14 +1,16 @@
 # HashStream
 
-HashStream 类是用于创建数据的哈希摘要的实用工具。由 [createHash]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 接口获得。
+HashStream 类是用于创建数据的哈希摘要的实用工具。由 [createHash](arkts-corefile-hash-createhash-f.md#createHash) 接口获得。
 
-**继承/实现关系：** HashStream extends [stream.Transform](../../apis-arkts/arkts-apis/arkts-arkts-stream-transform-c.md)
+**继承/实现关系：** HashStream extends [stream.Transform](../../apis-arkts/arkts-apis/arkts-arkts-stream-transform-c.md#Transform)
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-<!--Device-hash-class HashStream extends stream.Transform--><!--Device-hash-class HashStream extends stream.Transform-End-->
+**废弃版本：** -1
+
+<!--Device-hash-class HashStream--><!--Device-hash-class HashStream-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -20,9 +22,11 @@ digest(): string
 
 计算传递给哈希处理的所有数据的摘要。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-HashStream-digest(): string--><!--Device-HashStream-digest(): string-End-->
 
@@ -38,10 +42,10 @@ digest(): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error |
 | 13900042 | Unknown error |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 创建哈希流
@@ -61,9 +65,11 @@ update(data: ArrayBuffer): void
 
 使用给定的 data 更新哈希内容，可多次调用。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-HashStream-update(data: ArrayBuffer): void--><!--Device-HashStream-update(data: ArrayBuffer): void-End-->
 
@@ -79,10 +85,10 @@ update(data: ArrayBuffer): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error |
 | 13900042 | Unknown error |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 创建哈希流

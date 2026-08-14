@@ -12,6 +12,8 @@ function hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: i
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
 
+**废弃版本：** -1
+
 **需要权限：** ohos.permission.CHECK_CALL_LOG
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -26,7 +28,7 @@ function hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: i
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 应用上下文Context。 |
+| context | Context | 是 | 应用上下文Context。 |
 | phoneNumber | string | 是 | 联系人的电话号码。 |
 | minDuration | int | 是 | 最短通话时长，单位为秒，取值范围大于0。 |
 
@@ -41,12 +43,12 @@ function hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: i
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [16700001](../errorcode-contacts.md#16700001-系统内部错误) | General error. |
 | [16700002](../errorcode-contacts.md#16700002-参数检查失败) | Invalid parameter value. |
+| [16700001](../errorcode-contacts.md#16700001-系统内部错误) | General error. |
 
-**示例：**
+## 示例
 
-在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 ```TypeScript
 import { contact } from '@kit.ContactsKit';
@@ -76,6 +78,8 @@ function hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: i
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
 
+**废弃版本：** -1
+
 **需要权限：** ohos.permission.CHECK_CALL_LOG
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -90,7 +94,7 @@ function hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: i
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 应用上下文Context。 |
+| context | Context | 是 | 应用上下文Context。 |
 | phoneNumber | string | 是 | 联系人的电话号码。 |
 | minDuration | int | 是 | 最短通话时长，单位为秒，取值范围大于0。 |
 | withinTime | int | 是 | 表示从当前时间开始计算，通话的起始时间和结束时间应在此时间范围内，单位为秒。最多可设置6小时，超过6小时的默认以6小时查询。 |
@@ -106,12 +110,12 @@ function hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: i
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [16700001](../errorcode-contacts.md#16700001-系统内部错误) | General error. |
 | [16700002](../errorcode-contacts.md#16700002-参数检查失败) | Invalid parameter value. |
+| [16700001](../errorcode-contacts.md#16700001-系统内部错误) | General error. |
 
-**示例：**
+## 示例
 
-在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 ```TypeScript
 import { contact } from '@kit.ContactsKit';

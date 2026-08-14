@@ -1,10 +1,12 @@
 # EnterpriseAdminExtensionAbility
 
-本模块提供\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_，是企业设备管理应用的核心组件。 **主要功能**： - 提供设备管理应用的生命周期管理能力（激活、去激活、启动等事件）。 - 提供应用生命周期事件监听能力（安装、卸载、启动、停止、更新）。 - 提供系统账号管理事件监听能力（账号新增、切换、删除）。 - 提供Kiosk模式、按键事件、日志收集、系统更新等系统级事件回调。 - 提供策略变更事件监听能力。 **使用场景**：企业设备管理应用开发、企业应用生命周期管理、设备安全管控、账号管理、设备运维监控等。 设备管理应用需要存在一个EnterpriseAdminExtensionAbility并重写相关接口，以此具备模块提供的各项能力，比如接收由系统发送的该应用被激活或者解除激活的通知。
+本模块提供[企业设备管理扩展能力](../../../mdm/mdm-kit-term.md#enterpriseadminextensionability企业设备管理扩展能力)，是企业设备管理应用的核心组件。 **主要功能**： - 提供设备管理应用的生命周期管理能力（激活、去激活、启动等事件）。 - 提供应用生命周期事件监听能力（安装、卸载、启动、停止、更新）。 - 提供系统账号管理事件监听能力（账号新增、切换、删除）。 - 提供Kiosk模式、按键事件、日志收集、系统更新等系统级事件回调。 - 提供策略变更事件监听能力。 **使用场景**：企业设备管理应用开发、企业应用生命周期管理、设备安全管控、账号管理、设备运维监控等。 设备管理应用需要存在一个EnterpriseAdminExtensionAbility并重写相关接口，以此具备模块提供的各项能力，比如接收由系统发送的该应用被激活或者解除激活的通知。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-export default class EnterpriseAdminExtensionAbility--><!--Device-unnamed-export default class EnterpriseAdminExtensionAbility-End-->
 
@@ -16,11 +18,13 @@
 onAccountAdded(accountId: number): void
 ```
 
-系统账号新增事件回调。通过接口 [adminManager.subscribeManagedEventSync]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 注册MANAGED\_EVENT\_ACCOUNT\_ADDED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅系统账号新增事件，系统账号新增事件通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
+系统账号新增事件回调。通过接口 [adminManager.subscribeManagedEventSync](../../apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribeManagedEventSync) 注册MANAGED_EVENT_ACCOUNT_ADDED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅系统账号新增事件，系统账号新增事件通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -34,7 +38,7 @@ onAccountAdded(accountId: number): void
 | --- | --- | --- | --- |
 | accountId | number | 是 | 新增的用户ID。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { EnterpriseAdminExtensionAbility, adminManager } from '@kit.MDMKit';
@@ -67,11 +71,13 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onAccountRemoved(accountId: number): void
 ```
 
-系统账号删除事件回调。通过接口 [adminManager.subscribeManagedEventSync]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 注册MANAGED\_EVENT\_ACCOUNT\_REMOVED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅系统账号删除事件，系统账号删除事件通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
+系统账号删除事件回调。通过接口 [adminManager.subscribeManagedEventSync](../../apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribeManagedEventSync) 注册MANAGED_EVENT_ACCOUNT_REMOVED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅系统账号删除事件，系统账号删除事件通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -85,7 +91,7 @@ onAccountRemoved(accountId: number): void
 | --- | --- | --- | --- |
 | accountId | number | 是 | 被删除的用户ID。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { EnterpriseAdminExtensionAbility, adminManager } from '@kit.MDMKit';
@@ -118,11 +124,13 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onAccountSwitched(accountId: number): void
 ```
 
-系统账号切换事件回调。通过接口 [adminManager.subscribeManagedEventSync]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 注册MANAGED\_EVENT\_ACCOUNT\_SWITCHED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅系统账号切换事件，系统账号切换事件通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理 员。
+系统账号切换事件回调。通过接口 [adminManager.subscribeManagedEventSync](../../apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribeManagedEventSync) 注册MANAGED_EVENT_ACCOUNT_SWITCHED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅系统账号切换事件，系统账号切换事件通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理 员。
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -136,7 +144,7 @@ onAccountSwitched(accountId: number): void
 | --- | --- | --- | --- |
 | accountId | number | 是 | 切换后的用户ID。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { EnterpriseAdminExtensionAbility, adminManager } from '@kit.MDMKit';
@@ -175,13 +183,15 @@ onAdminDisabled(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-EnterpriseAdminExtensionAbility-onAdminDisabled(): void--><!--Device-EnterpriseAdminExtensionAbility-onAdminDisabled(): void-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
@@ -205,13 +215,15 @@ onAdminEnabled(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-EnterpriseAdminExtensionAbility-onAdminEnabled(): void--><!--Device-EnterpriseAdminExtensionAbility-onAdminEnabled(): void-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
@@ -229,11 +241,13 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onAdminPolicyChanged(event: common.PolicyChangedEvent): void
 ```
 
-策略变更事件回调。超级设备管理应用可以通过接口 [adminManager.subscribeManagedEventSync]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_ 注册MANAGED\_EVENT\_POLICIES\_CHANGED事件后可接收此回调。企业设备管理场景下，当任意MDM应用调用 \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_中的接口时，系统会通知当前用户下的超级设备管理应用。
+策略变更事件回调。超级设备管理应用可以通过接口 [adminManager.subscribeManagedEventSync](../../apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribeManagedEventSync) 注册MANAGED_EVENT_POLICIES_CHANGED事件后可接收此回调。企业设备管理场景下，当任意MDM应用调用 [策略变更上报列表](../../../mdm/mdm-kit-appendix.md#策略变更上报列表)中的接口时，系统会通知当前用户下的超级设备管理应用。
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -245,9 +259,9 @@ onAdminPolicyChanged(event: common.PolicyChangedEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | common.PolicyChangedEvent | 是 | 策略变更事件，包含策略变更的详细信息，如变更的应用包名（bundleName）、变更的函数名（functionName）、变更的参数（parameters）和变更时间（time），超级设备管理应用可根据这些信息进行策略审计或同步。 |
+| event | common.PolicyChangedEvent | 是 | 策略变更事件，包含策略变更的详细信息，如变更的应用包名（bundleName）、变更的函数名（functionName）、变更的参数（ parameters）和变更时间（time），超级设备管理应用可根据这些信息进行策略审计或同步。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { EnterpriseAdminExtensionAbility, adminManager, common } from '@kit.MDMKit';
@@ -281,11 +295,13 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onAppStart(bundleName: string): void
 ```
 
-应用启动事件回调。通过接口 [adminManager.subscribeManagedEventSync]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 注册MANAGED\_EVENT\_APP\_START事件才能收到此回调。企业设备管理场景下，设备管理应用订阅应用启动事件，端侧应用启动事件通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
+应用启动事件回调。通过接口 [adminManager.subscribeManagedEventSync](../../apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribeManagedEventSync) 注册MANAGED_EVENT_APP_START事件才能收到此回调。企业设备管理场景下，设备管理应用订阅应用启动事件，端侧应用启动事件通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -299,7 +315,7 @@ onAppStart(bundleName: string): void
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 启动应用的包名。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { EnterpriseAdminExtensionAbility, adminManager } from '@kit.MDMKit';
@@ -332,11 +348,13 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onAppStop(bundleName: string): void
 ```
 
-应用停止事件回调。通过接口 [adminManager.subscribeManagedEventSync]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 注册MANAGED\_EVENT\_APP\_STOP事件才能收到此回调。企业设备管理场景下，设备管理应用订阅应用停止事件，端侧应用停止事件通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
+应用停止事件回调。通过接口 [adminManager.subscribeManagedEventSync](../../apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribeManagedEventSync) 注册MANAGED_EVENT_APP_STOP事件才能收到此回调。企业设备管理场景下，设备管理应用订阅应用停止事件，端侧应用停止事件通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -350,7 +368,7 @@ onAppStop(bundleName: string): void
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 停止应用的包名。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { EnterpriseAdminExtensionAbility, adminManager } from '@kit.MDMKit';
@@ -383,11 +401,13 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onBundleAdded(bundleName: string): void
 ```
 
-应用安装事件回调，回调中包含应用包名。通过接口 [adminManager.subscribeManagedEventSync]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 注册MANAGED\_EVENT\_BUNDLE\_ADDED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅应用安装事件，端侧应用安装事件通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
+应用安装事件回调，回调中包含应用包名。通过接口 [adminManager.subscribeManagedEventSync](../../apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribeManagedEventSync) 注册MANAGED_EVENT_BUNDLE_ADDED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅应用安装事件，端侧应用安装事件通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -401,7 +421,7 @@ onBundleAdded(bundleName: string): void
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 被安装应用的包名。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { EnterpriseAdminExtensionAbility, adminManager } from '@kit.MDMKit';
@@ -434,11 +454,13 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onBundleAdded(bundleName: string, accountId: number): void
 ```
 
-应用安装事件回调，回调中包含应用包名和账号ID。通过接口 [adminManager.subscribeManagedEventSync]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 注册MANAGED\_EVENT\_BUNDLE\_ADDED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅应用安装事件，端侧应用安装事件通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
+应用安装事件回调，回调中包含应用包名和账号ID。通过接口 [adminManager.subscribeManagedEventSync](../../apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribeManagedEventSync) 注册MANAGED_EVENT_BUNDLE_ADDED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅应用安装事件，端侧应用安装事件通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
 
 **起始版本：** 14
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -453,7 +475,7 @@ onBundleAdded(bundleName: string, accountId: number): void
 | bundleName | string | 是 | 被安装应用的包名。 |
 | accountId | number | 是 | 被安装应用所在的用户ID。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { EnterpriseAdminExtensionAbility, adminManager } from '@kit.MDMKit';
@@ -487,11 +509,13 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onBundleRemoved(bundleName: string): void
 ```
 
-应用卸载事件回调，回调中包含应用包名。通过接口 [adminManager.subscribeManagedEventSync]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 注册MANAGED\_EVENT\_BUNDLE\_REMOVED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅应用卸载事件，端侧应用卸载事件通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
+应用卸载事件回调，回调中包含应用包名。通过接口 [adminManager.subscribeManagedEventSync](../../apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribeManagedEventSync) 注册MANAGED_EVENT_BUNDLE_REMOVED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅应用卸载事件，端侧应用卸载事件通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -505,7 +529,7 @@ onBundleRemoved(bundleName: string): void
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 被卸载应用的包名。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { EnterpriseAdminExtensionAbility, adminManager } from '@kit.MDMKit';
@@ -538,11 +562,13 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onBundleRemoved(bundleName: string, accountId: number): void
 ```
 
-应用卸载事件回调，回调中包含应用包名和账号ID。通过接口 [adminManager.subscribeManagedEventSync]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 注册MANAGED\_EVENT\_BUNDLE\_REMOVED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅应用卸载事件，端侧应用卸载事件通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
+应用卸载事件回调，回调中包含应用包名和账号ID。通过接口 [adminManager.subscribeManagedEventSync](../../apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribeManagedEventSync) 注册MANAGED_EVENT_BUNDLE_REMOVED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅应用卸载事件，端侧应用卸载事件通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
 
 **起始版本：** 14
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -557,7 +583,7 @@ onBundleRemoved(bundleName: string, accountId: number): void
 | bundleName | string | 是 | 被卸载应用的包名。 |
 | accountId | number | 是 | 被卸载应用所在的用户ID。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { EnterpriseAdminExtensionAbility, adminManager } from '@kit.MDMKit';
@@ -591,11 +617,13 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onBundleUpdated(bundleName: string, accountId: number): void
 ```
 
-应用更新事件回调，回调中包含应用包名和用户ID。通过接口 [adminManager.subscribeManagedEventSync]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 注册MANAGED\_EVENT\_BUNDLE\_UPDATED事件才能收到此回调。企业设备管理场景下，设备管理应用可订阅所有用户下的应用更新事件，应用更新事件触发时会通知当前用户下的设备管理应用，设备管理应用可以在此回调函数中进行事 件上报，通知主用户下的企业管理员。
+应用更新事件回调，回调中包含应用包名和用户ID。通过接口 [adminManager.subscribeManagedEventSync](../../apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribeManagedEventSync) 注册MANAGED_EVENT_BUNDLE_UPDATED事件才能收到此回调。企业设备管理场景下，设备管理应用可订阅所有用户下的应用更新事件，应用更新事件触发时会通知当前用户下的设备管理应用，设备管理应用可以在此回调函数中进行事 件上报，通知主用户下的企业管理员。
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -610,7 +638,7 @@ onBundleUpdated(bundleName: string, accountId: number): void
 | bundleName | string | 是 | 被更新应用的包名。 |
 | accountId | number | 是 | 被更新应用所在的用户ID。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { EnterpriseAdminExtensionAbility, adminManager } from '@kit.MDMKit';
@@ -649,6 +677,8 @@ onDeviceAdminDisabled(bundleName: string): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-EnterpriseAdminExtensionAbility-onDeviceAdminDisabled(bundleName: string): void--><!--Device-EnterpriseAdminExtensionAbility-onDeviceAdminDisabled(bundleName: string): void-End-->
@@ -661,7 +691,7 @@ onDeviceAdminDisabled(bundleName: string): void
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 被解除激活应用的包名。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
@@ -684,6 +714,8 @@ onDeviceAdminEnabled(bundleName: string): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-EnterpriseAdminExtensionAbility-onDeviceAdminEnabled(bundleName: string): void--><!--Device-EnterpriseAdminExtensionAbility-onDeviceAdminEnabled(bundleName: string): void-End-->
@@ -696,7 +728,7 @@ onDeviceAdminEnabled(bundleName: string): void
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 被激活应用的包名。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
@@ -713,11 +745,13 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onDeviceBootCompleted(): void
 ```
 
-设备开机完成事件回调。通过接口 [adminManager.subscribeManagedEventSync]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 注册MANAGED\_EVENT\_BOOT\_COMPLETED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅设备启动完成事件，端侧系统在设备开机完成后会通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业 管理员。
+设备开机完成事件回调。通过接口 [adminManager.subscribeManagedEventSync](../../apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribeManagedEventSync) 注册MANAGED_EVENT_BOOT_COMPLETED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅设备启动完成事件，端侧系统在设备开机完成后会通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业 管理员。
 
 **起始版本：** 24
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -725,7 +759,7 @@ onDeviceBootCompleted(): void
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { EnterpriseAdminExtensionAbility, adminManager } from '@kit.MDMKit';
@@ -758,11 +792,13 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onKeyEvent(keyEvent: systemManager.KeyEvent): void
 ```
 
-[按键事件]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_回调。MDM应用需要通过 [systemManager.addKeyEventPolicies]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_接口下发按键事件 处理策略，当系统按键事件触发时，如果事件与已下发的策略匹配，则触发该回调。回调信息[keyEvent]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_中包含 当前发生的按键事件信息。 单按键事件响应。设备单按键被触发时，[onKeyEvent]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_会在按下和抬起时触发两次回调事件，可由 [keyEvent]\_\_\_JSDOC\_LINK\_DESC\_USD\_4\_\_\_中keyAction属性进行判断。 [keyEvent]\_\_\_JSDOC\_LINK\_DESC\_USD\_5\_\_\_中keyItems属性在单按键事件中可忽略。 组合按键事件响应。组合按键仅支持物理按键：电源键、音量加键、音量减键进行组合。用户按下组合键时，后按下按键的事件回调将通过 [keyEvent]\_\_\_JSDOC\_LINK\_DESC\_USD\_6\_\_\_中的keyItems属性携带当前所有已按下的按键信息。其他与单按键事件响应逻辑一致。 长按事件响应。当单个按键或组合按键被长时间按下时，[onKeyEvent]\_\_\_JSDOC\_LINK\_DESC\_USD\_7\_\_\_会以50ms的间隔（具体间隔时间可能因系统状态及性能而稍 有延长）被连续触发，其中每次回调事件[keyEvent]\_\_\_JSDOC\_LINK\_DESC\_USD\_8\_\_\_的actionTime属性均与按键首次按下事件回调的 [keyEvent]\_\_\_JSDOC\_LINK\_DESC\_USD\_9\_\_\_的actionTime属性相同。其他情况下的响应逻辑与单个按键和组合按键一致。
+[按键事件](../../apis-mdm-kit/arkts-apis/arkts-mdm-systemmanager-keyevent-i.md#KeyEvent)回调。MDM应用需要通过 [systemManager.addKeyEventPolicies](../../apis-mdm-kit/arkts-apis/arkts-mdm-systemmanager-addkeyeventpolicies-f.md#addKeyEventPolicies)接口下发按键事件 处理策略，当系统按键事件触发时，如果事件与已下发的策略匹配，则触发该回调。回调信息[keyEvent](../../apis-mdm-kit/arkts-apis/arkts-mdm-systemmanager-keyevent-i.md#KeyEvent)中包含 当前发生的按键事件信息。 单按键事件响应。设备单按键被触发时，[onKeyEvent](#onKeyEvent)会在按下和抬起时触发两次回调事件，可由 [keyEvent](../../apis-mdm-kit/arkts-apis/arkts-mdm-systemmanager-keyevent-i.md#KeyEvent)中keyAction属性进行判断。 [keyEvent](../../apis-mdm-kit/arkts-apis/arkts-mdm-systemmanager-keyevent-i.md#KeyEvent)中keyItems属性在单按键事件中可忽略。 组合按键事件响应。组合按键仅支持物理按键：电源键、音量加键、音量减键进行组合。用户按下组合键时，后按下按键的事件回调将通过 [keyEvent](../../apis-mdm-kit/arkts-apis/arkts-mdm-systemmanager-keyevent-i.md#KeyEvent)中的keyItems属性携带当前所有已按下的按键信息。其他与单按键事件响应逻辑一致。 长按事件响应。当单个按键或组合按键被长时间按下时，[onKeyEvent](#onKeyEvent)会以50ms的间隔（具体间隔时间可能因系统状态及性能而稍 有延长）被连续触发，其中每次回调事件[keyEvent](../../apis-mdm-kit/arkts-apis/arkts-mdm-systemmanager-keyevent-i.md#KeyEvent)的actionTime属性均与按键首次按下事件回调的 [keyEvent](../../apis-mdm-kit/arkts-apis/arkts-mdm-systemmanager-keyevent-i.md#KeyEvent)的actionTime属性相同。其他情况下的响应逻辑与单个按键和组合按键一致。
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -774,9 +810,9 @@ onKeyEvent(keyEvent: systemManager.KeyEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| keyEvent | systemManager.KeyEvent | 是 | 当前发生的按键事件信息，包含按键码（keyCode）、按键动作（keyAction，如按下/抬起）、触发时间（actionTime）、已按下按键列表（keyItems）等，用于识别和处理用户的按键操作。 |
+| keyEvent | systemManager.KeyEvent | 是 | 当前发生的按键事件信息，包含按键码（keyCode）、按键动作（keyAction，如按下/抬起）、触发时间（actionTime）、已按下 按键列表（keyItems）等，用于识别和处理用户的按键操作。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
@@ -887,6 +923,8 @@ onKioskModeEntering(bundleName: string, accountId: number): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-EnterpriseAdminExtensionAbility-onKioskModeEntering(bundleName: string, accountId: number): void--><!--Device-EnterpriseAdminExtensionAbility-onKioskModeEntering(bundleName: string, accountId: number): void-End-->
@@ -900,7 +938,7 @@ onKioskModeEntering(bundleName: string, accountId: number): void
 | bundleName | string | 是 | 进入Kiosk模式应用的包名。 |
 | accountId | number | 是 | 进入Kiosk模式应用所在的用户ID。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
@@ -924,6 +962,8 @@ onKioskModeExiting(bundleName: string, accountId: number): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-EnterpriseAdminExtensionAbility-onKioskModeExiting(bundleName: string, accountId: number): void--><!--Device-EnterpriseAdminExtensionAbility-onKioskModeExiting(bundleName: string, accountId: number): void-End-->
@@ -937,7 +977,7 @@ onKioskModeExiting(bundleName: string, accountId: number): void
 | bundleName | string | 是 | 退出Kiosk模式应用的包名。 |
 | accountId | number | 是 | 退出Kiosk模式应用所在的用户ID。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
@@ -955,11 +995,13 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onLogCollected(result: common.Result): void
 ```
 
-通过[systemManager.startCollectLog]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_接口成功创建日志收集任务后， 当日志收集完成时，将触发该回调。回调中包含日志收集结果。 > **说明：** > > 日志收集成功时，必须在应用的EnterpriseAdminExtensionAbility中访问沙箱目录（/data/edm/log）获取日志，获取日志方式参考下列示例代码。应用取走日志后，建议调用 > [systemManager.finishLogCollected]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_删除已收集到的日 > 志。
+通过[systemManager.startCollectLog](../../apis-mdm-kit/arkts-apis/arkts-mdm-systemmanager-startcollectlog-f.md#startCollectLog)接口成功创建日志收集任务后， 当日志收集完成时，将触发该回调。回调中包含日志收集结果。 > **说明：** > > 日志收集成功时，必须在应用的EnterpriseAdminExtensionAbility中访问沙箱目录（/data/edm/log）获取日志，获取日志方式参考下列示例代码。应用取走日志后，建议调用 > [systemManager.finishLogCollected](../../apis-mdm-kit/arkts-apis/arkts-mdm-systemmanager-finishlogcollected-f.md#finishLogCollected)删除已收集到的日 > 志。
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -973,7 +1015,7 @@ onLogCollected(result: common.Result): void
 | --- | --- | --- | --- |
 | result | common.Result | 是 | 日志收集结果，用于标识日志收集是否成功，常见值为SUCCESS（收集成功）或FAIL（收集失败），开发者可根据结果判断是否执行后续的日志获取操作。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { Want } from '@kit.AbilityKit';
@@ -1021,11 +1063,13 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onMarketAppInstallResult(bundleName: string, result: common.InstallationResult): void
 ```
 
-安装应用市场应用接口[bundleManager.installMarketApps]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_安装 结果回调，回调中包含应用包名和安装结果。
+安装应用市场应用接口[bundleManager.installMarketApps](../../apis-mdm-kit/arkts-apis/arkts-mdm-bundlemanager-installmarketapps-f.md#installMarketApps)安装 结果回调，回调中包含应用包名和安装结果。
 
 **起始版本：** 22
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1040,7 +1084,7 @@ onMarketAppInstallResult(bundleName: string, result: common.InstallationResult):
 | bundleName | string | 是 | 应用市场应用包名。 |
 | result | common.InstallationResult | 是 | 安装结果，表示应用市场应用的安装状态，包含安装成功或失败的状态信息。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { EnterpriseAdminExtensionAbility, common } from '@kit.MDMKit';
@@ -1064,13 +1108,15 @@ EnterpriseAdminExtensionAbility启动事件回调。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-EnterpriseAdminExtensionAbility-onStart(): void--><!--Device-EnterpriseAdminExtensionAbility-onStart(): void-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
@@ -1088,11 +1134,13 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onStartupGuideCompleted(scene: common.StartupScene): void
 ```
 
-开机向导完成事件回调。通过接口 [adminManager.subscribeManagedEventSync]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 注册MANAGED\_EVENT\_STARTUP\_GUIDE\_COMPLETED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅开机向导完成事件，端侧系统在首次切换子用户完成（仅限PC）、OTA升级完成、首次开机完成开机向导 时会通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
+开机向导完成事件回调。通过接口 [adminManager.subscribeManagedEventSync](../../apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribeManagedEventSync) 注册MANAGED_EVENT_STARTUP_GUIDE_COMPLETED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅开机向导完成事件，端侧系统在首次切换子用户完成（仅限PC）、OTA升级完成、首次开机完成开机向导 时会通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
 
 **起始版本：** 24
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1104,9 +1152,9 @@ onStartupGuideCompleted(scene: common.StartupScene): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scene | common.StartupScene | 是 | 开机向导完成场景，标识触发回调的具体场景类型，如用户设置完成（USER\_\_\_ESCAPED\_UNDERSCORE\_\_\_SETUP）、OTA升级完成（OTA）、设备配置完成（DEVICE\_\_\_ESCAPED\_UNDERSCORE\_\_\_PROVISION）等，开发者可根据不同场景执行相应的业务逻辑。 |
+| scene | common.StartupScene | 是 | 开机向导完成场景，标识触发回调的具体场景类型，如用户设置完成（USER_SETUP）、OTA升级完成（OTA）、设备配置完成（ DEVICE_PROVISION）等，开发者可根据不同场景执行相应的业务逻辑。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { EnterpriseAdminExtensionAbility, adminManager, common } from '@kit.MDMKit';
@@ -1145,11 +1193,13 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onSystemUpdate(systemUpdateInfo: systemManager.SystemUpdateInfo): void
 ```
 
-系统更新事件回调。通过接口 [adminManager.subscribeManagedEventSync]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 注册MANAGED\_EVENT\_SYSTEM\_UPDATE事件才能收到此回调。企业设备管理场景下，设备管理应用订阅系统更新事件，端侧系统更新事件通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
+系统更新事件回调。通过接口 [adminManager.subscribeManagedEventSync](../../apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribeManagedEventSync) 注册MANAGED_EVENT_SYSTEM_UPDATE事件才能收到此回调。企业设备管理场景下，设备管理应用订阅系统更新事件，端侧系统更新事件通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1163,7 +1213,7 @@ onSystemUpdate(systemUpdateInfo: systemManager.SystemUpdateInfo): void
 | --- | --- | --- | --- |
 | systemUpdateInfo | systemManager.SystemUpdateInfo | 是 | 系统更新的版本信息，用于通知设备管理应用系统版本更新情况。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { EnterpriseAdminExtensionAbility, adminManager, systemManager } from '@kit.MDMKit';
@@ -1196,13 +1246,15 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 context: EnterpriseAdminExtensionContext
 ```
 
-EnterpriseAdminExtensionAbility的上下文。继承自[ExtensionContext]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+EnterpriseAdminExtensionAbility的上下文。继承自[ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md#ExtensionContext)。
 
-**类型：** EnterpriseAdminExtensionContext
+**类型：** [EnterpriseAdminExtensionContext](../../apis-mdm-kit/arkts-apis/arkts-mdm-enterpriseadminextensioncontext-c.md)
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

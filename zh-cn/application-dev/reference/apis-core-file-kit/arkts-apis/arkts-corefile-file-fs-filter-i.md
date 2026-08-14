@@ -2,9 +2,11 @@
 
 文件过滤配置项，支持listFile接口使用。
 
-**起始版本：** 23
+**起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-export interface Filter--><!--Device-unnamed-export interface Filter-End-->
 
@@ -20,9 +22,13 @@ displayName?: Array<string>
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 23
+**起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Filter-displayName?: Array<string>--><!--Device-Filter-displayName?: Array<string>-End-->
 
@@ -34,13 +40,17 @@ displayName?: Array<string>
 excludeMedia?: boolean
 ```
 
-是否排除Media中已有的文件。true：排除Media中已有的文件；false：不排除Media中已有的文件。预留字段，暂不支持使用。
+是否排除Media中已有的文件。true：排除Media中已有的文件；false：不排除Media中已有的文件。
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Filter-excludeMedia?: boolean--><!--Device-Filter-excludeMedia?: boolean-End-->
 
@@ -49,36 +59,44 @@ excludeMedia?: boolean
 ## fileSizeOver
 
 ```TypeScript
-fileSizeOver?: long
+fileSizeOver?: number
 ```
 
 文件大小匹配，大于指定大小的文件，单位为Byte。
 
-**类型：** long
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
-<!--Device-Filter-fileSizeOver?: long--><!--Device-Filter-fileSizeOver?: long-End-->
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Filter-fileSizeOver?: number--><!--Device-Filter-fileSizeOver?: number-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 ## lastModifiedAfter
 
 ```TypeScript
-lastModifiedAfter?: double
+lastModifiedAfter?: number
 ```
 
 文件最近修改时间匹配，在指定时间点及之后的文件。
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
-<!--Device-Filter-lastModifiedAfter?: double--><!--Device-Filter-lastModifiedAfter?: double-End-->
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Filter-lastModifiedAfter?: number--><!--Device-Filter-lastModifiedAfter?: number-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -92,9 +110,13 @@ mime类型完全匹配，各个关键词OR关系。预留字段，暂不支持�
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 23
+**起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Filter-mimeType?: Array<string>--><!--Device-Filter-mimeType?: Array<string>-End-->
 
@@ -110,9 +132,13 @@ suffix?: Array<string>
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 23
+**起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Filter-suffix?: Array<string>--><!--Device-Filter-suffix?: Array<string>-End-->
 

@@ -2,9 +2,11 @@
 
 表示使用记录的查询请求。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-privacyManager-interface PermissionUsedRequest--><!--Device-privacyManager-interface PermissionUsedRequest-End-->
 
@@ -24,9 +26,11 @@ beginTime?: long
 
 **默认值：** 0
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PermissionUsedRequest-beginTime?: long--><!--Device-PermissionUsedRequest-beginTime?: long-End-->
 
@@ -44,9 +48,11 @@ bundleName?: string
 
 **类型：** string
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PermissionUsedRequest-bundleName?: string--><!--Device-PermissionUsedRequest-bundleName?: string-End-->
 
@@ -64,9 +70,11 @@ deviceId?: string
 
 **类型：** string
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PermissionUsedRequest-deviceId?: string--><!--Device-PermissionUsedRequest-deviceId?: string-End-->
 
@@ -86,9 +94,11 @@ endTime?: long
 
 **默认值：** 0
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PermissionUsedRequest-endTime?: long--><!--Device-PermissionUsedRequest-endTime?: long-End-->
 
@@ -102,13 +112,15 @@ endTime?: long
 flag: PermissionUsageFlag
 ```
 
-指定查询方式。设置为FLAG\_PERMISSION\_USAGE\_SUMMARY时返回汇总信息；设置为FLAG\_PERMISSION\_USAGE\_DETAIL时返回明细记录。
+指定查询方式。设置为FLAG_PERMISSION_USAGE_SUMMARY时返回汇总信息；设置为FLAG_PERMISSION_USAGE_DETAIL时返回明细记录。
 
-**类型：** PermissionUsageFlag
+**类型：** [PermissionUsageFlag](arkts-ability-privacymanager-permissionusageflag-e-sys.md)
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PermissionUsedRequest-flag: PermissionUsageFlag--><!--Device-PermissionUsedRequest-flag: PermissionUsageFlag-End-->
 
@@ -128,9 +140,11 @@ isRemote?: boolean
 
 **默认值：** false
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PermissionUsedRequest-isRemote?: boolean--><!--Device-PermissionUsedRequest-isRemote?: boolean-End-->
 
@@ -148,9 +162,11 @@ permissionNames?: Array<Permissions>
 
 **类型：** Array&lt;Permissions&gt;
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PermissionUsedRequest-permissionNames?: Array<Permissions>--><!--Device-PermissionUsedRequest-permissionNames?: Array<Permissions>-End-->
 
@@ -164,13 +180,15 @@ permissionNames?: Array<Permissions>
 tokenId?: int
 ```
 
-目标应用的身份标识。目标应用的身份标识。可通过应用BundleInfo中的ApplicationInfo中的 [accessTokenId]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_字段获取。 该参数必须为大于0的整数，传入0时返回错误码12100001。 \_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_BundleInfo获取可参考：[bundleManager.getBundleInfoSync]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_。 默认值：0，查询所有应用。
+目标应用的身份标识。目标应用的身份标识。可通过应用BundleInfo中的ApplicationInfo中的 [accessTokenId](arkts-ability-applicationinfo-i.md#accessTokenId)字段获取。 该参数必须为大于0的整数，传入0时返回错误码12100001。 &lt;br&gt;BundleInfo获取可参考：[bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md#getBundleInfoSync)。 默认值：0，查询所有应用。
 
 **类型：** int
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PermissionUsedRequest-tokenId?: int--><!--Device-PermissionUsedRequest-tokenId?: int-End-->
 

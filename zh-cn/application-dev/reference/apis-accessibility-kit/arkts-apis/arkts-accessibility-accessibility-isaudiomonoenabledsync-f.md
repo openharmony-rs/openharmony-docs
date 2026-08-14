@@ -10,7 +10,9 @@ function isAudioMonoEnabledSync(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -24,7 +26,7 @@ function isAudioMonoEnabledSync(): boolean
 | --- | --- |
 | boolean | 表示是否开启单声道音频模式。true表示开启单声道音频模式，false表示未开启单声道音频模式。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { accessibility } from '@kit.AccessibilityKit';

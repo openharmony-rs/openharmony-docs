@@ -6,7 +6,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [ContentFormCard](arkts-arkdata-data-udmfcomponents-contentformcard-s.md) | 内容卡片控件，用于在应用内展示标题、描述、内容图片、应用信息等。 |
+| [ContentFormCard](arkts-arkdata-data-udmfcomponents-contentformcard-s.md) | 内容卡片控件，用于在应用内展示标题、描述、内容图片、应用信息等。适用于内容分发、社交动态、消息通知等场景。 |
 
 ### 枚举
 

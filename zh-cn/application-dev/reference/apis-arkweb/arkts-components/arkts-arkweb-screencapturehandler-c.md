@@ -1,10 +1,12 @@
 # ScreenCaptureHandler
 
-Defines the onScreenCapture callback, related to \_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ method.
+Defines the onScreenCapture callback, related to onScreenCapture method.
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare class ScreenCaptureHandler--><!--Device-unnamed-declare class ScreenCaptureHandler-End-->
 
@@ -21,6 +23,8 @@ Constructor.
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -40,6 +44,8 @@ Reject the request.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ScreenCaptureHandler-deny(): void--><!--Device-ScreenCaptureHandler-deny(): void-End-->
@@ -57,6 +63,8 @@ Gets the source of the webpage that attempted to access the restricted resource.
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -82,6 +90,8 @@ Grant origin access to a given resource.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ScreenCaptureHandler-grant(config: ScreenCaptureConfig): void--><!--Device-ScreenCaptureHandler-grant(config: ScreenCaptureConfig): void-End-->
@@ -92,5 +102,5 @@ Grant origin access to a given resource.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| config | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | The screen capture configuration. |
+| config | [ScreenCaptureConfig](arkts-arkweb-screencaptureconfig-i.md) | 是 | The screen capture configuration. |
 

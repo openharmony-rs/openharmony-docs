@@ -8,9 +8,11 @@ function getDistributedAccountAbility(): DistributedAccountAbility
 
 获取分布式账号单实例对象。
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-distributedAccount-function getDistributedAccountAbility(): DistributedAccountAbility--><!--Device-distributedAccount-function getDistributedAccountAbility(): DistributedAccountAbility-End-->
 
@@ -20,9 +22,9 @@ function getDistributedAccountAbility(): DistributedAccountAbility
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回一个实例，实例提供查询和更新分布式账号登录状态方法。 |
+| [DistributedAccountAbility](arkts-basicservices-distributedaccount-distributedaccountability-i.md) | 返回一个实例，实例提供查询和更新分布式账号登录状态方法。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 获取分布式账号的单实例对象

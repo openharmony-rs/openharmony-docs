@@ -10,6 +10,8 @@ type OnLargestContentfulPaintCallback = (largestContentfulPaint: LargestContentf
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-unnamed-type OnLargestContentfulPaintCallback = (largestContentfulPaint: LargestContentfulPaint) => void--><!--Device-unnamed-type OnLargestContentfulPaintCallback = (largestContentfulPaint: LargestContentfulPaint) => void-End-->
@@ -20,5 +22,5 @@ type OnLargestContentfulPaintCallback = (largestContentfulPaint: LargestContentf
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| largestContentfulPaint | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 网页绘制页面最大内容度量的详细信息。  |
+| largestContentfulPaint | [LargestContentfulPaint](arkts-arkweb-largestcontentfulpaint-i.md) | 是 | 网页绘制页面最大内容度量的详细信息。 |
 

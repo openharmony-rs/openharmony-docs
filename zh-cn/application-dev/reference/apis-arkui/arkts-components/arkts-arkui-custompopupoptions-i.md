@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface CustomPopupOptions--><!--Device-unnamed-declare interface CustomPopupOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -20,15 +22,13 @@ arrowHeight?: Dimension
 
 **类型：** Dimension
 
-**默认值：** 8.0_vp. [since 11 - 11]
-@default 8.0_vp.
-<p><strong>NOTE</strong>:
-<br>This parameter cannot be set in percentage.
-</p>
+**默认值：** 8.0_vp. [since 11 - 11] @default 8.0_vp. <p><strong>NOTE</strong>: <br>This parameter cannot be set in percentage. </p>
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -52,6 +52,8 @@ Popup箭头在气泡处的偏移。 箭头在气泡上下方时，数值为0表�
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CustomPopupOptions-arrowOffset?: Length--><!--Device-CustomPopupOptions-arrowOffset?: Length-End-->
@@ -72,6 +74,8 @@ arrowPointPosition?: ArrowPointPosition
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -90,15 +94,13 @@ arrowWidth?: Dimension
 
 **类型：** Dimension
 
-**默认值：** 16.0_vp. [since 11 - 11]
-@default 16.0_vp.
-<p><strong>NOTE</strong>:
-<br>This parameter cannot be set in percentage.
-</p> [since 12]
+**默认值：** 16.0_vp. [since 11 - 11] @default 16.0_vp. <p><strong>NOTE</strong>: <br>This parameter cannot be set in percentage. </p> [since 12]
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -124,6 +126,8 @@ autoCancel?: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CustomPopupOptions-autoCancel?: boolean--><!--Device-CustomPopupOptions-autoCancel?: boolean-End-->
@@ -136,7 +140,7 @@ autoCancel?: boolean
 avoidTarget?: AvoidanceMode
 ```
 
-设置Popup避让时是否覆盖指向组件。 默认值：AvoidanceMode.COVER\_TARGET
+设置Popup避让时是否覆盖指向组件。 默认值：AvoidanceMode.COVER_TARGET
 
 **类型：** AvoidanceMode
 
@@ -145,6 +149,8 @@ avoidTarget?: AvoidanceMode
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -160,15 +166,17 @@ avoidTarget?: AvoidanceMode
 backgroundBlurStyle?: BlurStyle
 ```
 
-设置气泡模糊背景参数。 默认值：BlurStyle.COMPONENT\_ULTRA\_THICK
+设置气泡模糊背景参数。 默认值：BlurStyle.COMPONENT_ULTRA_THICK
 
-**类型：** BlurStyle
+**类型：** [BlurStyle](arkts-arkui-blurstyle-e.md)
 
 **默认值：** BlurStyle.COMPONENT_ULTRA_THICK
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -186,11 +194,13 @@ backgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 
 定义Popup的背景模糊样式选项。
 
-**类型：** BackgroundBlurStyleOptions
+**类型：** [BackgroundBlurStyleOptions](arkts-arkui-backgroundblurstyleoptions-i.md)
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -208,11 +218,13 @@ backgroundEffect?: BackgroundEffectOptions
 
 定义Popup的背景效果选项。
 
-**类型：** BackgroundEffectOptions
+**类型：** [BackgroundEffectOptions](arkts-arkui-backgroundeffectoptions-i.md)
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -230,11 +242,13 @@ borderLinearGradient?: PopupBorderLinearGradient
 
 设置Popup组件内描边线性渐变的颜色。 **说明：** 1. borderLinearGradient不设置或者设置为null、undefined时，内描边没有线性渐变效果。 2. borderLinearGradient设置时，direction默认值是：GradientDirection.Bottom。
 
-**类型：** PopupBorderLinearGradient
+**类型：** [PopupBorderLinearGradient](arkts-arkui-popupborderlineargradient-i.md)
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -258,6 +272,8 @@ borderWidth?: Dimension
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -272,13 +288,15 @@ borderWidth?: Dimension
 builder: CustomBuilder
 ```
 
-提示气泡内容的构造器。 **说明：** 1. Popup为通用属性，自定义Popup中不支持再次弹出Popup。对builder下的第一层容器组件不支持使用position属性，如果使用将导致气泡不显示。 2. builder中若使用自定义组件，自定义组件的aboutToAppear和aboutToDisappear生命周期与Popup气泡的显隐无关，不能使用其生命周期判断Popup气泡的显隐。 3. 该构造器的builder仅支持定义在UI组件中，例如可以定义在Builder函数、方法或者\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_方法里。
+提示气泡内容的构造器。 **说明：** 1. Popup为通用属性，自定义Popup中不支持再次弹出Popup。对builder下的第一层容器组件不支持使用position属性，如果使用将导致气泡不显示。 2. builder中若使用自定义组件，自定义组件的aboutToAppear和aboutToDisappear生命周期与Popup气泡的显隐无关，不能使用其生命周期判断Popup气泡的显隐。 3. 该构造器的builder仅支持定义在UI组件中，例如可以定义在Builder函数、方法或者[build](../../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#build)方法里。
 
-**类型：** CustomBuilder
+**类型：** [CustomBuilder](arkts-arkui-custombuilder-t.md)
 
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -292,15 +310,17 @@ builder: CustomBuilder
 colorMode?: AnchoredColorMode
 ```
 
-设置气泡深浅色模式，默认跟随绑定组件深浅色模式。 默认值：AnchoredColorMode.FOLLOW\_TARGET **说明：** 1. 仅当绑定组件使用了\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_标签时，该属性才会生效。 2. 该属性仅影响组件的默认样式，以及开发者设置的涉及深浅色资源的属性。 3. 设置为AnchoredColorMode.FOLLOW\_SYSTEM时，模糊材质可以跟随，文字颜色以及涉及深浅色资源的属性仍保持跟随绑定组件的深浅色配置。
+设置气泡深浅色模式，默认跟随绑定组件深浅色模式。 默认值：AnchoredColorMode.FOLLOW_TARGET **说明：** 1. 仅当绑定组件使用了[WithTheme](../../../reference/apis-arkui/arkui-ts/ts-container-with-theme.md#接口)标签时，该属性才会生效。 2. 该属性仅影响组件的默认样式，以及开发者设置的涉及深浅色资源的属性。 3. 设置为AnchoredColorMode.FOLLOW_SYSTEM时，模糊材质可以跟随，文字颜色以及涉及深浅色资源的属性仍保持跟随绑定组件的深浅色配置。
 
-**类型：** AnchoredColorMode
+**类型：** [AnchoredColorMode](arkts-arkui-anchoredcolormode-e.md)
 
 **默认值：** AnchoredColorMode.FOLLOW_TARGET
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -326,6 +346,8 @@ enableArrow?: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CustomPopupOptions-enableArrow?: boolean--><!--Device-CustomPopupOptions-enableArrow?: boolean-End-->
@@ -348,6 +370,8 @@ Popup组件是否响应悬停态（半折叠状态）变化，即在悬停态下
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -366,12 +390,13 @@ focusable?: boolean
 
 **类型：** boolean
 
-**默认值：** true [since 11 - 11]
-@default false [since 12]
+**默认值：** true [since 11 - 11] @default false [since 12]
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -397,6 +422,8 @@ followTransformOfTarget?: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务API中使用。
@@ -413,13 +440,15 @@ keyboardAvoidMode?: KeyboardAvoidMode
 
 气泡是否避让软键盘，默认不避让。设置为避让后，气泡显示空间不足时，由原先居中覆盖父组件的方式改为平移覆盖父组件，且气泡箭头不指向宿主时，不再显示箭头。 默认值：KeyboardAvoidMode.NONE
 
-**类型：** KeyboardAvoidMode
+**类型：** [KeyboardAvoidMode](arkts-arkui-keyboardavoidmode-e.md)
 
 **默认值：** KeyboardAvoidMode.NONE
 
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -443,6 +472,8 @@ levelMode?: LevelMode
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -465,6 +496,8 @@ mask?: boolean | { color: ResourceColor }
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -479,7 +512,7 @@ mask?: boolean | { color: ResourceColor }
 maskColor?: Color | string | Resource | number
 ```
 
-设置气泡遮罩层颜色。 **说明：** 从 API version 10 开始废弃，建议使用\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_替代。
+设置气泡遮罩层颜色。 **说明：** 从 API version 10 开始废弃，建议使用`mask`替代。
 
 **类型：** Color \| string \| Resource \| number
 
@@ -489,7 +522,7 @@ maskColor?: Color | string | Resource | number
 
 **废弃版本：** 10
 
-**替代接口：** [CustomPopupOptions#mask](../../apis-na/arkts-apis/arkts-na-component/common-custompopupoptions-i.md#mask)
+**替代接口：** [mask](#mask)
 
 <!--Device-CustomPopupOptions-maskColor?: Color | string | Resource | number--><!--Device-CustomPopupOptions-maskColor?: Color | string | Resource | number-End-->
 
@@ -511,6 +544,8 @@ offset?: Position
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -526,11 +561,22 @@ onStateChange?: (event: {
     /**
      * is Visible.
      *
-     ******/
+     * @type { boolean }
+     * @syscap SystemCapability.ArkUI.ArkUI.Full
+     * @stagemodelonly
+     * @crossplatform
+     * @since 10
+     */
     /**
      * is Visible.
      *
-     *******/
+     * @type { boolean }
+     * @syscap SystemCapability.ArkUI.ArkUI.Full
+     * @stagemodelonly
+     * @crossplatform
+     * @atomicservice
+     * @since 11
+     */
     isVisible: boolean
   }) => void
 ```
@@ -543,9 +589,11 @@ onStateChange?: (event: {
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-<!--Device-CustomPopupOptions-onStateChange?: (event: {    /**     * is Visible.     *     ******/    /**     * is Visible.     *     *******/    isVisible: boolean  }) => void--><!--Device-CustomPopupOptions-onStateChange?: (event: {    /**     * is Visible.     *     ******/    /**     * is Visible.     *     *******/    isVisible: boolean  }) => void-End-->
+<!--Device-CustomPopupOptions-onStateChange?: (event: {    /**     * is Visible.     *     * @type { boolean }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @stagemodelonly     * @crossplatform     * @since 10     */    /**     * is Visible.     *     * @type { boolean }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @stagemodelonly     * @crossplatform     * @atomicservice     * @since 11     */    isVisible: boolean  }) => void--><!--Device-CustomPopupOptions-onStateChange?: (event: {    /**     * is Visible.     *     * @type { boolean }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @stagemodelonly     * @crossplatform     * @since 10     */    /**     * is Visible.     *     * @type { boolean }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @stagemodelonly     * @crossplatform     * @atomicservice     * @since 11     */    isVisible: boolean  }) => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -555,15 +603,17 @@ onStateChange?: (event: {
 onWillDismiss?: boolean | Callback<DismissPopupAction>
 ```
 
-设置Popup交互式关闭拦截开关及拦截回调函数，默认值为true，Popup响应点击、侧滑（左滑/右滑）、三键back。 1. 当为boolean类型时，如果设置为false，则不响应点击、侧滑（左滑/右滑）、三键back、路由跳转或键盘ESC退出事件，仅当设置“气泡显示状态”参数show值为false时才退出；如果设置为true，则正常响应退出事件； 2. 如果设置为函数类型，则拦截退出事件且执行回调函数。侧滑（左滑/右滑）、三键back、路由跳转或键盘ESC在回调函数中返回的reason为PRESS\_BACK，点击为TOUCH\_OUTSIDE。 **说明：** 在onWillDismiss回调中，不能再做onWillDismiss拦截。
+设置Popup交互式关闭拦截开关及拦截回调函数，默认值为true，Popup响应点击、侧滑（左滑/右滑）、三键back。 1. 当为boolean类型时，如果设置为false，则不响应点击、侧滑（左滑/右滑）、三键back、路由跳转或键盘ESC退出事件，仅当设置“气泡显示状态”参数show值为false时才退出；如果设置为true，则正常响应退出事件； 2. 如果设置为函数类型，则拦截退出事件且执行回调函数。侧滑（左滑/右滑）、三键back、路由跳转或键盘ESC在回调函数中返回的reason为PRESS_BACK，点击为TOUCH_OUTSIDE。 **说明：** 在onWillDismiss回调中，不能再做onWillDismiss拦截。
 
-**类型：** boolean \| Callback&lt;DismissPopupAction&gt;
+**类型：** boolean \| [Callback](arkts-arkui-callback-i.md)&lt;[DismissPopupAction](arkts-arkui-dismisspopupaction-i.md)&gt;
 
 **默认值：** true
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -581,11 +631,13 @@ outlineLinearGradient?: PopupBorderLinearGradient
 
 设置Popup组件外描边线性渐变的颜色。 **说明：** 1. outlineLinearGradient不设置或者设置为null、undefined时，外描边没有线性渐变效果。 2. outlineLinearGradient设置时，direction默认值是：GradientDirection.Bottom。
 
-**类型：** PopupBorderLinearGradient
+**类型：** [PopupBorderLinearGradient](arkts-arkui-popupborderlineargradient-i.md)
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -608,6 +660,8 @@ outlineWidth?: Dimension
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -633,6 +687,8 @@ placement?: Placement
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CustomPopupOptions-placement?: Placement--><!--Device-CustomPopupOptions-placement?: Placement-End-->
@@ -645,16 +701,17 @@ placement?: Placement
 popupColor?: Color | string | Resource | number
 ```
 
-气泡的颜色。如需去除模糊背景填充效果，需将backgroundBlurStyle设置为BlurStyle.NONE。 API version 10，默认值：'#4d4d4d' API version 11及以后，默认值：透明色[TRANSPARENT]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_加模糊背景填充效果[COMPONENT\_ULTRA\_THICK]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_
+气泡的颜色。如需去除模糊背景填充效果，需将backgroundBlurStyle设置为BlurStyle.NONE。 API version 10，默认值：'#4d4d4d' API version 11及以后，默认值：透明色TRANSPARENT加模糊背景填充效果[COMPONENT_ULTRA_THICK](arkts-arkui-blurstyle-e.md#BlurStyle)
 
 **类型：** Color \| string \| Resource \| number
 
-**默认值：** '#4d4d4d' [since 10 - 10]
-@default TRANSPARENT plus COMPONENT_ULTRA_THICK [since 11]
+**默认值：** '#4d4d4d' [since 10 - 10] @default TRANSPARENT plus COMPONENT_ULTRA_THICK [since 11]
 
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -678,6 +735,8 @@ radius?: Dimension
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -692,15 +751,17 @@ radius?: Dimension
 shadow?: ShadowOptions | ShadowStyle
 ```
 
-设置气泡阴影。 默认值：ShadowStyle.OUTER\_DEFAULT\_MD
+设置气泡阴影。 默认值：ShadowStyle.OUTER_DEFAULT_MD
 
-**类型：** ShadowOptions \| ShadowStyle
+**类型：** [ShadowOptions](arkts-arkui-shadowoptions-i.md) \| [ShadowStyle](arkts-arkui-shadowstyle-e.md)
 
 **默认值：** ShadowStyle.OUTER_DEFAULT_MD.
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -726,6 +787,8 @@ showInSubWindow?: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CustomPopupOptions-showInSubWindow?: boolean--><!--Device-CustomPopupOptions-showInSubWindow?: boolean-End-->
@@ -738,13 +801,15 @@ showInSubWindow?: boolean
 systemMaterial?: SystemUiMaterial
 ```
 
-设置组件的系统材质。 默认值：undefined，会清除由该接口设置的材质效果。 **说明：** 不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_、边框颜色 [borderColor]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_、边框宽度[borderWidth]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_、阴影 [shadow]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_，不建议与上述接口一起使用。
+设置组件的系统材质。 默认值：undefined，会清除由该接口设置的材质效果。 **说明：** 不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](arkts-arkui-commonmethod-c.md#backgroundColor)、边框颜色 [borderColor](arkts-arkui-commonmethod-c.md#borderColor)、边框宽度[borderWidth](arkts-arkui-commonmethod-c.md#borderWidth)、阴影 [shadow](arkts-arkui-commonmethod-c.md#shadow)，不建议与上述接口一起使用。
 
-**类型：** SystemUiMaterial
+**类型：** [SystemUiMaterial](arkts-arkui-systemuimaterial-t.md)
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -768,6 +833,8 @@ targetSpace?: Length
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -784,11 +851,13 @@ transition?: TransitionEffect
 
 自定义设置Popup气泡显示和退出的动画效果。 **说明：** 1. 如果不设置，则使用默认的显示/退出动效。 2. 显示动效中按back键，打断显示动效，执行退出动效，动画效果为显示动效与退出动效的曲线叠加后的效果。 3. 退出动效中按back键，不会打断退出动效，退出动效继续执行，back键不被响应。
 
-**类型：** TransitionEffect
+**类型：** [TransitionEffect](arkts-arkui-transitioneffect-c.md)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -811,6 +880,8 @@ width?: Dimension
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

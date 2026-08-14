@@ -1,10 +1,12 @@
 # NativeMediaPlayerHandler
 
-\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_ 回调函数的参数。应用通过该对象，将播放器的状态通知给 ArkWeb 内核。 > **说明：** > > - 本Interface首批接口从API version 12开始支持。 > > - 示例效果请以真机运行为准。
+[CreateNativeMediaPlayerCallback](../../../reference/apis-arkweb/arkts-apis-webview-t.md#CreateNativeMediaPlayerCallback) 回调函数的参数。应用通过该对象，将播放器的状态通知给 ArkWeb 内核。 > **说明：** > > - 本Interface首批接口从API version 12开始支持。 > > - 示例效果请以真机运行为准。
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-webview-interface NativeMediaPlayerHandler--><!--Device-webview-interface NativeMediaPlayerHandler-End-->
 
@@ -22,6 +24,8 @@ handleBufferedEndTimeChanged(bufferedEndTime: double): void
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-NativeMediaPlayerHandler-handleBufferedEndTimeChanged(bufferedEndTime: double): void--><!--Device-NativeMediaPlayerHandler-handleBufferedEndTimeChanged(bufferedEndTime: double): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -30,7 +34,7 @@ handleBufferedEndTimeChanged(bufferedEndTime: double): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bufferedEndTime | double | 是 | 媒体缓冲的时长。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_单位：秒，取值范围：[0, duration] |
+| bufferedEndTime | double | 是 | 媒体缓冲的时长。&lt;br&gt;单位：秒，取值范围：[0, duration] |
 
 ## handleDurationChanged
 
@@ -44,6 +48,8 @@ handleDurationChanged(duration: double): void
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-NativeMediaPlayerHandler-handleDurationChanged(duration: double): void--><!--Device-NativeMediaPlayerHandler-handleDurationChanged(duration: double): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -52,7 +58,7 @@ handleDurationChanged(duration: double): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| duration | double | 是 | 媒体的总时长。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_单位：秒，取值范围：[0, +∞) |
+| duration | double | 是 | 媒体的总时长。&lt;br&gt;单位：秒，取值范围：[0, +∞) |
 
 ## handleEnded
 
@@ -65,6 +71,8 @@ handleEnded(): void
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-NativeMediaPlayerHandler-handleEnded(): void--><!--Device-NativeMediaPlayerHandler-handleEnded(): void-End-->
 
@@ -82,6 +90,8 @@ handleError(error: MediaError, errorMessage: string): void
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-NativeMediaPlayerHandler-handleError(error: MediaError, errorMessage: string): void--><!--Device-NativeMediaPlayerHandler-handleError(error: MediaError, errorMessage: string): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -90,7 +100,7 @@ handleError(error: MediaError, errorMessage: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| error | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 错误类型。 |
+| error | [MediaError](arkts-na-webview-mediaerror-e.md) | 是 | 错误类型。 |
 | errorMessage | string | 是 | 错误的详细描述。 |
 
 ## handleFullscreenChanged
@@ -105,6 +115,8 @@ handleFullscreenChanged(fullscreen: boolean): void
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-NativeMediaPlayerHandler-handleFullscreenChanged(fullscreen: boolean): void--><!--Device-NativeMediaPlayerHandler-handleFullscreenChanged(fullscreen: boolean): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -113,7 +125,7 @@ handleFullscreenChanged(fullscreen: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fullscreen | boolean | 是 | 是否全屏。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_true表示全屏，false表示未全屏。 |
+| fullscreen | boolean | 是 | 是否全屏。&lt;br&gt;true表示全屏，false表示未全屏。 |
 
 ## handleMutedChanged
 
@@ -127,6 +139,8 @@ handleMutedChanged(muted: boolean): void
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-NativeMediaPlayerHandler-handleMutedChanged(muted: boolean): void--><!--Device-NativeMediaPlayerHandler-handleMutedChanged(muted: boolean): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -135,7 +149,7 @@ handleMutedChanged(muted: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| muted | boolean | 是 | 当前播放器是否静音。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_true表示当前播放器静音，false表示当前播放器未静音。 |
+| muted | boolean | 是 | 当前播放器是否静音。&lt;br&gt;true表示当前播放器静音，false表示当前播放器未静音。 |
 
 ## handleNetworkStateChanged
 
@@ -149,6 +163,8 @@ handleNetworkStateChanged(state: NetworkState): void
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-NativeMediaPlayerHandler-handleNetworkStateChanged(state: NetworkState): void--><!--Device-NativeMediaPlayerHandler-handleNetworkStateChanged(state: NetworkState): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -157,7 +173,7 @@ handleNetworkStateChanged(state: NetworkState): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| state | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 播放器的网络状态。 |
+| state | NetworkState | 是 | 播放器的网络状态。 |
 
 ## handlePlaybackRateChanged
 
@@ -170,6 +186,8 @@ handlePlaybackRateChanged(playbackRate: double): void
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-NativeMediaPlayerHandler-handlePlaybackRateChanged(playbackRate: double): void--><!--Device-NativeMediaPlayerHandler-handlePlaybackRateChanged(playbackRate: double): void-End-->
 
@@ -193,6 +211,8 @@ handleReadyStateChanged(state: ReadyState): void
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-NativeMediaPlayerHandler-handleReadyStateChanged(state: ReadyState): void--><!--Device-NativeMediaPlayerHandler-handleReadyStateChanged(state: ReadyState): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -201,7 +221,7 @@ handleReadyStateChanged(state: ReadyState): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| state | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 播放器的缓存状态。 |
+| state | [ReadyState](arkts-na-webview-readystate-e.md) | 是 | 播放器的缓存状态。 |
 
 ## handleSeekFinished
 
@@ -214,6 +234,8 @@ handleSeekFinished(): void
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-NativeMediaPlayerHandler-handleSeekFinished(): void--><!--Device-NativeMediaPlayerHandler-handleSeekFinished(): void-End-->
 
@@ -231,6 +253,8 @@ handleSeeking(): void
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-NativeMediaPlayerHandler-handleSeeking(): void--><!--Device-NativeMediaPlayerHandler-handleSeeking(): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -247,6 +271,8 @@ handleStatusChanged(status: PlaybackStatus): void
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-NativeMediaPlayerHandler-handleStatusChanged(status: PlaybackStatus): void--><!--Device-NativeMediaPlayerHandler-handleStatusChanged(status: PlaybackStatus): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -255,7 +281,7 @@ handleStatusChanged(status: PlaybackStatus): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| status | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 播放器的播放状态。 |
+| status | [PlaybackStatus](arkts-na-webview-playbackstatus-e.md) | 是 | 播放器的播放状态。 |
 
 ## handleTimeUpdate
 
@@ -269,6 +295,8 @@ handleTimeUpdate(currentPlayTime: double): void
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-NativeMediaPlayerHandler-handleTimeUpdate(currentPlayTime: double): void--><!--Device-NativeMediaPlayerHandler-handleTimeUpdate(currentPlayTime: double): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -277,7 +305,7 @@ handleTimeUpdate(currentPlayTime: double): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| currentPlayTime | double | 是 | 当前播放时间。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_单位：秒，取值范围：[0, duration] |
+| currentPlayTime | double | 是 | 当前播放时间。&lt;br&gt;单位：秒，取值范围：[0, duration] |
 
 ## handleVideoSizeChanged
 
@@ -290,6 +318,8 @@ handleVideoSizeChanged(width: double, height: double): void
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-NativeMediaPlayerHandler-handleVideoSizeChanged(width: double, height: double): void--><!--Device-NativeMediaPlayerHandler-handleVideoSizeChanged(width: double, height: double): void-End-->
 
@@ -313,6 +343,8 @@ handleVolumeChanged(volume: double): void
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-NativeMediaPlayerHandler-handleVolumeChanged(volume: double): void--><!--Device-NativeMediaPlayerHandler-handleVolumeChanged(volume: double): void-End-->
 

@@ -1,14 +1,16 @@
 # GyroscopeUncalibratedResponse
 
-未校准陀螺仪传感器数据，继承于[Response]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+未校准陀螺仪传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md#Response)。
 
-**继承/实现关系：** GyroscopeUncalibratedResponse extends [Response](arkts-sensorservice-sensor-response-i.md)
+**继承/实现关系：** GyroscopeUncalibratedResponse extends [Response](arkts-sensorservice-sensor-response-i.md#Response)
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-<!--Device-sensor-interface GyroscopeUncalibratedResponse extends Response--><!--Device-sensor-interface GyroscopeUncalibratedResponse extends Response-End-->
+**废弃版本：** -1
+
+<!--Device-sensor-interface GyroscopeUncalibratedResponse--><!--Device-sensor-interface GyroscopeUncalibratedResponse-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
@@ -22,9 +24,11 @@ biasX: double
 
 **类型：** double
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-GyroscopeUncalibratedResponse-biasX: double--><!--Device-GyroscopeUncalibratedResponse-biasX: double-End-->
 
@@ -40,9 +44,11 @@ biasY: double
 
 **类型：** double
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-GyroscopeUncalibratedResponse-biasY: double--><!--Device-GyroscopeUncalibratedResponse-biasY: double-End-->
 
@@ -58,9 +64,11 @@ biasZ: double
 
 **类型：** double
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-GyroscopeUncalibratedResponse-biasZ: double--><!--Device-GyroscopeUncalibratedResponse-biasZ: double-End-->
 
@@ -76,9 +84,11 @@ x: double
 
 **类型：** double
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-GyroscopeUncalibratedResponse-x: double--><!--Device-GyroscopeUncalibratedResponse-x: double-End-->
 
@@ -94,9 +104,11 @@ y: double
 
 **类型：** double
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-GyroscopeUncalibratedResponse-y: double--><!--Device-GyroscopeUncalibratedResponse-y: double-End-->
 
@@ -112,9 +124,11 @@ z: double
 
 **类型：** double
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-GyroscopeUncalibratedResponse-z: double--><!--Device-GyroscopeUncalibratedResponse-z: double-End-->
 

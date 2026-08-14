@@ -8,9 +8,11 @@ function enterKioskMode(context: UIAbilityContext): Promise<void>
 
 进入Kiosk模式。使用Promise异步回调。 该接口仅在Phone、PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -22,7 +24,7 @@ function enterKioskMode(context: UIAbilityContext): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 需要进入kiosk模式的UIAbility的上下文。 |
+| context | [UIAbilityContext](arkts-ability-uiabilitycontext-c.md) | 是 | 需要进入kiosk模式的UIAbility的上下文。 |
 
 **返回值：**
 
@@ -35,12 +37,12 @@ function enterKioskMode(context: UIAbilityContext): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [16000113](../errorcode-ability.md#16000113-当前ability不在前台) | Current ability is not in foreground. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Failed to connect to the system service. |
 | [16000110](../errorcode-ability.md#16000110-当前应用不在kiosk模式的列表内) | The current application is not in Kiosk app list and cannot enter Kiosk mode. |
 | [16000111](../errorcode-ability.md#16000111-已经有应用进入了kiosk模式) | The system is already in Kiosk mode and cannot enter Kiosk mode again. |
-| [16000113](../errorcode-ability.md#16000113-当前ability不在前台) | Current ability is not in foreground. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

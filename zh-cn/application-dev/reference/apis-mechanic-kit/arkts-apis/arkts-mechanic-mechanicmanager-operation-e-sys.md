@@ -2,9 +2,11 @@
 
 用户操作
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-mechanicManager-export enum Operation--><!--Device-mechanicManager-export enum Operation-End-->
 
@@ -20,9 +22,11 @@ CONNECT = 0
 
 连接操作
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Operation-CONNECT = 0--><!--Device-Operation-CONNECT = 0-End-->
 
@@ -38,9 +42,11 @@ DISCONNECT = 1
 
 断开操作
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Operation-DISCONNECT = 1--><!--Device-Operation-DISCONNECT = 1-End-->
 

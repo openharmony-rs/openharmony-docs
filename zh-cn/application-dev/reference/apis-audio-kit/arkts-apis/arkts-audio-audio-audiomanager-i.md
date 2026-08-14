@@ -1,10 +1,12 @@
 # AudioManager
 
-音频音量和设备管理。 在使用AudioManager的接口之前，需先通过[getAudioManager]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_获取AudioManager实例。
+音频音量和设备管理。 在使用AudioManager的接口之前，需先通过[getAudioManager](arkts-audio-audio-getaudiomanager-f.md#getAudioManager)获取AudioManager实例。
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-audio-interface AudioManager--><!--Device-audio-interface AudioManager-End-->
 
@@ -33,7 +35,7 @@ getAudioParameter(key: string, callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | key | string | 是 | 待获取的音频参数的键。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;string&gt; | 是 | 回调函数。当获取指定音频参数值成功，err为undefined，data为获取到的指定音频参数值；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数。当获取指定音频参数值成功，err为undefined，data为获取到的指定音频参数值；否则为错误对象。 |
 
 ## getAudioParameter
 
@@ -73,9 +75,11 @@ getAudioScene(callback: AsyncCallback<AudioScene>): void
 
 获取音频场景模式。使用callback异步回调。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioManager-getAudioScene(callback: AsyncCallback<AudioScene>): void--><!--Device-AudioManager-getAudioScene(callback: AsyncCallback<AudioScene>): void-End-->
 
@@ -85,7 +89,7 @@ getAudioScene(callback: AsyncCallback<AudioScene>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;AudioScene&gt; | 是 | 回调函数。当获取音频场景模式成功，err为undefined，data为获取到的音频场景模式；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AudioScene](arkts-audio-audio-audioscene-e.md)&gt; | 是 | 回调函数。当获取音频场景模式成功，err为undefined，data为获取到的音频场景模式；否则为错误对象。 |
 
 ## getAudioScene
 
@@ -95,9 +99,11 @@ getAudioScene(): Promise<AudioScene>
 
 获取音频场景模式。使用Promise异步回调。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioManager-getAudioScene(): Promise<AudioScene>--><!--Device-AudioManager-getAudioScene(): Promise<AudioScene>-End-->
 
@@ -107,7 +113,7 @@ getAudioScene(): Promise<AudioScene>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;AudioScene&gt; | Promise对象，返回音频场景模式。 |
+| Promise&lt;[AudioScene](arkts-audio-audio-audioscene-e.md)&gt; | Promise对象，返回音频场景模式。 |
 
 ## getAudioSceneSync
 
@@ -117,9 +123,11 @@ getAudioSceneSync(): AudioScene
 
 获取音频场景模式。同步返回结果。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioManager-getAudioSceneSync(): AudioScene--><!--Device-AudioManager-getAudioSceneSync(): AudioScene-End-->
 
@@ -129,7 +137,7 @@ getAudioSceneSync(): AudioScene
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 音频场景模式。 |
+| [AudioScene](arkts-audio-audio-audioscene-e.md) | 音频场景模式。 |
 
 ## getDebuggingManager
 
@@ -141,7 +149,9 @@ getDebuggingManager(): AudioDebuggingManager
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -153,7 +163,7 @@ getDebuggingManager(): AudioDebuggingManager
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回AudioDebuggingManager实例。 |
+| [AudioDebuggingManager](arkts-audio-audio-audiodebuggingmanager-i.md) | 返回AudioDebuggingManager实例。 |
 
 ## getDeviceEnhanceManager
 
@@ -165,7 +175,9 @@ getDeviceEnhanceManager(): AudioDeviceEnhanceManager
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -177,7 +189,7 @@ getDeviceEnhanceManager(): AudioDeviceEnhanceManager
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回一个AudioDeviceEnhanceManager实例。 |
+| [AudioDeviceEnhanceManager](arkts-audio-audio-audiodeviceenhancemanager-i.md) | 返回一个AudioDeviceEnhanceManager实例。 |
 
 ## getDevices
 
@@ -193,7 +205,7 @@ getDevices(deviceFlag: DeviceFlag, callback: AsyncCallback<AudioDeviceDescriptor
 
 **废弃版本：** 9
 
-**替代接口：** ohos.multimedia.audio.AudioRoutingManager#getDevices
+**替代接口：** getDevices
 
 <!--Device-AudioManager-getDevices(deviceFlag: DeviceFlag, callback: AsyncCallback<AudioDeviceDescriptors>): void--><!--Device-AudioManager-getDevices(deviceFlag: DeviceFlag, callback: AsyncCallback<AudioDeviceDescriptors>): void-End-->
 
@@ -203,8 +215,8 @@ getDevices(deviceFlag: DeviceFlag, callback: AsyncCallback<AudioDeviceDescriptor
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deviceFlag | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频设备类型。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;AudioDeviceDescriptors&gt; | 是 | 回调函数。当获取音频设备列表成功，err为undefined，data为获取到的音频设备列表；否则为错误对象。 |
+| deviceFlag | DeviceFlag | 是 | 音频设备类型。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AudioDeviceDescriptors](arkts-audio-audio-audiodevicedescriptors-t.md)&gt; | 是 | 回调函数。当获取音频设备列表成功，err为undefined，data为获取到的音频设备列表；否则为错误对 象。 |
 
 ## getDevices
 
@@ -220,7 +232,7 @@ getDevices(deviceFlag: DeviceFlag): Promise<AudioDeviceDescriptors>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.multimedia.audio.AudioRoutingManager#getDevices
+**替代接口：** getDevices
 
 <!--Device-AudioManager-getDevices(deviceFlag: DeviceFlag): Promise<AudioDeviceDescriptors>--><!--Device-AudioManager-getDevices(deviceFlag: DeviceFlag): Promise<AudioDeviceDescriptors>-End-->
 
@@ -230,13 +242,13 @@ getDevices(deviceFlag: DeviceFlag): Promise<AudioDeviceDescriptors>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deviceFlag | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频设备类型。 |
+| deviceFlag | DeviceFlag | 是 | 音频设备类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;AudioDeviceDescriptors&gt; | Promise对象，返回设备列表。 |
+| Promise&lt;[AudioDeviceDescriptors](arkts-audio-audio-audiodevicedescriptors-t.md)&gt; | Promise对象，返回设备列表。 |
 
 ## getMaxVolume
 
@@ -252,7 +264,7 @@ getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void
 
 **废弃版本：** 9
 
-**替代接口：** ohos.multimedia.audio.AudioVolumeGroupManager#getMaxVolume
+**替代接口：** getMaxVolume
 
 <!--Device-AudioManager-getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void--><!--Device-AudioManager-getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void-End-->
 
@@ -262,8 +274,8 @@ getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volumeType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频音量类型。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;number&gt; | 是 | 回调函数。当获取指定流的最大音量成功，err为undefined，data为获取到的指定流的最大音量等级；否则为错误对象。 |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数。当获取指定流的最大音量成功，err为undefined，data为获取到的指定流的最大音量等级；否则为错误对象。 |
 
 ## getMaxVolume
 
@@ -279,7 +291,7 @@ getMaxVolume(volumeType: AudioVolumeType): Promise<number>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.multimedia.audio.AudioVolumeGroupManager#getMaxVolume
+**替代接口：** getMaxVolume
 
 <!--Device-AudioManager-getMaxVolume(volumeType: AudioVolumeType): Promise<number>--><!--Device-AudioManager-getMaxVolume(volumeType: AudioVolumeType): Promise<number>-End-->
 
@@ -289,7 +301,7 @@ getMaxVolume(volumeType: AudioVolumeType): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volumeType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频音量类型。 |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
 
 **返回值：**
 
@@ -311,7 +323,7 @@ getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void
 
 **废弃版本：** 9
 
-**替代接口：** ohos.multimedia.audio.AudioVolumeGroupManager#getMinVolume
+**替代接口：** getMinVolume
 
 <!--Device-AudioManager-getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void--><!--Device-AudioManager-getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void-End-->
 
@@ -321,8 +333,8 @@ getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volumeType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频音量类型。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;number&gt; | 是 | 回调函数。当获取指定流的最小音量成功，err为undefined，data为获取到的指定流的最小音量等级；否则为错误对象。 |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数。当获取指定流的最小音量成功，err为undefined，data为获取到的指定流的最小音量等级；否则为错误对象。 |
 
 ## getMinVolume
 
@@ -338,7 +350,7 @@ getMinVolume(volumeType: AudioVolumeType): Promise<number>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.multimedia.audio.AudioVolumeGroupManager#getMinVolume
+**替代接口：** getMinVolume
 
 <!--Device-AudioManager-getMinVolume(volumeType: AudioVolumeType): Promise<number>--><!--Device-AudioManager-getMinVolume(volumeType: AudioVolumeType): Promise<number>-End-->
 
@@ -348,7 +360,7 @@ getMinVolume(volumeType: AudioVolumeType): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volumeType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频音量类型。 |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
 
 **返回值：**
 
@@ -370,7 +382,7 @@ getRingerMode(callback: AsyncCallback<AudioRingMode>): void
 
 **废弃版本：** 9
 
-**替代接口：** ohos.multimedia.audio.AudioVolumeGroupManager#getRingerMode
+**替代接口：** getRingerMode
 
 <!--Device-AudioManager-getRingerMode(callback: AsyncCallback<AudioRingMode>): void--><!--Device-AudioManager-getRingerMode(callback: AsyncCallback<AudioRingMode>): void-End-->
 
@@ -380,7 +392,7 @@ getRingerMode(callback: AsyncCallback<AudioRingMode>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;AudioRingMode&gt; | 是 | 回调函数。当获取铃声模式成功，err为undefined，data为获取到的铃声模式；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AudioRingMode](arkts-audio-audio-audioringmode-e.md)&gt; | 是 | 回调函数。当获取铃声模式成功，err为undefined，data为获取到的铃声模式；否则为错误对象。 |
 
 ## getRingerMode
 
@@ -396,7 +408,7 @@ getRingerMode(): Promise<AudioRingMode>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.multimedia.audio.AudioVolumeGroupManager#getRingerMode
+**替代接口：** getRingerMode
 
 <!--Device-AudioManager-getRingerMode(): Promise<AudioRingMode>--><!--Device-AudioManager-getRingerMode(): Promise<AudioRingMode>-End-->
 
@@ -406,7 +418,7 @@ getRingerMode(): Promise<AudioRingMode>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;AudioRingMode&gt; | Promise对象，返回系统的铃声模式。 |
+| Promise&lt;[AudioRingMode](arkts-audio-audio-audioringmode-e.md)&gt; | Promise对象，返回系统的铃声模式。 |
 
 ## getRoutingManager
 
@@ -416,9 +428,11 @@ getRoutingManager(): AudioRoutingManager
 
 获取音频路由管理器。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioManager-getRoutingManager(): AudioRoutingManager--><!--Device-AudioManager-getRoutingManager(): AudioRoutingManager-End-->
 
@@ -428,7 +442,7 @@ getRoutingManager(): AudioRoutingManager
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | AudioRoutingManager实例。 |
+| [AudioRoutingManager](arkts-audio-audio-audioroutingmanager-i.md) | AudioRoutingManager实例。 |
 
 ## getSessionManager
 
@@ -438,9 +452,11 @@ getSessionManager(): AudioSessionManager
 
 获取音频会话管理器。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
@@ -452,7 +468,7 @@ getSessionManager(): AudioSessionManager
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | AudioSessionManager实例。 |
+| [AudioSessionManager](arkts-audio-audio-audiosessionmanager-i.md) | AudioSessionManager实例。 |
 
 ## getSpatializationManager
 
@@ -462,9 +478,11 @@ getSpatializationManager(): AudioSpatializationManager
 
 获取空间音频管理器。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioManager-getSpatializationManager(): AudioSpatializationManager--><!--Device-AudioManager-getSpatializationManager(): AudioSpatializationManager-End-->
 
@@ -474,7 +492,7 @@ getSpatializationManager(): AudioSpatializationManager
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | AudioSpatializationManager实例。 |
+| [AudioSpatializationManager](arkts-audio-audio-audiospatializationmanager-i.md) | AudioSpatializationManager实例。 |
 
 ## getStreamManager
 
@@ -484,9 +502,11 @@ getStreamManager(): AudioStreamManager
 
 获取音频流管理器。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioManager-getStreamManager(): AudioStreamManager--><!--Device-AudioManager-getStreamManager(): AudioStreamManager-End-->
 
@@ -496,7 +516,7 @@ getStreamManager(): AudioStreamManager
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | AudioStreamManager实例。 |
+| [AudioStreamManager](arkts-audio-audio-audiostreammanager-i.md) | AudioStreamManager实例。 |
 
 ## getVolume
 
@@ -512,7 +532,7 @@ getVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void
 
 **废弃版本：** 9
 
-**替代接口：** ohos.multimedia.audio.AudioVolumeGroupManager#getVolume
+**替代接口：** getVolume
 
 <!--Device-AudioManager-getVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void--><!--Device-AudioManager-getVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void-End-->
 
@@ -522,8 +542,8 @@ getVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volumeType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频音量类型。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;number&gt; | 是 | 回调函数。当获取指定流的音量成功，err为undefined，data为获取到的指定流的音量等级；否则为错误对象。指定流的音量等级范围可通过[getMinVolume]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_和[getMaxVolume]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_获取。 |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数。当获取指定流的音量成功，err为undefined，data为获取到的指定流的音量等级；否则为错误对象。指定流的音量等级范围可通 过 [getMinVolume](#getMinVolume) 和 [getMaxVolume](#getMaxVolume) 获取。 |
 
 ## getVolume
 
@@ -539,7 +559,7 @@ getVolume(volumeType: AudioVolumeType): Promise<number>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.multimedia.audio.AudioVolumeGroupManager#getVolume
+**替代接口：** getVolume
 
 <!--Device-AudioManager-getVolume(volumeType: AudioVolumeType): Promise<number>--><!--Device-AudioManager-getVolume(volumeType: AudioVolumeType): Promise<number>-End-->
 
@@ -549,13 +569,13 @@ getVolume(volumeType: AudioVolumeType): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volumeType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频音量类型。 |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise对象，返回指定流的音量等级。指定流的音量等级范围可通过 |
+| Promise&lt;number&gt; | Promise对象，返回指定流的音量等级。指定流的音量等级范围可通过 [getMinVolume]{ |
 
 ## getVolumeManager
 
@@ -565,9 +585,11 @@ getVolumeManager(): AudioVolumeManager
 
 获取音频音量管理器。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -579,7 +601,7 @@ getVolumeManager(): AudioVolumeManager
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | AudioVolumeManager实例。 |
+| [AudioVolumeManager](arkts-audio-audio-audiovolumemanager-i.md) | AudioVolumeManager实例。 |
 
 ## isActive
 
@@ -595,7 +617,7 @@ isActive(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void
 
 **废弃版本：** 9
 
-**替代接口：** ohos.multimedia.audio.AudioStreamManager#isActive
+**替代接口：** isActive
 
 <!--Device-AudioManager-isActive(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void--><!--Device-AudioManager-isActive(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void-End-->
 
@@ -605,8 +627,8 @@ isActive(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volumeType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频音量类型。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;boolean&gt; | 是 | 回调函数。当获取指定音量流的活跃状态成功，err为undefined，data为true表示活跃，false表示不活跃；否则为错误对象。 |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。当获取指定音量流的活跃状态成功，err为undefined，data为true表示活跃，false表示不活跃；否则为错误对象。 |
 
 ## isActive
 
@@ -622,7 +644,7 @@ isActive(volumeType: AudioVolumeType): Promise<boolean>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.multimedia.audio.AudioStreamManager#isActive
+**替代接口：** isActive
 
 <!--Device-AudioManager-isActive(volumeType: AudioVolumeType): Promise<boolean>--><!--Device-AudioManager-isActive(volumeType: AudioVolumeType): Promise<boolean>-End-->
 
@@ -632,7 +654,7 @@ isActive(volumeType: AudioVolumeType): Promise<boolean>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volumeType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频音量类型。 |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
 
 **返回值：**
 
@@ -654,7 +676,7 @@ isDeviceActive(deviceType: ActiveDeviceType, callback: AsyncCallback<boolean>): 
 
 **废弃版本：** 9
 
-**替代接口：** ohos.multimedia.audio.AudioRoutingManager#isCommunicationDeviceActive
+**替代接口：** [isCommunicationDeviceActive](arkts-audio-audio-audioroutingmanager-i.md#isCommunicationDeviceActive)
 
 <!--Device-AudioManager-isDeviceActive(deviceType: ActiveDeviceType, callback: AsyncCallback<boolean>): void--><!--Device-AudioManager-isDeviceActive(deviceType: ActiveDeviceType, callback: AsyncCallback<boolean>): void-End-->
 
@@ -664,8 +686,8 @@ isDeviceActive(deviceType: ActiveDeviceType, callback: AsyncCallback<boolean>): 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deviceType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 活跃音频设备类型。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;boolean&gt; | 是 | 回调函数。当获取指定设备的激活状态成功，err为undefined，data为true表示激活，false表示未激活；否则为错误对象。 |
+| deviceType | [ActiveDeviceType](arkts-audio-audio-activedevicetype-e.md) | 是 | 活跃音频设备类型。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。当获取指定设备的激活状态成功，err为undefined，data为true表示激活，false表示未激活；否则为错误对象。 |
 
 ## isDeviceActive
 
@@ -681,7 +703,7 @@ isDeviceActive(deviceType: ActiveDeviceType): Promise<boolean>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.multimedia.audio.AudioRoutingManager#isCommunicationDeviceActive
+**替代接口：** [isCommunicationDeviceActive](arkts-audio-audio-audioroutingmanager-i.md#isCommunicationDeviceActive)
 
 <!--Device-AudioManager-isDeviceActive(deviceType: ActiveDeviceType): Promise<boolean>--><!--Device-AudioManager-isDeviceActive(deviceType: ActiveDeviceType): Promise<boolean>-End-->
 
@@ -691,7 +713,7 @@ isDeviceActive(deviceType: ActiveDeviceType): Promise<boolean>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deviceType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 活跃音频设备类型。 |
+| deviceType | [ActiveDeviceType](arkts-audio-audio-activedevicetype-e.md) | 是 | 活跃音频设备类型。 |
 
 **返回值：**
 
@@ -713,7 +735,7 @@ isMicrophoneMute(callback: AsyncCallback<boolean>): void
 
 **废弃版本：** 9
 
-**替代接口：** ohos.multimedia.audio.AudioVolumeGroupManager#isMicrophoneMute
+**替代接口：** isMicrophoneMute
 
 **需要权限：** ohos.permission.MICROPHONE
 
@@ -725,7 +747,7 @@ isMicrophoneMute(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;boolean&gt; | 是 | 回调函数。当获取麦克风静音状态成功，err为undefined，data为true表示静音，false表示非静音；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。当获取麦克风静音状态成功，err为undefined，data为true表示静音，false表示非静音；否则为错误对象。 |
 
 ## isMicrophoneMute
 
@@ -741,7 +763,7 @@ isMicrophoneMute(): Promise<boolean>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.multimedia.audio.AudioVolumeGroupManager#isMicrophoneMute
+**替代接口：** isMicrophoneMute
 
 **需要权限：** ohos.permission.MICROPHONE
 
@@ -769,7 +791,7 @@ isMute(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void
 
 **废弃版本：** 9
 
-**替代接口：** ohos.multimedia.audio.AudioVolumeGroupManager#isMute
+**替代接口：** isMute
 
 <!--Device-AudioManager-isMute(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void--><!--Device-AudioManager-isMute(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void-End-->
 
@@ -779,8 +801,8 @@ isMute(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volumeType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频音量类型。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;boolean&gt; | 是 | 回调函数。当获取指定音量流的静音状态成功，err为undefined，data为true表示静音，false表示非静音；否则为错误对象。 |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。当获取指定音量流的静音状态成功，err为undefined，data为true表示静音，false表示非静音；否则为错误对象。 |
 
 ## isMute
 
@@ -796,7 +818,7 @@ isMute(volumeType: AudioVolumeType): Promise<boolean>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.multimedia.audio.AudioVolumeGroupManager#isMute
+**替代接口：** isMute
 
 <!--Device-AudioManager-isMute(volumeType: AudioVolumeType): Promise<boolean>--><!--Device-AudioManager-isMute(volumeType: AudioVolumeType): Promise<boolean>-End-->
 
@@ -806,7 +828,7 @@ isMute(volumeType: AudioVolumeType): Promise<boolean>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volumeType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频音量类型。 |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
 
 **返回值：**
 
@@ -820,7 +842,7 @@ isMute(volumeType: AudioVolumeType): Promise<boolean>
 mute(volumeType: AudioVolumeType, mute: boolean, callback: AsyncCallback<void>): void
 ```
 
-设置指定音量流静音。使用callback异步回调。 当该音量流可设置的最小音量不能为0时，不支持静音操作。例如：闹钟和通话。 > **说明：** > > - 从API version 7开始支持，从API version 9开始废弃。 > > - 应用无法直接静音流音量，建议通过系统音量面板组件进行静音。具体样例和介绍请参考API文档 > [@ohos.multimedia.avVolumePanel (音量面板)]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+设置指定音量流静音。使用callback异步回调。 当该音量流可设置的最小音量不能为0时，不支持静音操作。例如：闹钟和通话。 > **说明：** > > - 从API version 7开始支持，从API version 9开始废弃。 > > - 应用无法直接静音流音量，建议通过系统音量面板组件进行静音。具体样例和介绍请参考API文档 > @ohos.multimedia.avVolumePanel (音量面板)。
 
 **起始版本：** 7
 
@@ -828,7 +850,7 @@ mute(volumeType: AudioVolumeType, mute: boolean, callback: AsyncCallback<void>):
 
 **废弃版本：** 9
 
-**替代接口：** ohos.multimedia.avVolumePanel.AVVolumePanel
+**替代接口：** [AVVolumePanel](../../apis-na/arkts-apis/arkts-na-multimedia-avvolumepanel-avvolumepanel-s.md#AVVolumePanel)
 
 <!--Device-AudioManager-mute(volumeType: AudioVolumeType, mute: boolean, callback: AsyncCallback<void>): void--><!--Device-AudioManager-mute(volumeType: AudioVolumeType, mute: boolean, callback: AsyncCallback<void>): void-End-->
 
@@ -838,9 +860,9 @@ mute(volumeType: AudioVolumeType, mute: boolean, callback: AsyncCallback<void>):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volumeType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频音量类型。 |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
 | mute | boolean | 是 | 是否设置指定音量流为静音状态。true表示静音，false表示非静音。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数。当设置指定音量流静音成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当设置指定音量流静音成功，err为undefined，否则为错误对象。 |
 
 ## mute
 
@@ -848,7 +870,7 @@ mute(volumeType: AudioVolumeType, mute: boolean, callback: AsyncCallback<void>):
 mute(volumeType: AudioVolumeType, mute: boolean): Promise<void>
 ```
 
-设置指定音量流静音。使用Promise异步回调。 当该音量流可设置的最小音量不能为0时，不支持静音操作。例如：闹钟和通话。 > **说明：** > > - 从API version 7开始支持，从API version 9开始废弃。 > > - 应用无法直接静音流音量，建议通过系统音量面板组件进行静音。具体样例和介绍请参考API文档 > [@ohos.multimedia.avVolumePanel (音量面板)]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+设置指定音量流静音。使用Promise异步回调。 当该音量流可设置的最小音量不能为0时，不支持静音操作。例如：闹钟和通话。 > **说明：** > > - 从API version 7开始支持，从API version 9开始废弃。 > > - 应用无法直接静音流音量，建议通过系统音量面板组件进行静音。具体样例和介绍请参考API文档 > @ohos.multimedia.avVolumePanel (音量面板)。
 
 **起始版本：** 7
 
@@ -856,7 +878,7 @@ mute(volumeType: AudioVolumeType, mute: boolean): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.multimedia.avVolumePanel.AVVolumePanel
+**替代接口：** [AVVolumePanel](../../apis-na/arkts-apis/arkts-na-multimedia-avvolumepanel-avvolumepanel-s.md#AVVolumePanel)
 
 <!--Device-AudioManager-mute(volumeType: AudioVolumeType, mute: boolean): Promise<void>--><!--Device-AudioManager-mute(volumeType: AudioVolumeType, mute: boolean): Promise<void>-End-->
 
@@ -866,7 +888,7 @@ mute(volumeType: AudioVolumeType, mute: boolean): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volumeType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频音量类型。 |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
 | mute | boolean | 是 | 是否设置指定音量流为静音状态。true表示静音，false表示非静音。 |
 
 **返回值：**
@@ -875,7 +897,31 @@ mute(volumeType: AudioVolumeType, mute: boolean): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-## off('audioSceneChange')
+## offAudioSceneChange
+
+```TypeScript
+offAudioSceneChange(callback?: Callback<AudioScene>): void
+```
+
+Unsubscribes to audio scene change events.
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
+
+<!--Device-AudioManager-offAudioSceneChange(callback?: Callback<AudioScene>): void--><!--Device-AudioManager-offAudioSceneChange(callback?: Callback<AudioScene>): void-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Communication
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AudioScene](arkts-audio-audio-audioscene-e.md)&gt; | 否 | Callback used in subscription. |
+
+## off_audioSceneChange
 
 ```TypeScript
 off(type: 'audioSceneChange', callback?: Callback<AudioScene>): void
@@ -887,6 +933,8 @@ off(type: 'audioSceneChange', callback?: Callback<AudioScene>): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 <!--Device-AudioManager-off(type: 'audioSceneChange', callback?: Callback<AudioScene>): void--><!--Device-AudioManager-off(type: 'audioSceneChange', callback?: Callback<AudioScene>): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
@@ -896,9 +944,9 @@ off(type: 'audioSceneChange', callback?: Callback<AudioScene>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'audioSceneChange' | 是 | 事件回调类型，支持的事件为'audioSceneChange'，当取消监听当前音频场景变化事件时，触发该事件。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;AudioScene&gt; | 否 | 回调函数，返回当前音频场景模式。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AudioScene](arkts-audio-audio-audioscene-e.md)&gt; | 否 | 回调函数，返回当前音频场景模式。 |
 
-## off('deviceChange')
+## off_deviceChange
 
 ```TypeScript
 off(type: 'deviceChange', callback?: Callback<DeviceChangeAction>): void
@@ -912,7 +960,7 @@ off(type: 'deviceChange', callback?: Callback<DeviceChangeAction>): void
 
 **废弃版本：** 9
 
-**替代接口：** ohos.multimedia.audio.AudioRoutingManager#event:deviceChange
+**替代接口：** deviceChange
 
 <!--Device-AudioManager-off(type: 'deviceChange', callback?: Callback<DeviceChangeAction>): void--><!--Device-AudioManager-off(type: 'deviceChange', callback?: Callback<DeviceChangeAction>): void-End-->
 
@@ -923,9 +971,9 @@ off(type: 'deviceChange', callback?: Callback<DeviceChangeAction>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'deviceChange' | 是 | 事件回调类型，支持的事件为'deviceChange'，当取消监听音频设备连接变化事件时，触发该事件。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;DeviceChangeAction&gt; | 否 | 回调函数，返回设备更新详情。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[DeviceChangeAction](arkts-audio-audio-devicechangeaction-i.md)&gt; | 否 | 回调函数，返回设备更新详情。 |
 
-## off('interrupt')
+## off_interrupt
 
 ```TypeScript
 off(type: 'interrupt', interrupt: AudioInterrupt, callback?: Callback<InterruptAction>): void
@@ -939,7 +987,7 @@ off(type: 'interrupt', interrupt: AudioInterrupt, callback?: Callback<InterruptA
 
 **废弃版本：** 11
 
-**替代接口：** ohos.multimedia.audio.AudioRenderer#event:audioInterrupt
+**替代接口：** audioInterrupt
 
 <!--Device-AudioManager-off(type: 'interrupt', interrupt: AudioInterrupt, callback?: Callback<InterruptAction>): void--><!--Device-AudioManager-off(type: 'interrupt', interrupt: AudioInterrupt, callback?: Callback<InterruptAction>): void-End-->
 
@@ -950,22 +998,24 @@ off(type: 'interrupt', interrupt: AudioInterrupt, callback?: Callback<InterruptA
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'interrupt' | 是 | 事件回调类型，支持的事件为'interrupt'，当取消监听音频打断事件时，触发该事件。 |
-| interrupt | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频打断事件类型的参数。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;InterruptAction&gt; | 否 | 回调函数，返回打断事件信息。 |
+| interrupt | [AudioInterrupt](arkts-audio-audio-audiointerrupt-i.md) | 是 | 音频打断事件类型的参数。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[InterruptAction](arkts-audio-audio-interruptaction-i.md)&gt; | 否 | 回调函数，返回打断事件信息。 |
 
-## offAudioSceneChange
+## onAudioSceneChange
 
 ```TypeScript
-offAudioSceneChange(callback?: Callback<AudioScene>): void
+onAudioSceneChange(callback: Callback<AudioScene>): void
 ```
 
-Unsubscribes to audio scene change events.
+Subscribes to audio scene change events. When system changes communication scene status, registered clients will receive the callback.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-<!--Device-AudioManager-offAudioSceneChange(callback?: Callback<AudioScene>): void--><!--Device-AudioManager-offAudioSceneChange(callback?: Callback<AudioScene>): void-End-->
+**废弃版本：** -1
+
+<!--Device-AudioManager-onAudioSceneChange(callback: Callback<AudioScene>): void--><!--Device-AudioManager-onAudioSceneChange(callback: Callback<AudioScene>): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
 
@@ -973,9 +1023,9 @@ Unsubscribes to audio scene change events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;AudioScene&gt; | 否 | Callback used in subscription. |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AudioScene](arkts-audio-audio-audioscene-e.md)&gt; | 是 | Callback used to obtain the latest audio scene. |
 
-## on('audioSceneChange')
+## on_audioSceneChange
 
 ```TypeScript
 on(type: 'audioSceneChange', callback: Callback<AudioScene>): void
@@ -987,6 +1037,8 @@ on(type: 'audioSceneChange', callback: Callback<AudioScene>): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 <!--Device-AudioManager-on(type: 'audioSceneChange', callback: Callback<AudioScene>): void--><!--Device-AudioManager-on(type: 'audioSceneChange', callback: Callback<AudioScene>): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
@@ -996,9 +1048,9 @@ on(type: 'audioSceneChange', callback: Callback<AudioScene>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'audioSceneChange' | 是 | 事件回调类型，支持的事件为'audioSceneChange'，当音频场景模式发生变化时，触发该事件。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;AudioScene&gt; | 是 | 回调函数，返回当前音频场景模式。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AudioScene](arkts-audio-audio-audioscene-e.md)&gt; | 是 | 回调函数，返回当前音频场景模式。 |
 
-## on('deviceChange')
+## on_deviceChange
 
 ```TypeScript
 on(type: 'deviceChange', callback: Callback<DeviceChangeAction>): void
@@ -1012,7 +1064,7 @@ on(type: 'deviceChange', callback: Callback<DeviceChangeAction>): void
 
 **废弃版本：** 9
 
-**替代接口：** ohos.multimedia.audio.AudioRoutingManager#event:deviceChange
+**替代接口：** deviceChange
 
 <!--Device-AudioManager-on(type: 'deviceChange', callback: Callback<DeviceChangeAction>): void--><!--Device-AudioManager-on(type: 'deviceChange', callback: Callback<DeviceChangeAction>): void-End-->
 
@@ -1023,15 +1075,15 @@ on(type: 'deviceChange', callback: Callback<DeviceChangeAction>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'deviceChange' | 是 | 事件回调类型，支持的事件为'deviceChange'，当音频设备连接状态发生变化时，触发该事件。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;DeviceChangeAction&gt; | 是 | 回调函数，返回设备更新详情。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[DeviceChangeAction](arkts-audio-audio-devicechangeaction-i.md)&gt; | 是 | 回调函数，返回设备更新详情。 |
 
-## on('interrupt')
+## on_interrupt
 
 ```TypeScript
 on(type: 'interrupt', interrupt: AudioInterrupt, callback: Callback<InterruptAction>): void
 ```
 
-监听音频打断事件（当音频焦点发生变化时触发）。使用callback异步回调。 与[on('audioInterrupt')]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 作用一致，均用于监听焦点变化。为无音频流的场景（未曾创建AudioRenderer对象），比如FM、语音唤醒等提供焦点变化监听功能。
+监听音频打断事件（当音频焦点发生变化时触发）。使用callback异步回调。 与[on('audioInterrupt')](arkts-audio-audio-audiorenderer-i.md#on_audioInterrupt) 作用一致，均用于监听焦点变化。为无音频流的场景（未曾创建AudioRenderer对象），比如FM、语音唤醒等提供焦点变化监听功能。
 
 **起始版本：** 7
 
@@ -1039,7 +1091,7 @@ on(type: 'interrupt', interrupt: AudioInterrupt, callback: Callback<InterruptAct
 
 **废弃版本：** 11
 
-**替代接口：** ohos.multimedia.audio.AudioRenderer#event:audioInterrupt
+**替代接口：** audioInterrupt
 
 <!--Device-AudioManager-on(type: 'interrupt', interrupt: AudioInterrupt, callback: Callback<InterruptAction>): void--><!--Device-AudioManager-on(type: 'interrupt', interrupt: AudioInterrupt, callback: Callback<InterruptAction>): void-End-->
 
@@ -1050,30 +1102,8 @@ on(type: 'interrupt', interrupt: AudioInterrupt, callback: Callback<InterruptAct
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'interrupt' | 是 | 事件回调类型，支持的事件为'interrupt'，当音频焦点状态发生变化时，触发该事件。 |
-| interrupt | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频打断事件类型的参数。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;InterruptAction&gt; | 是 | 回调函数，返回打断事件信息。 |
-
-## onAudioSceneChange
-
-```TypeScript
-onAudioSceneChange(callback: Callback<AudioScene>): void
-```
-
-Subscribes to audio scene change events. When system changes communication scene status, registered clients will receive the callback.
-
-**起始版本：** 23
-
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
-
-<!--Device-AudioManager-onAudioSceneChange(callback: Callback<AudioScene>): void--><!--Device-AudioManager-onAudioSceneChange(callback: Callback<AudioScene>): void-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Communication
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;AudioScene&gt; | 是 | Callback used to obtain the latest audio scene. |
+| interrupt | [AudioInterrupt](arkts-audio-audio-audiointerrupt-i.md) | 是 | 音频打断事件类型的参数。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[InterruptAction](arkts-audio-audio-interruptaction-i.md)&gt; | 是 | 回调函数，返回打断事件信息。 |
 
 ## setAudioParameter
 
@@ -1101,7 +1131,7 @@ setAudioParameter(key: string, value: string, callback: AsyncCallback<void>): vo
 | --- | --- | --- | --- |
 | key | string | 是 | 被设置的音频参数的键。 |
 | value | string | 是 | 被设置的音频参数的值。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数。当音频参数设置成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当音频参数设置成功，err为undefined，否则为错误对象。 |
 
 ## setAudioParameter
 
@@ -1150,7 +1180,7 @@ setDeviceActive(deviceType: ActiveDeviceType, active: boolean, callback: AsyncCa
 
 **废弃版本：** 9
 
-**替代接口：** ohos.multimedia.audio.AudioRoutingManager#setCommunicationDevice
+**替代接口：** [setCommunicationDevice](arkts-audio-audio-audioroutingmanager-i.md#setCommunicationDevice)
 
 <!--Device-AudioManager-setDeviceActive(deviceType: ActiveDeviceType, active: boolean, callback: AsyncCallback<void>): void--><!--Device-AudioManager-setDeviceActive(deviceType: ActiveDeviceType, active: boolean, callback: AsyncCallback<void>): void-End-->
 
@@ -1160,9 +1190,9 @@ setDeviceActive(deviceType: ActiveDeviceType, active: boolean, callback: AsyncCa
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deviceType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 活跃音频设备类型。 |
+| deviceType | [ActiveDeviceType](arkts-audio-audio-activedevicetype-e.md) | 是 | 活跃音频设备类型。 |
 | active | boolean | 是 | 是否设置设备为激活状态。true表示已激活，false表示未激活。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数。当设置设备激活状态成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当设置设备激活状态成功，err为undefined，否则为错误对象。 |
 
 ## setDeviceActive
 
@@ -1178,7 +1208,7 @@ setDeviceActive(deviceType: ActiveDeviceType, active: boolean): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.multimedia.audio.AudioRoutingManager#setCommunicationDevice
+**替代接口：** [setCommunicationDevice](arkts-audio-audio-audioroutingmanager-i.md#setCommunicationDevice)
 
 <!--Device-AudioManager-setDeviceActive(deviceType: ActiveDeviceType, active: boolean): Promise<void>--><!--Device-AudioManager-setDeviceActive(deviceType: ActiveDeviceType, active: boolean): Promise<void>-End-->
 
@@ -1188,7 +1218,7 @@ setDeviceActive(deviceType: ActiveDeviceType, active: boolean): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deviceType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 活跃音频设备类型。 |
+| deviceType | [ActiveDeviceType](arkts-audio-audio-activedevicetype-e.md) | 是 | 活跃音频设备类型。 |
 | active | boolean | 是 | 是否设置设备为激活状态。true表示已激活，false表示未激活。 |
 
 **返回值：**
@@ -1222,7 +1252,7 @@ setMicrophoneMute(mute: boolean, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | mute | boolean | 是 | 是否设置麦克风为静音状态。true表示静音，false表示非静音。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数。当设置麦克风静音状态成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当设置麦克风静音状态成功，err为undefined，否则为错误对象。 |
 
 ## setMicrophoneMute
 
@@ -1280,8 +1310,8 @@ setRingerMode(mode: AudioRingMode, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频铃声模式。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数。当设置铃声模式成功，err为undefined，否则为错误对象。 |
+| mode | [AudioRingMode](arkts-audio-audio-audioringmode-e.md) | 是 | 音频铃声模式。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当设置铃声模式成功，err为undefined，否则为错误对象。 |
 
 ## setRingerMode
 
@@ -1307,7 +1337,7 @@ setRingerMode(mode: AudioRingMode): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频铃声模式。 |
+| mode | [AudioRingMode](arkts-audio-audio-audioringmode-e.md) | 是 | 音频铃声模式。 |
 
 **返回值：**
 
@@ -1321,7 +1351,7 @@ setRingerMode(mode: AudioRingMode): Promise<void>
 setVolume(volumeType: AudioVolumeType, volume: number, callback: AsyncCallback<void>): void
 ```
 
-设置指定流的音量等级。使用callback异步回调。 > **说明：** > > - 从API version 7开始支持，从API version 9开始废弃。 > > - 应用无法直接调节系统音量，建议通过系统音量面板组件调节音量。具体样例和介绍请参考API文档 > [@ohos.multimedia.avVolumePanel (音量面板)]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+设置指定流的音量等级。使用callback异步回调。 > **说明：** > > - 从API version 7开始支持，从API version 9开始废弃。 > > - 应用无法直接调节系统音量，建议通过系统音量面板组件调节音量。具体样例和介绍请参考API文档 > @ohos.multimedia.avVolumePanel (音量面板)。
 
 **起始版本：** 7
 
@@ -1329,7 +1359,7 @@ setVolume(volumeType: AudioVolumeType, volume: number, callback: AsyncCallback<v
 
 **废弃版本：** 9
 
-**替代接口：** ohos.multimedia.avVolumePanel.AVVolumePanel
+**替代接口：** [AVVolumePanel](../../apis-na/arkts-apis/arkts-na-multimedia-avvolumepanel-avvolumepanel-s.md#AVVolumePanel)
 
 **需要权限：** ohos.permission.ACCESS_NOTIFICATION_POLICY
 
@@ -1341,9 +1371,9 @@ setVolume(volumeType: AudioVolumeType, volume: number, callback: AsyncCallback<v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volumeType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频音量类型。 |
-| volume | number | 是 | 音量等级，可设置范围通过[getMinVolume]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_和[getMaxVolume]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_获取。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数。当设置指定流的音量成功，err为undefined，否则为错误对象。 |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
+| volume | number | 是 | 音量等级，可设置范围通过 [getMinVolume](#getMinVolume) 和 [getMaxVolume](#getMaxVolume) 获取。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当设置指定流的音量成功，err为undefined，否则为错误对象。 |
 
 ## setVolume
 
@@ -1351,7 +1381,7 @@ setVolume(volumeType: AudioVolumeType, volume: number, callback: AsyncCallback<v
 setVolume(volumeType: AudioVolumeType, volume: number): Promise<void>
 ```
 
-设置指定流的音量等级。使用Promise异步回调。 > **说明：** > > - 从API version 7开始支持，从API version 9开始废弃。 > > - 应用无法直接调节系统音量，建议通过系统音量面板组件调节音量。具体样例和介绍请参考API文档 > [@ohos.multimedia.avVolumePanel (音量面板)]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+设置指定流的音量等级。使用Promise异步回调。 > **说明：** > > - 从API version 7开始支持，从API version 9开始废弃。 > > - 应用无法直接调节系统音量，建议通过系统音量面板组件调节音量。具体样例和介绍请参考API文档 > @ohos.multimedia.avVolumePanel (音量面板)。
 
 **起始版本：** 7
 
@@ -1359,7 +1389,7 @@ setVolume(volumeType: AudioVolumeType, volume: number): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.multimedia.avVolumePanel.AVVolumePanel
+**替代接口：** [AVVolumePanel](../../apis-na/arkts-apis/arkts-na-multimedia-avvolumepanel-avvolumepanel-s.md#AVVolumePanel)
 
 **需要权限：** ohos.permission.ACCESS_NOTIFICATION_POLICY
 
@@ -1371,8 +1401,8 @@ setVolume(volumeType: AudioVolumeType, volume: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volumeType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频音量类型。 |
-| volume | number | 是 | 音量等级，可设置范围通过[getMinVolume]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_和[getMaxVolume]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_获取。 |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
+| volume | number | 是 | 音量等级，可设置范围通过 [getMinVolume](#getMinVolume) 和 [getMaxVolume](#getMaxVolume) 获取。 |
 
 **返回值：**
 

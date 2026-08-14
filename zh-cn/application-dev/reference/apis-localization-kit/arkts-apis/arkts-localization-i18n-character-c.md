@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** [i18n.Unicode](arkts-localization-i18n-unicode-c.md)
+**替代接口：** [Unicode](arkts-localization-i18n-unicode-c.md#Unicode)
 
 <!--Device-i18n-export class Character--><!--Device-i18n-export class Character-End-->
 
@@ -28,7 +28,7 @@ getType(ch: string): string
 
 **废弃版本：** 9
 
-**替代接口：** [i18n.Unicode.getType](arkts-localization-i18n-unicode-c.md#gettype)
+**替代接口：** [getType](arkts-localization-i18n-unicode-c.md#getType)
 
 <!--Device-Character-getType(ch: string): string--><!--Device-Character-getType(ch: string): string-End-->
 
@@ -60,7 +60,7 @@ isDigit(ch: string): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [i18n.Unicode.isDigit](arkts-localization-i18n-unicode-c.md#isdigit)
+**替代接口：** [isDigit](arkts-localization-i18n-unicode-c.md#isDigit)
 
 <!--Device-Character-isDigit(ch: string): boolean--><!--Device-Character-isDigit(ch: string): boolean-End-->
 
@@ -92,7 +92,7 @@ isIdeograph(ch: string): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [i18n.Unicode.isIdeograph](arkts-localization-i18n-unicode-c.md#isideograph)
+**替代接口：** [isIdeograph](arkts-localization-i18n-unicode-c.md#isIdeograph)
 
 <!--Device-Character-isIdeograph(ch: string): boolean--><!--Device-Character-isIdeograph(ch: string): boolean-End-->
 
@@ -124,7 +124,7 @@ isLetter(ch: string): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [i18n.Unicode.isLetter](arkts-localization-i18n-unicode-c.md#isletter)
+**替代接口：** [isLetter](arkts-localization-i18n-unicode-c.md#isLetter)
 
 <!--Device-Character-isLetter(ch: string): boolean--><!--Device-Character-isLetter(ch: string): boolean-End-->
 
@@ -156,7 +156,7 @@ isLowerCase(ch: string): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [i18n.Unicode.isLowerCase](arkts-localization-i18n-unicode-c.md#islowercase)
+**替代接口：** [isLowerCase](arkts-localization-i18n-unicode-c.md#isLowerCase)
 
 <!--Device-Character-isLowerCase(ch: string): boolean--><!--Device-Character-isLowerCase(ch: string): boolean-End-->
 
@@ -188,7 +188,7 @@ isRTL(ch: string): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [i18n.Unicode.isRTL](arkts-localization-i18n-unicode-c.md#isrtl)
+**替代接口：** [isRTL](arkts-localization-i18n-unicode-c.md#isRTL)
 
 <!--Device-Character-isRTL(ch: string): boolean--><!--Device-Character-isRTL(ch: string): boolean-End-->
 
@@ -220,7 +220,7 @@ isSpaceChar(ch: string): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [i18n.Unicode.isSpaceChar](arkts-localization-i18n-unicode-c.md#isspacechar)
+**替代接口：** [isSpaceChar](arkts-localization-i18n-unicode-c.md#isSpaceChar)
 
 <!--Device-Character-isSpaceChar(ch: string): boolean--><!--Device-Character-isSpaceChar(ch: string): boolean-End-->
 
@@ -252,7 +252,7 @@ isUpperCase(ch: string): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [i18n.Unicode.isUpperCase](arkts-localization-i18n-unicode-c.md#isuppercase)
+**替代接口：** [isUpperCase](arkts-localization-i18n-unicode-c.md#isUpperCase)
 
 <!--Device-Character-isUpperCase(ch: string): boolean--><!--Device-Character-isUpperCase(ch: string): boolean-End-->
 
@@ -284,7 +284,7 @@ isWhitespace(ch: string): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [i18n.Unicode.isWhitespace](arkts-localization-i18n-unicode-c.md#iswhitespace)
+**替代接口：** [isWhitespace](arkts-localization-i18n-unicode-c.md#isWhitespace)
 
 <!--Device-Character-isWhitespace(ch: string): boolean--><!--Device-Character-isWhitespace(ch: string): boolean-End-->
 

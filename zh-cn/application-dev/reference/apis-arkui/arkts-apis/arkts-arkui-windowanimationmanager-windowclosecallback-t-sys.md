@@ -9,7 +9,9 @@ type WindowCloseCallback = (closingWindowTarget: WindowAnimationTarget,
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-windowAnimationManager-type WindowCloseCallback = (closingWindowTarget: WindowAnimationTarget,    finishCallback: WindowAnimationFinishedCallback) => void--><!--Device-windowAnimationManager-type WindowCloseCallback = (closingWindowTarget: WindowAnimationTarget,    finishCallback: WindowAnimationFinishedCallback) => void-End-->
 
@@ -21,6 +23,6 @@ type WindowCloseCallback = (closingWindowTarget: WindowAnimationTarget,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| closingWindowTarget | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 动画目标窗口。  |
-| finishCallback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 动画完成后的回调。  |
+| closingWindowTarget | WindowAnimationTarget | 是 | 动画目标窗口。 |
+| finishCallback | [WindowAnimationFinishedCallback](arkts-arkui-windowanimationmanager-windowanimationfinishedcallback-i-sys.md) | 是 | 动画完成后的回调。 |
 

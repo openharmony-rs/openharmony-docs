@@ -4,13 +4,17 @@
 export declare type GestureListenerCallback = (info: GestureTriggerInfo) => void
 ```
 
-定义UIObserver监听指定手势触发信息时使用的回调类型。
+定义了用于在UIObserver中监控特定手势触发信息的回调类型。
 
-**起始版本：** 26.0.0
+**起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 <!--Device-unnamed-export declare type GestureListenerCallback = (info: GestureTriggerInfo) => void--><!--Device-unnamed-export declare type GestureListenerCallback = (info: GestureTriggerInfo) => void-End-->
 
@@ -20,5 +24,5 @@ export declare type GestureListenerCallback = (info: GestureTriggerInfo) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | the gesture details triggered with user interaction  |
+| info | [GestureTriggerInfo](arkts-arkui-arkui-uicontext-gesturetriggerinfo-i.md) | 是 | 交互触发的手势详情。 |
 

@@ -1,6 +1,6 @@
 # NotificationKey
 
-> **说明：** > 从 API version 7开始支持，从API version 9开始废弃。
+通知键值。
 
 **起始版本：** 7
 
@@ -28,7 +28,7 @@ id: number
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager#NotificationKey
+**替代接口：** NotificationKey
 
 <!--Device-NotificationKey-id: number--><!--Device-NotificationKey-id: number-End-->
 
@@ -50,7 +50,7 @@ label?: string
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager#NotificationKey
+**替代接口：** NotificationKey
 
 <!--Device-NotificationKey-label?: string--><!--Device-NotificationKey-label?: string-End-->
 

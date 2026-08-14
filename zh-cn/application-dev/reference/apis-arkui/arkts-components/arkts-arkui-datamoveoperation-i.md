@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-interface DataMoveOperation--><!--Device-unnamed-interface DataMoveOperation-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -18,11 +20,13 @@ index: MoveIndex
 
 移动位置。取值范围是[0, 数据源长度-1]。超出取值范围时渲染异常。
 
-**类型：** MoveIndex
+**类型：** [MoveIndex](arkts-arkui-moveindex-i.md)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,6 +50,8 @@ key?: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -62,11 +68,13 @@ type: DataOperationType.MOVE
 
 数据移动类型。
 
-**类型：** DataOperationType.MOVE
+**类型：** [DataOperationType.MOVE](arkts-arkui-dataoperationtype-e.md)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

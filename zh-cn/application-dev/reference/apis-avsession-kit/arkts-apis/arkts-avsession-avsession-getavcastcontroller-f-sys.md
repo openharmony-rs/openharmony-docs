@@ -12,6 +12,8 @@ function getAVCastController(sessionId: string, callback: AsyncCallback<AVCastCo
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
 <!--Device-avSession-function getAVCastController(sessionId: string, callback: AsyncCallback<AVCastController>): void--><!--Device-avSession-function getAVCastController(sessionId: string, callback: AsyncCallback<AVCastController>): void-End-->
@@ -25,19 +27,19 @@ function getAVCastController(sessionId: string, callback: AsyncCallback<AVCastCo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sessionId | string | 是 | 用于指定要获取的投播控制器的sessionId。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;AVCastController&gt; | 是 | 回调函数，返回投播控制器实例。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AVCastController](arkts-avsession-avsession-avcastcontroller-i.md)&gt; | 是 | 回调函数，返回投播控制器实例。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | session does not exist |
+| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { avSession } from '@kit.AVSessionKit';
@@ -80,7 +82,9 @@ Register a callback to retrieve an avsession cast controller. This function can 
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -95,16 +99,16 @@ Register a callback to retrieve an avsession cast controller. This function can 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sessionId | string | 是 | Specifies the sessionId to get controller. |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;AVCastController \| undefined&gt; | 是 | async callback for the AVCastController. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AVCastController](arkts-avsession-avsession-avcastcontroller-i.md) \| undefined&gt; | 是 | async callback for the AVCastController. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | session does not exist |
+| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 
 
 ## getAVCastController
@@ -118,6 +122,8 @@ function getAVCastController(sessionId: string): Promise<AVCastController>
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -137,17 +143,17 @@ function getAVCastController(sessionId: string): Promise<AVCastController>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;AVCastController&gt; | Promise对象。返回投播控制器实例。 |
+| Promise&lt;[AVCastController](arkts-avsession-avsession-avcastcontroller-i.md)&gt; | Promise对象。返回投播控制器实例。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | server exception |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | session does not exist |
+| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 
 
 ## getAVCastController
@@ -160,7 +166,9 @@ Get the current session's remote controller client. If the avsession is not unde
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -180,14 +188,14 @@ Get the current session's remote controller client. If the avsession is not unde
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;AVCastController \| undefined&gt; | Promise for the AVCastController |
+| Promise&lt;[AVCastController](arkts-avsession-avsession-avcastcontroller-i.md) \| undefined&gt; | Promise for the AVCastController |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | server exception |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | session does not exist |
+| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 

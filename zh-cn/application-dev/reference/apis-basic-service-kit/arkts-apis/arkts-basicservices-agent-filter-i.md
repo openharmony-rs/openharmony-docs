@@ -2,9 +2,11 @@
 
 过滤条件。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-agent-interface Filter--><!--Device-agent-interface Filter-End-->
 
@@ -20,9 +22,11 @@ action?: Action
 
 **类型：** Action
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Filter-action?: Action--><!--Device-Filter-action?: Action-End-->
 
@@ -38,9 +42,11 @@ after?: long
 
 **类型：** long
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Filter-after?: long--><!--Device-Filter-after?: long-End-->
 
@@ -56,9 +62,11 @@ before?: long
 
 **类型：** long
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Filter-before?: long--><!--Device-Filter-before?: long-End-->
 
@@ -72,11 +80,13 @@ mode?: Mode
 
 任务模式。 - FOREGROUND表示前台任务。 - BACKGROUND表示后台任务。 - 如果未填写，则查询所有任务。
 
-**类型：** Mode
+**类型：** [Mode](arkts-basicservices-agent-mode-e.md)
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Filter-mode?: Mode--><!--Device-Filter-mode?: Mode-End-->
 
@@ -92,9 +102,11 @@ state?: State
 
 **类型：** State
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Filter-state?: State--><!--Device-Filter-state?: State-End-->
 

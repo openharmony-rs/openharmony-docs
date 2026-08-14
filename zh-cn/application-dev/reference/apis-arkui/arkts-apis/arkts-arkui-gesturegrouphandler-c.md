@@ -2,13 +2,15 @@
 
 手势组处理器对象类型。
 
-**继承/实现关系：** GestureGroupHandler extends [GestureHandler<GestureGroupHandler>](GestureHandler<GestureGroupHandler>)
+**继承/实现关系：** GestureGroupHandler extends GestureHandler<GestureGroupHandler>
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-<!--Device-unnamed-declare class GestureGroupHandler extends GestureHandler<GestureGroupHandler>--><!--Device-unnamed-declare class GestureGroupHandler extends GestureHandler<GestureGroupHandler>-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare class GestureGroupHandler--><!--Device-unnamed-declare class GestureGroupHandler-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,6 +26,8 @@ constructor(options?: GestureGroupGestureHandlerOptions)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -36,7 +40,7 @@ constructor(options?: GestureGroupGestureHandlerOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 手势组处理器配置参数。 |
+| options | [GestureGroupGestureHandlerOptions](arkts-arkui-gesturegroupgesturehandleroptions-i.md) | 否 | 手势组处理器配置参数。 |
 
 ## onCancel
 
@@ -44,11 +48,13 @@ constructor(options?: GestureGroupGestureHandlerOptions)
 onCancel(event: Callback<void>): GestureGroupHandler
 ```
 
-设置手势组处理器取消回调。顺序组合手势（[GestureMode]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_.Sequence）取消后触发回调。
+设置手势组处理器取消回调。顺序组合手势（[GestureMode](arkts-arkui-gesturemode-e.md#GestureMode).Sequence）取消后触发回调。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -62,11 +68,11 @@ onCancel(event: Callback<void>): GestureGroupHandler
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 手势组处理器取消回调。 |
+| event | Callback&lt;void&gt; | 是 | 手势组处理器取消回调。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回当前手势组处理器对象。 |
+| [GestureGroupHandler](arkts-arkui-gesturegrouphandler-c.md) | 返回当前手势组处理器对象。 |
 

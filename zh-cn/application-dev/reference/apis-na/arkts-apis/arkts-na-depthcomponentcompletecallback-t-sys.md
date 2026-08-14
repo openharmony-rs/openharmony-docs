@@ -10,6 +10,8 @@ export declare type DepthComponentCompleteCallback = (event: DepthComponentCompl
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-export declare type DepthComponentCompleteCallback = (event: DepthComponentCompleteEvent) => void--><!--Device-unnamed-export declare type DepthComponentCompleteCallback = (event: DepthComponentCompleteEvent) => void-End-->
@@ -22,5 +24,5 @@ export declare type DepthComponentCompleteCallback = (event: DepthComponentCompl
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 背景资源加载成功的事件信息。  |
+| event | [DepthComponentCompleteEvent](arkts-na-depthcomponent-depthcomponentcompleteevent-i-sys.md) | 是 | 背景资源加载成功的事件信息。 |
 

@@ -18,7 +18,7 @@ Declares the APIs of **NativeDrag**.
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md) | ArkUI_DragEvent | 拖拽事件。 |
+| [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md) | ArkUI_DragEvent | 拖拽事件，用于表示ArkUI组件拖拽过程中的事件信息。开发者可通过以下头文件中的拖拽事件接口获取拖拽状态和事件数据；拖拽事件绑定流程请参见{@link 绑定拖拽事件}。 |
 | [ArkUI_DragPreviewOption](capi-arkui-nativemodule-arkui-dragpreviewoption.md) | ArkUI_DragPreviewOption | 定义拖拽跟手图的相关自定义参数。 |
 | [ArkUI_DragAction](capi-arkui-nativemodule-arkui-dragaction.md) | ArkUI_DragAction | 拖拽行为，用于主动发起拖拽。 |
 | [ArkUI_DragAndDropInfo](capi-arkui-nativemodule-arkui-draganddropinfo.md) | ArkUI_DragAndDropInfo | 主动发起拖拽后，通过拖拽状态监听返回的系统拖拽相关数据。 |

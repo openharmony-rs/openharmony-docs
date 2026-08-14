@@ -2,9 +2,11 @@
 
 图像解码设置选项。
 
-**起始版本：** 13
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为13；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-image-interface DecodingOptionsForPicture--><!--Device-image-interface DecodingOptionsForPicture-End-->
 
@@ -18,11 +20,13 @@ desiredAuxiliaryPictures: Array<AuxiliaryPictureType>
 
 设置AuxiliaryPicture类型，当未指定或传入空的Array时，系统会解码所有可用的AuxiliaryPicture类型。 如果不希望解码任何辅助图，可以直接解码为PixelMap，使用PixelMap创建仅包含主图的Picture。
 
-**类型：** Array&lt;AuxiliaryPictureType&gt;
+**类型：** Array&lt;[AuxiliaryPictureType](arkts-image-image-auxiliarypicturetype-e.md)&gt;
 
-**起始版本：** 13
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为13；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DecodingOptionsForPicture-desiredAuxiliaryPictures: Array<AuxiliaryPictureType>--><!--Device-DecodingOptionsForPicture-desiredAuxiliaryPictures: Array<AuxiliaryPictureType>-End-->
 
@@ -34,13 +38,15 @@ desiredAuxiliaryPictures: Array<AuxiliaryPictureType>
 desiredPixelFormat?: PixelMapFormat
 ```
 
-解码的像素格式。默认值为RGBA\_8888。 仅支持设置：RGBA\_8888、BGRA\_8888、RGB\_565、NV12及NV21。 当设置其他不支持的像素格式时，返回解码失败。
+解码的像素格式。默认值为RGBA_8888。 仅支持设置：RGBA_8888、BGRA_8888、RGB_565、NV12及NV21。 当设置其他不支持的像素格式时，返回解码失败。
 
-**类型：** PixelMapFormat
+**类型：** [PixelMapFormat](arkts-image-image-pixelmapformat-e.md)
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -60,7 +66,9 @@ desiredSizeForMainPixelMap?: Size
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

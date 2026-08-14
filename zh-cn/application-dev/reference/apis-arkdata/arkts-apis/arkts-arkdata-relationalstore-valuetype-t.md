@@ -6,9 +6,11 @@ type ValueType = null | long | double | string | boolean | Uint8Array | Asset | 
 
 用于表示允许的数据字段类型，接口参数具体类型根据其功能而定。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-relationalStore-type ValueType = null | long | double | string | boolean | Uint8Array | Asset | Assets | Float32Array | bigint--><!--Device-relationalStore-type ValueType = null | long | double | string | boolean | Uint8Array | Asset | Assets | Float32Array | bigint-End-->
 

@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 <!--Device-abilityAccessCtrl-interface CliPermissionDetail--><!--Device-abilityAccessCtrl-interface CliPermissionDetail-End-->
 
 **系统能力：** SystemCapability.Security.AccessToken
@@ -20,11 +22,13 @@ cliPermissionStatus: PermissionDecisionStatus
 
 CLI指令声明的CLI权限的决策状态。
 
-**类型：** PermissionDecisionStatus
+**类型：** [PermissionDecisionStatus](arkts-ability-abilityaccessctrl-permissiondecisionstatus-e-sys.md)
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -48,6 +52,8 @@ requiredCliPermission: Permissions
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-CliPermissionDetail-requiredCliPermission: Permissions--><!--Device-CliPermissionDetail-requiredCliPermission: Permissions-End-->
@@ -69,6 +75,8 @@ usedPermissions: Array<Permissions>
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

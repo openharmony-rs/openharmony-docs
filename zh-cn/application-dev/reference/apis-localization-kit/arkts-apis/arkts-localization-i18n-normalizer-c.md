@@ -2,9 +2,11 @@
 
 提供文本标准化的能力。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-i18n-export class Normalizer--><!--Device-i18n-export class Normalizer-End-->
 
@@ -18,9 +20,11 @@ static getInstance(mode: NormalizerMode): Normalizer
 
 获取文本标准化对象。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -32,21 +36,21 @@ static getInstance(mode: NormalizerMode): Normalizer
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 文本标准化范式。 |
+| mode | [NormalizerMode](arkts-localization-i18n-normalizermode-e.md) | 是 | 文本标准化范式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回指定范式的文本标准化对象。 |
+| [Normalizer](arkts-localization-i18n-normalizer-c.md) | 返回指定范式的文本标准化对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -68,9 +72,11 @@ normalize(text: string): string
 
 对字符串进行标准化处理。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -94,9 +100,9 @@ normalize(text: string): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

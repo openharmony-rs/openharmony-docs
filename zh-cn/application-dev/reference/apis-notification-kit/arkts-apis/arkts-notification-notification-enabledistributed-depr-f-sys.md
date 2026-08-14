@@ -14,7 +14,7 @@ function enableDistributed(enable: boolean, callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager#setDistributedEnable
+**替代接口：** [setDistributedEnable](arkts-notification-notificationmanager-setdistributedenable-f-sys.md#setDistributedEnable（系统接口）)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -29,7 +29,7 @@ function enableDistributed(enable: boolean, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | enable | boolean | 是 | 是否支持。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 设置设备是否支持分布式通知的回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 设置设备是否支持分布式通知的回调函数。 |
 
 
 ## enableDistributed
@@ -46,7 +46,7 @@ function enableDistributed(enable: boolean): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager#setDistributedEnable
+**替代接口：** [setDistributedEnable](arkts-notification-notificationmanager-setdistributedenable-f-sys.md#setDistributedEnable（系统接口）)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 

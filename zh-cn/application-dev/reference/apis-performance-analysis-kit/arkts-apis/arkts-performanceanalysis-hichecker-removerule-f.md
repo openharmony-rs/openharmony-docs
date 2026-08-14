@@ -6,7 +6,7 @@
 function removeRule(rule: bigint): void
 ```
 
-> **˵����** > > ��API version 8��ʼ֧�֣���API version 9��ʼ����������ʹ��[hichecker.removeCheckRule]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_����� ɾ��һ�����������ɾ���Ĺ��������������Ч��
+> **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[hichecker.removeCheckRule](arkts-performanceanalysis-hichecker-removecheckrule-f.md#removeCheckRule)替代。 删除一条或多条规则，删除的规则后续将不再生效。
 
 **起始版本：** 8
 
@@ -14,7 +14,7 @@ function removeRule(rule: bigint): void
 
 **废弃版本：** 9
 
-**替代接口：** [hichecker.removeCheckRule](arkts-performanceanalysis-hichecker-removecheckrule-f.md#removecheckrule)
+**替代接口：** [removeCheckRule](arkts-performanceanalysis-hichecker-removecheckrule-f.md#removeCheckRule)
 
 <!--Device-hichecker-function removeRule(rule: bigint): void--><!--Device-hichecker-function removeRule(rule: bigint): void-End-->
 
@@ -24,9 +24,9 @@ function removeRule(rule: bigint): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rule | bigint | 是 | ��Ҫɾ���Ĺ��� |
+| rule | bigint | 是 | 需要删除的规则。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 删除一条规则

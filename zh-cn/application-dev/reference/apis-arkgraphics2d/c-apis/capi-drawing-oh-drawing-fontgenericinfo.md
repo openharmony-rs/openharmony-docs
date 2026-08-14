@@ -6,7 +6,7 @@ typedef struct OH_Drawing_FontGenericInfo {...} OH_Drawing_FontGenericInfo
 
 ## 概述
 
-This struct describes the information about generic fonts supported by the system.
+系统所支持的通用字体集信息结构体。
 
 **起始版本：** 12
 
@@ -20,10 +20,10 @@ This struct describes the information about generic fonts supported by the syste
 
 | 名称 | 描述 |
 | -- | -- |
-| char* familyName | Pointer to the name of a font family. |
-| size_t aliasInfoSize | Number of font aliases. |
-| size_t adjustInfoSize | Number of font weight mappings. |
-| [OH_Drawing_FontAliasInfo*](capi-drawing-oh-drawing-fontaliasinfo.md) aliasInfoSet | Pointer to a set of font aliases. |
-| [OH_Drawing_FontAdjustInfo*](capi-drawing-oh-drawing-fontadjustinfo.md) adjustInfoSet | Pointer to a set of font weight mappings. |
+| char* familyName | 字体家族名。 |
+| size_t aliasInfoSize | 别名字体列表的数量。 |
+| size_t adjustInfoSize | 字重映射列表的数量。 |
+| [OH_Drawing_FontAliasInfo*](capi-drawing-oh-drawing-fontaliasinfo.md) aliasInfoSet | 别名字体列表。 |
+| [OH_Drawing_FontAdjustInfo*](capi-drawing-oh-drawing-fontadjustinfo.md) adjustInfoSet | 字重映射列表。 |
 
 

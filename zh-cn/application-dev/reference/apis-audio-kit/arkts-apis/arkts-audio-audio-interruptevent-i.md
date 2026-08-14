@@ -2,9 +2,11 @@
 
 音频中断时，应用接收的中断事件。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-audio-interface InterruptEvent--><!--Device-audio-interface InterruptEvent-End-->
 
@@ -18,11 +20,13 @@ eventType: InterruptType
 
 音频中断事件类型，开始或是结束。
 
-**类型：** InterruptType
+**类型：** [InterruptType](arkts-audio-audio-interrupttype-e.md)
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -38,11 +42,13 @@ forceType: InterruptForceType
 
 操作是由系统强制执行或是由应用程序执行。
 
-**类型：** InterruptForceType
+**类型：** [InterruptForceType](arkts-audio-audio-interruptforcetype-e.md)
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -58,11 +64,13 @@ hintType: InterruptHint
 
 中断提示，用于提供中断事件的相关信息。
 
-**类型：** InterruptHint
+**类型：** [InterruptHint](arkts-audio-audio-interrupthint-e.md)
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

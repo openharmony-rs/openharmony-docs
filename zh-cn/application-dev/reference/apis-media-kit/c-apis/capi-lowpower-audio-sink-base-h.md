@@ -92,7 +92,7 @@ LowPowerAudioSink需要数据时调用该方法。
 | 参数项 | 描述 |
 | -- | -- |
 | (OH_LowPowerAudioSink\* sink | OH_LowPowerAudioSink instance |
-| OH_AVSamplesBuffer\* samples | OH_AVSamplesBuffer instance that will be written in |
+| [OH_AVSamplesBuffer](capi-avsinkbase-oh-avsamplesbuffer.md)\* samples | OH_AVSamplesBuffer instance that will be written in |
 | void\* userData | User specific data |
 
 ### OH_LowPowerAudioSink_OnInterrupted()
@@ -112,8 +112,8 @@ LowPowerAudioSink焦点打断时调用该方法。
 | 参数项 | 描述 |
 | -- | -- |
 | (OH_LowPowerAudioSink\* sink | OH_LowPowerAudioSink instance |
-| [OH_AudioInterrupt_ForceType](../AudioKit/capi-native-audiostream-base-h.md#oh_audiointerrupt_forcetype) type | The audio interrupt type,please refer to [OH_AudioInterrupt_ForceType](../AudioKit/capi-native-audiostream-base-h.md#oh_audiointerrupt_forcetype) |
-| [OH_AudioInterrupt_Hint](../AudioKit/capi-native-audiostream-base-h.md#oh_audiointerrupt_hint) hint | The audio interrupt hint type, please refer to [OH_AudioInterrupt_Hint](../AudioKit/capi-native-audiostream-base-h.md#oh_audiointerrupt_hint) |
+| OH_AudioInterrupt_ForceType type | The audio interrupt type,please refer to [OH_AudioInterrupt_ForceType](../AudioKit/capi-native-audiostream-base-h.md#oh_audiointerrupt_forcetype) |
+| OH_AudioInterrupt_Hint hint | The audio interrupt hint type, please refer to [OH_AudioInterrupt_Hint](../AudioKit/capi-native-audiostream-base-h.md#oh_audiointerrupt_hint) |
 | void\* userData | User specific data |
 
 ### OH_LowPowerAudioSink_OnDeviceChanged()
@@ -133,7 +133,7 @@ LowPowerAudioSink设备切换时调用该方法。
 | 参数项 | 描述 |
 | -- | -- |
 | (OH_LowPowerAudioSink\* sink | OH_LowPowerAudioSink instance |
-| [OH_AudioStream_DeviceChangeReason](../AudioKit/capi-native-audiostream-base-h.md#oh_audiostream_devicechangereason) reason | Indicates that why does the output device changes,please refer to [OH_AudioStream_DeviceChangeReason](../AudioKit/capi-native-audiostream-base-h.md#oh_audiostream_devicechangereason) |
+| OH_AudioStream_DeviceChangeReason reason | Indicates that why does the output device changes,please refer to [OH_AudioStream_DeviceChangeReason](../AudioKit/capi-native-audiostream-base-h.md#oh_audiostream_devicechangereason) |
 | void\* userData | User specific data |
 
 ### OH_LowPowerAudioSink_OnEos()

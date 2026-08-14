@@ -1,14 +1,16 @@
 # Region
 
-表示区域信息。 继承自\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+表示区域信息。 继承自[lang.ISendable](../../../arkts-utils/arkts-sendable.md#isendable)。
 
-**继承/实现关系：** Region extends [lang.ISendable](../../apis-arkts/arkts-apis/arkts-arkts-lang-isendable-i.md)
+**继承/实现关系：** Region extends lang.ISendable
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-<!--Device-sendableImage-interface Region extends lang.ISendable--><!--Device-sendableImage-interface Region extends lang.ISendable-End-->
+**废弃版本：** -1
+
+<!--Device-sendableImage-interface Region--><!--Device-sendableImage-interface Region-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -25,6 +27,8 @@ size: Size
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -48,6 +52,8 @@ x: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
@@ -69,6 +75,8 @@ y: number
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

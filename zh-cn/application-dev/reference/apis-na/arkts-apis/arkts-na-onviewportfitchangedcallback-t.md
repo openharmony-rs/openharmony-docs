@@ -10,6 +10,8 @@ The callback of ViewportFit Changed.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-export type OnViewportFitChangedCallback = (viewportFit: ViewportFit) => void--><!--Device-unnamed-export type OnViewportFitChangedCallback = (viewportFit: ViewportFit) => void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -18,5 +20,5 @@ The callback of ViewportFit Changed.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| viewportFit | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | details of OnViewportFitChangedCallback.  |
+| viewportFit | [ViewportFit](arkts-na-web-viewportfit-e.md) | 是 | details of OnViewportFitChangedCallback. |
 

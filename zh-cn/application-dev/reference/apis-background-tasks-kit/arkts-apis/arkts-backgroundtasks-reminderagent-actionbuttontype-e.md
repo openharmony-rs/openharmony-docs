@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.reminderAgentManager:reminderAgentManager.ActionButtonType](arkts-backgroundtasks-reminderagentmanager-actionbuttontype-e.md)
+**替代接口：** [ActionButtonType](arkts-backgroundtasks-reminderagentmanager-actionbuttontype-e.md#ActionButtonType)
 
 <!--Device-reminderAgent-export enum ActionButtonType--><!--Device-reminderAgent-export enum ActionButtonType-End-->
 
@@ -28,7 +28,7 @@ ACTION_BUTTON_TYPE_CLOSE = 0
 
 **废弃版本：** 9
 
-**替代接口：** [reminderAgentManager.ActionButtonType.ACTION_BUTTON_TYPE_CLOSE](arkts-backgroundtasks-reminderagentmanager-actionbuttontype-e.md#action_button_type_close)
+**替代接口：** ACTION_BUTTON_TYPE_CLOSE
 
 <!--Device-ActionButtonType-ACTION_BUTTON_TYPE_CLOSE = 0--><!--Device-ActionButtonType-ACTION_BUTTON_TYPE_CLOSE = 0-End-->
 
@@ -48,7 +48,7 @@ ACTION_BUTTON_TYPE_SNOOZE = 1
 
 **废弃版本：** 9
 
-**替代接口：** [reminderAgentManager.ActionButtonType.ACTION_BUTTON_TYPE_SNOOZE](arkts-backgroundtasks-reminderagentmanager-actionbuttontype-e.md#action_button_type_snooze)
+**替代接口：** ACTION_BUTTON_TYPE_SNOOZE
 
 <!--Device-ActionButtonType-ACTION_BUTTON_TYPE_SNOOZE = 1--><!--Device-ActionButtonType-ACTION_BUTTON_TYPE_SNOOZE = 1-End-->
 

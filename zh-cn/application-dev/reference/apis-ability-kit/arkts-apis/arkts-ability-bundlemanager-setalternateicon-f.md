@@ -10,7 +10,9 @@ function setAlternateIcon(alternateIconName: string): Promise<void>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -22,7 +24,7 @@ function setAlternateIcon(alternateIconName: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| alternateIconName | string | 是 | 要设置的备用图标名称。备用图标名称须在app.json5中\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_的name字段内。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_alternateIconName为空时表示取消备用图标。 |
+| alternateIconName | string | 是 | 要设置的备用图标名称。备用图标名称须在app.json5中 [alternateIcons标签](../../../quick-start/app-configuration-file.md#alternateicons标签)的name字段内。&lt;br/&gt; alternateIconName为空时表示取消备用图标。 |
 
 **返回值：**
 
@@ -34,11 +36,11 @@ function setAlternateIcon(alternateIconName: string): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [17700310](../errorcode-bundle.md#17700310-设置备用图标失败) | Failed to set the alternate icon. |
 | [17700308](../errorcode-bundle.md#17700308-备用图标名称没有在配置文件中配置) | The alternateIconName must match the name field under alternateIcons in the app.json5 file. |
 | [17700309](../errorcode-bundle.md#17700309-当前没有设置备用图标) | No alternate icon is enabled. |
-| [17700310](../errorcode-bundle.md#17700310-设置备用图标失败) | Failed to set the alternate icon. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { bundleManager } from '@kit.AbilityKit';

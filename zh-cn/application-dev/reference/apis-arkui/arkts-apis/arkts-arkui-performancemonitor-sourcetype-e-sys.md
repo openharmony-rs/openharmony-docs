@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-performanceMonitor-export enum SourceType--><!--Device-performanceMonitor-export enum SourceType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -23,6 +25,8 @@ PERF_TOUCH_EVENT = 0
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -44,6 +48,8 @@ PERF_MOUSE_EVENT = 1
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-SourceType-PERF_MOUSE_EVENT = 1--><!--Device-SourceType-PERF_MOUSE_EVENT = 1-End-->
@@ -63,6 +69,8 @@ PERF_TOUCHPAD_EVENT = 2
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -84,6 +92,8 @@ PERF_JOYSTICK_EVENT = 3
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-SourceType-PERF_JOYSTICK_EVENT = 3--><!--Device-SourceType-PERF_JOYSTICK_EVENT = 3-End-->
@@ -103,6 +113,8 @@ PERF_KEY_EVENT = 4
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

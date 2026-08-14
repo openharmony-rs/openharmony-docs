@@ -2,13 +2,15 @@
 
 Portrait Photo Functions object.
 
-**继承/实现关系：** PortraitPhotoFunctions extends [FlashQuery](arkts-camera-camera-flashquery-i.md), [AutoExposureQuery](arkts-camera-camera-autoexposurequery-i.md), [FocusQuery](arkts-camera-camera-focusquery-i.md), [ZoomQuery](arkts-camera-camera-zoomquery-i.md), [BeautyQuery](arkts-camera-camera-beautyquery-i-sys.md), [ColorEffectQuery](arkts-camera-camera-coloreffectquery-i-sys.md), [ColorManagementQuery](arkts-camera-camera-colormanagementquery-i.md), [PortraitQuery](arkts-camera-camera-portraitquery-i-sys.md), [ApertureQuery](arkts-camera-camera-aperturequery-i.md), [SceneDetectionQuery](arkts-camera-camera-scenedetectionquery-i-sys.md)
+**继承/实现关系：** PortraitPhotoFunctions extends [FlashQuery](arkts-camera-camera-flashquery-i.md#FlashQuery), [AutoExposureQuery](arkts-camera-camera-autoexposurequery-i.md#AutoExposureQuery), [FocusQuery](arkts-camera-camera-focusquery-i.md#FocusQuery), [ZoomQuery](arkts-camera-camera-zoomquery-i.md#ZoomQuery), [BeautyQuery](arkts-camera-camera-beautyquery-i-sys.md#BeautyQuery（系统接口）), [ColorEffectQuery](arkts-camera-camera-coloreffectquery-i-sys.md#ColorEffectQuery（系统接口）), [ColorManagementQuery](arkts-camera-camera-colormanagementquery-i.md#ColorManagementQuery), [PortraitQuery](arkts-camera-camera-portraitquery-i-sys.md#PortraitQuery（系统接口）), [ApertureQuery](arkts-camera-camera-aperturequery-i-sys.md#ApertureQuery（系统接口）), [SceneDetectionQuery](arkts-camera-camera-scenedetectionquery-i-sys.md#SceneDetectionQuery（系统接口）)
 
-**起始版本：** 13
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为13；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-<!--Device-camera-interface PortraitPhotoFunctions extends FlashQuery, AutoExposureQuery, FocusQuery, ZoomQuery, BeautyQuery, ColorEffectQuery, ColorManagementQuery, PortraitQuery, ApertureQuery, SceneDetectionQuery--><!--Device-camera-interface PortraitPhotoFunctions extends FlashQuery, AutoExposureQuery, FocusQuery, ZoomQuery, BeautyQuery, ColorEffectQuery, ColorManagementQuery, PortraitQuery, ApertureQuery, SceneDetectionQuery-End-->
+**废弃版本：** -1
+
+<!--Device-camera-interface PortraitPhotoFunctions--><!--Device-camera-interface PortraitPhotoFunctions-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

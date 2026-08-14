@@ -1,10 +1,12 @@
 # ResourceManager
 
-提供访问应用资源和系统资源的能力，可访问的资源范围为当前Context对应的HAP/HSP模块中的资源以及所有的系统资源。 > **说明：** > > - ResourceManager涉及到的方法，仅限基于TS扩展的声明式开发范式使用。 > > - 资源文件在工程的resources目录中定义，通过resName、resId、Resource对象等可以获取对应的字符串、字符串数组、颜色等资源值，resName为资源名称，resId可通过\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_的方式 > 获取，例如\_\_\_INLINE\_CODE\_DESC\_USD\_1\_\_\_。 > > - 单HAP包获取自身资源、跨HAP/HSP包获取资源，由于入参为Resource的接口相比于入参为resName、resId的接口耗时更长，因此更推荐使用参数为resName或resId的接口。跨HAP/HSP包获取资源， > **需要先使用[createModuleContext]\_\_\_JSDOC\_LINK\_DESC\_USD\_4\_\_\_创建对应module的context**， > 再调用参数为resName或resId的接口。更多请参考\_\_\_MD\_LINK\_DESC\_USD\_2\_\_\_。 > > - 在API version 22及之前版本，中间码HAR、字节码HAR通过资源ID相关接口访问资源时，因ID无效会抛出异常；从API version 23开始，中间码HAR、字节码HAR通过资源ID相关接口可以正常访问资源， > 更多请参考\_\_\_MD\_LINK\_DESC\_USD\_3\_\_\_。
+提供访问应用资源和系统资源的能力，可访问的资源范围为当前Context对应的HAP/HSP模块中的资源以及所有的系统资源。 > **说明：** > > - ResourceManager涉及到的方法，仅限基于TS扩展的声明式开发范式使用。 > > - 资源文件在工程的resources目录中定义，通过resName、resId、Resource对象等可以获取对应的字符串、字符串数组、颜色等资源值，resName为资源名称，resId可通过`\$r(资源地址).id`的方式 > 获取，例如`\$r('app.string.test').id`。 > > - 单HAP包获取自身资源、跨HAP/HSP包获取资源，由于入参为Resource的接口相比于入参为resName、resId的接口耗时更长，因此更推荐使用参数为resName或resId的接口。跨HAP/HSP包获取资源， > **需要先使用[createModuleContext](../../apis-ability-kit/arkts-apis/arkts-ability-application-createmodulecontext-f.md#createModuleContext)创建对应module的context**， > 再调用参数为resName或resId的接口。更多请参考[资源访问](../../../quick-start/resource-categories-and-access.md#资源访问)。 > > - 在API version 22及之前版本，中间码HAR、字节码HAR通过资源ID相关接口访问资源时，因ID无效会抛出异常；从API version 23开始，中间码HAR、字节码HAR通过资源ID相关接口可以正常访问资源， > 更多请参考[资源访问](../../../quick-start/resource-categories-and-access.md#资源访问)。
 
-**起始版本：** 6
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为6；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-resourceManager-export interface ResourceManager--><!--Device-resourceManager-export interface ResourceManager-End-->
 
@@ -16,11 +18,13 @@
 addResource(path: string) : void
 ```
 
-应用运行时加载指定的overlay资源，实现主题切换或资源覆盖。 > **说明** > > rawfile和resfile目录不支持资源覆盖。
+应用运行时加载指定的overlay资源，实现主题切换或资源覆盖。 > **说明：**> > rawfile和resfile目录不支持资源覆盖。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -38,10 +42,10 @@ addResource(path: string) : void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001010](../errorcode-resource-manager.md#9001010-无效的overlay路径) | Invalid overlay path. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -70,9 +74,11 @@ closeRawFd(path: string, callback: _AsyncCallback<void>): void
 
 关闭resources/rawfile目录下rawfile文件所在HAP的文件描述符（fd）。使用callback异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -85,16 +91,16 @@ closeRawFd(path: string, callback: _AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。 |
-| callback | \_AsyncCallback&lt;void&gt; | 是 | 回调函数。当关闭rawfile所在HAP的文件描述符（fd）成功，err为undefined，否则为错误对象。 |
+| callback | _AsyncCallback&lt;void&gt; | 是 | 回调函数。当关闭rawfile所在HAP的文件描述符（fd）成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -160,9 +166,11 @@ closeRawFd(path: string): Promise<void>
 
 关闭resources/rawfile目录下rawfile文件所在HAP的文件描述符（fd）。使用Promise异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -186,10 +194,10 @@ closeRawFd(path: string): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -251,9 +259,11 @@ closeRawFdSync(path: string): void
 
 关闭resources/rawfile目录下rawfile文件所在HAP的文件描述符（fd），使用同步方式返回。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -271,10 +281,10 @@ closeRawFdSync(path: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -311,7 +321,7 @@ closeRawFileDescriptor(path: string, callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** [resourceManager.ResourceManager.closeRawFd](arkts-localization-resourcemanager-resourcemanager-i.md#closerawfd)(path:
+**替代接口：** [closeRawFd](#closeRawFd)(path: string, callback: _AsyncCallback&lt;void&gt;)
 
 <!--Device-ResourceManager-closeRawFileDescriptor(path: string, callback: AsyncCallback<void>): void--><!--Device-ResourceManager-closeRawFileDescriptor(path: string, callback: AsyncCallback<void>): void-End-->
 
@@ -322,9 +332,9 @@ closeRawFileDescriptor(path: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数。当关闭rawfile文件的文件描述符（fd）成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当关闭rawfile文件的文件描述符（fd）成功，err为undefined，否则为错误对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -352,7 +362,7 @@ closeRawFileDescriptor(path: string): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [resourceManager.ResourceManager.closeRawFd](arkts-localization-resourcemanager-resourcemanager-i.md#closerawfd)(path:
+**替代接口：** [closeRawFd](#closeRawFd)(path: string)
 
 <!--Device-ResourceManager-closeRawFileDescriptor(path: string): Promise<void>--><!--Device-ResourceManager-closeRawFileDescriptor(path: string): Promise<void>-End-->
 
@@ -370,7 +380,7 @@ closeRawFileDescriptor(path: string): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -382,21 +392,17 @@ resourceManager.getResourceManager((error, mgr) => {
 
 ## getBoolean
 
-ArkTS-Dyn:
-```TypeScript
-getBoolean(resId: number): boolean
-```
-
-ArkTS-Sta:
 ```TypeScript
 getBoolean(resId: long): boolean
 ```
 
 获取指定资源ID值对应的布尔值，使用同步方式返回。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -408,7 +414,7 @@ getBoolean(resId: long): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 资源ID值。 |
+| resId | long | 是 | 资源ID值。 |
 
 **返回值：**
 
@@ -420,12 +426,12 @@ getBoolean(resId: long): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/boolean.json
@@ -498,7 +504,7 @@ getBoolean(resource: Resource): boolean
 
 **废弃版本：** 20
 
-**替代接口：** [resourceManager.ResourceManager.getBoolean](arkts-localization-resourcemanager-resourcemanager-i.md#getboolean)(resId:
+**替代接口：** [getBoolean](#getBoolean)(resId: long)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -512,7 +518,7 @@ getBoolean(resource: Resource): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resource | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 资源信息。 |
+| resource | Resource | 是 | 资源信息。 |
 
 **返回值：**
 
@@ -524,12 +530,12 @@ getBoolean(resource: Resource): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/boolean.json
@@ -571,9 +577,11 @@ getBooleanByName(resName: string): boolean
 
 获取指定资源名称对应的布尔值，使用同步方式返回。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -597,12 +605,12 @@ getBooleanByName(resName: string): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/boolean.json
@@ -638,21 +646,17 @@ export default class EntryAbility extends UIAbility {
 
 ## getColor
 
-ArkTS-Dyn:
-```TypeScript
-getColor(resId: number, callback: _AsyncCallback<number>): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 getColor(resId: long, callback: _AsyncCallback<long>): void
 ```
 
 获取指定资源ID对应的颜色值。使用callback异步回调。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -664,19 +668,19 @@ getColor(resId: long, callback: _AsyncCallback<long>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 资源ID值。 |
-| callback | ArkTS-Dyn: \_AsyncCallback&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：\_AsyncCallback&lt;long&gt; | 是 | 回调函数，返回资源ID值对应的颜色值（十进制）。 |
+| resId | long | 是 | 资源ID值。 |
+| callback | _AsyncCallback&lt;long&gt; | 是 | 回调函数，返回资源ID值对应的颜色值（十进制）。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/color.json
@@ -747,21 +751,17 @@ export default class EntryAbility extends UIAbility {
 
 ## getColor
 
-ArkTS-Dyn:
-```TypeScript
-getColor(resId: number): Promise<number>
-```
-
-ArkTS-Sta:
 ```TypeScript
 getColor(resId: long): Promise<long>
 ```
 
 获取指定资源ID对应的颜色值。使用Promise异步回调。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -773,24 +773,24 @@ getColor(resId: long): Promise<long>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 资源ID值。 |
+| resId | long | 是 | 资源ID值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: Promise&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：Promise&lt;long&gt; | Promise对象，返回资源ID值对应的颜色值（十进制）。 |
+| Promise&lt;long&gt; | Promise对象，返回资源ID值对应的颜色值（十进制）。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/color.json
@@ -873,7 +873,7 @@ getColor(resource: Resource, callback: _AsyncCallback<number>): void
 
 **废弃版本：** 20
 
-**替代接口：** [resourceManager.ResourceManager.getColor](arkts-localization-resourcemanager-resourcemanager-i.md#getcolor)(resId:
+**替代接口：** [getColor](#getColor)(resId: long, callback: _AsyncCallback&lt;long&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -887,19 +887,19 @@ getColor(resource: Resource, callback: _AsyncCallback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resource | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 资源信息。 |
-| callback | \_AsyncCallback&lt;number&gt; | 是 | 回调函数，返回resource对象对应的颜色值（十进制）。 |
+| resource | Resource | 是 | 资源信息。 |
+| callback | _AsyncCallback&lt;number&gt; | 是 | 回调函数，返回resource对象对应的颜色值（十进制）。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/color.json
@@ -946,7 +946,7 @@ getColor(resource: Resource): Promise<number>
 
 **废弃版本：** 20
 
-**替代接口：** [resourceManager.ResourceManager.getColor](arkts-localization-resourcemanager-resourcemanager-i.md#getcolor)(resId:
+**替代接口：** [getColor](#getColor)(resId: long)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -960,7 +960,7 @@ getColor(resource: Resource): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resource | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 资源信息。 |
+| resource | Resource | 是 | 资源信息。 |
 
 **返回值：**
 
@@ -972,12 +972,12 @@ getColor(resource: Resource): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/color.json
@@ -1012,21 +1012,17 @@ this.context.resourceManager.getColor(resource)
 
 ## getColorByName
 
-ArkTS-Dyn:
-```TypeScript
-getColorByName(resName: string, callback: _AsyncCallback<number>): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 getColorByName(resName: string, callback: _AsyncCallback<long>): void
 ```
 
 获取指定资源名称对应的颜色值。使用callback异步回调。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1039,18 +1035,18 @@ getColorByName(resName: string, callback: _AsyncCallback<long>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| callback | ArkTS-Dyn: \_AsyncCallback&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：\_AsyncCallback&lt;long&gt; | 是 | 回调函数，返回资源名称对应的颜色值（十进制）。 |
+| callback | _AsyncCallback&lt;long&gt; | 是 | 回调函数，返回资源名称对应的颜色值（十进制）。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/color.json
@@ -1120,21 +1116,17 @@ export default class EntryAbility extends UIAbility {
 
 ## getColorByName
 
-ArkTS-Dyn:
-```TypeScript
-getColorByName(resName: string): Promise<number>
-```
-
-ArkTS-Sta:
 ```TypeScript
 getColorByName(resName: string): Promise<long>
 ```
 
 获取指定资源名称对应的颜色值。使用Promise异步回调。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1152,18 +1144,18 @@ getColorByName(resName: string): Promise<long>
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: Promise&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：Promise&lt;long&gt; | Promise对象，返回资源名称对应的颜色值（十进制）。 |
+| Promise&lt;long&gt; | Promise对象，返回资源名称对应的颜色值（十进制）。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/color.json
@@ -1233,21 +1225,17 @@ export default class EntryAbility extends UIAbility {
 
 ## getColorByNameSync
 
-ArkTS-Dyn:
-```TypeScript
-getColorByNameSync(resName: string) : number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getColorByNameSync(resName: string) : long
 ```
 
 获取指定资源名称对应的颜色值，使用同步方式返回。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1265,18 +1253,18 @@ getColorByNameSync(resName: string) : long
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 资源名称对应的颜色值（十进制）。 |
+| long | 资源名称对应的颜色值（十进制）。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/color.json
@@ -1312,21 +1300,17 @@ export default class EntryAbility extends UIAbility {
 
 ## getColorSync
 
-ArkTS-Dyn:
-```TypeScript
-getColorSync(resId: number) : number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getColorSync(resId: long) : long
 ```
 
 获取指定资源ID对应的颜色值，使用同步方式返回。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1338,24 +1322,24 @@ getColorSync(resId: long) : long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 资源ID值。 |
+| resId | long | 是 | 资源ID值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 资源ID值对应的颜色值（十进制）。 |
+| long | 资源ID值对应的颜色值（十进制）。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/color.json
@@ -1428,7 +1412,7 @@ getColorSync(resource: Resource) : number
 
 **废弃版本：** 20
 
-**替代接口：** [resourceManager.ResourceManager.getColorSync](arkts-localization-resourcemanager-resourcemanager-i.md#getcolorsync)(resId:
+**替代接口：** [getColorSync](#getColorSync)(resId: long)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1442,7 +1426,7 @@ getColorSync(resource: Resource) : number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resource | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 资源信息。 |
+| resource | Resource | 是 | 资源信息。 |
 
 **返回值：**
 
@@ -1454,12 +1438,12 @@ getColorSync(resource: Resource) : number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/color.json
@@ -1501,9 +1485,11 @@ getConfiguration(callback: _AsyncCallback<Configuration>): void
 
 获取设备的Configuration。使用callback异步回调。
 
-**起始版本：** 6
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为6；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1515,9 +1501,9 @@ getConfiguration(callback: _AsyncCallback<Configuration>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_AsyncCallback&lt;Configuration&gt; | 是 | 回调函数，返回设备的Configuration。 |
+| callback | _AsyncCallback&lt;Configuration&gt; | 是 | 回调函数，返回设备的Configuration。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -1606,9 +1592,11 @@ getConfiguration(): Promise<Configuration>
 
 获取设备的Configuration。使用Promise异步回调。
 
-**起始版本：** 6
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为6；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1622,7 +1610,7 @@ getConfiguration(): Promise<Configuration>
 | --- | --- |
 | Promise&lt;Configuration&gt; | Promise对象，返回设备的Configuration。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -1699,9 +1687,11 @@ getConfigurationSync(): Configuration
 
 获取设备的Configuration，使用同步形式返回。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1713,9 +1703,9 @@ getConfigurationSync(): Configuration
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 设备的Configuration。 |
+| Configuration | 设备的Configuration。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -1741,9 +1731,11 @@ getDeviceCapability(callback: _AsyncCallback<DeviceCapability>): void
 
 获取设备的DeviceCapability。使用callback异步回调。
 
-**起始版本：** 6
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为6；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1755,9 +1747,9 @@ getDeviceCapability(callback: _AsyncCallback<DeviceCapability>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_AsyncCallback&lt;DeviceCapability&gt; | 是 | 回调函数，返回设备的DeviceCapability。 |
+| callback | _AsyncCallback&lt;[DeviceCapability](arkts-localization-resourcemanager-devicecapability-c.md)&gt; | 是 | 回调函数，返回设备的DeviceCapability。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -1819,9 +1811,11 @@ getDeviceCapability(): Promise<DeviceCapability>
 
 获取设备的DeviceCapability。使用Promise异步回调。
 
-**起始版本：** 6
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为6；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1833,9 +1827,9 @@ getDeviceCapability(): Promise<DeviceCapability>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;DeviceCapability&gt; | Promise对象，返回设备的DeviceCapability。 |
+| Promise&lt;[DeviceCapability](arkts-localization-resourcemanager-devicecapability-c.md)&gt; | Promise对象，返回设备的DeviceCapability。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -1890,9 +1884,11 @@ getDeviceCapabilitySync(): DeviceCapability
 
 获取设备的DeviceCapability，使用同步形式返回。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1904,9 +1900,9 @@ getDeviceCapabilitySync(): DeviceCapability
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 设备的DeviceCapability。 |
+| [DeviceCapability](arkts-localization-resourcemanager-devicecapability-c.md) | 设备的DeviceCapability。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -1934,7 +1930,9 @@ getDouble(resId: long): double
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -1952,7 +1950,7 @@ getDouble(resId: long): double
 
 | 类型 | 说明 |
 | --- | --- |
-| double | 资源ID值对应的数值。 |
+| double | 资源ID值对应的数值。 &lt;br&gt;float类型资源不带单位时返回资源文件中定义的原始数值，带"vp"或"fp"单位时返回转换后的像素(px)值。转换公式：像素值 = 原始数值 × densityPixels。 |
 
 **错误码：**
 
@@ -1962,7 +1960,7 @@ getDouble(resId: long): double
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/float.json
@@ -2009,7 +2007,9 @@ getDoubleByName(resName: string): double
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -2027,7 +2027,7 @@ getDoubleByName(resName: string): double
 
 | 类型 | 说明 |
 | --- | --- |
-| double | 资源名称对应的数值。 |
+| double | 资源名称对应的数值。 &lt;br&gt;float类型资源不带单位时返回资源文件中定义的原始数值，带"vp"或"fp"单位时返回转换后的像素(px)值。转换公式：像素值 = 原始数值 × densityPixels。 |
 
 **错误码：**
 
@@ -2037,7 +2037,7 @@ getDoubleByName(resName: string): double
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/float.json
@@ -2080,11 +2080,13 @@ export default class EntryAbility extends UIAbility {
 getDoublePluralStringByNameSync(resName: string, num: number, ...args: Array<string | number>): string
 ```
 
-获取指定资源名称对应的\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_字符串，并使用args参数依次替换字符串中的格式化占位符，使用同步方式返回。 > **说明** > > - 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > \_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_。 > > - 在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本接口仅支持在基数词类型下使用。
+获取指定资源名称对应的[单复数](../../../internationalization/l10n-singular-plural.md)字符串，并使用args参数依次替换字符串中的格式化占位符，使用同步方式返回。 > **说明：**> > - 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > [语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。 > > - 在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本接口仅支持在基数词类型下使用。
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -2097,8 +2099,8 @@ getDoublePluralStringByNameSync(resName: string, num: number, ...args: Array<str
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| num | number | 是 | 数量值（浮点数）。根据当前语言的\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_获取该数量值对应的字符串。 |
-| args | Array&lt;string \| number&gt; | 是 | 格式化字符串资源参数。支持的参数类型包括\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_3\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_4\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_5\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_和\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_6\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_17\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_**说明：**\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_18\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_7\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_转义为\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_8\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，如\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_9\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化后为\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_10\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_19\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_11\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_中的数字表示参数索引，从\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_12\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_开始计数。如\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_13\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_表示使用\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_14\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化，\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_15\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_表示使用\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_16\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化，依此类推。 |
+| num | number | 是 | 数量值（浮点数）。根据当前语言的 [单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
+| args | Array&lt;string \| number&gt; | 是 | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字\\$d`、`%数字\\$f`和`%数字\\$s`。 &lt;br&gt;**说明：** &lt;br&gt;- `%%`转义为`%`，如`%%d`格式化后为`%d`。 &lt;br&gt;- `%数字\\$d`中的数字表示参数索引，从`1`开始计数。如`%1\\$d`表示使用`args[0]`格式化，`%2\\$d`表示使用`args[1]`格式化，依此类推。 |
 
 **返回值：**
 
@@ -2115,7 +2117,7 @@ getDoublePluralStringByNameSync(resName: string, num: number, ...args: Array<str
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 | [9001008](../errorcode-resource-manager.md#9001008-根据当前名称获取的资源格式化失败) | Failed to format the resource obtained based on the resource name. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/plural.json
@@ -2166,11 +2168,13 @@ export default class EntryAbility extends UIAbility {
 getDoublePluralStringByNameSync(resName: string, num: double, ...args: (string | double)[]): string
 ```
 
-获取指定资源名称对应的\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_字符串，并使用args参数依次替换字符串中的格式化占位符，使用同步方式返回。 > **说明** > > - 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > \_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_。 > > - 在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本接口仅支持在基数词类型下使用。
+获取指定资源名称对应的[单复数](../../../internationalization/l10n-singular-plural.md)字符串，并使用args参数依次替换字符串中的格式化占位符，使用同步方式返回。 > **说明：**> > - 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > [语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。 > > - 在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本接口仅支持在基数词类型下使用。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -2183,8 +2187,8 @@ getDoublePluralStringByNameSync(resName: string, num: double, ...args: (string |
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| num | double | 是 | 数量值（浮点数）。根据当前语言的\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_获取该数量值对应的字符串。 |
-| args | (string \| double)[] | 是 | 格式化字符串资源参数。支持的参数类型包括\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_3\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_4\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_5\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_和\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_6\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_17\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_**说明：**\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_18\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_7\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_转义为\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_8\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，如\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_9\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化后为\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_10\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_19\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_11\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_中的数字表示参数索引，从\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_12\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_开始计数。如\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_13\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_表示使用\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_14\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化，\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_15\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_表示使用\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_16\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化，依此类推。 |
+| num | double | 是 | 数量值（浮点数）。根据当前语言的 [单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
+| args | (string \| double)[] | 是 | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字\\$d`、`%数字\\$f`和`%数字\\$s`。 &lt;br&gt;**说明：** &lt;br&gt;- `%%`转义为`%`，如`%%d`格式化后为`%d`。 &lt;br&gt;- `%数字\\$d`中的数字表示参数索引，从`1`开始计数。如`%1\\$d`表示使用`args[0]`格式化，`%2\\$d`表示使用`args[1]`格式化，依此类推。 |
 
 **返回值：**
 
@@ -2207,11 +2211,13 @@ getDoublePluralStringByNameSync(resName: string, num: double, ...args: (string |
 getDoublePluralStringValueSync(resId: number, num: number, ...args: Array<string | number>): string
 ```
 
-获取指定资源ID对应的\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_字符串，并使用args参数依次替换字符串中的格式化占位符，使用同步方式返回。 > **说明** > > - 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > \_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_。 > > - 在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本接口仅支持在基数词类型下使用。
+获取指定资源ID对应的[单复数](../../../internationalization/l10n-singular-plural.md)字符串，并使用args参数依次替换字符串中的格式化占位符，使用同步方式返回。 > **说明：**> > - 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > [语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。 > > - 在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本接口仅支持在基数词类型下使用。
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -2224,8 +2230,8 @@ getDoublePluralStringValueSync(resId: number, num: number, ...args: Array<string
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| num | number | 是 | 数量值（浮点数）。根据当前语言的\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_获取该数量值对应的字符串。 |
-| args | Array&lt;string \| number&gt; | 是 | 格式化字符串资源参数。支持的参数类型包括\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_3\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_4\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_5\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_和\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_6\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_17\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_**说明：**\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_18\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_7\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_转义为\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_8\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，如\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_9\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化后为\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_10\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_19\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_11\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_中的数字表示参数索引，从\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_12\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_开始计数。如\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_13\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_表示使用\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_14\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化，\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_15\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_表示使用\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_16\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化，依此类推。 |
+| num | number | 是 | 数量值（浮点数）。根据当前语言的 [单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
+| args | Array&lt;string \| number&gt; | 是 | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字\\$d`、`%数字\\$f`和`%数字\\$s`。 &lt;br&gt;**说明：** &lt;br&gt;- `%%`转义为`%`，如`%%d`格式化后为`%d`。 &lt;br&gt;- `%数字\\$d`中的数字表示参数索引，从`1`开始计数。如`%1\\$d`表示使用`args[0]`格式化，`%2\\$d`表示使用`args[1]`格式化，依此类推。 |
 
 **返回值：**
 
@@ -2239,10 +2245,10 @@ getDoublePluralStringValueSync(resId: number, num: number, ...args: Array<string
 | --- | --- |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 | [9001007](../errorcode-resource-manager.md#9001007-根据当前id获取的资源格式化失败) | Failed to format the resource obtained based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/plural.json
@@ -2320,11 +2326,13 @@ export default class EntryAbility extends UIAbility {
 getDoublePluralStringValueSync(resId: long, num: double, ...args: (string | double)[]): string
 ```
 
-获取指定资源ID对应的\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_字符串，并使用args参数依次替换字符串中的格式化占位符，使用同步方式返回。 > **说明** > > - 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > \_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_。 > > - 在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本接口仅支持在基数词类型下使用。
+获取指定资源ID对应的[单复数](../../../internationalization/l10n-singular-plural.md)字符串，并使用args参数依次替换字符串中的格式化占位符，使用同步方式返回。 > **说明：**> > - 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > [语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。 > > - 在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本接口仅支持在基数词类型下使用。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -2337,8 +2345,8 @@ getDoublePluralStringValueSync(resId: long, num: double, ...args: (string | doub
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | long | 是 | 资源ID值。 |
-| num | double | 是 | 数量值（浮点数）。根据当前语言的\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_获取该数量值对应的字符串。 |
-| args | (string \| double)[] | 是 | 格式化字符串资源参数。支持的参数类型包括\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_3\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_4\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_5\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_和\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_6\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_17\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_**说明：**\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_18\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_7\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_转义为\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_8\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，如\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_9\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化后为\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_10\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_19\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_11\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_中的数字表示参数索引，从\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_12\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_开始计数。如\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_13\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_表示使用\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_14\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化，\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_15\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_表示使用\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_16\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化，依此类推。 |
+| num | double | 是 | 数量值（浮点数）。根据当前语言的 [单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
+| args | (string \| double)[] | 是 | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字\\$d`、`%数字\\$f`和`%数字\\$s`。 &lt;br&gt;**说明：** &lt;br&gt;- `%%`转义为`%`，如`%%d`格式化后为`%d`。 &lt;br&gt;- `%数字\\$d`中的数字表示参数索引，从`1`开始计数。如`%1\\$d`表示使用`args[0]`格式化，`%2\\$d`表示使用`args[1]`格式化，依此类推。 |
 
 **返回值：**
 
@@ -2352,8 +2360,8 @@ getDoublePluralStringValueSync(resId: long, num: double, ...args: (string | doub
 | --- | --- |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 | [9001007](../errorcode-resource-manager.md#9001007-根据当前id获取的资源格式化失败) | Failed to format the resource obtained based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
 ## getDoublePluralStringValueSync
 
@@ -2361,7 +2369,7 @@ getDoublePluralStringValueSync(resId: long, num: double, ...args: (string | doub
 getDoublePluralStringValueSync(resource: Resource, num: number, ...args: Array<string | number>): string
 ```
 
-获取指定resource对象对应的\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_字符串，并使用args参数依次替换字符串中的格式化占位符，使用同步方式 返回。 > **说明** > > - 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > \_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_。
+获取指定resource对象对应的[单复数](../../../internationalization/l10n-singular-plural.md)字符串，并使用args参数依次替换字符串中的格式化占位符，使用同步方式 返回。 > **说明：**> > - 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > [语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。
 
 **起始版本：** 18
 
@@ -2369,7 +2377,7 @@ getDoublePluralStringValueSync(resource: Resource, num: number, ...args: Array<s
 
 **废弃版本：** 20
 
-**替代接口：** [resourceManager.ResourceManager.getDoublePluralStringValueSync](arkts-localization-resourcemanager-resourcemanager-i.md#getdoublepluralstringvaluesync)(resId:
+**替代接口：** [getDoublePluralStringValueSync](#getDoublePluralStringValueSync)(resId: number, num: number, ...args: Array&lt;string | number&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2383,9 +2391,9 @@ getDoublePluralStringValueSync(resource: Resource, num: number, ...args: Array<s
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resource | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 资源信息。 |
-| num | number | 是 | 数量值（浮点数）。根据当前语言的\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_获取该数量值对应的字符串。 |
-| args | Array&lt;string \| number&gt; | 是 | 格式化字符串资源参数。支持的参数类型包括\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_3\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_4\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_5\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_和\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_6\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_17\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_**说明：**\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_18\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_7\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_转义为\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_8\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，如\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_9\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化后为\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_10\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_19\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_11\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_中的数字表示参数索引，从\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_12\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_开始计数。如\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_13\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_表示使用\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_14\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化，\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_15\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_表示使用\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_16\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化，依此类推。 |
+| resource | Resource | 是 | 资源信息。 |
+| num | number | 是 | 数量值（浮点数）。根据当前语言的 [单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
+| args | Array&lt;string \| number&gt; | 是 | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字\\$d`、`%数字\\$f`和`%数字\\$s`。 &lt;br&gt;**说明：** &lt;br&gt;- `%%`转义为`%`，如`%%d`格式化后为`%d`。 &lt;br&gt;- `%数字\\$d`中的数字表示参数索引，从`1`开始计数。如`%1\\$d`表示使用`args[0]`格式化，`%2\\$d`表示使用`args[1]`格式化，依此类推。 |
 
 **返回值：**
 
@@ -2399,10 +2407,10 @@ getDoublePluralStringValueSync(resource: Resource, num: number, ...args: Array<s
 | --- | --- |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 | [9001007](../errorcode-resource-manager.md#9001007-根据当前id获取的资源格式化失败) | Failed to format the resource obtained based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/plural.json
@@ -2450,21 +2458,17 @@ try {
 
 ## getDrawableDescriptor
 
-ArkTS-Dyn:
-```TypeScript
-getDrawableDescriptor(resId: number, density?: number, type?: number): DrawableDescriptor
-```
-
-ArkTS-Sta:
 ```TypeScript
 getDrawableDescriptor(resId: long, density?: int, type?: int): DrawableDescriptor
 ```
 
 获取指定资源ID对应的DrawableDescriptor对象，用于图标的显示，使用同步方式返回。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -2476,25 +2480,25 @@ getDrawableDescriptor(resId: long, density?: int, type?: int): DrawableDescripto
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 资源ID值。 |
-| density | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
-| type | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 图标类型。默认值为0。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_0：表示获取应用自身图标资源。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_1：表示获取主题资源包中应用的分层图标资源。 |
+| resId | long | 是 | 资源ID值。 |
+| density | int | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#ScreenDensity)。 |
+| type | int | 否 | 图标类型。默认值为0。 &lt;br&gt;0：表示获取应用自身图标资源。 &lt;br&gt;1：表示获取主题资源包中应用的分层图标资源。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 资源ID值对应的DrawableDescriptor对象。 |
+| [DrawableDescriptor](../../apis-arkui/arkts-apis/arkts-arkui-arkui-drawabledescriptor-drawabledescriptor-c.md) | 资源ID值对应的DrawableDescriptor对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Incorrect parameter types;2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -2584,7 +2588,7 @@ getDrawableDescriptor(resource: Resource, density?: number, type?: number): Draw
 
 **废弃版本：** 20
 
-**替代接口：** [resourceManager.ResourceManager.getDrawableDescriptor](arkts-localization-resourcemanager-resourcemanager-i.md#getdrawabledescriptor)(resId:
+**替代接口：** [getDrawableDescriptor](#getDrawableDescriptor)(resId: long, density?: int, type?: int)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2598,25 +2602,25 @@ getDrawableDescriptor(resource: Resource, density?: number, type?: number): Draw
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resource | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 资源信息。 |
-| density | number | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
-| type | number | 否 | 图标类型。默认值为0。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_0：表示获取应用自身图标资源。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_1：表示获取主题资源包中应用的分层图标资源。 |
+| resource | Resource | 是 | 资源信息。 |
+| density | number | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举 [ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#ScreenDensity)。 |
+| type | number | 否 | 图标类型。默认值为0。 &lt;br&gt;0：表示获取应用自身图标资源。 &lt;br&gt;1：表示获取主题资源包中应用的分层图标资源。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 资源ID值对应的DrawableDescriptor对象。 |
+| [DrawableDescriptor](../../apis-arkui/arkts-apis/arkts-arkui-arkui-drawabledescriptor-drawabledescriptor-c.md) | 资源ID值对应的DrawableDescriptor对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2 .Parameter verification failed. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -2653,21 +2657,17 @@ try {
 
 ## getDrawableDescriptorByName
 
-ArkTS-Dyn:
-```TypeScript
-getDrawableDescriptorByName(resName: string, density?: number, type?: number): DrawableDescriptor
-```
-
-ArkTS-Sta:
 ```TypeScript
 getDrawableDescriptorByName(resName: string, density?: int, type?: int): DrawableDescriptor
 ```
 
 获取指定资源名称对应的DrawableDescriptor对象，用于图标的显示，使用同步方式返回。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -2680,24 +2680,24 @@ getDrawableDescriptorByName(resName: string, density?: int, type?: int): Drawabl
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| density | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
-| type | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 图标类型。默认值为0。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_0：表示获取应用自身图标资源。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_1：表示获取主题资源包中应用的分层图标资源。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2：表示获取主题资源包中应用的动态图标资源。 |
+| density | int | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#ScreenDensity)。 |
+| type | int | 否 | 图标类型。默认值为0。 &lt;br&gt;0：表示获取应用自身图标资源。 &lt;br&gt;1：表示获取主题资源包中应用的分层图标资源。 &lt;br&gt;2：表示获取主题资源包中应用的动态图标资源。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 资源名称对应的DrawableDescriptor对象。 |
+| [DrawableDescriptor](../../apis-arkui/arkts-apis/arkts-arkui-arkui-drawabledescriptor-drawabledescriptor-c.md) | 资源名称对应的DrawableDescriptor对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Incorrect parameter types;2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -2744,7 +2744,9 @@ getInt(resId: long): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -2762,7 +2764,7 @@ getInt(resId: long): int
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 资源ID值对应的数值。 |
+| int | 资源ID值对应的数值。 &lt;br&gt;integer类型资源返回资源文件中定义的原始数值。 |
 
 **错误码：**
 
@@ -2772,7 +2774,7 @@ getInt(resId: long): int
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/integer.json
@@ -2818,7 +2820,9 @@ getIntByName(resName: string): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -2836,7 +2840,7 @@ getIntByName(resName: string): int
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 资源名称对应的数值。 |
+| int | 资源名称对应的数值。 &lt;br&gt;integer类型资源返回资源文件中定义的原始数值。 |
 
 **错误码：**
 
@@ -2846,7 +2850,7 @@ getIntByName(resName: string): int
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/integer.json
@@ -2887,11 +2891,13 @@ export default class EntryAbility extends UIAbility {
 getIntPluralStringByNameSync(resName: string, num: number, ...args: Array<string | number>): string
 ```
 
-获取指定资源名称对应的\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_字符串，并使用args参数依次替换字符串中的格式化占位符，使用同步方式返回。 > **说明** > > - 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > \_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_。 > > - 在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本接口仅支持在基数词类型下使用。
+获取指定资源名称对应的[单复数](../../../internationalization/l10n-singular-plural.md)字符串，并使用args参数依次替换字符串中的格式化占位符，使用同步方式返回。 > **说明：**> > - 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > [语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。 > > - 在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本接口仅支持在基数词类型下使用。
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -2904,8 +2910,8 @@ getIntPluralStringByNameSync(resName: string, num: number, ...args: Array<string
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| num | number | 是 | 数量值（整数）。根据当前语言的\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_获取该数量值对应的字符串。 |
-| args | Array&lt;string \| number&gt; | 是 | 格式化字符串资源参数。支持的参数类型包括\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_3\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_4\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_5\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_和\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_6\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_17\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_**说明：**\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_18\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_7\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_转义为\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_8\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，如\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_9\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化后为\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_10\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_19\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_11\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_中的数字表示参数索引，从\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_12\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_开始计数。如\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_13\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_表示使用\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_14\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化，\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_15\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_表示使用\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_16\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化，依此类推。 |
+| num | number | 是 | 数量值（整数）。根据当前语言的 [单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
+| args | Array&lt;string \| number&gt; | 是 | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字\\$d`、`%数字\\$f`和`%数字\\$s`。 &lt;br&gt;**说明：** &lt;br&gt;- `%%`转义为`%`，如`%%d`格式化后为`%d`。 &lt;br&gt;- `%数字\\$d`中的数字表示参数索引，从`1`开始计数。如`%1\\$d`表示使用`args[0]`格式化，`%2\\$d`表示使用`args[1]`格式化，依此类推。 |
 
 **返回值：**
 
@@ -2922,7 +2928,7 @@ getIntPluralStringByNameSync(resName: string, num: number, ...args: Array<string
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 | [9001008](../errorcode-resource-manager.md#9001008-根据当前名称获取的资源格式化失败) | Failed to format the resource obtained based on the resource name. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/plural.json
@@ -2973,11 +2979,13 @@ export default class EntryAbility extends UIAbility {
 getIntPluralStringByNameSync(resName: string, num: int, ...args: (string | double)[]): string
 ```
 
-获取指定资源名称对应的\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_字符串，并使用args参数依次替换字符串中的格式化占位符，使用同步方式返回。 > **说明** > > - 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > \_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_。 > > - 在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本接口仅支持在基数词类型下使用。
+获取指定资源名称对应的[单复数](../../../internationalization/l10n-singular-plural.md)字符串，并使用args参数依次替换字符串中的格式化占位符，使用同步方式返回。 > **说明：**> > - 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > [语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。 > > - 在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本接口仅支持在基数词类型下使用。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -2990,8 +2998,8 @@ getIntPluralStringByNameSync(resName: string, num: int, ...args: (string | doubl
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| num | int | 是 | 数量值（整数）。根据当前语言的\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_获取该数量值对应的字符串。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_取值限定为整数。 |
-| args | (string \| double)[] | 是 | 格式化字符串资源参数。支持的参数类型包括\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_3\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_4\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_5\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_和\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_6\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_17\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_**说明：**\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_18\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_7\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_转义为\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_8\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，如\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_9\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化后为\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_10\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_19\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_11\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_中的数字表示参数索引，从\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_12\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_开始计数。如\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_13\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_表示使用\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_14\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化，\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_15\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_表示使用\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_16\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化，依此类推。 |
+| num | int | 是 | 数量值（整数）。根据当前语言的 [单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 &lt;br&gt;取值限定为整数。 |
+| args | (string \| double)[] | 是 | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字\\$d`、`%数字\\$f`和`%数字\\$s`。 &lt;br&gt;**说明：** &lt;br&gt;- `%%`转义为`%`，如`%%d`格式化后为`%d`。 &lt;br&gt;- `%数字\\$d`中的数字表示参数索引，从`1`开始计数。如`%1\\$d`表示使用`args[0]`格式化，`%2\\$d`表示使用`args[1]`格式化，依此类推。 |
 
 **返回值：**
 
@@ -3014,11 +3022,13 @@ getIntPluralStringByNameSync(resName: string, num: int, ...args: (string | doubl
 getIntPluralStringValueSync(resId: number, num: number,...args: Array<string | number>): string
 ```
 
-获取指定资源ID对应的\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_字符串，并使用args参数依次替换字符串中的格式化占位符，使用同步方式返回。 > **说明** > > - 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > \_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_。 > > - 在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本接口仅支持在基数词类型下使用。
+获取指定资源ID对应的[单复数](../../../internationalization/l10n-singular-plural.md)字符串，并使用args参数依次替换字符串中的格式化占位符，使用同步方式返回。 > **说明：**> > - 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > [语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。 > > - 在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本接口仅支持在基数词类型下使用。
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -3031,8 +3041,8 @@ getIntPluralStringValueSync(resId: number, num: number,...args: Array<string | n
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| num | number | 是 | 数量值（整数）。根据当前语言的\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_获取该数量值对应的字符串。 |
-| args | Array&lt;string \| number&gt; | 是 | 格式化字符串资源参数。支持的参数类型包括\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_3\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_4\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_5\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_和\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_6\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_17\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_**说明：**\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_18\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_7\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_转义为\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_8\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，如\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_9\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化后为\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_10\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_19\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_11\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_中的数字表示参数索引，从\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_12\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_开始计数。如\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_13\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_表示使用\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_14\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化，\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_15\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_表示使用\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_16\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化，依此类推。 |
+| num | number | 是 | 数量值（整数）。根据当前语言的 [单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
+| args | Array&lt;string \| number&gt; | 是 | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字\\$d`、`%数字\\$f`和`%数字\\$s`。 &lt;br&gt;**说明：** &lt;br&gt;- `%%`转义为`%`，如`%%d`格式化后为`%d`。 &lt;br&gt;- `%数字\\$d`中的数字表示参数索引，从`1`开始计数。如`%1\\$d`表示使用`args[0]`格式化，`%2\\$d`表示使用`args[1]`格式化，依此类推。 |
 
 **返回值：**
 
@@ -3046,10 +3056,10 @@ getIntPluralStringValueSync(resId: number, num: number,...args: Array<string | n
 | --- | --- |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 | [9001007](../errorcode-resource-manager.md#9001007-根据当前id获取的资源格式化失败) | Failed to format the resource obtained based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/plural.json
@@ -3127,11 +3137,13 @@ export default class EntryAbility extends UIAbility {
 getIntPluralStringValueSync(resId: long, num: int,...args: (string | double)[]): string
 ```
 
-获取指定资源ID对应的\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_字符串，并使用args参数依次替换字符串中的格式化占位符，使用同步方式返回。 > **说明** > > - 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > \_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_。 > > - 在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本接口仅支持在基数词类型下使用。
+获取指定资源ID对应的[单复数](../../../internationalization/l10n-singular-plural.md)字符串，并使用args参数依次替换字符串中的格式化占位符，使用同步方式返回。 > **说明：**> > - 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > [语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。 > > - 在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本接口仅支持在基数词类型下使用。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -3144,8 +3156,8 @@ getIntPluralStringValueSync(resId: long, num: int,...args: (string | double)[]):
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | long | 是 | 资源ID值。 |
-| num | int | 是 | 数量值（整数）。根据当前语言的\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_获取该数量值对应的字符串。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_取值限定为整数。 |
-| args | (string \| double)[] | 是 | 格式化字符串资源参数。支持的参数类型包括\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_3\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_4\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_5\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_和\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_6\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_17\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_**说明：**\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_18\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_7\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_转义为\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_8\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，如\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_9\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化后为\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_10\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_19\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_11\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_中的数字表示参数索引，从\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_12\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_开始计数。如\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_13\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_表示使用\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_14\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化，\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_15\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_表示使用\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_16\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化，依此类推。 |
+| num | int | 是 | 数量值（整数）。根据当前语言的 [单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 &lt;br&gt;取值限定为整数。 |
+| args | (string \| double)[] | 是 | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字\\$d`、`%数字\\$f`和`%数字\\$s`。 &lt;br&gt;**说明：** &lt;br&gt;- `%%`转义为`%`，如`%%d`格式化后为`%d`。 &lt;br&gt;- `%数字\\$d`中的数字表示参数索引，从`1`开始计数。如`%1\\$d`表示使用`args[0]`格式化，`%2\\$d`表示使用`args[1]`格式化，依此类推。 |
 
 **返回值：**
 
@@ -3159,8 +3171,8 @@ getIntPluralStringValueSync(resId: long, num: int,...args: (string | double)[]):
 | --- | --- |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 | [9001007](../errorcode-resource-manager.md#9001007-根据当前id获取的资源格式化失败) | Failed to format the resource obtained based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
 ## getIntPluralStringValueSync
 
@@ -3168,7 +3180,7 @@ getIntPluralStringValueSync(resId: long, num: int,...args: (string | double)[]):
 getIntPluralStringValueSync(resource: Resource, num: number, ...args: Array<string | number>): string
 ```
 
-获取指定resource对象对应的\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_字符串，并使用args参数依次替换字符串中的格式化占位符，使用同步方式 返回。 > **说明** > > - 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > \_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_。
+获取指定resource对象对应的[单复数](../../../internationalization/l10n-singular-plural.md)字符串，并使用args参数依次替换字符串中的格式化占位符，使用同步方式 返回。 > **说明：**> > - 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > [语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。
 
 **起始版本：** 18
 
@@ -3176,7 +3188,7 @@ getIntPluralStringValueSync(resource: Resource, num: number, ...args: Array<stri
 
 **废弃版本：** 20
 
-**替代接口：** [resourceManager.ResourceManager.getIntPluralStringValueSync](arkts-localization-resourcemanager-resourcemanager-i.md#getintpluralstringvaluesync)(resId:
+**替代接口：** [getIntPluralStringValueSync](#getIntPluralStringValueSync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3190,9 +3202,9 @@ getIntPluralStringValueSync(resource: Resource, num: number, ...args: Array<stri
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resource | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 资源信息。 |
-| num | number | 是 | 数量值（整数）。根据当前语言的\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_获取该数量值对应的字符串。 |
-| args | Array&lt;string \| number&gt; | 是 | 格式化字符串资源参数。支持的参数类型包括\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_3\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_4\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_5\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_和\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_6\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_17\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_**说明：**\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_18\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_7\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_转义为\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_8\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，如\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_9\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化后为\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_10\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_19\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_11\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_中的数字表示参数索引，从\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_12\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_开始计数。如\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_13\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_表示使用\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_14\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化，\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_15\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_表示使用\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_16\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化，依此类推。 |
+| resource | Resource | 是 | 资源信息。 |
+| num | number | 是 | 数量值（整数）。根据当前语言的 [单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
+| args | Array&lt;string \| number&gt; | 是 | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字\\$d`、`%数字\\$f`和`%数字\\$s`。 &lt;br&gt;**说明：** &lt;br&gt;- `%%`转义为`%`，如`%%d`格式化后为`%d`。 &lt;br&gt;- `%数字\\$d`中的数字表示参数索引，从`1`开始计数。如`%1\\$d`表示使用`args[0]`格式化，`%2\\$d`表示使用`args[1]`格式化，依此类推。 |
 
 **返回值：**
 
@@ -3206,10 +3218,10 @@ getIntPluralStringValueSync(resource: Resource, num: number, ...args: Array<stri
 | --- | --- |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 | [9001007](../errorcode-resource-manager.md#9001007-根据当前id获取的资源格式化失败) | Failed to format the resource obtained based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/plural.json
@@ -3263,11 +3275,13 @@ getLocales(includeSystem?: boolean): Array<string>
 
 获取应用的语言列表。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getLocales(includeSystem?: boolean): Array<string>--><!--Device-ResourceManager-getLocales(includeSystem?: boolean): Array<string>-End-->
 
@@ -3277,7 +3291,7 @@ getLocales(includeSystem?: boolean): Array<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| includeSystem | boolean | 否 | 是否包含系统资源，默认值为false。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ - false：表示仅获取应用资源的语言列表。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ - true：表示获取系统资源和应用资源的语言列表。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_当使用系统资源管理对象获取语言列表时，includeSystem值无效，始终返回系统资源语言列表。 |
+| includeSystem | boolean | 否 | 是否包含系统资源，默认值为false。 &lt;br&gt; - false：表示仅获取应用资源的语言列表。 &lt;br&gt; - true：表示获取系统资源和应用资源的语言列表。 &lt;br&gt;当使用系统资源管理对象获取语言列表时，includeSystem值无效，始终返回系统资源语言列表。 |
 
 **返回值：**
 
@@ -3289,9 +3303,9 @@ getLocales(includeSystem?: boolean): Array<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -3341,7 +3355,7 @@ getMedia(resId: number, callback: AsyncCallback<Uint8Array>): void
 
 **废弃版本：** 9
 
-**替代接口：** [resourceManager.ResourceManager.getMediaContent](arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontent)(resId:
+**替代接口：** [getMediaContent](#getMediaContent)(resId: long, callback: _AsyncCallback&lt;Uint8Array&gt;)
 
 <!--Device-ResourceManager-getMedia(resId: number, callback: AsyncCallback<Uint8Array>): void--><!--Device-ResourceManager-getMedia(resId: number, callback: AsyncCallback<Uint8Array>): void-End-->
 
@@ -3352,9 +3366,9 @@ getMedia(resId: number, callback: AsyncCallback<Uint8Array>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;Uint8Array&gt; | 是 | 回调函数，返回资源ID值对应的媒体文件内容。 |
+| callback | AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回资源ID值对应的媒体文件内容。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 resourceManager.getResourceManager((error, mgr) => {
@@ -3382,7 +3396,7 @@ getMedia(resId: number): Promise<Uint8Array>
 
 **废弃版本：** 9
 
-**替代接口：** [resourceManager.ResourceManager.getMediaContent](arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontent)(resId:
+**替代接口：** [getMediaContent](#getMediaContent)(resId: long)
 
 <!--Device-ResourceManager-getMedia(resId: number): Promise<Uint8Array>--><!--Device-ResourceManager-getMedia(resId: number): Promise<Uint8Array>-End-->
 
@@ -3400,7 +3414,7 @@ getMedia(resId: number): Promise<Uint8Array>
 | --- | --- |
 | Promise&lt;Uint8Array&gt; | Promise对象，返回资源ID值对应的媒体文件内容。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3428,7 +3442,7 @@ getMediaBase64(resId: number, callback: AsyncCallback<string>): void
 
 **废弃版本：** 9
 
-**替代接口：** [resourceManager.ResourceManager.getMediaContentBase64](arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontentbase64)(resId:
+**替代接口：** [getMediaContentBase64](#getMediaContentBase64)(resId: long, callback: _AsyncCallback&lt;string&gt;)
 
 <!--Device-ResourceManager-getMediaBase64(resId: number, callback: AsyncCallback<string>): void--><!--Device-ResourceManager-getMediaBase64(resId: number, callback: AsyncCallback<string>): void-End-->
 
@@ -3439,9 +3453,9 @@ getMediaBase64(resId: number, callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的图片资源Base64编码。 |
+| callback | AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的图片资源Base64编码。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 resourceManager.getResourceManager((error, mgr) => {
@@ -3469,7 +3483,7 @@ getMediaBase64(resId: number): Promise<string>
 
 **废弃版本：** 9
 
-**替代接口：** [resourceManager.ResourceManager.getMediaContentBase64](arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontentbase64)(resId:
+**替代接口：** [getMediaContentBase64](#getMediaContentBase64)(resId: long)
 
 <!--Device-ResourceManager-getMediaBase64(resId: number): Promise<string>--><!--Device-ResourceManager-getMediaBase64(resId: number): Promise<string>-End-->
 
@@ -3487,7 +3501,7 @@ getMediaBase64(resId: number): Promise<string>
 | --- | --- |
 | Promise&lt;string&gt; | Promise对象，返回资源ID值对应的图片资源Base64编码。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3509,9 +3523,11 @@ getMediaBase64ByName(resName: string, callback: _AsyncCallback<string>): void
 
 获取指定资源名称对应的图片资源Base64编码。使用callback异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -3524,17 +3540,17 @@ getMediaBase64ByName(resName: string, callback: _AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| callback | \_AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源名称的图片资源Base64编码。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源名称的图片资源Base64编码。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -3590,21 +3606,17 @@ export default class EntryAbility extends UIAbility {
 
 ## getMediaBase64ByName
 
-ArkTS-Dyn:
-```TypeScript
-getMediaBase64ByName(resName: string, density: number, callback: _AsyncCallback<string>): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 getMediaBase64ByName(resName: string, density: int, callback: _AsyncCallback<string>): void
 ```
 
 获取指定资源名称对应的指定屏幕密度图片资源Base64编码。使用callback异步回调。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -3617,18 +3629,18 @@ getMediaBase64ByName(resName: string, density: int, callback: _AsyncCallback<str
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| density | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
-| callback | \_AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源名称的图片资源Base64编码。 |
+| density | int | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#ScreenDensity)。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源名称的图片资源Base64编码。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Incorrect parameter types;2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -3690,9 +3702,11 @@ getMediaBase64ByName(resName: string): Promise<string>
 
 获取指定资源名称对应的图片资源Base64编码。使用Promise异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -3716,11 +3730,11 @@ getMediaBase64ByName(resName: string): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -3772,21 +3786,17 @@ export default class EntryAbility extends UIAbility {
 
 ## getMediaBase64ByName
 
-ArkTS-Dyn:
-```TypeScript
-getMediaBase64ByName(resName: string, density: number): Promise<string>
-```
-
-ArkTS-Sta:
 ```TypeScript
 getMediaBase64ByName(resName: string, density: int): Promise<string>
 ```
 
 获取指定资源名称对应的指定屏幕密度图片资源Base64编码。使用Promise异步回调。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -3799,7 +3809,7 @@ getMediaBase64ByName(resName: string, density: int): Promise<string>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| density | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
+| density | int | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#ScreenDensity)。 |
 
 **返回值：**
 
@@ -3811,11 +3821,11 @@ getMediaBase64ByName(resName: string, density: int): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Incorrect parameter types;2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -3867,21 +3877,17 @@ export default class EntryAbility extends UIAbility {
 
 ## getMediaBase64ByNameSync
 
-ArkTS-Dyn:
-```TypeScript
-getMediaBase64ByNameSync(resName: string, density?: number): string
-```
-
-ArkTS-Sta:
 ```TypeScript
 getMediaBase64ByNameSync(resName: string, density?: int): string
 ```
 
 获取指定资源名称对应的默认或指定的屏幕密度图片资源Base64编码，使用同步方式返回。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -3894,7 +3900,7 @@ getMediaBase64ByNameSync(resName: string, density?: int): string
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| density | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
+| density | int | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#ScreenDensity)。 |
 
 **返回值：**
 
@@ -3906,11 +3912,11 @@ getMediaBase64ByNameSync(resName: string, density?: int): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Incorrect parameter types;2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -3947,9 +3953,11 @@ getMediaByName(resName: string, callback: _AsyncCallback<Uint8Array>): void
 
 获取指定资源名称对应的媒体文件内容。使用callback异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -3962,17 +3970,17 @@ getMediaByName(resName: string, callback: _AsyncCallback<Uint8Array>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| callback | \_AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回资源名称对应的媒体文件内容。 |
+| callback | _AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回资源名称对应的媒体文件内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -4028,21 +4036,17 @@ export default class EntryAbility extends UIAbility {
 
 ## getMediaByName
 
-ArkTS-Dyn:
-```TypeScript
-getMediaByName(resName: string, density: number, callback: _AsyncCallback<Uint8Array>): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 getMediaByName(resName: string, density: int, callback: _AsyncCallback<Uint8Array>): void
 ```
 
 获取指定资源名称对应的指定屏幕密度媒体文件内容。使用callback异步回调。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -4055,18 +4059,18 @@ getMediaByName(resName: string, density: int, callback: _AsyncCallback<Uint8Arra
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| density | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
-| callback | \_AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回资源名称对应的媒体文件内容。 |
+| density | int | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#ScreenDensity)。 |
+| callback | _AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回资源名称对应的媒体文件内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Incorrect parameter types;2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -4128,9 +4132,11 @@ getMediaByName(resName: string): Promise<Uint8Array>
 
 获取指定资源名称对应的媒体文件内容。使用Promise异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -4154,11 +4160,11 @@ getMediaByName(resName: string): Promise<Uint8Array>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -4210,21 +4216,17 @@ export default class EntryAbility extends UIAbility {
 
 ## getMediaByName
 
-ArkTS-Dyn:
-```TypeScript
-getMediaByName(resName: string, density: number): Promise<Uint8Array>
-```
-
-ArkTS-Sta:
 ```TypeScript
 getMediaByName(resName: string, density: int): Promise<Uint8Array>
 ```
 
 获取指定资源名称对应的指定屏幕密度媒体文件内容。使用Promise异步回调。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -4237,7 +4239,7 @@ getMediaByName(resName: string, density: int): Promise<Uint8Array>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| density | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
+| density | int | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#ScreenDensity)。 |
 
 **返回值：**
 
@@ -4249,11 +4251,11 @@ getMediaByName(resName: string, density: int): Promise<Uint8Array>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Incorrect parameter types;2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -4305,21 +4307,17 @@ export default class EntryAbility extends UIAbility {
 
 ## getMediaByNameSync
 
-ArkTS-Dyn:
-```TypeScript
-getMediaByNameSync(resName: string, density?: number): Uint8Array
-```
-
-ArkTS-Sta:
 ```TypeScript
 getMediaByNameSync(resName: string, density?: int): Uint8Array
 ```
 
 获取指定资源名称对应的默认或指定的屏幕密度媒体文件内容，使用同步方式返回。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -4332,7 +4330,7 @@ getMediaByNameSync(resName: string, density?: int): Uint8Array
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| density | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
+| density | int | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#ScreenDensity)。 |
 
 **返回值：**
 
@@ -4344,11 +4342,11 @@ getMediaByNameSync(resName: string, density?: int): Uint8Array
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Incorrect parameter types;2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -4391,7 +4389,7 @@ getMediaContent(resource: Resource, callback: _AsyncCallback<Uint8Array>): void
 
 **废弃版本：** 20
 
-**替代接口：** [resourceManager.ResourceManager.getMediaContent](arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontent)(resId:
+**替代接口：** [getMediaContent](#getMediaContent)(resId: long, callback: _AsyncCallback&lt;Uint8Array&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4405,18 +4403,18 @@ getMediaContent(resource: Resource, callback: _AsyncCallback<Uint8Array>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resource | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 资源信息。 |
-| callback | \_AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回resource对象对应的媒体文件内容。 |
+| resource | Resource | 是 | 资源信息。 |
+| callback | _AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回resource对象对应的媒体文件内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -4456,7 +4454,7 @@ getMediaContent(resource: Resource, density: number, callback: _AsyncCallback<Ui
 
 **废弃版本：** 20
 
-**替代接口：** [resourceManager.ResourceManager.getMediaContent](arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontent)(resId:
+**替代接口：** [getMediaContent](#getMediaContent)(resId: long, density: int, callback: _AsyncCallback&lt;Uint8Array&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4470,19 +4468,19 @@ getMediaContent(resource: Resource, density: number, callback: _AsyncCallback<Ui
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resource | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 资源信息。 |
-| density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
-| callback | \_AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回resource对象对应的媒体文件内容。 |
+| resource | Resource | 是 | 资源信息。 |
+| density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#ScreenDensity)。 |
+| callback | _AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回resource对象对应的媒体文件内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2 .Parameter verification failed. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -4522,7 +4520,7 @@ getMediaContent(resource: Resource): Promise<Uint8Array>
 
 **废弃版本：** 20
 
-**替代接口：** [resourceManager.ResourceManager.getMediaContent](arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontent)(resId:
+**替代接口：** [getMediaContent](#getMediaContent)(resId: long)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4536,7 +4534,7 @@ getMediaContent(resource: Resource): Promise<Uint8Array>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resource | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 资源信息。 |
+| resource | Resource | 是 | 资源信息。 |
 
 **返回值：**
 
@@ -4548,11 +4546,11 @@ getMediaContent(resource: Resource): Promise<Uint8Array>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -4590,7 +4588,7 @@ getMediaContent(resource: Resource, density: number): Promise<Uint8Array>
 
 **废弃版本：** 20
 
-**替代接口：** [resourceManager.ResourceManager.getMediaContent](arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontent)(resId:
+**替代接口：** [getMediaContent](#getMediaContent)(resId: long, density: int)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4604,8 +4602,8 @@ getMediaContent(resource: Resource, density: number): Promise<Uint8Array>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resource | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 资源信息。 |
-| density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
+| resource | Resource | 是 | 资源信息。 |
+| density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#ScreenDensity)。 |
 
 **返回值：**
 
@@ -4617,11 +4615,11 @@ getMediaContent(resource: Resource, density: number): Promise<Uint8Array>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2 .Parameter verification failed. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -4647,21 +4645,17 @@ try {
 
 ## getMediaContent
 
-ArkTS-Dyn:
-```TypeScript
-getMediaContent(resId: number, callback: _AsyncCallback<Uint8Array>): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 getMediaContent(resId: long, callback: _AsyncCallback<Uint8Array>): void
 ```
 
 获取指定资源ID对应的媒体文件内容。使用callback异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -4673,18 +4667,18 @@ getMediaContent(resId: long, callback: _AsyncCallback<Uint8Array>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 资源ID值。 |
-| callback | \_AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回资源ID对应的媒体文件内容。 |
+| resId | long | 是 | 资源ID值。 |
+| callback | _AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回资源ID对应的媒体文件内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -4743,21 +4737,17 @@ export default class EntryAbility extends UIAbility {
 
 ## getMediaContent
 
-ArkTS-Dyn:
-```TypeScript
-getMediaContent(resId: number, density: number, callback: _AsyncCallback<Uint8Array>): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 getMediaContent(resId: long, density: int, callback: _AsyncCallback<Uint8Array>): void
 ```
 
 获取指定资源ID对应的指定屏幕密度媒体文件内容。使用callback异步回调。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -4769,19 +4759,19 @@ getMediaContent(resId: long, density: int, callback: _AsyncCallback<Uint8Array>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 资源ID值。 |
-| density | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
-| callback | \_AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回资源ID对应的媒体文件内容。 |
+| resId | long | 是 | 资源ID值。 |
+| density | int | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#ScreenDensity)。 |
+| callback | _AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回资源ID对应的媒体文件内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Incorrect parameter types;2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -4838,21 +4828,17 @@ export default class EntryAbility extends UIAbility {
 
 ## getMediaContent
 
-ArkTS-Dyn:
-```TypeScript
-getMediaContent(resId: number): Promise<Uint8Array>
-```
-
-ArkTS-Sta:
 ```TypeScript
 getMediaContent(resId: long): Promise<Uint8Array>
 ```
 
 获取指定资源ID对应的媒体文件内容。使用Promise异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -4864,7 +4850,7 @@ getMediaContent(resId: long): Promise<Uint8Array>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 资源ID值。 |
+| resId | long | 是 | 资源ID值。 |
 
 **返回值：**
 
@@ -4876,11 +4862,11 @@ getMediaContent(resId: long): Promise<Uint8Array>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -4933,21 +4919,17 @@ export default class EntryAbility extends UIAbility {
 
 ## getMediaContent
 
-ArkTS-Dyn:
-```TypeScript
-getMediaContent(resId: number, density: number): Promise<Uint8Array>
-```
-
-ArkTS-Sta:
 ```TypeScript
 getMediaContent(resId: long, density: int): Promise<Uint8Array>
 ```
 
 获取指定资源ID对应的指定屏幕密度媒体文件内容。使用Promise异步回调。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -4959,8 +4941,8 @@ getMediaContent(resId: long, density: int): Promise<Uint8Array>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 资源ID值。 |
-| density | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
+| resId | long | 是 | 资源ID值。 |
+| density | int | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#ScreenDensity)。 |
 
 **返回值：**
 
@@ -4972,11 +4954,11 @@ getMediaContent(resId: long, density: int): Promise<Uint8Array>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Incorrect parameter types;2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -5041,7 +5023,7 @@ getMediaContentBase64(resource: Resource, callback: _AsyncCallback<string>): voi
 
 **废弃版本：** 20
 
-**替代接口：** [resourceManager.ResourceManager.getMediaContentBase64](arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontentbase64)(resId:
+**替代接口：** [getMediaContentBase64](#getMediaContentBase64)(resId: long, callback: _AsyncCallback&lt;string&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5055,18 +5037,18 @@ getMediaContentBase64(resource: Resource, callback: _AsyncCallback<string>): voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resource | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 资源信息。 |
-| callback | \_AsyncCallback&lt;string&gt; | 是 | 回调函数，返回resource对象对应的图片资源Base64编码。 |
+| resource | Resource | 是 | 资源信息。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回resource对象对应的图片资源Base64编码。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -5106,7 +5088,7 @@ getMediaContentBase64(resource: Resource, density: number, callback: _AsyncCallb
 
 **废弃版本：** 20
 
-**替代接口：** [resourceManager.ResourceManager.getMediaContentBase64](arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontentbase64)(resId:
+**替代接口：** [getMediaContentBase64](#getMediaContentBase64)(resId: long, density: int, callback: _AsyncCallback&lt;string&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5120,19 +5102,19 @@ getMediaContentBase64(resource: Resource, density: number, callback: _AsyncCallb
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resource | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 资源信息。 |
-| density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
-| callback | \_AsyncCallback&lt;string&gt; | 是 | 回调函数，返回resource对象对应的图片资源Base64编码。 |
+| resource | Resource | 是 | 资源信息。 |
+| density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#ScreenDensity)。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回resource对象对应的图片资源Base64编码。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2 .Parameter verification failed. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -5172,7 +5154,7 @@ getMediaContentBase64(resource: Resource): Promise<string>
 
 **废弃版本：** 20
 
-**替代接口：** [resourceManager.ResourceManager.getMediaContentBase64](arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontentbase64)(resId:
+**替代接口：** [getMediaContentBase64](#getMediaContentBase64)(resId: long)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5186,7 +5168,7 @@ getMediaContentBase64(resource: Resource): Promise<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resource | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 资源信息。 |
+| resource | Resource | 是 | 资源信息。 |
 
 **返回值：**
 
@@ -5198,11 +5180,11 @@ getMediaContentBase64(resource: Resource): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -5240,7 +5222,7 @@ getMediaContentBase64(resource: Resource, density: number): Promise<string>
 
 **废弃版本：** 20
 
-**替代接口：** [resourceManager.ResourceManager.getMediaContentBase64](arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontentbase64)(resId:
+**替代接口：** [getMediaContentBase64](#getMediaContentBase64)(resId: long, density: int)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5254,8 +5236,8 @@ getMediaContentBase64(resource: Resource, density: number): Promise<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resource | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 资源信息。 |
-| density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
+| resource | Resource | 是 | 资源信息。 |
+| density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#ScreenDensity)。 |
 
 **返回值：**
 
@@ -5267,11 +5249,11 @@ getMediaContentBase64(resource: Resource, density: number): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2 .Parameter verification failed. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -5297,21 +5279,17 @@ try {
 
 ## getMediaContentBase64
 
-ArkTS-Dyn:
-```TypeScript
-getMediaContentBase64(resId: number, callback: _AsyncCallback<string>): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 getMediaContentBase64(resId: long, callback: _AsyncCallback<string>): void
 ```
 
 获取指定资源ID对应的图片资源Base64编码。使用callback异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -5323,18 +5301,18 @@ getMediaContentBase64(resId: long, callback: _AsyncCallback<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 资源ID值。 |
-| callback | \_AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的图片资源Base64编码。 |
+| resId | long | 是 | 资源ID值。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的图片资源Base64编码。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -5391,21 +5369,17 @@ export default class EntryAbility extends UIAbility {
 
 ## getMediaContentBase64
 
-ArkTS-Dyn:
-```TypeScript
-getMediaContentBase64(resId: number, density: number, callback: _AsyncCallback<string>): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 getMediaContentBase64(resId: long, density: int, callback: _AsyncCallback<string>): void
 ```
 
 获取指定资源ID对应的指定屏幕密度图片资源Base64编码。使用callback异步回调。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -5417,19 +5391,19 @@ getMediaContentBase64(resId: long, density: int, callback: _AsyncCallback<string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 资源ID值。 |
-| density | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
-| callback | \_AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的图片资源Base64编码。 |
+| resId | long | 是 | 资源ID值。 |
+| density | int | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#ScreenDensity)。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的图片资源Base64编码。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Incorrect parameter types;2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -5486,21 +5460,17 @@ export default class EntryAbility extends UIAbility {
 
 ## getMediaContentBase64
 
-ArkTS-Dyn:
-```TypeScript
-getMediaContentBase64(resId: number): Promise<string>
-```
-
-ArkTS-Sta:
 ```TypeScript
 getMediaContentBase64(resId: long): Promise<string>
 ```
 
 获取指定资源ID对应的图片资源Base64编码。使用Promise异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -5512,7 +5482,7 @@ getMediaContentBase64(resId: long): Promise<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 资源ID值。 |
+| resId | long | 是 | 资源ID值。 |
 
 **返回值：**
 
@@ -5524,11 +5494,11 @@ getMediaContentBase64(resId: long): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -5581,21 +5551,17 @@ export default class EntryAbility extends UIAbility {
 
 ## getMediaContentBase64
 
-ArkTS-Dyn:
-```TypeScript
-getMediaContentBase64(resId: number, density: number): Promise<string>
-```
-
-ArkTS-Sta:
 ```TypeScript
 getMediaContentBase64(resId: long, density: int): Promise<string>
 ```
 
 获取指定资源ID对应的指定屏幕密度图片资源Base64编码。使用Promise异步回调。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -5607,8 +5573,8 @@ getMediaContentBase64(resId: long, density: int): Promise<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 资源ID值。 |
-| density | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
+| resId | long | 是 | 资源ID值。 |
+| density | int | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#ScreenDensity)。 |
 
 **返回值：**
 
@@ -5620,11 +5586,11 @@ getMediaContentBase64(resId: long, density: int): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Incorrect parameter types;2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -5677,21 +5643,17 @@ export default class EntryAbility extends UIAbility {
 
 ## getMediaContentBase64Sync
 
-ArkTS-Dyn:
-```TypeScript
-getMediaContentBase64Sync(resId: number, density?: number): string
-```
-
-ArkTS-Sta:
 ```TypeScript
 getMediaContentBase64Sync(resId: long, density?: int): string
 ```
 
 获取指定资源ID对应的默认或指定的屏幕密度图片资源Base64编码，使用同步方式返回。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -5703,8 +5665,8 @@ getMediaContentBase64Sync(resId: long, density?: int): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 资源ID值。 |
-| density | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
+| resId | long | 是 | 资源ID值。 |
+| density | int | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#ScreenDensity)。 |
 
 **返回值：**
 
@@ -5716,11 +5678,11 @@ getMediaContentBase64Sync(resId: long, density?: int): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Incorrect parameter types;2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -5795,7 +5757,7 @@ getMediaContentBase64Sync(resource: Resource, density?: number): string
 
 **废弃版本：** 20
 
-**替代接口：** [resourceManager.ResourceManager.getMediaContentBase64Sync](arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontentbase64sync)(resId:
+**替代接口：** [getMediaContentBase64Sync](#getMediaContentBase64Sync)(resId: long, density?: int)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5809,8 +5771,8 @@ getMediaContentBase64Sync(resource: Resource, density?: number): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resource | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 资源信息。 |
-| density | number | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
+| resource | Resource | 是 | 资源信息。 |
+| density | number | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举 [ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#ScreenDensity)。 |
 
 **返回值：**
 
@@ -5822,11 +5784,11 @@ getMediaContentBase64Sync(resource: Resource, density?: number): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2 .Parameter verification failed. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -5856,21 +5818,17 @@ try {
 
 ## getMediaContentSync
 
-ArkTS-Dyn:
-```TypeScript
-getMediaContentSync(resId: number, density?: number): Uint8Array
-```
-
-ArkTS-Sta:
 ```TypeScript
 getMediaContentSync(resId: long, density?: int): Uint8Array
 ```
 
 获取指定资源ID对应的默认或指定的屏幕密度媒体文件内容，使用同步方式返回。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -5882,8 +5840,8 @@ getMediaContentSync(resId: long, density?: int): Uint8Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 资源ID值。 |
-| density | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
+| resId | long | 是 | 资源ID值。 |
+| density | int | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#ScreenDensity)。 |
 
 **返回值：**
 
@@ -5895,11 +5853,11 @@ getMediaContentSync(resId: long, density?: int): Uint8Array
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Incorrect parameter types;2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -5974,7 +5932,7 @@ getMediaContentSync(resource: Resource, density?: number): Uint8Array
 
 **废弃版本：** 20
 
-**替代接口：** [resourceManager.ResourceManager.getMediaContentSync](arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontentsync)(resId:
+**替代接口：** [getMediaContentSync](#getMediaContentSync)(resId: long, density?: int)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5988,8 +5946,8 @@ getMediaContentSync(resource: Resource, density?: number): Uint8Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resource | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 资源信息。 |
-| density | number | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
+| resource | Resource | 是 | 资源信息。 |
+| density | number | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举 [ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#ScreenDensity)。 |
 
 **返回值：**
 
@@ -6001,11 +5959,11 @@ getMediaContentSync(resource: Resource, density?: number): Uint8Array
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2 .Parameter verification failed. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -6045,6 +6003,8 @@ getNumber(resId: number): number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getNumber(resId: number): number--><!--Device-ResourceManager-getNumber(resId: number): number-End-->
@@ -6061,18 +6021,18 @@ getNumber(resId: number): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 资源ID值对应的数值。 |
+| number | 资源ID值对应的数值。 &lt;br&gt;integer类型资源返回资源文件中定义的原始数值。 &lt;br&gt;float类型资源不带单位时返回资源文件中定义的原始数值，带"vp"或"fp"单位时返回转换后的像素(px)值。转换公式：像素值 = 原始数值 × densityPixels。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/integer.json
@@ -6147,7 +6107,7 @@ getNumber(resource: Resource): number
 
 **废弃版本：** 20
 
-**替代接口：** [resourceManager.ResourceManager.getNumber](arkts-localization-resourcemanager-resourcemanager-i.md#getnumber)(resId:
+**替代接口：** [getNumber](#getNumber)(resId: number)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -6161,24 +6121,24 @@ getNumber(resource: Resource): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resource | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 资源信息。 |
+| resource | Resource | 是 | 资源信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | resource对象对应的数值。 |
+| number | resource对象对应的数值。 &lt;br&gt;integer类型资源返回资源文件中定义的原始数值。 &lt;br&gt;float类型资源不带单位时返回资源文件中定义的原始数值，带"vp"或"fp"单位时返回转换后的像素(px)值。转换公式：像素值 = 原始数值 × densityPixels。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/integer.json
@@ -6225,6 +6185,8 @@ getNumberByName(resName: string): number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getNumberByName(resName: string): number--><!--Device-ResourceManager-getNumberByName(resName: string): number-End-->
@@ -6241,18 +6203,18 @@ getNumberByName(resName: string): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 资源名称对应的数值。 |
+| number | 资源名称对应的数值。 &lt;br&gt;integer类型资源返回资源文件中定义的原始数值。 &lt;br&gt;float类型资源不带单位时返回资源文件中定义的原始数值，带"vp"或"fp"单位时返回转换后的像素(px)值。转换公式：像素值 = 原始数值 × densityPixels。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/integer.json
@@ -6319,13 +6281,15 @@ export default class EntryAbility extends UIAbility {
 getOverrideConfiguration(): Configuration
 ```
 
-获取差异化资源的配置，使用同步方式返回。 无论是普通资源管理对象，还是通过[getOverrideResourceManager]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_接口获 取的差异化资源管理对象，调用该接口都会返回相同的配置信息。
+获取差异化资源的配置，使用同步方式返回。 无论是普通资源管理对象，还是通过[getOverrideResourceManager](#getOverrideResourceManager)接口获 取的差异化资源管理对象，调用该接口都会返回相同的配置信息。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getOverrideConfiguration(): Configuration--><!--Device-ResourceManager-getOverrideConfiguration(): Configuration-End-->
 
@@ -6335,9 +6299,9 @@ getOverrideConfiguration(): Configuration
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 差异化资源的配置。 |
+| Configuration | 差异化资源的配置。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -6368,11 +6332,13 @@ getOverrideResourceManager(configuration?: Configuration): ResourceManager
 
 获取可以加载差异化资源的资源管理对象，使用同步方式返回。 普通的资源管理对象获取的资源的配置（语言、深浅色、分辨率、横竖屏等）是由系统决定的，而通过该接口返回的对象，应用可以获取符合指定配置的资源，即差异化资源，比如在浅色模式时可以获取深色资源。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getOverrideResourceManager(configuration?: Configuration): ResourceManager--><!--Device-ResourceManager-getOverrideResourceManager(configuration?: Configuration): ResourceManager-End-->
 
@@ -6382,21 +6348,21 @@ getOverrideResourceManager(configuration?: Configuration): ResourceManager
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| configuration | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 指定想要获取的资源配置。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_通过[getOverrideConfiguration]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_获取差异化配置后，根据需求修改配置项，再作为参数传入该函数。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_若缺省则表示使用当前系统的configuration。 |
+| configuration | Configuration | 否 | 指定想要获取的资源配置。 &lt;br&gt;通过[getOverrideConfiguration](#getOverrideConfiguration)获取差异化配置后，根据需求 修改配置项，再作为参数传入该函数。 &lt;br&gt;若缺省则表示使用当前系统的configuration。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 可以加载差异化资源的资源管理对象。 |
+| [ResourceManager](arkts-localization-resourcemanager-resourcemanager-i.md) | 可以加载差异化资源的资源管理对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -6425,7 +6391,7 @@ export default class EntryAbility extends UIAbility {
 getPluralString(resId: number, num: number, callback: AsyncCallback<string>): void
 ```
 
-获取指定资源ID，指定资源数量的单复数字符串。使用callback异步回调。 > **说明** > > 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+获取指定资源ID，指定资源数量的单复数字符串。使用callback异步回调。 > **说明：**> > 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > [语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。
 
 **起始版本：** 6
 
@@ -6433,7 +6399,7 @@ getPluralString(resId: number, num: number, callback: AsyncCallback<string>): vo
 
 **废弃版本：** 9
 
-**替代接口：** [resourceManager.ResourceManager.getPluralStringValue](arkts-localization-resourcemanager-resourcemanager-i.md#getpluralstringvalue)(resId:
+**替代接口：** [getPluralStringValue](#getPluralStringValue)(resId: number, num: number, callback: _AsyncCallback&lt;string&gt;)
 
 <!--Device-ResourceManager-getPluralString(resId: number, num: number, callback: AsyncCallback<string>): void--><!--Device-ResourceManager-getPluralString(resId: number, num: number, callback: AsyncCallback<string>): void-End-->
 
@@ -6444,10 +6410,10 @@ getPluralString(resId: number, num: number, callback: AsyncCallback<string>): vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| num | number | 是 | 数量值。根据当前语言的\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_获取该数量值对应的字符串。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的指定数量的单复数字符串。 |
+| num | number | 是 | 数量值。根据当前语言的 [单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
+| callback | AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的指定数量的单复数字符串。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -6469,7 +6435,7 @@ resourceManager.getResourceManager((error, mgr) => {
 getPluralString(resId: number, num: number): Promise<string>
 ```
 
-获取指定资源ID，指定资源数量的单复数字符串。使用Promise异步回调。 > **说明** > > 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+获取指定资源ID，指定资源数量的单复数字符串。使用Promise异步回调。 > **说明：**> > 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > [语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。
 
 **起始版本：** 6
 
@@ -6477,7 +6443,7 @@ getPluralString(resId: number, num: number): Promise<string>
 
 **废弃版本：** 9
 
-**替代接口：** [resourceManager.ResourceManager.getPluralStringValue](arkts-localization-resourcemanager-resourcemanager-i.md#getpluralstringvalue)(resId:
+**替代接口：** [getPluralStringValue](#getPluralStringValue)(resId: number, num: number)
 
 <!--Device-ResourceManager-getPluralString(resId: number, num: number): Promise<string>--><!--Device-ResourceManager-getPluralString(resId: number, num: number): Promise<string>-End-->
 
@@ -6488,7 +6454,7 @@ getPluralString(resId: number, num: number): Promise<string>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| num | number | 是 | 数量值。根据当前语言的\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_获取该数量值对应的字符串。 |
+| num | number | 是 | 数量值。根据当前语言的 [单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
 
 **返回值：**
 
@@ -6496,7 +6462,7 @@ getPluralString(resId: number, num: number): Promise<string>
 | --- | --- |
 | Promise&lt;string&gt; | Promise对象，返回资源ID值对应的指定数量的单复数字符串。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -6516,7 +6482,7 @@ resourceManager.getResourceManager((error, mgr) => {
 getPluralStringByName(resName: string, num: number, callback: _AsyncCallback<string>): void
 ```
 
-获取指定资源名称，指定资源数量的单复数字符串。使用callback异步回调。 > **说明** > > 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+获取指定资源名称，指定资源数量的单复数字符串。使用callback异步回调。 > **说明：**> > 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > [语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。
 
 **起始版本：** 9
 
@@ -6524,7 +6490,7 @@ getPluralStringByName(resName: string, num: number, callback: _AsyncCallback<str
 
 **废弃版本：** 18
 
-**替代接口：** [resourceManager.ResourceManager.getIntPluralStringByNameSync](arkts-localization-resourcemanager-resourcemanager-i.md#getintpluralstringbynamesync)(resName:
+**替代接口：** [getIntPluralStringByNameSync](#getIntPluralStringByNameSync)(resName: string, num: number, ...args: Array&lt;string | number&gt;)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -6537,19 +6503,19 @@ getPluralStringByName(resName: string, num: number, callback: _AsyncCallback<str
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| num | number | 是 | 数量值。根据当前语言的\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_获取该数量值对应的字符串。 |
-| callback | \_AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源名称对应的指定数量的单复数字符串。 |
+| num | number | 是 | 数量值。根据当前语言的 [单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源名称对应的指定数量的单复数字符串。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/plural.json
@@ -6593,7 +6559,7 @@ this.context.resourceManager.getPluralStringByName("test", 1, (error: BusinessEr
 getPluralStringByName(resName: string, num: number): Promise<string>
 ```
 
-获取指定资源名称，指定资源数量的单复数字符串。使用Promise异步回调。 > **说明** > > 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+获取指定资源名称，指定资源数量的单复数字符串。使用Promise异步回调。 > **说明：**> > 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > [语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。
 
 **起始版本：** 9
 
@@ -6601,7 +6567,7 @@ getPluralStringByName(resName: string, num: number): Promise<string>
 
 **废弃版本：** 18
 
-**替代接口：** [resourceManager.ResourceManager.getIntPluralStringByNameSync](arkts-localization-resourcemanager-resourcemanager-i.md#getintpluralstringbynamesync)(resName:
+**替代接口：** [getIntPluralStringByNameSync](#getIntPluralStringByNameSync)(resName: string, num: number, ...args: Array&lt;string | number&gt;)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -6614,7 +6580,7 @@ getPluralStringByName(resName: string, num: number): Promise<string>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| num | number | 是 | 数量值。根据当前语言的\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_获取该数量值对应的字符串。 |
+| num | number | 是 | 数量值。根据当前语言的 [单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
 
 **返回值：**
 
@@ -6626,12 +6592,12 @@ getPluralStringByName(resName: string, num: number): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/plural.json
@@ -6675,7 +6641,7 @@ this.context.resourceManager.getPluralStringByName("test", 1)
 getPluralStringByNameSync(resName: string, num: number): string
 ```
 
-获取指定资源名称，指定资源数量的单复数字符串，使用同步方式返回。 > **说明** > > 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+获取指定资源名称，指定资源数量的单复数字符串，使用同步方式返回。 > **说明：**> > 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > [语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。
 
 **起始版本：** 10
 
@@ -6683,7 +6649,7 @@ getPluralStringByNameSync(resName: string, num: number): string
 
 **废弃版本：** 18
 
-**替代接口：** [resourceManager.ResourceManager.getIntPluralStringByNameSync](arkts-localization-resourcemanager-resourcemanager-i.md#getintpluralstringbynamesync)(resName:
+**替代接口：** [getIntPluralStringByNameSync](#getIntPluralStringByNameSync)(resName: string, num: number, ...args: Array&lt;string | number&gt;)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -6696,7 +6662,7 @@ getPluralStringByNameSync(resName: string, num: number): string
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| num | number | 是 | 数量值。根据当前语言的\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_获取该数量值对应的字符串。 |
+| num | number | 是 | 数量值。根据当前语言的 [单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
 
 **返回值：**
 
@@ -6708,12 +6674,12 @@ getPluralStringByNameSync(resName: string, num: number): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/plural.json
@@ -6758,7 +6724,7 @@ try {
 getPluralStringValue(resource: Resource, num: number, callback: _AsyncCallback<string>): void
 ```
 
-获取指定资源信息，指定资源数量的单复数字符串。使用callback异步回调。 > **说明** > > 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+获取指定资源信息，指定资源数量的单复数字符串。使用callback异步回调。 > **说明：**> > 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > [语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。
 
 **起始版本：** 9
 
@@ -6766,7 +6732,7 @@ getPluralStringValue(resource: Resource, num: number, callback: _AsyncCallback<s
 
 **废弃版本：** 18
 
-**替代接口：** [resourceManager.ResourceManager.getIntPluralStringValueSync](arkts-localization-resourcemanager-resourcemanager-i.md#getintpluralstringvaluesync)(resId:
+**替代接口：** [getIntPluralStringValueSync](#getIntPluralStringValueSync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -6780,20 +6746,20 @@ getPluralStringValue(resource: Resource, num: number, callback: _AsyncCallback<s
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resource | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 资源信息。 |
-| num | number | 是 | 数量值。根据当前语言的\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_获取该数量值对应的字符串。 |
-| callback | \_AsyncCallback&lt;string&gt; | 是 | 回调函数，返回resource对象对应的指定数量的单复数字符串。 |
+| resource | Resource | 是 | 资源信息。 |
+| num | number | 是 | 数量值。根据当前语言的 [单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回resource对象对应的指定数量的单复数字符串。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/plural.json
@@ -6844,7 +6810,7 @@ this.context.resourceManager.getPluralStringValue(resource, 1,
 getPluralStringValue(resource: Resource, num: number): Promise<string>
 ```
 
-获取指定资源信息，指定资源数量的单复数字符串。使用Promise异步回调。 > **说明** > > 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+获取指定资源信息，指定资源数量的单复数字符串。使用Promise异步回调。 > **说明：**> > 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > [语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。
 
 **起始版本：** 9
 
@@ -6852,7 +6818,7 @@ getPluralStringValue(resource: Resource, num: number): Promise<string>
 
 **废弃版本：** 18
 
-**替代接口：** [resourceManager.ResourceManager.getIntPluralStringValueSync](arkts-localization-resourcemanager-resourcemanager-i.md#getintpluralstringvaluesync)(resId:
+**替代接口：** [getIntPluralStringValueSync](#getIntPluralStringValueSync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -6866,8 +6832,8 @@ getPluralStringValue(resource: Resource, num: number): Promise<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resource | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 资源信息。 |
-| num | number | 是 | 数量值。根据当前语言的\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_获取该数量值对应的字符串。 |
+| resource | Resource | 是 | 资源信息。 |
+| num | number | 是 | 数量值。根据当前语言的 [单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
 
 **返回值：**
 
@@ -6879,12 +6845,12 @@ getPluralStringValue(resource: Resource, num: number): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/plural.json
@@ -6934,7 +6900,7 @@ this.context.resourceManager.getPluralStringValue(resource, 1)
 getPluralStringValue(resId: number, num: number, callback: _AsyncCallback<string>): void
 ```
 
-获取指定资源ID，指定资源数量的单复数字符串。使用callback异步回调。 > **说明** > > 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+获取指定资源ID，指定资源数量的单复数字符串。使用callback异步回调。 > **说明：**> > 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > [语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。
 
 **起始版本：** 9
 
@@ -6942,7 +6908,7 @@ getPluralStringValue(resId: number, num: number, callback: _AsyncCallback<string
 
 **废弃版本：** 18
 
-**替代接口：** [resourceManager.ResourceManager.getIntPluralStringValueSync](arkts-localization-resourcemanager-resourcemanager-i.md#getintpluralstringvaluesync)(resId:
+**替代接口：** [getIntPluralStringValueSync](#getIntPluralStringValueSync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -6955,19 +6921,19 @@ getPluralStringValue(resId: number, num: number, callback: _AsyncCallback<string
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| num | number | 是 | 数量值。根据当前语言的\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_获取该数量值对应的字符串。 |
-| callback | \_AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的指定数量的单复数字符串。 |
+| num | number | 是 | 数量值。根据当前语言的 [单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的指定数量的单复数字符串。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/plural.json
@@ -7012,7 +6978,7 @@ this.context.resourceManager.getPluralStringValue($r("app.plural.test").id, 1,
 getPluralStringValue(resId: number, num: number): Promise<string>
 ```
 
-获取指定资源ID，指定资源数量的单复数字符串。使用Promise异步回调。 > **说明** > > 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+获取指定资源ID，指定资源数量的单复数字符串。使用Promise异步回调。 > **说明：**> > 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > [语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。
 
 **起始版本：** 9
 
@@ -7020,7 +6986,7 @@ getPluralStringValue(resId: number, num: number): Promise<string>
 
 **废弃版本：** 18
 
-**替代接口：** [resourceManager.ResourceManager.getIntPluralStringValueSync](arkts-localization-resourcemanager-resourcemanager-i.md#getintpluralstringvaluesync)(resId:
+**替代接口：** [getIntPluralStringValueSync](#getIntPluralStringValueSync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -7033,7 +6999,7 @@ getPluralStringValue(resId: number, num: number): Promise<string>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| num | number | 是 | 数量值。根据当前语言的\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_获取该数量值对应的字符串。 |
+| num | number | 是 | 数量值。根据当前语言的 [单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
 
 **返回值：**
 
@@ -7045,12 +7011,12 @@ getPluralStringValue(resId: number, num: number): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/plural.json
@@ -7094,7 +7060,7 @@ this.context.resourceManager.getPluralStringValue($r("app.plural.test").id, 1)
 getPluralStringValueSync(resId: number, num: number): string
 ```
 
-获取指定资源ID，指定资源数量的单复数字符串，使用同步方式返回。 > **说明** > > 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+获取指定资源ID，指定资源数量的单复数字符串，使用同步方式返回。 > **说明：**> > 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > [语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。
 
 **起始版本：** 10
 
@@ -7102,7 +7068,7 @@ getPluralStringValueSync(resId: number, num: number): string
 
 **废弃版本：** 18
 
-**替代接口：** [resourceManager.ResourceManager.getIntPluralStringValueSync](arkts-localization-resourcemanager-resourcemanager-i.md#getintpluralstringvaluesync)(resId:
+**替代接口：** [getIntPluralStringValueSync](#getIntPluralStringValueSync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -7115,7 +7081,7 @@ getPluralStringValueSync(resId: number, num: number): string
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| num | number | 是 | 数量值。根据当前语言的\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_获取该数量值对应的字符串。 |
+| num | number | 是 | 数量值。根据当前语言的 [单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
 
 **返回值：**
 
@@ -7127,12 +7093,12 @@ getPluralStringValueSync(resId: number, num: number): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/plural.json
@@ -7177,7 +7143,7 @@ try {
 getPluralStringValueSync(resource: Resource, num: number): string
 ```
 
-获取指定资源信息，指定资源数量的单复数字符串，使用同步方式返回。 > **说明** > > 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+获取指定资源信息，指定资源数量的单复数字符串，使用同步方式返回。 > **说明：**> > 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > [语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。
 
 **起始版本：** 10
 
@@ -7185,7 +7151,7 @@ getPluralStringValueSync(resource: Resource, num: number): string
 
 **废弃版本：** 18
 
-**替代接口：** [resourceManager.ResourceManager.getIntPluralStringValueSync](arkts-localization-resourcemanager-resourcemanager-i.md#getintpluralstringvaluesync)(resId:
+**替代接口：** [getIntPluralStringValueSync](#getIntPluralStringValueSync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -7199,8 +7165,8 @@ getPluralStringValueSync(resource: Resource, num: number): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resource | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 资源信息。 |
-| num | number | 是 | 数量值。根据当前语言的\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_获取该数量值对应的字符串。 |
+| resource | Resource | 是 | 资源信息。 |
+| num | number | 是 | 数量值。根据当前语言的 [单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
 
 **返回值：**
 
@@ -7212,12 +7178,12 @@ getPluralStringValueSync(resource: Resource, num: number): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/plural.json
@@ -7268,11 +7234,13 @@ try {
 getRawFd(path: string, callback: _AsyncCallback<RawFileDescriptor>): void
 ```
 
-获取resources/rawfile目录下对应rawfile文件所在HAP的文件描述符（fd）。使用callback异步回调。 > **说明** > > 文件描述符（fd）使用完毕后需调用[closeRawFdSync]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_或 > [closeRawFd]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_关闭 > fd，避免资源泄露。
+获取resources/rawfile目录下对应rawfile文件所在HAP的文件描述符（fd）。使用callback异步回调。 > **说明：**> > 文件描述符（fd）使用完毕后需调用[closeRawFdSync](#closeRawFdSync)或 > [closeRawFd](#closeRawFd)关闭 > fd，避免资源泄露。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -7285,16 +7253,16 @@ getRawFd(path: string, callback: _AsyncCallback<RawFileDescriptor>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。 |
-| callback | \_AsyncCallback&lt;RawFileDescriptor&gt; | 是 | 回调函数，返回的rawfile文件所在HAP的文件描述符（fd）。 |
+| callback | _AsyncCallback&lt;RawFileDescriptor&gt; | 是 | 回调函数，返回的rawfile文件所在HAP的文件描述符（fd）。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -7362,11 +7330,13 @@ export default class EntryAbility extends UIAbility {
 getRawFd(path: string): Promise<RawFileDescriptor>
 ```
 
-获取resources/rawfile目录下rawfile文件所在HAP的文件描述符（fd）。使用Promise异步回调。 > **说明** > > 文件描述符（fd）使用完毕后需调用[closeRawFdSync]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_或 > [closeRawFd]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_关闭 > fd，避免资源泄露。
+获取resources/rawfile目录下rawfile文件所在HAP的文件描述符（fd）。使用Promise异步回调。 > **说明：**> > 文件描述符（fd）使用完毕后需调用[closeRawFdSync](#closeRawFdSync)或 > [closeRawFd](#closeRawFd)关闭 > fd，避免资源泄露。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -7390,10 +7360,10 @@ getRawFd(path: string): Promise<RawFileDescriptor>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -7455,11 +7425,13 @@ export default class EntryAbility extends UIAbility {
 getRawFdSync(path: string): RawFileDescriptor
 ```
 
-获取resources/rawfile目录下rawfile文件所在HAP的文件描述符（fd），使用同步方式返回。 > **说明** > > 文件描述符（fd）使用完毕后需调用[closeRawFdSync]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_或 > [closeRawFd]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_关闭 > fd，避免资源泄露。
+获取resources/rawfile目录下rawfile文件所在HAP的文件描述符（fd），使用同步方式返回。 > **说明：**> > 文件描述符（fd）使用完毕后需调用[closeRawFdSync](#closeRawFdSync)或 > [closeRawFd](#closeRawFd)关闭 > fd，避免资源泄露。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -7477,16 +7449,16 @@ getRawFdSync(path: string): RawFileDescriptor
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | rawfile文件所在HAP的文件描述符（fd）。 |
+| RawFileDescriptor | rawfile文件所在HAP的文件描述符（fd）。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -7520,7 +7492,7 @@ getRawFile(path: string, callback: AsyncCallback<Uint8Array>): void
 
 **废弃版本：** 9
 
-**替代接口：** [resourceManager.ResourceManager.getRawFileContent](arkts-localization-resourcemanager-resourcemanager-i.md#getrawfilecontent)(path:
+**替代接口：** [getRawFileContent](#getRawFileContent)(path: string, callback: _AsyncCallback&lt;Uint8Array&gt;)
 
 <!--Device-ResourceManager-getRawFile(path: string, callback: AsyncCallback<Uint8Array>): void--><!--Device-ResourceManager-getRawFile(path: string, callback: AsyncCallback<Uint8Array>): void-End-->
 
@@ -7531,9 +7503,9 @@ getRawFile(path: string, callback: AsyncCallback<Uint8Array>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;Uint8Array&gt; | 是 | 回调函数，返回rawfile文件内容。 |
+| callback | AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回rawfile文件内容。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -7563,7 +7535,7 @@ getRawFile(path: string): Promise<Uint8Array>
 
 **废弃版本：** 9
 
-**替代接口：** [resourceManager.ResourceManager.getRawFileContent](arkts-localization-resourcemanager-resourcemanager-i.md#getrawfilecontent)(path:
+**替代接口：** [getRawFileContent](#getRawFileContent)(path: string)
 
 <!--Device-ResourceManager-getRawFile(path: string): Promise<Uint8Array>--><!--Device-ResourceManager-getRawFile(path: string): Promise<Uint8Array>-End-->
 
@@ -7581,7 +7553,7 @@ getRawFile(path: string): Promise<Uint8Array>
 | --- | --- |
 | Promise&lt;Uint8Array&gt; | Promise对象，返回rawfile文件内容。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -7603,9 +7575,11 @@ getRawFileContent(path: string, callback: _AsyncCallback<Uint8Array>): void
 
 获取resources/rawfile目录下对应的rawfile文件内容。使用callback异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -7618,16 +7592,16 @@ getRawFileContent(path: string, callback: _AsyncCallback<Uint8Array>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。 |
-| callback | \_AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回获取的rawfile文件内容。 |
+| callback | _AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回获取的rawfile文件内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -7689,9 +7663,11 @@ getRawFileContent(path: string): Promise<Uint8Array>
 
 获取resources/rawfile目录下对应的rawfile文件内容。使用Promise异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -7715,10 +7691,10 @@ getRawFileContent(path: string): Promise<Uint8Array>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -7776,9 +7752,11 @@ getRawFileContentSync(path: string): Uint8Array
 
 获取resources/rawfile目录下对应的rawfile文件内容，使用同步形式返回。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -7802,10 +7780,10 @@ getRawFileContentSync(path: string): Uint8Array
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -7839,7 +7817,7 @@ getRawFileDescriptor(path: string, callback: AsyncCallback<RawFileDescriptor>): 
 
 **废弃版本：** 9
 
-**替代接口：** [resourceManager.ResourceManager.getRawFd](arkts-localization-resourcemanager-resourcemanager-i.md#getrawfd)(path:
+**替代接口：** [getRawFd](#getRawFd)(path: string, callback: _AsyncCallback&lt;RawFileDescriptor&gt;)
 
 <!--Device-ResourceManager-getRawFileDescriptor(path: string, callback: AsyncCallback<RawFileDescriptor>): void--><!--Device-ResourceManager-getRawFileDescriptor(path: string, callback: AsyncCallback<RawFileDescriptor>): void-End-->
 
@@ -7850,9 +7828,9 @@ getRawFileDescriptor(path: string, callback: AsyncCallback<RawFileDescriptor>): 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;RawFileDescriptor&gt; | 是 | 回调函数，返回rawfile文件的文件描述符（fd）。 |
+| callback | AsyncCallback&lt;RawFileDescriptor&gt; | 是 | 回调函数，返回rawfile文件的文件描述符（fd）。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -7884,7 +7862,7 @@ getRawFileDescriptor(path: string): Promise<RawFileDescriptor>
 
 **废弃版本：** 9
 
-**替代接口：** [resourceManager.ResourceManager.getRawFd](arkts-localization-resourcemanager-resourcemanager-i.md#getrawfd)(path:
+**替代接口：** [getRawFd](#getRawFd)(path: string)
 
 <!--Device-ResourceManager-getRawFileDescriptor(path: string): Promise<RawFileDescriptor>--><!--Device-ResourceManager-getRawFileDescriptor(path: string): Promise<RawFileDescriptor>-End-->
 
@@ -7902,7 +7880,7 @@ getRawFileDescriptor(path: string): Promise<RawFileDescriptor>
 | --- | --- |
 | Promise&lt;RawFileDescriptor&gt; | Promise对象，返回rawfile文件的文件描述符（fd）。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -7924,11 +7902,13 @@ resourceManager.getResourceManager((error, mgr) => {
 getRawFileList(path: string, callback: _AsyncCallback<Array<string>>): void
 ```
 
-获取resources/rawfile下指定子目录中的文件夹及文件列表。使用callback异步回调。 > **说明** > > 若文件夹中无文件，则抛出异常；若文件夹中有文件，则返回文件夹及文件列表。
+获取resources/rawfile下指定子目录中的文件夹及文件列表。使用callback异步回调。 > **说明：**> > 若文件夹中无文件，则抛出异常；若文件夹中有文件，则返回文件夹及文件列表。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -7940,17 +7920,17 @@ getRawFileList(path: string, callback: _AsyncCallback<Array<string>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| path | string | 是 | 相对resources/rawfile目录的rawfile子目录路径，如"subdir"，不以"/"开头。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_空字符串""表示获取rawfile根目录下的文件夹及文件列表。 |
-| callback | \_AsyncCallback&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回rawfile子目录下的文件夹及文件列表。 |
+| path | string | 是 | 相对resources/rawfile目录的rawfile子目录路径，如"subdir"，不以"/"开头。 &lt;br&gt;空字符串""表示获取rawfile根目录下的文件夹及文件列表。 |
+| callback | _AsyncCallback&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回rawfile子目录下的文件夹及文件列表。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -8014,11 +7994,13 @@ export default class EntryAbility extends UIAbility {
 getRawFileList(path: string): Promise<Array<string>>
 ```
 
-获取resources/rawfile下指定子目录中的文件夹及文件列表。使用Promise异步回调。 > **说明** > > 若文件夹中无文件，则抛出异常；若文件夹中有文件，则返回文件夹及文件列表。
+获取resources/rawfile下指定子目录中的文件夹及文件列表。使用Promise异步回调。 > **说明：**> > 若文件夹中无文件，则抛出异常；若文件夹中有文件，则返回文件夹及文件列表。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -8030,7 +8012,7 @@ getRawFileList(path: string): Promise<Array<string>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| path | string | 是 | 相对resources/rawfile目录的rawfile子目录路径，如"subdir"，不以"/"开头。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_空字符串""表示获取rawfile根目录下的文件夹及文件列表。 |
+| path | string | 是 | 相对resources/rawfile目录的rawfile子目录路径，如"subdir"，不以"/"开头。 &lt;br&gt;空字符串""表示获取rawfile根目录下的文件夹及文件列表。 |
 
 **返回值：**
 
@@ -8042,10 +8024,10 @@ getRawFileList(path: string): Promise<Array<string>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -8109,11 +8091,13 @@ export default class EntryAbility extends UIAbility {
 getRawFileListSync(path: string): Array<string>
 ```
 
-获取resources/rawfile下指定子目录中的文件夹及文件列表，使用同步形式返回。 > **说明** > > 若文件夹中无文件，则抛出异常；若文件夹中有文件，则返回文件夹及文件列表。
+获取resources/rawfile下指定子目录中的文件夹及文件列表，使用同步形式返回。 > **说明：**> > 若文件夹中无文件，则抛出异常；若文件夹中有文件，则返回文件夹及文件列表。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -8125,7 +8109,7 @@ getRawFileListSync(path: string): Array<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| path | string | 是 | 相对resources/rawfile目录的rawfile子目录路径，如"subdir"，不以"/"开头。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_空字符串""表示获取rawfile根目录下的文件夹及文件列表。 |
+| path | string | 是 | 相对resources/rawfile目录的rawfile子目录路径，如"subdir"，不以"/"开头。 &lt;br&gt;空字符串""表示获取rawfile根目录下的文件夹及文件列表。 |
 
 **返回值：**
 
@@ -8137,10 +8121,10 @@ getRawFileListSync(path: string): Array<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -8165,12 +8149,6 @@ export default class EntryAbility extends UIAbility {
 
 ## getResourceName
 
-ArkTS-Dyn:
-```TypeScript
-getResourceName(resId: number): string
-```
-
-ArkTS-Sta:
 ```TypeScript
 getResourceName(resId: long): string
 ```
@@ -8179,7 +8157,9 @@ getResourceName(resId: long): string
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -8193,7 +8173,7 @@ getResourceName(resId: long): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 资源ID值。 |
+| resId | long | 是 | 资源ID值。 |
 
 **返回值：**
 
@@ -8207,7 +8187,7 @@ getResourceName(resId: long): string
 | --- | --- |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/string.json
@@ -8280,7 +8260,7 @@ getString(resId: number, callback: AsyncCallback<string>): void
 
 **废弃版本：** 9
 
-**替代接口：** [resourceManager.ResourceManager.getStringValue](arkts-localization-resourcemanager-resourcemanager-i.md#getstringvalue)(resId:
+**替代接口：** [getStringValue](#getStringValue)(resId: long, callback: _AsyncCallback&lt;string&gt;)
 
 <!--Device-ResourceManager-getString(resId: number, callback: AsyncCallback<string>): void--><!--Device-ResourceManager-getString(resId: number, callback: AsyncCallback<string>): void-End-->
 
@@ -8291,9 +8271,9 @@ getString(resId: number, callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的字符串。 |
+| callback | AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的字符串。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 resourceManager.getResourceManager((error, mgr) => {
@@ -8321,7 +8301,7 @@ getString(resId: number): Promise<string>
 
 **废弃版本：** 9
 
-**替代接口：** [resourceManager.ResourceManager.getStringValue](arkts-localization-resourcemanager-resourcemanager-i.md#getstringvalue)(resId:
+**替代接口：** [getStringValue](#getStringValue)(resId: long)
 
 <!--Device-ResourceManager-getString(resId: number): Promise<string>--><!--Device-ResourceManager-getString(resId: number): Promise<string>-End-->
 
@@ -8339,7 +8319,7 @@ getString(resId: number): Promise<string>
 | --- | --- |
 | Promise&lt;string&gt; | Promise对象，返回资源ID值对应的字符串。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -8367,7 +8347,7 @@ getStringArray(resId: number, callback: AsyncCallback<Array<string>>): void
 
 **废弃版本：** 9
 
-**替代接口：** [resourceManager.ResourceManager.getStringArrayValue](arkts-localization-resourcemanager-resourcemanager-i.md#getstringarrayvalue)(resId:
+**替代接口：** [getStringArrayValue](#getStringArrayValue)(resId: long, callback: _AsyncCallback&lt;Array&lt;string&gt;&gt;)
 
 <!--Device-ResourceManager-getStringArray(resId: number, callback: AsyncCallback<Array<string>>): void--><!--Device-ResourceManager-getStringArray(resId: number, callback: AsyncCallback<Array<string>>): void-End-->
 
@@ -8378,9 +8358,9 @@ getStringArray(resId: number, callback: AsyncCallback<Array<string>>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回资源ID值对应的字符串数组。 |
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回资源ID值对应的字符串数组。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 resourceManager.getResourceManager((error, mgr) => {
@@ -8408,7 +8388,7 @@ getStringArray(resId: number): Promise<Array<string>>
 
 **废弃版本：** 9
 
-**替代接口：** [resourceManager.ResourceManager.getStringArrayValue](arkts-localization-resourcemanager-resourcemanager-i.md#getstringarrayvalue)(resId:
+**替代接口：** [getStringArrayValue](#getStringArrayValue)(resId: long)
 
 <!--Device-ResourceManager-getStringArray(resId: number): Promise<Array<string>>--><!--Device-ResourceManager-getStringArray(resId: number): Promise<Array<string>>-End-->
 
@@ -8426,7 +8406,7 @@ getStringArray(resId: number): Promise<Array<string>>
 | --- | --- |
 | Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回资源ID值对应的字符串数组。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -8448,9 +8428,11 @@ getStringArrayByName(resName: string, callback: _AsyncCallback<Array<string>>): 
 
 获取指定资源名称对应的字符串数组。使用callback异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -8463,18 +8445,18 @@ getStringArrayByName(resName: string, callback: _AsyncCallback<Array<string>>): 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| callback | \_AsyncCallback&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回资源名称对应的字符串数组。 |
+| callback | _AsyncCallback&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回资源名称对应的字符串数组。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/strarray.json
@@ -8558,9 +8540,11 @@ getStringArrayByName(resName: string): Promise<Array<string>>
 
 获取指定资源名称对应的字符串数组。使用Promise异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -8584,12 +8568,12 @@ getStringArrayByName(resName: string): Promise<Array<string>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/strarray.json
@@ -8669,9 +8653,11 @@ getStringArrayByNameSync(resName: string): Array<string>
 
 获取指定资源名称对应的字符串数组，使用同步方式返回。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -8695,12 +8681,12 @@ getStringArrayByNameSync(resName: string): Array<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/strarray.json
@@ -8752,7 +8738,7 @@ getStringArrayValue(resource: Resource, callback: _AsyncCallback<Array<string>>)
 
 **废弃版本：** 20
 
-**替代接口：** [resourceManager.ResourceManager.getStringArrayValue](arkts-localization-resourcemanager-resourcemanager-i.md#getstringarrayvalue)(resId:
+**替代接口：** [getStringArrayValue](#getStringArrayValue)(resId: long, callback: _AsyncCallback&lt;Array&lt;string&gt;&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -8766,19 +8752,19 @@ getStringArrayValue(resource: Resource, callback: _AsyncCallback<Array<string>>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resource | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 资源信息。 |
-| callback | \_AsyncCallback&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回resource对象对应的字符串数组。 |
+| resource | Resource | 是 | 资源信息。 |
+| callback | _AsyncCallback&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回resource对象对应的字符串数组。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/strarray.json
@@ -8829,7 +8815,7 @@ getStringArrayValue(resource: Resource): Promise<Array<string>>
 
 **废弃版本：** 20
 
-**替代接口：** [resourceManager.ResourceManager.getStringArrayValue](arkts-localization-resourcemanager-resourcemanager-i.md#getstringarrayvalue)(resId:
+**替代接口：** [getStringArrayValue](#getStringArrayValue)(resId: long)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -8843,7 +8829,7 @@ getStringArrayValue(resource: Resource): Promise<Array<string>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resource | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 资源信息。 |
+| resource | Resource | 是 | 资源信息。 |
 
 **返回值：**
 
@@ -8855,12 +8841,12 @@ getStringArrayValue(resource: Resource): Promise<Array<string>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/strarray.json
@@ -8899,21 +8885,17 @@ this.context.resourceManager.getStringArrayValue(resource)
 
 ## getStringArrayValue
 
-ArkTS-Dyn:
-```TypeScript
-getStringArrayValue(resId: number, callback: _AsyncCallback<Array<string>>): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 getStringArrayValue(resId: long, callback: _AsyncCallback<Array<string>>): void
 ```
 
 获取指定资源ID对应的字符串数组。使用callback异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -8925,19 +8907,19 @@ getStringArrayValue(resId: long, callback: _AsyncCallback<Array<string>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 资源ID值。 |
-| callback | \_AsyncCallback&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回资源ID值对应的字符串数组。 |
+| resId | long | 是 | 资源ID值。 |
+| callback | _AsyncCallback&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回资源ID值对应的字符串数组。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/strarray.json
@@ -9016,21 +8998,17 @@ export default class EntryAbility extends UIAbility {
 
 ## getStringArrayValue
 
-ArkTS-Dyn:
-```TypeScript
-getStringArrayValue(resId: number): Promise<Array<string>>
-```
-
-ArkTS-Sta:
 ```TypeScript
 getStringArrayValue(resId: long): Promise<Array<string>>
 ```
 
 获取指定资源ID对应的字符串数组。使用Promise异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -9042,7 +9020,7 @@ getStringArrayValue(resId: long): Promise<Array<string>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 资源ID值。 |
+| resId | long | 是 | 资源ID值。 |
 
 **返回值：**
 
@@ -9054,12 +9032,12 @@ getStringArrayValue(resId: long): Promise<Array<string>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/strarray.json
@@ -9134,21 +9112,17 @@ export default class EntryAbility extends UIAbility {
 
 ## getStringArrayValueSync
 
-ArkTS-Dyn:
-```TypeScript
-getStringArrayValueSync(resId: number): Array<string>
-```
-
-ArkTS-Sta:
 ```TypeScript
 getStringArrayValueSync(resId: long): Array<string>
 ```
 
 获取指定资源ID对应的字符串数组，使用同步方式返回。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -9160,7 +9134,7 @@ getStringArrayValueSync(resId: long): Array<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 资源ID值。 |
+| resId | long | 是 | 资源ID值。 |
 
 **返回值：**
 
@@ -9172,12 +9146,12 @@ getStringArrayValueSync(resId: long): Array<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/strarray.json
@@ -9254,7 +9228,7 @@ getStringArrayValueSync(resource: Resource): Array<string>
 
 **废弃版本：** 20
 
-**替代接口：** [resourceManager.ResourceManager.getStringArrayValueSync](arkts-localization-resourcemanager-resourcemanager-i.md#getstringarrayvaluesync)(resId:
+**替代接口：** [getStringArrayValueSync](#getStringArrayValueSync)(resId: long)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -9268,7 +9242,7 @@ getStringArrayValueSync(resource: Resource): Array<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resource | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 资源信息。 |
+| resource | Resource | 是 | 资源信息。 |
 
 **返回值：**
 
@@ -9280,12 +9254,12 @@ getStringArrayValueSync(resource: Resource): Array<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/strarray.json
@@ -9331,9 +9305,11 @@ getStringByName(resName: string, callback: _AsyncCallback<string>): void
 
 获取指定资源名称对应的字符串。使用callback异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -9346,18 +9322,18 @@ getStringByName(resName: string, callback: _AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| callback | \_AsyncCallback&lt;string&gt; | 是 | 回调函数，返回获取的字符串。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回获取的字符串。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/string.json
@@ -9433,9 +9409,11 @@ getStringByName(resName: string): Promise<string>
 
 获取指定资源名称对应的字符串。使用Promise异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -9459,12 +9437,12 @@ getStringByName(resName: string): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/string.json
@@ -9540,6 +9518,8 @@ getStringByNameSync(resName: string): string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getStringByNameSync(resName: string): string--><!--Device-ResourceManager-getStringByNameSync(resName: string): string-End-->
@@ -9562,12 +9542,12 @@ getStringByNameSync(resName: string): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/string.json
@@ -9613,6 +9593,8 @@ getStringByNameSync(resName: string, ...args: Array<string | number>): string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getStringByNameSync(resName: string, ...args: Array<string | number>): string--><!--Device-ResourceManager-getStringByNameSync(resName: string, ...args: Array<string | number>): string-End-->
@@ -9624,7 +9606,7 @@ getStringByNameSync(resName: string, ...args: Array<string | number>): string
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| args | Array&lt;string \| number&gt; | 是 | 格式化字符串资源参数。支持的参数类型包括\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_3\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_4\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_5\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_和\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_6\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_17\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_**说明：**\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_18\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_7\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_转义为\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_8\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，如\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_9\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化后为\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_10\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_19\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_11\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_中的数字表示参数索引，从\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_12\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_开始计数。如\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_13\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_表示使用\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_14\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化，\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_15\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_表示使用\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_16\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化，依此类推。 |
+| args | Array&lt;string \| number&gt; | 是 | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字\\$d`、`%数字\\$f`和`%数字\\$s`。 &lt;br&gt;**说明：** &lt;br&gt;- `%%`转义为`%`，如`%%d`格式化后为`%d`。 &lt;br&gt;- `%数字\\$d`中的数字表示参数索引，从`1`开始计数。如`%1\\$d`表示使用`args[0]`格式化，`%2\\$d`表示使用`args[1]`格式化，依此类推。 |
 
 **返回值：**
 
@@ -9636,13 +9618,13 @@ getStringByNameSync(resName: string, ...args: Array<string | number>): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 | [9001008](../errorcode-resource-manager.md#9001008-根据当前名称获取的资源格式化失败) | Failed to format the resource obtained based on the resource name. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/string.json
@@ -9686,7 +9668,9 @@ getStringByNameSync(resName: string, ...args: (string | double)[]): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -9699,7 +9683,7 @@ getStringByNameSync(resName: string, ...args: (string | double)[]): string
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| args | (string \| double)[] | 是 | 格式化字符串资源参数。支持的参数类型包括\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_3\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_4\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_5\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_和\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_6\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_17\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_**说明：**\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_18\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_7\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_转义为\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_8\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，如\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_9\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化后为\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_10\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_19\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_11\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_中的数字表示参数索引，从\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_12\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_开始计数。如\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_13\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_表示使用\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_14\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化，\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_15\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_表示使用\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_16\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化，依此类推。 |
+| args | (string \| double)[] | 是 | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字\\$d`、`%数字\\$f`和`%数字\\$s`。 &lt;br&gt;**说明：** &lt;br&gt;- `%%`转义为`%`，如`%%d`格式化后为`%d`。 &lt;br&gt;- `%数字\\$d`中的数字表示参数索引，从`1`开始计数。如`%1\\$d`表示使用`args[0]`格式化，`%2\\$d`表示使用`args[1]`格式化，依此类推。 |
 
 **返回值：**
 
@@ -9728,6 +9712,8 @@ getStringSync(resId: long): string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getStringSync(resId: long): string--><!--Device-ResourceManager-getStringSync(resId: long): string-End-->
@@ -9750,12 +9736,12 @@ getStringSync(resId: long): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/string.json
@@ -9801,6 +9787,8 @@ getStringSync(resId: number, ...args: Array<string | number>): string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getStringSync(resId: number, ...args: Array<string | number>): string--><!--Device-ResourceManager-getStringSync(resId: number, ...args: Array<string | number>): string-End-->
@@ -9812,7 +9800,7 @@ getStringSync(resId: number, ...args: Array<string | number>): string
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| args | Array&lt;string \| number&gt; | 是 | 格式化字符串资源参数。支持的参数类型包括\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_3\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_4\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_5\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_和\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_6\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_17\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_**说明：**\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_18\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_7\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_转义为\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_8\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，如\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_9\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化后为\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_10\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_19\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_11\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_中的数字表示参数索引，从\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_12\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_开始计数。如\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_13\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_表示使用\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_14\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化，\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_15\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_表示使用\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_16\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化，依此类推。 |
+| args | Array&lt;string \| number&gt; | 是 | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字\\$d`、`%数字\\$f`和`%数字\\$s`。 &lt;br&gt;**说明：** &lt;br&gt;- `%%`转义为`%`，如`%%d`格式化后为`%d`。 &lt;br&gt;- `%数字\\$d`中的数字表示参数索引，从`1`开始计数。如`%1\\$d`表示使用`args[0]`格式化，`%2\\$d`表示使用`args[1]`格式化，依此类推。 |
 
 **返回值：**
 
@@ -9824,13 +9812,13 @@ getStringSync(resId: number, ...args: Array<string | number>): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 | [9001007](../errorcode-resource-manager.md#9001007-根据当前id获取的资源格式化失败) | Failed to format the resource obtained based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/string.json
@@ -9899,7 +9887,9 @@ getStringSync(resId: long, ...args: (string | double)[]): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -9912,7 +9902,7 @@ getStringSync(resId: long, ...args: (string | double)[]): string
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | long | 是 | 资源ID值。 |
-| args | (string \| double)[] | 是 | 格式化字符串资源参数。支持的参数类型包括\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_3\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_4\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_5\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_和\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_6\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_17\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_**说明：**\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_18\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_7\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_转义为\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_8\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，如\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_9\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化后为\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_10\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_19\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_11\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_中的数字表示参数索引，从\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_12\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_开始计数。如\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_13\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_表示使用\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_14\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化，\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_15\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_表示使用\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_16\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化，依此类推。 |
+| args | (string \| double)[] | 是 | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字\\$d`、`%数字\\$f`和`%数字\\$s`。 &lt;br&gt;**说明：** &lt;br&gt;- `%%`转义为`%`，如`%%d`格式化后为`%d`。 &lt;br&gt;- `%数字\\$d`中的数字表示参数索引，从`1`开始计数。如`%1\\$d`表示使用`args[0]`格式化，`%2\\$d`表示使用`args[1]`格式化，依此类推。 |
 
 **返回值：**
 
@@ -9926,8 +9916,8 @@ getStringSync(resId: long, ...args: (string | double)[]): string
 | --- | --- |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 | [9001007](../errorcode-resource-manager.md#9001007-根据当前id获取的资源格式化失败) | Failed to format the resource obtained based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
 ## getStringSync
 
@@ -9943,7 +9933,7 @@ getStringSync(resource: Resource): string
 
 **废弃版本：** 20
 
-**替代接口：** [resourceManager.ResourceManager.getStringSync](arkts-localization-resourcemanager-resourcemanager-i.md#getstringsync)(resId:
+**替代接口：** [getStringSync](#getStringSync)(resId: long)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -9957,7 +9947,7 @@ getStringSync(resource: Resource): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resource | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 资源信息。 |
+| resource | Resource | 是 | 资源信息。 |
 
 **返回值：**
 
@@ -9969,12 +9959,12 @@ getStringSync(resource: Resource): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/string.json
@@ -10022,7 +10012,7 @@ getStringSync(resource: Resource, ...args: Array<string | number>): string
 
 **废弃版本：** 20
 
-**替代接口：** [resourceManager.ResourceManager.getStringSync](arkts-localization-resourcemanager-resourcemanager-i.md#getstringsync)(resId:
+**替代接口：** [getStringSync](#getStringSync)(resId: number, ...args: Array&lt;string | number&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -10036,8 +10026,8 @@ getStringSync(resource: Resource, ...args: Array<string | number>): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resource | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 资源信息。 |
-| args | Array&lt;string \| number&gt; | 是 | 格式化字符串资源参数。支持的参数类型包括\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_3\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_4\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_、\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_5\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_和\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_6\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_17\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_**说明：**\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_18\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_7\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_转义为\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_8\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，如\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_9\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化后为\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_10\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_19\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_11\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_中的数字表示参数索引，从\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_12\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_开始计数。如\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_13\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_表示使用\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_14\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化，\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_15\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_表示使用\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_16\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_格式化，依此类推。 |
+| resource | Resource | 是 | 资源信息。 |
+| args | Array&lt;string \| number&gt; | 是 | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字\\$d`、`%数字\\$f`和`%数字\\$s`。 &lt;br&gt;**说明：** &lt;br&gt;- `%%`转义为`%`，如`%%d`格式化后为`%d`。 &lt;br&gt;- `%数字\\$d`中的数字表示参数索引，从`1`开始计数。如`%1\\$d`表示使用`args[0]`格式化，`%2\\$d`表示使用`args[1]`格式化，依此类推。 |
 
 **返回值：**
 
@@ -10049,13 +10039,13 @@ getStringSync(resource: Resource, ...args: Array<string | number>): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 | [9001007](../errorcode-resource-manager.md#9001007-根据当前id获取的资源格式化失败) | Failed to format the resource obtained based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/string.json
@@ -10103,7 +10093,7 @@ getStringValue(resource: Resource, callback: _AsyncCallback<string>): void
 
 **废弃版本：** 20
 
-**替代接口：** [resourceManager.ResourceManager.getStringValue](arkts-localization-resourcemanager-resourcemanager-i.md#getstringvalue)(resId:
+**替代接口：** [getStringValue](#getStringValue)(resId: long, callback: _AsyncCallback&lt;string&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -10117,19 +10107,19 @@ getStringValue(resource: Resource, callback: _AsyncCallback<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resource | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 资源信息。 |
-| callback | \_AsyncCallback&lt;string&gt; | 是 | 回调函数，返回resource对象对应的字符串。 |
+| resource | Resource | 是 | 资源信息。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回resource对象对应的字符串。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/string.json
@@ -10176,7 +10166,7 @@ getStringValue(resource: Resource): Promise<string>
 
 **废弃版本：** 20
 
-**替代接口：** [resourceManager.ResourceManager.getStringValue](arkts-localization-resourcemanager-resourcemanager-i.md#getstringvalue)(resId:
+**替代接口：** [getStringValue](#getStringValue)(resId: long)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -10190,7 +10180,7 @@ getStringValue(resource: Resource): Promise<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resource | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 资源信息。 |
+| resource | Resource | 是 | 资源信息。 |
 
 **返回值：**
 
@@ -10202,12 +10192,12 @@ getStringValue(resource: Resource): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -10230,21 +10220,17 @@ this.context.resourceManager.getStringValue(resource, (error: BusinessError, val
 
 ## getStringValue
 
-ArkTS-Dyn:
-```TypeScript
-getStringValue(resId: number, callback: _AsyncCallback<string>): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 getStringValue(resId: long, callback: _AsyncCallback<string>): void
 ```
 
 获取指定资源ID对应的字符串。使用callback异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -10256,19 +10242,19 @@ getStringValue(resId: long, callback: _AsyncCallback<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 资源ID值。 |
-| callback | \_AsyncCallback&lt;string&gt; | 是 | 回调函数，返回获取的字符串。 |
+| resId | long | 是 | 资源ID值。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回获取的字符串。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/string.json
@@ -10339,21 +10325,17 @@ export default class EntryAbility extends UIAbility {
 
 ## getStringValue
 
-ArkTS-Dyn:
-```TypeScript
-getStringValue(resId: number): Promise<string>
-```
-
-ArkTS-Sta:
 ```TypeScript
 getStringValue(resId: long): Promise<string>
 ```
 
 获取指定资源ID对应的字符串。使用Promise异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -10365,7 +10347,7 @@ getStringValue(resId: long): Promise<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 资源ID值。 |
+| resId | long | 是 | 资源ID值。 |
 
 **返回值：**
 
@@ -10377,12 +10359,12 @@ getStringValue(resId: long): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/string.json
@@ -10449,23 +10431,19 @@ export default class EntryAbility extends UIAbility {
 
 ## getSymbol
 
-ArkTS-Dyn:
-```TypeScript
-getSymbol(resId: number) : number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getSymbol(resId: long) : long
 ```
 
-获取指定资源ID对应的\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_Unicode码，使用同步方式返回。
+获取指定资源ID对应的[Symbol字符](https://developer.huawei.com/consumer/cn/design/harmonyos-symbol)Unicode码，使用同步方式返回。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getSymbol(resId: long) : long--><!--Device-ResourceManager-getSymbol(resId: long) : long-End-->
 
@@ -10475,24 +10453,24 @@ getSymbol(resId: long) : long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 资源ID值。 |
+| resId | long | 是 | 资源ID值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 资源ID值对应的Symbol字符Unicode码（十进制）。 |
+| long | 资源ID值对应的Symbol字符Unicode码（十进制）。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -10545,7 +10523,7 @@ export default class EntryAbility extends UIAbility {
 getSymbol(resource: Resource) : number
 ```
 
-获取指定resource对象对应的\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_Unicode码，使用同步方式返回。
+获取指定resource对象对应的[Symbol字符](https://developer.huawei.com/consumer/cn/design/harmonyos-symbol)Unicode码，使用同步方式返回。
 
 **起始版本：** 11
 
@@ -10553,7 +10531,7 @@ getSymbol(resource: Resource) : number
 
 **废弃版本：** 20
 
-**替代接口：** [resourceManager.ResourceManager.getSymbol](arkts-localization-resourcemanager-resourcemanager-i.md#getsymbol)(resId:
+**替代接口：** [getSymbol](#getSymbol)(resId: long)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -10567,7 +10545,7 @@ getSymbol(resource: Resource) : number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resource | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 资源信息。 |
+| resource | Resource | 是 | 资源信息。 |
 
 **返回值：**
 
@@ -10579,12 +10557,12 @@ getSymbol(resource: Resource) : number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -10608,23 +10586,19 @@ try {
 
 ## getSymbolByName
 
-ArkTS-Dyn:
-```TypeScript
-getSymbolByName(resName: string) : number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getSymbolByName(resName: string) : long
 ```
 
-获取指定资源名称对应的\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_Unicode码，使用同步方式返回。
+获取指定资源名称对应的[Symbol字符](https://developer.huawei.com/consumer/cn/design/harmonyos-symbol)Unicode码，使用同步方式返回。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getSymbolByName(resName: string) : long--><!--Device-ResourceManager-getSymbolByName(resName: string) : long-End-->
 
@@ -10640,18 +10614,18 @@ getSymbolByName(resName: string) : long
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 资源名称对应的Symbol字符Unicode码（十进制）。 |
+| long | 资源名称对应的Symbol字符Unicode码（十进制）。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -10681,11 +10655,13 @@ isRawDir(path: string): boolean
 
 判断指定路径是否为rawfile下的目录，使用同步方式返回。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-isRawDir(path: string): boolean--><!--Device-ResourceManager-isRawDir(path: string): boolean-End-->
 
@@ -10701,16 +10677,16 @@ isRawDir(path: string): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 是否为rawfile下的目录。 |
+| boolean | 是否为rawfile下的目录。 &lt;br&gt; - true：表示是rawfile下的目录。 &lt;br&gt; - false：表示非rawfile下的目录。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -10759,7 +10735,7 @@ release()
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**示例：**
+## 示例
 
 ```TypeScript
 try {
@@ -10775,11 +10751,13 @@ try {
 removeResource(path: string) : void
 ```
 
-应用运行时移除指定的overlay资源，还原被覆盖前的资源。 > **说明** > > rawfile和resfile目录不支持资源覆盖。
+应用运行时移除指定的overlay资源，还原被覆盖前的资源。 > **说明：**> > rawfile和resfile目录不支持资源覆盖。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -10797,10 +10775,10 @@ removeResource(path: string) : void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001010](../errorcode-resource-manager.md#9001010-无效的overlay路径) | Invalid overlay path. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -10828,13 +10806,15 @@ export default class EntryAbility extends UIAbility {
 updateOverrideConfiguration(configuration: Configuration): void
 ```
 
-更新差异化资源管理对象的配置。 无论是普通资源管理对象，还是通过[getOverrideResourceManager]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_接口获 取的差异化资源管理对象，调用该方法均可更新差异化资源管理对象的配置。
+更新差异化资源管理对象的配置。 无论是普通资源管理对象，还是通过[getOverrideResourceManager](#getOverrideResourceManager)接口获 取的差异化资源管理对象，调用该方法均可更新差异化资源管理对象的配置。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-updateOverrideConfiguration(configuration: Configuration): void--><!--Device-ResourceManager-updateOverrideConfiguration(configuration: Configuration): void-End-->
 
@@ -10844,15 +10824,15 @@ updateOverrideConfiguration(configuration: Configuration): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| configuration | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 指定差异化资源的配置。通过[getOverrideConfiguration]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_获取差异化配置后，根据需求修改配置项，再作为参数传入。 |
+| configuration | Configuration | 是 | 指定差异化资源的配置。通过 [getOverrideConfiguration](#getOverrideConfiguration)获取差异化配置后，根据需求修改配置项， 再作为参数传入。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';

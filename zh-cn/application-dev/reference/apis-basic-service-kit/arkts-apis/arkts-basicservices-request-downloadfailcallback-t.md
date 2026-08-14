@@ -4,11 +4,13 @@
 export type DownloadFailCallback = (err: int) => void
 ```
 
-The callback function for the download fail event. \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_The value should be an integer.
+The callback function for the download fail event. &lt;br&gt;The value should be an integer.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-request-export type DownloadFailCallback = (err: int) => void--><!--Device-request-export type DownloadFailCallback = (err: int) => void-End-->
 
@@ -18,5 +20,5 @@ The callback function for the download fail event. \_\_\_HTML\_TAG\_DESC\_USD\_0
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| err | int | 是 | the error code for download task.  |
+| err | int | 是 | the error code for download task. |
 

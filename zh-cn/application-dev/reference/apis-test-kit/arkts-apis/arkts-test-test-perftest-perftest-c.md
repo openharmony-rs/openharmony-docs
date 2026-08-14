@@ -1,10 +1,12 @@
 # PerfTest
 
-PerfTest类为白盒性能测试框架的总入口，提供测试任务创建、测试代码段执行和数据采集、测量结果获取等能力。
+PerfTest类为白盒性能测试框架的总入口，提供测试任务创建、测试代码段执行和数据采集、测量结果获取等能力。通过[create](#create)创建实例。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare class PerfTest--><!--Device-unnamed-declare class PerfTest-End-->
 
@@ -18,11 +20,13 @@ static create(strategy: PerfTestStrategy): PerfTest
 
 静态方法，构造一个PerfTest对象，并返回该对象。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PerfTest-static create(strategy: PerfTestStrategy): PerfTest--><!--Device-PerfTest-static create(strategy: PerfTestStrategy): PerfTest-End-->
 
@@ -32,24 +36,24 @@ static create(strategy: PerfTestStrategy): PerfTest
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| strategy | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 性能测试执行策略。 |
+| strategy | [PerfTestStrategy](arkts-test-test-perftest-perfteststrategy-i.md) | 是 | 性能测试执行策略。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回构造的PerfTest对象。 |
+| [PerfTest](arkts-test-test-perftest-perftest-c.md) | 返回构造的PerfTest对象，可用于执行测试任务、采集性能数据和获取测量结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [32400001](../errorcode-perftest.md#32400001-初始化失败) | Initialization failed. |
+| [32400007](../errorcode-perftest.md#32400007-接口不支持并行调用) | The API does not support concurrent calls. @static |
 | [32400002](../errorcode-perftest.md#32400002-内部错误) | Internal error. Possible causes: 1. IPC connection failed. 2. The object does not exist. |
 | [32400003](../errorcode-perftest.md#32400003-参数校验失败) | Parameter verification failed. |
-| [32400007](../errorcode-perftest.md#32400007-接口不支持并行调用) | The API does not support concurrent calls.@static |
+| [32400001](../errorcode-perftest.md#32400001-初始化失败) | Initialization failed. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { PerfMetric, PerfTest, PerfTestStrategy } from '@kit.TestKit';
@@ -57,13 +61,13 @@ import { PerfMetric, PerfTest, PerfTestStrategy } from '@kit.TestKit';
 async function demo() {
   let metrics: Array<PerfMetric> = [PerfMetric.DURATION];
   let num = 0;
-  let actionCode = async (finish: Callback<boolean>) => { // 定义测试代码段，入参类型'Callback<boolean>'，命名为finish
+  let actionCode = async (finish: Callback<boolean>) => { // 定义测试代码段，入参类型'Callback<boolean>'，命名为finish。
     for (let index = 0; index < 10000; index++) {
       num++;
     }
-    finish(true); // 调用finish回调函数，通知代码段执行结束，且执行符合预期
+    finish(true); // 调用finish回调函数，通知代码段执行结束，且执行符合预期。
   };
-  let resetCode = async (finish: Callback<boolean>) => { // 定义测试结束环境重置代码段
+  let resetCode = async (finish: Callback<boolean>) => { // 定义测试结束环境重置代码段。
     num = 0;
     finish(true);
   };
@@ -74,7 +78,7 @@ async function demo() {
     timeout: 30000,
     iterations: 10
   };
-  let perfTest: PerfTest = PerfTest.create(perfTestStrategy); // 构造一个PerfTest对象，创建测试任务
+  let perfTest: PerfTest = PerfTest.create(perfTestStrategy); // 构造一个PerfTest对象，创建测试任务。
 }
 ```
 
@@ -86,11 +90,13 @@ destroy(): void
 
 销毁PerfTest对象。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PerfTest-destroy(): void--><!--Device-PerfTest-destroy(): void-End-->
 
@@ -100,10 +106,10 @@ destroy(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [32400002](../errorcode-perftest.md#32400002-内部错误) | Internal error. Possible causes: 1. IPC connection failed. 2. The object does not exist. |
 | [32400007](../errorcode-perftest.md#32400007-接口不支持并行调用) | The API does not support concurrent calls. |
+| [32400002](../errorcode-perftest.md#32400002-内部错误) | Internal error. Possible causes: 1. IPC connection failed. 2. The object does not exist. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { PerfMetric, PerfTest, PerfTestStrategy } from '@kit.TestKit';
@@ -123,7 +129,7 @@ async function demo() {
   };
   let perfTest: PerfTest = PerfTest.create(perfTestStrategy); // 构造一个PerfTest对象，创建测试任务
   await perfTest.run();
-  perfTest.destroy(); // 销毁PerfTest对象
+  perfTest.destroy(); // 销毁PerfTest对象。
 }
 ```
 
@@ -133,13 +139,15 @@ async function demo() {
 getMeasureResult(metric: PerfMetric): PerfMeasureResult
 ```
 
-获取指定性能指标的测量数据。
+获取指定性能指标的测量数据。需要在run()执行完成后调用，否则无法获取到有效的测量数据。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PerfTest-getMeasureResult(metric: PerfMetric): PerfMeasureResult--><!--Device-PerfTest-getMeasureResult(metric: PerfMetric): PerfMeasureResult-End-->
 
@@ -149,24 +157,24 @@ getMeasureResult(metric: PerfMetric): PerfMeasureResult
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| metric | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 性能指标。 |
+| metric | [PerfMetric](arkts-test-test-perftest-perfmetric-e.md) | 是 | 性能指标。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | - 性能指标对应测量结果数据。 |
+| [PerfMeasureResult](arkts-test-test-perftest-perfmeasureresult-i.md) | 性能指标对应测量结果数据。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [32400002](../errorcode-perftest.md#32400002-内部错误) | Internal error. Possible causes: 1. IPC connection failed. 2. The object does not exist. |
-| [32400003](../errorcode-perftest.md#32400003-参数校验失败) | Parameter verification failed. |
 | [32400006](../errorcode-perftest.md#32400006-无法获取性能数据) | Failed to obtain the measurement result. |
 | [32400007](../errorcode-perftest.md#32400007-接口不支持并行调用) | The API does not support concurrent calls. |
+| [32400002](../errorcode-perftest.md#32400002-内部错误) | Internal error. Possible causes: 1. IPC connection failed. 2. The object does not exist. |
+| [32400003](../errorcode-perftest.md#32400003-参数校验失败) | Parameter verification failed. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { PerfMetric, PerfTest, PerfTestStrategy } from '@kit.TestKit';
@@ -186,7 +194,7 @@ async function demo() {
   };
   let perfTest: PerfTest = PerfTest.create(perfTestStrategy); // 构造一个PerfTest对象，创建测试任务
   await perfTest.run();
-  let res = perfTest.getMeasureResult(PerfMetric.DURATION); // 获取指定性能指标的测量数据
+  let res = perfTest.getMeasureResult(PerfMetric.DURATION); // 获取指定性能指标的测量数据。
 }
 ```
 
@@ -198,11 +206,13 @@ run(): Promise<void>
 
 运行性能测试，迭代执行测试代码段并采集性能数据，使用Promise回调。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PerfTest-run(): Promise<void>--><!--Device-PerfTest-run(): Promise<void>-End-->
 
@@ -218,11 +228,12 @@ run(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [32400007](../errorcode-perftest.md#32400007-接口不支持并行调用) | The API does not support concurrent calls. |
 | [32400004](../errorcode-perftest.md#32400004-执行回调函数失败) | Failed to execute the callback. Possible causes: 1. An exception is thrown in the callback. 2. Callback execution timed out. |
 | [32400005](../errorcode-perftest.md#32400005-采集性能数据失败) | Failed to collect metric data. |
-| [32400007](../errorcode-perftest.md#32400007-接口不支持并行调用) | The API does not support concurrent calls. |
+| [32400002](../errorcode-perftest.md#32400002-内部错误) | Internal error. Possible causes: 1. IPC connection failed. 2. The object does not exist. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { PerfMetric, PerfTest, PerfTestStrategy } from '@kit.TestKit';
@@ -241,7 +252,7 @@ async function demo() {
     actionCode: actionCode
   };
   let perfTest: PerfTest = PerfTest.create(perfTestStrategy); // 构造一个PerfTest对象，创建测试任务
-  await perfTest.run(); // 运行性能测试
+  await perfTest.run(); // 运行性能测试。
 }
 ```
 

@@ -6,7 +6,7 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @ObservedV2
+**废弃版本：** -1
 
 <!--Device-unnamed-declare class ArcSliderValueOptions--><!--Device-unnamed-declare class ArcSliderValueOptions-End-->
 
@@ -24,6 +24,8 @@ ArcSliderValueOptions的构造函数。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ArcSliderValueOptions-constructor(options?: ArcSliderValueOptionsConstructorOptions)--><!--Device-ArcSliderValueOptions-constructor(options?: ArcSliderValueOptionsConstructorOptions)-End-->
@@ -34,12 +36,13 @@ ArcSliderValueOptions的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | ArcSliderValueOptions的构造信息。不传入时，ArcSliderValueOptions的各项子属性均取其默认值。 |
+| options | [ArcSliderValueOptionsConstructorOptions](arkts-arkui-arkui-advanced-arcslider-arcslidervalueoptionsconstructoroptions-i.md) | 否 | ArcSliderValueOptions的构造信息。不传入时，ArcSliderValueOptions的各项子属性均取其默认值。 |
 
 ## max
 
 ```TypeScript
-max?: number
+@Trace
+  max?: number
 ```
 
 设置最大值。 默认值：100 **说明：** 当出现异常情况min >= max时，min取默认值0，max取默认值100。 progress不在[min, max]范围之内，取min或者max，靠近min取min，靠近max取max。
@@ -52,16 +55,19 @@ max?: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ArcSliderValueOptions-max?: number--><!--Device-ArcSliderValueOptions-max?: number-End-->
+<!--Device-ArcSliderValueOptions-@Trace  max?: number--><!--Device-ArcSliderValueOptions-@Trace  max?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## min
 
 ```TypeScript
-min?: number
+@Trace
+  min?: number
 ```
 
 设置最小值。 默认值：0
@@ -74,16 +80,19 @@ min?: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ArcSliderValueOptions-min?: number--><!--Device-ArcSliderValueOptions-min?: number-End-->
+<!--Device-ArcSliderValueOptions-@Trace  min?: number--><!--Device-ArcSliderValueOptions-@Trace  min?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## progress
 
 ```TypeScript
-progress?: number
+@Trace
+  progress?: number
 ```
 
 设置当前进度值。 默认值：与参数min的取值一致
@@ -94,9 +103,11 @@ progress?: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-ArcSliderValueOptions-progress?: number--><!--Device-ArcSliderValueOptions-progress?: number-End-->
+<!--Device-ArcSliderValueOptions-@Trace  progress?: number--><!--Device-ArcSliderValueOptions-@Trace  progress?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 

@@ -10,6 +10,8 @@ Callback with the selected text after the text selection content changes.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-export type TextSelectionChangeCallback = (selectionText: string) => void--><!--Device-unnamed-export type TextSelectionChangeCallback = (selectionText: string) => void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -18,5 +20,5 @@ Callback with the selected text after the text selection content changes.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| selectionText | string | 是 | the selected text after the text selection content changes.  |
+| selectionText | string | 是 | the selected text after the text selection content changes. |
 

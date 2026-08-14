@@ -4,11 +4,13 @@
 declare type ContentDidScrollCallback = (selectedIndex: number, index: number, position: number, mainAxisLength: number) => void
 ```
 
-Swiper滑动时触发的回调，参数可参考[SwiperContentTransitionProxy]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_中的说明。
+Swiper滑动时触发的回调，参数可参考[SwiperContentTransitionProxy](arkts-arkui-swipercontenttransitionproxy-i.md#SwiperContentTransitionProxy)中的说明。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -22,8 +24,8 @@ Swiper滑动时触发的回调，参数可参考[SwiperContentTransitionProxy]\_
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| selectedIndex | number | 是 | 当前选中页面的索引。  |
-| index | number | 是 | 视窗内页面的索引。  |
-| position | number | 是 | 视窗内页面的索引。  |
-| mainAxisLength | number | 是 | 视窗内页面的索引。  |
+| selectedIndex | number | 是 | 当前选中页面的索引。 |
+| index | number | 是 | 视窗内页面的索引。 |
+| position | number | 是 | 视窗内页面的索引。 |
+| mainAxisLength | number | 是 | 视窗内页面的索引。 |
 

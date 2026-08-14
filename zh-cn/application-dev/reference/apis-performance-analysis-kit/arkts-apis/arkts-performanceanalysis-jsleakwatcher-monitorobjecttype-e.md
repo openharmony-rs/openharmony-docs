@@ -1,10 +1,12 @@
 # MonitorObjectType
 
-��Ҫ��ص������������ö�١�
+需要监控的组件对象类型枚举。
 
-**起始版本：** 24
+**起始版本：** 26.1.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为24；ArkTS-Sta起始版本为26.1.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+
+**废弃版本：** -1
 
 <!--Device-jsLeakWatcher-export declare enum MonitorObjectType--><!--Device-jsLeakWatcher-export declare enum MonitorObjectType-End-->
 
@@ -16,11 +18,13 @@
 ALL = -1
 ```
 
-�������������͡�
+监测所有组件类型。
 
-**起始版本：** 24
+**起始版本：** 26.1.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为24；ArkTS-Sta起始版本为26.1.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+
+**废弃版本：** -1
 
 <!--Device-MonitorObjectType-ALL = -1--><!--Device-MonitorObjectType-ALL = -1-End-->
 
@@ -32,11 +36,13 @@ ALL = -1
 CUSTOM_COMPONENT = 1 << 0
 ```
 
-����Զ���������͡�
+监测自定义组件类型。
 
-**起始版本：** 24
+**起始版本：** 26.1.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为24；ArkTS-Sta起始版本为26.1.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+
+**废弃版本：** -1
 
 <!--Device-MonitorObjectType-CUSTOM_COMPONENT = 1 << 0--><!--Device-MonitorObjectType-CUSTOM_COMPONENT = 1 << 0-End-->
 
@@ -48,11 +54,13 @@ CUSTOM_COMPONENT = 1 << 0
 WINDOW = 1 << 1
 ```
 
-���Window������͡�
+监测Window组件类型。
 
-**起始版本：** 24
+**起始版本：** 26.1.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为24；ArkTS-Sta起始版本为26.1.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+
+**废弃版本：** -1
 
 <!--Device-MonitorObjectType-WINDOW = 1 << 1--><!--Device-MonitorObjectType-WINDOW = 1 << 1-End-->
 
@@ -64,11 +72,13 @@ WINDOW = 1 << 1
 NODE_CONTAINER = 1 << 2
 ```
 
-���NodeContainer������͡�
+监测NodeContainer组件类型。
 
-**起始版本：** 24
+**起始版本：** 26.1.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为24；ArkTS-Sta起始版本为26.1.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+
+**废弃版本：** -1
 
 <!--Device-MonitorObjectType-NODE_CONTAINER = 1 << 2--><!--Device-MonitorObjectType-NODE_CONTAINER = 1 << 2-End-->
 
@@ -80,11 +90,13 @@ NODE_CONTAINER = 1 << 2
 X_COMPONENT = 1 << 3
 ```
 
-���XComponent������͡�
+监测XComponent组件类型。
 
-**起始版本：** 24
+**起始版本：** 26.1.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为24；ArkTS-Sta起始版本为26.1.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+
+**废弃版本：** -1
 
 <!--Device-MonitorObjectType-X_COMPONENT = 1 << 3--><!--Device-MonitorObjectType-X_COMPONENT = 1 << 3-End-->
 
@@ -96,11 +108,13 @@ X_COMPONENT = 1 << 3
 ABILITY = 1 << 4
 ```
 
-���Ability������͡�
+监测Ability组件类型。
 
-**起始版本：** 24
+**起始版本：** 26.1.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为24；ArkTS-Sta起始版本为26.1.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+
+**废弃版本：** -1
 
 <!--Device-MonitorObjectType-ABILITY = 1 << 4--><!--Device-MonitorObjectType-ABILITY = 1 << 4-End-->
 

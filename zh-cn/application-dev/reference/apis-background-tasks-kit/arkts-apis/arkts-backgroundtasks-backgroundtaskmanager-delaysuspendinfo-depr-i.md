@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.resourceschedule.backgroundTaskManager:backgroundTaskManager.DelaySuspendInfo](arkts-backgroundtasks-backgroundtaskmanager-delaysuspendinfo-depr-i.md)
+**替代接口：** [DelaySuspendInfo](arkts-backgroundtasks-backgroundtaskmanager-delaysuspendinfo-i.md#DelaySuspendInfo)
 
 <!--Device-backgroundTaskManager-interface DelaySuspendInfo--><!--Device-backgroundTaskManager-interface DelaySuspendInfo-End-->
 
@@ -30,7 +30,7 @@ actualDelayTime: number
 
 **废弃版本：** 9
 
-**替代接口：** ohos.resourceschedule.backgroundTaskManager.DelaySuspendInfo
+**替代接口：** DelaySuspendInfo
 
 <!--Device-DelaySuspendInfo-actualDelayTime: number--><!--Device-DelaySuspendInfo-actualDelayTime: number-End-->
 
@@ -52,7 +52,7 @@ requestId: number
 
 **废弃版本：** 9
 
-**替代接口：** ohos.resourceschedule.backgroundTaskManager.DelaySuspendInfo
+**替代接口：** DelaySuspendInfo
 
 <!--Device-DelaySuspendInfo-requestId: number--><!--Device-DelaySuspendInfo-requestId: number-End-->
 

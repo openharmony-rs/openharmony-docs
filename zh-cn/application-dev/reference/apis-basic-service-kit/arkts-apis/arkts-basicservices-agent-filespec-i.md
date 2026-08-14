@@ -2,9 +2,11 @@
 
 表单项的文件信息。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-agent-interface FileSpec--><!--Device-agent-interface FileSpec-End-->
 
@@ -20,9 +22,11 @@ contentType?: string
 
 **类型：** string
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FileSpec-contentType?: string--><!--Device-FileSpec-contentType?: string-End-->
 
@@ -31,20 +35,20 @@ contentType?: string
 ## extras
 
 ```TypeScript
-extras?: object
+extras?: Record<string, string>
 ```
 
-文件信息的附加内容，该参数不会体现在HTTP请求中。默认值为空。
+The extras for the file information.
 
-**类型：** object
+**类型：** Record&lt;string, string&gt;
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
 
-<!--Device-FileSpec-extras?: object--><!--Device-FileSpec-extras?: object-End-->
+<!--Device-FileSpec-extras?: Record<string, string>--><!--Device-FileSpec-extras?: Record<string, string>-End-->
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -58,9 +62,11 @@ filename?: string
 
 **类型：** string
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -84,7 +90,7 @@ mimeType?: string
 
 **废弃版本：** 18
 
-**替代接口：** [request.agent.FileSpec.contentType](arkts-basicservices-agent-filespec-i.md#contenttype)
+**替代接口：** [contentType](#contentType)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -102,9 +108,11 @@ path: string
 
 **类型：** string
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

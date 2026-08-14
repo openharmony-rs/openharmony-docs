@@ -3,6 +3,7 @@
 ## ArcList
 
 ```TypeScript
+@ComponentBuilder
 export declare function ArcList(
     options?: ArkListOptions, 
     content_?: CustomBuilder,
@@ -15,7 +16,9 @@ export declare function ArcList(
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
-<!--Device-unnamed-export declare function ArcList(    options?: ArkListOptions,     content_?: CustomBuilder,): ArcListAttribute--><!--Device-unnamed-export declare function ArcList(    options?: ArkListOptions,     content_?: CustomBuilder,): ArcListAttribute-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-@ComponentBuilderexport declare function ArcList(    options?: ArkListOptions,     content_?: CustomBuilder,): ArcListAttribute--><!--Device-unnamed-@ComponentBuilderexport declare function ArcList(    options?: ArkListOptions,     content_?: CustomBuilder,): ArcListAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -23,19 +26,20 @@ export declare function ArcList(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 |  |
-| content\_ | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 |  |
+| options | [ArkListOptions](arkts-arkui-arkui-arclist-arklistoptions-i.md) | 否 |  |
+| content_ | CustomBuilder | 否 |  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ |  |
+| [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) |  |
 
 
 ## ArcList
 
 ```TypeScript
+@Builder
 export declare function ArcList(
     style_: CustomBuilderT<ArcListAttribute>,
     content_?: CustomBuilder
@@ -48,11 +52,11 @@ export declare function ArcList(
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
 
-**装饰器类型：** @Builder
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-unnamed-export declare function ArcList(    style_: CustomBuilderT<ArcListAttribute>,    content_?: CustomBuilder): ArcListAttribute--><!--Device-unnamed-export declare function ArcList(    style_: CustomBuilderT<ArcListAttribute>,    content_?: CustomBuilder): ArcListAttribute-End-->
+<!--Device-unnamed-@Builderexport declare function ArcList(    style_: CustomBuilderT<ArcListAttribute>,    content_?: CustomBuilder): ArcListAttribute--><!--Device-unnamed-@Builderexport declare function ArcList(    style_: CustomBuilderT<ArcListAttribute>,    content_?: CustomBuilder): ArcListAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -60,12 +64,12 @@ export declare function ArcList(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| style\_ | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;ArcListAttribute&gt; | 是 | The style to create an ArcList. |
-| content\_ | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 |  |
+| style_ | CustomBuilderT&lt;[ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md)&gt; | 是 | The style to create an ArcList. |
+| content_ | CustomBuilder | 否 |  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | ArcList的属性。 |
+| [ArcListAttribute](arkts-arkui-arkui-arclist-arclistattribute-c.md) | ArcList的属性。 |
 

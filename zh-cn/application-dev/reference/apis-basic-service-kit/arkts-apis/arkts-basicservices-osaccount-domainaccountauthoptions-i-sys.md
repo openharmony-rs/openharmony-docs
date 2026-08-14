@@ -4,7 +4,9 @@
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 <!--Device-osAccount-interface DomainAccountAuthOptions--><!--Device-osAccount-interface DomainAccountAuthOptions-End-->
 
@@ -15,18 +17,20 @@
 ## serverParams
 
 ```TypeScript
-serverParams?: Record<string, Object>
+serverParams?: Record<string, RecordData>
 ```
 
 域账号认证服务器配置参数。默认为undefined。
 
-**类型：** Record&lt;string, Object&gt;
+**类型：** Record&lt;string, [RecordData](arkts-basicservices-recorddata-t.md)&gt;
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
 
-<!--Device-DomainAccountAuthOptions-serverParams?: Record<string, Object>--><!--Device-DomainAccountAuthOptions-serverParams?: Record<string, Object>-End-->
+**废弃版本：** -1
+
+<!--Device-DomainAccountAuthOptions-serverParams?: Record<string, RecordData>--><!--Device-DomainAccountAuthOptions-serverParams?: Record<string, RecordData>-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 

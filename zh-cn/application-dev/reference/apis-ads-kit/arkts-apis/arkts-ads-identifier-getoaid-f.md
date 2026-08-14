@@ -12,6 +12,8 @@ function getOAID(callback: AsyncCallback<string>): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **需要权限：** ohos.permission.APP_TRACKING_CONSENT
 
 <!--Device-identifier-function getOAID(callback: AsyncCallback<string>): void--><!--Device-identifier-function getOAID(callback: AsyncCallback<string>): void-End-->
@@ -22,7 +24,7 @@ function getOAID(callback: AsyncCallback<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;string&gt; | 是 | 回调函数，返回开放匿名设备标识符（OAID）。1.如应用已配置ohos.permission.APP\_\_\_ESCAPED\_UNDERSCORE\_\_\_TRACKING\_\_\_ESCAPED\_UNDERSCORE\_\_\_CONSENT权限，且“跨应用关联访问权限”为“允许”，则返回OAID。2.如应用已配置ohos.permission.APP\_\_\_ESCAPED\_UNDERSCORE\_\_\_TRACKING\_\_\_ESCAPED\_UNDERSCORE\_\_\_CONSENT权限，且“跨应用关联访问权限”为“禁止”，则返回00000000-0000-0000-0000-000000000000。3.如应用未配置ohos.permission.APP\_\_\_ESCAPED\_UNDERSCORE\_\_\_TRACKING\_\_\_ESCAPED\_UNDERSCORE\_\_\_CONSENT权限，则返回00000000-0000-0000-0000-000000000000。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数，返回开放匿名设备标识符（OAID）。 1.如应用已配置ohos.permission.APP_TRACKING_CONSENT权限，且“跨应用关联访问权限”为“允许”，则返回OAID。 2.如应用已配置ohos.permission.APP_TRACKING_CONSENT权限，且“跨应用关联访问权限”为“禁止”，则返回 00000000-0000-0000-0000-000000000000。 3.如应用未配置ohos.permission.APP_TRACKING_CONSENT权限，则返回00000000-0000-0000-0000-000000000000。 |
 
 **错误码：**
 
@@ -30,7 +32,7 @@ function getOAID(callback: AsyncCallback<string>): void
 | --- | --- |
 | [17300001](../errorcode-oaid.md#17300001-系统内部错误) | System internal error. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { identifier } from '@kit.AdsKit';
@@ -58,6 +60,8 @@ function getOAID(): Promise<string>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **需要权限：** ohos.permission.APP_TRACKING_CONSENT
 
 <!--Device-identifier-function getOAID(): Promise<string>--><!--Device-identifier-function getOAID(): Promise<string>-End-->
@@ -68,7 +72,7 @@ function getOAID(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回开放匿名设备标识符（OAID）。 |
+| Promise&lt;string&gt; | Promise对象，返回开放匿名设备标识符（OAID）。 1.如应用已配置ohos.permission.APP_TRACKING_CONSENT权限，且跨应用关联访问权限为“允许”，则返回OAID。 2.如应用已配置ohos.permission.APP_TRACKING_CONSENT权限，且跨应用关联访问权限为“禁止”，则返回 00000000-0000-0000-0000-000000000000。 3.如应用未配置ohos.permission.APP_TRACKING_CONSENT权限，则返回00000000-0000-0000-0000-000000000000。 |
 
 **错误码：**
 
@@ -76,7 +80,7 @@ function getOAID(): Promise<string>
 | --- | --- |
 | [17300001](../errorcode-oaid.md#17300001-系统内部错误) | System internal error. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { identifier } from '@kit.AdsKit';

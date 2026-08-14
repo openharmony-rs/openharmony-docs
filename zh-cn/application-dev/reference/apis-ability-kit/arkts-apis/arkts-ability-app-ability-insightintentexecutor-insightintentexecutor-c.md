@@ -1,10 +1,12 @@
 # InsightIntentExecutor
 
-本模块提供意图执行基类，开发者通过本模块对接端侧\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_， [通过配置文件开发意图]\_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_实现意图的业务逻辑。 除了可以通过配置文件开发意图，还可以通过装饰器开发意图。对于API version 20及以后的版本，推荐使用 \_\_\_MD\_LINK\_DESC\_USD\_2\_\_\_。
+本模块提供意图执行基类，开发者通过本模块对接端侧[意图框架](../../../application-models/insight-intent-overview.md)， [通过配置文件开发意图][configuration files](../../../application-models/insight-intent-config-development.md)实现意图的业务逻辑。 除了可以通过配置文件开发意图，还可以通过装饰器开发意图。对于API version 20及以后的版本，推荐使用 [通过装饰器开发意图](../../../application-models/insight-intent-decorator-development.md)。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare class InsightIntentExecutor--><!--Device-unnamed-declare class InsightIntentExecutor-End-->
 
@@ -23,6 +25,8 @@ onExecuteInServiceExtensionAbility(name: string, param: Record<string, Object>):
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-InsightIntentExecutor-onExecuteInServiceExtensionAbility(name: string, param: Record<string, Object>):    insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>--><!--Device-InsightIntentExecutor-onExecuteInServiceExtensionAbility(name: string, param: Record<string, Object>):    insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>-End-->
@@ -40,9 +44,9 @@ onExecuteInServiceExtensionAbility(name: string, param: Record<string, Object>):
 
 | 类型 | 说明 |
 | --- | --- |
-| insightIntent.ExecuteResult | Intent execution result or a Promise |
+| insightIntent.ExecuteResult | Intent execution result or a Promise object containing the intent execution result, representing the data returned to the system entry point from this intent execution. |
 
-**示例：**
+## 示例
 
 同步返回意图执行结果的示例如下：
 
@@ -128,7 +132,9 @@ onExecuteInServiceExtensionAbility(name: string, param: Record<string, RecordDat
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -141,15 +147,15 @@ onExecuteInServiceExtensionAbility(name: string, param: Record<string, RecordDat
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 意图调用名称。 |
-| param | Record&lt;string, RecordData&gt; | 是 | 意图调用参数。 |
+| param | Record&lt;string, [RecordData](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt; | 是 | 意图调用参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| insightIntent.ExecuteResult | Intent execution result or a Promise |
+| insightIntent.ExecuteResult | Intent execution result or a Promise object containing the intent execution result, representing the data returned to the system entry point from this intent execution. |
 
-**示例：**
+## 示例
 
 直接返回意图调用的结果，示例如下：
 
@@ -236,11 +242,13 @@ onExecuteInUIAbilityBackgroundMode(name: string, param: Record<string, Object>):
     insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>
 ```
 
-当意图执行依赖[UIAbility]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_组件后台启动时，会在UIAbility组件生命周期执行中触发本意图执行接口。支持同步返回和使用Promise异步返回。 - 若UIAbility组件冷启动，意图执行时UIAbility组件生命周期触发顺序：[onCreate]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_、 onExecuteInUIAbilityBackgroundMode、[onBackground]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_。 - 若UIAbility组件热启动，意图执行时UIAbility组件生命周期触发顺序：onExecuteInUIAbilityBackgroundMode。
+当意图执行依赖[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md#UIAbility)组件后台启动时，会在UIAbility组件生命周期执行中触发本意图执行接口。支持同步返回和使用Promise异步返回。 - 若UIAbility组件冷启动，意图执行时UIAbility组件生命周期触发顺序：[onCreate](arkts-ability-app-ability-uiability-uiability-c.md#onCreate)、 onExecuteInUIAbilityBackgroundMode、[onBackground](arkts-ability-app-ability-uiability-uiability-c.md#onBackground)。 - 若UIAbility组件热启动，意图执行时UIAbility组件生命周期触发顺序：onExecuteInUIAbilityBackgroundMode。
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -261,9 +269,9 @@ onExecuteInUIAbilityBackgroundMode(name: string, param: Record<string, Object>):
 
 | 类型 | 说明 |
 | --- | --- |
-| insightIntent.ExecuteResult | Intent execution result or a Promise |
+| insightIntent.ExecuteResult | Intent execution result or a Promise object containing the intent execution result, representing the data returned to the system entry point from this intent execution. |
 
-**示例：**
+## 示例
 
 同步返回意图执行结果的示例如下：
 
@@ -329,11 +337,13 @@ onExecuteInUIAbilityBackgroundMode(name: string, param: Record<string, RecordDat
     insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>
 ```
 
-当意图执行依赖[UIAbility]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_组件后台启动时，会在UIAbility组件生命周期执行中触发本意图执行接口。支持同步返回和使用Promise异步返回。 - 若UIAbility组件冷启动，意图执行时UIAbility组件生命周期触发顺序：[onCreate]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_、 onExecuteInUIAbilityBackgroundMode、[onBackground]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_。 - 若UIAbility组件热启动，意图执行时UIAbility组件生命周期触发顺序：onExecuteInUIAbilityBackgroundMode。
+当意图执行依赖[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md#UIAbility)组件后台启动时，会在UIAbility组件生命周期执行中触发本意图执行接口。支持同步返回和使用Promise异步返回。 - 若UIAbility组件冷启动，意图执行时UIAbility组件生命周期触发顺序：[onCreate](arkts-ability-app-ability-uiability-uiability-c.md#onCreate)、 onExecuteInUIAbilityBackgroundMode、[onBackground](arkts-ability-app-ability-uiability-uiability-c.md#onBackground)。 - 若UIAbility组件热启动，意图执行时UIAbility组件生命周期触发顺序：onExecuteInUIAbilityBackgroundMode。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -346,15 +356,15 @@ onExecuteInUIAbilityBackgroundMode(name: string, param: Record<string, RecordDat
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 意图调用名称。 |
-| param | Record&lt;string, RecordData&gt; | 是 | 意图调用参数。 |
+| param | Record&lt;string, [RecordData](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt; | 是 | 意图调用参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| insightIntent.ExecuteResult | Intent execution result or a Promise |
+| insightIntent.ExecuteResult | Intent execution result or a Promise object containing the intent execution result, representing the data returned to the system entry point from this intent execution. |
 
-**示例：**
+## 示例
 
 直接返回意图调用的结果，示例如下：
 
@@ -411,11 +421,13 @@ onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>, 
     insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>
 ```
 
-当意图执行依赖[UIAbility]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_组件前台启动时，会在UIAbility组件生命周期执行中触发本意图执行接口。支持同步返回和使用Promise异步返回。 - 若UIAbility组件冷启动，意图执行时UIAbility组件生命周期触发顺序：[onCreate]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_、 [onWindowStageCreate]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_、 onExecuteInUIAbilityForegroundMode、[onForeground]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_。 - 若UIAbility组件热启动，且启动时UIAbility组件处于后台，意图执行时UIAbility组件生命周期触发顺序： [onNewWant]\_\_\_JSDOC\_LINK\_DESC\_USD\_4\_\_\_、onExecuteInUIAbilityForegroundMode、 [onForeground]\_\_\_JSDOC\_LINK\_DESC\_USD\_5\_\_\_。 - 若UIAbility组件热启动，且启动时UIAbility组件处于前台，意图执行时UIAbility组件生命周期触发顺序：onExecuteInUIAbilityForegroundMode。
+当意图执行依赖[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md#UIAbility)组件前台启动时，会在UIAbility组件生命周期执行中触发本意图执行接口。支持同步返回和使用Promise异步返回。 - 若UIAbility组件冷启动，意图执行时UIAbility组件生命周期触发顺序：[onCreate](arkts-ability-app-ability-uiability-uiability-c.md#onCreate)、 [onWindowStageCreate](arkts-ability-app-ability-uiability-uiability-c.md#onWindowStageCreate)、 onExecuteInUIAbilityForegroundMode、[onForeground](arkts-ability-app-ability-uiability-uiability-c.md#onForeground)。 - 若UIAbility组件热启动，且启动时UIAbility组件处于后台，意图执行时UIAbility组件生命周期触发顺序： [onNewWant](arkts-ability-app-ability-uiability-uiability-c.md#onNewWant)、onExecuteInUIAbilityForegroundMode、 [onForeground](arkts-ability-app-ability-uiability-uiability-c.md#onForeground)。 - 若UIAbility组件热启动，且启动时UIAbility组件处于前台，意图执行时UIAbility组件生命周期触发顺序：onExecuteInUIAbilityForegroundMode。
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -431,15 +443,15 @@ onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>, 
 | --- | --- | --- | --- |
 | name | string | 是 | 意图名称。 |
 | param | Record&lt;string, Object&gt; | 是 | 意图参数，表示本次意图执行由系统入口传递给应用的数据。 |
-| pageLoader | window.WindowStage | 是 | 表示windowStage实例对象，和[onWindowStageCreate]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_接口的windowStage实例是同一个，可用于加载意图执行的页面。 |
+| pageLoader | window.WindowStage | 是 | 表示windowStage实例对象，和 [onWindowStageCreate](arkts-ability-app-ability-uiability-uiability-c.md#onWindowStageCreate)接口的windowStage实例是同一个，可用于加载意图执行 的页面。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| insightIntent.ExecuteResult | Intent execution result or a Promise |
+| insightIntent.ExecuteResult | Intent execution result or a Promise object containing the intent execution result, representing the data returned to the system entry point from this intent execution. |
 
-**示例：**
+## 示例
 
 同步返回意图执行结果的示例如下：
 
@@ -533,11 +545,13 @@ onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, RecordDat
     insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>
 ```
 
-当意图执行依赖[UIAbility]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_组件前台启动时，会在UIAbility组件生命周期执行中触发本意图执行接口。支持同步返回和使用Promise异步返回。 - 若UIAbility组件冷启动，意图执行时UIAbility组件生命周期触发顺序：[onCreate]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_、 [onWindowStageCreate]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_、 onExecuteInUIAbilityForegroundMode、[onForeground]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_。 - 若UIAbility组件热启动，且启动时UIAbility组件处于后台，意图执行时UIAbility组件生命周期触发顺序： [onNewWant]\_\_\_JSDOC\_LINK\_DESC\_USD\_4\_\_\_、onExecuteInUIAbilityForegroundMode、 [onForeground]\_\_\_JSDOC\_LINK\_DESC\_USD\_5\_\_\_。 - 若UIAbility组件热启动，且启动时UIAbility组件处于前台，意图执行时UIAbility组件生命周期触发顺序：onExecuteInUIAbilityForegroundMode。
+当意图执行依赖[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md#UIAbility)组件前台启动时，会在UIAbility组件生命周期执行中触发本意图执行接口。支持同步返回和使用Promise异步返回。 - 若UIAbility组件冷启动，意图执行时UIAbility组件生命周期触发顺序：[onCreate](arkts-ability-app-ability-uiability-uiability-c.md#onCreate)、 [onWindowStageCreate](arkts-ability-app-ability-uiability-uiability-c.md#onWindowStageCreate)、 onExecuteInUIAbilityForegroundMode、[onForeground](arkts-ability-app-ability-uiability-uiability-c.md#onForeground)。 - 若UIAbility组件热启动，且启动时UIAbility组件处于后台，意图执行时UIAbility组件生命周期触发顺序： [onNewWant](arkts-ability-app-ability-uiability-uiability-c.md#onNewWant)、onExecuteInUIAbilityForegroundMode、 [onForeground](arkts-ability-app-ability-uiability-uiability-c.md#onForeground)。 - 若UIAbility组件热启动，且启动时UIAbility组件处于前台，意图执行时UIAbility组件生命周期触发顺序：onExecuteInUIAbilityForegroundMode。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -550,16 +564,16 @@ onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, RecordDat
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 意图调用名称。 |
-| param | Record&lt;string, RecordData&gt; | 是 | 意图调用参数。 |
+| param | Record&lt;string, [RecordData](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt; | 是 | 意图调用参数。 |
 | pageLoader | window.WindowStage | 是 | 页面加载器。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| insightIntent.ExecuteResult | Intent execution result or a Promise |
+| insightIntent.ExecuteResult | Intent execution result or a Promise object containing the intent execution result, representing the data returned to the system entry point from this intent execution. |
 
-**示例：**
+## 示例
 
 直接返回意图调用的结果，示例如下：
 
@@ -659,11 +673,13 @@ onExecuteInUIExtensionAbility(name: string, param: Record<string, Object>, pageL
     insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>
 ```
 
-当意图执行依赖[UIExtensionAbility]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_启动时，会在UIExtensionAbility组 件生命周期执行中触发本意图执行接口。支持同步返回和使用Promise异步返回。 - 意图执行时UIExtensionAbility生命周期触发顺序： [onCreate]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_、 [onSessionCreate]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_、 onExecuteInUIExtensionAbility、 [onForeground]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_。
+当意图执行依赖[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md#UIExtensionAbility)启动时，会在UIExtensionAbility组 件生命周期执行中触发本意图执行接口。支持同步返回和使用Promise异步返回。 - 意图执行时UIExtensionAbility生命周期触发顺序： [onCreate](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md#onCreate)、 [onSessionCreate](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md#onSessionCreate)、 onExecuteInUIExtensionAbility、 [onForeground](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md#onForeground)。
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -677,15 +693,15 @@ onExecuteInUIExtensionAbility(name: string, param: Record<string, Object>, pageL
 | --- | --- | --- | --- |
 | name | string | 是 | 意图名称。 |
 | param | Record&lt;string, Object&gt; | 是 | 意图参数，表示本次意图执行由系统入口传递给应用的数据。 |
-| pageLoader | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 表示UIExtensionContentSession实例对象，和[onSessionCreate]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_接口的UIExtensionContentSession实例是同一个，可用于加载意图执行的页面。 |
+| pageLoader | [UIExtensionContentSession](arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c.md) | 是 | 表示UIExtensionContentSession实例对象，和 [onSessionCreate](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md#onSessionCreate)接口的 UIExtensionContentSession实例是同一个，可用于加载意图执行的页面。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| insightIntent.ExecuteResult | Intent execution result or a Promise |
+| insightIntent.ExecuteResult | Intent execution result or a Promise object containing the intent execution result, representing the data returned to the system entry point from this intent execution. |
 
-**示例：**
+## 示例
 
 同步返回意图执行结果的示例如下：
 
@@ -771,11 +787,13 @@ onExecuteInUIExtensionAbility(name: string, param: Record<string, RecordData>, p
     insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>
 ```
 
-当意图执行依赖[UIExtensionAbility]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_启动时，会在UIExtensionAbility组 件生命周期执行中触发本意图执行接口。支持同步返回和使用Promise异步返回。 - 意图执行时UIExtensionAbility生命周期触发顺序： [onCreate]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_、 [onSessionCreate]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_、 onExecuteInUIExtensionAbility、 [onForeground]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_。
+当意图执行依赖[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md#UIExtensionAbility)启动时，会在UIExtensionAbility组 件生命周期执行中触发本意图执行接口。支持同步返回和使用Promise异步返回。 - 意图执行时UIExtensionAbility生命周期触发顺序： [onCreate](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md#onCreate)、 [onSessionCreate](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md#onSessionCreate)、 onExecuteInUIExtensionAbility、 [onForeground](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md#onForeground)。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -788,16 +806,16 @@ onExecuteInUIExtensionAbility(name: string, param: Record<string, RecordData>, p
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 意图调用名称。 |
-| param | Record&lt;string, RecordData&gt; | 是 | 意图调用参数。 |
-| pageLoader | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 页面加载器。 |
+| param | Record&lt;string, [RecordData](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt; | 是 | 意图调用参数。 |
+| pageLoader | [UIExtensionContentSession](arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c.md) | 是 | 页面加载器。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| insightIntent.ExecuteResult | Intent execution result or a Promise |
+| insightIntent.ExecuteResult | Intent execution result or a Promise object containing the intent execution result, representing the data returned to the system entry point from this intent execution. |
 
-**示例：**
+## 示例
 
 直接返回意图调用的结果，示例如下：
 
@@ -887,15 +905,17 @@ context: InsightIntentContext
 
 意图执行上下文。
 
-**类型：** InsightIntentContext
+**类型：** [InsightIntentContext](arkts-ability-app-ability-insightintentcontext-insightintentcontext-c.md)
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-InsightIntentExecutor-context: InsightIntentContext--><!--Device-InsightIntentExecutor-context: InsightIntentContext-End-->
 

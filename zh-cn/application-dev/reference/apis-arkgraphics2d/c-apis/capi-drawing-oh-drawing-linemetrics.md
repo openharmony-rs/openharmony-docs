@@ -6,7 +6,7 @@ typedef struct OH_Drawing_LineMetrics {...} OH_Drawing_LineMetrics
 
 ## 概述
 
-This struct describes the measurement information about a line of text.
+文字行位置信息。
 
 **起始版本：** 12
 
@@ -20,16 +20,16 @@ This struct describes the measurement information about a line of text.
 
 | 名称 | 描述 |
 | -- | -- |
-| double ascender | Height of a character above the baseline, after taking the absolute value. |
-| double descender | Height of a character below the baseline, after taking the absolute value. |
-| double capHeight | Height of an uppercase letter above the baseline. |
-| double xHeight | Height of a lowercase letter, specifically the lowercase x, not including ascenders and descenders. |
-| double width | Horizontal space taken up by a character. |
-| double height | Line height. |
-| double x | Distance from the left edge of the leftmost character to the left edge of the container. For left alignment, thevalue is 0. For right alignment, the value is the container width minus the text width. |
-| double y | Height from the top edge of the character to the top of the container. The first line is 0, and the second lineis the height of the first line. |
-| size_t startIndex | Index of the first character in the line. |
-| size_t endIndex | Index of the last character in the line. |
-| [OH_Drawing_Font_Metrics](capi-drawing-oh-drawing-font-metrics.md) firstCharMetrics | Measurement information of the first character. |
+| double ascender | 文字相对于基线以上取绝对值后的高度。 |
+| double descender | 文字相对于基线以下取绝对值后的高度。 |
+| double capHeight | 大写字母的高度。 |
+| double xHeight | 小写字母的高度。 |
+| double width | 文字宽度。 |
+| double height | 行高。 |
+| double x | 文字左端到容器左端距离，左对齐为0，右对齐为容器宽度减去行文字宽度。 |
+| double y | 文字上端到容器上端高度，第一行为0，第二行为第一行高度。 |
+| size_t startIndex | 行起始位置字符索引。 |
+| size_t endIndex | 行结束位置字符索引。 |
+| OH_Drawing_Font_Metrics firstCharMetrics | 第一个字的度量信息。 |
 
 

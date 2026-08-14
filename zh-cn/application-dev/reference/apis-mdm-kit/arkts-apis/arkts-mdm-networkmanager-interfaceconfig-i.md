@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-networkManager-interface InterfaceConfig--><!--Device-networkManager-interface InterfaceConfig-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -23,6 +25,8 @@ DNS服务地址，地址值范围0.0.0.0到255.255.255.255（DHCP模式无需配
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -44,6 +48,8 @@ gateway?: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-InterfaceConfig-gateway?: string--><!--Device-InterfaceConfig-gateway?: string-End-->
@@ -64,6 +70,8 @@ ipAddress?: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-InterfaceConfig-ipAddress?: string--><!--Device-InterfaceConfig-ipAddress?: string-End-->
@@ -78,11 +86,13 @@ ipSetMode: IpSetMode
 
 以太网连接配置模式。
 
-**类型：** IpSetMode
+**类型：** [IpSetMode](arkts-mdm-networkmanager-ipsetmode-e.md)
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -103,6 +113,8 @@ netMask?: string
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

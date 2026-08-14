@@ -1,10 +1,12 @@
 # SubIntentInfoForConfiguration（系统接口）
 
-用于描述\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_的特有信息。
+用于描述[使用配置文件开发的意图](../../../application-models/insight-intent-config-development.md)的特有信息。
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-insightIntentDriver-interface SubIntentInfoForConfiguration--><!--Device-insightIntentDriver-interface SubIntentInfoForConfiguration-End-->
 
@@ -15,20 +17,22 @@
 ## entities
 
 ```TypeScript
-readonly entities?: Record<string, Object>
+readonly entities?: Record<string, RecordData>
 ```
 
 表示意图包含的实体信息。
 
-**类型：** Record&lt;string, Object&gt;
+**类型：** Record&lt;string, [RecordData](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt;
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SubIntentInfoForConfiguration-readonly entities?: Record<string, Object>--><!--Device-SubIntentInfoForConfiguration-readonly entities?: Record<string, Object>-End-->
+<!--Device-SubIntentInfoForConfiguration-readonly entities?: Record<string, RecordData>--><!--Device-SubIntentInfoForConfiguration-readonly entities?: Record<string, RecordData>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -42,11 +46,13 @@ readonly form?: FormIntentInfo
 
 表示意图绑定的卡片信息。
 
-**类型：** FormIntentInfo
+**类型：** [FormIntentInfo](arkts-ability-insightintentdriver-formintentinfo-i-sys.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -59,20 +65,22 @@ readonly form?: FormIntentInfo
 ## inputParams
 
 ```TypeScript
-readonly inputParams?: Array<Record<string, Object>>
+readonly inputParams?: Array<Record<string, RecordData>>
 ```
 
 表示意图参数的数据格式声明，用于意图调用时定义入参的数据格式。
 
-**类型：** Array&lt;Record&lt;string, Object&gt;&gt;
+**类型：** Array&lt;Record&lt;string, [RecordData](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt;&gt;
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SubIntentInfoForConfiguration-readonly inputParams?: Array<Record<string, Object>>--><!--Device-SubIntentInfoForConfiguration-readonly inputParams?: Array<Record<string, Object>>-End-->
+<!--Device-SubIntentInfoForConfiguration-readonly inputParams?: Array<Record<string, RecordData>>--><!--Device-SubIntentInfoForConfiguration-readonly inputParams?: Array<Record<string, RecordData>>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -81,20 +89,22 @@ readonly inputParams?: Array<Record<string, Object>>
 ## outputParams
 
 ```TypeScript
-readonly outputParams?: Array<Record<string, Object>>
+readonly outputParams?: Array<Record<string, RecordData>>
 ```
 
 表示意图调用返回结果的数据格式声明，用于定义意图调用返回结果的数据格式。
 
-**类型：** Array&lt;Record&lt;string, Object&gt;&gt;
+**类型：** Array&lt;Record&lt;string, [RecordData](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt;&gt;
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SubIntentInfoForConfiguration-readonly outputParams?: Array<Record<string, Object>>--><!--Device-SubIntentInfoForConfiguration-readonly outputParams?: Array<Record<string, Object>>-End-->
+<!--Device-SubIntentInfoForConfiguration-readonly outputParams?: Array<Record<string, RecordData>>--><!--Device-SubIntentInfoForConfiguration-readonly outputParams?: Array<Record<string, RecordData>>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -108,11 +118,13 @@ readonly serviceExtension?: ServiceExtensionIntentInfo
 
 表示意图绑定的ServiceExtensionAbility组件信息。
 
-**类型：** ServiceExtensionIntentInfo
+**类型：** [ServiceExtensionIntentInfo](arkts-ability-insightintentdriver-serviceextensionintentinfo-i-sys.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -134,7 +146,9 @@ readonly srcEntry: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -152,11 +166,13 @@ readonly uiAbility?: UIAbilityIntentInfo
 
 表示意图绑定的UIAbility组件信息，包含"ability"字段和"executeMode"字段。
 
-**类型：** UIAbilityIntentInfo
+**类型：** [UIAbilityIntentInfo](arkts-ability-insightintentdriver-uiabilityintentinfo-i-sys.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -174,11 +190,13 @@ readonly uiExtension?: UIExtensionIntentInfo
 
 表示意图绑定的UIExtensionAbility组件信息。
 
-**类型：** UIExtensionIntentInfo
+**类型：** [UIExtensionIntentInfo](arkts-ability-insightintentdriver-uiextensionintentinfo-i-sys.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

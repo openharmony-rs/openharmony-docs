@@ -10,7 +10,9 @@ function offRemove(callback?: Callback<BundleChangedInfo>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.LISTEN_BUNDLE_CHANGE
 
@@ -24,7 +26,7 @@ function offRemove(callback?: Callback<BundleChangedInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;BundleChangedInfo&gt; | 否 | 注销监听的AsyncCallback，默认值：注销当前事件的所有callback。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[BundleChangedInfo](arkts-ability-bundlemonitor-bundlechangedinfo-i-sys.md)&gt; | 否 | 注销监听的AsyncCallback，默认值：注销当前事件的所有callback。 |
 
 **错误码：**
 
@@ -33,7 +35,7 @@ function offRemove(callback?: Callback<BundleChangedInfo>): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 'use static'

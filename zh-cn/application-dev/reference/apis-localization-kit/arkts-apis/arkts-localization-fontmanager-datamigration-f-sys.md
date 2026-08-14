@@ -10,7 +10,9 @@ function dataMigration(callback: DataMigrationCallback): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.UPDATE_FONT
 
@@ -24,20 +26,20 @@ function dataMigration(callback: DataMigrationCallback): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 数据迁移的回调函数。 |
+| callback | [DataMigrationCallback](arkts-localization-fontmanager-datamigrationcallback-i-sys.md) | 是 | 数据迁移的回调函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 迁移任务启动结果。 |
+| int | 迁移任务启动结果。 &lt;br&gt;- 0：迁移任务启动成功，迁移任务将在后台执行并通过回调通知进度和结果。 &lt;br&gt;- 其他值：迁移任务启动失败，请根据错误码排查原因。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system application. |
-| [31100110](../errorcode-font-manager.md#31100110-系统异常导致接口调用失败) |  |
-| [31100111](../errorcode-font-manager.md#31100111-迁移任务执行中) |  |
+| [31100110](../errorcode-font-manager.md#31100110-系统异常导致接口调用失败) | Call failed due to system error. |
+| [31100111](../errorcode-font-manager.md#31100111-迁移任务执行中) | Data migration is in progress. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 

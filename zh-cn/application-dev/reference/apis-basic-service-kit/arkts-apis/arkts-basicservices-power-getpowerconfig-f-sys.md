@@ -10,7 +10,9 @@ function getPowerConfig(sceneName: string): string
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.POWER_CONFIG
 
@@ -40,11 +42,11 @@ function getPowerConfig(sceneName: string): string
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [4900400](../../apis-basic-services-kit/errorcode-power.md#4900400-接口入参无效) | Invalid parameter. Possible causes: 1. The sceneName parameter is an empty string; 2. The length of sceneName parameter exceeds 128 bytes. |
 | [4900101](../../apis-basic-services-kit/errorcode-power.md#4900101-连接服务失败) | Failed to connect to the service. |
-| [4900400](../../apis-basic-services-kit/errorcode-power.md#4900400-接口入参无效) | Invalid parameter. Possible causes:1. The sceneName parameter is an empty string;2. The length of sceneName parameter exceeds 128 bytes. |
 | [4900501](../../apis-basic-services-kit/errorcode-power.md#4900501-读电源配置值失败) | Failed to read the power configuration value. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 try {

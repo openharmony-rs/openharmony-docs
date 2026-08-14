@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-i18n-export class Unicode--><!--Device-i18n-export class Unicode-End-->
 
 **系统能力：** SystemCapability.Global.I18n
@@ -21,6 +23,8 @@ static detectEncoding(bytes: Uint8Array): EncodingInfo
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,7 +44,7 @@ static detectEncoding(bytes: Uint8Array): EncodingInfo
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 编码信息，包含编码名称和置信度。 |
+| [EncodingInfo](../../apis-localization-kit/arkts-apis/arkts-localization-i18n-encodinginfo-i.md) | 编码信息，包含编码名称和置信度。 |
 
 ## getType
 
@@ -53,6 +57,8 @@ static getType(ch: string): string
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -70,7 +76,7 @@ static getType(ch: string): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 输入字符的一般类别值。取值包括： |
+| string | 输入字符的一般类别值。取值包括： &lt;br&gt;U_UNASSIGNED： 表示未分配和非字符代码点对应类别。 &lt;br&gt;U_GENERAL_OTHER_TYPES： 与 U_UNASSIGNED 一致。 &lt;br&gt;U_UPPERCASE_LETTER： 表示大写字母。 &lt;br&gt;U_LOWERCASE_LETTER： 表示小写字母。 &lt;br&gt;U_TITLECASE_LETTER： 表示首字母大写。 &lt;br&gt;U_MODIFIER_LETTER： 表示字母修饰符。 &lt;br&gt;U_OTHER_LETTER： 表示其它字母，不属于大写字母、小写字母、首字母大写或修饰符字母的字母。 &lt;br&gt;U_NON_SPACING_MARK： 表示非间距标记，例如重音符号'，变音符号#。 &lt;br&gt;U_ENCLOSING_MARK： 表示封闭标记和能围住其它字符的标记，如圆圈、方框等。 &lt;br&gt;U_COMBINING_SPACING_MARK： 表示间距标记，例如元音符号[ ]。 &lt;br&gt;U_DECIMAL_DIGIT_NUMBER： 表示十进制数字。 &lt;br&gt;U_LETTER_NUMBER： 表示字母数字，罗马数字。 &lt;br&gt;U_OTHER_NUMBER： 表示其它作为加密符号和记号的数字，非阿拉伯数字的数字表示符，例如 |
 
 ## isDigit
 
@@ -83,6 +89,8 @@ static isDigit(ch: string): boolean
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -114,6 +122,8 @@ static isIdeograph(ch: string): boolean
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Unicode-static isIdeograph(ch: string): boolean--><!--Device-Unicode-static isIdeograph(ch: string): boolean-End-->
@@ -143,6 +153,8 @@ static isLetter(ch: string): boolean
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -174,6 +186,8 @@ static isLowerCase(ch: string): boolean
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Unicode-static isLowerCase(ch: string): boolean--><!--Device-Unicode-static isLowerCase(ch: string): boolean-End-->
@@ -203,6 +217,8 @@ static isRTL(ch: string): boolean
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -234,6 +250,8 @@ static isSpaceChar(ch: string): boolean
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Unicode-static isSpaceChar(ch: string): boolean--><!--Device-Unicode-static isSpaceChar(ch: string): boolean-End-->
@@ -264,6 +282,8 @@ static isUpperCase(ch: string): boolean
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Unicode-static isUpperCase(ch: string): boolean--><!--Device-Unicode-static isUpperCase(ch: string): boolean-End-->
@@ -293,6 +313,8 @@ static isWhitespace(ch: string): boolean
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 

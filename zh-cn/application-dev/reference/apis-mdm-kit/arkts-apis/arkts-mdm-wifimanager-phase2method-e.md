@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-wifiManager-enum Phase2Method--><!--Device-wifiManager-enum Phase2Method-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -21,6 +23,8 @@ PHASE2_NONE = 0
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,6 +44,8 @@ PAP类型。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-Phase2Method-PHASE2_PAP = 1--><!--Device-Phase2Method-PHASE2_PAP = 1-End-->
@@ -57,6 +63,8 @@ MSCHAP类型。
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -76,6 +84,8 @@ MSCHAPV2类型。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-Phase2Method-PHASE2_MSCHAPV2 = 3--><!--Device-Phase2Method-PHASE2_MSCHAPV2 = 3-End-->
@@ -93,6 +103,8 @@ GTC类型。
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -112,6 +124,8 @@ SIM类型。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-Phase2Method-PHASE2_SIM = 5--><!--Device-Phase2Method-PHASE2_SIM = 5-End-->
@@ -130,6 +144,8 @@ AKA类型。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-Phase2Method-PHASE2_AKA = 6--><!--Device-Phase2Method-PHASE2_AKA = 6-End-->
@@ -147,6 +163,8 @@ AKA Prime类型。
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

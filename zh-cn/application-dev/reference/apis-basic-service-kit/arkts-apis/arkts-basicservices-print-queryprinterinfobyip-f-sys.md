@@ -10,7 +10,9 @@ function queryPrinterInfoByIp(printerIp: string): Promise<void>
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -38,7 +40,7 @@ function queryPrinterInfoByIp(printerIp: string): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [13100005](../../apis-basic-services-kit/errorcode-print.md#13100005-无效的打印机) | Invalid printer IP. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
-| [13100005](../../apis-basic-services-kit/errorcode-print.md#13100005-无效的打印机) | Invalid printer IP. |
 

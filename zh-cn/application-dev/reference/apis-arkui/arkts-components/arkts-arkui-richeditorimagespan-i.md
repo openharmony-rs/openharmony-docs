@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface RichEditorImageSpan--><!--Device-unnamed-declare interface RichEditorImageSpan-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -18,11 +20,13 @@ imageStyle?: RichEditorImageSpanStyle
 
 图片样式。
 
-**类型：** RichEditorImageSpanStyle
+**类型：** [RichEditorImageSpanStyle](arkts-arkui-richeditorimagespanstyle-i.md)
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,11 +44,13 @@ spanPosition: RichEditorSpanPosition
 
 Span位置。
 
-**类型：** RichEditorSpanPosition
+**类型：** [RichEditorSpanPosition](arkts-arkui-richeditorspanposition-i.md)
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -67,6 +73,8 @@ value: PixelMap | ResourceStr
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

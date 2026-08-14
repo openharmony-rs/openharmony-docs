@@ -1,14 +1,16 @@
 # Text
 
-文本类型数据，是[UnifiedRecord]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_的子类，也是文本类型数据的基类，用于描述文本类数据，推荐开发者优先使用Text的子类描述数据，如 [PlainText]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_、[Hyperlink]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_、 [HTML]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_等具体子类。
+文本类型数据，是[UnifiedRecord](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md#UnifiedRecord)的子类，也是文本类型数据的基类，用于描述文本类数据，推荐开发者优先使用Text的子类描述数据，如 [PlainText](arkts-arkdata-unifieddatachannel-plaintext-c.md#PlainText)、[Hyperlink](arkts-arkdata-unifieddatachannel-hyperlink-c.md#Hyperlink)、 [HTML](arkts-arkdata-unifieddatachannel-html-c.md#HTML)等具体子类。
 
-**继承/实现关系：** Text extends [UnifiedRecord](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md)
+**继承/实现关系：** Text extends [UnifiedRecord](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md#UnifiedRecord)
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-<!--Device-unifiedDataChannel-class Text extends UnifiedRecord--><!--Device-unifiedDataChannel-class Text extends UnifiedRecord-End-->
+**废弃版本：** -1
+
+<!--Device-unifiedDataChannel-class Text--><!--Device-unifiedDataChannel-class Text-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -24,7 +26,9 @@ details?: Record<string, string>
 
 **起始版本：** 10
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

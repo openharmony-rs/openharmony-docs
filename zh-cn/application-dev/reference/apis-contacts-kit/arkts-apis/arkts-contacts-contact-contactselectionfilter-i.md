@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
 
+**废弃版本：** -1
+
 <!--Device-contact-interface ContactSelectionFilter--><!--Device-contact-interface ContactSelectionFilter-End-->
 
 **系统能力：** SystemCapability.Applications.Contacts
@@ -18,11 +20,13 @@ filterClause: FilterClause
 
 过滤条件。
 
-**类型：** FilterClause
+**类型：** [FilterClause](arkts-contacts-contact-filterclause-i.md)
 
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
@@ -43,6 +47,8 @@ filterType: FilterType
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 

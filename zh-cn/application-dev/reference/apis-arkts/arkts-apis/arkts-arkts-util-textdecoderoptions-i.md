@@ -1,10 +1,12 @@
 # TextDecoderOptions
 
-Defines the TextDecoder related options parameters.
+描述解码相关的选项，包含 **fatal** 和 **ignoreBOM**。
 
-**起始版本：** 23
+**起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 <!--Device-util-interface TextDecoderOptions--><!--Device-util-interface TextDecoderOptions-End-->
 
@@ -16,13 +18,17 @@ Defines the TextDecoder related options parameters.
 fatal?: boolean
 ```
 
-Is a fatal error displayed? The default value is false.
+是否显示致命错误。值为 **true** 表示显示致命错误，值为 **false** 表示相反的情况。默认值为 **false**。
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TextDecoderOptions-fatal?: boolean--><!--Device-TextDecoderOptions-fatal?: boolean-End-->
 
@@ -34,13 +40,17 @@ Is a fatal error displayed? The default value is false.
 ignoreBOM?: boolean
 ```
 
-Do you want to ignore BOM tags? The default value is false.
+是否忽略 BOM。值为 **true** 表示忽略 BOM，值为 **false** 表示相反的情况。默认值为 **false**。
 
 **类型：** boolean
 
-**起始版本：** 23
+**起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TextDecoderOptions-ignoreBOM?: boolean--><!--Device-TextDecoderOptions-ignoreBOM?: boolean-End-->
 

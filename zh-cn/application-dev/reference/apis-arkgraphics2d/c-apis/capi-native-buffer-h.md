@@ -38,7 +38,7 @@
 | [int32_t OH_NativeBuffer_Reference(OH_NativeBuffer *buffer)](#oh_nativebuffer_reference) | 将OH_NativeBuffer对象的引用计数加1。<br> 本接口需要与OH_NativeBuffer_Unreference接口配合使用，否则会存在内存泄露。<br> 本接口为非线程安全类型接口。<br> |
 | [int32_t OH_NativeBuffer_Unreference(OH_NativeBuffer *buffer)](#oh_nativebuffer_unreference) | 将OH_NativeBuffer对象的引用计数减1，当引用计数为0的时候，该NativeBuffer对象会被析构掉。<br> 本接口为非线程安全类型接口。<br> |
 | [void OH_NativeBuffer_GetConfig(OH_NativeBuffer *buffer, OH_NativeBuffer_Config* config)](#oh_nativebuffer_getconfig) | 用于获取OH_NativeBuffer的属性。<br> 本接口为非线程安全类型接口。<br> |
-| [int32_t OH_NativeBuffer_Map(OH_NativeBuffer *buffer, void **virAddr)](#oh_nativebuffer_map) | 将OH_NativeBuffer对应的ION内存映射到进程空间。<br> 本接口需要与OH_NativeBuffer_Unmap接口配合使用。<br> 本接口为非线程安全类型接口。<br> |
+| [int32_t OH_NativeBuffer_Map(OH_NativeBuffer *buffer, void **virAddr)](#oh_nativebuffer_map) | 将OH_NativeBuffer对应的ION内存映射到进程空间。<br> 需注意调用该接口的OH_NativeBuffer的usage必须带有CPU_READ属性，否则可能导致稳定性问题。<br> 通过OH_NativeBuffer_Alloc申请的OH_NativeBuffer，需保证参数config.usage带有NATIVEBUFFER_USAGE_CPU_READ。<br> 通过OH_NativeBuffer_FromNativeWindowBuffer转换来的OH_NativeBuffer，需保证原OH_NativeWindowBuffer申请前，<br> 通过OH_NativeWindow_NativeWindowHandleOpt接口设置的USAGE带有NATIVEBUFFER_USAGE_CPU_READ。本接口需要与OH_NativeBuffer_Unmap接口配合使用。<br> 本接口为非线程安全类型接口。<br> |
 | [int32_t OH_NativeBuffer_Unmap(OH_NativeBuffer *buffer)](#oh_nativebuffer_unmap) | 将OH_NativeBuffer对应的ION内存从进程空间移除。<br> 本接口为非线程安全类型接口。<br> |
 | [uint32_t OH_NativeBuffer_GetSeqNum(OH_NativeBuffer *buffer)](#oh_nativebuffer_getseqnum) | 获取OH_NativeBuffer的序列号。<br> 本接口为非线程安全类型接口。<br> |
 | [int32_t OH_NativeBuffer_MapPlanes(OH_NativeBuffer *buffer, void **virAddr, OH_NativeBuffer_Planes *outPlanes)](#oh_nativebuffer_mapplanes) | 将OH_NativeBuffer对应的多通道ION内存映射到进程空间。<br> 本接口为非线程安全类型接口。<br> |
@@ -222,7 +222,7 @@ int32_t OH_NativeBuffer_Map(OH_NativeBuffer *buffer, void **virAddr)
 
 **描述**
 
-将OH_NativeBuffer对应的ION内存映射到进程空间。<br> 本接口需要与OH_NativeBuffer_Unmap接口配合使用。<br> 本接口为非线程安全类型接口。<br>
+将OH_NativeBuffer对应的ION内存映射到进程空间。<br> 需注意调用该接口的OH_NativeBuffer的usage必须带有CPU_READ属性，否则可能导致稳定性问题。<br> 通过OH_NativeBuffer_Alloc申请的OH_NativeBuffer，需保证参数config.usage带有NATIVEBUFFER_USAGE_CPU_READ。<br> 通过OH_NativeBuffer_FromNativeWindowBuffer转换来的OH_NativeBuffer，需保证原OH_NativeWindowBuffer申请前，<br> 通过OH_NativeWindow_NativeWindowHandleOpt接口设置的USAGE带有NATIVEBUFFER_USAGE_CPU_READ。本接口需要与OH_NativeBuffer_Unmap接口配合使用。<br> 本接口为非线程安全类型接口。<br>
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
 

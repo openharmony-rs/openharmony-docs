@@ -1,14 +1,16 @@
 # RotationGestureEvent
 
-继承自[BaseGestureEvent]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。可将该对象作为[onGestureJudgeBegin]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_的 event参数来传递。
+继承自[BaseGestureEvent](arkts-arkui-basegestureevent-i.md#BaseGestureEvent)。可将该对象作为onGestureJudgeBegin的 event参数来传递。
 
-**继承/实现关系：** RotationGestureEvent extends [BaseGestureEvent](arkts-arkui-basegestureevent-i.md)
+**继承/实现关系：** RotationGestureEvent extends [BaseGestureEvent](arkts-arkui-basegestureevent-i.md#BaseGestureEvent)
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
-<!--Device-unnamed-interface RotationGestureEvent extends BaseGestureEvent--><!--Device-unnamed-interface RotationGestureEvent extends BaseGestureEvent-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-interface RotationGestureEvent--><!--Device-unnamed-interface RotationGestureEvent-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -25,6 +27,8 @@ angle: number
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

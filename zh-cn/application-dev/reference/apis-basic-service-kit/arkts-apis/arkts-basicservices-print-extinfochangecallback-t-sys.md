@@ -8,7 +8,9 @@ Defines the callback type used in registering to listen for extension change. Th
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-print-type ExtInfoChangeCallback = (extensionId: string, info: string) => void--><!--Device-print-type ExtInfoChangeCallback = (extensionId: string, info: string) => void-End-->
 
@@ -20,6 +22,6 @@ Defines the callback type used in registering to listen for extension change. Th
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| extensionId | string | 是 | the printer extension id  |
-| info | string | 是 | the information of printer  |
+| extensionId | string | 是 | the printer extension id |
+| info | string | 是 | the information of printer |
 

@@ -8,7 +8,9 @@ type QueryCompilationByKeywordEvent = (keyword: string) => Promise<Compilation[]
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -26,5 +28,5 @@ type QueryCompilationByKeywordEvent = (keyword: string) => Promise<Compilation[]
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Compilation[]&gt; | Promise对象，返回与关键字相关的合集数组。 |
+| Promise&lt;[Compilation](arkts-avsession-avmusictemplate-compilation-i.md)[]&gt; | Promise对象，返回与关键字相关的合集数组。 |
 

@@ -1,5 +1,11 @@
 # publishAsBundle（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { notificationManager } from '@kit.NotificationKit';
+```
+
 ## publishAsBundle
 
 ```TypeScript
@@ -13,9 +19,11 @@ function publishAsBundle(
 
 发布代理通知。使用callback异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER and ohos.permission.NOTIFICATION_AGENT_CONTROLLER
 
@@ -29,39 +37,39 @@ function publishAsBundle(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| request | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 用于设置要发布通知的内容和相关配置信息。 |
+| request | NotificationRequest | 是 | 用于设置要发布通知的内容和相关配置信息。 |
 | representativeBundle | string | 是 | 被代理应用的包名。 |
-| userId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 用户ID。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 发布代理通知的回调方法。 |
+| userId | int | 是 | 用户ID。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 发布代理通知的回调方法。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | The device does not support geofencing.<br>**适用版本：** 23+ |
+| [1600025](../errorcode-notification.md#1600025-地理围栏开关关闭) | Geofencing disabled.<br>**适用版本：** 23+ |
+| [1600026](../errorcode-notification.md#1600026-位置功能开关关闭) | The location switch is off.<br>**适用版本：** 23+ |
+| [1600027](../errorcode-notification.md#1600027-位置系统服务的感知与提醒开关关闭) | The "Awareness & suggestions" switch of the location-based service is off.<br>**适用版本：** 23+ |
+| [2300007](../../apis-network-kit/errorcode-net-http.md#2300007-无法连接到服务器) | Network unreachable. |
+| [1600029](../errorcode-notification.md#1600029-系统无法找到实况窗卡片自定义扩展区的extensionability) | The system failed to find the ExtensionAbility instance for the custom Live View widget template.<br>**适用版本：** 26.0.0+ |
+| [1600016](../errorcode-notification.md#1600016-本次更新的通知版本太低) | The notification version for this update is too low. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | The device does not support geofencing.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 23+ |
+| [1600020](../errorcode-notification.md#1600020-不允许权限管控名单中的应用发布通知) | The application is not allowed to send notifications due to permission settings. |
+| [1600008](../errorcode-notification.md#1600008-用户不存在) | The user does not exist. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [1600009](../errorcode-notification.md#1600009-通知发布频度超过限制) | The notification sending frequency reaches the upper limit. |
+| [1600012](../errorcode-notification.md#1600012-内存空间不足) | No memory space. |
+| [1600014](../errorcode-notification.md#1600014-没有相关权限) | The right of liveView is not enabled.<br>**适用版本：** 26.0.0+ |
+| [1600015](../errorcode-notification.md#1600015-当前通知状态不支持重复配置) | The current notification status does not support duplicate configurations. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [1600004](../errorcode-notification.md#1600004-通知开关关闭) | Notification disabled. |
 | [1600005](../errorcode-notification.md#1600005-通知渠道关闭) | Notification slot disabled. |
 | [1600007](../errorcode-notification.md#1600007-通知不存在) | The notification does not exist. |
-| [1600008](../errorcode-notification.md#1600008-用户不存在) | The user does not exist. |
-| [1600009](../errorcode-notification.md#1600009-通知发布频度超过限制) | The notification sending frequency reaches the upper limit. |
-| [1600012](../errorcode-notification.md#1600012-内存空间不足) | No memory space. |
-| [1600014](../errorcode-notification.md#1600014-没有相关权限) | The right of liveView is not enabled.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 26.0.0+ |
-| [1600015](../errorcode-notification.md#1600015-当前通知状态不支持重复配置) | The current notification status does not support duplicate configurations. |
-| [1600016](../errorcode-notification.md#1600016-本次更新的通知版本太低) | The notification version for this update is too low. |
-| [1600020](../errorcode-notification.md#1600020-不允许权限管控名单中的应用发布通知) | The application is not allowed to send notifications due to permission settings. |
-| [1600025](../errorcode-notification.md#1600025-地理围栏开关关闭) | Geofencing disabled.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 23+ |
-| [1600026](../errorcode-notification.md#1600026-位置功能开关关闭) | The location switch is off.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 23+ |
-| [1600027](../errorcode-notification.md#1600027-位置系统服务的感知与提醒开关关闭) | The "Awareness & suggestions" switch of the location-based service is off.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 23+ |
-| [1600029](../errorcode-notification.md#1600029-系统无法找到实况窗卡片自定义扩展区的extensionability) | The system failed to find the ExtensionAbility instance for the custom Live View widget template.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 26.0.0+ |
-| [2300007](../../apis-network-kit/errorcode-net-http.md#2300007-无法连接到服务器) | Network unreachable. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -73,11 +81,11 @@ let callback = (err: BusinessError): void => {
     if (err) {
         console.error(`publishAsBundle failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("publishAsBundle success");
+        console.info('publishAsBundle success');
     }
 }
 // 被代理应用的包名
-let representativeBundle: string = "com.example.demo";
+let representativeBundle: string = 'com.example.demo';
 // 用户ID，使用时需替换为真实的userId。
 let userId: number = 100;
 // NotificationRequest对象
@@ -86,9 +94,9 @@ let request: notificationManager.NotificationRequest = {
     content: {
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
         normal: {
-            title: "test_title",
-            text: "test_text",
-            additionalText: "test_additionalText"
+            title: 'test_title',
+            text: 'test_text',
+            additionalText: 'test_additionalText'
         }
     }
 };
@@ -105,11 +113,11 @@ let callback = (err: BusinessError | null): void => {
     if (err) {
         console.error(`publishAsBundle failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("publishAsBundle success");
+        console.info('publishAsBundle success');
     }
 }
 // 被代理应用的包名
-let representativeBundle: string = "bundleName1";
+let representativeBundle: string = 'bundleName1';
 // 用户ID，使用时需替换为真实的userId。
 let userId: int = 1;
 // NotificationRequest对象
@@ -118,9 +126,9 @@ let request: notificationManager.NotificationRequest = {
     content: {
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
         normal: {
-            title: "test_title",
-            text: "test_text",
-            additionalText: "test_additionalText"
+            title: 'test_title',
+            text: 'test_text',
+            additionalText: 'test_additionalText'
         }
     }
 };
@@ -136,9 +144,11 @@ function publishAsBundle(request: NotificationRequest, representativeBundle: str
 
 发布代理通知。使用Promise异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER and ohos.permission.NOTIFICATION_AGENT_CONTROLLER
 
@@ -152,9 +162,9 @@ function publishAsBundle(request: NotificationRequest, representativeBundle: str
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| request | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 用于设置要发布通知的内容和相关配置信息。 |
+| request | NotificationRequest | 是 | 用于设置要发布通知的内容和相关配置信息。 |
 | representativeBundle | string | 是 | 被代理应用的包名。 |
-| userId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 用户ID。 |
+| userId | int | 是 | 用户ID。 |
 
 **返回值：**
 
@@ -166,30 +176,30 @@ function publishAsBundle(request: NotificationRequest, representativeBundle: str
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | The device does not support geofencing.<br>**适用版本：** 23+ |
+| [1600025](../errorcode-notification.md#1600025-地理围栏开关关闭) | Geofencing disabled.<br>**适用版本：** 23+ |
+| [1600026](../errorcode-notification.md#1600026-位置功能开关关闭) | The location switch is off.<br>**适用版本：** 23+ |
+| [1600027](../errorcode-notification.md#1600027-位置系统服务的感知与提醒开关关闭) | The "Awareness & suggestions" switch of the location-based service is off.<br>**适用版本：** 23+ |
+| [2300007](../../apis-network-kit/errorcode-net-http.md#2300007-无法连接到服务器) | Network unreachable. |
+| [1600029](../errorcode-notification.md#1600029-系统无法找到实况窗卡片自定义扩展区的extensionability) | The system failed to find the ExtensionAbility instance for the custom Live View widget template.<br>**适用版本：** 26.0.0+ |
+| [1600016](../errorcode-notification.md#1600016-本次更新的通知版本太低) | The notification version for this update is too low. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | The device does not support geofencing.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 23+ |
+| [1600020](../errorcode-notification.md#1600020-不允许权限管控名单中的应用发布通知) | The application is not allowed to send notifications due to permission settings. |
+| [1600008](../errorcode-notification.md#1600008-用户不存在) | The user does not exist. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [1600009](../errorcode-notification.md#1600009-通知发布频度超过限制) | The notification sending frequency reaches the upper limit. |
+| [1600012](../errorcode-notification.md#1600012-内存空间不足) | No memory space. |
+| [1600014](../errorcode-notification.md#1600014-没有相关权限) | The right of liveView is not enabled.<br>**适用版本：** 26.0.0+ |
+| [1600015](../errorcode-notification.md#1600015-当前通知状态不支持重复配置) | The current notification status does not support duplicate configurations. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [1600004](../errorcode-notification.md#1600004-通知开关关闭) | Notification disabled. |
 | [1600005](../errorcode-notification.md#1600005-通知渠道关闭) | Notification slot disabled. |
 | [1600007](../errorcode-notification.md#1600007-通知不存在) | The notification does not exist. |
-| [1600008](../errorcode-notification.md#1600008-用户不存在) | The user does not exist. |
-| [1600009](../errorcode-notification.md#1600009-通知发布频度超过限制) | The notification sending frequency reaches the upper limit. |
-| [1600012](../errorcode-notification.md#1600012-内存空间不足) | No memory space. |
-| [1600014](../errorcode-notification.md#1600014-没有相关权限) | The right of liveView is not enabled.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 26.0.0+ |
-| [1600015](../errorcode-notification.md#1600015-当前通知状态不支持重复配置) | The current notification status does not support duplicate configurations. |
-| [1600016](../errorcode-notification.md#1600016-本次更新的通知版本太低) | The notification version for this update is too low. |
-| [1600020](../errorcode-notification.md#1600020-不允许权限管控名单中的应用发布通知) | The application is not allowed to send notifications due to permission settings. |
-| [1600025](../errorcode-notification.md#1600025-地理围栏开关关闭) | Geofencing disabled.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 23+ |
-| [1600026](../errorcode-notification.md#1600026-位置功能开关关闭) | The location switch is off.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 23+ |
-| [1600027](../errorcode-notification.md#1600027-位置系统服务的感知与提醒开关关闭) | The "Awareness & suggestions" switch of the location-based service is off.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 23+ |
-| [1600029](../errorcode-notification.md#1600029-系统无法找到实况窗卡片自定义扩展区的extensionability) | The system failed to find the ExtensionAbility instance for the custom Live View widget template.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 26.0.0+ |
-| [2300007](../../apis-network-kit/errorcode-net-http.md#2300007-无法连接到服务器) | Network unreachable. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -197,7 +207,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 被代理应用的包名
-let representativeBundle: string = "com.example.demo";
+let representativeBundle: string = 'com.example.demo';
 // 用户ID，使用时需替换为真实的userId。
 let userId: number = 100;
 // NotificationRequest对象
@@ -206,14 +216,14 @@ let request: notificationManager.NotificationRequest = {
     content: {
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
         normal: {
-            title: "test_title",
-            text: "test_text",
-            additionalText: "test_additionalText"
+            title: 'test_title',
+            text: 'test_text',
+            additionalText: 'test_additionalText'
         }
     }
 };
 notificationManager.publishAsBundle(request, representativeBundle, userId).then(() => {
-    console.info("publishAsBundle success");
+    console.info('publishAsBundle success');
 }).catch((err: BusinessError) => {
     console.error(`publishAsBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -225,7 +235,7 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 被代理应用的包名
-let representativeBundle: string = "bundleName1";
+let representativeBundle: string = 'bundleName1';
 // 用户ID，使用时需替换为真实的userId。
 let userId: int = 1;
 // NotificationRequest对象
@@ -234,14 +244,14 @@ let request: notificationManager.NotificationRequest = {
     content: {
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
         normal: {
-            title: "test_title",
-            text: "test_text",
-            additionalText: "test_additionalText"
+            title: 'test_title',
+            text: 'test_text',
+            additionalText: 'test_additionalText'
         }
     }
 };
 notificationManager.publishAsBundle(request, representativeBundle, userId).then(() => {
-    console.info("publishAsBundle success");
+    console.info('publishAsBundle success');
 }).catch((err: Error): void => {
     let error: BusinessError = err as BusinessError;
     console.error(`publishAsBundle failed, code is ${error.code}, message is ${error.message}`);
@@ -257,9 +267,11 @@ function publishAsBundle(representativeBundle: BundleOption, request: Notificati
 
 发布代理通知。使用Promise异步回调。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER and ohos.permission.NOTIFICATION_AGENT_CONTROLLER
 
@@ -273,8 +285,8 @@ function publishAsBundle(representativeBundle: BundleOption, request: Notificati
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| representativeBundle | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 被代理应用的包信息。 |
-| request | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 用于设置要发布通知的内容和相关配置信息。 |
+| representativeBundle | BundleOption | 是 | 被代理应用的包信息。 |
+| request | NotificationRequest | 是 | 用于设置要发布通知的内容和相关配置信息。 |
 
 **返回值：**
 
@@ -286,30 +298,30 @@ function publishAsBundle(representativeBundle: BundleOption, request: Notificati
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | The device does not support geofencing.<br>**适用版本：** 23+ |
+| [1600025](../errorcode-notification.md#1600025-地理围栏开关关闭) | Geofencing disabled.<br>**适用版本：** 23+ |
+| [1600026](../errorcode-notification.md#1600026-位置功能开关关闭) | The location switch is off.<br>**适用版本：** 23+ |
+| [1600027](../errorcode-notification.md#1600027-位置系统服务的感知与提醒开关关闭) | The "Awareness & suggestions" switch of the location-based service is off.<br>**适用版本：** 23+ |
+| [2300007](../../apis-network-kit/errorcode-net-http.md#2300007-无法连接到服务器) | Network unreachable. |
+| [1600029](../errorcode-notification.md#1600029-系统无法找到实况窗卡片自定义扩展区的extensionability) | The system failed to find the ExtensionAbility instance for the custom Live View widget template.<br>**适用版本：** 26.0.0+ |
+| [1600016](../errorcode-notification.md#1600016-本次更新的通知版本太低) | The notification version for this update is too low. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | The device does not support geofencing.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 23+ |
+| [1600020](../errorcode-notification.md#1600020-不允许权限管控名单中的应用发布通知) | The application is not allowed to send notifications due to permission settings. |
+| [1600008](../errorcode-notification.md#1600008-用户不存在) | The user does not exist. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [1600009](../errorcode-notification.md#1600009-通知发布频度超过限制) | The notification sending frequency reaches the upper limit. |
+| [1600012](../errorcode-notification.md#1600012-内存空间不足) | No memory space. |
+| [1600014](../errorcode-notification.md#1600014-没有相关权限) | The right of liveView is not enabled.<br>**适用版本：** 26.0.0+ |
+| [1600015](../errorcode-notification.md#1600015-当前通知状态不支持重复配置) | The current notification status does not support duplicate configurations. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [1600004](../errorcode-notification.md#1600004-通知开关关闭) | Notification disabled. |
 | [1600005](../errorcode-notification.md#1600005-通知渠道关闭) | Notification slot disabled. |
 | [1600007](../errorcode-notification.md#1600007-通知不存在) | The notification does not exist. |
-| [1600008](../errorcode-notification.md#1600008-用户不存在) | The user does not exist. |
-| [1600009](../errorcode-notification.md#1600009-通知发布频度超过限制) | The notification sending frequency reaches the upper limit. |
-| [1600012](../errorcode-notification.md#1600012-内存空间不足) | No memory space. |
-| [1600014](../errorcode-notification.md#1600014-没有相关权限) | The right of liveView is not enabled.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 26.0.0+ |
-| [1600015](../errorcode-notification.md#1600015-当前通知状态不支持重复配置) | The current notification status does not support duplicate configurations. |
-| [1600016](../errorcode-notification.md#1600016-本次更新的通知版本太低) | The notification version for this update is too low. |
-| [1600020](../errorcode-notification.md#1600020-不允许权限管控名单中的应用发布通知) | The application is not allowed to send notifications due to permission settings. |
-| [1600025](../errorcode-notification.md#1600025-地理围栏开关关闭) | Geofencing disabled.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 23+ |
-| [1600026](../errorcode-notification.md#1600026-位置功能开关关闭) | The location switch is off.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 23+ |
-| [1600027](../errorcode-notification.md#1600027-位置系统服务的感知与提醒开关关闭) | The "Awareness & suggestions" switch of the location-based service is off.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 23+ |
-| [1600029](../errorcode-notification.md#1600029-系统无法找到实况窗卡片自定义扩展区的extensionability) | The system failed to find the ExtensionAbility instance for the custom Live View widget template.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 26.0.0+ |
-| [2300007](../../apis-network-kit/errorcode-net-http.md#2300007-无法连接到服务器) | Network unreachable. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -318,7 +330,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 被代理应用的包信息
 let representativeBundle: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 // NotificationRequest对象
 let request: notificationManager.NotificationRequest = {
@@ -326,14 +338,14 @@ let request: notificationManager.NotificationRequest = {
     content: {
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
         normal: {
-            title: "test_title",
-            text: "test_text",
-            additionalText: "test_additionalText"
+            title: 'test_title',
+            text: 'test_text',
+            additionalText: 'test_additionalText'
         }
     }
 };
 notificationManager.publishAsBundle(representativeBundle, request).then(() => {
-    console.info("publishAsBundle success");
+    console.info('publishAsBundle success');
 }).catch((err: BusinessError) => {
     console.error(`publishAsBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -346,7 +358,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 被代理应用的包信息
 let representativeBundle: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 // NotificationRequest对象
 let request: notificationManager.NotificationRequest = {
@@ -354,14 +366,14 @@ let request: notificationManager.NotificationRequest = {
     content: {
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
         normal: {
-            title: "test_title",
-            text: "test_text",
-            additionalText: "test_additionalText"
+            title: 'test_title',
+            text: 'test_text',
+            additionalText: 'test_additionalText'
         }
     }
 };
 notificationManager.publishAsBundle(representativeBundle, request).then(() => {
-    console.info("publishAsBundle success");
+    console.info('publishAsBundle success');
 }).catch((err: Error): void => {
     let error: BusinessError = err as BusinessError;
     console.error(`publishAsBundle failed, code is ${error.code}, message is ${error.message}`);

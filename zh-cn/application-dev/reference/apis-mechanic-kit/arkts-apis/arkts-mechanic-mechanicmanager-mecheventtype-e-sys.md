@@ -4,7 +4,9 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-mechanicManager-export enum MechEventType--><!--Device-mechanicManager-export enum MechEventType-End-->
 
@@ -22,7 +24,9 @@ DEVICE_ADSORBED = 0
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-MechEventType-DEVICE_ADSORBED = 0--><!--Device-MechEventType-DEVICE_ADSORBED = 0-End-->
 
@@ -40,7 +44,9 @@ DEVICE_UNADSORBED = 1
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-MechEventType-DEVICE_UNADSORBED = 1--><!--Device-MechEventType-DEVICE_UNADSORBED = 1-End-->
 
@@ -58,7 +64,9 @@ REACH_CLIFF = 2
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-MechEventType-REACH_CLIFF = 2--><!--Device-MechEventType-REACH_CLIFF = 2-End-->
 
@@ -76,7 +84,9 @@ REACH_OBSTACLE = 3
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-MechEventType-REACH_OBSTACLE = 3--><!--Device-MechEventType-REACH_OBSTACLE = 3-End-->
 
@@ -94,7 +104,9 @@ LOW_POWER = 4
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-MechEventType-LOW_POWER = 4--><!--Device-MechEventType-LOW_POWER = 4-End-->
 

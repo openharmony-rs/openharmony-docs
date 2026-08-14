@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-export class DialogBaseController--><!--Device-unnamed-export class DialogBaseController-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -21,6 +23,8 @@ close(): void
 **起始版本：** 26.1.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,6 +46,8 @@ constructor()
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
@@ -62,6 +68,8 @@ getState(): DialogState
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
@@ -74,5 +82,5 @@ getState(): DialogState
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回状态。 |
+| [DialogState](arkts-arkui-arkui-dialog-dialogstate-e.md) | 返回状态。 |
 

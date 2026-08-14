@@ -12,6 +12,8 @@ function getTask(taskId: number, taskName?: string): Task | undefined
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-taskpool-function getTask(taskId: number, taskName?: string): Task | undefined--><!--Device-taskpool-function getTask(taskId: number, taskName?: string): Task | undefined-End-->
@@ -22,16 +24,16 @@ function getTask(taskId: number, taskName?: string): Task | undefined
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| taskId | number | 是 | 任务ID。该值应为整数。 |
+| taskId | number | 是 | 任务ID。 该值应为整数。 |
 | taskName | string | 否 | 任务名称。默认值为undefined。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Task实例；当情况异常时，返回undefined，具体可见上文说明。 |
+| Task | Task实例；当情况异常时，返回undefined，具体可见上文说明。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { taskpool } from '@kit.ArkTS';

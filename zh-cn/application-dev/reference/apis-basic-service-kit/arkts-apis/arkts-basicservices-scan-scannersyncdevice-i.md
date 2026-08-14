@@ -2,9 +2,11 @@
 
 定义扫描仪同步设备的接口。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-scan-interface ScannerSyncDevice--><!--Device-scan-interface ScannerSyncDevice-End-->
 
@@ -18,11 +20,13 @@ discoveryMode: ScannerDiscoveryMode
 
 发现模式。
 
-**类型：** ScannerDiscoveryMode
+**类型：** [ScannerDiscoveryMode](arkts-basicservices-scan-scannerdiscoverymode-e.md)
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ScannerSyncDevice-discoveryMode: ScannerDiscoveryMode--><!--Device-ScannerSyncDevice-discoveryMode: ScannerDiscoveryMode-End-->
 
@@ -38,9 +42,11 @@ oldScannerId?: string
 
 **类型：** string
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ScannerSyncDevice-oldScannerId?: string--><!--Device-ScannerSyncDevice-oldScannerId?: string-End-->
 
@@ -56,9 +62,11 @@ scannerId: string
 
 **类型：** string
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ScannerSyncDevice-scannerId: string--><!--Device-ScannerSyncDevice-scannerId: string-End-->
 
@@ -72,11 +80,13 @@ syncMode: ScannerSyncMode
 
 同步模式。
 
-**类型：** ScannerSyncMode
+**类型：** [ScannerSyncMode](arkts-basicservices-scan-scannersyncmode-e.md)
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ScannerSyncDevice-syncMode: ScannerSyncMode--><!--Device-ScannerSyncDevice-syncMode: ScannerSyncMode-End-->
 
@@ -92,9 +102,11 @@ uniqueId: string
 
 **类型：** string
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ScannerSyncDevice-uniqueId: string--><!--Device-ScannerSyncDevice-uniqueId: string-End-->
 

@@ -6,11 +6,13 @@
 function watch(obj: object, msg: string): void
 ```
 
-ע������й©�Ķ���
+注册待检测泄漏的对象。
 
-**起始版本：** 12
+**起始版本：** 26.1.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为26.1.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+
+**废弃版本：** -1
 
 <!--Device-jsLeakWatcher-function watch(obj: object, msg: string): void--><!--Device-jsLeakWatcher-function watch(obj: object, msg: string): void-End-->
 
@@ -20,10 +22,10 @@ function watch(obj: object, msg: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| obj | object | 是 | ��Ҫ���Ķ���\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_**˵��**���ɴ����κη�null��ArkTS���󣬲�֧��undefined�ͻ������͡� |
-| msg | string | 是 | �Զ��������Ϣ�� |
+| obj | object | 是 | 需要检测的对象。&lt;br&gt;**说明：**可传入任何非null的ArkTS对象，不支持undefined和基本类型。 |
+| msg | string | 是 | 自定义对象信息。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let obj:Object = new Object();

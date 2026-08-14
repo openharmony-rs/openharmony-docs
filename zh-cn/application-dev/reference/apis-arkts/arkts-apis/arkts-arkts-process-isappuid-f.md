@@ -14,7 +14,7 @@ function isAppUid(v: number): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [process.ProcessManager.isAppUid](arkts-arkts-process-processmanager-c.md#isappuid)
+**替代接口：** [isAppUid](arkts-arkts-process-processmanager-c.md#isAppUid)
 
 <!--Device-process-function isAppUid(v: number): boolean--><!--Device-process-function isAppUid(v: number): boolean-End-->
 
@@ -30,9 +30,9 @@ function isAppUid(v: number): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 返回判断结果。如果是应用程序的 uid 则返回 true； |
+| boolean | 返回判断结果。如果是应用程序的 uid 则返回 true； 否则返回 false。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // uid通过process.uid获取

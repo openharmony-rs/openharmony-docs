@@ -88,7 +88,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_GetContentEmbedContext(ContentE
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
+| ContentEmbed_ErrorCode | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
 
 ### OH_ContentEmbed_Extension_GetContext()
 
@@ -107,13 +107,13 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_GetContext(ContentEmbed_Extensi
 | 参数项 | 描述 |
 | -- | -- |
 | [ContentEmbed_ExtensionContextHandle](capi-contentembed-contentembed-extensioncontext8h.md) ceContext | OE Extension上下文对象的指针。 |
-| AbilityRuntime_ContextHandle *context | 输出参数。调用成功后，该指针指向{@link AbilityRuntime_ContextHandle}上下文对象。 |
+| AbilityRuntime_ContextHandle *context | 输出参数。调用成功后，该指针指向[AbilityRuntime_ContextHandle](../AbilityKit/capi-abilityruntime-abilityruntime-context8h.md)上下文对象。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
+| ContentEmbed_ErrorCode | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
 
 ### OH_ContentEmbed_Extension_GetExtensionInstance()
 
@@ -131,14 +131,14 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_GetExtensionInstance(AbilityRun
 
 | 参数项 | 描述 |
 | -- | -- |
-| AbilityRuntime_ExtensionInstanceHandle baseInstance | {@link AbilityRuntime_ExtensionInstanceHandle}实例。 |
+| AbilityRuntime_ExtensionInstanceHandle baseInstance | [AbilityRuntime_ExtensionInstanceHandle](../AbilityKit/capi-abilityruntime-abilityruntime-extensioninstance8h.md)实例。 |
 | [ContentEmbed_ExtensionInstanceHandle](capi-contentembed-contentembed-extensioninstance8h.md) *ceInstance | 输出参数。调用成功后，该指针指向OE Extension实例对象。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
+| ContentEmbed_ErrorCode | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
 
 ### OH_ContentEmbed_Extension_OnCreateFunc()
 
@@ -157,7 +157,7 @@ OE Extension实例创建时的生命周期函数类型。<br>开发者需要实�
 | 参数项 | 描述 |
 | -- | -- |
 | (ContentEmbed_ExtensionInstanceHandle instance | OE Extension实例对象的指针。 |
-| AbilityBase_Want \*want | {@link AbilityBase_Want}实例的指针。 |
+| [AbilityBase_Want](../AbilityKit/capi-abilitybase-abilitybase-want.md) \*want | [AbilityBase_Want](../AbilityKit/capi-abilitybase-abilitybase-want.md)实例的指针。 |
 
 ### OH_ContentEmbed_Extension_OnDestroyFunc()
 
@@ -331,7 +331,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_RegisterOnCreateFunc(ContentEmb
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
+| ContentEmbed_ErrorCode | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
 
 ### OH_ContentEmbed_Extension_RegisterOnDestroyFunc()
 
@@ -356,7 +356,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_RegisterOnDestroyFunc(ContentEm
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
+| ContentEmbed_ErrorCode | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
 
 ### OH_ContentEmbed_Extension_RegisterOnObjectAttachFunc()
 
@@ -381,7 +381,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_RegisterOnObjectAttachFunc(Cont
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
+| ContentEmbed_ErrorCode | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
 
 ### OH_ContentEmbed_Extension_UnRegisterOnObjectAttachFunc()
 
@@ -405,7 +405,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_UnRegisterOnObjectAttachFunc(Co
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
+| ContentEmbed_ErrorCode | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
 
 ### OH_ContentEmbed_Extension_RegisterOnObjectDetachFunc()
 
@@ -430,7 +430,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_RegisterOnObjectDetachFunc(Cont
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
+| ContentEmbed_ErrorCode | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
 
 ### OH_ContentEmbed_Extension_UnRegisterOnObjectDetachFunc()
 
@@ -454,7 +454,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_UnRegisterOnObjectDetachFunc(Co
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
+| ContentEmbed_ErrorCode | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
 
 ### OH_ContentEmbed_Extension_RegisterOnWriteToDataStreamFunc()
 
@@ -479,7 +479,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_RegisterOnWriteToDataStreamFunc
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
+| ContentEmbed_ErrorCode | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
 
 ### OH_ContentEmbed_Extension_RegisterOnGetSnapshotFunc()
 
@@ -504,7 +504,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_RegisterOnGetSnapshotFunc(Conte
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
+| ContentEmbed_ErrorCode | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
 
 ### OH_ContentEmbed_Extension_RegisterOnDoEditFunc()
 
@@ -529,7 +529,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_RegisterOnDoEditFunc(ContentEmb
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
+| ContentEmbed_ErrorCode | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
 
 ### OH_ContentEmbed_Extension_RegisterOnGetEditStatusFunc()
 
@@ -554,7 +554,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_RegisterOnGetEditStatusFunc(Con
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
+| ContentEmbed_ErrorCode | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
 
 ### OH_ContentEmbed_Extension_RegisterOnGetCapabilityFunc()
 
@@ -579,7 +579,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_RegisterOnGetCapabilityFunc(Con
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
+| ContentEmbed_ErrorCode | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
 
 ### OH_ContentEmbed_Extension_GetContentEmbedDocument()
 
@@ -604,7 +604,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_GetContentEmbedDocument(Content
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
+| ContentEmbed_ErrorCode | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
 
 ### OH_ContentEmbed_Extension_CallbackToOnUpdate()
 
@@ -628,7 +628,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_CallbackToOnUpdate(ContentEmbed
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li><br>     <li>[CE_ERR_CLIENT_CALLBACK_NOT_REGISTERED](capi-content-embed-common-h.md#contentembed_errorcode)：表示客户端回调未注册。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_CLIENT_CALLBACK_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示客户端回调执行失败。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
+| ContentEmbed_ErrorCode | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li><br>     <li>[CE_ERR_CLIENT_CALLBACK_NOT_REGISTERED](capi-content-embed-common-h.md#contentembed_errorcode)：表示客户端回调未注册。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_CLIENT_CALLBACK_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示客户端回调执行失败。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
 
 ### OH_ContentEmbed_Extension_CallbackToOnError()
 
@@ -647,13 +647,13 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_CallbackToOnError(ContentEmbed_
 | 参数项 | 描述 |
 | -- | -- |
 | [ContentEmbed_ObjectHandle](capi-contentembed-contentembed-object8h.md) object | [ContentEmbed_ObjectHandle](capi-contentembed-contentembed-object8h.md)实例。 |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) code | 表示错误码，详细定义参见[ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode)。 |
+| ContentEmbed_ErrorCode code | 表示错误码，详细定义参见[ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li><br>     <li>[CE_ERR_CLIENT_CALLBACK_NOT_REGISTERED](capi-content-embed-common-h.md#contentembed_errorcode)：表示客户端回调未注册。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_CLIENT_CALLBACK_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示客户端回调执行失败。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
+| ContentEmbed_ErrorCode | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li><br>     <li>[CE_ERR_CLIENT_CALLBACK_NOT_REGISTERED](capi-content-embed-common-h.md#contentembed_errorcode)：表示客户端回调未注册。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_CLIENT_CALLBACK_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示客户端回调执行失败。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
 
 ### OH_ContentEmbed_Extension_CallbackToOnEditingFinished()
 
@@ -678,7 +678,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_CallbackToOnEditingFinished(Con
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li><br>     <li>[CE_ERR_CLIENT_CALLBACK_NOT_REGISTERED](capi-content-embed-common-h.md#contentembed_errorcode)：表示客户端回调未注册。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_CLIENT_CALLBACK_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示客户端回调执行失败。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
+| ContentEmbed_ErrorCode | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li><br>     <li>[CE_ERR_CLIENT_CALLBACK_NOT_REGISTERED](capi-content-embed-common-h.md#contentembed_errorcode)：表示客户端回调未注册。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_CLIENT_CALLBACK_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示客户端回调执行失败。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
 
 ### OH_ContentEmbed_Extension_CallbackToOnExtensionStopped()
 
@@ -702,7 +702,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_CallbackToOnExtensionStopped(Co
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li><br>     <li>[CE_ERR_CLIENT_CALLBACK_NOT_REGISTERED](capi-content-embed-common-h.md#contentembed_errorcode)：表示客户端回调未注册。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_CLIENT_CALLBACK_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示客户端回调执行失败。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
+| ContentEmbed_ErrorCode | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li><br>     <li>[CE_ERR_CLIENT_CALLBACK_NOT_REGISTERED](capi-content-embed-common-h.md#contentembed_errorcode)：表示客户端回调未注册。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_CLIENT_CALLBACK_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示客户端回调执行失败。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
 
 ### OH_ContentEmbed_Extension_SetSnapshot()
 
@@ -727,7 +727,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_SetSnapshot(ContentEmbed_Object
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>     <li>[CE_ERR_IMAGE_PACKER_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示图像操作失败。</li><br>         </ul> |
+| ContentEmbed_ErrorCode | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>     <li>[CE_ERR_IMAGE_PACKER_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示图像操作失败。</li><br>         </ul> |
 
 ### OH_ContentEmbed_Extension_ContextStartSelfUIAbility()
 
@@ -746,13 +746,13 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_ContextStartSelfUIAbility(Conte
 | 参数项 | 描述 |
 | -- | -- |
 | [ContentEmbed_ExtensionContextHandle](capi-contentembed-contentembed-extensioncontext8h.md) context | 指向OE Extension上下文对象的指针。 |
-| AbilityBase_Want *want | 启动UIAbility时传递的参数，详细信息参考{@link AbilityBase_Want}。 |
+| [AbilityBase_Want](../AbilityKit/capi-abilitybase-abilitybase-want.md) *want | 启动UIAbility时传递的参数，详细信息参考[AbilityBase_Want](../AbilityKit/capi-abilitybase-abilitybase-want.md)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li><br>     <li>[CE_ERR_SYSTEM_ABNORMAL](capi-content-embed-common-h.md#contentembed_errorcode)：表示系统服务异常。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
+| ContentEmbed_ErrorCode | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li><br>     <li>[CE_ERR_SYSTEM_ABNORMAL](capi-content-embed-common-h.md#contentembed_errorcode)：表示系统服务异常。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
 
 ### OH_ContentEmbed_Extension_ContextStartSelfUIAbilityWithStartOptions()
 
@@ -771,14 +771,14 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_ContextStartSelfUIAbilityWithSt
 | 参数项 | 描述 |
 | -- | -- |
 | [ContentEmbed_ExtensionContextHandle](capi-contentembed-contentembed-extensioncontext8h.md) context | 指向OE Extension上下文对象的指针。 |
-| AbilityBase_Want *want | 启动UIAbility时传递的参数，详细信息参考{@link AbilityBase_Want}。 |
+| [AbilityBase_Want](../AbilityKit/capi-abilitybase-abilitybase-want.md) *want | 启动UIAbility时传递的参数，详细信息参考[AbilityBase_Want](../AbilityKit/capi-abilitybase-abilitybase-want.md)。 |
 | AbilityRuntime_StartOptions *options | 启动UIAbility时的附加选项，详细信息参考{@link AbilityRuntime_StartOptions}。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li><br>     <li>[CE_ERR_SYSTEM_ABNORMAL](capi-content-embed-common-h.md#contentembed_errorcode)：表示系统服务异常。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
+| ContentEmbed_ErrorCode | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li><br>     <li>[CE_ERR_SYSTEM_ABNORMAL](capi-content-embed-common-h.md#contentembed_errorcode)：表示系统服务异常。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
 
 ### OH_ContentEmbed_Extension_ContextTerminateAbility()
 
@@ -802,6 +802,6 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_ContextTerminateAbility(Content
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li><br>     <li>[CE_ERR_SYSTEM_ABNORMAL](capi-content-embed-common-h.md#contentembed_errorcode)：表示系统服务异常。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
+| ContentEmbed_ErrorCode | <ul><br>     <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li><br>     <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li><br>     <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li><br>     <li>[CE_ERR_SYSTEM_ABNORMAL](capi-content-embed-common-h.md#contentembed_errorcode)：表示系统服务异常。</li><br>     <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li><br>     <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li><br>         </ul> |
 
 

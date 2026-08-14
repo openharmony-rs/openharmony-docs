@@ -12,6 +12,8 @@ function isByodAdmin(admin: Want): boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **需要权限：** ohos.permission.START_PROVISIONING_MESSAGE
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -24,7 +26,7 @@ function isByodAdmin(admin: Want): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。仅支持传入当前应用的企业设备管理扩展组件。 |
+| admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。仅支持传入当前应用的企业设备管理扩展组件。 |
 
 **返回值：**
 
@@ -37,9 +39,9 @@ function isByodAdmin(admin: Want): boolean
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [9200012](../errorcode-enterpriseDeviceManager.md#9200012-参数校验失败) | Parameter verification failed. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { Want } from '@kit.AbilityKit';

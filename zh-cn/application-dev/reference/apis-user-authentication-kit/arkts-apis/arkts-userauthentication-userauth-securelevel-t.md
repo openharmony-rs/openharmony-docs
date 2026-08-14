@@ -12,7 +12,7 @@ type SecureLevel = 'S1' | 'S2' | 'S3' | 'S4'
 
 **废弃版本：** 8
 
-**替代接口：** [userAuth.AuthTrustLevel](arkts-userauthentication-userauth-authtrustlevel-e.md)
+**替代接口：** [AuthTrustLevel](arkts-userauthentication-userauth-authtrustlevel-e.md#AuthTrustLevel)
 
 <!--Device-userAuth-type SecureLevel = 'S1' | 'S2' | 'S3' | 'S4'--><!--Device-userAuth-type SecureLevel = 'S1' | 'S2' | 'S3' | 'S4'-End-->
 

@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-interface DataAddOperation--><!--Device-unnamed-interface DataAddOperation-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -25,6 +27,8 @@ count?: number
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -48,6 +52,8 @@ index: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -62,13 +68,15 @@ index: number
 key?: string | Array<string>
 ```
 
-为添加的数据分配键值，默认使用原键值。键值支持string或Array\_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_类型；当键值为数组且长度大于count时报参数无效错误。
+为添加的数据分配键值，默认使用原键值。键值支持string或Array&lt;string&gt;类型；当键值为数组且长度大于count时报参数无效错误。
 
 **类型：** string \| Array&lt;string&gt;
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -86,11 +94,13 @@ type: DataOperationType.ADD
 
 数据添加类型。
 
-**类型：** DataOperationType.ADD
+**类型：** [DataOperationType.ADD](arkts-arkui-dataoperationtype-e.md)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

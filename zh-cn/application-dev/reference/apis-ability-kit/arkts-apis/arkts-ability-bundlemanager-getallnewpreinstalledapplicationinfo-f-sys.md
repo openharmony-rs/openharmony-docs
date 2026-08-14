@@ -10,7 +10,9 @@ function getAllNewPreinstalledApplicationInfo(): Promise<Array<PreinstalledAppli
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -35,7 +37,7 @@ function getAllNewPreinstalledApplicationInfo(): Promise<Array<PreinstalledAppli
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例:
 

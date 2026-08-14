@@ -2,9 +2,11 @@
 
 端云同步任务的状态。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-cloudData-enum SyncStatus--><!--Device-cloudData-enum SyncStatus-End-->
 
@@ -20,9 +22,11 @@ RUNNING = 0
 
 端云同步任务正在运行中。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SyncStatus-RUNNING = 0--><!--Device-SyncStatus-RUNNING = 0-End-->
 
@@ -38,9 +42,11 @@ FINISHED = 1
 
 端云同步任务已完成。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SyncStatus-FINISHED = 1--><!--Device-SyncStatus-FINISHED = 1-End-->
 

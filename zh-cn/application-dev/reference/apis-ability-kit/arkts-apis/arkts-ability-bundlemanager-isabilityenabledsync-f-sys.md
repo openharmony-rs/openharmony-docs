@@ -8,9 +8,11 @@ function isAbilityEnabledSync(info: AbilityInfo): boolean
 
 以同步方法获取指定组件的禁用或使能状态。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-bundleManager-function isAbilityEnabledSync(info: AbilityInfo): boolean--><!--Device-bundleManager-function isAbilityEnabledSync(info: AbilityInfo): boolean-End-->
 
@@ -22,7 +24,7 @@ function isAbilityEnabledSync(info: AbilityInfo): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 表示关于检查ability的信息。 |
+| info | AbilityInfo | 是 | 表示关于检查ability的信息。 |
 
 **返回值：**
 
@@ -34,12 +36,12 @@ function isAbilityEnabledSync(info: AbilityInfo): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 | [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified abilityName is not found. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例:
 

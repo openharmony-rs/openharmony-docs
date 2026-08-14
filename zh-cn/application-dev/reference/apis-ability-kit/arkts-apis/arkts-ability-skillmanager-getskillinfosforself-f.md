@@ -12,6 +12,8 @@ function getSkillInfosForSelf(flags: int): Promise<Array<SkillInfo>>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -36,5 +38,5 @@ function getSkillInfosForSelf(flags: int): Promise<Array<SkillInfo>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17700101](../errorcode-bundle.md#17700101-包管理服务异常) | Bundle manager service is exception. Possible causes:1. Failed to connect to the system service.2. IPC data transmission failed.3. Failed to obtain the object constructor. |
+| [17700101](../errorcode-bundle.md#17700101-包管理服务异常) | Bundle manager service is exception. Possible causes: 1. Failed to connect to the system service. 2. IPC data transmission failed. 3. Failed to obtain the object constructor. |
 

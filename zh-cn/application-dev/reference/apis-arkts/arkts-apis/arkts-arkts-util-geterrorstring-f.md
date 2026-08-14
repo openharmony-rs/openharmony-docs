@@ -14,7 +14,7 @@ function getErrorString(errno: number): string
 
 **废弃版本：** 9
 
-**替代接口：** [util.errnoToString](arkts-arkts-util-errnotostring-f.md#errnotostring)
+**替代接口：** [errnoToString](arkts-arkts-util-errnotostring-f.md#errnoToString)
 
 <!--Device-util-function getErrorString(errno: number): string--><!--Device-util-function getErrorString(errno: number): string-End-->
 
@@ -32,7 +32,7 @@ function getErrorString(errno: number): string
 | --- | --- |
 | string | 错误码的详细信息。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let errnum = -1; // -1 : a system error number

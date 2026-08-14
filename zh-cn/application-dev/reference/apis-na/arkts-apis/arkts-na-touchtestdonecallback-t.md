@@ -10,6 +10,8 @@ Defines the callback type used in onTouchTestDone. When the user touch down, the
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-export type TouchTestDoneCallback = (event: BaseGestureEvent, recognizers: Array<GestureRecognizer>) => void--><!--Device-unnamed-export type TouchTestDoneCallback = (event: BaseGestureEvent, recognizers: Array<GestureRecognizer>) => void-End-->
@@ -20,6 +22,6 @@ Defines the callback type used in onTouchTestDone. When the user touch down, the
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | the event information, basicly is the touch down information  |
-| recognizers | Array&lt;\_\_\_MD\_LINK\_USD\_0\_\_\_&gt; | 是 | the gesture recognizers of the component on the response chain  |
+| event | [BaseGestureEvent](../../apis-arkui/arkts-apis/arkts-arkui-basegestureevent-i.md) | 是 | the event information, basicly is the touch down information |
+| recognizers | Array&lt;[GestureRecognizer](../../apis-arkui/arkts-apis/arkts-arkui-gesturerecognizer-c.md)&gt; | 是 | the gesture recognizers of the component on the response chain |
 

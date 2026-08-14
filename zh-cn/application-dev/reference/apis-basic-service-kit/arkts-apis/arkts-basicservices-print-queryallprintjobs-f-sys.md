@@ -8,13 +8,13 @@ function queryAllPrintJobs(callback: AsyncCallback<void>): void
 
 查询所有打印任务，使用callback异步回调。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
 **废弃版本：** 11
 
-**替代接口：** [null]
+**替代接口：** null
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -28,7 +28,7 @@ function queryAllPrintJobs(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 异步查询所有打印任务之后的回调。 |
+| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 异步查询所有打印任务之后的回调。 |
 
 **错误码：**
 
@@ -46,13 +46,13 @@ function queryAllPrintJobs(): Promise<void>
 
 查询所有打印任务，使用Promise异步回调。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
 **废弃版本：** 11
 
-**替代接口：** [null]
+**替代接口：** null
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 

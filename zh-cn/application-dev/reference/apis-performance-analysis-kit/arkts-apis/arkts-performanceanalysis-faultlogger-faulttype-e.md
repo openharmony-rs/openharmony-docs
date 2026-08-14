@@ -8,7 +8,7 @@
 
 **废弃版本：** 18
 
-**替代接口：** ohos.hiviewdfx.hiAppEvent/hiAppEvent.event
+**替代接口：** [event](arkts-performanceanalysis-hiappevent-event-n.md#event)
 
 <!--Device-FaultLogger-enum FaultType--><!--Device-FaultLogger-enum FaultType-End-->
 

@@ -2,9 +2,11 @@
 
 ScrollEvent info.
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-uiObserver-export interface ScrollEventInfo--><!--Device-uiObserver-export interface ScrollEventInfo-End-->
 
@@ -16,15 +18,19 @@ ScrollEvent info.
 axis?: Axis
 ```
 
-滚动轴。
+滚动方向。
 
 **类型：** Axis
 
-**起始版本：** 26.0.0
+**起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ScrollEventInfo-axis?: Axis--><!--Device-ScrollEventInfo-axis?: Axis-End-->
 
@@ -40,11 +46,15 @@ Scroll id.
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ScrollEventInfo-id: string--><!--Device-ScrollEventInfo-id: string-End-->
 
@@ -53,20 +63,24 @@ Scroll id.
 ## offset
 
 ```TypeScript
-offset: double
+offset: number
 ```
 
 Changed ScrollEvent offset.
 
-**类型：** double
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ScrollEventInfo-offset: double--><!--Device-ScrollEventInfo-offset: double-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ScrollEventInfo-offset: number--><!--Device-ScrollEventInfo-offset: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,13 +92,17 @@ scrollEvent: ScrollEventType
 
 Changed ScrollEvent type.
 
-**类型：** ScrollEventType
+**类型：** [ScrollEventType](arkts-arkui-uiobserver-scrolleventtype-e.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ScrollEventInfo-scrollEvent: ScrollEventType--><!--Device-ScrollEventInfo-scrollEvent: ScrollEventType-End-->
 
@@ -93,20 +111,24 @@ Changed ScrollEvent type.
 ## uniqueId
 
 ```TypeScript
-uniqueId: int
+uniqueId: number
 ```
 
 The uniqueId of the scrollable component.
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ScrollEventInfo-uniqueId: int--><!--Device-ScrollEventInfo-uniqueId: int-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ScrollEventInfo-uniqueId: number--><!--Device-ScrollEventInfo-uniqueId: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

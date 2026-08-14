@@ -1,14 +1,16 @@
 # PriKey
 
-私钥，是[Key]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_的子类，在非对称解密、签名、密钥协商时需要将其作为输入使用。 \_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_私钥可以通过非对称密钥生成器[AsyKeyGenerator]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_、 [AsyKeyGeneratorBySpec]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_来生成。
+私钥，是[Key](arkts-cryptoarchitecture-cryptoframework-key-i.md#Key)的子类，在非对称解密、签名、密钥协商时需要将其作为输入使用。 &lt;br&gt;私钥可以通过非对称密钥生成器[AsyKeyGenerator](arkts-cryptoarchitecture-cryptoframework-asykeygenerator-i.md#AsyKeyGenerator)、 [AsyKeyGeneratorBySpec](arkts-cryptoarchitecture-cryptoframework-asykeygeneratorbyspec-i.md#AsyKeyGeneratorBySpec)来生成。
 
-**继承/实现关系：** PriKey extends [Key](arkts-cryptoarchitecture-cryptoframework-key-i.md)
+**继承/实现关系：** PriKey extends [Key](arkts-cryptoarchitecture-cryptoframework-key-i.md#Key)
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-<!--Device-cryptoFramework-interface PriKey extends Key--><!--Device-cryptoFramework-interface PriKey extends Key-End-->
+**废弃版本：** -1
+
+<!--Device-cryptoFramework-interface PriKey--><!--Device-cryptoFramework-interface PriKey-End-->
 
 **系统能力：** 
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -22,9 +24,11 @@ clearMem(): void
 
 同步方法，清零系统底层内存中的密钥数据。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -34,7 +38,7 @@ clearMem(): void
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
 - API版本9-11：SystemCapability.Security.CryptoFramework
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -54,21 +58,17 @@ async function testClearMem() {
 
 ## getAsyKeySpec
 
-ArkTS-Dyn:
-```TypeScript
-getAsyKeySpec(itemType: AsyKeySpecItem): bigint | string | number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getAsyKeySpec(itemType: AsyKeySpecItem): bigint | string | int
 ```
 
 获取一个密钥参数。此API以同步方式返回结果。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -82,7 +82,7 @@ getAsyKeySpec(itemType: AsyKeySpecItem): bigint | string | int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| itemType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 指定的密钥参数类型。 |
+| itemType | [AsyKeySpecItem](arkts-cryptoarchitecture-cryptoframework-asykeyspecitem-e.md) | 是 | 指定的密钥参数类型。 |
 
 **返回值：**
 
@@ -94,13 +94,13 @@ getAsyKeySpec(itemType: AsyKeySpecItem): bigint | string | int
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_1. 必填参数未指定；\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. 参数类型不正确；\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_3. 参数验证失败。 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | 非法入参。可能的原因： &lt;br&gt;1. 必填参数未指定； &lt;br&gt;2. 参数类型不正确； &lt;br&gt;3. 参数验证失败。 |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | 该操作不支持。 |
-| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
-| [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 26.0.0+ |
+| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
+| [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。<br>**适用版本：** 26.0.0+ |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -182,13 +182,15 @@ async function testgetAsyKeySpec() {
 getEncodedDer(format: string): DataBlob
 ```
 
-支持根据指定的密钥格式（如采用哪个规范），获取满足ASN.1语法、DER编码的私钥数据。 > **说明：** > > 本接口和[Key.getEncoded()]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_的区别是： > 1. 本接口可以指定获取密钥数据的格式。 > 2. [Key.getEncoded()]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_不支持指定获取密钥数据的格式。
+支持根据指定的密钥格式（如采用哪个规范），获取满足ASN.1语法、DER编码的私钥数据。 > **说明：** > > 本接口和[Key.getEncoded()](arkts-cryptoarchitecture-cryptoframework-key-i.md#getEncoded)的区别是： > 1. 本接口可以指定获取密钥数据的格式。 > 2. [Key.getEncoded()](arkts-cryptoarchitecture-cryptoframework-key-i.md#getEncoded)不支持指定获取密钥数据的格式。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PriKey-getEncodedDer(format: string): DataBlob--><!--Device-PriKey-getEncodedDer(format: string): DataBlob-End-->
 
@@ -198,24 +200,24 @@ getEncodedDer(format: string): DataBlob
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| format | string | 是 | 用于指定当前密钥格式。支持EC密钥，format取值支持"PKCS8"。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_从API版本26.0.0开始，支持RSA密钥，format取值支持"PKCS1"和"PKCS8"。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_从API版本26.0.0开始，支持ML-DSA和ML-KEM密钥，format取值支持"PKCS8"。 |
+| format | string | 是 | 用于指定当前密钥格式。支持EC密钥，format取值支持"PKCS8"。 &lt;br&gt;从API版本26.0.0开始，支持RSA密钥，format取值支持"PKCS1"和"PKCS8"。 &lt;br&gt;从API版本26.0.0开始，支持ML-DSA和ML-KEM密钥，format取值支持"PKCS8"。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | DER编码的私钥数据。 |
+| DataBlob | DER编码的私钥数据。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_1. 必填参数未指定；\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. 参数类型不正确；\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_3. 参数验证失败。 |
-| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | 非法入参。可能的原因： &lt;br&gt;1. 必填参数未指定； &lt;br&gt;2. 参数类型不正确； &lt;br&gt;3. 参数验证失败。 |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
-| [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 26.0.0+ |
+| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
+| [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。<br>**适用版本：** 26.0.0+ |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -240,11 +242,13 @@ getEncodedPem(format: string): string
 
 获取PEM编码的私钥数据。此API以同步方式返回结果。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PriKey-getEncodedPem(format: string): string--><!--Device-PriKey-getEncodedPem(format: string): string-End-->
 
@@ -254,7 +258,7 @@ getEncodedPem(format: string): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| format | string | 是 | 指定的获取密钥字符串的编码格式。支持RSA密钥，format取值支持"PKCS8"或"PKCS1"。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_自API版本26.0.0起，支持EC密钥，format取值支持"PKCS8"或"EC"。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_自API版本26.0.0起，支持ML-DSA和ML-KEM密钥，format取值支持"PKCS8"。 |
+| format | string | 是 | 指定的获取密钥字符串的编码格式。支持RSA密钥，format取值支持"PKCS8"或"PKCS1"。 &lt;br&gt;自API版本26.0.0起，支持EC密钥，format取值支持"PKCS8"或"EC"。 &lt;br&gt;自API版本26.0.0起，支持ML-DSA和ML-KEM密钥，format取值支持"PKCS8"。 |
 
 **返回值：**
 
@@ -266,12 +270,12 @@ getEncodedPem(format: string): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_1. 必填参数未指定；\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. 参数类型不正确；\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_3. 参数验证失败。 |
-| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | 非法入参。可能的原因： &lt;br&gt;1. 必填参数未指定； &lt;br&gt;2. 参数类型不正确； &lt;br&gt;3. 参数验证失败。 |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
-| [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 26.0.0+ |
+| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
+| [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。<br>**适用版本：** 26.0.0+ |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -310,11 +314,13 @@ getEncodedPem(format: string, config: KeyEncodingConfig): string
 
 获取PEM编码的加密的私钥数据。此API以同步方式返回结果。目前仅支持RSA密钥。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PriKey-getEncodedPem(format: string, config: KeyEncodingConfig): string--><!--Device-PriKey-getEncodedPem(format: string, config: KeyEncodingConfig): string-End-->
 
@@ -325,7 +331,7 @@ getEncodedPem(format: string, config: KeyEncodingConfig): string
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | format | string | 是 | 指定的获取密钥字符串的编码格式。对于RSA密钥，格式可以是"PKCS8"或"PKCS1"。 |
-| config | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 用于加密私钥的参数。 |
+| config | [KeyEncodingConfig](arkts-cryptoarchitecture-cryptoframework-keyencodingconfig-i.md) | 是 | 用于加密私钥的参数。 |
 
 **返回值：**
 
@@ -337,12 +343,12 @@ getEncodedPem(format: string, config: KeyEncodingConfig): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_1. 必填参数未指定；\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. 参数类型不正确；\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_3. 参数验证失败。 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | 非法入参。可能的原因： &lt;br&gt;1. 必填参数未指定； &lt;br&gt;2. 参数类型不正确； &lt;br&gt;3. 参数验证失败。 |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | 该操作不支持。 |
-| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
+| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -387,7 +393,9 @@ getKeyData(itemType: AsyKeyDataItem): Promise<Uint8Array>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -401,7 +409,7 @@ getKeyData(itemType: AsyKeyDataItem): Promise<Uint8Array>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| itemType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 指定密钥数据项类型。 |
+| itemType | [AsyKeyDataItem](arkts-cryptoarchitecture-cryptoframework-asykeydataitem-e.md) | 是 | 指定密钥数据项类型。 |
 
 **返回值：**
 
@@ -413,12 +421,12 @@ getKeyData(itemType: AsyKeyDataItem): Promise<Uint8Array>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。 |
-| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -437,11 +445,13 @@ async function eccGetKeyDataTest() {
 getKeyDataSync(itemType: AsyKeyDataItem): Uint8Array
 ```
 
-根据指定的密钥数据类型获取私钥数据。此API以同步方式返回结果。 \_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_**说明：** \_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_建议优先使用异步API，\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。同步API可能因系统繁忙、高负载等原因耗时较长而阻塞主线程。 因此建议在子线程中调用同步API，以避免阻塞主线程。
+根据指定的密钥数据类型获取私钥数据。此API以同步方式返回结果。 &lt;br&gt;&lt;br&gt;**说明：** &lt;br&gt;建议优先使用异步API，getKeyData。同步API可能因系统繁忙、高负载等原因耗时较长而阻塞主线程。 因此建议在子线程中调用同步API，以避免阻塞主线程。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -455,7 +465,7 @@ getKeyDataSync(itemType: AsyKeyDataItem): Uint8Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| itemType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 指定密钥数据项类型。 |
+| itemType | [AsyKeyDataItem](arkts-cryptoarchitecture-cryptoframework-asykeydataitem-e.md) | 是 | 指定密钥数据项类型。 |
 
 **返回值：**
 
@@ -467,12 +477,12 @@ getKeyDataSync(itemType: AsyKeyDataItem): Uint8Array
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
 | [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。 |
-| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -495,7 +505,9 @@ getPubKey(): Promise<PubKey>
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -507,17 +519,17 @@ getPubKey(): Promise<PubKey>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;PubKey&gt; | Promise对象，返回公钥对象PubKey。 |
+| Promise&lt;[PubKey](arkts-cryptoarchitecture-cryptoframework-pubkey-i.md)&gt; | Promise对象，返回公钥对象PubKey。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
-| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -593,11 +605,13 @@ async function generateAsyKey() {
 getPubKeySync(): PubKey
 ```
 
-以同步方式，从私钥对象中获取公钥对象。 \_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_**说明：** \_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_建议优先使用异步API，\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。同步API可能因系统繁忙、高负载等原因耗时较长而阻塞主线程。 因此建议在子线程中调用同步API，以避免阻塞主线程。
+以同步方式，从私钥对象中获取公钥对象。 &lt;br&gt;&lt;br&gt;**说明：** &lt;br&gt;建议优先使用异步API，[getPubKey](#getPubKey)。同步API可能因系统繁忙、高负载等原因耗时较长而阻塞主线程。 因此建议在子线程中调用同步API，以避免阻塞主线程。
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -609,17 +623,17 @@ getPubKeySync(): PubKey
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 公钥对象。 |
+| [PubKey](arkts-cryptoarchitecture-cryptoframework-pubkey-i.md) | 公钥对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
-| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';

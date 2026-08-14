@@ -2,9 +2,11 @@
 
 表示应用当前进程的预加载类型枚举。
 
-**起始版本：** 22
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为22；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-application-export enum AppPreloadType--><!--Device-application-export enum AppPreloadType-End-->
 
@@ -18,9 +20,11 @@ UNSPECIFIED = 0
 
 未发生预加载或预加载数据已被清除。
 
-**起始版本：** 22
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为22；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -36,9 +40,11 @@ TYPE_CREATE_PROCESS = 1
 
 进程最终预加载到进程创建完成阶段。
 
-**起始版本：** 22
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为22；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -52,11 +58,13 @@ TYPE_CREATE_PROCESS = 1
 TYPE_CREATE_ABILITY_STAGE = 2
 ```
 
-进程最终预加载到[AbilityStage]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_创建完成阶段。
+进程最终预加载到[AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md#AbilityStage)创建完成阶段。
 
-**起始版本：** 22
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为22；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -70,11 +78,13 @@ TYPE_CREATE_ABILITY_STAGE = 2
 TYPE_CREATE_WINDOW_STAGE = 3
 ```
 
-进程最终预加载到[WindowStage]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_创建完成阶段。
+进程最终预加载到[WindowStage](../../apis-arkui/arkts-apis/arkts-arkui-window-n.md#window)创建完成阶段。
 
-**起始版本：** 22
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为22；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -88,11 +98,13 @@ TYPE_CREATE_WINDOW_STAGE = 3
 TYPE_CREATE_BACKGROUND_ABILITY = 4
 ```
 
-进程最终预加载到[onBackground]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_执行完成阶段。
+进程最终预加载到[onBackground](arkts-ability-app-ability-uiability-uiability-c.md#onBackground)执行完成阶段。
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

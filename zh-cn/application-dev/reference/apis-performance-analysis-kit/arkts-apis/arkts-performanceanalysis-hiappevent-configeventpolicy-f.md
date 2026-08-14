@@ -8,11 +8,13 @@ function configEventPolicy(policy: EventPolicy): Promise<void>
 
 系统事件相关的配置策略设置方法，使用Promise方式作为异步回调。 在同一生命周期中，可以通过配置策略设置系统事件相关的策略参数。
 
-**起始版本：** 22
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为22；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-hiAppEvent-function configEventPolicy(policy: EventPolicy): Promise<void>--><!--Device-hiAppEvent-function configEventPolicy(policy: EventPolicy): Promise<void>-End-->
 
@@ -22,15 +24,15 @@ function configEventPolicy(policy: EventPolicy): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| policy | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 系统事件配置策略。 |
+| policy | [EventPolicy](arkts-performanceanalysis-hiappevent-eventpolicy-i.md) | 是 | 系统事件配置策略。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 &lt;br&gt;各个事件的事件配置策略，详细规格见[EventPolicy]{ |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

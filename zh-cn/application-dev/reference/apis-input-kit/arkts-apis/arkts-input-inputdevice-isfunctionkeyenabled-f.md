@@ -8,9 +8,11 @@ function isFunctionKeyEnabled(functionKey: FunctionKey): Promise<boolean>
 
 检查功能键（如：CapsLock键）是否使能。使用Promise异步回调。
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-inputDevice-function isFunctionKeyEnabled(functionKey: FunctionKey): Promise<boolean>--><!--Device-inputDevice-function isFunctionKeyEnabled(functionKey: FunctionKey): Promise<boolean>-End-->
 
@@ -20,7 +22,7 @@ function isFunctionKeyEnabled(functionKey: FunctionKey): Promise<boolean>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| functionKey | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 需要设置的功能键类型。 |
+| functionKey | FunctionKey | 是 | 需要设置的功能键类型。 |
 
 **返回值：**
 
@@ -32,10 +34,10 @@ function isFunctionKeyEnabled(functionKey: FunctionKey): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt;2. Incorrect parameter types; 3. Parameter verification failed. |
 | [3900002](../errorcode-inputdevice.md#3900002-键盘设备没有连接) | There is currently no keyboard device connected. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

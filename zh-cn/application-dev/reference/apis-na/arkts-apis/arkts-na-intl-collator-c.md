@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-intl-export class Collator--><!--Device-intl-export class Collator-End-->
 
 **系统能力：** SystemCapability.Global.I18n
@@ -22,6 +24,8 @@ compare(first: string, second: string): int
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-Collator-compare(first: string, second: string): int--><!--Device-Collator-compare(first: string, second: string): int-End-->
 
 **系统能力：** SystemCapability.Global.I18n
@@ -37,7 +41,7 @@ compare(first: string, second: string): int
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 比较结果。 |
+| int | 比较结果。 &lt;br&gt;- number为负数时，表示first排序在second之前。 &lt;br&gt;- number为0时，表示first与second排序相同。 &lt;br&gt;- number为正数，表示first排序在second之后。 |
 
 ## constructor
 
@@ -50,6 +54,8 @@ constructor()
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Collator-constructor()--><!--Device-Collator-constructor()-End-->
 
@@ -67,6 +73,8 @@ constructor(locale: string | Array<string>, options?: CollatorOptions)
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-Collator-constructor(locale: string | Array<string>, options?: CollatorOptions)--><!--Device-Collator-constructor(locale: string | Array<string>, options?: CollatorOptions)-End-->
 
 **系统能力：** SystemCapability.Global.I18n
@@ -76,7 +84,7 @@ constructor(locale: string | Array<string>, options?: CollatorOptions)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | locale | string \| Array&lt;string&gt; | 是 | 区域ID或区域ID数组。输入是区域ID数组时，使用第一个有效的区域ID。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 创建排序对象时可设置的配置项。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_默认值：所有属性都取默认值时的配置项。 |
+| options | [CollatorOptions](../../apis-localization-kit/arkts-apis/arkts-localization-intl-collatoroptions-i.md) | 否 | 创建排序对象时可设置的配置项。 &lt;br&gt;默认值：所有属性都取默认值时的配置项。 |
 
 ## resolvedOptions
 
@@ -90,6 +98,8 @@ resolvedOptions(): CollatorOptions
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-Collator-resolvedOptions(): CollatorOptions--><!--Device-Collator-resolvedOptions(): CollatorOptions-End-->
 
 **系统能力：** SystemCapability.Global.I18n
@@ -98,5 +108,5 @@ resolvedOptions(): CollatorOptions
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回排序对象的属性。 |
+| [CollatorOptions](../../apis-localization-kit/arkts-apis/arkts-localization-intl-collatoroptions-i.md) | 返回排序对象的属性。 |
 

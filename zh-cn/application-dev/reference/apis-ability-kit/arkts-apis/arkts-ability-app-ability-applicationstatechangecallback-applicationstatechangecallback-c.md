@@ -1,10 +1,12 @@
 # ApplicationStateChangeCallback
 
-本模块用于监听当前应用进程的状态变化。为了便于表述，下文中将“应用进程”简称为“进程”。 开发者可调用 [ApplicationContext.on('applicationStateChange')]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 方法传入自定义ApplicationStateChangeCallback来监听当前进程的前后台状态变化，从而根据进程前后台状态变化来执行某些操作。例如，统计进程前后台时长、或者当进程退到后台时清理内存缓存。
+本模块用于监听当前应用进程的状态变化。为了便于表述，下文中将“应用进程”简称为“进程”。 开发者可调用 [ApplicationContext.on('applicationStateChange')](arkts-ability-applicationcontext-c.md#on_abilityLifecycle) 方法传入自定义ApplicationStateChangeCallback来监听当前进程的前后台状态变化，从而根据进程前后台状态变化来执行某些操作。例如，统计进程前后台时长、或者当进程退到后台时清理内存缓存。
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-export default class ApplicationStateChangeCallback--><!--Device-unnamed-export default class ApplicationStateChangeCallback-End-->
 
@@ -22,6 +24,8 @@ onApplicationBackground(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -30,7 +34,7 @@ onApplicationBackground(): void
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -136,6 +140,8 @@ onApplicationForeground(): void
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

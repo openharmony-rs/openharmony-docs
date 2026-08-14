@@ -6,6 +6,8 @@ NavDestination上下文信息。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface NavDestinationContext--><!--Device-unnamed-declare interface NavDestinationContext-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -22,6 +24,8 @@ getConfigInRouteMap(): RouteMapConfig | undefined
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -34,7 +38,7 @@ getConfigInRouteMap(): RouteMapConfig | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Routing configuration of the current page. |
+| [RouteMapConfig](arkts-arkui-routemapconfig-i.md) | Routing configuration of the current page. &lt;br&gt; **undefined** is returned when the page is not configured through the route table. |
 
 ## mode
 
@@ -44,11 +48,13 @@ mode?: NavDestinationMode
 
 当前NavDestination的类型。 默认值：NavDestinationMode.Standard。 从API version 22开始，该接口支持在原子化服务中使用。
 
-**类型：** NavDestinationMode
+**类型：** [NavDestinationMode](arkts-arkui-navdestinationmode-e.md)
 
 **起始版本：** 22
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -72,6 +78,8 @@ navDestinationId?: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -94,6 +102,8 @@ pathInfo: NavPathInfo
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -115,6 +125,8 @@ pathStack: NavPathStack
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

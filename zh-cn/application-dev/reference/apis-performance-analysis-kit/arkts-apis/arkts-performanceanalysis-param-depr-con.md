@@ -14,7 +14,7 @@ const DISTRIBUTED_SERVICE_INSTANCE_ID: string
 
 **废弃版本：** 9
 
-**替代接口：** ohos.hiviewdfx.hiAppEvent/hiAppEvent.Param#DISTRIBUTED_SERVICE_INSTANCE_ID
+**替代接口：** DISTRIBUTED_SERVICE_INSTANCE_ID
 
 <!--Device-Param-const DISTRIBUTED_SERVICE_INSTANCE_ID: string--><!--Device-Param-const DISTRIBUTED_SERVICE_INSTANCE_ID: string-End-->
 
@@ -34,7 +34,7 @@ const DISTRIBUTED_SERVICE_NAME: string
 
 **废弃版本：** 9
 
-**替代接口：** ohos.hiviewdfx.hiAppEvent/hiAppEvent.Param#DISTRIBUTED_SERVICE_NAME
+**替代接口：** DISTRIBUTED_SERVICE_NAME
 
 <!--Device-Param-const DISTRIBUTED_SERVICE_NAME: string--><!--Device-Param-const DISTRIBUTED_SERVICE_NAME: string-End-->
 
@@ -54,7 +54,7 @@ const USER_ID: string
 
 **废弃版本：** 9
 
-**替代接口：** ohos.hiviewdfx.hiAppEvent/hiAppEvent.Param#USER_ID
+**替代接口：** USER_ID
 
 <!--Device-Param-const USER_ID: string--><!--Device-Param-const USER_ID: string-End-->
 

@@ -6,6 +6,8 @@ Tabs组件和父组件的嵌套滚动模式枚举。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare enum TabsNestedScrollMode--><!--Device-unnamed-declare enum TabsNestedScrollMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -21,6 +23,8 @@ Tabs自身滚动，不与父组件联动。适用于Tabs组件内部有完整滚
 **起始版本：** 24
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -41,6 +45,8 @@ Tabs自身先滚动，自身滚动到边缘以后父组件滚动。父组件滚�
 **起始版本：** 24
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

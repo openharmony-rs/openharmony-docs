@@ -1,14 +1,16 @@
 # AnimatedDrawableDescriptor
 
-使用[Image]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_组件播放PixelMap数组或动图资源时传入 AnimatedDrawableDescriptor对象，该对象继承自[DrawableDescriptor]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_。
+使用Image组件播放PixelMap数组或动图资源时传入 AnimatedDrawableDescriptor对象， 该对象继承自[DrawableDescriptor](arkts-arkui-arkui-drawabledescriptor-drawabledescriptorloadedresult-i.md#DrawableDescriptorLoadedResult)。
 
-**继承/实现关系：** AnimatedDrawableDescriptor extends [DrawableDescriptor](arkts-arkui-arkui-drawabledescriptor-drawabledescriptor-c.md)
+**继承/实现关系：** AnimatedDrawableDescriptor extends [DrawableDescriptor](arkts-arkui-arkui-drawabledescriptor-drawabledescriptor-c.md#DrawableDescriptor)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-<!--Device-unnamed-export declare class AnimatedDrawableDescriptor extends DrawableDescriptor--><!--Device-unnamed-export declare class AnimatedDrawableDescriptor extends DrawableDescriptor-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-export class AnimatedDrawableDescriptor--><!--Device-unnamed-export class AnimatedDrawableDescriptor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -20,11 +22,15 @@ constructor(pixelMaps: Array<image.PixelMap>, options?: AnimationOptions)
 
 AnimatedDrawableDescriptor的构造函数。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AnimatedDrawableDescriptor-constructor(pixelMaps: Array<image.PixelMap>, options?: AnimationOptions)--><!--Device-AnimatedDrawableDescriptor-constructor(pixelMaps: Array<image.PixelMap>, options?: AnimationOptions)-End-->
 
@@ -35,7 +41,7 @@ AnimatedDrawableDescriptor的构造函数。
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | pixelMaps | Array&lt;image.PixelMap&gt; | 是 | PixelMap 数组类型参数，存储 PixelMap 图片数据。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 动画控制选项。 |
+| options | [AnimationOptions](arkts-arkui-arkui-drawabledescriptor-animationoptions-i.md) | 否 | 动画控制选项。 |
 
 ## constructor
 
@@ -45,11 +51,15 @@ constructor(src: ResourceStr | Array<image.PixelMap>, options?: AnimationOptions
 
 AnimatedDrawableDescriptor的构造函数。
 
-**起始版本：** 23
+**起始版本：** 21
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AnimatedDrawableDescriptor-constructor(src: ResourceStr | Array<image.PixelMap>, options?: AnimationOptions)--><!--Device-AnimatedDrawableDescriptor-constructor(src: ResourceStr | Array<image.PixelMap>, options?: AnimationOptions)-End-->
 
@@ -59,8 +69,40 @@ AnimatedDrawableDescriptor的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| src | \_\_\_MD\_LINK\_USD\_0\_\_\_ \| Array&lt;image.PixelMap&gt; | 是 | 动图资源地址或者[PixelMap]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_对象构成的数组。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ ResourceStr当前支持的范围：应用资源Resource，沙箱路径（file://\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_/\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_3\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_），BASE64字符串。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 动画控制参数。 |
+| src | ResourceStr \| Array&lt;image.PixelMap&gt; | 是 | 动图资源地址或者 [PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md#PixelMap)对象构成的数组。&lt;br/&gt; ResourceStr当前支持的范围： 应用资源Resource，沙箱路径（file://&lt;bundleName&gt;/&lt;sandboxPath&gt;），BASE64字符串。 |
+| options | [AnimationOptions](arkts-arkui-arkui-drawabledescriptor-animationoptions-i.md) | 否 | 动画控制参数。 |
+
+## 示例
+
+```TypeScript
+import { AnimationOptions, AnimatedDrawableDescriptor } from '@kit.ArkUI';
+import { fileUri } from '@kit.CoreFileKit';
+
+@Entry
+@Component
+struct Example {
+  options: AnimationOptions = { duration: 1000, iterations: -1, autoPlay: false };
+  // 支持传入file://xx沙箱路径和应用资源Resource。
+  @State animated1: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
+  @State animated2: AnimatedDrawableDescriptor | undefined = undefined;
+
+  aboutToAppear() {
+    let files = this.getUIContext().getHostContext()?.filesDir
+    let originPath = files + "/flower.gif"
+    let resultPath = fileUri.getUriFromPath(originPath)
+    this.animated2 = new AnimatedDrawableDescriptor(resultPath, { iterations: -1 })
+  }
+
+  build() {
+    Column() {
+      Row() {
+        Image(this.animated1).width(100).height(100)
+        Image(this.animated2).width(100).height(100)
+      }
+    }
+  }
+}
+```
 
 ## getAnimationController
 
@@ -70,11 +112,15 @@ getAnimationController(id?: string): AnimationController | undefined
 
 获取动画控制器。
 
-**起始版本：** 23
+**起始版本：** 21
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AnimatedDrawableDescriptor-getAnimationController(id?: string): AnimationController | undefined--><!--Device-AnimatedDrawableDescriptor-getAnimationController(id?: string): AnimationController | undefined-End-->
 
@@ -84,11 +130,87 @@ getAnimationController(id?: string): AnimationController | undefined
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | string | 否 | 组件的id。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_5\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_当[Image]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_组件与AnimatedDrawableDescriptor确保1比1持有（仅传入一个[Image]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_组件）时，id非必填；\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_6\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_若同一AnimatedDrawableDescriptor需绑定多个[Image]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_组件，则必须设置唯一id以准确获取对应组件的动画控制器（唯一性由开发者保证）。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_7\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_此规则基于动画系统设计原则：动画数据可多组件共享，但各组件动画独立运行，AnimationController与组件严格1比1持有关系（一个组件一个AnimationController对象）。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_8\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_另外，[AnimatedDrawableDescriptor]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_3\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_支持不可见时自动暂停播放功能，详见[onVisibleAreaChange]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_4\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
+| id | string | 否 | 组件的id。&lt;br/&gt;当Image组件与 AnimatedDrawableDescriptor确保1比1持有（仅传入一个Image组件）时， id非必填；&lt;br/&gt;若同一AnimatedDrawableDescriptor需绑定多个Image组件， 则必须设置唯一id以准确获取对应组件的动画控制器（唯一性由开发者保证）。&lt;br/&gt; 此规则基于动画系统设计原则：动画数据可多组 件共享，但各组件动画独立运行，AnimationController与组件严格1比1持有关系 （一个组件一个AnimationController对象）。 &lt;br/&gt;另外，[AnimatedDrawableDescriptor](#AnimatedDrawableDescriptor)支持不可见时自动暂停播放功能，详见 [onVisibleAreaChange] onVisibleAreaChange 。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | - Return the component of animation controller. |
+| [AnimationController](arkts-arkui-arkui-drawabledescriptor-animationcontroller-i.md) | 动画控制器对象。 |
+
+## 示例
+
+[Image](../arkui-ts/ts-basic-components-image.md)组件与AnimatedDrawableDescriptor保持1比1持有关系，示例代码如下。
+
+```TypeScript
+import { AnimationOptions, AnimatedDrawableDescriptor, AnimationController } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Example {
+  options: AnimationOptions = { duration: 1000, iterations: -1, autoPlay: false };
+  // $r('app.media.gif')需要替换为开发者所需的图像资源文件。
+  @State animated: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
+
+  build() {
+    Column() {
+      Image(this.animated)
+        .width(100)
+        .height(100)
+        .borderColor(Color.Red)
+        .borderWidth(1)
+      Button("start")
+        .onClick(() => {
+          let controller = this.animated.getAnimationController()
+          controller?.start()
+        })
+      Button("stop")
+        .onClick(() => {
+          let controller = this.animated.getAnimationController()
+          controller?.stop()
+        })
+    }
+  }
+}
+```
+
+[Image](../arkui-ts/ts-basic-components-image.md)组件与AnimatedDrawableDescriptor保持1比N持有关系，示例代码如下。
+
+```TypeScript
+import { AnimationOptions, AnimatedDrawableDescriptor, AnimationController } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Example {
+  options: AnimationOptions = { duration: 1000, iterations: -1, autoPlay: false };
+  // $r('app.media.gif')需要替换为开发者所需的图像资源文件。
+  @State animated: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
+
+  build() {
+    Column() {
+      Image(this.animated)
+        .width(100)
+        .height(100)
+        .borderColor(Color.Red)
+        .borderWidth(1)
+        .id("Component1")
+      Image(this.animated)
+        .width(100)
+        .height(100)
+        .borderColor(Color.Red)
+        .borderWidth(1)
+      Button("start")
+        .onClick(() => {
+          let controller = this.animated.getAnimationController("Component1")
+          controller?.start()
+        })
+      Button("stop")
+        .onClick(() => {
+          let controller = this.animated.getAnimationController("Component1")
+          controller?.stop()
+        })
+    }
+  }
+}
+```
 

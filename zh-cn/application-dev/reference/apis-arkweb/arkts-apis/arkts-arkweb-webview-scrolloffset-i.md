@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
 
+**废弃版本：** -1
+
 <!--Device-webview-interface ScrollOffset--><!--Device-webview-interface ScrollOffset-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -23,6 +25,8 @@ x: number
 **起始版本：** 13
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务API中使用。
 
@@ -43,6 +47,8 @@ y: number
 **起始版本：** 13
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务API中使用。
 

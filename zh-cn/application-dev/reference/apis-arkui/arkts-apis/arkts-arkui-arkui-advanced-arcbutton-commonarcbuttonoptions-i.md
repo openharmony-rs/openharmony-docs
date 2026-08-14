@@ -6,6 +6,8 @@ ArcButton的默认样式或自定义样式参数。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-interface CommonArcButtonOptions--><!--Device-unnamed-interface CommonArcButtonOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
@@ -23,6 +25,8 @@ backgroundBlurStyle?: BlurStyle
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -44,6 +48,8 @@ backgroundColor?: ColorMetrics
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CommonArcButtonOptions-backgroundColor?: ColorMetrics--><!--Device-CommonArcButtonOptions-backgroundColor?: ColorMetrics-End-->
@@ -63,6 +69,8 @@ fontColor?: ColorMetrics
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -84,6 +92,8 @@ fontFamily?: string | Resource
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CommonArcButtonOptions-fontFamily?: string | Resource--><!--Device-CommonArcButtonOptions-fontFamily?: string | Resource-End-->
@@ -103,6 +113,8 @@ fontMargin?: LocalizedMargin
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -124,6 +136,8 @@ fontSize?: LengthMetrics
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CommonArcButtonOptions-fontSize?: LengthMetrics--><!--Device-CommonArcButtonOptions-fontSize?: LengthMetrics-End-->
@@ -143,6 +157,8 @@ fontStyle?: FontStyle
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -164,6 +180,8 @@ label?: ResourceStr
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CommonArcButtonOptions-label?: ResourceStr--><!--Device-CommonArcButtonOptions-label?: ResourceStr-End-->
@@ -178,11 +196,13 @@ onClick?: Callback<ClickEvent>
 
 弧形按钮点击动作触发该回调。
 
-**类型：** Callback&lt;ClickEvent&gt;
+**类型：** [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;ClickEvent&gt;
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -198,11 +218,13 @@ onTouch?: Callback<TouchEvent>
 
 弧形按钮手指触摸动作触发该回调。
 
-**类型：** Callback&lt;TouchEvent&gt;
+**类型：** [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;TouchEvent&gt;
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -216,13 +238,15 @@ onTouch?: Callback<TouchEvent>
 position?: ArcButtonPosition
 ```
 
-上下弧形按钮类型属性。 默认值：ArcButtonPosition.BOTTOM\_EDGE。
+上下弧形按钮类型属性。 默认值：ArcButtonPosition.BOTTOM_EDGE。
 
-**类型：** ArcButtonPosition
+**类型：** [ArcButtonPosition](arkts-arkui-arkui-advanced-arcbutton-arcbuttonposition-e.md)
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -244,6 +268,8 @@ pressedFontColor?: ColorMetrics
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CommonArcButtonOptions-pressedFontColor?: ColorMetrics--><!--Device-CommonArcButtonOptions-pressedFontColor?: ColorMetrics-End-->
@@ -256,13 +282,15 @@ pressedFontColor?: ColorMetrics
 progressConfig?: ArcButtonProgressConfig
 ```
 
-ArcButton进度条参数。不设置该属性时ArcButton组件表现为按钮样式（ \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_），设置后表现为进度条样式（ \_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_），进度条样式不受 [ArcButtonStyleMode]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_属性设置影响。 默认值：[ArcButtonProgressConfig]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_ 的各项子属性均取其默认值。
+ArcButton进度条参数。不设置该属性时ArcButton组件表现为按钮样式（ [示例1](../../../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#示例1-设置弧形按钮)），设置后表现为进度条样式（ [示例2](../../../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#示例2-设置设备进度条按钮)），进度条样式不受 [ArcButtonStyleMode](arkts-arkui-arkui-advanced-arcbutton-arcbuttonstylemode-e.md#ArcButtonStyleMode)属性设置影响。 默认值：[ArcButtonProgressConfig](arkts-arkui-arkui-advanced-arcbutton-arcbuttonprogressconfig-c.md#ArcButtonProgressConfig) 的各项子属性均取其默认值。
 
-**类型：** ArcButtonProgressConfig
+**类型：** [ArcButtonProgressConfig](arkts-arkui-arkui-advanced-arcbutton-arcbuttonprogressconfig-c.md)
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -286,6 +314,8 @@ shadowColor?: ColorMetrics
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CommonArcButtonOptions-shadowColor?: ColorMetrics--><!--Device-CommonArcButtonOptions-shadowColor?: ColorMetrics-End-->
@@ -306,6 +336,8 @@ shadowEnabled?: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CommonArcButtonOptions-shadowEnabled?: boolean--><!--Device-CommonArcButtonOptions-shadowEnabled?: boolean-End-->
@@ -320,11 +352,13 @@ status?: ArcButtonStatus
 
 弧形按钮状态。 默认值：ArcButtonStatus.NORMAL。
 
-**类型：** ArcButtonStatus
+**类型：** [ArcButtonStatus](arkts-arkui-arkui-advanced-arcbutton-arcbuttonstatus-e.md)
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -338,13 +372,15 @@ status?: ArcButtonStatus
 styleMode?: ArcButtonStyleMode
 ```
 
-弧形按钮样式模式。该样式不支持与[ArcButtonProgressConfig]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_同时使用。 默认值：ArcButtonStyleMode.EMPHASIZED\_LIGHT。
+弧形按钮样式模式。该样式不支持与[ArcButtonProgressConfig](arkts-arkui-arkui-advanced-arcbutton-arcbuttonprogressconfig-c.md#ArcButtonProgressConfig)同时使用。 默认值：ArcButtonStyleMode.EMPHASIZED_LIGHT。
 
-**类型：** ArcButtonStyleMode
+**类型：** [ArcButtonStyleMode](arkts-arkui-arkui-advanced-arcbutton-arcbuttonstylemode-e.md)
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 

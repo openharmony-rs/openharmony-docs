@@ -8,9 +8,11 @@ function obtainAllContinuousTasks(): Promise<ContinuousTaskInfo[]>
 
 获取所有长时任务信息，如长时任务ID、长时任务类型等。使用Promise异步回调。
 
-**起始版本：** 23
+**起始版本：** 24
 
-**ArkTS模式：** ArkTS-Dyn起始版本为23；ArkTS-Sta起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_BACKGROUND_TASK_INFO
 
@@ -26,17 +28,17 @@ function obtainAllContinuousTasks(): Promise<ContinuousTaskInfo[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;ContinuousTaskInfo[]&gt; | Promise对象，返回所有长时任务信息。 |
+| Promise&lt;[ContinuousTaskInfo](arkts-backgroundtasks-backgroundtaskmanager-continuoustaskinfo-i.md)[]&gt; | Promise对象，返回所有长时任务信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [9800004](../../apis-backgroundtasks-kit/errorcode-backgroundTaskMgr.md#9800004-系统服务失败) | System service operation failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
-| [9800004](../../apis-backgroundtasks-kit/errorcode-backgroundTaskMgr.md#9800004-系统服务失败) | System service operation failed. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

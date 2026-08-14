@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-export declare enum ArcButtonStatus--><!--Device-unnamed-export declare enum ArcButtonStatus-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
@@ -21,6 +23,8 @@ NORMAL = 0
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ArcButtonStatus-NORMAL = 0--><!--Device-ArcButtonStatus-NORMAL = 0-End-->
 
@@ -38,6 +42,8 @@ PRESSED = 1
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-ArcButtonStatus-PRESSED = 1--><!--Device-ArcButtonStatus-PRESSED = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
@@ -53,6 +59,8 @@ DISABLED = 2
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ArcButtonStatus-DISABLED = 2--><!--Device-ArcButtonStatus-DISABLED = 2-End-->
 

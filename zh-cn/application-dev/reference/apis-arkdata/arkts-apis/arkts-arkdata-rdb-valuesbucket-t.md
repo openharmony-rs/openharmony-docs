@@ -12,7 +12,7 @@ type ValuesBucket = { [key: string]: ValueType | Uint8Array | null }
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.data.relationalStore:relationalStore.ValuesBucket](arkts-arkdata-relationalstore-valuesbucket-t.md)
+**替代接口：** [ValuesBucket](arkts-arkdata-relationalstore-valuesbucket-t.md#ValuesBucket)
 
 <!--Device-rdb-type ValuesBucket = { [key: string]: ValueType | Uint8Array | null }--><!--Device-rdb-type ValuesBucket = { [key: string]: ValueType | Uint8Array | null }-End-->
 

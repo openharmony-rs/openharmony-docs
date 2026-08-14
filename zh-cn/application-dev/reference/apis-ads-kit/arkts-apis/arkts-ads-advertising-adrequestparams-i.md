@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-advertising-export interface AdRequestParams--><!--Device-advertising-export interface AdRequestParams-End-->
 
 **系统能力：** SystemCapability.Advertising.Ads
@@ -23,6 +25,8 @@ adCount?: number
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -44,6 +48,8 @@ adHeight?: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AdRequestParams-adHeight?: number--><!--Device-AdRequestParams-adHeight?: number-End-->
@@ -63,6 +69,8 @@ adId: string
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -84,6 +92,8 @@ adSearchKeyword?: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AdRequestParams-adSearchKeyword?: string--><!--Device-AdRequestParams-adSearchKeyword?: string-End-->
@@ -103,6 +113,8 @@ adType?: number
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -124,29 +136,11 @@ adWidth?: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AdRequestParams-adWidth?: number--><!--Device-AdRequestParams-adWidth?: number-End-->
-
-**系统能力：** SystemCapability.Advertising.Ads
-
-## key
-
-```TypeScript
-[key: string]: number | boolean | string | undefined
-```
-
-自定义参数。 \_\_\_MD\_COMMENT\_DESC\_USD\_0\_\_\_\_\_\_MD\_COMMENT\_DESC\_USD\_1\_\_\_
-
-**类型：** number \| boolean \| string \| undefined
-
-**起始版本：** 11
-
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AdRequestParams-[key: string]: number | boolean | string | undefined--><!--Device-AdRequestParams-[key: string]: number | boolean | string | undefined-End-->
 
 **系统能力：** SystemCapability.Advertising.Ads
 

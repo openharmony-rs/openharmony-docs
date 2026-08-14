@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
 
+**废弃版本：** -1
+
 <!--Device-dlpPermission-export class DlpConnManager--><!--Device-dlpPermission-export class DlpConnManager-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
@@ -16,11 +18,13 @@
 constructor()
 ```
 
-[DlpConnManager]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 实例化时的构造函数。
+[DlpConnManager](#DlpConnManager) 实例化时的构造函数。
 
 **起始版本：** 21
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+
+**废弃版本：** -1
 
 **需要权限：** 
 - API版本26.0.0+：ohos.permission.ENTERPRISE_ACCESS_DLP_FILE or ohos.permission.ACCESS_DLP_SERVICE
@@ -36,7 +40,7 @@ constructor()
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { dlpPermission } from '@kit.DataProtectionKit';
@@ -56,6 +60,8 @@ static registerPlugin(plugin: DlpConnPlugin): number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
 
+**废弃版本：** -1
+
 **需要权限：** 
 - API版本26.0.0+：ohos.permission.ENTERPRISE_ACCESS_DLP_FILE or ohos.permission.ACCESS_DLP_SERVICE
 - API版本21 - 24：ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
@@ -68,25 +74,25 @@ static registerPlugin(plugin: DlpConnPlugin): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| plugin | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 回调插件对象，用于注册回调能力到SA（System Ability）侧。需要继承DlpConnPlugin接口并实现connectServer方法，以便SA侧调用时能够通过回调返回处理结果。 |
+| plugin | [DlpConnPlugin](arkts-dataprotection-dlppermission-dlpconnplugin-i.md) | 是 | 回调插件对象，用于注册回调能力到SA（System Ability）侧。需要继承DlpConnPlugin接口并实现connectServer方法，以 便SA侧调用时能够通过回调返回处理结果。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 注册结果，返回该回调的唯一标识ID。取值范围为[0, 2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_53\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_-1]。 |
+| number | 注册结果，返回该回调的唯一标识ID。取值范围为[0, 2&lt;sup&gt;53&lt;/sup&gt;-1]。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
-| [19100002](../errorcode-dlp.md#19100002-加解密出错) | Credential service busy due to too many tasks or duplicate tasks. |
 | [19100003](../errorcode-dlp.md#19100003-加解密超时) | Credential task time out. |
+| [19100002](../errorcode-dlp.md#19100002-加解密出错) | Credential service busy due to too many tasks or duplicate tasks. |
+| [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100004](../errorcode-dlp.md#19100004-凭据服务错误) | Credential service error. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { dlpPermission } from '@kit.DataProtectionKit';
@@ -123,6 +129,8 @@ static unregisterPlugin(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
 
+**废弃版本：** -1
+
 **需要权限：** 
 - API版本26.0.0+：ohos.permission.ENTERPRISE_ACCESS_DLP_FILE or ohos.permission.ACCESS_DLP_SERVICE
 - API版本21 - 24：ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
@@ -135,13 +143,13 @@ static unregisterPlugin(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
-| [19100002](../errorcode-dlp.md#19100002-加解密出错) | Credential service busy due to too many tasks or duplicate tasks. |
 | [19100003](../errorcode-dlp.md#19100003-加解密超时) | Credential task time out. |
+| [19100002](../errorcode-dlp.md#19100002-加解密出错) | Credential service busy due to too many tasks or duplicate tasks. |
+| [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100004](../errorcode-dlp.md#19100004-凭据服务错误) | Credential service error. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { dlpPermission } from '@kit.DataProtectionKit';

@@ -8,7 +8,9 @@ type HandleMemberPurchaseEvent = (info: MemberPurchaseInfo) => Promise<DialogInf
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -20,11 +22,11 @@ type HandleMemberPurchaseEvent = (info: MemberPurchaseInfo) => Promise<DialogInf
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 |  |
+| info | [MemberPurchaseInfo](arkts-avsession-avmusictemplate-memberpurchaseinfo-i.md) | 是 |  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;DialogInfo&gt; | Promise对象，返回对话框信息。 |
+| Promise&lt;[DialogInfo](arkts-avsession-avmusictemplate-dialoginfo-i.md)&gt; | Promise对象，返回对话框信息。 |
 

@@ -1,32 +1,38 @@
 # IDataSourcePrefetching
 
-用于实现具有预加载能力的LazyForEach数据源。
+继承自IDataSource。实现该接口，提供具备预取能力的数据源。
 
-**继承/实现关系：** IDataSourcePrefetching extends [IDataSource<T>](IDataSource<T>)
+**继承/实现关系：** IDataSourcePrefetching extends IDataSource
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-<!--Device-unnamed-export declare interface IDataSourcePrefetching<T> extends IDataSource<T>--><!--Device-unnamed-export declare interface IDataSourcePrefetching<T> extends IDataSource<T>-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-export interface IDataSourcePrefetching--><!--Device-unnamed-export interface IDataSourcePrefetching-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## cancel
 
 ```TypeScript
-default cancel(index: int): Promise<void> | undefined
+cancel?(index: number): Promise<void> | void
 ```
 
-取消指定数据项的预加载。 该方法可以为同步，也可以为异步。
+取消从数据集中预取指定的数据项。该方法可以为同步，也可为异步。该方法为可选方法，若数据源未实现该方法，则不执行取消预取操作。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-IDataSourcePrefetching-default cancel(index: int): Promise<void> | undefined--><!--Device-IDataSourcePrefetching-default cancel(index: int): Promise<void> | undefined-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-IDataSourcePrefetching-cancel?(index: number): Promise<void> | void--><!--Device-IDataSourcePrefetching-cancel?(index: number): Promise<void> | void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,29 +40,33 @@ default cancel(index: int): Promise<void> | undefined
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | int | 是 | 指定项的序号。 |
+| index | number | 是 | 取消预取数据项索引值，取值范围为[0, totalCount()-1]。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; |  |
+| Promise&lt;void&gt; | 异步执行时返回Promise对象，同步执行时无返回值。Promise仅表示操作完成，无实际返回内容。 |
 
 ## prefetch
 
 ```TypeScript
-prefetch(index: int): Promise<void> | undefined
+prefetch(index: number): Promise<void> | void
 ```
 
-预加载数据源中的指定项。 该方法可以为同步，也可以为异步。
+从数据集中预取指定的数据项。该方法可以为同步，也可为异步。当可见区域发生变化时，预取算法判断即将进入可见区域的数据项需要预取时，会调用该方法。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-IDataSourcePrefetching-prefetch(index: int): Promise<void> | undefined--><!--Device-IDataSourcePrefetching-prefetch(index: int): Promise<void> | undefined-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-IDataSourcePrefetching-prefetch(index: number): Promise<void> | void--><!--Device-IDataSourcePrefetching-prefetch(index: number): Promise<void> | void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,11 +74,11 @@ prefetch(index: int): Promise<void> | undefined
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | int | 是 | 指定项的序号。 |
+| index | number | 是 | 预取数据项索引值，取值范围为[0, totalCount()-1]。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; |  |
+| Promise&lt;void&gt; | 异步执行时返回Promise对象，同步执行时无返回值。Promise仅表示操作完成，无实际返回内容。 |
 

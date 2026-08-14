@@ -22,10 +22,10 @@ function isAbilityEnabled(info: AbilityInfo, callback: AsyncCallback<boolean>): 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | Ability的配置信息。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;boolean&gt; | 是 | 回调函数，返回boolean代表是否启用。 |
+| info | [AbilityInfo](arkts-ability-abilityinfo-abilityinfo-depr-i.md) | 是 | Ability的配置信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数，返回boolean代表是否启用。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import bundle from '@ohos.bundle';
@@ -67,7 +67,7 @@ function isAbilityEnabled(info: AbilityInfo): Promise<boolean>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | Ability的配置信息。 |
+| info | [AbilityInfo](arkts-ability-abilityinfo-abilityinfo-depr-i.md) | 是 | Ability的配置信息。 |
 
 **返回值：**
 
@@ -75,7 +75,7 @@ function isAbilityEnabled(info: AbilityInfo): Promise<boolean>
 | --- | --- |
 | Promise&lt;boolean&gt; | Promise形式返回boolean代表是否启用。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import bundle from '@ohos.bundle';

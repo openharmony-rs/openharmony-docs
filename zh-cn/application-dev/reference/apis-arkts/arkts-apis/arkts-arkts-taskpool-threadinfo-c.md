@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-taskpool-class ThreadInfo--><!--Device-taskpool-class ThreadInfo-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
@@ -16,13 +18,15 @@
 priority?: Priority
 ```
 
-当前线程的优先级。如果返回为空，表示当前没有任务执行。不建议修改此值。
+当前线程的优先级。返回为空时，代表没有任务执行。 不建议修改此值。
 
 **类型：** Priority
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -36,13 +40,15 @@ priority?: Priority
 taskIds?: number[]
 ```
 
-在当前线程上运行的任务ID列表。如果返回为空，表示当前没有任务执行。不建议修改此值。
+在当前线程上运行的任务ID列表。返回为空时，代表没有任务执行。不建议修改此值。
 
 **类型：** number[]
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -65,6 +71,8 @@ tid: number
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

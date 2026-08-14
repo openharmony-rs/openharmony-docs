@@ -1,10 +1,12 @@
 # FileSelectorParam
 
-封装消息信息，作为 \_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 方法的入参。
+封装消息信息，作为 onFileSelectorShow 方法的入参。
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare class FileSelectorParam--><!--Device-unnamed-declare class FileSelectorParam-End-->
 
@@ -21,6 +23,8 @@ FileSelectorParam的构造函数。
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -39,6 +43,8 @@ getAcceptType(): Array<string>
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -64,6 +70,8 @@ getAcceptableFileTypes(): Array<Array<AcceptableFileType>>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-FileSelectorParam-getAcceptableFileTypes(): Array<Array<AcceptableFileType>>--><!--Device-FileSelectorParam-getAcceptableFileTypes(): Array<Array<AcceptableFileType>>-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -72,7 +80,7 @@ getAcceptableFileTypes(): Array<Array<AcceptableFileType>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;Array&lt;AcceptableFileType&gt;&gt; | Return an array of selected types for web page files. |
+| Array&lt;Array&lt;[AcceptableFileType](arkts-arkweb-acceptablefiletype-i.md)&gt;&gt; | Return an array of selected types for web page files. |
 
 ## getDefaultPath
 
@@ -85,6 +93,8 @@ getDefaultPath(): string
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FileSelectorParam-getDefaultPath(): string--><!--Device-FileSelectorParam-getDefaultPath(): string-End-->
 
@@ -108,6 +118,8 @@ getDescriptions(): Array<string>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-FileSelectorParam-getDescriptions(): Array<string>--><!--Device-FileSelectorParam-getDescriptions(): Array<string>-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -129,6 +141,8 @@ getMimeTypes(): Array<string>
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 <!--Device-FileSelectorParam-getMimeTypes(): Array<string>--><!--Device-FileSelectorParam-getMimeTypes(): Array<string>-End-->
 
@@ -152,6 +166,8 @@ getMode(): FileSelectorMode
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-FileSelectorParam-getMode(): FileSelectorMode--><!--Device-FileSelectorParam-getMode(): FileSelectorMode-End-->
@@ -162,7 +178,7 @@ getMode(): FileSelectorMode
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Return the FileSelectorMode of this file selector. |
+| [FileSelectorMode](arkts-arkweb-fileselectormode-e.md) | Return the FileSelectorMode of this file selector. |
 
 ## getSuggestedName
 
@@ -175,6 +191,8 @@ getSuggestedName(): string
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FileSelectorParam-getSuggestedName(): string--><!--Device-FileSelectorParam-getSuggestedName(): string-End-->
 
@@ -197,6 +215,8 @@ getTitle(): string
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -222,6 +242,8 @@ isAcceptAllOptionExcluded(): boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-FileSelectorParam-isAcceptAllOptionExcluded(): boolean--><!--Device-FileSelectorParam-isAcceptAllOptionExcluded(): boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -243,6 +265,8 @@ isCapture(): boolean
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

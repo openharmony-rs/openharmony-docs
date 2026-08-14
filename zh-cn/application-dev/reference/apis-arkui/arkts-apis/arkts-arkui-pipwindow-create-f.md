@@ -8,9 +8,11 @@ function create(config: PiPConfiguration): Promise<PiPController>
 
 创建画中画控制器，使用Promise异步回调。
 
-**起始版本：** 11
+**起始版本：** 26.0.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -22,13 +24,13 @@ function create(config: PiPConfiguration): Promise<PiPController>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| config | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建画中画控制器的参数。该参数不能为空，并且构造该参数的context和componentController不能为空。构造该参数时，如果指定了templateType，需保证templateType是[PiPTemplateType]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_类型；如果指定了controlGroups，需保证controlGroups与templateType匹配，详见[PiPControlGroup]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
+| config | [PiPConfiguration](arkts-arkui-pipwindow-pipconfiguration-i.md) | 是 | 创建画中画控制器的参数。该参数不能为空，并且构造该参数的context和componentController不能为空。构造该参数时，如果指定了 templateType，需保证templateType是[PiPTemplateType](arkts-arkui-pipwindow-piptemplatetype-e.md#PiPTemplateType)类型；如果指定了controlGroups，需保证 controlGroups与templateType匹配，详见[PiPControlGroup](arkts-arkui-pipwindow-pipcontrolgroup-t.md#PiPControlGroup)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;PiPController&gt; | Promise对象。返回当前创建的画中画控制器。 |
+| Promise&lt;[PiPController](arkts-arkui-pipwindow-pipcontroller-i.md)&gt; | Promise对象。返回当前创建的画中画控制器。 |
 
 **错误码：**
 
@@ -36,7 +38,7 @@ function create(config: PiPConfiguration): Promise<PiPController>
 | --- | --- |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -271,11 +273,13 @@ function create(config: PiPConfiguration, contentNode: typeNode.XComponent): Pro
 
 创建画中画控制器，使用typeNode为画中画添加自定义UI节点。使用Promise异步回调。
 
-**起始版本：** 12
+**起始版本：** 26.0.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PiPWindow-function create(config: PiPConfiguration, contentNode: typeNode.XComponent): Promise<PiPController>--><!--Device-PiPWindow-function create(config: PiPConfiguration, contentNode: typeNode.XComponent): Promise<PiPController>-End-->
 
@@ -285,14 +289,14 @@ function create(config: PiPConfiguration, contentNode: typeNode.XComponent): Pro
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| config | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 创建画中画控制器的参数。该参数不能为空，并且构造该参数的context不能为空。构造该参数时，如果指定了templateType，需保证templateType是[PiPTemplateType]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_类型；如果指定了controlGroups，需保证controlGroups与templateType匹配，详见[PiPControlGroup]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
+| config | [PiPConfiguration](arkts-arkui-pipwindow-pipconfiguration-i.md) | 是 | 创建画中画控制器的参数。该参数不能为空，并且构造该参数的context不能为空。构造该参数时，如果指定了templateType，需保证 templateType是[PiPTemplateType](arkts-arkui-pipwindow-piptemplatetype-e.md#PiPTemplateType)类型；如果指定了controlGroups，需保证controlGroups与 templateType匹配，详见[PiPControlGroup](arkts-arkui-pipwindow-pipcontrolgroup-t.md#PiPControlGroup)。 |
 | contentNode | typeNode.XComponent | 是 | 用于渲染画中画窗口中的内容。该参数不能为空。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;PiPController&gt; | Promise对象。返回当前创建的画中画控制器。 |
+| Promise&lt;[PiPController](arkts-arkui-pipwindow-pipcontroller-i.md)&gt; | Promise对象。返回当前创建的画中画控制器。 |
 
 **错误码：**
 
@@ -300,7 +304,7 @@ function create(config: PiPConfiguration, contentNode: typeNode.XComponent): Pro
 | --- | --- |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

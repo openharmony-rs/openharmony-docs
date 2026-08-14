@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-calendarManager-interface Event--><!--Device-calendarManager-interface Event-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
@@ -18,11 +20,13 @@ attendee?: Attendee[]
 
 会议日程参与者。不填时，默认为null。
 
-**类型：** Attendee[]
+**类型：** [Attendee](arkts-calendar-calendarmanager-attendee-i.md)[]
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -44,6 +48,8 @@ description?: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Event-description?: string--><!--Device-Event-description?: string-End-->
@@ -64,6 +70,8 @@ endTime: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Event-endTime: number--><!--Device-Event-endTime: number-End-->
@@ -76,13 +84,15 @@ endTime: number
 id?: number
 ```
 
-日程id。当调用[addEvent()]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_、 [addEvents()]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_创建日程时，不填写此 参数；当调用[deleteEvent()]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_、 [deleteEvents()]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_删除日程时， 日程id数组，日程id需为整数，传入其他非法入参会报错。
+日程id。当调用[addEvent()](arkts-calendar-calendarmanager-calendar-i.md#addEvent)、 [addEvents()](arkts-calendar-calendarmanager-calendar-i.md#addEvents)创建日程时，不填写此 参数；当调用[deleteEvent()](arkts-calendar-calendarmanager-calendar-i.md#deleteEvent)、 [deleteEvents()](arkts-calendar-calendarmanager-calendar-i.md#deleteEvents)删除日程时， 日程id数组，日程id需为整数，传入其他非法入参会报错。
 
 **类型：** number
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -104,6 +114,8 @@ identifier?: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Event-identifier?: string--><!--Device-Event-identifier?: string-End-->
@@ -116,13 +128,15 @@ identifier?: string
 instanceEndTime?: number
 ```
 
-日程实例结束时间，需要13位时间戳。当调用[addEvent()]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_、 [addEvents()]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_创建日程时，不填写此参数。
+日程实例结束时间，需要13位时间戳。当调用[addEvent()](arkts-calendar-calendarmanager-calendar-i.md#addEvent)、 [addEvents()](arkts-calendar-calendarmanager-calendar-i.md#addEvents)创建日程时，不填写此参数。
 
 **类型：** number
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -136,13 +150,15 @@ instanceEndTime?: number
 instanceStartTime?: number
 ```
 
-日程实例开始时间，需要13位时间戳。当调用[addEvent()]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_、 [addEvents()]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_创建日程时，不填写此参数。
+日程实例开始时间，需要13位时间戳。当调用[addEvent()](arkts-calendar-calendarmanager-calendar-i.md#addEvent)、 [addEvents()](arkts-calendar-calendarmanager-calendar-i.md#addEvents)创建日程时，不填写此参数。
 
 **类型：** number
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -164,6 +180,8 @@ isAllDay?: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Event-isAllDay?: boolean--><!--Device-Event-isAllDay?: boolean-End-->
@@ -183,6 +201,8 @@ isLunar?: boolean
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -204,6 +224,8 @@ location?: Location
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Event-location?: Location--><!--Device-Event-location?: Location-End-->
@@ -218,11 +240,13 @@ recurrenceRule?: RecurrenceRule
 
 日程重复规则，设置了此字段的日程为重复日程。不填时，默认为非重复日程。
 
-**类型：** RecurrenceRule
+**类型：** [RecurrenceRule](arkts-calendar-calendarmanager-recurrencerule-i.md)
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -244,6 +268,8 @@ reminderTime?: number[]
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Event-reminderTime?: number[]--><!--Device-Event-reminderTime?: number[]-End-->
@@ -256,13 +282,15 @@ reminderTime?: number[]
 service?: EventService
 ```
 
-\_\_\_MD\_COMMENT\_DESC\_USD\_0\_\_\_日程服务。不填时，默认没有一键服务。暂不支持此功能。\_\_\_MD\_COMMENT\_DESC\_USD\_1\_\_\_
+&lt;!--RP1--&gt;日程服务。不填时，默认没有一键服务。暂不支持此功能。&lt;!--RP1End--&gt;
 
-**类型：** EventService
+**类型：** [EventService](arkts-calendar-calendarmanager-eventservice-i.md)
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -284,6 +312,8 @@ startTime: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Event-startTime: number--><!--Device-Event-startTime: number-End-->
@@ -296,13 +326,15 @@ startTime: number
 timeZone?: string
 ```
 
-日程时区。日程时区。长度建议为[0,5000]字符，不填或异常值时，默认为当前所在时区，当需要创建与当前不一样的时区时，可填入对应的时区。可通过 [systemDateTime.getTimezone()]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 获取当前系统时区。
+日程时区。日程时区。长度建议为[0,5000]字符，不填或异常值时，默认为当前所在时区，当需要创建与当前不一样的时区时，可填入对应的时区。可通过 [systemDateTime.getTimezone()](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-systemdatetime-gettimezone-f.md#getTimezone) 获取当前系统时区。
 
 **类型：** string
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -324,6 +356,8 @@ title?: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Event-title?: string--><!--Device-Event-title?: string-End-->
@@ -343,6 +377,8 @@ type: EventType
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

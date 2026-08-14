@@ -2,9 +2,11 @@
 
 Enumerates the states available for the system screen recorder.
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-enum ScreenCaptureEvent--><!--Device-unnamed-enum ScreenCaptureEvent-End-->
 
@@ -20,9 +22,11 @@ SCREENCAPTURE_STARTED = 0
 
 The system screen recorder starts screen capture.
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ScreenCaptureEvent-SCREENCAPTURE_STARTED = 0--><!--Device-ScreenCaptureEvent-SCREENCAPTURE_STARTED = 0-End-->
 
@@ -38,9 +42,11 @@ SCREENCAPTURE_STOPPED = 1
 
 The system screen recorder stops screen capture.
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ScreenCaptureEvent-SCREENCAPTURE_STOPPED = 1--><!--Device-ScreenCaptureEvent-SCREENCAPTURE_STOPPED = 1-End-->
 
@@ -58,7 +64,9 @@ The system screen recorder died.
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ScreenCaptureEvent-SCREENCAPTURE_DIED = 2--><!--Device-ScreenCaptureEvent-SCREENCAPTURE_DIED = 2-End-->
 

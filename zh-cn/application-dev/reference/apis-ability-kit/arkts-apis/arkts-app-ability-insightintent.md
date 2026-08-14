@@ -1,10 +1,14 @@
 # @ohos.app.ability.insightIntent
 
-本模块提供\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_基础定义。
+本模块提供[意图框架](../../../application-models/insight-intent-overview.md)基础定义。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-declare namespace insightIntent--><!--Device-unnamed-declare namespace insightIntent-End-->
 
@@ -23,8 +27,8 @@
 | 名称 | 说明 |
 | --- | --- |
 | [ExecuteResult](arkts-ability-insightintent-executeresult-i.md) | 意图执行的返回结果。 |
-| [IntentEntity](arkts-ability-insightintent-intententity-i.md) | 意图实体结构体定义，用于定义意图执行过程中涉及的关键信息对象，包括意图参数和意图执行结果等。 开发者通过继承该类来定义意图实体，继承类需使用 \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 装饰。 |
-| [IntentResult](arkts-ability-insightintent-intentresult-i.md) | 意图执行的返回结果，支持\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
+| [IntentEntity](arkts-ability-insightintent-intententity-i.md) | 意图实体结构体定义，用于定义意图执行过程中涉及的关键信息对象，包括意图参数和意图执行结果等。 开发者通过继承该类来定义意图实体，继承类需使用 @InsightIntentEntity 装饰。 |
+| [IntentResult](arkts-ability-insightintent-intentresult-i.md) | 意图执行的返回结果，支持泛型类型。 |
 | [QueryEntityParam](arkts-ability-insightintent-queryentityparam-i.md) | 查询实体的参数。 |
 
 <!--Del-->
@@ -33,7 +37,7 @@
 | 名称 | 说明 |
 | --- | --- |
 | [ExecuteResult](arkts-ability-insightintent-executeresult-i-sys.md) | 意图执行的返回结果。 |
-| [IntentResult](arkts-ability-insightintent-intentresult-i-sys.md) | 意图执行的返回结果，支持\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
+| [IntentResult](arkts-ability-insightintent-intentresult-i-sys.md) | 意图执行的返回结果，支持泛型类型。 |
 | [InteractionInfo](arkts-ability-insightintent-interactioninfo-i-sys.md) | 定义当前意图执行完成后返回的交互信息，包括下一个要触发的意图和要显示的交互界面。 |
 | [InteractionModalUIExtension](arkts-ability-insightintent-interactionmodaluiextension-i-sys.md) | 定义当意图执行完成时模态UIExtension要显示为交互界面的信息，不支持分布式。 |
 | [InteractionUI](arkts-ability-insightintent-interactionui-i-sys.md) | 定义当前意图执行完成后需要展示的交互界面的信息。 |

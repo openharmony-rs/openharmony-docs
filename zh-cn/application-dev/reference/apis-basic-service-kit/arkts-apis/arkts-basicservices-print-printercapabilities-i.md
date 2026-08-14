@@ -2,9 +2,11 @@
 
 定义打印机能力的接口。
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-print-interface PrinterCapabilities--><!--Device-print-interface PrinterCapabilities-End-->
 
@@ -20,9 +22,11 @@ options?: string
 
 **类型：** string
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrinterCapabilities-options?: string--><!--Device-PrinterCapabilities-options?: string-End-->
 
@@ -36,11 +40,13 @@ supportedColorModes: Array<PrintColorMode>
 
 表示打印机支持的色彩模式列表。
 
-**类型：** Array&lt;PrintColorMode&gt;
+**类型：** Array&lt;[PrintColorMode](arkts-basicservices-print-printcolormode-e.md)&gt;
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrinterCapabilities-supportedColorModes: Array<PrintColorMode>--><!--Device-PrinterCapabilities-supportedColorModes: Array<PrintColorMode>-End-->
 
@@ -54,11 +60,13 @@ supportedDuplexModes: Array<PrintDuplexMode>
 
 表示打印机支持的单双面模式列表。
 
-**类型：** Array&lt;PrintDuplexMode&gt;
+**类型：** Array&lt;[PrintDuplexMode](arkts-basicservices-print-printduplexmode-e.md)&gt;
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrinterCapabilities-supportedDuplexModes: Array<PrintDuplexMode>--><!--Device-PrinterCapabilities-supportedDuplexModes: Array<PrintDuplexMode>-End-->
 
@@ -74,9 +82,11 @@ supportedMediaTypes?: Array<string>
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrinterCapabilities-supportedMediaTypes?: Array<string>--><!--Device-PrinterCapabilities-supportedMediaTypes?: Array<string>-End-->
 
@@ -90,11 +100,13 @@ supportedOrientations?: Array<PrintOrientationMode>
 
 表示打印机支持的打印方向列表。
 
-**类型：** Array&lt;PrintOrientationMode&gt;
+**类型：** Array&lt;[PrintOrientationMode](arkts-basicservices-print-printorientationmode-e.md)&gt;
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrinterCapabilities-supportedOrientations?: Array<PrintOrientationMode>--><!--Device-PrinterCapabilities-supportedOrientations?: Array<PrintOrientationMode>-End-->
 
@@ -108,11 +120,13 @@ supportedPageSizes: Array<PrintPageSize>
 
 表示打印机支持的纸张尺寸列表。
 
-**类型：** Array&lt;PrintPageSize&gt;
+**类型：** Array&lt;[PrintPageSize](arkts-basicservices-print-printpagesize-i.md)&gt;
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrinterCapabilities-supportedPageSizes: Array<PrintPageSize>--><!--Device-PrinterCapabilities-supportedPageSizes: Array<PrintPageSize>-End-->
 
@@ -126,11 +140,13 @@ supportedQualities?: Array<PrintQuality>
 
 表示打印机支持的打印质量列表。
 
-**类型：** Array&lt;PrintQuality&gt;
+**类型：** Array&lt;[PrintQuality](arkts-basicservices-print-printquality-e.md)&gt;
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrinterCapabilities-supportedQualities?: Array<PrintQuality>--><!--Device-PrinterCapabilities-supportedQualities?: Array<PrintQuality>-End-->
 

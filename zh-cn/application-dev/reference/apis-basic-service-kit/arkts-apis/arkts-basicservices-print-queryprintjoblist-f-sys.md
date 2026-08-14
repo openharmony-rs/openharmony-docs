@@ -8,9 +8,11 @@ function queryPrintJobList(callback: AsyncCallback<Array<PrintJob>>): void
 
 查询所有打印任务，使用callback异步回调。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -24,7 +26,7 @@ function queryPrintJobList(callback: AsyncCallback<Array<PrintJob>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;Array&lt;PrintJob&gt;&gt; | 是 | 异步查询所有打印任务之后的回调。 |
+| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[PrintJob](arkts-basicservices-print-printjob-i-sys.md)&gt;&gt; | 是 | 异步查询所有打印任务之后的回调。 |
 
 **错误码：**
 
@@ -33,7 +35,7 @@ function queryPrintJobList(callback: AsyncCallback<Array<PrintJob>>): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { print } from '@kit.BasicServicesKit';
@@ -57,9 +59,11 @@ function queryPrintJobList(): Promise<Array<PrintJob>>
 
 查询所有打印任务，使用Promise异步回调。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -73,7 +77,7 @@ function queryPrintJobList(): Promise<Array<PrintJob>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;PrintJob&gt;&gt; | Promise对象，返回包含所有打印任务的列表。 |
+| Promise&lt;Array&lt;[PrintJob](arkts-basicservices-print-printjob-i-sys.md)&gt;&gt; | Promise对象，返回包含所有打印任务的列表。 |
 
 **错误码：**
 
@@ -82,7 +86,7 @@ function queryPrintJobList(): Promise<Array<PrintJob>>
 | [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { print } from '@kit.BasicServicesKit';

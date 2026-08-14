@@ -4,7 +4,9 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-export declare enum IconTypeV2--><!--Device-unnamed-export declare enum IconTypeV2-End-->
 
@@ -16,13 +18,17 @@
 BADGE = 1
 ```
 
-左侧图标为badge类型。
+左侧图标为BADGE类型，图标大小为8*8vp。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-IconTypeV2-BADGE = 1--><!--Device-IconTypeV2-BADGE = 1-End-->
 
@@ -34,13 +40,17 @@ BADGE = 1
 NORMAL_ICON = 2
 ```
 
-左侧图标为小图标类型。
+左侧图标为小图标类型，图标大小为16*16vp。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-IconTypeV2-NORMAL_ICON = 2--><!--Device-IconTypeV2-NORMAL_ICON = 2-End-->
 
@@ -52,13 +62,17 @@ NORMAL_ICON = 2
 SYSTEM_ICON = 3
 ```
 
-左侧图标为系统图标类型。
+左侧图标为系统图标类型，图标大小为24*24vp。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-IconTypeV2-SYSTEM_ICON = 3--><!--Device-IconTypeV2-SYSTEM_ICON = 3-End-->
 
@@ -70,13 +84,17 @@ SYSTEM_ICON = 3
 HEAD_SCULPTURE = 4
 ```
 
-左侧图标为头像类型。
+左侧图标为头像类型，图标大小为40*40vp。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-IconTypeV2-HEAD_SCULPTURE = 4--><!--Device-IconTypeV2-HEAD_SCULPTURE = 4-End-->
 
@@ -88,13 +106,17 @@ HEAD_SCULPTURE = 4
 APP_ICON = 5
 ```
 
-左侧图标为应用图标类型。
+左侧图标为应用图标类型，图标大小为64*64vp。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-IconTypeV2-APP_ICON = 5--><!--Device-IconTypeV2-APP_ICON = 5-End-->
 
@@ -106,13 +128,17 @@ APP_ICON = 5
 PREVIEW = 6
 ```
 
-左侧图标为预览图类型。
+左侧图标为预览图类型，图标大小为96*96vp。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-IconTypeV2-PREVIEW = 6--><!--Device-IconTypeV2-PREVIEW = 6-End-->
 
@@ -124,13 +150,17 @@ PREVIEW = 6
 LONGITUDINAL = 7
 ```
 
-左侧图标为横向特殊比例。
+左侧图标为横向特殊比例（宽比高大），保持最长边为96vp。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-IconTypeV2-LONGITUDINAL = 7--><!--Device-IconTypeV2-LONGITUDINAL = 7-End-->
 
@@ -142,13 +172,17 @@ LONGITUDINAL = 7
 VERTICAL = 8
 ```
 
-左侧图标为竖向特殊比例。
+左侧图标为竖向特殊比例（高比宽大），保持最长边为96vp。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-IconTypeV2-VERTICAL = 8--><!--Device-IconTypeV2-VERTICAL = 8-End-->
 

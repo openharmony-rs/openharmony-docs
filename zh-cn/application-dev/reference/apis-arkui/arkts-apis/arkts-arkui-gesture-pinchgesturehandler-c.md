@@ -1,0 +1,170 @@
+# PinchGestureHandler
+
+捏合手势处理器对象类型。
+
+**继承/实现关系：** PinchGestureHandler extends [GestureHandler](arkts-arkui-gesture-gesturehandler-c.md#GestureHandler)
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
+
+<!--Device-unnamed-export declare class PinchGestureHandler--><!--Device-unnamed-export declare class PinchGestureHandler-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## constructor
+
+```TypeScript
+constructor(options?: PinchGestureHandlerOptions)
+```
+
+捏合手势处理器的构造函数。
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PinchGestureHandler-constructor(options?: PinchGestureHandlerOptions)--><!--Device-PinchGestureHandler-constructor(options?: PinchGestureHandlerOptions)-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| options | [PinchGestureHandlerOptions](arkts-arkui-gesture-pinchgesturehandleroptions-i.md) | 否 | 捏合手势处理器配置参数。 |
+
+## onActionCancel
+
+```TypeScript
+onActionCancel(event: Callback<GestureEvent>): this
+```
+
+设置捏合手势处理器取消回调。捏合手势处理器识别成功后，接收到触摸取消事件时触发回调。
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PinchGestureHandler-onActionCancel(event: Callback<GestureEvent>): this--><!--Device-PinchGestureHandler-onActionCancel(event: Callback<GestureEvent>): this-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| event | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;[GestureEvent](arkts-arkui-gesture-gestureevent-i.md)&gt; | 是 | 捏合手势处理器取消回调。返回手势事件信息。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| this | 返回当前捏合手势处理器对象。 |
+
+## onActionEnd
+
+```TypeScript
+onActionEnd(event: Callback<GestureEvent>): this
+```
+
+设置捏合手势处理器结束回调。捏合手势处理器识别成功后，手指抬起时触发回调。
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PinchGestureHandler-onActionEnd(event: Callback<GestureEvent>): this--><!--Device-PinchGestureHandler-onActionEnd(event: Callback<GestureEvent>): this-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| event | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;[GestureEvent](arkts-arkui-gesture-gestureevent-i.md)&gt; | 是 | 捏合手势处理器结束回调。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| this | 返回当前捏合手势处理器对象。 |
+
+## onActionStart
+
+```TypeScript
+onActionStart(event: Callback<GestureEvent>): this
+```
+
+设置捏合手势处理器识别成功回调。
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PinchGestureHandler-onActionStart(event: Callback<GestureEvent>): this--><!--Device-PinchGestureHandler-onActionStart(event: Callback<GestureEvent>): this-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| event | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;[GestureEvent](arkts-arkui-gesture-gestureevent-i.md)&gt; | 是 | 捏合手势处理器识别成功回调。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| this | 返回当前捏合手势处理器对象。 |
+
+## onActionUpdate
+
+```TypeScript
+onActionUpdate(event: Callback<GestureEvent>): this
+```
+
+设置捏合手势处理器更新回调。捏合手势处理器移动过程中触发回调。
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PinchGestureHandler-onActionUpdate(event: Callback<GestureEvent>): this--><!--Device-PinchGestureHandler-onActionUpdate(event: Callback<GestureEvent>): this-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| event | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;[GestureEvent](arkts-arkui-gesture-gestureevent-i.md)&gt; | 是 | 捏合手势处理器更新回调。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| this | 返回当前捏合手势处理器对象。 |
+

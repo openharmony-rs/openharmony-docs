@@ -2,9 +2,11 @@
 
 表示铃声模式的枚举。
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-audio-enum AudioRingMode--><!--Device-audio-enum AudioRingMode-End-->
 
@@ -18,9 +20,11 @@ RINGER_MODE_SILENT = 0
 
 静音模式。
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioRingMode-RINGER_MODE_SILENT = 0--><!--Device-AudioRingMode-RINGER_MODE_SILENT = 0-End-->
 
@@ -34,9 +38,11 @@ RINGER_MODE_VIBRATE = 1
 
 震动模式。
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioRingMode-RINGER_MODE_VIBRATE = 1--><!--Device-AudioRingMode-RINGER_MODE_VIBRATE = 1-End-->
 
@@ -50,9 +56,11 @@ RINGER_MODE_NORMAL = 2
 
 响铃模式。
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioRingMode-RINGER_MODE_NORMAL = 2--><!--Device-AudioRingMode-RINGER_MODE_NORMAL = 2-End-->
 

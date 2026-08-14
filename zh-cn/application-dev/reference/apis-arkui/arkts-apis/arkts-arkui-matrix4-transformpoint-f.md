@@ -14,7 +14,7 @@ Matrix的坐标点转换函数，可以将当前的变换效果作用到一个�
 
 **废弃版本：** 10
 
-**替代接口：** [matrix4.Matrix4Transit.transformPoint](arkts-arkui-matrix4-matrix4transit-i.md#transformpoint)
+**替代接口：** [transformPoint](arkts-arkui-matrix4-matrix4transit-i.md#transformPoint)
 
 <!--Device-matrix4-function transformPoint(options: [number, number]): [number, number]--><!--Device-matrix4-function transformPoint(options: [number, number]): [number, number]-End-->
 

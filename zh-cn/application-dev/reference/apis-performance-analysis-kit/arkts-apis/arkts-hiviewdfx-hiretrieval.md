@@ -1,10 +1,24 @@
 # @ohos.hiviewdfx.hiRetrieval
 
-本模块提供应用灰度故障维测能力，支持以下故障类型：RSS内存泄漏、ArkTS-OOM、FD内存泄漏、GPU内存泄漏。应用灰度特性是一种运维态功能，用于精准采集故障日志。 开发者在端侧集成应用灰度功能后，该应用可参与应用灰度活动。通过云端平台发布应用灰度任务，可圈选部分设备开启故障日志精准采集，帮助开发者快速定位故障。
+/*
+ Copyright (c) 2026 Huawei Device Co., Ltd.
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ http://www.apache.org/licenses/LICENSE-2.0
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ /
+
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare namespace hiRetrieval--><!--Device-unnamed-declare namespace hiRetrieval-End-->
 
@@ -16,10 +30,10 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [getCurrentConfig](arkts-performanceanalysis-hiretrieval-getcurrentconfig-f.md#getcurrentconfig) | 获取当前应用灰度活动配置。 |
-| [getLastParticipationTimestamp](arkts-performanceanalysis-hiretrieval-getlastparticipationtimestamp-f.md#getlastparticipationtimestamp) | 查询此设备上次参与应用灰度活动的UNIX时间戳，如果此设备从未参与则返回0。 |
+| [getCurrentConfig](arkts-performanceanalysis-hiretrieval-getcurrentconfig-f.md#getCurrentConfig) | 获取当前应用灰度活动配置。 |
+| [getLastParticipationTimestamp](arkts-performanceanalysis-hiretrieval-getlastparticipationtimestamp-f.md#getLastParticipationTimestamp) | 查询此设备上次参与应用灰度活动的UNIX时间戳，如果此设备从未参与则返回0。 |
 | [init](arkts-performanceanalysis-hiretrieval-init-f.md#init) | 初始化应用灰度模块。多实例应用不支持调用此接口。 |
-| [isParticipant](arkts-performanceanalysis-hiretrieval-isparticipant-f.md#isparticipant) | 查询此设备是否正在参与应用灰度活动。 |
+| [isParticipant](arkts-performanceanalysis-hiretrieval-isparticipant-f.md#isParticipant) | 查询此设备是否正在参与应用灰度活动。 |
 | [participate](arkts-performanceanalysis-hiretrieval-participate-f.md#participate) | 设置此设备参与应用灰度活动。调用后向服务器发送参与灰度消息和应用灰度活动配置，服务器标记此设备为可圈选并记录该应用灰度活动配置作为算法参数。 多次调用将更新为最新的应用灰度活动配置。 |
 | [quit](arkts-performanceanalysis-hiretrieval-quit-f.md#quit) | 设置此设备退出应用灰度活动，退出后此设备将无法在云端被圈选。 |
 | [run](arkts-performanceanalysis-hiretrieval-run-f.md#run) | 若此设备正在参与应用灰度活动（即已调用participate接口且未调用quit接口），则应用灰度模块开始工作，否则调用该接口不会产生任何效果。 |

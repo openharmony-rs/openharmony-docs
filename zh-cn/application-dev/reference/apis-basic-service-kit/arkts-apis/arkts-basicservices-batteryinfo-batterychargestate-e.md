@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-batteryInfo-export enum BatteryChargeState--><!--Device-batteryInfo-export enum BatteryChargeState-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
@@ -21,6 +23,8 @@ NONE
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-BatteryChargeState-NONE--><!--Device-BatteryChargeState-NONE-End-->
 
@@ -38,6 +42,8 @@ ENABLE
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-BatteryChargeState-ENABLE--><!--Device-BatteryChargeState-ENABLE-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
@@ -54,6 +60,8 @@ DISABLE
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-BatteryChargeState-DISABLE--><!--Device-BatteryChargeState-DISABLE-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
@@ -69,6 +77,8 @@ FULL
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-BatteryChargeState-FULL--><!--Device-BatteryChargeState-FULL-End-->
 

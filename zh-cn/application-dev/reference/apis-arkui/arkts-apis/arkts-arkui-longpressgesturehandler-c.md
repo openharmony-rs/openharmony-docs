@@ -2,13 +2,15 @@
 
 长按手势处理器对象类型。
 
-**继承/实现关系：** LongPressGestureHandler extends [GestureHandler<LongPressGestureHandler>](GestureHandler<LongPressGestureHandler>)
+**继承/实现关系：** LongPressGestureHandler extends GestureHandler<LongPressGestureHandler>
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-<!--Device-unnamed-declare class LongPressGestureHandler extends GestureHandler<LongPressGestureHandler>--><!--Device-unnamed-declare class LongPressGestureHandler extends GestureHandler<LongPressGestureHandler>-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare class LongPressGestureHandler--><!--Device-unnamed-declare class LongPressGestureHandler-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,6 +26,8 @@ constructor(options?: LongPressGestureHandlerOptions)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -36,7 +40,7 @@ constructor(options?: LongPressGestureHandlerOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 长按手势处理器配置参数。 |
+| options | [LongPressGestureHandlerOptions](arkts-arkui-longpressgesturehandleroptions-i.md) | 否 | 长按手势处理器配置参数。 |
 
 ## onAction
 
@@ -50,6 +54,8 @@ onAction(event: Callback<GestureEvent>): LongPressGestureHandler
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -62,13 +68,13 @@ onAction(event: Callback<GestureEvent>): LongPressGestureHandler
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;GestureEvent&gt; | 是 | 长按手势处理器识别成功回调。 |
+| event | Callback&lt;[GestureEvent](arkts-arkui-gestureevent-i.md)&gt; | 是 | 长按手势处理器识别成功回调。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回当前长按手势处理器对象。 |
+| [LongPressGestureHandler](arkts-arkui-longpressgesturehandler-c.md) | 返回当前长按手势处理器对象。 |
 
 ## onActionCancel
 
@@ -82,6 +88,8 @@ onActionCancel(event: Callback<void>): LongPressGestureHandler
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -94,13 +102,13 @@ onActionCancel(event: Callback<void>): LongPressGestureHandler
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 长按手势处理器取消回调。 |
+| event | Callback&lt;void&gt; | 是 | 长按手势处理器取消回调。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回当前长按手势处理器对象。 |
+| [LongPressGestureHandler](arkts-arkui-longpressgesturehandler-c.md) | 返回当前长按手势处理器对象。 |
 
 ## onActionCancel
 
@@ -108,11 +116,13 @@ onActionCancel(event: Callback<void>): LongPressGestureHandler
 onActionCancel(event: Callback<GestureEvent>): LongPressGestureHandler
 ```
 
-设置长按手势处理器取消回调。长按手势处理器识别成功后，接收到触摸取消事件时触发回调。与 [onActionCancel]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_接口相比，此接口返回手势事件信息。
+设置长按手势处理器取消回调。长按手势处理器识别成功后，接收到触摸取消事件时触发回调。与 [onActionCancel](#onActionCancel)接口相比，此接口返回手势事件信息。
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -126,13 +136,13 @@ onActionCancel(event: Callback<GestureEvent>): LongPressGestureHandler
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;GestureEvent&gt; | 是 | 长按手势处理器取消回调。该回调会返回手势事件信息。 |
+| event | Callback&lt;[GestureEvent](arkts-arkui-gestureevent-i.md)&gt; | 是 | 长按手势处理器取消回调。该回调会返回手势事件信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回当前长按手势处理器对象。 |
+| [LongPressGestureHandler](arkts-arkui-longpressgesturehandler-c.md) | 返回当前长按手势处理器对象。 |
 
 ## onActionEnd
 
@@ -146,6 +156,8 @@ onActionEnd(event: Callback<GestureEvent>): LongPressGestureHandler
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -158,11 +170,11 @@ onActionEnd(event: Callback<GestureEvent>): LongPressGestureHandler
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;GestureEvent&gt; | 是 | 长按手势处理器结束回调。 |
+| event | Callback&lt;[GestureEvent](arkts-arkui-gestureevent-i.md)&gt; | 是 | 长按手势处理器结束回调。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回当前长按手势处理器对象。 |
+| [LongPressGestureHandler](arkts-arkui-longpressgesturehandler-c.md) | 返回当前长按手势处理器对象。 |
 

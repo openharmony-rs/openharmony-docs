@@ -8,7 +8,7 @@ KVStore常量。
 
 **废弃版本：** 9
 
-**替代接口：** ohos.data.distributedKVStore.Constants
+**替代接口：** Constants
 
 <!--Device-distributedData-namespace Constants--><!--Device-distributedData-namespace Constants-End-->
 
@@ -20,10 +20,10 @@ KVStore常量。
 
 | 名称 | 说明 |
 | --- | --- |
-| [MAX_KEY_LENGTH](arkts-arkdata-constants-con.md#max_key_length) | 数据库中Key允许的最大长度，单位字节。 |
-| [MAX_VALUE_LENGTH](arkts-arkdata-constants-con.md#max_value_length) | 数据库中Value允许的最大长度，单位字节。 |
-| [MAX_KEY_LENGTH_DEVICE](arkts-arkdata-constants-con.md#max_key_length_device) | 设备密钥长度，单位字节。 |
-| [MAX_STORE_ID_LENGTH](arkts-arkdata-constants-con.md#max_store_id_length) | 数据库标识符允许的最大长度，单位字节。 |
-| [MAX_QUERY_LENGTH](arkts-arkdata-constants-con.md#max_query_length) | 最大查询长度，单位字节。 |
-| [MAX_BATCH_SIZE](arkts-arkdata-constants-con.md#max_batch_size) | 最大批处理操作数量。 |
+| [MAX_KEY_LENGTH](arkts-arkdata-constants-con.md#MAX_KEY_LENGTH) | 数据库中Key允许的最大长度，单位字节。 |
+| [MAX_VALUE_LENGTH](arkts-arkdata-constants-con.md#MAX_VALUE_LENGTH) | 数据库中Value允许的最大长度，单位字节。 |
+| [MAX_KEY_LENGTH_DEVICE](arkts-arkdata-constants-con.md#MAX_KEY_LENGTH_DEVICE) | 设备密钥长度，单位字节。 |
+| [MAX_STORE_ID_LENGTH](arkts-arkdata-constants-con.md#MAX_STORE_ID_LENGTH) | 数据库标识符允许的最大长度，单位字节。 |
+| [MAX_QUERY_LENGTH](arkts-arkdata-constants-con.md#MAX_QUERY_LENGTH) | 最大查询长度，单位字节。 |
+| [MAX_BATCH_SIZE](arkts-arkdata-constants-con.md#MAX_BATCH_SIZE) | 最大批处理操作数量。 |
 

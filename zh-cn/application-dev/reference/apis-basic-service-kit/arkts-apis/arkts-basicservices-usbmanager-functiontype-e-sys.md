@@ -2,9 +2,11 @@
 
 Enumerates USB device function types.
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-usbManager-export enum FunctionType--><!--Device-usbManager-export enum FunctionType-End-->
 
@@ -20,9 +22,11 @@ NONE = 0
 
 没有功能。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FunctionType-NONE = 0--><!--Device-FunctionType-NONE = 0-End-->
 
@@ -38,9 +42,11 @@ ACM = 1
 
 acm功能。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FunctionType-ACM = 1--><!--Device-FunctionType-ACM = 1-End-->
 
@@ -56,9 +62,11 @@ ECM = 2
 
 ecm功能。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FunctionType-ECM = 2--><!--Device-FunctionType-ECM = 2-End-->
 
@@ -74,9 +82,11 @@ HDC = 4
 
 hdc功能。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FunctionType-HDC = 4--><!--Device-FunctionType-HDC = 4-End-->
 
@@ -92,9 +102,11 @@ MTP = 8
 
 媒体传输。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FunctionType-MTP = 8--><!--Device-FunctionType-MTP = 8-End-->
 
@@ -110,9 +122,11 @@ PTP = 16
 
 图片传输。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FunctionType-PTP = 16--><!--Device-FunctionType-PTP = 16-End-->
 
@@ -128,9 +142,11 @@ RNDIS = 32
 
 网络共享。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FunctionType-RNDIS = 32--><!--Device-FunctionType-RNDIS = 32-End-->
 
@@ -146,9 +162,11 @@ MIDI = 64
 
 midi功能。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FunctionType-MIDI = 64--><!--Device-FunctionType-MIDI = 64-End-->
 
@@ -164,9 +182,11 @@ AUDIO_SOURCE = 128
 
 音频功能。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FunctionType-AUDIO_SOURCE = 128--><!--Device-FunctionType-AUDIO_SOURCE = 128-End-->
 
@@ -182,9 +202,11 @@ NCM = 256
 
 ncm传输。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FunctionType-NCM = 256--><!--Device-FunctionType-NCM = 256-End-->
 

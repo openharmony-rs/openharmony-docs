@@ -1,6 +1,6 @@
 # @ohos.file.fileAccess
 
-fileAccess模块是基于\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_机制实现的一个对公共文件访问和操作的框架。该模块一方面对接各类文 件管理服务，如存储管理服务等；另一方面为系统应用提供一套统一的文件访问管理接口。存储管理服务可以管理内置存储部分目录，以及共享盘、U盘、SD卡等设备上的资源。 > **说明：** > > - 当前只支持FilePicker、文件管理器调用。
+fileAccess模块是基于[extension](../../../application-models/extensionability-overview.md)机制实现的一个对公共文件访问和操作的框架。该模块一方面对接各类文 件管理服务，如存储管理服务等；另一方面为系统应用提供一套统一的文件访问管理接口。存储管理服务可以管理内置存储部分目录，以及共享盘、U盘、SD卡等设备上的资源。 > **说明：** > > - 当前只支持FilePicker、文件管理器调用。
 
 **起始版本：** 9
 
@@ -8,7 +8,7 @@ fileAccess模块是基于\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_机制实现的一个
 
 **废弃版本：** 23
 
-**替代接口：** [@ohos.file.fs:fileIo](arkts-corefile-fileio-n.md)
+**替代接口：** [fileIo](arkts-corefile-fileio-n.md#fileIo)
 
 <!--Device-unnamed-declare namespace fileAccess--><!--Device-unnamed-declare namespace fileAccess-End-->
 
@@ -21,10 +21,10 @@ fileAccess模块是基于\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_机制实现的一个
 
 | 名称 | 说明 |
 | --- | --- |
-| [createFileAccessHelper](arkts-corefile-fileaccess-createfileaccesshelper-f-sys.md#createfileaccesshelper) | 以同步方法创建连接当前系统内所有文件管理服务的helper对象。 |
-| [createFileAccessHelper](arkts-corefile-fileaccess-createfileaccesshelper-f-sys.md#createfileaccesshelper-1) | 以同步方法创建连接指定wants的helper对象。 |
-| [getFileAccessAbilityInfo](arkts-corefile-fileaccess-getfileaccessabilityinfo-f-sys.md#getfileaccessabilityinfo) | 以异步方法获取系统内extension配置为fileAccess类型的所有Want信息。使用callback异步回调。 |
-| [getFileAccessAbilityInfo](arkts-corefile-fileaccess-getfileaccessabilityinfo-f-sys.md#getfileaccessabilityinfo-1) | 以异步方法获取系统内extension配置为fileAccess类型的所有Want信息。使用Promise异步回调。 |
+| [createFileAccessHelper](arkts-corefile-fileaccess-createfileaccesshelper-f-sys.md#createFileAccessHelper) | 以同步方法创建连接当前系统内所有文件管理服务的helper对象。 |
+| [createFileAccessHelper](arkts-corefile-fileaccess-createfileaccesshelper-f-sys.md#createFileAccessHelper（系统接口）) | 以同步方法创建连接指定wants的helper对象。 |
+| [getFileAccessAbilityInfo](arkts-corefile-fileaccess-getfileaccessabilityinfo-f-sys.md#getFileAccessAbilityInfo) | 以异步方法获取系统内extension配置为fileAccess类型的所有Want信息。使用callback异步回调。 |
+| [getFileAccessAbilityInfo](arkts-corefile-fileaccess-getfileaccessabilityinfo-f-sys.md#getFileAccessAbilityInfo（系统接口）) | 以异步方法获取系统内extension配置为fileAccess类型的所有Want信息。使用Promise异步回调。 |
 <!--DelEnd-->
 
 <!--Del-->
@@ -57,6 +57,6 @@ fileAccess模块是基于\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_机制实现的一个
 
 | 名称 | 说明 |
 | --- | --- |
-| [DEVICES_URI](arkts-corefile-fileaccess-con-sys.md#devices_uri) | 监听设备上线，下线通知，作为注册监听的URI。 |
+| [DEVICES_URI](arkts-corefile-fileaccess-con-sys.md#DEVICES_URI) | 监听设备上线，下线通知，作为注册监听的URI。 |
 <!--DelEnd-->
 

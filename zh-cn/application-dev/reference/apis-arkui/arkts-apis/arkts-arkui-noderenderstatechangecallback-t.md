@@ -4,13 +4,17 @@
 export declare type NodeRenderStateChangeCallback = (state: NodeRenderState, node?: FrameNode) => void
 ```
 
-定义UIObserver监听指定节点渲染状态时使用的回调类型。
+定义了用于在UIObserver中监控某个特定节点渲染状态的回调类型。
 
-**起始版本：** 26.0.0
+**起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 <!--Device-unnamed-export declare type NodeRenderStateChangeCallback = (state: NodeRenderState, node?: FrameNode) => void--><!--Device-unnamed-export declare type NodeRenderStateChangeCallback = (state: NodeRenderState, node?: FrameNode) => void-End-->
 
@@ -20,6 +24,6 @@ export declare type NodeRenderStateChangeCallback = (state: NodeRenderState, nod
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| state | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | the node's render state  |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | the information of frameNode  |
+| state | [NodeRenderState](arkts-arkui-arkui-uicontext-noderenderstate-e.md) | 是 | 触发事件监听的手势事件的相关信息。 |
+| node | FrameNode | 否 | 触发事件监听的手势事件所绑定的组件，如果组件被释放将返回null。 |
 

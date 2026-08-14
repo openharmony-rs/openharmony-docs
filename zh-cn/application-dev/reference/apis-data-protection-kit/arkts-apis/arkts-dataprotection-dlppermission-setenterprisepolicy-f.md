@@ -12,6 +12,8 @@ function setEnterprisePolicy(policy: EnterprisePolicy): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
 
+**废弃版本：** -1
+
 **需要权限：** ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
 
 <!--Device-dlpPermission-function setEnterprisePolicy(policy: EnterprisePolicy): void--><!--Device-dlpPermission-function setEnterprisePolicy(policy: EnterprisePolicy): void-End-->
@@ -22,18 +24,18 @@ function setEnterprisePolicy(policy: EnterprisePolicy): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| policy | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 待设置的企业应用防护策略，设置后将按策略对企业DLP文件进行访问控制和行为限制。 |
+| policy | [EnterprisePolicy](arkts-dataprotection-dlppermission-enterprisepolicy-i.md) | 是 | 待设置的企业应用防护策略，设置后将按策略对企业DLP文件进行访问控制和行为限制。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
-| [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 | [19100021](../errorcode-dlp.md#19100021-设置企业应用策略失败) | Failed to set the enterprise policy. |
+| [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { dlpPermission } from '@kit.DataProtectionKit';

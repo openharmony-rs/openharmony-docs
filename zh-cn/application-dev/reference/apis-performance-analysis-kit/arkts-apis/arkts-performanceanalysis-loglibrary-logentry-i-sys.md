@@ -2,9 +2,11 @@
 
 日志文件对象接口。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-logLibrary-interface LogEntry--><!--Device-logLibrary-interface LogEntry-End-->
 
@@ -22,9 +24,11 @@ mtime: long
 
 **类型：** long
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-LogEntry-mtime: long--><!--Device-LogEntry-mtime: long-End-->
 
@@ -42,9 +46,11 @@ name: string
 
 **类型：** string
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-LogEntry-name: string--><!--Device-LogEntry-name: string-End-->
 
@@ -62,9 +68,11 @@ size: long
 
 **类型：** long
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-LogEntry-size: long--><!--Device-LogEntry-size: long-End-->
 

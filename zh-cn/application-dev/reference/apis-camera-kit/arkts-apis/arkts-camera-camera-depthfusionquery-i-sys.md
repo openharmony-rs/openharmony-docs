@@ -2,9 +2,11 @@
 
 A class for querying depth fusion capabilities.
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-camera-interface DepthFusionQuery--><!--Device-camera-interface DepthFusionQuery-End-->
 
@@ -14,21 +16,17 @@ A class for querying depth fusion capabilities.
 
 ## getDepthFusionThreshold
 
-ArkTS-Dyn:
-```TypeScript
-getDepthFusionThreshold(): Array<number>
-```
-
-ArkTS-Sta:
 ```TypeScript
 getDepthFusionThreshold(): Array<double>
 ```
 
 Obtains the depth fusion threshold.
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DepthFusionQuery-getDepthFusionThreshold(): Array<double>--><!--Device-DepthFusionQuery-getDepthFusionThreshold(): Array<double>-End-->
 
@@ -40,16 +38,16 @@ Obtains the depth fusion threshold.
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: Array&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：Array&lt;double&gt; | Depth fusion threshold. |
+| Array&lt;double&gt; | Depth fusion threshold. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -73,9 +71,11 @@ isDepthFusionSupported(): boolean
 
 Checks whether depth fusion is supported.
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DepthFusionQuery-isDepthFusionSupported(): boolean--><!--Device-DepthFusionQuery-isDepthFusionSupported(): boolean-End-->
 
@@ -93,10 +93,10 @@ Checks whether depth fusion is supported.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

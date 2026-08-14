@@ -10,6 +10,8 @@ The callback of load committed.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-unnamed-type OnNavigationEntryCommittedCallback = (loadCommittedDetails: LoadCommittedDetails) => void--><!--Device-unnamed-type OnNavigationEntryCommittedCallback = (loadCommittedDetails: LoadCommittedDetails) => void-End-->
@@ -20,5 +22,5 @@ The callback of load committed.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| loadCommittedDetails | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | callback information of onNavigationEntryCommitted.  |
+| loadCommittedDetails | [LoadCommittedDetails](arkts-arkweb-loadcommitteddetails-i.md) | 是 | callback information of onNavigationEntryCommitted. |
 

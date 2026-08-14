@@ -2,7 +2,7 @@
 
 日历实例对象，用于设置提醒的时间。
 
-**继承/实现关系：** ReminderRequestCalendar extends [ReminderRequest](arkts-backgroundtasks-reminderagent-reminderrequest-i.md)
+**继承/实现关系：** ReminderRequestCalendar extends [ReminderRequest](arkts-backgroundtasks-reminderagent-reminderrequest-i.md#ReminderRequest)
 
 **起始版本：** 7
 
@@ -10,9 +10,9 @@
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.reminderAgentManager:reminderAgentManager.ReminderRequestCalendar](arkts-backgroundtasks-reminderagentmanager-reminderrequestcalendar-i.md)
+**替代接口：** [ReminderRequestCalendar](arkts-backgroundtasks-reminderagentmanager-reminderrequestcalendar-i.md#ReminderRequestCalendar)
 
-<!--Device-reminderAgent-interface ReminderRequestCalendar extends ReminderRequest--><!--Device-reminderAgent-interface ReminderRequestCalendar extends ReminderRequest-End-->
+<!--Device-reminderAgent-interface ReminderRequestCalendar--><!--Device-reminderAgent-interface ReminderRequestCalendar-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -32,7 +32,7 @@ dateTime: LocalDateTime
 
 **废弃版本：** 9
 
-**替代接口：** [reminderAgentManager.ReminderRequestCalendar.dateTime](arkts-backgroundtasks-reminderagentmanager-reminderrequestcalendar-i.md#datetime)
+**替代接口：** dateTime
 
 <!--Device-ReminderRequestCalendar-dateTime: LocalDateTime--><!--Device-ReminderRequestCalendar-dateTime: LocalDateTime-End-->
 
@@ -54,7 +54,7 @@ repeatDays?: Array<number>
 
 **废弃版本：** 9
 
-**替代接口：** [reminderAgentManager.ReminderRequestCalendar.repeatDays](arkts-backgroundtasks-reminderagentmanager-reminderrequestcalendar-i.md#repeatdays)
+**替代接口：** repeatDays
 
 <!--Device-ReminderRequestCalendar-repeatDays?: Array<number>--><!--Device-ReminderRequestCalendar-repeatDays?: Array<number>-End-->
 
@@ -76,7 +76,7 @@ repeatMonths?: Array<number>
 
 **废弃版本：** 9
 
-**替代接口：** [reminderAgentManager.ReminderRequestCalendar.repeatMonths](arkts-backgroundtasks-reminderagentmanager-reminderrequestcalendar-i.md#repeatmonths)
+**替代接口：** repeatMonths
 
 <!--Device-ReminderRequestCalendar-repeatMonths?: Array<number>--><!--Device-ReminderRequestCalendar-repeatMonths?: Array<number>-End-->
 

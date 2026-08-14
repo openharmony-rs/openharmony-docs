@@ -1,6 +1,6 @@
 # InputMethodEngine
 
-下列API均需使用[getInputMethodEngine]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_获取到InputMethodEngine实例后，通过实例调用。
+下列API均需使用[getInputMethodEngine](arkts-ime-inputmethodengine-getinputmethodengine-f.md#getInputMethodEngine)获取到InputMethodEngine实例后，通过实例调用。
 
 **起始版本：** 8
 
@@ -8,13 +8,13 @@
 
 **废弃版本：** 23
 
-**替代接口：** [inputMethodEngine.InputMethodAbility](arkts-ime-inputmethodengine-inputmethodability-i.md)
+**替代接口：** [InputMethodAbility](arkts-ime-inputmethodengine-inputmethodability-i.md#InputMethodAbility)
 
 <!--Device-inputMethodEngine-interface InputMethodEngine--><!--Device-inputMethodEngine-interface InputMethodEngine-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-## off('inputStart')
+## off_inputStart
 
 ```TypeScript
 off(
@@ -31,7 +31,7 @@ off(
 
 **废弃版本：** 23
 
-**替代接口：** inputMethodEngine.InputMethodAbility.off(type:
+**替代接口：** off(type: 'inputStart', callback?: (kbController: KeyboardController, inputClient: InputClient) =&gt; void)
 
 <!--Device-InputMethodEngine-off(      type: 'inputStart',      callback?: (kbController: KeyboardController, textInputClient: TextInputClient) => void    ): void--><!--Device-InputMethodEngine-off(      type: 'inputStart',      callback?: (kbController: KeyboardController, textInputClient: TextInputClient) => void    ): void-End-->
 
@@ -44,7 +44,7 @@ off(
 | type | 'inputStart' | 是 | 设置监听类型，固定取值为'inputStart'。 |
 | callback | (kbController: KeyboardController, textInputClient: TextInputClient) =&gt; void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 inputMethodEngine.getInputMethodEngine()
@@ -54,7 +54,7 @@ inputMethodEngine.getInputMethodEngine()
     });
 ```
 
-## off('keyboardShow' | 'keyboardHide')
+## off_keyboardHide
 
 ```TypeScript
 off(type: 'keyboardShow' | 'keyboardHide', callback?: () => void): void
@@ -68,7 +68,7 @@ off(type: 'keyboardShow' | 'keyboardHide', callback?: () => void): void
 
 **废弃版本：** 23
 
-**替代接口：** inputMethodEngine.InputMethodAbility.off(type:
+**替代接口：** off(type: 'keyboardShow' | 'keyboardHide', callback?: () =&gt; void)
 
 <!--Device-InputMethodEngine-off(type: 'keyboardShow' | 'keyboardHide', callback?: () => void): void--><!--Device-InputMethodEngine-off(type: 'keyboardShow' | 'keyboardHide', callback?: () => void): void-End-->
 
@@ -78,17 +78,17 @@ off(type: 'keyboardShow' | 'keyboardHide', callback?: () => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'keyboardShow' \| 'keyboardHide' | 是 | 要取消监听的输入法软键盘事件类型。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_-'keyboardShow'表示显示输入法软键盘。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_-'keyboardHide'表示隐藏输入法软键盘。 |
+| type | 'keyboardShow' \| 'keyboardHide' | 是 | 要取消监听的输入法软键盘事件类型。&lt;br/&gt;-'keyboardShow'表示显示输入法软键盘。&lt;br/&gt;-' keyboardHide'表示隐藏输入法软键盘。 |
 | callback | () =&gt; void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 inputMethodEngine.getInputMethodEngine().off('keyboardShow');
 inputMethodEngine.getInputMethodEngine().off('keyboardHide');
 ```
 
-## off('keyboardShow' | 'keyboardHide')
+## off_keyboardShow
 
 ```TypeScript
 off(type: 'keyboardShow' | 'keyboardHide', callback?: () => void): void
@@ -102,7 +102,7 @@ off(type: 'keyboardShow' | 'keyboardHide', callback?: () => void): void
 
 **废弃版本：** 23
 
-**替代接口：** inputMethodEngine.InputMethodAbility.off(type:
+**替代接口：** off(type: 'keyboardShow' | 'keyboardHide', callback?: () =&gt; void)
 
 <!--Device-InputMethodEngine-off(type: 'keyboardShow' | 'keyboardHide', callback?: () => void): void--><!--Device-InputMethodEngine-off(type: 'keyboardShow' | 'keyboardHide', callback?: () => void): void-End-->
 
@@ -112,17 +112,17 @@ off(type: 'keyboardShow' | 'keyboardHide', callback?: () => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'keyboardShow' \| 'keyboardHide' | 是 | 要取消监听的输入法软键盘事件类型。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_-'keyboardShow'表示显示输入法软键盘。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_-'keyboardHide'表示隐藏输入法软键盘。 |
+| type | 'keyboardShow' \| 'keyboardHide' | 是 | 要取消监听的输入法软键盘事件类型。&lt;br/&gt;-'keyboardShow'表示显示输入法软键盘。&lt;br/&gt;-' keyboardHide'表示隐藏输入法软键盘。 |
 | callback | () =&gt; void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 inputMethodEngine.getInputMethodEngine().off('keyboardShow');
 inputMethodEngine.getInputMethodEngine().off('keyboardHide');
 ```
 
-## on('inputStart')
+## on_inputStart
 
 ```TypeScript
 on(
@@ -139,7 +139,7 @@ on(
 
 **废弃版本：** 23
 
-**替代接口：** inputMethodEngine.InputMethodAbility.on(type:
+**替代接口：** on(type: 'inputStart', callback: (kbController: KeyboardController, inputClient: InputClient) =&gt; void)
 
 <!--Device-InputMethodEngine-on(      type: 'inputStart',      callback: (kbController: KeyboardController, textInputClient: TextInputClient) => void    ): void--><!--Device-InputMethodEngine-on(      type: 'inputStart',      callback: (kbController: KeyboardController, textInputClient: TextInputClient) => void    ): void-End-->
 
@@ -152,7 +152,7 @@ on(
 | type | 'inputStart' | 是 | 设置监听类型，固定取值为'inputStart'。 |
 | callback | (kbController: KeyboardController, textInputClient: TextInputClient) =&gt; void | 是 | 回调函数，返回订阅输入法的KeyboardController和TextInputClient实例。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 inputMethodEngine.getInputMethodEngine()
@@ -162,7 +162,7 @@ inputMethodEngine.getInputMethodEngine()
     });
 ```
 
-## on('keyboardShow' | 'keyboardHide')
+## on_keyboardHide
 
 ```TypeScript
 on(type: 'keyboardShow' | 'keyboardHide', callback: () => void): void
@@ -176,7 +176,7 @@ on(type: 'keyboardShow' | 'keyboardHide', callback: () => void): void
 
 **废弃版本：** 23
 
-**替代接口：** inputMethodEngine.InputMethodAbility.on(type:
+**替代接口：** on(type: 'keyboardShow' | 'keyboardHide', callback: () =&gt; void)
 
 <!--Device-InputMethodEngine-on(type: 'keyboardShow' | 'keyboardHide', callback: () => void): void--><!--Device-InputMethodEngine-on(type: 'keyboardShow' | 'keyboardHide', callback: () => void): void-End-->
 
@@ -186,10 +186,10 @@ on(type: 'keyboardShow' | 'keyboardHide', callback: () => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'keyboardShow' \| 'keyboardHide' | 是 | 设置监听类型。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_-'keyboardShow'表示显示输入法软键盘。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_-'keyboardHide'表示隐藏输入法软键盘。 |
+| type | 'keyboardShow' \| 'keyboardHide' | 是 | 设置监听类型。&lt;br/&gt;-'keyboardShow'表示显示输入法软键盘。&lt;br/&gt;-'keyboardHide'表示隐藏输 入法软键盘。 |
 | callback | () =&gt; void | 是 | 回调函数。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 inputMethodEngine.getInputMethodEngine().on('keyboardShow', () => {
@@ -200,7 +200,7 @@ inputMethodEngine.getInputMethodEngine().on('keyboardHide', () => {
 });
 ```
 
-## on('keyboardShow' | 'keyboardHide')
+## on_keyboardShow
 
 ```TypeScript
 on(type: 'keyboardShow' | 'keyboardHide', callback: () => void): void
@@ -214,7 +214,7 @@ on(type: 'keyboardShow' | 'keyboardHide', callback: () => void): void
 
 **废弃版本：** 23
 
-**替代接口：** inputMethodEngine.InputMethodAbility.on(type:
+**替代接口：** on(type: 'keyboardShow' | 'keyboardHide', callback: () =&gt; void)
 
 <!--Device-InputMethodEngine-on(type: 'keyboardShow' | 'keyboardHide', callback: () => void): void--><!--Device-InputMethodEngine-on(type: 'keyboardShow' | 'keyboardHide', callback: () => void): void-End-->
 
@@ -224,10 +224,10 @@ on(type: 'keyboardShow' | 'keyboardHide', callback: () => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'keyboardShow' \| 'keyboardHide' | 是 | 设置监听类型。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_-'keyboardShow'表示显示输入法软键盘。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_-'keyboardHide'表示隐藏输入法软键盘。 |
+| type | 'keyboardShow' \| 'keyboardHide' | 是 | 设置监听类型。&lt;br/&gt;-'keyboardShow'表示显示输入法软键盘。&lt;br/&gt;-'keyboardHide'表示隐藏输 入法软键盘。 |
 | callback | () =&gt; void | 是 | 回调函数。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 inputMethodEngine.getInputMethodEngine().on('keyboardShow', () => {

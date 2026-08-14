@@ -4,11 +4,13 @@
 export type NavDestinationBuilder = (name: string, param?: Object) => void
 ```
 
-NavDestination组件内容。
+用于创建NavDestination组件内容的构建器类型。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -20,6 +22,6 @@ NavDestination组件内容。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| name | string | 是 | [NavDestination]\_\_\_JSDOC\_LINK\_USD\_0\_\_\_页面名称。  |
-| param | Object | 否 | [NavDestination]\_\_\_JSDOC\_LINK\_USD\_0\_\_\_页面详细参数。默认值为空。  |
+| name | string | 是 | NavDestination页面名称。 |
+| param | Object | 否 | NavDestination页面详细参数。默认值为空。 |
 

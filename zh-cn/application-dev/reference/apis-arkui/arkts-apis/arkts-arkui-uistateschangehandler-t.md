@@ -1,18 +1,22 @@
 # UIStatesChangeHandler
 
 ```TypeScript
-declare type UIStatesChangeHandler = (node: FrameNode, currentUIStates: int) => void
+declare type UIStatesChangeHandler = (node: FrameNode, currentUIStates: number) => void
 ```
 
-UI状态变化处理函数，返回当前UI状态，值为结果 的所有当前状态枚举值或计算，并且可以确定状态 通过执行&操作，如下。 如果(currentStates & UIState.PRESSED == UIState.PRESSED) 但是，请注意，对于正常的状态检查，应该直接使用equal。 如果(currentStates == UIState.NORMAL)。
+当UI状态发生变化时触发的回调。接收回调触发时的[UIState](../../apis-na/arkts-apis/arkts-na-framenode-uistate-e.md#UIState)状态，该参数的取值为UIState状态枚举值或其运算结果。
 
-**起始版本：** 26.0.0
+**起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-unnamed-declare type UIStatesChangeHandler = (node: FrameNode, currentUIStates: int) => void--><!--Device-unnamed-declare type UIStatesChangeHandler = (node: FrameNode, currentUIStates: int) => void-End-->
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-unnamed-declare type UIStatesChangeHandler = (node: FrameNode, currentUIStates: number) => void--><!--Device-unnamed-declare type UIStatesChangeHandler = (node: FrameNode, currentUIStates: number) => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -20,6 +24,6 @@ UI状态变化处理函数，返回当前UI状态，值为结果 的所有当前
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 触发UI状态变化的节点。  |
-| currentUIStates | int | 是 | 回调触发时当前的UI状态。可以通过位与运算判断当前包含哪些[UIState]\_\_\_JSDOC\_LINK\_USD\_0\_\_\_状态。位与运算方法：if (currentState & UIState.PRESSED == UIState.PRESSED)。一般的UIState状态检查可以直接判断：if (currentState == UIState.PRESSED)。 \_\_\_HTML\_TAG\_USD\_1\_\_\_取值限定为整数。  |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 触发UI状态变化的节点。 |
+| currentUIStates | number | 是 | 回调触发时当前的UI状态。 <br>可以通过位与运算判断当前包含哪些[UIState](../../apis-na/arkts-apis/arkts-na-framenode-uistate-e.md#UIState)状态。 <br>位与运算方法：if ((currentUIStates & UIState.PRESSED) == UIState.PRESSED)。 <br>当仅需判断当前是否仅处于单个状态时，可以直接判断：if (currentUIStates == UIState.PRESSED)。注意，此方式仅在当前仅有一个状态激活时有效，若需判断多个状态中是否包含某个状态，请使用位 与运算。 |
 

@@ -2,9 +2,11 @@
 
 用于定义加载请求的对象。应用程序通过该对象来获取请求的资源位置，通过该对象和播放器进行数据交互。 > **说明：** > > - 本Interface首批接口从API version 18开始支持。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-interface MediaSourceLoadingRequest--><!--Device-unnamed-interface MediaSourceLoadingRequest-End-->
 
@@ -12,23 +14,19 @@
 
 ## finishLoading
 
-ArkTS-Dyn:
-```TypeScript
-finishLoading(uuid: number, state: LoadingRequestError): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 finishLoading(uuid: long, state: LoadingRequestError): void
 ```
 
-应用程序用于通知播放器当前请求状态的接口。针对服务侧请求的单个资源，推送完全部资源后需要发送LOADING\_ERROR\_SUCCESS状态告知该资源推送结束。
+应用程序用于通知播放器当前请求状态的接口。针对服务侧请求的单个资源，推送完全部资源后需要发送LOADING_ERROR_SUCCESS状态告知该资源推送结束。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MediaSourceLoadingRequest-finishLoading(uuid: long, state: LoadingRequestError): void--><!--Device-MediaSourceLoadingRequest-finishLoading(uuid: long, state: LoadingRequestError): void-End-->
 
@@ -38,8 +36,8 @@ finishLoading(uuid: long, state: LoadingRequestError): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uuid | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 资源句柄的标识。来源是[SourceOpenCallback]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
-| state | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 请求的状态。 |
+| uuid | long | 是 | 资源句柄的标识。来源是SourceOpenCallback。 |
+| state | [LoadingRequestError](arkts-media-multimedia-media-loadingrequesterror-e.md) | 是 | 请求的状态。 |
 
 ## respondData
 
@@ -53,6 +51,8 @@ respondData(uuid: number, offset: number, buffer: ArrayBuffer): number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MediaSourceLoadingRequest-respondData(uuid: number, offset: number, buffer: ArrayBuffer): number--><!--Device-MediaSourceLoadingRequest-respondData(uuid: number, offset: number, buffer: ArrayBuffer): number-End-->
@@ -63,15 +63,15 @@ respondData(uuid: number, offset: number, buffer: ArrayBuffer): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uuid | number | 是 | 资源句柄的标识。来源是[SourceOpenCallback]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
+| uuid | number | 是 | 资源句柄的标识。来源是SourceOpenCallback。 |
 | offset | number | 是 | 当前媒体数据相对于资源起始位置的偏移量。offset不能小于0。 |
-| buffer | ArrayBuffer | 是 | 响应播放器的媒体数据。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_**注意：** 不要传输无关数据，会影响正常数据解析和播放。 |
+| buffer | ArrayBuffer | 是 | 响应播放器的媒体数据。&lt;br/&gt;**注意：** 不要传输无关数据，会影响正常数据解析和播放。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 当前服务端接受的字节数。 |
+| number | 当前服务端接受的字节数。 &lt;br&gt;- 返回值小于0表示操作失败。 &lt;br&gt;- 返回值为-2时，表示播放器不再需要当前数据，客户端应停止当前读取过程。 &lt;br&gt;- 返回值为-3时，表示播放器的缓冲区已满，客户端应等待下一次读取。 |
 
 ## respondData
 
@@ -83,7 +83,9 @@ The interface for application used to send requested data to AVPlayer.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-MediaSourceLoadingRequest-respondData(uuid: long, offset: long, buffer: ArrayBuffer): int | undefined--><!--Device-MediaSourceLoadingRequest-respondData(uuid: long, offset: long, buffer: ArrayBuffer): int | undefined-End-->
 
@@ -101,27 +103,23 @@ The interface for application used to send requested data to AVPlayer.
 
 | 类型 | 说明 |
 | --- | --- |
-| int | - accept bytes for current read. The value less than zero means failed. |
+| int | accept bytes for current read. The value less than zero means failed. -2, means player need current data any more, the client should stop current read process. -3, means player buffer is full, the client should wait for next read. |
 
 ## respondHeader
 
-ArkTS-Dyn:
-```TypeScript
-respondHeader(uuid: number, header?: Record<string, string>, redirectUrl?: string): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 respondHeader(uuid: long, header?: Record<string, string>, redirectUrl?: string): void
 ```
 
-用于应用程序向播放器发送响应头信息，应在第一次调用 [respondData]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 方法之前调用。
+用于应用程序向播放器发送响应头信息，应在第一次调用 [respondData](#respondData) 方法之前调用。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MediaSourceLoadingRequest-respondHeader(uuid: long, header?: Record<string, string>, redirectUrl?: string): void--><!--Device-MediaSourceLoadingRequest-respondHeader(uuid: long, header?: Record<string, string>, redirectUrl?: string): void-End-->
 
@@ -131,8 +129,8 @@ respondHeader(uuid: long, header?: Record<string, string>, redirectUrl?: string)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uuid | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 是 | 资源句柄的标识。来源是[SourceOpenCallback]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
-| header | Record&lt;string, string&gt; | 否 | HTTP响应中的头部信息。应用可将头部信息字段与底层支持解析字段取交集传递或直接传入对应的所有头部信息。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ - 底层播放需要解析的字段包括Transfer-Encoding、Location、Content-Type、Content-Range、Content-Encode、Accept-Ranges、content-length。 |
+| uuid | long | 是 | 资源句柄的标识。来源是SourceOpenCallback。 |
+| header | Record&lt;string, string&gt; | 否 | HTTP响应中的头部信息。应用可将头部信息字段与底层支持解析字段取交集传递或直接传入对应的所有头部信息。&lt;br&gt; - 底层播放需要解析的 字段包括Transfer-Encoding、Location、Content-Type、Content-Range、Content-Encode、Accept-Ranges、content-length。 |
 | redirectUrl | string | 否 | 如果存在，为HTTP响应中的重定向URL。 |
 
 ## header
@@ -145,11 +143,13 @@ header?: Record<string, string>
 
 **类型：** Record&lt;string, string&gt;
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MediaSourceLoadingRequest-header?: Record<string, string>--><!--Device-MediaSourceLoadingRequest-header?: Record<string, string>-End-->
 
@@ -165,11 +165,13 @@ url: string
 
 **类型：** string
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MediaSourceLoadingRequest-url: string--><!--Device-MediaSourceLoadingRequest-url: string-End-->
 

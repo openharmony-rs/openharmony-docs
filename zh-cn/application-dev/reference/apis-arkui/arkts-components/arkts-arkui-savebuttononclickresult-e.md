@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare enum SaveButtonOnClickResult--><!--Device-unnamed-declare enum SaveButtonOnClickResult-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -21,6 +23,8 @@ SUCCESS = 0
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,6 +46,8 @@ TEMPORARY_AUTHORIZATION_FAILED = 1
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -56,11 +62,13 @@ TEMPORARY_AUTHORIZATION_FAILED = 1
 CANCELED_BY_USER = 2
 ```
 
-保存控件点击后，弹窗中用户取消授权。仅在调用[userCancelEvent]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_并设置参数为true时，回调结果中才会返回该值。
+保存控件点击后，弹窗中用户取消授权。仅在调用[userCancelEvent](arkts-arkui-savebutton-attribute.md#userCancelEvent)并设置参数为true时，回调结果中才会返回该值。
 
 **起始版本：** 21
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

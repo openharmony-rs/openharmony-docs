@@ -1,10 +1,12 @@
 # VibratePreset
 
-预置振动类型。当调用 [vibrator.startVibration\_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_9+\_\_\_HTML\_TAG\_DESC\_USD\_4\_\_\_]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 或 [vibrator.startVibration\_\_\_HTML\_TAG\_DESC\_USD\_5\_\_\_9+\_\_\_HTML\_TAG\_DESC\_USD\_6\_\_\_]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_ 时，[VibrateEffect\_\_\_HTML\_TAG\_DESC\_USD\_7\_\_\_9+\_\_\_HTML\_TAG\_DESC\_USD\_8\_\_\_]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_参数的值可以为VibratePreset，表示触发预置振动类型。适用于交互反馈类的短振场景（如点击、长按、滑动 、拖拽等），为确保与系统整体振感反馈体验风格一致，推荐使用此类型。
+预置振动类型。当调用 [vibrator.startVibration&lt;sup&gt;9+&lt;/sup&gt;](arkts-sensorservice-vibrator-startvibration-f.md#startVibration) 或 [vibrator.startVibration&lt;sup&gt;9+&lt;/sup&gt;](arkts-sensorservice-vibrator-startvibration-f.md#startVibration) 时，[VibrateEffect&lt;sup&gt;9+&lt;/sup&gt;](arkts-sensorservice-vibrator-vibrateeffect-t.md#VibrateEffect)参数的值可以为VibratePreset，表示触发预置振动类型。适用于交互反馈类的短振场景（如点击、长按、滑动 、拖拽等），为确保与系统整体振感反馈体验风格一致，推荐使用此类型。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-vibrator-interface VibratePreset--><!--Device-vibrator-interface VibratePreset-End-->
 
@@ -20,9 +22,11 @@ count?: int
 
 **类型：** int
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-VibratePreset-count?: int--><!--Device-VibratePreset-count?: int-End-->
 
@@ -34,13 +38,15 @@ count?: int
 effectId: string
 ```
 
-预置的振动效果ID。字符串最大长度64，超出部分截取前64个字符。使用场景：不同设备预置的振动效果可能不同，建议先通过 [vibrator.isSupportEffect]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_或 [vibrator.isSupportEffectSync]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_查询是否支持。取值可参考[EffectId]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_ 和[HapticFeedback]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_中定义的值。
+预置的振动效果ID。字符串最大长度64，超出部分截取前64个字符。使用场景：不同设备预置的振动效果可能不同，建议先通过 [vibrator.isSupportEffect](arkts-sensorservice-vibrator-issupporteffect-f.md#isSupportEffect)或 [vibrator.isSupportEffectSync](arkts-sensorservice-vibrator-issupporteffectsync-f.md#isSupportEffectSync)查询是否支持。取值可参考[EffectId](arkts-sensorservice-vibrator-effectid-e.md#EffectId) 和[HapticFeedback](arkts-sensorservice-vibrator-hapticfeedback-e.md#HapticFeedback)中定义的值。
 
 **类型：** string
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-VibratePreset-effectId: string--><!--Device-VibratePreset-effectId: string-End-->
 
@@ -56,9 +62,11 @@ intensity?: int
 
 **类型：** int
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-VibratePreset-intensity?: int--><!--Device-VibratePreset-intensity?: int-End-->
 
@@ -74,9 +82,11 @@ type: 'preset'
 
 **类型：** 'preset'
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-VibratePreset-type: 'preset'--><!--Device-VibratePreset-type: 'preset'-End-->
 

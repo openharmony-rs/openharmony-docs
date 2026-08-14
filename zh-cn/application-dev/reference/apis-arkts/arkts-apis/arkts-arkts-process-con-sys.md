@@ -12,6 +12,8 @@ const egid: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 <!--Device-process-const egid: number--><!--Device-process-const egid: number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
@@ -29,6 +31,8 @@ const euid: number
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 <!--Device-process-const euid: number--><!--Device-process-const euid: number-End-->
 
@@ -48,6 +52,8 @@ const gid: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 <!--Device-process-const gid: number--><!--Device-process-const gid: number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
@@ -66,6 +72,8 @@ const groups: number[]
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 <!--Device-process-const groups: number[]--><!--Device-process-const groups: number[]-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
@@ -83,6 +91,8 @@ const ppid: number
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 <!--Device-process-const ppid: number--><!--Device-process-const ppid: number-End-->
 

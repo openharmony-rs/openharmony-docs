@@ -4,11 +4,13 @@
 export type OnLoadInterceptCallback = (event: OnLoadInterceptEvent) => boolean
 ```
 
-资源加载被拦截时触发该回调。
+当Web组件加载url之前触发该回调，用于判断是否阻止此次访问。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -20,11 +22,11 @@ export type OnLoadInterceptCallback = (event: OnLoadInterceptEvent) => boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 当资源加载被拦截时，加载拦截事件。  |
+| event | [OnLoadInterceptEvent](arkts-arkui-atomicservice-atomicserviceweb-onloadinterceptevent-i.md) | 是 | 当Web组件加载url之前触发的加载拦截事件。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 返回资源是否被拦截，true表示被拦截。 |
+| boolean | 返回资源是否被拦截，true表示被拦截，false表示不被拦截。 |
 

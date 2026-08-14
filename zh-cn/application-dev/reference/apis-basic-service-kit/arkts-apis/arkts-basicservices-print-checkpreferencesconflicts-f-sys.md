@@ -10,7 +10,9 @@ function checkPreferencesConflicts(printerId: string, changedType: string, prefe
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -28,7 +30,7 @@ function checkPreferencesConflicts(printerId: string, changedType: string, prefe
 | --- | --- | --- | --- |
 | printerId | string | 是 | 打印机ID。 |
 | changedType | string | 是 | 在打印界面上修改的字段名称。 |
-| preferences | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 打印界面选择的值。 |
+| preferences | [PrinterPreferences](arkts-basicservices-print-printerpreferences-i.md) | 是 | 打印界面选择的值。 |
 
 **返回值：**
 
@@ -40,7 +42,7 @@ function checkPreferencesConflicts(printerId: string, changedType: string, prefe
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [13100005](../../apis-basic-services-kit/errorcode-print.md#13100005-无效的打印机) | Can not find the printer or printer's ppd file in system. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
-| [13100005](../../apis-basic-services-kit/errorcode-print.md#13100005-无效的打印机) | Can not find the printer or printer's ppd file in system. |
 

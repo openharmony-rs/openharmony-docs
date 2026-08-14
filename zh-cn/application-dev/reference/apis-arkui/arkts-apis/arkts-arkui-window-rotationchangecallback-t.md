@@ -4,13 +4,15 @@
 type RotationChangeCallback<T, U> = (info: T) => U
 ```
 
-旋转事件通知通用回调函数。 开发者在使用时，回调函数参数类型为[RotationChangeInfo]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_，返回值类型为 [RotationChangeResult]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_ \| void。
+旋转事件通知通用回调函数。 开发者在使用时，回调函数参数类型为[RotationChangeInfo](arkts-arkui-window-rotationchangeinfo-i.md#RotationChangeInfo)，返回值类型为 [RotationChangeResult](arkts-arkui-window-rotationchangeresult-i.md#RotationChangeResult) \| void。
 
-**起始版本：** 19
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为19；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-window-type RotationChangeCallback<T, U> = (info: T) => U--><!--Device-window-type RotationChangeCallback<T, U> = (info: T) => U-End-->
 
@@ -20,7 +22,7 @@ type RotationChangeCallback<T, U> = (info: T) => U
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | T | 是 | 回调函数调用时系统传入[RotationChangeInfo]\_\_\_JSDOC\_LINK\_USD\_0\_\_\_类型的参数。  |
+| info | T | 是 | 回调函数调用时系统传入[RotationChangeInfo](arkts-arkui-window-rotationchangeinfo-i.md#RotationChangeInfo)类型的参数。 |
 
 **返回值：**
 

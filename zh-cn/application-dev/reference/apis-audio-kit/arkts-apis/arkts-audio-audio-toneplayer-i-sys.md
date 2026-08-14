@@ -1,8 +1,10 @@
 # TonePlayer（系统接口）
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-audio-interface TonePlayer--><!--Device-audio-interface TonePlayer-End-->
 
@@ -18,9 +20,11 @@ load(type: ToneType, callback: AsyncCallback<void>): void
 
 Loads tone. This method uses an asynchronous callback to return the result.
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TonePlayer-load(type: ToneType, callback: AsyncCallback<void>): void--><!--Device-TonePlayer-load(type: ToneType, callback: AsyncCallback<void>): void-End-->
 
@@ -32,10 +36,10 @@ Loads tone. This method uses an asynchronous callback to return the result.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | Tone type to play. |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | Callback used to return the result. |
+| type | [ToneType](arkts-audio-audio-tonetype-e-sys.md) | 是 | Tone type to play. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | Callback used to return the result. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -58,9 +62,11 @@ load(type: ToneType): Promise<void>
 
 Loads tone. This method uses a promise to return the result.
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TonePlayer-load(type: ToneType): Promise<void>--><!--Device-TonePlayer-load(type: ToneType): Promise<void>-End-->
 
@@ -72,7 +78,7 @@ Loads tone. This method uses a promise to return the result.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | Tone type to play. |
+| type | [ToneType](arkts-audio-audio-tonetype-e-sys.md) | 是 | Tone type to play. |
 
 **返回值：**
 
@@ -80,7 +86,7 @@ Loads tone. This method uses a promise to return the result.
 | --- | --- |
 | Promise&lt;void&gt; | Promise used to return the result. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 tonePlayer.load(audio.ToneType.TONE_TYPE_DIAL_1).then(() => {
@@ -98,9 +104,11 @@ release(callback: AsyncCallback<void>): void
 
 Releases the player. This method uses an asynchronous callback to return the result.
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TonePlayer-release(callback: AsyncCallback<void>): void--><!--Device-TonePlayer-release(callback: AsyncCallback<void>): void-End-->
 
@@ -112,9 +120,9 @@ Releases the player. This method uses an asynchronous callback to return the res
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | Callback used to return the result. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -137,9 +145,11 @@ release(): Promise<void>
 
 Releases the player. This method uses a promise to return the result.
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TonePlayer-release(): Promise<void>--><!--Device-TonePlayer-release(): Promise<void>-End-->
 
@@ -153,7 +163,7 @@ Releases the player. This method uses a promise to return the result.
 | --- | --- |
 | Promise&lt;void&gt; | Promise used to return the result. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 tonePlayer.release().then(() => {
@@ -171,9 +181,11 @@ start(callback: AsyncCallback<void>): void
 
 Starts player. This method uses an asynchronous callback to return the result.
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TonePlayer-start(callback: AsyncCallback<void>): void--><!--Device-TonePlayer-start(callback: AsyncCallback<void>): void-End-->
 
@@ -185,9 +197,9 @@ Starts player. This method uses an asynchronous callback to return the result.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | Callback used to return the result. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -210,9 +222,11 @@ start(): Promise<void>
 
 Starts player. This method uses a promise to return the result.
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TonePlayer-start(): Promise<void>--><!--Device-TonePlayer-start(): Promise<void>-End-->
 
@@ -226,7 +240,7 @@ Starts player. This method uses a promise to return the result.
 | --- | --- |
 | Promise&lt;void&gt; | Promise used to return the result. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 tonePlayer.start().then(() => {
@@ -244,9 +258,11 @@ stop(callback: AsyncCallback<void>): void
 
 Stops player. This method uses an asynchronous callback to return the result.
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TonePlayer-stop(callback: AsyncCallback<void>): void--><!--Device-TonePlayer-stop(callback: AsyncCallback<void>): void-End-->
 
@@ -258,9 +274,9 @@ Stops player. This method uses an asynchronous callback to return the result.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | Callback used to return the result. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -283,9 +299,11 @@ stop(): Promise<void>
 
 Stops player. This method uses a promise to return the result.
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TonePlayer-stop(): Promise<void>--><!--Device-TonePlayer-stop(): Promise<void>-End-->
 
@@ -299,7 +317,7 @@ Stops player. This method uses a promise to return the result.
 | --- | --- |
 | Promise&lt;void&gt; | Promise used to return the result. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 tonePlayer.stop().then(() => {

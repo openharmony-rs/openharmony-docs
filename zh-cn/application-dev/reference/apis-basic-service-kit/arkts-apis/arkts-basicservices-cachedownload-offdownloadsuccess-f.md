@@ -10,7 +10,9 @@ function offDownloadSuccess(url: string, callback?: Callback<void>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-cacheDownload-function offDownloadSuccess(url: string, callback?: Callback<void>): void--><!--Device-cacheDownload-function offDownloadSuccess(url: string, callback?: Callback<void>): void-End-->
 
@@ -21,9 +23,9 @@ function offDownloadSuccess(url: string, callback?: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | url | string | 是 | 待注册回调的url，url字符串的最大长度为8192字节。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 否 | 回调函数。若不填该参数，表示url下的所有完成回调函数。 |
+| callback | [Callback](arkts-basicservices-callback-t.md)&lt;void&gt; | 否 | 回调函数。若不填该参数，表示url下的所有完成回调函数。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

@@ -1,14 +1,16 @@
 # SyncedPropertyOneWay（系统接口）
 
-继承自[SubscribedAbstractProperty\&lt;T\&gt;]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。用于接收父组件状态值的单向同步，当父组件状态变化时更新自身值。
+继承自[SubscribedAbstractProperty\&lt;T\&gt;](arkts-arkui-subscribedabstractproperty-c.md#SubscribedAbstractProperty（系统接口）)。用于接收父组件状态值的单向同步，当父组件状态变化时更新自身值。
 
-**继承/实现关系：** SyncedPropertyOneWay extends [SubscribedAbstractProperty<T>](SubscribedAbstractProperty<T>) implements [ISinglePropertyChangeSubscriber<T>](ISinglePropertyChangeSubscriber<T>)
+**继承/实现关系：** SyncedPropertyOneWay extends SubscribedAbstractProperty<T> implements ISinglePropertyChangeSubscriber<T>
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
-<!--Device-unnamed-declare class SyncedPropertyOneWay<T> extends SubscribedAbstractProperty<T>  implements ISinglePropertyChangeSubscriber<T>--><!--Device-unnamed-declare class SyncedPropertyOneWay<T> extends SubscribedAbstractProperty<T>  implements ISinglePropertyChangeSubscriber<T>-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare class SyncedPropertyOneWay--><!--Device-unnamed-declare class SyncedPropertyOneWay-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -26,6 +28,8 @@ aboutToBeDeleted(unsubscribeMe?: IPropertySubscriber): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 <!--Device-SyncedPropertyOneWay-aboutToBeDeleted(unsubscribeMe?: IPropertySubscriber): void--><!--Device-SyncedPropertyOneWay-aboutToBeDeleted(unsubscribeMe?: IPropertySubscriber): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -36,7 +40,7 @@ aboutToBeDeleted(unsubscribeMe?: IPropertySubscriber): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| unsubscribeMe | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 被取消的订阅者，需为已订阅的订阅者；不传入则取消所有订阅者。 |
+| unsubscribeMe | [IPropertySubscriber](arkts-arkui-ipropertysubscriber-i-sys.md) | 否 | 被取消的订阅者，需为已订阅的订阅者；不传入则取消所有订阅者。 |
 
 ## constructor
 
@@ -44,11 +48,13 @@ aboutToBeDeleted(unsubscribeMe?: IPropertySubscriber): void
 constructor(source: SubscribedAbstractProperty<T>, subscribeMe?: IPropertySubscriber, info?: string)
 ```
 
-构造函数。订阅关系不再需要时，应调用[unlinkSuscriber()]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_解除 订阅（订阅者ID通过[IPropertySubscriber]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_.[id()]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_获取）， 或调用本对象的[aboutToBeDeleted()]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_方法处理取消订阅。
+构造函数。订阅关系不再需要时，应调用[unlinkSuscriber()](arkts-arkui-subscribedabstractproperty-c-sys.md#unlinkSuscriber)解除 订阅（订阅者ID通过[IPropertySubscriber](arkts-arkui-ipropertysubscriber-i-sys.md#IPropertySubscriber（系统接口）).[id()](arkts-arkui-ipropertysubscriber-i-sys.md#id)获取）， 或调用本对象的[aboutToBeDeleted()](#aboutToBeDeleted)方法处理取消订阅。
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 <!--Device-SyncedPropertyOneWay-constructor(source: SubscribedAbstractProperty<T>, subscribeMe?: IPropertySubscriber, info?: string)--><!--Device-SyncedPropertyOneWay-constructor(source: SubscribedAbstractProperty<T>, subscribeMe?: IPropertySubscriber, info?: string)-End-->
 
@@ -60,8 +66,8 @@ constructor(source: SubscribedAbstractProperty<T>, subscribeMe?: IPropertySubscr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| source | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; | 是 | 单向同步属性的数据源。 |
-| subscribeMe | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 订阅者，用于接收属性变化通知；不传入则不建立订阅关系。 |
+| source | [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;T&gt; | 是 | 单向同步属性的数据源。 |
+| subscribeMe | [IPropertySubscriber](arkts-arkui-ipropertysubscriber-i-sys.md) | 否 | 订阅者，用于接收属性变化通知；不传入则不建立订阅关系。 |
 | info | string | 否 | 变量信息，用于标识该订阅关系；不传入时默认为undefined。 |
 
 ## get
@@ -76,6 +82,8 @@ get(): T
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 <!--Device-SyncedPropertyOneWay-get(): T--><!--Device-SyncedPropertyOneWay-get(): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -86,7 +94,7 @@ get(): T
 
 | 类型 | 说明 |
 | --- | --- |
-| T | - 返回单向同步属性当前的数据值。 |
+| T | 返回单向同步属性当前的数据值。 |
 
 ## hasChanged
 
@@ -99,6 +107,8 @@ hasChanged(newValue: T): void
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 <!--Device-SyncedPropertyOneWay-hasChanged(newValue: T): void--><!--Device-SyncedPropertyOneWay-hasChanged(newValue: T): void-End-->
 
@@ -124,6 +134,8 @@ set(newValue: T): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 <!--Device-SyncedPropertyOneWay-set(newValue: T): void--><!--Device-SyncedPropertyOneWay-set(newValue: T): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -148,6 +160,8 @@ private source_
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 <!--Device-SyncedPropertyOneWay-private source_--><!--Device-SyncedPropertyOneWay-private source_-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -165,6 +179,8 @@ private wrappedValue_
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 <!--Device-SyncedPropertyOneWay-private wrappedValue_--><!--Device-SyncedPropertyOneWay-private wrappedValue_-End-->
 

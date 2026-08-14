@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-matrix4-export interface ScaleOption--><!--Device-matrix4-export interface ScaleOption-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -23,6 +25,8 @@ centerX?: double
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -44,6 +48,8 @@ centerY?: double
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ScaleOption-centerY?: double--><!--Device-ScaleOption-centerY?: double-End-->
@@ -63,6 +69,8 @@ x轴的缩放倍数。x>1时以x轴方向放大，0<x<1时以x轴方向缩小，
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -84,6 +92,8 @@ y轴的缩放倍数。y>1时以y轴方向放大，0<y<1时以y轴方向缩小，
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ScaleOption-y?: double--><!--Device-ScaleOption-y?: double-End-->
@@ -103,6 +113,8 @@ z轴的缩放倍数。z>1时以z轴方向放大，0<z<1时以z轴方向缩小，
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

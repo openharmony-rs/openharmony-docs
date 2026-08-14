@@ -8,7 +8,7 @@ Enumerates the media file types that can be selected.
 
 **废弃版本：** 12
 
-**替代接口：** @ohos.file.photoAccessHelper:photoAccessHelper.PhotoViewMIMETypes
+**替代接口：** PhotoViewMIMETypes
 
 <!--Device-picker-export enum PhotoViewMIMETypes--><!--Device-picker-export enum PhotoViewMIMETypes-End-->
 
@@ -28,7 +28,7 @@ IMAGE_TYPE = 'image/*'
 
 **废弃版本：** 18
 
-**替代接口：** @ohos.file.photoAccessHelper:photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE
+**替代接口：** IMAGE_TYPE
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -50,7 +50,7 @@ VIDEO_TYPE = 'video/*'
 
 **废弃版本：** 18
 
-**替代接口：** @ohos.file.photoAccessHelper:photoAccessHelper.PhotoViewMIMETypes.VIDEO_TYPE
+**替代接口：** VIDEO_TYPE
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -72,7 +72,7 @@ IMAGE_VIDEO_TYPE = '*/*'
 
 **废弃版本：** 18
 
-**替代接口：** @ohos.file.photoAccessHelper:photoAccessHelper.PhotoViewMIMETypes.IMAGE_VIDEO_TYPE
+**替代接口：** IMAGE_VIDEO_TYPE
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

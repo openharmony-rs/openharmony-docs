@@ -8,9 +8,13 @@ export type OnMenuItemClickWithTextCallback = (menuItem: TextMenuItem, value: st
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-unnamed-export type OnMenuItemClickWithTextCallback = (menuItem: TextMenuItem, value: string) => boolean--><!--Device-unnamed-export type OnMenuItemClickWithTextCallback = (menuItem: TextMenuItem, value: string) => boolean-End-->
 
@@ -20,8 +24,8 @@ export type OnMenuItemClickWithTextCallback = (menuItem: TextMenuItem, value: st
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| menuItem | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 当前点击的菜单项。  |
-| value | string | 是 | 选中文本内容。  |
+| menuItem | TextMenuItem | 是 | 当前点击的菜单项。 |
+| value | string | 是 | 选中文本内容。 |
 
 **返回值：**
 

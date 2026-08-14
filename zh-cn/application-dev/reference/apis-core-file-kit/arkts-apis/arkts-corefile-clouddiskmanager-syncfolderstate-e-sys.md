@@ -2,9 +2,11 @@
 
 枚举，云盘的同步根的状态。
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-cloudDiskManager-enum SyncFolderState--><!--Device-cloudDiskManager-enum SyncFolderState-End-->
 
@@ -20,9 +22,11 @@ INACTIVE = 0
 
 表示同步根处于未激活状态。
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SyncFolderState-INACTIVE = 0--><!--Device-SyncFolderState-INACTIVE = 0-End-->
 
@@ -38,9 +42,11 @@ ACTIVE = 1
 
 表示同步根处于激活状态。
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SyncFolderState-ACTIVE = 1--><!--Device-SyncFolderState-ACTIVE = 1-End-->
 

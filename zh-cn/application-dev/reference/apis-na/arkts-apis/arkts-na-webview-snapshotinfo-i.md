@@ -6,6 +6,8 @@ Defines the snapshot info.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-webview-interface SnapshotInfo--><!--Device-webview-interface SnapshotInfo-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -24,6 +26,8 @@ Id of the snapshot.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-SnapshotInfo-id?: string--><!--Device-SnapshotInfo-id?: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -41,6 +45,8 @@ Size for web rendering. The maximum size is 16000 px × 16000 px. The length uni
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SnapshotInfo-size?: SizeOptions--><!--Device-SnapshotInfo-size?: SizeOptions-End-->
 

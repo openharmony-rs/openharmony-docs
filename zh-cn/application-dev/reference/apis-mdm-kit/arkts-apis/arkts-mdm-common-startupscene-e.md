@@ -1,10 +1,12 @@
 # StartupScene
 
-开机向导完成场景。端侧系统在首次切换子用户完成（仅限PC）、OTA升级完成、首次开机完成开机向导时会通过 [onStartupGuideCompleted]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 回调接口通知设备管理应用。
+开机向导完成场景。端侧系统在首次切换子用户完成（仅限PC）、OTA升级完成、首次开机完成开机向导时会通过 [onStartupGuideCompleted](../../apis-na/arkts-apis/arkts-na-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md#onStartupGuideCompleted) 回调接口通知设备管理应用。
 
 **起始版本：** 24
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 <!--Device-common-export enum StartupScene--><!--Device-common-export enum StartupScene-End-->
 
@@ -21,6 +23,8 @@ USER_SETUP = 0
 **起始版本：** 24
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,6 +44,8 @@ OTA升级完成场景。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-StartupScene-OTA = 1--><!--Device-StartupScene-OTA = 1-End-->
@@ -57,6 +63,8 @@ DEVICE_PROVISION = 2
 **起始版本：** 24
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

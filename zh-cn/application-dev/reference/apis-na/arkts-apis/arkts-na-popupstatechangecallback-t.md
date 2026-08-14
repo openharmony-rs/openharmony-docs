@@ -10,6 +10,8 @@ Popup state change callback
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-export type PopupStateChangeCallback = (event: PopupStateChangeParam) => void--><!--Device-unnamed-export type PopupStateChangeCallback = (event: PopupStateChangeParam) => void-End-->
@@ -20,5 +22,5 @@ Popup state change callback
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | The parameter of state change callback.  |
+| event | [PopupStateChangeParam](arkts-na-common-popupstatechangeparam-i.md) | 是 | The parameter of state change callback. |
 

@@ -2,9 +2,11 @@
 
 UIExtension窗口代理。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-uiExtension-interface WindowProxy--><!--Device-uiExtension-interface WindowProxy-End-->
 
@@ -16,11 +18,13 @@ UIExtension窗口代理。
 hideNonSecureWindows(shouldHide: boolean): Promise<void>
 ```
 
-设置是否隐藏不安全窗口，使用Promise异步回调。 > **说明：** > > - 不安全窗口是指可能遮挡[EmbeddedComponent]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_（或 > [UIExtensionComponent]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_）组件的窗口，如全局悬浮窗、宿主子窗口和宿主创建的Dialog窗口 > （不包括系统应用创建的上述类型窗口）。 > > - 当EmbeddedComponent（或UIExtensionComponent）组件被用来显示敏感操作提示内容时，可以选择隐藏不安全窗口，保护敏感操作提示内容不会被遮挡。当EmbeddedComponent（或 > UIExtensionComponent）组件不显示或销毁时，不安全窗口会重新显示。 > > - 针对PC/2in1设备，当调用hideNonSecureWindows(true)时，不安全窗口中的全局悬浮窗不会被隐藏。
+设置是否隐藏不安全窗口，使用Promise异步回调。 > **说明：** > > - 不安全窗口是指可能遮挡EmbeddedComponent（或 > UIExtensionComponent）组件的窗口，如全局悬浮窗、宿主子窗口和宿主创建的Dialog窗口 > （不包括系统应用创建的上述类型窗口）。 > > - 当EmbeddedComponent（或UIExtensionComponent）组件被用来显示敏感操作提示内容时，可以选择隐藏不安全窗口，保护敏感操作提示内容不会被遮挡。当EmbeddedComponent（或 > UIExtensionComponent）组件不显示或销毁时，不安全窗口会重新显示。 > > - 针对PC/2in1设备，当调用hideNonSecureWindows(true)时，不安全窗口中的全局悬浮窗不会被隐藏。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.ALLOW_SHOW_NON_SECURE_WINDOWS
 
@@ -48,12 +52,12 @@ hideNonSecureWindows(shouldHide: boolean): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified.2. Incorrect parameters types.3. Parameter verification failed. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | Abnormal state. Possible causes:1. Permission denied. Interface caller does not have permission "ohos.permission.ALLOW\_\_\_ESCAPED\_UNDERSCORE\_\_\_SHOW\_\_\_ESCAPED\_UNDERSCORE\_\_\_NON\_\_\_ESCAPED\_UNDERSCORE\_\_\_SECURE\_\_\_ESCAPED\_UNDERSCORE\_\_\_WINDOWS".2. The UIExtension window proxy is abnormal. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | Abnormal state. Possible causes: 1. Permission denied. Interface caller does not have permission "ohos.permission.ALLOW_SHOW_NON_SECURE_WINDOWS". 2. The UIExtension window proxy is abnormal. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -122,9 +126,11 @@ setWaterMarkFlag(enable: boolean): Promise<void>
 
 为当前窗口添加或删除安全水印标志，使用Promise异步回调。 > **说明：** > > 添加安全水印标志后，窗口在前台时会将当前全屏幕覆盖水印。全屏、悬浮窗、分屏等场景下只要有添加了安全水印标志的窗口在前台，就会显示全屏水印。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -150,11 +156,11 @@ setWaterMarkFlag(enable: boolean): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | The UIExtension window proxy is abnormal. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | The UIExtension window proxy is abnormal. |
 | [1300008](../errorcode-window.md#1300008-显示设备异常) | The display device is abnormal. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

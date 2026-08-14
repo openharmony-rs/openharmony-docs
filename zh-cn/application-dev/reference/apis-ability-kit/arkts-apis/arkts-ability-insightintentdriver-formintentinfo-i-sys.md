@@ -1,10 +1,12 @@
 # FormIntentInfo（系统接口）
 
-FormIntentInfo用于描述 \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_ 装饰器支持的参数，例如卡片名称。同时，该接口也可用于描述\_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_所绑定的卡片信 息。
+FormIntentInfo用于描述 @InsightIntentForm 装饰器支持的参数，例如卡片名称。同时，该接口也可用于描述[使用配置文件开发的意图](../../../application-models/insight-intent-config-development.md)所绑定的卡片信 息。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-insightIntentDriver-interface FormIntentInfo--><!--Device-insightIntentDriver-interface FormIntentInfo-End-->
 
@@ -22,9 +24,11 @@ Ability名称。
 
 **类型：** string
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,13 +44,15 @@ Ability名称。
 readonly formName: string
 ```
 
-表示[FormExtensionAbility]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_绑定的卡片名称。
+表示FormExtensionAbility绑定的卡片名称。
 
 **类型：** string
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

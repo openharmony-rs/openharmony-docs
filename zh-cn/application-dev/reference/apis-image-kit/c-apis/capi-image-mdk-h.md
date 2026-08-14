@@ -19,7 +19,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [OhosImageRect](capi-image-ohosimagerect.md) | - | 定义图像矩形信息。 |
-| [OhosImageComponent](capi-image-ohosimagecomponent.md) | - | 定义图像组成信息。 |
+| [OhosImageComponent](capi-image-ohosimagecomponent.md) | - | 定义图像组件信息。 |
 | [ImageNative_](capi-image-imagenative-.md) | ImageNative | 为图像接口定义native层图像对象。 |
 
 ### 枚举

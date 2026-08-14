@@ -6,7 +6,7 @@ typedef struct ArkWeb_BlanklessInfo {...} ArkWeb_BlanklessInfo
 
 ## 概述
 
-Describes prediction information about blankless loading, including the first screen similarity, first screenloading duration, and error codes. The application determines whether to enable the blankless loading solution basedon the prediction information.
+页面首屏加载预测信息，主要包括首屏相似度预测值、首屏加载耗时预测值、错误码，应用需根据此信息来决策是否启用无白屏加载插帧方案（该方案通过在页面加载过程中插入预渲染帧来减少白屏时间）。
 
 **起始版本：** 20
 
@@ -20,8 +20,8 @@ Describes prediction information about blankless loading, including the first sc
 
 | 名称 | 描述 |
 | -- | -- |
-| ArkWeb_BlanklessErrorCode errCode | Error codes of blankless loading. For details, see {@link ArkWeb_BlanklessErrorCode}. |
-| double similarity | First screen similarity, which is calculated based on the historical first screen content. The value ranges from0 to 1.0. 1.0 indicates that the content is the same. A value closer to 1 indicates a higher similarity. Thisvalue is lagging, and the similarity of the local loading is displayed in the next loading. You are advised notto enable the blankless loading frame insertion solution when the similarity is low. |
-| int32_t loadingTime | Loading duration estimated based on the historical first screen loading durations, in milliseconds. The valuemust be greater than 0. |
+| ArkWeb_BlanklessErrorCode errCode | 无白屏加载的错误码，取值为0表示无错误，非0值表示错误类型，见{@link ArkWeb_BlanklessErrorCode}定义。 |
+| double similarity | 首屏相似度，根据历史加载首屏内容计算相似度，范围为[0, 1.0]，1.0表示完全一致，数值越接近1，相似度越高。该值存在滞后性，本地加载的相似度将在下次加载时才可反映。建议当相似度低于具体阈值（如0.33）时，应用不启用无白屏加载插帧方案。 |
+| int32_t loadingTime | 根据历史加载首屏耗时预测本次加载耗时，单位：ms，取值范围需大于0。 |
 
 

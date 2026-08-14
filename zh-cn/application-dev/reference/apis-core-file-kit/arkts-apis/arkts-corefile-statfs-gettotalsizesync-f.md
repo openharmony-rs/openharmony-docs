@@ -8,9 +8,11 @@ function getTotalSizeSync(path: string): long
 
 以同步方法获取指定文件系统总字节数。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-statfs-function getTotalSizeSync(path: string): long--><!--Device-statfs-function getTotalSizeSync(path: string): long-End-->
 
@@ -26,27 +28,27 @@ function getTotalSizeSync(path: string): long
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 返回总字节数。 |
+| long | 返回总字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900002 | No such file or directory |
-| 13900004 | Interrupted system call |
-| 13900005 | I/O error |
-| 13900008 | Bad file descriptor |
-| 13900011 | Out of memory |
-| 13900012 | Permission denied |
-| 13900013 | Bad address |
 | 13900018 | Not a directory |
 | 13900030 | File name too long |
 | 13900031 | Function not implemented |
-| 13900033 | Too many symbolic links encountered |
+| 13900004 | Interrupted system call |
+| 13900005 | I/O error |
 | 13900038 | Value too large for defined data type |
+| 13900033 | Too many symbolic links encountered |
+| 13900002 | No such file or directory |
+| 13900012 | Permission denied |
+| 13900013 | Bad address |
+| 13900008 | Bad file descriptor |
 | 13900042 | Unknown error |
+| 13900011 | Out of memory |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { common } from '@kit.AbilityKit';

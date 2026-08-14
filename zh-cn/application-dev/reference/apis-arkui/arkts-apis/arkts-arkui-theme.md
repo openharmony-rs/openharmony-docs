@@ -14,7 +14,7 @@
 | --- | --- |
 | [Colors](arkts-arkui-arkui-theme-colors-i.md) | 主题颜色资源。 |
 | [CustomTheme](arkts-arkui-arkui-theme-customtheme-i.md) | 自定义主题风格对象。 |
-| [Theme](arkts-arkui-arkui-theme-theme-i.md) | 当前生效的主题风格对象，可从 \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_中获取。 |
+| [Theme](arkts-arkui-arkui-theme-theme-i.md) | 当前生效的主题风格对象，可从 [onWillApplyTheme](../../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onwillapplytheme12)中获取。 |
 
 ### 类型
 

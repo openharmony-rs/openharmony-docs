@@ -1,10 +1,12 @@
 # BackgroundPlayMode
 
-表示session支持的后台播放模式的枚举。 | 名称 | 值 | 说明 | | ------------------------- | - | ----------------------- | | ENABLE\_BACKGROUND\_PLAY | 0 | 支持后台播放。 | | DISABLE\_BACKGROUND\_PLAY | 1 | 不支持后台播放。 |
+表示session支持的后台播放模式的枚举。 | 名称 | 值 | 说明 | | ------------------------- | - | ----------------------- | | ENABLE_BACKGROUND_PLAY | 0 | 支持后台播放。 | | DISABLE_BACKGROUND_PLAY | 1 | 不支持后台播放。 |
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 <!--Device-avSession-enum BackgroundPlayMode--><!--Device-avSession-enum BackgroundPlayMode-End-->
 
@@ -20,7 +22,9 @@ ENABLE_BACKGROUND_PLAY = 0
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -38,7 +42,9 @@ DISABLE_BACKGROUND_PLAY = 1
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

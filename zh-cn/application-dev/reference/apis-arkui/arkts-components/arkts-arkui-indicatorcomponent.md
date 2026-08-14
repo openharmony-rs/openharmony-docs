@@ -14,6 +14,8 @@ Called when a indicator is set.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
@@ -28,7 +30,7 @@ Called when a indicator is set.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| controller | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | indicator component controller.  |
+| controller | [IndicatorComponentController](arkts-arkui-indicatorcomponentcontroller-c.md) | 否 | indicator component controller. |
 
 ## 汇总
 

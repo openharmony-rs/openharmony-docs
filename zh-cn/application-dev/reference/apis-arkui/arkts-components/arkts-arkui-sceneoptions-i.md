@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface SceneOptions--><!--Device-unnamed-declare interface SceneOptions-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
@@ -18,13 +20,15 @@ modelType?: ModelType
 
 3D渲染时的场景类型
 
-**类型：** ModelType
+**类型：** [ModelType](arkts-arkui-modeltype-e.md)
 
 **默认值：** ModelType.SURFACE 表面模型类型
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -40,11 +44,13 @@ scene?: ResourceStr | Scene
 
 3D渲染的资源类型，3D场景控制的Scene类型
 
-**类型：** ResourceStr \| Scene
+**类型：** ResourceStr \| [Scene](arkts-arkui-scene-t.md)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

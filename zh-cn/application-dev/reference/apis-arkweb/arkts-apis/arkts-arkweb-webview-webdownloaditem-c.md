@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-webview-class WebDownloadItem--><!--Device-webview-class WebDownloadItem-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -21,6 +23,8 @@ cancel(): void
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -40,6 +44,8 @@ static deserialize(serializedData: Uint8Array): WebDownloadItem
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebDownloadItem-static deserialize(serializedData: Uint8Array): WebDownloadItem--><!--Device-WebDownloadItem-static deserialize(serializedData: Uint8Array): WebDownloadItem-End-->
@@ -56,13 +62,13 @@ static deserialize(serializedData: Uint8Array): WebDownloadItem
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | - 从字节数组反序列化为一个WebDownloadItem对象。 |
+| [WebDownloadItem](../../apis-na/arkts-apis/arkts-na-webview-webdownloaditem-c.md) | 从字节数组反序列化为一个WebDownloadItem对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Incorrect parameter types.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types. &lt;br&gt;2. Parameter verification failed. |
 
 ## getCurrentSpeed
 
@@ -76,6 +82,8 @@ getCurrentSpeed(): number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebDownloadItem-getCurrentSpeed(): number--><!--Device-WebDownloadItem-getCurrentSpeed(): number-End-->
@@ -86,7 +94,7 @@ getCurrentSpeed(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | - 下载的速度（字节每秒）。 |
+| number | 下载的速度（字节每秒）。 |
 
 ## getFullPath
 
@@ -100,6 +108,8 @@ getFullPath(): string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebDownloadItem-getFullPath(): string--><!--Device-WebDownloadItem-getFullPath(): string-End-->
@@ -110,7 +120,7 @@ getFullPath(): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | - 下载文件在磁盘上的全路径。 |
+| string | 下载文件在磁盘上的全路径。 |
 
 ## getGuid
 
@@ -124,6 +134,8 @@ getGuid(): string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebDownloadItem-getGuid(): string--><!--Device-WebDownloadItem-getGuid(): string-End-->
@@ -134,7 +146,7 @@ getGuid(): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | - 下载任务的唯一ID。 |
+| string | 下载任务的唯一ID。 |
 
 ## getLastErrorCode
 
@@ -148,6 +160,8 @@ getLastErrorCode(): WebDownloadErrorCode
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebDownloadItem-getLastErrorCode(): WebDownloadErrorCode--><!--Device-WebDownloadItem-getLastErrorCode(): WebDownloadErrorCode-End-->
@@ -158,7 +172,7 @@ getLastErrorCode(): WebDownloadErrorCode
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | - 下载发生错误的时候的错误码。 |
+| [WebDownloadErrorCode](../../apis-na/arkts-apis/arkts-na-webview-webdownloaderrorcode-e.md) | 下载发生错误的时候的错误码。 |
 
 ## getMethod
 
@@ -172,6 +186,8 @@ getMethod(): string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebDownloadItem-getMethod(): string--><!--Device-WebDownloadItem-getMethod(): string-End-->
@@ -182,7 +198,7 @@ getMethod(): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | - 下载的请求方式。 |
+| string | 下载的请求方式。 |
 
 ## getMimeType
 
@@ -196,6 +212,8 @@ getMimeType(): string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebDownloadItem-getMimeType(): string--><!--Device-WebDownloadItem-getMimeType(): string-End-->
@@ -206,7 +224,7 @@ getMimeType(): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | - 下载的媒体类型（例如，一个声音文件可能被标记为 audio/ogg ，一个图像文件可能是 image/png）。 |
+| string | 下载的媒体类型（例如，一个声音文件可能被标记为 audio/ogg ，一个图像文件可能是 image/png）。 |
 
 ## getOriginalUrl
 
@@ -220,6 +238,8 @@ getOriginalUrl(): string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WebDownloadItem-getOriginalUrl(): string--><!--Device-WebDownloadItem-getOriginalUrl(): string-End-->
@@ -230,7 +250,7 @@ getOriginalUrl(): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | - 下载文件的原始URL地址。 |
+| string | 下载文件的原始URL地址。 |
 
 ## getPercentComplete
 
@@ -244,6 +264,8 @@ getPercentComplete(): number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebDownloadItem-getPercentComplete(): number--><!--Device-WebDownloadItem-getPercentComplete(): number-End-->
@@ -254,7 +276,7 @@ getPercentComplete(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | - 下载完成的进度，100代表下载完成，-1代表进度未知。 |
+| number | 下载完成的进度，100代表下载完成，-1代表进度未知。 |
 
 ## getReceivedBytes
 
@@ -268,6 +290,8 @@ getReceivedBytes(): number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebDownloadItem-getReceivedBytes(): number--><!--Device-WebDownloadItem-getReceivedBytes(): number-End-->
@@ -278,7 +302,7 @@ getReceivedBytes(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | - 已经接收的字节数。 |
+| number | 已经接收的字节数。 |
 
 ## getReferrerUrl
 
@@ -292,6 +316,8 @@ getReferrerUrl(): string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WebDownloadItem-getReferrerUrl(): string--><!--Device-WebDownloadItem-getReferrerUrl(): string-End-->
@@ -302,7 +328,7 @@ getReferrerUrl(): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | - 下载文件的referrer地址。 |
+| string | 下载文件的referrer地址。 |
 
 ## getState
 
@@ -316,6 +342,8 @@ getState(): WebDownloadState
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebDownloadItem-getState(): WebDownloadState--><!--Device-WebDownloadItem-getState(): WebDownloadState-End-->
@@ -326,7 +354,7 @@ getState(): WebDownloadState
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | - 下载的状态。 |
+| [WebDownloadState](../../apis-na/arkts-apis/arkts-na-webview-webdownloadstate-e.md) | 下载的状态。 |
 
 ## getSuggestedFileName
 
@@ -340,6 +368,8 @@ getSuggestedFileName(): string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebDownloadItem-getSuggestedFileName(): string--><!--Device-WebDownloadItem-getSuggestedFileName(): string-End-->
@@ -350,7 +380,7 @@ getSuggestedFileName(): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | - 下载的建议文件名。 |
+| string | 下载的建议文件名。 |
 
 ## getTotalBytes
 
@@ -364,6 +394,8 @@ getTotalBytes(): number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebDownloadItem-getTotalBytes(): number--><!--Device-WebDownloadItem-getTotalBytes(): number-End-->
@@ -374,7 +406,7 @@ getTotalBytes(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | - 待下载文件的总长度，-1代表总大小未知。单位：字节。 |
+| number | 待下载文件的总长度，-1代表总大小未知。单位：字节。 |
 
 ## getUrl
 
@@ -388,6 +420,8 @@ getUrl(): string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebDownloadItem-getUrl(): string--><!--Device-WebDownloadItem-getUrl(): string-End-->
@@ -398,7 +432,7 @@ getUrl(): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | - 下载的请求地址。 |
+| string | 下载的请求地址。 |
 
 ## pause
 
@@ -411,6 +445,8 @@ pause(): void
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -436,6 +472,8 @@ resume(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebDownloadItem-resume(): void--><!--Device-WebDownloadItem-resume(): void-End-->
@@ -460,6 +498,8 @@ serialize(): Uint8Array
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebDownloadItem-serialize(): Uint8Array--><!--Device-WebDownloadItem-serialize(): Uint8Array-End-->
@@ -470,7 +510,7 @@ serialize(): Uint8Array
 
 | 类型 | 说明 |
 | --- | --- |
-| Uint8Array | - 失败的下载序列化后的字节数组。 |
+| Uint8Array | 失败的下载序列化后的字节数组。 |
 
 ## start
 
@@ -483,6 +523,8 @@ start(downloadPath: string): void
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -500,5 +542,5 @@ start(downloadPath: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Incorrect parameter types.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types. &lt;br&gt;2. Parameter verification failed. |
 

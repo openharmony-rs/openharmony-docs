@@ -27,5 +27,5 @@
   <!--Del-->
   - [resetOAID(系统接口)](arkts-ads-identifier-resetoaid-f-sys.md)<!--DelEnd-->
 - advertising<!--arkts-adskit-advertising-->
-  - [advertising/advertisement](arkts-advertising/advertisement.md)
-    - [Advertisement](advertisement-advertisement-i.md)
+  - [advertisement](arkts-advertisement.md)
+    - [Advertisement](arkts-ads-advertisement-advertisement-i.md)

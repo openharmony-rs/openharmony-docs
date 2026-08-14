@@ -2,13 +2,15 @@
 
 DisappearSymbolEffect继承自父类SymbolEffect。
 
-**继承/实现关系：** DisappearSymbolEffect extends [SymbolEffect](../arkts-apis/arkts-arkui-component/symbolglyph-symboleffect-c.md)
+**继承/实现关系：** DisappearSymbolEffect extends [SymbolEffect](arkts-arkui-symboleffect-c.md#SymbolEffect)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-<!--Device-unnamed-declare class DisappearSymbolEffect extends SymbolEffect--><!--Device-unnamed-declare class DisappearSymbolEffect extends SymbolEffect-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare class DisappearSymbolEffect--><!--Device-unnamed-declare class DisappearSymbolEffect-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,6 +26,8 @@ AppearSymbolEffect的构造函数，出现动效。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -38,7 +42,7 @@ AppearSymbolEffect的构造函数，出现动效。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scope | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 动效范围。具体枚举值及说明请参考EffectScope枚举说明。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_默认值：EffectScope.LAYER |
+| scope | [EffectScope](arkts-arkui-effectscope-e.md) | 否 | 动效范围。具体枚举值及说明请参考EffectScope枚举说明。 &lt;br&gt;默认值：EffectScope.LAYER |
 
 ## scope
 
@@ -48,11 +52,13 @@ scope?: EffectScope
 
 动效范围。具体枚举值及说明请参考EffectScope枚举说明。 默认值：EffectScope.LAYER
 
-**类型：** EffectScope
+**类型：** [EffectScope](arkts-arkui-effectscope-e.md)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

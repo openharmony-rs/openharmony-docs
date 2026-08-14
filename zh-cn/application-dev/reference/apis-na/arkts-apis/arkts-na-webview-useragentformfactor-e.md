@@ -6,6 +6,8 @@ The form factors for User-Agent metadata.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
 
+**废弃版本：** -1
+
 <!--Device-webview-enum UserAgentFormFactor--><!--Device-webview-enum UserAgentFormFactor-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -21,6 +23,8 @@ Form factor option: Automotive.
 **起始版本：** 24
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,6 +44,8 @@ Form factor option: Desktop.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UserAgentFormFactor-DESKTOP = 'Desktop'--><!--Device-UserAgentFormFactor-DESKTOP = 'Desktop'-End-->
@@ -57,6 +63,8 @@ Form factor option: Mobile.
 **起始版本：** 24
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -76,6 +84,8 @@ Form factor option: EInk.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UserAgentFormFactor-EINK = 'EInk'--><!--Device-UserAgentFormFactor-EINK = 'EInk'-End-->
@@ -93,6 +103,8 @@ Form factor option: Tablet.
 **起始版本：** 24
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -112,6 +124,8 @@ Form factor option: Watch.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UserAgentFormFactor-WATCH = 'Watch'--><!--Device-UserAgentFormFactor-WATCH = 'Watch'-End-->
@@ -129,6 +143,8 @@ Form factor option: XR.
 **起始版本：** 24
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

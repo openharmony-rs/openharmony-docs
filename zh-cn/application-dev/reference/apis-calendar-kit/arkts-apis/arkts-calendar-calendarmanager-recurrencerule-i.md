@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-calendarManager-export interface RecurrenceRule--><!--Device-calendarManager-export interface RecurrenceRule-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
@@ -23,6 +25,8 @@ count?: number
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -44,6 +48,8 @@ daysOfMonth?: number[]
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RecurrenceRule-daysOfMonth?: number[]--><!--Device-RecurrenceRule-daysOfMonth?: number[]-End-->
@@ -63,6 +69,8 @@ daysOfWeek?: number[]
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -84,6 +92,8 @@ daysOfYear?: number[]
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RecurrenceRule-daysOfYear?: number[]--><!--Device-RecurrenceRule-daysOfYear?: number[]-End-->
@@ -103,6 +113,8 @@ excludedDates?: number[]
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -124,6 +136,8 @@ expire?: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RecurrenceRule-expire?: number--><!--Device-RecurrenceRule-expire?: number-End-->
@@ -143,6 +157,8 @@ interval?: number
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -164,6 +180,8 @@ monthsOfYear?: number[]
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RecurrenceRule-monthsOfYear?: number[]--><!--Device-RecurrenceRule-monthsOfYear?: number[]-End-->
@@ -178,11 +196,13 @@ recurrenceFrequency: RecurrenceFrequency
 
 日程重复规则类型。
 
-**类型：** RecurrenceFrequency
+**类型：** [RecurrenceFrequency](arkts-calendar-calendarmanager-recurrencefrequency-e.md)
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -204,6 +224,8 @@ weeksOfMonth?: number[]
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RecurrenceRule-weeksOfMonth?: number[]--><!--Device-RecurrenceRule-weeksOfMonth?: number[]-End-->
@@ -223,6 +245,8 @@ weeksOfYear?: number[]
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

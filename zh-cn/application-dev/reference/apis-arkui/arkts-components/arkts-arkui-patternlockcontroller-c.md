@@ -8,6 +8,8 @@ PatternLock组件的控制器，用于重置组件状态和设置图案密码状
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare class PatternLockController--><!--Device-unnamed-declare class PatternLockController-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -23,6 +25,8 @@ PatternLockController的构造函数。
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -42,6 +46,8 @@ reset()
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PatternLockController-reset()--><!--Device-PatternLockController-reset()-End-->
@@ -60,6 +66,8 @@ setChallengeResult(result: PatternLockChallengeResult): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -72,5 +80,5 @@ setChallengeResult(result: PatternLockChallengeResult): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| result | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 图案密码状态。包括正确和错误状态。 |
+| result | [PatternLockChallengeResult](arkts-arkui-patternlockchallengeresult-e.md) | 是 | 图案密码状态。包括正确和错误状态。 |
 

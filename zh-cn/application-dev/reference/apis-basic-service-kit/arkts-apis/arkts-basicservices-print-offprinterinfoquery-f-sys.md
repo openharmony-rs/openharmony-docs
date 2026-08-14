@@ -10,7 +10,9 @@ function offPrinterInfoQuery(callback?: PrinterInfoQueryCallback): void
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -26,7 +28,7 @@ function offPrinterInfoQuery(callback?: PrinterInfoQueryCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 查询到的打印机信息的回调函数。 |
+| callback | [PrinterInfoQueryCallback](arkts-basicservices-print-printerinfoquerycallback-t-sys.md) | 否 | 查询到的打印机信息的回调函数。 |
 
 **错误码：**
 

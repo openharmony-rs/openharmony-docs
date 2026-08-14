@@ -11,7 +11,9 @@ function createAuxiliaryPictureUsingAllocator(auxiliaryPictureInfo: AuxiliaryPic
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -23,25 +25,25 @@ function createAuxiliaryPictureUsingAllocator(auxiliaryPictureInfo: AuxiliaryPic
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| auxiliaryPictureInfo | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 辅助图图像信息。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- 输入的ArrayBuffer的pixelFormat和最终创建出的辅助图的实际pixelFormat需与auxiliaryPictureInfo中指定的pixelFormat保持一致。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- 当AuxiliaryPictureType为GAINMAP时，AllocatorType仅支持传入AUTO/DMA。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- 当传入SHARE\_\_\_ESCAPED\_UNDERSCORE\_\_\_MEMORY时，返回错误码7600205。 |
-| allocatorType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 图像解码的内存类型，AUTO及默认情况下按照DMA处理。 |
-| pixels | ArrayBuffer | 否 | 以buffer形式存放的图像数据。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_当未提供ArrayBuffer参数时，默认创建空白辅助图。 |
+| auxiliaryPictureInfo | [AuxiliaryPictureInfo](arkts-image-image-auxiliarypictureinfo-i.md) | 是 | 辅助图图像信息。 &lt;br&gt;- 输入的ArrayBuffer的pixelFormat和最终创建出的辅助图的实际pixelFormat需与auxiliaryPictureInfo中指定的pixelFormat保持一致。 &lt;br&gt;- 当AuxiliaryPictureType为GAINMAP时，AllocatorType仅支持传入AUTO/DMA。 &lt;br&gt;- 当传入SHARE_MEMORY时，返回错误码7600205。 |
+| allocatorType | [AllocatorType](arkts-image-image-allocatortype-e.md) | 否 | 图像解码的内存类型，AUTO及默认情况下按照DMA处理。 |
+| pixels | ArrayBuffer | 否 | 以buffer形式存放的图像数据。 &lt;br&gt;当未提供ArrayBuffer参数时，默认创建空白辅助图。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 如果操作成功，则返回AuxiliaryPicture实例。 |
+| [AuxiliaryPicture](arkts-image-image-auxiliarypicture-i.md) | 如果操作成功，则返回AuxiliaryPicture实例。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [7600205](../errorcode-image.md#7600205-不支持的内存格式或像素格式) | Unsupported allocator type, e.g., use shared memory to create a gainmap as only DMA supported hdr metadata. |
 | [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter, size.height or size.width is less than or equal to 0. |
+| [7600205](../errorcode-image.md#7600205-不支持的内存格式或像素格式) | Unsupported allocator type, e.g., use shared memory to create a gainmap as only DMA supported hdr metadata. |
 | [7600301](../errorcode-image.md#7600301-申请内存失败) | Alloc memory failed. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 function CreateAuxiliaryPictureUsingAllocator(info: image.AuxiliaryPictureInfo,  allocatorType?: image.AllocatorType, pixels?: ArrayBuffer ) {

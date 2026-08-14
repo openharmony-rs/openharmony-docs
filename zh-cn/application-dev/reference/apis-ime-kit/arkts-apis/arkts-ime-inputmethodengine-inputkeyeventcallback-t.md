@@ -8,7 +8,9 @@ export type InputKeyEventCallback = (event: InputKeyEvent) => boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-inputMethodEngine-export type InputKeyEventCallback = (event: InputKeyEvent) => boolean--><!--Device-inputMethodEngine-export type InputKeyEventCallback = (event: InputKeyEvent) => boolean-End-->
 
@@ -18,7 +20,7 @@ export type InputKeyEventCallback = (event: InputKeyEvent) => boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | InputKeyEvent | 是 | 输入按键事件对象，包含按键编码、事件类型、触发时间等按键事件相关信息。  |
+| event | InputKeyEvent | 是 | 输入按键事件对象，包含按键编码、事件类型、触发时间等按键事件相关信息。 |
 
 **返回值：**
 

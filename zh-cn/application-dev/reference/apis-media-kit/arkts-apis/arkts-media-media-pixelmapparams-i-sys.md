@@ -2,9 +2,11 @@
 
 Defines the format parameters of the video thumbnail to be obtained.
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-media-interface PixelMapParams--><!--Device-media-interface PixelMapParams-End-->
 
@@ -20,9 +22,11 @@ Auto flip the thumbnail when video has mirror attribute (Vertical Flip or Horizo
 
 **类型：** boolean
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PixelMapParams-autoFlip?: boolean--><!--Device-PixelMapParams-autoFlip?: boolean-End-->
 
@@ -38,11 +42,13 @@ colorFormat?: PixelFormat
 
 Color format of the thumbnail. **System API**: This is a system API.
 
-**类型：** PixelFormat
+**类型：** [PixelFormat](arkts-media-media-pixelformat-e-sys.md)
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PixelMapParams-colorFormat?: PixelFormat--><!--Device-PixelMapParams-colorFormat?: PixelFormat-End-->
 

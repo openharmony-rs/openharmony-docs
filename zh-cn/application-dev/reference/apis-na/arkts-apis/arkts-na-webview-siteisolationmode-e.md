@@ -6,6 +6,8 @@ Indicates the site isolation mode of the application, default value depends on d
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-webview-enum SiteIsolationMode--><!--Device-webview-enum SiteIsolationMode-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -22,6 +24,8 @@ The partial site isolation mode
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-SiteIsolationMode-PARTIAL = 0--><!--Device-SiteIsolationMode-PARTIAL = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -37,6 +41,8 @@ The strict site isolation mode
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SiteIsolationMode-STRICT = 1--><!--Device-SiteIsolationMode-STRICT = 1-End-->
 

@@ -10,7 +10,9 @@ function addPrinterToCups(printerUri: string, printerName: string, printerMake: 
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -40,11 +42,11 @@ function addPrinterToCups(printerUri: string, printerName: string, printerMake: 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [13100003](../../apis-basic-services-kit/errorcode-print.md#13100003-打印服务异常) | Add a printer to cups failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
-| [13100003](../../apis-basic-services-kit/errorcode-print.md#13100003-打印服务异常) | Add a printer to cups failed. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { print } from '@kit.BasicServicesKit';

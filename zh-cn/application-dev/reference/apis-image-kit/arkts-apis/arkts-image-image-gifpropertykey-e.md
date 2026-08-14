@@ -2,9 +2,11 @@
 
 表示GIF图片信息的枚举。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-image-enum GifPropertyKey--><!--Device-image-enum GifPropertyKey-End-->
 
@@ -18,9 +20,11 @@ GIF_DELAY_TIME = 'GifDelayTime'
 
 GIF图片钳制后的帧延迟时长。钳制范围为[100, 65535]。 单位：毫秒（ms）。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-GifPropertyKey-GIF_DELAY_TIME = 'GifDelayTime'--><!--Device-GifPropertyKey-GIF_DELAY_TIME = 'GifDelayTime'-End-->
 
@@ -34,9 +38,11 @@ GIF_DISPOSAL_TYPE = 'GifDisposalType'
 
 GIF图片的每帧处置方式。 - 0表示未指定。 - 1表示不处置。 - 2表示还原为背景色。 - 3表示还原为前一帧。 该值为正整数。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-GifPropertyKey-GIF_DISPOSAL_TYPE = 'GifDisposalType'--><!--Device-GifPropertyKey-GIF_DISPOSAL_TYPE = 'GifDisposalType'-End-->
 
@@ -52,7 +58,9 @@ GIF图像是否包含全局调色板。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -70,7 +78,9 @@ GIF图像的画布宽度。 单位：像素（px）。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -88,7 +98,9 @@ GIF图像的画布高度。 单位：像素（px）。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -106,7 +118,9 @@ GIF图片循环次数。 取值为0或正整数。0表示无限循环，其他�
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -124,7 +138,9 @@ GIF图片未钳制的帧延迟时间。 单位：毫秒（ms）。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

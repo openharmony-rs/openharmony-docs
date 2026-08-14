@@ -12,6 +12,8 @@ const pid: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-process-const pid: number--><!--Device-process-const pid: number-End-->
@@ -24,11 +26,13 @@ const pid: number
 const tid: number
 ```
 
-线程的 ID（TID）。
+当前线程的tid。
 
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -42,11 +46,13 @@ const tid: number
 const uid: number
 ```
 
-进程的用户标识（UID）。
+进程的用户标识。
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

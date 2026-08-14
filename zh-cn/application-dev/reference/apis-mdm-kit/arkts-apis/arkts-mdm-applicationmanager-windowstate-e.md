@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 <!--Device-applicationManager-enum WindowState--><!--Device-applicationManager-enum WindowState-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -21,6 +23,8 @@ DISCONNECT = 0
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,6 +44,8 @@ CONNECT = 1
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WindowState-CONNECT = 1--><!--Device-WindowState-CONNECT = 1-End-->
@@ -57,6 +63,8 @@ FOREGROUND = 2
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -76,6 +84,8 @@ ACTIVE = 3
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WindowState-ACTIVE = 3--><!--Device-WindowState-ACTIVE = 3-End-->
@@ -94,6 +104,8 @@ INACTIVE = 4
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WindowState-INACTIVE = 4--><!--Device-WindowState-INACTIVE = 4-End-->
@@ -111,6 +123,8 @@ BACKGROUND = 5
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

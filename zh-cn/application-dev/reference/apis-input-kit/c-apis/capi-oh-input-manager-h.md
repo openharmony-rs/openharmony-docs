@@ -485,6 +485,12 @@ typedef void (*Input_HotkeyCallback)(Input_Hotkey* hotkey)
 
 **起始版本：** 14
 
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| (Input_Hotkey\* hotkey | hotkey 快捷键对象的实例。 |
+
 ### Input_KeyEventCallback()
 
 ```c

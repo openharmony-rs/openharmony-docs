@@ -1,14 +1,16 @@
 # MouseEvent
 
-继承于[BaseEvent]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+继承于[BaseEvent](arkts-arkui-baseevent-i.md#BaseEvent)。
 
-**继承/实现关系：** MouseEvent extends [BaseEvent](../../apis-na/arkts-apis/arkts-na-component/common-baseevent-i.md)
+**继承/实现关系：** MouseEvent extends [BaseEvent](arkts-arkui-baseevent-i.md#BaseEvent)
 
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
-<!--Device-unnamed-declare interface MouseEvent extends BaseEvent--><!--Device-unnamed-declare interface MouseEvent extends BaseEvent-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare interface MouseEvent--><!--Device-unnamed-declare interface MouseEvent-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,6 +26,8 @@ getCurrentLocalPosition?(): Coordinate2D
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -36,7 +40,7 @@ getCurrentLocalPosition?(): Coordinate2D
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | - 点击位置相对于当前组件实时位置的左上角坐标。 |
+| Coordinate2D | 点击位置相对于当前组件实时位置的左上角坐标。 |
 
 ## getHistoricalPoints
 
@@ -44,11 +48,13 @@ getCurrentLocalPosition?(): Coordinate2D
 getHistoricalPoints?(): Array<MouseHistoricalPoint>
 ```
 
-获取当前帧的所有历史点信息。历史点可用于实现更平滑的绘制效果。 该接口仅能在[MouseEvent]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_中调用，用于获取触发[onMouse]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_时当前帧历史点的相关信息，不同设备每帧的鼠标事件上报频率不同，一 帧通常只会上报一个鼠标事件，如果当前帧收到的[MouseEvent]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_数目大于1，会将该帧最后一个点通过[onMouse]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_返回，其余点作为历 史点。
+获取当前帧的所有历史点信息。历史点可用于实现更平滑的绘制效果。 该接口仅能在[MouseEvent](#MouseEvent)中调用，用于获取触发[onMouse](arkts-arkui-commonmethod-c.md#onMouse)时当前帧历史点的相关信息，不同设备每帧的鼠标事件上报频率不同，一 帧通常只会上报一个鼠标事件，如果当前帧收到的[MouseEvent](#MouseEvent)数目大于1，会将该帧最后一个点通过[onMouse](arkts-arkui-commonmethod-c.md#onMouse)返回，其余点作为历 史点。
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -62,7 +68,7 @@ getHistoricalPoints?(): Array<MouseHistoricalPoint>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;MouseHistoricalPoint&gt; | 当前帧的所有历史点信息组成的数组。 |
+| Array&lt;[MouseHistoricalPoint](arkts-arkui-mousehistoricalpoint-i.md)&gt; | 当前帧的所有历史点信息组成的数组。 |
 
 ## action
 
@@ -77,6 +83,8 @@ action: MouseAction
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -98,6 +106,8 @@ button: MouseButton
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MouseEvent-button: MouseButton--><!--Device-MouseEvent-button: MouseButton-End-->
@@ -117,6 +127,8 @@ displayX: number
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -140,6 +152,8 @@ displayY: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -154,13 +168,15 @@ displayY: number
 eventHandleId?: number
 ```
 
-用于事件处理的唯一标识。 取值范围：[0, +∞) **说明：** 在使用[postInputEventWithStrategy]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_接口分发事件时会使用该字段，事件每分 发一次字段会增加100000。 多次使用相同的eventHandleId进行事件分发将导致事件响应异常。仅在构造事件的时候需要对此字段赋值，其余情况开发者无需处理。
+用于事件处理的唯一标识。 取值范围：[0, +∞) **说明：** 在使用[postInputEventWithStrategy](../arkts-apis/arkts-arkui-buildernode-c.md#postInputEventWithStrategy)接口分发事件时会使用该字段，事件每分 发一次字段会增加100000。 多次使用相同的eventHandleId进行事件分发将导致事件响应异常。仅在构造事件的时候需要对此字段赋值，其余情况开发者无需处理。
 
 **类型：** number
 
 **起始版本：** 24
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -176,13 +192,15 @@ eventHandleId?: number
 globalDisplayX?: number
 ```
 
-鼠标位置在\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_中的X坐标。 单位：vp 取值范围：[0, +∞)
+鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的X坐标。 单位：vp 取值范围：[0, +∞)
 
 **类型：** number
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -198,13 +216,15 @@ globalDisplayX?: number
 globalDisplayY?: number
 ```
 
-鼠标光标在\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_中的Y坐标。 单位：vp 取值范围：[0, +∞)
+鼠标光标在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。 单位：vp 取值范围：[0, +∞)
 
 **类型：** number
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -228,6 +248,8 @@ pressedButtons?: MouseButton[]
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
@@ -250,6 +272,8 @@ rawDeltaX?: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
@@ -271,6 +295,8 @@ rawDeltaY?: number
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -296,7 +322,7 @@ screenX: number
 
 **废弃版本：** 10
 
-**替代接口：** [MouseEvent#windowX](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-mouseevent-mouseevent-i.md#windowx)
+**替代接口：** [windowX](#windowX)
 
 <!--Device-MouseEvent-screenX: number--><!--Device-MouseEvent-screenX: number-End-->
 
@@ -318,7 +344,7 @@ screenY: number
 
 **废弃版本：** 10
 
-**替代接口：** [MouseEvent#windowY](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-mouseevent-mouseevent-i.md#windowy)
+**替代接口：** [windowY](#windowY)
 
 <!--Device-MouseEvent-screenY: number--><!--Device-MouseEvent-screenY: number-End-->
 
@@ -330,13 +356,15 @@ screenY: number
 stopPropagation: () => void
 ```
 
-阻塞\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+阻塞[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)。
 
 **类型：** () =&gt; void
 
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -357,6 +385,8 @@ windowX: number
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -380,6 +410,8 @@ windowY: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -394,13 +426,15 @@ windowY: number
 x: number
 ```
 
-鼠标位置在事件响应组件为基准的\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_中的X坐标。 单位：vp
+鼠标位置在事件响应组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的X坐标。 单位：vp
 
 **类型：** number
 
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -414,13 +448,15 @@ x: number
 y: number
 ```
 
-鼠标位置在事件响应组件为基准的\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_中的Y坐标。 单位：vp
+鼠标位置在事件响应组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的Y坐标。 单位：vp
 
 **类型：** number
 
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

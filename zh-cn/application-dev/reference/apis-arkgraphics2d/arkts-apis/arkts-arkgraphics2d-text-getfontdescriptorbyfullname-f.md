@@ -8,9 +8,11 @@ function getFontDescriptorByFullName(fullName: string, fontType: SystemFontType)
 
 根据字体名称和类型获取字体描述符，使用Promise异步回调。 字体描述符是描述字体特征的数据结构，包含字体外观和属性的详细信息。
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -22,22 +24,22 @@ function getFontDescriptorByFullName(fullName: string, fontType: SystemFontType)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fullName | string | 是 | 指定的字体名称。可以使用[getSystemFontFullNamesByType]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_获取。 |
-| fontType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 指定的字体类型。 |
+| fullName | string | 是 | 指定的字体名称。可以使用[getSystemFontFullNamesByType](arkts-arkgraphics2d-text-getsystemfontfullnamesbytype-f.md#getSystemFontFullNamesByType)获取。 |
+| fontType | [SystemFontType](arkts-arkgraphics2d-text-systemfonttype-e.md) | 是 | 指定的字体类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;FontDescriptor&gt; | Promise对象，返回指定的字体描述符。 |
+| Promise&lt;[FontDescriptor](arkts-arkgraphics2d-text-fontdescriptor-i.md)&gt; | Promise对象，返回指定的字体描述符。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare enum GestureFocusMode--><!--Device-unnamed-declare enum GestureFocusMode-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -22,6 +24,8 @@ DEFAULT = 0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 <!--Device-GestureFocusMode-DEFAULT = 0--><!--Device-GestureFocusMode-DEFAULT = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -37,6 +41,8 @@ Web只会在点击和长按手势事件生成时申请获焦，点击和长按�
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 <!--Device-GestureFocusMode-GESTURE_TAP_AND_LONG_PRESS = 1--><!--Device-GestureFocusMode-GESTURE_TAP_AND_LONG_PRESS = 1-End-->
 

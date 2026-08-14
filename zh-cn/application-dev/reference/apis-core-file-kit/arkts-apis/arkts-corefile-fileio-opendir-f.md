@@ -14,7 +14,7 @@ declare function opendir(path: string): Promise<Dir>
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.file.fs:listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
+**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listFile)
 
 <!--Device-unnamed-declare function opendir(path: string): Promise<Dir>--><!--Device-unnamed-declare function opendir(path: string): Promise<Dir>-End-->
 
@@ -30,7 +30,7 @@ declare function opendir(path: string): Promise<Dir>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Dir&gt; | Promise对象。返回Dir对象。 |
+| Promise&lt;[Dir](arkts-corefile-fileio-dir-depr-i.md)&gt; | Promise对象。返回Dir对象。 |
 
 
 ## opendir
@@ -47,7 +47,7 @@ declare function opendir(path: string, callback: AsyncCallback<Dir>): void
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.file.fs:listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
+**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listFile)
 
 <!--Device-unnamed-declare function opendir(path: string, callback: AsyncCallback<Dir>): void--><!--Device-unnamed-declare function opendir(path: string, callback: AsyncCallback<Dir>): void-End-->
 
@@ -58,5 +58,5 @@ declare function opendir(path: string, callback: AsyncCallback<Dir>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 待打开文件目录的应用沙箱路径。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;Dir&gt; | 是 | 异步打开文件目录之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[Dir](arkts-corefile-fileio-dir-depr-i.md)&gt; | 是 | 异步打开文件目录之后的回调。 |
 

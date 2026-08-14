@@ -10,7 +10,9 @@ Unregisters a system callback for the device connection phase.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -24,7 +26,7 @@ Unregisters a system callback for the device connection phase.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;DeviceState&gt; | 否 | Callback used to return the device information. |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[DeviceState](arkts-avsession-avsession-devicestate-i-sys.md)&gt; | 否 | Callback used to return the device information. |
 
 **错误码：**
 

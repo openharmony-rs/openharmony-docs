@@ -14,7 +14,7 @@ declare function fstat(fd: number): Promise<Stat>
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.file.fs:stat](arkts-corefile-fileio-stat-f.md#stat)
+**替代接口：** [stat](arkts-corefile-file-fs-stat-f.md#stat)
 
 <!--Device-unnamed-declare function fstat(fd: number): Promise<Stat>--><!--Device-unnamed-declare function fstat(fd: number): Promise<Stat>-End-->
 
@@ -30,7 +30,7 @@ declare function fstat(fd: number): Promise<Stat>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Stat&gt; | Promise对象。返回表示文件状态的具体信息。 |
+| Promise&lt;[Stat](arkts-corefile-fileio-stat-depr-i.md)&gt; | Promise对象。返回表示文件状态的具体信息。 |
 
 
 ## fstat
@@ -47,7 +47,7 @@ declare function fstat(fd: number, callback: AsyncCallback<Stat>): void
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.file.fs:stat](arkts-corefile-fileio-stat-f.md#stat)
+**替代接口：** [stat](arkts-corefile-file-fs-stat-f.md#stat)
 
 <!--Device-unnamed-declare function fstat(fd: number, callback: AsyncCallback<Stat>): void--><!--Device-unnamed-declare function fstat(fd: number, callback: AsyncCallback<Stat>): void-End-->
 
@@ -58,5 +58,5 @@ declare function fstat(fd: number, callback: AsyncCallback<Stat>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | fd | number | 是 | 待获取文件状态的文件描述符。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;Stat&gt; | 是 | 异步获取文件状态信息之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[Stat](arkts-corefile-fileio-stat-depr-i.md)&gt; | 是 | 异步获取文件状态信息之后的回调。 |
 

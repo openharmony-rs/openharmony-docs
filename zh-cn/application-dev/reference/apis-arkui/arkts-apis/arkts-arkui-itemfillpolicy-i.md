@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface ItemFillPolicy--><!--Device-unnamed-declare interface ItemFillPolicy-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -18,13 +20,15 @@ fillType?: ResponsiveFillType
 
 指定不同响应断点的列数。
 
-**类型：** ResponsiveFillType
+**类型：** [ResponsiveFillType](arkts-arkui-responsivefilltype-t.md)
 
 **默认值：** ResponsiveFillType.BREAKPOINT_DEFAULT
 
 **起始版本：** 22
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

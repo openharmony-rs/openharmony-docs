@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-webview-enum Preload--><!--Device-webview-enum Preload-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -21,6 +23,8 @@ NONE = 0
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Preload-NONE = 0--><!--Device-Preload-NONE = 0-End-->
 
@@ -38,6 +42,8 @@ METADATA = 1
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-Preload-METADATA = 1--><!--Device-Preload-METADATA = 1-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -53,6 +59,8 @@ AUTO = 2
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Preload-AUTO = 2--><!--Device-Preload-AUTO = 2-End-->
 

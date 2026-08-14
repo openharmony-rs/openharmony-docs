@@ -1,14 +1,16 @@
 # GenericsTask
 
-表示泛型任务。**GenericsTask**继承自 [Task]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。 相比创建Task，创建GenericsTask可以在编译阶段校验并发函数的传参和返回值类型。其余行为与Task相同。
+表示泛型任务。**GenericsTask**继承自 [Task](arkts-arkts-taskpool-execute-f.md#execute)。 相比创建Task，创建GenericsTask可以在编译阶段校验并发函数的传参和返回值类型。其余行为与Task相同。
 
-**继承/实现关系：** GenericsTask extends [Task](arkts-arkts-taskpool-task-c.md)
+**继承/实现关系：** GenericsTask extends [Task](arkts-arkts-taskpool-task-c.md#Task)
 
 **起始版本：** 13
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
 
-<!--Device-taskpool-class GenericsTask<A extends Array<Object>, R> extends Task--><!--Device-taskpool-class GenericsTask<A extends Array<Object>, R> extends Task-End-->
+**废弃版本：** -1
+
+<!--Device-taskpool-class GenericsTask--><!--Device-taskpool-class GenericsTask-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -24,6 +26,8 @@ GenericsTask的构造函数，用于创建一个**GenericsTask**对象。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务API中使用。
 
 <!--Device-GenericsTask-constructor(func: (...args: A) => R | Promise<R>, ...args: A)--><!--Device-GenericsTask-constructor(func: (...args: A) => R | Promise<R>, ...args: A)-End-->
@@ -34,8 +38,8 @@ GenericsTask的构造函数，用于创建一个**GenericsTask**对象。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| func | (...args: A) =&gt; R \| Promise&lt;R&gt; | 是 | 执行的逻辑需要传入函数，该函数必须使用\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_装饰。支持的函数返回值类型请参考\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
-| args | A | 是 | 任务执行传入函数的入参，支持的参数类型请参考\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。默认值为**undefined**。 |
+| func | (...args: A) =&gt; R \| Promise&lt;R&gt; | 是 | 执行的逻辑需要传入函数，该函数必须使用 [@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰。支持的函数返回值类型请参考 序列化支持类型。 |
+| args | A | 是 | 任务执行传入函数的入参，支持的参数类型请参考 序列化支持类型。默认值为**undefined**。 |
 
 **错误码：**
 
@@ -43,7 +47,7 @@ GenericsTask的构造函数，用于创建一个**GenericsTask**对象。
 | --- | --- |
 | [10200014](../errorcode-utils.md#10200014-非concurrent函数错误) | The function is not marked as concurrent. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 @Concurrent
@@ -62,7 +66,7 @@ function testWithArray(args: [number, string]): string {
   return "success";
 }
 
-let task1: taskpool.Task = new taskpool.GenericsTask<[string], string>(printArgs, "this is my first LongTask");
+let task1: taskpool.Task = new taskpool.GenericsTask<[string], string>(printArgs, "this is my first GenericsTask");
 
 let task2: taskpool.Task = new taskpool.GenericsTask<[number, string, number], string>(testWithThreeParams, 100, "test", 100);
 
@@ -81,6 +85,8 @@ GenericsTask的构造函数，用于创建一个**GenericsTask**实例，并可�
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务API中使用。
 
 <!--Device-GenericsTask-constructor(name: string, func: (...args: A) => R | Promise<R>, ...args: A)--><!--Device-GenericsTask-constructor(name: string, func: (...args: A) => R | Promise<R>, ...args: A)-End-->
@@ -92,8 +98,8 @@ GenericsTask的构造函数，用于创建一个**GenericsTask**实例，并可�
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 泛型任务名称。 |
-| func | (...args: A) =&gt; R \| Promise&lt;R&gt; | 是 | 执行的逻辑需要传入函数，该函数必须使用\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_装饰。支持的函数返回值类型请参考\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
-| args | A | 是 | 任务执行传入函数的入参，支持的参数类型请参考\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。默认值为**undefined**。 |
+| func | (...args: A) =&gt; R \| Promise&lt;R&gt; | 是 | 执行的逻辑需要传入函数，该函数必须使用 [@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰。支持的函数返回值类型请参考 序列化支持类型。 |
+| args | A | 是 | 任务执行传入函数的入参，支持的参数类型请参考 序列化支持类型。默认值为**undefined**。 |
 
 **错误码：**
 
@@ -101,7 +107,7 @@ GenericsTask的构造函数，用于创建一个**GenericsTask**实例，并可�
 | --- | --- |
 | [10200014](../errorcode-utils.md#10200014-非concurrent函数错误) | The function is not marked as concurrent. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 @Concurrent

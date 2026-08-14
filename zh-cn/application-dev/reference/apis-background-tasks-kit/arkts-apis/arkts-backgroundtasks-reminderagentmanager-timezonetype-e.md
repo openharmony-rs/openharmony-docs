@@ -4,7 +4,9 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-reminderAgentManager-export enum TimeZoneType--><!--Device-reminderAgentManager-export enum TimeZoneType-End-->
 
@@ -16,11 +18,13 @@
 DEFAULT = 0
 ```
 
-默认。修改时区，提醒时间的计算方式与固定时区的行为相同；修改时间，提醒时间的计算方式与跟随系统时区的行为相同。 建议根据业务场景，明确指定FIXED\_TIME\_ZONE或者SYSTEM\_TIME\_ZONE类型。
+默认。修改时区，提醒时间的计算方式与固定时区的行为相同；修改时间，提醒时间的计算方式与跟随系统时区的行为相同。 建议根据业务场景，明确指定FIXED_TIME_ZONE或者SYSTEM_TIME_ZONE类型。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -38,7 +42,9 @@ FIXED_TIME_ZONE = 1
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -56,7 +62,9 @@ SYSTEM_TIME_ZONE = 2
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

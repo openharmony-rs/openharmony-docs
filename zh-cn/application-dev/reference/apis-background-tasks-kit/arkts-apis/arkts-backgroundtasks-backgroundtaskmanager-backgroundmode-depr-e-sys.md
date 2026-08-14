@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.resourceschedule.backgroundTaskManager:backgroundTaskManager.BackgroundMode](arkts-backgroundtasks-backgroundtaskmanager-backgroundmode-depr-e.md)
+**替代接口：** [BackgroundMode](arkts-backgroundtasks-backgroundtaskmanager-backgroundmode-e.md#BackgroundMode)
 
 <!--Device-backgroundTaskManager-export enum BackgroundMode--><!--Device-backgroundTaskManager-export enum BackgroundMode-End-->
 
@@ -28,7 +28,7 @@ WLAN相关
 
 **废弃版本：** 9
 
-**替代接口：** ohos.resourceschedule.backgroundTaskManager.BackgroundMode.WIFI_INTERACTION
+**替代接口：** WIFI_INTERACTION
 
 <!--Device-BackgroundMode-WIFI_INTERACTION = 7--><!--Device-BackgroundMode-WIFI_INTERACTION = 7-End-->
 
@@ -50,7 +50,7 @@ VOIP = 8
 
 **废弃版本：** 9
 
-**替代接口：** ohos.resourceschedule.backgroundTaskManager.BackgroundMode.VOIP
+**替代接口：** VOIP
 
 <!--Device-BackgroundMode-VOIP = 8--><!--Device-BackgroundMode-VOIP = 8-End-->
 

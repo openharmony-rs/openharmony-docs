@@ -1,10 +1,12 @@
 # WindowLimits
 
-窗口尺寸限制参数，应用可以通过[getWindowLimits]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_获得当前窗口的尺寸限制（单位为px）；从API version 2 2开始，还可以通过[getWindowLimitsVP]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_获取窗口尺寸限制（单位为vp）。 窗口尺寸限制的最终生效结果由默认系统限制、应用配置和运行时设置的数据取交集得到，优先级从高到低依次为： 1. 应用通过[setWindowLimits]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_设置窗口尺寸限制。 2. 应用在[startAbility]\_\_\_JSDOC\_LINK\_DESC\_USD\_4\_\_\_拉起窗口时通过[StartOptions]\_\_\_JSDOC\_LINK\_DESC\_USD\_5\_\_\_指定窗口尺寸限制（API version 17开始支持）。 3. 应用在\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_中配置windowLimits。 4. 默认系统限制（基于不同产品和窗口类型，其windowLimits系统默认限制存在差异）。 > **说明：** > > 针对maxWidth、maxHeight、minWidth、minHeight属性： > > - 默认单位为px，从API version 22开始支持通过pixelUnit设置单位为px或vp。 > > - 参数为整数，浮点数会向下取整。 > > - 默认值为0，表示属性不发生变化。 > > - 可生效范围下限值：系统限定的最小高度/宽度。 > > - 可生效范围上限值：系统限定的最大高度/宽度。
+窗口尺寸限制参数，应用可以通过[getWindowLimits](arkts-arkui-window-window-i.md#getWindowLimits)获得当前窗口的尺寸限制（单位为px）；从API version 2 2开始，还可以通过[getWindowLimitsVP](arkts-arkui-window-window-i.md#getWindowLimitsVP)获取窗口尺寸限制（单位为vp）。 窗口尺寸限制的最终生效结果由默认系统限制、应用配置和运行时设置的数据取交集得到，优先级从高到低依次为： 1. 应用通过[setWindowLimits](arkts-arkui-window-window-i.md#setWindowLimits)设置窗口尺寸限制。 2. 应用在[startAbility](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startAbility)拉起窗口时通过[StartOptions](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions-startoptions-c.md#StartOptions)指定窗口尺寸限制（API version 17开始支持）。 3. 应用在[module.json5配置文件中的abilities标签](../../../quick-start/module-configuration-file.md#abilities标签)中配置windowLimits。 4. 默认系统限制（基于不同产品和窗口类型，其windowLimits系统默认限制存在差异）。 > **说明：** > > 针对maxWidth、maxHeight、minWidth、minHeight属性： > > - 默认单位为px，从API version 22开始支持通过pixelUnit设置单位为px或vp。 > > - 参数为整数，浮点数会向下取整。 > > - 默认值为0，表示属性不发生变化。 > > - 可生效范围下限值：系统限定的最小高度/宽度。 > > - 可生效范围上限值：系统限定的最大高度/宽度。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-window-interface WindowLimits--><!--Device-window-interface WindowLimits-End-->
 
@@ -20,9 +22,11 @@ maxHeight?: int
 
 **类型：** int
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -40,9 +44,11 @@ maxWidth?: int
 
 **类型：** int
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -60,9 +66,11 @@ minHeight?: int
 
 **类型：** int
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -80,9 +88,11 @@ minWidth?: int
 
 **类型：** int
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -98,11 +108,13 @@ pixelUnit?: PixelUnit
 
 窗口尺寸限制的单位，默认为px。可显式设置为px或vp。
 
-**类型：** PixelUnit
+**类型：** [PixelUnit](arkts-arkui-window-pixelunit-e.md)
 
-**起始版本：** 22
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为22；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WindowLimits-pixelUnit?: PixelUnit--><!--Device-WindowLimits-pixelUnit?: PixelUnit-End-->
 

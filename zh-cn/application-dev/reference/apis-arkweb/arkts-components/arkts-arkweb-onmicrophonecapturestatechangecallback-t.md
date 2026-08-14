@@ -10,6 +10,8 @@ type OnMicrophoneCaptureStateChangeCallback = (event: MicrophoneCaptureStateChan
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-type OnMicrophoneCaptureStateChangeCallback = (event: MicrophoneCaptureStateChangeInfo) => void--><!--Device-unnamed-type OnMicrophoneCaptureStateChangeCallback = (event: MicrophoneCaptureStateChangeInfo) => void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -18,5 +20,5 @@ type OnMicrophoneCaptureStateChangeCallback = (event: MicrophoneCaptureStateChan
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 网页麦克风状态发生改变时，返回原来的状态和改变后的状态。  |
+| event | [MicrophoneCaptureStateChangeInfo](arkts-arkweb-microphonecapturestatechangeinfo-i.md) | 是 | 网页麦克风状态发生改变时，返回原来的状态和改变后的状态。 |
 

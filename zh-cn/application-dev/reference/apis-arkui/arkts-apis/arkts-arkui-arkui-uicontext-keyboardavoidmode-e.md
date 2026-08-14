@@ -1,10 +1,12 @@
 # KeyboardAvoidMode
 
-Enum of KeyBoardAvoidMethodType
+配置键盘弹出时页面的避让模式。
 
-**起始版本：** 23
+**起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-export const enum KeyboardAvoidMode--><!--Device-unnamed-export const enum KeyboardAvoidMode-End-->
 
@@ -16,13 +18,17 @@ Enum of KeyBoardAvoidMethodType
 OFFSET = 0
 ```
 
-Default Type, offset the whole page when keyBoard height changed.
+Offset Type, the layout moves up.
 
-**起始版本：** 23
+**起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-KeyboardAvoidMode-OFFSET = 0--><!--Device-KeyboardAvoidMode-OFFSET = 0-End-->
 
@@ -34,13 +40,17 @@ Default Type, offset the whole page when keyBoard height changed.
 RESIZE = 1
 ```
 
-Resize Type, resize the page when keyBoard height changed.
+Resize Type, the layout is resized.
 
-**起始版本：** 23
+**起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-KeyboardAvoidMode-RESIZE = 1--><!--Device-KeyboardAvoidMode-RESIZE = 1-End-->
 
@@ -52,13 +62,17 @@ Resize Type, resize the page when keyBoard height changed.
 OFFSET_WITH_CARET = 2
 ```
 
-Offset Type, offset the whole page when caret position or keyboard height changed.
+Offset Type, the layout moves up, and this adjustment also occurs if the caret position in the text box changes.
 
-**起始版本：** 23
+**起始版本：** 14
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-KeyboardAvoidMode-OFFSET_WITH_CARET = 2--><!--Device-KeyboardAvoidMode-OFFSET_WITH_CARET = 2-End-->
 
@@ -70,13 +84,17 @@ Offset Type, offset the whole page when caret position or keyboard height change
 RESIZE_WITH_CARET = 3
 ```
 
-Resize Type, resize the whole page when when caret position or keyboard height changed.
+Resize Type, the layout moves up, and this adjustment also occurs if the caret position in the text box changes.
 
-**起始版本：** 23
+**起始版本：** 14
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-KeyboardAvoidMode-RESIZE_WITH_CARET = 3--><!--Device-KeyboardAvoidMode-RESIZE_WITH_CARET = 3-End-->
 
@@ -88,13 +106,17 @@ Resize Type, resize the whole page when when caret position or keyboard height c
 NONE = 4
 ```
 
-None Type, nothing to do when keyboard height changed.
+None Type, the layout is not adjusted to avoid the keyboard.
 
-**起始版本：** 23
+**起始版本：** 14
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-KeyboardAvoidMode-NONE = 4--><!--Device-KeyboardAvoidMode-NONE = 4-End-->
 

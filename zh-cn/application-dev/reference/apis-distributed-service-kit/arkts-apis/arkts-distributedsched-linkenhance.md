@@ -2,9 +2,13 @@
 
 linkEnhance模块提供高效的蓝牙连接和数据传输功能，增强设备间连接的稳定性。使用多通道合并算法，增加设备间连接数，提升跨设备数据传输能力，改善用户使用体验。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-declare namespace linkEnhance--><!--Device-unnamed-declare namespace linkEnhance-End-->
 
@@ -16,8 +20,8 @@ linkEnhance模块提供高效的蓝牙连接和数据传输功能，增强设备
 
 | 名称 | 说明 |
 | --- | --- |
-| [createConnection](arkts-distributedservice-linkenhance-createconnection-f.md#createconnection) | 作为客户端的设备创建连接对象，以便后续向服务端设备发起连接。 |
-| [createServer](arkts-distributedservice-linkenhance-createserver-f.md#createserver) | 在服务端设备上，应用创建服务。通过start()开启后，该设备可作为服务端被其他设备连接。 |
+| [createConnection](arkts-distributedservice-linkenhance-createconnection-f.md#createConnection) | 作为客户端的设备创建连接对象，以便后续向服务端设备发起连接。 |
+| [createServer](arkts-distributedservice-linkenhance-createserver-f.md#createServer) | 在服务端设备上，应用创建服务。通过start()开启后，该设备可作为服务端被其他设备连接。 |
 
 ### 接口
 

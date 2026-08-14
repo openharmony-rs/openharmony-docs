@@ -1,10 +1,12 @@
 # Key
 
-密钥（父类），在运行密码算法（如加解密）时需要提前生成其子类对象，并传入[Cipher]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_实例的 [init()]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_方法。 \_\_\_HTML\_TAG\_DESC\_USD\_5\_\_\_密钥通过子类密钥生成器来生成，详见子类描述。具体子类有： [SymKey]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_、[PubKey]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_、 [PriKey]\_\_\_JSDOC\_LINK\_DESC\_USD\_4\_\_\_。
+密钥（父类），在运行密码算法（如加解密）时需要提前生成其子类对象，并传入[Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#Cipher)实例的 [init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init)方法。 &lt;br&gt;密钥通过子类密钥生成器来生成，详见子类描述。具体子类有： [SymKey](arkts-cryptoarchitecture-cryptoframework-symkey-i.md#SymKey)、[PubKey](arkts-cryptoarchitecture-cryptoframework-pubkey-i.md#PubKey)、 [PriKey](arkts-cryptoarchitecture-cryptoframework-prikey-i.md#PriKey)。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-cryptoFramework-interface Key--><!--Device-cryptoFramework-interface Key-End-->
 
@@ -20,9 +22,11 @@ getEncoded(): DataBlob
 
 同步方法，获取密钥数据的字节流。密钥可以是对称密钥、公钥或私钥。公钥格式需符合ASN.1语法、X.509规范和DER编码；私钥格式需符合ASN.1 语法、PKCS#8规范和DER编码。 > **说明：** > > RSA算法使用密钥参数生成私钥时，私钥对象支持getEncoded。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -36,17 +40,17 @@ getEncoded(): DataBlob
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 获取的密钥数据。 |
+| DataBlob | 获取的密钥数据。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | 该操作不支持。 |
-| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
 | [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
+| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -61,12 +65,6 @@ async function testGenerateAesKey() {
 
 ## getKeySize
 
-ArkTS-Dyn:
-```TypeScript
-getKeySize(): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getKeySize(): int
 ```
@@ -75,7 +73,9 @@ getKeySize(): int
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -89,17 +89,17 @@ getKeySize(): int
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 密钥大小，单位为bits。 |
+| int | 密钥大小，单位为bits。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
-| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -122,9 +122,11 @@ readonly algName: string
 
 **类型：** string
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -144,9 +146,11 @@ readonly format: string
 
 **类型：** string
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

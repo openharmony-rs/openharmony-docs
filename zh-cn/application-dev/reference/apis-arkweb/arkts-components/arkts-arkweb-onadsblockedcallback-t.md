@@ -10,6 +10,8 @@ The callback of ads block
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-unnamed-type OnAdsBlockedCallback = (details: AdsBlockedDetails) => void--><!--Device-unnamed-type OnAdsBlockedCallback = (details: AdsBlockedDetails) => void-End-->
@@ -20,5 +22,5 @@ The callback of ads block
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| details | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | details of OnAdsBlockedCallback.  |
+| details | [AdsBlockedDetails](arkts-arkweb-adsblockeddetails-i.md) | 是 | details of OnAdsBlockedCallback. |
 

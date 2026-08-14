@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface RichEditorTextStyle--><!--Device-unnamed-declare interface RichEditorTextStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -24,6 +26,8 @@ decoration?: DecorationStyleInterface
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -38,13 +42,15 @@ decoration?: DecorationStyleInterface
 fontColor?: ResourceColor
 ```
 
-文本颜色。 默认值：\$r('sys.color.font\_primary')。当[shaderStyle]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_同时设置时，shaderStyle优先级高于fontColor。
+文本颜色。 默认值：\$r('sys.color.font_primary')。当[shaderStyle](arkts-arkui-richeditorparagraphstyle-i.md#RichEditorParagraphStyle)同时设置时，shaderStyle优先级高于fontColor。
 
 **类型：** ResourceColor
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -60,13 +66,15 @@ fontColor?: ResourceColor
 fontFamily?: ResourceStr
 ```
 
-设置字体列表，当前支持'HarmonyOS Sans'字体和[注册自定义字体]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。默认字体:'HarmonyOS Sans'。
+设置字体列表，当前支持'HarmonyOS Sans'字体和[注册自定义字体](../arkts-apis/arkts-font.md#@ohos.font(Custom-Font-Registration))。默认字体:'HarmonyOS Sans'。
 
 **类型：** ResourceStr
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -82,13 +90,15 @@ fontFamily?: ResourceStr
 fontFeature?: string
 ```
 
-设置文字特性效果，比如数字等宽的特性。如果未设置，默认为变宽数字。设置无效字符保持默认。 格式为：normal | &lt;feature-tag-value&gt; &lt;feature-tag-value&gt;的格式为：\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_ [ \_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_ | on | off ] &lt;feature-tag-value&gt;的个数可以有多个，中间用','隔开。 例如，使用等宽时钟数字的输入格式为："ss01" on。 Font Feature当前支持的属性见[fontFeature]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_属性列表。 设置 Font Feature 属性，Font Feature 是 OpenType 字体的高级排版能力，如支持连字、数字等宽等特性，一般用在自定义字体中，其能力需要字体本身支持。 更多 Font Feature 能力介绍可参考 https://www.w3.org/TR/css-fonts-3/#font-feature-settings-prop 和 https://sparanoid.com/lab/ opentype-features/
+设置文字特性效果，比如数字等宽的特性。如果未设置，默认为变宽数字。设置无效字符保持默认。 格式为：normal | &lt;feature-tag-value&gt; &lt;feature-tag-value&gt;的格式为：&lt;string&gt; [ &lt;integer&gt; | on | off ] &lt;feature-tag-value&gt;的个数可以有多个，中间用','隔开。 例如，使用等宽时钟数字的输入格式为："ss01" on。 Font Feature当前支持的属性见fontFeature属性列表。 设置 Font Feature 属性，Font Feature 是 OpenType 字体的高级排版能力，如支持连字、数字等宽等特性，一般用在自定义字体中，其能力需要字体本身支持。 更多 Font Feature 能力介绍可参考 https://www.w3.org/TR/css-fonts-3/#font-feature-settings-prop 和 https://sparanoid.com/lab/ opentype-features/
 
 **类型：** string
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -112,6 +122,8 @@ fontSize?: Length | number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -133,6 +145,8 @@ fontStyle?: FontStyle
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -156,6 +170,8 @@ fontWeight?: number | FontWeight | string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -177,6 +193,8 @@ halfLeading?: boolean
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -200,6 +218,8 @@ letterSpacing?: number | string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -214,13 +234,15 @@ letterSpacing?: number | string
 lineHeight?: number | string | Resource
 ```
 
-设置文本的文本行高。 默认值：不设置时自适应字体大小。 number类型取值范围：(0, +∞)，设置值不大于0时，不限制文本行高，自适应字体大小。number类型时单位为fp，不支持设置百分比字符串。当lineHeight设置值小于当前字号下文本渲染出的实际高度时， [fallbackLineSpacing]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_属性将生效。
+设置文本的文本行高。 默认值：不设置时自适应字体大小。 number类型取值范围：(0, +∞)，设置值不大于0时，不限制文本行高，自适应字体大小。number类型时单位为fp，不支持设置百分比字符串。当lineHeight设置值小于当前字号下文本渲染出的实际高度时， fallbackLineSpacing属性将生效。
 
 **类型：** number \| string \| Resource
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -244,6 +266,8 @@ strokeColor?: ResourceColor
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
@@ -258,13 +282,15 @@ strokeColor?: ResourceColor
 strokeJoinStyle?: StrokeJoinStyle
 ```
 
-文本描边拐角样式。 默认值：StrokeJoinStyle.MITER\_JOIN。
+文本描边拐角样式。 默认值：StrokeJoinStyle.MITER_JOIN。
 
 **类型：** StrokeJoinStyle
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -280,13 +306,15 @@ strokeJoinStyle?: StrokeJoinStyle
 strokeWidth?: LengthMetrics | number
 ```
 
-文本描边宽度。如果LengthMetrics的unit值是[PERCENT]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_，当前设置不生效，作为0处理。 值小于0时为实体字，大于0时为轮廓字，等于0时无描边效果。 默认值：0。 单位：LengthMetrics类型时跟随LengthMetrics，number类型时是vp。 取值范围：(-∞, +∞) 与[shaderStyle]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_同时设置时，shaderStyle不生效。
+文本描边宽度。如果LengthMetrics的unit值是[PERCENT](../../apis-na/arkts-apis/arkts-na-graphics-lengthunit-e.md#LengthUnit)，当前设置不生效，作为0处理。 值小于0时为实体字，大于0时为轮廓字，等于0时无描边效果。 默认值：0。 单位：LengthMetrics类型时跟随LengthMetrics，number类型时是vp。 取值范围：(-∞, +∞) 与[shaderStyle](arkts-arkui-richeditorparagraphstyle-i.md#RichEditorParagraphStyle)同时设置时，shaderStyle不生效。
 
 **类型：** LengthMetrics \| number
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -310,6 +338,8 @@ textBackgroundStyle?: TextBackgroundStyle
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -331,6 +361,8 @@ textShadow?: ShadowOptions | Array<ShadowOptions>
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

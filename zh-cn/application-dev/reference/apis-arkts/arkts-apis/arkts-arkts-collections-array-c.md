@@ -1,16 +1,16 @@
 # Array
 
-一种线性数据结构，底层基于数组实现，可以在ArkTS上并发实例间传递。 当需要在ArkTS上并发实例间传递Array时，可以通过传递Array引用提升传递性能。 > **说明** > > - 本模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。 > 本节使用以下标识来表示泛型的使用： - T：Type，支持 \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。 **装饰器**：\@Sendable
+一种线性数据结构，底层基于数组实现，可以在ArkTS上并发实例间传递。 当需要在ArkTS上并发实例间传递Array时，可以通过传递Array引用提升传递性能。 > **说明：**> > - 本模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。 > 本节使用以下标识来表示泛型的使用： - T：Type，支持 [Sendable支持的数据类型](../../../arkts-utils/arkts-sendable.md#sendable支持的数据类型)。 **装饰器**：\@Sendable
 
-**继承/实现关系：** Array implements [ConcatArray<T>](ConcatArray<T>)
+**继承/实现关系：** Array implements ConcatArray<T>
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-**装饰器类型：** @Sendable
+**废弃版本：** -1
 
-<!--Device-collections-class Array<T> implements ConcatArray<T>--><!--Device-collections-class Array<T> implements ConcatArray<T>-End-->
+<!--Device-collections-class Array--><!--Device-collections-class Array-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -25,6 +25,8 @@
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -56,6 +58,8 @@ at(index: number): T | undefined
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Array-at(index: number): T | undefined--><!--Device-Array-at(index: number): T | undefined-End-->
@@ -66,13 +70,13 @@ at(index: number): T | undefined
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 要返回的Array元素的索引（从零开始），取值为整数。负数索引从Array末尾开始计数，如果传入负数，则指代**index + array.length**位置的下标。 |
+| index | number | 是 | 要返回的Array元素的索引（从零开始），取值为整数。负数索引从 Array末尾开始计数，如果传入负数，则指代**index + array.length**位置的下标。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| T | 返回指定索引处的元素；如果索引超出范围或无效， |
+| T | 返回指定索引处的元素；如果索引超出范围或无效， 则返回**undefined**。 |
 
 **错误码：**
 
@@ -93,6 +97,8 @@ concat(...items: ConcatArray<T>[]): Array<T>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Array-concat(...items: ConcatArray<T>[]): Array<T>--><!--Device-Array-concat(...items: ConcatArray<T>[]): Array<T>-End-->
@@ -103,7 +109,7 @@ concat(...items: ConcatArray<T>[]): Array<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| items | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt;[] | 是 | 用于拼接ArkTS Array的一个或多个数组。 |
+| items | [ConcatArray](arkts-arkts-collections-concatarray-i.md)&lt;T&gt;[] | 是 | 用于拼接ArkTS Array的一个或多个数组，省略时返回原数组的浅拷贝。 |
 
 **返回值：**
 
@@ -130,6 +136,8 @@ constructor()
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Array-constructor()--><!--Device-Array-constructor()-End-->
@@ -153,6 +161,8 @@ ArkTS Array的构造函数，通过开发者提供的元素进行初始化。
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -185,6 +195,8 @@ ArkTS Array的构造函数，通过开发者提供的元素进行初始化。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Array-constructor(...items: T[])--><!--Device-Array-constructor(...items: T[])-End-->
@@ -195,7 +207,7 @@ ArkTS Array的构造函数，通过开发者提供的元素进行初始化。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| items | T[] | 是 | 初始化ArkTS Array的元素。 |
+| items | T[] | 是 | 初始化ArkTS Array的元素，默认值为空数组。 |
 
 **错误码：**
 
@@ -215,6 +227,8 @@ copyWithin(target: number, start: number, end?: number): Array<T>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Array-copyWithin(target: number, start: number, end?: number): Array<T>--><!--Device-Array-copyWithin(target: number, start: number, end?: number): Array<T>-End-->
@@ -225,15 +239,15 @@ copyWithin(target: number, start: number, end?: number): Array<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| target | number | 是 | 目标起始位置的下标。如果传入负数，则指代\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_位置的下标。 |
-| start | number | 是 | 源起始位置下标。如果传入负数，则指代**start + array.length**位置的下标。 |
-| end | number | 否 | 源终止位置下标。如果传入负数，则指代 \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_位置的下标。默认值为ArkTS Array的长度。 |
+| target | number | 是 | 目标起始位置的下标。如果传入负数，则指代 `target + array.length`位置的下标。 |
+| start | number | 是 | 源起始位置下标。如果传入负数，则指代 **start + array.length**位置的下标。 |
+| end | number | 否 | 源终止位置下标。如果传入负数，则指代 `end + array.length`位置的下标。默认值为ArkTS Array的长度。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 修改后的ArkTS Array。可能的原因： |
+| Array&lt;T&gt; | 修改后的ArkTS Array。可能的原因： 1. 必填参数未指定。 2. 参数类型不正确。 3. 参数校验失败。 |
 
 **错误码：**
 
@@ -253,6 +267,8 @@ static create<T>(arrayLength: number, initialValue: T): Array<T>
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -277,7 +293,7 @@ static create<T>(arrayLength: number, initialValue: T): Array<T>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The create method cannot be bound.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 12 - 17 |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The create method cannot be bound.<br>**适用版本：** 12 - 17 |
 
 ## entries
 
@@ -291,6 +307,8 @@ entries(): IterableIterator<[number, T]>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Array-entries(): IterableIterator<[number, T]>--><!--Device-Array-entries(): IterableIterator<[number, T]>-End-->
@@ -301,7 +319,7 @@ entries(): IterableIterator<[number, T]>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;[number, T]&gt; | 包含Array中每个元素的键值对的 |
+| IterableIterator&lt;[number, T]&gt; | 包含Array中每个元素的键值对的 迭代器对象。 |
 
 **错误码：**
 
@@ -322,6 +340,8 @@ every(predicate: ArrayPredicateFn<T, Array<T>>): boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Array-every(predicate: ArrayPredicateFn<T, Array<T>>): boolean--><!--Device-Array-every(predicate: ArrayPredicateFn<T, Array<T>>): boolean-End-->
@@ -332,13 +352,13 @@ every(predicate: ArrayPredicateFn<T, Array<T>>): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| predicate | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T, Array&lt;T&gt;&gt; | 是 | 用于测试的断言函数。 |
+| predicate | [ArrayPredicateFn](arkts-arkts-collections-arraypredicatefn-t.md)&lt;T, Array&lt;T&gt;&gt; | 是 | 用于测试的断言函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果所有元素都满足指定条件，则返回**true**； |
+| boolean | 检查结果。如果所有元素都满足指定条件，则返回**true**； 否则返回**false**。 |
 
 **错误码：**
 
@@ -359,6 +379,8 @@ extendTo(arrayLength: number, initialValue: T): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Array-extendTo(arrayLength: number, initialValue: T): void--><!--Device-Array-extendTo(arrayLength: number, initialValue: T): void-End-->
@@ -369,7 +391,7 @@ extendTo(arrayLength: number, initialValue: T): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| arrayLength | number | 是 | Array的新长度。如果传入的值小于或等于当前Array的长度，Array不发生变化。 |
+| arrayLength | number | 是 | Array的新长度。取值应为非负整数，否则会抛出异常。如果传入的值小于或等于当前Array的长度，Array不发生变化。 |
 | initialValue | T | 是 | 新增元素的初始值。 |
 
 **错误码：**
@@ -391,6 +413,8 @@ fill(value: T, start?: number, end?: number): Array<T>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Array-fill(value: T, start?: number, end?: number): Array<T>--><!--Device-Array-fill(value: T, start?: number, end?: number): Array<T>-End-->
@@ -403,7 +427,7 @@ fill(value: T, start?: number, end?: number): Array<T>
 | --- | --- | --- | --- |
 | value | T | 是 | 要填充的值。 |
 | start | number | 否 | 开始填充的索引。默认值为**0**。 |
-| end | number | 否 | 结束填充的索引（不包括该元素）。如果未传入，则指代数组的最后一个元素。 |
+| end | number | 否 | 结束填充的索引（不包括该元素）。如果未传入， 则指代数组的最后一个元素。 |
 
 **返回值：**
 
@@ -430,6 +454,8 @@ filter(predicate: (value: T, index: number, array: Array<T>) => boolean): Array<
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Array-filter(predicate: (value: T, index: number, array: Array<T>) => boolean): Array<T>--><!--Device-Array-filter(predicate: (value: T, index: number, array: Array<T>) => boolean): Array<T>-End-->
@@ -440,7 +466,7 @@ filter(predicate: (value: T, index: number, array: Array<T>) => boolean): Array<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| predicate | (value: T, index: number, array: Array&lt;T&gt;) =&gt; boolean | 是 | 一个接受三个参数的函数，用于筛选元素。返回值为**true**表示当前元素通过测试，应保留在新数组中；返回值为**false**表示当前元素未通过测试，应被排除在新数组外。 |
+| predicate | (value: T, index: number, array: Array&lt;T&gt;) =&gt; boolean | 是 | 一个接受三个参数的函数，用于筛选元素。返回值为 **true**表示当前元素通过测试，应保留在新数组中；返回值为**false**表示当前元素未通过 测试，应被排除在新数组外。 |
 
 **返回值：**
 
@@ -467,6 +493,8 @@ find(predicate: (value: T, index: number, obj: Array<T>) => boolean): T | undefi
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Array-find(predicate: (value: T, index: number, obj: Array<T>) => boolean): T | undefined--><!--Device-Array-find(predicate: (value: T, index: number, obj: Array<T>) => boolean): T | undefined-End-->
@@ -477,13 +505,13 @@ find(predicate: (value: T, index: number, obj: Array<T>) => boolean): T | undefi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| predicate | (value: T, index: number, obj: Array&lt;T&gt;) =&gt; boolean | 是 | 一个接受三个参数的函数，用于筛选元素。返回值为**true**表示当前元素满足条件，会立即停止遍历，并将该元素作为结果返回；返回值为**false**表示当前元素不满足条件，会继续检查下一个元素，直到找到符合条件的元素或遍历完整个数组。 |
+| predicate | (value: T, index: number, obj: Array&lt;T&gt;) =&gt; boolean | 是 | 一个接受三个参数的函数，用于筛选元素。返回值为 **true**表示当前元素满足条件，会立即停止遍历，并将该元素作为结果返回；返回值为 **false**表示当前元素不满足条件，会继续检查下一个元素，直到找到符合条件的元素或遍历 完整个数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| T | 第一个满足条件的元素的值；如果所有元素都不满足条件 |
+| T | 第一个满足条件的元素的值；如果所有元素都不满足条件 ，则返回**undefined**。 |
 
 **错误码：**
 
@@ -504,6 +532,8 @@ findIndex(predicate: (value: T, index: number, obj: Array<T>) => boolean): numbe
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Array-findIndex(predicate: (value: T, index: number, obj: Array<T>) => boolean): number--><!--Device-Array-findIndex(predicate: (value: T, index: number, obj: Array<T>) => boolean): number-End-->
@@ -514,13 +544,13 @@ findIndex(predicate: (value: T, index: number, obj: Array<T>) => boolean): numbe
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| predicate | (value: T, index: number, obj: Array&lt;T&gt;) =&gt; boolean | 是 | 一个接受三个参数的函数，用于筛选元素。返回值为**true**表示当前元素满足条件，会立即停止遍历，并返回该元素的索引；返回值为**false**表示当前元素不满足条件，会继续检查下一个元素，直到找到符合条件的元素或遍历完整个数组。 |
+| predicate | (value: T, index: number, obj: Array&lt;T&gt;) =&gt; boolean | 是 | 一个接受三个参数的函数，用于筛选元素。返回值为 **true**表示当前元素满足条件，会立即停止遍历，并返回该元素的索引；返回值为**false** 表示当前元素不满足条件，会继续检查下一个元素，直到找到符合条件的元素或遍历完整个 数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 第一个满足条件的元素的索引；如果所有元素都不满足条件， |
+| number | 第一个满足条件的元素的索引；如果所有元素都不满足条件， 则返回**-1**。 |
 
 **错误码：**
 
@@ -540,6 +570,8 @@ forEach(callbackFn: (value: T, index: number, array: Array<T>) => void): void
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -572,6 +604,8 @@ static from<T>(arrayLike: ArrayLike<T>): Array<T>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Array-static from<T>(arrayLike: ArrayLike<T>): Array<T>--><!--Device-Array-static from<T>(arrayLike: ArrayLike<T>): Array<T>-End-->
@@ -594,7 +628,7 @@ static from<T>(arrayLike: ArrayLike<T>): Array<T>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The from method cannot be bound.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 12 - 17 |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The from method cannot be bound.<br>**适用版本：** 12 - 17 |
 
 ## from
 
@@ -607,6 +641,8 @@ static from<T>(iterable: Iterable<T>): Array<T>
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -630,7 +666,7 @@ static from<T>(iterable: Iterable<T>): Array<T>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The from method cannot be bound.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 12 - 17 |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The from method cannot be bound.<br>**适用版本：** 12 - 17 |
 
 ## from
 
@@ -644,6 +680,8 @@ static from<T>(arrayLike: ArrayLike<T> | Iterable<T>, mapFn: ArrayFromMapFn<T, T
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Array-static from<T>(arrayLike: ArrayLike<T> | Iterable<T>, mapFn: ArrayFromMapFn<T, T>): Array<T>--><!--Device-Array-static from<T>(arrayLike: ArrayLike<T> | Iterable<T>, mapFn: ArrayFromMapFn<T, T>): Array<T>-End-->
@@ -655,7 +693,7 @@ static from<T>(arrayLike: ArrayLike<T> | Iterable<T>, mapFn: ArrayFromMapFn<T, T
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | arrayLike | ArrayLike&lt;T&gt; \| Iterable&lt;T&gt; | 是 | 用于构造ArkTS Array的对象。 |
-| mapFn | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T, T&gt; | 是 | 用于处理数组元素的函数。 |
+| mapFn | [ArrayFromMapFn](arkts-arkts-collections-arrayfrommapfn-t.md)&lt;T, T&gt; | 是 | 用于处理数组元素的函数。 |
 
 **返回值：**
 
@@ -675,6 +713,8 @@ static from<U, T>(arrayLike: ArrayLike<U> | Iterable<U>, mapFn: ArrayFromMapFn<U
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Array-static from<U, T>(arrayLike: ArrayLike<U> | Iterable<U>, mapFn: ArrayFromMapFn<U, T>): Array<T>--><!--Device-Array-static from<U, T>(arrayLike: ArrayLike<U> | Iterable<U>, mapFn: ArrayFromMapFn<U, T>): Array<T>-End-->
@@ -686,7 +726,7 @@ static from<U, T>(arrayLike: ArrayLike<U> | Iterable<U>, mapFn: ArrayFromMapFn<U
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | arrayLike | ArrayLike&lt;U&gt; \| Iterable&lt;U&gt; | 是 | 用于构造ArkTS Array的对象。 |
-| mapFn | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;U, T&gt; | 是 | 用于处理数组元素的函数。 |
+| mapFn | [ArrayFromMapFn](arkts-arkts-collections-arrayfrommapfn-t.md)&lt;U, T&gt; | 是 | 用于处理数组元素的函数。 |
 
 **返回值：**
 
@@ -706,6 +746,8 @@ includes(searchElement: T, fromIndex?: number): boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Array-includes(searchElement: T, fromIndex?: number): boolean--><!--Device-Array-includes(searchElement: T, fromIndex?: number): boolean-End-->
@@ -723,7 +765,7 @@ includes(searchElement: T, fromIndex?: number): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果Array包含指定的元素，则返回**true**；否则返回 |
+| boolean | 检查结果。如果Array包含指定的元素，则返回**true**；否则返回 **false**。 |
 
 **错误码：**
 
@@ -743,6 +785,8 @@ indexOf(searchElement: T, fromIndex?: number): number
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -782,6 +826,8 @@ static isArray(value: Object | undefined | null): boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Array-static isArray(value: Object | undefined | null): boolean--><!--Device-Array-static isArray(value: Object | undefined | null): boolean-End-->
@@ -798,7 +844,7 @@ static isArray(value: Object | undefined | null): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果传入的参数是ArkTS Array，则返回**true**； |
+| boolean | 检查结果。如果传入的参数是ArkTS Array，则返回**true**； 否则返回**false**。可能的原因： 1. 必填参数未指定。 2. 参数类型不正确。 3. 参数校验失败。 |
 
 ## join
 
@@ -812,6 +858,8 @@ join(separator?: string): string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Array-join(separator?: string): string--><!--Device-Array-join(separator?: string): string-End-->
@@ -822,7 +870,7 @@ join(separator?: string): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| separator | string | 否 | 用于分隔Array元素的字符串。如果未传入，则使用逗号（,）作为分隔符。 |
+| separator | string | 否 | 用于分隔Array元素的字符串。如果未传入，则使用逗号（,）作为 分隔符。 |
 
 **返回值：**
 
@@ -848,6 +896,8 @@ keys(): IterableIterator<number>
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -880,6 +930,8 @@ lastIndexOf(searchElement: T, fromIndex?: number): number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Array-lastIndexOf(searchElement: T, fromIndex?: number): number--><!--Device-Array-lastIndexOf(searchElement: T, fromIndex?: number): number-End-->
@@ -891,7 +943,7 @@ lastIndexOf(searchElement: T, fromIndex?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | searchElement | T | 是 | 要搜索的值。 |
-| fromIndex | number | 否 | 开始搜索的索引。默认值为**0**。如果索引大于或等于ArkTS Array的长度，则返回**-1**。如果传入负数，则指代**fromIndex + array.length**位置的下标。 |
+| fromIndex | number | 否 | 开始搜索的索引。默认值为ArkTS Array长度减1（即从末尾开始）。如果索引大于或等于 ArkTS Array的长度，则返回**-1**。如果传入负数，则指代 **fromIndex + array.length**位置的下标。 |
 
 **返回值：**
 
@@ -917,6 +969,8 @@ map<U>(callbackFn: (value: T, index: number, array: Array<T>) => U): Array<U>
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -955,6 +1009,8 @@ static of<T>(...items: T[]): Array<T>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Array-static of<T>(...items: T[]): Array<T>--><!--Device-Array-static of<T>(...items: T[]): Array<T>-End-->
@@ -965,13 +1021,13 @@ static of<T>(...items: T[]): Array<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| items | T[] | 是 | 用于创建数组的元素集合，参数个数可以是0个、1个或多个。 |
+| items | T[] | 是 | 用于创建数组的元素集合，参数个数可以是0个、1个 或多个。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 新创建的ArkTS Array实例。可能的原因： |
+| Array&lt;T&gt; | 新创建的ArkTS Array实例。可能的原因： 1. 必填参数未指定。 2. 参数类型不正确。 3. 参数校验失败。 |
 
 ## pop
 
@@ -984,6 +1040,8 @@ pop(): T | undefined
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1016,6 +1074,8 @@ push(...items: T[]): number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Array-push(...items: T[]): number--><!--Device-Array-push(...items: T[]): number-End-->
@@ -1026,7 +1086,7 @@ push(...items: T[]): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| items | T[] | 是 | 要添加到Array末尾的元素。 |
+| items | T[] | 是 | 要添加到Array末尾的元素，默认值为空数组。 |
 
 **返回值：**
 
@@ -1053,6 +1113,8 @@ reduce(callbackFn: (previousValue: T, currentValue: T, currentIndex: number, arr
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Array-reduce(callbackFn: (previousValue: T, currentValue: T, currentIndex: number, array: Array<T>) => T): T--><!--Device-Array-reduce(callbackFn: (previousValue: T, currentValue: T, currentIndex: number, array: Array<T>) => T): T-End-->
@@ -1063,7 +1125,7 @@ reduce(callbackFn: (previousValue: T, currentValue: T, currentIndex: number, arr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (previousValue: T, currentValue: T, currentIndex: number, array: Array&lt;T&gt;) =&gt; T | 是 | 一个接受四个参数的函数，用于对每个元素执行操作，并将结果作为累加值传递给下一个元素。 |
+| callbackFn | (previousValue: T, currentValue: T, currentIndex: number, array: Array&lt;T&gt;) =&gt; T | 是 | 一个接受四个参数的函数，用于对每个元素执行操作，并将 结果作为累加值传递给下一个元素。 |
 
 **返回值：**
 
@@ -1093,6 +1155,8 @@ reduce<U>(
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Array-reduce<U>(      callbackFn: (previousValue: U, currentValue: T, currentIndex: number, array: Array<T>) => U,      initialValue: U    ): U--><!--Device-Array-reduce<U>(      callbackFn: (previousValue: U, currentValue: T, currentIndex: number, array: Array<T>) => U,      initialValue: U    ): U-End-->
@@ -1103,7 +1167,7 @@ reduce<U>(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (previousValue: U, currentValue: T, currentIndex: number, array: Array&lt;T&gt;) =&gt; U | 是 | 一个接受四个参数的函数，用于对每个元素执行操作，并将结果作为累加值传递给下一个元素。 |
+| callbackFn | (previousValue: U, currentValue: T, currentIndex: number, array: Array&lt;T&gt;) =&gt; U | 是 | 一个接受四个参数的函数，用于对每个元素执行操作，并将 结果作为累加值传递给下一个元素。 |
 | initialValue | U | 是 | 用于初始化累加器的值。 |
 
 **返回值：**
@@ -1125,11 +1189,13 @@ reduce<U>(
 reduceRight<U = T>(callbackFn: ArrayReduceCallback<U, T, Array<T>>, initialValue: U): U
 ```
 
-此API与 [reduceRight]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_方法类似， 但它接受一个初始值作为第二个参数，用于在Array从右到左顺序遍历开始前初始化累加器。
+此API与 [reduceRight](#reduceRight)方法类似， 但它接受一个初始值作为第二个参数，用于在Array从右到左顺序遍历开始前初始化累加器。
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -1141,14 +1207,14 @@ reduceRight<U = T>(callbackFn: ArrayReduceCallback<U, T, Array<T>>, initialValue
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;U, T, Array&lt;T&gt;&gt; | 是 | 一个接受四个参数的函数，用于对每个元素执行操作，并将结果作为累加值传递给下一个元素。 |
+| callbackFn | [ArrayReduceCallback](arkts-arkts-collections-arrayreducecallback-t.md)&lt;U, T, Array&lt;T&gt;&gt; | 是 | 一个接受四个参数的函数，用于对 每个元素执行操作，并将结果作为累加值传递给下一个元素。 |
 | initialValue | U | 是 | 用于初始化累加器的值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| U | 回调函数执行后的最终结果。可能的原因： |
+| U | 回调函数执行后的最终结果。可能的原因： 1.必填参数未指定。 2.参数类型不正确。 |
 
 **错误码：**
 
@@ -1169,6 +1235,8 @@ reduceRight(callbackFn: ArrayReduceCallback<T, T, Array<T>>): T
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Array-reduceRight(callbackFn: ArrayReduceCallback<T, T, Array<T>>): T--><!--Device-Array-reduceRight(callbackFn: ArrayReduceCallback<T, T, Array<T>>): T-End-->
@@ -1179,13 +1247,13 @@ reduceRight(callbackFn: ArrayReduceCallback<T, T, Array<T>>): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T, T, Array&lt;T&gt;&gt; | 是 | 一个接受四个参数的函数，用于对每个元素执行操作，并将结果作为累加值传递给下一个元素。 |
+| callbackFn | [ArrayReduceCallback](arkts-arkts-collections-arrayreducecallback-t.md)&lt;T, T, Array&lt;T&gt;&gt; | 是 | 一个接受四个参数的函数，用于对 每个元素执行操作，并将结果作为累加值传递给下一个元素。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| T | 回调函数执行后的最终结果。可能的原因： |
+| T | 回调函数执行后的最终结果。可能的原因： 1.必填参数未指定。 2.参数类型不正确。 |
 
 **错误码：**
 
@@ -1205,6 +1273,8 @@ reverse(): Array<T>
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -1237,6 +1307,8 @@ shift(): T | undefined
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Array-shift(): T | undefined--><!--Device-Array-shift(): T | undefined-End-->
@@ -1268,6 +1340,8 @@ shrinkTo(arrayLength: number): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Array-shrinkTo(arrayLength: number): void--><!--Device-Array-shrinkTo(arrayLength: number): void-End-->
@@ -1278,7 +1352,7 @@ shrinkTo(arrayLength: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| arrayLength | number | 是 | Array的新长度。如果传入的值大于或等于当前Array的长度，Array不发生变化。 |
+| arrayLength | number | 是 | Array的新长度。取值应为非负整数，否则会抛出异常。如果传入的值大于或等于当前Array的长度，Array不发生变化。 |
 
 **错误码：**
 
@@ -1299,6 +1373,8 @@ slice(start?: number, end?: number): Array<T>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Array-slice(start?: number, end?: number): Array<T>--><!--Device-Array-slice(start?: number, end?: number): Array<T>-End-->
@@ -1309,8 +1385,8 @@ slice(start?: number, end?: number): Array<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| start | number | 否 | 开始索引。如果传入负数，则指代start + array.length位置的下标。默认值为0。 |
-| end | number | 否 | 结束索引（不包括该元素）。如果传入负数，则指代end + array.length位置的下标。默认值为ArkTS Array的长度。 |
+| start | number | 否 | 开始索引。如果传入负数，则指代 start + array.length位置的下标。默认值为0。 |
+| end | number | 否 | 结束索引（不包括该元素）。如果传入负数，则指代 end + array.length位置的下标。默认值为ArkTS Array的长度。 |
 
 **返回值：**
 
@@ -1337,6 +1413,8 @@ some(predicate: ArrayPredicateFn<T, Array<T>>): boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Array-some(predicate: ArrayPredicateFn<T, Array<T>>): boolean--><!--Device-Array-some(predicate: ArrayPredicateFn<T, Array<T>>): boolean-End-->
@@ -1347,13 +1425,13 @@ some(predicate: ArrayPredicateFn<T, Array<T>>): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| predicate | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T, Array&lt;T&gt;&gt; | 是 | 用于测试的断言函数。 |
+| predicate | [ArrayPredicateFn](arkts-arkts-collections-arraypredicatefn-t.md)&lt;T, Array&lt;T&gt;&gt; | 是 | 用于测试的断言函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果存在满足指定条件的元素，则返回**true**； |
+| boolean | 检查结果。如果存在满足指定条件的元素，则返回**true**； 否则返回**false**。 |
 
 **错误码：**
 
@@ -1373,6 +1451,8 @@ sort(compareFn?: (a: T, b: T) => number): Array<T>
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1411,6 +1491,8 @@ splice(start: number): Array<T>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Array-splice(start: number): Array<T>--><!--Device-Array-splice(start: number): Array<T>-End-->
@@ -1421,13 +1503,13 @@ splice(start: number): Array<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| start | number | 是 | 开始索引。如果\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，则从\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_开始删除。如果\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，则从0开始删除。 |
+| start | number | 是 | 开始索引。如果`-array.length <= start < 0`， 则从`start + array.length`开始删除。如果`start < -array.length`，则从0开始删除。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 返回一个新的包含被删除元素的**Array**对象。如果没有元素被删除， |
+| Array&lt;T&gt; | 返回一个新的包含被删除元素的**Array**对象。如果没有元素被删除， 返回一个空的**Array**对象。可能的原因： 1.必填参数未指定。 2.参数类型不正确。 |
 
 **错误码：**
 
@@ -1448,6 +1530,8 @@ splice(start: number, deleteCount: number, ...items: T[]): Array<T>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Array-splice(start: number, deleteCount: number, ...items: T[]): Array<T>--><!--Device-Array-splice(start: number, deleteCount: number, ...items: T[]): Array<T>-End-->
@@ -1458,15 +1542,15 @@ splice(start: number, deleteCount: number, ...items: T[]): Array<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| start | number | 是 | 开始索引。如果\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，则从\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_开始删除。如果\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，则从0开始删除。 |
+| start | number | 是 | 开始索引。如果`-array.length <= start < 0`， 则从`start + array.length`开始删除。如果`start < -array.length`，则从0开始删除。 |
 | deleteCount | number | 是 | 删除元素的个数。 |
-| items | T[] | 是 | 从start位置开始插入的新元素。如果未传入，则仅删除Array内的元素。 |
+| items | T[] | 是 | 从start位置开始插入的新元素。 如果未传入，则仅删除Array内的元素。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 返回一个新的包含被删除元素的**Array**对象。如果没有元素被删除， |
+| Array&lt;T&gt; | 返回一个新的包含被删除元素的**Array**对象。如果没有元素被删除， 返回一个空的**Array**对象。可能的原因： 1.必填参数未指定。 2.参数类型不正确。 |
 
 **错误码：**
 
@@ -1486,6 +1570,8 @@ toLocaleString(): string
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -1518,6 +1604,8 @@ toString(): string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Array-toString(): string--><!--Device-Array-toString(): string-End-->
@@ -1549,6 +1637,8 @@ unshift(...items: T[]): number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Array-unshift(...items: T[]): number--><!--Device-Array-unshift(...items: T[]): number-End-->
@@ -1559,7 +1649,7 @@ unshift(...items: T[]): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| items | T[] | 是 | 要插入到Array首端的元素。 |
+| items | T[] | 是 | 要插入到Array首端的元素，默认值为空数组。 |
 
 **返回值：**
 
@@ -1586,6 +1676,8 @@ values(): IterableIterator<T>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Array-values(): IterableIterator<T>--><!--Device-Array-values(): IterableIterator<T>-End-->
@@ -1605,26 +1697,6 @@ values(): IterableIterator<T>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The values method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-## index
-
-```TypeScript
-[index: number]: T
-```
-
-返回Array中指定索引位置的元素。
-
-**类型：** T
-
-**起始版本：** 12
-
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Array-[index: number]: T--><!--Device-Array-[index: number]: T-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
 ## length
 
 ```TypeScript
@@ -1638,6 +1710,8 @@ Array的元素个数。
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

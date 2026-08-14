@@ -16,6 +16,8 @@ Column(options?: ColumnOptions)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -28,7 +30,7 @@ Column(options?: ColumnOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | Column组件的间距配置选项。通过space属性设置纵向布局元素垂直方向间距。当需要为子组件设置固定垂直间距时传入此参数；省略时不设置子组件间距。 \_\_\_HTML\_TAG\_USD\_0\_\_\_ |
+| options | [ColumnOptions](arkts-arkui-columnoptions-i.md) | 否 | Column组件的间距配置选项。通过space属性设置纵向布局元素垂直方向间距。当需要为子组件设置固定垂直间距时传入此参数；省略时不设置子组件间距。 <br> |
 
 ## Column
 
@@ -41,6 +43,8 @@ Column(options?: ColumnOptions | ColumnOptionsV2)
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -56,7 +60,10 @@ Column(options?: ColumnOptions | ColumnOptionsV2)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ \| ColumnOptionsV2 | 否 | Column组件的间距配置选项。通过space属性设置纵向布局元素垂直方向间距，space支持设置number、 string或Resource类型。当需要为子组件设置固定垂直间距时传入此参数；省略时不设置子组件间距。  |
+| options | [ColumnOptions](arkts-arkui-columnoptions-i.md) \| [ColumnOptionsV2](arkts-arkui-columnoptionsv2-i.md) | 否 | Column组件的间距配置选项。通过space属性设置纵向布局元素垂直方向间距，space支持设置number、 string或Resource类型。当需要为子组件设置固定垂直间距时传入此参数；省略时不设置子组件间距。 |
 
 ## 汇总
 
+- [ColumnOptions](arkts-arkui-columnoptions-i.md)
+- [ColumnOptionsV2](arkts-arkui-columnoptionsv2-i.md)
+- [SpaceType](arkts-arkui-spacetype-t.md)

@@ -1,24 +1,25 @@
 # AtomicServiceTabs
 
-AtomicServiceTabs高级组件，对Tabs组件一些不需提供给用户自定义设计的属性进行简化，限制最多显示5个页签，固定页签样式，位置和大小。
+AtomicServiceTabs高级组件，对Tabs组件中不需要暴露给用户进行自定义的属性进行简化，限制最多显示5个页签，固定页签的样式、位置和大小。 > **说明：** > > 该组件从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-**装饰器类型：** @Component
+**废弃版本：** -1
 
-<!--Device-unnamed-/** Copyright (C) 2024 Huawei Device Co., Ltd.* Licensed under the Apache License, Version 2.0 (the "License");* you may not use this file except in compliance with the License.* You may obtain a copy of the License at** http://www.apache.org/licenses/LICENSE-2.0** Unless required by applicable law or agreed to in writing, software* distributed under the License is distributed on an "AS IS" BASIS,* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.* See the License for the specific language governing permissions and* limitations under the License.*/export declare struct AtomicServiceTabs--><!--Device-unnamed-/** Copyright (C) 2024 Huawei Device Co., Ltd.* Licensed under the Apache License, Version 2.0 (the "License");* you may not use this file except in compliance with the License.* You may obtain a copy of the License at** http://www.apache.org/licenses/LICENSE-2.0** Unless required by applicable law or agreed to in writing, software* distributed under the License is distributed on an "AS IS" BASIS,* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.* See the License for the specific language governing permissions and* limitations under the License.*/export declare struct AtomicServiceTabs-End-->
+<!--Device-unnamed-export declare struct AtomicServiceTabs--><!--Device-unnamed-export declare struct AtomicServiceTabs-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## barBackgroundColor
 
 ```TypeScript
-barBackgroundColor?: ResourceColor
+@Prop
+  barBackgroundColor?: ResourceColor
 ```
 
-Sets the barBackgroundColor of tabs.
+设置TabBar的背景颜色，默认值为透明。
 
 **类型：** ResourceColor
 
@@ -26,21 +27,22 @@ Sets the barBackgroundColor of tabs.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-**装饰器类型：** @Prop
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AtomicServiceTabs-barBackgroundColor?: ResourceColor--><!--Device-AtomicServiceTabs-barBackgroundColor?: ResourceColor-End-->
+<!--Device-AtomicServiceTabs-@Prop  barBackgroundColor?: ResourceColor--><!--Device-AtomicServiceTabs-@Prop  barBackgroundColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## barOverlap
 
 ```TypeScript
-barOverlap?: boolean
+@Prop
+  barOverlap?: boolean
 ```
 
-set if need overlap, default value is true.
+设置TabBar是否背景变模糊并叠加在TabContent之上。 true表示TabBar背景变模糊并叠加在TabContent之上，false表示TabBar背景不变模糊且不叠加在TabContent之上。默认值为true。
 
 **类型：** boolean
 
@@ -48,11 +50,11 @@ set if need overlap, default value is true.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-**装饰器类型：** @Prop
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AtomicServiceTabs-barOverlap?: boolean--><!--Device-AtomicServiceTabs-barOverlap?: boolean-End-->
+<!--Device-AtomicServiceTabs-@Prop  barOverlap?: boolean--><!--Device-AtomicServiceTabs-@Prop  barOverlap?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,13 +64,15 @@ set if need overlap, default value is true.
 controller?: TabsController
 ```
 
-Provide methods for switching tabs.
+Tabs组件的控制器，用于控制页签切换。默认值为new TabsController()。
 
 **类型：** TabsController
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -79,10 +83,11 @@ Provide methods for switching tabs.
 ## index
 
 ```TypeScript
-index?: number
+@Prop
+  index?: number
 ```
 
-Sets the index of tabs.
+设置当前显示页签的索引，索引值从0开始，取值范围为[0, 页签数-1]，最大不超过4。默认值为0。
 
 **类型：** number
 
@@ -90,21 +95,22 @@ Sets the index of tabs.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-**装饰器类型：** @Prop
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AtomicServiceTabs-index?: number--><!--Device-AtomicServiceTabs-index?: number-End-->
+<!--Device-AtomicServiceTabs-@Prop  index?: number--><!--Device-AtomicServiceTabs-@Prop  index?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## layoutMode
 
 ```TypeScript
-layoutMode?: LayoutMode
+@Prop
+  layoutMode?: LayoutMode
 ```
 
-Sets the layout mode of the bottom tab bar
+设置底部页签的图片、文字排布的方式，默认值为LayoutMode.VERTICAL。
 
 **类型：** LayoutMode
 
@@ -112,11 +118,11 @@ Sets the layout mode of the bottom tab bar
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @Prop
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AtomicServiceTabs-layoutMode?: LayoutMode--><!--Device-AtomicServiceTabs-layoutMode?: LayoutMode-End-->
+<!--Device-AtomicServiceTabs-@Prop  layoutMode?: LayoutMode--><!--Device-AtomicServiceTabs-@Prop  layoutMode?: LayoutMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -126,13 +132,15 @@ Sets the layout mode of the bottom tab bar
 onChange?: Callback<number>
 ```
 
-onChange callback of tabs when tabs changed.
+Tabs页签切换后触发的事件，回调参数为切换后的页签索引，索引值从0开始。 当onContentWillChange回调返回false拦截页面切换时，该事件不会被触发。默认值为空。
 
 **类型：** Callback&lt;number&gt;
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -146,13 +154,15 @@ onChange callback of tabs when tabs changed.
 onContentWillChange?: OnContentWillChangeCallback
 ```
 
-onContentWillChange callback of tabs when tabbar is clicked.
+Tabs页面切换拦截事件，新页面即将显示时触发该回调。当回调返回false拦截页面切换时，onChange事件不会被触发。默认值为空。
 
-**类型：** OnContentWillChangeCallback
+**类型：** [OnContentWillChangeCallback](arkts-arkui-oncontentwillchangecallback-t.md)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -166,13 +176,15 @@ onContentWillChange callback of tabs when tabbar is clicked.
 onTabBarClick?: Callback<number>
 ```
 
-onTabBarClick callback of tabs when tabbar is clicked.
+Tabs页签点击后触发的事件，回调参数为被点击页签的索引值，索引值从0开始。默认值为空。
 
 **类型：** Callback&lt;number&gt;
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -183,7 +195,8 @@ onTabBarClick callback of tabs when tabbar is clicked.
 ## tabBarOptionsArray
 
 ```TypeScript
-tabBarOptionsArray: [
+@Prop
+  tabBarOptionsArray: [
     TabBarOptions,
     TabBarOptions,
     TabBarOptions?,
@@ -192,7 +205,7 @@ tabBarOptionsArray: [
   ]
 ```
 
-The tabBar array of tabs.
+页签选项数组，最多支持5个页签。
 
 **类型：** [     TabBarOptions,     TabBarOptions,     TabBarOptions?,     TabBarOptions?,     TabBarOptions?   ]
 
@@ -200,40 +213,42 @@ The tabBar array of tabs.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-**装饰器类型：** @Prop
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AtomicServiceTabs-tabBarOptionsArray: [    TabBarOptions,    TabBarOptions,    TabBarOptions?,    TabBarOptions?,    TabBarOptions?  ]--><!--Device-AtomicServiceTabs-tabBarOptionsArray: [    TabBarOptions,    TabBarOptions,    TabBarOptions?,    TabBarOptions?,    TabBarOptions?  ]-End-->
+<!--Device-AtomicServiceTabs-@Prop  tabBarOptionsArray: [    TabBarOptions,    TabBarOptions,    TabBarOptions?,    TabBarOptions?,    TabBarOptions?  ]--><!--Device-AtomicServiceTabs-@Prop  tabBarOptionsArray: [    TabBarOptions,    TabBarOptions,    TabBarOptions?,    TabBarOptions?,    TabBarOptions?  ]-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## tabBarPosition
 
 ```TypeScript
-tabBarPosition?: TabBarPosition
+@Prop
+  tabBarPosition?: TabBarPosition
 ```
 
-set the positions of tabbar.
+设置页签栏位置，默认值为TabBarPosition.BOTTOM。
 
-**类型：** TabBarPosition
+**类型：** [TabBarPosition](arkts-arkui-atomicservice-atomicservicetabs-tabbarposition-e.md)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-**装饰器类型：** @Prop
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AtomicServiceTabs-tabBarPosition?: TabBarPosition--><!--Device-AtomicServiceTabs-tabBarPosition?: TabBarPosition-End-->
+<!--Device-AtomicServiceTabs-@Prop  tabBarPosition?: TabBarPosition--><!--Device-AtomicServiceTabs-@Prop  tabBarPosition?: TabBarPosition-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## tabContents
 
 ```TypeScript
-tabContents?: [ 
+@BuilderParam
+  tabContents?: [ 
     TabContentBuilder?,
     TabContentBuilder?,
     TabContentBuilder?,
@@ -242,7 +257,7 @@ tabContents?: [
   ]
 ```
 
-The TabContent array of tabs.
+内容视图容器数组，最多支持5个页签，默认值为空。
 
 **类型：** [      TabContentBuilder?,     TabContentBuilder?,     TabContentBuilder?,     TabContentBuilder?,     TabContentBuilder?   ]
 
@@ -250,11 +265,11 @@ The TabContent array of tabs.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-**装饰器类型：** @BuilderParam
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AtomicServiceTabs-tabContents?: [     TabContentBuilder?,    TabContentBuilder?,    TabContentBuilder?,    TabContentBuilder?,    TabContentBuilder?  ]--><!--Device-AtomicServiceTabs-tabContents?: [     TabContentBuilder?,    TabContentBuilder?,    TabContentBuilder?,    TabContentBuilder?,    TabContentBuilder?  ]-End-->
+<!--Device-AtomicServiceTabs-@BuilderParam  tabContents?: [     TabContentBuilder?,    TabContentBuilder?,    TabContentBuilder?,    TabContentBuilder?,    TabContentBuilder?  ]--><!--Device-AtomicServiceTabs-@BuilderParam  tabContents?: [     TabContentBuilder?,    TabContentBuilder?,    TabContentBuilder?,    TabContentBuilder?,    TabContentBuilder?  ]-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

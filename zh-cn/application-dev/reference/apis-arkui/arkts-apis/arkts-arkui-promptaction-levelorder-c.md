@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-export class LevelOrder--><!--Device-unnamed-export class LevelOrder-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -22,6 +24,8 @@ static clamp(order: number): LevelOrder
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -34,13 +38,13 @@ static clamp(order: number): LevelOrder
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| order | number | 是 | 弹窗显示顺序。取值范围为[-100000.0, 100000.0]，如果值小于-100000.0则设置为-100000.0，如果值大于100000.0则设置为100000.0。 |
+| order | number | 是 | 弹窗显示顺序。取值范围为[-100000.0, 100000.0]，如果值小于-100000.0则设置为-100000.0，如果值大于100000.0则设置为100000. 0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回当前对象实例，该对象可用于设置弹窗的显示顺序。 |
+| [LevelOrder](../../apis-na/arkts-apis/arkts-na-promptaction-levelorder-c.md) | 返回当前对象实例，该对象可用于设置弹窗的显示顺序。 |
 
 ## getOrder
 
@@ -53,6 +57,8 @@ getOrder(): number
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

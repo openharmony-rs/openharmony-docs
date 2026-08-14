@@ -2,9 +2,11 @@
 
 Enumerates the color formats supported by the video thumbnail.
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-media-enum PixelFormat--><!--Device-media-enum PixelFormat-End-->
 
@@ -18,11 +20,13 @@ Enumerates the color formats supported by the video thumbnail.
 RGB_565 = 2
 ```
 
-RGB\_565.
+RGB_565.
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PixelFormat-RGB_565 = 2--><!--Device-PixelFormat-RGB_565 = 2-End-->
 
@@ -36,11 +40,13 @@ RGB\_565.
 RGBA_8888 = 3
 ```
 
-RGBA\_8888.
+RGBA_8888.
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PixelFormat-RGBA_8888 = 3--><!--Device-PixelFormat-RGBA_8888 = 3-End-->
 
@@ -54,11 +60,13 @@ RGBA\_8888.
 RGB_888 = 5
 ```
 
-RGB\_888.
+RGB_888.
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PixelFormat-RGB_888 = 5--><!--Device-PixelFormat-RGB_888 = 5-End-->
 

@@ -14,7 +14,7 @@ declare function rename(oldPath: string, newPath: string): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.file.fs:rename](arkts-corefile-fileio-rename-f.md#rename)
+**替代接口：** [rename](arkts-corefile-file-fs-rename-f.md#rename)
 
 <!--Device-unnamed-declare function rename(oldPath: string, newPath: string): Promise<void>--><!--Device-unnamed-declare function rename(oldPath: string, newPath: string): Promise<void>-End-->
 
@@ -48,7 +48,7 @@ declare function rename(oldPath: string, newPath: string, callback: AsyncCallbac
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.file.fs:rename](arkts-corefile-fileio-rename-f.md#rename)
+**替代接口：** [rename](arkts-corefile-file-fs-rename-f.md#rename)
 
 <!--Device-unnamed-declare function rename(oldPath: string, newPath: string, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function rename(oldPath: string, newPath: string, callback: AsyncCallback<void>): void-End-->
 
@@ -60,5 +60,5 @@ declare function rename(oldPath: string, newPath: string, callback: AsyncCallbac
 | --- | --- | --- | --- |
 | oldPath | string | 是 | 目标文件的当前应用沙箱路径。 |
 | newPath | string | 是 | 目标文件的新应用沙箱路径。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 异步重命名文件之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 异步重命名文件之后的回调。 |
 

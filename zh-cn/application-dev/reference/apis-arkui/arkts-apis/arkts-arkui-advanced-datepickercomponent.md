@@ -7,10 +7,10 @@
 | 名称 | 说明 |
 | --- | --- |
 | [CommonOptions](arkts-arkui-arkui-advanced-datepickercomponent-commonoptions-c.md) | CommonOptions定义日期时间选择器的通用选项。 |
-| [DateOptions](arkts-arkui-arkui-advanced-datepickercomponent-dateoptions-c.md) | DateOptions定义日期选择器的选项。 继承于[CommonOptions]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
+| [DateOptions](arkts-arkui-arkui-advanced-datepickercomponent-dateoptions-c.md) | DateOptions定义日期选择器的选项。 继承于[CommonOptions](arkts-arkui-arkui-advanced-datepickercomponent-commonoptions-c.md#CommonOptions)。 |
 | [DatePickerComponentOptions](arkts-arkui-arkui-advanced-datepickercomponent-datepickercomponentoptions-c.md) | DatePickerComponentOptions定义日期时间选择器组件的选项。 |
-| [DatePickerComponentResult](arkts-arkui-arkui-advanced-datepickercomponent-datepickercomponentresult-c.md) | DatePickerComponentResult定义日期时间选择器的选择结果。 |
-| [TimeOptions](arkts-arkui-arkui-advanced-datepickercomponent-timeoptions-c.md) | TimeOptions定义时间选择器的选项。 继承于[CommonOptions]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
+| [DatePickerComponentResult](arkts-arkui-arkui-advanced-datepickercomponent-datepickercomponentresult-c.md) | DatePickerComponentResult定义日期时间选择器的选择结果，包含用户选择的年、月、日、时、分、秒信息，用于在onChange和onScrollStop回调中 传递选择的具体日期时间值。 |
+| [TimeOptions](arkts-arkui-arkui-advanced-datepickercomponent-timeoptions-c.md) | TimeOptions定义时间选择器的选项。 继承于[CommonOptions](arkts-arkui-arkui-advanced-datepickercomponent-commonoptions-c.md#CommonOptions)。 |
 
 ### 结构体
 

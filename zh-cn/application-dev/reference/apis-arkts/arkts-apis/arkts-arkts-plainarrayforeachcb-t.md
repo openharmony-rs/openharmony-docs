@@ -8,7 +8,9 @@ PlainArray的回调函数类型。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -22,7 +24,7 @@ PlainArray的回调函数类型。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | T | 是 | 当前元素的值。  |
-| key | int | 是 | 当前元素的键。 该值为整数。  |
-| PlainArray | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; | 是 | 当前正在遍历的PlainArray实例。  |
+| value | T | 是 | 当前元素的值。 |
+| key | int | 是 | 当前元素的键。 该值为整数。 |
+| PlainArray | [PlainArray](arkts-arkts-util-plainarray-plainarray-c.md)&lt;T&gt; | 是 | 当前正在遍历的PlainArray实例。 |
 

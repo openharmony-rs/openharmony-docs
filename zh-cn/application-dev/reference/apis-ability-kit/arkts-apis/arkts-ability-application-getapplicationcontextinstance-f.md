@@ -10,7 +10,9 @@ export function getApplicationContextInstance(): ApplicationContext
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -24,7 +26,7 @@ export function getApplicationContextInstance(): ApplicationContext
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 应用上下文。 |
+| [ApplicationContext](arkts-ability-applicationcontext-c.md) | 应用上下文。 |
 
 **错误码：**
 
@@ -32,7 +34,7 @@ export function getApplicationContextInstance(): ApplicationContext
 | --- | --- |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: Memory operation error. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { AbilityConstant, UIAbility, application, Want, common } from '@kit.AbilityKit';

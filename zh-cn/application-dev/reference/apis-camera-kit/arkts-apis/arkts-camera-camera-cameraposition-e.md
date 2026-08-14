@@ -2,9 +2,11 @@
 
 枚举，相机位置。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-camera-enum CameraPosition--><!--Device-camera-enum CameraPosition-End-->
 
@@ -18,9 +20,11 @@ CAMERA_POSITION_UNSPECIFIED = 0
 
 相对于设备屏幕没有固定的朝向的相机。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -36,9 +40,11 @@ CAMERA_POSITION_BACK = 1
 
 后置相机。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -54,9 +60,11 @@ CAMERA_POSITION_FRONT = 2
 
 前置相机。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -78,7 +86,7 @@ CAMERA_POSITION_FOLD_INNER = 3
 
 **废弃版本：** 12
 
-**替代接口：** [null]
+**替代接口：** null
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

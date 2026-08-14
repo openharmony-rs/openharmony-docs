@@ -8,9 +8,11 @@ function createColorPicker(source: image.PixelMap): Promise<ColorPicker>
 
 通过传入的PixelMap创建ColorPicker实例，使用Promise异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -24,21 +26,21 @@ function createColorPicker(source: image.PixelMap): Promise<ColorPicker>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| source | image.PixelMap | 是 | image模块创建的PixelMap实例。 可通过图片解码或直接创建获得，具体可见\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
+| source | image.PixelMap | 是 | image模块创建的PixelMap实例。可通过图片解码或直接创建获得， 具体可见[Image Kit简介](../../../media/image/image-overview.md)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;ColorPicker&gt; | - Promise对象。返回创建的ColorPicker实例。 |
+| Promise&lt;[ColorPicker](arkts-arkgraphics2d-effectkit-colorpicker-i.md)&gt; | Promise对象。返回创建的ColorPicker实例。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 输入参数错误。 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | 输入参数错误。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { image } from "@kit.ImageKit";
@@ -73,9 +75,11 @@ function createColorPicker(source: image.PixelMap, region: Array<double>): Promi
 
 通过传入的PixelMap创建选定取色区域的ColorPicker实例，使用Promise异步回调。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -89,22 +93,22 @@ function createColorPicker(source: image.PixelMap, region: Array<double>): Promi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| source | image.PixelMap | 是 | image模块创建的PixelMap实例。 可通过图片解码或直接创建获得，具体可见\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
-| region | ArkTS-Dyn: Array&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：Array&lt;double&gt; | 是 | 指定图片的取色区域。 数组第三个元素需大于第一个元素，第四个元素需大于第二个元素。 |
+| source | image.PixelMap | 是 | image模块创建的PixelMap实例。可通过图片解码或直接创建获得， 具体可见[Image Kit简介](../../../media/image/image-overview.md)。 |
+| region | Array&lt;double&gt; | 是 | 指定图片的取色区域。 数组第三个元素需大于第一个元素，第四个元素需大于第二个元素。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;ColorPicker&gt; | - Promise对象。返回创建的ColorPicker实例。 |
+| Promise&lt;[ColorPicker](arkts-arkgraphics2d-effectkit-colorpicker-i.md)&gt; | Promise对象。返回创建的ColorPicker实例。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 输入参数错误。 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | 输入参数错误。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { image } from "@kit.ImageKit";
@@ -139,9 +143,11 @@ function createColorPicker(source: image.PixelMap, callback: AsyncCallback<Color
 
 通过传入的PixelMap创建ColorPicker实例，使用callback异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -155,16 +161,16 @@ function createColorPicker(source: image.PixelMap, callback: AsyncCallback<Color
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| source | image.PixelMap | 是 | image模块创建的PixelMap实例。 可通过图片解码或直接创建获得，具体可见\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;ColorPicker&gt; | 是 | 回调函数。返回创建的ColorPicker实例。 |
+| source | image.PixelMap | 是 | image模块创建的PixelMap实例。可通过图片解码或直接创建获得， 具体可见[Image Kit简介](../../../media/image/image-overview.md)。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[ColorPicker](arkts-arkgraphics2d-effectkit-colorpicker-i.md)&gt; | 是 | 回调函数。返回创建的ColorPicker实例。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 输入参数错误。 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | 输入参数错误。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { image } from "@kit.ImageKit";
@@ -199,9 +205,11 @@ function createColorPicker(source: image.PixelMap, region: Array<double>, callba
 
 通过传入的PixelMap创建选定取色区域的ColorPicker实例，使用callback异步回调。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -215,17 +223,17 @@ function createColorPicker(source: image.PixelMap, region: Array<double>, callba
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| source | image.PixelMap | 是 | image模块创建的PixelMap实例。 可通过图片解码或直接创建获得，具体可见\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
-| region | ArkTS-Dyn: Array&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：Array&lt;double&gt; | 是 | 指定图片的取色区域。 数组第三个元素需大于第一个元素，第四个元素需大于第二个元素。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;ColorPicker&gt; | 是 | 回调函数。返回创建的ColorPicker实例。 |
+| source | image.PixelMap | 是 | image模块创建的PixelMap实例。可通过图片解码或直接创建获得， 具体可见[Image Kit简介](../../../media/image/image-overview.md)。 |
+| region | Array&lt;double&gt; | 是 | 指定图片的取色区域。 数组第三个元素需大于第一个元素，第四个元素需大于第二个元素。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[ColorPicker](arkts-arkgraphics2d-effectkit-colorpicker-i.md)&gt; | 是 | 回调函数。返回创建的ColorPicker实例。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 输入参数错误。 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | 输入参数错误。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { image } from "@kit.ImageKit";

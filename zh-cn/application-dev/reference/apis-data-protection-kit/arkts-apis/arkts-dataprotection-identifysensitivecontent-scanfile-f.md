@@ -12,6 +12,8 @@ function scanFile(filePath: string, identifyPolicies: Array<Policy>): Promise<Ar
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
 
+**废弃版本：** -1
+
 **需要权限：** ohos.permission.ENTERPRISE_DATA_IDENTIFY_FILE
 
 <!--Device-identifySensitiveContent-function scanFile(filePath: string, identifyPolicies: Array<Policy>): Promise<Array<MatchResult>>--><!--Device-identifySensitiveContent-function scanFile(filePath: string, identifyPolicies: Array<Policy>): Promise<Array<MatchResult>>-End-->
@@ -29,20 +31,20 @@ function scanFile(filePath: string, identifyPolicies: Array<Policy>): Promise<Ar
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;MatchResult&gt;&gt; | Promise对象，返回敏感内容识别的结果。成功时返回匹配结果数组，异常返回错误码。 |
+| Promise&lt;Array&lt;[MatchResult](arkts-dataprotection-identifysensitivecontent-matchresult-i.md)&gt;&gt; | Promise对象，返回敏感内容识别的结果。成功时返回匹配结果数组，异常返回错误码。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied. |
+| [19110003](../errorcode-dlp.md#19110003-文件不支持) | The file is not supported. Possible causes: 1. The file path does not exist. 2. The file type is not supported. 3. The file permission is not supported. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
-| [19110001](../errorcode-dlp.md#19110001-参数错误) | Parameter error. Possible causes:1. Incorrect policy format.2. Invalid parameter range. |
 | [19110002](../errorcode-dlp.md#19110002-文件敏感信息识别超时) | Sensitive file content identification timed out. |
-| [19110003](../errorcode-dlp.md#19110003-文件不支持) | The file is not supported. Possible causes:1. The file path does not exist.2. The file type is not supported.3. The file permission is not supported. |
+| [19110001](../errorcode-dlp.md#19110001-参数错误) | Parameter error. Possible causes: 1. Incorrect policy format. 2. Invalid parameter range. |
 | [19110004](../errorcode-dlp.md#19110004-系统功能运行异常) | A system error has occurred. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { identifySensitiveContent } from '@kit.DataProtectionKit';

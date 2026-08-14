@@ -16,6 +16,8 @@ RemoteWindow(target: WindowAnimationTarget)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 <!--Device-RemoteWindowInterface-(target: WindowAnimationTarget): RemoteWindowAttribute--><!--Device-RemoteWindowInterface-(target: WindowAnimationTarget): RemoteWindowAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -26,7 +28,9 @@ RemoteWindow(target: WindowAnimationTarget)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| target | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 需要控制的动画窗口的描述。  |
+| target | [WindowAnimationTarget](arkts-arkui-windowanimationtarget-i-sys.md) | 是 | 需要控制的动画窗口的描述。 |
 
 ## 汇总
 
+- [RRect](arkts-arkui-rrect-i-sys.md)
+- [WindowAnimationTarget](arkts-arkui-windowanimationtarget-i-sys.md)

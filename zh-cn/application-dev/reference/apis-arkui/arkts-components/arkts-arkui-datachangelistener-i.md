@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface DataChangeListener--><!--Device-unnamed-declare interface DataChangeListener-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -22,6 +24,8 @@ onDataAdd(index: number): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-DataChangeListener-onDataAdd(index: number): void--><!--Device-DataChangeListener-onDataAdd(index: number): void-End-->
@@ -32,7 +36,7 @@ onDataAdd(index: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 数据添加位置的索引值。取值范围是[0, 数据源长度-1]。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
+| index | number | 是 | 数据添加位置的索引值。取值范围是[0, 数据源长度-1]。 &lt;br&gt;小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
 
 ## onDataAdded
 
@@ -48,7 +52,7 @@ onDataAdded(index: number): void
 
 **废弃版本：** 8
 
-**替代接口：** [DataChangeListener.onDataAdd](../arkts-apis/arkts-arkui-component/lazyforeach-datachangelistener-i.md#ondataadd)
+**替代接口：** [onDataAdd](#onDataAdd)
 
 <!--Device-DataChangeListener-onDataAdded(index: number): void--><!--Device-DataChangeListener-onDataAdded(index: number): void-End-->
 
@@ -58,7 +62,7 @@ onDataAdded(index: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 数据添加位置的索引值。取值范围是[0, 数据源长度-1]。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
+| index | number | 是 | 数据添加位置的索引值。取值范围是[0, 数据源长度-1]。 &lt;br&gt;小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
 
 ## onDataChange
 
@@ -72,6 +76,8 @@ onDataChange(index: number): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-DataChangeListener-onDataChange(index: number): void--><!--Device-DataChangeListener-onDataChange(index: number): void-End-->
@@ -82,7 +88,7 @@ onDataChange(index: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 数据变化位置的索引值。取值范围是[0, 数据源长度-1]。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
+| index | number | 是 | 数据变化位置的索引值。取值范围是[0, 数据源长度-1]。 &lt;br&gt;小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
 
 ## onDataChanged
 
@@ -98,7 +104,7 @@ onDataChanged(index: number): void
 
 **废弃版本：** 8
 
-**替代接口：** [DataChangeListener.onDataChange](../arkts-apis/arkts-arkui-component/lazyforeach-datachangelistener-i.md#ondatachange)
+**替代接口：** [onDataChange](#onDataChange)
 
 <!--Device-DataChangeListener-onDataChanged(index: number): void--><!--Device-DataChangeListener-onDataChanged(index: number): void-End-->
 
@@ -108,7 +114,7 @@ onDataChanged(index: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 数据变化位置的索引值。取值范围是[0, 数据源长度-1]。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
+| index | number | 是 | 数据变化位置的索引值。取值范围是[0, 数据源长度-1]。 &lt;br&gt;小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
 
 ## onDataDelete
 
@@ -122,6 +128,8 @@ onDataDelete(index: number): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-DataChangeListener-onDataDelete(index: number): void--><!--Device-DataChangeListener-onDataDelete(index: number): void-End-->
@@ -132,7 +140,7 @@ onDataDelete(index: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 数据删除位置的索引值。取值范围是[0, 数据源长度-1]。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
+| index | number | 是 | 数据删除位置的索引值。取值范围是[0, 数据源长度-1]。 &lt;br&gt;小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
 
 ## onDataDeleted
 
@@ -148,7 +156,7 @@ onDataDeleted(index: number): void
 
 **废弃版本：** 8
 
-**替代接口：** [DataChangeListener.onDataDelete](../arkts-apis/arkts-arkui-component/lazyforeach-datachangelistener-i.md#ondatadelete)
+**替代接口：** [onDataDelete](#onDataDelete)
 
 <!--Device-DataChangeListener-onDataDeleted(index: number): void--><!--Device-DataChangeListener-onDataDeleted(index: number): void-End-->
 
@@ -158,7 +166,7 @@ onDataDeleted(index: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 数据删除位置的索引值。取值范围是[0, 数据源长度-1]。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
+| index | number | 是 | 数据删除位置的索引值。取值范围是[0, 数据源长度-1]。 &lt;br&gt;小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
 
 ## onDataMove
 
@@ -172,6 +180,8 @@ onDataMove(from: number, to: number): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-DataChangeListener-onDataMove(from: number, to: number): void--><!--Device-DataChangeListener-onDataMove(from: number, to: number): void-End-->
@@ -182,8 +192,8 @@ onDataMove(from: number, to: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| from | number | 是 | 数据移动起始位置。取值范围是[0, 数据源长度-1]。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
-| to | number | 是 | 数据移动目标位置。取值范围是[0, 数据源长度-1]。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
+| from | number | 是 | 数据移动起始位置。取值范围是[0, 数据源长度-1]。 &lt;br&gt;小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
+| to | number | 是 | 数据移动目标位置。取值范围是[0, 数据源长度-1]。 &lt;br&gt;小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
 
 ## onDataMoved
 
@@ -199,7 +209,7 @@ onDataMoved(from: number, to: number): void
 
 **废弃版本：** 8
 
-**替代接口：** [DataChangeListener.onDataMove](../arkts-apis/arkts-arkui-component/lazyforeach-datachangelistener-i.md#ondatamove)
+**替代接口：** [onDataMove](#onDataMove)
 
 <!--Device-DataChangeListener-onDataMoved(from: number, to: number): void--><!--Device-DataChangeListener-onDataMoved(from: number, to: number): void-End-->
 
@@ -209,8 +219,8 @@ onDataMoved(from: number, to: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| from | number | 是 | 数据移动起始位置。取值范围是[0, 数据源长度-1]。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
-| to | number | 是 | 数据移动目标位置。取值范围是[0, 数据源长度-1]。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
+| from | number | 是 | 数据移动起始位置。取值范围是[0, 数据源长度-1]。 &lt;br&gt;小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
+| to | number | 是 | 数据移动目标位置。取值范围是[0, 数据源长度-1]。 &lt;br&gt;小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
 
 ## onDataReloaded
 
@@ -224,6 +234,8 @@ onDataReloaded(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-DataChangeListener-onDataReloaded(): void--><!--Device-DataChangeListener-onDataReloaded(): void-End-->
@@ -236,11 +248,13 @@ onDataReloaded(): void
 onDataReloaded(reuseImmediately: boolean): void
 ```
 
-通知组件重新加载所有数据，并配置是否允许在更新过程中复用旧的子组件。需要和@Reusable/@ReusableV2配合使用。重新加载数据完成后调用。 配置允许在更新过程中复用旧的子组件，并和\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_/ \_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_配合使用时，优先使用复用池中的组件，若复用池中无可复用的组件，而LazyForEach的旧子组 件中有可复用的组件，该组件将被回收，并复用为新的子组件。当LazyForEach的旧子组件中也没有可复用的组件时，将创建新的子组件。 配置允许在更新过程中复用旧的子组件，未使用@Reusable/@ReusableV2时，键值没有变化的数据项会使用原先的子组件，键值发生变化的会重建子组件。 配置不允许在更新过程中复用旧的子组件，键值没有变化的数据项会使用原先的子组件，键值发生变化的数据项，若使用了@Reusable/@ReusableV2且复用池中有可用的组件，将复用旧组件，否则将创建新的子组件。
+通知组件重新加载所有数据，并配置是否允许在更新过程中复用旧的子组件。需要和@Reusable/@ReusableV2配合使用。重新加载数据完成后调用。 配置允许在更新过程中复用旧的子组件，并和[@Reusable](../../../ui/state-management/arkts-reusable.md)/ [@ReusableV2](../../../ui/state-management/arkts-new-reusableV2.md)配合使用时，优先使用复用池中的组件，若复用池中无可复用的组件，而LazyForEach的旧子组 件中有可复用的组件，该组件将被回收，并复用为新的子组件。当LazyForEach的旧子组件中也没有可复用的组件时，将创建新的子组件。 配置允许在更新过程中复用旧的子组件，未使用@Reusable/@ReusableV2时，键值没有变化的数据项会使用原先的子组件，键值发生变化的会重建子组件。 配置不允许在更新过程中复用旧的子组件，键值没有变化的数据项会使用原先的子组件，键值发生变化的数据项，若使用了@Reusable/@ReusableV2且复用池中有可用的组件，将复用旧组件，否则将创建新的子组件。
 
 **起始版本：** 26.1.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -254,7 +268,7 @@ onDataReloaded(reuseImmediately: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| reuseImmediately | boolean | 是 | 是否允许在更新过程中复用旧的子组件。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_true：允许在更新过程中复用旧的子组件。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_false：不允许在更新过程中复用旧的子组件。 |
+| reuseImmediately | boolean | 是 | 是否允许在更新过程中复用旧的子组件。&lt;br/&gt;true：允许在更新过程中复用旧的子组件。&lt;br/&gt;false：不允许在更新过程中复用旧的子组件。 |
 
 ## onDatasetChange
 
@@ -268,6 +282,8 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -280,5 +296,5 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| dataOperations | \_\_\_MD\_LINK\_USD\_0\_\_\_[] | 是 | 一次批量处理数据的操作集合，开发者将需要处理的数据操作（添加、删除、改变、移动、交换、重载等）放入该数组，组件按照数组中的操作顺序刷新展示内容。 |
+| dataOperations | [DataOperation](arkts-arkui-dataoperation-t.md)[] | 是 | 一次批量处理数据的操作集合，开发者将需要处理的数据操作（添加、删除、改变、移动、交换、重载等）放入该数组，组件按照数组中的操作顺序刷新展示内 容。 |
 

@@ -6,11 +6,13 @@
 function check(): string
 ```
 
-��ȡ��ͨ��jsLeakWatcher.watchע�ᷢ��й©�Ķ����б�������GC��δ�����յĶ���ᱻ���Ϊй©��
+获取已通过jsLeakWatcher.watch注册发生泄漏的对象列表，触发GC后未被回收的对象会被标记为泄漏。
 
-**起始版本：** 12
+**起始版本：** 26.1.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为26.1.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+
+**废弃版本：** -1
 
 <!--Device-jsLeakWatcher-function check(): string--><!--Device-jsLeakWatcher-function check(): string-End-->
 
@@ -20,9 +22,9 @@ function check(): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | ����GC��δ�����յ�й©�����б��� |
+| string | 触发GC后未被回收的泄漏对象列表。 &lt;br&gt;**说明：**check成功，返回JSON格式的泄漏对象列表；check失败，返回空字符串。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let leakObjlist:string = jsLeakWatcher.check();

@@ -6,6 +6,8 @@ Options of generating code cache
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-webview-interface CacheOptions--><!--Device-webview-interface CacheOptions-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -23,6 +25,8 @@ Response headers used to configure the validation key of code cache. Currently o
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-CacheOptions-responseHeaders: Array<WebHeader>--><!--Device-CacheOptions-responseHeaders: Array<WebHeader>-End-->
 

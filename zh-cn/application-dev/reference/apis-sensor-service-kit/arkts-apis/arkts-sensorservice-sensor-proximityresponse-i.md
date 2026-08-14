@@ -1,40 +1,36 @@
 # ProximityResponse
 
-距离感应数据改变后的回调函数的响应对象，包含可见物体相对于设备显示屏的接近或远离状态数据。
+接近光传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md#Response)。
 
-**起始版本：** 3
+**继承/实现关系：** ProximityResponse extends [Response](arkts-sensorservice-sensor-response-i.md#Response)
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**起始版本：** 23
 
-**废弃版本：** 8
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**替代接口：** ohos.sensor/sensor#ProximityResponse
+**废弃版本：** -1
 
-<!--Device-unnamed-export interface ProximityResponse--><!--Device-unnamed-export interface ProximityResponse-End-->
+<!--Device-sensor-interface ProximityResponse--><!--Device-sensor-interface ProximityResponse-End-->
 
-**系统能力：** SystemCapability.Sensors.Sensor.Lite
+**系统能力：** SystemCapability.Sensors.Sensor
 
 ## distance
 
 ```TypeScript
-distance: number
+distance: double
 ```
 
-可见物体相对于设备显示屏的接近或远离状态。取值说明：0表示物体接近屏幕（近状态），大于0表示物体远离屏幕（远状态）。具体远状态数值由硬件传感器决定。
+可见物体与设备显示器的接近程度。取值范围：0表示接近（物体靠近设备），大于0表示远离（物体远离设备）。
 
-**类型：** number
+**类型：** double
 
-**起始版本：** 3
+**起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**废弃版本：** 8
+**废弃版本：** -1
 
-**替代接口：** ohos.sensor/sensor#ProximityResponse.distance
+<!--Device-ProximityResponse-distance: double--><!--Device-ProximityResponse-distance: double-End-->
 
-**模型约束：** 此接口仅可在FA模型下使用。
-
-<!--Device-ProximityResponse-distance: number--><!--Device-ProximityResponse-distance: number-End-->
-
-**系统能力：** SystemCapability.Sensors.Sensor.Lite
+**系统能力：** SystemCapability.Sensors.Sensor
 

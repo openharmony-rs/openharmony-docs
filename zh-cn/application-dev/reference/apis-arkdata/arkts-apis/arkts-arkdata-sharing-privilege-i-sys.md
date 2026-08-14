@@ -2,9 +2,11 @@
 
 指定的端云共享数据的权限。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-sharing-interface Privilege--><!--Device-sharing-interface Privilege-End-->
 
@@ -22,9 +24,11 @@ creatable?: boolean
 
 **类型：** boolean
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Privilege-creatable?: boolean--><!--Device-Privilege-creatable?: boolean-End-->
 
@@ -42,9 +46,11 @@ deletable?: boolean
 
 **类型：** boolean
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Privilege-deletable?: boolean--><!--Device-Privilege-deletable?: boolean-End-->
 
@@ -62,9 +68,11 @@ readable?: boolean
 
 **类型：** boolean
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Privilege-readable?: boolean--><!--Device-Privilege-readable?: boolean-End-->
 
@@ -82,9 +90,11 @@ shareable?: boolean
 
 **类型：** boolean
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Privilege-shareable?: boolean--><!--Device-Privilege-shareable?: boolean-End-->
 
@@ -102,9 +112,11 @@ writable?: boolean
 
 **类型：** boolean
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Privilege-writable?: boolean--><!--Device-Privilege-writable?: boolean-End-->
 

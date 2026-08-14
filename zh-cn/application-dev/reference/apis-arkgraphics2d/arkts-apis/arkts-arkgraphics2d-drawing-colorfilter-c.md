@@ -1,10 +1,12 @@
 # ColorFilter
 
-颜色滤波器。 > **说明：** > > - 本模块使用屏幕物理像素单位px。 > > - 本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
+颜色滤波器，用于对图像或图形的颜色进行变换和处理，支持创建混合模式颜色滤波器、组合颜色滤波器、矩阵颜色滤波器、伽马颜色空间转换滤波器、亮度颜色滤波器和光照颜色滤波器等多种类型。 > **说明：** > > - 本模块使用屏幕物理像素单位px。 > > - 本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-drawing-class ColorFilter--><!--Device-drawing-class ColorFilter-End-->
 
@@ -22,6 +24,8 @@ static createBlendModeColorFilter(color: common2D.Color, mode: BlendMode): Color
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-ColorFilter-static createBlendModeColorFilter(color: common2D.Color, mode: BlendMode): ColorFilter--><!--Device-ColorFilter-static createBlendModeColorFilter(color: common2D.Color, mode: BlendMode): ColorFilter-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -30,20 +34,20 @@ static createBlendModeColorFilter(color: common2D.Color, mode: BlendMode): Color
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | common2D.Color | 是 | ARGB格式的颜色，每个颜色通道的值是0到255之间的整数。 |
-| mode | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 颜色的混合模式。 |
+| color | common2D.Color | 是 | ARGB格式的颜色，每个颜色通道的值是[0, 255]的整数。 |
+| mode | BlendMode | 是 | 混合模式，用于指定两个着色器叠加时的颜色混合算法。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回颜色滤波器。 |
+| ColorFilter | 返回基于指定颜色和混合模式创建的颜色滤波器。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## createBlendModeColorFilter
 
@@ -51,11 +55,13 @@ static createBlendModeColorFilter(color: common2D.Color, mode: BlendMode): Color
 static createBlendModeColorFilter(color: common2D.Color, mode: BlendMode): ColorFilter | undefined
 ```
 
-Creates a ColorFilter object with a given color and blend mode.
+创建指定的颜色和混合模式的颜色滤波器。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ColorFilter-static createBlendModeColorFilter(color: common2D.Color, mode: BlendMode): ColorFilter | undefined--><!--Device-ColorFilter-static createBlendModeColorFilter(color: common2D.Color, mode: BlendMode): ColorFilter | undefined-End-->
 
@@ -65,20 +71,20 @@ Creates a ColorFilter object with a given color and blend mode.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | common2D.Color | 是 | Color in ARGB format.The value of each color channel is an integer ranging from 0 to 255. |
-| mode | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | Blend mode. |
+| color | common2D.Color | 是 | ARGB格式的颜色，每个颜色通道的值是[0, 255]的整数。 |
+| mode | BlendMode | 是 | 混合模式，用于指定两个着色器叠加时的颜色混合算法。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Colorfilter object. |
+| ColorFilter | 返回基于指定颜色和混合模式创建的颜色滤波器。创建失败时返回undefined。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## createBlendModeColorFilter
 
@@ -86,11 +92,13 @@ Creates a ColorFilter object with a given color and blend mode.
 static createBlendModeColorFilter(color: common2D.Color | number, mode: BlendMode): ColorFilter
 ```
 
-使用指定的颜色和混合模式创建颜色滤波器。
+创建指定的颜色和混合模式的颜色滤波器。
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 <!--Device-ColorFilter-static createBlendModeColorFilter(color: common2D.Color | number, mode: BlendMode): ColorFilter--><!--Device-ColorFilter-static createBlendModeColorFilter(color: common2D.Color | number, mode: BlendMode): ColorFilter-End-->
 
@@ -100,20 +108,20 @@ static createBlendModeColorFilter(color: common2D.Color | number, mode: BlendMod
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | common2D.Color \| number | 是 | 颜色，可以用16进制ARGB格式的无符号整数表示。 |
-| mode | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 颜色的混合模式。 |
+| color | common2D.Color \| number | 是 | 颜色。为common2D.Color类型时，每个颜色通道的值是[0, 255]的整数；为number类型时，用16进制ARGB格式的无符号整 数表示，取值范围为[0, 0xFFFFFFFF]。 |
+| mode | BlendMode | 是 | 混合模式，用于指定两个着色器叠加时的颜色混合算法。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回颜色滤波器。 |
+| ColorFilter | 返回基于指定颜色和混合模式创建的颜色滤波器。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## createBlendModeColorFilter
 
@@ -121,11 +129,13 @@ static createBlendModeColorFilter(color: common2D.Color | number, mode: BlendMod
 static createBlendModeColorFilter(color: common2D.Color | int, mode: BlendMode): ColorFilter | undefined
 ```
 
-Creates a ColorFilter object with a given color and blend mode.
+创建指定的颜色和混合模式的颜色滤波器。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ColorFilter-static createBlendModeColorFilter(color: common2D.Color | int, mode: BlendMode): ColorFilter | undefined--><!--Device-ColorFilter-static createBlendModeColorFilter(color: common2D.Color | int, mode: BlendMode): ColorFilter | undefined-End-->
 
@@ -135,20 +145,20 @@ Creates a ColorFilter object with a given color and blend mode.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | common2D.Color \| int | 是 | Color, represented by an unsigned integer in hexadecimal ARGB format. |
-| mode | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | Blend mode. |
+| color | common2D.Color \| int | 是 | 颜色。为common2D.Color类型时，每个颜色通道的值是[0, 255]的整数；为number类型时，用16进制ARGB格式的无符号整 数表示，取值范围为[0, 0xFFFFFFFF]。 |
+| mode | BlendMode | 是 | 混合模式，用于指定两个着色器叠加时的颜色混合算法。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Colorfilter object. |
+| ColorFilter | 返回基于指定颜色和混合模式创建的颜色滤波器。创建失败时返回undefined。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## createComposeColorFilter
 
@@ -162,6 +172,8 @@ static createComposeColorFilter(outer: ColorFilter, inner: ColorFilter): ColorFi
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-ColorFilter-static createComposeColorFilter(outer: ColorFilter, inner: ColorFilter): ColorFilter--><!--Device-ColorFilter-static createComposeColorFilter(outer: ColorFilter, inner: ColorFilter): ColorFilter-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -170,20 +182,20 @@ static createComposeColorFilter(outer: ColorFilter, inner: ColorFilter): ColorFi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| outer | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 组合滤波器中后生效的颜色滤波器。 |
-| inner | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 组合滤波器中先生效的颜色滤波器。 |
+| outer | ColorFilter | 是 | 组合滤波器中后生效的颜色滤波器。 |
+| inner | ColorFilter | 是 | 组合滤波器中先生效的颜色滤波器。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回颜色滤波器。 |
+| ColorFilter | 返回创建的组合颜色滤波器。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt;2. Incorrect parameter types. |
 
 ## createComposeColorFilter
 
@@ -191,11 +203,13 @@ static createComposeColorFilter(outer: ColorFilter, inner: ColorFilter): ColorFi
 static createComposeColorFilter(outer: ColorFilter, inner: ColorFilter): ColorFilter | undefined
 ```
 
-Creates a ColorFilter object by combining another two color filters.
+创建一个先应用inner进行滤波，再应用outer进行滤波的组合颜色滤波器。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ColorFilter-static createComposeColorFilter(outer: ColorFilter, inner: ColorFilter): ColorFilter | undefined--><!--Device-ColorFilter-static createComposeColorFilter(outer: ColorFilter, inner: ColorFilter): ColorFilter | undefined-End-->
 
@@ -205,20 +219,20 @@ Creates a ColorFilter object by combining another two color filters.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| outer | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | Color filter that takes effect later in the new filter. |
-| inner | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | Color filter that takes effect first in the new filter. |
+| outer | ColorFilter | 是 | 组合滤波器中后生效的颜色滤波器。 |
+| inner | ColorFilter | 是 | 组合滤波器中先生效的颜色滤波器。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Colorfilter object. |
+| ColorFilter | 返回创建的组合颜色滤波器。创建失败时返回undefined。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt;2. Incorrect parameter types. |
 
 ## createLightingColorFilter
 
@@ -226,11 +240,13 @@ Creates a ColorFilter object by combining another two color filters.
 static createLightingColorFilter(mutColor: common2D.Color | number, addColor: common2D.Color | number): ColorFilter
 ```
 
-创建一个光照颜色滤波器，此滤波器会将RGB通道的颜色值乘以一种颜色值并加上另一种颜色值，计算结果会被限制在0到255范围内。
+创建一个光照颜色滤波器，此滤波器会将RGB通道的颜色值乘以乘法颜色（mutColor）并加上加法颜色（addColor），计算结果会被限制在0到255范围内。
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 <!--Device-ColorFilter-static createLightingColorFilter(mutColor: common2D.Color | number, addColor: common2D.Color | number): ColorFilter--><!--Device-ColorFilter-static createLightingColorFilter(mutColor: common2D.Color | number, addColor: common2D.Color | number): ColorFilter-End-->
 
@@ -240,14 +256,14 @@ static createLightingColorFilter(mutColor: common2D.Color | number, addColor: co
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mutColor | common2D.Color \| number | 是 | 用来进行乘法运算的颜色，ARGB格式的颜色，每个颜色通道是0到255之间的整数。为number类型时必须是16进制ARGB格式的无符号整数。 |
-| addColor | common2D.Color \| number | 是 | 用来进行加法运算的颜色，ARGB格式的颜色，每个颜色通道是0到255之间的整数。为number类型时必须是16进制ARGB格式的无符号整数。 |
+| mutColor | common2D.Color \| number | 是 | 用来进行乘法运算的颜色。为common2D.Color类型时，每个颜色通道的值是[0, 255]的整数；为number类型时，用16进 制ARGB格式的无符号整数表示，取值范围为[0, 0xFFFFFFFF]。 |
+| addColor | common2D.Color \| number | 是 | 用来进行加法运算的颜色。为common2D.Color类型时，每个颜色通道的值是[0, 255]的整数；为number类型时，用16进 制ARGB格式的无符号整数表示，取值范围为[0, 0xFFFFFFFF]。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回一个颜色滤波器。 |
+| ColorFilter | 返回创建的光照颜色滤波器。 |
 
 ## createLightingColorFilter
 
@@ -255,11 +271,13 @@ static createLightingColorFilter(mutColor: common2D.Color | number, addColor: co
 static createLightingColorFilter(mutColor: common2D.Color | int, addColor: common2D.Color | int): ColorFilter | undefined
 ```
 
-Makes a color filter with the given mutColor and addColor.
+创建一个光照颜色滤波器，此滤波器会将RGB通道的颜色值乘以乘法颜色（mutColor）并加上加法颜色（addColor），计算结果会被限制在0到255范围内。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 <!--Device-ColorFilter-static createLightingColorFilter(mutColor: common2D.Color | int, addColor: common2D.Color | int): ColorFilter | undefined--><!--Device-ColorFilter-static createLightingColorFilter(mutColor: common2D.Color | int, addColor: common2D.Color | int): ColorFilter | undefined-End-->
 
@@ -269,14 +287,14 @@ Makes a color filter with the given mutColor and addColor.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mutColor | common2D.Color \| int | 是 | The range of color channels must be [0, 255],used to multiply source color. |
-| addColor | common2D.Color \| int | 是 | The range of color channels must be [0, 255],used to add to source color. |
+| mutColor | common2D.Color \| int | 是 | 用来进行乘法运算的颜色。为common2D.Color类型时，每个颜色通道的值是[0, 255]的整数；为number类型时，用16进 制ARGB格式的无符号整数表示，取值范围为[0, 0xFFFFFFFF]。 |
+| addColor | common2D.Color \| int | 是 | 用来进行加法运算的颜色。为common2D.Color类型时，每个颜色通道的值是[0, 255]的整数；为number类型时，用16进 制ARGB格式的无符号整数表示，取值范围为[0, 0xFFFFFFFF]。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Colorfilter object. |
+| ColorFilter | 返回创建的光照颜色滤波器。创建失败时返回undefined。 |
 
 ## createLinearToSRGBGamma
 
@@ -290,6 +308,8 @@ static createLinearToSRGBGamma(): ColorFilter
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-ColorFilter-static createLinearToSRGBGamma(): ColorFilter--><!--Device-ColorFilter-static createLinearToSRGBGamma(): ColorFilter-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -298,7 +318,7 @@ static createLinearToSRGBGamma(): ColorFilter
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回颜色滤波器。 |
+| ColorFilter | 返回创建的颜色滤波器。 |
 
 ## createLinearToSRGBGamma
 
@@ -306,11 +326,13 @@ static createLinearToSRGBGamma(): ColorFilter
 static createLinearToSRGBGamma(): ColorFilter | undefined
 ```
 
-Creates a ColorFilter object that applies the sRGB gamma curve to the RGB channels.
+创建一个从线性颜色空间转换到SRGB颜色空间的颜色滤波器。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ColorFilter-static createLinearToSRGBGamma(): ColorFilter | undefined--><!--Device-ColorFilter-static createLinearToSRGBGamma(): ColorFilter | undefined-End-->
 
@@ -320,7 +342,7 @@ Creates a ColorFilter object that applies the sRGB gamma curve to the RGB channe
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Colorfilter object. |
+| ColorFilter | 返回创建的颜色滤波器。创建失败时返回undefined。 |
 
 ## createLumaColorFilter
 
@@ -328,11 +350,13 @@ Creates a ColorFilter object that applies the sRGB gamma curve to the RGB channe
 static createLumaColorFilter(): ColorFilter
 ```
 
-创建一个颜色滤波器将其输入的亮度值乘以透明度通道，并将红色、绿色和蓝色通道设置为零。
+创建一个颜色滤波器将其输入的亮度值乘以透明度通道的值，并将红色、绿色和蓝色通道设置为零。
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 <!--Device-ColorFilter-static createLumaColorFilter(): ColorFilter--><!--Device-ColorFilter-static createLumaColorFilter(): ColorFilter-End-->
 
@@ -342,7 +366,7 @@ static createLumaColorFilter(): ColorFilter
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回颜色滤波器。 |
+| ColorFilter | 返回创建的颜色滤波器。 |
 
 ## createLumaColorFilter
 
@@ -350,11 +374,13 @@ static createLumaColorFilter(): ColorFilter
 static createLumaColorFilter(): ColorFilter | undefined
 ```
 
-Creates a ColorFilter object that multiplies the luma into the alpha channel and sets the RGB channels to zero.
+创建一个颜色滤波器将其输入的亮度值乘以透明度通道的值，并将红色、绿色和蓝色通道设置为零。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ColorFilter-static createLumaColorFilter(): ColorFilter | undefined--><!--Device-ColorFilter-static createLumaColorFilter(): ColorFilter | undefined-End-->
 
@@ -364,7 +390,7 @@ Creates a ColorFilter object that multiplies the luma into the alpha channel and
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Colorfilter. |
+| ColorFilter | 返回创建的颜色滤波器。创建失败时返回undefined。 |
 
 ## createMatrixColorFilter
 
@@ -372,11 +398,13 @@ Creates a ColorFilter object that multiplies the luma into the alpha channel and
 static createMatrixColorFilter(matrix: Array<double>): ColorFilter
 ```
 
-创建颜色滤波器，通过4x5颜色矩阵变换颜色。
+创建颜色滤波器，通过4×5颜色矩阵变换颜色。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-ColorFilter-static createMatrixColorFilter(matrix: Array<double>): ColorFilter--><!--Device-ColorFilter-static createMatrixColorFilter(matrix: Array<double>): ColorFilter-End-->
 
@@ -386,19 +414,19 @@ static createMatrixColorFilter(matrix: Array<double>): ColorFilter
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| matrix | Array&lt;double&gt; | 是 | 长度为20的数组，表示用于颜色变换的4*5矩阵。 |
+| matrix | Array&lt;double&gt; | 是 | 长度为20的数组，表示用于颜色变换的4×5矩阵。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回颜色滤波器。 |
+| ColorFilter | 返回创建的颜色滤波器。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## createMatrixColorFilter
 
@@ -406,11 +434,13 @@ static createMatrixColorFilter(matrix: Array<double>): ColorFilter
 static createMatrixColorFilter(matrix: Array<double>): ColorFilter | undefined
 ```
 
-Creates a color filter object with a 4*5 color matrix.
+创建颜色滤波器，通过4×5颜色矩阵变换颜色。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ColorFilter-static createMatrixColorFilter(matrix: Array<double>): ColorFilter | undefined--><!--Device-ColorFilter-static createMatrixColorFilter(matrix: Array<double>): ColorFilter | undefined-End-->
 
@@ -420,19 +450,19 @@ Creates a color filter object with a 4*5 color matrix.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| matrix | Array&lt;double&gt; | 是 | An array of 20 numbers, indicating the 4*5 matrix. |
+| matrix | Array&lt;double&gt; | 是 | 长度为20的数组，表示用于颜色变换的4×5矩阵。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Colorfilter object. |
+| ColorFilter | 返回创建的颜色滤波器。创建失败时返回undefined。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## createSRGBGammaToLinear
 
@@ -446,6 +476,8 @@ static createSRGBGammaToLinear(): ColorFilter
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-ColorFilter-static createSRGBGammaToLinear(): ColorFilter--><!--Device-ColorFilter-static createSRGBGammaToLinear(): ColorFilter-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -454,7 +486,7 @@ static createSRGBGammaToLinear(): ColorFilter
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回颜色滤波器。 |
+| ColorFilter | 返回创建的颜色滤波器。 |
 
 ## createSRGBGammaToLinear
 
@@ -462,11 +494,13 @@ static createSRGBGammaToLinear(): ColorFilter
 static createSRGBGammaToLinear(): ColorFilter | undefined
 ```
 
-Creates a ColorFilter object that applies the RGB channels to the sRGB gamma curve.
+创建一个从SRGB颜色空间转换到线性颜色空间的颜色滤波器。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ColorFilter-static createSRGBGammaToLinear(): ColorFilter | undefined--><!--Device-ColorFilter-static createSRGBGammaToLinear(): ColorFilter | undefined-End-->
 
@@ -476,5 +510,5 @@ Creates a ColorFilter object that applies the RGB channels to the sRGB gamma cur
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | Colorfilter object. |
+| ColorFilter | 返回创建的颜色滤波器。创建失败时返回undefined。 |
 

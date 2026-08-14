@@ -2,9 +2,11 @@
 
 表示认证状态信息。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-osAccount-interface AuthStatusInfo--><!--Device-osAccount-interface AuthStatusInfo-End-->
 
@@ -22,9 +24,11 @@ freezingTime: int
 
 **类型：** int
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AuthStatusInfo-freezingTime: int--><!--Device-AuthStatusInfo-freezingTime: int-End-->
 
@@ -42,9 +46,11 @@ remainTimes: int
 
 **类型：** int
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AuthStatusInfo-remainTimes: int--><!--Device-AuthStatusInfo-remainTimes: int-End-->
 

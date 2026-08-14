@@ -8,9 +8,11 @@ function setPowerMode(mode: DevicePowerMode, callback: AsyncCallback<void>): voi
 
 设置当前设备的电源模式。使用callback异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.POWER_OPTIMIZATION
 
@@ -24,19 +26,19 @@ function setPowerMode(mode: DevicePowerMode, callback: AsyncCallback<void>): voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 电源模式；该参数类型是一个枚举类。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数。当设置电源模式成功，err为undefined，否则为错误对象。 |
+| mode | [DevicePowerMode](arkts-basicservices-power-devicepowermode-e.md) | 是 | 电源模式；该参数类型是一个枚举类。 |
+| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当设置电源模式成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Parameter verification failed. |
+| [4900301](../../apis-basic-services-kit/errorcode-power.md#4900301-电源模式设置失败) | Setting the power mode failed.<br>**适用版本：** 23+ |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Parameter verification failed. |
-| [4900301](../../apis-basic-services-kit/errorcode-power.md#4900301-电源模式设置失败) | Setting the power mode failed.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 23+ |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -71,9 +73,11 @@ function setPowerMode(mode: DevicePowerMode): Promise<void>
 
 设置当前设备的电源模式。使用Promise异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.POWER_OPTIMIZATION
 
@@ -87,7 +91,7 @@ function setPowerMode(mode: DevicePowerMode): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 电源模式；该参数类型是一个枚举类。 |
+| mode | [DevicePowerMode](arkts-basicservices-power-devicepowermode-e.md) | 是 | 电源模式；该参数类型是一个枚举类。 |
 
 **返回值：**
 
@@ -99,12 +103,12 @@ function setPowerMode(mode: DevicePowerMode): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Parameter verification failed. |
+| [4900301](../../apis-basic-services-kit/errorcode-power.md#4900301-电源模式设置失败) | Setting the power mode failed.<br>**适用版本：** 23+ |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Parameter verification failed. |
-| [4900301](../../apis-basic-services-kit/errorcode-power.md#4900301-电源模式设置失败) | Setting the power mode failed.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 23+ |
 
-**示例：**
+## 示例
 
 ```TypeScript
 power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE)

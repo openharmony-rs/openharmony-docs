@@ -4,7 +4,9 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-export declare interface EditableSaveButtonV2Options--><!--Device-unnamed-export declare interface EditableSaveButtonV2Options-End-->
 
@@ -24,9 +26,13 @@ defaultFocus?: boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-EditableSaveButtonV2Options-defaultFocus?: boolean--><!--Device-EditableSaveButtonV2Options-defaultFocus?: boolean-End-->
 
@@ -46,9 +52,13 @@ isRequired?: boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-EditableSaveButtonV2Options-isRequired?: boolean--><!--Device-EditableSaveButtonV2Options-isRequired?: boolean-End-->
 
@@ -62,13 +72,17 @@ onAction?: OnActionCallback
 
 点击保存按钮的回调函数。未设置时点击按钮无响应。
 
-**类型：** OnActionCallback
+**类型：** [OnActionCallback](arkts-arkui-onactioncallback-t.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-EditableSaveButtonV2Options-onAction?: OnActionCallback--><!--Device-EditableSaveButtonV2Options-onAction?: OnActionCallback-End-->
 

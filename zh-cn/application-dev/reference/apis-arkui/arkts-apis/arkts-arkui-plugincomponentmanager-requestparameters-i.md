@@ -2,11 +2,13 @@
 
 使用pluginComponentManager.request方法时需要传递的参数。
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
-<!--Device-pluginComponentManager-export interface RequestParameters--><!--Device-pluginComponentManager-export interface RequestParameters-End-->
+**废弃版本：** -1
+
+<!--Device-pluginComponentManager-interface RequestParameters--><!--Device-pluginComponentManager-interface RequestParameters-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,13 +20,15 @@ data: KVObject
 
 组件数据，以键值对形式存储，用于传递给组件提供方的业务数据，键和值类型由业务定义。
 
-**类型：** KVObject
+**类型：** [KVObject](../../apis-na/arkts-apis/arkts-na-plugincomponentmanager-kvobject-t.md)
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RequestParameters-data: KVObject--><!--Device-RequestParameters-data: KVObject-End-->
 
@@ -40,11 +44,13 @@ jsonPath?: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RequestParameters-jsonPath?: string--><!--Device-RequestParameters-jsonPath?: string-End-->
 
@@ -60,11 +66,13 @@ name: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RequestParameters-name: string--><!--Device-RequestParameters-name: string-End-->
 
@@ -78,13 +86,15 @@ want: Want
 
 组件提供方Ability信息。
 
-**类型：** Want
+**类型：** [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md)
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RequestParameters-want: Want--><!--Device-RequestParameters-want: Want-End-->
 

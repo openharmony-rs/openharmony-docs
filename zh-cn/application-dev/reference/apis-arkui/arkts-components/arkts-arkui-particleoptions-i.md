@@ -6,7 +6,9 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
-<!--Device-unnamed-interface ParticleOptions<  PARTICLE extends ParticleType,  COLOR_UPDATER extends ParticleUpdater,  OPACITY_UPDATER extends ParticleUpdater,  SCALE_UPDATER extends ParticleUpdater,  ACC_SPEED_UPDATER extends ParticleUpdater,  ACC_ANGLE_UPDATER extends ParticleUpdater,  SPIN_UPDATER extends ParticleUpdater>--><!--Device-unnamed-interface ParticleOptions<  PARTICLE extends ParticleType,  COLOR_UPDATER extends ParticleUpdater,  OPACITY_UPDATER extends ParticleUpdater,  SCALE_UPDATER extends ParticleUpdater,  ACC_SPEED_UPDATER extends ParticleUpdater,  ACC_ANGLE_UPDATER extends ParticleUpdater,  SPIN_UPDATER extends ParticleUpdater>-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-interface ParticleOptions--><!--Device-unnamed-interface ParticleOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,15 +18,17 @@
 acceleration?: AccelerationOptions<ACC_SPEED_UPDATER, ACC_ANGLE_UPDATER>
 ```
 
-粒子加速度配置。 **说明**： speed表示加速度大小，angle表示加速度方向（单位为角度）。 默认值：{ speed:{range:[0.0,0.0]},angle:{range:[0.0,0.0]} }
+粒子加速度配置。 **说明：** speed表示加速度大小，angle表示加速度方向（单位为角度）。 默认值：{ speed:{range:[0.0,0.0]},angle:{range:[0.0,0.0]} }
 
-**类型：** AccelerationOptions&lt;ACC\_SPEED\_UPDATER, ACC\_ANGLE\_UPDATER&gt;
+**类型：** [AccelerationOptions](arkts-arkui-accelerationoptions-i.md)&lt;ACC_SPEED_UPDATER, ACC_ANGLE_UPDATER&gt;
 
 **默认值：** {speed:{range:[0,0]};angle:{range:[0,0]}}
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,15 +44,17 @@ acceleration?: AccelerationOptions<ACC_SPEED_UPDATER, ACC_ANGLE_UPDATER>
 color?: ParticleColorPropertyOptions<COLOR_UPDATER>
 ```
 
-粒子颜色配置。 **说明**： 默认值：{ range:[Color.White,Color.White] } 。图片粒子不支持设置颜色。
+粒子颜色配置。 **说明：** 默认值：{ range:[Color.White,Color.White] } 。图片粒子不支持设置颜色。
 
-**类型：** ParticleColorPropertyOptions&lt;COLOR\_UPDATER&gt;
+**类型：** [ParticleColorPropertyOptions](arkts-arkui-particlecolorpropertyoptions-i.md)&lt;COLOR_UPDATER&gt;
 
 **默认值：** {range:['#FFFFFF','#FFFFFF']}
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -66,11 +72,13 @@ emitter: EmitterOptions<PARTICLE>
 
 粒子发射器配置。
 
-**类型：** EmitterOptions&lt;PARTICLE&gt;
+**类型：** [EmitterOptions](arkts-arkui-emitteroptions-i.md)&lt;PARTICLE&gt;
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -88,13 +96,15 @@ opacity?: ParticlePropertyOptions<number, OPACITY_UPDATER>
 
 粒子透明度配置。 默认值：{ range:[1.0,1.0] }
 
-**类型：** ParticlePropertyOptions&lt;number, OPACITY\_UPDATER&gt;
+**类型：** [ParticlePropertyOptions](arkts-arkui-particlepropertyoptions-i.md)&lt;number, OPACITY_UPDATER&gt;
 
 **默认值：** {range:[1.0,1.0]}
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -112,13 +122,15 @@ scale?: ParticlePropertyOptions<number, SCALE_UPDATER>
 
 粒子大小配置。 默认值：{ range:[1.0,1.0] }
 
-**类型：** ParticlePropertyOptions&lt;number, SCALE\_UPDATER&gt;
+**类型：** [ParticlePropertyOptions](arkts-arkui-particlepropertyoptions-i.md)&lt;number, SCALE_UPDATER&gt;
 
 **默认值：** {range:[1.0,1.0]}
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -136,13 +148,15 @@ spin?: ParticlePropertyOptions<number, SPIN_UPDATER>
 
 粒子自旋角度配置。 默认值：{range:[0.0,0.0]} 方向：正数表示顺时针旋转，负数表示逆时针旋转。
 
-**类型：** ParticlePropertyOptions&lt;number, SPIN\_UPDATER&gt;
+**类型：** [ParticlePropertyOptions](arkts-arkui-particlepropertyoptions-i.md)&lt;number, SPIN_UPDATER&gt;
 
 **默认值：** {range:[0,0]}
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -158,15 +172,17 @@ spin?: ParticlePropertyOptions<number, SPIN_UPDATER>
 velocity?: VelocityOptions
 ```
 
-粒子速度配置。 **说明**： speed表示速度大小。angle表示速度的方向（单位为角度），以元素几何中心为坐标原点，水平方向为X轴，正数表示顺时针方向旋转角度。 默认值：{ speed:[0.0,0.0],angle:[0.0,0.0] }
+粒子速度配置。 **说明：** speed表示速度大小。angle表示速度的方向（单位为角度），以元素几何中心为坐标原点，水平方向为X轴，正数表示顺时针方向旋转角度。 默认值：{ speed:[0.0,0.0],angle:[0.0,0.0] }
 
-**类型：** VelocityOptions
+**类型：** [VelocityOptions](arkts-arkui-velocityoptions-i.md)
 
 **默认值：** {speed:[0,0];angle:[0,0]}
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

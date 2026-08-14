@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-router-interface NamedRouterOptions--><!--Device-router-interface NamedRouterOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -23,6 +25,8 @@ name: string
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,6 +50,8 @@ params?: Object
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -60,13 +66,15 @@ params?: Object
 recoverable?: boolean
 ```
 
-表示对应的页面是否可恢复，默认为true。当为true时，表示可恢复，当为false时，表示不可恢复。 **说明：** 当应用退到后台，并且在未来的某个时间点，由于系统资源限制等原因被系统杀死，如果某个页面被设置成可恢复，那么该应用再次被拉到前台后系统可以恢复出页面，详细说明请参考 \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+表示对应的页面是否可恢复，默认为true。当为true时，表示可恢复，当为false时，表示不可恢复。 **说明：** 当应用退到后台，并且在未来的某个时间点，由于系统资源限制等原因被系统杀死，如果某个页面被设置成可恢复，那么该应用再次被拉到前台后系统可以恢复出页面，详细说明请参考 [UIAbility备份恢复](../../../application-models/ability-recover-guideline.md)。
 
 **类型：** boolean
 
 **起始版本：** 14
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+
+**废弃版本：** -1
 
 <!--Device-NamedRouterOptions-recoverable?: boolean--><!--Device-NamedRouterOptions-recoverable?: boolean-End-->
 

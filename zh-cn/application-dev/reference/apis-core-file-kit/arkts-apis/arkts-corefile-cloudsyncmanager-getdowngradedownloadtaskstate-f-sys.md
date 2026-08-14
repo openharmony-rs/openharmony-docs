@@ -10,7 +10,9 @@ function getDowngradeDownloadTaskState(bundleNames: Array<string>): Promise<Arra
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.CLOUDFILE_SYNC_MANAGER
 
@@ -32,18 +34,18 @@ function getDowngradeDownloadTaskState(bundleNames: Array<string>): Promise<Arra
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;DownloadProgress&gt;&gt; | - Promise对象，返回查询的全量下载任务的状态信息数组。 |
+| Promise&lt;Array&lt;DownloadProgress&gt;&gt; | Promise对象，返回查询的全量下载任务的状态信息数组。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| 13900020 | Invalid argument. Possible causes: &lt;br&gt;1.Mandatory parameter are left unspecified. 2.The length of the input parameter exceeds the upper limit. &lt;br&gt;3.The input parameter contains an invalid bundleName. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
 | 13900010 | Try again. |
-| 13900020 | Invalid argument. Possible causes:\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_1.Mandatory parameter are left unspecified. 2.The length of the input parameter exceeds the upper limit.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_3.The input parameter contains an invalid bundleName. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

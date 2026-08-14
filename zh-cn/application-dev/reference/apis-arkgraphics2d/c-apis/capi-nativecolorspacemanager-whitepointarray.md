@@ -20,6 +20,6 @@ typedef struct WhitePointArray {...} WhitePointArray
 
 | 名称 | 描述 |
 | -- | -- |
-| float arr[2] | 表示白点坐标数组。 |
+| float arr[2] | Indicates white point return array |
 
 

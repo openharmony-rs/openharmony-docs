@@ -1,10 +1,12 @@
 # FontCollection
 
-字体集。
+字体集，用于管理文本排版所需的字体资源。FontCollection为[ParagraphBuilder](arkts-arkgraphics2d-text-paragraphbuilder-c.md#ParagraphBuilder)提供字体匹配和字形查找能力，是文本排版管线的基础组件。提供全局实例 （[getGlobalInstance](#getGlobalInstance)）和本地实例（ [getLocalInstance](#getLocalInstance)），全局实例加载的字体在应用内共享，适用于普通应用场景；本地实例各实例独立，加载的字体仅对当前实例生效、实 例间互不影响，推荐卡片场景使用。支持通过[loadFontSync](#loadFontSync)或 [loadFont](#loadFont)加载自定义字体。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-text-class FontCollection--><!--Device-text-class FontCollection-End-->
 
@@ -16,11 +18,13 @@
 clearCaches(): void
 ```
 
-清理字体排版缓存（字体排版缓存本身设有内存上限和清理机制，所占内存有限，如无内存要求，不建议清理）。
+清理字体排版缓存。字体排版缓存本身设有内存上限和自动清理机制，所占内存有限。如无特殊内存要求，不建议清理。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -30,7 +34,7 @@ clearCaches(): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -77,9 +81,11 @@ static getGlobalInstance(): FontCollection
 
 获取应用全局FontCollection实例。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -91,9 +97,9 @@ static getGlobalInstance(): FontCollection
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | FontCollection对象。 |
+| [FontCollection](arkts-arkgraphics2d-text-fontcollection-c.md) | 应用全局FontCollection实例对象，可用于管理字体加载、卸载和排版等操作。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -150,13 +156,15 @@ static getLocalInstance(): FontCollection
 
 获取本地FontCollection实例，推荐卡片场景使用。
 
-**起始版本：** 22
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为22；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
 
-**卡片能力：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+
+**卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-FontCollection-static getLocalInstance(): FontCollection--><!--Device-FontCollection-static getLocalInstance(): FontCollection-End-->
 
@@ -166,9 +174,9 @@ static getLocalInstance(): FontCollection
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | FontCollection对象。 |
+| [FontCollection](arkts-arkgraphics2d-text-fontcollection-c.md) | 本地FontCollection实例对象，推荐卡片场景使用，可用于管理字体加载、卸载和排版等操作。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { text } from '@kit.ArkGraphics2D'
@@ -181,11 +189,13 @@ let fontCollection = text.FontCollection.getLocalInstance();
 loadFont(name: string, path: string | Resource): Promise<void>
 ```
 
-加载自定义字体。使用Promise异步回调。其中参数name对应的值需要在[TextStyle]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_中的fontFamilies属性配置，才能显示自定义字体效果，支持的字体文件格式包含： ttf、otf。
+加载自定义字体。使用Promise异步回调。其中参数name对应的值需要在[TextStyle](arkts-arkgraphics2d-text-textstyle-i.md#TextStyle)中的fontFamilies属性配置，才能显示自定义字体效果，支持的字体文件格式包含： ttf、otf。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -200,21 +210,21 @@ loadFont(name: string, path: string | Resource): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 加载字体后，调用该字体所使用的别名，可填写任意字符串，可使用该别名指定并使用该字体。 |
-| path | string \| Resource | 是 | 需要加载的字体文件的路径，支持两种格式： "file:// + 字体文件绝对路径" 或 "rawfile/目录or文件名"。 |
+| path | string \| [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md) | 是 | 需要加载的字体文件的路径，支持两种格式： "file:// + 字体文件绝对路径" 或 "rawfile/目录or文件名"。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -229,8 +239,8 @@ struct RenderTest {
   async loadFontPromise() {
     fontCollection.loadFont('testName', 'file:///system/fonts/a.ttf').then((data) => {
       console.info(`Succeeded in doing loadFont ${JSON.stringify(data)} `);
-    }).catch((error: Error) => {
-      console.error(`Failed to do loadFont, error: ${JSON.stringify(error)} message: ${error.message}`);
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to do loadFont, error: ${error.code} message: ${error.message}`);
     });
   }
 
@@ -277,11 +287,13 @@ struct RenderTest {
 loadFontSync(name: string, path: string | Resource): void
 ```
 
-同步接口，加载自定义字体。其中参数name对应的值需要在[TextStyle]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_中的fontFamilies属性配置，才能显示自定义字体效果。支持的字体文件格式包含：ttf、otf。
+同步接口，加载自定义字体。其中参数name对应的值需要在[TextStyle](arkts-arkgraphics2d-text-textstyle-i.md#TextStyle)中的fontFamilies属性配置，才能显示自定义字体效果。支持的字体文件格式包含：ttf、otf。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -296,9 +308,9 @@ loadFontSync(name: string, path: string | Resource): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 加载字体后，调用该字体所使用的名称。 |
-| path | string \| Resource | 是 | 需要导入的字体文件的路径，应为 "file:// + 字体文件绝对路径" 或 "rawfile/目录or文件名"。 |
+| path | string \| [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md) | 是 | 需要导入的字体文件的路径，应为 "file:// + 字体文件绝对路径" 或 "rawfile/目录or文件名"。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -375,21 +387,17 @@ struct RenderTest {
 
 ## loadFontSyncWithCheck
 
-ArkTS-Dyn:
-```TypeScript
-loadFontSyncWithCheck(name: string, path: string | Resource, index?: number): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 loadFontSyncWithCheck(name: string, path: string | Resource, index?: int): void
 ```
 
-同步接口，加载自定义字体。其中参数name对应的值需要在[TextStyle]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_中的fontFamilies属性配置，才能显示自定义字体效果。支持的字体文件格式包含：ttf、otf、 ttc。
+同步接口，加载自定义字体。其中参数name对应的值需要在[TextStyle](arkts-arkgraphics2d-text-textstyle-i.md#TextStyle)中的fontFamilies属性配置，才能显示自定义字体效果。支持的字体文件格式包含：ttf、otf、 ttc。
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -404,23 +412,23 @@ loadFontSyncWithCheck(name: string, path: string | Resource, index?: int): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 加载字体成功后，该字体对应的名称，可填写任意字符串，可使用该名称指定并使用该字体。 |
-| path | string \| Resource | 是 | 需要加载的字体文件的路径，支持两种格式： "file:// + 字体文件绝对路径" 或 \_\_\_ESCAPED\_DOLLAR\_\_\_rawfile("字体文件路径")。 |
-| index | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 字体文件格式为ttc时，指定加载的字体索引。默认为0：表示加载ttc的第一个字体。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_非ttc格式文件索引值无意义，若指定索引，只能为0。 |
+| path | string \| [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md) | 是 | 需要加载的字体文件的路径，支持两种格式： "file:// + 字体文件绝对路径" 或 \\$rawfile('字体文件路径')。 |
+| index | int | 否 | 字体文件格式为ttc时，指定加载的字体索引。默认为0：表示加载ttc的第一个字体。 &lt;br&gt;非ttc格式文件索引值无意义，若指定索引，只能为0。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [25900001](../errorcode-drawing.md#25900001-参数值异常) | Parameter error. |
-| [25900002](../errorcode-drawing.md#25900002-文件未找到) | File not found. |
-| [25900003](../errorcode-drawing.md#25900003-打开文件失败) | Failed to open the file. |
-| [25900004](../errorcode-drawing.md#25900004-文件定位失败) | File seek failed. |
-| [25900005](../errorcode-drawing.md#25900005-获取文件大小失败) | Failed to get the file size. |
-| [25900006](../errorcode-drawing.md#25900006-读取文件失败) | Failed to read the file. |
-| [25900007](../errorcode-drawing.md#25900007-文件为空) | Empty file. |
 | [25900008](../errorcode-drawing.md#25900008-文件损坏) | Corrupted file. |
+| [25900003](../errorcode-drawing.md#25900003-打开文件失败) | Failed to open the file. |
+| [25900002](../errorcode-drawing.md#25900002-文件未找到) | File not found. |
+| [25900001](../errorcode-drawing.md#25900001-参数值异常) | Parameter error. |
+| [25900007](../errorcode-drawing.md#25900007-文件为空) | Empty file. |
+| [25900006](../errorcode-drawing.md#25900006-读取文件失败) | Failed to read the file. |
+| [25900005](../errorcode-drawing.md#25900005-获取文件大小失败) | Failed to get the file size. |
+| [25900004](../errorcode-drawing.md#25900004-文件定位失败) | File seek failed. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -449,8 +457,9 @@ struct Index {
           fc.loadFontSyncWithCheck(this.fontFamily, 'file:///system/fonts/NotoSansCJK-Regular.ttc', 1);
           try {
             fc.loadFontSyncWithCheck(this.fontFamily, '/system/fonts/NotoSansCJK-Regular.ttc', 1);
-          } catch (e) {
-            console.error(`Failed to do loadFontWithCheck, error: ${JSON.stringify(e)} message: ${e.message}`);
+          } catch (error) {
+            let err: BusinessError = error as BusinessError;
+            console.error(`Failed to do loadFontWithCheck, error: ${err.code} message: ${err.message}`);
           }
         })
     }
@@ -503,21 +512,17 @@ struct Index {
 
 ## loadFontWithCheck
 
-ArkTS-Dyn:
-```TypeScript
-loadFontWithCheck(name: string, path: string | Resource, index?: number): Promise<void>
-```
-
-ArkTS-Sta:
 ```TypeScript
 loadFontWithCheck(name: string, path: string | Resource, index?: int): Promise<void>
 ```
 
-加载自定义字体，使用Promise异步回调。其中参数name对应的值需要在[TextStyle]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_中的fontFamilies属性配置，才能显示自定义字体效果，支持的字体文件格式包含： ttf、otf、ttc。
+加载自定义字体，使用Promise异步回调。其中参数name对应的值需要在[TextStyle](arkts-arkgraphics2d-text-textstyle-i.md#TextStyle)中的fontFamilies属性配置，才能显示自定义字体效果，支持的字体文件格式包含： ttf、otf、ttc。
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -532,8 +537,8 @@ loadFontWithCheck(name: string, path: string | Resource, index?: int): Promise<v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 加载字体成功后，该字体对应的名称，可填写任意字符串，可使用该名称指定并使用该字体。 |
-| path | string \| Resource | 是 | 需要加载的字体文件的路径，支持两种格式： "file:// + 字体文件绝对路径" 或 \_\_\_ESCAPED\_DOLLAR\_\_\_rawfile("字体文件路径")。 |
-| index | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 字体文件格式为ttc时，指定加载的字体索引。默认为0：表示加载ttc的第一个字体。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_非ttc格式文件索引值无意义，若指定索引，只能为0。 |
+| path | string \| [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md) | 是 | 需要加载的字体文件的路径，支持两种格式： "file:// + 字体文件绝对路径" 或 \\$rawfile('字体文件路径')。 |
+| index | int | 否 | 字体文件格式为ttc时，指定加载的字体索引。默认为0：表示加载ttc的第一个字体。 &lt;br&gt;非ttc格式文件索引值无意义，若指定索引，只能为0。 |
 
 **返回值：**
 
@@ -545,16 +550,16 @@ loadFontWithCheck(name: string, path: string | Resource, index?: int): Promise<v
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [25900001](../errorcode-drawing.md#25900001-参数值异常) | Parameter error. |
-| [25900002](../errorcode-drawing.md#25900002-文件未找到) | File not found. |
-| [25900003](../errorcode-drawing.md#25900003-打开文件失败) | Failed to open the file. |
-| [25900004](../errorcode-drawing.md#25900004-文件定位失败) | File seek failed. |
-| [25900005](../errorcode-drawing.md#25900005-获取文件大小失败) | Failed to get the file size. |
-| [25900006](../errorcode-drawing.md#25900006-读取文件失败) | Failed to read the file. |
-| [25900007](../errorcode-drawing.md#25900007-文件为空) | Empty file. |
 | [25900008](../errorcode-drawing.md#25900008-文件损坏) | Corrupted file. |
+| [25900003](../errorcode-drawing.md#25900003-打开文件失败) | Failed to open the file. |
+| [25900002](../errorcode-drawing.md#25900002-文件未找到) | File not found. |
+| [25900001](../errorcode-drawing.md#25900001-参数值异常) | Parameter error. |
+| [25900007](../errorcode-drawing.md#25900007-文件为空) | Empty file. |
+| [25900006](../errorcode-drawing.md#25900006-读取文件失败) | Failed to read the file. |
+| [25900005](../errorcode-drawing.md#25900005-获取文件大小失败) | Failed to get the file size. |
+| [25900004](../errorcode-drawing.md#25900004-文件定位失败) | File seek failed. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -582,13 +587,13 @@ struct Index {
         .onClick(() => {
           fc.loadFontWithCheck(this.fontFamily, 'file:///system/fonts/NotoSansCJK-Regular.ttc', 1).then((data) => {
             console.info(`Succeeded in doing loadFontWithCheck ${JSON.stringify(data)} `);
-          }).catch((error: Error) => {
-            console.error(`Failed to do loadFontWithCheck, error: ${JSON.stringify(error)} message: ${error.message}`);
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to do loadFontWithCheck, error: ${error.code} message: ${error.message}`);
           });
           fc.loadFontWithCheck(this.fontFamily, '/system/fonts/NotoSansCJK-Regular.ttc', 1).then((data) => {
             console.info(`Succeeded in doing loadFontWithCheck ${JSON.stringify(data)} `);
-          }).catch((error: Error) => {
-            console.error(`Failed to do loadFontWithCheck, error: ${JSON.stringify(error)} message: ${error.message}`);
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to do loadFontWithCheck, error: ${error.code} message: ${error.message}`);
           });
         })
     }
@@ -653,7 +658,9 @@ setParagraphCachesEnabled(enable: boolean): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -669,7 +676,7 @@ setParagraphCachesEnabled(enable: boolean): void
 | --- | --- | --- | --- |
 | enable | boolean | 是 | 是否启用排版段落缓存。true表示启用，false表示禁用。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -716,9 +723,11 @@ unloadFont(name: string): Promise<void>
 
 卸载指定的自定义字体。使用Promise异步回调。 使用此接口卸载字体别名所对应的自定义字体后，对应的自定义字体将不再可用。 所有使用该字体别名的排版对象都应该被销毁重建。 - 卸载不存在的字体别名不会产生任何效果且不会抛出错误。 - 此操作仅影响后续字体使用。 - 卸载正在使用的字体可能导致文本渲染异常（如乱码或字形缺失）。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -738,9 +747,9 @@ unloadFont(name: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -820,9 +829,11 @@ unloadFontSync(name: string): void
 
 卸载指定的自定义字体，此接口为同步接口。 使用此接口卸载字体别名所对应的自定义字体后，对应的自定义字体将不再可用。 所有使用该字体别名的排版对象都应该被销毁重建。 - 卸载不存在的字体别名不会产生任何效果且不会抛出错误。 - 此操作仅影响后续字体使用。 - 卸载正在使用的字体可能导致文本渲染异常（如乱码或字形缺失）。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -838,7 +849,7 @@ unloadFontSync(name: string): void
 | --- | --- | --- | --- |
 | name | string | 是 | 需要取消注册的字体别名，与加载字体时使用的别名相同。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

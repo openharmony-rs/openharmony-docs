@@ -8,9 +8,11 @@ function createBrightnessBlender(param: BrightnessBlenderParam): BrightnessBlend
 
 创建BrightnessBlender实例用于给组件添加提亮效果。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **卡片能力：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
 
@@ -24,15 +26,15 @@ function createBrightnessBlender(param: BrightnessBlenderParam): BrightnessBlend
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| param | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 实现提亮效果的参数。 |
+| param | [BrightnessBlenderParam](arkts-arkgraphics2d-graphics-uieffect-brightnessblenderparam-i-sys.md) | 是 | 实现提亮效果的参数，包含灰度调整系数、饱和度、混合比例等配置项。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回设置了提亮效果参数的BrightnessBlender。 |
+| [BrightnessBlender](arkts-arkgraphics2d-uieffect-brightnessblender-i-sys.md) | 返回提亮效果的BrightnessBlender混合器。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

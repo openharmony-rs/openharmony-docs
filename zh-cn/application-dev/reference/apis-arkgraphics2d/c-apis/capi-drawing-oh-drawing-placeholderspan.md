@@ -6,7 +6,7 @@ typedef struct OH_Drawing_PlaceholderSpan {...} OH_Drawing_PlaceholderSpan
 
 ## 概述
 
-This struct describes the placeholder that acts as a span.
+用于描述占位符跨度的结构体。
 
 **起始版本：** 11
 
@@ -20,10 +20,10 @@ This struct describes the placeholder that acts as a span.
 
 | 名称 | 描述 |
 | -- | -- |
-| double width | Width of a placeholder. |
-| double height | Height of a placeholder. |
-| [OH_Drawing_PlaceholderVerticalAlignment](capi-drawing-text-typography-h.md#oh_drawing_placeholderverticalalignment) alignment | Alignment mode of a placeholder. |
-| [OH_Drawing_TextBaseline](capi-drawing-text-typography-h.md#oh_drawing_textbaseline) baseline | Baseline of a placeholder. |
-| double baselineOffset | Baseline offset of a placeholder. |
+| double width | 占位符宽度。 |
+| double height | 占位符高度。 |
+| [OH_Drawing_PlaceholderVerticalAlignment](capi-drawing-text-typography-h.md#oh_drawing_placeholderverticalalignment) alignment | 占位符对齐方式。 |
+| [OH_Drawing_TextBaseline](capi-drawing-text-typography-h.md#oh_drawing_textbaseline) baseline | 占位符基线。 |
+| double baselineOffset | 占位符基线偏移。 |
 
 

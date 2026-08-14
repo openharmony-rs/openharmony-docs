@@ -6,7 +6,7 @@
 function createVideoPlayer(callback: AsyncCallback<VideoPlayer>): void
 ```
 
-异步方式创建视频播放实例，使用callback异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用 > [createAVPlayer]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。
+异步方式创建视频播放实例，使用callback异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用 > [createAVPlayer](arkts-media-media-createavplayer-f.md#createAVPlayer)替代。
 
 **起始版本：** 8
 
@@ -14,7 +14,7 @@ function createVideoPlayer(callback: AsyncCallback<VideoPlayer>): void
 
 **废弃版本：** 9
 
-**替代接口：** [media.createAVPlayer](arkts-media-media-createavplayer-f.md#createavplayer)(callback:
+**替代接口：** [createAVPlayer](arkts-media-media-createavplayer-f.md#createAVPlayer)(callback: AsyncCallback&lt;AVPlayer&gt;)
 
 <!--Device-media-function createVideoPlayer(callback: AsyncCallback<VideoPlayer>): void--><!--Device-media-function createVideoPlayer(callback: AsyncCallback<VideoPlayer>): void-End-->
 
@@ -24,9 +24,9 @@ function createVideoPlayer(callback: AsyncCallback<VideoPlayer>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;VideoPlayer&gt; | 是 | 回调函数。创建VideoPlayer实例成功时，err为undefined，data为获取到的VideoPlayer实例，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[VideoPlayer](arkts-media-multimedia-media-videoplayer-i.md)&gt; | 是 | 回调函数。创建VideoPlayer实例成功时，err为undefined，data为获取到的VideoPlayer实例，否则为错误 对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -49,7 +49,7 @@ media.createVideoPlayer((error: BusinessError, video: media.VideoPlayer) => {
 function createVideoPlayer(): Promise<VideoPlayer>
 ```
 
-异步方式创建视频播放实例，通过Promise获取返回值。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[createAVPlayer]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。
+异步方式创建视频播放实例，通过Promise获取返回值。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[createAVPlayer](arkts-media-media-createavplayer-f.md#createAVPlayer)替代。
 
 **起始版本：** 8
 
@@ -57,7 +57,7 @@ function createVideoPlayer(): Promise<VideoPlayer>
 
 **废弃版本：** 9
 
-**替代接口：** [media.createAVPlayer](arkts-media-media-createavplayer-f.md#createavplayer)()
+**替代接口：** [createAVPlayer](arkts-media-media-createavplayer-f.md#createAVPlayer)()
 
 <!--Device-media-function createVideoPlayer(): Promise<VideoPlayer>--><!--Device-media-function createVideoPlayer(): Promise<VideoPlayer>-End-->
 
@@ -67,9 +67,9 @@ function createVideoPlayer(): Promise<VideoPlayer>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;VideoPlayer&gt; | Promise对象。异步返回VideoPlayer实例，失败时返回null。可用于管理和播放视频媒体。 |
+| Promise&lt;[VideoPlayer](arkts-media-multimedia-media-videoplayer-i.md)&gt; | Promise对象。异步返回VideoPlayer实例，失败时返回null。可用于管理和播放视频媒体。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

@@ -1,10 +1,12 @@
 # HuksRsaPssSaltLenType
 
-表示Rsa在签名验签、padding为pss时需指定的salt\_len类型。
+表示Rsa在签名验签、padding为pss时需指定的salt_len类型。
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 <!--Device-huks-export enum HuksRsaPssSaltLenType--><!--Device-huks-export enum HuksRsaPssSaltLenType-End-->
 
@@ -18,11 +20,13 @@
 HUKS_RSA_PSS_SALT_LEN_DIGEST = 0
 ```
 
-表示以摘要长度设置salt\_len。
+表示以摘要长度设置salt_len。
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -38,11 +42,13 @@ HUKS_RSA_PSS_SALT_LEN_DIGEST = 0
 HUKS_RSA_PSS_SALT_LEN_MAX = 1
 ```
 
-表示以最大长度设置salt\_len。
+表示以最大长度设置salt_len。
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

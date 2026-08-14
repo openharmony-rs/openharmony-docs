@@ -8,15 +8,17 @@ function unregisterTypeDescriptors(typeIds: Array<string>): Promise<void>
 
 从系统中注销一个或多个标准化数据类型。使用Promise异步回调。注销后，该数据类型将不再被系统识别，依赖该数据类型的数据可能无法正常处理，请确保在注销前已清理相关数据依赖。
 
-**起始版本：** 22
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为22；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_DYNAMIC_UTD_TYPE
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-uniformTypeDescriptor-function unregisterTypeDescriptors(typeIds: Array<string>): Promise<void>--><!--Device-uniformTypeDescriptor-function unregisterTypeDescriptors(typeIds: Array<string>): Promise<void>-End-->
 
@@ -40,7 +42,7 @@ function unregisterTypeDescriptors(typeIds: Array<string>): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [20400004](../errorcode-udmf.md#20400004-标准化数据类型id列表错误) | One or more typeIds are invalid or do not exist. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
-| [20400004](../errorcode-udmf.md#20400004-标准化数据类型id列表错误) | One or more typeIds are invalid or do not exist. |
 

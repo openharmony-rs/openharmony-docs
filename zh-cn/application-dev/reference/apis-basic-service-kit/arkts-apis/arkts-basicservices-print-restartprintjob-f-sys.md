@@ -8,9 +8,11 @@ function restartPrintJob(jobId: string): Promise<void>
 
 重新打印之前打印过的打印任务，使用Promise异步回调。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -39,7 +41,7 @@ function restartPrintJob(jobId: string): Promise<void>
 | [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { print } from '@kit.BasicServicesKit';

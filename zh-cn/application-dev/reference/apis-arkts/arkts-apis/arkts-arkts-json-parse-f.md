@@ -12,6 +12,8 @@ function parse(text: string, reviver?: Transformer, options?: ParseOptions): Obj
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-json-function parse(text: string, reviver?: Transformer, options?: ParseOptions): Object | null--><!--Device-json-function parse(text: string, reviver?: Transformer, options?: ParseOptions): Object | null-End-->
@@ -23,8 +25,8 @@ function parse(text: string, reviver?: Transformer, options?: ParseOptions): Obj
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | text | string | 是 | 有效的JSON字符串，需符合JSON语法规范。 |
-| reviver | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 转换函数，用于修改解析生成的原始值；当需要对解析结果进行自定义转换时使用。默认值是undefined。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 解析的配置选项，用于控制解析生成的类型。默认值是undefined。 |
+| reviver | Transformer | 否 | 转换函数，用于修改解析生成的原始值；当需要对解析结果进行自定义转换时使用。默认值是undefined。 |
+| options | ParseOptions | 否 | 解析的配置选项，用于控制解析生成的类型。默认值是undefined。 |
 
 **返回值：**
 

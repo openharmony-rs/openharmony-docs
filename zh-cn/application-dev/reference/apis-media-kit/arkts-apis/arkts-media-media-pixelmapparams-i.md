@@ -2,9 +2,11 @@
 
 Defines the format parameters of the video thumbnail to be obtained.
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-media-interface PixelMapParams--><!--Device-media-interface PixelMapParams-End-->
 
@@ -20,9 +22,11 @@ Height of the thumbnail. Unit: px. The value must be greater than 0 and less tha
 
 **类型：** int
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PixelMapParams-height?: int--><!--Device-PixelMapParams-height?: int-End-->
 
@@ -38,9 +42,11 @@ Width of the thumbnail. Unit: px. The value must be greater than 0 and less than
 
 **类型：** int
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PixelMapParams-width?: int--><!--Device-PixelMapParams-width?: int-End-->
 

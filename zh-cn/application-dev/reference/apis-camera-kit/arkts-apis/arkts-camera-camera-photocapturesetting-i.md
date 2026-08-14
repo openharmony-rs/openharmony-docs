@@ -2,9 +2,11 @@
 
 拍摄照片的设置。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-camera-interface PhotoCaptureSetting--><!--Device-camera-interface PhotoCaptureSetting-End-->
 
@@ -22,7 +24,9 @@ compressionQuality?: int
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,9 +46,11 @@ location?: Location
 
 **类型：** Location
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
@@ -58,13 +64,15 @@ location?: Location
 mirror?: boolean
 ```
 
-镜像使能开关（默认关）。使用之前需要使用[isMirrorSupported]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_进行判断是否支持。true表示使能，false表示不使能。
+镜像使能开关（默认关）。使用之前需要使用[isMirrorSupported](arkts-camera-camera-photooutput-i.md#isMirrorSupported)进行判断是否支持。true表示使能，false表示不使能。
 
 **类型：** boolean
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
@@ -80,11 +88,13 @@ quality?: QualityLevel
 
 图片质量。 当quality未下发时，默认按compressionQuality下发生效；若quality与compressionQuality同时下发则按compressionQuality下发生效；若quality与 compressionQuality均未下发则图片质量默认是高等。
 
-**类型：** QualityLevel
+**类型：** [QualityLevel](arkts-camera-camera-qualitylevel-e.md)
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
@@ -100,11 +110,13 @@ rotation?: ImageRotation
 
 图片旋转角度（默认0度，顺时针旋转）。
 
-**类型：** ImageRotation
+**类型：** [ImageRotation](arkts-camera-camera-imagerotation-e.md)
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 

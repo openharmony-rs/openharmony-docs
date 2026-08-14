@@ -14,7 +14,7 @@ function printf(format: string, ...args: Object[]): string
 
 **废弃版本：** 9
 
-**替代接口：** [util.format](arkts-arkts-util-format-f.md#format)
+**替代接口：** [format](arkts-arkts-util-format-f.md#format)
 
 <!--Device-util-function printf(format: string, ...args: Object[]): string--><!--Device-util-function printf(format: string, ...args: Object[]): string-End-->
 
@@ -33,7 +33,7 @@ function printf(format: string, ...args: Object[]): string
 | --- | --- |
 | string | 按特定格式式样化后的字符串，包含根据格式说明符处理后的参数值。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let res = util.printf("%s", "hello world!");

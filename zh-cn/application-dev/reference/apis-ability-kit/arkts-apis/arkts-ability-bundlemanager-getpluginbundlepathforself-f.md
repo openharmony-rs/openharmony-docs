@@ -6,11 +6,13 @@
 function getPluginBundlePathForSelf(pluginBundleName: string): string
 ```
 
-获取指定插件在当前\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_内的安装路径。
+获取指定插件在当前[应用沙箱](../../../file-management/app-sandbox-directory.md)内的安装路径。
 
-**起始版本：** 22
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为22；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-bundleManager-function getPluginBundlePathForSelf(pluginBundleName: string): string--><!--Device-bundleManager-function getPluginBundlePathForSelf(pluginBundleName: string): string-End-->
 
@@ -34,7 +36,7 @@ function getPluginBundlePathForSelf(pluginBundleName: string): string
 | --- | --- |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { bundleManager } from '@kit.AbilityKit';

@@ -1,10 +1,26 @@
 # @ohos.matrix4
 
-用于对组件进行[图形变换]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_的各种操作，为组件提供矩阵变换能力，支持对图形进行平移、旋转和缩放等。 Matrix4的使用场景包括： [图形变换]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_中的[transform]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_接口通过使用图形变换矩阵Matrix4对象显示二维 变换时的矩阵变换，[transform3D]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_接口通过使用图形变换矩阵Matrix4对象设置组件的三维变换矩阵。 > **说明：** > > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+/*
+ Copyright (c) 2025 Huawei Device Co., Ltd.
+ Licensed under the Apache License, Version 2.0 (the "License"),
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ http://www.apache.org/licenses/LICENSE-2.0
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ /
+
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-declare namespace matrix4--><!--Device-unnamed-declare namespace matrix4-End-->
 

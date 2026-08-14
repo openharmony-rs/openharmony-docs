@@ -6,7 +6,9 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-<!--Device-unnamed-interface ParticleUpdaterOptions<TYPE, UPDATER extends ParticleUpdater>--><!--Device-unnamed-interface ParticleUpdaterOptions<TYPE, UPDATER extends ParticleUpdater>-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-interface ParticleUpdaterOptions--><!--Device-unnamed-interface ParticleUpdaterOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,13 +18,15 @@
 config: ParticlePropertyUpdaterConfigs<TYPE>[UPDATER]
 ```
 
-属性变化配置。属性变化类型type有三类： 1、当type为ParticleUpdater.NONE，表示无变化，则config类型为[ParticlePropertyUpdaterConfigs]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ [ParticleUpdater.NONE]。 2、当type为ParticleUpdater.RANDOM，表示变化类型为随机变化，则config类型为 [ParticlePropertyUpdaterConfigs]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_[ParticleUpdater.RANDOM]。 3、当type为ParticleUpdater.CURVE，表示变化类型为曲线变化，则config类型为 [ParticlePropertyUpdaterConfigs]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_[ParticleUpdater.CURVE]。
+属性变化配置。属性变化类型type有三类： 1、当type为ParticleUpdater.NONE，表示无变化，则config类型为[ParticlePropertyUpdaterConfigs](arkts-arkui-particlepropertyupdaterconfigs-i.md#ParticlePropertyUpdaterConfigs) [ParticleUpdater.NONE]。 2、当type为ParticleUpdater.RANDOM，表示变化类型为随机变化，则config类型为 [ParticlePropertyUpdaterConfigs](arkts-arkui-particlepropertyupdaterconfigs-i.md#ParticlePropertyUpdaterConfigs)[ParticleUpdater.RANDOM]。 3、当type为ParticleUpdater.CURVE，表示变化类型为曲线变化，则config类型为 [ParticlePropertyUpdaterConfigs](arkts-arkui-particlepropertyupdaterconfigs-i.md#ParticlePropertyUpdaterConfigs)[ParticleUpdater.CURVE]。
 
-**类型：** ParticlePropertyUpdaterConfigs&lt;TYPE&gt;[UPDATER]
+**类型：** [ParticlePropertyUpdaterConfigs](arkts-arkui-particlepropertyupdaterconfigs-i.md)&lt;TYPE&gt;[UPDATER]
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -45,6 +49,8 @@ type: UPDATER
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

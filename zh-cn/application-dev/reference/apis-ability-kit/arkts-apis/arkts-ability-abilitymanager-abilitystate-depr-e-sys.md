@@ -8,7 +8,7 @@ Ability的状态信息。
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.abilityManager/abilityManager#AbilityState
+**替代接口：** [AbilityState](arkts-ability-abilitymanager-abilitystate-e.md#AbilityState)
 
 <!--Device-abilityManager-export enum AbilityState--><!--Device-abilityManager-export enum AbilityState-End-->
 
@@ -30,7 +30,7 @@ INITIAL = 0
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.abilityManager/abilityManager.AbilityState#INITIAL
+**替代接口：** [INITIAL](arkts-ability-abilitymanager-abilitystate-e.md#INITIAL)
 
 <!--Device-AbilityState-INITIAL = 0--><!--Device-AbilityState-INITIAL = 0-End-->
 
@@ -52,7 +52,7 @@ FOREGROUND = 9
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.abilityManager/abilityManager.AbilityState#FOREGROUND
+**替代接口：** [FOREGROUND](arkts-ability-abilitymanager-abilitystate-e.md#FOREGROUND)
 
 <!--Device-AbilityState-FOREGROUND = 9--><!--Device-AbilityState-FOREGROUND = 9-End-->
 
@@ -74,7 +74,7 @@ BACKGROUND = 10
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.abilityManager/abilityManager.AbilityState#BACKGROUND
+**替代接口：** [BACKGROUND](arkts-ability-abilitymanager-abilitystate-e.md#BACKGROUND)
 
 <!--Device-AbilityState-BACKGROUND = 10--><!--Device-AbilityState-BACKGROUND = 10-End-->
 
@@ -96,7 +96,7 @@ FOREGROUNDING = 11
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.abilityManager/abilityManager.AbilityState#FOREGROUNDING
+**替代接口：** [FOREGROUNDING](arkts-ability-abilitymanager-abilitystate-e.md#FOREGROUNDING)
 
 <!--Device-AbilityState-FOREGROUNDING = 11--><!--Device-AbilityState-FOREGROUNDING = 11-End-->
 
@@ -118,7 +118,7 @@ BACKGROUNDING = 12
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.abilityManager/abilityManager.AbilityState#BACKGROUNDING
+**替代接口：** [BACKGROUNDING](arkts-ability-abilitymanager-abilitystate-e.md#BACKGROUNDING)
 
 <!--Device-AbilityState-BACKGROUNDING = 12--><!--Device-AbilityState-BACKGROUNDING = 12-End-->
 

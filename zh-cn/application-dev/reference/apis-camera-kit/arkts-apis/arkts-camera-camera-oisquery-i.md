@@ -4,7 +4,9 @@ OIS (Optical Image Stabilization) query interface.
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 <!--Device-camera-interface OISQuery--><!--Device-camera-interface OISQuery-End-->
 
@@ -12,12 +14,6 @@ OIS (Optical Image Stabilization) query interface.
 
 ## getCurrentCustomOISBias
 
-ArkTS-Dyn:
-```TypeScript
-getCurrentCustomOISBias(oisAxis: OISAxes): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getCurrentCustomOISBias(oisAxis: OISAxes): double
 ```
@@ -26,7 +22,9 @@ Gets the current custom bias value for the specified OIS axis.
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,13 +38,13 @@ Gets the current custom bias value for the specified OIS axis.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| oisAxis | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | The OIS axis |
+| oisAxis | [OISAxes](arkts-camera-camera-oisaxes-e.md) | 是 | The OIS axis |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：double | The current bias value. |
+| double | The current bias value. |
 
 **错误码：**
 
@@ -65,7 +63,9 @@ Gets the current OIS mode.
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -79,7 +79,7 @@ Gets the current OIS mode.
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | The current OIS mode. |
+| [OISMode](arkts-camera-camera-oismode-e.md) | The current OIS mode. |
 
 **错误码：**
 
@@ -90,12 +90,6 @@ Gets the current OIS mode.
 
 ## getSupportedOISBiasRange
 
-ArkTS-Dyn:
-```TypeScript
-getSupportedOISBiasRange(oisAxis: OISAxes): Array<number>
-```
-
-ArkTS-Sta:
 ```TypeScript
 getSupportedOISBiasRange(oisAxis: OISAxes): Array<double>
 ```
@@ -104,7 +98,9 @@ Gets the supported bias range for the specified OIS axis.
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -118,13 +114,13 @@ Gets the supported bias range for the specified OIS axis.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| oisAxis | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | The OIS axis. |
+| oisAxis | [OISAxes](arkts-camera-camera-oisaxes-e.md) | 是 | The OIS axis. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: Array&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：Array&lt;double&gt; | The bias range. |
+| Array&lt;double&gt; | The bias range. |
 
 **错误码：**
 
@@ -135,12 +131,6 @@ Gets the supported bias range for the specified OIS axis.
 
 ## getSupportedOISBiasStep
 
-ArkTS-Dyn:
-```TypeScript
-getSupportedOISBiasStep(oisAxis: OISAxes): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getSupportedOISBiasStep(oisAxis: OISAxes): double
 ```
@@ -149,7 +139,9 @@ Gets the bias step for the specified OIS axis.
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -163,13 +155,13 @@ Gets the bias step for the specified OIS axis.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| oisAxis | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | The OIS axis. |
+| oisAxis | [OISAxes](arkts-camera-camera-oisaxes-e.md) | 是 | The OIS axis. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：double | The bias step value. |
+| double | The bias step value. |
 
 **错误码：**
 
@@ -188,7 +180,9 @@ Checks if the specified OIS mode is supported.
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -202,7 +196,7 @@ Checks if the specified OIS mode is supported.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | The OIS mode to check. |
+| mode | [OISMode](arkts-camera-camera-oismode-e.md) | 是 | The OIS mode to check. |
 
 **返回值：**
 

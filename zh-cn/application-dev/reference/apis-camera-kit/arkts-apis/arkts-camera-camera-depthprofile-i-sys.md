@@ -1,10 +1,12 @@
 # DepthProfile（系统接口）
 
-Describes the profile of depth data. It inherits from [Profile]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_.
+Describes the profile of depth data. It inherits from [Profile](arkts-camera-camera-profile-i.md#Profile).
 
-**起始版本：** 13
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为13；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-camera-interface DepthProfile--><!--Device-camera-interface DepthProfile-End-->
 
@@ -20,11 +22,13 @@ readonly dataAccuracy: DepthDataAccuracy
 
 Accuracy of the depth data, which can be either relative accuracy or absolute accuracy.
 
-**类型：** DepthDataAccuracy
+**类型：** [DepthDataAccuracy](arkts-camera-camera-depthdataaccuracy-e-sys.md)
 
-**起始版本：** 13
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为13；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DepthProfile-readonly dataAccuracy: DepthDataAccuracy--><!--Device-DepthProfile-readonly dataAccuracy: DepthDataAccuracy-End-->
 
@@ -40,11 +44,13 @@ readonly format: CameraFormat
 
 Camera output format.
 
-**类型：** CameraFormat
+**类型：** [CameraFormat](arkts-camera-camera-cameraformat-e.md)
 
-**起始版本：** 13
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为13；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DepthProfile-readonly format: CameraFormat--><!--Device-DepthProfile-readonly format: CameraFormat-End-->
 
@@ -62,9 +68,11 @@ Depth data resolution.
 
 **类型：** Size
 
-**起始版本：** 13
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为13；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DepthProfile-readonly size: Size--><!--Device-DepthProfile-readonly size: Size-End-->
 

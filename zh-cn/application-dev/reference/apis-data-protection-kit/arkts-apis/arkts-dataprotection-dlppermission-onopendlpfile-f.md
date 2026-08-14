@@ -1,0 +1,46 @@
+# on_openDLPFile
+
+## on_openDLPFile
+
+```TypeScript
+function on(type: 'openDLPFile', listener: Callback<AccessedDLPFileInfo>): void
+```
+
+监听打开DLP文件。调用成功后，当DLP文件被打开时会触发回调通知当前应用。仅支持在非DLP沙箱应用中调用。 当应用需要在DLP文件打开后执行特定操作（如记录日志、更新界面）时，可注册该监听。
+
+**起始版本：** 10
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
+
+<!--Device-dlpPermission-function on(type: 'openDLPFile', listener: Callback<AccessedDLPFileInfo>): void--><!--Device-dlpPermission-function on(type: 'openDLPFile', listener: Callback<AccessedDLPFileInfo>): void-End-->
+
+**系统能力：** SystemCapability.Security.DataLossPrevention
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'openDLPFile' | 是 | 监听事件类型。固定值为'openDLPFile'：打开DLP文件事件。 |
+| listener | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AccessedDLPFileInfo](arkts-dataprotection-dlppermission-accesseddlpfileinfo-i.md)&gt; | 是 | DLP文件打开事件的回调。在当前应用的沙箱应用打开DLP文件时，通知当前应用。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
+| [19100007](../errorcode-dlp.md#19100007-dlp沙箱应用不允许调用此接口) | No permission to call this API, which is available only for non-DLP sandbox applications. |
+| [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
+
+## 示例
+
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+
+dlpPermission.on('openDLPFile', (info: dlpPermission.AccessedDLPFileInfo) => {
+  console.info('openDlpFile event', info.uri, info.lastOpenTime);
+}); // 注册DLP文件打开事件监听。
+```
+

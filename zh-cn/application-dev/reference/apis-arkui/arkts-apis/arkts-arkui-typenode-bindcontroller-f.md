@@ -6,11 +6,13 @@
 export function bindController(node: FrameNode, controller: TextController, nodeType: 'Text'): void
 ```
 
-将文本控制器[TextController]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_绑定到[Text]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言 访问，则抛出异常。该接口不支持声明式方式创建的节点。
+将文本控制器TextController绑定到[Text](../../apis-na/arkts-apis/arkts-na-typenode-text-t.md#Text)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言 访问，则抛出异常。该接口不支持声明式方式创建的节点。
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -24,16 +26,16 @@ export function bindController(node: FrameNode, controller: TextController, node
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 绑定文本控制器的目标节点。 |
-| controller | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 文本控制器。 |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 绑定文本控制器的目标节点。 |
+| controller | TextController | 是 | 文本控制器。 |
 | nodeType | 'Text' | 是 | 绑定文本控制器的目标节点的节点类型为Text。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [100023](../errorcode-node.md#100023-参数错误) | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
 | [100021](../errorcode-node.md#100021-framenode节点不可修改) | The FrameNode is not modifiable. |
+| [100023](../errorcode-node.md#100023-参数错误) | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
 
 
 ## bindController
@@ -42,11 +44,13 @@ export function bindController(node: FrameNode, controller: TextController, node
 export function bindController(node: FrameNode, controller: SwiperController, nodeType: 'Swiper'): void
 ```
 
-将控制器[SwiperController]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_绑定到[Swiper]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果 不支持跨语言访问，则抛出异常。该接口不支持声明式方式创建的节点。
+将控制器SwiperController绑定到[Swiper](../../apis-na/arkts-apis/arkts-na-typenode-swiper-t.md#Swiper)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果 不支持跨语言访问，则抛出异常。该接口不支持声明式方式创建的节点。
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -60,16 +64,16 @@ export function bindController(node: FrameNode, controller: SwiperController, no
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 绑定控制器的目标节点。 |
-| controller | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | Swiper容器组件的控制器。 |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 绑定控制器的目标节点。 |
+| controller | SwiperController | 是 | Swiper容器组件的控制器。 |
 | nodeType | 'Swiper' | 是 | 绑定控制器的目标节点的节点类型为Swiper。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [100023](../errorcode-node.md#100023-参数错误) | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
 | [100021](../errorcode-node.md#100021-framenode节点不可修改) | The FrameNode is not modifiable. |
+| [100023](../errorcode-node.md#100023-参数错误) | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
 
 
 ## bindController
@@ -78,11 +82,13 @@ export function bindController(node: FrameNode, controller: SwiperController, no
 function bindController(node: FrameNode, controller: Scroller, nodeType: 'Scroll'): void
 ```
 
-将滚动控制器[Scroller]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_绑定到[Scroll]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异 常。从API version 26.0.0开始，该接口支持声明式方式创建的节点，API version 26.0.0以下版本不支持。
+将滚动控制器Scroller绑定到[Scroll](../../apis-na/arkts-apis/arkts-na-typenode-scroll-t.md#Scroll)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异 常。从API version 26.0.0开始，该接口支持声明式方式创建的节点，API version 26.0.0以下版本不支持。
 
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -96,16 +102,16 @@ function bindController(node: FrameNode, controller: Scroller, nodeType: 'Scroll
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 绑定滚动控制器的目标节点。 |
-| controller | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 滚动控制器。 |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 绑定滚动控制器的目标节点。 |
+| controller | Scroller | 是 | 滚动控制器。 |
 | nodeType | 'Scroll' | 是 | 绑定滚动控制器的目标节点的节点类型为Scroll。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. the type of the node is error.2. the node is null or undefined. |
-| [100021](../errorcode-node.md#100021-framenode节点不可修改) | The FrameNode is not modifiable. Introduced in API version 15 and will not be threw above API version 24.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 15 - 24 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. the type of the node is error. 2. the node is null or undefined. |
+| [100021](../errorcode-node.md#100021-framenode节点不可修改) | The FrameNode is not modifiable. Introduced in API version 15 and will not be threw above API version 24.<br>**适用版本：** 15 - 24 |
 
 
 ## bindController
@@ -114,11 +120,13 @@ function bindController(node: FrameNode, controller: Scroller, nodeType: 'Scroll
 export function bindController(node: FrameNode, controller: Scroller, nodeType: 'List'): void
 ```
 
-将滚动控制器[Scroller]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_绑定到[List]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。从 API version 26.0.0开始，该接口支持声明式方式创建的节点，API version 26.0.0以下版本不支持。
+将滚动控制器Scroller绑定到[List](../../apis-na/arkts-apis/arkts-na-typenode-list-t.md#List)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。从 API version 26.0.0开始，该接口支持声明式方式创建的节点，API version 26.0.0以下版本不支持。
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -132,16 +140,16 @@ export function bindController(node: FrameNode, controller: Scroller, nodeType: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 绑定滚动控制器的目标节点。 |
-| controller | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 滚动控制器。 |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 绑定滚动控制器的目标节点。 |
+| controller | Scroller | 是 | 滚动控制器。 |
 | nodeType | 'List' | 是 | 绑定滚动控制器的目标节点的节点类型为List。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [100021](../errorcode-node.md#100021-framenode节点不可修改) | The FrameNode is not modifiable. Introduced in API version 20 and will not be threw above API version 24.<br>**适用版本：** 20 - 24 |
 | [100023](../errorcode-node.md#100023-参数错误) | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| [100021](../errorcode-node.md#100021-framenode节点不可修改) | The FrameNode is not modifiable. Introduced in API version 20 and will not be threw above API version 24.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 20 - 24 |
 
 
 ## bindController
@@ -150,11 +158,13 @@ export function bindController(node: FrameNode, controller: Scroller, nodeType: 
 export function bindController(node: FrameNode, controller: TextInputController, nodeType: 'TextInput'): void
 ```
 
-将输入框控制器[TextInputController]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_绑定到[TextInput]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_节点。若该节点非ArkTS语言创建，则需 要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。从API版本26.0.0开始，该接口支持声明式方式创建的节点，API版本26.0.0以下版本不支持。
+将输入框控制器TextInputController绑定到[TextInput](../../apis-na/arkts-apis/arkts-na-typenode-textinput-t.md#TextInput)节点。若该节点非ArkTS语言创建，则需 要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。从API版本26.0.0开始，该接口支持声明式方式创建的节点，API版本26.0.0以下版本不支持。
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -168,16 +178,16 @@ export function bindController(node: FrameNode, controller: TextInputController,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 绑定输入框控制器的目标节点。 |
-| controller | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 输入框控制器。 |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 绑定输入框控制器的目标节点。 |
+| controller | TextInputController | 是 | 输入框控制器。 |
 | nodeType | 'TextInput' | 是 | 绑定输入框控制器的目标节点的节点类型为TextInput。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [100023](../errorcode-node.md#100023-参数错误) | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
 | [100021](../errorcode-node.md#100021-framenode节点不可修改) | The FrameNode is not modifiable. |
+| [100023](../errorcode-node.md#100023-参数错误) | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
 
 
 ## bindController
@@ -186,11 +196,13 @@ export function bindController(node: FrameNode, controller: TextInputController,
 export function bindController(node: FrameNode, controller: Scroller, nodeType: 'WaterFlow'): void
 ```
 
-将滚动控制器[Scroller]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_绑定到[WaterFlow]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访 问，则抛出异常。从API version 26.0.0开始，该接口支持声明式方式创建的节点，API version 26.0.0以下版本不支持。
+将滚动控制器Scroller绑定到[WaterFlow](../../apis-na/arkts-apis/arkts-na-typenode-waterflow-t.md#WaterFlow)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访 问，则抛出异常。从API version 26.0.0开始，该接口支持声明式方式创建的节点，API version 26.0.0以下版本不支持。
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -204,16 +216,16 @@ export function bindController(node: FrameNode, controller: Scroller, nodeType: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 绑定滚动控制器的目标节点。 |
-| controller | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 滚动控制器。 |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 绑定滚动控制器的目标节点。 |
+| controller | Scroller | 是 | 滚动控制器。 |
 | nodeType | 'WaterFlow' | 是 | 绑定滚动控制器的目标节点的节点类型为WaterFlow。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [100021](../errorcode-node.md#100021-framenode节点不可修改) | The FrameNode is not modifiable. Introduced in API version 20 and will not be threw above API version 24.<br>**适用版本：** 20 - 24 |
 | [100023](../errorcode-node.md#100023-参数错误) | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| [100021](../errorcode-node.md#100021-framenode节点不可修改) | The FrameNode is not modifiable. Introduced in API version 20 and will not be threw above API version 24.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 20 - 24 |
 
 
 ## bindController
@@ -222,11 +234,13 @@ export function bindController(node: FrameNode, controller: Scroller, nodeType: 
 export function bindController(node: FrameNode, controller: TextAreaController, nodeType: 'TextArea'): void
 ```
 
-将输入框控制器[TextAreaController]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_绑定到[TextArea]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_节点。若该节点非ArkTS语言创建，则需要设置是 否支持跨语言访问，如果不支持跨语言访问，则抛出异常。从API版本26.0.0开始，该接口支持声明式方式创建的节点，API版本26.0.0以下版本不支持。
+将输入框控制器TextAreaController绑定到[TextArea](../../apis-na/arkts-apis/arkts-na-typenode-textarea-t.md#TextArea)节点。若该节点非ArkTS语言创建，则需要设置是 否支持跨语言访问，如果不支持跨语言访问，则抛出异常。从API版本26.0.0开始，该接口支持声明式方式创建的节点，API版本26.0.0以下版本不支持。
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -240,16 +254,16 @@ export function bindController(node: FrameNode, controller: TextAreaController, 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 绑定输入框控制器的目标节点。 |
-| controller | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 输入框控制器。 |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 绑定输入框控制器的目标节点。 |
+| controller | TextAreaController | 是 | 输入框控制器。 |
 | nodeType | 'TextArea' | 是 | 绑定输入框控制器的目标节点的节点类型为TextArea。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [100023](../errorcode-node.md#100023-参数错误) | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
 | [100021](../errorcode-node.md#100021-framenode节点不可修改) | The FrameNode is not modifiable. |
+| [100023](../errorcode-node.md#100023-参数错误) | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
 
 
 ## bindController
@@ -258,11 +272,13 @@ export function bindController(node: FrameNode, controller: TextAreaController, 
 export function bindController(node: FrameNode, controller: Scroller, nodeType: 'Grid'): void
 ```
 
-将滚动控制器[Scroller]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_绑定到[Grid]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。从 API version 26.0.0开始，该接口支持声明式方式创建的节点，API version 26.0.0以下版本不支持。
+将滚动控制器Scroller绑定到[Grid](../../apis-na/arkts-apis/arkts-na-typenode-grid-t.md#Grid)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。从 API version 26.0.0开始，该接口支持声明式方式创建的节点，API version 26.0.0以下版本不支持。
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -276,14 +292,14 @@ export function bindController(node: FrameNode, controller: Scroller, nodeType: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 绑定滚动控制器的目标节点。 |
-| controller | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 滚动控制器。 |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 绑定滚动控制器的目标节点。 |
+| controller | Scroller | 是 | 滚动控制器。 |
 | nodeType | 'Grid' | 是 | 绑定滚动控制器的目标节点的节点类型为Grid。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [100021](../errorcode-node.md#100021-framenode节点不可修改) | The FrameNode is not modifiable. Introduced in API version 20 and will not be threw above API version 24.<br>**适用版本：** 20 - 24 |
 | [100023](../errorcode-node.md#100023-参数错误) | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| [100021](../errorcode-node.md#100021-framenode节点不可修改) | The FrameNode is not modifiable. Introduced in API version 20 and will not be threw above API version 24.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 20 - 24 |
 

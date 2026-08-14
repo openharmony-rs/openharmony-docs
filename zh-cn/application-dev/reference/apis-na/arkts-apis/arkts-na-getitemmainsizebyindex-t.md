@@ -10,6 +10,8 @@ export type GetItemMainSizeByIndex = (index: int) => double
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-export type GetItemMainSizeByIndex = (index: int) => double--><!--Device-unnamed-export type GetItemMainSizeByIndex = (index: int) => double-End-->
@@ -20,7 +22,7 @@ export type GetItemMainSizeByIndex = (index: int) => double
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | int | 是 | FlowItem在WaterFlow中的索引。\_\_\_HTML\_TAG\_USD\_0\_\_\_。 \_\_\_HTML\_TAG\_USD\_1\_\_\_取值范围：[0, 子节点总数-1]。  |
+| index | int | 是 | FlowItem在WaterFlow中的索引。<br/>。 <br>取值范围：[0, 子节点总数-1]。 |
 
 **返回值：**
 

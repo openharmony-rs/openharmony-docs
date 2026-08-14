@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-taskpool-class SequenceRunner--><!--Device-taskpool-class SequenceRunner-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
@@ -22,6 +24,8 @@ SequenceRunner的构造函数，用于创建一个**SequenceRunner**实例。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-SequenceRunner-constructor(priority?: Priority)--><!--Device-SequenceRunner-constructor(priority?: Priority)-End-->
@@ -32,9 +36,9 @@ SequenceRunner的构造函数，用于创建一个**SequenceRunner**实例。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| priority | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 指定任务的优先级，默认值为**taskpool.Priority.MEDIUM**。 |
+| priority | Priority | 否 | 指定任务的优先级，默认值为**taskpool.Priority.MEDIUM**。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let runner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
@@ -52,6 +56,8 @@ SequenceRunner的构造函数，用于创建一个**SequenceRunner**实例。该
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-SequenceRunner-constructor(name: string, priority?: Priority)--><!--Device-SequenceRunner-constructor(name: string, priority?: Priority)-End-->
@@ -63,9 +69,9 @@ SequenceRunner的构造函数，用于创建一个**SequenceRunner**实例。该
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 串行队列的名字。 |
-| priority | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 指定任务的优先级，默认值为**taskpool.Priority.MEDIUM**。 |
+| priority | Priority | 否 | 指定任务的优先级，默认值为**taskpool.Priority.MEDIUM**。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let runner:taskpool.SequenceRunner = new taskpool.SequenceRunner("runner1", taskpool.Priority.LOW);
@@ -83,6 +89,8 @@ execute(task: Task): Promise<Object>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-SequenceRunner-execute(task: Task): Promise<Object>--><!--Device-SequenceRunner-execute(task: Task): Promise<Object>-End-->
@@ -93,7 +101,7 @@ execute(task: Task): Promise<Object>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| task | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 需要添加到串行任务队列中的任务。 |
+| task | Task | 是 | 需要添加到串行任务队列中的任务。 |
 
 **返回值：**
 
@@ -105,13 +113,13 @@ execute(task: Task): Promise<Object>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200003](../errorcode-utils.md#10200003-worker初始化失败) | Worker initialization failed.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 11 - 17 |
-| [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
 | [10200025](../errorcode-utils.md#10200025-串行队列中添加了存在依赖的任务) | dependent task not allowed. |
-| [10200051](../errorcode-utils.md#10200051-无法再次执行周期任务) | The periodic task cannot be executed again.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 12+ |
-| [10200057](../errorcode-utils.md#10200057-任务无法被两种api执行) | The task cannot be executed by two APIs.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 18+ |
+| [10200057](../errorcode-utils.md#10200057-任务无法被两种api执行) | The task cannot be executed by two APIs.<br>**适用版本：** 18+ |
+| [10200003](../errorcode-utils.md#10200003-worker初始化失败) | Worker initialization failed.<br>**适用版本：** 11 - 17 |
+| [10200051](../errorcode-utils.md#10200051-无法再次执行周期任务) | The periodic task cannot be executed again.<br>**适用版本：** 12+ |
+| [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 @Concurrent

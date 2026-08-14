@@ -12,7 +12,7 @@ type EventInfo = AuthResultInfo | TipInfo
 
 **废弃版本：** 11
 
-**替代接口：** [userAuth.UserAuthResult](arkts-userauthentication-userauth-userauthresult-i.md)
+**替代接口：** [UserAuthResult](arkts-userauthentication-userauth-userauthresult-i.md#UserAuthResult)
 
 <!--Device-userAuth-type EventInfo = AuthResultInfo | TipInfo--><!--Device-userAuth-type EventInfo = AuthResultInfo | TipInfo-End-->
 

@@ -2,9 +2,11 @@
 
 Enumerates the device select strategy.
 
-**起始版本：** 21
+**起始版本：** 24
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 <!--Device-audio-enum AudioDevcieSelectStrategy--><!--Device-audio-enum AudioDevcieSelectStrategy-End-->
 
@@ -20,9 +22,11 @@ SELECT_STRATEGY_DEFAULT = 0
 
 The default follow device select strategy.
 
-**起始版本：** 21
+**起始版本：** 24
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 <!--Device-AudioDevcieSelectStrategy-SELECT_STRATEGY_DEFAULT = 0--><!--Device-AudioDevcieSelectStrategy-SELECT_STRATEGY_DEFAULT = 0-End-->
 
@@ -38,9 +42,11 @@ SELECT_STRATEGY_INDEPENDENT = 1
 
 The independent device select strategy..
 
-**起始版本：** 21
+**起始版本：** 24
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 <!--Device-AudioDevcieSelectStrategy-SELECT_STRATEGY_INDEPENDENT = 1--><!--Device-AudioDevcieSelectStrategy-SELECT_STRATEGY_INDEPENDENT = 1-End-->
 

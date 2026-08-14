@@ -2,9 +2,11 @@
 
 Target type.
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-mechanicManager-export enum TargetType--><!--Device-mechanicManager-export enum TargetType-End-->
 
@@ -20,9 +22,11 @@ HUMAN_FACE = 0
 
 human Face type.
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TargetType-HUMAN_FACE = 0--><!--Device-TargetType-HUMAN_FACE = 0-End-->
 

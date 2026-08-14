@@ -1,14 +1,16 @@
 # WriteStream
 
-文件可写流，需要先通过 \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_方法来构建一 个WriteStream实例。WriteStream继承自数据流基类[stream.Writable]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_。
+文件可写流，需要先通过 fileIo.createWriteStream方法来构建一 个WriteStream实例。WriteStream继承自数据流基类[stream.Writable](../../apis-arkts/arkts-apis/arkts-arkts-stream-writable-c.md#Writable)。
 
-**继承/实现关系：** WriteStream extends [stream.Writable](../../apis-arkts/arkts-apis/arkts-arkts-stream-writable-c.md)
+**继承/实现关系：** WriteStream extends [stream.Writable](../../apis-arkts/arkts-apis/arkts-arkts-stream-writable-c.md#Writable)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-<!--Device-unnamed-declare class WriteStream extends stream.Writable--><!--Device-unnamed-declare class WriteStream extends stream.Writable-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare class WriteStream--><!--Device-unnamed-declare class WriteStream-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -23,6 +25,8 @@ close(): void
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-WriteStream-close(): void--><!--Device-WriteStream-close(): void-End-->
 
@@ -39,7 +43,7 @@ close(): void
 | 13900041 | Quota exceeded |
 | 13900042 | Unknown error |
 
-**示例：**
+## 示例
 
 ```TypeScript
 const filePath = pathDir + "/test.txt";
@@ -59,6 +63,8 @@ The WriteStream constructor.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-WriteStream-constructor()--><!--Device-WriteStream-constructor()-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -75,6 +81,8 @@ seek(offset: number, whence?: WhenceType): number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-WriteStream-seek(offset: number, whence?: WhenceType): number--><!--Device-WriteStream-seek(offset: number, whence?: WhenceType): number-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -84,7 +92,7 @@ seek(offset: number, whence?: WhenceType): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | offset | number | 是 | 相对偏移位置，单位为Byte。 |
-| whence | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 偏移指针相对位置类型。默认值：SEEK\_\_\_ESCAPED\_UNDERSCORE\_\_\_SET，文件起始位置处。 |
+| whence | [WhenceType](arkts-corefile-file-fs-whencetype-e.md) | 否 | 偏移指针相对位置类型。默认值：SEEK_SET，文件起始位置处。 |
 
 **返回值：**
 
@@ -96,12 +104,12 @@ seek(offset: number, whence?: WhenceType): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error |
 | 13900020 | Invalid argument |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error |
 | 13900026 | Illegal seek |
 | 13900042 | Unknown error |
 
-**示例：**
+## 示例
 
 ```TypeScript
 const filePath = pathDir + "/test.txt";
@@ -125,6 +133,8 @@ readonly bytesWritten: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-WriteStream-readonly bytesWritten: number--><!--Device-WriteStream-readonly bytesWritten: number-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -142,6 +152,8 @@ readonly path: string
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-WriteStream-readonly path: string--><!--Device-WriteStream-readonly path: string-End-->
 

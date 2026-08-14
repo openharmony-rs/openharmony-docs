@@ -12,6 +12,8 @@ function createAVScreenCaptureRecorder(): Promise<AVScreenCaptureRecorder>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-media-function createAVScreenCaptureRecorder(): Promise<AVScreenCaptureRecorder>--><!--Device-media-function createAVScreenCaptureRecorder(): Promise<AVScreenCaptureRecorder>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
@@ -20,7 +22,7 @@ function createAVScreenCaptureRecorder(): Promise<AVScreenCaptureRecorder>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;AVScreenCaptureRecorder&gt; | Promise对象，返回AVScreenCaptureRecorder实例，失败时返回null。可用于进行屏幕录制。 |
+| Promise&lt;[AVScreenCaptureRecorder](arkts-media-multimedia-media-avscreencapturerecorder-i.md)&gt; | Promise对象，返回AVScreenCaptureRecorder实例，失败时返回null。可用于进行屏幕录制。 |
 
 **错误码：**
 
@@ -28,7 +30,7 @@ function createAVScreenCaptureRecorder(): Promise<AVScreenCaptureRecorder>
 | --- | --- |
 | [5400101](../errorcode-media.md#5400101-内存分配失败) | No memory. Return by promise. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -57,7 +59,9 @@ Creates an **AVScreenCaptureRecorder** instance. This API uses a promise to retu
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-media-function createAVScreenCaptureRecorder(): Promise<AVScreenCaptureRecorder | undefined>--><!--Device-media-function createAVScreenCaptureRecorder(): Promise<AVScreenCaptureRecorder | undefined>-End-->
 
@@ -67,7 +71,7 @@ Creates an **AVScreenCaptureRecorder** instance. This API uses a promise to retu
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;AVScreenCaptureRecorder \| undefined&gt; | Promise used to return the result. If the operation is |
+| Promise&lt;[AVScreenCaptureRecorder](arkts-media-multimedia-media-avscreencapturerecorder-i.md) \| undefined&gt; | Promise used to return the result. If the operation is successful, an **AVScreenCaptureRecorder** instance is returned; otherwise, **null** is returned. The instance can be used for screen capture. |
 
 **错误码：**
 

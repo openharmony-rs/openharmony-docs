@@ -2,9 +2,11 @@
 
 Defines the SIM card authentication response.
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-sim-export interface SimAuthenticationResponse--><!--Device-sim-export interface SimAuthenticationResponse-End-->
 
@@ -22,9 +24,11 @@ Indicates the response of authentication.
 
 **类型：** string
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SimAuthenticationResponse-response: string--><!--Device-SimAuthenticationResponse-response: string-End-->
 
@@ -42,9 +46,11 @@ Status word 1 of the SIM card, which is returned by the SIM card after command e
 
 **类型：** int
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SimAuthenticationResponse-simStatusWord1: int--><!--Device-SimAuthenticationResponse-simStatusWord1: int-End-->
 
@@ -62,9 +68,11 @@ Status word 2 of the SIM card, which is returned by the SIM card after command e
 
 **类型：** int
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SimAuthenticationResponse-simStatusWord2: int--><!--Device-SimAuthenticationResponse-simStatusWord2: int-End-->
 

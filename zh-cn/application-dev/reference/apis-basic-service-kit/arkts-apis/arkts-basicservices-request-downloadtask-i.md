@@ -1,10 +1,12 @@
 # DownloadTask
 
-下载任务，使用下列方法前，需要先获取DownloadTask对象，promise形式通过 [request.downloadFile]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_获取，callback形式通过 [request.downloadFile]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_ 获取。
+下载任务，使用下列方法前，需要先获取DownloadTask对象，promise形式通过 [request.downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadFile)获取，callback形式通过 [request.downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadFile) 获取。
 
-**起始版本：** 6
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为6；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-request-interface DownloadTask--><!--Device-request-interface DownloadTask-End-->
 
@@ -16,11 +18,13 @@
 delete(callback: AsyncCallback<boolean>): void
 ```
 
-移除下载的任务，使用callback异步回调。 > **说明：** > > 由于不存在401报错场景，在api12中 \_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_ 这个错误码被移除。
+移除下载的任务，使用callback异步回调。 > **说明：** > > 由于不存在401报错场景，在api12中 `401 the parameters check fails` 这个错误码被移除。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -32,7 +36,7 @@ delete(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;boolean&gt; | 是 | 回调函数。返回true表示移除下载任务成功；返回false表示移除下载任务失败。 |
+| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示移除下载任务成功；返回false表示移除下载任务失败。 |
 
 **错误码：**
 
@@ -40,7 +44,7 @@ delete(callback: AsyncCallback<boolean>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -102,11 +106,13 @@ try {
 delete(): Promise<boolean>
 ```
 
-移除下载的任务，使用Promise异步回调。 > **说明：** > > 由于不存在401报错场景，在api12中 \_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_ 这个错误码被移除。
+移除下载的任务，使用Promise异步回调。 > **说明：** > > 由于不存在401报错场景，在api12中 `401 the parameters check fails` 这个错误码被移除。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -126,7 +132,7 @@ delete(): Promise<boolean>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -182,11 +188,13 @@ try {
 getTaskInfo(callback: AsyncCallback<DownloadInfo>): void
 ```
 
-查询下载的任务，使用callback异步回调。 > **说明：** > > 由于不存在401报错场景，在api12中 \_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_ 这个错误码被移除。
+查询下载的任务，使用callback异步回调。 > **说明：** > > 由于不存在401报错场景，在api12中 `401 the parameters check fails` 这个错误码被移除。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -198,7 +206,7 @@ getTaskInfo(callback: AsyncCallback<DownloadInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;DownloadInfo&gt; | 是 | 回调函数。当查询下载任务操作成功，err为undefined，data为获取到的DownloadInfo对象；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;DownloadInfo&gt; | 是 | 回调函数。当查询下载任务操作成功，err为undefined，data为获取到的DownloadInfo对象；否则为错误对象。 |
 
 **错误码：**
 
@@ -206,7 +214,7 @@ getTaskInfo(callback: AsyncCallback<DownloadInfo>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -268,11 +276,13 @@ try {
 getTaskInfo(): Promise<DownloadInfo>
 ```
 
-查询下载任务的信息，使用Promise异步回调。 > **说明：** > > 由于不存在401报错场景，在api12中 \_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_ 这个错误码被移除。
+查询下载任务的信息，使用Promise异步回调。 > **说明：** > > 由于不存在401报错场景，在api12中 `401 the parameters check fails` 这个错误码被移除。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -292,7 +302,7 @@ getTaskInfo(): Promise<DownloadInfo>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -350,11 +360,13 @@ try {
 getTaskMimeType(callback: AsyncCallback<string>): void
 ```
 
-查询下载任务的 MimeType（HTTP中表示资源的媒体类型），使用callback异步回调。 > **说明：** > > 由于不存在401报错场景，在api12中 \_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_ 这个错误码被移除。
+查询下载任务的 MimeType（HTTP中表示资源的媒体类型），使用callback异步回调。 > **说明：** > > 由于不存在401报错场景，在api12中 `401 the parameters check fails` 这个错误码被移除。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -366,7 +378,7 @@ getTaskMimeType(callback: AsyncCallback<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;string&gt; | 是 | 回调函数。当查询下载任务MimeType成功，err为undefined，data为获取到的下载任务的MimeType的对象；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数。当查询下载任务MimeType成功，err为undefined，data为获取到的下载任务的MimeType的对象；否则为错误对 象。 |
 
 **错误码：**
 
@@ -374,7 +386,7 @@ getTaskMimeType(callback: AsyncCallback<string>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -436,11 +448,13 @@ try {
 getTaskMimeType(): Promise<string>
 ```
 
-查询下载的任务的MimeType(HTTP中表示资源的媒体类型)，使用Promise异步回调。 > **说明：** > > 由于不存在401报错场景，在api12中 \_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_ 这个错误码被移除。
+查询下载的任务的MimeType(HTTP中表示资源的媒体类型)，使用Promise异步回调。 > **说明：** > > 由于不存在401报错场景，在api12中 `401 the parameters check fails` 这个错误码被移除。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -460,7 +474,7 @@ getTaskMimeType(): Promise<string>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -512,389 +526,6 @@ try {
 }
 ```
 
-## off('progress')
-
-```TypeScript
-off(type: 'progress', callback?: (receivedSize: long, totalSize: long) => void): void
-```
-
-取消订阅下载任务进度事件。
-
-**起始版本：** 6
-
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
-
-<!--Device-DownloadTask-off(type: 'progress', callback?: (receivedSize: long, totalSize: long) => void): void--><!--Device-DownloadTask-off(type: 'progress', callback?: (receivedSize: long, totalSize: long) => void): void-End-->
-
-**系统能力：** SystemCapability.MiscServices.Download
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'progress' | 是 | 取消订阅的事件类型。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- 取值为'progress'，表示下载的进度信息。 |
-| callback | (receivedSize: long, totalSize: long) =&gt; void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The parameters check fails. Possible causes:\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 1. Missing mandatory parameters.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 2. Incorrect parameter type.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 3. Parameter verification failed.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 12+ |
-
-**示例：**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-try {
-  // 需要手动将url替换为真实服务器的HTTP协议地址
-  request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
-    let downloadTask: request.DownloadTask = data;
-    let progressCallback1 = (receivedSize: number, totalSize: number) => {
-      console.info('Download delete progress notification.' + 'receivedSize:' + receivedSize + 'totalSize:' + totalSize);
-    };
-    let progressCallback2 = (receivedSize: number, totalSize: number) => {
-      console.info('Download delete progress notification.' + 'receivedSize:' + receivedSize + 'totalSize:' + totalSize);
-    };
-    downloadTask.on('progress', progressCallback1);
-    downloadTask.on('progress', progressCallback2);
-    // 表示取消progressCallback1的订阅
-    downloadTask.off('progress', progressCallback1);
-    // 表示取消订阅下载任务进度事件的所有回调
-    downloadTask.off('progress');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
-  })
-} catch (err) {
-  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
-## off('complete' | 'pause' | 'remove')
-
-```TypeScript
-off(type: 'complete' | 'pause' | 'remove', callback?: () => void): void
-```
-
-取消订阅下载任务相关的事件。
-
-**起始版本：** 7
-
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
-
-<!--Device-DownloadTask-off(type: 'complete' | 'pause' | 'remove', callback?: () => void): void--><!--Device-DownloadTask-off(type: 'complete' | 'pause' | 'remove', callback?: () => void): void-End-->
-
-**系统能力：** SystemCapability.MiscServices.Download
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'complete' \| 'pause' \| 'remove' | 是 | 取消订阅的事件类型。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- 取值为'complete'，表示下载任务完成。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- 取值为'pause'，表示下载任务暂停。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- 取值为'remove'，表示下载任务移除。 |
-| callback | () =&gt; void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The parameters check fails. Possible causes:\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 1. Missing mandatory parameters.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 2. Incorrect parameter type.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 3. Parameter verification failed.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 12+ |
-
-**示例：**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-try {
-  // 需要手动将url替换为真实服务器的HTTP协议地址
-  request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
-    let downloadTask: request.DownloadTask = data;
-    let completeCallback1 = () => {
-      console.info('Download delete complete notification.');
-    };
-    let completeCallback2 = () => {
-      console.info('Download delete complete notification.');
-    };
-    downloadTask.on('complete', completeCallback1);
-    downloadTask.on('complete', completeCallback2);
-    // 表示取消completeCallback1的订阅
-    downloadTask.off('complete', completeCallback1);
-    // 表示取消订阅下载任务完成的所有回调
-    downloadTask.off('complete');
-
-    let pauseCallback1 = () => {
-      console.info('Download delete pause notification.');
-    };
-    let pauseCallback2 = () => {
-      console.info('Download delete pause notification.');
-    };
-    downloadTask.on('pause', pauseCallback1);
-    downloadTask.on('pause', pauseCallback2);
-    // 表示取消pauseCallback1的订阅
-    downloadTask.off('pause', pauseCallback1);
-    // 表示取消订阅下载任务暂停的所有回调
-    downloadTask.off('pause');
-
-    let removeCallback1 = () => {
-      console.info('Download delete remove notification.');
-    };
-    let removeCallback2 = () => {
-      console.info('Download delete remove notification.');
-    };
-    downloadTask.on('remove', removeCallback1);
-    downloadTask.on('remove', removeCallback2);
-    // 表示取消removeCallback1的订阅
-    downloadTask.off('remove', removeCallback1);
-    // 表示取消订阅下载任务移除的所有回调
-    downloadTask.off('remove');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
-  })
-} catch (err) {
-  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
-## off('complete' | 'pause' | 'remove')
-
-```TypeScript
-off(type: 'complete' | 'pause' | 'remove', callback?: () => void): void
-```
-
-取消订阅下载任务相关的事件。
-
-**起始版本：** 7
-
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
-
-<!--Device-DownloadTask-off(type: 'complete' | 'pause' | 'remove', callback?: () => void): void--><!--Device-DownloadTask-off(type: 'complete' | 'pause' | 'remove', callback?: () => void): void-End-->
-
-**系统能力：** SystemCapability.MiscServices.Download
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'complete' \| 'pause' \| 'remove' | 是 | 取消订阅的事件类型。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- 取值为'complete'，表示下载任务完成。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- 取值为'pause'，表示下载任务暂停。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- 取值为'remove'，表示下载任务移除。 |
-| callback | () =&gt; void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The parameters check fails. Possible causes:\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 1. Missing mandatory parameters.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 2. Incorrect parameter type.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 3. Parameter verification failed.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 12+ |
-
-**示例：**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-try {
-  // 需要手动将url替换为真实服务器的HTTP协议地址
-  request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
-    let downloadTask: request.DownloadTask = data;
-    let completeCallback1 = () => {
-      console.info('Download delete complete notification.');
-    };
-    let completeCallback2 = () => {
-      console.info('Download delete complete notification.');
-    };
-    downloadTask.on('complete', completeCallback1);
-    downloadTask.on('complete', completeCallback2);
-    // 表示取消completeCallback1的订阅
-    downloadTask.off('complete', completeCallback1);
-    // 表示取消订阅下载任务完成的所有回调
-    downloadTask.off('complete');
-
-    let pauseCallback1 = () => {
-      console.info('Download delete pause notification.');
-    };
-    let pauseCallback2 = () => {
-      console.info('Download delete pause notification.');
-    };
-    downloadTask.on('pause', pauseCallback1);
-    downloadTask.on('pause', pauseCallback2);
-    // 表示取消pauseCallback1的订阅
-    downloadTask.off('pause', pauseCallback1);
-    // 表示取消订阅下载任务暂停的所有回调
-    downloadTask.off('pause');
-
-    let removeCallback1 = () => {
-      console.info('Download delete remove notification.');
-    };
-    let removeCallback2 = () => {
-      console.info('Download delete remove notification.');
-    };
-    downloadTask.on('remove', removeCallback1);
-    downloadTask.on('remove', removeCallback2);
-    // 表示取消removeCallback1的订阅
-    downloadTask.off('remove', removeCallback1);
-    // 表示取消订阅下载任务移除的所有回调
-    downloadTask.off('remove');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
-  })
-} catch (err) {
-  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
-## off('complete' | 'pause' | 'remove')
-
-```TypeScript
-off(type: 'complete' | 'pause' | 'remove', callback?: () => void): void
-```
-
-取消订阅下载任务相关的事件。
-
-**起始版本：** 7
-
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
-
-<!--Device-DownloadTask-off(type: 'complete' | 'pause' | 'remove', callback?: () => void): void--><!--Device-DownloadTask-off(type: 'complete' | 'pause' | 'remove', callback?: () => void): void-End-->
-
-**系统能力：** SystemCapability.MiscServices.Download
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'complete' \| 'pause' \| 'remove' | 是 | 取消订阅的事件类型。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- 取值为'complete'，表示下载任务完成。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- 取值为'pause'，表示下载任务暂停。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- 取值为'remove'，表示下载任务移除。 |
-| callback | () =&gt; void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The parameters check fails. Possible causes:\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 1. Missing mandatory parameters.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 2. Incorrect parameter type.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 3. Parameter verification failed.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 12+ |
-
-**示例：**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-try {
-  // 需要手动将url替换为真实服务器的HTTP协议地址
-  request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
-    let downloadTask: request.DownloadTask = data;
-    let completeCallback1 = () => {
-      console.info('Download delete complete notification.');
-    };
-    let completeCallback2 = () => {
-      console.info('Download delete complete notification.');
-    };
-    downloadTask.on('complete', completeCallback1);
-    downloadTask.on('complete', completeCallback2);
-    // 表示取消completeCallback1的订阅
-    downloadTask.off('complete', completeCallback1);
-    // 表示取消订阅下载任务完成的所有回调
-    downloadTask.off('complete');
-
-    let pauseCallback1 = () => {
-      console.info('Download delete pause notification.');
-    };
-    let pauseCallback2 = () => {
-      console.info('Download delete pause notification.');
-    };
-    downloadTask.on('pause', pauseCallback1);
-    downloadTask.on('pause', pauseCallback2);
-    // 表示取消pauseCallback1的订阅
-    downloadTask.off('pause', pauseCallback1);
-    // 表示取消订阅下载任务暂停的所有回调
-    downloadTask.off('pause');
-
-    let removeCallback1 = () => {
-      console.info('Download delete remove notification.');
-    };
-    let removeCallback2 = () => {
-      console.info('Download delete remove notification.');
-    };
-    downloadTask.on('remove', removeCallback1);
-    downloadTask.on('remove', removeCallback2);
-    // 表示取消removeCallback1的订阅
-    downloadTask.off('remove', removeCallback1);
-    // 表示取消订阅下载任务移除的所有回调
-    downloadTask.off('remove');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
-  })
-} catch (err) {
-  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
-## off('fail')
-
-```TypeScript
-off(type: 'fail', callback?: (err: int) => void): void
-```
-
-取消订阅下载任务失败事件。
-
-**起始版本：** 7
-
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
-
-<!--Device-DownloadTask-off(type: 'fail', callback?: (err: int) => void): void--><!--Device-DownloadTask-off(type: 'fail', callback?: (err: int) => void): void-End-->
-
-**系统能力：** SystemCapability.MiscServices.Download
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'fail' | 是 | 取消订阅的事件类型。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- 取值为'fail'，表示下载失败。 |
-| callback | (err: int) =&gt; void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The parameters check fails. Possible causes:\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 1. Missing mandatory parameters.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 2. Incorrect parameter type.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 3. Parameter verification failed.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 12+ |
-
-**示例：**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-try {
-  // 需要手动将url替换为真实服务器的HTTP协议地址
-  request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
-    let downloadTask: request.DownloadTask = data;
-    let failCallback1 = (err: number) => {
-      console.error(`Failed to download the task. Code: ${err}`);
-    };
-    let failCallback2 = (err: number) => {
-      console.error(`Failed to download the task. Code: ${err}`);
-    };
-    downloadTask.on('fail', failCallback1);
-    downloadTask.on('fail', failCallback2);
-    // 表示取消failCallback1的订阅
-    downloadTask.off('fail', failCallback1);
-    // 表示取消订阅下载任务失败的所有回调
-    downloadTask.off('fail');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
-  })
-} catch (err) {
-  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
 ## offComplete
 
 ```TypeScript
@@ -905,7 +536,9 @@ Called when the current download session complete.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DownloadTask-offComplete(callback?: DownloadCompleteCallback): void--><!--Device-DownloadTask-offComplete(callback?: DownloadCompleteCallback): void-End-->
 
@@ -915,9 +548,9 @@ Called when the current download session complete.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | The callback function for the download complete event. |
+| callback | [DownloadCompleteCallback](arkts-basicservices-request-downloadcompletecallback-t.md) | 否 | The callback function for the download complete event. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -985,7 +618,9 @@ Called when the current download session fails.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DownloadTask-offFail(callback?: DownloadFailCallback): void--><!--Device-DownloadTask-offFail(callback?: DownloadFailCallback): void-End-->
 
@@ -995,9 +630,9 @@ Called when the current download session fails.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | The callback function for the download fail event. |
+| callback | [DownloadFailCallback](arkts-basicservices-request-downloadfailcallback-t.md) | 否 | The callback function for the download fail event. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1039,7 +674,9 @@ Called when the current download session pause.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DownloadTask-offPause(callback?: DownloadPauseCallback): void--><!--Device-DownloadTask-offPause(callback?: DownloadPauseCallback): void-End-->
 
@@ -1049,9 +686,9 @@ Called when the current download session pause.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | The callback function for the download pause event. |
+| callback | [DownloadPauseCallback](arkts-basicservices-request-downloadpausecallback-t.md) | 否 | The callback function for the download pause event. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1119,7 +756,9 @@ Called when the current download session is in process.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DownloadTask-offProgress(callback?: DownloadProgressCallback): void--><!--Device-DownloadTask-offProgress(callback?: DownloadProgressCallback): void-End-->
 
@@ -1129,9 +768,9 @@ Called when the current download session is in process.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | The callback function for the download progress event. |
+| callback | [DownloadProgressCallback](arkts-basicservices-request-downloadprogresscallback-t.md) | 否 | The callback function for the download progress event. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1173,7 +812,9 @@ Called when the current download session remove.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DownloadTask-offRemove(callback?: DownloadRemoveCallback): void--><!--Device-DownloadTask-offRemove(callback?: DownloadRemoveCallback): void-End-->
 
@@ -1183,9 +824,9 @@ Called when the current download session remove.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | The callback function for the download remove event. |
+| callback | [DownloadRemoveCallback](arkts-basicservices-request-downloadremovecallback-t.md) | 否 | The callback function for the download remove event. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1243,19 +884,262 @@ try {
 }
 ```
 
-## on('progress')
+## off_complete
 
 ```TypeScript
-on(type: 'progress', callback: (receivedSize: long, totalSize: long) => void): void
+off(type: 'complete' | 'pause' | 'remove', callback?: () => void): void
 ```
 
-订阅下载任务进度事件，使用callback异步回调。 > **说明：** > > 应用处于后台时，为满足功耗性能要求，不支持调用此接口进行回调。
+取消订阅下载任务相关的事件。
+
+**起始版本：** 7
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
+
+<!--Device-DownloadTask-off(type: 'complete' | 'pause' | 'remove', callback?: () => void): void--><!--Device-DownloadTask-off(type: 'complete' | 'pause' | 'remove', callback?: () => void): void-End-->
+
+**系统能力：** SystemCapability.MiscServices.Download
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'complete' \| 'pause' \| 'remove' | 是 | 取消订阅的事件类型。&lt;br/&gt;- 取值为'complete'，表示下载任务完成。&lt;br/&gt;- 取值为'pause'，表示下载任 务暂停。&lt;br/&gt;- 取值为'remove'，表示下载任务移除。 |
+| callback | () =&gt; void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | The parameters check fails. Possible causes: &lt;br&gt; 1. Missing mandatory parameters. &lt;br&gt; 2. Incorrect parameter type. &lt;br&gt; 3. Parameter verification failed.<br>**适用版本：** 12+ |
+
+## 示例
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  // 需要手动将url替换为真实服务器的HTTP协议地址
+  request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
+    let downloadTask: request.DownloadTask = data;
+    let completeCallback1 = () => {
+      console.info('Download delete complete notification.');
+    };
+    let completeCallback2 = () => {
+      console.info('Download delete complete notification.');
+    };
+    downloadTask.on('complete', completeCallback1);
+    downloadTask.on('complete', completeCallback2);
+    // 表示取消completeCallback1的订阅
+    downloadTask.off('complete', completeCallback1);
+    // 表示取消订阅下载任务完成的所有回调
+    downloadTask.off('complete');
+
+    let pauseCallback1 = () => {
+      console.info('Download delete pause notification.');
+    };
+    let pauseCallback2 = () => {
+      console.info('Download delete pause notification.');
+    };
+    downloadTask.on('pause', pauseCallback1);
+    downloadTask.on('pause', pauseCallback2);
+    // 表示取消pauseCallback1的订阅
+    downloadTask.off('pause', pauseCallback1);
+    // 表示取消订阅下载任务暂停的所有回调
+    downloadTask.off('pause');
+
+    let removeCallback1 = () => {
+      console.info('Download delete remove notification.');
+    };
+    let removeCallback2 = () => {
+      console.info('Download delete remove notification.');
+    };
+    downloadTask.on('remove', removeCallback1);
+    downloadTask.on('remove', removeCallback2);
+    // 表示取消removeCallback1的订阅
+    downloadTask.off('remove', removeCallback1);
+    // 表示取消订阅下载任务移除的所有回调
+    downloadTask.off('remove');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (err) {
+  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## off_fail
+
+```TypeScript
+off(type: 'fail', callback?: (err: int) => void): void
+```
+
+取消订阅下载任务失败事件。
+
+**起始版本：** 7
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
+
+<!--Device-DownloadTask-off(type: 'fail', callback?: (err: int) => void): void--><!--Device-DownloadTask-off(type: 'fail', callback?: (err: int) => void): void-End-->
+
+**系统能力：** SystemCapability.MiscServices.Download
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'fail' | 是 | 取消订阅的事件类型。&lt;br&gt;- 取值为'fail'，表示下载失败。 |
+| callback | (err: int) =&gt; void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | The parameters check fails. Possible causes: &lt;br&gt; 1. Missing mandatory parameters. &lt;br&gt; 2. Incorrect parameter type. &lt;br&gt; 3. Parameter verification failed.<br>**适用版本：** 12+ |
+
+## 示例
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  // 需要手动将url替换为真实服务器的HTTP协议地址
+  request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
+    let downloadTask: request.DownloadTask = data;
+    let failCallback1 = (err: number) => {
+      console.error(`Failed to download the task. Code: ${err}`);
+    };
+    let failCallback2 = (err: number) => {
+      console.error(`Failed to download the task. Code: ${err}`);
+    };
+    downloadTask.on('fail', failCallback1);
+    downloadTask.on('fail', failCallback2);
+    // 表示取消failCallback1的订阅
+    downloadTask.off('fail', failCallback1);
+    // 表示取消订阅下载任务失败的所有回调
+    downloadTask.off('fail');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (err) {
+  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## off_pause
+
+```TypeScript
+off(type: 'complete' | 'pause' | 'remove', callback?: () => void): void
+```
+
+取消订阅下载任务相关的事件。
+
+**起始版本：** 7
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
+
+<!--Device-DownloadTask-off(type: 'complete' | 'pause' | 'remove', callback?: () => void): void--><!--Device-DownloadTask-off(type: 'complete' | 'pause' | 'remove', callback?: () => void): void-End-->
+
+**系统能力：** SystemCapability.MiscServices.Download
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'complete' \| 'pause' \| 'remove' | 是 | 取消订阅的事件类型。&lt;br/&gt;- 取值为'complete'，表示下载任务完成。&lt;br/&gt;- 取值为'pause'，表示下载任 务暂停。&lt;br/&gt;- 取值为'remove'，表示下载任务移除。 |
+| callback | () =&gt; void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | The parameters check fails. Possible causes: &lt;br&gt; 1. Missing mandatory parameters. &lt;br&gt; 2. Incorrect parameter type. &lt;br&gt; 3. Parameter verification failed.<br>**适用版本：** 12+ |
+
+## 示例
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  // 需要手动将url替换为真实服务器的HTTP协议地址
+  request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
+    let downloadTask: request.DownloadTask = data;
+    let completeCallback1 = () => {
+      console.info('Download delete complete notification.');
+    };
+    let completeCallback2 = () => {
+      console.info('Download delete complete notification.');
+    };
+    downloadTask.on('complete', completeCallback1);
+    downloadTask.on('complete', completeCallback2);
+    // 表示取消completeCallback1的订阅
+    downloadTask.off('complete', completeCallback1);
+    // 表示取消订阅下载任务完成的所有回调
+    downloadTask.off('complete');
+
+    let pauseCallback1 = () => {
+      console.info('Download delete pause notification.');
+    };
+    let pauseCallback2 = () => {
+      console.info('Download delete pause notification.');
+    };
+    downloadTask.on('pause', pauseCallback1);
+    downloadTask.on('pause', pauseCallback2);
+    // 表示取消pauseCallback1的订阅
+    downloadTask.off('pause', pauseCallback1);
+    // 表示取消订阅下载任务暂停的所有回调
+    downloadTask.off('pause');
+
+    let removeCallback1 = () => {
+      console.info('Download delete remove notification.');
+    };
+    let removeCallback2 = () => {
+      console.info('Download delete remove notification.');
+    };
+    downloadTask.on('remove', removeCallback1);
+    downloadTask.on('remove', removeCallback2);
+    // 表示取消removeCallback1的订阅
+    downloadTask.off('remove', removeCallback1);
+    // 表示取消订阅下载任务移除的所有回调
+    downloadTask.off('remove');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (err) {
+  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## off_progress
+
+```TypeScript
+off(type: 'progress', callback?: (receivedSize: long, totalSize: long) => void): void
+```
+
+取消订阅下载任务进度事件。
 
 **起始版本：** 6
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
 
-<!--Device-DownloadTask-on(type: 'progress', callback: (receivedSize: long, totalSize: long) => void): void--><!--Device-DownloadTask-on(type: 'progress', callback: (receivedSize: long, totalSize: long) => void): void-End-->
+**废弃版本：** -1
+
+<!--Device-DownloadTask-off(type: 'progress', callback?: (receivedSize: long, totalSize: long) => void): void--><!--Device-DownloadTask-off(type: 'progress', callback?: (receivedSize: long, totalSize: long) => void): void-End-->
 
 **系统能力：** SystemCapability.MiscServices.Download
 
@@ -1263,16 +1147,16 @@ on(type: 'progress', callback: (receivedSize: long, totalSize: long) => void): v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'progress' | 是 | 订阅的事件类型。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- 取值为'progress'，表示下载的进度信息，当任务进度有进展时触发该事件。 |
-| callback | (receivedSize: long, totalSize: long) =&gt; void | 是 | 下载任务进度的回调函数，返回已上传文件大小和上传文件大小总和，单位为字节（B）。在下载过程中，若服务器使用chunk方式传输导致无法从请求头中获取文件总大小时，totalSize为 -1。 |
+| type | 'progress' | 是 | 取消订阅的事件类型。&lt;br&gt;- 取值为'progress'，表示下载的进度信息。 |
+| callback | (receivedSize: long, totalSize: long) =&gt; void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The parameters check fails. Possible causes:\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 1. Missing mandatory parameters.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 2. Incorrect parameter type.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 3. Parameter verification failed.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-参数检查失败) | The parameters check fails. Possible causes: &lt;br&gt; 1. Missing mandatory parameters. &lt;br&gt; 2. Incorrect parameter type. &lt;br&gt; 3. Parameter verification failed.<br>**适用版本：** 12+ |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1284,10 +1168,18 @@ try {
   // 需要手动将url替换为真实服务器的HTTP协议地址
   request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
     let downloadTask: request.DownloadTask = data;
-    let progressCallback = (receivedSize: number, totalSize: number) => {
-      console.info("download receivedSize:" + receivedSize + " totalSize:" + totalSize);
+    let progressCallback1 = (receivedSize: number, totalSize: number) => {
+      console.info('Download delete progress notification.' + 'receivedSize:' + receivedSize + 'totalSize:' + totalSize);
     };
-    downloadTask.on('progress', progressCallback);
+    let progressCallback2 = (receivedSize: number, totalSize: number) => {
+      console.info('Download delete progress notification.' + 'receivedSize:' + receivedSize + 'totalSize:' + totalSize);
+    };
+    downloadTask.on('progress', progressCallback1);
+    downloadTask.on('progress', progressCallback2);
+    // 表示取消progressCallback1的订阅
+    downloadTask.off('progress', progressCallback1);
+    // 表示取消订阅下载任务进度事件的所有回调
+    downloadTask.off('progress');
   }).catch((err: BusinessError) => {
     console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   })
@@ -1296,19 +1188,21 @@ try {
 }
 ```
 
-## on('complete' | 'pause' | 'remove')
+## off_remove
 
 ```TypeScript
-on(type: 'complete' | 'pause' | 'remove', callback: () => void): void
+off(type: 'complete' | 'pause' | 'remove', callback?: () => void): void
 ```
 
-订阅下载任务相关的事件，使用callback异步回调。
+取消订阅下载任务相关的事件。
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
-<!--Device-DownloadTask-on(type: 'complete' | 'pause' | 'remove', callback: () => void): void--><!--Device-DownloadTask-on(type: 'complete' | 'pause' | 'remove', callback: () => void): void-End-->
+**废弃版本：** -1
+
+<!--Device-DownloadTask-off(type: 'complete' | 'pause' | 'remove', callback?: () => void): void--><!--Device-DownloadTask-off(type: 'complete' | 'pause' | 'remove', callback?: () => void): void-End-->
 
 **系统能力：** SystemCapability.MiscServices.Download
 
@@ -1316,16 +1210,16 @@ on(type: 'complete' | 'pause' | 'remove', callback: () => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'complete' \| 'pause' \| 'remove' | 是 | 订阅的事件类型。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- 取值为'complete'，表示下载任务完成，任务完成时触发该事件。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- 取值为'pause'，表示下载任务暂停，任务暂停时触发该事件。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- 取值为'remove'，表示下载任务移除，任务移除时触发该事件。 |
-| callback | () =&gt; void | 是 | 下载任务相关的回调函数。 |
+| type | 'complete' \| 'pause' \| 'remove' | 是 | 取消订阅的事件类型。&lt;br/&gt;- 取值为'complete'，表示下载任务完成。&lt;br/&gt;- 取值为'pause'，表示下载任 务暂停。&lt;br/&gt;- 取值为'remove'，表示下载任务移除。 |
+| callback | () =&gt; void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The parameters check fails. Possible causes:\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 1. Missing mandatory parameters.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 2. Incorrect parameter type.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 3. Parameter verification failed.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-参数检查失败) | The parameters check fails. Possible causes: &lt;br&gt; 1. Missing mandatory parameters. &lt;br&gt; 2. Incorrect parameter type. &lt;br&gt; 3. Parameter verification failed.<br>**适用版本：** 12+ |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1337,199 +1231,44 @@ try {
   // 需要手动将url替换为真实服务器的HTTP协议地址
   request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
     let downloadTask: request.DownloadTask = data;
-    let completeCallback = () => {
-      console.info('Download task completed.');
+    let completeCallback1 = () => {
+      console.info('Download delete complete notification.');
     };
-    downloadTask.on('complete', completeCallback);
-
-    let pauseCallback = () => {
-      console.info('Download task pause.');
+    let completeCallback2 = () => {
+      console.info('Download delete complete notification.');
     };
-    downloadTask.on('pause', pauseCallback);
+    downloadTask.on('complete', completeCallback1);
+    downloadTask.on('complete', completeCallback2);
+    // 表示取消completeCallback1的订阅
+    downloadTask.off('complete', completeCallback1);
+    // 表示取消订阅下载任务完成的所有回调
+    downloadTask.off('complete');
 
-    let removeCallback = () => {
-      console.info('Download task remove.');
+    let pauseCallback1 = () => {
+      console.info('Download delete pause notification.');
     };
-    downloadTask.on('remove', removeCallback);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
-  })
-} catch (err) {
-  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
-## on('complete' | 'pause' | 'remove')
-
-```TypeScript
-on(type: 'complete' | 'pause' | 'remove', callback: () => void): void
-```
-
-订阅下载任务相关的事件，使用callback异步回调。
-
-**起始版本：** 7
-
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
-
-<!--Device-DownloadTask-on(type: 'complete' | 'pause' | 'remove', callback: () => void): void--><!--Device-DownloadTask-on(type: 'complete' | 'pause' | 'remove', callback: () => void): void-End-->
-
-**系统能力：** SystemCapability.MiscServices.Download
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'complete' \| 'pause' \| 'remove' | 是 | 订阅的事件类型。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- 取值为'complete'，表示下载任务完成，任务完成时触发该事件。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- 取值为'pause'，表示下载任务暂停，任务暂停时触发该事件。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- 取值为'remove'，表示下载任务移除，任务移除时触发该事件。 |
-| callback | () =&gt; void | 是 | 下载任务相关的回调函数。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The parameters check fails. Possible causes:\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 1. Missing mandatory parameters.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 2. Incorrect parameter type.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 3. Parameter verification failed.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 12+ |
-
-**示例：**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-try {
-  // 需要手动将url替换为真实服务器的HTTP协议地址
-  request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
-    let downloadTask: request.DownloadTask = data;
-    let completeCallback = () => {
-      console.info('Download task completed.');
+    let pauseCallback2 = () => {
+      console.info('Download delete pause notification.');
     };
-    downloadTask.on('complete', completeCallback);
+    downloadTask.on('pause', pauseCallback1);
+    downloadTask.on('pause', pauseCallback2);
+    // 表示取消pauseCallback1的订阅
+    downloadTask.off('pause', pauseCallback1);
+    // 表示取消订阅下载任务暂停的所有回调
+    downloadTask.off('pause');
 
-    let pauseCallback = () => {
-      console.info('Download task pause.');
+    let removeCallback1 = () => {
+      console.info('Download delete remove notification.');
     };
-    downloadTask.on('pause', pauseCallback);
-
-    let removeCallback = () => {
-      console.info('Download task remove.');
+    let removeCallback2 = () => {
+      console.info('Download delete remove notification.');
     };
-    downloadTask.on('remove', removeCallback);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
-  })
-} catch (err) {
-  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
-## on('complete' | 'pause' | 'remove')
-
-```TypeScript
-on(type: 'complete' | 'pause' | 'remove', callback: () => void): void
-```
-
-订阅下载任务相关的事件，使用callback异步回调。
-
-**起始版本：** 7
-
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
-
-<!--Device-DownloadTask-on(type: 'complete' | 'pause' | 'remove', callback: () => void): void--><!--Device-DownloadTask-on(type: 'complete' | 'pause' | 'remove', callback: () => void): void-End-->
-
-**系统能力：** SystemCapability.MiscServices.Download
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'complete' \| 'pause' \| 'remove' | 是 | 订阅的事件类型。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- 取值为'complete'，表示下载任务完成，任务完成时触发该事件。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- 取值为'pause'，表示下载任务暂停，任务暂停时触发该事件。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- 取值为'remove'，表示下载任务移除，任务移除时触发该事件。 |
-| callback | () =&gt; void | 是 | 下载任务相关的回调函数。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The parameters check fails. Possible causes:\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 1. Missing mandatory parameters.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 2. Incorrect parameter type.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 3. Parameter verification failed.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 12+ |
-
-**示例：**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-try {
-  // 需要手动将url替换为真实服务器的HTTP协议地址
-  request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
-    let downloadTask: request.DownloadTask = data;
-    let completeCallback = () => {
-      console.info('Download task completed.');
-    };
-    downloadTask.on('complete', completeCallback);
-
-    let pauseCallback = () => {
-      console.info('Download task pause.');
-    };
-    downloadTask.on('pause', pauseCallback);
-
-    let removeCallback = () => {
-      console.info('Download task remove.');
-    };
-    downloadTask.on('remove', removeCallback);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
-  })
-} catch (err) {
-  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
-## on('fail')
-
-```TypeScript
-on(type: 'fail', callback: (err: int) => void): void
-```
-
-订阅下载任务失败事件，使用callback异步回调。
-
-**起始版本：** 7
-
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
-
-<!--Device-DownloadTask-on(type: 'fail', callback: (err: int) => void): void--><!--Device-DownloadTask-on(type: 'fail', callback: (err: int) => void): void-End-->
-
-**系统能力：** SystemCapability.MiscServices.Download
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'fail' | 是 | 订阅的事件类型。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- 取值为'fail'，表示下载失败，任务失败时触发该事件。 |
-| callback | (err: int) =&gt; void | 是 | 下载失败的回调函数。错误原因见\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The parameters check fails. Possible causes:\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 1. Missing mandatory parameters.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 2. Incorrect parameter type.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 3. Parameter verification failed.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 12+ |
-
-**示例：**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-try {
-  // 需要手动将url替换为真实服务器的HTTP协议地址
-  request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
-    let downloadTask: request.DownloadTask = data;
-    let failCallback = (err: number) => {
-      console.error(`Failed to download the task. Code: ${err}`);
-    };
-    downloadTask.on('fail', failCallback);
+    downloadTask.on('remove', removeCallback1);
+    downloadTask.on('remove', removeCallback2);
+    // 表示取消removeCallback1的订阅
+    downloadTask.off('remove', removeCallback1);
+    // 表示取消订阅下载任务移除的所有回调
+    downloadTask.off('remove');
   }).catch((err: BusinessError) => {
     console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   })
@@ -1548,7 +1287,9 @@ Called when the current download session complete.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DownloadTask-onComplete(callback: DownloadCompleteCallback): void--><!--Device-DownloadTask-onComplete(callback: DownloadCompleteCallback): void-End-->
 
@@ -1558,9 +1299,9 @@ Called when the current download session complete.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | The callback function for the download complete event. |
+| callback | [DownloadCompleteCallback](arkts-basicservices-request-downloadcompletecallback-t.md) | 是 | The callback function for the download complete event. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1604,7 +1345,9 @@ Called when the current download session fails.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DownloadTask-onFail(callback: DownloadFailCallback): void--><!--Device-DownloadTask-onFail(callback: DownloadFailCallback): void-End-->
 
@@ -1614,9 +1357,9 @@ Called when the current download session fails.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | The callback function for the download fail event. |
+| callback | [DownloadFailCallback](arkts-basicservices-request-downloadfailcallback-t.md) | 是 | The callback function for the download fail event. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1650,7 +1393,9 @@ Called when the current download session pause.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DownloadTask-onPause(callback: DownloadPauseCallback): void--><!--Device-DownloadTask-onPause(callback: DownloadPauseCallback): void-End-->
 
@@ -1660,9 +1405,9 @@ Called when the current download session pause.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | The callback function for the download pause event. |
+| callback | [DownloadPauseCallback](arkts-basicservices-request-downloadpausecallback-t.md) | 是 | The callback function for the download pause event. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1706,7 +1451,9 @@ Called when the current download session is in process.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DownloadTask-onProgress(callback: DownloadProgressCallback): void--><!--Device-DownloadTask-onProgress(callback: DownloadProgressCallback): void-End-->
 
@@ -1716,9 +1463,9 @@ Called when the current download session is in process.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | The callback function for the download progress event. |
+| callback | [DownloadProgressCallback](arkts-basicservices-request-downloadprogresscallback-t.md) | 是 | The callback function for the download progress event. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1752,7 +1499,9 @@ Called when the current download session remove.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DownloadTask-onRemove(callback: DownloadRemoveCallback): void--><!--Device-DownloadTask-onRemove(callback: DownloadRemoveCallback): void-End-->
 
@@ -1762,9 +1511,9 @@ Called when the current download session remove.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | The callback function for the download remove event. |
+| callback | [DownloadRemoveCallback](arkts-basicservices-request-downloadremovecallback-t.md) | 是 | The callback function for the download remove event. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1798,13 +1547,318 @@ try {
 }
 ```
 
+## on_complete
+
+```TypeScript
+on(type: 'complete' | 'pause' | 'remove', callback: () => void): void
+```
+
+订阅下载任务相关的事件，使用callback异步回调。
+
+**起始版本：** 7
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
+
+<!--Device-DownloadTask-on(type: 'complete' | 'pause' | 'remove', callback: () => void): void--><!--Device-DownloadTask-on(type: 'complete' | 'pause' | 'remove', callback: () => void): void-End-->
+
+**系统能力：** SystemCapability.MiscServices.Download
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'complete' \| 'pause' \| 'remove' | 是 | 订阅的事件类型。&lt;br&gt;- 取值为'complete'，表示下载任务完成，任务完成时触发该事件。&lt;br/&gt;- 取值为' pause'，表示下载任务暂停，任务暂停时触发该事件。&lt;br/&gt;- 取值为'remove'，表示下载任务移除，任务移除时触发该事件。 |
+| callback | () =&gt; void | 是 | 下载任务相关的回调函数。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | The parameters check fails. Possible causes: &lt;br&gt; 1. Missing mandatory parameters. &lt;br&gt; 2. Incorrect parameter type. &lt;br&gt; 3. Parameter verification failed.<br>**适用版本：** 12+ |
+
+## 示例
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  // 需要手动将url替换为真实服务器的HTTP协议地址
+  request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
+    let downloadTask: request.DownloadTask = data;
+    let completeCallback = () => {
+      console.info('Download task completed.');
+    };
+    downloadTask.on('complete', completeCallback);
+
+    let pauseCallback = () => {
+      console.info('Download task pause.');
+    };
+    downloadTask.on('pause', pauseCallback);
+
+    let removeCallback = () => {
+      console.info('Download task remove.');
+    };
+    downloadTask.on('remove', removeCallback);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (err) {
+  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## on_fail
+
+```TypeScript
+on(type: 'fail', callback: (err: int) => void): void
+```
+
+订阅下载任务失败事件，使用callback异步回调。
+
+**起始版本：** 7
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
+
+<!--Device-DownloadTask-on(type: 'fail', callback: (err: int) => void): void--><!--Device-DownloadTask-on(type: 'fail', callback: (err: int) => void): void-End-->
+
+**系统能力：** SystemCapability.MiscServices.Download
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'fail' | 是 | 订阅的事件类型。&lt;br&gt;- 取值为'fail'，表示下载失败，任务失败时触发该事件。 |
+| callback | (err: int) =&gt; void | 是 | 下载失败的回调函数。错误原因见 下载任务的错误码。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | The parameters check fails. Possible causes: &lt;br&gt; 1. Missing mandatory parameters. &lt;br&gt; 2. Incorrect parameter type. &lt;br&gt; 3. Parameter verification failed.<br>**适用版本：** 12+ |
+
+## 示例
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  // 需要手动将url替换为真实服务器的HTTP协议地址
+  request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
+    let downloadTask: request.DownloadTask = data;
+    let failCallback = (err: number) => {
+      console.error(`Failed to download the task. Code: ${err}`);
+    };
+    downloadTask.on('fail', failCallback);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (err) {
+  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## on_pause
+
+```TypeScript
+on(type: 'complete' | 'pause' | 'remove', callback: () => void): void
+```
+
+订阅下载任务相关的事件，使用callback异步回调。
+
+**起始版本：** 7
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
+
+<!--Device-DownloadTask-on(type: 'complete' | 'pause' | 'remove', callback: () => void): void--><!--Device-DownloadTask-on(type: 'complete' | 'pause' | 'remove', callback: () => void): void-End-->
+
+**系统能力：** SystemCapability.MiscServices.Download
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'complete' \| 'pause' \| 'remove' | 是 | 订阅的事件类型。&lt;br&gt;- 取值为'complete'，表示下载任务完成，任务完成时触发该事件。&lt;br/&gt;- 取值为' pause'，表示下载任务暂停，任务暂停时触发该事件。&lt;br/&gt;- 取值为'remove'，表示下载任务移除，任务移除时触发该事件。 |
+| callback | () =&gt; void | 是 | 下载任务相关的回调函数。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | The parameters check fails. Possible causes: &lt;br&gt; 1. Missing mandatory parameters. &lt;br&gt; 2. Incorrect parameter type. &lt;br&gt; 3. Parameter verification failed.<br>**适用版本：** 12+ |
+
+## 示例
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  // 需要手动将url替换为真实服务器的HTTP协议地址
+  request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
+    let downloadTask: request.DownloadTask = data;
+    let completeCallback = () => {
+      console.info('Download task completed.');
+    };
+    downloadTask.on('complete', completeCallback);
+
+    let pauseCallback = () => {
+      console.info('Download task pause.');
+    };
+    downloadTask.on('pause', pauseCallback);
+
+    let removeCallback = () => {
+      console.info('Download task remove.');
+    };
+    downloadTask.on('remove', removeCallback);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (err) {
+  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## on_progress
+
+```TypeScript
+on(type: 'progress', callback: (receivedSize: long, totalSize: long) => void): void
+```
+
+订阅下载任务进度事件，使用callback异步回调。 > **说明：** > > 应用处于后台时，为满足功耗性能要求，不支持调用此接口进行回调。
+
+**起始版本：** 6
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+
+**废弃版本：** -1
+
+<!--Device-DownloadTask-on(type: 'progress', callback: (receivedSize: long, totalSize: long) => void): void--><!--Device-DownloadTask-on(type: 'progress', callback: (receivedSize: long, totalSize: long) => void): void-End-->
+
+**系统能力：** SystemCapability.MiscServices.Download
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'progress' | 是 | 订阅的事件类型。&lt;br&gt;- 取值为'progress'，表示下载的进度信息，当任务进度有进展时触发该事件。 |
+| callback | (receivedSize: long, totalSize: long) =&gt; void | 是 | 下载任务进度的回调函数，返回已上传文件大小和上传文件大小总和，单位为字节（B）。在下载过程中，若服务器使用chunk方式传输导致无法从请求头中获取文件总大小时， totalSize为 -1。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | The parameters check fails. Possible causes: &lt;br&gt; 1. Missing mandatory parameters. &lt;br&gt; 2. Incorrect parameter type. &lt;br&gt; 3. Parameter verification failed.<br>**适用版本：** 12+ |
+
+## 示例
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  // 需要手动将url替换为真实服务器的HTTP协议地址
+  request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
+    let downloadTask: request.DownloadTask = data;
+    let progressCallback = (receivedSize: number, totalSize: number) => {
+      console.info("download receivedSize:" + receivedSize + " totalSize:" + totalSize);
+    };
+    downloadTask.on('progress', progressCallback);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (err) {
+  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## on_remove
+
+```TypeScript
+on(type: 'complete' | 'pause' | 'remove', callback: () => void): void
+```
+
+订阅下载任务相关的事件，使用callback异步回调。
+
+**起始版本：** 7
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
+
+<!--Device-DownloadTask-on(type: 'complete' | 'pause' | 'remove', callback: () => void): void--><!--Device-DownloadTask-on(type: 'complete' | 'pause' | 'remove', callback: () => void): void-End-->
+
+**系统能力：** SystemCapability.MiscServices.Download
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'complete' \| 'pause' \| 'remove' | 是 | 订阅的事件类型。&lt;br&gt;- 取值为'complete'，表示下载任务完成，任务完成时触发该事件。&lt;br/&gt;- 取值为' pause'，表示下载任务暂停，任务暂停时触发该事件。&lt;br/&gt;- 取值为'remove'，表示下载任务移除，任务移除时触发该事件。 |
+| callback | () =&gt; void | 是 | 下载任务相关的回调函数。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | The parameters check fails. Possible causes: &lt;br&gt; 1. Missing mandatory parameters. &lt;br&gt; 2. Incorrect parameter type. &lt;br&gt; 3. Parameter verification failed.<br>**适用版本：** 12+ |
+
+## 示例
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  // 需要手动将url替换为真实服务器的HTTP协议地址
+  request.downloadFile(context, { url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
+    let downloadTask: request.DownloadTask = data;
+    let completeCallback = () => {
+      console.info('Download task completed.');
+    };
+    downloadTask.on('complete', completeCallback);
+
+    let pauseCallback = () => {
+      console.info('Download task pause.');
+    };
+    downloadTask.on('pause', pauseCallback);
+
+    let removeCallback = () => {
+      console.info('Download task remove.');
+    };
+    downloadTask.on('remove', removeCallback);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (err) {
+  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## pause
 
 ```TypeScript
 pause(callback: AsyncCallback<void>): void
 ```
 
-暂停下载正在运行中的任务，使用callback异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃，建议使用 > [suspend]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。
+暂停下载正在运行中的任务，使用callback异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃，建议使用 > [suspend](#suspend)替代。
 
 **起始版本：** 7
 
@@ -1812,7 +1866,7 @@ pause(callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** [request.DownloadTask.suspend](arkts-basicservices-request-downloadtask-i.md#suspend)(callback:
+**替代接口：** [suspend](#suspend)(callback: AsyncCallback&lt;boolean&gt;)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -1824,7 +1878,7 @@ pause(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数。当暂停下载任务成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当暂停下载任务成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1832,7 +1886,7 @@ pause(callback: AsyncCallback<void>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 downloadTask.pause((err: BusinessError) => {
@@ -1850,7 +1904,7 @@ downloadTask.pause((err: BusinessError) => {
 pause(): Promise<void>
 ```
 
-暂停下载正在运行中的任务，使用Promise异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃，建议使用[suspend]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。
+暂停下载正在运行中的任务，使用Promise异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃，建议使用[suspend](#suspend)替代。
 
 **起始版本：** 7
 
@@ -1858,7 +1912,7 @@ pause(): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [request.DownloadTask.suspend](arkts-basicservices-request-downloadtask-i.md#suspend)()
+**替代接口：** [suspend](#suspend)()
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -1878,7 +1932,7 @@ pause(): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 downloadTask.pause().then(() => {    
@@ -1894,7 +1948,7 @@ downloadTask.pause().then(() => {
 query(callback: AsyncCallback<DownloadInfo>): void
 ```
 
-查询下载任务，返回下载任务的信息，使用callback异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃，建议使用 > [getTaskInfo]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。
+查询下载任务，返回下载任务的信息，使用callback异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃，建议使用 > [getTaskInfo](#getTaskInfo)替代。
 
 **起始版本：** 7
 
@@ -1902,7 +1956,7 @@ query(callback: AsyncCallback<DownloadInfo>): void
 
 **废弃版本：** 9
 
-**替代接口：** [request.DownloadTask.getTaskInfo](arkts-basicservices-request-downloadtask-i.md#gettaskinfo)(callback:
+**替代接口：** [getTaskInfo](#getTaskInfo)(callback: AsyncCallback&lt;DownloadInfo&gt;)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -1914,7 +1968,7 @@ query(callback: AsyncCallback<DownloadInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;DownloadInfo&gt; | 是 | 回调函数。当查询下载任务成功，err为undefined，data为获取到的DownloadInfo对象；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;DownloadInfo&gt; | 是 | 回调函数。当查询下载任务成功，err为undefined，data为获取到的DownloadInfo对象；否则为错误对象。 |
 
 **错误码：**
 
@@ -1922,7 +1976,7 @@ query(callback: AsyncCallback<DownloadInfo>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 downloadTask.query((err: BusinessError, downloadInfo: request.DownloadInfo)=>{
@@ -1940,7 +1994,7 @@ downloadTask.query((err: BusinessError, downloadInfo: request.DownloadInfo)=>{
 query(): Promise<DownloadInfo>
 ```
 
-查询下载任务，返回下载任务的信息，使用Promise异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃,建议使用[getTaskInfo]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。
+查询下载任务，返回下载任务的信息，使用Promise异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃,建议使用[getTaskInfo](#getTaskInfo)替代。
 
 **起始版本：** 7
 
@@ -1948,7 +2002,7 @@ query(): Promise<DownloadInfo>
 
 **废弃版本：** 9
 
-**替代接口：** [request.DownloadTask.getTaskInfo](arkts-basicservices-request-downloadtask-i.md#gettaskinfo)()
+**替代接口：** [getTaskInfo](#getTaskInfo)()
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -1968,7 +2022,7 @@ query(): Promise<DownloadInfo>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 downloadTask.query().then((downloadInfo) => {    
@@ -1984,7 +2038,7 @@ downloadTask.query().then((downloadInfo) => {
 queryMimeType(callback: AsyncCallback<string>): void
 ```
 
-查询下载的任务的MimeType，使用callback异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃，建议使用 > [getTaskMimeType]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。
+查询下载的任务的MimeType，使用callback异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃，建议使用 > [getTaskMimeType](#getTaskMimeType)替代。
 
 **起始版本：** 7
 
@@ -1992,7 +2046,7 @@ queryMimeType(callback: AsyncCallback<string>): void
 
 **废弃版本：** 9
 
-**替代接口：** [request.DownloadTask.getTaskMimeType](arkts-basicservices-request-downloadtask-i.md#gettaskmimetype)(callback:
+**替代接口：** [getTaskMimeType](#getTaskMimeType)(callback: AsyncCallback&lt;string&gt;)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -2004,7 +2058,7 @@ queryMimeType(callback: AsyncCallback<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;string&gt; | 是 | 回调函数。当查询下载任务的MimeType成功，err为undefined，data为获取到的任务的MimeType对象；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数。当查询下载任务的MimeType成功，err为undefined，data为获取到的任务的MimeType对象；否则为错误对象。 |
 
 **错误码：**
 
@@ -2012,7 +2066,7 @@ queryMimeType(callback: AsyncCallback<string>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 downloadTask.queryMimeType((err: BusinessError, data: string)=>{
@@ -2030,7 +2084,7 @@ downloadTask.queryMimeType((err: BusinessError, data: string)=>{
 queryMimeType(): Promise<string>
 ```
 
-查询下载任务的MimeType，使用Promise异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃，建议使用[getTaskMimeType]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。
+查询下载任务的MimeType，使用Promise异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃，建议使用[getTaskMimeType](#getTaskMimeType)替代。
 
 **起始版本：** 7
 
@@ -2038,7 +2092,7 @@ queryMimeType(): Promise<string>
 
 **废弃版本：** 9
 
-**替代接口：** [request.DownloadTask.getTaskMimeType](arkts-basicservices-request-downloadtask-i.md#gettaskmimetype)()
+**替代接口：** [getTaskMimeType](#getTaskMimeType)()
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -2058,7 +2112,7 @@ queryMimeType(): Promise<string>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 downloadTask.queryMimeType().then((data: string) => {    
@@ -2074,7 +2128,7 @@ downloadTask.queryMimeType().then((data: string) => {
 remove(callback: AsyncCallback<boolean>): void
 ```
 
-移除下载的任务，使用callback异步回调。 > **说明：** > > 从API version 6开始支持，从API version 9开始废弃，建议使用 > [delete]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。
+移除下载的任务，使用callback异步回调。 > **说明：** > > 从API version 6开始支持，从API version 9开始废弃，建议使用 > [delete](arkts-basicservices-request-uploadtask-i.md#delete)替代。
 
 **起始版本：** 6
 
@@ -2082,7 +2136,7 @@ remove(callback: AsyncCallback<boolean>): void
 
 **废弃版本：** 9
 
-**替代接口：** [request.UploadTask.delete](arkts-basicservices-request-uploadtask-i.md#delete)(callback:
+**替代接口：** [delete](arkts-basicservices-request-uploadtask-i.md#delete)(callback: AsyncCallback&lt;boolean&gt;)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -2094,7 +2148,7 @@ remove(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;boolean&gt; | 是 | 回调函数。返回true表示移除下载任务成功；返回false表示移除下载任务失败。 |
+| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示移除下载任务成功；返回false表示移除下载任务失败。 |
 
 **错误码：**
 
@@ -2102,7 +2156,7 @@ remove(callback: AsyncCallback<boolean>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 downloadTask.remove((err, result)=>{
@@ -2120,7 +2174,7 @@ downloadTask.remove((err, result)=>{
 remove(): Promise<boolean>
 ```
 
-移除下载的任务，使用Promise异步回调。 > **说明：** > > 从API version 6开始支持，从API version 9开始废弃，建议使用[delete]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。
+移除下载的任务，使用Promise异步回调。 > **说明：** > > 从API version 6开始支持，从API version 9开始废弃，建议使用[delete](arkts-basicservices-request-uploadtask-i.md#delete)替代。
 
 **起始版本：** 6
 
@@ -2128,7 +2182,7 @@ remove(): Promise<boolean>
 
 **废弃版本：** 9
 
-**替代接口：** [request.UploadTask.delete](arkts-basicservices-request-uploadtask-i.md#delete)()
+**替代接口：** [delete](arkts-basicservices-request-uploadtask-i.md#delete)()
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -2148,7 +2202,7 @@ remove(): Promise<boolean>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 downloadTask.remove().then((result) => {
@@ -2164,11 +2218,13 @@ downloadTask.remove().then((result) => {
 restore(callback: AsyncCallback<boolean>): void
 ```
 
-重新启动被暂停的下载任务，使用callback异步回调。 > **说明：** > > 由于不存在401报错场景，在api12中 \_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_ 这个错误码被移除。
+重新启动被暂停的下载任务，使用callback异步回调。 > **说明：** > > 由于不存在401报错场景，在api12中 `401 the parameters check fails` 这个错误码被移除。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -2180,7 +2236,7 @@ restore(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;boolean&gt; | 是 | 回调函数。返回true表示重新启动已暂停的下载任务成功；返回false表示重新启动下载任务失败。 |
+| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示重新启动已暂停的下载任务成功；返回false表示重新启动下载任务失败。 |
 
 **错误码：**
 
@@ -2188,7 +2244,7 @@ restore(callback: AsyncCallback<boolean>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -2250,11 +2306,13 @@ try {
 restore(): Promise<boolean>
 ```
 
-重新启动被暂停的下载任务，使用Promise异步回调。 > **说明：** > > 由于不存在401报错场景，在api12中 \_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_ 这个错误码被移除。
+重新启动被暂停的下载任务，使用Promise异步回调。 > **说明：** > > 由于不存在401报错场景，在api12中 `401 the parameters check fails` 这个错误码被移除。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -2274,7 +2332,7 @@ restore(): Promise<boolean>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -2332,7 +2390,7 @@ try {
 resume(callback: AsyncCallback<void>): void
 ```
 
-重新启动被暂停的下载任务，使用callback异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃，建议使用 > [restore]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。
+重新启动被暂停的下载任务，使用callback异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃，建议使用 > [restore](#restore)替代。
 
 **起始版本：** 7
 
@@ -2340,7 +2398,7 @@ resume(callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** [request.DownloadTask.restore](arkts-basicservices-request-downloadtask-i.md#restore)(callback:
+**替代接口：** [restore](#restore)(callback: AsyncCallback&lt;boolean&gt;)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -2352,7 +2410,7 @@ resume(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数。当重新启动已暂停的下载任务成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当重新启动已暂停的下载任务成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -2360,7 +2418,7 @@ resume(callback: AsyncCallback<void>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 downloadTask.resume((err: BusinessError) => {
@@ -2378,7 +2436,7 @@ downloadTask.resume((err: BusinessError) => {
 resume(): Promise<void>
 ```
 
-重新启动被暂停的下载任务，使用Promise异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃，建议使用[restore]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。
+重新启动被暂停的下载任务，使用Promise异步回调。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃，建议使用[restore](#restore)替代。
 
 **起始版本：** 7
 
@@ -2386,7 +2444,7 @@ resume(): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [request.DownloadTask.restore](arkts-basicservices-request-downloadtask-i.md#restore)()
+**替代接口：** [restore](#restore)()
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -2406,7 +2464,7 @@ resume(): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 downloadTask.resume().then(() => {
@@ -2422,11 +2480,13 @@ downloadTask.resume().then(() => {
 suspend(callback: AsyncCallback<boolean>): void
 ```
 
-暂停下载正在运行中的任务，已暂停的任务可被[restore]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_恢复，使用callback异步回调。 > **说明：** > > 由于不存在401报错场景，在api12中 \_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_ 这个错误码被移除。
+暂停下载正在运行中的任务，已暂停的任务可被[restore](#restore)恢复，使用callback异步回调。 > **说明：** > > 由于不存在401报错场景，在api12中 `401 the parameters check fails` 这个错误码被移除。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -2438,7 +2498,7 @@ suspend(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;boolean&gt; | 是 | 回调函数。返回true表示暂停下载任务成功；返回false表示暂停下载任务失败。 |
+| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示暂停下载任务成功；返回false表示暂停下载任务失败。 |
 
 **错误码：**
 
@@ -2446,7 +2506,7 @@ suspend(callback: AsyncCallback<boolean>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -2508,11 +2568,13 @@ try {
 suspend(): Promise<boolean>
 ```
 
-暂停下载正在运行中的任务，已暂停的任务可被[restore]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_恢复，使用Promise异步回调。 > **说明：** > > 由于不存在401报错场景，在api12中 \_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_ 这个错误码被移除。
+暂停下载正在运行中的任务，已暂停的任务可被[restore](#restore)恢复，使用Promise异步回调。 > **说明：** > > 由于不存在401报错场景，在api12中 `401 the parameters check fails` 这个错误码被移除。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -2532,7 +2594,7 @@ suspend(): Promise<boolean>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

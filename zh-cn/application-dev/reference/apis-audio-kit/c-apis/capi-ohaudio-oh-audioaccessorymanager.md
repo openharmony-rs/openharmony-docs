@@ -6,7 +6,7 @@ typedef struct OH_AudioAccessoryManager OH_AudioAccessoryManager
 
 ## 概述
 
-声明音频附件管理器。
+声明音频配件管理器。用于管理音频配件相关功能。
 
 **起始版本：** 26.0.0
 

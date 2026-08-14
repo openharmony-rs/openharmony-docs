@@ -6,6 +6,8 @@ ListItemGroup组件参数。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface ListItemGroupOptions--><!--Device-unnamed-declare interface ListItemGroupOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -23,6 +25,8 @@ footer?: CustomBuilder
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -44,6 +48,8 @@ footerComponent?: ComponentContent
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务API中使用。
@@ -60,13 +66,15 @@ footerStyle?: ListItemGroupHeaderFooterStyle
 
 设置ListItemGroup尾部样式。 默认值：ListItemGroupHeaderFooterStyle.NONE 设置为ListItemGroupHeaderFooterStyle.NONE时无样式。 设置为ListItemGroupHeaderFooterStyle.FLOATING时，尾部组件在滚动时悬浮显示。
 
-**类型：** ListItemGroupHeaderFooterStyle
+**类型：** [ListItemGroupHeaderFooterStyle](arkts-arkui-listitemgroupheaderfooterstyle-e.md)
 
 **默认值：** ListItemGroupHeaderFooterStyle.NONE
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -90,6 +98,8 @@ header?: CustomBuilder
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ListItemGroupOptions-header?: CustomBuilder--><!--Device-ListItemGroupOptions-header?: CustomBuilder-End-->
@@ -110,6 +120,8 @@ headerComponent?: ComponentContent
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务API中使用。
@@ -126,13 +138,15 @@ headerStyle?: ListItemGroupHeaderFooterStyle
 
 设置ListItemGroup头部样式。 默认值：ListItemGroupHeaderFooterStyle.NONE 设置为ListItemGroupHeaderFooterStyle.NONE时无样式。 设置为ListItemGroupHeaderFooterStyle.FLOATING时，头部组件在滚动时悬浮显示。
 
-**类型：** ListItemGroupHeaderFooterStyle
+**类型：** [ListItemGroupHeaderFooterStyle](arkts-arkui-listitemgroupheaderfooterstyle-e.md)
 
 **默认值：** ListItemGroupHeaderFooterStyle.NONE
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -158,6 +172,8 @@ space?: number | string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ListItemGroupOptions-space?: number | string--><!--Device-ListItemGroupOptions-space?: number | string-End-->
@@ -178,6 +194,8 @@ spaceWidth?: Dimension
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -192,13 +210,15 @@ spaceWidth?: Dimension
 style?: ListItemGroupStyle
 ```
 
-设置ListItemGroup组件卡片样式。 默认值：ListItemGroupStyle.NONE 设置为ListItemGroupStyle.NONE时无样式。 设置为ListItemGroupStyle.CARD时，建议配合[ListItem]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_的ListItemStyle.CARD同时使用，显示默认卡片样式。 卡片样式下，ListItemGroup默认规格：左右外边距12vp，上下左右内边距4vp。 卡片样式下，为卡片内的列表选项提供了默认的focused、hover、pressed、selected和disabled样式。 **说明：** 当设置为ListItemGroupStyle.CARD时，List的listDirection属性值须为Axis.Vertical，如果设置为Axis.Horizontal，会导致显示混乱；List属性 [alignListItem]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_默认为ListItemAlign.Center，居中对齐显示。
+设置ListItemGroup组件卡片样式。 默认值：ListItemGroupStyle.NONE 设置为ListItemGroupStyle.NONE时无样式。 设置为ListItemGroupStyle.CARD时，建议配合ListItem的ListItemStyle.CARD同时使用，显示默认卡片样式。 卡片样式下，ListItemGroup默认规格：左右外边距12vp，上下左右内边距4vp。 卡片样式下，为卡片内的列表选项提供了默认的focused、hover、pressed、selected和disabled样式。 **说明：** 当设置为ListItemGroupStyle.CARD时，List的listDirection属性值须为Axis.Vertical，如果设置为Axis.Horizontal，会导致显示混乱；List属性 alignListItem默认为ListItemAlign.Center，居中对齐显示。
 
-**类型：** ListItemGroupStyle
+**类型：** [ListItemGroupStyle](arkts-arkui-listitemgroupstyle-e.md)
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

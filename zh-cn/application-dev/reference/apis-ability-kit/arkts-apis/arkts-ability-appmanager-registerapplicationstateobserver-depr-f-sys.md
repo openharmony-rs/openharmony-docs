@@ -14,7 +14,7 @@ function registerApplicationStateObserver(observer: ApplicationStateObserver): n
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.appManager/appManager#on
+**替代接口：** [on](arkts-ability-appmanager-onapplicationstate-f.md#on_applicationState)
 
 **需要权限：** ohos.permission.RUNNING_STATE_OBSERVER
 
@@ -28,7 +28,7 @@ function registerApplicationStateObserver(observer: ApplicationStateObserver): n
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| observer | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 表示程序状态观测器，用于观测应用的生命周期变化。 |
+| observer | [ApplicationStateObserver](arkts-ability-applicationstateobserver-c.md) | 是 | 表示程序状态观测器，用于观测应用的生命周期变化。 |
 
 **返回值：**
 
@@ -36,7 +36,7 @@ function registerApplicationStateObserver(observer: ApplicationStateObserver): n
 | --- | --- |
 | number | 已注册观测器的数字代码。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import appManager from '@ohos.application.appManager';

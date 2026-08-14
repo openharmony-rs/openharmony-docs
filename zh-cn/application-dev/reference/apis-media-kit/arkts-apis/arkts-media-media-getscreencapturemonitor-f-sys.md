@@ -12,6 +12,8 @@ Obtains a **ScreenCaptureMonitor** instance. This API uses a promise to return t
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 <!--Device-media-function getScreenCaptureMonitor(): Promise<ScreenCaptureMonitor>--><!--Device-media-function getScreenCaptureMonitor(): Promise<ScreenCaptureMonitor>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
@@ -22,16 +24,16 @@ Obtains a **ScreenCaptureMonitor** instance. This API uses a promise to return t
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;ScreenCaptureMonitor&gt; | Promise used to return the result. The instance can be used to query |
+| Promise&lt;[ScreenCaptureMonitor](arkts-media-multimedia-media-screencapturemonitor-i-sys.md)&gt; | Promise used to return the result. The instance can be used to query and monitor the status of the system screen recorder. &lt;br&gt;If the operation is successful, a **ScreenCaptureMonitor** instance is returned; otherwise, **null** is returned. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 | [5400101](../errorcode-media.md#5400101-内存分配失败) | No memory. Return by promise. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let screenCaptureMonitor: media.ScreenCaptureMonitor;
@@ -53,7 +55,9 @@ Obtains a **ScreenCaptureMonitor** instance. This API uses a promise to return t
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-media-function getScreenCaptureMonitor(): Promise<ScreenCaptureMonitor | undefined>--><!--Device-media-function getScreenCaptureMonitor(): Promise<ScreenCaptureMonitor | undefined>-End-->
 
@@ -65,12 +69,12 @@ Obtains a **ScreenCaptureMonitor** instance. This API uses a promise to return t
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;ScreenCaptureMonitor \| undefined&gt; | Promise used to return the result. The instance can be used |
+| Promise&lt;[ScreenCaptureMonitor](arkts-media-multimedia-media-screencapturemonitor-i-sys.md) \| undefined&gt; | Promise used to return the result. The instance can be used to query and monitor the status of the system screen recorder. &lt;br&gt;If the operation is successful, a **ScreenCaptureMonitor** instance is returned; otherwise, **null** is returned. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 | [5400101](../errorcode-media.md#5400101-内存分配失败) | No memory. Return by promise. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 

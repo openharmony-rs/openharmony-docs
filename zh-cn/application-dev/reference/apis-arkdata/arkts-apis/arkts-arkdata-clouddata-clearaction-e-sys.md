@@ -2,9 +2,11 @@
 
 清除本地下载的云端数据的行为枚举。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-cloudData-enum ClearAction--><!--Device-cloudData-enum ClearAction-End-->
 
@@ -20,9 +22,11 @@ CLEAR_CLOUD_INFO = 0
 
 清除从云端下载的数据的云标识（即数据来源于云端的标记信息），相关数据作为本地数据保存。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ClearAction-CLEAR_CLOUD_INFO = 0--><!--Device-ClearAction-CLEAR_CLOUD_INFO = 0-End-->
 
@@ -38,9 +42,11 @@ CLEAR_CLOUD_DATA_AND_INFO = 1
 
 清除从云端下载的数据，不包括本地已修改的云端数据。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ClearAction-CLEAR_CLOUD_DATA_AND_INFO = 1--><!--Device-ClearAction-CLEAR_CLOUD_DATA_AND_INFO = 1-End-->
 
@@ -58,7 +64,9 @@ CLEAR_CLOUD_NONE = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ClearAction-CLEAR_CLOUD_NONE = 2--><!--Device-ClearAction-CLEAR_CLOUD_NONE = 2-End-->
 

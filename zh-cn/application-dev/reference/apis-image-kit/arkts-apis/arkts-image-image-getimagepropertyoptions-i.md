@@ -1,6 +1,6 @@
 # GetImagePropertyOptions
 
-表示查询图片属性的索引。 > **说明：** > > [ImagePropertyOptions]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_代替。
+表示查询图片属性的索引。 > **说明：** > > [ImagePropertyOptions](arkts-image-image-imagepropertyoptions-i.md#ImagePropertyOptions)代替。
 
 **起始版本：** 7
 
@@ -8,7 +8,7 @@
 
 **废弃版本：** 11
 
-**替代接口：** [image.ImagePropertyOptions](arkts-image-image-imagepropertyoptions-i.md)
+**替代接口：** [ImagePropertyOptions](arkts-image-image-imagepropertyoptions-i.md#ImagePropertyOptions)
 
 <!--Device-image-interface GetImagePropertyOptions--><!--Device-image-interface GetImagePropertyOptions-End-->
 
@@ -30,7 +30,7 @@ defaultValue?: string
 
 **废弃版本：** 11
 
-**替代接口：** [image.ImagePropertyOptions#defaultValue](arkts-image-image-imagepropertyoptions-i.md#defaultvalue)
+**替代接口：** [defaultValue](arkts-image-image-imagepropertyoptions-i.md#defaultValue)
 
 <!--Device-GetImagePropertyOptions-defaultValue?: string--><!--Device-GetImagePropertyOptions-defaultValue?: string-End-->
 
@@ -52,7 +52,7 @@ index?: number
 
 **废弃版本：** 11
 
-**替代接口：** [image.ImagePropertyOptions#index](arkts-image-image-imagepropertyoptions-i.md#index)
+**替代接口：** [index](arkts-image-image-imagepropertyoptions-i.md#index)
 
 <!--Device-GetImagePropertyOptions-index?: number--><!--Device-GetImagePropertyOptions-index?: number-End-->
 

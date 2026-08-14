@@ -4,7 +4,9 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-mechanicManager-export enum ActionType--><!--Device-mechanicManager-export enum ActionType-End-->
 
@@ -22,7 +24,9 @@ LANDSCAPE_PORTRAIT_SWITCH = 0
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-ActionType-LANDSCAPE_PORTRAIT_SWITCH = 0--><!--Device-ActionType-LANDSCAPE_PORTRAIT_SWITCH = 0-End-->
 
@@ -40,7 +44,9 @@ PATROL_MODE = 1
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-ActionType-PATROL_MODE = 1--><!--Device-ActionType-PATROL_MODE = 1-End-->
 
@@ -58,7 +64,9 @@ GREET_MODE = 2
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-ActionType-GREET_MODE = 2--><!--Device-ActionType-GREET_MODE = 2-End-->
 
@@ -76,7 +84,9 @@ HEAD_UP = 3
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-ActionType-HEAD_UP = 3--><!--Device-ActionType-HEAD_UP = 3-End-->
 
@@ -94,7 +104,9 @@ HEAD_UP_SLIGHTLY = 4
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-ActionType-HEAD_UP_SLIGHTLY = 4--><!--Device-ActionType-HEAD_UP_SLIGHTLY = 4-End-->
 
@@ -112,7 +124,9 @@ EYE_LEVEL = 5
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-ActionType-EYE_LEVEL = 5--><!--Device-ActionType-EYE_LEVEL = 5-End-->
 
@@ -130,7 +144,9 @@ HEAD_DOWN_SLIGHTLY = 6
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-ActionType-HEAD_DOWN_SLIGHTLY = 6--><!--Device-ActionType-HEAD_DOWN_SLIGHTLY = 6-End-->
 
@@ -148,7 +164,9 @@ HEAD_DOWN = 7
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-ActionType-HEAD_DOWN = 7--><!--Device-ActionType-HEAD_DOWN = 7-End-->
 
@@ -166,7 +184,9 @@ HEAD_WIGGLE = 8
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-ActionType-HEAD_WIGGLE = 8--><!--Device-ActionType-HEAD_WIGGLE = 8-End-->
 
@@ -184,7 +204,9 @@ NOD = 9
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-ActionType-NOD = 9--><!--Device-ActionType-NOD = 9-End-->
 
@@ -202,7 +224,9 @@ HEAD_SHAKE = 10
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-ActionType-HEAD_SHAKE = 10--><!--Device-ActionType-HEAD_SHAKE = 10-End-->
 
@@ -220,7 +244,9 @@ HAPPY = 1000
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-ActionType-HAPPY = 1000--><!--Device-ActionType-HAPPY = 1000-End-->
 
@@ -238,7 +264,9 @@ ANGRY = 1001
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-ActionType-ANGRY = 1001--><!--Device-ActionType-ANGRY = 1001-End-->
 
@@ -256,7 +284,9 @@ SAD = 1002
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-ActionType-SAD = 1002--><!--Device-ActionType-SAD = 1002-End-->
 
@@ -274,7 +304,9 @@ SCARED = 1003
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-ActionType-SCARED = 1003--><!--Device-ActionType-SCARED = 1003-End-->
 
@@ -292,7 +324,9 @@ DANCE = 2000
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-ActionType-DANCE = 2000--><!--Device-ActionType-DANCE = 2000-End-->
 
@@ -310,7 +344,9 @@ ACTING_CUTE = 2001
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-ActionType-ACTING_CUTE = 2001--><!--Device-ActionType-ACTING_CUTE = 2001-End-->
 
@@ -328,7 +364,9 @@ CELEBRATE = 2002
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-ActionType-CELEBRATE = 2002--><!--Device-ActionType-CELEBRATE = 2002-End-->
 
@@ -346,7 +384,9 @@ WAKEUP = 2003
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-ActionType-WAKEUP = 2003--><!--Device-ActionType-WAKEUP = 2003-End-->
 
@@ -364,7 +404,9 @@ SLEEP = 2004
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-ActionType-SLEEP = 2004--><!--Device-ActionType-SLEEP = 2004-End-->
 
@@ -382,7 +424,9 @@ LOW_POWER = 2005
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-ActionType-LOW_POWER = 2005--><!--Device-ActionType-LOW_POWER = 2005-End-->
 
@@ -400,7 +444,9 @@ THINKING = 2006
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-ActionType-THINKING = 2006--><!--Device-ActionType-THINKING = 2006-End-->
 

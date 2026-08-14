@@ -2,9 +2,11 @@
 
 定义打印机首选项的接口。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-print-interface PrinterPreferences--><!--Device-print-interface PrinterPreferences-End-->
 
@@ -20,9 +22,11 @@ borderless?: boolean
 
 **类型：** boolean
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrinterPreferences-borderless?: boolean--><!--Device-PrinterPreferences-borderless?: boolean-End-->
 
@@ -40,7 +44,9 @@ defaultCollate?: boolean
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -56,11 +62,13 @@ defaultColorMode?: PrintColorMode
 
 表示默认色彩模式。默认值为黑白。 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**类型：** PrintColorMode
+**类型：** [PrintColorMode](arkts-basicservices-print-printcolormode-e.md)
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -76,11 +84,13 @@ defaultDuplexMode?: PrintDuplexMode
 
 表示默认单双面模式。
 
-**类型：** PrintDuplexMode
+**类型：** [PrintDuplexMode](arkts-basicservices-print-printduplexmode-e.md)
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrinterPreferences-defaultDuplexMode?: PrintDuplexMode--><!--Device-PrinterPreferences-defaultDuplexMode?: PrintDuplexMode-End-->
 
@@ -96,9 +106,11 @@ defaultMediaType?: string
 
 **类型：** string
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrinterPreferences-defaultMediaType?: string--><!--Device-PrinterPreferences-defaultMediaType?: string-End-->
 
@@ -112,11 +124,13 @@ defaultOrientation?: PrintOrientationMode
 
 表示默认打印方向。
 
-**类型：** PrintOrientationMode
+**类型：** [PrintOrientationMode](arkts-basicservices-print-printorientationmode-e.md)
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrinterPreferences-defaultOrientation?: PrintOrientationMode--><!--Device-PrinterPreferences-defaultOrientation?: PrintOrientationMode-End-->
 
@@ -128,13 +142,15 @@ defaultOrientation?: PrintOrientationMode
 defaultPageSizeId?: string
 ```
 
-表示默认纸张尺寸的ID，其范围包含国际标准化组织定义的标准纸张尺寸，如ISO\_A4，和系统中定义的非标准的纸张尺寸，如Custom.178x254mm，表示这种纸张尺寸为178毫米 x 254毫米。
+表示默认纸张尺寸的ID，其范围包含国际标准化组织定义的标准纸张尺寸，如ISO_A4，和系统中定义的非标准的纸张尺寸，如Custom.178x254mm，表示这种纸张尺寸为178毫米 x 254毫米。
 
 **类型：** string
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrinterPreferences-defaultPageSizeId?: string--><!--Device-PrinterPreferences-defaultPageSizeId?: string-End-->
 
@@ -148,11 +164,13 @@ defaultPrintQuality?: PrintQuality
 
 表示默认打印质量。
 
-**类型：** PrintQuality
+**类型：** [PrintQuality](arkts-basicservices-print-printquality-e.md)
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrinterPreferences-defaultPrintQuality?: PrintQuality--><!--Device-PrinterPreferences-defaultPrintQuality?: PrintQuality-End-->
 
@@ -170,7 +188,9 @@ defaultReverse?: boolean
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -188,9 +208,11 @@ options?: string
 
 **类型：** string
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrinterPreferences-options?: string--><!--Device-PrinterPreferences-options?: string-End-->
 

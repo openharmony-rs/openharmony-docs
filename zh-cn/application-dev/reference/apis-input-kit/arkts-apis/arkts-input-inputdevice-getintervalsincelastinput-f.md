@@ -8,9 +8,11 @@ function getIntervalSinceLastInput(): Promise<long>
 
 获取距离上次系统输入事件的时间间隔（包含设备休眠时间），使用Promise异步回调。
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-inputDevice-function getIntervalSinceLastInput(): Promise<long>--><!--Device-inputDevice-function getIntervalSinceLastInput(): Promise<long>-End-->
 
@@ -20,9 +22,9 @@ function getIntervalSinceLastInput(): Promise<long>
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: Promise&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：Promise&lt;long&gt; | Promise对象，返回距离上次系统输入事件的时间间隔，单位为微秒（μs）。 |
+| Promise&lt;long&gt; | Promise对象，返回距离上次系统输入事件的时间间隔，单位为微秒（μs）。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

@@ -1,14 +1,16 @@
 # AlertDialogParamWithConfirm
 
-继承自[AlertDialogParam]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。 confirm参数优先级：fontColor、backgroundColor > style > defaultFocus
+继承自[AlertDialogParam](arkts-arkui-alertdialogparam-i.md#AlertDialogParam)。 confirm参数优先级：fontColor、backgroundColor > style > defaultFocus
 
-**继承/实现关系：** AlertDialogParamWithConfirm extends [AlertDialogParam](../../apis-na/arkts-apis/arkts-na-component/alertdialog-alertdialogparam-i.md)
+**继承/实现关系：** AlertDialogParamWithConfirm extends [AlertDialogParam](arkts-arkui-alertdialogparam-i.md#AlertDialogParam)
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
-<!--Device-unnamed-declare interface AlertDialogParamWithConfirm extends AlertDialogParam--><!--Device-unnamed-declare interface AlertDialogParamWithConfirm extends AlertDialogParam-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare interface AlertDialogParamWithConfirm--><!--Device-unnamed-declare interface AlertDialogParamWithConfirm-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -20,11 +22,13 @@ confirm?: AlertDialogButtonBaseOptions
 
 确认Button的使能状态、默认焦点、按钮风格、文本内容、文本色、按钮背景色和点击回调。在弹窗获焦且未进行tab键走焦时，该按钮默认响应Enter键。多重弹窗情况下，可自动获焦并连续响应。默认响应Enter键能力在 defaultFocus为true时不生效。
 
-**类型：** AlertDialogButtonBaseOptions
+**类型：** [AlertDialogButtonBaseOptions](arkts-arkui-alertdialogbuttonbaseoptions-i.md)
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

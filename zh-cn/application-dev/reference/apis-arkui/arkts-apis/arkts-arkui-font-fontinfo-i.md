@@ -4,6 +4,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-font-interface FontInfo--><!--Device-font-interface FontInfo-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -21,6 +23,8 @@ family: string
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,6 +46,8 @@ fullName: string
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FontInfo-fullName: string--><!--Device-FontInfo-fullName: string-End-->
@@ -61,6 +67,8 @@ italic: boolean
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -82,6 +90,8 @@ monoSpace: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FontInfo-monoSpace: boolean--><!--Device-FontInfo-monoSpace: boolean-End-->
@@ -101,6 +111,8 @@ path: string
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -122,6 +134,8 @@ postScriptName: string
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FontInfo-postScriptName: string--><!--Device-FontInfo-postScriptName: string-End-->
@@ -141,6 +155,8 @@ subfamily: string
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -162,6 +178,8 @@ symbolic: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FontInfo-symbolic: boolean--><!--Device-FontInfo-symbolic: boolean-End-->
@@ -174,13 +192,15 @@ symbolic: boolean
 weight: int
 ```
 
-系统字体的字重。 取值范围：[100,900]，取值间隔为100，分别对应 \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_枚举中的值。 默认值：100
+系统字体的字重。 取值范围：[100,900]，取值间隔为100，分别对应 FontWeight枚举中的值。 默认值：100
 
 **类型：** int
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -194,13 +214,15 @@ weight: int
 width: int
 ```
 
-系统字体的宽度。 取值范围：[1,9]，取值间隔为1，分别对应\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_枚 举中的值。
+系统字体的宽度。 取值范围：[1,9]，取值间隔为1，分别对应FontWidth枚 举中的值。
 
 **类型：** int
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

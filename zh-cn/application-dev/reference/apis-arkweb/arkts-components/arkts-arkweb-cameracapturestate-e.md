@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare enum CameraCaptureState--><!--Device-unnamed-declare enum CameraCaptureState-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -21,6 +23,8 @@ NONE = 0
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-CameraCaptureState-NONE = 0--><!--Device-CameraCaptureState-NONE = 0-End-->
 
@@ -38,6 +42,8 @@ PAUSED = 1
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-CameraCaptureState-PAUSED = 1--><!--Device-CameraCaptureState-PAUSED = 1-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -53,6 +59,8 @@ ACTIVE = 2
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-CameraCaptureState-ACTIVE = 2--><!--Device-CameraCaptureState-ACTIVE = 2-End-->
 

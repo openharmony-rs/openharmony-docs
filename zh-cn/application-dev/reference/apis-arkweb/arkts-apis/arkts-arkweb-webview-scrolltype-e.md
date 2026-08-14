@@ -1,10 +1,12 @@
 # ScrollType
 
-Scroll滚动类型，用于[setScrollable]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+Scroll滚动类型，用于[setScrollable](../../apis-na/arkts-apis/arkts-na-webview-webviewcontroller-c.md#setScrollable)。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-webview-enum ScrollType--><!--Device-webview-enum ScrollType-End-->
 
@@ -21,6 +23,8 @@ EVENT = 0
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-ScrollType-EVENT = 0--><!--Device-ScrollType-EVENT = 0-End-->
 

@@ -1,6 +1,6 @@
 # HuksHandle
 
-huks Handle结构体。 > **说明：** > > 从API version 9开始废弃，建议使用[HuksSessionHandle\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_9+\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。
+huks Handle结构体。 > **说明：** > > 从API version 9开始废弃，建议使用[HuksSessionHandle&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-hukssessionhandle-i.md#HuksSessionHandle)替代。
 
 **起始版本：** 8
 
@@ -8,7 +8,7 @@ huks Handle结构体。 > **说明：** > > 从API version 9开始废弃，建�
 
 **废弃版本：** 9
 
-**替代接口：** [null]
+**替代接口：** null
 
 <!--Device-huks-export interface HuksHandle--><!--Device-huks-export interface HuksHandle-End-->
 

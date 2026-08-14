@@ -8,9 +8,11 @@ function getDistributedSessionController(distributedSessionType: DistributedSess
 
 根据远端会话类型，获取远端分布式会话控制器。结果通过Promise异步回调方式返回。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -24,24 +26,24 @@ function getDistributedSessionController(distributedSessionType: DistributedSess
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| distributedSessionType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 远端会话类型。 |
+| distributedSessionType | [DistributedSessionType](arkts-avsession-avsession-distributedsessiontype-e-sys.md) | 是 | 远端会话类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;AVSessionController&gt;&gt; | Promise对象。返回对应类型的会话控制器实例列表，可查看会话ID，并完成对会话发送命令及事件，获取元数据、播放状态信息等操作。 |
+| Promise&lt;Array&lt;[AVSessionController](arkts-avsession-avsession-avsessioncontroller-i.md)&gt;&gt; | Promise对象。返回对应类型的会话控制器实例列表，可查看会话ID，并完成对会话发送命令及事件，获取元数据、播放状态信息等操作。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied |
 | [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 avSession.getDistributedSessionController(avSession.DistributedSessionType.TYPE_SESSION_REMOTE).then((sessionControllers: Array<avSession.AVSessionController>) => {

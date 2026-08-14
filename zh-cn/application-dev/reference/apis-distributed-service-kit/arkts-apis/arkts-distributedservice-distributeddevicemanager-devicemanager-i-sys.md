@@ -2,9 +2,11 @@
 
 设备管理实例，用于获取可信设备和本地设备的相关信息。在调用DeviceManager的方法前，需要先通过createDeviceManager构建一个DeviceManager实例dmInstance。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-distributedDeviceManager-interface DeviceManager--><!--Device-distributedDeviceManager-interface DeviceManager-End-->
 
@@ -18,9 +20,11 @@ getDeviceIconInfo(filterOptions: DeviceIconInfoFilterOptions): Promise<DeviceIco
 
 获取设备图标，使用Promise异步回调。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -34,25 +38,25 @@ getDeviceIconInfo(filterOptions: DeviceIconInfoFilterOptions): Promise<DeviceIco
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| filterOptions | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 查询过程中使用的过滤条件。 |
+| filterOptions | [DeviceIconInfoFilterOptions](arkts-distributedservice-distributeddevicemanager-deviceiconinfofilteroptions-i-sys.md) | 是 | 查询过程中使用的过滤条件。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;DeviceIconInfo&gt; | Promise实例，返回设备图标信息。 |
+| Promise&lt;[DeviceIconInfo](arkts-distributedservice-distributeddevicemanager-deviceiconinfo-i-sys.md)&gt; | Promise实例，返回设备图标信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter type;3. Parameter verification failed; |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; |
+| [11600102](../../apis-distributedservice-kit/errorcode-device-manager.md#11600102-获取服务失败) | Failed to obtain service. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [11600102](../../apis-distributedservice-kit/errorcode-device-manager.md#11600102-获取服务失败) | Failed to obtain service. |
 | [11600106](../../apis-distributedservice-kit/errorcode-device-manager.md#11600106-从云端获取数据失败) | Get data from cloud fail. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -122,9 +126,11 @@ getDeviceNetworkIdList(filterOptions: NetworkIdQueryFilter): Promise<Array<strin
 
 获取符合条件的网络设备ID列表。使用Promise异步回调。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -138,7 +144,7 @@ getDeviceNetworkIdList(filterOptions: NetworkIdQueryFilter): Promise<Array<strin
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| filterOptions | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 查询过程中使用的过滤条件。 |
+| filterOptions | [NetworkIdQueryFilter](arkts-distributedservice-distributeddevicemanager-networkidqueryfilter-i-sys.md) | 是 | 查询过程中使用的过滤条件。 |
 
 **返回值：**
 
@@ -150,13 +156,13 @@ getDeviceNetworkIdList(filterOptions: NetworkIdQueryFilter): Promise<Array<strin
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Parameter verification failed; |
+| [11600102](../../apis-distributedservice-kit/errorcode-device-manager.md#11600102-获取服务失败) | Failed to obtain service. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Parameter verification failed; |
-| [11600102](../../apis-distributedservice-kit/errorcode-device-manager.md#11600102-获取服务失败) | Failed to obtain service. |
 | [11600107](../../apis-distributedservice-kit/errorcode-device-manager.md#11600107-需要登录账号) | A login account is required. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -212,9 +218,11 @@ getDeviceProfileInfoList(filterOptions: DeviceProfileInfoFilterOptions): Promise
 
 获取同账号下全部的设备列表，使用Promise异步回调。
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -228,26 +236,26 @@ getDeviceProfileInfoList(filterOptions: DeviceProfileInfoFilterOptions): Promise
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| filterOptions | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 查询过程中使用的过滤条件。 |
+| filterOptions | [DeviceProfileInfoFilterOptions](arkts-distributedservice-distributeddevicemanager-deviceprofileinfofilteroptions-i-sys.md) | 是 | 查询过程中使用的过滤条件。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;DeviceProfileInfo&gt;&gt; | Promise实例，返回设备列表。 |
+| Promise&lt;Array&lt;[DeviceProfileInfo](arkts-distributedservice-distributeddevicemanager-deviceprofileinfo-i-sys.md)&gt;&gt; | Promise实例，返回设备列表。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter type;3. Parameter verification failed;4. The size of specified type is greater than 500. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 500. |
+| [11600102](../../apis-distributedservice-kit/errorcode-device-manager.md#11600102-获取服务失败) | Failed to obtain service. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [11600102](../../apis-distributedservice-kit/errorcode-device-manager.md#11600102-获取服务失败) | Failed to obtain service. |
-| [11600106](../../apis-distributedservice-kit/errorcode-device-manager.md#11600106-从云端获取数据失败) | Get data from cloud fail. |
 | [11600107](../../apis-distributedservice-kit/errorcode-device-manager.md#11600107-需要登录账号) | A login account is required. |
+| [11600106](../../apis-distributedservice-kit/errorcode-device-manager.md#11600106-从云端获取数据失败) | Get data from cloud fail. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -297,7 +305,9 @@ getIdentificationByDeviceIds(deviceIds: Array<string>): Array<DeviceIdentificati
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC and ohos.permission.ACCESS_SERVICE_DM and ohos.permission.sec.ACCESS_UDID
 
@@ -319,18 +329,18 @@ getIdentificationByDeviceIds(deviceIds: Array<string>): Array<DeviceIdentificati
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;DeviceIdentification&gt; | DeviceIdentification列表。 |
+| Array&lt;[DeviceIdentification](arkts-distributedservice-distributeddevicemanager-deviceidentification-i-sys.md)&gt; | DeviceIdentification列表。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [11600101](../../apis-distributedservice-kit/errorcode-device-manager.md#11600101-服务调用异常) | Failed to execute the function. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | User permission verify failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| [11600101](../../apis-distributedservice-kit/errorcode-device-manager.md#11600101-服务调用异常) | Failed to execute the function. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let idsLists: undefined|Array<distributedDeviceManager.DeviceIdentification> = [];
@@ -347,21 +357,17 @@ try {
 
 ## getLocalDisplayDeviceName
 
-ArkTS-Dyn:
-```TypeScript
-getLocalDisplayDeviceName(maxNameLength: number): Promise<string>
-```
-
-ArkTS-Sta:
 ```TypeScript
 getLocalDisplayDeviceName(maxNameLength: int): Promise<string>
 ```
 
 获取本机指定长度（字节数）的显示名，使用Promise异步回调。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -375,7 +381,7 @@ getLocalDisplayDeviceName(maxNameLength: int): Promise<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| maxNameLength | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 可显示的设备名称长度（字节数），取值范围为[18，100]，为0时表示不限制。 |
+| maxNameLength | int | 是 | 可显示的设备名称长度（字节数），取值范围为[18，100]，为0时表示不限制。 |
 
 **返回值：**
 
@@ -387,12 +393,12 @@ getLocalDisplayDeviceName(maxNameLength: int): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter type;3. Parameter verification failed; |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; |
 | [11600102](../../apis-distributedservice-kit/errorcode-device-manager.md#11600102-获取服务失败) | Failed to obtain service. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -435,12 +441,6 @@ try {
 
 ## getOsTypeByNetworkId
 
-ArkTS-Dyn:
-```TypeScript
-getOsTypeByNetworkId(networkId: string): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getOsTypeByNetworkId(networkId: string): int
 ```
@@ -449,7 +449,9 @@ getOsTypeByNetworkId(networkId: string): int
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.1.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC and ohos.permission.ACCESS_SERVICE_DM
 
@@ -471,18 +473,67 @@ getOsTypeByNetworkId(networkId: string): int
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | - Returns the device operating system type. |
+| int | Returns the device operating system type. Possible return: 1. 10: Operating system based on OpenHarmony 2. 11: Operating system not based on OpenHarmony 3. -1: Unknown |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [11600102](../../apis-distributedservice-kit/errorcode-device-manager.md#11600102-获取服务失败) | Failed to obtain service. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | User permission verify failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
-| [11600102](../../apis-distributedservice-kit/errorcode-device-manager.md#11600102-获取服务失败) | Failed to obtain service. |
 | 11600110 | Invalid network ID. |
 
-## off('replyResult')
+## offReplyResult
+
+```TypeScript
+offReplyResult(callback?: Callback<ReplyResult>): void
+```
+
+取消回复UI操作结果回调。使用callback异步回调。
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
+
+**需要权限：** ohos.permission.ACCESS_SERVICE_DM
+
+<!--Device-DeviceManager-offReplyResult(callback?: Callback<ReplyResult>): void--><!--Device-DeviceManager-offReplyResult(callback?: Callback<ReplyResult>): void-End-->
+
+**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[ReplyResult](arkts-distributedservice-distributeddevicemanager-replyresult-i-sys.md)&gt; | 否 | 指示要取消注册的设备管理器 UI 状态，返回UI状态。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+
+## 示例
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+  dmInstance.offReplyResult();
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`offReplyResult errCode: ${e.code}, errMessage: ${e.message}`);
+}
+```
+
+## off_replyResult
 
 ```TypeScript
 off(type: 'replyResult', callback?: Callback<{ param: string; }>): void
@@ -493,6 +544,8 @@ off(type: 'replyResult', callback?: Callback<{ param: string; }>): void
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -507,17 +560,17 @@ off(type: 'replyResult', callback?: Callback<{ param: string; }>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'replyResult' | 是 | 取消注册的设备管理器 UI 状态回调，固定为replyResult。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;{ param: string; }&gt; | 否 |  |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;{ param: string; }&gt; | 否 |  |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter type;3. Parameter verification failed;4. The size of specified type is greater than 255. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -531,21 +584,23 @@ try {
 }
 ```
 
-## offReplyResult
+## onReplyResult
 
 ```TypeScript
-offReplyResult(callback?: Callback<ReplyResult>): void
+onReplyResult(callback: Callback<ReplyResult>): void
 ```
 
-取消回复UI操作结果回调。使用callback异步回调。
+回复UI操作结果回调。使用callback异步回调。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
-<!--Device-DeviceManager-offReplyResult(callback?: Callback<ReplyResult>): void--><!--Device-DeviceManager-offReplyResult(callback?: Callback<ReplyResult>): void-End-->
+<!--Device-DeviceManager-onReplyResult(callback: Callback<ReplyResult>): void--><!--Device-DeviceManager-onReplyResult(callback: Callback<ReplyResult>): void-End-->
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
@@ -555,30 +610,32 @@ offReplyResult(callback?: Callback<ReplyResult>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;ReplyResult&gt; | 否 | 指示要取消注册的设备管理器 UI 状态，返回UI状态。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[ReplyResult](arkts-distributedservice-distributeddevicemanager-replyresult-i-sys.md)&gt; | 是 | 指示要注册的设备管理器 UI 状态回调，返回UI状态。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-  dmInstance.offReplyResult();
+  dmInstance.onReplyResult((data: distributedDeviceManager.ReplyResult) => {
+    console.info('onReplyResult executed, data: ' + JSON.stringify(data));
+  });
 } catch (err) {
   let e: BusinessError = err as BusinessError;
-  console.error(`offReplyResult errCode: ${e.code}, errMessage: ${e.message}`);
+  console.error(`onReplyResult errCode: ${e.code}, errMessage: ${e.message}`);
 }
 ```
 
-## on('replyResult')
+## on_replyResult
 
 ```TypeScript
 on(type: 'replyResult', callback: Callback<{ param: string; }>): void
@@ -589,6 +646,8 @@ on(type: 'replyResult', callback: Callback<{ param: string; }>): void
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -603,17 +662,17 @@ on(type: 'replyResult', callback: Callback<{ param: string; }>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'replyResult' | 是 | 注册的设备管理器 UI 状态回调，以便在状态改变时通知应用，固定为replyResult。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;{ param: string; }&gt; | 是 |  |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;{ param: string; }&gt; | 是 |  |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter type;3. Parameter verification failed;4. The size of specified type is greater than 255. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -640,72 +699,19 @@ try {
 }
 ```
 
-## onReplyResult
-
-```TypeScript
-onReplyResult(callback: Callback<ReplyResult>): void
-```
-
-回复UI操作结果回调。使用callback异步回调。
-
-**起始版本：** 23
-
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
-
-**需要权限：** ohos.permission.ACCESS_SERVICE_DM
-
-<!--Device-DeviceManager-onReplyResult(callback: Callback<ReplyResult>): void--><!--Device-DeviceManager-onReplyResult(callback: Callback<ReplyResult>): void-End-->
-
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;ReplyResult&gt; | 是 | 指示要注册的设备管理器 UI 状态回调，返回UI状态。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-
-**示例：**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-  dmInstance.onReplyResult((data: distributedDeviceManager.ReplyResult) => {
-    console.info('onReplyResult executed, data: ' + JSON.stringify(data));
-  });
-} catch (err) {
-  let e: BusinessError = err as BusinessError;
-  console.error(`onReplyResult errCode: ${e.code}, errMessage: ${e.message}`);
-}
-```
-
 ## putDeviceProfileInfoList
 
-ArkTS-Dyn:
-```TypeScript
-putDeviceProfileInfoList(deviceProfileInfoList: Array<DeviceProfileInfo>): Promise<number>
-```
-
-ArkTS-Sta:
 ```TypeScript
 putDeviceProfileInfoList(deviceProfileInfoList: Array<DeviceProfileInfo>): Promise<int>
 ```
 
 业务调用更新设备列表，使用Promise异步回调。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -719,24 +725,24 @@ putDeviceProfileInfoList(deviceProfileInfoList: Array<DeviceProfileInfo>): Promi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deviceProfileInfoList | Array&lt;DeviceProfileInfo&gt; | 是 | 需要更新的设备列表。 |
+| deviceProfileInfoList | Array&lt;[DeviceProfileInfo](arkts-distributedservice-distributeddevicemanager-deviceprofileinfo-i-sys.md)&gt; | 是 | 需要更新的设备列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: Promise&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：Promise&lt;int&gt; | 操作结果，0表示本次调用成功。 |
+| Promise&lt;int&gt; | 操作结果，0表示本次调用成功。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter type;3. Parameter verification failed;4. The size of specified type is greater than 500. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 500. |
 | [11600102](../../apis-distributedservice-kit/errorcode-device-manager.md#11600102-获取服务失败) | Failed to obtain service. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -779,21 +785,17 @@ try {
 
 ## replyUiAction
 
-ArkTS-Dyn:
-```TypeScript
-replyUiAction(action: number, actionResult: string): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 replyUiAction(action: int, actionResult: string): void
 ```
 
 回复用户UI操作行为。此接口只能被devicemanager的PIN码hap使用。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -807,18 +809,18 @@ replyUiAction(action: int, actionResult: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| action | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 用户操作动作。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- 0：允许授权。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- 1：取消授权。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- 2：授权框用户操作超时。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_3\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- 3：取消pin码框展示。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_4\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- 4：取消pin码输入框展示。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_5\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- 5：pin码输入框确定操作。 |
+| action | int | 是 | 用户操作动作。 &lt;br /&gt;- 0：允许授权。 &lt;br /&gt;- 1：取消授权。 &lt;br /&gt;- 2：授权框用户操作超时。 &lt;br /&gt;- 3：取消pin码框展示。 &lt;br /&gt;- 4：取消pin码输入框展示。 &lt;br /&gt;- 5：pin码输入框确定操作。 |
 | actionResult | string | 是 | 表示用户操作结果，长度范围1~255字符。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified actionResult is greater than 255. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter type;3. Parameter verification failed;4. The size of specified actionResult is greater than 255. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -874,13 +876,13 @@ restoreLocalDeivceName(): void
 
 系统重置还原网络设置时，还原本机设备名。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
 **废弃版本：** 24
 
-**替代接口：** [distributedDeviceManager.DeviceManager.restoreLocalDeviceName](arkts-distributedservice-distributeddevicemanager-devicemanager-i-sys.md#restorelocaldevicename)
+**替代接口：** [restoreLocalDeviceName](#restoreLocalDeviceName)
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -894,11 +896,11 @@ restoreLocalDeivceName(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [11600102](../../apis-distributedservice-kit/errorcode-device-manager.md#11600102-获取服务失败) | Failed to obtain the service. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [11600102](../../apis-distributedservice-kit/errorcode-device-manager.md#11600102-获取服务失败) | Failed to obtain the service. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -922,7 +924,9 @@ restoreLocalDeviceName(): void
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -938,11 +942,11 @@ restoreLocalDeviceName(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [11600102](../../apis-distributedservice-kit/errorcode-device-manager.md#11600102-获取服务失败) | Failed to obtain the service. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -958,21 +962,17 @@ try {
 
 ## setHeartbeatPolicy
 
-ArkTS-Dyn:
-```TypeScript
-setHeartbeatPolicy(policy: StrategyForHeartbeat, delayTime: number): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 setHeartbeatPolicy(policy: StrategyForHeartbeat, delayTime: int): void
 ```
 
 设置心跳广播策略。
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -986,19 +986,19 @@ setHeartbeatPolicy(policy: StrategyForHeartbeat, delayTime: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| policy | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 心跳广播策略。 |
-| delayTime | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 临时关闭心跳广播的时长，单位为：ms，取值范围1000ms到15000ms。 |
+| policy | [StrategyForHeartbeat](arkts-distributedservice-distributeddevicemanager-strategyforheartbeat-e-sys.md) | 是 | 心跳广播策略。 |
+| delayTime | int | 是 | 临时关闭心跳广播的时长，单位为：ms，取值范围1000ms到15000ms。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [11600102](../../apis-distributedservice-kit/errorcode-device-manager.md#11600102-获取服务失败) | Failed to obtain service. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| [11600102](../../apis-distributedservice-kit/errorcode-device-manager.md#11600102-获取服务失败) | Failed to obtain service. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -1035,21 +1035,17 @@ try {
 
 ## setLocalDeviceName
 
-ArkTS-Dyn:
-```TypeScript
-setLocalDeviceName(deviceName: string): Promise<number>
-```
-
-ArkTS-Sta:
 ```TypeScript
 setLocalDeviceName(deviceName: string): Promise<int>
 ```
 
 修改本机设备名称，使用Promise异步回调。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -1069,21 +1065,21 @@ setLocalDeviceName(deviceName: string): Promise<int>
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: Promise&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：Promise&lt;int&gt; | 操作结果，0表示本次调用成功。 |
+| Promise&lt;int&gt; | 操作结果，0表示本次调用成功。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter type;3. Parameter verification failed; |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; |
 | [11600102](../../apis-distributedservice-kit/errorcode-device-manager.md#11600102-获取服务失败) | Failed to obtain service. |
-| [11600106](../../apis-distributedservice-kit/errorcode-device-manager.md#11600106-从云端获取数据失败) | Failed to get data from the cloud. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [11600107](../../apis-distributedservice-kit/errorcode-device-manager.md#11600107-需要登录账号) | A login account is required. |
+| [11600106](../../apis-distributedservice-kit/errorcode-device-manager.md#11600106-从云端获取数据失败) | Failed to get data from the cloud. |
 | [11600108](../../apis-distributedservice-kit/errorcode-device-manager.md#11600108-设备名称含非法信息) | The device name contains non-compliant content. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -1126,21 +1122,17 @@ try {
 
 ## setRemoteDeviceName
 
-ArkTS-Dyn:
-```TypeScript
-setRemoteDeviceName(deviceId: string, deviceName: string): Promise<number>
-```
-
-ArkTS-Sta:
 ```TypeScript
 setRemoteDeviceName(deviceId: string, deviceName: string): Promise<int>
 ```
 
 设置配件设备名称，使用Promise异步回调。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -1161,21 +1153,21 @@ setRemoteDeviceName(deviceId: string, deviceName: string): Promise<int>
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: Promise&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：Promise&lt;int&gt; | 操作结果，0表示本次调用成功。 |
+| Promise&lt;int&gt; | 操作结果，0表示本次调用成功。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter type;3. Parameter verification failed; |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; |
 | [11600102](../../apis-distributedservice-kit/errorcode-device-manager.md#11600102-获取服务失败) | Failed to obtain service. |
-| [11600106](../../apis-distributedservice-kit/errorcode-device-manager.md#11600106-从云端获取数据失败) | Failed to get data from the cloud. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [11600107](../../apis-distributedservice-kit/errorcode-device-manager.md#11600107-需要登录账号) | A login account is required. |
+| [11600106](../../apis-distributedservice-kit/errorcode-device-manager.md#11600106-从云端获取数据失败) | Failed to get data from the cloud. |
 | [11600108](../../apis-distributedservice-kit/errorcode-device-manager.md#11600108-设备名称含非法信息) | The device name contains non-compliant content. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

@@ -2,9 +2,11 @@
 
 下载任务分组配置选项。
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-agent-interface GroupConfig--><!--Device-agent-interface GroupConfig-End-->
 
@@ -20,9 +22,11 @@ gauge?: boolean
 
 **类型：** boolean
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-GroupConfig-gauge?: boolean--><!--Device-GroupConfig-gauge?: boolean-End-->
 
@@ -34,13 +38,15 @@ gauge?: boolean
 notification: Notification
 ```
 
-通知栏自定义设置。默认值为\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_
+通知栏自定义设置。默认值为`{}`
 
 **类型：** Notification
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-GroupConfig-notification: Notification--><!--Device-GroupConfig-notification: Notification-End-->
 

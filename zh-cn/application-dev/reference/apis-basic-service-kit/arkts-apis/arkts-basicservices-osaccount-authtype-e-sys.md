@@ -2,9 +2,11 @@
 
 表示身份验证的凭据类型的枚举。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-osAccount-enum AuthType--><!--Device-osAccount-enum AuthType-End-->
 
@@ -20,9 +22,11 @@ PIN = 1
 
 表示PIN认证类型。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AuthType-PIN = 1--><!--Device-AuthType-PIN = 1-End-->
 
@@ -38,9 +42,11 @@ FACE = 2
 
 表示脸部认证类型。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AuthType-FACE = 2--><!--Device-AuthType-FACE = 2-End-->
 
@@ -56,9 +62,11 @@ FINGERPRINT = 4
 
 表示指纹认证类型。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AuthType-FINGERPRINT = 4--><!--Device-AuthType-FINGERPRINT = 4-End-->
 
@@ -74,9 +82,11 @@ RECOVERY_KEY = 8
 
 表示键恢复类型。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AuthType-RECOVERY_KEY = 8--><!--Device-AuthType-RECOVERY_KEY = 8-End-->
 
@@ -92,9 +102,11 @@ PRIVATE_PIN = 16
 
 表示隐私PIN类型。
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AuthType-PRIVATE_PIN = 16--><!--Device-AuthType-PRIVATE_PIN = 16-End-->
 
@@ -112,7 +124,9 @@ COMPANION_DEVICE = 64
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AuthType-COMPANION_DEVICE = 64--><!--Device-AuthType-COMPANION_DEVICE = 64-End-->
 
@@ -130,7 +144,9 @@ CUSTOM = 128
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -148,9 +164,11 @@ DOMAIN = 1024
 
 表示域认证类型。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AuthType-DOMAIN = 1024--><!--Device-AuthType-DOMAIN = 1024-End-->
 

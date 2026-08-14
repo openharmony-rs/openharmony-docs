@@ -12,7 +12,7 @@ export type ContinuationResult = _ContinuationResult
 
 **废弃版本：** 22
 
-**替代接口：** [@ohos.distributedDeviceManager:distributedDeviceManager.DeviceBasicInfo](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicebasicinfo-i.md)
+**替代接口：** [DeviceBasicInfo](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicebasicinfo-i.md#DeviceBasicInfo)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

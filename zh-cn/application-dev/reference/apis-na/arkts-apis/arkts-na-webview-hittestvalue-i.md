@@ -1,10 +1,12 @@
 # HitTestValue
 
-Provides element information of the click area. related to \_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ method.
+Provides element information of the click area. related to [getLastHitTest](arkts-na-webview-webviewcontroller-c.md#getLastHitTest) method.
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-webview-interface HitTestValue--><!--Device-webview-interface HitTestValue-End-->
 
@@ -24,6 +26,8 @@ Get the hit test extra data. If the clicked area is an image or a link, the addi
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-HitTestValue-extra: string--><!--Device-HitTestValue-extra: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -36,11 +40,13 @@ type: WebHitTestType
 
 Get the hit test type.
 
-**类型：** WebHitTestType
+**类型：** [WebHitTestType](arkts-na-webview-webhittesttype-e.md)
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-HitTestValue-type: WebHitTestType--><!--Device-HitTestValue-type: WebHitTestType-End-->
 

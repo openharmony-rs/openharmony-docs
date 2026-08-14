@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-intl-export class NumberFormat--><!--Device-intl-export class NumberFormat-End-->
 
 **系统能力：** SystemCapability.Global.I18n
@@ -21,6 +23,8 @@ constructor()
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-NumberFormat-constructor()--><!--Device-NumberFormat-constructor()-End-->
 
@@ -38,6 +42,8 @@ constructor(locale: string | Array<string>, options?: NumberOptions)
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-NumberFormat-constructor(locale: string | Array<string>, options?: NumberOptions)--><!--Device-NumberFormat-constructor(locale: string | Array<string>, options?: NumberOptions)-End-->
 
 **系统能力：** SystemCapability.Global.I18n
@@ -47,7 +53,7 @@ constructor(locale: string | Array<string>, options?: NumberOptions)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | locale | string \| Array&lt;string&gt; | 是 | 区域ID或区域ID数组。输入是区域ID数组时，使用第一个有效的区域ID。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 创建数字格式化对象时可设置的配置项。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_默认值：所有属性都取默认值时的配置项。 |
+| options | [NumberOptions](../../apis-localization-kit/arkts-apis/arkts-localization-intl-numberoptions-i.md) | 否 | 创建数字格式化对象时可设置的配置项。 &lt;br&gt;默认值：所有属性都取默认值时的配置项。 |
 
 ## format
 
@@ -60,6 +66,8 @@ format(num: double): string
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-NumberFormat-format(num: double): string--><!--Device-NumberFormat-format(num: double): string-End-->
 
@@ -88,6 +96,8 @@ formatRange(startRange: double, endRange: double): string
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-NumberFormat-formatRange(startRange: double, endRange: double): string--><!--Device-NumberFormat-formatRange(startRange: double, endRange: double): string-End-->
 
@@ -118,6 +128,8 @@ resolvedOptions(): NumberOptions
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-NumberFormat-resolvedOptions(): NumberOptions--><!--Device-NumberFormat-resolvedOptions(): NumberOptions-End-->
 
 **系统能力：** SystemCapability.Global.I18n
@@ -126,5 +138,5 @@ resolvedOptions(): NumberOptions
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 创建数字格式化对象时设置的配置项。 |
+| [NumberOptions](../../apis-localization-kit/arkts-apis/arkts-localization-intl-numberoptions-i.md) | 创建数字格式化对象时设置的配置项。 |
 

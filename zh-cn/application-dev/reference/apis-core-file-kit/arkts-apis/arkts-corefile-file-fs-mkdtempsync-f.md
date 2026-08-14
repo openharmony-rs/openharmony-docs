@@ -12,6 +12,8 @@ declare function mkdtempSync(prefix: string): string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare function mkdtempSync(prefix: string): string--><!--Device-unnamed-declare function mkdtempSync(prefix: string): string-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -32,19 +34,19 @@ declare function mkdtempSync(prefix: string): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| 13900020 | Invalid argument |
+| 13900018 | Not a directory |
+| 13900028 | Too many links |
+| 13900030 | File name too long |
+| 13900025 | No space left on device |
 | 13900001 | Operation not permitted |
+| 13900033 | Too many symbolic links encountered |
 | 13900002 | No such file or directory |
-| 13900008 | Bad file descriptor |
-| 13900011 | Out of memory |
 | 13900012 | Permission denied |
 | 13900013 | Bad address |
 | 13900015 | File exists |
-| 13900018 | Not a directory |
-| 13900020 | Invalid argument |
-| 13900025 | No space left on device |
-| 13900028 | Too many links |
-| 13900030 | File name too long |
-| 13900033 | Too many symbolic links encountered |
+| 13900008 | Bad file descriptor |
 | 13900041 | Quota exceeded |
 | 13900042 | Unknown error |
+| 13900011 | Out of memory |
 

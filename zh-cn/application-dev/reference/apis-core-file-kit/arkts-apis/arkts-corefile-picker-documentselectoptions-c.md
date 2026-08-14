@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 <!--Device-picker-class DocumentSelectOptions--><!--Device-picker-class DocumentSelectOptions-End-->
 
 **系统能力：** SystemCapability.FileManagement.UserFileService
@@ -22,11 +24,11 @@ allowsMulFolderSelection?: boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-DocumentSelectOptions-allowsMulFolderSelection?: boolean--><!--Device-DocumentSelectOptions-allowsMulFolderSelection?: boolean-End-->
 
@@ -42,11 +44,13 @@ authMode?: boolean
 
 **类型：** boolean
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DocumentSelectOptions-authMode?: boolean--><!--Device-DocumentSelectOptions-authMode?: boolean-End-->
 
@@ -62,11 +66,13 @@ defaultFilePathUri?: string
 
 **类型：** string
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DocumentSelectOptions-defaultFilePathUri?: string--><!--Device-DocumentSelectOptions-defaultFilePathUri?: string-End-->
 
@@ -82,11 +88,13 @@ fileSuffixFilters?: Array<string>
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DocumentSelectOptions-fileSuffixFilters?: Array<string>--><!--Device-DocumentSelectOptions-fileSuffixFilters?: Array<string>-End-->
 
@@ -102,11 +110,13 @@ isEncryptionSupported?: boolean
 
 **类型：** boolean
 
-**起始版本：** 19
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为19；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DocumentSelectOptions-isEncryptionSupported?: boolean--><!--Device-DocumentSelectOptions-isEncryptionSupported?: boolean-End-->
 
@@ -115,20 +125,22 @@ isEncryptionSupported?: boolean
 ## maxSelectNumber
 
 ```TypeScript
-maxSelectNumber?: number
+maxSelectNumber?: int
 ```
 
-选择文件最大个数。 API version 20及之前的版本，单次文件选择的最大数量上限为500个，默认值也为500。 目录选择功能仅对具备该系统能力的设备开放，且单次最多可选择1个目录。 API version 21及之后的版本取消文件选择数量的限制。受系统能力限制，选择文件数量过大可能会出现功能异常或处理性能较差等情况， 建议单次选择文件个数不超过1万个。 API version 23及之后的版本取消目录选择数量的限制。
+选择文件最大个数。API version 20及之前的版本，单次选择最大文件个数上限为500个，默认值是500。选择目录仅对具有该系统能力的 设备开放，且目录选择的最大个数为1。API version 21及之后的版本取消限制。受系统能力限制，选择文件数量过大可能会出现功能异常 或处理性能较差等情况，建议单次选择文件个数不超过1万个。
 
-**类型：** number
+**类型：** int
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
 
-<!--Device-DocumentSelectOptions-maxSelectNumber?: number--><!--Device-DocumentSelectOptions-maxSelectNumber?: number-End-->
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-DocumentSelectOptions-maxSelectNumber?: int--><!--Device-DocumentSelectOptions-maxSelectNumber?: int-End-->
 
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
@@ -140,13 +152,15 @@ mergeMode?: MergeTypeMode
 
 开启聚合视图模式，支持拉起文件管理应用的聚合视图。默认为DEFAULT，表示该参数不生效，非聚合视图。 当该参数置为非DEFAULT时，其他参数不生效。 该参数在Phone设备中可正常使用，在其他设备中无效果。
 
-**类型：** MergeTypeMode
+**类型：** [MergeTypeMode](arkts-corefile-picker-mergetypemode-e.md)
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DocumentSelectOptions-mergeMode?: MergeTypeMode--><!--Device-DocumentSelectOptions-mergeMode?: MergeTypeMode-End-->
 
@@ -162,11 +176,13 @@ multiAuthMode?: boolean
 
 **类型：** boolean
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DocumentSelectOptions-multiAuthMode?: boolean--><!--Device-DocumentSelectOptions-multiAuthMode?: boolean-End-->
 
@@ -182,11 +198,13 @@ multiUriArray?: Array<string>
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DocumentSelectOptions-multiUriArray?: Array<string>--><!--Device-DocumentSelectOptions-multiUriArray?: Array<string>-End-->
 
@@ -200,13 +218,15 @@ selectMode?: DocumentSelectMode
 
 Picker选择的文档类型，默认值是FILE(文件类型)。
 
-**类型：** DocumentSelectMode
+**类型：** [DocumentSelectMode](arkts-corefile-picker-documentselectmode-e.md)
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DocumentSelectOptions-selectMode?: DocumentSelectMode--><!--Device-DocumentSelectOptions-selectMode?: DocumentSelectMode-End-->
 

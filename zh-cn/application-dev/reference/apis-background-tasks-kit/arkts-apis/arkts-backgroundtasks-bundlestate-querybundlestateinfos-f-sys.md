@@ -6,7 +6,7 @@
 function queryBundleStateInfos(begin: number, end: number, callback: AsyncCallback<BundleActiveInfoResponse>): void
 ```
 
-Queries usage information about each bundle within a specified period. This method queries usage information at the \_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ interval by default.
+Queries usage information about each bundle within a specified period. This method queries usage information at the BY_OPTIMIZED interval by default.
 
 **起始版本：** 7
 
@@ -26,11 +26,11 @@ Queries usage information about each bundle within a specified period. This meth
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| begin | number | 是 | Indicates the start time of the query period, in milliseconds. |
-| end | number | 是 | Indicates the end time of the query period, in milliseconds. |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;BundleActiveInfoResponse&gt; | 是 | the callback of queryBundleStateInfos.the \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ objects containing the usage information about each bundle. |
+| begin | number | 是 | Indicates the start time of the query period, in milliseconds. &lt;br&gt; Unit:ms |
+| end | number | 是 | Indicates the end time of the query period, in milliseconds. &lt;br&gt; Unit:ms |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[BundleActiveInfoResponse](arkts-backgroundtasks-bundlestate-bundleactiveinforesponse-i.md)&gt; | 是 | the callback of queryBundleStateInfos. the [BundleActiveInfoResponse](arkts-backgroundtasks-bundlestate-bundleactiveinforesponse-i.md#BundleActiveInfoResponse) objects containing the usage information about each bundle. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -54,7 +54,7 @@ bundleState.queryBundleStateInfos(0, 20000000000000, (err: BusinessError ,
 function queryBundleStateInfos(begin: number, end: number): Promise<BundleActiveInfoResponse>
 ```
 
-Queries usage information about each bundle within a specified period. This method queries usage information at the \_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ interval by default.
+Queries usage information about each bundle within a specified period. This method queries usage information at the BY_OPTIMIZED interval by default.
 
 **起始版本：** 7
 
@@ -74,16 +74,16 @@ Queries usage information about each bundle within a specified period. This meth
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| begin | number | 是 | Indicates the start time of the query period, in milliseconds. |
-| end | number | 是 | Indicates the end time of the query period, in milliseconds. |
+| begin | number | 是 | Indicates the start time of the query period, in milliseconds. &lt;br&gt; Unit:ms |
+| end | number | 是 | Indicates the end time of the query period, in milliseconds. &lt;br&gt; Unit:ms |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;BundleActiveInfoResponse&gt; | the promise returned by queryBundleStatsInfos. |
+| Promise&lt;[BundleActiveInfoResponse](arkts-backgroundtasks-bundlestate-bundleactiveinforesponse-i.md)&gt; | the promise returned by queryBundleStatsInfos. the { |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

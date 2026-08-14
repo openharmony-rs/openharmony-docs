@@ -2,13 +2,15 @@
 
 Sendable PixelMap instance.
 
-**继承/实现关系：** PixelMap extends [ISendable](arkts-image-sendableimage-isendable-t.md)
+**继承/实现关系：** PixelMap extends [ISendable](arkts-image-sendableimage-isendable-t.md#ISendable)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-<!--Device-sendableImage-interface PixelMap extends ISendable--><!--Device-sendableImage-interface PixelMap extends ISendable-End-->
+**废弃版本：** -1
+
+<!--Device-sendableImage-interface PixelMap--><!--Device-sendableImage-interface PixelMap-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -24,6 +26,8 @@ Apply color space of pixelmap, the pixels will be changed by input color space. 
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-PixelMap-applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager): Promise<void>--><!--Device-PixelMap-applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -38,18 +42,18 @@ Apply color space of pixelmap, the pixels will be changed by input color space. 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | A Promise instance used to return the operation result. |
+| Promise&lt;void&gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| [62980115](../errorcode-image.md#62980115-图片无效参数) | Invalid image parameter. |
 | [62980104](../errorcode-image.md#62980104-图片初始化错误) | Failed to initialize the internal object. |
 | [62980108](../errorcode-image.md#62980108-图片颜色转换错误) | Failed to convert the color space. |
-| [62980115](../errorcode-image.md#62980115-图片无效参数) | Invalid image parameter. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { sendableImage } from '@kit.ImageKit';
@@ -79,6 +83,8 @@ Obtains new pixelmap with alpha information. This method uses a promise to retur
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PixelMap-createAlphaPixelmap(): Promise<PixelMap>--><!--Device-PixelMap-createAlphaPixelmap(): Promise<PixelMap>-End-->
@@ -89,9 +95,9 @@ Obtains new pixelmap with alpha information. This method uses a promise to retur
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;PixelMap&gt; | A Promise instance used to return the new image pixelmap. |
+| Promise&lt;PixelMap&gt; | A Promise instance used to return the new image pixelmap. If the operation fails, an error message is returned. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { sendableImage } from '@kit.ImageKit';
@@ -120,6 +126,8 @@ Obtains new pixelmap with alpha information.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PixelMap-createAlphaPixelmapSync(): PixelMap--><!--Device-PixelMap-createAlphaPixelmapSync(): PixelMap-End-->
@@ -130,16 +138,16 @@ Obtains new pixelmap with alpha information.
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | return the new image pixelmap. |
+| PixelMap | return the new image pixelmap. If the operation fails, an error message is returned. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Parameter verification failed. |
 | [501](../errorcode-image.md#501-无法调用接口) | Resource Unavailable. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { sendableImage } from '@kit.ImageKit';
@@ -162,6 +170,8 @@ Crop the image. This method uses a promise to return the result.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PixelMap-crop(region: image.Region): Promise<void>--><!--Device-PixelMap-crop(region: image.Region): Promise<void>-End-->
@@ -178,9 +188,9 @@ Crop the image. This method uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | A Promise instance used to return the operation result. |
+| Promise&lt;void&gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { sendableImage } from '@kit.ImageKit';
@@ -212,6 +222,8 @@ Crop the image.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PixelMap-cropSync(region: image.Region): void--><!--Device-PixelMap-cropSync(region: image.Region): void-End-->
@@ -228,10 +240,10 @@ Crop the image.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | [501](../errorcode-image.md#501-无法调用接口) | Resource Unavailable. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { sendableImage } from '@kit.ImageKit';
@@ -257,6 +269,8 @@ Image flipping. This method uses a promise to return the result.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PixelMap-flip(horizontal: boolean, vertical: boolean): Promise<void>--><!--Device-PixelMap-flip(horizontal: boolean, vertical: boolean): Promise<void>-End-->
@@ -274,9 +288,9 @@ Image flipping. This method uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | A Promise instance used to return the operation result. |
+| Promise&lt;void&gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { sendableImage } from '@kit.ImageKit';
@@ -308,6 +322,8 @@ Image flipping.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PixelMap-flipSync(horizontal: boolean, vertical: boolean): void--><!--Device-PixelMap-flipSync(horizontal: boolean, vertical: boolean): void-End-->
@@ -325,10 +341,10 @@ Image flipping.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | [501](../errorcode-image.md#501-无法调用接口) | Resource Unavailable. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { sendableImage } from '@kit.ImageKit';
@@ -354,6 +370,8 @@ Obtains the number of bytes in each line of the image pixelmap.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PixelMap-getBytesNumberPerRow(): number--><!--Device-PixelMap-getBytesNumberPerRow(): number-End-->
@@ -366,7 +384,7 @@ Obtains the number of bytes in each line of the image pixelmap.
 | --- | --- |
 | number | Number of bytes in each line. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { sendableImage } from '@kit.ImageKit';
@@ -388,6 +406,8 @@ Get color space of pixelmap.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-PixelMap-getColorSpace(): colorSpaceManager.ColorSpaceManager--><!--Device-PixelMap-getColorSpace(): colorSpaceManager.ColorSpaceManager-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -402,11 +422,11 @@ Get color space of pixelmap.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [62980115](../errorcode-image.md#62980115-图片无效参数) | If the image parameter invalid. |
 | [62980101](../errorcode-image.md#62980101-图片输入数据错误) | If the image data abnormal. |
 | [62980103](../errorcode-image.md#62980103-图片类型不支持) | If the image data unsupport. |
-| [62980115](../errorcode-image.md#62980115-图片无效参数) | If the image parameter invalid. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { sendableImage } from '@kit.ImageKit';
@@ -430,6 +450,8 @@ Obtains the density of the image pixelmap.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PixelMap-getDensity(): number--><!--Device-PixelMap-getDensity(): number-End-->
@@ -442,7 +464,7 @@ Obtains the density of the image pixelmap.
 | --- | --- |
 | number | The number of density, in ppi. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { sendableImage } from '@kit.ImageKit';
@@ -464,6 +486,8 @@ Obtains pixelmap information about this image. This method uses a promise to ret
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PixelMap-getImageInfo(): Promise<image.ImageInfo>--><!--Device-PixelMap-getImageInfo(): Promise<image.ImageInfo>-End-->
@@ -474,9 +498,9 @@ Obtains pixelmap information about this image. This method uses a promise to ret
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;image.ImageInfo&gt; | A Promise instance used to return the image pixelmap information. |
+| Promise&lt;image.ImageInfo&gt; | A Promise instance used to return the image pixelmap information. If the operation fails, an error message is returned. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { sendableImage } from '@kit.ImageKit';
@@ -508,6 +532,8 @@ Get image information from image source.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PixelMap-getImageInfoSync(): image.ImageInfo--><!--Device-PixelMap-getImageInfoSync(): image.ImageInfo-End-->
@@ -526,7 +552,7 @@ Get image information from image source.
 | --- | --- |
 | [501](../errorcode-image.md#501-无法调用接口) | Resource Unavailable. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { image } from '@kit.ImageKit';
@@ -551,6 +577,8 @@ Obtains the total number of bytes of the image pixelmap.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PixelMap-getPixelBytesNumber(): number--><!--Device-PixelMap-getPixelBytesNumber(): number-End-->
@@ -563,7 +591,7 @@ Obtains the total number of bytes of the image pixelmap.
 | --- | --- |
 | number | Total number of bytes. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { sendableImage } from '@kit.ImageKit';
@@ -585,6 +613,8 @@ Marshalling PixelMap and write into MessageSequence.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-PixelMap-marshalling(sequence: rpc.MessageSequence): void--><!--Device-PixelMap-marshalling(sequence: rpc.MessageSequence): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -599,10 +629,10 @@ Marshalling PixelMap and write into MessageSequence.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [62980115](../errorcode-image.md#62980115-图片无效参数) | Invalid image parameter. |
 | [62980097](../errorcode-image.md#62980097-pixelmap序列化传输失败) | IPC error. |
+| [62980115](../errorcode-image.md#62980115-图片无效参数) | Invalid image parameter. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // EntryAbility.ets
@@ -674,6 +704,8 @@ Set the transparent rate of pixelmap. This method uses a promise to return the r
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PixelMap-opacity(rate: number): Promise<void>--><!--Device-PixelMap-opacity(rate: number): Promise<void>-End-->
@@ -690,9 +722,9 @@ Set the transparent rate of pixelmap. This method uses a promise to return the r
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | A Promise instance used to return the operation result. |
+| Promise&lt;void&gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { sendableImage } from '@kit.ImageKit';
@@ -722,6 +754,8 @@ Set the transparent rate of pixelmap.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PixelMap-opacitySync(rate: number): void--><!--Device-PixelMap-opacitySync(rate: number): void-End-->
@@ -738,10 +772,10 @@ Set the transparent rate of pixelmap.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | [501](../errorcode-image.md#501-无法调用接口) | Resource Unavailable. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { sendableImage } from '@kit.ImageKit';
@@ -766,6 +800,8 @@ Reads image pixelmap data in an area. This method uses a promise to return the d
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PixelMap-readPixels(area: image.PositionArea): Promise<void>--><!--Device-PixelMap-readPixels(area: image.PositionArea): Promise<void>-End-->
@@ -782,9 +818,9 @@ Reads image pixelmap data in an area. This method uses a promise to return the d
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | A Promise instance used to return the operation result. |
+| Promise&lt;void&gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { sendableImage } from '@kit.ImageKit';
@@ -820,6 +856,8 @@ Reads image pixelmap data in an area.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PixelMap-readPixelsSync(area: image.PositionArea): void--><!--Device-PixelMap-readPixelsSync(area: image.PositionArea): void-End-->
@@ -836,10 +874,10 @@ Reads image pixelmap data in an area.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | [501](../errorcode-image.md#501-无法调用接口) | Resource Unavailable. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { sendableImage } from '@kit.ImageKit';
@@ -870,6 +908,8 @@ Reads image pixelmap data and writes the data to an ArrayBuffer. This method use
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PixelMap-readPixelsToBuffer(dst: ArrayBuffer): Promise<void>--><!--Device-PixelMap-readPixelsToBuffer(dst: ArrayBuffer): Promise<void>-End-->
@@ -886,9 +926,9 @@ Reads image pixelmap data and writes the data to an ArrayBuffer. This method use
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | A Promise instance used to return the operation result. |
+| Promise&lt;void&gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -918,6 +958,8 @@ Reads image pixelmap data and writes the data to an ArrayBuffer.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PixelMap-readPixelsToBufferSync(dst: ArrayBuffer): void--><!--Device-PixelMap-readPixelsToBufferSync(dst: ArrayBuffer): void-End-->
@@ -934,10 +976,10 @@ Reads image pixelmap data and writes the data to an ArrayBuffer.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | [501](../errorcode-image.md#501-无法调用接口) | Resource Unavailable. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { sendableImage } from '@kit.ImageKit';
@@ -963,6 +1005,8 @@ Releases this PixelMap object. This method uses a promise to return the result.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PixelMap-release(): Promise<void>--><!--Device-PixelMap-release(): Promise<void>-End-->
@@ -973,9 +1017,9 @@ Releases this PixelMap object. This method uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | A Promise instance used to return the instance release result. |
+| Promise&lt;void&gt; | A Promise instance used to return the instance release result. If the operation fails, an error message is returned. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1004,6 +1048,8 @@ Image rotation. This method uses a promise to return the result.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PixelMap-rotate(angle: number): Promise<void>--><!--Device-PixelMap-rotate(angle: number): Promise<void>-End-->
@@ -1020,9 +1066,9 @@ Image rotation. This method uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | A Promise instance used to return the operation result. |
+| Promise&lt;void&gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { sendableImage } from '@kit.ImageKit';
@@ -1052,6 +1098,8 @@ Image rotation.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PixelMap-rotateSync(angle: number): void--><!--Device-PixelMap-rotateSync(angle: number): void-End-->
@@ -1068,10 +1116,10 @@ Image rotation.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | [501](../errorcode-image.md#501-无法调用接口) | Resource Unavailable. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { sendableImage } from '@kit.ImageKit';
@@ -1096,6 +1144,8 @@ Image zoom in width and height. This method uses a promise to return the result.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PixelMap-scale(x: number, y: number): Promise<void>--><!--Device-PixelMap-scale(x: number, y: number): Promise<void>-End-->
@@ -1113,9 +1163,9 @@ Image zoom in width and height. This method uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | A Promise instance used to return the operation result. |
+| Promise&lt;void&gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { sendableImage } from '@kit.ImageKit';
@@ -1147,6 +1197,8 @@ Image zoom in width and height.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PixelMap-scaleSync(x: number, y: number): void--><!--Device-PixelMap-scaleSync(x: number, y: number): void-End-->
@@ -1164,10 +1216,10 @@ Image zoom in width and height.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | [501](../errorcode-image.md#501-无法调用接口) | Resource Unavailable. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { sendableImage } from '@kit.ImageKit';
@@ -1193,6 +1245,8 @@ Set color space of pixelmap. This method is only used to set the colorspace prop
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-PixelMap-setColorSpace(colorSpace: colorSpaceManager.ColorSpaceManager): void--><!--Device-PixelMap-setColorSpace(colorSpace: colorSpaceManager.ColorSpaceManager): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -1207,10 +1261,10 @@ Set color space of pixelmap. This method is only used to set the colorspace prop
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [62980111](../errorcode-image.md#62980111-图片源数据不完整) | If the operation invalid. |
 | [62980115](../errorcode-image.md#62980115-图片无效参数) | If the image parameter invalid. |
+| [62980111](../errorcode-image.md#62980111-图片源数据不完整) | If the operation invalid. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { sendableImage } from '@kit.ImageKit';
@@ -1237,6 +1291,8 @@ Image position transformation. This method uses a promise to return the result.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PixelMap-translate(x: number, y: number): Promise<void>--><!--Device-PixelMap-translate(x: number, y: number): Promise<void>-End-->
@@ -1254,9 +1310,9 @@ Image position transformation. This method uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | A Promise instance used to return the operation result. |
+| Promise&lt;void&gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { sendableImage } from '@kit.ImageKit';
@@ -1287,6 +1343,8 @@ Image position transformation.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PixelMap-translateSync(x: number, y: number): void--><!--Device-PixelMap-translateSync(x: number, y: number): void-End-->
@@ -1304,10 +1362,10 @@ Image position transformation.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | [501](../errorcode-image.md#501-无法调用接口) | Resource Unavailable. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { sendableImage } from '@kit.ImageKit';
@@ -1333,6 +1391,8 @@ Creates a PixelMap object based on MessageSequence parameter.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-PixelMap-unmarshalling(sequence: rpc.MessageSequence): Promise<PixelMap>--><!--Device-PixelMap-unmarshalling(sequence: rpc.MessageSequence): Promise<PixelMap>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -1353,11 +1413,11 @@ Creates a PixelMap object based on MessageSequence parameter.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [62980115](../errorcode-image.md#62980115-图片无效参数) | Invalid image parameter. |
 | [62980097](../errorcode-image.md#62980097-pixelmap序列化传输失败) | IPC error. |
 | [62980096](../errorcode-image.md#62980096-操作失败) | The operation failed. |
+| [62980115](../errorcode-image.md#62980115-图片无效参数) | Invalid image parameter. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // EntryAbility.ets
@@ -1429,6 +1489,8 @@ Reads image data in an ArrayBuffer and writes the data to a PixelMap object. Thi
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PixelMap-writeBufferToPixels(src: ArrayBuffer): Promise<void>--><!--Device-PixelMap-writeBufferToPixels(src: ArrayBuffer): Promise<void>-End-->
@@ -1445,9 +1507,9 @@ Reads image data in an ArrayBuffer and writes the data to a PixelMap object. Thi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | A Promise instance used to return the operation result. |
+| Promise&lt;void&gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { sendableImage } from '@kit.ImageKit';
@@ -1481,6 +1543,8 @@ Reads image data in an ArrayBuffer and writes the data to a PixelMap object.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PixelMap-writeBufferToPixelsSync(src: ArrayBuffer): void--><!--Device-PixelMap-writeBufferToPixelsSync(src: ArrayBuffer): void-End-->
@@ -1497,10 +1561,10 @@ Reads image data in an ArrayBuffer and writes the data to a PixelMap object.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | [501](../errorcode-image.md#501-无法调用接口) | Resource Unavailable. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { sendableImage } from '@kit.ImageKit';
@@ -1530,6 +1594,8 @@ Writes image pixelmap data to the specified area. This method uses a promise to 
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PixelMap-writePixels(area: image.PositionArea): Promise<void>--><!--Device-PixelMap-writePixels(area: image.PositionArea): Promise<void>-End-->
@@ -1546,9 +1612,9 @@ Writes image pixelmap data to the specified area. This method uses a promise to 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | A Promise instance used to return the operation result. |
+| Promise&lt;void&gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { sendableImage } from '@kit.ImageKit';
@@ -1588,6 +1654,8 @@ Writes image pixelmap data to the specified area.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PixelMap-writePixelsSync(area: image.PositionArea): void--><!--Device-PixelMap-writePixelsSync(area: image.PositionArea): void-End-->
@@ -1604,10 +1672,10 @@ Writes image pixelmap data to the specified area.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | [501](../errorcode-image.md#501-无法调用接口) | Resource Unavailable. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { sendableImage } from '@kit.ImageKit';
@@ -1644,6 +1712,8 @@ Whether the image pixelmap can be edited.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PixelMap-readonly isEditable: boolean--><!--Device-PixelMap-readonly isEditable: boolean-End-->
@@ -1663,6 +1733,8 @@ Is it stride Alignment
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-PixelMap-readonly isStrideAlignment: boolean--><!--Device-PixelMap-readonly isStrideAlignment: boolean-End-->
 

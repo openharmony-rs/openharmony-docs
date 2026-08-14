@@ -4,9 +4,9 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
-**装饰器类型：** @ObservedV2
+**废弃版本：** -1
 
 <!--Device-unnamed-export declare class EditableTitleBarStyleV2--><!--Device-unnamed-export declare class EditableTitleBarStyleV2-End-->
 
@@ -22,9 +22,13 @@ EditableTitleBarStyleV2的构造函数。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-EditableTitleBarStyleV2-constructor(options?: EditableTitleBarStyleV2Options)--><!--Device-EditableTitleBarStyleV2-constructor(options?: EditableTitleBarStyleV2Options)-End-->
 
@@ -34,72 +38,88 @@ EditableTitleBarStyleV2的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 标题栏样式配置选项。 |
+| options | [EditableTitleBarStyleV2Options](arkts-arkui-arkui-advanced-editabletitlebarv2-editabletitlebarstylev2options-i.md) | 否 | 标题栏样式配置选项。 |
 
 ## backgroundBlurStyle
 
 ```TypeScript
-public backgroundBlurStyle?: BlurStyle
+@Trace
+  public backgroundBlurStyle?: BlurStyle
 ```
 
-标题栏背景模糊样式。 默认值：BlurStyle.NONE，表示无模糊效果。
+标题栏背景模糊样式。 默认值：BlurStyle.NONE。
 
 **类型：** BlurStyle
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-EditableTitleBarStyleV2-public backgroundBlurStyle?: BlurStyle--><!--Device-EditableTitleBarStyleV2-public backgroundBlurStyle?: BlurStyle-End-->
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-EditableTitleBarStyleV2-@Trace  public backgroundBlurStyle?: BlurStyle--><!--Device-EditableTitleBarStyleV2-@Trace  public backgroundBlurStyle?: BlurStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundColor
 
 ```TypeScript
-public backgroundColor?: ResourceColor
+@Trace
+  public backgroundColor?: ResourceColor
 ```
 
-标题栏背景色。 默认值：'#00000000'，表示背景透明。
+标题栏背景色。 默认值：'#00000000'。
 
 **类型：** ResourceColor
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-EditableTitleBarStyleV2-public backgroundColor?: ResourceColor--><!--Device-EditableTitleBarStyleV2-public backgroundColor?: ResourceColor-End-->
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-EditableTitleBarStyleV2-@Trace  public backgroundColor?: ResourceColor--><!--Device-EditableTitleBarStyleV2-@Trace  public backgroundColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## contentMargin
 
 ```TypeScript
-public contentMargin?: LocalizedMargin
+@Trace
+  public contentMargin?: LocalizedMargin
 ```
 
-标题栏外边距，不支持设置负数。 默认值： { start: LengthMetrics.resource(\$r('sys.float.margin\_left')), end: LengthMetrics.resource(\$r('sys.float.margin\_right')) }。
+标题栏外边距，不支持设置负数。 默认值： { start: LengthMetrics.resource(\$r('sys.float.margin_left')), end: LengthMetrics.resource(\$r('sys.float.margin_right')) }。
 
 **类型：** LocalizedMargin
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-EditableTitleBarStyleV2-public contentMargin?: LocalizedMargin--><!--Device-EditableTitleBarStyleV2-public contentMargin?: LocalizedMargin-End-->
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-EditableTitleBarStyleV2-@Trace  public contentMargin?: LocalizedMargin--><!--Device-EditableTitleBarStyleV2-@Trace  public contentMargin?: LocalizedMargin-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## safeAreaEdges
 
 ```TypeScript
-public safeAreaEdges?: Array<SafeAreaEdge>
+@Trace
+  public safeAreaEdges?: Array<SafeAreaEdge>
 ```
 
 扩展安全区域的方向。 默认值：[SafeAreaEdge.TOP]。
@@ -108,18 +128,23 @@ public safeAreaEdges?: Array<SafeAreaEdge>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-EditableTitleBarStyleV2-public safeAreaEdges?: Array<SafeAreaEdge>--><!--Device-EditableTitleBarStyleV2-public safeAreaEdges?: Array<SafeAreaEdge>-End-->
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-EditableTitleBarStyleV2-@Trace  public safeAreaEdges?: Array<SafeAreaEdge>--><!--Device-EditableTitleBarStyleV2-@Trace  public safeAreaEdges?: Array<SafeAreaEdge>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## safeAreaTypes
 
 ```TypeScript
-public safeAreaTypes?: Array<SafeAreaType>
+@Trace
+  public safeAreaTypes?: Array<SafeAreaType>
 ```
 
 扩展安全区域的类型。 默认值：[SafeAreaType.SYSTEM]。
@@ -128,11 +153,15 @@ public safeAreaTypes?: Array<SafeAreaType>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-EditableTitleBarStyleV2-public safeAreaTypes?: Array<SafeAreaType>--><!--Device-EditableTitleBarStyleV2-public safeAreaTypes?: Array<SafeAreaType>-End-->
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-EditableTitleBarStyleV2-@Trace  public safeAreaTypes?: Array<SafeAreaType>--><!--Device-EditableTitleBarStyleV2-@Trace  public safeAreaTypes?: Array<SafeAreaType>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -28,44 +28,44 @@ function getFileAccessAbilityInfo(callback: AsyncCallback<Array<Want>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;Array&lt;\_\_\_MD\_LINK\_USD\_1\_\_\_&gt;&gt; | 是 | The callback is used to return a Array\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ object. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md)&gt;&gt; | 是 | The callback is used to return a Array&lt;Want&gt; object. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900001 | Operation not permitted |
-| 13900002 | No such file or directory |
-| 13900004 | Interrupted system call |
-| 13900006 | No such device or address |
-| 13900008 | Bad file descriptor |
-| 13900011 | Out of memory |
-| 13900012 | Permission denied |
-| 13900013 | Bad address |
-| 13900014 | Device or resource busy |
-| 13900015 | File exists |
-| 13900017 | No such device |
-| 13900018 | Not a directory |
-| 13900019 | Is a directory |
+| 13900038 | Value too large for defined data type |
+| 13900033 | Too many symbolic links encountered |
+| 13900034 | Operation would block |
+| 13900041 | Quota exceeded |
+| 13900042 | Unknown error |
 | 13900020 | Invalid argument |
 | 13900022 | Too many open files |
 | 13900023 | Text file busy |
+| 13900017 | No such device |
+| 13900018 | Not a directory |
+| 13900019 | Is a directory |
+| 13900029 | Resource deadlock would occur |
+| 13900030 | File name too long |
 | 13900024 | File too large |
 | 13900025 | No space left on device |
 | 13900027 | Read-only file system |
-| 13900029 | Resource deadlock would occur |
-| 13900030 | File name too long |
-| 13900033 | Too many symbolic links encountered |
-| 13900034 | Operation would block |
-| 13900038 | Value too large for defined data type |
-| 13900041 | Quota exceeded |
-| 13900042 | Unknown error |
-| 14300001 | IPC error |
+| 13900004 | Interrupted system call |
+| 13900006 | No such device or address |
+| 13900001 | Operation not permitted |
+| 13900002 | No such file or directory |
+| 13900012 | Permission denied |
 | 14300002 | Invalid uri |
+| 13900013 | Bad address |
 | 14300003 | Fail to get fileextension info |
+| 13900014 | Device or resource busy |
+| 13900015 | File exists |
+| 14300001 | IPC error |
+| 13900008 | Bad file descriptor |
 | 14300004 | Get wrong result |
+| 13900011 | Out of memory |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -115,44 +115,44 @@ function getFileAccessAbilityInfo(): Promise<Array<Want>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;\_\_\_MD\_LINK\_USD\_0\_\_\_&gt;&gt; | Returns the wants. |
+| Promise&lt;Array&lt;[Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md)&gt;&gt; | Returns the wants. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900001 | Operation not permitted |
-| 13900002 | No such file or directory |
-| 13900004 | Interrupted system call |
-| 13900006 | No such device or address |
-| 13900008 | Bad file descriptor |
-| 13900011 | Out of memory |
-| 13900012 | Permission denied |
-| 13900013 | Bad address |
-| 13900014 | Device or resource busy |
-| 13900015 | File exists |
-| 13900017 | No such device |
-| 13900018 | Not a directory |
-| 13900019 | Is a directory |
+| 13900038 | Value too large for defined data type |
+| 13900033 | Too many symbolic links encountered |
+| 13900034 | Operation would block |
+| 13900041 | Quota exceeded |
+| 13900042 | Unknown error |
 | 13900020 | Invalid argument |
 | 13900022 | Too many open files |
 | 13900023 | Text file busy |
+| 13900017 | No such device |
+| 13900018 | Not a directory |
+| 13900019 | Is a directory |
+| 13900029 | Resource deadlock would occur |
+| 13900030 | File name too long |
 | 13900024 | File too large |
 | 13900025 | No space left on device |
 | 13900027 | Read-only file system |
-| 13900029 | Resource deadlock would occur |
-| 13900030 | File name too long |
-| 13900033 | Too many symbolic links encountered |
-| 13900034 | Operation would block |
-| 13900038 | Value too large for defined data type |
-| 13900041 | Quota exceeded |
-| 13900042 | Unknown error |
-| 14300001 | IPC error |
+| 13900004 | Interrupted system call |
+| 13900006 | No such device or address |
+| 13900001 | Operation not permitted |
+| 13900002 | No such file or directory |
+| 13900012 | Permission denied |
 | 14300002 | Invalid uri |
+| 13900013 | Bad address |
 | 14300003 | Fail to get fileextension info |
+| 13900014 | Device or resource busy |
+| 13900015 | File exists |
+| 14300001 | IPC error |
+| 13900008 | Bad file descriptor |
 | 14300004 | Get wrong result |
+| 13900011 | Out of memory |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

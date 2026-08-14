@@ -1,14 +1,16 @@
 # DateOptions
 
-DateOptions定义日期选择器的选项。 继承于[CommonOptions]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+DateOptions定义日期选择器的选项。 继承于[CommonOptions](arkts-arkui-arkui-advanced-datepickercomponent-commonoptions-c.md#CommonOptions)。
 
-**继承/实现关系：** DateOptions extends [CommonOptions](arkts-arkui-arkui-advanced-datepickercomponent-commonoptions-c.md)
+**继承/实现关系：** DateOptions extends [CommonOptions](arkts-arkui-arkui-advanced-datepickercomponent-commonoptions-c.md#CommonOptions)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
-<!--Device-unnamed-export declare class DateOptions extends CommonOptions--><!--Device-unnamed-export declare class DateOptions extends CommonOptions-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-export declare class DateOptions--><!--Device-unnamed-export declare class DateOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,7 +20,7 @@ DateOptions定义日期选择器的选项。 继承于[CommonOptions]\_\_\_JSDOC
 lunar?: boolean
 ```
 
-指定是否显示农历。 - true：显示为农历。 - false：不显示为农历。 默认值：false **说明**： 仅在简体中文和繁体中文语言环境下生效，其他语言环境下设置该属性无效果。
+指定是否显示为农历。 - true：显示为农历，适用于需要传统农历日期的场景，如传统节日、农历生日、农历纪念日等。 - false：不显示为农历，适用于使用公历日期的场景。 > 默认值：false > **说明：** > > 仅在简体中文和繁体中文语言环境下生效，其他语言环境下设置该属性无效果。
 
 **类型：** boolean
 
@@ -26,9 +28,13 @@ lunar?: boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-DateOptions-lunar?: boolean--><!--Device-DateOptions-lunar?: boolean-End-->
 
@@ -42,15 +48,19 @@ mode?: DateMode
 
 定义日期选择器的模式。 默认值：DateMode.DATE
 
-**类型：** DateMode
+**类型：** [DateMode](arkts-arkui-arkui-advanced-datepickercomponent-datemode-e.md)
 
 **默认值：** DateMode.DATE
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-DateOptions-mode?: DateMode--><!--Device-DateOptions-mode?: DateMode-End-->
 

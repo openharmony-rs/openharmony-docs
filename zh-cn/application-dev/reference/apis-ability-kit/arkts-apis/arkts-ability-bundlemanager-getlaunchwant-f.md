@@ -6,13 +6,15 @@
 function getLaunchWant(): Want
 ```
 
-获取本应用\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_的Want参数。
+获取本应用[入口UIAbility](../../../quick-start/application-package-glossary.md#uiability)的Want参数。
 
-**起始版本：** 13
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为13；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本13开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-bundleManager-function getLaunchWant(): Want--><!--Device-bundleManager-function getLaunchWant(): Want-End-->
 
@@ -22,7 +24,7 @@ function getLaunchWant(): Want
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回仅包含bundleName和abilityName的Want对象。 |
+| [Want](arkts-ability-app-ability-want-want-c.md) | 返回仅包含bundleName和abilityName的Want对象。 |
 
 **错误码：**
 
@@ -30,7 +32,7 @@ function getLaunchWant(): Want
 | --- | --- |
 | [17700072](../errorcode-bundle.md#17700072-launch-want不存在) | The launch want is not found. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

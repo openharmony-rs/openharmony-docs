@@ -2,9 +2,11 @@
 
 通知栏自定义信息。
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-agent-interface Notification--><!--Device-agent-interface Notification-End-->
 
@@ -20,9 +22,11 @@ text?: string
 
 **类型：** string
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Notification-text?: string--><!--Device-Notification-text?: string-End-->
 
@@ -38,9 +42,11 @@ title?: string
 
 **类型：** string
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Notification-title?: string--><!--Device-Notification-title?: string-End-->
 
@@ -52,13 +58,15 @@ title?: string
 visibility?: int
 ```
 
-设置任务的通知栏显示方式，通过\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_的位运算方式决定显示方式， 任务通知的显示方式，包括如下几种： - 仅显示完成通知，参数为VISIBILITY\_COMPLETION或1，任务完成/失败后展示对应通知。 - 仅显示进度通知，参数为VISIBILITY\_PROGRESS或2，任务在进行中显示进度通知，当任务下载成功/失败后会直接退出进度通知，不会显示完成通知。 - 显示进度通知/完成通知，参数为VISIBILITY\_COMPLETION | VISIBILITY\_PROGRESS或3，任务在进行中显示进度通知，当任务下载成功/失败后会退出进度通知，并显示完成通知。 若不设置该参数，则根据gauge字段来判断；若无gauge字段，则仅显示完成通知。 The value should be an integer.
+设置任务的通知栏显示方式，通过[VISIBILITY常量](arkts-basicservices-request-n.md#常量)的位运算方式决定显示方式， 任务通知的显示方式，包括如下几种： - 仅显示完成通知，参数为VISIBILITY_COMPLETION或1，任务完成/失败后展示对应通知。 - 仅显示进度通知，参数为VISIBILITY_PROGRESS或2，任务在进行中显示进度通知，当任务下载成功/失败后会直接退出进度通知，不会显示完成通知。 - 显示进度通知/完成通知，参数为VISIBILITY_COMPLETION | VISIBILITY_PROGRESS或3，任务在进行中显示进度通知，当任务下载成功/失败后会退出进度通知，并显示完成通知。 若不设置该参数，则根据gauge字段来判断；若无gauge字段，则仅显示完成通知。 The value should be an integer.
 
 **类型：** int
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Notification-visibility?: int--><!--Device-Notification-visibility?: int-End-->
 
@@ -72,11 +80,13 @@ wantAgent?: WantAgent
 
 通知参数，用于实现点击任务通知后跳转的功能。默认值为空。
 
-**类型：** WantAgent
+**类型：** [WantAgent](../../apis-ability-kit/arkts-apis/arkts-ability-wantagent-t.md)
 
-**起始版本：** 22
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为22；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Notification-wantAgent?: WantAgent--><!--Device-Notification-wantAgent?: WantAgent-End-->
 

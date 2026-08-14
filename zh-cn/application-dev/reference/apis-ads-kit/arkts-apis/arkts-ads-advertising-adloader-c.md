@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-advertising-export class AdLoader--><!--Device-advertising-export class AdLoader-End-->
 
 **系统能力：** SystemCapability.Advertising.Ads
@@ -22,6 +24,8 @@ constructor(context: common.Context)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AdLoader-constructor(context: common.Context)--><!--Device-AdLoader-constructor(context: common.Context)-End-->
@@ -34,9 +38,9 @@ constructor(context: common.Context)
 | --- | --- | --- | --- |
 | context | common.Context | 是 | ability或application的上下文环境。 |
 
-**示例：**
+## 示例
 
-其中context的获取方式参见[各类context的获取方式](../../application-models/application-context-stage.md#context的获取方式)。
+其中context的获取方式参见[各类context的获取方式](../../../application-models/application-context-stage.md#context的获取方式)。
 
 ```TypeScript
 import { common } from '@kit.AbilityKit';
@@ -60,6 +64,8 @@ loadAd(adParam: AdRequestParams, adOptions: AdOptions, listener: AdLoadListener)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AdLoader-loadAd(adParam: AdRequestParams, adOptions: AdOptions, listener: AdLoadListener): void--><!--Device-AdLoader-loadAd(adParam: AdRequestParams, adOptions: AdOptions, listener: AdLoadListener): void-End-->
@@ -70,22 +76,22 @@ loadAd(adParam: AdRequestParams, adOptions: AdOptions, listener: AdLoadListener)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| adParam | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 广告请求参数。 |
-| adOptions | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 广告配置参数。 |
-| listener | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 请求广告回调监听。 |
+| adParam | [AdRequestParams](arkts-ads-advertising-adrequestparams-i.md) | 是 | 广告请求参数。 |
+| adOptions | [AdOptions](arkts-ads-advertising-adoptions-i.md) | 是 | 广告配置参数。 |
+| listener | [AdLoadListener](arkts-ads-advertising-adloadlistener-i.md) | 是 | 请求广告回调监听。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Invalid input parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3.Parameter verification failed |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid input parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3.Parameter verification failed |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Device not supported.<br>**适用版本：** 12+ |
 | [21800001](../errorcode-ads.md#21800001-系统内部错误) | System internal error. |
 | [21800003](../errorcode-ads.md#21800003-广告请求加载失败) | Failed to load the ad request. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Device not supported.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 12+ |
 
-**示例：**
+## 示例
 
-其中context的获取方式参见[各类context的获取方式](../../application-models/application-context-stage.md#context的获取方式)。
+其中context的获取方式参见[各类context的获取方式](../../../application-models/application-context-stage.md#context的获取方式)。
 
 ```TypeScript
 import { common } from '@kit.AbilityKit';
@@ -126,6 +132,8 @@ loadAdWithMultiSlots(adParams: AdRequestParams[], adOptions: AdOptions, listener
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AdLoader-loadAdWithMultiSlots(adParams: AdRequestParams[], adOptions: AdOptions, listener: MultiSlotsAdLoadListener): void--><!--Device-AdLoader-loadAdWithMultiSlots(adParams: AdRequestParams[], adOptions: AdOptions, listener: MultiSlotsAdLoadListener): void-End-->
@@ -136,22 +144,22 @@ loadAdWithMultiSlots(adParams: AdRequestParams[], adOptions: AdOptions, listener
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| adParams | \_\_\_MD\_LINK\_USD\_0\_\_\_[] | 是 | 广告请求参数。 |
-| adOptions | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 广告配置参数。 |
-| listener | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 请求广告回调监听。 |
+| adParams | [AdRequestParams](arkts-ads-advertising-adrequestparams-i.md)[] | 是 | 广告请求参数。 |
+| adOptions | [AdOptions](arkts-ads-advertising-adoptions-i.md) | 是 | 广告配置参数。 |
+| listener | [MultiSlotsAdLoadListener](arkts-ads-advertising-multislotsadloadlistener-i.md) | 是 | 请求广告回调监听。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Invalid input parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3.Parameter verification failed |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid input parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3.Parameter verification failed |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Device not supported.<br>**适用版本：** 12+ |
 | [21800001](../errorcode-ads.md#21800001-系统内部错误) | System internal error. |
 | [21800003](../errorcode-ads.md#21800003-广告请求加载失败) | Failed to load the ad request. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Device not supported.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 12+ |
 
-**示例：**
+## 示例
 
-其中context的获取方式参见[各类context的获取方式](../../application-models/application-context-stage.md#context的获取方式)。
+其中context的获取方式参见[各类context的获取方式](../../../application-models/application-context-stage.md#context的获取方式)。
 
 ```TypeScript
 import { common } from '@kit.AbilityKit';

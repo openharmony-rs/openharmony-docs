@@ -1,10 +1,12 @@
 # AuthOptions（系统接口）
 
-表示 [认证用户]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 的可选参数集合。
+表示 [认证用户](arkts-basicservices-osaccount-userauth-c-sys.md#auth) 的可选参数集合。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-osAccount-interface AuthOptions--><!--Device-osAccount-interface AuthOptions-End-->
 
@@ -22,9 +24,11 @@ accountId?: int
 
 **类型：** int
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AuthOptions-accountId?: int--><!--Device-AuthOptions-accountId?: int-End-->
 
@@ -44,7 +48,9 @@ additionalInfo?: string
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -62,11 +68,13 @@ authIntent?: AuthIntent
 
 认证意图，默认为undefined。
 
-**类型：** AuthIntent
+**类型：** [AuthIntent](arkts-basicservices-osaccount-authintent-e-sys.md)
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AuthOptions-authIntent?: AuthIntent--><!--Device-AuthOptions-authIntent?: AuthIntent-End-->
 
@@ -82,11 +90,13 @@ remoteAuthOptions?: RemoteAuthOptions
 
 远程认证选项，默认为undefined。
 
-**类型：** RemoteAuthOptions
+**类型：** [RemoteAuthOptions](arkts-basicservices-osaccount-remoteauthoptions-i-sys.md)
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AuthOptions-remoteAuthOptions?: RemoteAuthOptions--><!--Device-AuthOptions-remoteAuthOptions?: RemoteAuthOptions-End-->
 

@@ -6,6 +6,8 @@ Class that holds brand name, major version and full version. Brand name and majo
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
 
+**废弃版本：** -1
+
 <!--Device-webview-class UserAgentBrandVersion--><!--Device-webview-class UserAgentBrandVersion-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -22,6 +24,8 @@ Get the brand info.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UserAgentBrandVersion-getBrand(): string--><!--Device-UserAgentBrandVersion-getBrand(): string-End-->
@@ -32,7 +36,7 @@ Get the brand info.
 
 | 类型 | 说明 |
 | --- | --- |
-| string | - Returns brand info of UserAgentBrandVersion. |
+| string | Returns brand info of UserAgentBrandVersion. |
 
 ## getFullVersion
 
@@ -46,6 +50,8 @@ Get the full version.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UserAgentBrandVersion-getFullVersion(): string--><!--Device-UserAgentBrandVersion-getFullVersion(): string-End-->
@@ -56,7 +62,7 @@ Get the full version.
 
 | 类型 | 说明 |
 | --- | --- |
-| string | - Returns full version of UserAgentBrandVersion. |
+| string | Returns full version of UserAgentBrandVersion. |
 
 ## getMajorVersion
 
@@ -70,6 +76,8 @@ Get the major version.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UserAgentBrandVersion-getMajorVersion(): string--><!--Device-UserAgentBrandVersion-getMajorVersion(): string-End-->
@@ -80,7 +88,7 @@ Get the major version.
 
 | 类型 | 说明 |
 | --- | --- |
-| string | - Returns major version of UserAgentBrandVersion. |
+| string | Returns major version of UserAgentBrandVersion. |
 
 ## setBrand
 
@@ -93,6 +101,8 @@ Sets the brand. Should not be blank.
 **起始版本：** 24
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -118,6 +128,8 @@ Sets the full version. Should not be blank.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UserAgentBrandVersion-setFullVersion(fullVersion: string): void--><!--Device-UserAgentBrandVersion-setFullVersion(fullVersion: string): void-End-->
@@ -141,6 +153,8 @@ Sets the major version. Should not be blank.
 **起始版本：** 24
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

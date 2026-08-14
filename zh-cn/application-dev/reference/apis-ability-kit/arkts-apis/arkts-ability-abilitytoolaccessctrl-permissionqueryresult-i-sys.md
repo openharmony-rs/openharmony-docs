@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 <!--Device-abilityToolAccessCtrl-interface PermissionQueryResult--><!--Device-abilityToolAccessCtrl-interface PermissionQueryResult-End-->
 
 **系统能力：** SystemCapability.Security.Asset
@@ -26,6 +28,8 @@ needDialog: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 <!--Device-PermissionQueryResult-needDialog: boolean--><!--Device-PermissionQueryResult-needDialog: boolean-End-->
 
 **系统能力：** SystemCapability.Security.Asset
@@ -40,11 +44,13 @@ permissionResults: PermissionInfo[]
 
 权限结果列表。
 
-**类型：** PermissionInfo[]
+**类型：** [PermissionInfo](arkts-ability-abilitytoolaccessctrl-permissioninfo-i-sys.md)[]
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-PermissionQueryResult-permissionResults: PermissionInfo[]--><!--Device-PermissionQueryResult-permissionResults: PermissionInfo[]-End-->
 
@@ -60,11 +66,13 @@ ticket?: TicketInfo
 
 票证信息。
 
-**类型：** TicketInfo
+**类型：** [TicketInfo](arkts-ability-abilitytoolaccessctrl-ticketinfo-i-sys.md)
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-PermissionQueryResult-ticket?: TicketInfo--><!--Device-PermissionQueryResult-ticket?: TicketInfo-End-->
 

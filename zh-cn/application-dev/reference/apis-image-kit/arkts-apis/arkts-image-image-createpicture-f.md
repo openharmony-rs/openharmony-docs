@@ -6,11 +6,13 @@
 function createPicture(mainPixelmap : PixelMap): Picture
 ```
 
-通过主图的PixelMap创建一个Picture对象。 由于图片占用内存较大，所以当Picture对象使用完成后，应主动调用[release]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+通过主图的PixelMap创建一个Picture对象。 由于图片占用内存较大，所以当Picture对象使用完成后，应主动调用[release](arkts-image-image-picture-i.md#release)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
-**起始版本：** 13
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为13；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-image-function createPicture(mainPixelmap : PixelMap): Picture--><!--Device-image-function createPicture(mainPixelmap : PixelMap): Picture-End-->
 
@@ -20,21 +22,21 @@ function createPicture(mainPixelmap : PixelMap): Picture
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mainPixelmap | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 主图的PixelMap。 |
+| mainPixelmap | PixelMap | 是 | 主图的PixelMap。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回Picture对象。 |
+| [Picture](arkts-image-image-picture-i.md) | 返回Picture对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types; 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types; 3.Parameter verification failed. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例:
 

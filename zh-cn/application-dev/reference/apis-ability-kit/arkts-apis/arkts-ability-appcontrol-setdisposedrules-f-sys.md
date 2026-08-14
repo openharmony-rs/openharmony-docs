@@ -8,9 +8,11 @@ function setDisposedRules(disposedRuleConfigurations: Array<DisposedRuleConfigur
 
 批量设置指定应用或分身应用的拦截规则。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_DISPOSED_APP_STATUS
 
@@ -24,19 +26,19 @@ function setDisposedRules(disposedRuleConfigurations: Array<DisposedRuleConfigur
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| disposedRuleConfigurations | Array&lt;DisposedRuleConfiguration&gt; | 是 | 表示批量设置拦截规则的配置，包括待拦截应用的appId、分身应用索引及拦截规则。每次设置拦截规则的数组的最大数量为1000。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_**说明：**\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_1.如果数组中存在appId和appIndex相同的DisposedRuleConfiguration时，后面的DisposedRuleConfiguration会覆盖前面的。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2.如果应用已设置过拦截规则，重新为该应用设置拦截规则，会覆盖之前的。appId和appIndex一致则表示同一应用。 |
+| disposedRuleConfigurations | Array&lt;[DisposedRuleConfiguration](arkts-ability-appcontrol-disposedruleconfiguration-i-sys.md)&gt; | 是 | 表示批量设置拦截规则的配置，包括待拦截应用的appId、分身应用索引及拦截规则。每次 设置拦截规则的数组的最大数量为1000。&lt;br/&gt;**说明：**&lt;br/&gt;1.如果数组中存在appId和appIndex相同的DisposedRuleConfiguration时，后面的 DisposedRuleConfiguration会覆盖前面的。&lt;br/&gt;2.如果应用已设置过拦截规则，重新为该应用设置拦截规则，会覆盖之前的。appId和appIndex一致则表示同一应用。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | AppIndex is not in the valid range. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied. A non-system application is not allowed to call a system API. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [17700005](../errorcode-bundle.md#17700005-指定的appid为空字符串) | The specified app ID is invalid. |
-| [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | AppIndex is not in the valid range. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

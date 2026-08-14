@@ -6,11 +6,13 @@
 function requestTrace(config: RequestTraceConfig): Promise<string>
 ```
 
-��ȡ��ǰ���̵�trace��Ϣ������Ӧ��tag��ͼ�񴰿�tag��cpu���Ⱥ�binder�ں���Ϣ��ʹ��Promise�첽�ص��� �ɼ�trace���ص�.sys�ļ���Ŀ¼�����洢3�ݣ��������ڵ���3��ʱ�ٴε��ýӿڻ��׳�������11400120��
+获取当前进程的trace信息，包含应用tag、图像窗口tag、cpu调度和binder内核信息。使用Promise异步回调。 采集trace返回的.sys文件在目录下最多存储3份，数量大于等于3份时再次调用接口会抛出错误码11400120。
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -24,23 +26,23 @@ function requestTrace(config: RequestTraceConfig): Promise<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| config | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | trace�ɼ�������Ϣ�� |
+| config | [RequestTraceConfig](arkts-performanceanalysis-hidebug-requesttraceconfig-i.md) | 是 | trace采集配置信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise���󣬷�����.sys��Ϊ��׺��trace�ļ���Ӧ��ɳ��·���� |
+| Promise&lt;string&gt; | Promise对象，返回以.sys作为后缀的trace文件的应用沙箱路径。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [11400302](../errorcode-hiviewdfx-hidebug-trace.md#11400302-trace采集超出资源配额) | Resource unavailable. |
 | [11400104](../errorcode-hiviewdfx-hidebug-cpuusage.md#11400104-cpuusage统计异常) | Remote service exception. |
 | [11400120](../errorcode-hiviewdfx-hidebug-trace.md#11400120-trace文件存储达到限制) | Trace storage limit reached. |
-| [11400302](../errorcode-hiviewdfx-hidebug-trace.md#11400302-trace采集超出资源配额) | Resource unavailable. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { hidebug, hilog } from '@kit.PerformanceAnalysisKit';

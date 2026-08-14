@@ -1,5 +1,11 @@
 # getBadgeNumber
 
+## 导入模块
+
+```TypeScript
+import { notificationManager } from '@kit.NotificationKit';
+```
+
 ## getBadgeNumber
 
 ```TypeScript
@@ -8,19 +14,25 @@ function getBadgeNumber(): Promise<long>
 
 获取当前应用角标数量。使用Promise异步回调。 用于查询当前应用桌面图标上显示的角标数字。
 
-**起始版本：** 22
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为22；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-notificationManager-function getBadgeNumber(): Promise<long>--><!--Device-notificationManager-function getBadgeNumber(): Promise<long>-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 
+**参见：**
+
+setBadgeNumber 设定角标个数。
+
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: Promise&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：Promise&lt;long&gt; | Promise对象，返回当前应用角标数量。（查询的角标数量与当前应用通知开关，桌面角标开关是否开启无关） |
+| Promise&lt;long&gt; | Promise对象，返回当前应用角标数量。（查询的角标数量与当前应用通知开关，桌面角标开关是否开启无关） |
 
 **错误码：**
 
@@ -30,7 +42,7 @@ function getBadgeNumber(): Promise<long>
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

@@ -4,7 +4,9 @@ XmlSAXHandler定义了SAX解析xml文本时的回调方法。开发者需要实�
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 <!--Device-xml-interface XmlSAXHandler--><!--Device-xml-interface XmlSAXHandler-End-->
 
@@ -20,7 +22,9 @@ characters(content: string): void
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -36,7 +40,7 @@ characters(content: string): void
 | --- | --- | --- | --- |
 | content | string | 是 | 解析器回传元素中的文本内容。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -184,11 +188,13 @@ readableStream.push(null);
 endDocument(): void
 ```
 
-当解析器在XML文本结束解析时触发的回调函数。该回调函数需要开发者自行实现。具体使用示例可见[characters\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_24+\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。 > **说明：** > > 当可读流结束时触发此回调。在stream中调用push()，传入null值，从而触发该回调。
+当解析器在XML文本结束解析时触发的回调函数。该回调函数需要开发者自行实现。具体使用示例可见[characters&lt;sup&gt;24+&lt;/sup&gt;](#characters)。 > **说明：** > > 当可读流结束时触发此回调。在stream中调用push()，传入null值，从而触发该回调。
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -204,11 +210,13 @@ endDocument(): void
 endElement(elementName: string, namespaceURI: string | undefined, qName: string | undefined): void
 ```
 
-当解析器在XML文本中元素结束解析触发的回调函数。该回调函数需要开发者自行实现。具体使用示例可见[characters\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_24+\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+当解析器遇到XML元素的结束标签时触发的回调函数。该回调函数需要开发者自行实现。具体使用示例可见[characters&lt;sup&gt;24+&lt;/sup&gt;](#characters)。
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -222,9 +230,9 @@ endElement(elementName: string, namespaceURI: string | undefined, qName: string 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| elementName | string | 是 | 解析器回传的元素名称（不包含命名空间前缀）。例如，对于\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，elementName为"child"。 |
-| namespaceURI | string \| undefined | 是 | 解析器回传的命名空间URI。例如，对于\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，namespaceURI为\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。如果元素没有命名空间则为undefined。 |
-| qName | string \| undefined | 是 | 解析器回传的元素限定名（包含命名空间前缀）。例如，对于\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，qName为"ns2:child"。如果元素没有命名空间则qName为undefined。 |
+| elementName | string | 是 | 解析器回传的元素名称（不包含命名空间前缀）。例如，对于`&lt;ns2:child&gt;`，elementName为"child"。 |
+| namespaceURI | string \| undefined | 是 | 解析器回传的命名空间URI。例如，对于`xmlns:ns2="http://example.com/ns2"`， namespaceURI为`"http://example.com/ns2"`。如果元素没有命名空间则为undefined。 |
+| qName | string \| undefined | 是 | 解析器回传的元素限定名（包含命名空间前缀）。例如，对于`&lt;ns2:child&gt;`，qName为"ns2:child"。 如果元素没有命名空间则qName为undefined。 |
 
 ## startDocument
 
@@ -232,11 +240,13 @@ endElement(elementName: string, namespaceURI: string | undefined, qName: string 
 startDocument(): void
 ```
 
-当解析器在XML文本开始解析时触发的回调函数。该回调函数需要开发者自行实现。具体使用示例可见[characters\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_24+\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+当解析器在XML文本开始解析时触发的回调函数。该回调函数需要开发者自行实现。具体使用示例可见[characters&lt;sup&gt;24+&lt;/sup&gt;](#characters)。
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -252,11 +262,13 @@ startDocument(): void
 startElement(elementName: string, namespaceURI: string | undefined, qName: string | undefined, attributes: Map<string,string>): void
 ```
 
-当解析器在XML文本中元素开始解析时触发的回调函数。该回调函数需要开发者自行实现。具体使用示例可见[characters\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_24+\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+当解析器遇到XML元素的开始标签时触发的回调函数。该回调函数需要开发者自行实现。具体使用示例可见[characters&lt;sup&gt;24+&lt;/sup&gt;](#characters)。
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -270,8 +282,8 @@ startElement(elementName: string, namespaceURI: string | undefined, qName: strin
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| elementName | string | 是 | 解析器回传的元素名称（不包含命名空间前缀）。例如，对于\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，elementName为"child"。 |
-| namespaceURI | string \| undefined | 是 | 解析器回传的命名空间URI。例如，对于\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，namespaceURI为\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。如果元素没有命名空间则为undefined。 |
-| qName | string \| undefined | 是 | 解析器回传的元素限定名（包含命名空间前缀）。例如，对于\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，qName为"ns2:child"。如果元素没有命名空间则qName为undefined。 |
+| elementName | string | 是 | 解析器回传的元素名称（不包含命名空间前缀）。例如，对于`&lt;ns2:child&gt;`，elementName为"child"。 |
+| namespaceURI | string \| undefined | 是 | 解析器回传的命名空间URI。例如，对于`xmlns:ns2="http://example.com/ns2"`， namespaceURI为`"http://example.com/ns2"`。如果元素没有命名空间则为undefined。 |
+| qName | string \| undefined | 是 | 解析器回传的元素限定名（包含命名空间前缀）。例如，对于`&lt;ns2:child&gt;`，qName为"ns2:child"。 如果元素没有命名空间则qName为undefined。 |
 | attributes | Map&lt;string, string&gt; | 是 | 解析器回传的元素的属性映射表，键为属性名（可能包含命名空间前缀，如"ns2:attrA"），值为属性值。 |
 

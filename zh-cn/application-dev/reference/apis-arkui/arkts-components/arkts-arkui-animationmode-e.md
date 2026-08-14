@@ -1,10 +1,12 @@
 # AnimationMode
 
-点击[TabBar]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_页签时切换 TabContent的动画形式枚举。
+点击TabBar页签时切换 TabContent的动画形式枚举。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare enum AnimationMode--><!--Device-unnamed-declare enum AnimationMode-End-->
 
@@ -21,6 +23,8 @@ CONTENT_FIRST = 0
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,6 +46,8 @@ ACTION_FIRST = 1
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -56,11 +62,13 @@ ACTION_FIRST = 1
 NO_ANIMATION = 2
 ```
 
-关闭默认动画。调用TabsController的[changeIndex]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_接口切换TabContent时该枚举值不生效。 可以通过设置[animationDuration]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_为0实现调用TabsController的changeIndex接口时不带动画。
+关闭默认动画。调用TabsController的[changeIndex](arkts-arkui-tabscontroller-c.md#changeIndex)接口切换TabContent时该枚举值不生效。 可以通过设置animationDuration为0实现调用TabsController的changeIndex接口时不带动画。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -82,6 +90,8 @@ CONTENT_FIRST_WITH_JUMP = 3
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
@@ -101,6 +111,8 @@ ACTION_FIRST_WITH_JUMP = 4
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

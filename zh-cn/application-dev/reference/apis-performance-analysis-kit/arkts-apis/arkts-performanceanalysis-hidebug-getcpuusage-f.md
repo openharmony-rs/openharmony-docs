@@ -6,11 +6,13 @@
 function getCpuUsage() : double
 ```
 
-��ȡ���̵�CPUʹ���ʡ� > **ע��** > > ���ڸýӿ��漰�����ͨ�ţ���ʱ�ϳ���Ϊ�˱��������������⣬���鲻Ҫ�����߳���ֱ�ӵ��øýӿڡ�
+获取进程的CPU使用率。 > **注意** > > 由于该接口涉及跨进程通信，耗时较长，为了避免引入性能问题，建议不要在主线程中直接调用该接口。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-hidebug-function getCpuUsage() : double--><!--Device-hidebug-function getCpuUsage() : double-End-->
 
@@ -20,9 +22,9 @@ function getCpuUsage() : double
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：double | ��ȡ���̵�CPUʹ���ʡ���ռ����Ϊ50%���򷵻�0.5�� |
+| double | 获取进程的CPU使用率。如占用率为50%，则返回0.5。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { hidebug } from '@kit.PerformanceAnalysisKit';

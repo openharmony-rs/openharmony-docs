@@ -2,9 +2,11 @@
 
 枚举，设备所支持的分辨率。
 
-**起始版本：** 19
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为19；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-avSession-enum ResolutionLevel--><!--Device-avSession-enum ResolutionLevel-End-->
 
@@ -18,11 +20,13 @@ RESOLUTION_480P = 0
 
 分辨率为480P（640×480 px）。
 
-**起始版本：** 19
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为19；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResolutionLevel-RESOLUTION_480P = 0--><!--Device-ResolutionLevel-RESOLUTION_480P = 0-End-->
 
@@ -36,11 +40,13 @@ RESOLUTION_720P = 1
 
 分辨率为720P（1280×720 px）。
 
-**起始版本：** 19
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为19；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResolutionLevel-RESOLUTION_720P = 1--><!--Device-ResolutionLevel-RESOLUTION_720P = 1-End-->
 
@@ -54,11 +60,13 @@ RESOLUTION_1080P = 2
 
 分辨率为1080P（1920×1080 px）。
 
-**起始版本：** 19
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为19；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResolutionLevel-RESOLUTION_1080P = 2--><!--Device-ResolutionLevel-RESOLUTION_1080P = 2-End-->
 
@@ -72,11 +80,13 @@ RESOLUTION_2K = 3
 
 分辨率为2K（2560×1440 px）。
 
-**起始版本：** 19
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为19；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResolutionLevel-RESOLUTION_2K = 3--><!--Device-ResolutionLevel-RESOLUTION_2K = 3-End-->
 
@@ -90,11 +100,13 @@ RESOLUTION_4K = 4
 
 分辨率为4K（3840×2160 px）。
 
-**起始版本：** 19
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为19；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResolutionLevel-RESOLUTION_4K = 4--><!--Device-ResolutionLevel-RESOLUTION_4K = 4-End-->
 

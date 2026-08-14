@@ -2,9 +2,11 @@
 
 标识批量设置拦截规则的配置。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-appControl-export interface DisposedRuleConfiguration--><!--Device-appControl-export interface DisposedRuleConfiguration-End-->
 
@@ -18,13 +20,15 @@
 appId: string
 ```
 
-要被设置拦截规则应用的appId或appIdentifier。appId和appIdentifier可以标识同一个应用，因此针对同一应用如果用appIdentifier设置拦截规则，可以覆盖之前采用appId设置的，反之同理。 **说明：** appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见 \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。 [appIdentifier]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_也是应用的唯一标识，详情信息可参考 \_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_，获取方法参见 \_\_\_MD\_LINK\_DESC\_USD\_2\_\_\_。
+要被设置拦截规则应用的appId或appIdentifier。appId和appIdentifier可以标识同一个应用，因此针对同一应用如果用appIdentifier设置拦截规则，可以覆盖之前采用appId设置的，反之同理。 **说明：** appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见 [获取应用的appId](../../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。 [appIdentifier](arkts-ability-bundleinfo-signatureinfo-i.md#SignatureInfo)也是应用的唯一标识，详情信息可参考 [什么是appIdentifier](../../../quick-start/common-problem-of-application.md#什么是appidentifier)，获取方法参见 [获取应用的appIdentifier](../../../quick-start/common-problem-of-application.md#如何获取应用信息中的appidentifier)。
 
 **类型：** string
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DisposedRuleConfiguration-appId: string--><!--Device-DisposedRuleConfiguration-appId: string-End-->
 
@@ -42,9 +46,11 @@ appIndex: int
 
 **类型：** int
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DisposedRuleConfiguration-appIndex: int--><!--Device-DisposedRuleConfiguration-appIndex: int-End-->
 
@@ -60,11 +66,13 @@ disposedRule: DisposedRule
 
 表示对应用的拦截规则，包括拦截时将拉起能力的类型等。
 
-**类型：** DisposedRule
+**类型：** [DisposedRule](arkts-ability-appcontrol-disposedrule-i-sys.md)
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DisposedRuleConfiguration-disposedRule: DisposedRule--><!--Device-DisposedRuleConfiguration-disposedRule: DisposedRule-End-->
 

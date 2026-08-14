@@ -2,9 +2,11 @@
 
 本模块提供监听应用安装，卸载，更新的能力。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare namespace bundleMonitor--><!--Device-unnamed-declare namespace bundleMonitor-End-->
 
@@ -19,14 +21,14 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [off](arkts-ability-bundlemonitor-off-f-sys.md#off) | 注销监听应用的安装，卸载，更新。使用callback异步回调。 |
-| [offAdd](arkts-ability-bundlemonitor-offadd-f-sys.md#offadd) | 注销监听应用的安装。 |
-| [offRemove](arkts-ability-bundlemonitor-offremove-f-sys.md#offremove) | 注销监听应用的卸载。 |
-| [offUpdate](arkts-ability-bundlemonitor-offupdate-f-sys.md#offupdate) | 注销监听应用的更新。 |
-| [on](arkts-ability-bundlemonitor-on-f-sys.md#on) | 注册监听应用的安装、卸载、更新。使用callback异步回调。 |
-| [onAdd](arkts-ability-bundlemonitor-onadd-f-sys.md#onadd) | 注册监听应用的安装。 |
-| [onRemove](arkts-ability-bundlemonitor-onremove-f-sys.md#onremove) | 注册监听应用的卸载。 |
-| [onUpdate](arkts-ability-bundlemonitor-onupdate-f-sys.md#onupdate) | 注册监听应用的更新。 |
+| [offAdd](arkts-ability-bundlemonitor-offadd-f-sys.md#offAdd) | 注销监听应用的安装。 |
+| [offRemove](arkts-ability-bundlemonitor-offremove-f-sys.md#offRemove) | 注销监听应用的卸载。 |
+| [offUpdate](arkts-ability-bundlemonitor-offupdate-f-sys.md#offUpdate) | 注销监听应用的更新。 |
+| [off_BundleChangedEvent](arkts-ability-bundlemonitor-offbundlechangedevent-f-sys.md#off_BundleChangedEvent) | 注销监听应用的安装，卸载，更新。使用callback异步回调。 |
+| [onAdd](arkts-ability-bundlemonitor-onadd-f-sys.md#onAdd) | 注册监听应用的安装。 |
+| [onRemove](arkts-ability-bundlemonitor-onremove-f-sys.md#onRemove) | 注册监听应用的卸载。 |
+| [onUpdate](arkts-ability-bundlemonitor-onupdate-f-sys.md#onUpdate) | 注册监听应用的更新。 |
+| [on_BundleChangedEvent](arkts-ability-bundlemonitor-onbundlechangedevent-f-sys.md#on_BundleChangedEvent) | 注册监听应用的安装、卸载、更新。使用callback异步回调。 |
 <!--DelEnd-->
 
 <!--Del-->

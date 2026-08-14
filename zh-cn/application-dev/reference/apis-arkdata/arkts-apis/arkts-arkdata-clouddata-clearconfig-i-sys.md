@@ -4,7 +4,9 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-cloudData-interface ClearConfig--><!--Device-cloudData-interface ClearConfig-End-->
 
@@ -20,11 +22,13 @@ dbInfo: Record<string, DBActionInfo>
 
 要清除数据的库信息及清除规则。键为数据库名称，值为该数据库的清除配置信息。
 
-**类型：** Record&lt;string, DBActionInfo&gt;
+**类型：** Record&lt;string, [DBActionInfo](arkts-arkdata-clouddata-dbactioninfo-i-sys.md)&gt;
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

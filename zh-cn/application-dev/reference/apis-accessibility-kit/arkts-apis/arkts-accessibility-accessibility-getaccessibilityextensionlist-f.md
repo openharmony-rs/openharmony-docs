@@ -8,9 +8,11 @@ function getAccessibilityExtensionList(abilityType: AbilityType, stateType: Abil
 
 查询辅助应用列表，使用Promise异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -24,22 +26,22 @@ function getAccessibilityExtensionList(abilityType: AbilityType, stateType: Abil
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| abilityType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 辅助应用的类型。 |
-| stateType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 辅助应用的状态。 |
+| abilityType | AbilityType | 是 | 辅助应用的类型。 |
+| stateType | AbilityState | 是 | 辅助应用的状态。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;AccessibilityAbilityInfo&gt;&gt; | Promise对象，返回辅助应用信息列表。 |
+| Promise&lt;Array&lt;[AccessibilityAbilityInfo](arkts-accessibility-accessibility-accessibilityabilityinfo-i.md)&gt;&gt; | Promise对象，返回辅助应用信息列表。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+## 示例
 
 查询所有已安装的辅助应用。
 
@@ -92,9 +94,11 @@ function getAccessibilityExtensionList(abilityType: AbilityType, stateType: Abil
 
 查询辅助应用列表，使用callback异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -108,17 +112,17 @@ function getAccessibilityExtensionList(abilityType: AbilityType, stateType: Abil
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| abilityType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 辅助应用的类型。 |
-| stateType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 辅助应用的状态。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;Array&lt;AccessibilityAbilityInfo&gt;&gt; | 是 | 回调函数，返回辅助应用信息列表。若返回成功，err为undefined，data为辅助应用信息列表；否则为错误对象。 |
+| abilityType | AbilityType | 是 | 辅助应用的类型。 |
+| stateType | AbilityState | 是 | 辅助应用的状态。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[AccessibilityAbilityInfo](arkts-accessibility-accessibility-accessibilityabilityinfo-i.md)&gt;&gt; | 是 | 回调函数，返回辅助应用信息列表。若返回成功，err为undefined，data为辅助应用信 息列表；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+## 示例
 
 查询所有已安装的辅助应用ArkTS-Dyn示例。
 

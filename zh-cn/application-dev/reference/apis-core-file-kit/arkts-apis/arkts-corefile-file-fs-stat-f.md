@@ -12,6 +12,8 @@ declare function stat(file: string | number): Promise<Stat>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-unnamed-declare function stat(file: string | number): Promise<Stat>--><!--Device-unnamed-declare function stat(file: string | number): Promise<Stat>-End-->
@@ -22,31 +24,31 @@ declare function stat(file: string | number): Promise<Stat>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| file | string \| number | 是 | 文件或目录的应用沙箱路径path、URI或已打开的文件描述符fd。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_**说明**：从API version 22开始，支持传入URI。 |
+| file | string \| number | 是 | 文件或目录的应用沙箱路径path、URI或已打开的文件描述符fd。&lt;br&gt;**说明：**从API version 22开始，支持传入URI。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Stat&gt; | Promise对象。返回文件或目录的具体信息。 |
+| Promise&lt;[Stat](arkts-corefile-file-fs-stat-i.md)&gt; | Promise对象。返回文件或目录的具体信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900002 | No such file or directory |
-| 13900004 | Interrupted system call |
-| 13900005 | I/O error |
-| 13900008 | Bad file descriptor |
-| 13900011 | Out of memory |
-| 13900012 | Permission denied |
-| 13900013 | Bad address |
 | 13900018 | Not a directory |
 | 13900030 | File name too long |
 | 13900031 | Function not implemented |
-| 13900033 | Too many symbolic links encountered |
+| 13900004 | Interrupted system call |
+| 13900005 | I/O error |
 | 13900038 | Value too large for defined data type |
+| 13900033 | Too many symbolic links encountered |
+| 13900002 | No such file or directory |
+| 13900012 | Permission denied |
+| 13900013 | Bad address |
+| 13900008 | Bad file descriptor |
 | 13900042 | Unknown error |
+| 13900011 | Out of memory |
 
 
 ## stat
@@ -61,6 +63,8 @@ declare function stat(file: string | number, callback: AsyncCallback<Stat>): voi
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-unnamed-declare function stat(file: string | number, callback: AsyncCallback<Stat>): void--><!--Device-unnamed-declare function stat(file: string | number, callback: AsyncCallback<Stat>): void-End-->
@@ -71,24 +75,24 @@ declare function stat(file: string | number, callback: AsyncCallback<Stat>): voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| file | string \| number | 是 | 文件或目录的应用沙箱路径path、URI或已打开的文件描述符fd。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_**说明**：从API version 22开始，支持传入URI。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;Stat&gt; | 是 | 异步获取文件或目录的信息之后的回调。 |
+| file | string \| number | 是 | 文件或目录的应用沙箱路径path、URI或已打开的文件描述符fd。&lt;br&gt;**说明：**从API version 22开始，支持传入URI。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[Stat](arkts-corefile-file-fs-stat-i.md)&gt; | 是 | 异步获取文件或目录的信息之后的回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900002 | No such file or directory |
-| 13900004 | Interrupted system call |
-| 13900005 | I/O error |
-| 13900008 | Bad file descriptor |
-| 13900011 | Out of memory |
-| 13900012 | Permission denied |
-| 13900013 | Bad address |
 | 13900018 | Not a directory |
 | 13900030 | File name too long |
 | 13900031 | Function not implemented |
-| 13900033 | Too many symbolic links encountered |
+| 13900004 | Interrupted system call |
+| 13900005 | I/O error |
 | 13900038 | Value too large for defined data type |
+| 13900033 | Too many symbolic links encountered |
+| 13900002 | No such file or directory |
+| 13900012 | Permission denied |
+| 13900013 | Bad address |
+| 13900008 | Bad file descriptor |
 | 13900042 | Unknown error |
+| 13900011 | Out of memory |
 

@@ -2,13 +2,15 @@
 
 使用以下方法前，需先构造ThreadWorker实例。ThreadWorker类继承WorkerEventTarget。 使用Worker模块时，API version 18及之后的版本建议在宿主线程中注册onAllErrors回调，以捕获Worker线程生命周期内的各种异常。API version 18之前的版本应注册onerror回调。 如果未注册onAllErrors或onerror回调，当Worker线程出现异常时会发生崩溃问题。 注意，onerror接口仅能捕获onmessage回调中的同步异常，捕获异常后，Worker线程将进入销毁流程，无法继续使用。 onAllErrors接口与onerror接口之间的行为差异如下： 1. 异常捕获范围 onAllErrors接口可以捕获Worker线程的onmessage回调、timer回调以及文件执行等流程中产生的全局异常。 onerror接口仅能捕获Worker线程的onmessage回调中同步方法产生的异常，无法捕获多线程回调和模块化相关异常。 2. 异常捕获后的线程状态 onAllErrors接口捕获异常后，Worker线程仍然存活并可以继续使用。这使开发者可以在捕获异常后执行其他操作，无需担心线程终止。 onerror接口捕获异常后，Worker线程会进入销毁流程，无法继续使用。这意味着在onerror触发后，Worker线程将被终止，后续操作将无法进行。 3. 适用场景 onAllErrors接口适用于捕获Worker线程中所有类型异常的场景，特别是确保异常发生后Worker线程仍能继续运行的复杂场景。 onerror接口适用于只需要捕获onmessage回调中同步异常的简单场景。由于捕获异常后线程会被销毁，适用于不需要继续使用Worker线程的情况。 推荐使用onAllErrors接口，因为它提供了更全面的异常捕获能力，并且不会导致线程终止。
 
-**继承/实现关系：** ThreadWorker implements [WorkerEventTarget](arkts-arkts-worker-workereventtarget-i.md)
+**继承/实现关系：** ThreadWorker implements [WorkerEventTarget](arkts-arkts-worker-workereventtarget-i.md#WorkerEventTarget)
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
-<!--Device-worker-class ThreadWorker implements WorkerEventTarget--><!--Device-worker-class ThreadWorker implements WorkerEventTarget-End-->
+**废弃版本：** -1
+
+<!--Device-worker-class ThreadWorker--><!--Device-worker-class ThreadWorker-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -24,6 +26,8 @@ addEventListener(type: string, listener: WorkerEventListener): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ThreadWorker-addEventListener(type: string, listener: WorkerEventListener): void--><!--Device-ThreadWorker-addEventListener(type: string, listener: WorkerEventListener): void-End-->
@@ -35,16 +39,16 @@ addEventListener(type: string, listener: WorkerEventListener): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | string | 是 | 监听的事件类型。 |
-| listener | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 当指定类型的事件发生时调用的回调函数。 |
+| listener | [WorkerEventListener](arkts-arkts-worker-workereventlistener-i.md) | 是 | 当指定类型的事件发生时调用的回调函数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 | [10200005](../errorcode-utils.md#10200005-worker不支持某api) | The called API is not supported in the worker thread. |
+| [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // Index.ets
@@ -72,6 +76,8 @@ ThreadWorker构造函数。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ThreadWorker-constructor(scriptURL: string, options?: WorkerOptions)--><!--Device-ThreadWorker-constructor(scriptURL: string, options?: WorkerOptions)-End-->
@@ -83,7 +89,7 @@ ThreadWorker构造函数。
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | scriptURL | string | 是 | Worker线程文件的路径。路径规则详细参考文件路径注意事项。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | Worker构造的选项。此参数不填时，对应各属性取其默认值。 |
+| options | [WorkerOptions](arkts-arkts-worker-workeroptions-i.md) | 否 | Worker构造的选项。此参数不填时，对应各属性取其默认值。 |
 
 **错误码：**
 
@@ -92,9 +98,9 @@ ThreadWorker构造函数。
 | [10200003](../errorcode-utils.md#10200003-worker初始化失败) | Worker initialization failed. |
 | [10200007](../errorcode-utils.md#10200007-worker文件路径异常) | The worker file path is invalid. |
 
-**示例：**
+## 示例
 
-以下示例展示了在Stage模型的entry模块Index.ets文件中加载Worker线程文件的方法，使用Library加载Worker线程文件的场景参考[文件路径注意事项](../../arkts-utils/worker-introduction.md#文件路径注意事项)。
+以下示例展示了在Stage模型的entry模块Index.ets文件中加载Worker线程文件的方法，使用Library加载Worker线程文件的场景参考[文件路径注意事项](../../../arkts-utils/worker-introduction.md#文件路径注意事项)。
 
 ```TypeScript
 // Index.ets
@@ -116,6 +122,8 @@ dispatchEvent(event: Event): boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ThreadWorker-dispatchEvent(event: Event): boolean--><!--Device-ThreadWorker-dispatchEvent(event: Event): boolean-End-->
@@ -126,7 +134,7 @@ dispatchEvent(event: Event): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 需要分发的事件。 |
+| event | [Event](arkts-arkts-worker-event-i.md) | 是 | 需要分发的事件。 |
 
 **返回值：**
 
@@ -140,7 +148,7 @@ dispatchEvent(event: Event): boolean
 | --- | --- |
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // Index.ets
@@ -157,7 +165,7 @@ let result: boolean = workerInstance.dispatchEvent({type: "alert", timeStamp: 0}
 console.info("dispatchEvent result is: ", result);
 ```
 
-## off
+## off_string
 
 ```TypeScript
 off(type: string, listener?: WorkerEventListener): void
@@ -168,6 +176,8 @@ off(type: string, listener?: WorkerEventListener): void
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -180,16 +190,16 @@ off(type: string, listener?: WorkerEventListener): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | string | 是 | 需要移除的事件类型。 |
-| listener | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | listener 要移除的事件监听的回调函数。 |
+| listener | [WorkerEventListener](arkts-arkts-worker-workereventlistener-i.md) | 否 | listener 要移除的事件监听的回调函数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 | [10200005](../errorcode-utils.md#10200005-worker不支持某api) | The called API is not supported in the worker thread. |
+| [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // Index.ets
@@ -217,7 +227,7 @@ workerInstance.dispatchEvent({type: "alert", timeStamp: 0}); // timeStamp暂未�
 workerInstance.off("alert");
 ```
 
-## on
+## on_string
 
 ```TypeScript
 on(type: string, listener: WorkerEventListener): void
@@ -228,6 +238,8 @@ on(type: string, listener: WorkerEventListener): void
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -240,16 +252,16 @@ on(type: string, listener: WorkerEventListener): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | string | 是 | 监听的事件类型。 |
-| listener | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 当指定类型的事件发生时调用的回调函数。 |
+| listener | [WorkerEventListener](arkts-arkts-worker-workereventlistener-i.md) | 是 | 当指定类型的事件发生时调用的回调函数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 | [10200005](../errorcode-utils.md#10200005-worker不支持某api) | The called API is not supported in the worker thread. |
+| [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // Index.ets
@@ -266,7 +278,7 @@ workerInstance.dispatchEvent({type: "alert", timeStamp: 0}); // timeStamp暂未�
 workerInstance.dispatchEvent({type: "alert", timeStamp: 0}); // timeStamp暂未支持
 ```
 
-## once
+## once_string
 
 ```TypeScript
 once(type: string, listener: WorkerEventListener): void
@@ -277,6 +289,8 @@ once(type: string, listener: WorkerEventListener): void
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -289,16 +303,16 @@ once(type: string, listener: WorkerEventListener): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | string | 是 | 监听的事件类型。 |
-| listener | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | listener 当指定类型的事件发生时调用的回调函数。 |
+| listener | [WorkerEventListener](arkts-arkts-worker-workereventlistener-i.md) | 是 | listener 当指定类型的事件发生时调用的回调函数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 | [10200005](../errorcode-utils.md#10200005-worker不支持某api) | The called API is not supported in the worker thread. |
+| [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // Index.ets
@@ -325,6 +339,8 @@ postMessage(message: Object, transfer: ArrayBuffer[]): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ThreadWorker-postMessage(message: Object, transfer: ArrayBuffer[]): void--><!--Device-ThreadWorker-postMessage(message: Object, transfer: ArrayBuffer[]): void-End-->
@@ -335,17 +351,17 @@ postMessage(message: Object, transfer: ArrayBuffer[]): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| message | Object | 是 | 发送至Worker的数据，该数据对象必须是可序列化对象。支持的参数类型请参考序列化支持类型。 |
-| transfer | ArrayBuffer[] | 是 | 表示可转移的ArrayBuffer实例对象数组，该数组中对象的所有权会被转移到Worker线程，在宿主线程中将会变为不可用，仅在Worker线程中可用。该数组不可传入null。 |
+| message | Object | 是 | 发送至Worker的数据，该数据对象必须是可序列化对象。 支持的参数类型请参考序列化支持类型。 |
+| transfer | ArrayBuffer[] | 是 | 表示可转移的ArrayBuffer实例对象数组，该数组中对象的所有权 会被转移到Worker线程，在宿主线程中将会变为不可用，仅在Worker线程中可用。该数组不可传入null。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 | [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
+| [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // Worker.ets
@@ -432,6 +448,8 @@ postMessage(message: Object, options?: PostMessageOptions): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ThreadWorker-postMessage(message: Object, options?: PostMessageOptions): void--><!--Device-ThreadWorker-postMessage(message: Object, options?: PostMessageOptions): void-End-->
@@ -442,17 +460,17 @@ postMessage(message: Object, options?: PostMessageOptions): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| message | Object | 是 | 发送至Worker的数据，该数据对象必须是可序列化对象。支持的参数类型请参考序列化支持类型。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 当填入该参数时，其作用与传入ArrayBuffer[]相同，该数组中对象的所有权会被转移到Worker线程，在宿主线程中将变为不可用，仅在Worker线程中可用。若不填入该参数，默认设置为undefined，通过拷贝数据的方式传输信息到Worker线程。 |
+| message | Object | 是 | 发送至Worker的数据，该数据对象必须是可序列化对象。 支持的参数类型请参考序列化支持类型。 |
+| options | [PostMessageOptions](arkts-arkts-worker-postmessageoptions-i.md) | 否 | 当填入该参数时，其作用与传入ArrayBuffer[]相同， 该数组中对象的所有权会被转移到Worker线程，在宿主线程中将变为不可用，仅在Worker线程中可用。 若不填入该参数，默认设置为undefined，通过拷贝数据的方式传输信息到Worker线程。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 | [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
+| [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { worker } from '@kit.ArkTS';
@@ -479,6 +497,8 @@ postMessageWithSharedSendable(message: Object, transfer?: ArrayBuffer[]): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ThreadWorker-postMessageWithSharedSendable(message: Object, transfer?: ArrayBuffer[]): void--><!--Device-ThreadWorker-postMessageWithSharedSendable(message: Object, transfer?: ArrayBuffer[]): void-End-->
@@ -489,17 +509,17 @@ postMessageWithSharedSendable(message: Object, transfer?: ArrayBuffer[]): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| message | Object | 是 | 发送至Worker线程的数据，该数据对象必须是可序列化或可共享。支持的序列化类型请参考序列化支持类型。支持的共享类型请参考Sendable支持的数据类型。 |
-| transfer | ArrayBuffer[] | 否 | 表示可转移的ArrayBuffer实例对象数组，该数组中对象的所有权会被转移到Worker线程，转移后该对象仅在Worker线程中可用。该数组不可传入null。默认值为空数组。 |
+| message | Object | 是 | 发送至Worker线程的数据，该数据对象必须是可序列化或可共享。 支持的序列化类型请参考序列化支持类型。 支持的共享类型请参考Sendable支持的数据类型。 |
+| transfer | ArrayBuffer[] | 否 | 表示可转移的ArrayBuffer实例对象数组，该数组中对象的所有权 会被转移到Worker线程，转移后该对象仅在Worker线程中可用。该数组不可传入null。默认值为空数组。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 | [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
+| [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // Index.ets
@@ -554,6 +574,8 @@ registerGlobalCallObject(instanceName: string, globalCallObject: Object): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ThreadWorker-registerGlobalCallObject(instanceName: string, globalCallObject: Object): void--><!--Device-ThreadWorker-registerGlobalCallObject(instanceName: string, globalCallObject: Object): void-End-->
@@ -573,7 +595,7 @@ registerGlobalCallObject(instanceName: string, globalCallObject: Object): void
 | --- | --- |
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // Index.ets
@@ -632,6 +654,8 @@ removeAllListener(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ThreadWorker-removeAllListener(): void--><!--Device-ThreadWorker-removeAllListener(): void-End-->
@@ -644,7 +668,7 @@ removeAllListener(): void
 | --- | --- |
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // Index.ets
@@ -669,6 +693,8 @@ removeEventListener(type: string, callback?: WorkerEventListener): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ThreadWorker-removeEventListener(type: string, callback?: WorkerEventListener): void--><!--Device-ThreadWorker-removeEventListener(type: string, callback?: WorkerEventListener): void-End-->
@@ -680,7 +706,7 @@ removeEventListener(type: string, callback?: WorkerEventListener): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | string | 是 | 需要移除的事件类型。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 移除监听事件后执行的回调函数。 |
+| callback | [WorkerEventListener](arkts-arkts-worker-workereventlistener-i.md) | 否 | 移除监听事件后执行的回调函数。 |
 
 **错误码：**
 
@@ -688,7 +714,7 @@ removeEventListener(type: string, callback?: WorkerEventListener): void
 | --- | --- |
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // Index.ets
@@ -711,11 +737,13 @@ workerInstance.removeEventListener("alert");
 terminate(): void
 ```
 
-销毁Worker线程，终止Worker接收消息。
+由宿主线程主动销毁Worker线程并停止Worker线程接收消息。
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -729,7 +757,7 @@ terminate(): void
 | --- | --- |
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // Index.ets
@@ -751,6 +779,8 @@ unregisterGlobalCallObject(instanceName?: string): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ThreadWorker-unregisterGlobalCallObject(instanceName?: string): void--><!--Device-ThreadWorker-unregisterGlobalCallObject(instanceName?: string): void-End-->
@@ -761,7 +791,7 @@ unregisterGlobalCallObject(instanceName?: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| instanceName | string | 否 | 注册对象时使用的键。此参数不填时，会释放ThreadWorker实例中所有已注册的对象。 |
+| instanceName | string | 否 | 注册对象时使用的键。此参数不填时， 会释放ThreadWorker实例中所有已注册的对象。 |
 
 **错误码：**
 
@@ -769,7 +799,7 @@ unregisterGlobalCallObject(instanceName?: string): void
 | --- | --- |
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // Index.ets
@@ -799,13 +829,15 @@ workerInstance.postMessage("start worker");
 onAllErrors?: ErrorCallback
 ```
 
-回调函数。表示Worker线程生命周期内发生异常被调用的事件处理程序，处理程序在宿主线程中执行。
+回调函数。表示Worker线程生命周期内发生异常被调用的事件处理程序，处理程序在宿主线程中执行。默认值为undefined。
 
-**类型：** ErrorCallback
+**类型：** [ErrorCallback](arkts-arkts-errorcallback-t.md)
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -827,6 +859,8 @@ onerror?: (err: ErrorEvent) => void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ThreadWorker-onerror?: (err: ErrorEvent) => void--><!--Device-ThreadWorker-onerror?: (err: ErrorEvent) => void-End-->
@@ -846,6 +880,8 @@ onexit?: (code: number) => void
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -867,6 +903,8 @@ onmessage?: (event: MessageEvents) => void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ThreadWorker-onmessage?: (event: MessageEvents) => void--><!--Device-ThreadWorker-onmessage?: (event: MessageEvents) => void-End-->
@@ -886,6 +924,8 @@ onmessageerror?: (event: MessageEvents) => void
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

@@ -2,9 +2,11 @@
 
 按键设备的键值，按键设备包括键盘、光盘、游戏手柄等。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-export declare enum KeyCode--><!--Device-unnamed-export declare enum KeyCode-End-->
 
@@ -18,9 +20,11 @@ KEYCODE_FN = 0
 
 功能（Fn）键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_FN = 0--><!--Device-KeyCode-KEYCODE_FN = 0-End-->
 
@@ -34,9 +38,11 @@ KEYCODE_UNKNOWN = -1
 
 未知按键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_UNKNOWN = -1--><!--Device-KeyCode-KEYCODE_UNKNOWN = -1-End-->
 
@@ -50,9 +56,11 @@ KEYCODE_HOME = 1
 
 功能（Home）键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_HOME = 1--><!--Device-KeyCode-KEYCODE_HOME = 1-End-->
 
@@ -66,9 +74,11 @@ KEYCODE_BACK = 2
 
 返回键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BACK = 2--><!--Device-KeyCode-KEYCODE_BACK = 2-End-->
 
@@ -82,9 +92,11 @@ KEYCODE_SEARCH = 9
 
 搜索键。
 
-**起始版本：** 13
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为13；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SEARCH = 9--><!--Device-KeyCode-KEYCODE_SEARCH = 9-End-->
 
@@ -96,11 +108,13 @@ KEYCODE_SEARCH = 9
 KEYCODE_MEDIA_PLAY_PAUSE = 10
 ```
 
-多媒体键：播放/暂停。 与KEYCODE\_PLAYPAUSE的区别为： KEYCODE\_PLAYPAUSE是较早的定义，KEYCODE\_MEDIA\_PLAY\_PAUSE为现代媒体键设备设计，常见于较新的媒体键设备。
+多媒体键：播放/暂停。 与KEYCODE_PLAYPAUSE的区别为： KEYCODE_PLAYPAUSE是较早的定义，KEYCODE_MEDIA_PLAY_PAUSE为现代媒体键设备设计，常见于较新的媒体键设备。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -116,9 +130,11 @@ KEYCODE_MEDIA_STOP = 11
 
 光盘停止键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -134,9 +150,11 @@ KEYCODE_MEDIA_NEXT = 12
 
 多媒体键：下一首。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -152,9 +170,11 @@ KEYCODE_MEDIA_PREVIOUS = 13
 
 多媒体键：上一首。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -170,9 +190,11 @@ KEYCODE_MEDIA_REWIND = 14
 
 多媒体键：快退。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -188,9 +210,11 @@ KEYCODE_MEDIA_FAST_FORWARD = 15
 
 多媒体键：快进。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -206,9 +230,11 @@ KEYCODE_VOLUME_UP = 16
 
 音量增加键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_VOLUME_UP = 16--><!--Device-KeyCode-KEYCODE_VOLUME_UP = 16-End-->
 
@@ -222,9 +248,11 @@ KEYCODE_VOLUME_DOWN = 17
 
 音量减小键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_VOLUME_DOWN = 17--><!--Device-KeyCode-KEYCODE_VOLUME_DOWN = 17-End-->
 
@@ -238,9 +266,11 @@ KEYCODE_POWER = 18
 
 电源键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_POWER = 18--><!--Device-KeyCode-KEYCODE_POWER = 18-End-->
 
@@ -254,9 +284,11 @@ KEYCODE_CAMERA = 19
 
 拍照键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_CAMERA = 19--><!--Device-KeyCode-KEYCODE_CAMERA = 19-End-->
 
@@ -270,9 +302,11 @@ KEYCODE_VOLUME_MUTE = 22
 
 扬声器静音键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_VOLUME_MUTE = 22--><!--Device-KeyCode-KEYCODE_VOLUME_MUTE = 22-End-->
 
@@ -286,9 +320,11 @@ KEYCODE_MUTE = 23
 
 话筒静音键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_MUTE = 23--><!--Device-KeyCode-KEYCODE_MUTE = 23-End-->
 
@@ -302,9 +338,11 @@ KEYCODE_BRIGHTNESS_UP = 40
 
 亮度调节按键：调亮。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BRIGHTNESS_UP = 40--><!--Device-KeyCode-KEYCODE_BRIGHTNESS_UP = 40-End-->
 
@@ -318,9 +356,11 @@ KEYCODE_BRIGHTNESS_DOWN = 41
 
 亮度调节按键：调暗。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BRIGHTNESS_DOWN = 41--><!--Device-KeyCode-KEYCODE_BRIGHTNESS_DOWN = 41-End-->
 
@@ -334,9 +374,11 @@ KEYCODE_0 = 2000
 
 按键'0'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_0 = 2000--><!--Device-KeyCode-KEYCODE_0 = 2000-End-->
 
@@ -350,9 +392,11 @@ KEYCODE_1 = 2001
 
 按键'1'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_1 = 2001--><!--Device-KeyCode-KEYCODE_1 = 2001-End-->
 
@@ -366,9 +410,11 @@ KEYCODE_2 = 2002
 
 按键'2'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_2 = 2002--><!--Device-KeyCode-KEYCODE_2 = 2002-End-->
 
@@ -382,9 +428,11 @@ KEYCODE_3 = 2003
 
 按键'3'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_3 = 2003--><!--Device-KeyCode-KEYCODE_3 = 2003-End-->
 
@@ -398,9 +446,11 @@ KEYCODE_4 = 2004
 
 按键'4'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_4 = 2004--><!--Device-KeyCode-KEYCODE_4 = 2004-End-->
 
@@ -414,9 +464,11 @@ KEYCODE_5 = 2005
 
 按键'5'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_5 = 2005--><!--Device-KeyCode-KEYCODE_5 = 2005-End-->
 
@@ -430,9 +482,11 @@ KEYCODE_6 = 2006
 
 按键'6'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_6 = 2006--><!--Device-KeyCode-KEYCODE_6 = 2006-End-->
 
@@ -446,9 +500,11 @@ KEYCODE_7 = 2007
 
 按键'7'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_7 = 2007--><!--Device-KeyCode-KEYCODE_7 = 2007-End-->
 
@@ -462,9 +518,11 @@ KEYCODE_8 = 2008
 
 按键'8'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_8 = 2008--><!--Device-KeyCode-KEYCODE_8 = 2008-End-->
 
@@ -478,9 +536,11 @@ KEYCODE_9 = 2009
 
 按键'9'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_9 = 2009--><!--Device-KeyCode-KEYCODE_9 = 2009-End-->
 
@@ -494,9 +554,11 @@ KEYCODE_STAR = 2010
 
 按键'*'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_STAR = 2010--><!--Device-KeyCode-KEYCODE_STAR = 2010-End-->
 
@@ -510,9 +572,11 @@ KEYCODE_POUND = 2011
 
 按键'*'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_POUND = 2011--><!--Device-KeyCode-KEYCODE_POUND = 2011-End-->
 
@@ -526,9 +590,11 @@ KEYCODE_DPAD_UP = 2012
 
 导航键：向上。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_DPAD_UP = 2012--><!--Device-KeyCode-KEYCODE_DPAD_UP = 2012-End-->
 
@@ -542,9 +608,11 @@ KEYCODE_DPAD_DOWN = 2013
 
 导航键：向下。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_DPAD_DOWN = 2013--><!--Device-KeyCode-KEYCODE_DPAD_DOWN = 2013-End-->
 
@@ -558,9 +626,11 @@ KEYCODE_DPAD_LEFT = 2014
 
 导航键：向左。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_DPAD_LEFT = 2014--><!--Device-KeyCode-KEYCODE_DPAD_LEFT = 2014-End-->
 
@@ -574,9 +644,11 @@ KEYCODE_DPAD_RIGHT = 2015
 
 导航键：向右。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_DPAD_RIGHT = 2015--><!--Device-KeyCode-KEYCODE_DPAD_RIGHT = 2015-End-->
 
@@ -590,9 +662,11 @@ KEYCODE_DPAD_CENTER = 2016
 
 导航键：确定键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_DPAD_CENTER = 2016--><!--Device-KeyCode-KEYCODE_DPAD_CENTER = 2016-End-->
 
@@ -606,9 +680,11 @@ KEYCODE_A = 2017
 
 按键'A'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_A = 2017--><!--Device-KeyCode-KEYCODE_A = 2017-End-->
 
@@ -622,9 +698,11 @@ KEYCODE_B = 2018
 
 按键'B'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_B = 2018--><!--Device-KeyCode-KEYCODE_B = 2018-End-->
 
@@ -638,9 +716,11 @@ KEYCODE_C = 2019
 
 按键'C'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_C = 2019--><!--Device-KeyCode-KEYCODE_C = 2019-End-->
 
@@ -654,9 +734,11 @@ KEYCODE_D = 2020
 
 按键'D'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_D = 2020--><!--Device-KeyCode-KEYCODE_D = 2020-End-->
 
@@ -670,9 +752,11 @@ KEYCODE_E = 2021
 
 按键'E'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_E = 2021--><!--Device-KeyCode-KEYCODE_E = 2021-End-->
 
@@ -686,9 +770,11 @@ KEYCODE_F = 2022
 
 按键'F'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F = 2022--><!--Device-KeyCode-KEYCODE_F = 2022-End-->
 
@@ -702,9 +788,11 @@ KEYCODE_G = 2023
 
 按键'G'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_G = 2023--><!--Device-KeyCode-KEYCODE_G = 2023-End-->
 
@@ -718,9 +806,11 @@ KEYCODE_H = 2024
 
 按键'H'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_H = 2024--><!--Device-KeyCode-KEYCODE_H = 2024-End-->
 
@@ -734,9 +824,11 @@ KEYCODE_I = 2025
 
 按键'I'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_I = 2025--><!--Device-KeyCode-KEYCODE_I = 2025-End-->
 
@@ -750,9 +842,11 @@ KEYCODE_J = 2026
 
 按键'J'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_J = 2026--><!--Device-KeyCode-KEYCODE_J = 2026-End-->
 
@@ -766,9 +860,11 @@ KEYCODE_K = 2027
 
 按键'K'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_K = 2027--><!--Device-KeyCode-KEYCODE_K = 2027-End-->
 
@@ -782,9 +878,11 @@ KEYCODE_L = 2028
 
 按键'L'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_L = 2028--><!--Device-KeyCode-KEYCODE_L = 2028-End-->
 
@@ -798,9 +896,11 @@ KEYCODE_M = 2029
 
 按键'M'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_M = 2029--><!--Device-KeyCode-KEYCODE_M = 2029-End-->
 
@@ -814,9 +914,11 @@ KEYCODE_N = 2030
 
 按键'N'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_N = 2030--><!--Device-KeyCode-KEYCODE_N = 2030-End-->
 
@@ -830,9 +932,11 @@ KEYCODE_O = 2031
 
 按键'O'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_O = 2031--><!--Device-KeyCode-KEYCODE_O = 2031-End-->
 
@@ -846,9 +950,11 @@ KEYCODE_P = 2032
 
 按键'P'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_P = 2032--><!--Device-KeyCode-KEYCODE_P = 2032-End-->
 
@@ -862,9 +968,11 @@ KEYCODE_Q = 2033
 
 按键'Q'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_Q = 2033--><!--Device-KeyCode-KEYCODE_Q = 2033-End-->
 
@@ -878,9 +986,11 @@ KEYCODE_R = 2034
 
 按键'R'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_R = 2034--><!--Device-KeyCode-KEYCODE_R = 2034-End-->
 
@@ -894,9 +1004,11 @@ KEYCODE_S = 2035
 
 按键'S'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_S = 2035--><!--Device-KeyCode-KEYCODE_S = 2035-End-->
 
@@ -910,9 +1022,11 @@ KEYCODE_T = 2036
 
 按键'T'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_T = 2036--><!--Device-KeyCode-KEYCODE_T = 2036-End-->
 
@@ -926,9 +1040,11 @@ KEYCODE_U = 2037
 
 按键'U'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_U = 2037--><!--Device-KeyCode-KEYCODE_U = 2037-End-->
 
@@ -942,9 +1058,11 @@ KEYCODE_V = 2038
 
 按键'V'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_V = 2038--><!--Device-KeyCode-KEYCODE_V = 2038-End-->
 
@@ -958,9 +1076,11 @@ KEYCODE_W = 2039
 
 按键'W'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_W = 2039--><!--Device-KeyCode-KEYCODE_W = 2039-End-->
 
@@ -974,9 +1094,11 @@ KEYCODE_X = 2040
 
 按键'X'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_X = 2040--><!--Device-KeyCode-KEYCODE_X = 2040-End-->
 
@@ -990,9 +1112,11 @@ KEYCODE_Y = 2041
 
 按键'Y'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_Y = 2041--><!--Device-KeyCode-KEYCODE_Y = 2041-End-->
 
@@ -1006,9 +1130,11 @@ KEYCODE_Z = 2042
 
 按键'Z'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_Z = 2042--><!--Device-KeyCode-KEYCODE_Z = 2042-End-->
 
@@ -1022,9 +1148,11 @@ KEYCODE_COMMA = 2043
 
 按键','。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_COMMA = 2043--><!--Device-KeyCode-KEYCODE_COMMA = 2043-End-->
 
@@ -1038,9 +1166,11 @@ KEYCODE_PERIOD = 2044
 
 按键'.'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_PERIOD = 2044--><!--Device-KeyCode-KEYCODE_PERIOD = 2044-End-->
 
@@ -1054,9 +1184,11 @@ KEYCODE_ALT_LEFT = 2045
 
 左Alt键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_ALT_LEFT = 2045--><!--Device-KeyCode-KEYCODE_ALT_LEFT = 2045-End-->
 
@@ -1070,9 +1202,11 @@ KEYCODE_ALT_RIGHT = 2046
 
 右Alt键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_ALT_RIGHT = 2046--><!--Device-KeyCode-KEYCODE_ALT_RIGHT = 2046-End-->
 
@@ -1086,9 +1220,11 @@ KEYCODE_SHIFT_LEFT = 2047
 
 左Shift键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SHIFT_LEFT = 2047--><!--Device-KeyCode-KEYCODE_SHIFT_LEFT = 2047-End-->
 
@@ -1102,9 +1238,11 @@ KEYCODE_SHIFT_RIGHT = 2048
 
 右Shift键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SHIFT_RIGHT = 2048--><!--Device-KeyCode-KEYCODE_SHIFT_RIGHT = 2048-End-->
 
@@ -1118,9 +1256,11 @@ KEYCODE_TAB = 2049
 
 Tab键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_TAB = 2049--><!--Device-KeyCode-KEYCODE_TAB = 2049-End-->
 
@@ -1134,9 +1274,11 @@ KEYCODE_SPACE = 2050
 
 空格键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SPACE = 2050--><!--Device-KeyCode-KEYCODE_SPACE = 2050-End-->
 
@@ -1150,9 +1292,11 @@ KEYCODE_SYM = 2051
 
 符号修改器按键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SYM = 2051--><!--Device-KeyCode-KEYCODE_SYM = 2051-End-->
 
@@ -1166,9 +1310,11 @@ KEYCODE_EXPLORER = 2052
 
 浏览器功能键，此键用于启动浏览器应用程序。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_EXPLORER = 2052--><!--Device-KeyCode-KEYCODE_EXPLORER = 2052-End-->
 
@@ -1182,9 +1328,11 @@ KEYCODE_ENVELOPE = 2053
 
 电子邮件功能键，此键用于启动电子邮件应用程序。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_ENVELOPE = 2053--><!--Device-KeyCode-KEYCODE_ENVELOPE = 2053-End-->
 
@@ -1198,9 +1346,11 @@ KEYCODE_ENTER = 2054
 
 回车键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_ENTER = 2054--><!--Device-KeyCode-KEYCODE_ENTER = 2054-End-->
 
@@ -1214,9 +1364,11 @@ KEYCODE_DEL = 2055
 
 退格键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_DEL = 2055--><!--Device-KeyCode-KEYCODE_DEL = 2055-End-->
 
@@ -1230,9 +1382,11 @@ KEYCODE_GRAVE = 2056
 
 按键'*'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_GRAVE = 2056--><!--Device-KeyCode-KEYCODE_GRAVE = 2056-End-->
 
@@ -1246,9 +1400,11 @@ KEYCODE_MINUS = 2057
 
 按键'-'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_MINUS = 2057--><!--Device-KeyCode-KEYCODE_MINUS = 2057-End-->
 
@@ -1262,9 +1418,11 @@ KEYCODE_EQUALS = 2058
 
 按键'='。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_EQUALS = 2058--><!--Device-KeyCode-KEYCODE_EQUALS = 2058-End-->
 
@@ -1278,9 +1436,11 @@ KEYCODE_LEFT_BRACKET = 2059
 
 按键'['。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_LEFT_BRACKET = 2059--><!--Device-KeyCode-KEYCODE_LEFT_BRACKET = 2059-End-->
 
@@ -1294,9 +1454,11 @@ KEYCODE_RIGHT_BRACKET = 2060
 
 按键']'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_RIGHT_BRACKET = 2060--><!--Device-KeyCode-KEYCODE_RIGHT_BRACKET = 2060-End-->
 
@@ -1310,9 +1472,11 @@ KEYCODE_BACKSLASH = 2061
 
 按键'\'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BACKSLASH = 2061--><!--Device-KeyCode-KEYCODE_BACKSLASH = 2061-End-->
 
@@ -1326,9 +1490,11 @@ KEYCODE_SEMICOLON = 2062
 
 按键';'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SEMICOLON = 2062--><!--Device-KeyCode-KEYCODE_SEMICOLON = 2062-End-->
 
@@ -1342,9 +1508,11 @@ KEYCODE_APOSTROPHE = 2063
 
 按键''' (单引号)。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_APOSTROPHE = 2063--><!--Device-KeyCode-KEYCODE_APOSTROPHE = 2063-End-->
 
@@ -1358,9 +1526,11 @@ KEYCODE_SLASH = 2064
 
 按键'*'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SLASH = 2064--><!--Device-KeyCode-KEYCODE_SLASH = 2064-End-->
 
@@ -1374,9 +1544,11 @@ KEYCODE_AT = 2065
 
 按键'*'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_AT = 2065--><!--Device-KeyCode-KEYCODE_AT = 2065-End-->
 
@@ -1390,9 +1562,11 @@ KEYCODE_PLUS = 2066
 
 按键'+'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_PLUS = 2066--><!--Device-KeyCode-KEYCODE_PLUS = 2066-End-->
 
@@ -1406,9 +1580,11 @@ KEYCODE_MENU = 2067
 
 菜单键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_MENU = 2067--><!--Device-KeyCode-KEYCODE_MENU = 2067-End-->
 
@@ -1422,9 +1598,11 @@ KEYCODE_PAGE_UP = 2068
 
 向上翻页键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_PAGE_UP = 2068--><!--Device-KeyCode-KEYCODE_PAGE_UP = 2068-End-->
 
@@ -1438,9 +1616,11 @@ KEYCODE_PAGE_DOWN = 2069
 
 向下翻页键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_PAGE_DOWN = 2069--><!--Device-KeyCode-KEYCODE_PAGE_DOWN = 2069-End-->
 
@@ -1454,9 +1634,11 @@ KEYCODE_ESCAPE = 2070
 
 Esc键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_ESCAPE = 2070--><!--Device-KeyCode-KEYCODE_ESCAPE = 2070-End-->
 
@@ -1470,9 +1652,11 @@ KEYCODE_FORWARD_DEL = 2071
 
 删除键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_FORWARD_DEL = 2071--><!--Device-KeyCode-KEYCODE_FORWARD_DEL = 2071-End-->
 
@@ -1486,9 +1670,11 @@ KEYCODE_CTRL_LEFT = 2072
 
 左Ctrl键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_CTRL_LEFT = 2072--><!--Device-KeyCode-KEYCODE_CTRL_LEFT = 2072-End-->
 
@@ -1502,9 +1688,11 @@ KEYCODE_CTRL_RIGHT = 2073
 
 右Ctrl键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_CTRL_RIGHT = 2073--><!--Device-KeyCode-KEYCODE_CTRL_RIGHT = 2073-End-->
 
@@ -1518,9 +1706,11 @@ KEYCODE_CAPS_LOCK = 2074
 
 大写锁定键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_CAPS_LOCK = 2074--><!--Device-KeyCode-KEYCODE_CAPS_LOCK = 2074-End-->
 
@@ -1534,9 +1724,11 @@ KEYCODE_SCROLL_LOCK = 2075
 
 滚动锁定键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SCROLL_LOCK = 2075--><!--Device-KeyCode-KEYCODE_SCROLL_LOCK = 2075-End-->
 
@@ -1550,9 +1742,11 @@ KEYCODE_META_LEFT = 2076
 
 左Meta键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_META_LEFT = 2076--><!--Device-KeyCode-KEYCODE_META_LEFT = 2076-End-->
 
@@ -1566,9 +1760,11 @@ KEYCODE_META_RIGHT = 2077
 
 右Meta键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_META_RIGHT = 2077--><!--Device-KeyCode-KEYCODE_META_RIGHT = 2077-End-->
 
@@ -1582,9 +1778,11 @@ KEYCODE_FUNCTION = 2078
 
 功能键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_FUNCTION = 2078--><!--Device-KeyCode-KEYCODE_FUNCTION = 2078-End-->
 
@@ -1598,9 +1796,11 @@ KEYCODE_SYSRQ = 2079
 
 系统请求/打印屏幕键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SYSRQ = 2079--><!--Device-KeyCode-KEYCODE_SYSRQ = 2079-End-->
 
@@ -1614,9 +1814,11 @@ KEYCODE_BREAK = 2080
 
 Break/Pause键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BREAK = 2080--><!--Device-KeyCode-KEYCODE_BREAK = 2080-End-->
 
@@ -1630,9 +1832,11 @@ KEYCODE_MOVE_HOME = 2081
 
 光标移动到开始键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_MOVE_HOME = 2081--><!--Device-KeyCode-KEYCODE_MOVE_HOME = 2081-End-->
 
@@ -1646,9 +1850,11 @@ KEYCODE_MOVE_END = 2082
 
 光标移动到末尾键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_MOVE_END = 2082--><!--Device-KeyCode-KEYCODE_MOVE_END = 2082-End-->
 
@@ -1662,9 +1868,11 @@ KEYCODE_INSERT = 2083
 
 插入键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_INSERT = 2083--><!--Device-KeyCode-KEYCODE_INSERT = 2083-End-->
 
@@ -1678,9 +1886,11 @@ KEYCODE_FORWARD = 2084
 
 前进键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_FORWARD = 2084--><!--Device-KeyCode-KEYCODE_FORWARD = 2084-End-->
 
@@ -1694,9 +1904,11 @@ KEYCODE_MEDIA_PLAY = 2085
 
 多媒体键：播放。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1712,9 +1924,11 @@ KEYCODE_MEDIA_PAUSE = 2086
 
 光盘暂停键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1730,9 +1944,11 @@ KEYCODE_MEDIA_CLOSE = 2087
 
 光盘关闭键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_MEDIA_CLOSE = 2087--><!--Device-KeyCode-KEYCODE_MEDIA_CLOSE = 2087-End-->
 
@@ -1746,9 +1962,11 @@ KEYCODE_MEDIA_EJECT = 2088
 
 光盘弹出键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_MEDIA_EJECT = 2088--><!--Device-KeyCode-KEYCODE_MEDIA_EJECT = 2088-End-->
 
@@ -1762,9 +1980,11 @@ KEYCODE_MEDIA_RECORD = 2089
 
 多媒体键：录音。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_MEDIA_RECORD = 2089--><!--Device-KeyCode-KEYCODE_MEDIA_RECORD = 2089-End-->
 
@@ -1778,9 +1998,11 @@ KEYCODE_F1 = 2090
 
 按键'F1'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F1 = 2090--><!--Device-KeyCode-KEYCODE_F1 = 2090-End-->
 
@@ -1794,9 +2016,11 @@ KEYCODE_F2 = 2091
 
 按键'F2'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F2 = 2091--><!--Device-KeyCode-KEYCODE_F2 = 2091-End-->
 
@@ -1810,9 +2034,11 @@ KEYCODE_F3 = 2092
 
 按键'F3'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F3 = 2092--><!--Device-KeyCode-KEYCODE_F3 = 2092-End-->
 
@@ -1826,9 +2052,11 @@ KEYCODE_F4 = 2093
 
 按键'F4'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F4 = 2093--><!--Device-KeyCode-KEYCODE_F4 = 2093-End-->
 
@@ -1842,9 +2070,11 @@ KEYCODE_F5 = 2094
 
 按键'F5'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F5 = 2094--><!--Device-KeyCode-KEYCODE_F5 = 2094-End-->
 
@@ -1858,9 +2088,11 @@ KEYCODE_F6 = 2095
 
 按键'F6'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F6 = 2095--><!--Device-KeyCode-KEYCODE_F6 = 2095-End-->
 
@@ -1874,9 +2106,11 @@ KEYCODE_F7 = 2096
 
 按键'F7'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F7 = 2096--><!--Device-KeyCode-KEYCODE_F7 = 2096-End-->
 
@@ -1890,9 +2124,11 @@ KEYCODE_F8 = 2097
 
 按键'F8'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F8 = 2097--><!--Device-KeyCode-KEYCODE_F8 = 2097-End-->
 
@@ -1906,9 +2142,11 @@ KEYCODE_F9 = 2098
 
 按键'F9'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F9 = 2098--><!--Device-KeyCode-KEYCODE_F9 = 2098-End-->
 
@@ -1922,9 +2160,11 @@ KEYCODE_F10 = 2099
 
 按键'F10'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F10 = 2099--><!--Device-KeyCode-KEYCODE_F10 = 2099-End-->
 
@@ -1938,9 +2178,11 @@ KEYCODE_F11 = 2100
 
 按键'F11'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F11 = 2100--><!--Device-KeyCode-KEYCODE_F11 = 2100-End-->
 
@@ -1954,9 +2196,11 @@ KEYCODE_F12 = 2101
 
 按键'F12'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F12 = 2101--><!--Device-KeyCode-KEYCODE_F12 = 2101-End-->
 
@@ -1970,9 +2214,11 @@ KEYCODE_NUM_LOCK = 2102
 
 小键盘锁。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NUM_LOCK = 2102--><!--Device-KeyCode-KEYCODE_NUM_LOCK = 2102-End-->
 
@@ -1986,9 +2232,11 @@ KEYCODE_NUMPAD_0 = 2103
 
 小键盘按键'0'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NUMPAD_0 = 2103--><!--Device-KeyCode-KEYCODE_NUMPAD_0 = 2103-End-->
 
@@ -2002,9 +2250,11 @@ KEYCODE_NUMPAD_1 = 2104
 
 小键盘按键'1'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NUMPAD_1 = 2104--><!--Device-KeyCode-KEYCODE_NUMPAD_1 = 2104-End-->
 
@@ -2018,9 +2268,11 @@ KEYCODE_NUMPAD_2 = 2105
 
 小键盘按键'2'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NUMPAD_2 = 2105--><!--Device-KeyCode-KEYCODE_NUMPAD_2 = 2105-End-->
 
@@ -2034,9 +2286,11 @@ KEYCODE_NUMPAD_3 = 2106
 
 小键盘按键'3'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NUMPAD_3 = 2106--><!--Device-KeyCode-KEYCODE_NUMPAD_3 = 2106-End-->
 
@@ -2050,9 +2304,11 @@ KEYCODE_NUMPAD_4 = 2107
 
 小键盘按键'4'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NUMPAD_4 = 2107--><!--Device-KeyCode-KEYCODE_NUMPAD_4 = 2107-End-->
 
@@ -2066,9 +2322,11 @@ KEYCODE_NUMPAD_5 = 2108
 
 小键盘按键'5'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NUMPAD_5 = 2108--><!--Device-KeyCode-KEYCODE_NUMPAD_5 = 2108-End-->
 
@@ -2082,9 +2340,11 @@ KEYCODE_NUMPAD_6 = 2109
 
 小键盘按键'6'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NUMPAD_6 = 2109--><!--Device-KeyCode-KEYCODE_NUMPAD_6 = 2109-End-->
 
@@ -2098,9 +2358,11 @@ KEYCODE_NUMPAD_7 = 2110
 
 小键盘按键'7'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NUMPAD_7 = 2110--><!--Device-KeyCode-KEYCODE_NUMPAD_7 = 2110-End-->
 
@@ -2114,9 +2376,11 @@ KEYCODE_NUMPAD_8 = 2111
 
 小键盘按键'8'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NUMPAD_8 = 2111--><!--Device-KeyCode-KEYCODE_NUMPAD_8 = 2111-End-->
 
@@ -2130,9 +2394,11 @@ KEYCODE_NUMPAD_9 = 2112
 
 小键盘按键'9'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NUMPAD_9 = 2112--><!--Device-KeyCode-KEYCODE_NUMPAD_9 = 2112-End-->
 
@@ -2146,9 +2412,11 @@ KEYCODE_NUMPAD_DIVIDE = 2113
 
 小键盘按键'/'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NUMPAD_DIVIDE = 2113--><!--Device-KeyCode-KEYCODE_NUMPAD_DIVIDE = 2113-End-->
 
@@ -2162,9 +2430,11 @@ KEYCODE_NUMPAD_MULTIPLY = 2114
 
 小键盘按键'*'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NUMPAD_MULTIPLY = 2114--><!--Device-KeyCode-KEYCODE_NUMPAD_MULTIPLY = 2114-End-->
 
@@ -2178,9 +2448,11 @@ KEYCODE_NUMPAD_SUBTRACT = 2115
 
 小键盘按键'-'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NUMPAD_SUBTRACT = 2115--><!--Device-KeyCode-KEYCODE_NUMPAD_SUBTRACT = 2115-End-->
 
@@ -2194,9 +2466,11 @@ KEYCODE_NUMPAD_ADD = 2116
 
 小键盘按键'+'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NUMPAD_ADD = 2116--><!--Device-KeyCode-KEYCODE_NUMPAD_ADD = 2116-End-->
 
@@ -2210,9 +2484,11 @@ KEYCODE_NUMPAD_DOT = 2117
 
 小键盘按键'.'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NUMPAD_DOT = 2117--><!--Device-KeyCode-KEYCODE_NUMPAD_DOT = 2117-End-->
 
@@ -2226,9 +2502,11 @@ KEYCODE_NUMPAD_COMMA = 2118
 
 小键盘按键','。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NUMPAD_COMMA = 2118--><!--Device-KeyCode-KEYCODE_NUMPAD_COMMA = 2118-End-->
 
@@ -2242,9 +2520,11 @@ KEYCODE_NUMPAD_ENTER = 2119
 
 小键盘按键回车。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NUMPAD_ENTER = 2119--><!--Device-KeyCode-KEYCODE_NUMPAD_ENTER = 2119-End-->
 
@@ -2258,9 +2538,11 @@ KEYCODE_NUMPAD_EQUALS = 2120
 
 小键盘按键'='。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NUMPAD_EQUALS = 2120--><!--Device-KeyCode-KEYCODE_NUMPAD_EQUALS = 2120-End-->
 
@@ -2274,9 +2556,11 @@ KEYCODE_NUMPAD_LEFT_PAREN = 2121
 
 小键盘按键'('。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NUMPAD_LEFT_PAREN = 2121--><!--Device-KeyCode-KEYCODE_NUMPAD_LEFT_PAREN = 2121-End-->
 
@@ -2290,9 +2574,11 @@ KEYCODE_NUMPAD_RIGHT_PAREN = 2122
 
 小键盘按键')'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NUMPAD_RIGHT_PAREN = 2122--><!--Device-KeyCode-KEYCODE_NUMPAD_RIGHT_PAREN = 2122-End-->
 
@@ -2306,9 +2592,11 @@ KEYCODE_VIRTUAL_MULTITASK = 2210
 
 虚拟多任务键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_VIRTUAL_MULTITASK = 2210--><!--Device-KeyCode-KEYCODE_VIRTUAL_MULTITASK = 2210-End-->
 
@@ -2322,9 +2610,11 @@ KEYCODE_BUTTON_A = 2301
 
 游戏手柄按键'A'。
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BUTTON_A = 2301--><!--Device-KeyCode-KEYCODE_BUTTON_A = 2301-End-->
 
@@ -2338,9 +2628,11 @@ KEYCODE_BUTTON_B = 2302
 
 游戏手柄按键'B'。
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BUTTON_B = 2302--><!--Device-KeyCode-KEYCODE_BUTTON_B = 2302-End-->
 
@@ -2354,9 +2646,11 @@ KEYCODE_BUTTON_X = 2304
 
 游戏手柄按键'X'。
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BUTTON_X = 2304--><!--Device-KeyCode-KEYCODE_BUTTON_X = 2304-End-->
 
@@ -2370,9 +2664,11 @@ KEYCODE_BUTTON_Y = 2305
 
 游戏手柄按键'Y'。
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BUTTON_Y = 2305--><!--Device-KeyCode-KEYCODE_BUTTON_Y = 2305-End-->
 
@@ -2386,9 +2682,11 @@ KEYCODE_BUTTON_L1 = 2307
 
 游戏手柄按键'L1'。
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BUTTON_L1 = 2307--><!--Device-KeyCode-KEYCODE_BUTTON_L1 = 2307-End-->
 
@@ -2402,9 +2700,11 @@ KEYCODE_BUTTON_R1 = 2308
 
 游戏手柄按键'R1'。
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BUTTON_R1 = 2308--><!--Device-KeyCode-KEYCODE_BUTTON_R1 = 2308-End-->
 
@@ -2418,9 +2718,11 @@ KEYCODE_BUTTON_L2 = 2309
 
 游戏手柄按键'L2'。
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BUTTON_L2 = 2309--><!--Device-KeyCode-KEYCODE_BUTTON_L2 = 2309-End-->
 
@@ -2434,9 +2736,11 @@ KEYCODE_BUTTON_R2 = 2310
 
 游戏手柄按键'R2'。
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BUTTON_R2 = 2310--><!--Device-KeyCode-KEYCODE_BUTTON_R2 = 2310-End-->
 
@@ -2450,9 +2754,11 @@ KEYCODE_BUTTON_SELECT = 2311
 
 游戏手柄按键'Select'。
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BUTTON_SELECT = 2311--><!--Device-KeyCode-KEYCODE_BUTTON_SELECT = 2311-End-->
 
@@ -2466,9 +2772,11 @@ KEYCODE_BUTTON_START = 2312
 
 游戏手柄按键'Start'。
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BUTTON_START = 2312--><!--Device-KeyCode-KEYCODE_BUTTON_START = 2312-End-->
 
@@ -2482,9 +2790,11 @@ KEYCODE_BUTTON_MODE = 2313
 
 游戏手柄按键'Mode'。
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BUTTON_MODE = 2313--><!--Device-KeyCode-KEYCODE_BUTTON_MODE = 2313-End-->
 
@@ -2498,9 +2808,11 @@ KEYCODE_BUTTON_THUMBL = 2314
 
 游戏手柄按键'THUMBL'。
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BUTTON_THUMBL = 2314--><!--Device-KeyCode-KEYCODE_BUTTON_THUMBL = 2314-End-->
 
@@ -2514,9 +2826,11 @@ KEYCODE_BUTTON_THUMBR = 2315
 
 游戏手柄按键'THUMBR'。
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BUTTON_THUMBR = 2315--><!--Device-KeyCode-KEYCODE_BUTTON_THUMBR = 2315-End-->
 
@@ -2530,9 +2844,11 @@ KEYCODE_SLEEP = 2600
 
 睡眠键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SLEEP = 2600--><!--Device-KeyCode-KEYCODE_SLEEP = 2600-End-->
 
@@ -2546,9 +2862,11 @@ KEYCODE_ZENKAKU_HANKAKU = 2601
 
 日文全宽/半宽键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_ZENKAKU_HANKAKU = 2601--><!--Device-KeyCode-KEYCODE_ZENKAKU_HANKAKU = 2601-End-->
 
@@ -2562,9 +2880,11 @@ KEYCODE_102ND = 2602
 
 国际键盘扩展键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_102ND = 2602--><!--Device-KeyCode-KEYCODE_102ND = 2602-End-->
 
@@ -2578,9 +2898,11 @@ KEYCODE_RO = 2603
 
 日文Ro键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_RO = 2603--><!--Device-KeyCode-KEYCODE_RO = 2603-End-->
 
@@ -2594,9 +2916,11 @@ KEYCODE_KATAKANA = 2604
 
 日文片假名键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_KATAKANA = 2604--><!--Device-KeyCode-KEYCODE_KATAKANA = 2604-End-->
 
@@ -2610,9 +2934,11 @@ KEYCODE_HIRAGANA = 2605
 
 日文平假名键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_HIRAGANA = 2605--><!--Device-KeyCode-KEYCODE_HIRAGANA = 2605-End-->
 
@@ -2626,9 +2952,11 @@ KEYCODE_HENKAN = 2606
 
 日文转换键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_HENKAN = 2606--><!--Device-KeyCode-KEYCODE_HENKAN = 2606-End-->
 
@@ -2642,9 +2970,11 @@ KEYCODE_KATAKANA_HIRAGANA = 2607
 
 日语片假名/平假名键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_KATAKANA_HIRAGANA = 2607--><!--Device-KeyCode-KEYCODE_KATAKANA_HIRAGANA = 2607-End-->
 
@@ -2658,9 +2988,11 @@ KEYCODE_MUHENKAN = 2608
 
 日文非转换键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_MUHENKAN = 2608--><!--Device-KeyCode-KEYCODE_MUHENKAN = 2608-End-->
 
@@ -2674,9 +3006,11 @@ KEYCODE_LINEFEED = 2609
 
 换行键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_LINEFEED = 2609--><!--Device-KeyCode-KEYCODE_LINEFEED = 2609-End-->
 
@@ -2690,9 +3024,11 @@ KEYCODE_MACRO = 2610
 
 宏键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_MACRO = 2610--><!--Device-KeyCode-KEYCODE_MACRO = 2610-End-->
 
@@ -2706,9 +3042,11 @@ KEYCODE_NUMPAD_PLUSMINUS = 2611
 
 数字键盘上的加号/减号键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NUMPAD_PLUSMINUS = 2611--><!--Device-KeyCode-KEYCODE_NUMPAD_PLUSMINUS = 2611-End-->
 
@@ -2722,9 +3060,11 @@ KEYCODE_SCALE = 2612
 
 扩展键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SCALE = 2612--><!--Device-KeyCode-KEYCODE_SCALE = 2612-End-->
 
@@ -2738,9 +3078,11 @@ KEYCODE_HANGUEL = 2613
 
 日文韩语键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_HANGUEL = 2613--><!--Device-KeyCode-KEYCODE_HANGUEL = 2613-End-->
 
@@ -2754,9 +3096,11 @@ KEYCODE_HANJA = 2614
 
 日文汉语键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_HANJA = 2614--><!--Device-KeyCode-KEYCODE_HANJA = 2614-End-->
 
@@ -2770,9 +3114,11 @@ KEYCODE_YEN = 2615
 
 日元键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_YEN = 2615--><!--Device-KeyCode-KEYCODE_YEN = 2615-End-->
 
@@ -2786,9 +3132,11 @@ KEYCODE_STOP = 2616
 
 停止键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_STOP = 2616--><!--Device-KeyCode-KEYCODE_STOP = 2616-End-->
 
@@ -2802,9 +3150,11 @@ KEYCODE_AGAIN = 2617
 
 重复键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_AGAIN = 2617--><!--Device-KeyCode-KEYCODE_AGAIN = 2617-End-->
 
@@ -2818,9 +3168,11 @@ KEYCODE_PROPS = 2618
 
 道具键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_PROPS = 2618--><!--Device-KeyCode-KEYCODE_PROPS = 2618-End-->
 
@@ -2834,9 +3186,11 @@ KEYCODE_UNDO = 2619
 
 撤消键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_UNDO = 2619--><!--Device-KeyCode-KEYCODE_UNDO = 2619-End-->
 
@@ -2850,9 +3204,11 @@ KEYCODE_COPY = 2620
 
 复制键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_COPY = 2620--><!--Device-KeyCode-KEYCODE_COPY = 2620-End-->
 
@@ -2866,9 +3222,11 @@ KEYCODE_OPEN = 2621
 
 打开键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_OPEN = 2621--><!--Device-KeyCode-KEYCODE_OPEN = 2621-End-->
 
@@ -2882,9 +3240,11 @@ KEYCODE_PASTE = 2622
 
 粘贴键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_PASTE = 2622--><!--Device-KeyCode-KEYCODE_PASTE = 2622-End-->
 
@@ -2898,9 +3258,11 @@ KEYCODE_FIND = 2623
 
 查找键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_FIND = 2623--><!--Device-KeyCode-KEYCODE_FIND = 2623-End-->
 
@@ -2914,9 +3276,11 @@ KEYCODE_CUT = 2624
 
 剪切键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_CUT = 2624--><!--Device-KeyCode-KEYCODE_CUT = 2624-End-->
 
@@ -2930,9 +3294,11 @@ KEYCODE_HELP = 2625
 
 帮助键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_HELP = 2625--><!--Device-KeyCode-KEYCODE_HELP = 2625-End-->
 
@@ -2946,9 +3312,11 @@ KEYCODE_CALC = 2626
 
 计算器特殊功能键，用于启动计算器应用程序。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_CALC = 2626--><!--Device-KeyCode-KEYCODE_CALC = 2626-End-->
 
@@ -2962,9 +3330,11 @@ KEYCODE_FILE = 2627
 
 文件按键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_FILE = 2627--><!--Device-KeyCode-KEYCODE_FILE = 2627-End-->
 
@@ -2978,9 +3348,11 @@ KEYCODE_BOOKMARKS = 2628
 
 书签键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BOOKMARKS = 2628--><!--Device-KeyCode-KEYCODE_BOOKMARKS = 2628-End-->
 
@@ -2994,9 +3366,11 @@ KEYCODE_NEXT = 2629
 
 向下翻页键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NEXT = 2629--><!--Device-KeyCode-KEYCODE_NEXT = 2629-End-->
 
@@ -3008,11 +3382,13 @@ KEYCODE_NEXT = 2629
 KEYCODE_PLAYPAUSE = 2630
 ```
 
-多媒体键：播放/暂停。 与KEYCODE\_MEDIA\_PLAY\_PAUSE的区别为： KEYCODE\_PLAYPAUSE是较早的定义，KEYCODE\_MEDIA\_PLAY\_PAUSE为现代媒体键设备设计，常见于较新的媒体键设备。
+多媒体键：播放/暂停。 与KEYCODE_MEDIA_PLAY_PAUSE的区别为： KEYCODE_PLAYPAUSE是较早的定义，KEYCODE_MEDIA_PLAY_PAUSE为现代媒体键设备设计，常见于较新的媒体键设备。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_PLAYPAUSE = 2630--><!--Device-KeyCode-KEYCODE_PLAYPAUSE = 2630-End-->
 
@@ -3026,9 +3402,11 @@ KEYCODE_PREVIOUS = 2631
 
 向上翻页键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_PREVIOUS = 2631--><!--Device-KeyCode-KEYCODE_PREVIOUS = 2631-End-->
 
@@ -3042,9 +3420,11 @@ KEYCODE_STOPCD = 2632
 
 CD停止键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_STOPCD = 2632--><!--Device-KeyCode-KEYCODE_STOPCD = 2632-End-->
 
@@ -3058,9 +3438,11 @@ KEYCODE_CONFIG = 2634
 
 配置键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_CONFIG = 2634--><!--Device-KeyCode-KEYCODE_CONFIG = 2634-End-->
 
@@ -3074,9 +3456,11 @@ KEYCODE_REFRESH = 2635
 
 刷新键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_REFRESH = 2635--><!--Device-KeyCode-KEYCODE_REFRESH = 2635-End-->
 
@@ -3090,9 +3474,11 @@ KEYCODE_EXIT = 2636
 
 退出键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_EXIT = 2636--><!--Device-KeyCode-KEYCODE_EXIT = 2636-End-->
 
@@ -3106,9 +3492,11 @@ KEYCODE_EDIT = 2637
 
 编辑键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_EDIT = 2637--><!--Device-KeyCode-KEYCODE_EDIT = 2637-End-->
 
@@ -3122,9 +3510,11 @@ KEYCODE_SCROLLUP = 2638
 
 向上滚动键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SCROLLUP = 2638--><!--Device-KeyCode-KEYCODE_SCROLLUP = 2638-End-->
 
@@ -3138,9 +3528,11 @@ KEYCODE_SCROLLDOWN = 2639
 
 向下滚动键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SCROLLDOWN = 2639--><!--Device-KeyCode-KEYCODE_SCROLLDOWN = 2639-End-->
 
@@ -3154,9 +3546,11 @@ KEYCODE_NEW = 2640
 
 新建键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NEW = 2640--><!--Device-KeyCode-KEYCODE_NEW = 2640-End-->
 
@@ -3170,9 +3564,11 @@ KEYCODE_REDO = 2641
 
 恢复键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_REDO = 2641--><!--Device-KeyCode-KEYCODE_REDO = 2641-End-->
 
@@ -3186,9 +3582,11 @@ KEYCODE_CLOSE = 2642
 
 关闭键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_CLOSE = 2642--><!--Device-KeyCode-KEYCODE_CLOSE = 2642-End-->
 
@@ -3202,9 +3600,11 @@ KEYCODE_PLAY = 2643
 
 播放键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_PLAY = 2643--><!--Device-KeyCode-KEYCODE_PLAY = 2643-End-->
 
@@ -3218,9 +3618,11 @@ KEYCODE_BASSBOOST = 2644
 
 低音增强键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BASSBOOST = 2644--><!--Device-KeyCode-KEYCODE_BASSBOOST = 2644-End-->
 
@@ -3234,9 +3636,11 @@ KEYCODE_PRINT = 2645
 
 打印键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_PRINT = 2645--><!--Device-KeyCode-KEYCODE_PRINT = 2645-End-->
 
@@ -3250,9 +3654,11 @@ KEYCODE_CHAT = 2646
 
 聊天键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_CHAT = 2646--><!--Device-KeyCode-KEYCODE_CHAT = 2646-End-->
 
@@ -3266,9 +3672,11 @@ KEYCODE_FINANCE = 2647
 
 金融键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_FINANCE = 2647--><!--Device-KeyCode-KEYCODE_FINANCE = 2647-End-->
 
@@ -3282,9 +3690,11 @@ KEYCODE_CANCEL = 2648
 
 取消键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_CANCEL = 2648--><!--Device-KeyCode-KEYCODE_CANCEL = 2648-End-->
 
@@ -3298,9 +3708,11 @@ KEYCODE_KBDILLUM_TOGGLE = 2649
 
 键盘灯光切换键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_KBDILLUM_TOGGLE = 2649--><!--Device-KeyCode-KEYCODE_KBDILLUM_TOGGLE = 2649-End-->
 
@@ -3314,9 +3726,11 @@ KEYCODE_KBDILLUM_DOWN = 2650
 
 键盘灯光调暗键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_KBDILLUM_DOWN = 2650--><!--Device-KeyCode-KEYCODE_KBDILLUM_DOWN = 2650-End-->
 
@@ -3330,9 +3744,11 @@ KEYCODE_KBDILLUM_UP = 2651
 
 键盘灯光调亮键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_KBDILLUM_UP = 2651--><!--Device-KeyCode-KEYCODE_KBDILLUM_UP = 2651-End-->
 
@@ -3346,9 +3762,11 @@ KEYCODE_SEND = 2652
 
 发送键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SEND = 2652--><!--Device-KeyCode-KEYCODE_SEND = 2652-End-->
 
@@ -3362,9 +3780,11 @@ KEYCODE_REPLY = 2653
 
 答复键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_REPLY = 2653--><!--Device-KeyCode-KEYCODE_REPLY = 2653-End-->
 
@@ -3378,9 +3798,11 @@ KEYCODE_FORWARDMAIL = 2654
 
 邮件转发键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_FORWARDMAIL = 2654--><!--Device-KeyCode-KEYCODE_FORWARDMAIL = 2654-End-->
 
@@ -3394,9 +3816,11 @@ KEYCODE_SAVE = 2655
 
 保存键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SAVE = 2655--><!--Device-KeyCode-KEYCODE_SAVE = 2655-End-->
 
@@ -3410,9 +3834,11 @@ KEYCODE_DOCUMENTS = 2656
 
 文件键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_DOCUMENTS = 2656--><!--Device-KeyCode-KEYCODE_DOCUMENTS = 2656-End-->
 
@@ -3426,9 +3852,11 @@ KEYCODE_VIDEO_NEXT = 2657
 
 下一个视频键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_VIDEO_NEXT = 2657--><!--Device-KeyCode-KEYCODE_VIDEO_NEXT = 2657-End-->
 
@@ -3442,9 +3870,11 @@ KEYCODE_VIDEO_PREV = 2658
 
 上一个视频键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_VIDEO_PREV = 2658--><!--Device-KeyCode-KEYCODE_VIDEO_PREV = 2658-End-->
 
@@ -3458,9 +3888,11 @@ KEYCODE_BRIGHTNESS_CYCLE = 2659
 
 背光渐变键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BRIGHTNESS_CYCLE = 2659--><!--Device-KeyCode-KEYCODE_BRIGHTNESS_CYCLE = 2659-End-->
 
@@ -3474,9 +3906,11 @@ KEYCODE_BRIGHTNESS_ZERO = 2660
 
 亮度调节为0键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BRIGHTNESS_ZERO = 2660--><!--Device-KeyCode-KEYCODE_BRIGHTNESS_ZERO = 2660-End-->
 
@@ -3490,9 +3924,11 @@ KEYCODE_DISPLAY_OFF = 2661
 
 显示关闭键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_DISPLAY_OFF = 2661--><!--Device-KeyCode-KEYCODE_DISPLAY_OFF = 2661-End-->
 
@@ -3506,9 +3942,11 @@ KEYCODE_BTN_MISC = 2662
 
 游戏手柄上的各种按键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BTN_MISC = 2662--><!--Device-KeyCode-KEYCODE_BTN_MISC = 2662-End-->
 
@@ -3522,9 +3960,11 @@ KEYCODE_GOTO = 2663
 
 进入键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_GOTO = 2663--><!--Device-KeyCode-KEYCODE_GOTO = 2663-End-->
 
@@ -3538,9 +3978,11 @@ KEYCODE_INFO = 2664
 
 信息查看键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_INFO = 2664--><!--Device-KeyCode-KEYCODE_INFO = 2664-End-->
 
@@ -3554,9 +3996,11 @@ KEYCODE_PROGRAM = 2665
 
 程序键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_PROGRAM = 2665--><!--Device-KeyCode-KEYCODE_PROGRAM = 2665-End-->
 
@@ -3570,9 +4014,11 @@ KEYCODE_PVR = 2666
 
 个人录像机（PVR）键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_PVR = 2666--><!--Device-KeyCode-KEYCODE_PVR = 2666-End-->
 
@@ -3586,9 +4032,11 @@ KEYCODE_SUBTITLE = 2667
 
 字幕键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SUBTITLE = 2667--><!--Device-KeyCode-KEYCODE_SUBTITLE = 2667-End-->
 
@@ -3602,9 +4050,11 @@ KEYCODE_FULL_SCREEN = 2668
 
 全屏键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_FULL_SCREEN = 2668--><!--Device-KeyCode-KEYCODE_FULL_SCREEN = 2668-End-->
 
@@ -3618,9 +4068,11 @@ KEYCODE_KEYBOARD = 2669
 
 键盘。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_KEYBOARD = 2669--><!--Device-KeyCode-KEYCODE_KEYBOARD = 2669-End-->
 
@@ -3634,9 +4086,11 @@ KEYCODE_ASPECT_RATIO = 2670
 
 屏幕纵横比调节键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_ASPECT_RATIO = 2670--><!--Device-KeyCode-KEYCODE_ASPECT_RATIO = 2670-End-->
 
@@ -3650,9 +4104,11 @@ KEYCODE_PC = 2671
 
 端口控制键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_PC = 2671--><!--Device-KeyCode-KEYCODE_PC = 2671-End-->
 
@@ -3666,9 +4122,11 @@ KEYCODE_TV = 2672
 
 TV键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_TV = 2672--><!--Device-KeyCode-KEYCODE_TV = 2672-End-->
 
@@ -3682,9 +4140,11 @@ KEYCODE_TV2 = 2673
 
 TV键2。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_TV2 = 2673--><!--Device-KeyCode-KEYCODE_TV2 = 2673-End-->
 
@@ -3698,9 +4158,11 @@ KEYCODE_VCR = 2674
 
 录像机开启键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_VCR = 2674--><!--Device-KeyCode-KEYCODE_VCR = 2674-End-->
 
@@ -3714,9 +4176,11 @@ KEYCODE_VCR2 = 2675
 
 录像机开启键2。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_VCR2 = 2675--><!--Device-KeyCode-KEYCODE_VCR2 = 2675-End-->
 
@@ -3730,9 +4194,11 @@ KEYCODE_SAT = 2676
 
 SIM卡应用工具包（SAT）键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SAT = 2676--><!--Device-KeyCode-KEYCODE_SAT = 2676-End-->
 
@@ -3746,9 +4212,11 @@ KEYCODE_CD = 2677
 
 CD键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_CD = 2677--><!--Device-KeyCode-KEYCODE_CD = 2677-End-->
 
@@ -3762,9 +4230,11 @@ KEYCODE_TAPE = 2678
 
 磁带键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_TAPE = 2678--><!--Device-KeyCode-KEYCODE_TAPE = 2678-End-->
 
@@ -3778,9 +4248,11 @@ KEYCODE_TUNER = 2679
 
 调谐器键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_TUNER = 2679--><!--Device-KeyCode-KEYCODE_TUNER = 2679-End-->
 
@@ -3794,9 +4266,11 @@ KEYCODE_PLAYER = 2680
 
 播放器键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_PLAYER = 2680--><!--Device-KeyCode-KEYCODE_PLAYER = 2680-End-->
 
@@ -3810,9 +4284,11 @@ KEYCODE_DVD = 2681
 
 DVD键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_DVD = 2681--><!--Device-KeyCode-KEYCODE_DVD = 2681-End-->
 
@@ -3826,9 +4302,11 @@ KEYCODE_AUDIO = 2682
 
 音频键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_AUDIO = 2682--><!--Device-KeyCode-KEYCODE_AUDIO = 2682-End-->
 
@@ -3842,9 +4320,11 @@ KEYCODE_VIDEO = 2683
 
 视频键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_VIDEO = 2683--><!--Device-KeyCode-KEYCODE_VIDEO = 2683-End-->
 
@@ -3858,9 +4338,11 @@ KEYCODE_MEMO = 2684
 
 备忘录键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_MEMO = 2684--><!--Device-KeyCode-KEYCODE_MEMO = 2684-End-->
 
@@ -3874,9 +4356,11 @@ KEYCODE_CALENDAR = 2685
 
 日历键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_CALENDAR = 2685--><!--Device-KeyCode-KEYCODE_CALENDAR = 2685-End-->
 
@@ -3890,9 +4374,11 @@ KEYCODE_RED = 2686
 
 红色指示器。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_RED = 2686--><!--Device-KeyCode-KEYCODE_RED = 2686-End-->
 
@@ -3906,9 +4392,11 @@ KEYCODE_GREEN = 2687
 
 绿色指示器。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_GREEN = 2687--><!--Device-KeyCode-KEYCODE_GREEN = 2687-End-->
 
@@ -3922,9 +4410,11 @@ KEYCODE_YELLOW = 2688
 
 黄色指示器。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_YELLOW = 2688--><!--Device-KeyCode-KEYCODE_YELLOW = 2688-End-->
 
@@ -3938,9 +4428,11 @@ KEYCODE_BLUE = 2689
 
 蓝色指示器。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BLUE = 2689--><!--Device-KeyCode-KEYCODE_BLUE = 2689-End-->
 
@@ -3954,9 +4446,11 @@ KEYCODE_CHANNELUP = 2690
 
 频道向上键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_CHANNELUP = 2690--><!--Device-KeyCode-KEYCODE_CHANNELUP = 2690-End-->
 
@@ -3970,9 +4464,11 @@ KEYCODE_CHANNELDOWN = 2691
 
 频道向下键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_CHANNELDOWN = 2691--><!--Device-KeyCode-KEYCODE_CHANNELDOWN = 2691-End-->
 
@@ -3986,9 +4482,11 @@ KEYCODE_LAST = 2692
 
 末尾键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_LAST = 2692--><!--Device-KeyCode-KEYCODE_LAST = 2692-End-->
 
@@ -4002,9 +4500,11 @@ KEYCODE_RESTART = 2693
 
 重启键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_RESTART = 2693--><!--Device-KeyCode-KEYCODE_RESTART = 2693-End-->
 
@@ -4018,9 +4518,11 @@ KEYCODE_SLOW = 2694
 
 慢速键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SLOW = 2694--><!--Device-KeyCode-KEYCODE_SLOW = 2694-End-->
 
@@ -4034,9 +4536,11 @@ KEYCODE_SHUFFLE = 2695
 
 随机播放键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SHUFFLE = 2695--><!--Device-KeyCode-KEYCODE_SHUFFLE = 2695-End-->
 
@@ -4050,9 +4554,11 @@ KEYCODE_VIDEOPHONE = 2696
 
 可视电话键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_VIDEOPHONE = 2696--><!--Device-KeyCode-KEYCODE_VIDEOPHONE = 2696-End-->
 
@@ -4066,9 +4572,11 @@ KEYCODE_GAMES = 2697
 
 游戏键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_GAMES = 2697--><!--Device-KeyCode-KEYCODE_GAMES = 2697-End-->
 
@@ -4082,9 +4590,11 @@ KEYCODE_ZOOMIN = 2698
 
 放大键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_ZOOMIN = 2698--><!--Device-KeyCode-KEYCODE_ZOOMIN = 2698-End-->
 
@@ -4098,9 +4608,11 @@ KEYCODE_ZOOMOUT = 2699
 
 缩小键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_ZOOMOUT = 2699--><!--Device-KeyCode-KEYCODE_ZOOMOUT = 2699-End-->
 
@@ -4114,9 +4626,11 @@ KEYCODE_ZOOMRESET = 2700
 
 缩放重置键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_ZOOMRESET = 2700--><!--Device-KeyCode-KEYCODE_ZOOMRESET = 2700-End-->
 
@@ -4130,9 +4644,11 @@ KEYCODE_WORDPROCESSOR = 2701
 
 文字处理键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_WORDPROCESSOR = 2701--><!--Device-KeyCode-KEYCODE_WORDPROCESSOR = 2701-End-->
 
@@ -4146,9 +4662,11 @@ KEYCODE_EDITOR = 2702
 
 编辑器键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_EDITOR = 2702--><!--Device-KeyCode-KEYCODE_EDITOR = 2702-End-->
 
@@ -4162,9 +4680,11 @@ KEYCODE_SPREADSHEET = 2703
 
 电子表格键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SPREADSHEET = 2703--><!--Device-KeyCode-KEYCODE_SPREADSHEET = 2703-End-->
 
@@ -4178,9 +4698,11 @@ KEYCODE_GRAPHICSEDITOR = 2704
 
 图形编辑器键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_GRAPHICSEDITOR = 2704--><!--Device-KeyCode-KEYCODE_GRAPHICSEDITOR = 2704-End-->
 
@@ -4194,9 +4716,11 @@ KEYCODE_PRESENTATION = 2705
 
 演示文稿键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_PRESENTATION = 2705--><!--Device-KeyCode-KEYCODE_PRESENTATION = 2705-End-->
 
@@ -4210,9 +4734,11 @@ KEYCODE_DATABASE = 2706
 
 数据库键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_DATABASE = 2706--><!--Device-KeyCode-KEYCODE_DATABASE = 2706-End-->
 
@@ -4226,9 +4752,11 @@ KEYCODE_NEWS = 2707
 
 新闻键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NEWS = 2707--><!--Device-KeyCode-KEYCODE_NEWS = 2707-End-->
 
@@ -4242,9 +4770,11 @@ KEYCODE_VOICEMAIL = 2708
 
 语音信箱。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_VOICEMAIL = 2708--><!--Device-KeyCode-KEYCODE_VOICEMAIL = 2708-End-->
 
@@ -4258,9 +4788,11 @@ KEYCODE_ADDRESSBOOK = 2709
 
 通讯簿。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_ADDRESSBOOK = 2709--><!--Device-KeyCode-KEYCODE_ADDRESSBOOK = 2709-End-->
 
@@ -4274,9 +4806,11 @@ KEYCODE_MESSENGER = 2710
 
 通信键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_MESSENGER = 2710--><!--Device-KeyCode-KEYCODE_MESSENGER = 2710-End-->
 
@@ -4290,9 +4824,11 @@ KEYCODE_BRIGHTNESS_TOGGLE = 2711
 
 亮度切换键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BRIGHTNESS_TOGGLE = 2711--><!--Device-KeyCode-KEYCODE_BRIGHTNESS_TOGGLE = 2711-End-->
 
@@ -4306,9 +4842,11 @@ KEYCODE_SPELLCHECK = 2712
 
 拼写检查键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SPELLCHECK = 2712--><!--Device-KeyCode-KEYCODE_SPELLCHECK = 2712-End-->
 
@@ -4322,9 +4860,11 @@ KEYCODE_COFFEE = 2713
 
 终端锁/屏幕保护程序。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_COFFEE = 2713--><!--Device-KeyCode-KEYCODE_COFFEE = 2713-End-->
 
@@ -4338,9 +4878,11 @@ KEYCODE_MEDIA_REPEAT = 2714
 
 媒体循环键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_MEDIA_REPEAT = 2714--><!--Device-KeyCode-KEYCODE_MEDIA_REPEAT = 2714-End-->
 
@@ -4354,9 +4896,11 @@ KEYCODE_IMAGES = 2715
 
 图像键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_IMAGES = 2715--><!--Device-KeyCode-KEYCODE_IMAGES = 2715-End-->
 
@@ -4370,9 +4914,11 @@ KEYCODE_BUTTONCONFIG = 2716
 
 按键配置键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BUTTONCONFIG = 2716--><!--Device-KeyCode-KEYCODE_BUTTONCONFIG = 2716-End-->
 
@@ -4386,9 +4932,11 @@ KEYCODE_TASKMANAGER = 2717
 
 任务管理器。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_TASKMANAGER = 2717--><!--Device-KeyCode-KEYCODE_TASKMANAGER = 2717-End-->
 
@@ -4402,9 +4950,11 @@ KEYCODE_JOURNAL = 2718
 
 日志按键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_JOURNAL = 2718--><!--Device-KeyCode-KEYCODE_JOURNAL = 2718-End-->
 
@@ -4418,9 +4968,11 @@ KEYCODE_CONTROLPANEL = 2719
 
 控制面板键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_CONTROLPANEL = 2719--><!--Device-KeyCode-KEYCODE_CONTROLPANEL = 2719-End-->
 
@@ -4434,9 +4986,11 @@ KEYCODE_APPSELECT = 2720
 
 应用程序选择键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_APPSELECT = 2720--><!--Device-KeyCode-KEYCODE_APPSELECT = 2720-End-->
 
@@ -4450,9 +5004,11 @@ KEYCODE_SCREENSAVER = 2721
 
 屏幕保护程序键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SCREENSAVER = 2721--><!--Device-KeyCode-KEYCODE_SCREENSAVER = 2721-End-->
 
@@ -4466,9 +5022,11 @@ KEYCODE_ASSISTANT = 2722
 
 智慧键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_ASSISTANT = 2722--><!--Device-KeyCode-KEYCODE_ASSISTANT = 2722-End-->
 
@@ -4482,9 +5040,11 @@ KEYCODE_KBD_LAYOUT_NEXT = 2723
 
 下一个键盘布局键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_KBD_LAYOUT_NEXT = 2723--><!--Device-KeyCode-KEYCODE_KBD_LAYOUT_NEXT = 2723-End-->
 
@@ -4498,9 +5058,11 @@ KEYCODE_BRIGHTNESS_MIN = 2724
 
 最小亮度键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BRIGHTNESS_MIN = 2724--><!--Device-KeyCode-KEYCODE_BRIGHTNESS_MIN = 2724-End-->
 
@@ -4514,9 +5076,11 @@ KEYCODE_BRIGHTNESS_MAX = 2725
 
 最大亮度键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BRIGHTNESS_MAX = 2725--><!--Device-KeyCode-KEYCODE_BRIGHTNESS_MAX = 2725-End-->
 
@@ -4528,11 +5092,13 @@ KEYCODE_BRIGHTNESS_MAX = 2725
 KEYCODE_KBDINPUTASSIST_PREV = 2726
 ```
 
-键盘输入Assist\_Previous，查看输入法输入记录。
+键盘输入Assist_Previous，查看输入法输入记录。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_KBDINPUTASSIST_PREV = 2726--><!--Device-KeyCode-KEYCODE_KBDINPUTASSIST_PREV = 2726-End-->
 
@@ -4544,11 +5110,13 @@ KEYCODE_KBDINPUTASSIST_PREV = 2726
 KEYCODE_KBDINPUTASSIST_NEXT = 2727
 ```
 
-键盘输入Assist\_Next，查看输入法输入拓展。
+键盘输入Assist_Next，查看输入法输入拓展。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_KBDINPUTASSIST_NEXT = 2727--><!--Device-KeyCode-KEYCODE_KBDINPUTASSIST_NEXT = 2727-End-->
 
@@ -4560,11 +5128,13 @@ KEYCODE_KBDINPUTASSIST_NEXT = 2727
 KEYCODE_KBDINPUTASSIST_PREVGROUP = 2728
 ```
 
-键盘输入Assist\_Previous，切换输入组中上一个输入法。
+键盘输入Assist_Previous，切换输入组中上一个输入法。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_KBDINPUTASSIST_PREVGROUP = 2728--><!--Device-KeyCode-KEYCODE_KBDINPUTASSIST_PREVGROUP = 2728-End-->
 
@@ -4576,11 +5146,13 @@ KEYCODE_KBDINPUTASSIST_PREVGROUP = 2728
 KEYCODE_KBDINPUTASSIST_NEXTGROUP = 2729
 ```
 
-键盘输入Assist\_Next，切换输入组中下一个输入法。
+键盘输入Assist_Next，切换输入组中下一个输入法。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_KBDINPUTASSIST_NEXTGROUP = 2729--><!--Device-KeyCode-KEYCODE_KBDINPUTASSIST_NEXTGROUP = 2729-End-->
 
@@ -4592,11 +5164,13 @@ KEYCODE_KBDINPUTASSIST_NEXTGROUP = 2729
 KEYCODE_KBDINPUTASSIST_ACCEPT = 2730
 ```
 
-键盘输入Assist\_Accept。
+键盘输入Assist_Accept。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_KBDINPUTASSIST_ACCEPT = 2730--><!--Device-KeyCode-KEYCODE_KBDINPUTASSIST_ACCEPT = 2730-End-->
 
@@ -4608,11 +5182,13 @@ KEYCODE_KBDINPUTASSIST_ACCEPT = 2730
 KEYCODE_KBDINPUTASSIST_CANCEL = 2731
 ```
 
-键盘输入Assist\_Cancel。
+键盘输入Assist_Cancel。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_KBDINPUTASSIST_CANCEL = 2731--><!--Device-KeyCode-KEYCODE_KBDINPUTASSIST_CANCEL = 2731-End-->
 
@@ -4628,7 +5204,9 @@ KEYCODE_MOUSE_ASSISTANT = 2732
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4646,7 +5224,9 @@ KEYCODE_MOUSE_INTELLIGENCE_SELECTION = 2733
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4664,7 +5244,9 @@ KEYCODE_AOD_SINGLE_CLICK = 2740
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4680,9 +5262,11 @@ KEYCODE_FRONT = 2800
 
 挡风玻璃除雾器开关。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_FRONT = 2800--><!--Device-KeyCode-KEYCODE_FRONT = 2800-End-->
 
@@ -4696,9 +5280,11 @@ KEYCODE_SETUP = 2801
 
 设置键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SETUP = 2801--><!--Device-KeyCode-KEYCODE_SETUP = 2801-End-->
 
@@ -4712,9 +5298,11 @@ KEYCODE_WAKEUP = 2802
 
 唤醒键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_WAKEUP = 2802--><!--Device-KeyCode-KEYCODE_WAKEUP = 2802-End-->
 
@@ -4728,9 +5316,11 @@ KEYCODE_SENDFILE = 2803
 
 发送文件按键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SENDFILE = 2803--><!--Device-KeyCode-KEYCODE_SENDFILE = 2803-End-->
 
@@ -4744,9 +5334,11 @@ KEYCODE_DELETEFILE = 2804
 
 删除文件按键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_DELETEFILE = 2804--><!--Device-KeyCode-KEYCODE_DELETEFILE = 2804-End-->
 
@@ -4760,9 +5352,11 @@ KEYCODE_XFER = 2805
 
 文件传输（XFER）按键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_XFER = 2805--><!--Device-KeyCode-KEYCODE_XFER = 2805-End-->
 
@@ -4776,9 +5370,11 @@ KEYCODE_PROG1 = 2806
 
 程序键1。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_PROG1 = 2806--><!--Device-KeyCode-KEYCODE_PROG1 = 2806-End-->
 
@@ -4792,9 +5388,11 @@ KEYCODE_PROG2 = 2807
 
 程序键2。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_PROG2 = 2807--><!--Device-KeyCode-KEYCODE_PROG2 = 2807-End-->
 
@@ -4808,9 +5406,11 @@ KEYCODE_MSDOS = 2808
 
 DOS面板键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_MSDOS = 2808--><!--Device-KeyCode-KEYCODE_MSDOS = 2808-End-->
 
@@ -4824,9 +5424,11 @@ KEYCODE_SCREENLOCK = 2809
 
 屏幕锁定键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SCREENLOCK = 2809--><!--Device-KeyCode-KEYCODE_SCREENLOCK = 2809-End-->
 
@@ -4840,9 +5442,11 @@ KEYCODE_DIRECTION_ROTATE_DISPLAY = 2810
 
 方向旋转显示键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_DIRECTION_ROTATE_DISPLAY = 2810--><!--Device-KeyCode-KEYCODE_DIRECTION_ROTATE_DISPLAY = 2810-End-->
 
@@ -4856,9 +5460,11 @@ KEYCODE_CYCLEWINDOWS = 2811
 
 窗口切换键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_CYCLEWINDOWS = 2811--><!--Device-KeyCode-KEYCODE_CYCLEWINDOWS = 2811-End-->
 
@@ -4872,9 +5478,11 @@ KEYCODE_COMPUTER = 2812
 
 按键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_COMPUTER = 2812--><!--Device-KeyCode-KEYCODE_COMPUTER = 2812-End-->
 
@@ -4888,9 +5496,11 @@ KEYCODE_EJECTCLOSECD = 2813
 
 弹出CD键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_EJECTCLOSECD = 2813--><!--Device-KeyCode-KEYCODE_EJECTCLOSECD = 2813-End-->
 
@@ -4904,9 +5514,11 @@ KEYCODE_ISO = 2814
 
 ISO键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_ISO = 2814--><!--Device-KeyCode-KEYCODE_ISO = 2814-End-->
 
@@ -4920,9 +5532,11 @@ KEYCODE_MOVE = 2815
 
 移动键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_MOVE = 2815--><!--Device-KeyCode-KEYCODE_MOVE = 2815-End-->
 
@@ -4936,9 +5550,11 @@ KEYCODE_F13 = 2816
 
 按键'F13'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F13 = 2816--><!--Device-KeyCode-KEYCODE_F13 = 2816-End-->
 
@@ -4952,9 +5568,11 @@ KEYCODE_F14 = 2817
 
 按键'F14'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F14 = 2817--><!--Device-KeyCode-KEYCODE_F14 = 2817-End-->
 
@@ -4968,9 +5586,11 @@ KEYCODE_F15 = 2818
 
 按键'F15'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F15 = 2818--><!--Device-KeyCode-KEYCODE_F15 = 2818-End-->
 
@@ -4984,9 +5604,11 @@ KEYCODE_F16 = 2819
 
 按键'F16'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F16 = 2819--><!--Device-KeyCode-KEYCODE_F16 = 2819-End-->
 
@@ -5000,9 +5622,11 @@ KEYCODE_F17 = 2820
 
 按键'F17'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F17 = 2820--><!--Device-KeyCode-KEYCODE_F17 = 2820-End-->
 
@@ -5016,9 +5640,11 @@ KEYCODE_F18 = 2821
 
 按键'F18'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F18 = 2821--><!--Device-KeyCode-KEYCODE_F18 = 2821-End-->
 
@@ -5032,9 +5658,11 @@ KEYCODE_F19 = 2822
 
 按键'F19'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F19 = 2822--><!--Device-KeyCode-KEYCODE_F19 = 2822-End-->
 
@@ -5048,9 +5676,11 @@ KEYCODE_F20 = 2823
 
 按键'F20'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F20 = 2823--><!--Device-KeyCode-KEYCODE_F20 = 2823-End-->
 
@@ -5064,9 +5694,11 @@ KEYCODE_F21 = 2824
 
 按键'F21'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F21 = 2824--><!--Device-KeyCode-KEYCODE_F21 = 2824-End-->
 
@@ -5080,9 +5712,11 @@ KEYCODE_F22 = 2825
 
 按键'F22'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F22 = 2825--><!--Device-KeyCode-KEYCODE_F22 = 2825-End-->
 
@@ -5096,9 +5730,11 @@ KEYCODE_F23 = 2826
 
 按键'F23'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F23 = 2826--><!--Device-KeyCode-KEYCODE_F23 = 2826-End-->
 
@@ -5112,9 +5748,11 @@ KEYCODE_F24 = 2827
 
 按键'F24'。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F24 = 2827--><!--Device-KeyCode-KEYCODE_F24 = 2827-End-->
 
@@ -5128,9 +5766,11 @@ KEYCODE_PROG3 = 2828
 
 程序键3。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_PROG3 = 2828--><!--Device-KeyCode-KEYCODE_PROG3 = 2828-End-->
 
@@ -5144,9 +5784,11 @@ KEYCODE_PROG4 = 2829
 
 程序键4。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_PROG4 = 2829--><!--Device-KeyCode-KEYCODE_PROG4 = 2829-End-->
 
@@ -5160,9 +5802,11 @@ KEYCODE_DASHBOARD = 2830
 
 仪表板。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_DASHBOARD = 2830--><!--Device-KeyCode-KEYCODE_DASHBOARD = 2830-End-->
 
@@ -5176,9 +5820,11 @@ KEYCODE_SUSPEND = 2831
 
 挂起键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SUSPEND = 2831--><!--Device-KeyCode-KEYCODE_SUSPEND = 2831-End-->
 
@@ -5192,9 +5838,11 @@ KEYCODE_HP = 2832
 
 高阶路径键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_HP = 2832--><!--Device-KeyCode-KEYCODE_HP = 2832-End-->
 
@@ -5208,9 +5856,11 @@ KEYCODE_SOUND = 2833
 
 音量键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SOUND = 2833--><!--Device-KeyCode-KEYCODE_SOUND = 2833-End-->
 
@@ -5224,9 +5874,11 @@ KEYCODE_QUESTION = 2834
 
 疑问按键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_QUESTION = 2834--><!--Device-KeyCode-KEYCODE_QUESTION = 2834-End-->
 
@@ -5240,9 +5892,11 @@ KEYCODE_CONNECT = 2836
 
 连接键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_CONNECT = 2836--><!--Device-KeyCode-KEYCODE_CONNECT = 2836-End-->
 
@@ -5256,9 +5910,11 @@ KEYCODE_SPORT = 2837
 
 运动按键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SPORT = 2837--><!--Device-KeyCode-KEYCODE_SPORT = 2837-End-->
 
@@ -5272,9 +5928,11 @@ KEYCODE_SHOP = 2838
 
 商城键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SHOP = 2838--><!--Device-KeyCode-KEYCODE_SHOP = 2838-End-->
 
@@ -5288,9 +5946,11 @@ KEYCODE_ALTERASE = 2839
 
 交替键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_ALTERASE = 2839--><!--Device-KeyCode-KEYCODE_ALTERASE = 2839-End-->
 
@@ -5304,9 +5964,11 @@ KEYCODE_SWITCHVIDEOMODE = 2841
 
 在可用视频之间循环输出（监视器/LCD/TV输出/等）。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SWITCHVIDEOMODE = 2841--><!--Device-KeyCode-KEYCODE_SWITCHVIDEOMODE = 2841-End-->
 
@@ -5320,9 +5982,11 @@ KEYCODE_BATTERY = 2842
 
 电池按键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BATTERY = 2842--><!--Device-KeyCode-KEYCODE_BATTERY = 2842-End-->
 
@@ -5336,9 +6000,11 @@ KEYCODE_BLUETOOTH = 2843
 
 蓝牙按键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BLUETOOTH = 2843--><!--Device-KeyCode-KEYCODE_BLUETOOTH = 2843-End-->
 
@@ -5352,9 +6018,11 @@ KEYCODE_WLAN = 2844
 
 无线局域网。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_WLAN = 2844--><!--Device-KeyCode-KEYCODE_WLAN = 2844-End-->
 
@@ -5368,9 +6036,11 @@ KEYCODE_UWB = 2845
 
 超宽带控制键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_UWB = 2845--><!--Device-KeyCode-KEYCODE_UWB = 2845-End-->
 
@@ -5384,9 +6054,11 @@ KEYCODE_WWAN_WIMAX = 2846
 
 移动网络控制键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_WWAN_WIMAX = 2846--><!--Device-KeyCode-KEYCODE_WWAN_WIMAX = 2846-End-->
 
@@ -5400,9 +6072,11 @@ KEYCODE_RFKILL = 2847
 
 控制所有收音机的键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_RFKILL = 2847--><!--Device-KeyCode-KEYCODE_RFKILL = 2847-End-->
 
@@ -5416,9 +6090,11 @@ KEYCODE_CHANNEL = 3001
 
 向上频道键。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_CHANNEL = 3001--><!--Device-KeyCode-KEYCODE_CHANNEL = 3001-End-->
 
@@ -5432,9 +6108,11 @@ KEYCODE_BTN_0 = 3100
 
 按键0。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BTN_0 = 3100--><!--Device-KeyCode-KEYCODE_BTN_0 = 3100-End-->
 
@@ -5448,9 +6126,11 @@ KEYCODE_BTN_1 = 3101
 
 按键1。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BTN_1 = 3101--><!--Device-KeyCode-KEYCODE_BTN_1 = 3101-End-->
 
@@ -5464,9 +6144,11 @@ KEYCODE_BTN_2 = 3102
 
 按键2。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BTN_2 = 3102--><!--Device-KeyCode-KEYCODE_BTN_2 = 3102-End-->
 
@@ -5480,9 +6162,11 @@ KEYCODE_BTN_3 = 3103
 
 按键3。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BTN_3 = 3103--><!--Device-KeyCode-KEYCODE_BTN_3 = 3103-End-->
 
@@ -5496,9 +6180,11 @@ KEYCODE_BTN_4 = 3104
 
 按键4。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BTN_4 = 3104--><!--Device-KeyCode-KEYCODE_BTN_4 = 3104-End-->
 
@@ -5512,9 +6198,11 @@ KEYCODE_BTN_5 = 3105
 
 按键5。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BTN_5 = 3105--><!--Device-KeyCode-KEYCODE_BTN_5 = 3105-End-->
 
@@ -5528,9 +6216,11 @@ KEYCODE_BTN_6 = 3106
 
 按键6。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BTN_6 = 3106--><!--Device-KeyCode-KEYCODE_BTN_6 = 3106-End-->
 
@@ -5544,9 +6234,11 @@ KEYCODE_BTN_7 = 3107
 
 按键7。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BTN_7 = 3107--><!--Device-KeyCode-KEYCODE_BTN_7 = 3107-End-->
 
@@ -5560,9 +6252,11 @@ KEYCODE_BTN_8 = 3108
 
 按键8。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BTN_8 = 3108--><!--Device-KeyCode-KEYCODE_BTN_8 = 3108-End-->
 
@@ -5576,9 +6270,11 @@ KEYCODE_BTN_9 = 3109
 
 按键9。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BTN_9 = 3109--><!--Device-KeyCode-KEYCODE_BTN_9 = 3109-End-->
 
@@ -5592,9 +6288,11 @@ KEYCODE_DAGGER_CLICK = 3211
 
 智能手表智感窗按键单击。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_DAGGER_CLICK = 3211--><!--Device-KeyCode-KEYCODE_DAGGER_CLICK = 3211-End-->
 
@@ -5608,9 +6306,11 @@ KEYCODE_DAGGER_DOUBLE_CLICK = 3212
 
 智能手表智感窗按键双击。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_DAGGER_DOUBLE_CLICK = 3212--><!--Device-KeyCode-KEYCODE_DAGGER_DOUBLE_CLICK = 3212-End-->
 
@@ -5624,9 +6324,11 @@ KEYCODE_DAGGER_LONG_PRESS = 3213
 
 智能手表智感窗按键长按。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_DAGGER_LONG_PRESS = 3213--><!--Device-KeyCode-KEYCODE_DAGGER_LONG_PRESS = 3213-End-->
 
@@ -5640,9 +6342,11 @@ KEYCODE_DIV = 3220
 
 智能手表左按键。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_DIV = 3220--><!--Device-KeyCode-KEYCODE_DIV = 3220-End-->
 
@@ -5658,7 +6362,9 @@ KEYCODE_XKEY = 3232
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5676,7 +6382,9 @@ KEYCODE_FINGERPRINT_SLIDE_UP = 3233
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5694,7 +6402,9 @@ KEYCODE_FINGERPRINT_SLIDE_DOWN = 3234
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -2,9 +2,11 @@
 
 定义线条转角样式的枚举，即画笔在绘制折线段时，在折线转角处的样式。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-drawing-enum JoinStyle--><!--Device-drawing-enum JoinStyle-End-->
 
@@ -18,9 +20,11 @@ MITER_JOIN = 0
 
 转角类型为尖角，如果折线角度比较小，则尖角会很长，需要使用限制值（miter limit）进行限制。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-JoinStyle-MITER_JOIN = 0--><!--Device-JoinStyle-MITER_JOIN = 0-End-->
 
@@ -34,9 +38,11 @@ ROUND_JOIN = 1
 
 转角类型为圆头。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-JoinStyle-ROUND_JOIN = 1--><!--Device-JoinStyle-ROUND_JOIN = 1-End-->
 
@@ -50,9 +56,11 @@ BEVEL_JOIN = 2
 
 转角类型为平头。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-JoinStyle-BEVEL_JOIN = 2--><!--Device-JoinStyle-BEVEL_JOIN = 2-End-->
 

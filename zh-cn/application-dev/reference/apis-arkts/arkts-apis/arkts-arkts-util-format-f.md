@@ -6,11 +6,15 @@
 function format(format: string, ...args: Object[]): string
 ```
 
-%s: 用于转换除BigInt、Object和-0之外的所有值。BigInt值将以n表示，没有用户定义toString函数的对象使用util.inspect()检查， 选项为{ depth: 0, colors: false, compact: 3 }。 %d: 用于转换除BigInt和Symbol之外的所有值。 %i: 对除BigInt和Symbol之外的所有值使用parseInt(value, 10)。 %f: 对除BigInt和Symbol之外的所有值使用parseFloat(value)。 %j: JSON。如果参数包含循环引用，则替换为字符串'[Circular]'。 %o: Object。对象的通用JavaScript对象格式字符串表示。类似于 util.inspect()，选项为{ showHidden: true, showProxy: true}。这将显示完整对象，包括 不可枚举属性和代理。 %O: Object。对象的通用JavaScript对象格式字符串表示。 %O: Object。对象的通用JavaScript对象格式字符串表示。类似于 util.inspect()，没有选项。这将显示完整对象，不包括不可枚举属性和 代理。 %c: CSS。此说明符被忽略，将跳过传入的任何CSS。 %%: 单个百分号('%')。这不会消耗参数。返回：\_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_ 格式化的字符串。
+使用样式化字符串将输入内容按特定格式输出，适用于日志输出、用户界面文本格式化等场景。
 
-**起始版本：** 23
+**起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-util-function format(format: string, ...args: Object[]): string--><!--Device-util-function format(format: string, ...args: Object[]): string-End-->
 
@@ -20,12 +24,146 @@ function format(format: string, ...args: Object[]): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| format | string | 是 | 格式字符串 |
-| args | Object[] | 是 | 要格式化的数据 |
+| format | string | 是 | 格式化字符串，可以包含零个或多个占位符，用于指定要插入的参数的位置和格式。 |
+| args | Object[] | 是 | 替换format参数中占位符的数据，此参数缺失时，直接返回格式化字符串本身。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 按特定格式格式化的字符串。 |
+| string | 格式化后的字符串。 |
+
+## 示例
+
+ArkTS-Dyn示例：
+
+```TypeScript
+import { util } from '@kit.ArkTS';
+
+interface utilAddressType {
+  city: string;
+  country: string;
+}
+interface utilPersonType {
+  name: string;
+  age: number;
+  address: utilAddressType;
+}
+
+let name = 'John';
+let age = 20;
+let formattedString = util.format('My name is %s and I am %s years old', name, age);
+console.info(formattedString);
+// 输出结果：My name is John and I am 20 years old
+let num = 10.5;
+formattedString = util.format('The number is %d', num);
+console.info(formattedString);
+// 输出结果：The number is 10.5
+num = 100.5;
+formattedString = util.format('The number is %i', num);
+console.info(formattedString);
+// 输出结果：The number is 100
+const pi = 3.141592653;
+formattedString = util.format('The value of pi is %f', pi);
+console.info(formattedString);
+// 输出结果：The value of pi is 3.141592653
+const obj: Record<string,number | string> = { "name": 'John', "age": 20 };
+formattedString = util.format('The object is %j', obj);
+console.info(formattedString);
+// 输出结果：The object is {"name":"John","age":20}
+const person: utilPersonType = {
+  name: 'John',
+  age: 20,
+  address: {
+    city: 'New York',
+    country: 'USA'
+  }
+};
+console.info(util.format('Formatted object using %%O: %O', person));
+console.info(util.format('Formatted object using %%o: %o', person));
+/*
+输出结果：
+Formatted object using %O: { name: 'John',
+  age: 20,
+  address:
+  { city: 'New York',
+    country: 'USA' } }
+Formatted object using %o: { name: 'John',
+  age: 20,
+  address:
+  { city: 'New York',
+    country: 'USA' } }
+ */
+const percentage = 80;
+let arg = 'homework';
+formattedString = util.format('John finished %d%% of the %s', percentage, arg);
+console.info(formattedString);
+// 输出结果：John finished 80% of the homework
+```
+
+ArkTS-Sta示例：
+
+```TypeScript
+import { util } from '@kit.ArkTS';
+
+interface utilAddresstype {
+  city: string;
+  country: string;
+}
+interface utilPersontype {
+  name: string;
+  age: int;
+  address: utilAddresstype;
+}
+
+let name = 'John';
+let age = 20;
+let formattedString = util.format('My name is %s and I am %s years old', name, age);
+console.info(formattedString);
+// 输出结果：My name is John and I am 20 years old
+let num = 10.5;
+formattedString = util.format('The number is %d', num);
+console.info(formattedString);
+// 输出结果：The number is 10.5
+num = 100.5;
+formattedString = util.format('The number is %i', num);
+console.info(formattedString);
+// 输出结果：The number is 100
+const pi = 3.141592653;
+formattedString = util.format('The value of pi is %f', pi);
+console.info(formattedString);
+// 输出结果：The value of pi is 3.141592653
+const obj: Record<string,int | string> = { "name": 'John', "age": 20 };
+formattedString = util.format('The object is %j', obj);
+console.info(formattedString);
+// 输出结果：The object is {"name":"John","age":20}
+const person: utilPersontype = {
+  name: 'John',
+  age: 20,
+  address: {
+    city: 'New York',
+    country: 'USA'
+  }
+};
+console.info(util.format('Formatted object using %%O: %O', person));
+console.info(util.format('Formatted object using %%o: %o', person));
+/*
+输出结果：
+Formatted object using %O: { name: 'John',
+  age: 20,
+  address:
+  { city: 'New York',
+    country: 'USA' } }
+Formatted object using %o: { name: 'John',
+  age: 20,
+  address:
+  { city: 'New York',
+    country: 'USA' } }
+ */
+const percentage = 80;
+let arg = 'homework';
+formattedString = util.format('John finished %d%% of the %s', percentage, arg);
+console.info(formattedString);
+// 输出结果：John finished 80% of the homework
+```
 

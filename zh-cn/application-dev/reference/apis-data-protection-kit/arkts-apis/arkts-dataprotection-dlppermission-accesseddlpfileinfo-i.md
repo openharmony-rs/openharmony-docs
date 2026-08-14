@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-dlpPermission-export interface AccessedDLPFileInfo--><!--Device-dlpPermission-export interface AccessedDLPFileInfo-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
@@ -24,6 +26,8 @@ lastOpenTime: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-AccessedDLPFileInfo-lastOpenTime: number--><!--Device-AccessedDLPFileInfo-lastOpenTime: number-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
@@ -41,6 +45,8 @@ uri: string
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 <!--Device-AccessedDLPFileInfo-uri: string--><!--Device-AccessedDLPFileInfo-uri: string-End-->
 

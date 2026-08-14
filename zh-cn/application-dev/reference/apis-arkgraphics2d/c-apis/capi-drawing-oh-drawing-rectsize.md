@@ -6,7 +6,7 @@ typedef struct OH_Drawing_RectSize {...} OH_Drawing_RectSize
 
 ## 概述
 
-文本框结构体
+定义文本矩形结构体。
 
 **起始版本：** 24
 
@@ -20,7 +20,7 @@ typedef struct OH_Drawing_RectSize {...} OH_Drawing_RectSize
 
 | 名称 | 描述 |
 | -- | -- |
-| double width | Rectangle width. |
-| double height | Rectangle height. |
+| double width | 矩形宽度。 |
+| double height | 矩形高度。 |
 
 

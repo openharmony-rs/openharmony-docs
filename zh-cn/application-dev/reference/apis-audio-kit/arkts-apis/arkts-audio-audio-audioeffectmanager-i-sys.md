@@ -2,9 +2,11 @@
 
 Implements audio effect management.
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-audio-interface AudioEffectManager--><!--Device-audio-interface AudioEffectManager-End-->
 
@@ -20,9 +22,11 @@ getAudioEffectProperty(): Array<AudioEffectProperty>
 
 Gets current audio effect properties.
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
 
@@ -36,7 +40,7 @@ Gets current audio effect properties.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;AudioEffectProperty&gt; | Array of current audio effect properties. |
+| Array&lt;[AudioEffectProperty](arkts-audio-audio-audioeffectproperty-i-sys.md)&gt; | Array of current audio effect properties. |
 
 **错误码：**
 
@@ -46,7 +50,7 @@ Gets current audio effect properties.
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | System error. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -68,9 +72,11 @@ getSupportedAudioEffectProperty(): Array<AudioEffectProperty>
 
 Gets supported audio effect properties based on current devices.
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
 
@@ -84,7 +90,7 @@ Gets supported audio effect properties based on current devices.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;AudioEffectProperty&gt; | Array of supported audio effect properties. |
+| Array&lt;[AudioEffectProperty](arkts-audio-audio-audioeffectproperty-i-sys.md)&gt; | Array of supported audio effect properties. |
 
 **错误码：**
 
@@ -94,7 +100,7 @@ Gets supported audio effect properties based on current devices.
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | System error. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -118,7 +124,9 @@ isAudioSeparationEffectSupported(): boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -140,7 +148,7 @@ isAudioSeparationEffectSupported(): boolean
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
@@ -159,7 +167,9 @@ offAudioSeparationEffectEnabledChange(callback?: Callback<boolean>): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -173,16 +183,16 @@ offAudioSeparationEffectEnabledChange(callback?: Callback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;boolean&gt; | 否 | 订阅函数中用于取消订阅的回调。如果不使用此参数，则之前在当前进程中订阅的所有回调都将被取消订阅 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;boolean&gt; | 否 | 订阅函数中用于取消订阅的回调。 如果不使用此参数，则之前在当前进程中订阅的所有回调都将被取消订阅 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
@@ -200,7 +210,9 @@ onAudioSeparationEffectEnabledChange(callback: Callback<boolean>): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -214,7 +226,7 @@ onAudioSeparationEffectEnabledChange(callback: Callback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;boolean&gt; | 是 | 监听系统音频分离效果的回调启用状态更改事件 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;boolean&gt; | 是 | 监听系统音频分离效果的回调 启用状态更改事件 |
 
 **错误码：**
 
@@ -222,7 +234,7 @@ onAudioSeparationEffectEnabledChange(callback: Callback<boolean>): void
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
@@ -240,9 +252,11 @@ setAudioEffectProperty(propertyArray: Array<AudioEffectProperty>): void
 
 Sets current audio effect properties.
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
 
@@ -256,18 +270,18 @@ Sets current audio effect properties.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| propertyArray | Array&lt;AudioEffectProperty&gt; | 是 | array of audio effect property to be set.Notice that only one effect property name in each effect property category should be set. |
+| propertyArray | Array&lt;[AudioEffectProperty](arkts-audio-audio-audioeffectproperty-i-sys.md)&gt; | 是 | array of audio effect property to be set. Notice that only one effect property name in each effect property category should be set. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Possible causes: 1. More than one effect property name of the same effect property category are in the input array. 2. The input audioEffectProperties are not supported by the current device. 3. The name or catergory of the input audioEffectProperties is incorrect. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
-| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Possible causes:1. More than one effect property name of the same effect property category are in the input array.2. The input audioEffectProperties are not supported by the current device.3. The name or catergory of the input audioEffectProperties is incorrect. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | System error. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -284,12 +298,6 @@ try {
 
 ## setAudioSeparationEffectEnabled
 
-ArkTS-Dyn:
-```TypeScript
-setAudioSeparationEffectEnabled(enabled: boolean, uid: number, streamId?: number): Promise<void>
-```
-
-ArkTS-Sta:
 ```TypeScript
 setAudioSeparationEffectEnabled(enabled: boolean, uid: int, streamId?: long): Promise<void>
 ```
@@ -298,7 +306,9 @@ setAudioSeparationEffectEnabled(enabled: boolean, uid: int, streamId?: long): Pr
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
 
@@ -315,8 +325,8 @@ setAudioSeparationEffectEnabled(enabled: boolean, uid: int, streamId?: long): Pr
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | enabled | boolean | 是 | 所需的效果状态，true表示启用，false表示禁用 |
-| uid | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 要添加效果的目标应用程序进程的uid。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_取值限定为整数。 |
-| streamId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 否 | 要添加效果的目标音频播放流的ID，播放应用程序可以使用\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_来获取 |
+| uid | int | 是 | 要添加效果的目标应用程序进程的uid。 &lt;br&gt;取值限定为整数。 |
+| streamId | long | 否 | 要添加效果的目标音频播放流的ID，播放应用程序 可以使用[getAudioStreamId](arkts-audio-audio-audiorenderer-i.md#getAudioStreamId)来获取 |
 
 **返回值：**
 
@@ -328,13 +338,13 @@ setAudioSeparationEffectEnabled(enabled: boolean, uid: int, streamId?: long): Pr
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
-| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
-| [6800104](../errorcode-audio.md#6800104-参数选项不支持) | Effect is not supported in this device. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio service error occurs like service died. |
+| [6800104](../errorcode-audio.md#6800104-参数选项不支持) | Effect is not supported in this device. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
@@ -349,12 +359,6 @@ audioEffectManager.setAudioSeparationEffectEnabled(true, 10001).then(() => {
 
 ## setAudioSeparationEffectVolume
 
-ArkTS-Dyn:
-```TypeScript
-setAudioSeparationEffectVolume(type: AudioSeparationVolumeType, volume: number): Promise<void>
-```
-
-ArkTS-Sta:
 ```TypeScript
 setAudioSeparationEffectVolume(type: AudioSeparationVolumeType, volume: double): Promise<void>
 ```
@@ -363,7 +367,9 @@ setAudioSeparationEffectVolume(type: AudioSeparationVolumeType, volume: double):
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
 
@@ -379,8 +385,8 @@ setAudioSeparationEffectVolume(type: AudioSeparationVolumeType, volume: double):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 要设置音量的类型 |
-| volume | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：double | 是 | 目标卷值。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_取值范围：[0,1]。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_Value range: [0,1]. |
+| type | [AudioSeparationVolumeType](arkts-audio-audio-audioseparationvolumetype-e-sys.md) | 是 | 要设置音量的类型 |
+| volume | double | 是 | 目标卷值。 &lt;br&gt;取值范围：[0,1]。 &lt;br&gt;Value range: [0,1]. |
 
 **返回值：**
 
@@ -392,13 +398,13 @@ setAudioSeparationEffectVolume(type: AudioSeparationVolumeType, volume: double):
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
-| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
-| [6800104](../errorcode-audio.md#6800104-参数选项不支持) | Effect is not supported in this device. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio service error occurs like service died. |
+| [6800104](../errorcode-audio.md#6800104-参数选项不支持) | Effect is not supported in this device. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';

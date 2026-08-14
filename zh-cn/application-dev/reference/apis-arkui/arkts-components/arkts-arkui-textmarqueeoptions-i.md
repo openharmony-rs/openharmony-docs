@@ -6,6 +6,8 @@ Marquee初始化参数。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface TextMarqueeOptions--><!--Device-unnamed-declare interface TextMarqueeOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -23,6 +25,8 @@ delay?: number
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,6 +50,8 @@ fadeout?: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -67,6 +73,8 @@ fromStart?: boolean
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -90,6 +98,8 @@ loop?: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -104,13 +114,15 @@ loop?: number
 marqueeStartPolicy?: MarqueeStartPolicy
 ```
 
-设置跑马灯启动策略，该属性值生效需将start设置为true。 默认值：TV设备上默认值为MarqueeStartPolicy.ON\_FOCUS，其他设备默认值为MarqueeStartPolicy.DEFAULT
+设置跑马灯启动策略，该属性值生效需将start设置为true。 默认值：TV设备上默认值为MarqueeStartPolicy.ON_FOCUS，其他设备默认值为MarqueeStartPolicy.DEFAULT
 
-**类型：** MarqueeStartPolicy
+**类型：** [MarqueeStartPolicy](arkts-arkui-marqueestartpolicy-e.md)
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -128,11 +140,13 @@ marqueeUpdatePolicy?: MarqueeUpdatePolicy
 
 跑马灯组件属性更新后，跑马灯的滚动策略。 当跑马灯为播放状态，且文本内容宽度超过跑马灯组件宽度时，该属性生效。 默认值：MarqueeUpdatePolicy.DEFAULT
 
-**类型：** MarqueeUpdatePolicy
+**类型：** [MarqueeUpdatePolicy](arkts-arkui-marqueeupdatepolicy-e.md)
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -156,6 +170,8 @@ spacing?: LengthMetrics
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
@@ -178,6 +194,8 @@ start: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -199,6 +217,8 @@ step?: number
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

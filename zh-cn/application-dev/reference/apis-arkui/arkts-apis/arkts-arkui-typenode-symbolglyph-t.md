@@ -1,20 +1,24 @@
 # SymbolGlyph
 
 ```TypeScript
-type SymbolGlyph = SymbolGlyphFrameNode
+type SymbolGlyph = TypedFrameNode<SymbolGlyphInterface, SymbolGlyphAttribute>
 ```
 
-Define the FrameNode type for SymbolGlyph.
+SymbolGlyph类型的FrameNode节点类型。
 
-**起始版本：** 23
+**起始版本：** 14
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-typeNode-type SymbolGlyph = SymbolGlyphFrameNode--><!--Device-typeNode-type SymbolGlyph = SymbolGlyphFrameNode-End-->
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+
+<!--Device-typeNode-type SymbolGlyph = TypedFrameNode<SymbolGlyphInterface, SymbolGlyphAttribute>--><!--Device-typeNode-type SymbolGlyph = TypedFrameNode<SymbolGlyphInterface, SymbolGlyphAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**属性类型：** SymbolGlyphFrameNode
+**属性类型：** TypedFrameNode<SymbolGlyphInterface, SymbolGlyphAttribute>
 

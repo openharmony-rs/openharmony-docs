@@ -1,6 +1,7 @@
 # CompatibleUpdatableBuilder
 
 ```TypeScript
+@Builder
 export type CompatibleUpdatableBuilder<T> = (arg: T) => void
 ```
 
@@ -10,11 +11,11 @@ export type CompatibleUpdatableBuilder<T> = (arg: T) => void
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
-**装饰器类型：** @Builder
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-unnamed-export type CompatibleUpdatableBuilder<T> = (arg: T) => void--><!--Device-unnamed-export type CompatibleUpdatableBuilder<T> = (arg: T) => void-End-->
+<!--Device-unnamed-@Builderexport type CompatibleUpdatableBuilder<T> = (arg: T) => void--><!--Device-unnamed-@Builderexport type CompatibleUpdatableBuilder<T> = (arg: T) => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,5 +23,5 @@ export type CompatibleUpdatableBuilder<T> = (arg: T) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| arg | T | 是 | 自定义构建函数。  |
+| arg | T | 是 | 自定义构建函数。 |
 

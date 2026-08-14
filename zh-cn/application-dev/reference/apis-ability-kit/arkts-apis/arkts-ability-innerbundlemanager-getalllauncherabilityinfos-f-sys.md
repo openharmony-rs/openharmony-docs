@@ -6,7 +6,7 @@
 function getAllLauncherAbilityInfos(userId: number, callback: AsyncCallback<Array<LauncherAbilityInfo>>): void
 ```
 
-获取所有的LauncherAbilityInfos，使用callback异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用 > [getAllLauncherAbilityInfo]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ > 替代。
+获取所有的LauncherAbilityInfos，使用callback异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用 > [getAllLauncherAbilityInfo](arkts-ability-launcherbundlemanager-getalllauncherabilityinfo-f-sys.md#getAllLauncherAbilityInfo（系统接口）) > 替代。
 
 **起始版本：** 8
 
@@ -14,7 +14,7 @@ function getAllLauncherAbilityInfos(userId: number, callback: AsyncCallback<Arra
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.bundle.launcherBundleManager:launcherBundleManager.getAllLauncherAbilityInfo](arkts-ability-launcherbundlemanager-getalllauncherabilityinfo-f-sys.md#getalllauncherabilityinfo)(userId:
+**替代接口：** [getAllLauncherAbilityInfo](arkts-ability-launcherbundlemanager-getalllauncherabilityinfo-f-sys.md#getAllLauncherAbilityInfo)(userId: int, callback: AsyncCallback&lt;Array&lt;LauncherAbilityInfo&gt;&gt;)
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -29,7 +29,7 @@ function getAllLauncherAbilityInfos(userId: number, callback: AsyncCallback<Arra
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | userId | number | 是 | 用户ID。取值范围：大于等于0。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;Array&lt;LauncherAbilityInfo&gt;&gt; | 是 | 程序启动作为入参的回调函数，返回程序信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[LauncherAbilityInfo](arkts-ability-launcherabilityinfo-launcherabilityinfo-depr-i-sys.md)&gt;&gt; | 是 | 程序启动作为入参的回调函数，返回程序信息。 |
 
 
 ## getAllLauncherAbilityInfos
@@ -38,7 +38,7 @@ function getAllLauncherAbilityInfos(userId: number, callback: AsyncCallback<Arra
 function getAllLauncherAbilityInfos(userId: number): Promise<Array<LauncherAbilityInfo>>
 ```
 
-获取LauncherAbilityInfos，使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用 > [getAllLauncherAbilityInfo]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ > 替代。
+获取LauncherAbilityInfos，使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用 > [getAllLauncherAbilityInfo](arkts-ability-launcherbundlemanager-getalllauncherabilityinfo-f-sys.md#getAllLauncherAbilityInfo（系统接口）) > 替代。
 
 **起始版本：** 8
 
@@ -46,7 +46,7 @@ function getAllLauncherAbilityInfos(userId: number): Promise<Array<LauncherAbili
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.bundle.launcherBundleManager:launcherBundleManager.getAllLauncherAbilityInfo](arkts-ability-launcherbundlemanager-getalllauncherabilityinfo-f-sys.md#getalllauncherabilityinfo)(userId:
+**替代接口：** [getAllLauncherAbilityInfo](arkts-ability-launcherbundlemanager-getalllauncherabilityinfo-f-sys.md#getAllLauncherAbilityInfo)(userId: int, callback: AsyncCallback&lt;Array&lt;LauncherAbilityInfo&gt;&gt;)
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -66,5 +66,5 @@ function getAllLauncherAbilityInfos(userId: number): Promise<Array<LauncherAbili
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;LauncherAbilityInfo&gt;&gt; | Promise形式返回程序信息。 |
+| Promise&lt;Array&lt;[LauncherAbilityInfo](arkts-ability-launcherabilityinfo-launcherabilityinfo-depr-i-sys.md)&gt;&gt; | Promise形式返回程序信息。 |
 

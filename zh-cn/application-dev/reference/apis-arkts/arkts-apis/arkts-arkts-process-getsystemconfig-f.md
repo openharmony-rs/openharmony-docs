@@ -14,7 +14,7 @@ function getSystemConfig(name: number): number
 
 **废弃版本：** 9
 
-**替代接口：** [process.ProcessManager.getSystemConfig](arkts-arkts-process-processmanager-c.md#getsystemconfig)
+**替代接口：** [getSystemConfig](arkts-arkts-process-processmanager-c.md#getSystemConfig)
 
 <!--Device-process-function getSystemConfig(name: number): number--><!--Device-process-function getSystemConfig(name: number): number-End-->
 
@@ -32,7 +32,7 @@ function getSystemConfig(name: number): number
 | --- | --- |
 | number | 返回系统配置信息。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let _SC_ARG_MAX = 0;

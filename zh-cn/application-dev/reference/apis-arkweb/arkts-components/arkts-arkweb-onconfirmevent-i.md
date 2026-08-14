@@ -1,10 +1,12 @@
 # OnConfirmEvent
 
-定义网页触发 \_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_ 弹窗时的回调函数。
+定义网页触发 `confirm()` 弹窗时的回调函数。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare interface OnConfirmEvent--><!--Device-unnamed-declare interface OnConfirmEvent-End-->
 
@@ -24,6 +26,8 @@ message: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-OnConfirmEvent-message: string--><!--Device-OnConfirmEvent-message: string-End-->
@@ -38,11 +42,13 @@ result: JsResult
 
 通知Web组件用户的操作结果。
 
-**类型：** JsResult
+**类型：** [JsResult](arkts-arkweb-jsresult-c.md)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -63,6 +69,8 @@ url: string
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

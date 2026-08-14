@@ -16,6 +16,8 @@ TextArea(value?: TextAreaOptions)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TextAreaInterface-(value?: TextAreaOptions): TextAreaAttribute--><!--Device-TextAreaInterface-(value?: TextAreaOptions): TextAreaAttribute-End-->
@@ -26,7 +28,10 @@ TextArea(value?: TextAreaOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | TextArea组件参数。默认值：详见TextAreaOptions。  |
+| value | [TextAreaOptions](arkts-arkui-textareaoptions-i.md) | 否 | TextArea组件参数。默认值：详见TextAreaOptions。 |
 
 ## 汇总
 
+- [TextAreaOptions](arkts-arkui-textareaoptions-i.md)
+- [TextAreaSubmitCallback](arkts-arkui-textareasubmitcallback-t.md)
+- [TextAreaType](arkts-arkui-textareatype-e.md)

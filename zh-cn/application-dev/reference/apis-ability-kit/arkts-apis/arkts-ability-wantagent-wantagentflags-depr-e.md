@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.wantAgent/wantAgent#WantAgentFlags
+**替代接口：** [WantAgentFlags](arkts-ability-wantagent-wantagentflags-e.md#WantAgentFlags)
 
 <!--Device-wantAgent-export enum WantAgentFlags--><!--Device-wantAgent-export enum WantAgentFlags-End-->
 
@@ -28,7 +28,7 @@ WantAgent仅能使用一次。
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.wantAgent/wantAgent.WantAgentFlags#ONE_TIME_FLAG
+**替代接口：** [ONE_TIME_FLAG](arkts-ability-wantagent-wantagentflags-e.md#ONE_TIME_FLAG)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -50,7 +50,7 @@ NO_BUILD_FLAG
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.wantAgent/wantAgent.WantAgentFlags#NO_BUILD_FLAG
+**替代接口：** [NO_BUILD_FLAG](arkts-ability-wantagent-wantagentflags-e.md#NO_BUILD_FLAG)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -72,7 +72,7 @@ CANCEL_PRESENT_FLAG
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.wantAgent/wantAgent.WantAgentFlags#CANCEL_PRESENT_FLAG
+**替代接口：** [CANCEL_PRESENT_FLAG](arkts-ability-wantagent-wantagentflags-e.md#CANCEL_PRESENT_FLAG)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -94,7 +94,7 @@ UPDATE_PRESENT_FLAG
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.wantAgent/wantAgent.WantAgentFlags#UPDATE_PRESENT_FLAG
+**替代接口：** [UPDATE_PRESENT_FLAG](arkts-ability-wantagent-wantagentflags-e.md#UPDATE_PRESENT_FLAG)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -116,7 +116,7 @@ WantAgent是不可变的。
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.wantAgent/wantAgent.WantAgentFlags#CONSTANT_FLAG
+**替代接口：** [CONSTANT_FLAG](arkts-ability-wantagent-wantagentflags-e.md#CONSTANT_FLAG)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -138,7 +138,7 @@ REPLACE_ELEMENT
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.wantAgent/wantAgent.WantAgentFlags#REPLACE_ELEMENT
+**替代接口：** [REPLACE_ELEMENT](arkts-ability-wantagent-wantagentflags-e.md#REPLACE_ELEMENT)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -160,7 +160,7 @@ REPLACE_ACTION
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.wantAgent/wantAgent.WantAgentFlags#REPLACE_ACTION
+**替代接口：** [REPLACE_ACTION](arkts-ability-wantagent-wantagentflags-e.md#REPLACE_ACTION)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -182,7 +182,7 @@ REPLACE_URI
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.wantAgent/wantAgent.WantAgentFlags#REPLACE_URI
+**替代接口：** [REPLACE_URI](arkts-ability-wantagent-wantagentflags-e.md#REPLACE_URI)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -204,7 +204,7 @@ REPLACE_ENTITIES
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.wantAgent/wantAgent.WantAgentFlags#REPLACE_ENTITIES
+**替代接口：** [REPLACE_ENTITIES](arkts-ability-wantagent-wantagentflags-e.md#REPLACE_ENTITIES)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -226,7 +226,7 @@ REPLACE_BUNDLE
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.wantAgent/wantAgent.WantAgentFlags#REPLACE_BUNDLE
+**替代接口：** [REPLACE_BUNDLE](arkts-ability-wantagent-wantagentflags-e.md#REPLACE_BUNDLE)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

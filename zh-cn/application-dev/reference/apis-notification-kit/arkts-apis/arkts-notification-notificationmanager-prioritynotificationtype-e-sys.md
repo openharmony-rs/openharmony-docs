@@ -4,7 +4,9 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-notificationManager-export enum PriorityNotificationType--><!--Device-notificationManager-export enum PriorityNotificationType-End-->
 
@@ -20,7 +22,9 @@ PAYMENT_DUE = 'PAYMENT_DUE'
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PriorityNotificationType-PAYMENT_DUE = 'PAYMENT_DUE'--><!--Device-PriorityNotificationType-PAYMENT_DUE = 'PAYMENT_DUE'-End-->
 
@@ -38,7 +42,9 @@ TRANSACTION_ALERT = 'TRANSACTION_ALERT'
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PriorityNotificationType-TRANSACTION_ALERT = 'TRANSACTION_ALERT'--><!--Device-PriorityNotificationType-TRANSACTION_ALERT = 'TRANSACTION_ALERT'-End-->
 
@@ -56,7 +62,9 @@ EXPRESS_PROGRESS = 'EXPRESS_PROGRESS'
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PriorityNotificationType-EXPRESS_PROGRESS = 'EXPRESS_PROGRESS'--><!--Device-PriorityNotificationType-EXPRESS_PROGRESS = 'EXPRESS_PROGRESS'-End-->
 
@@ -74,7 +82,9 @@ MISS_CALL = 'MISS_CALL'
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PriorityNotificationType-MISS_CALL = 'MISS_CALL'--><!--Device-PriorityNotificationType-MISS_CALL = 'MISS_CALL'-End-->
 
@@ -92,7 +102,9 @@ TRAVEL_ALERT = 'TRAVEL_ALERT'
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PriorityNotificationType-TRAVEL_ALERT = 'TRAVEL_ALERT'--><!--Device-PriorityNotificationType-TRAVEL_ALERT = 'TRAVEL_ALERT'-End-->
 
@@ -110,7 +122,9 @@ ACCOUNT_ALERT = 'ACCOUNT_ALERT'
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PriorityNotificationType-ACCOUNT_ALERT = 'ACCOUNT_ALERT'--><!--Device-PriorityNotificationType-ACCOUNT_ALERT = 'ACCOUNT_ALERT'-End-->
 
@@ -128,7 +142,9 @@ APPOINTMENT_REMINDER = 'APPOINTMENT_REMINDER'
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PriorityNotificationType-APPOINTMENT_REMINDER = 'APPOINTMENT_REMINDER'--><!--Device-PriorityNotificationType-APPOINTMENT_REMINDER = 'APPOINTMENT_REMINDER'-End-->
 
@@ -146,7 +162,9 @@ TRAFFIC_NOTICE = 'TRAFFIC_NOTICE'
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PriorityNotificationType-TRAFFIC_NOTICE = 'TRAFFIC_NOTICE'--><!--Device-PriorityNotificationType-TRAFFIC_NOTICE = 'TRAFFIC_NOTICE'-End-->
 
@@ -164,7 +182,9 @@ KEY_PROGRESS = 'KEY_PROGRESS'
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PriorityNotificationType-KEY_PROGRESS = 'KEY_PROGRESS'--><!--Device-PriorityNotificationType-KEY_PROGRESS = 'KEY_PROGRESS'-End-->
 
@@ -182,7 +202,9 @@ PUBLIC_EVENT = 'PUBLIC_EVENT'
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PriorityNotificationType-PUBLIC_EVENT = 'PUBLIC_EVENT'--><!--Device-PriorityNotificationType-PUBLIC_EVENT = 'PUBLIC_EVENT'-End-->
 
@@ -200,7 +222,9 @@ IOT_WARNING = 'IOT_WARNING'
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PriorityNotificationType-IOT_WARNING = 'IOT_WARNING'--><!--Device-PriorityNotificationType-IOT_WARNING = 'IOT_WARNING'-End-->
 
@@ -218,7 +242,9 @@ CUSTOM_KEYWORD = 'CUSTOM_KEYWORD'
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PriorityNotificationType-CUSTOM_KEYWORD = 'CUSTOM_KEYWORD'--><!--Device-PriorityNotificationType-CUSTOM_KEYWORD = 'CUSTOM_KEYWORD'-End-->
 

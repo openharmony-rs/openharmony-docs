@@ -6,7 +6,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [Popup](arkts-arkui-arkui-advanced-popup-popup-f.md#popup) |  |
+| [Popup](arkts-arkui-arkui-advanced-popup-popup-f.md#Popup) |  |
 
 ### 接口
 

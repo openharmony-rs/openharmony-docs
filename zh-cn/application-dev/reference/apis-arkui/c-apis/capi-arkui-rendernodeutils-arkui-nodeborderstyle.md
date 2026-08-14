@@ -1,0 +1,16 @@
+# ArkUI_NodeBorderStyle
+
+```c
+typedef struct ArkUI_NodeBorderStyle ArkUI_NodeBorderStyleOption
+```
+
+## 概述
+
+定义边框样式配置项，用于为渲染节点的各边设置边框样式。
+
+**起始版本：** 20
+
+**相关模块：** [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)
+
+**所在头文件：** [native_render.h](capi-native-render-h.md)
+

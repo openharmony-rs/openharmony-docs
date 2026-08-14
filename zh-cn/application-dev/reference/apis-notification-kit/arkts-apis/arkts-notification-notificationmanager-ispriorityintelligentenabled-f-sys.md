@@ -1,5 +1,11 @@
 # isPriorityIntelligentEnabled（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { notificationManager } from '@kit.NotificationKit';
+```
+
 ## isPriorityIntelligentEnabled
 
 ```TypeScript
@@ -10,7 +16,9 @@ function isPriorityIntelligentEnabled(): Promise<boolean>
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -26,19 +34,19 @@ function isPriorityIntelligentEnabled(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象，返回包含优先通知智能服务使能状态的Promise对象。 |
+| Promise&lt;boolean&gt; | Promise对象，返回包含优先通知智能服务使能状态的Promise对象。 &lt;br&gt; - true：优先通知智能服务为打开状态。 &lt;br&gt; - false：优先通知智能服务为关闭状态。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
-| [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
-| [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [1600012](../errorcode-notification.md#1600012-内存空间不足) | No memory space. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
+| [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

@@ -2,9 +2,11 @@
 
 本模块提供管理系统账号的基础能力，包括系统账号的添加、删除、查询、设置、订阅、启动等功能。
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare namespace osAccount--><!--Device-unnamed-declare namespace osAccount-End-->
 
@@ -16,16 +18,16 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [getAccountManager](arkts-basicservices-osaccount-getaccountmanager-f.md#getaccountmanager) | 获取系统账号管理对象。 |
-| [isDomainAccountSupported](arkts-basicservices-osaccount-isdomainaccountsupported-f.md#isdomainaccountsupported) | 检查是否支持域账号。使用Promise异步回调。 |
+| [getAccountManager](arkts-basicservices-osaccount-getaccountmanager-f.md#getAccountManager) | 获取系统账号管理对象。 |
+| [isDomainAccountSupported](arkts-basicservices-osaccount-isdomainaccountsupported-f.md#isDomainAccountSupported) | 检查是否支持域账号。使用Promise异步回调。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [getAuthorizationManager](arkts-basicservices-osaccount-getauthorizationmanager-f-sys.md#getauthorizationmanager) | 获取系统账号授权管理器。 |
-| [getOsAccountSubProfileManager](arkts-basicservices-osaccount-getosaccountsubprofilemanager-f-sys.md#getosaccountsubprofilemanager) | 获取系统账号子身份资料管理器。 |
+| [getAuthorizationManager](arkts-basicservices-osaccount-getauthorizationmanager-f-sys.md#getAuthorizationManager) | 获取系统账号授权管理器。 |
+| [getOsAccountSubProfileManager](arkts-basicservices-osaccount-getosaccountsubprofilemanager-f-sys.md#getOsAccountSubProfileManager) | 获取系统账号子身份资料管理器。 |
 <!--DelEnd-->
 
 ### 类
@@ -52,7 +54,7 @@
 | 名称 | 说明 |
 | --- | --- |
 | [AccountManager](arkts-basicservices-osaccount-accountmanager-i.md) | 系统账号管理类。 |
-| [CreateOsAccountForDomainOptions](arkts-basicservices-osaccount-createosaccountfordomainoptions-i.md) | 表示用于创建与指定域账号绑定的系统账号的可选参数。继承自[CreateOsAccountOptions]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
+| [CreateOsAccountForDomainOptions](arkts-basicservices-osaccount-createosaccountfordomainoptions-i.md) | 表示用于创建与指定域账号绑定的系统账号的可选参数。继承自[CreateOsAccountOptions](arkts-basicservices-osaccount-createosaccountoptions-i-sys.md#CreateOsAccountOptions（系统接口）)。 |
 | [DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i.md) | 表示域账号信息。 |
 | [DomainServerConfig](arkts-basicservices-osaccount-domainserverconfig-i.md) | 域服务器配置。 |
 | [OsAccountInfo](arkts-basicservices-osaccount-osaccountinfo-i.md) | 表示系统账号信息。 |
@@ -65,7 +67,7 @@
 | [AccountManager](arkts-basicservices-osaccount-accountmanager-i-sys.md) | 系统账号管理类。 |
 | [AcquireAuthorizationOptions](arkts-basicservices-osaccount-acquireauthorizationoptions-i-sys.md) | 表示获取授权的选项。 |
 | [AcquireAuthorizationResult](arkts-basicservices-osaccount-acquireauthorizationresult-i-sys.md) | 表示获取授权的结果。 |
-| [AuthOptions](arkts-basicservices-osaccount-authoptions-i-sys.md) | 表示 [认证用户]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 的可选参数集合。 |
+| [AuthOptions](arkts-basicservices-osaccount-authoptions-i-sys.md) | 表示 [认证用户](arkts-basicservices-osaccount-userauth-c-sys.md#auth) 的可选参数集合。 |
 | [AuthResult](arkts-basicservices-osaccount-authresult-i-sys.md) | 表示认证结果的信息。 |
 | [AuthStatusInfo](arkts-basicservices-osaccount-authstatusinfo-i-sys.md) | 表示认证状态信息。 |
 | [AuthorizationManager](arkts-basicservices-osaccount-authorizationmanager-i-sys.md) | 系统账号授权管理类，用于管理系统账号授权。 |
@@ -79,11 +81,11 @@
 | [DomainPlugin](arkts-basicservices-osaccount-domainplugin-i-sys.md) | 域插件，提供域账号认证功能。 |
 | [EnrolledCredInfo](arkts-basicservices-osaccount-enrolledcredinfo-i-sys.md) | 表示已注册凭据的信息。 |
 | [ExecutorProperty](arkts-basicservices-osaccount-executorproperty-i-sys.md) | 提供执行器的属性。 |
-| [GetAuthInfoOptions](arkts-basicservices-osaccount-getauthinfooptions-i-sys.md) | 表示[查询认证凭据信息]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_的可选参数集合。 |
+| [GetAuthInfoOptions](arkts-basicservices-osaccount-getauthinfooptions-i-sys.md) | 表示[查询认证凭据信息](arkts-basicservices-osaccount-useridentitymanager-c-sys.md#getAuthInfo)的可选参数集合。 |
 | [GetDomainAccessTokenOptions](arkts-basicservices-osaccount-getdomainaccesstokenoptions-i-sys.md) | 表示获取域访问令牌的选项。 |
 | [GetDomainAccountInfoOptions](arkts-basicservices-osaccount-getdomainaccountinfooptions-i-sys.md) | 表示查询域账号信息的选项。 |
-| [GetDomainAccountInfoPluginOptions](arkts-basicservices-osaccount-getdomainaccountinfopluginoptions-i-sys.md) | 表示插件查询域账号信息的选项。GetDomainAccountInfoPluginOptions类继承 [GetDomainAccountInfoOptions]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ |
-| [GetInputDataOptions](arkts-basicservices-osaccount-getinputdataoptions-i-sys.md) | 表示\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_的可选参数集合。 |
+| [GetDomainAccountInfoPluginOptions](arkts-basicservices-osaccount-getdomainaccountinfopluginoptions-i-sys.md) | 表示插件查询域账号信息的选项。GetDomainAccountInfoPluginOptions类继承 [GetDomainAccountInfoOptions](arkts-basicservices-osaccount-getdomainaccountinfooptions-i-sys.md#GetDomainAccountInfoOptions（系统接口）) |
+| [GetInputDataOptions](arkts-basicservices-osaccount-getinputdataoptions-i-sys.md) | 表示通知调用者获取数据的可选参数集合。 |
 | [GetPropertyRequest](arkts-basicservices-osaccount-getpropertyrequest-i-sys.md) | 提供获取属性请求的信息。 |
 | [IIdmCallback](arkts-basicservices-osaccount-iidmcallback-i-sys.md) | 表示身份管理回调类。 |
 | [IInputData](arkts-basicservices-osaccount-iinputdata-i-sys.md) | 密码数据回调。 |

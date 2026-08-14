@@ -6,6 +6,8 @@ Slider刻度点的无障碍文本信息映射集。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface SliderShowStepOptions--><!--Device-unnamed-declare interface SliderShowStepOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -16,13 +18,15 @@ Slider刻度点的无障碍文本信息映射集。
 stepsAccessibility?: Map<number, SliderStepItemAccessibility>
 ```
 
-刻度点无障碍文本映射集，供屏幕阅读器等工具读取，增强无障碍功能。 Key取值范围：[0, INT32\_MAX]，当Key设定为负数和小数时，设定项不生效。 默认值：{}
+刻度点无障碍文本映射集，供屏幕阅读器等工具读取，增强无障碍功能。 Key取值范围：[0, INT32_MAX]，当Key设定为负数和小数时，设定项不生效。 默认值：{}
 
-**类型：** Map&lt;number, SliderStepItemAccessibility&gt;
+**类型：** Map&lt;number, [SliderStepItemAccessibility](arkts-arkui-sliderstepitemaccessibility-i.md)&gt;
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

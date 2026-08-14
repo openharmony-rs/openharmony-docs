@@ -8,9 +8,11 @@ function setApplicationEnabledSync(bundleName: string, isEnabled: boolean): void
 
 以同步方法设置指定应用的禁用或使能状态。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.CHANGE_ABILITY_ENABLED_STATE
 
@@ -31,12 +33,12 @@ function setApplicationEnabledSync(bundleName: string, isEnabled: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { bundleManager } from '@kit.AbilityKit';
@@ -65,7 +67,9 @@ function setApplicationEnabledSync(bundleName: string, appIndex: int, isEnabled:
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.CHANGE_ABILITY_ENABLED_STATE
 
@@ -82,7 +86,7 @@ function setApplicationEnabledSync(bundleName: string, appIndex: int, isEnabled:
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 应用包名 |
-| appIndex | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 应用的分身索引\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_取值范围为全体整数。 |
+| appIndex | int | 是 | 应用的分身索引 &lt;br&gt;取值范围为全体整数。 |
 | isEnabled | boolean | 是 | true表示启用应用程序，false表示启用应用程序。 |
 | killProcess | boolean | 是 | true表示应用进程在禁用时杀死应用程序进程，而值为false表示禁用时不会杀死应用程序进程 |
 
@@ -90,12 +94,12 @@ function setApplicationEnabledSync(bundleName: string, appIndex: int, isEnabled:
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | The specified app index is invalid. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied. Non-system APP calling system API. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle is not found. |
-| [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | The specified app index is invalid. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { bundleManager } from '@kit.AbilityKit';

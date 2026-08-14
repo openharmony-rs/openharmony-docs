@@ -6,6 +6,8 @@ DLP沙箱聚合策略类型的枚举。沙箱聚合表示同一权限类型的DL
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-dlpPermission-export enum GatheringPolicyType--><!--Device-dlpPermission-export enum GatheringPolicyType-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
@@ -24,6 +26,8 @@ GATHERING = 1
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-GatheringPolicyType-GATHERING = 1--><!--Device-GatheringPolicyType-GATHERING = 1-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
@@ -41,6 +45,8 @@ NON_GATHERING = 2
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 <!--Device-GatheringPolicyType-NON_GATHERING = 2--><!--Device-GatheringPolicyType-NON_GATHERING = 2-End-->
 

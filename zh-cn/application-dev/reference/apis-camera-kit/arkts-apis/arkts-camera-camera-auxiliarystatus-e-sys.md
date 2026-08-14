@@ -2,9 +2,11 @@
 
 Enum for auxiliary status.
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-camera-enum AuxiliaryStatus--><!--Device-camera-enum AuxiliaryStatus-End-->
 
@@ -20,9 +22,11 @@ LOCKED = 0
 
 Auxiliary locked.
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AuxiliaryStatus-LOCKED = 0--><!--Device-AuxiliaryStatus-LOCKED = 0-End-->
 
@@ -38,9 +42,11 @@ ON = 1
 
 Turn on auxiliary.
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AuxiliaryStatus-ON = 1--><!--Device-AuxiliaryStatus-ON = 1-End-->
 
@@ -56,9 +62,11 @@ OFF = 2
 
 Turn off auxiliary.
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AuxiliaryStatus-OFF = 2--><!--Device-AuxiliaryStatus-OFF = 2-End-->
 

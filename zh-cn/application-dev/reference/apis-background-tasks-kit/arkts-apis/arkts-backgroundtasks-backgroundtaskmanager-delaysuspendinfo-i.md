@@ -2,9 +2,11 @@
 
 短时任务信息。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-backgroundTaskManager-interface DelaySuspendInfo--><!--Device-backgroundTaskManager-interface DelaySuspendInfo-End-->
 
@@ -16,13 +18,15 @@
 actualDelayTime: int
 ```
 
-Actual duration of the transient task requested by the application, in milliseconds. \_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_Unit:ms **说明：** 申请时间最长为3分钟，低电量（[BatteryCapacityLevel]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_为LEVEL\_LOW） 时最长为1分钟。
+Actual duration of the transient task requested by the application, in milliseconds. &lt;br&gt;Unit:ms **说明：** 申请时间最长为3分钟，低电量（[BatteryCapacityLevel](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-batteryinfo-batterycapacitylevel-e.md#BatteryCapacityLevel)为LEVEL_LOW） 时最长为1分钟。
 
 **类型：** int
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DelaySuspendInfo-actualDelayTime: int--><!--Device-DelaySuspendInfo-actualDelayTime: int-End-->
 
@@ -38,9 +42,11 @@ requestId: int
 
 **类型：** int
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DelaySuspendInfo-requestId: int--><!--Device-DelaySuspendInfo-requestId: int-End-->
 

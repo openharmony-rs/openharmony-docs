@@ -6,9 +6,11 @@ type StreamUsageArray = Array<StreamUsage>
 
 Array of StreamUsages.
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-audio-type StreamUsageArray = Array<StreamUsage>--><!--Device-audio-type StreamUsageArray = Array<StreamUsage>-End-->
 

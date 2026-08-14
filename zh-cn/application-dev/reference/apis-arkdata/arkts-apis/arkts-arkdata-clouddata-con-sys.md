@@ -3,16 +3,20 @@
 ## DATA_CHANGE_EVENT_ID
 
 ```TypeScript
-const DATA_CHANGE_EVENT_ID = 'cloud_data_change'
+const DATA_CHANGE_EVENT_ID: string
 ```
 
 表示云数据变更。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-<!--Device-cloudData-const DATA_CHANGE_EVENT_ID = 'cloud_data_change'--><!--Device-cloudData-const DATA_CHANGE_EVENT_ID = 'cloud_data_change'-End-->
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-cloudData-const DATA_CHANGE_EVENT_ID: string--><!--Device-cloudData-const DATA_CHANGE_EVENT_ID: string-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 

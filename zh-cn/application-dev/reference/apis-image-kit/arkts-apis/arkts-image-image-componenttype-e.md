@@ -2,9 +2,11 @@
 
 表示图像的组件类型的枚举。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-image-enum ComponentType--><!--Device-image-enum ComponentType-End-->
 
@@ -18,9 +20,11 @@ YUV_Y = 1
 
 亮度信息。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ComponentType-YUV_Y = 1--><!--Device-ComponentType-YUV_Y = 1-End-->
 
@@ -34,9 +38,11 @@ YUV_U = 2
 
 色度信息。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ComponentType-YUV_U = 2--><!--Device-ComponentType-YUV_U = 2-End-->
 
@@ -50,9 +56,11 @@ YUV_V = 3
 
 色度信息。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ComponentType-YUV_V = 3--><!--Device-ComponentType-YUV_V = 3-End-->
 
@@ -66,9 +74,11 @@ JPEG = 4
 
 JPEG 类型。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ComponentType-JPEG = 4--><!--Device-ComponentType-JPEG = 4-End-->
 

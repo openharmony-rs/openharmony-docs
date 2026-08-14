@@ -6,7 +6,7 @@ typedef struct OH_Drawing_RunBuffer {...} OH_Drawing_RunBuffer
 
 ## 概述
 
-This struct describes a run, which provides storage for glyphs and positions.
+结构体用于描述一块内存，该内存用于存储文字和位置信息。
 
 **起始版本：** 11
 
@@ -20,9 +20,9 @@ This struct describes a run, which provides storage for glyphs and positions.
 
 | 名称 | 描述 |
 | -- | -- |
-| uint16_t* glyphs | Storage for glyph indexes in the run. |
-| float* pos | Storage for glyph positions in the run. |
-| char* utf8text | Storage for UTF-8 encoded text units in the run. |
-| uint32_t* clusters | Storage for glyph clusters (index of the UTF-8 encoded text unit) in the run. |
+| uint16_t* glyphs | 存储字形索引。 |
+| float* pos | 存储文字的位置。单位为物理像素px。 |
+| char* utf8text | 存储文字UTF-8编码。 |
+| uint32_t* clusters | 存储文字簇UTF-8编码（簇指的是集合）。 |
 
 

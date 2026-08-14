@@ -8,9 +8,11 @@ function getLocalCapabilities(): Promise<FileData>
 
 获取描述本地能力的JSON文件。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.BACKUP
 
@@ -24,19 +26,19 @@ function getLocalCapabilities(): Promise<FileData>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;FileData&gt; | Promise对象，返回包含本地能力文件描述符的FileData。返回的文件为临时文件，关闭后将 |
+| Promise&lt;[FileData](arkts-corefile-backup-filedata-i-sys.md)&gt; | Promise对象，返回包含本地能力文件描述符的FileData。返回的文件为临时文件，关闭后将 自动删除。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13600001 | IPC error |
 | 13900005 | I/O error |
-| 13900011 | Out of memory |
 | 13900025 | No space left on device |
+| 13600001 | IPC error |
 | 13900042 | Unknown error |
+| 13900011 | Out of memory |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -55,7 +57,7 @@ async function getLocalCapabilities() {
 }
 ```
 
-能力文件可以通过[@ohos.file.fs](js-apis-file-fs.md)提供的[fileIo.stat](js-apis-file-fs.md#fileiostat)等相关接口获取，能力文件内容示例：
+能力文件可以通过@ohos.file.fs提供的fileIo.stat等相关接口获取，能力文件内容示例：
 
 ```TypeScript
 {
@@ -83,9 +85,11 @@ function getLocalCapabilities(callback: AsyncCallback<FileData>): void
 
 获取描述本地能力的JSON文件。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.BACKUP
 
@@ -99,19 +103,19 @@ function getLocalCapabilities(callback: AsyncCallback<FileData>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;FileData&gt; | 是 | 回调函数，返回包含本地能力文件描述符的FileData。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[FileData](arkts-corefile-backup-filedata-i-sys.md)&gt; | 是 | 回调函数，返回包含本地能力文件描述符的FileData。 返回的文件为临时文件，关闭后将自动删除。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13600001 | IPC error |
 | 13900005 | I/O error |
-| 13900011 | Out of memory |
 | 13900025 | No space left on device |
+| 13600001 | IPC error |
 | 13900042 | Unknown error |
+| 13900011 | Out of memory |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -133,7 +137,7 @@ try {
 }
 ```
 
-能力文件可以通过[@ohos.file.fs](js-apis-file-fs.md)提供的[fileIo.stat](js-apis-file-fs.md#fileiostat)等相关接口获取，能力文件内容示例：
+能力文件可以通过@ohos.file.fs提供的fileIo.stat等相关接口获取，能力文件内容示例：
 
 ```TypeScript
 {
@@ -161,9 +165,11 @@ function getLocalCapabilities(dataList: Array<IncrementalBackupTime>): Promise<F
 
 获取描述本地能力的JSON文件。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.BACKUP
 
@@ -177,28 +183,28 @@ function getLocalCapabilities(dataList: Array<IncrementalBackupTime>): Promise<F
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| dataList | Array&lt;IncrementalBackupTime&gt; | 是 | 增量备份数据列表，包含待查询应用及其最后一次增量备份时间。 |
+| dataList | Array&lt;[IncrementalBackupTime](arkts-corefile-backup-incrementalbackuptime-i-sys.md)&gt; | 是 | 增量备份数据列表，包含待查询应用及其最后一次增量备份时间。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;FileData&gt; | Promise对象，返回包含本地能力文件描述符的FileData。返回的文件为临时文件，关闭后将 |
+| Promise&lt;[FileData](arkts-corefile-backup-filedata-i-sys.md)&gt; | Promise对象，返回包含本地能力文件描述符的FileData。返回的文件为临时文件，关闭后将 自动删除。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| 13900005 | I/O error |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. 3.Parameter verification failed. |
-| 13600001 | IPC error |
-| 13900005 | I/O error |
-| 13900011 | Out of memory |
 | 13900025 | No space left on device |
+| 13600001 | IPC error |
 | 13900042 | Unknown error |
+| 13900011 | Out of memory |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

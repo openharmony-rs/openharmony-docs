@@ -8,9 +8,11 @@ function createRandom(): Random
 
 创建随机数实例。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 
 - API版本12+：此接口可在Stage模型和FA模型下使用。
@@ -28,7 +30,7 @@ function createRandom(): Random
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回Random实例。 |
+| [Random](arkts-cryptoarchitecture-cryptoframework-random-i.md) | 返回Random实例。 |
 
 **错误码：**
 
@@ -36,7 +38,7 @@ function createRandom(): Random
 | --- | --- |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';

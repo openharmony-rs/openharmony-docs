@@ -2,17 +2,19 @@
 
 Slider前缀组件无障碍信息参数。
 
-**继承/实现关系：** SliderPrefixOptions extends [SliderCustomContentOptions](../../apis-na/arkts-apis/arkts-na-component/slider-slidercustomcontentoptions-i.md)
+**继承/实现关系：** SliderPrefixOptions extends [SliderCustomContentOptions](arkts-arkui-slidercustomcontentoptions-i.md#SliderCustomContentOptions)
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
-<!--Device-unnamed-interface SliderPrefixOptions extends SliderCustomContentOptions--><!--Device-unnamed-interface SliderPrefixOptions extends SliderCustomContentOptions-End-->
+<!--Device-unnamed-interface SliderPrefixOptions--><!--Device-unnamed-interface SliderPrefixOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

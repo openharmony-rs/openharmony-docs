@@ -8,9 +8,11 @@ function requestPrintPreview(jobInfo: PrintJob, callback: Callback<int>): void
 
 请求预览打印数据，使用callback回调。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -24,18 +26,18 @@ function requestPrintPreview(jobInfo: PrintJob, callback: Callback<int>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| jobInfo | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 打印任务信息。 |
-| callback | ArkTS-Dyn: \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_2\_\_\_ArkTS-Sta：\_\_\_MD\_LINK\_USD\_1\_\_\_&lt;int&gt; | 是 | 请求预览打印数据之后的回调。 |
+| jobInfo | [PrintJob](arkts-basicservices-print-printjob-i-sys.md) | 是 | 打印任务信息。 |
+| callback | [Callback](arkts-basicservices-callback-t.md)&lt;int&gt; | 是 | 请求预览打印数据之后的回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { print } from '@kit.BasicServicesKit';
@@ -72,9 +74,11 @@ function requestPrintPreview(jobInfo: PrintJob): Promise<int>
 
 请求预览打印数据，使用Promise异步回调。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -88,23 +92,23 @@ function requestPrintPreview(jobInfo: PrintJob): Promise<int>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| jobInfo | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 打印任务信息。 |
+| jobInfo | [PrintJob](arkts-basicservices-print-printjob-i-sys.md) | 是 | 打印任务信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: Promise&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：Promise&lt;int&gt; | Promise对象，返回预览结果。 |
+| Promise&lt;int&gt; | Promise对象，返回预览结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { print } from '@kit.BasicServicesKit';

@@ -2,9 +2,11 @@
 
 表示容器格式类型的枚举，缩写为CFT。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-enum ContainerFormatType--><!--Device-unnamed-enum ContainerFormatType-End-->
 
@@ -18,9 +20,11 @@ CFT_MPEG_4 = 'mp4'
 
 视频的容器格式，MP4。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -36,9 +40,11 @@ CFT_MPEG_4A = 'm4a'
 
 音频的容器格式，M4A。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -54,9 +60,11 @@ CFT_MP3 = 'mp3'
 
 音频的容器格式，MP3。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ContainerFormatType-CFT_MP3 = 'mp3'--><!--Device-ContainerFormatType-CFT_MP3 = 'mp3'-End-->
 
@@ -70,9 +78,11 @@ CFT_WAV = 'wav'
 
 音频的容器格式，WAV。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ContainerFormatType-CFT_WAV = 'wav'--><!--Device-ContainerFormatType-CFT_WAV = 'wav'-End-->
 
@@ -86,9 +96,11 @@ CFT_AMR = 'amr'
 
 音频的容器格式，AMR。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ContainerFormatType-CFT_AMR = 'amr'--><!--Device-ContainerFormatType-CFT_AMR = 'amr'-End-->
 
@@ -102,9 +114,11 @@ CFT_AAC = 'aac'
 
 音频的容器格式，AAC。默认为ADTS帧头格式。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ContainerFormatType-CFT_AAC = 'aac'--><!--Device-ContainerFormatType-CFT_AAC = 'aac'-End-->
 

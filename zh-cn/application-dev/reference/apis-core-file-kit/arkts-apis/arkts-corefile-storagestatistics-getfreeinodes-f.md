@@ -10,7 +10,9 @@ function getFreeInodes(): Promise<long>
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -22,7 +24,7 @@ function getFreeInodes(): Promise<long>
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: Promise&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：Promise&lt;long&gt; | Promise对象，返回文件系统inode资源剩余量。 |
+| Promise&lt;long&gt; | Promise对象，返回文件系统inode资源剩余量。 |
 
 **错误码：**
 
@@ -31,7 +33,7 @@ function getFreeInodes(): Promise<long>
 | 13600001 | IPC error. |
 | 13600016 | Failed to query the inode information of the data partition. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

@@ -10,7 +10,9 @@ function isSeniorModeEnabled(): Promise<boolean>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -30,7 +32,7 @@ function isSeniorModeEnabled(): Promise<boolean>
 | --- | --- |
 | [9300000](../errorcode-accessibility.md#9300000-无障碍系统服务工作异常) | System abnormality. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { accessibility } from '@kit.AccessibilityKit';

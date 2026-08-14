@@ -1,14 +1,14 @@
 # Set
 
-一种存储唯一值的非线性数据结构，能够高效地进行元素存在性检测和去重操作。 > **说明** > > - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。 > 本节使用以下标识来表示泛型的使用： - T：Type，支持\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。 **装饰器类型：** \@Sendable
+一种存储唯一值的非线性数据结构，能够高效地进行元素存在性检测和去重操作。 > **说明：**> > - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。 > 本节使用以下标识来表示泛型的使用： - T：Type，支持[Sendable支持的数据类型](../../../arkts-utils/arkts-sendable.md#sendable支持的数据类型)。 **装饰器类型：** \@Sendable
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-**装饰器类型：** @Sendable
+**废弃版本：** -1
 
-<!--Device-collections-class Set<T>--><!--Device-collections-class Set<T>-End-->
+<!--Device-collections-class Set--><!--Device-collections-class Set-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -23,6 +23,8 @@
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -54,6 +56,8 @@ add(value: T): Set<T>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Set-add(value: T): Set<T>--><!--Device-Set-add(value: T): Set<T>-End-->
@@ -70,7 +74,7 @@ add(value: T): Set<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Set&lt;T&gt; | Set对象。 |
+| Set&lt;T&gt; | 插入元素后的Set对象本身。 |
 
 **错误码：**
 
@@ -90,6 +94,8 @@ clear(): void
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -116,6 +122,8 @@ constructor(values?: readonly T[] | null)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Set-constructor(values?: readonly T[] | null)--><!--Device-Set-constructor(values?: readonly T[] | null)-End-->
@@ -140,11 +148,13 @@ constructor(values?: readonly T[] | null)
 constructor(iterable: Iterable<T>)
 ```
 
-创建ArkTS Set对象的构造函数。
+构造函数，用于通过可迭代对象创建ArkTS Set对象。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -156,7 +166,7 @@ constructor(iterable: Iterable<T>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| iterable | Iterable&lt;T&gt; | 是 | 用于构造ArkTS Set的对象。 |
+| iterable | Iterable&lt;T&gt; | 是 | 用于构造ArkTS Set的可迭代对象。 |
 
 **错误码：**
 
@@ -175,6 +185,8 @@ delete(value: T): boolean
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -213,6 +225,8 @@ entries(): IterableIterator<[T, T]>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Set-entries(): IterableIterator<[T, T]>--><!--Device-Set-entries(): IterableIterator<[T, T]>-End-->
@@ -244,6 +258,8 @@ forEach(callbackFn: (value: T, value2: T, set: Set<T>) => void): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Set-forEach(callbackFn: (value: T, value2: T, set: Set<T>) => void): void--><!--Device-Set-forEach(callbackFn: (value: T, value2: T, set: Set<T>) => void): void-End-->
@@ -274,6 +290,8 @@ has(value: T): boolean
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -312,6 +330,8 @@ keys(): IterableIterator<T>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Set-keys(): IterableIterator<T>--><!--Device-Set-keys(): IterableIterator<T>-End-->
@@ -342,6 +362,8 @@ values(): IterableIterator<T>
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -375,6 +397,8 @@ Set的元素个数。
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

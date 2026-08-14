@@ -10,6 +10,8 @@ export declare type LaunchAtomicServiceCallback = (appId: string, options?: Atom
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-export declare type LaunchAtomicServiceCallback = (appId: string, options?: AtomicServiceOptions) => void--><!--Device-unnamed-export declare type LaunchAtomicServiceCallback = (appId: string, options?: AtomicServiceOptions) => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -20,6 +22,6 @@ export declare type LaunchAtomicServiceCallback = (appId: string, options?: Atom
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| appId | string | 是 | 原子化服务的appId。  |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 拉起原子化服务参数。  |
+| appId | string | 是 | 原子化服务的appId。 |
+| options | [AtomicServiceOptions](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-atomicserviceoptions-atomicserviceoptions-c.md) | 否 | 拉起原子化服务的参数。不填时使用默认参数拉起原子化服务。 |
 

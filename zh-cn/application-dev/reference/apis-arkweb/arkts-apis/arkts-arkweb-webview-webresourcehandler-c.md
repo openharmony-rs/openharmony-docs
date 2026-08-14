@@ -6,6 +6,8 @@ Used to intercept url requests. Response headers and body can be sent through We
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-webview-class WebResourceHandler--><!--Device-webview-class WebResourceHandler-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -22,6 +24,8 @@ didFail(code: WebNetErrorList): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebResourceHandler-didFail(code: WebNetErrorList): void--><!--Device-WebResourceHandler-didFail(code: WebNetErrorList): void-End-->
@@ -32,13 +36,13 @@ didFail(code: WebNetErrorList): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| code | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 网络错误码。 |
+| code | [WebNetErrorList](arkts-arkweb-web-neterrorlist-webneterrorlist-e.md) | 是 | 网络错误码。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types. |
 | [17100021](../errorcode-webview.md#17100021-webresourcehandler已经失效) | The resource handler is invalid. |
 
 ## didFail
@@ -53,6 +57,8 @@ Notify that this request should be failed.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 <!--Device-WebResourceHandler-didFail(code: WebNetErrorList, completeIfNoResponse: boolean): void--><!--Device-WebResourceHandler-didFail(code: WebNetErrorList, completeIfNoResponse: boolean): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -61,14 +67,14 @@ Notify that this request should be failed.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| code | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | Set response error code to intercept. |
+| code | [WebNetErrorList](arkts-arkweb-web-neterrorlist-webneterrorlist-e.md) | 是 | Set response error code to intercept. |
 | completeIfNoResponse | boolean | 是 | If completeIfNoResponse is true, when DidFailWithError is called, if DidReceiveResponse has not been called, a response is automatically constructed and the current request is terminated. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100101](../errorcode-webview.md#17100101-使用了错误的网络错误码) | The errorCode is either ARKWEB\_\_\_ESCAPED\_UNDERSCORE\_\_\_NET\_\_\_ESCAPED\_UNDERSCORE\_\_\_OK or outside the range of error codes in WebNetErrorList. |
+| [17100101](../errorcode-webview.md#17100101-使用了错误的网络错误码) | The errorCode is either ARKWEB_NET_OK or outside the range of error codes in WebNetErrorList. |
 | [17100021](../errorcode-webview.md#17100021-webresourcehandler已经失效) | The resource handler is invalid. |
 
 ## didFail
@@ -83,6 +89,8 @@ Notify that this request should be failed.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 <!--Device-WebResourceHandler-didFail(code: WebNetErrorList, completeIfNoResponse: boolean, customErrorCode: number): void--><!--Device-WebResourceHandler-didFail(code: WebNetErrorList, completeIfNoResponse: boolean, customErrorCode: number): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -91,8 +99,8 @@ Notify that this request should be failed.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| code | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | Set response error code to intercept. |
-| completeIfNoResponse | boolean | 是 | If completeIfNoResponse is true, when DidFailWithError is called,if DidReceiveResponse has not been called, a response is automatically constructed and the current request is terminated. |
+| code | [WebNetErrorList](arkts-arkweb-web-neterrorlist-webneterrorlist-e.md) | 是 | Set response error code to intercept. |
+| completeIfNoResponse | boolean | 是 | If completeIfNoResponse is true, when DidFailWithError is called, if DidReceiveResponse has not been called, a response is automatically constructed and the current request is terminated. |
 | customErrorCode | number | 是 | The custom error code for this response, Web engine will pass the custom error code directly to the application through onErrorReceive. |
 
 **错误码：**
@@ -112,6 +120,8 @@ didFinish(): void
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -137,6 +147,8 @@ didReceiveResponse(response: WebSchemeHandlerResponse): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebResourceHandler-didReceiveResponse(response: WebSchemeHandlerResponse): void--><!--Device-WebResourceHandler-didReceiveResponse(response: WebSchemeHandlerResponse): void-End-->
@@ -147,13 +159,13 @@ didReceiveResponse(response: WebSchemeHandlerResponse): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| response | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 该拦截请求的响应。 |
+| response | [WebSchemeHandlerResponse](../../apis-na/arkts-apis/arkts-na-webview-webschemehandlerresponse-c.md) | 是 | 该拦截请求的响应。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. |
 | [17100021](../errorcode-webview.md#17100021-webresourcehandler已经失效) | The resource handler is invalid. |
 
 ## didReceiveResponseBody
@@ -167,6 +179,8 @@ didReceiveResponseBody(data: ArrayBuffer): void
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -184,6 +198,6 @@ didReceiveResponseBody(data: ArrayBuffer): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. |
 | [17100021](../errorcode-webview.md#17100021-webresourcehandler已经失效) | The resource handler is invalid. |
 

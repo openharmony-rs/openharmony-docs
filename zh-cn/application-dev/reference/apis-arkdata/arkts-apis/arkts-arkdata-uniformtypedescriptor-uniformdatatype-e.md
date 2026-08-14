@@ -1,10 +1,12 @@
 # UniformDataType
 
-标准化数据类型之间存在归属关系，例如JPEG图片类型归属于IMAGE类型。更多预置数据类型参考\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。 下表以枚举形式，列举了常用的标准化数据类型定义。
+标准化数据类型之间存在归属关系，例如JPEG图片类型归属于IMAGE类型。更多预置数据类型参考[UTD预置列表](../../../database/uniform-data-type-list.md)。 下表以枚举形式，列举了常用的标准化数据类型定义。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-uniformTypeDescriptor-enum UniformDataType--><!--Device-uniformTypeDescriptor-enum UniformDataType-End-->
 
@@ -18,9 +20,11 @@ ENTITY = 'general.entity'
 
 所有表示物理存储类型的基类型，无归属类型。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -36,9 +40,11 @@ OBJECT = 'general.object'
 
 所有表示逻辑内容类型的基类型，无归属类型。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -54,9 +60,11 @@ COMPOSITE_OBJECT = 'general.composite-object'
 
 所有组合内容类型（例如PDF文件类型混合了文本和图片类数据）的基类型，归属类型为OBJECT。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -72,9 +80,11 @@ TEXT = 'general.text'
 
 所有文本的基类型，归属类型为OBJECT。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -92,9 +102,11 @@ PLAIN_TEXT = 'general.plain-text'
 
 未指定编码的文本类型，没有标识符，归属类型为TEXT。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -112,9 +124,11 @@ HTML = 'general.html'
 
 HTML文本类型，归属类型为TEXT。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -132,9 +146,11 @@ HYPERLINK = 'general.hyperlink'
 
 超链接类型，归属类型为TEXT。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -152,9 +168,11 @@ XML = 'general.xml'
 
 XML文本类型，归属类型为TEXT。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -170,9 +188,11 @@ XHTML = 'general.xhtml'
 
 XHTML文本类型，归属类型为XML。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -188,9 +208,11 @@ RSS = 'general.rss'
 
 RSS文本类型，归属类型为XML。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -206,9 +228,11 @@ SMIL = 'com.real.smil'
 
 同步多媒体集成语言类型，归属类型为XML。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -224,9 +248,11 @@ SOURCE_CODE = 'general.source-code'
 
 所有源代码的基类型，归属类型为TEXT。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -240,11 +266,13 @@ SOURCE_CODE = 'general.source-code'
 SCRIPT = 'general.script'
 ```
 
-所有脚本语言源代码的基类型，归属类型为SOURCE\_CODE。
+所有脚本语言源代码的基类型，归属类型为SOURCE_CODE。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -260,9 +288,11 @@ SHELL_SCRIPT = 'general.shell-script'
 
 shell脚本类型，归属类型为SCRIPT。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -276,11 +306,13 @@ shell脚本类型，归属类型为SCRIPT。
 CSH_SCRIPT = 'general.csh-script'
 ```
 
-C-shell脚本类型，归属类型为SHELL\_SCRIPT。
+C-shell脚本类型，归属类型为SHELL_SCRIPT。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -294,11 +326,13 @@ C-shell脚本类型，归属类型为SHELL\_SCRIPT。
 PERL_SCRIPT = 'general.perl-script'
 ```
 
-Perl脚本类型，归属类型为SHELL\_SCRIPT。
+Perl脚本类型，归属类型为SHELL_SCRIPT。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -312,11 +346,13 @@ Perl脚本类型，归属类型为SHELL\_SCRIPT。
 PHP_SCRIPT = 'general.php-script'
 ```
 
-PHP脚本类型，归属类型为SHELL\_SCRIPT。
+PHP脚本类型，归属类型为SHELL_SCRIPT。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -330,11 +366,13 @@ PHP脚本类型，归属类型为SHELL\_SCRIPT。
 PYTHON_SCRIPT = 'general.python-script'
 ```
 
-Python脚本类型，归属类型为SHELL\_SCRIPT。
+Python脚本类型，归属类型为SHELL_SCRIPT。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -348,11 +386,13 @@ Python脚本类型，归属类型为SHELL\_SCRIPT。
 RUBY_SCRIPT = 'general.ruby-script'
 ```
 
-Ruby脚本类型，归属类型为SHELL\_SCRIPT。
+Ruby脚本类型，归属类型为SHELL_SCRIPT。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -366,11 +406,13 @@ Ruby脚本类型，归属类型为SHELL\_SCRIPT。
 TYPE_SCRIPT = 'general.type-script'
 ```
 
-TypeScript源代码类型，归属类型为SOURCE\_CODE。
+TypeScript源代码类型，归属类型为SOURCE_CODE。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -384,11 +426,13 @@ TypeScript源代码类型，归属类型为SOURCE\_CODE。
 JAVA_SCRIPT = 'general.java-script'
 ```
 
-JavaScript源代码类型，归属类型为SOURCE\_CODE。
+JavaScript源代码类型，归属类型为SOURCE_CODE。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -404,9 +448,11 @@ CSS = 'general.css'
 
 CSS样式表类型，归属类型为SCRIPT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -420,11 +466,13 @@ CSS样式表类型，归属类型为SCRIPT。
 C_HEADER = 'general.c-header'
 ```
 
-C头文件类型，归属类型为SOURCE\_CODE。
+C头文件类型，归属类型为SOURCE_CODE。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -438,11 +486,13 @@ C头文件类型，归属类型为SOURCE\_CODE。
 C_SOURCE = 'general.c-source'
 ```
 
-C源代码类型，归属类型为SOURCE\_CODE。
+C源代码类型，归属类型为SOURCE_CODE。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -456,11 +506,13 @@ C源代码类型，归属类型为SOURCE\_CODE。
 C_PLUS_PLUS_HEADER = 'general.c-plus-plus-header'
 ```
 
-C++头文件类型，归属类型为SOURCE\_CODE。
+C++头文件类型，归属类型为SOURCE_CODE。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -474,11 +526,13 @@ C++头文件类型，归属类型为SOURCE\_CODE。
 C_PLUS_PLUS_SOURCE = 'general.c-plus-plus-source'
 ```
 
-C++源代码类型，归属类型为SOURCE\_CODE。
+C++源代码类型，归属类型为SOURCE_CODE。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -492,11 +546,13 @@ C++源代码类型，归属类型为SOURCE\_CODE。
 JAVA_SOURCE = 'general.java-source'
 ```
 
-Java源代码类型，归属类型为SOURCE\_CODE。
+Java源代码类型，归属类型为SOURCE_CODE。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -510,11 +566,13 @@ Java源代码类型，归属类型为SOURCE\_CODE。
 TEX = 'general.tex'
 ```
 
-TEX源代码类型，归属类型为SOURCE\_CODE。
+TEX源代码类型，归属类型为SOURCE_CODE。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -530,9 +588,11 @@ MARKDOWN = 'general.markdown'
 
 标记语言文本类型，归属类型为TEXT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -548,9 +608,11 @@ ASC_TEXT = 'general.asc-text'
 
 ASCII文本类型，归属类型为TEXT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -566,9 +628,11 @@ RICH_TEXT = 'general.rich-text'
 
 富文本类型，归属类型为TEXT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -584,9 +648,11 @@ DELIMITED_VALUES_TEXT = 'general.delimited-values-text'
 
 所有分隔值文本的基类型，归属类型为TEXT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -600,11 +666,13 @@ DELIMITED_VALUES_TEXT = 'general.delimited-values-text'
 COMMA_SEPARATED_VALUES_TEXT = 'general.comma-separated-values-text'
 ```
 
-CSV文本类型，归属类型为DELIMITED\_VALUES\_TEXT。
+CSV文本类型，归属类型为DELIMITED_VALUES_TEXT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -618,11 +686,13 @@ CSV文本类型，归属类型为DELIMITED\_VALUES\_TEXT。
 TAB_SEPARATED_VALUES_TEXT = 'general.tab-separated-values-text'
 ```
 
-TSV文本类型，归属类型为DELIMITED\_VALUES\_TEXT。
+TSV文本类型，归属类型为DELIMITED_VALUES_TEXT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -636,11 +706,13 @@ TSV文本类型，归属类型为DELIMITED\_VALUES\_TEXT。
 EBOOK = 'general.ebook'
 ```
 
-所有电子书文件格式的基类型，归属类型为COMPOSITE\_OBJECT。
+所有电子书文件格式的基类型，归属类型为COMPOSITE_OBJECT。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -656,9 +728,11 @@ EPUB = 'general.epub'
 
 电子出版物（EPUB）文件格式类型，归属类型为EBOOK。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -674,9 +748,11 @@ AZW = 'com.amazon.azw'
 
 AZW电子书文件格式类型，归属类型为EBOOK。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -692,9 +768,11 @@ AZW3 = 'com.amazon.azw3'
 
 AZW3电子书文件格式类型，归属类型为EBOOK。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -710,9 +788,11 @@ KFX = 'com.amazon.kfx'
 
 KFX电子书文件格式类型，归属类型为EBOOK。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -728,9 +808,11 @@ MOBI = 'com.amazon.mobi'
 
 MOBI电子书文件格式类型，归属类型为EBOOK。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -746,9 +828,11 @@ MEDIA = 'general.media'
 
 所有媒体的基类型，归属类型为OBJECT。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -764,9 +848,11 @@ IMAGE = 'general.image'
 
 所有图片的基类型，归属类型为MEDIA。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -784,9 +870,11 @@ JPEG = 'general.jpeg'
 
 JPEG图片类型，归属类型为IMAGE。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -802,9 +890,11 @@ PNG = 'general.png'
 
 PNG图片类型，归属类型为IMAGE。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -820,9 +910,11 @@ RAW_IMAGE = 'general.raw-image'
 
 所有原始图像格式的基类型，归属类型为IMAGE。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -838,9 +930,11 @@ TIFF = 'general.tiff'
 
 TIFF图片类型，归属类型为IMAGE。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -856,9 +950,11 @@ BMP = 'com.microsoft.bmp'
 
 WINDOWS位图图像类型，归属类型为IMAGE。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -874,9 +970,11 @@ ICO = 'com.microsoft.ico'
 
 WINDOWS图标图像类型，归属类型为IMAGE。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -892,9 +990,11 @@ PHOTOSHOP_IMAGE = 'com.adobe.photoshop-image'
 
 Adobe Photoshop图片类型，归属类型为IMAGE。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -910,9 +1010,11 @@ AI_IMAGE = 'com.adobe.illustrator.ai-image'
 
 Adobe Illustrator图片类型，归属类型为IMAGE。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -928,9 +1030,11 @@ FAX = 'general.fax'
 
 传真图像的基本类型，归属类型为IMAGE。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -946,9 +1050,11 @@ JFX_FAX = 'com.j2.jfx-fax'
 
 J2 jConnect传真文件类型，归属类型为FAX。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -964,9 +1070,11 @@ EFX_FAX = 'com.js.efx-fax'
 
 电子传真文件类型，归属类型为FAX。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -982,9 +1090,11 @@ XBITMAP_IMAGE = 'general.xbitmap-image'
 
 X Window系统（X11）中使用的位图图像格式，归属类型为IMAGE。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1000,9 +1110,11 @@ GIF = 'general.gif'
 
 GIF图像类型，归属类型为IMAGE。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1018,9 +1130,11 @@ TGA_IMAGE = 'com.truevision.tga-image'
 
 标签图形（TaggedGraphics）图像类型，归属类型为IMAGE。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1036,9 +1150,11 @@ SGI_IMAGE = 'com.sgi.sgi-image'
 
 硅图（Silicon Graphics）图像类型，归属类型为IMAGE。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1054,9 +1170,11 @@ OPENEXR_IMAGE = 'com.ilm.openexr-image'
 
 开放标准的高动态范围图像格式类型，归属类型为IMAGE。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1072,9 +1190,11 @@ FLASHPIX_IMAGE = 'com.kodak.flashpix.image'
 
 FlashPix 图像文件类型，归属类型为IMAGE。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1088,11 +1208,13 @@ FlashPix 图像文件类型，归属类型为IMAGE。
 WORD_DOC = 'com.microsoft.word.doc'
 ```
 
-Microsoft Word数据类型，归属类型为COMPOSITE\_OBJECT。
+Microsoft Word数据类型，归属类型为COMPOSITE_OBJECT。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1106,11 +1228,13 @@ Microsoft Word数据类型，归属类型为COMPOSITE\_OBJECT。
 EXCEL = 'com.microsoft.excel.xls'
 ```
 
-Microsoft Excel数据类型，归属类型为COMPOSITE\_OBJECT。
+Microsoft Excel数据类型，归属类型为COMPOSITE_OBJECT。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1124,11 +1248,13 @@ Microsoft Excel数据类型，归属类型为COMPOSITE\_OBJECT。
 PPT = 'com.microsoft.powerpoint.ppt'
 ```
 
-Microsoft PowerPoint演示文稿类型，归属类型为COMPOSITE\_OBJECT。
+Microsoft PowerPoint演示文稿类型，归属类型为COMPOSITE_OBJECT。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1142,11 +1268,13 @@ Microsoft PowerPoint演示文稿类型，归属类型为COMPOSITE\_OBJECT。
 WORD_DOT = 'com.microsoft.word.dot'
 ```
 
-Microsoft Word模板类型，归属类型为COMPOSITE\_OBJECT。
+Microsoft Word模板类型，归属类型为COMPOSITE_OBJECT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1160,11 +1288,13 @@ Microsoft Word模板类型，归属类型为COMPOSITE\_OBJECT。
 POWERPOINT_PPS = 'com.microsoft.powerpoint.pps'
 ```
 
-Microsoft PowerPoint演示文稿幻灯片放映类型，归属类型为COMPOSITE\_OBJECT。
+Microsoft PowerPoint演示文稿幻灯片放映类型，归属类型为COMPOSITE_OBJECT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1178,11 +1308,13 @@ Microsoft PowerPoint演示文稿幻灯片放映类型，归属类型为COMPOSITE
 POWERPOINT_POT = 'com.microsoft.powerpoint.pot'
 ```
 
-Microsoft PowerPoint演示文稿模板类型，归属类型为COMPOSITE\_OBJECT。
+Microsoft PowerPoint演示文稿模板类型，归属类型为COMPOSITE_OBJECT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1196,11 +1328,13 @@ Microsoft PowerPoint演示文稿模板类型，归属类型为COMPOSITE\_OBJECT�
 EXCEL_XLT = 'com.microsoft.excel.xlt'
 ```
 
-Microsoft Excel模板类型，归属类型为COMPOSITE\_OBJECT。
+Microsoft Excel模板类型，归属类型为COMPOSITE_OBJECT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1214,11 +1348,13 @@ Microsoft Excel模板类型，归属类型为COMPOSITE\_OBJECT。
 VISIO_VSD = 'com.microsoft.visio.vsd'
 ```
 
-Microsoft Visio数据类型，归属类型为COMPOSITE\_OBJECT。
+Microsoft Visio数据类型，归属类型为COMPOSITE_OBJECT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1232,11 +1368,13 @@ Microsoft Visio数据类型，归属类型为COMPOSITE\_OBJECT。
 PDF = 'com.adobe.pdf'
 ```
 
-PDF数据类型，归属类型为COMPOSITE\_OBJECT。
+PDF数据类型，归属类型为COMPOSITE_OBJECT。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1250,11 +1388,13 @@ PDF数据类型，归属类型为COMPOSITE\_OBJECT。
 POSTSCRIPT = 'com.adobe.postscript'
 ```
 
-PostScript数据类型，归属类型为COMPOSITE\_OBJECT。
+PostScript数据类型，归属类型为COMPOSITE_OBJECT。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1270,9 +1410,11 @@ ENCAPSULATED_POSTSCRIPT = 'com.adobe.encapsulated-postscript'
 
 Encapsulated PostScript类型，归属类型为POSTSCRIPT。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1288,9 +1430,11 @@ VIDEO = 'general.video'
 
 所有视频的基类型，归属类型为MEDIA。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1308,9 +1452,11 @@ AVI = 'general.avi'
 
 AVI视频类型，归属类型为VIDEO。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1326,9 +1472,11 @@ MPEG = 'general.mpeg'
 
 MPEG-1或MPEG-2视频类型，归属类型为VIDEO。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1344,9 +1492,11 @@ MPEG4 = 'general.mpeg-4'
 
 MPEG-4视频类型，归属类型为VIDEO。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1362,9 +1512,11 @@ VIDEO_3GPP = 'general.3gpp'
 
 3GPP视频类型，归属类型为VIDEO。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1380,9 +1532,11 @@ VIDEO_3GPP2 = 'general.3gpp2'
 
 3GPP2视频类型，归属类型为VIDEO。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1398,9 +1552,11 @@ TS = 'general.ts'
 
 MPEG-TS类型，归属类型为VIDEO。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1416,9 +1572,11 @@ MPEGURL_VIDEO = 'general.mpegurl-video'
 
 MPEG视频播放列表文件类型，归属类型为VIDEO。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1434,9 +1592,11 @@ WINDOWS_MEDIA_WM = 'com.microsoft.windows-media-wm'
 
 WINDOWS WM视频类型，归属类型为VIDEO。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1452,9 +1612,11 @@ WINDOWS_MEDIA_WMV = 'com.microsoft.windows-media-wmv'
 
 WINDOWS WMV视频类型，归属类型为VIDEO。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1470,9 +1632,11 @@ WINDOWS_MEDIA_WMP = 'com.microsoft.windows-media-wmp'
 
 WINDOWS WMP视频类型，归属类型为VIDEO。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1488,9 +1652,11 @@ WINDOWS_MEDIA_WVX = 'com.microsoft.windows-media-wvx'
 
 WINDOWS WVX视频类型，归属类型为VIDEO。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1506,9 +1672,11 @@ WINDOWS_MEDIA_WMX = 'com.microsoft.windows-media-wmx'
 
 WINDOWS WMX视频类型，归属类型为VIDEO。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1524,9 +1692,11 @@ REALMEDIA = 'com.real.realmedia'
 
 流媒体视频类型，归属类型为VIDEO。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1542,9 +1712,11 @@ MATROSKA_VIDEO = 'org.matroska.mkv'
 
 MKV视频类型，归属类型为VIDEO。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1560,9 +1732,11 @@ FLASH = 'com.adobe.flash'
 
 FLASH视频类型，归属类型为VIDEO。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1578,9 +1752,11 @@ AUDIO = 'general.audio'
 
 所有音频的基类型，归属类型为MEDIA。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1598,9 +1774,11 @@ AAC = 'general.aac'
 
 AAC音频类型，归属类型为AUDIO。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1616,9 +1794,11 @@ AIFF = 'general.aiff'
 
 AIFF音频类型，归属类型为AUDIO。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1634,9 +1814,11 @@ ALAC = 'general.alac'
 
 ALAC音频类型，归属类型为AUDIO。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1652,9 +1834,11 @@ FLAC = 'general.flac'
 
 FLAC音频类型，归属类型为AUDIO。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1670,9 +1854,11 @@ MP3 = 'general.mp3'
 
 MP3音频类型，归属类型为AUDIO。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1688,9 +1874,11 @@ OGG = 'general.ogg'
 
 OGG音频类型，归属类型为AUDIO。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1706,9 +1894,11 @@ PCM = 'general.pcm'
 
 PCM音频类型，归属类型为AUDIO。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1724,9 +1914,11 @@ WINDOWS_MEDIA_WMA = 'com.microsoft.windows-media-wma'
 
 WINDOWS WMA音频类型，归属类型为AUDIO。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1742,9 +1934,11 @@ WAVEFORM_AUDIO = 'com.microsoft.waveform-audio'
 
 WINDOWS波形音频类型，归属类型为AUDIO。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1760,9 +1954,11 @@ WINDOWS_MEDIA_WAX = 'com.microsoft.windows-media-wax'
 
 WINDOWS WAX音频类型，归属类型为AUDIO。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1778,9 +1974,11 @@ AU_AUDIO = 'general.au-audio'
 
 Au数据格式，归属类型为AUDIO。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1796,9 +1994,11 @@ AIFC_AUDIO = 'general.aifc-audio'
 
 音频交换数据类型，归属类型为AUDIO。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1814,9 +2014,11 @@ MPEGURL_AUDIO = 'general.mpegurl-audio'
 
 MPEG音频播放列表文件类型，归属类型为AUDIO。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1832,9 +2034,11 @@ MPEG_4_AUDIO = 'general.mpeg-4-audio'
 
 MPEG-4音频类型，归属类型为AUDIO。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1850,9 +2054,11 @@ MP2 = 'general.mp2'
 
 MP2音频类型，归属类型为AUDIO。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1868,9 +2074,11 @@ MPEG_AUDIO = 'general.mpeg-audio'
 
 MPEG音频类型，归属类型为AUDIO。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1886,9 +2094,11 @@ ULAW_AUDIO = 'general.ulaw-audio'
 
 ULAW音频类型，归属类型为AUDIO。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1904,9 +2114,11 @@ SD2_AUDIO = 'com.digidesign.sd2-audio'
 
 单声道/立体声音频类型（Digidesign Sound Designer II），归属类型为AUDIO。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1922,9 +2134,11 @@ REALAUDIO = 'com.real.realaudio'
 
 RealMedia音频类型，归属类型为AUDIO。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1940,9 +2154,11 @@ MATROSKA_AUDIO = 'org.matroska.mka'
 
 MKA音频类型，归属类型为AUDIO。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1958,9 +2174,11 @@ FILE = 'general.file'
 
 所有文件的基类型，归属类型为ENTITY。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1978,9 +2196,11 @@ DIRECTORY = 'general.directory'
 
 所有目录的基类型，归属类型为ENTITY。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1996,9 +2216,11 @@ FOLDER = 'general.folder'
 
 所有文件夹的基类型，归属类型为DIRECTORY。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2016,9 +2238,11 @@ SYMLINK = 'general.symlink'
 
 所有符号链接的基类型，归属类型为ENTITY。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2034,9 +2258,11 @@ ARCHIVE = 'general.archive'
 
 所有文件和目录存档文件的基类型，归属类型为OBJECT。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2052,9 +2278,11 @@ BZ2_ARCHIVE = 'general.bz2-archive'
 
 BZ2存档文件类型，归属类型为ARCHIVE。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2070,9 +2298,11 @@ OPG = 'general.opg'
 
 OPG存档文件类型，归属类型为ARCHIVE。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2086,11 +2316,13 @@ OPG存档文件类型，归属类型为ARCHIVE。
 TAZ_ARCHIVE = 'general.taz-archive'
 ```
 
-TAR压缩文件类型，归属类型为TAR\_ARCHIVE。
+TAR压缩文件类型，归属类型为TAR_ARCHIVE。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2106,9 +2338,11 @@ WEB_ARCHIVE = 'general.web-archive'
 
 MHTML网页归档文件类型，归属类型为ARCHIVE。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2124,9 +2358,11 @@ DISK_IMAGE = 'general.disk-image'
 
 所有可作为卷挂载项的文件类型的基类型，归属类型为ARCHIVE。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2140,11 +2376,13 @@ DISK_IMAGE = 'general.disk-image'
 ISO = 'general.iso'
 ```
 
-光盘映像文件类型，归属类型为DISK\_IMAGE。
+光盘映像文件类型，归属类型为DISK_IMAGE。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2160,9 +2398,11 @@ TAR_ARCHIVE = 'general.tar-archive'
 
 TAR存档文件类型，归属类型为ARCHIVE。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2178,9 +2418,11 @@ ZIP_ARCHIVE = 'general.zip-archive'
 
 ZIP存档文件类型，归属类型为ARCHIVE。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2196,9 +2438,11 @@ JAVA_ARCHIVE = 'com.sun.java-archive'
 
 JAVA存档文件类型，归属类型为ARCHIVE和EXECUTABLE。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2214,9 +2458,11 @@ GNU_TAR_ARCHIVE = 'org.gnu.gnu-tar-archive'
 
 GNU存档文件类型，归属类型为ARCHIVE。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2232,9 +2478,11 @@ GNU_ZIP_ARCHIVE = 'org.gnu.gnu-zip-archive'
 
 GZIP存档文件类型，归属类型为ARCHIVE。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2250,9 +2498,11 @@ GNU_ZIP_TAR_ARCHIVE = 'org.gnu.gnu-zip-tar-archive'
 
 GZIP TAR存档文件类型，归属类型为ARCHIVE。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2268,9 +2518,11 @@ OPENXML = 'org.openxmlformats.openxml'
 
 开源XML基类型，归属类型为ARCHIVE。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2284,11 +2536,13 @@ OPENXML = 'org.openxmlformats.openxml'
 WORDPROCESSINGML_DOCUMENT = 'org.openxmlformats.wordprocessingml.document'
 ```
 
-开源XML文档类型，归属类型为OPENXML和COMPOSITE\_OBJECT。
+开源XML文档类型，归属类型为OPENXML和COMPOSITE_OBJECT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2302,11 +2556,13 @@ WORDPROCESSINGML_DOCUMENT = 'org.openxmlformats.wordprocessingml.document'
 SPREADSHEETML_SHEET = 'org.openxmlformats.spreadsheetml.sheet'
 ```
 
-开源XML电子表格类型，归属类型为OPENXML和COMPOSITE\_OBJECT。
+开源XML电子表格类型，归属类型为OPENXML和COMPOSITE_OBJECT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2320,11 +2576,13 @@ SPREADSHEETML_SHEET = 'org.openxmlformats.spreadsheetml.sheet'
 PRESENTATIONML_PRESENTATION = 'org.openxmlformats.presentationml.presentation'
 ```
 
-开源XML演示文稿类型，归属类型为OPENXML和COMPOSITE\_OBJECT。
+开源XML演示文稿类型，归属类型为OPENXML和COMPOSITE_OBJECT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2338,11 +2596,13 @@ PRESENTATIONML_PRESENTATION = 'org.openxmlformats.presentationml.presentation'
 DRAWINGML_VISIO = 'org.openxmlformats.drawingml.visio'
 ```
 
-开源XML绘图文件类型，归属类型为OPENXML和COMPOSITE\_OBJECT。
+开源XML绘图文件类型，归属类型为OPENXML和COMPOSITE_OBJECT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2356,11 +2616,13 @@ DRAWINGML_VISIO = 'org.openxmlformats.drawingml.visio'
 DRAWINGML_TEMPLATE = 'org.openxmlformats.drawingml.template'
 ```
 
-开源XML绘图模板类型，归属类型为OPENXML和COMPOSITE\_OBJECT。
+开源XML绘图模板类型，归属类型为OPENXML和COMPOSITE_OBJECT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2374,11 +2636,13 @@ DRAWINGML_TEMPLATE = 'org.openxmlformats.drawingml.template'
 WORDPROCESSINGML_TEMPLATE = 'org.openxmlformats.wordprocessingml.template'
 ```
 
-开源XML文档模板类型，归属类型为OPENXML和COMPOSITE\_OBJECT。
+开源XML文档模板类型，归属类型为OPENXML和COMPOSITE_OBJECT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2392,11 +2656,13 @@ WORDPROCESSINGML_TEMPLATE = 'org.openxmlformats.wordprocessingml.template'
 PRESENTATIONML_TEMPLATE = 'org.openxmlformats.presentationml.template'
 ```
 
-开源XML演示文稿模板类型，归属类型为OPENXML和COMPOSITE\_OBJECT。
+开源XML演示文稿模板类型，归属类型为OPENXML和COMPOSITE_OBJECT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2410,11 +2676,13 @@ PRESENTATIONML_TEMPLATE = 'org.openxmlformats.presentationml.template'
 PRESENTATIONML_SLIDESHOW = 'org.openxmlformats.presentationml.slideshow'
 ```
 
-开源XML演示文稿幻灯片放映类型，归属类型为OPENXML和COMPOSITE\_OBJECT。
+开源XML演示文稿幻灯片放映类型，归属类型为OPENXML和COMPOSITE_OBJECT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2428,11 +2696,13 @@ PRESENTATIONML_SLIDESHOW = 'org.openxmlformats.presentationml.slideshow'
 SPREADSHEETML_TEMPLATE = 'org.openxmlformats.spreadsheetml.template'
 ```
 
-开源XML电子表格模板类型，归属类型为OPENXML和COMPOSITE\_OBJECT。
+开源XML电子表格模板类型，归属类型为OPENXML和COMPOSITE_OBJECT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2448,9 +2718,11 @@ OPENDOCUMENT = 'org.oasis.opendocument'
 
 Office应用程序的开源文档类型，归属类型为ARCHIVE。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2464,11 +2736,13 @@ Office应用程序的开源文档类型，归属类型为ARCHIVE。
 OPENDOCUMENT_TEXT = 'org.oasis.opendocument.text'
 ```
 
-开源文档类型，归属类型为OPENDOCUMENT和COMPOSITE\_OBJECT。
+开源文档类型，归属类型为OPENDOCUMENT和COMPOSITE_OBJECT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2482,11 +2756,13 @@ OPENDOCUMENT_TEXT = 'org.oasis.opendocument.text'
 OPENDOCUMENT_SPREADSHEET = 'org.oasis.opendocument.spreadsheet'
 ```
 
-开源文档电子表格类型，归属类型为OPENDOCUMENT和COMPOSITE\_OBJECT。
+开源文档电子表格类型，归属类型为OPENDOCUMENT和COMPOSITE_OBJECT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2500,11 +2776,13 @@ OPENDOCUMENT_SPREADSHEET = 'org.oasis.opendocument.spreadsheet'
 OPENDOCUMENT_PRESENTATION = 'org.oasis.opendocument.presentation'
 ```
 
-开源文档演示类型，归属类型为OPENDOCUMENT和COMPOSITE\_OBJECT。
+开源文档演示类型，归属类型为OPENDOCUMENT和COMPOSITE_OBJECT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2518,11 +2796,13 @@ OPENDOCUMENT_PRESENTATION = 'org.oasis.opendocument.presentation'
 OPENDOCUMENT_GRAPHICS = 'org.oasis.opendocument.graphics'
 ```
 
-开源文档图形类型，归属类型为OPENDOCUMENT和COMPOSITE\_OBJECT。
+开源文档图形类型，归属类型为OPENDOCUMENT和COMPOSITE_OBJECT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2538,9 +2818,11 @@ OPENDOCUMENT_FORMULA = 'org.oasis.opendocument.formula'
 
 开源文档公式集类型，归属类型为OPENDOCUMENT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2556,9 +2838,11 @@ STUFFIT_ARCHIVE = 'com.allume.stuffit-archive'
 
 Stuffit压缩格式类型（Stuffit archive），归属类型为ARCHIVE。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2574,9 +2858,11 @@ RAR_ARCHIVE = 'com.rarlab.rar-archive'
 
 WinRAR压缩格式类型，归属类型为ARCHIVE。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2592,9 +2878,11 @@ SEVEN_ZIP_ARCHIVE = 'org.7-zip.7-zip-archive'
 
 7-zip压缩格式类型，归属类型为ARCHIVE。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2610,9 +2898,11 @@ CALENDAR = 'general.calendar'
 
 所有日程类数据的基类型，归属类型为OBJECT。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2628,9 +2918,11 @@ VCS = 'general.vcs'
 
 VCalendar日历数据类型，归属类型为CALENDAR和TEXT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2646,9 +2938,11 @@ ICS = 'general.ics'
 
 ICalendar日历数据类型，归属类型为CALENDAR和TEXT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2664,9 +2958,11 @@ CONTACT = 'general.contact'
 
 所有联系人类数据的基类型，归属类型为OBJECT。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2682,9 +2978,11 @@ DATABASE = 'general.database'
 
 所有数据库文件的基类型，归属类型为OBJECT。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2700,9 +2998,11 @@ MESSAGE = 'general.message'
 
 所有消息类数据的基类型，归属类型为OBJECT。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2718,9 +3018,11 @@ EXECUTABLE = 'general.executable'
 
 所有可执行文件的基类型，归属类型为OBJECT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2736,9 +3038,11 @@ PORTABLE_EXECUTABLE = 'com.microsoft.portable-executable'
 
 Microsoft Windows应用程序类型，归属类型为EXECUTABLE。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2754,9 +3058,11 @@ SUN_JAVA_CLASS = 'com.sun.java-class'
 
 Java类文件类型，归属类型为EXECUTABLE。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2772,9 +3078,11 @@ VCARD = 'general.vcard'
 
 所有电子名片类数据的基类型，归属类型为OBJECT。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2790,9 +3098,11 @@ NAVIGATION = 'general.navigation'
 
 所有导航类数据的基类型，归属类型为OBJECT。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2808,9 +3118,11 @@ LOCATION = 'general.location'
 
 导航定位类型，归属类型为NAVIGATION。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2826,9 +3138,11 @@ FONT = 'general.font'
 
 所有字体数据类型的基础类型，归属类型为OBJECT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2844,9 +3158,11 @@ TRUETYPE_FONT = 'general.truetype-font'
 
 TrueType字体类型，归属类型为FONT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2862,9 +3178,11 @@ TRUETYPE_COLLECTION_FONT = 'general.truetype-collection-font'
 
 TrueType collection字体类型，归属类型为FONT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2880,9 +3198,11 @@ OPENTYPE_FONT = 'general.opentype-font'
 
 OpenType 字体类型，归属类型为FONT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2898,9 +3218,11 @@ POSTSCRIPT_FONT = 'com.adobe.postscript-font'
 
 PostScript 字体类型，归属类型为FONT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2916,9 +3238,11 @@ POSTSCRIPT_PFB_FONT = 'com.adobe.postscript-pfb-font'
 
 PostScript Font Binary字体类型，归属类型为FONT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2934,9 +3258,11 @@ POSTSCRIPT_PFA_FONT = 'com.adobe.postscript-pfa-font'
 
 Adobe Type 1 字体类型，归属类型为FONT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2952,9 +3278,11 @@ OPENHARMONY_FORM = 'openharmony.form'
 
 系统定义的卡片类型，归属类型为OBJECT。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2972,9 +3300,11 @@ OPENHARMONY_APP_ITEM = 'openharmony.app-item'
 
 系统定义的桌面图标类型，归属类型为OBJECT。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2992,9 +3322,11 @@ OPENHARMONY_PIXEL_MAP = 'openharmony.pixel-map'
 
 系统定义的像素图类型，归属类型为IMAGE。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3012,9 +3344,11 @@ OPENHARMONY_ATOMIC_SERVICE = 'openharmony.atomic-service'
 
 系统定义的原子化服务类型，归属类型为OBJECT。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3030,9 +3364,11 @@ OPENHARMONY_PACKAGE = 'openharmony.package'
 
 系统定义的包（即目录的打包文件），归属类型为DIRECTORY。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3046,11 +3382,13 @@ OPENHARMONY_PACKAGE = 'openharmony.package'
 OPENHARMONY_HAP = 'openharmony.hap'
 ```
 
-系统定义的能力包，归属类型为OPENHARMONY\_PACKAGE。
+系统定义的能力包，归属类型为OPENHARMONY_PACKAGE。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3064,11 +3402,13 @@ OPENHARMONY_HAP = 'openharmony.hap'
 OPENHARMONY_HDOC = 'openharmony.hdoc'
 ```
 
-系统定义的备忘录数据类型，归属类型为COMPOSITE\_OBJECT。
+系统定义的备忘录数据类型，归属类型为COMPOSITE_OBJECT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3082,11 +3422,13 @@ OPENHARMONY_HDOC = 'openharmony.hdoc'
 OPENHARMONY_HINOTE = 'openharmony.hinote'
 ```
 
-系统定义的笔记数据类型，归属类型为COMPOSITE\_OBJECT。
+系统定义的笔记数据类型，归属类型为COMPOSITE_OBJECT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3100,11 +3442,13 @@ OPENHARMONY_HINOTE = 'openharmony.hinote'
 OPENHARMONY_STYLED_STRING = 'openharmony.styled-string'
 ```
 
-系统定义的样式字符串类型，归属类型为COMPOSITE\_OBJECT。
+系统定义的样式字符串类型，归属类型为COMPOSITE_OBJECT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3120,9 +3464,11 @@ OPENHARMONY_WANT = 'openharmony.want'
 
 系统定义的Want类型，归属类型为OBJECT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3136,11 +3482,13 @@ OPENHARMONY_WANT = 'openharmony.want'
 OFD = 'general.ofd'
 ```
 
-开放版式文档类型，归属类型为COMPOSITE\_OBJECT。
+开放版式文档类型，归属类型为COMPOSITE_OBJECT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3156,9 +3504,11 @@ CAD = 'general.cad'
 
 所有计算机辅助设计类型的基类型，归属类型为OBJECT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3174,9 +3524,11 @@ OCTET_STREAM = 'general.octet-stream'
 
 任意二进制数据类型，归属类型为OBJECT。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3192,9 +3544,11 @@ FILE_URI = 'general.file-uri'
 
 文件地址类型，归属类型为TEXT。
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3210,9 +3564,11 @@ CONTENT_FORM = 'general.content-form'
 
 内容卡片类型，归属类型为OBJECT。
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

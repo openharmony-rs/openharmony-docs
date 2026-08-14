@@ -2,9 +2,11 @@
 
 表示音频设备类型的枚举。
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-audio-enum DeviceFlag--><!--Device-audio-enum DeviceFlag-End-->
 
@@ -18,9 +20,11 @@ OUTPUT_DEVICES_FLAG = 1
 
 输出设备。
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DeviceFlag-OUTPUT_DEVICES_FLAG = 1--><!--Device-DeviceFlag-OUTPUT_DEVICES_FLAG = 1-End-->
 
@@ -34,9 +38,11 @@ INPUT_DEVICES_FLAG = 2
 
 输入设备。
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DeviceFlag-INPUT_DEVICES_FLAG = 2--><!--Device-DeviceFlag-INPUT_DEVICES_FLAG = 2-End-->
 
@@ -50,9 +56,11 @@ ALL_DEVICES_FLAG = 3
 
 所有设备。
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DeviceFlag-ALL_DEVICES_FLAG = 3--><!--Device-DeviceFlag-ALL_DEVICES_FLAG = 3-End-->
 

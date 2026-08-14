@@ -1,20 +1,24 @@
 # ListItemGroup
 
 ```TypeScript
-type ListItemGroup = ListItemGroupFrameNode
+type ListItemGroup = TypedFrameNode<ListItemGroupInterface, ListItemGroupAttribute>
 ```
 
-Define the FrameNode type for ListItemGroup.
+ListItemGroup类型的FrameNode节点类型。只允许添加ListItem类型子组件。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-typeNode-type ListItemGroup = ListItemGroupFrameNode--><!--Device-typeNode-type ListItemGroup = ListItemGroupFrameNode-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-typeNode-type ListItemGroup = TypedFrameNode<ListItemGroupInterface, ListItemGroupAttribute>--><!--Device-typeNode-type ListItemGroup = TypedFrameNode<ListItemGroupInterface, ListItemGroupAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**属性类型：** ListItemGroupFrameNode
+**属性类型：** TypedFrameNode<ListItemGroupInterface, ListItemGroupAttribute>
 

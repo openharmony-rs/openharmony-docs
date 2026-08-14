@@ -10,6 +10,8 @@ On scroll callback using in scrollable onDidScroll.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-export type OnScrollCallback = (scrollOffset: double, scrollState: ScrollState) => void--><!--Device-unnamed-export type OnScrollCallback = (scrollOffset: double, scrollState: ScrollState) => void-End-->
@@ -20,6 +22,6 @@ On scroll callback using in scrollable onDidScroll.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scrollOffset | double | 是 | offset this frame did scroll.  |
-| scrollState | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | current scroll state.  |
+| scrollOffset | double | 是 | offset this frame did scroll. |
+| scrollState | [ScrollState](../../apis-arkui/arkts-components/arkts-arkui-scrollstate-e.md) | 是 | current scroll state. |
 

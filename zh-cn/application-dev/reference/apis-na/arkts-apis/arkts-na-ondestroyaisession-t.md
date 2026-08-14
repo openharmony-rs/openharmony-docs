@@ -10,6 +10,8 @@ Triggered when an AI session is destroyed. Used for cleaning up resources associ
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-export type OnDestroyAISession = (id: string) => void--><!--Device-unnamed-export type OnDestroyAISession = (id: string) => void-End-->
@@ -20,5 +22,5 @@ Triggered when an AI session is destroyed. Used for cleaning up resources associ
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | string | 是 | The session task ID.  |
+| id | string | 是 | The session task ID. |
 

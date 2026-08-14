@@ -26,11 +26,11 @@ Queries state data of all bundles within a specified period identified by the st
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| begin | number | 是 | Indicates the start time of the query period, in milliseconds. |
-| end | number | 是 | Indicates the end time of the query period, in milliseconds. |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;Array&lt;BundleActiveState&gt;&gt; | 是 | the state data of all bundles. |
+| begin | number | 是 | Indicates the start time of the query period, in milliseconds. &lt;br&gt; Unit:ms |
+| end | number | 是 | Indicates the end time of the query period, in milliseconds. &lt;br&gt; Unit:ms |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[BundleActiveState](arkts-backgroundtasks-bundlestate-bundleactivestate-i.md)&gt;&gt; | 是 | the state data of all bundles. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -76,16 +76,16 @@ Queries state data of all bundles within a specified period identified by the st
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| begin | number | 是 | Indicates the start time of the query period, in milliseconds. |
-| end | number | 是 | Indicates the end time of the query period, in milliseconds. |
+| begin | number | 是 | Indicates the start time of the query period, in milliseconds. &lt;br&gt; Unit:ms |
+| end | number | 是 | Indicates the end time of the query period, in milliseconds. &lt;br&gt; Unit:ms |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;BundleActiveState&gt;&gt; | the state data of all bundles. |
+| Promise&lt;Array&lt;[BundleActiveState](arkts-backgroundtasks-bundlestate-bundleactivestate-i.md)&gt;&gt; | the state data of all bundles. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

@@ -2,9 +2,11 @@
 
 表示通知扩展订阅的类型。
 
-**起始版本：** 22
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为22；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-notificationExtensionSubscription-export enum SubscribeType--><!--Device-notificationExtensionSubscription-export enum SubscribeType-End-->
 
@@ -18,9 +20,11 @@ BLUETOOTH = 0
 
 通过蓝牙订阅通知。
 
-**起始版本：** 22
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为22；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SubscribeType-BLUETOOTH = 0--><!--Device-SubscribeType-BLUETOOTH = 0-End-->
 

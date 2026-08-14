@@ -2,9 +2,11 @@
 
 截屏事件类型枚举。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-window-enum ScreenshotEventType--><!--Device-window-enum ScreenshotEventType-End-->
 
@@ -18,9 +20,11 @@ SYSTEM_SCREENSHOT = 0
 
 系统截屏成功。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ScreenshotEventType-SYSTEM_SCREENSHOT = 0--><!--Device-ScreenshotEventType-SYSTEM_SCREENSHOT = 0-End-->
 
@@ -34,9 +38,11 @@ SYSTEM_SCREENSHOT_ABORT = 1
 
 系统截屏中止。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ScreenshotEventType-SYSTEM_SCREENSHOT_ABORT = 1--><!--Device-ScreenshotEventType-SYSTEM_SCREENSHOT_ABORT = 1-End-->
 
@@ -50,9 +56,11 @@ SCROLL_SHOT_START = 2
 
 滚动截屏开始。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ScreenshotEventType-SCROLL_SHOT_START = 2--><!--Device-ScreenshotEventType-SCROLL_SHOT_START = 2-End-->
 
@@ -66,9 +74,11 @@ SCROLL_SHOT_END = 3
 
 滚动截屏结束。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ScreenshotEventType-SCROLL_SHOT_END = 3--><!--Device-ScreenshotEventType-SCROLL_SHOT_END = 3-End-->
 
@@ -82,9 +92,11 @@ SCROLL_SHOT_ABORT = 4
 
 滚动截屏中止。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ScreenshotEventType-SCROLL_SHOT_ABORT = 4--><!--Device-ScreenshotEventType-SCROLL_SHOT_ABORT = 4-End-->
 

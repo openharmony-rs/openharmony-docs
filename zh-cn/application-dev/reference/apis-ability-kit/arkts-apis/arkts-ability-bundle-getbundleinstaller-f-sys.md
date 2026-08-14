@@ -14,7 +14,7 @@ function getBundleInstaller(callback: AsyncCallback<BundleInstaller>): void
 
 **废弃版本：** 9
 
-**替代接口：** [null]
+**替代接口：** null
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE
 
@@ -28,7 +28,7 @@ function getBundleInstaller(callback: AsyncCallback<BundleInstaller>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;BundleInstaller&gt; | 是 | 回调函数，返回安装接口对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[BundleInstaller](arkts-ability-bundleinstaller-bundleinstaller-depr-i-sys.md)&gt; | 是 | 回调函数，返回安装接口对象。 |
 
 
 ## getBundleInstaller
@@ -45,7 +45,7 @@ function getBundleInstaller(): Promise<BundleInstaller>
 
 **废弃版本：** 9
 
-**替代接口：** [null]
+**替代接口：** null
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE
 
@@ -59,5 +59,5 @@ function getBundleInstaller(): Promise<BundleInstaller>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;BundleInstaller&gt; | Promise对象，返回安装接口对象。 |
+| Promise&lt;[BundleInstaller](arkts-ability-bundleinstaller-bundleinstaller-depr-i-sys.md)&gt; | Promise对象，返回安装接口对象。 |
 

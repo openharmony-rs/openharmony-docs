@@ -14,7 +14,7 @@ function getStorage(path: string, callback: AsyncCallback<Storage>): void
 
 **废弃版本：** 9
 
-**替代接口：** ohos.preferences.preferences.getPreferences
+**替代接口：** getPreferences
 
 <!--Device-storage-function getStorage(path: string, callback: AsyncCallback<Storage>): void--><!--Device-storage-function getStorage(path: string, callback: AsyncCallback<Storage>): void-End-->
 
@@ -23,7 +23,7 @@ function getStorage(path: string, callback: AsyncCallback<Storage>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 应用程序内部数据存储路径。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;Storage&gt; | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Storage&gt; | 是 | 回调函数。 |
 
 
 ## getStorage
@@ -40,7 +40,7 @@ function getStorage(path: string): Promise<Storage>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.preferences.preferences.getPreferences
+**替代接口：** getPreferences
 
 <!--Device-storage-function getStorage(path: string): Promise<Storage>--><!--Device-storage-function getStorage(path: string): Promise<Storage>-End-->
 

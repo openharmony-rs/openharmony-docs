@@ -8,9 +8,11 @@ function getFoldStatus(): FoldStatus
 
 获取可折叠设备当前的折叠状态。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -22,7 +24,7 @@ function getFoldStatus(): FoldStatus
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | FoldStatus对象，返回当前可折叠设备的折叠状态。 |
+| FoldStatus | FoldStatus对象，返回当前可折叠设备的折叠状态。 |
 
 **错误码：**
 
@@ -30,7 +32,7 @@ function getFoldStatus(): FoldStatus
 | --- | --- |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let data: display.FoldStatus = display.getFoldStatus();

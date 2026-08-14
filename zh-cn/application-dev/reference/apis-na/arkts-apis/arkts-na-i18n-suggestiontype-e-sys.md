@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-i18n-export enum SuggestionType--><!--Device-i18n-export enum SuggestionType-End-->
 
 **系统能力：** SystemCapability.Global.I18n
@@ -23,6 +25,8 @@ SUGGESTION_TYPE_NONE = 0
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SuggestionType-SUGGESTION_TYPE_NONE = 0--><!--Device-SuggestionType-SUGGESTION_TYPE_NONE = 0-End-->
 
@@ -42,6 +46,8 @@ SUGGESTION_TYPE_RELATED = 1
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-SuggestionType-SUGGESTION_TYPE_RELATED = 1--><!--Device-SuggestionType-SUGGESTION_TYPE_RELATED = 1-End-->
 
 **系统能力：** SystemCapability.Global.I18n
@@ -59,6 +65,8 @@ SIM卡国家地区推荐的语言。
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SuggestionType-SUGGESTION_TYPE_SIM = 2--><!--Device-SuggestionType-SUGGESTION_TYPE_SIM = 2-End-->
 

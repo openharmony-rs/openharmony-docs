@@ -1,10 +1,12 @@
 # HapticFileDescriptor
 
-自定义振动配置文件的描述符，必须确认资源文件可用，其参数可通过\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_从 沙箱路径获取或者通过 [getRawFd]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_ 从HAP资源获取。使用场景：振动序列被存储在一个文件中，需要根据偏移量和长度进行振动，振动序列存储格式，请参考 \_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_。 使用时需注意以下问题： - 振动结束后建议及时关闭文件描述符，避免资源泄露。使用getRawFd获取的文件描述符需通过closeRawFd关闭，使用fileIo.open获取的需通过fileIo.close关闭。
+自定义振动配置文件的描述符，必须确认资源文件可用，其参数可通过fileIo.open从 沙箱路径获取或者通过 [getRawFd](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getRawFd) 从HAP资源获取。使用场景：振动序列被存储在一个文件中，需要根据偏移量和长度进行振动，振动序列存储格式，请参考 [振动效果说明](../../../device/sensor/vibrator-guidelines.md#振动效果说明)。 使用时需注意以下问题： - 振动结束后建议及时关闭文件描述符，避免资源泄露。使用getRawFd获取的文件描述符需通过closeRawFd关闭，使用fileIo.open获取的需通过fileIo.close关闭。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-vibrator-interface HapticFileDescriptor--><!--Device-vibrator-interface HapticFileDescriptor-End-->
 
@@ -16,13 +18,15 @@
 fd: int
 ```
 
-资源文件描述符。可通过\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_从沙箱路径获取或通过 [getRawFd]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_ 从HAP资源获取。
+资源文件描述符。可通过fileIo.open从沙箱路径获取或通过 [getRawFd](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getRawFd) 从HAP资源获取。
 
 **类型：** int
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-HapticFileDescriptor-fd: int--><!--Device-HapticFileDescriptor-fd: int-End-->
 
@@ -38,9 +42,11 @@ length?: long
 
 **类型：** long
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-HapticFileDescriptor-length?: long--><!--Device-HapticFileDescriptor-length?: long-End-->
 
@@ -56,9 +62,11 @@ offset?: long
 
 **类型：** long
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-HapticFileDescriptor-offset?: long--><!--Device-HapticFileDescriptor-offset?: long-End-->
 

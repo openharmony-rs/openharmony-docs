@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface DepthComponentOptions--><!--Device-unnamed-declare interface DepthComponentOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -20,13 +22,15 @@ depthSpace?: DepthSpaceType
 
 景深空间类型。
 
-**类型：** DepthSpaceType
+**类型：** [DepthSpaceType](arkts-arkui-depthspacetype-e-sys.md)
 
 **默认值：** DepthSpace.INSTANCE
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -53,6 +57,8 @@ render3DScale?: double
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

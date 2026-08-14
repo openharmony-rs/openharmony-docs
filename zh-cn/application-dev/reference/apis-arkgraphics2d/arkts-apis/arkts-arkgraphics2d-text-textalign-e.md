@@ -2,9 +2,11 @@
 
 文本对齐方式枚举。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-text-enum TextAlign--><!--Device-text-enum TextAlign-End-->
 
@@ -18,9 +20,11 @@ LEFT = 0
 
 文本靠左对齐。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -36,9 +40,11 @@ RIGHT = 1
 
 文本靠右对齐。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -54,9 +60,11 @@ CENTER = 2
 
 文本居中对齐。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -72,9 +80,11 @@ JUSTIFY = 3
 
 文本两侧对齐，对最后一行无效。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -88,11 +98,13 @@ JUSTIFY = 3
 START = 4
 ```
 
-基于文本的方向[TextDirection]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_，文本靠开头方向对齐。
+基于文本的方向[TextDirection](arkts-arkgraphics2d-text-textdirection-e.md#TextDirection)，文本靠开头方向对齐。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -106,11 +118,13 @@ START = 4
 END = 5
 ```
 
-基于文本的方向[TextDirection]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_，文本以结束方向对齐。
+基于文本的方向[TextDirection](arkts-arkgraphics2d-text-textdirection-e.md#TextDirection)，文本以结束方向对齐。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 

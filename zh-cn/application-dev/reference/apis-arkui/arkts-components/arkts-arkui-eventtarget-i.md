@@ -1,10 +1,12 @@
 # EventTarget
 
-[BaseEvent]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_中参数target的类型。 触发事件的元素对象的显示区域。
+[BaseEvent](arkts-arkui-baseevent-i.md#BaseEvent)中参数target的类型。 触发事件的元素对象的显示区域。
 
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare interface EventTarget--><!--Device-unnamed-declare interface EventTarget-End-->
 
@@ -24,6 +26,8 @@ area: Area
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -38,13 +42,15 @@ area: Area
 id?: string
 ```
 
-开发者设置的节点[id]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。默认值：undefined
+开发者设置的节点[id](arkts-arkui-commonmethod-c.md#id)。默认值：undefined
 
 **类型：** string
 
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

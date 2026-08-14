@@ -2,9 +2,11 @@
 
 请求键盘输入的原因。
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-inputMethod-export enum RequestKeyboardReason--><!--Device-inputMethod-export enum RequestKeyboardReason-End-->
 
@@ -18,9 +20,11 @@ NONE = 0
 
 表示没有特定的原因触发键盘请求。 **使用场景：**默认值，不指定特定触发原因时使用。
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-RequestKeyboardReason-NONE = 0--><!--Device-RequestKeyboardReason-NONE = 0-End-->
 
@@ -34,9 +38,11 @@ MOUSE = 1
 
 表示键盘请求是由鼠标操作触发的。 **使用场景：**用户通过鼠标点击编辑框触发键盘弹出时使用。
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-RequestKeyboardReason-MOUSE = 1--><!--Device-RequestKeyboardReason-MOUSE = 1-End-->
 
@@ -50,9 +56,11 @@ TOUCH = 2
 
 表示键盘请求是由触摸操作触发的。 **使用场景：**用户通过触摸点击编辑框触发键盘弹出时使用。
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-RequestKeyboardReason-TOUCH = 2--><!--Device-RequestKeyboardReason-TOUCH = 2-End-->
 
@@ -66,9 +74,11 @@ OTHER = 20
 
 表示键盘请求是由其他原因触发的。 **使用场景：**键盘弹出的触发原因不属于鼠标和触摸时使用。
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-RequestKeyboardReason-OTHER = 20--><!--Device-RequestKeyboardReason-OTHER = 20-End-->
 

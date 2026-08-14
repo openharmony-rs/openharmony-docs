@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface NativeEmbedVisibilityInfo--><!--Device-unnamed-declare interface NativeEmbedVisibilityInfo-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -24,6 +26,8 @@ embedId: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-NativeEmbedVisibilityInfo-embedId: string--><!--Device-NativeEmbedVisibilityInfo-embedId: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -41,6 +45,8 @@ visibility: boolean
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-NativeEmbedVisibilityInfo-visibility: boolean--><!--Device-NativeEmbedVisibilityInfo-visibility: boolean-End-->
 

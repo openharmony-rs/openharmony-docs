@@ -4,11 +4,13 @@
 declare type StyledStringUnmarshallCallback = (buf: ArrayBuffer) => StyledStringMarshallingValue
 ```
 
-属性字符串反序列化ArrayBuffer得到[StyledStringMarshallingValue]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_回调类型。
+属性字符串反序列化ArrayBuffer得到[StyledStringMarshallingValue](arkts-arkui-styledstringmarshallingvalue-t-sys.md#StyledStringMarshallingValue（系统接口）)回调类型。
 
 **起始版本：** 19
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -22,11 +24,11 @@ declare type StyledStringUnmarshallCallback = (buf: ArrayBuffer) => StyledString
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| buf | ArrayBuffer | 是 | [StyledStringMarshallingValue]\_\_\_JSDOC\_LINK\_USD\_0\_\_\_序列化后的数据。  |
+| buf | ArrayBuffer | 是 | [StyledStringMarshallingValue](arkts-arkui-styledstringmarshallingvalue-t-sys.md#StyledStringMarshallingValue（系统接口）)序列化后的数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 反序列化得到的自定义数据片段对象，用于恢复用户自定义的样式数据。 |
+| [StyledStringMarshallingValue](arkts-arkui-styledstringmarshallingvalue-t-sys.md) | 反序列化得到的自定义数据片段对象，用于恢复用户自定义的样式数据。 |
 

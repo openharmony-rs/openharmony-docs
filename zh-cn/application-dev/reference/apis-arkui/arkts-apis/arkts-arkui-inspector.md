@@ -1,10 +1,14 @@
 # @ohos.arkui.inspector
 
-提供注册组件布局和组件绘制送显完成回调通知的能力。
+提供注册组件布局和组件绘制送显完成回调通知的能力。适用于需要在组件布局或绘制送显完成后执行自定义逻辑的场景，帮助开发者精准掌控组件渲染时机。
 
-**起始版本：** 23
+**起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-declare namespace inspector--><!--Device-unnamed-declare namespace inspector-End-->
 
@@ -16,9 +20,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [getInspectorByKey](arkts-arkui-inspector-getinspectorbykey-f.md#getinspectorbykey) | 获取指定id组件的所有属性，不包括子组件信息。 此接口仅用于对应用的测试，使用时建议等应用启动且布局完成后再调用。由于耗时长，不建议测试之外的场景使用。 |
-| [getInspectorTree](arkts-arkui-inspector-getinspectortree-f.md#getinspectortree) | 获取组件树及组件属性。 此接口仅用于对应用的测试。由于耗时长，不建议测试之外的场景使用。 |
-| [sendEventByKey](arkts-arkui-inspector-sendeventbykey-f.md#sendeventbykey) | 给指定id的组件发送事件。 此接口仅用于对应用的测试。由于耗时长，不建议测试之外的场景使用。 |
+| [createComponentObserver](arkts-arkui-inspector-createcomponentobserver-f.md#createComponentObserver) | 绑定指定组件，返回对应的监听句柄。 |
 
 ### 接口
 

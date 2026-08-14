@@ -10,6 +10,8 @@ declare type OnTextSelectionChangeCallback = (selectionStart: number, selectionE
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -22,6 +24,6 @@ declare type OnTextSelectionChangeCallback = (selectionStart: number, selectionE
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| selectionStart | number | 是 | 所选文本的起始位置，文字的起始位置为0。  |
-| selectionEnd | number | 是 | 所选文本的结束位置。  |
+| selectionStart | number | 是 | 所选文本的起始位置，文字的起始位置为0。 |
+| selectionEnd | number | 是 | 所选文本的结束位置。 |
 

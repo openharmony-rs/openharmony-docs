@@ -10,7 +10,9 @@ function authSmbDeviceAsRegisteredUser(host: SharedHost, username: string, passw
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -26,7 +28,7 @@ function authSmbDeviceAsRegisteredUser(host: SharedHost, username: string, passw
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| host | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 要进行身份验证的SMB主机。 |
+| host | [SharedHost](arkts-basicservices-print-sharedhost-i.md) | 是 | 要进行身份验证的SMB主机。 |
 | username | string | 是 | 用于鉴权的用户名。 |
 | password | string | 是 | 用于身份验证的密码。 |
 
@@ -34,15 +36,15 @@ function authSmbDeviceAsRegisteredUser(host: SharedHost, username: string, passw
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;PrinterInformation[]&gt; | Promise that resolves with the list of available printers. |
+| Promise&lt;[PrinterInformation](arkts-basicservices-print-printerinformation-i.md)[]&gt; | Promise that resolves with the list of available printers. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
-| 13100012 | SMB account is locked due to multiple failed login attempts. |
-| 13100013 | SMB connection failed (network error, host unreachable, or port blocked). |
 | 13100014 | Invalid login account or password. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
+| 13100013 | SMB connection failed (network error, host unreachable, or port blocked). |
+| 13100012 | SMB account is locked due to multiple failed login attempts. |
 

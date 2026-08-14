@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface VisibleAreaEventOptions--><!--Device-unnamed-declare interface VisibleAreaEventOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -26,6 +28,8 @@ expectedUpdateInterval?: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -40,7 +44,7 @@ expectedUpdateInterval?: number
 measureFromViewport?: boolean
 ```
 
-设置可见区域计算模式。 当measureFromViewport设置为true时，系统在计算该组件的可见区域时，会考虑父组件的[clip]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 属性设置。如果父组件的 [clip]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_为false，则认为其内的子组件可以超出其区域进行显示，因此超出父组件的区域也将被视为可见区域纳入计算；如果父组件的 [clip]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_设置为true，则组件超出父组件的区域会被裁剪，无法显示，因此会被视为不可见区域进行计算。而当measureFromViewport设置 为false时，则不考虑[clip]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_的影响，直接将组件超出父组件的部分视为不可见区域。 默认值：false measureFromViewport设置为true时，祖先节点设置[scale]\_\_\_JSDOC\_LINK\_DESC\_USD\_4\_\_\_属性，组件可见比例会被正确计算。
+设置可见区域计算模式。 当measureFromViewport设置为true时，系统在计算该组件的可见区域时，会考虑父组件的[clip](arkts-arkui-commonmethod-c.md#clip) 属性设置。如果父组件的 [clip](arkts-arkui-commonmethod-c.md#clip)为false，则认为其内的子组件可以超出其区域进行显示，因此超出父组件的区域也将被视为可见区域纳入计算；如果父组件的 [clip](arkts-arkui-commonmethod-c.md#clip)设置为true，则组件超出父组件的区域会被裁剪，无法显示，因此会被视为不可见区域进行计算。而当measureFromViewport设置 为false时，则不考虑[clip](arkts-arkui-commonmethod-c.md#clip)的影响，直接将组件超出父组件的部分视为不可见区域。 默认值：false measureFromViewport设置为true时，祖先节点设置[scale](arkts-arkui-commonmethod-c.md#scale)属性，组件可见比例会被正确计算。
 
 **类型：** boolean
 
@@ -49,6 +53,8 @@ measureFromViewport?: boolean
 **起始版本：** 22
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -71,6 +77,8 @@ ratios: Array<number>
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

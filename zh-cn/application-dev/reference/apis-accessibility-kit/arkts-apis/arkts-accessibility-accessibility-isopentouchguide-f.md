@@ -14,7 +14,7 @@ function isOpenTouchGuide(callback: AsyncCallback<boolean>): void
 
 **废弃版本：** 10
 
-**替代接口：** [accessibility.isOpenTouchGuideSync](arkts-accessibility-accessibility-isopentouchguidesync-f.md#isopentouchguidesync)
+**替代接口：** [isOpenTouchGuideSync](arkts-accessibility-accessibility-isopentouchguidesync-f.md#isOpenTouchGuideSync)
 
 <!--Device-accessibility-function isOpenTouchGuide(callback: AsyncCallback<boolean>): void--><!--Device-accessibility-function isOpenTouchGuide(callback: AsyncCallback<boolean>): void-End-->
 
@@ -24,9 +24,9 @@ function isOpenTouchGuide(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;boolean&gt; | 是 | 回调函数，如果触摸浏览模式已开启，则返回 true；否则返回 false。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数，如果触摸浏览模式已开启，则返回 true；否则返回 false。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { accessibility } from '@kit.AccessibilityKit';
@@ -56,7 +56,7 @@ function isOpenTouchGuide(): Promise<boolean>
 
 **废弃版本：** 10
 
-**替代接口：** [accessibility.isOpenTouchGuideSync](arkts-accessibility-accessibility-isopentouchguidesync-f.md#isopentouchguidesync)
+**替代接口：** [isOpenTouchGuideSync](arkts-accessibility-accessibility-isopentouchguidesync-f.md#isOpenTouchGuideSync)
 
 <!--Device-accessibility-function isOpenTouchGuide(): Promise<boolean>--><!--Device-accessibility-function isOpenTouchGuide(): Promise<boolean>-End-->
 
@@ -68,7 +68,7 @@ function isOpenTouchGuide(): Promise<boolean>
 | --- | --- |
 | Promise&lt;boolean&gt; | Promise对象，如果触摸浏览模式已开启，则返回 true；否则返回 false。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { accessibility } from '@kit.AccessibilityKit';

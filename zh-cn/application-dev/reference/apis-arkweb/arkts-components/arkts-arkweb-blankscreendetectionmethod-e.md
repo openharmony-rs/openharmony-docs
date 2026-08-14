@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare enum BlankScreenDetectionMethod--><!--Device-unnamed-declare enum BlankScreenDetectionMethod-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -21,6 +23,8 @@ DETECTION_CONTENTFUL_NODES_SEVENTEEN = 0
 **起始版本：** 22
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 <!--Device-BlankScreenDetectionMethod-DETECTION_CONTENTFUL_NODES_SEVENTEEN = 0--><!--Device-BlankScreenDetectionMethod-DETECTION_CONTENTFUL_NODES_SEVENTEEN = 0-End-->
 

@@ -1,10 +1,12 @@
 # CustomDialogControllerOptions
 
-自定义弹窗的样式。 > **说明：** > > - 按下返回键和ESC键时会让弹窗退出。 > > - 弹窗在避让软键盘时到达极限高度之后会压缩高度。 > > 需要注意：高度压缩生效在外层容器上，如果容器根节点中的子组件设置了较大的固定高度，由于容器默认不裁剪，依然可能存在超出屏幕显示的情况。 > > - 自定义弹窗仅适用于简单提示场景，不能替代页面使用。弹窗避让软键盘时，与软键盘之间存在16vp的安全间距。 > > - 为了达成良好的视觉体验，弹窗的显示和关闭存在默认动画，动画时长不同设备间可能存在差异。 > > 需要注意：在动画播放过程中，页面不响应触摸、滑动、点击操作。关闭默认弹窗动画效果可设置openAnimation和closeAnimation的duration为0。 > > - 当前，ArkUI弹出框默认为非页面级弹出框，在页面路由跳转时，如果开发者未调用close方法将其关闭，弹出框将不会自动关闭。若需实现在跳转页面时覆盖弹出框的场景，可以使用 > \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_或者 > \_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_。
+自定义弹窗的样式。 > **说明：** > > - 按下返回键和ESC键时会让弹窗退出。 > > - 弹窗在避让软键盘时到达极限高度之后会压缩高度。 > > 需要注意：高度压缩生效在外层容器上，如果容器根节点中的子组件设置了较大的固定高度，由于容器默认不裁剪，依然可能存在超出屏幕显示的情况。 > > - 自定义弹窗仅适用于简单提示场景，不能替代页面使用。弹窗避让软键盘时，与软键盘之间存在16vp的安全间距。 > > - 为了达成良好的视觉体验，弹窗的显示和关闭存在默认动画，动画时长不同设备间可能存在差异。 > > 需要注意：在动画播放过程中，页面不响应触摸、滑动、点击操作。关闭默认弹窗动画效果可设置openAnimation和closeAnimation的duration为0。 > > - 当前，ArkUI弹出框默认为非页面级弹出框，在页面路由跳转时，如果开发者未调用close方法将其关闭，弹出框将不会自动关闭。若需实现在跳转页面时覆盖弹出框的场景，可以使用 > [组件导航子页面显示类型的弹窗类型](../../../ui/arkts-navigation-navdestination.md#页面显示类型)或者 > [页面级弹出框](../../../ui/arkts-embedded-dialog.md)。
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare interface CustomDialogControllerOptions--><!--Device-unnamed-declare interface CustomDialogControllerOptions-End-->
 
@@ -23,6 +25,8 @@ alignment?: DialogAlignment
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -44,6 +48,8 @@ autoCancel?: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CustomDialogControllerOptions-autoCancel?: boolean--><!--Device-CustomDialogControllerOptions-autoCancel?: boolean-End-->
@@ -56,7 +62,7 @@ autoCancel?: boolean
 backgroundBlurStyle?: BlurStyle
 ```
 
-弹窗背板模糊材质。 默认值：从API版本26.0.0开始，为BlurStyle.NONE，API版本26.0.0之前，为BlurStyle.COMPONENT\_ULTRA\_THICK。 **说明：** 设置为BlurStyle.NONE即可关闭背景虚化。当设置了backgroundBlurStyle为非NONE值时，则不要设置backgroundColor，否则颜色显示将不符合预期效果。
+弹窗背板模糊材质。 默认值：从API版本26.0.0开始，为BlurStyle.NONE，API版本26.0.0之前，为BlurStyle.COMPONENT_ULTRA_THICK。 **说明：** 设置为BlurStyle.NONE即可关闭背景虚化。当设置了backgroundBlurStyle为非NONE值时，则不要设置backgroundColor，否则颜色显示将不符合预期效果。
 
 **类型：** BlurStyle
 
@@ -65,6 +71,8 @@ backgroundBlurStyle?: BlurStyle
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -88,6 +96,8 @@ backgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
@@ -109,6 +119,8 @@ backgroundColor?: ResourceColor
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -132,6 +144,8 @@ backgroundEffect?: BackgroundEffectOptions
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
@@ -153,6 +167,8 @@ borderColor?: ResourceColor | EdgeColors
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -176,6 +192,8 @@ borderStyle?: BorderStyle | EdgeStyles
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -197,6 +215,8 @@ borderWidth?: Dimension | EdgeWidths
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -220,6 +240,8 @@ builder: any
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CustomDialogControllerOptions-builder: any--><!--Device-CustomDialogControllerOptions-builder: any-End-->
@@ -240,6 +262,8 @@ cancel?: () => void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CustomDialogControllerOptions-cancel?: () => void--><!--Device-CustomDialogControllerOptions-cancel?: () => void-End-->
@@ -252,13 +276,15 @@ cancel?: () => void
 closeAnimation?: AnimateParam
 ```
 
-自定义设置弹窗关闭的动画效果相关参数。 **说明**： tempo默认值为1，当设置小于等于0的值时按默认值处理。 iterations默认值为1，默认播放一次，设置为其他数值时按默认值处理。 playMode控制动画播放模式，默认值为PlayMode.Normal，设置为其他数值时按照默认值处理。 页面转场切换时，建议使用默认关闭动效。
+自定义设置弹窗关闭的动画效果相关参数。 **说明：** tempo默认值为1，当设置小于等于0的值时按默认值处理。 iterations默认值为1，默认播放一次，设置为其他数值时按默认值处理。 playMode控制动画播放模式，默认值为PlayMode.Normal，设置为其他数值时按照默认值处理。 页面转场切换时，建议使用默认关闭动效。
 
 **类型：** AnimateParam
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -274,13 +300,15 @@ closeAnimation?: AnimateParam
 cornerRadius?: Dimension | BorderRadiuses
 ```
 
-设置背板的圆角半径。 可分别设置4个圆角的半径。 默认值：{ topLeft: '32vp', topRight: '32vp', bottomLeft: '32vp', bottomRight: '32vp' } **说明**：自定义弹窗默认的背板圆角半径为32vp，如果需要使用cornerRadius属性，请和 [borderRadius]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_属性一起使用。
+设置背板的圆角半径。 可分别设置4个圆角的半径。 默认值：{ topLeft: '32vp', topRight: '32vp', bottomLeft: '32vp', bottomRight: '32vp' } **说明：**自定义弹窗默认的背板圆角半径为32vp，如果需要使用cornerRadius属性，请和 borderRadius属性一起使用。
 
 **类型：** Dimension \| BorderRadiuses
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -304,6 +332,8 @@ customStyle?: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CustomDialogControllerOptions-customStyle?: boolean--><!--Device-CustomDialogControllerOptions-customStyle?: boolean-End-->
@@ -316,7 +346,7 @@ customStyle?: boolean
 displayModeInSubWindow?: DialogDisplayMode
 ```
 
-弹窗在子窗口中的显示模式。取值范围及显示效果请参考DialogDisplayMode枚举说明，例如SCREEN\_BASED表示弹窗在屏幕居中显示，WINDOW\_BASED表示弹窗在应用窗口居中显示。 默认值：DialogDisplayMode.SCREEN\_BASED **说明**： 仅当showInSubWindow设置为true时生效。
+弹窗在子窗口中的显示模式。取值范围及显示效果请参考DialogDisplayMode枚举说明，例如SCREEN_BASED表示弹窗在屏幕居中显示，WINDOW_BASED表示弹窗在应用窗口居中显示。 默认值：DialogDisplayMode.SCREEN_BASED **说明：** 仅当showInSubWindow设置为true时生效。
 
 **类型：** DialogDisplayMode
 
@@ -325,6 +355,8 @@ displayModeInSubWindow?: DialogDisplayMode
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -350,6 +382,8 @@ enableHoverMode?: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
@@ -374,6 +408,8 @@ focusable?: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
@@ -388,13 +424,15 @@ focusable?: boolean
 gridCount?: number
 ```
 
-弹窗宽度占\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_的个数。 默认为按照窗口大小自适应，异常值按默认值处理，最大栅格数为系统最大栅格数。 取值范围：大于等于0的整数。
+弹窗宽度占[栅格宽度](../../../ui/arkts-layout-development-grid-layout.md)的个数。 默认为按照窗口大小自适应，异常值按默认值处理，最大栅格数为系统最大栅格数。 取值范围：大于等于0的整数。
 
 **类型：** number
 
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -416,6 +454,8 @@ height?: Dimension
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -430,7 +470,7 @@ height?: Dimension
 hoverModeArea?: HoverModeAreaType
 ```
 
-悬停态下弹窗默认展示区域。 默认值：HoverModeAreaType.BOTTOM\_SCREEN。
+悬停态下弹窗默认展示区域。 默认值：HoverModeAreaType.BOTTOM_SCREEN。
 
 **类型：** HoverModeAreaType
 
@@ -439,6 +479,8 @@ hoverModeArea?: HoverModeAreaType
 **起始版本：** 14
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -464,6 +506,8 @@ immersiveMode?: ImmersiveMode
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
@@ -488,6 +532,8 @@ isModal?: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -509,6 +555,8 @@ keyboardAvoidDistance?: LengthMetrics
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -534,6 +582,8 @@ keyboardAvoidMode?: KeyboardAvoidMode
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -557,6 +607,8 @@ levelMode?: LevelMode
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -582,6 +634,8 @@ levelOrder?: LevelOrder
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -596,13 +650,15 @@ levelOrder?: LevelOrder
 levelUniqueId?: number
 ```
 
-设置页面级弹窗需要显示的层级下的节点UniqueID，UniqueID可以通过[getUniqueId]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_获取。 取值范围：大于等于0的数字。 **说明：** - 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。
+设置页面级弹窗需要显示的层级下的节点UniqueID，UniqueID可以通过[getUniqueId](../../apis-na/arkts-apis/arkts-na-framenode-c.md#getUniqueId)获取。 取值范围：大于等于0的数字。 **说明：** - 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。
 
 **类型：** number
 
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -626,6 +682,8 @@ maskColor?: ResourceColor
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -647,6 +705,8 @@ maskRect?: Rectangle
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -670,6 +730,8 @@ offset?: Offset
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CustomDialogControllerOptions-offset?: Offset--><!--Device-CustomDialogControllerOptions-offset?: Offset-End-->
@@ -689,6 +751,8 @@ onDidAppear?: Callback<void>
 **起始版本：** 19
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -712,6 +776,8 @@ onDidDisappear?: Callback<void>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
@@ -733,6 +799,8 @@ onWillAppear?: Callback<void>
 **起始版本：** 19
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -756,6 +824,8 @@ onWillDisappear?: Callback<void>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
@@ -770,13 +840,15 @@ onWillDisappear?: Callback<void>
 onWillDismiss?: Callback<DismissDialogAction>
 ```
 
-交互式关闭回调函数。 **说明：** 1.当用户执行点击遮障层关闭、侧滑（左滑/右滑）、三键back、键盘ESC关闭交互操作时，如果注册该回调函数，则不会立刻关闭弹窗。在回调函数中可以通过reason得到阻拦关闭弹窗的操作类型，从而根据原因选择是否能关闭弹窗。当前组件 返回的reason中，暂不支持CLOSE\_BUTTON的枚举值。 2.在onWillDismiss回调中，不能再做onWillDismiss拦截。
+交互式关闭回调函数。 **说明：** 1.当用户执行点击遮障层关闭、侧滑（左滑/右滑）、三键back、键盘ESC关闭交互操作时，如果注册该回调函数，则不会立刻关闭弹窗。在回调函数中可以通过reason得到阻拦关闭弹窗的操作类型，从而根据原因选择是否能关闭弹窗。当前组件 返回的reason中，暂不支持CLOSE_BUTTON的枚举值。 2.在onWillDismiss回调中，不能再做onWillDismiss拦截。
 
-**类型：** Callback&lt;DismissDialogAction&gt;
+**类型：** Callback&lt;[DismissDialogAction](arkts-arkui-dismissdialogaction-i.md)&gt;
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -792,13 +864,15 @@ onWillDismiss?: Callback<DismissDialogAction>
 openAnimation?: AnimateParam
 ```
 
-自定义设置弹窗弹出的动画效果相关参数。未设置时使用系统默认弹出动画。 **说明**： tempo默认值为1，当设置小于等于0的值时按默认值处理。 iterations默认值为1，默认播放一次，设置为其他数值时按默认值处理。 playMode控制动画播放模式，默认值为PlayMode.Normal，设置为其他数值时按照默认值处理。
+自定义设置弹窗弹出的动画效果相关参数。未设置时使用系统默认弹出动画。 **说明：** tempo默认值为1，当设置小于等于0的值时按默认值处理。 iterations默认值为1，默认播放一次，设置为其他数值时按默认值处理。 playMode控制动画播放模式，默认值为PlayMode.Normal，设置为其他数值时按照默认值处理。
 
 **类型：** AnimateParam
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -814,13 +888,15 @@ openAnimation?: AnimateParam
 shadow?: ShadowOptions | ShadowStyle
 ```
 
-设置弹窗背板的阴影。 当设备为2in1时，默认场景下获焦阴影值为ShadowStyle.OUTER\_FLOATING\_MD，失焦为ShadowStyle.OUTER\_FLOATING\_SM。其他设备默认无阴影。
+设置弹窗背板的阴影。 当设备为2in1时，默认场景下获焦阴影值为ShadowStyle.OUTER_FLOATING_MD，失焦为ShadowStyle.OUTER_FLOATING_SM。其他设备默认无阴影。
 
 **类型：** ShadowOptions \| ShadowStyle
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -836,7 +912,7 @@ shadow?: ShadowOptions | ShadowStyle
 showInSubWindow?: boolean
 ```
 
-某弹窗需要显示在主窗口之外时，是否在子窗口显示此弹窗。值为true表示在子窗口显示弹窗。 默认值：false，弹窗显示在应用内，而非独立子窗口。 **说明**：showInSubWindow为true的弹窗无法触发显示另一个showInSubWindow为true的弹窗。不建议在showInSubWindow为true的弹窗中使用CalendarPicker、 CalendarPickerDialog、DatePickerDialog、TextPickerDialog、TimePickerDialog、Toast组件，弹窗会影响上述组件行为。
+某弹窗需要显示在主窗口之外时，是否在子窗口显示此弹窗。值为true表示在子窗口显示弹窗。 默认值：false，弹窗显示在应用内，而非独立子窗口。 **说明：**showInSubWindow为true的弹窗无法触发显示另一个showInSubWindow为true的弹窗。不建议在showInSubWindow为true的弹窗中使用CalendarPicker、 CalendarPickerDialog、DatePickerDialog、TextPickerDialog、TimePickerDialog、Toast组件，弹窗会影响上述组件行为。
 
 **类型：** boolean
 
@@ -845,6 +921,8 @@ showInSubWindow?: boolean
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -860,13 +938,15 @@ showInSubWindow?: boolean
 systemMaterial?: SystemUiMaterial
 ```
 
-设置弹窗的系统材质。 **说明：** - 默认值：\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_的style为 ImmersiveStyle.ULTRA\_THICK的 \_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_对象。设置undefined时与默认值保持 一致。 - 不同的材质具有不同的效果，该接口影响背景色[backgroundColor]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_、背景模糊 [backgroundBlurStyle]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_ 、背景效果[backgroundEffect]\_\_\_JSDOC\_LINK\_DESC\_USD\_4\_\_\_、边框颜色 [borderColor]\_\_\_JSDOC\_LINK\_DESC\_USD\_5\_\_\_、边框宽度[borderWidth]\_\_\_JSDOC\_LINK\_DESC\_USD\_6\_\_\_、阴影 [shadow]\_\_\_JSDOC\_LINK\_DESC\_USD\_7\_\_\_，不建议与上述接口一起使用。
+设置弹窗的系统材质。 **说明：** - 默认值：[ImmersiveOptions](../../../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)的style为 ImmersiveStyle.ULTRA_THICK的 [ImmersiveMaterial](../../../reference/apis-arkui/arkts-apis-uimaterial.md#immersivematerial)对象。设置undefined时与默认值保持 一致。 - 不同的材质具有不同的效果，该接口影响背景色backgroundColor、背景模糊 backgroundBlurStyle 、背景效果backgroundEffect、边框颜色 borderColor、边框宽度borderWidth、阴影 shadow，不建议与上述接口一起使用。
 
 **类型：** SystemUiMaterial
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -889,6 +969,8 @@ width?: Dimension
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

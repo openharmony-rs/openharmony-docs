@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface DistortionParam--><!--Device-unnamed-declare interface DistortionParam-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -20,13 +22,15 @@ barrelDistortion: Vector4
 
 四条边的桶形扭曲程度参数。 Vector4中四个值分别控制：x是左边，y是右边，z是上边，w是下边。 默认值：[0, 0, 0, 0] 正数表示边向外凸出的扭曲，负数表示边向内凹陷的扭曲。扭曲参数绝对值达到1时，扭曲程度为极端扭曲。 x、y、z、w 各值建议设置范围：[-1, 1]
 
-**类型：** Vector4
+**类型：** [Vector4](arkts-arkui-vector4-t-sys.md)
 
 **默认值：** [0, 0, 0, 0]
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -44,13 +48,15 @@ bottomLeft: Vector2
 
 左下角的坐标。 默认值：[0, 1]
 
-**类型：** Vector2
+**类型：** [Vector2](arkts-arkui-vector2-t-sys.md)
 
 **默认值：** [0, 0]
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -68,13 +74,15 @@ bottomRight: Vector2
 
 右下角的坐标。 默认值：[1, 1]
 
-**类型：** Vector2
+**类型：** [Vector2](arkts-arkui-vector2-t-sys.md)
 
 **默认值：** [0, 0]
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -92,13 +100,15 @@ topLeft: Vector2
 
 左上角的坐标。 默认值：[0, 0]
 
-**类型：** Vector2
+**类型：** [Vector2](arkts-arkui-vector2-t-sys.md)
 
 **默认值：** [0, 0]
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -116,13 +126,15 @@ topRight: Vector2
 
 右上角的坐标。 默认值：[1, 0]
 
-**类型：** Vector2
+**类型：** [Vector2](arkts-arkui-vector2-t-sys.md)
 
 **默认值：** [0, 0]
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

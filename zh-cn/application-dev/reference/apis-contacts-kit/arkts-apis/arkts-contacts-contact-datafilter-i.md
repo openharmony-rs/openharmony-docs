@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
 
+**废弃版本：** -1
+
 <!--Device-contact-interface DataFilter--><!--Device-contact-interface DataFilter-End-->
 
 **系统能力：** SystemCapability.Applications.Contacts
@@ -18,11 +20,13 @@ field: DataField
 
 联系人数据字段。
 
-**类型：** DataField
+**类型：** [DataField](arkts-contacts-contact-datafield-e.md)
 
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
@@ -38,11 +42,13 @@ options: Array<FilterOptions>
 
 联系人过滤参数，数组中多个FilterOptions之间是“或”的关系，数组的最大长度为3。
 
-**类型：** Array&lt;FilterOptions&gt;
+**类型：** Array&lt;[FilterOptions](arkts-contacts-contact-filteroptions-i.md)&gt;
 
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 

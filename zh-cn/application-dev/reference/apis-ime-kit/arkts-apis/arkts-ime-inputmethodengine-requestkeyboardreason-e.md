@@ -2,9 +2,11 @@
 
 枚举，请求键盘输入的原因。 | 名称 | 值 | 说明 | | ------------ | -- | ------------------ | | NONE | 0 | 表示没有特定的原因触发键盘请求。 | | MOUSE | 1 | 表示键盘请求是由鼠标操作触发的。 | | TOUCH | 2 | 表示键盘请求是由触摸操作触发的。 | | OTHER | 20 | 表示键盘请求是由其他原因触发的。 |
 
-**起始版本：** 19
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为19；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-inputMethodEngine-export enum RequestKeyboardReason--><!--Device-inputMethodEngine-export enum RequestKeyboardReason-End-->
 
@@ -18,9 +20,11 @@ NONE = 0
 
 表示没有特定的原因触发键盘请求。
 
-**起始版本：** 19
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为19；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-RequestKeyboardReason-NONE = 0--><!--Device-RequestKeyboardReason-NONE = 0-End-->
 
@@ -34,9 +38,11 @@ MOUSE = 1
 
 表示键盘请求是由鼠标操作触发的。
 
-**起始版本：** 19
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为19；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-RequestKeyboardReason-MOUSE = 1--><!--Device-RequestKeyboardReason-MOUSE = 1-End-->
 
@@ -50,9 +56,11 @@ TOUCH = 2
 
 表示键盘请求是由触摸操作触发的。
 
-**起始版本：** 19
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为19；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-RequestKeyboardReason-TOUCH = 2--><!--Device-RequestKeyboardReason-TOUCH = 2-End-->
 
@@ -66,9 +74,11 @@ OTHER = 20
 
 表示键盘请求是由其他原因触发的。
 
-**起始版本：** 19
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为19；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-RequestKeyboardReason-OTHER = 20--><!--Device-RequestKeyboardReason-OTHER = 20-End-->
 

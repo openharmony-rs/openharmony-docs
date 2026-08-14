@@ -12,6 +12,8 @@ function createVideoRecorder(callback: AsyncCallback<VideoRecorder>): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 <!--Device-media-function createVideoRecorder(callback: AsyncCallback<VideoRecorder>): void--><!--Device-media-function createVideoRecorder(callback: AsyncCallback<VideoRecorder>): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoRecorder
@@ -22,16 +24,16 @@ function createVideoRecorder(callback: AsyncCallback<VideoRecorder>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;VideoRecorder&gt; | 是 | 回调函数，返回VideoRecorder实例，失败时返回null。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[VideoRecorder](arkts-media-multimedia-media-videorecorder-i-sys.md)&gt; | 是 | 回调函数，返回VideoRecorder实例，失败时返回null。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [5400101](../errorcode-media.md#5400101-内存分配失败) | No memory. Return by callback. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 12+ |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.<br>**适用版本：** 12+ |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -58,7 +60,9 @@ function createVideoRecorder(callback: AsyncCallback<VideoRecorder | undefined>)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-media-function createVideoRecorder(callback: AsyncCallback<VideoRecorder | undefined>): void--><!--Device-media-function createVideoRecorder(callback: AsyncCallback<VideoRecorder | undefined>): void-End-->
 
@@ -70,14 +74,14 @@ function createVideoRecorder(callback: AsyncCallback<VideoRecorder | undefined>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;VideoRecorder \| undefined&gt; | 是 | 回调函数，返回VideoRecorder实例，失败时返回null。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[VideoRecorder](arkts-media-multimedia-media-videorecorder-i-sys.md) \| undefined&gt; | 是 | 回调函数，返回VideoRecorder实例，失败时返回null。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 | [5400101](../errorcode-media.md#5400101-内存分配失败) | No memory. Return by callback. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 
 
 ## createVideoRecorder
@@ -92,6 +96,8 @@ function createVideoRecorder(): Promise<VideoRecorder>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 <!--Device-media-function createVideoRecorder(): Promise<VideoRecorder>--><!--Device-media-function createVideoRecorder(): Promise<VideoRecorder>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoRecorder
@@ -102,16 +108,16 @@ function createVideoRecorder(): Promise<VideoRecorder>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;VideoRecorder&gt; | Promise对象，返回VideoRecorder实例，失败时返回null。 |
+| Promise&lt;[VideoRecorder](arkts-media-multimedia-media-videorecorder-i-sys.md)&gt; | Promise对象，返回VideoRecorder实例，失败时返回null。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [5400101](../errorcode-media.md#5400101-内存分配失败) | No memory. Return by promise. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 12+ |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.<br>**适用版本：** 12+ |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -140,7 +146,9 @@ function createVideoRecorder(): Promise<VideoRecorder | undefined>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-media-function createVideoRecorder(): Promise<VideoRecorder | undefined>--><!--Device-media-function createVideoRecorder(): Promise<VideoRecorder | undefined>-End-->
 
@@ -152,12 +160,12 @@ function createVideoRecorder(): Promise<VideoRecorder | undefined>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;VideoRecorder \| undefined&gt; | Promise对象，返回VideoRecorder实例，失败时返回null。 |
+| Promise&lt;[VideoRecorder](arkts-media-multimedia-media-videorecorder-i-sys.md) \| undefined&gt; | Promise对象，返回VideoRecorder实例，失败时返回null。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 | [5400101](../errorcode-media.md#5400101-内存分配失败) | No memory. Return by promise. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 

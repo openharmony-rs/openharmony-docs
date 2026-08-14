@@ -6,9 +6,11 @@ type ValuesBucket = Record<string, ValueType>
 
 用于存储键值对的类型。该类型不是多线程安全的，如果应用中存在多线程同时操作该类派生出的实例，注意加锁保护。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-commonType-type ValuesBucket = Record<string, ValueType>--><!--Device-commonType-type ValuesBucket = Record<string, ValueType>-End-->
 

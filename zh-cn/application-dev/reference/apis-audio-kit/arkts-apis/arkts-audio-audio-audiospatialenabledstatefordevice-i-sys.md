@@ -2,9 +2,11 @@
 
 This interface is used to notify the listener of any device Spatialization or Head Tracking enable or Adaptive Spatial Rendering state change.
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-audio-interface AudioSpatialEnabledStateForDevice--><!--Device-audio-interface AudioSpatialEnabledStateForDevice-End-->
 
@@ -20,11 +22,13 @@ deviceDescriptor: AudioDeviceDescriptor
 
 Audio device description.
 
-**类型：** AudioDeviceDescriptor
+**类型：** [AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md)
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioSpatialEnabledStateForDevice-deviceDescriptor: AudioDeviceDescriptor--><!--Device-AudioSpatialEnabledStateForDevice-deviceDescriptor: AudioDeviceDescriptor-End-->
 
@@ -42,9 +46,11 @@ Spatialization or Head Tracking or Adaptive Spatial Rendering enable state.
 
 **类型：** boolean
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioSpatialEnabledStateForDevice-enabled: boolean--><!--Device-AudioSpatialEnabledStateForDevice-enabled: boolean-End-->
 

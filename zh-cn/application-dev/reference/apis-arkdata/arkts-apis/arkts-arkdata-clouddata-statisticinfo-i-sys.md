@@ -2,9 +2,11 @@
 
 端云同步的统计信息。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-cloudData-interface StatisticInfo--><!--Device-cloudData-interface StatisticInfo-End-->
 
@@ -22,9 +24,11 @@ inserted: int
 
 **类型：** int
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-StatisticInfo-inserted: int--><!--Device-StatisticInfo-inserted: int-End-->
 
@@ -42,9 +46,11 @@ normal: int
 
 **类型：** int
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-StatisticInfo-normal: int--><!--Device-StatisticInfo-normal: int-End-->
 
@@ -58,13 +64,15 @@ normal: int
 table: string
 ```
 
-查询的表名。如返回值为"cloud\_notes"，表示查询结果是表名为"cloud\_notes"的同步信息。
+查询的表名。如返回值为"cloud_notes"，表示查询结果是表名为"cloud_notes"的同步信息。
 
 **类型：** string
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-StatisticInfo-table: string--><!--Device-StatisticInfo-table: string-End-->
 
@@ -82,9 +90,11 @@ updated: int
 
 **类型：** int
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-StatisticInfo-updated: int--><!--Device-StatisticInfo-updated: int-End-->
 

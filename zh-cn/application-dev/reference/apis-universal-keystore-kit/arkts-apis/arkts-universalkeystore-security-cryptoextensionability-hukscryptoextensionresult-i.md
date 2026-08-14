@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-export interface HuksCryptoExtensionResult--><!--Device-unnamed-export interface HuksCryptoExtensionResult-End-->
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
@@ -24,6 +26,8 @@ authState?: int
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 <!--Device-HuksCryptoExtensionResult-authState?: int--><!--Device-HuksCryptoExtensionResult-authState?: int-End-->
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
@@ -36,11 +40,13 @@ certs?: Array<HuksCryptoExtensionCertInfo>
 
 /** 证书。
 
-**类型：** Array&lt;HuksCryptoExtensionCertInfo&gt;
+**类型：** Array&lt;[HuksCryptoExtensionCertInfo](arkts-universalkeystore-security-cryptoextensionability-hukscryptoextensioncertinfo-i.md)&gt;
 
 **起始版本：** 22
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 <!--Device-HuksCryptoExtensionResult-certs?: Array<HuksCryptoExtensionCertInfo>--><!--Device-HuksCryptoExtensionResult-certs?: Array<HuksCryptoExtensionCertInfo>-End-->
 
@@ -59,6 +65,8 @@ errInfo?: huksExternalCrypto.HuksExternalErrorInfo
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -80,6 +88,8 @@ handle?: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 <!--Device-HuksCryptoExtensionResult-handle?: string--><!--Device-HuksCryptoExtensionResult-handle?: string-End-->
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
@@ -97,6 +107,8 @@ outData?: Uint8Array
 **起始版本：** 22
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 <!--Device-HuksCryptoExtensionResult-outData?: Uint8Array--><!--Device-HuksCryptoExtensionResult-outData?: Uint8Array-End-->
 
@@ -116,6 +128,8 @@ property?: Array<huksExternalCrypto.HuksExternalCryptoParam>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 <!--Device-HuksCryptoExtensionResult-property?: Array<huksExternalCrypto.HuksExternalCryptoParam>--><!--Device-HuksCryptoExtensionResult-property?: Array<huksExternalCrypto.HuksExternalCryptoParam>-End-->
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
@@ -133,6 +147,8 @@ resourceId?: string
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -154,6 +170,8 @@ resultCode: int
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 <!--Device-HuksCryptoExtensionResult-resultCode: int--><!--Device-HuksCryptoExtensionResult-resultCode: int-End-->
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
@@ -171,6 +189,8 @@ retryCount?: int
 **起始版本：** 22
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 <!--Device-HuksCryptoExtensionResult-retryCount?: int--><!--Device-HuksCryptoExtensionResult-retryCount?: int-End-->
 

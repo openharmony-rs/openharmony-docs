@@ -2,9 +2,11 @@
 
 增强的输入法面板位置、大小信息，包含自定义避让区域、自定义热区。
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-inputMethodEngine-export interface EnhancedPanelRect--><!--Device-inputMethodEngine-export interface EnhancedPanelRect-End-->
 
@@ -22,9 +24,11 @@ fullScreenMode?: boolean
 
 **默认值：** false
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-EnhancedPanelRect-fullScreenMode?: boolean--><!--Device-EnhancedPanelRect-fullScreenMode?: boolean-End-->
 
@@ -42,9 +46,11 @@ landscapeAvoidY?: int
 
 **默认值：** 0
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-EnhancedPanelRect-landscapeAvoidY?: int--><!--Device-EnhancedPanelRect-landscapeAvoidY?: int-End-->
 
@@ -60,9 +66,11 @@ landscapeInputRegion?: Array<window.Rect>
 
 **类型：** Array&lt;window.Rect&gt;
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-EnhancedPanelRect-landscapeInputRegion?: Array<window.Rect>--><!--Device-EnhancedPanelRect-landscapeInputRegion?: Array<window.Rect>-End-->
 
@@ -78,9 +86,11 @@ landscapeRect?: window.Rect
 
 **类型：** window.Rect
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-EnhancedPanelRect-landscapeRect?: window.Rect--><!--Device-EnhancedPanelRect-landscapeRect?: window.Rect-End-->
 
@@ -98,9 +108,11 @@ portraitAvoidY?: int
 
 **默认值：** 0
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-EnhancedPanelRect-portraitAvoidY?: int--><!--Device-EnhancedPanelRect-portraitAvoidY?: int-End-->
 
@@ -116,9 +128,11 @@ portraitInputRegion?: Array<window.Rect>
 
 **类型：** Array&lt;window.Rect&gt;
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-EnhancedPanelRect-portraitInputRegion?: Array<window.Rect>--><!--Device-EnhancedPanelRect-portraitInputRegion?: Array<window.Rect>-End-->
 
@@ -134,9 +148,11 @@ portraitRect?: window.Rect
 
 **类型：** window.Rect
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-EnhancedPanelRect-portraitRect?: window.Rect--><!--Device-EnhancedPanelRect-portraitRect?: window.Rect-End-->
 

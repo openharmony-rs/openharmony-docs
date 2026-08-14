@@ -4,7 +4,9 @@
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 <!--Device-hiAppEvent-interface AppCrashPolicy--><!--Device-hiAppEvent-interface AppCrashPolicy-End-->
 
@@ -16,13 +18,15 @@
 collectMinidump?: boolean
 ```
 
-是否使能\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_，默认值为false。 true：\_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_中log\_over\_limit字段判断生成的与已存在的故障日志文件的大 小总和上限调整为35MB。 false：log\_over\_limit字段判断生成的与已存在的故障日志文件的大小总和上限恢复为5MB。 **说明**：该配置项为持久化配置，应用未重新设置前，值不变。 **起始版本**：26.0.0 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+是否使能[minidump](../../../dfx/performance-analysis-kit-terminology.md#minidump)，默认值为false。 true：[params字段说明](../../../dfx/hiappevent-watcher-crash-events.md#params字段说明)中log_over_limit字段判断生成的与已存在的故障日志文件的大 小总和上限调整为35MB。 false：log_over_limit字段判断生成的与已存在的故障日志文件的大小总和上限恢复为5MB。 **说明：**该配置项为持久化配置，应用未重新设置前，值不变。 **起始版本**：26.0.0 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **类型：** boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
@@ -42,7 +46,9 @@ extendPcLrPrinting?: boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
@@ -62,7 +68,9 @@ logFileCutoffSzBytes?: int
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
@@ -76,13 +84,15 @@ logFileCutoffSzBytes?: int
 pageSwitchLogEnable?: boolean
 ```
 
-是否使能崩溃事件的页面切换日志。 true：使能崩溃事件的页面切换日志。 false：不使能崩溃事件的页面切换日志。 默认值：false。 **说明**：应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。
+是否使能崩溃事件的页面切换日志。 true：使能崩溃事件的页面切换日志。 false：不使能崩溃事件的页面切换日志。 默认值：false。 **说明：**应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。
 
 **类型：** boolean
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
@@ -102,7 +112,9 @@ simplifyVmaPrinting?: boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 

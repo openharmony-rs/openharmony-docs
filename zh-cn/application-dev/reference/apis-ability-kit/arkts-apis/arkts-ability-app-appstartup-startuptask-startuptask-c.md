@@ -1,12 +1,12 @@
 # StartupTask
 
-The module provides capabilities related to startup tasks in \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_.
+The module provides capabilities related to startup tasks in [AppStartup](../../../application-models/app-startup.md).
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-**装饰器类型：** @Sendable
+**废弃版本：** -1
 
 <!--Device-unnamed-declare class StartupTask--><!--Device-unnamed-declare class StartupTask-End-->
 
@@ -24,6 +24,8 @@ init(context: AbilityStageContext): Promise<Object | void>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-StartupTask-init(context: AbilityStageContext): Promise<Object | void>--><!--Device-StartupTask-init(context: AbilityStageContext): Promise<Object | void>-End-->
@@ -34,7 +36,7 @@ init(context: AbilityStageContext): Promise<Object | void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | [AbilityStage]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_的上下文环境 |
+| context | [AbilityStageContext](arkts-ability-abilitystagecontext-c.md) | 是 | [AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md#AbilityStage)的上下文环境 |
 
 **返回值：**
 
@@ -42,7 +44,7 @@ init(context: AbilityStageContext): Promise<Object | void>
 | --- | --- |
 | Promise&lt;Object \| void&gt; | Promise used to return the execution result. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { StartupTask, common } from '@kit.AbilityKit';
@@ -78,6 +80,8 @@ onDependencyCompleted?(dependency: string, result: Object): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-StartupTask-onDependencyCompleted?(dependency: string, result: Object): void--><!--Device-StartupTask-onDependencyCompleted?(dependency: string, result: Object): void-End-->
@@ -89,9 +93,9 @@ onDependencyCompleted?(dependency: string, result: Object): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | dependency | string | 是 | 依赖的启动任务名称。 |
-| result | Object | 是 | 依赖的启动任务[init]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_返回的执行结果。 |
+| result | Object | 是 | 依赖的启动任务[init](#init)返回的执行结果。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { StartupTask, common } from '@kit.AbilityKit';

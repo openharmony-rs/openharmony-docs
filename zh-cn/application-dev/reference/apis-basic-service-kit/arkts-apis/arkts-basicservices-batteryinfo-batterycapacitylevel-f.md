@@ -12,6 +12,8 @@ function batteryCapacityLevel(): BatteryCapacityLevel
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-batteryInfo-function batteryCapacityLevel(): BatteryCapacityLevel--><!--Device-batteryInfo-function batteryCapacityLevel(): BatteryCapacityLevel-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
@@ -20,5 +22,13 @@ function batteryCapacityLevel(): BatteryCapacityLevel
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回当前设备电池电量的等级。 |
+| [BatteryCapacityLevel](arkts-basicservices-batteryinfo-batterycapacitylevel-e.md) | 返回当前设备电池电量的等级。 |
+
+## 示例
+
+```TypeScript
+// ArkTS-Sta示例
+let result = batteryInfo.batteryCapacityLevel();
+console.info("The result is: " + result);
+```
 

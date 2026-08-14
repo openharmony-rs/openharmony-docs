@@ -2,9 +2,11 @@
 
 表示系统账号信息。
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-osAccount-interface OsAccountInfo--><!--Device-osAccount-interface OsAccountInfo-End-->
 
@@ -16,13 +18,15 @@
 constraints: Array<string>
 ```
 
-系统账号\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_，默认为空。
+系统账号约束，默认为空。
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-OsAccountInfo-constraints: Array<string>--><!--Device-OsAccountInfo-constraints: Array<string>-End-->
 
@@ -38,9 +42,11 @@ createTime: long
 
 **类型：** long
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-OsAccountInfo-createTime: long--><!--Device-OsAccountInfo-createTime: long-End-->
 
@@ -56,9 +62,11 @@ distributedInfo: distributedAccount.DistributedInfo
 
 **类型：** distributedAccount.DistributedInfo
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-OsAccountInfo-distributedInfo: distributedAccount.DistributedInfo--><!--Device-OsAccountInfo-distributedInfo: distributedAccount.DistributedInfo-End-->
 
@@ -72,11 +80,13 @@ domainInfo: DomainAccountInfo
 
 域账号信息，默认为空。
 
-**类型：** DomainAccountInfo
+**类型：** [DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i.md)
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-OsAccountInfo-domainInfo: DomainAccountInfo--><!--Device-OsAccountInfo-domainInfo: DomainAccountInfo-End-->
 
@@ -92,9 +102,11 @@ isActivated: boolean
 
 **类型：** boolean
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-OsAccountInfo-isActivated: boolean--><!--Device-OsAccountInfo-isActivated: boolean-End-->
 
@@ -116,7 +128,7 @@ isActived: boolean
 
 **废弃版本：** 11
 
-**替代接口：** [osAccount.OsAccountInfo.isActivated](arkts-basicservices-osaccount-osaccountinfo-i.md#isactivated)
+**替代接口：** [isActivated](#isActivated)
 
 <!--Device-OsAccountInfo-isActived: boolean--><!--Device-OsAccountInfo-isActived: boolean-End-->
 
@@ -132,9 +144,11 @@ isCreateCompleted: boolean
 
 **类型：** boolean
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-OsAccountInfo-isCreateCompleted: boolean--><!--Device-OsAccountInfo-isCreateCompleted: boolean-End-->
 
@@ -150,9 +164,11 @@ isUnlocked: boolean
 
 **类型：** boolean
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-OsAccountInfo-isUnlocked: boolean--><!--Device-OsAccountInfo-isUnlocked: boolean-End-->
 
@@ -174,7 +190,7 @@ isVerified: boolean
 
 **废弃版本：** 11
 
-**替代接口：** [osAccount.OsAccountInfo.isUnlocked](arkts-basicservices-osaccount-osaccountinfo-i.md#isunlocked)
+**替代接口：** [isUnlocked](#isUnlocked)
 
 <!--Device-OsAccountInfo-isVerified: boolean--><!--Device-OsAccountInfo-isVerified: boolean-End-->
 
@@ -190,9 +206,11 @@ lastLoginTime: long
 
 **类型：** long
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-OsAccountInfo-lastLoginTime: long--><!--Device-OsAccountInfo-lastLoginTime: long-End-->
 
@@ -208,9 +226,11 @@ localId: int
 
 **类型：** int
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-OsAccountInfo-localId: int--><!--Device-OsAccountInfo-localId: int-End-->
 
@@ -226,9 +246,11 @@ localName: string
 
 **类型：** string
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-OsAccountInfo-localName: string--><!--Device-OsAccountInfo-localName: string-End-->
 
@@ -244,9 +266,11 @@ photo: string
 
 **类型：** string
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-OsAccountInfo-photo: string--><!--Device-OsAccountInfo-photo: string-End-->
 
@@ -262,9 +286,11 @@ serialNumber: long
 
 **类型：** long
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-OsAccountInfo-serialNumber: long--><!--Device-OsAccountInfo-serialNumber: long-End-->
 
@@ -278,11 +304,13 @@ type: OsAccountType
 
 系统账号类型。
 
-**类型：** OsAccountType
+**类型：** [OsAccountType](arkts-basicservices-osaccount-osaccounttype-e.md)
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-OsAccountInfo-type: OsAccountType--><!--Device-OsAccountInfo-type: OsAccountType-End-->
 

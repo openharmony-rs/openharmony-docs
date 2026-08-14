@@ -1,44 +1,36 @@
 # HeartRateResponse
 
-心率传感器数据改变后的回调函数的响应对象，包含心率值数据。
+心率传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md#Response)。
 
-**起始版本：** 3
+**继承/实现关系：** HeartRateResponse extends [Response](arkts-sensorservice-sensor-response-i.md#Response)
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**起始版本：** 23
 
-**废弃版本：** 8
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**替代接口：** ohos.sensor/sensor#HeartRateResponse
+**废弃版本：** -1
 
-**需要权限：** ohos.permission.READ_HEALTH_DATA
+<!--Device-sensor-interface HeartRateResponse--><!--Device-sensor-interface HeartRateResponse-End-->
 
-<!--Device-unnamed-export interface HeartRateResponse--><!--Device-unnamed-export interface HeartRateResponse-End-->
-
-**系统能力：** SystemCapability.Sensors.Sensor.Lite
+**系统能力：** SystemCapability.Sensors.Sensor
 
 ## heartRate
 
 ```TypeScript
-heartRate: number
+heartRate: double
 ```
 
-心率值。单位：次/分钟（bpm）。取值范围：取值为实际上报物理量，由硬件传感器决定。正常成人静息心率约为60-100 bpm。
+用户的心率数值。单位：bpm（beats per minute，每分钟心跳次数）。
 
-**类型：** number
+**类型：** double
 
-**起始版本：** 3
+**起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**废弃版本：** 8
+**废弃版本：** -1
 
-**替代接口：** ohos.sensor/sensor#HeartRateResponse.heartRate
+<!--Device-HeartRateResponse-heartRate: double--><!--Device-HeartRateResponse-heartRate: double-End-->
 
-**需要权限：** ohos.permission.READ_HEALTH_DATA
-
-**模型约束：** 此接口仅可在FA模型下使用。
-
-<!--Device-HeartRateResponse-heartRate: number--><!--Device-HeartRateResponse-heartRate: number-End-->
-
-**系统能力：** SystemCapability.Sensors.Sensor.Lite
+**系统能力：** SystemCapability.Sensors.Sensor
 

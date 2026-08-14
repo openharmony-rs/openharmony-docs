@@ -1,10 +1,12 @@
 # TextStyle
 
-文本样式。
+文本样式，用于控制文本的视觉表现属性，包括字体、颜色、字号、间距、装饰线和阴影等。TextStyle通过[ParagraphBuilder](arkts-arkgraphics2d-text-paragraphbuilder-c.md#ParagraphBuilder)的 [pushStyle](arkts-arkgraphics2d-text-paragraphbuilder-c.md#pushStyle)方法应用到后续添加的文本内容，与[ParagraphStyle](arkts-arkgraphics2d-text-paragraphstyle-i.md#ParagraphStyle)（控制段落级 别属性）配合使用。同一段落中可通过多次pushStyle实现对不同文本片段应用不同样式。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-text-interface TextStyle--><!--Device-text-interface TextStyle-End-->
 
@@ -16,13 +18,15 @@
 backgroundRect?: RectStyle
 ```
 
-文本矩形框样式。
+文本矩形框样式。当需要为文本添加背景矩形框（如设置背景色、圆角等）时传入。
 
-**类型：** RectStyle
+**类型：** [RectStyle](arkts-arkgraphics2d-text-rectstyle-i.md)
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -36,13 +40,15 @@ backgroundRect?: RectStyle
 badgeType?: TextBadgeType
 ```
 
-设置文本排版时是否使能上标或下标。TEXT\_SUPERSCRIPT表示使能上标，TEXT\_SUBSCRIPT表示使能下标，默认值为TEXT\_BADGE\_NONE表示不使能。
+设置文本排版时是否使能上标或下标。TEXT_SUPERSCRIPT表示使能上标，TEXT_SUBSCRIPT表示使能下标，默认值为TEXT_BADGE_NONE表示不使能。
 
-**类型：** TextBadgeType
+**类型：** [TextBadgeType](arkts-arkgraphics2d-text-textbadgetype-e.md)
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -58,11 +64,13 @@ baseline?: TextBaseline
 
 文本基线类型，默认为ALPHABETIC。
 
-**类型：** TextBaseline
+**类型：** [TextBaseline](arkts-arkgraphics2d-text-textbaseline-e.md)
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -76,13 +84,15 @@ baseline?: TextBaseline
 baselineShift?: double
 ```
 
-文本下划线的偏移距离，浮点数，单位为物理像素px，默认为0.0。
+文本基线的垂直偏移距离，浮点数，单位为物理像素px，默认为0.0。
 
 **类型：** double
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -100,9 +110,11 @@ color?: common2D.Color
 
 **类型：** common2D.Color
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -118,11 +130,13 @@ decoration?: Decoration
 
 装饰线设置，默认不使用装饰线。
 
-**类型：** Decoration
+**类型：** [Decoration](arkts-arkgraphics2d-text-decoration-i.md)
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -136,13 +150,15 @@ decoration?: Decoration
 ellipsis?: string
 ```
 
-省略号文本，表示省略号生效后使用该字段值替换省略号部分。
+省略号文本，表示省略号生效后使用该字段值替换省略号部分，默认为空字符串，即使用系统默认省略号…（U+2026）。与ParagraphStyle的tab属性共同配置时，tab属性无效。
 
 **类型：** string
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -160,9 +176,11 @@ ellipsisMode?: EllipsisMode
 
 **类型：** EllipsisMode
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -176,13 +194,15 @@ ellipsisMode?: EllipsisMode
 fontEdging?: drawing.FontEdging
 ```
 
-绘制文本的边缘处理方式，默认值为ANTI\_ALIAS。
+绘制文本的边缘处理方式，默认值为ANTI_ALIAS。
 
 **类型：** drawing.FontEdging
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -198,13 +218,15 @@ fontEdging?: drawing.FontEdging
 fontFamilies?: Array<string>
 ```
 
-字体家族名称列表，默认为空，匹配系统字体。
+字体家族名称列表，默认为空，匹配系统字体。使用自定义字体时，需将加载字体时指定的名称填入此列表中。当与fontTypefaces同时设置时，fontTypefaces优先级更高，fontFamilies不生效。
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -218,13 +240,15 @@ fontFamilies?: Array<string>
 fontFeatures?: Array<FontFeature>
 ```
 
-文本字体特征数组。
+文本字体特征数组。当需要启用或禁用特定字体特性（如连字、字距调整等）时传入。
 
 **类型：** Array&lt;FontFeature&gt;
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -242,9 +266,11 @@ fontSize?: double
 
 **类型：** double
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -262,9 +288,11 @@ fontStyle?: FontStyle
 
 **类型：** FontStyle
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -278,13 +306,15 @@ fontStyle?: FontStyle
 fontTypefaces?: Array<drawing.Typeface>
 ```
 
-字体对象数组
+指定排版字体对象数组，用于优先使用指定的字体对象进行文本塑形，跳过字体匹配流程。当数组中某个字体对象无法塑形部分文字时，未能塑形的文字将使用系统字体进行塑形。默认为空数组，表示不指定字体对象，使用默认字体匹配流程。 当fontTypefaces与[TextStyle](#TextStyle).fontFamilies同时设置时，fontTypefaces优先级更高。
 
 **类型：** Array&lt;drawing.Typeface&gt;
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -300,13 +330,15 @@ fontTypefaces?: Array<drawing.Typeface>
 fontVariations?: Array<FontVariation>
 ```
 
-可变字体属性数组。
+可变字体属性数组。当需要调整可变字体的可变轴参数（如字重轴、字宽轴等）时传入。
 
 **类型：** Array&lt;FontVariation&gt;
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -320,13 +352,15 @@ fontVariations?: Array<FontVariation>
 fontWeight?: FontWeight
 ```
 
-字重，默认为W400。 目前只有系统默认字体支持字重的调节，其他字体设置字重值小于semi-bold（即W600）时字体粗细无变化，当设置字重值大于等于semi-bold（即W600）时可能会触发伪加粗效果。
+字重，默认为W400。 在&lt;!--RP1--&gt;OpenHarmony 6.1&lt;!--RP1End--&gt;之前，仅系统字体中的可变字体支持字重调节；从&lt;!--RP1--&gt;OpenHarmony 6.1&lt;!--RP1End--&gt;开 始，系统字体与三方注册字体中的可变字体均支持字重调节。非可变字体设置字重值小于semi-bold（即W600）时字体粗细无变化，设置字重值大于等于semi-bold（即W600）时可能会触发伪加粗效果。
 
 **类型：** FontWeight
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -342,11 +376,13 @@ fontWidth?: FontWidth
 
 字体宽度，默认为NORMAL。
 
-**类型：** FontWidth
+**类型：** [FontWidth](arkts-arkgraphics2d-text-fontwidth-e.md)
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -364,9 +400,11 @@ true表示将行间距平分至行的顶部与底部，false则不平分，默�
 
 **类型：** boolean
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -380,13 +418,15 @@ true表示将行间距平分至行的顶部与底部，false则不平分，默�
 heightOnly?: boolean
 ```
 
-true表示根据字体大小和heightScale设置文本框的高度，false表示根据行高和行距，默认为false。
+true表示根据字体大小和heightScale设置文本框的高度，false表示根据行高和行距设置文本框高度，默认为false。
 
 **类型：** boolean
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -404,9 +444,11 @@ heightScale?: double
 
 **类型：** double
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -424,9 +466,11 @@ letterSpacing?: double
 
 **类型：** double
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -440,13 +484,15 @@ letterSpacing?: double
 lineHeightMaximum?: double
 ```
 
-行高上限，单位为物理像素px。若同时应用行高缩放，行高上限在[TextStyle]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_.heightScale大于0时生效。取值为正数浮点数，默认值为Number.MAX\_VALUE。
+行高上限，单位为物理像素px。若同时应用行高缩放，行高上限在[TextStyle](#TextStyle).heightScale大于0时生效。取值为正数浮点数，默认值为Number.MAX_VALUE。
 
 **类型：** double
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -460,13 +506,15 @@ lineHeightMaximum?: double
 lineHeightMinimum?: double
 ```
 
-行高下限，单位为物理像素px。若同时应用行高缩放，行高下限在[TextStyle]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_.heightScale大于0时生效。取值范围为非负浮点数，默认值为0。
+行高下限，单位为物理像素px。若同时应用行高缩放，行高下限在[TextStyle](#TextStyle).heightScale大于0时生效。取值范围为非负浮点数，默认值为0。
 
 **类型：** double
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -480,13 +528,15 @@ lineHeightMinimum?: double
 lineHeightStyle?: LineHeightStyle
 ```
 
-行高缩放基数样式。默认为FONT\_SIZE。
+行高缩放基数样式。默认为FONT_SIZE。
 
 **类型：** LineHeightStyle
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -504,9 +554,11 @@ locale?: string
 
 **类型：** string
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -520,13 +572,15 @@ locale?: string
 textShadows?: Array<TextShadow>
 ```
 
-文本阴影数组。
+文本阴影数组。当需要为文本添加阴影效果时传入。
 
-**类型：** Array&lt;TextShadow&gt;
+**类型：** Array&lt;[TextShadow](arkts-arkgraphics2d-text-textshadow-i.md)&gt;
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -544,9 +598,11 @@ wordSpacing?: double
 
 **类型：** double
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 

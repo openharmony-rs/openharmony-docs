@@ -2,9 +2,11 @@
 
 Enumerates audio effect flags.
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-audio-enum EffectFlag--><!--Device-audio-enum EffectFlag-End-->
 
@@ -20,9 +22,11 @@ RENDER_EFFECT_FLAG = 0
 
 Audio render effect.
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-EffectFlag-RENDER_EFFECT_FLAG = 0--><!--Device-EffectFlag-RENDER_EFFECT_FLAG = 0-End-->
 
@@ -38,9 +42,11 @@ CAPTURE_EFFECT_FLAG = 1
 
 Audio capture effect.
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-EffectFlag-CAPTURE_EFFECT_FLAG = 1--><!--Device-EffectFlag-CAPTURE_EFFECT_FLAG = 1-End-->
 

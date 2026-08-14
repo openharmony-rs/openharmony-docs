@@ -6,11 +6,13 @@
 function dumpJsHeapData(filename : string) : void
 ```
 
-�����������ת���� > **ע��** > > ����������ѵ��������ʱ���Ҹýӿ�Ϊͬ���ӿڣ����鲻Ҫ���ϼܰ汾�е��øýӿڣ��Ա���Ӧ�ö�����Ӱ���û����顣
+虚拟机堆数据转储。 > **注意** > > 由于虚拟机堆导出极其耗时，且该接口为同步接口，建议不要在上架版本中调用该接口，以避免应用冻屏，影响用户体验。
 
-**起始版本：** 9
+**起始版本：** 26.1.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为26.1.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+
+**废弃版本：** -1
 
 <!--Device-hidebug-function dumpJsHeapData(filename : string) : void--><!--Device-hidebug-function dumpJsHeapData(filename : string) : void-End-->
 
@@ -20,15 +22,15 @@ function dumpJsHeapData(filename : string) : void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| filename | string | 是 | �û��Զ���������������ת��������ļ���������Ӧ�õ�\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_Ŀ¼�������Ըò���������heapsnapshot�ļ���string���ȵ����ֵΪ128�ֽڡ� |
+| filename | string | 是 | 用户自定义的虚拟机堆数据转储输出的文件名，将在应用的`files`目录下生成以该参数命名的heapsnapshot文件。string长度的最大值为128字节。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | the parameter check failed, Parameter type error |
+| [401](../../errorcode-universal.md#401-参数检查失败) | the parameter check failed, Parameter type error |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -48,15 +50,17 @@ try {
 function dumpJsHeapData(filename: string, needClean: boolean): void
 ```
 
-�����������ת����֧�����nodeId���档 > **ע��** > > ����������ѵ��������ʱ���Ҹýӿ�Ϊͬ���ӿڣ����鲻Ҫ���ϼܰ汾�е��øýӿڣ��Ա���Ӧ�ö�����Ӱ���û����顣
+虚拟机堆数据转储，支持清除nodeId缓存。 > **注意** > > 由于虚拟机堆导出极其耗时，且该接口为同步接口，建议不要在上架版本中调用该接口，以避免应用冻屏，影响用户体验。
 
-**起始版本：** 24
+**起始版本：** 26.1.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为24；ArkTS-Sta起始版本为26.1.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-hidebug-function dumpJsHeapData(filename: string, needClean: boolean): void--><!--Device-hidebug-function dumpJsHeapData(filename: string, needClean: boolean): void-End-->
 
@@ -66,10 +70,10 @@ function dumpJsHeapData(filename: string, needClean: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| filename | string | 是 | �û��Զ�����������ת���ļ���������Ӧ�õ�filesĿ¼������fileName.heapsnapshot��ʽ�ļ���string���ȵ����ֵΪ128�ֽڡ� |
-| needClean | boolean | 是 | ת���ѿ���ǰ�Ƿ���Ҫ���nodeId���档true����Ҫ�����false������Ҫ����� |
+| filename | string | 是 | 用户自定义的虚拟机堆转储文件名，将在应用的files目录下生成fileName.heapsnapshot格式文件。string长度的最大值为128字节。 |
+| needClean | boolean | 是 | 转储堆快照前是否需要清除nodeId缓存。true：需要清除；false：不需要清除。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { hidebug } from '@kit.PerformanceAnalysisKit';

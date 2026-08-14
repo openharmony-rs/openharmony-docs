@@ -6,6 +6,8 @@ Define the ratio of characters entered by the the percentage of InputCounterOpti
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface InputCounterOptions--><!--Device-unnamed-declare interface InputCounterOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -23,6 +25,8 @@ It is the color of counter when textField hasn't wanted to exceed the maximum ch
 **起始版本：** 22
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,6 +50,8 @@ It is the color of counter when textField wants to exceed the maximum character 
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
@@ -60,7 +66,7 @@ It is the color of counter when textField wants to exceed the maximum character 
 highlightBorder?: boolean
 ```
 
-If the current input character count reaches the maximum character count and users want to exceed the normal input, the border will turn red. If this parameter is true, the red border displayed. \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_NOTE\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_: \_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_Whether to highlight the text box border and character counter subscript in red. \_\_\_HTML\_TAG\_DESC\_USD\_4\_\_\_If options is not set, the text box border and character counter subscript turn red \_\_\_HTML\_TAG\_DESC\_USD\_5\_\_\_when the number of characters entered reaches the limit. \_\_\_HTML\_TAG\_DESC\_USD\_6\_\_\_If the character counter is displayed and thresholdPercentage is set to a valid value, the text box border and character counter subscript turn red when the number of entered characters exceeds the limit. \_\_\_HTML\_TAG\_DESC\_USD\_7\_\_\_The value true (default) means to highlight the text box border and character counter subscript in red. \_\_\_HTML\_TAG\_DESC\_USD\_8\_\_\_
+If the current input character count reaches the maximum character count and users want to exceed the normal input, the border will turn red. If this parameter is true, the red border displayed. &lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: &lt;br&gt;Whether to highlight the text box border and character counter subscript in red. &lt;br&gt;If options is not set, the text box border and character counter subscript turn red &lt;br&gt;when the number of characters entered reaches the limit. &lt;br&gt;If the character counter is displayed and thresholdPercentage is set to a valid value, the text box border and character counter subscript turn red when the number of entered characters exceeds the limit. &lt;br&gt;The value true (default) means to highlight the text box border and character counter subscript in red. &lt;/p&gt;
 
 **类型：** boolean
 
@@ -69,6 +75,8 @@ If the current input character count reaches the maximum character count and use
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -84,13 +92,15 @@ If the current input character count reaches the maximum character count and use
 thresholdPercentage?: number
 ```
 
-It is the numerator bit of the percentage and used as a threshold. If the number of characters input reaches the maximum number of characters multiplied by this threshold, the counter is displayed. \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_NOTE\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_: \_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_Threshold percentage for displaying the character counter. \_\_\_HTML\_TAG\_DESC\_USD\_4\_\_\_The character counter is displayed when the number of characters that have been entered is greater than the maximum number of characters multiplied by the threshold percentage value. \_\_\_HTML\_TAG\_DESC\_USD\_5\_\_\_When displayed, the character counter is in the following format: \_\_\_HTML\_TAG\_DESC\_USD\_6\_\_\_Number of characters that have been entered/Maximum number of characters allowed. \_\_\_HTML\_TAG\_DESC\_USD\_7\_\_\_It is visible when the number of characters entered is greater than the character limit multiplied by the threshold percentage value. \_\_\_HTML\_TAG\_DESC\_USD\_8\_\_\_Value range: [1, 100] \_\_\_HTML\_TAG\_DESC\_USD\_9\_\_\_If the value is not an integer, it is rounded down to the nearest integer. \_\_\_HTML\_TAG\_DESC\_USD\_10\_\_\_If the value exceeds the valid value range, the character counter is not displayed. \_\_\_HTML\_TAG\_DESC\_USD\_11\_\_\_If the value is \_\_\_HTML\_TAG\_DESC\_USD\_12\_\_\_undefined\_\_\_HTML\_TAG\_DESC\_USD\_13\_\_\_, the character counter is displayed, but this parameter has no effect. \_\_\_HTML\_TAG\_DESC\_USD\_14\_\_\_
+It is the numerator bit of the percentage and used as a threshold. If the number of characters input reaches the maximum number of characters multiplied by this threshold, the counter is displayed. &lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: &lt;br&gt;Threshold percentage for displaying the character counter. &lt;br&gt;The character counter is displayed when the number of characters that have been entered is greater than the maximum number of characters multiplied by the threshold percentage value. &lt;br&gt;When displayed, the character counter is in the following format: &lt;br&gt;Number of characters that have been entered/Maximum number of characters allowed. &lt;br&gt;It is visible when the number of characters entered is greater than the character limit multiplied by the threshold percentage value. &lt;br&gt;Value range: [1, 100] &lt;br&gt;If the value is not an integer, it is rounded down to the nearest integer. &lt;br&gt;If the value exceeds the valid value range, the character counter is not displayed. &lt;br&gt;If the value is &lt;em&gt;undefined&lt;/em&gt;, the character counter is displayed, but this parameter has no effect. &lt;/p&gt;
 
 **类型：** number
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

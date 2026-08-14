@@ -12,6 +12,8 @@ function toSendableValues(values: NonSendableValues): collections.Array<ValueTyp
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 <!--Device-sendableRelationalStore-function toSendableValues(values: NonSendableValues): collections.Array<ValueType>--><!--Device-sendableRelationalStore-function toSendableValues(values: NonSendableValues): collections.Array<ValueType>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -20,7 +22,7 @@ function toSendableValues(values: NonSendableValues): collections.Array<ValueTyp
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| values | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 不可跨线程传递的数组数据。 |
+| values | [NonSendableValues](arkts-arkdata-sendablerelationalstore-nonsendablevalues-t.md) | 是 | 不可跨线程传递的数组数据。 |
 
 **返回值：**
 
@@ -32,9 +34,9 @@ function toSendableValues(values: NonSendableValues): collections.Array<ValueTyp
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [14800000](../../apis-basic-services-kit/errorcode-settings.md#14800000-参数检查失败) | Inner error. |
+| [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { relationalStore, sendableRelationalStore } from '@kit.ArkData';

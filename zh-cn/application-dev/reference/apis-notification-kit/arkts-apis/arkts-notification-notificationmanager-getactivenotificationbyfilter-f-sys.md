@@ -1,5 +1,11 @@
 # getActiveNotificationByFilter（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { notificationManager } from '@kit.NotificationKit';
+```
+
 ## getActiveNotificationByFilter
 
 ```TypeScript
@@ -11,6 +17,8 @@ function getActiveNotificationByFilter(filter: NotificationFilter, callback: Asy
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -24,18 +32,18 @@ function getActiveNotificationByFilter(filter: NotificationFilter, callback: Asy
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| filter | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 查询普通实况窗的过滤条件。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;NotificationRequest&gt; | 是 | 获取满足条件的普通实况通知信息的回调函数。 |
+| filter | NotificationFilter | 是 | 查询普通实况窗的过滤条件。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;NotificationRequest&gt; | 是 | 获取满足条件的普通实况通知信息的回调函数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600007](../errorcode-notification.md#1600007-通知不存在) | The notification does not exist. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -44,11 +52,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { notificationSubscribe } from '@kit.NotificationKit';
 
 let bundleOption: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 let notificationKey: notificationSubscribe.NotificationKey = {
     id: 11,
-    label: ""
+    label: ''
 };
 let filter: notificationManager.NotificationFilter = {
     bundle: bundleOption,
@@ -59,7 +67,7 @@ let getActiveNotificationByFilterCallback = (err: BusinessError, data: notificat
     if (err) {
         console.error(`getActiveNotificationByFilter failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("getActiveNotificationByFilter success");
+        console.info('getActiveNotificationByFilter success');
     }
 }
 notificationManager.getActiveNotificationByFilter(filter, getActiveNotificationByFilterCallback);
@@ -73,12 +81,12 @@ import { notificationSubscribe } from '@kit.NotificationKit';
 
 let bundleOption: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 let notificationKey: notificationSubscribe.NotificationKey = {
     // 需根据实际情况进行替换
     id: 0,
-    label: "text"
+    label: 'text'
 };
 let filter: notificationManager.NotificationFilter = {
     bundle: bundleOption,
@@ -90,7 +98,7 @@ let getActiveNotificationByFilterCallback = (err: BusinessError | null, data: no
     if (err) {
         console.error(`getActiveNotificationByFilter failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("getActiveNotificationByFilter success");
+        console.info('getActiveNotificationByFilter success');
     }
 }
 notificationManager.getActiveNotificationByFilter(filter, getActiveNotificationByFilterCallback);
@@ -107,7 +115,9 @@ function getActiveNotificationByFilter(filter: NotificationFilter, callback: Asy
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -121,14 +131,14 @@ function getActiveNotificationByFilter(filter: NotificationFilter, callback: Asy
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| filter | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 查询普通实况窗的过滤条件。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;NotificationRequest \| null&gt; | 是 | 获取满足条件的普通实况通知信息的回调函数。 |
+| filter | NotificationFilter | 是 | 查询普通实况窗的过滤条件。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;NotificationRequest \| null&gt; | 是 | 获取满足条件的普通实况通知信息的回调函数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600007](../errorcode-notification.md#1600007-通知不存在) | The notification does not exist. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found. |
 
@@ -145,6 +155,8 @@ function getActiveNotificationByFilter(filter: NotificationFilter): Promise<Noti
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
 <!--Device-notificationManager-function getActiveNotificationByFilter(filter: NotificationFilter): Promise<NotificationRequest>--><!--Device-notificationManager-function getActiveNotificationByFilter(filter: NotificationFilter): Promise<NotificationRequest>-End-->
@@ -157,7 +169,7 @@ function getActiveNotificationByFilter(filter: NotificationFilter): Promise<Noti
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| filter | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 查询普通实况窗的过滤条件。 |
+| filter | NotificationFilter | 是 | 查询普通实况窗的过滤条件。 |
 
 **返回值：**
 
@@ -169,11 +181,11 @@ function getActiveNotificationByFilter(filter: NotificationFilter): Promise<Noti
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600007](../errorcode-notification.md#1600007-通知不存在) | The notification does not exist. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -182,11 +194,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { notificationSubscribe } from '@kit.NotificationKit';
 
 let bundleOption: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 let notificationKey: notificationSubscribe.NotificationKey = {
     id: 11,
-    label: ""
+    label: ''
 };
 let filter: notificationManager.NotificationFilter = {
     bundle: bundleOption,
@@ -208,12 +220,12 @@ import { notificationSubscribe } from '@kit.NotificationKit';
 
 let bundleOption: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 let notificationKey: notificationSubscribe.NotificationKey = {
     // 需根据实际情况进行替换
     id: 0,
-    label: "text"
+    label: 'text'
 };
 let filter: notificationManager.NotificationFilter = {
     bundle: bundleOption,
@@ -240,7 +252,9 @@ function getActiveNotificationByFilter(filter: NotificationFilter): Promise<Noti
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -254,7 +268,7 @@ function getActiveNotificationByFilter(filter: NotificationFilter): Promise<Noti
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| filter | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 查询普通实况窗的过滤条件。 |
+| filter | NotificationFilter | 是 | 查询普通实况窗的过滤条件。 |
 
 **返回值：**
 
@@ -266,7 +280,7 @@ function getActiveNotificationByFilter(filter: NotificationFilter): Promise<Noti
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600007](../errorcode-notification.md#1600007-通知不存在) | The notification does not exist. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found. |
 

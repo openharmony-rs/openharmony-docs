@@ -2,9 +2,11 @@
 
 新版本数据。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-update-export interface NewVersionInfo--><!--Device-update-export interface NewVersionInfo-End-->
 
@@ -20,11 +22,13 @@ versionComponents: Array<VersionComponent>
 
 版本组件。
 
-**类型：** Array&lt;VersionComponent&gt;
+**类型：** Array&lt;[VersionComponent](arkts-basicservices-update-versioncomponent-i-sys.md)&gt;
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-NewVersionInfo-versionComponents: Array<VersionComponent>--><!--Device-NewVersionInfo-versionComponents: Array<VersionComponent>-End-->
 
@@ -40,11 +44,13 @@ versionDigestInfo: VersionDigestInfo
 
 版本摘要。
 
-**类型：** VersionDigestInfo
+**类型：** [VersionDigestInfo](arkts-basicservices-update-versiondigestinfo-i-sys.md)
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-NewVersionInfo-versionDigestInfo: VersionDigestInfo--><!--Device-NewVersionInfo-versionDigestInfo: VersionDigestInfo-End-->
 

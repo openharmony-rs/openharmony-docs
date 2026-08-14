@@ -2,9 +2,11 @@
 
 应用本地和云端文件个数以及大小信息。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-cloudSyncManager-interface CloudFileInfo--><!--Device-cloudSyncManager-interface CloudFileInfo-End-->
 
@@ -16,13 +18,15 @@
 bothFileCount: int
 ```
 
-本地已上传云端的文件总个数，取值范围[0, INT32\_MAX]，单位：个。
+本地已上传云端的文件总个数，取值范围[0, INT32_MAX]，单位：个。
 
 **类型：** int
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-CloudFileInfo-bothFileCount: int--><!--Device-CloudFileInfo-bothFileCount: int-End-->
 
@@ -34,13 +38,15 @@ bothFileCount: int
 bothFileTotalSize: long
 ```
 
-本地已上传云端的文件总大小，取值范围[0, INT64\_MAX]，单位：Byte。
+本地已上传云端的文件总大小，取值范围[0, INT64_MAX]，单位：Byte。
 
 **类型：** long
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-CloudFileInfo-bothFileTotalSize: long--><!--Device-CloudFileInfo-bothFileTotalSize: long-End-->
 
@@ -52,13 +58,15 @@ bothFileTotalSize: long
 cloudFileCount: int
 ```
 
-本地未下载的云端文件总个数，取值范围[0, INT32\_MAX]，单位：个。
+本地未下载的云端文件总个数，取值范围[0, INT32_MAX]，单位：个。
 
 **类型：** int
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-CloudFileInfo-cloudFileCount: int--><!--Device-CloudFileInfo-cloudFileCount: int-End-->
 
@@ -70,13 +78,15 @@ cloudFileCount: int
 cloudFileTotalSize: long
 ```
 
-本地未下载的云端文件总大小，取值范围[0, INT64\_MAX]，单位：Byte。
+本地未下载的云端文件总大小，取值范围[0, INT64_MAX]，单位：Byte。
 
 **类型：** long
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-CloudFileInfo-cloudFileTotalSize: long--><!--Device-CloudFileInfo-cloudFileTotalSize: long-End-->
 
@@ -88,13 +98,15 @@ cloudFileTotalSize: long
 localFileCount: int
 ```
 
-本地未上传云端的文件总个数，取值范围[0, INT32\_MAX]，单位：个。
+本地未上传云端的文件总个数，取值范围[0, INT32_MAX]，单位：个。
 
 **类型：** int
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-CloudFileInfo-localFileCount: int--><!--Device-CloudFileInfo-localFileCount: int-End-->
 
@@ -106,13 +118,15 @@ localFileCount: int
 localFileTotalSize: long
 ```
 
-本地未上传云端的文件总大小，取值范围[0, INT64\_MAX]，单位：Byte。
+本地未上传云端的文件总大小，取值范围[0, INT64_MAX]，单位：Byte。
 
 **类型：** long
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-CloudFileInfo-localFileTotalSize: long--><!--Device-CloudFileInfo-localFileTotalSize: long-End-->
 

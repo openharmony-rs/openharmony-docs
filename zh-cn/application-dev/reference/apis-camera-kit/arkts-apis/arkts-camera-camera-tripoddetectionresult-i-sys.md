@@ -1,14 +1,16 @@
 # TripodDetectionResult（系统接口）
 
-TripodDetectionResult extends [SceneFeatureDetectionResult]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ Describes the tripod detection result.
+TripodDetectionResult extends [SceneFeatureDetectionResult](arkts-camera-camera-scenefeaturedetectionresult-i-sys.md#SceneFeatureDetectionResult（系统接口）) Describes the tripod detection result.
 
-**继承/实现关系：** TripodDetectionResult extends [SceneFeatureDetectionResult](arkts-camera-camera-scenefeaturedetectionresult-i-sys.md)
+**继承/实现关系：** TripodDetectionResult extends [SceneFeatureDetectionResult](arkts-camera-camera-scenefeaturedetectionresult-i-sys.md#SceneFeatureDetectionResult（系统接口）)
 
-**起始版本：** 13
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为13；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-<!--Device-camera-interface TripodDetectionResult extends SceneFeatureDetectionResult--><!--Device-camera-interface TripodDetectionResult extends SceneFeatureDetectionResult-End-->
+**废弃版本：** -1
+
+<!--Device-camera-interface TripodDetectionResult--><!--Device-camera-interface TripodDetectionResult-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -22,11 +24,13 @@ readonly tripodStatus: TripodStatus
 
 Tripod status.
 
-**类型：** TripodStatus
+**类型：** [TripodStatus](arkts-camera-camera-tripodstatus-e-sys.md)
 
-**起始版本：** 13
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为13；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TripodDetectionResult-readonly tripodStatus: TripodStatus--><!--Device-TripodDetectionResult-readonly tripodStatus: TripodStatus-End-->
 

@@ -8,9 +8,11 @@ function killProcessesByBundleName(bundleName: string, clearPageStack: boolean, 
 
 终止指定应用包名的应用进程。使用Promise异步回调。
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.KILL_APP_PROCESSES or ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
@@ -24,7 +26,7 @@ function killProcessesByBundleName(bundleName: string, clearPageStack: boolean, 
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 表示需要终止进程的应用包名。 |
 | clearPageStack | boolean | 是 | 表示是否清除页面堆栈。true表示清除，false表示不清除。 |
-| appIndex | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 应用分身Id，默认值为0。取值为0时，表示终止主应用的所有进程。取值大于0时，表示终止指定分身应用的所有进程。 |
+| appIndex | int | 否 | 应用分身Id，默认值为0。取值为0时，表示终止主应用的所有进程。取值大于0时，表示终止指定分身应用的所有进程。 |
 
 **返回值：**
 
@@ -36,11 +38,11 @@ function killProcessesByBundleName(bundleName: string, clearPageStack: boolean, 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | If the input parameter is not valid parameter. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | If the input parameter is not valid parameter. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { appManager } from '@kit.AbilityKit';

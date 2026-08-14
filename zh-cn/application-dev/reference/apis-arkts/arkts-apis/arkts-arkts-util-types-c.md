@@ -1,10 +1,12 @@
 # types
 
-Check the type of parameter.
+提供检查不同内置对象类型的 API，例如 ArrayBuffer、Map 和 Set，以避免类型错误导致的异常。
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 <!--Device-util-class types--><!--Device-util-class types-End-->
 
@@ -16,15 +18,25 @@ Check the type of parameter.
 constructor()
 ```
 
-The types constructor
+用于创建 **Types** 对象的构造函数。
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-constructor()--><!--Device-types-constructor()-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 示例
+
+```TypeScript
+let type = new util.types();
+```
 
 ## isAnyArrayBuffer
 
@@ -32,11 +44,15 @@ The types constructor
 isAnyArrayBuffer(value: Object): boolean
 ```
 
-Check whether the entered value is of arraybuffer or sharedarraybuffer type.
+判断入参是否为 ArrayBuffer 或 SharedArrayBuffer 类型。
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isAnyArrayBuffer(value: Object): boolean--><!--Device-types-isAnyArrayBuffer(value: Object): boolean-End-->
 
@@ -46,13 +62,66 @@ Check whether the entered value is of arraybuffer or sharedarraybuffer type.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | A ArrayBuffer or SharedArrayBuffer value |
+| value | Object | 是 | 要检查的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns true if the value is a built-in ArrayBuffer or SharedArrayBuffer instance. |
+| boolean | 检查结果。如果入参为 ArrayBuffer 或 SharedArrayBuffer 类型，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+```TypeScript
+let type = new util.types();
+let result = type.isAnyArrayBuffer(new ArrayBuffer(0));
+console.info("result = " + result);
+// 输出结果：result = true
+```
+
+## isArgumentsObject
+
+```TypeScript
+isArgumentsObject(value: Object): boolean
+```
+
+判断入参是否为 **arguments** 对象。
+
+**起始版本：** 8
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-types-isArgumentsObject(value: Object): boolean--><!--Device-types-isArgumentsObject(value: Object): boolean-End-->
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | Object | 是 | 要检查的对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 检查结果。如果入参为 **arguments** 对象，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+```TypeScript
+let type = new util.types();
+function foo() {
+    let result = type.isArgumentsObject(arguments);
+    console.info("result = " + result);
+}
+let f = foo();
+// 输出结果：result = true
+```
 
 ## isArrayBuffer
 
@@ -60,11 +129,15 @@ Check whether the entered value is of arraybuffer or sharedarraybuffer type.
 isArrayBuffer(value: Object): boolean
 ```
 
-Check whether the entered value is of arraybuffer type.
+判断入参是否为 ArrayBuffer 类型。
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isArrayBuffer(value: Object): boolean--><!--Device-types-isArrayBuffer(value: Object): boolean-End-->
 
@@ -74,13 +147,22 @@ Check whether the entered value is of arraybuffer type.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | A arraybuffer value |
+| value | Object | 是 | 要检查的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns true if the value is a built-in ArrayBuffer instance. |
+| boolean | 检查结果。如果入参为 ArrayBuffer 类型，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+```TypeScript
+let type = new util.types();
+let result = type.isArrayBuffer(new ArrayBuffer(0));
+console.info("result = " + result);
+// 输出结果：result = true
+```
 
 ## isArrayBufferView
 
@@ -88,11 +170,15 @@ Check whether the entered value is of arraybuffer type.
 isArrayBufferView(value: Object): boolean
 ```
 
-Check whether the type is included in the isAnyArrayBuffer.
+判断入参是否为 ArrayBufferView 类型。
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isArrayBufferView(value: Object): boolean--><!--Device-types-isArrayBufferView(value: Object): boolean-End-->
 
@@ -102,13 +188,22 @@ Check whether the type is included in the isAnyArrayBuffer.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | A included in the isAnyArrayBuffer value |
+| value | Object | 是 | 要检查的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns true if the value is an instance of one of the ArrayBuffer views, |
+| boolean | 检查结果。如果入参为 ArrayBufferView 类型，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+```TypeScript
+let type = new util.types();
+let result = type.isArrayBufferView(new Int8Array([]));
+console.info("result = " + result);
+// 输出结果：result = true
+```
 
 ## isAsyncFunction
 
@@ -116,11 +211,15 @@ Check whether the type is included in the isAnyArrayBuffer.
 isAsyncFunction(value: Object): boolean
 ```
 
-Check whether the value entered is an asynchronous function type.
+判断入参是否为异步函数。 > **说明：** > > 该接口无法对AsyncGenerator Function进行有效判断，建议通过获取函数的constructor.name属性与'AsyncGeneratorFunction'做判等的方式替代。 > > 该接口无法对Sendable class中的async成员函数进行有效判断，无替代方案。
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isAsyncFunction(value: Object): boolean--><!--Device-types-isAsyncFunction(value: Object): boolean-End-->
 
@@ -130,13 +229,52 @@ Check whether the value entered is an asynchronous function type.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | A async function value |
+| value | Object | 是 | 要检查的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns true if the value is an async function. |
+| boolean | 检查结果。如果入参为异步函数，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+```TypeScript
+let type = new util.types();
+let result = type.isAsyncFunction(async () => {});
+console.info("result = " + result);
+// 输出结果：result = true
+```
+
+该接口无法对Sendable class中的async成员函数进行有效判断，无替代方案。
+
+```TypeScript
+// /entry/src/main/ets/pages/test.ts
+export async function* asyncGeneratorFunc() {}
+```
+
+```TypeScript
+import { asyncGeneratorFunc } from './test'
+
+@Sendable
+class SendableClass {
+  async asyncFunction() {}
+}
+
+let type = new util.types();
+let result1 = type.isAsyncFunction(asyncGeneratorFunc);
+console.info("result = " + result1);
+// 输出结果：result = false
+
+console.info("asyncGeneratorFunc.constructor.name === AsyncGeneratorFunction : " +
+  (asyncGeneratorFunc.constructor.name === 'AsyncGeneratorFunction'));
+// 输出结果：asyncGeneratorFunc.constructor.name === AsyncGeneratorFunction : true
+
+const instance = new SendableClass();
+let result2 = type.isAsyncFunction(instance.asyncFunction);
+console.info("result = " + result2);
+// 输出结果：result = false
+```
 
 ## isBigInt64Array
 
@@ -144,11 +282,15 @@ Check whether the value entered is an asynchronous function type.
 isBigInt64Array(value: Object): boolean
 ```
 
-Check whether the entered value is of bigint64array array type.
+判断入参是否为 BigInt64Array 类型。
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isBigInt64Array(value: Object): boolean--><!--Device-types-isBigInt64Array(value: Object): boolean-End-->
 
@@ -158,13 +300,22 @@ Check whether the entered value is of bigint64array array type.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | A BigInt64Array value |
+| value | Object | 是 | 要检查的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns true if the value is a BigInt64Array instance. |
+| boolean | 检查结果。如果入参为 BigInt64Array 类型，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+```TypeScript
+let type = new util.types();
+let result = type.isBigInt64Array(new BigInt64Array([]));
+console.info("result = " + result);
+// 输出结果：result = true
+```
 
 ## isBigUint64Array
 
@@ -172,11 +323,15 @@ Check whether the entered value is of bigint64array array type.
 isBigUint64Array(value: Object): boolean
 ```
 
-Check whether the entered value is of biguint64array array array type.
+判断入参是否为 BigUint64Array 类型。
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isBigUint64Array(value: Object): boolean--><!--Device-types-isBigUint64Array(value: Object): boolean-End-->
 
@@ -186,13 +341,104 @@ Check whether the entered value is of biguint64array array array type.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | A BigUint64Array value |
+| value | Object | 是 | 要检查的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns true if the value is a BigUint64Array instance. |
+| boolean | 检查结果。如果入参为 BigUint64Array 类型，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+```TypeScript
+let type = new util.types();
+let result = type.isBigUint64Array(new BigUint64Array([]));
+console.info("result = " + result);
+// 输出结果：result = true
+```
+
+## isBooleanObject
+
+```TypeScript
+isBooleanObject(value: Object): boolean
+```
+
+判断入参是否为 Boolean 类型。 > **NOTE：**> > 本接口从 API version 8 起支持，从 API version 14 起废弃。无替代接口。
+
+**起始版本：** 8
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** 14
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-types-isBooleanObject(value: Object): boolean--><!--Device-types-isBooleanObject(value: Object): boolean-End-->
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | Object | 是 | 要检查的对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 检查结果。如果入参为 Boolean 类型，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+```TypeScript
+let type = new util.types();
+let result = type.isBooleanObject(new Boolean(true));
+console.info("result = " + result);
+// 输出结果：result = true
+```
+
+## isBoxedPrimitive
+
+```TypeScript
+isBoxedPrimitive(value: Object): boolean
+```
+
+判断入参是否为 Boolean、Number、String 或 Symbol 类型。 > **NOTE：**> > 本接口从 API version 8 起支持，从 API version 14 起废弃。无替代接口。
+
+**起始版本：** 8
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** 14
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-types-isBoxedPrimitive(value: Object): boolean--><!--Device-types-isBoxedPrimitive(value: Object): boolean-End-->
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | Object | 是 | 要检查的对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 检查结果。如果入参为 Boolean、Number、String 或 Symbol 类型，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+```TypeScript
+let type = new util.types();
+let result = type.isBoxedPrimitive(new Boolean(false));
+console.info("result = " + result);
+// 输出结果：result = true
+```
 
 ## isDataView
 
@@ -200,11 +446,15 @@ Check whether the entered value is of biguint64array array array type.
 isDataView(value: Object): boolean
 ```
 
-Check whether the entered value is of DataView type.
+判断入参是否为 DataView 类型。
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isDataView(value: Object): boolean--><!--Device-types-isDataView(value: Object): boolean-End-->
 
@@ -214,13 +464,23 @@ Check whether the entered value is of DataView type.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | A DataView value |
+| value | Object | 是 | 要检查的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns true if the value is a built-in DataView instance. |
+| boolean | 检查结果。如果入参为 DataView 类型，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+```TypeScript
+let type = new util.types();
+const ab = new ArrayBuffer(20);
+let result = type.isDataView(new DataView(ab));
+console.info("result = " + result);
+// 输出结果：result = true
+```
 
 ## isDate
 
@@ -228,11 +488,15 @@ Check whether the entered value is of DataView type.
 isDate(value: Object): boolean
 ```
 
-Check whether the entered value is of type date.
+判断入参是否为 Date 类型。
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isDate(value: Object): boolean--><!--Device-types-isDate(value: Object): boolean-End-->
 
@@ -242,13 +506,101 @@ Check whether the entered value is of type date.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | A Date value |
+| value | Object | 是 | 要检查的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns true if the value is a built-in Date instance. |
+| boolean | 检查结果。如果入参为 Date 类型，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+```TypeScript
+let type = new util.types();
+let result = type.isDate(new Date());
+console.info("result = " + result);
+// 输出结果：result = true
+```
+
+## isExternal
+
+```TypeScript
+isExternal(value: Object): boolean
+```
+
+判断入参是否为 native external 类型。
+
+**起始版本：** 8
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-types-isExternal(value: Object): boolean--><!--Device-types-isExternal(value: Object): boolean-End-->
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | Object | 是 | 要检查的对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 检查结果。如果入参为 native external 类型，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+```TypeScript
+// /entry/src/main/cpp/napi_init.cpp
+#include "napi/native_api.h"
+#include <js_native_api.h>
+#include <stdlib.h>
+
+napi_value result;
+static napi_value Testexternal(napi_env env, napi_callback_info info) {
+    int* raw = (int*) malloc(1024);
+    napi_status status = napi_create_external(env, (void*) raw, NULL, NULL, &result);
+    if (status != napi_ok) {
+        napi_throw_error(env, NULL, "create external failed");
+        return NULL;
+    }
+    return result;
+}
+
+EXTERN_C_START
+static napi_value Init(napi_env env, napi_value exports)
+{
+    napi_property_descriptor desc[] = {
+        {"testexternal", nullptr, Testexternal, nullptr, nullptr, nullptr, napi_default, nullptr},
+    };
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+    return exports;
+}
+EXTERN_C_END
+// 此处已省略模块注册的代码, 你可能需要自行注册Testexternal方法
+// ...
+```
+
+```TypeScript
+import testNapi from 'libentry.so';
+
+let type = new util.types();
+const data = testNapi.testexternal();
+let result = type.isExternal(data);
+
+let result01 = type.isExternal(true);
+console.info("result = " + result);
+console.info("result01 = " + result01);
+// 输出结果：result = true
+// 输出结果：result01 = false
+```
 
 ## isFloat32Array
 
@@ -256,11 +608,15 @@ Check whether the entered value is of type date.
 isFloat32Array(value: Object): boolean
 ```
 
-Check whether the entered value is of float32array array type.
+判断入参是否为 Float32Array 类型。
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isFloat32Array(value: Object): boolean--><!--Device-types-isFloat32Array(value: Object): boolean-End-->
 
@@ -270,13 +626,22 @@ Check whether the entered value is of float32array array type.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | A Float32Array value |
+| value | Object | 是 | 要检查的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns true if the value is a built-in Float32Array instance. |
+| boolean | 检查结果。如果入参为 Float32Array 类型，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+```TypeScript
+let type = new util.types();
+let result = type.isFloat32Array(new Float32Array());
+console.info("result = " + result);
+// 输出结果：result = true
+```
 
 ## isFloat64Array
 
@@ -284,11 +649,15 @@ Check whether the entered value is of float32array array type.
 isFloat64Array(value: Object): boolean
 ```
 
-Check whether the entered value is of float64array array type.
+判断入参是否为 Float64Array 类型。
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isFloat64Array(value: Object): boolean--><!--Device-types-isFloat64Array(value: Object): boolean-End-->
 
@@ -298,13 +667,139 @@ Check whether the entered value is of float64array array type.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | A Float64Array value |
+| value | Object | 是 | 要检查的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns true if the value is a built-in Float64Array instance. |
+| boolean | 检查结果。如果入参为 Float64Array 类型，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+```TypeScript
+let type = new util.types();
+let result = type.isFloat64Array(new Float64Array());
+console.info("result = " + result);
+// 输出结果：result = true
+```
+
+## isGeneratorFunction
+
+```TypeScript
+isGeneratorFunction(value: Object): boolean
+```
+
+判断入参是否为 generator 函数。 > **说明：** > > 该接口无法对AsyncGenerator Function进行有效判断，建议通过获取函数的constructor.name属性与'AsyncGeneratorFunction'做判等的方式替代。
+
+**起始版本：** 8
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-types-isGeneratorFunction(value: Object): boolean--><!--Device-types-isGeneratorFunction(value: Object): boolean-End-->
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | Object | 是 | 要检查的对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 检查结果。如果入参为 generator 函数，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+```TypeScript
+// /entry/src/main/ets/pages/test.ts
+export function* foo() {}
+```
+
+```TypeScript
+import { foo } from './test'
+
+let type = new util.types();
+let result = type.isGeneratorFunction(foo);
+console.info("result = " + result);
+// 输出结果：result = true
+```
+
+该接口无法对AsyncGenerator Function进行有效判断，建议通过获取函数的属性与做判等的方式替代。
+
+```TypeScript
+// /entry/src/main/ets/pages/test.ts
+export async function* asyncGeneratorFunc() {}
+```
+
+```TypeScript
+import { asyncGeneratorFunc } from './test'
+
+let type = new util.types();
+let result = type.isGeneratorFunction(asyncGeneratorFunc);
+console.info("result = " + result);
+// 输出结果：result = false
+
+console.info("asyncGeneratorFunc.constructor.name === AsyncGeneratorFunction : " +
+  (asyncGeneratorFunc.constructor.name === 'AsyncGeneratorFunction'));
+// 输出结果：asyncGeneratorFunc.constructor.name === AsyncGeneratorFunction : true
+```
+
+## isGeneratorObject
+
+```TypeScript
+isGeneratorObject(value: Object): boolean
+```
+
+判断入参是否为 generator 对象。
+
+**起始版本：** 8
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-types-isGeneratorObject(value: Object): boolean--><!--Device-types-isGeneratorObject(value: Object): boolean-End-->
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | Object | 是 | 要检查的对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 检查结果。如果入参为 generator 对象，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+```TypeScript
+// /entry/src/main/ets/pages/test.ts
+function* foo() {}
+export const generator = foo();
+```
+
+```TypeScript
+import { generator } from './test'
+
+let type = new util.types();
+let result = type.isGeneratorObject(generator);
+console.info("result = " + result);
+// 输出结果：result = true
+```
 
 ## isInt16Array
 
@@ -312,11 +807,15 @@ Check whether the entered value is of float64array array type.
 isInt16Array(value: Object): boolean
 ```
 
-Check whether the entered value is the int16array type.
+判断入参是否为 Int16Array 类型。
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isInt16Array(value: Object): boolean--><!--Device-types-isInt16Array(value: Object): boolean-End-->
 
@@ -326,13 +825,22 @@ Check whether the entered value is the int16array type.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | A Int16Array value |
+| value | Object | 是 | 要检查的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns true if the value is a built-in Int16Array instance. |
+| boolean | 检查结果。如果入参为 Int16Array 类型，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+```TypeScript
+let type = new util.types();
+let result = type.isInt16Array(new Int16Array([]));
+console.info("result = " + result);
+// 输出结果：result = true
+```
 
 ## isInt32Array
 
@@ -340,11 +848,15 @@ Check whether the entered value is the int16array type.
 isInt32Array(value: Object): boolean
 ```
 
-Check whether the entered value is the int32array array type.
+判断入参是否为 Int32Array 类型。
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isInt32Array(value: Object): boolean--><!--Device-types-isInt32Array(value: Object): boolean-End-->
 
@@ -354,13 +866,22 @@ Check whether the entered value is the int32array array type.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | A Int32Array value |
+| value | Object | 是 | 要检查的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns true if the value is a built-in Int32Array instance. |
+| boolean | 检查结果。如果入参为 Int32Array 类型，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+```TypeScript
+let type = new util.types();
+let result = type.isInt32Array(new Int32Array([]));
+console.info("result = " + result);
+// 输出结果：result = true
+```
 
 ## isInt8Array
 
@@ -368,11 +889,15 @@ Check whether the entered value is the int32array array type.
 isInt8Array(value: Object): boolean
 ```
 
-Check whether the entered value is of int8array array type.
+判断入参是否为 Int8Array 类型。
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isInt8Array(value: Object): boolean--><!--Device-types-isInt8Array(value: Object): boolean-End-->
 
@@ -382,13 +907,22 @@ Check whether the entered value is of int8array array type.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | A Int8Array value |
+| value | Object | 是 | 要检查的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns true if the value is a built-in Int8Array instance. |
+| boolean | 检查结果。如果入参为 Int8Array 类型，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+```TypeScript
+let type = new util.types();
+let result = type.isInt8Array(new Int8Array([]));
+console.info("result = " + result);
+// 输出结果：result = true
+```
 
 ## isMap
 
@@ -396,11 +930,15 @@ Check whether the entered value is of int8array array type.
 isMap(value: Object): boolean
 ```
 
-Check whether the entered value is of map type.
+判断入参是否为 Map 类型。
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isMap(value: Object): boolean--><!--Device-types-isMap(value: Object): boolean-End-->
 
@@ -410,13 +948,22 @@ Check whether the entered value is of map type.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | A Map value |
+| value | Object | 是 | 要检查的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns true if the value is a built-in Map instance. |
+| boolean | 检查结果。如果入参为 Map 类型，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+```TypeScript
+let type = new util.types();
+let result = type.isMap(new Map());
+console.info("result = " + result);
+// 输出结果：result = true
+```
 
 ## isMapIterator
 
@@ -424,11 +971,15 @@ Check whether the entered value is of map type.
 isMapIterator(value: Object): boolean
 ```
 
-Check whether the entered value is the iterator type of map.
+判断入参是否为 MapIterator 类型。
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isMapIterator(value: Object): boolean--><!--Device-types-isMapIterator(value: Object): boolean-End-->
 
@@ -438,13 +989,85 @@ Check whether the entered value is the iterator type of map.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | A Map iterator value |
+| value | Object | 是 | 要检查的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns true if the value is an iterator returned for a built-in Map instance. |
+| boolean | 检查结果。如果入参为 MapIterator 类型，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+ArkTS-Dyn示例：
+
+```TypeScript
+let type = new util.types();
+const map : Map<number, number> = new Map();
+let result = type.isMapIterator(map.keys());
+console.info("result = " + result);
+// 输出结果：result = true
+```
+
+ArkTS-Sta示例：
+
+```TypeScript
+let type = new util.types();
+const map : Map<int, int> = new Map<int, int>();
+let result = type.isMapIterator(map.keys());
+console.info("result = " + result);
+// 输出结果：result = true
+```
+
+## isModuleNamespaceObject
+
+```TypeScript
+isModuleNamespaceObject(value: Object): boolean
+```
+
+判断入参是否为模块命名空间对象。
+
+**起始版本：** 8
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-types-isModuleNamespaceObject(value: Object): boolean--><!--Device-types-isModuleNamespaceObject(value: Object): boolean-End-->
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | Object | 是 | 要检查的对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 检查结果。如果入参为模块命名空间对象，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+```TypeScript
+// /entry/src/main/ets/pages/test.ts
+export function func() {
+  console.info("hello world");
+}
+```
+
+```TypeScript
+import * as nameSpace from './test';
+
+let type = new util.types();
+let result = type.isModuleNamespaceObject(nameSpace);
+console.info("result = " + result);
+// 输出结果：result = true
+```
 
 ## isNativeError
 
@@ -452,11 +1075,15 @@ Check whether the entered value is the iterator type of map.
 isNativeError(value: Object): boolean
 ```
 
-Check whether the value entered is of type error.
+判断入参是否为 Error 类型。
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isNativeError(value: Object): boolean--><!--Device-types-isNativeError(value: Object): boolean-End-->
 
@@ -466,13 +1093,63 @@ Check whether the value entered is of type error.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | A Error value |
+| value | Object | 是 | 要检查的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns true if the value is an instance of a built-in Error type. |
+| boolean | 检查结果。如果入参为 Error 类型，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+```TypeScript
+let type = new util.types();
+let result = type.isNativeError(new TypeError());
+console.info("result = " + result);
+// 输出结果：result = true
+```
+
+## isNumberObject
+
+```TypeScript
+isNumberObject(value: Object): boolean
+```
+
+判断入参是否为 Number 类型。 > **NOTE：**> > 本接口从 API version 8 起支持，从 API version 14 起废弃。无替代接口。
+
+**起始版本：** 8
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** 14
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-types-isNumberObject(value: Object): boolean--><!--Device-types-isNumberObject(value: Object): boolean-End-->
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | Object | 是 | 要检查的对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 检查结果。如果入参为 Number 类型，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+```TypeScript
+let type = new util.types();
+let result = type.isNumberObject(new Number(0));
+console.info("result = " + result);
+// 输出结果：result = true
+```
 
 ## isPromise
 
@@ -480,11 +1157,15 @@ Check whether the value entered is of type error.
 isPromise(value: Object): boolean
 ```
 
-Check whether the entered value is of promise type.
+判断入参是否为 promise。
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isPromise(value: Object): boolean--><!--Device-types-isPromise(value: Object): boolean-End-->
 
@@ -494,13 +1175,67 @@ Check whether the entered value is of promise type.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | A Promise value |
+| value | Object | 是 | 要检查的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns true if the value is a built-in Promise. |
+| boolean | 检查结果。如果入参为 promise，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+```TypeScript
+let type = new util.types();
+let result = type.isPromise(Promise.resolve(1));
+console.info("result = " + result);
+// 输出结果：result = true
+```
+
+## isProxy
+
+```TypeScript
+isProxy(value: Object): boolean
+```
+
+判断入参是否为 proxy。
+
+**起始版本：** 8
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-types-isProxy(value: Object): boolean--><!--Device-types-isProxy(value: Object): boolean-End-->
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | Object | 是 | 要检查的对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 检查结果。如果入参为 proxy，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+```TypeScript
+class Target{
+}
+let type = new util.types();
+const target : Target = {};
+const proxy = new Proxy(target, target);
+let result = type.isProxy(proxy);
+console.info("result = " + result);
+// 输出结果：result = true
+```
 
 ## isRegExp
 
@@ -508,11 +1243,15 @@ Check whether the entered value is of promise type.
 isRegExp(value: Object): boolean
 ```
 
-Check whether the entered value is of type regexp.
+判断入参是否为 RegExp 类型。
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isRegExp(value: Object): boolean--><!--Device-types-isRegExp(value: Object): boolean-End-->
 
@@ -522,13 +1261,22 @@ Check whether the entered value is of type regexp.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | A regular expression object value |
+| value | Object | 是 | 要检查的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns true if the value is a regular expression object. |
+| boolean | 检查结果。如果入参为 RegExp 类型，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+```TypeScript
+let type = new util.types();
+let result = type.isRegExp(new RegExp('abc'));
+console.info("result = " + result);
+// 输出结果：result = true
+```
 
 ## isSet
 
@@ -536,11 +1284,15 @@ Check whether the entered value is of type regexp.
 isSet(value: Object): boolean
 ```
 
-Check whether the entered value is of type set.
+判断入参是否为 Set 类型。
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isSet(value: Object): boolean--><!--Device-types-isSet(value: Object): boolean-End-->
 
@@ -550,13 +1302,35 @@ Check whether the entered value is of type set.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | A Set instance value |
+| value | Object | 是 | 要检查的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns true if the value is a built-in Set instance. |
+| boolean | 检查结果。如果入参为 Set 类型，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+ArkTS-Dyn示例：
+
+```TypeScript
+let type = new util.types();
+let set : Set<number> = new Set();
+let result = type.isSet(set);
+console.info("result = " + result);
+// 输出结果：result = true
+```
+
+ArkTS-Sta示例：
+
+```TypeScript
+let type = new util.types();
+let set : Set<int> = new Set<int>();
+let result = type.isSet(set);
+console.info("result = " + result);
+// 输出结果：result = true
+```
 
 ## isSetIterator
 
@@ -564,11 +1338,15 @@ Check whether the entered value is of type set.
 isSetIterator(value: Object): boolean
 ```
 
-Check whether the entered value is the iterator type of set.
+判断入参是否为 SetIterator 类型。
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isSetIterator(value: Object): boolean--><!--Device-types-isSetIterator(value: Object): boolean-End-->
 
@@ -578,13 +1356,165 @@ Check whether the entered value is the iterator type of set.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | A Set iterator value |
+| value | Object | 是 | 要检查的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns true if the value is an iterator returned for a built-in Set instance. |
+| boolean | 检查结果。如果入参为 SetIterator 类型，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+ArkTS-Dyn示例：
+
+```TypeScript
+let type = new util.types();
+const set : Set<number> = new Set();
+let result = type.isSetIterator(set.keys());
+console.info("result = " + result);
+// 输出结果：result = true
+```
+
+ArkTS-Sta示例：
+
+```TypeScript
+let type = new util.types();
+const set : Set<int> = new Set<int>();
+let result = type.isSetIterator(set.keys());
+console.info("result = " + result);
+// 输出结果：result = true
+```
+
+## isSharedArrayBuffer
+
+```TypeScript
+isSharedArrayBuffer(value: Object): boolean
+```
+
+判断入参是否为 SharedArrayBuffer 类型。
+
+**起始版本：** 8
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-types-isSharedArrayBuffer(value: Object): boolean--><!--Device-types-isSharedArrayBuffer(value: Object): boolean-End-->
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | Object | 是 | 要检查的对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 检查结果。如果入参为 SharedArrayBuffer 类型，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+```TypeScript
+let type = new util.types();
+let result = type.isSharedArrayBuffer(new SharedArrayBuffer(0));
+console.info("result = " + result);
+// 输出结果：result = true
+```
+
+## isStringObject
+
+```TypeScript
+isStringObject(value: Object): boolean
+```
+
+判断入参是否为字符串对象。 > **NOTE：**> > 本接口从 API version 8 起支持，从 API version 14 起废弃。无替代接口。
+
+**起始版本：** 8
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** 14
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-types-isStringObject(value: Object): boolean--><!--Device-types-isStringObject(value: Object): boolean-End-->
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | Object | 是 | 要检查的对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 检查结果。如果入参为字符串对象，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+```TypeScript
+let type = new util.types();
+let result = type.isStringObject(new String('foo'));
+console.info("result = " + result);
+// 输出结果：result = true
+```
+
+## isSymbolObject
+
+```TypeScript
+isSymbolObject(value: Object): boolean
+```
+
+判断入参是否为 symbol 对象。 > **NOTE：**> > 本接口从 API version 8 起支持，从 API version 14 起废弃。无替代接口。
+
+**起始版本：** 8
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** 14
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-types-isSymbolObject(value: Object): boolean--><!--Device-types-isSymbolObject(value: Object): boolean-End-->
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | Object | 是 | 要检查的对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 检查结果。如果入参为 symbol 对象，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+```TypeScript
+// /entry/src/main/ets/pages/test.ts
+export const symbols = Symbol('foo');
+```
+
+```TypeScript
+import { symbols } from './test'
+
+let type = new util.types();
+let result = type.isSymbolObject(Object(symbols));
+console.info("result = " + result);
+// 输出结果：result = true
+```
 
 ## isTypedArray
 
@@ -592,11 +1522,15 @@ Check whether the entered value is the iterator type of set.
 isTypedArray(value: Object): boolean
 ```
 
-Check whether the entered value is a type contained in typedarray.
+判断入参是否为 TypedArray 类型。
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isTypedArray(value: Object): boolean--><!--Device-types-isTypedArray(value: Object): boolean-End-->
 
@@ -606,13 +1540,22 @@ Check whether the entered value is a type contained in typedarray.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | A TypedArray instance value |
+| value | Object | 是 | 要检查的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns true if the value is a built-in TypedArray instance. |
+| boolean | 检查结果。如果入参为 TypedArray 类型，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+```TypeScript
+let type = new util.types();
+let result = type.isTypedArray(new Float64Array([]));
+console.info("result = " + result);
+// 输出结果：result = true
+```
 
 ## isUint16Array
 
@@ -620,11 +1563,15 @@ Check whether the entered value is a type contained in typedarray.
 isUint16Array(value: Object): boolean
 ```
 
-Check whether the entered value is the uint16array array array type.
+判断入参是否为 Uint16Array 类型。
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isUint16Array(value: Object): boolean--><!--Device-types-isUint16Array(value: Object): boolean-End-->
 
@@ -634,13 +1581,22 @@ Check whether the entered value is the uint16array array array type.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | A Uint16Array value |
+| value | Object | 是 | 要检查的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns true if the value is a built-in Uint16Array instance. |
+| boolean | 检查结果。如果入参为 Uint16Array 类型，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+```TypeScript
+let type = new util.types();
+let result = type.isUint16Array(new Uint16Array([]));
+console.info("result = " + result);
+// 输出结果：result = true
+```
 
 ## isUint32Array
 
@@ -648,11 +1604,15 @@ Check whether the entered value is the uint16array array array type.
 isUint32Array(value: Object): boolean
 ```
 
-Check whether the entered value is the uint32array array type.
+判断入参是否为 Uint32Array 类型。
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isUint32Array(value: Object): boolean--><!--Device-types-isUint32Array(value: Object): boolean-End-->
 
@@ -662,13 +1622,22 @@ Check whether the entered value is the uint32array array type.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | A Uint32Array value |
+| value | Object | 是 | 要检查的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns true if the value is a built-in Uint32Array instance. |
+| boolean | 检查结果。如果入参为 Uint32Array 类型，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+```TypeScript
+let type = new util.types();
+let result = type.isUint32Array(new Uint32Array([]));
+console.info("result = " + result);
+// 输出结果：result = true
+```
 
 ## isUint8Array
 
@@ -676,11 +1645,15 @@ Check whether the entered value is the uint32array array type.
 isUint8Array(value: Object): boolean
 ```
 
-Check whether the entered value is the uint8array array type.
+判断入参是否为 Uint8Array 类型。
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isUint8Array(value: Object): boolean--><!--Device-types-isUint8Array(value: Object): boolean-End-->
 
@@ -690,13 +1663,22 @@ Check whether the entered value is the uint8array array type.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | A Uint8Array value |
+| value | Object | 是 | 要检查的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns true if the value is a built-in Uint8Array instance. |
+| boolean | 检查结果。如果入参为 Uint8Array 类型，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+```TypeScript
+let type = new util.types();
+let result = type.isUint8Array(new Uint8Array([]));
+console.info("result = " + result);
+// 输出结果：result = true
+```
 
 ## isUint8ClampedArray
 
@@ -704,11 +1686,15 @@ Check whether the entered value is the uint8array array type.
 isUint8ClampedArray(value: Object): boolean
 ```
 
-Check whether the entered value is the uint8clapedarray array type.
+判断入参是否为 Uint8ClampedArray 类型。
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isUint8ClampedArray(value: Object): boolean--><!--Device-types-isUint8ClampedArray(value: Object): boolean-End-->
 
@@ -718,13 +1704,22 @@ Check whether the entered value is the uint8clapedarray array type.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | A Uint8ClampedArray value |
+| value | Object | 是 | 要检查的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns true if the value is a built-in Uint8ClampedArray instance. |
+| boolean | 检查结果。如果入参为 Uint8ClampedArray 类型，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+```TypeScript
+let type = new util.types();
+let result = type.isUint8ClampedArray(new Uint8ClampedArray([]));
+console.info("result = " + result);
+// 输出结果：result = true
+```
 
 ## isWeakMap
 
@@ -732,11 +1727,15 @@ Check whether the entered value is the uint8clapedarray array type.
 isWeakMap(value: Object): boolean
 ```
 
-Check whether the entered value is of type weakmap.
+判断入参是否为 WeakMap 类型。
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isWeakMap(value: Object): boolean--><!--Device-types-isWeakMap(value: Object): boolean-End-->
 
@@ -746,13 +1745,35 @@ Check whether the entered value is of type weakmap.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | A WeakMap value |
+| value | Object | 是 | 要检查的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns true if the value is a built-in WeakMap instance. |
+| boolean | 检查结果。如果入参为 WeakMap 类型，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+ArkTS-Dyn示例：
+
+```TypeScript
+let type = new util.types();
+let value : WeakMap<object, number> = new WeakMap();
+let result = type.isWeakMap(value);
+console.info("result = " + result);
+// 输出结果：result = true
+```
+
+ArkTS-Sta示例：
+
+```TypeScript
+let type = new util.types();
+let value : WeakMap<object, int> = new WeakMap();
+let result = type.isWeakMap(value);
+console.info("result = " + result);
+// 输出结果：result = true
+```
 
 ## isWeakSet
 
@@ -760,11 +1781,15 @@ Check whether the entered value is of type weakmap.
 isWeakSet(value: Object): boolean
 ```
 
-Check whether the entered value is of type weakset.
+判断入参是否为 WeakSet 类型。
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isWeakSet(value: Object): boolean--><!--Device-types-isWeakSet(value: Object): boolean-End-->
 
@@ -774,11 +1799,20 @@ Check whether the entered value is of type weakset.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | A WeakSet value |
+| value | Object | 是 | 要检查的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns true if the value is a built-in WeakSet instance. |
+| boolean | 检查结果。如果入参为 WeakSet 类型，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+```TypeScript
+let type = new util.types();
+let result = type.isWeakSet(new WeakSet());
+console.info("result = " + result);
+// 输出结果：result = true
+```
 

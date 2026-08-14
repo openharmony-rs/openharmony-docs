@@ -14,7 +14,7 @@ function cancel(agent: WantAgent, callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.wantAgent/wantAgent#cancel
+**替代接口：** [cancel](arkts-ability-wantagent-cancel-f.md#cancel)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -26,10 +26,10 @@ function cancel(agent: WantAgent, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| agent | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | WantAgent对象。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 取消WantAgent实例的回调方法 |
+| agent | [WantAgent](arkts-ability-wantagent-depr-t.md) | 是 | WantAgent对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 取消WantAgent实例的回调方法 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import wantAgent, { WantAgent as _WantAgent } from '@ohos.wantAgent';
@@ -98,7 +98,7 @@ function cancel(agent: WantAgent): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.wantAgent/wantAgent#cancel
+**替代接口：** [cancel](arkts-ability-wantagent-cancel-f.md#cancel)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -110,7 +110,7 @@ function cancel(agent: WantAgent): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| agent | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | WantAgent对象。 |
+| agent | [WantAgent](arkts-ability-wantagent-depr-t.md) | 是 | WantAgent对象。 |
 
 **返回值：**
 
@@ -118,7 +118,7 @@ function cancel(agent: WantAgent): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | 以Promise形式获取异步返回结果。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import wantAgent, { WantAgent as _WantAgent } from '@ohos.wantAgent';

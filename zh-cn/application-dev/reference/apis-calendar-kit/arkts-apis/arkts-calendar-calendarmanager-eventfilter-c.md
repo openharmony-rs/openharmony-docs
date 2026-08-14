@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-calendarManager-class EventFilter--><!--Device-calendarManager-class EventFilter-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
@@ -22,6 +24,8 @@ static filterById(ids: number[]): EventFilter
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-EventFilter-static filterById(ids: number[]): EventFilter--><!--Device-EventFilter-static filterById(ids: number[]): EventFilter-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
@@ -36,9 +40,9 @@ static filterById(ids: number[]): EventFilter
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回日程过滤器对象。 |
+| [EventFilter](arkts-calendar-calendarmanager-eventfilter-c.md) | 返回日程过滤器对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -104,6 +108,8 @@ static filterByTime(start: number, end: number): EventFilter
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-EventFilter-static filterByTime(start: number, end: number): EventFilter--><!--Device-EventFilter-static filterByTime(start: number, end: number): EventFilter-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
@@ -119,9 +125,9 @@ static filterByTime(start: number, end: number): EventFilter
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回日程过滤器对象。 |
+| [EventFilter](arkts-calendar-calendarmanager-eventfilter-c.md) | 返回日程过滤器对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -182,6 +188,8 @@ static filterByTitle(title: string): EventFilter
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-EventFilter-static filterByTitle(title: string): EventFilter--><!--Device-EventFilter-static filterByTitle(title: string): EventFilter-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
@@ -196,9 +204,9 @@ static filterByTitle(title: string): EventFilter
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回日程过滤器对象。 |
+| [EventFilter](arkts-calendar-calendarmanager-eventfilter-c.md) | 返回日程过滤器对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

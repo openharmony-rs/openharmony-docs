@@ -10,6 +10,8 @@ The function of suspend media play.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-webview-type SuspendPlayerFn = (type: SuspendType) => void--><!--Device-webview-type SuspendPlayerFn = (type: SuspendType) => void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -18,5 +20,5 @@ The function of suspend media play.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | The scenario for suspending the media player.  |
+| type | [SuspendType](arkts-na-webview-suspendtype-e.md) | 是 | The scenario for suspending the media player. |
 

@@ -6,6 +6,8 @@ DLP特性开关状态设置的结果信息。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 <!--Device-dlpSetDlpFeature-export interface StatusInfoResult--><!--Device-dlpSetDlpFeature-export interface StatusInfoResult-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
@@ -25,6 +27,8 @@ DLP特性开关状态是否设置成功。true表示设置成功；false表示�
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

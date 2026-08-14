@@ -4,7 +4,9 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-bundleManager-export enum BundleInstallStatus--><!--Device-bundleManager-export enum BundleInstallStatus-End-->
 
@@ -22,7 +24,9 @@ BUNDLE_NOT_EXIST = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-BundleInstallStatus-BUNDLE_NOT_EXIST = 1--><!--Device-BundleInstallStatus-BUNDLE_NOT_EXIST = 1-End-->
 
@@ -40,7 +44,9 @@ BUNDLE_INSTALLING = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-BundleInstallStatus-BUNDLE_INSTALLING = 2--><!--Device-BundleInstallStatus-BUNDLE_INSTALLING = 2-End-->
 
@@ -58,7 +64,9 @@ BUNDLE_INSTALLED = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-BundleInstallStatus-BUNDLE_INSTALLED = 3--><!--Device-BundleInstallStatus-BUNDLE_INSTALLED = 3-End-->
 

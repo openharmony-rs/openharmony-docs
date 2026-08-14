@@ -6,11 +6,13 @@
 function importContactsViaUI(context: Context, contacts: Array<Contact>): Promise<Array<int>>
 ```
 
-通过UI交互批量导入多个联系人。 每次最多可导入100个联系人。
+通过UI交互批量导入多个联系人。 每次最多可导入100个联系人。不支持导入联系人的头像。
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -24,8 +26,8 @@ function importContactsViaUI(context: Context, contacts: Array<Contact>): Promis
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 应用上下文Context。 |
-| contacts | Array&lt;Contact&gt; | 是 | 表示待导入数据库的联系人信息数组。 |
+| context | Context | 是 | 应用上下文Context。 |
+| contacts | Array&lt;[Contact](arkts-contacts-contact-contact-c.md)&gt; | 是 | 表示待导入数据库的联系人信息数组。 |
 
 **返回值：**
 
@@ -38,14 +40,14 @@ function importContactsViaUI(context: Context, contacts: Array<Contact>): Promis
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | The specified SystemCapability name was not found. |
-| [16700001](../errorcode-contacts.md#16700001-系统内部错误) | General error. |
-| [16700002](../errorcode-contacts.md#16700002-参数检查失败) | Invalid parameter value. |
-| [16700004](../errorcode-contacts.md#16700004-联系人数量超过限制) | The number of contacts exceeds the limit. |
 | [16700103](../errorcode-contacts.md#16700103-用户取消) | User cancel. |
+| [16700004](../errorcode-contacts.md#16700004-联系人数量超过限制) | The number of contacts exceeds the limit. |
+| [16700002](../errorcode-contacts.md#16700002-参数检查失败) | Invalid parameter value. |
+| [16700001](../errorcode-contacts.md#16700001-系统内部错误) | General error. |
 
-**示例：**
+## 示例
 
-在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 ```TypeScript
 import { contact } from '@kit.ContactsKit';

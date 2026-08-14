@@ -10,6 +10,8 @@ Defines the callback type used in accessibility action intercept. The value of a
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-export declare type AccessibilityActionInterceptCallback = (action: AccessibilityAction) => AccessibilityActionInterceptResult--><!--Device-unnamed-export declare type AccessibilityActionInterceptCallback = (action: AccessibilityAction) => AccessibilityActionInterceptResult-End-->
@@ -20,11 +22,11 @@ Defines the callback type used in accessibility action intercept. The value of a
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| action | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | the enum of accessibility action type.  |
+| action | [AccessibilityAction](arkts-na-common-accessibilityaction-e.md) | 是 | the enum of accessibility action type. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | the result of continuing to execute the action or interrupting it or bubbling up |
+| [AccessibilityActionInterceptResult](arkts-na-common-accessibilityactioninterceptresult-e.md) | the result of continuing to execute the action or interrupting it or bubbling up |
 

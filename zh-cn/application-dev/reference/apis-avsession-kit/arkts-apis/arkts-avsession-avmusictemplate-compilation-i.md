@@ -1,14 +1,16 @@
 # Compilation
 
-合集的定义。继承自[OperResult]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+合集的定义。继承自[OperResult](arkts-avsession-avmusictemplate-operresult-i.md#OperResult)。
 
-**继承/实现关系：** Compilation extends [OperResult](arkts-avsession-avmusictemplate-operresult-i.md)
+**继承/实现关系：** Compilation extends [OperResult](arkts-avsession-avmusictemplate-operresult-i.md#OperResult)
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-<!--Device-avMusicTemplate-interface Compilation extends OperResult--><!--Device-avMusicTemplate-interface Compilation extends OperResult-End-->
+**废弃版本：** -1
+
+<!--Device-avMusicTemplate-interface Compilation--><!--Device-avMusicTemplate-interface Compilation-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -24,7 +26,9 @@ hasMoreData: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -44,7 +48,9 @@ id: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -60,11 +66,13 @@ memberMediaType: EntityType
 
 合集的媒体资源类型。
 
-**类型：** EntityType
+**类型：** [EntityType](arkts-avsession-avmusictemplate-entitytype-e.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -84,7 +92,9 @@ title: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -100,11 +110,13 @@ topElements: MediaEntity[]
 
 合集的内容。
 
-**类型：** MediaEntity[]
+**类型：** [MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md)[]
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -124,7 +136,9 @@ totalSize: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

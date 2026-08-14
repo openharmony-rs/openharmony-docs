@@ -8,7 +8,7 @@
 
 **废弃版本：** 11
 
-**替代接口：** [@ohos.distributedDeviceManager:distributedDeviceManager.DeviceStateChange](arkts-distributedservice-distributeddevicemanager-devicestatechange-e.md)
+**替代接口：** [DeviceStateChange](arkts-distributedservice-distributeddevicemanager-devicestatechange-e.md#DeviceStateChange)
 
 <!--Device-deviceManager-enum DeviceStateChangeAction--><!--Device-deviceManager-enum DeviceStateChangeAction-End-->
 
@@ -30,7 +30,7 @@ ONLINE = 0
 
 **废弃版本：** 11
 
-**替代接口：** [@ohos.distributedDeviceManager:distributedDeviceManager.DeviceStateChange.UNKNOWN](arkts-distributedservice-distributeddevicemanager-devicestatechange-e.md#unknown)
+**替代接口：** [UNKNOWN](arkts-distributedservice-distributeddevicemanager-devicestatechange-e.md#UNKNOWN)
 
 <!--Device-DeviceStateChangeAction-ONLINE = 0--><!--Device-DeviceStateChangeAction-ONLINE = 0-End-->
 
@@ -52,7 +52,7 @@ READY = 1
 
 **废弃版本：** 11
 
-**替代接口：** [@ohos.distributedDeviceManager:distributedDeviceManager.DeviceStateChange.AVAILABLE](arkts-distributedservice-distributeddevicemanager-devicestatechange-e.md#available)
+**替代接口：** [AVAILABLE](arkts-distributedservice-distributeddevicemanager-devicestatechange-e.md#AVAILABLE)
 
 <!--Device-DeviceStateChangeAction-READY = 1--><!--Device-DeviceStateChangeAction-READY = 1-End-->
 
@@ -74,7 +74,7 @@ OFFLINE = 2
 
 **废弃版本：** 11
 
-**替代接口：** [@ohos.distributedDeviceManager:distributedDeviceManager.DeviceStateChange.UNAVAILABLE](arkts-distributedservice-distributeddevicemanager-devicestatechange-e.md#unavailable)
+**替代接口：** [UNAVAILABLE](arkts-distributedservice-distributeddevicemanager-devicestatechange-e.md#UNAVAILABLE)
 
 <!--Device-DeviceStateChangeAction-OFFLINE = 2--><!--Device-DeviceStateChangeAction-OFFLINE = 2-End-->
 

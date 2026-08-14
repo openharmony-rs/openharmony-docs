@@ -6,11 +6,13 @@
 function isOpenAccessibilitySync(): boolean
 ```
 
-查询当前系统内是否存在已开启的辅助应用。如需获取系统内辅助应用信息，推荐使用 [accessibility.getAccessibilityExtensionListSync]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+查询当前系统内是否存在已开启的辅助应用。如需获取系统内辅助应用信息，推荐使用 [accessibility.getAccessibilityExtensionListSync](arkts-accessibility-accessibility-getaccessibilityextensionlistsync-f.md#getAccessibilityExtensionListSync)。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -26,7 +28,7 @@ function isOpenAccessibilitySync(): boolean
 | --- | --- |
 | boolean | 表示当前系统内是否有辅助应用开启。true表示启用了一个或多个辅助应用，false表示未启用任何辅助应用。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { accessibility } from '@kit.AccessibilityKit';

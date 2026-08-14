@@ -4,7 +4,9 @@ SSAP属性。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-ssap-interface Property--><!--Device-ssap-interface Property-End-->
 
@@ -18,11 +20,13 @@ descriptors?: PropertyDescriptor[]
 
 属性中包含的描述符列表。
 
-**类型：** PropertyDescriptor[]
+**类型：** [PropertyDescriptor](arkts-connectivity-ssap-propertydescriptor-i.md)[]
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -36,13 +40,15 @@ descriptors?: PropertyDescriptor[]
 operation?: int
 ```
 
-指示如何访问数据值和描述符值。 取值为枚举值的或运算。 取值范围为全体整数。 默认值： 默认值：READABLE | WRITE\_NO\_RESPONSE。
+指示如何访问数据值和描述符值。 取值为枚举值的或运算。 取值范围为全体整数。 默认值： 默认值：READABLE | WRITE_NO_RESPONSE。
 
 **类型：** int
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -56,13 +62,15 @@ operation?: int
 propertyUuid: string
 ```
 
-Property实例的UUID 长度必须为32，由16进制数字字符和连字符共36个字符组成，形如“FFFFFFFF-1234-5678-ABCD-000000001234”，代表128比特标识。 \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_不允许使用NearLink标准UUID。
+Property实例的UUID 长度必须为32，由16进制数字字符和连字符共36个字符组成，形如“FFFFFFFF-1234-5678-ABCD-000000001234”，代表128比特标识。 &lt;br&gt;不允许使用NearLink标准UUID。
 
 **类型：** string
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -76,13 +84,15 @@ Property实例的UUID 长度必须为32，由16进制数字字符和连字符共
 serviceUuid: string
 ```
 
-属性所属的\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_实例的UUID 长度必须为32，禁止使用星闪标准服务UUID。 \_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_不允许使用NearLink标准UUID。
+属性所属的[Service](arkts-connectivity-ssap-service-i.md#Service)实例的UUID 长度必须为32，禁止使用星闪标准服务UUID。 &lt;br&gt;不允许使用NearLink标准UUID。
 
 **类型：** string
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -102,7 +112,9 @@ Property实例的值。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

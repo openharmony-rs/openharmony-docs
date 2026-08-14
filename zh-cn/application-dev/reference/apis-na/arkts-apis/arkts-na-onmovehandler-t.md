@@ -10,6 +10,8 @@ Defines the onMove callback.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-export type OnMoveHandler = (from: int, to: int) => void--><!--Device-unnamed-export type OnMoveHandler = (from: int, to: int) => void-End-->
@@ -20,6 +22,6 @@ Defines the onMove callback.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| from | int | 是 | Index number for moving elements.  |
-| to | int | 是 | Target index number for moving elements.  |
+| from | int | 是 | Index number for moving elements. |
+| to | int | 是 | Target index number for moving elements. |
 

@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface DividerOptions--><!--Device-unnamed-declare interface DividerOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -25,6 +27,8 @@ color?: ResourceColor
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -50,6 +54,8 @@ endMargin?: Dimension
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -64,7 +70,7 @@ endMargin?: Dimension
 startMargin?: Dimension
 ```
 
-分割线与TextPicker侧边起始端的距离。 > 默认值：0 > 单位：默认为vp，也可指定单位为px。 > 取值范围：[0, +∞)，startMargin小于0时无效，最大值不得超过TextPicker列宽。不支持“百分比”类型。 > **说明**：当startMargin + endMargin超过组件宽度时，会被置0。
+分割线与TextPicker侧边起始端的距离。 > 默认值：0 > 单位：默认为vp，也可指定单位为px。 > 取值范围：[0, +∞)，startMargin小于0时无效，最大值不得超过TextPicker列宽。不支持“百分比”类型。 > **说明：**当startMargin + endMargin超过组件宽度时，会被置0。
 
 **类型：** Dimension
 
@@ -73,6 +79,8 @@ startMargin?: Dimension
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -97,6 +105,8 @@ strokeWidth?: Dimension
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

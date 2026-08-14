@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.reminderAgentManager:reminderAgentManager.ActionButton](arkts-backgroundtasks-reminderagentmanager-actionbutton-i.md)
+**替代接口：** [ActionButton](arkts-backgroundtasks-reminderagentmanager-actionbutton-i.md#ActionButton)
 
 <!--Device-reminderAgent-interface ActionButton--><!--Device-reminderAgent-interface ActionButton-End-->
 
@@ -30,7 +30,7 @@ title: string
 
 **废弃版本：** 9
 
-**替代接口：** [reminderAgentManager.ActionButton.title](arkts-backgroundtasks-reminderagentmanager-actionbutton-i.md#title)
+**替代接口：** title
 
 <!--Device-ActionButton-title: string--><!--Device-ActionButton-title: string-End-->
 
@@ -52,7 +52,7 @@ type: ActionButtonType
 
 **废弃版本：** 9
 
-**替代接口：** [reminderAgentManager.ActionButton.type](arkts-backgroundtasks-reminderagentmanager-actionbutton-i.md#type)
+**替代接口：** type
 
 <!--Device-ActionButton-type: ActionButtonType--><!--Device-ActionButton-type: ActionButtonType-End-->
 

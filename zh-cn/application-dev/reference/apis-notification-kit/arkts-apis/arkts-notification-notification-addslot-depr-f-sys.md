@@ -14,7 +14,7 @@ function addSlot(slot: NotificationSlot, callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager#addSlot
+**替代接口：** [addSlot](arkts-notification-notificationmanager-addslot-f.md#addSlot)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -28,8 +28,8 @@ function addSlot(slot: NotificationSlot, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| slot | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 要创建的通知渠道对象。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 表示被指定通道的回调方法。 |
+| slot | [NotificationSlot](arkts-notification-notificationslot-notificationslot-i.md) | 是 | 要创建的通知渠道对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 表示被指定通道的回调方法。 |
 
 
 ## addSlot
@@ -46,7 +46,7 @@ function addSlot(slot: NotificationSlot): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager#addSlot
+**替代接口：** [addSlot](arkts-notification-notificationmanager-addslot-f.md#addSlot)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -60,7 +60,7 @@ function addSlot(slot: NotificationSlot): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| slot | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 要创建的通知渠道对象。 |
+| slot | [NotificationSlot](arkts-notification-notificationslot-notificationslot-i.md) | 是 | 要创建的通知渠道对象。 |
 
 **返回值：**
 

@@ -6,11 +6,13 @@
 function isDebugState(): boolean
 ```
 
-��ȡӦ�ý��̵ĵ���״̬��
+获取应用进程的调试状态。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-hidebug-function isDebugState(): boolean--><!--Device-hidebug-function isDebugState(): boolean-End-->
 
@@ -20,9 +22,9 @@ function isDebugState(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Ӧ�ý��̵�Ark���Native���Ƿ��ڵ���״̬��true�����ڵ���״̬��false��δ���ڵ���״̬�� |
+| boolean | 应用进程的Ark层或Native层是否处于调试状态。true：处于调试状态。false：未处于调试状态。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { hidebug } from '@kit.PerformanceAnalysisKit';

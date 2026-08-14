@@ -10,6 +10,8 @@ type NonSendableBucket = relationalStore.ValuesBucket
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-sendableRelationalStore-type NonSendableBucket = relationalStore.ValuesBucket--><!--Device-sendableRelationalStore-type NonSendableBucket = relationalStore.ValuesBucket-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core

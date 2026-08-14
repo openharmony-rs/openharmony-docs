@@ -1,10 +1,12 @@
 # ClientAuthenticationHandler
 
-Defines the client certificate request result, related to \_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ method.
+Defines the client certificate request result, related to onClientAuthenticationRequest method.
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare class ClientAuthenticationHandler--><!--Device-unnamed-declare class ClientAuthenticationHandler-End-->
 
@@ -21,6 +23,8 @@ cancel(): void
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -39,6 +43,8 @@ confirm(priKeyFile: string, certChainFile: string): void
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -65,6 +71,8 @@ confirm(authUri: string): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ClientAuthenticationHandler-confirm(authUri: string): void--><!--Device-ClientAuthenticationHandler-confirm(authUri: string): void-End-->
@@ -89,6 +97,8 @@ confirm(identity: string, credentialTypeOrCertChainFile: CredentialType | string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 <!--Device-ClientAuthenticationHandler-confirm(identity: string, credentialTypeOrCertChainFile: CredentialType | string): void--><!--Device-ClientAuthenticationHandler-confirm(identity: string, credentialTypeOrCertChainFile: CredentialType | string): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -98,7 +108,7 @@ confirm(identity: string, credentialTypeOrCertChainFile: CredentialType | string
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | identity | string | 是 | The identify of the credential. |
-| credentialTypeOrCertChainFile | \_\_\_MD\_LINK\_USD\_0\_\_\_ \| string | 是 | The type of the credential or the file that store client certificate chain. |
+| credentialTypeOrCertChainFile | [CredentialType](arkts-arkweb-credentialtype-e.md) \| string | 是 | The type of the credential or the file that store client certificate chain. |
 
 **错误码：**
 
@@ -118,6 +128,8 @@ Constructor.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ClientAuthenticationHandler-constructor()--><!--Device-ClientAuthenticationHandler-constructor()-End-->
@@ -135,6 +147,8 @@ Ignore this certificate request temporarily.
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

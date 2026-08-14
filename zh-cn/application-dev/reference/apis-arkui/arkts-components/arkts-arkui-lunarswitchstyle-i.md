@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface LunarSwitchStyle--><!--Device-unnamed-declare interface LunarSwitchStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -16,7 +18,7 @@
 selectedColor?: ResourceColor
 ```
 
-设置开关开启时开关的背景颜色。 > 默认值：\$r('sys.color.ohos\_id\_color\_text\_primary\_actived')。
+设置开关开启时开关的背景颜色。 > 默认值：\$r('sys.color.ohos_id_color_text_primary_actived')。
 
 **类型：** ResourceColor
 
@@ -25,6 +27,8 @@ selectedColor?: ResourceColor
 **起始版本：** 14
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -50,6 +54,8 @@ strokeColor?: ResourceColor
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
@@ -64,7 +70,7 @@ strokeColor?: ResourceColor
 unselectedColor?: ResourceColor
 ```
 
-设置开关未开启时开关的边框颜色。 > 默认值：\$r('sys.color.ohos\_id\_color\_switch\_outline\_off')。
+设置开关未开启时开关的边框颜色。 > 默认值：\$r('sys.color.ohos_id_color_switch_outline_off')。
 
 **类型：** ResourceColor
 
@@ -73,6 +79,8 @@ unselectedColor?: ResourceColor
 **起始版本：** 14
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

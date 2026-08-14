@@ -6,11 +6,13 @@
 function createFilter(): Filter
 ```
 
-创建Filter实例用于给组件添加多种filter效果。
+创建Filter实例用于给组件添加多种Filter效果。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-uiEffect-function createFilter(): Filter--><!--Device-uiEffect-function createFilter(): Filter-End-->
 
@@ -20,9 +22,9 @@ function createFilter(): Filter
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回Filter的头节点。 |
+| Filter | 返回Filter实例，支持添加多种Filter效果。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let filter : uiEffect.Filter = uiEffect.createFilter()

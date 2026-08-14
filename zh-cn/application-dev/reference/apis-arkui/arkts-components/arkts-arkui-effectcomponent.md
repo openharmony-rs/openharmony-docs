@@ -16,6 +16,8 @@ EffectComponent()
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-EffectComponentInterface-(): EffectComponentAttribute--><!--Device-EffectComponentInterface-(): EffectComponentAttribute-End-->
@@ -36,6 +38,8 @@ EffectComponent(options?: EffectComponentOptions)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-EffectComponentInterface-(options?: EffectComponentOptions): EffectComponentAttribute--><!--Device-EffectComponentInterface-(options?: EffectComponentOptions): EffectComponentAttribute-End-->
@@ -48,7 +52,9 @@ EffectComponent(options?: EffectComponentOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | EffectComponent构造参数。  |
+| options | [EffectComponentOptions](arkts-arkui-effectcomponentoptions-i-sys.md) | 否 | EffectComponent构造参数。 |
 
 ## 汇总
 
+- [EffectComponentOptions](arkts-arkui-effectcomponentoptions-i-sys.md)
+- [EffectLayer](arkts-arkui-effectlayer-e-sys.md)

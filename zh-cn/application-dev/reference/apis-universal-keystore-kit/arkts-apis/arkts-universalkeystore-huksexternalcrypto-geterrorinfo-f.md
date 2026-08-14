@@ -12,6 +12,8 @@ function getErrorInfo(): HuksExternalErrorInfo
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-huksExternalCrypto-function getErrorInfo(): HuksExternalErrorInfo--><!--Device-huksExternalCrypto-function getErrorInfo(): HuksExternalErrorInfo-End-->
@@ -22,9 +24,9 @@ function getErrorInfo(): HuksExternalErrorInfo
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回的详细错误信息。 |
+| [HuksExternalErrorInfo](arkts-universalkeystore-huksexternalcrypto-huksexternalerrorinfo-i.md) | 返回的详细错误信息。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';

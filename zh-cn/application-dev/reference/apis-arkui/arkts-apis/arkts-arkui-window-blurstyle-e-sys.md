@@ -2,9 +2,11 @@
 
 窗口模糊类型枚举。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-window-enum BlurStyle--><!--Device-window-enum BlurStyle-End-->
 
@@ -20,9 +22,11 @@ OFF = 0
 
 表示关闭模糊。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-BlurStyle-OFF = 0--><!--Device-BlurStyle-OFF = 0-End-->
 
@@ -38,9 +42,11 @@ THIN = 1
 
 表示较薄的模糊类型。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-BlurStyle-THIN = 1--><!--Device-BlurStyle-THIN = 1-End-->
 
@@ -56,9 +62,11 @@ REGULAR = 2
 
 表示适中的模糊类型。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-BlurStyle-REGULAR = 2--><!--Device-BlurStyle-REGULAR = 2-End-->
 
@@ -74,9 +82,11 @@ THICK = 3
 
 表示较厚的模糊类型。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-BlurStyle-THICK = 3--><!--Device-BlurStyle-THICK = 3-End-->
 

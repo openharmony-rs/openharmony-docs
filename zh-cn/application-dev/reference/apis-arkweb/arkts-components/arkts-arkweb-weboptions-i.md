@@ -6,6 +6,8 @@ Defines the Web options.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface WebOptions--><!--Device-unnamed-declare interface WebOptions-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -18,11 +20,13 @@ controller: WebController | WebviewController
 
 Sets the controller of the Web.
 
-**类型：** WebController \| WebviewController
+**类型：** [WebController](arkts-arkweb-webcontroller-c.md) \| [WebviewController](arkts-arkweb-webviewcontroller-t.md)
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -44,6 +48,8 @@ emulateTouchFromMouseEvent? : boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 <!--Device-WebOptions-emulateTouchFromMouseEvent? : boolean--><!--Device-WebOptions-emulateTouchFromMouseEvent? : boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -62,6 +68,8 @@ Sets the incognito mode of the Web, the parameter is optional and default value 
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebOptions-incognitoMode? : boolean--><!--Device-WebOptions-incognitoMode? : boolean-End-->
@@ -76,11 +84,13 @@ renderMode? : RenderMode
 
 Sets the render mode of the web.
 
-**类型：** RenderMode
+**类型：** [RenderMode](arkts-arkweb-rendermode-e.md)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -102,6 +112,8 @@ Sets the shared render process token of the web. When the web is in multiprocess
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-WebOptions-sharedRenderProcessToken? : string--><!--Device-WebOptions-sharedRenderProcessToken? : string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -119,6 +131,8 @@ Sets the address of the web page to be displayed.
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

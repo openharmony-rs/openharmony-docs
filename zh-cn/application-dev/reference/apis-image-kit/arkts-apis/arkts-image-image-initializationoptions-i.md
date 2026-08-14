@@ -2,9 +2,11 @@
 
 PixelMap的初始化选项。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-image-interface InitializationOptions--><!--Device-image-interface InitializationOptions-End-->
 
@@ -16,13 +18,15 @@ PixelMap的初始化选项。
 alphaType?: AlphaType
 ```
 
-透明度。默认值为IMAGE\_ALPHA\_TYPE\_PREMUL。
+透明度。默认值为IMAGE_ALPHA_TYPE_PREMUL。
 
-**类型：** AlphaType
+**类型：** [AlphaType](arkts-image-image-alphatype-e.md)
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -42,9 +46,11 @@ editable?: boolean
 
 **类型：** boolean
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -60,13 +66,15 @@ editable?: boolean
 pixelFormat?: PixelMapFormat
 ```
 
-生成的PixelMap的像素格式。默认值为RGBA\_8888。
+生成的PixelMap的像素格式。默认值为RGBA_8888。
 
-**类型：** PixelMapFormat
+**类型：** [PixelMapFormat](arkts-image-image-pixelmapformat-e.md)
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -82,13 +90,15 @@ pixelFormat?: PixelMapFormat
 scaleMode?: ScaleMode
 ```
 
-缩放模式。默认值为FIT\_TARGET\_SIZE。
+缩放模式。默认值为FIT_TARGET_SIZE。
 
-**类型：** ScaleMode
+**类型：** [ScaleMode](arkts-image-image-scalemode-e.md)
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -108,9 +118,11 @@ size: Size
 
 **类型：** Size
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -126,13 +138,15 @@ size: Size
 srcPixelFormat?: PixelMapFormat
 ```
 
-传入的缓冲区数据的像素格式。默认值为BGRA\_8888。
+传入的缓冲区数据的像素格式。默认值为BGRA_8888。
 
-**类型：** PixelMapFormat
+**类型：** [PixelMapFormat](arkts-image-image-pixelmapformat-e.md)
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-InitializationOptions-srcPixelFormat?: PixelMapFormat--><!--Device-InitializationOptions-srcPixelFormat?: PixelMapFormat-End-->
 

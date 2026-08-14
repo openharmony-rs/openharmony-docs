@@ -22,7 +22,7 @@ data: CalendarDay[]
 
 CalendarDay.
 
-**类型：** CalendarDay[]
+**类型：** [CalendarDay](arkts-arkui-calendarday-i-sys.md)[]
 
 **起始版本：** 7
 

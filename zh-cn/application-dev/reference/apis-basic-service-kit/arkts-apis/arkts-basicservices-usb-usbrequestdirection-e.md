@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBRequestDirection](arkts-basicservices-usbmanager-usbrequestdirection-e.md)
+**替代接口：** [USBRequestDirection](arkts-basicservices-usbmanager-usbrequestdirection-e.md#USBRequestDirection)
 
 <!--Device-usb-export enum USBRequestDirection--><!--Device-usb-export enum USBRequestDirection-End-->
 
@@ -28,7 +28,7 @@ USB_REQUEST_DIR_TO_DEVICE = 0
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBRequestDirection.USB_REQUEST_DIR_TO_DEVICE](arkts-basicservices-usbmanager-usbrequestdirection-e.md#usb_request_dir_to_device)
+**替代接口：** [USB_REQUEST_DIR_TO_DEVICE](arkts-basicservices-usbmanager-usbrequestdirection-e.md#USB_REQUEST_DIR_TO_DEVICE)
 
 <!--Device-USBRequestDirection-USB_REQUEST_DIR_TO_DEVICE = 0--><!--Device-USBRequestDirection-USB_REQUEST_DIR_TO_DEVICE = 0-End-->
 
@@ -48,7 +48,7 @@ USB_REQUEST_DIR_FROM_DEVICE = 0x80
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBRequestDirection.USB_REQUEST_DIR_FROM_DEVICE](arkts-basicservices-usbmanager-usbrequestdirection-e.md#usb_request_dir_from_device)
+**替代接口：** [USB_REQUEST_DIR_FROM_DEVICE](arkts-basicservices-usbmanager-usbrequestdirection-e.md#USB_REQUEST_DIR_FROM_DEVICE)
 
 <!--Device-USBRequestDirection-USB_REQUEST_DIR_FROM_DEVICE = 0x80--><!--Device-USBRequestDirection-USB_REQUEST_DIR_FROM_DEVICE = 0x80-End-->
 

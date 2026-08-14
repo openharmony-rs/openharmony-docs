@@ -1,12 +1,14 @@
 # LightWeightSet
 
-LightWeightSet可用于存储一系列值的集合，存储元素中value值唯一。
+LightWeightSet可用于存储一系列值，存储元素中value唯一。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-<!--Device-unnamed-declare class LightWeightSet<T>--><!--Device-unnamed-declare class LightWeightSet<T>-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare class LightWeightSet--><!--Device-unnamed-declare class LightWeightSet-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -20,7 +22,9 @@ $_iterator(): IterableIterator<T>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -34,7 +38,7 @@ $_iterator(): IterableIterator<T>
 | --- | --- |
 | IterableIterator&lt;T&gt; | 返回遍历LightWeightSet中所有元素的迭代器对象，每一项为容器中的元素值。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let lightWeightSet: LightWeightSet<string> = new LightWeightSet<string>();
@@ -57,6 +61,8 @@ for (let item of lightWeightSet) {
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LightWeightSet-[Symbol.iterator](): IterableIterator<T>--><!--Device-LightWeightSet-[Symbol.iterator](): IterableIterator<T>-End-->
@@ -75,7 +81,7 @@ for (let item of lightWeightSet) {
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The Symbol.iterator method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let lightWeightSet = new LightWeightSet<string>();
@@ -119,9 +125,11 @@ add(obj: T): boolean
 
 向容器中添加数据。若添加的元素已存在于容器中，则不会重复添加，返回false。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -139,7 +147,7 @@ add(obj: T): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 成功添加元素返回true，要添加的元素已存在时返回false。 |
+| boolean | 成功添加元素返回true，否则返回false。 |
 
 **错误码：**
 
@@ -147,7 +155,7 @@ add(obj: T): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The add method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 向容器中添加元素
@@ -164,9 +172,11 @@ addAll(set: LightWeightSet<T>): boolean
 
 将另一个容器的所有元素添加到当前容器。若源容器中的元素已存在于当前容器中，则跳过该元素不重复添加。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -178,13 +188,13 @@ addAll(set: LightWeightSet<T>): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| set | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; | 是 | 提供添加元素的LightWeightSet。 |
+| set | [LightWeightSet](arkts-arkts-util-lightweightset-lightweightset-c.md)&lt;T&gt; | 是 | 提供添加元素的LightWeightSet。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 成功添加元素返回true，否则返回false。 |
+| boolean | 成功添加元素返回true，要添加的元素已存在时返回false。 |
 
 **错误码：**
 
@@ -192,7 +202,7 @@ addAll(set: LightWeightSet<T>): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The addAll method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let lightWeightSet = new LightWeightSet<string>();
@@ -214,9 +224,11 @@ clear(): void
 
 清除容器中的所有元素，并将length置为0。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -230,7 +242,7 @@ clear(): void
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The clear method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let lightWeightSet = new LightWeightSet<string>();
@@ -250,9 +262,11 @@ constructor()
 
 LightWeightSet的构造函数。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -266,7 +280,7 @@ LightWeightSet的构造函数。
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The LightWeightSet's constructor cannot be directly invoked. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 创建LightWeightSet实例
@@ -281,9 +295,11 @@ entries(): IterableIterator<[T, T]>
 
 返回包含此容器中所有元素对的新迭代器对象，每个元素对由相同值组成[value, value]。 不建议在entries中使用add、remove、removeAt方法，会导致死循环等不可预知的风险，可使用for循环来进行插入和删除。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -303,7 +319,7 @@ entries(): IterableIterator<[T, T]>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The entries method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let lightWeightSet = new LightWeightSet<string>();
@@ -350,7 +366,7 @@ equal(obj: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| obj | Object | 是 | 比较对象。 |
+| obj | Object | 是 | 与当前容器比较元素构成是否相同的对象，可为仅含string或number的LightWeightSet或数组。 |
 
 **返回值：**
 
@@ -364,7 +380,7 @@ equal(obj: Object): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The equal method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let lightWeightSet = new LightWeightSet<string>();
@@ -382,11 +398,13 @@ console.info("result:", result);  // result: true
 forEach(callbackFn: (value?: T, key?: T, set?: LightWeightSet<T>) => void, thisArg?: Object): void
 ```
 
-通过回调函数来遍历LightWeightSet实例对象上的元素以及元素对应的下标。 不建议在forEach函数中使用add、remove、removeAt方法，会导致死循环等不可预知的风险，可使用for循环来进行插入和删除。
+通过回调函数来遍历LightWeightSet实例对象上的元素。 不建议在forEach函数中使用add、remove、removeAt方法，会导致死循环等不可预知的风险，可使用for循环来进行插入和删除。
 
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -398,7 +416,7 @@ forEach(callbackFn: (value?: T, key?: T, set?: LightWeightSet<T>) => void, thisA
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value?: T, key?: T, set?: LightWeightSet&lt;T&gt;) =&gt; void | 是 | 回调函数，用于遍历LightWeightSet实例对象上的元素及其下标。callbackFn（必填）接受最多三个参数的函数。value 当前遍历到的元素的值，默认值为首个元素的值。key 当前遍历到的元素（与value相同），默认值为首个元素。set 当前调用forEach方法的实例对象，默认值为当前实例对象。 |
+| callbackFn | (value?: T, key?: T, set?: LightWeightSet&lt;T&gt;) =&gt; void | 是 | 回调函数，用于遍历LightWeightSet实例对象上的元素及其下标。 callbackFn（必填）接受最多三个参数的函数。 value 当前遍历到的元素的值，默认值为首个元素的值。 key 当前遍历到的元素（与value相同），默认值为首个元素。 set 当前调用forEach方法的实例对象，默认值为当前实例对象。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值。当需要改变回调函数中的this指向时传入此参数，不需要改变this指向时可省略。不传入时默认值为当前实例对象。 |
 
 **错误码：**
@@ -407,7 +425,7 @@ forEach(callbackFn: (value?: T, key?: T, set?: LightWeightSet<T>) => void, thisA
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The forEach method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let lightWeightSet = new LightWeightSet<string>();
@@ -442,7 +460,9 @@ forEach(callbackFn: LightWeightSetForEachCb<T>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -454,9 +474,9 @@ forEach(callbackFn: LightWeightSetForEachCb<T>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; | 是 | 对每个元素执行的回调函数。 |
+| callbackFn | [LightWeightSetForEachCb](arkts-arkts-lightweightsetforeachcb-t.md)&lt;T&gt; | 是 | 对每个元素执行的回调函数。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { LightWeightSetForEachCb } from '@kit.ArkTS';
@@ -472,21 +492,17 @@ lightWeightSet.forEach(lightWeightSetCb);
 
 ## getIndexOf
 
-ArkTS-Dyn:
-```TypeScript
-getIndexOf(key: T): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getIndexOf(key: T): int
 ```
 
 获取指定元素所对应的下标。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -504,7 +520,7 @@ getIndexOf(key: T): int
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 在LightWeightSet中指定数据的下标。若LightWeightSet中没有要查找的元素，则返回一个负值。 |
+| int | 在LightWeightSet中指定数据的下标。若LightWeightSet中没有要查找的元素，则返回一个负值。 表示目标哈希值应该插入的位置，插入位置是从1开始计数的，负号表示这是一个插入位置而不是索引。 |
 
 **错误码：**
 
@@ -512,7 +528,7 @@ getIndexOf(key: T): int
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getIndexOf method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let lightWeightSet = new LightWeightSet<string>();
@@ -535,6 +551,8 @@ getValueAt(index: number): T
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LightWeightSet-getValueAt(index: number): T--><!--Device-LightWeightSet-getValueAt(index: number): T-End-->
@@ -545,7 +563,7 @@ getValueAt(index: number): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 指定下标。需要小于等于INT32\_\_\_ESCAPED\_UNDERSCORE\_\_\_MAX即2147483647。 |
+| index | number | 是 | 指定下标。需要小于等于INT32_MAX即2147483647。 |
 
 **返回值：**
 
@@ -559,7 +577,7 @@ getValueAt(index: number): T
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getValueAt method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let lightWeightSet = new LightWeightSet<string>();
@@ -580,7 +598,9 @@ getValueAt(index: int): T | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -608,9 +628,11 @@ has(key: T): boolean
 
 判断容器中是否包含指定元素。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -636,7 +658,7 @@ has(key: T): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The has method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let lightWeightSet = new LightWeightSet<number>();
@@ -652,11 +674,13 @@ console.info("result:", result);  // result: true
 hasAll(set: LightWeightSet<T>): boolean
 ```
 
-判断容器中是否包含指定set中的所有元素。当容器中存储的value为number类型且值大于INT32\_MAX(2147483647)或小于INT32\_MIN(-2147483648)时，判断结果可能与预期不一致，详见规格限制。
+判断容器中是否包含指定set中的所有元素。当容器中存储的value为number类型且值大于INT32_MAX(2147483647)或小于INT32_MIN(-2147483648)时，判断结果可能与预期不一致，详见规格限制。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -668,7 +692,7 @@ hasAll(set: LightWeightSet<T>): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| set | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; | 是 | 用于判断当前容器是否包含其所有元素的目标集合。 |
+| set | [LightWeightSet](arkts-arkts-util-lightweightset-lightweightset-c.md)&lt;T&gt; | 是 | 用于判断当前容器是否包含其所有元素的目标集合。 |
 
 **返回值：**
 
@@ -682,7 +706,7 @@ hasAll(set: LightWeightSet<T>): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The hasAll method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let lightWeightSet = new LightWeightSet<string>();
@@ -697,21 +721,17 @@ console.info("result:", result);  // result: true
 
 ## increaseCapacityTo
 
-ArkTS-Dyn:
-```TypeScript
-increaseCapacityTo(minimumCapacity: number): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 increaseCapacityTo(minimumCapacity: int): void
 ```
 
 将当前LightWeightSet扩容至指定容量。如果传入的容量值大于或等于当前LightWeightSet中的元素个数，将容量变更为新容量，小于则不会变更。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -723,7 +743,7 @@ increaseCapacityTo(minimumCapacity: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| minimumCapacity | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 需要容纳的元素数量。若传入值小于当前元素个数，则不会变更容量。 |
+| minimumCapacity | int | 是 | 需要容纳的元素数量。若传入值小于当前元素个数，则不会变更容量。 |
 
 **错误码：**
 
@@ -732,7 +752,7 @@ increaseCapacityTo(minimumCapacity: int): void
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The increaseCapacityTo method cannot be bound. |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of minimumCapacity is out of range. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let lightWeightSet = new LightWeightSet<string>();
@@ -748,9 +768,11 @@ isEmpty(): boolean
 
 判断容器是否为空。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -770,7 +792,7 @@ isEmpty(): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The isEmpty method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 判断容器是否为空
@@ -790,6 +812,8 @@ remove(key: T): T
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -815,7 +839,7 @@ remove(key: T): T
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The remove method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let lightWeightSet = new LightWeightSet<string>();
@@ -836,7 +860,9 @@ remove(key: T): T | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -856,7 +882,7 @@ remove(key: T): T | undefined
 | --- | --- |
 | T | 如果存在则返回被删除的值，否则返回undefined。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let lightWeightSet: LightWeightSet<string> = new LightWeightSet<string>();
@@ -867,21 +893,17 @@ let result = lightWeightSet.remove("sparrow");
 
 ## removeAt
 
-ArkTS-Dyn:
-```TypeScript
-removeAt(index: number): boolean
-```
-
-ArkTS-Sta:
 ```TypeScript
 removeAt(index: int): boolean
 ```
 
 删除指定下标所对应的元素。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -893,7 +915,7 @@ removeAt(index: int): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 指定下标，取值范围[0, length-1]，且需要小于等于INT32\_\_\_ESCAPED\_UNDERSCORE\_\_\_MAX即2147483647。超出有效下标范围时返回false。 |
+| index | int | 是 | 指定下标，取值范围[0, length-1]，且需要小于等于INT32_MAX即2147483647。超出有效下标范围时返回false。 |
 
 **返回值：**
 
@@ -907,7 +929,7 @@ removeAt(index: int): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The removeAt method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let lightWeightSet = new LightWeightSet<string>();
@@ -926,9 +948,11 @@ toArray(): Array<T>
 
 获取包含此容器中所有元素的数组。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -948,7 +972,7 @@ toArray(): Array<T>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The toArray method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let lightWeightSet = new LightWeightSet<string>();
@@ -968,9 +992,11 @@ toString(): String
 
 获取包含容器中所有元素的字符串。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -984,7 +1010,7 @@ toString(): String
 | --- | --- |
 | String | 返回包含容器中所有元素的字符串。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let lightWeightSet = new LightWeightSet<string>();
@@ -1003,9 +1029,11 @@ values(): IterableIterator<T>
 
 返回包含此集合中所有值的新迭代器对象。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1025,7 +1053,7 @@ values(): IterableIterator<T>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The values method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let lightWeightSet = new LightWeightSet<string>();
@@ -1052,7 +1080,9 @@ LightWeightSet的元素个数。
 
 **起始版本：** 8
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

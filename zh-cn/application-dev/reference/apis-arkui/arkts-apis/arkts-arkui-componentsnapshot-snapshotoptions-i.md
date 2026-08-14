@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-componentSnapshot-interface SnapshotOptions--><!--Device-componentSnapshot-interface SnapshotOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -18,11 +20,13 @@ colorMode?: ColorModeOptions
 
 指定截图使用的色彩空间。 默认值：{colorSpace: SRGB, isAuto: false}
 
-**类型：** ColorModeOptions
+**类型：** [ColorModeOptions](arkts-arkui-componentsnapshot-colormodeoptions-i.md)
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,11 +44,13 @@ dynamicRangeMode?: DynamicRangeModeOptions
 
 指定截图使用的动态范围模式。 默认值：{dynamicRangeMode: STANDARD, isAuto: false}
 
-**类型：** DynamicRangeModeOptions
+**类型：** [DynamicRangeModeOptions](arkts-arkui-componentsnapshot-dynamicrangemodeoptions-i.md)
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -62,11 +68,13 @@ region?: SnapshotRegionType
 
 指定截图的矩形区域范围，默认为整个组件。
 
-**类型：** SnapshotRegionType
+**类型：** [SnapshotRegionType](arkts-arkui-componentsnapshot-snapshotregiontype-t.md)
 
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -90,6 +98,8 @@ scale?: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -111,6 +121,8 @@ waitUntilRenderFinished?: boolean
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -2,9 +2,11 @@
 
 相机设备信息。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-camera-interface CameraDevice--><!--Device-camera-interface CameraDevice-End-->
 
@@ -18,11 +20,13 @@ readonly automotiveCameraPosition?: AutomotiveCameraPosition
 
 Car设备摄像头位置。
 
-**类型：** AutomotiveCameraPosition
+**类型：** [AutomotiveCameraPosition](arkts-camera-camera-automotivecameraposition-e.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,9 +46,11 @@ readonly cameraId: string
 
 **类型：** string
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
@@ -62,9 +68,11 @@ readonly cameraOrientation: int
 
 **类型：** int
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
@@ -80,11 +88,13 @@ readonly cameraPosition: CameraPosition
 
 相机位置。
 
-**类型：** CameraPosition
+**类型：** [CameraPosition](arkts-camera-camera-cameraposition-e.md)
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
@@ -100,11 +110,13 @@ readonly cameraType: CameraType
 
 相机类型。
 
-**类型：** CameraType
+**类型：** [CameraType](arkts-camera-camera-cameratype-e.md)
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
@@ -120,11 +132,13 @@ readonly connectionType: ConnectionType
 
 相机连接类型。
 
-**类型：** ConnectionType
+**类型：** [ConnectionType](arkts-camera-camera-connectiontype-e.md)
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
@@ -140,57 +154,19 @@ readonly constituentCameraDevices?: Array<CameraDevice>
 
 组成此逻辑相机的物理相机列表。
 
-**类型：** Array&lt;CameraDevice&gt;
+**类型：** Array&lt;[CameraDevice](arkts-camera-camera-cameradevice-i.md)&gt;
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CameraDevice-readonly constituentCameraDevices?: Array<CameraDevice>--><!--Device-CameraDevice-readonly constituentCameraDevices?: Array<CameraDevice>-End-->
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-## hostDeviceName
-
-```TypeScript
-readonly hostDeviceName: string
-```
-
-远端设备名称。若当前无远端设备，返回为空。
-
-**类型：** string
-
-**起始版本：** 15
-
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
-
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CameraDevice-readonly hostDeviceName: string--><!--Device-CameraDevice-readonly hostDeviceName: string-End-->
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-## hostDeviceType
-
-```TypeScript
-readonly hostDeviceType: HostDeviceType
-```
-
-远端设备类型。
-
-**类型：** HostDeviceType
-
-**起始版本：** 15
-
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
-
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CameraDevice-readonly hostDeviceType: HostDeviceType--><!--Device-CameraDevice-readonly hostDeviceType: HostDeviceType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -206,7 +182,9 @@ readonly isLogicalCamera?: boolean
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -228,33 +206,15 @@ readonly lensDistortion?: Array<double>
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CameraDevice-readonly lensDistortion?: Array<double>--><!--Device-CameraDevice-readonly lensDistortion?: Array<double>-End-->
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-## lensEquivalentFocalLength
-
-```TypeScript
-readonly lensEquivalentFocalLength?: Array<int>
-```
-
-相机镜头等效焦距。
-
-**类型：** Array&lt;int&gt;
-
-**起始版本：** 24
-
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
-
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
-
-<!--Device-CameraDevice-readonly lensEquivalentFocalLength?: Array<int>--><!--Device-CameraDevice-readonly lensEquivalentFocalLength?: Array<int>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -270,7 +230,9 @@ readonly lensFocalLength?: double
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -292,7 +254,9 @@ readonly lensIntrinsicCalibration?: Array<double>
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -314,7 +278,9 @@ readonly minimumFocusDistance?: double
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -332,11 +298,13 @@ readonly sensorColorFilterArrangement?: SensorColorFilterArrangement
 
 传感器颜色滤镜排列方式。
 
-**类型：** SensorColorFilterArrangement
+**类型：** [SensorColorFilterArrangement](arkts-camera-camera-sensorcolorfilterarrangement-e.md)
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -358,7 +326,9 @@ readonly sensorPhysicalSize?: Array<double>
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -380,7 +350,9 @@ readonly sensorPixelArraySize?: Array<int>
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

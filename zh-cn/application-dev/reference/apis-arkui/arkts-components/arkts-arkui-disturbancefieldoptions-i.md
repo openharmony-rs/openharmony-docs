@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface DisturbanceFieldOptions--><!--Device-unnamed-declare interface DisturbanceFieldOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -25,6 +27,8 @@ feather?: number
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -50,6 +54,8 @@ noiseAmplitude?: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -73,6 +79,8 @@ noiseFrequency?: number
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -98,6 +106,8 @@ noiseScale?: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -114,13 +124,15 @@ position?: PositionT<number>
 
 场的位置。 默认值{x:0，y:0}。 x、y的取值范围：(-∞, +∞)。
 
-**类型：** PositionT&lt;number&gt;
+**类型：** [PositionT](arkts-arkui-positiont-t.md)&lt;number&gt;
 
 **默认值：** {x:0,y:0}
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -138,13 +150,15 @@ shape?: DisturbanceFieldShape
 
 场的形状。 默认为DisturbanceFieldShape.RECT。
 
-**类型：** DisturbanceFieldShape
+**类型：** [DisturbanceFieldShape](arkts-arkui-disturbancefieldshape-e.md)
 
 **默认值：** DisturbanceFieldShape.RECT
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -162,13 +176,15 @@ size?: SizeT<number>
 
 场的大小。 默认值 {width:0，height:0}。 width和height的取值范围：[0, +∞)。
 
-**类型：** SizeT&lt;number&gt;
+**类型：** [SizeT](arkts-arkui-sizet-t.md)&lt;number&gt;
 
 **默认值：** {width:0,height:0}
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -193,6 +209,8 @@ strength?: number
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

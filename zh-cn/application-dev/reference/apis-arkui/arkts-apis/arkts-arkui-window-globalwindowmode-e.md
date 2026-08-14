@@ -2,9 +2,11 @@
 
 窗口模式。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-window-enum GlobalWindowMode--><!--Device-window-enum GlobalWindowMode-End-->
 
@@ -18,11 +20,13 @@ FULLSCREEN = 1
 
 全屏窗口，二进制从右往左，第一个二进制位为1。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-GlobalWindowMode-FULLSCREEN = 1--><!--Device-GlobalWindowMode-FULLSCREEN = 1-End-->
 
@@ -36,11 +40,13 @@ SPLIT = 1 << 1
 
 分屏窗口，二进制从右往左，第二个二进制位为1。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-GlobalWindowMode-SPLIT = 1 << 1--><!--Device-GlobalWindowMode-SPLIT = 1 << 1-End-->
 
@@ -54,11 +60,13 @@ FLOAT = 1 << 2
 
 悬浮窗，二进制从右往左，第三个二进制位为1。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-GlobalWindowMode-FLOAT = 1 << 2--><!--Device-GlobalWindowMode-FLOAT = 1 << 2-End-->
 
@@ -72,11 +80,13 @@ PIP = 1 << 3
 
 画中画，二进制从右往左，第四个二进制位为1。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-GlobalWindowMode-PIP = 1 << 3--><!--Device-GlobalWindowMode-PIP = 1 << 3-End-->
 

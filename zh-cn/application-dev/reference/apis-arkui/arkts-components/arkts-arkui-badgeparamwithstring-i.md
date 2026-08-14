@@ -1,14 +1,16 @@
 # BadgeParamWithString
 
-BadgeParamWithNumber继承自[BadgeParam]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_，具有BadgeParam的全部属性。
+BadgeParamWithNumber继承自[BadgeParam](arkts-arkui-badgeparam-i.md#BadgeParam)，具有BadgeParam的全部属性。
 
-**继承/实现关系：** BadgeParamWithString extends [BadgeParam](../arkts-apis/arkts-arkui-component/badge-badgeparam-i.md)
+**继承/实现关系：** BadgeParamWithString extends [BadgeParam](arkts-arkui-badgeparam-i.md#BadgeParam)
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
-<!--Device-unnamed-declare interface BadgeParamWithString extends BadgeParam--><!--Device-unnamed-declare interface BadgeParamWithString extends BadgeParam-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare interface BadgeParamWithString--><!--Device-unnamed-declare interface BadgeParamWithString-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -25,6 +27,8 @@ value: ResourceStr
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

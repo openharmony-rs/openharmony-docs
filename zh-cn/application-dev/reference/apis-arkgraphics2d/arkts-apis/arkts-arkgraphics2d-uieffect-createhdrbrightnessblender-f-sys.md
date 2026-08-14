@@ -8,9 +8,11 @@ function createHdrBrightnessBlender(param: BrightnessBlenderParam): HdrBrightnes
 
 创建HdrBrightnessBlender实例用于给组件添加支持HDR的提亮效果。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-uiEffect-function createHdrBrightnessBlender(param: BrightnessBlenderParam): HdrBrightnessBlender--><!--Device-uiEffect-function createHdrBrightnessBlender(param: BrightnessBlenderParam): HdrBrightnessBlender-End-->
 
@@ -22,13 +24,13 @@ function createHdrBrightnessBlender(param: BrightnessBlenderParam): HdrBrightnes
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| param | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 实现提亮效果的参数。 |
+| param | [BrightnessBlenderParam](arkts-arkgraphics2d-graphics-uieffect-brightnessblenderparam-i-sys.md) | 是 | 实现提亮效果的参数，包含灰度调整系数、饱和度、混合比例等配置项，用于配置提亮效果。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回具有提亮效果的混合器（支持HDR）。 |
+| [HdrBrightnessBlender](arkts-arkgraphics2d-uieffect-hdrbrightnessblender-i.md) | 返回具有提亮效果的混合器（支持HDR）。 |
 
 **错误码：**
 
@@ -36,7 +38,7 @@ function createHdrBrightnessBlender(param: BrightnessBlenderParam): HdrBrightnes
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { uiEffect } from "@kit.ArkGraphics2D"

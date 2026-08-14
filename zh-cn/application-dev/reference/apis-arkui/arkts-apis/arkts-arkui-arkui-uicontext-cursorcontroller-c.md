@@ -1,12 +1,14 @@
 # CursorController
 
-class CursorController
+提供光标样式设置的能力。 > **说明：** > > - 本Class首批接口从API version 12开始支持。 > > - 以下API需先使用UIContext中的[getCursorController()](arkts-arkui-arkui-uicontext-uicontext-c.md#getCursorController)方法获取CursorController实例，再通过此实例调用对应方法。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-<!--Device-unnamed-export declare class CursorController--><!--Device-unnamed-export declare class CursorController-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-export class CursorController--><!--Device-unnamed-export class CursorController-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,13 +18,17 @@ class CursorController
 restoreDefault(): void
 ```
 
-Restore default cursor.
+恢复默认的光标样式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CursorController-restoreDefault(): void--><!--Device-CursorController-restoreDefault(): void-End-->
 
@@ -34,13 +40,17 @@ Restore default cursor.
 setCursor(value: PointerStyle): void
 ```
 
-设置光标样式。
+更改当前的鼠标光标样式。 > **说明：** > > 该接口调用后不会立即生效，而是在下一帧改变鼠标光标样式。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CursorController-setCursor(value: PointerStyle): void--><!--Device-CursorController-setCursor(value: PointerStyle): void-End-->
 
@@ -50,7 +60,7 @@ setCursor(value: PointerStyle): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | cursor style enum. |
+| value | [PointerStyle](arkts-arkui-pointerstyle-t.md) | 是 | 光标样式。 |
 
 ## setCustomCursor
 
@@ -58,13 +68,17 @@ setCursor(value: PointerStyle): void
 setCustomCursor(value: image.PixelMap, focusX?: int, focusY?: int): void
 ```
 
-设置自定义光标样式。
+设置自定义鼠标光标样式。 > **说明：** > > 该接口调用后不会立即生效，而是在下一帧改变鼠标光标样式。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CursorController-setCustomCursor(value: image.PixelMap, focusX?: int, focusY?: int): void--><!--Device-CursorController-setCustomCursor(value: image.PixelMap, focusX?: int, focusY?: int): void-End-->
 
@@ -74,7 +88,7 @@ setCustomCursor(value: image.PixelMap, focusX?: int, focusY?: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | image.PixelMap | 是 | 自定义光标样式。 |
-| focusX | int | 否 | 自定义光标的焦点x。取值大于等于0。默认的值为0。 |
-| focusY | int | 否 | 自定义光标的焦点y。取值大于等于0。默认的值为0。 |
+| value | image.PixelMap | 是 | 自定义鼠标光标样式的像素图。最大尺寸为256*256px，超过该尺寸时设置自定义鼠标光标样式不生效。 |
+| focusX | int | 否 | 自定义光标的焦点X坐标。焦点指的是鼠标实际点击的位置，焦点设置为(0, 0)时表示图片左上角为实际点击位置。&lt;br/&gt;默认值：0&lt;br/&gt;单位：px&lt;br/&gt;取值范围： [0, +∞) |
+| focusY | int | 否 | 自定义光标的焦点Y坐标。&lt;br/&gt;默认值：0&lt;br/&gt;单位：px&lt;br/&gt;取值范围：[0, +∞) |
 

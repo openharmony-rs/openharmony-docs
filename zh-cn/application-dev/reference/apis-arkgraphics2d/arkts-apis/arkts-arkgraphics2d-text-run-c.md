@@ -1,10 +1,12 @@
 # Run
 
-文本排版单元。 下列API示例中都需先使用[TextLine]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_类的[getGlyphRuns()]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_接口获取Run对象实例，再通过此实例调 用对应方法。
+文本排版单元，表示一段具有相同样式属性的连续文本片段。Run由[TextLine](arkts-arkgraphics2d-text-textline-c.md#TextLine)类的[getGlyphRuns()](arkts-arkgraphics2d-text-textline-c.md#getGlyphRuns)接 口获取。 下列API示例中都需先使用[TextLine](arkts-arkgraphics2d-text-textline-c.md#TextLine)类的[getGlyphRuns()](arkts-arkgraphics2d-text-textline-c.md#getGlyphRuns)接口获取Run对象实例，再通过此实例调 用对应方法。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-text-class Run--><!--Device-text-class Run-End-->
 
@@ -22,6 +24,8 @@ getAdvances(range: Range): Array<common2D.Point>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Run-getAdvances(range: Range): Array<common2D.Point>--><!--Device-Run-getAdvances(range: Range): Array<common2D.Point>-End-->
@@ -32,15 +36,15 @@ getAdvances(range: Range): Array<common2D.Point>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| range | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 要获取的字形位置范围。range.start表示范围开始的位置，range.end表示范围的长度。如果长度是0表示从range.start开始获取到渲染块结束。当range.end、range.start为负数，或者传入null、undefined时，该方法将返回undefined。 |
+| range | Range | 是 | 要获取的字形位置范围。range.start表示范围开始的位置，range.end表示范围的长度。如果长度是0表示从range.start开始获取到渲染块结束。当 range.end、range.start为负数，或者传入null、undefined时，该方法将返回undefined。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;common2D.Point&gt; | Returns the glyph width array of each glyph in the run unit relative to the |
+| Array&lt;common2D.Point&gt; | 返回该排版单元中每个字形相对于水平方向的字形宽度数组。其中， [common2D.Point]{ |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -65,11 +69,13 @@ advancesRange = runs[0].getAdvances({start:0, end:-10}); // -10是非法参数�
 getAdvances(range: Range): Array<common2D.Point> | undefined
 ```
 
-获取指定范围内的字形宽度数组
+获取该排版单元指定范围内每个字形的字形宽度数组。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Run-getAdvances(range: Range): Array<common2D.Point> | undefined--><!--Device-Run-getAdvances(range: Range): Array<common2D.Point> | undefined-End-->
 
@@ -79,13 +85,13 @@ getAdvances(range: Range): Array<common2D.Point> | undefined
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| range | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | range获取当前run的字形范围，其中start表示起始位置，end表示范围长度，如果长度为0，则获取从start到末尾的字形 |
+| range | Range | 是 | 要获取的字形位置范围。range.start表示范围开始的位置，range.end表示范围的长度。如果长度是0表示从range.start开始获取到渲染块结束。当 range.end、range.start为负数，或者传入null、undefined时，该方法将返回undefined。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;common2D.Point&gt; | Array holding the advance width and height of each glyph. |
+| Array&lt;common2D.Point&gt; | 返回该排版单元中每个字形相对于水平方向的字形宽度数组。其中， [common2D.Point]{ |
 
 ## getFont
 
@@ -95,9 +101,11 @@ getFont(): drawing.Font
 
 获取排版单元的字体属性对象。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -109,9 +117,9 @@ getFont(): drawing.Font
 
 | 类型 | 说明 |
 | --- | --- |
-| drawing.Font | **Font** object of this run. |
+| drawing.Font | 该排版单元的字体属性对象实例。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let font = runs[0].getFont();
@@ -119,21 +127,17 @@ let font = runs[0].getFont();
 
 ## getGlyphCount
 
-ArkTS-Dyn:
-```TypeScript
-getGlyphCount(): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getGlyphCount(): int
 ```
 
 获取该排版单元中字形的数量。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -145,9 +149,9 @@ getGlyphCount(): int
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 该排版单元中字形数量，整数。 |
+| int | 该排版单元中字形数量，整数。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let glyphs = runs[0].getGlyphCount();
@@ -155,21 +159,17 @@ let glyphs = runs[0].getGlyphCount();
 
 ## getGlyphs
 
-ArkTS-Dyn:
-```TypeScript
-getGlyphs(): Array<number>
-```
-
-ArkTS-Sta:
 ```TypeScript
 getGlyphs(): Array<int>
 ```
 
 获取该排版单元中每个字符的字形序号。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -181,9 +181,9 @@ getGlyphs(): Array<int>
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: Array&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：Array&lt;int&gt; | 该排版单元中每个字符对应的字形序号。 |
+| Array&lt;int&gt; | 该排版单元中每个字符对应的字形序号。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let glyph = runs[0].getGlyphs();
@@ -201,6 +201,8 @@ getGlyphs(range: Range): Array<int>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Run-getGlyphs(range: Range): Array<int>--><!--Device-Run-getGlyphs(range: Range): Array<int>-End-->
@@ -211,7 +213,7 @@ getGlyphs(range: Range): Array<int>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| range | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 要获取的字形序号范围，range.start表示范围开始的位置，range.end表示范围的长度，当range.end为0时表示从range.start开始获取到渲染块结束。当range.end、range.start为负数，或者传入null、undefined时，该方法将返回undefined。 |
+| range | Range | 是 | 要获取的字形序号范围，range.start表示范围开始的位置，range.end表示范围的长度，当range.end为0时表示从range.start开始获取到渲染块结束。当 range.end、range.start为负数，或者传入null、undefined时，该方法将返回undefined。 |
 
 **返回值：**
 
@@ -219,7 +221,7 @@ getGlyphs(range: Range): Array<int>
 | --- | --- |
 | Array&lt;int&gt; | 该排版单元中每个字符对应的字形序号。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -297,11 +299,13 @@ struct Index {
 getGlyphs(range: Range): Array<int> | undefined
 ```
 
-获取范围内每个字符的字形标识符
+获取该排版单元指定范围内每个字符的字形序号。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Run-getGlyphs(range: Range): Array<int> | undefined--><!--Device-Run-getGlyphs(range: Range): Array<int> | undefined-End-->
 
@@ -311,13 +315,13 @@ getGlyphs(range: Range): Array<int> | undefined
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| range | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | range获取当前run的字形范围，其中start表示起始位置，end表示范围长度，如果长度为0，则获取从start到末尾的字形 |
+| range | Range | 是 | 要获取的字形序号范围，range.start表示范围开始的位置，range.end表示范围的长度，当range.end为0时表示从range.start开始获取到渲染块结束。当 range.end、range.start为负数，或者传入null、undefined时，该方法将返回undefined。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;int&gt; | Glyph identifier or undefined. |
+| Array&lt;int&gt; | 该排版单元中每个字符对应的字形序号。 |
 
 ## getImageBounds
 
@@ -325,11 +329,13 @@ getGlyphs(range: Range): Array<int> | undefined
 getImageBounds(): common2D.Rect
 ```
 
-获取该排版单元的图像边界，图像边界与排版字体、排版字号、字符本身都有关，相当于视觉边界，例如字符串为" a b "，'a'字符前面有1个空格，'b'字符后面有1个空格，用户在界面上只能看到"a b"，图像边界即为不包括带行首和 末尾空格的边界。 > **说明：** > > 示意图展示了字符串为" a b "的图像边界。 > > !\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_ > > 示意图展示了字符串为"j"或"E"的图像边界。 > > ! > \_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_
+获取该排版单元的图像边界，图像边界与排版字体、排版字号、字符本身都有关，相当于视觉边界，例如字符串为" a b "，'a'字符前面有1个空格，'b'字符后面有1个空格，用户在界面上只能看到"a b"，图像边界即为不包括带行首和 末尾空格的边界。 > **说明：** > > 示意图展示了字符串为" a b "的图像边界。 > >  > > 示意图展示了字符串为"j"或"E"的图像边界。 > > 
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -341,9 +347,9 @@ getImageBounds(): common2D.Rect
 
 | 类型 | 说明 |
 | --- | --- |
-| common2D.Rect | Image boundary of the layout unit, in physical pixels (px). |
+| common2D.Rect | 该排版单元的图像边界，单位为物理像素px。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let bounds = runs[0].getImageBounds();
@@ -357,9 +363,11 @@ getOffsets(): Array<common2D.Point>
 
 获取该排版单元中每个字形的索引偏移量。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -371,9 +379,9 @@ getOffsets(): Array<common2D.Point>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;common2D.Point&gt; | Array holding the offset of each glyph in the run relative to its index. |
+| Array&lt;common2D.Point&gt; | 该排版单元中每个字形相对于其索引的偏移量。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let offsets = runs[0].getOffsets();
@@ -387,9 +395,11 @@ getPositions(): Array<common2D.Point>
 
 获取该排版单元中每个字形相对于每行的字形位置。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -401,9 +411,9 @@ getPositions(): Array<common2D.Point>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;common2D.Point&gt; | Array holding the position of each glyph relative to the respective line in |
+| Array&lt;common2D.Point&gt; | 该排版单元中每个字形相对于每行的字形位置。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let positions = runs[0].getPositions();
@@ -421,6 +431,8 @@ getPositions(range: Range): Array<common2D.Point>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Run-getPositions(range: Range): Array<common2D.Point>--><!--Device-Run-getPositions(range: Range): Array<common2D.Point>-End-->
@@ -431,15 +443,15 @@ getPositions(range: Range): Array<common2D.Point>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| range | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 要获取的字形位置范围，range.start表示范围开始的位置，range.end表示范围的长度，如果长度是0表示从范围range.start开始获取到渲染块结束。当range.end、range.start为负数，或者传入null、undefined时，该方法将返回undefined。 |
+| range | Range | 是 | 要获取的字形位置范围，range.start表示范围开始的位置，range.end表示范围的长度，如果长度是0表示从范围range.start开始获取到渲染块结束。当 range.end、range.start为负数，或者传入null、undefined时，该方法将返回undefined。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;common2D.Point&gt; | Array holding the position of each glyph relative to the respective line in |
+| Array&lt;common2D.Point&gt; | 该排版单元中每个字形相对于每行的字形位置。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -518,11 +530,13 @@ struct Index {
 getPositions(range: Range): Array<common2D.Point> | undefined
 ```
 
-获取指定范围内字体位置信息
+获取该排版单元指定范围内每个字形相对于每行的字形位置数组。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Run-getPositions(range: Range): Array<common2D.Point> | undefined--><!--Device-Run-getPositions(range: Range): Array<common2D.Point> | undefined-End-->
 
@@ -532,13 +546,13 @@ getPositions(range: Range): Array<common2D.Point> | undefined
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| range | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | range获取当前run的字形范围，其中start表示起始位置，end表示范围长度，如果长度为0，则获取从start到末尾的字形 |
+| range | Range | 是 | 要获取的字形位置范围，range.start表示范围开始的位置，range.end表示范围的长度，如果长度是0表示从范围range.start开始获取到渲染块结束。当 range.end、range.start为负数，或者传入null、undefined时，该方法将返回undefined。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;common2D.Point&gt; | The position of the font in the layout or undefined. |
+| Array&lt;common2D.Point&gt; | 该排版单元中每个字形相对于每行的字形位置。 |
 
 ## getStringIndices
 
@@ -552,6 +566,8 @@ getStringIndices(range?: Range): Array<int>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Run-getStringIndices(range?: Range): Array<int>--><!--Device-Run-getStringIndices(range?: Range): Array<int>-End-->
@@ -562,7 +578,7 @@ getStringIndices(range?: Range): Array<int>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| range | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 要获取的字符索引范围，range.start表示范围开始的位置，range.end表示范围的长度，如果长度是0表示从范围range.start开始获取到渲染块结束。当range.end、range.start为负数，或者传入null、undefined时，该方法将返回undefined。不传该参数时，默认获取整个渲染块。 |
+| range | Range | 否 | 要获取的字符索引范围，range.start表示范围开始的位置，range.end表示范围的长度，如果长度是0表示从范围range.start开始获取到渲染块结束。当 range.end、range.start为负数，或者传入null、undefined时，该方法将返回undefined。不传该参数时，默认获取整个渲染块。 |
 
 **返回值：**
 
@@ -570,7 +586,7 @@ getStringIndices(range?: Range): Array<int>
 | --- | --- |
 | Array&lt;int&gt; | 返回每个字符的索引。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -649,11 +665,13 @@ struct Index {
 getStringIndices(range?: Range): Array<int> | undefined
 ```
 
-获取run对象中字形索引的范围，索引为相对于段落起始的偏移
+获取排版单元指定范围内字形的字符索引，该索引是相对于整个段落的偏移。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Run-getStringIndices(range?: Range): Array<int> | undefined--><!--Device-Run-getStringIndices(range?: Range): Array<int> | undefined-End-->
 
@@ -663,13 +681,13 @@ getStringIndices(range?: Range): Array<int> | undefined
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| range | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | range获取当前run的字形范围，其中start表示起始位置，end表示范围长度，如果长度为0，则获取从start到末尾的字形 |
+| range | Range | 否 | 要获取的字符索引范围，range.start表示范围开始的位置，range.end表示范围的长度，如果长度是0表示从范围range.start开始获取到渲染块结束。当 range.end、range.start为负数，或者传入null、undefined时，该方法将返回undefined。不传该参数时，默认获取整个渲染块。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;int&gt; | The glyph indices or undefined. |
+| Array&lt;int&gt; | 返回每个字符的索引。 |
 
 ## getStringRange
 
@@ -679,9 +697,11 @@ getStringRange(): Range
 
 获取排版单元生成字形的字符范围。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -693,9 +713,9 @@ getStringRange(): Range
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 排版单元生成字形的字符范围，Range类型中的start表示字符范围的开始位置，该位置是相对于整个段落的索引，Range类型中的end表示字符范围的长度。 |
+| Range | 排版单元生成字形的字符范围，Range类型中的start表示字符范围的开始位置，该位置是相对于整个段落的索引，Range类型中的end表示字符范围的长度。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let runStringRange = runs[0].getStringRange();
@@ -711,9 +731,11 @@ getTextDirection(): TextDirection
 
 获取该排版单元的文本方向。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -725,9 +747,9 @@ getTextDirection(): TextDirection
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回该排版单元的文本方向。 |
+| TextDirection | 返回该排版单元的文本方向。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let textDirection = runs[0].getTextDirection();
@@ -739,11 +761,13 @@ let textDirection = runs[0].getTextDirection();
 getTextStyle(): TextStyle
 ```
 
-获取当前绘制单元的样式属性信息
+获取该排版单元的文本样式。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -757,9 +781,9 @@ getTextStyle(): TextStyle
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 当前绘制单元的样式属性对象 |
+| TextStyle | 该排版单元的文本样式。 &lt;br&gt;**说明：** &lt;br&gt;1.`textStyle.color`、`textStyle.textShadows.color`、`textStyle.backgroundRect.color`、 `textStyle.decoration.color`属性：返回32位无符号整型颜色数值。示例：返回值`4278190080`，对应纯黑色十六进制颜色值`0xFF000000`，等价于 [common2D.Color]{ |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -877,11 +901,13 @@ struct Index {
 getTypographicBounds(): TypographicBounds
 ```
 
-获取该排版单元的排版边界，排版边界与排版字体、排版字号有关，与字符本身无关，例如字符串为" a b "，'a'字符前面有1个空格，'b'字符后面有1个空格，排版边界就包括行首和末尾空格的边界。 > **说明：** > > 示意图展示了字符串为" a b "的排版边界。 > > ! > \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_ > > 示意图展示了字符串为"j"或"E"的排版边界。 > > ! > \_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_
+获取该排版单元的排版边界，排版边界与排版字体、排版字号有关，与字符本身无关，例如字符串为" a b "，'a'字符前面有1个空格，'b'字符后面有1个空格，排版边界就包括行首和末尾空格的边界。 > **说明：** > > 示意图展示了字符串为" a b "的排版边界。 > >  > > 示意图展示了字符串为"j"或"E"的排版边界。 > > ! > [TypographicBounds-Character.png](../../../reference/apis-arkgraphics2d/figures/TypographicBounds-Character.png)
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -893,9 +919,9 @@ getTypographicBounds(): TypographicBounds
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 该排版单元的排版边界。 |
+| [TypographicBounds](arkts-arkgraphics2d-text-typographicbounds-i.md) | 该排版单元的排版边界。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let typographicBounds = runs[0].getTypographicBounds();
@@ -903,21 +929,17 @@ let typographicBounds = runs[0].getTypographicBounds();
 
 ## paint
 
-ArkTS-Dyn:
-```TypeScript
-paint(canvas: drawing.Canvas, x: number, y: number): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 paint(canvas: drawing.Canvas, x: double, y: double): void
 ```
 
 在画布上以(x, y)为左上角位置绘制排版单元。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -930,10 +952,10 @@ paint(canvas: drawing.Canvas, x: double, y: double): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | canvas | drawing.Canvas | 是 | 绘制的目标 canvas。 |
-| x | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：double | 是 | 绘制的左上角位置的横坐标，浮点数，单位为物理像素px。 |
-| y | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：double | 是 | 绘制的左上角位置的纵坐标，浮点数，单位为物理像素px。 |
+| x | double | 是 | 绘制的左上角位置的横坐标，浮点数，单位为物理像素px。 |
+| y | double | 是 | 绘制的左上角位置的纵坐标，浮点数，单位为物理像素px。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

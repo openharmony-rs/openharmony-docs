@@ -1,4 +1,4 @@
-# @ohos.atomicservice.AtomicServiceSearch(This section describes the interfaces used by AtomicServiceSearch)
+# @ohos.atomicservice.AtomicServiceSearch
 
 ## 汇总
 

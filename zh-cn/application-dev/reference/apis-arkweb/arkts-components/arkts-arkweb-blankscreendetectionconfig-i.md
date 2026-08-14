@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface BlankScreenDetectionConfig--><!--Device-unnamed-declare interface BlankScreenDetectionConfig-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -24,6 +26,8 @@ contentfulNodesCountThreshold?: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 <!--Device-BlankScreenDetectionConfig-contentfulNodesCountThreshold?: number--><!--Device-BlankScreenDetectionConfig-contentfulNodesCountThreshold?: number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -34,13 +38,15 @@ contentfulNodesCountThreshold?: number
 detectionMethods?: BlankScreenDetectionMethod[]
 ```
 
-使用检测策略的方法，是一个数组。 注： 1.重复值会忽略。 默认值：[BlankScreenDetectionMethod.DETECTION\_CONTENTFUL\_NODES\_SEVENTEEN]。
+使用检测策略的方法，是一个数组。 注： 1.重复值会忽略。 默认值：[BlankScreenDetectionMethod.DETECTION_CONTENTFUL_NODES_SEVENTEEN]。
 
-**类型：** BlankScreenDetectionMethod[]
+**类型：** [BlankScreenDetectionMethod](arkts-arkweb-blankscreendetectionmethod-e.md)[]
 
 **起始版本：** 22
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 <!--Device-BlankScreenDetectionConfig-detectionMethods?: BlankScreenDetectionMethod[]--><!--Device-BlankScreenDetectionConfig-detectionMethods?: BlankScreenDetectionMethod[]-End-->
 
@@ -60,6 +66,8 @@ detectionTiming?: number[]
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 <!--Device-BlankScreenDetectionConfig-detectionTiming?: number[]--><!--Device-BlankScreenDetectionConfig-detectionTiming?: number[]-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -77,6 +85,8 @@ enable: boolean
 **起始版本：** 22
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 <!--Device-BlankScreenDetectionConfig-enable: boolean--><!--Device-BlankScreenDetectionConfig-enable: boolean-End-->
 

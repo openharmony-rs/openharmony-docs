@@ -6,11 +6,13 @@
 function isAutoStartupSupported(): boolean
 ```
 
-检查当前设备是否支持开机自启动。 > **说明：** > > 建议在调用[autoStartupManager.getAutoStartupStatusForSelf]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 之前，先调 > 用该接口检查设备能力。如果返回false，则表明当前设备不支持开机自启动。
+检查当前设备是否支持开机自启动。 > **说明：** > > 建议在调用[autoStartupManager.getAutoStartupStatusForSelf](arkts-ability-autostartupmanager-getautostartupstatusforself-f.md#getAutoStartupStatusForSelf) 之前，先调 > 用该接口检查设备能力。如果返回false，则表明当前设备不支持开机自启动。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -24,7 +26,7 @@ function isAutoStartupSupported(): boolean
 | --- | --- |
 | boolean | 当前设备是否支持开机自启动。true：支持，false：不支持。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { autoStartupManager, UIAbility } from '@kit.AbilityKit';

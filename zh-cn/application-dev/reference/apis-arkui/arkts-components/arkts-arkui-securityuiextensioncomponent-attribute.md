@@ -1,14 +1,16 @@
 # SecurityUIExtensionComponent属性/事件
 
-支持[通用属性]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。 支持以下事件：
+支持通用属性。 支持以下事件：
 
-**继承/实现关系：** SecurityUIExtensionComponentAttribute extends [CommonMethod<SecurityUIExtensionComponentAttribute>](CommonMethod<SecurityUIExtensionComponentAttribute>)
+**继承/实现关系：** SecurityUIExtensionComponentAttribute extends CommonMethod<SecurityUIExtensionComponentAttribute>
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
-<!--Device-unnamed-declare class SecurityUIExtensionComponentAttribute extends CommonMethod<SecurityUIExtensionComponentAttribute>--><!--Device-unnamed-declare class SecurityUIExtensionComponentAttribute extends CommonMethod<SecurityUIExtensionComponentAttribute>-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare class SecurityUIExtensionComponentAttribute--><!--Device-unnamed-declare class SecurityUIExtensionComponentAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface RandomAccessFile--><!--Device-unnamed-declare interface RandomAccessFile-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -22,6 +24,8 @@ close(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-RandomAccessFile-close(): void--><!--Device-RandomAccessFile-close(): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -37,7 +41,7 @@ close(): void
 | 13900041 | Quota exceeded |
 | 13900042 | Unknown error |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let filePath = pathDir + "/test.txt";
@@ -57,6 +61,8 @@ getReadStream(): ReadStream
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-RandomAccessFile-getReadStream(): ReadStream--><!--Device-RandomAccessFile-getReadStream(): ReadStream-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -65,20 +71,20 @@ getReadStream(): ReadStream
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 文件可读流。 |
+| [ReadStream](arkts-corefile-file-fs-readstream-c.md) | 文件可读流。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error |
-| 13900008 | Bad file descriptor |
-| 13900011 | Out of memory |
-| 13900012 | Permission denied |
 | 13900020 | Invalid argument |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error |
+| 13900012 | Permission denied |
+| 13900008 | Bad file descriptor |
 | 13900042 | Unknown error |
+| 13900011 | Out of memory |
 
-**示例：**
+## 示例
 
 ```TypeScript
 const filePath = pathDir + "/test.txt";
@@ -100,6 +106,8 @@ getWriteStream(): WriteStream
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-RandomAccessFile-getWriteStream(): WriteStream--><!--Device-RandomAccessFile-getWriteStream(): WriteStream-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -108,20 +116,20 @@ getWriteStream(): WriteStream
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 文件可写流。 |
+| [WriteStream](arkts-corefile-file-fs-writestream-c.md) | 文件可写流。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error |
-| 13900008 | Bad file descriptor |
-| 13900011 | Out of memory |
-| 13900012 | Permission denied |
 | 13900020 | Invalid argument |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error |
+| 13900012 | Permission denied |
+| 13900008 | Bad file descriptor |
 | 13900042 | Unknown error |
+| 13900011 | Out of memory |
 
-**示例：**
+## 示例
 
 ```TypeScript
 const filePath = pathDir + "/test.txt";
@@ -146,6 +154,8 @@ read(
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-RandomAccessFile-read(    buffer: ArrayBuffer,    options?: ReadOptions  ): Promise<number>--><!--Device-RandomAccessFile-read(    buffer: ArrayBuffer,    options?: ReadOptions  ): Promise<number>-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -155,7 +165,7 @@ read(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer | 是 | 用于读取文件的缓冲区。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 支持如下选项：\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认为缓冲区长度。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- offset，number类型，表示期望读取文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。\_\_\_HTML\_TAG\_USD\_0\_\_\_**起始版本：** 11 |
+| options | [ReadOptions](arkts-corefile-file-fs-readoptions-i.md) | 否 | 支持如下选项：&lt;br/&gt;- length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认为缓冲区长度。&lt;br/&gt;- offset， number类型，表示期望读取文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。<br>**起始版本：** 11 |
 
 **返回值：**
 
@@ -168,17 +178,17 @@ read(
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900004 | Interrupted system call |
+| 13900020 | Invalid argument |
 | 13900005 | I/O error |
+| 13900034 | Operation would block |
+| 13900019 | Is a directory |
+| 13900044 | Network is unreachable<br>**适用版本：** 12+ |
+| 13900013 | Bad address |
 | 13900008 | Bad file descriptor |
 | 13900010 | Try again |
-| 13900013 | Bad address |
-| 13900019 | Is a directory |
-| 13900020 | Invalid argument |
-| 13900034 | Operation would block |
 | 13900042 | Unknown error |
-| 13900044 | Network is unreachable\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 12+ |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -243,6 +253,8 @@ read(buffer: ArrayBuffer, callback: AsyncCallback<number>): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-RandomAccessFile-read(buffer: ArrayBuffer, callback: AsyncCallback<number>): void--><!--Device-RandomAccessFile-read(buffer: ArrayBuffer, callback: AsyncCallback<number>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -252,23 +264,23 @@ read(buffer: ArrayBuffer, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer | 是 | 用于读取文件的缓冲区。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;number&gt; | 是 | 异步读取完成后的回调。返回实际读取的数据长度，单位为Byte。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 异步读取完成后的回调。返回实际读取的数据长度，单位为Byte。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900004 | Interrupted system call |
+| 13900020 | Invalid argument |
 | 13900005 | I/O error |
+| 13900034 | Operation would block |
+| 13900019 | Is a directory |
+| 13900013 | Bad address |
 | 13900008 | Bad file descriptor |
 | 13900010 | Try again |
-| 13900013 | Bad address |
-| 13900019 | Is a directory |
-| 13900020 | Invalid argument |
-| 13900034 | Operation would block |
 | 13900042 | Unknown error |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -334,6 +346,8 @@ read(
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-RandomAccessFile-read(    buffer: ArrayBuffer,    options: ReadOptions,    callback: AsyncCallback<number>  ): void--><!--Device-RandomAccessFile-read(    buffer: ArrayBuffer,    options: ReadOptions,    callback: AsyncCallback<number>  ): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -343,24 +357,24 @@ read(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer | 是 | 用于读取文件的缓冲区。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 支持如下选项：\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- length，number类型，表示读取数据的长度，单位为Byte。可选，默认为缓冲区长度。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- offset，number类型，表示读取文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从filePointer开始读。\_\_\_HTML\_TAG\_USD\_0\_\_\_**起始版本：** 11 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;number&gt; | 是 | 异步读取完成后的回调。返回实际读取的数据长度，单位为Byte。 |
+| options | [ReadOptions](arkts-corefile-file-fs-readoptions-i.md) | 是 | 支持如下选项：&lt;br/&gt;- length，number类型，表示读取数据的长度，单位为Byte。可选，默认为缓冲区长度。&lt;br/&gt;- offset，number 类型，表示读取文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从filePointer开始读。<br>**起始版本：** 11 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 异步读取完成后的回调。返回实际读取的数据长度，单位为Byte。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900004 | Interrupted system call |
+| 13900020 | Invalid argument |
 | 13900005 | I/O error |
+| 13900034 | Operation would block |
+| 13900019 | Is a directory |
+| 13900013 | Bad address |
 | 13900008 | Bad file descriptor |
 | 13900010 | Try again |
-| 13900013 | Bad address |
-| 13900019 | Is a directory |
-| 13900020 | Invalid argument |
-| 13900034 | Operation would block |
 | 13900042 | Unknown error |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -433,6 +447,8 @@ readSync(
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-RandomAccessFile-readSync(    buffer: ArrayBuffer,    options?: ReadOptions  ): number--><!--Device-RandomAccessFile-readSync(    buffer: ArrayBuffer,    options?: ReadOptions  ): number-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -442,7 +458,7 @@ readSync(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer | 是 | 用于读取文件的缓冲区。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 支持如下选项：\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- offset，number类型，表示期望读取文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_HTML\_TAG\_USD\_0\_\_\_**起始版本：** 11 |
+| options | [ReadOptions](arkts-corefile-file-fs-readoptions-i.md) | 否 | 支持如下选项：&lt;br/&gt;- length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。&lt;br/&gt;- offset， number类型，表示期望读取文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。&lt;br/&gt;<br>**起始版本：** 11 |
 
 **返回值：**
 
@@ -455,17 +471,17 @@ readSync(
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900004 | Interrupted system call |
+| 13900020 | Invalid argument |
 | 13900005 | I/O error |
+| 13900034 | Operation would block |
+| 13900019 | Is a directory |
+| 13900044 | Network is unreachable<br>**适用版本：** 12+ |
+| 13900013 | Bad address |
 | 13900008 | Bad file descriptor |
 | 13900010 | Try again |
-| 13900013 | Bad address |
-| 13900019 | Is a directory |
-| 13900020 | Invalid argument |
-| 13900034 | Operation would block |
 | 13900042 | Unknown error |
-| 13900044 | Network is unreachable\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 12+ |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -505,6 +521,8 @@ setFilePointer(filePointer: number): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-RandomAccessFile-setFilePointer(filePointer: number): void--><!--Device-RandomAccessFile-setFilePointer(filePointer: number): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -520,12 +538,12 @@ setFilePointer(filePointer: number): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900004 | Interrupted system call |
+| 13900020 | Invalid argument |
 | 13900005 | I/O error |
 | 13900008 | Bad file descriptor |
-| 13900020 | Invalid argument |
 | 13900042 | Unknown error |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let filePath = pathDir + "/test.txt";
@@ -549,6 +567,8 @@ write(
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-RandomAccessFile-write(    buffer: ArrayBuffer | string,    options?: WriteOptions  ): Promise<number>--><!--Device-RandomAccessFile-write(    buffer: ArrayBuffer | string,    options?: WriteOptions  ): Promise<number>-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -558,7 +578,7 @@ write(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer \| string | 是 | 待写入文件的数据，可来自缓冲区或字符串。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 支持如下选项：\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- length，number类型，表示期望写入数据的长度，单位为Byte。默认缓冲区长度。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- offset，number类型，表示期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认'utf-8'。仅支持'utf-8'。\_\_\_HTML\_TAG\_USD\_0\_\_\_**起始版本：** 11 |
+| options | [WriteOptions](arkts-corefile-file-fs-writeoptions-i.md) | 否 | 支持如下选项：&lt;br/&gt;- length，number类型，表示期望写入数据的长度，单位为Byte。默认缓冲区长度。&lt;br/&gt;- offset，number类 型，表示期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。&lt;br/&gt;- encoding，string类型，当数据是string 类型时有效，表示数据的编码方式，默认'utf-8'。仅支持'utf-8'。<br>**起始版本：** 11 |
 
 **返回值：**
 
@@ -570,20 +590,20 @@ write(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900001 | Operation not permitted |
 | 13900004 | Interrupted system call |
-| 13900005 | I/O error |
-| 13900008 | Bad file descriptor |
-| 13900010 | Try again |
-| 13900013 | Bad address |
 | 13900020 | Invalid argument |
+| 13900005 | I/O error |
+| 13900001 | Operation not permitted |
+| 13900034 | Operation would block |
+| 13900013 | Bad address |
+| 13900008 | Bad file descriptor |
 | 13900024 | File too large |
 | 13900025 | No space left on device |
-| 13900034 | Operation would block |
 | 13900041 | Quota exceeded |
+| 13900010 | Try again |
 | 13900042 | Unknown error |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -650,6 +670,8 @@ write(buffer: ArrayBuffer | string, callback: AsyncCallback<number>): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-RandomAccessFile-write(buffer: ArrayBuffer | string, callback: AsyncCallback<number>): void--><!--Device-RandomAccessFile-write(buffer: ArrayBuffer | string, callback: AsyncCallback<number>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -659,26 +681,26 @@ write(buffer: ArrayBuffer | string, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer \| string | 是 | 待写入文件的数据，可来自缓冲区或字符串。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;number&gt; | 是 | 异步写入完成后执行的回调函数。返回实际写入数据长度，单位为Byte。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 异步写入完成后执行的回调函数。返回实际写入数据长度，单位为Byte。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900001 | Operation not permitted |
 | 13900004 | Interrupted system call |
-| 13900005 | I/O error |
-| 13900008 | Bad file descriptor |
-| 13900010 | Try again |
-| 13900013 | Bad address |
 | 13900020 | Invalid argument |
+| 13900005 | I/O error |
+| 13900001 | Operation not permitted |
+| 13900034 | Operation would block |
+| 13900013 | Bad address |
+| 13900008 | Bad file descriptor |
 | 13900024 | File too large |
 | 13900025 | No space left on device |
-| 13900034 | Operation would block |
 | 13900041 | Quota exceeded |
+| 13900010 | Try again |
 | 13900042 | Unknown error |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -742,6 +764,8 @@ write(
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-RandomAccessFile-write(    buffer: ArrayBuffer | string,    options: WriteOptions,    callback: AsyncCallback<number>  ): void--><!--Device-RandomAccessFile-write(    buffer: ArrayBuffer | string,    options: WriteOptions,    callback: AsyncCallback<number>  ): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -751,27 +775,27 @@ write(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer \| string | 是 | 待写入文件的数据，可来自缓冲区或字符串。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 支持如下选项：\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认为缓冲区长度。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- offset，number类型，表示期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认'utf-8'。仅支持'utf-8'。\_\_\_HTML\_TAG\_USD\_0\_\_\_**起始版本：** 11 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;number&gt; | 是 | 异步写入完成后执行的回调函数。返回实际写入数据长度，单位为Byte。 |
+| options | [WriteOptions](arkts-corefile-file-fs-writeoptions-i.md) | 是 | 支持如下选项：&lt;br/&gt;- length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认为缓冲区长度。&lt;br/&gt;- offset， number类型，表示期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。&lt;br/&gt;- encoding，string类型，当数据 是string类型时有效，表示数据的编码方式，默认'utf-8'。仅支持'utf-8'。<br>**起始版本：** 11 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 异步写入完成后执行的回调函数。返回实际写入数据长度，单位为Byte。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900001 | Operation not permitted |
 | 13900004 | Interrupted system call |
-| 13900005 | I/O error |
-| 13900008 | Bad file descriptor |
-| 13900010 | Try again |
-| 13900013 | Bad address |
 | 13900020 | Invalid argument |
+| 13900005 | I/O error |
+| 13900001 | Operation not permitted |
+| 13900034 | Operation would block |
+| 13900013 | Bad address |
+| 13900008 | Bad file descriptor |
 | 13900024 | File too large |
 | 13900025 | No space left on device |
-| 13900034 | Operation would block |
 | 13900041 | Quota exceeded |
+| 13900010 | Try again |
 | 13900042 | Unknown error |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -846,6 +870,8 @@ writeSync(
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-RandomAccessFile-writeSync(    buffer: ArrayBuffer | string,    options?: WriteOptions  ): number--><!--Device-RandomAccessFile-writeSync(    buffer: ArrayBuffer | string,    options?: WriteOptions  ): number-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -855,7 +881,7 @@ writeSync(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer \| string | 是 | 待写入文件的数据，可来自缓冲区或字符串。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 支持如下选项：\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- offset，number类型，表示期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认'utf-8'。仅支持'utf-8'。\_\_\_HTML\_TAG\_USD\_0\_\_\_**起始版本：** 11 |
+| options | [WriteOptions](arkts-corefile-file-fs-writeoptions-i.md) | 否 | 支持如下选项：&lt;br/&gt;- length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。&lt;br/&gt;- offset， number类型，表示期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。&lt;br/&gt;- encoding，string类型，当数据 是string类型时有效，表示数据的编码方式，默认'utf-8'。仅支持'utf-8'。<br>**起始版本：** 11 |
 
 **返回值：**
 
@@ -867,20 +893,20 @@ writeSync(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900001 | Operation not permitted |
 | 13900004 | Interrupted system call |
-| 13900005 | I/O error |
-| 13900008 | Bad file descriptor |
-| 13900010 | Try again |
-| 13900013 | Bad address |
 | 13900020 | Invalid argument |
+| 13900005 | I/O error |
+| 13900001 | Operation not permitted |
+| 13900034 | Operation would block |
+| 13900013 | Bad address |
+| 13900008 | Bad file descriptor |
 | 13900024 | File too large |
 | 13900025 | No space left on device |
-| 13900034 | Operation would block |
 | 13900041 | Quota exceeded |
+| 13900010 | Try again |
 | 13900042 | Unknown error |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { WriteOptions } from '@kit.CoreFileKit';
@@ -910,6 +936,8 @@ readonly fd: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-RandomAccessFile-readonly fd: number--><!--Device-RandomAccessFile-readonly fd: number-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -927,6 +955,8 @@ RandomAccessFile对象的偏移指针，单位为Byte。
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 <!--Device-RandomAccessFile-readonly filePointer: number--><!--Device-RandomAccessFile-readonly filePointer: number-End-->
 

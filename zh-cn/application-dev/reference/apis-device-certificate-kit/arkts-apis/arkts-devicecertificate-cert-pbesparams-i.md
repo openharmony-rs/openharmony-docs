@@ -2,9 +2,11 @@
 
 表示基于密码的加密算法参数，当前仅支持PBES2。
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-cert-interface PbesParams--><!--Device-cert-interface PbesParams-End-->
 
@@ -16,17 +18,19 @@
 encryptionAlgorithm?: PbesEncryptionAlgorithm
 ```
 
-表示PBES加密算法类型。默认为AES\_256\_CBC。
+表示PBES加密算法类型。默认为AES_256_CBC。
 
-**类型：** PbesEncryptionAlgorithm
+**类型：** [PbesEncryptionAlgorithm](arkts-devicecertificate-cert-pbesencryptionalgorithm-e.md)
 
 **默认值：** PbesEncryptionAlgorithm.AES_256_CBC
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PbesParams-encryptionAlgorithm?: PbesEncryptionAlgorithm--><!--Device-PbesParams-encryptionAlgorithm?: PbesEncryptionAlgorithm-End-->
 
@@ -44,11 +48,13 @@ iterations?: int
 
 **默认值：** 2048
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PbesParams-iterations?: int--><!--Device-PbesParams-iterations?: int-End-->
 
@@ -66,11 +72,13 @@ saltLen?: int
 
 **默认值：** 16
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PbesParams-saltLen?: int--><!--Device-PbesParams-saltLen?: int-End-->
 

@@ -8,7 +8,7 @@ Want是对象间信息传递的载体，可以用于应用组件间的信息传�
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.Want/Want
+**替代接口：** [Want/Want](arkts-ability-app-ability-want-want-c.md#Want)
 
 <!--Device-unnamed-export default class Want--><!--Device-unnamed-export default class Want-End-->
 
@@ -30,7 +30,7 @@ abilityName?: string
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.Want/Want#abilityName
+**替代接口：** [abilityName](arkts-ability-app-ability-want-want-c.md#abilityName)
 
 <!--Device-Want-abilityName?: string--><!--Device-Want-abilityName?: string-End-->
 
@@ -42,7 +42,7 @@ abilityName?: string
 action?: string
 ```
 
-表示要执行的通用操作（如：查看、分享、应用详情）。在隐式Want中，您可以定义该字段，配合uri或parameters来表示对数据要执行的操作。具体参考： [action说明]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_。隐式Want定义及匹配规则参考： \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+表示要执行的通用操作（如：查看、分享、应用详情）。在隐式Want中，您可以定义该字段，配合uri或parameters来表示对数据要执行的操作。具体参考： [action说明](arkts-ability-wantconstant-action-depr-e.md#Action)。隐式Want定义及匹配规则参考： [显式Want与隐式Want匹配规则](../../../application-models/explicit-implicit-want-mappings.md)。
 
 **类型：** string
 
@@ -52,7 +52,7 @@ action?: string
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.Want/Want#action
+**替代接口：** [action](arkts-ability-app-ability-want-want-c.md#action)
 
 <!--Device-Want-action?: string--><!--Device-Want-action?: string-End-->
 
@@ -74,7 +74,7 @@ bundleName?: string
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.Want/Want#bundleName
+**替代接口：** [bundleName](arkts-ability-app-ability-want-want-c.md#bundleName)
 
 <!--Device-Want-bundleName?: string--><!--Device-Want-bundleName?: string-End-->
 
@@ -96,7 +96,7 @@ deviceId?: string
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.Want/Want#deviceId
+**替代接口：** [deviceId](arkts-ability-app-ability-want-want-c.md#deviceId)
 
 <!--Device-Want-deviceId?: string--><!--Device-Want-deviceId?: string-End-->
 
@@ -108,7 +108,7 @@ deviceId?: string
 entities?: Array<string>
 ```
 
-表示目标Ability额外的类别信息（如：浏览器、视频播放器）。在隐式Want中是对action字段的补充。在隐式Want中，您可以定义该字段，来过滤匹配Ability类型。具体参考： [entity说明]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+表示目标Ability额外的类别信息（如：浏览器、视频播放器）。在隐式Want中是对action字段的补充。在隐式Want中，您可以定义该字段，来过滤匹配Ability类型。具体参考： [entity说明](arkts-ability-wantconstant-entity-depr-e.md#Entity)。
 
 **类型：** Array&lt;string&gt;
 
@@ -118,7 +118,7 @@ entities?: Array<string>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.Want/Want#entities
+**替代接口：** [entities](arkts-ability-app-ability-want-want-c.md#entities)
 
 <!--Device-Want-entities?: Array<string>--><!--Device-Want-entities?: Array<string>-End-->
 
@@ -130,7 +130,7 @@ entities?: Array<string>
 flags?: number
 ```
 
-表示处理Want的方式。默认传数字，具体参考：[flags说明]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+表示处理Want的方式。默认传数字，具体参考：[flags说明](arkts-ability-wantconstant-flags-depr-e.md#Flags)。
 
 **类型：** number
 
@@ -140,7 +140,7 @@ flags?: number
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.Want/Want#flags
+**替代接口：** [flags](arkts-ability-app-ability-want-want-c.md#flags)
 
 <!--Device-Want-flags?: number--><!--Device-Want-flags?: number-End-->
 
@@ -152,7 +152,7 @@ flags?: number
 parameters?: { [key: string]: any }
 ```
 
-表示WantParams描述，由开发者自行决定传入的键值对。默认会携带以下key值： ohos.aafwk.param.callerPid 表示拉起方的pid。 ohos.aafwk.param.callerToken 表示拉起方的token。 ohos.aafwk.param.callerUid 表示\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_中的uid，应用包里应用程序的uid。 - component.startup.newRules：表示是否启用新的管控规则。 - moduleName：表示拉起方的模块名，该字段的值即使定义成其他字符串，在传递到另一端时会被修改为正确的值。 - ohos.dlp.params.sandbox：表示dlp文件才会有。
+表示WantParams描述，由开发者自行决定传入的键值对。默认会携带以下key值： ohos.aafwk.param.callerPid 表示拉起方的pid。 ohos.aafwk.param.callerToken 表示拉起方的token。 ohos.aafwk.param.callerUid 表示bundleInfo中的uid，应用包里应用程序的uid。 - component.startup.newRules：表示是否启用新的管控规则。 - moduleName：表示拉起方的模块名，该字段的值即使定义成其他字符串，在传递到另一端时会被修改为正确的值。 - ohos.dlp.params.sandbox：表示dlp文件才会有。
 
 **类型：** { [key: string]: any }
 
@@ -162,7 +162,7 @@ parameters?: { [key: string]: any }
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.Want/Want#parameters
+**替代接口：** [parameters](arkts-ability-app-ability-want-want-c.md#parameters)
 
 <!--Device-Want-parameters?: { [key: string]: any }--><!--Device-Want-parameters?: { [key: string]: any }-End-->
 
@@ -174,7 +174,7 @@ parameters?: { [key: string]: any }
 type?: string
 ```
 
-表示MIME type类型描述，打开文件的类型，主要用于文管打开文件。比如：'text/xml' 、 'image/*'等，MIME定义参考：https://www.iana.org/assignments/media-types /media-types.xhtml?utm\_source=ld246.com。
+表示MIME type类型描述，打开文件的类型，主要用于文管打开文件。比如：'text/xml' 、 'image/*'等，MIME定义参考：https://www.iana.org/assignments/media-types /media-types.xhtml?utm_source=ld246.com。
 
 **类型：** string
 
@@ -184,7 +184,7 @@ type?: string
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.Want/Want#type
+**替代接口：** [type](arkts-ability-app-ability-want-want-c.md#type)
 
 <!--Device-Want-type?: string--><!--Device-Want-type?: string-End-->
 
@@ -206,7 +206,7 @@ uri?: string
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.Want/Want#uri
+**替代接口：** [uri](arkts-ability-app-ability-want-want-c.md#uri)
 
 <!--Device-Want-uri?: string--><!--Device-Want-uri?: string-End-->
 

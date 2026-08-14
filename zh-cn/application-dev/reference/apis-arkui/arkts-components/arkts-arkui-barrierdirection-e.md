@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare enum BarrierDirection--><!--Device-unnamed-declare enum BarrierDirection-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
@@ -16,11 +18,13 @@
 LEFT = 0
 ```
 
-屏障在其所有[referencedId]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_的最左侧。
+屏障在其所有[referencedId](arkts-arkui-barrierstyle-i.md#BarrierStyle)的最左侧。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -36,11 +40,13 @@ LEFT = 0
 RIGHT = 1
 ```
 
-屏障在其所有[referencedId]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_的最右侧。
+屏障在其所有[referencedId](arkts-arkui-barrierstyle-i.md#BarrierStyle)的最右侧。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -56,11 +62,13 @@ RIGHT = 1
 TOP = 2
 ```
 
-屏障在其所有[referencedId]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_的最上方。
+屏障在其所有[referencedId](arkts-arkui-barrierstyle-i.md#BarrierStyle)的最上方。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -76,11 +84,13 @@ TOP = 2
 BOTTOM = 3
 ```
 
-屏障在其所有[referencedId]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_的最下方。
+屏障在其所有[referencedId](arkts-arkui-barrierstyle-i.md#BarrierStyle)的最下方。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

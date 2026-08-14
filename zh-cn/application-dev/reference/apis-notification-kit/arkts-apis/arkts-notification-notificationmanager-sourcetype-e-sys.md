@@ -2,9 +2,11 @@
 
 通知来源类型。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-notificationManager-export enum SourceType--><!--Device-notificationManager-export enum SourceType-End-->
 
@@ -20,9 +22,11 @@ TYPE_NORMAL = 0
 
 一般通知。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SourceType-TYPE_NORMAL = 0--><!--Device-SourceType-TYPE_NORMAL = 0-End-->
 
@@ -38,9 +42,11 @@ TYPE_CONTINUOUS = 1
 
 连续通知。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SourceType-TYPE_CONTINUOUS = 1--><!--Device-SourceType-TYPE_CONTINUOUS = 1-End-->
 
@@ -56,9 +62,11 @@ TYPE_TIMER = 2
 
 计划通知。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SourceType-TYPE_TIMER = 2--><!--Device-SourceType-TYPE_TIMER = 2-End-->
 

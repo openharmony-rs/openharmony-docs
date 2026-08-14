@@ -1,14 +1,16 @@
 # RichEditorUpdateTextSpanStyleOptions
 
-文本样式选项。 继承自[RichEditorSpanStyleOptions]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+文本样式选项。 继承自[RichEditorSpanStyleOptions](arkts-arkui-richeditorspanstyleoptions-i.md#RichEditorSpanStyleOptions)。
 
-**继承/实现关系：** RichEditorUpdateTextSpanStyleOptions extends [RichEditorSpanStyleOptions](../arkts-apis/arkts-arkui-component/richeditor-richeditorspanstyleoptions-i.md)
+**继承/实现关系：** RichEditorUpdateTextSpanStyleOptions extends [RichEditorSpanStyleOptions](arkts-arkui-richeditorspanstyleoptions-i.md#RichEditorSpanStyleOptions)
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
-<!--Device-unnamed-declare interface RichEditorUpdateTextSpanStyleOptions extends RichEditorSpanStyleOptions--><!--Device-unnamed-declare interface RichEditorUpdateTextSpanStyleOptions extends RichEditorSpanStyleOptions-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare interface RichEditorUpdateTextSpanStyleOptions--><!--Device-unnamed-declare interface RichEditorUpdateTextSpanStyleOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -20,11 +22,13 @@ textStyle: RichEditorTextStyle
 
 文本样式。
 
-**类型：** RichEditorTextStyle
+**类型：** [RichEditorTextStyle](arkts-arkui-richeditortextstyle-i.md)
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,11 +46,13 @@ urlStyle?: RichEditorUrlStyle
 
 url信息。 默认值：undefined
 
-**类型：** RichEditorUrlStyle
+**类型：** [RichEditorUrlStyle](arkts-arkui-richeditorurlstyle-i.md)
 
 **起始版本：** 19
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

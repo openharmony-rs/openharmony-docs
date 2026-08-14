@@ -10,6 +10,8 @@ type ValueType = number | string | boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 <!--Device-dataAbility-type ValueType = number | string | boolean--><!--Device-dataAbility-type ValueType = number | string | boolean-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core

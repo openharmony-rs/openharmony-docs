@@ -2,9 +2,11 @@
 
 Describes a depth data object.
 
-**起始版本：** 13
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为13；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-camera-interface DepthData--><!--Device-camera-interface DepthData-End-->
 
@@ -20,9 +22,11 @@ release(): Promise<void>
 
 Releases depth data output resources. This API uses a promise to return the result.
 
-**起始版本：** 13
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为13；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DepthData-release(): Promise<void>--><!--Device-DepthData-release(): Promise<void>-End-->
 
@@ -42,7 +46,7 @@ Releases depth data output resources. This API uses a promise to return the resu
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 async function releaseDepthData(depthData: camera.DepthData): Promise<void> {
@@ -58,11 +62,13 @@ readonly dataAccuracy: DepthDataAccuracy
 
 Accuracy of the depth data, which can be either relative accuracy or absolute accuracy.
 
-**类型：** DepthDataAccuracy
+**类型：** [DepthDataAccuracy](arkts-camera-camera-depthdataaccuracy-e-sys.md)
 
-**起始版本：** 13
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为13；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DepthData-readonly dataAccuracy: DepthDataAccuracy--><!--Device-DepthData-readonly dataAccuracy: DepthDataAccuracy-End-->
 
@@ -80,9 +86,11 @@ Depth map.
 
 **类型：** image.PixelMap
 
-**起始版本：** 13
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为13；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DepthData-readonly depthMap: image.PixelMap--><!--Device-DepthData-readonly depthMap: image.PixelMap-End-->
 
@@ -98,11 +106,13 @@ readonly format: CameraFormat
 
 Camera output format.
 
-**类型：** CameraFormat
+**类型：** [CameraFormat](arkts-camera-camera-cameraformat-e.md)
 
-**起始版本：** 13
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为13；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DepthData-readonly format: CameraFormat--><!--Device-DepthData-readonly format: CameraFormat-End-->
 
@@ -118,11 +128,13 @@ readonly qualityLevel: DepthDataQualityLevel
 
 Quality level of the depth map.
 
-**类型：** DepthDataQualityLevel
+**类型：** [DepthDataQualityLevel](arkts-camera-camera-depthdataqualitylevel-e-sys.md)
 
-**起始版本：** 13
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为13；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DepthData-readonly qualityLevel: DepthDataQualityLevel--><!--Device-DepthData-readonly qualityLevel: DepthDataQualityLevel-End-->
 

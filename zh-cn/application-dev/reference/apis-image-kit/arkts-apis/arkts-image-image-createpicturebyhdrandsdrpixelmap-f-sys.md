@@ -8,9 +8,11 @@ function createPictureByHdrAndSdrPixelMap(hdrPixelMap: PixelMap, sdrPixelMap: Pi
 
 根据HDR PixelMap和SDR PixelMap创建Picture对象。系统将使用HDR和SDR PixelMap生成一个增益图（gainmap），返回的Picture对象将包含SDR PixelMap和生成的gainmap PixelMap，像素格式为RGBA8888。使用Promise异步回调。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-image-function createPictureByHdrAndSdrPixelMap(hdrPixelMap: PixelMap, sdrPixelMap: PixelMap): Promise<Picture>--><!--Device-image-function createPictureByHdrAndSdrPixelMap(hdrPixelMap: PixelMap, sdrPixelMap: PixelMap): Promise<Picture>-End-->
 
@@ -22,22 +24,22 @@ function createPictureByHdrAndSdrPixelMap(hdrPixelMap: PixelMap, sdrPixelMap: Pi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hdrPixelMap | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | HDR PixelMap，位深16bit或10bit，像素格式为FP16/RGBA1010102/YCBCR\_\_\_ESCAPED\_UNDERSCORE\_\_\_P010，色彩空间是BT2020\_\_\_ESCAPED\_UNDERSCORE\_\_\_HLG。 |
-| sdrPixelMap | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | SDR PixelMap，位深8bit，像素格式为RGBA8888/NV21，色彩空间是P3。 |
+| hdrPixelMap | PixelMap | 是 | HDR PixelMap，位深16bit或10bit，像素格式为FP16/RGBA1010102/YCBCR_P010，色彩空间是BT2020_HLG。 |
+| sdrPixelMap | PixelMap | 是 | SDR PixelMap，位深8bit，像素格式为RGBA8888/NV21，色彩空间是P3。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Picture&gt; | 返回Picture包含sdr和gainmap，像素格式为RGBA8888。 |
+| Promise&lt;[Picture](arkts-image-image-picture-i.md)&gt; | 返回Picture包含sdr和gainmap，像素格式为RGBA8888。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [7600201](../errorcode-image.md#7600201-不支持的操作) | Unsupported operation. HdrPixelMap's PixelMapFormat is not RGBA\_\_\_ESCAPED\_UNDERSCORE\_\_\_F16\RGBA\_\_\_ESCAPED\_UNDERSCORE\_\_\_1010102\YCBCR\_\_\_ESCAPED\_UNDERSCORE\_\_\_P010, or its color space is not BT2020\_\_\_ESCAPED\_UNDERSCORE\_\_\_HLG. Or sdrPixelMap's PixelMapFormat is not RGBA\_\_\_ESCAPED\_UNDERSCORE\_\_\_8888\NV21\NV12, or its color space is not P3. |
+| [7600201](../errorcode-image.md#7600201-不支持的操作) | Unsupported operation. HdrPixelMap's PixelMapFormat is not RGBA_F16\RGBA_1010102\YCBCR_P010, or its color space is not BT2020_HLG. Or sdrPixelMap's PixelMapFormat is not RGBA_8888\NV21\NV12, or its color space is not P3. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { fileIo } from '@kit.CoreFileKit';
@@ -87,7 +89,9 @@ function createPictureByHdrAndSdrPixelMap(hdrPixelMap: PixelMap, sdrPixelMap: Pi
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -101,24 +105,24 @@ function createPictureByHdrAndSdrPixelMap(hdrPixelMap: PixelMap, sdrPixelMap: Pi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hdrPixelMap | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | HDR PixelMap，位深16bit或10bit，像素格式为RGBA\_\_\_ESCAPED\_UNDERSCORE\_\_\_F16/RGBA\_\_\_ESCAPED\_UNDERSCORE\_\_\_1010102/YCBCR\_\_\_ESCAPED\_UNDERSCORE\_\_\_P010，色彩空间是BT2020\_\_\_ESCAPED\_UNDERSCORE\_\_\_HLG。 |
-| sdrPixelMap | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | SDR PixelMap，位深8bit，像素格式为RGBA\_\_\_ESCAPED\_UNDERSCORE\_\_\_8888/NV21，色彩空间是P3。 |
-| params | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | Gainmap Params，增益图参数设置选项，决定是否使用全尺寸增益图。 |
+| hdrPixelMap | PixelMap | 是 | HDR PixelMap，位深16bit或10bit，像素格式为RGBA_F16/RGBA_1010102/YCBCR_P010，色彩空间是BT2020_HLG。 |
+| sdrPixelMap | PixelMap | 是 | SDR PixelMap，位深8bit，像素格式为RGBA_8888/NV21，色彩空间是P3。 |
+| params | [GainmapParams](arkts-image-image-gainmapparams-i-sys.md) | 是 | Gainmap Params，增益图参数设置选项，决定是否使用全尺寸增益图。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Picture&gt; | Promise对象，返回Picture包含SDR和Gainmap，像素格式为RGBA\_\_\_ESCAPED\_UNDERSCORE\_\_\_8888。 |
+| Promise&lt;[Picture](arkts-image-image-picture-i.md)&gt; | Promise对象，返回Picture包含SDR和Gainmap，像素格式为RGBA_8888。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications are not allowed to use system APIs. |
-| [7600201](../errorcode-image.md#7600201-不支持的操作) | Unsupported operation. HdrPixelMap's PixelMapFormat is not RGBA\_\_\_ESCAPED\_UNDERSCORE\_\_\_F16\RGBA\_\_\_ESCAPED\_UNDERSCORE\_\_\_1010102\YCBCR\_\_\_ESCAPED\_UNDERSCORE\_\_\_P010, or its color space is not BT2020\_\_\_ESCAPED\_UNDERSCORE\_\_\_HLG. Or sdrPixelMap's PixelMapFormat is not RGBA\_\_\_ESCAPED\_UNDERSCORE\_\_\_8888\NV21\NV12, or its color space is not P3. |
+| [7600201](../errorcode-image.md#7600201-不支持的操作) | Unsupported operation. HdrPixelMap's PixelMapFormat is not RGBA_F16\RGBA_1010102\YCBCR_P010, or its color space is not BT2020_HLG. Or sdrPixelMap's PixelMapFormat is not RGBA_8888\NV21\NV12, or its color space is not P3. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { fileIo } from '@kit.CoreFileKit';

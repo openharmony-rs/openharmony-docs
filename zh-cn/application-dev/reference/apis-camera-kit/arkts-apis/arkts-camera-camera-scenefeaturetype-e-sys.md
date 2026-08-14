@@ -2,9 +2,11 @@
 
 Enumerates the scene features.
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-camera-enum SceneFeatureType--><!--Device-camera-enum SceneFeatureType-End-->
 
@@ -20,9 +22,11 @@ MOON_CAPTURE_BOOST = 0
 
 Moon scene. This is a system API.
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SceneFeatureType-MOON_CAPTURE_BOOST = 0--><!--Device-SceneFeatureType-MOON_CAPTURE_BOOST = 0-End-->
 
@@ -38,9 +42,11 @@ TRIPOD_DETECTION = 1
 
 Scene where a tripod is used for photo capture. This is a system API.
 
-**起始版本：** 13
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为13；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SceneFeatureType-TRIPOD_DETECTION = 1--><!--Device-SceneFeatureType-TRIPOD_DETECTION = 1-End-->
 
@@ -56,9 +62,11 @@ LOW_LIGHT_BOOST = 2
 
 Scene for long exposure photography. This is a system API.
 
-**起始版本：** 13
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为13；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SceneFeatureType-LOW_LIGHT_BOOST = 2--><!--Device-SceneFeatureType-LOW_LIGHT_BOOST = 2-End-->
 

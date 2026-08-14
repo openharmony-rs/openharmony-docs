@@ -6,11 +6,13 @@
 function isDLPFeatureProvided(): Promise<boolean>
 ```
 
-查询当前系统是否提供加密保护特性，仅支持企业设备且需\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_配置使能。调用成功后返回查询结果， 用于判断系统是否支持DLP加密功能。使用Promise异步回调。 该接口用于判断当前系统是否支持DLP加密功能，以便在不支持的设备上做兼容处理或功能降级。 > **说明：** > > 该接口由\_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_配置使能，且使能场景为企业设备。其他设备（如消费者终端设备）无需关注该接口，如若调用该接口，则返回值为false。
+查询当前系统是否提供加密保护特性，仅支持企业设备且需[MDM（Mobile Device Management，移动设备管理）](../../../mdm/mdm-kit-intro.md)配置使能。调用成功后返回查询结果， 用于判断系统是否支持DLP加密功能。使用Promise异步回调。 该接口用于判断当前系统是否支持DLP加密功能，以便在不支持的设备上做兼容处理或功能降级。 > **说明：** > > 该接口由[MDM](../../../mdm/mdm-kit-intro.md)配置使能，且使能场景为企业设备。其他设备（如消费者终端设备）无需关注该接口，如若调用该接口，则返回值为false。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-dlpPermission-function isDLPFeatureProvided(): Promise<boolean>--><!--Device-dlpPermission-function isDLPFeatureProvided(): Promise<boolean>-End-->
 
@@ -28,7 +30,7 @@ function isDLPFeatureProvided(): Promise<boolean>
 | --- | --- |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { dlpPermission } from '@kit.DataProtectionKit';

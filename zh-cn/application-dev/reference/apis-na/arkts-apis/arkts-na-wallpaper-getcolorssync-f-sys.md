@@ -24,22 +24,22 @@ function getColorsSync(wallpaperType: WallpaperType): Array<RgbaColor>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| wallpaperType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 |  |
+| wallpaperType | [WallpaperType](arkts-na-wallpaper-wallpapertype-e.md) | 是 |  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;RgbaColor&gt; | 返回壁纸的主要颜色信息。 |
+| Array&lt;[RgbaColor](arkts-na-wallpaper-rgbacolor-i.md)&gt; | 返回壁纸的主要颜色信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter error. Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | permission verification failed, application which is not a system application uses system API. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 try {

@@ -6,6 +6,8 @@ Defines the constrain size options.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface ConstraintSizeOptions--><!--Device-unnamed-declare interface ConstraintSizeOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -18,11 +20,13 @@ maxHeight?: Length
 
 Defines the max height.
 
-**类型：** Length
+**类型：** [Length](arkts-arkui-length-t.md)
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -40,11 +44,13 @@ maxWidth?: Length
 
 Defines the max width.
 
-**类型：** Length
+**类型：** [Length](arkts-arkui-length-t.md)
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -62,11 +68,13 @@ minHeight?: Length
 
 Defines the min height.
 
-**类型：** Length
+**类型：** [Length](arkts-arkui-length-t.md)
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -84,11 +92,13 @@ minWidth?: Length
 
 Defines the min width.
 
-**类型：** Length
+**类型：** [Length](arkts-arkui-length-t.md)
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

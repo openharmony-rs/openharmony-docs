@@ -12,6 +12,8 @@ function from(array: number[]): FastBuffer
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 <!--Device-fastbuffer-function from(array: number[]): FastBuffer--><!--Device-fastbuffer-function from(array: number[]): FastBuffer-End-->
@@ -28,9 +30,9 @@ function from(array: number[]): FastBuffer
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 新的FastBuffer对象。 |
+| [FastBuffer](arkts-arkts-fastbuffer-fastbuffer-c.md) | 新的FastBuffer对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { fastbuffer } from '@kit.ArkTS';
@@ -47,11 +49,13 @@ console.info(buf.toString('hex'));
 function from(arrayBuffer: ArrayBuffer | SharedArrayBuffer, byteOffset?: number, length?: number): FastBuffer
 ```
 
-创建与\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_共享内存的指定长度的FastBuffer对象。
+创建与`arrayBuffer`共享内存的指定长度的FastBuffer对象。
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
@@ -71,16 +75,16 @@ function from(arrayBuffer: ArrayBuffer | SharedArrayBuffer, byteOffset?: number,
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回一个FastBuffer对象，该对象与入参对象\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_共享相同的内存区域。修改FastBuffer对象的数据将同步修改原ArrayBuffer中对应位置的数据，修改原ArrayBuffer的数据也会同步修改FastBuffer中对应位置的数据。 |
+| [FastBuffer](arkts-arkts-fastbuffer-fastbuffer-c.md) | 返回一个FastBuffer对象，该对象与入参对象`arrayBuffer`共享相同的内存区域。修改FastBuffer对象的数据将同步修改原ArrayBuffer中对应位置的数据，修改原ArrayBuffer的数据也会同步修改FastBuffer中对应位置的数据。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | Range error. Possible causes:The value of the parameter is not within the specified range. |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | Range error. Possible causes: The value of the parameter is not within the specified range. |
 | [10200068](../errorcode-utils.md#10200068-引用已释放或分离的arraybuffer) | The underlying ArrayBuffer is null or detach. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { fastbuffer } from '@kit.ArkTS';
@@ -104,6 +108,8 @@ function from(buffer: FastBuffer | Uint8Array): FastBuffer
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 <!--Device-fastbuffer-function from(buffer: FastBuffer | Uint8Array): FastBuffer--><!--Device-fastbuffer-function from(buffer: FastBuffer | Uint8Array): FastBuffer-End-->
@@ -114,13 +120,13 @@ function from(buffer: FastBuffer | Uint8Array): FastBuffer
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| buffer | \_\_\_MD\_LINK\_USD\_0\_\_\_ \| Uint8Array | 是 | 用于创建新FastBuffer对象的源数据。当入参为FastBuffer时，将复制其数据创建新对象；当入参为Uint8Array时，基于其内存创建新对象并保持内存关联。 |
+| buffer | [FastBuffer](arkts-arkts-fastbuffer-fastbuffer-c.md) \| Uint8Array | 是 | 用于创建新FastBuffer对象的源数据。当入参为FastBuffer时，将复制其数据创建新对象；当入参为Uint8Array时，基于其内存创建新对象并保持内存关联。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回新的FastBuffer对象。 |
+| [FastBuffer](arkts-arkts-fastbuffer-fastbuffer-c.md) | 返回新的FastBuffer对象。 |
 
 **错误码：**
 
@@ -128,7 +134,7 @@ function from(buffer: FastBuffer | Uint8Array): FastBuffer
 | --- | --- |
 | [10200068](../errorcode-utils.md#10200068-引用已释放或分离的arraybuffer) | The underlying ArrayBuffer is null or detach. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { fastbuffer } from '@kit.ArkTS';
@@ -162,6 +168,8 @@ function from(value: string, encoding?: BufferEncoding): FastBuffer
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 <!--Device-fastbuffer-function from(value: string, encoding?: BufferEncoding): FastBuffer--><!--Device-fastbuffer-function from(value: string, encoding?: BufferEncoding): FastBuffer-End-->
@@ -172,16 +180,16 @@ function from(value: string, encoding?: BufferEncoding): FastBuffer
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | string | 是 | 字符串。 |
-| encoding | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 编码格式。默认值：'utf8'。传入无法识别的encoding会抛出TypeError。 |
+| value | string | 是 | 用于创建FastBuffer对象的字符串。 |
+| encoding | BufferEncoding | 否 | 编码格式（当`value`为string时，才有意义）。默认值：'utf8'。传入无法识别的encoding会抛出TypeError。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回新的FastBuffer对象。 |
+| [FastBuffer](arkts-arkts-fastbuffer-fastbuffer-c.md) | 返回新的FastBuffer对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { fastbuffer } from '@kit.ArkTS';

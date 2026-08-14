@@ -6,6 +6,8 @@ NavDestination激活态或者非激活态变化的原因。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为17。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare enum NavDestinationActiveReason--><!--Device-unnamed-declare enum NavDestinationActiveReason-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -21,6 +23,8 @@ TRANSITION = 0
 **起始版本：** 17
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为17。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,6 +46,8 @@ CONTENT_COVER = 1
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为17。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本17开始，该接口支持在原子化服务API中使用。
@@ -61,6 +67,8 @@ SHEET = 2
 **起始版本：** 17
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为17。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -82,6 +90,8 @@ DIALOG = 3
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为17。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本17开始，该接口支持在原子化服务API中使用。
@@ -102,6 +112,8 @@ OVERLAY = 4
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为17。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本17开始，该接口支持在原子化服务API中使用。
@@ -121,6 +133,8 @@ APP_STATE = 5
 **起始版本：** 17
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为17。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

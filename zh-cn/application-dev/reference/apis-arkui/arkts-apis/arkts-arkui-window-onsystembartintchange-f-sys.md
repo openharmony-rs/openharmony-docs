@@ -10,7 +10,9 @@ function onSystemBarTintChange(callback: Callback<SystemBarTintState>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-window-function onSystemBarTintChange(callback: Callback<SystemBarTintState>): void--><!--Device-window-function onSystemBarTintChange(callback: Callback<SystemBarTintState>): void-End-->
 
@@ -22,7 +24,7 @@ function onSystemBarTintChange(callback: Callback<SystemBarTintState>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;SystemBarTintState&gt; | 是 | 回调函数。返回当前的状态栏、导航栏信息集合。 |
+| callback | [Callback](arkts-arkui-window-callback-i.md)&lt;[SystemBarTintState](arkts-arkui-window-systembartintstate-i-sys.md)&gt; | 是 | 回调函数。返回当前的状态栏、导航栏信息集合。 |
 
 **错误码：**
 
@@ -30,7 +32,7 @@ function onSystemBarTintChange(callback: Callback<SystemBarTintState>): void
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 try {

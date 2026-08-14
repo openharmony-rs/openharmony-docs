@@ -8,7 +8,9 @@ export type OnReceiveDataCallback = (data: Record<string, RecordData>) => void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -22,5 +24,5 @@ export type OnReceiveDataCallback = (data: Record<string, RecordData>) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | Record&lt;string, RecordData&gt; | 是 | 回调函数，返回接收的数据。  |
+| data | Record&lt;string, [RecordData](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt; | 是 | 回调函数，返回接收的数据。 |
 

@@ -2,9 +2,11 @@
 
 显示设备的屏幕形状枚举。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-display-enum ScreenShape--><!--Device-display-enum ScreenShape-End-->
 
@@ -18,9 +20,11 @@ ROUND = 1
 
 表示设备屏幕形状为圆形。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ScreenShape-ROUND = 1--><!--Device-ScreenShape-ROUND = 1-End-->
 
@@ -34,9 +38,11 @@ RECTANGLE = 0
 
 表示设备屏幕形状为矩形。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ScreenShape-RECTANGLE = 0--><!--Device-ScreenShape-RECTANGLE = 0-End-->
 

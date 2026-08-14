@@ -1,6 +1,6 @@
 # USBEndpoint
 
-通过USB发送和接收数据的端口。通过[USBInterface]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_获取。
+通过USB发送和接收数据的端口。通过[USBInterface](arkts-basicservices-usb-usbinterface-i.md#USBInterface)获取。
 
 **起始版本：** 8
 
@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBEndpoint](arkts-basicservices-usbmanager-usbendpoint-i.md)
+**替代接口：** [USBEndpoint](arkts-basicservices-usbmanager-usbendpoint-i.md#USBEndpoint)
 
 <!--Device-usb-interface USBEndpoint--><!--Device-usb-interface USBEndpoint-End-->
 
@@ -30,7 +30,7 @@ address: number
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBEndpoint.address](arkts-basicservices-usbmanager-usbendpoint-i.md#address)
+**替代接口：** [address](arkts-basicservices-usbmanager-usbendpoint-i.md#address)
 
 <!--Device-USBEndpoint-address: number--><!--Device-USBEndpoint-address: number-End-->
 
@@ -52,7 +52,7 @@ attributes: number
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBEndpoint.attributes](arkts-basicservices-usbmanager-usbendpoint-i.md#attributes)
+**替代接口：** [attributes](arkts-basicservices-usbmanager-usbendpoint-i.md#attributes)
 
 <!--Device-USBEndpoint-attributes: number--><!--Device-USBEndpoint-attributes: number-End-->
 
@@ -74,7 +74,7 @@ direction: USBRequestDirection
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBEndpoint.direction](arkts-basicservices-usbmanager-usbendpoint-i.md#direction)
+**替代接口：** [direction](arkts-basicservices-usbmanager-usbendpoint-i.md#direction)
 
 <!--Device-USBEndpoint-direction: USBRequestDirection--><!--Device-USBEndpoint-direction: USBRequestDirection-End-->
 
@@ -96,7 +96,7 @@ interfaceId: number
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBEndpoint.interfaceId](arkts-basicservices-usbmanager-usbendpoint-i.md#interfaceid)
+**替代接口：** [interfaceId](arkts-basicservices-usbmanager-usbendpoint-i.md#interfaceId)
 
 <!--Device-USBEndpoint-interfaceId: number--><!--Device-USBEndpoint-interfaceId: number-End-->
 
@@ -118,7 +118,7 @@ interval: number
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBEndpoint.interval](arkts-basicservices-usbmanager-usbendpoint-i.md#interval)
+**替代接口：** [interval](arkts-basicservices-usbmanager-usbendpoint-i.md#interval)
 
 <!--Device-USBEndpoint-interval: number--><!--Device-USBEndpoint-interval: number-End-->
 
@@ -140,7 +140,7 @@ maxPacketSize: number
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBEndpoint.maxPacketSize](arkts-basicservices-usbmanager-usbendpoint-i.md#maxpacketsize)
+**替代接口：** [maxPacketSize](arkts-basicservices-usbmanager-usbendpoint-i.md#maxPacketSize)
 
 <!--Device-USBEndpoint-maxPacketSize: number--><!--Device-USBEndpoint-maxPacketSize: number-End-->
 
@@ -162,7 +162,7 @@ number: number
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBEndpoint.number](arkts-basicservices-usbmanager-usbendpoint-i.md#number)
+**替代接口：** [number](arkts-basicservices-usbmanager-usbendpoint-i.md#number)
 
 <!--Device-USBEndpoint-number: number--><!--Device-USBEndpoint-number: number-End-->
 
@@ -184,7 +184,7 @@ type: number
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBEndpoint.type](arkts-basicservices-usbmanager-usbendpoint-i.md#type)
+**替代接口：** [type](arkts-basicservices-usbmanager-usbendpoint-i.md#type)
 
 <!--Device-USBEndpoint-type: number--><!--Device-USBEndpoint-type: number-End-->
 

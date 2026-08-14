@@ -1,14 +1,16 @@
 # Asset
 
-记录资产附件（文件、图片、视频等类型文件）的相关信息。用于支持资产数据跨线程传递，继承自 \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。资产类型的相关接口暂不支持Datashare。使用 [sendableRelationalStore.toSendableAsset]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_方法创建。
+记录资产附件（文件、图片、视频等类型文件）的相关信息。用于支持资产数据跨线程传递，继承自 lang.ISendable。资产类型的相关接口暂不支持Datashare。使用 [sendableRelationalStore.toSendableAsset](arkts-arkdata-sendablerelationalstore-tosendableasset-f.md#toSendableAsset)方法创建。
 
-**继承/实现关系：** Asset extends [lang.ISendable](../../apis-arkts/arkts-apis/arkts-arkts-lang-isendable-i.md)
+**继承/实现关系：** Asset extends lang.ISendable
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-<!--Device-sendableRelationalStore-interface Asset extends lang.ISendable--><!--Device-sendableRelationalStore-interface Asset extends lang.ISendable-End-->
+**废弃版本：** -1
+
+<!--Device-sendableRelationalStore-interface Asset--><!--Device-sendableRelationalStore-interface Asset-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -25,6 +27,8 @@ createTime: string
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-Asset-createTime: string--><!--Device-Asset-createTime: string-End-->
 
@@ -44,6 +48,8 @@ modifyTime: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-Asset-modifyTime: string--><!--Device-Asset-modifyTime: string-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -61,6 +67,8 @@ name: string
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-Asset-name: string--><!--Device-Asset-name: string-End-->
 
@@ -80,6 +88,8 @@ path: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-Asset-path: string--><!--Device-Asset-path: string-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -98,6 +108,8 @@ size: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-Asset-size: string--><!--Device-Asset-size: string-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -108,13 +120,15 @@ size: string
 status?: number
 ```
 
-资产的状态，取值与[relationalStore.AssetStatus]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_枚举值保持一致，默认值为 relationalStore.AssetStatus.ASSET\_NORMAL。
+资产的状态，取值与[relationalStore.AssetStatus](arkts-arkdata-relationalstore-assetstatus-e.md#AssetStatus)枚举值保持一致，默认值为 relationalStore.AssetStatus.ASSET_NORMAL。
 
 **类型：** number
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-Asset-status?: number--><!--Device-Asset-status?: number-End-->
 
@@ -133,6 +147,8 @@ uri: string
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-Asset-uri: string--><!--Device-Asset-uri: string-End-->
 

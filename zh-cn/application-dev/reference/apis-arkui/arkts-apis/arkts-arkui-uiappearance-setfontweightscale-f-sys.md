@@ -3,18 +3,20 @@
 ## setFontWeightScale
 
 ```TypeScript
-function setFontWeightScale(fontWeightScale: double): Promise<void>
+function setFontWeightScale(fontWeightScale: number): Promise<void>
 ```
 
 设置系统字体粗细。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.UPDATE_CONFIGURATION
 
-<!--Device-uiAppearance-function setFontWeightScale(fontWeightScale: double): Promise<void>--><!--Device-uiAppearance-function setFontWeightScale(fontWeightScale: double): Promise<void>-End-->
+<!--Device-uiAppearance-function setFontWeightScale(fontWeightScale: number): Promise<void>--><!--Device-uiAppearance-function setFontWeightScale(fontWeightScale: number): Promise<void>-End-->
 
 **系统能力：** SystemCapability.ArkUI.UiAppearance
 
@@ -24,7 +26,7 @@ function setFontWeightScale(fontWeightScale: double): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fontWeightScale | double | 是 | indicates the font-weight-scale to set |
+| fontWeightScale | number | 是 | indicates the font-weight-scale to set |
 
 **返回值：**
 
@@ -36,7 +38,27 @@ function setFontWeightScale(fontWeightScale: double): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [500001](../errorcode-uiappearance.md#500001-内部错误) | Internal error. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [500001](../errorcode-uiappearance.md#500001-内部错误) | Internal error. |
+
+## 示例
+
+```TypeScript
+import { uiAppearance } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let fontWeightScale = 1;
+
+try {
+  uiAppearance.setFontWeightScale(fontWeightScale).then(() => {
+    console.info('Set fontWeightScale successfully.');
+  }).catch((error: BusinessError) => {
+    console.error(`Set fontWeightScale failed. Code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`Set fontWeightScale failed. Code: ${err.code}, message: ${err.message}`);
+}
+```
 

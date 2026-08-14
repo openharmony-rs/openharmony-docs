@@ -1,16 +1,18 @@
 # ActionExtensionAbility
 
-ActionExtensionAbility是为开发者提供的自定义操作业务模板，继承自 [UIExtensionAbility]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_。 开发者通过实现ActionExtensionAbility，为其他应用提供内容查看与处理功能。例如，开发者使用ActionExtensionAbility实现了文本翻译功能。其他应用可以通过调用该 ActionExtensionAbility来处理需要翻译的内容，并获取到处理后的翻译内容。 各类Ability的继承关系详见\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+ActionExtensionAbility是为开发者提供的自定义操作业务模板，继承自 [UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md#UIExtensionAbility)。 开发者通过实现ActionExtensionAbility，为其他应用提供内容查看与处理功能。例如，开发者使用ActionExtensionAbility实现了文本翻译功能。其他应用可以通过调用该 ActionExtensionAbility来处理需要翻译的内容，并获取到处理后的翻译内容。 各类Ability的继承关系详见继承关系说明。
 
-**继承/实现关系：** ActionExtensionAbility extends [UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)
+**继承/实现关系：** ActionExtensionAbility extends [UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md#UIExtensionAbility)
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-unnamed-export default class ActionExtensionAbility extends UIExtensionAbility--><!--Device-unnamed-export default class ActionExtensionAbility extends UIExtensionAbility-End-->
+<!--Device-unnamed-export default class ActionExtensionAbility--><!--Device-unnamed-export default class ActionExtensionAbility-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

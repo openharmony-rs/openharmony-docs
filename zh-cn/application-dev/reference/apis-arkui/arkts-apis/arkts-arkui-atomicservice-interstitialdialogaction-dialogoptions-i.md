@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-export declare interface DialogOptions--><!--Device-unnamed-export declare interface DialogOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -16,13 +18,15 @@
 backgroundImage?: Resource
 ```
 
-The background of the dialog.
+弹框背景图片。默认为纯色背景，颜色值为#EBEEF5。
 
 **类型：** Resource
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -36,13 +40,15 @@ The background of the dialog.
 bottomOffsetType?: BottomOffset
 ```
 
-The type of the bottom offset.
+弹框距离底部偏移类型，需根据是否存在菜单栏选择对应值。默认值为BottomOffset.OFFSET_FOR_NONE。
 
-**类型：** BottomOffset
+**类型：** [BottomOffset](arkts-arkui-atomicservice-interstitialdialogaction-bottomoffset-e.md)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -56,13 +62,15 @@ The type of the bottom offset.
 foregroundImage?: Resource
 ```
 
-The foreground of the dialog.
+弹框前景图片。默认为空，即不显示前景图片。
 
 **类型：** Resource
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -76,13 +84,15 @@ The foreground of the dialog.
 iconStyle?: IconStyle
 ```
 
-The style of the close button.
+关闭按钮图标的样式（亮调或者暗调）。默认值：IconStyle.LIGHT
 
-**类型：** IconStyle
+**类型：** [IconStyle](arkts-arkui-atomicservice-interstitialdialogaction-iconstyle-e.md)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -96,13 +106,15 @@ The style of the close button.
 onDialogClick?: Callback<void>
 ```
 
-The action after clicking dialog.
+点击弹框任意位置后触发的用户自定义动作。默认调用closeDialog方法关闭弹框。 说明：点击关闭按钮区域时仅触发onDialogClose，不触发本回调；若需同时触发，请在onDialogClose中显式调用本回调逻辑。
 
 **类型：** Callback&lt;void&gt;
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -116,13 +128,15 @@ The action after clicking dialog.
 onDialogClose?: Callback<void>
 ```
 
-The action after clicking close button.
+点击关闭按钮后触发的用户自定义动作。默认调用closeDialog方法关闭弹框。
 
 **类型：** Callback&lt;void&gt;
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -136,13 +150,15 @@ The action after clicking close button.
 subtitle?: ResourceStr
 ```
 
-The subtitle of the dialog.
+弹框副标题文本。默认为空字符串。
 
 **类型：** ResourceStr
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -156,13 +172,15 @@ The subtitle of the dialog.
 subtitleColor?: ResourceStr | Color
 ```
 
-The color of the subtitle.
+弹框副标题文本颜色。默认为\$r('sys.color.ohos_id_color_text_secondary_contrary')。
 
 **类型：** ResourceStr \| Color
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -176,13 +194,15 @@ The color of the subtitle.
 title?: ResourceStr
 ```
 
-The title of the dialog.
+弹框主标题文本。默认为空字符串。
 
 **类型：** ResourceStr
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -196,13 +216,15 @@ The title of the dialog.
 titleColor?: ResourceStr | Color
 ```
 
-The color of the title.
+弹框主标题文本颜色。默认为\$r('sys.color.ohos_id_color_text_primary_contrary')。
 
 **类型：** ResourceStr \| Color
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -216,13 +238,15 @@ The color of the title.
 titlePosition?: TitlePosition
 ```
 
-The relative position of the title and subtitle.
+主标题在弹框中的位置，在副标题的上方或者在副标题的下方。需设置subtitle属性后本参数才生效。默认值：TitlePosition.TOP
 
-**类型：** TitlePosition
+**类型：** [TitlePosition](arkts-arkui-atomicservice-interstitialdialogaction-titleposition-e.md)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -236,13 +260,15 @@ The relative position of the title and subtitle.
 uiContext: UIContext
 ```
 
-The UIContext required by the dialog.
+UI上下文实例。
 
-**类型：** UIContext
+**类型：** [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

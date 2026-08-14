@@ -1,10 +1,12 @@
 # AtomicServiceBar
 
-原子化服务栏
+interface AtomicServiceBar
 
-**起始版本：** 23
+**起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-export interface AtomicServiceBar--><!--Device-unnamed-export interface AtomicServiceBar-End-->
 
@@ -16,13 +18,17 @@
 getBarRect(): Frame
 ```
 
-获取bar的尺寸和位置。
+Get size and position of the bar.
 
-**起始版本：** 23
+**起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AtomicServiceBar-getBarRect(): Frame--><!--Device-AtomicServiceBar-getBarRect(): Frame-End-->
 
@@ -32,23 +38,55 @@ getBarRect(): Frame
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | The size and position of bar in vp relative to window. |
+| [Frame](../../apis-na/arkts-apis/arkts-na-graphics-frame-i.md) | The size and position of bar in vp relative to window. |
+
+## onBarRectChange
+
+```TypeScript
+onBarRectChange(callback: Callback<Frame>): void
+```
+
+当appbar的组件大小发生变化时会触发调用。
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-AtomicServiceBar-onBarRectChange(callback: Callback<Frame>): void--><!--Device-AtomicServiceBar-onBarRectChange(callback: Callback<Frame>): void-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[Frame](../../apis-na/arkts-apis/arkts-na-graphics-frame-i.md)&gt; | 是 | 回调函数的参数为Frame。当传入的callback为undefined时表示取消监听appbar组件的大小变化。 回调函数触发时，回调函数的参数不可能为undefined或者null。 |
 
 ## setBackgroundColor
 
 ```TypeScript
-setBackgroundColor(color: Nullable< Color | int | string>): void
+setBackgroundColor(color: Nullable< Color | number | string>): void
 ```
 
-设置bar的背景色。
+Set the background color of the bar.
 
-**起始版本：** 23
+**起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AtomicServiceBar-setBackgroundColor(color: Nullable< Color | int | string>): void--><!--Device-AtomicServiceBar-setBackgroundColor(color: Nullable< Color | int | string>): void-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-AtomicServiceBar-setBackgroundColor(color: Nullable< Color | number | string>): void--><!--Device-AtomicServiceBar-setBackgroundColor(color: Nullable< Color | number | string>): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,23 +94,27 @@ setBackgroundColor(color: Nullable< Color | int | string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;\_\_\_MD\_LINK\_USD\_1\_\_\_ \| int \| string&gt; | 是 | the color to set, undefined indicates using default. |
+| color | [Nullable](../../apis-na/arkts-apis/arkts-na-nullable-t.md)&lt;[Color](../../apis-na/arkts-apis/arkts-na-enums-color-e.md) \| number \| string&gt; | 是 | the color to set, undefined indicates using default. |
 
 ## setIconColor
 
 ```TypeScript
-setIconColor(color: Nullable< Color | int | string>): void
+setIconColor(color: Nullable< Color | number | string>): void
 ```
 
-设置bar上图标的颜色。
+Set the color of the icon on the bar.
 
-**起始版本：** 23
+**起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AtomicServiceBar-setIconColor(color: Nullable< Color | int | string>): void--><!--Device-AtomicServiceBar-setIconColor(color: Nullable< Color | int | string>): void-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-AtomicServiceBar-setIconColor(color: Nullable< Color | number | string>): void--><!--Device-AtomicServiceBar-setIconColor(color: Nullable< Color | number | string>): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,7 +122,7 @@ setIconColor(color: Nullable< Color | int | string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;\_\_\_MD\_LINK\_USD\_1\_\_\_ \| int \| string&gt; | 是 | the color to set to icon, undefined indicates using default. |
+| color | [Nullable](../../apis-na/arkts-apis/arkts-na-nullable-t.md)&lt;[Color](../../apis-na/arkts-apis/arkts-na-enums-color-e.md) \| number \| string&gt; | 是 | the color to set to icon, undefined indicates using default. |
 
 ## setTitleContent
 
@@ -88,13 +130,17 @@ setIconColor(color: Nullable< Color | int | string>): void
 setTitleContent(content: string): void
 ```
 
-设置bar的标题。
+Set the title of the bar.
 
-**起始版本：** 23
+**起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AtomicServiceBar-setTitleContent(content: string): void--><!--Device-AtomicServiceBar-setTitleContent(content: string): void-End-->
 
@@ -112,13 +158,17 @@ setTitleContent(content: string): void
 setTitleFontStyle(font: FontStyle): void
 ```
 
-设置bar标题的字体样式。
+Set the font style of the bar's title.
 
-**起始版本：** 23
+**起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AtomicServiceBar-setTitleFontStyle(font: FontStyle): void--><!--Device-AtomicServiceBar-setTitleFontStyle(font: FontStyle): void-End-->
 
@@ -128,7 +178,7 @@ setTitleFontStyle(font: FontStyle): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| font | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | the font style of the bar's title. |
+| font | [FontStyle](../../apis-na/arkts-apis/arkts-na-enums-fontstyle-e.md) | 是 | the font style of the bar's title. |
 
 ## setVisible
 
@@ -136,13 +186,17 @@ setTitleFontStyle(font: FontStyle): void
 setVisible(visible: boolean): void
 ```
 
-设置bar的可见性，不包括icon。
+Set the visibility of the bar, except the icon.
 
-**起始版本：** 23
+**起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AtomicServiceBar-setVisible(visible: boolean): void--><!--Device-AtomicServiceBar-setVisible(visible: boolean): void-End-->
 

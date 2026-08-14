@@ -1,10 +1,12 @@
 # PathSeparatorStrategy
 
-PathSeparatorStrategy作为[Options]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_的一个属性，用于指定解压时目标压缩包内文件路径中分隔符的处理策略。
+PathSeparatorStrategy作为[Options](arkts-basicservices-zlib-options-i.md#Options)的一个属性，用于指定解压时目标压缩包内文件路径中分隔符的处理策略。
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-zlib-export enum PathSeparatorStrategy--><!--Device-zlib-export enum PathSeparatorStrategy-End-->
 
@@ -18,11 +20,13 @@ PATH_SEPARATOR_STRATEGY_DEFAULT = 0
 
 默认值，压缩包内文件路径中的分隔符不做处理。
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PathSeparatorStrategy-PATH_SEPARATOR_STRATEGY_DEFAULT = 0--><!--Device-PathSeparatorStrategy-PATH_SEPARATOR_STRATEGY_DEFAULT = 0-End-->
 
@@ -36,11 +40,13 @@ PATH_SEPARATOR_STRATEGY_REPLACE_BACKSLASH = 1
 
 压缩包内文件路径中的反斜杠'\'替换为斜杠'/'。
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PathSeparatorStrategy-PATH_SEPARATOR_STRATEGY_REPLACE_BACKSLASH = 1--><!--Device-PathSeparatorStrategy-PATH_SEPARATOR_STRATEGY_REPLACE_BACKSLASH = 1-End-->
 

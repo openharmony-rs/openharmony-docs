@@ -6,6 +6,8 @@ CLI命令信息。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 <!--Device-abilityToolAccessCtrl-interface CliCmdInfo--><!--Device-abilityToolAccessCtrl-interface CliCmdInfo-End-->
 
 **系统能力：** SystemCapability.Security.Asset
@@ -26,6 +28,8 @@ CLI主命令名称。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 <!--Device-CliCmdInfo-cliCmdName: string--><!--Device-CliCmdInfo-cliCmdName: string-End-->
 
 **系统能力：** SystemCapability.Security.Asset
@@ -45,6 +49,8 @@ CLI子命令名。
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-CliCmdInfo-subCliCmdName: string--><!--Device-CliCmdInfo-subCliCmdName: string-End-->
 

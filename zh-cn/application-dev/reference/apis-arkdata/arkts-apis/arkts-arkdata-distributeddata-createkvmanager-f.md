@@ -14,7 +14,7 @@ function createKVManager(config: KVManagerConfig, callback: AsyncCallback<KVMana
 
 **废弃版本：** 9
 
-**替代接口：** ohos.data.distributedKVStore#createKVManager
+**替代接口：** createKVManager
 
 <!--Device-distributedData-function createKVManager(config: KVManagerConfig, callback: AsyncCallback<KVManager>): void--><!--Device-distributedData-function createKVManager(config: KVManagerConfig, callback: AsyncCallback<KVManager>): void-End-->
 
@@ -24,10 +24,10 @@ function createKVManager(config: KVManagerConfig, callback: AsyncCallback<KVMana
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| config | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 提供KVManager实例的配置信息，包括调用方的Bundle名称和用户信息。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;KVManager&gt; | 是 | 回调函数。返回创建的KVManager对象实例。 |
+| config | KVManagerConfig | 是 | 提供KVManager实例的配置信息，包括调用方的Bundle名称和用户信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;KVManager&gt; | 是 | 回调函数。返回创建的KVManager对象实例。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let kvManager;
@@ -67,7 +67,7 @@ function createKVManager(config: KVManagerConfig): Promise<KVManager>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.data.distributedKVStore#createKVManager
+**替代接口：** createKVManager
 
 <!--Device-distributedData-function createKVManager(config: KVManagerConfig): Promise<KVManager>--><!--Device-distributedData-function createKVManager(config: KVManagerConfig): Promise<KVManager>-End-->
 
@@ -77,7 +77,7 @@ function createKVManager(config: KVManagerConfig): Promise<KVManager>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| config | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 提供KVManager实例的配置信息，包括调用方的包名和用户信息。 |
+| config | KVManagerConfig | 是 | 提供KVManager实例的配置信息，包括调用方的包名和用户信息。 |
 
 **返回值：**
 
@@ -85,7 +85,7 @@ function createKVManager(config: KVManagerConfig): Promise<KVManager>
 | --- | --- |
 | Promise&lt;KVManager&gt; | Promise对象。返回创建的KVManager对象实例。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 try {

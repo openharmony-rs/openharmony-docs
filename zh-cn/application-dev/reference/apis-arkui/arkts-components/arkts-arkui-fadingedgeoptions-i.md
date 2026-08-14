@@ -1,10 +1,12 @@
 # FadingEdgeOptions
 
-\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_属性边缘渐隐参数对象。
+[fadingEdge](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#fadingedge14)属性边缘渐隐参数对象。
 
 **起始版本：** 14
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare interface FadingEdgeOptions--><!--Device-unnamed-declare interface FadingEdgeOptions-End-->
 
@@ -25,6 +27,8 @@ fadingEdgeLength?: LengthMetrics
 **起始版本：** 14
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

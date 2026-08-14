@@ -6,11 +6,13 @@
 function getDownloadInfo(url: string): DownloadInfo | undefined
 ```
 
-基于url获取预下载的下载信息。信息存储在内存中的下载信息列表，当应用程序退出时清除。 - 如果下载信息列表中能够找到指定url，返回该url对应的最新[DownloadInfo]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。 - 如果下载信息列表中找不到指定url，返回undefined。 - 在缓存下载信息时，如果在该url下已存在缓存信息，新的缓存内容会覆盖旧缓存。 - 目标信息在存储到内存时，使用“LRU”（最近最少使用）方式替换已存在的缓存数据。
+基于url获取预下载的下载信息。信息存储在内存中的下载信息列表，当应用程序退出时清除。 - 如果下载信息列表中能够找到指定url，返回该url对应的最新[DownloadInfo](arkts-basicservices-cachedownload-downloadinfo-i.md#DownloadInfo)。 - 如果下载信息列表中找不到指定url，返回undefined。 - 在缓存下载信息时，如果在该url下已存在缓存信息，新的缓存内容会覆盖旧缓存。 - 目标信息在存储到内存时，使用“LRU”（最近最少使用）方式替换已存在的缓存数据。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_NETWORK_INFO
 
@@ -28,7 +30,7 @@ function getDownloadInfo(url: string): DownloadInfo | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回对应url的下载信息，url未记录时返回undefined。 |
+| DownloadInfo | 返回对应url的下载信息，url未记录时返回undefined。 |
 
 **错误码：**
 
@@ -36,7 +38,7 @@ function getDownloadInfo(url: string): DownloadInfo | undefined
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | permission denied. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

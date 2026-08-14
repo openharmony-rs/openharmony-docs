@@ -10,6 +10,8 @@ type CallbackFunction = () => void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-taskpool-type CallbackFunction = () => void--><!--Device-taskpool-type CallbackFunction = () => void-End-->

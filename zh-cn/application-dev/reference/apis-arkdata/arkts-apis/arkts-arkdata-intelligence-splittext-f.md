@@ -8,9 +8,11 @@ function splitText(text: string, config: SplitConfig): Promise<Array<string>>
 
 获取文本的分块。使用Promise异步回调。
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-intelligence-function splitText(text: string, config: SplitConfig): Promise<Array<string>>--><!--Device-intelligence-function splitText(text: string, config: SplitConfig): Promise<Array<string>>-End-->
 
@@ -21,7 +23,7 @@ function splitText(text: string, config: SplitConfig): Promise<Array<string>>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | text | string | 是 | 待分块的文本。单个文本长度上限为100000个字符。超出长度时抛出异常。 |
-| config | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 文本分块的配置信息。 |
+| config | [SplitConfig](arkts-arkdata-intelligence-splitconfig-i.md) | 是 | 文本分块的配置信息。 |
 
 **返回值：**
 
@@ -33,11 +35,11 @@ function splitText(text: string, config: SplitConfig): Promise<Array<string>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt;2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [31300000](../errorcode-intelligence.md#31300000-服务内部异常) | Inner error. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

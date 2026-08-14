@@ -6,6 +6,8 @@ Holds User-Agent metadata information and uses to generate User-Agent client hin
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
 
+**废弃版本：** -1
+
 <!--Device-webview-class UserAgentMetadata--><!--Device-webview-class UserAgentMetadata-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -22,6 +24,8 @@ Gets the value for sec-ch-ua-architecture.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UserAgentMetadata-getArchitecture(): string--><!--Device-UserAgentMetadata-getArchitecture(): string-End-->
@@ -32,7 +36,7 @@ Gets the value for sec-ch-ua-architecture.
 
 | 类型 | 说明 |
 | --- | --- |
-| string | - Returns the value for sec-ch-ua-architecture. |
+| string | Returns the value for sec-ch-ua-architecture. |
 
 ## getBitness
 
@@ -46,6 +50,8 @@ Gets the value for the sec-ch-ua-bitness.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UserAgentMetadata-getBitness(): string--><!--Device-UserAgentMetadata-getBitness(): string-End-->
@@ -56,7 +62,7 @@ Gets the value for the sec-ch-ua-bitness.
 
 | 类型 | 说明 |
 | --- | --- |
-| string | - Returns the value for the sec-ch-ua-bitness. |
+| string | Returns the value for the sec-ch-ua-bitness. |
 
 ## getBrandVersionList
 
@@ -70,6 +76,8 @@ Returns the current list of UserAgentBrandVersion which are used to generate the
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UserAgentMetadata-getBrandVersionList(): Array<UserAgentBrandVersion>--><!--Device-UserAgentMetadata-getBrandVersionList(): Array<UserAgentBrandVersion>-End-->
@@ -80,7 +88,7 @@ Returns the current list of UserAgentBrandVersion which are used to generate the
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;UserAgentBrandVersion&gt; | - Returns the current list of UserAgentBrandVersion. |
+| Array&lt;[UserAgentBrandVersion](../../apis-na/arkts-apis/arkts-na-webview-useragentbrandversion-c.md)&gt; | Returns the current list of UserAgentBrandVersion. |
 
 ## getFormFactors
 
@@ -94,6 +102,8 @@ Gets the value for the sec-ch-ua-form-factors.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UserAgentMetadata-getFormFactors(): Array<UserAgentFormFactor>--><!--Device-UserAgentMetadata-getFormFactors(): Array<UserAgentFormFactor>-End-->
@@ -104,7 +114,7 @@ Gets the value for the sec-ch-ua-form-factors.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;UserAgentFormFactor&gt; | - Returns the form factors. |
+| Array&lt;[UserAgentFormFactor](../../apis-na/arkts-apis/arkts-na-webview-useragentformfactor-e.md)&gt; | Returns the form factors. |
 
 ## getFullVersion
 
@@ -118,6 +128,8 @@ Gets the value for the sec-ch-ua-full-version.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UserAgentMetadata-getFullVersion(): string--><!--Device-UserAgentMetadata-getFullVersion(): string-End-->
@@ -128,7 +140,7 @@ Gets the value for the sec-ch-ua-full-version.
 
 | 类型 | 说明 |
 | --- | --- |
-| string | - Returns the value for the sec-ch-ua-full-version. |
+| string | Returns the value for the sec-ch-ua-full-version. |
 
 ## getMobile
 
@@ -142,6 +154,8 @@ Gets the value for the sec-ch-ua-mobile.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UserAgentMetadata-getMobile(): boolean--><!--Device-UserAgentMetadata-getMobile(): boolean-End-->
@@ -152,7 +166,7 @@ Gets the value for the sec-ch-ua-mobile.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | - Returns the value for the sec-ch-ua-mobile. |
+| boolean | Returns the value for the sec-ch-ua-mobile. |
 
 ## getModel
 
@@ -166,6 +180,8 @@ Gets the value for the sec-ch-ua-model.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UserAgentMetadata-getModel(): string--><!--Device-UserAgentMetadata-getModel(): string-End-->
@@ -176,7 +192,7 @@ Gets the value for the sec-ch-ua-model.
 
 | 类型 | 说明 |
 | --- | --- |
-| string | - Returns the value for the sec-ch-ua-model. |
+| string | Returns the value for the sec-ch-ua-model. |
 
 ## getPlatform
 
@@ -190,6 +206,8 @@ Gets the value for the sec-ch-ua-platform.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UserAgentMetadata-getPlatform(): string--><!--Device-UserAgentMetadata-getPlatform(): string-End-->
@@ -200,7 +218,7 @@ Gets the value for the sec-ch-ua-platform.
 
 | 类型 | 说明 |
 | --- | --- |
-| string | - Returns the value for the sec-ch-ua-platform. |
+| string | Returns the value for the sec-ch-ua-platform. |
 
 ## getPlatformVersion
 
@@ -214,6 +232,8 @@ Gets the value for the sec-ch-ua-platform-version.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UserAgentMetadata-getPlatformVersion(): string--><!--Device-UserAgentMetadata-getPlatformVersion(): string-End-->
@@ -224,7 +244,7 @@ Gets the value for the sec-ch-ua-platform-version.
 
 | 类型 | 说明 |
 | --- | --- |
-| string | - Returns the value for the sec-ch-ua-platform-version. |
+| string | Returns the value for the sec-ch-ua-platform-version. |
 
 ## getWow64
 
@@ -238,6 +258,8 @@ Gets the value for the sec-ch-ua-wow64.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UserAgentMetadata-getWow64(): boolean--><!--Device-UserAgentMetadata-getWow64(): boolean-End-->
@@ -248,7 +270,7 @@ Gets the value for the sec-ch-ua-wow64.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | - Returns the value for the sec-ch-ua-wow64. |
+| boolean | Returns the value for the sec-ch-ua-wow64. |
 
 ## setArchitecture
 
@@ -256,11 +278,13 @@ Gets the value for the sec-ch-ua-wow64.
 setArchitecture(arch: string): void
 ```
 
-Sets User-Agent metadata architecture. \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_API Note\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_:\_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_ The default value is empty string which means the system default value will be used. \_\_\_HTML\_TAG\_DESC\_USD\_4\_\_\_
+Sets User-Agent metadata architecture. &lt;p&gt;&lt;strong&gt;API Note&lt;/strong&gt;:&lt;br&gt; The default value is empty string which means the system default value will be used. &lt;/p&gt;
 
 **起始版本：** 24
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -286,6 +310,8 @@ Sets User-Agent metadata bitness default is "".
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UserAgentMetadata-setBitness(bitness: string): void--><!--Device-UserAgentMetadata-setBitness(bitness: string): void-End-->
@@ -304,11 +330,13 @@ Sets User-Agent metadata bitness default is "".
 setBrandVersionList(brandVersionList: Array<UserAgentBrandVersion>): void
 ```
 
-Sets User-Agent metadata brands and their versions. \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_API Note\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_:\_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_ The default value is an empty list which means the system default User-Agent metadata brands and versions will be used to generate the User-Agent client hints. \_\_\_HTML\_TAG\_DESC\_USD\_4\_\_\_
+Sets User-Agent metadata brands and their versions. &lt;p&gt;&lt;strong&gt;API Note&lt;/strong&gt;:&lt;br&gt; The default value is an empty list which means the system default User-Agent metadata brands and versions will be used to generate the User-Agent client hints. &lt;/p&gt;
 
 **起始版本：** 24
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -320,7 +348,7 @@ Sets User-Agent metadata brands and their versions. \_\_\_HTML\_TAG\_DESC\_USD\_
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| brandVersionList | Array&lt;UserAgentBrandVersion&gt; | 是 | The brandVersionList is used to generate User-Agent client hints sec-ch-ua-full-version-list. |
+| brandVersionList | Array&lt;[UserAgentBrandVersion](../../apis-na/arkts-apis/arkts-na-webview-useragentbrandversion-c.md)&gt; | 是 | The brandVersionList is used to generate User-Agent client hints sec-ch-ua-full-version-list. |
 
 ## setFormFactors
 
@@ -328,11 +356,13 @@ Sets User-Agent metadata brands and their versions. \_\_\_HTML\_TAG\_DESC\_USD\_
 setFormFactors(formFactors: Array<UserAgentFormFactor>): void
 ```
 
-Sets User-Agent metadata form factors. \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_API Note\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_:\_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_ The default value is empty list which means the system default value will be used. Form factor value should be one or more of DESKTOP, AUTOMOTIVE, MOBILE, TABLET, XR, EINK, WATCH. \_\_\_HTML\_TAG\_DESC\_USD\_4\_\_\_
+Sets User-Agent metadata form factors. &lt;p&gt;&lt;strong&gt;API Note&lt;/strong&gt;:&lt;br&gt; The default value is empty list which means the system default value will be used. Form factor value should be one or more of DESKTOP, AUTOMOTIVE, MOBILE, TABLET, XR, EINK, WATCH. &lt;/p&gt;
 
 **起始版本：** 24
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -344,7 +374,7 @@ Sets User-Agent metadata form factors. \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_\_\_\_
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| formFactors | Array&lt;UserAgentFormFactor&gt; | 是 | The formFactors is used to generate User-Agent client hints sec-ch-ua-form-factors. |
+| formFactors | Array&lt;[UserAgentFormFactor](../../apis-na/arkts-apis/arkts-na-webview-useragentformfactor-e.md)&gt; | 是 | The formFactors is used to generate User-Agent client hints sec-ch-ua-form-factors. |
 
 ## setFullVersion
 
@@ -352,11 +382,13 @@ Sets User-Agent metadata form factors. \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_\_\_\_
 setFullVersion(fullVersion: string): void
 ```
 
-Sets User-Agent metadata full version. \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_API Note\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_:\_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_ The default value is empty string which means the system default value will be used. \_\_\_HTML\_TAG\_DESC\_USD\_4\_\_\_
+Sets User-Agent metadata full version. &lt;p&gt;&lt;strong&gt;API Note&lt;/strong&gt;:&lt;br&gt; The default value is empty string which means the system default value will be used. &lt;/p&gt;
 
 **起始版本：** 24
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -382,6 +414,8 @@ Sets User-Agent metadata mobile, default is true.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UserAgentMetadata-setMobile(isMobile: boolean): void--><!--Device-UserAgentMetadata-setMobile(isMobile: boolean): void-End-->
@@ -400,11 +434,13 @@ Sets User-Agent metadata mobile, default is true.
 setModel(model: string): void
 ```
 
-Sets User-Agent metadata model. \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_API Note\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_:\_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_ The default value is empty string which means the system default value will be used. \_\_\_HTML\_TAG\_DESC\_USD\_4\_\_\_
+Sets User-Agent metadata model. &lt;p&gt;&lt;strong&gt;API Note&lt;/strong&gt;:&lt;br&gt; The default value is empty string which means the system default value will be used. &lt;/p&gt;
 
 **起始版本：** 24
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -424,11 +460,13 @@ Sets User-Agent metadata model. \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_\_\_\_HTML\_T
 setPlatform(platform: string): void
 ```
 
-Sets User-Agent metadata platform. \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_API Note\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_:\_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_ The default value is empty string which means the system default value will be used. \_\_\_HTML\_TAG\_DESC\_USD\_4\_\_\_
+Sets User-Agent metadata platform. &lt;p&gt;&lt;strong&gt;API Note&lt;/strong&gt;:&lt;br&gt; The default value is empty string which means the system default value will be used. &lt;/p&gt;
 
 **起始版本：** 24
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -448,11 +486,13 @@ Sets User-Agent metadata platform. \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_\_\_\_HTML
 setPlatformVersion(platformVersion: string): void
 ```
 
-Sets User-Agent metadata platform version. \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_API Note\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_:\_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_ The default value is empty string which means the system default value will be used. \_\_\_HTML\_TAG\_DESC\_USD\_4\_\_\_
+Sets User-Agent metadata platform version. &lt;p&gt;&lt;strong&gt;API Note&lt;/strong&gt;:&lt;br&gt; The default value is empty string which means the system default value will be used. &lt;/p&gt;
 
 **起始版本：** 24
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -477,6 +517,8 @@ Sets User-Agent metadata wow64, default is false.
 **起始版本：** 24
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -2,13 +2,15 @@
 
 用于设置滚动事件回调。
 
-**继承/实现关系：** UIScrollableCommonEvent extends [UICommonEvent](../../apis-na/arkts-apis/arkts-na-component/common-uicommonevent-i.md)
+**继承/实现关系：** UIScrollableCommonEvent extends [UICommonEvent](arkts-arkui-uicommonevent-i.md#UICommonEvent)
 
 **起始版本：** 19
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
 
-<!--Device-unnamed-declare interface UIScrollableCommonEvent extends UICommonEvent--><!--Device-unnamed-declare interface UIScrollableCommonEvent extends UICommonEvent-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare interface UIScrollableCommonEvent--><!--Device-unnamed-declare interface UIScrollableCommonEvent-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,11 +20,13 @@
 setOnReachEnd(callback: Callback<void> | undefined): void
 ```
 
-设置\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_事件的回调。 方法入参为undefined时，会重置事件回调。
+设置[onReachEnd](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#onreachend11)事件的回调。 方法入参为undefined时，会重置事件回调。
 
 **起始版本：** 19
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -36,7 +40,7 @@ setOnReachEnd(callback: Callback<void> | undefined): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; \| undefined | 是 | onReachEnd事件的回调函数。 |
+| callback | [Callback](arkts-arkui-callback-i.md)&lt;void&gt; \| undefined | 是 | onReachEnd事件的回调函数。 |
 
 ## setOnReachStart
 
@@ -44,11 +48,13 @@ setOnReachEnd(callback: Callback<void> | undefined): void
 setOnReachStart(callback: Callback<void> | undefined): void
 ```
 
-设置\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_事件的回调。 方法入参为undefined时，会重置事件回调。
+设置[onReachStart](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#onreachstart11)事件的回调。 方法入参为undefined时，会重置事件回调。
 
 **起始版本：** 19
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -62,7 +68,7 @@ setOnReachStart(callback: Callback<void> | undefined): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; \| undefined | 是 | onReachStart事件的回调函数。 |
+| callback | [Callback](arkts-arkui-callback-i.md)&lt;void&gt; \| undefined | 是 | onReachStart事件的回调函数。 |
 
 ## setOnScrollFrameBegin
 
@@ -70,11 +76,13 @@ setOnReachStart(callback: Callback<void> | undefined): void
 setOnScrollFrameBegin(callback: OnScrollFrameBeginCallback | undefined): void
 ```
 
-设置[onScrollFrameBegin]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_事件的回调。 方法入参为undefined时，会重置事件回调。
+设置onScrollFrameBegin事件的回调。 方法入参为undefined时，会重置事件回调。
 
 **起始版本：** 19
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -88,7 +96,7 @@ setOnScrollFrameBegin(callback: OnScrollFrameBeginCallback | undefined): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ \| undefined | 是 | onScrollFrameBegin事件的回调函数。 |
+| callback | OnScrollFrameBeginCallback \| undefined | 是 | onScrollFrameBegin事件的回调函数。 |
 
 ## setOnScrollStart
 
@@ -96,11 +104,13 @@ setOnScrollFrameBegin(callback: OnScrollFrameBeginCallback | undefined): void
 setOnScrollStart(callback: Callback<void> | undefined): void
 ```
 
-设置\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_事件的回调。 方法入参为undefined时，会重置事件回调。
+设置[onScrollStart](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#onscrollstart11)事件的回调。 方法入参为undefined时，会重置事件回调。
 
 **起始版本：** 19
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -114,7 +124,7 @@ setOnScrollStart(callback: Callback<void> | undefined): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; \| undefined | 是 | onScrollStart事件的回调函数。 |
+| callback | [Callback](arkts-arkui-callback-i.md)&lt;void&gt; \| undefined | 是 | onScrollStart事件的回调函数。 |
 
 ## setOnScrollStop
 
@@ -122,11 +132,13 @@ setOnScrollStart(callback: Callback<void> | undefined): void
 setOnScrollStop(callback: Callback<void> | undefined): void
 ```
 
-设置\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_事件的回调。 方法入参为undefined时，会重置事件回调。
+设置[onScrollStop](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#onscrollstop11)事件的回调。 方法入参为undefined时，会重置事件回调。
 
 **起始版本：** 19
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -140,5 +152,5 @@ setOnScrollStop(callback: Callback<void> | undefined): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; \| undefined | 是 | onScrollStop事件的回调函数。 |
+| callback | [Callback](arkts-arkui-callback-i.md)&lt;void&gt; \| undefined | 是 | onScrollStop事件的回调函数。 |
 

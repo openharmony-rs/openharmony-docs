@@ -2,9 +2,11 @@
 
 编码器信息描述。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-interface EncoderInfo--><!--Device-unnamed-interface EncoderInfo-End-->
 
@@ -18,11 +20,13 @@ bitRate?: Range
 
 编码器比特率范围，包含最小和最大比特率，单位为bit/s。
 
-**类型：** Range
+**类型：** [Range](arkts-media-multimedia-media-range-i.md)
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-EncoderInfo-bitRate?: Range--><!--Device-EncoderInfo-bitRate?: Range-End-->
 
@@ -36,11 +40,13 @@ channels?: Range
 
 音频采集器的声道数范围，包含最小和最大声道数。仅在音频编码器中可用。
 
-**类型：** Range
+**类型：** [Range](arkts-media-multimedia-media-range-i.md)
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-EncoderInfo-channels?: Range--><!--Device-EncoderInfo-channels?: Range-End-->
 
@@ -54,11 +60,13 @@ frameRate?: Range
 
 视频帧率范围，包含最小和最大帧率，单位为fps。仅在视频编码器中可用。
 
-**类型：** Range
+**类型：** [Range](arkts-media-multimedia-media-range-i.md)
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-EncoderInfo-frameRate?: Range--><!--Device-EncoderInfo-frameRate?: Range-End-->
 
@@ -72,11 +80,13 @@ height?: Range
 
 视频帧高度范围，包含最小和最大高度，单位为像素（px）。仅在视频编码器中可用。
 
-**类型：** Range
+**类型：** [Range](arkts-media-multimedia-media-range-i.md)
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-EncoderInfo-height?: Range--><!--Device-EncoderInfo-height?: Range-End-->
 
@@ -90,11 +100,13 @@ mimeType: CodecMimeType
 
 编码器的MIME类型。
 
-**类型：** CodecMimeType
+**类型：** [CodecMimeType](arkts-media-multimedia-media-codecmimetype-e.md)
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-EncoderInfo-mimeType: CodecMimeType--><!--Device-EncoderInfo-mimeType: CodecMimeType-End-->
 
@@ -110,9 +122,11 @@ sampleRate?: Array<int>
 
 **类型：** Array&lt;int&gt;
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-EncoderInfo-sampleRate?: Array<int>--><!--Device-EncoderInfo-sampleRate?: Array<int>-End-->
 
@@ -128,9 +142,11 @@ type: string
 
 **类型：** string
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-EncoderInfo-type: string--><!--Device-EncoderInfo-type: string-End-->
 
@@ -144,11 +160,13 @@ width?: Range
 
 视频帧宽度范围，包含最小和最大宽度，单位为像素（px）。仅在视频编码器中可用。
 
-**类型：** Range
+**类型：** [Range](arkts-media-multimedia-media-range-i.md)
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-EncoderInfo-width?: Range--><!--Device-EncoderInfo-width?: Range-End-->
 

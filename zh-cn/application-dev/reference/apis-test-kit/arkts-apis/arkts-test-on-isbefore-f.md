@@ -6,11 +6,13 @@
 export function isBefore(on: On): On
 ```
 
-Requires that the target Component which is before another Component that specified by the given \_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ object,used to locate Component relatively.
+Requires that the target Component which is before another Component that specified by the given [On](arkts-test-uitest-on-c.md#On) object,used to locate Component relatively.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ON-export function isBefore(on: On): On--><!--Device-ON-export function isBefore(on: On): On-End-->
 
@@ -20,11 +22,11 @@ Requires that the target Component which is before another Component that specif
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| on | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | describes the attribute requirements of Component which the target one is in front of. |
+| on | [On](arkts-test-uitest-on-c.md) | 是 | describes the attribute requirements of Component which the target one is in front of. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | this { |
+| [On](arkts-test-uitest-on-c.md) | this { |
 

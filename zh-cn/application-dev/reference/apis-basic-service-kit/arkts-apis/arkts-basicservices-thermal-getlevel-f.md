@@ -8,9 +8,11 @@ function getLevel(): ThermalLevel
 
 获取当前热档位信息。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-thermal-function getLevel(): ThermalLevel--><!--Device-thermal-function getLevel(): ThermalLevel-End-->
 
@@ -20,9 +22,9 @@ function getLevel(): ThermalLevel
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 热档位信息。 |
+| [ThermalLevel](arkts-basicservices-thermal-thermallevel-e.md) | 热档位信息。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let level = thermal.getLevel();

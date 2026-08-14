@@ -2,9 +2,11 @@
 
 定义壁纸的枚举类型。
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-wallpaper-enum WallpaperType--><!--Device-wallpaper-enum WallpaperType-End-->
 
@@ -18,9 +20,11 @@ WALLPAPER_SYSTEM
 
 主屏幕壁纸标识。
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WallpaperType-WALLPAPER_SYSTEM--><!--Device-WallpaperType-WALLPAPER_SYSTEM-End-->
 
@@ -34,9 +38,11 @@ WALLPAPER_LOCKSCREEN
 
 锁屏壁纸标识。
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WallpaperType-WALLPAPER_LOCKSCREEN--><!--Device-WallpaperType-WALLPAPER_LOCKSCREEN-End-->
 

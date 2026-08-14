@@ -6,6 +6,8 @@ Wi-Fi配置信息。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-wifiManager-interface WifiProfile--><!--Device-wifiManager-interface WifiProfile-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -23,6 +25,8 @@ Wi-Fi热点的MAC地址，长度6个字节，例如：00:11:22:33:44:55。获取
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -44,6 +48,8 @@ creatorUid?: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WifiProfile-creatorUid?: number--><!--Device-WifiProfile-creatorUid?: number-End-->
@@ -64,6 +70,8 @@ disableReason?: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WifiProfile-disableReason?: number--><!--Device-WifiProfile-disableReason?: number-End-->
@@ -76,13 +84,15 @@ disableReason?: number
 eapProfile?: WifiEapProfile
 ```
 
-可扩展身份验证协议配置。只有securityType为WIFI\_SEC\_TYPE\_EAP时必填。
+可扩展身份验证协议配置。只有securityType为WIFI_SEC_TYPE_EAP时必填。
 
-**类型：** WifiEapProfile
+**类型：** [WifiEapProfile](arkts-mdm-wifimanager-wifieapprofile-i.md)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -98,11 +108,13 @@ ipType?: IpType
 
 IP地址类型，默认值DHCP。
 
-**类型：** IpType
+**类型：** [IpType](arkts-mdm-wifimanager-iptype-e.md)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -124,6 +136,8 @@ isHiddenSsid?: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WifiProfile-isHiddenSsid?: boolean--><!--Device-WifiProfile-isHiddenSsid?: boolean-End-->
@@ -143,6 +157,8 @@ netId?: number
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -164,6 +180,8 @@ preSharedKey: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WifiProfile-preSharedKey: string--><!--Device-WifiProfile-preSharedKey: string-End-->
@@ -183,6 +201,8 @@ MAC地址。randomMacType为设备MAC类型时，该字段必填。
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -204,6 +224,8 @@ randomMacType?: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WifiProfile-randomMacType?: number--><!--Device-WifiProfile-randomMacType?: number-End-->
@@ -218,11 +240,13 @@ securityType: WifiSecurityType
 
 安全类型。
 
-**类型：** WifiSecurityType
+**类型：** [WifiSecurityType](arkts-mdm-wifimanager-wifisecuritytype-e.md)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -244,6 +268,8 @@ Wi-Fi热点名称，最大长度为32字节，编码格式为UTF-8。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WifiProfile-ssid: string--><!--Device-WifiProfile-ssid: string-End-->
@@ -258,11 +284,13 @@ staticIp?: IpProfile
 
 静态IP配置信息。ipType为STATIC时，该字段必填。
 
-**类型：** IpProfile
+**类型：** [IpProfile](arkts-mdm-wifimanager-ipprofile-i.md)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

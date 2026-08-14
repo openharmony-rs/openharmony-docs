@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-i18n-export interface HolidayInfoItem--><!--Device-i18n-export interface HolidayInfoItem-End-->
 
 **系统能力：** SystemCapability.Global.I18n
@@ -23,6 +25,8 @@ baseName: string
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -44,6 +48,8 @@ day: int
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HolidayInfoItem-day: int--><!--Device-HolidayInfoItem-day: int-End-->
@@ -58,11 +64,13 @@ localNames?: Array<HolidayLocalName>
 
 节假日的本地名称列表。
 
-**类型：** Array&lt;HolidayLocalName&gt;
+**类型：** Array&lt;[HolidayLocalName](../../apis-localization-kit/arkts-apis/arkts-localization-i18n-holidaylocalname-i.md)&gt;
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -84,6 +92,8 @@ month: int
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HolidayInfoItem-month: int--><!--Device-HolidayInfoItem-month: int-End-->
@@ -103,6 +113,8 @@ year: int
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 

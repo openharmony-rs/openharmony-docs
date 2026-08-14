@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-export interface WorkerEventTarget--><!--Device-unnamed-export interface WorkerEventTarget-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
@@ -22,6 +24,8 @@ addEventListener(type: string, listener: WorkerEventListener): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WorkerEventTarget-addEventListener(type: string, listener: WorkerEventListener): void--><!--Device-WorkerEventTarget-addEventListener(type: string, listener: WorkerEventListener): void-End-->
@@ -33,16 +37,16 @@ addEventListener(type: string, listener: WorkerEventListener): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | string | 是 | 监听的事件类型。 |
-| listener | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | listener 当指定类型的事件发生时调用的回调函数。 |
+| listener | [WorkerEventListener](arkts-arkts-worker-workereventlistener-i.md) | 是 | listener 当指定类型的事件发生时调用的回调函数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 | [10200005](../errorcode-utils.md#10200005-worker不支持某api) | The called API is not supported in the worker thread. |
+| [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // worker.ets
@@ -69,6 +73,8 @@ dispatchEvent(event: Event): boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WorkerEventTarget-dispatchEvent(event: Event): boolean--><!--Device-WorkerEventTarget-dispatchEvent(event: Event): boolean-End-->
@@ -79,7 +85,7 @@ dispatchEvent(event: Event): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 需要分发的事件。 |
+| event | [Event](arkts-arkts-worker-event-i.md) | 是 | 需要分发的事件。 |
 
 **返回值：**
 
@@ -93,7 +99,7 @@ dispatchEvent(event: Event): boolean
 | --- | --- |
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // worker.ets
@@ -122,6 +128,8 @@ removeAllListener(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WorkerEventTarget-removeAllListener(): void--><!--Device-WorkerEventTarget-removeAllListener(): void-End-->
@@ -134,7 +142,7 @@ removeAllListener(): void
 | --- | --- |
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // worker.ets
@@ -163,6 +171,8 @@ removeEventListener(type: string, callback?: WorkerEventListener): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WorkerEventTarget-removeEventListener(type: string, callback?: WorkerEventListener): void--><!--Device-WorkerEventTarget-removeEventListener(type: string, callback?: WorkerEventListener): void-End-->
@@ -174,7 +184,7 @@ removeEventListener(type: string, callback?: WorkerEventListener): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | string | 是 | 需要移除的事件类型。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 移除监听事件后执行的回调函数。 |
+| callback | [WorkerEventListener](arkts-arkts-worker-workereventlistener-i.md) | 否 | 移除监听事件后执行的回调函数。 |
 
 **错误码：**
 
@@ -182,7 +192,7 @@ removeEventListener(type: string, callback?: WorkerEventListener): void
 | --- | --- |
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // worker.ets

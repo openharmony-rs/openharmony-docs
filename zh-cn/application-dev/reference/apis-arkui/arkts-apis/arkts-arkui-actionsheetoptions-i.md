@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-interface ActionSheetOptions--><!--Device-unnamed-interface ActionSheetOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -23,6 +25,8 @@ alignment?: DialogAlignment
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -44,6 +48,8 @@ autoCancel?: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ActionSheetOptions-autoCancel?: boolean--><!--Device-ActionSheetOptions-autoCancel?: boolean-End-->
@@ -56,7 +62,7 @@ autoCancel?: boolean
 backgroundBlurStyle?: BlurStyle
 ```
 
-弹窗背板模糊材质。 默认值：从API版本26.0.0开始，为BlurStyle.NONE，API版本26.0.0之前，为BlurStyle.COMPONENT\_ULTRA\_THICK。 **说明：** 设置为BlurStyle.NONE即可关闭背景虚化。当设置了backgroundBlurStyle为非NONE值时，则不要设置backgroundColor，否则颜色显示将不符合预期效果。
+弹窗背板模糊材质。 默认值：从API版本26.0.0开始，为BlurStyle.NONE，API版本26.0.0之前，为BlurStyle.COMPONENT_ULTRA_THICK。 **说明：** 设置为BlurStyle.NONE即可关闭背景虚化。当设置了backgroundBlurStyle为非NONE值时，则不要设置backgroundColor，否则颜色显示将不符合预期效果。
 
 **类型：** BlurStyle
 
@@ -65,6 +71,8 @@ backgroundBlurStyle?: BlurStyle
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -87,6 +95,8 @@ backgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 **起始版本：** 19
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -112,6 +122,8 @@ backgroundColor?: ResourceColor
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -133,6 +145,8 @@ backgroundEffect?: BackgroundEffectOptions
 **起始版本：** 19
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -158,6 +172,8 @@ borderColor?: ResourceColor | EdgeColors | LocalizedEdgeColors
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -182,6 +198,8 @@ borderStyle?: BorderStyle | EdgeStyles
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -200,14 +218,13 @@ borderWidth?: Dimension | EdgeWidths | LocalizedEdgeWidths
 
 **类型：** Dimension \| EdgeWidths \| LocalizedEdgeWidths
 
-**默认值：** 0 - When set to a percentage, the value defines the border width as a percentage of the parent dialog
-box's width. If the left and right borders are greater than its width, or the top and bottom borders are
-greater
-than its height, the dialog box may not display as expected.
+**默认值：** 0 - When set to a percentage, the value defines the border width as a percentage of the parent dialog box's width. If the left and right borders are greater than its width, or the top and bottom borders are greater than its height, the dialog box may not display as expected.
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -231,6 +248,8 @@ cancel?: VoidCallback
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ActionSheetOptions-cancel?: VoidCallback--><!--Device-ActionSheetOptions-cancel?: VoidCallback-End-->
@@ -245,11 +264,13 @@ confirm?: ActionSheetButtonOptions
 
 确认Button的使能状态、默认焦点、按钮风格、文本内容和点击回调。
 
-**类型：** ActionSheetButtonOptions
+**类型：** [ActionSheetButtonOptions](arkts-arkui-actionsheetbuttonoptions-i.md)
 
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -267,15 +288,13 @@ cornerRadius?: Dimension | BorderRadiuses | LocalizedBorderRadiuses
 
 **类型：** Dimension \| BorderRadiuses \| LocalizedBorderRadiuses
 
-**默认值：** - {topLeft:'32vp', topRight:'32vp', bottomLeft:'32vp', bottomRight:'32vp'}, The corner radius is subject
-to the component size, with the maximum value being half of the component width or height. If the value is
-negative, the default value is used. When set to a percentage, the value defines the radius as a percentage of
-the
-parent component's width or height.
+**默认值：** - {topLeft:'32vp', topRight:'32vp', bottomLeft:'32vp', bottomRight:'32vp'}, The corner radius is subject to the component size, with the maximum value being half of the component width or height. If the value is negative, the default value is used. When set to a percentage, the value defines the radius as a percentage of the parent component's width or height.
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -301,6 +320,8 @@ enableHoverMode?: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
@@ -319,13 +340,13 @@ height?: Dimension
 
 **类型：** Dimension
 
-**默认值：** - Default maximum height of the dialog box: 0.9 x (Window height – Safe area)
-<br>When this parameter is set to a percentage, the reference height of the dialog box is the height of the
-window where the dialog box is located minus the safe area. You can decrease or increase the height as needed.
+**默认值：** - Default maximum height of the dialog box: 0.9 x (Window height – Safe area) <br>When this parameter is set to a percentage, the reference height of the dialog box is the height of the window where the dialog box is located minus the safe area. You can decrease or increase the height as needed.
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -341,7 +362,7 @@ window where the dialog box is located minus the safe area. You can decrease or 
 hoverModeArea?: HoverModeAreaType
 ```
 
-悬停态下弹窗默认展示区域。 默认值：HoverModeAreaType.BOTTOM\_SCREEN。
+悬停态下弹窗默认展示区域。 默认值：HoverModeAreaType.BOTTOM_SCREEN。
 
 **类型：** HoverModeAreaType
 
@@ -350,6 +371,8 @@ hoverModeArea?: HoverModeAreaType
 **起始版本：** 14
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -367,13 +390,15 @@ immersiveMode?: ImmersiveMode
 
 设置页面内弹窗蒙层效果。 **说明：** - 默认值：ImmersiveMode.DEFAULT - 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。
 
-**类型：** ImmersiveMode
+**类型：** [ImmersiveMode](arkts-arkui-immersivemode-t.md)
 
 **默认值：** ImmersiveMode.DEFAULT - This parameter takes effect only when levelMode is set to LevelMode.EMBEDDED.
 
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -399,6 +424,8 @@ isModal?: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -415,13 +442,15 @@ levelMode?: LevelMode
 
 设置弹窗显示层级。 **说明：** - 默认值：LevelMode.OVERLAY - 仅当showInSubWindow属性设置为false时生效。
 
-**类型：** LevelMode
+**类型：** [LevelMode](arkts-arkui-levelmode-t.md)
 
 **默认值：** LevelMode.OVERLAY - This parameter takes effect only when showInSubWindow is set to false.
 
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -447,6 +476,8 @@ levelOrder?: LevelOrder
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -461,13 +492,15 @@ levelOrder?: LevelOrder
 levelUniqueId?: number
 ```
 
-设置页面级弹窗需要显示的层级下的[getUniqueId]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。 取值范围：大于等于0的数字。 **说明：** - 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。
+设置页面级弹窗需要显示的层级下的[getUniqueId](../../apis-na/arkts-apis/arkts-na-framenode-c.md#getUniqueId)。 取值范围：大于等于0的数字。 **说明：** - 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。
 
 **类型：** number
 
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -493,6 +526,8 @@ maskRect?: Rectangle
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -515,6 +550,8 @@ message: string | Resource
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ActionSheetOptions-message: string | Resource--><!--Device-ActionSheetOptions-message: string | Resource-End-->
@@ -529,11 +566,13 @@ offset?: ActionSheetOffset
 
 弹窗相对alignment所在位置的偏移量。 默认值： 1.alignment设置为Top、TopStart、TopEnd时默认值为{dx: 0,dy: "40vp"} 2.alignment设置为其他时默认值为{dx: 0,dy: "-40vp"}
 
-**类型：** ActionSheetOffset
+**类型：** [ActionSheetOffset](arkts-arkui-actionsheetoffset-i.md)
 
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -554,6 +593,8 @@ onDidAppear?: Callback<void>
 **起始版本：** 19
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -577,6 +618,8 @@ onDidDisappear?: Callback<void>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
@@ -598,6 +641,8 @@ onWillAppear?: Callback<void>
 **起始版本：** 19
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -621,6 +666,8 @@ onWillDisappear?: Callback<void>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
@@ -635,13 +682,15 @@ onWillDisappear?: Callback<void>
 onWillDismiss?: Callback<DismissDialogAction>
 ```
 
-交互式关闭回调函数。 **说明：** 1.当用户执行点击遮障层关闭、侧滑（左滑/右滑）、三键back、键盘ESC关闭交互操作时，如果注册该回调函数，则不会立刻关闭弹窗。在回调函数中可以通过reason得到阻拦关闭弹窗的操作类型，从而根据原因选择是否能关闭弹窗。当前组件 返回的reason中，暂不支持CLOSE\_BUTTON的枚举值。 2.在onWillDismiss回调中，不能再做onWillDismiss拦截。
+交互式关闭回调函数。 **说明：** 1.当用户执行点击遮障层关闭、侧滑（左滑/右滑）、三键back、键盘ESC关闭交互操作时，如果注册该回调函数，则不会立刻关闭弹窗。在回调函数中可以通过reason得到阻拦关闭弹窗的操作类型，从而根据原因选择是否能关闭弹窗。当前组件 返回的reason中，暂不支持CLOSE_BUTTON的枚举值。 2.在onWillDismiss回调中，不能再做onWillDismiss拦截。
 
-**类型：** Callback&lt;DismissDialogAction&gt;
+**类型：** Callback&lt;[DismissDialogAction](arkts-arkui-dismissdialogaction-i.md)&gt;
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -657,16 +706,17 @@ onWillDismiss?: Callback<DismissDialogAction>
 shadow?: ShadowOptions | ShadowStyle
 ```
 
-设置弹窗背板的阴影。 当设备为2in1时，默认场景下获焦阴影值为ShadowStyle.OUTER\_FLOATING\_MD，失焦为ShadowStyle.OUTER\_FLOATING\_SM。其他设备默认无阴影。
+设置弹窗背板的阴影。 当设备为2in1时，默认场景下获焦阴影值为ShadowStyle.OUTER_FLOATING_MD，失焦为ShadowStyle.OUTER_FLOATING_SM。其他设备默认无阴影。
 
 **类型：** ShadowOptions \| ShadowStyle
 
-**默认值：** - Default value on 2-in-1 devices: ShadowStyle.OUTER_FLOATING_MD when the dialog box is focused and
-ShadowStyle.OUTER_FLOATING_SM otherwise.
+**默认值：** - Default value on 2-in-1 devices: ShadowStyle.OUTER_FLOATING_MD when the dialog box is focused and ShadowStyle.OUTER_FLOATING_SM otherwise.
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -684,11 +734,13 @@ sheets: Array<SheetInfo>
 
 设置选项内容，每个选择项支持设置图片、文本和选中的回调。
 
-**类型：** Array&lt;SheetInfo&gt;
+**类型：** Array&lt;[SheetInfo](arkts-arkui-sheetinfo-i.md)&gt;
 
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -712,6 +764,8 @@ showInSubWindow?: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -734,6 +788,8 @@ subtitle?: ResourceStr
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -748,13 +804,15 @@ subtitle?: ResourceStr
 systemMaterial?: SystemUiMaterial
 ```
 
-设置弹窗的系统材质。 **说明：** - 默认值：\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_的style为 ImmersiveStyle.ULTRA\_THICK的 \_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_对象。设置undefined时与默认值保持 一致。 - 不同的材质具有不同的效果，该接口影响背景色[backgroundColor]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_、背景模糊 [backgroundBlurStyle]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_ 、背景效果[backgroundEffect]\_\_\_JSDOC\_LINK\_DESC\_USD\_4\_\_\_、边框颜色 [borderColor]\_\_\_JSDOC\_LINK\_DESC\_USD\_5\_\_\_、边框宽度[borderWidth]\_\_\_JSDOC\_LINK\_DESC\_USD\_6\_\_\_、阴影 [shadow]\_\_\_JSDOC\_LINK\_DESC\_USD\_7\_\_\_，不建议与上述接口一起使用。
+设置弹窗的系统材质。 **说明：** - 默认值：[ImmersiveOptions](../../../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)的style为 ImmersiveStyle.ULTRA_THICK的 [ImmersiveMaterial](../../../reference/apis-arkui/arkts-apis-uimaterial.md#immersivematerial)对象。设置undefined时与默认值保持 一致。 - 不同的材质具有不同的效果，该接口影响背景色backgroundColor、背景模糊 backgroundBlurStyle 、背景效果backgroundEffect、边框颜色 borderColor、边框宽度borderWidth、阴影 shadow，不建议与上述接口一起使用。
 
 **类型：** SystemUiMaterial
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -778,6 +836,8 @@ title: string | Resource
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ActionSheetOptions-title: string | Resource--><!--Device-ActionSheetOptions-title: string | Resource-End-->
@@ -798,6 +858,8 @@ transition?: TransitionEffect
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -816,13 +878,13 @@ width?: Dimension
 
 **类型：** Dimension
 
-**默认值：** - Default maximum width of the dialog box: 400 vp,
-When this parameter is set to a percentage, the reference width of the dialog box is the width of the window
-where the dialog box is located. You can decrease or increase the width as needed.
+**默认值：** - Default maximum width of the dialog box: 400 vp, When this parameter is set to a percentage, the reference width of the dialog box is the width of the window where the dialog box is located. You can decrease or increase the width as needed.
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -6,11 +6,13 @@ type OnSeiMessageHandle = (messages: Array<SeiMessage>, playbackPosition?: int) 
 
 获取SEI信息，使用场景：订阅SEI信息事件，回调返回SEI详细信息。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-media-type OnSeiMessageHandle = (messages: Array<SeiMessage>, playbackPosition?: int) => void--><!--Device-media-type OnSeiMessageHandle = (messages: Array<SeiMessage>, playbackPosition?: int) => void-End-->
 
@@ -20,6 +22,6 @@ type OnSeiMessageHandle = (messages: Array<SeiMessage>, playbackPosition?: int) 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| messages | Array&lt;SeiMessage&gt; | 是 | SEI信息。  |
-| playbackPosition | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 否 | 获取当前播放位置（单位：毫秒）。  |
+| messages | Array&lt;[SeiMessage](arkts-media-media-seimessage-i.md)&gt; | 是 | SEI信息。 |
+| playbackPosition | int | 否 | 获取当前播放位置（单位：毫秒）。 |
 

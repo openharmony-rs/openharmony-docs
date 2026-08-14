@@ -2,9 +2,11 @@
 
 表示播放音频流类型的枚举。
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-audio-enum StreamUsage--><!--Device-audio-enum StreamUsage-End-->
 
@@ -18,9 +20,11 @@ STREAM_USAGE_UNKNOWN = 0
 
 未知类型。
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -34,7 +38,7 @@ STREAM_USAGE_UNKNOWN = 0
 STREAM_USAGE_MEDIA = 1
 ```
 
-媒体。 从API version 7开始支持，从API version 10开始废弃，建议使用该枚举中的STREAM\_USAGE\_MUSIC、STREAM\_USAGE\_MOVIE、STREAM\_USAGE\_GAME或 STREAM\_USAGE\_AUDIOBOOK替代。
+媒体。 从API version 7开始支持，从API version 10开始废弃，建议使用该枚举中的STREAM_USAGE_MUSIC、STREAM_USAGE_MOVIE、STREAM_USAGE_GAME或 STREAM_USAGE_AUDIOBOOK替代。
 
 **起始版本：** 7
 
@@ -42,7 +46,7 @@ STREAM_USAGE_MEDIA = 1
 
 **废弃版本：** 10
 
-**替代接口：** ohos.multimedia.audio.StreamUsage.STREAM_USAGE_MUSIC
+**替代接口：** [STREAM_USAGE_AUDIOBOOK](#STREAM_USAGE_AUDIOBOOK)
 
 <!--Device-StreamUsage-STREAM_USAGE_MEDIA = 1--><!--Device-StreamUsage-STREAM_USAGE_MEDIA = 1-End-->
 
@@ -56,9 +60,11 @@ STREAM_USAGE_MUSIC = 1
 
 音乐。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -74,9 +80,11 @@ STREAM_USAGE_VOICE_COMMUNICATION = 2
 
 VoIP语音通话（该流类型起播时，会触发开启3A算法）。
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -92,9 +100,11 @@ STREAM_USAGE_VOICE_ASSISTANT = 3
 
 语音播报。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -110,9 +120,11 @@ STREAM_USAGE_ALARM = 4
 
 闹钟。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -128,9 +140,11 @@ STREAM_USAGE_VOICE_MESSAGE = 5
 
 语音消息。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -144,7 +158,7 @@ STREAM_USAGE_VOICE_MESSAGE = 5
 STREAM_USAGE_NOTIFICATION_RINGTONE = 6
 ```
 
-通知铃声。 从API version 7开始支持，从API version 10开始废弃，建议使用该枚举中的STREAM\_USAGE\_RINGTONE替代。
+通知铃声。 从API version 7开始支持，从API version 10开始废弃，建议使用该枚举中的STREAM_USAGE_RINGTONE替代。
 
 **起始版本：** 7
 
@@ -152,7 +166,7 @@ STREAM_USAGE_NOTIFICATION_RINGTONE = 6
 
 **废弃版本：** 10
 
-**替代接口：** ohos.multimedia.audio.StreamUsage#STREAM_USAGE_RINGTONE
+**替代接口：** [STREAM_USAGE_RINGTONE](#STREAM_USAGE_RINGTONE)
 
 <!--Device-StreamUsage-STREAM_USAGE_NOTIFICATION_RINGTONE = 6--><!--Device-StreamUsage-STREAM_USAGE_NOTIFICATION_RINGTONE = 6-End-->
 
@@ -166,9 +180,11 @@ STREAM_USAGE_RINGTONE = 6
 
 铃声。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -184,9 +200,11 @@ STREAM_USAGE_NOTIFICATION = 7
 
 通知音。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -202,9 +220,11 @@ STREAM_USAGE_ACCESSIBILITY = 8
 
 无障碍。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -220,9 +240,11 @@ STREAM_USAGE_MOVIE = 10
 
 电影或视频。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -238,9 +260,11 @@ STREAM_USAGE_GAME = 11
 
 游戏。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -256,9 +280,11 @@ STREAM_USAGE_AUDIOBOOK = 12
 
 有声读物（包括听书、相声、评书）、听新闻、播客等。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -274,9 +300,11 @@ STREAM_USAGE_NAVIGATION = 13
 
 导航。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -292,11 +320,13 @@ STREAM_USAGE_VIDEO_COMMUNICATION = 17
 
 VoIP视频通话（该流类型起播时，会触发开启3A算法）。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-StreamUsage-STREAM_USAGE_VIDEO_COMMUNICATION = 17--><!--Device-StreamUsage-STREAM_USAGE_VIDEO_COMMUNICATION = 17-End-->
 

@@ -2,11 +2,13 @@
 
 LinkedList底层通过双向链表实现，每个节点都包含对前一个元素和后一个元素的引用。查询元素时，可以从头或从尾部遍历，插入和删除效率高，查询效率低。LinkedList允许元素为null。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-<!--Device-unnamed-declare class LinkedList<T>--><!--Device-unnamed-declare class LinkedList<T>-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare class LinkedList--><!--Device-unnamed-declare class LinkedList-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -20,7 +22,9 @@ $_iterator(): IterableIterator<T>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -34,7 +38,7 @@ $_iterator(): IterableIterator<T>
 | --- | --- |
 | IterableIterator&lt;T&gt; |  |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let linkedList: LinkedList<int> = new LinkedList<int>();
@@ -69,6 +73,8 @@ while(!temp.done) {
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LinkedList-[Symbol.iterator](): IterableIterator<T>--><!--Device-LinkedList-[Symbol.iterator](): IterableIterator<T>-End-->
@@ -87,7 +93,7 @@ while(!temp.done) {
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The Symbol.iterator method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let linkedList = new LinkedList<number>();
@@ -126,9 +132,11 @@ add(element: T): boolean
 
 在LinkedList尾部插入元素。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -154,7 +162,7 @@ add(element: T): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The add method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -204,9 +212,11 @@ addFirst(element: T): void
 
 在LinkedList头部插入元素。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -226,7 +236,7 @@ addFirst(element: T): void
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The addFirst method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -274,9 +284,11 @@ clear(): void
 
 清除LinkedList中的所有元素，并将length置为0。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -290,7 +302,7 @@ clear(): void
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The clear method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -326,9 +338,11 @@ clone(): LinkedList<T>
 
 克隆一个与LinkedList相同的实例并返回。修改克隆后的实例并不会影响原实例。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -340,7 +354,7 @@ clone(): LinkedList<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; | 返回LinkedList对象的克隆实例。 |
+| [LinkedList](arkts-arkts-util-linkedlist-linkedlist-c.md)&lt;T&gt; | 返回LinkedList对象的克隆实例。 |
 
 **错误码：**
 
@@ -348,7 +362,7 @@ clone(): LinkedList<T>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The clone method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -382,9 +396,11 @@ constructor()
 
 LinkedList的构造函数。调用后，创建一个空的LinkedList实例。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -398,7 +414,7 @@ LinkedList的构造函数。调用后，创建一个空的LinkedList实例。
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The LinkedList's constructor cannot be directly invoked. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -420,9 +436,11 @@ convertToArray(): Array<T>
 
 将当前LinkedList实例转换成数组并返回。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -442,7 +460,7 @@ convertToArray(): Array<T>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The convertToArray method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -480,6 +498,8 @@ forEach(callbackFn: (value: T, index?: number, LinkedList?: LinkedList<T>) => vo
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LinkedList-forEach(callbackFn: (value: T, index?: number, LinkedList?: LinkedList<T>) => void, thisArg?: Object): void--><!--Device-LinkedList-forEach(callbackFn: (value: T, index?: number, LinkedList?: LinkedList<T>) => void, thisArg?: Object): void-End-->
@@ -499,7 +519,7 @@ forEach(callbackFn: (value: T, index?: number, LinkedList?: LinkedList<T>) => vo
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The forEach method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let linkedList = new LinkedList<number>();
@@ -526,7 +546,9 @@ forEach(callbackFn: LinkedListForEachCb<T>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -540,25 +562,21 @@ forEach(callbackFn: LinkedListForEachCb<T>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; | 是 | 回调函数。 |
+| callbackFn | [LinkedListForEachCb](arkts-arkts-linkedlistforeachcb-t.md)&lt;T&gt; | 是 | 回调函数。 |
 
 ## get
 
-ArkTS-Dyn:
-```TypeScript
-get(index: number): T
-```
-
-ArkTS-Sta:
 ```TypeScript
 get(index: int): T
 ```
 
 根据下标获取LinkedList中的元素。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -570,22 +588,22 @@ get(index: int): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 指定的下标值。需要小于等于int32\_\_\_ESCAPED\_UNDERSCORE\_\_\_max即2147483647。 |
+| index | int | 是 | 指定的下标值。需要小于等于int32_max即2147483647。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| T | 返回指定下标位置的元素，如果元素不存在返回undefined。 |
+| T | 根据下标查找到的元素，元素不存在返回undefined。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The get method cannot be bound. |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 23+  **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range.<br>**适用版本：** 23+  **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -625,9 +643,11 @@ getFirst(): T
 
 获取LinkedList实例中的第一个元素。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -639,16 +659,16 @@ getFirst(): T
 
 | 类型 | 说明 |
 | --- | --- |
-| T | 返回对应元素，如果元素为undefined则返回undefined，为null则返回null。 |
+| T | 返回对应元素，若元素为空则返回undefined。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getFirst method cannot be bound. |
-| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 23+  **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.<br>**适用版本：** 23+  **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -676,21 +696,17 @@ console.info("result:", result);  // result: 2
 
 ## getIndexOf
 
-ArkTS-Dyn:
-```TypeScript
-getIndexOf(element: T): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getIndexOf(element: T): int
 ```
 
 查找指定元素第一次出现时的下标值，查找失败返回-1。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -708,7 +724,7 @@ getIndexOf(element: T): int
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 返回指定元素第一次出现时的下标值，查找失败返回-1。 |
+| int | 返回指定元素第一次出现时的下标值，查找失败返回-1。 |
 
 **错误码：**
 
@@ -716,7 +732,7 @@ getIndexOf(element: T): int
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getIndexOf method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -756,9 +772,11 @@ getLast(): T
 
 获取LinkedList实例中的最后一个元素。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -777,9 +795,9 @@ getLast(): T
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getLast method cannot be bound. |
-| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 23+  **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.<br>**适用版本：** 23+  **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -807,21 +825,17 @@ console.info("result:", result);  // result: 4
 
 ## getLastIndexOf
 
-ArkTS-Dyn:
-```TypeScript
-getLastIndexOf(element: T): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getLastIndexOf(element: T): int
 ```
 
 查找指定元素最后一次出现时的下标值，查找失败返回-1。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -839,7 +853,7 @@ getLastIndexOf(element: T): int
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 返回指定元素最后一次出现时的下标值，查找失败返回-1。 |
+| int | 返回指定元素最后一次出现时的下标值，查找失败返回-1。 |
 
 **错误码：**
 
@@ -847,7 +861,7 @@ getLastIndexOf(element: T): int
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getLastIndexOf method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -887,9 +901,11 @@ has(element: T): boolean
 
 判断LinkedList中是否包含指定元素。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -915,7 +931,7 @@ has(element: T): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The has method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let linkedList = new LinkedList<string>();
@@ -926,21 +942,17 @@ console.info("result:", result);  // result: true
 
 ## insert
 
-ArkTS-Dyn:
-```TypeScript
-insert(index: number, element: T): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 insert(index: int, element: T): void
 ```
 
 在长度范围内任意位置插入指定元素，可插入位置区间为[0, LinkedList.length]，在linkedList.length处插入时即在linkedList尾部添加元素。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -952,7 +964,7 @@ insert(index: int, element: T): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 插入位置索引，可插入位置区间为[0, LinkedList.length]，且需要小于等于int32\_\_\_ESCAPED\_UNDERSCORE\_\_\_max即2147483647。 |
+| index | int | 是 | 插入位置索引，可插入位置区间为[0, LinkedList.length]，且需要小于等于int32_max即2147483647。 |
 | element | T | 是 | 待插入元素。 |
 
 **错误码：**
@@ -962,7 +974,7 @@ insert(index: int, element: T): void
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The insert method cannot be bound. |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -994,9 +1006,11 @@ remove(element: T): boolean
 
 删除查找到的第一个指定元素。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1022,7 +1036,7 @@ remove(element: T): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The remove method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -1060,6 +1074,8 @@ removeByIndex(index: number): T
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LinkedList-removeByIndex(index: number): T--><!--Device-LinkedList-removeByIndex(index: number): T-End-->
@@ -1070,7 +1086,7 @@ removeByIndex(index: number): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 指定元素的下标值，取值范围[0, LinkedList.length-1]，且需要小于等于int32\_\_\_ESCAPED\_UNDERSCORE\_\_\_max即2147483647。 |
+| index | number | 是 | 指定元素的下标值，取值范围[0, LinkedList.length-1]，且需要小于等于int32_max即2147483647。 |
 
 **返回值：**
 
@@ -1085,7 +1101,7 @@ removeByIndex(index: number): T
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The removeByIndex method cannot be bound. |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let linkedList = new LinkedList<number>();
@@ -1108,7 +1124,9 @@ removeByIndex(index: int): T | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -1132,10 +1150,10 @@ removeByIndex(index: int): T | undefined
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "index" is out of range. It must be >= 0 && <= \_\_\_ESCAPED\_DOLLAR\_\_\_{length}.Received value is: \_\_\_ESCAPED\_DOLLAR\_\_\_{index} |
 | [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty. |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "index" is out of range. It must be >= 0 && <= \\${length}. Received value is: \\${index} |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let linkedList: LinkedList<int> = new LinkedList<int>();
@@ -1159,6 +1177,8 @@ removeFirst(): T
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LinkedList-removeFirst(): T--><!--Device-LinkedList-removeFirst(): T-End-->
@@ -1178,7 +1198,7 @@ removeFirst(): T
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The removeFirst method cannot be bound. |
 | [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let linkedList = new LinkedList<number>();
@@ -1201,7 +1221,9 @@ removeFirst(): T | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -1221,7 +1243,7 @@ removeFirst(): T | undefined
 | --- | --- |
 | [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let linkedList: LinkedList<int> = new LinkedList<int>();
@@ -1241,9 +1263,11 @@ removeFirstFound(element: T): boolean
 
 删除第一次出现的指定元素。如果LinkedList中不存在指定元素，会抛出错误。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1271,7 +1295,7 @@ removeFirstFound(element: T): boolean
 | [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty. |
 | [10200017](../errorcode-utils.md#10200017-删除不存在的元素错误) | The element does not exist in this container. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -1308,6 +1332,8 @@ removeLast(): T
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LinkedList-removeLast(): T--><!--Device-LinkedList-removeLast(): T-End-->
@@ -1327,7 +1353,7 @@ removeLast(): T
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The removeLast method cannot be bound. |
 | [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let linkedList = new LinkedList<number>();
@@ -1350,7 +1376,9 @@ removeLast(): T | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -1370,7 +1398,7 @@ removeLast(): T | undefined
 | --- | --- |
 | [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let linkedList: LinkedList<int> = new LinkedList<int>();
@@ -1390,9 +1418,11 @@ removeLastFound(element: T): boolean
 
 删除最后一次出现的指定元素。如果LinkedList中不存在指定元素，会抛出错误。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1420,7 +1450,7 @@ removeLastFound(element: T): boolean
 | [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty. |
 | [10200017](../errorcode-utils.md#10200017-删除不存在的元素错误) | The element does not exist in this container. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -1447,21 +1477,17 @@ let result = linkedList.removeLastFound(4);
 
 ## set
 
-ArkTS-Dyn:
-```TypeScript
-set(index: number, element: T): T
-```
-
-ArkTS-Sta:
 ```TypeScript
 set(index: int, element: T): T
 ```
 
 替换LinkedList指定位置的元素。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1473,7 +1499,7 @@ set(index: int, element: T): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 查找的下标值。取值范围[0, LinkedList.length-1]，且需要小于等于int32\_\_\_ESCAPED\_UNDERSCORE\_\_\_max即2147483647。 |
+| index | int | 是 | 查找的下标值。取值范围[0, LinkedList.length-1]，且需要小于等于int32_max即2147483647。 |
 | element | T | 是 | 用来替换的元素。 |
 
 **返回值：**
@@ -1487,10 +1513,10 @@ set(index: int, element: T): T
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The set method cannot be bound. |
+| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.<br>**适用版本：** 23+  **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range. |
-| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 23+  **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -1528,7 +1554,9 @@ LinkedList的元素个数。
 
 **起始版本：** 8
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

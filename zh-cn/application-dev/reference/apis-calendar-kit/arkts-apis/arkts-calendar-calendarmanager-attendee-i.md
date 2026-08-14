@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-calendarManager-export interface Attendee--><!--Device-calendarManager-export interface Attendee-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
@@ -16,13 +18,15 @@
 email: string
 ```
 
-会议日程参与者的邮箱，邮箱格式为“用户名@域名.后缀”，用户名部分只能包含字母、数字、下划线“\_”、点 “.”、连字符 “-”。不能以点 “.” 开头或结尾。 不能连续出现两个点（即“..”）。长度建议为[0,5000]字符。
+会议日程参与者的邮箱，邮箱格式为“用户名@域名.后缀”，用户名部分只能包含字母、数字、下划线“_”、点 “.”、连字符 “-”。不能以点 “.” 开头或结尾。 不能连续出现两个点（即“..”）。长度建议为[0,5000]字符。
 
 **类型：** string
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -44,6 +48,8 @@ name: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Attendee-name: string--><!--Device-Attendee-name: string-End-->
@@ -58,11 +64,13 @@ role?: AttendeeRole
 
 会议日程参与者的角色，不填时默认为空。
 
-**类型：** AttendeeRole
+**类型：** [AttendeeRole](arkts-calendar-calendarmanager-attendeerole-e.md)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -78,11 +86,13 @@ status?: AttendeeStatus
 
 会议日程参与者的状态，不填时默认为空。
 
-**类型：** AttendeeStatus
+**类型：** [AttendeeStatus](arkts-calendar-calendarmanager-attendeestatus-e.md)
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -98,11 +108,13 @@ type?: AttendeeType
 
 会议日程参与者的类型，不填时默认为空。
 
-**类型：** AttendeeType
+**类型：** [AttendeeType](arkts-calendar-calendarmanager-attendeetype-e.md)
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 

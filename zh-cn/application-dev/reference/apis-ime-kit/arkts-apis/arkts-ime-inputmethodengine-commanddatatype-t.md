@@ -6,9 +6,11 @@ type CommandDataType = int | string | boolean
 
 表示私有数据类型，接口参数具体类型根据其功能而定。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-inputMethodEngine-type CommandDataType = int | string | boolean--><!--Device-inputMethodEngine-type CommandDataType = int | string | boolean-End-->
 

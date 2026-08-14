@@ -2,9 +2,11 @@
 
 主题颜色资源。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-export declare interface Colors--><!--Device-unnamed-export declare interface Colors-End-->
 
@@ -16,15 +18,19 @@
 alert: ResourceColor
 ```
 
-二级提示色。\_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_影响组件：暂无组件使用。
+二级提示色。&lt;/br&gt;**影响组件：** 暂无组件使用。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-alert: ResourceColor--><!--Device-Colors-alert: ResourceColor-End-->
 
@@ -36,15 +42,19 @@ alert: ResourceColor
 backgroundEmphasize: ResourceColor
 ```
 
-高亮背景颜色（实色，不透明）。\_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_影响组件：[Progress]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_、 [Button]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_、[Slider]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_
+高亮背景颜色（实色，不透明）。&lt;/br&gt;**影响组件：** Progress、Button、Slider
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-backgroundEmphasize: ResourceColor--><!--Device-Colors-backgroundEmphasize: ResourceColor-End-->
 
@@ -56,15 +66,19 @@ backgroundEmphasize: ResourceColor
 backgroundFourth: ResourceColor
 ```
 
-四级背景颜色（实色，不透明）。\_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_影响组件：暂无组件使用。
+四级背景颜色（实色，不透明）。&lt;/br&gt;**影响组件：** 暂无组件使用。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-backgroundFourth: ResourceColor--><!--Device-Colors-backgroundFourth: ResourceColor-End-->
 
@@ -76,15 +90,19 @@ backgroundFourth: ResourceColor
 backgroundPrimary: ResourceColor
 ```
 
-一级背景颜色（实色，不透明）。\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_影响组件：[TextInput]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_、 [QRCode]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_
+一级背景颜色（实色，不透明）。&lt;/br&gt;**影响组件：** TextInput、QRCode
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-backgroundPrimary: ResourceColor--><!--Device-Colors-backgroundPrimary: ResourceColor-End-->
 
@@ -96,15 +114,19 @@ backgroundPrimary: ResourceColor
 backgroundSecondary: ResourceColor
 ```
 
-二级背景颜色（实色，不透明）。\_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_影响组件：暂无组件使用。
+二级背景颜色（实色，不透明）。&lt;/br&gt;**影响组件：** 暂无组件使用。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-backgroundSecondary: ResourceColor--><!--Device-Colors-backgroundSecondary: ResourceColor-End-->
 
@@ -116,15 +138,19 @@ backgroundSecondary: ResourceColor
 backgroundTertiary: ResourceColor
 ```
 
-三级背景颜色（实色，不透明）。\_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_影响组件：暂无组件使用。
+三级背景颜色（实色，不透明）。&lt;/br&gt;**影响组件：** 暂无组件使用。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-backgroundTertiary: ResourceColor--><!--Device-Colors-backgroundTertiary: ResourceColor-End-->
 
@@ -136,15 +162,19 @@ backgroundTertiary: ResourceColor
 brand: ResourceColor
 ```
 
-品牌色。\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_影响组件：[TextInput]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_、 [Search]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_
+品牌色。&lt;/br&gt;**影响组件：** TextInput、Search
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-brand: ResourceColor--><!--Device-Colors-brand: ResourceColor-End-->
 
@@ -156,15 +186,19 @@ brand: ResourceColor
 compBackgroundEmphasize: ResourceColor
 ```
 
-高亮背景。\_\_\_HTML\_TAG\_DESC\_USD\_6\_\_\_影响组件：[Swiper]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_、[Toggle]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_、 [Chip]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_、\_\_\_HTML\_TAG\_DESC\_USD\_7\_\_\_[Checkbox]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_、 [CheckboxGroup]\_\_\_JSDOC\_LINK\_DESC\_USD\_4\_\_\_、[Radio]\_\_\_JSDOC\_LINK\_DESC\_USD\_5\_\_\_
+高亮背景。&lt;/br&gt;**影响组件：** Swiper、Toggle、[Chip](../../apis-na/arkts-apis/arkts-na-arkui-advanced-chip-chip-f.md#Chip)、&lt;/br&gt; Checkbox、CheckboxGroup、Radio
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-compBackgroundEmphasize: ResourceColor--><!--Device-Colors-compBackgroundEmphasize: ResourceColor-End-->
 
@@ -176,15 +210,19 @@ compBackgroundEmphasize: ResourceColor
 compBackgroundFocus: ResourceColor
 ```
 
-获焦态背景颜色。\_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_影响组件：暂无组件使用。
+获焦态背景颜色。&lt;/br&gt;**影响组件：** 暂无组件使用。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-compBackgroundFocus: ResourceColor--><!--Device-Colors-compBackgroundFocus: ResourceColor-End-->
 
@@ -196,15 +234,19 @@ compBackgroundFocus: ResourceColor
 compBackgroundGray: ResourceColor
 ```
 
-灰色背景。\_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_影响组件：暂无组件使用。
+灰色背景。&lt;/br&gt;**影响组件：** 暂无组件使用。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-compBackgroundGray: ResourceColor--><!--Device-Colors-compBackgroundGray: ResourceColor-End-->
 
@@ -216,15 +258,19 @@ compBackgroundGray: ResourceColor
 compBackgroundNeutral: ResourceColor
 ```
 
-黑色中性高亮背景颜色。\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_影响组件：[PatternLock]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_
+黑色中性高亮背景颜色。&lt;/br&gt;**影响组件：** PatternLock
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-compBackgroundNeutral: ResourceColor--><!--Device-Colors-compBackgroundNeutral: ResourceColor-End-->
 
@@ -236,15 +282,19 @@ compBackgroundNeutral: ResourceColor
 compBackgroundPrimary: ResourceColor
 ```
 
-白色背景。\_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_影响组件：暂无组件使用。
+白色背景。&lt;/br&gt;**影响组件：** 暂无组件使用。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-compBackgroundPrimary: ResourceColor--><!--Device-Colors-compBackgroundPrimary: ResourceColor-End-->
 
@@ -256,15 +306,19 @@ compBackgroundPrimary: ResourceColor
 compBackgroundPrimaryContrary: ResourceColor
 ```
 
-常亮背景。\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_影响组件：[Toggle]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_、[Slider]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_
+常亮背景。&lt;/br&gt;**影响组件：** Toggle、Slider
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-compBackgroundPrimaryContrary: ResourceColor--><!--Device-Colors-compBackgroundPrimaryContrary: ResourceColor-End-->
 
@@ -276,15 +330,19 @@ compBackgroundPrimaryContrary: ResourceColor
 compBackgroundPrimaryTran: ResourceColor
 ```
 
-白色透明背景。\_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_影响组件：暂无组件使用。
+白色透明背景。&lt;/br&gt;**影响组件：** 暂无组件使用。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-compBackgroundPrimaryTran: ResourceColor--><!--Device-Colors-compBackgroundPrimaryTran: ResourceColor-End-->
 
@@ -296,15 +354,19 @@ compBackgroundPrimaryTran: ResourceColor
 compBackgroundSecondary: ResourceColor
 ```
 
-二级背景。\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_影响组件：[Swiper]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_、[Slider]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_
+二级背景。&lt;/br&gt;**影响组件：** Swiper、Slider
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-compBackgroundSecondary: ResourceColor--><!--Device-Colors-compBackgroundSecondary: ResourceColor-End-->
 
@@ -316,15 +378,19 @@ compBackgroundSecondary: ResourceColor
 compBackgroundTertiary: ResourceColor
 ```
 
-三级背景。\_\_\_HTML\_TAG\_DESC\_USD\_11\_\_\_影响组件：[EditableTitleBar]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_、 [Progress]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_、 [AlphabetIndexer]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_、\_\_\_HTML\_TAG\_DESC\_USD\_12\_\_\_ [Button]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_、[Select]\_\_\_JSDOC\_LINK\_DESC\_USD\_4\_\_\_、 [Toggle]\_\_\_JSDOC\_LINK\_DESC\_USD\_5\_\_\_、\_\_\_HTML\_TAG\_DESC\_USD\_13\_\_\_[Chip]\_\_\_JSDOC\_LINK\_DESC\_USD\_6\_\_\_、 [TextInput]\_\_\_JSDOC\_LINK\_DESC\_USD\_7\_\_\_、[Search]\_\_\_JSDOC\_LINK\_DESC\_USD\_8\_\_\_。从API版本26 .0.0开始，新增[UIPickerComponent]\_\_\_JSDOC\_LINK\_DESC\_USD\_9\_\_\_、 [TextPicker]\_\_\_JSDOC\_LINK\_DESC\_USD\_10\_\_\_。
+三级背景。&lt;/br&gt;**影响组件：** EditableTitleBar、Progress、 AlphabetIndexer、&lt;/br&gt;Button、Select、 Toggle、&lt;/br&gt;[Chip](../../apis-na/arkts-apis/arkts-na-arkui-advanced-chip-chip-f.md#Chip)、TextInput、 Search。从API版本26.0.0开始，新增UIPickerComponent、 TextPicker。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-compBackgroundTertiary: ResourceColor--><!--Device-Colors-compBackgroundTertiary: ResourceColor-End-->
 
@@ -336,15 +402,19 @@ compBackgroundTertiary: ResourceColor
 compCommonContrary: ResourceColor
 ```
 
-通用反转颜色。\_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_影响组件：暂无组件使用。
+通用反转颜色。&lt;/br&gt;**影响组件：** 暂无组件使用。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-compCommonContrary: ResourceColor--><!--Device-Colors-compCommonContrary: ResourceColor-End-->
 
@@ -356,15 +426,19 @@ compCommonContrary: ResourceColor
 compDivider: ResourceColor
 ```
 
-通用分割线颜色。\_\_\_HTML\_TAG\_DESC\_USD\_8\_\_\_影响组件：[SelectDialog]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_、 [PatternLock]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_、[Divider]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_。从 API版本26.0.0开始，新增[UIPickerComponent]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_、 [TextPicker]\_\_\_JSDOC\_LINK\_DESC\_USD\_4\_\_\_、[MenuItem]\_\_\_JSDOC\_LINK\_DESC\_USD\_5\_\_\_、 [MenuItemGroup]\_\_\_JSDOC\_LINK\_DESC\_USD\_6\_\_\_、[Select]\_\_\_JSDOC\_LINK\_DESC\_USD\_7\_\_\_ 。
+通用分割线颜色。&lt;/br&gt;**影响组件：** [SelectDialog](arkts-arkui-arkui-advanced-dialog-selectdialog-s.md#SelectDialog)、 PatternLock、Divider。从API版本26.0.0开始，新增 UIPickerComponent、TextPicker、MenuItem、 MenuItemGroup、Select。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-compDivider: ResourceColor--><!--Device-Colors-compDivider: ResourceColor-End-->
 
@@ -376,15 +450,19 @@ compDivider: ResourceColor
 compEmphasizeSecondary: ResourceColor
 ```
 
-20%高亮背景颜色。\_\_\_HTML\_TAG\_DESC\_USD\_5\_\_\_影响组件：[Progress]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_、 [ProgressButton]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_、 [AlphabetIndexer]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_、\_\_\_HTML\_TAG\_DESC\_USD\_6\_\_\_ [Select]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_、[Toggle]\_\_\_JSDOC\_LINK\_DESC\_USD\_4\_\_\_
+20%高亮背景颜色。&lt;/br&gt;**影响组件：** Progress、[ProgressButton](arkts-arkui-arkui-advanced-progressbutton-progressbuttoncoloroptions-i.md#ProgressButtonColorOptions)、 AlphabetIndexer、&lt;/br&gt;Select、Toggle
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-compEmphasizeSecondary: ResourceColor--><!--Device-Colors-compEmphasizeSecondary: ResourceColor-End-->
 
@@ -396,15 +474,19 @@ compEmphasizeSecondary: ResourceColor
 compEmphasizeTertiary: ResourceColor
 ```
 
-10%高亮背景颜色。\_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_影响组件：暂无组件使用。
+10%高亮背景颜色。&lt;/br&gt;**影响组件：** 暂无组件使用。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-compEmphasizeTertiary: ResourceColor--><!--Device-Colors-compEmphasizeTertiary: ResourceColor-End-->
 
@@ -416,15 +498,19 @@ compEmphasizeTertiary: ResourceColor
 compFocusedPrimary: ResourceColor
 ```
 
-获焦态一级反转颜色。\_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_影响组件：暂无组件使用。
+获焦态一级反转颜色。&lt;/br&gt;**影响组件：** 暂无组件使用。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-compFocusedPrimary: ResourceColor--><!--Device-Colors-compFocusedPrimary: ResourceColor-End-->
 
@@ -436,15 +522,19 @@ compFocusedPrimary: ResourceColor
 compFocusedSecondary: ResourceColor
 ```
 
-获焦态二级反转颜色。\_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_影响组件：暂无组件使用。
+获焦态二级反转颜色。&lt;/br&gt;**影响组件：** 暂无组件使用。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-compFocusedSecondary: ResourceColor--><!--Device-Colors-compFocusedSecondary: ResourceColor-End-->
 
@@ -456,15 +546,19 @@ compFocusedSecondary: ResourceColor
 compFocusedTertiary: ResourceColor
 ```
 
-获焦态三级反转颜色。\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_影响组件：[Scroll]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_
+获焦态三级反转颜色。&lt;/br&gt;**影响组件：** Scroll
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-compFocusedTertiary: ResourceColor--><!--Device-Colors-compFocusedTertiary: ResourceColor-End-->
 
@@ -476,15 +570,19 @@ compFocusedTertiary: ResourceColor
 compForegroundPrimary: ResourceColor
 ```
 
-前背景。\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_影响组件：[QRCode]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_
+前背景。&lt;/br&gt;**影响组件：** QRCode
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-compForegroundPrimary: ResourceColor--><!--Device-Colors-compForegroundPrimary: ResourceColor-End-->
 
@@ -496,15 +594,19 @@ compForegroundPrimary: ResourceColor
 confirm: ResourceColor
 ```
 
-确认色。\_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_影响组件：暂无组件使用。
+确认色。&lt;/br&gt;**影响组件：** 暂无组件使用。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-confirm: ResourceColor--><!--Device-Colors-confirm: ResourceColor-End-->
 
@@ -518,13 +620,17 @@ container?: ResourceColor
 
 系统容器颜色。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-container?: ResourceColor--><!--Device-Colors-container?: ResourceColor-End-->
 
@@ -536,15 +642,19 @@ container?: ResourceColor
 fontEmphasize: ResourceColor
 ```
 
-高亮字体颜色。\_\_\_HTML\_TAG\_DESC\_USD\_16\_\_\_影响组件：[TipsDialog]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_、 [ConfirmDialog]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_、 [AlertDialog]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_、\_\_\_HTML\_TAG\_DESC\_USD\_17\_\_\_ [SelectDialog]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_、 [CustomContentDialog]\_\_\_JSDOC\_LINK\_DESC\_USD\_4\_\_\_、 [SubHeader]\_\_\_JSDOC\_LINK\_DESC\_USD\_5\_\_\_、\_\_\_HTML\_TAG\_DESC\_USD\_18\_\_\_ [AlphabetIndexer]\_\_\_JSDOC\_LINK\_DESC\_USD\_6\_\_\_、[Popup]\_\_\_JSDOC\_LINK\_DESC\_USD\_7\_\_\_、 [Button]\_\_\_JSDOC\_LINK\_DESC\_USD\_8\_\_\_、\_\_\_HTML\_TAG\_DESC\_USD\_19\_\_\_[Select]\_\_\_JSDOC\_LINK\_DESC\_USD\_9\_\_\_、 [ToolBar]\_\_\_JSDOC\_LINK\_DESC\_USD\_10\_\_\_、[Search]\_\_\_JSDOC\_LINK\_DESC\_USD\_11\_\_\_、\_\_\_HTML\_TAG\_DESC\_USD\_20\_\_\_ [TimePicker]\_\_\_JSDOC\_LINK\_DESC\_USD\_12\_\_\_、 [DatePicker]\_\_\_JSDOC\_LINK\_DESC\_USD\_13\_\_\_、 [TextPicker]\_\_\_JSDOC\_LINK\_DESC\_USD\_14\_\_\_。从API版本26.0.0开始，新增 [RichEditor]\_\_\_JSDOC\_LINK\_DESC\_USD\_15\_\_\_。
+高亮字体颜色。&lt;/br&gt;**影响组件：** [TipsDialog](arkts-arkui-arkui-advanced-dialog-tipsdialog-s.md#TipsDialog)、 [ConfirmDialog](arkts-arkui-arkui-advanced-dialog-confirmdialog-s.md#ConfirmDialog)、 [AlertDialog](arkts-arkui-arkui-advanced-dialog-alertdialog-s.md#AlertDialog)、&lt;/br&gt; [SelectDialog](arkts-arkui-arkui-advanced-dialog-selectdialog-s.md#SelectDialog)、 [CustomContentDialog](arkts-arkui-arkui-advanced-dialog-customcontentdialog-s.md#CustomContentDialog)、 [SubHeader](arkts-arkui-arkui-advanced-subheader-subheader-s.md#SubHeader)、&lt;/br&gt;AlphabetIndexer、 Popup、Button、&lt;/br&gt;Select、 ToolBar、Search、&lt;/br&gt;TimePicker、 DatePicker、TextPicker。从API版本26.0.0开始，新增RichEditor。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-fontEmphasize: ResourceColor--><!--Device-Colors-fontEmphasize: ResourceColor-End-->
 
@@ -556,15 +666,19 @@ fontEmphasize: ResourceColor
 fontFourth: ResourceColor
 ```
 
-四级文本字体颜色。\_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_影响组件：暂无组件使用。
+四级文本字体颜色。&lt;/br&gt;**影响组件：** 暂无组件使用。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-fontFourth: ResourceColor--><!--Device-Colors-fontFourth: ResourceColor-End-->
 
@@ -576,15 +690,19 @@ fontFourth: ResourceColor
 fontOnFourth: ResourceColor
 ```
 
-四级文本反转颜色，用于彩色背景。\_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_影响组件：暂无组件使用。
+四级文本反转颜色，用于彩色背景。&lt;/br&gt;**影响组件：** 暂无组件使用。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-fontOnFourth: ResourceColor--><!--Device-Colors-fontOnFourth: ResourceColor-End-->
 
@@ -596,15 +714,19 @@ fontOnFourth: ResourceColor
 fontOnPrimary: ResourceColor
 ```
 
-一级文本反转颜色，用于彩色背景。\_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_影响组件：[Badge]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_、 [Button]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_、[Chip]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_
+一级文本反转颜色，用于彩色背景。&lt;/br&gt;**影响组件：** [Badge](../../apis-na/arkts-apis/arkts-na-tabcontent-tabbaroptions-i.md#badge)、Button、 [Chip](../../apis-na/arkts-apis/arkts-na-arkui-advanced-chip-chip-f.md#Chip)
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-fontOnPrimary: ResourceColor--><!--Device-Colors-fontOnPrimary: ResourceColor-End-->
 
@@ -616,15 +738,19 @@ fontOnPrimary: ResourceColor
 fontOnSecondary: ResourceColor
 ```
 
-二级文本反转颜色，用于彩色背景。\_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_影响组件：暂无组件使用。
+二级文本反转颜色，用于彩色背景。&lt;/br&gt;**影响组件：** 暂无组件使用。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-fontOnSecondary: ResourceColor--><!--Device-Colors-fontOnSecondary: ResourceColor-End-->
 
@@ -636,15 +762,19 @@ fontOnSecondary: ResourceColor
 fontOnTertiary: ResourceColor
 ```
 
-三级文本反转颜色，用于彩色背景。\_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_影响组件：暂无组件使用。
+三级文本反转颜色，用于彩色背景。&lt;/br&gt;**影响组件：** 暂无组件使用。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-fontOnTertiary: ResourceColor--><!--Device-Colors-fontOnTertiary: ResourceColor-End-->
 
@@ -656,15 +786,19 @@ fontOnTertiary: ResourceColor
 fontPrimary: ResourceColor
 ```
 
-一级文本字体颜色。\_\_\_HTML\_TAG\_DESC\_USD\_30\_\_\_影响组件：[EditableTitleBar]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_、 [LoadingDialog]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_、 [TipsDialog]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_、\_\_\_HTML\_TAG\_DESC\_USD\_31\_\_\_ [ConfirmDialog]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_、 [AlertDialog]\_\_\_JSDOC\_LINK\_DESC\_USD\_4\_\_\_、 [SelectDialog]\_\_\_JSDOC\_LINK\_DESC\_USD\_5\_\_\_、\_\_\_HTML\_TAG\_DESC\_USD\_32\_\_\_ [CustomContentDialog]\_\_\_JSDOC\_LINK\_DESC\_USD\_6\_\_\_、 [Swiper]\_\_\_JSDOC\_LINK\_DESC\_USD\_7\_\_\_、[Text]\_\_\_JSDOC\_LINK\_DESC\_USD\_8\_\_\_、\_\_\_HTML\_TAG\_DESC\_USD\_33\_\_\_ [SubHeader]\_\_\_JSDOC\_LINK\_DESC\_USD\_9\_\_\_、[ProgressButton]\_\_\_JSDOC\_LINK\_DESC\_USD\_10\_\_\_、 [AlphabetIndexer]\_\_\_JSDOC\_LINK\_DESC\_USD\_11\_\_\_、\_\_\_HTML\_TAG\_DESC\_USD\_34\_\_\_ [Popup]\_\_\_JSDOC\_LINK\_DESC\_USD\_12\_\_\_、[Select]\_\_\_JSDOC\_LINK\_DESC\_USD\_13\_\_\_、 [Chip]\_\_\_JSDOC\_LINK\_DESC\_USD\_14\_\_\_、\_\_\_HTML\_TAG\_DESC\_USD\_35\_\_\_[ToolBar]\_\_\_JSDOC\_LINK\_DESC\_USD\_15\_\_\_、 [Menu]\_\_\_JSDOC\_LINK\_DESC\_USD\_16\_\_\_、[TextInput]\_\_\_JSDOC\_LINK\_DESC\_USD\_17\_\_\_、\_\_\_HTML\_TAG\_DESC\_USD\_36\_\_\_ [Search]\_\_\_JSDOC\_LINK\_DESC\_USD\_18\_\_\_、[TimePicker]\_\_\_JSDOC\_LINK\_DESC\_USD\_19\_\_\_、 [DatePicker]\_\_\_JSDOC\_LINK\_DESC\_USD\_20\_\_\_、\_\_\_HTML\_TAG\_DESC\_USD\_37\_\_\_ [TextPicker]\_\_\_JSDOC\_LINK\_DESC\_USD\_21\_\_\_、 [ComposeListItem]\_\_\_JSDOC\_LINK\_DESC\_USD\_22\_\_\_、[TreeView]\_\_\_JSDOC\_LINK\_DESC\_USD\_23\_\_\_。从 API版本26.0.0开始，新增[CalendarPicker]\_\_\_JSDOC\_LINK\_DESC\_USD\_24\_\_\_、 [UIPickerComponent]\_\_\_JSDOC\_LINK\_DESC\_USD\_25\_\_\_、 [RichEditor]\_\_\_JSDOC\_LINK\_DESC\_USD\_26\_\_\_、[MenuItem]\_\_\_JSDOC\_LINK\_DESC\_USD\_27\_\_\_、 [MenuItemGroup]\_\_\_JSDOC\_LINK\_DESC\_USD\_28\_\_\_、 [Counter]\_\_\_JSDOC\_LINK\_DESC\_USD\_29\_\_\_。
+一级文本字体颜色。&lt;/br&gt;**影响组件：** EditableTitleBar、 [LoadingDialog](arkts-arkui-arkui-advanced-dialog-loadingdialog-s.md#LoadingDialog)、 [TipsDialog](arkts-arkui-arkui-advanced-dialog-tipsdialog-s.md#TipsDialog)、&lt;/br&gt; [ConfirmDialog](arkts-arkui-arkui-advanced-dialog-confirmdialog-s.md#ConfirmDialog)、 [AlertDialog](arkts-arkui-arkui-advanced-dialog-alertdialog-s.md#AlertDialog)、 [SelectDialog](arkts-arkui-arkui-advanced-dialog-selectdialog-s.md#SelectDialog)、&lt;/br&gt; [CustomContentDialog](arkts-arkui-arkui-advanced-dialog-customcontentdialog-s.md#CustomContentDialog)、Swiper、 Text、&lt;/br&gt;[SubHeader](arkts-arkui-arkui-advanced-subheader-subheader-s.md#SubHeader)、 [ProgressButton](arkts-arkui-arkui-advanced-progressbutton-progressbuttoncoloroptions-i.md#ProgressButtonColorOptions)、AlphabetIndexer、&lt;/br&gt; Popup、Select、[Chip](../../apis-na/arkts-apis/arkts-na-arkui-advanced-chip-chip-f.md#Chip)、&lt;/br&gt; ToolBar、Menu、TextInput、&lt;/br&gt; Search、TimePicker、DatePicker、&lt;/br&gt; TextPicker、[ComposeListItem](arkts-arkui-arkui-advanced-composelistitem-composelistitem-s.md#ComposeListItem)、 [TreeView](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md#OnChangedCallback)。从API版本26.0.0开始，新增CalendarPicker、 UIPickerComponent、RichEditor、MenuItem、 MenuItemGroup、Counter。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-fontPrimary: ResourceColor--><!--Device-Colors-fontPrimary: ResourceColor-End-->
 
@@ -676,15 +810,19 @@ fontPrimary: ResourceColor
 fontSecondary: ResourceColor
 ```
 
-二级文本字体颜色。\_\_\_HTML\_TAG\_DESC\_USD\_13\_\_\_影响组件：[EditableTitleBar]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_、 [AlertDialog]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_、 [CustomContentDialog]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_、\_\_\_HTML\_TAG\_DESC\_USD\_14\_\_\_ [SubHeader]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_、 [AlphabetIndexer]\_\_\_JSDOC\_LINK\_DESC\_USD\_4\_\_\_、[Popup]\_\_\_JSDOC\_LINK\_DESC\_USD\_5\_\_\_、&lt;/ br&gt;[TextInput]\_\_\_JSDOC\_LINK\_DESC\_USD\_6\_\_\_、[Search]\_\_\_JSDOC\_LINK\_DESC\_USD\_7\_\_\_、 [ComposeListItem]\_\_\_JSDOC\_LINK\_DESC\_USD\_8\_\_\_、\_\_\_HTML\_TAG\_DESC\_USD\_15\_\_\_ [TreeView]\_\_\_JSDOC\_LINK\_DESC\_USD\_9\_\_\_、[TextClock]\_\_\_JSDOC\_LINK\_DESC\_USD\_10\_\_\_。从API版本26. 0.0开始，新增[MenuItem]\_\_\_JSDOC\_LINK\_DESC\_USD\_11\_\_\_、 [MenuItemGroup]\_\_\_JSDOC\_LINK\_DESC\_USD\_12\_\_\_。
+二级文本字体颜色。&lt;/br&gt;**影响组件：** EditableTitleBar、 [AlertDialog](arkts-arkui-arkui-advanced-dialog-alertdialog-s.md#AlertDialog)、 [CustomContentDialog](arkts-arkui-arkui-advanced-dialog-customcontentdialog-s.md#CustomContentDialog)、&lt;/br&gt; [SubHeader](arkts-arkui-arkui-advanced-subheader-subheader-s.md#SubHeader)、AlphabetIndexer、 Popup、&lt;/br&gt;TextInput、Search、 [ComposeListItem](arkts-arkui-arkui-advanced-composelistitem-composelistitem-s.md#ComposeListItem)、&lt;/br&gt; [TreeView](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md#OnChangedCallback)、TextClock。从API版本26.0.0开始，新增 MenuItem、MenuItemGroup。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-fontSecondary: ResourceColor--><!--Device-Colors-fontSecondary: ResourceColor-End-->
 
@@ -696,15 +834,19 @@ fontSecondary: ResourceColor
 fontTertiary: ResourceColor
 ```
 
-三级文本字体颜色。\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_影响组件：[ComposeListItem]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_
+三级文本字体颜色。&lt;/br&gt;**影响组件：** [ComposeListItem](arkts-arkui-arkui-advanced-composelistitem-composelistitem-s.md#ComposeListItem)
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-fontTertiary: ResourceColor--><!--Device-Colors-fontTertiary: ResourceColor-End-->
 
@@ -716,15 +858,19 @@ fontTertiary: ResourceColor
 iconEmphasize: ResourceColor
 ```
 
-高亮图标颜色。\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_影响组件：[ToolBar]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_
+高亮图标颜色。&lt;/br&gt;**影响组件：** ToolBar
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-iconEmphasize: ResourceColor--><!--Device-Colors-iconEmphasize: ResourceColor-End-->
 
@@ -736,15 +882,19 @@ iconEmphasize: ResourceColor
 iconFourth: ResourceColor
 ```
 
-四级图标颜色。\_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_影响组件：[Checkbox]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_、 [CheckboxGroup]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_、[Radio]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_
+四级图标颜色。&lt;/br&gt;**影响组件：** Checkbox、CheckboxGroup、Radio
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-iconFourth: ResourceColor--><!--Device-Colors-iconFourth: ResourceColor-End-->
 
@@ -756,15 +906,19 @@ iconFourth: ResourceColor
 iconOnFourth: ResourceColor
 ```
 
-四级图标反转颜色，用于彩色背景。\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_影响组件：[ProgressButton]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_
+四级图标反转颜色，用于彩色背景。&lt;/br&gt;**影响组件：** [ProgressButton](arkts-arkui-arkui-advanced-progressbutton-progressbuttoncoloroptions-i.md#ProgressButtonColorOptions)
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-iconOnFourth: ResourceColor--><!--Device-Colors-iconOnFourth: ResourceColor-End-->
 
@@ -776,15 +930,19 @@ iconOnFourth: ResourceColor
 iconOnPrimary: ResourceColor
 ```
 
-一级图标反转颜色，用于彩色背景。\_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_影响组件：[Checkbox]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_、 [CheckboxGroup]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_、[Radio]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_
+一级图标反转颜色，用于彩色背景。&lt;/br&gt;**影响组件：** Checkbox、CheckboxGroup、 Radio
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-iconOnPrimary: ResourceColor--><!--Device-Colors-iconOnPrimary: ResourceColor-End-->
 
@@ -796,15 +954,19 @@ iconOnPrimary: ResourceColor
 iconOnSecondary: ResourceColor
 ```
 
-二级图标反转颜色，用于彩色背景。\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_影响组件：[Chip]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_
+二级图标反转颜色，用于彩色背景。&lt;/br&gt;**影响组件：** [Chip](../../apis-na/arkts-apis/arkts-na-arkui-advanced-chip-chip-f.md#Chip)
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-iconOnSecondary: ResourceColor--><!--Device-Colors-iconOnSecondary: ResourceColor-End-->
 
@@ -816,15 +978,19 @@ iconOnSecondary: ResourceColor
 iconOnTertiary: ResourceColor
 ```
 
-三级图标反转颜色，用于彩色背景。\_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_影响组件：暂无组件使用。
+三级图标反转颜色，用于彩色背景。&lt;/br&gt;**影响组件：** 暂无组件使用。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-iconOnTertiary: ResourceColor--><!--Device-Colors-iconOnTertiary: ResourceColor-End-->
 
@@ -836,15 +1002,19 @@ iconOnTertiary: ResourceColor
 iconPrimary: ResourceColor
 ```
 
-一级图标颜色。\_\_\_HTML\_TAG\_DESC\_USD\_5\_\_\_影响组件：[EditableTitleBar]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_、 [Swiper]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_、[ToolBar]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_、\_\_\_HTML\_TAG\_DESC\_USD\_6\_\_\_ [TreeView]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_。从API版本26.0.0开始，新增 [MenuItem]\_\_\_JSDOC\_LINK\_DESC\_USD\_4\_\_\_。
+一级图标颜色。&lt;/br&gt;**影响组件：** EditableTitleBar、Swiper、 ToolBar、&lt;/br&gt;[TreeView](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md#OnChangedCallback)。从API版本26.0.0开 始，新增MenuItem。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-iconPrimary: ResourceColor--><!--Device-Colors-iconPrimary: ResourceColor-End-->
 
@@ -856,15 +1026,19 @@ iconPrimary: ResourceColor
 iconSecondary: ResourceColor
 ```
 
-二级图标颜色。\_\_\_HTML\_TAG\_DESC\_USD\_7\_\_\_影响组件：[LoadingDialog]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_、 [SubHeader]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_、\_\_\_HTML\_TAG\_DESC\_USD\_8\_\_\_[Popup]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_、 [Chip]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_、[Search]\_\_\_JSDOC\_LINK\_DESC\_USD\_4\_\_\_、\_\_\_HTML\_TAG\_DESC\_USD\_9\_\_\_ [TreeView]\_\_\_JSDOC\_LINK\_DESC\_USD\_5\_\_\_。从API版本26.0.0开始，新增 [LoadingProgress]\_\_\_JSDOC\_LINK\_DESC\_USD\_6\_\_\_。
+二级图标颜色。&lt;/br&gt;**影响组件：** [LoadingDialog](arkts-arkui-arkui-advanced-dialog-loadingdialog-s.md#LoadingDialog)、 [SubHeader](arkts-arkui-arkui-advanced-subheader-subheader-s.md#SubHeader)、&lt;/br&gt;Popup、 [Chip](../../apis-na/arkts-apis/arkts-na-arkui-advanced-chip-chip-f.md#Chip)、Search、&lt;/br&gt; [TreeView](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md#OnChangedCallback)。从API版本26.0.0开始，新增LoadingProgress。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-iconSecondary: ResourceColor--><!--Device-Colors-iconSecondary: ResourceColor-End-->
 
@@ -876,15 +1050,19 @@ iconSecondary: ResourceColor
 iconSubEmphasize: ResourceColor
 ```
 
-高亮辅助图标颜色。\_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_影响组件：暂无组件使用。
+高亮辅助图标颜色。&lt;/br&gt;**影响组件：** 暂无组件使用。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-iconSubEmphasize: ResourceColor--><!--Device-Colors-iconSubEmphasize: ResourceColor-End-->
 
@@ -896,15 +1074,19 @@ iconSubEmphasize: ResourceColor
 iconTertiary: ResourceColor
 ```
 
-三级图标颜色。\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_影响组件：[SubHeader]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_
+三级图标颜色。&lt;/br&gt;**影响组件：** [SubHeader](arkts-arkui-arkui-advanced-subheader-subheader-s.md#SubHeader)
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-iconTertiary: ResourceColor--><!--Device-Colors-iconTertiary: ResourceColor-End-->
 
@@ -916,15 +1098,19 @@ iconTertiary: ResourceColor
 interactiveActive: ResourceColor
 ```
 
-通用激活交互式颜色。\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_影响组件：[TreeView]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_
+通用激活交互式颜色。&lt;/br&gt;**影响组件：** [TreeView](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md#OnChangedCallback)
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-interactiveActive: ResourceColor--><!--Device-Colors-interactiveActive: ResourceColor-End-->
 
@@ -936,15 +1122,19 @@ interactiveActive: ResourceColor
 interactiveClick: ResourceColor
 ```
 
-通用点击交互式颜色。\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_影响组件：从API版本26.0.0开始，新增[MenuItem]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_、 [Select]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_。
+通用点击交互式颜色。&lt;/br&gt;**影响组件：** 从API版本26.0.0开始，新增MenuItem、Select。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-interactiveClick: ResourceColor--><!--Device-Colors-interactiveClick: ResourceColor-End-->
 
@@ -956,15 +1146,19 @@ interactiveClick: ResourceColor
 interactiveFocus: ResourceColor
 ```
 
-通用获焦交互式颜色。\_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_影响组件：[EditableTitleBar]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_、 [Chip]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_、[TreeView]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_
+通用获焦交互式颜色。&lt;/br&gt;**影响组件：** EditableTitleBar、 [Chip](../../apis-na/arkts-apis/arkts-na-arkui-advanced-chip-chip-f.md#Chip)、[TreeView](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md#OnChangedCallback)
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-interactiveFocus: ResourceColor--><!--Device-Colors-interactiveFocus: ResourceColor-End-->
 
@@ -976,15 +1170,19 @@ interactiveFocus: ResourceColor
 interactiveHover: ResourceColor
 ```
 
-通用悬停交互式颜色。\_\_\_HTML\_TAG\_DESC\_USD\_6\_\_\_影响组件：[EditableTitleBar]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_、 [Chip]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_、[TreeView]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_。从API版本26.0.0开始，新增 [RichEditor]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_、[MenuItem]\_\_\_JSDOC\_LINK\_DESC\_USD\_4\_\_\_、 [Select]\_\_\_JSDOC\_LINK\_DESC\_USD\_5\_\_\_。
+通用悬停交互式颜色。&lt;/br&gt;**影响组件：** EditableTitleBar、 [Chip](../../apis-na/arkts-apis/arkts-na-arkui-advanced-chip-chip-f.md#Chip)、[TreeView](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md#OnChangedCallback)。从API版本26.0.0开始，新增 RichEditor、MenuItem、Select。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-interactiveHover: ResourceColor--><!--Device-Colors-interactiveHover: ResourceColor-End-->
 
@@ -996,15 +1194,19 @@ interactiveHover: ResourceColor
 interactivePressed: ResourceColor
 ```
 
-通用按压交互式颜色。\_\_\_HTML\_TAG\_DESC\_USD\_4\_\_\_影响组件：[EditableTitleBar]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_、 [Chip]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_、[TreeView]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_。从API版本26.0.0开始，新增 [RichEditor]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_。
+通用按压交互式颜色。&lt;/br&gt;**影响组件：** EditableTitleBar、 [Chip](../../apis-na/arkts-apis/arkts-na-arkui-advanced-chip-chip-f.md#Chip)、[TreeView](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md#OnChangedCallback)。从API版本26.0.0开始，新增 RichEditor。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-interactivePressed: ResourceColor--><!--Device-Colors-interactivePressed: ResourceColor-End-->
 
@@ -1016,15 +1218,19 @@ interactivePressed: ResourceColor
 interactiveSelect: ResourceColor
 ```
 
-通用选择交互式颜色。\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_影响组件：[TreeView]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_
+通用选择交互式颜色。&lt;/br&gt;**影响组件：** [TreeView](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md#OnChangedCallback)
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-interactiveSelect: ResourceColor--><!--Device-Colors-interactiveSelect: ResourceColor-End-->
 
@@ -1038,13 +1244,17 @@ onPrimary?: ResourceColor
 
 系统主题反色的颜色值。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-onPrimary?: ResourceColor--><!--Device-Colors-onPrimary?: ResourceColor-End-->
 
@@ -1058,13 +1268,17 @@ primary?: ResourceColor
 
 系统主色。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-primary?: ResourceColor--><!--Device-Colors-primary?: ResourceColor-End-->
 
@@ -1076,15 +1290,19 @@ primary?: ResourceColor
 warning: ResourceColor
 ```
 
-一级警示色。\_\_\_HTML\_TAG\_DESC\_USD\_5\_\_\_影响组件：[TipsDialog]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_、 [AlertDialog]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_、 [CustomContentDialog]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_、\_\_\_HTML\_TAG\_DESC\_USD\_6\_\_\_ [Badge]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_、[Button]\_\_\_JSDOC\_LINK\_DESC\_USD\_4\_\_\_
+一级警示色。&lt;/br&gt;**影响组件：** [TipsDialog](arkts-arkui-arkui-advanced-dialog-tipsdialog-s.md#TipsDialog)、 [AlertDialog](arkts-arkui-arkui-advanced-dialog-alertdialog-s.md#AlertDialog)、 [CustomContentDialog](arkts-arkui-arkui-advanced-dialog-customcontentdialog-s.md#CustomContentDialog)、&lt;/br&gt;[Badge](../../apis-na/arkts-apis/arkts-na-tabcontent-tabbaroptions-i.md#badge)、 Button
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Colors-warning: ResourceColor--><!--Device-Colors-warning: ResourceColor-End-->
 

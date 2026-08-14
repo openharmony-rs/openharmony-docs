@@ -10,7 +10,9 @@ Unregister Session service death callback, notifying the application to clean up
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-avSession-function offSessionServiceDie(callback?: NoParamCallback): void--><!--Device-avSession-function offSessionServiceDie(callback?: NoParamCallback): void-End-->
 
@@ -22,16 +24,16 @@ Unregister Session service death callback, notifying the application to clean up
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | Used to unregister listener for ('sessionServiceDie') command. |
+| callback | [NoParamCallback](arkts-avsession-avsession-noparamcallback-t.md) | 否 | Used to unregister listener for ('sessionServiceDie') command. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 avSession.offSessionServiceDie();

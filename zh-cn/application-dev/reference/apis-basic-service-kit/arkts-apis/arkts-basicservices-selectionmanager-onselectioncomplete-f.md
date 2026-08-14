@@ -6,11 +6,13 @@
 function onSelectionComplete(callback: Callback<SelectionInfo>): void
 ```
 
-订阅划词完成事件。使用callback异步回调。
+订阅划词完成事件，与[offSelectionComplete](arkts-basicservices-selectionmanager-offselectioncomplete-f.md#offSelectionComplete)搭配 使用取消订阅。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -22,7 +24,7 @@ function onSelectionComplete(callback: Callback<SelectionInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;SelectionInfo&gt; | 是 | 回调函数，返回当前划词信息。该回调仅在用户通过鼠标或触控板选中文本（鼠标左键双击/三击/按下滑动）后按下Ctrl键时触发。 |
+| callback | [Callback](arkts-basicservices-callback-t.md)&lt;[SelectionInfo](arkts-basicservices-selectionmanager-selectioninfo-i-sys.md)&gt; | 是 | 回调函数，返回划词事件信息[SelectionInfo](arkts-basicservices-selectionmanager-selectioninfo-i-sys.md#SelectionInfo（系统接口）)。该回 调仅在用户通过鼠标或触控板选中文本（双击/三击/滑动）后按下Ctrl键时触发。 |
 
 **错误码：**
 
@@ -30,7 +32,7 @@ function onSelectionComplete(callback: Callback<SelectionInfo>): void
 | --- | --- |
 | [33600003](../../apis-basic-services-kit/errorcode-selection.md#33600003-调用接口的应用与系统设置中选择的应用不匹配) | The application calling the API does not match the application selected in the system settings. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import selectionManager from '@ohos.selectionInput.selectionManager';

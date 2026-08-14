@@ -14,3 +14,14 @@ typedef struct OH_Drawing_Point3D {...} OH_Drawing_Point3D
 
 **所在头文件：** [drawing_types.h](capi-drawing-types-h.md)
 
+## 汇总
+
+### 成员变量
+
+| 名称 | 描述 |
+| -- | -- |
+| float x | x轴坐标。<br>**起始版本：** 12 |
+| float y | y轴坐标。<br>**起始版本：** 12 |
+| float z | z轴坐标。<br>**起始版本：** 12 |
+
+

@@ -10,6 +10,8 @@ export type OnSubmitCallback = (enterKey: EnterKeyType, event: SubmitEvent) => v
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-export type OnSubmitCallback = (enterKey: EnterKeyType, event: SubmitEvent) => void--><!--Device-unnamed-export type OnSubmitCallback = (enterKey: EnterKeyType, event: SubmitEvent) => void-End-->
@@ -20,6 +22,6 @@ export type OnSubmitCallback = (enterKey: EnterKeyType, event: SubmitEvent) => v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enterKey | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 输入法回车键类型。  |
-| event | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 提交事件。可以控制是否收起键盘。  |
+| enterKey | [EnterKeyType](arkts-arkui-textinput-enterkeytype-e.md) | 是 | 输入法回车键类型。 |
+| event | [SubmitEvent](arkts-arkui-textinput-submitevent-i.md) | 是 | 提交事件。可以控制是否收起键盘。 |
 

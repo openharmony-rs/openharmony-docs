@@ -14,7 +14,7 @@ function publish(request: NotificationRequest, callback: AsyncCallback<void>): v
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager#publish
+**替代接口：** [publish](arkts-notification-notificationmanager-publish-f.md#publish)
 
 <!--Device-notification-function publish(request: NotificationRequest, callback: AsyncCallback<void>): void--><!--Device-notification-function publish(request: NotificationRequest, callback: AsyncCallback<void>): void-End-->
 
@@ -24,8 +24,8 @@ function publish(request: NotificationRequest, callback: AsyncCallback<void>): v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| request | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 用于设置要发布通知的内容和相关配置信息。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 发布通知的回调方法。 |
+| request | [NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md) | 是 | 用于设置要发布通知的内容和相关配置信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 发布通知的回调方法。 |
 
 
 ## publish
@@ -42,7 +42,7 @@ function publish(request: NotificationRequest): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager#publish
+**替代接口：** [publish](arkts-notification-notificationmanager-publish-f.md#publish)
 
 <!--Device-notification-function publish(request: NotificationRequest): Promise<void>--><!--Device-notification-function publish(request: NotificationRequest): Promise<void>-End-->
 
@@ -52,7 +52,7 @@ function publish(request: NotificationRequest): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| request | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 用于设置要发布通知的内容和相关配置信息。 |
+| request | [NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md) | 是 | 用于设置要发布通知的内容和相关配置信息。 |
 
 **返回值：**
 

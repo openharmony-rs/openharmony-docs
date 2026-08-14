@@ -1,10 +1,12 @@
 # XmlPullParser
 
-XmlPullParser接口用于解析现有的XML文件。
+XmlPullParser接口用于解析现有的XML文件，适用于对XML文本进行随机访问和灵活解析的场景。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-xml-class XmlPullParser--><!--Device-xml-class XmlPullParser-End-->
 
@@ -18,9 +20,11 @@ constructor(buffer: ArrayBuffer | DataView, encoding?: string)
 
 构造并返回一个XmlPullParser对象。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -32,10 +36,10 @@ constructor(buffer: ArrayBuffer | DataView, encoding?: string)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| buffer | ArrayBuffer \| DataView | 是 | 用于解析的XML文本信息。 |
+| buffer | ArrayBuffer \| DataView | 是 | 用于解析的XML文本数据所在的ArrayBuffer或DataView内存。 |
 | encoding | string | 否 | 编码格式，默认'utf-8'（目前仅支持'utf-8'）。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { util } from '@kit.ArkTS';
@@ -52,7 +56,7 @@ let xmlParser = new xml.XmlPullParser(uint8Array.buffer as object as ArrayBuffer
 parse(option: ParseOptions): void
 ```
 
-该接口用于解析XML。
+该接口用于根据指定的解析选项解析XML文本。
 
 **起始版本：** 8
 
@@ -60,7 +64,7 @@ parse(option: ParseOptions): void
 
 **废弃版本：** 14
 
-**替代接口：** ohos.xml.XmlPullParser.parseXml
+**替代接口：** [parseXml](#parseXml)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -72,9 +76,9 @@ parse(option: ParseOptions): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| option | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | XML解析选项。 |
+| option | ParseOptions | 是 | XML解析选项。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { util } from '@kit.ArkTS';
@@ -112,13 +116,15 @@ that.parse(options);
 parseXml(option: ParseOptions): void
 ```
 
-解析XML。
+解析XML，调用后将根据ParseOptions中配置的回调函数触发相应的解析事件，通过回调函数传递标签、属性、文本等解析信息。
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-XmlPullParser-parseXml(option: ParseOptions): void--><!--Device-XmlPullParser-parseXml(option: ParseOptions): void-End-->
 
@@ -128,5 +134,5 @@ parseXml(option: ParseOptions): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| option | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | XML解析选项。 |
+| option | ParseOptions | 是 | XML解析选项。 |
 

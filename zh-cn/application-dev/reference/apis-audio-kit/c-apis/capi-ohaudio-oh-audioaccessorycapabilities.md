@@ -6,7 +6,7 @@ typedef struct OH_AudioAccessoryCapabilities {...} OH_AudioAccessoryCapabilities
 
 ## 概述
 
-定义音频配件的能力。<b>Version Control:</b>调用方必须将structSize设置为sizeof(OH_AudioAccessoryCapability)。
+定义音频配件的能力。<br><b>版本控制：</b>调用方必须将structSize设置为sizeof(OH_AudioAccessoryCapabilities)。
 
 **起始版本：** 26.0.0
 
@@ -20,8 +20,8 @@ typedef struct OH_AudioAccessoryCapabilities {...} OH_AudioAccessoryCapabilities
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t structSize | 此结构的大小（以字节为单位）。必须由调用者初始化（例如，caps.structSize=sizeof(OH_AudioAccessoryCapability）)。<br>**起始版本：** 26.0.0 |
-| const [OH_AudioStreamInfo](capi-ohaudio-oh-audiostreaminfo.md) *streamProperties | 支持的流配置数组。每个条目代表一个有效的采样速率组合，格式和通道数。框架执行此数组的深拷贝。<br>**起始版本：** 26.0.0 |
-| uint32_t streamPropertyCount | 支持的码流配置个数。<br>**起始版本：** 26.0.0 |
+| uint32_t structSize | 结构体大小，单位为字节。<br> 调用方必须初始化此字段（例如：caps.structSize = sizeof(OH_AudioAccessoryCapabilities)）。<br>**起始版本：** 26.0.0 |
+| const [OH_AudioStreamInfo](capi-ohaudio-oh-audiostreaminfo.md) *streamProperties | 支持的音频流配置数组。<br> 每个条目表示采样率、采样格式和声道数的有效组合。框架会对此数组进行深拷贝。<br>**起始版本：** 26.0.0 |
+| uint32_t streamPropertyCount | 支持的音频流配置数量。<br>**起始版本：** 26.0.0 |
 
 

@@ -6,7 +6,7 @@ typedef struct OH_AudioAccessoryNoiseReductionCapability {...} OH_AudioAccessory
 
 ## 概述
 
-定义音频配件的降噪能力。
+定义音频配件的降噪能力。<br>
 
 **起始版本：** 26.0.0
 
@@ -20,9 +20,9 @@ typedef struct OH_AudioAccessoryNoiseReductionCapability {...} OH_AudioAccessory
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t structSize | 此结构的大小（以字节为单位）。必须由调用者初始化（例如，info.structSize=sizeof(OH_AudioAccessoryNoiseReduceCapability）)。框架使用它来确定使用的是哪个版本的结构。<br>**起始版本：** 26.0.0 |
+| uint32_t structSize | 结构体大小，单位为字节。<br> 调用方必须初始化此字段（例如：info.structSize = sizeof(OH_AudioAccessoryNoiseReductionCapability)）。框架通过此字段判断所使用的结构体版本。<br>**起始版本：** 26.0.0 |
 | const OH_AudioNoiseReductionMode *supportedModes | 支持的降噪模式数组。<br>**起始版本：** 26.0.0 |
-| uint32_t supportedModeCount | 支持的降噪模式个数。<br>**起始版本：** 26.0.0 |
-| OH_AudioNoiseReductionMode currentMode | 设备当前的降噪模式。这表示功能注册时的初始状态。<br>**起始版本：** 26.0.0 |
+| uint32_t supportedModeCount | 支持的降噪模式数量。<br>**起始版本：** 26.0.0 |
+| OH_AudioNoiseReductionMode currentMode | 设备当前降噪模式。<br> 表示注册能力时的初始状态。<br>**起始版本：** 26.0.0 |
 
 

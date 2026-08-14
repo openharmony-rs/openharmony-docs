@@ -10,6 +10,8 @@ export type OnPasteCallback = (content: string, event: PasteEvent) => void
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-export type OnPasteCallback = (content: string, event: PasteEvent) => void--><!--Device-unnamed-export type OnPasteCallback = (content: string, event: PasteEvent) => void-End-->
@@ -20,6 +22,6 @@ export type OnPasteCallback = (content: string, event: PasteEvent) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | string | 是 | 粘贴的文本内容。  |
-| event | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 用户自定义的粘贴事件。  |
+| content | string | 是 | 粘贴的文本内容。 |
+| event | [PasteEvent](arkts-arkui-richeditor-pasteevent-i.md) | 是 | 用户自定义的粘贴事件。 |
 

@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface PageTransitionOptions--><!--Device-unnamed-declare interface PageTransitionOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -16,7 +18,7 @@
 curve?: Curve | string | ICurve
 ```
 
-动画曲线。 推荐以Curve或ICurve形式指定。 当类型为string时，为动画插值曲线，取值参考 \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_的curve参数。 默认值：Curve.Linear
+动画曲线。 推荐以Curve或ICurve形式指定。 当类型为string时，为动画插值曲线，取值参考 [AnimateParam](../../../reference/apis-arkui/arkui-ts/ts-explicit-animation.md#animateparam对象说明)的curve参数。 默认值：Curve.Linear
 
 **类型：** Curve \| string \| ICurve
 
@@ -25,6 +27,8 @@ curve?: Curve | string | ICurve
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -48,6 +52,8 @@ delay?: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PageTransitionOptions-delay?: number--><!--Device-PageTransitionOptions-delay?: number-End-->
@@ -68,6 +74,8 @@ duration?: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PageTransitionOptions-duration?: number--><!--Device-PageTransitionOptions-duration?: number-End-->
@@ -82,11 +90,13 @@ type?: RouteType
 
 页面转场效果生效的路由类型。 默认值：RouteType.None。
 
-**类型：** RouteType
+**类型：** [RouteType](arkts-arkui-routetype-e.md)
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

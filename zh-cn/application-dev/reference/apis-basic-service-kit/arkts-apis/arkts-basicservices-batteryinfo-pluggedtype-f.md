@@ -12,6 +12,8 @@ function pluggedType(): BatteryPluggedType
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-batteryInfo-function pluggedType(): BatteryPluggedType--><!--Device-batteryInfo-function pluggedType(): BatteryPluggedType-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
@@ -20,5 +22,13 @@ function pluggedType(): BatteryPluggedType
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回当前设备连接的充电器类型。 |
+| [BatteryPluggedType](arkts-basicservices-batteryinfo-batterypluggedtype-e.md) | 返回当前设备连接的充电器类型。 |
+
+## 示例
+
+```TypeScript
+// ArkTS-Sta示例
+let result = batteryInfo.pluggedType();
+console.info("The result is: " + result);
+```
 

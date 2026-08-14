@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface PluginComponentOptions--><!--Device-unnamed-declare interface PluginComponentOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -26,6 +28,8 @@ data: any
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 <!--Device-PluginComponentOptions-data: any--><!--Device-PluginComponentOptions-data: any-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -40,11 +44,13 @@ template: PluginComponentTemplate
 
 插件组件模板。
 
-**类型：** PluginComponentTemplate
+**类型：** [PluginComponentTemplate](arkts-arkui-plugincomponenttemplate-i-sys.md)
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 <!--Device-PluginComponentOptions-template: PluginComponentTemplate--><!--Device-PluginComponentOptions-template: PluginComponentTemplate-End-->
 

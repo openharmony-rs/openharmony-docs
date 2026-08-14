@@ -1,14 +1,16 @@
 # CheckBoxGroupConfiguration
 
-开发者必须自定义此类以实现ContentModifier接口，使用方法见[contentModifier]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+开发者必须自定义此类以实现ContentModifier接口，使用方法见contentModifier。
 
-**继承/实现关系：** CheckBoxGroupConfiguration extends [CommonConfiguration<CheckBoxGroupConfiguration>](CommonConfiguration<CheckBoxGroupConfiguration>)
+**继承/实现关系：** CheckBoxGroupConfiguration extends CommonConfiguration<CheckBoxGroupConfiguration>
 
 **起始版本：** 21
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
 
-<!--Device-unnamed-declare interface CheckBoxGroupConfiguration extends CommonConfiguration<CheckBoxGroupConfiguration>--><!--Device-unnamed-declare interface CheckBoxGroupConfiguration extends CommonConfiguration<CheckBoxGroupConfiguration>-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare interface CheckBoxGroupConfiguration--><!--Device-unnamed-declare interface CheckBoxGroupConfiguration-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -26,6 +28,8 @@ name: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
@@ -42,11 +46,13 @@ status: SelectStatus
 
 表示多选框群组的选中状态。
 
-**类型：** SelectStatus
+**类型：** [SelectStatus](arkts-arkui-selectstatus-e.md)
 
 **起始版本：** 21
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -69,6 +75,8 @@ triggerChange: Callback<boolean>
 **起始版本：** 21
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

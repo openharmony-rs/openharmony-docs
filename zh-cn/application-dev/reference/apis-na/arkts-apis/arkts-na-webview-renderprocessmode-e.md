@@ -6,6 +6,8 @@ Defines the render process mode.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-webview-enum RenderProcessMode--><!--Device-webview-enum RenderProcessMode-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -22,6 +24,8 @@ ArkWeb single rendering subprocess mode. In this mode, multiple Web pages reuse 
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-RenderProcessMode-SINGLE = 0--><!--Device-RenderProcessMode-SINGLE = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -37,6 +41,8 @@ ArkWeb multi-rendering subprocess mode. In this mode, there is one rendering sub
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-RenderProcessMode-MULTIPLE--><!--Device-RenderProcessMode-MULTIPLE-End-->
 

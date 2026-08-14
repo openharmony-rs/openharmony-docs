@@ -1,0 +1,50 @@
+# offCommunicationStateChange
+
+## offCommunicationStateChange
+
+```TypeScript
+function offCommunicationStateChange(callback: Callback<boolean>, options?: ObserverOptions): void
+```
+
+取消订阅5A网络状态变化事件，使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
+
+**需要权限：** ohos.permission.GET_NETWORK_INFO
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-observer-function offCommunicationStateChange(callback: Callback<boolean>, options?: ObserverOptions): void--><!--Device-observer-function offCommunicationStateChange(callback: Callback<boolean>, options?: ObserverOptions): void-End-->
+
+**系统能力：** SystemCapability.Telephony.StateRegistry
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示5A状态为使能态；返回false表示5A状态为非使能态。 |
+| options | ObserverOptions | 否 | 电话相关事件订阅参数可选项，指定事件订阅的卡槽ID，默认为当前默认数据卡槽ID。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+
+## 示例
+
+```TypeScript
+let options: observer.ObserverOptions = {
+    slotId: 0
+}
+let callback: Callback<boolean> = (isCommunicationStateOn: boolean) => {
+    console.info(`communicationStateChanged ${JSON.stringify(isCommunicationStateOn)}`);
+}
+observer.onCommunicationStateChange(callback, options);
+observer.offCommunicationStateChange(callback, options);
+```
+

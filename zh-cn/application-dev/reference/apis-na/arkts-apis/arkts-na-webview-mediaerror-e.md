@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-webview-enum MediaError--><!--Device-webview-enum MediaError-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -21,6 +23,8 @@ NETWORK_ERROR = 1
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-MediaError-NETWORK_ERROR = 1--><!--Device-MediaError-NETWORK_ERROR = 1-End-->
 
@@ -38,6 +42,8 @@ FORMAT_ERROR = 2
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-MediaError-FORMAT_ERROR = 2--><!--Device-MediaError-FORMAT_ERROR = 2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -53,6 +59,8 @@ DECODE_ERROR = 3
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-MediaError-DECODE_ERROR = 3--><!--Device-MediaError-DECODE_ERROR = 3-End-->
 

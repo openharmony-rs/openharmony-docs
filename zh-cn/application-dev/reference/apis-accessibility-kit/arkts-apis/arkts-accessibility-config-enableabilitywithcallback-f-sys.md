@@ -6,11 +6,13 @@
 function enableAbilityWithCallback(name: string, capability: Array<accessibility.Capability>, connectCallback: ConnectCallback): Promise<void>
 ```
 
-启用辅助扩展，并指定[ConnectCallback]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_作为辅助扩展应用状态变化的回调函数。使用Promise异步回调。
+启用辅助扩展，并指定[ConnectCallback](arkts-accessibility-config-connectcallback-i-sys.md#ConnectCallback（系统接口）)作为辅助扩展应用状态变化的回调函数。使用Promise异步回调。
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.WRITE_ACCESSIBILITY_CONFIG
 
@@ -28,7 +30,7 @@ function enableAbilityWithCallback(name: string, capability: Array<accessibility
 | --- | --- | --- | --- |
 | name | string | 是 | 辅助扩展应用的名称，格式为：'bundleName/abilityName'。 |
 | capability | Array&lt;accessibility.Capability&gt; | 是 | 辅助扩展应用的能力属性。 |
-| connectCallback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 辅助扩展应用的状态发生变化时调用的回调函数。 |
+| connectCallback | [ConnectCallback](arkts-accessibility-config-connectcallback-i-sys.md) | 是 | 辅助扩展应用的状态发生变化时调用的回调函数。 |
 
 **返回值：**
 
@@ -40,12 +42,12 @@ function enableAbilityWithCallback(name: string, capability: Array<accessibility
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [9300001](../errorcode-accessibility.md#9300001-输入无效的包名称或者ability名称) | Invalid bundle name or ability name. |
 | [9300002](../errorcode-accessibility.md#9300002-目标ability已启用) | Target ability already enabled. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { accessibility, config } from '@kit.AccessibilityKit';

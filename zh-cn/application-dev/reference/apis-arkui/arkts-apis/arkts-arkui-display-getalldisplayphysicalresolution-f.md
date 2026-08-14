@@ -8,11 +8,13 @@ function getAllDisplayPhysicalResolution(): Promise<Array<DisplayPhysicalResolut
 
 获取当前设备支持的所有显示模式及其对应的物理屏幕分辨率信息对象。使用Promise异步回调。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-display-function getAllDisplayPhysicalResolution(): Promise<Array<DisplayPhysicalResolution>>--><!--Device-display-function getAllDisplayPhysicalResolution(): Promise<Array<DisplayPhysicalResolution>>-End-->
 
@@ -22,7 +24,7 @@ function getAllDisplayPhysicalResolution(): Promise<Array<DisplayPhysicalResolut
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;DisplayPhysicalResolution&gt;&gt; | Promise对象。返回当前所有的DisplayPhysicalResolution对象，对象数组内按物理屏幕分辨率信息从低到高的顺序排列。 |
+| Promise&lt;Array&lt;[DisplayPhysicalResolution](arkts-arkui-display-displayphysicalresolution-i.md)&gt;&gt; | Promise对象。返回当前所有的DisplayPhysicalResolution对象，对象数组内按物理屏幕分辨率信息从低到高的顺序排列。 |
 
 **错误码：**
 
@@ -30,7 +32,7 @@ function getAllDisplayPhysicalResolution(): Promise<Array<DisplayPhysicalResolut
 | --- | --- |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

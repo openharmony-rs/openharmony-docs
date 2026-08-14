@@ -1,10 +1,12 @@
 # Type
 
-Type表示base64的四种不同编码格式。
+Base64 编码格式枚举。
 
-**起始版本：** 23
+**起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 <!--Device-util-enum Type--><!--Device-util-enum Type-End-->
 
@@ -13,64 +15,80 @@ Type表示base64的四种不同编码格式。
 ## BASIC
 
 ```TypeScript
-BASIC
+BASIC = 0
 ```
 
-表示base64的编码格式为BASIC
+基本格式。 从 API version 11 开始，该接口支持在原子化服务中使用。
 
-**起始版本：** 23
+**起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
-<!--Device-Type-BASIC--><!--Device-Type-BASIC-End-->
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Type-BASIC = 0--><!--Device-Type-BASIC = 0-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
 ## MIME
 
 ```TypeScript
-MIME
+MIME = 1
 ```
 
-表示base64的编码格式为MIME
+MIME 格式。 从 API version 11 开始，该接口支持在原子化服务中使用。
 
-**起始版本：** 23
+**起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
-<!--Device-Type-MIME--><!--Device-Type-MIME-End-->
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Type-MIME = 1--><!--Device-Type-MIME = 1-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
 ## BASIC_URL_SAFE
 
 ```TypeScript
-BASIC_URL_SAFE
+BASIC_URL_SAFE = 2
 ```
 
-表示base64的编码格式为BASIC\_URL\_SAFE
+BASIC_URL_SAFE 格式。 该值从 API version 12 开始支持。 从 API version 12 开始，该接口支持在原子化服务中使用。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-<!--Device-Type-BASIC_URL_SAFE--><!--Device-Type-BASIC_URL_SAFE-End-->
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Type-BASIC_URL_SAFE = 2--><!--Device-Type-BASIC_URL_SAFE = 2-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
 ## MIME_URL_SAFE
 
 ```TypeScript
-MIME_URL_SAFE
+MIME_URL_SAFE = 3
 ```
 
-表示base64的编码格式为MIME\_URL\_SAFE
+MIME_URL_SAFE 格式。 该值从 API version 12 开始支持。 从 API version 12 开始，该接口支持在原子化服务中使用。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-<!--Device-Type-MIME_URL_SAFE--><!--Device-Type-MIME_URL_SAFE-End-->
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Type-MIME_URL_SAFE = 3--><!--Device-Type-MIME_URL_SAFE = 3-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 

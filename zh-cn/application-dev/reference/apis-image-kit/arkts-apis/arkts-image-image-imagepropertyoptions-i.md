@@ -2,9 +2,11 @@
 
 表示查询图片属性的索引。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-image-interface ImagePropertyOptions--><!--Device-image-interface ImagePropertyOptions-End-->
 
@@ -20,9 +22,11 @@ defaultValue?: string
 
 **类型：** string
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ImagePropertyOptions-defaultValue?: string--><!--Device-ImagePropertyOptions-defaultValue?: string-End-->
 
@@ -38,9 +42,11 @@ index?: int
 
 **类型：** int
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ImagePropertyOptions-index?: int--><!--Device-ImagePropertyOptions-index?: int-End-->
 

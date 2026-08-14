@@ -1,10 +1,12 @@
 # BadgeStyle
 
-Badge的样式。包括文本颜色、大小、字重、标记颜色和标记大小。 > **说明：** > > 当\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_大于0且\_\_\_INLINE\_CODE\_DESC\_USD\_1\_\_\_与\_\_\_INLINE\_CODE\_DESC\_USD\_2\_\_\_颜色不一致时，先绘制角标，再绘制描边。由于边缘像素经过抗锯齿处理，抗锯齿产生半透明像素，四角会出现 \_\_\_INLINE\_CODE\_DESC\_USD\_3\_\_\_ 颜色的描边线。如 > 需实现相关场景，建议使用[Text]\_\_\_JSDOC\_LINK\_DESC\_USD\_4\_\_\_组件设置[outline]\_\_\_JSDOC\_LINK\_DESC\_USD\_5\_\_\_代替Badge组件。
+Badge的样式。包括文本颜色、大小、字重、标记颜色和标记大小。 > **说明：** > > 当`borderWidth`大于0且`borderColor`与`badgeColor`颜色不一致时，先绘制角标，再绘制描边。由于边缘像素经过抗锯齿处理，抗锯齿产生半透明像素，四角会出现 `badgeColor` 颜色的描边线。如 > 需实现相关场景，建议使用Text组件设置outline代替Badge组件。
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare interface BadgeStyle--><!--Device-unnamed-declare interface BadgeStyle-End-->
 
@@ -25,6 +27,8 @@ Badge的颜色。 默认值：Color.Red
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -50,6 +54,8 @@ Badge的大小。string类型支持number类型取值的字符串形式，可以
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -73,6 +79,8 @@ borderColor?: ResourceColor
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -98,6 +106,8 @@ borderWidth?: Length
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -121,6 +131,8 @@ color?: ResourceColor
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -146,6 +158,8 @@ enableAutoAvoidance?: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
@@ -170,6 +184,8 @@ fontSize?: number | ResourceStr
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -191,6 +207,8 @@ fontWeight?: number | FontWeight | ResourceStr
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -216,6 +234,8 @@ outerBorderColor?: ResourceColor
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
@@ -239,6 +259,8 @@ outerBorderWidth?: LengthMetrics
 **起始版本：** 22
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

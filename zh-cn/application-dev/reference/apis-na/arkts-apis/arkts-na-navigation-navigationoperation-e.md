@@ -1,0 +1,74 @@
+# NavigationOperation
+
+页面跳转类型。
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
+
+<!--Device-unnamed-export declare enum NavigationOperation--><!--Device-unnamed-export declare enum NavigationOperation-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## PUSH
+
+```TypeScript
+PUSH = 1
+```
+
+本次转场为页面进场。
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-NavigationOperation-PUSH = 1--><!--Device-NavigationOperation-PUSH = 1-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## POP
+
+```TypeScript
+POP = 2
+```
+
+本次转场为页面退场。
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-NavigationOperation-POP = 2--><!--Device-NavigationOperation-POP = 2-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## REPLACE
+
+```TypeScript
+REPLACE = 3
+```
+
+本次转场为页面替换。
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-NavigationOperation-REPLACE = 3--><!--Device-NavigationOperation-REPLACE = 3-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+

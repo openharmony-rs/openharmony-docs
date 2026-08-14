@@ -2,9 +2,11 @@
 
 This interface is used to define the output image size.
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-media-interface OutputSize--><!--Device-media-interface OutputSize-End-->
 
@@ -20,9 +22,11 @@ The expected output frame image height. If the value is less than 0, the height 
 
 **类型：** int
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-OutputSize-height?: int--><!--Device-OutputSize-height?: int-End-->
 
@@ -38,9 +42,11 @@ The expected output frame image width. If the value is less than 0, the width wi
 
 **类型：** int
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-OutputSize-width?:int--><!--Device-OutputSize-width?:int-End-->
 

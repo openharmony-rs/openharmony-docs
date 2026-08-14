@@ -6,7 +6,9 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-<!--Device-locks-class AsyncLockOptions<T>--><!--Device-locks-class AsyncLockOptions<T>-End-->
+**废弃版本：** -1
+
+<!--Device-locks-class AsyncLockOptions--><!--Device-locks-class AsyncLockOptions-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -21,6 +23,8 @@ constructor()
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -42,6 +46,8 @@ isAvailable: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AsyncLockOptions-isAvailable: boolean--><!--Device-AsyncLockOptions-isAvailable: boolean-End-->
@@ -56,11 +62,13 @@ signal: AbortSignal<T> | null
 
 用于终止异步操作的对象。当signal.aborted为true时，锁请求将被丢弃；当signal.aborted为false时，请求会继续等待获取锁；当signal为null时，请求正常排队运行。默认为 null。
 
-**类型：** AbortSignal&lt;T&gt; \| null
+**类型：** [AbortSignal](arkts-arkts-locks-abortsignal-c.md)&lt;T&gt; \| null
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -81,6 +89,8 @@ timeout: number
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

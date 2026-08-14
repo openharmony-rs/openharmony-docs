@@ -12,6 +12,8 @@ Defines the input event listener callback function type. Performance Warning: Do
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-export declare type InputEventListener = (  event: RawInputEventWrapper) => InputEventInterceptResult--><!--Device-unnamed-export declare type InputEventListener = (  event: RawInputEventWrapper) => InputEventInterceptResult-End-->
@@ -22,11 +24,11 @@ Defines the input event listener callback function type. Performance Warning: Do
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | Input event wrapper  |
+| event | [RawInputEventWrapper](arkts-na-common-rawinputeventwrapper-c.md) | 是 | Input event wrapper |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | - Event intercept result |
+| [InputEventInterceptResult](arkts-na-common-inputeventinterceptresult-i.md) | Event intercept result |
 

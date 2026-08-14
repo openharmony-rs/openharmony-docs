@@ -2,11 +2,13 @@
 
 List底层通过单向链表实现，每个节点有一个指向后一个元素的引用。查询元素必须从头遍历，因此查询效率低，但插入和删除效率高。List允许元素为null。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-<!--Device-unnamed-declare class List<T>--><!--Device-unnamed-declare class List<T>-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare class List--><!--Device-unnamed-declare class List-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -20,7 +22,9 @@ $_iterator(): IterableIterator<T>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -34,7 +38,7 @@ $_iterator(): IterableIterator<T>
 | --- | --- |
 | IterableIterator&lt;T&gt; |  |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let list: List<int> = new List<int>();
@@ -76,6 +80,8 @@ while(!temp.done) {
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-List-[Symbol.iterator](): IterableIterator<T>--><!--Device-List-[Symbol.iterator](): IterableIterator<T>-End-->
@@ -94,7 +100,7 @@ while(!temp.done) {
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The Symbol.iterator method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let list = new List<number>();
@@ -125,9 +131,11 @@ add(element: T): boolean
 
 在List尾部插入元素。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -153,7 +161,7 @@ add(element: T): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The add method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -204,9 +212,11 @@ clear(): void
 
 清除List中的所有元素，并将length置为0。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -220,7 +230,7 @@ clear(): void
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The clear method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -256,9 +266,11 @@ constructor()
 
 List的构造函数。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -272,7 +284,7 @@ List的构造函数。
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The List's constructor cannot be directly invoked. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -294,9 +306,11 @@ convertToArray(): Array<T>
 
 把当前List实例转换成数组并返回。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -316,7 +330,7 @@ convertToArray(): Array<T>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The convertToArray method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -354,6 +368,8 @@ equal(obj: Object): boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-List-equal(obj: Object): boolean--><!--Device-List-equal(obj: Object): boolean-End-->
@@ -378,7 +394,7 @@ equal(obj: Object): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The equal method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let list = new List<number>();
@@ -403,7 +419,9 @@ equal(obj: RecordData): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -415,7 +433,7 @@ equal(obj: RecordData): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| obj | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 用于与此list比较的对象。 |
+| obj | [RecordData](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-recorddata-t.md) | 是 | 用于与此list比较的对象。 |
 
 **返回值：**
 
@@ -429,7 +447,7 @@ equal(obj: RecordData): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The equal method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let list: List<int> = new List<int>();
@@ -455,6 +473,8 @@ forEach(callbackFn: (value: T, index?: number, List?: List<T>) => void, thisArg?
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-List-forEach(callbackFn: (value: T, index?: number, List?: List<T>) => void, thisArg?: Object): void--><!--Device-List-forEach(callbackFn: (value: T, index?: number, List?: List<T>) => void, thisArg?: Object): void-End-->
@@ -465,7 +485,7 @@ forEach(callbackFn: (value: T, index?: number, List?: List<T>) => void, thisArg?
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, index?: number, List?: List&lt;T&gt;) =&gt; void | 是 | 回调函数。callbackFn（必填）接受最多三个参数的函数。value 当前遍历到的元素。index 当前遍历到的下标值，默认值为0。List 当前调用forEach方法的实例对象，默认值为当前实例对象。 |
+| callbackFn | (value: T, index?: number, List?: List&lt;T&gt;) =&gt; void | 是 | 回调函数。 callbackFn（必填）接受最多三个参数的函数。 value 当前遍历到的元素。 index 当前遍历到的下标值，默认值为0。 List 当前调用forEach方法的实例对象，默认值为当前实例对象。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值，默认值为当前实例对象。 |
 
 **错误码：**
@@ -474,7 +494,7 @@ forEach(callbackFn: (value: T, index?: number, List?: List<T>) => void, thisArg?
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The forEach method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let list = new List<number>();
@@ -502,7 +522,9 @@ forEach(callbackFn: ListForEachCb<T>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -516,25 +538,21 @@ forEach(callbackFn: ListForEachCb<T>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; | 是 | 回调函数。 |
+| callbackFn | [ListForEachCb](arkts-arkts-listforeachcb-t.md)&lt;T&gt; | 是 | 回调函数。 |
 
 ## get
 
-ArkTS-Dyn:
-```TypeScript
-get(index: number): T
-```
-
-ArkTS-Sta:
 ```TypeScript
 get(index: int): T
 ```
 
 根据下标获取List中的元素。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -546,7 +564,7 @@ get(index: int): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 要查找的下标。需要小于等于int32\_\_\_ESCAPED\_UNDERSCORE\_\_\_max即2147483647。 |
+| index | int | 是 | 要查找的下标。需要小于等于int32_max即2147483647。 |
 
 **返回值：**
 
@@ -559,9 +577,9 @@ get(index: int): T
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The get method cannot be bound. |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 23+  **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range.<br>**适用版本：** 23+  **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -601,9 +619,11 @@ getFirst(): T
 
 获取List实例中的第一个元素。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -622,9 +642,9 @@ getFirst(): T
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getFirst method cannot be bound. |
-| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 23+  **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.<br>**适用版本：** 23+  **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -652,21 +672,17 @@ console.info("result:", result);  // result: 2
 
 ## getIndexOf
 
-ArkTS-Dyn:
-```TypeScript
-getIndexOf(element: T): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getIndexOf(element: T): int
 ```
 
 查找指定元素第一次出现的下标，查找失败返回-1。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -684,7 +700,7 @@ getIndexOf(element: T): int
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 返回第一次找到指定元素的下标，没有找到返回-1。 |
+| int | 返回第一次找到指定元素的下标，没有找到返回-1。 |
 
 **错误码：**
 
@@ -692,7 +708,7 @@ getIndexOf(element: T): int
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getIndexOf method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -732,9 +748,11 @@ getLast(): T
 
 获取List实例中的最后一个元素。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -753,9 +771,9 @@ getLast(): T
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getLast method cannot be bound. |
-| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 23+  **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.<br>**适用版本：** 23+  **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -783,21 +801,17 @@ console.info("result:", result);  // result: 4
 
 ## getLastIndexOf
 
-ArkTS-Dyn:
-```TypeScript
-getLastIndexOf(element: T): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getLastIndexOf(element: T): int
 ```
 
 查找指定元素最后一次出现的下标值，查找失败返回-1。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -815,7 +829,7 @@ getLastIndexOf(element: T): int
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 返回指定元素最后一次出现的下标值，没有找到返回-1。 |
+| int | 返回指定元素最后一次出现的下标值，没有找到返回-1。 |
 
 **错误码：**
 
@@ -823,7 +837,7 @@ getLastIndexOf(element: T): int
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getLastIndexOf method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -857,21 +871,17 @@ console.info("result = ", result); // result = 5
 
 ## getSubList
 
-ArkTS-Dyn:
-```TypeScript
-getSubList(fromIndex: number, toIndex: number): List<T>
-```
-
-ArkTS-Sta:
 ```TypeScript
 getSubList(fromIndex: int, toIndex: int): List<T>
 ```
 
 根据下标截取List中的一段元素，并返回这一段List实例，包括起始值但不包括终止值。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -883,14 +893,14 @@ getSubList(fromIndex: int, toIndex: int): List<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fromIndex | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 起始下标。 |
-| toIndex | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 终止下标。 |
+| fromIndex | int | 是 | 起始下标。 |
+| toIndex | int | 是 | 终止下标。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; | 返回List对象实例。 |
+| [List](arkts-arkts-util-list-list-c.md)&lt;T&gt; | 返回List对象实例。 |
 
 **错误码：**
 
@@ -899,7 +909,7 @@ getSubList(fromIndex: int, toIndex: int): List<T>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getSubList method cannot be bound. |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of fromIndex or toIndex is out of range. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -933,9 +943,11 @@ has(element: T): boolean
 
 判断List中是否包含指定元素。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -961,7 +973,7 @@ has(element: T): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The has method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let list = new List<string>();
@@ -972,21 +984,17 @@ console.info("result:", result);  // result: true
 
 ## insert
 
-ArkTS-Dyn:
-```TypeScript
-insert(element: T, index: number): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 insert(element: T, index: int): void
 ```
 
 在长度范围内任意位置插入指定元素。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -999,7 +1007,7 @@ insert(element: T, index: int): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | element | T | 是 | 待插入元素。 |
-| index | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 插入的位置索引，可插入位置区间为[0, List.length]，需要小于等于int32\_\_\_ESCAPED\_UNDERSCORE\_\_\_max即2147483647。 |
+| index | int | 是 | 插入的位置索引，可插入位置区间为[0, List.length]，需要小于等于int32_max即2147483647。 |
 
 **错误码：**
 
@@ -1008,7 +1016,7 @@ insert(element: T, index: int): void
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The insert method cannot be bound. |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -1038,9 +1046,11 @@ isEmpty(): boolean
 
 判断List是否为空。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1060,7 +1070,7 @@ isEmpty(): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The isEmpty method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -1094,9 +1104,11 @@ remove(element: T): boolean
 
 删除查找到的第一个指定的元素。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1122,7 +1134,7 @@ remove(element: T): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The remove method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -1160,6 +1172,8 @@ removeByIndex(index: number): T
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-List-removeByIndex(index: number): T--><!--Device-List-removeByIndex(index: number): T-End-->
@@ -1170,7 +1184,7 @@ removeByIndex(index: number): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 指定元素的下标值，取值范围[0, List.length-1]，需要小于等于int32\_\_\_ESCAPED\_UNDERSCORE\_\_\_max即2147483647。 |
+| index | number | 是 | 指定元素的下标值，取值范围[0, List.length-1]，需要小于等于int32_max即2147483647。 |
 
 **返回值：**
 
@@ -1185,7 +1199,7 @@ removeByIndex(index: number): T
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The removeByIndex method cannot be bound. |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let list = new List<number>();
@@ -1208,7 +1222,9 @@ removeByIndex(index: int): T | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -1220,7 +1236,7 @@ removeByIndex(index: int): T | undefined
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | int | 是 | 待查找元素的下标。该值为整数。 |
+| index | int | 是 | 待查找元素的下标。 该值为整数。 |
 
 **返回值：**
 
@@ -1232,9 +1248,9 @@ removeByIndex(index: int): T | undefined
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "index" is out of range. It must be >= 0 && <= \_\_\_ESCAPED\_DOLLAR\_\_\_{length - 1}.Received value is: \_\_\_ESCAPED\_DOLLAR\_\_\_{index} |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "index" is out of range. It must be >= 0 && <= \\${length - 1}. Received value is: \\${index} |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let list: List<int> = new List<int>();
@@ -1259,6 +1275,8 @@ replaceAllElements(callbackFn: (value: T, index?: number, list?: List<T>) => T, 
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-List-replaceAllElements(callbackFn: (value: T, index?: number, list?: List<T>) => T, thisArg?: Object): void--><!--Device-List-replaceAllElements(callbackFn: (value: T, index?: number, list?: List<T>) => T, thisArg?: Object): void-End-->
@@ -1269,7 +1287,7 @@ replaceAllElements(callbackFn: (value: T, index?: number, list?: List<T>) => T, 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, index?: number, list?: List&lt;T&gt;) =&gt; T | 是 | 回调函数。callbackFn（必填）接受最多三个参数的函数。value 当前遍历到的元素。index 当前遍历到的下标值，默认值为0。list 当前调用replaceAllElements方法的实例对象，默认值为当前实例对象。 |
+| callbackFn | (value: T, index?: number, list?: List&lt;T&gt;) =&gt; T | 是 | 回调函数。 callbackFn（必填）接受最多三个参数的函数。 value 当前遍历到的元素。 index 当前遍历到的下标值，默认值为0。 list 当前调用replaceAllElements方法的实例对象，默认值为当前实例对象。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值，默认值为当前实例对象。 |
 
 **错误码：**
@@ -1278,7 +1296,7 @@ replaceAllElements(callbackFn: (value: T, index?: number, list?: List<T>) => T, 
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The replaceAllElements method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let list = new List<number>();
@@ -1307,7 +1325,9 @@ replaceAllElements(callbackFn: ListReplaceCb<T>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1321,25 +1341,21 @@ replaceAllElements(callbackFn: ListReplaceCb<T>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; | 是 | 回调函数。 |
+| callbackFn | [ListReplaceCb](arkts-arkts-listreplacecb-t.md)&lt;T&gt; | 是 | 回调函数。 |
 
 ## set
 
-ArkTS-Dyn:
-```TypeScript
-set(index: number, element: T): T
-```
-
-ArkTS-Sta:
 ```TypeScript
 set(index: int, element: T): T
 ```
 
 替换List指定位置的元素。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1351,7 +1367,7 @@ set(index: int, element: T): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 查找的下标值。取值范围[0, List.length-1]，需要小于等于int32\_\_\_ESCAPED\_UNDERSCORE\_\_\_max即2147483647。 |
+| index | int | 是 | 查找的下标值。取值范围[0, List.length-1]，需要小于等于int32_max即2147483647。 |
 | element | T | 是 | 用来替换的元素。 |
 
 **返回值：**
@@ -1367,7 +1383,7 @@ set(index: int, element: T): T
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The set method cannot be bound. |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -1401,9 +1417,11 @@ sort(comparator: ListComparatorFn<T>): void
 
 对List中的元素进行排序。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1415,7 +1433,7 @@ sort(comparator: ListComparatorFn<T>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| comparator | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; | 是 | 回调函数。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ API version 23开始发生兼容性变更，在API version 22及之前的版本其类型为：\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。\_\_\_HTML\_TAG\_USD\_0\_\_\_**起始版本：** 23 |
+| comparator | [ListComparatorFn](arkts-arkts-listcomparatorfn-t.md)&lt;T&gt; | 是 | 回调函数。&lt;br&gt; API version 23开始发生兼容性变更，在API version 22及之前的版本其类型为：`(firstValue: T, secondValue: T) => number`。<br>**起始版本：** 23 |
 
 **错误码：**
 
@@ -1423,7 +1441,7 @@ sort(comparator: ListComparatorFn<T>): void
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The sort method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -1461,26 +1479,6 @@ list.sort(ListCb2); // 结果为降序排列
 console.info("result:", list.convertToArray());  // result: 4,3,2,1
 ```
 
-## index
-
-```TypeScript
-[index: int]: T
-```
-
-返回指定下标的元素。
-
-**类型：** T
-
-**起始版本：** 23
-
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
-
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
-
-<!--Device-List-[index: int]: T--><!--Device-List-[index: int]: T-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
 ## length
 
 ```TypeScript
@@ -1493,7 +1491,9 @@ List的元素个数。
 
 **起始版本：** 8
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

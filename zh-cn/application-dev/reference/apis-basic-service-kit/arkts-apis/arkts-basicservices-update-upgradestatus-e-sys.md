@@ -2,9 +2,11 @@
 
 升级状态。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-update-export enum UpgradeStatus--><!--Device-update-export enum UpgradeStatus-End-->
 
@@ -20,9 +22,11 @@ WAITING_DOWNLOAD = 20
 
 待下载。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-UpgradeStatus-WAITING_DOWNLOAD = 20--><!--Device-UpgradeStatus-WAITING_DOWNLOAD = 20-End-->
 
@@ -38,9 +42,11 @@ DOWNLOADING = 21
 
 下载中。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-UpgradeStatus-DOWNLOADING = 21--><!--Device-UpgradeStatus-DOWNLOADING = 21-End-->
 
@@ -56,9 +62,11 @@ DOWNLOAD_PAUSED = 22
 
 下载暂停。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-UpgradeStatus-DOWNLOAD_PAUSED = 22--><!--Device-UpgradeStatus-DOWNLOAD_PAUSED = 22-End-->
 
@@ -74,9 +82,11 @@ DOWNLOAD_FAIL = 23
 
 下载失败。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-UpgradeStatus-DOWNLOAD_FAIL = 23--><!--Device-UpgradeStatus-DOWNLOAD_FAIL = 23-End-->
 
@@ -92,9 +102,11 @@ WAITING_INSTALL = 30
 
 待安装。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-UpgradeStatus-WAITING_INSTALL = 30--><!--Device-UpgradeStatus-WAITING_INSTALL = 30-End-->
 
@@ -110,9 +122,11 @@ UPDATING = 31
 
 更新中。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-UpgradeStatus-UPDATING = 31--><!--Device-UpgradeStatus-UPDATING = 31-End-->
 
@@ -128,9 +142,11 @@ WAITING_APPLY = 40
 
 待生效。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-UpgradeStatus-WAITING_APPLY = 40--><!--Device-UpgradeStatus-WAITING_APPLY = 40-End-->
 
@@ -146,9 +162,11 @@ APPLYING = 41
 
 生效中。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-UpgradeStatus-APPLYING = 41--><!--Device-UpgradeStatus-APPLYING = 41-End-->
 
@@ -164,9 +182,11 @@ UPGRADE_SUCCESS = 50
 
 升级成功。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-UpgradeStatus-UPGRADE_SUCCESS = 50--><!--Device-UpgradeStatus-UPGRADE_SUCCESS = 50-End-->
 
@@ -182,9 +202,11 @@ UPGRADE_FAIL = 51
 
 升级失败。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-UpgradeStatus-UPGRADE_FAIL = 51--><!--Device-UpgradeStatus-UPGRADE_FAIL = 51-End-->
 

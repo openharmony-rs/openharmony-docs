@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBControlRequestType](arkts-basicservices-usbmanager-usbcontrolrequesttype-e.md)
+**替代接口：** [USBControlRequestType](arkts-basicservices-usbmanager-usbcontrolrequesttype-e.md#USBControlRequestType)
 
 <!--Device-usb-export enum USBControlRequestType--><!--Device-usb-export enum USBControlRequestType-End-->
 
@@ -28,7 +28,7 @@ USB_REQUEST_TYPE_STANDARD = 0
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBControlRequestType.USB_REQUEST_TYPE_STANDARD](arkts-basicservices-usbmanager-usbcontrolrequesttype-e.md#usb_request_type_standard)
+**替代接口：** [USB_REQUEST_TYPE_STANDARD](arkts-basicservices-usbmanager-usbcontrolrequesttype-e.md#USB_REQUEST_TYPE_STANDARD)
 
 <!--Device-USBControlRequestType-USB_REQUEST_TYPE_STANDARD = 0--><!--Device-USBControlRequestType-USB_REQUEST_TYPE_STANDARD = 0-End-->
 
@@ -48,7 +48,7 @@ USB_REQUEST_TYPE_CLASS = 1
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBControlRequestType.USB_REQUEST_TYPE_CLASS](arkts-basicservices-usbmanager-usbcontrolrequesttype-e.md#usb_request_type_class)
+**替代接口：** [USB_REQUEST_TYPE_CLASS](arkts-basicservices-usbmanager-usbcontrolrequesttype-e.md#USB_REQUEST_TYPE_CLASS)
 
 <!--Device-USBControlRequestType-USB_REQUEST_TYPE_CLASS = 1--><!--Device-USBControlRequestType-USB_REQUEST_TYPE_CLASS = 1-End-->
 
@@ -68,7 +68,7 @@ USB_REQUEST_TYPE_VENDOR = 2
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.USBControlRequestType.USB_REQUEST_TYPE_VENDOR](arkts-basicservices-usbmanager-usbcontrolrequesttype-e.md#usb_request_type_vendor)
+**替代接口：** [USB_REQUEST_TYPE_VENDOR](arkts-basicservices-usbmanager-usbcontrolrequesttype-e.md#USB_REQUEST_TYPE_VENDOR)
 
 <!--Device-USBControlRequestType-USB_REQUEST_TYPE_VENDOR = 2--><!--Device-USBControlRequestType-USB_REQUEST_TYPE_VENDOR = 2-End-->
 

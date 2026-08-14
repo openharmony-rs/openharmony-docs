@@ -2,9 +2,11 @@
 
 窗口锚点枚举。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-window-enum WindowAnchor--><!--Device-window-enum WindowAnchor-End-->
 
@@ -18,9 +20,11 @@ TOP_START = 0
 
 窗口左上角。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WindowAnchor-TOP_START = 0--><!--Device-WindowAnchor-TOP_START = 0-End-->
 
@@ -34,9 +38,11 @@ TOP = 1
 
 窗口上边界横向居中点。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WindowAnchor-TOP = 1--><!--Device-WindowAnchor-TOP = 1-End-->
 
@@ -50,9 +56,11 @@ TOP_END = 2
 
 窗口右上角。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WindowAnchor-TOP_END = 2--><!--Device-WindowAnchor-TOP_END = 2-End-->
 
@@ -66,9 +74,11 @@ START = 3
 
 窗口左边界纵向居中点。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WindowAnchor-START = 3--><!--Device-WindowAnchor-START = 3-End-->
 
@@ -82,9 +92,11 @@ CENTER = 4
 
 窗口横向和纵向居中点。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WindowAnchor-CENTER = 4--><!--Device-WindowAnchor-CENTER = 4-End-->
 
@@ -98,9 +110,11 @@ END = 5
 
 窗口右边界纵向居中点。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WindowAnchor-END = 5--><!--Device-WindowAnchor-END = 5-End-->
 
@@ -114,9 +128,11 @@ BOTTOM_START = 6
 
 窗口左下角。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WindowAnchor-BOTTOM_START = 6--><!--Device-WindowAnchor-BOTTOM_START = 6-End-->
 
@@ -130,9 +146,11 @@ BOTTOM = 7
 
 窗口下边界横向居中点。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WindowAnchor-BOTTOM = 7--><!--Device-WindowAnchor-BOTTOM = 7-End-->
 
@@ -146,9 +164,11 @@ BOTTOM_END = 8
 
 窗口右下角。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WindowAnchor-BOTTOM_END = 8--><!--Device-WindowAnchor-BOTTOM_END = 8-End-->
 

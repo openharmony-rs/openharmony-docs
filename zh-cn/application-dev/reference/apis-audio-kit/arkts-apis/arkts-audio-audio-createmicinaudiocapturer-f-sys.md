@@ -6,11 +6,13 @@
 function createMicInAudioCapturer(config: AudioCapturerMicInConfig): Promise<AudioCapturer | null>
 ```
 
-获取一个特殊的\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_实例。该方法使用promise返回录音实例。 此捕获可用于记录Mic-In音频数据和回声参考信号，以便应用处理算法。 Mic-In音频数据和回声参考信号将根据应用程序设置的配置被放入一个或多个缓冲。 当应用程序处于后台时，不允许创建录音实例。
+获取一个特殊的[AudioCapturer](arkts-audio-audio-audiocapturer-i.md#AudioCapturer)实例。该方法使用promise返回录音实例。 此捕获可用于记录Mic-In音频数据和回声参考信号，以便应用处理算法。 Mic-In音频数据和回声参考信号将根据应用程序设置的配置被放入一个或多个缓冲。 当应用程序处于后台时，不允许创建录音实例。
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MICROPHONE
 
@@ -26,25 +28,25 @@ function createMicInAudioCapturer(config: AudioCapturerMicInConfig): Promise<Aud
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| config | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | Capturer configuration, see \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_for details. |
+| config | [AudioCapturerMicInConfig](arkts-audio-audio-audiocapturermicinconfig-i-sys.md) | 是 | Capturer configuration, see [AudioCapturerMicInConfig](arkts-audio-audio-audiocapturermicinconfig-i-sys.md#AudioCapturerMicInConfig（系统接口）) for details. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;AudioCapturer \| null&gt; | Promise用于返回录音实例。 |
+| Promise&lt;[AudioCapturer](arkts-audio-audio-audiocapturer-i.md) \| null&gt; | Promise用于返回录音实例。 如果出现错误，则返回null。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied, including background recording. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
-| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
-| [6800104](../errorcode-audio.md#6800104-参数选项不支持) | Capturer creation is not supported, may caused by following problems:\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 1. Source type is unsupported for this capturer, only \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_and \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ are supported currently.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_3\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ 2. Echo reference signal's config is unsupported, echo reference's sampling rate and format must be the same as MicIn audio data currently. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio system internal error, such as system process crash. |
+| [6800104](../errorcode-audio.md#6800104-参数选项不支持) | Capturer creation is not supported, may caused by following problems: &lt;br&gt; 1. Source type is unsupported for this capturer, only [SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT](arkts-audio-audio-sourcetype-e-sys.md#SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT) and [SOURCE_TYPE_VOICE_RECOGNITION](arkts-audio-audio-sourcetype-e.md#SOURCE_TYPE_VOICE_RECOGNITION) are supported currently. &lt;br&gt; 2. Echo reference signal's config is unsupported, echo reference's sampling rate and format must be the same as MicIn audio data currently. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';

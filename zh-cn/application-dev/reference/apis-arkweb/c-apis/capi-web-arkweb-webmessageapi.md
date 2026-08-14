@@ -1,0 +1,111 @@
+# ArkWeb_WebMessageAPI
+
+```c
+typedef struct ArkWeb_WebMessageAPI {...} ArkWeb_WebMessageAPI
+```
+
+## 概述
+
+ArkWeb_WebMessageAPI是Web消息相关Native API结构体。该结构体提供了创建和销毁消息、设置和获取消息类型、管理消息数据缓冲区等函数。此API是postMessage桥接的一部分，支持Native代码与HTML页面之间的双向通信。<br>Web消息相关接口需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取，调用前建议通过[ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#arkweb_member_missing)校验函数指针的可用性，避免SDK与设备ROM不匹配导致崩溃。
+
+**起始版本：** 12
+
+**相关模块：** [Web](capi-web.md)
+
+**所在头文件：** [arkweb_type.h](capi-arkweb-type-h.md)
+
+## 汇总
+
+### 成员变量
+
+| 名称 | 描述 |
+| -- | -- |
+| size_t size | 结构体的大小。 |
+
+
+### 成员函数
+
+| 名称 | 描述 |
+| -- | -- |
+| [ArkWeb_WebMessagePtr (\*createWebMessage)()](#createwebmessage) | 创建消息。用于在Native代码与HTML页面之间进行postMessage通信前，创建待发送的消息对象。调用createWebMessage()后，必须在使用完毕后调用destroyWebMessage()释放消息资源，未调用destroyWebMessage()会导致消息资源泄漏，影响系统内存管理。@return The created ArkWeb_WebMessage, destroy it throughdestroyWebMessage after it is no longer used. |
+| [void (\*destroyWebMessage)(ArkWeb_WebMessagePtr* webMessage)](#destroywebmessage) | 销毁消息，并释放消息对象占用的内存。必须与createWebMessage()成对使用，在使用完消息后调用此方法释放资源。调用后webMessage指针将变为无效，不应再被使用。 |
+| [void (\*setType)(ArkWeb_WebMessagePtr webMessage, ArkWeb_WebMessageType type)](#settype) | 设置消息类型。 |
+| [ArkWeb_WebMessageType (\*getType)(ArkWeb_WebMessagePtr webMessage)](#gettype) | 获取消息类型。用于区分不同类型的通信消息，如文本消息、JSON消息、二进制消息等。 |
+| [void (\*setData)(ArkWeb_WebMessagePtr webMessage, void* data, size_t dataLength)](#setdata) | 设置数据。用于设置消息的具体内容，支持从Native代码向HTML页面传递文本、JSON或二进制数据。 |
+| [void* (\*getData)(ArkWeb_WebMessagePtr webMessage, size_t* dataLength)](#getdata) | 获取数据。用于获取消息的具体内容，支持从HTML页面接收文本、JSON或二进制数据并在Native代码中处理。必须先调用setData()设置数据，然后才能调用getData()获取数据；如果未调用setData()就调用getData()，将返回NULL，且dataLength为0。@param webMessage 消息结构体指针。@param dataLength 出参，数据长度。@return The data of ArkWeb_WebMessage. |
+
+## 成员函数说明
+
+### createWebMessage()
+
+```c
+ArkWeb_WebMessagePtr (*createWebMessage)()
+```
+
+**描述**
+
+创建消息。用于在Native代码与HTML页面之间进行postMessage通信前，创建待发送的消息对象。调用createWebMessage()后，必须在使用完毕后调用destroyWebMessage()释放消息资源，未调用destroyWebMessage()会导致消息资源泄漏，影响系统内存管理。@return The created ArkWeb_WebMessage, destroy it throughdestroyWebMessage after it is no longer used.
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md) | The created ArkWeb_WebMessage, destroy it through<br>      destroyWebMessage after it is no longer used. |
+
+### destroyWebMessage()
+
+```c
+void (*destroyWebMessage)(ArkWeb_WebMessagePtr* webMessage)
+```
+
+**描述**
+
+销毁消息，并释放消息对象占用的内存。必须与createWebMessage()成对使用，在使用完消息后调用此方法释放资源。调用后webMessage指针将变为无效，不应再被使用。
+
+### setType()
+
+```c
+void (*setType)(ArkWeb_WebMessagePtr webMessage, ArkWeb_WebMessageType type)
+```
+
+**描述**
+
+设置消息类型。
+
+### getType()
+
+```c
+ArkWeb_WebMessageType (*getType)(ArkWeb_WebMessagePtr webMessage)
+```
+
+**描述**
+
+获取消息类型。用于区分不同类型的通信消息，如文本消息、JSON消息、二进制消息等。
+
+### setData()
+
+```c
+void (*setData)(ArkWeb_WebMessagePtr webMessage, void* data, size_t dataLength)
+```
+
+**描述**
+
+设置数据。用于设置消息的具体内容，支持从Native代码向HTML页面传递文本、JSON或二进制数据。
+
+### getData()
+
+```c
+void* (*getData)(ArkWeb_WebMessagePtr webMessage, size_t* dataLength)
+```
+
+**描述**
+
+获取数据。用于获取消息的具体内容，支持从HTML页面接收文本、JSON或二进制数据并在Native代码中处理。必须先调用setData()设置数据，然后才能调用getData()获取数据；如果未调用setData()就调用getData()，将返回NULL，且dataLength为0。@param webMessage 消息结构体指针。@param dataLength 出参，数据长度。@return The data of ArkWeb_WebMessage.
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| void* | The data of ArkWeb_WebMessage. |
+
+

@@ -6,11 +6,13 @@
 function getPrivateDirty() : bigint
 ```
 
-��ȡ���̵�˽�����ڴ��С����ȡ/proc/{pid}/smaps\_rollup�е�Private\_Dirtyֵ�� > **ע��** > > ����/proc/{pid}/smaps\_rollup�Ķ�ȡ��ʱ�ϳ������鲻Ҫ�����߳���ʹ�øýӿڣ���ͨ��@ohos.taskpool��@ohos.worker�����첽�߳��Ա���Ӧ�ó��ֿ��١�
+获取进程的私有脏内存大小。读取/proc/{pid}/smaps_rollup中的Private_Dirty值。 > **注意** > > 由于/proc/{pid}/smaps_rollup的读取耗时较长，建议不要在主线程中使用该接口，可通过@ohos.taskpool或@ohos.worker开启异步线程以避免应用出现卡顿。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-hidebug-function getPrivateDirty() : bigint--><!--Device-hidebug-function getPrivateDirty() : bigint-End-->
 
@@ -20,9 +22,9 @@ function getPrivateDirty() : bigint
 
 | 类型 | 说明 |
 | --- | --- |
-| bigint | ���ؽ��̵�˽�����ڴ��С����λΪKB�� |
+| bigint | 返回进程的私有脏内存大小，单位为KB。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { hidebug } from '@kit.PerformanceAnalysisKit';

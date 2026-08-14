@@ -2,9 +2,11 @@
 
 坐标点信息。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare interface Point--><!--Device-unnamed-declare interface Point-End-->
 
@@ -20,11 +22,13 @@ displayId?: int
 
 **类型：** int
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Point-displayId?: int--><!--Device-Point-displayId?: int-End-->
 
@@ -36,13 +40,15 @@ displayId?: int
 x: int
 ```
 
-坐标点的横坐标，取值大于0的整数。 **说明：** 从API version 20开始，该属性不再为只读属性。 从API version 11开始，该接口支持在原子化服务中使用。
+坐标点的横坐标，取值大于等于0的整数，单位：px。 **说明：** 从API version 20开始，该属性不再为只读属性。 从API version 11开始，该接口支持在原子化服务中使用。
 
 **类型：** int
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -56,13 +62,15 @@ x: int
 y: int
 ```
 
-坐标点的纵坐标，取值大于0的整数。 **说明：** 从API version 20开始，该属性不再为只读属性。 从API version 11开始，该接口支持在原子化服务中使用。
+坐标点的纵坐标，取值大于等于0的整数，单位：px。 **说明：** 从API version 20开始，该属性不再为只读属性。 从API version 11开始，该接口支持在原子化服务中使用。
 
 **类型：** int
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

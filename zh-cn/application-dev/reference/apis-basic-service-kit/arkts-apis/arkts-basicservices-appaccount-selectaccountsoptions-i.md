@@ -2,9 +2,11 @@
 
 表示用于选择账号的选项。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-appAccount-interface SelectAccountsOptions--><!--Device-appAccount-interface SelectAccountsOptions-End-->
 
@@ -18,11 +20,13 @@ allowedAccounts?: Array<AppAccountInfo>
 
 允许的账号数组，默认为空。
 
-**类型：** Array&lt;AppAccountInfo&gt;
+**类型：** Array&lt;[AppAccountInfo](arkts-basicservices-appaccount-appaccountinfo-i.md)&gt;
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SelectAccountsOptions-allowedAccounts?: Array<AppAccountInfo>--><!--Device-SelectAccountsOptions-allowedAccounts?: Array<AppAccountInfo>-End-->
 
@@ -38,9 +42,11 @@ allowedOwners?: Array<string>
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SelectAccountsOptions-allowedOwners?: Array<string>--><!--Device-SelectAccountsOptions-allowedOwners?: Array<string>-End-->
 
@@ -56,9 +62,11 @@ requiredLabels?: Array<string>
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SelectAccountsOptions-requiredLabels?: Array<string>--><!--Device-SelectAccountsOptions-requiredLabels?: Array<string>-End-->
 

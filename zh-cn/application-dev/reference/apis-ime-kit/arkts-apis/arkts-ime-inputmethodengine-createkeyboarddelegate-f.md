@@ -6,7 +6,7 @@
 function createKeyboardDelegate(): KeyboardDelegate
 ```
 
-获取客户端编辑事件监听代理实例[KeyboardDelegate]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。输入法应用获取该实例后，可订阅物理键盘按键事件、选中文本变化事件等。
+获取客户端编辑事件监听代理实例[KeyboardDelegate](arkts-ime-inputmethodengine-keyboarddelegate-i.md#KeyboardDelegate)。输入法应用获取该实例后，可订阅物理键盘按键事件、选中文本变化事件等。
 
 **起始版本：** 8
 
@@ -14,7 +14,7 @@ function createKeyboardDelegate(): KeyboardDelegate
 
 **废弃版本：** 9
 
-**替代接口：** [inputMethodEngine.getKeyboardDelegate](arkts-ime-inputmethodengine-getkeyboarddelegate-f.md#getkeyboarddelegate)()
+**替代接口：** [getKeyboardDelegate](arkts-ime-inputmethodengine-getkeyboarddelegate-f.md#getKeyboardDelegate)()
 
 <!--Device-inputMethodEngine-function createKeyboardDelegate(): KeyboardDelegate--><!--Device-inputMethodEngine-function createKeyboardDelegate(): KeyboardDelegate-End-->
 
@@ -24,9 +24,9 @@ function createKeyboardDelegate(): KeyboardDelegate
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 客户端编辑事件监听代理。 |
+| [KeyboardDelegate](arkts-ime-inputmethodengine-keyboarddelegate-i.md) | 客户端编辑事件监听代理。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let keyboardDelegate: inputMethodEngine.KeyboardDelegate = inputMethodEngine.createKeyboardDelegate();

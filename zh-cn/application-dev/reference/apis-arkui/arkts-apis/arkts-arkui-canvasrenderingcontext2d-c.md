@@ -2,13 +2,15 @@
 
 CanvasRenderingContext2D对象与Canvas组件绑定后，可在Canvas组件上绘制，绘制对象可以是形状、文本、图片等。 > **说明：** > > * 建议使用时将CanvasRenderingContext2D对象与Canvas组件封装到同一个自定义组件中，保证两者一一对应且生命周期保持一致。 > > * 本文绘制接口在调用时会存入被关联的Canvas组件的指令队列中。仅当当前帧进入渲染阶段且关联的Canvas组件处于可见状态时， > 这些指令才会从队列中被提取并执行。因此，在Canvas组件不可见的情况下，应尽量避免频繁调用绘制接口， > 以防止指令在队列中堆积，从而避免内存占用过大的问题。 > > * beginPath、moveTo、lineTo、closePath、bezierCurveTo、quadraticCurveTo、arc、arcTo、ellipse、rect和 > roundRect接口只能对CanvasRenderingContext2D中的路径生效，无法对OffscreenCanvasRenderingContext2D和 > Path2D对象中设置的路径生效。 > > * Canvas组件的宽或高超过8000px时使用CPU渲染，会导致性能明显下降。
 
-**继承/实现关系：** CanvasRenderingContext2D extends [CanvasRenderer](arkts-arkui-component/canvas-canvasrenderer-c.md)
+**继承/实现关系：** CanvasRenderingContext2D extends [CanvasRenderer](arkts-arkui-canvasrenderer-c.md#CanvasRenderer)
 
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
-<!--Device-unnamed-declare class CanvasRenderingContext2D extends CanvasRenderer--><!--Device-unnamed-declare class CanvasRenderingContext2D extends CanvasRenderer-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare class CanvasRenderingContext2D--><!--Device-unnamed-declare class CanvasRenderingContext2D-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,6 +26,8 @@ constructor(settings?: RenderingContextSettings)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -36,7 +40,7 @@ constructor(settings?: RenderingContextSettings)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| settings | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 用来配置CanvasRenderingContext2D对象的参数，见\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_异常值undefined和null按\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_的默认值处理。 |
+| settings | [RenderingContextSettings](arkts-arkui-renderingcontextsettings-c.md) | 否 | 用来配置CanvasRenderingContext2D对象的参数， 见RenderingContextSettings。 &lt;br&gt;异常值undefined和null按RenderingContextSettings的默认值处理。 |
 
 ## constructor
 
@@ -49,6 +53,8 @@ constructor(settings?: RenderingContextSettings, unit?: LengthMetricsUnit)
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -64,8 +70,8 @@ constructor(settings?: RenderingContextSettings, unit?: LengthMetricsUnit)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| settings | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 用来配置CanvasRenderingContext2D对象的参数，见\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_异常值undefined和null按\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_的默认值处理。 |
-| unit | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 用来配置CanvasRenderingContext2D对象的单位模式，配置后无法更改。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_异常值undefined、NaN和Infinity按默认值处理。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_默认值：DEFAULT。 |
+| settings | [RenderingContextSettings](arkts-arkui-renderingcontextsettings-c.md) | 否 | 用来配置CanvasRenderingContext2D对象的参数， 见RenderingContextSettings。 &lt;br&gt;异常值undefined和null按RenderingContextSettings的默认值处理。 |
+| unit | LengthMetricsUnit | 否 | 用来配置CanvasRenderingContext2D对象的单位模式， 配置后无法更改。 &lt;br&gt;异常值undefined、NaN和Infinity按默认值处理。 &lt;br&gt;默认值：DEFAULT。 |
 
 ## getContext2DFromDrawingContext
 
@@ -73,11 +79,13 @@ constructor(settings?: RenderingContextSettings, unit?: LengthMetricsUnit)
 static getContext2DFromDrawingContext(drawingContext: DrawingRenderingContext, options?: RenderingContextOptions): CanvasRenderingContext2D
 ```
 
-从一个DrawingRenderingContext对象中获取一个CanvasRenderingContext2D对象，该CanvasRenderingContext2D对象与入参的DrawingRenderingContext对 象绑定了相同的Canvas组件。 > **说明：** > > - 从该接口获取的CanvasRenderingContext2D对象不允许作为参数创建[Canvas]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_组件，否则会导致应用崩溃。 > > - 当入参的DrawingRenderingContext对象未绑定Canvas组件时，将返回错误码。
+从一个DrawingRenderingContext对象中获取一个CanvasRenderingContext2D对象，该CanvasRenderingContext2D对象与入参的DrawingRenderingContext对 象绑定了相同的Canvas组件。 > **说明：** > > - 从该接口获取的CanvasRenderingContext2D对象不允许作为参数创建Canvas组件，否则会导致应用崩溃。 > > - 当入参的DrawingRenderingContext对象未绑定Canvas组件时，将返回错误码。
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -91,14 +99,14 @@ static getContext2DFromDrawingContext(drawingContext: DrawingRenderingContext, o
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| drawingContext | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 一个DrawingRenderingContext类型的对象。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_异常值undefined或null按无效值处理。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 渲染上下文的配置选项。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_异常值undefined或null按默认值处理。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_默认值：{ antialias: false } |
+| drawingContext | [DrawingRenderingContext](arkts-arkui-drawingrenderingcontext-c.md) | 是 | 一个DrawingRenderingContext类型的对象。 &lt;br&gt;异常值undefined或null按无效值处理。 |
+| options | [RenderingContextOptions](arkts-arkui-renderingcontextoptions-i.md) | 否 | 渲染上下文的配置选项。 &lt;br&gt;异常值undefined或null按默认值处理。 &lt;br&gt;默认值：{ antialias: false } |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回一个CanvasRenderingContext2D对象，其与入参的DrawingRenderingContext绑定了相同的Canvas组件。 |
+| [CanvasRenderingContext2D](arkts-arkui-canvasrenderingcontext2d-c.md) | 返回一个CanvasRenderingContext2D对象，其与入参的DrawingRenderingContext绑定了相同的Canvas组件。 |
 
 **错误码：**
 
@@ -106,7 +114,7 @@ static getContext2DFromDrawingContext(drawingContext: DrawingRenderingContext, o
 | --- | --- |
 | [103702](../errorcode-canvas.md#103702-绘制上下文未绑定canvas组件) | The drawingContext is not bound to a canvas component. |
 
-## off('onAttach')
+## off_onAttach
 
 ```TypeScript
 off(type: 'onAttach', callback?: Callback<void>): void
@@ -117,6 +125,8 @@ off(type: 'onAttach', callback?: Callback<void>): void
 **起始版本：** 13
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -130,16 +140,16 @@ off(type: 'onAttach', callback?: Callback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'onAttach' | 是 | 取消订阅CanvasRenderingContext2D与Canvas组件发生绑定的回调。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_异常值undefined或null按无效值处理。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 否 | 为空表示取消所有订阅CanvasRenderingContext2D与Canvas组件发生绑定后触发的回调。非空则取消订阅发生绑定对应的回调。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_异常值undefined或null按无效值处理。 |
+| type | 'onAttach' | 是 | 取消订阅CanvasRenderingContext2D与Canvas组件发生绑定的回调。 &lt;br&gt;异常值undefined或null按无效值处理。 |
+| callback | Callback&lt;void&gt; | 否 | 为空表示取消所有订阅CanvasRenderingContext2D与Canvas组件 发生绑定后触发的回调。 非空则取消订阅发生绑定对应的回调。 &lt;br&gt;异常值undefined或null按无效值处理。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Input parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-## off('onDetach')
+## off_onDetach
 
 ```TypeScript
 off(type: 'onDetach', callback?: Callback<void>): void
@@ -150,6 +160,8 @@ off(type: 'onDetach', callback?: Callback<void>): void
 **起始版本：** 13
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -163,26 +175,28 @@ off(type: 'onDetach', callback?: Callback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'onDetach' | 是 | 取消订阅CanvasRenderingContext2D与Canvas组件解除绑定的回调。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_异常值undefined或null按无效值处理。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 否 | 为空代表取消所有订阅CanvasRenderingContext2D与Canvas组件解除绑定后触发的回调。非空代表取消订阅解除绑定对应的回调。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_异常值undefined或null按无效值处理。 |
+| type | 'onDetach' | 是 | 取消订阅CanvasRenderingContext2D与Canvas组件解除绑定的回调。 &lt;br&gt;异常值undefined或null按无效值处理。 |
+| callback | Callback&lt;void&gt; | 否 | 为空代表取消所有订阅CanvasRenderingContext2D与Canvas组件 解除绑定后触发的回调。 非空代表取消订阅解除绑定对应的回调。 &lt;br&gt;异常值undefined或null按无效值处理。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Input parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-## on('onAttach')
+## on_onAttach
 
 ```TypeScript
 on(type: 'onAttach', callback: Callback<void>): void
 ```
 
-订阅CanvasRenderingContext2D与Canvas组件发生绑定的场景。 > **说明：** > > CanvasRenderingContext2D对象在同一时间只能与一个Canvas组件绑定。 > 当CanvasRenderingContext2D对象和Canvas组件发生绑定时，会触发'onAttach'回调， > 表示可以获取到\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。 > 避免在'onAttach'中执行绘制方法，应保证Canvas组件已经 > \_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_ > 再进行绘制。 > 触发'onAttach'回调的一般场景： > 1、Canvas组件创建时绑定CanvasRenderingContext2D对象； > 2、CanvasRenderingContext2D对象新绑定一个Canvas组件时。
+订阅CanvasRenderingContext2D与Canvas组件发生绑定的场景。 > **说明：** > > CanvasRenderingContext2D对象在同一时间只能与一个Canvas组件绑定。 > 当CanvasRenderingContext2D对象和Canvas组件发生绑定时，会触发'onAttach'回调， > 表示可以获取到[canvas](#canvas)。 > 避免在'onAttach'中执行绘制方法，应保证Canvas组件已经 > [onReady](../../../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md) > 再进行绘制。 > 触发'onAttach'回调的一般场景： > 1、Canvas组件创建时绑定CanvasRenderingContext2D对象； > 2、CanvasRenderingContext2D对象新绑定一个Canvas组件时。
 
 **起始版本：** 13
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -196,16 +210,16 @@ on(type: 'onAttach', callback: Callback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'onAttach' | 是 | 订阅CanvasRenderingContext2D与Canvas组件发生绑定的回调。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_异常值undefined或null按无效值处理。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 订阅CanvasRenderingContext2D与Canvas组件发生绑定后触发的回调。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_异常值undefined或null按无效值处理。 |
+| type | 'onAttach' | 是 | 订阅CanvasRenderingContext2D与Canvas组件发生绑定的回调。 &lt;br&gt;异常值undefined或null按无效值处理。 |
+| callback | Callback&lt;void&gt; | 是 | 订阅CanvasRenderingContext2D与Canvas组件 发生绑定后触发的回调。 &lt;br&gt;异常值undefined或null按无效值处理。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Input parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-## on('onDetach')
+## on_onDetach
 
 ```TypeScript
 on(type: 'onDetach', callback: Callback<void>): void
@@ -216,6 +230,8 @@ on(type: 'onDetach', callback: Callback<void>): void
 **起始版本：** 13
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -229,14 +245,14 @@ on(type: 'onDetach', callback: Callback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'onDetach' | 是 | 订阅CanvasRenderingContext2D与Canvas组件解除绑定的回调。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_异常值undefined或null按无效值处理。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 订阅CanvasRenderingContext2D与Canvas组件解除绑定后触发的回调。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_异常值undefined或null按无效值处理。 |
+| type | 'onDetach' | 是 | 订阅CanvasRenderingContext2D与Canvas组件解除绑定的回调。 &lt;br&gt;异常值undefined或null按无效值处理。 |
+| callback | Callback&lt;void&gt; | 是 | 订阅CanvasRenderingContext2D与Canvas组件 解除绑定后触发的回调。 &lt;br&gt;异常值undefined或null按无效值处理。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Input parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## startImageAnalyzer
 
@@ -244,11 +260,13 @@ on(type: 'onDetach', callback: Callback<void>): void
 startImageAnalyzer(config: ImageAnalyzerConfig): Promise<void>
 ```
 
-配置并启动AI分析功能，使用Promise异步回调。使用前需先设置 \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_为true，启用图像 AI分析能力。 该方法调用时，将截取调用时刻的画面帧进行分析，使用时需注意启动分析的时机，避免出现画面和分析内容不一致的情况。 未执行完重复调用该方法会触发错误回调。示例代码同stopImageAnalyzer。 > **说明：** > > 分析类型不支持动态修改。 > > 当检测到画面有变化时，分析结果将自动销毁，可重新调用本接口启动分析。 > > 该特性依赖设备能力，不支持该能力的情况下，将返回错误码。
+配置并启动AI分析功能，使用Promise异步回调。使用前需先设置 [enableAnalyzer](../../../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md#enableanalyzer12)为true，启用图像 AI分析能力。 该方法调用时，将截取调用时刻的画面帧进行分析，使用时需注意启动分析的时机，避免出现画面和分析内容不一致的情况。 未执行完重复调用该方法会触发错误回调。示例代码同stopImageAnalyzer。 > **说明：** > > 分析类型不支持动态修改。 > > 当检测到画面有变化时，分析结果将自动销毁，可重新调用本接口启动分析。 > > 该特性依赖设备能力，不支持该能力的情况下，将返回错误码。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -262,7 +280,7 @@ startImageAnalyzer(config: ImageAnalyzerConfig): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| config | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 执行AI分析所需要的入参，用于配置AI分析的类型（如主体识别、文字识别等）。详见[ImageAnalyzerConfig]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_异常值undefined或null按无效值处理。 |
+| config | ImageAnalyzerConfig | 是 | 执行AI分析所需要的入参，用于配置AI分析的类型（如主体识别、文字识别等）。详见 ImageAnalyzerConfig。 &lt;br&gt;异常值undefined或null按无效值处理。 |
 
 **返回值：**
 
@@ -275,8 +293,8 @@ startImageAnalyzer(config: ImageAnalyzerConfig): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [110001](../arkui-ts/errorcode-image-analyzer.md#110001-ai图像分析功能不支持) | Image analysis feature is unsupported. |
-| [110002](../arkui-ts/errorcode-image-analyzer.md#110002-ai图像分析正在进行中) | Image analysis is currently being executed. |
 | [110003](../arkui-ts/errorcode-image-analyzer.md#110003-ai图像分析已停止) | Image analysis is stopped. |
+| [110002](../arkui-ts/errorcode-image-analyzer.md#110002-ai图像分析正在进行中) | Image analysis is currently being executed. |
 
 ## stopImageAnalyzer
 
@@ -289,6 +307,8 @@ stopImageAnalyzer(): void
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -310,6 +330,8 @@ toDataURL(type?: string, quality?: any): string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -322,8 +344,8 @@ toDataURL(type?: string, quality?: any): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | string | 否 | 用于指定图像格式。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_可选参数为："image/png"（无损压缩，适合需要精确像素的场景）、"image/jpeg"（有损压缩，适合照片类图像）、"image/webp"（高效压缩，适合网络传输场景）。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_异常值undefined或null按默认值处理。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_默认值：image/png |
-| quality | any | 否 | 在指定图片格式为image/jpeg或image/webp的情况下，可以从0到1的区间内选择图片的质量，0-0.5适合快速传输或低带宽场景，0.6-0.8适合普通场景，0.9-1.0适合高质量需求。如果超出取值范围，将会使用默认值0.92。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_异常值undefined、null、NaN和Infinity按默认值处理。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_默认值：0.92 |
+| type | string | 否 | 用于指定图像格式。 &lt;br&gt;可选参数为："image/png"（无损压缩，适合需要精确像素的场景）、"image/jpeg"（有损压缩，适合照片类图像）、"image/webp"（高效压缩，适合网络传输场景）。 &lt;br&gt;异常值undefined或null按默认值处理。 &lt;br&gt;默认值：image/png |
+| quality | any | 否 | 在指定图片格式为image/jpeg或image/webp的情况下，可以从0到1的区间内选择图片的质量，0-0.5适合快速传输或低带宽场景，0.6-0.8适合普通场景，0.9-1. 0适合高质量需求。如果超出取值范围，将会使用默认值0.92。 &lt;br&gt;异常值undefined、null、NaN和Infinity按默认值处理。 &lt;br&gt;默认值：0.92 |
 
 **返回值：**
 
@@ -337,13 +359,15 @@ toDataURL(type?: string, quality?: any): string
 readonly canvas: FrameNode
 ```
 
-获取和CanvasRenderingContext2D关联的Canvas组件的FrameNode实例。可用于监听关联Canvas组件的可见状态。 \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_默认值：null。
+获取和CanvasRenderingContext2D关联的Canvas组件的FrameNode实例。可用于监听关联Canvas组件的可见状态。 &lt;br&gt;默认值：null。
 
-**类型：** FrameNode
+**类型：** [FrameNode](arkts-arkui-framenode-t.md)
 
 **起始版本：** 13
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -367,6 +391,8 @@ readonly height: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -388,6 +414,8 @@ readonly width: number
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

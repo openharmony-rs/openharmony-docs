@@ -1,10 +1,12 @@
 # BackgroundImageOptions
 
-定义背景图选项。 > **说明：** > > 背景图片的同步加载可能会带来潜在性能问题，详情可见\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_中说明。
+定义背景图选项。 > **说明：** > > 背景图片的同步加载可能会带来潜在性能问题，详情可见[Image](../../../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#image-1)中说明。
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-interface BackgroundImageOptions--><!--Device-unnamed-interface BackgroundImageOptions-End-->
 
@@ -23,6 +25,8 @@ repeat?: ImageRepeat
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -47,6 +51,8 @@ syncLoad?: boolean
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

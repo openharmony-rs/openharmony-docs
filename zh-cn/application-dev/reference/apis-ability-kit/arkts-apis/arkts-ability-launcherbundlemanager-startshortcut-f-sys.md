@@ -6,11 +6,13 @@
 function startShortcut(shortcutInfo: ShortcutInfo, options?: StartOptions): Promise<void>
 ```
 
-拉起指定[ShortcutInfo]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_中的ability。使用Promise异步回调。
+拉起指定ShortcutInfo中的ability。使用Promise异步回调。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.START_SHORTCUT
 
@@ -24,8 +26,8 @@ function startShortcut(shortcutInfo: ShortcutInfo, options?: StartOptions): Prom
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| shortcutInfo | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 应用的快捷方式信息。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 启动参数选项，用于指定任务切到前台时的窗口模式，设备ID等。 |
+| shortcutInfo | ShortcutInfo | 是 | 应用的快捷方式信息。 |
+| options | [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md) | 否 | 启动参数选项，用于指定任务切到前台时的窗口模式，设备ID等。 |
 
 **返回值：**
 
@@ -37,13 +39,13 @@ function startShortcut(shortcutInfo: ShortcutInfo, options?: StartOptions): Prom
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not support. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Verify permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not support. |
 | [17700065](../errorcode-bundle.md#17700065-shortcutinfo结构体中指定的want不支持被拉起) | The specified shortcut want in shortcut info is not supported to be started. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { launcherBundleManager } from '@kit.AbilityKit';

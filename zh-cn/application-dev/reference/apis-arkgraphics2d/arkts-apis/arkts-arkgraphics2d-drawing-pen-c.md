@@ -1,10 +1,12 @@
 # Pen
 
-画笔对象，描述所绘制图形形状的轮廓信息。 > **说明：** > > - 本模块使用屏幕物理像素单位px。 > > - 本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
+画笔对象，用于描述所绘制图形形状的轮廓信息，支持设置颜色、线宽、抗锯齿、透明度、混合模式、转角样式、线帽样式，以及颜色滤波器、蒙版滤波器、路径效果、着色器、阴影层等绘制效果。 > **说明：** > > - 本模块使用屏幕物理像素单位px。 > > - 本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-drawing-class Pen--><!--Device-drawing-class Pen-End-->
 
@@ -18,9 +20,11 @@ constructor()
 
 构造一个新的画笔对象。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Pen-constructor()--><!--Device-Pen-constructor()-End-->
 
@@ -34,9 +38,11 @@ constructor(pen: Pen)
 
 复制构造一个新的画笔对象。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Pen-constructor(pen: Pen)--><!--Device-Pen-constructor(pen: Pen)-End-->
 
@@ -46,31 +52,27 @@ constructor(pen: Pen)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pen | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 待复制的画笔对象。 |
+| pen | Pen | 是 | 待复制的画笔对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt;2. Incorrect parameter types. |
 
 ## getAlpha
 
-ArkTS-Dyn:
-```TypeScript
-getAlpha(): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getAlpha(): int
 ```
 
 获取画笔的透明度。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Pen-getAlpha(): int--><!--Device-Pen-getAlpha(): int-End-->
 
@@ -80,7 +82,7 @@ getAlpha(): int
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 返回画笔的透明度，该返回值为0到255之间的整数。 |
+| int | 返回画笔的透明度，该返回值为0到255之间的整数。 |
 
 ## getCapStyle
 
@@ -90,9 +92,11 @@ getCapStyle(): CapStyle
 
 获取画笔的线帽样式。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Pen-getCapStyle(): CapStyle--><!--Device-Pen-getCapStyle(): CapStyle-End-->
 
@@ -102,7 +106,7 @@ getCapStyle(): CapStyle
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回画笔的线帽样式。 |
+| [CapStyle](arkts-arkgraphics2d-drawing-capstyle-e.md) | 返回画笔的线帽样式。 |
 
 ## getColor
 
@@ -116,6 +120,8 @@ getColor(): common2D.Color
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-Pen-getColor(): common2D.Color--><!--Device-Pen-getColor(): common2D.Color-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -124,7 +130,7 @@ getColor(): common2D.Color
 
 | 类型 | 说明 |
 | --- | --- |
-| common2D.Color | Color of the pen. |
+| common2D.Color | 返回画笔当前设置的颜色。 |
 
 ## getColor
 
@@ -132,11 +138,13 @@ getColor(): common2D.Color
 getColor(): common2D.Color | undefined
 ```
 
-Obtains the color of this pen.
+获取画笔的颜色。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Pen-getColor(): common2D.Color | undefined--><!--Device-Pen-getColor(): common2D.Color | undefined-End-->
 
@@ -146,7 +154,7 @@ Obtains the color of this pen.
 
 | 类型 | 说明 |
 | --- | --- |
-| common2D.Color | Returns a 32-bit (ARGB) variable that describes the color. |
+| common2D.Color | 返回画笔当前设置的颜色。获取失败时返回undefined。 |
 
 ## getColor4f
 
@@ -154,11 +162,13 @@ Obtains the color of this pen.
 getColor4f(): common2D.Color4f
 ```
 
-获取画笔的颜色，与[getColor]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_的区别在于返回值类型为浮点数，适用于需要浮点数类型的场景。
+获取画笔的颜色，与[getColor](#getColor)的区别在于返回值类型为 [common2D.Color4f](arkts-arkgraphics2d-common2d-color4f-i.md#Color4f)，颜色通道值为浮点数，适用于需要浮点数类型的场景。
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 <!--Device-Pen-getColor4f(): common2D.Color4f--><!--Device-Pen-getColor4f(): common2D.Color4f-End-->
 
@@ -168,7 +178,7 @@ getColor4f(): common2D.Color4f
 
 | 类型 | 说明 |
 | --- | --- |
-| common2D.Color4f | Color of the pen. |
+| common2D.Color4f | 返回画笔当前设置的颜色，为ARGB格式的浮点数表示，每个颜色通道的取值范围为[0.0, 1.0]。 |
 
 ## getColor4f
 
@@ -176,11 +186,13 @@ getColor4f(): common2D.Color4f
 getColor4f(): common2D.Color4f | undefined
 ```
 
-Obtains the color of a pen. The color is used by the pen to outline a shape.
+获取画笔的颜色，与[getColor](#getColor)的区别在于返回值类型为 [common2D.Color4f](arkts-arkgraphics2d-common2d-color4f-i.md#Color4f)，颜色通道值为浮点数，适用于需要浮点数类型的场景。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 <!--Device-Pen-getColor4f(): common2D.Color4f | undefined--><!--Device-Pen-getColor4f(): common2D.Color4f | undefined-End-->
 
@@ -190,7 +202,7 @@ Obtains the color of a pen. The color is used by the pen to outline a shape.
 
 | 类型 | 说明 |
 | --- | --- |
-| common2D.Color4f | Returns four floating point values that describes the color. |
+| common2D.Color4f | 返回画笔当前设置的颜色，为ARGB格式的浮点数表示，每个颜色通道的取值范围为[0.0, 1.0]。获取失败时返回undefined。 |
 
 ## getColorFilter
 
@@ -204,6 +216,8 @@ getColorFilter(): ColorFilter
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-Pen-getColorFilter(): ColorFilter--><!--Device-Pen-getColorFilter(): ColorFilter-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -212,7 +226,7 @@ getColorFilter(): ColorFilter
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回颜色滤波器。 |
+| ColorFilter | 返回画笔当前设置的颜色滤波器，可用于查询当前画笔的颜色过滤效果。 |
 
 ## getColorFilter
 
@@ -220,11 +234,13 @@ getColorFilter(): ColorFilter
 getColorFilter(): ColorFilter | undefined
 ```
 
-Obtains the color filter of this pen.
+获取画笔的颜色滤波器。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Pen-getColorFilter(): ColorFilter | undefined--><!--Device-Pen-getColorFilter(): ColorFilter | undefined-End-->
 
@@ -234,7 +250,7 @@ Obtains the color filter of this pen.
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | ColorFilter. |
+| ColorFilter | 返回画笔当前设置的颜色滤波器，可用于查询当前画笔的颜色过滤效果。获取失败时返回undefined。 |
 
 ## getFillPath
 
@@ -244,9 +260,11 @@ getFillPath(src: Path, dst: Path): boolean
 
 获取使用画笔绘制的源路径轮廓，并用目标路径表示。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Pen-getFillPath(src: Path, dst: Path): boolean--><!--Device-Pen-getFillPath(src: Path, dst: Path): boolean-End-->
 
@@ -256,8 +274,8 @@ getFillPath(src: Path, dst: Path): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| src | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 源路径对象。 |
-| dst | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 目标路径对象。 |
+| src | Path | 是 | 待提取轮廓的源路径对象。 |
+| dst | Path | 是 | 目标路径对象，用于存储根据画笔属性从src路径计算得到的轮廓结果。 |
 
 **返回值：**
 
@@ -269,25 +287,21 @@ getFillPath(src: Path, dst: Path): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt;2. Incorrect parameter types. |
 
 ## getHexColor
 
-ArkTS-Dyn:
-```TypeScript
-getHexColor(): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getHexColor(): int
 ```
 
 获取画笔的颜色。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Pen-getHexColor(): int--><!--Device-Pen-getHexColor(): int-End-->
 
@@ -297,7 +311,7 @@ getHexColor(): int
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 返回画笔的颜色，以16进制ARGB格式的32位无符号整数表示。 |
+| int | 返回画笔的颜色，以16进制ARGB格式的32位无符号整数表示。 |
 
 ## getJoinStyle
 
@@ -307,9 +321,11 @@ getJoinStyle(): JoinStyle
 
 获取画笔绘制转角的样式。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Pen-getJoinStyle(): JoinStyle--><!--Device-Pen-getJoinStyle(): JoinStyle-End-->
 
@@ -319,25 +335,21 @@ getJoinStyle(): JoinStyle
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回折线转角的样式。 |
+| [JoinStyle](arkts-arkgraphics2d-drawing-joinstyle-e.md) | 返回折线转角的样式。 |
 
 ## getMiterLimit
 
-ArkTS-Dyn:
-```TypeScript
-getMiterLimit(): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getMiterLimit(): double
 ```
 
-获取折线尖角的限制值。
+获取折线尖角长度与线宽的最大比值。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Pen-getMiterLimit(): double--><!--Device-Pen-getMiterLimit(): double-End-->
 
@@ -347,25 +359,21 @@ getMiterLimit(): double
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：double | 返回折线尖角长度与线宽的最大比值。 |
+| double | 返回折线尖角长度与线宽的最大比值。 |
 
 ## getWidth
 
-ArkTS-Dyn:
-```TypeScript
-getWidth(): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getWidth(): double
 ```
 
 获取画笔的线宽属性，线宽描述了画笔绘制图形轮廓的宽度。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Pen-getWidth(): double--><!--Device-Pen-getWidth(): double-End-->
 
@@ -375,7 +383,7 @@ getWidth(): double
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：double | 返回画笔的线宽，单位为物理像素px。 |
+| double | 返回画笔的线宽，单位为物理像素px。 |
 
 ## isAntiAlias
 
@@ -385,9 +393,11 @@ isAntiAlias(): boolean
 
 获取画笔是否开启抗锯齿属性。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Pen-isAntiAlias(): boolean--><!--Device-Pen-isAntiAlias(): boolean-End-->
 
@@ -407,9 +417,11 @@ reset(): void
 
 重置当前画笔为初始状态。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Pen-reset(): void--><!--Device-Pen-reset(): void-End-->
 
@@ -417,21 +429,17 @@ reset(): void
 
 ## setAlpha
 
-ArkTS-Dyn:
-```TypeScript
-setAlpha(alpha: number): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 setAlpha(alpha: int): void
 ```
 
 设置画笔的透明度。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Pen-setAlpha(alpha: int): void--><!--Device-Pen-setAlpha(alpha: int): void-End-->
 
@@ -441,13 +449,13 @@ setAlpha(alpha: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| alpha | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 用于表示透明度的[0, 255]区间内的整数值，传入浮点类型时向下取整。 |
+| alpha | int | 是 | 表示透明度，取值范围为[0, 255]，传入浮点类型时向下取整。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## setAntiAlias
 
@@ -455,11 +463,13 @@ setAlpha(alpha: int): void
 setAntiAlias(aa: boolean): void
 ```
 
-设置画笔是否开启抗锯齿。开启后，可以使得图形的边缘在显示时更平滑。未调用此接口设置时，系统默认关闭抗锯齿。
+设置画笔是否开启抗锯齿。开启后，使图形边缘在显示时更平滑。未调用此接口设置时，系统默认关闭抗锯齿。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Pen-setAntiAlias(aa: boolean): void--><!--Device-Pen-setAntiAlias(aa: boolean): void-End-->
 
@@ -475,7 +485,7 @@ setAntiAlias(aa: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt;2. Incorrect parameter types. |
 
 ## setBlendMode
 
@@ -485,9 +495,11 @@ setBlendMode(mode: BlendMode): void
 
 设置画笔的混合模式。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Pen-setBlendMode(mode: BlendMode): void--><!--Device-Pen-setBlendMode(mode: BlendMode): void-End-->
 
@@ -497,13 +509,13 @@ setBlendMode(mode: BlendMode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 颜色的混合模式。 |
+| mode | BlendMode | 是 | 颜色的混合模式。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## setCapStyle
 
@@ -511,11 +523,13 @@ setBlendMode(mode: BlendMode): void
 setCapStyle(style: CapStyle): void
 ```
 
-设置画笔的线帽样式。未调用此接口设置时，系统默认的线帽样式为FLAT\_CAP。
+设置画笔的线帽样式。未调用此接口设置时，系统默认的线帽样式为FLAT_CAP。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Pen-setCapStyle(style: CapStyle): void--><!--Device-Pen-setCapStyle(style: CapStyle): void-End-->
 
@@ -525,13 +539,13 @@ setCapStyle(style: CapStyle): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| style | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 描述画笔的线帽样式。 |
+| style | [CapStyle](arkts-arkgraphics2d-drawing-capstyle-e.md) | 是 | 描述画笔的线帽样式。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## setColor
 
@@ -541,9 +555,11 @@ setColor(color: common2D.Color): void
 
 设置画笔的颜色。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Pen-setColor(color: common2D.Color): void--><!--Device-Pen-setColor(color: common2D.Color): void-End-->
 
@@ -559,25 +575,21 @@ setColor(color: common2D.Color): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## setColor
 
-ArkTS-Dyn:
-```TypeScript
-setColor(alpha: number, red: number, green: number, blue: number): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 setColor(alpha: int, red: int, green: int, blue: int): void
 ```
 
-设置画笔的颜色。性能优于[setColor]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_接口，推荐使用本接口。
+设置画笔的颜色。性能优于[setColor](#setColor)接口，推荐使用本接口。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Pen-setColor(alpha: int, red: int, green: int, blue: int): void--><!--Device-Pen-setColor(alpha: int, red: int, green: int, blue: int): void-End-->
 
@@ -587,34 +599,30 @@ setColor(alpha: int, red: int, green: int, blue: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| alpha | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | ARGB格式颜色的透明度通道值，该参数是0到255之间的整数，传入范围内的浮点数会向下取整。 |
-| red | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | ARGB格式颜色的红色通道值，该参数是0到255之间的整数，传入范围内的浮点数会向下取整。 |
-| green | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | ARGB格式颜色的绿色通道值，该参数是0到255之间的整数，传入范围内的浮点数会向下取整。 |
-| blue | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | ARGB格式颜色的蓝色通道值，该参数是0到255之间的整数，传入范围内的浮点数会向下取整。 |
+| alpha | int | 是 | ARGB格式颜色的透明度通道值，该参数取值范围是[0, 255]，传入范围内的浮点数会向下取整，超出范围的值会被截断到0或255。 |
+| red | int | 是 | ARGB格式颜色的红色通道值，该参数取值范围是[0, 255]，传入范围内的浮点数会向下取整，超出范围的值会被截断到0或255。 |
+| green | int | 是 | ARGB格式颜色的绿色通道值，该参数取值范围是[0, 255]，传入范围内的浮点数会向下取整，超出范围的值会被截断到0或255。 |
+| blue | int | 是 | ARGB格式颜色的蓝色通道值，该参数取值范围是[0, 255]，传入范围内的浮点数会向下取整，超出范围的值会被截断到0或255。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt;2. Incorrect parameter types. |
 
 ## setColor
 
-ArkTS-Dyn:
-```TypeScript
-setColor(color: number): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 setColor(color: int): void
 ```
 
 设置画笔的颜色。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Pen-setColor(color: int): void--><!--Device-Pen-setColor(color: int): void-End-->
 
@@ -624,7 +632,7 @@ setColor(color: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 16进制ARGB格式的颜色。 |
+| color | int | 是 | 16进制ARGB格式的颜色，格式为0xAARRGGBB，其中AA表示透明度通道，RR表示红色通道，GG表示绿色通道，BB表示蓝色通道，各通道取值范围为00-FF，取值范围为 [0x00000000, 0xFFFFFFFF]。超出有效范围的值会被截断处理。 |
 
 ## setColor4f
 
@@ -632,11 +640,13 @@ setColor(color: int): void
 setColor4f(color4f: common2D.Color4f, colorSpace: colorSpaceManager.ColorSpaceManager | null): void
 ```
 
-设置画笔的颜色以及标准色域，与[setColor]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_区别在于可以单独设置色域，适用于需要单独设置色域的场景。
+设置画笔的颜色以及标准色域，与[setColor](#setColor)的区别在于可以单独设置色域。
 
-**起始版本：** 20
+**起始版本：** 24
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 <!--Device-Pen-setColor4f(color4f: common2D.Color4f, colorSpace: colorSpaceManager.ColorSpaceManager | null): void--><!--Device-Pen-setColor4f(color4f: common2D.Color4f, colorSpace: colorSpaceManager.ColorSpaceManager | null): void-End-->
 
@@ -646,7 +656,7 @@ setColor4f(color4f: common2D.Color4f, colorSpace: colorSpaceManager.ColorSpaceMa
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color4f | common2D.Color4f | 是 | ARGB格式的颜色，每个颜色通道的值是0.0-1.0之间的浮点数，大于1.0时，取1.0，小于0.0时，取0.0。 |
+| color4f | common2D.Color4f | 是 | ARGB格式的颜色，浮点数，每个颜色通道值的范围为[0.0, 1.0]，超出范围的值会被截断到0.0或1.0。 |
 | colorSpace | colorSpaceManager.ColorSpaceManager \| null | 是 | 标准色域对象，null表示使用SRGB色域。 |
 
 ## setColorFilter
@@ -657,9 +667,11 @@ setColorFilter(filter: ColorFilter | null): void
 
 给画笔添加额外的颜色滤波器。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Pen-setColorFilter(filter: ColorFilter | null): void--><!--Device-Pen-setColorFilter(filter: ColorFilter | null): void-End-->
 
@@ -669,13 +681,13 @@ setColorFilter(filter: ColorFilter | null): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| filter | \_\_\_MD\_LINK\_USD\_0\_\_\_ \| null | 是 | 颜色滤波器。null表示清空颜色滤波器。\_\_\_HTML\_TAG\_USD\_0\_\_\_**起始版本：** 20 |
+| filter | ColorFilter \| null | 是 | 颜色滤波器。null表示清空颜色滤波器。<br>**起始版本：** 20 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt;2. Incorrect parameter types. |
 
 ## setDither
 
@@ -683,11 +695,13 @@ setColorFilter(filter: ColorFilter | null): void
 setDither(dither: boolean): void
 ```
 
-开启画笔的抖动绘制效果。抖动绘制可以使得绘制出的颜色更加真实。
+设置画笔是否开启抖动绘制效果。抖动绘制使颜色更真实。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Pen-setDither(dither: boolean): void--><!--Device-Pen-setDither(dither: boolean): void-End-->
 
@@ -703,7 +717,7 @@ setDither(dither: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt;2. Incorrect parameter types. |
 
 ## setImageFilter
 
@@ -713,9 +727,11 @@ setImageFilter(filter: ImageFilter | null): void
 
 设置画笔的图像滤波器。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Pen-setImageFilter(filter: ImageFilter | null): void--><!--Device-Pen-setImageFilter(filter: ImageFilter | null): void-End-->
 
@@ -725,13 +741,13 @@ setImageFilter(filter: ImageFilter | null): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| filter | \_\_\_MD\_LINK\_USD\_0\_\_\_ \| null | 是 | 图像滤波器，null表示清空画笔的图像滤波器效果。 |
+| filter | [ImageFilter](arkts-arkgraphics2d-drawing-imagefilter-c.md) \| null | 是 | 图像滤波器，null表示清空画笔的图像滤波器效果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt;2. Incorrect parameter types. |
 
 ## setJoinStyle
 
@@ -739,11 +755,13 @@ setImageFilter(filter: ImageFilter | null): void
 setJoinStyle(style: JoinStyle): void
 ```
 
-设置画笔绘制转角的样式。未调用此接口设置时，系统默认的转角样式为MITER\_JOIN。
+设置画笔绘制转角的样式。未调用此接口设置时，系统默认的转角样式为MITER_JOIN。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Pen-setJoinStyle(style: JoinStyle): void--><!--Device-Pen-setJoinStyle(style: JoinStyle): void-End-->
 
@@ -753,13 +771,13 @@ setJoinStyle(style: JoinStyle): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| style | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 折线转角样式。 |
+| style | [JoinStyle](arkts-arkgraphics2d-drawing-joinstyle-e.md) | 是 | 折线转角样式。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## setMaskFilter
 
@@ -769,9 +787,11 @@ setMaskFilter(filter: MaskFilter | null): void
 
 给画笔添加额外的蒙版滤镜。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Pen-setMaskFilter(filter: MaskFilter | null): void--><!--Device-Pen-setMaskFilter(filter: MaskFilter | null): void-End-->
 
@@ -781,31 +801,27 @@ setMaskFilter(filter: MaskFilter | null): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| filter | \_\_\_MD\_LINK\_USD\_0\_\_\_ \| null | 是 | 蒙版滤镜。null表示清空蒙版滤镜。\_\_\_HTML\_TAG\_USD\_0\_\_\_**起始版本：** 20 |
+| filter | [MaskFilter](arkts-arkgraphics2d-drawing-maskfilter-c.md) \| null | 是 | 蒙版滤镜。null表示清空蒙版滤镜。<br>**起始版本：** 20 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt;2. Incorrect parameter types. |
 
 ## setMiterLimit
 
-ArkTS-Dyn:
-```TypeScript
-setMiterLimit(miter: number): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 setMiterLimit(miter: double): void
 ```
 
-设置折线尖角长度与线宽的最大比值，当画笔绘制一条折线，并且[JoinStyle]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_为MITER\_JOIN时，若尖角长度与线宽的比值大 于限制值，则该折角使用BEVEL\_JOIN绘制。
+设置折线尖角长度与线宽的最大比值。当画笔绘制一条折线，并且[JoinStyle](arkts-arkgraphics2d-drawing-joinstyle-e.md#JoinStyle)为MITER_JOIN时，若尖角长度与线宽的比值大于该最大比值，则该转角使用BEVEL_JOIN 绘制。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Pen-setMiterLimit(miter: double): void--><!--Device-Pen-setMiterLimit(miter: double): void-End-->
 
@@ -815,13 +831,13 @@ setMiterLimit(miter: double): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| miter | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：double | 是 | 折线尖角长度与线宽的最大比值，负数在绘制时会被视作4.0处理，非负数正常生效，该参数为浮点数。 |
+| miter | double | 是 | 折线尖角长度与线宽的最大比值，负数在绘制时会被视作4.0处理，非负数按实际传入值生效，该参数为浮点数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt;2. Incorrect parameter types. |
 
 ## setPathEffect
 
@@ -831,9 +847,11 @@ setPathEffect(effect: PathEffect | null): void
 
 设置画笔路径效果。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Pen-setPathEffect(effect: PathEffect | null): void--><!--Device-Pen-setPathEffect(effect: PathEffect | null): void-End-->
 
@@ -843,13 +861,13 @@ setPathEffect(effect: PathEffect | null): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| effect | \_\_\_MD\_LINK\_USD\_0\_\_\_ \| null | 是 | 路径效果对象。null表示清空路径效果。\_\_\_HTML\_TAG\_USD\_0\_\_\_**起始版本：** 20 |
+| effect | [PathEffect](arkts-arkgraphics2d-drawing-patheffect-c.md) \| null | 是 | 路径效果对象，用于设置虚线、转角等路径绘制样式。null表示清空路径效果。<br>**起始版本：** 20 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt;2. Incorrect parameter types. |
 
 ## setShaderEffect
 
@@ -859,9 +877,11 @@ setShaderEffect(shaderEffect: ShaderEffect | null): void
 
 设置画笔着色器效果。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Pen-setShaderEffect(shaderEffect: ShaderEffect | null): void--><!--Device-Pen-setShaderEffect(shaderEffect: ShaderEffect | null): void-End-->
 
@@ -871,13 +891,13 @@ setShaderEffect(shaderEffect: ShaderEffect | null): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| shaderEffect | \_\_\_MD\_LINK\_USD\_0\_\_\_ \| null | 是 | 着色器对象。null表示清空着色器效果。\_\_\_HTML\_TAG\_USD\_0\_\_\_**起始版本：** 20 |
+| shaderEffect | [ShaderEffect](arkts-arkgraphics2d-drawing-shadereffect-c.md) \| null | 是 | 着色器效果对象。null表示清空着色器效果。<br>**起始版本：** 20 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt;2. Incorrect parameter types. |
 
 ## setShadowLayer
 
@@ -887,9 +907,11 @@ setShadowLayer(shadowLayer: ShadowLayer | null): void
 
 设置画笔阴影层效果。当前仅在绘制文字时生效。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Pen-setShadowLayer(shadowLayer: ShadowLayer | null): void--><!--Device-Pen-setShadowLayer(shadowLayer: ShadowLayer | null): void-End-->
 
@@ -899,31 +921,27 @@ setShadowLayer(shadowLayer: ShadowLayer | null): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| shadowLayer | \_\_\_MD\_LINK\_USD\_0\_\_\_ \| null | 是 | 阴影层对象。null表示清空阴影层效果。\_\_\_HTML\_TAG\_USD\_0\_\_\_**起始版本：** 20 |
+| shadowLayer | [ShadowLayer](arkts-arkgraphics2d-drawing-shadowlayer-c.md) \| null | 是 | 阴影层对象。null表示清空阴影层效果。<br>**起始版本：** 20 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt;2. Incorrect parameter types. |
 
 ## setStrokeWidth
 
-ArkTS-Dyn:
-```TypeScript
-setStrokeWidth(width: number): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 setStrokeWidth(width: double): void
 ```
 
 设置画笔的线宽。0线宽被视作特殊的极细线宽，在绘制时始终会被绘制为1像素，不随画布的缩放而改变；负数线宽在实际绘制时会被视作0线宽。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-Pen-setStrokeWidth(width: double): void--><!--Device-Pen-setStrokeWidth(width: double): void-End-->
 
@@ -933,11 +951,11 @@ setStrokeWidth(width: double): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| width | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：double | 是 | 表示线宽，该参数为浮点数。 |
+| width | double | 是 | 表示线宽，该参数为浮点数，单位为物理像素px。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt;2. Incorrect parameter types. |
 

@@ -14,7 +14,7 @@ function equal(agent: WantAgent, otherAgent: WantAgent, callback: AsyncCallback<
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.wantAgent/wantAgent#equal
+**替代接口：** [equal](arkts-ability-wantagent-equal-f.md#equal)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -26,11 +26,11 @@ function equal(agent: WantAgent, otherAgent: WantAgent, callback: AsyncCallback<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| agent | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | WantAgent对象。 |
-| otherAgent | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | WantAgent对象。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;boolean&gt; | 是 | 判断两个WantAgent实例是否相等的回调方法。返回true表示两个WantAgent实例相等；返回false表示不相等。 |
+| agent | [WantAgent](arkts-ability-wantagent-depr-t.md) | 是 | WantAgent对象。 |
+| otherAgent | [WantAgent](arkts-ability-wantagent-depr-t.md) | 是 | WantAgent对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 判断两个WantAgent实例是否相等的回调方法。返回true表示两个WantAgent实例相等；返回false表示不相等。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import wantAgent, { WantAgent as _WantAgent } from '@ohos.wantAgent';
@@ -101,7 +101,7 @@ function equal(agent: WantAgent, otherAgent: WantAgent): Promise<boolean>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.wantAgent/wantAgent#equal
+**替代接口：** [equal](arkts-ability-wantagent-equal-f.md#equal)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -113,8 +113,8 @@ function equal(agent: WantAgent, otherAgent: WantAgent): Promise<boolean>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| agent | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | WantAgent对象。 |
-| otherAgent | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | WantAgent对象。 |
+| agent | [WantAgent](arkts-ability-wantagent-depr-t.md) | 是 | WantAgent对象。 |
+| otherAgent | [WantAgent](arkts-ability-wantagent-depr-t.md) | 是 | WantAgent对象。 |
 
 **返回值：**
 
@@ -122,7 +122,7 @@ function equal(agent: WantAgent, otherAgent: WantAgent): Promise<boolean>
 | --- | --- |
 | Promise&lt;boolean&gt; | 以Promise形式返回获取判断两个WantAgent实例是否相等的结果。返回true表示两个WantAgent实例相等；返回false表示不相等。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import wantAgent, { WantAgent as _WantAgent } from '@ohos.wantAgent';

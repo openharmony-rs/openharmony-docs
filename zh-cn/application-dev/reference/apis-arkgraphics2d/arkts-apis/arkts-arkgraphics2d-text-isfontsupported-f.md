@@ -6,11 +6,13 @@
 function isFontSupported(fontURL: string | Resource): boolean
 ```
 
-检查系统是否支持指定的字体文件。
+检查系统是否支持指定的字体文件。可在加载自定义字体前预先验证字体文件的可用性，避免因字体不支持导致文本渲染异常。
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -22,7 +24,7 @@ function isFontSupported(fontURL: string | Resource): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fontURL | string \| Resource | 是 | 需要检查的字体文件的路径，应为 "file:// + 字体文件绝对路径" 或 "rawfile/目录or文件名"。 |
+| fontURL | string \| [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md) | 是 | 需要检查的字体文件的路径，应为 "file:// + 字体文件绝对路径" 或 "rawfile/目录or文件名"。 |
 
 **返回值：**
 
@@ -30,7 +32,7 @@ function isFontSupported(fontURL: string | Resource): boolean
 | --- | --- |
 | boolean | 系统是否支持指定的字体文件。返回true表示支持，返回false表示不支持。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

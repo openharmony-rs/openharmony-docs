@@ -2,9 +2,11 @@
 
 端云同步状态，为枚举类型。 > **说明：** > > 以下同步状态发生变更时，如果应用注册了同步过程事件监听，则通过回调通知应用。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-cloudSync-enum SyncState--><!--Device-cloudSync-enum SyncState-End-->
 
@@ -18,9 +20,11 @@ UPLOADING = 0
 
 上行同步中。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SyncState-UPLOADING = 0--><!--Device-SyncState-UPLOADING = 0-End-->
 
@@ -34,9 +38,11 @@ UPLOAD_FAILED = 1
 
 上行同步失败。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SyncState-UPLOAD_FAILED = 1--><!--Device-SyncState-UPLOAD_FAILED = 1-End-->
 
@@ -50,9 +56,11 @@ DOWNLOADING = 2
 
 下行同步中。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SyncState-DOWNLOADING = 2--><!--Device-SyncState-DOWNLOADING = 2-End-->
 
@@ -66,9 +74,11 @@ DOWNLOAD_FAILED = 3
 
 下行同步失败。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SyncState-DOWNLOAD_FAILED = 3--><!--Device-SyncState-DOWNLOAD_FAILED = 3-End-->
 
@@ -82,9 +92,11 @@ COMPLETED = 4
 
 同步成功。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SyncState-COMPLETED = 4--><!--Device-SyncState-COMPLETED = 4-End-->
 
@@ -98,9 +110,11 @@ STOPPED = 5
 
 同步已停止。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SyncState-STOPPED = 5--><!--Device-SyncState-STOPPED = 5-End-->
 

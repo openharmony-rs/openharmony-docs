@@ -6,6 +6,8 @@ Enum type for navigationPolicy in OnWindowNewExtEvent.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare enum NavigationPolicy--><!--Device-unnamed-declare enum NavigationPolicy-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -21,6 +23,8 @@ NEW POPUP window.
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-NavigationPolicy-NEW_POPUP = 0--><!--Device-NavigationPolicy-NEW_POPUP = 0-End-->
 
@@ -38,6 +42,8 @@ Shift key when clicking.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-NavigationPolicy-NEW_WINDOW = 1--><!--Device-NavigationPolicy-NEW_WINDOW = 1-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -54,6 +60,8 @@ Middle mouse button or meta/ctrl key when clicking.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-NavigationPolicy-NEW_BACKGROUND_TAB = 2--><!--Device-NavigationPolicy-NEW_BACKGROUND_TAB = 2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -69,6 +77,8 @@ Shift key + Middle mouse button or meta/ctrl key when clicking.
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-NavigationPolicy-NEW_FOREGROUND_TAB = 3--><!--Device-NavigationPolicy-NEW_FOREGROUND_TAB = 3-End-->
 

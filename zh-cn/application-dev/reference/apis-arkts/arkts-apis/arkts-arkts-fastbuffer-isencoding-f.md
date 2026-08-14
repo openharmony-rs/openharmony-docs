@@ -6,11 +6,13 @@
 function isEncoding(encoding: string): boolean
 ```
 
-判断\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_是否为支持的编码格式。
+判断`encoding`是否为支持的编码格式。
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
@@ -22,7 +24,7 @@ function isEncoding(encoding: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| encoding | string | 是 | 编码格式，支持的格式范围为[BufferEncoding]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
+| encoding | string | 是 | 待判断是否为支持的编码格式。 |
 
 **返回值：**
 
@@ -30,7 +32,7 @@ function isEncoding(encoding: string): boolean
 | --- | --- |
 | boolean | 是支持的编码格式返回true，反之则返回false。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { fastbuffer } from '@kit.ArkTS';

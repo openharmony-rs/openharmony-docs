@@ -2,13 +2,15 @@
 
 滑动手势事件，当滑动的最小距离达到设定的最小值时触发滑动手势事件。
 
-**继承/实现关系：** PanGestureInterface extends [GestureInterface<PanGestureInterface>](GestureInterface<PanGestureInterface>)
+**继承/实现关系：** PanGestureInterface extends GestureInterface<PanGestureInterface>
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
-<!--Device-unnamed-interface PanGestureInterface extends GestureInterface<PanGestureInterface>--><!--Device-unnamed-interface PanGestureInterface extends GestureInterface<PanGestureInterface>-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-interface PanGestureInterface--><!--Device-unnamed-interface PanGestureInterface-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,11 +20,13 @@
 (value?: { fingers?: number; direction?: PanDirection; distance?: number } | PanGestureOptions): PanGestureInterface
 ```
 
-创建滑动手势对象。继承自[GestureInterface\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+创建滑动手势对象。继承自[GestureInterface&lt;T&gt;](arkts-arkui-gestureinterface-i.md#GestureInterface)。
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -34,13 +38,13 @@
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | { fingers?: number; direction?: PanDirection; distance?: number } \| PanGestureOptions | 否 |  |
+| value | { fingers?: number; direction?: PanDirection; distance?: number } \| [PanGestureOptions](arkts-arkui-pangestureoptions-c.md) | 否 |  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ |  |
+| [PanGestureInterface](arkts-arkui-pangestureinterface-i.md) |  |
 
 ## constructor
 
@@ -48,11 +52,13 @@
 (options?: PanGestureHandlerOptions): PanGestureInterface
 ```
 
-创建滑动手势对象。与[PanGesture]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ | PanGestureOptions)} 相比，options参数新增了对isFingerCountLimited和distanceMap参数，分别表示是否检查触摸屏幕的手指数量以及指定不同输入源触发滑动手势事件的最小滑动距离。
+创建滑动手势对象。与PanGesture | PanGestureOptions)} 相比，options参数新增了对isFingerCountLimited和distanceMap参数，分别表示是否检查触摸屏幕的手指数量以及指定不同输入源触发滑动手势事件的最小滑动距离。
 
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -66,13 +72,13 @@
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 滑动手势处理器配置参数。 |
+| options | [PanGestureHandlerOptions](arkts-arkui-pangesturehandleroptions-i.md) | 否 | 滑动手势处理器配置参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ |  |
+| [PanGestureInterface](arkts-arkui-pangestureinterface-i.md) |  |
 
 ## onActionCancel
 
@@ -85,6 +91,8 @@ onActionCancel(event: () => void): PanGestureInterface
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -102,7 +110,7 @@ onActionCancel(event: () => void): PanGestureInterface
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ |  |
+| [PanGestureInterface](arkts-arkui-pangestureinterface-i.md) |  |
 
 ## onActionCancel
 
@@ -116,6 +124,8 @@ onActionCancel(event: Callback<GestureEvent>): PanGestureInterface
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -128,13 +138,13 @@ onActionCancel(event: Callback<GestureEvent>): PanGestureInterface
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;GestureEvent&gt; | 是 | 滑动手势取消回调。 |
+| event | Callback&lt;[GestureEvent](arkts-arkui-gestureevent-i.md)&gt; | 是 | 滑动手势取消回调。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ |  |
+| [PanGestureInterface](arkts-arkui-pangestureinterface-i.md) |  |
 
 ## onActionEnd
 
@@ -147,6 +157,8 @@ onActionEnd(event: (event: GestureEvent) => void): PanGestureInterface
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -164,7 +176,7 @@ onActionEnd(event: (event: GestureEvent) => void): PanGestureInterface
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ |  |
+| [PanGestureInterface](arkts-arkui-pangestureinterface-i.md) |  |
 
 ## onActionStart
 
@@ -177,6 +189,8 @@ onActionStart(event: (event: GestureEvent) => void): PanGestureInterface
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -194,7 +208,7 @@ onActionStart(event: (event: GestureEvent) => void): PanGestureInterface
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ |  |
+| [PanGestureInterface](arkts-arkui-pangestureinterface-i.md) |  |
 
 ## onActionUpdate
 
@@ -207,6 +221,8 @@ onActionUpdate(event: (event: GestureEvent) => void): PanGestureInterface
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -224,5 +240,5 @@ onActionUpdate(event: (event: GestureEvent) => void): PanGestureInterface
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ |  |
+| [PanGestureInterface](arkts-arkui-pangestureinterface-i.md) |  |
 

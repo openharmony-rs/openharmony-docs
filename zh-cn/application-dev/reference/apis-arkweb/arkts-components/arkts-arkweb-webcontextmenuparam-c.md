@@ -1,10 +1,12 @@
 # WebContextMenuParam
 
-定义上下文菜单参数，关联\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_方法。
+定义上下文菜单参数，关联[WebContextMenuParam](#WebContextMenuParam)方法。
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare class WebContextMenuParam--><!--Device-unnamed-declare class WebContextMenuParam-End-->
 
@@ -21,6 +23,8 @@ WebContextMenuParam的构造函数。
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -39,6 +43,8 @@ existsImageContents(): boolean
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -64,6 +70,8 @@ getContextMenuMediaType(): ContextMenuDataMediaType
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 <!--Device-WebContextMenuParam-getContextMenuMediaType(): ContextMenuDataMediaType--><!--Device-WebContextMenuParam-getContextMenuMediaType(): ContextMenuDataMediaType-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -72,7 +80,7 @@ getContextMenuMediaType(): ContextMenuDataMediaType
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回上下文节点的类型。 |
+| [ContextMenuDataMediaType](arkts-arkweb-contextmenudatamediatype-e.md) | 返回上下文节点的类型。 |
 
 ## getEditStateFlags
 
@@ -80,11 +88,13 @@ getContextMenuMediaType(): ContextMenuDataMediaType
 getEditStateFlags(): number
 ```
 
-返回上下文可编辑状态标记 \_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+返回上下文可编辑状态标记 [ContextMenuEditStateFlags](arkts-arkweb-contextmenueditstateflags-e.md#ContextMenuEditStateFlags)。
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -110,6 +120,8 @@ getInputFieldType(): ContextMenuInputFieldType
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebContextMenuParam-getInputFieldType(): ContextMenuInputFieldType--><!--Device-WebContextMenuParam-getInputFieldType(): ContextMenuInputFieldType-End-->
@@ -120,7 +132,7 @@ getInputFieldType(): ContextMenuInputFieldType
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 输入框上触发菜单时返回输入框类型。 |
+| [ContextMenuInputFieldType](arkts-arkweb-contextmenuinputfieldtype-e.md) | 输入框上触发菜单时返回输入框类型。 |
 
 ## getLinkUrl
 
@@ -133,6 +145,8 @@ getLinkUrl(): string
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -158,6 +172,8 @@ getMediaType(): ContextMenuMediaType
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebContextMenuParam-getMediaType(): ContextMenuMediaType--><!--Device-WebContextMenuParam-getMediaType(): ContextMenuMediaType-End-->
@@ -168,7 +184,7 @@ getMediaType(): ContextMenuMediaType
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回上下文节点的类型。 |
+| [ContextMenuMediaType](arkts-arkweb-contextmenumediatype-e.md) | 返回上下文节点的类型。 |
 
 ## getPreviewHeight
 
@@ -181,6 +197,8 @@ getPreviewHeight(): number
 **起始版本：** 13
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
+
+**废弃版本：** -1
 
 <!--Device-WebContextMenuParam-getPreviewHeight(): number--><!--Device-WebContextMenuParam-getPreviewHeight(): number-End-->
 
@@ -204,6 +222,8 @@ getPreviewWidth(): number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
 
+**废弃版本：** -1
+
 <!--Device-WebContextMenuParam-getPreviewWidth(): number--><!--Device-WebContextMenuParam-getPreviewWidth(): number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -225,6 +245,8 @@ getSelectionText(): string
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -250,6 +272,8 @@ getSourceType(): ContextMenuSourceType
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebContextMenuParam-getSourceType(): ContextMenuSourceType--><!--Device-WebContextMenuParam-getSourceType(): ContextMenuSourceType-End-->
@@ -260,7 +284,7 @@ getSourceType(): ContextMenuSourceType
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ |  |
+| [ContextMenuSourceType](arkts-arkweb-contextmenusourcetype-e.md) |  |
 
 ## getSourceUrl
 
@@ -273,6 +297,8 @@ getSourceUrl(): string
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -298,6 +324,8 @@ getUnfilteredLinkUrl(): string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebContextMenuParam-getUnfilteredLinkUrl(): string--><!--Device-WebContextMenuParam-getUnfilteredLinkUrl(): string-End-->
@@ -321,6 +349,8 @@ isEditable(): boolean
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -346,6 +376,8 @@ x(): number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebContextMenuParam-x(): number--><!--Device-WebContextMenuParam-x(): number-End-->
@@ -356,7 +388,7 @@ x(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 上下文菜单X坐标。 |
+| number | 上下文菜单X坐标。 正常情况下返回非负整数，否则返回 -1。 单位：像素。 |
 
 ## y
 
@@ -370,6 +402,8 @@ y(): number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebContextMenuParam-y(): number--><!--Device-WebContextMenuParam-y(): number-End-->
@@ -380,5 +414,5 @@ y(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 上下文菜单Y坐标。 |
+| number | 上下文菜单Y坐标。 正常情况下返回非负整数，否则返回 -1。 单位：像素。 |
 

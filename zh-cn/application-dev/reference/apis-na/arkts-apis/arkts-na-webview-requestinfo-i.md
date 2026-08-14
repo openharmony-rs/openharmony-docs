@@ -6,6 +6,8 @@ Defines the Web's request info.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-webview-interface RequestInfo--><!--Device-webview-interface RequestInfo-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -23,6 +25,8 @@ Gets the form data of the request.
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-RequestInfo-formData: string--><!--Device-RequestInfo-formData: string-End-->
 
@@ -42,6 +46,8 @@ Gets the method of the request.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-RequestInfo-method: string--><!--Device-RequestInfo-method: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -59,6 +65,8 @@ Gets the url of the request.
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-RequestInfo-url: string--><!--Device-RequestInfo-url: string-End-->
 

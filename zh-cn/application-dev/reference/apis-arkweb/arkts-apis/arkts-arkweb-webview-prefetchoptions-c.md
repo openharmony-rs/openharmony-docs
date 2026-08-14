@@ -6,6 +6,8 @@ Defines the PrefetchOptions class.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
 
+**废弃版本：** -1
+
 <!--Device-webview-class PrefetchOptions--><!--Device-webview-class PrefetchOptions-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -22,6 +24,8 @@ Constructor for PrefetchOptions.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
 
+**废弃版本：** -1
+
 <!--Device-PrefetchOptions-constructor()--><!--Device-PrefetchOptions-constructor()-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -32,13 +36,15 @@ Constructor for PrefetchOptions.
 ignoreCacheControlNoStore: boolean
 ```
 
-设置是否忽略响应头中的Cache-Control: no-store。默认值：false。 \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_API 说明\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_:\_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_ 此设置控制预取操作是否绕过 HTTP Cache-Control: no-store 指令。 重要提示：默认行为（false）符合 HTTP 安全标准。若要覆盖默认行为（设置为 true），必须对非敏感资源进行明确的**风险评估**。
+设置是否忽略响应头中的Cache-Control: no-store。默认值：false。 &lt;p&gt;&lt;strong&gt;API 说明&lt;/strong&gt;:&lt;br&gt; 此设置控制预取操作是否绕过 HTTP Cache-Control: no-store 指令。 重要提示：默认行为（false）符合 HTTP 安全标准。若要覆盖默认行为（设置为 true），必须对非敏感资源进行明确的**风险评估**。
 
 **类型：** boolean
 
 **起始版本：** 21
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+
+**废弃版本：** -1
 
 <!--Device-PrefetchOptions-ignoreCacheControlNoStore: boolean--><!--Device-PrefetchOptions-ignoreCacheControlNoStore: boolean-End-->
 
@@ -57,6 +63,8 @@ minTimeBetweenPrefetchesMs: number
 **起始版本：** 21
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+
+**废弃版本：** -1
 
 <!--Device-PrefetchOptions-minTimeBetweenPrefetchesMs: number--><!--Device-PrefetchOptions-minTimeBetweenPrefetchesMs: number-End-->
 

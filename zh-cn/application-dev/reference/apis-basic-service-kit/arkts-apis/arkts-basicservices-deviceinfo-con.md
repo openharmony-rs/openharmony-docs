@@ -12,6 +12,8 @@ const ODID: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-deviceInfo-const ODID: string--><!--Device-deviceInfo-const ODID: string-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo
@@ -28,6 +30,8 @@ const abiList: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
 
+**废弃版本：** -1
+
 <!--Device-deviceInfo-const abiList: string--><!--Device-deviceInfo-const abiList: string-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo
@@ -38,11 +42,13 @@ const abiList: string
 const bootCount: number
 ```
 
-当前设备重启次数，获取失败时返回-1 示例：100
+当前设备重启次数，获取失败时返回-1。 示例：100
 
 **起始版本：** 21
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+
+**废弃版本：** -1
 
 <!--Device-deviceInfo-const bootCount: number--><!--Device-deviceInfo-const bootCount: number-End-->
 
@@ -60,6 +66,8 @@ Bootloader版本号，用于标识设备启动引导程序的版本信息。 示
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
 
+**废弃版本：** -1
+
 <!--Device-deviceInfo-const bootloaderVersion: string--><!--Device-deviceInfo-const bootloaderVersion: string-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo
@@ -75,6 +83,8 @@ const brand: string
 **起始版本：** 6
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -94,6 +104,8 @@ const buildHost: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
 
+**废弃版本：** -1
+
 <!--Device-deviceInfo-const buildHost: string--><!--Device-deviceInfo-const buildHost: string-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo
@@ -109,6 +121,8 @@ const buildRootHash: string
 **起始版本：** 6
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+
+**废弃版本：** -1
 
 <!--Device-deviceInfo-const buildRootHash: string--><!--Device-deviceInfo-const buildRootHash: string-End-->
 
@@ -126,6 +140,8 @@ const buildTime: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
 
+**废弃版本：** -1
+
 <!--Device-deviceInfo-const buildTime: string--><!--Device-deviceInfo-const buildTime: string-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo
@@ -141,6 +157,8 @@ const buildType: string
 **起始版本：** 6
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+
+**废弃版本：** -1
 
 <!--Device-deviceInfo-const buildType: string--><!--Device-deviceInfo-const buildType: string-End-->
 
@@ -158,6 +176,8 @@ const buildUser: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
 
+**废弃版本：** -1
+
 <!--Device-deviceInfo-const buildUser: string--><!--Device-deviceInfo-const buildUser: string-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo
@@ -174,6 +194,8 @@ Build版本号，标识编译构建的版本号，值为osFullName中的第四�
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
 
+**废弃版本：** -1
+
 <!--Device-deviceInfo-const buildVersion: number--><!--Device-deviceInfo-const buildVersion: number-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo
@@ -184,11 +206,13 @@ Build版本号，标识编译构建的版本号，值为osFullName中的第四�
 const chipType: string
 ```
 
-当前设备CPU芯片型号 示例：xxxxx
+当前设备CPU芯片型号。 **使用场景**：用于根据芯片型号进行性能适配、设备特性识别、兼容性检查等场景，不同芯片型号可能具有不同的GPU性能、AI加速能力等特性。 示例：xxxxx
 
 **起始版本：** 21
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+
+**废弃版本：** -1
 
 <!--Device-deviceInfo-const chipType: string--><!--Device-deviceInfo-const chipType: string-End-->
 
@@ -206,6 +230,8 @@ const deviceColor: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-deviceInfo-const deviceColor: string--><!--Device-deviceInfo-const deviceColor: string-End-->
@@ -218,11 +244,13 @@ const deviceColor: string
 const deviceType: string
 ```
 
-设备类型。详细请参考\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。 示例：\_\_\_MD\_COMMENT\_DESC\_USD\_1\_\_\_wearable\_\_\_MD\_COMMENT\_DESC\_USD\_2\_\_\_
+设备类型。详细请参考[deviceTypes标签](../../../quick-start/module-configuration-file.md#devicetypes标签)。 示例：&lt;!--RP1--&gt;wearable&lt;!--RP1End--&gt;
 
 **起始版本：** 6
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -236,11 +264,13 @@ const deviceType: string
 const diskSN: string
 ```
 
-硬盘序列号。 **说明** ：该字段只能在2in1设备进行查询，其他设备查询结果为空。 ohos.permission.ACCESS\_DISK\_PHY\_INFO 示例：2502EM400567
+硬盘序列号，该接口在执行期间会拉起临时进程，当系统负载较高时，可能引发阻塞风险。为确保应用主线程的响应性能，建议避免在主线程中调用。设备信息因设备而异且固定不变，可在首次获取后缓存在本地，避免每次使用时重复获取，以提升性能。 **说明：**该字段只能在2in1设备进行查询，其他设备查询结果为空。 ohos.permission.ACCESS_DISK_PHY_INFO 示例：2502EM400567
 
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_DISK_PHY_INFO
 
@@ -254,11 +284,13 @@ const diskSN: string
 const displayVersion: string
 ```
 
-产品版本。 示例：\_\_\_MD\_COMMENT\_DESC\_USD\_0\_\_\_XXX X.X.X.X\_\_\_MD\_COMMENT\_DESC\_USD\_1\_\_\_
+产品版本。 示例：&lt;!--RP8--&gt;XXX X.X.X.X&lt;!--RP8End--&gt;
 
 **起始版本：** 6
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+
+**废弃版本：** -1
 
 <!--Device-deviceInfo-const displayVersion: string--><!--Device-deviceInfo-const displayVersion: string-End-->
 
@@ -270,11 +302,13 @@ const displayVersion: string
 const distributionOSApiName: string
 ```
 
-发行版系统api版本名称\_\_\_MD\_COMMENT\_DESC\_USD\_0\_\_\_，由发行方定义\_\_\_MD\_COMMENT\_DESC\_USD\_1\_\_\_。
+发行版系统api版本名称&lt;!--Del--&gt;，由发行方定义&lt;!--DelEnd--&gt;。 &lt;!--RP16--&gt; **说明：**不建议用于版本号判断。 示例：5.0.1&lt;!--RP16End--&gt;
 
 **起始版本：** 13
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
+
+**废弃版本：** -1
 
 <!--Device-deviceInfo-const distributionOSApiName: string--><!--Device-deviceInfo-const distributionOSApiName: string-End-->
 
@@ -286,11 +320,13 @@ const distributionOSApiName: string
 const distributionOSApiVersion: number
 ```
 
-发行版系统api版本\_\_\_MD\_COMMENT\_DESC\_USD\_0\_\_\_，由发行方定义\_\_\_MD\_COMMENT\_DESC\_USD\_1\_\_\_。 示例：50001
+发行版系统API版本&lt;!--Del--&gt;，由发行方定义&lt;!--DelEnd--&gt;。&lt;!--RP15--&gt;&lt;!--RP15End--&gt; 示例：50001
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 <!--Device-deviceInfo-const distributionOSApiVersion: number--><!--Device-deviceInfo-const distributionOSApiVersion: number-End-->
 
@@ -302,11 +338,13 @@ const distributionOSApiVersion: number
 const distributionOSName: string
 ```
 
-发行版系统名称\_\_\_MD\_COMMENT\_DESC\_USD\_0\_\_\_，由发行方定义\_\_\_MD\_COMMENT\_DESC\_USD\_1\_\_\_。 示例：OpenHarmony
+发行版系统名称&lt;!--Del--&gt;，由发行方定义&lt;!--DelEnd--&gt;。 示例：OpenHarmony
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 <!--Device-deviceInfo-const distributionOSName: string--><!--Device-deviceInfo-const distributionOSName: string-End-->
 
@@ -318,11 +356,13 @@ const distributionOSName: string
 const distributionOSReleaseType: string
 ```
 
-发行版系统类型\_\_\_MD\_COMMENT\_DESC\_USD\_0\_\_\_，由发行方定义\_\_\_MD\_COMMENT\_DESC\_USD\_1\_\_\_。 示例：Release
+发行版系统类型&lt;!--Del--&gt;，由发行方定义&lt;!--DelEnd--&gt;。 示例：Release
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 <!--Device-deviceInfo-const distributionOSReleaseType: string--><!--Device-deviceInfo-const distributionOSReleaseType: string-End-->
 
@@ -334,11 +374,13 @@ const distributionOSReleaseType: string
 const distributionOSVersion: string
 ```
 
-发行版系统版本号\_\_\_MD\_COMMENT\_DESC\_USD\_0\_\_\_，由发行方定义\_\_\_MD\_COMMENT\_DESC\_USD\_1\_\_\_。\_\_\_MD\_COMMENT\_DESC\_USD\_2\_\_\_\_\_\_MD\_COMMENT\_DESC\_USD\_3\_\_\_ 示例：5.0.0
+发行版系统版本号&lt;!--Del--&gt;，由发行方定义&lt;!--DelEnd--&gt;。&lt;!--RP11--&gt;&lt;!--RP11End--&gt; 示例：5.0.0
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 <!--Device-deviceInfo-const distributionOSVersion: string--><!--Device-deviceInfo-const distributionOSVersion: string-End-->
 
@@ -356,6 +398,8 @@ Feature版本号，标识规划的新特性版本，值为osFullName中的第三
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
 
+**废弃版本：** -1
+
 <!--Device-deviceInfo-const featureVersion: number--><!--Device-deviceInfo-const featureVersion: number-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo
@@ -372,6 +416,8 @@ const firstApiVersion: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
 
+**废弃版本：** -1
+
 <!--Device-deviceInfo-const firstApiVersion: number--><!--Device-deviceInfo-const firstApiVersion: number-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo
@@ -382,11 +428,13 @@ const firstApiVersion: number
 const hardwareModel: string
 ```
 
-硬件版本号。 示例：\_\_\_MD\_COMMENT\_DESC\_USD\_0\_\_\_TASA00CVN1\_\_\_MD\_COMMENT\_DESC\_USD\_1\_\_\_
+硬件版本号。 示例：&lt;!--RP6--&gt;TASA00CVN1&lt;!--RP6End--&gt;
 
 **起始版本：** 6
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+
+**废弃版本：** -1
 
 <!--Device-deviceInfo-const hardwareModel: string--><!--Device-deviceInfo-const hardwareModel: string-End-->
 
@@ -398,7 +446,7 @@ const hardwareModel: string
 const hardwareProfile: string
 ```
 
-硬件Profile。 **说明：** 从API version 6 开始支持，从API version 9 开始废弃，建议使用\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_替代。 示例：default
+硬件Profile。 **说明：** 从API version 6 开始支持，从API version 9 开始废弃，建议使用[系统能力SystemCapability](../../../reference/syscap.md)替代。 示例：default
 
 **起始版本：** 6
 
@@ -416,11 +464,13 @@ const hardwareProfile: string
 const incrementalVersion: string
 ```
 
-差异版本号，是编译时生成的ohos的版本号。 示例：default
+差异版本号，是编译时生成的ohos的版本号。 示例：6.1.1.120
 
 **起始版本：** 6
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+
+**废弃版本：** -1
 
 <!--Device-deviceInfo-const incrementalVersion: string--><!--Device-deviceInfo-const incrementalVersion: string-End-->
 
@@ -438,6 +488,8 @@ Major版本号，随主版本更新增加，值为osFullName中的第一位数�
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
 
+**废弃版本：** -1
+
 <!--Device-deviceInfo-const majorVersion: number--><!--Device-deviceInfo-const majorVersion: number-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo
@@ -454,6 +506,8 @@ const manufacture: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
 
+**废弃版本：** -1
+
 <!--Device-deviceInfo-const manufacture: string--><!--Device-deviceInfo-const manufacture: string-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo
@@ -464,11 +518,13 @@ const manufacture: string
 const marketName: string
 ```
 
-外部产品系列。 示例：\_\_\_MD\_COMMENT\_DESC\_USD\_0\_\_\_Mate XX\_\_\_MD\_COMMENT\_DESC\_USD\_1\_\_\_
+外部产品系列。 示例：&lt;!--RP2--&gt;Mate XX&lt;!--RP2End--&gt;
 
 **起始版本：** 6
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+
+**废弃版本：** -1
 
 <!--Device-deviceInfo-const marketName: string--><!--Device-deviceInfo-const marketName: string-End-->
 
@@ -480,11 +536,13 @@ const marketName: string
 const osFullName: string
 ```
 
-系统版本，版本格式\_\_\_MD\_COMMENT\_DESC\_USD\_0\_\_\_OpenHarmony-x.x.x.x,x为数值。\_\_\_MD\_COMMENT\_DESC\_USD\_1\_\_\_ 示例：\_\_\_MD\_COMMENT\_DESC\_USD\_2\_\_\_OpenHarmony-x.x.x.x，其中x表示数字占位符。\_\_\_MD\_COMMENT\_DESC\_USD\_3\_\_\_ 如需获取版本号各段数值，建议直接使用majorVersion、seniorVersion、featureVersion、buildVersion字段，可提升效率，不建议解析osFullName获取。
+系统版本，版本格式&lt;!--RP12--&gt;OpenHarmony-x.x.x.x，其中x表示数字占位符。&lt;!--RP12End--&gt;如需获取版本号各段数值，建议直接使用majorVersion、seniorVersion、featureVersion、buildVersion字段，可提升效率，不建议解析osFullName获取。 示例：&lt;!--RP10--&gt;OpenHarmony-5.0.0.1&lt;!--RP10End--&gt;
 
 **起始版本：** 6
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -498,11 +556,13 @@ const osFullName: string
 const osReleaseType: string
 ```
 
-系统的发布类型，取值为： - Canary：面向特定开发者发布的早期预览版本，不承诺API稳定性。 - Beta：面向开发者公开发布的Beta版本，不承诺API稳定性。 - Release：面向开发者公开发布的正式版本，承诺API稳定性。 示例：\_\_\_MD\_COMMENT\_DESC\_USD\_0\_\_\_Canary/Beta/Release\_\_\_MD\_COMMENT\_DESC\_USD\_1\_\_\_
+系统的发布类型，取值为： - Canary：面向特定开发者发布的早期预览版本，不承诺API稳定性。 - Beta：面向开发者公开发布的Beta版本，不承诺API稳定性。 - Release：面向开发者公开发布的正式版本，承诺API稳定性。 示例：&lt;!--RP9--&gt;Canary/Beta/Release&lt;!--RP9End--&gt;
 
 **起始版本：** 6
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+
+**废弃版本：** -1
 
 <!--Device-deviceInfo-const osReleaseType: string--><!--Device-deviceInfo-const osReleaseType: string-End-->
 
@@ -514,11 +574,13 @@ const osReleaseType: string
 const performanceClass: PerformanceClassLevel
 ```
 
-描述设备能力等级，基于CPU、内存、存储读写性能和屏幕分辨率等因素综合评估。
+描述设备能力等级，基于CPU、内存、存储读写性能和屏幕分辨率等因素综合评估。 **使用场景**：用于根据设备能力进行性能适配，如调整动画复杂度、选择不同质量的资源、动态控制功能特性等。 示例：0
 
 **起始版本：** 19
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+
+**废弃版本：** -1
 
 <!--Device-deviceInfo-const performanceClass: PerformanceClassLevel--><!--Device-deviceInfo-const performanceClass: PerformanceClassLevel-End-->
 
@@ -530,11 +592,13 @@ const performanceClass: PerformanceClassLevel
 const productModel: string
 ```
 
-认证型号。 示例：\_\_\_MD\_COMMENT\_DESC\_USD\_0\_\_\_TAS-AL00\_\_\_MD\_COMMENT\_DESC\_USD\_1\_\_\_
+认证型号。 示例：&lt;!--RP4--&gt;TAS-AL00&lt;!--RP4End--&gt;
 
 **起始版本：** 6
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -554,6 +618,8 @@ const productModelAlias: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-deviceInfo-const productModelAlias: string--><!--Device-deviceInfo-const productModelAlias: string-End-->
@@ -566,11 +632,13 @@ const productModelAlias: string
 const productSeries: string
 ```
 
-产品系列。 示例：\_\_\_MD\_COMMENT\_DESC\_USD\_0\_\_\_TAS\_\_\_MD\_COMMENT\_DESC\_USD\_1\_\_\_
+产品系列。 示例：&lt;!--RP3--&gt;TAS&lt;!--RP3End--&gt;
 
 **起始版本：** 6
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+
+**废弃版本：** -1
 
 <!--Device-deviceInfo-const productSeries: string--><!--Device-deviceInfo-const productSeries: string-End-->
 
@@ -588,6 +656,8 @@ const sdkApiVersion: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-deviceInfo-const sdkApiVersion: number--><!--Device-deviceInfo-const sdkApiVersion: number-End-->
@@ -600,11 +670,13 @@ const sdkApiVersion: number
 const sdkMinorApiVersion: number
 ```
 
-系统软件Minor API版本。从API 26 版本开始，系统API版本格式：sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion。 26.0.0 示例：0
+系统软件Minor API版本。从API 26.0.0 版本开始，系统API版本格式：sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion。 26.0.0 示例：0
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -626,6 +698,8 @@ const sdkPatchApiVersion: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -640,11 +714,13 @@ const sdkPatchApiVersion: number
 const securityPatchTag: string
 ```
 
-安全补丁级别。 示例：\_\_\_MD\_COMMENT\_DESC\_USD\_0\_\_\_2021/01/01\_\_\_MD\_COMMENT\_DESC\_USD\_1\_\_\_
+安全补丁级别。 示例：&lt;!--RP7--&gt;2021/01/01&lt;!--RP7End--&gt;
 
 **起始版本：** 6
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+
+**废弃版本：** -1
 
 <!--Device-deviceInfo-const securityPatchTag: string--><!--Device-deviceInfo-const securityPatchTag: string-End-->
 
@@ -662,6 +738,8 @@ Senior版本号，随局部架构、重大特性增加，值为osFullName中的�
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
 
+**废弃版本：** -1
+
 <!--Device-deviceInfo-const seniorVersion: number--><!--Device-deviceInfo-const seniorVersion: number-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo
@@ -672,11 +750,13 @@ Senior版本号，随局部架构、重大特性增加，值为osFullName中的�
 const serial: string
 ```
 
-设备序列号SN(Serial Number)。 **说明：**可作为设备唯一识别码。 ohos.permission.sec.ACCESS\_UDID(该权限只允许系统应用及企业定制应用申请) 示例：序列号随设备差异
+设备序列号SN(Serial Number)，该接口在执行期间会拉起临时进程，当系统负载较高时，可能引发阻塞风险。为确保应用主线程的响应性能，建议避免在主线程中调用。设备信息因设备而异且固定不变，可在首次获取后缓存在本地，避免每次使用时重复获取，以提升性能。 **说明：**可作为设备唯一识别码。 ohos.permission.sec.ACCESS_UDID(该权限只允许系统应用及企业定制应用申请) 示例：序列号随设备差异
 
 **起始版本：** 6
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.sec.ACCESS_UDID
 
@@ -690,11 +770,13 @@ const serial: string
 const softwareModel: string
 ```
 
-内部软件子型号。 示例：\_\_\_MD\_COMMENT\_DESC\_USD\_0\_\_\_TAS-AL00\_\_\_MD\_COMMENT\_DESC\_USD\_1\_\_\_
+内部软件子型号。 示例：&lt;!--RP5--&gt;TAS-AL00&lt;!--RP5End--&gt;
 
 **起始版本：** 6
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+
+**废弃版本：** -1
 
 <!--Device-deviceInfo-const softwareModel: string--><!--Device-deviceInfo-const softwareModel: string-End-->
 
@@ -706,11 +788,13 @@ const softwareModel: string
 const udid: string
 ```
 
-设备UDID。 **说明：**数据长度为65字节。可作为设备唯一识别码。 ohos.permission.sec.ACCESS\_UDID(该权限只允许系统应用及企业类应用申请) 示例：9D6AABD147XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXE5536412
+设备UDID，该接口在执行期间会拉起临时进程，当系统负载较高时，可能引发阻塞风险。为确保应用主线程的响应性能，建议避免在主线程中调用。设备信息因设备而异且固定不变，可在首次获取后缓存在本地，避免每次使用时重复获取，以提升性能。 **说明：**数据长度为65字节(包含结束符)。可作为设备唯一识别码。 ohos.permission.sec.ACCESS_UDID(该权限只允许系统应用及企业类应用申请) 示例：9D6AABD147XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXE5536412
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.sec.ACCESS_UDID
 
@@ -729,6 +813,8 @@ const versionId: string
 **起始版本：** 6
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+
+**废弃版本：** -1
 
 <!--Device-deviceInfo-const versionId: string--><!--Device-deviceInfo-const versionId: string-End-->
 

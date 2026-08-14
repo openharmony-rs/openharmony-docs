@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare class LineSpacingStyle--><!--Device-unnamed-declare class LineSpacingStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -16,11 +18,13 @@
 constructor(lineSpacing: LengthMetrics, options?: LineSpacingOptions)
 ```
 
-文本行间距的构造函数。未通过该接口设置时，默认行间距为0.0。LengthMetrics的value值小于0时，取默认值0.0。当与[LineHeightStyle]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_的 lineHeightMultiple同时设置且lineHeightMultiple生效时，该参数不生效。
+文本行间距的构造函数。未通过该接口设置时，默认行间距为0.0。LengthMetrics的value值小于0时，取默认值0.0。当与[LineHeightStyle](arkts-arkui-lineheightstyle-c.md#LineHeightStyle)的 lineHeightMultiple同时设置且lineHeightMultiple生效时，该参数不生效。
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -34,8 +38,8 @@ constructor(lineSpacing: LengthMetrics, options?: LineSpacingOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| lineSpacing | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 文本的行间距。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_取值范围：[0, +∞) |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 行间距的配置项。 |
+| lineSpacing | LengthMetrics | 是 | 文本的行间距。 &lt;br&gt;取值范围：[0, +∞) |
+| options | LineSpacingOptions | 否 | 行间距的配置项。 |
 
 ## lineSpacing
 
@@ -43,13 +47,15 @@ constructor(lineSpacing: LengthMetrics, options?: LineSpacingOptions)
 readonly lineSpacing: number
 ```
 
-文本行间距。 取值范围：\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_
+文本行间距。 取值范围：[0, +∞) 单位：[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 **类型：** number
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -72,6 +78,8 @@ readonly options?: LineSpacingOptions
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface UIGestureEvent--><!--Device-unnamed-declare interface UIGestureEvent-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -22,6 +24,8 @@ addGesture<T>(gesture: GestureHandler<T>, priority?: GesturePriority, mask?: Ges
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -34,9 +38,9 @@ addGesture<T>(gesture: GestureHandler<T>, priority?: GesturePriority, mask?: Ges
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| gesture | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; | 是 | 手势处理器对象。 |
-| priority | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 绑定手势的优先级。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_默认值：GesturePriority.NORMAL |
-| mask | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 事件响应设置。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_默认值：GestureMask.Normal |
+| gesture | GestureHandler&lt;T&gt; | 是 | 手势处理器对象。 |
+| priority | GesturePriority | 否 | 绑定手势的优先级。&lt;br&gt;默认值：GesturePriority.NORMAL |
+| mask | GestureMask | 否 | 事件响应设置。&lt;br&gt;默认值：GestureMask.Normal |
 
 ## addParallelGesture
 
@@ -50,6 +54,8 @@ addParallelGesture<T>(gesture: GestureHandler<T>, mask?: GestureMask): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -62,8 +68,8 @@ addParallelGesture<T>(gesture: GestureHandler<T>, mask?: GestureMask): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| gesture | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; | 是 | 手势处理器对象。 |
-| mask | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 事件响应设置。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_默认值：GestureMask.Normal |
+| gesture | GestureHandler&lt;T&gt; | 是 | 手势处理器对象。 |
+| mask | GestureMask | 否 | 事件响应设置。&lt;br&gt;默认值：GestureMask.Normal |
 
 ## clearGestures
 
@@ -76,6 +82,8 @@ clearGestures(): void
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -96,6 +104,8 @@ removeGestureByTag(tag: string): void
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -1,10 +1,12 @@
 # DataResubmissionHandler
 
-Defines the onDataResubmission callback, related to \_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ method.
+Defines the onDataResubmission callback, related to onDataResubmission method.
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare class DataResubmissionHandler--><!--Device-unnamed-declare class DataResubmissionHandler-End-->
 
@@ -21,6 +23,8 @@ cancel(): void
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -40,6 +44,8 @@ Constructor.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-DataResubmissionHandler-constructor()--><!--Device-DataResubmissionHandler-constructor()-End-->
@@ -57,6 +63,8 @@ resend(): void
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

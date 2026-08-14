@@ -4,11 +4,13 @@
 type AudioEffectInfoArray = Array<Readonly<AudioEffectMode>>
 ```
 
-待查询ContentType和StreamUsage组合场景下的音效模式数组类型，[AudioEffectMode]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_数组，只读。
+待查询ContentType和StreamUsage组合场景下的音效模式数组类型，[AudioEffectMode](arkts-audio-audio-audioeffectmode-e.md#AudioEffectMode)数组，只读。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-audio-type AudioEffectInfoArray = Array<Readonly<AudioEffectMode>>--><!--Device-audio-type AudioEffectInfoArray = Array<Readonly<AudioEffectMode>>-End-->
 

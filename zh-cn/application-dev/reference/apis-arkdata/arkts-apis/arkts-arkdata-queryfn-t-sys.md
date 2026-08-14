@@ -13,7 +13,9 @@ type QueryFn = (
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -27,8 +29,8 @@ type QueryFn = (
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | string | 是 | Indicates the database table storing the data to query.  |
-| predicates | dataSharePredicates.DataSharePredicates | 是 | Indicates filter criteria. If this parameter is null, all data records will be queried by default.  |
-| columns | Array&lt;string&gt; | 是 | Indicates the columns to be queried, in array, for example, {"name","age"}. You should define the processing logic when this parameter is null.  |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;Object&gt; | 是 | Returns the queried data, only support result set of rdb or kvstore.  |
+| uri | string | 是 | Indicates the database table storing the data to query. |
+| predicates | dataSharePredicates.DataSharePredicates | 是 | Indicates filter criteria. If this parameter is null, all data records will be queried by default. |
+| columns | Array&lt;string&gt; | 是 | Indicates the columns to be queried, in array, for example, {"name","age"}. You should define the processing logic when this parameter is null. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Object&gt; | 是 | Returns the queried data, only support result set of rdb or kvstore. |
 

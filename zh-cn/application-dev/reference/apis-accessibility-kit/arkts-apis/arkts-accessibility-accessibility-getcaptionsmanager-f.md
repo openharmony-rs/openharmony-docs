@@ -22,9 +22,9 @@ function getCaptionsManager(): CaptionsManager
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 无障碍字幕配置管理。 |
+| [CaptionsManager](arkts-accessibility-accessibility-captionsmanager-i.md) | 无障碍字幕配置管理。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { accessibility } from '@kit.AccessibilityKit';

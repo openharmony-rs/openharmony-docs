@@ -156,10 +156,10 @@
   - [VideoScaleType](arkts-media-multimedia-media-videoscaletype-e.md)
   - [VideoSourceType](arkts-media-multimedia-media-videosourcetype-e.md)
 - multimedia<!--arkts-mediakit-multimedia-->
-  - [multimedia/soundPool](arkts-multimedia/soundpool.md)
-    - [ErrorInfo](soundpool-errorinfo-i.md)
-    - [PlayParameters](soundpool-playparameters-i.md)
+  - [soundPool](arkts-soundpool.md)
+    - [ErrorInfo](arkts-media-soundpool-errorinfo-i.md)
+    - [PlayParameters](arkts-media-soundpool-playparameters-i.md)
     <!--Del-->
-    - [PlayParameters(系统接口)](soundpool-playparameters-i-sys.md)<!--DelEnd-->
-    - [SoundPool](soundpool-soundpool-i.md)
-    - [ErrorType](soundpool-errortype-e.md)
+    - [PlayParameters(系统接口)](arkts-media-soundpool-playparameters-i-sys.md)<!--DelEnd-->
+    - [SoundPool](arkts-media-soundpool-soundpool-i.md)
+    - [ErrorType](arkts-media-soundpool-errortype-e.md)

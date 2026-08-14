@@ -2,9 +2,11 @@
 
 挖孔屏、刘海屏、瀑布屏等不可用屏幕区域信息。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-display-interface CutoutInfo--><!--Device-display-interface CutoutInfo-End-->
 
@@ -20,9 +22,11 @@ readonly boundingRects: Array<Rect>
 
 **类型：** Array&lt;Rect&gt;
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -38,11 +42,13 @@ readonly waterfallDisplayAreaRects: WaterfallDisplayAreaRects
 
 瀑布屏曲面部分显示区域。
 
-**类型：** WaterfallDisplayAreaRects
+**类型：** [WaterfallDisplayAreaRects](arkts-arkui-display-waterfalldisplayarearects-i.md)
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

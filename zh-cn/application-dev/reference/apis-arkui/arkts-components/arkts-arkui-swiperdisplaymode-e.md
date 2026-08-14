@@ -6,6 +6,8 @@ Swiper在主轴上的尺寸大小模式枚举。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare enum SwiperDisplayMode--><!--Device-unnamed-declare enum SwiperDisplayMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -16,7 +18,7 @@ Swiper在主轴上的尺寸大小模式枚举。
 Stretch
 ```
 
-Swiper滑动一页的宽度为Swiper组件自身的宽度。 **说明**：从API version 7开始支持，从API version 10开始废弃，建议使用STRETCH替代。
+Swiper滑动一页的宽度为Swiper组件自身的宽度。 **说明：**从API version 7开始支持，从API version 10开始废弃，建议使用STRETCH替代。
 
 **起始版本：** 7
 
@@ -24,7 +26,7 @@ Swiper滑动一页的宽度为Swiper组件自身的宽度。 **说明**：从API
 
 **废弃版本：** 10
 
-**替代接口：** [SwiperDisplayMode#STRETCH](../arkts-apis/arkts-arkui-component/swiper-swiperdisplaymode-e.md#stretch)
+**替代接口：** [STRETCH](#STRETCH)
 
 **卡片能力：** 从API版本7开始，该接口支持在ArkTS卡片中使用。
 
@@ -44,7 +46,7 @@ AutoLinear
 
 **废弃版本：** 10
 
-**替代接口：** [SwiperDisplayMode#AUTO_LINEAR](arkts-arkui-swiperdisplaymode-e.md#auto_linear)
+**替代接口：** [AUTO_LINEAR](#AUTO_LINEAR)
 
 **卡片能力：** 从API版本7开始，该接口支持在ArkTS卡片中使用。
 
@@ -63,6 +65,8 @@ Carousel map extension.
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -86,7 +90,7 @@ AUTO_LINEAR
 
 **废弃版本：** 12
 
-**替代接口：** [Scroller#scrollTo](../../apis-na/arkts-apis/arkts-na-component/scroll-scroller-c.md#scrollto)
+**替代接口：** scrollTo
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

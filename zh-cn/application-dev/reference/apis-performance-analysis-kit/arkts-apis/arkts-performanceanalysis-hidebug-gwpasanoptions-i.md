@@ -1,10 +1,12 @@
 # GwpAsanOptions
 
-GWP-ASan����������������Ƿ�ʹ�ܡ�����Ƶ�ʣ��Լ�������Ĳ������
+GWP-ASan配置项。可用于配置是否使能、采样频率，以及最大分配的插槽数。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-hidebug-interface GwpAsanOptions--><!--Device-hidebug-interface GwpAsanOptions-End-->
 
@@ -16,13 +18,15 @@ GWP-ASan����������������Ƿ�ʹ�ܡ���
 alwaysEnabled?: boolean
 ```
 
-�����Ƿ�ÿ��������ʹ��GWP-ASan��true��100%ʹ��GWP-ASan��false��1/128����ʹ��GWP-ASan��Ĭ��ֵ��false��
+控制是否每次启动都使能GWP-ASan。true：100%使能GWP-ASan。false：1/128概率使能GWP-ASan。默认值：false。
 
 **类型：** boolean
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-GwpAsanOptions-alwaysEnabled?: boolean--><!--Device-GwpAsanOptions-alwaysEnabled?: boolean-End-->
 
@@ -34,13 +38,15 @@ alwaysEnabled?: boolean
 isRecover?: boolean
 ```
 
-���ڿ���Ӧ����100%���ʿ���GWP-ASanʱ���Ƿ��Կɻָ�ģʽ���С�true����GWP-ASan��100%���ʿ���ʱ��Ӧ���Կɻָ�ģʽ���С�false����GWP-ASan��100%���ʿ���ʱ��Ӧ���Բ��ɻָ�ģʽ���С�Ĭ��ֵ��false��ע�⣺�ò���ֻ��"��100%���ʿ���GWP-ASan"��������Ч��1/128���ʿ���������Ĭ��Ϊ�ɻָ�������isRecover���ơ�
+用于控制应用以100%概率开启GWP-ASan时，是否以可恢复模式运行。true：当GWP-ASan以100%概率开启时，应用以可恢复模式运行。false：当GWP-ASan以100%概率开启时，应用以不可恢复模式运行。默认值：false。注意：该参数只在"以100%概率开启GWP-ASan"场景下生效；1/128概率开启场景下默认为可恢复，不受isRecover控制。
 
 **类型：** boolean
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -54,13 +60,15 @@ isRecover?: boolean
 maxSimutaneousAllocations?: int
 ```
 
-������Ĳ������Ĭ��ֵΪ1000����Ҫ�������0����������������С��������ȡ����������þ�ʱ���·�����ڴ潫�����ܼ�ء��ͷ���ʹ�õ��ڴ����ռ�õĲ�۽��Զ����á�����ֵ��<=20000���������ܵ���VMA���ޱ�����
+最大分配的插槽数，默认值为1000，需要传入大于0的正整数，若传入小数则向上取整。当插槽用尽时，新分配的内存将不再受监控。释放已使用的内存后，其占用的插槽将自动复用。建议值：<=20000，过大会可能导致VMA超限崩溃。
 
 **类型：** int
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-GwpAsanOptions-maxSimutaneousAllocations?: int--><!--Device-GwpAsanOptions-maxSimutaneousAllocations?: int-End-->
 
@@ -72,13 +80,15 @@ maxSimutaneousAllocations?: int
 sampleRate?: int
 ```
 
-GWP-ASan����Ƶ�ʣ�Ĭ��ֵΪ2500����Ҫ�������0����������������С��������ȡ����1/sampleRate�ĸ��ʶԷ�����ڴ���в���������ֵ��>=1000����С������Ӱ�����ܡ�
+GWP-ASan采样频率，默认值为2500，需要传入大于0的正整数，若传入小数则向上取整。1/sampleRate的概率对分配的内存进行采样。建议值：>=1000，过小会显著影响性能。
 
 **类型：** int
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-GwpAsanOptions-sampleRate?: int--><!--Device-GwpAsanOptions-sampleRate?: int-End-->
 

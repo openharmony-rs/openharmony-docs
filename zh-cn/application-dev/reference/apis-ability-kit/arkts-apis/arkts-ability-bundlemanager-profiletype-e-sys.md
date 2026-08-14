@@ -2,9 +2,11 @@
 
 标识配置文件类型。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-bundleManager-export enum ProfileType--><!--Device-bundleManager-export enum ProfileType-End-->
 
@@ -20,9 +22,11 @@ INTENT_PROFILE = 1
 
 意图框架配置文件。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ProfileType-INTENT_PROFILE = 1--><!--Device-ProfileType-INTENT_PROFILE = 1-End-->
 
@@ -36,11 +40,13 @@ INTENT_PROFILE = 1
 CLOUD_PROFILE = 8
 ```
 
-[端云同步]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_配置文件。 26.0.0
+[端云同步](../../apis-core-file-kit/arkts-apis/arkts-file-cloudsync.md#@ohos.file.cloudSync)配置文件。 26.0.0
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

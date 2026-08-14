@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare namespace huks--><!--Device-unnamed-declare namespace huks-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
@@ -17,79 +19,79 @@
 | 名称 | 说明 |
 | --- | --- |
 | [abort](arkts-universalkeystore-huks-abort-f.md#abort) | abort终止密钥操作。使用callback异步回调。 |
-| [abort](arkts-universalkeystore-huks-abort-f.md#abort-1) | abort终止密钥操作。使用Promise异步回调。 |
-| [abortSession](arkts-universalkeystore-huks-abortsession-f.md#abortsession) | abortSession终止密钥操作。使用callback异步回调。 |
-| [abortSession](arkts-universalkeystore-huks-abortsession-f.md#abortsession-1) | abortSession终止密钥操作。使用Promise异步回调。 |
-| [anonAttestKeyItem](arkts-universalkeystore-huks-anonattestkeyitem-f.md#anonattestkeyitem) | 获取匿名化密钥证书。使用callback异步回调。 该操作需要联网进行，且耗时较长。返回12000012错误码时，可能是由于网络异常导致。此时如果没有联网，需要提示用户网络没有连接，如果已经联网，可能是由于网络抖动导致失败，建议重试。 |
-| [anonAttestKeyItem](arkts-universalkeystore-huks-anonattestkeyitem-f.md#anonattestkeyitem-1) | 获取匿名化密钥证书。使用Promise异步回调。 该操作需要联网进行，且耗时较长。返回12000012错误码时，可能是由于网络异常导致。此时如果没有联网，需要提示用户网络没有连接，如果已经联网，可能是由于网络抖动导致失败，建议重试。 |
-| [anonAttestKeyItemOffline](arkts-universalkeystore-huks-anonattestkeyitemoffline-f.md#anonattestkeyitemoffline) | 离线模式下获取匿名化密钥证书。使用Promise异步回调。 |
-| [attestKeyItem](arkts-universalkeystore-huks-attestkeyitem-f.md#attestkeyitem) | 获取密钥证书。使用callback异步回调。 \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_COMMENT\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ |
-| [attestKeyItem](arkts-universalkeystore-huks-attestkeyitem-f.md#attestkeyitem-1) | 获取密钥证书。使用Promise异步回调。 \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_COMMENT\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ |
+| [abort](arkts-universalkeystore-huks-abort-f.md#abort) | abort终止密钥操作。使用Promise异步回调。 |
+| [abortSession](arkts-universalkeystore-huks-abortsession-f.md#abortSession) | abortSession终止密钥操作。使用callback异步回调。 |
+| [abortSession](arkts-universalkeystore-huks-abortsession-f.md#abortSession) | abortSession终止密钥操作。使用Promise异步回调。 |
+| [anonAttestKeyItem](arkts-universalkeystore-huks-anonattestkeyitem-f.md#anonAttestKeyItem) | 获取匿名化密钥证书。使用callback异步回调。 该操作需要联网进行，且耗时较长。返回12000012错误码时，可能是由于网络异常导致。此时如果没有联网，需要提示用户网络没有连接，如果已经联网，可能是由于网络抖动导致失败，建议重试。 |
+| [anonAttestKeyItem](arkts-universalkeystore-huks-anonattestkeyitem-f.md#anonAttestKeyItem) | 获取匿名化密钥证书。使用Promise异步回调。 该操作需要联网进行，且耗时较长。返回12000012错误码时，可能是由于网络异常导致。此时如果没有联网，需要提示用户网络没有连接，如果已经联网，可能是由于网络抖动导致失败，建议重试。 |
+| [anonAttestKeyItemOffline](arkts-universalkeystore-huks-anonattestkeyitemoffline-f.md#anonAttestKeyItemOffline) | 离线模式下获取匿名化密钥证书。使用Promise异步回调。 |
+| [attestKeyItem](arkts-universalkeystore-huks-attestkeyitem-f.md#attestKeyItem) | 获取密钥证书。使用callback异步回调。 &lt;!--RP6--&gt; |
+| [attestKeyItem](arkts-universalkeystore-huks-attestkeyitem-f.md#attestKeyItem) | 获取密钥证书。使用Promise异步回调。 &lt;!--RP6--&gt; |
 | [decapsulate](arkts-universalkeystore-huks-decapsulate-f.md#decapsulate) | Post-Quantum Cryptography密钥解封装操作，支持HUKS密钥管理 或由应用程序本身决定。如果应用程序选择管理密钥， 对称密钥包含在HuksReturnResult的outData字段中。 |
-| [deleteKey](arkts-universalkeystore-huks-deletekey-f.md#deletekey) | 删除密钥。使用callback异步回调。 |
-| [deleteKey](arkts-universalkeystore-huks-deletekey-f.md#deletekey-1) | 删除密钥。使用Promise异步回调。 |
-| [deleteKeyItem](arkts-universalkeystore-huks-deletekeyitem-f.md#deletekeyitem) | 删除密钥。使用callback异步回调。 |
-| [deleteKeyItem](arkts-universalkeystore-huks-deletekeyitem-f.md#deletekeyitem-1) | 删除密钥。使用Promise异步回调。 |
+| [deleteKey](arkts-universalkeystore-huks-deletekey-f.md#deleteKey) | 删除密钥。使用callback异步回调。 |
+| [deleteKey](arkts-universalkeystore-huks-deletekey-f.md#deleteKey) | 删除密钥。使用Promise异步回调。 |
+| [deleteKeyItem](arkts-universalkeystore-huks-deletekeyitem-f.md#deleteKeyItem) | 删除密钥。使用callback异步回调。 |
+| [deleteKeyItem](arkts-universalkeystore-huks-deletekeyitem-f.md#deleteKeyItem) | 删除密钥。使用Promise异步回调。 |
 | [encapsulate](arkts-universalkeystore-huks-encapsulate-f.md#encapsulate) | 后量子加密密钥封装操作，支持HUKS密钥管理 或由应用程序本身决定。如果应用程序选择管理密钥， 对称密钥携带在HuksReturnResult的outData字段中。 |
-| [exportKey](arkts-universalkeystore-huks-exportkey-f.md#exportkey) | 导出密钥，使用Callback方式回调异步返回的结果。 |
-| [exportKey](arkts-universalkeystore-huks-exportkey-f.md#exportkey-1) | 导出密钥。使用Promise异步回调。 |
-| [exportKeyItem](arkts-universalkeystore-huks-exportkeyitem-f.md#exportkeyitem) | 导出密钥。使用callback异步回调。 |
-| [exportKeyItem](arkts-universalkeystore-huks-exportkeyitem-f.md#exportkeyitem-1) | 导出密钥。使用Promise异步回调。 |
+| [exportKey](arkts-universalkeystore-huks-exportkey-f.md#exportKey) | 导出密钥，使用Callback方式回调异步返回的结果。 |
+| [exportKey](arkts-universalkeystore-huks-exportkey-f.md#exportKey) | 导出密钥。使用Promise异步回调。 |
+| [exportKeyItem](arkts-universalkeystore-huks-exportkeyitem-f.md#exportKeyItem) | 导出密钥。使用callback异步回调。 |
+| [exportKeyItem](arkts-universalkeystore-huks-exportkeyitem-f.md#exportKeyItem) | 导出密钥。使用Promise异步回调。 |
 | [finish](arkts-universalkeystore-huks-finish-f.md#finish) | finish操作密钥接口。使用callback异步回调。 huks.init、huks.update、huks.finish为三段式接口，需要一起使用。 |
-| [finish](arkts-universalkeystore-huks-finish-f.md#finish-1) | finish操作密钥接口。使用Promise异步回调。 huks.init、huks.update、huks.finish为三段式接口，需要一起使用。 |
-| [finishSession](arkts-universalkeystore-huks-finishsession-f.md#finishsession) | finishSession操作密钥接口。使用callback异步回调。 huks.initSession、huks.updateSession、huks.finishSession为三段式接口，需要一起使用。 |
-| [finishSession](arkts-universalkeystore-huks-finishsession-f.md#finishsession-1) | Finishes the key operation. This API uses an asynchronous callback to return the result. huks.initSession, huks.updateSession, and huks.finishSession must be used together. |
-| [finishSession](arkts-universalkeystore-huks-finishsession-f.md#finishsession-2) | finishSession操作密钥接口。使用Promise异步回调。 huks.initSession、huks.updateSession、huks.finishSession为三段式接口，需要一起使用。 |
-| [generateKey](arkts-universalkeystore-huks-generatekey-f.md#generatekey) | 生成密钥。使用callback异步回调。 |
-| [generateKey](arkts-universalkeystore-huks-generatekey-f.md#generatekey-1) | 生成密钥。使用Promise异步回调。 |
-| [generateKeyItem](arkts-universalkeystore-huks-generatekeyitem-f.md#generatekeyitem) | 生成密钥。使用callback异步回调。 基于密钥不出\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_原则，此接口不会返回密钥材料内容，只用于表示此次调用是否成功。 |
-| [generateKeyItem](arkts-universalkeystore-huks-generatekeyitem-f.md#generatekeyitem-1) | 生成密钥。使用Promise异步回调。 基于密钥不出\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_原则，此接口不会返回密钥材料内容，只用于表示此次调用是否成功。 |
-| [getKeyItemProperties](arkts-universalkeystore-huks-getkeyitemproperties-f.md#getkeyitemproperties) | Obtains key properties. This API uses an asynchronous callback to return the result. |
-| [getKeyItemProperties](arkts-universalkeystore-huks-getkeyitemproperties-f.md#getkeyitemproperties-1) | 获取密钥属性。使用Promise异步回调。 |
-| [getKeyProperties](arkts-universalkeystore-huks-getkeyproperties-f.md#getkeyproperties) | 获取密钥属性。使用callback异步回调。 |
-| [getKeyProperties](arkts-universalkeystore-huks-getkeyproperties-f.md#getkeyproperties-1) | 获取密钥属性。使用Promise异步回调。 |
-| [getSdkVersion](arkts-universalkeystore-huks-getsdkversion-f.md#getsdkversion) | 获取当前系统sdk版本。 |
-| [hasKeyItem](arkts-universalkeystore-huks-haskeyitem-f.md#haskeyitem) | 判断密钥是否存在。使用callback异步回调。 若密钥不存在，则通过callback返回false。 |
-| [hasKeyItem](arkts-universalkeystore-huks-haskeyitem-f.md#haskeyitem-1) | 判断密钥是否存在。使用Promise异步回调。 若密钥不存在，则通过Promise返回false。 |
-| [importKey](arkts-universalkeystore-huks-importkey-f.md#importkey) | 导入明文密钥，使用Callback方式回调异步返回结果。 |
-| [importKey](arkts-universalkeystore-huks-importkey-f.md#importkey-1) | 导入明文密钥。使用Promise异步回调。 |
-| [importKeyItem](arkts-universalkeystore-huks-importkeyitem-f.md#importkeyitem) | Imports a key in plaintext. This API uses an asynchronous callback to return the result. |
-| [importKeyItem](arkts-universalkeystore-huks-importkeyitem-f.md#importkeyitem-1) | Imports a key in plaintext. This API uses a promise to return the result. |
-| [importWrappedKeyItem](arkts-universalkeystore-huks-importwrappedkeyitem-f.md#importwrappedkeyitem) | Imports a wrapped key. This API uses an asynchronous callback to return the result. |
-| [importWrappedKeyItem](arkts-universalkeystore-huks-importwrappedkeyitem-f.md#importwrappedkeyitem-1) | Imports a wrapped key. This API uses a promise to return the result. |
+| [finish](arkts-universalkeystore-huks-finish-f.md#finish) | finish操作密钥接口。使用Promise异步回调。 huks.init、huks.update、huks.finish为三段式接口，需要一起使用。 |
+| [finishSession](arkts-universalkeystore-huks-finishsession-f.md#finishSession) | finishSession操作密钥接口。使用callback异步回调。 huks.initSession、huks.updateSession、huks.finishSession为三段式接口，需要一起使用。 |
+| [finishSession](arkts-universalkeystore-huks-finishsession-f.md#finishSession) | Finishes the key operation. This API uses an asynchronous callback to return the result. huks.initSession, huks.updateSession, and huks.finishSession must be used together. |
+| [finishSession](arkts-universalkeystore-huks-finishsession-f.md#finishSession) | finishSession操作密钥接口。使用Promise异步回调。 huks.initSession、huks.updateSession、huks.finishSession为三段式接口，需要一起使用。 |
+| [generateKey](arkts-universalkeystore-huks-generatekey-f.md#generateKey) | 生成密钥。使用callback异步回调。 |
+| [generateKey](arkts-universalkeystore-huks-generatekey-f.md#generateKey) | 生成密钥。使用Promise异步回调。 |
+| [generateKeyItem](arkts-universalkeystore-huks-generatekeyitem-f.md#generateKeyItem) | 生成密钥。使用callback异步回调。 基于密钥不出[TEE](../../../security/UniversalKeystoreKit/huks-concepts.md#可信执行环境tee)原则，此接口不会返回密钥材料内容，只用于表示此次调用是否成功。 |
+| [generateKeyItem](arkts-universalkeystore-huks-generatekeyitem-f.md#generateKeyItem) | 生成密钥。使用Promise异步回调。 基于密钥不出[TEE](../../../security/UniversalKeystoreKit/huks-concepts.md#可信执行环境tee)原则，此接口不会返回密钥材料内容，只用于表示此次调用是否成功。 |
+| [getKeyItemProperties](arkts-universalkeystore-huks-getkeyitemproperties-f.md#getKeyItemProperties) | Obtains key properties. This API uses an asynchronous callback to return the result. |
+| [getKeyItemProperties](arkts-universalkeystore-huks-getkeyitemproperties-f.md#getKeyItemProperties) | 获取密钥属性。使用Promise异步回调。 |
+| [getKeyProperties](arkts-universalkeystore-huks-getkeyproperties-f.md#getKeyProperties) | 获取密钥属性。使用callback异步回调。 |
+| [getKeyProperties](arkts-universalkeystore-huks-getkeyproperties-f.md#getKeyProperties) | 获取密钥属性。使用Promise异步回调。 |
+| [getSdkVersion](arkts-universalkeystore-huks-getsdkversion-f.md#getSdkVersion) | 获取当前系统sdk版本。 |
+| [hasKeyItem](arkts-universalkeystore-huks-haskeyitem-f.md#hasKeyItem) | 判断密钥是否存在。使用callback异步回调。 若密钥不存在，则通过callback返回false。 |
+| [hasKeyItem](arkts-universalkeystore-huks-haskeyitem-f.md#hasKeyItem) | 判断密钥是否存在。使用Promise异步回调。 若密钥不存在，则通过Promise返回false。 |
+| [importKey](arkts-universalkeystore-huks-importkey-f.md#importKey) | 导入明文密钥，使用Callback方式回调异步返回结果。 |
+| [importKey](arkts-universalkeystore-huks-importkey-f.md#importKey) | 导入明文密钥。使用Promise异步回调。 |
+| [importKeyItem](arkts-universalkeystore-huks-importkeyitem-f.md#importKeyItem) | Imports a key in plaintext. This API uses an asynchronous callback to return the result. |
+| [importKeyItem](arkts-universalkeystore-huks-importkeyitem-f.md#importKeyItem) | Imports a key in plaintext. This API uses a promise to return the result. |
+| [importWrappedKeyItem](arkts-universalkeystore-huks-importwrappedkeyitem-f.md#importWrappedKeyItem) | Imports a wrapped key. This API uses an asynchronous callback to return the result. |
+| [importWrappedKeyItem](arkts-universalkeystore-huks-importwrappedkeyitem-f.md#importWrappedKeyItem) | Imports a wrapped key. This API uses a promise to return the result. |
 | [init](arkts-universalkeystore-huks-init-f.md#init) | init操作密钥接口。使用callback异步回调。 huks.init、huks.update、huks.finish为三段式接口，需要一起使用。 |
-| [init](arkts-universalkeystore-huks-init-f.md#init-1) | init操作密钥接口。使用Promise异步回调。 huks.init、huks.update、huks.finish为三段式接口，需要一起使用。 |
-| [initSession](arkts-universalkeystore-huks-initsession-f.md#initsession) | initSession操作密钥接口。使用callback异步回调。 huks.initSession、huks.updateSession、huks.finishSession为三段式接口，需要一起使用。 |
-| [initSession](arkts-universalkeystore-huks-initsession-f.md#initsession-1) | initSession操作密钥接口。使用Promise异步回调。 huks.initSession、huks.updateSession、huks.finishSession为三段式接口，需要一起使用。 |
-| [isKeyExist](arkts-universalkeystore-huks-iskeyexist-f.md#iskeyexist) | 判断密钥是否存在。使用callback异步回调。 |
-| [isKeyExist](arkts-universalkeystore-huks-iskeyexist-f.md#iskeyexist-1) | 判断密钥是否存在。使用Promise异步回调。 |
-| [isKeyItemExist](arkts-universalkeystore-huks-iskeyitemexist-f.md#iskeyitemexist) | 判断密钥是否存在。使用callback异步回调。 若密钥不存在，则抛出错误码为12000011的异常。 |
-| [isKeyItemExist](arkts-universalkeystore-huks-iskeyitemexist-f.md#iskeyitemexist-1) | 判断密钥是否存在。使用Promise异步回调。 若密钥不存在，则抛出错误码为12000011的异常。 |
-| [listAliases](arkts-universalkeystore-huks-listaliases-f.md#listaliases) | 查询密钥别名集接口。使用Promise异步回调。 |
-| [unwrapKeyItem](arkts-universalkeystore-huks-unwrapkeyitem-f.md#unwrapkeyitem) | 加密导入密钥。使用Promise异步回调。 |
+| [init](arkts-universalkeystore-huks-init-f.md#init) | init操作密钥接口。使用Promise异步回调。 huks.init、huks.update、huks.finish为三段式接口，需要一起使用。 |
+| [initSession](arkts-universalkeystore-huks-initsession-f.md#initSession) | initSession操作密钥接口。使用callback异步回调。 huks.initSession、huks.updateSession、huks.finishSession为三段式接口，需要一起使用。 |
+| [initSession](arkts-universalkeystore-huks-initsession-f.md#initSession) | initSession操作密钥接口。使用Promise异步回调。 huks.initSession、huks.updateSession、huks.finishSession为三段式接口，需要一起使用。 |
+| [isKeyExist](arkts-universalkeystore-huks-iskeyexist-f.md#isKeyExist) | 判断密钥是否存在。使用callback异步回调。 |
+| [isKeyExist](arkts-universalkeystore-huks-iskeyexist-f.md#isKeyExist) | 判断密钥是否存在。使用Promise异步回调。 |
+| [isKeyItemExist](arkts-universalkeystore-huks-iskeyitemexist-f.md#isKeyItemExist) | 判断密钥是否存在。使用callback异步回调。 若密钥不存在，则抛出错误码为12000011的异常。 |
+| [isKeyItemExist](arkts-universalkeystore-huks-iskeyitemexist-f.md#isKeyItemExist) | 判断密钥是否存在。使用Promise异步回调。 若密钥不存在，则抛出错误码为12000011的异常。 |
+| [listAliases](arkts-universalkeystore-huks-listaliases-f.md#listAliases) | 查询密钥别名集接口。使用Promise异步回调。 |
+| [unwrapKeyItem](arkts-universalkeystore-huks-unwrapkeyitem-f.md#unwrapKeyItem) | 加密导入密钥。使用Promise异步回调。 |
 | [update](arkts-universalkeystore-huks-update-f.md#update) | update操作密钥接口。使用callback异步回调。 huks.init、huks.update、huks.finish为三段式接口，需要一起使用。 |
-| [update](arkts-universalkeystore-huks-update-f.md#update-1) | update操作密钥接口。使用Promise异步回调。 huks.init、huks.update、huks.finish为三段式接口，需要一起使用。 |
-| [updateSession](arkts-universalkeystore-huks-updatesession-f.md#updatesession) | updateSession操作密钥接口。使用callback异步回调。 huks.initSession、huks.updateSession、huks.finishSession为三段式接口，需要一起使用。 |
-| [updateSession](arkts-universalkeystore-huks-updatesession-f.md#updatesession-1) | Updates the key operation by segment. This API uses an asynchronous callback to return the result. huks.initSession, huks.updateSession, and huks.finishSession must be used together. |
-| [updateSession](arkts-universalkeystore-huks-updatesession-f.md#updatesession-2) | updateSession操作密钥接口。使用Promise异步回调。 huks.initSession、huks.updateSession、huks.finishSession为三段式接口，需要一起使用。 |
-| [wrapKeyItem](arkts-universalkeystore-huks-wrapkeyitem-f.md#wrapkeyitem) | 加密导出密钥。使用Promise异步回调。 |
+| [update](arkts-universalkeystore-huks-update-f.md#update) | update操作密钥接口。使用Promise异步回调。 huks.init、huks.update、huks.finish为三段式接口，需要一起使用。 |
+| [updateSession](arkts-universalkeystore-huks-updatesession-f.md#updateSession) | updateSession操作密钥接口。使用callback异步回调。 huks.initSession、huks.updateSession、huks.finishSession为三段式接口，需要一起使用。 |
+| [updateSession](arkts-universalkeystore-huks-updatesession-f.md#updateSession) | Updates the key operation by segment. This API uses an asynchronous callback to return the result. huks.initSession, huks.updateSession, and huks.finishSession must be used together. |
+| [updateSession](arkts-universalkeystore-huks-updatesession-f.md#updateSession) | updateSession操作密钥接口。使用Promise异步回调。 huks.initSession、huks.updateSession、huks.finishSession为三段式接口，需要一起使用。 |
+| [wrapKeyItem](arkts-universalkeystore-huks-wrapkeyitem-f.md#wrapKeyItem) | 加密导出密钥。使用Promise异步回调。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [anonAttestKeyItemAsUser](arkts-universalkeystore-huks-anonattestkeyitemasuser-f-sys.md#anonattestkeyitemasuser) | 指定用户身份获取匿名化密钥证书，使用Promise方式异步返回结果。 该操作需要联网进行，且耗时较长。 |
-| [anonAttestKeyItemOfflineAsUser](arkts-universalkeystore-huks-anonattestkeyitemofflineasuser-f-sys.md#anonattestkeyitemofflineasuser) | 离线获取匿名证明证书。该接口使用promise返回结果。此操作不需要每次都需要网络连接， 比anonAttestKeyItemAsUser函数性能高。 > **说明** > > > -离线密钥证明依赖于网络。您需要定期连接网络才能使用此API更新离线证书。 > > > -离线匿名密钥证明要求本地时间准确。否则，可能导致对端无法正常工作。验证证书过期。 |
-| [attestKeyItemAsUser](arkts-universalkeystore-huks-attestkeyitemasuser-f-sys.md#attestkeyitemasuser) | 指定用户身份获取密钥证书，使用Promise方式异步返回结果。 |
-| [deleteKeyItemAsUser](arkts-universalkeystore-huks-deletekeyitemasuser-f-sys.md#deletekeyitemasuser) | 指定用户身份删除密钥，使用Promise方式异步返回结果。 |
-| [exportKeyItemAsUser](arkts-universalkeystore-huks-exportkeyitemasuser-f-sys.md#exportkeyitemasuser) | 指定用户身份导出密钥，使用Promise方式回调异步返回的结果。 |
-| [generateKeyItemAsUser](arkts-universalkeystore-huks-generatekeyitemasuser-f-sys.md#generatekeyitemasuser) | 指定用户身份生成密钥，使用Promise方式异步返回结果。基于密钥不出\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_原则，通过 promise不会返回密钥材料内容，只用于表示此次调用是否成功。 |
-| [getKeyItemPropertiesAsUser](arkts-universalkeystore-huks-getkeyitempropertiesasuser-f-sys.md#getkeyitempropertiesasuser) | Get properties of the key as user. |
-| [hasKeyItemAsUser](arkts-universalkeystore-huks-haskeyitemasuser-f-sys.md#haskeyitemasuser) | 指定用户身份判断密钥是否存在，使用Promise回调异步返回结果。 |
-| [importKeyItemAsUser](arkts-universalkeystore-huks-importkeyitemasuser-f-sys.md#importkeyitemasuser) | 指定用户身份导入明文密钥，使用Promise方式异步返回结果。 |
-| [importWrappedKeyItemAsUser](arkts-universalkeystore-huks-importwrappedkeyitemasuser-f-sys.md#importwrappedkeyitemasuser) | Import Wrapped Key As User. |
-| [initSessionAsUser](arkts-universalkeystore-huks-initsessionasuser-f-sys.md#initsessionasuser) | 指定用户身份操作密钥接口，使用Promise方式异步返回结果。huks.initSessionAsUser, huks.updateSession, huks.finishSession为三段式接口，需要一起使用。 |
+| [anonAttestKeyItemAsUser](arkts-universalkeystore-huks-anonattestkeyitemasuser-f-sys.md#anonAttestKeyItemAsUser) | 指定用户身份获取匿名化密钥证书，使用Promise方式异步返回结果。 该操作需要联网进行，且耗时较长。 |
+| [anonAttestKeyItemOfflineAsUser](arkts-universalkeystore-huks-anonattestkeyitemofflineasuser-f-sys.md#anonAttestKeyItemOfflineAsUser) | 离线获取匿名证明证书。该接口使用promise返回结果。此操作不需要每次都需要网络连接， 比anonAttestKeyItemAsUser函数性能高。 |
+| [attestKeyItemAsUser](arkts-universalkeystore-huks-attestkeyitemasuser-f-sys.md#attestKeyItemAsUser) | 指定用户身份获取密钥证书，使用Promise方式异步返回结果。 |
+| [deleteKeyItemAsUser](arkts-universalkeystore-huks-deletekeyitemasuser-f-sys.md#deleteKeyItemAsUser) | 指定用户身份删除密钥，使用Promise方式异步返回结果。 |
+| [exportKeyItemAsUser](arkts-universalkeystore-huks-exportkeyitemasuser-f-sys.md#exportKeyItemAsUser) | 指定用户身份导出密钥，使用Promise方式回调异步返回的结果。 |
+| [generateKeyItemAsUser](arkts-universalkeystore-huks-generatekeyitemasuser-f-sys.md#generateKeyItemAsUser) | 指定用户身份生成密钥，使用Promise方式异步返回结果。基于密钥不出[TEE](../../../security/UniversalKeystoreKit/huks-concepts.md#可信执行环境tee)原则，通过 promise不会返回密钥材料内容，只用于表示此次调用是否成功。 |
+| [getKeyItemPropertiesAsUser](arkts-universalkeystore-huks-getkeyitempropertiesasuser-f-sys.md#getKeyItemPropertiesAsUser) | Get properties of the key as user. |
+| [hasKeyItemAsUser](arkts-universalkeystore-huks-haskeyitemasuser-f-sys.md#hasKeyItemAsUser) | 指定用户身份判断密钥是否存在，使用Promise回调异步返回结果。 |
+| [importKeyItemAsUser](arkts-universalkeystore-huks-importkeyitemasuser-f-sys.md#importKeyItemAsUser) | 指定用户身份导入明文密钥，使用Promise方式异步返回结果。 |
+| [importWrappedKeyItemAsUser](arkts-universalkeystore-huks-importwrappedkeyitemasuser-f-sys.md#importWrappedKeyItemAsUser) | Import Wrapped Key As User. |
+| [initSessionAsUser](arkts-universalkeystore-huks-initsessionasuser-f-sys.md#initSessionAsUser) | 指定用户身份操作密钥接口，使用Promise方式异步返回结果。huks.initSessionAsUser, huks.updateSession, huks.finishSession为三段式接口，需要一起使用。 |
 <!--DelEnd-->
 
 ### 接口
@@ -114,7 +116,7 @@
 | [HuksChallengeType](arkts-universalkeystore-huks-hukschallengetype-e.md) | 表示密钥使用时生成challenge的类型。 |
 | [HuksCipherMode](arkts-universalkeystore-huks-huksciphermode-e.md) | 表示加密模式。 |
 | [HuksErrorCode](arkts-universalkeystore-huks-hukserrorcode-e.md) | 表示错误码的枚举。 |
-| [HuksExceptionErrCode](arkts-universalkeystore-huks-huksexceptionerrcode-e.md) | 表示错误码的枚举以及对应的错误信息，错误码表示错误类型，错误信息展示错误详情。 关于错误码的具体信息，可在\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_和 \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_中查看。 |
+| [HuksExceptionErrCode](arkts-universalkeystore-huks-huksexceptionerrcode-e.md) | 表示错误码的枚举以及对应的错误信息，错误码表示错误类型，错误信息展示错误详情。 关于错误码的具体信息，可在[通用错误码](../../errorcode-universal.md)和 [HUKS错误码](../errorcode-huks.md)中查看。 |
 | [HuksImportKeyType](arkts-universalkeystore-huks-huksimportkeytype-e.md) | 表示导入密钥的密钥类型，默认为导入公钥，导入对称密钥时不需要该字段。 |
 | [HuksKeyAlg](arkts-universalkeystore-huks-hukskeyalg-e.md) | 表示密钥使用的算法。 |
 | [HuksKeyClassType](arkts-universalkeystore-huks-hukskeyclasstype-e.md) | 表示密钥的来源。 |
@@ -127,7 +129,7 @@
 | [HuksKeySize](arkts-universalkeystore-huks-hukskeysize-e.md) | 表示密钥长度。 |
 | [HuksKeyStorageType](arkts-universalkeystore-huks-hukskeystoragetype-e.md) | 表示密钥存储方式。 |
 | [HuksKeyWrapType](arkts-universalkeystore-huks-hukskeywraptype-e.md) | 表示密钥加密类型（加密导出或导入密钥）的枚举。 |
-| [HuksRsaPssSaltLenType](arkts-universalkeystore-huks-huksrsapsssaltlentype-e.md) | 表示Rsa在签名验签、padding为pss时需指定的salt\_\_\_ESCAPED\_UNDERSCORE\_\_\_len类型。 |
+| [HuksRsaPssSaltLenType](arkts-universalkeystore-huks-huksrsapsssaltlentype-e.md) | 表示Rsa在签名验签、padding为pss时需指定的salt_len类型。 |
 | [HuksSecureSignType](arkts-universalkeystore-huks-hukssecuresigntype-e.md) | 表示生成或导入密钥时，指定该密钥的签名类型。 |
 | [HuksSendType](arkts-universalkeystore-huks-hukssendtype-e.md) | 表示发送TAG的方式。 |
 | [HuksTag](arkts-universalkeystore-huks-hukstag-e.md) | 表示调用参数的Tag。 |

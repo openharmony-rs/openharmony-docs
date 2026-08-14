@@ -6,6 +6,8 @@ Define offline resource's content and info.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-webview-interface OfflineResourceMap--><!--Device-webview-interface OfflineResourceMap-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -23,6 +25,8 @@ Arraybuffer of resource. Size must less than 10Mb and cannot be empty.
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-OfflineResourceMap-resource: Uint8Array--><!--Device-OfflineResourceMap-resource: Uint8Array-End-->
 
@@ -42,6 +46,8 @@ Response headers of resource.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-OfflineResourceMap-responseHeaders: Array<WebHeader>--><!--Device-OfflineResourceMap-responseHeaders: Array<WebHeader>-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -54,11 +60,13 @@ type: OfflineResourceType
 
 Resource type
 
-**类型：** OfflineResourceType
+**类型：** [OfflineResourceType](arkts-na-webview-offlineresourcetype-e.md)
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-OfflineResourceMap-type: OfflineResourceType--><!--Device-OfflineResourceMap-type: OfflineResourceType-End-->
 
@@ -77,6 +85,8 @@ Url list of resource. Url of urlList must be HTTP/HTTPS protocol and no longer t
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-OfflineResourceMap-urlList: Array<string>--><!--Device-OfflineResourceMap-urlList: Array<string>-End-->
 

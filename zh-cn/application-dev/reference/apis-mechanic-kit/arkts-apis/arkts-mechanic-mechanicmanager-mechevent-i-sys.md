@@ -4,7 +4,9 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-mechanicManager-export interface MechEvent--><!--Device-mechanicManager-export interface MechEvent-End-->
 
@@ -20,11 +22,13 @@ event: MechEventType
 
 事件类型
 
-**类型：** MechEventType
+**类型：** [MechEventType](arkts-mechanic-mechanicmanager-mecheventtype-e-sys.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-MechEvent-event: MechEventType--><!--Device-MechEvent-event: MechEventType-End-->
 
@@ -44,7 +48,9 @@ mechId: int
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-MechEvent-mechId: int--><!--Device-MechEvent-mechId: int-End-->
 

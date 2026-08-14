@@ -1,10 +1,12 @@
 # LaunchController（系统接口）
 
-拉起原子化服务控制器。
+拉起原子化服务的控制器。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-export declare class LaunchController--><!--Device-unnamed-export declare class LaunchController-End-->
 
@@ -18,13 +20,15 @@
 public launchAtomicService: LaunchAtomicServiceCallback
 ```
 
-Function to launch atomicservice.
+拉起原子化服务。
 
-**类型：** LaunchAtomicServiceCallback
+**类型：** [LaunchAtomicServiceCallback](arkts-arkui-launchatomicservicecallback-t-sys.md)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-LaunchController-public launchAtomicService: LaunchAtomicServiceCallback--><!--Device-LaunchController-public launchAtomicService: LaunchAtomicServiceCallback-End-->
 

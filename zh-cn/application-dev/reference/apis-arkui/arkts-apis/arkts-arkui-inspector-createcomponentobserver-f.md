@@ -14,7 +14,7 @@ function createComponentObserver(id: string): ComponentObserver
 
 **废弃版本：** 18
 
-**替代接口：** ohos.arkui.UIContext.UIInspector#createComponentObserver
+**替代接口：** createComponentObserver
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -34,9 +34,9 @@ function createComponentObserver(id: string): ComponentObserver
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 组件回调事件监听句柄，用于注册和取消注册监听回调。 |
+| [ComponentObserver](../../apis-na/arkts-apis/arkts-na-inspector-componentobserver-i.md) | 组件回调事件监听句柄，用于注册和取消注册监听回调。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let listener: inspector.ComponentObserver = inspector.createComponentObserver('COMPONENT_ID'); // 监听id为COMPONENT_ID的组件回调事件

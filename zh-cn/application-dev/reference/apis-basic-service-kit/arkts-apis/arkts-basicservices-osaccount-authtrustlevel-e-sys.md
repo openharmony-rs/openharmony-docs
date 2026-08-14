@@ -2,9 +2,11 @@
 
 表示认证结果的受信任级别的枚举。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-osAccount-enum AuthTrustLevel--><!--Device-osAccount-enum AuthTrustLevel-End-->
 
@@ -20,9 +22,11 @@ ATL1 = 10000
 
 信任级别 1。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AuthTrustLevel-ATL1 = 10000--><!--Device-AuthTrustLevel-ATL1 = 10000-End-->
 
@@ -38,9 +42,11 @@ ATL2 = 20000
 
 信任级别 2。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AuthTrustLevel-ATL2 = 20000--><!--Device-AuthTrustLevel-ATL2 = 20000-End-->
 
@@ -56,9 +62,11 @@ ATL3 = 30000
 
 信任级别 3。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AuthTrustLevel-ATL3 = 30000--><!--Device-AuthTrustLevel-ATL3 = 30000-End-->
 
@@ -74,9 +82,11 @@ ATL4 = 40000
 
 信任级别 4。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AuthTrustLevel-ATL4 = 40000--><!--Device-AuthTrustLevel-ATL4 = 40000-End-->
 

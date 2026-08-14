@@ -1,6 +1,6 @@
 # Storage
 
-提供获取和修改存储数据的接口。 下列接口都需先使用[data\_storage.getStorage]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_或 [data\_storage.getStorageSync]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_获取到Storage实例，再通过此实例调用对应接口。
+提供获取和修改存储数据的接口。 下列接口都需先使用[data_storage.getStorage](arkts-arkdata-storage-getstorage-f.md#getStorage)或 [data_storage.getStorageSync](arkts-arkdata-storage-getstoragesync-f.md#getStorageSync)获取到Storage实例，再通过此实例调用对应接口。
 
 **起始版本：** 6
 
@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** ohos.preferences.preferences
+**替代接口：** preferences
 
 <!--Device-storage-interface Storage--><!--Device-storage-interface Storage-End-->
 
@@ -28,7 +28,7 @@ clear(callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** ohos.preferences.preferences.clear
+**替代接口：** clear
 
 <!--Device-Storage-clear(callback: AsyncCallback<void>): void--><!--Device-Storage-clear(callback: AsyncCallback<void>): void-End-->
 
@@ -36,9 +36,9 @@ clear(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 storage.clear(function (err) {
@@ -64,7 +64,7 @@ clear(): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.preferences.preferences.clear
+**替代接口：** clear
 
 <!--Device-Storage-clear(): Promise<void>--><!--Device-Storage-clear(): Promise<void>-End-->
 
@@ -74,7 +74,7 @@ clear(): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise实例，用于异步处理。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let promiseclear = storage.clear();
@@ -99,11 +99,11 @@ clearSync(): void
 
 **废弃版本：** 9
 
-**替代接口：** ohos.preferences.preferences.clear
+**替代接口：** clear
 
 <!--Device-Storage-clearSync(): void--><!--Device-Storage-clearSync(): void-End-->
 
-**示例：**
+## 示例
 
 ```TypeScript
 storage.clearSync();
@@ -123,7 +123,7 @@ delete(key: string, callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** ohos.preferences.preferences.delete
+**替代接口：** delete
 
 <!--Device-Storage-delete(key: string, callback: AsyncCallback<void>): void--><!--Device-Storage-delete(key: string, callback: AsyncCallback<void>): void-End-->
 
@@ -132,9 +132,9 @@ delete(key: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | key | string | 是 | 要获取的存储key名称，不能为空。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 storage.delete('startup', function (err) {
@@ -160,7 +160,7 @@ delete(key: string): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.preferences.preferences.delete
+**替代接口：** delete
 
 <!--Device-Storage-delete(key: string): Promise<void>--><!--Device-Storage-delete(key: string): Promise<void>-End-->
 
@@ -176,7 +176,7 @@ delete(key: string): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise实例，用于异步处理。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let promisedel = storage.delete('startup')
@@ -201,7 +201,7 @@ deleteSync(key: string): void
 
 **废弃版本：** 9
 
-**替代接口：** ohos.preferences.preferences.delete
+**替代接口：** delete
 
 <!--Device-Storage-deleteSync(key: string): void--><!--Device-Storage-deleteSync(key: string): void-End-->
 
@@ -211,7 +211,7 @@ deleteSync(key: string): void
 | --- | --- | --- | --- |
 | key | string | 是 | 要获取的存储key名称。它不能为空。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 storage.deleteSync('startup');
@@ -231,7 +231,7 @@ flush(callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** ohos.preferences.preferences.flush
+**替代接口：** flush
 
 <!--Device-Storage-flush(callback: AsyncCallback<void>): void--><!--Device-Storage-flush(callback: AsyncCallback<void>): void-End-->
 
@@ -239,9 +239,9 @@ flush(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 storage.flush(function (err) {
@@ -267,7 +267,7 @@ flush(): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.preferences.preferences.flush
+**替代接口：** flush
 
 <!--Device-Storage-flush(): Promise<void>--><!--Device-Storage-flush(): Promise<void>-End-->
 
@@ -277,7 +277,7 @@ flush(): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise实例，用于异步处理。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let promiseflush = storage.flush();
@@ -302,11 +302,11 @@ flushSync(): void
 
 **废弃版本：** 9
 
-**替代接口：** ohos.preferences.preferences.flush
+**替代接口：** flush
 
 <!--Device-Storage-flushSync(): void--><!--Device-Storage-flushSync(): void-End-->
 
-**示例：**
+## 示例
 
 ```TypeScript
 storage.flushSync();
@@ -326,7 +326,7 @@ get(key: string, defValue: ValueType, callback: AsyncCallback<ValueType>): void
 
 **废弃版本：** 9
 
-**替代接口：** ohos.preferences.preferences.get
+**替代接口：** get
 
 <!--Device-Storage-get(key: string, defValue: ValueType, callback: AsyncCallback<ValueType>): void--><!--Device-Storage-get(key: string, defValue: ValueType, callback: AsyncCallback<ValueType>): void-End-->
 
@@ -335,10 +335,10 @@ get(key: string, defValue: ValueType, callback: AsyncCallback<ValueType>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | key | string | 是 | 要获取的存储key名称，不能为空。 |
-| defValue | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 默认返回值。支持number、string、boolean。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;ValueType&gt; | 是 | 回调函数。 |
+| defValue | ValueType | 是 | 默认返回值。支持number、string、boolean。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;ValueType&gt; | 是 | 回调函数。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 storage.get('startup', 'default', function(err, value) {
@@ -364,7 +364,7 @@ get(key: string, defValue: ValueType): Promise<ValueType>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.preferences.preferences.get
+**替代接口：** get
 
 <!--Device-Storage-get(key: string, defValue: ValueType): Promise<ValueType>--><!--Device-Storage-get(key: string, defValue: ValueType): Promise<ValueType>-End-->
 
@@ -373,7 +373,7 @@ get(key: string, defValue: ValueType): Promise<ValueType>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | key | string | 是 | 要获取的存储key名称，不能为空。 |
-| defValue | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 默认返回值。支持number、string、boolean。 |
+| defValue | ValueType | 是 | 默认返回值。支持number、string、boolean。 |
 
 **返回值：**
 
@@ -381,7 +381,7 @@ get(key: string, defValue: ValueType): Promise<ValueType>
 | --- | --- |
 | Promise&lt;ValueType&gt; | Promise实例，用于异步获取结果。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let promiseget = storage.get('startup', 'default');
@@ -406,7 +406,7 @@ getSync(key: string, defValue: ValueType): ValueType
 
 **废弃版本：** 9
 
-**替代接口：** ohos.preferences.preferences.get
+**替代接口：** get
 
 <!--Device-Storage-getSync(key: string, defValue: ValueType): ValueType--><!--Device-Storage-getSync(key: string, defValue: ValueType): ValueType-End-->
 
@@ -415,15 +415,15 @@ getSync(key: string, defValue: ValueType): ValueType
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | key | string | 是 | 要获取的存储key名称，不能为空。 |
-| defValue | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 给定key的存储不存在，则要返回的默认值。支持number、string、boolean。 |
+| defValue | ValueType | 是 | 给定key的存储不存在，则要返回的默认值。支持number、string、boolean。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 键对应的值，如果值为null或者非默认值类型，返回默认数据。 |
+| ValueType | 键对应的值，如果值为null或者非默认值类型，返回默认数据。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let value = storage.getSync('startup', 'default');
@@ -444,7 +444,7 @@ has(key: string, callback: AsyncCallback<boolean>): boolean
 
 **废弃版本：** 9
 
-**替代接口：** ohos.preferences.preferences.has
+**替代接口：** has
 
 <!--Device-Storage-has(key: string, callback: AsyncCallback<boolean>): boolean--><!--Device-Storage-has(key: string, callback: AsyncCallback<boolean>): boolean-End-->
 
@@ -453,7 +453,7 @@ has(key: string, callback: AsyncCallback<boolean>): boolean
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | key | string | 是 | 要获取的存储key名称，不能为空。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;boolean&gt; | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。 |
 
 **返回值：**
 
@@ -461,7 +461,7 @@ has(key: string, callback: AsyncCallback<boolean>): boolean
 | --- | --- |
 | boolean | true表示存在，false表示不存在。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 storage.has('startup', function (err, isExist) {
@@ -489,7 +489,7 @@ has(key: string): Promise<boolean>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.preferences.preferences.has
+**替代接口：** has
 
 <!--Device-Storage-has(key: string): Promise<boolean>--><!--Device-Storage-has(key: string): Promise<boolean>-End-->
 
@@ -505,7 +505,7 @@ has(key: string): Promise<boolean>
 | --- | --- |
 | Promise&lt;boolean&gt; | Promise实例，用于异步处理。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let promisehas = storage.has('startup')
@@ -532,7 +532,7 @@ hasSync(key: string): boolean
 
 **废弃版本：** 9
 
-**替代接口：** ohos.preferences.preferences.has
+**替代接口：** has
 
 <!--Device-Storage-hasSync(key: string): boolean--><!--Device-Storage-hasSync(key: string): boolean-End-->
 
@@ -548,7 +548,7 @@ hasSync(key: string): boolean
 | --- | --- |
 | boolean | true 表示存在，false表示不存在。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let isExist = storage.hasSync('startup');
@@ -557,7 +557,7 @@ if (isExist) {
 }
 ```
 
-## off('change')
+## off_change
 
 ```TypeScript
 off(type: 'change', callback: Callback<StorageObserver>): void
@@ -571,7 +571,7 @@ off(type: 'change', callback: Callback<StorageObserver>): void
 
 **废弃版本：** 9
 
-**替代接口：** ohos.preferences.preferences.off
+**替代接口：** off
 
 <!--Device-Storage-off(type: 'change', callback: Callback<StorageObserver>): void--><!--Device-Storage-off(type: 'change', callback: Callback<StorageObserver>): void-End-->
 
@@ -580,9 +580,9 @@ off(type: 'change', callback: Callback<StorageObserver>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'change' | 是 | 事件类型，固定值'change'，表示数据变更。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;StorageObserver&gt; | 是 | 需要取消的回调对象实例。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[StorageObserver](arkts-arkdata-storage-storageobserver-i.md)&gt; | 是 | 需要取消的回调对象实例。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let observer = function (key) {
@@ -591,7 +591,7 @@ let observer = function (key) {
 storage.off('change', observer);
 ```
 
-## on('change')
+## on_change
 
 ```TypeScript
 on(type: 'change', callback: Callback<StorageObserver>): void
@@ -605,7 +605,7 @@ on(type: 'change', callback: Callback<StorageObserver>): void
 
 **废弃版本：** 9
 
-**替代接口：** ohos.preferences.preferences.on
+**替代接口：** on
 
 <!--Device-Storage-on(type: 'change', callback: Callback<StorageObserver>): void--><!--Device-Storage-on(type: 'change', callback: Callback<StorageObserver>): void-End-->
 
@@ -614,9 +614,9 @@ on(type: 'change', callback: Callback<StorageObserver>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'change' | 是 | 事件类型，固定值'change'，表示数据变更。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;StorageObserver&gt; | 是 | 回调对象实例。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[StorageObserver](arkts-arkdata-storage-storageobserver-i.md)&gt; | 是 | 回调对象实例。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let observer = function (key) {
@@ -641,7 +641,7 @@ put(key: string, value: ValueType, callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** ohos.preferences.preferences.put
+**替代接口：** put
 
 <!--Device-Storage-put(key: string, value: ValueType, callback: AsyncCallback<void>): void--><!--Device-Storage-put(key: string, value: ValueType, callback: AsyncCallback<void>): void-End-->
 
@@ -650,10 +650,10 @@ put(key: string, value: ValueType, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | key | string | 是 | 要修改的存储的key，不能为空。 |
-| value | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 存储的新值。支持number、string、boolean。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数。 |
+| value | ValueType | 是 | 存储的新值。支持number、string、boolean。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 storage.put('startup', 'auto', function (err) {
@@ -679,7 +679,7 @@ put(key: string, value: ValueType): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.preferences.preferences.put
+**替代接口：** put
 
 <!--Device-Storage-put(key: string, value: ValueType): Promise<void>--><!--Device-Storage-put(key: string, value: ValueType): Promise<void>-End-->
 
@@ -688,7 +688,7 @@ put(key: string, value: ValueType): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | key | string | 是 | 要修改的存储的key，不能为空。 |
-| value | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 存储的新值。支持number、string、boolean。 |
+| value | ValueType | 是 | 存储的新值。支持number、string、boolean。 |
 
 **返回值：**
 
@@ -696,7 +696,7 @@ put(key: string, value: ValueType): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise实例，用于异步处理。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let promiseput = storage.put('startup', 'auto');
@@ -721,7 +721,7 @@ putSync(key: string, value: ValueType): void
 
 **废弃版本：** 9
 
-**替代接口：** ohos.preferences.preferences.put
+**替代接口：** put
 
 <!--Device-Storage-putSync(key: string, value: ValueType): void--><!--Device-Storage-putSync(key: string, value: ValueType): void-End-->
 
@@ -730,9 +730,9 @@ putSync(key: string, value: ValueType): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | key | string | 是 | 要修改的存储的key，不能为空。 |
-| value | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 存储的新值。支持number、string、boolean。 |
+| value | ValueType | 是 | 存储的新值。支持number、string、boolean。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 storage.putSync('startup', 'auto');

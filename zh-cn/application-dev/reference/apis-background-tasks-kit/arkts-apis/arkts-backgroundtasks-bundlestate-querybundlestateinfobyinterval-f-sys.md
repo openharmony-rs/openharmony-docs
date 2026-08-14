@@ -31,12 +31,12 @@ Queries usage information about each bundle within a specified period at a speci
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| byInterval | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | Indicates the interval at which the usage statistics are queried. |
-| begin | number | 是 | Indicates the start time of the query period, in milliseconds. |
-| end | number | 是 | Indicates the end time of the query period, in milliseconds. |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;Array&lt;BundleStateInfo&gt;&gt; | 是 | the callback of usage information about each bundle. |
+| byInterval | IntervalType | 是 | Indicates the interval at which the usage statistics are queried. The value can be { |
+| begin | number | 是 | Indicates the start time of the query period, in milliseconds. &lt;br&gt; Unit:ms |
+| end | number | 是 | Indicates the end time of the query period, in milliseconds. &lt;br&gt; Unit:ms |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[BundleStateInfo](arkts-backgroundtasks-bundlestate-bundlestateinfo-i.md)&gt;&gt; | 是 | the callback of usage information about each bundle. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -86,17 +86,17 @@ Queries usage information about each bundle within a specified period at a speci
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| byInterval | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | Indicates the interval at which the usage statistics are queried. |
-| begin | number | 是 | Indicates the start time of the query period, in milliseconds. |
-| end | number | 是 | Indicates the end time of the query period, in milliseconds. |
+| byInterval | IntervalType | 是 | Indicates the interval at which the usage statistics are queried. The value can be { |
+| begin | number | 是 | Indicates the start time of the query period, in milliseconds. &lt;br&gt; Unit:ms |
+| end | number | 是 | Indicates the end time of the query period, in milliseconds. &lt;br&gt; Unit:ms |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;BundleStateInfo&gt;&gt; | the usage information about each bundle. |
+| Promise&lt;Array&lt;[BundleStateInfo](arkts-backgroundtasks-bundlestate-bundlestateinfo-i.md)&gt;&gt; | the usage information about each bundle. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

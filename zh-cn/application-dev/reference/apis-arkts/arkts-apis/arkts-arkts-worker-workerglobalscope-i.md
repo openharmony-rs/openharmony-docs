@@ -2,7 +2,7 @@
 
 Worker线程自身的运行环境，与宿主线程环境隔离。
 
-**继承/实现关系：** WorkerGlobalScope extends [EventTarget](arkts-arkts-worker-eventtarget-i.md)
+**继承/实现关系：** WorkerGlobalScope extends [EventTarget](arkts-arkts-worker-eventtarget-i.md#EventTarget)
 
 **起始版本：** 7
 
@@ -10,9 +10,9 @@ Worker线程自身的运行环境，与宿主线程环境隔离。
 
 **废弃版本：** 9
 
-**替代接口：** ohos.worker.GlobalScope
+**替代接口：** [GlobalScope](arkts-arkts-worker-globalscope-i.md#GlobalScope)
 
-<!--Device-unnamed-declare interface WorkerGlobalScope extends EventTarget--><!--Device-unnamed-declare interface WorkerGlobalScope extends EventTarget-End-->
+<!--Device-unnamed-declare interface WorkerGlobalScope--><!--Device-unnamed-declare interface WorkerGlobalScope-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -32,7 +32,7 @@ Worker的名字，new Worker时指定。
 
 **废弃版本：** 9
 
-**替代接口：** ohos.worker.GlobalScope.name
+**替代接口：** name
 
 <!--Device-WorkerGlobalScope-readonly name: string--><!--Device-WorkerGlobalScope-readonly name: string-End-->
 
@@ -54,7 +54,7 @@ onerror属性用于指定Worker在执行过程中发生异常被调用的回调�
 
 **废弃版本：** 9
 
-**替代接口：** ohos.worker.GlobalScope.onerror
+**替代接口：** onerror
 
 <!--Device-WorkerGlobalScope-onerror?: (ev: ErrorEvent) => void--><!--Device-WorkerGlobalScope-onerror?: (ev: ErrorEvent) => void-End-->
 
@@ -68,7 +68,7 @@ readonly self: WorkerGlobalScope & typeof globalThis
 
 为self指定的type属性。
 
-**类型：** WorkerGlobalScope & typeof globalThis
+**类型：** [WorkerGlobalScope](arkts-arkts-worker-workerglobalscope-i.md) & typeof globalThis
 
 **起始版本：** 7
 
@@ -76,7 +76,7 @@ readonly self: WorkerGlobalScope & typeof globalThis
 
 **废弃版本：** 9
 
-**替代接口：** ohos.worker.GlobalScope.self
+**替代接口：** self
 
 <!--Device-WorkerGlobalScope-readonly self: WorkerGlobalScope & typeof globalThis--><!--Device-WorkerGlobalScope-readonly self: WorkerGlobalScope & typeof globalThis-End-->
 

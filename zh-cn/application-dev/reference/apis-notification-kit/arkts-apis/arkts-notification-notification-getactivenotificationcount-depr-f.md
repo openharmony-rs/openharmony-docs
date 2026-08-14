@@ -14,7 +14,7 @@ function getActiveNotificationCount(callback: AsyncCallback<number>): void
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager#getActiveNotificationCount
+**替代接口：** [getActiveNotificationCount](arkts-notification-notificationmanager-getactivenotificationcount-f.md#getActiveNotificationCount)
 
 <!--Device-notification-function getActiveNotificationCount(callback: AsyncCallback<number>): void--><!--Device-notification-function getActiveNotificationCount(callback: AsyncCallback<number>): void-End-->
 
@@ -24,7 +24,7 @@ function getActiveNotificationCount(callback: AsyncCallback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;number&gt; | 是 | 获取未删除通知数回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 获取未删除通知数回调函数。 |
 
 
 ## getActiveNotificationCount
@@ -41,7 +41,7 @@ function getActiveNotificationCount(): Promise<number>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager#getActiveNotificationCount
+**替代接口：** [getActiveNotificationCount](arkts-notification-notificationmanager-getactivenotificationcount-f.md#getActiveNotificationCount)
 
 <!--Device-notification-function getActiveNotificationCount(): Promise<number>--><!--Device-notification-function getActiveNotificationCount(): Promise<number>-End-->
 

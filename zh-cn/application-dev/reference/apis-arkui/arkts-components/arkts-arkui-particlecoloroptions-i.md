@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-interface ParticleColorOptions--><!--Device-unnamed-interface ParticleColorOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -18,11 +20,13 @@ a: ParticleTuple<number, number>
 
 a颜色通道的差值。
 
-**类型：** ParticleTuple&lt;number, number&gt;
+**类型：** [ParticleTuple](arkts-arkui-particletuple-t.md)&lt;number, number&gt;
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,11 +44,13 @@ b: ParticleTuple<number, number>
 
 b颜色通道的差值。
 
-**类型：** ParticleTuple&lt;number, number&gt;
+**类型：** [ParticleTuple](arkts-arkui-particletuple-t.md)&lt;number, number&gt;
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -62,11 +68,13 @@ g: ParticleTuple<number, number>
 
 g颜色通道的差值。
 
-**类型：** ParticleTuple&lt;number, number&gt;
+**类型：** [ParticleTuple](arkts-arkui-particletuple-t.md)&lt;number, number&gt;
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -84,11 +92,13 @@ r: ParticleTuple<number, number>
 
 r颜色通道的差值。
 
-**类型：** ParticleTuple&lt;number, number&gt;
+**类型：** [ParticleTuple](arkts-arkui-particletuple-t.md)&lt;number, number&gt;
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

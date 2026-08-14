@@ -19,11 +19,11 @@
 | 名称 | 说明 |
 | --- | --- |
 | [OnErrorReceiveEvent](arkts-arkui-atomicservice-atomicserviceweb-onerrorreceiveevent-i.md) | 定义网页加载遇到错误时触发该回调。 |
-| [OnHttpErrorReceiveEvent](arkts-arkui-atomicservice-atomicserviceweb-onhttperrorreceiveevent-i.md) | 定义网页收到加载资源加载HTTP错误时触发。 |
-| [OnLoadInterceptEvent](arkts-arkui-atomicservice-atomicserviceweb-onloadinterceptevent-i.md) | 当资源加载被拦截时，加载拦截事件。 |
-| [OnMessageEvent](arkts-arkui-atomicservice-atomicserviceweb-onmessageevent-i.md) | 定义页面回退或销毁时触发该回调。 |
-| [OnPageBeginEvent](arkts-arkui-atomicservice-atomicserviceweb-onpagebeginevent-i.md) | 定义网页加载开始时触发的函数。 |
-| [OnPageEndEvent](arkts-arkui-atomicservice-atomicserviceweb-onpageendevent-i.md) | 定义网页加载结束时触发的函数。 |
+| [OnHttpErrorReceiveEvent](arkts-arkui-atomicservice-atomicserviceweb-onhttperrorreceiveevent-i.md) | 定义网页加载资源遇到HTTP错误时触发该回调。 |
+| [OnLoadInterceptEvent](arkts-arkui-atomicservice-atomicserviceweb-onloadinterceptevent-i.md) | 定义Web组件加载url之前触发的加载拦截事件。 |
+| [OnMessageEvent](arkts-arkui-atomicservice-atomicserviceweb-onmessageevent-i.md) | 定义页面返回或销毁时触发该回调。 |
+| [OnPageBeginEvent](arkts-arkui-atomicservice-atomicserviceweb-onpagebeginevent-i.md) | 定义网页加载开始时触发该回调。 |
+| [OnPageEndEvent](arkts-arkui-atomicservice-atomicserviceweb-onpageendevent-i.md) | 定义网页加载结束时触发该回调。 |
 | [OnProgressChangeEvent](arkts-arkui-atomicservice-atomicserviceweb-onprogresschangeevent-i.md) | 定义网页加载进度变化时触发该回调。 |
 | [WebHeader](arkts-arkui-atomicservice-atomicserviceweb-webheader-i.md) | Web组件返回的请求/响应头对象。 |
 
@@ -31,5 +31,5 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [OnLoadInterceptCallback](arkts-arkui-onloadinterceptcallback-t.md) | 资源加载被拦截时触发该回调。 |
+| [OnLoadInterceptCallback](arkts-arkui-onloadinterceptcallback-t.md) | 当Web组件加载url之前触发该回调，用于判断是否阻止此次访问。 |
 

@@ -1,6 +1,6 @@
 # RemoveReason（系统接口）
 
-> **说明：** > 从 API version 7开始支持，从API version 9开始废弃。建议使用 \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_替代。
+通知删除原因。
 
 **起始版本：** 7
 
@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationSubscribe/notificationSubscribe#RemoveReason
+**替代接口：** [RemoveReason](arkts-notification-notificationsubscribe-removereason-e-sys.md#RemoveReason（系统接口）)
 
 <!--Device-notification-export enum RemoveReason--><!--Device-notification-export enum RemoveReason-End-->
 
@@ -30,7 +30,7 @@ CLICK_REASON_REMOVE = 1
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationSubscribe/notificationSubscribe.RemoveReason#CLICK_REASON_REMOVE
+**替代接口：** [CLICK_REASON_REMOVE](arkts-notification-notificationsubscribe-removereason-e-sys.md#CLICK_REASON_REMOVE)
 
 <!--Device-RemoveReason-CLICK_REASON_REMOVE = 1--><!--Device-RemoveReason-CLICK_REASON_REMOVE = 1-End-->
 
@@ -52,7 +52,7 @@ CANCEL_REASON_REMOVE = 2
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationSubscribe/notificationSubscribe.RemoveReason#CANCEL_REASON_REMOVE
+**替代接口：** [CANCEL_REASON_REMOVE](arkts-notification-notificationsubscribe-removereason-e-sys.md#CANCEL_REASON_REMOVE)
 
 <!--Device-RemoveReason-CANCEL_REASON_REMOVE = 2--><!--Device-RemoveReason-CANCEL_REASON_REMOVE = 2-End-->
 

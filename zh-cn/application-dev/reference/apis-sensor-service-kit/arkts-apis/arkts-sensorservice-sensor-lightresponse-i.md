@@ -1,40 +1,76 @@
 # LightResponse
 
-光线感应数据改变后的回调函数的响应对象，包含环境光线强度数据。
+环境光传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md#Response)。
 
-**起始版本：** 3
+**继承/实现关系：** LightResponse extends [Response](arkts-sensorservice-sensor-response-i.md#Response)
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**起始版本：** 23
 
-**废弃版本：** 8
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**替代接口：** ohos.sensor/sensor#LightResponse
+**废弃版本：** -1
 
-<!--Device-unnamed-export interface LightResponse--><!--Device-unnamed-export interface LightResponse-End-->
+<!--Device-sensor-interface LightResponse--><!--Device-sensor-interface LightResponse-End-->
 
-**系统能力：** SystemCapability.Sensors.Sensor.Lite
+**系统能力：** SystemCapability.Sensors.Sensor
+
+## colorTemperature
+
+```TypeScript
+colorTemperature?: double
+```
+
+色温。单位：K（开尔文）。可选参数，如果该参数不支持则返回固定值（固定值由传感器自定义），支持则返回正常数值。
+
+**类型：** double
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
+
+<!--Device-LightResponse-colorTemperature?: double--><!--Device-LightResponse-colorTemperature?: double-End-->
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+## infraredLuminance
+
+```TypeScript
+infraredLuminance?: double
+```
+
+红外亮度。单位：cd/m²（坎德拉每平方米）。可选参数，如果该参数不支持则返回固定值（固定值由传感器自定义），支持则返回正常数值。
+
+**类型：** double
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
+
+<!--Device-LightResponse-infraredLuminance?: double--><!--Device-LightResponse-infraredLuminance?: double-End-->
+
+**系统能力：** SystemCapability.Sensors.Sensor
 
 ## intensity
 
 ```TypeScript
-intensity: number
+intensity: double
 ```
 
-环境光线强度。单位：lux。取值范围：取值为实际上报物理量，由硬件传感器决定。
+环境光强度。单位：lux（勒克斯）。
 
-**类型：** number
+**类型：** double
 
-**起始版本：** 3
+**起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**废弃版本：** 8
+**废弃版本：** -1
 
-**替代接口：** ohos.sensor/sensor#LightResponse.intensity
+<!--Device-LightResponse-intensity: double--><!--Device-LightResponse-intensity: double-End-->
 
-**模型约束：** 此接口仅可在FA模型下使用。
-
-<!--Device-LightResponse-intensity: number--><!--Device-LightResponse-intensity: number-End-->
-
-**系统能力：** SystemCapability.Sensors.Sensor.Lite
+**系统能力：** SystemCapability.Sensors.Sensor
 

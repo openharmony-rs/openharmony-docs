@@ -2,9 +2,11 @@
 
 枚举，表示当前媒体资源的金标，即应用媒体音源的特殊类型标识。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-avSession-enum DisplayTag--><!--Device-avSession-enum DisplayTag-End-->
 
@@ -16,9 +18,11 @@
 TAG_AUDIO_VIVID = 1
 ```
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DisplayTag-TAG_AUDIO_VIVID = 1--><!--Device-DisplayTag-TAG_AUDIO_VIVID = 1-End-->
 

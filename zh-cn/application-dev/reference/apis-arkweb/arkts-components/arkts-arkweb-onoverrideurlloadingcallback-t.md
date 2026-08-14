@@ -10,6 +10,8 @@ The callback of onOverrideUrlLoading. Should not call WebviewController.loadUrl 
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-unnamed-type OnOverrideUrlLoadingCallback = (webResourceRequest: WebResourceRequest) => boolean--><!--Device-unnamed-type OnOverrideUrlLoadingCallback = (webResourceRequest: WebResourceRequest) => boolean-End-->
@@ -20,11 +22,11 @@ The callback of onOverrideUrlLoading. Should not call WebviewController.loadUrl 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| webResourceRequest | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | callback information of onOverrideUrlLoading.  |
+| webResourceRequest | [WebResourceRequest](arkts-arkweb-webresourcerequest-c.md) | 是 | callback information of onOverrideUrlLoading. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | - Returning true causes the current Web to abort loading the URL, |
+| boolean | Returning true causes the current Web to abort loading the URL, false causes the Web to continue loading the url as usual. |
 

@@ -1,6 +1,6 @@
 # AuthenticatorCallback
 
-OAuth认证器回调接口。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃。建议使用[AuthCallback]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。
+OAuth认证器回调接口。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃。建议使用[AuthCallback](arkts-basicservices-appaccount-authcallback-i.md#AuthCallback)替代。
 
 **起始版本：** 8
 
@@ -8,7 +8,7 @@ OAuth认证器回调接口。 > **说明：** > > 从API version 8开始支持�
 
 **废弃版本：** 9
 
-**替代接口：** [appAccount.AuthCallback](arkts-basicservices-appaccount-authcallback-i.md)
+**替代接口：** [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md#AuthCallback)
 
 <!--Device-appAccount-interface AuthenticatorCallback--><!--Device-appAccount-interface AuthenticatorCallback-End-->
 
@@ -20,7 +20,7 @@ OAuth认证器回调接口。 > **说明：** > > 从API version 8开始支持�
 onRequestRedirected: (request: Want) => void
 ```
 
-通知请求被跳转。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃。建议使用\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_替代。
+通知请求被跳转。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃。建议使用[onRequestRedirected](#onRequestRedirected)替代。
 
 **类型：** (request: Want) =&gt; void
 
@@ -30,7 +30,7 @@ onRequestRedirected: (request: Want) => void
 
 **废弃版本：** 9
 
-**替代接口：** [AppAccount.AuthCallback.onRequestRedirected](arkts-basicservices-appaccount-authcallback-i.md#onrequestredirected)
+**替代接口：** onRequestRedirected
 
 <!--Device-AuthenticatorCallback-onRequestRedirected: (request: Want) => void--><!--Device-AuthenticatorCallback-onRequestRedirected: (request: Want) => void-End-->
 
@@ -42,7 +42,7 @@ onRequestRedirected: (request: Want) => void
 onResult: (code: number, result: { [key: string]: any }) => void
 ```
 
-通知请求结果。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃。建议使用\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_替代。
+通知请求结果。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃。建议使用[onResult](#onResult)替代。
 
 **类型：** (code: number, result: { [key: string]: any }) =&gt; void
 
@@ -52,7 +52,7 @@ onResult: (code: number, result: { [key: string]: any }) => void
 
 **废弃版本：** 9
 
-**替代接口：** [AppAccount.AuthCallback.onResult](arkts-basicservices-appaccount-authcallback-i.md#onresult)
+**替代接口：** onResult
 
 <!--Device-AuthenticatorCallback-onResult: (code: number, result: { [key: string]: any }) => void--><!--Device-AuthenticatorCallback-onResult: (code: number, result: { [key: string]: any }) => void-End-->
 

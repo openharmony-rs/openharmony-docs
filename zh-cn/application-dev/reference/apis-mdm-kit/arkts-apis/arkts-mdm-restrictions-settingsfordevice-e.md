@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 <!--Device-restrictions-enum SettingsForDevice--><!--Device-restrictions-enum SettingsForDevice-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -21,6 +23,8 @@ APN设置，当前仅支持手机、平板使用。
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,6 +44,8 @@ POWER_LONG_PRESS = 1
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-SettingsForDevice-POWER_LONG_PRESS = 1--><!--Device-SettingsForDevice-POWER_LONG_PRESS = 1-End-->
@@ -57,6 +63,8 @@ SET_ETHERNET_IP = 2
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -76,6 +84,8 @@ SET_DEVICE_NAME = 3
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-SettingsForDevice-SET_DEVICE_NAME = 3--><!--Device-SettingsForDevice-SET_DEVICE_NAME = 3-End-->
@@ -93,6 +103,8 @@ SET_BIOMETRICS_AND_SCREEN_LOCK = 4
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

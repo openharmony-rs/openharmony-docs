@@ -1,10 +1,12 @@
 # CommonEventBatteryChangedKey
 
-表示COMMON\_EVENT\_BATTERY\_CHANGED通用事件附加信息的查询键。
+表示COMMON_EVENT_BATTERY_CHANGED通用事件附加信息的查询键。
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-batteryInfo-export enum CommonEventBatteryChangedKey--><!--Device-batteryInfo-export enum CommonEventBatteryChangedKey-End-->
 
@@ -22,6 +24,8 @@ EXTRA_SOC = 'soc'
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-CommonEventBatteryChangedKey-EXTRA_SOC = 'soc'--><!--Device-CommonEventBatteryChangedKey-EXTRA_SOC = 'soc'-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
@@ -37,6 +41,8 @@ EXTRA_CHARGE_STATE = 'chargeState'
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-CommonEventBatteryChangedKey-EXTRA_CHARGE_STATE = 'chargeState'--><!--Device-CommonEventBatteryChangedKey-EXTRA_CHARGE_STATE = 'chargeState'-End-->
 
@@ -54,6 +60,8 @@ EXTRA_HEALTH_STATE = 'healthState'
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-CommonEventBatteryChangedKey-EXTRA_HEALTH_STATE = 'healthState'--><!--Device-CommonEventBatteryChangedKey-EXTRA_HEALTH_STATE = 'healthState'-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
@@ -69,6 +77,8 @@ EXTRA_PLUGGED_TYPE = 'pluggedType'
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-CommonEventBatteryChangedKey-EXTRA_PLUGGED_TYPE = 'pluggedType'--><!--Device-CommonEventBatteryChangedKey-EXTRA_PLUGGED_TYPE = 'pluggedType'-End-->
 
@@ -86,6 +96,8 @@ EXTRA_VOLTAGE = 'voltage'
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-CommonEventBatteryChangedKey-EXTRA_VOLTAGE = 'voltage'--><!--Device-CommonEventBatteryChangedKey-EXTRA_VOLTAGE = 'voltage'-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
@@ -101,6 +113,8 @@ EXTRA_TECHNOLOGY = 'technology'
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-CommonEventBatteryChangedKey-EXTRA_TECHNOLOGY = 'technology'--><!--Device-CommonEventBatteryChangedKey-EXTRA_TECHNOLOGY = 'technology'-End-->
 
@@ -118,6 +132,8 @@ EXTRA_TEMPERATURE = 'temperature'
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-CommonEventBatteryChangedKey-EXTRA_TEMPERATURE = 'temperature'--><!--Device-CommonEventBatteryChangedKey-EXTRA_TEMPERATURE = 'temperature'-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
@@ -134,6 +150,8 @@ EXTRA_PRESENT = 'present'
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-CommonEventBatteryChangedKey-EXTRA_PRESENT = 'present'--><!--Device-CommonEventBatteryChangedKey-EXTRA_PRESENT = 'present'-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
@@ -149,6 +167,8 @@ EXTRA_CAPACITY_LEVEL = 'capacityLevel'
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-CommonEventBatteryChangedKey-EXTRA_CAPACITY_LEVEL = 'capacityLevel'--><!--Device-CommonEventBatteryChangedKey-EXTRA_CAPACITY_LEVEL = 'capacityLevel'-End-->
 

@@ -10,6 +10,8 @@ Navigation页面跳转前和页面跳转后的拦截回调。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -22,8 +24,8 @@ Navigation页面跳转前和页面跳转后的拦截回调。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| from | \_\_\_MD\_LINK\_USD\_0\_\_\_ \| NavBar | 是 | 页面跳转之前的栈顶页面信息。参数值为navBar，则表示跳转前的页面为Navigation首页。  |
-| to | \_\_\_MD\_LINK\_USD\_0\_\_\_ \| NavBar | 是 | 页面跳转之前的栈顶页面信息。参数值为navBar，则表示跳转前的页面为Navigation首页。  |
-| operation | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 当前页面跳转类型。  |
-| isAnimated | boolean | 是 | 页面跳转是否有动画。\_\_\_HTML\_TAG\_USD\_0\_\_\_true：页面跳转有动画。\_\_\_HTML\_TAG\_USD\_1\_\_\_false：页面跳转没有动画。  |
+| from | NavDestinationContext \| [NavBar](arkts-arkui-navbar-t.md) | 是 | 页面跳转之前的栈顶页面信息。参数值为navBar，则表示跳转前的页面为Navigation首页。 |
+| to | NavDestinationContext \| [NavBar](arkts-arkui-navbar-t.md) | 是 | 页面跳转之前的栈顶页面信息。参数值为navBar，则表示跳转前的页面为Navigation首页。 |
+| operation | [NavigationOperation](arkts-arkui-navigationoperation-e.md) | 是 | 当前页面跳转类型。 |
+| isAnimated | boolean | 是 | 页面跳转是否有动画。<br/>true：页面跳转有动画。<br/>false：页面跳转没有动画。 |
 

@@ -2,9 +2,11 @@
 
 被计算文本属性。
 
-**起始版本：** 23
+**起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-export interface MeasureOptions--><!--Device-unnamed-export interface MeasureOptions-End-->
 
@@ -13,40 +15,48 @@
 ## baselineOffset
 
 ```TypeScript
-baselineOffset?: double | string
+baselineOffset?: number | string
 ```
 
 设置被计算文本基线的偏移量。 默认值：0
 
-**类型：** double \| string
+**类型：** number \| string
 
-**起始版本：** 23
+**起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-MeasureOptions-baselineOffset?: double | string--><!--Device-MeasureOptions-baselineOffset?: double | string-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-MeasureOptions-baselineOffset?: number | string--><!--Device-MeasureOptions-baselineOffset?: number | string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## constraintWidth
 
 ```TypeScript
-constraintWidth?: double | string | Resource
+constraintWidth?: number | string | Resource
 ```
 
 设置被计算文本布局宽度。 **说明：** 默认单位为vp，不支持设置百分比字符串。若不设置，则文本SizeOptions宽度为单行布局所占最大宽度值，若设置则为设置值。
 
-**类型：** double \| string \| Resource
+**类型：** number \| string \| [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md)
 
-**起始版本：** 23
+**起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-MeasureOptions-constraintWidth?: double | string | Resource--><!--Device-MeasureOptions-constraintWidth?: double | string | Resource-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-MeasureOptions-constraintWidth?: number | string | Resource--><!--Device-MeasureOptions-constraintWidth?: number | string | Resource-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,15 +66,17 @@ constraintWidth?: double | string | Resource
 fontFamily?: string | Resource
 ```
 
-设置被计算文本字体列表。
+设置被计算文本字体列表。默认字体'HarmonyOS Sans'，且当前只支持这种字体。
 
-**类型：** string \| Resource
+**类型：** string \| [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md)
 
-**起始版本：** 23
+**起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MeasureOptions-fontFamily?: string | Resource--><!--Device-MeasureOptions-fontFamily?: string | Resource-End-->
 
@@ -73,180 +85,208 @@ fontFamily?: string | Resource
 ## fontSize
 
 ```TypeScript
-fontSize?: double | string | Resource
+fontSize?: number | string | Resource
 ```
 
 设置被计算文本字体大小，fontSize为number类型时，使用vp单位。 默认值：16 **说明：** 不支持设置百分比字符串。 从API version 12开始，fontSize为number类型时，使用fp单位。
 
-**类型：** double \| string \| Resource
+**类型：** number \| string \| [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md)
 
-**起始版本：** 23
+**起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**废弃版本：** -1
 
-<!--Device-MeasureOptions-fontSize?: double | string | Resource--><!--Device-MeasureOptions-fontSize?: double | string | Resource-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-MeasureOptions-fontSize?: number | string | Resource--><!--Device-MeasureOptions-fontSize?: number | string | Resource-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontStyle
 
 ```TypeScript
-fontStyle?: int | FontStyle
+fontStyle?: number | FontStyle
 ```
 
-设置被计算文本字体样式。 默认值：FontStyle.Normal int类型取值范围为[0,1]，取值间隔为1，依次对应FontStyle中的枚举值。
+设置被计算文本字体样式。 默认值：FontStyle.Normal number类型取值范围为[0,1]，取值间隔为1，依次对应FontStyle中的枚举值。
 
-**类型：** int \| FontStyle
+**类型：** number \| [FontStyle](../../apis-na/arkts-apis/arkts-na-enums-fontstyle-e.md)
 
-**起始版本：** 23
+**起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**废弃版本：** -1
 
-<!--Device-MeasureOptions-fontStyle?: int | FontStyle--><!--Device-MeasureOptions-fontStyle?: int | FontStyle-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-MeasureOptions-fontStyle?: number | FontStyle--><!--Device-MeasureOptions-fontStyle?: number | FontStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontWeight
 
 ```TypeScript
-fontWeight?: int | string | FontWeight
+fontWeight?: number | string | FontWeight
 ```
 
-设置被计算文本的字体粗细，int类型取值[100, 900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持int类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、" lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。 默认值：FontWeight.Normal
+设置被计算文本的字体粗细，number类型取值[100, 900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、" lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。 默认值：FontWeight.Normal
 
-**类型：** int \| string \| FontWeight
+**类型：** number \| string \| [FontWeight](../../apis-na/arkts-apis/arkts-na-enums-fontweight-e.md)
 
-**起始版本：** 23
+**起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**废弃版本：** -1
 
-<!--Device-MeasureOptions-fontWeight?: int | string | FontWeight--><!--Device-MeasureOptions-fontWeight?: int | string | FontWeight-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-MeasureOptions-fontWeight?: number | string | FontWeight--><!--Device-MeasureOptions-fontWeight?: number | string | FontWeight-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## letterSpacing
 
 ```TypeScript
-letterSpacing?: double | string
+letterSpacing?: number | string
 ```
 
 设置被计算文本字符间距。 默认值：0
 
-**类型：** double \| string
+**类型：** number \| string
 
-**起始版本：** 23
+**起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**废弃版本：** -1
 
-<!--Device-MeasureOptions-letterSpacing?: double | string--><!--Device-MeasureOptions-letterSpacing?: double | string-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-MeasureOptions-letterSpacing?: number | string--><!--Device-MeasureOptions-letterSpacing?: number | string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## lineHeight
 
 ```TypeScript
-lineHeight?: double | string | Resource
+lineHeight?: number | string | Resource
 ```
 
 设置被计算文本行高。
 
-**类型：** double \| string \| Resource
+**类型：** number \| string \| [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md)
 
-**起始版本：** 23
+**起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-MeasureOptions-lineHeight?: double | string | Resource--><!--Device-MeasureOptions-lineHeight?: double | string | Resource-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-MeasureOptions-lineHeight?: number | string | Resource--><!--Device-MeasureOptions-lineHeight?: number | string | Resource-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## maxLines
 
 ```TypeScript
-maxLines?: int
+maxLines?: number
 ```
 
-设置被计算文本最大行数。 取值范围：[0, INT32\_MAX]
+设置被计算文本最大行数。 取值范围：[0, INT32_MAX]
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-MeasureOptions-maxLines?: int--><!--Device-MeasureOptions-maxLines?: int-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-MeasureOptions-maxLines?: number--><!--Device-MeasureOptions-maxLines?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## overflow
 
 ```TypeScript
-overflow?: int | TextOverflow
+overflow?: number | TextOverflow
 ```
 
-设置被计算文本超长时的截断方式。 默认值：1 int类型取值范围为[0,3]，取值间隔为1，依次对应TextOverflow中的枚举值。
+设置被计算文本超长时的截断方式。 默认值：1 number类型取值范围为[0,3]，取值间隔为1，依次对应TextOverflow中的枚举值。
 
-**类型：** int \| TextOverflow
+**类型：** number \| [TextOverflow](../../apis-na/arkts-apis/arkts-na-enums-textoverflow-e.md)
 
-**起始版本：** 23
+**起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-MeasureOptions-overflow?: int | TextOverflow--><!--Device-MeasureOptions-overflow?: int | TextOverflow-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-MeasureOptions-overflow?: number | TextOverflow--><!--Device-MeasureOptions-overflow?: number | TextOverflow-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## textAlign
 
 ```TypeScript
-textAlign?: int | TextAlign
+textAlign?: number | TextAlign
 ```
 
-设置被计算文本水平方向的对齐方式。 默认值：TextAlign.Start int类型取值范围为[0,3]，取值间隔为1，依次对应TextAlign中的枚举值。
+设置被计算文本水平方向的对齐方式。 默认值：TextAlign.Start number类型取值范围为[0,3]，取值间隔为1，依次对应TextAlign中的枚举值。
 
-**类型：** int \| TextAlign
+**类型：** number \| [TextAlign](../../apis-na/arkts-apis/arkts-na-enums-textalign-e.md)
 
-**起始版本：** 23
+**起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-MeasureOptions-textAlign?: int | TextAlign--><!--Device-MeasureOptions-textAlign?: int | TextAlign-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-MeasureOptions-textAlign?: number | TextAlign--><!--Device-MeasureOptions-textAlign?: number | TextAlign-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## textCase
 
 ```TypeScript
-textCase?: int | TextCase
+textCase?: number | TextCase
 ```
 
-设置被计算文本大小写。 默认值：TextCase.Normal int类型取值范围为[0,2]，取值间隔为1，依次对应TextCase中的枚举值。
+设置被计算文本大小写。 默认值：TextCase.Normal number类型取值范围为[0,2]，取值间隔为1，依次对应TextCase中的枚举值。
 
-**类型：** int \| TextCase
+**类型：** number \| [TextCase](../../apis-na/arkts-apis/arkts-na-enums-textcase-e.md)
 
-**起始版本：** 23
+**起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-MeasureOptions-textCase?: int | TextCase--><!--Device-MeasureOptions-textCase?: int | TextCase-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-MeasureOptions-textCase?: number | TextCase--><!--Device-MeasureOptions-textCase?: number | TextCase-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -258,13 +298,15 @@ textContent: string | Resource
 
 设置被计算文本内容。
 
-**类型：** string \| Resource
+**类型：** string \| [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md)
 
-**起始版本：** 23
+**起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MeasureOptions-textContent: string | Resource--><!--Device-MeasureOptions-textContent: string | Resource-End-->
 
@@ -273,20 +315,24 @@ textContent: string | Resource
 ## textIndent
 
 ```TypeScript
-textIndent?: double | string
+textIndent?: number | string
 ```
 
 设置首行文本缩进，默认值为0。
 
-**类型：** double \| string
+**类型：** number \| string
 
-**起始版本：** 23
+**起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-MeasureOptions-textIndent?: double | string--><!--Device-MeasureOptions-textIndent?: double | string-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-MeasureOptions-textIndent?: number | string--><!--Device-MeasureOptions-textIndent?: number | string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -296,15 +342,19 @@ textIndent?: double | string
 wordBreak?: WordBreak
 ```
 
-设置断行规则。 默认值：WordBreak.BREAK\_WORD **说明：** WordBreak.BREAK\_ALL与{overflow: TextOverflow.Ellipsis}，\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_组合使用可实现英文单词按字母截断，超出部分以省略号显示。
+设置断行规则。 默认值：WordBreak.BREAK_WORD **说明：** WordBreak.BREAK_ALL与{overflow: TextOverflow.Ellipsis}，`maxLines`组合使用可实现英文单词按字母截断，超出部分以省略号显示。
 
-**类型：** WordBreak
+**类型：** [WordBreak](../../apis-na/arkts-apis/arkts-na-enums-wordbreak-e.md)
 
-**起始版本：** 23
+**起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MeasureOptions-wordBreak?: WordBreak--><!--Device-MeasureOptions-wordBreak?: WordBreak-End-->
 

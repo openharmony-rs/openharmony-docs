@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 <!--Device-abilityToolAccessCtrl-interface AuthStatusInfo--><!--Device-abilityToolAccessCtrl-interface AuthStatusInfo-End-->
 
 **系统能力：** SystemCapability.Security.Asset
@@ -20,11 +22,13 @@ authStatus?: AuthStatus
 
 授权状态。
 
-**类型：** AuthStatus
+**类型：** [AuthStatus](arkts-ability-abilitytoolaccessctrl-authstatus-e-sys.md)
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-AuthStatusInfo-authStatus?: AuthStatus--><!--Device-AuthStatusInfo-authStatus?: AuthStatus-End-->
 
@@ -45,6 +49,8 @@ flag?: long
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-AuthStatusInfo-flag?: long--><!--Device-AuthStatusInfo-flag?: long-End-->
 

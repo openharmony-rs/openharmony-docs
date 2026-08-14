@@ -8,9 +8,11 @@ function createController(sessionId: string, callback: AsyncCallback<AVSessionCo
 
 根据会话ID创建会话控制器。使用callback异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -25,25 +27,109 @@ function createController(sessionId: string, callback: AsyncCallback<AVSessionCo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sessionId | string | 是 | 会话ID。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;AVSessionController&gt; | 是 | 回调函数。返回会话控制器实例，可查看会话ID，\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_并完成对会话发送命令及事件，获取元数据、播放状态信息等操作。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AVSessionController](arkts-avsession-avsession-avsessioncontroller-i.md)&gt; | 是 | 回调函数。返回会话控制器实例，可查看会话ID， &lt;br&gt;并完成对会话发送命令及事件，获取元数据、播放状态信息等操作。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | parameter check failed. 1.Mandatory parameters are left unspecified.2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let currentAVcontroller: avSession.AVSessionController | undefined = undefined;
 avSession.createController(sessionId, (err, avcontroller: avSession.AVSessionController) => {
   currentAVcontroller = avcontroller;
     console.info('Succeeded in creating controller.');
+});
+```
+
+
+## createController
+
+```TypeScript
+function createController(sessionId: string): Promise<AVSessionController>
+```
+
+根据会话ID创建会话控制器。使用Promise异步回调。
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
+
+**需要权限：** 
+- API版本23+：ohos.permission.MANAGE_MEDIA_RESOURCES or ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC
+- API版本9 - 22：ohos.permission.MANAGE_MEDIA_RESOURCES
+
+<!--Device-avSession-function createController(sessionId: string): Promise<AVSessionController>--><!--Device-avSession-function createController(sessionId: string): Promise<AVSessionController>-End-->
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Manager
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| sessionId | string | 是 | 会话ID。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;[AVSessionController](arkts-avsession-avsession-avsessioncontroller-i.md)&gt; | Promise对象。返回会话控制器实例，可查看会话ID， &lt;br&gt;并完成对会话发送命令及事件，获取元数据、播放状态信息等操作。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.<br>**适用版本：** 9 - 22 |
+
+## 示例
+
+```TypeScript
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            avSession.getAllSessionDescriptors().then((descriptors: avSession.AVSessionDescriptor[]) => {
+              console.info(`Succeeded in getting all session descriptors, length: ${descriptors.length}`);
+              if (descriptors.length > 0 ) {
+                avSession.createController(descriptors[0]?.sessionId).then((avcontroller: avSession.AVSessionController) => {
+                  console.info('Succeeded in creating controller.');
+                });
+              }
+            });
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+```TypeScript
+let currentAVcontroller: avSession.AVSessionController | undefined = undefined;
+avSession.createController(sessionId).then((avcontroller: avSession.AVSessionController) => {
+  currentAVcontroller = avcontroller;
+  console.info('Succeeded in creating controller.');
 });
 ```
 

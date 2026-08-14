@@ -1,10 +1,12 @@
 # BlanklessFrameInterpolationState
 
-Enumerates the frame interpolation states. \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_ArkWeb Dual Web Engine Versioning Convention\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_: \_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_See [ArkWeb Dual Web Engine Versioning Convention] for switching between Legacy and Evergreen Web Engine. Device behavior differences: Only the mobile phone is supported. For other devices, 801 is returned.
+Enumerates the frame interpolation states. &lt;strong&gt;ArkWeb Dual Web Engine Versioning Convention&lt;/strong&gt;: &lt;p&gt;See [ArkWeb Dual Web Engine Versioning Convention] for switching between Legacy and Evergreen Web Engine. Device behavior differences: Only the mobile phone is supported. For other devices, 801 is returned.
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-webview-enum BlanklessFrameInterpolationState--><!--Device-webview-enum BlanklessFrameInterpolationState-End-->
 
@@ -21,6 +23,8 @@ Frame interpolation succeeded. Device behavior differences: Only the mobile phon
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,6 +44,8 @@ Frame interpolation failed. Device behavior differences: Only the mobile phone i
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-BlanklessFrameInterpolationState-FRAME_INTERPOLATION_FAILED = 1--><!--Device-BlanklessFrameInterpolationState-FRAME_INTERPOLATION_FAILED = 1-End-->
@@ -57,6 +63,8 @@ The frame interpolation is removed. Device behavior differences: Only the mobile
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

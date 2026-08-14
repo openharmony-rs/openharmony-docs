@@ -42,7 +42,7 @@ onCreate(want: object): void
 | --- | --- | --- | --- |
 | want | object | 是 | 当前Extension相关的Want类型信息，包括ability名称、bundle名称等。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { WallpaperExtensionAbility } from '@kit.BasicServicesKit';
@@ -77,7 +77,7 @@ onDestroy(): void
 
 **系统接口：** 此接口为系统接口。
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { WallpaperExtensionAbility } from '@kit.BasicServicesKit';
@@ -117,7 +117,7 @@ onWallpaperChange(wallpaperType: number): void
 | --- | --- | --- | --- |
 | wallpaperType | number | 是 | 壁纸类型。主屏幕壁纸为0，锁屏壁纸为1。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { WallpaperExtensionAbility } from '@kit.BasicServicesKit';

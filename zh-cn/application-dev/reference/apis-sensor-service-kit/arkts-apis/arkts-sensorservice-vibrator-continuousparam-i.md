@@ -1,10 +1,12 @@
 # ContinuousParam
 
-连续振动参数。用于[VibratorPatternBuilder.addContinuousEvent]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_的 options参数，指定长振事件的振动强度、频率、振动调节曲线和通道编号。
+连续振动参数。用于[VibratorPatternBuilder.addContinuousEvent](arkts-sensorservice-vibrator-vibratorpatternbuilder-c.md#addContinuousEvent)的 options参数，指定长振事件的振动强度、频率、振动调节曲线和通道编号。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-vibrator-interface ContinuousParam--><!--Device-vibrator-interface ContinuousParam-End-->
 
@@ -20,9 +22,11 @@ frequency?: int
 
 **类型：** int
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ContinuousParam-frequency?: int--><!--Device-ContinuousParam-frequency?: int-End-->
 
@@ -38,9 +42,11 @@ index?: int
 
 **类型：** int
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ContinuousParam-index?: int--><!--Device-ContinuousParam-index?: int-End-->
 
@@ -56,9 +62,11 @@ intensity?: int
 
 **类型：** int
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ContinuousParam-intensity?: int--><!--Device-ContinuousParam-intensity?: int-End-->
 
@@ -72,11 +80,13 @@ points?: VibratorCurvePoint[]
 
 可选参数，表示振动调节曲线数组。使用场景：适用于需要精细控制振动强度和频率变化趋势的交互反馈场景。数组中元素个数最少设置4个，最大设置16个。
 
-**类型：** VibratorCurvePoint[]
+**类型：** [VibratorCurvePoint](arkts-sensorservice-vibrator-vibratorcurvepoint-i.md)[]
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ContinuousParam-points?: VibratorCurvePoint[]--><!--Device-ContinuousParam-points?: VibratorCurvePoint[]-End-->
 

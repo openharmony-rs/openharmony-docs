@@ -12,7 +12,7 @@ function getNameForUid(uid: number, callback: AsyncCallback<string>): void
 
 **废弃版本：** 9
 
-**替代接口：** ohos.bundle.bundleManager/bundleManager#getBundleNameByUid
+**替代接口：** [getBundleNameByUid](arkts-ability-bundlemanager-getbundlenamebyuid-f.md#getBundleNameByUid)
 
 <!--Device-bundle-function getNameForUid(uid: number, callback: AsyncCallback<string>): void--><!--Device-bundle-function getNameForUid(uid: number, callback: AsyncCallback<string>): void-End-->
 
@@ -22,10 +22,10 @@ function getNameForUid(uid: number, callback: AsyncCallback<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uid | number | 是 | @param { AsyncCallback\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ } callback |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;string&gt; | 是 |  |
+| uid | number | 是 | @param { AsyncCallback&lt;string&gt; } callback |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 |  |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import bundle from '@ohos.bundle';
@@ -56,7 +56,7 @@ function getNameForUid(uid: number): Promise<string>
 
 **废弃版本：** 9
 
-**替代接口：** [null]
+**替代接口：** null
 
 <!--Device-bundle-function getNameForUid(uid: number): Promise<string>--><!--Device-bundle-function getNameForUid(uid: number): Promise<string>-End-->
 
@@ -74,7 +74,7 @@ function getNameForUid(uid: number): Promise<string>
 | --- | --- |
 | Promise&lt;string&gt; | Returns the bundle name. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import bundle from '@ohos.bundle';

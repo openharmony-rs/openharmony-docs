@@ -12,6 +12,8 @@ function getSkillInfoForSelf(moduleName: string, skillName: string, flags: int):
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -38,6 +40,6 @@ function getSkillInfoForSelf(moduleName: string, skillName: string, flags: int):
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified module is not found. |
 | [17700093](../errorcode-bundle.md#17700093-指定的skillname不存在) | The specified skillName is not found. |
+| [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified module is not found. |
 

@@ -2,9 +2,11 @@
 
 云文件批量缓存的进度信息。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-cloudSync-class MultiDownloadProgress--><!--Device-cloudSync-class MultiDownloadProgress-End-->
 
@@ -18,9 +20,11 @@ getFailedFiles(): Array<FailedFileInfo>
 
 获取批量缓存失败的文件列表。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-MultiDownloadProgress-getFailedFiles(): Array<FailedFileInfo>--><!--Device-MultiDownloadProgress-getFailedFiles(): Array<FailedFileInfo>-End-->
 
@@ -30,15 +34,15 @@ getFailedFiles(): Array<FailedFileInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;FailedFileInfo&gt; | 返回缓存失败的文件URI列表及其对应的错误类型。 |
+| Array&lt;[FailedFileInfo](arkts-corefile-cloudsync-failedfileinfo-i.md)&gt; | 返回缓存失败的文件URI列表及其对应的错误类型。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 22400005 | Inner error. Possible causes:\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_1.Failed to access the database or execute the SQL statement.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 22400005 | Inner error. Possible causes: &lt;br&gt;1.Failed to access the database or execute the SQL statement. &lt;br&gt;2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -110,9 +114,11 @@ getSuccessfulFiles(): Array<string>
 
 获取批量缓存成功的文件列表。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-MultiDownloadProgress-getSuccessfulFiles(): Array<string>--><!--Device-MultiDownloadProgress-getSuccessfulFiles(): Array<string>-End-->
 
@@ -128,9 +134,9 @@ getSuccessfulFiles(): Array<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 22400005 | Inner error. Possible causes:\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_1.Failed to access the database or execute the SQL statement.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 22400005 | Inner error. Possible causes: &lt;br&gt;1.Failed to access the database or execute the SQL statement. &lt;br&gt;2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -196,13 +202,15 @@ fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then<long>((do
 downloadedSize: long
 ```
 
-已缓存的文件大小，取值范围为 [0, INT64\_MAX)，单位：Byte。如果进度异常，返回值为 INT64\_MAX。
+已缓存的文件大小，取值范围为 [0, INT64_MAX)，单位：Byte。如果进度异常，返回值为 INT64_MAX。
 
 **类型：** long
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-MultiDownloadProgress-downloadedSize: long--><!--Device-MultiDownloadProgress-downloadedSize: long-End-->
 
@@ -216,11 +224,13 @@ errType: DownloadErrorType
 
 返回批量缓存任务执行失败时的错误类型。
 
-**类型：** DownloadErrorType
+**类型：** [DownloadErrorType](arkts-corefile-cloudsync-downloaderrortype-e.md)
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-MultiDownloadProgress-errType: DownloadErrorType--><!--Device-MultiDownloadProgress-errType: DownloadErrorType-End-->
 
@@ -236,9 +246,11 @@ failedCount: int
 
 **类型：** int
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-MultiDownloadProgress-failedCount: int--><!--Device-MultiDownloadProgress-failedCount: int-End-->
 
@@ -254,9 +266,11 @@ state: State
 
 **类型：** State
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-MultiDownloadProgress-state: State--><!--Device-MultiDownloadProgress-state: State-End-->
 
@@ -272,9 +286,11 @@ successfulCount: int
 
 **类型：** int
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-MultiDownloadProgress-successfulCount: int--><!--Device-MultiDownloadProgress-successfulCount: int-End-->
 
@@ -286,13 +302,15 @@ successfulCount: int
 taskId: long
 ```
 
-批量缓存任务的ID，取值范围为0到INT64\_MAX。如果进度异常，返回值为-1。
+批量缓存任务的ID，取值范围为0到INT64_MAX。如果进度异常，返回值为-1。
 
 **类型：** long
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-MultiDownloadProgress-taskId: long--><!--Device-MultiDownloadProgress-taskId: long-End-->
 
@@ -308,9 +326,11 @@ totalCount: int
 
 **类型：** int
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-MultiDownloadProgress-totalCount: int--><!--Device-MultiDownloadProgress-totalCount: int-End-->
 
@@ -322,13 +342,15 @@ totalCount: int
 totalSize: long
 ```
 
-待缓存的文件总大小，取值范围为 [0, INT64\_MAX)，单位为 Byte。如果进度异常，返回值为 INT64\_MAX。
+待缓存的文件总大小，取值范围为 [0, INT64_MAX)，单位为 Byte。如果进度异常，返回值为 INT64_MAX。
 
 **类型：** long
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-MultiDownloadProgress-totalSize: long--><!--Device-MultiDownloadProgress-totalSize: long-End-->
 

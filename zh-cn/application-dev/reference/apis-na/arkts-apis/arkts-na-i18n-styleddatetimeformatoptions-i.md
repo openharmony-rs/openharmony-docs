@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-i18n-export interface StyledDateTimeFormatOptions--><!--Device-i18n-export interface StyledDateTimeFormatOptions-End-->
 
 **系统能力：** SystemCapability.Global.I18n
@@ -18,11 +20,13 @@ day?: TextStyle
 
 指定日的文本样式。默认值：StyledString默认的文本样式。
 
-**类型：** TextStyle
+**类型：** [TextStyle](../../apis-arkui/arkts-apis/arkts-arkui-styledstring-textstyle-c.md)
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -38,11 +42,13 @@ dayPeriod?: TextStyle
 
 指定时段的文本样式。默认值：StyledString默认的文本样式。
 
-**类型：** TextStyle
+**类型：** [TextStyle](../../apis-arkui/arkts-apis/arkts-arkui-styledstring-textstyle-c.md)
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -58,11 +64,13 @@ era?: TextStyle
 
 指定纪元的文本样式。默认值：StyledString默认的文本样式。
 
-**类型：** TextStyle
+**类型：** [TextStyle](../../apis-arkui/arkts-apis/arkts-arkui-styledstring-textstyle-c.md)
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -78,11 +86,13 @@ hour?: TextStyle
 
 指定时的文本样式。默认值：StyledString默认的文本样式。
 
-**类型：** TextStyle
+**类型：** [TextStyle](../../apis-arkui/arkts-apis/arkts-arkui-styledstring-textstyle-c.md)
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -98,11 +108,13 @@ minute?: TextStyle
 
 指定分的文本样式。默认值：StyledString默认的文本样式。
 
-**类型：** TextStyle
+**类型：** [TextStyle](../../apis-arkui/arkts-apis/arkts-arkui-styledstring-textstyle-c.md)
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -118,11 +130,13 @@ month?: TextStyle
 
 指定月的文本样式。默认值：StyledString默认的文本样式。
 
-**类型：** TextStyle
+**类型：** [TextStyle](../../apis-arkui/arkts-apis/arkts-arkui-styledstring-textstyle-c.md)
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -138,11 +152,13 @@ second?: TextStyle
 
 指定秒的文本样式。默认值：StyledString默认的文本样式。
 
-**类型：** TextStyle
+**类型：** [TextStyle](../../apis-arkui/arkts-apis/arkts-arkui-styledstring-textstyle-c.md)
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -158,11 +174,13 @@ timeZoneName?: TextStyle
 
 指定时区名称的文本样式。默认值：StyledString默认的文本样式。
 
-**类型：** TextStyle
+**类型：** [TextStyle](../../apis-arkui/arkts-apis/arkts-arkui-styledstring-textstyle-c.md)
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -178,11 +196,13 @@ weekday?: TextStyle
 
 指定星期的文本样式。默认值：StyledString默认的文本样式。
 
-**类型：** TextStyle
+**类型：** [TextStyle](../../apis-arkui/arkts-apis/arkts-arkui-styledstring-textstyle-c.md)
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -198,11 +218,13 @@ year?: TextStyle
 
 指定年的文本样式。默认值：StyledString默认的文本样式。
 
-**类型：** TextStyle
+**类型：** [TextStyle](../../apis-arkui/arkts-apis/arkts-arkui-styledstring-textstyle-c.md)
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 

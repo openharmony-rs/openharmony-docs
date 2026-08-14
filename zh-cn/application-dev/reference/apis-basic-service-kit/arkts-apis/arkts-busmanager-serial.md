@@ -4,7 +4,11 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-declare namespace serial--><!--Device-unnamed-declare namespace serial-End-->
 
@@ -16,14 +20,14 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [getSerialPortList](arkts-basicservices-serial-getserialportlist-f.md#getserialportlist) | 获取串口列表。使用Promise异步回调。 |
+| [getSerialPortList](arkts-basicservices-serial-getserialportlist-f.md#getSerialPortList) | 获取串口列表。使用Promise异步回调。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [addPortAuthorization](arkts-basicservices-serial-addportauthorization-f-sys.md#addportauthorization) | 添加应用访问串口端口的权限 仅面向串口授权弹窗系统应用开放 |
+| [addPortAuthorization](arkts-basicservices-serial-addportauthorization-f-sys.md#addPortAuthorization) | 添加应用访问串口端口的权限 仅面向串口授权弹窗系统应用开放 |
 <!--DelEnd-->
 
 ### 接口

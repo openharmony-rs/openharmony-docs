@@ -2,9 +2,11 @@
 
 描述数据库执行的SQL语句的详细信息。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-relationalStore-interface SqlInfo--><!--Device-relationalStore-interface SqlInfo-End-->
 
@@ -20,9 +22,11 @@ args: Array<ValueType>
 
 **类型：** Array&lt;ValueType&gt;
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SqlInfo-args: Array<ValueType>--><!--Device-SqlInfo-args: Array<ValueType>-End-->
 
@@ -38,9 +42,11 @@ sql: string
 
 **类型：** string
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SqlInfo-sql: string--><!--Device-SqlInfo-sql: string-End-->
 

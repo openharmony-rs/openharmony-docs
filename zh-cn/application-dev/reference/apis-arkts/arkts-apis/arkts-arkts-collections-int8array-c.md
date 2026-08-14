@@ -1,12 +1,12 @@
 # Int8Array
 
-一种线性数据结构，底层基于[ArkTS ArrayBuffer]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_实现。 > **说明** > > - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。 > **装饰器类型**：\@Sendable
+一种线性数据结构，底层基于ArkTS ArrayBuffer实现。 > **说明：**> > - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。 > **装饰器类型**：\@Sendable
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-**装饰器类型：** @Sendable
+**废弃版本：** -1
 
 <!--Device-collections-class Int8Array--><!--Device-collections-class Int8Array-End-->
 
@@ -23,6 +23,8 @@
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -54,6 +56,8 @@ at(index: number): number | undefined
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Int8Array-at(index: number): number | undefined--><!--Device-Int8Array-at(index: number): number | undefined-End-->
@@ -64,7 +68,7 @@ at(index: number): number | undefined
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 要返回的Array元素的索引（从零开始），取值为整数。如果为负数，则从最后一个元素开始倒数。 |
+| index | number | 是 | 要返回的Array元素的索引（从零开始），取值为整数。 如果为负数，则从最后一个元素开始倒数。 |
 
 **返回值：**
 
@@ -91,6 +95,8 @@ constructor()
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Int8Array-constructor()--><!--Device-Int8Array-constructor()-End-->
@@ -115,6 +121,8 @@ constructor(length: number)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Int8Array-constructor(length: number)--><!--Device-Int8Array-constructor(length: number)-End-->
@@ -125,7 +133,7 @@ constructor(length: number)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| length | number | 是 | 用于指定ArkTS Int8Array的长度。 |
+| length | number | 是 | 用于指定ArkTS Int8Array的长度，取值需为非负整数。 |
 
 **错误码：**
 
@@ -144,6 +152,8 @@ constructor(elements: Iterable<number>)
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -175,6 +185,8 @@ constructor(array: ArrayLike<number> | ArrayBuffer)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Int8Array-constructor(array: ArrayLike<number> | ArrayBuffer)--><!--Device-Int8Array-constructor(array: ArrayLike<number> | ArrayBuffer)-End-->
@@ -185,7 +197,7 @@ constructor(array: ArrayLike<number> | ArrayBuffer)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| array | ArrayLike&lt;number&gt; \| ArrayBuffer | 是 | 用于构造ArkTS Int8Array的对象。当参数类型是ArrayBuffer时buffer所占的字节数须是4的整数倍。 |
+| array | ArrayLike&lt;number&gt; \| ArrayBuffer | 是 | 用于构造ArkTS Int8Array的对象。当参数类型是ArrayBuffer时buffer所占的字节数是1的整数倍。 |
 
 **错误码：**
 
@@ -199,11 +211,13 @@ constructor(array: ArrayLike<number> | ArrayBuffer)
 constructor(buffer: ArrayBuffer, byteOffset?: number, length?: number)
 ```
 
-构造函数，以ArrayBuffer创建一个ArkTS Int8Array对象。
+构造函数，以ArkTS ArrayBuffer创建一个ArkTS Int8Array对象。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -215,9 +229,9 @@ constructor(buffer: ArrayBuffer, byteOffset?: number, length?: number)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| buffer | ArrayBuffer | 是 | 用于构造ArkTS Int8Array的ArrayBuffer对象。buffer所占的字节数须是4的整数倍。 |
+| buffer | ArrayBuffer | 是 | 用于构造ArkTS Int8Array的ArrayBuffer对象。buffer所占的字节数需是1的整数倍。 |
 | byteOffset | number | 否 | 指定buffer的字节偏移，从0开始，默认为0。 |
-| length | number | 否 | 指定ArkTS Int8Array的长度，默认为0。 |
+| length | number | 否 | 指定ArkTS Int8Array的长度，默认值为0。取值需为非负整数，且需满足byteOffset + length <= buffer.byteLength。 |
 
 **错误码：**
 
@@ -237,6 +251,8 @@ copyWithin(target: number, start: number, end?: number): Int8Array
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Int8Array-copyWithin(target: number, start: number, end?: number): Int8Array--><!--Device-Int8Array-copyWithin(target: number, start: number, end?: number): Int8Array-End-->
@@ -247,9 +263,9 @@ copyWithin(target: number, start: number, end?: number): Int8Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| target | number | 是 | 目标起始位置的下标，如果\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，则会从\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_位置开始。 |
-| start | number | 是 | 源起始位置下标，如果\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，则会从\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_位置开始。 |
-| end | number | 否 | 源终止位置下标（不包含end位置的元素），如果\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，则会从\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_位置终止。默认为ArkTS Int8Array的长度。 |
+| target | number | 是 | 目标起始位置的下标，如果`target < 0`，则会从`target + array.length`位置开始。 |
+| start | number | 是 | 源起始位置下标，如果`start < 0`，则会从`start + Int8Array.length`位置开始。 |
+| end | number | 否 | 源终止位置下标（不包含end位置的元素），如果`end < 0`，则会从`end + Int8Array.length`位置终止。默认为ArkTS Int8Array的长度。 |
 
 **返回值：**
 
@@ -275,6 +291,8 @@ entries(): IterableIterator<[number, number]>
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -307,6 +325,8 @@ every(predicate: TypedArrayPredicateFn<number, Int8Array>): boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Int8Array-every(predicate: TypedArrayPredicateFn<number, Int8Array>): boolean--><!--Device-Int8Array-every(predicate: TypedArrayPredicateFn<number, Int8Array>): boolean-End-->
@@ -317,7 +337,7 @@ every(predicate: TypedArrayPredicateFn<number, Int8Array>): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| predicate | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;number, Int8Array&gt; | 是 | 用于测试的断言函数。 |
+| predicate | [TypedArrayPredicateFn](arkts-arkts-collections-typedarraypredicatefn-t.md)&lt;number, Int8Array&gt; | 是 | 用于测试的断言函数。 |
 
 **返回值：**
 
@@ -344,6 +364,8 @@ fill(value: number, start?: number, end?: number): Int8Array
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Int8Array-fill(value: number, start?: number, end?: number): Int8Array--><!--Device-Int8Array-fill(value: number, start?: number, end?: number): Int8Array-End-->
@@ -355,8 +377,8 @@ fill(value: number, start?: number, end?: number): Int8Array
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 待填充的值。 |
-| start | number | 否 | 开始填充的索引，如果\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，则会从\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_位置开始。默认值为0。 |
-| end | number | 否 | 结束填充的索引（不包括该元素），如果\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，则会到\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_位置结束。默认为ArkTS Int8Array的长度。 |
+| start | number | 否 | 开始填充的索引，如果`start < 0`，则会从`start + Int8Array.length`位置开始。默认值为0。 |
+| end | number | 否 | 结束填充的索引（不包括该元素），如果`end < 0`，则会到`end + Int8Array.length`位置结束。默认为ArkTS Int8Array的长度。 |
 
 **返回值：**
 
@@ -383,6 +405,8 @@ filter(predicate: TypedArrayPredicateFn<number, Int8Array>): Int8Array
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Int8Array-filter(predicate: TypedArrayPredicateFn<number, Int8Array>): Int8Array--><!--Device-Int8Array-filter(predicate: TypedArrayPredicateFn<number, Int8Array>): Int8Array-End-->
@@ -393,7 +417,7 @@ filter(predicate: TypedArrayPredicateFn<number, Int8Array>): Int8Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| predicate | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;number, Int8Array&gt; | 是 | 用于元素过滤的断言函数。 |
+| predicate | [TypedArrayPredicateFn](arkts-arkts-collections-typedarraypredicatefn-t.md)&lt;number, Int8Array&gt; | 是 | 用于元素过滤的断言函数。 |
 
 **返回值：**
 
@@ -420,6 +444,8 @@ find(predicate: TypedArrayPredicateFn<number, Int8Array>): number | undefined
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Int8Array-find(predicate: TypedArrayPredicateFn<number, Int8Array>): number | undefined--><!--Device-Int8Array-find(predicate: TypedArrayPredicateFn<number, Int8Array>): number | undefined-End-->
@@ -430,7 +456,7 @@ find(predicate: TypedArrayPredicateFn<number, Int8Array>): number | undefined
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| predicate | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;number, Int8Array&gt; | 是 | 用于元素查找的断言函数。 |
+| predicate | [TypedArrayPredicateFn](arkts-arkts-collections-typedarraypredicatefn-t.md)&lt;number, Int8Array&gt; | 是 | 用于元素查找的断言函数。 |
 
 **返回值：**
 
@@ -457,6 +483,8 @@ findIndex(predicate: TypedArrayPredicateFn<number, Int8Array>): number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Int8Array-findIndex(predicate: TypedArrayPredicateFn<number, Int8Array>): number--><!--Device-Int8Array-findIndex(predicate: TypedArrayPredicateFn<number, Int8Array>): number-End-->
@@ -467,7 +495,7 @@ findIndex(predicate: TypedArrayPredicateFn<number, Int8Array>): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| predicate | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;number, Int8Array&gt; | 是 | 用于元素查找的断言函数。 |
+| predicate | [TypedArrayPredicateFn](arkts-arkts-collections-typedarraypredicatefn-t.md)&lt;number, Int8Array&gt; | 是 | 用于元素查找的断言函数。 |
 
 **返回值：**
 
@@ -494,6 +522,8 @@ forEach(callbackFn: TypedArrayForEachCallback<number, Int8Array>): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Int8Array-forEach(callbackFn: TypedArrayForEachCallback<number, Int8Array>): void--><!--Device-Int8Array-forEach(callbackFn: TypedArrayForEachCallback<number, Int8Array>): void-End-->
@@ -504,7 +534,7 @@ forEach(callbackFn: TypedArrayForEachCallback<number, Int8Array>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;number, Int8Array&gt; | 是 | 用于对每个元素执行的回调函数。 |
+| callbackFn | [TypedArrayForEachCallback](arkts-arkts-collections-typedarrayforeachcallback-t.md)&lt;number, Int8Array&gt; | 是 | 用于对每个元素执行的回调函数。 |
 
 **错误码：**
 
@@ -519,11 +549,13 @@ forEach(callbackFn: TypedArrayForEachCallback<number, Int8Array>): void
 static from(arrayLike: ArrayLike<number>): Int8Array
 ```
 
-从一个ArrayLike或者可迭代对象中创建一个ArkTS Int8Array对象。
+从一个ArrayLike中创建一个ArkTS Int8Array对象。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -555,6 +587,8 @@ static from<T>(arrayLike: ArrayLike<T>, mapFn: TypedArrayFromMapFn<T, number>): 
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Int8Array-static from<T>(arrayLike: ArrayLike<T>, mapFn: TypedArrayFromMapFn<T, number>): Int8Array--><!--Device-Int8Array-static from<T>(arrayLike: ArrayLike<T>, mapFn: TypedArrayFromMapFn<T, number>): Int8Array-End-->
@@ -566,7 +600,7 @@ static from<T>(arrayLike: ArrayLike<T>, mapFn: TypedArrayFromMapFn<T, number>): 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | arrayLike | ArrayLike&lt;T&gt; | 是 | 用于构造ArrayLike对象。 |
-| mapFn | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T, number&gt; | 是 | 映射函数。 |
+| mapFn | [TypedArrayFromMapFn](arkts-arkts-collections-typedarrayfrommapfn-t.md)&lt;T, number&gt; | 是 | 映射函数。 |
 
 **返回值：**
 
@@ -586,6 +620,8 @@ static from(arrayLike: Iterable<number>, mapFn?: TypedArrayFromMapFn<number, num
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Int8Array-static from(arrayLike: Iterable<number>, mapFn?: TypedArrayFromMapFn<number, number>): Int8Array--><!--Device-Int8Array-static from(arrayLike: Iterable<number>, mapFn?: TypedArrayFromMapFn<number, number>): Int8Array-End-->
@@ -597,7 +633,7 @@ static from(arrayLike: Iterable<number>, mapFn?: TypedArrayFromMapFn<number, num
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | arrayLike | Iterable&lt;number&gt; | 是 | 用于构造的可迭代对象。 |
-| mapFn | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;number, number&gt; | 否 | 映射函数。如果省略，则不对元素进行加工处理。 |
+| mapFn | [TypedArrayFromMapFn](arkts-arkts-collections-typedarrayfrommapfn-t.md)&lt;number, number&gt; | 否 | 映射函数。如果省略，则不对元素进行加工处理。 |
 
 **返回值：**
 
@@ -611,11 +647,13 @@ static from(arrayLike: Iterable<number>, mapFn?: TypedArrayFromMapFn<number, num
 includes(searchElement: number, fromIndex?: number): boolean
 ```
 
-判断ArkTS Int8Array是否包含特定元素。
+判断ArkTS Int8Array是否包含指定元素。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -628,7 +666,7 @@ includes(searchElement: number, fromIndex?: number): boolean
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | searchElement | number | 是 | 待搜索的元素。 |
-| fromIndex | number | 否 | 开始搜索的索引，如果\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，则会从\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_位置开始。默认值为0。 |
+| fromIndex | number | 否 | 开始搜索的索引，如果`fromIndex < 0`，则会从`fromIndex + Int8Array.length`位置开始。默认值为0。 |
 
 **返回值：**
 
@@ -655,6 +693,8 @@ indexOf(searchElement: number, fromIndex?: number): number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Int8Array-indexOf(searchElement: number, fromIndex?: number): number--><!--Device-Int8Array-indexOf(searchElement: number, fromIndex?: number): number-End-->
@@ -666,7 +706,7 @@ indexOf(searchElement: number, fromIndex?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | searchElement | number | 是 | 待索引的值。 |
-| fromIndex | number | 否 | 搜索的起始下标。默认值为0。如果下标大于等于ArkTS Int8Array的长度，则返回-1。如果提供的下标值是负数，则被当做距离数组尾部的偏移，从前到后搜索。 |
+| fromIndex | number | 否 | 搜索的起始索引。默认值为0。如果索引大于等于ArkTS Int8Array的长度，则返回-1。如果索引为负数，则被视为距离数组尾部的偏移，从前到后搜索。 |
 
 **返回值：**
 
@@ -692,6 +732,8 @@ join(separator?: string): string
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -724,11 +766,13 @@ join(separator?: string): string
 keys(): IterableIterator<number>
 ```
 
-返回一个新的迭代器对象，该对象包含ArkTS Int8Array中每个元素的键（下标）。
+返回一个新的迭代器对象，该对象包含ArkTS Int8Array中每个元素的键（索引）。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -755,11 +799,13 @@ keys(): IterableIterator<number>
 lastIndexOf(searchElement: number, fromIndex?: number): number
 ```
 
-返回ArkTS Int8Array实例中最后一次出现searchElement的索引，如果对象不包含，则为-1。
+返回ArkTS Int8Array实例中最后一次出现searchElement的索引，如果不存在，则返回-1。
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -772,7 +818,7 @@ lastIndexOf(searchElement: number, fromIndex?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | searchElement | number | 是 | 待索引的值。 |
-| fromIndex | number | 否 | 搜索的起始下标。默认值为0。如果下标大于等于ArkTS Int8Array的长度，则返回-1。如果提供的下标值是负数，则被当做距离数组尾部的偏移，从后到前搜索。 |
+| fromIndex | number | 否 | 搜索的起始索引，从该位置开始往前查找。默认值为ArkTS Int8Array长度减1（即从末尾开始）。如果索引大于等于ArkTS Int8Array的长度， 则从末尾开始往前查找。如果提供的索引值是负数，则被当作距离数组尾部的偏移，从后到前搜索。 |
 
 **返回值：**
 
@@ -799,6 +845,8 @@ map(callbackFn: TypedArrayMapCallback<number, Int8Array>): Int8Array
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Int8Array-map(callbackFn: TypedArrayMapCallback<number, Int8Array>): Int8Array--><!--Device-Int8Array-map(callbackFn: TypedArrayMapCallback<number, Int8Array>): Int8Array-End-->
@@ -809,7 +857,7 @@ map(callbackFn: TypedArrayMapCallback<number, Int8Array>): Int8Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;number, Int8Array&gt; | 是 | 回调函数，接收至多三个参数。map方法对数组中的每个元素调用一次callbackfn函数。 |
+| callbackFn | [TypedArrayMapCallback](arkts-arkts-collections-typedarraymapcallback-t.md)&lt;number, Int8Array&gt; | 是 | 回调函数，接收至多三个参数。 map方法对数组中的每个元素调用一次callbackfn函数。 |
 
 **返回值：**
 
@@ -830,11 +878,13 @@ map(callbackFn: TypedArrayMapCallback<number, Int8Array>): Int8Array
 static of(...items: number[]): Int8Array
 ```
 
-通过可变数量的参数创建一个新的ArkTS Int8Array对象，参数个数可以是0个、1个或者多个。
+通过可变数量的参数创建一个新的ArkTS Int8Array对象。
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -852,7 +902,7 @@ static of(...items: number[]): Int8Array
 
 | 类型 | 说明 |
 | --- | --- |
-| Int8Array | 新的ArkTS Int8Array实例。可能的错误原因：1.必填参数未指定； |
+| Int8Array | 新的ArkTS Int8Array实例。可能的错误原因：1.必填参数未指定； &lt;br&gt;2.参数类型不正确；3.参数校验失败。 |
 
 ## reduce
 
@@ -866,6 +916,8 @@ reduce(callbackFn: TypedArrayReduceCallback<number, number, Int8Array>): number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Int8Array-reduce(callbackFn: TypedArrayReduceCallback<number, number, Int8Array>): number--><!--Device-Int8Array-reduce(callbackFn: TypedArrayReduceCallback<number, number, Int8Array>): number-End-->
@@ -876,7 +928,7 @@ reduce(callbackFn: TypedArrayReduceCallback<number, number, Int8Array>): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;number, number, Int8Array&gt; | 是 | 归约函数，接收至多四个参数。reduce方法对数组中的每个元素调用一次callbackfn函数。 |
+| callbackFn | [TypedArrayReduceCallback](arkts-arkts-collections-typedarrayreducecallback-t.md)&lt;number, number, Int8Array&gt; | 是 | 归约函数，接收至多四个参数。 reduce方法对数组中的每个元素调用一次callbackfn函数。 |
 
 **返回值：**
 
@@ -903,6 +955,8 @@ reduce(callbackFn: TypedArrayReduceCallback<number, number, Int8Array>, initialV
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Int8Array-reduce(callbackFn: TypedArrayReduceCallback<number, number, Int8Array>, initialValue: number): number--><!--Device-Int8Array-reduce(callbackFn: TypedArrayReduceCallback<number, number, Int8Array>, initialValue: number): number-End-->
@@ -913,8 +967,8 @@ reduce(callbackFn: TypedArrayReduceCallback<number, number, Int8Array>, initialV
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;number, number, Int8Array&gt; | 是 | 归约函数，接收至多四个参数。reduce方法对数组中的每个元素调用一次callbackfn函数。 |
-| initialValue | number | 是 | 如果指定了initialValue，则将其作为开始累加的初始值。首次调用callbackfn函数时会将该值作为参数传入，而不是使用数组元素值。 |
+| callbackFn | [TypedArrayReduceCallback](arkts-arkts-collections-typedarrayreducecallback-t.md)&lt;number, number, Int8Array&gt; | 是 | 归约函数，接收至多四个参数。 reduce方法对数组中的每个元素调用一次callbackfn函数。 |
+| initialValue | number | 是 | 如果指定了initialValue，则将其作为开始累加的初始值。 首次调用callbackfn函数时会将该值作为参数传入，而不是使用数组元素值。 |
 
 **返回值：**
 
@@ -941,6 +995,8 @@ reduce<U>(callbackFn: TypedArrayReduceCallback<U, number, Int8Array>, initialVal
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Int8Array-reduce<U>(callbackFn: TypedArrayReduceCallback<U, number, Int8Array>, initialValue: U): U--><!--Device-Int8Array-reduce<U>(callbackFn: TypedArrayReduceCallback<U, number, Int8Array>, initialValue: U): U-End-->
@@ -951,7 +1007,7 @@ reduce<U>(callbackFn: TypedArrayReduceCallback<U, number, Int8Array>, initialVal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;U, number, Int8Array&gt; | 是 | 归约函数。 |
+| callbackFn | [TypedArrayReduceCallback](arkts-arkts-collections-typedarrayreducecallback-t.md)&lt;U, number, Int8Array&gt; | 是 | 归约函数。 |
 | initialValue | U | 是 | 初始值。 |
 
 **返回值：**
@@ -973,11 +1029,13 @@ reduce<U>(callbackFn: TypedArrayReduceCallback<U, number, Int8Array>, initialVal
 reduceRight<U = number>(callbackFn: TypedArrayReduceCallback<U, number, Int8Array>, initialValue: U): U
 ```
 
-反向遍历ArkTS Int8Array，对ArkTS Int8Array中的每个元素执行归约函数，且接收一个初始值作为归约函数首次调用的参数，并返回最终的归约结果。
+反向遍历ArkTS Int8Array，对每个元素执行归约函数，接收初始值作为归约函数首次调用的参数，并返回最终的归约结果。
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -989,14 +1047,14 @@ reduceRight<U = number>(callbackFn: TypedArrayReduceCallback<U, number, Int8Arra
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;U, number, Int8Array&gt; | 是 | 对Int8Array中的每个元素调用的函数。 |
-| initialValue | U | 是 | 作为回调函数首次调用的第一个参数的值。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_如果未提供初始值，则使用Int8Array的最后一个元素，\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_并且回调函数将从倒数第二个元素开始调用。 |
+| callbackFn | [TypedArrayReduceCallback](arkts-arkts-collections-typedarrayreducecallback-t.md)&lt;U, number, Int8Array&gt; | 是 | 对Int8Array中的每个元素调用的函数。 |
+| initialValue | U | 是 | 作为回调函数首次调用的第一个参数的值。 &lt;br&gt;如果未提供初始值，则使用Int8Array的最后一个元素， &lt;br&gt;并且回调函数将从倒数第二个元素开始调用。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| U | 由归约函数最后一次调用返回的最终结果。可能的错误原因： |
+| U | 由归约函数最后一次调用返回的最终结果。可能的错误原因： 1.必填参数未指定。 2.参数类型不正确。 |
 
 **错误码：**
 
@@ -1011,11 +1069,13 @@ reduceRight<U = number>(callbackFn: TypedArrayReduceCallback<U, number, Int8Arra
 reduceRight(callbackFn: TypedArrayReduceCallback<number, number, Int8Array>): number
 ```
 
-反向遍历ArkTS Int8Array，对ArkTS Int8Array中的每个元素执行归约函数，并返回最终的归约结果。
+反向遍历ArkTS Int8Array，对每个元素执行归约函数，并返回最终的归约结果。
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -1027,13 +1087,13 @@ reduceRight(callbackFn: TypedArrayReduceCallback<number, number, Int8Array>): nu
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;number, number, Int8Array&gt; | 是 | 对Int8Array中的每个元素调用的函数。 |
+| callbackFn | [TypedArrayReduceCallback](arkts-arkts-collections-typedarrayreducecallback-t.md)&lt;number, number, Int8Array&gt; | 是 | 对Int8Array中的每个元素调用的函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 由归约函数最后一次调用返回的最终结果。可能的错误原因： |
+| number | 由归约函数最后一次调用返回的最终结果。可能的错误原因： 1.必填参数未指定。 2.参数类型不正确。 |
 
 **错误码：**
 
@@ -1048,11 +1108,13 @@ reduceRight(callbackFn: TypedArrayReduceCallback<number, number, Int8Array>): nu
 reverse(): Int8Array
 ```
 
-反转ArkTS Int8Array。
+反转ArkTS Int8Array中元素的顺序。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1085,6 +1147,8 @@ set(array: ArrayLike<number>, offset?: number): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Int8Array-set(array: ArrayLike<number>, offset?: number): void--><!--Device-Int8Array-set(array: ArrayLike<number>, offset?: number): void-End-->
@@ -1111,11 +1175,13 @@ set(array: ArrayLike<number>, offset?: number): void
 slice(start?: number, end?: number): Int8Array
 ```
 
-返回一个新的ArkTS Int8Array对象，其包含原ArkTS Int8Array指定范围的内容。
+返回一个新的ArkTS Int8Array对象，其包含原ArkTS Int8Array指定范围的内容。与subarray不同，slice返回的对象不会影响原数组。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1127,8 +1193,8 @@ slice(start?: number, end?: number): Int8Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| start | number | 否 | 开始索引，如果\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，则会从\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_位置开始。默认值为0。 |
-| end | number | 否 | 结束索引（不包括该元素），如果\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，则会到\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_位置结束。默认为ArkTS Int8Array的长度。 |
+| start | number | 否 | 开始索引，如果`start < 0`，则会从`start + Int8Array.length`位置开始。默认值为0。 |
+| end | number | 否 | 结束索引（不包括该元素），如果`end < 0`，则会到`end + Int8Array.length`位置结束。默认为ArkTS Int8Array的长度。 |
 
 **返回值：**
 
@@ -1155,6 +1221,8 @@ some(predicate: TypedArrayPredicateFn<number, Int8Array>): boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Int8Array-some(predicate: TypedArrayPredicateFn<number, Int8Array>): boolean--><!--Device-Int8Array-some(predicate: TypedArrayPredicateFn<number, Int8Array>): boolean-End-->
@@ -1165,7 +1233,7 @@ some(predicate: TypedArrayPredicateFn<number, Int8Array>): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| predicate | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;number, Int8Array&gt; | 是 | 用于测试的断言函数。 |
+| predicate | [TypedArrayPredicateFn](arkts-arkts-collections-typedarraypredicatefn-t.md)&lt;number, Int8Array&gt; | 是 | 用于测试的断言函数。 |
 
 **返回值：**
 
@@ -1186,11 +1254,13 @@ some(predicate: TypedArrayPredicateFn<number, Int8Array>): boolean
 sort(compareFn?: TypedArrayCompareFn<number>): Int8Array
 ```
 
-对ArkTS Int8Array进行排序，并返回排序后的ArkTS Int8Array对象。
+对ArkTS Int8Array进行原地排序，并返回排序后的ArkTS Int8Array对象。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1202,7 +1272,7 @@ sort(compareFn?: TypedArrayCompareFn<number>): Int8Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| compareFn | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;number&gt; | 否 | 用于确定元素顺序的函数。默认使用升序排序。 |
+| compareFn | [TypedArrayCompareFn](arkts-arkts-collections-typedarraycomparefn-t.md)&lt;number&gt; | 否 | 用于确定元素顺序的函数。默认使用升序排序。 |
 
 **返回值：**
 
@@ -1223,11 +1293,13 @@ sort(compareFn?: TypedArrayCompareFn<number>): Int8Array
 subarray(begin?: number, end?: number): Int8Array
 ```
 
-从指定的位置截取数组，返回一个新的、基于相同ArkTS ArrayBuffer的ArkTS Int8Array对象。
+从指定的位置截取数组，返回一个基于相同ArkTS ArrayBuffer的新ArkTS Int8Array对象。由于返回的对象与原始对象共享同一个ArrayBuffer，修改其中一个会影响另一个。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1239,8 +1311,8 @@ subarray(begin?: number, end?: number): Int8Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| begin | number | 否 | 开始索引，如果\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，则会从\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_位置开始。默认值为0。 |
-| end | number | 否 | 结束索引（不包括该元素），如果\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，则会到\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_位置结束。默认为ArkTS Int8Array的长度。 |
+| begin | number | 否 | 开始索引，如果`begin < 0`，则会从`begin + Int8Array.length`位置开始。默认值为0。 |
+| end | number | 否 | 结束索引（不包括该元素），如果`end < 0`，则会到`end + Int8Array.length`位置结束。默认为ArkTS Int8Array的长度。 |
 
 **返回值：**
 
@@ -1266,6 +1338,8 @@ toLocaleString(): string
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -1298,6 +1372,8 @@ toString(): string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Int8Array-toString(): string--><!--Device-Int8Array-toString(): string-End-->
@@ -1329,6 +1405,8 @@ values(): IterableIterator<number>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Int8Array-values(): IterableIterator<number>--><!--Device-Int8Array-values(): IterableIterator<number>-End-->
@@ -1354,13 +1432,15 @@ values(): IterableIterator<number>
 static readonly BYTES_PER_ELEMENT: number
 ```
 
-ArkTS Int8Array中每个元素所占用的字节数。
+ArkTS Int8Array中每个元素所占的字节数。
 
 **类型：** number
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1382,6 +1462,8 @@ ArkTS Int8Array底层使用的buffer。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Int8Array-readonly buffer: ArrayBuffer--><!--Device-Int8Array-readonly buffer: ArrayBuffer-End-->
@@ -1402,6 +1484,8 @@ ArkTS Int8Array所占的字节数。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Int8Array-readonly byteLength: number--><!--Device-Int8Array-readonly byteLength: number-End-->
@@ -1414,37 +1498,19 @@ ArkTS Int8Array所占的字节数。
 readonly byteOffset: number
 ```
 
-ArkTS Int8Array距离其ArrayBuffer起始位置的偏移。
+ArkTS Int8Array距离其ArrayBuffer起始位置的字节偏移。
 
 **类型：** number
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Int8Array-readonly byteOffset: number--><!--Device-Int8Array-readonly byteOffset: number-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-## index
-
-```TypeScript
-[index: number]: number
-```
-
-返回Int8Array指定索引位置的元素。
-
-**类型：** number
-
-**起始版本：** 12
-
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Int8Array-[index: number]: number--><!--Device-Int8Array-[index: number]: number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1461,6 +1527,8 @@ ArkTS Int8Array元素个数。
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

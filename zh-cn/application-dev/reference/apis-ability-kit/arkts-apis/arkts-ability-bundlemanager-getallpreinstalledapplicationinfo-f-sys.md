@@ -8,9 +8,11 @@ function getAllPreinstalledApplicationInfo(): Promise<Array<PreinstalledApplicat
 
 获取所有预置应用信息。使用Promise异步回调。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -24,7 +26,7 @@ function getAllPreinstalledApplicationInfo(): Promise<Array<PreinstalledApplicat
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;PreinstalledApplicationInfo&gt;&gt; | Promise对象，返回Array\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
+| Promise&lt;Array&lt;PreinstalledApplicationInfo&gt;&gt; | Promise对象，返回Array&lt;PreinstalledApplicationInfo&gt;。 |
 
 **错误码：**
 
@@ -33,7 +35,7 @@ function getAllPreinstalledApplicationInfo(): Promise<Array<PreinstalledApplicat
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例:
 

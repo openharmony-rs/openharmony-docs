@@ -2,11 +2,13 @@
 
 pluginComponentManager.request方法接收到的回调结果。
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
-<!--Device-pluginComponentManager-export interface RequestCallbackParameters--><!--Device-pluginComponentManager-export interface RequestCallbackParameters-End-->
+**废弃版本：** -1
+
+<!--Device-pluginComponentManager-interface RequestCallbackParameters--><!--Device-pluginComponentManager-interface RequestCallbackParameters-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,13 +20,15 @@ componentTemplate: PluginComponentTemplate
 
 组件模板。
 
-**类型：** PluginComponentTemplate
+**类型：** [PluginComponentTemplate](../../apis-na/arkts-apis/arkts-na-plugincomponent-plugincomponenttemplate-i.md)
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RequestCallbackParameters-componentTemplate: PluginComponentTemplate--><!--Device-RequestCallbackParameters-componentTemplate: PluginComponentTemplate-End-->
 
@@ -38,13 +42,15 @@ data: KVObject
 
 组件数据，以键值对形式存储，键和值类型由业务定义。
 
-**类型：** KVObject
+**类型：** [KVObject](../../apis-na/arkts-apis/arkts-na-plugincomponentmanager-kvobject-t.md)
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RequestCallbackParameters-data: KVObject--><!--Device-RequestCallbackParameters-data: KVObject-End-->
 
@@ -58,13 +64,15 @@ extraData: KVObject
 
 附加数据。该字段为可选字段，不提供时默认不包含在返回结果中。
 
-**类型：** KVObject
+**类型：** [KVObject](../../apis-na/arkts-apis/arkts-na-plugincomponentmanager-kvobject-t.md)
 
-**起始版本：** 23
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RequestCallbackParameters-extraData: KVObject--><!--Device-RequestCallbackParameters-extraData: KVObject-End-->
 

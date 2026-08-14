@@ -1,6 +1,6 @@
 # BundleOption
 
-> **说明：** > > 从 API version 7开始支持，从API version 9开始废弃。建议使用 > [notificationManager.BundleOption]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。
+描述BundleOption信息，即应用的包信息。
 
 **起始版本：** 7
 
@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** [./notification/NotificationCommonDef:BundleOption](arkts-notification-notification-bundleoption-depr-i.md)
+**替代接口：** [BundleOption](arkts-notification-notificationcommondef-bundleoption-i.md#BundleOption)
 
 <!--Device-notification-export interface BundleOption--><!--Device-notification-export interface BundleOption-End-->
 
@@ -30,7 +30,7 @@ bundle: string
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager#BundleOption
+**替代接口：** [BundleOption](arkts-notification-notificationmanager-bundleoption-t.md#BundleOption)
 
 <!--Device-BundleOption-bundle: string--><!--Device-BundleOption-bundle: string-End-->
 
@@ -52,7 +52,7 @@ uid?: number
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager#BundleOption
+**替代接口：** [BundleOption](arkts-notification-notificationmanager-bundleoption-t.md#BundleOption)
 
 <!--Device-BundleOption-uid?: number--><!--Device-BundleOption-uid?: number-End-->
 

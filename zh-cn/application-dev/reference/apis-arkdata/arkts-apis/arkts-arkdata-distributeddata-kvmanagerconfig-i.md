@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** ohos.data.distributedKVStore.KVManagerConfig
+**替代接口：** KVManagerConfig
 
 <!--Device-distributedData-interface KVManagerConfig--><!--Device-distributedData-interface KVManagerConfig-End-->
 
@@ -30,7 +30,7 @@ bundleName: string
 
 **废弃版本：** 9
 
-**替代接口：** ohos.data.distributedKVStore.KVManagerConfig#bundleName
+**替代接口：** bundleName
 
 <!--Device-KVManagerConfig-bundleName: string--><!--Device-KVManagerConfig-bundleName: string-End-->
 

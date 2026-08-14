@@ -2,9 +2,11 @@
 
 描述文件选项，用于指定描述文件的格式和语言。对象包含format(描述文件格式，可选STANDARD或SIMPLIFIED)和language(语言代码，如'zh-cn')字段。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-update-export interface DescriptionOptions--><!--Device-update-export interface DescriptionOptions-End-->
 
@@ -20,11 +22,13 @@ format: DescriptionFormat
 
 描述文件格式。取值原则：STANDARD适合需要完整描述信息的场景，SIMPLIFIED适合仅需精简描述信息的场景。
 
-**类型：** DescriptionFormat
+**类型：** [DescriptionFormat](arkts-basicservices-update-descriptionformat-e-sys.md)
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DescriptionOptions-format: DescriptionFormat--><!--Device-DescriptionOptions-format: DescriptionFormat-End-->
 
@@ -42,9 +46,11 @@ language: string
 
 **类型：** string
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DescriptionOptions-language: string--><!--Device-DescriptionOptions-language: string-End-->
 

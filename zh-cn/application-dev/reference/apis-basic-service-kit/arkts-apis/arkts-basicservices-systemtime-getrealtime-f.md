@@ -14,7 +14,7 @@ function getRealTime(isNano: boolean, callback: AsyncCallback<number>): void
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.systemDateTime:systemDateTime.getUptime](arkts-basicservices-systemdatetime-getuptime-f.md#getuptime)
+**替代接口：** [getUptime](arkts-basicservices-systemdatetime-getuptime-f.md#getUptime)
 
 <!--Device-systemTime-function getRealTime(isNano: boolean, callback: AsyncCallback<number>): void--><!--Device-systemTime-function getRealTime(isNano: boolean, callback: AsyncCallback<number>): void-End-->
 
@@ -24,16 +24,16 @@ function getRealTime(isNano: boolean, callback: AsyncCallback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isNano | boolean | 是 | 返回结果是否为纳秒数。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- true：表示返回结果为纳秒数（ns）。 \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- false：表示返回结果为毫秒数（ms）。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;number&gt; | 是 | 回调函数，返回自系统启动以来经过的时间，包括深度睡眠时间。 |
+| isNano | boolean | 是 | 返回结果是否为纳秒数。&lt;br/&gt;- true：表示返回结果为纳秒数（ns）。 &lt;br/&gt;- false：表示返回结果为毫秒数（ms）。 |
+| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数，返回自系统启动以来经过的时间，包括深度睡眠时间。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| -1 |  |
+| -1 | Parameter check failed, permission denied, or system error. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -67,7 +67,7 @@ function getRealTime(callback: AsyncCallback<number>): void
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.systemDateTime:systemDateTime.getUptime](arkts-basicservices-systemdatetime-getuptime-f.md#getuptime)
+**替代接口：** [getUptime](arkts-basicservices-systemdatetime-getuptime-f.md#getUptime)
 
 <!--Device-systemTime-function getRealTime(callback: AsyncCallback<number>): void--><!--Device-systemTime-function getRealTime(callback: AsyncCallback<number>): void-End-->
 
@@ -77,15 +77,15 @@ function getRealTime(callback: AsyncCallback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;number&gt; | 是 | 回调函数，返回自系统启动以来经过的时间（ms），包括深度睡眠时间。 |
+| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数，返回自系统启动以来经过的时间（ms），包括深度睡眠时间。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| -1 |  |
+| -1 | Parameter check failed, permission denied, or system error. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -119,7 +119,7 @@ function getRealTime(isNano?: boolean): Promise<number>
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.systemDateTime:systemDateTime.getUptime](arkts-basicservices-systemdatetime-getuptime-f.md#getuptime)
+**替代接口：** [getUptime](arkts-basicservices-systemdatetime-getuptime-f.md#getUptime)
 
 <!--Device-systemTime-function getRealTime(isNano?: boolean): Promise<number>--><!--Device-systemTime-function getRealTime(isNano?: boolean): Promise<number>-End-->
 
@@ -129,7 +129,7 @@ function getRealTime(isNano?: boolean): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isNano | boolean | 否 | 返回结果是否为纳秒数，默认值为false。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_默认值为false。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- true：表示返回结果为纳秒数（ns）。 \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_- false：表示返回结果为毫秒数（ms）。 |
+| isNano | boolean | 否 | 返回结果是否为纳秒数，默认值为false。&lt;br/&gt;默认值为false。&lt;br/&gt;- true：表示返回结果为纳秒数（ns）。 &lt;br/&gt;- false：表示返回结果为毫秒数 （ms）。 |
 
 **返回值：**
 
@@ -141,9 +141,9 @@ function getRealTime(isNano?: boolean): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| -1 |  |
+| -1 | Parameter check failed, permission denied, or system error. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

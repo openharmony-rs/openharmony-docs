@@ -1,28 +1,34 @@
 # LRUCache
 
-Provides APIs to discard the least recently used data to make rooms for new elements when the cache is full. This class uses the Least Recently Used (LRU) algorithm, which believes that the recently used data may be accessed again in the near future and the least accessed data is the least valuable data and should be removed from the cache.
+提供在缓存已满时丢弃最近最少使用的数据以腾出空间给新元素的 API。此类使用最近最少使用（LRU）算法，该算法认为最近 使用的数据可能在不久的将来再次被访问，而最少访问的数据是最不具价值的数据，应从缓存中移除。
 
-**起始版本：** 23
+**起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
-<!--Device-util-class LRUCache<K, V>--><!--Device-util-class LRUCache<K, V>-End-->
+**废弃版本：** -1
+
+<!--Device-util-class LRUCache--><!--Device-util-class LRUCache-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
-## $_iterator
+## [Symbol.iterator]
 
 ```TypeScript
-$_iterator(): IterableIterator<[K, V]>
+[Symbol.iterator](): IterableIterator<[K, V]>
 ```
 
-Specifies the default iterator for an object.
+指定对象的默认迭代器。
 
-**起始版本：** 23
+**起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
-<!--Device-LRUCache-$_iterator(): IterableIterator<[K, V]>--><!--Device-LRUCache-$_iterator(): IterableIterator<[K, V]>-End-->
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LRUCache-[Symbol.iterator](): IterableIterator<[K, V]>--><!--Device-LRUCache-[Symbol.iterator](): IterableIterator<[K, V]>-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -30,7 +36,22 @@ Specifies the default iterator for an object.
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;[K, V]&gt; | Returns a two - dimensional array in the form of key - value pairs. |
+| IterableIterator&lt;[K, V]&gt; | 返回以键值对形式的二维数组。 |
+
+## 示例
+
+```TypeScript
+let pro = new util.LRUCache<number, number>();
+pro.put(2, 10);
+pro.put(3, 15);
+
+for (let value of pro) {
+  console.info(value[0]+ ', '+ value[1]);
+}
+// 输出结果：
+// 2, 10
+// 3, 15
+```
 
 ## afterRemoval
 
@@ -38,11 +59,15 @@ Specifies the default iterator for an object.
 afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void
 ```
 
-Executes subsequent operations after a value is deleted.
+在移除值后执行后续操作。后续操作必须由开发者实现。该 API 在删除操作期间会被调用，例如 [get&lt;sup&gt;9+&lt;/sup&gt;](#get)、[put&lt;sup&gt;9+&lt;/sup&gt;](#put)、 [remove&lt;sup&gt;9+&lt;/sup&gt;](#remove)、[clear&lt;sup&gt;9+&lt;/sup&gt;](#clear) 和 [updateCapacity&lt;sup&gt;9+&lt;/sup&gt;](#updateCapacity)。 > **NOTE：**> > 如果在调用 [clear&lt;sup&gt;9+&lt;/sup&gt;](#clear) 和 > [updateCapacity&lt;sup&gt;9+&lt;/sup&gt;](#updateCapacity) 后执行回调方法，并且输入的 **key** 和 > **value** 参数为 MapIterator 类型，请参考示例 2 执行后续操作。
 
-**起始版本：** 23
+**起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LRUCache-afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void--><!--Device-LRUCache-afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void-End-->
 
@@ -52,10 +77,10 @@ Executes subsequent operations after a value is deleted.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isEvict | boolean | 是 | The parameter value is true if this method is called due to insufficient capacity,and the parameter value is false in other cases. |
-| key | K | 是 | Indicates the deleted key. |
-| value | V | 是 | Indicates the deleted value. |
-| newValue | V | 是 | The parameter value is the new value associated if the put(java.lang.Object,java.lang.Object) method is called and the key to add already exists.The parameter value is null in other cases. |
+| isEvict | boolean | 是 | 容量是否不足。如果值为 **true**，则由于容量不足而调用此 API。 |
+| key | K | 是 | 被移除的 key。 |
+| value | V | 是 | 被移除的值。 |
+| newValue | V | 是 | 如果调用了 **put()** 方法并且要添加的 key 已存在时该 key 的新值。其他情况下此参数为空。 |
 
 ## clear
 
@@ -63,29 +88,67 @@ Executes subsequent operations after a value is deleted.
 clear(): void
 ```
 
-Clears key-value pairs from the current buffer.
+清除此缓存中的键值对。
 
-**起始版本：** 23
+**起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LRUCache-clear(): void--><!--Device-LRUCache-clear(): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
+## 示例
+
+ArkTS-Dyn示例：
+
+```TypeScript
+let pro = new util.LRUCache<number, number>();
+pro.put(2, 10);
+let result = pro.length;
+pro.clear();
+let res = pro.length;
+console.info('result = ' + result);
+console.info('res = ' + res);
+// 输出结果：result = 1
+// 输出结果：res = 0
+```
+
+ArkTS-Sta示例：
+
+```TypeScript
+let pro = new util.LRUCache<int, int>();
+pro.put(2, 10);
+let result = pro.length;
+pro.clear();
+let res = pro.length;
+console.info('result = ' + result);
+console.info('res = ' + res);
+// 输出结果：result = 1
+// 输出结果：res = 0
+```
+
 ## constructor
 
 ```TypeScript
-constructor(capacity?: int)
+constructor(capacity?: number)
 ```
 
-Default constructor used to create a new LruBuffer instance with the default capacity of 64.
+用于创建 **LRUCache** 实例的构造函数。缓存的默认容量为 64。
 
-**起始版本：** 23
+**起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
-<!--Device-LRUCache-constructor(capacity?: int)--><!--Device-LRUCache-constructor(capacity?: int)-End-->
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LRUCache-constructor(capacity?: number)--><!--Device-LRUCache-constructor(capacity?: number)-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -93,7 +156,21 @@ Default constructor used to create a new LruBuffer instance with the default cap
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| capacity | int | 否 | Indicates the capacity to customize for the buffer. |
+| capacity | number | 否 | 要创建的缓存的容量。默认值为 **64**，最大值为 **2147483647**。<br>**起始版本：** 12 |
+
+## 示例
+
+ArkTS-Dyn示例：
+
+```TypeScript
+let lruCache = new util.LRUCache<number, number>();
+```
+
+ArkTS-Sta示例：
+
+```TypeScript
+let lruCache = new util.LRUCache<int, int>();
+```
 
 ## contains
 
@@ -101,11 +178,15 @@ Default constructor used to create a new LruBuffer instance with the default cap
 contains(key: K): boolean
 ```
 
-Checks whether the current buffer contains a specified key.
+判断此缓存是否包含指定的 key。
 
-**起始版本：** 23
+**起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LRUCache-contains(key: K): boolean--><!--Device-LRUCache-contains(key: K): boolean-End-->
 
@@ -115,27 +196,53 @@ Checks whether the current buffer contains a specified key.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | K | 是 | Indicates the key to check. |
+| key | K | 是 | 要检查的 key。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns true if the buffer contains the specified key. |
+| boolean | 检查结果。如果缓存包含指定的 key，则返回 **true**；否则返回 **false**。 |
+
+## 示例
+
+ArkTS-Dyn示例：
+
+```TypeScript
+let pro = new util.LRUCache<number, number>();
+pro.put(2, 10);
+let result = pro.contains(2);
+console.info('result = ' + result);
+// 输出结果：result = true
+```
+
+ArkTS-Sta示例：
+
+```TypeScript
+let pro = new util.LRUCache<int, int>();
+pro.put(2, 10);
+let result = pro.contains(2);
+console.info('result = ' + result);
+// 输出结果：result = true
+```
 
 ## createDefault
 
 ```TypeScript
-createDefault(key: K): V | undefined
+createDefault(key: K): V
 ```
 
-Executes subsequent operations if miss to compute a value for the specific key.
+在缓存中无匹配的 key 时执行后续操作，并返回与该 key 关联的值（默认为 **undefined**）。
 
-**起始版本：** 23
+**起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
-<!--Device-LRUCache-createDefault(key: K): V | undefined--><!--Device-LRUCache-createDefault(key: K): V | undefined-End-->
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LRUCache-createDefault(key: K): V--><!--Device-LRUCache-createDefault(key: K): V-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -143,13 +250,22 @@ Executes subsequent operations if miss to compute a value for the specific key.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | K | 是 | Indicates the missed key. |
+| key | K | 是 | key。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| V | Returns the value associated with the key. |
+| V | key 对应的值。 |
+
+## 示例
+
+```TypeScript
+let pro = new util.LRUCache<number, number>();
+let result = pro.createDefault(50);
+console.info('result = ' + result);
+// 输出结果：result = undefined
+```
 
 ## entries
 
@@ -157,11 +273,15 @@ Executes subsequent operations if miss to compute a value for the specific key.
 entries(): IterableIterator<[K, V]>
 ```
 
-Returns an array of key-value pairs of enumeratable properties of a given object.
+返回一个迭代器对象，该对象按插入顺序遍历此对象中的所有键值对（[key, value]）。
 
-**起始版本：** 23
+**起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LRUCache-entries(): IterableIterator<[K, V]>--><!--Device-LRUCache-entries(): IterableIterator<[K, V]>-End-->
 
@@ -171,7 +291,40 @@ Returns an array of key-value pairs of enumeratable properties of a given object
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;[K, V]&gt; | Returns an array of key-value pairs |
+| IterableIterator&lt;[K, V]&gt; | 可迭代的数组。 |
+
+## 示例
+
+ArkTS-Dyn示例：
+
+```TypeScript
+let pro = new util.LRUCache<number, number>();
+pro.put(2, 10);
+pro.put(3, 15);
+let pair = pro.entries();
+for (let value of pair) {
+  console.info(value[0]+ ', '+ value[1]);
+}
+// 输出结果：
+// 2, 10
+// 3, 15
+```
+
+ArkTS-Sta示例：
+
+```TypeScript
+let pro = new util.LRUCache<int, int>();
+pro.put(2, 10);
+pro.put(3, 15);
+let pair = pro.entries()
+let arrayValue = Array.from(pair);
+for (let value of arrayValue) {
+  console.info(value[0]+ ', '+ value[1]);
+  // 输出结果：
+  // 2, 10
+  // 3, 15
+}
+```
 
 ## get
 
@@ -179,11 +332,15 @@ Returns an array of key-value pairs of enumeratable properties of a given object
 get(key: K): V | undefined
 ```
 
-Obtains the value associated with a specified key.
+获取 key 对应的值。如果该 key 不在缓存中，则调用 [createDefault&lt;sup&gt;9+&lt;/sup&gt;](#createDefault) 创建该 key。如果 **createDefault** 中指定的值 不为 **undefined**，则调用 [afterRemoval&lt;sup&gt;9+&lt;/sup&gt;](#afterRemoval) 返回 **createDefault** 中指定的值。
 
-**起始版本：** 23
+**起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LRUCache-get(key: K): V | undefined--><!--Device-LRUCache-get(key: K): V | undefined-End-->
 
@@ -193,27 +350,53 @@ Obtains the value associated with a specified key.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | K | 是 | Indicates the key to query. |
+| key | K | 是 | 要查询值的 key。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| V | Returns the value associated with the key |
+| V | key 对应的值。如果未找到匹配项，则返回 **createDefault** 中指定的值。 |
+
+## 示例
+
+ArkTS-Dyn示例：
+
+```TypeScript
+let pro = new util.LRUCache<number, number>();
+pro.put(2, 10);
+let result  = pro.get(2);
+console.info('result = ' + result);
+// 输出结果：result = 10
+```
+
+ArkTS-Sta示例：
+
+```TypeScript
+let pro = new util.LRUCache<int, int>();
+pro.put(2, 10);
+let result  = pro.get(2);
+console.info('result = ' + result);
+// 输出结果：result = 10
+```
 
 ## getCapacity
 
 ```TypeScript
-getCapacity(): int
+getCapacity(): number
 ```
 
-Obtains the capacity of the current buffer.
+获取此缓存的容量。
 
-**起始版本：** 23
+**起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
-<!--Device-LRUCache-getCapacity(): int--><!--Device-LRUCache-getCapacity(): int-End-->
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LRUCache-getCapacity(): number--><!--Device-LRUCache-getCapacity(): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -221,21 +404,45 @@ Obtains the capacity of the current buffer.
 
 | 类型 | 说明 |
 | --- | --- |
-| int | Returns the capacity of the current buffer. |
+| number | 缓存的容量。 |
+
+## 示例
+
+ArkTS-Dyn示例：
+
+```TypeScript
+let pro = new util.LRUCache<number, number>();
+let result = pro.getCapacity();
+console.info('result = ' + result);
+// 输出结果：result = 64
+```
+
+ArkTS-Sta示例：
+
+```TypeScript
+let pro = new util.LRUCache<int, int>();
+let result = pro.getCapacity();
+console.info('result = ' + result);
+// 输出结果：result = 64
+```
 
 ## getCreateCount
 
 ```TypeScript
-getCreateCount(): long
+getCreateCount(): number
 ```
 
-Obtains the number of times createDefault(Object) returned a value.
+获取创建对象的次数。
 
-**起始版本：** 23
+**起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
-<!--Device-LRUCache-getCreateCount(): long--><!--Device-LRUCache-getCreateCount(): long-End-->
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LRUCache-getCreateCount(): number--><!--Device-LRUCache-getCreateCount(): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -243,21 +450,71 @@ Obtains the number of times createDefault(Object) returned a value.
 
 | 类型 | 说明 |
 | --- | --- |
-| long | Returns the number of times createDefault(java.lang.Object) returned a value. |
+| number | 创建对象的次数。 |
+
+## 示例
+
+ArkTS-Dyn示例：
+
+```TypeScript
+// 创建新类ChildLRUCache继承LRUCache，重写createDefault方法，返回一个非undefined的值。
+class ChildLRUCache extends util.LRUCache<number, number> {
+  constructor() {
+    super();
+  }
+
+  createDefault(key: number): number {
+    return key;
+  }
+}
+let lru = new ChildLRUCache();
+lru.put(2, 10);
+lru.get(3);
+lru.get(5);
+let res = lru.getCreateCount();
+console.info('res = ' + res);
+// 输出结果：res = 2
+```
+
+ArkTS-Sta示例：
+
+```TypeScript
+// 创建新类ChildLRUCache继承LRUCache，重写createDefault方法，返回一个非undefined的值。
+class ChildLRUCache extends util.LRUCache<int, int> {
+  constructor() {
+    super();
+  }
+
+  createDefault(key: int): int {
+    return key;
+  }
+}
+let lru = new ChildLRUCache();
+lru.put(2, 10);
+lru.get(3);
+lru.get(5);
+let res = lru.getCreateCount();
+console.info('res = ' + res);
+// 输出结果：res = 2
+```
 
 ## getMatchCount
 
 ```TypeScript
-getMatchCount(): long
+getMatchCount(): number
 ```
 
-Obtains the number of times that the queried values are successfully matched.
+获取查询值匹配的次数。
 
-**起始版本：** 23
+**起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
-<!--Device-LRUCache-getMatchCount(): long--><!--Device-LRUCache-getMatchCount(): long-End-->
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LRUCache-getMatchCount(): number--><!--Device-LRUCache-getMatchCount(): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -265,21 +522,49 @@ Obtains the number of times that the queried values are successfully matched.
 
 | 类型 | 说明 |
 | --- | --- |
-| long | Returns the number of times that the queried values are successfully matched. |
+| number | 查询值匹配的次数。 |
+
+## 示例
+
+ArkTS-Dyn示例：
+
+```TypeScript
+let pro = new util.LRUCache<number, number>();
+pro.put(2, 10);
+pro.get(2);
+let result = pro.getMatchCount();
+console.info('result = ' + result);
+// 输出结果：result = 1
+```
+
+ArkTS-Sta示例：
+
+```TypeScript
+let pro = new util.LRUCache<int, int>();
+pro.put(2, 10);
+pro.get(2);
+let result = pro.getMatchCount();
+console.info('result = ' + result);
+// 输出结果：result = 1
+```
 
 ## getMissCount
 
 ```TypeScript
-getMissCount(): long
+getMissCount(): number
 ```
 
-Obtains the number of times that the queried values are not matched.
+获取查询值未匹配的次数。
 
-**起始版本：** 23
+**起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
-<!--Device-LRUCache-getMissCount(): long--><!--Device-LRUCache-getMissCount(): long-End-->
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LRUCache-getMissCount(): number--><!--Device-LRUCache-getMissCount(): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -287,21 +572,49 @@ Obtains the number of times that the queried values are not matched.
 
 | 类型 | 说明 |
 | --- | --- |
-| long | Returns the number of times that the queried values are not matched. |
+| number | 查询值未匹配的次数。 |
+
+## 示例
+
+ArkTS-Dyn示例：
+
+```TypeScript
+let pro = new util.LRUCache<number, number>();
+pro.put(2, 10);
+pro.get(2);
+let result = pro.getMissCount();
+console.info('result = ' + result);
+// 输出结果：result = 0
+```
+
+ArkTS-Sta示例：
+
+```TypeScript
+let pro = new util.LRUCache<int, int>();
+pro.put(2, 10);
+pro.get(2);
+let result = pro.getMissCount();
+console.info('result = ' + result);
+// 输出结果：result = 0
+```
 
 ## getPutCount
 
 ```TypeScript
-getPutCount(): long
+getPutCount(): number
 ```
 
-Obtains the number of times that values are added to the buffer.
+获取向此缓存添加的次数。
 
-**起始版本：** 23
+**起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
-<!--Device-LRUCache-getPutCount(): long--><!--Device-LRUCache-getPutCount(): long-End-->
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LRUCache-getPutCount(): number--><!--Device-LRUCache-getPutCount(): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -309,21 +622,47 @@ Obtains the number of times that values are added to the buffer.
 
 | 类型 | 说明 |
 | --- | --- |
-| long | Returns the number of times that values are added to the buffer. |
+| number | 向缓存添加的次数。 |
+
+## 示例
+
+ArkTS-Dyn示例：
+
+```TypeScript
+let pro = new util.LRUCache<number, number>();
+pro.put(2, 10);
+let result = pro.getPutCount();
+console.info('result = ' + result);
+// 输出结果：result = 1
+```
+
+ArkTS-Sta示例：
+
+```TypeScript
+let pro = new util.LRUCache<int, int>();
+pro.put(2, 10);
+let result = pro.getPutCount();
+console.info('result = ' + result);
+// 输出结果：result = 1
+```
 
 ## getRemovalCount
 
 ```TypeScript
-getRemovalCount(): long
+getRemovalCount(): number
 ```
 
-Obtains the number of times that values are evicted from the buffer.
+获取此缓存中键值对被回收的次数。
 
-**起始版本：** 23
+**起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
-<!--Device-LRUCache-getRemovalCount(): long--><!--Device-LRUCache-getRemovalCount(): long-End-->
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LRUCache-getRemovalCount(): number--><!--Device-LRUCache-getRemovalCount(): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -331,7 +670,33 @@ Obtains the number of times that values are evicted from the buffer.
 
 | 类型 | 说明 |
 | --- | --- |
-| long | Returns the number of times that values are evicted from the buffer. |
+| number | 此缓存中键值对被回收的次数。 |
+
+## 示例
+
+ArkTS-Dyn示例：
+
+```TypeScript
+let pro = new util.LRUCache<number, number>();
+pro.put(2, 10);
+pro.updateCapacity(2);
+pro.put(50, 22);
+let result = pro.getRemovalCount();
+console.info('result = ' + result);
+// 输出结果：result = 0
+```
+
+ArkTS-Sta示例：
+
+```TypeScript
+let pro = new util.LRUCache<int, int>();
+pro.put(2, 10);
+pro.updateCapacity(2);
+pro.put(50, 22);
+let result = pro.getRemovalCount();
+console.info('result = ' + result);
+// 输出结果：result = 0
+```
 
 ## isEmpty
 
@@ -339,11 +704,15 @@ Obtains the number of times that values are evicted from the buffer.
 isEmpty(): boolean
 ```
 
-Checks whether the current buffer is empty.
+判断此缓存是否为空。
 
-**起始版本：** 23
+**起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LRUCache-isEmpty(): boolean--><!--Device-LRUCache-isEmpty(): boolean-End-->
 
@@ -353,21 +722,47 @@ Checks whether the current buffer is empty.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns true if the current buffer contains no value. |
+| boolean | 如果缓存不包含任何值，则返回 **true**。 |
+
+## 示例
+
+ArkTS-Dyn示例：
+
+```TypeScript
+let pro = new util.LRUCache<number, number>();
+pro.put(2, 10);
+let result = pro.isEmpty();
+console.info('result = ' + result);
+// 输出结果：result = false
+```
+
+ArkTS-Sta示例：
+
+```TypeScript
+let pro = new util.LRUCache<int, int>();
+pro.put(2, 10);
+let result = pro.isEmpty();
+console.info('result = ' + result);
+// 输出结果：result = false
+```
 
 ## keys
 
 ```TypeScript
-keys(): Array<K>
+keys(): K[]
 ```
 
-Obtains a list of keys for the values in the current buffer. since 9
+获取此缓存中的所有 key，按从最近最少访问到最近最多访问的顺序排列。
 
-**起始版本：** 23
+**起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
-<!--Device-LRUCache-keys(): Array<K>--><!--Device-LRUCache-keys(): Array<K>-End-->
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LRUCache-keys(): K[]--><!--Device-LRUCache-keys(): K[]-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -375,21 +770,45 @@ Obtains a list of keys for the values in the current buffer. since 9
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;K&gt; | Returns a list of keys ordered by access time, |
+| K[] | 此缓存中所有 key 的列表，按从最近最少访问到最近最多访问的顺序排列。 |
+
+## 示例
+
+```TypeScript
+let pro = new util.LRUCache<number, string>();
+pro.put(1, 'A');
+pro.put(2, "B");
+pro.put(3, 'C');
+pro.put(4, 'D')
+pro.put(5, 'E')
+pro.put(6, 'F')
+let result = pro.keys();
+console.info('result = ' + result);
+// 输出结果：result = 1,2,3,4,5,6
+pro.get(5);
+pro.get(3);
+result = pro.keys();
+console.info('result = ' + result);
+// 输出结果：result = 1,2,4,6,5,3
+```
 
 ## put
 
 ```TypeScript
-put(key: K, value: V): V | undefined
+put(key: K, value: V): V
 ```
 
-Adds a key-value pair to the buffer.
+向此缓存添加键值对，并返回与该 key 关联的值。如果缓存中的值总数大于指定容量，则执行删除操作。
 
-**起始版本：** 23
+**起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
-<!--Device-LRUCache-put(key: K, value: V): V | undefined--><!--Device-LRUCache-put(key: K, value: V): V | undefined-End-->
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LRUCache-put(key: K, value: V): V--><!--Device-LRUCache-put(key: K, value: V): V-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -397,14 +816,23 @@ Adds a key-value pair to the buffer.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | K | 是 | Indicates the key to add. |
-| value | V | 是 | Indicates the value associated with the key to add. |
+| key | K | 是 | 要添加的键值对的 key。 |
+| value | V | 是 | 要添加的键值对的 value。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| V | Returns the value associated with the added key; |
+| V | 添加的键值对的值。如果 key 或 value 为空，则抛出异常。 |
+
+## 示例
+
+```TypeScript
+let pro = new util.LRUCache<number, number>();
+let result = pro.put(2, 10);
+console.info('result = ' + result);
+// 输出结果：result = 10
+```
 
 ## remove
 
@@ -412,11 +840,15 @@ Adds a key-value pair to the buffer.
 remove(key: K): V | undefined
 ```
 
-Deletes a specified key and its associated value from the current buffer.
+从此缓存中移除 key 及其关联的值，并返回与该 key 关联的值。如果 key 不存在，则返回 **undefined**。
 
-**起始版本：** 23
+**起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LRUCache-remove(key: K): V | undefined--><!--Device-LRUCache-remove(key: K): V | undefined-End-->
 
@@ -426,13 +858,35 @@ Deletes a specified key and its associated value from the current buffer.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | K | 是 | Indicates the key to delete. |
+| key | K | 是 | 要移除的 key。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| V | Returns an Optional object containing the deleted key-value pair; |
+| V | 如果 key 存在于缓存中，则返回包含被移除键值对的 **Optional** 对象；如果 key 不存在 则返回 **undefined**；如果 **key** 传入 **null**，则抛出错误。 |
+
+## 示例
+
+ArkTS-Dyn示例：
+
+```TypeScript
+let pro = new util.LRUCache<number, number>();
+pro.put(2, 10);
+let result = pro.remove(20);
+console.info('result = ' + result);
+// 输出结果：result = undefined
+```
+
+ArkTS-Sta示例：
+
+```TypeScript
+let pro = new util.LRUCache<int, int>();
+pro.put(2, 10);
+let result = pro.remove(20);
+console.info('result = ' + result);
+// 输出结果：result = undefined
+```
 
 ## toString
 
@@ -440,11 +894,15 @@ Deletes a specified key and its associated value from the current buffer.
 toString(): string
 ```
 
-Returns a string representation of the object.
+获取此缓存的字符串表示形式。
 
-**起始版本：** 23
+**起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LRUCache-toString(): string--><!--Device-LRUCache-toString(): string-End-->
 
@@ -454,21 +912,51 @@ Returns a string representation of the object.
 
 | 类型 | 说明 |
 | --- | --- |
-| string | Returns the string representation of the object and |
+| string | 此缓存的字符串表示形式。 |
+
+## 示例
+
+ArkTS-Dyn示例：
+
+```TypeScript
+let pro = new util.LRUCache<number, number>();
+pro.put(2, 10);
+pro.get(2);
+pro.get(3);
+console.info(pro.toString());
+// 输出结果：LRUCache[ maxSize = 64, hits = 1, misses = 1, hitRate = 50% ]
+// maxSize: 缓存区最大值 hits: 查询值匹配成功的次数 misses: 查询值匹配失败的次数 hitRate: 查询值匹配率
+```
+
+ArkTS-Sta示例：
+
+```TypeScript
+let pro = new util.LRUCache<int, int>();
+pro.put(2, 10);
+pro.get(2);
+pro.get(3);
+console.info(pro.toString());
+// 输出结果：LRUCache[ maxSize = 64, hits = 1, misses = 1, hitRate = 50% ]
+// maxSize: 缓存区最大值 hits: 查询值匹配成功的次数 misses: 查询值匹配失败的次数 hitRate: 查询值匹配率
+```
 
 ## updateCapacity
 
 ```TypeScript
-updateCapacity(newCapacity: int): void
+updateCapacity(newCapacity: number): void
 ```
 
-Updates the buffer capacity to a specified capacity.
+改变缓存容量。如果新容量小于等于 **0**，则抛出异常。如果缓存中的值总数大于指定容量，则执行删除操作。
 
-**起始版本：** 23
+**起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
-<!--Device-LRUCache-updateCapacity(newCapacity: int): void--><!--Device-LRUCache-updateCapacity(newCapacity: int): void-End-->
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LRUCache-updateCapacity(newCapacity: number): void--><!--Device-LRUCache-updateCapacity(newCapacity: number): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -476,21 +964,41 @@ Updates the buffer capacity to a specified capacity.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| newCapacity | int | 是 | Indicates the new capacity to set. |
+| newCapacity | number | 是 | 缓存的新容量。最大值为 **2147483647**。 |
+
+## 示例
+
+ArkTS-Dyn示例：
+
+```TypeScript
+let pro = new util.LRUCache<number, number>();
+pro.updateCapacity(100);
+```
+
+ArkTS-Sta示例：
+
+```TypeScript
+let pro = new util.LRUCache<int, int>();
+pro.updateCapacity(100);
+```
 
 ## values
 
 ```TypeScript
-values(): Array<V>
+values(): V[]
 ```
 
-Obtains a list of all values in the current buffer.
+获取此缓存中的所有值，按从最近最少访问到最近最多访问的顺序排列。
 
-**起始版本：** 23
+**起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
-<!--Device-LRUCache-values(): Array<V>--><!--Device-LRUCache-values(): Array<V>-End-->
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LRUCache-values(): V[]--><!--Device-LRUCache-values(): V[]-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -498,23 +1006,47 @@ Obtains a list of all values in the current buffer.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;V&gt; | Returns the list of all values in the current buffer, |
+| V[] | 此缓存中所有值的列表，按从最近最少访问到最近最多访问的顺序排列。 |
+
+## 示例
+
+```TypeScript
+let pro = new util.LRUCache<number, string>();
+pro.put(1, 'A');
+pro.put(2, "B");
+pro.put(3, 'C');
+pro.put(4, 'D')
+pro.put(5, 'E')
+pro.put(6, 'F')
+let result = pro.values();
+console.info('result = ' + result);
+// 输出结果：result = A,B,C,D,E,F
+pro.get(1);
+pro.get(2);
+result = pro.values();
+console.info('result = ' + result);
+// 输出结果：result = C,D,E,F,A,B
+```
 
 ## length
 
 ```TypeScript
-get length(): int
+length: number
 ```
 
-Obtains a list of all values in the current buffer.
+当前缓存中值的总数。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
-<!--Device-LRUCache-get length(): int--><!--Device-LRUCache-get length(): int-End-->
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LRUCache-length: number--><!--Device-LRUCache-length: number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 

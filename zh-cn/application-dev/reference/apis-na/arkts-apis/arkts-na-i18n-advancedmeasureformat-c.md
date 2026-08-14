@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-i18n-export class AdvancedMeasureFormat--><!--Device-i18n-export class AdvancedMeasureFormat-End-->
 
 **系统能力：** SystemCapability.Global.I18n
@@ -22,6 +24,8 @@ constructor(numberFormat: Intl.NumberFormat, options?: AdvancedMeasureFormatOpti
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
@@ -35,7 +39,7 @@ constructor(numberFormat: Intl.NumberFormat, options?: AdvancedMeasureFormatOpti
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | numberFormat | Intl.NumberFormat | 是 | 用于格式化数字的对象。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 |  |
+| options | [AdvancedMeasureFormatOptions](../../apis-localization-kit/arkts-apis/arkts-localization-i18n-advancedmeasureformatoptions-i.md) | 否 |  |
 
 ## format
 
@@ -48,6 +52,8 @@ format(num: double): string
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

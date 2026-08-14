@@ -2,13 +2,15 @@
 
 用于触发旋转手势，最少需要2指，最多5指，最小改变度数为1度。该手势不支持通过触控板双指旋转操作触发。
 
-**继承/实现关系：** RotationGestureInterface extends [GestureInterface<RotationGestureInterface>](GestureInterface<RotationGestureInterface>)
+**继承/实现关系：** RotationGestureInterface extends GestureInterface<RotationGestureInterface>
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
-<!--Device-unnamed-interface RotationGestureInterface extends GestureInterface<RotationGestureInterface>--><!--Device-unnamed-interface RotationGestureInterface extends GestureInterface<RotationGestureInterface>-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-interface RotationGestureInterface--><!--Device-unnamed-interface RotationGestureInterface-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,11 +20,13 @@
 (value?: { fingers?: number; angle?: number }): RotationGestureInterface
 ```
 
-继承自[GestureInterface\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_，设置旋转手势事件。
+继承自[GestureInterface&lt;T&gt;](arkts-arkui-gestureinterface-i.md#GestureInterface)，设置旋转手势事件。
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -34,13 +38,13 @@
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | { fingers?: number; angle?: number } | 否 | 设置旋转手势事件参数。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ - fingers：触发旋转手势所需的最少手指数，&nbsp;最小为2指，最大为5指。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_默认值：2 \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_取值范围：[2, 5]。当设置的值小于2或大于5时，会被转化为默认值。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_3\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_触发手势时手指数量可以多于fingers参数值，但仅最先落下的两指参与手势计算。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_4\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ - angle：触发旋转手势所需的最小角度变化，单位为deg。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_5\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_默认值：1 \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_6\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_**说明：** \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_7\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_当改变度数的值小于等于0或大于360时，会被转化为默认值。 |
+| value | { fingers?: number; angle?: number } | 否 | 设置旋转手势事件参数。 &lt;br&gt; - fingers：触发旋转手势所需的最少手指数，&nbsp;最小为2指，最大为5指。&lt;br/&gt;默认值：2 &lt;br/&gt;取值范围：[2, 5]。当设置的值小于2或大于5时，会被转化 为默认值。&lt;br/&gt;触发手势时手指数量可以多于fingers参数值，但仅最先落下的两指参与手势计算。 &lt;br&gt; - angle：触发旋转手势所需的最小角度变化，单位为deg。&lt;br/&gt;默认值：1 &lt;br/&gt;**说明：** &lt;br/&gt;当改变度数的值小于等于0或大于360时，会被转化为默认值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ |  |
+| [RotationGestureInterface](arkts-arkui-rotationgestureinterface-i.md) |  |
 
 ## constructor
 
@@ -48,11 +52,13 @@
 (options?: RotationGestureHandlerOptions): RotationGestureInterface
 ```
 
-设置旋转手势事件。与[RotationGesture]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_)}相比， options参数新增了isFingerCountLimited参数，表示是否检查触摸屏幕的手指数量。
+设置旋转手势事件。与RotationGesture)}相比， options参数新增了isFingerCountLimited参数，表示是否检查触摸屏幕的手指数量。
 
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -66,13 +72,13 @@
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 旋转手势处理器配置参数。 |
+| options | [RotationGestureHandlerOptions](arkts-arkui-rotationgesturehandleroptions-i.md) | 否 | 旋转手势处理器配置参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ |  |
+| [RotationGestureInterface](arkts-arkui-rotationgestureinterface-i.md) |  |
 
 ## onActionCancel
 
@@ -85,6 +91,8 @@ Rotation手势识别成功，接收到触摸取消事件触发的回调。该回
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -102,7 +110,7 @@ Rotation手势识别成功，接收到触摸取消事件触发的回调。该回
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ |  |
+| [RotationGestureInterface](arkts-arkui-rotationgestureinterface-i.md) |  |
 
 ## onActionCancel
 
@@ -110,11 +118,13 @@ Rotation手势识别成功，接收到触摸取消事件触发的回调。该回
 onActionCancel(event: Callback<GestureEvent>): RotationGestureInterface
 ```
 
-Rotation手势识别成功，接收到触摸取消事件触发的回调。与[onActionCancel]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_相 比，该回调返回手势事件信息。
+Rotation手势识别成功，接收到触摸取消事件触发的回调。与onActionCancel相 比，该回调返回手势事件信息。
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -128,13 +138,13 @@ Rotation手势识别成功，接收到触摸取消事件触发的回调。与[on
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;GestureEvent&gt; | 是 | 手势事件回调函数。 |
+| event | Callback&lt;[GestureEvent](arkts-arkui-gestureevent-i.md)&gt; | 是 | 手势事件回调函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ |  |
+| [RotationGestureInterface](arkts-arkui-rotationgestureinterface-i.md) |  |
 
 ## onActionEnd
 
@@ -147,6 +157,8 @@ Rotation手势识别成功，当抬起最后一根满足手势触发条件的手
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -164,7 +176,7 @@ Rotation手势识别成功，当抬起最后一根满足手势触发条件的手
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ |  |
+| [RotationGestureInterface](arkts-arkui-rotationgestureinterface-i.md) |  |
 
 ## onActionStart
 
@@ -177,6 +189,8 @@ Rotation手势识别成功后触发的回调。
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -194,7 +208,7 @@ Rotation手势识别成功后触发的回调。
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ |  |
+| [RotationGestureInterface](arkts-arkui-rotationgestureinterface-i.md) |  |
 
 ## onActionUpdate
 
@@ -207,6 +221,8 @@ Rotation手势移动过程中触发的回调。
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -224,5 +240,5 @@ Rotation手势移动过程中触发的回调。
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ |  |
+| [RotationGestureInterface](arkts-arkui-rotationgestureinterface-i.md) |  |
 

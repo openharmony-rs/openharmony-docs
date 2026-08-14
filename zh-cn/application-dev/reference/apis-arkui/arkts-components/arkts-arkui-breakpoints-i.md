@@ -1,10 +1,12 @@
 # BreakPoints
 
-设置栅格容器组件的断点。更多断点的说明参考\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。 \_\_\_MD\_COMMENT\_DESC\_USD\_1\_\_\_
+设置栅格容器组件的断点。更多断点的说明参考[栅格容器断点](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)。 &lt;!--code_no_check--&gt;
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare interface BreakPoints--><!--Device-unnamed-declare interface BreakPoints-End-->
 
@@ -18,11 +20,13 @@ reference?: BreakpointsReference
 
 断点切换参照物。支持WindowSize（以窗口为参照）和ComponentSize（以容器为参照）。 默认值：BreakpointsReference.WindowSize 非法值：按默认值处理。
 
-**类型：** BreakpointsReference
+**类型：** [BreakpointsReference](arkts-arkui-breakpointsreference-e.md)
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -45,6 +49,8 @@ value?: Array<string>
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

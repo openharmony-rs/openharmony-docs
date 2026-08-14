@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 <!--Device-bluetoothManager-export enum Protocol--><!--Device-bluetoothManager-export enum Protocol-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -16,11 +18,13 @@
 GATT = 0
 ```
 
-\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+GATT协议。
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -34,11 +38,13 @@ GATT = 0
 SPP = 1
 ```
 
-\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+SPP协议。
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -52,11 +58,13 @@ SPP = 1
 OPP = 2
 ```
 
-\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+OPP协议。
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

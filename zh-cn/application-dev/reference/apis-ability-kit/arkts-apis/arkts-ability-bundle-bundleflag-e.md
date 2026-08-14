@@ -1,6 +1,6 @@
 # BundleFlag
 
-> **说明：** > > 从API version 7开始支持，从API version 9开始废弃，建议使用 > [bundleManager.BundleFlag]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。 包信息标志，指示需要获取的包信息的内容。 当接口与标志不匹配时，该标志会被忽略，例如获取application时使用GET\_ABILITY\_INFO\_WITH\_PERMISSION对结果不会产生影响。 标志可以叠加使用，例如使用GET\_APPLICATION\_INFO\_WITH\_PERMISSION + GET\_APPLICATION\_INFO\_WITH\_DISABLE可以使结果同时包含应用权限信息和被禁用的应用信息。
+> **说明：** > > 从API version 7开始支持，从API version 9开始废弃，建议使用 > [bundleManager.BundleFlag](arkts-ability-bundlemanager-bundleflag-e.md#BundleFlag)替代。 包信息标志，指示需要获取的包信息的内容。 当接口与标志不匹配时，该标志会被忽略，例如获取application时使用GET_ABILITY_INFO_WITH_PERMISSION对结果不会产生影响。 标志可以叠加使用，例如使用GET_APPLICATION_INFO_WITH_PERMISSION + GET_APPLICATION_INFO_WITH_DISABLE可以使结果同时包含应用权限信息和被禁用的应用信息。
 
 **起始版本：** 7
 
@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.bundle.bundleManager:bundleManager.BundleFlag](arkts-ability-bundlemanager-bundleflag-e.md)
+**替代接口：** [BundleFlag](arkts-ability-bundlemanager-bundleflag-e.md#BundleFlag)
 
 <!--Device-bundle-enum BundleFlag--><!--Device-bundle-enum BundleFlag-End-->
 
@@ -28,7 +28,7 @@ GET_BUNDLE_DEFAULT = 0x00000000
 
 **废弃版本：** 9
 
-**替代接口：** ohos.bundle.bundleManager/bundleManager.BundleFlag#GET_BUNDLE_INFO_DEFAULT
+**替代接口：** [GET_BUNDLE_INFO_DEFAULT](arkts-ability-bundlemanager-bundleflag-e.md#GET_BUNDLE_INFO_DEFAULT)
 
 <!--Device-BundleFlag-GET_BUNDLE_DEFAULT = 0x00000000--><!--Device-BundleFlag-GET_BUNDLE_DEFAULT = 0x00000000-End-->
 
@@ -48,7 +48,7 @@ GET_BUNDLE_WITH_ABILITIES = 0x00000001
 
 **废弃版本：** 9
 
-**替代接口：** ohos.bundle.bundleManager/bundleManager.BundleFlag#GET_BUNDLE_INFO_WITH_ABILITY
+**替代接口：** [GET_BUNDLE_INFO_WITH_ABILITY](arkts-ability-bundlemanager-bundleflag-e.md#GET_BUNDLE_INFO_WITH_ABILITY)
 
 <!--Device-BundleFlag-GET_BUNDLE_WITH_ABILITIES = 0x00000001--><!--Device-BundleFlag-GET_BUNDLE_WITH_ABILITIES = 0x00000001-End-->
 
@@ -68,7 +68,7 @@ GET_ABILITY_INFO_WITH_PERMISSION = 0x00000002
 
 **废弃版本：** 9
 
-**替代接口：** ohos.bundle.bundleManager/bundleManager.AbilityFlag#GET_ABILITY_INFO_WITH_PERMISSION
+**替代接口：** [GET_ABILITY_INFO_WITH_PERMISSION](arkts-ability-bundlemanager-abilityflag-e-sys.md#GET_ABILITY_INFO_WITH_PERMISSION)
 
 <!--Device-BundleFlag-GET_ABILITY_INFO_WITH_PERMISSION = 0x00000002--><!--Device-BundleFlag-GET_ABILITY_INFO_WITH_PERMISSION = 0x00000002-End-->
 
@@ -88,7 +88,7 @@ GET_ABILITY_INFO_WITH_APPLICATION = 0x00000004
 
 **废弃版本：** 9
 
-**替代接口：** ohos.bundle.bundleManager/bundleManager.AbilityFlag#GET_ABILITY_INFO_WITH_APPLICATION
+**替代接口：** [GET_ABILITY_INFO_WITH_APPLICATION](arkts-ability-bundlemanager-abilityflag-e-sys.md#GET_ABILITY_INFO_WITH_APPLICATION)
 
 <!--Device-BundleFlag-GET_ABILITY_INFO_WITH_APPLICATION = 0x00000004--><!--Device-BundleFlag-GET_ABILITY_INFO_WITH_APPLICATION = 0x00000004-End-->
 
@@ -126,7 +126,7 @@ GET_BUNDLE_WITH_REQUESTED_PERMISSION = 0x00000010
 
 **废弃版本：** 9
 
-**替代接口：** ohos.bundle.bundleManager/bundleManager.BundleFlag#GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION
+**替代接口：** [GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION](arkts-ability-bundlemanager-bundleflag-e.md#GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION)
 
 <!--Device-BundleFlag-GET_BUNDLE_WITH_REQUESTED_PERMISSION = 0x00000010--><!--Device-BundleFlag-GET_BUNDLE_WITH_REQUESTED_PERMISSION = 0x00000010-End-->
 
@@ -164,7 +164,7 @@ GET_ABILITY_INFO_WITH_METADATA = 0x00000020
 
 **废弃版本：** 9
 
-**替代接口：** ohos.bundle.bundleManager/bundleManager.AbilityFlag#GET_ABILITY_INFO_WITH_METADATA
+**替代接口：** [GET_ABILITY_INFO_WITH_METADATA](arkts-ability-bundlemanager-abilityflag-e-sys.md#GET_ABILITY_INFO_WITH_METADATA)
 
 <!--Device-BundleFlag-GET_ABILITY_INFO_WITH_METADATA = 0x00000020--><!--Device-BundleFlag-GET_ABILITY_INFO_WITH_METADATA = 0x00000020-End-->
 
@@ -202,7 +202,7 @@ GET_ABILITY_INFO_SYSTEMAPP_ONLY = 0x00000080
 
 **废弃版本：** 9
 
-**替代接口：** ohos.bundle.bundleManager/bundleManager.AbilityFlag#GET_ABILITY_INFO_ONLY_SYSTEM_APP
+**替代接口：** [GET_ABILITY_INFO_ONLY_SYSTEM_APP](arkts-ability-bundlemanager-abilityflag-e-sys.md#GET_ABILITY_INFO_ONLY_SYSTEM_APP)
 
 <!--Device-BundleFlag-GET_ABILITY_INFO_SYSTEMAPP_ONLY = 0x00000080--><!--Device-BundleFlag-GET_ABILITY_INFO_SYSTEMAPP_ONLY = 0x00000080-End-->
 
@@ -222,7 +222,7 @@ GET_ABILITY_INFO_WITH_DISABLE = 0x00000100
 
 **废弃版本：** 9
 
-**替代接口：** ohos.bundle.bundleManager/bundleManager.AbilityFlag#GET_ABILITY_INFO_WITH_DISABLE
+**替代接口：** [GET_ABILITY_INFO_WITH_DISABLE](arkts-ability-bundlemanager-abilityflag-e-sys.md#GET_ABILITY_INFO_WITH_DISABLE)
 
 <!--Device-BundleFlag-GET_ABILITY_INFO_WITH_DISABLE = 0x00000100--><!--Device-BundleFlag-GET_ABILITY_INFO_WITH_DISABLE = 0x00000100-End-->
 

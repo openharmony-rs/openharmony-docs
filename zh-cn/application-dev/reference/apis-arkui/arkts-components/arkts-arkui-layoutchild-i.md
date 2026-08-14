@@ -40,7 +40,7 @@ layout(childLayoutInfo: LayoutInfo)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| childLayoutInfo | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 |  |
+| childLayoutInfo | [LayoutInfo](arkts-arkui-layoutinfo-i.md) | 是 |  |
 
 ## measure
 
@@ -68,7 +68,7 @@ measure(childConstraint: ConstraintSizeOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| childConstraint | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 |  |
+| childConstraint | ConstraintSizeOptions | 是 |  |
 
 ## borderInfo
 
@@ -78,7 +78,7 @@ borderInfo: LayoutBorderInfo
 
 子组件边框信息
 
-**类型：** LayoutBorderInfo
+**类型：** [LayoutBorderInfo](arkts-arkui-layoutborderinfo-i.md)
 
 **起始版本：** 9
 

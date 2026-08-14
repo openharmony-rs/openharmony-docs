@@ -14,7 +14,7 @@ function startDeviceManager(token: number, callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.distributedDeviceManager:distributedDeviceManager.DeviceManager.startDiscovering](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#startdiscovering)(discoverParam:
+**替代接口：** [startDiscovering](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#startDiscovering)(discoverParam: { [key: string]: Object; }, filterOptions?: { [key: string]: Object; })
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -27,9 +27,9 @@ function startDeviceManager(token: number, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | token | number | 是 | 注册后的token。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数。当模块选择完成，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当模块选择完成，err为undefined，否则返回错误对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { continuationManager } from '@kit.AbilityKit';
@@ -59,7 +59,7 @@ function startDeviceManager(token: number, options: ContinuationExtraParams, cal
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.distributedDeviceManager:distributedDeviceManager.DeviceManager.startDiscovering](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#startdiscovering)(discoverParam:
+**替代接口：** [startDiscovering](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#startDiscovering)(discoverParam: { [key: string]: Object; }, filterOptions?: { [key: string]: Object; })
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -72,10 +72,10 @@ function startDeviceManager(token: number, options: ContinuationExtraParams, cal
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | token | number | 是 | 注册后的token。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 过滤可选择设备列表的额外参数。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数。当模块选择完成，err为undefined，否则返回错误对象。 |
+| options | ContinuationExtraParams | 是 | 过滤可选择设备列表的额外参数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当模块选择完成，err为undefined，否则返回错误对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { continuationManager } from '@kit.AbilityKit';
@@ -110,7 +110,7 @@ function startDeviceManager(token: number, options?: ContinuationExtraParams): P
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.distributedDeviceManager:distributedDeviceManager.DeviceManager.startDiscovering](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#startdiscovering)(discoverParam:
+**替代接口：** [startDiscovering](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#startDiscovering)(discoverParam: { [key: string]: Object; }, filterOptions?: { [key: string]: Object; })
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -123,7 +123,7 @@ function startDeviceManager(token: number, options?: ContinuationExtraParams): P
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | token | number | 是 | 注册后的token。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 过滤可选择设备列表的额外参数，该参数可缺省。 |
+| options | ContinuationExtraParams | 否 | 过滤可选择设备列表的额外参数，该参数可缺省。 |
 
 **返回值：**
 
@@ -131,7 +131,7 @@ function startDeviceManager(token: number, options?: ContinuationExtraParams): P
 | --- | --- |
 | Promise&lt;void&gt; | Promise形式返回接口调用结果。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { continuationManager } from '@kit.AbilityKit';

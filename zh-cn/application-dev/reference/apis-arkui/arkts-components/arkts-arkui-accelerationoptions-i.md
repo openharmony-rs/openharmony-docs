@@ -6,7 +6,9 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-<!--Device-unnamed-declare interface AccelerationOptions<  ACC_SPEED_UPDATER extends ParticleUpdater,  ACC_ANGLE_UPDATER extends ParticleUpdater>--><!--Device-unnamed-declare interface AccelerationOptions<  ACC_SPEED_UPDATER extends ParticleUpdater,  ACC_ANGLE_UPDATER extends ParticleUpdater>-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare interface AccelerationOptions--><!--Device-unnamed-declare interface AccelerationOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,11 +20,13 @@ angle?: ParticlePropertyOptions<number, ACC_ANGLE_UPDATER>
 
 表示加速度方向（单位为角度）。 默认值：{range:[0.0,0.0]}
 
-**类型：** ParticlePropertyOptions&lt;number, ACC\_ANGLE\_UPDATER&gt;
+**类型：** [ParticlePropertyOptions](arkts-arkui-particlepropertyoptions-i.md)&lt;number, ACC_ANGLE_UPDATER&gt;
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,11 +44,13 @@ speed?: ParticlePropertyOptions<number, ACC_SPEED_UPDATER>
 
 表示加速度大小。 默认值：{range:[0.0,0.0]}
 
-**类型：** ParticlePropertyOptions&lt;number, ACC\_SPEED\_UPDATER&gt;
+**类型：** [ParticlePropertyOptions](arkts-arkui-particlepropertyoptions-i.md)&lt;number, ACC_SPEED_UPDATER&gt;
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

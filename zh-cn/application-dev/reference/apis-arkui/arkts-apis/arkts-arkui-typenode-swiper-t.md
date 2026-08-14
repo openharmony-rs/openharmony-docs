@@ -1,20 +1,24 @@
 # Swiper
 
 ```TypeScript
-type Swiper = SwiperFrameNode
+type Swiper = TypedFrameNode<SwiperInterface, SwiperAttribute>
 ```
 
-Define the FrameNode type for Swiper.
+Swiper类型的FrameNode节点类型。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-typeNode-type Swiper = SwiperFrameNode--><!--Device-typeNode-type Swiper = SwiperFrameNode-End-->
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-typeNode-type Swiper = TypedFrameNode<SwiperInterface, SwiperAttribute>--><!--Device-typeNode-type Swiper = TypedFrameNode<SwiperInterface, SwiperAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**属性类型：** SwiperFrameNode
+**属性类型：** TypedFrameNode<SwiperInterface, SwiperAttribute>
 

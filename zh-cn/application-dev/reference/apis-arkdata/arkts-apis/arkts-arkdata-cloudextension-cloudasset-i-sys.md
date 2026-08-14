@@ -2,13 +2,15 @@
 
 云资产的信息。
 
-**继承/实现关系：** CloudAsset extends [relationalStore.Asset](arkts-arkdata-relationalstore-asset-i.md)
+**继承/实现关系：** CloudAsset extends relationalStore.Asset
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-<!--Device-cloudExtension-export interface CloudAsset extends relationalStore.Asset--><!--Device-cloudExtension-export interface CloudAsset extends relationalStore.Asset-End-->
+**废弃版本：** -1
+
+<!--Device-cloudExtension-export interface CloudAsset--><!--Device-cloudExtension-export interface CloudAsset-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -24,9 +26,11 @@ assetId: string
 
 **类型：** string
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-CloudAsset-assetId: string--><!--Device-CloudAsset-assetId: string-End-->
 
@@ -44,9 +48,11 @@ hash: string
 
 **类型：** string
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-CloudAsset-hash: string--><!--Device-CloudAsset-hash: string-End-->
 

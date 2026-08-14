@@ -2,9 +2,11 @@
 
 音量面板参数设置。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-export declare class AVVolumePanelParameter--><!--Device-unnamed-export declare class AVVolumePanelParameter-End-->
 
@@ -18,11 +20,15 @@ position?: Position
 
 设置音量面板的位置。 如果不设置该参数，则使用系统默认的音量面板位置。 如果设置该参数且参数对应屏幕内位置，则显示应用设置的位置。 如果设置该参数且参数对应屏幕外位置，例如（-1, -1），则隐藏系统默认音量面板。 **注意：** 若应用需隐藏系统默认音量面板，必须提供自定义音量面板，以确保用户仍可调节音量。
 
-**类型：** Position
+**类型：** [Position](../../apis-na/arkts-apis/arkts-na-units-position-i.md)
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AVVolumePanelParameter-position?: Position--><!--Device-AVVolumePanelParameter-position?: Position-End-->
 

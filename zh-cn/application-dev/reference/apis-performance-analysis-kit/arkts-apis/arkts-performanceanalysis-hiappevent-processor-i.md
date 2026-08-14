@@ -2,9 +2,11 @@
 
 可以上报事件的数据处理者对象。用于事件的上报和管理，开发者可自定义数据处理配置，满足不同的数据处理需求。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-hiAppEvent-interface Processor--><!--Device-hiAppEvent-interface Processor-End-->
 
@@ -20,11 +22,13 @@ appId?: string
 
 **类型：** string
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Processor-appId?: string--><!--Device-Processor-appId?: string-End-->
 
@@ -40,11 +44,13 @@ batchReport?: int
 
 **类型：** int
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Processor-batchReport?: int--><!--Device-Processor-batchReport?: int-End-->
 
@@ -60,11 +66,13 @@ configId?: int
 
 **类型：** int
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Processor-configId?: int--><!--Device-Processor-configId?: int-End-->
 
@@ -80,11 +88,13 @@ configName?: string
 
 **类型：** string
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Processor-configName?: string--><!--Device-Processor-configName?: string-End-->
 
@@ -100,11 +110,13 @@ customConfigs?: Record<string, string>
 
 **类型：** Record&lt;string, string&gt;
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Processor-customConfigs?: Record<string, string>--><!--Device-Processor-customConfigs?: Record<string, string>-End-->
 
@@ -120,11 +132,13 @@ debugMode?: boolean
 
 **类型：** boolean
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Processor-debugMode?: boolean--><!--Device-Processor-debugMode?: boolean-End-->
 
@@ -138,13 +152,15 @@ eventConfigs?: AppEventReportConfig[]
 
 数据处理者可以上报的事件描述配置数组。默认为空数组。 **原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。
 
-**类型：** AppEventReportConfig[]
+**类型：** [AppEventReportConfig](arkts-performanceanalysis-hiappevent-appeventreportconfig-i.md)[]
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Processor-eventConfigs?: AppEventReportConfig[]--><!--Device-Processor-eventConfigs?: AppEventReportConfig[]-End-->
 
@@ -160,11 +176,13 @@ name: string
 
 **类型：** string
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Processor-name: string--><!--Device-Processor-name: string-End-->
 
@@ -180,11 +198,13 @@ onBackgroundReport?: boolean
 
 **类型：** boolean
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Processor-onBackgroundReport?: boolean--><!--Device-Processor-onBackgroundReport?: boolean-End-->
 
@@ -200,11 +220,13 @@ onStartReport?: boolean
 
 **类型：** boolean
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Processor-onStartReport?: boolean--><!--Device-Processor-onStartReport?: boolean-End-->
 
@@ -220,11 +242,13 @@ periodReport?: int
 
 **类型：** int
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Processor-periodReport?: int--><!--Device-Processor-periodReport?: int-End-->
 
@@ -240,11 +264,13 @@ routeInfo?: string
 
 **类型：** string
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Processor-routeInfo?: string--><!--Device-Processor-routeInfo?: string-End-->
 
@@ -256,15 +282,17 @@ routeInfo?: string
 userIds?: string[]
 ```
 
-数据处理者可以上报的用户ID的name数组。name对应[setUserId]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_接口的name参数。默认为空数组。 **原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。
+数据处理者可以上报的用户ID的name数组。name对应[setUserId](arkts-performanceanalysis-hiappevent-setuserid-f.md#setUserId)接口的name参数。默认为空数组。 **原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。
 
 **类型：** string[]
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Processor-userIds?: string[]--><!--Device-Processor-userIds?: string[]-End-->
 
@@ -276,15 +304,17 @@ userIds?: string[]
 userProperties?: string[]
 ```
 
-数据处理者可以上报的用户属性的name数组。name对应[setUserProperty]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_接口的name参数。默认为空数组。 **原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。
+数据处理者可以上报的用户属性的name数组。name对应[setUserProperty](arkts-performanceanalysis-hiappevent-setuserproperty-f.md#setUserProperty)接口的name参数。默认为空数组。 **原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。
 
 **类型：** string[]
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Processor-userProperties?: string[]--><!--Device-Processor-userProperties?: string[]-End-->
 

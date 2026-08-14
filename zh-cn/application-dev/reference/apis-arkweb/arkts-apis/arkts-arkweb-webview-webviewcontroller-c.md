@@ -6,6 +6,8 @@ Provides methods for controlling the web controller.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-webview-class WebviewController--><!--Device-webview-class WebviewController-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -21,6 +23,8 @@ accessBackward(): boolean
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -38,7 +42,7 @@ accessBackward(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## accessForward
 
@@ -51,6 +55,8 @@ accessForward(): boolean
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -68,7 +74,7 @@ accessForward(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## accessStep
 
@@ -81,6 +87,8 @@ accessStep(step: number): boolean
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -98,14 +106,14 @@ accessStep(step: number): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 页面是否前进或后退。 |
+| boolean | 页面是否前进或后退。 &lt;br&gt;返回true表示可以前进或者后退，返回false表示不可以前进或后退。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## addIntelligentTrackingPreventionBypassingList
 
@@ -118,6 +126,8 @@ static addIntelligentTrackingPreventionBypassingList(hostList: Array<string>): v
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -135,8 +145,8 @@ static addIntelligentTrackingPreventionBypassingList(hostList: Array<string>): v
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 18+ |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
 
 ## avoidVisibleViewportBottom
 
@@ -144,11 +154,13 @@ static addIntelligentTrackingPreventionBypassingList(hostList: Array<string>): v
 avoidVisibleViewportBottom(avoidHeight: number): void
 ```
 
-设置Web网页可视视口底部避让高度。 > **说明：** > > - avoidHeight有效值区间为[0, Web组件高度]，超出有效值区间时取边界值。 > > - 该接口高度设置为非0时，Web组件位置和尺寸不变，可视视口向上避让avoidHeight，表现为Web网页内容抬升avoidHeight。该接口一般用于应用自定义网页底部避让区，不建议和点击web网页可编辑区拉起键盘的 > 场景同时使用。同时使用时，键盘弹起避让模式将使用OVERLAYS\_CONTENT。 > > - 该接口高度设置为0时，Web网页内容可恢复，键盘弹起避让模式将使用 > \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_ > 声明的模式。
+设置Web网页可视视口底部避让高度。 > **说明：** > > - avoidHeight有效值区间为[0, Web组件高度]，超出有效值区间时取边界值。 > > - 该接口高度设置为非0时，Web组件位置和尺寸不变，可视视口向上避让avoidHeight，表现为Web网页内容抬升avoidHeight。该接口一般用于应用自定义网页底部避让区，不建议和点击web网页可编辑区拉起键盘的 > 场景同时使用。同时使用时，键盘弹起避让模式将使用OVERLAYS_CONTENT。 > > - 该接口高度设置为0时，Web网页内容可恢复，键盘弹起避让模式将使用 > [keyboardAvoidMode()](../../../reference/apis-arkweb/arkts-basic-components-web-attributes.md#keyboardavoidmode12) > 声明的模式。
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 <!--Device-WebviewController-avoidVisibleViewportBottom(avoidHeight: number): void--><!--Device-WebviewController-avoidVisibleViewportBottom(avoidHeight: number): void-End-->
 
@@ -158,14 +170,14 @@ avoidVisibleViewportBottom(avoidHeight: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| avoidHeight | number | 是 | 设置Web网页可视视口底部避让高度。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_单位：vp\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_合法取值范围：0~Web组件高度\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_非法值设置行为：小于0取值为0，大于Web组件高度取值为Web组件高度。 |
+| avoidHeight | number | 是 | 设置Web网页可视视口底部避让高度。&lt;br&gt;单位：vp&lt;br&gt;合法取值范围：0~Web组件高度&lt;br&gt;非法值设置行为：小于0取值为0，大于Web组件高度取值为 Web组件高度。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | This functionality is not supported. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## backOrForward
 
@@ -178,6 +190,8 @@ backOrForward(step: number): void
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -195,8 +209,8 @@ backOrForward(step: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## backward
 
@@ -204,11 +218,13 @@ backOrForward(step: number): void
 backward(): void
 ```
 
-按照历史栈，后退一个页面。一般结合[accessBackward]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_一起使用。
+按照历史栈，后退一个页面。一般结合[accessBackward](../../apis-na/arkts-apis/arkts-na-webview-webviewcontroller-c.md#accessBackward)一起使用。
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -220,7 +236,7 @@ backward(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## clearBlanklessLoadingCache
 
@@ -234,6 +250,8 @@ static clearBlanklessLoadingCache(keys?: Array<string>) : void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 <!--Device-WebviewController-static clearBlanklessLoadingCache(keys?: Array<string>) : void--><!--Device-WebviewController-static clearBlanklessLoadingCache(keys?: Array<string>) : void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -242,13 +260,13 @@ static clearBlanklessLoadingCache(keys?: Array<string>) : void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| keys | Array&lt;string&gt; | 否 | 清除Blankless优化方案页面的key值列表，key值为[getBlanklessInfoWithKey]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_中指定过的。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_默认值：所有Blankless优化方案缓存的页面key列表。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_合法取值范围：长度不超过2048，key列表长度<=100。key和加载页面时输入给ArkWeb的相同。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_3\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_非法值设置行为：传入undefined/null会抛出异常错误码401；key长度超过2048时该key不生效；长度超过100时，取前100个；当为空时，使用默认值。 |
+| keys | Array&lt;string&gt; | 否 | 清除Blankless优化方案页面的key值列表，key值为 [getBlanklessInfoWithKey](../../apis-na/arkts-apis/arkts-na-webview-webviewcontroller-c.md#getBlanklessInfoWithKey)中指定过的。&lt;br&gt;默认值：所有Blankless优化 方案缓存的页面key列表。&lt;br&gt;合法取值范围：长度不超过2048，key列表长度<=100。key和加载页面时输入给ArkWeb的相同。&lt;br&gt;非法值设置行为：传入undefined/null会抛出异常错误码401； key长度超过2048时该key不生效；长度超过100时，取前100个；当为空时，使用默认值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) |  |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | This functionality is not supported. |
 
 ## clearClientAuthenticationCache
 
@@ -262,6 +280,8 @@ clearClientAuthenticationCache(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-clearClientAuthenticationCache(): void--><!--Device-WebviewController-clearClientAuthenticationCache(): void-End-->
@@ -272,7 +292,7 @@ clearClientAuthenticationCache(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## clearHistory
 
@@ -286,6 +306,8 @@ clearHistory(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-clearHistory(): void--><!--Device-WebviewController-clearHistory(): void-End-->
@@ -296,7 +318,7 @@ clearHistory(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## clearHostIP
 
@@ -309,6 +331,8 @@ static clearHostIP(hostName: string): void
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -326,7 +350,7 @@ static clearHostIP(hostName: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
 
 ## clearIntelligentTrackingPreventionBypassingList
 
@@ -340,6 +364,8 @@ static clearIntelligentTrackingPreventionBypassingList(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-static clearIntelligentTrackingPreventionBypassingList(): void--><!--Device-WebviewController-static clearIntelligentTrackingPreventionBypassingList(): void-End-->
@@ -350,7 +376,7 @@ static clearIntelligentTrackingPreventionBypassingList(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 18+ |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
 
 ## clearMatches
 
@@ -358,11 +384,13 @@ static clearIntelligentTrackingPreventionBypassingList(): void
 clearMatches(): void
 ```
 
-清除所有通过[searchAllAsync]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_匹配到的高亮字符查找结果。
+清除所有通过[searchAllAsync](../../apis-na/arkts-apis/arkts-na-webview-webviewcontroller-c.md#searchAllAsync)匹配到的高亮字符查找结果。
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -374,7 +402,7 @@ clearMatches(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## clearPrefetchedResource
 
@@ -382,11 +410,13 @@ clearMatches(): void
 static clearPrefetchedResource(cacheKeyList: Array<string>): void
 ```
 
-根据指定的缓存key列表清除对应的预获取资源缓存。入参中的缓存key必须是[prefetchResource]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_指定预获取到的资 源缓存key。
+根据指定的缓存key列表清除对应的预获取资源缓存。入参中的缓存key必须是[prefetchResource](../../apis-na/arkts-apis/arkts-na-webview-webviewcontroller-c.md#prefetchResource)指定预获取到的资 源缓存key。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -412,6 +442,8 @@ Clear all web service worker scheme handlers.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-static clearServiceWorkerWebSchemeHandler(): void--><!--Device-WebviewController-static clearServiceWorkerWebSchemeHandler(): void-End-->
@@ -430,6 +462,8 @@ clearSslCache(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-clearSslCache(): void--><!--Device-WebviewController-clearSslCache(): void-End-->
@@ -440,7 +474,7 @@ clearSslCache(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## clearWebSchemeHandler
 
@@ -454,6 +488,8 @@ Clear all web scheme handlers for related web component.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-clearWebSchemeHandler(): void--><!--Device-WebviewController-clearWebSchemeHandler(): void-End-->
@@ -464,7 +500,7 @@ Clear all web scheme handlers for related web component.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## closeAllMediaPresentations
 
@@ -478,6 +514,8 @@ closeAllMediaPresentations(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-closeAllMediaPresentations(): void--><!--Device-WebviewController-closeAllMediaPresentations(): void-End-->
@@ -488,7 +526,7 @@ closeAllMediaPresentations(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## closeCamera
 
@@ -502,6 +540,8 @@ closeCamera(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-closeCamera(): void--><!--Device-WebviewController-closeCamera(): void-End-->
@@ -512,7 +552,7 @@ closeCamera(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## constructor
 
@@ -525,6 +565,8 @@ A constructor used to create a WebviewController object.
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -550,6 +592,8 @@ Rendering current Web page into Pdf data, return the result in async mode.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-createPdf(configuration: PdfConfiguration, callback: AsyncCallback<PdfData>): void--><!--Device-WebviewController-createPdf(configuration: PdfConfiguration, callback: AsyncCallback<PdfData>): void-End-->
@@ -560,15 +604,15 @@ Rendering current Web page into Pdf data, return the result in async mode.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| configuration | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | Parameters required for creating a PDF file. |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;PdfData&gt; | 是 | Callback used to return the data stream of an online PDF file. |
+| configuration | [PdfConfiguration](../../apis-na/arkts-apis/arkts-na-webview-pdfconfiguration-i.md) | 是 | Parameters required for creating a PDF file. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[PdfData](../../apis-na/arkts-apis/arkts-na-webview-pdfdata-c.md)&gt; | 是 | Callback used to return the data stream of an online PDF file. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Invalid input parameter. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid input parameter. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## createPdf
 
@@ -582,6 +626,8 @@ Rendering current Web page into Pdf data, return the result in promise mode.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-createPdf(configuration: PdfConfiguration): Promise<PdfData>--><!--Device-WebviewController-createPdf(configuration: PdfConfiguration): Promise<PdfData>-End-->
@@ -592,20 +638,20 @@ Rendering current Web page into Pdf data, return the result in promise mode.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| configuration | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | Parameters required for creating a PDF file. |
+| configuration | [PdfConfiguration](../../apis-na/arkts-apis/arkts-na-webview-pdfconfiguration-i.md) | 是 | Parameters required for creating a PDF file. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;PdfData&gt; | Promise used to return the data stream of a web page. |
+| Promise&lt;[PdfData](../../apis-na/arkts-apis/arkts-na-webview-pdfdata-c.md)&gt; | Promise used to return the data stream of a web page. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Invalid input parameter. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid input parameter. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## createWebMessagePorts
 
@@ -619,6 +665,8 @@ createWebMessagePorts(isExtentionType?: boolean): Array<WebMessagePort>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-createWebMessagePorts(isExtentionType?: boolean): Array<WebMessagePort>--><!--Device-WebviewController-createWebMessagePorts(isExtentionType?: boolean): Array<WebMessagePort>-End-->
@@ -629,20 +677,20 @@ createWebMessagePorts(isExtentionType?: boolean): Array<WebMessagePort>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isExtentionType | boolean | 否 | 是否使用扩展增强接口。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_默认值：false。\_\_\_HTML\_TAG\_USD\_0\_\_\_**起始版本：** 10 |
+| isExtentionType | boolean | 否 | 是否使用扩展增强接口。&lt;br&gt;默认值：false。<br>**起始版本：** 10 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;WebMessagePort&gt; | web消息端口列表。 |
+| Array&lt;[WebMessagePort](../../apis-na/arkts-apis/arkts-na-webview-webmessageport-i.md)&gt; | web消息端口列表。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. 3.Parameter verification failed.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 10+ |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed.<br>**适用版本：** 10+ |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## createWebPrintDocumentAdapter
 
@@ -655,6 +703,8 @@ Creates a PrintDocumentAdapter instance to provide content for printing.
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 <!--Device-WebviewController-createWebPrintDocumentAdapter(jobName: string): print.PrintDocumentAdapter--><!--Device-WebviewController-createWebPrintDocumentAdapter(jobName: string): print.PrintDocumentAdapter-End-->
 
@@ -670,14 +720,14 @@ Creates a PrintDocumentAdapter instance to provide content for printing.
 
 | 类型 | 说明 |
 | --- | --- |
-| print.PrintDocumentAdapter | **PrintDocumentAdapter** instance created. |
+| print.PrintDocumentAdapter | PrintDocumentAdapter** instance created. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## customizeSchemes
 
@@ -691,6 +741,8 @@ static customizeSchemes(schemes: Array<WebCustomScheme>): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-static customizeSchemes(schemes: Array<WebCustomScheme>): void--><!--Device-WebviewController-static customizeSchemes(schemes: Array<WebCustomScheme>): void-End-->
@@ -701,14 +753,14 @@ static customizeSchemes(schemes: Array<WebCustomScheme>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| schemes | Array&lt;WebCustomScheme&gt; | 是 | 自定义协议配置，最多支持同时配置10个自定义协议。 |
+| schemes | Array&lt;[WebCustomScheme](../../apis-na/arkts-apis/arkts-na-webview-webcustomscheme-i.md)&gt; | 是 | 自定义协议配置，最多支持同时配置10个自定义协议。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. |
-| [17100020](../errorcode-webview.md#17100020-注册自定义协议失败) | Failed to register custom schemes.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 12+ |
+| [17100020](../errorcode-webview.md#17100020-注册自定义协议失败) | Failed to register custom schemes.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. |
 
 ## customizeSchemes
 
@@ -722,6 +774,8 @@ static customizeSchemes(schemes: Array<WebCustomScheme>, lazyInitWebEngine: bool
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-static customizeSchemes(schemes: Array<WebCustomScheme>, lazyInitWebEngine: boolean): void--><!--Device-WebviewController-static customizeSchemes(schemes: Array<WebCustomScheme>, lazyInitWebEngine: boolean): void-End-->
@@ -732,15 +786,15 @@ static customizeSchemes(schemes: Array<WebCustomScheme>, lazyInitWebEngine: bool
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| schemes | Array&lt;WebCustomScheme&gt; | 是 | 自定义协议配置，最多支持同时配置10个自定义协议。 |
-| lazyInitWebEngine | boolean | 是 | 为true时：接口内部跳过初始化WebEngine。临时存储注册的方案，当它实际被传递给WebEngine时，这些方案将被传递给WebEngine初始化。当false时：接口内部自动进行WebEngine初始化   - 表示接口内部是否跳过初始化WebEngine。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_true表示接口内部跳过初始化WebEngine，并将注册的Schemes暂存，当它真正初始化   时，这些Schemes将传递给WebEngine。false表示接口内部自动进行WebEngine初始化。 |
+| schemes | Array&lt;[WebCustomScheme](../../apis-na/arkts-apis/arkts-na-webview-webcustomscheme-i.md)&gt; | 是 | 自定义协议配置，最多支持同时配置10个自定义协议。 |
+| lazyInitWebEngine | boolean | 是 | 为true时：接口内部跳过初始化WebEngine。 临时存储注册的方案，当它实际被传递给WebEngine时，这些方案将被传递给WebEngine 初始化。当false时：接口内部自动进行WebEngine初始化 - 表示接口内部是否跳过初始化WebEngine。&lt;br&gt;true表示接口内部跳过初始化WebEngine，并将注册的Schemes暂存，当它真正初始化 时，这些Schemes将传递给WebEngine。false表示接口内部自动进行WebEngine初始化。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [17100020](../errorcode-webview.md#17100020-注册自定义协议失败) | Failed to register custom schemes. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. The length of the schemes array is greater than 10.2. The character length of the scheme is greater than 32.3. The character in the scheme is not within the allowed range of lowercase English letters, numbers,and the symbols ".", "+", "-". |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. The length of the schemes array is greater than 10. 2. The character length of the scheme is greater than 32. 3. The character in the scheme is not within the allowed range of lowercase English letters, numbers, and the symbols ".", "+", "-". |
 
 ## deleteJavaScriptRegister
 
@@ -753,6 +807,8 @@ deleteJavaScriptRegister(name: string): void
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -770,8 +826,8 @@ deleteJavaScriptRegister(name: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 | [17100008](../errorcode-webview.md#17100008-删除不存在的javascriptproxy) | Failed to delete JavaScriptProxy because it does not exist. |
 
 ## enableAdsBlock
@@ -786,6 +842,8 @@ enableAdsBlock(enable: boolean): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-enableAdsBlock(enable: boolean): void--><!--Device-WebviewController-enableAdsBlock(enable: boolean): void-End-->
@@ -796,15 +854,15 @@ enableAdsBlock(enable: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enable | boolean | 是 | 是否启用广告过滤功能。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_true表示启用广告过滤功能，false表示取消广告过滤功能。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_默认值：false。 |
+| enable | boolean | 是 | 是否启用广告过滤功能。&lt;br&gt;true表示启用广告过滤功能，false表示取消广告过滤功能。&lt;br&gt;默认值：false。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Parameter string is too long. 3.Parameter verification failed. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 18+ |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Parameter string is too long. 3.Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## enableAdvancedSecurityMode
 
@@ -818,6 +876,8 @@ static enableAdvancedSecurityMode(securityParams: SecurityParams): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WebviewController-static enableAdvancedSecurityMode(securityParams: SecurityParams): void--><!--Device-WebviewController-static enableAdvancedSecurityMode(securityParams: SecurityParams): void-End-->
@@ -828,7 +888,7 @@ static enableAdvancedSecurityMode(securityParams: SecurityParams): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| securityParams | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 参数表示将禁用支持的选项或项目。 |
+| securityParams | [SecurityParams](../../apis-na/arkts-apis/arkts-na-webview-securityparams-i.md) | 是 | 参数表示将禁用支持的选项或项目。 |
 
 ## enableBackForwardCache
 
@@ -842,6 +902,8 @@ static enableBackForwardCache(features: BackForwardCacheSupportedFeatures): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-WebviewController-static enableBackForwardCache(features: BackForwardCacheSupportedFeatures): void--><!--Device-WebviewController-static enableBackForwardCache(features: BackForwardCacheSupportedFeatures): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -850,7 +912,7 @@ static enableBackForwardCache(features: BackForwardCacheSupportedFeatures): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| features | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 允许使用特定的页面进入前进后退缓存中。 |
+| features | [BackForwardCacheSupportedFeatures](../../apis-na/arkts-apis/arkts-na-webview-backforwardcachesupportedfeatures-c.md) | 是 | 允许使用特定的页面进入前进后退缓存中。 |
 
 ## enableIntelligentTrackingPrevention
 
@@ -864,6 +926,8 @@ enableIntelligentTrackingPrevention(enable: boolean): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-enableIntelligentTrackingPrevention(enable: boolean): void--><!--Device-WebviewController-enableIntelligentTrackingPrevention(enable: boolean): void-End-->
@@ -874,15 +938,15 @@ enableIntelligentTrackingPrevention(enable: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enable | boolean | 是 | 是否启用智能防跟踪功能。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_true表示启用智能防跟踪功能，false表示不启用智能防跟踪功能。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_默认值：false。 |
+| enable | boolean | 是 | 是否启用智能防跟踪功能。&lt;br&gt;true表示启用智能防跟踪功能，false表示不启用智能防跟踪功能。&lt;br&gt;默认值：false。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 18+ |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## enablePrivateNetworkAccess
 
@@ -895,6 +959,8 @@ After enable PrivateNetworkAccess feature, ArkWeb will send a CORS preflight req
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 <!--Device-WebviewController-static enablePrivateNetworkAccess(enable: boolean): void--><!--Device-WebviewController-static enablePrivateNetworkAccess(enable: boolean): void-End-->
 
@@ -918,6 +984,8 @@ enableSafeBrowsing(enable: boolean): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-enableSafeBrowsing(enable: boolean): void--><!--Device-WebviewController-enableSafeBrowsing(enable: boolean): void-End-->
@@ -934,7 +1002,7 @@ enableSafeBrowsing(enable: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. |
 
 ## enableWholeWebPageDrawing
 
@@ -947,6 +1015,8 @@ static enableWholeWebPageDrawing(): void
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -966,6 +1036,8 @@ forward(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-forward(): void--><!--Device-WebviewController-forward(): void-End-->
@@ -976,7 +1048,7 @@ forward(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## getActiveWebEngineVersion
 
@@ -990,6 +1062,8 @@ static getActiveWebEngineVersion(): ArkWebEngineVersion
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 <!--Device-WebviewController-static getActiveWebEngineVersion(): ArkWebEngineVersion--><!--Device-WebviewController-static getActiveWebEngineVersion(): ArkWebEngineVersion-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -998,7 +1072,7 @@ static getActiveWebEngineVersion(): ArkWebEngineVersion
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回由[ArkWebEngineVersion]{ |
+| [ArkWebEngineVersion](../../apis-na/arkts-apis/arkts-na-webview-arkwebengineversion-e.md) | 返回由[ArkWebEngineVersion]{ |
 
 ## getAttachState
 
@@ -1012,6 +1086,8 @@ getAttachState(): ControllerAttachState
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 <!--Device-WebviewController-getAttachState(): ControllerAttachState--><!--Device-WebviewController-getAttachState(): ControllerAttachState-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -1020,7 +1096,7 @@ getAttachState(): ControllerAttachState
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 绑定状态 |
+| [ControllerAttachState](../../apis-na/arkts-apis/arkts-na-webview-controllerattachstate-e.md) | 绑定状态 |
 
 ## getBackForwardEntries
 
@@ -1034,6 +1110,8 @@ getBackForwardEntries(): BackForwardList
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-getBackForwardEntries(): BackForwardList--><!--Device-WebviewController-getBackForwardEntries(): BackForwardList-End-->
@@ -1044,13 +1122,13 @@ getBackForwardEntries(): BackForwardList
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 当前Webview的历史信息列表。 |
+| [BackForwardList](../../apis-na/arkts-apis/arkts-na-webview-backforwardlist-i.md) | 当前Webview的历史信息列表。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## getBlanklessInfoWithKey
 
@@ -1058,11 +1136,13 @@ getBackForwardEntries(): BackForwardList
 getBlanklessInfoWithKey(key: string) : BlanklessInfo
 ```
 
-获取页面首屏加载预测信息（详细说明见[BlanklessInfo]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_），并开始本次加载过渡帧生成，应用根据此信息确定是否需要启用无白屏 加载。必须与[setBlanklessLoadingWithKey]\_\_\_JSDOC\_LINK\_DESC\_USD\_4\_\_\_接口配套使用，并且必须在触发加载页面的 接口之前或在\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_中调用。需在\_\_\_INLINE\_CODE\_DESC\_USD\_1\_\_\_与Web组件绑定后才能使用。 > **说明：** > > - 持久缓存容量：默认大小为30MB（约30页），可以通过接口 > [setBlanklessLoadingCacheCapacity]\_\_\_JSDOC\_LINK\_DESC\_USD\_5\_\_\_设置缓存容量，具体见该 > 接口说明。超过容量时根据LRU（Least Recently Used，淘汰不常用缓存的策略）机制更新缓存。自动清理超过7天的持久缓存数据，缓存清除后第三次加载页面开始有优化效果。 > > - 如果发现快照相似度（即[BlanklessInfo]\_\_\_JSDOC\_LINK\_DESC\_USD\_6\_\_\_中的similarity）极低，请确认key值是否传递正确。 > > - 调用本接口后，将启用页面加载快照检测及生成过渡帧计算，会产生一定的资源开销。 > > - 启用无白屏加载的页面会带来一定的资源开销，开销的大小与Web组件的分辨率相关。假设分辨率的宽度和高度分别为：w, h。页面在打开阶段会增加峰值内存，增加约12 * w * h B，页面打开后内存回收，不影响稳态内存。增 > 加固态应用缓存的大小，每个页面增加的缓存约w * h / 10 B，缓存位于应用缓存的位置。 > > - 请在module.json5中添加权限: ohos.permission.INTERNET和ohos.permission.GET\_NETWORK\_INFO，具体权限的添加方法请参考 > \_\_\_MD\_LINK\_DESC\_USD\_2\_\_\_。
+获取页面首屏加载预测信息（详细说明见[BlanklessInfo](../../apis-na/arkts-apis/arkts-na-webview-blanklessinfo-i.md#BlanklessInfo)），并开始本次加载过渡帧生成，应用根据此信息确定是否需要启用无白屏 加载。必须与[setBlanklessLoadingWithKey](../../apis-na/arkts-apis/arkts-na-webview-webviewcontroller-c.md#setBlanklessLoadingWithKey)接口配套使用，并且必须在触发加载页面的 接口之前或在`onLoadIntercept`中调用。需在`WebViewController`与Web组件绑定后才能使用。 > **说明：** > > - 持久缓存容量：默认大小为30MB（约30页），可以通过接口 > [setBlanklessLoadingCacheCapacity](../../apis-na/arkts-apis/arkts-na-webview-webviewcontroller-c.md#setBlanklessLoadingCacheCapacity)设置缓存容量，具体见该 > 接口说明。超过容量时根据LRU（Least Recently Used，淘汰不常用缓存的策略）机制更新缓存。自动清理超过7天的持久缓存数据，缓存清除后第三次加载页面开始有优化效果。 > > - 如果发现快照相似度（即[BlanklessInfo](../../apis-na/arkts-apis/arkts-na-webview-blanklessinfo-i.md#BlanklessInfo)中的similarity）极低，请确认key值是否传递正确。 > > - 调用本接口后，将启用页面加载快照检测及生成过渡帧计算，会产生一定的资源开销。 > > - 启用无白屏加载的页面会带来一定的资源开销，开销的大小与Web组件的分辨率相关。假设分辨率的宽度和高度分别为：w, h。页面在打开阶段会增加峰值内存，增加约12 * w * h B，页面打开后内存回收，不影响稳态内存。增 > 加固态应用缓存的大小，每个页面增加的缓存约w * h / 10 B，缓存位于应用缓存的位置。 > > - 请在module.json5中添加权限: ohos.permission.INTERNET和ohos.permission.GET_NETWORK_INFO，具体权限的添加方法请参考 > [在配置文件中声明权限](../../../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 <!--Device-WebviewController-getBlanklessInfoWithKey(key: string) : BlanklessInfo--><!--Device-WebviewController-getBlanklessInfoWithKey(key: string) : BlanklessInfo-End-->
 
@@ -1072,19 +1152,19 @@ getBlanklessInfoWithKey(key: string) : BlanklessInfo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 唯一标识本页面的key值。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_合法取值范围：非空，长度不超过2048个字符。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_设置非法值时不生效。 |
+| key | string | 是 | 唯一标识本页面的key值。&lt;br&gt;合法取值范围：非空，长度不超过2048个字符。&lt;br&gt;设置非法值时不生效。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 页面首屏加载预测信息，主要包括首屏相似度预测值，首屏加载耗时预测值，应用需根据此信息来决策是否启用无白屏加载插帧。 |
+| [BlanklessInfo](../../apis-na/arkts-apis/arkts-na-webview-blanklessinfo-i.md) | 页面首屏加载预测信息，主要包括首屏相似度预测值，首屏加载耗时预测值，应用需根据此信息来决策是否启用无白屏加载插帧。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) |  |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | This functionality is not supported. |
 
 ## getCertificate
 
@@ -1097,6 +1177,8 @@ getCertificate(): Promise<Array<cert.X509Cert>>
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1114,7 +1196,7 @@ getCertificate(): Promise<Array<cert.X509Cert>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a web component. |
 
 ## getCertificate
 
@@ -1128,6 +1210,8 @@ getCertificate(callback: AsyncCallback<Array<cert.X509Cert>>): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-getCertificate(callback: AsyncCallback<Array<cert.X509Cert>>): void--><!--Device-WebviewController-getCertificate(callback: AsyncCallback<Array<cert.X509Cert>>): void-End-->
@@ -1138,14 +1222,14 @@ getCertificate(callback: AsyncCallback<Array<cert.X509Cert>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;Array&lt;cert.X509Cert&gt;&gt; | 是 | 通过AsyncCallback异步返回当前网站的X509格式证书。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;cert.X509Cert&gt;&gt; | 是 | 通过AsyncCallback异步返回当前网站的X509格式证书。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a web component. |
 
 ## getCustomUserAgent
 
@@ -1158,6 +1242,8 @@ getCustomUserAgent(): string
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1175,7 +1261,7 @@ getCustomUserAgent(): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## getDefaultUserAgent
 
@@ -1188,6 +1274,8 @@ static getDefaultUserAgent(): string
 **起始版本：** 14
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+
+**废弃版本：** -1
 
 <!--Device-WebviewController-static getDefaultUserAgent(): string--><!--Device-WebviewController-static getDefaultUserAgent(): string-End-->
 
@@ -1211,6 +1299,8 @@ Get whether default error page feature is enabled.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 <!--Device-WebviewController-getErrorPageEnabled(): boolean--><!--Device-WebviewController-getErrorPageEnabled(): boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -1219,13 +1309,13 @@ Get whether default error page feature is enabled.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | - True if enable the default error page feature; else false. |
+| boolean | True if enable the default error page feature; else false. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## getFavicon
 
@@ -1238,6 +1328,8 @@ getFavicon(): image.PixelMap
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1255,7 +1347,7 @@ getFavicon(): image.PixelMap
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## getHitTest
 
@@ -1263,7 +1355,7 @@ getFavicon(): image.PixelMap
 getHitTest(): WebHitTestType
 ```
 
-获取当前被点击区域的元素类型。 > **说明：** > > 从API version11开始支持，从API version 18开始废弃。建议使用[getLastHitTest]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。
+获取当前被点击区域的元素类型。 > **说明：** > > 从API version11开始支持，从API version 18开始废弃。建议使用[getLastHitTest](../../apis-na/arkts-apis/arkts-na-webview-webviewcontroller-c.md#getLastHitTest)替代。
 
 **起始版本：** 9
 
@@ -1271,7 +1363,7 @@ getHitTest(): WebHitTestType
 
 **废弃版本：** 18
 
-**替代接口：** [webview.WebviewController#getLastHitTest](arkts-arkweb-webview-webviewcontroller-c.md#getlasthittest)
+**替代接口：** [getLastHitTest](../../apis-na/arkts-apis/arkts-na-webview-webviewcontroller-c.md#getLastHitTest)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1283,13 +1375,13 @@ getHitTest(): WebHitTestType
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 被点击区域的元素类型。 |
+| [WebHitTestType](../../apis-na/arkts-apis/arkts-na-webview-webhittesttype-e.md) | 被点击区域的元素类型。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## getHitTestValue
 
@@ -1297,7 +1389,7 @@ getHitTest(): WebHitTestType
 getHitTestValue(): HitTestValue
 ```
 
-获取当前被点击区域的元素信息。 > **说明：** > > 从API version11开始支持，从API version 18开始废弃。建议使用[getLastHitTest]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。
+获取当前被点击区域的元素信息。 > **说明：** > > 从API version11开始支持，从API version 18开始废弃。建议使用[getLastHitTest](../../apis-na/arkts-apis/arkts-na-webview-webviewcontroller-c.md#getLastHitTest)替代。
 
 **起始版本：** 9
 
@@ -1305,7 +1397,7 @@ getHitTestValue(): HitTestValue
 
 **废弃版本：** 18
 
-**替代接口：** [webview.WebviewController#getLastHitTest](arkts-arkweb-webview-webviewcontroller-c.md#getlasthittest)
+**替代接口：** [getLastHitTest](../../apis-na/arkts-apis/arkts-na-webview-webviewcontroller-c.md#getLastHitTest)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1317,13 +1409,13 @@ getHitTestValue(): HitTestValue
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 点击区域的元素信息。 |
+| [HitTestValue](../../apis-na/arkts-apis/arkts-na-webview-hittestvalue-i.md) | 点击区域的元素信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## getLastHitTest
 
@@ -1337,6 +1429,8 @@ getLastHitTest(): HitTestValue
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 <!--Device-WebviewController-getLastHitTest(): HitTestValue--><!--Device-WebviewController-getLastHitTest(): HitTestValue-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -1345,13 +1439,13 @@ getLastHitTest(): HitTestValue
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 点击区域的元素信息。 |
+| [HitTestValue](../../apis-na/arkts-apis/arkts-na-webview-hittestvalue-i.md) | 点击区域的元素信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## getLastJavascriptProxyCallingFrameUrl
 
@@ -1364,6 +1458,8 @@ getLastJavascriptProxyCallingFrameUrl(): string
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1381,7 +1477,7 @@ getLastJavascriptProxyCallingFrameUrl(): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## getLastPostMessageURL
 
@@ -1394,6 +1490,8 @@ getLastPostMessageURL(): string
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1411,7 +1509,7 @@ getLastPostMessageURL(): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## getMediaPlaybackState
 
@@ -1425,6 +1523,8 @@ getMediaPlaybackState(): MediaPlaybackState
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-getMediaPlaybackState(): MediaPlaybackState--><!--Device-WebviewController-getMediaPlaybackState(): MediaPlaybackState-End-->
@@ -1435,13 +1535,13 @@ getMediaPlaybackState(): MediaPlaybackState
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 当前网页的播放状态，具体值为NONE、PLAYING、PAUSED、STOPPED。 |
+| [MediaPlaybackState](../../apis-na/arkts-apis/arkts-na-webview-mediaplaybackstate-e.md) | 当前网页的播放状态，具体值为NONE、PLAYING、PAUSED、STOPPED。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## getOriginalUrl
 
@@ -1454,6 +1554,8 @@ getOriginalUrl(): string
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1471,7 +1573,7 @@ getOriginalUrl(): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## getPageHeight
 
@@ -1479,11 +1581,13 @@ getOriginalUrl(): string
 getPageHeight(): number
 ```
 
-获取当前网页的页面高度。具体使用详情请参考\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+获取当前网页的页面高度。具体使用详情请参考[获取网页内容高度](../../../web/web-getpage-height.md)。
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1501,7 +1605,7 @@ getPageHeight(): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## getPageOffset
 
@@ -1515,6 +1619,8 @@ getPageOffset(): ScrollOffset
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 <!--Device-WebviewController-getPageOffset(): ScrollOffset--><!--Device-WebviewController-getPageOffset(): ScrollOffset-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -1523,7 +1629,7 @@ getPageOffset(): ScrollOffset
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 网页当前的滚动偏移量（不包含过滚动偏移量）。 |
+| [ScrollOffset](../../apis-na/arkts-apis/arkts-na-webview-scrolloffset-i.md) | 网页当前的滚动偏移量（不包含过滚动偏移量）。 |
 
 **错误码：**
 
@@ -1543,6 +1649,8 @@ Get whether print web page background.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-getPrintBackground(): boolean--><!--Device-WebviewController-getPrintBackground(): boolean-End-->
@@ -1553,13 +1661,13 @@ Get whether print web page background.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Whether the web page background is printed. |
+| boolean | Whether the web page background is printed. &lt;br&gt;The value **true** indicates that the web page background is printed, and **false** indicates the opposite. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## getProgress
 
@@ -1572,6 +1680,8 @@ Gets the loading progress for the current page.
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 <!--Device-WebviewController-getProgress() : number--><!--Device-WebviewController-getProgress() : number-End-->
 
@@ -1601,6 +1711,8 @@ Get render process mode of the ArkWeb.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-static getRenderProcessMode(): RenderProcessMode--><!--Device-WebviewController-static getRenderProcessMode(): RenderProcessMode-End-->
@@ -1611,7 +1723,7 @@ Get render process mode of the ArkWeb.
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | mode - The render process mode of the ArkWeb. |
+| [RenderProcessMode](../../apis-na/arkts-apis/arkts-na-webview-renderprocessmode-e.md) | mode - The render process mode of the ArkWeb. Call { |
 
 ## getScrollOffset
 
@@ -1625,6 +1737,8 @@ getScrollOffset(): ScrollOffset
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-getScrollOffset(): ScrollOffset--><!--Device-WebviewController-getScrollOffset(): ScrollOffset-End-->
@@ -1635,7 +1749,7 @@ getScrollOffset(): ScrollOffset
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 网页当前的滚动偏移量（包含过滚动偏移量）。 |
+| [ScrollOffset](../../apis-na/arkts-apis/arkts-na-webview-scrolloffset-i.md) | 网页当前的滚动偏移量（包含过滚动偏移量）。 |
 
 ## getScrollable
 
@@ -1649,6 +1763,8 @@ getScrollable(): boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-getScrollable(): boolean--><!--Device-WebviewController-getScrollable(): boolean-End-->
@@ -1659,13 +1775,13 @@ getScrollable(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 当前网页是否允许滚动。 |
+| boolean | 当前网页是否允许滚动。 &lt;br&gt;true为允许滚动，false为禁止滚动。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## getSecurityLevel
 
@@ -1679,6 +1795,8 @@ getSecurityLevel(): SecurityLevel
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-getSecurityLevel(): SecurityLevel--><!--Device-WebviewController-getSecurityLevel(): SecurityLevel-End-->
@@ -1689,13 +1807,13 @@ getSecurityLevel(): SecurityLevel
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 当前网页的安全级别，具体值为NONE、SECURE、WARNING、DANGEROUS。 |
+| SecurityLevel | 当前网页的安全级别，具体值为NONE、SECURE、WARNING、DANGEROUS。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## getSiteIsolationMode
 
@@ -1709,6 +1827,8 @@ Get the site isolation mode.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
 
+**废弃版本：** -1
+
 <!--Device-WebviewController-static getSiteIsolationMode(): SiteIsolationMode--><!--Device-WebviewController-static getSiteIsolationMode(): SiteIsolationMode-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -1717,7 +1837,7 @@ Get the site isolation mode.
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | The site isolation mode of the application. |
+| [SiteIsolationMode](../../apis-na/arkts-apis/arkts-na-webview-siteisolationmode-e.md) | The site isolation mode of the application. |
 
 ## getSurfaceId
 
@@ -1725,11 +1845,13 @@ Get the site isolation mode.
 getSurfaceId(): string
 ```
 
-获取ArkWeb对应Surface的ID，此ID可用于网页截图。 > **说明：** > > 仅Web组件渲染模式是ASYNC\_RENDER时有效。getSurfaceId需要在Web组件初始化之后才能获取到值。
+获取ArkWeb对应Surface的ID，此ID可用于网页截图。 > **说明：** > > 仅Web组件渲染模式是ASYNC_RENDER时有效。getSurfaceId需要在Web组件初始化之后才能获取到值。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1755,6 +1877,8 @@ getTitle(): string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-getTitle(): string--><!--Device-WebviewController-getTitle(): string-End-->
@@ -1771,7 +1895,7 @@ getTitle(): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## getUrl
 
@@ -1784,6 +1908,8 @@ getUrl(): string
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1801,7 +1927,7 @@ getUrl(): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## getUserAgent
 
@@ -1814,6 +1940,8 @@ getUserAgent(): string
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1831,7 +1959,7 @@ getUserAgent(): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## getUserAgentClientHintsEnabled
 
@@ -1844,6 +1972,8 @@ Get if the UserAgent Client Hints enabled.
 **起始版本：** 24
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 <!--Device-WebviewController-static getUserAgentClientHintsEnabled(): boolean--><!--Device-WebviewController-static getUserAgentClientHintsEnabled(): boolean-End-->
 
@@ -1867,6 +1997,8 @@ Get the User-Agent metadata corresponding to the User-Agent.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
 
+**废弃版本：** -1
+
 <!--Device-WebviewController-getUserAgentMetadata(userAgent: string): UserAgentMetadata--><!--Device-WebviewController-getUserAgentMetadata(userAgent: string): UserAgentMetadata-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -1881,7 +2013,7 @@ Get the User-Agent metadata corresponding to the User-Agent.
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | The UserAgentMetadata for the userAgent. |
+| [UserAgentMetadata](../../apis-na/arkts-apis/arkts-na-webview-useragentmetadata-c.md) | The UserAgentMetadata for the userAgent. |
 
 ## getWebId
 
@@ -1894,6 +2026,8 @@ Gets the index value of the current Web component for the management of multiple
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -1911,7 +2045,7 @@ Gets the index value of the current Web component for the management of multiple
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## hasImage
 
@@ -1925,6 +2059,8 @@ hasImage(): Promise<boolean>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-hasImage(): Promise<boolean>--><!--Device-WebviewController-hasImage(): Promise<boolean>-End-->
@@ -1935,14 +2071,14 @@ hasImage(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise实例，返回查找页面是否存在图像。 |
+| Promise&lt;boolean&gt; | Promise实例，返回查找页面是否存在图像。 &lt;br&gt; true表示页面存在图像；false表示页面不存在图像。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## hasImage
 
@@ -1956,6 +2092,8 @@ hasImage(callback: AsyncCallback<boolean>): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-hasImage(callback: AsyncCallback<boolean>): void--><!--Device-WebviewController-hasImage(callback: AsyncCallback<boolean>): void-End-->
@@ -1966,14 +2104,14 @@ hasImage(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;boolean&gt; | 是 | 返回查找页面是否存在图像。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ true表示页面存在图像；false表示页面不存在图像。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 返回查找页面是否存在图像。&lt;br&gt; true表示页面存在图像；false表示页面不存在图像。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## initializeWebEngine
 
@@ -1987,6 +2125,8 @@ Initialize the web engine before loading the Web components. This is a global st
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-static initializeWebEngine(): void--><!--Device-WebviewController-static initializeWebEngine(): void-End-->
@@ -1999,11 +2139,13 @@ Initialize the web engine before loading the Web components. This is a global st
 injectOfflineResources(resourceMaps: Array<OfflineResourceMap>): void
 ```
 
-将本地离线资源注入到内存缓存中，以提升页面首次启动速度。 内存缓存中的资源由内核自动管理，当注入的资源过多导致内存压力过大，内核自动释放未使用的资源，应避免注入大量资源到内存缓存中。 正常情况下，资源的有效期由提供的Cache-Control或Expires响应头控制其有效期，默认的有效期为86400秒，即1天。 资源的MIMEType通过提供的Content-Type响应头配置，Content-Type需符合标准，否则无法正常使用，MODULE\_JS必须提供有效的MIMEType，其他类型可不提供。 以此方式注入的资源，仅支持通过HTML中的标签加载。如果业务网页中的script标签使用了crossorigin属性，则必须在接口的responseHeaders参数中设置Cross-Origin响应头的值为anonymous 或use-credentials。 当调用\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_接口后，应用会启动多渲染进程模式，此接口在此场景下不 会生效。
+将本地离线资源注入到内存缓存中，以提升页面首次启动速度。 内存缓存中的资源由内核自动管理，当注入的资源过多导致内存压力过大，内核自动释放未使用的资源，应避免注入大量资源到内存缓存中。 正常情况下，资源的有效期由提供的Cache-Control或Expires响应头控制其有效期，默认的有效期为86400秒，即1天。 资源的MIMEType通过提供的Content-Type响应头配置，Content-Type需符合标准，否则无法正常使用，MODULE_JS必须提供有效的MIMEType，其他类型可不提供。 以此方式注入的资源，仅支持通过HTML中的标签加载。如果业务网页中的script标签使用了crossorigin属性，则必须在接口的responseHeaders参数中设置Cross-Origin响应头的值为anonymous 或use-credentials。 当调用`webview.WebviewController.SetRenderProcessMode(webview.RenderProcessMode.MULTIPLE)`接口后，应用会启动多渲染进程模式，此接口在此场景下不 会生效。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-WebviewController-injectOfflineResources(resourceMaps: Array<OfflineResourceMap>): void--><!--Device-WebviewController-injectOfflineResources(resourceMaps: Array<OfflineResourceMap>): void-End-->
 
@@ -2013,16 +2155,15 @@ injectOfflineResources(resourceMaps: Array<OfflineResourceMap>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resourceMaps | Array&lt;OfflineResourceMap&gt; | 是 | 本地离线资源配置对象，单次调用最大支持注入30个资源，单个资源最大支持10Mb。 |
+| resourceMaps | Array&lt;[OfflineResourceMap](../../apis-na/arkts-apis/arkts-na-webview-offlineresourcemap-i.md)&gt; | 是 | 本地离线资源配置对象，单次调用最大支持注入30个资源，单个资源最大支持10Mb。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
-| [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 12 - 21 |
-| [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 12 - 21 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
+| [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.<br>**适用版本：** 12 - 21 |
 
 ## isActiveWebEngineEvergreen
 
@@ -2035,6 +2176,8 @@ static isActiveWebEngineEvergreen(): boolean
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WebviewController-static isActiveWebEngineEvergreen(): boolean--><!--Device-WebviewController-static isActiveWebEngineEvergreen(): boolean-End-->
 
@@ -2058,6 +2201,8 @@ isAdsBlockEnabled(): boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-isAdsBlockEnabled(): boolean--><!--Device-WebviewController-isAdsBlockEnabled(): boolean-End-->
@@ -2068,13 +2213,13 @@ isAdsBlockEnabled(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 返回true代表广告过滤功能已开启，返回false代表广告过滤功能关闭。 |
+| boolean | 返回true代表广告过滤功能已开启，返回false代表广告过滤功能关闭。 &lt;br&gt;默认值：false。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 18+ |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
 
 ## isAdsBlockEnabledForCurPage
 
@@ -2087,6 +2232,8 @@ isAdsBlockEnabledForCurPage(): boolean
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2104,7 +2251,7 @@ isAdsBlockEnabledForCurPage(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 18+ |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
 
 ## isAutoPreconnectEnabled
 
@@ -2117,6 +2264,8 @@ static isAutoPreconnectEnabled(): boolean
 **起始版本：** 21
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+
+**废弃版本：** -1
 
 <!--Device-WebviewController-static isAutoPreconnectEnabled(): boolean--><!--Device-WebviewController-static isAutoPreconnectEnabled(): boolean-End-->
 
@@ -2140,6 +2289,8 @@ isIncognitoMode(): boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-isIncognitoMode(): boolean--><!--Device-WebviewController-isIncognitoMode(): boolean-End-->
@@ -2150,13 +2301,13 @@ isIncognitoMode(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 返回是否是隐私模式的Webview。 |
+| boolean | 返回是否是隐私模式的Webview。 &lt;br&gt;true表示是隐私模式，false表示不是隐私模式。 &lt;br&gt;默认为false。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## isIntelligentTrackingPreventionEnabled
 
@@ -2170,6 +2321,8 @@ isIntelligentTrackingPreventionEnabled(): boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-isIntelligentTrackingPreventionEnabled(): boolean--><!--Device-WebviewController-isIntelligentTrackingPreventionEnabled(): boolean-End-->
@@ -2180,14 +2333,14 @@ isIntelligentTrackingPreventionEnabled(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Web组件是否启用了智能防跟踪功能。 |
+| boolean | Web组件是否启用了智能防跟踪功能。 &lt;br&gt;true表示启用了智能防跟踪功能，false表示未启用智能防跟踪功能。 &lt;br&gt;默认值：false。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 18+ |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## isPrivateNetworkAccessEnabled
 
@@ -2200,6 +2353,8 @@ Get whether PrivateNetworkAccess is enabled.
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 <!--Device-WebviewController-static isPrivateNetworkAccessEnabled(): boolean--><!--Device-WebviewController-static isPrivateNetworkAccessEnabled(): boolean-End-->
 
@@ -2222,6 +2377,8 @@ isSafeBrowsingEnabled(): boolean
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -2247,6 +2404,8 @@ loadData(data: string, mimeType: string, encoding: string, baseUrl?: string, his
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-loadData(data: string, mimeType: string, encoding: string, baseUrl?: string, historyUrl?: string): void--><!--Device-WebviewController-loadData(data: string, mimeType: string, encoding: string, baseUrl?: string, historyUrl?: string): void-End-->
@@ -2267,9 +2426,9 @@ loadData(data: string, mimeType: string, encoding: string, baseUrl?: string, his
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
-| [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 9 - 10 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
+| [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.<br>**适用版本：** 9 - 10 |
 
 ## loadUrl
 
@@ -2283,6 +2442,8 @@ loadUrl(url: string | Resource, headers?: Array<WebHeader>): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-loadUrl(url: string | Resource, headers?: Array<WebHeader>): void--><!--Device-WebviewController-loadUrl(url: string | Resource, headers?: Array<WebHeader>): void-End-->
@@ -2293,19 +2454,19 @@ loadUrl(url: string | Resource, headers?: Array<WebHeader>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| url | string \| Resource | 是 | 需要加载的URL。 |
-| headers | Array&lt;WebHeader&gt; | 否 | URL的附加HTTP请求头。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_默认值： []。 \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_传入undefined或null会抛出异常错误码401。 |
+| url | string \| [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md) | 是 | 需要加载的URL。 |
+| headers | Array&lt;WebHeader&gt; | 否 | URL的附加HTTP请求头。&lt;br&gt;默认值： []。 &lt;br&gt;传入undefined或null会抛出异常错误码401。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 | [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. The webpage corresponding to the URL is invalid. |
 | [17100003](../errorcode-webview.md#17100003-resource路径错误) | Invalid resource path or file type. |
 
-## off('controllerAttachStateChange')
+## off_controllerAttachStateChange
 
 ```TypeScript
 off(type: 'controllerAttachStateChange', callback?: Callback<ControllerAttachState>): void
@@ -2317,6 +2478,8 @@ off(type: 'controllerAttachStateChange', callback?: Callback<ControllerAttachSta
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 <!--Device-WebviewController-off(type: 'controllerAttachStateChange', callback?: Callback<ControllerAttachState>): void--><!--Device-WebviewController-off(type: 'controllerAttachStateChange', callback?: Callback<ControllerAttachState>): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -2326,30 +2489,7 @@ off(type: 'controllerAttachStateChange', callback?: Callback<ControllerAttachSta
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'controllerAttachStateChange' | 是 | the event of controller attach state change. |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;ControllerAttachState&gt; | 否 | Callback used to return the controller attach state. |
-
-## on('controllerAttachStateChange')
-
-```TypeScript
-on(type: 'controllerAttachStateChange', callback: Callback<ControllerAttachState>): void
-```
-
-注册controller绑定状态变化的回调
-
-**起始版本：** 20
-
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
-
-<!--Device-WebviewController-on(type: 'controllerAttachStateChange', callback: Callback<ControllerAttachState>): void--><!--Device-WebviewController-on(type: 'controllerAttachStateChange', callback: Callback<ControllerAttachState>): void-End-->
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'controllerAttachStateChange' | 是 | the event of controller attach state change. |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;ControllerAttachState&gt; | 是 | Callback used to return the controller attach state. |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[ControllerAttachState](../../apis-na/arkts-apis/arkts-na-webview-controllerattachstate-e.md)&gt; | 否 | Callback used to return the controller attach state. |
 
 ## onActive
 
@@ -2363,6 +2503,8 @@ Let the Web active.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-onActive(): void--><!--Device-WebviewController-onActive(): void-End-->
@@ -2373,7 +2515,7 @@ Let the Web active.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## onCreateNativeMediaPlayer
 
@@ -2381,11 +2523,13 @@ Let the Web active.
 onCreateNativeMediaPlayer(callback: CreateNativeMediaPlayerCallback): void
 ```
 
-注册回调函数，开启 \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_ 后，当网页中有播放媒体时，触发注册的回调函数。 如果应用接管网页媒体播放功能未开启，则注册的回调函数不会被触发。
+注册回调函数，开启 [应用接管网页媒体播放功能](../../../reference/apis-arkweb/arkts-basic-components-web-attributes.md#enablenativemediaplayer12) 后，当网页中有播放媒体时，触发注册的回调函数。 如果应用接管网页媒体播放功能未开启，则注册的回调函数不会被触发。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2397,7 +2541,7 @@ onCreateNativeMediaPlayer(callback: CreateNativeMediaPlayerCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 接管网页媒体播放的回调函数。 |
+| callback | [CreateNativeMediaPlayerCallback](../../apis-na/arkts-apis/arkts-na-webview-createnativemediaplayercallback-t.md) | 是 | 接管网页媒体播放的回调函数。 |
 
 ## onInactive
 
@@ -2411,6 +2555,8 @@ Let the Web inactive.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-onInactive(): void--><!--Device-WebviewController-onInactive(): void-End-->
@@ -2421,7 +2567,32 @@ Let the Web inactive.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
+
+## on_controllerAttachStateChange
+
+```TypeScript
+on(type: 'controllerAttachStateChange', callback: Callback<ControllerAttachState>): void
+```
+
+注册controller绑定状态变化的回调
+
+**起始版本：** 20
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
+
+<!--Device-WebviewController-on(type: 'controllerAttachStateChange', callback: Callback<ControllerAttachState>): void--><!--Device-WebviewController-on(type: 'controllerAttachStateChange', callback: Callback<ControllerAttachState>): void-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'controllerAttachStateChange' | 是 | the event of controller attach state change. |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[ControllerAttachState](../../apis-na/arkts-apis/arkts-na-webview-controllerattachstate-e.md)&gt; | 是 | Callback used to return the controller attach state. |
 
 ## pageDown
 
@@ -2435,6 +2606,8 @@ pageDown(bottom: boolean): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-pageDown(bottom: boolean): void--><!--Device-WebviewController-pageDown(bottom: boolean): void-End-->
@@ -2445,14 +2618,14 @@ pageDown(bottom: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bottom | boolean | 是 | 是否跳转到页面最底部。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_false时表示将页面内容向下滚动半个视框大小，true表示跳转到页面最底部。 |
+| bottom | boolean | 是 | 是否跳转到页面最底部。&lt;br&gt;false时表示将页面内容向下滚动半个视框大小，true表示跳转到页面最底部。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## pageUp
 
@@ -2466,6 +2639,8 @@ pageUp(top: boolean): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-pageUp(top: boolean): void--><!--Device-WebviewController-pageUp(top: boolean): void-End-->
@@ -2476,14 +2651,14 @@ pageUp(top: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| top | boolean | 是 | 是否跳转到页面最顶部。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_false表示将页面内容向上滚动半个视框大小，true表示跳转到页面最顶部。 |
+| top | boolean | 是 | 是否跳转到页面最顶部。&lt;br&gt;false表示将页面内容向上滚动半个视框大小，true表示跳转到页面最顶部。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## pauseAllMedia
 
@@ -2497,6 +2672,8 @@ pauseAllMedia(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-pauseAllMedia(): void--><!--Device-WebviewController-pauseAllMedia(): void-End-->
@@ -2507,7 +2684,7 @@ pauseAllMedia(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## pauseAllTimers
 
@@ -2521,6 +2698,8 @@ static pauseAllTimers(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-static pauseAllTimers(): void--><!--Device-WebviewController-static pauseAllTimers(): void-End-->
@@ -2531,7 +2710,7 @@ static pauseAllTimers(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## pauseMicrophone
 
@@ -2544,6 +2723,8 @@ pauseMicrophone(): void
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WebviewController-pauseMicrophone(): void--><!--Device-WebviewController-pauseMicrophone(): void-End-->
 
@@ -2567,6 +2748,8 @@ postMessage(name: string, ports: Array<WebMessagePort>, uri: string): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-postMessage(name: string, ports: Array<WebMessagePort>, uri: string): void--><!--Device-WebviewController-postMessage(name: string, ports: Array<WebMessagePort>, uri: string): void-End-->
@@ -2578,15 +2761,15 @@ postMessage(name: string, ports: Array<WebMessagePort>, uri: string): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 要发送的消息名称。 |
-| ports | Array&lt;WebMessagePort&gt; | 是 | 要发送的消息端口。 |
+| ports | Array&lt;[WebMessagePort](../../apis-na/arkts-apis/arkts-na-webview-webmessageport-i.md)&gt; | 是 | 要发送的消息端口。 |
 | uri | string | 是 | 接收该消息的URI。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## postUrl
 
@@ -2599,6 +2782,8 @@ postUrl(url: string, postData: ArrayBuffer): void
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -2617,8 +2802,8 @@ postUrl(url: string, postData: ArrayBuffer): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 | [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. The webpage corresponding to the URL is invalid. |
 
 ## precompileJavaScript
@@ -2633,6 +2818,8 @@ precompileJavaScript(url: string, script: string | Uint8Array, cacheOptions: Cac
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-WebviewController-precompileJavaScript(url: string, script: string | Uint8Array, cacheOptions: CacheOptions): Promise<number>--><!--Device-WebviewController-precompileJavaScript(url: string, script: string | Uint8Array, cacheOptions: CacheOptions): Promise<number>-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -2641,9 +2828,9 @@ precompileJavaScript(url: string, script: string | Uint8Array, cacheOptions: Cac
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| url | string | 是 | 本地JavaScript文件对应的网络地址，即业务网页请求该文件的服务器版本时使用的网络地址。网络地址仅支持http或https协议，长度不超过2048。如果该网络地址对应的缓存失效，则业务网页将通过网络请求对应的资源。 |
+| url | string | 是 | 本地JavaScript文件对应的网络地址，即业务网页请求该文件的服务器版本时使用的网络地址。网络地址仅支持http或https协议，长度不超过2048。如果该网络地址对应的缓存 失效，则业务网页将通过网络请求对应的资源。 |
 | script | string \| Uint8Array | 是 | 本地JavaScript的文本内容。内容不能为空。 |
-| cacheOptions | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 用于控制字节码缓存更新。 |
+| cacheOptions | [CacheOptions](../../apis-na/arkts-apis/arkts-na-webview-cacheoptions-i.md) | 是 | 用于控制字节码缓存更新。 |
 
 **返回值：**
 
@@ -2655,8 +2842,8 @@ precompileJavaScript(url: string, script: string | Uint8Array, cacheOptions: Cac
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Invalid input parameter.Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid input parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## prefetchPage
 
@@ -2669,6 +2856,8 @@ prefetchPage(url: string, additionalHeaders?: Array<WebHeader>): void
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -2687,9 +2876,8 @@ prefetchPage(url: string, additionalHeaders?: Array<WebHeader>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
-| [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 10 - 21 |
-| [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 10 - 21 |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
+| [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.<br>**适用版本：** 10 - 21 |
 
 ## prefetchPage
 
@@ -2703,6 +2891,8 @@ Prefetch the resources required by the page, but will not execute js or render t
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
 
+**废弃版本：** -1
+
 <!--Device-WebviewController-prefetchPage(url: string, additionalHeaders?: Array<WebHeader>, prefetchOptions?: PrefetchOptions): void--><!--Device-WebviewController-prefetchPage(url: string, additionalHeaders?: Array<WebHeader>, prefetchOptions?: PrefetchOptions): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -2712,16 +2902,15 @@ Prefetch the resources required by the page, but will not execute js or render t
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | url | string | 是 | 预加载的URL。 |
-| additionalHeaders | Array&lt;WebHeader&gt; | 否 | URL的附加HTTP请求头。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_默认值： [] |
-| prefetchOptions | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 预取行为可以通过 prefetchOptions 进行自定义，包括忽略 Cache-Control: no-store 以及调整节流间隔。 |
+| additionalHeaders | Array&lt;WebHeader&gt; | 否 | URL的附加HTTP请求头。&lt;br&gt;默认值： [] |
+| prefetchOptions | [PrefetchOptions](../../apis-na/arkts-apis/arkts-na-webview-prefetchoptions-c.md) | 否 | 预取行为可以通过 prefetchOptions 进行自定义，包括忽略 Cache-Control: no-store 以及调整节流间隔。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
-| [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 21+ |
-| [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 21+ |
+| [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.<br>**适用版本：** 21+ |
 
 ## prefetchResource
 
@@ -2730,11 +2919,13 @@ static prefetchResource(request: RequestInfo, additionalHeaders?: Array<WebHeade
                             cacheValidTime?: number): void
 ```
 
-根据指定的请求信息和附加的HTTP请求头去预获取资源请求，存入内存缓存，并指定其缓存key和有效期，以加快加载速度。目前仅支持Content-Type为application/x-www-form-urlencoded的 POST请求。最多可以预获取6个POST请求。如果要预获取第7个，请通过 [clearPrefetchedResource]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_清除不需要的POST请求缓存，否则会自动清除最早预获取的 POST缓存。如果要使用预获取的资源缓存，开发者需要在正式发起的POST请求的请求头中增加键值“ArkWebPostCacheKey”，其内容为对应缓存的cacheKey。 内存缓存中的资源由内核自动管理，当注入的资源过多导致内存压力过大，内核自动释放未使用的资源，应避免注入大量资源到内存缓存中。
+根据指定的请求信息和附加的HTTP请求头去预获取资源请求，存入内存缓存，并指定其缓存key和有效期，以加快加载速度。目前仅支持Content-Type为application/x-www-form-urlencoded的 POST请求。最多可以预获取6个POST请求。如果要预获取第7个，请通过 [clearPrefetchedResource](../../apis-na/arkts-apis/arkts-na-webview-webviewcontroller-c.md#clearPrefetchedResource)清除不需要的POST请求缓存，否则会自动清除最早预获取的 POST缓存。如果要使用预获取的资源缓存，开发者需要在正式发起的POST请求的请求头中增加键值“ArkWebPostCacheKey”，其内容为对应缓存的cacheKey。 内存缓存中的资源由内核自动管理，当注入的资源过多导致内存压力过大，内核自动释放未使用的资源，应避免注入大量资源到内存缓存中。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2746,18 +2937,17 @@ static prefetchResource(request: RequestInfo, additionalHeaders?: Array<WebHeade
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| request | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 预获取请求的信息。 |
-| additionalHeaders | Array&lt;WebHeader&gt; | 否 | 预获取请求的附加HTTP请求头。 \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_传入undefined或null会抛出异常错误码401。 |
-| cacheKey | string | 否 | 用于后续查询预获取资源缓存的key。仅支持字母和数字，未传入或传入空则取默认值url作为key。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_传入undefined或null会抛出异常错误码401。 |
-| cacheValidTime | number | 否 | 预获取资源缓存的有效期。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_取值范围：(0, 2147483647]。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_默认值：300s。 \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_单位：s。 \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_3\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_传入undefined或null会抛出异常错误码401。 |
+| request | RequestInfo | 是 | 预获取请求的信息。 |
+| additionalHeaders | Array&lt;WebHeader&gt; | 否 | 预获取请求的附加HTTP请求头。 &lt;br&gt;传入undefined或null会抛出异常错误码401。 |
+| cacheKey | string | 否 | 用于后续查询预获取资源缓存的key。仅支持字母和数字，未传入或传入空则取默认值url作为key。&lt;br&gt;传入undefined或null会抛出异常错误码401。 |
+| cacheValidTime | number | 否 | 预获取资源缓存的有效期。&lt;br&gt;取值范围：(0, 2147483647]。&lt;br&gt;默认值：300s。 &lt;br&gt;单位：s。 &lt;br&gt;传入 undefined或null会抛出异常错误码401。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 12 - 21 |
-| [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 12 - 21 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.<br>**适用版本：** 12 - 21 |
 
 ## prepareForPageLoad
 
@@ -2771,6 +2961,8 @@ static prepareForPageLoad(url: string, preconnectable: boolean, numSockets: numb
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-static prepareForPageLoad(url: string, preconnectable: boolean, numSockets: number): void--><!--Device-WebviewController-static prepareForPageLoad(url: string, preconnectable: boolean, numSockets: number): void-End-->
@@ -2782,15 +2974,14 @@ static prepareForPageLoad(url: string, preconnectable: boolean, numSockets: numb
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | url | string | 是 | 预连接的URL。 |
-| preconnectable | boolean | 是 | 是否进行预连接。如果preconnectable为true，则对URL进行DNS解析，socket建链预连接；如果preconnectable为false，则不做任何预连接操作。 |
+| preconnectable | boolean | 是 | 是否进行预连接。如果preconnectable为true，则对URL进行DNS解析，socket建链预连接；如果preconnectable为false ，则不做任何预连接操作。 |
 | numSockets | number | 是 | 要预连接的socket数。socket数目连接需要大于0，最多允许6个连接。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 10 - 21 |
-| [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 10 - 21 |
+| [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.<br>**适用版本：** 10 - 21 |
 | [17100013](../errorcode-webview.md#17100013-预连接时输入socket数目无效) | The number of preconnect sockets is invalid. |
 
 ## refresh
@@ -2805,6 +2996,8 @@ refresh(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-refresh(): void--><!--Device-WebviewController-refresh(): void-End-->
@@ -2815,7 +3008,7 @@ refresh(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## refresh
 
@@ -2828,6 +3021,8 @@ refresh(ignoreCache: boolean): void
 **起始版本：** 24
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 <!--Device-WebviewController-refresh(ignoreCache: boolean): void--><!--Device-WebviewController-refresh(ignoreCache: boolean): void-End-->
 
@@ -2843,7 +3038,7 @@ refresh(ignoreCache: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## registerJavaScriptProxy
 
@@ -2858,6 +3053,8 @@ Registers the JavaScript object and method list.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-registerJavaScriptProxy(jsObject: object, name: string, methodList: Array<string>,        asyncMethodList?: Array<string>, permission?: string): void--><!--Device-WebviewController-registerJavaScriptProxy(jsObject: object, name: string, methodList: Array<string>,        asyncMethodList?: Array<string>, permission?: string): void-End-->
@@ -2868,18 +3065,18 @@ Registers the JavaScript object and method list.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| jsObject | object | 是 | Application side JavaScript objects participating in registration.\_\_\_HTML\_TAG\_USD\_0\_\_\_**起始版本：** 9 |
+| jsObject | object | 是 | Application side JavaScript objects participating in registration.<br>**起始版本：** 9 |
 | name | string | 是 | The name of the registered object, which is consistent with the object name called in the window. |
 | methodList | Array&lt;string&gt; | 是 | The method of the application side JavaScript object participating in the registration. |
-| asyncMethodList | Array&lt;string&gt; | 否 | The async method of the application side JavaScript object participating in the registration.\_\_\_HTML\_TAG\_USD\_0\_\_\_**起始版本：** 12 |
-| permission | string | 否 | permission configuration defining web page URLs that can access JavaScriptProxy methods.The configuration can be defined at two levels, object level and method level.\_\_\_HTML\_TAG\_USD\_0\_\_\_**起始版本：** 12 |
+| asyncMethodList | Array&lt;string&gt; | 否 | The async method of the application side JavaScript object participating in the registration.<br>**起始版本：** 12 |
+| permission | string | 否 | permission configuration defining web page URLs that can access JavaScriptProxy methods. The configuration can be defined at two levels, object level and method level.<br>**起始版本：** 12 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## removeAllCache
 
@@ -2892,6 +3089,8 @@ static removeAllCache(clearRom: boolean): void
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 <!--Device-WebviewController-static removeAllCache(clearRom: boolean): void--><!--Device-WebviewController-static removeAllCache(clearRom: boolean): void-End-->
 
@@ -2907,7 +3106,7 @@ static removeAllCache(clearRom: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. |
 
 ## removeCache
 
@@ -2920,6 +3119,8 @@ removeCache(clearRom: boolean): void
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -2937,8 +3138,8 @@ removeCache(clearRom: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## removeIntelligentTrackingPreventionBypassingList
 
@@ -2951,6 +3152,8 @@ static removeIntelligentTrackingPreventionBypassingList(hostList: Array<string>)
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2968,8 +3171,8 @@ static removeIntelligentTrackingPreventionBypassingList(hostList: Array<string>)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 18+ |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
 
 ## requestFocus
 
@@ -2983,6 +3186,8 @@ requestFocus(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-requestFocus(): void--><!--Device-WebviewController-requestFocus(): void-End-->
@@ -2993,7 +3198,7 @@ requestFocus(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## restoreWebState
 
@@ -3006,6 +3211,8 @@ restoreWebState(state: Uint8Array) : void
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -3023,8 +3230,8 @@ restoreWebState(state: Uint8Array) : void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## resumeAllMedia
 
@@ -3038,6 +3245,8 @@ resumeAllMedia(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-resumeAllMedia(): void--><!--Device-WebviewController-resumeAllMedia(): void-End-->
@@ -3048,7 +3257,7 @@ resumeAllMedia(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## resumeAllTimers
 
@@ -3062,6 +3271,8 @@ static resumeAllTimers(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-static resumeAllTimers(): void--><!--Device-WebviewController-static resumeAllTimers(): void-End-->
@@ -3072,7 +3283,7 @@ static resumeAllTimers(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## resumeMicrophone
 
@@ -3080,11 +3291,13 @@ static resumeAllTimers(): void
 resumeMicrophone(): void
 ```
 
-恢复当前网页麦克风捕获。使用麦克风功能前请在module.json5中添加权限: ohos.permission.MICROPHONE，具体权限的添加方法请参考 \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+恢复当前网页麦克风捕获。使用麦克风功能前请在module.json5中添加权限: ohos.permission.MICROPHONE，具体权限的添加方法请参考 [在配置文件中声明权限](../../../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WebviewController-resumeMicrophone(): void--><!--Device-WebviewController-resumeMicrophone(): void-End-->
 
@@ -3108,6 +3321,8 @@ runJavaScript(script: string): Promise<string>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-runJavaScript(script: string): Promise<string>--><!--Device-WebviewController-runJavaScript(script: string): Promise<string>-End-->
@@ -3130,8 +3345,8 @@ runJavaScript(script: string): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 | [17100003](../errorcode-webview.md#17100003-resource路径错误) | Calling a JS method that returns an empty ArrayBuffer via runJavaScript. |
 
 ## runJavaScript
@@ -3146,6 +3361,8 @@ runJavaScript(script: string, callback: AsyncCallback<string>): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-runJavaScript(script: string, callback: AsyncCallback<string>): void--><!--Device-WebviewController-runJavaScript(script: string, callback: AsyncCallback<string>): void-End-->
@@ -3157,14 +3374,14 @@ runJavaScript(script: string, callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | script | string | 是 | JavaScript脚本。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;string&gt; | 是 | 回调执行JavaScript脚本结果。JavaScript脚本若执行失败或无返回值时，返回null。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调执行JavaScript脚本结果。JavaScript脚本若执行失败或无返回值时，返回null。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 | [17100003](../errorcode-webview.md#17100003-resource路径错误) | Calling a JS method that returns an empty ArrayBuffer via runJavaScript. |
 
 ## runJavaScriptExt
@@ -3179,6 +3396,8 @@ runJavaScriptExt(script: string | ArrayBuffer): Promise<JsMessageExt>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-runJavaScriptExt(script: string | ArrayBuffer): Promise<JsMessageExt>--><!--Device-WebviewController-runJavaScriptExt(script: string | ArrayBuffer): Promise<JsMessageExt>-End-->
@@ -3189,20 +3408,20 @@ runJavaScriptExt(script: string | ArrayBuffer): Promise<JsMessageExt>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| script | string \| ArrayBuffer | 是 | JavaScript脚本。\_\_\_HTML\_TAG\_USD\_0\_\_\_**起始版本：** 10 - 11 |
+| script | string \| ArrayBuffer | 是 | JavaScript脚本。<br>**起始版本：** 10 - 11 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;JsMessageExt&gt; | Promise实例，返回脚本执行的结果。 |
+| Promise&lt;[JsMessageExt](../../apis-na/arkts-apis/arkts-na-webview-jsmessageext-c.md)&gt; | Promise实例，返回脚本执行的结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## runJavaScriptExt
 
@@ -3216,6 +3435,8 @@ runJavaScriptExt(script: string | ArrayBuffer, callback: AsyncCallback<JsMessage
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-runJavaScriptExt(script: string | ArrayBuffer, callback: AsyncCallback<JsMessageExt>): void--><!--Device-WebviewController-runJavaScriptExt(script: string | ArrayBuffer, callback: AsyncCallback<JsMessageExt>): void-End-->
@@ -3226,15 +3447,15 @@ runJavaScriptExt(script: string | ArrayBuffer, callback: AsyncCallback<JsMessage
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| script | string \| ArrayBuffer | 是 | JavaScript脚本。\_\_\_HTML\_TAG\_USD\_0\_\_\_**起始版本：** 10 - 11 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;JsMessageExt&gt; | 是 | 回调执行JavaScript脚本结果。 |
+| script | string \| ArrayBuffer | 是 | JavaScript脚本。<br>**起始版本：** 10 - 11 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[JsMessageExt](../../apis-na/arkts-apis/arkts-na-webview-jsmessageext-c.md)&gt; | 是 | 回调执行JavaScript脚本结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## scrollBy
 
@@ -3248,6 +3469,8 @@ scrollBy(deltaX: number, deltaY: number, duration?: number): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-scrollBy(deltaX: number, deltaY: number, duration?: number): void--><!--Device-WebviewController-scrollBy(deltaX: number, deltaY: number, duration?: number): void-End-->
@@ -3258,16 +3481,16 @@ scrollBy(deltaX: number, deltaY: number, duration?: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deltaX | number | 是 | 水平偏移量，其中水平向右为正方向。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_单位：vp。 |
-| deltaY | number | 是 | 垂直偏移量，其中垂直向下为正方向。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_单位：vp。 |
-| duration | number | 否 | 滚动动画时间。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_单位：ms。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_不传入为无动画，当传入数值为负数或传入0时，按照不传入处理。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_传入null或undefined时会抛出异常错误码401。\_\_\_HTML\_TAG\_USD\_0\_\_\_**起始版本：** 14 |
+| deltaX | number | 是 | 水平偏移量，其中水平向右为正方向。&lt;br&gt;单位：vp。 |
+| deltaY | number | 是 | 垂直偏移量，其中垂直向下为正方向。&lt;br&gt;单位：vp。 |
+| duration | number | 否 | 滚动动画时间。&lt;br&gt;单位：ms。 &lt;br&gt;不传入为无动画，当传入数值为负数或传入0时，按照不传入处理。 &lt;br&gt;传入null或undefined时会抛出异常错误码401。<br>**起始版本：** 14 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## scrollByWithResult
 
@@ -3281,6 +3504,8 @@ scrollByWithResult(deltaX: number, deltaY: number): boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-WebviewController-scrollByWithResult(deltaX: number, deltaY: number): boolean--><!--Device-WebviewController-scrollByWithResult(deltaX: number, deltaY: number): boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -3289,21 +3514,21 @@ scrollByWithResult(deltaX: number, deltaY: number): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deltaX | number | 是 | 水平偏移量，其中水平向右为正方向。 \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_单位：vp。 |
-| deltaY | number | 是 | 垂直偏移量，其中垂直向下为正方向。 \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_单位：vp。 |
+| deltaX | number | 是 | 水平偏移量，其中水平向右为正方向。 &lt;br&gt;单位：vp。 |
+| deltaY | number | 是 | 垂直偏移量，其中垂直向下为正方向。 &lt;br&gt;单位：vp。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | true表示当前网页可以滑动，false表示当前网页不可以滑动。 |
+| boolean | true表示当前网页可以滑动，false表示当前网页不可以滑动。 &lt;br&gt;默认为false。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## scrollTo
 
@@ -3317,6 +3542,8 @@ Scrolls the page to the specified absolute position within a specified period. �
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-scrollTo(x: number, y: number, duration?: number): void--><!--Device-WebviewController-scrollTo(x: number, y: number, duration?: number): void-End-->
@@ -3327,16 +3554,16 @@ Scrolls the page to the specified absolute position within a specified period. �
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | number | 是 | 绝对位置的水平坐标，当传入数值为负数时，按照传入0处理。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_单位：vp。 |
-| y | number | 是 | 绝对位置的垂直坐标，当传入数值为负数时，按照传入0处理。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_单位：vp。 |
-| duration | number | 否 | 滚动动画时间。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_单位：ms。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_不传入为无动画，当传入数值为负数或传入0时，按照不传入处理。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_传入null或undefined时会抛出异常错误码401。\_\_\_HTML\_TAG\_USD\_0\_\_\_**起始版本：** 14 |
+| x | number | 是 | 绝对位置的水平坐标，当传入数值为负数时，按照传入0处理。&lt;br&gt;单位：vp。 |
+| y | number | 是 | 绝对位置的垂直坐标，当传入数值为负数时，按照传入0处理。&lt;br&gt;单位：vp。 |
+| duration | number | 否 | 滚动动画时间。&lt;br&gt;单位：ms。&lt;br&gt;不传入为无动画，当传入数值为负数或传入0时，按照不传入处理。 &lt;br&gt;传入null或undefined时会抛出异常错误码401。<br>**起始版本：** 14 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## searchAllAsync
 
@@ -3344,11 +3571,13 @@ Scrolls the page to the specified absolute position within a specified period. �
 searchAllAsync(searchString: string): void
 ```
 
-异步查找网页中所有匹配关键字'searchString'的内容并高亮，结果通过 [onSearchResultReceive]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_异步返回。
+异步查找网页中所有匹配关键字'searchString'的内容并高亮，结果通过 onSearchResultReceive异步返回。
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -3366,8 +3595,8 @@ searchAllAsync(searchString: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## searchNext
 
@@ -3381,6 +3610,8 @@ searchNext(forward: boolean): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-searchNext(forward: boolean): void--><!--Device-WebviewController-searchNext(forward: boolean): void-End-->
@@ -3391,14 +3622,14 @@ searchNext(forward: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| forward | boolean | 是 | 从前向后或者逆向查找方式。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_true表示从前向后查找，false表示从后向前查找。 |
+| forward | boolean | 是 | 从前向后或者逆向查找方式。&lt;br&gt;true表示从前向后查找，false表示从后向前查找。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## serializeWebState
 
@@ -3411,6 +3642,8 @@ Serialize the access stack of the web, that is, the history of access.
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -3428,7 +3661,7 @@ Serialize the access stack of the web, that is, the history of access.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## setActiveWebEngineVersion
 
@@ -3442,6 +3675,8 @@ static setActiveWebEngineVersion(engineVersion: ArkWebEngineVersion): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 <!--Device-WebviewController-static setActiveWebEngineVersion(engineVersion: ArkWebEngineVersion): void--><!--Device-WebviewController-static setActiveWebEngineVersion(engineVersion: ArkWebEngineVersion): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -3450,7 +3685,7 @@ static setActiveWebEngineVersion(engineVersion: ArkWebEngineVersion): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| engineVersion | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | ArkWeb内核版本。 |
+| engineVersion | [ArkWebEngineVersion](../../apis-na/arkts-apis/arkts-na-webview-arkwebengineversion-e.md) | 是 | ArkWeb内核版本。 |
 
 ## setAppCustomUserAgent
 
@@ -3458,11 +3693,13 @@ static setActiveWebEngineVersion(engineVersion: ArkWebEngineVersion): void
 static setAppCustomUserAgent(userAgent: string) : void
 ```
 
-Set the default User-Agent for the application. \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_API Note\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_:\_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_ Unlike setCustomUserAgent, which only takes effect in the current web context, the priority for pages loaded in the web is as follows: 1. The User-Agent set by setCustomUserAgent is used first. 2. If not set, it will check whether a specific User-Agent has been assigned to the current page via setUserAgentForHosts. 3. If no specific User-Agent is assigned, the application will fall back to using the User-Agent set by setAppCustomUserAgent. 4. If the app's default User-Agent is also not specified, the web's default User-Agent will be used as the final fallback. \_\_\_HTML\_TAG\_DESC\_USD\_4\_\_\_
+Set the default User-Agent for the application. &lt;p&gt;&lt;strong&gt;API Note&lt;/strong&gt;:&lt;br&gt; Unlike setCustomUserAgent, which only takes effect in the current web context, the priority for pages loaded in the web is as follows: 1. The User-Agent set by setCustomUserAgent is used first. 2. If not set, it will check whether a specific User-Agent has been assigned to the current page via setUserAgentForHosts. 3. If no specific User-Agent is assigned, the application will fall back to using the User-Agent set by setAppCustomUserAgent. 4. If the app's default User-Agent is also not specified, the web's default User-Agent will be used as the final fallback. &lt;/p&gt;
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 <!--Device-WebviewController-static setAppCustomUserAgent(userAgent: string) : void--><!--Device-WebviewController-static setAppCustomUserAgent(userAgent: string) : void-End-->
 
@@ -3486,6 +3723,8 @@ setAudioMuted(mute: boolean): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-setAudioMuted(mute: boolean): void--><!--Device-WebviewController-setAudioMuted(mute: boolean): void-End-->
@@ -3496,14 +3735,14 @@ setAudioMuted(mute: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mute | boolean | 是 | 表示是否将网页设置为静音状态。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_true表示将网页设置为静音状态，false表示将网页取消静音状态。 |
+| mute | boolean | 是 | 表示是否将网页设置为静音状态。&lt;br&gt;true表示将网页设置为静音状态，false表示将网页取消静音状态。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## setAutoPreconnect
 
@@ -3516,6 +3755,8 @@ Configure whether to enable automatic pre-connection to high-frequency URLs acce
 **起始版本：** 21
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+
+**废弃版本：** -1
 
 <!--Device-WebviewController-static setAutoPreconnect(enabled: boolean): void--><!--Device-WebviewController-static setAutoPreconnect(enabled: boolean): void-End-->
 
@@ -3539,6 +3780,8 @@ setBackForwardCacheOptions(options: BackForwardCacheOptions): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-WebviewController-setBackForwardCacheOptions(options: BackForwardCacheOptions): void--><!--Device-WebviewController-setBackForwardCacheOptions(options: BackForwardCacheOptions): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -3547,13 +3790,13 @@ setBackForwardCacheOptions(options: BackForwardCacheOptions): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 用来控制Web组件前进后退缓存相关选项。 |
+| options | [BackForwardCacheOptions](../../apis-na/arkts-apis/arkts-na-webview-backforwardcacheoptions-c.md) | 是 | 用来控制Web组件前进后退缓存相关选项。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## setBlanklessLoadingCacheCapacity
 
@@ -3567,6 +3810,8 @@ static setBlanklessLoadingCacheCapacity(capacity: number) : number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 <!--Device-WebviewController-static setBlanklessLoadingCacheCapacity(capacity: number) : number--><!--Device-WebviewController-static setBlanklessLoadingCacheCapacity(capacity: number) : number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -3575,19 +3820,19 @@ static setBlanklessLoadingCacheCapacity(capacity: number) : number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| capacity | number | 是 | 设置持久化缓存设置，单位MB，最大设置不超过100MB。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_合法取值范围：[0, 100]，当设置为0时，无缓存空间，则功能全局不开启。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_非法值设置行为：小于0时生效值为0，大于100时生效值为100。 |
+| capacity | number | 是 | 设置持久化缓存设置，单位MB，最大设置不超过100MB。&lt;br&gt;合法取值范围：[0, 100]，当设置为0时，无缓存空间，则功能全局不开启。&lt;br&gt;非法值设置行为：小于 0时生效值为0，大于100时生效值为100。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 返回实际生效的容量值，范围0~100。 |
+| number | 返回实际生效的容量值，范围0~100。 &lt;br&gt;小于0时生效值为0，大于100时生效值为100。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) |  |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | This functionality is not supported. |
 
 ## setBlanklessLoadingWithKey
 
@@ -3595,11 +3840,13 @@ static setBlanklessLoadingCacheCapacity(capacity: number) : number
 setBlanklessLoadingWithKey(key: string, is_start: boolean) : WebBlanklessErrorCode
 ```
 
-设置无白屏加载是否启用，本接口必须与[getBlanklessInfoWithKey]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_接口配套使用。 > **说明：** > > - 需在触发页面加载的接口之后调用，其他约束同[getBlanklessInfoWithKey]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_。 > > - 页面加载必须在调用本接口的组件中进行。 > > - 当相似度较低时，系统将判定为跳变过大，启用插帧会失败。 > > - 请在module.json5中添加权限: ohos.permission.INTERNET和ohos.permission.GET\_NETWORK\_INFO，具体权限的添加方法请参考 > \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+设置无白屏加载是否启用，本接口必须与[getBlanklessInfoWithKey](../../apis-na/arkts-apis/arkts-na-webview-webviewcontroller-c.md#getBlanklessInfoWithKey)接口配套使用。 > **说明：** > > - 需在触发页面加载的接口之后调用，其他约束同[getBlanklessInfoWithKey](../../apis-na/arkts-apis/arkts-na-webview-webviewcontroller-c.md#getBlanklessInfoWithKey)。 > > - 页面加载必须在调用本接口的组件中进行。 > > - 当相似度较低时，系统将判定为跳变过大，启用插帧会失败。 > > - 请在module.json5中添加权限: ohos.permission.INTERNET和ohos.permission.GET_NETWORK_INFO，具体权限的添加方法请参考 > [在配置文件中声明权限](../../../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 <!--Device-WebviewController-setBlanklessLoadingWithKey(key: string, is_start: boolean) : WebBlanklessErrorCode--><!--Device-WebviewController-setBlanklessLoadingWithKey(key: string, is_start: boolean) : WebBlanklessErrorCode-End-->
 
@@ -3609,20 +3856,20 @@ setBlanklessLoadingWithKey(key: string, is_start: boolean) : WebBlanklessErrorCo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 唯一标识本页面的key值。必须与getBlanklessInfoWithKey接口的key值相同。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_合法取值范围：非空，长度不超过2048个字符。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_非法值设置行为：返回错误码WebBlanklessErrorCode，方案不生效。 |
-| is\_start | boolean | 是 | 是否启用开始插帧。true：启用，false：不启用。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_传入undefined或null时为false。 |
+| key | string | 是 | 唯一标识本页面的key值。必须与getBlanklessInfoWithKey接口的key值相同。&lt;br&gt;合法取值范围：非空，长度不超过2048个字符。&lt;br&gt;非法值设置行为：返 回错误码WebBlanklessErrorCode，方案不生效。 |
+| is_start | boolean | 是 | 是否启用开始插帧。true：启用，false：不启用。&lt;br&gt;传入undefined或null时为false。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回接口调用是否成功，具体见 |
+| [WebBlanklessErrorCode](../../apis-na/arkts-apis/arkts-na-webview-webblanklesserrorcode-e.md) | 返回接口调用是否成功，具体见 [WebBlanklessErrorCode]{ |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) |  |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | This functionality is not supported. |
 
 ## setBlanklessLoadingWithParams
 
@@ -3637,6 +3884,8 @@ Triggers frame interpolation and sets frame interpolation parameters. This API m
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WebviewController-setBlanklessLoadingWithParams(key: string,      param: BlanklessLoadingParam) : WebBlanklessErrorCode--><!--Device-WebviewController-setBlanklessLoadingWithParams(key: string,      param: BlanklessLoadingParam) : WebBlanklessErrorCode-End-->
@@ -3647,14 +3896,14 @@ Triggers frame interpolation and sets frame interpolation parameters. This API m
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | Key value that uniquely identifies the current page.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_Value range: (0, 2048]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_The key value must be the same as that of getBlanklessInfoWithKey. |
-| param | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | The blankless loading parameter.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_None |
+| key | string | 是 | Key value that uniquely identifies the current page. &lt;br&gt;Value range: (0, 2048] &lt;br&gt;The key value must be the same as that of getBlanklessInfoWithKey. |
+| param | [BlanklessLoadingParam](../../apis-na/arkts-apis/arkts-na-webview-blanklessloadingparam-i.md) | 是 | The blankless loading parameter. &lt;br&gt;None |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | WebBlanklessErrorCode. |
+| [WebBlanklessErrorCode](../../apis-na/arkts-apis/arkts-na-webview-webblanklesserrorcode-e.md) | WebBlanklessErrorCode. |
 
 **错误码：**
 
@@ -3674,6 +3923,8 @@ static setConnectionTimeout(timeout: number): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-static setConnectionTimeout(timeout: number): void--><!--Device-WebviewController-static setConnectionTimeout(timeout: number): void-End-->
@@ -3690,7 +3941,7 @@ static setConnectionTimeout(timeout: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3. Parameter verification failed. |
 
 ## setCustomUserAgent
 
@@ -3703,6 +3954,8 @@ setCustomUserAgent(userAgent: string): void
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -3720,8 +3973,8 @@ setCustomUserAgent(userAgent: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## setDownloadDelegate
 
@@ -3735,6 +3988,8 @@ setDownloadDelegate(delegate: WebDownloadDelegate): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-setDownloadDelegate(delegate: WebDownloadDelegate): void--><!--Device-WebviewController-setDownloadDelegate(delegate: WebDownloadDelegate): void-End-->
@@ -3745,13 +4000,13 @@ setDownloadDelegate(delegate: WebDownloadDelegate): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| delegate | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 用来接收下载进度的委托。 |
+| delegate | [WebDownloadDelegate](../../apis-na/arkts-apis/arkts-na-webview-webdownloaddelegate-c.md) | 是 | 用来接收下载进度的委托。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## setErrorPageEnabled
 
@@ -3764,6 +4019,8 @@ setErrorPageEnabled(enable: boolean): void
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 <!--Device-WebviewController-setErrorPageEnabled(enable: boolean): void--><!--Device-WebviewController-setErrorPageEnabled(enable: boolean): void-End-->
 
@@ -3779,7 +4036,7 @@ setErrorPageEnabled(enable: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## setHostIP
 
@@ -3792,6 +4049,8 @@ static setHostIP(hostName: string, address: string, aliveTime: number): void
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -3811,7 +4070,7 @@ static setHostIP(hostName: string, address: string, aliveTime: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
 
 ## setHttpDns
 
@@ -3825,6 +4084,8 @@ static setHttpDns(secureDnsMode: SecureDnsMode, secureDnsConfig: string): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-static setHttpDns(secureDnsMode: SecureDnsMode, secureDnsConfig: string): void--><!--Device-WebviewController-static setHttpDns(secureDnsMode: SecureDnsMode, secureDnsConfig: string): void-End-->
@@ -3835,14 +4096,14 @@ static setHttpDns(secureDnsMode: SecureDnsMode, secureDnsConfig: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| secureDnsMode | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 使用HTTPDNS的模式。 |
+| secureDnsMode | [SecureDnsMode](../../apis-na/arkts-apis/arkts-na-webview-securednsmode-e.md) | 是 | 使用HTTPDNS的模式。 |
 | secureDnsConfig | string | 是 | HTTPDNS server的配置，必须是https协议并且只允许配置一个server。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3. Parameter verification failed. |
 
 ## setNetworkAvailable
 
@@ -3856,6 +4117,8 @@ setNetworkAvailable(enable: boolean): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-setNetworkAvailable(enable: boolean): void--><!--Device-WebviewController-setNetworkAvailable(enable: boolean): void-End-->
@@ -3866,14 +4129,14 @@ setNetworkAvailable(enable: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enable | boolean | 是 | 设置JavaScript中的\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_属性。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_3\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_true表示设置JavaScript中的\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_属性为true，false表示设置JavaScript中的\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_INLINE\_\_\_ESCAPED\_UNDERSCORE\_\_\_CODE\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_属性为false。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_4\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_默认值：true。 |
+| enable | boolean | 是 | 设置JavaScript中的`window.navigator.onLine`属性。&lt;br&gt;true表示设置JavaScript中的` window.navigator.onLine`属性为true，false表示设置JavaScript中的`window.navigator.onLine`属性为false。&lt;br&gt;默认值：true。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## setPathAllowingUniversalAccess
 
@@ -3881,11 +4144,13 @@ setNetworkAvailable(enable: boolean): void
 setPathAllowingUniversalAccess(pathList: Array<string>): void
 ```
 
-设置一个路径列表，当file协议访问该路径列表中的资源时，允许跨域访问本地文件，也允许跨域访问其他在线资源。此外，当设置了路径列表时，file协议仅允许访问路径列表中的资源（ \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_的行为将会被此接口行为覆盖）。 setPathAllowingUniversalAccess放开目录的跨域访问限制是一个高风险操作。基于最小权限原则，当前el1，el2放开的路径是固定的，路径列表中的路径应符合以下任一路径格式： 1.应用文件目录的子目录（应用文件目录通过Ability Kit中的 \_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_获取），例如： * /data/storage/el2/base/files/example * /data/storage/el2/base/haps/entry/files/example 2.应用资源目录及其子目录（应用资源目录通过Ability Kit中的 \_\_\_MD\_LINK\_DESC\_USD\_2\_\_\_获取），例如： * /data/storage/el1/bundle/entry/resources/resfile * /data/storage/el1/bundle/entry/resources/resfile/example 3.从API version 21开始，还包括了应用缓存目录及其子目录（应用缓存目录通过Ability Kit中的 \_\_\_MD\_LINK\_DESC\_USD\_3\_\_\_获取），例如： * /data/storage/el2/base/cache * /data/storage/el2/base/haps/entry/cache/example * 设置的目录路径中，不允许包含cache/web，否则会抛出异常码401。如果设置目录路径是cache，cache/web也不允许访问。 4.从API version 21开始，还包括了应用临时目录及其子目录（应用临时目录通过Ability Kit中的 \_\_\_MD\_LINK\_DESC\_USD\_4\_\_\_获取），例如： * /data/storage/el2/base/temp * /data/storage/el2/base/haps/entry/temp/example 当路径列表中有其中一个路径不满足以上条件之一，则会抛出异常码401，并且设置路径列表失败。当设置的路径列表为空，则file协议可访问范围以 \_\_\_MD\_LINK\_DESC\_USD\_5\_\_\_的行为为准。
+设置一个路径列表，当file协议访问该路径列表中的资源时，允许跨域访问本地文件，也允许跨域访问其他在线资源。此外，当设置了路径列表时，file协议仅允许访问路径列表中的资源（ [fileAccess](../../../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess)的行为将会被此接口行为覆盖）。 setPathAllowingUniversalAccess放开目录的跨域访问限制是一个高风险操作。基于最小权限原则，当前el1，el2放开的路径是固定的，路径列表中的路径应符合以下任一路径格式： 1.应用文件目录的子目录（应用文件目录通过Ability Kit中的 [Context.filesDir](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md#Context)获取），例如： * /data/storage/el2/base/files/example * /data/storage/el2/base/haps/entry/files/example 2.应用资源目录及其子目录（应用资源目录通过Ability Kit中的 [Context.resourceDir](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md#Context)获取），例如： * /data/storage/el1/bundle/entry/resources/resfile * /data/storage/el1/bundle/entry/resources/resfile/example 3.从API version 21开始，还包括了应用缓存目录及其子目录（应用缓存目录通过Ability Kit中的 [Context.cacheDir](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md#Context)获取），例如： * /data/storage/el2/base/cache * /data/storage/el2/base/haps/entry/cache/example * 设置的目录路径中，不允许包含cache/web，否则会抛出异常码401。如果设置目录路径是cache，cache/web也不允许访问。 4.从API version 21开始，还包括了应用临时目录及其子目录（应用临时目录通过Ability Kit中的 [Context.tempDir](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md#Context)获取），例如： * /data/storage/el2/base/temp * /data/storage/el2/base/haps/entry/temp/example 当路径列表中有其中一个路径不满足以上条件之一，则会抛出异常码401，并且设置路径列表失败。当设置的路径列表为空，则file协议可访问范围以 [fileAccess](../../../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess)的行为为准。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-WebviewController-setPathAllowingUniversalAccess(pathList: Array<string>): void--><!--Device-WebviewController-setPathAllowingUniversalAccess(pathList: Array<string>): void-End-->
 
@@ -3901,8 +4166,8 @@ setPathAllowingUniversalAccess(pathList: Array<string>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Parameter string is too long.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_3.Parameter verification failed. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: &lt;br&gt;1. Mandatory parameters are left unspecified. &lt;br&gt;2. Parameter string is too long. &lt;br&gt;3.Parameter verification failed. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## setPrintBackground
 
@@ -3916,6 +4181,8 @@ Set whether print web page background.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-setPrintBackground(enable: boolean): void--><!--Device-WebviewController-setPrintBackground(enable: boolean): void-End-->
@@ -3926,14 +4193,14 @@ Set whether print web page background.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enable | boolean | 是 | Whether to print the web page background.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_The value **true** means to print the web page background, and **false** means the opposite. |
+| enable | boolean | 是 | Whether to print the web page background.&lt;br&gt;The value **true** means to print the web page background, and **false** means the opposite. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## setRenderProcessMode
 
@@ -3947,6 +4214,8 @@ Set render process mode of the ArkWeb.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-static setRenderProcessMode(mode: RenderProcessMode): void--><!--Device-WebviewController-static setRenderProcessMode(mode: RenderProcessMode): void-End-->
@@ -3957,13 +4226,13 @@ Set render process mode of the ArkWeb.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | The render process mode for the ArkWeb.Call \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ to get the ArkWeb rendering subprocess mode of the current device.The enumerated value **0** indicates the single render subprocess mode,and **1** indicates the multi-render subprocess mode.If an invalid number other than the enumerated value of **RenderProcessMode** is passed,the multi-render subprocess mode is used by default. |
+| mode | [RenderProcessMode](../../apis-na/arkts-apis/arkts-na-webview-renderprocessmode-e.md) | 是 | The render process mode for the ArkWeb. Call [getRenderProcessMode](../../apis-na/arkts-apis/arkts-na-webview-webviewcontroller-c.md#getRenderProcessMode) to get the ArkWeb rendering subprocess mode of the current device. The enumerated value **0** indicates the single render subprocess mode, and **1** indicates the multi-render subprocess mode. If an invalid number other than the enumerated value of **RenderProcessMode** is passed, the multi-render subprocess mode is used by default. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types.@static |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. @static |
 
 ## setScrollable
 
@@ -3977,6 +4246,8 @@ setScrollable(enable: boolean, type?: ScrollType): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-setScrollable(enable: boolean, type?: ScrollType): void--><!--Device-WebviewController-setScrollable(enable: boolean, type?: ScrollType): void-End-->
@@ -3987,15 +4258,15 @@ setScrollable(enable: boolean, type?: ScrollType): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enable | boolean | 是 | 表示是否将网页设置为允许滚动。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_true表示设置为允许滚动，false表示禁止滚动。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_默认值：true。 |
-| type | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 网页可触发的滚动类型，支持缺省配置。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ - enable为false时，表示禁止ScrollType类型的滚动，当ScrollType缺省时表示禁止所有类型网页滚动。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ - enable为true时，ScrollType缺省与否，都表示允许所有类型的网页滚动。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_传入null或undefined时会抛出异常错误码401。 |
+| enable | boolean | 是 | 表示是否将网页设置为允许滚动。&lt;br&gt;true表示设置为允许滚动，false表示禁止滚动。&lt;br&gt;默认值：true。 |
+| type | [ScrollType](../../apis-na/arkts-apis/arkts-na-webview-scrolltype-e.md) | 否 | 网页可触发的滚动类型，支持缺省配置。 &lt;br&gt; - enable为false时，表示禁止ScrollType类型的滚动，当ScrollType缺省时表示禁止所有类型网页滚动。 &lt;br&gt; - enable为true时，ScrollType缺省与否，都表示允许所有类型的网页滚动。 &lt;br&gt;传入null或undefined时会抛出异常错误码401。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## setScrollbarMode
 
@@ -4003,11 +4274,13 @@ setScrollable(enable: boolean, type?: ScrollType): void
 static setScrollbarMode(scrollbarMode: ScrollbarMode): void
 ```
 
-在Web页面场景，设置全局滚动条模式。不显式调用时，默认为 [ScrollbarMode.OVERLAY\_LAYOUT\_SCROLLBAR]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_（非常驻滚动条）。 > **说明：** > > - 根据滚动条模式，改变当前应用所有web滚动条模式为常驻滚动条或非常驻滚动条。 > > - 若[forceDisplayScrollBar]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_ > 接口与当前接口同时设置，forceDisplayScrollBar接口设置不生效。 > > - 该接口需要在WebViewController绑定Web组件之前调用。
+在Web页面场景，设置全局滚动条模式。不显式调用时，默认为 [ScrollbarMode.OVERLAY_LAYOUT_SCROLLBAR](../../apis-na/arkts-apis/arkts-na-webview-scrollbarmode-e.md#ScrollbarMode)（非常驻滚动条）。 > **说明：** > > - 根据滚动条模式，改变当前应用所有web滚动条模式为常驻滚动条或非常驻滚动条。 > > - 若forceDisplayScrollBar > 接口与当前接口同时设置，forceDisplayScrollBar接口设置不生效。 > > - 该接口需要在WebViewController绑定Web组件之前调用。
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WebviewController-static setScrollbarMode(scrollbarMode: ScrollbarMode): void--><!--Device-WebviewController-static setScrollbarMode(scrollbarMode: ScrollbarMode): void-End-->
 
@@ -4017,7 +4290,7 @@ static setScrollbarMode(scrollbarMode: ScrollbarMode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scrollbarMode | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 滚动条模式。 |
+| scrollbarMode | [ScrollbarMode](../../apis-na/arkts-apis/arkts-na-webview-scrollbarmode-e.md) | 是 | 滚动条模式。 |
 
 ## setServiceWorkerWebSchemeHandler
 
@@ -4031,6 +4304,8 @@ Set web scheme handler for specific scheme. This is used for service worker.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-static setServiceWorkerWebSchemeHandler(scheme: string, handler: WebSchemeHandler): void--><!--Device-WebviewController-static setServiceWorkerWebSchemeHandler(scheme: string, handler: WebSchemeHandler): void-End-->
@@ -4042,13 +4317,13 @@ Set web scheme handler for specific scheme. This is used for service worker.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | scheme | string | 是 | String value for url scheme. |
-| handler | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | Web scheme handler. |
+| handler | [WebSchemeHandler](../../apis-na/arkts-apis/arkts-na-webview-webschemehandler-c.md) | 是 | Web scheme handler. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types. |
 
 ## setSiteIsolationMode
 
@@ -4062,6 +4337,8 @@ Set the site isolation mode.
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
 
+**废弃版本：** -1
+
 <!--Device-WebviewController-static setSiteIsolationMode(mode: SiteIsolationMode): void--><!--Device-WebviewController-static setSiteIsolationMode(mode: SiteIsolationMode): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -4070,13 +4347,13 @@ Set the site isolation mode.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | The site isolation mode of the application, |
+| mode | [SiteIsolationMode](../../apis-na/arkts-apis/arkts-na-webview-siteisolationmode-e.md) | 是 | The site isolation mode of the application, default value depends on different devices type. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. Possible causes:1. Site Isolation mode is already set by the developer.2. Site Isolation mode cannot be strict in single-render-process mode.3. Site Isolation mode cannot be changed while Secure Shield mode is active.@static |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. Possible causes: 1. Site Isolation mode is already set by the developer. 2. Site Isolation mode cannot be strict in single-render-process mode. 3. Site Isolation mode cannot be changed while Secure Shield mode is active. @static |
 
 ## setSocketIdleTimeout
 
@@ -4090,6 +4367,8 @@ static setSocketIdleTimeout(timeout: number): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
 
+**废弃版本：** -1
+
 <!--Device-WebviewController-static setSocketIdleTimeout(timeout: number): void--><!--Device-WebviewController-static setSocketIdleTimeout(timeout: number): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -4098,7 +4377,7 @@ static setSocketIdleTimeout(timeout: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| timeout | number | 是 | ArkWeb中已经使用过的空闲socket的超时时间。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_取值范围：[30,300]，单位：s。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_小于30时生效值为30，大于300时生效值为300。 |
+| timeout | number | 是 | ArkWeb中已经使用过的空闲socket的超时时间。&lt;br&gt;取值范围：[30,300]，单位：s。&lt;br&gt;小于30时生效值为30，大于300时生效值为300。 |
 
 ## setSoftKeyboardBehaviorMode
 
@@ -4112,6 +4391,8 @@ Set the WebSoftKeyboardBehaviorMode to decide whether the keyboard will be shown
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 <!--Device-WebviewController-setSoftKeyboardBehaviorMode(mode: WebSoftKeyboardBehaviorMode): void--><!--Device-WebviewController-setSoftKeyboardBehaviorMode(mode: WebSoftKeyboardBehaviorMode): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -4120,7 +4401,7 @@ Set the WebSoftKeyboardBehaviorMode to decide whether the keyboard will be shown
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | The WebSoftKeyboardBehaviorMode of this web. |
+| mode | [WebSoftKeyboardBehaviorMode](../../apis-na/arkts-apis/arkts-na-webview-websoftkeyboardbehaviormode-e.md) | 是 | The WebSoftKeyboardBehaviorMode of this web. |
 
 **错误码：**
 
@@ -4140,6 +4421,8 @@ Set the URL trust list for the ArkWeb. When the URL trust list has been set, onl
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-setUrlTrustList(urlTrustList: string): void--><!--Device-WebviewController-setUrlTrustList(urlTrustList: string): void-End-->
@@ -4150,14 +4433,14 @@ Set the URL trust list for the ArkWeb. When the URL trust list has been set, onl
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| urlTrustList | string | 是 | the URL trust list in JSON format.An empty string means that all URLs are allowed to access. |
+| urlTrustList | string | 是 | the URL trust list in JSON format. An empty string means that all URLs are allowed to access. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Parameter string is too long. 3.Parameter verification failed. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Parameter string is too long. 3.Parameter verification failed. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## setUrlTrustList
 
@@ -4165,11 +4448,13 @@ Set the URL trust list for the ArkWeb. When the URL trust list has been set, onl
 setUrlTrustList(urlTrustList: string, allowOpaqueOrigin: boolean, supportWildcard: boolean): void
 ```
 
-Sets the URL trust list for the ArkWeb. \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_API Note\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_:\_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_ When the URL trust list is set, only the URLs in the list can be accessed. Example of the urlTrustList: { "UrlPermissionList": [ { "scheme": "https", "host": "www.example1.com", "port": 443, "path": "pathA/pathB" }, { "scheme": "http", "host": "*.example2.com", "port": 80, "path": "test1/test2/test3" } ] } \_\_\_HTML\_TAG\_DESC\_USD\_4\_\_\_
+Sets the URL trust list for the ArkWeb. &lt;p&gt;&lt;strong&gt;API Note&lt;/strong&gt;:&lt;br&gt; When the URL trust list is set, only the URLs in the list can be accessed. Example of the urlTrustList: { "UrlPermissionList": [ { "scheme": "https", "host": "www.example1.com", "port": 443, "path": "pathA/pathB" }, { "scheme": "http", "host": "*.example2.com", "port": 80, "path": "test1/test2/test3" } ] } &lt;/p&gt;
 
 **起始版本：** 24
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 <!--Device-WebviewController-setUrlTrustList(urlTrustList: string, allowOpaqueOrigin: boolean, supportWildcard: boolean): void--><!--Device-WebviewController-setUrlTrustList(urlTrustList: string, allowOpaqueOrigin: boolean, supportWildcard: boolean): void-End-->
 
@@ -4179,7 +4464,7 @@ Sets the URL trust list for the ArkWeb. \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_\_\_\
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| urlTrustList | string | 是 | The URL trust list in JSON format.An empty string means all URLs are allowed. |
+| urlTrustList | string | 是 | The URL trust list in JSON format. An empty string means all URLs are allowed. |
 | allowOpaqueOrigin | boolean | 是 | If true, loading of opaque origin URLs (e.g., javascript, data) is allowed. If false, it is not allowed. |
 | supportWildcard | boolean | 是 | If true, wildcard matching is supported (e.g., *.example.com matches all subdomains). If false, wildcard matching is not supported. |
 
@@ -4187,8 +4472,8 @@ Sets the URL trust list for the ArkWeb. \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_\_\_\
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) |  |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Initialization error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error, possible causes: 1. Mandatory parameters are left unspecified 2. JSON string exceeds 10MB limit 3. JSON parsing failed (syntax errors, etc.) 4. UrlPermissionList field is missing 5. URL rule validation failed: - scheme must be http or https - host cannot be empty - port must be between 0-65535 - path length cannot exceed 65536 characters |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Initialization error. The WebviewController must be associated with a Web component. |
 
 ## setUserAgentClientHintsEnabled
 
@@ -4201,6 +4486,8 @@ Enable the UserAgent Client Hints.
 **起始版本：** 24
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 <!--Device-WebviewController-static setUserAgentClientHintsEnabled(enabled: boolean): void--><!--Device-WebviewController-static setUserAgentClientHintsEnabled(enabled: boolean): void-End-->
 
@@ -4224,6 +4511,8 @@ static setUserAgentForHosts(userAgent: string, hosts : Array<string>) : void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 <!--Device-WebviewController-static setUserAgentForHosts(userAgent: string, hosts : Array<string>) : void--><!--Device-WebviewController-static setUserAgentForHosts(userAgent: string, hosts : Array<string>) : void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -4241,11 +4530,13 @@ static setUserAgentForHosts(userAgent: string, hosts : Array<string>) : void
 setUserAgentMetadata(userAgent: string, metaData: UserAgentMetadata): void
 ```
 
-Sets the User-Agent metadata corresponding to the User-Agent. \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_API Note\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_:\_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_ This User-Agent metadata will be used to populate the User-Agent client hints, They can provide the client's branding and version information, the underlying operating system's branding and major version, as well as details about the underlying device.
+Sets the User-Agent metadata corresponding to the User-Agent. &lt;p&gt;&lt;strong&gt;API Note&lt;/strong&gt;:&lt;br&gt; This User-Agent metadata will be used to populate the User-Agent client hints, They can provide the client's branding and version information, the underlying operating system's branding and major version, as well as details about the underlying device.
 
 **起始版本：** 24
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 <!--Device-WebviewController-setUserAgentMetadata(userAgent: string, metaData: UserAgentMetadata): void--><!--Device-WebviewController-setUserAgentMetadata(userAgent: string, metaData: UserAgentMetadata): void-End-->
 
@@ -4256,7 +4547,7 @@ Sets the User-Agent metadata corresponding to the User-Agent. \_\_\_HTML\_TAG\_D
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | userAgent | string | 是 | The User-Agent string. |
-| metaData | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | The UserAgentMetadata for the userAgent. |
+| metaData | [UserAgentMetadata](../../apis-na/arkts-apis/arkts-na-webview-useragentmetadata-c.md) | 是 | The UserAgentMetadata for the userAgent. |
 
 ## setWebDebuggingAccess
 
@@ -4270,6 +4561,8 @@ static setWebDebuggingAccess(webDebuggingAccess: boolean): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-static setWebDebuggingAccess(webDebuggingAccess: boolean): void--><!--Device-WebviewController-static setWebDebuggingAccess(webDebuggingAccess: boolean): void-End-->
@@ -4280,13 +4573,13 @@ static setWebDebuggingAccess(webDebuggingAccess: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| webDebuggingAccess | boolean | 是 | 设置是否启用网页调试功能。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_true表示启用网页调试功能。false表示不启用网页调试功能。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_默认值：false。 |
+| webDebuggingAccess | boolean | 是 | 设置是否启用网页调试功能。&lt;br&gt;true表示启用网页调试功能。false表示不启用网页调试功能。&lt;br&gt;默认值：false。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
 
 ## setWebDebuggingAccess
 
@@ -4294,11 +4587,13 @@ static setWebDebuggingAccess(webDebuggingAccess: boolean): void
 static setWebDebuggingAccess(webDebuggingAccess: boolean, port: number): void
 ```
 
-设置是否启用无线网页调试功能，默认不开启。 当没有指定端口port时，该接口等同于 [setWebDebuggingAccess]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 接口，ArkWeb会启动一个本地domain socket监听。 当指定了端口port时，ArkWeb会启动一个tcp socket监听。这时可以无线调试网页。 由于小于1024的端口号作为熟知或系统端口，在操作系统上需要特权才能开启，因此port的取值必须大于1024，否则该接口会抛出异常。 安全提示：启用网页调试功能可以让用户检查修改Web页面内部状态，存在安全隐患，不建议在应用正式发布版本中启用。
+设置是否启用无线网页调试功能，默认不开启。 当没有指定端口port时，该接口等同于 setWebDebuggingAccess 接口，ArkWeb会启动一个本地domain socket监听。 当指定了端口port时，ArkWeb会启动一个tcp socket监听。这时可以无线调试网页。 由于小于1024的端口号作为熟知或系统端口，在操作系统上需要特权才能开启，因此port的取值必须大于1024，否则该接口会抛出异常。 安全提示：启用网页调试功能可以让用户检查修改Web页面内部状态，存在安全隐患，不建议在应用正式发布版本中启用。
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 <!--Device-WebviewController-static setWebDebuggingAccess(webDebuggingAccess: boolean, port: number): void--><!--Device-WebviewController-static setWebDebuggingAccess(webDebuggingAccess: boolean, port: number): void-End-->
 
@@ -4308,7 +4603,7 @@ static setWebDebuggingAccess(webDebuggingAccess: boolean, port: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| webDebuggingAccess | boolean | 是 | 设置是否启用网页调试功能。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_true表示开启网页调试功能，false表示关闭网页调试功能。 |
+| webDebuggingAccess | boolean | 是 | 设置是否启用网页调试功能。&lt;br/&gt;true表示开启网页调试功能，false表示关闭网页调试功能。 |
 | port | number | 是 | 表示 devtools 服务器的端口。指定端口后，将创建一个 TCP 服务器套接字，而不是 Unix 域套接字。 |
 
 **错误码：**
@@ -4329,6 +4624,8 @@ static setWebDestroyMode(mode: WebDestroyMode): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 <!--Device-WebviewController-static setWebDestroyMode(mode: WebDestroyMode): void--><!--Device-WebviewController-static setWebDestroyMode(mode: WebDestroyMode): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -4337,7 +4634,7 @@ static setWebDestroyMode(mode: WebDestroyMode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | web组件销毁模式，默认NORMAL\_\_\_ESCAPED\_UNDERSCORE\_\_\_MODE |
+| mode | [WebDestroyMode](../../apis-na/arkts-apis/arkts-na-webview-webdestroymode-e.md) | 是 | web组件销毁模式，默认NORMAL_MODE |
 
 ## setWebSchemeHandler
 
@@ -4351,6 +4648,8 @@ Set web scheme handler for specific scheme. This is only used for related web co
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-setWebSchemeHandler(scheme: string, handler: WebSchemeHandler): void--><!--Device-WebviewController-setWebSchemeHandler(scheme: string, handler: WebSchemeHandler): void-End-->
@@ -4362,14 +4661,14 @@ Set web scheme handler for specific scheme. This is only used for related web co
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | scheme | string | 是 | String value for url scheme. |
-| handler | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | Web scheme handler. |
+| handler | [WebSchemeHandler](../../apis-na/arkts-apis/arkts-na-webview-webschemehandler-c.md) | 是 | Web scheme handler. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Incorrect parameter types. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## slideScroll
 
@@ -4383,6 +4682,8 @@ slideScroll(vx: number, vy: number): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-slideScroll(vx: number, vy: number): void--><!--Device-WebviewController-slideScroll(vx: number, vy: number): void-End-->
@@ -4393,15 +4694,15 @@ slideScroll(vx: number, vy: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| vx | number | 是 | 轻扫滚动的水平速度分量，其中水平向右为速度正方向。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_单位：vp/s。 |
-| vy | number | 是 | 轻扫滚动的垂直速度分量，其中垂直向下为速度正方向。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_单位：vp/s。 |
+| vx | number | 是 | 轻扫滚动的水平速度分量，其中水平向右为速度正方向。&lt;br&gt;单位：vp/s。 |
+| vy | number | 是 | 轻扫滚动的垂直速度分量，其中垂直向下为速度正方向。&lt;br&gt;单位：vp/s。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## startCamera
 
@@ -4409,11 +4710,13 @@ slideScroll(vx: number, vy: number): void
 startCamera(): void
 ```
 
-开启当前网页摄像头捕获。使用摄像头功能前请在module.json5中添加权限: ohos.permission.CAMERA，具体权限的添加方法请参考 \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+开启当前网页摄像头捕获。使用摄像头功能前请在module.json5中添加权限: ohos.permission.CAMERA，具体权限的添加方法请参考 [在配置文件中声明权限](../../../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -4425,7 +4728,7 @@ startCamera(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## startDownload
 
@@ -4438,6 +4741,8 @@ startDownload(url: string): void
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -4455,9 +4760,8 @@ startDownload(url: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
-| [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 11 - 21 |
-| [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 11 - 21 |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
+| [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.<br>**适用版本：** 11 - 21 |
 
 ## stop
 
@@ -4471,6 +4775,8 @@ stop(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-stop(): void--><!--Device-WebviewController-stop(): void-End-->
@@ -4481,7 +4787,7 @@ stop(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## stopAllMedia
 
@@ -4495,6 +4801,8 @@ stopAllMedia(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-stopAllMedia(): void--><!--Device-WebviewController-stopAllMedia(): void-End-->
@@ -4505,7 +4813,7 @@ stopAllMedia(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## stopCamera
 
@@ -4519,6 +4827,8 @@ stopCamera(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-stopCamera(): void--><!--Device-WebviewController-stopCamera(): void-End-->
@@ -4529,7 +4839,7 @@ stopCamera(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## stopMicrophone
 
@@ -4542,6 +4852,8 @@ stopMicrophone(): void
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WebviewController-stopMicrophone(): void--><!--Device-WebviewController-stopMicrophone(): void-End-->
 
@@ -4565,6 +4877,8 @@ storeWebArchive(baseName: string, autoName: boolean): Promise<string>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-storeWebArchive(baseName: string, autoName: boolean): Promise<string>--><!--Device-WebviewController-storeWebArchive(baseName: string, autoName: boolean): Promise<string>-End-->
@@ -4576,7 +4890,7 @@ storeWebArchive(baseName: string, autoName: boolean): Promise<string>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | baseName | string | 是 | 生成的离线网页存储位置，该值不能为空。 |
-| autoName | boolean | 是 | 决定是否自动生成文件名。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_false表示按baseName的文件名存储，true表示根据当前URL自动生成文件名，并按baseName的文件目录存储。 |
+| autoName | boolean | 是 | 决定是否自动生成文件名。&lt;br&gt;false表示按baseName的文件名存储，true表示根据当前URL自动生成文件名，并按baseName的文件目录存储。 |
 
 **返回值：**
 
@@ -4588,8 +4902,8 @@ storeWebArchive(baseName: string, autoName: boolean): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. 3. Parameter verification failed. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3. Parameter verification failed. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 | [17100003](../errorcode-webview.md#17100003-resource路径错误) | Invalid resource path or file type. |
 
 ## storeWebArchive
@@ -4604,6 +4918,8 @@ storeWebArchive(baseName: string, autoName: boolean, callback: AsyncCallback<str
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-storeWebArchive(baseName: string, autoName: boolean, callback: AsyncCallback<string>): void--><!--Device-WebviewController-storeWebArchive(baseName: string, autoName: boolean, callback: AsyncCallback<string>): void-End-->
@@ -4615,15 +4931,15 @@ storeWebArchive(baseName: string, autoName: boolean, callback: AsyncCallback<str
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | baseName | string | 是 | 生成的离线网页存储位置，该值不能为空。 |
-| autoName | boolean | 是 | 决定是否自动生成文件名。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_false表示按baseName的文件名存储，true表示根据当前URL自动生成文件名，并按baseName的文件目录存储。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;string&gt; | 是 | 返回文件存储路径，保存网页失败会返回null。 |
+| autoName | boolean | 是 | 决定是否自动生成文件名。&lt;br&gt;false表示按baseName的文件名存储，true表示根据当前URL自动生成文件名，并按baseName的文件目录存储。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 返回文件存储路径，保存网页失败会返回null。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. 3. Parameter verification failed. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3. Parameter verification failed. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 | [17100003](../errorcode-webview.md#17100003-resource路径错误) | Invalid resource path or file type. |
 
 ## terminateRenderProcess
@@ -4638,6 +4954,8 @@ Destroy the rendering process. Calling this interface will actively destroy the 
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-WebviewController-terminateRenderProcess(): boolean--><!--Device-WebviewController-terminateRenderProcess(): boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -4646,13 +4964,13 @@ Destroy the rendering process. Calling this interface will actively destroy the 
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | true if it was possible to terminate the render process, otherwise false. |
+| boolean | true if it was possible to terminate the render process, otherwise false. Calling this on a not yet started, or an already terminated render will have no effect. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## trimMemoryByPressureLevel
 
@@ -4666,6 +4984,8 @@ static trimMemoryByPressureLevel(level: PressureLevel): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-static trimMemoryByPressureLevel(level: PressureLevel): void--><!--Device-WebviewController-static trimMemoryByPressureLevel(level: PressureLevel): void-End-->
@@ -4676,13 +4996,13 @@ static trimMemoryByPressureLevel(level: PressureLevel): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| level | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 需要清理内存的内存等级。 |
+| level | [PressureLevel](../../apis-na/arkts-apis/arkts-na-webview-pressurelevel-e.md) | 是 | 需要清理内存的内存等级。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Parameter string is too long.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: &lt;br&gt;1. Mandatory parameters are left unspecified. &lt;br&gt;2. Parameter string is too long. &lt;br&gt;3.Parameter verification failed. |
 
 ## waitForAttached
 
@@ -4695,6 +5015,8 @@ Wait for the controller to attach a web component until timeout.
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 <!--Device-WebviewController-waitForAttached(timeout: number): Promise<ControllerAttachState>--><!--Device-WebviewController-waitForAttached(timeout: number): Promise<ControllerAttachState>-End-->
 
@@ -4710,7 +5032,7 @@ Wait for the controller to attach a web component until timeout.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;ControllerAttachState&gt; | Promise used to return the state of attach. |
+| Promise&lt;[ControllerAttachState](../../apis-na/arkts-apis/arkts-na-webview-controllerattachstate-e.md)&gt; | Promise used to return the state of attach. |
 
 ## warmupServiceWorker
 
@@ -4723,6 +5045,8 @@ static warmupServiceWorker(url: string): void
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -4740,8 +5064,7 @@ static warmupServiceWorker(url: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 12 - 21 |
-| [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 12 - 21 |
+| [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.<br>**适用版本：** 12 - 21 |
 
 ## webPageSnapshot
 
@@ -4755,6 +5078,8 @@ webPageSnapshot(info: SnapshotInfo, callback: AsyncCallback<SnapshotResult>): vo
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-webPageSnapshot(info: SnapshotInfo, callback: AsyncCallback<SnapshotResult>): void--><!--Device-WebviewController-webPageSnapshot(info: SnapshotInfo, callback: AsyncCallback<SnapshotResult>): void-End-->
@@ -4765,8 +5090,8 @@ webPageSnapshot(info: SnapshotInfo, callback: AsyncCallback<SnapshotResult>): vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 全量绘制结果入参。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;SnapshotResult&gt; | 是 | 全量绘制回调结果。 |
+| info | [SnapshotInfo](../../apis-na/arkts-apis/arkts-na-webview-snapshotinfo-i.md) | 是 | 全量绘制结果入参。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[SnapshotResult](../../apis-na/arkts-apis/arkts-na-webview-snapshotresult-i.md)&gt; | 是 | 全量绘制回调结果。 |
 
 ## zoom
 
@@ -4774,11 +5099,13 @@ webPageSnapshot(info: SnapshotInfo, callback: AsyncCallback<SnapshotResult>): vo
 zoom(factor: number): void
 ```
 
-调整当前网页的缩放比例，[zoomAccess]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_需为true.
+调整当前网页的缩放比例，zoomAccess需为true.
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -4790,15 +5117,15 @@ zoom(factor: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| factor | number | 是 | 基于当前网页所需调整的相对缩放比例，入参要求大于0，当入参为1时为默认加载网页的缩放比例，入参小于1为缩小，入参大于1为放大。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_取值范围：(0，100]。 |
+| factor | number | 是 | 基于当前网页所需调整的相对缩放比例，入参要求大于0， 当入参为1时为默认加载网页的缩放比例，入参小于1为缩小，入参大于1为放大。 &lt;br&gt;取值范围：(0，100]。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
 | [17100004](../errorcode-webview.md#17100004-功能开关未打开) | Function not enabled. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## zoomIn
 
@@ -4812,6 +5139,8 @@ zoomIn(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-zoomIn(): void--><!--Device-WebviewController-zoomIn(): void-End-->
@@ -4822,8 +5151,8 @@ zoomIn(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
 | [17100004](../errorcode-webview.md#17100004-功能开关未打开) | Function not enabled. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 ## zoomOut
 
@@ -4837,6 +5166,8 @@ zoomOut(): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebviewController-zoomOut(): void--><!--Device-WebviewController-zoomOut(): void-End-->
@@ -4847,6 +5178,6 @@ zoomOut(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error.The WebviewController must be associated with a Web component. |
 | [17100004](../errorcode-webview.md#17100004-功能开关未打开) | Function not enabled. |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 

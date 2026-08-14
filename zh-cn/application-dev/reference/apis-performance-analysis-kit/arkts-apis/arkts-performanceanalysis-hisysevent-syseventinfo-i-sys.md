@@ -2,9 +2,11 @@
 
 系统事件信息对象接口。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-hiSysEvent-interface SysEventInfo--><!--Device-hiSysEvent-interface SysEventInfo-End-->
 
@@ -22,9 +24,11 @@ domain: string
 
 **类型：** string
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SysEventInfo-domain: string--><!--Device-SysEventInfo-domain: string-End-->
 
@@ -42,9 +46,11 @@ eventType: EventType
 
 **类型：** EventType
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SysEventInfo-eventType: EventType--><!--Device-SysEventInfo-eventType: EventType-End-->
 
@@ -62,9 +68,11 @@ name: string
 
 **类型：** string
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SysEventInfo-name: string--><!--Device-SysEventInfo-name: string-End-->
 
@@ -75,18 +83,20 @@ name: string
 ## params
 
 ```TypeScript
-params?: object
+params?: Record<string, boolean | int | double | string | bigint | boolean[] | int[] | double[] | string[] | bigint[]> | null | undefined
 ```
 
 事件参数。
 
-**类型：** object
+**类型：** Record&lt;string, boolean \| int \| double \| string \| bigint \| boolean[] \| int[] \| double[] \| string[] \| bigint[]&gt; \| null \| undefined
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-<!--Device-SysEventInfo-params?: object--><!--Device-SysEventInfo-params?: object-End-->
+**废弃版本：** -1
+
+<!--Device-SysEventInfo-params?: Record<string, boolean | int | double | string | bigint | boolean[] | int[] | double[] | string[] | bigint[]> | null | undefined--><!--Device-SysEventInfo-params?: Record<string, boolean | int | double | string | bigint | boolean[] | int[] | double[] | string[] | bigint[]> | null | undefined-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 

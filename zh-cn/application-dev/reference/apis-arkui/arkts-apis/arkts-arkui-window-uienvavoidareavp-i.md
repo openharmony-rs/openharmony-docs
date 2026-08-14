@@ -1,10 +1,12 @@
 # UIEnvAvoidAreaVP
 
-以vp为单位表示的窗口避让区域信息，在进行\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_适配时需关注。
+以vp为单位表示的窗口避让区域信息，在进行[沉浸式布局](../../../windowmanager/window-terminology.md#沉浸式布局)适配时需关注。
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-window-interface UIEnvAvoidAreaVP--><!--Device-window-interface UIEnvAvoidAreaVP-End-->
 
@@ -18,11 +20,13 @@ bottomRect: RectInVP
 
 中心位于窗口的两条对角线的底部的矩形区，单位为vp。
 
-**类型：** RectInVP
+**类型：** [RectInVP](arkts-arkui-window-rectinvp-i.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-UIEnvAvoidAreaVP-bottomRect: RectInVP--><!--Device-UIEnvAvoidAreaVP-bottomRect: RectInVP-End-->
 
@@ -36,11 +40,13 @@ leftRect: RectInVP
 
 中心位于窗口的两条对角线的左侧的矩形区，单位为vp。
 
-**类型：** RectInVP
+**类型：** [RectInVP](arkts-arkui-window-rectinvp-i.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-UIEnvAvoidAreaVP-leftRect: RectInVP--><!--Device-UIEnvAvoidAreaVP-leftRect: RectInVP-End-->
 
@@ -54,11 +60,13 @@ rightRect: RectInVP
 
 中心位于窗口的两条对角线的右侧的矩形区，单位为vp。
 
-**类型：** RectInVP
+**类型：** [RectInVP](arkts-arkui-window-rectinvp-i.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-UIEnvAvoidAreaVP-rightRect: RectInVP--><!--Device-UIEnvAvoidAreaVP-rightRect: RectInVP-End-->
 
@@ -72,11 +80,13 @@ topRect: RectInVP
 
 中心位于窗口的两条对角线的顶部的矩形区，单位为vp。
 
-**类型：** RectInVP
+**类型：** [RectInVP](arkts-arkui-window-rectinvp-i.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-UIEnvAvoidAreaVP-topRect: RectInVP--><!--Device-UIEnvAvoidAreaVP-topRect: RectInVP-End-->
 
@@ -94,7 +104,9 @@ visible: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-UIEnvAvoidAreaVP-visible: boolean--><!--Device-UIEnvAvoidAreaVP-visible: boolean-End-->
 

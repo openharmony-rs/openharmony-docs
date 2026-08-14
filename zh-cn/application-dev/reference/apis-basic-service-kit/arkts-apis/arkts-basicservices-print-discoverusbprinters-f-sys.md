@@ -8,9 +8,11 @@ function discoverUsbPrinters(): Promise<Array<PrinterInformation>>
 
 发现usb打印机，使用Promise异步回调。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -24,7 +26,7 @@ function discoverUsbPrinters(): Promise<Array<PrinterInformation>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;PrinterInformation&gt;&gt; | Promise对象，返回发现到的usb打印机信息。 |
+| Promise&lt;Array&lt;[PrinterInformation](arkts-basicservices-print-printerinformation-i.md)&gt;&gt; | Promise对象，返回发现到的usb打印机信息。 |
 
 **错误码：**
 
@@ -33,7 +35,7 @@ function discoverUsbPrinters(): Promise<Array<PrinterInformation>>
 | [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { print } from '@kit.BasicServicesKit';

@@ -1,10 +1,12 @@
 # BlurOnKeyboardHideMode
 
-Enum type supplied to \_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ for setting the web blurOnKeyboardHide mode.
+Enum type supplied to blurOnKeyboardHideMode for setting the web blurOnKeyboardHide mode.
 
 **起始版本：** 14
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare enum BlurOnKeyboardHideMode--><!--Device-unnamed-declare enum BlurOnKeyboardHideMode-End-->
 
@@ -21,6 +23,8 @@ The focused input elements on webview will not blur when soft keyboard is hidden
 **起始版本：** 14
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -39,6 +43,8 @@ The focused input elements on webview will blur when soft keyboard is hidden man
 **起始版本：** 14
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 

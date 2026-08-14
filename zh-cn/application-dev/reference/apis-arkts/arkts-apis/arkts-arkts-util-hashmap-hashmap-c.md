@@ -2,11 +2,13 @@
 
 HashMap底层采用数组、链表和红黑树实现，支持高效查询、插入和删除。HashMap存储内容基于键值对映射，不允许重复的key，且一个key只能对应一个value。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-<!--Device-unnamed-declare class HashMap<K, V>--><!--Device-unnamed-declare class HashMap<K, V>-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare class HashMap--><!--Device-unnamed-declare class HashMap-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -20,7 +22,9 @@ $_iterator(): IterableIterator<[K, V]>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -34,7 +38,7 @@ $_iterator(): IterableIterator<[K, V]>
 | --- | --- |
 | IterableIterator&lt;[K, V]&gt; | HashMap的迭代器。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let hashMap = new HashMap<string, int>();
@@ -63,11 +67,13 @@ for (let item of hashMap) {
 [Symbol.iterator](): IterableIterator<[K, V]>
 ```
 
-返回一个迭代器，迭代器的每一项都是一个包含键和值的数组[K, V]。
+返回一个迭代器，迭代器的每一项都是一个包含键和值的数组[K, V]。 > **说明：** > > 不建议在Symbol.iterator迭代过程中使用set、remove方法，因其可能导致迭代过程中的状态异常，如需在遍历中插入或删除元素，建议使用for循环来进行安全的插入与删除操作。
 
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -87,7 +93,7 @@ for (let item of hashMap) {
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The Symbol.iterator method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let hashMap = new HashMap<string, number>();
@@ -138,9 +144,11 @@ clear(): void
 
 清除HashMap中的所有元素，并将length置为0。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -154,7 +162,7 @@ clear(): void
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The clear method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -186,9 +194,11 @@ constructor()
 
 创建HashMap实例。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -202,7 +212,7 @@ constructor()
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The HashMap's constructor cannot be directly invoked. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -222,11 +232,13 @@ let hashMap: HashMap<string, int> = new HashMap<string, int>();
 entries(): IterableIterator<[K, V]>
 ```
 
-返回此HashMap中包含的键值对的新迭代器对象。
+返回此HashMap中包含的键值对的新迭代器对象。 > **说明：** > > 不建议在entries迭代过程中使用set、remove方法，因其可能导致迭代过程中的状态异常，如需在遍历中插入或删除元素，建议使用for循环来进行安全的插入与删除操作。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -246,7 +258,7 @@ entries(): IterableIterator<[K, V]>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The entries method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -308,11 +320,13 @@ for(let i = 0; i < 10; i++) {
 forEach(callbackFn: (value?: V, key?: K, map?: HashMap<K, V>) => void, thisArg?: Object): void
 ```
 
-在遍历过程中对每个元素调用一次回调函数。
+在遍历过程中对每个元素调用一次回调函数。 > **说明：** > > 不建议在forEach遍历过程中使用set、remove方法，因其可能导致迭代过程中的状态异常，如需在遍历中插入或删除元素，建议使用for循环来进行安全的插入与删除操作。
 
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -324,8 +338,8 @@ forEach(callbackFn: (value?: V, key?: K, map?: HashMap<K, V>) => void, thisArg?:
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value?: V, key?: K, map?: HashMap&lt;K, V&gt;) =&gt; void | 是 | 回调函数。 |
-| thisArg | Object | 否 | callbackFn被调用时用作this值，默认值为当前实例对象。 |
+| callbackFn | (value?: V, key?: K, map?: HashMap&lt;K, V&gt;) =&gt; void | 是 | 回调函数，在遍历每个元素时被调用，用于对元素执行自定义操作。 |
+| thisArg | Object | 否 | callbackFn被调用时用作this值。当需要在回调函数中访问其他对象的属性或方法时，可传入自定义thisArg。不传入时默认值为当前实例对象。 |
 
 **错误码：**
 
@@ -333,7 +347,7 @@ forEach(callbackFn: (value?: V, key?: K, map?: HashMap<K, V>) => void, thisArg?:
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The forEach method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let hashMap = new HashMap<string, number>();
@@ -368,7 +382,9 @@ forEach(callbackFn: HashMapCbFn<K, V>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -380,9 +396,9 @@ forEach(callbackFn: HashMapCbFn<K, V>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;K, V&gt; | 是 | 用于遍历容器中元素的回调函数。 |
+| callbackFn | [HashMapCbFn](arkts-arkts-hashmapcbfn-t.md)&lt;K, V&gt; | 是 | 用于遍历容器中元素的回调函数。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { HashMapCbFn } from '@kit.ArkTS';
@@ -408,6 +424,8 @@ get(key: K): V
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HashMap-get(key: K): V--><!--Device-HashMap-get(key: K): V-End-->
@@ -432,7 +450,7 @@ get(key: K): V
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The get method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let hashMap = new HashMap<string, number>();
@@ -452,7 +470,9 @@ get(key: K): V | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -464,7 +484,7 @@ get(key: K): V | undefined
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | K | 是 | 查找的指定key。 |
+| key | K | 是 | 指定要获取其对应value的键。 |
 
 **返回值：**
 
@@ -472,7 +492,7 @@ get(key: K): V | undefined
 | --- | --- |
 | V | 值或undefined。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 const hashMap: HashMap<string, int> = new HashMap<string, int>();
@@ -490,9 +510,11 @@ hasKey(key: K): boolean
 
 判断此HashMap中是否包含指定key。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -518,7 +540,7 @@ hasKey(key: K): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The hasKey method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -545,9 +567,11 @@ hasValue(value: V): boolean
 
 判断此HashMap中是否包含指定value。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -573,7 +597,7 @@ hasValue(value: V): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The hasValue method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -600,9 +624,11 @@ isEmpty(): boolean
 
 判断该HashMap是否为空。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -622,7 +648,7 @@ isEmpty(): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The isEmpty method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -646,11 +672,13 @@ console.info("result = ", result) // result = true
 keys(): IterableIterator<K>
 ```
 
-返回新迭代器对象，包含此HashMap中所有的键。
+返回新迭代器对象，包含此HashMap中所有的键。 > **说明：** > > 不建议在keys迭代过程中使用set、remove方法，因其可能导致迭代过程中的状态异常，建议使用for循环来进行安全的插入与删除操作。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -670,7 +698,7 @@ keys(): IterableIterator<K>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The keys method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -714,6 +742,8 @@ remove(key: K): V
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HashMap-remove(key: K): V--><!--Device-HashMap-remove(key: K): V-End-->
@@ -724,13 +754,13 @@ remove(key: K): V
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | K | 是 | 指定key。 |
+| key | K | 是 | 指定要删除元素的键，用于定位并移除HashMap中该键对应的键值对。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| V | 返回删除元素的值。 |
+| V | 返回删除元素的值；key不存在时返回undefined。 |
 
 **错误码：**
 
@@ -738,7 +768,7 @@ remove(key: K): V
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The remove method cannot be bound. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let hashMap = new HashMap<string, number>();
@@ -758,7 +788,9 @@ remove(key: K): V | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -770,7 +802,7 @@ remove(key: K): V | undefined
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | K | 是 | 指定key。 |
+| key | K | 是 | 指定要删除元素的键，用于定位并移除HashMap中该键对应的键值对。 |
 
 **返回值：**
 
@@ -778,7 +810,7 @@ remove(key: K): V | undefined
 | --- | --- |
 | V | 如果删除了指定key则返回其关联的值，否则返回undefined。 |
 
-**示例：**
+## 示例
 
 ArkTS-Sta示例：
 
@@ -798,9 +830,11 @@ replace(key: K, newValue: V): boolean
 
 替换指定键对应的值。仅当指定key已存在时才执行替换并返回true，若key不存在则不修改HashMap并返回false。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -827,7 +861,7 @@ replace(key: K, newValue: V): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The replace method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -855,9 +889,11 @@ set(key: K, value: V): Object
 
 向HashMap中添加或更新一个键值对。若key不存在，则添加新的键值对；若key已存在，则更新其对应的value。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -884,7 +920,7 @@ set(key: K, value: V): Object
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The set method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -910,9 +946,11 @@ setAll(map: HashMap<K, V>): void
 
 将指定HashMap中的所有元素设置到当前HashMap中，若当前HashMap中已存在相同key，则对应value会被覆盖。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -924,7 +962,7 @@ setAll(map: HashMap<K, V>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| map | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;K, V&gt; | 是 | 需要将其全部元素添加到当前HashMap的源HashMap对象。若map与当前HashMap存在重复key，map中的value将替换当前HashMap中对应key的value。 |
+| map | [HashMap](arkts-arkts-util-hashmap-hashmap-c.md)&lt;K, V&gt; | 是 | 需要将其全部元素添加到当前HashMap的源HashMap对象。若map与当前HashMap存在重复key，map中的value将替换当前HashMap中对应key的value。 |
 
 **错误码：**
 
@@ -932,7 +970,7 @@ setAll(map: HashMap<K, V>): void
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The setAll method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -966,11 +1004,13 @@ console.info("result:", result);  // result: true
 values(): IterableIterator<V>
 ```
 
-返回新迭代器对象，包含此HashMap中所有键对应的值。
+返回新迭代器对象，包含此HashMap中所有键对应的值。 > **说明：** > > 不建议在values迭代过程中使用set、remove方法，因其可能导致迭代过程中的状态异常，建议使用for循环来进行安全的插入与删除操作。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -990,7 +1030,7 @@ values(): IterableIterator<V>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The values method cannot be bound. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 
@@ -1034,7 +1074,9 @@ HashMap的元素个数。
 
 **起始版本：** 8
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

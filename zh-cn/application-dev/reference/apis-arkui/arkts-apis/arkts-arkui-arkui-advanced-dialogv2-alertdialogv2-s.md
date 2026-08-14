@@ -6,7 +6,7 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @ComponentV2
+**废弃版本：** -1
 
 <!--Device-unnamed-export declare struct AlertDialogV2--><!--Device-unnamed-export declare struct AlertDialogV2-End-->
 
@@ -15,7 +15,9 @@
 ## content
 
 ```TypeScript
-content: ResourceStr
+@Require
+  @Param
+  content: ResourceStr
 ```
 
 确认弹出框内容。
@@ -26,44 +28,46 @@ content: ResourceStr
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @Require、@Param
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AlertDialogV2-content: ResourceStr--><!--Device-AlertDialogV2-content: ResourceStr-End-->
+<!--Device-AlertDialogV2-@Require  @Param  content: ResourceStr--><!--Device-AlertDialogV2-@Require  @Param  content: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## primaryButton
 
 ```TypeScript
-primaryButton?: AdvancedDialogV2Button
+@Param
+  primaryButton?: AdvancedDialogV2Button
 ```
 
 确认弹出框左侧按钮。 默认不显示。
 
-**类型：** AdvancedDialogV2Button
+**类型：** [AdvancedDialogV2Button](arkts-arkui-arkui-advanced-dialogv2-advanceddialogv2button-c.md)
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @Param
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AlertDialogV2-primaryButton?: AdvancedDialogV2Button--><!--Device-AlertDialogV2-primaryButton?: AdvancedDialogV2Button-End-->
+<!--Device-AlertDialogV2-@Param  primaryButton?: AdvancedDialogV2Button--><!--Device-AlertDialogV2-@Param  primaryButton?: AdvancedDialogV2Button-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## primaryTitle
 
 ```TypeScript
-primaryTitle?: ResourceStr
+@Param
+  primaryTitle?: ResourceStr
 ```
 
 确认弹出框标题。 默认不显示。 **说明：** 标题超过两行会显示“...”。
@@ -74,44 +78,46 @@ primaryTitle?: ResourceStr
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @Param
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AlertDialogV2-primaryTitle?: ResourceStr--><!--Device-AlertDialogV2-primaryTitle?: ResourceStr-End-->
+<!--Device-AlertDialogV2-@Param  primaryTitle?: ResourceStr--><!--Device-AlertDialogV2-@Param  primaryTitle?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## secondaryButton
 
 ```TypeScript
-secondaryButton?: AdvancedDialogV2Button
+@Param
+  secondaryButton?: AdvancedDialogV2Button
 ```
 
 确认弹出框右侧按钮。 默认不显示。
 
-**类型：** AdvancedDialogV2Button
+**类型：** [AdvancedDialogV2Button](arkts-arkui-arkui-advanced-dialogv2-advanceddialogv2button-c.md)
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @Param
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AlertDialogV2-secondaryButton?: AdvancedDialogV2Button--><!--Device-AlertDialogV2-secondaryButton?: AdvancedDialogV2Button-End-->
+<!--Device-AlertDialogV2-@Param  secondaryButton?: AdvancedDialogV2Button--><!--Device-AlertDialogV2-@Param  secondaryButton?: AdvancedDialogV2Button-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## secondaryTitle
 
 ```TypeScript
-secondaryTitle?: ResourceStr
+@Param
+  secondaryTitle?: ResourceStr
 ```
 
 确认弹出框辅助文本。 默认不显示。 **说明：** 标题超过两行会显示“...”。
@@ -122,13 +128,13 @@ secondaryTitle?: ResourceStr
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-**装饰器类型：** @Param
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
-<!--Device-AlertDialogV2-secondaryTitle?: ResourceStr--><!--Device-AlertDialogV2-secondaryTitle?: ResourceStr-End-->
+<!--Device-AlertDialogV2-@Param  secondaryTitle?: ResourceStr--><!--Device-AlertDialogV2-@Param  secondaryTitle?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

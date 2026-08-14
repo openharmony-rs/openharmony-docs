@@ -16,7 +16,7 @@ AbilityComponent(value: { want: import('../api/@ohos.app.ability.Want').default 
 
 **废弃版本：** 10
 
-**替代接口：** <!--SUBSTITUTE_API-->UIExtensionComponentInterface<!--/SUBSTITUTE_API-->
+**替代接口：** UIExtensionComponentInterface
 
 <!--Device-AbilityComponentInterface-(value: { want: import('../api/@ohos.app.ability.Want').default }): AbilityComponentAttribute--><!--Device-AbilityComponentInterface-(value: { want: import('../api/@ohos.app.ability.Want').default }): AbilityComponentAttribute-End-->
 

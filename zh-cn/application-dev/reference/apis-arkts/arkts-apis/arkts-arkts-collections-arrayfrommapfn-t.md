@@ -4,11 +4,13 @@
 type ArrayFromMapFn<FromElementType, ToElementType> = (value: FromElementType, index: number) => ToElementType
 ```
 
-ArkTS Array归约函数类型，被Array类的'from'接口使用。
+ArkTS Array映射函数类型，被Array类的'from'接口使用。
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -20,12 +22,12 @@ ArkTS Array归约函数类型，被Array类的'from'接口使用。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | FromElementType | 是 | 当前正在处理的元素。  |
-| index | number | 是 | 当前遍历的ArkTS Array元素索引。  |
+| value | FromElementType | 是 | 当前遍历的ArkTS Array元素，用于映射转换为新的数组元素。 |
+| index | number | 是 | 当前遍历的ArkTS Array元素索引，从0开始。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ToElementType | 归约函数的结果，该结果会作为数组的新元素。 |
+| ToElementType | 映射函数的结果，该结果会作为数组的新元素。 |
 

@@ -2,9 +2,11 @@
 
 操作触屏的工具类型。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-export declare enum ToolType--><!--Device-unnamed-export declare enum ToolType-End-->
 
@@ -18,9 +20,11 @@ FINGER = 0
 
 手指。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ToolType-FINGER = 0--><!--Device-ToolType-FINGER = 0-End-->
 
@@ -34,9 +38,11 @@ PEN = 1
 
 笔。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ToolType-PEN = 1--><!--Device-ToolType-PEN = 1-End-->
 
@@ -50,9 +56,11 @@ RUBBER = 2
 
 橡皮擦。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ToolType-RUBBER = 2--><!--Device-ToolType-RUBBER = 2-End-->
 
@@ -66,9 +74,11 @@ BRUSH = 3
 
 笔刷。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ToolType-BRUSH = 3--><!--Device-ToolType-BRUSH = 3-End-->
 
@@ -82,9 +92,11 @@ PENCIL = 4
 
 铅笔。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ToolType-PENCIL = 4--><!--Device-ToolType-PENCIL = 4-End-->
 
@@ -98,9 +110,11 @@ AIRBRUSH = 5
 
 气笔。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ToolType-AIRBRUSH = 5--><!--Device-ToolType-AIRBRUSH = 5-End-->
 
@@ -114,9 +128,11 @@ MOUSE = 6
 
 鼠标。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ToolType-MOUSE = 6--><!--Device-ToolType-MOUSE = 6-End-->
 
@@ -130,9 +146,11 @@ LENS = 7
 
 透镜。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ToolType-LENS = 7--><!--Device-ToolType-LENS = 7-End-->
 

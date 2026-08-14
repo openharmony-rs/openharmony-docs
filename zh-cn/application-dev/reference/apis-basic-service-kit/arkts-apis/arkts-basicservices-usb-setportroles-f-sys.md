@@ -14,7 +14,7 @@ function setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRo
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.setPortRoles](arkts-basicservices-usbmanager-setportroles-f-sys.md#setportroles)
+**替代接口：** [setPortRoles](arkts-basicservices-usbmanager-setportroles-f-sys.md#setPortRoles（系统接口）)
 
 <!--Device-usb-function setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): Promise<boolean>--><!--Device-usb-function setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): Promise<boolean>-End-->
 
@@ -27,8 +27,8 @@ function setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | portId | number | 是 | 端口号。 |
-| powerRole | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 充电的角色。 |
-| dataRole | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 数据传输的角色。 |
+| powerRole | PowerRoleType | 是 | 充电的角色。 |
+| dataRole | DataRoleType | 是 | 数据传输的角色。 |
 
 **返回值：**
 
@@ -36,7 +36,7 @@ function setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRo
 | --- | --- |
 | Promise&lt;boolean&gt; | Promise对象，返回设置成功与否的结果。true表示设置成功，false表示设置失败。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let portId = 1;

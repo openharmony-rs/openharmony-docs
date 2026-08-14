@@ -10,7 +10,9 @@ function getAuthorizationManager(): AuthorizationManager
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -24,7 +26,7 @@ function getAuthorizationManager(): AuthorizationManager
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回系统账号授权管理的实例对象。 |
+| [AuthorizationManager](arkts-basicservices-osaccount-authorizationmanager-i-sys.md) | 返回系统账号授权管理的实例对象。 |
 
 **错误码：**
 
@@ -32,7 +34,7 @@ function getAuthorizationManager(): AuthorizationManager
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let authorizationManager: osAccount.AuthorizationManager = osAccount.getAuthorizationManager();

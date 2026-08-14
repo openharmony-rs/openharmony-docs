@@ -45,8 +45,8 @@ Defines the common types for the native module.
 | [ArkUI_AccessibilityState](capi-arkui-nativemodule-arkui-accessibilitystate.md) | ArkUI_AccessibilityState | Defines the accessibility state for the component. |
 | [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md) | ArkUI_AccessibilityValue | Defines the accessibility value for the component. |
 | [ArkUI_CustomProperty](capi-arkui-nativemodule-arkui-customproperty.md) | ArkUI_CustomProperty | 定义表示组件自定义属性的 ArkUI_CustomProperty 结构体。 通过相关接口，可以为 ArkUI 组件添加、移除和获取自定义属性，以及获取自定义属性的字符串值。 |
-| [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md) | ArkUI_HostWindowInfo | Define the information of the HostWindowInfo class for window properties. |
-| [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) | ArkUI_ActiveChildrenInfo | 定义ArkUI_ActiveChildrenInfo结构体，用于保存内部活跃状态为true的FrameNode子节点信 息，支持查询子节点数量和按下标获取子节点。 该结构体实例由OH_ArkUI_NodeUtils_GetActiveChildrenInfo生成，使用完毕后必须调用OH_ArkUI_ActiveChildrenInfo_Destroy销毁。 |
+| [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md) | ArkUI_HostWindowInfo | 定义窗口属性的HostWindowInfo类信息。 |
+| [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) | ArkUI_ActiveChildrenInfo | 定义ArkUI_ActiveChildrenInfo结构体，用于保存内部活跃状态为true的FrameNode子节点信息，支持查询子节点数量和按下标获取子节点。该结构体实例由OH_ArkUI_NodeUtils_GetActiveChildrenInfo生成，使用完毕后必须调用OH_ArkUI_ActiveChildrenInfo_Destroy销毁。 |
 | [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md) | ArkUI_CrossLanguageOption | 定义跨语言配置 项，用于配置目标节点的跨语言访问能力，例如是否允许跨语言修改属性；从API version 26.0.0开始，还可配置节点树跨语言操作状态。 |
 | [AbilityBase_Want](capi-arkui-nativemodule-abilitybase-want.md) | AbilityBase_Want | Declares the Ability base want. |
 | [ArkUI_EmbeddedComponentOption](capi-arkui-nativemodule-arkui-embeddedcomponentoption.md) | ArkUI_EmbeddedComponentOption | Define the EmbeddedComponentOption for the EmbeddedComponent. |
@@ -138,7 +138,7 @@ Defines the common types for the native module.
 | [ArkUI_SwiperIndicatorType](#arkui_swiperindicatortype) | ArkUI_SwiperIndicatorType | Define the navigation indicator type of the swiper. |
 | [ArkUI_ListItemSwipeActionState](#arkui_listitemswipeactionstate) | ArkUI_ListItemSwipeActionState | Define the pattern of element arrangement in the main axis direction of the Swiper component. |
 | [ArkUI_ListItemSwipeEdgeEffect](#arkui_listitemswipeedgeeffect) | ArkUI_ListItemSwipeEdgeEffect | Define the explicit and implicit mode of the SwipeAction method for the Listitem component. |
-| [ArkUI_ErrorCode](#arkui_errorcode) | ArkUI_ErrorCode | Define error code enumeration values. |
+| [ArkUI_ErrorCode](#arkui_errorcode) | ArkUI_ErrorCode | 定义错误码枚举值。 |
 | [ArkUI_AnimationStatus](#arkui_animationstatus) | ArkUI_AnimationStatus | Defines the playback status for the image animator. |
 | [ArkUI_AnimationFillMode](#arkui_animationfillmode) | ArkUI_AnimationFillMode | Defines the status before and after execution of the animation in the current playback direction. |
 | [ArkUI_AccessibilityCheckedState](#arkui_accessibilitycheckedstate) | ArkUI_AccessibilityCheckedState | Defines the state type for the accessibility checkbox. |
@@ -152,9 +152,9 @@ Defines the common types for the native module.
 | [ArkUI_SafeAreaEdge](#arkui_safeareaedge) | ArkUI_SafeAreaEdge | defines the enumerated value of the direction of the extended security zone. |
 | [ArkUI_KeyboardAvoidMode](#arkui_keyboardavoidmode) | ArkUI_KeyboardAvoidMode | defines the enumerated value of the customDialog's keyboard avoid mode. |
 | [ArkUI_HoverModeAreaType](#arkui_hovermodeareatype) | ArkUI_HoverModeAreaType | defines the enumerated value of area in hover mode. |
-| [ArkUI_ExpandMode](#arkui_expandmode) | ArkUI_ExpandMode | Enumerates the expand modes. |
-| [ArkUI_EdgeDirection](#arkui_edgedirection) | ArkUI_EdgeDirection | Enumerates the edge direction. |
-| [ArkUI_CornerDirection](#arkui_cornerdirection) | ArkUI_CornerDirection | Enumerates the corner direction. |
+| [ArkUI_ExpandMode](#arkui_expandmode) | ArkUI_ExpandMode | 定义子节点展开模式枚举值。 |
+| [ArkUI_EdgeDirection](#arkui_edgedirection) | ArkUI_EdgeDirection | 定义矩形边方向。 |
+| [ArkUI_CornerDirection](#arkui_cornerdirection) | ArkUI_CornerDirection | 定义角度方向。 |
 | [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy) | ArkUI_PixelRoundCalcPolicy | Enumerates the PixelRoundPolicy. |
 | [ArkUI_MenuPolicy](#arkui_menupolicy) | ArkUI_MenuPolicy | Menu pop-up strategy. |
 | [ArkUI_ListItemSwipeActionDirection](#arkui_listitemswipeactiondirection) | ArkUI_ListItemSwipeActionDirection | Define the direction to expand the swipe action. |
@@ -387,17 +387,17 @@ Defines the common types for the native module.
 | [int32_t OH_ArkUI_AccessibilityValue_GetRangeCurrent(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_getrangecurrent) | Get accessibility current value. |
 | [void OH_ArkUI_AccessibilityValue_SetText(ArkUI_AccessibilityValue* value, const char* text)](#oh_arkui_accessibilityvalue_settext) | Set accessibility text value. |
 | [const char* OH_ArkUI_AccessibilityValue_GetText(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_gettext) | Get accessibility text value. |
-| [void OH_ArkUI_CustomProperty_Destroy(ArkUI_CustomProperty* handle)](#oh_arkui_customproperty_destroy) | Destroy the instance of Customs Property. |
-| [const char* OH_ArkUI_CustomProperty_GetStringValue(ArkUI_CustomProperty* handle)](#oh_arkui_customproperty_getstringvalue) | Get custom attribute value information. |
-| [const char* OH_ArkUI_HostWindowInfo_GetName(ArkUI_HostWindowInfo* info)](#oh_arkui_hostwindowinfo_getname) | Get window name from HostWindowInfo. |
-| [void OH_ArkUI_HostWindowInfo_Destroy(ArkUI_HostWindowInfo* info)](#oh_arkui_hostwindowinfo_destroy) | Destroy the instance of HostWindowInfo. |
+| [void OH_ArkUI_CustomProperty_Destroy(ArkUI_CustomProperty* handle)](#oh_arkui_customproperty_destroy) | 销毁[ArkUI_CustomProperty](capi-arkui-nativemodule-arkui-customproperty.md)实例。 |
+| [const char* OH_ArkUI_CustomProperty_GetStringValue(ArkUI_CustomProperty* handle)](#oh_arkui_customproperty_getstringvalue) | 获取自定义属性对象的value信息。 |
+| [const char* OH_ArkUI_HostWindowInfo_GetName(ArkUI_HostWindowInfo* info)](#oh_arkui_hostwindowinfo_getname) | 获取[ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md)对象中的窗口名称。 |
+| [void OH_ArkUI_HostWindowInfo_Destroy(ArkUI_HostWindowInfo* info)](#oh_arkui_hostwindowinfo_destroy) | 销毁[ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md)对象。 |
 | [void OH_ArkUI_ActiveChildrenInfo_Destroy(ArkUI_ActiveChildrenInfo* handle)](#oh_arkui_activechildreninfo_destroy) | 销毁{@link OH_ArkUI_ActiveChildrenInfo}实例，释放获取活跃子节点信息时分配的资源。 |
-| [ArkUI_NodeHandle OH_ArkUI_ActiveChildrenInfo_GetNodeByIndex(ArkUI_ActiveChildrenInfo* handle, int32_t index)](#oh_arkui_activechildreninfo_getnodebyindex) | Retrieve the child nodes of ActiveChildenInfo with the structure index. |
-| [int32_t OH_ArkUI_ActiveChildrenInfo_GetCount(ArkUI_ActiveChildrenInfo* handle)](#oh_arkui_activechildreninfo_getcount) | 获取{@link OH_ArkUI_ActiveChildrenInfo}结构体内的子节点数量，适用于遍历活跃子节点前确定数量。 |
-| [ArkUI_CrossLanguageOption* OH_ArkUI_CrossLanguageOption_Create(void)](#oh_arkui_crosslanguageoption_create) | Create a cross-language option instance. |
-| [void OH_ArkUI_CrossLanguageOption_Destroy(ArkUI_CrossLanguageOption* option)](#oh_arkui_crosslanguageoption_destroy) | Destroy the cross-language option instance. |
-| [void OH_ArkUI_CrossLanguageOption_SetAttributeSettingStatus(ArkUI_CrossLanguageOption* option, bool enabled)](#oh_arkui_crosslanguageoption_setattributesettingstatus) | Enable the attribute setting in the cross-language option. |
-| [bool OH_ArkUI_CrossLanguageOption_GetAttributeSettingStatus(ArkUI_CrossLanguageOption* option)](#oh_arkui_crosslanguageoption_getattributesettingstatus) | Get the attribute setting enable of the cross-language option. |
+| [ArkUI_NodeHandle OH_ArkUI_ActiveChildrenInfo_GetNodeByIndex(ArkUI_ActiveChildrenInfo* handle, int32_t index)](#oh_arkui_activechildreninfo_getnodebyindex) | 获取{@link OH_ArkUI_ActiveChildrenInfo}结构体的下标为index的子节点。 |
+| [int32_t OH_ArkUI_ActiveChildrenInfo_GetCount(ArkUI_ActiveChildrenInfo* handle)](#oh_arkui_activechildreninfo_getcount) | 获取[ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md)结构体内的子节点数量，适用于遍历活跃子节点前确定数量。 |
+| [ArkUI_CrossLanguageOption* OH_ArkUI_CrossLanguageOption_Create(void)](#oh_arkui_crosslanguageoption_create) | 创建跨语言配置项实例。 |
+| [void OH_ArkUI_CrossLanguageOption_Destroy(ArkUI_CrossLanguageOption* option)](#oh_arkui_crosslanguageoption_destroy) | 销毁跨语言配置项实例。 |
+| [void OH_ArkUI_CrossLanguageOption_SetAttributeSettingStatus(ArkUI_CrossLanguageOption* option, bool enabled)](#oh_arkui_crosslanguageoption_setattributesettingstatus) | 设置配置项中是否允许跨语言修改属性。 |
+| [bool OH_ArkUI_CrossLanguageOption_GetAttributeSettingStatus(ArkUI_CrossLanguageOption* option)](#oh_arkui_crosslanguageoption_getattributesettingstatus) | 获取配置项中是否允许跨语言修改属性。 |
 | [ArkUI_TextPickerRangeContentArray* OH_ArkUI_TextPickerRangeContentArray_Create(int32_t length)](#oh_arkui_textpickerrangecontentarray_create) | Creates a TextPickerRangeContent instance. |
 | [void OH_ArkUI_TextPickerRangeContentArray_SetIconAtIndex(ArkUI_TextPickerRangeContentArray* handle, char* icon, int32_t index)](#oh_arkui_textpickerrangecontentarray_seticonatindex) | Sets the icon resource path or URI for one item in an {@link ArkUI_TextPickerRangeContentArray}. |
 | [void OH_ArkUI_TextPickerRangeContentArray_SetTextAtIndex(ArkUI_TextPickerRangeContentArray* handle, char* text, int32_t index)](#oh_arkui_textpickerrangecontentarray_settextatindex) | Sets the display text for one item in an {@link ArkUI_TextPickerRangeContentArray}. |
@@ -2041,63 +2041,63 @@ enum ArkUI_ErrorCode
 
 **描述**
 
-Define error code enumeration values.
+定义错误码枚举值。
 
 **起始版本：** 12
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ERROR_CODE_NO_ERROR = 0 | @error No errors. |
-| ARKUI_ERROR_CODE_PARAM_INVALID = 401 | @error Parameter error. |
-| ARKUI_ERROR_CODE_CAPI_INIT_ERROR = 500 |  CAPI init error.<br>**起始版本：** 18 |
-| ARKUI_ERROR_CODE_INTERNAL_ERROR = 100001 |  Internal error occurs, such as failure occurs because of the internal environment error,or operation failed because of the internal execution failed.<br>**起始版本：** 15 |
-| ARKUI_ERROR_CODE_XCOMPONENT_STATE_INVALID = 103501 |  The XComponent is in invalid state.<br>**起始版本：** 19 |
-| ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED = 106102 | @error The component does not support specific properties or events. |
-| ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED = 106103 | @error The corresponding operation does not support nodes created by ArkTS. |
-| ARKUI_ERROR_CODE_ADAPTER_NOT_BOUND = 106104 | @error The lazy loading adapter is not bound to the component. |
-| ARKUI_ERROR_CODE_ADAPTER_EXIST = 106105 | @error The adapter already exists. |
-| ARKUI_ERROR_CODE_CHILD_NODE_EXIST = 106106 | @error The corresponding node already has a child node and cannot add an adapter. |
-| ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INDEX_OUT_OF_RANGE = 106107 | The parameter length in the parameter event exceeds the limit. |
-| ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INVALID = 106108 | The data does not exist in the component event. |
-| ARKUI_ERROR_CODE_NODE_EVENT_NO_RETURN = 106109 | The component event does not support return values. |
-| ARKUI_ERROR_CODE_NODE_UNSUPPORTED_EVENT_TYPE = 106110 |  The event type is not supported by the node.<br>**起始版本：** 21 |
-| ARKUI_ERROR_CODE_NODE_INDEX_INVALID = 106200 | The index value is invalid. |
-| ARKUI_ERROR_CODE_GET_INFO_FAILED = 106201 | Failed to query route navigation information. |
-| ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR = 106202 | The buffer size is not large enough. |
-| ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE = 106203 |  The node is not on main tree.<br>**起始版本：** 15 |
-| ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD = 106204 |  The node is running on invalid thread.<br>**起始版本：** 22 |
-| ARKUI_ERROR_CODE_FORCE_DARK_CONFIG_INVALID = 106205 |  Force dark config is invalid.<br>**起始版本：** 20 |
-| ARKUI_ERROR_CODE_NODE_IS_ADOPTED = 106206 |  The node has already been adopted.<br>**起始版本：** 22 |
-| ARKUI_ERROR_CODE_NODE_HAS_PARENT = 106207 |  This node already has a parent node.<br>**起始版本：** 22 |
-| ARKUI_ERROR_CODE_NODE_CAN_NOT_BE_ADOPTED = 106208 |  The node cannot be adopted.<br>**起始版本：** 22 |
-| ARKUI_ERROR_CODE_NODE_CAN_NOT_ADOPT_TO = 106209 |  The node cannot adopt children.<br>**起始版本：** 22 |
-| ARKUI_ERROR_CODE_NODE_IS_NOT_IN_ADOPTED_CHILDREN = 106210 |  This child node is not adopted by the parent node.<br>**起始版本：** 22 |
-| ARKUI_ERROR_CODE_NOT_CUSTOM_NODE = 106401 |  The node type is not custom node.<br>**起始版本：** 20 |
-| ARKUI_ERROR_CODE_CHILD_EXISTED = 106402 |  Node already has children.<br>**起始版本：** 20 |
-| ARKUI_ERROR_CODE_RENDER_PARENT_EXISTED = 106403 |  RenderNode parent is existed.<br>**起始版本：** 20 |
-| ARKUI_ERROR_CODE_RENDER_CHILD_NOT_EXIST = 106404 |  RenderNode child is not exist.<br>**起始版本：** 20 |
-| ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE = 106405 |  Param is out of range.<br>**起始版本：** 20 |
-| ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE = 106406 |  The RenderNode is obtained from a FrameNode.<br>**起始版本：** 22 |
-| ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE = 106407 |  The RenderNode is obtained from a FrameNode,and its corresponding FrameNode is no longer in the adopted state.<br>**起始版本：** 22 |
-| ARKUI_ERROR_CODE_RENDER_NOT_ADOPTED_NODE = 106408 |  The node is not adopted.<br>**起始版本：** 22 |
-| ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE = 150001 |  The node requesting focus is not focusable.<br>**起始版本：** 15 |
-| ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE_ANCESTOR = 150002 |  The node requesting focus has unfocusable ancestor.<br>**起始版本：** 15 |
-| ARKUI_ERROR_CODE_FOCUS_NON_EXISTENT = 150003 |  The node requesting focus does not exists.<br>**起始版本：** 15 |
-| ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_TIMEOUT = 160002 |  The snapshot taking is timeout.<br>**起始版本：** 15 |
-| ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_MODE_NOT_SUPPORTED = 160003 |  The provided color space or dynamic range mode is not supported. For details about the error codes,see [Snapshot Error Codes](../apis-arkui/errorcode-snapshot.md).<br>**起始版本：** 23 |
-| ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_AUTO_NOT_SUPPORTED = 160004 |  The isAuto parameter of the color space or dynamic range mode is set to true for offscreen node snapshot.For details about the error codes, see [Snapshot Error Codes](../apis-arkui/errorcode-snapshot.md).<br>**起始版本：** 23 |
-| ARKUI_ERROR_CODE_NON_SCROLLABLE_CONTAINER = 180001 | The component is not a scroll container. |
-| ARKUI_ERROR_CODE_BUFFER_SIZE_NOT_ENOUGH = 180002 | The buffer is not large enough. |
-| ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT = 180003 |  The event is not a clone event.<br>**起始版本：** 15 |
-| ARKUI_ERROR_CODE_POST_CLONED_COMPONENT_STATUS_ABNORMAL = 180004 |  The component status is abnormal.<br>**起始版本：** 15 |
-| ARKUI_ERROR_CODE_POST_CLONED_NO_COMPONENT_HIT_TO_RESPOND_TO_THE_EVENT = 180005 |  No component hit to respond to the event.<br>**起始版本：** 15 |
-| ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED = 180006 |  Input event type not supported.<br>**起始版本：** 20 |
-| ARKUI_ERROR_CODE_INVALID_STYLED_STRING = 180101 |  invalid styled string.<br>**起始版本：** 14 |
-| ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED = 180102 |  The gesture recognizer type is not supported.<br>**起始版本：** 18 |
-| ARKUI_ERROR_CODE_UI_CONTEXT_INVALID = 190001 |  The uiContext is invalid.<br>**起始版本：** 18 |
-| ARKUI_ERROR_CODE_CALLBACK_INVALID = 190002 |  The callback function is invalid.<br>**起始版本：** 18 |
-| ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED = 190004 |  operation is not allowed for current drag drop pharse.<br>**起始版本：** 19 |
-| ARKUI_ERROR_CODE_PARAM_ERROR = 100023 |  Parameter error.<br>**起始版本：** 21 |
+| ARKUI_ERROR_CODE_NO_ERROR = 0 | 无错误。 |
+| ARKUI_ERROR_CODE_PARAM_INVALID = 401 | 参数错误。 |
+| ARKUI_ERROR_CODE_CAPI_INIT_ERROR = 500 |  |
+| ARKUI_ERROR_CODE_INTERNAL_ERROR = 100001 |  |
+| ARKUI_ERROR_CODE_PARAM_ERROR = 100023 |  |
+| ARKUI_ERROR_CODE_XCOMPONENT_STATE_INVALID = 103501 |  |
+| ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED = 106102 | 组件不支持特定的属性或者事件。错误码的详细介绍请参见{@link 交互事件错误码}。 |
+| ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED = 106103 | 不支持对ArkTS创建的节点执行对应的操作。错误码的详细介绍请参见{@link 106103 对应的操作不支持ArkTS创建的节点}。 |
+| ARKUI_ERROR_CODE_ADAPTER_NOT_BOUND = 106104 | 懒加载适配器未绑定到组件上。错误码的详细介绍请参见{@link 106104 适配器未绑定}。 |
+| ARKUI_ERROR_CODE_ADAPTER_EXIST = 106105 | 适配器已存在。错误码的详细介绍请参见{@link 106105 适配器已存在}。 |
+| ARKUI_ERROR_CODE_CHILD_NODE_EXIST = 106106 | 对应节点已存在子节点，无法添加适配器。错误码的详细介绍请参见{@link 106106 子节点已存在}。 |
+| ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INDEX_OUT_OF_RANGE = 106107 | 组件事件中参数长度超限。错误码的详细介绍请参见{@link 106107 参数下标越界}。 |
+| ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INVALID = 106108 | 组件事件中不存在该数据。错误码的详细介绍请参见{@link 106108 数据不存在}。 |
+| ARKUI_ERROR_CODE_NODE_EVENT_NO_RETURN = 106109 | 组件事件不支持返回值。错误码的详细介绍请参见{@link 106109 不支持返回值}。 |
+| ARKUI_ERROR_CODE_NODE_UNSUPPORTED_EVENT_TYPE = 106110 |  |
+| ARKUI_ERROR_CODE_NODE_INDEX_INVALID = 106200 | 传入的索引值非法。错误码的详细介绍请参见{@link 106200 传入的索引值非法}。 |
+| ARKUI_ERROR_CODE_GET_INFO_FAILED = 106201 | 查询路由导航信息失败。错误码的详细介绍请参见{@link 106201 查询路由导航信息失败}。 |
+| ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR = 106202 | 传入的buffer size异常（数据过大）。错误码的详细介绍请参见{@link 106202 传入的buffer size异常}。 |
+| ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE = 106203 |  |
+| ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD = 106204 |  |
+| ARKUI_ERROR_CODE_FORCE_DARK_CONFIG_INVALID = 106205 |  |
+| ARKUI_ERROR_CODE_NODE_IS_ADOPTED = 106206 |  |
+| ARKUI_ERROR_CODE_NODE_HAS_PARENT = 106207 |  |
+| ARKUI_ERROR_CODE_NODE_CAN_NOT_BE_ADOPTED = 106208 |  |
+| ARKUI_ERROR_CODE_NODE_CAN_NOT_ADOPT_TO = 106209 |  |
+| ARKUI_ERROR_CODE_NODE_IS_NOT_IN_ADOPTED_CHILDREN = 106210 |  |
+| ARKUI_ERROR_CODE_NOT_CUSTOM_NODE = 106401 |  |
+| ARKUI_ERROR_CODE_CHILD_EXISTED = 106402 |  |
+| ARKUI_ERROR_CODE_RENDER_PARENT_EXISTED = 106403 |  |
+| ARKUI_ERROR_CODE_RENDER_CHILD_NOT_EXIST = 106404 |  |
+| ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE = 106405 |  |
+| ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE = 106406 |  |
+| ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE = 106407 |  |
+| ARKUI_ERROR_CODE_RENDER_NOT_ADOPTED_NODE = 106408 |  |
+| ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE = 150001 |  |
+| ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE_ANCESTOR = 150002 |  |
+| ARKUI_ERROR_CODE_FOCUS_NON_EXISTENT = 150003 |  |
+| ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_TIMEOUT = 160002 |  |
+| ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_MODE_NOT_SUPPORTED = 160003 |  |
+| ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_AUTO_NOT_SUPPORTED = 160004 |  |
+| ARKUI_ERROR_CODE_NON_SCROLLABLE_CONTAINER = 180001 | 非滚动类容器。错误码的详细介绍请参见{@link 交互事件错误码}。 |
+| ARKUI_ERROR_CODE_BUFFER_SIZE_NOT_ENOUGH = 180002 | 存储区大小不足。错误码的详细介绍请参见{@link 交互事件错误码}。 |
+| ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT = 180003 |  |
+| ARKUI_ERROR_CODE_POST_CLONED_COMPONENT_STATUS_ABNORMAL = 180004 |  |
+| ARKUI_ERROR_CODE_POST_CLONED_NO_COMPONENT_HIT_TO_RESPOND_TO_THE_EVENT = 180005 |  |
+| ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED = 180006 |  |
+| ARKUI_ERROR_CODE_INVALID_STYLED_STRING = 180101 |  |
+| ARKUI_ERROR_CODE_UI_CONTEXT_INVALID = 190001 |  |
+| ARKUI_ERROR_CODE_CALLBACK_INVALID = 190002 |  |
+| ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED = 180102 |  |
+| ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED = 190004 |  |
 
 ### ArkUI_AnimationStatus
 
@@ -2359,15 +2359,15 @@ enum ArkUI_ExpandMode
 
 **描述**
 
-Enumerates the expand modes.
+定义子节点展开模式枚举值。
 
 **起始版本：** 15
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_NOT_EXPAND = 0 | Not expand. |
-| ARKUI_EXPAND = 1 | Expand. |
-| ARKUI_LAZY_EXPAND = 2 | Lazy expand. Expand the children of node if needed. |
+| ARKUI_NOT_EXPAND = 0 | 不展开。 |
+| ARKUI_EXPAND = 1 | 展开。 |
+| ARKUI_LAZY_EXPAND = 2 | 懒展开，按需展开当前节点的子节点，节点展开条件可以参考{@link LazyForEach：数据懒加载}。 |
 
 ### ArkUI_EdgeDirection
 
@@ -2377,17 +2377,17 @@ enum ArkUI_EdgeDirection
 
 **描述**
 
-Enumerates the edge direction.
+定义矩形边方向。
 
 **起始版本：** 20
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_EDGE_DIRECTION_ALL = 0 | Set all edge direction. |
-| ARKUI_EDGE_DIRECTION_LEFT | Set left edge direction. |
-| ARKUI_EDGE_DIRECTION_RIGHT | Set right edge direction. |
-| ARKUI_EDGE_DIRECTION_TOP | Set top edge direction. |
-| ARKUI_EDGE_DIRECTION_BOTTOM | Set bottom edge direction. |
+| ARKUI_EDGE_DIRECTION_ALL = 0 | 设置四个方向的内容。 |
+| ARKUI_EDGE_DIRECTION_LEFT | 设置左侧方向内容。 |
+| ARKUI_EDGE_DIRECTION_RIGHT | 设置右侧方向内容。 |
+| ARKUI_EDGE_DIRECTION_TOP | 设置上侧方向内容。 |
+| ARKUI_EDGE_DIRECTION_BOTTOM | 设置下侧方向内容。 |
 
 ### ArkUI_CornerDirection
 
@@ -2397,17 +2397,17 @@ enum ArkUI_CornerDirection
 
 **描述**
 
-Enumerates the corner direction.
+定义角度方向。
 
 **起始版本：** 20
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_CORNER_DIRECTION_ALL = 0 | Set all corner direction. |
-| ARKUI_CORNER_DIRECTION_TOP_LEFT | Set top left corner direction. |
-| ARKUI_CORNER_DIRECTION_TOP_RIGHT | Set top right corner direction. |
-| ARKUI_CORNER_DIRECTION_BOTTOM_LEFT | Set bottom left corner direction. |
-| ARKUI_CORNER_DIRECTION_BOTTOM_RIGHT | Set bottom right corner direction. |
+| ARKUI_CORNER_DIRECTION_ALL = 0 | 设置四个角度方向的内容。 |
+| ARKUI_CORNER_DIRECTION_TOP_LEFT | 设置左上侧方向内容。 |
+| ARKUI_CORNER_DIRECTION_TOP_RIGHT | 设置右上侧方向内容。 |
+| ARKUI_CORNER_DIRECTION_BOTTOM_LEFT | 设置左下侧方向内容。 |
+| ARKUI_CORNER_DIRECTION_BOTTOM_RIGHT | 设置右下侧方向容。 |
 
 ### ArkUI_PixelRoundCalcPolicy
 
@@ -2625,13 +2625,13 @@ Creates a deep copy of a size constraint.
 
 | 参数项 | 描述 |
 | -- | -- |
-| const ArkUI_LayoutConstraint* Constraint | Indicates the pointer to the size constraint. |
+| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_LayoutConstraint* | Returns the pointer to the new size constraint. |
+| [ArkUI_LayoutConstraint*](capi-arkui-nativemodule-arkui-layoutconstraint.md) | Returns the pointer to the new size constraint. |
 
 ### OH_ArkUI_LayoutConstraint_Dispose()
 
@@ -2649,7 +2649,7 @@ Destroys the pointer to a size constraint.
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_LayoutConstraint* Constraint | Indicates the pointer to the size constraint. |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
 
 ### OH_ArkUI_LayoutConstraint_GetMaxWidth()
 
@@ -2667,7 +2667,7 @@ Obtains the maximum width for a size constraint, in px.
 
 | 参数项 | 描述 |
 | -- | -- |
-| const ArkUI_LayoutConstraint* Constraint | Indicates the pointer to the size constraint. |
+| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
 
 **返回：**
 
@@ -2691,7 +2691,7 @@ Obtains the minimum width for a size constraint, in px.
 
 | 参数项 | 描述 |
 | -- | -- |
-| const ArkUI_LayoutConstraint* Constraint | Indicates the pointer to the size constraint. |
+| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
 
 **返回：**
 
@@ -2715,7 +2715,7 @@ Obtains the maximum height for a size constraint, in px.
 
 | 参数项 | 描述 |
 | -- | -- |
-| const ArkUI_LayoutConstraint* Constraint | Indicates the pointer to the size constraint. |
+| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
 
 **返回：**
 
@@ -2739,7 +2739,7 @@ Obtains the minimum height for a size constraint, in px.
 
 | 参数项 | 描述 |
 | -- | -- |
-| const ArkUI_LayoutConstraint* Constraint | Indicates the pointer to the size constraint. |
+| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
 
 **返回：**
 
@@ -2763,7 +2763,7 @@ Obtains the width percentage reference for a size constraint, in px.
 
 | 参数项 | 描述 |
 | -- | -- |
-| const ArkUI_LayoutConstraint* Constraint | Indicates the pointer to the size constraint. |
+| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
 
 **返回：**
 
@@ -2787,7 +2787,7 @@ Obtains the height percentage reference for a size constraint, in px.
 
 | 参数项 | 描述 |
 | -- | -- |
-| const ArkUI_LayoutConstraint* Constraint | Indicates the pointer to the size constraint. |
+| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
 
 **返回：**
 
@@ -2811,7 +2811,7 @@ Sets the maximum width.
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_LayoutConstraint* Constraint | Indicates the pointer to the size constraint. |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
 | int32_t value | Indicates the maximum width, in px. |
 
 ### OH_ArkUI_LayoutConstraint_SetMinWidth()
@@ -2830,7 +2830,7 @@ Sets the minimum width.
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_LayoutConstraint* Constraint | Indicates the pointer to the size constraint. |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
 | int32_t value | Indicates the minimum width, in px. |
 
 ### OH_ArkUI_LayoutConstraint_SetMaxHeight()
@@ -2849,7 +2849,7 @@ Sets the maximum height.
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_LayoutConstraint* Constraint | Indicates the pointer to the size constraint. |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
 | int32_t value | Indicates the maximum height, in px. |
 
 ### OH_ArkUI_LayoutConstraint_SetMinHeight()
@@ -2868,7 +2868,7 @@ Sets the minimum height.
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_LayoutConstraint* Constraint | Indicates the pointer to the size constraint. |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
 | int32_t value | Indicates the minimum height, in px. |
 
 ### OH_ArkUI_LayoutConstraint_SetPercentReferenceWidth()
@@ -2887,7 +2887,7 @@ Sets the width percentage reference.
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_LayoutConstraint* Constraint | Indicates the pointer to the size constraint. |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
 | int32_t value | Indicates the width percentage reference, in px. |
 
 ### OH_ArkUI_LayoutConstraint_SetPercentReferenceHeight()
@@ -2906,7 +2906,7 @@ Sets the height percentage reference.
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_LayoutConstraint* Constraint | Indicates the pointer to the size constraint. |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
 | int32_t value | Indicates the height percentage reference, in px. |
 
 ### OH_ArkUI_DrawContext_GetCanvas()
@@ -2925,7 +2925,7 @@ Obtains the pointer to a canvas for drawing, which can be converted into the <b>
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_DrawContext* context | Indicates the pointer to the drawing context. |
+| [ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md)* context | Indicates the pointer to the drawing context. |
 
 **返回：**
 
@@ -2949,13 +2949,13 @@ Obtains the size of a drawing area.
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_DrawContext* context | Indicates the pointer to the drawing context. |
+| [ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md)* context | Indicates the pointer to the drawing context. |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_IntSize | Returns the size of the drawing area. |
+| [ArkUI_IntSize](capi-arkui-nativemodule-arkui-intsize.md) | Returns the size of the drawing area. |
 
 ### OH_ArkUI_GridLayoutOptions_Create()
 
@@ -5918,7 +5918,7 @@ Set the layout content of ListItem SwipeActionItem.
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | List Item SwipeActionItem instance. |
-| ArkUI_NodeHandle node | Layout information. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Layout information. |
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetActionAreaDistance()
 
@@ -7248,7 +7248,7 @@ void OH_ArkUI_CustomProperty_Destroy(ArkUI_CustomProperty* handle)
 
 **描述**
 
-Destroy the instance of Customs Property.
+销毁[ArkUI_CustomProperty](capi-arkui-nativemodule-arkui-customproperty.md)实例。
 
 **起始版本：** 14
 
@@ -7256,7 +7256,7 @@ Destroy the instance of Customs Property.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_CustomProperty](capi-arkui-nativemodule-arkui-customproperty.md)* handle | The instance of Customs Property to be destroyed. |
+| [ArkUI_CustomProperty](capi-arkui-nativemodule-arkui-customproperty.md)* handle | 要销毁的实例。 |
 
 ### OH_ArkUI_CustomProperty_GetStringValue()
 
@@ -7266,7 +7266,7 @@ const char* OH_ArkUI_CustomProperty_GetStringValue(ArkUI_CustomProperty* handle)
 
 **描述**
 
-Get custom attribute value information.
+获取自定义属性对象的value信息。
 
 **起始版本：** 14
 
@@ -7274,13 +7274,13 @@ Get custom attribute value information.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_CustomProperty](capi-arkui-nativemodule-arkui-customproperty.md)* handle | Custom attribute object pointer. |
+| [ArkUI_CustomProperty](capi-arkui-nativemodule-arkui-customproperty.md)* handle | 自定义属性对象指针。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| const char* | Customize the value information within the attribute structure. |
+| const char* | 自定义属性对象的value信息。 |
 
 ### OH_ArkUI_HostWindowInfo_GetName()
 
@@ -7290,7 +7290,7 @@ const char* OH_ArkUI_HostWindowInfo_GetName(ArkUI_HostWindowInfo* info)
 
 **描述**
 
-Get window name from HostWindowInfo.
+获取[ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md)对象中的窗口名称。
 
 **起始版本：** 15
 
@@ -7298,13 +7298,13 @@ Get window name from HostWindowInfo.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md)* info | HostWindowInfo object pointer. |
+| [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md)* info | HostWindowInfo对象。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| const char* | Window name in HostWindowInfo. |
+| const char* | [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md)对象中的窗口名称。 |
 
 ### OH_ArkUI_HostWindowInfo_Destroy()
 
@@ -7314,7 +7314,7 @@ void OH_ArkUI_HostWindowInfo_Destroy(ArkUI_HostWindowInfo* info)
 
 **描述**
 
-Destroy the instance of HostWindowInfo.
+销毁[ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md)对象。
 
 **起始版本：** 15
 
@@ -7322,7 +7322,7 @@ Destroy the instance of HostWindowInfo.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md)* info | Instance of HostWindowInfo to be destroyed. |
+| [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md)* info | 要销毁的[ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md)对象。 |
 
 ### OH_ArkUI_ActiveChildrenInfo_Destroy()
 
@@ -7340,7 +7340,7 @@ void OH_ArkUI_ActiveChildrenInfo_Destroy(ArkUI_ActiveChildrenInfo* handle)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md)* handle | ActiveChild instance to be destroyed. |
+| [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md)* handle | 要销毁的[ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md)实例。 |
 
 ### OH_ArkUI_ActiveChildrenInfo_GetNodeByIndex()
 
@@ -7350,7 +7350,7 @@ ArkUI_NodeHandle OH_ArkUI_ActiveChildrenInfo_GetNodeByIndex(ArkUI_ActiveChildren
 
 **描述**
 
-Retrieve the child nodes of ActiveChildenInfo with the structure index.
+获取{@link OH_ArkUI_ActiveChildrenInfo}结构体的下标为index的子节点。
 
 **起始版本：** 14
 
@@ -7358,14 +7358,14 @@ Retrieve the child nodes of ActiveChildenInfo with the structure index.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md)* handle | The ActiveChildenInfo instance for obtaining information. |
-| int32_t index | The index of child nodes. |
+| [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md)* handle | 要获取信息的[ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md)实例。 |
+| int32_t index | 子节点的下标。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_NodeHandle | The child node pointer corresponding to the index. Return nullptr in case of exception. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) | 下标对应的子节点指针，异常时返回nullptr。 |
 
 ### OH_ArkUI_ActiveChildrenInfo_GetCount()
 
@@ -7375,7 +7375,7 @@ int32_t OH_ArkUI_ActiveChildrenInfo_GetCount(ArkUI_ActiveChildrenInfo* handle)
 
 **描述**
 
-获取{@link OH_ArkUI_ActiveChildrenInfo}结构体内的子节点数量，适用于遍历活跃子节点前确定数量。
+获取[ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md)结构体内的子节点数量，适用于遍历活跃子节点前确定数量。
 
 **起始版本：** 14
 
@@ -7383,13 +7383,13 @@ int32_t OH_ArkUI_ActiveChildrenInfo_GetCount(ArkUI_ActiveChildrenInfo* handle)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md)* handle | The ActiveChildenInfo instance for obtaining information. |
+| [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md)* handle | 要获取信息的[ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md)实例。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Number of child nodes. Default value: 0. |
+| int32_t | 子节点数量，默认值0. |
 
 ### OH_ArkUI_CrossLanguageOption_Create()
 
@@ -7399,7 +7399,7 @@ ArkUI_CrossLanguageOption* OH_ArkUI_CrossLanguageOption_Create(void)
 
 **描述**
 
-Create a cross-language option instance.
+创建跨语言配置项实例。
 
 **起始版本：** 15
 
@@ -7407,7 +7407,7 @@ Create a cross-language option instance.
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_CrossLanguageOption*](capi-arkui-nativemodule-arkui-crosslanguageoption.md) | Returns a cross-language option instance. If the result is a null pointer, it may be out of memory. |
+| [ArkUI_CrossLanguageOption*](capi-arkui-nativemodule-arkui-crosslanguageoption.md) | 返回跨语言实例。如果对象返回空指针，则表示创建失败，失败的原因可能是地址空间已满。 |
 
 ### OH_ArkUI_CrossLanguageOption_Destroy()
 
@@ -7417,7 +7417,7 @@ void OH_ArkUI_CrossLanguageOption_Destroy(ArkUI_CrossLanguageOption* option)
 
 **描述**
 
-Destroy the cross-language option instance.
+销毁跨语言配置项实例。
 
 **起始版本：** 15
 
@@ -7425,7 +7425,7 @@ Destroy the cross-language option instance.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md)* option | The cross-language option instance. |
+| [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md)* option | 要销毁的跨语言配置项实例。 |
 
 ### OH_ArkUI_CrossLanguageOption_SetAttributeSettingStatus()
 
@@ -7435,7 +7435,7 @@ void OH_ArkUI_CrossLanguageOption_SetAttributeSettingStatus(ArkUI_CrossLanguageO
 
 **描述**
 
-Enable the attribute setting in the cross-language option.
+设置配置项中是否允许跨语言修改属性。
 
 **起始版本：** 15
 
@@ -7443,8 +7443,8 @@ Enable the attribute setting in the cross-language option.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md)* option | The cross-language option. |
-| bool enabled | The attribute setting in the cross-language option.Default value: false. |
+| [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md)* option | 跨语言配置项实例。 |
+| bool enabled | 是否允许跨语言修改属性。true表示允许跨语言修改属性，false表示不允许跨语言修改属性，默认值：false。 |
 
 ### OH_ArkUI_CrossLanguageOption_GetAttributeSettingStatus()
 
@@ -7454,7 +7454,7 @@ bool OH_ArkUI_CrossLanguageOption_GetAttributeSettingStatus(ArkUI_CrossLanguageO
 
 **描述**
 
-Get the attribute setting enable of the cross-language option.
+获取配置项中是否允许跨语言修改属性。
 
 **起始版本：** 15
 
@@ -7462,13 +7462,13 @@ Get the attribute setting enable of the cross-language option.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md)* option | The cross-language option. |
+| [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md)* option | 跨语言配置项实例。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | The attribute setting enable of the cross-language option. |
+| bool | 是否允许跨语言修改属性。true表示允许跨语言修改属性，false表示不允许跨语言修改属性。 |
 
 ### OH_ArkUI_TextPickerRangeContentArray_Create()
 
@@ -7744,7 +7744,7 @@ Expand the swipe action.
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_NodeHandle node | List Item node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | List Item node. |
 | [ArkUI_ListItemSwipeActionDirection](capi-native-type-h.md#arkui_listitemswipeactiondirection) direction | expand direction of swipeAction. |
 
 **返回：**
@@ -7769,7 +7769,7 @@ Collapse the swipe action.
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_NodeHandle node | List Item node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | List Item node. |
 
 **返回：**
 
@@ -8702,7 +8702,7 @@ Set custom text menu node of text.
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the ArkUI_TextSelectionMenuOptions object. |
-| ArkUI_NodeHandle node | The custom menu node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | The custom menu node. |
 
 **返回：**
 
@@ -8727,7 +8727,7 @@ Get custom text menu node of text.
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the ArkUI_TextSelectionMenuOptions object. |
-| ArkUI_NodeHandle* node | The custom menu node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)* node | The custom menu node. |
 
 **返回：**
 
@@ -10162,7 +10162,7 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_GetCaretRect(OH_ArkUI_
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
-| ArkUI_Rect* rect | 光标区域信息。取值为[ArkUI_Rect](capi-arkui-nativemodule-arkui-rect.md)中的枚举。 |
+| [ArkUI_Rect](capi-arkui-nativemodule-arkui-rect.md)* rect | 光标区域信息。取值为[ArkUI_Rect](capi-arkui-nativemodule-arkui-rect.md)中的枚举。 |
 
 **返回：**
 
@@ -11785,7 +11785,7 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_SetContentNode(OH_ArkUI_
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
-| ArkUI_NodeHandle node | 内容节点。 |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 内容节点。 |
 
 **返回：**
 
@@ -11810,7 +11810,7 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_GetContentNode(OH_ArkUI_
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
-| ArkUI_NodeHandle* node | 内容节点。 |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)* node | 内容节点。 |
 
 **返回：**
 
@@ -12360,7 +12360,7 @@ Set the scaling factor in the x direction in ArkUI_Matrix4ScaleOptions.
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Returns the result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful. <br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Returns the result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter exception occurs. |
 
 ### OH_ArkUI_Matrix4ScaleOptions_GetX()
 

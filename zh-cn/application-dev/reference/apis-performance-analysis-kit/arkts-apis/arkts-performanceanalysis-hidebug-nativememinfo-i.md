@@ -1,10 +1,12 @@
 # NativeMemInfo
 
-����Ӧ�ý��̵��ڴ���Ϣ��
+描述应用进程的内存信息。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-hidebug-interface NativeMemInfo--><!--Device-hidebug-interface NativeMemInfo-End-->
 
@@ -16,13 +18,15 @@
 privateClean: bigint
 ```
 
-˽�иɾ��ڴ��С����KBΪ��λ�����㷽ʽ��/proc/{pid}/smaps\_rollup: Private\_Clean��
+私有干净内存大小，以KB为单位，计算方式：/proc/{pid}/smaps_rollup: Private_Clean。
 
 **类型：** bigint
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-NativeMemInfo-privateClean: bigint--><!--Device-NativeMemInfo-privateClean: bigint-End-->
 
@@ -34,13 +38,15 @@ privateClean: bigint
 privateDirty: bigint
 ```
 
-˽�����ڴ��С����KBΪ��λ�����㷽ʽ��/proc/{pid}/smaps\_rollup: Private\_Dirty��
+私有脏内存大小，以KB为单位，计算方式：/proc/{pid}/smaps_rollup: Private_Dirty。
 
 **类型：** bigint
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-NativeMemInfo-privateDirty: bigint--><!--Device-NativeMemInfo-privateDirty: bigint-End-->
 
@@ -52,13 +58,15 @@ privateDirty: bigint
 pss: bigint
 ```
 
-ʵ��ռ�õ������ڴ��С(�������乲����ռ�õ��ڴ�)����KBΪ��λ�����㷽ʽ��/proc/{pid}/smaps\_rollup: Pss + SwapPss��
+实际占用的物理内存大小(比例分配共享库占用的内存)，以KB为单位，计算方式：/proc/{pid}/smaps_rollup: Pss + SwapPss。
 
 **类型：** bigint
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-NativeMemInfo-pss: bigint--><!--Device-NativeMemInfo-pss: bigint-End-->
 
@@ -70,13 +78,15 @@ pss: bigint
 rss: bigint
 ```
 
-ʵ��ռ�õ������ڴ��С(����������ռ��)����KBΪ��λ�����㷽ʽ��/proc/{pid}/smaps\_rollup: Rss��
+实际占用的物理内存大小(包括共享库占用)，以KB为单位，计算方式：/proc/{pid}/smaps_rollup: Rss。
 
 **类型：** bigint
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-NativeMemInfo-rss: bigint--><!--Device-NativeMemInfo-rss: bigint-End-->
 
@@ -88,13 +98,15 @@ rss: bigint
 sharedClean: bigint
 ```
 
-�������ڴ��С����KBΪ��λ�����㷽ʽ��/proc/{pid}/smaps\_rollup: Shared\_Clean��
+共享净内存大小，以KB为单位，计算方式：/proc/{pid}/smaps_rollup: Shared_Clean。
 
 **类型：** bigint
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-NativeMemInfo-sharedClean: bigint--><!--Device-NativeMemInfo-sharedClean: bigint-End-->
 
@@ -106,13 +118,15 @@ sharedClean: bigint
 sharedDirty: bigint
 ```
 
-�������ڴ��С����KBΪ��λ�����㷽ʽ��/proc/{pid}/smaps\_rollup: Shared\_Dirty��
+共享脏内存大小，以KB为单位，计算方式：/proc/{pid}/smaps_rollup: Shared_Dirty。
 
 **类型：** bigint
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-NativeMemInfo-sharedDirty: bigint--><!--Device-NativeMemInfo-sharedDirty: bigint-End-->
 
@@ -124,13 +138,15 @@ sharedDirty: bigint
 vss: bigint
 ```
 
-ռ�õ������ڴ��С(������������ռ�õ��ڴ�)����KBΪ��λ�����㷽ʽ��/proc/{pid}/statm: size * 4��
+占用的虚拟内存大小(包括共享库所占用的内存)，以KB为单位，计算方式：/proc/{pid}/statm: size * 4。
 
 **类型：** bigint
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-NativeMemInfo-vss: bigint--><!--Device-NativeMemInfo-vss: bigint-End-->
 

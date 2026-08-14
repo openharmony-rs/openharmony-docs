@@ -2,9 +2,11 @@
 
 端云服务提供端云协同和端云共享能力。 端云协同提供结构化数据（RDB Store，关系型数据库）端云同步的能力。即：云作为数据的中心节点，通过与云空间的数据同步，实现数据云备份、同账号设备间的数据一致性。 端云共享是在端云协同能力基础上，实现跨账号的数据共享。其中，端云共享资源标识是指：对于应用发起共享的每一条数据记录，该条数据在进行端云同步时会生成唯一的共享资源标识（字符串类型的值），此标识作为该条数据记录共享时的识别标识。 端云共享参与者是指：共享发起者根据好友列表选中的参与当前数据共享的所有人员。 端云共享邀请码是指：共享发起后，在共享的服务端会生成当前共享操作的邀请码，并将该邀请码附加到当前共享邀请中，通过推送消息推送到被邀请者的设备端，被邀请者可以通过该邀请码进行邀请的确认。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare namespace cloudData--><!--Device-unnamed-declare namespace cloudData-End-->
 
@@ -22,9 +24,9 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [setCloudStrategy](arkts-arkdata-clouddata-setcloudstrategy-f.md#setcloudstrategy) | 设置应用自身的云同步策略，使用Promise异步回调。 |
-| [onAutoSyncTrigger](arkts-arkdata-clouddata-onautosynctrigger-f.md#onautosynctrigger) | 在已打开端云同步且应用关闭自动同步的条件下，注册自动同步触发事件通知。当满足自动触发条件时，回调函数会被调用。 |
-| [offAutoSyncTrigger](arkts-arkdata-clouddata-offautosynctrigger-f.md#offautosynctrigger) | 取消订阅自动同步触发事件通知。 |
+| [setCloudStrategy](arkts-arkdata-clouddata-setcloudstrategy-f.md#setCloudStrategy) | 设置应用自身的云同步策略，使用Promise异步回调。 |
+| [onAutoSyncTrigger](arkts-arkdata-clouddata-onautosynctrigger-f.md#onAutoSyncTrigger) | 在已打开端云同步且应用关闭自动同步的条件下，注册自动同步触发事件通知。当满足自动触发条件时，回调函数会被调用。 |
+| [offAutoSyncTrigger](arkts-arkdata-clouddata-offautosynctrigger-f.md#offAutoSyncTrigger) | 取消订阅自动同步触发事件通知。 |
 
 <!--Del-->
 ### 类（系统接口）
@@ -77,6 +79,6 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [DATA_CHANGE_EVENT_ID](arkts-arkdata-clouddata-con-sys.md#data_change_event_id) | 表示云数据变更。 |
+| [DATA_CHANGE_EVENT_ID](arkts-arkdata-clouddata-con-sys.md#DATA_CHANGE_EVENT_ID) | 表示云数据变更。 |
 <!--DelEnd-->
 

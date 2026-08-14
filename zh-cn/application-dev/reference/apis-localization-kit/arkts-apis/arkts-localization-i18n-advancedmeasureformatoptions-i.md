@@ -4,7 +4,9 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-i18n-export interface AdvancedMeasureFormatOptions--><!--Device-i18n-export interface AdvancedMeasureFormatOptions-End-->
 
@@ -18,11 +20,13 @@ unitUsage?: UnitUsage
 
 单位格式化使用场景的枚举。
 
-**类型：** UnitUsage
+**类型：** [UnitUsage](arkts-localization-i18n-unitusage-e.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

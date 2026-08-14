@@ -2,9 +2,11 @@
 
 Enumerates the mechanical device types.
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-mechanicManager-export enum MechDeviceType--><!--Device-mechanicManager-export enum MechDeviceType-End-->
 
@@ -18,9 +20,11 @@ GIMBAL_DEVICE = 0
 
 云台设备类型
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-MechDeviceType-GIMBAL_DEVICE = 0--><!--Device-MechDeviceType-GIMBAL_DEVICE = 0-End-->
 

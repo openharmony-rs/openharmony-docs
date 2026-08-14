@@ -12,7 +12,9 @@ type DomainPluginIsAccountTokenValidFunc = (
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-osAccount-type DomainPluginIsAccountTokenValidFunc = (    domainAccountInfo: DomainAccountInfo,    token: Uint8Array,    callback: AsyncCallback<boolean>  ) => void--><!--Device-osAccount-type DomainPluginIsAccountTokenValidFunc = (    domainAccountInfo: DomainAccountInfo,    token: Uint8Array,    callback: AsyncCallback<boolean>  ) => void-End-->
 
@@ -24,7 +26,7 @@ type DomainPluginIsAccountTokenValidFunc = (
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| domainAccountInfo | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 表示域账号信息。  |
-| token | Uint8Array | 是 | 表示域账号令牌。  |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;boolean&gt; | 是 | 表示检查结果回调。true表示指定的域账号令牌是有效的；false表示指定的域账号令牌是无效的。  |
+| domainAccountInfo | [DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i.md) | 是 | 表示域账号信息。 |
+| token | Uint8Array | 是 | 表示域账号令牌。 |
+| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 表示检查结果回调。true表示指定的域账号令牌是有效的；false表示指定的域账号令牌是无效的。 |
 

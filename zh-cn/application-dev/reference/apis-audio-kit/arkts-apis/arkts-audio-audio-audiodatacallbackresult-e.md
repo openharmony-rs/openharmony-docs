@@ -2,9 +2,11 @@
 
 表示音频数据回调结果的枚举。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-audio-enum AudioDataCallbackResult--><!--Device-audio-enum AudioDataCallbackResult-End-->
 
@@ -18,9 +20,11 @@ INVALID = -1
 
 表示该回调数据无效。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioDataCallbackResult-INVALID = -1--><!--Device-AudioDataCallbackResult-INVALID = -1-End-->
 
@@ -34,9 +38,11 @@ VALID = 0
 
 表示该回调数据有效。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioDataCallbackResult-VALID = 0--><!--Device-AudioDataCallbackResult-VALID = 0-End-->
 

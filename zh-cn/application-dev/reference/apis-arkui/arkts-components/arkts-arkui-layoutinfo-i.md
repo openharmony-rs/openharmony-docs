@@ -8,7 +8,7 @@
 
 **废弃版本：** 10
 
-**替代接口：** [Layoutable](../../apis-na/arkts-apis/arkts-na-component/common-layoutable-i.md)
+**替代接口：** [Layoutable](arkts-arkui-layoutable-i.md#Layoutable)
 
 <!--Device-unnamed-declare interface LayoutInfo--><!--Device-unnamed-declare interface LayoutInfo-End-->
 
@@ -30,7 +30,7 @@ constraint: ConstraintSizeOptions
 
 **废弃版本：** 10
 
-**替代接口：** [Layoutable](../../apis-na/arkts-apis/arkts-na-component/common-layoutable-i.md)
+**替代接口：** [Layoutable](arkts-arkui-layoutable-i.md#Layoutable)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
@@ -54,7 +54,7 @@ position: Position
 
 **废弃版本：** 10
 
-**替代接口：** [Layoutable](../../apis-na/arkts-apis/arkts-na-component/common-layoutable-i.md)
+**替代接口：** [Layoutable](arkts-arkui-layoutable-i.md#Layoutable)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 

@@ -1,12 +1,14 @@
 # SmartGestureController
 
-类SmartGestureController。
+提供智慧手势使能、监听、选中态控制，以及动态决策智慧手势行为的能力。 > **说明：** > > 以下API需先使用UIContext中的[getSmartGestureController()](arkts-arkui-arkui-uicontext-uicontext-c.md#getSmartGestureController)方法获取SmartGestureController实例， > 再通过该实例调用对应方法。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
-<!--Device-unnamed-export declare class SmartGestureController--><!--Device-unnamed-export declare class SmartGestureController-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-export class SmartGestureController--><!--Device-unnamed-export class SmartGestureController-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,13 +18,17 @@
 clearMonitors(): void
 ```
 
-清除监听手势事件的回调函数。
+清空当前UIContext下注册的全部智慧手势监听回调。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-SmartGestureController-clearMonitors(): void--><!--Device-SmartGestureController-clearMonitors(): void-End-->
 
@@ -34,13 +40,17 @@ clearMonitors(): void
 clearSelected(): void
 ```
 
-清除当前智能手势选择。
+清空当前智慧手势选中节点。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-SmartGestureController-clearSelected(): void--><!--Device-SmartGestureController-clearSelected(): void-End-->
 
@@ -52,13 +62,17 @@ clearSelected(): void
 enableSmartTapAndSlideGestures(enabled: boolean): void
 ```
 
-开启或关闭手表的智能点击和滑动手势。此开关控制点击和滑动手势的新实现。启用后，将使用新的智能手势处理流水线。禁用时，将使用传统实现以实现兼容性。
+设置是否启用智慧手势的敲一敲和划一划操作。 > **说明：** > > - 该接口仅影响智慧手势的敲一敲和划一划手势，不影响翻腕手势。 > > - 关闭后，组件侧smartGestureShortcut配置仍会保留，但不会响应智慧手势的敲一敲和划一划手势。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-SmartGestureController-enableSmartTapAndSlideGestures(enabled: boolean): void--><!--Device-SmartGestureController-enableSmartTapAndSlideGestures(enabled: boolean): void-End-->
 
@@ -68,7 +82,7 @@ enableSmartTapAndSlideGestures(enabled: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | boolean | 是 | 是否启用智能点击和滑动手势处理。 |
+| enabled | boolean | 是 | 是否启用智慧手势的敲一敲和划一划手势处理。true表示启用，false表示关闭。 |
 
 ## registerMonitor
 
@@ -76,13 +90,17 @@ enableSmartTapAndSlideGestures(enabled: boolean): void
 registerMonitor(monitorCallback: Callback<BaseGestureHandlingProposal, GestureHandlingResolution>): void
 ```
 
-注册一个回调函数来监听手势事件。在系统处理手势事件之前，应用程序可以接收到当前手势的处理意图，并进行自定义干预。
+注册智慧手势监听回调。在系统处理当前智慧手势前，应用可接收当前手势的默认动作处理并进行自定义干预。使用callback异步回调。 > **说明：** > > - 该接口使应用能够在系统处理当前智慧手势事件前接收其处理意图，并进行自定义干预。 > > - 用户可通过该回调自定义决策本次智慧手势的行为。 > > - 用户可注册多个监听回调，按照后注册先执行的顺序触发，当某个监听回调消费智慧手势事件后，即返回值[GestureHandlingResolution](arkts-arkui-arkui-uicontext-gesturehandlingresolution-c.md#GestureHandlingResolution). > isConsumed为true时，后续监听回调不再执行。 > > - 当用户重复注册相同回调时，只会保存首次注册的回调，重复注册不生效。 > > - 回调返回值必须是合法的[GestureHandlingResolution](arkts-arkui-arkui-uicontext-gesturehandlingresolution-c.md#GestureHandlingResolution)实例，否则本次改写不生效。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-SmartGestureController-registerMonitor(monitorCallback: Callback<BaseGestureHandlingProposal, GestureHandlingResolution>): void--><!--Device-SmartGestureController-registerMonitor(monitorCallback: Callback<BaseGestureHandlingProposal, GestureHandlingResolution>): void-End-->
 
@@ -92,7 +110,7 @@ registerMonitor(monitorCallback: Callback<BaseGestureHandlingProposal, GestureHa
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| monitorCallback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;BaseGestureHandlingProposal, GestureHandlingResolution&gt; | 是 | 手势识别时调用的回调函数。 |
+| monitorCallback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[BaseGestureHandlingProposal](arkts-arkui-arkui-uicontext-basegesturehandlingproposal-c.md), [GestureHandlingResolution](arkts-arkui-arkui-uicontext-gesturehandlingresolution-c.md)&gt; | 是 | 智慧手势监听回调。回调参数为系统给出的默认 动作处理，返回值用于声明是否消费当前智慧手势以及是否替换默认动作处理。 |
 
 ## requestSelected
 
@@ -100,13 +118,17 @@ registerMonitor(monitorCallback: Callback<BaseGestureHandlingProposal, GestureHa
 requestSelected(id: string): void
 ```
 
-通过节点的标识符请求智能手势选择节点。
+请求将指定组件设置为当前智慧手势选中节点。成功选中后会显示选中提示框，选中框样式根据设备有所不同。 > **说明：** > > - 仅当目标组件满足以下全部条件时，请求才会生效：组件可以响应智慧手势，且组件在屏幕内可见，且组件绑定了 > onClick或绑定了单击手势TapGesture。 > > - 组件能否响应智慧手势由smartGestureShortcut中的enabled决定。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-SmartGestureController-requestSelected(id: string): void--><!--Device-SmartGestureController-requestSelected(id: string): void-End-->
 
@@ -116,7 +138,7 @@ requestSelected(id: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | string | 是 | 要选择的节点的标识符。 |
+| id | string | 是 | 组件的id。 |
 
 ## unregisterMonitor
 
@@ -124,13 +146,17 @@ requestSelected(id: string): void
 unregisterMonitor(monitorCallback: Callback<BaseGestureHandlingProposal, GestureHandlingResolution>): void
 ```
 
-注销监听手势事件的回调函数。
+注销智慧手势监听回调。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-SmartGestureController-unregisterMonitor(monitorCallback: Callback<BaseGestureHandlingProposal, GestureHandlingResolution>): void--><!--Device-SmartGestureController-unregisterMonitor(monitorCallback: Callback<BaseGestureHandlingProposal, GestureHandlingResolution>): void-End-->
 
@@ -140,5 +166,5 @@ unregisterMonitor(monitorCallback: Callback<BaseGestureHandlingProposal, Gesture
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| monitorCallback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;BaseGestureHandlingProposal, GestureHandlingResolution&gt; | 是 | 识别手势时调用的回调函数。 |
+| monitorCallback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[BaseGestureHandlingProposal](arkts-arkui-arkui-uicontext-basegesturehandlingproposal-c.md), [GestureHandlingResolution](arkts-arkui-arkui-uicontext-gesturehandlingresolution-c.md)&gt; | 是 | 需要注销的智慧手势监听回调。 |
 

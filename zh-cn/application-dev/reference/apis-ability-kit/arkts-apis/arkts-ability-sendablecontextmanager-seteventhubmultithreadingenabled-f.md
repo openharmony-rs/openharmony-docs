@@ -6,11 +6,13 @@
 function setEventHubMultithreadingEnabled(context: common.Context, enabled: boolean): void
 ```
 
-设置[Context]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_中的[EventHub]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_是否启用跨线程通信能力。 > **说明：** > > - 当多个Context进行通信时，需要调用该接口设置每个Context都支持EventHub跨线程数据传递功能。
+设置Context中的[EventHub](arkts-ability-eventhub-c.md#EventHub)是否启用跨线程通信能力。 > **说明：** > > - 当多个Context进行通信时，需要调用该接口设置每个Context都支持EventHub跨线程数据传递功能。
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -24,12 +26,12 @@ function setEventHubMultithreadingEnabled(context: common.Context, enabled: bool
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | common.Context | 是 | Context对象。其中，Eventhub支持传递的序列化数据类型参见\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，数据大小不超过16MB。 |
+| context | common.Context | 是 | Context对象。其中，Eventhub支持传递的序列化数据类型参见 序列化支持的类型，数据大小不超过16MB。 |
 | enabled | boolean | 是 | 表示是否启用Context的EventHub跨线程通信能力。true表示启用，false表示禁用。 |
 
-**示例：**
+## 示例
 
-主线程启用[Context](./js-apis-inner-application-context.md)中[EventHub](./js-apis-inner-application-eventHub.md)的跨线程通信能力，并将Context转换为[SendableContext](js-apis-inner-application-sendableContext.md)后发送到[Worker](../apis-arkts/js-apis-worker.md)线程。
+主线程启用[Context](arkts-ability-context-c.md#Context)中[EventHub](arkts-ability-eventhub-c.md#EventHub)的跨线程通信能力，并将Context转换为[SendableContext](arkts-ability-sendablecontext-i.md#SendableContext)后发送到[Worker](../../apis-arkts/arkts-apis/arkts-arkts-worker-n.md#worker)线程。
 
 ```TypeScript
 import { common, sendableContextManager } from '@kit.AbilityKit';
@@ -86,7 +88,7 @@ struct Index {
 }
 ```
 
-[Worker](../apis-arkts/js-apis-worker.md)线程接收到[SendableContext](js-apis-inner-application-sendableContext.md)后，将其转换为[Context](./js-apis-inner-application-context.md)。然后，在Worker线程内，启用Context中[EventHub](./js-apis-inner-application-eventHub.md)的跨线程通信能力，并通过该功能向主线程发送消息。
+[Worker](../../apis-arkts/arkts-apis/arkts-arkts-worker-n.md#worker)线程接收到[SendableContext](arkts-ability-sendablecontext-i.md#SendableContext)后，将其转换为[Context](arkts-ability-context-c.md#Context)。然后，在Worker线程内，启用Context中[EventHub](arkts-ability-eventhub-c.md#EventHub)的跨线程通信能力，并通过该功能向主线程发送消息。
 
 ```TypeScript
 import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';

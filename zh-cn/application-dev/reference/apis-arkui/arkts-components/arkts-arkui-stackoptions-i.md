@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface StackOptions--><!--Device-unnamed-declare interface StackOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -16,13 +18,15 @@
 alignContent?: Alignment
 ```
 
-设置子组件在容器内的对齐方式。该属性与接口的构造入参同时设置时，以属性设置的值为准。 默认值：Alignment.Center 非法值：按默认值处理。 **说明：** 该参数与[align]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_同时设置时，后设置的属性值会覆盖先设置的属性值。
+设置子组件在容器内的对齐方式。该属性与接口的构造入参同时设置时，以属性设置的值为准。 默认值：Alignment.Center 非法值：按默认值处理。 **说明：** 该参数与align同时设置时，后设置的属性值会覆盖先设置的属性值。
 
 **类型：** Alignment
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

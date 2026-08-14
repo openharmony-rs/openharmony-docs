@@ -2,9 +2,11 @@
 
 Swiper子组件的信息。
 
-**起始版本：** 23
+**起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-export interface SwiperItemInfo--><!--Device-unnamed-export interface SwiperItemInfo-End-->
 
@@ -13,40 +15,48 @@ Swiper子组件的信息。
 ## index
 
 ```TypeScript
-index: int
+index: number
 ```
 
-Swiper子组件在Swiper中的索引。 取值限定为整数。
+Swiper子组件在Swiper中的索引。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SwiperItemInfo-index: int--><!--Device-SwiperItemInfo-index: int-End-->
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-SwiperItemInfo-index: number--><!--Device-SwiperItemInfo-index: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## uniqueId
 
 ```TypeScript
-uniqueId: int
+uniqueId: number
 ```
 
-Swiper子组件的唯一标识符。 取值限定为整数。
+SwiperItem的uniqueId值。
 
-**类型：** int
+**类型：** number
 
-**起始版本：** 23
+**起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SwiperItemInfo-uniqueId: int--><!--Device-SwiperItemInfo-uniqueId: int-End-->
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-SwiperItemInfo-uniqueId: number--><!--Device-SwiperItemInfo-uniqueId: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

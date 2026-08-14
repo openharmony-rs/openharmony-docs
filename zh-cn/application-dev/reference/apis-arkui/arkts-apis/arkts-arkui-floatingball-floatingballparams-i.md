@@ -2,9 +2,11 @@
 
 启动和更新闪控球的配置参数。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-floatingBall-interface FloatingBallParams--><!--Device-floatingBall-interface FloatingBallParams-End-->
 
@@ -20,9 +22,11 @@ backgroundColor?: string
 
 **类型：** string
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FloatingBallParams-backgroundColor?: string--><!--Device-FloatingBallParams-backgroundColor?: string-End-->
 
@@ -38,9 +42,11 @@ content?: string
 
 **类型：** string
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FloatingBallParams-content?: string--><!--Device-FloatingBallParams-content?: string-End-->
 
@@ -56,14 +62,13 @@ contentColor?: string
 
 **类型：** string
 
-**默认值：** Set different default values according to the 'backgroundColor'.
-- If 'backgroundColor' is provided, when 'backgroundColor' is light color, default value is '#99FFFFFF',
-otherwise is '#99000000'
-- If 'backgroundColor' is not provided, default value is $r('sys.color.font_secondary')
+**默认值：** Set different default values according to the 'backgroundColor'. - If 'backgroundColor' is provided, when 'backgroundColor' is light color, default value is '#99FFFFFF', otherwise is '#99000000' - If 'backgroundColor' is not provided, default value is $r('sys.color.font_secondary')
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -77,13 +82,15 @@ otherwise is '#99000000'
 icon?: image.PixelMap
 ```
 
-闪控球图标，图标像素的总字节数不超过192KB（图标像素的总字节数通过 [getPixelBytesNumber]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_获取）。 建议图标像素宽高为128px*128px。实际显示效果依赖于设备能力和闪控球UI样式。
+闪控球图标，图标像素的总字节数不超过192KB（图标像素的总字节数通过 [getPixelBytesNumber](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md#getPixelBytesNumber)获取）。 建议图标像素宽高为128px*128px。实际显示效果依赖于设备能力和闪控球UI样式。
 
 **类型：** image.PixelMap
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FloatingBallParams-icon?: image.PixelMap--><!--Device-FloatingBallParams-icon?: image.PixelMap-End-->
 
@@ -97,11 +104,13 @@ template: FloatingBallTemplate
 
 闪控球模板。
 
-**类型：** FloatingBallTemplate
+**类型：** [FloatingBallTemplate](arkts-arkui-floatingball-floatingballtemplate-e.md)
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FloatingBallParams-template: FloatingBallTemplate--><!--Device-FloatingBallParams-template: FloatingBallTemplate-End-->
 
@@ -113,15 +122,17 @@ template: FloatingBallTemplate
 textUpdateAnimationType?: FloatingBallTextUpdateAnimationType
 ```
 
-闪控球文本更新时的动画类型。默认为FloatingBallTextUpdateAnimationType.ANIMATION\_NONE。
+闪控球文本更新时的动画类型。默认为FloatingBallTextUpdateAnimationType.ANIMATION_NONE。
 
-**类型：** FloatingBallTextUpdateAnimationType
+**类型：** [FloatingBallTextUpdateAnimationType](arkts-arkui-floatingball-floatingballtextupdateanimationtype-e.md)
 
 **默认值：** FloatingBallTextUpdateAnimationType.ANIMATION_NONE
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -139,9 +150,11 @@ title: string
 
 **类型：** string
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-FloatingBallParams-title: string--><!--Device-FloatingBallParams-title: string-End-->
 
@@ -157,14 +170,13 @@ titleColor?: string
 
 **类型：** string
 
-**默认值：** Set different default values according to the 'backgroundColor'.
-- If 'backgroundColor' is provided, when 'backgroundColor' is light color, default value is '#E5FFFFFF',
-otherwise is '#E5000000'.
-- If 'backgroundColor' is not provided, default value is $r('sys.color.font_primary').
+**默认值：** Set different default values according to the 'backgroundColor'. - If 'backgroundColor' is provided, when 'backgroundColor' is light color, default value is '#E5FFFFFF', otherwise is '#E5000000'. - If 'backgroundColor' is not provided, default value is $r('sys.color.font_primary').
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

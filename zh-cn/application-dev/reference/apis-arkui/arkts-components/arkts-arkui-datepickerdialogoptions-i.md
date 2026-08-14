@@ -1,14 +1,16 @@
 # DatePickerDialogOptions
 
-日期选择器弹窗选项。 继承自[DatePickerOptions]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+日期选择器弹窗选项。 继承自[DatePickerOptions](arkts-arkui-datepickeroptions-i.md#DatePickerOptions)。
 
-**继承/实现关系：** DatePickerDialogOptions extends [DatePickerOptions](../arkts-apis/arkts-arkui-component/datepicker-datepickeroptions-i.md)
+**继承/实现关系：** DatePickerDialogOptions extends [DatePickerOptions](arkts-arkui-datepickeroptions-i.md#DatePickerOptions)
 
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
-<!--Device-unnamed-declare interface DatePickerDialogOptions extends DatePickerOptions--><!--Device-unnamed-declare interface DatePickerDialogOptions extends DatePickerOptions-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare interface DatePickerDialogOptions--><!--Device-unnamed-declare interface DatePickerDialogOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,13 +20,15 @@
 acceptButtonStyle?: PickerDialogButtonStyle
 ```
 
-设置确认按钮显示样式、重要程度、角色、背景色、圆角、文本颜色、字号、字体粗细、字体样式、字体列表、按钮是否默认响应Enter键。 当需要自定义确认按钮外观或行为时传入此参数。不传入时使用系统默认按钮样式。 > **说明：** > > 1. acceptButtonStyle与cancelButtonStyle中最多只能有一个primary字段配置为true，如果同时设置为true，则primary字段不生效， > 保持默认值false。 > > 2. 按钮高度默认40vp，在关怀模式-大字体场景下高度不变，即使按钮样式设置为圆角矩形 > [ROUNDED\_RECTANGLE]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_，呈现效果依然是胶囊型按钮[Capsule]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_。
+设置确认按钮显示样式、重要程度、角色、背景色、圆角、文本颜色、字号、字体粗细、字体样式、字体列表、按钮是否默认响应Enter键。 当需要自定义确认按钮外观或行为时传入此参数。不传入时使用系统默认按钮样式。 > **说明：** > > 1. acceptButtonStyle与cancelButtonStyle中最多只能有一个primary字段配置为true，如果同时设置为true，则primary字段不生效， > 保持默认值false。 > > 2. 按钮高度默认40vp，在关怀模式-大字体场景下高度不变，即使按钮样式设置为圆角矩形 > ROUNDED_RECTANGLE，呈现效果依然是胶囊型按钮Capsule。
 
 **类型：** PickerDialogButtonStyle
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -50,6 +54,8 @@ alignment?: DialogAlignment
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -64,7 +70,7 @@ alignment?: DialogAlignment
 backgroundBlurStyle?: BlurStyle
 ```
 
-弹窗背板模糊材质。 > 默认值：BlurStyle.COMPONENT\_ULTRA\_THICK > **说明：** > > 设置为BlurStyle.NONE即可关闭背景虚化。当设置了backgroundBlurStyle为非NONE值时，则不要设置backgroundColor， > 否则显示的颜色将不符合预期效果。
+弹窗背板模糊材质。 > 默认值：BlurStyle.COMPONENT_ULTRA_THICK > **说明：** > > 设置为BlurStyle.NONE即可关闭背景虚化。当设置了backgroundBlurStyle为非NONE值时，则不要设置backgroundColor， > 否则显示的颜色将不符合预期效果。
 
 **类型：** BlurStyle
 
@@ -73,6 +79,8 @@ backgroundBlurStyle?: BlurStyle
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -88,13 +96,15 @@ backgroundBlurStyle?: BlurStyle
 backgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 ```
 
-背景模糊效果参数，用于自定义弹窗背景模糊的显示样式，支持配置颜色模式、自适应颜色、缩放比例等属性，实现不同的背景模糊视觉效果。 默认值请参考BackgroundBlurStyleOptions类型说明。 > **说明：** > > 未设置时沿用backgroundBlurStyle的默认效果（BlurStyle.COMPONENT\_ULTRA\_THICK）。
+背景模糊效果参数，用于自定义弹窗背景模糊的显示样式，支持配置颜色模式、自适应颜色、缩放比例等属性，实现不同的背景模糊视觉效果。 默认值请参考BackgroundBlurStyleOptions类型说明。 > **说明：** > > 未设置时沿用backgroundBlurStyle的默认效果（BlurStyle.COMPONENT_ULTRA_THICK）。
 
 **类型：** BackgroundBlurStyleOptions
 
 **起始版本：** 19
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -120,6 +130,8 @@ backgroundColor?: ResourceColor
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -141,6 +153,8 @@ backgroundEffect?: BackgroundEffectOptions
 **起始版本：** 19
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -166,6 +180,8 @@ canLoop?: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -180,13 +196,15 @@ canLoop?: boolean
 cancelButtonStyle?: PickerDialogButtonStyle
 ```
 
-设置取消按钮显示样式、重要程度、角色、背景色、圆角、文本颜色、字号、字体粗细、字体样式、字体列表、按钮是否默认响应Enter键。 当需要自定义取消按钮外观或行为时传入此参数。不传入时使用系统默认按钮样式。 > **说明：** > > 1. acceptButtonStyle与cancelButtonStyle中最多只能有一个primary字段配置为true，如果同时设置为true，则primary字段不生效， > 保持默认值false。 > > 2. 按钮高度默认40vp，在关怀模式-大字体场景下高度不变，即使按钮样式设置为圆角矩形 > [ROUNDED\_RECTANGLE]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_，呈现效果依然是胶囊型按钮[Capsule]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_。
+设置取消按钮显示样式、重要程度、角色、背景色、圆角、文本颜色、字号、字体粗细、字体样式、字体列表、按钮是否默认响应Enter键。 当需要自定义取消按钮外观或行为时传入此参数。不传入时使用系统默认按钮样式。 > **说明：** > > 1. acceptButtonStyle与cancelButtonStyle中最多只能有一个primary字段配置为true，如果同时设置为true，则primary字段不生效， > 保持默认值false。 > > 2. 按钮高度默认40vp，在关怀模式-大字体场景下高度不变，即使按钮样式设置为圆角矩形 > ROUNDED_RECTANGLE，呈现效果依然是胶囊型按钮Capsule。
 
 **类型：** PickerDialogButtonStyle
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -206,13 +224,13 @@ dateTimeOptions?: DateTimeOptions
 
 **类型：** DateTimeOptions
 
-**默认值：** hour: In the 24-hour format, it defaults to 2-digit, which means a leading zero is used;
-<br>In the 12-hour format, it defaults to numeric, which means no leading zero is used.
-<br>minute: defaults to 2-digit, which means a leading zero is used.
+**默认值：** hour: In the 24-hour format, it defaults to 2-digit, which means a leading zero is used; <br>In the 12-hour format, it defaults to numeric, which means no leading zero is used. <br>minute: defaults to 2-digit, which means a leading zero is used.
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -228,7 +246,7 @@ dateTimeOptions?: DateTimeOptions
 disappearTextStyle?: PickerTextStyle
 ```
 
-设置边缘项（以选中项为基准向上或向下的第二项）的文本颜色、字号、字体粗细。 > 默认值： > > \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_{ > \_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_color: '#ff182431', > \_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_font: { > \_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_size: '14fp', > \_\_\_HTML\_TAG\_DESC\_USD\_4\_\_\_weight: FontWeight.Regular > \_\_\_HTML\_TAG\_DESC\_USD\_5\_\_\_} > \_\_\_HTML\_TAG\_DESC\_USD\_6\_\_\_}
+设置边缘项（以选中项为基准向上或向下的第二项）的文本颜色、字号、字体粗细。 > 默认值： > > &lt;br&gt;{ > &lt;br&gt;color: '#ff182431', > &lt;br&gt;font: { > &lt;br&gt;size: '14fp', > &lt;br&gt;weight: FontWeight.Regular > &lt;br&gt;} > &lt;br&gt;}
 
 **类型：** PickerTextStyle
 
@@ -237,6 +255,8 @@ disappearTextStyle?: PickerTextStyle
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -262,6 +282,8 @@ enableHapticFeedback?: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -286,6 +308,8 @@ enableHoverMode?: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
@@ -300,7 +324,7 @@ enableHoverMode?: boolean
 hoverModeArea?: HoverModeAreaType
 ```
 
-设置悬停态下弹窗默认展示区域，仅在enableHoverMode为true时生效。 默认值：HoverModeAreaType.BOTTOM\_SCREEN
+设置悬停态下弹窗默认展示区域，仅在enableHoverMode为true时生效。 默认值：HoverModeAreaType.BOTTOM_SCREEN
 
 **类型：** HoverModeAreaType
 
@@ -309,6 +333,8 @@ hoverModeArea?: HoverModeAreaType
 **起始版本：** 14
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -334,6 +360,8 @@ lunar?: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-DatePickerDialogOptions-lunar?: boolean--><!--Device-DatePickerDialogOptions-lunar?: boolean-End-->
@@ -356,6 +384,8 @@ lunarSwitch?: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -370,17 +400,17 @@ lunarSwitch?: boolean
 lunarSwitchStyle?: LunarSwitchStyle
 ```
 
-设置农历开关的颜色样式。仅当lunarSwitch为true时生效。 > 默认值： > \_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_{ > \_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_selectedColor: \_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_, > \_\_\_HTML\_TAG\_DESC\_USD\_4\_\_\_unselectedColor: \_\_\_INLINE\_CODE\_DESC\_USD\_1\_\_\_, > \_\_\_HTML\_TAG\_DESC\_USD\_5\_\_\_strokeColor: Color.White > \_\_\_HTML\_TAG\_DESC\_USD\_6\_\_\_}
+设置农历开关的颜色样式。仅当lunarSwitch为true时生效。 > 默认值： > &lt;br&gt;{ > &lt;br&gt;selectedColor: `\$r('sys.color.ohos_id_color_text_primary_actived')`, > &lt;br&gt;unselectedColor: `\$r('sys.color.ohos_id_color_switch_outline_off')`, > &lt;br&gt;strokeColor: Color.White > &lt;br&gt;}
 
-**类型：** LunarSwitchStyle
+**类型：** [LunarSwitchStyle](arkts-arkui-lunarswitchstyle-i.md)
 
-**默认值：** { selectedColor: $r('sys.color.ohos_id_color_text_primary_actived'),
-unselectedColor: $r('sys.color.ohos_id_color_switch_outline_off'),
-strokeColor: Color.White }.
+**默认值：** { selectedColor: $r('sys.color.ohos_id_color_text_primary_actived'), unselectedColor: $r('sys.color.ohos_id_color_switch_outline_off'), strokeColor: Color.White }.
 
 **起始版本：** 14
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -406,6 +436,8 @@ maskRect?: Rectangle
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -429,6 +461,8 @@ offset?: Offset
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -454,7 +488,7 @@ onAccept?: (value: DatePickerResult) => void
 
 **废弃版本：** 10
 
-**替代接口：** datePicker/DatePickerDialogOptions#onDateAccept
+**替代接口：** [onDateAccept](../../apis-na/arkts-apis/arkts-na-datepicker-datepickerdialogoptions-i.md#onDateAccept)
 
 <!--Device-DatePickerDialogOptions-onAccept?: (value: DatePickerResult) => void--><!--Device-DatePickerDialogOptions-onAccept?: (value: DatePickerResult) => void-End-->
 
@@ -473,6 +507,8 @@ onCancel?: VoidCallback
 **起始版本：** 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -496,7 +532,7 @@ onChange?: (value: DatePickerResult) => void
 
 **废弃版本：** 10
 
-**替代接口：** datePicker/DatePickerDialogOptions#onDateChange
+**替代接口：** [onDateChange](../../apis-na/arkts-apis/arkts-na-datepicker-datepickerdialogoptions-i.md#onDateChange)
 
 <!--Device-DatePickerDialogOptions-onChange?: (value: DatePickerResult) => void--><!--Device-DatePickerDialogOptions-onChange?: (value: DatePickerResult) => void-End-->
 
@@ -515,6 +551,8 @@ onDateAccept?: Callback<Date>
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -538,6 +576,8 @@ onDateChange?: Callback<Date>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -559,6 +599,8 @@ onDidAppear?: VoidCallback
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -582,6 +624,8 @@ onDidDisappear?: VoidCallback
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -603,6 +647,8 @@ onWillAppear?: VoidCallback
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -626,6 +672,8 @@ onWillDisappear?: VoidCallback
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -640,7 +688,7 @@ onWillDisappear?: VoidCallback
 selectedTextStyle?: PickerTextStyle
 ```
 
-设置选中项的文本颜色、字号、字体粗细。 > 默认值： > > \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_{ > \_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_color: '#ff007dff', > \_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_font: { > \_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_size: '20fp', > \_\_\_HTML\_TAG\_DESC\_USD\_4\_\_\_weight: FontWeight.Medium > \_\_\_HTML\_TAG\_DESC\_USD\_5\_\_\_} > \_\_\_HTML\_TAG\_DESC\_USD\_6\_\_\_}
+设置选中项的文本颜色、字号、字体粗细。 > 默认值： > > &lt;br&gt;{ > &lt;br&gt;color: '#ff007dff', > &lt;br&gt;font: { > &lt;br&gt;size: '20fp', > &lt;br&gt;weight: FontWeight.Medium > &lt;br&gt;} > &lt;br&gt;}
 
 **类型：** PickerTextStyle
 
@@ -649,6 +697,8 @@ selectedTextStyle?: PickerTextStyle
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -664,13 +714,15 @@ selectedTextStyle?: PickerTextStyle
 shadow?: ShadowOptions | ShadowStyle
 ```
 
-设置弹窗背板的阴影。 当设备为2in1时，默认场景下获焦阴影值为ShadowStyle.OUTER\_FLOATING\_MD，失焦为ShadowStyle.OUTER\_FLOATING\_SM。其他设备默认无阴影。
+设置弹窗背板的阴影。 当设备为2in1时，默认场景下获焦阴影值为ShadowStyle.OUTER_FLOATING_MD，失焦为ShadowStyle.OUTER_FLOATING_SM。其他设备默认无阴影。
 
 **类型：** ShadowOptions \| ShadowStyle
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -696,6 +748,8 @@ showTime?: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -710,13 +764,15 @@ showTime?: boolean
 systemMaterial?: SystemUiMaterial
 ```
 
-设置弹窗的系统材质。 > **说明：** > > - 默认值为ImmersiveOptions的style为ImmersiveStyle.ULTRA\_THICK的ImmersiveMaterial对象，设置undefined时与默认值保持一致。 > 不同的材质具有不同的效果。关于ImmersiveMaterial的详细说明，请参考[SystemUiMaterial]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_类型定义。 > - 该接口影响背景色[backgroundColor]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_、背景模糊 > [backgroundBlurStyle]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_ > 、背景模糊效果[backgroundBlurStyleOptions]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_、背景效果 > [backgroundEffect]\_\_\_JSDOC\_LINK\_DESC\_USD\_4\_\_\_、边框颜色 > [borderColor]\_\_\_JSDOC\_LINK\_DESC\_USD\_5\_\_\_、边框宽度[borderWidth]\_\_\_JSDOC\_LINK\_DESC\_USD\_6\_\_\_、阴影 > [shadow]\_\_\_JSDOC\_LINK\_DESC\_USD\_7\_\_\_，当设置系统材质时，上述接口不生效。
+设置弹窗的系统材质。 > **说明：** > > - 默认值为ImmersiveOptions的style为ImmersiveStyle.ULTRA_THICK的ImmersiveMaterial对象，设置undefined时与默认值保持一致。 > 不同的材质具有不同的效果。关于ImmersiveMaterial的详细说明，请参考SystemUiMaterial类型定义。 > - 该接口影响背景色backgroundColor、背景模糊 > backgroundBlurStyle > 、背景模糊效果backgroundBlurStyleOptions、背景效果 > backgroundEffect、边框颜色 > borderColor、边框宽度borderWidth、阴影 > shadow，当设置系统材质时，上述接口不生效。
 
 **类型：** SystemUiMaterial
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -732,7 +788,7 @@ systemMaterial?: SystemUiMaterial
 textStyle?: PickerTextStyle
 ```
 
-设置待选项（以选中项为基准向上或向下的第一项）的文本颜色、字号、字体粗细。 > 默认值： > > \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_{ > \_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_color: '#ff182431', > \_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_font: { > \_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_size: '16fp', > \_\_\_HTML\_TAG\_DESC\_USD\_4\_\_\_weight: FontWeight.Regular > \_\_\_HTML\_TAG\_DESC\_USD\_5\_\_\_} > \_\_\_HTML\_TAG\_DESC\_USD\_6\_\_\_}
+设置待选项（以选中项为基准向上或向下的第一项）的文本颜色、字号、字体粗细。 > 默认值： > > &lt;br&gt;{ > &lt;br&gt;color: '#ff182431', > &lt;br&gt;font: { > &lt;br&gt;size: '16fp', > &lt;br&gt;weight: FontWeight.Regular > &lt;br&gt;} > &lt;br&gt;}
 
 **类型：** PickerTextStyle
 
@@ -741,6 +797,8 @@ textStyle?: PickerTextStyle
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -765,6 +823,8 @@ useMilitaryTime?: boolean
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 <!--Device-contact-class Relation--><!--Device-contact-class Relation-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
@@ -23,6 +25,8 @@ static readonly CUSTOM_LABEL: 0
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -44,6 +48,8 @@ static readonly INVALID_LABEL_ID: -1
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Relation-static readonly INVALID_LABEL_ID: -1--><!--Device-Relation-static readonly INVALID_LABEL_ID: -1-End-->
@@ -63,6 +69,8 @@ static readonly RELATION_ASSISTANT: 1
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -84,6 +92,8 @@ static readonly RELATION_BROTHER: 2
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Relation-static readonly RELATION_BROTHER: 2--><!--Device-Relation-static readonly RELATION_BROTHER: 2-End-->
@@ -103,6 +113,8 @@ static readonly RELATION_CHILD: 3
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -124,6 +136,8 @@ static readonly RELATION_DOMESTIC_PARTNER: 4
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Relation-static readonly RELATION_DOMESTIC_PARTNER: 4--><!--Device-Relation-static readonly RELATION_DOMESTIC_PARTNER: 4-End-->
@@ -143,6 +157,8 @@ static readonly RELATION_FATHER: 5
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -164,6 +180,8 @@ static readonly RELATION_FRIEND: 6
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Relation-static readonly RELATION_FRIEND: 6--><!--Device-Relation-static readonly RELATION_FRIEND: 6-End-->
@@ -183,6 +201,8 @@ static readonly RELATION_MANAGER: 7
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -204,6 +224,8 @@ static readonly RELATION_MOTHER: 8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Relation-static readonly RELATION_MOTHER: 8--><!--Device-Relation-static readonly RELATION_MOTHER: 8-End-->
@@ -224,6 +246,8 @@ static readonly RELATION_PARENT: 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Relation-static readonly RELATION_PARENT: 9--><!--Device-Relation-static readonly RELATION_PARENT: 9-End-->
@@ -236,13 +260,15 @@ static readonly RELATION_PARENT: 9
 static readonly RELATION_PARTNER: 10
 ```
 
-父母关系类型，默认值为9。
+合作伙伴关系类型，默认值为10。
 
 **类型：** 10
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -264,6 +290,8 @@ static readonly RELATION_REFERRED_BY: 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Relation-static readonly RELATION_REFERRED_BY: 11--><!--Device-Relation-static readonly RELATION_REFERRED_BY: 11-End-->
@@ -284,6 +312,8 @@ static readonly RELATION_RELATIVE: 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Relation-static readonly RELATION_RELATIVE: 12--><!--Device-Relation-static readonly RELATION_RELATIVE: 12-End-->
@@ -296,13 +326,15 @@ static readonly RELATION_RELATIVE: 12
 static readonly RELATION_SISTER: 13
 ```
 
-亲属关系类型，默认值为12。
+姐妹关系类型，默认值为13。
 
 **类型：** 13
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -324,6 +356,8 @@ static readonly RELATION_SPOUSE: 14
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Relation-static readonly RELATION_SPOUSE: 14--><!--Device-Relation-static readonly RELATION_SPOUSE: 14-End-->
@@ -336,13 +370,15 @@ static readonly RELATION_SPOUSE: 14
 labelId?: number
 ```
 
-邮箱的类型。
+关系类型。
 
 **类型：** number
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -356,13 +392,15 @@ labelId?: number
 labelName?: string
 ```
 
-邮箱的类型名称。
+关系类型名称。
 
 **类型：** string
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -383,6 +421,8 @@ relationName: string
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

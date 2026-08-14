@@ -10,6 +10,8 @@ export type PageTransitionCallback = (type: RouteType, progress: double) => void
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-export type PageTransitionCallback = (type: RouteType, progress: double) => void--><!--Device-unnamed-export type PageTransitionCallback = (type: RouteType, progress: double) => void-End-->
@@ -20,6 +22,6 @@ export type PageTransitionCallback = (type: RouteType, progress: double) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | transition route type  |
-| progress | double | 是 | transition progess  |
+| type | [RouteType](arkts-arkui-pagetransition-routetype-e.md) | 是 | transition route type |
+| progress | double | 是 | transition progess |
 

@@ -6,6 +6,8 @@ Represents a download task, You can use this object to operate the corresponding
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-webview-class WebDownloadItem--><!--Device-webview-class WebDownloadItem-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -21,6 +23,8 @@ Cancel the web download.
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WebDownloadItem-cancel(): void--><!--Device-WebDownloadItem-cancel(): void-End-->
 
@@ -38,6 +42,8 @@ Deserialize web download from typed array.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-WebDownloadItem-static deserialize(serializedData: Uint8Array): WebDownloadItem--><!--Device-WebDownloadItem-static deserialize(serializedData: Uint8Array): WebDownloadItem-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -52,13 +58,13 @@ Deserialize web download from typed array.
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | - Deserialize the serialized data into a WebDownloadItem. |
+| [WebDownloadItem](arkts-na-webview-webdownloaditem-c.md) | Deserialize the serialized data into a WebDownloadItem. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Incorrect parameter types.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types. &lt;br&gt;2. Parameter verification failed. |
 
 ## getCurrentSpeed
 
@@ -72,6 +78,8 @@ Get current speed, in bytes per second.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-WebDownloadItem-getCurrentSpeed(): int--><!--Device-WebDownloadItem-getCurrentSpeed(): int-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -80,7 +88,7 @@ Get current speed, in bytes per second.
 
 | 类型 | 说明 |
 | --- | --- |
-| int | - Returns the current download speed. |
+| int | Returns the current download speed. |
 
 ## getFullPath
 
@@ -94,6 +102,8 @@ Get full path of the web download.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-WebDownloadItem-getFullPath(): string--><!--Device-WebDownloadItem-getFullPath(): string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -102,7 +112,7 @@ Get full path of the web download.
 
 | 类型 | 说明 |
 | --- | --- |
-| string | - Returns the full path of the download. |
+| string | Returns the full path of the download. |
 
 ## getGuid
 
@@ -116,6 +126,8 @@ Get guid.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-WebDownloadItem-getGuid(): string--><!--Device-WebDownloadItem-getGuid(): string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -124,7 +136,7 @@ Get guid.
 
 | 类型 | 说明 |
 | --- | --- |
-| string | - Returns the download's guid. |
+| string | Returns the download's guid. |
 
 ## getLastErrorCode
 
@@ -138,6 +150,8 @@ Get last error code of the web download.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-WebDownloadItem-getLastErrorCode(): WebDownloadErrorCode--><!--Device-WebDownloadItem-getLastErrorCode(): WebDownloadErrorCode-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -146,7 +160,7 @@ Get last error code of the web download.
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | - Returns the last error code. |
+| [WebDownloadErrorCode](arkts-na-webview-webdownloaderrorcode-e.md) | Returns the last error code. |
 
 ## getMethod
 
@@ -160,6 +174,8 @@ Get http method of the web download request.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-WebDownloadItem-getMethod(): string--><!--Device-WebDownloadItem-getMethod(): string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -168,7 +184,7 @@ Get http method of the web download request.
 
 | 类型 | 说明 |
 | --- | --- |
-| string | - Returns the http request method. |
+| string | Returns the http request method. |
 
 ## getMimeType
 
@@ -182,6 +198,8 @@ Get mime type of the web download.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-WebDownloadItem-getMimeType(): string--><!--Device-WebDownloadItem-getMimeType(): string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -190,7 +208,7 @@ Get mime type of the web download.
 
 | 类型 | 说明 |
 | --- | --- |
-| string | - Returns the mimetype. |
+| string | Returns the mimetype. |
 
 ## getOriginalUrl
 
@@ -204,6 +222,8 @@ Get the original url of the web download.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WebDownloadItem-getOriginalUrl(): string--><!--Device-WebDownloadItem-getOriginalUrl(): string-End-->
@@ -214,7 +234,7 @@ Get the original url of the web download.
 
 | 类型 | 说明 |
 | --- | --- |
-| string | - Returns the original url of the download. |
+| string | Returns the original url of the download. |
 
 ## getPercentComplete
 
@@ -228,6 +248,8 @@ Get percent complete.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-WebDownloadItem-getPercentComplete(): int--><!--Device-WebDownloadItem-getPercentComplete(): int-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -236,7 +258,7 @@ Get percent complete.
 
 | 类型 | 说明 |
 | --- | --- |
-| int | - Returns -1 if progress is unknown. 100 if the download is already complete. |
+| int | Returns -1 if progress is unknown. 100 if the download is already complete. |
 
 ## getReceivedBytes
 
@@ -250,6 +272,8 @@ Get received bytes.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-WebDownloadItem-getReceivedBytes(): long--><!--Device-WebDownloadItem-getReceivedBytes(): long-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -258,7 +282,7 @@ Get received bytes.
 
 | 类型 | 说明 |
 | --- | --- |
-| long | - Returns the received bytes. |
+| long | Returns the received bytes. |
 
 ## getReferrerUrl
 
@@ -272,6 +296,8 @@ Get the referrer url of the web download.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WebDownloadItem-getReferrerUrl(): string--><!--Device-WebDownloadItem-getReferrerUrl(): string-End-->
@@ -282,7 +308,7 @@ Get the referrer url of the web download.
 
 | 类型 | 说明 |
 | --- | --- |
-| string | - Returns the referrer url of the download. |
+| string | Returns the referrer url of the download. |
 
 ## getState
 
@@ -296,6 +322,8 @@ Get state of the web download.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-WebDownloadItem-getState(): WebDownloadState--><!--Device-WebDownloadItem-getState(): WebDownloadState-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -304,7 +332,7 @@ Get state of the web download.
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | - Returns the current download state. |
+| [WebDownloadState](arkts-na-webview-webdownloadstate-e.md) | Returns the current download state. |
 
 ## getSuggestedFileName
 
@@ -318,6 +346,8 @@ Get suggested file name of the web download request.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-WebDownloadItem-getSuggestedFileName(): string--><!--Device-WebDownloadItem-getSuggestedFileName(): string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -326,7 +356,7 @@ Get suggested file name of the web download request.
 
 | 类型 | 说明 |
 | --- | --- |
-| string | - Returns the suggested file name. |
+| string | Returns the suggested file name. |
 
 ## getTotalBytes
 
@@ -340,6 +370,8 @@ Get total bytes.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-WebDownloadItem-getTotalBytes(): long--><!--Device-WebDownloadItem-getTotalBytes(): long-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -348,7 +380,7 @@ Get total bytes.
 
 | 类型 | 说明 |
 | --- | --- |
-| long | - Returns the total bytes received, -1 if the total size is unknown. |
+| long | Returns the total bytes received, -1 if the total size is unknown. |
 
 ## getUrl
 
@@ -362,6 +394,8 @@ Get url of the web download request.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-WebDownloadItem-getUrl(): string--><!--Device-WebDownloadItem-getUrl(): string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -370,7 +404,7 @@ Get url of the web download request.
 
 | 类型 | 说明 |
 | --- | --- |
-| string | - Returns the url. |
+| string | Returns the url. |
 
 ## pause
 
@@ -383,6 +417,8 @@ Pause the web download.
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WebDownloadItem-pause(): void--><!--Device-WebDownloadItem-pause(): void-End-->
 
@@ -406,6 +442,8 @@ Resume the web download. Use WebDownloadManager.resumeDownload to resume deseria
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-WebDownloadItem-resume(): void--><!--Device-WebDownloadItem-resume(): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -428,6 +466,8 @@ Serialize web download to typed array.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-WebDownloadItem-serialize(): Uint8Array--><!--Device-WebDownloadItem-serialize(): Uint8Array-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -436,7 +476,7 @@ Serialize web download to typed array.
 
 | 类型 | 说明 |
 | --- | --- |
-| Uint8Array | - Returns the serialized data. |
+| Uint8Array | Returns the serialized data. |
 
 ## start
 
@@ -449,6 +489,8 @@ Start the web download. Used in onBeforeDownload, If you want to start the curre
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WebDownloadItem-start(downloadPath: string): void--><!--Device-WebDownloadItem-start(downloadPath: string): void-End-->
 
@@ -464,5 +506,5 @@ Start the web download. Used in onBeforeDownload, If you want to start the curre
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Incorrect parameter types.\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types. &lt;br&gt;2. Parameter verification failed. |
 

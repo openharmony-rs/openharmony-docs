@@ -6,13 +6,15 @@
 function setDefaultErrorHandler(defaultHandler?: ErrorHandler) : ErrorHandler
 ```
 
-发生JS\_CRASH异常时，支持链式回调，返回上一次注册的处理器，仅限主线程调用。 如果传入非法参数或在子线程调用，将抛出错误码并返回undefined，因此建议使用try-catch逻辑进行处理。 若接口参数为空，后续注册的处理器将无法与前序已注册的处理器建立关联，从而中断链式调用。
+发生JS_CRASH异常时，支持链式回调，返回上一次注册的处理器，仅限主线程调用。 如果传入非法参数或在子线程调用，将抛出错误码并返回undefined，因此建议使用try-catch逻辑进行处理。 若接口参数为空，后续注册的处理器将无法与前序已注册的处理器建立关联，从而中断链式调用。
 
-**起始版本：** 21
+**起始版本：** 24
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
 
-**原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
 <!--Device-errorManager-function setDefaultErrorHandler(defaultHandler?: ErrorHandler) : ErrorHandler--><!--Device-errorManager-function setDefaultErrorHandler(defaultHandler?: ErrorHandler) : ErrorHandler-End-->
 
@@ -22,13 +24,13 @@ function setDefaultErrorHandler(defaultHandler?: ErrorHandler) : ErrorHandler
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| defaultHandler | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 新注册的错误处理器，缺省时默认值为空。 |
+| defaultHandler | [ErrorHandler](arkts-ability-errormanager-errorhandler-t.md) | 否 | 新注册的错误处理器，缺省时默认值为空。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回上一次注册的错误处理器。 |
+| [ErrorHandler](arkts-ability-errormanager-errorhandler-t.md) | 返回上一次注册的错误处理器。 |
 
 **错误码：**
 
@@ -36,7 +38,7 @@ function setDefaultErrorHandler(defaultHandler?: ErrorHandler) : ErrorHandler
 | --- | --- |
 | [16000205](../errorcode-ability.md#16000205-当前接口未在主线程中调用) | API未在主线程中调用。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { errorManager } from '@kit.AbilityKit';

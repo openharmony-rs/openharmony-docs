@@ -12,6 +12,8 @@ function createAVTranscoder(): Promise<AVTranscoder>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-media-function createAVTranscoder(): Promise<AVTranscoder>--><!--Device-media-function createAVTranscoder(): Promise<AVTranscoder>-End-->
@@ -22,16 +24,15 @@ function createAVTranscoder(): Promise<AVTranscoder>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;AVTranscoder&gt; | Promise对象。异步返回AVTranscoder实例，失败时返回null。可用于视频转码。 |
+| Promise&lt;[AVTranscoder](arkts-media-multimedia-media-avtranscoder-i.md)&gt; | Promise对象。异步返回AVTranscoder实例，失败时返回null。可用于视频转码。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [5400101](../errorcode-media.md#5400101-内存分配失败) | No memory. Return by promise. |
-| [5400101](../errorcode-media.md#5400101-内存分配失败) | No memory. Return by promise. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -56,11 +57,13 @@ media.createAVTranscoder().then((transcoder: media.AVTranscoder) => {
 function createAVTranscoder(): Promise<AVTranscoder | undefined>
 ```
 
-Creates an **AVTranscoder** instance. This API uses a promise to return the result. **NOTE** A maximum of 2 **AVTranscoder** instances can be created.
+Creates an **AVTranscoder** instance. This API uses a promise to return the result. **NOTE：**A maximum of 2 **AVTranscoder** instances can be created.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-media-function createAVTranscoder(): Promise<AVTranscoder | undefined>--><!--Device-media-function createAVTranscoder(): Promise<AVTranscoder | undefined>-End-->
 
@@ -70,7 +73,7 @@ Creates an **AVTranscoder** instance. This API uses a promise to return the resu
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;AVTranscoder \| undefined&gt; | Promise used to return the result. If the operation is successful, |
+| Promise&lt;[AVTranscoder](arkts-media-multimedia-media-avtranscoder-i.md) \| undefined&gt; | Promise used to return the result. If the operation is successful, an **AVTranscoder** instance is returned; otherwise, **null** is returned. The instance can be used for video transcoding. |
 
 **错误码：**
 

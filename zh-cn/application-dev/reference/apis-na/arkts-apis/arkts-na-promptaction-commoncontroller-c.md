@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-promptAction-export class CommonController--><!--Device-promptAction-export class CommonController-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -21,6 +23,8 @@ close(): void
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,6 +44,8 @@ constructor()
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-CommonController-constructor()--><!--Device-CommonController-constructor()-End-->
@@ -58,6 +64,8 @@ getState(): CommonState
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-CommonController-getState(): CommonState--><!--Device-CommonController-getState(): CommonState-End-->
@@ -68,5 +76,5 @@ getState(): CommonState
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回对应的弹窗状态。 |
+| [CommonState](arkts-na-promptaction-commonstate-e.md) | 返回对应的弹窗状态。 |
 

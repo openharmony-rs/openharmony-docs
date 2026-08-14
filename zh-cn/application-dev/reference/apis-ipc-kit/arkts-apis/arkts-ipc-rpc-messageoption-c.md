@@ -2,101 +2,15 @@
 
 公共消息选项，使用指定的标志类型，构造指定的MessageOption对象。
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-rpc-class MessageOption--><!--Device-rpc-class MessageOption-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
-
-## TF_ACCEPT_FDS
-
-```TypeScript
-static get TF_ACCEPT_FDS(): int
-```
-
-Indicates the sendRequest API for returning the file descriptor.
-
-**起始版本：** 23
-
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
-
-<!--Device-MessageOption-static get TF_ACCEPT_FDS(): int--><!--Device-MessageOption-static get TF_ACCEPT_FDS(): int-End-->
-
-**系统能力：** SystemCapability.Communication.IPC.Core
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| int | Return vaule indicating the sendRequest API for returning the file descriptor. |
-
-## TF_ASYNC
-
-```TypeScript
-static get TF_ASYNC(): int
-```
-
-Indicates asynchronous call.
-
-**起始版本：** 23
-
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
-
-<!--Device-MessageOption-static get TF_ASYNC(): int--><!--Device-MessageOption-static get TF_ASYNC(): int-End-->
-
-**系统能力：** SystemCapability.Communication.IPC.Core
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| int | Return vaule indicating asynchronous call. |
-
-## TF_SYNC
-
-```TypeScript
-static get TF_SYNC(): int
-```
-
-Indicates synchronous call.
-
-**起始版本：** 23
-
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
-
-<!--Device-MessageOption-static get TF_SYNC(): int--><!--Device-MessageOption-static get TF_SYNC(): int-End-->
-
-**系统能力：** SystemCapability.Communication.IPC.Core
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| int | Return vaule indicating synchronous call. |
-
-## TF_WAIT_TIME
-
-```TypeScript
-static get TF_WAIT_TIME(): int
-```
-
-Indicates the wait time for RPC, in seconds. It is NOT used in IPC case.
-
-**起始版本：** 23
-
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
-
-<!--Device-MessageOption-static get TF_WAIT_TIME(): int--><!--Device-MessageOption-static get TF_WAIT_TIME(): int-End-->
-
-**系统能力：** SystemCapability.Communication.IPC.Core
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| int | Return vaule indicating the wait time for RPC, in seconds. It is NOT used in IPC case. |
 
 ## constructor
 
@@ -110,6 +24,8 @@ MessageOption构造函数。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MessageOption-constructor(syncFlags?: number, waitTime?: number)--><!--Device-MessageOption-constructor(syncFlags?: number, waitTime?: number)-End-->
@@ -120,10 +36,10 @@ MessageOption构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| syncFlags | number | 否 | 同步调用或异步调用标志。取值范围：{0, 1}。同步调用标志：0（当需要立即获取响应结果时选择）；异步调用标志：1（当不需要立即获取响应结果时选择）。不传入时默认为0（同步调用）。 |
-| waitTime | number | 否 | 调用rpc最长等待时间（单位：秒）。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_默认值：8\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_取值范围：(0, 3000]。当RPC调用耗时较长时，可适当增加等待时间；当需要快速响应时，可适当减少等待时间。不传入时使用默认等待时间8秒。 |
+| syncFlags | number | 否 | 同步调用或异步调用标志。取值范围：{0, 1}。同步调用标志：0（当需要立即获取响应结果时选择）；异步调用标志：1（当不需要立即获取响应结果时选择）。 不传入时默认为0（同步调用）。 |
+| waitTime | number | 否 | 调用rpc最长等待时间（单位：秒）。&lt;br/&gt;默认值：8&lt;br/&gt;取值范围：(0, 3000]。 当RPC调用耗时较长时，可适当增加等待时间；当需要快速响应时，可适当减少等待时间。不传入时使用默认等待时间8秒。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -147,6 +63,8 @@ MessageOption构造函数。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MessageOption-constructor(async?: boolean)--><!--Device-MessageOption-constructor(async?: boolean)-End-->
@@ -159,7 +77,7 @@ MessageOption构造函数。
 | --- | --- | --- | --- |
 | async | boolean | 否 | 是否异步调用。true表示异步调用（当不需要立即获取响应结果时选择），false表示同步调用（当需要立即获取响应结果时选择）。不传入时默认为false（同步调用）。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -177,11 +95,13 @@ class TestRemoteObject extends rpc.MessageOption {
 constructor(isAsync: boolean)
 ```
 
-A constructor used to create a MessageOption instance.
+MessageOption构造函数。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-MessageOption-constructor(isAsync: boolean)--><!--Device-MessageOption-constructor(isAsync: boolean)-End-->
 
@@ -191,9 +111,9 @@ A constructor used to create a MessageOption instance.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isAsync | boolean | 是 | Specifies whether the SendRequest is called synchronously (default) or asynchronously. |
+| isAsync | boolean | 是 | true：表示异步调用标志，false：表示同步调用标志。默认同步调用。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // ArkTS-Sta示例
@@ -214,17 +134,19 @@ class TestRemoteObject extends rpc.MessageOption {
 constructor()
 ```
 
-A constructor used to create a MessageOption instance.
+MessageOption构造函数。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-MessageOption-constructor()--><!--Device-MessageOption-constructor()-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**示例：**
+## 示例
 
 ```TypeScript
 // ArkTS-Sta示例
@@ -243,11 +165,13 @@ class TestRemoteObject extends rpc.MessageOption {
 constructor(syncFlags: int)
 ```
 
-A constructor used to create a MessageOption instance.
+MessageOption构造函数。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-MessageOption-constructor(syncFlags: int)--><!--Device-MessageOption-constructor(syncFlags: int)-End-->
 
@@ -257,9 +181,9 @@ A constructor used to create a MessageOption instance.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| syncFlags | int | 是 | Specifies whether the SendRequest is called synchronously (default) or asynchronously. |
+| syncFlags | int | 是 | 同步调用或异步调用标志，同步调用标志：0；异步调用标志：1。默认同步调用。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // ArkTS-Sta示例
@@ -278,11 +202,13 @@ class TestRemoteObject extends rpc.MessageOption {
 constructor(syncFlags: int, waitTime: int)
 ```
 
-A constructor used to create a MessageOption instance.
+MessageOption构造函数。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-MessageOption-constructor(syncFlags: int, waitTime: int)--><!--Device-MessageOption-constructor(syncFlags: int, waitTime: int)-End-->
 
@@ -292,10 +218,10 @@ A constructor used to create a MessageOption instance.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| syncFlags | int | 是 | Specifies whether the SendRequest is called synchronously (default) or asynchronously. |
-| waitTime | int | 是 | Maximum wait time for a RPC call, in seconds. The default value is **TF\_\_\_ESCAPED\_UNDERSCORE\_\_\_WAIT\_\_\_ESCAPED\_UNDERSCORE\_\_\_TIME**. |
+| syncFlags | int | 是 | 同步调用或异步调用标志，同步调用标志：0；异步调用标志：1。默认同步调用。 |
+| waitTime | int | 是 | 调用rpc最长等待时间（单位：秒）。&lt;br/&gt;默认值：8&lt;br/&gt;取值范围：(0, 3000] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // ArkTS-Sta示例
@@ -312,21 +238,17 @@ class TestRemoteObject extends rpc.MessageOption {
 
 ## getFlags
 
-ArkTS-Dyn:
-```TypeScript
-getFlags(): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getFlags(): int
 ```
 
 获取同步调用或异步调用标志。
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
@@ -338,9 +260,9 @@ getFlags(): int
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 调用成功返回同步调用或异步调用标志。同步调用标志：0，异步调用标志：1。 |
+| int | 调用成功返回同步调用或异步调用标志。同步调用标志：0，异步调用标志：1。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -362,21 +284,17 @@ try {
 
 ## getWaitTime
 
-ArkTS-Dyn:
-```TypeScript
-getWaitTime(): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getWaitTime(): int
 ```
 
 获取rpc调用的最长等待时间。
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
@@ -388,9 +306,9 @@ getWaitTime(): int
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | rpc最长等待时间（单位：秒）。 |
+| int | rpc最长等待时间（单位：秒）。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -414,11 +332,13 @@ try {
 isAsync(): boolean
 ```
 
-获取 [sendMessageRequest]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 调用中确定同步或是异步的标志。
+获取 [sendMessageRequest](arkts-ipc-rpc-iremoteobject-c.md#sendMessageRequest)调用中确定同步或是异步的标志。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
@@ -432,7 +352,7 @@ isAsync(): boolean
 | --- | --- |
 | boolean | true：异步调用成功，false：同步调用成功。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -452,11 +372,13 @@ try {
 setAsync(isAsync: boolean): void
 ```
 
-设置 [sendMessageRequest]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 调用中确定同步或是异步的标志。
+设置 [sendMessageRequest](arkts-ipc-rpc-iremoteobject-c.md#sendMessageRequest)调用中确定同步或是异步的标志。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
@@ -470,7 +392,7 @@ setAsync(isAsync: boolean): void
 | --- | --- | --- | --- |
 | isAsync | boolean | 是 | true：表示异步调用标志，false：表示同步调用标志。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -486,21 +408,17 @@ try {
 
 ## setFlags
 
-ArkTS-Dyn:
-```TypeScript
-setFlags(flags: number): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 setFlags(flags: int): void
 ```
 
 设置同步调用或异步调用标志。
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
@@ -512,9 +430,9 @@ setFlags(flags: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| flags | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 同步调用或异步调用标志。取值范围：{0, 1}。同步调用标志：0；异步调用标志：1。 |
+| flags | int | 是 | 同步调用或异步调用标志。取值范围：{0, 1}。同步调用标志：0；异步调用标志：1。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -533,21 +451,17 @@ try {
 
 ## setWaitTime
 
-ArkTS-Dyn:
-```TypeScript
-setWaitTime(waitTime: number): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 setWaitTime(waitTime: int): void
 ```
 
 设置rpc调用最长等待时间。
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
@@ -559,9 +473,9 @@ setWaitTime(waitTime: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| waitTime | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | rpc调用最长等待时间（单位：秒），取值范围：(0，3000] |
+| waitTime | int | 是 | rpc调用最长等待时间（单位：秒），取值范围：(0，3000] |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -583,7 +497,7 @@ try {
 static readonly TF_ACCEPT_FDS: number
 ```
 
-指示 [sendMessageRequest]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 接口可以传递文件描述符。
+指示 [sendMessageRequest](arkts-ipc-rpc-iremoteobject-c.md#sendMessageRequest)接口可以传递文件描述符。
 
 **类型：** number
 
@@ -592,6 +506,8 @@ static readonly TF_ACCEPT_FDS: number
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
@@ -615,6 +531,8 @@ static readonly TF_ASYNC: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MessageOption-static readonly TF_ASYNC: number--><!--Device-MessageOption-static readonly TF_ASYNC: number-End-->
@@ -637,6 +555,8 @@ static readonly TF_SYNC: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MessageOption-static readonly TF_SYNC: number--><!--Device-MessageOption-static readonly TF_SYNC: number-End-->
@@ -653,12 +573,13 @@ RPC等待时间（单位：秒），IPC场景下无效。默认等待为8秒（�
 
 **类型：** number
 
-**默认值：** 4 [since 7 - 10]
-@default 8 [since 11]
+**默认值：** 4 [since 7 - 10] @default 8 [since 11]
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 

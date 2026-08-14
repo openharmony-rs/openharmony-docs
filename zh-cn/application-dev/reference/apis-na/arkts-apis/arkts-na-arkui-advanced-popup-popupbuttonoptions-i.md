@@ -6,6 +6,8 @@ PopupButtonOptions定义按钮的相关属性和事件。
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-export interface PopupButtonOptions--><!--Device-unnamed-export interface PopupButtonOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -24,6 +26,8 @@ action?: VoidCallback
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PopupButtonOptions-action?: VoidCallback--><!--Device-PopupButtonOptions-action?: VoidCallback-End-->
@@ -36,7 +40,7 @@ action?: VoidCallback
 fontColor?: ResourceColor
 ```
 
-设置按钮文本字体颜色。 默认值：\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_
+设置按钮文本字体颜色。 默认值：`\$r('sys.color.ohos_id_color_text_primary_activated')`
 
 **类型：** ResourceColor
 
@@ -45,6 +49,8 @@ fontColor?: ResourceColor
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -58,7 +64,7 @@ fontColor?: ResourceColor
 fontSize?: number | string | Resource
 ```
 
-设置按钮文本字体大小。 默认值：\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_ string类型可选值：可以转化为数字的字符串（如'10'）或带长度单位的字符串（如'10px'），不支持设置百分比字符串。 设置值为异常值时取默认值。
+设置按钮文本字体大小。 默认值：`\$r('sys.float.ohos_id_text_size_button2')` string类型可选值：可以转化为数字的字符串（如'10'）或带长度单位的字符串（如'10px'），不支持设置百分比字符串。 设置值为异常值时取默认值。
 
 **类型：** number \| string \| Resource
 
@@ -67,6 +73,8 @@ fontSize?: number | string | Resource
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -87,6 +95,8 @@ text?: ResourceStr
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

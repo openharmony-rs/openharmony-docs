@@ -1,10 +1,12 @@
 # AudioVolumeGroupManager
 
-管理音频组音量。 在使用AudioVolumeGroupManager的接口之前，需先通过 [getVolumeGroupManager]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 获取AudioVolumeGroupManager实例。 > **说明：** > > - 本Interface首批接口从API version 9开始支持。
+管理音频组音量。 在使用AudioVolumeGroupManager的接口之前，需先通过 [getVolumeGroupManager](arkts-audio-audio-audiovolumemanager-i.md#getVolumeGroupManager) 获取AudioVolumeGroupManager实例。 > **说明：** > > - 本Interface首批接口从API version 9开始支持。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-audio-interface AudioVolumeGroupManager--><!--Device-audio-interface AudioVolumeGroupManager-End-->
 
@@ -12,21 +14,17 @@
 
 ## getMaxAmplitudeForInputDevice
 
-ArkTS-Dyn:
-```TypeScript
-getMaxAmplitudeForInputDevice(inputDevice: AudioDeviceDescriptor): Promise<number>
-```
-
-ArkTS-Sta:
 ```TypeScript
 getMaxAmplitudeForInputDevice(inputDevice: AudioDeviceDescriptor): Promise<double>
 ```
 
 获取输入设备音频流的最大电平值，取值范围为[0, 1]。使用Promise异步回调。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioVolumeGroupManager-getMaxAmplitudeForInputDevice(inputDevice: AudioDeviceDescriptor): Promise<double>--><!--Device-AudioVolumeGroupManager-getMaxAmplitudeForInputDevice(inputDevice: AudioDeviceDescriptor): Promise<double>-End-->
 
@@ -36,39 +34,35 @@ getMaxAmplitudeForInputDevice(inputDevice: AudioDeviceDescriptor): Promise<doubl
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| inputDevice | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 获取最大电平值的设备信息。 |
+| inputDevice | [AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md) | 是 | 获取最大电平值的设备信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: Promise&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：Promise&lt;double&gt; | Promise对象，返回对应设备的电平值，大小在[0, 1]之间。 |
+| Promise&lt;double&gt; | Promise对象，返回对应设备的电平值，大小在[0, 1]之间。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Return by promise. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | System error. Return by promise. |
 
 ## getMaxAmplitudeForOutputDevice
 
-ArkTS-Dyn:
-```TypeScript
-getMaxAmplitudeForOutputDevice(outputDevice: AudioDeviceDescriptor): Promise<number>
-```
-
-ArkTS-Sta:
 ```TypeScript
 getMaxAmplitudeForOutputDevice(outputDevice: AudioDeviceDescriptor): Promise<double>
 ```
 
 获取输出设备音频流的最大电平值，取值范围为[0, 1]。使用Promise异步回调。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioVolumeGroupManager-getMaxAmplitudeForOutputDevice(outputDevice: AudioDeviceDescriptor): Promise<double>--><!--Device-AudioVolumeGroupManager-getMaxAmplitudeForOutputDevice(outputDevice: AudioDeviceDescriptor): Promise<double>-End-->
 
@@ -78,43 +72,37 @@ getMaxAmplitudeForOutputDevice(outputDevice: AudioDeviceDescriptor): Promise<dou
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| outputDevice | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 获取最大电平值的设备信息。 |
+| outputDevice | [AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md) | 是 | 获取最大电平值的设备信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: Promise&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：Promise&lt;double&gt; | Promise对象，返回对应设备的电平值，大小在[0, 1]之间。 |
+| Promise&lt;double&gt; | Promise对象，返回对应设备的电平值，大小在[0, 1]之间。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Return by promise. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | System error. Return by promise. |
 
 ## getMaxVolume
 
-ArkTS-Dyn:
-```TypeScript
-getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback<int>): void
 ```
 
 获取指定流的最大音量等级。使用callback异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
 **废弃版本：** 20
 
-**替代接口：** ohos.multimedia.audio.AudioVolumeManager#getMaxVolumeByStream
+**替代接口：** [getMaxVolumeByStream](arkts-audio-audio-audiovolumemanager-i.md#getMaxVolumeByStream)
 
 <!--Device-AudioVolumeGroupManager-getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback<int>): void--><!--Device-AudioVolumeGroupManager-getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback<int>): void-End-->
 
@@ -124,30 +112,24 @@ getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback<int>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volumeType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频音量类型。 |
-| callback | ArkTS-Dyn: \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_2\_\_\_ArkTS-Sta：\_\_\_MD\_LINK\_USD\_1\_\_\_&lt;int&gt; | 是 | 回调函数。当获取指定流的最大音量成功，err为undefined，data为获取到的指定流的最大音量等级；否则为错误对象。 |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;int&gt; | 是 | 回调函数。当获取指定流的最大音量成功，err为undefined，data为获取到的指定流的最大音量等级；否则为错误对象。 |
 
 ## getMaxVolume
 
-ArkTS-Dyn:
-```TypeScript
-getMaxVolume(volumeType: AudioVolumeType): Promise<number>
-```
-
-ArkTS-Sta:
 ```TypeScript
 getMaxVolume(volumeType: AudioVolumeType): Promise<int>
 ```
 
 获取指定流的最大音量等级。使用Promise异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
 **废弃版本：** 20
 
-**替代接口：** ohos.multimedia.audio.AudioVolumeManager#getMaxVolumeByStream
+**替代接口：** [getMaxVolumeByStream](arkts-audio-audio-audiovolumemanager-i.md#getMaxVolumeByStream)
 
 <!--Device-AudioVolumeGroupManager-getMaxVolume(volumeType: AudioVolumeType): Promise<int>--><!--Device-AudioVolumeGroupManager-getMaxVolume(volumeType: AudioVolumeType): Promise<int>-End-->
 
@@ -157,35 +139,29 @@ getMaxVolume(volumeType: AudioVolumeType): Promise<int>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volumeType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频音量类型。 |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: Promise&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：Promise&lt;int&gt; | Promise对象，返回最大音量等级。 |
+| Promise&lt;int&gt; | Promise对象，返回最大音量等级。 |
 
 ## getMaxVolumeSync
 
-ArkTS-Dyn:
-```TypeScript
-getMaxVolumeSync(volumeType: AudioVolumeType): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getMaxVolumeSync(volumeType: AudioVolumeType): int
 ```
 
 获取指定流的最大音量等级。同步返回结果。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
 **废弃版本：** 20
 
-**替代接口：** ohos.multimedia.audio.AudioVolumeManager#getMaxVolumeByStream
+**替代接口：** [getMaxVolumeByStream](arkts-audio-audio-audiovolumemanager-i.md#getMaxVolumeByStream)
 
 <!--Device-AudioVolumeGroupManager-getMaxVolumeSync(volumeType: AudioVolumeType): int--><!--Device-AudioVolumeGroupManager-getMaxVolumeSync(volumeType: AudioVolumeType): int-End-->
 
@@ -195,42 +171,36 @@ getMaxVolumeSync(volumeType: AudioVolumeType): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volumeType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频音量类型。 |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 返回最大音量等级。 |
+| int | 返回最大音量等级。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 ## getMinVolume
 
-ArkTS-Dyn:
-```TypeScript
-getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback<int>): void
 ```
 
 获取指定流的最小音量等级。使用callback异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
 **废弃版本：** 20
 
-**替代接口：** ohos.multimedia.audio.AudioVolumeManager#getMinVolumeByStream
+**替代接口：** [getMinVolumeByStream](arkts-audio-audio-audiovolumemanager-i.md#getMinVolumeByStream)
 
 <!--Device-AudioVolumeGroupManager-getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback<int>): void--><!--Device-AudioVolumeGroupManager-getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback<int>): void-End-->
 
@@ -240,30 +210,24 @@ getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback<int>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volumeType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频音量类型。 |
-| callback | ArkTS-Dyn: \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_2\_\_\_ArkTS-Sta：\_\_\_MD\_LINK\_USD\_1\_\_\_&lt;int&gt; | 是 | 回调函数。当获取指定流的最小音量成功，err为undefined，data为获取到的指定流的最小音量等级；否则为错误对象。 |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;int&gt; | 是 | 回调函数。当获取指定流的最小音量成功，err为undefined，data为获取到的指定流的最小音量等级；否则为错误对象。 |
 
 ## getMinVolume
 
-ArkTS-Dyn:
-```TypeScript
-getMinVolume(volumeType: AudioVolumeType): Promise<number>
-```
-
-ArkTS-Sta:
 ```TypeScript
 getMinVolume(volumeType: AudioVolumeType): Promise<int>
 ```
 
 获取指定流的最小音量等级。使用Promise异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
 **废弃版本：** 20
 
-**替代接口：** ohos.multimedia.audio.AudioVolumeManager#getMinVolumeByStream
+**替代接口：** [getMinVolumeByStream](arkts-audio-audio-audiovolumemanager-i.md#getMinVolumeByStream)
 
 <!--Device-AudioVolumeGroupManager-getMinVolume(volumeType: AudioVolumeType): Promise<int>--><!--Device-AudioVolumeGroupManager-getMinVolume(volumeType: AudioVolumeType): Promise<int>-End-->
 
@@ -273,35 +237,29 @@ getMinVolume(volumeType: AudioVolumeType): Promise<int>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volumeType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频音量类型。 |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: Promise&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：Promise&lt;int&gt; | Promise对象，返回最小音量等级。 |
+| Promise&lt;int&gt; | Promise对象，返回最小音量等级。 |
 
 ## getMinVolumeSync
 
-ArkTS-Dyn:
-```TypeScript
-getMinVolumeSync(volumeType: AudioVolumeType): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getMinVolumeSync(volumeType: AudioVolumeType): int
 ```
 
 获取指定流的最小音量等级。同步返回结果。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
 **废弃版本：** 20
 
-**替代接口：** ohos.multimedia.audio.AudioVolumeManager#getMinVolumeByStream
+**替代接口：** [getMinVolumeByStream](arkts-audio-audio-audiovolumemanager-i.md#getMinVolumeByStream)
 
 <!--Device-AudioVolumeGroupManager-getMinVolumeSync(volumeType: AudioVolumeType): int--><!--Device-AudioVolumeGroupManager-getMinVolumeSync(volumeType: AudioVolumeType): int-End-->
 
@@ -311,19 +269,19 @@ getMinVolumeSync(volumeType: AudioVolumeType): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volumeType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频音量类型。 |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 返回最小音量等级。 |
+| int | 返回最小音量等级。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 ## getRingerMode
@@ -334,9 +292,11 @@ getRingerMode(callback: AsyncCallback<AudioRingMode>): void
 
 获取铃声模式。使用callback异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioVolumeGroupManager-getRingerMode(callback: AsyncCallback<AudioRingMode>): void--><!--Device-AudioVolumeGroupManager-getRingerMode(callback: AsyncCallback<AudioRingMode>): void-End-->
 
@@ -346,7 +306,7 @@ getRingerMode(callback: AsyncCallback<AudioRingMode>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;AudioRingMode&gt; | 是 | 回调函数。当获取铃声模式成功，err为undefined，data为获取到的铃声模式；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AudioRingMode](arkts-audio-audio-audioringmode-e.md)&gt; | 是 | 回调函数。当获取铃声模式成功，err为undefined，data为获取到的铃声模式；否则为错误对象。 |
 
 ## getRingerMode
 
@@ -356,9 +316,11 @@ getRingerMode(): Promise<AudioRingMode>
 
 获取铃声模式。使用Promise异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioVolumeGroupManager-getRingerMode(): Promise<AudioRingMode>--><!--Device-AudioVolumeGroupManager-getRingerMode(): Promise<AudioRingMode>-End-->
 
@@ -368,7 +330,7 @@ getRingerMode(): Promise<AudioRingMode>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;AudioRingMode&gt; | Promise对象，返回系统的铃声模式。 |
+| Promise&lt;[AudioRingMode](arkts-audio-audio-audioringmode-e.md)&gt; | Promise对象，返回系统的铃声模式。 |
 
 ## getRingerModeSync
 
@@ -378,9 +340,11 @@ getRingerModeSync(): AudioRingMode
 
 获取铃声模式。同步返回结果。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioVolumeGroupManager-getRingerModeSync(): AudioRingMode--><!--Device-AudioVolumeGroupManager-getRingerModeSync(): AudioRingMode-End-->
 
@@ -390,29 +354,23 @@ getRingerModeSync(): AudioRingMode
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回系统的铃声模式。 |
+| [AudioRingMode](arkts-audio-audio-audioringmode-e.md) | 返回系统的铃声模式。 |
 
 ## getSystemVolumeInDb
 
-ArkTS-Dyn:
-```TypeScript
-getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: number, device: DeviceType, callback: AsyncCallback<number>): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: int, device: DeviceType, callback: AsyncCallback<double>): void
 ```
 
 获取音量增益dB值。使用callback异步回调。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
 **废弃版本：** 20
 
-**替代接口：** ohos.multimedia.audio.AudioVolumeManager#getVolumeInUnitOfDbByStream
+**替代接口：** [getVolumeInUnitOfDbByStream](arkts-audio-audio-audiovolumemanager-i.md#getVolumeInUnitOfDbByStream)
 
 <!--Device-AudioVolumeGroupManager-getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: int, device: DeviceType, callback: AsyncCallback<double>): void--><!--Device-AudioVolumeGroupManager-getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: int, device: DeviceType, callback: AsyncCallback<double>): void-End-->
 
@@ -422,40 +380,34 @@ getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: int, device: Devic
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volumeType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频音量类型。 |
-| volumeLevel | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 音量等级。 |
-| device | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 设备类型。 |
-| callback | ArkTS-Dyn: \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_2\_\_\_ArkTS-Sta：\_\_\_MD\_LINK\_USD\_1\_\_\_&lt;double&gt; | 是 | 回调函数。当获取音量增益dB值成功，err为undefined，data为获取到的音量增益dB值；否则为错误对象。 |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
+| volumeLevel | int | 是 | 音量等级。 |
+| device | DeviceType | 是 | 设备类型。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;double&gt; | 是 | 回调函数。当获取音量增益dB值成功，err为undefined，data为获取到的音量增益dB值；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Return by callback. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | System error. Return by callback. |
 
 ## getSystemVolumeInDb
 
-ArkTS-Dyn:
-```TypeScript
-getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: number, device: DeviceType): Promise<number>
-```
-
-ArkTS-Sta:
 ```TypeScript
 getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: int, device: DeviceType): Promise<double>
 ```
 
 获取音量增益dB值。使用Promise异步回调。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
 **废弃版本：** 20
 
-**替代接口：** ohos.multimedia.audio.AudioVolumeManager#getVolumeInUnitOfDbByStream
+**替代接口：** [getVolumeInUnitOfDbByStream](arkts-audio-audio-audiovolumemanager-i.md#getVolumeInUnitOfDbByStream)
 
 <!--Device-AudioVolumeGroupManager-getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: int, device: DeviceType): Promise<double>--><!--Device-AudioVolumeGroupManager-getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: int, device: DeviceType): Promise<double>-End-->
 
@@ -465,45 +417,39 @@ getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: int, device: Devic
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volumeType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频音量类型。 |
-| volumeLevel | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 音量等级。 |
-| device | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 设备类型。 |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
+| volumeLevel | int | 是 | 音量等级。 |
+| device | DeviceType | 是 | 设备类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: Promise&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：Promise&lt;double&gt; | Promise对象，返回对应的音量增益dB值。 |
+| Promise&lt;double&gt; | Promise对象，返回对应的音量增益dB值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Return by promise. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | System error. Return by promise. |
 
 ## getSystemVolumeInDbSync
 
-ArkTS-Dyn:
-```TypeScript
-getSystemVolumeInDbSync(volumeType: AudioVolumeType, volumeLevel: number, device: DeviceType): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getSystemVolumeInDbSync(volumeType: AudioVolumeType, volumeLevel: int, device: DeviceType): double
 ```
 
 获取音量增益dB值。同步返回结果。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
 **废弃版本：** 20
 
-**替代接口：** ohos.multimedia.audio.AudioVolumeManager#getVolumeInUnitOfDbByStream
+**替代接口：** [getVolumeInUnitOfDbByStream](arkts-audio-audio-audiovolumemanager-i.md#getVolumeInUnitOfDbByStream)
 
 <!--Device-AudioVolumeGroupManager-getSystemVolumeInDbSync(volumeType: AudioVolumeType, volumeLevel: int, device: DeviceType): double--><!--Device-AudioVolumeGroupManager-getSystemVolumeInDbSync(volumeType: AudioVolumeType, volumeLevel: int, device: DeviceType): double-End-->
 
@@ -513,44 +459,38 @@ getSystemVolumeInDbSync(volumeType: AudioVolumeType, volumeLevel: int, device: D
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volumeType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频音量类型。 |
-| volumeLevel | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 音量等级。 |
-| device | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 设备类型。 |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
+| volumeLevel | int | 是 | 音量等级。 |
+| device | DeviceType | 是 | 设备类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：double | 返回对应的音量增益dB值。 |
+| double | 返回对应的音量增益dB值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 ## getVolume
 
-ArkTS-Dyn:
-```TypeScript
-getVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void
-```
-
-ArkTS-Sta:
 ```TypeScript
 getVolume(volumeType: AudioVolumeType, callback: AsyncCallback<int>): void
 ```
 
 获取指定流的音量等级。使用callback异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
 **废弃版本：** 20
 
-**替代接口：** ohos.multimedia.audio.AudioVolumeManager#getVolumeByStream
+**替代接口：** [getVolumeByStream](arkts-audio-audio-audiovolumemanager-i.md#getVolumeByStream)
 
 <!--Device-AudioVolumeGroupManager-getVolume(volumeType: AudioVolumeType, callback: AsyncCallback<int>): void--><!--Device-AudioVolumeGroupManager-getVolume(volumeType: AudioVolumeType, callback: AsyncCallback<int>): void-End-->
 
@@ -560,30 +500,24 @@ getVolume(volumeType: AudioVolumeType, callback: AsyncCallback<int>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volumeType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频音量类型。 |
-| callback | ArkTS-Dyn: \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_2\_\_\_ArkTS-Sta：\_\_\_MD\_LINK\_USD\_1\_\_\_&lt;int&gt; | 是 | 回调函数。当获取指定流的音量成功，err为undefined，data为获取到的指定流的音量等级；否则为错误对象。指定流的音量等级范围可通过[getMinVolume]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_和[getMaxVolume]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_获取。 |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;int&gt; | 是 | 回调函数。当获取指定流的音量成功，err为undefined，data为获取到的指定流的音量等级；否则为错误对象。指定流的音量等级范围可通过 [getMinVolume](#getMinVolume) 和 [getMaxVolume](#getMaxVolume) 获取。 |
 
 ## getVolume
 
-ArkTS-Dyn:
-```TypeScript
-getVolume(volumeType: AudioVolumeType): Promise<number>
-```
-
-ArkTS-Sta:
 ```TypeScript
 getVolume(volumeType: AudioVolumeType): Promise<int>
 ```
 
 获取指定流的音量等级。使用Promise异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
 **废弃版本：** 20
 
-**替代接口：** ohos.multimedia.audio.AudioVolumeManager#getVolumeByStream
+**替代接口：** [getVolumeByStream](arkts-audio-audio-audiovolumemanager-i.md#getVolumeByStream)
 
 <!--Device-AudioVolumeGroupManager-getVolume(volumeType: AudioVolumeType): Promise<int>--><!--Device-AudioVolumeGroupManager-getVolume(volumeType: AudioVolumeType): Promise<int>-End-->
 
@@ -593,35 +527,29 @@ getVolume(volumeType: AudioVolumeType): Promise<int>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volumeType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频音量类型。 |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: Promise&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：Promise&lt;int&gt; | Promise对象，返回指定流的音量等级。指定流的音量等级范围可通过 |
+| Promise&lt;int&gt; | Promise对象，返回指定流的音量等级。指定流的音量等级范围可通过 [getMinVolume]{ |
 
 ## getVolumeSync
 
-ArkTS-Dyn:
-```TypeScript
-getVolumeSync(volumeType: AudioVolumeType): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getVolumeSync(volumeType: AudioVolumeType): int
 ```
 
 获取指定流的音量等级。同步返回结果。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
 **废弃版本：** 20
 
-**替代接口：** ohos.multimedia.audio.AudioVolumeManager#getVolumeByStream
+**替代接口：** [getVolumeByStream](arkts-audio-audio-audiovolumemanager-i.md#getVolumeByStream)
 
 <!--Device-AudioVolumeGroupManager-getVolumeSync(volumeType: AudioVolumeType): int--><!--Device-AudioVolumeGroupManager-getVolumeSync(volumeType: AudioVolumeType): int-End-->
 
@@ -631,19 +559,19 @@ getVolumeSync(volumeType: AudioVolumeType): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volumeType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频音量类型。 |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 返回指定流的音量等级。指定流的音量等级范围可通过 |
+| int | 返回指定流的音量等级。指定流的音量等级范围可通过 [getMinVolume]{ |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 ## isMicrophoneMute
@@ -654,9 +582,11 @@ isMicrophoneMute(callback: AsyncCallback<boolean>): void
 
 获取麦克风静音状态。使用callback异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioVolumeGroupManager-isMicrophoneMute(callback: AsyncCallback<boolean>): void--><!--Device-AudioVolumeGroupManager-isMicrophoneMute(callback: AsyncCallback<boolean>): void-End-->
 
@@ -666,7 +596,7 @@ isMicrophoneMute(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;boolean&gt; | 是 | 回调函数。当获取麦克风静音状态成功，err为undefined，data为true表示静音，false表示非静音；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。当获取麦克风静音状态成功，err为undefined，data为true表示静音，false表示非静音；否则为错误对象。 |
 
 ## isMicrophoneMute
 
@@ -676,9 +606,11 @@ isMicrophoneMute(): Promise<boolean>
 
 获取麦克风静音状态。使用Promise异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioVolumeGroupManager-isMicrophoneMute(): Promise<boolean>--><!--Device-AudioVolumeGroupManager-isMicrophoneMute(): Promise<boolean>-End-->
 
@@ -698,9 +630,11 @@ isMicrophoneMuteSync(): boolean
 
 获取麦克风静音状态。同步返回结果。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioVolumeGroupManager-isMicrophoneMuteSync(): boolean--><!--Device-AudioVolumeGroupManager-isMicrophoneMuteSync(): boolean-End-->
 
@@ -720,13 +654,13 @@ isMute(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void
 
 获取指定音量流静音状态。使用callback异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
 **废弃版本：** 20
 
-**替代接口：** ohos.multimedia.audio.AudioVolumeManager#isSystemMutedForStream
+**替代接口：** [isSystemMutedForStream](arkts-audio-audio-audiovolumemanager-i.md#isSystemMutedForStream)
 
 <!--Device-AudioVolumeGroupManager-isMute(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void--><!--Device-AudioVolumeGroupManager-isMute(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void-End-->
 
@@ -736,8 +670,8 @@ isMute(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volumeType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频音量类型。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;boolean&gt; | 是 | 回调函数。当获取指定音量流静音状态成功，err为undefined，data为true表示静音，false表示非静音；否则为错误对象。 |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。当获取指定音量流静音状态成功，err为undefined，data为true表示静音，false表示非静音；否则为错误对象。 |
 
 ## isMute
 
@@ -747,13 +681,13 @@ isMute(volumeType: AudioVolumeType): Promise<boolean>
 
 获取指定音量流是否被静音。使用Promise异步回调。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
 **废弃版本：** 20
 
-**替代接口：** ohos.multimedia.audio.AudioVolumeManager#isSystemMutedForStream
+**替代接口：** [isSystemMutedForStream](arkts-audio-audio-audiovolumemanager-i.md#isSystemMutedForStream)
 
 <!--Device-AudioVolumeGroupManager-isMute(volumeType: AudioVolumeType): Promise<boolean>--><!--Device-AudioVolumeGroupManager-isMute(volumeType: AudioVolumeType): Promise<boolean>-End-->
 
@@ -763,7 +697,7 @@ isMute(volumeType: AudioVolumeType): Promise<boolean>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volumeType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频音量类型。 |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
 
 **返回值：**
 
@@ -779,13 +713,13 @@ isMuteSync(volumeType: AudioVolumeType): boolean
 
 获取指定音量流是否被静音。同步返回结果。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
 **废弃版本：** 20
 
-**替代接口：** ohos.multimedia.audio.AudioVolumeManager#isSystemMutedForStream
+**替代接口：** [isSystemMutedForStream](arkts-audio-audio-audiovolumemanager-i.md#isSystemMutedForStream)
 
 <!--Device-AudioVolumeGroupManager-isMuteSync(volumeType: AudioVolumeType): boolean--><!--Device-AudioVolumeGroupManager-isMuteSync(volumeType: AudioVolumeType): boolean-End-->
 
@@ -795,7 +729,7 @@ isMuteSync(volumeType: AudioVolumeType): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volumeType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 音频音量类型。 |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
 
 **返回值：**
 
@@ -807,7 +741,7 @@ isMuteSync(volumeType: AudioVolumeType): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 ## isVolumeUnadjustable
@@ -818,9 +752,11 @@ isVolumeUnadjustable(): boolean
 
 获取固定音量模式开关状态，打开时进入固定音量模式，此时音量固定无法被调节。同步返回结果。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioVolumeGroupManager-isVolumeUnadjustable(): boolean--><!--Device-AudioVolumeGroupManager-isVolumeUnadjustable(): boolean-End-->
 
@@ -832,65 +768,6 @@ isVolumeUnadjustable(): boolean
 | --- | --- |
 | boolean | 固定音量模式开关状态。返回true表示固定音量模式，返回false表示非固定音量模式。 |
 
-## off('ringerModeChange')
-
-```TypeScript
-off(type: 'ringerModeChange', callback?: Callback<AudioRingMode>): void
-```
-
-取消监听铃声模式变化事件。使用callback异步回调。
-
-**起始版本：** 18
-
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
-
-<!--Device-AudioVolumeGroupManager-off(type: 'ringerModeChange', callback?: Callback<AudioRingMode>): void--><!--Device-AudioVolumeGroupManager-off(type: 'ringerModeChange', callback?: Callback<AudioRingMode>): void-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Volume
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'ringerModeChange' | 是 | 事件回调类型，支持的事件为'ringerModeChange'，当取消监听铃声模式变化事件时，触发该事件。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;AudioRingMode&gt; | 否 | 回调函数，返回变化后的铃音模式。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
-
-## off('micStateChange')
-
-```TypeScript
-off(type: 'micStateChange', callback?: Callback<MicStateChangeEvent>): void
-```
-
-取消监听系统麦克风状态更改事件。使用callback异步回调。
-
-**起始版本：** 12
-
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
-
-<!--Device-AudioVolumeGroupManager-off(type: 'micStateChange', callback?: Callback<MicStateChangeEvent>): void--><!--Device-AudioVolumeGroupManager-off(type: 'micStateChange', callback?: Callback<MicStateChangeEvent>): void-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Volume
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'micStateChange' | 是 | 事件回调类型，支持的事件为'micStateChange'，当取消监听系统麦克风状态更改事件时，触发该事件。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;MicStateChangeEvent&gt; | 否 | 回调函数，返回变更后的麦克风状态。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters missing;2.Incorrect parameter types. |
-| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
-
 ## offMicStateChange
 
 ```TypeScript
@@ -901,7 +778,9 @@ Unsubscribes to the microphone state change events.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioVolumeGroupManager-offMicStateChange(callback?: Callback<MicStateChangeEvent>): void--><!--Device-AudioVolumeGroupManager-offMicStateChange(callback?: Callback<MicStateChangeEvent>): void-End-->
 
@@ -911,7 +790,7 @@ Unsubscribes to the microphone state change events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;MicStateChangeEvent&gt; | 否 | Callback used to get the system microphone state change event. |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[MicStateChangeEvent](arkts-audio-audio-micstatechangeevent-i.md)&gt; | 否 | Callback used to get the system microphone state change event. |
 
 **错误码：**
 
@@ -929,7 +808,9 @@ Unsubscribes to the ringer mode state change events.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioVolumeGroupManager-offRingerModeChange(callback?: Callback<AudioRingMode>): void--><!--Device-AudioVolumeGroupManager-offRingerModeChange(callback?: Callback<AudioRingMode>): void-End-->
 
@@ -939,7 +820,7 @@ Unsubscribes to the ringer mode state change events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;AudioRingMode&gt; | 否 | Callback used to get the updated ringer mode. |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AudioRingMode](arkts-audio-audio-audioringmode-e.md)&gt; | 否 | Callback used to get the updated ringer mode. |
 
 **错误码：**
 
@@ -947,19 +828,21 @@ Unsubscribes to the ringer mode state change events.
 | --- | --- |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-## on('ringerModeChange')
+## off_micStateChange
 
 ```TypeScript
-on(type: 'ringerModeChange', callback: Callback<AudioRingMode>): void
+off(type: 'micStateChange', callback?: Callback<MicStateChangeEvent>): void
 ```
 
-监听铃声模式变化事件（当[AudioRingMode]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_发生变化时触发）。使用callback异步回调。
+取消监听系统麦克风状态更改事件。使用callback异步回调。
 
-**起始版本：** 9
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-<!--Device-AudioVolumeGroupManager-on(type: 'ringerModeChange', callback: Callback<AudioRingMode>): void--><!--Device-AudioVolumeGroupManager-on(type: 'ringerModeChange', callback: Callback<AudioRingMode>): void-End-->
+**废弃版本：** -1
+
+<!--Device-AudioVolumeGroupManager-off(type: 'micStateChange', callback?: Callback<MicStateChangeEvent>): void--><!--Device-AudioVolumeGroupManager-off(type: 'micStateChange', callback?: Callback<MicStateChangeEvent>): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -967,29 +850,31 @@ on(type: 'ringerModeChange', callback: Callback<AudioRingMode>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'ringerModeChange' | 是 | 事件回调类型，支持的事件为'ringerModeChange'，当铃声模式发生变化时，触发该事件。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;AudioRingMode&gt; | 是 | 回调函数，返回变化后的铃音模式。 |
+| type | 'micStateChange' | 是 | 事件回调类型，支持的事件为'micStateChange'，当取消监听系统麦克风状态更改事件时，触发该事件。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[MicStateChangeEvent](arkts-audio-audio-micstatechangeevent-i.md)&gt; | 否 | 回调函数，返回变更后的麦克风状态。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters missing; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-## on('micStateChange')
+## off_ringerModeChange
 
 ```TypeScript
-on(type: 'micStateChange', callback: Callback<MicStateChangeEvent>): void
+off(type: 'ringerModeChange', callback?: Callback<AudioRingMode>): void
 ```
 
-监听系统麦克风状态更改事件（当检测到系统麦克风状态发生改变时触发）。使用callback异步回调。 目前此订阅接口在单进程多AudioManager实例的使用场景下，仅最后一个实例的订阅生效，其他实例的订阅会被覆盖（即使最后一个实例没有进行订阅）。因此，推荐使用单一AudioManager实例进行开发。
+取消监听铃声模式变化事件。使用callback异步回调。
 
-**起始版本：** 9
+**起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
-<!--Device-AudioVolumeGroupManager-on(type: 'micStateChange', callback: Callback<MicStateChangeEvent>): void--><!--Device-AudioVolumeGroupManager-on(type: 'micStateChange', callback: Callback<MicStateChangeEvent>): void-End-->
+**废弃版本：** -1
+
+<!--Device-AudioVolumeGroupManager-off(type: 'ringerModeChange', callback?: Callback<AudioRingMode>): void--><!--Device-AudioVolumeGroupManager-off(type: 'ringerModeChange', callback?: Callback<AudioRingMode>): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -997,14 +882,13 @@ on(type: 'micStateChange', callback: Callback<MicStateChangeEvent>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'micStateChange' | 是 | 事件回调类型，支持的事件为'micStateChange'，当检测到系统麦克风状态发生改变时，触发该事件。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;MicStateChangeEvent&gt; | 是 | 回调函数，返回变更后的麦克风状态。 |
+| type | 'ringerModeChange' | 是 | 事件回调类型，支持的事件为'ringerModeChange'，当取消监听铃声模式变化事件时，触发该事件。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AudioRingMode](arkts-audio-audio-audioringmode-e.md)&gt; | 否 | 回调函数，返回变化后的铃音模式。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 ## onMicStateChange
@@ -1017,7 +901,9 @@ Listens for system microphone state change events. This method uses a callback t
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioVolumeGroupManager-onMicStateChange(callback: Callback<MicStateChangeEvent>): void--><!--Device-AudioVolumeGroupManager-onMicStateChange(callback: Callback<MicStateChangeEvent>): void-End-->
 
@@ -1027,7 +913,7 @@ Listens for system microphone state change events. This method uses a callback t
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;MicStateChangeEvent&gt; | 是 | Callback used to get the system microphone state change event. |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[MicStateChangeEvent](arkts-audio-audio-micstatechangeevent-i.md)&gt; | 是 | Callback used to get the system microphone state change event. |
 
 **错误码：**
 
@@ -1045,7 +931,9 @@ Listens for ringer mode change events. This method uses a callback to get ringer
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioVolumeGroupManager-onRingerModeChange(callback: Callback<AudioRingMode>): void--><!--Device-AudioVolumeGroupManager-onRingerModeChange(callback: Callback<AudioRingMode>): void-End-->
 
@@ -1055,12 +943,76 @@ Listens for ringer mode change events. This method uses a callback to get ringer
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;AudioRingMode&gt; | 是 | Callback used to get the updated ringer mode. |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AudioRingMode](arkts-audio-audio-audioringmode-e.md)&gt; | 是 | Callback used to get the updated ringer mode. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+
+## on_micStateChange
+
+```TypeScript
+on(type: 'micStateChange', callback: Callback<MicStateChangeEvent>): void
+```
+
+监听系统麦克风状态更改事件（当检测到系统麦克风状态发生改变时触发）。使用callback异步回调。 目前此订阅接口在单进程多AudioManager实例的使用场景下，仅最后一个实例的订阅生效，其他实例的订阅会被覆盖（即使最后一个实例没有进行订阅）。因此，推荐使用单一AudioManager实例进行开发。
+
+**起始版本：** 9
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
+
+<!--Device-AudioVolumeGroupManager-on(type: 'micStateChange', callback: Callback<MicStateChangeEvent>): void--><!--Device-AudioVolumeGroupManager-on(type: 'micStateChange', callback: Callback<MicStateChangeEvent>): void-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'micStateChange' | 是 | 事件回调类型，支持的事件为'micStateChange'，当检测到系统麦克风状态发生改变时，触发该事件。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[MicStateChangeEvent](arkts-audio-audio-micstatechangeevent-i.md)&gt; | 是 | 回调函数，返回变更后的麦克风状态。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+
+## on_ringerModeChange
+
+```TypeScript
+on(type: 'ringerModeChange', callback: Callback<AudioRingMode>): void
+```
+
+监听铃声模式变化事件（当[AudioRingMode](arkts-audio-audio-audioringmode-e.md#AudioRingMode)发生变化时触发）。使用callback异步回调。
+
+**起始版本：** 9
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
+
+<!--Device-AudioVolumeGroupManager-on(type: 'ringerModeChange', callback: Callback<AudioRingMode>): void--><!--Device-AudioVolumeGroupManager-on(type: 'ringerModeChange', callback: Callback<AudioRingMode>): void-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'ringerModeChange' | 是 | 事件回调类型，支持的事件为'ringerModeChange'，当铃声模式发生变化时，触发该事件。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AudioRingMode](arkts-audio-audio-audioringmode-e.md)&gt; | 是 | 回调函数，返回变化后的铃音模式。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 ## setMicrophoneMute
@@ -1088,7 +1040,7 @@ setMicrophoneMute(mute: boolean, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | mute | boolean | 是 | 是否设置麦克风为静音状态。true表示静音，false表示非静音。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数。当设置麦克风静音状态成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当设置麦克风静音状态成功，err为undefined，否则为错误对象。 |
 
 ## setMicrophoneMute
 

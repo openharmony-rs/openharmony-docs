@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface DynamicOptions--><!--Device-unnamed-declare interface DynamicOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -18,13 +20,15 @@
 allowCrossProcessNesting?: boolean
 ```
 
-是否允许跨进程[UIExtensionComponent]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_嵌套。\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_true：允许跨进程嵌套；false：不允许跨进程嵌套。\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_默认值：false
+是否允许跨进程UIExtensionComponent嵌套。&lt;br/&gt;true：允许跨进程嵌套；false：不允许跨进程嵌套。&lt;br/&gt;默认值：false
 
 **类型：** boolean
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -48,6 +52,8 @@ allowOccupied?: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DynamicOptions-allowOccupied?: boolean--><!--Device-DynamicOptions-allowOccupied?: boolean-End-->
@@ -62,13 +68,15 @@ allowOccupied?: boolean
 backgroundTransparent?: boolean
 ```
 
-是否启用组件背景透明。\_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_true：启用背景透明；false：不启用背景透明。\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_默认值：false
+是否启用组件背景透明。&lt;br/&gt;true：启用背景透明；false：不启用背景透明。&lt;br/&gt;默认值：false
 
 **类型：** boolean
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -84,13 +92,15 @@ backgroundTransparent?: boolean
 entryPoint: string
 ```
 
-要加载的Abc页面入口。\_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_取值格式：'bundleName/moduleName/pagePath'，例如'com.example.myapplication/entry/ets/pages/DynamicPage'。
+要加载的Abc页面入口。&lt;br/&gt;取值格式：'bundleName/moduleName/pagePath'，例如'com.example.myapplication/entry/ets/pages/DynamicPage'。
 
 **类型：** string
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -108,11 +118,13 @@ worker: Worker
 
 用于运行Abc的Worker线程对象，需通过worker.ThreadWorker创建。Worker在独立线程中执行Abc的UI逻辑，与主线程通信。
 
-**类型：** Worker
+**类型：** [Worker](arkts-arkui-worker-t-sys.md)
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

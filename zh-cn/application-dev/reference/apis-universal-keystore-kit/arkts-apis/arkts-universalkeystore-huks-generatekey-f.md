@@ -6,7 +6,7 @@
 function generateKey(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksResult>): void
 ```
 
-生成密钥。使用callback异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用 > [huks.generateKeyItem\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_9+\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ > 替代。
+生成密钥。使用callback异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用 > [huks.generateKeyItem&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-generatekeyitem-f.md#generateKeyItem) > 替代。
 
 **起始版本：** 8
 
@@ -14,7 +14,7 @@ function generateKey(keyAlias: string, options: HuksOptions, callback: AsyncCall
 
 **废弃版本：** 9
 
-**替代接口：** [huks.generateKeyItem](arkts-universalkeystore-huks-generatekeyitem-f.md#generatekeyitem)(keyAlias:
+**替代接口：** [generateKeyItem](arkts-universalkeystore-huks-generatekeyitem-f.md#generateKeyItem)(keyAlias: string, options: HuksOptions, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-huks-function generateKey(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksResult>): void--><!--Device-huks-function generateKey(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksResult>): void-End-->
 
@@ -25,10 +25,10 @@ function generateKey(keyAlias: string, options: HuksOptions, callback: AsyncCall
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | keyAlias | string | 是 | 密钥别名。密钥别名的最大长度为128字节，建议不包含个人信息等敏感词汇。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 用于存放生成key所需TAG。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;HuksResult&gt; | 是 | 回调函数。当生成密钥成功时，err为undefined，data为获取到的HuksResult；否则为错误对象。 |
+| options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | 用于存放生成key所需TAG。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[HuksResult](arkts-universalkeystore-huks-huksresult-i.md)&gt; | 是 | 回调函数。当生成密钥成功时，err为undefined，data为获取到的HuksResult；否则为错误对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';
@@ -72,7 +72,7 @@ huks.generateKey(keyAlias, options, (err, data) => {
 function generateKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>
 ```
 
-生成密钥。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用 > [huks.generateKeyItem\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_9+\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。
+生成密钥。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用 > [huks.generateKeyItem&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-generatekeyitem-f.md#generateKeyItem)替代。
 
 **起始版本：** 8
 
@@ -80,7 +80,7 @@ function generateKey(keyAlias: string, options: HuksOptions): Promise<HuksResult
 
 **废弃版本：** 9
 
-**替代接口：** [huks.generateKeyItem](arkts-universalkeystore-huks-generatekeyitem-f.md#generatekeyitem)(keyAlias:
+**替代接口：** [generateKeyItem](arkts-universalkeystore-huks-generatekeyitem-f.md#generateKeyItem)(keyAlias: string, options: HuksOptions)
 
 <!--Device-huks-function generateKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>--><!--Device-huks-function generateKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>-End-->
 
@@ -91,15 +91,15 @@ function generateKey(keyAlias: string, options: HuksOptions): Promise<HuksResult
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | keyAlias | string | 是 | 密钥别名。密钥别名的最大长度为128字节，建议不包含个人信息等敏感词汇。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 用于存放生成key所需TAG。 |
+| options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | 用于存放生成key所需TAG。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;HuksResult&gt; | Promise对象，返回HuksResult。 |
+| Promise&lt;[HuksResult](arkts-universalkeystore-huks-huksresult-i.md)&gt; | Promise对象，返回HuksResult。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';

@@ -2,9 +2,11 @@
 
 执行意图调用的参数。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-insightIntentDriver-interface ExecuteParam--><!--Device-insightIntentDriver-interface ExecuteParam-End-->
 
@@ -18,13 +20,15 @@
 abilityName: string
 ```
 
-意图调用Ability名称。 如果通过 \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_ 装饰器定义的意图来实现应用跳转，此字段传空字符串即可。
+意图调用Ability名称。 如果通过 @InsightIntentLink 装饰器定义的意图来实现应用跳转，此字段传空字符串即可。
 
 **类型：** string
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -44,9 +48,11 @@ bundleName: string
 
 **类型：** string
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -62,13 +68,15 @@ bundleName: string
 deviceId?: string
 ```
 
-设备标识。获取路径： \_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_
+设备标识。获取路径： [getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getAvailableDeviceListSync)
 
 **类型：** string
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -84,13 +92,15 @@ deviceId?: string
 displayId?: long
 ```
 
-意图调用时指定的物理屏幕id，该参数应为整数，仅在executeMode为UI\_ABILITY\_FOREGROUND时生效。
+意图调用时指定的物理屏幕id，该参数应为整数，仅在executeMode为UI_ABILITY_FOREGROUND时生效。
 
 **类型：** long
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -106,13 +116,15 @@ displayId?: long
 executeMode: insightIntent.ExecuteMode
 ```
 
-意图调用执行模式。 如果通过 \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_ 装饰器定义的意图来实现应用跳转，此字段需填写（可填任意符合定义的值），但实际不会生效。
+意图调用执行模式。 如果通过 @InsightIntentLink 装饰器定义的意图来实现应用跳转，此字段需填写（可填任意符合定义的值），但实际不会生效。
 
 **类型：** insightIntent.ExecuteMode
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -128,13 +140,15 @@ executeMode: insightIntent.ExecuteMode
 flags?: int
 ```
 
-意图调用时，意图调用方给意图执行方授权的uris的[flags]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。 **说明：** 该参数仅支持FLAG\_AUTH\_READ\_URI\_PERMISSION、FLAG\_AUTH\_WRITE\_URI\_PERMISSION、FLAG\_AUTH\_READ\_URI\_PERMISSION| FLAG\_AUTH\_WRITE\_URI\_PERMISSION。
+意图调用时，意图调用方给意图执行方授权的uris的[flags](arkts-ability-wantconstant-flags-e.md#Flags)。 **说明：** 该参数仅支持FLAG_AUTH_READ_URI_PERMISSION、FLAG_AUTH_WRITE_URI_PERMISSION、FLAG_AUTH_READ_URI_PERMISSION| FLAG_AUTH_WRITE_URI_PERMISSION。
 
 **类型：** int
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -154,9 +168,11 @@ insightIntentName: string
 
 **类型：** string
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -169,20 +185,22 @@ insightIntentName: string
 ## insightIntentParam
 
 ```TypeScript
-insightIntentParam: Record<string, Object>
+insightIntentParam: Record<string, RecordData>
 ```
 
-意图调用参数。
+Indicates the insight intent param.
 
-**类型：** Record&lt;string, Object&gt;
+**类型：** Record&lt;string, [RecordData](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt;
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ExecuteParam-insightIntentParam: Record<string, Object>--><!--Device-ExecuteParam-insightIntentParam: Record<string, Object>-End-->
+<!--Device-ExecuteParam-insightIntentParam: Record<string, RecordData>--><!--Device-ExecuteParam-insightIntentParam: Record<string, RecordData>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -198,9 +216,11 @@ moduleName: string
 
 **类型：** string
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -216,13 +236,15 @@ moduleName: string
 uris?: Array<string>
 ```
 
-意图调用时，意图调用方给意图执行方授权的URI列表。 如果通过 \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_ 装饰器定义的意图来实现应用跳转，此字段必选，仅读取数组第一个元素作为[openLink]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_的URI。
+意图调用时，意图调用方给意图执行方授权的URI列表。 如果通过 @InsightIntentLink 装饰器定义的意图来实现应用跳转，此字段必选，仅读取数组第一个元素作为[openLink](arkts-ability-uiabilitycontext-c.md#openLink)的URI。
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -238,13 +260,15 @@ uris?: Array<string>
 userId?: int
 ```
 
-目标意图所属的用户ID。 **说明：** 如果调用方应用的用户ID与目标意图所属的用户ID不同，则需要申请权限\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_。
+目标意图所属的用户ID。 **说明：** 如果调用方应用的用户ID与目标意图所属的用户ID不同，则需要申请权限`ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS`。
 
 **类型：** int
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

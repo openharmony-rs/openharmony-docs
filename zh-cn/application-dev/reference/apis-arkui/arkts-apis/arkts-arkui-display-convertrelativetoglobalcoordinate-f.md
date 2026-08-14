@@ -8,11 +8,13 @@ function convertRelativeToGlobalCoordinate(relativePosition: RelativePosition): 
 
 将指定屏幕左上角为原点的相对坐标转换成主屏左上角为原点的全局坐标，仅支持主屏和扩展屏的坐标转换。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-display-function convertRelativeToGlobalCoordinate(relativePosition: RelativePosition): Position--><!--Device-display-function convertRelativeToGlobalCoordinate(relativePosition: RelativePosition): Position-End-->
 
@@ -22,22 +24,22 @@ function convertRelativeToGlobalCoordinate(relativePosition: RelativePosition): 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| relativePosition | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 需要转化为全局坐标的相对坐标。 |
+| relativePosition | [RelativePosition](arkts-arkui-display-relativeposition-i.md) | 是 | 需要转化为全局坐标的相对坐标。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回相对于主屏左上角的全局坐标。 |
+| Position | 返回相对于主屏左上角的全局坐标。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 | [1400004](../errorcode-display.md#1400004-参数异常) | Parameter error. Possible cause: 1. Invalid parameter range. |
+| [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

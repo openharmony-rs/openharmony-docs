@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
 
+**废弃版本：** -1
+
 <!--Device-contact-interface FilterClause--><!--Device-contact-interface FilterClause-End-->
 
 **系统能力：** SystemCapability.Applications.Contacts
@@ -18,11 +20,13 @@ dataItem?: DataFilter
 
 联系人数据过滤项。
 
-**类型：** DataFilter
+**类型：** [DataFilter](arkts-contacts-contact-datafilter-i.md)
 
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
@@ -38,11 +42,13 @@ focusModeList?: Array<FilterOptions>
 
 专注模式。
 
-**类型：** Array&lt;FilterOptions&gt;
+**类型：** Array&lt;[FilterOptions](arkts-contacts-contact-filteroptions-i.md)&gt;
 
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
@@ -58,11 +64,13 @@ id?: Array<FilterOptions>
 
 联系人id。
 
-**类型：** Array&lt;FilterOptions&gt;
+**类型：** Array&lt;[FilterOptions](arkts-contacts-contact-filteroptions-i.md)&gt;
 
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
@@ -78,11 +86,13 @@ name?: Array<FilterOptions>
 
 联系人姓名。
 
-**类型：** Array&lt;FilterOptions&gt;
+**类型：** Array&lt;[FilterOptions](arkts-contacts-contact-filteroptions-i.md)&gt;
 
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 

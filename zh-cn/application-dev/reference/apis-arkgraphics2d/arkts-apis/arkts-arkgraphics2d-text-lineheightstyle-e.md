@@ -2,9 +2,11 @@
 
 行高缩放基数枚举。
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-text-enum LineHeightStyle--><!--Device-text-enum LineHeightStyle-End-->
 
@@ -16,11 +18,13 @@
 FONT_SIZE = 0
 ```
 
-以字号大小作为缩放基数。最终行高为[TextStyle]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_.fontSize * [TextStyle]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_.heightScale。
+以字号大小作为缩放基数。最终行高为[TextStyle](arkts-arkgraphics2d-text-textstyle-i.md#TextStyle).fontSize * [TextStyle](arkts-arkgraphics2d-text-textstyle-i.md#TextStyle).heightScale。
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -34,11 +38,13 @@ FONT_SIZE = 0
 FONT_HEIGHT = 1
 ```
 
-以字形高度作为缩放基数。最终行高为塑形后字形高度 * [TextStyle]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_.heightScale。
+以字形高度作为缩放基数。最终行高为塑形后字形高度 * [TextStyle](arkts-arkgraphics2d-text-textstyle-i.md#TextStyle).heightScale。
 
-**起始版本：** 21
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 

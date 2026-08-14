@@ -8,7 +8,9 @@ declare type WindowEventListener = (windowId: int, event: window.WindowEventType
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -20,6 +22,6 @@ declare type WindowEventListener = (windowId: int, event: window.WindowEventType
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| windowId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 触发事件的窗口id  |
-| event | window.WindowEventType | 是 | 窗口回调的事件类型  |
+| windowId | int | 是 | 触发事件的窗口id |
+| event | [window.WindowEventType](arkts-arkui-window-windoweventtype-e.md) | 是 | 窗口回调的事件类型 |
 

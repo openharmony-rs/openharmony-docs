@@ -2,9 +2,11 @@
 
 创建系统定时器的初始化选项。
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-systemTimer-interface TimerOptions--><!--Device-systemTimer-interface TimerOptions-End-->
 
@@ -18,13 +20,15 @@
 autoRestore?: boolean
 ```
 
-是否在设备重启后恢复。 true为重启后恢复，false为重启后不恢复。 仅支持非\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_类型且配置了wantAgent的定时器配置为true。 默认值为false。
+是否在设备重启后恢复。 true为重启后恢复，false为重启后不恢复。 仅支持非`TIMER_TYPE_REALTIME`类型且配置了wantAgent的定时器配置为true。 默认值为false。
 
 **类型：** boolean
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TimerOptions-autoRestore?: boolean--><!--Device-TimerOptions-autoRestore?: boolean-End-->
 
@@ -42,9 +46,11 @@ callback?: () => void
 
 **类型：** () =&gt; void
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TimerOptions-callback?: () => void--><!--Device-TimerOptions-callback?: () => void-End-->
 
@@ -62,9 +68,11 @@ interval?: long
 
 **类型：** long
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TimerOptions-interval?: long--><!--Device-TimerOptions-interval?: long-End-->
 
@@ -82,9 +90,11 @@ name?: string
 
 **类型：** string
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TimerOptions-name?: string--><!--Device-TimerOptions-name?: string-End-->
 
@@ -102,9 +112,11 @@ repeat: boolean
 
 **类型：** boolean
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TimerOptions-repeat: boolean--><!--Device-TimerOptions-repeat: boolean-End-->
 
@@ -122,9 +134,11 @@ type: int
 
 **类型：** int
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TimerOptions-type: int--><!--Device-TimerOptions-type: int-End-->
 
@@ -140,11 +154,13 @@ wantAgent?: WantAgent
 
 设置通知的WantAgent，定时器到期后通知（支持拉起应用MainAbility，不支持拉起ServiceAbility）。 默认值为空。
 
-**类型：** WantAgent
+**类型：** [WantAgent](../../apis-ability-kit/arkts-apis/arkts-ability-wantagent-t.md)
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-TimerOptions-wantAgent?: WantAgent--><!--Device-TimerOptions-wantAgent?: WantAgent-End-->
 

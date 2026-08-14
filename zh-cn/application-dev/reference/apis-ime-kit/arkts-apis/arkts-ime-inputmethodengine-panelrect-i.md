@@ -2,9 +2,11 @@
 
 输入法面板位置大小信息。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-inputMethodEngine-export interface PanelRect--><!--Device-inputMethodEngine-export interface PanelRect-End-->
 
@@ -20,9 +22,11 @@ landscapeRect: window.Rect
 
 **类型：** window.Rect
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PanelRect-landscapeRect: window.Rect--><!--Device-PanelRect-landscapeRect: window.Rect-End-->
 
@@ -38,9 +42,11 @@ portraitRect: window.Rect
 
 **类型：** window.Rect
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PanelRect-portraitRect: window.Rect--><!--Device-PanelRect-portraitRect: window.Rect-End-->
 

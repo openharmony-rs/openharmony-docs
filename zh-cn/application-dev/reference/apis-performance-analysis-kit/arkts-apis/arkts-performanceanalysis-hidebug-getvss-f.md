@@ -6,11 +6,13 @@
 function getVss(): bigint
 ```
 
-��ȡӦ�ý���ռ�õ������ڴ��С���ӿ�ʵ�ַ�ʽ����ȡ/proc/{pid}/statm�ڵ��е�sizeֵ���ڴ�ҳ������vss = size * ҳ��С��4KB/ҳ����
+获取应用进程占用的虚拟内存大小。接口实现方式：读取/proc/{pid}/statm节点中的size值（内存页数），vss = size * 页大小（4KB/页）。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-hidebug-function getVss(): bigint--><!--Device-hidebug-function getVss(): bigint-End-->
 
@@ -20,9 +22,9 @@ function getVss(): bigint
 
 | 类型 | 说明 |
 | --- | --- |
-| bigint | ����Ӧ�ý���ռ�õ������ڴ��С����λΪKB�� |
+| bigint | 返回应用进程占用的虚拟内存大小，单位为KB。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { hidebug } from '@kit.PerformanceAnalysisKit';

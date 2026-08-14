@@ -12,6 +12,8 @@ export function getSimpleNumberFormatBySkeleton(skeleton: string, locale?: Intl.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-i18n-export function getSimpleNumberFormatBySkeleton(skeleton: string, locale?: Intl.Locale): SimpleNumberFormat--><!--Device-i18n-export function getSimpleNumberFormatBySkeleton(skeleton: string, locale?: Intl.Locale): SimpleNumberFormat-End-->
@@ -22,14 +24,14 @@ export function getSimpleNumberFormatBySkeleton(skeleton: string, locale?: Intl.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| skeleton | string | 是 | 合法的框架字符串，支持的字符及含义请参考\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
+| skeleton | string | 是 | 合法的框架字符串，支持的字符及含义请参考 [Number Skeletons](https://unicode-org.github.io/icu/userguide/format_parse/numbers/skeletons.html#number-skeletons)。 |
 | locale | Intl.Locale | 否 | 区域对象。默认值：系统区域对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | SimpleNumberFormat对象。 |
+| [SimpleNumberFormat](../../apis-localization-kit/arkts-apis/arkts-localization-i18n-simplenumberformat-c.md) | SimpleNumberFormat对象。 |
 
 **错误码：**
 

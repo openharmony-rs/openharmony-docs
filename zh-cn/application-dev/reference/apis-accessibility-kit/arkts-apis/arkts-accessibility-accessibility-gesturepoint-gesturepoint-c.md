@@ -6,6 +6,8 @@ GesturePoint表示手势触摸点。 本模块用于创建辅助功能注入手�
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-export declare class GesturePoint--><!--Device-unnamed-export declare class GesturePoint-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
@@ -35,7 +37,7 @@ constructor(positionX: double, positionY: double)
 | positionX | double | 是 | 触摸点X坐标，单位为像素（px）。 |
 | positionY | double | 是 | 触摸点Y坐标，单位为像素（px）。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { GesturePoint } from '@kit.AccessibilityKit';
@@ -57,6 +59,8 @@ positionX: double
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 <!--Device-GesturePoint-positionX: double--><!--Device-GesturePoint-positionX: double-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
@@ -74,6 +78,8 @@ positionY: double
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 <!--Device-GesturePoint-positionY: double--><!--Device-GesturePoint-positionY: double-End-->
 

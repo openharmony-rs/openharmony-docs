@@ -2,9 +2,11 @@
 
 Indicates the personalized lock types.
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-sim-export enum PersoLockType--><!--Device-sim-export enum PersoLockType-End-->
 
@@ -20,9 +22,11 @@ PN_PIN_LOCK = 0
 
 Indicates network personalization of PIN lock(refer 3GPP TS 22.022 [33]).
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PersoLockType-PN_PIN_LOCK = 0--><!--Device-PersoLockType-PN_PIN_LOCK = 0-End-->
 
@@ -38,9 +42,11 @@ PN_PUK_LOCK = 1
 
 Indicates network personalization of PUK lock(refer 3GPP TS 22.022 [33]).
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PersoLockType-PN_PUK_LOCK = 1--><!--Device-PersoLockType-PN_PUK_LOCK = 1-End-->
 
@@ -56,9 +62,11 @@ PU_PIN_LOCK = 2
 
 Indicates network subset personalization of PIN lock(refer 3GPP TS 22.022 [33]).
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PersoLockType-PU_PIN_LOCK = 2--><!--Device-PersoLockType-PU_PIN_LOCK = 2-End-->
 
@@ -74,9 +82,11 @@ PU_PUK_LOCK = 3
 
 Indicates network subset personalization of PUK lock(refer 3GPP TS 22.022 [33]).
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PersoLockType-PU_PUK_LOCK = 3--><!--Device-PersoLockType-PU_PUK_LOCK = 3-End-->
 
@@ -92,9 +102,11 @@ PP_PIN_LOCK = 4
 
 Indicates service provider personalization of PIN lock(refer 3GPP TS 22.022 [33]).
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PersoLockType-PP_PIN_LOCK = 4--><!--Device-PersoLockType-PP_PIN_LOCK = 4-End-->
 
@@ -110,9 +122,11 @@ PP_PUK_LOCK = 5
 
 Indicates service provider personalization of PUK lock(refer 3GPP TS 22.022 [33]).
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PersoLockType-PP_PUK_LOCK = 5--><!--Device-PersoLockType-PP_PUK_LOCK = 5-End-->
 
@@ -128,9 +142,11 @@ PC_PIN_LOCK = 6
 
 Indicates corporate personalization of PIN lock(refer 3GPP TS 22.022 [33]).
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PersoLockType-PC_PIN_LOCK = 6--><!--Device-PersoLockType-PC_PIN_LOCK = 6-End-->
 
@@ -146,9 +162,11 @@ PC_PUK_LOCK = 7
 
 Indicates corporate personalization of PUK lock(refer 3GPP TS 22.022 [33]).
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PersoLockType-PC_PUK_LOCK = 7--><!--Device-PersoLockType-PC_PUK_LOCK = 7-End-->
 
@@ -164,9 +182,11 @@ SIM_PIN_LOCK = 8
 
 Indicates SIM/USIM personalization of PIN lock(refer 3GPP TS 22.022 [33]).
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PersoLockType-SIM_PIN_LOCK = 8--><!--Device-PersoLockType-SIM_PIN_LOCK = 8-End-->
 
@@ -182,9 +202,11 @@ SIM_PUK_LOCK = 9
 
 Indicates SIM/USIM personalization of PUK lock(refer 3GPP TS 22.022 [33]).
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PersoLockType-SIM_PUK_LOCK = 9--><!--Device-PersoLockType-SIM_PUK_LOCK = 9-End-->
 

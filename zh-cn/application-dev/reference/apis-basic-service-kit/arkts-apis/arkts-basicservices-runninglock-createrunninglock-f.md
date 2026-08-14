@@ -14,7 +14,7 @@ function createRunningLock(name: string, type: RunningLockType, callback: AsyncC
 
 **废弃版本：** 9
 
-**替代接口：** [runningLock.create](arkts-basicservices-runninglock-create-f.md#create)
+**替代接口：** [create](arkts-basicservices-runninglock-create-f.md#create)
 
 **需要权限：** ohos.permission.RUNNING_LOCK
 
@@ -27,10 +27,10 @@ function createRunningLock(name: string, type: RunningLockType, callback: AsyncC
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 锁的名字。建议使用包名或类名加后缀的方式命名。 |
-| type | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 要创建的锁的类型。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;RunningLock&gt; | 是 | 回调函数。当创建锁成功，err为undefined，data为创建的RunningLock；否则为错误对象；AsyncCallback封装了一个RunningLock类型的类。 |
+| type | [RunningLockType](arkts-basicservices-runninglock-runninglocktype-e.md) | 是 | 要创建的锁的类型。 |
+| callback | [AsyncCallback](arkts-basicservices-asynccallback-t.md)&lt;[RunningLock](arkts-basicservices-runninglock-runninglock-c.md)&gt; | 是 | 回调函数。当创建锁成功，err为undefined，data为创建的RunningLock；否则为错误对象； AsyncCallback封装了一个RunningLock类型的类。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.BACKGROUND, (err: Error, lock: runningLock.RunningLock) => {
@@ -57,7 +57,7 @@ function createRunningLock(name: string, type: RunningLockType): Promise<Running
 
 **废弃版本：** 9
 
-**替代接口：** [runningLock.create](arkts-basicservices-runninglock-create-f.md#create)
+**替代接口：** [create](arkts-basicservices-runninglock-create-f.md#create)
 
 **需要权限：** ohos.permission.RUNNING_LOCK
 
@@ -70,15 +70,15 @@ function createRunningLock(name: string, type: RunningLockType): Promise<Running
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 锁的名字。建议使用包名或类名加后缀的方式命名。 |
-| type | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 要创建的锁的类型。 |
+| type | [RunningLockType](arkts-basicservices-runninglock-runninglocktype-e.md) | 是 | 要创建的锁的类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;RunningLock&gt; | Promise对象，返回RunningLock锁对象。 |
+| Promise&lt;[RunningLock](arkts-basicservices-runninglock-runninglock-c.md)&gt; | Promise对象，返回RunningLock锁对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.BACKGROUND)

@@ -8,7 +8,9 @@ type ProblemAndAdviceEvent = (advice: string) => Promise<OperResult>
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -26,5 +28,5 @@ type ProblemAndAdviceEvent = (advice: string) => Promise<OperResult>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;OperResult&gt; | Promise对象，返回问题和建议的操作结果对象。 |
+| Promise&lt;[OperResult](arkts-avsession-avmusictemplate-operresult-i.md)&gt; | Promise对象，返回问题和建议的操作结果对象。 |
 

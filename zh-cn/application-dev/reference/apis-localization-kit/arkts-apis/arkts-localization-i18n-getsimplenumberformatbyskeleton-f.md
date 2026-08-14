@@ -8,11 +8,13 @@ export function getSimpleNumberFormatBySkeleton(skeleton: string, locale?: Intl.
 
 通过框架字符串获取SimpleNumberFormat对象。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-i18n-export function getSimpleNumberFormatBySkeleton(skeleton: string, locale?: Intl.Locale): SimpleNumberFormat--><!--Device-i18n-export function getSimpleNumberFormatBySkeleton(skeleton: string, locale?: Intl.Locale): SimpleNumberFormat-End-->
 
@@ -22,14 +24,14 @@ export function getSimpleNumberFormatBySkeleton(skeleton: string, locale?: Intl.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| skeleton | string | 是 | 合法的框架字符串，支持的字符及含义请参考\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
+| skeleton | string | 是 | 合法的框架字符串，支持的字符及含义请参考 [Number Skeletons](https://unicode-org.github.io/icu/userguide/format_parse/numbers/skeletons.html#number-skeletons)。 |
 | locale | Intl.Locale | 否 | 区域对象。默认值：系统区域对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | SimpleNumberFormat对象。 |
+| [SimpleNumberFormat](arkts-localization-i18n-simplenumberformat-c.md) | SimpleNumberFormat对象。 |
 
 **错误码：**
 
@@ -52,7 +54,7 @@ export function getSimpleNumberFormatBySkeleton(skeleton: string, locale?: intl.
 
 **废弃版本：** 20
 
-**替代接口：** [i18n.getSimpleNumberFormatBySkeleton](arkts-localization-i18n-getsimplenumberformatbyskeleton-f.md#getsimplenumberformatbyskeleton)(skeleton:
+**替代接口：** [getSimpleNumberFormatBySkeleton](#getSimpleNumberFormatBySkeleton)(skeleton: string, locale?: Intl.Locale)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -64,14 +66,14 @@ export function getSimpleNumberFormatBySkeleton(skeleton: string, locale?: intl.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| skeleton | string | 是 | 合法的框架字符串，支持的字符及含义请参考\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
+| skeleton | string | 是 | 合法的框架字符串，支持的字符及含义请参考 [Number Skeletons](https://unicode-org.github.io/icu/userguide/format_parse/numbers/skeletons.html#number-skeletons)。 |
 | locale | intl.Locale | 否 | 区域对象。默认值：系统区域对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | SimpleNumberFormat对象。 |
+| [SimpleNumberFormat](arkts-localization-i18n-simplenumberformat-c.md) | SimpleNumberFormat对象。 |
 
 **错误码：**
 

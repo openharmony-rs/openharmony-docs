@@ -12,6 +12,8 @@ function chargingStatus(): BatteryChargeState
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-batteryInfo-function chargingStatus(): BatteryChargeState--><!--Device-batteryInfo-function chargingStatus(): BatteryChargeState-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
@@ -20,5 +22,13 @@ function chargingStatus(): BatteryChargeState
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回当前设备电池的充电状态。 |
+| [BatteryChargeState](arkts-basicservices-batteryinfo-batterychargestate-e.md) | 返回当前设备电池的充电状态。 |
+
+## 示例
+
+```TypeScript
+// ArkTS-Sta示例
+let result = batteryInfo.chargingStatus();
+console.info("The result is: " + result);
+```
 

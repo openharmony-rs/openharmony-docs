@@ -1,10 +1,12 @@
 # PropertyKey
 
-表示Exif（Exchangeable image file format）图像信息的枚举。 - 格式示例中的key为：image.PropertyKey.XXX（XXX为枚举的名称，如：image.PropertyKey.NEW\_SUBFILE\_TYPE） 。 - 格式示例仅用于说明修改传值和读取结果的格式。具体接口使用方法请参考： [modifyImageProperty]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_（修改单个Exif字段）、 [modifyImageProperties]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_（修 改多个Exif字段）、 [getImageProperty]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_（读取单个 Exif字段）、[getImageProperties]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_（读取多个Exif字段）。
+表示Exif（Exchangeable image file format）图像信息的枚举。 - 格式示例中的key为：image.PropertyKey.XXX（XXX为枚举的名称，如：image.PropertyKey.NEW_SUBFILE_TYPE） 。 - 格式示例仅用于说明修改传值和读取结果的格式。具体接口使用方法请参考： [modifyImageProperty](arkts-image-image-imagesource-i.md#modifyImageProperty)（修改单个Exif字段）、 [modifyImageProperties](arkts-image-image-imagesource-i.md#modifyImageProperties)（修 改多个Exif字段）、 [getImageProperty](arkts-image-image-imagesource-i.md#getImageProperty)（读取单个 Exif字段）、[getImageProperties](arkts-image-image-imagesource-i.md#getImageProperties)（读取多个Exif字段）。
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-image-enum PropertyKey--><!--Device-image-enum PropertyKey-End-->
 
@@ -20,7 +22,9 @@ XTSTYLE_TEMPLATE_NAME = 'HwMnoteXtStyleTemplateName'
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,7 +44,9 @@ XTSTYLE_CUSTOM_LIGHT_AND_SHADOW = 'HwMnoteXtStyleCustomLightAndShadow'
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -60,7 +66,9 @@ XTSTYLE_CUSTOM_SATURATION = 'HwMnoteXtStyleCustomSaturation'
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -80,7 +88,9 @@ XTSTYLE_CUSTOM_HUE = 'HwMnoteXtStyleCustomHue'
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -100,7 +110,9 @@ XTSTYLE_EXPOSURE_PARAM = 'HwMnoteXtStyleExposureParam'
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

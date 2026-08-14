@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 <!--Device-webview-interface BlanklessInfo--><!--Device-webview-interface BlanklessInfo-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -16,13 +18,15 @@
 errCode: WebBlanklessErrorCode
 ```
 
-无白屏加载的异常错误码，见[WebBlanklessErrorCode]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_定义。
+无白屏加载的异常错误码，见[WebBlanklessErrorCode](../../apis-na/arkts-apis/arkts-na-webview-webblanklesserrorcode-e.md#WebBlanklessErrorCode)定义。
 
-**类型：** WebBlanklessErrorCode
+**类型：** [WebBlanklessErrorCode](../../apis-na/arkts-apis/arkts-na-webview-webblanklesserrorcode-e.md)
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 <!--Device-BlanklessInfo-errCode: WebBlanklessErrorCode--><!--Device-BlanklessInfo-errCode: WebBlanklessErrorCode-End-->
 
@@ -42,6 +46,8 @@ loadingTime: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 <!--Device-BlanklessInfo-loadingTime: number--><!--Device-BlanklessInfo-loadingTime: number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -59,6 +65,8 @@ similarity: number
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 <!--Device-BlanklessInfo-similarity: number--><!--Device-BlanklessInfo-similarity: number-End-->
 

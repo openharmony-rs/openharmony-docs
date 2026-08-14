@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface NativeEmbedParamItem--><!--Device-unnamed-declare interface NativeEmbedParamItem-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -23,6 +25,8 @@ param元素的id信息。
 **起始版本：** 21
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+
+**废弃版本：** -1
 
 <!--Device-NativeEmbedParamItem-id: string--><!--Device-NativeEmbedParamItem-id: string-End-->
 
@@ -42,6 +46,8 @@ param元素的参数名称。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
 
+**废弃版本：** -1
+
 <!--Device-NativeEmbedParamItem-name?: string--><!--Device-NativeEmbedParamItem-name?: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -54,11 +60,13 @@ status: NativeEmbedParamStatus
 
 param元素的状态变化类型。
 
-**类型：** NativeEmbedParamStatus
+**类型：** [NativeEmbedParamStatus](arkts-arkweb-nativeembedparamstatus-e.md)
 
 **起始版本：** 21
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+
+**废弃版本：** -1
 
 <!--Device-NativeEmbedParamItem-status: NativeEmbedParamStatus--><!--Device-NativeEmbedParamItem-status: NativeEmbedParamStatus-End-->
 
@@ -77,6 +85,8 @@ param元素的参数值。
 **起始版本：** 21
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+
+**废弃版本：** -1
 
 <!--Device-NativeEmbedParamItem-value?: string--><!--Device-NativeEmbedParamItem-value?: string-End-->
 

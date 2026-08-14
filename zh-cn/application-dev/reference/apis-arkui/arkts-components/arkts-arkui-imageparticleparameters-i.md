@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-interface ImageParticleParameters--><!--Device-unnamed-interface ImageParticleParameters-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -26,6 +28,8 @@ objectFit?: ImageFit
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -42,11 +46,13 @@ size: ParticleTuple<Dimension, Dimension>
 
 图像尺寸。 默认值：[0, 0]
 
-**类型：** ParticleTuple&lt;Dimension, Dimension&gt;
+**类型：** [ParticleTuple](arkts-arkui-particletuple-t.md)&lt;Dimension, Dimension&gt;
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -62,13 +68,15 @@ size: ParticleTuple<Dimension, Dimension>
 src: ResourceStr
 ```
 
-图片路径，支持本地图片和网络图片，引用方式请参考\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。 暂不支持svg图片类型。 src未发生变化时，会优先使用缓存的资源，无法动态切换资源。如需动态切换资源建议切换为不同的src。
+图片路径，支持本地图片和网络图片，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。 暂不支持svg图片类型。 src未发生变化时，会优先使用缓存的资源，无法动态切换资源。如需动态切换资源建议切换为不同的src。
 
 **类型：** ResourceStr
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

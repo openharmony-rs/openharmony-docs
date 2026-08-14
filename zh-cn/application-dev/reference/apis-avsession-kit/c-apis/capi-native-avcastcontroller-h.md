@@ -75,7 +75,7 @@ typedef AVSessionCallback_Result(*OH_AVCastControllerCallback_PlaybackStateChang
 | 参数项 | 描述 |
 | -- | -- |
 | (OH_AVCastController\* avcastcontroller | the OH_AVCastController instance pointer. |
-| [OH_AVSession_AVPlaybackState](capi-ohavsession-oh-avsession-avplaybackstate.md)\* playbackState | the [OH_AVSession_AVPlaybackState](capi-ohavsession-oh-avsession-avplaybackstate.md)pointer variable which will be set the changed playback state. |
+| OH_AVSession_AVPlaybackState\* playbackState | the [OH_AVSession_AVPlaybackState](capi-ohavsession-oh-avsession-avplaybackstate.md)pointer variable which will be set the changed playback state. |
 | userdata | userdata which is passed by register. |
 
 ### OH_AVCastControllerCallback_MediaItemChange()
@@ -95,7 +95,7 @@ typedef AVSessionCallback_Result(*OH_AVCastControllerCallback_MediaItemChange)(O
 | 参数项 | 描述 |
 | -- | -- |
 | (OH_AVCastController\* avcastcontroller | the OH_AVCastController instance pointer. |
-| OH_AVSession_AVQueueItem\* avQueueItem | the [OH_AVSession_AVQueueItem](capi-ohavsession-oh-avsession-avqueueitem.md)pointer variable which will be set the changed media item info. |
+| [OH_AVSession_AVQueueItem](capi-ohavsession-oh-avsession-avqueueitem.md)\* avQueueItem | the [OH_AVSession_AVQueueItem](capi-ohavsession-oh-avsession-avqueueitem.md)pointer variable which will be set the changed media item info. |
 | userdata | userdata which is passed by register |
 
 ### OH_AVCastControllerCallback_PlayNext()
@@ -236,7 +236,7 @@ AVSession_ErrCode OH_AVCastController_GetPlaybackState(OH_AVCastController* avca
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)* avcastcontroller | 播控控制器的实例对象。 |
-| [OH_AVSession_AVPlaybackState](capi-ohavsession-oh-avsession-avplaybackstate.md)** playbackState | 返回的播放状态。 |
+| OH_AVSession_AVPlaybackState** playbackState | 返回的播放状态。 |
 
 **返回：**
 
@@ -619,7 +619,7 @@ AVSession_ErrCode OH_AVCastController_SendCommonCommand(OH_AVCastController* avc
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)* avcastcontroller | 播控控制器的实例对象。 |
-| [AVSession_AVCastControlCommandType](capi-native-avsession-base-h.md#avsession_avcastcontrolcommandtype)* avCastControlcommand | 控制命令。 |
+| AVSession_AVCastControlCommandType* avCastControlcommand | 控制命令。 |
 
 **返回：**
 
@@ -719,7 +719,7 @@ AVSession_ErrCode OH_AVCastController_SendSetSpeedCommand(OH_AVCastController* a
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)* avcastcontroller | 播控控制器的实例对象。 |
-| [AVSession_PlaybackSpeed](capi-native-avsession-base-h.md#avsession_playbackspeed) speed | 倍速控制命令。 |
+| AVSession_PlaybackSpeed speed | 倍速控制命令。 |
 
 **返回：**
 
@@ -769,7 +769,7 @@ AVSession_ErrCode OH_AVCastController_Prepare(OH_AVCastController* avcastcontrol
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)* avcastcontroller | 投播控制器对象指针 |
-| OH_AVSession_AVQueueItem *avqueueItem |  投播资源结构 |
+| [OH_AVSession_AVQueueItem](capi-ohavsession-oh-avsession-avqueueitem.md) *avqueueItem |  投播资源结构 |
 
 **返回：**
 
@@ -794,7 +794,7 @@ AVSession_ErrCode OH_AVCastController_Start(OH_AVCastController* avcastcontrolle
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)* avcastcontroller | 投播控制器对象指针 |
-| OH_AVSession_AVQueueItem *avqueueItem |  投播资源结构 |
+| [OH_AVSession_AVQueueItem](capi-ohavsession-oh-avsession-avqueueitem.md) *avqueueItem |  投播资源结构 |
 
 **返回：**
 

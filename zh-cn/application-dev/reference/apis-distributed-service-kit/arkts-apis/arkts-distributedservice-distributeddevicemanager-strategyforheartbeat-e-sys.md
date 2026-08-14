@@ -2,9 +2,11 @@
 
 表示心跳广播策略。
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-distributedDeviceManager-enum StrategyForHeartbeat--><!--Device-distributedDeviceManager-enum StrategyForHeartbeat-End-->
 
@@ -20,9 +22,11 @@ TEMP_STOP_HEARTBEAT = 100
 
 临时停止心跳广播，超时后自动恢复。
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-StrategyForHeartbeat-TEMP_STOP_HEARTBEAT = 100--><!--Device-StrategyForHeartbeat-TEMP_STOP_HEARTBEAT = 100-End-->
 
@@ -38,9 +42,11 @@ START_HEARTBEAT = 101
 
 开始心跳广播。
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-StrategyForHeartbeat-START_HEARTBEAT = 101--><!--Device-StrategyForHeartbeat-START_HEARTBEAT = 101-End-->
 

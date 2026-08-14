@@ -6,6 +6,8 @@ The type of XComponent
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare enum XComponentType--><!--Device-unnamed-declare enum XComponentType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -21,6 +23,8 @@ Surface type. The default type is used.
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -44,7 +48,7 @@ Component type.
 
 **废弃版本：** 12
 
-**替代接口：** [Column](arkts-arkui-component/column-column-f.md#column)
+**替代接口：** [Column](arkts-arkui-flexdirection-e.md#Column)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -65,6 +69,8 @@ Texture type. Supports EGL/OpenGLES and media data rendering. Custom drawing con
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -88,7 +94,7 @@ Node type.
 
 **废弃版本：** 20
 
-**替代接口：** [ContentSlot](arkts-arkui-component/contentslot-contentslot-f.md#contentslot)
+**替代接口：** ContentSlot
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

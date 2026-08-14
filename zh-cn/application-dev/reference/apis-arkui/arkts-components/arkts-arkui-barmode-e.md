@@ -6,6 +6,8 @@ TabBar布局模式枚举。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare enum BarMode--><!--Device-unnamed-declare enum BarMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -16,11 +18,13 @@ TabBar布局模式枚举。
 Scrollable = 0
 ```
 
-每一个TabBar均使用实际布局宽度，超过总长度（横向Tabs的[barWidth]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_，纵向Tabs的 [barHeight]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_）后可滑动。
+每一个TabBar均使用实际布局宽度，超过总长度（横向Tabs的barWidth，纵向Tabs的 barHeight）后可滑动。
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -39,6 +43,8 @@ Fixed = 1
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

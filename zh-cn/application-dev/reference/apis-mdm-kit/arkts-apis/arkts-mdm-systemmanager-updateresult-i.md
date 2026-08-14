@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-systemManager-interface UpdateResult--><!--Device-systemManager-interface UpdateResult-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -24,6 +26,8 @@ errorInfo: ErrorInfo
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UpdateResult-errorInfo: ErrorInfo--><!--Device-UpdateResult-errorInfo: ErrorInfo-End-->
@@ -38,11 +42,13 @@ status: UpdateStatus
 
 系统更新状态。
 
-**类型：** UpdateStatus
+**类型：** [UpdateStatus](arkts-mdm-systemmanager-updatestatus-e.md)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -63,6 +69,8 @@ version: string
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

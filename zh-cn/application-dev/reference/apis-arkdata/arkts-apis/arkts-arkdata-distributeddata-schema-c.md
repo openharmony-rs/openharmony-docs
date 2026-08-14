@@ -1,6 +1,6 @@
 # Schema
 
-表示数据库模式，可以在创建或打开数据库时创建Schema对象并将它们放入[Options]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_中。
+表示数据库模式，可以在创建或打开数据库时创建Schema对象并将它们放入[Options](arkts-arkdata-distributeddata-options-i.md#Options)中。
 
 **起始版本：** 8
 
@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** ohos.data.distributedKVStore.Schema
+**替代接口：** Schema
 
 <!--Device-distributedData-class Schema--><!--Device-distributedData-class Schema-End-->
 
@@ -28,7 +28,7 @@ constructor()
 
 **废弃版本：** 9
 
-**替代接口：** ohos.data.distributedKVStore.Schema#constructor
+**替代接口：** constructor
 
 <!--Device-Schema-constructor()--><!--Device-Schema-constructor()-End-->
 
@@ -50,7 +50,7 @@ indexes: Array<string>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.data.distributedKVStore.Schema#indexes
+**替代接口：** [indexes](#indexes)
 
 <!--Device-Schema-indexes: Array<string>--><!--Device-Schema-indexes: Array<string>-End-->
 
@@ -72,7 +72,7 @@ mode: number
 
 **废弃版本：** 9
 
-**替代接口：** ohos.data.distributedKVStore.Schema#mode
+**替代接口：** mode
 
 <!--Device-Schema-mode: number--><!--Device-Schema-mode: number-End-->
 
@@ -94,7 +94,7 @@ root: FieldNode
 
 **废弃版本：** 9
 
-**替代接口：** ohos.data.distributedKVStore.Schema#root
+**替代接口：** [root](#root)
 
 <!--Device-Schema-root: FieldNode--><!--Device-Schema-root: FieldNode-End-->
 
@@ -116,7 +116,7 @@ Schema的跳跃大小。
 
 **废弃版本：** 9
 
-**替代接口：** ohos.data.distributedKVStore.Schema#skip
+**替代接口：** [skip](#skip)
 
 <!--Device-Schema-skip: number--><!--Device-Schema-skip: number-End-->
 

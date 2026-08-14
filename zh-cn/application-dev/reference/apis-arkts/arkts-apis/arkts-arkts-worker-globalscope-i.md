@@ -2,13 +2,15 @@
 
 Worker线程自身的运行环境，GlobalScope类继承WorkerEventTarget。
 
-**继承/实现关系：** GlobalScope extends [WorkerEventTarget](arkts-arkts-worker-workereventtarget-i.md)
+**继承/实现关系：** GlobalScope extends [WorkerEventTarget](arkts-arkts-worker-workereventtarget-i.md#WorkerEventTarget)
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
-<!--Device-unnamed-declare interface GlobalScope extends WorkerEventTarget--><!--Device-unnamed-declare interface GlobalScope extends WorkerEventTarget-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare interface GlobalScope--><!--Device-unnamed-declare interface GlobalScope-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -25,6 +27,8 @@ Worker的名字，new Worker时指定。
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -46,6 +50,8 @@ Worker在执行过程中发生异常被调用的回调函数，该回调函数�
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-GlobalScope-onerror?: (ev: ErrorEvent) => void--><!--Device-GlobalScope-onerror?: (ev: ErrorEvent) => void-End-->
@@ -60,11 +66,13 @@ readonly self: GlobalScope & typeof globalThis
 
 GlobalScope本身。
 
-**类型：** GlobalScope & typeof globalThis
+**类型：** [GlobalScope](arkts-arkts-worker-globalscope-i.md) & typeof globalThis
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

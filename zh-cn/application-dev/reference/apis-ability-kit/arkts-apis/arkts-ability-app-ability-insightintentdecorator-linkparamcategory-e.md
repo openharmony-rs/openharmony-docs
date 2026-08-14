@@ -1,10 +1,12 @@
 # LinkParamCategory
 
-\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_ 装饰器的意图参数类别，用于定义意图参数的传递形式。
+@InsightIntentLink 装饰器的意图参数类别，用于定义意图参数的传递形式。
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare enum LinkParamCategory--><!--Device-unnamed-declare enum LinkParamCategory-End-->
 
@@ -22,6 +24,8 @@ LINK = 'link'
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -36,11 +40,13 @@ LINK = 'link'
 WANT = 'want'
 ```
 
-表示意图参数类别为'want'。意图参数将通过[Want]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_的parameters字段传给应用。
+表示意图参数类别为'want'。意图参数将通过[Want](arkts-ability-app-ability-want-want-c.md#Want)的parameters字段传给应用。
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

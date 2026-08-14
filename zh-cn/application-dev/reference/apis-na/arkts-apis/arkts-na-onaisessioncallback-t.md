@@ -10,6 +10,8 @@ Callback type for AI session operations. Used to report the result of session cr
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-export type OnAISessionCallback = (state: AISessionResultType, content: string) => void--><!--Device-unnamed-export type OnAISessionCallback = (state: AISessionResultType, content: string) => void-End-->
@@ -20,6 +22,6 @@ Callback type for AI session operations. Used to report the result of session cr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| state | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | The current result state.  |
-| content | string | 是 | The detailed result or response content.  |
+| state | [AISessionResultType](arkts-na-web-aisessionresulttype-e.md) | 是 | The current result state. |
+| content | string | 是 | The detailed result or response content. |
 

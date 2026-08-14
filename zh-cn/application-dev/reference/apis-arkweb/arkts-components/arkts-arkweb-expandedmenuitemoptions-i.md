@@ -1,6 +1,6 @@
 # ExpandedMenuItemOptions
 
-> **说明：** > > 从API version 12开始支持，从API version 20开始废弃，建议使用 > [editMenuOptions]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_替代。 > 自定义菜单扩展项。
+> **说明：** > > 从API version 12开始支持，从API version 20开始废弃，建议使用 > editMenuOptions替代。 > 自定义菜单扩展项。
 
 **起始版本：** 12
 
@@ -8,7 +8,7 @@
 
 **废弃版本：** 20
 
-**替代接口：** [EditMenuOptions](../../apis-arkui/arkts-apis/arkts-arkui-component/textcommon-editmenuoptions-i.md)
+**替代接口：** EditMenuOptions
 
 <!--Device-unnamed-declare interface ExpandedMenuItemOptions--><!--Device-unnamed-declare interface ExpandedMenuItemOptions-End-->
 
@@ -30,7 +30,7 @@ action: (selectedText: {plainText: string}) => void
 
 **废弃版本：** 20
 
-**替代接口：** [EditMenuOptions](../../apis-arkui/arkts-apis/arkts-arkui-component/textcommon-editmenuoptions-i.md)
+**替代接口：** EditMenuOptions
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -54,7 +54,7 @@ content: ResourceStr
 
 **废弃版本：** 20
 
-**替代接口：** [EditMenuOptions](../../apis-arkui/arkts-apis/arkts-arkui-component/textcommon-editmenuoptions-i.md)
+**替代接口：** EditMenuOptions
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -78,7 +78,7 @@ startIcon?: ResourceStr
 
 **废弃版本：** 20
 
-**替代接口：** [EditMenuOptions](../../apis-arkui/arkts-apis/arkts-arkui-component/textcommon-editmenuoptions-i.md)
+**替代接口：** EditMenuOptions
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

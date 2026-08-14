@@ -1,10 +1,12 @@
 # JsMessageType
 
-Enum type supplied to \_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ for indicating the result of JavaScript code execution.
+Enum type supplied to [runJavaScriptExt](../../apis-na/arkts-apis/arkts-na-webview-webviewcontroller-c.md#runJavaScriptExt) for indicating the result of JavaScript code execution.
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 <!--Device-webview-enum JsMessageType--><!--Device-webview-enum JsMessageType-End-->
 
@@ -21,6 +23,8 @@ NOT_SUPPORT = 0
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -40,6 +44,8 @@ STRING = 1
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-JsMessageType-STRING = 1--><!--Device-JsMessageType-STRING = 1-End-->
@@ -57,6 +63,8 @@ NUMBER = 2
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -76,6 +84,8 @@ BOOLEAN = 3
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-JsMessageType-BOOLEAN = 3--><!--Device-JsMessageType-BOOLEAN = 3-End-->
@@ -94,6 +104,8 @@ ARRAY_BUFFER = 4
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-JsMessageType-ARRAY_BUFFER = 4--><!--Device-JsMessageType-ARRAY_BUFFER = 4-End-->
@@ -111,6 +123,8 @@ ARRAY = 5
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

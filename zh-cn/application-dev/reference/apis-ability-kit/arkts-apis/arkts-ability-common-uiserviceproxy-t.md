@@ -1,22 +1,22 @@
 # UIServiceProxy
 
 ```TypeScript
-export type UIServiceProxy = _UIServiceProxy.default
+export type UIServiceProxy = _UIServiceProxy
 ```
 
 UIServiceProxy提供了与UIServiceExtensionAbility服务端数据通信的能力。UIServiceExtensionAbility是一类特殊的ExtensionAbility组件，这类组件由系统提供，通 常用于提供浮窗组件相关扩展能力。
 
-**起始版本：** 14
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为14；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
-
-<!--Device-common-export type UIServiceProxy = _UIServiceProxy.default--><!--Device-common-export type UIServiceProxy = _UIServiceProxy.default-End-->
+<!--Device-common-export type UIServiceProxy = _UIServiceProxy--><!--Device-common-export type UIServiceProxy = _UIServiceProxy-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**属性类型：** _UIServiceProxy.default
+**属性类型：** _UIServiceProxy
 

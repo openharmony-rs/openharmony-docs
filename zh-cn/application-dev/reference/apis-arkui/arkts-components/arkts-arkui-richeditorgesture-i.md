@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface RichEditorGesture--><!--Device-unnamed-declare interface RichEditorGesture-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -16,13 +18,15 @@
 onClick?: Callback<ClickEvent>
 ```
 
-[ClickEvent]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_为用户点击事件。 点击完成时回调事件。 双击时，第一次点击触发回调事件。
+ClickEvent为用户点击事件。 点击完成时回调事件。 双击时，第一次点击触发回调事件。
 
 **类型：** Callback&lt;ClickEvent&gt;
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -38,13 +42,15 @@ onClick?: Callback<ClickEvent>
 onLongPress?: Callback<GestureEvent>
 ```
 
-\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_为用户长按事件。 长按完成时回调事件。
+[GestureEvent](../../../reference/apis-arkui/arkui-ts/ts-gesture-common.md#gestureevent对象说明)为用户长按事件。 长按完成时回调事件。
 
 **类型：** Callback&lt;GestureEvent&gt;
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -12,6 +12,8 @@ declare function Env<T>(key: SystemEnvKey<T> | SystemProperties): PropertyDecora
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
@@ -24,7 +26,7 @@ declare function Env<T>(key: SystemEnvKey<T> | SystemProperties): PropertyDecora
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; \| SystemProperties | 是 | 用户输入的键值。【自22至26】 |
+| key | [SystemEnvKey](arkts-arkui-systemenvkey-c.md)&lt;T&gt; \| [SystemProperties](arkts-arkui-systemproperties-e.md) | 是 | 用户输入的键值。【自22至26】 |
 
 **返回值：**
 

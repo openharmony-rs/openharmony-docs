@@ -12,7 +12,7 @@ export type BundleStatusCallback = _BundleStatusCallback
 
 **废弃版本：** 9
 
-**替代接口：** ohos.bundle.bundleMonitor/bundleMonitor.BundleChangedInfo
+**替代接口：** [BundleChangedInfo](arkts-ability-bundlemonitor-bundlechangedinfo-i-sys.md#BundleChangedInfo（系统接口）)
 
 <!--Device-unnamed-export type BundleStatusCallback = _BundleStatusCallback--><!--Device-unnamed-export type BundleStatusCallback = _BundleStatusCallback-End-->
 

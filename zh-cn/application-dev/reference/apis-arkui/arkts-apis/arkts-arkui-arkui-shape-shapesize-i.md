@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-export interface ShapeSize--><!--Device-unnamed-export interface ShapeSize-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -16,13 +18,15 @@
 height?: double | string
 ```
 
-形状的高度。 类型为number时取值范围是[0, +∞)，string时是[Length]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。 单位：vp 取值为异常值时按照0vp处理。
+形状的高度。 类型为number时取值范围是0, +∞)，string时是[Length。 单位：vp 取值为异常值时按照0vp处理。
 
 **类型：** double \| string
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -36,13 +40,15 @@ height?: double | string
 width?: double | string
 ```
 
-形状的宽度。 类型为number时取值范围是[0, +∞)，string时是[Length]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。 单位：vp 取值为异常值时按照0vp处理。
+形状的宽度。 类型为number时取值范围是0, +∞)，string时是[Length。 单位：vp 取值为异常值时按照0vp处理。
 
 **类型：** double \| string
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

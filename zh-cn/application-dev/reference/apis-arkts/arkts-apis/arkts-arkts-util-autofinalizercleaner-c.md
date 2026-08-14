@@ -6,7 +6,9 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
-<!--Device-util-class AutoFinalizerCleaner<T>--><!--Device-util-class AutoFinalizerCleaner<T>-End-->
+**废弃版本：** -1
+
+<!--Device-util-class AutoFinalizerCleaner--><!--Device-util-class AutoFinalizerCleaner-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -22,6 +24,8 @@ static register<T>(obj: AutoFinalizer<T>, heldValue: T): void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AutoFinalizerCleaner-static register<T>(obj: AutoFinalizer<T>, heldValue: T): void--><!--Device-AutoFinalizerCleaner-static register<T>(obj: AutoFinalizer<T>, heldValue: T): void-End-->
@@ -32,6 +36,6 @@ static register<T>(obj: AutoFinalizer<T>, heldValue: T): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| obj | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;T&gt; | 是 | 注册到 cleaner 的对象。 |
+| obj | [AutoFinalizer](arkts-arkts-util-autofinalizer-i.md)&lt;T&gt; | 是 | 注册到 cleaner 的对象。 |
 | heldValue | T | 是 | 传递给 finalizer 的值。 |
 

@@ -8,7 +8,7 @@ AbilityManager模块提供对Ability相关信息和状态信息进行获取、�
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.abilityManager/abilityManager
+**替代接口：** [abilityManager/abilityManager](arkts-app-ability-abilitymanager.md#@ohos.app.ability.abilityManager)
 
 <!--Device-unnamed-declare namespace abilityManager--><!--Device-unnamed-declare namespace abilityManager-End-->
 
@@ -23,10 +23,10 @@ AbilityManager模块提供对Ability相关信息和状态信息进行获取、�
 
 | 名称 | 说明 |
 | --- | --- |
-| [getAbilityRunningInfos](arkts-ability-abilitymanager-getabilityrunninginfos-depr-f-sys.md#getabilityrunninginfos) | 获取Ability运行相关信息。使用Promise异步回调。 |
-| [getAbilityRunningInfos](arkts-ability-abilitymanager-getabilityrunninginfos-depr-f-sys.md#getabilityrunninginfos-1) | 获取Ability运行相关信息。使用callback异步回调。 |
-| [updateConfiguration](arkts-ability-abilitymanager-updateconfiguration-depr-f-sys.md#updateconfiguration) | 通过传入要修改的配置项来更新配置。使用callback异步回调。 |
-| [updateConfiguration](arkts-ability-abilitymanager-updateconfiguration-depr-f-sys.md#updateconfiguration-1) | 通过传入要修改的配置项来更新配置。使用Promise异步回调。 |
+| [getAbilityRunningInfos](arkts-ability-abilitymanager-getabilityrunninginfos-depr-f-sys.md#getAbilityRunningInfos) | 获取Ability运行相关信息。使用Promise异步回调。 |
+| [getAbilityRunningInfos](arkts-ability-abilitymanager-getabilityrunninginfos-depr-f-sys.md#getAbilityRunningInfos) | 获取Ability运行相关信息。使用callback异步回调。 |
+| [updateConfiguration](arkts-ability-abilitymanager-updateconfiguration-depr-f-sys.md#updateConfiguration) | 通过传入要修改的配置项来更新配置。使用callback异步回调。 |
+| [updateConfiguration](arkts-ability-abilitymanager-updateconfiguration-depr-f-sys.md#updateConfiguration) | 通过传入要修改的配置项来更新配置。使用Promise异步回调。 |
 <!--DelEnd-->
 
 <!--Del-->

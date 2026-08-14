@@ -2,15 +2,17 @@
 
 系统为UIAbility创建的后台通信对象，Callee UIAbility（被调用方）可以通过Callee对象接收Caller对象发送的数据。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-export interface Callee--><!--Device-unnamed-export interface Callee-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-## off
+## off_string
 
 ```TypeScript
 off(method: string): void
@@ -18,9 +20,11 @@ off(method: string): void
 
 解除通用组件服务端注册消息通知callback。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -38,11 +42,11 @@ off(method: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16200005](../errorcode-ability.md#16200005-方法未注册) | The method has not been registered. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
@@ -63,7 +67,7 @@ export default class MainUIAbility extends UIAbility {
 }
 ```
 
-## on
+## on_string
 
 ```TypeScript
 on(method: string, callback: CalleeCallback): void
@@ -71,9 +75,11 @@ on(method: string, callback: CalleeCallback): void
 
 通用组件服务端注册消息通知callback。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -86,17 +92,17 @@ on(method: string, callback: CalleeCallback): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | method | string | 是 | 由Caller和Callee双方约定好的方法名，Callee方通过该字段区分消息类型。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 一个[rpc.MessageSequence]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_类型入参的js通知同步回调函数, 回调函数至少要返回一个空的[rpc.Parcelable]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_数据对象, 其他视为函数执行错误。 |
+| callback | [CalleeCallback](arkts-ability-app-ability-uiability-calleecallback-i.md) | 是 | 一个[rpc.MessageSequence](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-messagesequence-c.md#MessageSequence)类型入参的js通知同步回调函数, 回 调函数至少要返回一个空的[rpc.Parcelable](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-parcelable-i.md#Parcelable)数据对象, 其他视为函数执行错误。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16200004](../errorcode-ability.md#16200004-方法已注册) | The method has been registered. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

@@ -1,10 +1,12 @@
 # WebNetErrorList
 
-Web net error list.
+ArkWeb的网络协议栈错误列表。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-export declare enum WebNetErrorList--><!--Device-unnamed-export declare enum WebNetErrorList-End-->
 
@@ -21,6 +23,8 @@ NET_OK = 0
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -40,6 +44,8 @@ ERR_IO_PENDING = -1
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_IO_PENDING = -1--><!--Device-WebNetErrorList-ERR_IO_PENDING = -1-End-->
@@ -57,6 +63,8 @@ ERR_FAILED = -2
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -76,6 +84,8 @@ ERR_ABORTED = -3
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_ABORTED = -3--><!--Device-WebNetErrorList-ERR_ABORTED = -3-End-->
@@ -93,6 +103,8 @@ ERR_INVALID_ARGUMENT = -4
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -112,6 +124,8 @@ ERR_INVALID_HANDLE = -5
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_INVALID_HANDLE = -5--><!--Device-WebNetErrorList-ERR_INVALID_HANDLE = -5-End-->
@@ -129,6 +143,8 @@ ERR_FILE_NOT_FOUND = -6
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -148,6 +164,8 @@ ERR_TIMED_OUT = -7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_TIMED_OUT = -7--><!--Device-WebNetErrorList-ERR_TIMED_OUT = -7-End-->
@@ -166,6 +184,8 @@ ERR_FILE_TOO_LARGE = -8
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_FILE_TOO_LARGE = -8--><!--Device-WebNetErrorList-ERR_FILE_TOO_LARGE = -8-End-->
@@ -178,11 +198,13 @@ ERR_FILE_TOO_LARGE = -8
 ERR_UNEXPECTED = -9
 ```
 
-遇到了一个未被预期或未被特定处理的问题。
+遇到了未被预期或未被特定处理的问题。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -202,6 +224,8 @@ ERR_ACCESS_DENIED = -10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_ACCESS_DENIED = -10--><!--Device-WebNetErrorList-ERR_ACCESS_DENIED = -10-End-->
@@ -219,6 +243,8 @@ ERR_NOT_IMPLEMENTED = -11
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -238,6 +264,8 @@ ERR_INSUFFICIENT_RESOURCES = -12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_INSUFFICIENT_RESOURCES = -12--><!--Device-WebNetErrorList-ERR_INSUFFICIENT_RESOURCES = -12-End-->
@@ -256,6 +284,8 @@ ERR_OUT_OF_MEMORY = -13
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_OUT_OF_MEMORY = -13--><!--Device-WebNetErrorList-ERR_OUT_OF_MEMORY = -13-End-->
@@ -268,11 +298,13 @@ ERR_OUT_OF_MEMORY = -13
 ERR_UPLOAD_FILE_CHANGED = -14
 ```
 
-上传文件失败因为文件的修改时间不符合预期。
+上传文件失败，因为文件的修改时间不符合预期。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -292,6 +324,8 @@ ERR_SOCKET_NOT_CONNECTED = -15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_SOCKET_NOT_CONNECTED = -15--><!--Device-WebNetErrorList-ERR_SOCKET_NOT_CONNECTED = -15-End-->
@@ -309,6 +343,8 @@ ERR_FILE_EXISTS = -16
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -328,6 +364,8 @@ ERR_FILE_PATH_TOO_LONG = -17
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_FILE_PATH_TOO_LONG = -17--><!--Device-WebNetErrorList-ERR_FILE_PATH_TOO_LONG = -17-End-->
@@ -345,6 +383,8 @@ ERR_FILE_NO_SPACE = -18
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -364,6 +404,8 @@ ERR_FILE_VIRUS_INFECTED = -19
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_FILE_VIRUS_INFECTED = -19--><!--Device-WebNetErrorList-ERR_FILE_VIRUS_INFECTED = -19-End-->
@@ -381,6 +423,8 @@ ERR_BLOCKED_BY_CLIENT = -20
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -400,6 +444,8 @@ ERR_NETWORK_CHANGED = -21
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_NETWORK_CHANGED = -21--><!--Device-WebNetErrorList-ERR_NETWORK_CHANGED = -21-End-->
@@ -417,6 +463,8 @@ ERR_BLOCKED_BY_ADMINISTRATOR = -22
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -436,6 +484,8 @@ socket已经处于连接状态。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_SOCKET_CONNECTED = -23--><!--Device-WebNetErrorList-ERR_SOCKET_CONNECTED = -23-End-->
@@ -448,11 +498,13 @@ socket已经处于连接状态。
 ERR_UPLOAD_STREAM_REWIND_NOT_SUPPORTED = -25
 ```
 
-上传重传不支持。
+由于重试或重定向，需要重新读取上传流，但上传流不支持该操作，因此上传失败。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -472,6 +524,8 @@ ERR_CONTEXT_SHUT_DOWN = -26
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_CONTEXT_SHUT_DOWN = -26--><!--Device-WebNetErrorList-ERR_CONTEXT_SHUT_DOWN = -26-End-->
@@ -489,6 +543,8 @@ ERR_BLOCKED_BY_RESPONSE = -27
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -508,6 +564,8 @@ ERR_CLEARTEXT_NOT_PERMITTED = -29
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_CLEARTEXT_NOT_PERMITTED = -29--><!--Device-WebNetErrorList-ERR_CLEARTEXT_NOT_PERMITTED = -29-End-->
@@ -525,6 +583,8 @@ ERR_BLOCKED_BY_CSP = -30
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -544,6 +604,8 @@ ERR_H2_OR_QUIC_REQUIRED = -31
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_H2_OR_QUIC_REQUIRED = -31--><!--Device-WebNetErrorList-ERR_H2_OR_QUIC_REQUIRED = -31-End-->
@@ -561,6 +623,8 @@ ERR_BLOCKED_BY_ORB = -32
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -580,6 +644,8 @@ ERR_CONNECTION_CLOSED = -100
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_CONNECTION_CLOSED = -100--><!--Device-WebNetErrorList-ERR_CONNECTION_CLOSED = -100-End-->
@@ -597,6 +663,8 @@ ERR_CONNECTION_RESET = -101
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -616,6 +684,8 @@ ERR_CONNECTION_REFUSED = -102
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_CONNECTION_REFUSED = -102--><!--Device-WebNetErrorList-ERR_CONNECTION_REFUSED = -102-End-->
@@ -633,6 +703,8 @@ ERR_CONNECTION_ABORTED = -103
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -652,6 +724,8 @@ ERR_CONNECTION_FAILED = -104
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_CONNECTION_FAILED = -104--><!--Device-WebNetErrorList-ERR_CONNECTION_FAILED = -104-End-->
@@ -669,6 +743,8 @@ ERR_NAME_NOT_RESOLVED = -105
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -688,6 +764,8 @@ ERR_INTERNET_DISCONNECTED = -106
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_INTERNET_DISCONNECTED = -106--><!--Device-WebNetErrorList-ERR_INTERNET_DISCONNECTED = -106-End-->
@@ -705,6 +783,8 @@ SSL 协议错误。
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -724,6 +804,8 @@ IP地址或端口号无效（例如，无法连接到IP地址0或端口0）。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_ADDRESS_INVALID = -108--><!--Device-WebNetErrorList-ERR_ADDRESS_INVALID = -108-End-->
@@ -741,6 +823,8 @@ ERR_ADDRESS_UNREACHABLE = -109
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -760,6 +844,8 @@ ERR_SSL_CLIENT_AUTH_CERT_NEEDED = -110
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_SSL_CLIENT_AUTH_CERT_NEEDED = -110--><!--Device-WebNetErrorList-ERR_SSL_CLIENT_AUTH_CERT_NEEDED = -110-End-->
@@ -777,6 +863,8 @@ ERR_TUNNEL_CONNECTION_FAILED = -111
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -796,6 +884,8 @@ ERR_NO_SSL_VERSIONS_ENABLED = -112
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_NO_SSL_VERSIONS_ENABLED = -112--><!--Device-WebNetErrorList-ERR_NO_SSL_VERSIONS_ENABLED = -112-End-->
@@ -813,6 +903,8 @@ ERR_SSL_VERSION_OR_CIPHER_MISMATCH = -113
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -832,6 +924,8 @@ ERR_SSL_RENEGOTIATION_REQUESTED = -114
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_SSL_RENEGOTIATION_REQUESTED = -114--><!--Device-WebNetErrorList-ERR_SSL_RENEGOTIATION_REQUESTED = -114-End-->
@@ -849,6 +943,8 @@ ERR_PROXY_AUTH_UNSUPPORTED = -115
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -868,6 +964,8 @@ SSL 客户端证书错误。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_BAD_SSL_CLIENT_AUTH_CERT = -117--><!--Device-WebNetErrorList-ERR_BAD_SSL_CLIENT_AUTH_CERT = -117-End-->
@@ -885,6 +983,8 @@ ERR_CONNECTION_TIMED_OUT = -118
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -904,6 +1004,8 @@ ERR_HOST_RESOLVER_QUEUE_TOO_LARGE = -119
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_HOST_RESOLVER_QUEUE_TOO_LARGE = -119--><!--Device-WebNetErrorList-ERR_HOST_RESOLVER_QUEUE_TOO_LARGE = -119-End-->
@@ -921,6 +1023,8 @@ ERR_SOCKS_CONNECTION_FAILED = -120
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -940,6 +1044,8 @@ ERR_SOCKS_CONNECTION_HOST_UNREACHABLE = -121
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_SOCKS_CONNECTION_HOST_UNREACHABLE = -121--><!--Device-WebNetErrorList-ERR_SOCKS_CONNECTION_HOST_UNREACHABLE = -121-End-->
@@ -958,6 +1064,8 @@ ERR_ALPN_NEGOTIATION_FAILED = -122
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_ALPN_NEGOTIATION_FAILED = -122--><!--Device-WebNetErrorList-ERR_ALPN_NEGOTIATION_FAILED = -122-End-->
@@ -970,11 +1078,13 @@ ERR_ALPN_NEGOTIATION_FAILED = -122
 ERR_SSL_NO_RENEGOTIATION = -123
 ```
 
-对方发送了SSL no\_renegotiation警报消息。
+对方发送了SSL no_renegotiation警报消息。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -994,6 +1104,8 @@ Winsock有时会报告写入的数据多于传递的数据。这可能是由于L
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_WINSOCK_UNEXPECTED_WRITTEN_BYTES = -124--><!--Device-WebNetErrorList-ERR_WINSOCK_UNEXPECTED_WRITTEN_BYTES = -124-End-->
@@ -1012,6 +1124,8 @@ SSL对等端向本端发送了致命的解压失败警报。当对等方错误�
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_SSL_DECOMPRESSION_FAILURE_ALERT = -125--><!--Device-WebNetErrorList-ERR_SSL_DECOMPRESSION_FAILURE_ALERT = -125-End-->
@@ -1024,11 +1138,13 @@ SSL对等端向本端发送了致命的解压失败警报。当对等方错误�
 ERR_SSL_BAD_RECORD_MAC_ALERT = -126
 ```
 
-SSL对等端向本端发送了致命的bad\_record\_mac警报。一个对DELEGATE支持有问题的服务器可能发生这个情况。
+SSL对等端向本端发送了致命的bad_record_mac警报。一个对DEFLATE支持有问题的服务器可能发生这个情况。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1048,6 +1164,8 @@ ERR_PROXY_AUTH_REQUESTED = -127
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_PROXY_AUTH_REQUESTED = -127--><!--Device-WebNetErrorList-ERR_PROXY_AUTH_REQUESTED = -127-End-->
@@ -1065,6 +1183,8 @@ ERR_PROXY_CONNECTION_FAILED = -130
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1084,6 +1204,8 @@ ERR_MANDATORY_PROXY_CONFIGURATION_FAILED = -131
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_MANDATORY_PROXY_CONFIGURATION_FAILED = -131--><!--Device-WebNetErrorList-ERR_MANDATORY_PROXY_CONFIGURATION_FAILED = -131-End-->
@@ -1101,6 +1223,8 @@ ERR_PRECONNECT_MAX_SOCKET_LIMIT = -133
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1120,6 +1244,8 @@ ERR_SSL_CLIENT_AUTH_PRIVATE_KEY_ACCESS_DENIED = -134
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_SSL_CLIENT_AUTH_PRIVATE_KEY_ACCESS_DENIED = -134--><!--Device-WebNetErrorList-ERR_SSL_CLIENT_AUTH_PRIVATE_KEY_ACCESS_DENIED = -134-End-->
@@ -1137,6 +1263,8 @@ SSL客户端证书没有私钥。
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1156,6 +1284,8 @@ HTTPS 代理提供的证书无效。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_PROXY_CERTIFICATE_INVALID = -136--><!--Device-WebNetErrorList-ERR_PROXY_CERTIFICATE_INVALID = -136-End-->
@@ -1173,6 +1303,8 @@ ERR_NAME_RESOLUTION_FAILED = -137
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1192,6 +1324,8 @@ ERR_NETWORK_ACCESS_DENIED = -138
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_NETWORK_ACCESS_DENIED = -138--><!--Device-WebNetErrorList-ERR_NETWORK_ACCESS_DENIED = -138-End-->
@@ -1209,6 +1343,8 @@ ERR_TEMPORARILY_THROTTLED = -139
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1228,6 +1364,8 @@ ERR_HTTPS_PROXY_TUNNEL_RESPONSE_REDIRECT = -140
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_HTTPS_PROXY_TUNNEL_RESPONSE_REDIRECT = -140--><!--Device-WebNetErrorList-ERR_HTTPS_PROXY_TUNNEL_RESPONSE_REDIRECT = -140-End-->
@@ -1245,6 +1383,8 @@ ERR_SSL_CLIENT_AUTH_SIGNATURE_FAILED = -141
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1264,6 +1404,8 @@ ERR_MSG_TOO_BIG = -142
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_MSG_TOO_BIG = -142--><!--Device-WebNetErrorList-ERR_MSG_TOO_BIG = -142-End-->
@@ -1276,11 +1418,13 @@ ERR_MSG_TOO_BIG = -142
 ERR_WS_PROTOCOL_ERROR = -145
 ```
 
-Websocket协议错误。表示由于帧格式错误或其他协议冲突，正在终止连接。
+WebSocket协议错误。表示由于帧格式错误或其他协议冲突，正在终止连接。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1300,6 +1444,8 @@ ERR_ADDRESS_IN_USE = -147
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_ADDRESS_IN_USE = -147--><!--Device-WebNetErrorList-ERR_ADDRESS_IN_USE = -147-End-->
@@ -1317,6 +1463,8 @@ ERR_SSL_HANDSHAKE_NOT_COMPLETED = -148
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1336,6 +1484,8 @@ SSL 公钥错误。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_SSL_BAD_PEER_PUBLIC_KEY = -149--><!--Device-WebNetErrorList-ERR_SSL_BAD_PEER_PUBLIC_KEY = -149-End-->
@@ -1353,6 +1503,8 @@ ERR_SSL_PINNED_KEY_NOT_IN_CERT_CHAIN = -150
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1372,6 +1524,8 @@ ERR_CLIENT_AUTH_CERT_TYPE_UNSUPPORTED = -151
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_CLIENT_AUTH_CERT_TYPE_UNSUPPORTED = -151--><!--Device-WebNetErrorList-ERR_CLIENT_AUTH_CERT_TYPE_UNSUPPORTED = -151-End-->
@@ -1384,11 +1538,13 @@ ERR_CLIENT_AUTH_CERT_TYPE_UNSUPPORTED = -151
 ERR_SSL_DECRYPT_ERROR_ALERT = -153
 ```
 
-SSL对等端向本端发送了致命的decrypt\_error警报。当对等方无法正确验证签名（在CertificateVerify或ServerKeyExchange中） 或验证Finished消息时，通常会发生这种情况。
+SSL对等端向本端发送了致命的decrypt_error警报。当对等方无法正确验证签名（在CertificateVerify或ServerKeyExchange中） 或验证Finished消息时，通常会发生这种情况。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1408,6 +1564,8 @@ ERR_WS_THROTTLE_QUEUE_TOO_LARGE = -154
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_WS_THROTTLE_QUEUE_TOO_LARGE = -154--><!--Device-WebNetErrorList-ERR_WS_THROTTLE_QUEUE_TOO_LARGE = -154-End-->
@@ -1425,6 +1583,8 @@ SSL服务器证书在重新协商中更改。
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1444,6 +1604,8 @@ SSL服务器向本端发送了致命的未识别名称警报。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_SSL_UNRECOGNIZED_NAME_ALERT = -159--><!--Device-WebNetErrorList-ERR_SSL_UNRECOGNIZED_NAME_ALERT = -159-End-->
@@ -1461,6 +1623,8 @@ ERR_SOCKET_SET_RECEIVE_BUFFER_SIZE_ERROR = -160
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1480,6 +1644,8 @@ ERR_SOCKET_SET_SEND_BUFFER_SIZE_ERROR = -161
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_SOCKET_SET_SEND_BUFFER_SIZE_ERROR = -161--><!--Device-WebNetErrorList-ERR_SOCKET_SET_SEND_BUFFER_SIZE_ERROR = -161-End-->
@@ -1497,6 +1663,8 @@ ERR_SOCKET_RECEIVE_BUFFER_SIZE_UNCHANGEABLE = -162
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1516,6 +1684,8 @@ ERR_SOCKET_SEND_BUFFER_SIZE_UNCHANGEABLE = -163
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_SOCKET_SEND_BUFFER_SIZE_UNCHANGEABLE = -163--><!--Device-WebNetErrorList-ERR_SOCKET_SEND_BUFFER_SIZE_UNCHANGEABLE = -163-End-->
@@ -1533,6 +1703,8 @@ ERR_SSL_CLIENT_AUTH_CERT_BAD_FORMAT = -164
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1552,6 +1724,8 @@ ERR_ICANN_NAME_COLLISION = -166
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_ICANN_NAME_COLLISION = -166--><!--Device-WebNetErrorList-ERR_ICANN_NAME_COLLISION = -166-End-->
@@ -1570,6 +1744,8 @@ SSL服务器提供了一个无法解码的证书。这不是证书错误代码�
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_SSL_SERVER_CERT_BAD_FORMAT = -167--><!--Device-WebNetErrorList-ERR_SSL_SERVER_CERT_BAD_FORMAT = -167-End-->
@@ -1582,11 +1758,13 @@ SSL服务器提供了一个无法解码的证书。这不是证书错误代码�
 ERR_CT_STH_PARSING_FAILED = -168
 ```
 
-Certificate Transparency：解析signed tree head失败。
+Certificate Transparency: 解析signed tree head失败。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1606,6 +1784,8 @@ Certificate Transparency: 解析signed tree head成功，但是缺少了一些�
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_CT_STH_INCOMPLETE = -169--><!--Device-WebNetErrorList-ERR_CT_STH_INCOMPLETE = -169-End-->
@@ -1623,6 +1803,8 @@ ERR_UNABLE_TO_REUSE_CONNECTION_FOR_PROXY_AUTH = -170
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1642,6 +1824,8 @@ Certificate Transparency: 一致性验证解析失败。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_CT_CONSISTENCY_PROOF_PARSING_FAILED = -171--><!--Device-WebNetErrorList-ERR_CT_CONSISTENCY_PROOF_PARSING_FAILED = -171-End-->
@@ -1659,6 +1843,8 @@ SSL服务器需要一个不受支持的密码套件，该套件已被删除。�
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1678,6 +1864,8 @@ ERR_WS_UPGRADE = -173
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_WS_UPGRADE = -173--><!--Device-WebNetErrorList-ERR_WS_UPGRADE = -173-End-->
@@ -1695,6 +1883,8 @@ ERR_READ_IF_READY_NOT_IMPLEMENTED = -174
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1714,6 +1904,8 @@ ERR_NO_BUFFER_SPACE = -176
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_NO_BUFFER_SPACE = -176--><!--Device-WebNetErrorList-ERR_NO_BUFFER_SPACE = -176-End-->
@@ -1731,6 +1923,8 @@ ERR_SSL_CLIENT_AUTH_NO_COMMON_ALGORITHMS = -177
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1750,6 +1944,8 @@ TLS 1.3 early data 被服务器拒绝。这将在从套接字返回任何数据�
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_EARLY_DATA_REJECTED = -178--><!--Device-WebNetErrorList-ERR_EARLY_DATA_REJECTED = -178-End-->
@@ -1767,6 +1963,8 @@ TLS 1.3 early data 版本错误。
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1786,6 +1984,8 @@ TLS 1.3已启用，但已协商更低的版本，服务器返回一个值，表�
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_TLS13_DOWNGRADE_DETECTED = -180--><!--Device-WebNetErrorList-ERR_TLS13_DOWNGRADE_DETECTED = -180-End-->
@@ -1803,6 +2003,8 @@ ERR_SSL_KEY_USAGE_INCOMPATIBLE = -181
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1822,6 +2024,8 @@ ERR_INVALID_ECH_CONFIG_LIST = -182
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_INVALID_ECH_CONFIG_LIST = -182--><!--Device-WebNetErrorList-ERR_INVALID_ECH_CONFIG_LIST = -182-End-->
@@ -1839,6 +2043,8 @@ ECH已启用，但服务器无法解密加密的ClientHello。
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1858,6 +2064,8 @@ ECH已启用，服务器无法解密加密的ClientHello，并且没有提供对
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_ECH_FALLBACK_CERTIFICATE_INVALID = -184--><!--Device-WebNetErrorList-ERR_ECH_FALLBACK_CERTIFICATE_INVALID = -184-End-->
@@ -1875,6 +2083,8 @@ ERR_CERT_COMMON_NAME_INVALID = -200
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1894,6 +2104,8 @@ ERR_CERT_DATE_INVALID = -201
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_CERT_DATE_INVALID = -201--><!--Device-WebNetErrorList-ERR_CERT_DATE_INVALID = -201-End-->
@@ -1906,11 +2118,13 @@ ERR_CERT_DATE_INVALID = -201
 ERR_CERT_AUTHORITY_INVALID = -202
 ```
 
-未信任的证书签发机构。这可能意味着： 1.攻击者用真实证书代替了包含其公钥并由其表亲签名的证书。 2.服务器操作员拥有来自本端不知道但应该信任的CA的合法证书。 3.服务器提供了一个自签名证书，无法抵御主动攻击者。
+未信任的证书签发机构。这可能意味着： 1.攻击者已将真实的证书替换为包含其公钥并由其同伙签名的证书。 2.服务器操作员拥有来自本端不知道但应该信任的CA的合法证书。 3.服务器提供了一个自签名证书，无法抵御主动攻击者。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1930,6 +2144,8 @@ ERR_CERT_CONTAINS_ERRORS = -203
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_CERT_CONTAINS_ERRORS = -203--><!--Device-WebNetErrorList-ERR_CERT_CONTAINS_ERRORS = -203-End-->
@@ -1947,6 +2163,8 @@ ERR_CERT_NO_REVOCATION_MECHANISM = -204
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1966,6 +2184,8 @@ ERR_CERT_UNABLE_TO_CHECK_REVOCATION = -205
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_CERT_UNABLE_TO_CHECK_REVOCATION = -205--><!--Device-WebNetErrorList-ERR_CERT_UNABLE_TO_CHECK_REVOCATION = -205-End-->
@@ -1984,6 +2204,8 @@ ERR_CERT_REVOKED = -206
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_CERT_REVOKED = -206--><!--Device-WebNetErrorList-ERR_CERT_REVOKED = -206-End-->
@@ -1996,11 +2218,13 @@ ERR_CERT_REVOKED = -206
 ERR_CERT_INVALID = -207
 ```
 
-证书非法。
+证书无效。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2014,11 +2238,13 @@ ERR_CERT_INVALID = -207
 ERR_CERT_WEAK_SIGNATURE_ALGORITHM = -208
 ```
 
-服务器以使用弱签名算法签名的证书作为响应。
+服务器使用弱签名算法签名的证书作为响应。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2038,6 +2264,8 @@ ERR_CERT_NON_UNIQUE_NAME = -210
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_CERT_NON_UNIQUE_NAME = -210--><!--Device-WebNetErrorList-ERR_CERT_NON_UNIQUE_NAME = -210-End-->
@@ -2055,6 +2283,8 @@ ERR_CERT_WEAK_KEY = -211
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2074,6 +2304,8 @@ ERR_CERT_NAME_CONSTRAINT_VIOLATION = -212
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_CERT_NAME_CONSTRAINT_VIOLATION = -212--><!--Device-WebNetErrorList-ERR_CERT_NAME_CONSTRAINT_VIOLATION = -212-End-->
@@ -2091,6 +2323,8 @@ ERR_CERT_VALIDITY_TOO_LONG = -213
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2110,6 +2344,8 @@ ERR_CERTIFICATE_TRANSPARENCY_REQUIRED = -214
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_CERTIFICATE_TRANSPARENCY_REQUIRED = -214--><!--Device-WebNetErrorList-ERR_CERTIFICATE_TRANSPARENCY_REQUIRED = -214-End-->
@@ -2122,11 +2358,13 @@ ERR_CERTIFICATE_TRANSPARENCY_REQUIRED = -214
 ERR_CERT_SYMANTEC_LEGACY = -215
 ```
 
-该证书链接到不再受信任的旧赛门铁克根目录。
+证书链接到不再受信任的旧版Symantec根证书。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2146,6 +2384,8 @@ ERR_CERT_KNOWN_INTERCEPTION_BLOCKED = -217
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_CERT_KNOWN_INTERCEPTION_BLOCKED = -217--><!--Device-WebNetErrorList-ERR_CERT_KNOWN_INTERCEPTION_BLOCKED = -217-End-->
@@ -2163,6 +2403,8 @@ ERR_SSL_OBSOLETE_VERSION_OR_CIPHER = -218
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2182,6 +2424,8 @@ ERR_CERT_END = -219
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_CERT_END = -219--><!--Device-WebNetErrorList-ERR_CERT_END = -219-End-->
@@ -2199,6 +2443,8 @@ ERR_INVALID_URL = -300
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2218,6 +2464,8 @@ ERR_DISALLOWED_URL_SCHEME = -301
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_DISALLOWED_URL_SCHEME = -301--><!--Device-WebNetErrorList-ERR_DISALLOWED_URL_SCHEME = -301-End-->
@@ -2235,6 +2483,8 @@ ERR_UNKNOWN_URL_SCHEME = -302
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2254,6 +2504,8 @@ ERR_INVALID_REDIRECT = -303
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_INVALID_REDIRECT = -303--><!--Device-WebNetErrorList-ERR_INVALID_REDIRECT = -303-End-->
@@ -2271,6 +2523,8 @@ ERR_TOO_MANY_REDIRECTS = -310
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2290,6 +2544,8 @@ ERR_UNSAFE_REDIRECT = -311
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_UNSAFE_REDIRECT = -311--><!--Device-WebNetErrorList-ERR_UNSAFE_REDIRECT = -311-End-->
@@ -2307,6 +2563,8 @@ ERR_UNSAFE_PORT = -312
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2326,6 +2584,8 @@ ERR_INVALID_RESPONSE = -320
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_INVALID_RESPONSE = -320--><!--Device-WebNetErrorList-ERR_INVALID_RESPONSE = -320-End-->
@@ -2343,6 +2603,8 @@ ERR_INVALID_CHUNKED_ENCODING = -321
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2362,6 +2624,8 @@ ERR_METHOD_UNSUPPORTED = -322
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_METHOD_UNSUPPORTED = -322--><!--Device-WebNetErrorList-ERR_METHOD_UNSUPPORTED = -322-End-->
@@ -2379,6 +2643,8 @@ ERR_UNEXPECTED_PROXY_AUTH = -323
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2398,6 +2664,8 @@ ERR_EMPTY_RESPONSE = -324
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_EMPTY_RESPONSE = -324--><!--Device-WebNetErrorList-ERR_EMPTY_RESPONSE = -324-End-->
@@ -2410,11 +2678,13 @@ ERR_EMPTY_RESPONSE = -324
 ERR_RESPONSE_HEADERS_TOO_BIG = -325
 ```
 
-返回体中 headers 太大。
+HTTP响应标头过大。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2428,11 +2698,13 @@ ERR_RESPONSE_HEADERS_TOO_BIG = -325
 ERR_PAC_SCRIPT_FAILED = -327
 ```
 
-pac 脚本错误。
+PAC 脚本错误。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2452,6 +2724,8 @@ ERR_REQUEST_RANGE_NOT_SATISFIABLE = -328
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_REQUEST_RANGE_NOT_SATISFIABLE = -328--><!--Device-WebNetErrorList-ERR_REQUEST_RANGE_NOT_SATISFIABLE = -328-End-->
@@ -2469,6 +2743,8 @@ ERR_MALFORMED_IDENTITY = -329
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2488,6 +2764,8 @@ ERR_CONTENT_DECODING_FAILED = -330
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_CONTENT_DECODING_FAILED = -330--><!--Device-WebNetErrorList-ERR_CONTENT_DECODING_FAILED = -330-End-->
@@ -2506,6 +2784,8 @@ ERR_NETWORK_IO_SUSPENDED = -331
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_NETWORK_IO_SUSPENDED = -331--><!--Device-WebNetErrorList-ERR_NETWORK_IO_SUSPENDED = -331-End-->
@@ -2518,11 +2798,13 @@ ERR_NETWORK_IO_SUSPENDED = -331
 ERR_SYN_REPLY_NOT_RECEIVED = -332
 ```
 
-在流上未接收到SYN\_REPLY的情况下接收到的FLIP数据。
+在流上未接收到SYN_REPLY的情况下接收到的FLIP数据。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2542,6 +2824,8 @@ ERR_ENCODING_CONVERSION_FAILED = -333
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_ENCODING_CONVERSION_FAILED = -333--><!--Device-WebNetErrorList-ERR_ENCODING_CONVERSION_FAILED = -333-End-->
@@ -2559,6 +2843,8 @@ ERR_UNRECOGNIZED_FTP_DIRECTORY_LISTING_FORMAT = -334
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2578,6 +2864,8 @@ ERR_NO_SUPPORTED_PROXIES = -336
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_NO_SUPPORTED_PROXIES = -336--><!--Device-WebNetErrorList-ERR_NO_SUPPORTED_PROXIES = -336-End-->
@@ -2590,11 +2878,13 @@ ERR_NO_SUPPORTED_PROXIES = -336
 ERR_HTTP2_PROTOCOL_ERROR = -337
 ```
 
-There is an HTTP/2 protocol error.
+HTTP/2协议错误。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2608,11 +2898,13 @@ There is an HTTP/2 protocol error.
 ERR_INVALID_AUTH_CREDENTIALS = -338
 ```
 
-HTTP/2协议错误。
+无效的身份验证凭据。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2632,6 +2924,8 @@ ERR_UNSUPPORTED_AUTH_SCHEME = -339
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_UNSUPPORTED_AUTH_SCHEME = -339--><!--Device-WebNetErrorList-ERR_UNSUPPORTED_AUTH_SCHEME = -339-End-->
@@ -2649,6 +2943,8 @@ ERR_ENCODING_DETECTION_FAILED = -340
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2668,6 +2964,8 @@ ERR_MISSING_AUTH_CREDENTIALS = -341
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_MISSING_AUTH_CREDENTIALS = -341--><!--Device-WebNetErrorList-ERR_MISSING_AUTH_CREDENTIALS = -341-End-->
@@ -2685,6 +2983,8 @@ ERR_UNEXPECTED_SECURITY_LIBRARY_STATUS = -342
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2704,6 +3004,8 @@ ERR_MISCONFIGURED_AUTH_ENVIRONMENT = -343
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_MISCONFIGURED_AUTH_ENVIRONMENT = -343--><!--Device-WebNetErrorList-ERR_MISCONFIGURED_AUTH_ENVIRONMENT = -343-End-->
@@ -2721,6 +3023,8 @@ ERR_UNDOCUMENTED_SECURITY_LIBRARY_STATUS = -344
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2740,6 +3044,8 @@ ERR_RESPONSE_BODY_TOO_BIG_TO_DRAIN = -345
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_RESPONSE_BODY_TOO_BIG_TO_DRAIN = -345--><!--Device-WebNetErrorList-ERR_RESPONSE_BODY_TOO_BIG_TO_DRAIN = -345-End-->
@@ -2752,11 +3058,13 @@ ERR_RESPONSE_BODY_TOO_BIG_TO_DRAIN = -345
 ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_LENGTH = -346
 ```
 
-响应 headers 多个内容长度。
+HTTP响应包含了多个不同的Content-Length响应头。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2770,11 +3078,13 @@ ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_LENGTH = -346
 ERR_INCOMPLETE_HTTP2_HEADERS = -347
 ```
 
-不完整的 HTTP/2 headers。
+不完整的HTTP/2标头。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2788,11 +3098,13 @@ ERR_INCOMPLETE_HTTP2_HEADERS = -347
 ERR_PAC_NOT_IN_DHCP = -348
 ```
 
-pac 不在 dhcp 中。
+PAC 不在 DHCP 中。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2812,6 +3124,8 @@ ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_DISPOSITION = -349
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_DISPOSITION = -349--><!--Device-WebNetErrorList-ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_DISPOSITION = -349-End-->
@@ -2829,6 +3143,8 @@ ERR_RESPONSE_HEADERS_MULTIPLE_LOCATION = -350
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2848,6 +3164,8 @@ HTTP/2 服务器拒绝流。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_HTTP2_SERVER_REFUSED_STREAM = -351--><!--Device-WebNetErrorList-ERR_HTTP2_SERVER_REFUSED_STREAM = -351-End-->
@@ -2865,6 +3183,8 @@ HTTP/2 ping 失败。
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2884,6 +3204,8 @@ ERR_CONTENT_LENGTH_MISMATCH = -354
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_CONTENT_LENGTH_MISMATCH = -354--><!--Device-WebNetErrorList-ERR_CONTENT_LENGTH_MISMATCH = -354-End-->
@@ -2901,6 +3223,8 @@ HTTP 响应体使用分块编码传输，但在连接关闭时从未发送终止
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2920,6 +3244,8 @@ ERR_QUIC_PROTOCOL_ERROR = -356
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_QUIC_PROTOCOL_ERROR = -356--><!--Device-WebNetErrorList-ERR_QUIC_PROTOCOL_ERROR = -356-End-->
@@ -2937,6 +3263,8 @@ HTTP 头部信息被文件结束符（EOF）截断。
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2956,6 +3284,8 @@ QUIC 加密握手失败。这意味着服务器无法读取发送的任何请求
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_QUIC_HANDSHAKE_FAILED = -358--><!--Device-WebNetErrorList-ERR_QUIC_HANDSHAKE_FAILED = -358-End-->
@@ -2973,6 +3303,8 @@ ERR_HTTP2_INADEQUATE_TRANSPORT_SECURITY = -360
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2992,6 +3324,8 @@ ERR_HTTP2_FLOW_CONTROL_ERROR = -361
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_HTTP2_FLOW_CONTROL_ERROR = -361--><!--Device-WebNetErrorList-ERR_HTTP2_FLOW_CONTROL_ERROR = -361-End-->
@@ -3009,6 +3343,8 @@ ERR_HTTP2_FRAME_SIZE_ERROR = -362
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -3028,6 +3364,8 @@ ERR_HTTP2_COMPRESSION_ERROR = -363
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_HTTP2_COMPRESSION_ERROR = -363--><!--Device-WebNetErrorList-ERR_HTTP2_COMPRESSION_ERROR = -363-End-->
@@ -3046,6 +3384,8 @@ ERR_PROXY_AUTH_REQUESTED_WITH_NO_CONNECTION = -364
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_PROXY_AUTH_REQUESTED_WITH_NO_CONNECTION = -364--><!--Device-WebNetErrorList-ERR_PROXY_AUTH_REQUESTED_WITH_NO_CONNECTION = -364-End-->
@@ -3058,11 +3398,13 @@ ERR_PROXY_AUTH_REQUESTED_WITH_NO_CONNECTION = -364
 ERR_HTTP_1_1_REQUIRED = -365
 ```
 
-在 HTTP/2 会话中收到 HTTP\_1\_1\_REQUIRED 错误代码。
+在 HTTP/2 会话中收到 HTTP_1_1_REQUIRED 错误代码。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -3076,11 +3418,13 @@ ERR_HTTP_1_1_REQUIRED = -365
 ERR_PROXY_HTTP_1_1_REQUIRED = -366
 ```
 
-在通过 HTTP/2 会话代理时收到 HTTP\_1\_1\_REQUIRED 错误代码。
+在通过 HTTP/2 会话代理时收到 HTTP_1_1_REQUIRED 错误代码。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -3100,6 +3444,8 @@ PAC 脚本已终止并必须重新加载。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_PAC_SCRIPT_TERMINATED = -367--><!--Device-WebNetErrorList-ERR_PAC_SCRIPT_TERMINATED = -367-End-->
@@ -3117,6 +3463,8 @@ ERR_INVALID_HTTP_RESPONSE = -370
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -3136,6 +3484,8 @@ ERR_CONTENT_DECODING_INIT_FAILED = -371
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_CONTENT_DECODING_INIT_FAILED = -371--><!--Device-WebNetErrorList-ERR_CONTENT_DECODING_INIT_FAILED = -371-End-->
@@ -3148,11 +3498,13 @@ ERR_CONTENT_DECODING_INIT_FAILED = -371
 ERR_HTTP2_RST_STREAM_NO_ERROR_RECEIVED = -372
 ```
 
-收到带有 NO\_ERROR 错误代码的 HTTP/2 RST\_STREAM 帧。此错误应由 HTTP/2 代码内部处理，而不应超过 SpdyStream 层。
+收到带有 NO_ERROR 错误代码的 HTTP/2 RST_STREAM 帧。此错误应由 HTTP/2 代码内部处理，而不应超过 SpdyStream 层。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -3172,6 +3524,8 @@ ERR_HTTP2_PUSHED_STREAM_NOT_AVAILABLE = -373
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_HTTP2_PUSHED_STREAM_NOT_AVAILABLE = -373--><!--Device-WebNetErrorList-ERR_HTTP2_PUSHED_STREAM_NOT_AVAILABLE = -373-End-->
@@ -3189,6 +3543,8 @@ ERR_HTTP2_CLAIMED_PUSHED_STREAM_RESET_BY_SERVER = -374
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -3208,6 +3564,8 @@ ERR_TOO_MANY_RETRIES = -375
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_TOO_MANY_RETRIES = -375--><!--Device-WebNetErrorList-ERR_TOO_MANY_RETRIES = -375-End-->
@@ -3225,6 +3583,8 @@ ERR_HTTP2_STREAM_CLOSED = -376
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -3244,6 +3604,8 @@ ERR_HTTP2_CLIENT_REFUSED_STREAM = -377
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_HTTP2_CLIENT_REFUSED_STREAM = -377--><!--Device-WebNetErrorList-ERR_HTTP2_CLIENT_REFUSED_STREAM = -377-End-->
@@ -3261,6 +3623,8 @@ ERR_HTTP2_PUSHED_RESPONSE_DOES_NOT_MATCH = -378
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -3280,6 +3644,8 @@ ERR_HTTP_RESPONSE_CODE_FAILURE = -379
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_HTTP_RESPONSE_CODE_FAILURE = -379--><!--Device-WebNetErrorList-ERR_HTTP_RESPONSE_CODE_FAILURE = -379-End-->
@@ -3297,6 +3663,8 @@ ERR_QUIC_UNKNOWN_CERT_ROOT = -380
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -3316,6 +3684,8 @@ ERR_QUIC_GOAWAY_REQUEST_CAN_BE_RETRIED = -381
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_QUIC_GOAWAY_REQUEST_CAN_BE_RETRIED = -381--><!--Device-WebNetErrorList-ERR_QUIC_GOAWAY_REQUEST_CAN_BE_RETRIED = -381-End-->
@@ -3328,11 +3698,13 @@ ERR_QUIC_GOAWAY_REQUEST_CAN_BE_RETRIED = -381
 ERR_TOO_MANY_ACCEPT_CH_RESTARTS = -382
 ```
 
-ACCEPT\_CH 重启已被触发太多次。
+ACCEPT_CH 重启已被触发太多次。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -3352,6 +3724,8 @@ ERR_INCONSISTENT_IP_ADDRESS_SPACE = -383
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_INCONSISTENT_IP_ADDRESS_SPACE = -383--><!--Device-WebNetErrorList-ERR_INCONSISTENT_IP_ADDRESS_SPACE = -383-End-->
@@ -3369,6 +3743,8 @@ ERR_CACHED_IP_ADDRESS_SPACE_BLOCKED_BY_LOCAL_NETWORK_ACCESS_POLICY = -384
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -3388,6 +3764,8 @@ ERR_CACHE_MISS = -400
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_CACHE_MISS = -400--><!--Device-WebNetErrorList-ERR_CACHE_MISS = -400-End-->
@@ -3405,6 +3783,8 @@ ERR_CACHE_READ_FAILURE = -401
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -3424,6 +3804,8 @@ ERR_CACHE_WRITE_FAILURE = -402
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_CACHE_WRITE_FAILURE = -402--><!--Device-WebNetErrorList-ERR_CACHE_WRITE_FAILURE = -402-End-->
@@ -3441,6 +3823,8 @@ ERR_CACHE_OPERATION_UNSUPPORTED = -403
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -3460,6 +3844,8 @@ ERR_CACHE_OPEN_FAILURE = -404
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_CACHE_OPEN_FAILURE = -404--><!--Device-WebNetErrorList-ERR_CACHE_OPEN_FAILURE = -404-End-->
@@ -3477,6 +3863,8 @@ ERR_CACHE_CREATE_FAILURE = -405
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -3496,6 +3884,8 @@ ERR_CACHE_RACE = -406
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_CACHE_RACE = -406--><!--Device-WebNetErrorList-ERR_CACHE_RACE = -406-End-->
@@ -3513,6 +3903,8 @@ ERR_CACHE_CHECKSUM_READ_FAILURE = -407
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -3532,6 +3924,8 @@ ERR_CACHE_CHECKSUM_MISMATCH = -408
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_CACHE_CHECKSUM_MISMATCH = -408--><!--Device-WebNetErrorList-ERR_CACHE_CHECKSUM_MISMATCH = -408-End-->
@@ -3549,6 +3943,8 @@ HTTP缓存的内部错误代码。
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -3568,6 +3964,8 @@ ERR_CACHE_AUTH_FAILURE_AFTER_READ = -410
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_CACHE_AUTH_FAILURE_AFTER_READ = -410--><!--Device-WebNetErrorList-ERR_CACHE_AUTH_FAILURE_AFTER_READ = -410-End-->
@@ -3585,6 +3983,8 @@ HTTP缓存的内部不完全错误代码。
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -3604,6 +4004,8 @@ ERR_CACHE_DOOM_FAILURE = -412
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_CACHE_DOOM_FAILURE = -412--><!--Device-WebNetErrorList-ERR_CACHE_DOOM_FAILURE = -412-End-->
@@ -3621,6 +4023,8 @@ ERR_CACHE_OPEN_OR_CREATE_FAILURE = -413
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -3640,6 +4044,8 @@ ERR_INSECURE_RESPONSE = -501
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_INSECURE_RESPONSE = -501--><!--Device-WebNetErrorList-ERR_INSECURE_RESPONSE = -501-End-->
@@ -3657,6 +4063,8 @@ ERR_NO_PRIVATE_KEY_FOR_CERT = -502
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -3676,6 +4084,8 @@ ERR_ADD_USER_CERT_FAILED = -503
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_ADD_USER_CERT_FAILED = -503--><!--Device-WebNetErrorList-ERR_ADD_USER_CERT_FAILED = -503-End-->
@@ -3693,6 +4103,8 @@ ERR_INVALID_SIGNED_EXCHANGE = -504
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -3712,6 +4124,8 @@ ERR_INVALID_WEB_BUNDLE = -505
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_INVALID_WEB_BUNDLE = -505--><!--Device-WebNetErrorList-ERR_INVALID_WEB_BUNDLE = -505-End-->
@@ -3729,6 +4143,8 @@ ERR_TRUST_TOKEN_OPERATION_FAILED = -506
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -3748,6 +4164,8 @@ ERR_TRUST_TOKEN_OPERATION_SUCCESS_WITHOUT_SENDING_REQUEST = -507
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_TRUST_TOKEN_OPERATION_SUCCESS_WITHOUT_SENDING_REQUEST = -507--><!--Device-WebNetErrorList-ERR_TRUST_TOKEN_OPERATION_SUCCESS_WITHOUT_SENDING_REQUEST = -507-End-->
@@ -3765,6 +4183,8 @@ FTP控制连接命令失败的通用错误。
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -3784,6 +4204,8 @@ ERR_FTP_SERVICE_UNAVAILABLE = -602
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_FTP_SERVICE_UNAVAILABLE = -602--><!--Device-WebNetErrorList-ERR_FTP_SERVICE_UNAVAILABLE = -602-End-->
@@ -3801,6 +4223,8 @@ ERR_FTP_TRANSFER_ABORTED = -603
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -3820,6 +4244,8 @@ ERR_FTP_FILE_BUSY = -604
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_FTP_FILE_BUSY = -604--><!--Device-WebNetErrorList-ERR_FTP_FILE_BUSY = -604-End-->
@@ -3837,6 +4263,8 @@ ERR_FTP_SYNTAX_ERROR = -605
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -3856,6 +4284,8 @@ ERR_FTP_COMMAND_UNSUPPORTED = -606
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_FTP_COMMAND_UNSUPPORTED = -606--><!--Device-WebNetErrorList-ERR_FTP_COMMAND_UNSUPPORTED = -606-End-->
@@ -3873,6 +4303,8 @@ ERR_FTP_BAD_COMMAND_SEQUENCE = -607
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -3892,6 +4324,8 @@ ERR_PKCS12_IMPORT_BAD_PASSWORD = -701
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_PKCS12_IMPORT_BAD_PASSWORD = -701--><!--Device-WebNetErrorList-ERR_PKCS12_IMPORT_BAD_PASSWORD = -701-End-->
@@ -3909,6 +4343,8 @@ ERR_PKCS12_IMPORT_FAILED = -702
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -3928,6 +4364,8 @@ CA导入失败-不是CA证书。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_IMPORT_CA_CERT_NOT_CA = -703--><!--Device-WebNetErrorList-ERR_IMPORT_CA_CERT_NOT_CA = -703-End-->
@@ -3945,6 +4383,8 @@ ERR_IMPORT_CERT_ALREADY_EXISTS = -704
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -3964,6 +4404,8 @@ ERR_IMPORT_CA_CERT_FAILED = -705
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_IMPORT_CA_CERT_FAILED = -705--><!--Device-WebNetErrorList-ERR_IMPORT_CA_CERT_FAILED = -705-End-->
@@ -3981,6 +4423,8 @@ ERR_IMPORT_SERVER_CERT_FAILED = -706
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -4000,6 +4444,8 @@ PKCS #12 导入失败，因为 MAC（消息认证码）无效。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_PKCS12_IMPORT_INVALID_MAC = -707--><!--Device-WebNetErrorList-ERR_PKCS12_IMPORT_INVALID_MAC = -707-End-->
@@ -4017,6 +4463,8 @@ PKCS #12 导入失败，因为文件无效或已损坏。
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -4036,6 +4484,8 @@ ERR_PKCS12_IMPORT_UNSUPPORTED = -709
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_PKCS12_IMPORT_UNSUPPORTED = -709--><!--Device-WebNetErrorList-ERR_PKCS12_IMPORT_UNSUPPORTED = -709-End-->
@@ -4053,6 +4503,8 @@ ERR_KEY_GENERATION_FAILED = -710
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -4072,6 +4524,8 @@ ERR_PRIVATE_KEY_EXPORT_FAILED = -712
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_PRIVATE_KEY_EXPORT_FAILED = -712--><!--Device-WebNetErrorList-ERR_PRIVATE_KEY_EXPORT_FAILED = -712-End-->
@@ -4089,6 +4543,8 @@ ERR_SELF_SIGNED_CERT_GENERATION_FAILED = -713
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -4108,6 +4564,8 @@ ERR_CERT_DATABASE_CHANGED = -714
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_CERT_DATABASE_CHANGED = -714--><!--Device-WebNetErrorList-ERR_CERT_DATABASE_CHANGED = -714-End-->
@@ -4125,6 +4583,8 @@ ERR_CERT_VERIFIER_CHANGED = -716
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -4144,6 +4604,8 @@ DNS解析程序收到格式错误的响应。
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_DNS_MALFORMED_RESPONSE = -800--><!--Device-WebNetErrorList-ERR_DNS_MALFORMED_RESPONSE = -800-End-->
@@ -4161,6 +4623,8 @@ DNS服务器需要TCP。
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -4180,6 +4644,8 @@ DNS服务器失败。对于以下所有错误情况，都会返回此错误。 1
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_DNS_SERVER_FAILED = -802--><!--Device-WebNetErrorList-ERR_DNS_SERVER_FAILED = -802-End-->
@@ -4197,6 +4663,8 @@ DNS事务超时。
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -4216,6 +4684,8 @@ ERR_DNS_CACHE_MISS = -804
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_DNS_CACHE_MISS = -804--><!--Device-WebNetErrorList-ERR_DNS_CACHE_MISS = -804-End-->
@@ -4233,6 +4703,8 @@ ERR_DNS_SEARCH_EMPTY = -805
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -4252,6 +4724,8 @@ ERR_DNS_SORT_ERROR = -806
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_DNS_SORT_ERROR = -806--><!--Device-WebNetErrorList-ERR_DNS_SORT_ERROR = -806-End-->
@@ -4270,6 +4744,8 @@ ERR_DNS_SECURE_RESOLVER_HOSTNAME_RESOLUTION_FAILED = -808
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_DNS_SECURE_RESOLVER_HOSTNAME_RESOLUTION_FAILED = -808--><!--Device-WebNetErrorList-ERR_DNS_SECURE_RESOLVER_HOSTNAME_RESOLUTION_FAILED = -808-End-->
@@ -4282,11 +4758,13 @@ ERR_DNS_SECURE_RESOLVER_HOSTNAME_RESOLUTION_FAILED = -808
 ERR_DNS_NAME_HTTPS_ONLY = -809
 ```
 
-DNS已识别请求因不安全的连接（http/ws）而被禁止。应用程序应该像处理HTTP重定向一样处理这个错误，将连接重定向到 安全的https或wss。
+DNS已识别请求因不安全的连接（HTTP/WS）而被禁止。应用程序应该像处理HTTP重定向一样处理这个错误，将连接重定向到安全的HTTPS或WSS。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -4306,6 +4784,8 @@ ERR_DNS_REQUEST_CANCELED = -810
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebNetErrorList-ERR_DNS_REQUEST_CANCELED = -810--><!--Device-WebNetErrorList-ERR_DNS_REQUEST_CANCELED = -810-End-->
@@ -4318,11 +4798,13 @@ ERR_DNS_REQUEST_CANCELED = -810
 ERR_DNS_NO_MATCHING_SUPPORTED_ALPN = -811
 ```
 
-HTTPS记录的主机名解析预期未能使用受支持协议的ALPN值进行解析。
+HTTPS记录的主机名解析未能使用受支持协议的ALPN值进行解析。
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

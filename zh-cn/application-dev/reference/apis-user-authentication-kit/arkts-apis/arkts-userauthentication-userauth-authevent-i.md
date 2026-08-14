@@ -8,7 +8,7 @@
 
 **废弃版本：** 11
 
-**替代接口：** [userAuth.IAuthCallback](arkts-userauthentication-userauth-iauthcallback-i.md)
+**替代接口：** [IAuthCallback](arkts-userauthentication-userauth-iauthcallback-i.md#IAuthCallback)
 
 <!--Device-userAuth-interface AuthEvent--><!--Device-userAuth-interface AuthEvent-End-->
 
@@ -28,7 +28,7 @@ callback(result: EventInfo): void
 
 **废弃版本：** 11
 
-**替代接口：** [userAuth.IAuthCallback.onResult](arkts-userauthentication-userauth-iauthcallback-i.md#onresult)(result:
+**替代接口：** [onResult](arkts-userauthentication-userauth-iauthcallback-i.md#onResult)(result: UserAuthResult)
 
 <!--Device-AuthEvent-callback(result: EventInfo): void--><!--Device-AuthEvent-callback(result: EventInfo): void-End-->
 
@@ -38,9 +38,9 @@ callback(result: EventInfo): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| result | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 返回的认证结果信息或提示信息。 |
+| result | EventInfo | 是 | 返回的认证结果信息或提示信息。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { userAuth } from '@kit.UserAuthenticationKit';

@@ -10,7 +10,9 @@ function getSystemDataSize(): Promise<long>
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.STORAGE_MANAGER
 
@@ -26,7 +28,7 @@ function getSystemDataSize(): Promise<long>
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: Promise&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：Promise&lt;long&gt; | Promise对象，返回系统数据的总空间大小，单位：Byte。 |
+| Promise&lt;long&gt; | Promise对象，返回系统数据的总空间大小，单位：Byte。 |
 
 **错误码：**
 
@@ -34,10 +36,10 @@ function getSystemDataSize(): Promise<long>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
-| 13600001 | IPC error. |
 | 13600018 | Failed to query the system data size. |
+| 13600001 | IPC error. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

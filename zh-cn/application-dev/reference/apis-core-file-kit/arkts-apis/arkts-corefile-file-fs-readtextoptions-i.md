@@ -1,14 +1,16 @@
 # ReadTextOptions
 
-可选项类型，支持readText接口使用，ReadTextOptions继承自[ReadOptions]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+可选项类型，支持readText接口使用，ReadTextOptions继承至[ReadOptions](arkts-corefile-file-fs-readoptions-i.md#ReadOptions)。
 
-**继承/实现关系：** ReadTextOptions extends [ReadOptions](arkts-corefile-file-fs-readoptions-i.md)
+**继承/实现关系：** ReadTextOptions extends [ReadOptions](arkts-corefile-file-fs-readoptions-i.md#ReadOptions)
 
-**起始版本：** 23
+**起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
-<!--Device-unnamed-export interface ReadTextOptions extends ReadOptions--><!--Device-unnamed-export interface ReadTextOptions extends ReadOptions-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-export interface ReadTextOptions--><!--Device-unnamed-export interface ReadTextOptions-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -22,9 +24,13 @@ encoding?: string
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ReadTextOptions-encoding?: string--><!--Device-ReadTextOptions-encoding?: string-End-->
 

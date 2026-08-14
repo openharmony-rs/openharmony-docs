@@ -6,13 +6,15 @@ type DelayedDataLoadHandler = (acceptableInfo?: DataLoadInfo) => Promise<Unified
 
 用于延迟加载数据的处理函数。支持数据发送方根据接收方传入的信息，动态生成数据，实现更灵活、精准的数据交互策略。 该处理函数为异步函数，返回Promise对象，不阻塞主线程，可处理复杂业务逻辑、执行长耗时任务。
 
-**起始版本：** 22
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为22；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-unifiedDataChannel-type DelayedDataLoadHandler = (acceptableInfo?: DataLoadInfo) => Promise<UnifiedData | null>--><!--Device-unifiedDataChannel-type DelayedDataLoadHandler = (acceptableInfo?: DataLoadInfo) => Promise<UnifiedData | null>-End-->
 
@@ -22,7 +24,7 @@ type DelayedDataLoadHandler = (acceptableInfo?: DataLoadInfo) => Promise<Unified
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| acceptableInfo | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 表示数据接收方可以接收的数据类型和数量，默认为空。  |
+| acceptableInfo | [DataLoadInfo](arkts-arkdata-unifieddatachannel-dataloadinfo-i.md) | 否 | 表示数据接收方可以接收的数据类型和数量，默认为空。 |
 
 **返回值：**
 

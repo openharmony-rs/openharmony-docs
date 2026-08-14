@@ -8,9 +8,11 @@ function isActive(): boolean
 
 检测当前设备是否处于活动状态。 - 有屏的设备亮屏时为活动状态，熄屏时为非活动状态。 - 无屏的设备非休眠时为活动状态，休眠时为非活动状态。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-power-function isActive(): boolean--><!--Device-power-function isActive(): boolean-End-->
 
@@ -22,7 +24,7 @@ function isActive(): boolean
 | --- | --- |
 | boolean | 活动状态返回true，非活动状态返回false。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let isActive = power.isActive();

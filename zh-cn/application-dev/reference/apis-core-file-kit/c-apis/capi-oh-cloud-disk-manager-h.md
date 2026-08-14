@@ -26,6 +26,7 @@
 | [CloudDisk_ResultList](capi-clouddisk-clouddisk-resultlist.md) | CloudDisk_ResultList | 表示一个文件同步操作的结果。该结构体包含文件的绝对路径、同步结果，以及同步状态或失败原因。 |
 | [CloudDisk_DisplayNameInfo](capi-clouddisk-clouddisk-displaynameinfo.md) | CloudDisk_DisplayNameInfo | 定义同步根路径的显示名称信息。 |
 | [CloudDisk_SyncFolder](capi-clouddisk-clouddisk-syncfolder.md) | CloudDisk_SyncFolder | 同步根属性信息。 |
+| [OH_CloudDisk_PlaceholderInfo](capi-clouddisk-oh-clouddisk-placeholderinfo.md) | OH_CloudDisk_PlaceholderInfo | 占位符文件的元数据信息。 |
 
 ### 枚举
 
@@ -51,6 +52,10 @@
 | [CloudDisk_ErrorCode OH_CloudDisk_DeactiveSyncFolder(const CloudDisk_SyncFolderPath syncFolderPath)](#oh_clouddisk_deactivesyncfolder) | 应用取消激活同步根。 |
 | [CloudDisk_ErrorCode OH_CloudDisk_GetSyncFolders(CloudDisk_SyncFolder **syncFolders, size_t *count)](#oh_clouddisk_getsyncfolders) | 应用获取所有同步根。 |
 | [CloudDisk_ErrorCode OH_CloudDisk_UpdateCustomAlias(const CloudDisk_SyncFolderPath syncFolderPath, const char *customAlias, size_t customAliasLength)](#oh_clouddisk_updatecustomalias) | 应用更新同步根别名。 |
+| [CloudDisk_ErrorCode OH_CloudDisk_CreatePlaceholder(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_PathInfo relativePathInfo, const OH_CloudDisk_PlaceholderInfo placeholderInfo)](#oh_clouddisk_createplaceholder) | 在已注册的同步文件夹中创建占位符。 |
+| [CloudDisk_ErrorCode OH_CloudDisk_IsPlaceholderFile(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_PathInfo relativePathInfo, bool *isPlaceholder)](#oh_clouddisk_isplaceholderfile) | 检查同步根中的文件是否为占位符文件。 |
+| [CloudDisk_ErrorCode OH_CloudDisk_ConvertPlaceholderToFile(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_PathInfo relativePathInfo)](#oh_clouddisk_convertplaceholdertofile) | 将占位符文件转换为0字节普通文件。 |
+| [CloudDisk_ErrorCode OH_CloudDisk_UpdatePlaceholder(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_PathInfo relativePathInfo, const OH_CloudDisk_PlaceholderInfo placeholderInfo)](#oh_clouddisk_updateplaceholder) | 更新文件元数据（支持占位符和普通文件）。 |
 
 ## 枚举类型说明
 
@@ -95,6 +100,7 @@ enum CloudDisk_OperationType
 | MOVE_TO = 3 | 移动到此文件或目录。<br>**起始版本：** 21 |
 | CLOSE_WRITE = 4 | 在写入操作后关闭文件。<br>**起始版本：** 21 |
 | SYNC_FOLDER_INVALID = 5 | 同步根路径无效。<br>**起始版本：** 21 |
+| OH_CLOUD_DISK_CLOSE_MODIFY = 6 | 修改内容后关闭文件。<br>**起始版本：** 26.1.0 |
 
 ### CloudDisk_ErrorReason
 
@@ -159,7 +165,7 @@ CloudDisk_ErrorCode OH_CloudDisk_RegisterSyncFolderChanges(const CloudDisk_SyncF
 
 | 类型 | 说明 |
 | -- | -- |
-| CloudDisk_ErrorCode | 如果接口调用成功，返回{@link CLOUD_DISK_OK}；否则返回云盘管理模块的错误码{@link CloudDisk_ErrorCode}。 |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | 如果接口调用成功，返回[CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)；否则返回云盘管理模块的错误码[CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)。 |
 
 ### OH_CloudDisk_UnregisterSyncFolderChanges()
 
@@ -183,7 +189,7 @@ CloudDisk_ErrorCode OH_CloudDisk_UnregisterSyncFolderChanges(const CloudDisk_Syn
 
 | 类型 | 说明 |
 | -- | -- |
-| CloudDisk_ErrorCode | 如果接口调用成功，返回{@link CLOUD_DISK_OK}；否则返回云盘管理模块的错误码{@link CloudDisk_ErrorCode}。 |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | 如果接口调用成功，返回[CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)；否则返回云盘管理模块的错误码[CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)。 |
 
 ### OH_CloudDisk_GetSyncFolderChanges()
 
@@ -210,7 +216,7 @@ CloudDisk_ErrorCode OH_CloudDisk_GetSyncFolderChanges(const CloudDisk_SyncFolder
 
 | 类型 | 说明 |
 | -- | -- |
-| CloudDisk_ErrorCode | 如果接口调用成功，返回{@link CLOUD_DISK_OK}；否则返回云盘管理模块的错误码{@link CloudDisk_ErrorCode}。 |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | 如果接口调用成功，返回[CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)；否则返回云盘管理模块的错误码[CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)。 |
 
 ### OH_CloudDisk_SetFileSyncStates()
 
@@ -238,7 +244,7 @@ CloudDisk_ErrorCode OH_CloudDisk_SetFileSyncStates(const CloudDisk_SyncFolderPat
 
 | 类型 | 说明 |
 | -- | -- |
-| CloudDisk_ErrorCode | 如果接口调用成功，返回{@link CLOUD_DISK_OK}；否则返回云盘管理模块的错误码{@link CloudDisk_ErrorCode}。 |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | 如果接口调用成功，返回[CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)；否则返回云盘管理模块的错误码[CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)。 |
 
 ### OH_CloudDisk_GetFileSyncStates()
 
@@ -266,7 +272,7 @@ CloudDisk_ErrorCode OH_CloudDisk_GetFileSyncStates(const CloudDisk_SyncFolderPat
 
 | 类型 | 说明 |
 | -- | -- |
-| CloudDisk_ErrorCode | 如果接口调用成功，返回{@link CLOUD_DISK_OK}；否则返回云盘管理模块的错误码{@link CloudDisk_ErrorCode}。 |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | 如果接口调用成功，返回[CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)；否则返回云盘管理模块的错误码[CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)。 |
 
 ### OH_CloudDisk_RegisterSyncFolder()
 
@@ -290,7 +296,7 @@ CloudDisk_ErrorCode OH_CloudDisk_RegisterSyncFolder(const CloudDisk_SyncFolder *
 
 | 类型 | 说明 |
 | -- | -- |
-| CloudDisk_ErrorCode | 如果接口调用成功，返回{@link CLOUD_DISK_OK}；否则返回云盘管理模块的错误码{@link CloudDisk_ErrorCode}。 |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | 如果接口调用成功，返回[CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)；否则返回云盘管理模块的错误码[CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)。 |
 
 ### OH_CloudDisk_UnregisterSyncFolder()
 
@@ -314,7 +320,7 @@ CloudDisk_ErrorCode OH_CloudDisk_UnregisterSyncFolder(const CloudDisk_SyncFolder
 
 | 类型 | 说明 |
 | -- | -- |
-| CloudDisk_ErrorCode | 如果接口调用成功，返回{@link CLOUD_DISK_OK}；否则返回云盘管理模块的错误码{@link CloudDisk_ErrorCode}。 |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | 如果接口调用成功，返回[CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)；否则返回云盘管理模块的错误码[CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)。 |
 
 ### OH_CloudDisk_ActiveSyncFolder()
 
@@ -338,7 +344,7 @@ CloudDisk_ErrorCode OH_CloudDisk_ActiveSyncFolder(const CloudDisk_SyncFolderPath
 
 | 类型 | 说明 |
 | -- | -- |
-| CloudDisk_ErrorCode | 如果接口调用成功，返回{@link CLOUD_DISK_OK}；否则返回云盘管理模块的错误码{@link CloudDisk_ErrorCode}。 |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | 如果接口调用成功，返回[CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)；否则返回云盘管理模块的错误码[CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)。 |
 
 ### OH_CloudDisk_DeactiveSyncFolder()
 
@@ -362,7 +368,7 @@ CloudDisk_ErrorCode OH_CloudDisk_DeactiveSyncFolder(const CloudDisk_SyncFolderPa
 
 | 类型 | 说明 |
 | -- | -- |
-| CloudDisk_ErrorCode | 如果接口调用成功，返回{@link CLOUD_DISK_OK}；否则返回云盘管理模块的错误码{@link CloudDisk_ErrorCode}。 |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | 如果接口调用成功，返回[CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)；否则返回云盘管理模块的错误码[CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)。 |
 
 ### OH_CloudDisk_GetSyncFolders()
 
@@ -387,7 +393,7 @@ CloudDisk_ErrorCode OH_CloudDisk_GetSyncFolders(CloudDisk_SyncFolder **syncFolde
 
 | 类型 | 说明 |
 | -- | -- |
-| CloudDisk_ErrorCode | 如果接口调用成功，返回{@link CLOUD_DISK_OK}；否则返回云盘管理模块的错误码{@link CloudDisk_ErrorCode}。 |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | 如果接口调用成功，返回[CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)；否则返回云盘管理模块的错误码[CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)。 |
 
 ### OH_CloudDisk_UpdateCustomAlias()
 
@@ -413,6 +419,109 @@ CloudDisk_ErrorCode OH_CloudDisk_UpdateCustomAlias(const CloudDisk_SyncFolderPat
 
 | 类型 | 说明 |
 | -- | -- |
-| CloudDisk_ErrorCode | 如果接口调用成功，返回{@link CLOUD_DISK_OK}；否则返回云盘管理模块的错误码{@link CloudDisk_ErrorCode}。 |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | 如果接口调用成功，返回[CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)；否则返回云盘管理模块的错误码[CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)。 |
+
+### OH_CloudDisk_CreatePlaceholder()
+
+```c
+CloudDisk_ErrorCode OH_CloudDisk_CreatePlaceholder(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_PathInfo relativePathInfo, const OH_CloudDisk_PlaceholderInfo placeholderInfo)
+```
+
+**描述**
+
+在已注册的同步文件夹中创建占位符。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const CloudDisk_SyncFolderPath syncFolderPath | 已注册同步根路径。 |
+| [const CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) relativePathInfo | 同步根内相对路径。 |
+| [const OH_CloudDisk_PlaceholderInfo](capi-clouddisk-oh-clouddisk-placeholderinfo.md) placeholderInfo | 占位符文件元数据信息。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | 如果接口调用成功，则返回[CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)；<br> <br>否则返回[CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)。 |
+
+### OH_CloudDisk_IsPlaceholderFile()
+
+```c
+CloudDisk_ErrorCode OH_CloudDisk_IsPlaceholderFile(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_PathInfo relativePathInfo, bool *isPlaceholder)
+```
+
+**描述**
+
+检查同步根中的文件是否为占位符文件。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const CloudDisk_SyncFolderPath syncFolderPath | 已注册同步根路径。 |
+| [const CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) relativePathInfo | 同步根内相对路径。 |
+| bool *isPlaceholder | 输出参数。仅当返回值为[CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)时有效。如果文件是占位符文件，则返回true；否则返回false。错误时设置为false。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | 如果接口调用成功，则返回[CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)；<br> <br>否则返回[CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)。 |
+
+### OH_CloudDisk_ConvertPlaceholderToFile()
+
+```c
+CloudDisk_ErrorCode OH_CloudDisk_ConvertPlaceholderToFile(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_PathInfo relativePathInfo)
+```
+
+**描述**
+
+将占位符文件转换为0字节普通文件。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const CloudDisk_SyncFolderPath syncFolderPath | 已注册同步根路径。 |
+| [const CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) relativePathInfo | 同步根内相对路径。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | 如果接口调用成功，则返回[CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)；<br> <br>否则返回[CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)。 |
+
+### OH_CloudDisk_UpdatePlaceholder()
+
+```c
+CloudDisk_ErrorCode OH_CloudDisk_UpdatePlaceholder(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_PathInfo relativePathInfo, const OH_CloudDisk_PlaceholderInfo placeholderInfo)
+```
+
+**描述**
+
+更新文件元数据（支持占位符和普通文件）。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const CloudDisk_SyncFolderPath syncFolderPath | 已注册同步根路径。 |
+| [const CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) relativePathInfo | 同步根内相对路径。 |
+| [const OH_CloudDisk_PlaceholderInfo](capi-clouddisk-oh-clouddisk-placeholderinfo.md) placeholderInfo | 占位符文件元数据信息。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | 如果接口调用成功，则返回[CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)；<br> <br>否则返回[CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)。 |
 
 

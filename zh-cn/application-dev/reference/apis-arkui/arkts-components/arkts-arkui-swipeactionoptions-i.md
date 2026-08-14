@@ -6,6 +6,8 @@ start和end对应的@builder函数中顶层必须是单个组件（如果顶层�
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface SwipeActionOptions--><!--Device-unnamed-declare interface SwipeActionOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -18,11 +20,13 @@ edgeEffect?: SwipeEdgeEffect
 
 滑动效果。
 
-**类型：** SwipeEdgeEffect
+**类型：** [SwipeEdgeEffect](arkts-arkui-swipeedgeeffect-e.md)
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -38,11 +42,13 @@ end?: CustomBuilder | SwipeActionItem
 
 ListItem向左划动时item右边的组件（List垂直布局时）或ListItem向上划动时item下方的组件（List水平布局时）。
 
-**类型：** CustomBuilder \| SwipeActionItem
+**类型：** CustomBuilder \| [SwipeActionItem](arkts-arkui-swipeactionitem-i.md)
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -64,6 +70,8 @@ onOffsetChange?: (offset: number) => void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -80,11 +88,13 @@ start?: CustomBuilder | SwipeActionItem
 
 ListItem向右划动时item左边的组件（List垂直布局时）或ListItem向下划动时item上方的组件（List水平布局时）。
 
-**类型：** CustomBuilder \| SwipeActionItem
+**类型：** CustomBuilder \| [SwipeActionItem](arkts-arkui-swipeactionitem-i.md)
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

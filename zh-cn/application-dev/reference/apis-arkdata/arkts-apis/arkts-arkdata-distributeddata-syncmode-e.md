@@ -8,7 +8,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** ohos.data.distributedKVStore.SyncMode
+**替代接口：** SyncMode
 
 <!--Device-distributedData-enum SyncMode--><!--Device-distributedData-enum SyncMode-End-->
 
@@ -28,7 +28,7 @@ PULL_ONLY = 0
 
 **废弃版本：** 9
 
-**替代接口：** ohos.data.distributedKVStore.SyncMode#PULL_ONLY
+**替代接口：** PULL_ONLY
 
 <!--Device-SyncMode-PULL_ONLY = 0--><!--Device-SyncMode-PULL_ONLY = 0-End-->
 
@@ -48,7 +48,7 @@ PUSH_ONLY = 1
 
 **废弃版本：** 9
 
-**替代接口：** ohos.data.distributedKVStore.SyncMode#PUSH_ONLY
+**替代接口：** PUSH_ONLY
 
 <!--Device-SyncMode-PUSH_ONLY = 1--><!--Device-SyncMode-PUSH_ONLY = 1-End-->
 
@@ -68,7 +68,7 @@ PUSH_PULL = 2
 
 **废弃版本：** 9
 
-**替代接口：** ohos.data.distributedKVStore.SyncMode#PUSH_PULL
+**替代接口：** PUSH_PULL
 
 <!--Device-SyncMode-PUSH_PULL = 2--><!--Device-SyncMode-PUSH_PULL = 2-End-->
 

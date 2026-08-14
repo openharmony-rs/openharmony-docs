@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 <!--Device-calendarManager-export enum AttendeeStatus--><!--Device-calendarManager-export enum AttendeeStatus-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
@@ -21,6 +23,8 @@ UNKNOWN = 0
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -40,6 +44,8 @@ TENTATIVE = 1
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AttendeeStatus-TENTATIVE = 1--><!--Device-AttendeeStatus-TENTATIVE = 1-End-->
@@ -57,6 +63,8 @@ ACCEPTED = 2
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -76,6 +84,8 @@ DECLINED = 3
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AttendeeStatus-DECLINED = 3--><!--Device-AttendeeStatus-DECLINED = 3-End-->
@@ -93,6 +103,8 @@ UNRESPONSIVE = 4
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 

@@ -2,9 +2,11 @@
 
 Provides the media AVScreenCaptureStrategy definition.
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-interface AVScreenCaptureStrategy--><!--Device-unnamed-interface AVScreenCaptureStrategy-End-->
 
@@ -22,9 +24,11 @@ Defines whether to enable device-level content recording
 
 **默认值：** false
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AVScreenCaptureStrategy-enableDeviceLevelCapture?: boolean--><!--Device-AVScreenCaptureStrategy-enableDeviceLevelCapture?: boolean-End-->
 

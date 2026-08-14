@@ -14,7 +14,7 @@ function getAuthInstance(challenge: Uint8Array, authType: UserAuthType, authTrus
 
 **废弃版本：** 10
 
-**替代接口：** [userAuth.getUserAuthInstance](arkts-userauthentication-userauth-getuserauthinstance-f.md#getuserauthinstance)
+**替代接口：** [getUserAuthInstance](arkts-userauthentication-userauth-getuserauthinstance-f.md#getUserAuthInstance)
 
 <!--Device-userAuth-function getAuthInstance(challenge: Uint8Array, authType: UserAuthType, authTrustLevel: AuthTrustLevel): AuthInstance--><!--Device-userAuth-function getAuthInstance(challenge: Uint8Array, authType: UserAuthType, authTrustLevel: AuthTrustLevel): AuthInstance-End-->
 
@@ -25,25 +25,25 @@ function getAuthInstance(challenge: Uint8Array, authType: UserAuthType, authTrus
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | challenge | Uint8Array | 是 | 挑战值，最大长度为32字节，可以传Uint8Array([])。 |
-| authType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 认证类型，当前支持FACE和FINGERPRINT。 |
-| authTrustLevel | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 认证信任等级。 |
+| authType | [UserAuthType](arkts-userauthentication-userauth-userauthtype-e.md) | 是 | 认证类型，当前支持FACE和FINGERPRINT。 |
+| authTrustLevel | AuthTrustLevel | 是 | 认证信任等级。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 认证器对象。 |
+| [AuthInstance](arkts-userauthentication-userauth-authinstance-i.md) | 认证器对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. |
-| [12500002](../errorcode-useriam.md#12500002-身份认证系统通用错误码) | General operation error. |
-| [12500005](../errorcode-useriam.md#12500005-认证类型不支持) | The authentication type is not supported. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
 | [12500006](../errorcode-useriam.md#12500006-认证信任等级不支持) | The authentication trust level is not supported. |
+| [12500005](../errorcode-useriam.md#12500005-认证类型不支持) | The authentication type is not supported. |
+| [12500002](../errorcode-useriam.md#12500002-身份认证系统通用错误码) | General operation error. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { userAuth } from '@kit.UserAuthenticationKit';

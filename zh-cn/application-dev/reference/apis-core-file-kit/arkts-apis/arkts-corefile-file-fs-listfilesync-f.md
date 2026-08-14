@@ -15,6 +15,8 @@ declare function listFileSync(
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-unnamed-declare function listFileSync(  path: string,  options?: ListFileOptions): string[]--><!--Device-unnamed-declare function listFileSync(  path: string,  options?: ListFileOptions): string[]-End-->
@@ -26,7 +28,7 @@ declare function listFileSync(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 目录的应用沙箱路径。 |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 文件过滤选项。默认不进行过滤。\_\_\_HTML\_TAG\_USD\_0\_\_\_**起始版本：** 11 |
+| options | [ListFileOptions](arkts-corefile-file-fs-listfileoptions-i.md) | 否 | 文件过滤选项。默认不进行过滤。<br>**起始版本：** 11 |
 
 **返回值：**
 
@@ -39,8 +41,8 @@ declare function listFileSync(
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900002 | No such file or directory |
-| 13900008 | Bad file descriptor |
-| 13900011 | Out of memory |
 | 13900018 | Not a directory |
+| 13900008 | Bad file descriptor |
 | 13900042 | Unknown error |
+| 13900011 | Out of memory |
 

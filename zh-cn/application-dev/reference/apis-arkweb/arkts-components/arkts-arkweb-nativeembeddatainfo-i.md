@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface NativeEmbedDataInfo--><!--Device-unnamed-declare interface NativeEmbedDataInfo-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -24,6 +26,8 @@ embedId?: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-NativeEmbedDataInfo-embedId?: string--><!--Device-NativeEmbedDataInfo-embedId?: string-End-->
@@ -38,11 +42,13 @@ info?: NativeEmbedInfo
 
 同层标签的详细信息。
 
-**类型：** NativeEmbedInfo
+**类型：** [NativeEmbedInfo](arkts-arkweb-nativeembedinfo-i.md)
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -58,11 +64,13 @@ status?: NativeEmbedStatus
 
 同层标签生命周期状态。
 
-**类型：** NativeEmbedStatus
+**类型：** [NativeEmbedStatus](arkts-arkweb-nativeembedstatus-e.md)
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -83,6 +91,8 @@ NativeImage的psurfaceid。
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

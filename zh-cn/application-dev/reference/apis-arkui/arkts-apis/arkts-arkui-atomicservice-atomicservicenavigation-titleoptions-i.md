@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-export interface TitleOptions--><!--Device-unnamed-export interface TitleOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -16,13 +18,15 @@
 backgroundColor?: ResourceColor
 ```
 
-Background color.
+标题栏背景颜色。
 
 **类型：** ResourceColor
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -36,7 +40,7 @@ Background color.
 barStyle?: BarStyle
 ```
 
-Set title bar style.
+设置标题栏样式。
 
 **类型：** BarStyle
 
@@ -45,6 +49,8 @@ Set title bar style.
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -58,7 +64,7 @@ Set title bar style.
 isBlurEnabled?: boolean
 ```
 
-Whether to enable the blur effect.
+标题栏是否模糊。
 
 **类型：** boolean
 
@@ -67,6 +73,8 @@ Whether to enable the blur effect.
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -80,15 +88,17 @@ Whether to enable the blur effect.
 titleBarType?: TitleBarType
 ```
 
-Set title bar type.
+设置标题栏类型。
 
-**类型：** TitleBarType
+**类型：** [TitleBarType](arkts-arkui-atomicservice-atomicservicenavigation-titlebartype-e.md)
 
 **默认值：** TitleBarType.ROUND_ICON
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -102,15 +112,17 @@ Set title bar type.
 titleIcon?: Resource | SymbolGlyphModifier
 ```
 
-Set title bar icon.
+设置标题栏的图标。
 
-**类型：** Resource \| SymbolGlyphModifier
+**类型：** Resource \| [SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)
 
 **默认值：** atomicservice icon
 
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 

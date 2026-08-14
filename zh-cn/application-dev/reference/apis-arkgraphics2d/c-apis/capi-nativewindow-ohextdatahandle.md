@@ -6,7 +6,7 @@ typedef struct OHExtDataHandle {...} OHExtDataHandle
 
 ## 概述
 
-Defines the ExtData Handle
+扩展数据句柄结构体定义。
 
 **起始版本：** 9
 
@@ -22,8 +22,8 @@ Defines the ExtData Handle
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t fd | < Handle fd, -1 if not supported |
-| uint32_t reserveInts | < the number of reserved integer value |
-| int32_t reserve[0] | < the reserved data |
+| int32_t fd | < 句柄 Fd，-1代表不支持 |
+| uint32_t reserveInts | < Reserve数组的个数 |
+| int32_t reserve[0] | < Reserve数组 |
 
 

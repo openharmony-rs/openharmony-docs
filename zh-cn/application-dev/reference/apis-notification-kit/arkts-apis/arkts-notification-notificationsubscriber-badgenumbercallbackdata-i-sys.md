@@ -1,0 +1,128 @@
+# BadgeNumberCallbackData（系统接口）
+
+应用角标数量变化的回调函数类型。
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
+
+<!--Device-unnamed-export interface BadgeNumberCallbackData--><!--Device-unnamed-export interface BadgeNumberCallbackData-End-->
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**系统接口：** 此接口为系统接口。
+
+## appInstanceKey
+
+```TypeScript
+readonly appInstanceKey?: string
+```
+
+应用实例键值。
+
+**类型：** string
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
+
+<!--Device-BadgeNumberCallbackData-readonly appInstanceKey?: string--><!--Device-BadgeNumberCallbackData-readonly appInstanceKey?: string-End-->
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**系统接口：** 此接口为系统接口。
+
+## badgeNumber
+
+```TypeScript
+readonly badgeNumber: int
+```
+
+角标个数。
+
+**类型：** int
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
+
+<!--Device-BadgeNumberCallbackData-readonly badgeNumber: int--><!--Device-BadgeNumberCallbackData-readonly badgeNumber: int-End-->
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**系统接口：** 此接口为系统接口。
+
+## bundle
+
+```TypeScript
+readonly bundle: string
+```
+
+应用的包名。
+
+**类型：** string
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
+
+<!--Device-BadgeNumberCallbackData-readonly bundle: string--><!--Device-BadgeNumberCallbackData-readonly bundle: string-End-->
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**系统接口：** 此接口为系统接口。
+
+## instanceKey
+
+```TypeScript
+readonly instanceKey?: number
+```
+
+应用实例键值。
+
+**类型：** number
+
+**起始版本：** 12
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** 15
+
+**替代接口：** [appInstanceKey](#appInstanceKey)
+
+<!--Device-BadgeNumberCallbackData-readonly instanceKey?: number--><!--Device-BadgeNumberCallbackData-readonly instanceKey?: number-End-->
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**系统接口：** 此接口为系统接口。
+
+## uid
+
+```TypeScript
+readonly uid: int
+```
+
+应用的uid。
+
+**类型：** int
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
+
+<!--Device-BadgeNumberCallbackData-readonly uid: int--><!--Device-BadgeNumberCallbackData-readonly uid: int-End-->
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**系统接口：** 此接口为系统接口。
+

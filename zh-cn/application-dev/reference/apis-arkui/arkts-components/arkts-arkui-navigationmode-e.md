@@ -1,10 +1,12 @@
 # NavigationMode
 
-导航页显示模式。Navigation处于分栏显示状态时，导航页和内容区之间会显示分割线。 > **说明：** > > 为了简化表示，可以将\_\_\_INLINE\_CODE\_DESC\_USD\_0\_\_\_称为calcNavBarWidth。 **表1** navBarWidth最终取值与开发者设置值的关系表 | 开发者设置的navBarWidth值 | calcNavBarWidth计算值 | navBarWidth最终取值 | | --- | --- | --- | | navBarWidth &lt; minNavBarWidth | NA | minNavBarWidth | | navBarWidth &gt; maxNavBarWidth | calcNavBarWidth > maxNavBarWidth | maxNavBarWidth | | navBarWidth > maxNavBarWidth | calcNavBarWidth &lt; minNavBarWidth | minNavBarWidth | | navBarWidth &gt; maxNavBarWidth | minNavBarWidth ≤ calcNavBarWidth ≤ maxNavBarWidth | calcNavBarWidth | | minNavBarWidth ≤ navBarWidth ≤ maxNavBarWidth | calcNavBarWidth ≤ minNavBarWidth | minNavBarWidth | | minNavBarWidth ≤ navBarWidth ≤ maxNavBarWidth | minNavBarWidth < calcNavBarWidth &lt;= navBarWidth | calcNavBarWidth | | minNavBarWidth ≤ navBarWidth ≤ maxNavBarWidth | calcNavBarWidth &gt; navBarWidth | navBarWidth |
+导航页显示模式。Navigation处于分栏显示状态时，导航页和内容区之间会显示分割线。 > **说明：** > > 为了简化表示，可以将`组件宽度 - minContentWidth - 分割线宽度 (1px)`称为calcNavBarWidth。 **表1** navBarWidth最终取值与开发者设置值的关系表 | 开发者设置的navBarWidth值 | calcNavBarWidth计算值 | navBarWidth最终取值 | | --- | --- | --- | | navBarWidth &lt; minNavBarWidth | NA | minNavBarWidth | | navBarWidth &gt; maxNavBarWidth | calcNavBarWidth > maxNavBarWidth | maxNavBarWidth | | navBarWidth > maxNavBarWidth | calcNavBarWidth &lt; minNavBarWidth | minNavBarWidth | | navBarWidth &gt; maxNavBarWidth | minNavBarWidth ≤ calcNavBarWidth ≤ maxNavBarWidth | calcNavBarWidth | | minNavBarWidth ≤ navBarWidth ≤ maxNavBarWidth | calcNavBarWidth ≤ minNavBarWidth | minNavBarWidth | | minNavBarWidth ≤ navBarWidth ≤ maxNavBarWidth | minNavBarWidth < calcNavBarWidth &lt;= navBarWidth | calcNavBarWidth | | minNavBarWidth ≤ navBarWidth ≤ maxNavBarWidth | calcNavBarWidth &gt; navBarWidth | navBarWidth |
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare enum NavigationMode--><!--Device-unnamed-declare enum NavigationMode-End-->
 
@@ -21,6 +23,8 @@ Stack
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -40,6 +44,8 @@ Split
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-NavigationMode-Split--><!--Device-NavigationMode-Split-End-->
@@ -58,6 +64,8 @@ API version 9及之前版本，Navigation宽度>=520vp时，采用Split模式显
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-NavigationMode-Auto--><!--Device-NavigationMode-Auto-End-->
@@ -75,6 +83,8 @@ Navigation宽度>=600vp且高宽比小于等于1.2时，采用Split模式显示�
 **起始版本：** 24
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

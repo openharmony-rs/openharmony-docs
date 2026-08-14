@@ -6,9 +6,11 @@ export type KioskStatus = _KioskStatus
 
 Kiosk状态信息，包括系统是否处于Kiosk模式以及该模式下的应用信息。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

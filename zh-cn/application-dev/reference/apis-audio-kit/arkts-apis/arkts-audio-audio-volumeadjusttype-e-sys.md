@@ -2,9 +2,11 @@
 
 Enumerates volume adjustment types.
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-audio-enum VolumeAdjustType--><!--Device-audio-enum VolumeAdjustType-End-->
 
@@ -20,9 +22,11 @@ VOLUME_UP = 0
 
 Adjust volume up.
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-VolumeAdjustType-VOLUME_UP = 0--><!--Device-VolumeAdjustType-VOLUME_UP = 0-End-->
 
@@ -38,9 +42,11 @@ VOLUME_DOWN = 1
 
 Adjust volume down.
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-VolumeAdjustType-VOLUME_DOWN = 1--><!--Device-VolumeAdjustType-VOLUME_DOWN = 1-End-->
 

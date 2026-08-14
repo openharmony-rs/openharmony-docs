@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-webview-class MediaSourceInfo--><!--Device-webview-class MediaSourceInfo-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -23,6 +25,8 @@ format: string
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-MediaSourceInfo-format: string--><!--Device-MediaSourceInfo-format: string-End-->
 
@@ -42,6 +46,8 @@ source: string
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-MediaSourceInfo-source: string--><!--Device-MediaSourceInfo-source: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -59,6 +65,8 @@ type: SourceType
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-MediaSourceInfo-type: SourceType--><!--Device-MediaSourceInfo-type: SourceType-End-->
 

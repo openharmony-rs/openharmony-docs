@@ -4,7 +4,9 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-media-enum AVMetricsEventType--><!--Device-media-enum AVMetricsEventType-End-->
 
@@ -20,7 +22,9 @@ AV_METRICS_EVENT_STALLING = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AVMetricsEventType-AV_METRICS_EVENT_STALLING = 1--><!--Device-AVMetricsEventType-AV_METRICS_EVENT_STALLING = 1-End-->
 

@@ -12,6 +12,8 @@ function getSelfManagedBrowserPolicy(): ArrayBuffer
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-browser-function getSelfManagedBrowserPolicy(): ArrayBuffer--><!--Device-browser-function getSelfManagedBrowserPolicy(): ArrayBuffer-End-->
@@ -24,7 +26,7 @@ function getSelfManagedBrowserPolicy(): ArrayBuffer
 | --- | --- |
 | ArrayBuffer | 浏览器策略。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { browser } from '@kit.MDMKit';

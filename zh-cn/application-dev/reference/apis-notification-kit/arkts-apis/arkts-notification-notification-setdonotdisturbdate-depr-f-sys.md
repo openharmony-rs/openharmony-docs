@@ -14,7 +14,7 @@ function setDoNotDisturbDate(date: DoNotDisturbDate, callback: AsyncCallback<voi
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager#setDoNotDisturbDate
+**替代接口：** [setDoNotDisturbDate](arkts-notification-notificationmanager-setdonotdisturbdate-f-sys.md#setDoNotDisturbDate（系统接口）)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -28,8 +28,8 @@ function setDoNotDisturbDate(date: DoNotDisturbDate, callback: AsyncCallback<voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| date | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 免打扰时间选项。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 设置免打扰时间回调函数。 |
+| date | DoNotDisturbDate | 是 | 免打扰时间选项。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 设置免打扰时间回调函数。 |
 
 
 ## setDoNotDisturbDate
@@ -46,7 +46,7 @@ function setDoNotDisturbDate(date: DoNotDisturbDate): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager#setDoNotDisturbDate
+**替代接口：** [setDoNotDisturbDate](arkts-notification-notificationmanager-setdonotdisturbdate-f-sys.md#setDoNotDisturbDate（系统接口）)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -60,7 +60,7 @@ function setDoNotDisturbDate(date: DoNotDisturbDate): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| date | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 免打扰时间选项。 |
+| date | DoNotDisturbDate | 是 | 免打扰时间选项。 |
 
 **返回值：**
 
@@ -83,7 +83,7 @@ function setDoNotDisturbDate(date: DoNotDisturbDate, userId: number, callback: A
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager#setDoNotDisturbDate
+**替代接口：** [setDoNotDisturbDate](arkts-notification-notificationmanager-setdonotdisturbdate-f-sys.md#setDoNotDisturbDate（系统接口）)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -97,9 +97,9 @@ function setDoNotDisturbDate(date: DoNotDisturbDate, userId: number, callback: A
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| date | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 免打扰时间选项。 |
+| date | DoNotDisturbDate | 是 | 免打扰时间选项。 |
 | userId | number | 是 | 设置免打扰时间的用户ID。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 设置免打扰时间回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 设置免打扰时间回调函数。 |
 
 
 ## setDoNotDisturbDate
@@ -116,7 +116,7 @@ function setDoNotDisturbDate(date: DoNotDisturbDate, userId: number): Promise<vo
 
 **废弃版本：** 9
 
-**替代接口：** ohos.notificationManager/notificationManager#setDoNotDisturbDate
+**替代接口：** [setDoNotDisturbDate](arkts-notification-notificationmanager-setdonotdisturbdate-f-sys.md#setDoNotDisturbDate（系统接口）)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -130,7 +130,7 @@ function setDoNotDisturbDate(date: DoNotDisturbDate, userId: number): Promise<vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| date | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 免打扰时间选项。 |
+| date | DoNotDisturbDate | 是 | 免打扰时间选项。 |
 | userId | number | 是 | 设置免打扰时间的用户ID。 |
 
 **返回值：**

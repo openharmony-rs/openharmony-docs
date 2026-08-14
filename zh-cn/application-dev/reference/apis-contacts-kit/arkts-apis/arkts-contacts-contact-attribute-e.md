@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 <!--Device-contact-enum Attribute--><!--Device-contact-enum Attribute-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
@@ -21,6 +23,8 @@ ATTR_CONTACT_EVENT = 0
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -40,6 +44,8 @@ ATTR_EMAIL = 1
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Attribute-ATTR_EMAIL = 1--><!--Device-Attribute-ATTR_EMAIL = 1-End-->
@@ -57,6 +63,8 @@ ATTR_GROUP_MEMBERSHIP = 2
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -76,6 +84,8 @@ ATTR_IM = 3
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Attribute-ATTR_IM = 3--><!--Device-Attribute-ATTR_IM = 3-End-->
@@ -93,6 +103,8 @@ ATTR_NAME = 4
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -112,6 +124,8 @@ ATTR_NICKNAME = 5
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Attribute-ATTR_NICKNAME = 5--><!--Device-Attribute-ATTR_NICKNAME = 5-End-->
@@ -129,6 +143,8 @@ ATTR_NOTE = 6
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -148,6 +164,8 @@ ATTR_ORGANIZATION = 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Attribute-ATTR_ORGANIZATION = 7--><!--Device-Attribute-ATTR_ORGANIZATION = 7-End-->
@@ -165,6 +183,8 @@ ATTR_PHONE = 8
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -184,6 +204,8 @@ ATTR_PORTRAIT = 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Attribute-ATTR_PORTRAIT = 9--><!--Device-Attribute-ATTR_PORTRAIT = 9-End-->
@@ -201,6 +223,8 @@ ATTR_POSTAL_ADDRESS = 10
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -220,6 +244,8 @@ ATTR_RELATION = 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Attribute-ATTR_RELATION = 11--><!--Device-Attribute-ATTR_RELATION = 11-End-->
@@ -238,6 +264,8 @@ ATTR_SIP_ADDRESS = 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Attribute-ATTR_SIP_ADDRESS = 12--><!--Device-Attribute-ATTR_SIP_ADDRESS = 12-End-->
@@ -255,6 +283,8 @@ ATTR_WEBSITE = 13
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

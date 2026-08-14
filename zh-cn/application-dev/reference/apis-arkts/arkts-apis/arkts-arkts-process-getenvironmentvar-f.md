@@ -14,7 +14,7 @@ function getEnvironmentVar(name: string): string
 
 **废弃版本：** 9
 
-**替代接口：** [process.ProcessManager.getEnvironmentVar](arkts-arkts-process-processmanager-c.md#getenvironmentvar)
+**替代接口：** [getEnvironmentVar](arkts-arkts-process-processmanager-c.md#getEnvironmentVar)
 
 <!--Device-process-function getEnvironmentVar(name: string): string--><!--Device-process-function getEnvironmentVar(name: string): string-End-->
 
@@ -32,7 +32,7 @@ function getEnvironmentVar(name: string): string
 | --- | --- |
 | string | 返回环境变量名对应的值。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let pres = process.getEnvironmentVar("PATH");

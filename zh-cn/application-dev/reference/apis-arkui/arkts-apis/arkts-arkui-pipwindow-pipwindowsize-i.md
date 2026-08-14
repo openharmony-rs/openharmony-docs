@@ -2,9 +2,11 @@
 
 画中画窗口大小。
 
-**起始版本：** 15
+**起始版本：** 26.0.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-PiPWindow-interface PiPWindowSize--><!--Device-PiPWindow-interface PiPWindowSize-End-->
 
@@ -20,11 +22,13 @@ height: int
 
 **类型：** int
 
-**起始版本：** 15
+**起始版本：** 26.0.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PiPWindowSize-height: int--><!--Device-PiPWindowSize-height: int-End-->
 
@@ -40,11 +44,13 @@ scale: double
 
 **类型：** double
 
-**起始版本：** 15
+**起始版本：** 26.0.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PiPWindowSize-scale: double--><!--Device-PiPWindowSize-scale: double-End-->
 
@@ -60,11 +66,13 @@ width: int
 
 **类型：** int
 
-**起始版本：** 15
+**起始版本：** 26.0.0
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PiPWindowSize-width: int--><!--Device-PiPWindowSize-width: int-End-->
 

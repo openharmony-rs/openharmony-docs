@@ -2,9 +2,11 @@
 
 打印机相关事件的枚举。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-print-enum PrinterEvent--><!--Device-print-enum PrinterEvent-End-->
 
@@ -18,9 +20,11 @@ PRINTER_EVENT_ADDED = 0
 
 表示打印机添加事件。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrinterEvent-PRINTER_EVENT_ADDED = 0--><!--Device-PrinterEvent-PRINTER_EVENT_ADDED = 0-End-->
 
@@ -34,9 +38,11 @@ PRINTER_EVENT_DELETED = 1
 
 表示打印机删除事件。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrinterEvent-PRINTER_EVENT_DELETED = 1--><!--Device-PrinterEvent-PRINTER_EVENT_DELETED = 1-End-->
 
@@ -50,9 +56,11 @@ PRINTER_EVENT_STATE_CHANGED = 2
 
 表示打印机状态变化事件。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrinterEvent-PRINTER_EVENT_STATE_CHANGED = 2--><!--Device-PrinterEvent-PRINTER_EVENT_STATE_CHANGED = 2-End-->
 
@@ -66,9 +74,11 @@ PRINTER_EVENT_INFO_CHANGED = 3
 
 表示打印机信息变化事件。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrinterEvent-PRINTER_EVENT_INFO_CHANGED = 3--><!--Device-PrinterEvent-PRINTER_EVENT_INFO_CHANGED = 3-End-->
 
@@ -82,9 +92,11 @@ PRINTER_EVENT_PREFERENCE_CHANGED = 4
 
 表示打印机首选项变化事件。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrinterEvent-PRINTER_EVENT_PREFERENCE_CHANGED = 4--><!--Device-PrinterEvent-PRINTER_EVENT_PREFERENCE_CHANGED = 4-End-->
 
@@ -98,9 +110,11 @@ PRINTER_EVENT_LAST_USED_PRINTER_CHANGED = 5
 
 表示上次使用的打印机的变化事件。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PrinterEvent-PRINTER_EVENT_LAST_USED_PRINTER_CHANGED = 5--><!--Device-PrinterEvent-PRINTER_EVENT_LAST_USED_PRINTER_CHANGED = 5-End-->
 

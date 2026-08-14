@@ -10,6 +10,8 @@ export declare type DepthMapCallback = (error: BusinessError<void>) => void
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-export declare type DepthMapCallback = (error: BusinessError<void>) => void--><!--Device-unnamed-export declare type DepthMapCallback = (error: BusinessError<void>) => void-End-->
@@ -22,5 +24,5 @@ export declare type DepthMapCallback = (error: BusinessError<void>) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| error | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 深度图资源加载完成时返回的错误信息。加载成功时error.code为0，加载失败时error中包含错误码和错误信息。  |
+| error | [BusinessError](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-businesserror-c.md)&lt;void&gt; | 是 | 深度图资源加载完成时返回的错误信息。加载成功时error.code为0，加载失败时error中包含错误码和错误信息。 |
 

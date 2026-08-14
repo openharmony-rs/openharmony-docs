@@ -2,9 +2,11 @@
 
 媒体元数据的相关属性。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-avSession-interface AVMetadata--><!--Device-avSession-interface AVMetadata-End-->
 
@@ -20,9 +22,11 @@ album?: string
 
 **类型：** string
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -40,9 +44,11 @@ artist?: string
 
 **类型：** string
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -56,13 +62,15 @@ artist?: string
 assetId: string
 ```
 
-媒体ID。媒体信息的唯一标识，由应用自定义。 - 该属性发生变化则其他元数据属性都将被刷新。 - 若该属性维持不变，且不设置相应的媒体元数据信息，那么将不会更新对应的媒体元数据信息。 - 当该属性设为空值时，调用[setAVMetadata]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_方法将失败，返回错误码6600101。
+媒体ID。媒体信息的唯一标识，由应用自定义。 - 该属性发生变化则其他元数据属性都将被刷新。 - 若该属性维持不变，且不设置相应的媒体元数据信息，那么将不会更新对应的媒体元数据信息。 - 当该属性设为空值时，调用[setAVMetadata](arkts-avsession-avsession-avsession-i.md#setAVMetadata)方法将失败，返回错误码6600101。
 
 **类型：** string
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -80,9 +88,11 @@ author?: string
 
 **类型：** string
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -100,9 +110,11 @@ avQueueId?: string
 
 **类型：** string
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AVMetadata-avQueueId?: string--><!--Device-AVMetadata-avQueueId?: string-End-->
 
@@ -118,9 +130,11 @@ avQueueImage?: image.PixelMap | string
 
 **类型：** image.PixelMap \| string
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AVMetadata-avQueueImage?: image.PixelMap | string--><!--Device-AVMetadata-avQueueImage?: image.PixelMap | string-End-->
 
@@ -136,9 +150,11 @@ avQueueName?: string
 
 **类型：** string
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AVMetadata-avQueueName?: string--><!--Device-AVMetadata-avQueueName?: string-End-->
 
@@ -154,9 +170,11 @@ readonly bundleIcon?: image.PixelMap
 
 **类型：** image.PixelMap
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AVMetadata-readonly bundleIcon?: image.PixelMap--><!--Device-AVMetadata-readonly bundleIcon?: image.PixelMap-End-->
 
@@ -172,9 +190,11 @@ composer?: string
 
 **类型：** string
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AVMetadata-composer?: string--><!--Device-AVMetadata-composer?: string-End-->
 
@@ -190,9 +210,11 @@ description?: string
 
 **类型：** string
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -206,13 +228,15 @@ description?: string
 displayTags?: int
 ```
 
-媒体资源的金标类型，取值参考[DisplayTag]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+媒体资源的金标类型，取值参考[DisplayTag](arkts-avsession-avsession-displaytag-e.md#DisplayTag)。
 
 **类型：** int
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AVMetadata-displayTags?: int--><!--Device-AVMetadata-displayTags?: int-End-->
 
@@ -228,9 +252,11 @@ drmSchemes?: Array<string>
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AVMetadata-drmSchemes?: Array<string>--><!--Device-AVMetadata-drmSchemes?: Array<string>-End-->
 
@@ -246,9 +272,11 @@ duration?: long
 
 **类型：** long
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -262,13 +290,15 @@ duration?: long
 fastForwardSkipIntervals?: SkipIntervals
 ```
 
-快进支持的时间间隔。默认为SECONDS\_15，即15秒。 系统会使用此值作为快进操作的时间间隔，而非skipIntervals的值。 若未设置此参数，快进操作的时间间隔仍会沿用skipIntervals的值。 **起始版本**：26.0.0
+快进支持的时间间隔。默认为SECONDS_15，即15秒。 系统会使用此值作为快进操作的时间间隔，而非skipIntervals的值。 若未设置此参数，快进操作的时间间隔仍会沿用skipIntervals的值。 **起始版本**：26.0.0
 
-**类型：** SkipIntervals
+**类型：** [SkipIntervals](arkts-avsession-avsession-skipintervals-e.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -282,13 +312,15 @@ fastForwardSkipIntervals?: SkipIntervals
 filter?: int
 ```
 
-当前会话支持的协议，默认为TYPE\_CAST\_PLUS\_STREAM。具体取值参考[ProtocolType]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+当前会话支持的协议，默认为TYPE_CAST_PLUS_STREAM。具体取值参考[ProtocolType](arkts-avsession-avsession-protocoltype-e.md#ProtocolType)。
 
 **类型：** int
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -306,9 +338,11 @@ lyric?: string
 
 **类型：** string
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AVMetadata-lyric?: string--><!--Device-AVMetadata-lyric?: string-End-->
 
@@ -324,9 +358,11 @@ mediaImage?: image.PixelMap | string
 
 **类型：** image.PixelMap \| string
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -344,9 +380,11 @@ nextAssetId?: string
 
 **类型：** string
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -364,9 +402,11 @@ previousAssetId?: string
 
 **类型：** string
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -384,9 +424,11 @@ publishDate?: Date
 
 **类型：** Date
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AVMetadata-publishDate?: Date--><!--Device-AVMetadata-publishDate?: Date-End-->
 
@@ -398,13 +440,15 @@ publishDate?: Date
 rewindSkipIntervals?: SkipIntervals
 ```
 
-快退支持的时间间隔。默认为SECONDS\_15，即15秒。 系统会使用此值作为快退操作的时间间隔，而非skipIntervals的值。 若未设置此参数，快退操作的时间间隔仍会沿用skipIntervals的值。 **起始版本**：26.0.0
+快退支持的时间间隔。默认为SECONDS_15，即15秒。 系统会使用此值作为快退操作的时间间隔，而非skipIntervals的值。 若未设置此参数，快退操作的时间间隔仍会沿用skipIntervals的值。 **起始版本**：26.0.0
 
-**类型：** SkipIntervals
+**类型：** [SkipIntervals](arkts-avsession-avsession-skipintervals-e.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -422,11 +466,13 @@ singleLyricText?: string
 
 **类型：** string
 
-**起始版本：** 17
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为17；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本17开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AVMetadata-singleLyricText?: string--><!--Device-AVMetadata-singleLyricText?: string-End-->
 
@@ -438,13 +484,15 @@ singleLyricText?: string
 skipIntervals?: SkipIntervals
 ```
 
-快进快退支持的时间间隔。默认为SECONDS\_15，即15秒。
+快进快退支持的时间间隔。默认为SECONDS_15，即15秒。
 
-**类型：** SkipIntervals
+**类型：** [SkipIntervals](arkts-avsession-avsession-skipintervals-e.md)
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AVMetadata-skipIntervals?: SkipIntervals--><!--Device-AVMetadata-skipIntervals?: SkipIntervals-End-->
 
@@ -460,9 +508,11 @@ subtitle?: string
 
 **类型：** string
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -480,9 +530,11 @@ title?: string
 
 **类型：** string
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -500,9 +552,11 @@ writer?: string
 
 **类型：** string
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

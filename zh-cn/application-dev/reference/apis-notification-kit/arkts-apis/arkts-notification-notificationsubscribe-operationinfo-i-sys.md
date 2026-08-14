@@ -2,9 +2,11 @@
 
 跨设备协同操作信息。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-notificationSubscribe-export interface OperationInfo--><!--Device-notificationSubscribe-export interface OperationInfo-End-->
 
@@ -12,19 +14,27 @@
 
 **系统接口：** 此接口为系统接口。
 
+## 导入模块
+
+```TypeScript
+import { notificationSubscribe } from '@kit.NotificationKit';
+```
+
 ## actionName
 
 ```TypeScript
 actionName?: string
 ```
 
-描述通知中显示的操作按钮（与通知 [NotificationActionButton]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_中title字段保持一致）。
+描述通知中显示的操作按钮（与通知 [NotificationActionButton](arkts-notification-notificationactionbutton-notificationactionbutton-i.md#NotificationActionButton)中title字段保持一致）。
 
 **类型：** string
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-OperationInfo-actionName?: string--><!--Device-OperationInfo-actionName?: string-End-->
 
@@ -42,9 +52,11 @@ buttonIndex?: int
 
 **类型：** int
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-OperationInfo-buttonIndex?: int--><!--Device-OperationInfo-buttonIndex?: int-End-->
 
@@ -62,9 +74,11 @@ operationType?: int
 
 **类型：** int
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-OperationInfo-operationType?: int--><!--Device-OperationInfo-operationType?: int-End-->
 
@@ -78,13 +92,15 @@ operationType?: int
 userInput?: string
 ```
 
-用户输入（用于通知跨设备快捷回复场景传递用户输入，与通知 [NotificationUserInput]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_中inputKey字段保持一致）。
+用户输入（用于通知跨设备快捷回复场景传递用户输入，与通知 [NotificationUserInput](arkts-notification-notificationuserinput-notificationuserinput-i.md#NotificationUserInput)中inputKey字段保持一致）。
 
 **类型：** string
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-OperationInfo-userInput?: string--><!--Device-OperationInfo-userInput?: string-End-->
 

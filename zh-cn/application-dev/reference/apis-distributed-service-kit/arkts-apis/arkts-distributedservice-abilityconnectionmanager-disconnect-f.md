@@ -8,9 +8,11 @@ function disconnect(sessionId: int): void
 
 当协同业务执行完毕后，协同双端的任意一台设备，应断开UIAbility的连接，结束协同状态。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -22,9 +24,9 @@ function disconnect(sessionId: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sessionId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 协同会话ID |
+| sessionId | int | 是 | 协同会话ID |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

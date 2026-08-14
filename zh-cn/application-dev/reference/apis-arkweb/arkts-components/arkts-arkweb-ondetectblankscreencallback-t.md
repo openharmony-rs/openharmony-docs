@@ -10,6 +10,8 @@ type OnDetectBlankScreenCallback = (event: BlankScreenDetectionEventInfo) => voi
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-type OnDetectBlankScreenCallback = (event: BlankScreenDetectionEventInfo) => void--><!--Device-unnamed-type OnDetectBlankScreenCallback = (event: BlankScreenDetectionEventInfo) => void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -18,5 +20,5 @@ type OnDetectBlankScreenCallback = (event: BlankScreenDetectionEventInfo) => voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 检测到白屏时的详细信息。  |
+| event | [BlankScreenDetectionEventInfo](arkts-arkweb-blankscreendetectioneventinfo-i.md) | 是 | 检测到白屏时的详细信息。 |
 

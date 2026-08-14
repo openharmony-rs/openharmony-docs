@@ -1,8 +1,10 @@
 # AudioRendererFilter（系统接口）
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-audio-interface AudioRendererFilter--><!--Device-audio-interface AudioRendererFilter-End-->
 
@@ -20,9 +22,11 @@ AudioRenderer id.
 
 **类型：** int
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioRendererFilter-rendererId?: int--><!--Device-AudioRendererFilter-rendererId?: int-End-->
 
@@ -36,11 +40,13 @@ AudioRenderer id.
 rendererInfo?: AudioRendererInfo
 ```
 
-**类型：** AudioRendererInfo
+**类型：** [AudioRendererInfo](arkts-audio-audio-audiorendererinfo-i.md)
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioRendererFilter-rendererInfo?: AudioRendererInfo--><!--Device-AudioRendererFilter-rendererInfo?: AudioRendererInfo-End-->
 
@@ -58,9 +64,11 @@ Application uid.
 
 **类型：** int
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioRendererFilter-uid?: int--><!--Device-AudioRendererFilter-uid?: int-End-->
 

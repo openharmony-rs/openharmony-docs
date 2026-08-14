@@ -2,9 +2,11 @@
 
 插件应用安装、卸载的参数信息。
 
-**起始版本：** 19
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为19；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-installer-export interface PluginParam--><!--Device-installer-export interface PluginParam-End-->
 
@@ -20,11 +22,13 @@ parameters?: Array<Parameters>
 
 指定安装、卸载插件程序的扩展参数，默认值为空。
 
-**类型：** Array&lt;Parameters&gt;
+**类型：** Array&lt;[Parameters](arkts-ability-installer-parameters-i-sys.md)&gt;
 
-**起始版本：** 19
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为19；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PluginParam-parameters?: Array<Parameters>--><!--Device-PluginParam-parameters?: Array<Parameters>-End-->
 
@@ -38,13 +42,15 @@ parameters?: Array<Parameters>
 userId?: int
 ```
 
-指定安装、卸载插件程序所在的用户ID，可以通过 [getOsAccountLocalId接口]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 获取。默认值：调用方所在用户。
+指定安装、卸载插件程序所在的用户ID，可以通过 [getOsAccountLocalId接口](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getOsAccountLocalId) 获取。默认值：调用方所在用户。
 
 **类型：** int
 
-**起始版本：** 19
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为19；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PluginParam-userId?: int--><!--Device-PluginParam-userId?: int-End-->
 

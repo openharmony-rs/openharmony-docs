@@ -1,14 +1,16 @@
 # RatingConfiguration
 
-开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+开发者需要自定义class实现ContentModifier接口。继承自CommonConfiguration。
 
-**继承/实现关系：** RatingConfiguration extends [CommonConfiguration<RatingConfiguration>](CommonConfiguration<RatingConfiguration>)
+**继承/实现关系：** RatingConfiguration extends CommonConfiguration<RatingConfiguration>
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-<!--Device-unnamed-declare interface RatingConfiguration extends CommonConfiguration<RatingConfiguration>--><!--Device-unnamed-declare interface RatingConfiguration extends CommonConfiguration<RatingConfiguration>-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare interface RatingConfiguration--><!--Device-unnamed-declare interface RatingConfiguration-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -26,6 +28,8 @@ indicator: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -40,13 +44,15 @@ indicator: boolean
 rating: number
 ```
 
-设置并接收评分值。 默认值：0 取值范围： [0, stars] 小于0取0，大于[stars]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_取最大值stars。 该参数支持\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_双向绑定变量。 该参数支持\_\_\_MD\_LINK\_DESC\_USD\_1\_\_\_双向绑定变量。
+设置并接收评分值。 默认值：0 取值范围： [0, stars] 小于0取0，大于stars取最大值stars。 该参数支持[\$\$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。 该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
 
 **类型：** number
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -70,6 +76,8 @@ stars: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -92,6 +100,8 @@ stepSize: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -113,6 +123,8 @@ triggerChange: Callback<number>
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

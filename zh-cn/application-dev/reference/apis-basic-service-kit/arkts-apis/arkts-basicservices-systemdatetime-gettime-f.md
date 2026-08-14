@@ -8,9 +8,11 @@ function getTime(isNanoseconds?: boolean): long
 
 使用同步方式获取自Unix纪元以来到当前系统时间所经过的时间。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-systemDateTime-function getTime(isNanoseconds?: boolean): long--><!--Device-systemDateTime-function getTime(isNanoseconds?: boolean): long-End-->
 
@@ -26,9 +28,9 @@ function getTime(isNanoseconds?: boolean): long
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：long | 自Unix纪元以来到当前系统时间所经过的时间。 |
+| long | 自Unix纪元以来到当前系统时间所经过的时间。 |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例：
 

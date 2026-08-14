@@ -14,7 +14,7 @@ declare function ftruncate(fd: number, len?: number): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.file.fs:truncate](arkts-corefile-fileio-truncate-f.md#truncate)
+**替代接口：** [truncate](arkts-corefile-file-fs-truncate-f.md#truncate)
 
 <!--Device-unnamed-declare function ftruncate(fd: number, len?: number): Promise<void>--><!--Device-unnamed-declare function ftruncate(fd: number, len?: number): Promise<void>-End-->
 
@@ -48,7 +48,7 @@ declare function ftruncate(fd: number, callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.file.fs:truncate](arkts-corefile-fileio-truncate-f.md#truncate)
+**替代接口：** [truncate](arkts-corefile-file-fs-truncate-f.md#truncate)
 
 <!--Device-unnamed-declare function ftruncate(fd: number, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function ftruncate(fd: number, callback: AsyncCallback<void>): void-End-->
 
@@ -59,7 +59,7 @@ declare function ftruncate(fd: number, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | fd | number | 是 | 待截断文件的文件描述符。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数，本调用无返回值。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，本调用无返回值。 |
 
 
 ## ftruncate
@@ -76,7 +76,7 @@ declare function ftruncate(fd: number, len: number, callback: AsyncCallback<void
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.file.fs:truncate](arkts-corefile-fileio-truncate-f.md#truncate)
+**替代接口：** [truncate](arkts-corefile-file-fs-truncate-f.md#truncate)
 
 <!--Device-unnamed-declare function ftruncate(fd: number, len: number, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function ftruncate(fd: number, len: number, callback: AsyncCallback<void>): void-End-->
 
@@ -88,5 +88,5 @@ declare function ftruncate(fd: number, len: number, callback: AsyncCallback<void
 | --- | --- | --- | --- |
 | fd | number | 是 | 待截断文件的文件描述符。 |
 | len | number | 是 | 文件截断后的长度，单位为Byte。默认为0。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数，本调用无返回值。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，本调用无返回值。 |
 

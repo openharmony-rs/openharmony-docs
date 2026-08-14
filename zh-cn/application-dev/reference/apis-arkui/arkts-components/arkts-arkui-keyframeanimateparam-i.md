@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface KeyframeAnimateParam--><!--Device-unnamed-declare interface KeyframeAnimateParam-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -26,6 +28,8 @@ delay?: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -42,13 +46,15 @@ expectedFrameRateRange?: ExpectedFrameRateRange
 
 设置动画的期望帧率。 **默认值：**{min:0, max:0, expected:0}，即跟随应用帧率。 **说明：** 开发者通过设置有效的期望帧率后，系统会收集设置的请求帧率，进行决策和分发，在渲染管线上进行分频，尽量能够满足开发者的期望帧率。开发者设置的期望帧率值不能代表最终实际效果，会受限于系统能力和屏幕刷新率。
 
-**类型：** ExpectedFrameRateRange
+**类型：** [ExpectedFrameRateRange](arkts-arkui-expectedframeraterange-i.md)
 
 **默认值：** { min: 0, expected: 0, max: 0 }
 
 **起始版本：** 19
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -74,6 +80,8 @@ iterations?: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -95,6 +103,8 @@ onFinish?: () => void
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

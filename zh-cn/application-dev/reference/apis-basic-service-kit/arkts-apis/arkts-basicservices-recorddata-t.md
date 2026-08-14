@@ -10,6 +10,8 @@ RecordData 是一个联合类型，用于层级和每层数量都不确定的对
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-export type RecordData = undefined | null | Object | Record<string, RecordData> | Array<RecordData>--><!--Device-unnamed-export type RecordData = undefined | null | Object | Record<string, RecordData> | Array<RecordData>-End-->
 
 **系统能力：** SystemCapability.Base

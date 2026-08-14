@@ -10,7 +10,9 @@ function registerWatermarkCallback(callback: WatermarkCallback): void
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_PRINT
 
@@ -24,7 +26,7 @@ function registerWatermarkCallback(callback: WatermarkCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 表示注册强制水印处理的监听事件时使用的回调类型。 |
+| callback | [WatermarkCallback](arkts-basicservices-print-watermarkcallback-t.md) | 是 | 表示注册强制水印处理的监听事件时使用的回调类型。 |
 
 **错误码：**
 
@@ -32,7 +34,7 @@ function registerWatermarkCallback(callback: WatermarkCallback): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { print } from '@kit.BasicServicesKit';

@@ -2,9 +2,11 @@
 
 记录表的分布式配置信息。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-relationalStore-interface DistributedConfig--><!--Device-relationalStore-interface DistributedConfig-End-->
 
@@ -16,13 +18,15 @@
 assetConflictPolicy?: AssetConflictPolicy
 ```
 
-资产冲突策略。默认值为CONFLICT\_POLICY\_DEFAULT。
+资产冲突策略。默认值为CONFLICT_POLICY_DEFAULT。
 
-**类型：** AssetConflictPolicy
+**类型：** [AssetConflictPolicy](arkts-arkdata-relationalstore-assetconflictpolicy-e.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -36,13 +40,15 @@ assetConflictPolicy?: AssetConflictPolicy
 assetDownloadOnDemand?: boolean
 ```
 
-是否按需下载资产。true表示仅下行数据到本地，当需要下载资产时，调用[cloudSyncEx]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_接口触发资产下载；false表示数据与资产 都下行到本地。默认值为false。
+是否按需下载资产。true表示仅下行数据到本地，当需要下载资产时，调用[cloudSyncEx](arkts-arkdata-relationalstore-rdbstore-i.md#cloudSyncEx)接口触发资产下载；false表示数据与资产 都下行到本地。默认值为false。
 
 **类型：** boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -56,13 +62,15 @@ assetDownloadOnDemand?: boolean
 assetTempPath?: string
 ```
 
-资产临时路径。仅当assetConflictPolicy值为CONFLICT\_POLICY\_TEMP\_PATH时生效，需指定为 \_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_下的临时路径，格式示例：tmp/，若未填写或路径不合规，将 抛出 401 错误码。默认值为空。
+资产临时路径。仅当assetConflictPolicy值为CONFLICT_POLICY_TEMP_PATH时生效，需指定为 [distributedfiles](../../../file-management/app-sandbox-directory.md#应用文件目录与应用文件路径)下的临时路径，格式示例：tmp/，若未填写或路径不合规，将 抛出 401 错误码。默认值为空。
 
 **类型：** string
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -80,9 +88,11 @@ asyncDownloadAsset?: boolean
 
 **类型：** boolean
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DistributedConfig-asyncDownloadAsset?: boolean--><!--Device-DistributedConfig-asyncDownloadAsset?: boolean-End-->
 
@@ -94,13 +104,15 @@ asyncDownloadAsset?: boolean
 autoSync: boolean
 ```
 
-表示该表是否支持端云自动同步。为true时，支持系统自动触发端云同步；为false时不支持系统自动触发端云同步，需要调用 [cloudSync]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 接口触发端云同步。
+表示该表是否支持端云自动同步。为true时，支持系统自动触发端云同步；为false时不支持系统自动触发端云同步，需要调用 [cloudSync](arkts-arkdata-relationalstore-rdbstore-i.md#cloudSync) 接口触发端云同步。
 
 **类型：** boolean
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DistributedConfig-autoSync: boolean--><!--Device-DistributedConfig-autoSync: boolean-End-->
 
@@ -118,7 +130,9 @@ autoSyncSwitch?: boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -136,9 +150,11 @@ enableCloud?: boolean
 
 **类型：** boolean
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DistributedConfig-enableCloud?: boolean--><!--Device-DistributedConfig-enableCloud?: boolean-End-->
 
@@ -150,13 +166,15 @@ enableCloud?: boolean
 tableType?: DistributedTableType
 ```
 
-分布式表类型。DEVICE\_COLLABORATION表示设备协作表；SINGLE\_VERSION表示单版本表。跨设备数据同步时，默认值为DEVICE\_COLLABORATION；端云数据同步时，默认值为 SINGLE\_VERSION，不支持DEVICE\_COLLABORATION。
+分布式表类型。DEVICE_COLLABORATION表示设备协作表；SINGLE_VERSION表示单版本表。跨设备数据同步时，默认值为DEVICE_COLLABORATION；端云数据同步时，默认值为 SINGLE_VERSION，不支持DEVICE_COLLABORATION。
 
-**类型：** DistributedTableType
+**类型：** [DistributedTableType](arkts-arkdata-relationalstore-distributedtabletype-e.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-DistributedConfig-tableType?: DistributedTableType--><!--Device-DistributedConfig-tableType?: DistributedTableType-End-->
 

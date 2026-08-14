@@ -1,10 +1,12 @@
 # Priority
 
-表示所创建任务（Task）执行时的优先级。工作线程优先级跟随任务优先级更新，对应关系参考\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+表示所创建任务（Task）执行时的优先级。工作线程优先级跟随任务优先级更新，对应关系参考QoS等级定义。
 
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 <!--Device-taskpool-enum Priority--><!--Device-taskpool-enum Priority-End-->
 
@@ -21,6 +23,8 @@ HIGH = 0
 **起始版本：** 9
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -40,6 +44,8 @@ MEDIUM = 1
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Priority-MEDIUM = 1--><!--Device-Priority-MEDIUM = 1-End-->
@@ -58,6 +64,8 @@ LOW = 2
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Priority-LOW = 2--><!--Device-Priority-LOW = 2-End-->
@@ -75,6 +83,8 @@ IDLE = 3
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

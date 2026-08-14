@@ -4,7 +4,9 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-osAccount-interface ConstraintChangeInfo--><!--Device-osAccount-interface ConstraintChangeInfo-End-->
 
@@ -18,13 +20,15 @@
 constraint: string
 ```
 
-发生变更的\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+发生变更的约束。
 
 **类型：** string
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ConstraintChangeInfo-constraint: string--><!--Device-ConstraintChangeInfo-constraint: string-End-->
 
@@ -44,7 +48,9 @@ isEnabled: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-ConstraintChangeInfo-isEnabled: boolean--><!--Device-ConstraintChangeInfo-isEnabled: boolean-End-->
 

@@ -2,9 +2,11 @@
 
 输入法模式选项配置，用于定义键盘模式的切换选项。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-export interface PatternOptions--><!--Device-unnamed-export interface PatternOptions-End-->
 
@@ -20,9 +22,11 @@ action: (index: int) => void
 
 **类型：** (index: int) =&gt; void
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PatternOptions-action: (index: int) => void--><!--Device-PatternOptions-action: (index: int) => void-End-->
 
@@ -38,9 +42,11 @@ defaultSelected?: int
 
 **类型：** int
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PatternOptions-defaultSelected?: int--><!--Device-PatternOptions-defaultSelected?: int-End-->
 
@@ -52,13 +58,15 @@ defaultSelected?: int
 patterns: Array<Pattern>
 ```
 
-模式选项资源数组，每个Pattern定义一个键盘模式的图标和选中状态图标。 **使用场景：** 当默认输入法需要提供多种键盘模式（如单手模式、全屏模式等）供用户选择时，需配置此参数。 **使用后效果：** 设置后，输入法切换列表弹窗中会在默认输入法区域展示该数组中定义的所有模式选项供用户选择。 **说明：** patterns数组中的每个Pattern的icon和selectedIcon均需为有效的[Resource]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_资源引用；建议至少配置2个模式选项以提供有意义的选择功能。
+模式选项资源数组，每个Pattern定义一个键盘模式的图标和选中状态图标。 **使用场景：** 当默认输入法需要提供多种键盘模式（如单手模式、全屏模式等）供用户选择时，需配置此参数。 **使用后效果：** 设置后，输入法切换列表弹窗中会在默认输入法区域展示该数组中定义的所有模式选项供用户选择。 **说明：** patterns数组中的每个Pattern的icon和selectedIcon均需为有效的Resource资源引用；建议至少配置2个模式选项以提供有意义的选择功能。
 
-**类型：** Array&lt;Pattern&gt;
+**类型：** Array&lt;[Pattern](arkts-ime-inputmethodlist-pattern-i.md)&gt;
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PatternOptions-patterns: Array<Pattern>--><!--Device-PatternOptions-patterns: Array<Pattern>-End-->
 

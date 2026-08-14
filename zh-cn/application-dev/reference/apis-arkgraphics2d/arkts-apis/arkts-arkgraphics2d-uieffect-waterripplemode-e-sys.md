@@ -2,9 +2,11 @@
 
 水波纹场景模式枚举。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-uiEffect-enum WaterRippleMode--><!--Device-uiEffect-enum WaterRippleMode-End-->
 
@@ -20,9 +22,11 @@ SMALL2MEDIUM_RECV = 0
 
 手机碰2in1设备（接收端）。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WaterRippleMode-SMALL2MEDIUM_RECV = 0--><!--Device-WaterRippleMode-SMALL2MEDIUM_RECV = 0-End-->
 
@@ -38,9 +42,11 @@ SMALL2MEDIUM_SEND = 1
 
 手机碰2in1设备（发送端）。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WaterRippleMode-SMALL2MEDIUM_SEND = 1--><!--Device-WaterRippleMode-SMALL2MEDIUM_SEND = 1-End-->
 
@@ -56,9 +62,11 @@ SMALL2SMALL = 2
 
 手机碰手机。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WaterRippleMode-SMALL2SMALL = 2--><!--Device-WaterRippleMode-SMALL2SMALL = 2-End-->
 
@@ -74,9 +82,11 @@ MINI_RECV = 3
 
 2in1设备与其它设备共享（键鼠共享场景）。
 
-**起始版本：** 17
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为17；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WaterRippleMode-MINI_RECV = 3--><!--Device-WaterRippleMode-MINI_RECV = 3-End-->
 

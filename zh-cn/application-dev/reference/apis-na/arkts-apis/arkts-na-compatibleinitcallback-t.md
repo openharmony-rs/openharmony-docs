@@ -10,6 +10,8 @@ export type CompatibleInitCallback = (parent: ESValue) => CompatibleComponentInf
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-export type CompatibleInitCallback = (parent: ESValue) => CompatibleComponentInfo--><!--Device-unnamed-export type CompatibleInitCallback = (parent: ESValue) => CompatibleComponentInfo-End-->
@@ -20,11 +22,11 @@ export type CompatibleInitCallback = (parent: ESValue) => CompatibleComponentInf
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| parent | ESValue | 是 | the parent of compatible custom component  |
+| parent | ESValue | 是 | the parent of compatible custom component |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 占位组件的信息。 |
+| [CompatibleComponentInfo](arkts-na-interop-compatiblecomponentinfo-i.md) | 占位组件的信息。 |
 

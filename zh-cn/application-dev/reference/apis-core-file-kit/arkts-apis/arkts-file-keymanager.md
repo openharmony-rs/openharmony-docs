@@ -1,10 +1,24 @@
 # @ohos.file.keyManager
 
-该模块提供用户密钥管理相关的常用功能：包括用户密钥卸载等。 > **说明：** > > - 当前页面仅包含本模块的系统接口。
+/*
+ Copyright (c) 2024-2026 Huawei Device Co., Ltd.
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ http://www.apache.org/licenses/LICENSE-2.0
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ /
 
-**起始版本：** 15
 
-**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-declare namespace keyManager--><!--Device-unnamed-declare namespace keyManager-End-->
 
@@ -17,6 +31,6 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [deactivateUserKey](arkts-corefile-keymanager-deactivateuserkey-f-sys.md#deactivateuserkey) | 用户锁屏时，同步卸载指定用户对应密钥。**（该接口目前仅开放给锁屏应用）** |
+| [deactivateUserKey](arkts-corefile-keymanager-deactivateuserkey-f-sys.md#deactivateUserKey) | 用户锁屏时，同步卸载指定用户对应密钥。**（该接口目前仅开放给锁屏应用）** |
 <!--DelEnd-->
 

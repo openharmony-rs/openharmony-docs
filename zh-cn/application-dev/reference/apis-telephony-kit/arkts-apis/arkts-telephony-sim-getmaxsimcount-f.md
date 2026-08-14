@@ -8,9 +8,11 @@ function getMaxSimCount(): int
 
 Obtains the maximum number of SIM cards that can be used simultaneously on the device, that is, the maximum number of SIM card slots.
 
-**起始版本：** 7
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-sim-function getMaxSimCount(): int--><!--Device-sim-function getMaxSimCount(): int-End-->
 
@@ -20,9 +22,9 @@ Obtains the maximum number of SIM cards that can be used simultaneously on the d
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | Returns the maximum number of SIM card slots. |
+| int | Returns the maximum number of SIM card slots. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { sim } from '@kit.TelephonyKit';

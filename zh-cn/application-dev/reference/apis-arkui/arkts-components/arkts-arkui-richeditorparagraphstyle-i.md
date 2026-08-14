@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface RichEditorParagraphStyle--><!--Device-unnamed-declare interface RichEditorParagraphStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -18,11 +20,13 @@ leadingMargin?: Dimension | LeadingMarginPlaceholder
 
 设置文本段落缩进，当段落仅存在ImageSpan或BuilderSpan时，此属性值不生效。参数为Dimension类型时，不支持以Percentage形式设置，默认单位为vp。默认值：{"size": ["0.00px","0.00px"]}
 
-**类型：** Dimension \| LeadingMarginPlaceholder
+**类型：** Dimension \| [LeadingMarginPlaceholder](arkts-arkui-leadingmarginplaceholder-i.md)
 
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,6 +50,8 @@ lineBreakStrategy?: LineBreakStrategy
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -68,6 +74,8 @@ paragraphSpacing?: number
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
@@ -82,13 +90,15 @@ paragraphSpacing?: number
 shaderStyle?: ShaderStyle
 ```
 
-设置文本着色器效果。 默认值：undefined，不设置着色器效果。 该接口与[RichEditorTextStyle]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_中的strokeWidth同时设置时，该接口不生效，shaderStyle的优先级高于 [RichEditorTextStyle]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_的fontColor。
+设置文本着色器效果。 默认值：undefined，不设置着色器效果。 该接口与[RichEditorTextStyle](arkts-arkui-richeditortextstyle-i.md#RichEditorTextStyle)中的strokeWidth同时设置时，该接口不生效，shaderStyle的优先级高于 [RichEditorTextStyle](arkts-arkui-richeditortextstyle-i.md#RichEditorTextStyle)的fontColor。
 
 **类型：** ShaderStyle
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -112,6 +122,8 @@ textAlign?: TextAlign
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -133,6 +145,8 @@ textDirection?: TextDirection
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -156,6 +170,8 @@ textVerticalAlign?: TextVerticalAlign
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -170,13 +186,15 @@ textVerticalAlign?: TextVerticalAlign
 wordBreak?: WordBreak
 ```
 
-设置断行规则。 默认值：WordBreak.BREAK\_WORD。
+设置断行规则。 默认值：WordBreak.BREAK_WORD。
 
 **类型：** WordBreak
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

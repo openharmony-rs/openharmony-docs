@@ -4,7 +4,9 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-backgroundTaskManager-export enum ContinuousTaskDetailedCancelReason--><!--Device-backgroundTaskManager-export enum ContinuousTaskDetailedCancelReason-End-->
 
@@ -20,7 +22,9 @@ USER_CANCEL_REMOVE_NOTIFICATION = 3
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -34,11 +38,13 @@ USER_CANCEL_REMOVE_NOTIFICATION = 3
 SYSTEM_CANCEL_DATA_TRANSFER_LOW_SPEED = 4
 ```
 
-申请DATA\_TRANSFER类型长时任务，但是数据传输速率低。
+申请DATA_TRANSFER类型长时任务，但是数据传输速率低。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -52,11 +58,13 @@ SYSTEM_CANCEL_DATA_TRANSFER_LOW_SPEED = 4
 SYSTEM_CANCEL_AUDIO_PLAYBACK_NOT_RUNNING = 6
 ```
 
-申请AUDIO\_PLAYBACK类型长时任务，但是未播放音视频。
+申请AUDIO_PLAYBACK类型长时任务，但是未播放音视频。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -70,11 +78,13 @@ SYSTEM_CANCEL_AUDIO_PLAYBACK_NOT_RUNNING = 6
 SYSTEM_CANCEL_AUDIO_RECORDING_NOT_RUNNING = 7
 ```
 
-申请AUDIO\_RECORDING类型长时任务，但是未录制。
+申请AUDIO_RECORDING类型长时任务，但是未录制。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -92,7 +102,9 @@ SYSTEM_CANCEL_NOT_USE_LOCATION = 8
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -106,11 +118,13 @@ SYSTEM_CANCEL_NOT_USE_LOCATION = 8
 SYSTEM_CANCEL_NOT_USE_BLUETOOTH = 9
 ```
 
-申请BLUETOOTH\_INTERACTION类型长时任务，但是未使用蓝牙相关业务。
+申请BLUETOOTH_INTERACTION类型长时任务，但是未使用蓝牙相关业务。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -124,11 +138,13 @@ SYSTEM_CANCEL_NOT_USE_BLUETOOTH = 9
 SYSTEM_CANCEL_NOT_USE_MULTI_DEVICE = 10
 ```
 
-申请MULTI\_DEVICE\_CONNECTION类型长时任务，但是未使用多设备互联。
+申请MULTI_DEVICE_CONNECTION类型长时任务，但是未使用多设备互联。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -142,11 +158,13 @@ SYSTEM_CANCEL_NOT_USE_MULTI_DEVICE = 10
 SYSTEM_CANCEL_USE_ILLEGALLY = 11
 ```
 
-使用非法类型的长时任务，如申请AUDIO\_PLAYBACK类型长时任务，但是使用音视频播放及定位导航业务。
+使用非法类型的长时任务，如申请AUDIO_PLAYBACK类型长时任务，但是使用音视频播放及定位导航业务。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -160,11 +178,13 @@ SYSTEM_CANCEL_USE_ILLEGALLY = 11
 SYSTEM_CANCEL_DATA_TRANSFER_NOT_UPDATE = 12
 ```
 
-申请DATA\_TRANSFER类型长时任务，但是进度长时间（首次更新超过10分钟）未更新。
+申请DATA_TRANSFER类型长时任务，但是进度长时间（首次更新超过10分钟）未更新。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -182,7 +202,9 @@ SYSTEM_CANCEL_VOIP_NOT_RUNNING = 13
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -200,7 +222,9 @@ SYSTEM_CANCEL_USER_UNAUTHORIZED = 14
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

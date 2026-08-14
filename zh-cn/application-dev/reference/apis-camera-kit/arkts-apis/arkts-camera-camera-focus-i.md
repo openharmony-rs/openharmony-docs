@@ -1,34 +1,32 @@
 # Focus
 
-Focus继承自[FocusQuery]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。 对焦类，对设备对焦操作。
+Focus继承自[FocusQuery](arkts-camera-camera-focusquery-i.md#FocusQuery)。 对焦类，对设备对焦操作。
 
-**继承/实现关系：** Focus extends [FocusQuery](arkts-camera-camera-focusquery-i.md)
+**继承/实现关系：** Focus extends [FocusQuery](arkts-camera-camera-focusquery-i.md#FocusQuery)
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-<!--Device-camera-interface Focus extends FocusQuery--><!--Device-camera-interface Focus extends FocusQuery-End-->
+**废弃版本：** -1
+
+<!--Device-camera-interface Focus--><!--Device-camera-interface Focus-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 ## getFocalLength
 
-ArkTS-Dyn:
-```TypeScript
-getFocalLength(): number
-```
-
-ArkTS-Sta:
 ```TypeScript
 getFocalLength(): double
 ```
 
 查询当前的焦距值。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
@@ -40,7 +38,7 @@ getFocalLength(): double
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：double | 用于获取当前焦距，单位mm。接口调用失败会返回相应错误码，错误码类型[CameraErrorCode]{ |
+| double | 用于获取当前焦距，单位mm。接口调用失败会返回相应错误码，错误码类型[CameraErrorCode]{ |
 
 **错误码：**
 
@@ -56,9 +54,11 @@ getFocusMode(): FocusMode
 
 获取当前的对焦模式。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
@@ -70,7 +70,7 @@ getFocusMode(): FocusMode
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 获取当前设备的焦距模式。接口调用失败会抛出相应错误码并返回undefined，错误码类型 |
+| FocusMode | 获取当前设备的焦距模式。接口调用失败会抛出相应错误码并返回undefined，错误码类型 [CameraErrorCode]{ |
 
 **错误码：**
 
@@ -86,9 +86,11 @@ getFocusPoint(): Point
 
 查询当前的焦点。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
@@ -100,7 +102,7 @@ getFocusPoint(): Point
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 用于获取当前的焦点。接口调用失败会返回相应错误码，错误码类型为[CameraErrorCode]{ |
+| Point | 用于获取当前的焦点。接口调用失败会返回相应错误码，错误码类型为[CameraErrorCode]{ |
 
 **错误码：**
 
@@ -118,7 +120,9 @@ lockFocusTracking(focusPoint: Point): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -132,7 +136,7 @@ lockFocusTracking(focusPoint: Point): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| focusPoint | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 锁定对焦跟踪点。x、y的取值范围均为 [0, 1]，超出范围则设置不生效。(0, 0)表示画面左上角，(1, 1)表示画面右下角。 |
+| focusPoint | Point | 是 | 锁定对焦跟踪点。x、y的取值范围均为 [0, 1]，超出范围则设置不生效。(0, 0)表示画面左上角，(1, 1)表示画面右下角。 |
 
 **错误码：**
 
@@ -147,11 +151,13 @@ lockFocusTracking(focusPoint: Point): void
 setFocusMode(afMode: FocusMode): void
 ```
 
-设置对焦模式。 进行设置之前，需要先检查设备是否支持指定的焦距模式，可使用方法[isFocusModeSupported]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+设置对焦模式。 进行设置之前，需要先检查设备是否支持指定的焦距模式，可使用方法[isFocusModeSupported](arkts-camera-camera-focusquery-i.md#isFocusModeSupported)。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
@@ -163,7 +169,7 @@ setFocusMode(afMode: FocusMode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| afMode | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 指定的焦距模式。传参为null或者undefined，作为0处理，手动对焦模式。 |
+| afMode | FocusMode | 是 | 指定的焦距模式。传参为null或者undefined，作为0处理，手动对焦模式。 |
 
 **错误码：**
 
@@ -179,9 +185,11 @@ setFocusPoint(point: Point): void
 
 设置焦点，焦点应在0-1坐标系内，该坐标系左上角为{0，0}，右下角为{1，1}。 此坐标系是以设备充电口在右侧时的横向设备方向为基准的，例如应用的预览界面布局以设备充电口在下侧时的竖向方向为基准，布局宽高为{w，h}，且触碰点为{x，y}，则转换后的坐标点为{y/h，1-x/w}。
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
@@ -193,7 +201,7 @@ setFocusPoint(point: Point): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| point | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 焦点。x、y设置范围应在[0，1]之内，超过范围，如果小于0设置0，大于1设置1。 |
+| point | Point | 是 | 焦点。x、y设置范围应在[0，1]之内，超过范围，如果小于0设置0，大于1设置1。 |
 
 **错误码：**
 
@@ -211,7 +219,9 @@ unlockFocusTracking(): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

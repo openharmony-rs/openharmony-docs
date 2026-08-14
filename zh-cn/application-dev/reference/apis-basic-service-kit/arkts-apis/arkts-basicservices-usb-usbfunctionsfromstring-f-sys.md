@@ -14,7 +14,7 @@ function usbFunctionsFromString(funcs: string): number
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.usbFunctionsFromString](arkts-basicservices-usbmanager-usbfunctionsfromstring-f-sys.md#usbfunctionsfromstring)
+**替代接口：** [usbFunctionsFromString](arkts-basicservices-usbmanager-usbfunctionsfromstring-f-sys.md#usbFunctionsFromString（系统接口）)
 
 <!--Device-usb-function usbFunctionsFromString(funcs: string): number--><!--Device-usb-function usbFunctionsFromString(funcs: string): number-End-->
 
@@ -34,7 +34,7 @@ function usbFunctionsFromString(funcs: string): number
 | --- | --- |
 | number | 转化后的功能列表对应的数字掩码。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 let funcs = "acm";

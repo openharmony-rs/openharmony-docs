@@ -6,7 +6,7 @@ typedef struct OH_Drawing_FontFallbackGroup {...} OH_Drawing_FontFallbackGroup
 
 ## 概述
 
-This struct describes the information about a font fallback group.
+备用字体集信息结构体。
 
 **起始版本：** 12
 
@@ -20,8 +20,8 @@ This struct describes the information about a font fallback group.
 
 | 名称 | 描述 |
 | -- | -- |
-| char* groupName | Pointer to the name of the group corresponding to the font fallback group. If null is passed in, all fonts inthe font fallback group can be used. |
-| size_t fallbackInfoSize | Number of font fallbacks. |
-| [OH_Drawing_FontFallbackInfo*](capi-drawing-oh-drawing-fontfallbackinfo.md) fallbackInfoSet | Pointer to the set of font fallbacks. |
+| char* groupName | 备用字体集所对应的字体集名称，如果值为空，表示可以使用备用字体集列表中所有的字体。 |
+| size_t fallbackInfoSize | 备用字体集数量。 |
+| [OH_Drawing_FontFallbackInfo*](capi-drawing-oh-drawing-fontfallbackinfo.md) fallbackInfoSet | 备用字体集列表。 |
 
 

@@ -2,9 +2,11 @@
 
 设置AVRecorder的水印配置。水印位置从左上角开始计算。
 
-**起始版本：** 13
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为13；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-interface WatermarkConfig--><!--Device-unnamed-interface WatermarkConfig-End-->
 
@@ -22,9 +24,11 @@ left: int
 
 **类型：** int
 
-**起始版本：** 13
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为13；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WatermarkConfig-left: int--><!--Device-WatermarkConfig-left: int-End-->
 
@@ -42,9 +46,11 @@ top: int
 
 **类型：** int
 
-**起始版本：** 13
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为13；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WatermarkConfig-top: int--><!--Device-WatermarkConfig-top: int-End-->
 

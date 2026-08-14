@@ -8,6 +8,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface CalendarOptions--><!--Device-unnamed-declare interface CalendarOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -26,6 +28,8 @@ disabledDateRange?: DateRange[]
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
@@ -40,7 +44,7 @@ disabledDateRange?: DateRange[]
 end?: Date
 ```
 
-设置结束日期。 > 默认值：Date('5000-12-31') > 取值范围：[Date('0001-01-01'), Date('5000-12-31')] > **说明：** 若start日期晚于end日期，则start日期、end日期都设置无效，选中日期为默认值。 > 详见[start和end设置规则]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+设置结束日期。 > 默认值：Date('5000-12-31') > 取值范围：[Date('0001-01-01'), Date('5000-12-31')] > **说明：** 若start日期晚于end日期，则start日期、end日期都设置无效，选中日期为默认值。 > 详见[start和end设置规则](#CalendarOptions)。
 
 **类型：** Date
 
@@ -49,6 +53,8 @@ end?: Date
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -74,6 +80,8 @@ hintRadius?: number | Resource
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -88,7 +96,7 @@ hintRadius?: number | Resource
 selected?: Date
 ```
 
-设置选中项的日期。当需要预设选中日期时传入此参数，不需要预设时使用当前系统日期。选中的日期未设置或日期格式不符合规范则为默认值。选中日期与 start、end参数的配合关系见[start和end设置规则]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。 > 默认值：当前系统日期。 > 取值范围：[Date('0001-01-01'), Date('5000-12-31')]
+设置选中项的日期。当需要预设选中日期时传入此参数，不需要预设时使用当前系统日期。选中的日期未设置或日期格式不符合规范则为默认值。选中日期与 start、end参数的配合关系见[start和end设置规则](#CalendarOptions)。 > 默认值：当前系统日期。 > 取值范围：[Date('0001-01-01'), Date('5000-12-31')]
 
 **类型：** Date
 
@@ -97,6 +105,8 @@ selected?: Date
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -112,7 +122,7 @@ selected?: Date
 start?: Date
 ```
 
-设置开始日期。 > 默认值：Date('0001-01-01') > 取值范围：[Date('0001-01-01'), Date('5000-12-31')] > **说明：** 若start日期晚于end日期，则start日期、end日期都设置无效，选中日期为默认值。 > 详见[start和end设置规则]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+设置开始日期。 > 默认值：Date('0001-01-01') > 取值范围：[Date('0001-01-01'), Date('5000-12-31')] > **说明：** 若start日期晚于end日期，则start日期、end日期都设置无效，选中日期为默认值。 > 详见[start和end设置规则](#CalendarOptions)。
 
 **类型：** Date
 
@@ -121,6 +131,8 @@ start?: Date
 **起始版本：** 18
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

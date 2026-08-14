@@ -1,10 +1,12 @@
 # StringDecoder
 
-Provide the ability to decode binary streams into strings. The supported encoding types include: utf-8, iso-8859-2, koi8-r, macintosh, windows-1250, windows-1251, gbk, gb18030, big5, utf-16be, utf-16 le, etc.
+提供将二进制流解码为字符串的能力。支持以下编码类型：utf-8、iso-8859-2、koi8-r、macintosh、windows-1250、 windows-1251、gbk、gb18030、big5、utf-16be 和 UTF-16le。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 <!--Device-util-class StringDecoder--><!--Device-util-class StringDecoder-End-->
 
@@ -16,11 +18,15 @@ Provide the ability to decode binary streams into strings. The supported encodin
 constructor(encoding?: string)
 ```
 
-The StringDecoder constructor.
+用于创建 **StringDecoder** 实例的构造函数。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-StringDecoder-constructor(encoding?: string)--><!--Device-StringDecoder-constructor(encoding?: string)-End-->
 
@@ -30,7 +36,13 @@ The StringDecoder constructor.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| encoding | string | 否 | Encoding type of the input data.Default: utf8. |
+| encoding | string | 否 | 输入数据的编码类型。默认值为 **utf-8**。 |
+
+## 示例
+
+```TypeScript
+let decoder = new util.StringDecoder();
+```
 
 ## end
 
@@ -38,11 +50,15 @@ The StringDecoder constructor.
 end(chunk?: string | Uint8Array): string
 ```
 
-Returns any remaining input stored in the internal buffer as a string. After end() is called, this object can be reused for new input.
+结束解码过程，并将内部缓存中存储的任何剩余输入作为字符串返回。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-StringDecoder-end(chunk?: string | Uint8Array): string--><!--Device-StringDecoder-end(chunk?: string | Uint8Array): string-End-->
 
@@ -52,13 +68,26 @@ Returns any remaining input stored in the internal buffer as a string. After end
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| chunk | string \| Uint8Array | 否 | The bytes to decode. |
+| chunk | string \| Uint8Array | 否 | 要解码的字符串。默认值为 **undefined**。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | Returns any remaining input stored in the internal buffer as a string. |
+| string | 解码后的字符串。 |
+
+## 示例
+
+```TypeScript
+let decoder = new util.StringDecoder('utf-8');
+let input = new Uint8Array([0xE4, 0xBD, 0xA0, 0xE5, 0xA5, 0xBD]);
+const writeString = decoder.write(input.slice(0, 5));
+const endString = decoder.end(input.slice(5));
+console.info("writeString:", writeString);
+// 输出结果：writeString: 你
+console.info("endString:", endString);
+// 输出结果：endString: 好
+```
 
 ## write
 
@@ -66,11 +95,15 @@ Returns any remaining input stored in the internal buffer as a string. After end
 write(chunk: string | Uint8Array): string
 ```
 
-Returns a decoded string, ensuring that any incomplete multiple byte characters at the end of the Uint8Array are omitted from the returned string and stored in an internal buffer.
+解码字符串。Uint8Array 末尾的任何不完整多字节字符都会从返回的字符串中过滤掉，并存储在内部缓存中以供下次调用使用。
 
-**起始版本：** 23
+**起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-StringDecoder-write(chunk: string | Uint8Array): string--><!--Device-StringDecoder-write(chunk: string | Uint8Array): string-End-->
 
@@ -80,11 +113,21 @@ Returns a decoded string, ensuring that any incomplete multiple byte characters 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| chunk | string \| Uint8Array | 是 | The bytes to decode. |
+| chunk | string \| Uint8Array | 是 | 要解码的字符串。基于输入的编码类型进行解码。如果输入为 Uint8Array 类型， 则正常解码。如果输入为字符串类型，则直接返回该参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | Returns a decoded string. |
+| string | 解码后的字符串。 |
+
+## 示例
+
+```TypeScript
+let decoder = new util.StringDecoder('utf-8');
+let input =  new Uint8Array([0xE4, 0xBD, 0xA0, 0xE5, 0xA5, 0xBD]);
+const decoded = decoder.write(input);
+console.info("decoded:", decoded);
+// 输出结果：decoded: 你好
+```
 

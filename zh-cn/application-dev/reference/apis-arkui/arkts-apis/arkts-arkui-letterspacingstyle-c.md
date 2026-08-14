@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare class LetterSpacingStyle--><!--Device-unnamed-declare class LetterSpacingStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -22,6 +24,8 @@ constructor(value: LengthMetrics)
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -34,7 +38,7 @@ constructor(value: LengthMetrics)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 文本字符间距设置项。如果LengthMetrics的unit值是PERCENT，该设置不生效。 |
+| value | LengthMetrics | 是 | 文本字符间距设置项。如果LengthMetrics的unit值是PERCENT，该设置不生效。 |
 
 ## letterSpacing
 
@@ -42,13 +46,15 @@ constructor(value: LengthMetrics)
 readonly letterSpacing: number
 ```
 
-获取属性字符串的文本字符间距。 单位：\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_
+获取属性字符串的文本字符间距。 单位：[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 **类型：** number
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

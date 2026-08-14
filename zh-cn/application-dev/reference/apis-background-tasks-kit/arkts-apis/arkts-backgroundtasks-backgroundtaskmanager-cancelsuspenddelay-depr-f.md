@@ -14,7 +14,7 @@ function cancelSuspendDelay(requestId: number): void
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.resourceschedule.backgroundTaskManager:backgroundTaskManager.cancelSuspendDelay](arkts-backgroundtasks-backgroundtaskmanager-cancelsuspenddelay-depr-f.md#cancelsuspenddelay)
+**替代接口：** [cancelSuspendDelay](arkts-backgroundtasks-backgroundtaskmanager-cancelsuspenddelay-f.md#cancelSuspendDelay)
 
 <!--Device-backgroundTaskManager-function cancelSuspendDelay(requestId: number): void--><!--Device-backgroundTaskManager-function cancelSuspendDelay(requestId: number): void-End-->
 
@@ -24,9 +24,9 @@ function cancelSuspendDelay(requestId: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| requestId | number | 是 | 延迟挂起的请求ID。这个值通过调用[requestSuspendDelay]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_方法获取。 |
+| requestId | number | 是 | 延迟挂起的请求ID。这个值通过调用 [requestSuspendDelay](arkts-backgroundtasks-backgroundtaskmanager-requestsuspenddelay-depr-f.md#requestSuspendDelay)方法获取。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import backgroundTaskManager from '@ohos.backgroundTaskManager';

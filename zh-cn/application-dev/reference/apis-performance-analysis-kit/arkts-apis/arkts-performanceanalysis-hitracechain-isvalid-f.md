@@ -8,9 +8,11 @@ function isValid(id: HiTraceId): boolean
 
 判断HiTraceId是否有效，同步接口。
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-hiTraceChain-function isValid(id: HiTraceId): boolean--><!--Device-hiTraceChain-function isValid(id: HiTraceId): boolean-End-->
 
@@ -20,7 +22,7 @@ function isValid(id: HiTraceId): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 需要判断是否有效的HiTraceId实例。 |
+| id | [HiTraceId](arkts-performanceanalysis-hitracechain-hitraceid-i.md) | 是 | 需要判断是否有效的HiTraceId实例。 |
 
 **返回值：**
 
@@ -28,7 +30,7 @@ function isValid(id: HiTraceId): boolean
 | --- | --- |
 | boolean | true：HiTraceId有效；false：HiTraceId无效。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 // 开始跟踪，跟踪标志是DEFAULT。

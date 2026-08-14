@@ -6,6 +6,8 @@ Represents a full drawing result.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-webview-interface SnapshotResult--><!--Device-webview-interface SnapshotResult-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -23,6 +25,8 @@ Id of the snapshot.
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SnapshotResult-id?: string--><!--Device-SnapshotResult-id?: string-End-->
 
@@ -42,6 +46,8 @@ Full drawing result in image.PixelMap format.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-SnapshotResult-imagePixelMap?: image.PixelMap--><!--Device-SnapshotResult-imagePixelMap?: image.PixelMap-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -60,6 +66,8 @@ Actual size drawn on the web page. The value is of the number type, and the unit
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-SnapshotResult-size?: SizeOptions--><!--Device-SnapshotResult-size?: SizeOptions-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -77,6 +85,8 @@ The status of the snapshot. The value can be true (normal) or false (failure). I
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SnapshotResult-status?: boolean--><!--Device-SnapshotResult-status?: boolean-End-->
 

@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-batteryInfo-export enum BatteryPluggedType--><!--Device-batteryInfo-export enum BatteryPluggedType-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
@@ -21,6 +23,8 @@ NONE
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-BatteryPluggedType-NONE--><!--Device-BatteryPluggedType-NONE-End-->
 
@@ -38,6 +42,8 @@ AC
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-BatteryPluggedType-AC--><!--Device-BatteryPluggedType-AC-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
@@ -54,6 +60,8 @@ USB
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-BatteryPluggedType-USB--><!--Device-BatteryPluggedType-USB-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
@@ -69,6 +77,8 @@ WIRELESS
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-BatteryPluggedType-WIRELESS--><!--Device-BatteryPluggedType-WIRELESS-End-->
 

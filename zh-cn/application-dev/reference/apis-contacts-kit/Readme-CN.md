@@ -6,7 +6,7 @@
 <!--Designer: @yanghaoqian-->
 <!--Tester: @shangzhijie-->
 <!--Adviser: @zhang_yixin13-->
-- ArkTS API<!--contacts-arkts-->
-  - [@ohos.contact (联系人)](js-apis-contact.md)
+
+- [ArkTS API](arkts-apis/Readme-CN.md)<!--arkts-contactskit-->
 - 错误码<!--contacts-arkts-errcode-->
   - [Contacts错误码](errorcode-contacts.md)

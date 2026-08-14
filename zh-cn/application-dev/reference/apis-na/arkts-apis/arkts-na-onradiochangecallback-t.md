@@ -10,6 +10,8 @@ export type OnRadioChangeCallback = (isChecked: boolean) => void
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-export type OnRadioChangeCallback = (isChecked: boolean) => void--><!--Device-unnamed-export type OnRadioChangeCallback = (isChecked: boolean) => void-End-->
@@ -20,5 +22,5 @@ export type OnRadioChangeCallback = (isChecked: boolean) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isChecked | boolean | 是 | 单选框的状态。\_\_\_HTML\_TAG\_USD\_0\_\_\_值为true时，表示从未选中变为选中。值为false时，表示从选中变为未选中。  |
+| isChecked | boolean | 是 | 单选框的状态。<br/>值为true时，表示从未选中变为选中。值为false时，表示从选中变为未选中。 |
 

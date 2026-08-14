@@ -1,10 +1,12 @@
 # WebDestroyMode
 
-Enum type supplied to \_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ for indicating the web component destroy mode.
+Enum type supplied to SetWebDestroyMode for indicating the web component destroy mode.
 
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-webview-enum WebDestroyMode--><!--Device-webview-enum WebDestroyMode-End-->
 
@@ -22,6 +24,8 @@ The normal destroy mode, when the web component triggers destroy, the resources 
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-WebDestroyMode-NORMAL_MODE = 0--><!--Device-WebDestroyMode-NORMAL_MODE = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -37,6 +41,8 @@ The fast destroy mode, when the web component triggers destroy, the resources wi
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WebDestroyMode-FAST_MODE = 1--><!--Device-WebDestroyMode-FAST_MODE = 1-End-->
 

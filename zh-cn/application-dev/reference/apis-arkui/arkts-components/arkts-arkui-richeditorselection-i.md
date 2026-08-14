@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface RichEditorSelection--><!--Device-unnamed-declare interface RichEditorSelection-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -24,6 +26,8 @@ selection: [number, number]
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -40,11 +44,13 @@ spans: Array<RichEditorTextSpanResult | RichEditorImageSpanResult>
 
 span信息。
 
-**类型：** Array&lt;RichEditorTextSpanResult \| RichEditorImageSpanResult&gt;
+**类型：** Array&lt;[RichEditorTextSpanResult](arkts-arkui-richeditortextspanresult-i.md) \| [RichEditorImageSpanResult](arkts-arkui-richeditorimagespanresult-i.md)&gt;
 
 **起始版本：** 10
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

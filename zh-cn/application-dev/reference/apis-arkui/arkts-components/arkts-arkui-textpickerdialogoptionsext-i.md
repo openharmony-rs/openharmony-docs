@@ -1,14 +1,16 @@
 # TextPickerDialogOptionsExt
 
-文本选择器弹窗的参数继承自[TextPickerOptions]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+文本选择器弹窗的参数继承自[TextPickerOptions](arkts-arkui-textpickeroptions-i.md#TextPickerOptions)。
 
-**继承/实现关系：** TextPickerDialogOptionsExt extends [TextPickerOptions](../arkts-apis/arkts-arkui-component/textpicker-textpickeroptions-i.md)
+**继承/实现关系：** TextPickerDialogOptionsExt extends [TextPickerOptions](arkts-arkui-textpickeroptions-i.md#TextPickerOptions)
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
-<!--Device-unnamed-declare interface TextPickerDialogOptionsExt extends TextPickerOptions--><!--Device-unnamed-declare interface TextPickerDialogOptionsExt extends TextPickerOptions-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare interface TextPickerDialogOptionsExt--><!--Device-unnamed-declare interface TextPickerDialogOptionsExt-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,13 +20,15 @@
 acceptButtonStyle?: PickerDialogButtonStyle
 ```
 
-设置确认按钮显示样式、重要程度、角色、背景色、圆角、文本颜色、字号、字体粗细、字体样式、字体列表、按钮是否默认响应Enter键。 > **说明：** > > 1. acceptButtonStyle与cancelButtonStyle中最多只能有一个primary字段配置为true，如果同时设置为true，则primary字段不生效， > 保持默认值false。 > > 2. 按钮高度默认40vp，在关怀模式-大字体场景下高度不变，即使按钮样式设置为圆角矩形 > [ROUNDED\_RECTANGLE]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_，呈现效果依然是胶囊型按钮[Capsule]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_。
+设置确认按钮显示样式、重要程度、角色、背景色、圆角、文本颜色、字号、字体粗细、字体样式、字体列表、按钮是否默认响应Enter键。 > **说明：** > > 1. acceptButtonStyle与cancelButtonStyle中最多只能有一个primary字段配置为true，如果同时设置为true，则primary字段不生效， > 保持默认值false。 > > 2. 按钮高度默认40vp，在关怀模式-大字体场景下高度不变，即使按钮样式设置为圆角矩形 > ROUNDED_RECTANGLE，呈现效果依然是胶囊型按钮Capsule。
 
 **类型：** PickerDialogButtonStyle
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -48,6 +52,8 @@ alignment?: DialogAlignment
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -62,7 +68,7 @@ alignment?: DialogAlignment
 backgroundBlurStyle?: BlurStyle
 ```
 
-弹窗背板模糊材质。 > 默认值：BlurStyle.COMPONENT\_ULTRA\_THICK > **说明：** > > 设置为BlurStyle.NONE即可关闭背景虚化。当设置了backgroundBlurStyle为非NONE值时，则不要设置backgroundColor， > 否则显示的颜色将不符合预期效果。
+弹窗背板模糊材质。 > 默认值：BlurStyle.COMPONENT_ULTRA_THICK > **说明：** > > 设置为BlurStyle.NONE即可关闭背景虚化。当设置了backgroundBlurStyle为非NONE值时，则不要设置backgroundColor， > 否则显示的颜色将不符合预期效果。
 
 **类型：** BlurStyle
 
@@ -71,6 +77,8 @@ backgroundBlurStyle?: BlurStyle
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -86,13 +94,15 @@ backgroundBlurStyle?: BlurStyle
 backgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 ```
 
-背景模糊效果参数，用于自定义弹窗背景模糊的显示样式，支持配置颜色模式、自适应颜色、缩放比例等属性，实现不同的背景模糊视觉效果。 > **说明：** > > 未设置时沿用backgroundBlurStyle的默认效果（BlurStyle.COMPONENT\_ULTRA\_THICK）；设置后将覆盖backgroundBlurStyle的效果。
+背景模糊效果参数，用于自定义弹窗背景模糊的显示样式，支持配置颜色模式、自适应颜色、缩放比例等属性，实现不同的背景模糊视觉效果。 > **说明：** > > 未设置时沿用backgroundBlurStyle的默认效果（BlurStyle.COMPONENT_ULTRA_THICK）；设置后将覆盖backgroundBlurStyle的效果。
 
 **类型：** BackgroundBlurStyleOptions
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -118,6 +128,8 @@ backgroundColor?: ResourceColor
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -139,6 +151,8 @@ backgroundEffect?: BackgroundEffectOptions
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -164,6 +178,8 @@ canLoop?: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -178,13 +194,15 @@ canLoop?: boolean
 cancelButtonStyle?: PickerDialogButtonStyle
 ```
 
-设置取消按钮显示样式、重要程度、角色、背景色、圆角、文本颜色、字号、字体粗细、字体样式、字体列表、按钮是否默认响应Enter键。 > **说明：** > > 1. acceptButtonStyle与cancelButtonStyle中最多只能有一个primary字段配置为true，如果同时设置为true，则primary字段不生效， > 保持默认值false。 > > 2. 按钮高度默认40vp，在关怀模式-大字体场景下高度不变，即使按钮样式设置为圆角矩形 > [ROUNDED\_RECTANGLE]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_，呈现效果依然是胶囊型按钮[Capsule]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_。
+设置取消按钮显示样式、重要程度、角色、背景色、圆角、文本颜色、字号、字体粗细、字体样式、字体列表、按钮是否默认响应Enter键。 > **说明：** > > 1. acceptButtonStyle与cancelButtonStyle中最多只能有一个primary字段配置为true，如果同时设置为true，则primary字段不生效， > 保持默认值false。 > > 2. 按钮高度默认40vp，在关怀模式-大字体场景下高度不变，即使按钮样式设置为圆角矩形 > ROUNDED_RECTANGLE，呈现效果依然是胶囊型按钮Capsule。
 
 **类型：** PickerDialogButtonStyle
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -200,13 +218,15 @@ cancelButtonStyle?: PickerDialogButtonStyle
 defaultPickerItemHeight?: number | string
 ```
 
-设置选择器中选项的高度。number类型取值范围：[0, +∞)，string类型仅支持number类型取值的字符串形式，例如"56"。 > 默认值：选中项56vp，非选中项36vp。设置该参数后，选中项与非选中项的高度均为所设置的值。 > **说明：** > > 当defaultPickerItemHeight的值为负数时，使用默认值。
+设置选择器中选项的高度。number类型取值范围：0, +∞)，string类型仅支持number类型取值的字符串形式，例如"56"。 > 默认值：选中项56vp，非选中项36vp。设置该参数后，选中项与非选中项的高度均为所设置的值。 > **说明：** > > 当defaultPickerItemHeight的值为负数时，使用默认值。
 
 **类型：** number \| string
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -222,13 +242,15 @@ defaultPickerItemHeight?: number | string
 defaultTextStyle?: TextPickerTextStyle
 ```
 
-设置关闭滑动过程中文本样式变化动效时的各个选项的文本样式，仅当disableTextStyleAnimation为true时生效。 默认值：与[Text]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_组件默认值相同。
+设置关闭滑动过程中文本样式变化动效时的各个选项的文本样式，仅当disableTextStyleAnimation为true时生效。 默认值：与[Text组件默认值相同。
 
-**类型：** TextPickerTextStyle
+**类型：** [TextPickerTextStyle](arkts-arkui-textpickertextstyle-i.md)
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -244,13 +266,15 @@ defaultTextStyle?: TextPickerTextStyle
 disableTextStyleAnimation?: boolean
 ```
 
-设置是否关闭滑动过程中文本样式变化的动效。 - true：关闭文本样式变化动效。 - false：不关闭文本样式变化动效。 > 默认值：false > **说明：** > > 设置为true时，滑动过程中无字号、字重、字体颜色等变化动效，且文本均显示为defaultTextStyle属性设置的样式。如未设置defaultTextStyle， > 则显示为[Text]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_组件默认样式。
+设置是否关闭滑动过程中文本样式变化的动效。 - true：关闭文本样式变化动效。 - false：不关闭文本样式变化动效。 > 默认值：false > **说明：** > > 设置为true时，滑动过程中无字号、字重、字体颜色等变化动效，且文本均显示为defaultTextStyle属性设置的样式。如未设置defaultTextStyle， > 则显示为Text组件默认样式。
 
 **类型：** boolean
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -266,13 +290,15 @@ disableTextStyleAnimation?: boolean
 disappearTextStyle?: TextPickerTextStyle
 ```
 
-设置边缘项（以选中项为基准向上或向下的第二项）的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。 > 默认值： > > \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_{ > \_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_color: '#ff182431', > \_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_font: { > \_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_size: '14fp', > \_\_\_HTML\_TAG\_DESC\_USD\_4\_\_\_weight: FontWeight.Regular > \_\_\_HTML\_TAG\_DESC\_USD\_5\_\_\_}, > \_\_\_HTML\_TAG\_DESC\_USD\_6\_\_\_minFontSize: 0, > \_\_\_HTML\_TAG\_DESC\_USD\_7\_\_\_maxFontSize: 0, > \_\_\_HTML\_TAG\_DESC\_USD\_8\_\_\_overflow: TextOverflow.CLIP > \_\_\_HTML\_TAG\_DESC\_USD\_9\_\_\_}
+设置边缘项（以选中项为基准向上或向下的第二项）的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。 > 默认值： > > &lt;br&gt;{ > &lt;br&gt;color: '#ff182431', > &lt;br&gt;font: { > &lt;br&gt;size: '14fp', > &lt;br&gt;weight: FontWeight.Regular > &lt;br&gt;}, > &lt;br&gt;minFontSize: 0, > &lt;br&gt;maxFontSize: 0, > &lt;br&gt;overflow: TextOverflow.CLIP > &lt;br&gt;}
 
-**类型：** TextPickerTextStyle
+**类型：** [TextPickerTextStyle](arkts-arkui-textpickertextstyle-i.md)
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -288,7 +314,7 @@ disappearTextStyle?: TextPickerTextStyle
 enableHapticFeedback?: boolean
 ```
 
-设置是否开启触控反馈。 - true：开启触控反馈。 - false：不开启触控反馈。 > 默认值：true > **说明**： > > 1. 设置为true后，其生效情况取决于系统的硬件是否支持。 > 2. 开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下： > > "requestPermissions": [{"name": "ohos.permission.VIBRATE"}]
+设置是否开启触控反馈。 - true：开启触控反馈。 - false：不开启触控反馈。 > 默认值：true > **说明：** > > 1. 设置为true后，其生效情况取决于系统的硬件是否支持。 > 2. 开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下： > > "requestPermissions": [{"name": "ohos.permission.VIBRATE"}]
 
 **类型：** boolean
 
@@ -297,6 +323,8 @@ enableHapticFeedback?: boolean
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -322,6 +350,8 @@ enableHoverMode?: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -336,7 +366,7 @@ enableHoverMode?: boolean
 hoverModeArea?: HoverModeAreaType
 ```
 
-设置悬停态下弹窗默认展示区域，仅在enableHoverMode为true时生效。 默认值：HoverModeAreaType.BOTTOM\_SCREEN
+设置悬停态下弹窗默认展示区域，仅在enableHoverMode为true时生效。 默认值：HoverModeAreaType.BOTTOM_SCREEN
 
 **类型：** HoverModeAreaType
 
@@ -345,6 +375,8 @@ hoverModeArea?: HoverModeAreaType
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -368,6 +400,8 @@ maskRect?: Rectangle
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -390,6 +424,8 @@ offset?: Offset
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -406,11 +442,13 @@ onAccept?: Callback<TextPickerResult>
 
 点击弹窗中的“确定”按钮时触发该回调。
 
-**类型：** Callback&lt;TextPickerResult&gt;
+**类型：** Callback&lt;[TextPickerResult](arkts-arkui-textpickerresult-i.md)&gt;
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -434,6 +472,8 @@ onCancel?: VoidCallback
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -450,11 +490,13 @@ onChange?: Callback<TextPickerResult>
 
 滑动弹窗中的选择器后，选项归位至选中项位置时，触发该回调，用于获取最终选择结果。 回调会在滑动动画结束后触发，如果需要快速获取索引值变化，建议使用onEnterSelectedArea接口。
 
-**类型：** Callback&lt;TextPickerResult&gt;
+**类型：** Callback&lt;[TextPickerResult](arkts-arkui-textpickerresult-i.md)&gt;
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -478,6 +520,8 @@ onDidAppear?: VoidCallback
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -500,6 +544,8 @@ onDidDisappear?: VoidCallback
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -516,11 +562,13 @@ onEnterSelectedArea?: Callback<TextPickerResult>
 
 滑动过程中，选项进入分割线区域内，触发该回调。与onChange事件的差别在于，该事件的触发时机早于onChange事件，当当前滑动列滑动距离超过选中项 高度的一半时，选项此时已经进入分割线区域内，会触发该事件。 > **说明：** > > 在多列联动场景中，不建议使用该回调，由于该回调标识的是滑动过程中选项进入分割线区域内的节点，而跟随变化的选项并不涉及滑动，因此， > 回调的返回值中，仅当前滑动列的值会正常变化，其余未滑动列的值保持不变。
 
-**类型：** Callback&lt;TextPickerResult&gt;
+**类型：** Callback&lt;[TextPickerResult](arkts-arkui-textpickerresult-i.md)&gt;
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -538,11 +586,13 @@ onScrollStop?: Callback<TextPickerResult>
 
 滑动弹窗中的选择器的选择列停止时，触发该回调，用于监听物理滑动停止事件。两者触发时机略有不同，onChange侧重于选项选中状态， onScrollStop侧重于滑动动作结束。
 
-**类型：** Callback&lt;TextPickerResult&gt;
+**类型：** Callback&lt;[TextPickerResult](arkts-arkui-textpickerresult-i.md)&gt;
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -566,6 +616,8 @@ onWillAppear?: VoidCallback
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -588,6 +640,8 @@ onWillDisappear?: VoidCallback
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -602,15 +656,17 @@ onWillDisappear?: VoidCallback
 selectedBackgroundStyle?: PickerBackgroundStyle
 ```
 
-设置选中项背景样式。 > 默认值： > > \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_{ > \_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_color: \$r('sys.color.comp\_background\_tertiary'), > \_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_borderRadius: \$r('sys.float.corner\_radius\_level12') > \_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_}
+设置选中项背景样式。 > 默认值： > > &lt;br&gt;{ > &lt;br&gt;color: \$r('sys.color.comp_background_tertiary'), > &lt;br&gt;borderRadius: \$r('sys.float.corner_radius_level12') > &lt;br&gt;}
 
-**类型：** PickerBackgroundStyle
+**类型：** [PickerBackgroundStyle](arkts-arkui-pickerbackgroundstyle-i.md)
 
 **默认值：** { color: $r('sys.color.comp_background_tertiary'), borderRadius: $r('sys.float.corner_radius_level12') }
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -626,13 +682,15 @@ selectedBackgroundStyle?: PickerBackgroundStyle
 selectedTextStyle?: TextPickerTextStyle
 ```
 
-设置选中项的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。 > 默认值： > > \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_{ > \_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_color: '#ff007dff', > \_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_font: { > \_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_size: '20fp', > \_\_\_HTML\_TAG\_DESC\_USD\_4\_\_\_weight: FontWeight.Medium > \_\_\_HTML\_TAG\_DESC\_USD\_5\_\_\_}, > \_\_\_HTML\_TAG\_DESC\_USD\_6\_\_\_minFontSize: 0, > \_\_\_HTML\_TAG\_DESC\_USD\_7\_\_\_maxFontSize: 0, > \_\_\_HTML\_TAG\_DESC\_USD\_8\_\_\_overflow: TextOverflow.CLIP > \_\_\_HTML\_TAG\_DESC\_USD\_9\_\_\_}
+设置选中项的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。 > 默认值： > > &lt;br&gt;{ > &lt;br&gt;color: '#ff007dff', > &lt;br&gt;font: { > &lt;br&gt;size: '20fp', > &lt;br&gt;weight: FontWeight.Medium > &lt;br&gt;}, > &lt;br&gt;minFontSize: 0, > &lt;br&gt;maxFontSize: 0, > &lt;br&gt;overflow: TextOverflow.CLIP > &lt;br&gt;}
 
-**类型：** TextPickerTextStyle
+**类型：** [TextPickerTextStyle](arkts-arkui-textpickertextstyle-i.md)
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -648,13 +706,15 @@ selectedTextStyle?: TextPickerTextStyle
 shadow?: ShadowOptions | ShadowStyle
 ```
 
-设置弹窗背板的阴影。 当设备为2in1时，默认场景下获焦阴影值为ShadowStyle.OUTER\_FLOATING\_MD，失焦为ShadowStyle.OUTER\_FLOATING\_SM
+设置弹窗背板的阴影。 当设备为2in1时，默认场景下获焦阴影值为ShadowStyle.OUTER_FLOATING_MD，失焦为ShadowStyle.OUTER_FLOATING_SM
 
 **类型：** ShadowOptions \| ShadowStyle
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -670,13 +730,15 @@ shadow?: ShadowOptions | ShadowStyle
 systemMaterial?: SystemUiMaterial
 ```
 
-设置弹窗的系统材质。当需要使用系统预定义的材质效果以快速实现统一的视觉效果时设置此参数。 > **说明：** > > - 默认值为ImmersiveOptions的style为ImmersiveStyle.ULTRA\_THICK的ImmersiveMaterial对象，设置undefined时与默认值保持一致。 > 不同的材质具有不同的效果。 > - 该接口影响背景色[backgroundColor]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_、背景模糊 > [backgroundBlurStyle] > \_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_ > 、背景效果[backgroundEffect]\_\_\_JSDOC\_LINK\_DESC\_USD\_2\_\_\_、边框颜色 > [borderColor]\_\_\_JSDOC\_LINK\_DESC\_USD\_3\_\_\_、边框宽度[borderWidth]\_\_\_JSDOC\_LINK\_DESC\_USD\_4\_\_\_、阴影 > [shadow]\_\_\_JSDOC\_LINK\_DESC\_USD\_5\_\_\_，当设置系统材质时，上述接口不生效。
+设置弹窗的系统材质。当需要使用系统预定义的材质效果以快速实现统一的视觉效果时设置此参数。 > **说明：** > > - 默认值为ImmersiveOptions的style为ImmersiveStyle.ULTRA_THICK的ImmersiveMaterial对象，设置undefined时与默认值保持一致。 > 不同的材质具有不同的效果。 > - 该接口影响背景色backgroundColor、背景模糊 > [backgroundBlurStyle] > backgroundBlurStyle > 、背景效果backgroundEffect、边框颜色 > borderColor、边框宽度borderWidth、阴影 > shadow，当设置系统材质时，上述接口不生效。
 
 **类型：** SystemUiMaterial
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -692,13 +754,15 @@ systemMaterial?: SystemUiMaterial
 textStyle?: TextPickerTextStyle
 ```
 
-设置待选项（以选中项为基准向上或向下的第一项）的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。 默认值： \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_{ \_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_color: '#ff182431', \_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_font: { \_\_\_HTML\_TAG\_DESC\_USD\_3\_\_\_size: '16fp', \_\_\_HTML\_TAG\_DESC\_USD\_4\_\_\_weight: FontWeight.Regular \_\_\_HTML\_TAG\_DESC\_USD\_5\_\_\_}, \_\_\_HTML\_TAG\_DESC\_USD\_6\_\_\_minFontSize: 0, \_\_\_HTML\_TAG\_DESC\_USD\_7\_\_\_maxFontSize: 0, \_\_\_HTML\_TAG\_DESC\_USD\_8\_\_\_overflow: TextOverflow.CLIP \_\_\_HTML\_TAG\_DESC\_USD\_9\_\_\_}
+设置待选项（以选中项为基准向上或向下的第一项）的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。 默认值： &lt;br&gt;{ &lt;br&gt;color: '#ff182431', &lt;br&gt;font: { &lt;br&gt;size: '16fp', &lt;br&gt;weight: FontWeight.Regular &lt;br&gt;}, &lt;br&gt;minFontSize: 0, &lt;br&gt;maxFontSize: 0, &lt;br&gt;overflow: TextOverflow.CLIP &lt;br&gt;}
 
-**类型：** TextPickerTextStyle
+**类型：** [TextPickerTextStyle](arkts-arkui-textpickertextstyle-i.md)
 
 **起始版本：** 20
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

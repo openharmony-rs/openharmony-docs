@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-matrix4-export interface Matrix4Transit--><!--Device-matrix4-export interface Matrix4Transit-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -22,6 +24,8 @@ Matrix的叠加函数，可以将两个矩阵的效果叠加起来生成一个�
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-Matrix4Transit-combine(options: Matrix4Transit): Matrix4Transit--><!--Device-Matrix4Transit-combine(options: Matrix4Transit): Matrix4Transit-End-->
@@ -32,13 +36,13 @@ Matrix的叠加函数，可以将两个矩阵的效果叠加起来生成一个�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 待叠加的矩阵对象。 |
+| options | Matrix4Transit | 是 | 待叠加的矩阵对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 矩阵叠加后的对象。 |
+| Matrix4Transit | 矩阵叠加后的对象。 |
 
 ## copy
 
@@ -52,6 +56,8 @@ Matrix的拷贝函数，可以拷贝一份当前的矩阵对象。
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-Matrix4Transit-copy(): Matrix4Transit--><!--Device-Matrix4Transit-copy(): Matrix4Transit-End-->
@@ -62,7 +68,7 @@ Matrix的拷贝函数，可以拷贝一份当前的矩阵对象。
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 当前矩阵的拷贝对象。 |
+| Matrix4Transit | 当前矩阵的拷贝对象。 |
 
 ## invert
 
@@ -76,6 +82,8 @@ Matrix的逆函数，可以返回一个当前矩阵对象的逆矩阵，即效�
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-Matrix4Transit-invert(): Matrix4Transit--><!--Device-Matrix4Transit-invert(): Matrix4Transit-End-->
@@ -86,7 +94,7 @@ Matrix的逆函数，可以返回一个当前矩阵对象的逆矩阵，即效�
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 当前矩阵的逆矩阵对象。 |
+| Matrix4Transit | 当前矩阵的逆矩阵对象。 |
 
 ## rotate
 
@@ -100,6 +108,8 @@ Matrix的旋转函数，可以为当前矩阵增加x轴/y轴/z轴旋转效果。
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-Matrix4Transit-rotate(options: RotateOption): Matrix4Transit--><!--Device-Matrix4Transit-rotate(options: RotateOption): Matrix4Transit-End-->
@@ -110,13 +120,13 @@ Matrix的旋转函数，可以为当前矩阵增加x轴/y轴/z轴旋转效果。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 设置旋转参数。 |
+| options | [RotateOption](arkts-arkui-matrix4-rotateoption-i.md) | 是 | 设置旋转参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 旋转效果后的矩阵对象。 |
+| Matrix4Transit | 旋转效果后的矩阵对象。 |
 
 ## scale
 
@@ -130,6 +140,8 @@ Matrix的缩放函数，可以为当前矩阵增加x轴/y轴/z轴缩放效果。
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-Matrix4Transit-scale(options: ScaleOption): Matrix4Transit--><!--Device-Matrix4Transit-scale(options: ScaleOption): Matrix4Transit-End-->
@@ -140,13 +152,13 @@ Matrix的缩放函数，可以为当前矩阵增加x轴/y轴/z轴缩放效果。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 设置缩放参数。 |
+| options | [ScaleOption](arkts-arkui-matrix4-scaleoption-i.md) | 是 | 设置缩放参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 缩放效果后的矩阵对象。 |
+| Matrix4Transit | 缩放效果后的矩阵对象。 |
 
 ## setPolyToPoly
 
@@ -160,6 +172,8 @@ setPolyToPoly(options: PolyToPolyOptions): Matrix4Transit
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-Matrix4Transit-setPolyToPoly(options: PolyToPolyOptions): Matrix4Transit--><!--Device-Matrix4Transit-setPolyToPoly(options: PolyToPolyOptions): Matrix4Transit-End-->
@@ -170,13 +184,13 @@ setPolyToPoly(options: PolyToPolyOptions): Matrix4Transit
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 映射相关的参数。 |
+| options | [PolyToPolyOptions](arkts-arkui-matrix4-polytopolyoptions-i.md) | 是 | 映射相关的参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 当前矩阵变换后的对象。 |
+| Matrix4Transit | 当前矩阵变换后的对象。 |
 
 ## skew
 
@@ -189,6 +203,8 @@ Matrix的倾斜函数，可以为当前矩阵增加x轴/y轴倾斜效果。会�
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -207,7 +223,7 @@ Matrix的倾斜函数，可以为当前矩阵增加x轴/y轴倾斜效果。会�
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 倾斜效果后的矩阵对象。 |
+| Matrix4Transit | 倾斜效果后的矩阵对象。 |
 
 ## transformPoint
 
@@ -226,6 +242,8 @@ Matrix的坐标点转换函数，可以将当前的变换效果作用到一个�
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -257,6 +275,8 @@ Matrix的平移函数，可以为当前矩阵增加x轴/y轴/z轴平移效果。
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-Matrix4Transit-translate(options: TranslateOption): Matrix4Transit--><!--Device-Matrix4Transit-translate(options: TranslateOption): Matrix4Transit-End-->
@@ -267,11 +287,11 @@ Matrix的平移函数，可以为当前矩阵增加x轴/y轴/z轴平移效果。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 设置平移参数。 |
+| options | [TranslateOption](arkts-arkui-matrix4-translateoption-i.md) | 是 | 设置平移参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 平移效果后的矩阵对象。 |
+| Matrix4Transit | 平移效果后的矩阵对象。 |
 

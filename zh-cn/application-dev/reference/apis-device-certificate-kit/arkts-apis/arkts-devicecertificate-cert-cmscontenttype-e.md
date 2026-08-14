@@ -2,9 +2,11 @@
 
 表示Cms内容类型的枚举。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-cert-enum CmsContentType--><!--Device-cert-enum CmsContentType-End-->
 
@@ -18,11 +20,13 @@ SIGNED_DATA = 0
 
 签名数据。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CmsContentType-SIGNED_DATA = 0--><!--Device-CmsContentType-SIGNED_DATA = 0-End-->
 
@@ -36,11 +40,13 @@ ENVELOPED_DATA = 1
 
 封装数据，包含带认证的封装数据。
 
-**起始版本：** 22
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为22；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CmsContentType-ENVELOPED_DATA = 1--><!--Device-CmsContentType-ENVELOPED_DATA = 1-End-->
 

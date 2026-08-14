@@ -1,14 +1,16 @@
 # WearDetectionResponse
 
-佩戴检测传感器数据，继承于[Response]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+佩戴检测传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md#Response)。
 
-**继承/实现关系：** WearDetectionResponse extends [Response](arkts-sensorservice-sensor-response-i.md)
+**继承/实现关系：** WearDetectionResponse extends [Response](arkts-sensorservice-sensor-response-i.md#Response)
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-<!--Device-sensor-interface WearDetectionResponse extends Response--><!--Device-sensor-interface WearDetectionResponse extends Response-End-->
+**废弃版本：** -1
+
+<!--Device-sensor-interface WearDetectionResponse--><!--Device-sensor-interface WearDetectionResponse-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
@@ -22,9 +24,11 @@ value: double
 
 **类型：** double
 
-**起始版本：** 8
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为8；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WearDetectionResponse-value: double--><!--Device-WearDetectionResponse-value: double-End-->
 

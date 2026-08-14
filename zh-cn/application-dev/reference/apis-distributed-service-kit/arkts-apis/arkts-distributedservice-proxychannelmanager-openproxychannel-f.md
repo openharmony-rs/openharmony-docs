@@ -8,9 +8,11 @@ function openProxyChannel(channelInfo: ChannelInfo): Promise<int>
 
 打开代理通道，使用Promise异步回调返回结果。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
@@ -24,28 +26,28 @@ function openProxyChannel(channelInfo: ChannelInfo): Promise<int>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| channelInfo | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 对端设备及服务的MAC和UUID信息。 |
+| channelInfo | [ChannelInfo](arkts-distributedservice-proxychannelmanager-channelinfo-i.md) | 是 | 对端设备及服务的MAC和UUID信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTS-Dyn: Promise&lt;number&gt;  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：Promise&lt;int&gt; | 返回代理通道的channelId，取值范围为1~2147483647。channelId的生命周期和代理通道生命周期相同， |
+| Promise&lt;int&gt; | 返回代理通道的channelId，取值范围为1~2147483647。channelId的生命周期和代理通道生命周期相同， 不关闭代理时，传入相同入参将返回相同channelId。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because bluetooth proxy function has been trimmed.\_\_\_HTML\_TAG\_USD\_0\_\_\_**适用版本：** 26.0.0+ |
-| [32390001](../../apis-distributedservice-kit/errorcode-proxyChannelManager.md#32390001-蓝牙已关闭) | BR is disabled. |
-| [32390002](../../apis-distributedservice-kit/errorcode-proxyChannelManager.md#32390002-设备未配对) | Device not paired. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because bluetooth proxy function has been trimmed.<br>**适用版本：** 26.0.0+ |
 | [32390006](../../apis-distributedservice-kit/errorcode-proxyChannelManager.md#32390006-参数错误) | Parameter error. |
+| [32390102](../../apis-distributedservice-kit/errorcode-proxyChannelManager.md#32390102-操作失败或者连接超时) | Operation failed or Connection timed out. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [32390100](../../apis-distributedservice-kit/errorcode-proxyChannelManager.md#32390100-内部异常) | Internal error. |
 | [32390101](../../apis-distributedservice-kit/errorcode-proxyChannelManager.md#32390101-调用受限) | Call is restricted. |
-| [32390102](../../apis-distributedservice-kit/errorcode-proxyChannelManager.md#32390102-操作失败或者连接超时) | Operation failed or Connection timed out. |
+| [32390002](../../apis-distributedservice-kit/errorcode-proxyChannelManager.md#32390002-设备未配对) | Device not paired. |
+| [32390001](../../apis-distributedservice-kit/errorcode-proxyChannelManager.md#32390001-蓝牙已关闭) | BR is disabled. |
 
-**示例：**
+## 示例
 
 ArkTS-Dyn示例:
 

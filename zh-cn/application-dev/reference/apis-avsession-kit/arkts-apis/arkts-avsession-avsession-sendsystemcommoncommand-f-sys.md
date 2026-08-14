@@ -10,7 +10,9 @@ function sendSystemCommonCommand(command: string, args: ExtraInfo): Promise<stri
 
 **起始版本：** 24
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -27,7 +29,7 @@ function sendSystemCommonCommand(command: string, args: ExtraInfo): Promise<stri
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | command | string | 是 | 通用的控制命令 |
-| args | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 事件参数 |
+| args | [ExtraInfo](arkts-avsession-avsession-extrainfo-t.md) | 是 | 事件参数 |
 
 **返回值：**
 
@@ -39,9 +41,9 @@ function sendSystemCommonCommand(command: string, args: ExtraInfo): Promise<stri
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600105](../errorcode-avsession.md#6600105-无效会话命令) | Invalid session command. |
 | [6600107](../errorcode-avsession.md#6600107-命令消息过载) | Too many commands or events. |
 

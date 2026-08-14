@@ -2,9 +2,11 @@
 
 标识模块类型。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-bundleManager-export enum ModuleType--><!--Device-bundleManager-export enum ModuleType-End-->
 
@@ -18,9 +20,11 @@ ENTRY = 1
 
 应用的主模块，作为应用的入口，提供了应用的基础功能。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -36,9 +40,11 @@ FEATURE = 2
 
 应用的动态特性模块，作为应用能力的扩展，可以根据用户的需求和设备类型进行选择性安装。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -52,11 +58,13 @@ FEATURE = 2
 SHARED = 3
 ```
 
-应用的\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_模块。
+应用的[动态共享库](../../../quick-start/in-app-hsp.md)模块。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

@@ -6,7 +6,7 @@ typedef struct OH_Drawing_FontFallbackInfo {...} OH_Drawing_FontFallbackInfo
 
 ## 概述
 
-This struct describes the information about a font fallback.
+备用字体信息结构体。
 
 **起始版本：** 12
 
@@ -20,7 +20,7 @@ This struct describes the information about a font fallback.
 
 | 名称 | 描述 |
 | -- | -- |
-| char* language | Pointer to the language supported by the font fallback. The language format is bcp47. |
-| char* familyName | Pointer to the name of a font family. |
+| char* language | 字体集所支持的语言类型，语言格式为bcp47。 |
+| char* familyName | 字体家族名。 |
 
 

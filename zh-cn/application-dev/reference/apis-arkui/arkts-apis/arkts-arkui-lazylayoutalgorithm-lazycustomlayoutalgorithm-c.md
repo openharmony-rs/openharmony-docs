@@ -1,0 +1,103 @@
+# LazyCustomLayoutAlgorithm
+
+自定义懒加载布局算法类。 > **说明：** > > LazyCustomLayoutAlgorithm类对象可以作为 > [LazyDynamicLayout](../../../reference/apis-arkui/arkui-ts/ts-container-lazydynamiclayout.md)组件的入参指定布局算法。
+
+**继承/实现关系：** LazyCustomLayoutAlgorithm implements [LazyLayoutAlgorithm](../../apis-na/arkts-apis/arkts-na-lazylayoutalgorithm-i.md#LazyLayoutAlgorithm)
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
+
+<!--Device-unnamed-export class LazyCustomLayoutAlgorithm--><!--Device-unnamed-export class LazyCustomLayoutAlgorithm-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## constructor
+
+```TypeScript
+constructor(option?: LazyCustomLayoutAlgorithmOptions)
+```
+
+自定义懒加载布局算法类的构造函数。
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LazyCustomLayoutAlgorithm-constructor(option?: LazyCustomLayoutAlgorithmOptions)--><!--Device-LazyCustomLayoutAlgorithm-constructor(option?: LazyCustomLayoutAlgorithmOptions)-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| option | [LazyCustomLayoutAlgorithmOptions](../../apis-na/arkts-apis/arkts-na-lazylayoutalgorithm-lazycustomlayoutalgorithmoptions-i.md) | 否 | 自定义懒加载布局算法的构造入参，设置布局算法的轴向。 |
+
+## onLayout
+
+```TypeScript
+onLayout(self: FrameNode, position: Position): void
+```
+
+通过重写此函数，开发者可以自定义排列子组件的位置。ArkUI框架会在懒加载动态布局组件确定位置时，将该组件对应的FrameNode和布局位置通过onLayout传递给开发者。不允许在onLayout函数中改变状态变量。 > **说明：** > > - 在此函数中，开发者可以调用[FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md#FrameNode)的 > [getChild()](../../apis-na/arkts-apis/arkts-na-framenode-c.md#getChild)方法获取子组件FrameNode，调用 > [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md#FrameNode)的[layout()](../../apis-na/arkts-apis/arkts-na-framenode-c.md#layout)方法设置子组件位置，参考 > LazyDynamicLayout组件 > [示例1（实现懒加载自定义布局）](../../../reference/apis-arkui/arkui-ts/ts-container-lazydynamiclayout.md#示例1实现懒加载自定义布局)。 > > - 在此函数中调用[getChild()](../../apis-na/arkts-apis/arkts-na-framenode-c.md#getChild)方法获取子组件时，必须传入 > [ExpandMode.LAZY_NOT_EXPAND](../../apis-na/arkts-apis/arkts-na-framenode-expandmode-e.md#ExpandMode)，避免全量加载子组件导致懒加载失效。调用 > [getChildrenCount()](../../apis-na/arkts-apis/arkts-na-framenode-c.md#getChildrenCount)方法获取子组件总数时，必须传入 > [ChildrenCountMode.ALL_NOT_EXPAND](../../apis-na/arkts-apis/arkts-na-framenode-childrencountmode-e.md#ChildrenCountMode)，避免获取子组件总数时全量加载子组件导致懒加载失效。
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LazyCustomLayoutAlgorithm-onLayout(self: FrameNode, position: Position): void--><!--Device-LazyCustomLayoutAlgorithm-onLayout(self: FrameNode, position: Position): void-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| self | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 懒加载动态布局组件在组件树上的实体节点。 |
+| position | [Position](arkts-arkui-position-t.md) | 是 | 懒加载动态布局组件进行布局时使用的位置信息。 |
+
+## onMeasure
+
+```TypeScript
+onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelper): void
+```
+
+通过重写此函数，开发者可以自定义测量子组件的大小。ArkUI框架会在懒加载动态布局组件确定尺寸时，将该组件对应的FrameNode、布局约束和懒加载辅助对象通过onMeasure传递给开发者。不允许在onMeasure函数中改 变状态变量。 > **说明：** > > - 在此函数中，开发者可以调用[FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md#FrameNode)的 > [getChild()](../../apis-na/arkts-apis/arkts-na-framenode-c.md#getChild)方法获取子组件FrameNode，调用 > [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md#FrameNode)的[measure()](../../apis-na/arkts-apis/arkts-na-framenode-c.md#measure)方法测量子组件大小，参考 > LazyDynamicLayout组件 > [示例1（实现懒加载自定义布局）](../../../reference/apis-arkui/arkui-ts/ts-container-lazydynamiclayout.md#示例1实现懒加载自定义布局)。 > > - 在此函数中调用[getChild()](../../apis-na/arkts-apis/arkts-na-framenode-c.md#getChild)方法获取子组件时，必须传入 > [ExpandMode.LAZY_NOT_EXPAND](../../apis-na/arkts-apis/arkts-na-framenode-expandmode-e.md#ExpandMode)，避免全量加载子组件导致懒加载失效。调用 > [getChildrenCount()](../../apis-na/arkts-apis/arkts-na-framenode-c.md#getChildrenCount)方法获取子组件总数时，必须传入 > [ChildrenCountMode.ALL_NOT_EXPAND](../../apis-na/arkts-apis/arkts-na-framenode-childrencountmode-e.md#ChildrenCountMode)，避免获取子组件总数时全量加载子组件导致懒加载失效。
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LazyCustomLayoutAlgorithm-onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelper): void--><!--Device-LazyCustomLayoutAlgorithm-onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelper): void-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| self | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 懒加载动态布局组件在组件树上的实体节点。 |
+| constraint | [LayoutConstraint](../../apis-na/arkts-apis/arkts-na-framenode-layoutconstraint-i.md) | 是 | 懒加载动态布局组件进行测量时使用的布局约束。 |
+| helper | [LazyLayoutHelper](../../apis-na/arkts-apis/arkts-na-lazylayoutalgorithm-lazylayouthelper-c.md) | 否 | 懒加载布局辅助对象，提供布局方向和可视区域位置信息。为undefined时表示不支持懒加载。helper为undefined的场景如下： &lt;br&gt;1. 在WaterFlow组件多列模式或分段模式的多列分段下使用时不支持懒加载。 &lt;br&gt;2. 在List组件下使用，当List设置了 lanes、 chainAnimation、scrollSnapAlign属性 中的任意一个时不支持懒加载。 |
+

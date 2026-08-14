@@ -10,6 +10,8 @@ export type OnScrollEdgeCallback = (side: Edge) => void
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-export type OnScrollEdgeCallback = (side: Edge) => void--><!--Device-unnamed-export type OnScrollEdgeCallback = (side: Edge) => void-End-->
@@ -20,5 +22,5 @@ export type OnScrollEdgeCallback = (side: Edge) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| side | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 滚动到的边缘位置。  |
+| side | [Edge](../../apis-arkui/arkts-apis/arkts-arkui-edge-e.md) | 是 | 滚动到的边缘位置。 |
 

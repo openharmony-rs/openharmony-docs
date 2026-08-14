@@ -10,7 +10,9 @@ function getSupportedCloudModel(): Promise<Array<CloudModelInfo>>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -22,9 +24,9 @@ function getSupportedCloudModel(): Promise<Array<CloudModelInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;CloudModelInfo&gt;&gt; | Promise对象，返回支持的云侧模型信息。 |
+| Promise&lt;Array&lt;[CloudModelInfo](arkts-arkdata-intelligence-cloudmodelinfo-i.md)&gt;&gt; | Promise对象，返回支持的云侧模型信息。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 intelligence.getSupportedCloudModel()

@@ -2,13 +2,15 @@
 
 手势识别器对象。
 
-**继承/实现关系：** PanRecognizer extends [GestureRecognizer](arkts-arkui-gesturerecognizer-c.md)
+**继承/实现关系：** PanRecognizer extends [GestureRecognizer](arkts-arkui-gesturerecognizer-c.md#GestureRecognizer)
 
 **起始版本：** 12
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
-<!--Device-unnamed-declare class PanRecognizer extends GestureRecognizer--><!--Device-unnamed-declare class PanRecognizer extends GestureRecognizer-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-declare class PanRecognizer--><!--Device-unnamed-declare class PanRecognizer-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,6 +26,8 @@ getDirection(): PanDirection
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
@@ -36,7 +40,7 @@ getDirection(): PanDirection
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 当前滑动手势识别器的识别方向。 |
+| [PanDirection](arkts-arkui-pandirection-e.md) | 当前滑动手势识别器的识别方向。 |
 
 ## getDistance
 
@@ -49,6 +53,8 @@ getDistance(): number
 **起始版本：** 19
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -70,11 +76,13 @@ getDistance(): number
 getDistanceMap(): Map<SourceTool, number>
 ```
 
-返回滑动手势识别器在不同输入源的情况下触发的最小滑动距离。 > **说明：** > > 仅支持对通过Pan手势初始化配置修改的设备类型进行阈值查询。对于默认滑动阈值，可通过查询[SourceTool]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_.Unknown类型获取。其他未主动设置的类型则无法获取。
+返回滑动手势识别器在不同输入源的情况下触发的最小滑动距离。 > **说明：** > > 仅支持对通过Pan手势初始化配置修改的设备类型进行阈值查询。对于默认滑动阈值，可通过查询SourceTool.Unknown类型获取。其他未主动设置的类型则无法获取。
 
 **起始版本：** 19
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -102,6 +110,8 @@ getPanGestureOptions(): PanGestureOptions
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -114,5 +124,5 @@ getPanGestureOptions(): PanGestureOptions
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 当前滑动手势识别器的属性。 |
+| [PanGestureOptions](arkts-arkui-pangestureoptions-c.md) | 当前滑动手势识别器的属性。 |
 

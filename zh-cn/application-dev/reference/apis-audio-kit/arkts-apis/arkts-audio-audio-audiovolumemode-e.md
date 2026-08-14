@@ -2,9 +2,11 @@
 
 表示音量模式的枚举。
 
-**起始版本：** 19
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为19；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-audio-enum AudioVolumeMode--><!--Device-audio-enum AudioVolumeMode-End-->
 
@@ -18,9 +20,11 @@ SYSTEM_GLOBAL = 0
 
 系统级音量（默认模式）。
 
-**起始版本：** 19
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为19；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioVolumeMode-SYSTEM_GLOBAL = 0--><!--Device-AudioVolumeMode-SYSTEM_GLOBAL = 0-End-->
 
@@ -34,9 +38,11 @@ APP_INDIVIDUAL = 1
 
 应用级音量。
 
-**起始版本：** 19
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为19；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioVolumeMode-APP_INDIVIDUAL = 1--><!--Device-AudioVolumeMode-APP_INDIVIDUAL = 1-End-->
 

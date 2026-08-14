@@ -14,7 +14,7 @@ function isLocalContact(id: number, callback: AsyncCallback<boolean>): void
 
 **废弃版本：** 10
 
-**替代接口：** [contact.isLocalContact](arkts-contacts-contact-islocalcontact-f.md#islocalcontact)(context:
+**替代接口：** [isLocalContact](#isLocalContact)(context: Context, id: number, callback: AsyncCallback&lt;boolean&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -27,9 +27,9 @@ function isLocalContact(id: number, callback: AsyncCallback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | id | number | 是 | 联系人对象的id属性，一个联系人对应一个id。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;boolean&gt; | 是 | 回调函数。成功返回布尔值，true代表联系人id在本地电话簿中，false则代表联系人id不在本地电话簿中；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。成功返回布尔值，true代表联系人id在本地电话簿中，false则代表联系人id不在本地电话簿中；失败返回具体的错误码信息。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -58,6 +58,8 @@ function isLocalContact(context: Context, id: number, callback: AsyncCallback<bo
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **需要权限：** ohos.permission.READ_CONTACTS
 
 <!--Device-contact-function isLocalContact(context: Context, id: number, callback: AsyncCallback<boolean>): void--><!--Device-contact-function isLocalContact(context: Context, id: number, callback: AsyncCallback<boolean>): void-End-->
@@ -68,20 +70,20 @@ function isLocalContact(context: Context, id: number, callback: AsyncCallback<bo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 应用上下文Context。 |
+| context | Context | 是 | 应用上下文Context。 |
 | id | number | 是 | 联系人对象的id属性，一个联系人对应一个id。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;boolean&gt; | 是 | 回调函数。成功返回布尔值，true代表联系人id在本地电话簿中，false则代表联系人id不在本地电话簿中；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。成功返回布尔值，true代表联系人id在本地电话簿中，false则代表联系人id不在本地电话簿中；失败返回具体的错误码信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [401](../errorcode-contacts.md#401-打开联系人头像文件失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 
-**示例：**
+## 示例
 
-在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -114,7 +116,7 @@ function isLocalContact(id: number): Promise<boolean>
 
 **废弃版本：** 10
 
-**替代接口：** [contact.isLocalContact](arkts-contacts-contact-islocalcontact-f.md#islocalcontact)(context:
+**替代接口：** [isLocalContact](#isLocalContact)(context: Context, id: number)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -134,7 +136,7 @@ function isLocalContact(id: number): Promise<boolean>
 | --- | --- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示联系人id在本地电话簿中，返回false表示联系人id不在本地电话簿中。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { contact } from '@kit.ContactsKit';
@@ -159,6 +161,8 @@ function isLocalContact(context: Context, id: number): Promise<boolean>
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
 
+**废弃版本：** -1
+
 **需要权限：** ohos.permission.READ_CONTACTS
 
 <!--Device-contact-function isLocalContact(context: Context, id: number): Promise<boolean>--><!--Device-contact-function isLocalContact(context: Context, id: number): Promise<boolean>-End-->
@@ -169,7 +173,7 @@ function isLocalContact(context: Context, id: number): Promise<boolean>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 应用上下文Context。 |
+| context | Context | 是 | 应用上下文Context。 |
 | id | number | 是 | 联系人对象的id属性，一个联系人对应一个id。 |
 
 **返回值：**
@@ -182,12 +186,12 @@ function isLocalContact(context: Context, id: number): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [401](../errorcode-contacts.md#401-打开联系人头像文件失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 
-**示例：**
+## 示例
 
-在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 ```TypeScript
 import { contact } from '@kit.ContactsKit';

@@ -2,9 +2,11 @@
 
 表示视频录制中音频源类型的枚举。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-enum AudioSourceType--><!--Device-unnamed-enum AudioSourceType-End-->
 
@@ -18,9 +20,11 @@ AUDIO_SOURCE_TYPE_DEFAULT = 0
 
 默认的音频输入源类型。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioSourceType-AUDIO_SOURCE_TYPE_DEFAULT = 0--><!--Device-AudioSourceType-AUDIO_SOURCE_TYPE_DEFAULT = 0-End-->
 
@@ -34,9 +38,11 @@ AUDIO_SOURCE_TYPE_MIC = 1
 
 表示MIC的音频输入源。 **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -52,9 +58,11 @@ AUDIO_SOURCE_TYPE_VOICE_RECOGNITION = 2
 
 表示语音识别场景的音频源。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioSourceType-AUDIO_SOURCE_TYPE_VOICE_RECOGNITION = 2--><!--Device-AudioSourceType-AUDIO_SOURCE_TYPE_VOICE_RECOGNITION = 2-End-->
 
@@ -68,9 +76,11 @@ AUDIO_SOURCE_TYPE_VOICE_COMMUNICATION = 7
 
 表示语音通话场景的音频源。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioSourceType-AUDIO_SOURCE_TYPE_VOICE_COMMUNICATION = 7--><!--Device-AudioSourceType-AUDIO_SOURCE_TYPE_VOICE_COMMUNICATION = 7-End-->
 
@@ -84,9 +94,11 @@ AUDIO_SOURCE_TYPE_VOICE_MESSAGE = 10
 
 表示短语音消息的音频源。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioSourceType-AUDIO_SOURCE_TYPE_VOICE_MESSAGE = 10--><!--Device-AudioSourceType-AUDIO_SOURCE_TYPE_VOICE_MESSAGE = 10-End-->
 
@@ -100,9 +112,11 @@ AUDIO_SOURCE_TYPE_CAMCORDER = 13
 
 表示相机录像的音频源。
 
-**起始版本：** 12
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-AudioSourceType-AUDIO_SOURCE_TYPE_CAMCORDER = 13--><!--Device-AudioSourceType-AUDIO_SOURCE_TYPE_CAMCORDER = 13-End-->
 

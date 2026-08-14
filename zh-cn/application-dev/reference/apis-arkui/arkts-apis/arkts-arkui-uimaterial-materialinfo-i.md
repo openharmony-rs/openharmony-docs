@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 <!--Device-uiMaterial-interface MaterialInfo--><!--Device-uiMaterial-interface MaterialInfo-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -18,13 +20,15 @@ state: MaterialState
 
 材质使能状态配置。
 
-**类型：** MaterialState
+**类型：** [MaterialState](../../apis-na/arkts-apis/arkts-na-uimaterial-materialstate-e.md)
 
 **默认值：** MaterialState.DEFAULT
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -49,6 +53,8 @@ type: MaterialType
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

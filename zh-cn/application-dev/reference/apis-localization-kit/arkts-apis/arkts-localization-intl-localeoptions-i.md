@@ -1,6 +1,6 @@
 # LocaleOptions
 
-> 从API version 6开始支持，从API version 20开始废弃，以calendar为例， > 区域初始化配置项。从API version 9开始，LocaleOptions属性由必填改为可选。 > **说明：** > > - calendar：不同取值的含义请参考\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+> 从API version 6开始支持，从API version 20开始废弃，以calendar为例， > 区域初始化配置项。从API version 9开始，LocaleOptions属性由必填改为可选。 > **说明：** > > - calendar：不同取值的含义请参考[设置日历和历法表1](../../../internationalization/i18n-calendar.md)。
 
 **起始版本：** 6
 

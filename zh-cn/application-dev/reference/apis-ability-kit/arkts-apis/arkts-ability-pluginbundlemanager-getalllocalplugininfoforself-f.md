@@ -10,7 +10,9 @@ function getAllLocalPluginInfoForSelf(): Promise<Array<PluginBundleInfo>>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.kernel.SUPPORT_LOCAL_PLUGIN
 
@@ -30,5 +32,5 @@ function getAllLocalPluginInfoForSelf(): Promise<Array<PluginBundleInfo>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Calling interface without permission 'ohos.permission.kernel.SUPPORT\_\_\_ESCAPED\_UNDERSCORE\_\_\_LOCAL\_\_\_ESCAPED\_UNDERSCORE\_\_\_PLUGIN'. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Calling interface without permission 'ohos.permission.kernel.SUPPORT_LOCAL_PLUGIN'. |
 

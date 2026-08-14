@@ -2,9 +2,11 @@
 
 Enumerates the portrait effects.
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-camera-enum PortraitEffect--><!--Device-camera-enum PortraitEffect-End-->
 
@@ -20,9 +22,11 @@ OFF = 0
 
 Disabled.
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PortraitEffect-OFF = 0--><!--Device-PortraitEffect-OFF = 0-End-->
 
@@ -38,9 +42,11 @@ CIRCLES = 1
 
 Circles.
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PortraitEffect-CIRCLES = 1--><!--Device-PortraitEffect-CIRCLES = 1-End-->
 
@@ -56,9 +62,11 @@ HEART = 2
 
 Heart-shaped.
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PortraitEffect-HEART = 2--><!--Device-PortraitEffect-HEART = 2-End-->
 
@@ -74,9 +82,11 @@ ROTATED = 3
 
 Rotated.
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PortraitEffect-ROTATED = 3--><!--Device-PortraitEffect-ROTATED = 3-End-->
 
@@ -92,9 +102,11 @@ STUDIO = 4
 
 Studio light.
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PortraitEffect-STUDIO = 4--><!--Device-PortraitEffect-STUDIO = 4-End-->
 
@@ -110,9 +122,11 @@ THEATER = 5
 
 Theater light.
 
-**起始版本：** 11
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-PortraitEffect-THEATER = 5--><!--Device-PortraitEffect-THEATER = 5-End-->
 

@@ -14,7 +14,7 @@ declare function fstatSync(fd: number): Stat
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.file.fs:statSync](arkts-corefile-fileio-statsync-f.md#statsync)
+**替代接口：** [statSync](arkts-corefile-file-fs-statsync-f.md#statSync)
 
 <!--Device-unnamed-declare function fstatSync(fd: number): Stat--><!--Device-unnamed-declare function fstatSync(fd: number): Stat-End-->
 
@@ -30,5 +30,5 @@ declare function fstatSync(fd: number): Stat
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 表示文件状态的具体信息。 |
+| [Stat](arkts-corefile-fileio-stat-depr-i.md) | 表示文件状态的具体信息。 |
 

@@ -10,6 +10,8 @@ declare type OnTimePickerChangeCallback = (result: TimePickerResult) => void
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -22,5 +24,5 @@ declare type OnTimePickerChangeCallback = (result: TimePickerResult) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| result | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 选中的时间结果，hour取值0-23，与展示制式无关。  |
+| result | [TimePickerResult](arkts-arkui-timepickerresult-i.md) | 是 | 选中的时间结果，hour取值0-23，与展示制式无关。 |
 

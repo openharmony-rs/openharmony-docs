@@ -5,11 +5,13 @@ declare type GestureCollectInterceptCallback = (recognizers: Array<GestureRecogn
    touchRecognizers?: Array<TouchRecognizer>) => GestureCollectIntervention
 ```
 
-定义在[onGestureCollectIntercept]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_中使用的回调类型。
+定义在[onGestureCollectIntercept](arkts-arkui-commonmethod-c.md#onGestureCollectIntercept)中使用的回调类型。
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -23,12 +25,12 @@ declare type GestureCollectInterceptCallback = (recognizers: Array<GestureRecogn
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| recognizers | Array&lt;GestureRecognizer&gt; | 是 | 响应链上组件的手势识别器对象。  |
-| touchRecognizers | Array&lt;TouchRecognizer&gt; | 否 | 响应链上组件的触摸识别器对象。\_\_\_HTML\_TAG\_USD\_0\_\_\_默认值为null。  |
+| recognizers | Array&lt;GestureRecognizer&gt; | 是 | 响应链上组件的手势识别器对象。 |
+| touchRecognizers | Array&lt;TouchRecognizer&gt; | 否 | 响应链上组件的触摸识别器对象。<br/>默认值为null。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 手势收集干预结果。 |
+| GestureCollectIntervention | 手势收集干预结果。 |
 

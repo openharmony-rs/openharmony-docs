@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-declare interface LazyForEachOptions--><!--Device-unnamed-declare interface LazyForEachOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -16,15 +18,17 @@
 customComponentFreezeMode?: LazyForEachCustomComponentFreezeMode
 ```
 
-选择是否使能自定义组件冻结。仅在LazyForEach下直接使用自定义组件时生效，其他情况不适用。 默认为[AUTO]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+选择是否使能自定义组件冻结。仅在LazyForEach下直接使用自定义组件时生效，其他情况不适用。 默认为[AUTO](arkts-arkui-lazyforeachcustomcomponentfreezemode-e.md#LazyForEachCustomComponentFreezeMode)。
 
-**类型：** LazyForEachCustomComponentFreezeMode
+**类型：** [LazyForEachCustomComponentFreezeMode](arkts-arkui-lazyforeachcustomcomponentfreezemode-e.md)
 
 **默认值：** LazyForEachCustomComponentFreezeMode.AUTO
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,13 +44,15 @@ customComponentFreezeMode?: LazyForEachCustomComponentFreezeMode
 memoryOptimizationStrategy?: LazyForEachMemOptStrategy
 ```
 
-LazyForEach的内存优化策略。该参数在创建LazyForEach时设定，不支持动态修改。 默认值：[DEFAULT]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_
+LazyForEach的内存优化策略。该参数在创建LazyForEach时设定，不支持动态修改。 默认值：[DEFAULT](arkts-arkui-lazyforeachmemoptstrategy-e.md#LazyForEachMemOptStrategy)
 
-**类型：** LazyForEachMemOptStrategy
+**类型：** [LazyForEachMemOptStrategy](arkts-arkui-lazyforeachmemoptstrategy-e.md)
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -62,15 +68,17 @@ LazyForEach的内存优化策略。该参数在创建LazyForEach时设定，不�
 releaseStrategy?: LazyForEachReleaseStrategy
 ```
 
-为LazyForEach配置资源释放策略。 默认使用[BATCH]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_，批量释放节点。
+为LazyForEach配置资源释放策略。 默认使用[BATCH](arkts-arkui-lazyforeachreleasestrategy-e.md#LazyForEachReleaseStrategy)，批量释放节点。
 
-**类型：** LazyForEachReleaseStrategy
+**类型：** [LazyForEachReleaseStrategy](arkts-arkui-lazyforeachreleasestrategy-e.md)
 
 **默认值：** LazyForEachReleaseStrategy.BATCH
 
 **起始版本：** 26.0.0
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

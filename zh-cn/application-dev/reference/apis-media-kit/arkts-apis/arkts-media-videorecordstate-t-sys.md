@@ -6,9 +6,11 @@ type VideoRecordState = 'idle' | 'prepared' | 'playing' | 'paused' | 'stopped' |
 
 The maintenance of this interface has been stopped since version api 9. Please use AVRecorderState. Describes video recorder states.
 
-**起始版本：** 9
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-type VideoRecordState = 'idle' | 'prepared' | 'playing' | 'paused' | 'stopped' | 'error'--><!--Device-unnamed-type VideoRecordState = 'idle' | 'prepared' | 'playing' | 'paused' | 'stopped' | 'error'-End-->
 

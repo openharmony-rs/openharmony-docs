@@ -1,10 +1,12 @@
 # ListFileExtOptions
 
-可选项类型，支持listFileExt接口使用。
+可选项类型，支持listFileExt接口使用自定义过滤规则。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 <!--Device-unnamed-export interface ListFileExtOptions--><!--Device-unnamed-export interface ListFileExtOptions-End-->
 
@@ -16,13 +18,15 @@
 fileFilter?: FileFilter
 ```
 
-自定义文件名过滤的规则，默认为空，表示不进行过滤。
+文件名过滤器接口。可选，设置自定义文件名过滤规则。
 
-**类型：** FileFilter
+**类型：** [FileFilter](arkts-corefile-file-fs-filefilter-i.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -33,20 +37,22 @@ fileFilter?: FileFilter
 ## listNum
 
 ```TypeScript
-listNum?: long
+listNum?: number
 ```
 
-列出文件名数量，默认为0，表示列出所有文件。
+列出文件名数量。可选，当设置0时，列出所有文件，默认为0。 取值限定为整数。
 
-**类型：** long
+**类型：** number
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ListFileExtOptions-listNum?: long--><!--Device-ListFileExtOptions-listNum?: long-End-->
+<!--Device-ListFileExtOptions-listNum?: number--><!--Device-ListFileExtOptions-listNum?: number-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -56,13 +62,15 @@ listNum?: long
 recursion?: boolean
 ```
 
-是否递归子目录下的文件名，默认为false。 false：返回当前目录下满足过滤要求的文件名及目录名。 true：返回该目录下所有符合过滤条件的文件的相对路径，相对路径以“/”开头。
+是否递归子目录下文件名。可选，默认为false。当recursion为false时，返回当前目录下满足过滤要求的文件名及目录名。当recursion为true时，返回此目录下所有满足过滤要求的文件的相对路径（以“/”开头）。
 
 **类型：** boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

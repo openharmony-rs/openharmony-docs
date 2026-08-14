@@ -38,11 +38,11 @@ enum InputEvent_AxisType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AXIS_TYPE_UNKNOWN |  |
-| AXIS_TYPE_SCROLL_VERTICAL |  |
-| AXIS_TYPE_SCROLL_HORIZONTAL |  |
-| AXIS_TYPE_PINCH |  |
-| AXIS_TYPE_ROTATE |  |
+| AXIS_TYPE_UNKNOWN = 0 |  |
+| AXIS_TYPE_SCROLL_VERTICAL = 1 |  |
+| AXIS_TYPE_SCROLL_HORIZONTAL = 2 |  |
+| AXIS_TYPE_PINCH = 3 |  |
+| AXIS_TYPE_ROTATE = 4 |  |
 
 ### InputEvent_AxisEventType
 
@@ -76,8 +76,8 @@ enum InputEvent_AxisAction
 | 枚举项 | 描述 |
 | -- | -- |
 | AXIS_ACTION_CANCEL = 0 |  |
-| AXIS_ACTION_BEGIN |  |
-| AXIS_ACTION_UPDATE |  |
-| AXIS_ACTION_END |  |
+| AXIS_ACTION_BEGIN = 1 |  |
+| AXIS_ACTION_UPDATE = 2 |  |
+| AXIS_ACTION_END = 3 |  |
 
 

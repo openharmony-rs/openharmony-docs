@@ -14,7 +14,7 @@ function killProcessWithAccount(bundleName: string, accountId: number): Promise<
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.appManager/appManager#killProcessWithAccount
+**替代接口：** [killProcessWithAccount](arkts-ability-appmanager-killprocesswithaccount-f-sys.md#killProcessWithAccount（系统接口）)
 
 **需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS and ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
@@ -29,7 +29,7 @@ function killProcessWithAccount(bundleName: string, accountId: number): Promise<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 应用Bundle名称。 |
-| accountId | number | 是 | 系统账号的账号ID，详情参考[getOsAccountCount]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
+| accountId | number | 是 | 系统账号的账号ID，详情参考[getOsAccountCount] [getOsAccountCount](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getOsAccountCount)。 |
 
 **返回值：**
 
@@ -37,7 +37,7 @@ function killProcessWithAccount(bundleName: string, accountId: number): Promise<
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import appManager from '@ohos.application.appManager';
@@ -69,7 +69,7 @@ function killProcessWithAccount(bundleName: string, accountId: number, callback:
 
 **废弃版本：** 9
 
-**替代接口：** ohos.app.ability.appManager/appManager#killProcessWithAccount
+**替代接口：** [killProcessWithAccount](arkts-ability-appmanager-killprocesswithaccount-f-sys.md#killProcessWithAccount（系统接口）)
 
 **需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS and ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
@@ -84,10 +84,10 @@ function killProcessWithAccount(bundleName: string, accountId: number, callback:
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 应用Bundle名称。 |
-| accountId | number | 是 | 系统账号的账号ID，详情参考[getOsAccountCount]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_。 |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数，当切断account进程成功，err为undefined，否则为错误对象。 |
+| accountId | number | 是 | 系统账号的账号ID，详情参考[getOsAccountCount] [getOsAccountCount](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getOsAccountCount)。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，当切断account进程成功，err为undefined，否则为错误对象。 |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import appManager from '@ohos.application.appManager';

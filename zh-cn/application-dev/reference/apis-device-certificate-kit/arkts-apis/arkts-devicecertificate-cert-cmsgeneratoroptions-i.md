@@ -2,9 +2,11 @@
 
 表示生成CMS消息的配置选项。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-cert-interface CmsGeneratorOptions--><!--Device-cert-interface CmsGeneratorOptions-End-->
 
@@ -18,15 +20,17 @@ contentDataFormat?: CmsContentDataFormat
 
 内容数据的格式。默认为CmsContentDataFormat.BINARY。
 
-**类型：** CmsContentDataFormat
+**类型：** [CmsContentDataFormat](arkts-devicecertificate-cert-cmscontentdataformat-e.md)
 
 **默认值：** CmsContentDataFormat.BINARY
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CmsGeneratorOptions-contentDataFormat?: CmsContentDataFormat--><!--Device-CmsGeneratorOptions-contentDataFormat?: CmsContentDataFormat-End-->
 
@@ -44,11 +48,13 @@ Cms最终数据是否不包含原始数据。默认为false。true为不包含�
 
 **默认值：** false
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CmsGeneratorOptions-isDetached?: boolean--><!--Device-CmsGeneratorOptions-isDetached?: boolean-End-->
 
@@ -62,15 +68,17 @@ outFormat?: CmsFormat
 
 Cms最终数据的输出格式。默认为DER。
 
-**类型：** CmsFormat
+**类型：** [CmsFormat](arkts-devicecertificate-cert-cmsformat-e.md)
 
 **默认值：** CmsFormat.DER
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CmsGeneratorOptions-outFormat?: CmsFormat--><!--Device-CmsGeneratorOptions-outFormat?: CmsFormat-End-->
 

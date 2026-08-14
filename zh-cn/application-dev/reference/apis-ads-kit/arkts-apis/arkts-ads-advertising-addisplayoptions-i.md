@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 <!--Device-advertising-export interface AdDisplayOptions--><!--Device-advertising-export interface AdDisplayOptions-End-->
 
 **系统能力：** SystemCapability.Advertising.Ads
@@ -23,6 +25,8 @@ audioFocusType?: number
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -44,29 +48,11 @@ customData?: string
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AdDisplayOptions-customData?: string--><!--Device-AdDisplayOptions-customData?: string-End-->
-
-**系统能力：** SystemCapability.Advertising.Ads
-
-## key
-
-```TypeScript
-[key: string]: number | boolean | string | undefined
-```
-
-自定义参数。 - refreshTime：AutoAdComponent组件可选自定义参数，用于控制广告的轮播时间间隔。类型number，单位：ms，取值范围 [30000, 120000]。如果不设置或取值为非数字或小于等于0的数字，则不轮播， 只会展示广告响应中的第一个广告内容。设置小于30000的数字取值30000，设置大于120000的数字取值120000。 \_\_\_MD\_COMMENT\_DESC\_USD\_0\_\_\_\_\_\_MD\_COMMENT\_DESC\_USD\_1\_\_\_
-
-**类型：** number \| boolean \| string \| undefined
-
-**起始版本：** 11
-
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-<!--Device-AdDisplayOptions-[key: string]: number | boolean | string | undefined--><!--Device-AdDisplayOptions-[key: string]: number | boolean | string | undefined-End-->
 
 **系统能力：** SystemCapability.Advertising.Ads
 
@@ -83,6 +69,8 @@ mute?: boolean
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -104,6 +92,8 @@ useMobileDataReminder?: boolean
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
 
+**废弃版本：** -1
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AdDisplayOptions-useMobileDataReminder?: boolean--><!--Device-AdDisplayOptions-useMobileDataReminder?: boolean-End-->
@@ -123,6 +113,8 @@ userId?: string
 **起始版本：** 11
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

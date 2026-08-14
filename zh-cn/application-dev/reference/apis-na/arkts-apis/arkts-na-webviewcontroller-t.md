@@ -10,6 +10,8 @@ Provides methods for controlling the web controller.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-unnamed-export type WebviewController = webview.WebviewController--><!--Device-unnamed-export type WebviewController = webview.WebviewController-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

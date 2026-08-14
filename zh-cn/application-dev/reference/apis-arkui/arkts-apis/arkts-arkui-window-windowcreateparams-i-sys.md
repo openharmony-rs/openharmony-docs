@@ -2,9 +2,11 @@
 
 应用启动时的窗口参数配置。
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-window-interface WindowCreateParams--><!--Device-window-interface WindowCreateParams-End-->
 
@@ -24,7 +26,9 @@ isWindowLimitsForcible?: boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,11 +46,13 @@ systemAnimationParams?: StartAnimationSystemParams
 
 启动动画配置，仅对全屏应用生效。 不同应用间跳转场景不生效，仍保持系统默认动效。
 
-**类型：** StartAnimationSystemParams
+**类型：** [StartAnimationSystemParams](arkts-arkui-window-startanimationsystemparams-i-sys.md)
 
-**起始版本：** 20
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为20；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-WindowCreateParams-systemAnimationParams?: StartAnimationSystemParams--><!--Device-WindowCreateParams-systemAnimationParams?: StartAnimationSystemParams-End-->
 

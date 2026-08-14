@@ -10,6 +10,8 @@ Defines the callback type used in onSizeChange.
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-export type SizeChangeCallback = (oldValue: SizeOptions, newValue: SizeOptions) => void--><!--Device-unnamed-export type SizeChangeCallback = (oldValue: SizeOptions, newValue: SizeOptions) => void-End-->
@@ -20,6 +22,6 @@ Defines the callback type used in onSizeChange.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| oldValue | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | the width and height of the component before the change.  |
-| newValue | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | the width and height of the component after the change.  |
+| oldValue | [SizeOptions](../../apis-arkui/arkts-apis/arkts-arkui-sizeoptions-i.md) | 是 | the width and height of the component before the change. |
+| newValue | [SizeOptions](../../apis-arkui/arkts-apis/arkts-arkui-sizeoptions-i.md) | 是 | the width and height of the component after the change. |
 

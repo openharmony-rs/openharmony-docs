@@ -10,7 +10,9 @@ Register the callback for display remove events.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-display-function onRemove(callback: Callback<long>): void--><!--Device-display-function onRemove(callback: Callback<long>): void-End-->
 
@@ -20,9 +22,9 @@ Register the callback for display remove events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;long&gt; | 是 | the display id of changed |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;long&gt; | 是 | the display id of changed |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { Callback } from '@kit.BasicServicesKit';

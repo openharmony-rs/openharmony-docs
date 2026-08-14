@@ -6,6 +6,8 @@
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-webview-enum SuspendType--><!--Device-webview-enum SuspendType-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -21,6 +23,8 @@ ENTER_BACK_FORWARD_CACHE = 0
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SuspendType-ENTER_BACK_FORWARD_CACHE = 0--><!--Device-SuspendType-ENTER_BACK_FORWARD_CACHE = 0-End-->
 
@@ -38,6 +42,8 @@ ENTER_BACKGROUND = 1
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
 
+**废弃版本：** -1
+
 <!--Device-SuspendType-ENTER_BACKGROUND = 1--><!--Device-SuspendType-ENTER_BACKGROUND = 1-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -53,6 +59,8 @@ AUTO_CLEANUP = 2
 **起始版本：** 23
 
 **ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**废弃版本：** -1
 
 <!--Device-SuspendType-AUTO_CLEANUP = 2--><!--Device-SuspendType-AUTO_CLEANUP = 2-End-->
 

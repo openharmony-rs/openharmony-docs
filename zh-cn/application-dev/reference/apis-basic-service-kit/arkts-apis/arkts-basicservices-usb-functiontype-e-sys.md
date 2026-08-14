@@ -8,7 +8,7 @@ USB设备侧功能。
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.FunctionType](arkts-basicservices-usbmanager-functiontype-e-sys.md)
+**替代接口：** [FunctionType](arkts-basicservices-usbmanager-functiontype-e-sys.md#FunctionType（系统接口）)
 
 <!--Device-usb-export enum FunctionType--><!--Device-usb-export enum FunctionType-End-->
 
@@ -30,7 +30,7 @@ NONE = 0
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.FunctionType.NONE](arkts-basicservices-usbmanager-functiontype-e-sys.md#none)
+**替代接口：** [NONE](arkts-basicservices-usbmanager-functiontype-e-sys.md#NONE)
 
 <!--Device-FunctionType-NONE = 0--><!--Device-FunctionType-NONE = 0-End-->
 
@@ -52,7 +52,7 @@ acm功能。
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.FunctionType.ACM](arkts-basicservices-usbmanager-functiontype-e-sys.md#acm)
+**替代接口：** [ACM](arkts-basicservices-usbmanager-functiontype-e-sys.md#ACM)
 
 <!--Device-FunctionType-ACM = 1--><!--Device-FunctionType-ACM = 1-End-->
 
@@ -74,7 +74,7 @@ ecm功能。
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.FunctionType.ECM](arkts-basicservices-usbmanager-functiontype-e-sys.md#ecm)
+**替代接口：** [ECM](arkts-basicservices-usbmanager-functiontype-e-sys.md#ECM)
 
 <!--Device-FunctionType-ECM = 2--><!--Device-FunctionType-ECM = 2-End-->
 
@@ -96,7 +96,7 @@ hdc功能。
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.FunctionType.HDC](arkts-basicservices-usbmanager-functiontype-e-sys.md#hdc)
+**替代接口：** [HDC](arkts-basicservices-usbmanager-functiontype-e-sys.md#HDC)
 
 <!--Device-FunctionType-HDC = 4--><!--Device-FunctionType-HDC = 4-End-->
 
@@ -118,7 +118,7 @@ MTP = 8
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.FunctionType.MTP](arkts-basicservices-usbmanager-functiontype-e-sys.md#mtp)
+**替代接口：** [MTP](arkts-basicservices-usbmanager-functiontype-e-sys.md#MTP)
 
 <!--Device-FunctionType-MTP = 8--><!--Device-FunctionType-MTP = 8-End-->
 
@@ -140,7 +140,7 @@ PTP = 16
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.FunctionType.PTP](arkts-basicservices-usbmanager-functiontype-e-sys.md#ptp)
+**替代接口：** [PTP](arkts-basicservices-usbmanager-functiontype-e-sys.md#PTP)
 
 <!--Device-FunctionType-PTP = 16--><!--Device-FunctionType-PTP = 16-End-->
 
@@ -162,7 +162,7 @@ RNDIS = 32
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.FunctionType.RNDIS](arkts-basicservices-usbmanager-functiontype-e-sys.md#rndis)
+**替代接口：** [RNDIS](arkts-basicservices-usbmanager-functiontype-e-sys.md#RNDIS)
 
 <!--Device-FunctionType-RNDIS = 32--><!--Device-FunctionType-RNDIS = 32-End-->
 
@@ -184,7 +184,7 @@ midi功能。
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.FunctionType.MIDI](arkts-basicservices-usbmanager-functiontype-e-sys.md#midi)
+**替代接口：** [MIDI](arkts-basicservices-usbmanager-functiontype-e-sys.md#MIDI)
 
 <!--Device-FunctionType-MIDI = 64--><!--Device-FunctionType-MIDI = 64-End-->
 
@@ -206,7 +206,7 @@ AUDIO_SOURCE = 128
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.FunctionType.AUDIO_SOURCE](arkts-basicservices-usbmanager-functiontype-e-sys.md#audio_source)
+**替代接口：** [AUDIO_SOURCE](arkts-basicservices-usbmanager-functiontype-e-sys.md#AUDIO_SOURCE)
 
 <!--Device-FunctionType-AUDIO_SOURCE = 128--><!--Device-FunctionType-AUDIO_SOURCE = 128-End-->
 
@@ -228,7 +228,7 @@ ncm传输。
 
 **废弃版本：** 9
 
-**替代接口：** [@ohos.usbManager:usbManager.FunctionType.NCM](arkts-basicservices-usbmanager-functiontype-e-sys.md#ncm)
+**替代接口：** [NCM](arkts-basicservices-usbmanager-functiontype-e-sys.md#NCM)
 
 <!--Device-FunctionType-NCM = 256--><!--Device-FunctionType-NCM = 256-End-->
 

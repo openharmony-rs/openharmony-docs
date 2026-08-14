@@ -2,13 +2,15 @@
 
 用于触发长按手势事件，触发长按手势的最少手指数为1，默认最短长按时间为500毫秒。可配置duration参数控制最短长按时长。 > **说明：** > > 从API version 18开始，部分设备会优先响应系统的双指长按手势，导致应用的双指长按手势不生效。
 
-**继承/实现关系：** LongPressGestureInterface extends [GestureInterface<LongPressGestureInterface>](GestureInterface<LongPressGestureInterface>)
+**继承/实现关系：** LongPressGestureInterface extends GestureInterface<LongPressGestureInterface>
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
-<!--Device-unnamed-interface LongPressGestureInterface extends GestureInterface<LongPressGestureInterface>--><!--Device-unnamed-interface LongPressGestureInterface extends GestureInterface<LongPressGestureInterface>-End-->
+**废弃版本：** -1
+
+<!--Device-unnamed-interface LongPressGestureInterface--><!--Device-unnamed-interface LongPressGestureInterface-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,11 +20,13 @@
 (value?: { fingers?: number; repeat?: boolean; duration?: number }): LongPressGestureInterface
 ```
 
-创建长按手势对象。继承自[GestureInterface\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。 当组件默认支持可拖拽时，如Text、TextInput、TextArea、HyperLink、Image和RichEditor等组件。长按手势与拖拽会出现冲突，事件优先级如下： 当长按触发时间小于500毫秒时，系统优先响应长按事件而非拖拽事件。 当长按触发时间达到或超过500毫秒时，系统优先响应拖拽事件而非长按事件。
+创建长按手势对象。继承自[GestureInterface&lt;T&gt;](arkts-arkui-gestureinterface-i.md#GestureInterface)。 当组件默认支持可拖拽时，如Text、TextInput、TextArea、HyperLink、Image和RichEditor等组件。长按手势与拖拽会出现冲突，事件优先级如下： 当长按触发时间小于500毫秒时，系统优先响应长按事件而非拖拽事件。 当长按触发时间达到或超过500毫秒时，系统优先响应拖拽事件而非长按事件。
 
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -34,13 +38,13 @@
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | { fingers?: number; repeat?: boolean; duration?: number } | 否 | 设置长按手势参数。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ - fingers：触发长按的最少手指数，最小值为1，&nbsp;最大值为10。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_默认值：1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ - repeat：是否连续触发事件回调。true表示连续触发事件回调，false表示不连续触发事件回调。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_3\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_默认值：false\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_4\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ - duration：触发长按的最短时间，单位为毫秒（ms）。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_5\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_默认值：500 |
+| value | { fingers?: number; repeat?: boolean; duration?: number } | 否 | 设置长按手势参数。&lt;br&gt; - fingers：触发长按的最少手指数，最小值为1，&nbsp;最大值为10。&lt;br/&gt;默认值：1 &lt;br&gt; - repeat：是否连续触发事件回调。true表示连续触发事件回调，false表示不连续触发事件回调。&lt;br/&gt;默认值：false &lt;br&gt; - duration：触发长按的最短时间，单位为毫秒（ms）。&lt;br/&gt;默认值：500 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ |  |
+| [LongPressGestureInterface](arkts-arkui-longpressgestureinterface-i.md) |  |
 
 ## constructor
 
@@ -48,11 +52,13 @@
 (options?: LongPressGestureHandlerOptions): LongPressGestureInterface
 ```
 
-创建长按手势对象。与[LongPressGesture]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_)}相比， options参数新增了对isFingerCountLimited参数，表示是否检查触摸屏幕的手指数量。 当组件默认支持可拖拽时，如Text、TextInput、TextArea、HyperLink、Image和RichEditor等组件。长按手势与拖拽会出现冲突，事件优先级如下： 当长按触发时间小于500毫秒时，系统优先响应长按事件而非拖拽事件。 当长按触发时间达到或超过500毫秒时，系统优先响应拖拽事件而非长按事件。
+创建长按手势对象。与LongPressGesture)}相比， options参数新增了对isFingerCountLimited参数，表示是否检查触摸屏幕的手指数量。 当组件默认支持可拖拽时，如Text、TextInput、TextArea、HyperLink、Image和RichEditor等组件。长按手势与拖拽会出现冲突，事件优先级如下： 当长按触发时间小于500毫秒时，系统优先响应长按事件而非拖拽事件。 当长按触发时间达到或超过500毫秒时，系统优先响应拖拽事件而非长按事件。
 
 **起始版本：** 15
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+
+**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -66,13 +72,13 @@
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 否 | 长按手势处理器配置参数。 |
+| options | [LongPressGestureHandlerOptions](arkts-arkui-longpressgesturehandleroptions-i.md) | 否 | 长按手势处理器配置参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ |  |
+| [LongPressGestureInterface](arkts-arkui-longpressgestureinterface-i.md) |  |
 
 ## onAction
 
@@ -85,6 +91,8 @@ onAction(event: (event: GestureEvent) => void): LongPressGestureInterface
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -102,7 +110,7 @@ onAction(event: (event: GestureEvent) => void): LongPressGestureInterface
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ |  |
+| [LongPressGestureInterface](arkts-arkui-longpressgestureinterface-i.md) |  |
 
 ## onActionCancel
 
@@ -115,6 +123,8 @@ onActionCancel(event: () => void): LongPressGestureInterface
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -132,7 +142,7 @@ onActionCancel(event: () => void): LongPressGestureInterface
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ |  |
+| [LongPressGestureInterface](arkts-arkui-longpressgestureinterface-i.md) |  |
 
 ## onActionCancel
 
@@ -146,6 +156,8 @@ onActionCancel(event: Callback<GestureEvent>): LongPressGestureInterface
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
 
+**废弃版本：** -1
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -158,13 +170,13 @@ onActionCancel(event: Callback<GestureEvent>): LongPressGestureInterface
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;GestureEvent&gt; | 是 | 长按手势取消回调函数。 |
+| event | Callback&lt;[GestureEvent](arkts-arkui-gestureevent-i.md)&gt; | 是 | 长按手势取消回调函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ |  |
+| [LongPressGestureInterface](arkts-arkui-longpressgestureinterface-i.md) |  |
 
 ## onActionEnd
 
@@ -177,6 +189,8 @@ onActionEnd(event: (event: GestureEvent) => void): LongPressGestureInterface
 **起始版本：** 7
 
 **ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -194,5 +208,5 @@ onActionEnd(event: (event: GestureEvent) => void): LongPressGestureInterface
 
 | 类型 | 说明 |
 | --- | --- |
-| \_\_\_MD\_LINK\_USD\_0\_\_\_ |  |
+| [LongPressGestureInterface](arkts-arkui-longpressgestureinterface-i.md) |  |
 

@@ -8,9 +8,11 @@ function openUninstallCertificateDialog(context: common.Context, certType: Certi
 
 打开证书管理卸载证书向导，显示相应的页面。使用Promise异步回调。
 
-**起始版本：** 18
+**起始版本：** 23
 
-**ArkTS模式：** ArkTS-Dyn起始版本为18；ArkTS-Sta起始版本为23。
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+
+**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -25,7 +27,7 @@ function openUninstallCertificateDialog(context: common.Context, certType: Certi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | common.Context | 是 | 表示应用的上下文信息。 |
-| certType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 表示待卸载证书类型，目前仅支持CA\_\_\_ESCAPED\_UNDERSCORE\_\_\_CERT。\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_目前仅支持CA\_\_\_ESCAPED\_UNDERSCORE\_\_\_CERT类型。 |
+| certType | [CertificateType](arkts-devicecertificate-certificatemanagerdialog-certificatetype-e.md) | 是 | 表示待卸载证书类型，目前仅支持CA_CERT。 &lt;br&gt;目前仅支持CA_CERT类型。 |
 | certUri | string | 是 | 表示待卸载证书的唯一标识符，可通过安装CA证书接口或查询CA证书列表接口获取。 |
 
 **返回值：**
@@ -38,15 +40,15 @@ function openUninstallCertificateDialog(context: common.Context, certType: Certi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Incorrect parameter types; 3. Parameter verification failed. |
-| [29700001](../errorcode-certManagerDialog.md#29700001-内部错误) | Internal error. Possible causes: 1. IPC communication failed;\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. Memory operation error; 3. File operation error. Please try again. |
-| [29700002](../errorcode-certManagerDialog.md#29700002-操作取消) | The user cancels the uninstallation operation. |
-| [29700003](../errorcode-certManagerDialog.md#29700003-证书安装失败错误) | The user uninstall certificate failed in the certificate manager dialog, such as the certificate uri is not exist. |
-| [29700004](../errorcode-certManagerDialog.md#29700004-设备类型不支持) | For security purposes, the current device does not support this API.You can use the [supportsCACertDialog]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ to determine whether the device can open the dialog box for deleting a CA certificate with certType set to CA. |
 | [29700005](../errorcode-certManagerDialog.md#29700005-操作不符合设备安全策略) | The operation does not comply with the device security policy, such as the device does not allow users to manage the CA certificate of the global user. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt;2. Incorrect parameter types; 3. Parameter verification failed. |
+| [29700004](../errorcode-certManagerDialog.md#29700004-设备类型不支持) | For security purposes, the current device does not support this API. You can use the [supportsCACertDialog](arkts-devicecertificate-certificatemanagerdialog-supportscacertdialog-f.md#supportsCACertDialog) to determine whether the device can open the dialog box for deleting a CA certificate with certType set to CA. |
+| [29700001](../errorcode-certManagerDialog.md#29700001-内部错误) | Internal error. Possible causes: 1. IPC communication failed; &lt;br&gt;2. Memory operation error; 3. File operation error. Please try again. |
+| [29700003](../errorcode-certManagerDialog.md#29700003-证书安装失败错误) | The user uninstall certificate failed in the certificate manager dialog, such as the certificate uri is not exist. |
+| [29700002](../errorcode-certManagerDialog.md#29700002-操作取消) | The user cancels the uninstallation operation. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
-**示例：**
+## 示例
 
 ```TypeScript
 import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
