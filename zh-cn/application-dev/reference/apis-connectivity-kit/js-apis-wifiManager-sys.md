@@ -1897,7 +1897,7 @@ off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"hotspotStaLeave"字符串。 |
-| callback | Callback&lt;StationInfo&gt; | 否 | 状态改变回调函数。传入该参数时仅取消注册指定回调；不填写该参数时，取消注册该事件的所有已注册回调。 |
+| callback | Callback&lt;[StationInfo](#stationinfo)&gt; | 否 | 状态改变回调函数。传入该参数时仅取消注册指定回调；不填写该参数时，取消注册该事件的所有已注册回调。 |
 
 **错误码：**
 
@@ -1953,7 +1953,7 @@ isRandomMacDisabled(): boolean
 
   | **类型** | **说明** |
   | -------- | -------- |
-  | boolean | true:禁用随机MAC地址; false:未禁用随机MAC地址，格式为XX:XX:XX:XX:XX:XX。|
+  | boolean | 是否禁用随机MAC地址。true:禁用随机MAC地址; false:未禁用随机MAC地址，格式为XX:XX:XX:XX:XX:XX。|
 
 **错误码：**
 

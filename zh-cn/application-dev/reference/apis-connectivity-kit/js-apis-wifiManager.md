@@ -33,7 +33,7 @@ isWifiActive(): boolean
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | boolean | true：已使能，&nbsp;false：未使能。 |
+  | boolean | 是否已使能。true：已使能，&nbsp;false：未使能。 |
 
 **错误码：**
 
@@ -1603,7 +1603,7 @@ isConnected(): boolean
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | boolean | true：已连接，&nbsp;false：未连接。 |
+  | boolean | 是否已连接。true：已连接，&nbsp;false：未连接。 |
 
 **错误码：**
 
@@ -1699,7 +1699,7 @@ isFeatureSupported(featureId: number): boolean
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | boolean | true：支持，&nbsp;false：不支持。 |
+  | boolean | 是否支持指定的WLAN特性。true：支持，&nbsp;false：不支持。 |
 
 **错误码：**
 
@@ -1941,7 +1941,7 @@ isBandTypeSupported(bandType: WifiBandType): boolean
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | boolean | true：支持，&nbsp;false：不支持。 |
+  | boolean | 是否支持当前频段。true：支持，&nbsp;false：不支持。 |
 
 **错误码：**
 
@@ -1981,7 +1981,7 @@ isMeteredHotspot(): boolean
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | boolean | true：是手机热点，&nbsp;false：不是手机热点。 |
+  | boolean | 是否是手机热点。true：是手机热点，&nbsp;false：不是手机热点。 |
 
 **错误码：**
 
