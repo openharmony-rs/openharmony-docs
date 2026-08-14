@@ -50646,12 +50646,12 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/CpuIntensiveTaskDevelopment.ets",
 				"functions":[
 					{
-						"end_line":106,
+						"end_line":107,
 						"name":"process_image_histogram",
 						"start_line":16
 					},
 					{
-						"end_line":42,
+						"end_line":43,
 						"name":"call_worker_message",
 						"start_line":19
 					},
