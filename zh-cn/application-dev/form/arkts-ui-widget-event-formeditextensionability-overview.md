@@ -650,7 +650,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
 1. [创建卡片](./arkts-ui-widget-creation.md)。
 2. 开发者需要新增EntryEditAbility.ets文件，继承[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)组件，实现[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)和[onNewWant](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant)回调函数。卡片使用方会通过[Want](../reference/apis-ability-kit/js-apis-app-ability-want.md)的parameters字段把被编辑的卡片ID带进来。并且需要在form_config.json文件中配置[formConfigAbility](./arkts-ui-widget-configuration.md#配置文件字段说明)字段。
    - 实现编辑页面的Ability。
-   <!-- @[FormEditUIAbility_EntryEditAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/entryability/EntryEditAbility.ets) --> 
+   <!-- @[FormEditUIAbility_EntryEditAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/entryability/EntryEditAbility.ets) -->
    
    ``` TypeScript
    // entry/src/main/ets/entryability/EntryEditAbility.ets
@@ -660,7 +660,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    import { PreferencesUtil } from '../common/PreferencesUtil';
    import { preferences } from '@kit.ArkData';
    
-   const DOMAIN = 0x0000;
+   const DOMAIN: number = 0x0000;
    
    export default class EntryEditAbility extends UIAbility {
      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
@@ -702,7 +702,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    
        windowStage.loadContent('pages/FormEditIndex', (err) => {
          if (err.code) {
-           hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Code:${err.code}, message:${err.message}');
+           hilog.error(DOMAIN, 'testTag', `Failed to load the content. Code:${err.code}, message:${err.message}`);
            return;
          }
          hilog.info(DOMAIN, 'testTag', 'Succeeded in loading the content.');

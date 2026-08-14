@@ -1,10 +1,12 @@
 # swiper
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=214e29279f37b00be7bd8f1096b2e4dc3af96177 translatedAt=2026-07-31T01:13:14.757Z pushedAt=2026-07-31T12:04:26.584Z -->
 
 The **\<swiper>** component provides a container that allows users to switch among child components using swipe gestures.
 
@@ -12,11 +14,9 @@ The **\<swiper>** component provides a container that allows users to switch amo
 >
 > This component is supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
 
-
 ## Child Components
 
 All child components except **\<list>** are supported.
-
 
 ## Attributes
 
@@ -31,7 +31,6 @@ All child components except **\<list>** are supported.
 | class | string | - | No| Style class of the component, which is used to refer to a style table.|
 | ref | string | - | No| Reference information of child elements, which is registered with the parent component on **$refs**.|
 
-
 ## Events
 
 | Name| Parameter| Description|
@@ -41,7 +40,6 @@ All child components except **\<list>** are supported.
 | longpress | - | Triggered when the component is long pressed.|
 | swipe<sup>5+</sup> | [SwipeEvent](js-lite-common-events.md#swipeevent) | Triggered when a user quickly swipes on the component.|
 
-
 ## Styles
 
 | Name| Type| Default Value| Mandatory| Description|
@@ -50,7 +48,7 @@ All child components except **\<list>** are supported.
 | height | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | - | No| Component height.<br>If this attribute is not set, the default value **0** is used.|
 | padding | &lt;length&gt; | 0 | No| Shorthand attribute to set the padding for all sides.<br>The attribute can have one to four values:<br>- If you set only one value, it specifies the padding for all the four sides.<br>- If you set two values, the first value specifies the top and bottom padding, and the second value specifies the left and right padding.<br>- If you set three values, the first value specifies the top padding, the second value specifies the left and right padding, and the third value specifies the bottom padding.<br>- If you set four values, they respectively specify the padding for top, right, bottom, and left sides (in clockwise order).|
 | padding-[left\|top\|right\|bottom] | &lt;length&gt; | 0 | No| Left, top, right, and bottom padding.|
-| margin | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | 0 | No| Shorthand attribute to set the margin for all sides. The attribute can have one to four values:<br>- If you set only one value, it specifies the margin for all the four sides.<br>- If you set two values, the first value specifies the top and bottom margins, and the second value specifies the left and right margins.<br>- If you set three values, the first value specifies the top margin, the second value specifies the left and right margins, and the third value specifies the bottom margin.<br>- If you set four values, they respectively specify the margin for top, right, bottom, and left sides (in clockwise order).|
+| margin | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | 0 | No | Shorthand attribute to set the margin for all sides. The attribute can have one to four values:<br/>-&nbsp;If you set only one value, it specifies the margin for all the four sides.<br/>-&nbsp;If you set two values, the first value specifies the top and bottom margins, and the second value specifies the left and right margins.<br/>-&nbsp;If you set three values, the first value specifies the top margin, the second value specifies the left and right margins, and the third value specifies the bottom margin.<br/>-&nbsp;If you set four values, they respectively specify the margin for top, right, bottom, and left sides (in clockwise order). |
 | margin-[left\|top\|right\|bottom] | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | 0 | No| Left, top, right, and bottom margins.|
 | border-width | &lt;length&gt; | 0 | No| Shorthand attribute to set the border width for all sides.|
 | border-color | &lt;color&gt; | black | No| Shorthand attribute to set the color for all borders.|
@@ -68,7 +66,6 @@ All child components except **\<list>** are supported.
 
 ## Example
 
-
 ```html
 <!-- xxx.hml -->
 <swiper class="container" index="{{index}}" ref="swiperObj">
@@ -83,7 +80,6 @@ All child components except **\<list>** are supported.
     </div>
 </swiper>
 ```
-
 
 ```css
 /* xxx.css */
@@ -109,7 +105,6 @@ All child components except **\<list>** are supported.
   background-color: #41ba41;
 }
 ```
-
 
 ```js
 /* xxx.js */

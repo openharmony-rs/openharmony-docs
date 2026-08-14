@@ -1,20 +1,28 @@
 # Matrix2D
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=814c7cb9af37d443e12a84b71f28815df508c584 translatedAt=2026-07-30T02:35:05.573Z pushedAt=2026-08-01T06:42:55.882Z -->
 
-**Matrix2D** allows you to perform matrix transformation, such as scaling, rotating, and translating.
+A matrix object used for graphic transformation in [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md), [OffscreenCanvasRenderingContext2D](ts-offscreencanvasrenderingcontext2d.md), [CanvasPattern](ts-components-canvas-canvaspattern.md), and [Path2D](ts-components-canvas-path2d.md). It can perform scaling, rotation, translation, and other transformations on the matrix.
 
->  **NOTE**
+**Matrix2D** is used in the following scenarios:
+
+1. In [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md) and [OffscreenCanvasRenderingContext2D](ts-offscreencanvasrenderingcontext2d.md), call [getTransform](ts-components-canvas-common-method.md#gettransform) to obtain the canvas graphic transformation **Matrix2D** object, and call [setTransform](ts-components-canvas-common-method.md#settransform-1) to apply the graphic transformation corresponding to the **Matrix2D** object to subsequent drawing content.
+
+2. In [CanvasPattern](ts-components-canvas-canvaspattern.md), call [setTransform](ts-components-canvas-canvaspattern.md#settransform) to apply the graphic transformation corresponding to the **Matrix2D** object to the [CanvasPattern](ts-components-canvas-canvaspattern.md) object.
+
+3. In [Path2D](ts-components-canvas-path2d.md), call [addPath](ts-components-canvas-path2d.md#addpath) to apply the graphic transformation corresponding to the **Matrix2D** object to the [Path2D](ts-components-canvas-path2d.md) object.
+
+> **NOTE**
 > 
-> This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
-## Constructor
-
-### constructor<sup>10+</sup>
+## constructor<sup>10+</sup>
 
 constructor()
 
@@ -24,9 +32,11 @@ Constructs a two-dimensional transformation matrix object. The default value is 
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-### constructor<sup>12+</sup>
+## constructor<sup>12+</sup>
 
 constructor(unit: LengthMetricsUnit)
 
@@ -36,13 +46,15 @@ Constructs a two-dimensional transformation matrix object. The default value is 
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type| Mandatory| Description                             |
 | ------ | -------- | ---- | ------------------------------------- |
-| unit  | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | Yes  | Unit mode of the **Matrix2D** object. The value cannot be dynamically changed once set. The configuration method is the same as that of [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md).<br>For abnormal values NaN and Infinity, the default values are used.<br>Default value: DEFAULT|
+| unit | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | Yes | Unit mode of the **Matrix2D** object. The configuration cannot be dynamically changed after being set. The configuration method is the same as that of [CanvasRenderingContext2D](./ts-canvasrenderingcontext2d.md).<br>Default value: **DEFAULT**<br>If the invalid values **NaN** and **Infinity** are passed in, the default value is used. |
 
 ## Attributes
 
@@ -52,18 +64,18 @@ Constructs a two-dimensional transformation matrix object. The default value is 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Read-Only| Optional  | Description|
+| Name | Type | Read-Only | Optional | Description |
 | ----- | ----- | --------------- | ------ | ------------------------ |
-| scaleX         | number | No| Yes| Horizontal scaling coefficient. The value range is not limited.<br>If the value is undefined, it is regarded as an invalid value. If the value is NaN or Infinity, the Matrix2D will be abnormal.|
-| scaleY         | number | No| Yes| Vertical scaling coefficient. The value range is not limited.<br>If the value is undefined, it is regarded as an invalid value. If the value is NaN or Infinity, the Matrix2D will be abnormal.|
-| rotateX       | number | No| Yes| Horizontal skew coefficient. The value range is not limited.<br>If the value is undefined, it is regarded as an invalid value. If the value is NaN or Infinity, the Matrix2D will be abnormal.|
-| rotateY       | number | No| Yes| Vertical skew coefficient. The value range is not limited.<br>If the value is undefined, it is regarded as an invalid value. If the value is NaN or Infinity, the Matrix2D will be abnormal.|
-| translateX | number | No| Yes| Horizontal translation distance. The value range is not limited.<br>If the value is undefined, it is regarded as an invalid value. If the value is NaN or Infinity, the Matrix2D will be abnormal.<br>Default unit: vp.|
-| translateY | number | No| Yes| Vertical translation distance. The value range is not limited.<br>If the value is undefined, it is regarded as an invalid value. If the value is NaN or Infinity, the Matrix2D will be abnormal.<br>Default unit: vp.|
+| scaleX         | number | No | Yes | Horizontal scale factor. The value range is unlimited. Values greater than 1 enlarge, less than 1 shrink, and negative values flip horizontally.<br>Default: **1**<br>The value **undefined** is treated as invalid. **NaN** and **Infinity** cause **Matrix2D** to behave abnormally, and drawn content will not be displayed after setting. |
+| scaleY         | number | No | Yes | Vertical scale factor. The value range is unlimited. Values greater than 1 enlarge, less than 1 shrink, and negative values flip vertically.<br>Default: **1**<br>The value **undefined** is treated as invalid. **NaN** and **Infinity** cause **Matrix2D** to behave abnormally, and drawn content will not be displayed after setting. |
+| rotateX       | number | No | Yes | Horizontal skew factor. The value range is unlimited.<br>Default: **0**<br>The value **undefined** is treated as invalid. **NaN** and **Infinity** cause **Matrix2D** to behave abnormally, and drawn content will not be displayed after setting. |
+| rotateY       | number | No | Yes | Vertical skew factor. The value range is unlimited.<br>Default: **0**<br>The value **undefined** is treated as invalid. **NaN** and **Infinity** cause **Matrix2D** to behave abnormally, and drawn content will not be displayed after setting. |
+| translateX | number | No | Yes | Horizontal translation distance. The value range is unlimited.<br>Default: **0**<br>The value **undefined** is treated as invalid. **NaN** and **Infinity** cause **Matrix2D** to behave abnormally, and drawn content will not be displayed after setting.<br>Default unit: vp |
+| translateY | number | No | Yes | Vertical translation distance. The value range is unlimited.<br>Default: **0**<br>The value **undefined** is treated as invalid. **NaN** and **Infinity** cause **Matrix2D** to behave abnormally, and drawn content will not be displayed after setting.<br>Default unit: vp |
 
->  **NOTE**
+> **NOTE**
 >  
->  You can use the [px2vp](ts-pixel-units.md#px2vpdeprecated) API for unit conversion.
+>  You can use the [px2vp](../arkts-apis-uicontext-uicontext.md#px2vp12) API for unit conversion.
 
 **Example**
 
@@ -102,14 +114,11 @@ struct Parameter {
 
 ![matrix-parameters.png](figures/matrix-parameters.png)
 
-
-## Methods
-
-### identity
+## identity
 
 identity(): Matrix2D
 
-Creates an identity matrix.
+Creates an identity matrix. It is commonly used to reset the transformation matrix, clearing all previous transformation operations so that subsequent drawing content is not affected by previous transformations.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -121,7 +130,7 @@ Creates an identity matrix.
 
 | Type                 | Description      |
 | --------------------- | ---------- |
-| Matrix2D | Identity matrix.|
+| Matrix2D | Identity matrix, which can be used to initialize or reset the graphics transformation state. |
 
 **Example**
 
@@ -155,12 +164,11 @@ struct Identity {
 
 ![matrix-identity.png](figures/matrix-identity.png)
 
-
-### invert
+## invert
 
 invert(): Matrix2D
 
-Obtains an inverse of this matrix.
+Obtains the inverse of the current matrix. It is commonly used to undo previous transformation operations or calculate reverse transformations, enabling reverse mapping of the coordinate system.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -172,7 +180,7 @@ Obtains an inverse of this matrix.
 
 | Type                 | Description        |
 | --------------------- | ------------ |
-| Matrix2D | Inverse of the current matrix.|
+| Matrix2D | Inverse matrix result, which can be used for reverse transformation or to undo previous transformation operations. |
 
 **Example**
 
@@ -212,16 +220,15 @@ struct Invert {
 
 ![matrix-invert.png](figures/matrix-invert.png)
 
-
-### multiply<sup>(deprecated)</sup>
+## multiply<sup>(deprecated)</sup>
 
 multiply(other?: Matrix2D): Matrix2D
 
-Multiplies this matrix by the target matrix.
+Multiplies the current matrix by the target matrix. This API is an empty API and has no actual effect.
+
+This API is deprecated since API version 10 and has no actual drawing effect, so no example is provided.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9. This API is an empty API.
-
-This API is deprecated since API version 10, and does not provide any actual rendering effects. Therefore, no examples are provided.
 
 **Parameters**
 
@@ -233,30 +240,32 @@ This API is deprecated since API version 10, and does not provide any actual ren
 
 | Type                 | Description          |
 | --------------------- | -------------- |
-| Matrix2D | Matrix of the multiplication result.|
+| Matrix2D | This API is an empty implementation, and its return value has no practical meaning. |
 
-### rotate<sup>(deprecated)</sup>
+## rotate<sup>(deprecated)</sup>
 
 rotate(rx?: number, ry?: number): Matrix2D
 
-Performs a rotation operation on this matrix.
+Performs a rotation operation on the current matrix. This API is an empty API and has no actual effect.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 10. You are advised to use [rotate](#rotate10) instead.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9. This API is an empty API.
-
-This API is deprecated since API version 10. You are advised to use [rotate](#rotate10) instead.
 
 **Parameters**
 
 | Name| Type  | Mandatory| Description                         |
 | ---- | ------ | ---- | -------------------------------- |
-| rx   | number | No  | Horizontal coordinate of the rotation point. The value range is not limited.<br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions.<br>Default unit: vp.|
-| ry   | number | No  | Vertical coordinate of the rotation point. The value range is not limited.<br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions.<br>Default unit: vp.|
+| rx | number | No | Horizontal coordinate of the rotation point. The value range is unlimited.<br>Default unit: vp<br>The abnormal values **undefined** and **null** are processed as invalid values, and **NaN** and **Infinity** cause **Matrix2D** exceptions.<br>Default value: **0** |
+| ry | number | No | Vertical coordinate of the rotation point. The value range is unlimited.<br>Default unit: vp<br>The abnormal values **undefined** and **null** are processed as invalid values, and **NaN** and **Infinity** cause **Matrix2D** exceptions.<br>Default value: **0** |
 
 **Return value**
 
 | Type                 | Description                |
 | --------------------- | -------------------- |
-| Matrix2D | Matrix of the rotation result.|
+| Matrix2D | Result matrix object after rotation, which can be used to perform rotation transformation on graphics. |
 
 **Example**
 
@@ -296,12 +305,11 @@ struct Rotate {
 
 ![matrix-rotate.png](figures/matrix-rotate.png)
 
-
-### rotate<sup>10+</sup>
+## rotate<sup>10+</sup>
 
 rotate(degree: number, rx?: number, ry?: number): Matrix2D
 
-Performs a right multiplication rotation operation on this matrix, with the specified rotation point as the transform origin.
+Performs a left-multiply rotation operation on the current matrix, centered at the rotation point. It is commonly used in scenarios such as graphic rotation animation or image rotation processing.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
 
@@ -313,7 +321,7 @@ Performs a right multiplication rotation operation on this matrix, with the spec
 
 | Name  | Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| degree | number | Yes | Rotation angle. The value range is not limited. Positive angles represent clockwise rotation. You can convert the angle to radians using the following formula: degree * Math.PI/180.<br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions.<br>Default unit: radian|
+| degree | number | Yes | Rotation angle (in radians). The value range is unlimited. A positive value indicates clockwise rotation. You can convert an angle to radians using `angle * Math.PI / 180` and pass it to this API.<br>Invalid values **undefined** and **null** are treated as invalid values. **NaN** and **Infinity** will cause **Matrix2D** exceptions.<br>Default unit: radians|
 | rx     | number | No | Horizontal coordinate of the rotation point. The value range is not limited.<br>Default unit: vp.<br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions.<br>Default value: **0**.   |
 | ry     | number | No | Vertical coordinate of the rotation point. The value range is not limited.<br>Default unit: vp.<br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions.<br>Default value: **0**.   |
 
@@ -321,7 +329,7 @@ Performs a right multiplication rotation operation on this matrix, with the spec
 
 | Type                 | Description                |
 | --------------------- | -------------------- |
-| Matrix2D | Matrix of the rotation result.|
+| Matrix2D | Resulting matrix object after rotation, which can be used to perform rotation transformation on graphics. |
 
 **Example**
 
@@ -361,12 +369,11 @@ struct Rotate {
 
 ![matrix-rotate10+.png](figures/matrix-rotate10+.png)
 
-
-### translate
+## translate
 
 translate(tx?: number, ty?: number): Matrix2D
 
-Performs a left multiplication translation operation on this matrix.
+Performs a left-multiply translation operation on the current matrix. It is commonly used in scenarios such as adjusting graphic positions, implementing displacement animations, or offsetting the canvas coordinate system.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -385,7 +392,7 @@ Performs a left multiplication translation operation on this matrix.
 
 | Type                 | Description                |
 | --------------------- | -------------------- |
-| Matrix2D | Matrix of the translation result.|
+| Matrix2D | Result matrix object after translation, which can be used to perform translation transformation on graphics. |
 
 **Example**
 
@@ -425,12 +432,11 @@ struct Translate {
 
 ![matrix-translate.png](figures/matrix-translate.png)
 
-
-### scale
+## scale
 
 scale(sx?: number, sy?: number): Matrix2D
 
-Performs a right multiplication scaling operation on this matrix.
+Performs a left-multiply scaling operation on the current matrix. It is commonly used in scenarios such as graphic scaling or flipping.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -440,16 +446,16 @@ Performs a right multiplication scaling operation on this matrix.
 
 **Parameters**
 
-| Parameter| Type  | Mandatory| Description              |
+| Name | Type   | Mandatory | Description               |
 | ---- | ------ | ---- | ------------------ |
-| sx   | number | No  | Horizontal scaling ratio coefficient. The value range is not limited.<br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions.<br>Default value: **1.0**.|
-| sy   | number | No  | Vertical scaling ratio coefficient. The value range is not limited.<br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions.<br>Default value: **1.0**.|
+| sx   | number | No   | Horizontal scaling ratio coefficient. The value range is not limited. A value greater than 1 indicates magnification, less than 1 indicates reduction, and a negative value indicates horizontal flipping.<br>Abnormal values **undefined** and **null** are treated as invalid input. **NaN** and **Infinity** cause **Matrix2D** exceptions.<br>Default value: **1.0** |
+| sy   | number | No   | Vertical scaling ratio coefficient. The value range is not limited. A value greater than 1 indicates magnification, less than 1 indicates reduction, and a negative value indicates vertical flipping.<br>Abnormal values **undefined** and **null** are treated as invalid input. **NaN** and **Infinity** cause **Matrix2D** exceptions.<br>Default value: **1.0** |
 
 **Return value**
 
 | Type                 | Description              |
 | --------------------- | ------------------ |
-| Matrix2D | Matrix of the scale result.|
+| Matrix2D | Scaling result matrix object, which can be used to scale graphics. |
 
 **Example**
 
@@ -488,3 +494,4 @@ struct Scale {
 ```
 
 ![matrix-scale.png](figures/matrix-scale.png)
+<!--no_check-->

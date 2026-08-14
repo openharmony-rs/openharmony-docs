@@ -154,8 +154,8 @@ let uri = "file://docs/storage/Users/currentUser/Desktop/test.txt.dlp";
 let file: number | undefined = undefined;
 file = fileIo.openSync(uri).fd;
 dlpPermission.isDLPFile(file, (err, isDLPFile) => {
- if (err != undefined) {
-    console.error('isDLPFile error,', err.code, err.message);
+ if (err) {
+    console.error(`Failed to check if file is DLP file. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('isDLPFile:', isDLPFile);
   }
@@ -209,7 +209,7 @@ dlpPermission.isInSandbox().then(async (inSandbox) => { // 是否在沙箱内。
 
 getDLPPermissionInfo(callback: AsyncCallback&lt;DLPPermissionInfo&gt;): void
 
-查询当前DLP沙箱的权限信息。返回的权限信息包括文件的授权类型和可执行的操作权限(如查看、编辑、复制等)。仅支持在DLP沙箱应用中调用。使用callback异步回调。
+查询当前DLP沙箱的权限信息。返回的权限信息包括文件的授权类型和可执行的操作权限（如查看、编辑、复制等）。仅支持在DLP沙箱应用中调用。使用callback异步回调。
 
 在DLP沙箱中处理文件时，可根据权限信息判断当前用户可以执行哪些操作，避免调用无权限的功能。
 
@@ -240,8 +240,8 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 dlpPermission.isInSandbox().then((inSandbox) => { // 是否在沙箱内。
   if (inSandbox) {
     dlpPermission.getDLPPermissionInfo((err, permissionInfo) => { 
-      if (err != undefined) {
-        console.error('getDLPPermissionInfo error', err.code, err.message);
+      if (err) {
+        console.error(`Failed to get DLP permission info. Code: ${err.code}, message: ${err.message}`);
       } else {
         console.info('permissionInfo', JSON.stringify(permissionInfo));
       }
@@ -329,7 +329,7 @@ on(type: 'openDLPFile', listener: Callback&lt;AccessedDLPFileInfo&gt;): void
 
 监听打开DLP文件。调用成功后，当DLP文件被打开时会触发回调通知当前应用。仅支持在非DLP沙箱应用中调用。
 
- 当应用需要在DLP文件打开后执行特定操作(如记录日志、更新界面)时，可注册该监听。
+ 当应用需要在DLP文件打开后执行特定操作（如记录日志、更新界面）时，可注册该监听。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -544,8 +544,8 @@ getDLPSupportedFileTypes(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): vo
 import { dlpPermission } from '@kit.DataProtectionKit';
 
 dlpPermission.getDLPSupportedFileTypes((err, fileTypes) => {
-  if (err != undefined) {
-    console.error('getDLPSupportedFileTypes error', err.code, err.message);
+  if (err) {
+    console.error(`Failed to get DLP supported file types. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('fileTypes', JSON.stringify(fileTypes));
   }
@@ -632,12 +632,11 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 let uri = "file://docs/storage/Users/currentUser/Desktop/test.txt.dlp";
 dlpPermission.isInSandbox().then((inSandbox) => { // 是否在沙箱内。
   if (inSandbox) {
-    dlpPermission.setRetentionState([uri], (err, retentionState) => {
-      if (err != undefined) {
-        console.error('setRetentionState error,', err.code, err.message);
+    dlpPermission.setRetentionState([uri], (err) => {
+      if (err) {
+        console.error(`Failed to set retention state. Code: ${err.code}, message: ${err.message}`);
       } else {
         console.info('setRetentionState success');
-        console.info('retentionState：', JSON.stringify(retentionState));
       }
     }); // 设置沙箱保留。
   }
@@ -650,7 +649,7 @@ dlpPermission.isInSandbox().then((inSandbox) => { // 是否在沙箱内。
 
 cancelRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt;
 
-取消沙箱保留状态即恢复DLP文件关闭时自动卸载沙箱策略。使用Promise异步回调。
+取消沙箱保留状态，即恢复DLP文件关闭时自动卸载沙箱策略。使用Promise异步回调。
 
 该接口用于取消沙箱保留状态，恢复默认行为以释放系统资源，适用于不再频繁访问DLP文件的场景。
 
@@ -725,8 +724,8 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 
 let uri = "file://docs/storage/Users/currentUser/Desktop/test.txt.dlp";
 dlpPermission.cancelRetentionState([uri], (err, res) => {
-  if (err != undefined) {
-    console.error('cancelRetentionState error,', err.code, err.message);
+  if (err) {
+    console.error(`Failed to cancel retention state. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('cancelRetentionState success');
   }
@@ -812,8 +811,8 @@ getRetentionSandboxList(bundleName: string, callback: AsyncCallback&lt;Array&lt;
 import { dlpPermission } from '@kit.DataProtectionKit';
 
 dlpPermission.getRetentionSandboxList("bundleName", (err, sandboxList) => {
-  if (err != undefined) {
-    console.error('getRetentionSandboxList error,', err.code, err.message);
+  if (err) {
+    console.error(`Failed to get retention sandbox list. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('sandboxList', JSON.stringify(sandboxList));
   }
@@ -826,7 +825,7 @@ getRetentionSandboxList(callback: AsyncCallback&lt;Array&lt;RetentionSandboxInfo
 
 查询当前应用的保留沙箱信息列表。使用callback异步回调。
 
-该接口用于查询指定应用的保留沙箱列表，以便查看或管理当前处于保留状态的沙箱环境。
+该接口用于查询指定应用的保留沙箱列表，以便查看或管理当前处于保留状态的沙箱环境。仅支持在非DLP沙箱应用中调用。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -853,10 +852,10 @@ getRetentionSandboxList(callback: AsyncCallback&lt;Array&lt;RetentionSandboxInfo
 import { dlpPermission } from '@kit.DataProtectionKit';
 
 dlpPermission.getRetentionSandboxList((err, retentionSandboxList) => {
-  if (err != undefined) {
+  if (err) {
     console.error('getRetentionSandboxList error,', err.code, err.message);
   } else {
-    console.info('res', JSON.stringify(retentionSandboxList));
+    console.info('retentionSandboxList', JSON.stringify(retentionSandboxList));
   }
 }); // 获取沙箱保留列表。
 ```
@@ -932,8 +931,8 @@ getDLPFileAccessRecords(callback: AsyncCallback&lt;Array&lt;AccessedDLPFileInfo&
 import { dlpPermission } from '@kit.DataProtectionKit';
 
 dlpPermission.getDLPFileAccessRecords((err, accessRecords) => {
-  if (err != undefined) {
-    console.error('getDLPFileAccessRecords error,', err.code, err.message);
+  if (err) {
+    console.error(`Failed to get DLP file access records. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('accessRecords', JSON.stringify(accessRecords));
   }
@@ -1006,7 +1005,7 @@ if (context !== undefined) {
 ## dlpPermission.setSandboxAppConfig<sup>11+</sup>
 setSandboxAppConfig(configInfo: string): Promise&lt;void&gt;
 
-设置沙箱应用配置信息，配置信息为JSON字符串格式，具体内容由应用自行设置。调用成功后，沙箱应用将按照配置信息运行。使用Promise异步回调。
+设置沙箱应用配置信息，配置信息为JSON字符串格式，具体内容由应用自行设置。调用成功后，沙箱应用将按照配置信息运行。使用Promise异步回调。仅支持在非DLP沙箱应用中调用。
 
 该接口用于设置沙箱应用的配置信息，以便应用按需传递自定义参数。
 
@@ -1041,8 +1040,8 @@ setSandboxAppConfig(configInfo: string): Promise&lt;void&gt;
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
 
-dlpPermission.setSandboxAppConfig('configInfo').then((configInfo) => { // 设置沙箱应用配置信息。
-  console.info('configInfo：', configInfo);
+dlpPermission.setSandboxAppConfig('configInfo').then(() => { // 设置沙箱应用配置信息。
+  console.info('setSandboxAppConfig success');
 }).catch((error: BusinessError)=> {
   console.error(JSON.stringify(error));
 });
@@ -1053,7 +1052,7 @@ cleanSandboxAppConfig(): Promise&lt;void&gt;
 
 清理沙箱应用配置信息。调用成功后，沙箱应用配置将被清除，恢复默认状态。使用Promise异步回调。
 
-该接口用于清理沙箱应用的配置信息，恢复默认状态以防止配置残留影响后续使用。
+该接口用于清理沙箱应用的配置信息，恢复默认状态以防止配置残留影响后续使用。仅支持在非沙箱应用中调用。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -1079,8 +1078,8 @@ cleanSandboxAppConfig(): Promise&lt;void&gt;
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
 
-dlpPermission.cleanSandboxAppConfig().then((configInfo) => { // 清理沙箱应用配置信息。
-  console.info('configInfo：', configInfo);
+dlpPermission.cleanSandboxAppConfig().then(() => { // 清理沙箱应用配置信息。
+  console.info('cleanSandboxAppConfig success');
 }).catch((error: BusinessError)=> {
   console.error(JSON.stringify(error));
 });
@@ -1239,7 +1238,7 @@ try {
     dlpPermission.setEnterprisePolicy(enterprisePolicy);
     console.info('set enterprise policy success'); 
 } catch (err) { 
-    console.error('error:' + err.code + err.message); // 失败报错。 
+    console.error(`Failed to set enterprise policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -1296,7 +1295,7 @@ DLP文件授权类型的枚举。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | uri | string | 否 | 否 | 表示DLP文件的uri。不超过4095字节。 |
-| lastOpenTime | number | 否 | 否 | 表示DLP文件最近打开时间。单位：s。 |
+| lastOpenTime | number | 否 | 否 | 表示DLP文件最近打开时间戳。单位：s。 |
 
 ## DLPManagerResult<sup>11+</sup>
 
@@ -1407,7 +1406,7 @@ let customProperty: dlpPermission.CustomProperty = {
 dlpPermission.generateDlpFileForEnterprise(plaintextFd, dlpFd, dlpProperty, customProperty).then((res) => {
   console.info('Successfully generate DLP file for enterprise.');
 }).catch((error: BusinessError)=> {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to generate DLP file for enterprise. Code: ${error.code}, message: ${error.message}`);
 }).finally(()=>{
   if (dlpFd) {
     fileIo.closeSync(dlpFd);
@@ -1587,7 +1586,7 @@ dlpPermission.queryDlpPolicy(dlpFd).then((policy) => {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | enterprise | string | 否 | 否 | 表示企业定制策略的JSON字符串。长度不超过2<sup>22</sup>字节，超出此范围抛出错误码401。 |
-| options | [DlpFileQueryOptions](#dlpfilequeryoptions) | 否 | 是 | 企业DLP文件的查询选项，默认为空。**起始版本**：26.0.0**模型约束**：此接口仅可在Stage模型下使用。 |
+| options | [DlpFileQueryOptions](#dlpfilequeryoptions) | 否 | 是 | 企业DLP文件的查询选项，默认为空。**起始版本：** 26.0.0**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## DLPProperty<sup>21+</sup>
 
@@ -1610,7 +1609,7 @@ dlpPermission.queryDlpPolicy(dlpFd).then((policy) => {
 | fileId | string | 否 | 是 | 表示文件的标识，默认为空。长度不超过255字节，超出此范围抛出错误码401。 |
 | allowedOpenCount | number | 否 | 是 | 表示允许打开的次数，默认为0。无范围限制。 |
 | waterMarkConfig<sup>23+</sup> | boolean | 否 | 是 | 表示是否要求添加水印。true表示要求添加水印，false表示不要求添加水印，默认为空。 |
-| countdown<sup>23+</sup> | number | 否 | 是 | 表示文件可被查看的有效时间，超时后打开的文件将自动关闭，默认为0，单位：秒。取值范围大于等于0。无范围限制。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| countdown<sup>23+</sup> | number | 否 | 是 | 表示文件可被查看的有效时间，超时后打开的文件将自动关闭，默认为0，单位：s。取值范围为[-2<sup>31</sup>, 2<sup>31</sup>-1]<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 | extensionFields<sup>24+</sup> | Record<string, Object> | 否 | 是 | 表示DLP文件的扩展属性，默认为空。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## AuthUser<sup>21+</sup>
@@ -1624,7 +1623,7 @@ dlpPermission.queryDlpPolicy(dlpFd).then((policy) => {
 | authAccount | string | 否 | 否 | 表示被授权用户账号。不超过255字节，超出此范围抛出错误码401。 |
 | authAccountType | [AccountType](#accounttype21) | 否 | 否 | 表示被授权用户账号类型。 |
 | dlpFileAccess | [DLPFileAccess](#dlpfileaccess) | 否 | 否 | 表示被授予的权限。 |
-| permExpiryTime | number | 否 | 否 | 表示授权到期时间。取值范围大于等于0，超出此范围将被强转为非符号整数。单位：s。 |
+| permExpiryTime | number | 否 | 否 | 表示授权到期时间戳。取值范围大于等于0，超出此范围将被强转为非符号整数。单位：s。 |
 
 ## DlpConnPlugin<sup>21+</sup>
 
@@ -1679,7 +1678,7 @@ export default class DataCapsulePlugin implements dlpPermission.DlpConnPlugin {
   connectServer(requestId: string, requestData: string, callback: Callback<string>): void {
     let callbackJson = JSON.stringify({
       'requestId': requestId,
-    }); // 构造回调JSON数据
+    }); // 构造回调JSON数据。
     callback(callbackJson);  // 调用回调函数返回结果。
   }
 }
@@ -1745,7 +1744,7 @@ static registerPlugin(plugin: DlpConnPlugin): number
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 注册结果，返回该回调的唯一标识ID。取值范围为[0, 2<sup>64</sup>-1]。|
+| number | 注册结果，返回该回调的唯一标识ID。取值范围为[0, 2<sup>53</sup>-1]。|
 
 **错误码：**
 
@@ -1823,7 +1822,7 @@ dlpPermission.DlpConnManager.unregisterPlugin();
 
 表示企业DLP文件的查询选项。
 
-**起始版本**：26.0.0
+**起始版本：** 26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1888,7 +1887,7 @@ let options: dlpPermission.DlpFileQueryOptions = {
 dlpPermission.queryOpenedEnterpriseDlpFiles(options).then((uris: Array<string>) => {
   console.info("try to query opened enterprise dlp files, result: ", JSON.stringify(uris));
 }).catch((error: BusinessError)=> {
-  console.error(error.message);
+  console.error(`Failed to query opened enterprise DLP files. Code: ${error.code}, message: ${error.message}`);
 }).finally(()=> {
   console.info("after querying opened enterprise dlp files");
 });
@@ -1906,7 +1905,7 @@ closeOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise&lt;void&gt
 >
 > 该接口仅能关闭调用方应用通过[generateDlpFileForEnterprise](#dlppermissiongeneratedlpfileforenterprise21)生成的企业DLP文件。
   
-**起始版本**：26.0.0
+**起始版本：** 26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1960,7 +1959,7 @@ setControlledAppLists(appLists: Array&lt;string&gt;, userId?: number): Promise&l
 
 设置受企业DLP控制的应用程序列表。使用Promise异步回调。
   
-**起始版本**：26.0.0
+**起始版本：** 26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -2021,7 +2020,7 @@ getControlledAppLists(): Promise&lt;Array&lt;string&gt;&gt;
 >
 > 该接口仅能查询通过[setControlledAppLists](#dlppermissionsetcontrolledapplists)设置的受企业DLP控制的应用程序列表。
 
-**起始版本**：26.0.0
+**起始版本：** 26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 

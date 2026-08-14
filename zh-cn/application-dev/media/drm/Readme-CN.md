@@ -1,4 +1,10 @@
 # DRM Kit（数字版权保护服务）
+<!--Kit: Drm Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @qin_wei_jie-->
+<!--Designer: @chris2981-->
+<!--Tester: @xdlinc-->
+<!--Adviser: @w_Machine_cc-->
 
 - [DRM Kit 简介](drm-overview.md)
 - [数字版权保护(ArkTS)](drm-arkts-dev-guide.md)
@@ -8,3 +14,4 @@
 <!--DelEnd-->
 - [基于AVPlayer播放DRM节目(ArkTS)](drm-avplayer-arkts-integration.md)
 - [基于AVCodec播放DRM节目(C/C++)](drm-avcodec-integration.md)
+- [DRM Kit术语](drm-glossary.md)

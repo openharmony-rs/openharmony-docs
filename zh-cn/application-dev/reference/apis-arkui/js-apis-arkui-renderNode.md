@@ -1746,7 +1746,7 @@ set shadowAlpha(alpha: number)
 
 | 参数名 | 类型   | 必填 | 说明                                      |
 | ------ | ------ | ---- | ----------------------------------------- |
-| alpha  | number | 是   | 将要设置的RenderNode的阴影颜色的Alpha值。<br> 取值范围：[0, 1]。 |
+| alpha  | number | 是   | 将要设置的RenderNode的阴影颜色的Alpha值。<br> 取值范围：[0, 1]。超出范围的值会被钳位到[0, 1]。 |
 
 get shadowAlpha(): number
 
@@ -1821,7 +1821,7 @@ set shadowElevation(elevation: number)
 
 | 参数名    | 类型   | 必填 | 说明                             |
 | --------- | ------ | ---- | -------------------------------- |
-| elevation | number | 是   | 将要设置的RenderNode的阴影的光照高度，单位为vp。<br>取值范围：[0, +∞)。 |
+| elevation | number | 是   | 将要设置的RenderNode的阴影的光照高度，单位为vp。<br>取值范围：[0, +∞)。传入负数时不产生光照阴影。 |
 
 get shadowElevation(): number
 
@@ -1897,7 +1897,7 @@ set shadowRadius(radius: number)
 
 | 参数名 | 类型   | 必填 | 说明                                 |
 | ------ | ------ | ---- | ------------------------------------ |
-| radius | number | 是   | 将要设置的RenderNode的阴影模糊半径，单位为vp。<br>取值范围：[0, +∞)。 |
+| radius | number | 是   | 将要设置的RenderNode的阴影模糊半径，单位为vp。<br>取值范围：[0, +∞)。传入负数时不绘制阴影。 |
 
 get shadowRadius(): number
 
@@ -1993,7 +1993,7 @@ ArkTS侧代码：
 
 ```ts
 // Index.ets
-import bridge from 'libentry.so'; // 该 so 由开发者通过 NAPI 编写并生成
+import bridge from 'libentry.so'; // 该 .so 文件由开发者通过 NAPI 编写并生成
 import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
 
 // 继承RenderNode，实现自定义绘制方法
@@ -2166,7 +2166,7 @@ invalidate(): void
 **示例：**
 
 ```ts
-import bridge from 'libentry.so'; // 该 so 由开发者通过 NAPI 编写并生成
+import bridge from 'libentry.so'; // 该 .so 文件由开发者通过 NAPI 编写并生成
 import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
 
 // 继承RenderNode，实现自定义绘制方法
@@ -2320,7 +2320,7 @@ set borderWidth(width: Edges\<number>)
 
 | 参数名 | 类型                                                | 必填 | 说明                   |
 | ------ | --------------------------------------------------- | ---- | ---------------------- |
-| width  | [Edges](./js-apis-arkui-graphics.md#edgest12)\<number> | 是   | RenderNode的边框宽度，单位为vp。<br>取值范围：[0, +∞)。 |
+| width  | [Edges](./js-apis-arkui-graphics.md#edgest12)\<number> | 是   | RenderNode的边框宽度，单位为vp。<br>取值范围：[0, +∞)。传入负数或0时不绘制边框。 |
 
 get borderWidth(): Edges\<number>
 

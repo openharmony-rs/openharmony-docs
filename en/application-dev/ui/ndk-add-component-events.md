@@ -6,7 +6,7 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=4431c59b895d1d02940f60be4527223815858a92 translatedAt=2026-07-09T11:48:32.015Z pushedAt=2026-07-10T02:28:47.883Z -->
+<!-- md-trans-meta sourceCommit=39f66a31c4cd77f8015af575d95ace022de7992b translatedAt=2026-08-05T01:26:37.868Z pushedAt=2026-08-05T06:07:31.459Z -->
 
 NDK APIs provide the event listening capability for components. This section describes how to listen for component events, layout and drawing events, and light/dark mode change events.
 

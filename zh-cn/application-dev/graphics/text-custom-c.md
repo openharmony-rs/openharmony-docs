@@ -25,7 +25,7 @@
 
 ### 接口说明
 
-文本塑形中常用接口如下表所示，详细接口说明参考[drawing_text_typography.h](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md)和[drawing_text_blob.h](../reference/apis-arkgraphics2d/capi-drawing-text-blob-h.md)。
+文本塑形中常用接口如下表所示，详细接口说明参考[drawing_text_lineTypography.h](../reference/apis-arkgraphics2d/capi-drawing-text-linetypography-h.md)、[drawing_text_line.h](../reference/apis-arkgraphics2d/capi-drawing-text-line-h.md)、[drawing_text_run.h](../reference/apis-arkgraphics2d/capi-drawing-text-run-h.md)、[drawing_text_blob.h](../reference/apis-arkgraphics2d/capi-drawing-text-blob-h.md)和[drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md)。
 
 | 接口名 | 描述 | 
 | -------- | -------- |
@@ -86,8 +86,7 @@
    ``` C++
    // 设置文本内容，并将文本添加到 handler 中
    OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
-   const char *text = "Hello World";
-   OH_Drawing_TypographyHandlerAddText(handler, text);
+   OH_Drawing_TypographyHandlerAddText(handler, "Hello World");
    ```
 
 5. 创建行对象。获取行中所有文字的塑形结果。
@@ -140,8 +139,7 @@
            float pos = 0;
            OH_Drawing_PointGetX(advance, &pos);
            x += pos + 10; // 每个字形间水平间隔10px
-           OH_Drawing_PointGetY(advance, &pos);
-           y += pos + 30; // 每个字形间垂直间隔30px
+           y += 30; // 每个字形间垂直间隔30px
        }
    
        // 自定义绘制一串具有相同属性的一系列连续字形
@@ -154,6 +152,8 @@
        OH_Drawing_FontDestroy(font);
        OH_Drawing_DestroyRunGlyphAdvances(advances);
        OH_Drawing_DestroyRunGlyphs(glyphs);
+       OH_Drawing_TextBlobBuilderDestroy(builder);
+       OH_Drawing_RectDestroy(rect);
    }
    ```
 

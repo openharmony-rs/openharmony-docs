@@ -1,14 +1,14 @@
 # FoldSplitContainer
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @fenglinbailu-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=814c7cb9af37d443e12a84b71f28815df508c584 translatedAt=2026-07-29T03:02:24.994Z pushedAt=2026-08-04T02:46:54.356Z -->
 
-
-**FoldSplitContainer** is a layout container designed to manage two-panel and three-panel layout regions on foldable devices, covering expanded, hover, and folded states.
-
+The **FoldSplitContainer** component implements split-screen layout, providing region control for two-panel and three-panel layouts on foldable screens in the expanded state (device fully unfolded), hover state (device half-folded), and folded state (device fully folded). It is suitable for responsive layout adaptation scenarios in foldable screen apps, helping developers implement intelligent split-panel layouts across multiple screen states and improving user experience. For details about fold status, see [display.FoldStatus](../js-apis-display.md#foldstatus10).
 
 > **NOTE**
 >
@@ -16,7 +16,7 @@
 >
 > - The APIs of this module can be used only in the stage model.
 >
-> - By default, a two-panel layout is used when the window width is less than or equal to 600 vp. When the window width exceeds 600 vp, an extended area is supported alongside the top-bottom split layout. A hover state layout can be triggered when the window width is greater than 600 vp and the device is in a horizontal, half-folded posture. In the hover layout, visual avoidance for the screen crease area is applied, and the extended area cannot span across the crease. The extended area can also be configured not to display in the hover state. For details, see [Examples](#examples).
+> - When the window width is less than or equal to 600 vp, the split-screen layout is used by default. When the window width is greater than 600 vp, an expanded area can be supported in addition to the top-bottom split. When the window width is greater than 600 vp and the device is in landscape half-folded state, the hover state layout can be triggered. In the hover state layout, the crease area is avoided and the expanded area cannot cross the crease area. In the hover state, you can set not to display the expanded area. For details, see [Examples](#examples).
 
 ## Modules to Import
 
@@ -32,7 +32,7 @@ Not supported
 
 FoldSplitContainer({primary: Callback&lt;void&gt;, secondary: Callback&lt;void&gt;, extra?: Callback&lt;void&gt;, expandedLayoutOptions: ExpandedRegionLayoutOptions, hoverModeLayoutOptions: HoverModeRegionLayoutOptions, foldedLayoutOptions: FoldedRegionLayoutOptions, animationOptions?: AnimateParam | null, onHoverStatusChange?: OnHoverStatusChangeHandler})
 
-Creates a **FoldSplitContainer** component to manage two-panel and three-panel layout regions on foldable devices, covering expanded, hover, and folded states.
+Implements region control for the two-panel split-screen layout (primary area + secondary area) and three-panel layout (primary area + secondary area + expanded area) on foldable screens in the expanded, hover, and folded states.
 
 **Decorator**: [\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)
 
@@ -42,14 +42,14 @@ Creates a **FoldSplitContainer** component to manage two-panel and three-panel l
 
 | Name| Type| Mandatory| Decorator| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| primary | Callback\<void> | Yes| [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | Callback function for the primary region.|
-| secondary | Callback\<void> | Yes| [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | Callback function for the secondary region.|
-| extra | Callback\<void> | No| [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | Callback function for the extra region. If this parameter is not provided, there is no corresponding region.|
-| expandedLayoutOptions | [ExpandedRegionLayoutOptions](#expandedregionlayoutoptions) | Yes| [\@Prop](../../../ui/state-management/arkts-prop.md) | Layout information for the expanded state.|
-| hoverModeLayoutOptions | [HoverModeRegionLayoutOptions](#hovermoderegionlayoutoptions) | Yes| [\@Prop](../../../ui/state-management/arkts-prop.md) | Layout information for the hover state.|
-| foldedLayoutOptions | [FoldedRegionLayoutOptions](#foldedregionlayoutoptions) | Yes| [\@Prop](../../../ui/state-management/arkts-prop.md) | Layout information for the folded state.|
-| animationOptions | [AnimateParam](ts-explicit-animation.md#animateparam) \| null | No| [\@Prop](../../../ui/state-management/arkts-prop.md) | Animation settings. The value **null** indicates that the animation is disabled.|
-| onHoverStatusChange | [OnHoverStatusChangeHandler](#onhoverstatuschangehandler) | No| - | Callback invoked when the foldable device enters or exits the hover state.|
+| primary | Callback\<void> | Yes | [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | Callback function for building the UI content of the primary area. This callback function has no parameters and no return value, and is invoked during component layout. |
+| secondary | Callback\<void> | Yes | [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | Callback function for building the UI content of the secondary area. This callback function has no parameters and no return value, and is invoked during component layout. |
+| extra | Callback\<void> | No | [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | Callback function for building the UI content of the expanded area. Pass this parameter when a three-column layout or an additional content area is needed. This parameter can be omitted when no expanded area is required. This callback function has no parameters and no return value. When not passed, no corresponding area is displayed. |
+| expandedLayoutOptions | [ExpandedRegionLayoutOptions](#expandedregionlayoutoptions) | Yes | [\@Prop](../../../ui/state-management/arkts-prop.md) | Expanded state layout information, used to control whether the expanded area spans through, the area ratio, and the position in the expanded state of a foldable screen. The expanded area is supported when the window width is greater than 600 vp. |
+| hoverModeLayoutOptions | [HoverModeRegionLayoutOptions](#hovermoderegionlayoutoptions) | Yes | [\@Prop](../../../ui/state-management/arkts-prop.md) | Hover state layout information, used to control whether the expanded area is displayed, the area ratio, and the position in the semi-folded hover state of a foldable screen. The hover state layout is triggered when the window width is greater than 600 vp and the device is in landscape semi-folded state. |
+| foldedLayoutOptions | [FoldedRegionLayoutOptions](#foldedregionlayoutoptions) | Yes | [\@Prop](../../../ui/state-management/arkts-prop.md) | Folded state layout information, used to control the height ratio between the primary area and the secondary area in the folded state of a foldable screen. This takes effect when the device is in the folded state. A split-screen layout is used by default when the window width is less than or equal to 600 vp. |
+| animationOptions | [AnimateParam](ts-explicit-animation.md#animateparam) \| null | No | [\@Prop](../../../ui/state-management/arkts-prop.md) | Parameters for setting animation effects. The value **null** indicates that animation is disabled.<br>Default value: **null** |
+| onHoverStatusChange | [OnHoverStatusChangeHandler](#onhoverstatuschangehandler) | No | - | Callback function triggered when the foldable screen enters or exits hover mode. When not passed, no callback is made for hover state changes. |
 
 ## ExpandedRegionLayoutOptions
 
@@ -61,10 +61,10 @@ Defines layout information for the expanded state.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| isExtraRegionPerpendicular | boolean | No| Yes| Whether the extra region extends perpendicularly through the entire component from top to bottom. The value **true** means that the extra region extends perpendicularly through the entire component from top to bottom, and **false** means the opposite. This setting takes effect only when **extra** is effective.<br>Default value: **true**.|
-| verticalSplitRatio | number | No| Yes| Height ratio between the primary and secondary regions.<br>Default value: [PresetSplitRatio](#presetsplitratio).LAYOUT_1V1|
-| horizontalSplitRatio | number | No| Yes| Width ratio between the primary and extra regions. This setting takes effect only when **extra** is effective.<br>Default value: [PresetSplitRatio](#presetsplitratio).LAYOUT_3V2|
-| extraRegionPosition | [ExtraRegionPosition](#extraregionposition) | No| Yes| Position information of the extra region. This setting takes effect only when **isExtraRegionPerpendicular** is set to **false**.<br>Default value: **ExtraRegionPosition.TOP**|
+| isExtraRegionPerpendicular | boolean | No | Yes | Whether the expanded area runs through the entire component from top to bottom. The value **true** means the expanded area runs through the entire component, and **false** means the opposite. This field takes effect only when **extra** is valid.<br>Default value: **true** |
+| verticalSplitRatio | number | No | Yes | Ratio of the primary area height to the secondary area height. The value can be a preset value of **PresetSplitRatio** or a custom value. The value range is (0, +∞). If a value less than or equal to 0 is passed, the default value is used. For example, when the value is 1.5, the primary area height is 1.5 times the secondary area height (that is, a 3:2 ratio).<br>Default value: [PresetSplitRatio](#presetsplitratio).LAYOUT_1V1 |
+| horizontalSplitRatio | number | No | Yes | Ratio of the primary area width to the expanded area width. The value can be a preset value of **PresetSplitRatio** or a custom value. The value range is (0, +∞). If a value less than or equal to 0 is passed, the default value is used. This field takes effect only when **extra** is valid.<br>Default value: [PresetSplitRatio](#presetsplitratio).LAYOUT_3V2 |
+| extraRegionPosition | [ExtraRegionPosition](#extraregionposition) | No | Yes | Position of the expanded area. The options are **TOP** (upper half) and **BOTTOM** (lower half). This field takes effect when **isExtraRegionPerpendicular** is set to **false** and **extra** is valid.<br>Default value: `ExtraRegionPosition.TOP` |
 
 ## HoverModeRegionLayoutOptions
 
@@ -76,14 +76,14 @@ Defines layout information for the hover state.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| showExtraRegion | boolean | No| Yes| Whether to display the extra region in the half-folded state. The value **true** means to display the extra region in the half-folded state, and **false** means the opposite.<br>Default value: **false**.|
-| horizontalSplitRatio | number | No| Yes| Width ratio between the primary and extra regions. This setting takes effect only when **extra** is effective.<br>Default value: [PresetSplitRatio](#presetsplitratio).LAYOUT_3V2|
-| extraRegionPosition | [ExtraRegionPosition](#extraregionposition) | No| Yes| Position information of the extra region. This setting takes effect only when **showExtraRegion** is set to **true**.<br>Default value: **ExtraRegionPosition.TOP**|
+| showExtraRegion | boolean | No | Yes | Whether to display the expanded area when the foldable screen is in the hover state. The value **true** means to display the expanded area, and **false** means not to display it.<br>Default value: **false** |
+| horizontalSplitRatio | number | No | Yes | Ratio of the primary area width to the expanded area width. The value can be a preset value from **PresetSplitRatio** or a custom value, with a value range of (0, +∞). If a value less than or equal to 0 is passed, the default value is used. This field takes effect when **extra** is valid and **showExtraRegion** is set to **true**. "extra is valid" means that the **extra** parameter is passed to the **FoldSplitContainer** component.<br>Default value: [PresetSplitRatio](#presetsplitratio).LAYOUT_3V2 |
+| extraRegionPosition | [ExtraRegionPosition](#extraregionposition) | No | Yes | Position information of the expanded area. The value can be **TOP** (upper area) or **BOTTOM** (lower area). This field takes effect when **extra** is valid and **showExtraRegion** is set to **true**. "extra is valid" means that the **extra** parameter is passed to the **FoldSplitContainer** component.<br>Default value: `ExtraRegionPosition.TOP` |
 
 > **NOTE**
 >
-> 1. In the hover state, the device contains an avoidance area, and layout calculations must account for the impact of this avoidance area on the overall layout.
-> 2. In the hover state, the upper screen is dedicated to content display, and the lower screen is reserved for interaction.
+> 1. In the hover state, the device has an avoidance area (the area near the crease where content may be invisible or restricted), and the impact of this area must be considered during layout calculation.
+> 2. In hover mode, the upper half of the screen is the display area, and the lower half is the operation area.
 
 ## FoldedRegionLayoutOptions
 
@@ -95,13 +95,13 @@ Defines the layout information for the folded state.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| verticalSplitRatio | number | No| Yes| Height ratio between the primary and secondary regions. Default value: [PresetSplitRatio](#presetsplitratio).LAYOUT_1V1|
+| verticalSplitRatio | number | No | Yes | Ratio of the primary area height to the secondary area height. The value can be a **PresetSplitRatio** preset value or a custom value. The value range is (0, +∞). If a value less than or equal to 0 is passed, the default value is used. This field takes effect only in the folded state layout. For example, when the value is 1.5, it indicates that the primary area height is 1.5 times the secondary area height (i.e., a 3:2 ratio).<br>Default value: [PresetSplitRatio](#presetsplitratio).LAYOUT_1V1 |
 
 ## OnHoverStatusChangeHandler
 
 type OnHoverStatusChangeHandler = (status: HoverModeStatus) => void
 
-Implements a handler for the **onHoverStatusChange** event.
+Defines an event handler for hover state changes.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -111,7 +111,7 @@ Implements a handler for the **onHoverStatusChange** event.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| status | [HoverModeStatus](#hovermodestatus) | Yes| Hover mode status of the foldable device.|
+| status | [HoverModeStatus](#hovermodestatus) | Yes | Status information when the foldable screen enters or exits hover mode. |
 
 ## HoverModeStatus
 
@@ -123,10 +123,10 @@ Provides device or application information covering fold status, hover mode, app
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| foldStatus | [display.FoldStatus](../js-apis-display.md#foldstatus10) | No| No| Fold status of the device.|
-| isHoverMode | boolean | No| No| Whether the application is in the hover state. The value **true** means that the application is in the hover state, and **false** means the opposite.|
-| appRotation | number | No| No| Rotation angle of the application.|
-| windowStatusType | [window.WindowStatusType](../arkts-apis-window-e.md#windowstatustype11) | No| No| Windowed mode.|
+| foldStatus | [display.FoldStatus](../js-apis-display.md#foldstatus10) | No | No | Fold status of the device, including expanded, half-folded, and fully folded states. |
+| isHoverMode | boolean | No | No | Whether the app is currently in hover state. The value **true** indicates hover state, and **false** indicates non-hover state. |
+| appRotation | number | No | No | App rotation angle, in degrees. |
+| windowStatusType | [window.WindowStatusType](../arkts-apis-window-e.md#windowstatustype11) | No | No | Window mode, including full-screen, split-screen, and freeform window modes. |
 
 ## ExtraRegionPosition
 
@@ -151,9 +151,9 @@ Enumerates the split ratios.
 
 | Name| Value| Description|
 | -------- | -------- | -------- |
-| LAYOUT_1V1 | 1 | 1:1.|
-| LAYOUT_3V2 | 1.5 | 3:2.|
-| LAYOUT_2V3 | 0.6666666666666666 | 2:3.|
+| LAYOUT_1V1 | 1 | 1:1 ratio, indicating that the primary area and secondary area are equal in size. When used for **verticalSplitRatio**, the height ratio of the upper and lower areas is 1:1. When used for **horizontalSplitRatio**, the width ratio of the left and right areas is 1:1. |
+| LAYOUT_3V2 | 1.5 | 3:2 ratio, indicating that the primary area is 1.5 times the size of the secondary area, that is, the primary area occupies 3/5 and the secondary area occupies 2/5. When used for **verticalSplitRatio**, the height ratio of the upper and lower areas is 3:2. When used for **horizontalSplitRatio**, the width ratio of the left and right areas is 3:2. |
+| LAYOUT_2V3 | 0.6666666666666666 | 2:3 ratio, indicating that the primary area is approximately 0.667 times (2/3) the size of the secondary area, that is, the primary area occupies 2/5 and the secondary area occupies 3/5. When used for **verticalSplitRatio**, the height ratio of the upper and lower areas is 2:3. When used for **horizontalSplitRatio**, the width ratio of the left and right areas is 2:3. |
 
 ## Examples
 
@@ -279,7 +279,7 @@ struct ThreeColumns {
 
 ### Example 3: Configuring the Folded, Hover, and Expanded States of FoldSplitContainer
 
-This example demonstrates how to use [ExpandedRegionLayoutOptions](#expandedregionlayoutoptions), [HoverModeRegionLayoutOptions](#hovermoderegionlayoutoptions), and [FoldedRegionLayoutOptions](#foldedregionlayoutoptions) to configure the layout information of the expanded, hover, and folded states of the foldable device. **MajorRegion**, **MinorRegion**, and **ExtraRegion** represent the primary, secondary, and extra regions divided by the component. These regions are implemented with the encapsulated **Region** component. **RadioOptions** stands for the encapsulated radio switch component, while **SwitchOption** refers to the encapsulated toggle switch component.
+This example configures the folded, hover, and expanded state layout information of the foldable screen through [ExpandedRegionLayoutOptions](#expandedregionlayoutoptions), [HoverModeRegionLayoutOptions](#hovermoderegionlayoutoptions), and [FoldedRegionLayoutOptions](#foldedregionlayoutoptions), respectively. The example provides an interactive configuration page, allowing users to adjust layout parameters in real time in each region: the primary area (**MajorRegion**) is used to configure folded state parameters, the secondary area (**MinorRegion**) is used to configure hover state parameters, and the expanded area (**ExtraRegion**) is used to configure expanded state parameters. These regions are implemented using the encapsulated region component **Region**, where **RadioOptions** is an encapsulated radio button switch component and **SwitchOption** is an encapsulated toggle switch component. The schematic diagram shows various layout effects under different parameter configurations.
 
 ```ts
 import { FoldSplitContainer, PresetSplitRatio, ExtraRegionPosition, ExpandedRegionLayoutOptions, HoverModeRegionLayoutOptions, FoldedRegionLayoutOptions } from '@kit.ArkUI';

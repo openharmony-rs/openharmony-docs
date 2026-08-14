@@ -1,11 +1,12 @@
 # Global Popup Independent of UI Components (openPopup)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyi0309-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=4431c59b895d1d02940f60be4527223815858a92 translatedAt=2026-07-09T11:47:45.320Z pushedAt=2026-07-09T11:58:18.924Z -->
+<!-- md-trans-meta sourceCommit=b8421fa94775fa4bceb1b522857b705478302935 translatedAt=2026-08-04T06:35:52.942Z pushedAt=2026-08-04T08:18:12.671Z -->
 
 The [Popup](arkts-popup-and-menu-components-popup.md) API is a great option for creating popups, but it relies on a bound UI component to work. Since API version 18, however, the global API [openPopup](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#openpopup18) offers a more flexible solution. This API can be used directly or encapsulated in scenarios where no bound UI components are available, making it ideal for use cases such as event callbacks or when integrating with external systems.
 
@@ -29,7 +30,7 @@ To display a popup, call the [openPopup](../reference/apis-arkui/arkts-apis-uico
 
 ### Creating a ComponentContent Instance
 
-Use the **openPopup** API to display a menu and define **ComponentContent** to customize the popup content. For details about the specifications, see [ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md).
+Use the **openPopup** API to display a popup and define **ComponentContent** to customize the popup content. For details about the specifications, see [ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md).
 
   <!-- @[content_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopup.ets) --> 
 
@@ -46,7 +47,7 @@ If **wrapBuilder** contains other components (such as [Popup](../reference/apis-
   @Builder
   export function buildText(params: Params) {
     Popup({
-      // Set the icon for the menu.
+      // Set the icon content.
       icon: {
         // Replace $r('app.media.app_icon') with the actual resource file.
         image: $r('app.media.app_icon'),
@@ -91,7 +92,6 @@ If **wrapBuilder** contains other components (such as [Popup](../reference/apis-
   let contentNode: ComponentContent<Object> =
     new ComponentContent(uiContext, wrapBuilder(buildText), message, { nestingBuilderSupported: true });
   ```
-
 
 ### Providing Bound Component Information
 
@@ -147,10 +147,9 @@ Currently, there are two ways to set the target node:
    }
    ```
 
-
 ### Customizing the Popup Style
 
-When calling **openPopup**, you can customize the menu style using [PopupCommonOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupcommonoptions18).
+When calling **openPopup**, you can customize the popup style using [PopupCommonOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupcommonoptions18).
 
   <!-- @[private_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopup.ets) -->
 
@@ -176,7 +175,6 @@ To update the popup style, use the [updatePopup](../reference/apis-arkui/arkts-a
     });
   ```
 
-
 ## Closing the Popup
 
 To close the popup, use the [closePopup](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#closepopup18) API, supported since API version 18.
@@ -193,11 +191,9 @@ To close the popup, use the [closePopup](../reference/apis-arkui/arkts-apis-uico
     });
   ```
 
-
 > **NOTE**
 >
-> The [updatePopup](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatepopup18) and [closePopup](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#closepopup18) APIs rely on the content to identify the menu. Therefore, you must maintain the content instance throughout the popup's lifecycle.
-
+> The [updatePopup](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatepopup18) and [closePopup](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#closepopup18) APIs rely on the content to identify the popup. Therefore, you must maintain the content instance throughout the popup's lifecycle.
 
 ## Using the Global Popup in HAR Packages
 
@@ -274,7 +270,6 @@ You can encapsulate a popup using the [HAR](../quick-start/har-package.md) packa
     }
   }
   ```
-
 
   <!-- @[open_popup_main](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopup.ets) --> 
 
@@ -355,6 +350,5 @@ You can encapsulate a popup using the [HAR](../quick-start/har-package.md) packa
     }
   }
   ```
-
 
 ![image](figures/UIopenPopup.gif)

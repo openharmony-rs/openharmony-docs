@@ -27,19 +27,23 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 | Name                                 |    Value  |   Description                        |
 | ------------------------------------- | -------- | ---------------------------- |
-| INVALID_PARAMS                        | 401      | Invalid parameter.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                |
-| NOT_SUPPORT                           | 801      | Unsupported operation.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                |
-| ERR_OUT_OF_MEMORY                     | 17620001 | Memory operation fails.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                  |
-| ERR_RUNTIME_ERROR                     | 17620002 | The **Native** object fails to be obtained or the parameter conversion fails.<br>**Atomic service API**: This API can be used in atomic services since API version 12.          |
-| ERR_PARAMETER_CHECK_FAILED<sup>20+</sup>            | 17620003 | The parameter check failed.<br>**Atomic service API**: This API can be used in atomic services since API version 20.          |
+| INVALID_PARAMS                        | 401      | Invalid parameter.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br> **Model restriction**:<br>API version 12+: This API can be used in both the stage and FA models.<br>API versions 9 to 11: This API can be used only in the stage model.               |
+| NOT_SUPPORT                           | 801      | Unsupported operation.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **Model restriction**:<br>API version 12+: This API can be used in both the stage and FA models.<br>API versions 9 to 11: This API can be used only in the stage model.                |
+| ERR_OUT_OF_MEMORY                     | 17620001 | Memory operation fails.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br> **Model restriction**:<br>API version 12+: This API can be used in both the stage and FA models.<br>API versions 9 to 11: This API can be used only in the stage model.                  |
+| ERR_RUNTIME_ERROR                     | 17620002 | The **Native** object fails to be obtained or the parameter conversion fails.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **Model restriction**:<br>API version 12+: This API can be used in both the stage and FA models.<br>API versions 9 to 11: This API can be used only in the stage model.         |
+| ERR_PARAMETER_CHECK_FAILED<sup>20+</sup>            | 17620003 | The parameter check failed.<br>**Atomic service API**: This API can be used in atomic services since API version 20.<br>**Model restriction**: This API can be used only in the stage model.           |
 | ERR_INVALID_CALL          | 17620004 | Invalid function call.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>**Model restriction**: This API can be used only in the stage model.         |
-| ERR_CRYPTO_OPERATION                  | 17630001 | Incorrect password operation.<br>**Atomic service API**: This API can be used in atomic services since API version 11.    |
+| ERR_CRYPTO_OPERATION                  | 17630001 | Incorrect password operation.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br> **Model restriction**:<br>API version 12+: This API can be used in both the stage and FA models.<br>API versions 9 to 11: This API can be used only in the stage model.  |
 
 ## DataBlob
 
 Encapsulates binary data. The core field **data** is of the Uint8Array type.
 
  **Atomic service API**: This API can be used in atomic services since API version 11.
+
+ **Model restriction**:
+ - API version 12+: This API can be used in both the stage and FA models.
+ - API versions 9 to 11: This API can be used only in the stage model.
 
  **System capability**: SystemCapability.Security.CryptoFramework
 
@@ -59,7 +63,7 @@ It applies to the symmetric block cipher modes that require parameters such as t
 
 > **NOTE**
 >
-> An initialization vector (IV) is a byte sequence used to introduce randomness or uniqueness in symmetric encryption modes (such as CBC, CTR, OFB, CFB, GCM, CCM, and Poly1305). It ensures that different ciphertexts are generated for the same plaintext under the same key.
+> An initialization vector (IV) is a byte sequence used to introduce randomness or uniqueness in symmetric encryption modes (such as CBC, CTR, OFB, CFB, GCM, CCM, and ChaCha20-Poly1305). It ensures that different ciphertexts are generated for the same plaintext under the same key.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -69,7 +73,7 @@ It applies to the symmetric block cipher modes that require parameters such as t
 
 | Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| algName | string | No  | No  | Algorithm for symmetric encryption or decryption. The value can be:<br> - **IvParamsSpec**: applicable to the CBC, CTR, OFB, and CFB modes.<br> - **GcmParamsSpec**: applicable to the GCM mode.<br> - **CcmParamsSpec**: applicable to the CCM mode.|
+| algName | string | No  | No  | Algorithm for symmetric encryption or decryption. The value can be:<br> - **IvParamsSpec**: applicable to the CBC, CTR, OFB, and CFB modes.<br> - **GcmParamsSpec**: applicable to the GCM mode.<br> - **CcmParamsSpec**: applicable to the CCM mode.<br>- **AeadParamsSpec**: applicable to the AES-GCM, AES-CCM, SM4-GCM, and ChaCha20-Poly1305 algorithms.|
 
 > **NOTE**
 >
@@ -97,7 +101,7 @@ This class is applicable to block cipher modes that require an IV, such as CBC, 
 
 ## GcmParamsSpec
 
-Encapsulates the parameters for encryption or decryption using a block cipher mode that requires an IV. It is a child class of [ParamsSpec](#paramsspec) and used as a parameter in [init()](#init-1) for symmetric encryption or decryption.
+Encapsulates the parameters for encryption or decryption using the GCM AEAD mode that requires **IV**, **AAD**, and the authentication label. It is a child class of [ParamsSpec](#paramsspec) and used as a parameter in [init()](#init-1) for symmetric encryption or decryption.
 
 **GcmParamsSpec** applies to the GCM mode.
 
@@ -116,12 +120,11 @@ Encapsulates the parameters for encryption or decryption using a block cipher mo
 > **NOTE**
 >
 > 1. Before passing a value to [init()](#init-1), specify **algName** for its parent class [ParamsSpec](#paramsspec).
-> 2. The Crypto framework imposes no additional restrictions on the IV of 1 to 128 bytes. However, the operation result depends on the underlying OpenSSL support.
-> 3. If **aad** is not required or the **aad** length is 0, you can set its **data** attribute to an empty Uint8Array in the **aad: { data: new Uint8Array() }** format when constructing **GcmParamsSpec**.
+> 2. If **aad** is not required or the **aad** length is 0, you can set its **data** attribute to an empty Uint8Array in the **aad: { data: new Uint8Array() }** format when constructing **GcmParamsSpec**.
 
 ## CcmParamsSpec
 
-Encapsulates the parameters for encryption or decryption using a block cipher mode that requires an IV. It is a child class of [ParamsSpec](#paramsspec) and used as a parameter in [init()](#init-1) for symmetric encryption or decryption.
+Encapsulates the parameters for encryption or decryption using the CCM AEAD mode that requires **IV**, **AAD**, and the authentication label. It is a child class of [ParamsSpec](#paramsspec) and used as a parameter in [init()](#init-1) for symmetric encryption or decryption.
 
 **CcmParamsSpec** applies to the CCM mode.
 
@@ -143,7 +146,7 @@ Encapsulates the parameters for encryption or decryption using a block cipher mo
 
 ## Poly1305ParamsSpec<sup>22+</sup>
 
-Encapsulates the parameters for encryption or decryption using a block cipher mode that requires an IV. It is a child class of [ParamsSpec](#paramsspec) and used as a parameter in [init()](#init-1) for symmetric encryption or decryption.
+Encapsulates the parameters for encryption or decryption using the ChaCha20-Poly1305 AEAD mode that requires **Nonce**, **AAD**, and the authentication label. It is a child class of [ParamsSpec](#paramsspec) and used as a parameter in [init()](#init-1) for symmetric encryption or decryption.
 
 Applicable to the Poly1305 mode of [ChaCha20](../../security/CryptoArchitectureKit/crypto-sym-encrypt-decrypt-spec.md#chacha20).
 
@@ -153,8 +156,8 @@ Applicable to the Poly1305 mode of [ChaCha20](../../security/CryptoArchitectureK
 
 | Name   | Type                 | Read-Only| Optional| Description                                                        |
 | ------- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
-| iv      | [DataBlob](#datablob) | No  | No  | IV, which is of 12 bytes.                             |
-| aad     | [DataBlob](#datablob) | No  | No  | AAD, which is of any bytes.                            |
+| iv      | [DataBlob](#datablob) | No  | No  | Nonce, which is passed through the **iv** field. The length is 12 bytes.                             |
+| aad     | [DataBlob](#datablob) | No  | No  | AAD for encryption and decryption.                            |
 | authTag | [DataBlob](#datablob) | No  | No  | Authentication tag, which is of 16 bytes.|
 
 > **NOTE**
@@ -188,13 +191,13 @@ It is applicable to [AES](../../security/CryptoArchitectureKit/crypto-sym-encryp
 
 | Name   | Type                 | Read-Only| Optional| Description                                                        |
 | ------- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
-| nonce      | Uint8Array | No  | No  | Nonce for encryption and decryption. For AES in CCM mode, the value contains 7 to 13 bytes. For AES in GCM mode and SM4 in GCM mode the value contains 1 to 128 bytes. For ChaCha20 in Poly1305 mode, the value contains 12 bytes.      |
-| authenticatedData     | Uint8Array | No  | Yes  | AAD, which is of any bytes.                            |
+| nonce      | Uint8Array | No  | No  | Nonce for encryption and decryption. For AES in CCM mode, the value contains 7 to 13 bytes. For AES in GCM mode and SM4 in GCM mode the value contains 1 to 128 bytes, and a value of 12 bytes is recommended. For ChaCha20 in Poly1305 mode, the value contains 12 bytes.      |
+| authenticatedData     | Uint8Array | No  | Yes  | Additional authentication data specified.                            |
 | tagLen | number | No  | Yes  | Length of the authentication tag, in bytes. For AES in CCM mode, **tagLen** can be set to **4**, **6**, **8**, **10**, **12**, **14**, or **16**. If this parameter is not specified, the default value **12** is used. For AES in GCM mode and SM4 in GCM mode, **tagLen** can be set to **4**, **8**, **12**, **13**, **14**, **15**, or **16**. If this parameter is not specified, the default value **16** is used. For ChaCha20 in Poly1305 mode, **tagLen** can only be set to **16**.|
 
 ## CryptoMode
 
-Enumerates the cryptographic operations.
+Enumerates the password operation modes for encryption and decryption.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -265,13 +268,13 @@ Enumerates the asymmetric key data types.
 | Name        | Value  | Description            |
 | ------------ | ---- | ---------------- |
 | ML_DSA_PRIVATE_SEED | 0 | Private key seed of the Module-Lattice-Based Digital Signature Algorithm (ML-DSA).|
-| ML_DSA_PRIVATE_RAW | 1 | Raw data of the ML-DSA private key.|
-| ML_DSA_PUBLIC_RAW | 2 | Raw data of the ML-DSA public key.|
+| ML_DSA_PRIVATE_RAW | 1 | Raw private key data of the ML-DSA private key.|
+| ML_DSA_PUBLIC_RAW | 2 | Raw public key data of the ML-DSA public key.|
 | ML_KEM_PRIVATE_SEED | 3 | Private key seed of the Module-Lattice-Based Key-Encapsulation Mechanism (ML-KEM).|
-| ML_KEM_PRIVATE_RAW | 4 | Raw data of the ML-KEM private key.|
-| ML_KEM_PUBLIC_RAW | 5 | Raw data of the ML-KEM public key.|
-| EC_PRIVATE_K | 6 | Private key **K** on the elliptic curve (EC).|
-| EC_PRIVATE_04_X_Y_K | 7 | Private key **04\|\|X\|\|Y\|\|K** on the EC.|
+| ML_KEM_PRIVATE_RAW | 4 | Raw private key data of the ML-KEM private key.|
+| ML_KEM_PUBLIC_RAW | 5 | Raw public key data of the ML-KEM public key.|
+| EC_PRIVATE_K | 6 | Private key number **K** on the elliptic curve (EC).|
+| EC_PRIVATE_04_X_Y_K | 7 | Key **04\|\|X\|\|Y\|\|K** on the EC, where **04\|\|X\|\|Y** is an uncompressed public key point and **K** is a private key number.|
 | EC_PUBLIC_X_Y | 8 | Public key **X\|\|Y** on the EC.|
 | EC_PUBLIC_04_X_Y | 9 | Public key **04\|\|X\|\|Y** on the EC.|
 | EC_PUBLIC_COMPRESS_X | 10 | Public key **02\|\|X** or **03\|\|X** on the EC.|
@@ -326,14 +329,14 @@ Currently, only RSA and SM2 (available since API version 11) are supported. Sinc
 | Name        | Value  | Description            |
 | ------------ | ---- | ---------------- |
 | PSS_MD_NAME_STR | 100 | MD algorithm used with the PSS padding mode in RSA.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| PSS_MGF_NAME_STR | 101 | Mask generation algorithm used with the PSS padding mode in RSA. Currently, only MGF1 is supported.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| PSS_MGF1_MD_STR | 102 | MD parameters for the MGF1 mask generation used with the PSS padding mode in RSA.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| PSS_MGF_NAME_STR | 101 | MD algorithm used with the PSS padding mode in RSA. Currently, only MGF1 is supported.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| PSS_MGF1_MD_STR | 102 | MD algorithm for the MGF1 mask generation used with the PSS padding mode in RSA.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | PSS_SALT_LEN_NUM | 103 | Length of the salt in bytes used with the PSS padding mode in RSA.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | PSS_TRAILER_FIELD_NUM | 104 | Trailer field used in the encoding operation when PSS padding mode is used in RSA.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | SM2_USER_ID_UINT8ARR<sup>11+</sup> | 105 | User ID field in SM2.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| ML_DSA_DETERMINISTIC_BOOL | 106 | Whether to use deterministic signatures in ML-DSA. This parameter is valid only for signatures. The default value is **false**.<br> **Since**: 26.0.0<br> **Model restriction**: This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
-| ML_DSA_MU_BOOL | 107 | Whether to use the external mu pre-hashing mode in ML-DSA. The default value is **false**. If this parameter is set to **true**, the data to be signed must be a 64-byte hash value.<br> **Since**: 26.0.0<br> **Model restriction**: This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
-| ML_DSA_CONTEXT_UINT8ARR | 108 | Context string in ML-DSA, with a maximum length of 255 bytes. This parameter is used to identify the signature verification scenario. This parameter is invalid when **ML_DSA_MU_BOOL** is set to **true**. If this parameter is not set, the default value is an empty string.<br> **Since**: 26.0.0<br> **Model restriction**: This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| ML_DSA_DETERMINISTIC_BOOL | 106 | Whether deterministic signatures are used for signing and signature verification in ML-DSA. If this parameter is not set, the default value **false** is used.<br> **Since**: 26.0.0<br> **Model restriction**: This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| ML_DSA_MU_BOOL | 107 | The **MU** parameter used for signing and signature verification in ML-DSA. The default value is **false**. If this parameter is set to **true**, the data to be signed must be a 64-byte hash value.<br> **Since**: 26.0.0<br> **Model restriction**: This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| ML_DSA_CONTEXT_UINT8ARR | 108 | Context data used for signing and signature verification in ML-DSA, with a maximum length of 255 bytes. This parameter is used to identify the signature verification scenario. This parameter is invalid when **ML_DSA_MU_BOOL** is set to **true**. If this parameter is not set, the default value is an empty string.<br> **Since**: 26.0.0<br> **Model restriction**: This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 
 ## AsyKeySpec<sup>10+</sup>
 
@@ -670,7 +673,7 @@ To generate a key based on key parameters, pass it to [createAsyKeyGeneratorBySp
 
 ## DHCommonParamsSpec<sup>11+</sup>
 
-Defines a child class of [AsyKeySpec](#asykeyspec10) used to specify the parameters of the public and private keys in the DH algorithm.
+Defines a child class of [AsyKeySpec](#asykeyspec10) used to specify the public parameters of the public and private keys in the DH algorithm.
 
 To generate a key based on key parameters, pass it to [createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10) to create a key generator.
 
@@ -808,7 +811,7 @@ Defines the child class of [KdfSpec](#kdfspec11). It is a parameter for scrypt k
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
 | passphrase | string \| Uint8Array | No  | No  | Original password entered by the user.|
 | salt | Uint8Array | No  | No  | Salt value.|
-| n | number | No  | No  | Number of iterations. The value must be a positive integer.|
+| n | number | No  | No  | CPU/memory overhead. The value must be a positive integer.|
 | p | number | No  | No  | Parallelization parameter. The value must be a positive integer.|
 | r | number | No  | No  | Block size. The value must be a positive integer.|
 | maxMemory | number | No  | No  | Maximum memory size, in bytes. The value must be a positive integer.|
@@ -829,7 +832,7 @@ Defines the child class of [KdfSpec](#kdfspec11). It is a parameter for X963KDF 
 | Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------ |
 | key | string \| Uint8Array | No  | No  | Key material.|
-| info | Uint8Array | No  | No  | Additional description.|
+| info | Uint8Array | No  | No  | Shared information.|
 | keySize | number | No  | No  | Length of the derived key, in bytes. The value must be a positive integer.|
 
 > **NOTE**
@@ -869,7 +872,7 @@ Represents the RSA private key encoding parameters. You can use it to generate a
 | Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
 | password | string | No  | No  | Password used for encoding the private key.|
-| cipherName | string | No  | No  | Algorithm to use.|
+| cipherName | string | No  | No  | Symmetric cryptographic algorithm used to encode the private key.|
 
 > **NOTE**
 >
@@ -886,11 +889,11 @@ Represents the message authentication code (MAC) parameters. You need to constru
 
 | Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| algName | string | No  | No  | Algorithm to use.|
+| algName | string | No  | No  | Name of the MAC algorithm.|
 
 > **NOTE**
 >
-> **algName** specifies the MAC algorithm to use. It is mandatory.
+> **algName** is mandatory, which specifies the MAC algorithm.
 
 ## HmacSpec<sup>18+</sup>
 Represents the child class of [MacSpec](#macspec18). It is used as an input parameter for HMAC generation.
@@ -916,7 +919,7 @@ Represents the child class of [MacSpec](#macspec18). It is used as an input para
 
 | Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| cipherName | string | No  | No  | Symmetric encryption algorithm to use.|
+| cipherName | string | No  | No  | Name of the symmetric cryptographic algorithm used by CMAC.|
 
 > **NOTE**
 >
@@ -924,7 +927,7 @@ Represents the child class of [MacSpec](#macspec18). It is used as an input para
 
 ## EccSignatureSpec<sup>20+</sup>
 
-Represents the ECC/SM2 signature data that contains (r, s).
+Represents the ECC/SM2 signature data object that contains (r, s).
 
 > **NOTE**
 >
@@ -1056,7 +1059,7 @@ Symmetric keys can be generated by a [SymKeyGenerator](#symkeygenerator).
 
 clearMem(): void
 
-Clears the keys in memory. This API returns the result synchronously. Call this API when the symmetric key instance is no longer required.
+Clears the key data in memory. This API returns the result synchronously. Call this API when the symmetric key instance is no longer required.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1082,7 +1085,7 @@ async function testGenerateAesKeyFun() {
 
 ## PubKey
 
-Provides APIs for public key operations. **PubKey** is a child class of [Key](#key). It needs to be passed in during asymmetric encryption and decryption, signature verification, and key agreement.
+Provides APIs for public key operations. **PubKey** is a child class of [Key](#key). It needs to be passed in during asymmetric encryption, signature verification, and key agreement.
 
 The public key can be generated by using the asymmetric key generator [AsyKeyGenerator](#asykeygenerator) or [AsyKeyGeneratorBySpec](#asykeygeneratorbyspec10).
 
@@ -1163,14 +1166,14 @@ async function testgetAsyKeySpec() {
 
 getEncodedDer(format: string): DataBlob
 
-Obtains the public key data that complies with the ASN.1 syntax and DER encoding format based on the specified key format (such as the specifications and compression status). Currently, only the ECC compressed and uncompressed public key data is supported.
+Obtains the public key data that complies with the ASN.1 syntax and DER encoding format based on the specified key format (such as the specifications and compression status).
 
 > **NOTE**
 >
 > The difference between [Key.getEncoded()](#getencoded) and this API is as follows:
 >
 > 1. You can specify the format of the data to be obtained in this API.
-> 2. The format of the key to be obtained cannot be specified in [Key.getEncoded()](#getencoded). It must match that of the original data, which is the format of the key object generated by [convertKey](#convertkey-3).  
+> 2. The format of the key data to be obtained cannot be specified in [Key.getEncoded()](#getencoded).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1180,7 +1183,7 @@ Obtains the public key data that complies with the ASN.1 syntax and DER encoding
 
 | Name| Type                 | Mandatory| Description                |
 | ---- | --------------------- | ---- | -------------------- |
-| format  | string | Yes  | Format of the key.<br>In API versions 12 to 24, the value can only be **X509\|COMPRESSED** or **X509\|UNCOMPRESSED**.<br>Since API version 26.0.0, the RSA public key can be in PKCS #1 or X.509 format.|
+| format  | string | Yes  | Format of the key. EC keys are supported. The value can be **X509\|COMPRESSED** or **X509\|UNCOMPRESSED**.<br>Since API version 26.0.0, RSA public keys are supported. The value can be **PKCS1** or **X509**.<br>Since API version 26.0.0, ML-DSA and ML-KEM keys are supported. The value can be **X509**.|
 
 **Return value**
 
@@ -1228,7 +1231,7 @@ Obtains the key data. This API returns the result synchronously. The key can be 
 
 | Name| Type                 | Mandatory| Description                |
 | ---- | --------------------- | ---- | -------------------- |
-| format  | string | Yes  | Encoding format of the key data to obtain. The format of a public key can be **'PKCS1'** or **'X509'**.|
+| format  | string | Yes  | Encoding format of the key data to obtain. RSA keys are supported. The value can be **X509** or **PKCS1**.<br>Since API version 26.0.0, EC, ML-DSA, and ML-KEM keys are supported. The value can be **X509**.|
 
 **Return value**
 
@@ -1369,7 +1372,7 @@ function eccGetKeyDataTest() {
 
 ## PriKey
 
-Provides APIs for private key operations. **PriKey** is a child class of [Key](#key). It needs to be passed in during asymmetric encryption and decryption, signing, and key agreement.
+Provides APIs for private key operations. **PriKey** is a child class of [Key](#key). It needs to be passed in during asymmetric decryption, signing, and key agreement.
 
 The private key can be generated by using the asymmetric key generator [AsyKeyGenerator](#asykeygenerator) or [AsyKeyGeneratorBySpec](#asykeygeneratorbyspec10).
 
@@ -1377,7 +1380,7 @@ The private key can be generated by using the asymmetric key generator [AsyKeyGe
 
 clearMem(): void
 
-Clear the keys in memory. This API returns the result synchronously.
+Clear the key data in memory. This API returns the result synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1480,14 +1483,10 @@ getEncodedDer(format: string): DataBlob
 
 Obtains the private key data that complies with the ASN.1 syntax and DER encoding based on the specified format (such as the key specifications).
 
-In API versions 12 to 24, only the ECC private key data in PKCS #8 format can be obtained.
-
-Since API version 26.0.0, the RSA private key data in PKCS #1 and PKCS #8 formats can be obtained.
-
 > **NOTE**
 >
 > The difference between [Key.getEncoded()](#getencoded) and this API is as follows:<br>
-> 1. You can specify the format of the key data to be obtained in this API. Currently, the ECC private key data in PKCS #8 format is supported.
+> 1. You can specify the format of the data to be obtained in this API.
 > 2. The format of the key data to be obtained cannot be specified in [Key.getEncoded()](#getencoded).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -1498,7 +1497,7 @@ Since API version 26.0.0, the RSA private key data in PKCS #1 and PKCS #8 format
 
 | Name| Type                 | Mandatory| Description                |
 | ---- | --------------------- | ---- | -------------------- |
-| format  | string | Yes  | Format of the key.<br>In API versions 12 to 24, only PKCS #8 format is supported.<br>Since API version 26.0.0, the RSA private key can be in PKCS #1 or PKCS #8 format.|
+| format  | string | Yes  | Format of the key. EC keys are supported. The value can be **PKCS8**.<br>Since API version 26.0.0, RSA private keys are supported. The value can be **PKCS1** or **PKCS8**.<br>Since API version 26.0.0, ML-DSA and ML-KEM keys are supported. The value can be **PKCS8**.|
 
 **Return value**
 
@@ -1547,7 +1546,7 @@ Obtains the key data. This API returns the result synchronously. The key can be 
 
 | Name| Type                 | Mandatory| Description                |
 | ---- | --------------------- | ---- | -------------------- |
-| format  | string | Yes  | Encoding format of the key data to obtain. The format of a private key can be **'PKCS1'** or **'PKCS8'**. Since API version 26.0.0, the ECC private key can be in EC format.|
+| format  | string | Yes  | Encoding format of the key data to obtain. RSA keys are supported. The value can be **PKCS8** or **PKCS1**.<br>Since API version 26.0.0, EC keys are supported. The value can be **PKCS8** or **EC**.<br>Since API version 26.0.0, ML-DSA and ML-KEM keys are supported. The value can be **PKCS8**.|
 
 **Return value**
 
@@ -2188,7 +2187,7 @@ function testGenerateSymKeySync() {
 
 convertKey(key: DataBlob, callback: AsyncCallback\<SymKey>): void
 
-Generates a symmetric key based on specified data. This API uses an asynchronous callback to return the result.
+Converts specified data into a symmetric key. This API uses an asynchronous callback to return the result.
 
 This API can be used only after a **symKeyGenerator** instance is created by using [createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator).
 
@@ -2245,7 +2244,7 @@ function testConvertKey() {
 
 convertKey(key: DataBlob): Promise\<SymKey>
 
-Generates a symmetric key based on specified data. This API uses a promise to return the result.
+Converts specified data into a symmetric key. This API uses a promise to return the result.
 
 Before using this API, create a symmetric key generator by using [createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator).
 
@@ -2308,7 +2307,7 @@ function testConvertKey() {
 
 convertKeySync(key: DataBlob): SymKey
 
-Generates a symmetric key based on specified data.
+Converts specified data into a symmetric key.
 
 This API can be used only after a **symKeyGenerator** instance is created by using [createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator).
 
@@ -3040,7 +3039,7 @@ function TestConvertPemKeyBySync() {
 
 createAsyKeyGeneratorBySpec(asyKeySpec: AsyKeySpec): AsyKeyGeneratorBySpec
 
-Obtains an asymmetric key generator instance with the specified key parameters.
+Obtains an **AsyKeyGeneratorBySpec** instance with the specified key parameters.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3058,7 +3057,7 @@ Obtains an asymmetric key generator instance with the specified key parameters.
 
 | Type                                           | Description                      |
 | ----------------------------------------------- | -------------------------- |
-| [AsyKeyGeneratorBySpec](#asykeygeneratorbyspec10) | Returns the **AsyKeyGenerator** instance created.|
+| [AsyKeyGeneratorBySpec](#asykeygeneratorbyspec10) | **AsyKeyGeneratorBySpec** instance created.|
 
 **Error codes**
 
@@ -3106,7 +3105,7 @@ let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPa
 
 ## AsyKeyGeneratorBySpec<sup>10+</sup>
 
-Provides APIs for using the **AsKeyGenerator**. Before using the APIs of this class, you need to use [createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10) to create an **AsyKeyGeneratorBySpec** instance.
+Provides APIs for using the **AsyKeyGeneratorBySpec**. Before using the APIs of this class, you need to use [createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10) to create an **AsyKeyGeneratorBySpec** instance.
 
 ### Attributes
 
@@ -3784,7 +3783,7 @@ function testGeneratePubKeySync() {
 
 ## ECCKeyUtil<sup>11+</sup>
 
-Generates common parameters for an asymmetric key pair based on the specified elliptic curve name.
+Provides tools for generating ECC key parameters and converting points based on a specified elliptic curve.
 
 ### genECCCommonParamsSpec<sup>11+</sup>
 
@@ -4205,7 +4204,7 @@ This API can be used only after a [Cipher](#cipher) instance is created by using
 
 | Name    | Type                     | Mandatory| Description                                                        |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| opMode   | [CryptoMode](#cryptomode) | Yes  | Operation (encryption or decryption) to perform.                                          |
+| opMode   | [CryptoMode](#cryptomode) | Yes  | Encryption or decryption operation to be performed.                                          |
 | key      | [Key](#key)               | Yes  | Key for encryption or decryption.                                      |
 | params   | [ParamsSpec](#paramsspec) \| null<sup>10+</sup> | Yes  | Parameters for encryption or decryption. For algorithm modes without parameters (such as ECB), set this parameter to **null**. In versions earlier than API version 10, only **ParamsSpec** is supported. Since API version 10, **null** is also supported.|
 | callback | AsyncCallback\<void>      | Yes  | Callback used to return the result. If the object for encryption and decryption is successfully initialized, **err** is **undefined**. Otherwise, **err** is an error object.    |
@@ -4240,7 +4239,7 @@ This API can be used only after a [Cipher](#cipher) instance is created by using
 
 | Name  | Type                     | Mandatory| Description                                                        |
 | ------ | ------------------------- | ---- | ------------------------------------------------------------ |
-| opMode | [CryptoMode](#cryptomode) | Yes  | Operation (encryption or decryption) to perform.                                          |
+| opMode | [CryptoMode](#cryptomode) | Yes  | Encryption or decryption operation to be performed.                                          |
 | key    | [Key](#key)               | Yes  | Key for encryption or decryption.                                      |
 | params | [ParamsSpec](#paramsspec) \| null<sup>10+</sup> | Yes  | Parameters for encryption or decryption. For algorithm modes without parameters (such as ECB), set this parameter to **null**. Before API version 10, only **ParamsSpec** is supported. Since API version 10, **null** is also supported.|
 
@@ -4830,7 +4829,7 @@ Creates a **Sign** instance.
 
 | Name | Type  | Mandatory| Description                                                        |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| algName | string | Yes  | Signing algorithm to use. Currently, RSA, ECC, DSA, SM2<sup>10+</sup> and Ed25519<sup>11+</sup> are supported. If RSA PKCS1 is used, you must set the digest. If RSA PSS is used, you must set the digest and mask digest. For signing, you can set **OnlySign** to enable the data digest to be used for signing only.<br>For details about the supported specifications, see [Signing and Signature Verification Overview and Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md).|
+| algName | string | Yes  | Signing algorithm to use. Currently, RSA, ECC, DSA, SM2<sup>10+</sup>, Ed25519<sup>11+</sup>, and ML-DSA<sup>26.0.0+</sup> are supported. If RSA PKCS1 is used, you must set the digest. If RSA PSS is used, you must set the digest and mask digest. For signing, you can set **OnlySign** to enable the data digest to be used for signing only.<br>For details about the supported specifications, see [Signing and Signature Verification Overview and Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md).|
 
 **Return value**
 
@@ -5036,7 +5035,7 @@ update(data: DataBlob): Promise\<void>
 
 Updates data to be signed. This API uses a promise to return the result.
 
-Before using this API, you must use [Sign](#sign) to initialize the [init()](#init-3) instance.
+Before using this API, you must use [init()](#init-3) to initialize the [Sign](#sign) instance.
 
 > **NOTE**
 >
@@ -5564,7 +5563,7 @@ Creates a **Verify** instance.
 
 | Name | Type  | Mandatory| Description                                                        |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| algName | string | Yes  | Signing algorithm to use. Currently, RSA, ECC, DSA, SM2<sup>10+</sup> and Ed25519<sup>11+</sup> are supported. If RSA PKCS1 is used, you must set the digest. If RSA PSS is used, you must set the digest and mask digest. When the RSA algorithm is used for signature verification, you can use **Recover** to verify and recover the signed data.<br>For details about the supported specifications, see [Signing and Signature Verification Overview and Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md).|
+| algName | string | Yes  | Signature verification algorithm to use. Currently, RSA, ECC, DSA, SM2<sup>10+</sup>, Ed25519<sup>11+</sup>, and ML-DSA<sup>26.0.0+</sup> are supported. If RSA PKCS1 is used, you must set the digest. If RSA PSS is used, you must set the digest and mask digest. When the RSA algorithm is used for signature verification, you can use **Recover** to verify and recover the signed data.<br>For details about the supported specifications, see [Signing and Signature Verification Overview and Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md).|
 
 **Return value**
 
@@ -5812,7 +5811,7 @@ This API can be called only after the [Verify](#verify) instance is initialized 
 > You can call **updateSync** multiple times or do not use **updateSync** (call [verifySync](#verifysync12) after [initSync](#initsync12-2)), depending on the data volume.<br>
 > The amount of the data to be passed in by **updateSync** (one-time or accumulative) is not limited. If there is a large amount of data, you are advised to call **updateSync** multiple times to pass in the data by segment. This prevents too much memory from being requested at a time.<br>
 > For details about the sample code for calling **updateSync** multiple times in signature verification, see [Signing and Signature Verification by Segment with an RSA Key Pair (PKCS1 Mode)](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md). The operations of other algorithms are similar.<br>
-> **OnlyVerify** cannot be used with **update()**. If **OnlyVerify** is specified, use **verifySync()** to pass in data.<br>
+> **OnlyVerify** cannot be used with **updateSync**. If **OnlyVerify** is specified, use **verifySync()** to pass in data.<br>
 > If the DSA algorithm is used for signature verification and the digest algorithm is **NoHash**, **updateSync** is not supported. If **updateSync** is called in this case, **ERR_CRYPTO_OPERATION** will be returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -6326,7 +6325,7 @@ setVerifySpec(itemType: SignSpecItem, itemValue: number \| Uint8Array): void
 
 Sets signature verification specifications. You can use this API to set signature verification parameters that cannot be set by [createVerify](#cryptoframeworkcreateverify).
 
-Currently, only RSA and SM2 are supported. Since API version 11, SM2 signing parameters can be set.
+Currently, only RSA and SM2 are supported. Since API version 11, SM2 signature verification parameters can be set.
 
 The parameters for signature verification must be the same as those for signing.
 
@@ -6419,8 +6418,6 @@ getVerifySpec(itemType: SignSpecItem): string | number
 
 Obtains signature verification specifications. Currently, only RSA is supported.
 
-The parameters for signature verification must be the same as those for signing.
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**:
@@ -6478,7 +6475,7 @@ Creates a **KeyAgreement** instance.
 
 | Name | Type  | Mandatory| Description                                                        |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| algName | string | Yes  | Key agreement algorithm to use. In addition to ECC, X25519 and DH are supported since API version 11.<br>For details about the supported specifications, see [Key Agreement Overview and Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-key-agreement-overview.md).|
+| algName | string | Yes  | Key agreement algorithm to use. In addition to ECDH, X25519 and DH are supported since API version 11.<br>For details about the supported specifications, see [Key Agreement Overview and Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-key-agreement-overview.md).|
 
 **Return value**
 
@@ -6682,6 +6679,10 @@ For details about the supported specifications, see [Supported Algorithms and Sp
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**:
+- API version 12+: This API can be used in both the stage and FA models.
+- API versions 9 to 11: This API can be used only in the stage model.
+
 **System capability**:
 - API versions 12+: SystemCapability.Security.CryptoFramework.MessageDigest
 - API versions 9 to 11: SystemCapability.Security.CryptoFramework
@@ -6729,6 +6730,8 @@ Provides APIs for message digest (MD) operations. Before using any API of the **
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**:
 - API versions 12+: SystemCapability.Security.CryptoFramework.MessageDigest
 - API versions 9 to 11: SystemCapability.Security.CryptoFramework
@@ -6748,6 +6751,10 @@ Updates the MD status. This API uses an asynchronous callback to return the resu
 > For details about the code for calling **update** multiple times in an MD operation, see [Generating an MD by Passing In Data by Segment](../../security/CryptoArchitectureKit/crypto-generate-message-digest.md#generating-an-md-by-passing-in-data-by-segment).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**:
+- API version 12+: This API can be used in both the stage and FA models.
+- API versions 9 to 11: This API can be used only in the stage model.
 
 **System capability**:
 - API versions 12+: SystemCapability.Security.CryptoFramework.MessageDigest
@@ -6781,6 +6788,8 @@ Updates the MD status. This API uses a promise to return the result. **update** 
 > For details about the code for calling **update** multiple times in an MD operation, see [Generating an MD by Passing In Data by Segment](../../security/CryptoArchitectureKit/crypto-generate-message-digest.md#generating-an-md-by-passing-in-data-by-segment).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**:
 - API versions 12+: SystemCapability.Security.CryptoFramework.MessageDigest
@@ -6822,6 +6831,8 @@ Updates the MD digest status. This API returns the result synchronously. **updat
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used in both the stage and FA models.
+
 **System capability**: SystemCapability.Security.CryptoFramework.MessageDigest
 
 **Parameters**
@@ -6847,6 +6858,10 @@ digest(callback: AsyncCallback\<DataBlob>): void
 Generates a message digest (MD). This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**:
+- API version 12+: This API can be used in both the stage and FA models.
+- API versions 9 to 11: This API can be used only in the stage model.
 
 **System capability**:
 - API versions 12+: SystemCapability.Security.CryptoFramework.MessageDigest
@@ -6892,6 +6907,8 @@ digest(): Promise\<DataBlob>
 Generates an MD. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**:
 - API versions 12+: SystemCapability.Security.CryptoFramework.MessageDigest
@@ -7023,6 +7040,8 @@ Generates an MD. This API returns the result synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used in both the stage and FA models.
+
 **System capability**: SystemCapability.Security.CryptoFramework.MessageDigest
 
 **Return value**
@@ -7138,6 +7157,10 @@ Obtains the MD length, in bytes.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**:
+- API version 12+: This API can be used in both the stage and FA models.
+- API versions 9 to 11: This API can be used only in the stage model.
+
 **System capability**:
 - API versions 12+: SystemCapability.Security.CryptoFramework.MessageDigest
 - API versions 9 to 11: SystemCapability.Security.CryptoFramework
@@ -7233,13 +7256,13 @@ For details about the supported specifications, see [MAC Overview and Algorithm 
 
 | Name | Type  | Mandatory| Description                                                        |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| macSpec | [MacSpec](#macspec18) | Yes  | Specifies the input parameter struct based on the MAC algorithm. For details about the supported algorithms, see [MAC Overview and Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-compute-mac-overview.md).|
+| macSpec | [MacSpec](#macspec18) | Yes  | Specifies the input parameters based on the MAC algorithm. For details about the supported algorithms, see [MAC Overview and Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-compute-mac-overview.md).|
 
 **Return value**
 
 | Type| Description                                     |
 | ---- | ----------------------------------------- |
-| Mac  | [Mac](#mac) instance created.|
+| Mac  | [Mac](#mac) instance generated based on the specified input parameters.|
 
 **Error codes**
 
@@ -7486,7 +7509,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 doFinal(callback: AsyncCallback\<DataBlob>): void
 
-MAC computation result. This API uses an asynchronous callback to return the result.
+Finalizes MAC calculation and obtains the result. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -7498,7 +7521,7 @@ MAC computation result. This API uses an asynchronous callback to return the res
 
 | Name  | Type                    | Mandatory| Description    |
 | -------- | ------------------------ | ---- | -------- |
-| callback | AsyncCallback\<[DataBlob](#datablob)> | Yes  | Callback used to return the MAC computation result. If the MAC computation is successful, **err** is **undefined**, and **data** is the MAC computation result. Otherwise, **err** is an error object.|
+| callback | AsyncCallback\<[DataBlob](#datablob)> | Yes  | Callback used to return the MAC computation result. If the MAC calculation is successful, **err** is **undefined**, and **data** is the MAC calculation result. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -7538,7 +7561,7 @@ function hmacByCallback() {
 
 doFinal(): Promise\<DataBlob>
 
-MAC computation result. This API uses a promise to return the result.
+Finalizes MAC calculation and obtains the result. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -7550,7 +7573,7 @@ MAC computation result. This API uses a promise to return the result.
 
 | Type              | Description       |
 | ------------------ | ----------- |
-| Promise\<[DataBlob](#datablob)> | Promise used to return the MAC computation result.|
+| Promise\<[DataBlob](#datablob)> | Promise used to return the MAC calculation result.|
 
 **Error codes**
 
@@ -7586,7 +7609,7 @@ async function hmacByPromise() {
 
 doFinalSync(): DataBlob
 
-Finishes the MAC computation. This API returns the result synchronously.
+Finalizes MAC calculation and obtains the result synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -7596,7 +7619,7 @@ Finishes the MAC computation. This API returns the result synchronously.
 
 | Type              | Description       |
 | ------------------ | ----------- |
-| [DataBlob](#datablob) | MAC computation result.|
+| [DataBlob](#datablob) | MAC calculation result.|
 
 **Error codes**
 
@@ -7701,6 +7724,10 @@ Creates a **Random** instance for generating random numbers and setting seeds.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**:
+- API version 12+: This API can be used in both the stage and FA models.
+- API versions 9 to 11: This API can be used only in the stage model.
+
 **System capability**:
 - API versions 12+: SystemCapability.Security.CryptoFramework.Rand
 - API versions 9 to 11: SystemCapability.Security.CryptoFramework
@@ -7741,6 +7768,8 @@ Provides APIs for random number operations. Before using any API of the **Random
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**:
 - API versions 12+: SystemCapability.Security.CryptoFramework.Rand
 - API versions 9 to 11: SystemCapability.Security.CryptoFramework
@@ -7756,6 +7785,10 @@ generateRandom(len: number, callback: AsyncCallback\<DataBlob>): void
 Generates a random number of the specified length. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**:
+- API version 12+: This API can be used in both the stage and FA models.
+- API versions 9 to 11: This API can be used only in the stage model.
 
 **System capability**:
 - API versions 12+: SystemCapability.Security.CryptoFramework.Rand
@@ -7800,6 +7833,8 @@ generateRandom(len: number): Promise\<DataBlob>
 Generates a random number of the specified length. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**:
 - API versions 12+: SystemCapability.Security.CryptoFramework.Rand
@@ -7919,6 +7954,10 @@ generateRandomSync(len: number): DataBlob
 Generates a random number of the specified length. This API returns the result synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**:
+- API version 12+: This API can be used in both the stage and FA models.
+- API versions 10 to 11: This API can be used only in the stage model.
 
 **System capability**:
 - API versions 12+: SystemCapability.Security.CryptoFramework.Rand
@@ -8043,6 +8082,8 @@ Enables the hardware entropy source.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Security.CryptoFramework.Rand
 
 **Error codes**
@@ -8086,6 +8127,10 @@ setSeed(seed: DataBlob): void
 Sets a seed.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**:
+- API version 12+: This API can be used in both the stage and FA models.
+- API versions 9 to 11: This API can be used only in the stage model.
 
 **System capability**:
 - API versions 12+: SystemCapability.Security.CryptoFramework.Rand
@@ -8430,7 +8475,7 @@ Generates r and s from the SM2 signature data in ASN1 DER format.
 
 | Type              | Description    |
 | ------------------ | -------- |
-| [EccSignatureSpec](#eccsignaturespec20) | struct that contains r and s.|
+| [EccSignatureSpec](#eccsignaturespec20) | Data object that contains r and s.|
 
 **Error codes**
 

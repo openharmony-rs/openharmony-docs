@@ -38,14 +38,14 @@ InputMethod_InputMethodProxy是应用端与输入法服务交互的核心代理�
 - Detach后不可再使用已获取的inputMethodProxy指针，所有操作将返回IME_ERR_DETACHED。Detach后不可再使用已获取的inputMethodProxy指针，所有操作将返回IME_ERR_DETACHED。示例：在Detach后调用任何接口时返回该码，应检查生命周期状态，仅在Attach与Detach之间使用该对象，否则重新Attach。此对象为不透明类型，不可直接访问内部成员或进行内存操作（如malloc/free）。
 - 非线程安全，不建议在多线程环境下同时操作同一个inputMethodProxy对象，如需多线程访问请自行加锁保护。
 
-## 相关函数列表
+相关函数：
 
 以下为可通过InputMethod_InputMethodProxy对象调用的操作函数：
 
 | 函数 | 描述 |
 | -- | -- |
 | [OH_InputMethodProxy_ShowKeyboard](capi-inputmethod-inputmethod-proxy-capi-h.md#oh_inputmethodproxy_showkeyboard) | 显示键盘。 |
-| [OH_InputMethodProxy_ShowTextInput](capi-inputmethod-inputmethod-proxy-capi-h.md#oh_inputmethodproxy_showtextinput) | 显示文本输入框（since 15）。 |
+| [OH_InputMethodProxy_ShowTextInput](capi-inputmethod-inputmethod-proxy-capi-h.md#oh_inputmethodproxy_showtextinput) | 显示文本输入框。 |
 | [OH_InputMethodProxy_HideKeyboard](capi-inputmethod-inputmethod-proxy-capi-h.md#oh_inputmethodproxy_hidekeyboard) | 隐藏键盘。 |
 | [OH_InputMethodProxy_NotifySelectionChange](capi-inputmethod-inputmethod-proxy-capi-h.md#oh_inputmethodproxy_notifyselectionchange) | 通知文本框选区变化。 |
 | [OH_InputMethodProxy_NotifyConfigurationChange](capi-inputmethod-inputmethod-proxy-capi-h.md#oh_inputmethodproxy_notifyconfigurationchange) | 通知输入框配置变化。 |

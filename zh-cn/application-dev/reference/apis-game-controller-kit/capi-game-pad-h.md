@@ -235,7 +235,7 @@ GameController_ErrorCode OH_GamePad_LeftTrigger_RegisterAxisInputMonitor(GamePad
 
 | 类型 | 说明 |
 | -- | -- |
-| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li><br>      <li>如果参数inputMonitorCallback为null，返回[GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>      <li>如果参数inputMonitorCallback为null，返回[GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
 
 ### OH_GamePad_LeftTrigger_UnregisterAxisInputMonitor()
 
@@ -281,7 +281,7 @@ GameController_ErrorCode OH_GamePad_RightTrigger_RegisterButtonInputMonitor(Game
 
 | 类型 | 说明 |
 | -- | -- |
-| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li><br>      <li>如果参数inputMonitorCallback为null，返回[GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>      <li>如果参数inputMonitorCallback为null，返回[GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
 
 ### OH_GamePad_RightTrigger_UnregisterButtonInputMonitor()
 

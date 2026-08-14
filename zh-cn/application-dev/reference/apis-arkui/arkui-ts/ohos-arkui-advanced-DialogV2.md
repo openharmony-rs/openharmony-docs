@@ -31,7 +31,7 @@ import { TipsDialogV2, SelectDialogV2, ConfirmDialogV2, AlertDialogV2, LoadingDi
 
 ## TipsDialogV2
 
-TipsDialogV2({imageRes: ResourceStr | PixelMap, imageSize?: SizeOptions, imageBorderColor: ColorMetrics, imageBorderWidth: LengthMetrics, title?: ResourceStr, content?: ResourceStr, checkTips?: ResourceStr, checked?: boolean, onCheckedChange?: AdvancedDialogV2OnCheckedChange, primaryButton?: AdvancedDialogV2Button, secondaryButton?: AdvancedDialogV2Button})
+TipsDialogV2({imageRes: ResourceStr | PixelMap, imageSize?: SizeOptions, imageBorderColor?: ColorMetrics, imageBorderWidth?: LengthMetrics, title?: ResourceStr, content?: ResourceStr, checkTips?: ResourceStr, checked?: boolean, onCheckedChange?: AdvancedDialogV2OnCheckedChange, primaryButton?: AdvancedDialogV2Button, secondaryButton?: AdvancedDialogV2Button})
 
 提示弹出框，即为带图形确认弹出框，必要时可通过图形化方式展现确认弹出框。适用于需要图形化方式展示的重要提示场景，如应用卸载确认等。
 
@@ -49,9 +49,9 @@ TipsDialogV2({imageRes: ResourceStr | PixelMap, imageSize?: SizeOptions, imageBo
 | imageBorderWidth | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)                                                            | 否  | @Param               | 图片描边宽度。<br/>默认无描边效果。                                            |
 | title            | [ResourceStr](ts-types.md#resourcestr)                                                                | 否  | @Param               | 提示弹出框标题。<br/>默认不显示。<br/>**说明：** 标题超过两行会显示“...”。               |
 | content          | [ResourceStr](ts-types.md#resourcestr)                                                                | 否  | @Param               | 提示弹出框内容。<br/>默认不显示。                                            |
-| checkTips        | [ResourceStr](ts-types.md#resourcestr)                                                                | 否  | @Param               | 选择框的提示内容。<br/>默认不显示。                                           |
-| checked          | boolean                                                                                               | 否  | @Param               | checked为true时，表示选择框已选中。checked为false时，表示选择框未选中。<br/>默认值：false |
-| onCheckedChange  | [AdvancedDialogV2OnCheckedChange](#advanceddialogv2oncheckedchange)                                   | 否  | @Param               | 选择框的选中状态改变事件。<br/>默认无事件。                                       |
+| checkTips        | [ResourceStr](ts-types.md#resourcestr)                                                                | 否  | @Param               | checkbox的提示内容。<br/>默认不显示。                                           |
+| checked          | boolean                                                                                               | 否  | @Param               | checked为true时，表示checkbox已选中。checked为false时，表示checkbox未选中。<br/>默认值：false |
+| onCheckedChange  | [AdvancedDialogV2OnCheckedChange](#advanceddialogv2oncheckedchange)                                   | 否  | @Param               | checkbox的选中状态改变事件。<br/>默认无事件。                                       |
 | primaryButton    | [AdvancedDialogV2Button](#advanceddialogv2button)                                                     | 否  | @Param               | 提示弹出框左侧按钮。<br/>默认不显示。                                            |
 | secondaryButton  | [AdvancedDialogV2Button](#advanceddialogv2button)                                                     | 否  | @Param               | 提示弹出框右侧按钮。<br/>默认不显示。                                            |
 
@@ -59,7 +59,7 @@ TipsDialogV2({imageRes: ResourceStr | PixelMap, imageSize?: SizeOptions, imageBo
 
 type AdvancedDialogV2OnCheckedChange = (checked: boolean) => void
 
-选择框选中状态改变事件。
+checkbox选中状态改变事件。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -69,7 +69,7 @@ type AdvancedDialogV2OnCheckedChange = (checked: boolean) => void
 
 | 参数名     | 类型      | 必填 | 说明                                            |
 | :------ |:--------| :- | :-------------------------------------------------- |
-| checked | boolean | 是  | 表示选择框选中状态。<br/>checked为true时，表示选择框已选中。checked为false时，表示选择框未选中。 |
+| checked | boolean | 是  | 表示checkbox选中状态。<br/>checked为true时，表示checkbox已选中。checked为false时，表示checkbox未选中。 |
 
 ## SelectDialogV2
 
@@ -88,7 +88,7 @@ SelectDialogV2({title: ResourceStr, content?: ResourceStr, selectedIndex?: numbe
 | title         | [ResourceStr](ts-types.md#resourcestr)                   | 是  | @Param<br/>@Require | 选择弹出框标题。<br/>**说明：** 标题超过两行会显示“...”。                                                 |
 | content       | [ResourceStr](ts-types.md#resourcestr)                   | 否  | @Param              | 选择弹出框内容。默认不显示。                                                                  |
 | selectedIndex | number                                                   | 否  | @Param              | 选择弹出框的选中项，基于0的索引（0表示第一个选项）。<br/>默认值：-1，没有选中项。若设置数值不在取值范围，按没有选中项处理。  <br/>取值范围：0到选择弹出框的子项内容列表长度减1。 |
-| confirm       | [AdvancedDialogV2Button](#advanceddialogv2button)        | 否  | @Param              | 选择弹出框底部按钮。<br/>默认不显示。                                                          |
+| confirm       | [AdvancedDialogV2Button](#advanceddialogv2button)        | 否  | @Param              | 选择弹出框确认按钮。<br/>默认不显示。                                                          |
 | radioContent  | [SheetInfo](ts-methods-action-sheet.md#sheetinfo对象说明)\[] | 是  | @Param<br/>@Require | 选择弹出框的子项内容列表，每个选择项支持设置文本和选中的回调事件。                                               |
 
 ## ConfirmDialogV2
@@ -117,7 +117,7 @@ ConfirmDialogV2({title: ResourceStr, content?: ResourceStr, checkTips?: Resource
 
 AlertDialogV2({primaryTitle?: ResourceStr, secondaryTitle?: ResourceStr, content: ResourceStr, primaryButton?: AdvancedDialogV2Button, secondaryButton?: AdvancedDialogV2Button})
 
-操作确认类弹出框。当触发一个将产生严重后果的不可逆操作时，如删除、重置、取消编辑、停止等，会触发该类弹出框提示。
+警告弹出框。当触发一个将产生严重后果的不可逆操作时，如删除、重置、取消编辑、停止等，会触发该类弹出框提示。
 
 **装饰器类型：**@ComponentV2
 
@@ -164,8 +164,8 @@ CustomContentDialogV2({contentBuilder: () => void, primaryTitle?: ResourceStr, s
 | 名称                 | 类型                                                   | 必填 | 装饰器类型         | 说明                       |
 | ------------------ | ---------------------------------------------------- | -- | ------------- | ------------------------ |
 | contentBuilder     | [CustomBuilder](ts-types.md#custombuilder8)          | 是  | @BuilderParam | 弹出框内容。                   |
-| primaryTitle       | [ResourceStr](ts-types.md#resourcestr)               | 否  | @Param        | 弹出框标题。<br/>默认不显示。<br/>**说明：** 标题超过两行会显示“...”。             |
-| secondaryTitle     | [ResourceStr](ts-types.md#resourcestr)               | 否  | @Param        | 弹出框辅助文本。<br/>默认不显示。<br/>**说明：** 辅助文本超过两行会显示“...”。          |
+| primaryTitle       | [ResourceStr](ts-types.md#resourcestr)               | 否  | @Param        | 弹出框主标题。<br/>默认不显示。<br/>**说明：** 主标题超过两行会显示“...”。             |
+| secondaryTitle     | [ResourceStr](ts-types.md#resourcestr)               | 否  | @Param        | 弹出框辅助标题。<br/>默认不显示。<br/>**说明：** 辅助标题超过两行会显示“...”。          |
 | contentAreaPadding | [LocalizedPadding](ts-types.md#localizedpadding12)     | 否  | @Param        | 弹出框内容区内边距。<br/>默认跟随系统。         |
 | buttons            | [AdvancedDialogV2Button](#advanceddialogv2button)\[] | 否  | @Param        | 弹出框操作区按钮，最多支持4个按钮。<br/>默认不显示。 |
 
@@ -187,7 +187,7 @@ type PopoverDialogV2OnVisibleChange = (visible: boolean) => void
 
 ## PopoverDialogV2
 
-PopoverDialogV2({visible: boolean, \$visible: PopoverDialogV2OnVisibleChange, popover: PopoverDialogV2Options, targetBuilder: CustomBuilder})
+PopoverDialogV2({visible: boolean, \$visible?: PopoverDialogV2OnVisibleChange, popover: PopoverDialogV2Options, targetBuilder: CustomBuilder})
 
 跟手弹出框，基于目标组件位置弹出，上文中的TipsDialogV2、SelectDialogV2、ConfirmDialogV2、AlertDialogV2、LoadingDialogV2、CustomContentDialogV2都可作为弹出框内容。适用于需要跟随目标组件位置显示的场景，如工具提示、操作引导等。
 

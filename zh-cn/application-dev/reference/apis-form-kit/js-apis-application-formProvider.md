@@ -6,7 +6,7 @@
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
-FormProvider模块提供了卡片提供方相关接口的能力，开发者在开发卡片时，可通过该模块提供接口实现更新卡片，设置卡片更新时间，获取卡片信息，请求发布卡片等。
+FormProvider模块提供了卡片提供方相关接口的能力，开发者在开发卡片时，可通过该模块提供接口实现刷新卡片，设置卡片刷新时间，获取卡片信息，请求发布卡片等。
 
 > **说明：**
 >
@@ -23,7 +23,7 @@ import { formProvider } from '@kit.FormKit';
 
 setFormNextRefreshTime(formId: string, minute: number, callback: AsyncCallback&lt;void&gt;): void
 
-设置指定卡片的下一次更新时间，使用callback异步回调。
+设置指定卡片的下一次刷新时间，使用callback异步回调。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -32,7 +32,7 @@ setFormNextRefreshTime(formId: string, minute: number, callback: AsyncCallback&l
   | 参数名 | 类型    | 必填 | 说明                                   |
   | ------ | ------ | ---- | ------------------------------------- |
   | formId | string | 是   | 卡片标识。                               |
-  | minute | number | 是   | 指定多久之后更新。单位分钟，大于等于5。     |
+  | minute | number | 是   | 指定多久之后刷新。单位分钟，大于等于5。     |
   | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。 |
 
 **示例：**
@@ -53,7 +53,7 @@ setFormNextRefreshTime(formId: string, minute: number, callback: AsyncCallback&l
 
 setFormNextRefreshTime(formId: string, minute: number): Promise&lt;void&gt;
 
-设置指定卡片的下一次更新时间，使用Promise异步回调。
+设置指定卡片的下一次刷新时间，使用Promise异步回调。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -62,7 +62,7 @@ setFormNextRefreshTime(formId: string, minute: number): Promise&lt;void&gt;
   | 参数名 | 类型    | 必填 | 说明                                   |
   | ------ | ------ | ---- | ------------------------------------- |
   | formId | string | 是   | 卡片标识。                               |
-  | minute | number | 是   | 指定多久之后更新。单位分钟，大于等于5。     |
+  | minute | number | 是   | 指定多久之后刷新。单位分钟，大于等于5。     |
 
 **返回值：**
 

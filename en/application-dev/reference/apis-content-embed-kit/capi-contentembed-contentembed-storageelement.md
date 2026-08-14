@@ -6,6 +6,7 @@
 <!--Designer: @gcw_nDnzjzHO;@wei-guoning-->
 <!--Tester: @sd_yinjian-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=e4d7c2e84af20899ba800d02bfa03a92c69c52da translatedAt=2026-07-27T06:39:43.683Z pushedAt=2026-07-27T06:43:18.213Z -->
 
 ```c
 typedef struct ContentEmbed_StorageElement ContentEmbed_StorageElement
@@ -13,7 +14,7 @@ typedef struct ContentEmbed_StorageElement ContentEmbed_StorageElement
 
 ## Overview
 
-Declares the structure type of the document storage element in the Open Edition (OE). It contains information such as the name, type, and time.
+Defines the structure type of a storage element in an OE document. It contains information such as the name, type, and time.
 
 **Since**: 24
 

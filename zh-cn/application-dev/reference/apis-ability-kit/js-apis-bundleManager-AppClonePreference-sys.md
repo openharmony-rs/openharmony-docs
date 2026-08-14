@@ -8,7 +8,7 @@
 
 应用分身偏好设置，用于配置应用启动时主应用和分身应用的选择策略，通过接口[bundleManager.getAppClonePreference](js-apis-bundleManager-sys.md#bundlemanagergetappclonepreference)获取，并通过[bundleManager.setAppClonePreference](js-apis-bundleManager-sys.md#bundlemanagersetappclonepreference)设置。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.0
 
 ## 导入模块
 
@@ -20,7 +20,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 应用分身偏好设置的模式。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -38,7 +38,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 应用分身偏好设置，用于配置应用启动时主应用和分身应用的选择策略。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 

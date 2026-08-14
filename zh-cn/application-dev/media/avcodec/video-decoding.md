@@ -1,4 +1,4 @@
-# 视频解码
+# 异步模式视频解码
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
@@ -9,7 +9,7 @@
 
 视频解码是多媒体处理的核心环节，功能是将压缩的视频码流解码为原始像素数据。视频解码支持同步模式与异步模式两种运行机制，两者主要区别为buffer获取方式的同异步之分，开发者可根据自身业务选择适合的接口调用模式。
 
-本文档主要介绍异步模式视频解码的实现流程，同步模式视频解码请参考[视频解码同步模式](synchronous-video-decoding.md)。根据解码后数据处理方式的不同，视频解码支持Surface模式和Buffer模式两种输出模式，适用于不同的应用场景。
+本文档主要介绍异步模式视频解码的实现流程，同步模式视频解码请参考[同步模式视频解码](synchronous-video-decoding.md)。根据解码后数据处理方式的不同，视频解码支持Surface模式和Buffer模式两种输出模式，适用于不同的应用场景。
 
 - Surface模式
 
@@ -1208,7 +1208,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
     硬件解码在处理buffer数据时（释放数据前），输出回调开发者收到的AVbuffer是宽、高对齐后的图像数据。
 
-    一般需要获取数据的宽、高、跨距、像素格式来保证解码输出数据被正确的处理。
+    一般需要获取数据的宽、高、跨距、像素格式来保证解码输出数据被正确地处理。
 
     具体实现请参考：[Buffer模式](#buffer模式)的步骤3-调用OH_VideoDecoder_RegisterCallback()设置回调函数来获取数据的宽、高、跨距、像素格式。
 
@@ -1233,7 +1233,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 | --------------------------------------- | ----------------------------------------------------------------------- |
 | 动态分辨率切换         | 仅硬件解码器支持输入码流分辨率发生变化，发生变化后会触发OH_VideoDecoder_RegisterCallback接口设置的回调函数OnStreamChanged()。<br>具体可参考上文中：Surface模式步骤-3或Buffer模式步骤-3。  |
 | 动态切换surface  | 通过调用OH_VideoDecoder_SetSurface可动态切换OHNativeWindow，仅Surface模式支持。<br>具体可参考上文中：Surface模式步骤-6。    |
-| 低时延解码  | 通过调用OH_VideoDecoder_Configure接口配置低时键值。<br>具体可参考上文中：Surface模式的步骤-5或Buffer模式步骤-5。      |
+| 低时延解码  | 通过调用OH_VideoDecoder_Configure接口配置低时延键值。<br>具体可参考上文中：Surface模式的步骤-5或Buffer模式步骤-5。      |
 
 
 

@@ -3,7 +3,7 @@
 <!--Kit: Calendar Kit-->
 <!--Subsystem: Applications-->
 <!--Owner: @qq_42718467-->
-<!--Designer: @windsky6-->
+<!--Designer: @qq_42718467-->
 <!--Tester: @z30055209-->
 <!--Adviser: @ge-yafang-->
 
@@ -33,7 +33,7 @@ Parameter value error.
 
 **处理步骤**
 
-1. 检查参数字串长度是否超范围。
+1. 检查参数字符串长度是否超范围。
 
 2. 检查参数值是否超范围。
 

@@ -86,7 +86,7 @@ class InputMethodExtAbility extends InputMethodExtensionAbility {
 
 ## InputMethodExtensionContext
 
-### destroy<sup>9+</sup>
+### destroy
 
 destroy(callback: AsyncCallback&lt;void&gt;): void
 
@@ -130,7 +130,7 @@ class InputMethodExtAbility extends InputMethodExtensionAbility {
 }
 ```
 
-### destroy<sup>9+</sup>
+### destroy
 
 destroy(): Promise&lt;void&gt;
 
@@ -260,7 +260,7 @@ class InputMethodExtAbility extends InputMethodExtensionAbility {
     }).catch((err: BusinessError) => {
       console.error(`Failed to destroy context, err code = ${err.code}`);
     });
-}
+  }
 }
 ```
 

@@ -55,7 +55,7 @@
 | [int32_t OH_NativeBuffer_GetColorSpace(OH_NativeBuffer *buffer, OH_NativeBuffer_ColorSpace *colorSpace)](#oh_nativebuffer_getcolorspace) | 获取OH_NativeBuffer颜色空间属性。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeBuffer_SetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffer_MetadataKey metadataKey,int32_t size, uint8_t *metadata)](#oh_nativebuffer_setmetadatavalue) | 为OH_NativeBuffer设置元数据属性值。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeBuffer_GetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffer_MetadataKey metadataKey,int32_t *size, uint8_t **metadata)](#oh_nativebuffer_getmetadatavalue) | 获取OH_NativeBuffer元数据属性值。<br>本接口为非线程安全类型接口。 |
-| [int32_t OH_NativeBuffer_MapWaitFence(OH_NativeBuffer *buffer, int32_t fenceFd, void **virAddr)](#oh_nativebuffer_mapwaitfence) | 将[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)对应的ION内存映射到进程空间，永久阻塞传入的fenceFd。<br>如果接口返回OK，系统会将fenceFd关闭，无需用户close，否则，用户需要自行关闭fenceFd。<br> 本接口需要与[OH_NativeBuffer_Unmap](capi-native-buffer-h.md#oh_nativebuffer_unmap)接口配合使用。<br>需注意调用该接口的[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)的usage必须带有CPU_READ属性，否则可能导致稳定性问题。<br>本接口为非线程安全类型接口。 |
+| [int32_t OH_NativeBuffer_MapWaitFence(OH_NativeBuffer *buffer, int32_t fenceFd, void **virAddr)](#oh_nativebuffer_mapwaitfence) | 将[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)对应的ION内存映射到进程空间，永久阻塞传入的fenceFd。<br>如果接口返回OK，系统会将fenceFd关闭，无需用户close，否则，用户需要自行关闭fenceFd。<br> 本接口需要与[OH_NativeBuffer_Unmap](capi-native-buffer-h.md#oh_nativebuffer_unmap)接口配合使用。<br>需注意调用该接口的[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)的usage必须带有[NATIVEBUFFER_USAGE_CPU_READ](capi-native-buffer-h.md#oh_nativebuffer_usage)属性，否则可能导致稳定性问题。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeBuffer_WriteToParcel(OH_NativeBuffer* buffer, OHIPCParcel* parcel)](#oh_nativebuffer_writetoparcel) | 将[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)对象写入IPC序列化对象中。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeBuffer_ReadFromParcel(OHIPCParcel* parcel, OH_NativeBuffer** buffer)](#oh_nativebuffer_readfromparcel) | 从IPC序列化对象中读取[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)对象。<br>本接口将会创建一个[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)，当OH_NativeBuffer对象使用完，开发者需要与[OH_NativeBuffer_Unreference](capi-native-buffer-h.md#oh_nativebuffer_unreference)接口配合使用，否则会存在内存泄漏。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeBuffer_IsSupported(OH_NativeBuffer_Config config, bool* isSupported)](#oh_nativebuffer_issupported) | 检查系统是否支持传入的[OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md)配置信息。<br>本接口为非线程安全类型接口。 |
@@ -421,7 +421,7 @@ int32_t OH_NativeBuffer_GetColorSpace(OH_NativeBuffer *buffer, OH_NativeBuffer_C
 ### OH_NativeBuffer_SetMetadataValue()
 
 ```c
-int32_t OH_NativeBuffer_SetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffer_MetadataKey metadataKey,int32_t size, uint8_t *metadata)
+int32_t OH_NativeBuffer_SetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffer_MetadataKey metadataKey, int32_t size, uint8_t *metadata)
 ```
 
 **描述**
@@ -451,7 +451,7 @@ int32_t OH_NativeBuffer_SetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffe
 ### OH_NativeBuffer_GetMetadataValue()
 
 ```c
-int32_t OH_NativeBuffer_GetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffer_MetadataKey metadataKey,int32_t *size, uint8_t **metadata)
+int32_t OH_NativeBuffer_GetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffer_MetadataKey metadataKey, int32_t *size, uint8_t **metadata)
 ```
 
 **描述**
@@ -504,7 +504,7 @@ int32_t OH_NativeBuffer_MapWaitFence(OH_NativeBuffer *buffer, int32_t fenceFd, v
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) *buffer | 一个指向[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)实例的指针。 |
-| int32_t fenceFd | 指向文件描述符句柄，用于并发同步控制。 |
+| int32_t fenceFd | 文件描述符句柄，用于并发同步控制。 |
 | void **virAddr | 一个二级指针，二级指针指向映射到当前进程的虚拟内存的地址。 |
 
 **返回：**
@@ -632,4 +632,4 @@ int32_t OH_NativeBuffer_MapAndGetConfig(OH_NativeBuffer* buffer, void** virAddr,
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>buffer、virAddr或config为空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>映射时返回NATIVE_ERROR_UNKNOWN。<br>其他返回值可参考[OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode)。 |
+| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>buffer、virAddr或config为空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>映射失败时返回NATIVE_ERROR_UNKNOWN。<br>其他返回值可参考[OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode)。 |

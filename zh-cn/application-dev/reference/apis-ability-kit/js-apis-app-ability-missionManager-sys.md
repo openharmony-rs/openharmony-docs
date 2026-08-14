@@ -1481,7 +1481,7 @@ moveMissionsToForeground(missionIds: Array&lt;number&gt;, topMission: number, ca
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | missionIds | Array&lt;number&gt; | 是 | 任务ID数组。 |
-  | topMission | number | 是 | 待移动到最顶层的任务ID。默认值为-1，表示不指定特定任务，系统按照默认逻辑将任务移动到最顶层。 |
+  | topMission | number | 是 | 待移动到最顶层的任务ID。传入-1表示不指定特定任务，系统按照默认逻辑将任务移动到最顶层。 |
   | callback | AsyncCallback&lt;void&gt; | 是 | 执行结果回调函数。 |
 
 **错误码**：
@@ -1965,7 +1965,7 @@ off(type: 'missionEvent', listenerId: number): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 10开始废弃，建议使用[missionManager.off('mission')](#missionmanageroffmission)替代。
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[missionManager.off('mission')](#missionmanageroffmission-1)替代。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 

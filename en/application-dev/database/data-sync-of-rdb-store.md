@@ -6,7 +6,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:38:05.435Z pushedAt=2026-06-25T08:30:29.747Z -->
+<!-- md-trans-meta sourceCommit=d17c75a4467ea87569ffbb162d30e9f04cd530ac translatedAt=2026-07-28T06:46:10.470Z pushedAt=2026-07-28T07:57:25.154Z -->
 
 ## When to Use
 
@@ -36,11 +36,11 @@ The **DatamgrService** reads the data to be synced from the application sandbox 
 
 ### Data Change Notification Mechanism
 
-When data is added, deleted, or modified, a notification is sent to the subscriber. The notifications can be classified into the following types:
+When data is added, deleted, or updated in the database, notifications of data changes are sent to subscribers. Data change notifications are mainly classified into local data change notifications and distributed data change notifications.
 
-- Local data change notification: subscription of the application data changes on the local device. When the data in the local RDB store is added, deleted, or modified in the database, a notification is received.
+- Local data change notifications: Applications on the local device subscribe to data change notifications. When data is added, deleted, or updated in the database, the application receives a notification.
 
-- Distributed data change notification: subscription of the application data changes of other devices in the network. When the data in the local RDB store changes after being synced with data from another device in the same network, a notification is received.
+- Distributed data change notifications: Applications subscribe to data change notifications from other devices in the same application group. When data is added, deleted, or updated on another device, the local device receives a notification.
 
 ### Data Sync Storage Mechanism
 
@@ -122,10 +122,9 @@ The following are APIs for cross-device data sync of RDB stores in device collab
 
 3. Create an RDB store and a data table, and set the data table that requires cross-device data sync as a distributed table. By default, the multi-device collaborative table mode is used for data storage and management.
 
-   <!--@[setDefaultDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)--> 
+   <!--@[setDefaultDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->  
 
    ``` TypeScript
-   const context = new UIContext().getHostContext() as common.UIAbilityContext;
    let store: relationalStore.RdbStore | undefined = undefined;
    // ...
      const STORE_CONFIG: relationalStore.StoreConfig = {
@@ -133,6 +132,7 @@ The following are APIs for cross-device data sync of RDB stores in device collab
        securityLevel: relationalStore.SecurityLevel.S3 // Database security level
      };
      // Open the database and set distributed tables
+     const context = new UIContext().getHostContext() as common.UIAbilityContext;
      relationalStore.getRdbStore(context, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
        store = rdbStore;
        await store.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)');
@@ -326,10 +326,9 @@ The following are APIs for cross-device data sync of RDB stores in device collab
 
 Data sync using the single-version table mode follows basic development steps similar to those of the [multi-device collaborative table mode](#using-multi-device-collaborative-table-mode-for-data-sync). However, when creating a data table (that is, step 3 in *Using Multi-device Collaborative Table Mode for Data Sync*), you need to set the data table to be synced across devices to the **SINGLE_VERSION** type. An example is provided as follows.
 
-   <!--@[setSingleDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)--> 
+   <!--@[setSingleDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->  
 
    ``` TypeScript
-   const context = new UIContext().getHostContext() as common.UIAbilityContext;
    let store: relationalStore.RdbStore | undefined = undefined;
    // ...
      const STORE_CONFIG: relationalStore.StoreConfig = {
@@ -343,6 +342,7 @@ Data sync using the single-version table mode follows basic development steps si
        enableCloud: false,
        tableType: relationalStore.DistributedTableType.SINGLE_VERSION
      }
+     const context = new UIContext().getHostContext() as common.UIAbilityContext;
      relationalStore.getRdbStore(context, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
        store = rdbStore;
        await store.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL UNIQUE, AGE INTEGER, SALARY REAL, CODES BLOB)');
@@ -394,7 +394,7 @@ The schema file is in JSON format. You can configure multiple databases in the *
 
       - **type**: column type, which is of the string type and mandatory. The value can be ["Text", "Integer", "Long", "Float", "Double", "Blob"].
 
-      - **primaryKey**: indicates whether the column is a conflict resolution column, which is irrelevant to the primary key in the table. The value is of the Boolean type. This field is mandatory for an auto-increment table. The value **true** means that the column is a conflict resolution column, and **false** means the opposite.
+      - **primaryKey**: indicates whether the column is a conflict resolution column, which is irrelevant to the primary key in the table. The value is of the Boolean type. This field is mandatory for an auto-increment table. The value **true** means that the column is a conflict resolution column, and **false** means the opposite. The default value is **false**.
 
       - **autoIncrement**: indicates whether the column is auto-increment, which must be consistent with the corresponding table structure. The value is of the Boolean type. Cross-device data sync for RDB store does not support the sync of auto-increment primary keys. The value **true** means it is an auto-increment primary key, and **false** means the opposite. The default value is **false**.
 
@@ -1267,3 +1267,13 @@ Incorrect example: Two conflict resolution columns, "NAME" and "AGE", are specif
       ```
 
       <!--RP20End-->
+
+## Samples
+
+For RDB store development, the following samples are available:
+
+- [DistributedAuthentication (ArkTS) (Full SDK) (API10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/DistributedAppDev/DistributedAuthentication)
+
+- [DistributedRdb (ArkTS) (Full SDK) (API10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/DistributedRdb)
+
+- [DistributedAccount (ArkTS) (Full SDK) (API10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/DistributedAppDev/DistributedAccount)

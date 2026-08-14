@@ -10,12 +10,13 @@
 
 ## CommandResult
 
-[AIPageInteraction](./arkts-apis-webview-AIPageInteraction.md)中的scroll、select、uploadFile、setZoomLevel等命令返回如下JSON格式；[AIPageCommand](./arkts-apis-webview-AIPageCommand.md)中getZoomLevel的返回结果同样包含`code`和`message`字段，并追加`zoomLevel`字段。
+[AIPageInteraction](./arkts-apis-webview-AIPageInteraction.md)中的scroll、select、input、dispatchMouseEvent、dispatchKeyEvent、uploadFile、setZoomLevel等命令返回如下JSON格式；[AIPageCommand](./arkts-apis-webview-AIPageCommand.md)中的getUrlHistory、goBack、goForward、navigate、getZoomLevel、addPageAnnotation、removePageAnnotation命令同样包含`code`和`message`字段，并根据命令追加其他结果字段。
 
 | 字段 | 类型 | 说明 |
 | ---- | ---- | ---- |
 | code | number | 执行结果码。取值请参见[命令执行结果码说明](#命令执行结果码说明)。 |
 | message | string | 执行结果描述。成功时为`"success"`；存在非阻塞警告时，追加`"; warnings: "`前缀及警告信息，格式为`"success; warnings: <path1>: <reason1>, <path2>: <reason2>"`；失败时为错误描述。 |
+| result | Object | 命令成功且需要返回结果数据时携带。不同命令的`result`结构不同，以对应命令章节说明为准。 |
 
 ## 命令执行结果码说明
 
@@ -24,7 +25,9 @@
 | 10 | 执行成功。 |
 | 11 | 执行失败。 |
 | 110 | JSON无效。 |
+| 114 | 缺少`xpath`或节点标识字段。 |
 | 115 | `xpath`字段取值无效。 |
+| 130 | 命令执行超时。 |
 | 131 | 元素不存在。 |
 | 132 | browser或host为空。 |
 | 160 | 页面未就绪。 |

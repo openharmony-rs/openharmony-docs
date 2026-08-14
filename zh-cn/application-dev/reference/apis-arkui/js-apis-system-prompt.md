@@ -182,7 +182,7 @@ export default new C()
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | title    | string                                   | 否    | 标题文本。                                    |
 | message  | string                                   | 否    | 文本内容。                                    |
-| buttons  | [[Button](#button), [Button](#button)?, [Button](#button)?] | 否    | 对话框中按钮的数组，结构为：{text:'button', color: '\#666666'}，支持1-6个按钮。大于6个按钮时弹窗不显示。 |
+| buttons  | [[Button](#button), [Button](#button)?, [Button](#button)?] | 否    | 对话框中按钮的数组，结构为：{text:'button', color: '\#666666'}，支持1-3个按钮。大于3个按钮时弹窗不显示。 |
 | success  | (data: [ShowDialogSuccessResponse](#showdialogsuccessresponse)) => void | 否    | 接口调用成功的回调函数。                             |
 | cancel   | (data: string, code: string) => void     | 否    | 接口调用取消的回调函数。                             |
 | complete | (data: string) => void                   | 否    | 接口调用结束的回调函数。                             |

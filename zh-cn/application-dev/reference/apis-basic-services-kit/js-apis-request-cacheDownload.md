@@ -101,8 +101,8 @@ import { cacheDownload } from '@kit.BasicServicesKit';
 | sslType<sup>21+</sup> | [SslType](#ssltype21) | 否  | 是 | 使用安全通信协议TLS或TLCP，默认使用TLS。当前TLS和TLCP均不支持双向认证。 |
 | caPath<sup>21+</sup> | string | 否  | 是 | CA证书路径。目前仅支持.pem格式证书，默认使用系统预设的CA证书。 |
 | cacheStrategy<sup>23+</sup> | [CacheStrategy](#cachestrategy23) | 否  | 是 | 使用缓存刷新策略FORCE或LAZY，默认使用FORCE。 |
-| retry | [RetryOptions](#retryoptions) | 否  | 是 | 任务的重试配置，用于为单个任务自定义重试行为。当需要为该任务单独指定重试次数时设置；不设置时回退到全局重试配置（setGlobalRetryOptions），再回退到默认值（maxRetryCount默认为1）。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用 |
-| timeout | [TimeoutOptions](#timeoutoptions) | 否  | 是 | 任务的超时配置，用于为单个任务自定义超时行为。当需要为该任务单独指定网络检查超时或HTTP请求超时时设置；不设置时回退到全局超时配置（setGlobalTimeoutOptions），再回退到默认值（networkCheckTimeout默认为20、httpTotalTimeout默认为60）。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用 |
+| retry | [RetryOptions](#retryoptions) | 否  | 是 | 任务的重试配置，用于为单个任务自定义重试行为。当需要为该任务单独指定重试次数时设置；不设置时回退到全局重试配置（setGlobalRetryOptions），再回退到默认值（maxRetryCount默认为1）。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用 |
+| timeout | [TimeoutOptions](#timeoutoptions) | 否  | 是 | 任务的超时配置，用于为单个任务自定义超时行为。当需要为该任务单独指定网络检查超时或HTTP请求超时时设置；不设置时回退到全局超时配置（setGlobalTimeoutOptions），再回退到默认值（networkCheckTimeout默认为20、httpTotalTimeout默认为60）。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用 |
 
 ## ResourceInfo<sup>20+</sup>
 
@@ -205,9 +205,9 @@ download(url: string, options: CacheDownloadOptions): void
 
   // 提供缓存下载任务的配置选项。
   let options: cacheDownload.CacheDownloadOptions = {
-    headers: { "Accept": "application/json" },
+    headers: { 'Accept': 'application/json' },
     sslType: cacheDownload.SslType.TLS,
-    caPath: "/path/to/ca.pem",
+    caPath: '/path/to/ca.pem',
     cacheStrategy: cacheDownload.CacheStrategy.FORCE,
     retry: { maxRetryCount: 1 },
     timeout: {
@@ -554,7 +554,7 @@ onDownloadError(url: string, callback: Callback&lt;DownloadError&gt;): void
 
 | 参数名 | 类型     | 必填 | 说明                   |
 |-----|--------|----|----------------------|
-| url | string | 是  | 待注册回调的url，支持HTTP和HTTPS协议，URL字符串的最大长度为8192字节，超出长度限制时抛出异常。 |
+| url | string | 是  | 待注册回调的url，支持HTTP和HTTPS协议，url字符串的最大长度为8192字节，超出长度限制时抛出异常。 |
 | callback | Callback&lt;[DownloadError](#downloaderror23)&gt; | 是 | 回调函数，返回预下载的错误信息。 |
 
 **示例：**
@@ -669,6 +669,8 @@ setGlobalRetryOptions(options?: RetryOptions): void
 **示例：**
 
   ```ts
+  import { cacheDownload, BusinessError } from '@kit.BasicServicesKit';
+
   try {
     // 设置全局的任务最大重试次数
     cacheDownload.setGlobalRetryOptions({
@@ -702,6 +704,8 @@ setGlobalTimeoutOptions(options?: TimeoutOptions): void
 **示例：**
 
   ```ts
+  import { cacheDownload, BusinessError } from '@kit.BasicServicesKit';
+  
   try {
     // 设置全局任务超时配置
     cacheDownload.setGlobalTimeoutOptions({

@@ -1,45 +1,46 @@
 # Video Playback (Video)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @qianpinyi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=dbd6ff6a5bccd923c2c9eee687b0e3ab690cfcbe translatedAt=2026-08-01T00:27:15.968Z pushedAt=2026-08-01T01:43:18.364Z -->
 
+The **\<Video>** component is used to play a video and control its playback. It is usually used in short video and in-app video list pages. A video automatically plays once fully visible. Tapping the video area pauses playback and displays the playback progress bar. You can drag the progress bar to seek to a specific position. For details, see [Video](../reference/apis-arkui/arkui-ts/ts-media-components-video.md).
 
-The **Video** component is used to play a video and control its playback. It is usually used in video players and video list pages within applications. A video automatically plays once fully loaded. When the user clicks the video area, the video is paused and the playback progress bar is displayed. The user can drag the progress bar to the desired position. For details, see [Video](../reference/apis-arkui/arkui-ts/ts-media-components-video.md).
+## Creating a \<Video> Component
 
-
-## Creating a Video Component
-
-You can create a **Video** component by calling the following API:
+You can create a **\<Video>** component by calling the following API:
 
 `Video(value: VideoOptions)`
 
 ## Loading Video
 
-The **Video** component supports both local and online videos. For details about data source configuration, see [VideoOptions](../reference/apis-arkui/arkui-ts/ts-media-components-video.md#videooptions).
-
+The **\<Video>** component supports loading both local and network videos. For details about data source configuration, see [VideoOptions](../reference/apis-arkui/arkui-ts/ts-media-components-video.md#videooptions).
 
 ### Loading a Local Video
 
 - Common local video
 
-  To load a local video, specify the corresponding video file in the local **rawfile** directory, as shown in the following figure.
+  To load a local video, place the video file in the **rawfile** directory of the project, as shown in the following figure.
 
-  ![videoplayer-local](figures/videoplayer-local.png)
+![videoplayer-local](figures/videoplayer-local.png)
 
   Use **$rawfile()** to reference the video resource.
 
   <!-- @[local_video](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/LocalVideo.ets) -->
-  
+
   ``` TypeScript
   // xxx.ets
-  // ···
+  // ...
   @Component
   export struct LocalVideo {
     private controller: VideoController = new VideoController();
+    // $r('app.media.preview') needs to be replaced with the image resource file you require.
     private previewUris: Resource = $r('app.media.preview');
+    // $rawfile('videoTest.mp4') needs to be replaced with the video resource file you require.
     private innerResource: Resource = $rawfile('videoTest.mp4');
   
     build() {
@@ -47,25 +48,26 @@ The **Video** component supports both local and online videos. For details about
         Video({
           src: this.innerResource,  // Set the video source.
           previewUri: this.previewUris, // Set the preview image.
-          controller: this.controller // Set the video controller to control the video playback status.
+          controller: this.controller // Set the video controller to control the video playback state.
         })
       }
     }
   }
   ```
 
+- Video provided by a [DataAbility](../application-models/dataability-overview.md), whose path contains the **dataability://** prefix. Ensure that the corresponding video resource exists.
 
-- Video provided by a [DataAbility](../application-models/dataability-overview.md), whose path contains the **dataability://** prefix<br>Ensure that the corresponding video resource exists.
+  <!-- @[data_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/DataAbility.ets) -->  
 
-  <!-- @[data_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/DataAbility.ets) -->
-  
   ``` TypeScript
   // xxx.ets
-  // ···
+  // ...
   @Component
   export struct LocalVideoTwo {
     private controller: VideoController = new VideoController();
+    // Replace $r('app.media.preview') with the image resource file you need.
     private previewUris: Resource = $r('app.media.preview');
+    // Replace 'dataability://device_id/com.domainname.dataability.videodata/video/10' with the video resource file you need.
     private videoSrc: string = 'dataability://device_id/com.domainname.dataability.videodata/video/10';
   
     build() {
@@ -82,16 +84,17 @@ The **Video** component supports both local and online videos. For details about
 
 ### Loading a Video in the Application Sandbox
 
-To load a video in the application sandbox, use a string with the **file://** prefix. Ensure that there are files in the specified path and the application has the read permission to the files.
+A string with the **file://** path prefix is supported for reading resources in the app sandbox path. Ensure that the file exists in the app sandbox directory and has read permission.
 
-<!-- @[sandbox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/Sandbox.ets) -->
+<!-- @[sandbox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/Sandbox.ets) -->  
 
 ``` TypeScript
 // xxx.ets
-// ···
+// ...
 @Component
 export struct Sandbox {
   private controller: VideoController = new VideoController();
+  // Replace 'file:///data/storage/el2/base/haps/entry/files/show.mp4' with the actual video sandbox path required by the developer.
   private videoSrc: string = 'file:///data/storage/el2/base/haps/entry/files/show.mp4';
 
   build() {
@@ -105,22 +108,22 @@ export struct Sandbox {
 }
 ```
 
-
 ### Loading an Online Video
 
-To load online videos, you must apply for the ohos.permission.INTERNET permission. For details about how to apply for the permission, see [Declaring Permissions](../security/AccessToken/declare-permissions.md). In this scenario, the **src** attribute indicates the URL of the online video.
+To load a network video, you must apply for the **ohos.permission.INTERNET** permission. For details about how to apply for the permission, see [Declaring Permissions](../security/AccessToken/declare-permissions.md). In this case, the **src** attribute of the **\<Video>** component is the URL of the network video.
 
-
-<!-- @[online_video](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/OnlineVideo.ets) -->
+<!-- @[online_video](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/OnlineVideo.ets) -->  
 
 ``` TypeScript
 // xxx.ets
-// ···
+// ...
 @Component
 export struct OnlineVideo {
   private controller: VideoController = new VideoController();
+  // Replace $r('app.media.preview') with the image resource file you need.
   private previewUris: Resource = $r('app.media.preview');
-  private videoSrc: string = 'www.example.com/example.mp4'; // Replace the URL with that of the actual video to load.
+  // Replace 'www.example.com/example.mp4' with the actual video loading URL you need.
+  private videoSrc: string = 'www.example.com/example.mp4';
 
   build() {
     Column() {
@@ -134,42 +137,42 @@ export struct OnlineVideo {
 }
 ```
 
-
 ## Adding Attributes
 
-Use the [attributes](../reference/apis-arkui/arkui-ts/ts-media-components-video.md#attributes) of the **Video** component to control video playback. For example, you can set whether to mute the video and whether to display the video playback control bar.
+The [attributes](../reference/apis-arkui/arkui-ts/ts-media-components-video.md#attributes) of the **\<Video>** component are mainly used to set the playback mode, such as whether to mute the video and whether to display the control bar.
 
-
-<!-- @[attribute_video](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/AttributeVideo.ets) -->
+<!-- @[attribute_video](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/AttributeVideo.ets) -->  
 
 ``` TypeScript
 // xxx.ets
-// ···
+// ...
 @Component
 export struct AttributeVideo {
+  // Replace $rawfile('videoTest.mp4') with the video resource file you need.
+  private videoSrc: Resource = $rawfile('videoTest.mp4');
   private controller: VideoController = new VideoController();
 
   build() {
     Column() {
       Video({
+        src: this.videoSrc,
         controller: this.controller
       })
-        .muted(false) // Set whether to mute the video.
-        .controls(false) // Set whether to display the video playback control bar.
-        .autoPlay(false) // Set whether to enable auto play.
-        .loop(false) // Set whether to repeat the video.
+        .muted(false) // Set whether to mute.
+        .controls(false) // Set whether to show the default control bar.
+        .autoPlay(true) // Set whether to enable auto-play.
+        .loop(true) // Set whether to enable loop playback.
         .objectFit(ImageFit.Contain) // Set the video fill mode.
     }
   }
 }
 ```
 
-
 ## Adding Events
 
-The **Video** component supports various callback events in addition to the universal events. For details, see [Events](../reference/apis-arkui/arkui-ts/ts-media-components-video.md#events).
+  The callback events of the **\<Video>** component mainly include playback start, playback pause, playback end, playback failure, playback stop, video preparation, and progress bar operation. In addition, the **\<Video>** component also supports universal events, such as click and touch events. For details, see [Events](../reference/apis-arkui/arkui-ts/ts-media-components-video.md#events).
 
-<!-- @[event_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/EventCall.ets) -->
+<!-- @[event_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/EventCall.ets) -->  
 
 ``` TypeScript
 // xxx.ets
@@ -177,7 +180,9 @@ The **Video** component supports various callback events in addition to the univ
 @Component
 struct EventCall {
   private controller: VideoController = new VideoController();
+  // Replace $r('app.media.preview') with the image resource file you need.
   private previewUris: Resource = $r('app.media.preview');
+  // Replace $rawfile('videoTest.mp4') with the video resource file you need.
   private innerResource: Resource = $rawfile('videoTest.mp4');
 
   build() {
@@ -187,36 +192,37 @@ struct EventCall {
         previewUri: this.previewUris,
         controller: this.controller
       })
-        .onUpdate((event) => { // Triggered when the playback progress changes.
+        .onUpdate((event) => { // Update event callback
         })
-        .onPrepared((event) => { // Triggered when video preparation is complete.
+        .onPrepared((event) => { // Preparation event callback
         })
-        .onError(() => { // Triggered when the video playback fails.
+        .onError(() => { // Error event callback
         })
-        .onStop(() => { // Triggered when the video playback stops.
+        .onStop(() => { // Stop event callback
         })
     }
   }
 }
 ```
 
-
 ## Using the Video Controller
 
-The video controller is used to control video playback. For details, see [VideoController](../reference/apis-arkui/arkui-ts/ts-media-components-video.md#videocontroller).
+The video controller is mainly used to control the video state, including play, pause, stop, and seek. For details, see [VideoController](../reference/apis-arkui/arkui-ts/ts-media-components-video.md#videocontroller).
 
 - Default controller
 
   The default controller supports four basic features: start playback, pause playback, set the video playback position, and play the video in full screen.
 
-  <!-- @[video_guide](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/VideoControl.ets) -->
-  
+  <!-- @[video_guide](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/VideoControl.ets) -->  
+
   ``` TypeScript
   // xxx.ets
   @Entry
   @Component
   struct VideoGuide {
+    // Replace $rawfile('videoTest.mp4') with the required video resource file.
     @State videoSrc: Resource = $rawfile('videoTest.mp4');
+    // Replace common/videoIcon.png with the required image resource file.
     @State previewUri: string = 'common/videoIcon.png';
     @State curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X;
   
@@ -226,7 +232,7 @@ The video controller is used to control video playback. For details, see [VideoC
           Video({
             src: this.videoSrc,
             previewUri: this.previewUri,
-            currentProgressRate: this.curRate // Set the playback speed.
+            currentProgressRate: this.curRate // Set the video playback speed.
           })
         }
         .width('100%')
@@ -238,21 +244,23 @@ The video controller is used to control video playback. For details, see [VideoC
 
 - Custom controller
 
-  To implement a custom control bar, first disable the default controller. Then, use components such as [Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md) and [Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md) to build your own control and display elements. This approach is suitable for scenarios that require a highly customized UI.
+  To use a custom controller, disable the default controller first, and then use components such as [Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md) and [Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md) to customize the control and display. This approach is suitable for scenarios that require a high degree of customization.
 
-  <!-- @[customize_control](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/CustomizedControl.ets) -->
+  <!-- @[customize_control](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/CustomizedControl.ets) -->  
 
   ``` TypeScript
   // xxx.ets
   @Entry
   @Component
   struct CustomizedControl {
+    // Replace $rawfile('videoTest.mp4') with the video resource file you need.
     @State videoSrc: Resource = $rawfile('videoTest.mp4');
+    // Replace common/videoIcon.png with the image resource file you need.
     @State previewUri: string = 'common/videoIcon.png';
     @State curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X;
     // Initialize the current time to 0.
     @State currentTime: number = 0;
-    // Initialize the duration time to 0.
+    // Initialize the duration to 0.
     @State durationTime: number = 0;
     controller: VideoController = new VideoController();
 
@@ -285,7 +293,7 @@ The video controller is used to control video playback. For details, see [VideoC
               max: this.durationTime
             })
               .onChange((value: number, mode: SliderChangeMode) => {
-                this.controller.setCurrentTime(value); // Set the video playback position to the specified time.
+                this.controller.setCurrentTime(value); // Set the video playback progress to value.
               })
               .width('90%')
             Text(JSON.stringify(this.durationTime) + 's')
@@ -300,213 +308,221 @@ The video controller is used to control video playback. For details, see [VideoC
   }
   ```
 
-
 ## Remarks
 
-The **Video** component has encapsulated the basic capabilities of video playback. You do not need to create video instances or set and obtain video information. Simply set the data source and basic information to play videos. To customize video playback, you can use [AVPlayer](../media/media/media-kit-intro.md#avplayer). The following is a simple example of using AVPlayer to play a video. For more details or more complex features, see [Using AVPlayer to Play Videos (ArkTS)](../media/media/video-playback.md).
-  <!-- @[xcomponent_av_player](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/XComponentAVPlayer.ets) -->
+The **\<Video>** component encapsulates the basic video playback capabilities. You do not need to create a video instance or configure video information. You only need to set the data source and basic information to play a video, though the extensibility is relatively limited. If you want to customize video playback, use [AVPlayer](../media/media/media-kit-intro.md#avplayer). The following is a simple example of using AVPlayer for video playback. For more details or complex features, see [Video Playback](../media/media/video-playback.md).
 
-  ``` TypeScript
-  // xxx.ets
-  import { window } from '@kit.ArkUI';
-  import { AVPlayerController } from '../avplayertool/AVPlayerController';
-  import { emitter } from '@kit.BasicServicesKit';
-  import { CommonConstants, VideoDataType } from  '../common/constants/CommonConstants';
-  import { VideoData } from '../model/VideoData'
-  import { common } from '@kit.AbilityKit'
+<!-- @[xcomponent_av_player](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/XComponentAVPlayer.ets) -->  
 
-  class VideoXComponentController extends XComponentController {
-    private avPlayerController: AVPlayerController;
+``` TypeScript
+// xxx.ets
+import { window } from '@kit.ArkUI';
+import { AVPlayerController } from '../avplayertool/AVPlayerController';
+import { emitter } from '@kit.BasicServicesKit';
+import { CommonConstants, VideoDataType } from  '../common/constants/CommonConstants';
+import { VideoData } from '../model/VideoData';
+import { common } from '@kit.AbilityKit';
 
-    constructor(avPlayerController: AVPlayerController) {
-      super();
-      this.avPlayerController = avPlayerController;
-    }
+class VideoXComponentController extends XComponentController {
+  private avPlayerController: AVPlayerController;
 
-    onSurfaceCreated(surfaceId: string): void {
-      let source: VideoData = {
-        type: VideoDataType.RAW_FILE,
-        videoSrc: 'videoTest.mp4'
-      };
-      // Pass the surface ID and video source to AVPlayer.
-      this.avPlayerController.initAVPlayer(source, surfaceId);
-    }
+  constructor(avPlayerController: AVPlayerController) {
+    super();
+    this.avPlayerController = avPlayerController;
   }
 
-  const MINUTE_UNIT = 60000;
-  const SECOND_UNIT = 1000;
-  const SECOND_TEN = 10;
-  function timeCover(time: number): string {
-    let min: number = Math.floor(time / MINUTE_UNIT);
-    let second: string = ((time % MINUTE_UNIT) / SECOND_UNIT).toFixed(0);
-    return `${min}:${(Number(second) < SECOND_TEN ? '0' : '') + second}`;
+  onSurfaceCreated(surfaceId: string): void {
+    let source: VideoData = {
+      type: VideoDataType.RAW_FILE,
+      videoSrc: 'videoTest.mp4'
+    };
+    // Pass the surfaceId and video source information to AVPlayer.
+    this.avPlayerController.initAVPlayer(source, surfaceId);
+  }
+}
+
+const MINUTE_UNIT = 60000;
+const SECOND_UNIT = 1000;
+const SECOND_TEN = 10;
+function timeCover(time: number): string {
+  let min: number = Math.floor(time / MINUTE_UNIT);
+  let second: string = ((time % MINUTE_UNIT) / SECOND_UNIT).toFixed(0);
+  return `${min}:${(Number(second) < SECOND_TEN ? '0' : '') + second}`;
+}
+
+@Entry
+@Component
+struct XComponentAVPlayer {
+  // Set the video controller to control the video playback state.
+  @State avPlayerController: AVPlayerController = new AVPlayerController(this.getUIContext().getHostContext()!);
+  // Total duration of the video.
+  @State durationTime: number = 0;
+  // Current progress of the video.
+  @State currentTime: number = 0;
+  // Whether the video is paused.
+  @State isPause: boolean = true;
+  // Whether the video is in full-screen mode.
+  @State isLayoutFullScreen: boolean = false;
+  // Set the XComponent controller.
+  private videoXComponentController: XComponentController = new VideoXComponentController(this.avPlayerController);
+  // Whether the window is in landscape orientation.
+  @State isLandScape: boolean = false;
+  // Identifier of the system navigation bar.
+  private WINDOW_SYSTEM_BAR: Array<'status' | 'navigation'> = ['navigation', 'status'];
+  // Window width.
+  @State windowWidth:number = 0;
+  // Window height.
+  @State windowHeight: number = 0;
+  // Window instance.
+  private windowClass: window.Window | null = null;
+
+  // Obtain the window instance.
+  getWindow(): window.Window {
+    const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    return context.windowStage!.getMainWindowSync();
   }
 
-  @Entry
-  @Component
-  struct XComponentAVPlayer {
-    // Set the video controller to control the video playback status.
-    @State avPlayerController: AVPlayerController = new AVPlayerController(this.getUIContext().getHostContext()!);
-    // Total video duration.
-    @State durationTime: number = 0;
-    // Current progress of video playback.
-    @State currentTime: number = 0;
-    // Check whether the video is paused.
-    @State isPause: boolean = true;
-    // Check whether the video is played in full-screen mode.
-    @State isLayoutFullScreen: boolean = false;
-    // Set the XComponent controller.
-    private videoXComponentController: XComponentController = new VideoXComponentController(this.avPlayerController);
-    // Check whether the window is in landscape mode.
-    @State isLandScape: boolean = false;
-    // System navigation bar.
-    private WINDOW_SYSTEM_BAR: Array<'status' | 'navigation'> = ['navigation', 'status'];
-    // Window width.
-    @State windowWidth:number = 0;
-    // Window height.
-    @State windowHeight: number = 0;
-    // Window instance.
-    private windowClass: window.Window | null = null;
-
-    // Obtain the window instance.
-    getWindow(): window.Window {
-      const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-      return context.windowStage!.getMainWindowSync();
-    }
-
-    aboutToAppear(): void {
-      this.windowClass = this.getWindow();
-      let properties = this.windowClass.getWindowProperties();
-      let context = this.getUIContext();
-      this.windowWidth = context.px2vp(properties.windowRect.width);
-      this.windowHeight = context.px2vp(properties.windowRect.height);
-      // Obtain the window orientation and size.
-      this.windowClass.on('windowSizeChange', (size: window.Size) => {
-        this.isLandScape = size.width > size.height;
-        this.windowWidth = context.px2vp(size.width);
-        this.windowHeight = context.px2vp(size.height);
-      })
-      emitter.on(CommonConstants.AVPLAYER_PREPARED, (res) => {
-        if (res.data) {
-          this.durationTime = this.avPlayerController.durationTime;
-          // Update the video playback progress.
-          setInterval(() => {
-            this.currentTime = this.avPlayerController.currentTime;
-          }, 1000);
-        }
-      });
-    }
-
-    // Set the full-screen mode.
-    setFullScreen(isLayoutFullScreen: boolean) {
-      window.getLastWindow(this.getUIContext().getHostContext()).then((win) => {
-        if (isLayoutFullScreen) {
-          // Set the visibility of the navigation bar and status bar when the window is in full-screen mode.
-          win.setWindowSystemBarEnable([]);
-        } else {
-          // Set the visibility of the navigation bar and status bar when the window exits the full-screen mode.
-          win.setWindowSystemBarEnable(this.WINDOW_SYSTEM_BAR);
-        }
-      }).catch((err: string) => {
-        console.error(`setFullScreen failed, message is ${err}`);
-      });
-    }
-
-    build() {
-      Column() {
-        Stack() {
-          XComponent({ type: XComponentType.SURFACE, controller: this.videoXComponentController })
-          Column() {
-            Blank()
-            Column() {
-              Column() {
-                Row() {
-                  Row() {
-                    // Set the video play or pause button.
-                    SymbolGlyph(this.isPause ? $r('sys.symbol.pause') : $r('sys.symbol.play_fill'))
-                      .fontSize(30)
-                      .fontWeight(FontWeight.Bolder)
-                      .fontColor([Color.White])
-                      .onClick(() => {
-                        if (this.isPause) {
-                          this.avPlayerController.videoPause();
-                        } else {
-                          this.avPlayerController.videoPlay();
-                        }
-                        this.isPause = !this.isPause;
-                      })
-                    // Current progress of video playback.
-                    Text(timeCover(this.currentTime))
-                      .fontColor(Color.White)
-                      .textAlign(TextAlign.End)
-                      .fontWeight(FontWeight.Regular)
-                      .margin({ left: 5 })
-                  }
-                  Row() {
-                    // Video progress bar.
-                    Slider({
-                      value: this.currentTime,
-                      min: 0,
-                      max: this.durationTime,
-                      style: SliderStyle.OutSet
-                    })
-                      .id('Slider')
-                      .blockColor(Color.White)
-                      .trackColor(Color.Gray)
-                      .selectedColor('#317af7')
-                      .showTips(false)
-                      .onChange((value: number, mode: SliderChangeMode) => {
-                        if (mode === SliderChangeMode.Begin) {
-                          this.avPlayerController.videoPause();
-                        }
-                        this.avPlayerController.videoSeek(value);
-                        this.currentTime = value;
-                        if (mode === SliderChangeMode.End) {
-                          this.isPause = true;
-                          this.avPlayerController.videoPlay();
-                        }
-                      })
-                  }
-                  .layoutWeight(1)
-                  Row() {
-                    // Total video duration.
-                    Text(timeCover(this.durationTime))
-                      .fontColor(Color.White)
-                      .fontWeight(FontWeight.Regular)
-                      .margin({ right: 5 })
-                  }
-                  Row() {
-                    // Set the button for full-screen playback.
-                    SymbolGlyph(this.isLayoutFullScreen ? $r('sys.symbol.arrow_down_right_and_arrow_up_left') : $r('sys.symbol.arrow_up_left_and_arrow_down_right'))
-                      .fontSize(30)
-                      .fontWeight(FontWeight.Bolder)
-                      .fontColor([Color.White])
-                      .onClick(()=> {
-                        this.isLayoutFullScreen = !this.isLayoutFullScreen;
-                        this.setFullScreen(this.isLayoutFullScreen);
-                      })
-                  }
-                }
-                .justifyContent(FlexAlign.Center)
-                .padding({ left: 12, right: 20, bottom: 28 })
-                .width('100%')
-              }
-              .backgroundColor(Color.Black)
-            }
-            .justifyContent(FlexAlign.Center)
-          }
-          .width('100%')
-          .height('100%')
-        }
-        .height(this.isLayoutFullScreen ? this.windowHeight : 300)
-        .width(this.isLayoutFullScreen ? this.windowWidth : 300)
+  aboutToAppear(): void {
+    this.windowClass = this.getWindow();
+    let properties = this.windowClass.getWindowProperties();
+    let context = this.getUIContext();
+    this.windowWidth = context.px2vp(properties.windowRect.width);
+    this.windowHeight = context.px2vp(properties.windowRect.height);
+    // Obtain the window orientation state and its dimensions.
+    this.windowClass.on('windowSizeChange', (size: window.Size) => {
+      this.isLandScape = size.width > size.height;
+      this.windowWidth = context.px2vp(size.width);
+      this.windowHeight = context.px2vp(size.height);
+    })
+    emitter.on(CommonConstants.AVPLAYER_PREPARED, (res) => {
+      if (res.data) {
+        this.durationTime = this.avPlayerController.durationTime;
+        // Update the video progress time.
+        setInterval(() => {
+          this.currentTime = this.avPlayerController.currentTime;
+        }, 1000);
       }
-      .width('100%')
-      .height('100%')
-      .justifyContent(FlexAlign.Center)
-      .alignItems(HorizontalAlign.Center)
-    }
+    });
   }
-  ```
+
+  // Set the immersive window.
+  setFullScreen(isLayoutFullScreen: boolean) {
+    window.getLastWindow(this.getUIContext().getHostContext()).then((win) => {
+      if (isLayoutFullScreen) {
+        // Set the visibility mode of the navigation bar and status bar in full-screen mode.
+        win.setWindowSystemBarEnable([]);
+      } else {
+        // Set the visibility mode of the navigation bar and status bar in non-full-screen mode.
+        win.setWindowSystemBarEnable(this.WINDOW_SYSTEM_BAR);
+      }
+    }).catch((err: string) => {
+      console.error(`setFullScreen failed, message is ${err}`);
+    });
+  }
+
+  build() {
+    Column() {
+      Stack() {
+        XComponent({ type: XComponentType.SURFACE, controller: this.videoXComponentController })
+        Column() {
+          Blank()
+          Column() {
+            Column() {
+              Row() {
+                Row() {
+                  // Button for playing or pausing the video.
+                  SymbolGlyph(this.isPause ? $r('sys.symbol.pause') : $r('sys.symbol.play_fill'))
+                    .fontSize(30)
+                    .fontWeight(FontWeight.Bolder)
+                    .fontColor([Color.White])
+                    .onClick(() => {
+                      if (this.isPause) {
+                        this.avPlayerController.videoPause();
+                      } else {
+                        this.avPlayerController.videoPlay();
+                      }
+                      this.isPause = !this.isPause;
+                    })
+                  // Current progress of the video.
+                  Text(timeCover(this.currentTime))
+                    .fontColor(Color.White)
+                    .textAlign(TextAlign.End)
+                    .fontWeight(FontWeight.Regular)
+                    .margin({ left: 5 })
+                }
+                Row() {
+                  // Video progress bar.
+                  Slider({
+                    value: this.currentTime,
+                    min: 0,
+                    max: this.durationTime,
+                    style: SliderStyle.OutSet
+                  })
+                    .id('Slider')
+                    .blockColor(Color.White)
+                    .trackColor(Color.Gray)
+                    .selectedColor('#317af7')
+                    .showTips(false)
+                    .onChange((value: number, mode: SliderChangeMode) => {
+                      if (mode === SliderChangeMode.Begin) {
+                        this.avPlayerController.videoPause();
+                      }
+                      this.avPlayerController.videoSeek(value);
+                      this.currentTime = value;
+                      if (mode === SliderChangeMode.End) {
+                        this.isPause = true;
+                        this.avPlayerController.videoPlay();
+                      }
+                    })
+                }
+                .layoutWeight(1)
+                Row() {
+                  // Total duration of the video.
+                  Text(timeCover(this.durationTime))
+                    .fontColor(Color.White)
+                    .fontWeight(FontWeight.Regular)
+                    .margin({ right: 5 })
+                }
+                Row() {
+                  // Button for toggling full-screen playback.
+                  SymbolGlyph(this.isLayoutFullScreen ? $r('sys.symbol.arrow_down_right_and_arrow_up_left') : $r('sys.symbol.arrow_up_left_and_arrow_down_right'))
+                    .fontSize(30)
+                    .fontWeight(FontWeight.Bolder)
+                    .fontColor([Color.White])
+                    .onClick(()=> {
+                      this.isLayoutFullScreen = !this.isLayoutFullScreen;
+                      this.setFullScreen(this.isLayoutFullScreen);
+                    })
+                }
+              }
+              .justifyContent(FlexAlign.Center)
+              .padding({ left: 12, right: 20, bottom: 28 })
+              .width('100%')
+            }
+            .backgroundColor(Color.Black)
+          }
+          .justifyContent(FlexAlign.Center)
+        }
+        .width('100%')
+        .height('100%')
+      }
+      .height(this.isLayoutFullScreen ? this.windowHeight : 300)
+      .width(this.isLayoutFullScreen ? this.windowWidth : 300)
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+    .alignItems(HorizontalAlign.Center)
+  }
+}
+```
+
+## Samples
+
+For **\<Video>** component development, the following samples are available for reference:
+
+- [Media Library Video (ArkTS) (API 9)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/VideoShow)
+
+- [Simple Video Player (ArkTS) (API 9)](https://gitcode.com/openharmony/codelabs/tree/master/Media/SimpleVideo)
 
 <!--RP1--><!--RP1End-->

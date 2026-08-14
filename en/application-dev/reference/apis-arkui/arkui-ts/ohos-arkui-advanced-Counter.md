@@ -1,18 +1,22 @@
 # advanced.Counter
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xieziang-->
-<!--Designer: @youzhi92-->
-<!--Tester: @TerryTsao-->
+<!--Owner: @song-song-song-->
+<!--Designer: @fenglinbailu-->
+<!--Tester: @weixin_45530366-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=91dd63b1005715af7367fe6e4ce97d615a44a8bf translatedAt=2026-07-29T02:58:37.084Z pushedAt=2026-08-04T02:46:48.201Z -->
 
-The **Counter** component enables precise numerical value adjustment.
+The **Counter** component is used for precise numerical value adjustment. It supports four styles: list, compact, inline numeric, and inline date, and is suitable for scenarios such as shopping quantity adjustment, parameter setting, and date selection. It provides flexible style configuration and event callback capabilities.
 
->  **NOTE**
+> **NOTE**
 >
->  This component is supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
 >
->  If the **Counter** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **Counter** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **Counter** component.
+> - The APIs of this module can be used only in the stage model.
+>
+> - If the **Counter** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) set, the compilation toolchain generates an additional node named __Common__ and attaches the universal attributes or events to __Common__ instead of directly applying them to the **Counter** component. This may cause the universal attributes or events to not take effect or behave unexpectedly. Therefore, setting universal attributes and events for the **Counter** component is not recommended.
 
 ## Modules to Import
 
@@ -28,9 +32,9 @@ Not supported
 
 CounterComponent({&nbsp;options:&nbsp;CounterOptions&nbsp;})
 
-Defines a **Counter** component instance.
+Creates a **Counter** component instance.
 
-**Decorator**: @Component
+**Decorator:** @Component
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -40,11 +44,11 @@ Defines a **Counter** component instance.
 
 | Name  | Type                             | Mandatory| Decorator| Description                   |
 | ------- | --------------------------------- | ---- | ---------- | ----------------------- |
-| options | [CounterOptions](#counteroptions) | Yes  | @Prop      | Configuration parameters of the **Counter** component.|
+| options | [CounterOptions](#counteroptions) | Yes   | @Prop      | Defines the type and style options of the **Counter** component. |
 
 ## CounterOptions
 
-Defines the counter type and style.
+Defines the type and style of the **Counter** component.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -52,13 +56,13 @@ Defines the counter type and style.
 
 | Name       | Type      | Read-Only| Optional| Description                           |
 | ----------- | ---------- | ---- | ------------------------------- | ------------------------------- |
-| type | [CounterType](#countertype) | No | No | Type of the counter.|
-| direction<sup>12+</sup> | [Direction](ts-appendix-enums.md#direction) | No| Yes| Layout direction.<br>Default value: **Direction.Auto**<br>If the value is **undefined**, the default value is used.|
-| numberOptions | [NumberStyleOptions](#numberstyleoptions) | No  | Yes  | Style of the list or compact counter.<br>Default value: list or compact counter with value 0.<br>If the value is **undefined**, the default value is used.|
-| inlineOptions | [InlineStyleOptions](#inlinestyleoptions) | No| Yes| Parameters of the inline numeric counter.<br>Default value: regular inline numeric counter with value 0.<br>If the value is **undefined**, the default value is used.|
-| dateOptions | [DateStyleOptions](#datestyleoptions) | No| Yes| Style of the inline date counter.<br>Default value: date counter showing 0001/01/01.<br>If the value is **undefined**, the default value is used.|
+| type | [CounterType](#countertype) | No | No | Type of the current Counter. It must be used with the corresponding style parameters. For details about the mapping, see the Counter Type and Style Mapping table. |
+| direction<sup>12+</sup> | [Direction](ts-appendix-enums.md#direction) | No | Yes | Layout direction. This parameter is passed when adapting to right-to-left languages (such as Arabic) or implementing a mirrored layout. **Direction.Auto**: automatically follows the system language direction (default). **Direction.Ltr**: left-to-right layout, applicable to most languages. **Direction.Rtl**: right-to-left layout, applicable to RTL languages such as Arabic.<br>Default value: **Direction.Auto**<br>If this parameter is set to **undefined**, the default value is used. |
+| numberOptions | [NumberStyleOptions](#numberstyleoptions) | No | Yes | Style of the list-type or compact-type Counter. It must be used with the type set to **CounterType.LIST** or **CounterType.COMPACT**.<br>Default value: a list-type or compact-type Counter with the counter displayed as **0**.<br>If this parameter is set to **undefined**, the default value is used. |
+| inlineOptions | [InlineStyleOptions](#inlinestyleoptions) | No | Yes | Style of the inline number Counter. It must be used with the type set to **CounterType.INLINE**.<br>Default value: an inline number Counter with the counter displayed as **0**.<br>If this parameter is set to **undefined**, the default value is used. |
+| dateOptions | [DateStyleOptions](#datestyleoptions) | No | Yes | Style of the inline date Counter. It must be used with the type set to **CounterType.INLINE_DATE**.<br>Default value: an inline date Counter displaying **0001/01/01**.<br>If this parameter is set to **undefined**, the default value is used. |
 
-The table below lists the counter type and style mapping.
+When you select a **Counter** type, you must select the corresponding **Counter** style. If the style parameter does not match the type, the default style of that type is used.
 
 | Counter Type            | Counter Style       |
 | ----------------------- | ------------------ |
@@ -79,12 +83,12 @@ Enumerates counter types.
 | ----------- | ---- | --------------------------- |
 | LIST        | 0    | List counter.            |
 | COMPACT     | 1    | Compact counter.            |
-| INLINE      | 2    | Inline numeric counter.|
-| INLINE_DATE | 3    | Inline date counter.      |
+| INLINE      | 2    | Inline number counter. |
+| INLINE_DATE | 3    | Inline date counter.       |
 
 ## CommonOptions
 
-Defines common attributes and events for all counter types.
+Defines the common attributes and events of the **Counter** component.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -92,10 +96,10 @@ Defines common attributes and events for all counter types.
 
 | Name           | Type                     | Read-Only| Optional| Description                                                        |
 | --------------- | ------------------------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| focusable       | boolean                   | No | Yes | Whether the counter is focusable.<br>**NOTE**<br>This attribute only applies to list and compact counters.<br>Default value: **true**.<br>**true**: focusable. **false**: not focusable.<br>If the value is **undefined**, the default value is used.|
-| step            | number                    | No | Yes | Step of the counter.<br>Value range: an integer greater than or equal to 1.<br>Default value: **1**<br>If the value is out of the range, the default value is used.|
-| onHoverIncrease | (isHover: boolean) => void | No | Yes | Callback invoked when the mouse pointer is moved over or away from the increase button of the counter.<br>**isHover**: whether the mouse pointer is hovering over the component. The value **true** means that the mouse pointer enters the component, and the value **false** means that the mouse pointer leaves the component.<br>Default value: no callback triggered.<br>If the value is **undefined**, the default value is used.|
-| onHoverDecrease | (isHover: boolean) => void | No | Yes | Callback invoked when the mouse pointer is moved over or away from the decrease button of the counter.<br>**isHover**: whether the mouse pointer is hovering over the component. The value **true** means that the mouse pointer enters the component, and the value **false** means that the mouse pointer leaves the component.<br>Default value: no callback triggered.<br>If the value is **undefined**, the default value is used.|
+| focusable       | boolean                   | No  | Yes  | Whether the Counter can obtain focus.<br>**Note:** This attribute takes effect for the list and compact types of Counter, but not for the inline number and inline date types.<br>Default value: **true**<br>**true**: The Counter can obtain focus (selected when the Counter needs to be operated via keyboard or focus navigation); **false**: The Counter cannot obtain focus (selected when focus interaction is not required).<br>If the value is **undefined**, the default value is used. |
+| step            | number                    | No  | Yes  | Step of the Counter. This is used when you need to quickly adjust the value (for example, by setting a step greater than the default value 1) or precisely control the amount of each change.<br>Value range: an integer greater than or equal to 1.<br>Default value: **1**<br>If the value is out of range, the default value is used.<br>If the value is **undefined**, the default value is used. |
+| onHoverIncrease | (isHover: boolean) => void | No  | Yes  | Callback triggered when the mouse enters or leaves the increase button of the Counter.<br>Use case: pass in this callback when you need to perform custom operations (such as changing the button style or displaying a tooltip) when the mouse hovers over the increase button.<br>**isHover**: whether the mouse hovers over the increase button. The value is **true** when the mouse enters and **false** when it leaves.<br>Default value: no callback is triggered when the mouse enters or leaves the increase button of the Counter.<br>If the value is **undefined**, the default value is used. |
+| onHoverDecrease | (isHover: boolean) => void | No  | Yes  | Callback triggered when the mouse enters or leaves the decrease button of the Counter.<br>Use case: pass in this callback when you need to perform custom operations (such as changing the button style or displaying a tooltip) when the mouse hovers over the decrease button.<br>**isHover**: whether the mouse hovers over the decrease button. The value is **true** when the mouse enters and **false** when it leaves.<br>Default value: no callback is triggered when the mouse enters or leaves the decrease button of the Counter.<br>If the value is **undefined**, the default value is used. |
 
 ## InlineStyleOptions
 
@@ -109,17 +113,21 @@ Inherits from [CommonOptions](#commonoptions).
 
 | Name     | Type                  | Read-Only| Optional| Description                                                  |
 | --------- | ---------------------- | ---- | ------------------------------------------------------ | ------------------------------------------------------ |
-| value     | number                 | No | Yes | Initial value of the counter.<br>Default value: **0**<br>Value range: [min, max].<br>When the value exceeds the allowed range, it is handled as follows: if the value is **undefined**, the default value is applied; otherwise, the maximum allowed value is used.|
-| min       | number                 | No | Yes | Minimum value of the counter.<br>Default value: **0**<br>Value range: (-∞, +∞)<br>If the value is **undefined**, the default value is used.|
-| max       | number                 | No | Yes | Maximum value of the counter.<br>Default value: **999**<br>Value range: (-∞, +∞)<br>If the value is **undefined**, the default value is used.|
-| textWidth | number                 | No | Yes | Text width of the counter.<br>Default value: auto-adjusted width.<br>Value range: [0, +∞)<br>Unit: vp.<br>When the value exceeds the allowed range, it is handled as follows: if the value is **undefined**, the default value is applied; otherwise, the maximum allowed value is used.|
-| onChange  | (value: number) => void | No | Yes | Callback invoked when the value changes. The current value is returned.<br>**value**: current value.<br>Default value: no callback triggered.<br>If the value is **undefined**, the default value is used.|
+| value     | number                 | No  | Yes  | Initial value of **Counter**.<br>Default value: **0**<br>Value range: [min, max], where **min** and **max** correspond to the minimum and maximum values of **Counter** respectively (the default value of **min** is **0** and **max** is **999**).<br>If the value exceeds the range, **min** is used when the value is less than **min**, and **max** is used when the value is greater than **max**. |
+| min       | number                 | No  | Yes  | Minimum value of **Counter**.<br>Default value: **0**<br>Value range: (-∞, max]<br>If the value exceeds the range (that is, the set value is greater than **max**), **max** is used.<br>If the value is **undefined**, the default value is used. |
+| max       | number                 | No  | Yes  | Maximum value of **Counter**.<br>Default value: **999**<br>Value range: [min, +∞)<br>If the value exceeds the range (that is, the set value is less than **min**), **min** is used.<br>If the value is **undefined**, the default value is used. |
+| textWidth | number                 | No  | Yes  | Width of the number text.<br>Default value: adaptive text width.<br>Value range: [0, +∞)<br>Unit: vp<br>If the value exceeds the range (that is, the set value is less than 0), **0** is used.<br>If the value is **undefined**, the default value is used.|
+| onChange  | (value: number) => void | No  | Yes  | Callback invoked when the value changes, returning the current value. Use case: pass in this callback when you need to perform custom operations upon value changes (such as updating associated UI, logging, saving state, etc.).<br>**value**: current displayed value.<br>Default value: no value is returned when the value changes.<br>If the value is **undefined**, the default value is used. |
+
+> **NOTE**
+>
+> 1. **min** must be less than or equal to **max**. If **min** is greater than **max**, **max** is used.
 
 ## NumberStyleOptions
 
 Defines the list and compact counter attributes and events.
 
-Inherits from [InlineStyleOptions](#inlinestyleoptions).
+Inherits from [InlineStyleOptions](#inlinestyleoptions) and includes all attributes of that API. This section only describes the newly added attributes. For inherited attributes, see the parent API.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -127,15 +135,15 @@ Inherits from [InlineStyleOptions](#inlinestyleoptions).
 
 | Name           | Type                                  | Read-Only| Optional| Description                                                        |
 | --------------- | -------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| label           | [ResourceStr](ts-types.md#resourcestr) | No  | Yes  | Label of the counter.<br>Default value: **' '**<br>If the value is **undefined**, the default value is used.|
-| onFocusIncrease | () => void                             | No  | Yes  | Callback invoked when the increase button of the counter gains focus.<br>Default value: no callback triggered.<br>If the value is **undefined**, the default value is used.|
-| onFocusDecrease | () => void                             | No  | Yes  | Callback invoked when the decrease button of the counter gains focus.<br>Default value: no callback triggered.<br>If the value is **undefined**, the default value is used.|
-| onBlurIncrease  | () => void                             | No  | Yes  | Callback invoked when the increase button of the counter loses focus.<br>Default value: no callback triggered.<br>If the value is **undefined**, the default value is used.|
-| onBlurDecrease  | () => void                             | No  | Yes  | Callback invoked when the decrease button of the counter loses focus.<br>Default value: no callback triggered.<br>If the value is **undefined**, the default value is used.|
+| label           | [ResourceStr](ts-types.md#resourcestr) | No   | Yes  | Label text of the Counter.<br>Usage scenario: pass this parameter when you need to display descriptive text (such as 'Price', 'Quantity', etc.) next to the Counter.<br>Default value: '' <br>If the value is **undefined**, the default value is used. |
+| onFocusIncrease | () => void                             | No   | Yes  | Callback invoked when the increase button of the current Counter component gains focus.<br>Usage scenario: pass this callback when you need to perform custom operations (such as changing styles, logging, etc.) when the increase button gains focus.<br>Default value: the callback is not triggered when the increase button gains focus.<br>If the value is **undefined**, the default value is used. |
+| onFocusDecrease | () => void                             | No   | Yes  | Callback invoked when the decrease button of the current Counter component gains focus.<br>Usage scenario: pass this callback when you need to perform custom operations (such as changing styles, logging, etc.) when the decrease button gains focus.<br>Default value: the callback is not triggered when the decrease button gains focus.<br>If the value is **undefined**, the default value is used. |
+| onBlurIncrease  | () => void                             | No   | Yes  | Callback invoked when the increase button of the current Counter component loses focus.<br>Usage scenario: pass this callback when you need to perform custom operations (such as validating input, saving state, etc.) when the increase button loses focus.<br>Default value: the callback is not triggered when the increase button loses focus.<br>If the value is **undefined**, the default value is used. |
+| onBlurDecrease  | () => void                             | No   | Yes  | Callback invoked when the decrease button of the current Counter component loses focus.<br>Usage scenario: pass this callback when you need to perform custom operations (such as validating input, saving state, etc.) when the decrease button loses focus.<br>Default value: the callback is not triggered when the decrease button loses focus.<br>If the value is **undefined**, the default value is used. |
 
 ## DateStyleOptions
 
-Defines the inline date counter attributes and events.
+Defines the attributes and events of the inline date counter.
 
 Inherits from [CommonOptions](#commonoptions).
 
@@ -145,14 +153,14 @@ Inherits from [CommonOptions](#commonoptions).
 
 | Name        | Type                               | Read-Only| Optional| Description                                                     |
 | ------------ | ----------------------------------- | ---- | --------------------------------------------------------- | --------------------------------------------------------- |
-| year         | number                              | No | Yes | Initial year of the counter.<br>Default value: **1**<br>Value range: [1, 5000]<br>If the value is out of the range, the default value is used.|
-| month        | number                              | No | Yes | Initial month of the counter.<br>Default value: **1**<br>Value range: [1, 12]<br>If the value is out of the range, the default value is used.|
-| day          | number                              | No | Yes | Initial day of the counter.<br>Default value: **1**<br>Value range: [1, 31]<br>If the value is out of the range, the default value is used.|
-| onDateChange | (date: [DateData](#datedata)) => void | No | Yes | Callback invoked when the date changes. The current date is returned.<br>**date**: current date.<br>If the value is **undefined**, the current date value is not displayed.|
+| year         | number                              | No  | Yes  | Initial year of the inline date type.<br>Default value: **1**<br>Value range: [1, 5000]<br>If the value is out of the range, the default value is used.<br>If the value is **undefined**, the default value is used. |
+| month        | number                              | No  | Yes  | Initial month of the inline date type.<br>Default value: **1**<br>Value range: [1, 12]<br>If the value is out of the range, the default value is used.<br>If the value is **undefined**, the default value is used. |
+| day          | number                              | No  | Yes  | Initial day of the inline date type.<br>Default value: **1**<br>Value range: [1, 31]<br>**Note:** The specific value range of days in each month is determined by the actual number of days in that month.<br>If the value is out of the range, the default value is used.<br>If the value is **undefined**, the default value is used. |
+| onDateChange | (date: [DateData](#datedata)) => void | No  | Yes  | Callback invoked when the date changes to return the current date. Use case: Pass in this callback when you need to perform custom operations (such as updating associated UI, logging, saving state, etc.) upon date changes.<br>**date**: currently displayed date value.<br>Default value: no callback is triggered.<br>If the value is **undefined**, the default value is used. |
 
 ## DateData
 
-Defines date attributes, including year, month, and day.
+Defines date attributes and methods, including year, month, and day.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -160,9 +168,9 @@ Defines date attributes, including year, month, and day.
 
 | Name | Type  | Read-Only| Optional| Description                                                        |
 | ----- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| year  | number | No  | No  | Initial year of the counter.<br>Default value: **1**<br>Value range: [1, 5000]<br>If the value is out of the range, the default value is used.|
-| month | number | No  | No  | Initial month of the counter.<br>Default value: **1**<br>Value range: [1, 12]<br>If the value is out of the range, the default value is used.|
-| day   | number | No  | No  | Initial day of the counter.<br>Default value: **1**<br>Value range: [1, 31]<br>If the value is out of the range, the default value is used.|
+| year  | number | No   | No   | Year of the inline date type. Value range: [1, 5000]. |
+| month | number | No   | No   | Month of the inline date type. Value range: [1, 12]. |
+| day   | number | No   | No   | Day of the inline date type. Value range: [1, 31]. The specific value is determined by the actual number of days in the month. |
 
 ### constructor
 
@@ -178,15 +186,15 @@ DateData constructor for initializing date objects.
 
 | Name| Type| Mandatory| Description|
 | ---------- | ------ |  ------ | ---------------------------- |
-| year       | number |  Yes| Initial year of the counter.    |
-| month      | number |  Yes| Initial month of the counter.    |
-| day        | number |  Yes| Initial day of the counter.      |
+| year       | number | Yes | Year of the inline date type. Value range: [1, 5000]. |
+| month      | number | Yes | Month of the inline date type. Value range: [1, 12]. |
+| day        | number | Yes | Day of the inline date type. Value range: [1, 31]. The specific value is determined by the actual number of days in the month. |
 
 ### toString
 
 toString(): string
 
-Returns the current date in YYYY-MM-DD format.
+Returns the current date value in the string format, which is **YYYY-MM-DD**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -275,7 +283,7 @@ import { CounterType, CounterComponent } from '@kit.ArkUI';
 struct NumberStyleExample {
   build() {
     Column() {
-      // Inline numeric counter
+      // Inline number counter
       CounterComponent({
         options: {
           type: CounterType.INLINE,
@@ -307,7 +315,7 @@ import { CounterType, CounterComponent, DateData } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct DataStyleExample {
+struct DateStyleExample {
   build() {
     Column() {
       // Inline date counter
@@ -331,7 +339,7 @@ struct DataStyleExample {
 
 ### Example 5: Implementing a Mirrored Layout
 
-This example implements a mirrored layout for list, compact, inline numeric, and inline date counters by setting **direction**.
+Set the **direction** attribute to implement a mirrored layout for list, compact, inline numeric, and inline date counters.
 
 ```ts
 import { CounterType, CounterComponent, DateData } from '@kit.ArkUI';
@@ -342,7 +350,7 @@ struct CounterPage {
   @State currentDirection: Direction = Direction.Rtl
 
   build() {
-    Column({}) {
+    Column({space: 20}) {
 
       // List counter
       CounterComponent({
@@ -357,9 +365,8 @@ struct CounterPage {
           }
         }
       })
-        .width('80%')
 
-      // Numeric counter
+      // Compact counter
       CounterComponent({
         options: {
           direction: this.currentDirection,
@@ -372,7 +379,7 @@ struct CounterPage {
             step: 10
           }
         }
-      }).margin({ top: 20 })
+      })
 
       // Inline numeric counter
       CounterComponent({
@@ -390,7 +397,8 @@ struct CounterPage {
             }
           }
         }
-      }).margin({ top: 20 })
+      })
+      
       // Inline date counter
       CounterComponent({
         options: {
@@ -403,7 +411,7 @@ struct CounterPage {
             }
           }
         }
-      }).margin({ top: 20 })
+      })
     }
     .width('100%')
     .height('100%')
@@ -413,4 +421,4 @@ struct CounterPage {
 }
 ```
 
-![datestyle](figures/counter_direction.png)
+![direction](figures/counter_direction.png)

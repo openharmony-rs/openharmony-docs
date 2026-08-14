@@ -1,20 +1,24 @@
 # FolderStack
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @fenglinbailu-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=814c7cb9af37d443e12a84b71f28815df508c584 translatedAt=2026-07-30T02:44:48.907Z pushedAt=2026-08-01T06:42:55.905Z -->
 
-**FolderStack** extends the [Stack](ts-container-stack.md) container, adding the <!--RP1-->foldable phone hover<!--RP1End--> capability. Child components specified in the **upperItems** array of [FolderStackOptions](#folderstackoptions18) automatically avoid the screen crease area and reposition to the upper display.
+**FolderStack** extends the [Stack](ts-container-stack.md) container, adding the <!--RP1-->foldable screen hover<!--RP1End--> capability. By setting child component IDs in the **upperItems** array of the [FolderStackOptions](#folderstackoptions18) configuration, the corresponding child components automatically avoid the fold crease area and move to the upper screen. **FolderStack** is designed for the hover status scenario of dual-fold devices, such as video playback and video conferencing apps, where the video image automatically moves to the upper screen while the control panel remains on the lower screen. This component addresses the adaptation challenges of dual-fold devices, delivering benefits such as improved user experience and simplified layout adaptation for developers.
 
->  **NOTE**
+> **NOTE**
 >
->  This component is supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
 >
->  The hover capability is designed for and only works on <!--RP2-->dual-fold devices<!--RP2End-->.
+> - The APIs of this module can be used only in the stage model.
 >
->  When the component's parent is an [if/else conditional render](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) node, the foldable hover feature is disabled.
+> - The hover capability of this component is designed for <!--RP2-->dual-fold<!--RP2End--> devices and takes effect only on dual-fold devices. You can use [FoldStatus](ts-appendix-enums.md#foldstatus11) to determine the fold status of the device.
+>
+> - When the parent component of this component is an [if/else: conditional rendering](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) node, the foldable screen hover capability becomes invalid.
 
 ## Child Components
 
@@ -24,7 +28,11 @@ Multiple child components are supported.
 
 FolderStack(options?: FolderStackOptions)
 
+A foldable screen hover layout container that extends [Stack](ts-container-stack.md). It implements the foldable screen hover capability through the **upperItems** configuration. When the device is in hover status, the specified child components automatically move to the upper screen, while other components are stacked on the lower screen.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,9 +42,11 @@ FolderStack(options?: FolderStackOptions)
 
 | Name      | Type                                   | Mandatory| Description                                                                |
 | ------------ | ------------------------------------------- | ---- |----------------------------------------------------------------------|
-| options |  [FolderStackOptions](#folderstackoptions18) | No  | Configuration of the **FolderStack** component.|
+| options | [FolderStackOptions](#folderstackoptions18) | No | Configuration options of **FolderStack**, used to set the child components that need to be moved to the upper half screen in hover status. When the foldable screen hover capability is needed, specify child component IDs through the **upperItems** array. If not passed, **FolderStack** is used as a regular **Stack** component without the hover capability enabled, and **upperItems** defaults to an empty array. |
 
 ## FolderStackOptions<sup>18+</sup>
+
+Configuration object for the **FolderStack** hover status, which describes the information about child components that need to be moved to the upper screen in hover status.
 
 > **NOTE**
 >
@@ -50,13 +60,13 @@ FolderStack(options?: FolderStackOptions)
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| upperItems<sup>11+</sup> |    Array<string\>  | No| Yes | Array of IDs of child components that will be moved to the upper half screen in the hover state.<br>On hover, child components with IDs in this array automatically shift away from the crease area and move to the upper half screen, while other components are stacked in the lower half screen.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| upperItems<sup>11+</sup> | Array<string\> | No | Yes | Array of IDs of child components that will be moved to the upper half-screen in hover status.<br>Default value: **[]**<br>When hover is triggered, the child components in the **upperItems** array automatically avoid the foldable screen crease area and move to the upper half-screen, while other components are stacked in the lower half-screen area.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
 
 ## Attributes
 
->  **NOTE**
+> **NOTE**
 >
->  Setting the **offset** and **margin** attributes may cause the upper and lower half screens to block the crease area. Therefore, avoid setting these attributes with this component.
+> Setting the **offset** and **margin** attributes may cause the upper and lower screens to obscure the fold crease area. This is not recommended.
 
 In addition to the [universal attributes](ts-component-general-attributes.md), the following attributes are supported.
 
@@ -64,7 +74,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 alignContent(value: Alignment)
 
-Sets the alignment of child components in the container. When both this attribute and the [align](ts-universal-attributes-location.md#align) attribute are set, whichever is set last takes effect.
+Sets the alignment of child components in the container. After this attribute is set, child components are arranged in the container according to the specified alignment. When both this attribute and [align](ts-universal-attributes-location.md#align) are set, whichever is set last takes effect.
 
 >**NOTE**
 >
@@ -80,13 +90,13 @@ Sets the alignment of child components in the container. When both this attribut
 
 | Name| Type                                       | Mandatory| Description                                                   |
 | ------ | ------------------------------------------- | ---- | ------------------------------------------------------- |
-| value  | [Alignment](ts-appendix-enums.md#alignment) | Yes  | Alignment of child components in the container.<br>Default value: **Alignment.Center**<br>Invalid values are treated as the default value.|
+| value  | [Alignment](ts-appendix-enums.md#alignment) | Yes   | Alignment of the child component in the container. The value can be **TopStart**, **Top**, **TopEnd**, **Start**, **Center**, **End**, **BottomStart**, **Bottom**, or **BottomEnd**.<br>Default value: **Alignment.Center**<br>If an illegal value is set, the default value is used. |
 
 ### enableAnimation
 
 enableAnimation(value: boolean)
 
-Sets whether to enable the default animation.
+Sets whether to use the default animation effect. After this attribute is set, the default hover animation effect of **FolderStack** is enabled or disabled.
 
 >**NOTE**
 >
@@ -102,13 +112,13 @@ Sets whether to enable the default animation.
 
 | Name| Type                                       | Mandatory| Description                               |
 | ------ | ------------------------------------------- | ---- | ----------------------------------- |
-| value  | boolean | Yes  | Whether to enable the default animation.<br>Default value: **true**. **true**: Enable the default animation. **false**: Disable the default animation.<br>Invalid values are treated as the default value.|
+| value | boolean | Yes | Whether to use the default animation effect.<br>Default value: **true**, which means the default animation effect is used; **false** means the default animation effect is not used.<br>If an illegal value is set, the default value is used. |
 
 ### autoHalfFold
 
 autoHalfFold(value: boolean)
 
-Sets whether to enable auto rotation. This attribute is effective only when auto rotation is disabled in device system settings.
+Sets whether to enable auto-rotation for the **FolderStack** component in half-fold status. When the system auto-rotate switch is turned off, this attribute controls whether **FolderStack** performs auto-rotation in half-fold status.<br>Typical usage: When the user has turned off the auto-rotate function in system settings, the app layout orientation can still be automatically adjusted based on the fold status when the foldable device is in half-fold status.
 
 >**NOTE**
 >
@@ -124,7 +134,7 @@ Sets whether to enable auto rotation. This attribute is effective only when auto
 
 | Name| Type   | Mandatory| Description                               |
 | ------ | ------- | ---- | ----------------------------------- |
-| value  | boolean | Yes  | Whether to enable auto rotation.<br>Default value: **true**. **true**: Enable auto rotation when the **FolderStack** component is in [half-folded state](ts-appendix-enums.md#foldstatus11). **false**: Disable auto rotation. This setting applies uniformly across all device types.<br>Invalid values are treated as the default value.|
+| value | boolean | Yes | Whether to enable auto rotation.<br>Default value: **true**. When set to **true**, **FolderStack** automatically rotates during layout in the half-fold status (see [FoldStatus](ts-appendix-enums.md#foldstatus11)). When set to **false**, FolderStack does not automatically rotate in the half-fold status. This attribute takes effect only when system auto rotation is disabled. When system auto rotation is enabled, this attribute does not take effect, and **FolderStack** follows the system rotation behavior. This parameter takes effect only on dual-fold devices. When the parent component of **FolderStack** is an if/else conditional rendering node, this parameter becomes invalid.<br>Illegal value: processed as the default value. |
 
 ## Events
 
@@ -134,7 +144,7 @@ In addition to the [universal events](ts-component-general-events.md), the follo
 
 onFolderStateChange(callback: OnFoldStatusChangeCallback)
 
-Triggered when the fold state of the device changes. This API takes effect only in landscape mode.
+Triggered when the fold status of the current device changes <!--RP3-->(This callback takes effect only in landscape mode.)<!--RP3End-->.<br>Typical usage: Adjust the app layout based on the fold status, for example, displaying a two-column layout in the expanded state and adjusting the content distribution between the upper and lower screens in the half-fold status.
 
 >**NOTE**
 >
@@ -156,7 +166,7 @@ Triggered when the fold state of the device changes. This API takes effect only 
 
 onHoverStatusChange(handler: OnHoverStatusChangeCallback)
 
-Triggered when the hover state of the device changes.
+Triggered when the hover status of the current device changes.<br>Typical usage: Adjust the app layout and interaction logic based on the hover status, for example, optimizing the content display on the upper and lower screens in hover mode.
 
 >**NOTE**
 >
@@ -196,7 +206,7 @@ Defines the current allback invoked when the hover state of the device changes.
 
 type OnFoldStatusChangeCallback = (event: OnFoldStatusChangeInfo) => void
 
-Current fold state of the device.
+Triggered when the fold status changes<!--RP4-->, which takes effect only in landscape mode<!--RP4End-->.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -208,12 +218,11 @@ Current fold state of the device.
 
 | Name    | Type                                           | Mandatory| Description                |
 | ---------- | ----------------------------------------------- | ---- | -------------------- |
-| event | [OnFoldStatusChangeInfo](#onfoldstatuschangeinfo18) | Yes  | Current fold state of the device.|
-
+| event | [OnFoldStatusChangeInfo](#onfoldstatuschangeinfo18) | Yes | Information about the fold status change. This takes effect only in landscape mode. |
 
 ## OnFoldStatusChangeInfo<sup>18+</sup>
 
-Called when the folding state changes. This API takes effect only in landscape mode.
+Defines the information about the fold status change, which takes effect only in landscape mode.
 
 > **NOTE**
 >
@@ -227,7 +236,7 @@ Called when the folding state changes. This API takes effect only in landscape m
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| foldStatus<sup>11+</sup> | [FoldStatus](ts-appendix-enums.md#foldstatus11) | No| No  | Current fold state of the device.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| foldStatus<sup>11+</sup> | [FoldStatus](ts-appendix-enums.md#foldstatus11) | No | No | Fold status of the current device.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
 
 ## HoverEventParam<sup>12+</sup>
 
@@ -241,12 +250,12 @@ Called when the folding state changes. This API takes effect only in landscape m
 | -------- | -------- | -------- | -------- | -------- |
 | foldStatus       | [FoldStatus](ts-appendix-enums.md#foldstatus11)             | No| No  | Current fold state of the device.|
 | isHoverMode      | boolean                                                     | No| No  | Whether hover mode is enabled. **true**: Hover mode is enabled. **false**: Hover mode is disabled.|
-| appRotation      | [AppRotation](ts-appendix-enums.md#approtation12)           | No| No  | Current orientation.   |
+| appRotation      | [AppRotation](ts-appendix-enums.md#approtation12)           | No  | No   | Rotation angle of the current app orientation.    |
 | windowStatusType | [WindowStatusType](#windowstatustype12) | No| No  | Window mode.   |
 
 ## WindowStatusType<sup>12+</sup>
 
-type WindowStatusType = WindowStatusType
+type WindowStatusType = import('../api/@ohos.window').default.WindowStatusType
 
 Enumerates the window modes.
 
@@ -258,7 +267,7 @@ Enumerates the window modes.
 
 | Type       | Description                |
 | ---------- | ---------------------|
-| [WindowStatusType](../arkts-apis-window-e.md#windowstatustype11)  | Window mode.|
+| import('../api/@ohos.window').default.[WindowStatusType](../arkts-apis-window-e.md#windowstatustype11)  | Window mode enum. |
 
 ## Example
 
@@ -273,30 +282,30 @@ struct Index {
   build() {
     Column() {
       // Set upperItems to IDs of the child components to be moved to the upper half screen in the hover state. Other components are stacked in the lower half screen.
-      FolderStack({ upperItems: ["upperitemsId"] }) {
+      FolderStack({ upperItems: ['upperitemsId'] }) {
         // This column is automatically moved up to the upper half screen.
         Column() {
-          Text("video zone").height("100%").width("100%").textAlign(TextAlign.Center).fontSize(25)
-        }.backgroundColor('rgb(0, 74, 175)').width("100%").height("100%").id("upperitemsId")
+          Text('video zone').height('100%').width('100%').textAlign(TextAlign.Center).fontSize(25)
+        }.backgroundColor('rgb(0, 74, 175)').width('100%').height('100%').id('upperitemsId')
 
         // The following two columns are stacked in the lower half screen.
         Column() {
-          Text("video title")
-            .width("100%")
+          Text('video title')
+            .width('100%')
             .height(50)
             .textAlign(TextAlign.Center)
             .backgroundColor('rgb(213, 213, 213)')
             .fontSize(25)
-        }.width("100%").height("100%").justifyContent(FlexAlign.Start)
+        }.width('100%').height('100%').justifyContent(FlexAlign.Start)
 
         Column() {
-          Text("video bar ")
-            .width("100%")
+          Text('video bar ')
+            .width('100%')
             .height(50)
             .textAlign(TextAlign.Center)
             .backgroundColor('rgb(213, 213, 213)')
             .fontSize(25)
-        }.width("100%").height("100%").justifyContent(FlexAlign.End)
+        }.width('100%').height('100%').justifyContent(FlexAlign.End)
       }
       .backgroundColor('rgb(39, 135, 217)')
       // Set whether to enable animation.
@@ -306,11 +315,11 @@ struct Index {
       // Called when the folding status changes.
       .onFolderStateChange((msg) => {
         if (msg.foldStatus === FoldStatus.FOLD_STATUS_EXPANDED) {
-          console.info("The device is currently in the expanded state")
+          console.info('The device is currently in the expanded state')
         } else if (msg.foldStatus === FoldStatus.FOLD_STATUS_HALF_FOLDED) {
-          console.info("The device is currently in the half folded state")
+          console.info('The device is currently in the half folded state')
         } else {
-          // .............
+          // ...
         }
       })
       // The hoverStatusChange callback is invoked when the hover status changes.
@@ -322,13 +331,12 @@ struct Index {
       })
       // If the folderStack component does not occupy the full screen, it is used as a common stack.
       .alignContent(Alignment.Bottom)
-      .height("100%")
-      .width("100%")
-      .backgroundColor('rgb(39, 135, 217)')
+      .height('100%')
+      .width('100%')
 
     }
-    .height("100%")
-    .width("100%")
+    .height('100%')
+    .width('100%')
     .borderWidth(1)
     .borderColor('rgb(213, 213, 213)')
     .backgroundColor('rgb(0, 74, 175)')
@@ -336,10 +344,11 @@ struct Index {
   }
 }
 ```
-**Figure 1** Expanded state in landscape mode
-<br> ![FolderStack01.png](figures/FolderStack01.png)
-<br> **Figure 2** Half-folded state in landscape mode
-<br> ![FolderStack02.png](figures/FolderStack02.png)
+
+**Figure 1** Expanded state in landscape mode<br>
+![FolderStack01.png](figures/FolderStack01.png)<br>
+**Figure 2** Half-fold state in landscape mode<br>
+![FolderStack02.png](figures/FolderStack02.png)
 
 ### Example 2: Dynamically Setting Attributes and Methods of the FolderStack Component Using attributeModifier
 
@@ -352,13 +361,13 @@ class MyFolderStackModifier implements AttributeModifier<FolderStackAttribute> {
     // Called when the folding status changes.
     instance.onFolderStateChange((msg) => {
       if (msg.foldStatus === FoldStatus.FOLD_STATUS_EXPANDED) {
-        console.info("The device is currently in the expanded state")
+        console.info('The device is currently in the expanded state')
       } else if (msg.foldStatus === FoldStatus.FOLD_STATUS_HALF_FOLDED) {
-        console.info("The device is currently in the half folded state")
+        console.info('The device is currently in the half folded state')
       } else if (msg.foldStatus === FoldStatus.FOLD_STATUS_FOLDED) {
-        console.info("The device is currently in the folded state")
+        console.info('The device is currently in the folded state')
       } else {
-        // .............
+        // ...
       }
     })
     // The hoverStatusChange callback is invoked when the hover status changes.
@@ -379,30 +388,30 @@ struct attributeDemo {
   build() {
     Column() {
       // Set upperItems to IDs of the child components to be moved to the upper half screen in the hover state. Other components are stacked in the lower half screen.
-      FolderStack({ upperItems: ["upperitemsId"] }) {
+      FolderStack({ upperItems: ['upperitemsId'] }) {
         // This column is automatically moved up to the upper half screen.
         Column() {
-          Text("video zone").height("100%").width("100%").textAlign(TextAlign.Center).fontSize(25)
-        }.backgroundColor('rgb(0, 74, 175)').width("100%").height("100%").id("upperitemsId")
+          Text('video zone').height('100%').width('100%').textAlign(TextAlign.Center).fontSize(25)
+        }.backgroundColor('rgb(0, 74, 175)').width('100%').height('100%').id('upperitemsId')
 
         // The following two columns are stacked in the lower half screen.
         Column() {
-          Text("video title")
-            .width("100%")
+          Text('video title')
+            .width('100%')
             .height(50)
             .textAlign(TextAlign.Center)
             .backgroundColor('rgb(213, 213, 213)')
             .fontSize(25)
-        }.width("100%").height("100%").justifyContent(FlexAlign.Start)
+        }.width('100%').height('100%').justifyContent(FlexAlign.Start)
 
         Column() {
-          Text("video bar ")
-            .width("100%")
+          Text('video bar ')
+            .width('100%')
             .height(50)
             .textAlign(TextAlign.Center)
             .backgroundColor('rgb(213, 213, 213)')
             .fontSize(25)
-        }.width("100%").height("100%").justifyContent(FlexAlign.End)
+        }.width('100%').height('100%').justifyContent(FlexAlign.End)
       }
       .backgroundColor('rgb(39, 135, 217)')
       // Set whether to enable animation.
@@ -412,12 +421,11 @@ struct attributeDemo {
       .attributeModifier(this.modifier)
       // If the <folderStack> component does not occupy the full screen, it is used as a common stack.
       .alignContent(Alignment.Bottom)
-      .height("100%")
-      .width("100%")
-      .backgroundColor('rgb(39, 135, 217)')
+      .height('100%')
+      .width('100%')
     }
-    .height("100%")
-    .width("100%")
+    .height('100%')
+    .width('100%')
     .borderWidth(1)
     .borderColor('rgb(213, 213, 213)')
     .backgroundColor('rgb(0, 74, 175)')
@@ -426,19 +434,19 @@ struct attributeDemo {
 }
 ```
 
-**Figure 1** Expanded state in landscape mode
-<br> Expected log:
-<br> The device is currently in the expanded state
-<br> this foldStatus:1
-<br> this isHoverMode:0
-<br> this appRotation:3
-<br> this windowStatusType:1
-<br> ![FolderStack03](figures/FolderStack03.png)
-<br> **Figure 2** Half-folded state in landscape mode
-<br> Expected log:
-<br> The device is currently in the half folded state
-<br> this foldStatus:3
-<br> this isHoverMode:1
-<br> this appRotation:3
-<br> this windowStatusType:1
-<br> ![FolderStack04](figures/FolderStack04.png)
+**Figure 1** Expanded state in landscape mode<br>
+Expected log:<br>
+The device is currently in the expanded state<br>
+this foldStatus:1<br>
+this isHoverMode:0<br>
+this appRotation:3<br>
+this windowStatusType:1<br>
+![FolderStack03](figures/FolderStack03.png)<br>
+**Figure 2** Half-fold state in landscape mode<br>
+Expected log:<br>
+The device is currently in the half folded state<br>
+this foldStatus:3<br>
+this isHoverMode:1<br>
+this appRotation:3<br>
+this windowStatusType:1<br>
+![FolderStack04](figures/FolderStack04.png)

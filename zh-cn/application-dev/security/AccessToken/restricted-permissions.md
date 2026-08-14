@@ -210,7 +210,12 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 > **说明：**
 >
-> 在API 12及以上版本，该权限等级变更为normal，应用可直接[声明使用](declare-permissions.md)；若需兼容API12之前版本，仍需按[受限权限申请方式](declare-permissions-in-acl.md)使用该权限。
+> 在API版本12，该权限等级变更为normal。
+> - 如果应用仅在本地调试：
+>   - 适配API版本12之前的版本，仍需按[受限权限申请方式](declare-permissions-in-acl.md)使用该权限。
+>   - 仅适配API版本12及之后的版本，可直接[声明使用](declare-permissions.md)。
+> - 如果应用需要上架应用市场：
+>   仍需按[受限权限申请方式](declare-permissions-in-acl.md)使用该权限。
 
 <!--RP18--><!--RP18End-->
 
@@ -356,7 +361,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 允许系统JS引擎申请带MAP_FORT标识的匿名可执行内存。
 
-应用申请此权限后，系统引擎可申请带MAP_FORT的匿名可执行内存，做即时编译，提高与形式执行效率。
+应用申请此权限后，系统引擎可申请带MAP_FORT的匿名可执行内存，做即时编译，提高运行时执行效率。
 
 <!--RP13--><!--RP13End-->
 
@@ -628,6 +633,27 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **起始版本**：18
 
+## ohos.permission.ACCESS_DDK_USB_SERIAL
+
+允许扩展外设驱动访问USBSerial DDK接口开发USB Serial扩展外设驱动。
+
+USB串口DDK API可用于开发以下类型的外设扩展驱动：
+
+外设以USB总线接入主机，且满足：
+
+1. 外设InterfaceClass为通信设备控制类 (0x02)、InterfaceSubClass遵循ACMSubClass模型(0x02)。
+2. 外设支持通过USB接口模拟传统的串行通信。
+
+<!--RP101--><!--RP101End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备：** PC/2in1 | Tablet
+
+**起始版本**：18
+
 ## ohos.permission.kernel.SUPPORT_PLUGIN
 
 允许主体应用安装插件。
@@ -873,6 +899,116 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **起始版本**：9
 
 **变更信息**：在API 9-19，该权限面向系统应用开放；从API 20开始，面向普通应用开放。
+
+## ohos.permission.vehicle.CAR_CONTROL
+
+允许应用通过车机查询、设置、订阅对手件状态信息。
+
+<!--RP102--><!--RP102End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.STEERINGWHEEL_INFO
+
+允许应用订阅、获取方向盘对手件状态信息。
+
+申请此权限前，需要先申请ohos.permission.vehicle.CAR_CONTROL。
+
+<!--RP102--><!--RP102End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.INTERIOR_LIGHT_INFO
+
+允许应用订阅、获取车内灯光对手件状态信息。
+
+申请此权限前，需要先申请ohos.permission.vehicle.CAR_CONTROL。
+
+<!--RP102--><!--RP102End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CONTROL_INTERIOR_LIGHT
+
+允许应用设置车内灯光对手件状态。
+
+申请此权限前，需要先申请ohos.permission.vehicle.CAR_CONTROL。
+
+<!--RP102--><!--RP102End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.DRIVE_INFORMATION_INFO
+
+允许应用订阅、获取行车信息模块对手件状态信息。
+
+申请此权限前，需要先申请ohos.permission.vehicle.CAR_CONTROL。
+
+<!--RP102--><!--RP102End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.ACCELERATOR_PEDAL_INFO
+
+允许应用订阅、获取加速踏板对手件状态信息。
+
+申请此权限前，需要先申请ohos.permission.vehicle.CAR_CONTROL。
+
+<!--RP102--><!--RP102End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.BRAKE_PEDAL_INFO
+
+允许应用订阅、获取制动踏板对手件状态信息。
+
+申请此权限前，需要先申请ohos.permission.vehicle.CAR_CONTROL。
+
+<!--RP102--><!--RP102End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
 
 ## ohos.permission.SET_SYSTEMSHARE_APPLAUNCHTRUSTLIST
 
@@ -1475,3 +1611,17 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **支持设备**：Phone | Wearable | TV | PC/2in1 | Tablet | Car
 
 **起始版本**：26.0.0
+
+## ohos.permission.DEFAULT_WEB_BROWSER
+
+允许应用被设置为用户的默认浏览器。
+
+<!--RP103--><!--RP103End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | Wearable | TV | PC/2in1 | Tablet | Car
+
+**起始版本**：26.1.0

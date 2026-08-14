@@ -1,13 +1,15 @@
 # ToolBarV2
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @fengluochenai-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=4c495f520711bb7a7c0f878dd925391606600e97 translatedAt=2026-07-29T03:10:26.323Z pushedAt=2026-08-04T02:47:36.665Z -->
 
-The **Toolbar** component is designed to present a set of action options related to the current screen, displayed at the bottom of the screen. It can display up to five child components. If there are six or more child components, the first four are shown directly, and the additional ones are grouped under a **More** item on the rightmost side of the toolbar.<br>
-This component is implemented based on [state management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2). Compared with [state management V1](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1), V2 offers a higher level of observation and management over data objects beyond the component level. You can now more easily manage toolbar data and states with greater flexibility, leading to faster UI updates.<br>
+The toolbar is used to display action options for the current screen content. It is displayed at the bottom of the screen and is suitable for scenarios where quick action entries need to be provided to users. A maximum of five entries can be displayed at the bottom. Any excess entries are collapsed into a "More" item, which is displayed on the far right. It is suitable for scenarios where quick operations on the current page content are needed, helping users quickly access common functions and improving operation efficiency.<br />
+This component is implemented based on [state management (V2)](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2). Compared with [state management (V1)](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1), state management (V2) enhances the deep observation and management capabilities of data objects, no longer limited to the component level. With state management (V2), developers can more flexibly control the data and state of the toolbar through this component, achieving more efficient UI refresh.<br>
 
 > **NOTE**
 >
@@ -15,9 +17,9 @@ This component is implemented based on [state management V2](../../../ui/state-m
 >
 > - This component can be used only in the stage model.
 >
-> - If the **ToolBarV2** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **ToolBarV2** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **ToolBarV2** component.
+> - If [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) are set for **ToolBarV2**, the compilation toolchain will generate an additional node __Common__ and attach the universal attributes or universal events to __Common__, rather than directly applying them to **ToolBarV2** itself. This may cause the universal attributes or universal events set by the developer to not take effect or behave unexpectedly. Therefore, setting universal attributes and universal events for **ToolBarV2** is not recommended.
 >
-> - The toolbar background color does not automatically switch when the system changes between light and dark modes.
+> - When the system switches between light and dark modes, the toolbar background color does not automatically follow the switch.
 
 ## Modules to Import
 
@@ -28,7 +30,6 @@ import { ToolBarV2 } from '@kit.ArkUI';
 ## Child Components
 
 Not supported
-
 
 ## ToolBarV2
 
@@ -46,10 +47,10 @@ Creates a toolbar.
 
 | Name                  | Type                                                              | Mandatory| Decorator              | Description                                                          |
 | -------------------- | ---------------------------------------------------------------- | -- |---------------------|--------------------------------------------------------------|
-| toolBarList          | [ToolBarV2Item](#toolbarv2item)\[]                               | Yes | @Param<br>@Require | Toolbar list.                                                      |
-| activatedIndex    | number                                                           | No | @Param              | Index of the active item.<br></div>Default value: **-1**, indicating that no toolbar item is activated<br>Value range: [-1, 4]     |
-| dividerModifier | [DividerModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier) | No | @Param              | Modifier for the toolbar header divider, which can be used to customize the divider's height, color, and other attributes.<br>This parameter does not take effect by default.                        |
-| toolBarModifier | [ToolBarV2Modifier](#toolbarv2modifier)                          | No | @Param              | Modifier for the toolbar, which can be used to set the toolbar's height, background color, padding (which only takes effect when there are fewer than five toolbar items), and whether to display the pressed state.<br>This parameter does not take effect by default.|
+| toolBarList          | [ToolBarV2Item](#toolbarv2item)\[]                               | Yes  | @Param<br/>@Require | List of toolbar items. A maximum of 5 items can be displayed. Excess items are collapsed into a "More" item.                                                       |
+| activatedIndex    | number                                                           | No  | @Param              | Index of the activated item.<br />Default value: **-1**, which means no toolbar item is activated.<br />Value range: [-1, 4].      |
+| dividerModifier | [DividerModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier) | No  | @Param              | Divider attribute for the toolbar header. It can be used to set the divider height, color, and more. After configuration, a divider with the specified style is displayed at the top of the toolbar.<br />This attribute does not take effect by default.                         |
+| toolBarModifier | [ToolBarV2Modifier](#toolbarv2modifier)                          | No  | @Param              | Toolbar attribute. It can be used to set the toolbar height, background color, padding (takes effect only when the number of toolbar items is less than 5), and whether to display the pressed state. After configuration, the toolbar appearance is customized according to the specified style.<br />This attribute does not take effect by default. |
 
 ## ToolBarV2Item
 
@@ -70,10 +71,10 @@ Defines an item in the toolbar.
 | content                      | [ToolBarV2ItemText](#toolbarv2itemtext)         | No | No| Text of the toolbar item.<br>Decorator: @Trace                                                                                                                                                                                                          |
 | action                       | [ToolBarV2ItemAction](#toolbarv2itemaction)     | No | Yes | Click event of the toolbar item.<br></div>By default, there is no click event.<br>Decorator: @Trace                                                                                                                                                                                     |
 | icon                         | [ToolBarV2ItemIconType](#toolbarv2itemicontype) | No | Yes| Icon of the toolbar item.<br></div>By default, there is no icon.<br>Decorator: @Trace                                                                                                                                                                                       |
-| state                        | [ToolBarV2ItemState](#toolbarv2itemstate)       | No | Yes| State of the toolbar item.<br>Default value: **ToolBarV2ItemState.ENABLE**.<br>Decorator: @Trace                                                                                                                                                                          |
-| accessibilityText     | [ResourceStr](ts-types.md#resourcestr)          | No | Yes| Accessibility text, that is, accessible label name, of the toolbar item. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.<br></div>Default value: value of **content**<br>Decorator: @Trace                                          |
+| state | [ToolBarV2ItemState](#toolbarv2itemstate) | No | Yes | State of the toolbar item.<br />Default value: **ToolBarV2ItemState.ENABLE**.<br />**Decorator:** @Trace |
+| accessibilityText     | [ResourceStr](ts-types.md#resourcestr)          | No | Yes| Accessibility text of the toolbar item. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.<br></div>Default value: value of **content**<br>Decorator: @Trace                                          |
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)          | No | Yes|  Accessible description of the toolbar item. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.<br>Default value: **"Double-tap to activate"**<br>Decorator: @Trace                       |
-| accessibilityLevel  | string                                          | No | Yes| Accessibility level of the toolbar item. It determines whether the component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: This option is treated as "yes" by the system for this component.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**<br>Decorator: @Trace|
+| accessibilityLevel | string | No | Yes | Accessibility level of the toolbar item. Controls whether the current item can be recognized by the accessibility service.<br ></div>Supported values:<br />**"auto"**: The current value is converted to **"yes"**.<br />**"yes"**: The current component can be recognized by the accessibility service.<br />**"no"**: The current component cannot be recognized by the accessibility service.<br />**"no-hide-descendants"**: The current component and all its child components cannot be recognized by the accessibility service.<br />Default value: **"auto"**<br />**Decorator:** @Trace |
 
 ### constructor
 
@@ -111,7 +112,7 @@ Defines the options for initializing a **ToolBarV2Item** object.
 | state                    | [ToolBarV2ItemState](#toolbarv2itemstate)       | No | Yes | State of the toolbar item.<br>Default value: **ToolBarV2ItemState.ENABLE**.<br>                                                                                                                                                                 |
 | accessibilityText        | [ResourceStr](ts-types.md#resourcestr)          | No | Yes | Accessibility text, that is, accessible label name, of the toolbar item. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.<br>Default value: value of **content**<br>                                         |
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)          | No | Yes | Accessible description of the toolbar item. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.<br>Default value: **"Double-tap to activate"**                       |
-| accessibilityLevel       | string                                          | No | Yes | Accessibility level of the toolbar item. It determines whether the component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: This option is treated as "yes" by the system for this component.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**<br>|
+| accessibilityLevel       | string                                          | No  | Yes  | Accessibility level of the toolbar item, which controls whether the current item can be recognized by the accessibility service.<br ></div>Supported values:<br />**"auto"**: The current value is converted to **"yes"**.<br />**"yes"**: The current component can be recognized by the accessibility service.<br />**"no"**: The current component cannot be recognized by the accessibility service.<br />**"no-hide-descendants"**: The current component and all its child components cannot be recognized by the accessibility service.<br />Default value: **"auto"**<br /> |
 
 ## ToolBarV2ItemAction
 
@@ -129,7 +130,7 @@ Defines the callback for the click event of a toolbar item.
 
 | Name  | Type    | Mandatory| Description|
 |:------|:-------|:---|----|
-| index | number | Yes |Index of the toolbar item that triggers the click event.<br>     |
+| index | number | Yes | Index of the toolbar item that triggers the click event. |
 
 ## ToolBarV2ItemText
 
@@ -258,7 +259,7 @@ Defines the union type for the icon content of a toolbar item.
 
 ## ToolBarV2Modifier
 
-Provides APIs for setting the height (**height**), background color (**backgroundColor**), left and right padding (**padding**, which only takes effect when there are fewer than five items) of the toolbar, and whether to display the pressed state effect (**stateEffect**).
+Provides methods for setting the toolbar height (**height**), background color (**backgroundColor**), left and right padding (**padding**, which takes effect only when the number of items is fewer than five), and whether to display the pressed state effect (**stateEffect**).
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -270,8 +271,7 @@ Provides APIs for setting the height (**height**), background color (**backgroun
 
 backgroundColor(backgroundColor: ColorMetrics): ToolBarV2Modifier
 
-Sets the background color of the toolbar. By overriding this API, you can implement custom drawing for the background color of the toolbar.
-
+Sets the background color of the toolbar. This method can be called for custom drawing.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -289,13 +289,13 @@ Sets the background color of the toolbar. By overriding this API, you can implem
 
 | Type                                     | Description                                     |
 |-----------------------------------------|-----------------------------------------|
-| [ToolBarV2Modifier](#toolbarv2modifier) | **ToolBarV2Modifier** object after the background color is set.|
+| [ToolBarV2Modifier](#toolbarv2modifier) | **ToolBarV2Modifier** object after setting the background color, which can be used for chained calls to further customize the toolbar style. |
 
 ### padding
 
 padding(padding: LengthMetrics): ToolBarV2Modifier
 
-Sets the left and right padding of the toolbar. By overriding this API, you can implement custom drawing for the left and right padding of the toolbar.
+Sets the left and right padding of the toolbar. This method can be called for custom drawing.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -307,18 +307,19 @@ Sets the left and right padding of the toolbar. By overriding this API, you can 
 
 | Name    | Type                                                           | Mandatory| Description                                                                 |
 | ------- |---------------------------------------------------------------| -- | ------------------------------------------------------------------- |
-| padding | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | Yes | Left and right padding of the toolbar, which is effective only when there are fewer than five items.<br></div>By default, the left and right padding is set to 24 vp when there are fewer than five items, and 0 vp when there are five or more items.|
+| padding | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | Yes | Left and right padding of the toolbar. This takes effect only when the number of items is fewer than 5; otherwise, the setting is invalid.<br ></div>When the number of items is fewer than 5, the default left and right padding of the toolbar is 24 vp. When the number of items reaches or exceeds 5, the default left and right padding of the toolbar is 0 vp. |
 
 **Return value**
 
-| Type                                     | Description                             |
+| Type                                      | Description                              |
 |-----------------------------------------|---------------------------------|
-| [ToolBarV2Modifier](#toolbarv2modifier) | **ToolBarV2Modifier** object after the padding is set.|
+| [ToolBarV2Modifier](#toolbarv2modifier) | **ToolBarV2Modifier** object with the padding set, which can be used for chained calls to further customize the toolbar style. |
+
 ### height
 
 height(height: LengthMetrics): ToolBarV2Modifier
 
-Sets the height of the toolbar. By overriding this API, you can implement custom drawing for the height of the toolbar, which does not include the height of the divider.
+Sets the height of the toolbar. This method can be called for custom drawing. This height does not include the divider height.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -336,7 +337,7 @@ Sets the height of the toolbar. By overriding this API, you can implement custom
 
 | Type                                     | Description                            |
 |-----------------------------------------|--------------------------------|
-| [ToolBarV2Modifier](#toolbarv2modifier) | **ToolBarV2Modifier** object after the height is set.|
+| [ToolBarV2Modifier](#toolbarv2modifier) | **ToolBarV2Modifier** object after setting the height, which can be used for chained calls to other methods to further customize the toolbar style. |
 
 ### stateEffect
 
@@ -360,7 +361,7 @@ Sets whether to display the pressed state effect.
 
 | Type                                     | Description                                 |
 |-----------------------------------------|-------------------------------------|
-| [ToolBarV2Modifier](#toolbarv2modifier) | **ToolBarV2Modifier** object after the pressed state effect is set.|
+| [ToolBarV2Modifier](#toolbarv2modifier) | **ToolBarV2Modifier** object with the pressed state effect set, which can be used for chained calls to other methods to further customize the toolbar style. |
 
 ## ToolBarV2ItemState
 
@@ -417,7 +418,7 @@ A constructor used to create a **ToolBarV2SymbolGlyph** object.
 
 ## ToolBarV2SymbolGlyphOptions
 
-Defines the options for initializing a **ToolBarV2SymbolGlyph** object.
+Defines the attributes of the symbol icon.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -551,7 +552,7 @@ struct Index {
 
 ### Example 2: Customizing the Toolbar Style
 
-This example demonstrates how to customize the toolbar's height, background color, and other styles using **ToolBarV2Modifier**.
+This example demonstrates how to customize the toolbar's height, background color, and pressed state effect using **ToolBarV2Modifier**.
 
 ```ts
 import {

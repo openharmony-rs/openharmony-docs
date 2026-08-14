@@ -509,12 +509,10 @@ export struct SupportedAvoidAxisPopupExample {
   @State hoverModeStart: string =
     this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('hoverMode_start') as string;
 
-  @State message: string = 'Hello World';
   @State index: number = 0;
   @State arrayStr: Array<string> = [this.upScreen, this.middleAxle, this.lowerScreen];
   @State enableHoverMode: boolean | undefined = true;
   @State showInSubwindow: boolean = false;
-  @State placement: Placement | undefined = undefined;
   @State isShow: boolean = false;
 
   build() {

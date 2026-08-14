@@ -44,7 +44,7 @@
 
 ## 接口
 
-WaterFlow(options?:  WaterFlowOptions)
+WaterFlow(options?: WaterFlowOptions)
 
 创建瀑布流容器。
 
@@ -71,7 +71,7 @@ WaterFlow(options?:  WaterFlowOptions)
 | footerContent<sup>18+</sup> | [ComponentContent](../js-apis-arkui-ComponentContent.md) | 否 | 是 | 设置WaterFlow尾部组件。<br/>该参数的优先级高于参数footer，即同时设置footer和footerContent时，以footerContent设置的组件为准；未设置footerContent时，footer参数仍可设置尾部组件。使用分组混合布局时不支持单独设置尾部组件，可以使用最后一个分组作为尾部组件。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | scroller | [Scroller](ts-container-scroll.md#scroller) | 否   | 是 | 可滚动组件的控制器，与可滚动组件绑定。不设置时不绑定外部控制器，组件自行管理滚动行为。<br/>**说明：** <br/>1. 不允许和其他滚动类组件，如：[ArcList](ts-container-arclist.md)、[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)和[WaterFlow](ts-container-waterflow.md)绑定同一个滚动控制对象。<br/>2. 使用[SLIDING_WINDOW](#waterflowlayoutmode12枚举说明)布局模式时，scroller的[currentOffset](ts-container-scroll.md#currentoffset)或[offset](ts-container-scroll.md#offset23)接口返回的总偏移量在触发跳转或数据更新后不准确，回滑到顶部时会重新校准。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | sections<sup>12+</sup> |  [WaterFlowSections](#waterflowsections12) | 否   | 是 | 设置FlowItem分组，实现同一个瀑布流组件内部各分组使用不同列数混合布局。适用于需要在不同区域使用不同列数布局的场景。不设置时使用统一列数布局。<br/>**说明：** <br/>1. 使用分组混合布局时会忽略[columnsTemplate](#columnstemplate)和[rowsTemplate](#rowstemplate)属性。<br/>2. 使用分组混合布局时不支持单独设置footer，可以使用最后一个分组作为尾部组件。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。  |
-| layoutMode<sup>12+</sup> |[WaterFlowLayoutMode](#waterflowlayoutmode12枚举说明) | 否 | 是 | 设置WaterFlow的布局模式，根据使用场景选择更切合的模式。ALWAYS_TOP_DOWN适用于固定列数、简单瀑布流场景；SLIDING_WINDOW适用于动态列数、大数据量、屏幕旋转等场景。<br/>**说明：** <br/>默认值：[ALWAYS_TOP_DOWN](#waterflowlayoutmode12枚举说明)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| layoutMode<sup>12+</sup> |[WaterFlowLayoutMode](#waterflowlayoutmode12枚举说明) | 否 | 是 | 设置WaterFlow的布局模式，根据使用场景选择更切合的模式。ALWAYS_TOP_DOWN适用于固定列数场景；SLIDING_WINDOW适用于动态列数、大数据量、屏幕旋转等场景。<br/>**说明：** <br/>默认值：[ALWAYS_TOP_DOWN](#waterflowlayoutmode12枚举说明)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 
 ## WaterFlowSections<sup>12+</sup>
@@ -267,7 +267,7 @@ type GetItemMainSizeByIndex = (index: number) => number
 
 | 对比维度 | ALWAYS_TOP_DOWN (默认) | SLIDING_WINDOW |
 |---------|------------------------|----------------|
-| 适用场景 | 固定列数、简单瀑布流 | 动态列数、大数据量、屏幕旋转 |
+| 适用场景 | 固定列数 | 动态列数、大数据量、屏幕旋转 |
 | 布局策略 | 从顶部开始完整布局 | 滑动窗口式布局 |
 | 性能特点 | 依赖上方所有 FlowItem | 只考虑视窗内布局 |
 | 跳转效率 | 需要计算上方所有布局 | 快速跳转，无需完整计算 |
@@ -283,7 +283,7 @@ type GetItemMainSizeByIndex = (index: number) => number
 >
 > WaterFlow组件使用通用属性[clip<sup>12+</sup>](ts-universal-attributes-sharp-clipping.md#clip12)和通用属性[clip<sup>18+</sup>](ts-universal-attributes-sharp-clipping.md#clip18)时默认值都为true。
 >
-> WaterFlow组件内容裁剪模式[ContentClipMode<sup>14+</sup>枚举说明](ts-container-scrollable-common.md#contentclipmode14枚举说明)为ContentClipMode.CONTENT_ONLY，padding区域会被裁剪不显示。
+> WaterFlow组件的[内容裁剪模式](ts-container-scrollable-common.md#contentclipmode14枚举说明)为ContentClipMode.CONTENT_ONLY，padding区域会被裁剪不显示。
 
 ### columnsTemplate
 
@@ -309,13 +309,13 @@ columnsTemplate(value: string)
 
 columnsTemplate(value: string | ItemFillPolicy)
 
-设置当前瀑布流组件布局列的数量，不设置时默认1列。
+设置当前瀑布流组件布局列的数量，不设置时默认1列。当[layoutDirection](#layoutdirection)设置为横向布局（FlexDirection.Row或FlexDirection.RowReverse）时，columnsTemplate不生效，由[rowsTemplate](#rowstemplate)控制布局。使用[sections](#waterflowoptions对象说明)分组混合布局时，此属性会被忽略。
 
 当value设置为string类型时，使用方法参考[columnsTemplate(value: string)](#columnstemplate)。
 
 当value设置为ItemFillPolicy类型时，将根据WaterFlow组件宽度对应[断点类型](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)确定列数。
 
-例如，ItemFillPolicy.BREAKPOINT_DEFAULT在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列，且每列均为1fr。
+例如，将ItemFillPolicy的fillType属性设置为PresetFillType.BREAKPOINT_DEFAULT时，在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列，且每列均为1fr。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -612,7 +612,7 @@ onReachEnd(event: () => void)
 
 onScrollFrameBegin(event: OnScrollFrameBeginCallback)
 
-该接口回调时，事件参数传入即将发生的滑动量。事件处理函数可根据应用场景计算实际需要的滑动量，并将其作为返回值返回。瀑布流将按照返回的实际滑动量进行滑动。适用于需要自定义滚动行为的场景，例如按比例调整单帧滑动量，或在特定条件下阻止本帧滑动。
+该接口回调时，事件参数传入即将发生的滑动量。事件处理函数可根据应用场景计算实际需要的滑动量，并返回该值。瀑布流将按照返回的实际滑动量进行滑动。适用于需要自定义滚动行为的场景，例如按比例调整单帧滑动量，或在特定条件下阻止本帧滑动。
 
 满足以下任一条件时触发该事件：
 
@@ -1133,7 +1133,7 @@ struct WaterFlowDemo {
 
 
 ### 示例3（使用分组）
-该示例展示了分组的初始化以及splice、push、update、values、length等接口的不同效果。
+该示例展示了分组的初始化以及splice、update、values、length等接口的不同效果。
 
 如果配合状态管理V2使用，详情见：[WaterFlow与makeObserved](../../../ui/state-management/arkts-v1-v2-migration-inner-object.md#滚动组件)。
 

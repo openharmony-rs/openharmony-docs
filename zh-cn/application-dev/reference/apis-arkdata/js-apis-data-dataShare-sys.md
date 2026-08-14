@@ -1,8 +1,8 @@
 # @ohos.data.dataShare (数据共享)(系统接口)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @woodenarow-->
-<!--Designer: @woodenarow; @xuelei3-->
+<!--Owner: @lvcong_oh-->
+<!--Designer: @lvcong_oh-->
 <!--Tester: @chenwan188; @logic42-->
 <!--Adviser: @ge-yafang-->
 
@@ -99,6 +99,7 @@ createDataShareHelper(context: Context, uri: string, options: DataShareHelperOpt
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
+**参数：**
 
 | 参数名   | 类型                                                 | 必填 | 说明                                                         |
 | -------- | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -439,9 +440,13 @@ DataShare管理工具实例，可使用此实例访问或管理服务端的数�
 
 on(type: 'dataChange', uri: string, callback: AsyncCallback&lt;void&gt;): void
 
-订阅指定URI对应数据的数据变更事件。若订阅者已注册了观察者，当有其他通知者触发了变更通知时，订阅者将会接收到callback通知。使用callback异步回调。该功能不支持跨用户订阅通知。同一应用内对单个URI的重复订阅上限为51次。
+订阅指定URI对应数据的数据变更事件。不支持跨用户订阅通知。
 
-触发通知：非静默场景下，调用[notifyChange](#notifychange-1)方法，就会触发对指定URI订阅者的通知；或者静默场景下，使用指定URI的静默访问修改了数据，也会自动触发通知。
+**触发通知：** 非静默场景下，调用[notifyChange](#notifychange-1)方法，就会触发对指定URI订阅者的通知；或者静默场景下，使用指定URI的静默访问修改了数据，也会自动触发通知。
+
+**规格限制：** 
+* 在OpenHarmony 6.0之前，同一应用内对单个URI的重复订阅上限为50次，单个URI全局最多支持50个订阅。
+* 从OpenHarmony 6.0开始，同一应用内对单个URI的重复订阅上限为50次，单个URI全局最多支持2500个订阅。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -479,14 +484,18 @@ if (dataShareHelper !== undefined) {
 
 on(event: 'dataChange', type:SubscriptionType, uri: string, callback: AsyncCallback&lt;ChangeInfo&gt;): void
 
-订阅指定URI对应数据的数据变更事件。若订阅者已注册变更通知，当有其他通知者触发了变更通知时，订阅者将会接收到callback通知，通知携带数据变更类型、变化的uri、变更的数据内容。使用callback回调。该功能不支持跨用户订阅通知。同一应用内对单个URI的重复订阅上限为51次。
+订阅指定URI对应数据的数据变更事件。不支持跨用户订阅通知。
 
 **配对调用：**
 - 与[off('dataChange')](#offdatachange12)成对使用，用于取消订阅数据变更事件。
 - 取消订阅时需确保type、uri和callback参数与订阅时一致。
 - 如未及时取消订阅，可能导致内存泄漏和资源占用。
 
-**触发通知：** 非静默场景下，调用[notifyChange](#notifychange12)方法，就会触发对指定URI订阅者的通知；或者静默场景下，使用指定URI的静默访问修改了数据，也会自动触发通知，但此时callback通知中的ChangeInfo无效。
+**触发通知：** 非静默场景下，调用[notifyChange](#notifychange12)方法，就会触发对指定URI订阅者的通知，通知携带[ChangeInfo](#changeinfo12)；或者静默场景下，使用指定URI的静默访问修改了数据，也会自动触发通知，但此时callback通知中的ChangeInfo无效。
+
+**规格限制：** 
+* 在OpenHarmony 6.0之前，同一应用内对单个URI的重复订阅上限为50次，单个URI全局最多支持50个订阅。
+* 从OpenHarmony 6.0开始，同一应用内对单个URI的重复订阅上限为50次，单个URI全局最多支持2500个订阅。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -633,7 +642,7 @@ addTemplate(uri: string, subscriberId: string, template: Template): void
 | -------- | -------------------- |
 | 202      | Permission verification failed. A non-system application calls a system API.|
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700011 | The URI does not exist.|
+| 15700011 | The URI is not exist.|
 | 15700013 | The DataShareHelper instance is already closed.|
 
 **示例：**
@@ -683,7 +692,7 @@ delTemplate(uri: string, subscriberId: string): void
 | -------- | -------------------- |
 | 202      | Permission verification failed. A non-system application calls a system API.|
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700011 | The URI does not exist.|
+| 15700011 | The URI is not exist.|
 | 15700013 | The DataShareHelper instance is already closed.|
 
 **示例：**
@@ -952,7 +961,7 @@ publish(data: Array&lt;PublishedItem&gt;, bundleName: string, version: number, c
 | -------- | -------------------------- |
 | 202      | Permission verification failed. A non-system application calls a system API.|
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700012 | The data area does not exist.|
+| 15700012 | The data area is not exist.|
 | 15700013 | The DataShareHelper instance is already closed.|
 
 **示例：**
@@ -1691,7 +1700,7 @@ batchUpdate(operations: Record&lt;string, Array&lt;UpdateOperation&gt;&gt;): Pro
 | -------- | ------------------------------------ |
 | 202      | Permission verification failed. A non-system application calls a system API.|
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700000 | Inner error.                         |
+| 15700000 | Inner error. Possible causes: 1.The internal status is abnormal; 2.The interface is incorrectly used; 3.Permission configuration error; 4.A system error. |
 | 15700013 | The DataShareHelper instance is already closed. |
 
 **示例：**

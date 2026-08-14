@@ -1,12 +1,11 @@
 # Global Reuse: Centralized Component Recycling and Reuse
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhangboren-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=5dcad25d98f5dfcd52a952512584b6f7002e81ae translatedAt=2026-07-01T06:20:29.193Z pushedAt=2026-07-01T10:47:58.083Z -->
+<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:03:47.505Z pushedAt=2026-07-22T07:57:35.667Z -->
 
 To improve the performance and memory efficiency of component recycling and reuse, the global reuse pool feature allows you to configure a reuse pool for specified @Reusable/@ReusableV2 reusable components on any custom component. This global reuse pool has a higher priority than the default reuse pool bound to the parent component.
 
@@ -25,13 +24,9 @@ In the current implementation, each parent component of a @Reusable/@ReusableV2 
 The global reuse pool solves this reuse efficiency problem by allowing developers to configure a reuse pool at an ancestor node in the component tree (a component annotated with @Component or @ComponentV2). When the global reuse pool is enabled, the framework traverses up the component tree upon creation or destruction of a reusable component, looking for a global reuse pool that accepts the specified reusable component type for recycling and reuse. This enables cross-parent reuse scenarios, increases the reuse rate, and improves the switching performance of reusable components. The global reuse pool provides the following capabilities:
 
 - A single reuse pool can serve multiple child components, reducing the number of reuse pools and improving the reuse rate.
-
 - Developers can choose whether all instances of a component class share a single reuse pool ([shared](#reuse-pool-ownership-mode)) or each instance has its own pool ([perInstance](#reuse-pool-ownership-mode)).
-
 - The [IReusableInfo](../../reference/apis-arkui/js-apis-stateManagement.md#ireusableinfo) interface allows apps to query and limit the number of cached components, including information such as `reuseId`.
-
 - The [preRender](../../reference/apis-arkui/js-apis-stateManagement.md#prerender) interface allows reusable components to be created in advance and placed into the reuse pool, speeding up initial rendering.
-
 - When a reusable component is being recycled or created, if no matching global reuse pool is found by traversing the parent components, the component will use the default reuse pool in the parent component for recycling and reuse.
 
 ## Basic Concepts
@@ -64,7 +59,7 @@ With the new global reuse capability, declaring a global reuse pool on the top-l
 
 Default reuse pool example code:
 
-<!-- @[GlobalReuseDefault](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReuseDefault.ets) -->
+<!-- @[GlobalReuseDefault](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReuseDefault.ets) -->
 
 ``` TypeScript
 @Entry
@@ -120,7 +115,7 @@ struct ReusableComponent { // Reusable component
 
 The following is an example of adapting to the global reuse capability:
 
-<!-- @[GlobalReusePool](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePool.ets) -->
+<!-- @[GlobalReusePool](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePool.ets) -->
 
 ``` TypeScript
 @ReusableV2
@@ -200,13 +195,9 @@ The global reuse pool is an instance declared on a custom component. Its ownersh
 Lifecycle of the `shared` reuse pool:
 
 1. When the first instance of the owning component is created, the reuse pool is created and referenced by that instance.
-
 2. When the second instance of the owning component is created, it references the already created reuse pool. No new pool is created.
-
 3. When the first instance is destroyed, the reuse pool is not destroyed because it is still referenced by the second instance.
-
 4. When the second (last) instance is destroyed, the reuse pool is also destroyed. All recycled components within it are deleted.
-
 5. If a new instance of the owning component is created later, a new reuse pool is created.
 
 **NOTE**
@@ -262,7 +253,7 @@ The following APIs are available for the global reuse pool:
 
 In this example, multiple `CompA` instances create a shared global reuse pool for the `ReusableCompA` child component. When a `CompA` instance is deleted, the `ReusableCompA` child component is recycled into the global reuse pool. When a new `CompA` instance is added, it reuses a component from the global reuse pool, avoiding the creation of a new component.
 
-<!-- @[GlobalReusePoolShared](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolShared.ets) -->
+<!-- @[GlobalReusePoolShared](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolShared.ets) -->
 
 ``` TypeScript
 @Entry
@@ -355,25 +346,21 @@ struct CompA {
 ![arkts-global-reuse-shared.gif](./figures/arkts-global-reuse-shared.gif)
 
 **Startup** — 6 ReusableCompA child components are created:
-
 ```plaintext
 ReusableCompA aboutToAppear (×6)
 ```
 
 **Delete Comp1** — The child component is recycled:
-
 ```plaintext
 ReusableCompA aboutToRecycle (×2)
 ```
 
 **Add Comp1** — The child component is reused from the shared pool:
-
 ```plaintext
 ReusableCompA aboutToReuse (×2)
 ```
 
 **Delete all 3 CompA instances in sequence** — When the last CompA is destroyed, no CompA instances remain, so the shared pool is also destroyed:
-
 ```plaintext
 // Delete Comp1 and Comp2: child components are recycled
 ReusableCompA aboutToRecycle (×2, each corresponding to a deleted CompA)
@@ -386,7 +373,7 @@ ReusableCompA aboutToDisappear (×6, all cached instances are permanently destro
 
 This example demonstrates a `perInstance` pool bound to a specific parent instance. It also shows how [@Consumer](./arkts-new-provider-and-consumer.md) reconnects to [@Provider](./arkts-new-provider-and-consumer.md) after a reuse cycle.
 
-<!-- @[GlobalReusePoolPerInstance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolPerInstance.ets) -->
+<!-- @[GlobalReusePoolPerInstance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolPerInstance.ets) -->
 
 ``` TypeScript
 @ReusableV2
@@ -500,7 +487,6 @@ struct Child {
 ![arkts-global-reuse-per-instance.gif](./figures/arkts-global-reuse-per-instance.gif)
 
 **Switching from ReusableChild to Child**:
-
 ```plaintext
 ReusableChild aboutToRecycle   // Entering pool
 SubChild aboutToRecycle        // Subtree cascading
@@ -509,7 +495,6 @@ SubChild aboutToAppear         // New SubChild inside Child
 ```
 
 **Switching from Child to ReusableChild**:
-
 ```plaintext
 Child aboutToDisappear         // Non-reusable, permanently destroyed
 SubChild aboutToDisappear      // Destroyed along with Child
@@ -523,7 +508,7 @@ After reuse, the `aboutToReuse` callback sets `this.provide = 150`. The [@Consum
 
 This example demonstrates how to use the `getReusableInfo` API to inspect the pool status and control the cache size at runtime.
 
-<!-- @[GlobalReusePoolGet](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolGet.ets) -->
+<!-- @[GlobalReusePoolGet](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolGet.ets) -->
 
 ``` TypeScript
 import { UIUtils, IReusableInfo } from '@kit.ArkUI';
@@ -711,7 +696,6 @@ getReusableInfo(LegacyComp): count=0, maxCount=100
 ```
 
 **Switch to LegacyComp**:
-
 ```plaintext
 GlobalChild aboutToRecycle    // Enter pool
 SubChild aboutToRecycle       // Enter reuse pool together with GlobalChild
@@ -726,7 +710,6 @@ getReusableInfo(GlobalChild): count=1, maxCount=100
 ```
 
 **Switch back to GlobalChild**:
-
 ```plaintext
 LegacyComp aboutToRecycle
 ReusableChild aboutToRecycle
@@ -757,7 +740,7 @@ getReusableInfo(LegacyComp): count=0, maxCount=0
 
 When components are recycled with different `reuseId` values, reusable components with the same reuseId are stored in separate partitions within the global reuse pool. Information for each reuseId partition can be returned through the `getReusableInfo` API.
 
-<!-- @[GlobalReusePoolReuseID](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolReuseID.ets) -->
+<!-- @[GlobalReusePoolReuseID](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolReuseID.ets) -->
 
 ``` TypeScript
 import { UIUtils, IReusableInfo } from '@kit.ArkUI';
@@ -858,7 +841,6 @@ struct PoolOwner {
 ![arkts-global-reuse-reuseid.gif](./figures/arkts-global-reuse-reuseid.gif)
 
 When all three are closed, `getReusableInfo(TestChild)` (without reuseId) returns an array:
-
 ```typescript
   { count: 0, maxCount: 100, reuseId: undefined }  // Always included
   { count: 1, maxCount: 100, reuseId: 'A' }
@@ -867,7 +849,6 @@ When all three are closed, `getReusableInfo(TestChild)` (without reuseId) return
 ```
 
 After tapping "Clear B Only" (setting B's `maxCount = 0`), only the instance of B is released. The array becomes:
-
 ```typescript
   { count: 0, maxCount: 100, reuseId: undefined }
   { count: 1, maxCount: 100, reuseId: 'A' }
@@ -876,9 +857,7 @@ After tapping "Clear B Only" (setting B's `maxCount = 0`), only the instance of 
 ```
 
 Reopen all:
-
 - A and C trigger `aboutToReuse` (reused from the pool).
-
 - B triggers `aboutToAppear` (new instance).
 
 Querying a non-existent reuseId (for example, `pool.getReusableInfo(TestChild, 'X')`) returns a single object with `count: 0, maxCount: 100`.
@@ -887,7 +866,7 @@ Querying a non-existent reuseId (for example, `pool.getReusableInfo(TestChild, '
 
 When multiple reuse pool configurations exist at different levels of the component tree, each reusable component is routed to the nearest ancestor pool that accepts it.
 
-<!-- @[GlobalReusePoolMultiLevel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolMultiLevel.ets) -->
+<!-- @[GlobalReusePoolMultiLevel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolMultiLevel.ets) -->
 
 ``` TypeScript
 @ReusableV2
@@ -994,11 +973,10 @@ struct ParentA {
 ![arkts-global-reuse-multi-level.gif](./figures/arkts-global-reuse-multi-level.gif)
 
 - `ChildA` uses the global reuse pool declared on `EntryComp`, because the `EntryComp` reuse pool is configured with `poolAccepts` to accept `ChildA`.
-
 - `ReusableLeaf` and its parent component `ChildA` enter the reuse pool of `EntryComp` together, and do not enter the global reuse pool configured on `ParentA`. This is because when a parent and child component are recycled together, both enter the reuse pool that accepts the parent component; the child component does not detach from the parent and get stored in a separate global reuse pool.
 
-**Closing/Opening ChildA** — Both `ChildA` and `ReusableLeaf` are recycled from and reused from their respective pools:
 
+**Closing/Opening ChildA** — Both `ChildA` and `ReusableLeaf` are recycled from and reused from their respective pools:
 ```plaintext
 ChildA aboutToRecycle / aboutToReuse         // Pool of EntryComp
 ReusableLeaf aboutToRecycle / aboutToReuse   // Pool of EntryComp
@@ -1007,7 +985,6 @@ ReusableLeaf aboutToRecycle / aboutToReuse   // Pool of EntryComp
 **Close ParentA** (when ChildA is in the pool) — ParentA is destroyed, but the ParentA reuse pool is empty, so the destruction of the ReusableLeaf component is not triggered.
 
 **Open ParentA** — ParentA is newly created. ChildA is reused from the pool of EntryComp, and ReusableLeaf is also reused:
-
 ```plaintext
 ParentA aboutToAppear           // New instance
 ChildA aboutToReuse             // Retrieved from the reuse pool of EntryComp
@@ -1018,7 +995,7 @@ ReusableLeaf aboutToReuse       // Retrieved from EntryComp's reuse pool
 
 `preRender` is used to create reusable component instances in advance and place them into the reuse pool, so they can be directly reused during subsequent creation.
 
-<!-- @[GlobalReusePoolPrerender](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolPrerender.ets) -->
+<!-- @[GlobalReusePoolPrerender](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolPrerender.ets) -->
 
 ``` TypeScript
 import { UIUtils, IReusableInfo } from '@kit.ArkUI';
@@ -1105,29 +1082,20 @@ struct CompA {
 Execution sequence:
 
 1. At startup, `Index.aboutToAppear()` obtains the pool via `UIUtils.getCustomComponentContext(this).getReusePool()` and calls `preRender`. `preRender` executes asynchronously as an idle task: it calls the @Builder function to create a `ReusableComponent` instance.
-
 2. The pre-rendered `ReusableComponent` is recycled into the reuse pool of `Index`. A log is printed upon completion of pre-rendering.
-
    ```plaintext
    ReusableComponent preRender completes
    ```
-
 3. Tap the `Check pool` button to check the global reuse pool size. A log is printed, showing the current reuse pool size is 1.
-
    ```plaintext
    ReusableComponent reuse pool count=1
    ```
-
 4. Tap the `Switch` button to set `onUIFullyLoaded = true`, which triggers the re-rendering of `CompA`.
-
 5. The if condition of `CompA` becomes true. When the framework creates `ReusableComponent`, it finds the global reuse pool on `Index` and retrieves the pre-rendered instance. `aboutToAppear` is triggered, the component is reused without re-creation, and then build is executed for expansion.
-
    ```plaintext
    ReusableComponent aboutToAppear
    ```
-
 6. Tap the `Check pool` button again to check the global reuse pool size. A log is printed, showing the current reuse pool size has decreased to 0, indicating that the pre-rendered component has been used and removed from the reuse pool.
-
    ```plaintext
    ReusableComponent reuse pool count=0
    ```

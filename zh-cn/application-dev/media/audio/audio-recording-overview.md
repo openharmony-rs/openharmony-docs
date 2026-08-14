@@ -14,6 +14,8 @@
 
 - [OHAudio](using-ohaudio-for-recording.md)：用于音频输入的Native API，此API在设计上实现归一，同时支持普通音频通路和低时延通路。仅支持PCM格式，适用于依赖Native层实现音频输入功能的场景。
 
+如果开发者需要采集设备内部播放音频，可参考[实现录制系统音频](implement-system-audio-recording.md)。
+
 除上述方式外，也可以通过Media Kit中的AVRecorder实现音频录制。
 
 - [AVRecorder](../media/using-avrecorder-for-recording.md)：用于音频录制的ArkTS/JS API，集成了音频采集、音频编码和媒体封装的功能。开发者可以直接调用设备硬件如麦克风录音，并生成m4a音频文件。
@@ -26,7 +28,8 @@
 
 - 如果需要持续录制或后台录制，请申请长时任务避免进入挂起（Suspend）状态。具体参考[长时任务(ArkTS)](../../task-management/continuous-task.md)。
 - 录制需要在前台启动，启动后可以退后台。在后台启动录制将会失败。
-- 应用录制音频时需要使用合适的录制流类型，请参考[使用合适的音频流类型](using-right-streamusage-and-sourcetype.md)。
+- 应用录制音频时需要使用合适的录制流类型，请参考[选择合适的录制流类型](using-right-sourcetype-for-recording.md)。
+- 如果需要判断麦克风是否被占用，请参考[判断麦克风是否被占用](audio-recording-stream-management.md#判断麦克风是否被占用)。
 - 如果开发者需要实现屏幕录制功能，可参考[使用AVScreenCaptureRecorder录屏写文件(ArkTS)](../media/using-avscreencapture-ArkTs.md)和[使用AVScreenCapture录屏写文件(C/C++)](../media/using-avscreencapture-for-file.md)。
 
 

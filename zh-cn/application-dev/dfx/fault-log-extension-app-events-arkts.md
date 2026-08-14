@@ -36,7 +36,7 @@ FaultLogExtensionAbility的原理机制如下图所示：
 
 - FaultLogExtensionAbility自身崩溃时，不会再次被系统服务拉起。
 
-- FaultLogExtensionAbility调用限制的API名单见[附录](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md#附录)。
+- 针对FaultLogExtensionAbility接口调用限制，详情请参考API中[约束限制](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md#约束限制)。
 
 - FaultLogExtensionAbility进程中订阅的事件需要在主进程中使用HiAppEvent进行订阅。否则，可能会发生[FaultLogExtensionAbility进程没有接收到回调事件](#faultlogextensionability进程没有接收到回调事件)的问题。
 

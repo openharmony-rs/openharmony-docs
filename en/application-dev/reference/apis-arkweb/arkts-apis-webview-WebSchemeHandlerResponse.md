@@ -1,12 +1,16 @@
 # Class (WebSchemeHandlerResponse)
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=5bd67952550947311c46c7276be4f0642b76503e translatedAt=2026-08-07T04:49:33.631Z pushedAt=2026-08-07T08:11:48.954Z -->
 
-Represents a request response. You can create a response for an intercepted request, fill in custom content, and return the response to the **Web** component.
+WebSchemeHandlerResponse is a class used to construct HTTP response data in custom scheme interception scenarios. Developers use this class to create a Response object, set properties such as HTTP status code, status text, MIME type, character set, custom response headers, network error code, and redirection URL, and then return the custom response to the Web component through WebResourceHandler. This class is the core data carrier for custom resource interception.
+
+WebSchemeHandlerResponse is used together with WebResourceHandler: the developer constructs a WebSchemeHandlerResponse object and fills in the response properties, and then sends the response header to the intercepted request through the didReceiveResponse method of WebResourceHandler.
 
 > **NOTE**
 >
@@ -41,7 +45,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
-  schemeHandler: webview.WebSchemeHandler = new webview.WebSchemeHandler();
 
   build() {
     Column() {
@@ -60,7 +63,7 @@ struct WebComponent {
           console.info("[schemeHandler] getStatusText:" + response.getStatusText())
           console.info("[schemeHandler] getMimeType:" + response.getMimeType())
           console.info("[schemeHandler] getEncoding:" + response.getEncoding())
-          console.info("[schemeHandler] getHeaderByValue:" + response.getHeaderByName("header1"))
+          console.info("[schemeHandler] getHeaderByName:" + response.getHeaderByName("header1"))
           console.info("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
 
         } catch (error) {
@@ -86,7 +89,7 @@ Sets the redirection URL or the URL changed due to HSTS for this response. After
 
 | Name  | Type   |  Mandatory | Description                      |
 | --------| ------- | ---- | ---------------------------|
-|  url | string | Yes  | URL to be redirected to.|
+| url | string | Yes | URL after redirection or change due to HSTS. |
 
 **Example**
 
@@ -138,7 +141,7 @@ Sets the HTTP status code for this response.
 
 | Name  | Type   |  Mandatory | Description                      |
 | --------| ------- | ---- | ---------------------------|
-|  code | number | Yes  | HTTP status code.|
+| code | number | Yes | HTTP status code. |
 
 **Error codes**
 
@@ -182,7 +185,7 @@ For details about the sample code, see [constructor](#constructor12).
 
 setMimeType(type: string): void
 
-Sets the MIME type for this response.
+Sets the MIME type for the current response. For example, set it to text/html when injecting HTML content, and set it to application/json when injecting JSON data.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -190,7 +193,7 @@ Sets the MIME type for this response.
 
 | Name  | Type   |  Mandatory | Description                      |
 | --------| ------- | ---- | ---------------------------|
-|  type | string | Yes  | MIME type.|
+| type | string | Yes | Media type (MIME type). |
 
 **Error codes**
 
@@ -208,7 +211,7 @@ For details about the sample code, see [constructor](#constructor12).
 
 setEncoding(encoding: string): void
 
-Sets the character set for this response.
+Sets the character encoding format for the current response.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -216,7 +219,7 @@ Sets the character set for this response.
 
 | Name  | Type   |  Mandatory | Description                      |
 | --------| ------- | ---- | ---------------------------|
-|  encoding | string | Yes  | Character set.|
+| encoding | string | Yes | Character encoding format. |
 
 **Error codes**
 
@@ -242,8 +245,8 @@ Sets the header information for this response.
 
 | Name  | Type   |  Mandatory | Description                      |
 | --------| ------- | ---- | ---------------------------|
-|  name | string | Yes  | Name of the header.|
-|  value | string | Yes  | Value of the header.|
+| name | string | Yes | Name of the header, which specifies the HTTP response header field name to set. Common values include 'Content-Type', 'Authorization', 'Cache-Control', etc. |
+| value | string | Yes | Value of the header, which specifies the content of the HTTP response header field. It must match the header field corresponding to the name parameter. For example, when name is 'Content-Type', value can be 'text/html; charset=utf-8'. |
 |  overwrite | boolean | Yes  | Whether to override the existing header. The value **true** means to override the existing header, and **false** means the opposite.|
 
 **Error codes**
@@ -264,7 +267,7 @@ getUrl(): string
 
 Obtains the redirection URL or the URL changed due to HSTS.
 
-NOTE: To obtain a URL for the JavaScriptProxy communication API authentication, use [getLastJavascriptProxyCallingFrameUrl<sup>12+</sup>](./arkts-apis-webview-WebviewController.md#getlastjavascriptproxycallingframeurl12).
+Risk warning: To obtain a URL for JavaScriptProxy communication API authentication, use [getLastJavascriptProxyCallingFrameUrl<sup>12+</sup>](./arkts-apis-webview-WebviewController.md#getlastjavascriptproxycallingframeurl12).
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -272,7 +275,7 @@ NOTE: To obtain a URL for the JavaScriptProxy communication API authentication, 
 
 | Type   | Description                                    |
 | ------- | --------------------------------------- |
-| string | Redirection URL or the URL changed due to HSTS.|
+| string | URL after redirection or HSTS change. |
 
 **Example**
 
@@ -290,7 +293,7 @@ Obtains the network error code of the response.
 
 | Type   | Description                                    |
 | ------- | --------------------------------------- |
-| [WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist) | Obtains the network error code of the response.|
+| [WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist) | Network error code returned for the Response. |
 
 **Example**
 
@@ -308,7 +311,7 @@ Obtains the HTTP status code of the response.
 
 | Type   | Description                                    |
 | ------- | --------------------------------------- |
-| number | HTTP status code of the response.|
+| number | Returns the HTTP status code of the Response. |
 
 **Example**
 
@@ -344,7 +347,7 @@ Obtains the MIME type of this response.
 
 | Type   | Description                                    |
 | ------- | --------------------------------------- |
-| string | MIME type.|
+| string | MIME type string of the response content, for example, 'text/html' or 'application/json'. |
 
 **Example**
 
@@ -354,7 +357,7 @@ For details about the sample code, see [constructor](#constructor12).
 
 getEncoding(): string
 
-Obtains the character set of this response.
+Obtains the character encoding format of the response.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -362,7 +365,7 @@ Obtains the character set of this response.
 
 | Type   | Description                                    |
 | ------- | --------------------------------------- |
-| string | Character set.|
+| string | Character encoding format of the response content, such as 'utf-8', 'gbk', etc. |
 
 **Example**
 
@@ -380,14 +383,13 @@ Obtains the value of a response header field by name.
 
 | Name | Type            | Mandatory| Description                 |
 | ------- | ---------------- | ---- | -------------------- |
-| name     | string | Yes  | Name of the header.     |
-
+| name     | string | Yes   | Name of the response header field to obtain.      |
 
 **Return value**
 
 | Type   | Description                                    |
 | ------- | --------------------------------------- |
-| string | Value of the header.|
+| string | Value of the response header field with the specified name. |
 
 **Example**
 

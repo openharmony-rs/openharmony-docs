@@ -1,14 +1,16 @@
 # Class (WebController)
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @zourongchun-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=d1b85ec7ea193eefc4ef0fcb99c42629d3e17584 translatedAt=2026-08-07T04:39:30.026Z pushedAt=2026-08-07T08:12:42.383Z -->
 
-Implements a **WebController** to control the behavior of the **Web** component. A **WebController** can control only one **Web** component, and the APIs in the **WebController** can be invoked only after it has been bound to the target **Web** component.
+WebController is the controller class of the ArkWeb component, used to control various behaviors of the Web component. A WebController object can be bound to only one Web component. After binding, developers can use the controller to perform operations on the Web component, such as page navigation (forward/backward/loading), focus control, zoom adjustment, page refresh and stop, cookie management, and JavaScript injection and execution.
 
-This API is deprecated since API version 9. You are advised to use [WebviewController<sup>9+</sup>](./arkts-apis-webview-WebviewController.md) instead.
+WebController is suitable for scenarios where active control of the embedded Web component is required on the app side, such as implementing browser-like forward and backward navigation, establishing a JavaScript interaction channel between the app side and the web page side, dynamically loading web page content, or managing cookie data.
 
 > **NOTE**
 >
@@ -16,11 +18,14 @@ This API is deprecated since API version 9. You are advised to use [WebviewContr
 >
 > - The initial APIs of this class are supported since API version 8.
 >
-> - The sample effect is subject to the actual device.
+> - This component is deprecated since API version 9. You are advised to use [WebviewController](./arkts-apis-webview-WebviewController.md) instead.
+>
+> - The sample effects are subject to the actual running on a real device.
 
 ## Creating an Object
 
 <!--deprecated_code_no_check-->
+
 ```ts
 let webController: WebController = new WebController()
 ```
@@ -80,7 +85,7 @@ Obtains the cookie management object of the **Web** component.
 
 requestFocus()
 
-Requests focus for this web page.
+Makes the current web page obtain focus.
 
 > **NOTE**
 >
@@ -193,7 +198,7 @@ Checks whether going to the next page can be performed on the current page.
 
 accessStep(step: number): boolean
 
-Performs a specific number of steps forward or backward from the current page.
+Checks whether the current page can move forward or backward by the given step.
 
 > **NOTE**
 >
@@ -211,7 +216,7 @@ Performs a specific number of steps forward or backward from the current page.
 
 | Type     | Description       |
 | ------- | --------- |
-| boolean | Whether going forward or backward from the current page is successful.|
+| boolean | Whether the page can go forward or backward by the given step. The value **true** means it can, and **false** means it cannot. |
 
 **Example**
 
@@ -240,7 +245,7 @@ Performs a specific number of steps forward or backward from the current page.
 
 backward()
 
-Goes to the previous page based on the history stack. This API is generally used together with **accessBackward**.
+Goes backward by one page in the history stack. You are advised to call [accessBackward<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#accessbackward) to check whether the current page can go backward before calling **backward**.
 
 > **NOTE**
 >
@@ -273,7 +278,7 @@ Goes to the previous page based on the history stack. This API is generally used
 
 forward()
 
-Goes to the next page based on the history stack. This API is generally used together with **accessForward**.
+Goes forward by one page in the history stack. You are advised to call [accessForward<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#accessforward) to check whether the current page can go forward before calling **forward**.
 
 > **NOTE**
 >
@@ -350,7 +355,7 @@ Obtains the element type of the area being clicked.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getHitTest<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#gethittestdeprecated) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getHitTest<sup>(deprecated)</sup>](./arkts-apis-webview-WebviewController.md#gethittestdeprecated) instead.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -386,11 +391,11 @@ Obtains the element type of the area being clicked.
 
 loadData(options: { data: string, mimeType: string, encoding: string, baseUrl?: string, historyUrl?: string })
 
-Loads data. If **baseUrl** is empty, the specified character string will be loaded using the data protocol.
+If **baseUrl** is empty, the specified character string will be loaded using the data protocol.
 
-If **baseUrl** is set to a data URL, the encoded string will be loaded by the **Web** component using the data protocol.
+If **baseUrl** is set to a data URL, the encoded data string will be loaded by the Web component using the data protocol.
 
-If **baseUrl** is set to an HTTP or HTTPS URL, the encoded string will be processed by the **Web** component as a non-encoded string in a manner similar to **loadUrl**.
+If **baseUrl** is set to an HTTP or HTTPS URL, the encoded data string will be processed by the Web component as a non-encoded string in a manner similar to **loadUrl**.
 
 > **NOTE**
 >
@@ -402,11 +407,11 @@ If **baseUrl** is set to an HTTP or HTTPS URL, the encoded string will be proces
 
 | Name       | Type  | Mandatory  | Description                                    |
 | ---------- | ------ | ---- | ---------------------------------------- |
-| data       | string | Yes  | Character string obtained after being Base64 or URL encoded.             |
+| data       | string | Yes   | String data to load. The processing method is related to the baseUrl protocol: when baseUrl is empty or uses the "data" protocol, the data is decoded and loaded using "Base64" or "URL" encoding; when baseUrl uses the "http/https" protocol, the data is directly loaded as an unencoded plain HTML string.              |
 | mimeType   | string | Yes  | Media type (MIME).                             |
-| encoding   | string | Yes  | Encoding type, which can be Base64 or URL.               |
-| baseUrl    | string | No  | URL (HTTP/HTTPS/data compliant), which is assigned by the **Web** component to **window.origin**.|
-| historyUrl | string | No  | Historical record URL. If this parameter is not empty, it can be managed in historical records to implement page going backward and forward. This parameter is invalid when **baseUrl** is left empty.|
+| encoding   | string | Yes   | Encoding type. Supported values include "Base64", "URL", or a character set encoding (such as "UTF-8"). When the data parameter is an unencoded HTML string, use a character set encoding; when the data parameter is an encoded string, use "Base64" or "URL".                |
+| baseUrl    | string | No   | Specified URL path (using the "http"/"https"/"data" protocol), which is assigned to `window.origin` by the Web component. When empty, the string is loaded using the "data" protocol. The default value is an empty string. |
+| historyUrl | string | No   | History record URL. The default value is an empty string. When not empty, it can be managed by the history record to implement forward and backward navigation. When baseUrl is empty, this attribute is invalid. |
 
 **Example**
 
@@ -437,7 +442,7 @@ If **baseUrl** is set to an HTTP or HTTPS URL, the encoded string will be proces
 
 loadUrl(options: { url: string | Resource, headers?: Array\<Header\> })
 
-Loads a URL using the specified HTTP header.
+Loads the specified URL with the given HTTP headers.
 
 The object injected through **loadUrl** is valid only in the current document. It will be invalid on a new page navigated to through **loadUrl**.
 
@@ -454,7 +459,7 @@ The object injected through **registerJavaScriptProxy** is still valid on a new 
 | Name    | Type                      | Mandatory | Description          |
 | -------- | -------------------------- | ---- | -------------- |
 | url      | string \| Resource                     | Yes | URL to load.    |
-| headers  | Array\<[Header](./arkts-basic-components-web-i.md#header)\> | No   | Additional HTTP request header of the URL.<br>The default value is **[]**.|
+| headers  | Array\<[Header](./arkts-basic-components-web-i.md#header)\> | No    | Additional HTTP request headers for the URL, used to customize request behavior (such as setting authentication information, specifying content types, and adding user agents). Pass this parameter when additional information needs to be carried in the request. If not passed, the default value (empty array) is used, and no additional HTTP request headers are carried. |
 
 **Example**
 
@@ -559,7 +564,7 @@ Sets a zoom factor for the current web page.
 
 | Name   | Type  | Mandatory  | Description                          |
 | ------ | ------ | ---- | ------------------------------ |
-| factor | number | Yes   | Zoom factor to set. A positive value indicates zoom-in, and a negative value indicates zoom-out.|
+| factor | number | Mandatory | Zoom factor. The value **1** indicates that the current zoom ratio remains unchanged. A value less than **1** indicates zooming out, and a value greater than **1** indicates zooming in. The value ranges from (0, 100]. |
 
 **Example**
 
@@ -620,7 +625,7 @@ Called when the **Web** component refreshes the web page.
 
 registerJavaScriptProxy(options: { object: object, name: string, methodList: Array\<string\> })
 
-Registers a JavaScript object with the window. APIs of this object can then be invoked in the window. You must invoke the [refresh](#refreshdeprecated) API for the registration to take effect.
+Injects a JavaScript object into the window object and calls the methods of the object in the window object. The injected object does not appear in JavaScript until the next (re)load of the page.
 
 > **NOTE**
 >
@@ -632,7 +637,7 @@ Registers a JavaScript object with the window. APIs of this object can then be i
 
 | Name       | Type           | Mandatory | Description                                    |
 | ---------- | --------------- | ---- | ---------------------------------------- |
-| object     | object          | Yes   | Application-side JavaScript object to be registered. Methods and attributes can be declared, but cannot be directly called on HTML5. The parameters and return value can only be of the string, number, or Boolean type.|
+| object     | object          | Yes    | JavaScript object on the app side that participates in the registration. It can declare methods and attributes. However, direct calling from H5 is not supported. The parameters and return types of the methods can only be string, number, or boolean. |
 | name       | string          | Yes   | Name of the object to be registered, which is the same as that invoked in the window. After registration, the window can use this name to access the JavaScript object at the application side.|
 | methodList | Array\<string\> | Yes   | Methods of the JavaScript object to be registered at the application side.                |
 
@@ -676,7 +681,8 @@ Registers a JavaScript object with the window. APIs of this object can then be i
   }
   ```
 
-  HTML file to be loaded:
+Loaded HTML file.
+
   ```html
   <!-- index.html -->
   <!DOCTYPE html>
@@ -714,7 +720,7 @@ Executes a JavaScript script. This API uses an asynchronous callback to return t
 | Name     | Type                    | Mandatory| Description                                    |
 | -------- | ------------------------ | ---- | ---------------------------------------- |
 | script   | string                   | Yes  | JavaScript script.                           |
-| callback | (result: string) => void | No  | Callback used to return the result. Returns **null** if the JavaScript script fails to be executed or no value is returned.|
+| callback | (result: string) => void | Optional | Callback invoked to return the result of JavaScript script execution. If the JavaScript script fails to execute or returns no value, **null** is returned. No callback is performed when this parameter is not passed. |
 
 **Example**
 
@@ -733,7 +739,7 @@ Executes a JavaScript script. This API uses an asynchronous callback to return t
         .onPageEnd((event) => {
           this.controller.runJavaScript({
             script: 'test()',
-            callback: (result: string)=> {
+            callback: (result: string) => {
               this.webResult = result
               console.info(`The test() return value is: ${result}`)
             }})
@@ -745,7 +751,9 @@ Executes a JavaScript script. This API uses an asynchronous callback to return t
     }
   }
   ```
-  HTML file to be loaded:
+
+Loaded HTML file.
+
   ```html
   <!-- index.html -->
   <!DOCTYPE html>

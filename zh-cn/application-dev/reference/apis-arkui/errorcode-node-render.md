@@ -116,7 +116,7 @@ The RenderNode is obtained from a FrameNode.
 
 **处理步骤**
 
-当前节点除了作为子节点上下树，不允许其他操作，执行时请主动跳过当前节点。
+当前节点仅可作为子节点上下树；执行其他操作时，请跳过该节点。
 
 ## 106407 当前渲染节点从FrameNode中获取且该FrameNode已被取消接纳为附属节点或销毁
 
@@ -134,7 +134,7 @@ The RenderNode is obtained from a FrameNode, and its corresponding FrameNode is 
 
 **处理步骤**
 
-当一个被接纳的节点被取消接纳时，释放从该节点获取的 RenderNode。
+如果通过[OH_ArkUI_NativeModule_RemoveAdoptedChild](./capi-native-node-h.md#oh_arkui_nativemodule_removeadoptedchild)取消接纳被接纳的FrameNode，或销毁该FrameNode，应调用[OH_ArkUI_RenderNodeUtils_DisposeNode](./capi-native-render-h.md#oh_arkui_rendernodeutils_disposenode)释放此前通过[OH_ArkUI_RenderNodeUtils_GetRenderNode](./capi-native-render-h.md#oh_arkui_rendernodeutils_getrendernode)获取的RenderNode。
 
 ## 106408 当前节点不处于被接纳状态
 

@@ -51,6 +51,7 @@ import { StartOptions } from '@kit.AbilityKit';
       };
 
       try {
+        // 启动指定的Ability，传入Want和StartOptions参数
         this.context.startAbility(want, options, (err: BusinessError) => {
           if (err.code) {
             // 处理业务逻辑错误

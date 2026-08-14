@@ -1345,7 +1345,7 @@ try {
 
 deleteInvalidForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;number&gt;): void
 
-Deletes invalid widgets from the list. This API uses an asynchronous callback to return the result.
+Deletes widgets that are not in the valid widget list. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.REQUIRE_FORM
 
@@ -1355,7 +1355,7 @@ Deletes invalid widgets from the list. This API uses an asynchronous callback to
 
 | Name| Type   | Mandatory| Description   |
 | ------ | ------ | ---- | ------- |
-| formIds | Array&lt;string&gt; | Yes  | List of valid widget IDs.|
+| formIds | Array&lt;string&gt; | Yes  | List of valid widgets.|
 | callback | AsyncCallback&lt;number&gt; | Yes| Callback used to return the result. If the invalid widgets are deleted, **error** is undefined and **data** is the number of widgets deleted; otherwise, **error** is an error object.|
 
 **Error codes**
@@ -1763,7 +1763,7 @@ Instructs the widgets to enable or disable updates. This API uses an asynchronou
 | Name| Type   | Mandatory| Description   |
 | ------ | ------ | ---- | ------- |
 | formIds | Array&lt;string&gt; | Yes  | List of widget IDs.|
-| isEnableUpdate | boolean | Yes  | Whether the widget can be updated.<br>**true**: The widget can be updated. **false**: The widget cannot be updated.|
+| isEnableUpdate | boolean | Yes  | Indicates whether the widget update state is enabled.<br>**true**: yes **false**: no|
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the notification is sent, **error** is undefined; otherwise, **error** is an error object.|
 
 **Error codes**
@@ -1813,7 +1813,7 @@ Instructs the widgets to enable or disable updates. This API uses a promise to r
 | Name| Type   | Mandatory| Description   |
 | ------ | ------ | ---- | ------- |
 | formIds | Array&lt;string&gt; | Yes  | List of widget IDs.|
-| isEnableUpdate | boolean | Yes  | Whether the widget can be updated.<br>**true**: The widget can be updated.<br>**false**: The widget cannot be updated.|
+| isEnableUpdate | boolean | Yes  | Instructs the widgets to enable or disable updates.<br>**true**: yes<br>**false**: no|
 
 **Return value**
 
@@ -2077,7 +2077,7 @@ Requests data from the widget provider. This API uses an asynchronous callback t
 | Name| Type   | Mandatory| Description   |
 | ------ | ------ | ---- | ------- |
 | formId | string | Yes  | Widget ID.|
-| callback | AsyncCallback\<Record\<string, Object>> | Yes  | Callback used to return the API call result and the shared data.|
+| callback | AsyncCallback\<Record\<string, Object>> | Yes  | Callback used to return the API call result and the widget provider data.|
 
 **Error codes**
 
@@ -2086,6 +2086,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 201 | Permissions denied. |
+| 202 | The application is not a system application. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | IPC connection error. |
 | 16500060 | Service connection error. |
@@ -2133,7 +2134,7 @@ Requests data from the widget provider. This API uses a promise to return the re
 
 | Type               | Description                     |
 | ------------------- | ------------------------- |
-| Promise\<Record\<string, Object>>| Promise used to return the API call result and the shared data.|
+| Promise\<Record\<string, Object>> | Promise used to return the API call result and the widget provider data.|
 
 **Error codes**
 
@@ -2142,6 +2143,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 201 | Permissions denied. |
+| 202 | The application is not a system application. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | IPC connection error. |
 | 16500060 | Service connection error. |
@@ -2265,7 +2267,7 @@ struct CardExample {
 
 setRouterProxy(formIds: Array&lt;string&gt;, proxy: Callback&lt;Want&gt;): Promise&lt;void&gt;
 
-Sets a router proxy for widgets and obtains the Want information required for redirection. This API uses a promise to return the result. This API uses a promise to return the result.
+Sets a router proxy for widgets and obtains the Want information required for redirection. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -2377,7 +2379,7 @@ Clears the router proxy set for widgets. This API uses an asynchronous callback 
 | Name  | Type                     | Mandatory| Description                                                        |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | formIds  | Array&lt;string&gt;      | Yes  | Array of widget IDs.                                              |
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the router proxy is cleared, **error** is **undefined**; otherwise, an exception is thrown.|
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **error** is **undefined**. Otherwise, an exception is thrown.|
 
 **Error codes**
 
@@ -2572,7 +2574,7 @@ try {
 
 recoverForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-Recovers widgets. This API uses an asynchronous callback to return the result.
+Recovers the specified widgets that have been recycled and updates their state to non‑recyclable. If a widget has not been recycled, its state is still updated to non‑recyclable. This API uses an asynchronous callback to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -2664,7 +2666,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formIds: string[] = ['12400633174999288'];
   formHost.recoverForms(formIds).then(() => {
-    console.info('recover forms success');
+    console.info('formHost recoverForms success');
   }).catch((err: BusinessError) => {
     console.error(`formHost recover forms error, code: ${err.code}, message: ${err.message}`);
   });
@@ -3727,4 +3729,3 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
-<!--no_check-->

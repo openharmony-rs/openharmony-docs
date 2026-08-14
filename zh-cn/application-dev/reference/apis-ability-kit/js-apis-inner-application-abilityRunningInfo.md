@@ -44,11 +44,11 @@ try {
         let abilityInfo = data[i];
         console.info(`getAbilityRunningInfos success, data: ${JSON.stringify(abilityInfo)}`);
       }
-    });
+    })
     .catch((error: BusinessError) => {
       // 处理获取Ability运行信息失败的情况
       console.error(`getAbilityRunningInfos fail, error code: ${JSON.stringify(error.code)}, error msg: ${JSON.stringify(error.message)}`);
-    })
+    });
 } catch (err) {
   let code = (err as BusinessError).code;
   let msg = (err as BusinessError).message;

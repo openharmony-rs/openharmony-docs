@@ -166,7 +166,7 @@ enum Image_CropAndScaleStrategy
 
 **描述**
 
-在同时指定desiredSize和desiredRegion时执行裁剪和缩放的策略。<br> 如果在配置解码选项[OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md)时，未填入参数Image_CropAndScaleStrategy，并且同时设置了desiredRegion和desiredSize，由于系统对于不同图片格式采用的解码算法不同，最终解码效果将略有差异。<br> 例如原始图片大小200x200，传入desiredSize:{width: 150, height: 150}，desiredRegion:{x: 0, y: 0, width: 100, height: 100}，即预期解码原图左上角1/4区域，最终将pixelMap大小缩放至150x150返回。<br> 对于jpeg、webp图片（部分dng图片解码时会优先解码图片中的jpeg预览图，在此场景下也会被视为jpeg图片格式）会先进行下采样，例如按照7/8下采样，再基于175x175的图片大小进行区域裁剪，因此最终的区域内容稍大于原图的左上角1/4区域。<br> 对于svg图片，由于是矢量图，可以任意缩放不损失清晰度，在解码时会根据desiredSize与原图Size的比例选择缩放比例，在基于缩放后的图片大小进行区域裁剪，因此最终返回的解码区域会有所差异。<br> 针对该场景，建议在解码选项同时设置了desiredRegion与desiredSize时，参数Image_CropAndScaleStrategy应传入CROP_FIRST参数保证效果一致。
+在同时指定desiredSize和desiredRegion时执行裁剪和缩放的策略。<br> 如果在配置解码选项[OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md)时，未填入参数Image_CropAndScaleStrategy，并且同时设置了desiredRegion和desiredSize，由于系统对于不同图片格式采用的解码算法不同，最终解码效果将略有差异。<br> 例如原始图片大小200x200，传入desiredSize:{width: 150, height: 150}，desiredRegion:{x: 0, y: 0, width: 100, height: 100}，即预期解码原图左上角1/4区域，最终将pixelMap大小缩放至150x150返回。<br> 对于jpeg、webp图片（部分dng图片解码时会优先解码图片中的jpeg预览图，在此场景下也会被视为jpeg图片格式）会先进行下采样，例如按照7/8下采样，再基于175x175的图片大小进行区域裁剪，因此最终的区域内容稍大于原图的左上角1/4区域。<br> 对于svg图片，由于是矢量图，可以任意缩放不损失清晰度，在解码时会根据desiredSize与原图Size的比例选择缩放比例，再基于缩放后的图片大小进行区域裁剪，因此最终返回的解码区域会有所差异。<br> 针对该场景，建议在解码选项同时设置了desiredRegion与desiredSize时，参数Image_CropAndScaleStrategy应传入CROP_FIRST参数保证效果一致。
 
 **起始版本：** 18
 
@@ -1035,7 +1035,7 @@ Image_ErrorCode OH_ImageSourceNative_CreatePixelmapUsingAllocator(OH_ImageSource
 
 使用场景：适用于调用方需要明确指定PixelMap内存类型的场景。例如，后续图像处理链路要求DMA内存时，可指定IMAGE_ALLOCATOR_TYPE_DMA。
 
-使用约束：source、options和pixelmap均不能为空指针。allocator需为[IMAGE_ALLOCATOR_TYPE](#image_allocator_type)中定义的有效枚举值。指定的内存类型可能受图片类型、图片大小、系统版本和设备能力限制，接口可能返回IMAGE_SOURCE_UNSUPPORTED_ALLOCATOR_TYPE。
+使用约束：source、options和pixelmap均不能为空指针。allocator需为[IMAGE_ALLOCATOR_TYPE](#image_allocator_type)中定义的有效枚举值。指定的内存类型可能受图片类型、图片大小、系统版本和设备能力限制，接口可能返回IMAGE_SOURCE_UNSUPPORTED_ALLOCATOR_TYPE。当调用方进程启用沙箱隔离，且指定IMAGE_ALLOCATOR_TYPE_DMA或由IMAGE_ALLOCATOR_TYPE_AUTO选择DMA内存时，需为该沙箱进程配置访问DMA内存相关资源的SELinux权限；否则可能因SELinux策略拦截导致接口调用阻塞或失败。
 
 资源管理：成功创建的PixelMap需要调用[OH_PixelmapNative_Destroy](capi-pixelmap-native-h.md#oh_pixelmapnative_destroy)释放。读取或写入像素数据时，不能假设每行字节数等于宽度乘以每像素字节数，应通过[OH_PixelmapImageInfo_GetRowStride](capi-pixelmap-native-h.md#oh_pixelmapimageinfo_getrowstride)获取行跨距。
 
@@ -1397,7 +1397,7 @@ Image_ErrorCode OH_ImageSourceNative_GetImagePropertyString(OH_ImageSourceNative
 | -- | -- |
 | [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被查询属性的ImageSource。 |
 | [Image_String](capi-image-nativemodule-image-string.md) *key | 被查询的属性。 |
-| char *value | 被查询属性的查询结果。输出参数。调用者需要管理内存应用程序并释放。 |
+| char *value | 被查询属性的查询结果。输出参数。调用者需要管理内存并释放。 |
 | size_t size | 字符串长度。 |
 
 **返回：**
@@ -1435,7 +1435,7 @@ Image_ErrorCode OH_ImageSourceNative_GetImagePropertyIntArray(OH_ImageSourceNati
 | -- | -- |
 | [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被查询属性的ImageSource。 |
 | [Image_String](capi-image-nativemodule-image-string.md) *key | 被查询的属性。 |
-| int32_t *value | 被查询属性的查询结果。输出参数。调用者需要管理内存应用程序并释放。 |
+| int32_t *value | 被查询属性的查询结果。输出参数。调用者需要管理内存并释放。 |
 | size_t size | 字符串长度。 |
 
 **返回：**
@@ -1473,7 +1473,7 @@ Image_ErrorCode OH_ImageSourceNative_GetImagePropertyDoubleArray(OH_ImageSourceN
 | -- | -- |
 | [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被查询属性的ImageSource。 |
 | [Image_String](capi-image-nativemodule-image-string.md) *key | 被查询的属性。 |
-| double *value | 被查询属性的查询结果。输出参数。调用者需要管理内存应用程序并释放。 |
+| double *value | 被查询属性的查询结果。输出参数。调用者需要管理内存并释放。 |
 | size_t size | 数组长度。 |
 
 **返回：**
@@ -1511,7 +1511,7 @@ Image_ErrorCode OH_ImageSourceNative_GetImagePropertyBlob(OH_ImageSourceNative *
 | -- | -- |
 | [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被查询属性的ImageSource。 |
 | [Image_String](capi-image-nativemodule-image-string.md) *key | 被查询的属性。 |
-| void *value | 被查询属性的查询结果。输出参数。调用者需要管理内存应用程序并释放。 |
+| void *value | 被查询属性的查询结果。输出参数。调用者需要管理内存并释放。 |
 | size_t size | 数组长度。 |
 
 **返回：**

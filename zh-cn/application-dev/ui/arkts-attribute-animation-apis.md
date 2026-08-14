@@ -94,7 +94,7 @@ struct attrAnimateToDemo2 {
 
 相比于animateTo接口需要将属性修改封装在闭包中执行，[animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md)接口无需使用闭包，只需将其加在要做动画的可动画属性后即可。animation只要检测到其绑定的可动画属性发生变化，就会自动添加属性动画，animateTo则必须在动画闭包内改变可动画属性的值从而生成动画。
 
-<!-- @[attrAnimationDemo3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animation/template3/Index.ets) -->
+<!-- @[attrAnimationDemo3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animation/template3/Index.ets) -->  
 
 ``` TypeScript
 import { curves } from '@kit.ArkUI';
@@ -105,7 +105,7 @@ struct attrAnimationDemo3 {
   // 第一步: 声明相关状态变量
   @State rotateValue: number = 0; // 组件一旋转角度
   @State translateX: number = 0; // 组件二偏移量
-  @State opacityValue: number = 1; // 组件二透明度
+  @State opacityValue: number = 1; // 组件一、组件二透明度
 
   // 第二步：将状态变量设置到相关可动画属性接口
   build() {
@@ -130,7 +130,7 @@ struct attrAnimationDemo3 {
         this.rotateValue = this.animate ? 90 : 0;
         // 组件二的translate属性发生变化，所以会给组件二添加translate偏移动画
         this.translateX = this.animate ? 50 : 0;
-        // 父组件column的opacity属性有变化，会导致其子节点的透明度也变化，所以这里会给column和其子节点的透明度属性都添加动画
+        // 组件一、组件二的opacity属性发生变化，所以会给组件一、组件二添加透明度动画
         this.opacityValue = this.animate ? 0.6 : 1;
       })
 

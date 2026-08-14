@@ -145,7 +145,7 @@ Failed to query route navigation information.
 
 请检查当前节点是否在页面中。
 
-## 106202 传入的buffer size异常
+## 106202 传入的buffer size不足以容纳目标数据
 
 **错误信息**
 
@@ -153,7 +153,7 @@ buffer size is not large enough.
 
 **错误描述**
 
-传入的buffer size异常，单位：字节。
+传入的buffer size不足以容纳目标数据。
 
 **可能原因**
 

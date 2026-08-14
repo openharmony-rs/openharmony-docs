@@ -1,24 +1,24 @@
 # Path2D
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=0ac6eaf21c519d27b118617e6aaa0ba03069a649 translatedAt=2026-07-30T02:36:37.367Z pushedAt=2026-08-01T06:42:55.887Z -->
 
-**Path2D** allows you to describe a path through an existing path. This path can be drawn through the **stroke** or **fill** API of **Canvas**.
+A path object that supports path description and combination through its APIs, and can be drawn through the **stroke** or **fill** API of **Canvas**. **Path2D** supports path reuse, combination of multiple paths, and creation of paths based on SVG path strings. It is suitable for scenarios where the same path needs to be drawn multiple times, complex graphics need to be dynamically combined, or graphics need to be drawn based on SVG path data.
 
 >  **NOTE**
 >
->  This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+>  The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
->  The Path2D object does not support the resetting of an existing path. If a new path is required, you can create an empty Path2D object.
+>  The **Path2D** object does not support resetting an already set path. To create a new path, create an empty **Path2D** object.
 >
->  The methods of the Path2D object do not take effect for the paths set in the [CanvasRenderingContext2D](./ts-canvasrenderingcontext2d.md) and [OffscreenCanvasRenderingContext2D](./ts-offscreencanvasrenderingcontext2d.md) objects.
+>  The methods of the **Path2D** object cannot take effect on paths set in [CanvasRenderingContext2D](./ts-canvasrenderingcontext2d.md) and [OffscreenCanvasRenderingContext2D](./ts-offscreencanvasrenderingcontext2d.md) objects.
 
-## Constructor
-
-### constructor
+## constructor
 
 constructor()
 
@@ -30,7 +30,7 @@ Constructs an empty **Path2D** object.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-### constructor<sup>12+</sup>
+## constructor<sup>12+</sup>
 
 constructor(unit: LengthMetricsUnit)
 
@@ -40,15 +40,17 @@ Constructs an empty Path2D object. The unit mode of the Path2D object can be con
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type    | Mandatory|  Description  |
 | ----- | -------- | ---- | ---------- |
-| unit  | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | Yes| Unit mode of the Path2D object. The value cannot be dynamically changed once set. The configuration method is the same as that of [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md).<br>Invalid values **NaN** and **Infinity** are treated as the default value.<br>Default value: DEFAULT|
+| unit  | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | Yes | Unit mode of the **Path2D** object. Once configured, it cannot be dynamically changed. The configuration method is the same as that of [CanvasRenderingContext2D](./ts-canvasrenderingcontext2d.md).<br>Abnormal values **NaN** and **Infinity** are processed as the default value.<br>Default value: **DEFAULT**|
 
-### constructor
+## constructor
 
 constructor(path: Path2D)
 
@@ -64,9 +66,9 @@ Constructs a Path2D object using a path object.
 
 | Name | Type    | Mandatory|  Description  |
 | ----- | -------- | ---- | ---------- |
-| path | Path2D | Yes| **Path** object.|
+| path | Path2D | Yes | Path object to be copied. The newly created **Path2D** object will contain the same path data as the original path. An empty path object is created when the value is **null** or **undefined**. |
 
-### constructor<sup>12+</sup>
+## constructor<sup>12+</sup>
 
 constructor(path: Path2D, unit: LengthMetricsUnit)
 
@@ -76,16 +78,18 @@ When a path object is used to construct a Path2D object, the unit mode of the Pa
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type    | Mandatory|  Description  |
 | ----- | -------- | ---- | ---------- |
-| path | Path2D | Yes| **Path** object.|
-| unit | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | Yes| Unit mode of the Path2D object. The value cannot be dynamically changed once set. The configuration method is the same as that of [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md).<br>Invalid values **NaN** and **Infinity** are treated as the default value.<br>Default value: DEFAULT|
+| path | Path2D | Yes | **Path2D** path object to be copied. Used to create a new **Path2D** object based on an existing path. The incoming path object is not modified, and the newly created object contains a complete copy of the path. |
+| unit | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | Yes | Unit mode for configuring the **Path2D** object. It cannot be dynamically changed after configuration. The configuration method is the same as that of [CanvasRenderingContext2D](./ts-canvasrenderingcontext2d.md).<br>Abnormal values **NaN** and **Infinity** are treated as the default value.<br>Default value: **DEFAULT** |
 
-### constructor
+## constructor
 
 constructor(d: string)
 
@@ -101,9 +105,9 @@ Constructs a Path2D object using a path string that complies with the SVG path d
 
 | Name | Type    | Mandatory|  Description  |
 | ----- | -------- | ---- | ---------- |
-| d | string | Yes| Path that complies with the [SVG path syntax](ts-drawing-components-path.md#svg-path-syntax). Invalid values are treated as invalid inputs.|
+| d | string | Yes | Path string that complies with the SVG path description specification. For the format, see [SVG Path Syntax](./ts-drawing-components-path.md#svg-path-syntax). Abnormal values are treated as invalid values. |
 
-### constructor<sup>12+</sup>
+## constructor<sup>12+</sup>
 
 constructor(description: string, unit: LengthMetricsUnit)
 
@@ -113,14 +117,16 @@ Constructs a Path2D object using a path string that complies with the SVG path s
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type    | Mandatory|  Description  |
 | ----- | -------- | ---- | ---------- |
-| description | string | Yes| Path that complies with the [SVG path syntax](ts-drawing-components-path.md#svg-path-syntax). Invalid values are treated as invalid inputs.|
-| unit | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | Yes| Unit mode of the Path2D object. The value cannot be dynamically changed once set. The configuration method is the same as that of [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md).<br>Invalid values **NaN** and **Infinity** are treated as the default value.<br>Default value: DEFAULT|
+| description | string | Yes | Path string that conforms to the SVG path description specification. For details about the format, see [SVG Path Syntax](./ts-drawing-components-path.md#svg-path-syntax). Abnormal values are handled as invalid values. |
+| unit | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | Yes | Unit mode for configuring the **Path2D** object. After configuration, it cannot be dynamically changed. The configuration method is the same as that of [CanvasRenderingContext2D](./ts-canvasrenderingcontext2d.md).<br>Invalid values **NaN** and **Infinity** are handled as the default value.<br>Default value: **DEFAULT** |
 
 ## Methods
 
@@ -140,9 +146,8 @@ Adds a path to this path.
 
 | Name | Type    | Mandatory|  Description  |
 | ----- | -------- | ---- | ---------- |
-| path      | Path2D | Yes| Path to be added to this path. Unit: px.<br>The **undefined** and **null** values are treated as invalid.|
-| transform | [Matrix2D](ts-components-canvas-matrix2d.md) | No| Transformation matrix of the new path.<br>The **undefined** and **null** values are treated as invalid.<br>Default value: **null**.|
-
+| path | Path2D | Yes | Path object to be added to the current path.<br>The abnormal values **undefined** and **null** are treated as invalid values. |
+| transform | [Matrix2D](./ts-components-canvas-matrix2d.md) | No | Transformation matrix object for the added path, used to perform transformations such as translation, rotation, and scaling on the added path. Pass this parameter when graphic transformation is needed for the added path; it can be omitted when no transformation is required. If not passed, the default value is **null**, indicating that no transformation is applied to the path.<br>The abnormal values **undefined** and **null** are treated as invalid values.<br>Default value: **null** |
 
 **Example**
 
@@ -153,7 +158,7 @@ Adds a path to this path.
   struct AddPath {
     private settings: RenderingContextSettings = new RenderingContextSettings(true);
     private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
-    private path2Da: Path2D = new Path2D("M250 150 L150 350 L350 350 Z");
+    private path2Da: Path2D = new Path2D('M250 150 L150 350 L350 350 Z');
     private path2Db: Path2D = new Path2D();
 
     build() {
@@ -174,7 +179,6 @@ Adds a path to this path.
   ```
 
   ![addPath](figures/addPath.png)
-
 
 ### closePath
 
@@ -219,8 +223,7 @@ Moves the current point of the path back to the start point of the path, and dra
   }
   ```
 
-  ![closePath2](figures/closePath2.png)
-
+  ![closePath](figures/closePath.png)
 
 ### moveTo
 
@@ -236,10 +239,10 @@ Moves the current coordinate point of the path to the target point, without draw
 
 **Parameters**
 
-| Name  | Type    | Mandatory| Description      |
+| Name | Type | Mandatory | Description |
 | ---- | ------ | ---- | -------- |
-| x    | number | Yes| X coordinate of the target point.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp.|
-| y    | number | Yes| Y coordinate of the target point.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp.|
+| x | number | Yes | X-axis coordinate of the target point.<br>Before API version 18, when **NaN** or **Infinity** is set, the entire path is not displayed; when **null** or **undefined** is set, the current API does not take effect. In API version 18 and later, when **NaN**, **Infinity**, **null**, or **undefined** is set, the current API does not take effect, and other path methods with valid parameters are drawn normally.<br>Default unit: vp |
+| y | number | Yes | Y-axis coordinate of the target point.<br>Before API version 18, when **NaN** or **Infinity** is set, the entire path is not displayed; when **null** or **undefined** is set, the current API does not take effect. In API version 18 and later, when **NaN**, **Infinity**, **null**, or **undefined** is set, the current API does not take effect, and other path methods with valid parameters are drawn normally.<br>Default unit: vp |
 
 > **NOTE**
 >
@@ -279,7 +282,6 @@ Moves the current coordinate point of the path to the target point, without draw
   ```
 
   ![moveTo3](figures/moveTo3.png)
-
 
 ### lineTo
 
@@ -334,7 +336,6 @@ Draws a straight line from the current point to the target point.
 
   ![lineTo3](figures/lineTo3.png)
 
-
 ### bezierCurveTo
 
 bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): void
@@ -351,12 +352,12 @@ Draws a cubic Bezier curve on the canvas.
 
 | Name | Type    | Mandatory|  Description  |
 | ----- | -------- | ---- | ---------- |
-| cp1x | number | Yes| X coordinate of the first parameter of the bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp.|
-| cp1y | number | Yes| Y coordinate of the first parameter of the bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp.|
-| cp2x | number | Yes| X coordinate of the second parameter of the bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp.|
-| cp2y | number | Yes| Y coordinate of the second parameter of the bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp.|
-| x    | number | Yes| X coordinate of the end point on the bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp.   |
-| y    | number | Yes| Y coordinate of the end point on the bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp.   |
+| cp1x | number | Yes | X-coordinate of the first Bezier control point.<br>Before API version 18, when this parameter is set to **NaN** or **Infinity**, the entire path is not displayed; when set to **null** or **undefined**, the current API does not take effect. Since API version 18, when this parameter is set to **NaN**, **Infinity**, **null**, or **undefined**, the current API does not take effect, and other path methods with valid parameters are drawn normally.<br>Default unit: vp |
+| cp1y | number | Yes | Y-coordinate of the first Bezier control point.<br>Before API version 18, when this parameter is set to **NaN** or **Infinity**, the entire path is not displayed; when set to **null** or **undefined**, the current API does not take effect. Since API version 18, when this parameter is set to **NaN**, **Infinity**, **null**, or **undefined**, the current API does not take effect, and other path methods with valid parameters are drawn normally.<br>Default unit: vp |
+| cp2x | number | Yes | X-coordinate of the second Bezier control point.<br>Before API version 18, when this parameter is set to **NaN** or **Infinity**, the entire path is not displayed; when set to **null** or **undefined**, the current API does not take effect. Since API version 18, when this parameter is set to **NaN**, **Infinity**, **null**, or **undefined**, the current API does not take effect, and other path methods with valid parameters are drawn normally.<br>Default unit: vp |
+| cp2y | number | Yes | Y-coordinate of the second Bezier control point.<br>Before API version 18, when this parameter is set to **NaN** or **Infinity**, the entire path is not displayed; when set to **null** or **undefined**, the current API does not take effect. Since API version 18, when this parameter is set to **NaN**, **Infinity**, **null**, or **undefined**, the current API does not take effect, and other path methods with valid parameters are drawn normally.<br>Default unit: vp |
+| x    | number | Yes| X coordinate of the end point on the Bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp   |
+| y    | number | Yes| Y coordinate of the end point on the bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp   |
 
 **Example**
 
@@ -377,7 +378,7 @@ Draws a cubic Bezier curve on the canvas.
           .backgroundColor('#ffff00')
           .onReady(() => {
             this.path2Db.moveTo(10, 10)
-            this.path2Db.bezierCurveTo(20, 100, 200, 100, 200, 20)
+            this.path2Db.BezierCurveTo(20, 100, 200, 100, 200, 20)
             this.context.stroke(this.path2Db)
           })
       }
@@ -387,8 +388,7 @@ Draws a cubic Bezier curve on the canvas.
   }
   ```
 
-  ![bezierCurveTo3](figures/bezierCurveTo3.png)
-
+  ![BezierCurveTo3](figures/bezierCurveTo3.png)
 
 ### quadraticCurveTo
 
@@ -406,10 +406,10 @@ Creates a quadratic Bezier curve path.
 
 | Name | Type    | Mandatory|  Description  |
 | ----- | -------- | ---- | ---------- |
-| cpx  | number | Yes| X coordinate of the bezier curve parameter.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp.|
-| cpy  | number | Yes| Y coordinate of the bezier curve parameter.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp.|
-| x    | number | Yes| X coordinate of the end point on the bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp.|
-| y    | number | Yes| Y coordinate of the end point on the bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp.|
+| cpx  | number | Yes | X coordinate of the Bezier control point.<br>Before API version 18, when **NaN** or **Infinity** is set, the entire path is not displayed; when **null** or **undefined** is set, the current API does not take effect. Since API version 18, when **NaN**, **Infinity**, **null**, or **undefined** is set, the current API does not take effect, and other path methods with valid parameters are drawn normally.<br>Default unit: vp |
+| cpy  | number | Yes | Y coordinate of the Bezier control point.<br>Before API version 18, when **NaN** or **Infinity** is set, the entire path is not displayed; when **null** or **undefined** is set, the current API does not take effect. Since API version 18, when **NaN**, **Infinity**, **null**, or **undefined** is set, the current API does not take effect, and other path methods with valid parameters are drawn normally.<br>Default unit: vp |
+| x    | number | Yes| X coordinate of the end point on the Bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp.|
+| y    | number | Yes| Y coordinate of the end point on the Bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp.|
 
 **Example**
 
@@ -432,7 +432,7 @@ Creates a quadratic Bezier curve path.
             this.path2Db.moveTo(10, 10)
             this.path2Db.quadraticCurveTo(100, 100, 200, 20)
             this.context.stroke(this.path2Db)
-        })
+          })
       }
       .width('100%')
       .height('100%')
@@ -441,7 +441,6 @@ Creates a quadratic Bezier curve path.
   ```
 
   ![quadraticCurveTo3](figures/quadraticCurveTo3.png)
-
 
 ### arc
 
@@ -461,10 +460,10 @@ Draws an arc on the canvas.
 | ----- | -------- | ---- | ---------- |
 | x                | number  | Yes| X coordinate of the center point of the arc.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp.|
 | y                | number  | Yes| Y coordinate of the center point of the arc.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp.|
-| radius           | number  | Yes| Radius of the arc.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp.   |
-| startAngle       | number  | Yes| Start radian of the arc.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Unit: radian.  |
-| endAngle         | number  | Yes| End radian of the arc.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Unit: radian.  |
-| counterclockwise | boolean | No| Whether to draw the arc counterclockwise.<br>true: Draw the arc counterclockwise.<br>false: Draw the arc clockwise.<br>Default value: false. If null or undefined is set, the default value is used. |
+| radius           | number  | Yes | Radius of the arc circle. Value range: [0, +∞).<br>Before API version 18, when **NaN** or **Infinity** is set, the entire path is not displayed; when **null** or **undefined** is set, the current API does not take effect. Since API version 18, when **NaN**, **Infinity**, **null**, or **undefined** is set, the current API does not take effect, and other path methods with valid parameters are drawn normally.<br>Default unit: vp.    |
+| startAngle       | number  | Yes | Start radian of the arc.<br>Before API version 18, when **NaN** or **Infinity** is set, the entire path is not displayed; when **null** or **undefined** is set, the current API does not take effect. Since API version 18, when **NaN**, **Infinity**, **null**, or **undefined** is set, the current API does not take effect, and other path methods with valid parameters are drawn normally.<br>Default unit: radian.   |
+| endAngle         | number  | Yes | End radian of the arc.<br>Before API version 18, when **NaN** or **Infinity** is set, the entire path is not displayed; when **null** or **undefined** is set, the current API does not take effect. Since API version 18, when **NaN**, **Infinity**, **null**, or **undefined** is set, the current API does not take effect, and other path methods with valid parameters are drawn normally.<br>Default unit: radian.   |
+| counterclockwise | boolean | No| Whether to draw the arc counterclockwise.<br>**true**: Draw the arc counterclockwise.<br>**false**: Draw the arc clockwise.<br>Default value: **false**. If **null** or **undefined** is set, the default value is used. |
 
 **Example**
 
@@ -496,12 +495,11 @@ Draws an arc on the canvas.
 
   ![arc](figures/arc.png)
 
-
 ### arcTo
 
 arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void
 
-Draws an arc based on the radius and points on the arc.
+Creates an arc path based on the control points and arc radius. The control points (x1, y1) and (x2, y2) are used to determine the tangent direction of the arc.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -517,7 +515,7 @@ Draws an arc based on the radius and points on the arc.
 | y1     | number | Yes| Y coordinate of the first point on the arc.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp.|
 | x2     | number | Yes| X coordinate of the second point on the arc.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp.|
 | y2     | number | Yes| Y coordinate of the second point on the arc.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp.|
-| radius | number | Yes| Radius of the arc.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp.|
+| radius | number | Yes | Radius of the arc. Value range: [0, +∞).<br>Before API version 18, when **NaN** or **Infinity** is set, the entire path is not displayed; when **null** or **undefined** is set, the current API does not take effect. Since API version 18, when **NaN**, **Infinity**, **null**, or **undefined** is set, the current API does not take effect, and other path methods with valid parameters are drawn normally.<br>Default unit: vp |
 
 **Example**
 
@@ -550,12 +548,11 @@ Draws an arc based on the radius and points on the arc.
 
   ![arcTo2](figures/arcTo2.png)
 
-
 ### ellipse
 
 ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number, startAngle: number, endAngle: number, counterclockwise?: boolean): void
 
-Draws an ellipse in the specified rectangular region on the canvas.
+Draws an ellipse path at the specified center point with the given x-axis radius, y-axis radius, and rotation angle.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -569,12 +566,12 @@ Draws an ellipse in the specified rectangular region on the canvas.
 | ----- | -------- | ---- | ---------- |
 | x                | number  | Yes | X coordinate of the ellipse center.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp.|
 | y                | number  | Yes | Y coordinate of the ellipse center.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp.|
-| radiusX          | number  | Yes | Radius of the ellipse on the x-axis.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp.|
-| radiusY          | number  | Yes | Radius of the ellipse on the y-axis.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp.|
-| rotation         | number  | Yes | Rotation angle of the ellipse.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Unit: radian                          |
-| startAngle       | number  | Yes | Angle of the start point for drawing the ellipse.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Unit: radian                       |
-| endAngle         | number  | Yes | Angle of the end point for drawing the ellipse.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Unit: radian                       |
-| counterclockwise | boolean | No | Whether to draw the ellipse counterclockwise.<br>true: Draw an ellipse in the counterclockwise direction.<br>false: Draw an ellipse in the clockwise direction.<br>Default value: false. If null or undefined is set, the default value is used.|
+| radiusX          | number  | Yes  | Radius length of the ellipse on the x-axis. Value range: [0, +∞).<br>Before API version 18, when **NaN** or **Infinity** is set, the entire path is not displayed; when **null** or **undefined** is set, the current API does not take effect. Since API version 18, when **NaN**, **Infinity**, **null**, or **undefined** is set, the current API does not take effect, and other path methods with valid parameters are drawn normally.<br>Default unit: vp|
+| radiusY          | number  | Yes  | Radius length of the ellipse on the y-axis. Value range: [0, +∞).<br>Before API version 18, when **NaN** or **Infinity** is set, the entire path is not displayed; when **null** or **undefined** is set, the current API does not take effect. Since API version 18, when **NaN**, **Infinity**, **null**, or **undefined** is set, the current API does not take effect, and other path methods with valid parameters are drawn normally.<br>Default unit: vp|
+| rotation         | number  | Yes  | Rotation angle of the ellipse.<br>Before API version 18, when **NaN** or **Infinity** is set, the entire path is not displayed; when **null** or **undefined** is set, the current API does not take effect. Since API version 18, when **NaN**, **Infinity**, **null**, or **undefined** is set, the current API does not take effect, and other path methods with valid parameters are drawn normally.<br>Default unit: radian                           |
+| startAngle       | number  | Yes  | Starting angle for drawing the ellipse.<br>Before API version 18, when **NaN** or **Infinity** is set, the entire path is not displayed; when **null** or **undefined** is set, the current API does not take effect. Since API version 18, when **NaN**, **Infinity**, **null**, or **undefined** is set, the current API does not take effect, and other path methods with valid parameters are drawn normally.<br>Default unit: radian                        |
+| endAngle         | number  | Yes  | Ending angle for drawing the ellipse.<br>Before API version 18, when **NaN** or **Infinity** is set, the entire path is not displayed; when **null** or **undefined** is set, the current API does not take effect. Since API version 18, when **NaN**, **Infinity**, **null**, or **undefined** is set, the current API does not take effect, and other path methods with valid parameters are drawn normally.<br>Default unit: radian                        |
+| counterclockwise | boolean | No | Whether to draw the ellipse counterclockwise.<br>**true**: Draw an ellipse in the counterclockwise direction.<br>**false**: Draw an ellipse in the clockwise direction.<br>Default value: **false**. If **null** or **undefined** is set, the default value is used.|
 
 **Example**
 
@@ -606,12 +603,15 @@ Draws an ellipse in the specified rectangular region on the canvas.
 
   ![ellipse](figures/ellipse.png)
 
-
 ### rect
 
 rect(x: number, y: number, w: number, h: number): void
 
 Creates a rectangle on the canvas.
+
+>  **NOTE**
+>
+>  To create a rounded rectangle path, use the [roundRect](#roundrect20) method.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -625,8 +625,8 @@ Creates a rectangle on the canvas.
 | ----- | -------- | ---- | ---------- |
 | x    | number | Yes| X coordinate of the upper left corner of the rectangle.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp.|
 | y    | number | Yes| Y coordinate of the upper left corner of the rectangle.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp.|
-| w    | number | Yes| Width of the rectangle.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp.|
-| h    | number | Yes| Height of the rectangle.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp.|
+| w    | number | Yes | Width of the rectangle. A negative value draws the rectangle to the left.<br>Before API version 18, when **NaN** or **Infinity** is set, the entire path is not displayed; when **null** or **undefined** is set, the current API does not take effect. Since API version 18, when **NaN**, **Infinity**, **null**, or **undefined** is set, the current API does not take effect, and other path methods with valid parameters are drawn normally.<br>To draw a complete rectangle, value range: [-x, Canvas width - x].<br>Default unit: vp |
+| h    | number | Yes | Height of the rectangle. A negative value draws the rectangle upward.<br>Before API version 18, when **NaN** or **Infinity** is set, the entire path is not displayed; when **null** or **undefined** is set, the current API does not take effect. Since API version 18, when **NaN**, **Infinity**, **null**, or **undefined** is set, the current API does not take effect, and other path methods with valid parameters are drawn normally.<br>To draw a complete rectangle, value range: [-y, Canvas height - y].<br>Default unit: vp |
 
 **Example**
 
@@ -668,25 +668,27 @@ Creates a rounded rectangle path. This method does not directly render the conte
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name  | Type    | Mandatory  | Description           |
 | ---- | ------ | ---- | ------------- |
-| x    | number | Yes   | X coordinate of the upper left corner of the rectangle.<br>If the value is null, the value 0 is used. If the value is undefined, the value is invalid and no drawing is performed.<br>To draw a complete rectangle, the options are as follows: [0, Canvas width)<br>Default unit: vp.|
-| y    | number | Yes   | Y coordinate of the upper left corner of the rectangle.<br>If the value is null, 0 is used. If the value is undefined, it is regarded as an invalid value and no drawing is performed.<br>To draw a complete rectangle, the value range is [0, Canvas height).<br>Default unit: vp.|
-| w    | number | Yes   | Width of the rectangle. A negative value indicates that the rectangle is drawn from right to left.<br>If the value is null, 0 is used. If the value is undefined, it is regarded as an invalid value and no drawing is performed.<br>To draw a complete rectangle, the value range is [-x, Canvas width - x].<br>Default unit: vp.|
-| h    | number | Yes   | Height of the rectangle. A negative value indicates that the rectangle is drawn from bottom to top.<br>If the value is null, 0 is used. If the value is undefined, it is regarded as an invalid value and no drawing is performed.<br>To draw a complete rectangle, the value range is [-y, Canvas height - y].<br>Default unit: vp.|
-| radii | number \| Array\<number> | No| Number or list of the arc radius used for the rectangle corner.<br>If the parameter type is number, the arc radius of all rectangle corners is the number.<br>If the parameter type is Array\<number>, the number is 1 to 4.<br>[Arc radius of all rectangle corners]<br>[Arc radius of the upper left and lower right rectangle corners, and arc radius of the upper right and lower left rectangle corners]<br>[Arc radius of the upper left rectangle corner, arc radius of the upper right and lower left rectangle corners, and arc radius of the lower right rectangle corner]<br>[Arc radius of the upper left rectangle corner, arc radius of the upper right rectangle corner, arc radius of the lower right rectangle corner, and arc radius of the lower left rectangle corner]<br>If the value of radii is negative or the number of lists is not within the range of [1, 4], error code 103701 is reported.<br>Default value: 0. If the value is null or undefined, the default value is used.<br>If the arc radius exceeds the width and height of the rectangle, the arc radius is scaled proportionally to the width and height.<br>Default unit: vp.|
+| x    | number | Yes    | X coordinate of the top-left corner of the rectangle.<br>**null** is treated as **0**. **undefined** is treated as an invalid value, and no drawing is performed.<br>When **NaN** or **Infinity** is set, the current API does not take effect, and other path methods with valid parameters are drawn normally.<br>To draw a complete rectangle, the value range is [0, Canvas width).<br>Default unit: vp |
+| y    | number | Yes    | Y coordinate of the top-left corner of the rectangle.<br>**null** is treated as **0**. **undefined** is treated as an invalid value, and no drawing is performed.<br>When **NaN** or **Infinity** is set, the current API does not take effect, and other path methods with valid parameters are drawn normally.<br>To draw a complete rectangle, the value range is [0, Canvas height).<br>Default unit: vp |
+| w    | number | Yes    | Width of the rectangle. A negative value draws to the left.<br>**null** is treated as **0**. **undefined** is treated as an invalid value, and no drawing is performed.<br>When **NaN** or **Infinity** is set, the current API does not take effect, and other path methods with valid parameters are drawn normally.<br>To draw a complete rectangle, the value range is [-x, Canvas width - x].<br>Default unit: vp |
+| h    | number | Yes    | Height of the rectangle. A negative value draws upward.<br>**null** is treated as **0**. **undefined** is treated as an invalid value, and no drawing is performed.<br>When **NaN** or **Infinity** is set, the current API does not take effect, and other path methods with valid parameters are drawn normally.<br>To draw a complete rectangle, the value range is [-y, Canvas height - y].<br>Default unit: vp |
+| radii | number \| Array\<number> | No | Number or array specifying the arc radii of the rectangle corners.<br>When the parameter type is number, the arc radius of all rectangle corners is set to this number.<br>When the parameter type is Array\<number>, the array length ranges from 1 to 4, and the radii are set as follows:<br>[Arc radii of all rectangle corners]<br>[Arc radii of the top-left and bottom-right corners, arc radii of the top-right and bottom-left corners]<br>[Arc radius of the top-left corner, arc radii of the top-right and bottom-left corners, arc radius of the bottom-right corner]<br>[Arc radius of the top-left corner, arc radius of the top-right corner, arc radius of the bottom-right corner, arc radius of the bottom-left corner]<br>If radii contains negative numbers or the array length is 0 or greater than 4, an exception is thrown. Error code: 103701.<br>Default value: **0**. **null** and **undefined** are treated as the default value.<br>If the arc radius exceeds the width or height of the rectangle, it is scaled down proportionally to the width or height.<br>Default unit: vp |
 
 **Error codes**
 
 For details about the following error codes, see [Canvas Error Codes](../errorcode-canvas.md).
 
-| ID| Error Message| Possible Causes|
-| -------- | -------- | -------- |
-| 103701   | Parameter error.| 1. The param radii is a list that has zero or more than four elements; 2. The param radii contains negative value. |
+| ID | Error Message |
+| -------- | -------- |
+| 103701 | Parameter error. Possible causes:<br> 1. The param radii is a list that has zero or more than four elements.<br> 2. The param radii contains negative value.|
 
 **Example**
 

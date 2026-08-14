@@ -116,7 +116,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 let rect = drawing.RectUtils.makeLtrb(10, 10, 20, 20);
 let rect2 = drawing.RectUtils.makeCopy(rect);
-console.info('rect2.left:', rect2.left);
+console.info('rect2.left: ', rect2.left);
 console.info('rect2.top: ', rect2.top);
 console.info('rect2.right: ', rect2.right);
 console.info('rect2.bottom: ', rect2.bottom);
@@ -237,7 +237,7 @@ static centerY(rect: common2D.Rect): number
 import { drawing } from '@kit.ArkGraphics2D';
 
 let rect = drawing.RectUtils.makeLtrb(20, 30, 30, 40);
-let x = drawing.RectUtils.centerY(rect);
+let y = drawing.RectUtils.centerY(rect);
 ```
 
 ## contains<sup>20+</sup>
@@ -303,7 +303,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 let rect = drawing.RectUtils.makeLtrb(0, 0, 100, 100);
 let isContains = drawing.RectUtils.contains(rect, 10, 20, 30, 40);
-console.info('isContains:', isContains);
+console.info('isContains: ', isContains);
 ```
 
 ## contains<sup>20+</sup>
@@ -363,7 +363,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 let rect = drawing.RectUtils.makeLtrb(10, 10, 20, 20);
 drawing.RectUtils.inset(rect, 10, -20, 30, 60);
-console.info('rect.left:', rect.left);
+console.info('rect.left: ', rect.left);
 console.info('rect.top: ', rect.top);
 console.info('rect.right: ', rect.right);
 console.info('rect.bottom: ', rect.bottom);
@@ -398,8 +398,8 @@ import { drawing } from '@kit.ArkGraphics2D';
 let rect = drawing.RectUtils.makeLtrb(0, 0, 20, 20);
 let rect2 = drawing.RectUtils.makeLtrb(10, 10, 40, 40);
 let isIntersect = drawing.RectUtils.intersect(rect, rect2);
-console.info('isIntersect:', isIntersect);
-console.info('rect.left:', rect.left);
+console.info('isIntersect: ', isIntersect);
+console.info('rect.left: ', rect.left);
 console.info('rect.top: ', rect.top);
 console.info('rect.right: ', rect.right);
 console.info('rect.bottom: ', rect.bottom);
@@ -460,7 +460,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 let rect = drawing.RectUtils.makeLtrb(0, 0, 20, 20);
 let rect2 = drawing.RectUtils.makeLtrb(10, 10, 40, 40);
 drawing.RectUtils.union(rect, rect2);
-console.info('rect.left:', rect.left);
+console.info('rect.left: ', rect.left);
 console.info('rect.top: ', rect.top);
 console.info('rect.right: ', rect.right);
 console.info('rect.bottom: ', rect.bottom);
@@ -522,7 +522,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 let rect = drawing.RectUtils.makeLtrb(0, 0, 20, 20);
 drawing.RectUtils.offset(rect, 10, 20);
-console.info('rect.left:', rect.left);
+console.info('rect.left: ', rect.left);
 console.info('rect.top: ', rect.top);
 console.info('rect.right: ', rect.right);
 console.info('rect.bottom: ', rect.bottom);
@@ -551,7 +551,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 let rect = drawing.RectUtils.makeLtrb(20, 20, 40, 40);
 drawing.RectUtils.offsetTo(rect, 10, 20);
-console.info('rect.left:', rect.left);
+console.info('rect.left: ', rect.left);
 console.info('rect.top: ', rect.top);
 console.info('rect.right: ', rect.right);
 console.info('rect.bottom: ', rect.bottom);
@@ -580,7 +580,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 let rect = drawing.RectUtils.makeLtrb(10, 20, 30, 40);
 let rect2 = drawing.RectUtils.makeEmpty();
 drawing.RectUtils.setRect(rect2, rect);
-console.info('rect2.left:', rect2.left);
+console.info('rect2.left: ', rect2.left);
 console.info('rect2.top: ', rect2.top);
 console.info('rect2.right: ', rect2.right);
 console.info('rect2.bottom: ', rect2.bottom);
@@ -611,7 +611,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 let rect = drawing.RectUtils.makeEmpty();
 drawing.RectUtils.setLtrb(rect, 10, 20, 30, 60);
-console.info('rect.left:', rect.left);
+console.info('rect.left: ', rect.left);
 console.info('rect.top: ', rect.top);
 console.info('rect.right: ', rect.right);
 console.info('rect.bottom: ', rect.bottom);
@@ -638,7 +638,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 let rect = drawing.RectUtils.makeLtrb(10, 20, 20, 30);
 drawing.RectUtils.setEmpty(rect);
-console.info('rect.left:', rect.left);
+console.info('rect.left: ', rect.left);
 console.info('rect.top: ', rect.top);
 console.info('rect.right: ', rect.right);
 console.info('rect.bottom: ', rect.bottom);
@@ -667,7 +667,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 let rect = drawing.RectUtils.makeLtrb(20, 40, 30, 30);
 drawing.RectUtils.sort(rect);
-console.info('rect.left:', rect.left);
+console.info('rect.left: ', rect.left);
 console.info('rect.top: ', rect.top);
 console.info('rect.right: ', rect.right);
 console.info('rect.bottom: ', rect.bottom);

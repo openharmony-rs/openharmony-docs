@@ -5,9 +5,10 @@
 <!--Owner: @li-weifeng2024; @xuzhihao666-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=f49b12145b93fb1a0a3564baf1cfde447ea3a867 translatedAt=2026-07-29T01:30:49.827Z pushedAt=2026-07-30T03:36:42.439Z -->
 
-**AbilityDelegatorRegistry**, a module of the automatic test framework, is used to obtain [AbilityDelegator](js-apis-inner-application-abilityDelegator.md) and [AbilityDelegatorArgs](js-apis-inner-application-abilityDelegatorArgs.md) objects. **AbilityDelegator** provides APIs for creating [AbilityMonitor](../apis-ability-kit/js-apis-inner-application-abilityMonitor.md#abilitymonitor-1) objects, which can be used to listen for ability lifecycle changes. **AbilityDelegatorArgs** provides APIs for obtaining test parameters.
+**AbilityDelegatorRegistry**, a module of the automatic test framework, is used to obtain [AbilityDelegator](js-apis-inner-application-abilityDelegator.md) and [AbilityDelegatorArgs](js-apis-inner-application-abilityDelegatorArgs.md)objects. With this module, you can use the [AbilityDelegator](js-apis-inner-application-abilityDelegator.md) object to add a [AbilityMonitor](../apis-ability-kit/js-apis-inner-application-abilityMonitor.md#abilitymonitor-1) object to monitor the lifecycle status changes of a specified ability. In addition, you can use the [AbilityDelegatorArgs](js-apis-inner-application-abilityDelegatorArgs.md) object to read the current test parameters. This module is applicable to automated testing scenarios, which can help you accurately capture lifecycle changes of abilities, improving testing efficiency and accuracy.
 
 > **NOTE**
 > 
@@ -23,11 +24,10 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 
 ## AbilityLifecycleState
 
-Enumerates the ability lifecycle states. It can be used in [getAbilityState(ability)](js-apis-inner-application-abilityDelegator.md#getabilitystate9) of [AbilityDelegator](js-apis-inner-application-abilityDelegator.md) to return different ability lifecycle states.
+Enumerates the ability lifecycle states. It can be used in [getAbilityState](js-apis-inner-application-abilityDelegator.md#getabilitystate9) of [AbilityDelegator](js-apis-inner-application-abilityDelegator.md) to return different ability lifecycle states.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 | Name         | Value  | Description                       |
 | ------------- | ---- | --------------------------- |
@@ -41,7 +41,7 @@ Enumerates the ability lifecycle states. It can be used in [getAbilityState(abil
 
 getAbilityDelegator(): AbilityDelegator
 
-Obtains an [AbilityDelegator](js-apis-inner-application-abilityDelegator.md) object.
+Obtains an [AbilityDelegator](js-apis-inner-application-abilityDelegator.md) object. This object can be used to schedule the test framework and perform related test functions.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -51,7 +51,7 @@ Obtains an [AbilityDelegator](js-apis-inner-application-abilityDelegator.md) obj
 
 | Type                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [AbilityDelegator](js-apis-inner-application-abilityDelegator.md) | [AbilityDelegator](js-apis-inner-application-abilityDelegator.md) object, which can be used to schedule the functionalities of the test framework.|
+| [AbilityDelegator](js-apis-inner-application-abilityDelegator.md) | **AbilityDelegator** object used to schedule the functionalities of the test framework. |
 
 **Example**
 
@@ -59,12 +59,15 @@ Obtains an [AbilityDelegator](js-apis-inner-application-abilityDelegator.md) obj
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { Want } from '@kit.AbilityKit';
 
+// Obtain the AbilityDelegator object of the application.
 let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+// Construct a Want parameter to specify the target ability.
 let want: Want = {
   bundleName: 'com.example.myapplication',
   abilityName: 'EntryAbility'
 };
 
+// Start the specified ability.
 abilityDelegator.startAbility(want, (err) => {
   if (err) {
     console.error(`Failed start ability, error: ${JSON.stringify(err)}`);
@@ -95,7 +98,9 @@ Obtains an [AbilityDelegatorArgs](js-apis-inner-application-abilityDelegatorArgs
 ```ts
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 
+// Obtain the AbilityDelegatorArgs object of the application.
 let args = abilityDelegatorRegistry.getArguments();
+// Print the test parameter information.
 console.info(`getArguments bundleName: ${args.bundleName}`);
 console.info(`getArguments parameters: ${JSON.stringify(args.parameters)}`);
 console.info(`getArguments testCaseNames: ${args.testCaseNames}`);
@@ -134,7 +139,7 @@ Provides the capability of obtaining an **AbilityDelegatorArgs** object during t
 
 type AbilityMonitor = _AbilityMonitor
 
-Provides input parameters of [addAbilityMonitor](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#addabilitymonitor9) in **abilityDelegator** to listen for lifecycle changes of a UIAbility.
+Serves as an input parameter of [addAbilityMonitor](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#addabilitymonitor9) to listen for lifecycle changes of a UIAbility.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -148,7 +153,7 @@ Provides input parameters of [addAbilityMonitor](../apis-test-kit/js-apis-inner-
 
 type ShellCmdResult = _ShellCmdResult
 
-Provides the shell command execution result.
+Provides the shell command execution result. It can be used to execute shell commands and obtain the execution result, including the return code and standard output, during automated testing.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

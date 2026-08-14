@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -50,7 +50,7 @@ switchInputMethod(bundleName: string, subtypeId?: string): Promise&lt;void&gt;
 | -------- | -------------------------------------- |
 | 201      | permissions check fails.  |
 | 202      | not system application.  |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -73,6 +73,7 @@ async function switchInputMethodWithSubtype() {
   } catch (err) {
     console.error(`Failed to switchInputMethod. Code: ${err.code}, message: ${err.message}`);
   }
+  // 3. 获取当前输入法子类型
   const currentSubtype: InputMethodSubtype | undefined = inputMethod.getCurrentInputMethodSubtype();
   if (!currentSubtype) {
     console.error("Failed to get current input subtype");
@@ -246,7 +247,7 @@ isPanelShown(panelInfo: PanelInfo): boolean
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 202      | not system application.  |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **示例：**
@@ -299,7 +300,6 @@ isPanelShown(panelInfo: PanelInfo, displayId: number): boolean
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 202      | not system application.  |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **示例：**
@@ -356,7 +356,7 @@ enableInputMethod(bundleName: string, extensionName: string, enabledState: Enabl
 | 201      | permissions check fails. |
 | 202      | not system application. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception.  |
-| 12800018 | the input method is not found. |
+| 12800018 | input method is not found. |
 | 12800019 | current operation cannot be applied to the preconfigured default input method. |
 
 **示例：**
@@ -422,7 +422,7 @@ getCursorInfo(userId?: number): CursorInfo
 | -------- | -------------------------------------- |
 | 202      | not system application. |
 | 12800003 | input method client error. Possible causes: 1. No edit box is bound to the current input method application under the specified user. |
-| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800008 | input method manager service error. Possible causes: a system error, such as null pointer, IPC exception. |
 | 12800023 | the specified user does not exist. |
 | 12800024 | the specified user is not in the foreground. |
 | 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
@@ -1043,7 +1043,7 @@ getInputMethodsSync(enable: boolean, userId?: number): Array&lt;InputMethodPrope
 
 | 参数名 | 类型    | 必填 | 说明                    |
 | ------ | ------- | ---- | ----------------------- |
-| enable | boolean | 是   |- true表示返回已激活输入法列表，false表示返回未激活输入法列表。 |
+| enable | boolean | 是   |是否激活输入法列表：<br>- true表示返回已激活输入法列表。<br>- false表示返回未激活输入法列表。 |
 | userId | number | 否 | 用户ID。取值范围为有效用户的ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
 
 **返回值：**

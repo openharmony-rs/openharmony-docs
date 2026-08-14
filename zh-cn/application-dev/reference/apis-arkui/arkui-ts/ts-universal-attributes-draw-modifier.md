@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块接口仅可在Stage模型下使用。
 
@@ -46,7 +46,11 @@ drawModifier(modifier: DrawModifier | undefined): T
 
 ## DrawModifier
 
-DrawModifier可设置遮罩层前景（drawOverlay）、前景（drawForeground）、内容前景（drawFront）、内容（drawContent）和内容背景（drawBehind）的绘制方法，还提供主动触发重绘的方法[invalidate](#invalidate)。每个DrawModifier实例只能设置到一个组件上，禁止重复设置。
+DrawModifier可设置遮罩层（drawOverlay<sup>23+</sup>）、前景（drawForeground<sup>20+</sup>）、内容前景（drawFront）、内容（drawContent）和内容背景（drawBehind）的绘制方法，还提供主动触发重绘的方法[invalidate](#invalidate)。每个DrawModifier实例只能设置到一个组件上，禁止重复设置。
+
+> **说明：**
+>
+> 绘制顺序从下到上依次为：内容背景（drawBehind）→ 内容（drawContent）→ 内容前景（drawFront）→ 前景（drawForeground）→ 遮罩层（drawOverlay）。每个层级独立绘制，各层级方法可选实现。
 
 自定义层级示例图
 
@@ -60,7 +64,7 @@ DrawModifier可设置遮罩层前景（drawOverlay）、前景（drawForeground�
 
 drawFront?(drawContext: DrawContext): void
 
-自定义绘制内容前景的接口，若重载该方法则可进行内容前景的自定义绘制。该接口的[DrawContext](../js-apis-arkui-graphics.md#drawcontext)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见[调整自定义绘制Canvas的变换矩阵](../../../ui/arkts-user-defined-extension-drawModifier.md#调整自定义绘制canvas的变换矩阵)。
+自定义绘制内容前景的接口，若重载该方法则可进行内容前景的自定义绘制。内容前景位于内容和前景之间，适用于需要在组件内容之上、组件前景之下添加绘制内容的场景。该接口的[DrawContext](../js-apis-arkui-graphics.md#drawcontext)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见[调整自定义绘制Canvas的变换矩阵](../../../ui/arkts-user-defined-extension-drawModifier.md#调整自定义绘制canvas的变换矩阵)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -80,7 +84,7 @@ drawFront?(drawContext: DrawContext): void
 
 drawContent?(drawContext: DrawContext): void
 
-自定义绘制内容的接口，若重载该方法则可进行内容的自定义绘制，会替换组件原本的内容绘制函数。该接口的[DrawContext](../js-apis-arkui-graphics.md#drawcontext)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见[调整自定义绘制Canvas的变换矩阵](../../../ui/arkts-user-defined-extension-drawModifier.md#调整自定义绘制canvas的变换矩阵)。
+自定义绘制内容的接口，若重载该方法则可进行内容的自定义绘制，会替换组件原本的内容绘制函数。适用于需要完全自定义组件内容绘制、不使用组件原本内容绘制逻辑的场景。该接口的[DrawContext](../js-apis-arkui-graphics.md#drawcontext)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见[调整自定义绘制Canvas的变换矩阵](../../../ui/arkts-user-defined-extension-drawModifier.md#调整自定义绘制canvas的变换矩阵)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -100,7 +104,7 @@ drawContent?(drawContext: DrawContext): void
 
 drawBehind?(drawContext: DrawContext): void
 
-自定义绘制内容背景的接口，若重载该方法则可进行内容背景的自定义绘制。该接口的[DrawContext](../js-apis-arkui-graphics.md#drawcontext)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见[调整自定义绘制Canvas的变换矩阵](../../../ui/arkts-user-defined-extension-drawModifier.md#调整自定义绘制canvas的变换矩阵)。
+自定义绘制内容背景的接口，若重载该方法则可进行内容背景的自定义绘制。背景位于组件内容层之下，适用于需要在组件底层添加装饰性背景元素的场景。该接口的[DrawContext](../js-apis-arkui-graphics.md#drawcontext)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见[调整自定义绘制Canvas的变换矩阵](../../../ui/arkts-user-defined-extension-drawModifier.md#调整自定义绘制canvas的变换矩阵)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -140,7 +144,7 @@ drawForeground(drawContext: DrawContext): void
 
 drawOverlay(drawContext: DrawContext): void
 
-自定义绘制遮罩层的接口，若重载该方法则可进行遮罩层的自定义绘制。遮罩层位于所有绘制内容的最上层，适用于在组件所有内容之上添加蒙版效果、高亮提示、水印等场景。该接口的[DrawContext](../js-apis-arkui-graphics.md#drawcontext)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见[调整自定义绘制Canvas的变换矩阵](../../../ui/arkts-user-defined-extension-drawModifier.md#调整自定义绘制canvas的变换矩阵)。
+自定义绘制遮罩层的接口，若重载该方法则可进行遮罩层的自定义绘制。遮罩层是最上层的绘制层级，适用于需要在组件最上层添加遮罩效果（如高亮、蒙版等）的场景。该接口的[DrawContext](../js-apis-arkui-graphics.md#drawcontext)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见[调整自定义绘制Canvas的变换矩阵](../../../ui/arkts-user-defined-extension-drawModifier.md#调整自定义绘制canvas的变换矩阵)。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -228,7 +232,7 @@ invalidate(): void
 
 请参考[示例1（通过DrawModifier进行自定义绘制）](#示例1通过drawmodifier进行自定义绘制)。
 
-### DrawContext
+## DrawContext
 
 type DrawContext = import('../api/arkui/Graphics').DrawContext
 
@@ -238,7 +242,7 @@ type DrawContext = import('../api/arkui/Graphics').DrawContext
 
 | 类型                                                      | 说明                    |
 | --------------------------------------------------------- | ----------------------- |
-| import('../api/arkui/Graphics').[DrawContext](../js-apis-arkui-graphics.md#drawcontext) | 图形绘制上下文。 |
+| import('../api/arkui/Graphics').[DrawContext](../js-apis-arkui-graphics.md#drawcontext) | 图形绘制上下文，用于执行自定义绘制操作。 |
 
 ## 示例
 
@@ -370,6 +374,7 @@ struct DrawModifierExample {
       begin: 0,
       end: 2
     });
+    // 设置帧回调，动态更新缩放值并触发重绘
     this.drawAnimator.onFrame = (value: number) => {
       console.info('frame value =', value);
       const tempModifier = self.modifier as MyFullDrawModifier | MyFrontDrawModifier;

@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @BIYynNe-->
 
-如果每个组件的样式都需要单独设置，在开发过程中会出现大量代码在进行重复样式设置，虽然可以复制粘贴，但为了代码简洁性和后续方便维护，我们推出了可以提炼公共样式进行复用的装饰器\@Styles。
+如果每个组件的样式都需要单独设置，在开发过程中会出现大量代码在进行重复样式设置，虽然可以复制粘贴，但为了代码简洁性和后续方便维护，我们推出了可以提炼公共样式进行复用的装饰器[\@Styles](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-styles.md#styles)。
 
 \@Styles装饰器可以将多条样式设置提炼成一个方法，直接在组件声明的位置调用。通过\@Styles装饰器可以快速定义并复用自定义样式。
 
@@ -28,7 +28,7 @@
 
 > **说明：**
 >
-> 只能在当前文件内使用@Styles，不支持export。
+> 只能在当前文件内使用\@Styles，不支持export。
 >
 > 若需要实现样式导出，推荐使用[AttributeModifier](../../ui/arkts-user-defined-extension-attributeModifier.md)。
 
@@ -88,7 +88,7 @@ struct FancyUse {
   }
 ```
 
-- 不支持在\@Styles方法内使用逻辑组件，逻辑组件内的属性不生效。
+- 不支持在\@Styles方法内使用条件渲染语句，条件渲染语句内的属性不生效。
 
 ``` TypeScript
   // 错误写法

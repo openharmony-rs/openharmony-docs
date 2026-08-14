@@ -6,8 +6,9 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=79e4597a11fe0470e85a7a6ec526decbb0cbcff4 translatedAt=2026-07-15T07:37:41.239Z pushedAt=2026-07-15T09:48:36.035Z -->
 
-**@Provide** and **@Consume** are used together for state management V1 to implement two-way synchronization across component levels. This is applicable to scenarios where state data needs to be transferred across multiple component levels to avoid layer-by-layer transfer. It can solve the problem of complex state transfer when there are many component levels. Variables decorated with **@Provide** are used as data sources. Bidirectional binding relationships are established between the data sources and variables decorated by **@Consume** through aliases or variable names. When a variable decorated with **@Provide** or **@Consume** changes, the change is automatically synchronized to the other decorator.
+**\@Provide** and [@Consume](./ts-state-management-consume.md) are used together for [state management V1](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1) to implement two-way synchronization across component levels. This is applicable to scenarios where state data needs to be transferred across multiple component levels to avoid layer-by-layer transfer. It can solve the problem of complex state transfer when there are many component levels. Variables decorated with **\@Provide** are used as data sources. Bidirectional binding relationships are established between the data sources and variables decorated with **\@Consume** through aliases or variable names. When a variable decorated with **\@Provide** or **\@Consume** changes, the change is automatically synchronized to the other party.
 
 For details, see [@Provide and @Consume Decorators: Two-Way Synchronization with Descendant Components](../../../ui/state-management/arkts-provide-and-consume.md).
 
@@ -29,7 +30,7 @@ const Provide: PropertyDecorator & ((value: string | ProvideOptions) => Property
 
 | Name| Type                                       | Mandatory| Description                        |
 | ------ | ------------------------------------------------- | ---- | ---------------------------- |
-| value  | string \| [ProvideOptions](#provideoptions11) | No  | Alias to be set or alias that can be overridden.<br>If the type is **string**, the value is directly used as an alias. Descendant components can access data through this alias.<br>If the type is **ProvideOptions**, the value of **allowOverride** is used as an alias, and this alias can be overridden.<br>By default, a variable name is used as an alias, and this alias cannot be overridden.|
+| value  | string \| [ProvideOptions](#provideoptions11) | No   | Used to set an alias or used as an alias that can be overridden.<br>If the type is string, the value is directly used as an alias. Descendant components can access data through this alias.<br>When the type is ProvideOptions, if **allowOverride** is set, the value will be used as an alias and the alias can be overridden; if **allowOverride** is not set, an alias is a variable name and cannot be overridden.<br>When this parameter is not specified, a variable name is used and cannot be overridden. If an **\@Provide** decorated variable is defined with the same name in this case, an error will be reported at runtime. |
 
 **Returns**
 
@@ -39,7 +40,7 @@ const Provide: PropertyDecorator & ((value: string | ProvideOptions) => Property
 
 ## ProvideOptions<sup>11+</sup>
 
-An option of the **@Provide** decorator. You can use **allowOverride** to override the alias of an **@Provide** decorated variable with the same name (if any) in the same component tree. For details, see [Support for the allowOverride Parameter](../../../ui/state-management/arkts-provide-and-consume.md#support-for-the-allowoverride-parameter).
+Options of the **\@Provide** decorator. You can use **allowOverride** to override the alias of an @Provide decorated variable with the same name in the same component tree. It is suitable for scenarios where a child component needs to override the alias of the **\@Provide** decorated variable with the same name in the parent component, improving the flexibility of cross-level state management. For details, see [Support for the allowOverride Parameter](../../../ui/state-management/arkts-provide-and-consume.md#support-for-the-allowoverride-parameter).
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
@@ -53,7 +54,7 @@ An option of the **@Provide** decorator. You can use **allowOverride** to overri
 
 | Name| Type    | Read-Only| Optional| Description                                                        |
 | ------ | -------- | ---- | ---- | ------------------------------------------------------------ |
-| allowOverride  | string   | No  | Yes  | Allows the alias of an @Provide decorated variable to be overridden. In detail, you can use this attribute to override the alias of an **@Provide** decorated variable with the same name (if any) in the same component tree.<br>By default, the alias of an **@Provide** decorated variable cannot be overridden. If you define an **@Provide** decorated variable with the same name without setting **allowOverride**, an error will be reported at runtime.|
+| allowOverride  | string   | No   | Yes   | Alias of an **\@Provide** decorated variable that can be overridden. In detail, you can use this property to override the alias of an @Provide decorated variable with the same name in the same component tree.<br>If the property is not specified, the alias of an **\@Provide** decorated variable cannot be overridden. If you define an **\@Provide** decorated variable with the same name without setting **allowOverride**, an error will be reported at runtime. |
 
 **Example:**
 
@@ -61,7 +62,7 @@ An option of the **@Provide** decorator. You can use **allowOverride** to overri
 @Entry
 @Component
 struct Index {
-  @Provide message: string = 'aaa'; // The @Provide decorated variable provides data, and the variable name 'message' is used as the alias.
+  @Provide message: string = 'aaa'; // The @Provide decorated variable provides data. If no alias is set, the variable name message is used for matching.
 
   build() {
     Column() {
@@ -73,7 +74,7 @@ struct Index {
 
 @Component
 struct Child {
-  @Consume message: string; // The @Consume decorated variable consumes the data and establishes a pairing relationship with the @Provide decorated variable using the same variable name 'message'.
+  @Consume message: string; // The @Consume decorated variable consumes data. If no alias is set, the variable name message is used to establish a pairing relationship with the @Provide decorated variable.
 
   build() {
     Column() {

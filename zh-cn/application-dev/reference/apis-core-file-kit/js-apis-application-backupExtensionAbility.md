@@ -14,6 +14,10 @@ BackupExtensionAbility模块提供备份恢复服务的扩展能力。应用接�
 >
 > - 本模块接口仅可在Stage模型下使用。
 
+## 约束限制
+
+为保障系统安全性和稳定性，防止BackupExtensionAbility滥用系统资源，系统对其能力进行管控，不支持部分模块的引用，详情请参考[附录](#附录)。
+
 ## 导入模块
 
 ```ts
@@ -463,3 +467,50 @@ class BackupExt extends BackupExtensionAbility {
   }
 }
 ```
+
+## 附录
+
+BackupExtensionAbility不支持以下模块的引用。
+
+| Kit | 模块 |
+| --- | --- |
+| Ability Kit | [@ohos.abilityAccessCtrl (程序访问控制管理)](../apis-ability-kit/js-apis-abilityAccessCtrl.md) |
+| Ability Kit | [@ohos.app.ability.appManager (应用管理)](../apis-ability-kit/js-apis-app-ability-appManager.md) |
+| <!--DelRow--> Ability Kit | [@ohos.app.ability.missionManager (missionManager)(系统接口)](../apis-ability-kit/js-apis-app-ability-missionManager-sys.md) |
+| <!--DelRow--> Ability Kit | [@ohos.app.ability.quickFixManager (quickFixManager)(系统接口)](../apis-ability-kit/js-apis-app-ability-quickFixManager-sys.md) |
+| <!--DelRow--> Ability Kit | [@ohos.application.missionManager (missionManager)(系统接口)](../apis-ability-kit/js-apis-application-missionManager-sys.md) |
+| <!--DelRow--> Ability Kit | [@ohos.bundle.appControl (appControl模块)(系统接口)](../apis-ability-kit/js-apis-appControl-sys.md) |
+| <!--DelRow--> Ability Kit | [@ohos.bundle.bundleMonitor (bundleMonitor模块)(系统接口)](../apis-ability-kit/js-apis-bundleMonitor-sys.md) |
+| Ability Kit | [@ohos.bundle.defaultAppManager (默认应用管理)](../apis-ability-kit/js-apis-defaultAppManager.md) |
+| <!--DelRow--> Ability Kit | [@ohos.bundle.distributedBundleManager (distributedBundleManager模块)(系统接口)](../apis-ability-kit/js-apis-distributedBundleManager-sys.md) |
+| <!--DelRow--> Ability Kit | [@ohos.bundle.freeInstall (freeInstall模块)(系统接口)](../apis-ability-kit/js-apis-freeInstall-sys.md) |
+| <!--DelRow--> Ability Kit | [@ohos.bundle.innerBundleManager (innerBundleManager模块)(系统接口)](../apis-ability-kit/js-apis-Bundle-InnerBundleManager-sys.md) |
+| Ability Kit | [@ohos.bundle.launcherBundleManager (launcherBundleManager模块)](../apis-ability-kit/js-apis-launcherBundleManager.md) |
+| <!--DelRow--> Ability Kit | [@ohos.distributedBundle (分布式包管理)(系统接口)](../apis-ability-kit/js-apis-Bundle-distributedBundle-sys.md) |
+| <!--DelRow--> Ability Kit | [@ohos.distributedMissionManager (分布式任务管理)(系统接口)](../apis-ability-kit/js-apis-distributedMissionManager-sys.md) |
+| <!--DelRow--> Ability Kit | [BundleInstaller (系统接口)](../apis-ability-kit/js-apis-bundle-BundleInstaller-sys.md) |
+| <!--DelRow--> Ability Kit | [ServiceExtensionContext (系统接口)](../apis-ability-kit/js-apis-inner-application-serviceExtensionContext-sys.md) |
+| Ability Kit | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) |
+| <!--DelRow--> ArkUI | [@ohos.screen (屏幕)(系统接口)](../apis-arkui/js-apis-screen-sys.md) |
+| ArkUI | [@ohos.screenshot (屏幕截图)](../apis-arkui/js-apis-screenshot.md) |
+| <!--DelRow--> ArkUI | [@ohos.window (窗口)(系统接口)](../apis-arkui/js-apis-window-sys.md) |
+| <!--DelRow--> Audio Kit | [@ohos.multimedia.audio (音频管理)(系统接口)](../apis-audio-kit/js-apis-audio-sys.md) |
+| Background Tasks Kit | [@ohos.bundleState (设备使用信息统计)](../apis-backgroundtasks-kit/js-apis-deviceUsageStatistics.md) |
+| Background Tasks Kit | [@ohos.reminderAgent (后台代理提醒)](../apis-backgroundtasks-kit/js-apis-reminderAgent.md) |
+| Background Tasks Kit | [@ohos.reminderAgentManager (后台代理提醒)](../apis-backgroundtasks-kit/js-apis-reminderAgentManager.md) |
+| <!--DelRow--> Background Tasks Kit | [@ohos.resourceschedule.usageStatistics (设备使用信息统计)(系统接口)](../apis-backgroundtasks-kit/js-apis-resourceschedule-deviceUsageStatistics-sys.md) |
+| Basic Services Kit | [@ohos.power (系统电源管理)](../apis-basic-services-kit/js-apis-power.md) |
+| <!--DelRow--> Basic Services Kit | [@ohos.update (升级)(系统接口)](../apis-basic-services-kit/js-apis-update-sys.md) |
+| Connectivity Kit | [@ohos.nfc.cardEmulation (标准NFC-cardEmulation)](../apis-connectivity-kit/js-apis-cardEmulation.md) |
+| <!--DelRow--> Core File Kit | [@ohos.file.fileAccess (公共文件访问与管理)(系统接口)](js-apis-fileAccess-sys.md) |
+| <!--DelRow--> Form Kit | [@ohos.app.form.formHost (formHost)(系统接口)](../apis-form-kit/js-apis-app-form-formHost-sys.md) |
+| Form Kit | [@ohos.application.formError (formError)](../apis-form-kit/js-apis-application-formError.md) |
+| Form Kit | [@ohos.application.formError (formError)](../apis-form-kit/js-apis-application-formError.md) |
+| <!--DelRow--> Form Kit | [@ohos.application.formHost (formHost)(系统接口)](../apis-form-kit/js-apis-application-formHost-sys.md) |
+| IME Kit | [@ohos.inputMethod (输入法框架)](../apis-ime-kit/js-apis-inputmethod.md) |
+| <!--DelRow--> Input Kit | [@ohos.multimodalInput.inputMonitor (输入监听)(系统接口)](../apis-input-kit/js-apis-inputmonitor-sys.md) |
+| Location Kit | [@ohos.geolocation (位置服务)](../apis-location-kit/js-apis-geolocation.md) |
+| MDM Kit | [@ohos.enterprise.adminManager（admin权限管理）](../apis-mdm-kit/js-apis-enterprise-adminManager.md) |
+| <!--DelRow--> MDM Kit | [@ohos.enterprise.dateTimeManager（系统时间管理）(系统接口)](../apis-mdm-kit/js-apis-enterprise-dateTimeManager-sys.md) |
+| <!--DelRow--> Media Kit | [@ohos.multimedia.media (媒体服务)(系统接口)](../apis-media-kit/js-apis-media-sys.md) |
+| Sensor Service Kit | [@ohos.sensor (传感器)](../apis-sensor-service-kit/js-apis-sensor.md) |

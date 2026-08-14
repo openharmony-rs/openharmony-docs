@@ -5,7 +5,8 @@
 <!--Owner: @li-weifeng2024-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=f49b12145b93fb1a0a3564baf1cfde447ea3a867 translatedAt=2026-07-29T01:30:28.921Z pushedAt=2026-07-30T03:36:46.353Z -->
 
 <!--deprecated_code_no_check-->
 
@@ -25,7 +26,7 @@ import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry
 
 Enumerates the ability lifecycle states.
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 | Name         | Value  | Description                       |
 | ------------- | ---- | --------------------------- |
@@ -41,7 +42,7 @@ getAbilityDelegator(): AbilityDelegator
 
 Obtains the **AbilityDelegator** object of the application.
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Return value**
 

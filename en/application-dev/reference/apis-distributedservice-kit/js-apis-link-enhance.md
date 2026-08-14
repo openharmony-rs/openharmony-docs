@@ -1,12 +1,14 @@
 # @ohos.distributedsched.linkEnhance (Enhanced Connection)
+
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
 <!--Owner: @wangJE-->
-<!--Designer: @lee_jet520-->
+<!--Designer: @yangjun044-->
 <!--Tester: @Ytt-test-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=6b27dc46943fcde91cc17c2ef2548a6a4cb4fdaf translatedAt=2026-08-04T03:17:12.362Z pushedAt=2026-08-06T11:21:57.675Z -->
 
-The **linkEnhance** module delivers highly efficient Bluetooth connectivity and data transmission capabilities, significantly enhancing the cross-device connection stability. By employing a multi-channel merging algorithm, it not only increases the number of available cross-device connections but also strengthens cross-device data transmission capabilities, thereby improving the overall user experience.
+The **linkEnhance** module delivers highly efficient Bluetooth connectivity and data transmission capabilities, significantly enhancing the cross-device connection stability. By employing a multi-channel merging algorithm, it addresses issues such as unstable connections and limited number of connections of classic Bluetooth. This enhances cross-device data transmission capabilities and improves user experience.
 
 > **NOTE**
 >
@@ -24,11 +26,13 @@ import { linkEnhance } from '@kit.DistributedServiceKit';
 
 createServer(name:&nbsp;string):&nbsp;Server
 
-Creates a **Server** object. After **start()** is called, the device can be connected to other devices as a server.
+Creates a **Server** object. After **start()** is called, the device can be connected to other devices as a server. After using the object, call **close()** to destroy the **Server** object to release resources. To use the object again, you need to create another **Server** object.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Device behavior differences**: This API can be properly called on devices other than wearables that do not support distributed services. If it is called on wearables, error code 801 is returned.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -36,7 +40,7 @@ Creates a **Server** object. After **start()** is called, the device can be conn
 
 | Name      | Type                                      | Mandatory  | Description      |
 | --------- | ---------------------------------------- | ---- | -------- |
-| name | string  | Yes   | **Server** object name. The value is a string of up to 255 bytes. It cannot be empty. |
+| name | string | Yes | **Server** object name. The value is a string of up to 255 bytes. It cannot be empty. If the length exceeds the upper limit or an empty string is passed, error code 32390206 is returned. |
 
 **Returns**
 
@@ -79,11 +83,13 @@ try {
 
 createConnection(deviceId:&nbsp;string,&nbsp;name:&nbsp;string):&nbsp;Connection
 
-Creates a **Connection** object on the device that functions as the client. The device can then initiate connection requests to the device that functions as the server.
+Creates a **Connection** object on the device that functions as the client. After the **Connection** object is created, subscribe to **on('connectResult')** and call **connect()** to initiate a connection request to the server. After the connection is successful, call **sendData()** to send data. If the connection is not required, call **close()** to destroy the **Connection** object to release resources.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Device behavior differences**: This API can be properly called on devices other than wearables that do not support distributed services. If it is called on wearables, error code 801 is returned.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -91,8 +97,8 @@ Creates a **Connection** object on the device that functions as the client. The 
 
 | Name      | Type                                     | Mandatory  | Description       |
 | --------- | --------------------------------------- | ---- | --------- |
-| deviceId  | string | Yes   | Device ID of the peer device, that is, the BLE MAC address of the peer device. For details about how to obtain the BLE MAC address, see [BLE Advertising and Scanning](../../connectivity/bluetooth/ble-development-guide.md).|
-| name      | string | Yes   | Server name of the device to be connected. The value is a string of up to 255 bytes. It cannot be empty.|
+| deviceId  | string | Yes | Device ID of the peer device, that is, the BLE MAC address of the peer device. For details about how to obtain the BLE MAC address, see [BLE Scanning and Advertising](../../connectivity/bluetooth/ble-development-guide.md). |
+| name      | string | Yes | Server name of the device to be connected. The value is a string of up to 255 bytes. It cannot be empty. If the length exceeds the upper limit or an empty string is passed, error code 32390206 is returned. |
 
 **Returns**
 
@@ -122,7 +128,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 const TAG = "testDemo";
 
 try {
-  let peerDeviceId: string = "00:11:22:33:44:55";
+  let peerDeviceId: string = "00:11:22:33:44:55"; // BLE MAC address, which needs to be obtained through Bluetooth scanning. For details, see parameter description.
   hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
 } catch (err) {
@@ -130,6 +136,7 @@ try {
   (err as BusinessError).message);
 }
 ```
+
 ## Server
 
 Represents a **Server** object, which provides methods for starting, stopping, and closing the server, and registering or unregistering event callbacks.
@@ -144,11 +151,13 @@ The following APIs are used on the server.
 
 start():&nbsp;void
 
-Starts a server so that it can be connected by the client. A maximum of 10 servers are supported.
+Starts a server so that it can be connected by the client. A maximum of 10 servers are supported. After a server is started, you can stop it by calling **stop()** and restart it by calling **start()**. After using the server, call **close()** to destroy the **Server** object to release resources.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Device behavior differences**: This API can be properly called on devices other than wearables that do not support distributed services. If it is called on enterprise-managed devices, error code 32390300 is returned.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -181,6 +190,7 @@ try {
   (err as BusinessError).message);
 }
 ```
+
 ### stop()
 
 stop():&nbsp;void
@@ -190,6 +200,8 @@ Stops the server. After the server is stopped, you can call `start` to start it 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Device behavior differences**: This API can be properly called on devices other than wearables that do not support distributed services. It cannot be called on enterprise-managed devices.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -226,11 +238,13 @@ try {
 
 close():&nbsp;void
 
-Destroys the **Server** object to release related resources. To interact with the peer device again, create a new **Server** object.
+Destroys the **Server** object to release related resources. To interact with the peer device again, create a new **Server** object. **close()** is called to destroy the **Server** object and release resources. If the call is successful, the **Server** object needs to be re-created when it is needed again. **stop()** is called to stop the server. If the call is successful, the **Server** object can still be restarted. If the server needs to be restarted, use **stop()**. If the server is no longer needed, use **close()**.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Device behavior differences**: This API can be properly called on devices other than wearables that do not support distributed services. It cannot be called on enterprise-managed devices.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -262,6 +276,7 @@ try {
   (err as BusinessError).message);
 }
 ```
+
 ### on('connectionAccepted')
 
 on(type: 'connectionAccepted', callback: Callback&lt;Connection&gt;): void
@@ -272,13 +287,16 @@ Registers a callback listener for **connectionAccepted** events. This API uses a
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Device behavior differences**: This API can be properly called on devices other than wearables that do not support distributed services. It cannot be called on enterprise-managed devices.
+
 **Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
+
 | Name      | Type                                   | Mandatory  | Description   |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | Yes   |   Event type, which is **connectionAccepted**. This event is triggered when a connection from the peer end is received.  |
-| callback | Callback&lt;[Connection](#connection)&gt; | Yes   | Registered callback, which is used to return the [Connection](#connection) object.|
+| callback | Callback&lt;[Connection](#connection)&gt; | Yes | Callback used to receive server connection events. The callback parameter **connection** is the connection object used to establish the connection. The type is [Connection](#connection). |
 
 **Error codes**
 
@@ -315,15 +333,18 @@ try {
   (err as BusinessError).message);
 }
 ```
+
 ### off('connectionAccepted')
 
 off(type: 'connectionAccepted', callback?: Callback&lt;Connection&gt;): void
 
-Unregisters the callback listener for **connectionAccepted** events. This API uses an asynchronous callback to return the result.
+Unregisters the callback listener for **connectionAccepted** event. This API must be called after the server is successfully created. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Device behavior differences**: This API can be properly called on devices other than wearables that do not support distributed services. It cannot be called on enterprise-managed devices.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -332,7 +353,7 @@ Unregisters the callback listener for **connectionAccepted** events. This API us
 | Name      | Type                                   | Mandatory  | Description   |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | Yes   |   Event type, which is **connectionAccepted**. This event is triggered when a connection from the peer end is received.  |
-| callback | Callback&lt;[Connection](#connection)&gt; | No   | Registered callback, which is used to return the [Connection](#connection) object.|
+| callback | Callback&lt;[Connection](#connection)&gt; | No | Registered callback. The parameter is [Connection](#connection). The callback last registered using **on** needs to be passed to unregister the callback. The default effect is the same as the passing behavior. |
 
 **Error codes**
 
@@ -380,14 +401,16 @@ Registers a callback listener for **serverStopped** events. This API uses an asy
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Device behavior differences**: This API can be properly called on devices other than wearables that do not support distributed services. It cannot be called on enterprise-managed devices.
+
 **Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
 | Name      | Type                                   | Mandatory  | Description   |
 | --------- | ------------------------------------- | ---- | ----- |
-| type | string  | Yes   |   Event type, which is **serverStopped**. This event is triggered when the server is stopped abnormally.  |
-| callback | Callback&lt;number&gt; | Yes   | Registered callback, where **number** indicates the returned error code.|
+| type | string | Yes | Event type, which is **serverStopped**. This event is triggered when the server is stopped abnormally. |
+| callback | Callback&lt;number&gt; | Yes | Registered callback, where **number** indicates the returned error code. This event is triggered when the server is stopped abnormally. |
 
 **Error codes**
 
@@ -429,11 +452,13 @@ try {
 
 off(type: 'serverStopped', callback?: Callback&lt;number&gt;): void
 
-Unregisters the callback listener for **serverStopped** events. This API uses an asynchronous callback to return the result.
+Unregisters the callback listener for **serverStopped** event. This API must be called after the server is created successfully. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Device behavior differences**: This API can be properly called on devices other than wearables that do not support distributed services. It cannot be called on enterprise-managed devices.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -442,7 +467,7 @@ Unregisters the callback listener for **serverStopped** events. This API uses an
 | Name      | Type                                   | Mandatory  | Description   |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | Yes   |   Event type, which is **serverStopped**. This event is triggered when the server is stopped abnormally.  |
-| callback | Callback&lt;number&gt; | No   | Registered callback, where **number** indicates the returned error code.|
+| callback | Callback&lt;number&gt; | No | Registered callback, where **number** indicates the returned error code. This event is triggered when the server is stopped abnormally. The callback last registered using **on** needs to be passed to unregister the callback. The default effect is the same as the passing behavior. |
 
 **Error codes**
 
@@ -479,11 +504,14 @@ try {
   (err as BusinessError).message);
 }
 ```
+
 ## ConnectResult
 
 Represents the connection result, which is returned after the client calls **connect()**.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Device behavior differences**: This API can be properly called on devices other than wearables that do not support distributed services. It cannot be called on enterprise-managed devices.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -505,11 +533,13 @@ Represents a **Connection** object, which provides methods for connecting to and
 
 connect():&nbsp;void
 
-Connects to the server on the client. A maximum number of 10 connections are supported.
+Connects to the server on the client after the **Connection** object is successfully created. A maximum number of 10 connections are supported. You are advised to register a callback listener using **on('connectResult')** and then call this method to obtain the connection result. After the connection is successful, you can call **sendData()** to send data. When the connection is no longer needed, call **disconnect()** to disconnect from the server.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Device behavior differences**: This API can be properly called on devices other than wearables that do not support distributed services. If it is called on enterprise-managed devices, error code 32390300 is returned.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -560,6 +590,8 @@ Disconnects from the peer device. The created **Connection** object remains vali
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Device behavior differences**: This API can be properly called on devices other than wearables that do not support distributed services. It cannot be called on enterprise-managed devices.
+
 **Model restriction**: This API can be used only in the stage model.
 
 **Error codes**
@@ -600,11 +632,13 @@ try {
 
 close():&nbsp;void
 
-Destroys the **Connection** object to release resources. If the device needs to interact with the peer device again, create a **Connection** object again and call `connect()` to initiate a connection.
+Destroys the **Connection** object to release resources. If the device needs to interact with the peer device again, create a **Connection** object again and call **connect()** to initiate a connection. **close()** is called to destroy the **Connection** object and release resources. If the call is successful, the **Connection** object needs to be re-created when it is needed again. **disconnect()** is called for disconnection. If the call is successful, the **Connection** object can still be connected. If the connection needs to be re-established, call **disconnect()**. If the service is no longer needed, call **close()**.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Device behavior differences**: This API can be properly called on devices other than wearables that do not support distributed services. It cannot be called on enterprise-managed devices.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -615,7 +649,6 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-
 
 **Example**
 
@@ -642,6 +675,7 @@ try {
   (err as BusinessError).message);
 }
 ```
+
 ### getPeerDeviceId()
 
 getPeerDeviceId():&nbsp;string
@@ -652,6 +686,8 @@ Obtains the device ID of the peer device. This API is called when the connection
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Device behavior differences**: This API can be properly called on devices other than wearables that do not support distributed services. It cannot be called on enterprise-managed devices.
+
 **Model restriction**: This API can be used only in the stage model.
 
 **Returns**
@@ -659,7 +695,6 @@ Obtains the device ID of the peer device. This API is called when the connection
 | Type                 | Description              |
 | ------------------- | ---------------- |
 | string | Device ID of the peer device, that is, the BLE MAC address of the peer device. An empty string is returned if no device ID is obtained.|
-
 
 **Error codes**
 
@@ -682,8 +717,7 @@ try {
   let peerDeviceId: string = "00:11:22:33:44:55";
   hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
-  connection.getPeerDeviceId();
-  hilog.info(0x0000, TAG, "peerDeviceId=%{public}s" + connection.getPeerDeviceId());
+  hilog.info(0x0000, TAG, "peerDeviceId=%{public}s", connection.getPeerDeviceId());
 } catch (err) {
   hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
@@ -700,13 +734,15 @@ Sends data to the server after a connection is established successfully. When th
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Device behavior differences**: This API can be properly called on devices other than wearables that do not support distributed services. It cannot be called on enterprise-managed devices.
+
 **Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
 | Name      | Type                                     | Mandatory  | Description   |
 | --------- | --------------------------------------- | ---- | ----- |
-| data | [ArrayBuffer](../../arkts-utils/arraybuffer-object.md) | Yes   | Data to send. The maximum length is 1024 bytes.|
+| data | [ArrayBuffer](../../arkts-utils/arraybuffer-object.md) | Yes    | Data to send. The maximum length is 1024 bytes. If the length exceeds the upper limit, error code 32390206 is returned.|
 
 **Error codes**
 
@@ -736,9 +772,9 @@ try {
     hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
     if (result.success) {
       let len = 1;
-      let arraybuffer = new ArrayBuffer(len); // Create the data to send.
-      connection.sendData(arraybuffer);
-      hilog.info(0x0000, TAG, "sendData data connection peerDeviceId=%{public}s" + connection.getPeerDeviceId());
+      let arrayBuffer = new ArrayBuffer(len); // Create the data to send.
+      connection.sendData(arrayBuffer);
+      hilog.info(0x0000, TAG, "sendData data connection peerDeviceId=%{public}s", connection.getPeerDeviceId());
       connection.disconnect();
     }
   });
@@ -753,11 +789,13 @@ try {
 
 on(type: 'connectResult', callback: Callback&lt;ConnectResult&gt;): void
 
-Registers a listener for **connectResult** events. This API uses an asynchronous callback to return the result.
+Registers a listener for **connectResult** events. This API uses an asynchronous callback to return the result. You must register this listener before calling **connect()**. Otherwise, the connection result cannot be obtained. When the listener is no longer needed, you are advised to call **off('connectResult')** to unregister the listener to prevent memory leak.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Device behavior differences**: This API can be properly called on devices other than wearables that do not support distributed services. It cannot be called on enterprise-managed devices.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -813,6 +851,8 @@ Unregisters the listener for **connectResult** events.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Device behavior differences**: This API can be properly called on devices other than wearables that do not support distributed services. It cannot be called on enterprise-managed devices.
+
 **Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
@@ -820,7 +860,7 @@ Unregisters the listener for **connectResult** events.
 | Name      | Type                                   | Mandatory  | Description   |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | Yes   |   Event type, which is **connectResult**. This event is triggered when `connect()` is called.  |
-| callback | Callback&lt;[ConnectResult](#connectresult)&gt; | No   | Registered callback.   |
+| callback | Callback&lt;[ConnectResult](#connectresult)&gt; | No    | Registered callback. The callback last registered using **on** needs to be passed to unregister the callback. The default effect is the same as the passing behavior. |
 
 **Error codes**
 
@@ -867,14 +907,16 @@ Registers a listener for **disconnected** events. This API uses an asynchronous 
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Device behavior differences**: This API can be properly called on devices other than wearables that do not support distributed services. It cannot be called on enterprise-managed devices.
+
 **Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
 | Name      | Type                                   | Mandatory  | Description   |
 | --------- | ------------------------------------- | ---- | ----- |
-| type | string  | Yes   |   Event type, which is **disconnected**. This event is triggered when the connection is passively terminated or encounters an exception.  |
-| callback | Callback&lt;number&gt; | Yes   | Registered callback, where **number** indicates the returned error code. |
+| type | string  | Yes   |   Event type, which is **disconnected**. This event is triggered when the connection is passively terminated or an exception occurs.  |
+| callback | Callback&lt;number&gt; | Yes | Registered callback, where **number** indicates the returned error code. This event is triggered when the connection is passively terminated or an exception occurs. |
 
 **Error codes**
 
@@ -918,14 +960,16 @@ Unregisters the listener for **disconnected** events. This API uses an asynchron
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Device behavior differences**: This API can be properly called on devices other than wearables that do not support distributed services. It cannot be called on enterprise-managed devices.
+
 **Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
 | Name      | Type                                   | Mandatory  | Description   |
 | --------- | ------------------------------------- | ---- | ----- |
-| type | string  | Yes   |   Event type, which is **disconnected**. This event is triggered when the connection is passively terminated or encounters an exception.  |
-| callback | Callback&lt;number&gt; | No  | Registered callback, where **number** indicates the returned error code.  |
+| type | string  | Yes   |   Event type, which is **disconnected**. This event is triggered when the connection is passively terminated or an exception occurs.  |
+| callback | Callback&lt;number&gt; | No | Registered callback, where **number** indicates the returned error code. This event is triggered when the connection is passively terminated or an exception occurs. The callback last registered using **on** needs to be passed to unregister the callback. The default effect is the same as the passing behavior. |
 
 **Error codes**
 
@@ -972,6 +1016,8 @@ Registers a listener for the **dataReceived** events. This API uses an asynchron
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Device behavior differences**: This API can be properly called on devices other than wearables that do not support distributed services. It cannot be called on enterprise-managed devices.
+
 **Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
@@ -979,7 +1025,7 @@ Registers a listener for the **dataReceived** events. This API uses an asynchron
 | Name      | Type                                   | Mandatory  | Description   |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | Yes   |   Event type, which is **dataReceived**. This event is triggered when data is received.  |
-| callback | Callback&lt;[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)&gt; | Yes   | Registered callback.|
+| callback | Callback&lt;[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)&gt; | Yes | Callback used to receive data from the peer device. The callback parameter **data** is the received data, which is of the **ArrayBuffer** type. |
 
 **Error codes**
 
@@ -1014,6 +1060,7 @@ try {
   (err as BusinessError).message);
 }
 ```
+
 ### off('dataReceived')
 
 off(type: 'dataReceived', callback?: Callback&lt;ArrayBuffer&gt;): void
@@ -1024,6 +1071,8 @@ Unregisters the listener for **dataReceived** events.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Device behavior differences**: This API can be properly called on devices other than wearables that do not support distributed services. It cannot be called on enterprise-managed devices.
+
 **Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
@@ -1031,7 +1080,7 @@ Unregisters the listener for **dataReceived** events.
 | Name      | Type                                   | Mandatory  | Description   |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | Yes   |   Event type, which is **dataReceived**. This event is triggered when data is received.  |
-| callback | Callback&lt;[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)&gt; | No   | Registered callback.|
+| callback | Callback&lt;[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)&gt; | No | Callback used to receive data from the peer device. The callback parameter **data** is the received data, which is of the ArrayBuffer type. The callback last registered using **on** needs to be passed to unregister the callback. The default effect is the same as the passing behavior. |
 
 **Error codes**
 

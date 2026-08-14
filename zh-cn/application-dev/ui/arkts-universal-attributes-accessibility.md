@@ -75,7 +75,7 @@ export struct AccessibilityTextCase01 {
 }
 ```
 
-示例2：在示例1的基础上，增加accessibilityText属性后，设置“播放，图片，单指双击即可执行”，用户通过语音播报可以感知此图片按钮的功能。
+示例2：在示例1的基础上，增加accessibilityText属性，设置无障碍文本为“播放”，用户通过语音播报可以感知此图片按钮的功能。
 
 <!-- @[accessibility_text_start02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityTextCase02.ets) -->
 
@@ -225,10 +225,10 @@ export struct AccessibilityGroupCase02 {
 export struct AccessibilityLevelCase01 {
   build() {
     // ...
-        Column() {
-          Text('HelloWorld')
-          Text('文本1')
-            .accessibilityLevel('yes')
+      Column() {
+        Text('HelloWorld')
+        Text('文本1')
+          .accessibilityLevel('yes')
       }
       .accessibilityGroup(true)
       // ...
@@ -259,10 +259,10 @@ Column() {
   Text('HelloWorld').fontSize(50).fontWeight(FontWeight.Bold)
 }
 .accessibilityGroup(true)
-  .accessibilityLevel('yes')
-  .accessibilityText('分组')
-  .accessibilityDescription('Column组件可以被选中，播报的内容是“分组”')
-  .accessibilityChecked(true)
+.accessibilityLevel('yes')
+.accessibilityText('分组')
+.accessibilityDescription('Column组件可以被选中，播报的内容是"分组"')
+.accessibilityChecked(true)
 ```
 
 ### 在支持单选的情况下，设置无障碍节点是否被选中
@@ -354,6 +354,7 @@ struct VirtualNodeExample {
 <!-- @[accessibility_text_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
 
 ``` TypeScript
+@Entry
 @Component
 export struct AccessibilityText {
   @Builder
@@ -362,7 +363,7 @@ export struct AccessibilityText {
       Text(`virtual node`)
     }
     .width(10)
-      .height(10)
+    .height(10)
   }
 
   build() {
@@ -378,13 +379,13 @@ export struct AccessibilityText {
             .fontWeight(FontWeight.Bold)
         }
         .width('100%')
-          .accessibilityGroup(true)
-          .accessibilityLevel('yes')
-          .accessibilityText('分组')
-          .accessibilityDescription('Column组件可以被选中，播报的内容是“分组”')
-          .accessibilityVirtualNode(this.customAccessibilityNode)
-          .accessibilityChecked(true)
-          .accessibilitySelected(undefined)
+        .accessibilityGroup(true)
+        .accessibilityLevel('yes')
+        .accessibilityText('分组')
+        .accessibilityDescription('Column组件可以被选中，播报的内容是"分组"')
+        .accessibilityVirtualNode(this.customAccessibilityNode)
+        .accessibilityChecked(true)
+        .accessibilitySelected(undefined)
       }
       .height('100%')
       // ...

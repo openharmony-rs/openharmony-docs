@@ -1,10 +1,12 @@
 # arkweb_type.h
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @zourongchun-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=d1b85ec7ea193eefc4ef0fcb99c42629d3e17584 translatedAt=2026-08-03T09:49:24.052Z pushedAt=2026-08-06T06:29:15.865Z -->
 
 ## Overview
 
@@ -35,12 +37,12 @@ Defines the native common types of ArkWeb.
 | [ArkWeb_ProxyMethodWithResult](capi-web-arkweb-proxymethodwithresult.md) | ArkWeb_ProxyMethodWithResult | Defines a proxy method with result to inject.|
 | [ArkWeb_ProxyObject](capi-web-arkweb-proxyobject.md) | ArkWeb_ProxyObject | Defines a proxy object to inject.|
 | [ArkWeb_ProxyObjectWithResult](capi-web-arkweb-proxyobjectwithresult.md) | ArkWeb_ProxyObjectWithResult | Defines a proxy object with result to inject.|
-| [ArkWeb_ControllerAPI](capi-web-arkweb-controllerapi.md) | ArkWeb_ControllerAPI | Defines a native controller API. Before calling the API, you are advised to use **ARKWEB_MEMBER_MISSING** to check whether the function struct has the corresponding pointer to avoid crash caused by mismatch between the SDK and the device ROM. The controller APIs must be called on the UI thread through **OH_ArkWeb_GetNativeAPI**.|
-| [ArkWeb_ComponentAPI](capi-web-arkweb-componentapi.md) | ArkWeb_ComponentAPI | Defines a native component API.|
-| [ArkWeb_WebMessagePortAPI](capi-web-arkweb-webmessageportapi.md) | ArkWeb_WebMessagePortAPI | Defines a native message port API. Before calling the API, you are advised to use **ARKWEB_MEMBER_MISSING** to check whether the function struct has the corresponding pointer to avoid crash caused by mismatch between the SDK and the device ROM. The WebMessagePort APIs must be called on the UI thread through **OH_ArkWeb_GetNativeAPI**.|
-| [ArkWeb_WebMessageAPI](capi-web-arkweb-webmessageapi.md) | ArkWeb_WebMessageAPI | Defines a native post message API. Before calling the API, you are advised to use **ARKWEB_MEMBER_MISSING** to check whether the function struct has the corresponding pointer to avoid crash caused by mismatch between the SDK and the device ROM. The WebMessage APIs must be called on the UI thread through **OH_ArkWeb_GetNativeAPI**.|
+| [ArkWeb_ControllerAPI](capi-web-arkweb-controllerapi.md) | ArkWeb_ControllerAPI | Native API struct for the controller. Before calling the API, you are advised to use ARKWEB_MEMBER_MISSING to check whether the function struct has the corresponding function pointer, preventing crashes caused by SDK and device ROM mismatch. Controller-related APIs must be obtained by calling OH_ArkWeb_GetNativeAPI on the UI thread. |
+| [ArkWeb_ComponentAPI](capi-web-arkweb-componentapi.md) | ArkWeb_ComponentAPI | Native API struct for the component. Before calling the API, you are advised to use ARKWEB_MEMBER_MISSING to check whether the function struct has the corresponding function pointer, preventing crashes caused by SDK and device ROM mismatch. Component-related APIs must be obtained by calling OH_ArkWeb_GetNativeAPI on the UI thread. |
+| [ArkWeb_WebMessagePortAPI](capi-web-arkweb-webmessageportapi.md) | ArkWeb_WebMessagePortAPI | Native API struct for Post Message. Before calling the API, you are advised to use ARKWEB_MEMBER_MISSING to check whether the function struct has the corresponding function pointer, preventing crashes caused by SDK and device ROM mismatch. WebMessagePort-related APIs must be obtained by calling OH_ArkWeb_GetNativeAPI on the UI thread. |
+| [ArkWeb_WebMessageAPI](capi-web-arkweb-webmessageapi.md) | ArkWeb_WebMessageAPI | Native API struct for Post Message data. Before calling the API, you are advised to use ARKWEB_MEMBER_MISSING to check whether the function struct has the corresponding function pointer, preventing crashes caused by SDK and device ROM mismatch. WebMessage-related APIs must be obtained by calling OH_ArkWeb_GetNativeAPI on the UI thread. |
 | [ArkWeb_CookieManagerAPI](capi-web-arkweb-cookiemanagerapi.md) | ArkWeb_CookieManagerAPI | Defines the CookieManager API of ArkWeb. Before calling the API, you are advised to use **ARKWEB_MEMBER_MISSING** to check whether the function struct has the corresponding pointer to avoid crash caused by mismatch between the SDK and the device ROM. The CookieManager APIs must be called on the UI thread through **OH_ArkWeb_GetNativeAPI**.|
-| [ArkWeb_JavaScriptValueAPI](capi-web-arkweb-javascriptvalueapi.md) | ArkWeb_JavaScriptValueAPI | Defines the JavaScriptValue API of ArkWeb. Before calling the API, you are advised to use **ARKWEB_MEMBER_MISSING** to check whether the function struct has the corresponding pointer to avoid crash caused by mismatch between the SDK and the device ROM.|
+| [ArkWeb_JavaScriptValueAPI](capi-web-arkweb-javascriptvalueapi.md) | ArkWeb_JavaScriptValueAPI | Defines the JavaScriptValue API of ArkWeb. Before calling the API, you are advised to use ARKWEB_MEMBER_MISSING to check whether the function struct has the corresponding function pointer, preventing crashes caused by SDK and device ROM mismatch. JavaScriptValue-related APIs must be obtained by calling OH_ArkWeb_GetNativeAPI on the UI thread. |
 
 ### Enums
 
@@ -57,14 +59,14 @@ Defines the native common types of ArkWeb.
 | [typedef void (\*ArkWeb_OnJavaScriptProxyCallback)(const char* webTag, const ArkWeb_JavaScriptBridgeData* dataArray, size_t arraySize, void* userData)](#arkweb_onjavascriptproxycallback)                                        | ArkWeb_OnJavaScriptProxyCallback           | Called when the proxy method is executed.|
 | [typedef ArkWeb_JavaScriptValuePtr (\*ArkWeb_OnJavaScriptProxyCallbackWithResult)(const char* webTag, const ArkWeb_JavaScriptBridgeData* dataArray, size_t arraySize, void* userData)](#arkweb_onjavascriptproxycallbackwithresult) | ArkWeb_OnJavaScriptProxyCallbackWithResult | Called when the proxy method is executed.|
 | [typedef void (\*ArkWeb_OnComponentCallback)(const char* webTag, void* userData)](#arkweb_oncomponentcallback)                                                                                                                    | ArkWeb_OnComponentCallback                 | Called when a component event notification is sent.|
-| [typedef void (\*ArkWeb_OnScrollCallback)(const char* webTag, void* userData, double x, double y)](#arkweb_onscrollcallback)                                                                                                      | ArkWeb_OnScrollCallback                    | Called when the **Web** component is scrolled.|
+| [typedef void (\*ArkWeb_OnScrollCallback)(const char* webTag, void* userData, double x, double y)](#arkweb_onscrollcallback)                                                                                                      | ArkWeb_OnScrollCallback                    | Callback function type when the Web component scrolls. |
 | [typedef void (\*ArkWeb_OnMessageEventHandler)(const char* webTag, const ArkWeb_WebMessagePortPtr port, const ArkWeb_WebMessagePtr message, void* userData)](#arkweb_onmessageeventhandler)                                       | ArkWeb_OnMessageEventHandler               | Called when a post message is sent from the HTML page.|
 
 ### Macros
 
 | Name| Description|
 | ---- | ---- |
-| ARKWEB_MEMBER_EXISTS(s, f)&nbsp;&nbsp;&nbsp;&nbsp;((intptr_t) &amp; ((s)-&gt;f) - (intptr_t)(s) + sizeof((s)-&gt;f) &lt;= \*reinterpret_cast&lt;size_t\*&gt;(s)) | Whether a member variable exists in the struct.<br>**Since**: 12|
+| ARKWEB_MEMBER_EXISTS(s, f)&nbsp;&nbsp;&nbsp;&nbsp;((intptr_t) &amp; ((s)-&gt;f) - (intptr_t)(s) + sizeof((s)-&gt;f) &lt;= \*(size_t \*)(s)) | Checks whether the member variable exists in the struct.<br>**Since:** 12 |
 | ARKWEB_MEMBER_MISSING(s, f)&nbsp;&nbsp;&nbsp;(\!ARKWEB_MEMBER_EXISTS(s, f) \|\| !((s)-&gt;f)) | If the member variable exists in the struct, **false** is returned. Otherwise, **true** is returned.<br>**Since**: 12|
 
 ## Enum Description
@@ -103,8 +105,7 @@ Enumerates the JavaScript data types.
 | -- | -- |
 | ARKWEB_JAVASCRIPT_NONE = 0 | Error data.|
 | ARKWEB_JAVASCRIPT_STRING | String data.|
-| ARKWEB_JAVASCRIPT_BOOL | Boolean data.|
-
+| ARKWEB_JAVASCRIPT_BOOL | Boolean data type. |
 
 ## Function Description
 
@@ -116,10 +117,9 @@ typedef void (*ArkWeb_OnJavaScriptCallback)(const char* webTag, const ArkWeb_Jav
 
 **Description**
 
-Called when the injected JavaScript is executed.
+Callback invoked when the injected JavaScript execution is complete. It is used to obtain the execution result of JavaScript code in the Web component, for example, in scenarios where the native UI needs to be updated or subsequent logic needs to be executed based on the data returned by JavaScript.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -137,10 +137,9 @@ typedef void (*ArkWeb_OnJavaScriptProxyCallback)(const char* webTag, const ArkWe
 
 **Description**
 
-Called when the proxy method is executed.
+Callback invoked when a Proxy method is executed. Proxy methods are used for object interaction and custom operations between the native side and the JavaScript side.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -159,10 +158,9 @@ typedef ArkWeb_JavaScriptValuePtr (*ArkWeb_OnJavaScriptProxyCallbackWithResult)(
 
 **Description**
 
-Called when the proxy method is executed.
+Callback invoked when a Proxy method is executed (with a return value). It is used to receive a notification and return the execution result when JavaScript calls an injected Proxy method. This is suitable for implementing bridge communication between JavaScript and native code, for example, intercepting JavaScript calls, executing native logic, computing results, and returning the results to JavaScript.
 
 **Since**: 18
-
 
 **Parameters**
 
@@ -181,10 +179,9 @@ typedef void (*ArkWeb_OnComponentCallback)(const char* webTag, void* userData)
 
 **Description**
 
-Called when a component event notification is sent.
+Callback for receiving Web component event notifications. It is used to receive lifecycle event notifications of the Web component, such as status change notifications in scenarios like page loading completion, page destruction, and component visibility changes.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -201,10 +198,9 @@ typedef void (*ArkWeb_OnScrollCallback)(const char* webTag, void* userData, doub
 
 **Description**
 
-Called when the **Web** component is scrolled.
+Callback invoked when the Web component scrolls.
 
 **Since**: 18
-
 
 **Parameters**
 
@@ -212,8 +208,8 @@ Called when the **Web** component is scrolled.
 | -- | -- |
 | const char* webTag | Name of the **Web** component.|
 |  void* userData | Pointer to user-defined data.|
-|  double x | Scrolling offset of the X axis.|
-|  double y | Scrolling offset of the Y axis.|
+|  double x | X-axis scroll offset. Unit: vp. |
+|  double y | Y-axis scroll offset. Unit: vp. |
 
 ### ArkWeb_OnMessageEventHandler()
 
@@ -234,4 +230,4 @@ Called when a post message is sent from the HTML page.
 | const char* webTag                                                     | Name of the **Web** component.|
 | const [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageport8h.md) port | Post message port.|
 | const [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md) message                                 | Post message data.|
-| void* userData                                                         | Pointer to user-defined data.|
+| void* userData                                                         | User-defined data. |

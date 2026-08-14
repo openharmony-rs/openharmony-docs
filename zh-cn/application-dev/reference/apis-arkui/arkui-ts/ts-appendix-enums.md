@@ -140,7 +140,7 @@
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称    | 值   | 说明                               |
 | ------- | ---- | ---------------------------------- |
@@ -357,7 +357,7 @@
 
 |名称                | 值 | 说明                                   |
 |-------------------| -- | ------------------------------------- |
-| BEGIN<sup>(deprecated) </sup>             | 0  | 表冠开始转动。<br/> **说明：** 从API version 18 开始支持，从API version 24 开始废弃。                          |
+| BEGIN<sup>(deprecated)</sup> | 0 | 表冠开始转动。<br>**说明：** 从API version 18开始支持，从API version 24开始废弃。 |
 | UPDATE            | 1  | 表冠转动中。                            |
 | END                | 2  | 表冠停止转动。                          |
 
@@ -757,7 +757,7 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 ## GestureCollectIntervention
 
-定义手势和事件收集的干预操作类型。
+定义手势和事件收集的干预操作类型，适用于手势和事件收集过程中需要按优先级保留或丢弃部分手势的场景。
 
 **起始版本：** 26.0.0
 
@@ -878,7 +878,7 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 | Transparent | 2 | 自身和子节点均响应触摸测试，不会阻塞兄弟节点和祖先节点的触摸测试。 <br/>**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | None        | 3 | 自身不响应触摸测试，不会阻塞子节点、兄弟节点和祖先节点的触摸测试。 <br/>**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      |
 | BLOCK_HIERARCHY<sup>20+</sup>   | 4 | 自身和子节点响应触摸测试，阻止所有优先级较低的兄弟节点和父节点参与触摸测试。 <br/>**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| BLOCK_DESCENDANTS<sup>20+</sup> | 5 | 自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试，不会影响祖先节点的触摸测试。<br/>**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。  |
+| BLOCK_DESCENDANTS<sup>20+</sup> | 5 | 自身不响应触摸测试，并且所有的后代（孩子、孙子等）也不响应触摸测试，不会影响祖先节点的触摸测试。<br/>**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。  |
 
 ## HeightBreakpoint<sup>13+</sup>
 
@@ -1479,7 +1479,7 @@ type Nullable\<T> = T \| undefined
 | Down   | 0    | 手指按下时触发。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
 | Up     | 1    | 手指抬起时触发。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
 | Move   | 2    | 手指按压并在屏幕上移动时触发。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
-| Cancel | 3    | 触摸事件取消时触发。例如：1.手指按住屏幕同时点击Home键返回桌面，此时会触发Cancel；2.<!--RP2--><!--RP2End-->手指触摸过程中存在手写笔操作，手指的触摸操作会收到Cancel事件。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      |
+| Cancel | 3    | 触摸事件取消时触发。例如：1、手指按住屏幕同时点击Home键返回桌面，此时会触发Cancel；2、<!--RP2--><!--RP2End-->手指触摸过程中存在手写笔操作，手指的触摸操作会收到Cancel事件。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      |
 | HOVER_ENTER<sup>20+</sup> | 9    | 无障碍模式下，手指按下时触发。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。        |
 | HOVER_MOVE<sup>20+</sup>   | 10    | 无障碍模式下，触摸移动时触发。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。        |
 | HOVER_EXIT<sup>20+</sup> | 11    | 无障碍模式下，抬手时触发。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。        |
@@ -1516,7 +1516,7 @@ type Nullable\<T> = T \| undefined
 
 ## CompetitionStrategy<sup>24+</sup>
 
-定义分发的事件是否为竞争手势，竞争场景手势原始节点和目标节点只有一个节点会响应手势，非竞争场景可以同时响应。
+定义分发的事件是否为竞争手势，竞争场景下手势原始节点和目标节点只有一个节点会响应手势，非竞争场景下手势原始节点和目标节点可以同时响应。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1800,7 +1800,7 @@ type Nullable\<T> = T \| undefined
 
 ## InputEventInterceptAction
 
-输入事件拦截动作枚举。
+输入事件拦截动作枚举，用于控制输入事件是否继续传递到UI框架，适用于需要按业务规则允许或阻止输入事件继续传递的场景。
 
 **起始版本：** 26.0.0
 

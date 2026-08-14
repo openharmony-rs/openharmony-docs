@@ -1,10 +1,12 @@
 # Interface (ResultSet)
+
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=8af95004d9117739e6649a82566e8756f994e75a translatedAt=2026-07-14T10:33:00.050Z pushedAt=2026-07-17T09:25:09.800Z -->
 
 Provides APIs to access the result set obtained by querying the RDB store. This result set is the collection of results returned with the **query()** method called.
 
@@ -79,6 +81,7 @@ try {
   let resultSet: relationalStore.ResultSet = await store.querySql("SELECT e1.NAME, e2.NAME, e1.AGE, e2.AGE FROM EMPLOYEE1 e1 LEFT JOIN EMPLOYEE2 e2 ON e1.SALARY=e2.SALARY");
   if (resultSet != undefined) {
     const names = resultSet.getColumnNames();
+    resultSet.close();
   }
 } catch (err) {
   console.error(`Failed to get column names: code:${err.code}, message:${err.message}`);
@@ -112,25 +115,25 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
+| 14800000  | Inner error.<br>Applicable versions: 12+ |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+ |
 | 14800013  | Column index is out of bounds. |
-| 14800014  | The target instance is already closed. |
-| 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+ |
+| 14800019  | The SQL must be a query statement.<br>Applicable versions: 12+ |
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+ |
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+ |
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+ |
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+ |
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+ |
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+ |
 
 **Example**:
 
@@ -155,7 +158,7 @@ Obtains the column name based on the column index.
 
 | Name     | Type  | Mandatory| Description                      |
 | ----------- | ------ | ---- | -------------------------- |
-| columnIndex | number | Yes  | Column index.|
+| columnIndex | number | Yes  | Index of the specified column, starting from 0. |
 
 **Return value**
 
@@ -170,25 +173,25 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
+| 14800000  | Inner error.<br>Applicable versions: 12+ |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+ |
 | 14800013  | Column index is out of bounds. |
-| 14800014  | The target instance is already closed. |
-| 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+ |
+| 14800019  | The SQL must be a query statement.<br>Applicable versions: 12+ |
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+ |
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+ |
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+ |
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+ |
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+ |
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+ |
 
 **Example**:
 
@@ -212,13 +215,13 @@ Obtains the column type based on the specified column index or column name. This
 
 | Name          | Type            | Mandatory| Description                                                        |
 | ---------------- | ---------------- | ---- | ------------------------------------------------------------ |
-| columnIdentifier | number \| string | Yes  | Index or name of column in a result set. The index must be a non-negative integer and cannot exceed the length of **columnNames**. The column name must be a name in **columnNames**.|
+| columnIdentifier | number \| string | Yes | Index or name of the specified column in the result set. The index must be a non-negative integer and less than the length of the **columnNames** attribute. The column name must be a name in the **columnNames** attribute. |
 
 **Return value**
 
 | Type                                | Description                               |
 | ------------------------------------ | ----------------------------------- |
-| Promise<[ColumnType](arkts-apis-data-relationalStore-e.md#columntype18)> | Promise used to return the column type obtained. If the result set contains duplicate column names, the return value is not as expected.|
+| Promise<[ColumnType](arkts-apis-data-relationalStore-e.md#columntype18)> | Promise used to return the data type of the specified column. When the result set contains duplicate column names, the result obtained by column name may not be as expected. It is recommended to use the column index instead.|
 
 **Error codes**
 
@@ -282,7 +285,7 @@ Obtains the column type based on the specified column index or column name. This
 
 | Type                       | Description                  |
 | --------------------------- | ---------------------- |
-| [ColumnType](arkts-apis-data-relationalStore-e.md#columntype18) | Column type obtained. If the result set contains duplicate column names, the return value is not as expected.|
+| [ColumnType](arkts-apis-data-relationalStore-e.md#columntype18) | Data type of the specified column. When the result set contains columns with duplicate names, the result obtained by column name may not be as expected. It is recommended to use the column index instead. |
 
 **Error codes**
 
@@ -355,25 +358,25 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
+| 14800000  | Inner error.<br>Applicable versions: 12+ |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+ |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800014  | The target instance is already closed. |
-| 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+ |
+| 14800019  | The SQL must be a query statement.<br>Applicable versions: 12+ |
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+ |
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+ |
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+ |
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+ |
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+ |
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+ |
 
 **Example**:
 
@@ -410,25 +413,25 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
+| 14800000  | Inner error.<br>Applicable versions: 12+ |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+ |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800014  | The target instance is already closed. |
-| 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+ |
+| 14800019  | The SQL must be a query statement.<br>Applicable versions: 12+ |
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+ |
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+ |
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+ |
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+ |
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+ |
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+ |
 
 **Example**:
 
@@ -441,7 +444,6 @@ if (resultSet != undefined) {
 ## goToFirstRow
 
 goToFirstRow(): boolean
-
 
 Moves to the first row of the result set.
 
@@ -459,25 +461,25 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
-| 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
+| 14800000  | Inner error.<br>Applicable versions: 12+ |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+ |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800014  | The target instance is already closed. |
-| 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+ |
+| 14800019  | The SQL must be a query statement.<br>Applicable versions: 12+ |
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+ |
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+ |
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+ |
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+ |
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+ |
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+ |
 
 **Example**:
 
@@ -507,25 +509,25 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
-| 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
+| 14800000  | Inner error.<br>Applicable versions: 12+ |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+ |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800014  | The target instance is already closed. |
-| 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+ |
+| 14800019  | The SQL must be a query statement.<br>Applicable versions: 12+ |
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+ |
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+ |
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+ |
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+ |
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+ |
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+ |
 
 **Example**:
 
@@ -555,25 +557,25 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
-| 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
+| 14800000  | Inner error.<br>Applicable versions: 12+ |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+ |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800014  | The target instance is already closed. |
-| 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+ |
+| 14800019  | The SQL must be a query statement.<br>Applicable versions: 12+ |
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+ |
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+ |
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+ |
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+ |
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+ |
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+ |
 
 **Example**:
 
@@ -603,25 +605,25 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
-| 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
+| 14800000  | Inner error.<br>Applicable versions: 12+ |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+ |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800014  | The target instance is already closed. |
-| 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+ |
+| 14800019  | The SQL must be a query statement.<br>Applicable versions: 12+ |
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+ |
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+ |
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+ |
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+ |
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+ |
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+ |
 
 **Example**:
 
@@ -635,7 +637,7 @@ if (resultSet != undefined) {
 
 getValue(columnIndex: number): ValueType
 
-Obtains the value from the specified column in the current row. If the value type is any of **ValueType**, the value of the corresponding type will be returned. Otherwise, 14800000 will be returned. If the value type is INTEGER and the value is greater than **Number.MAX_SAFE_INTEGER** or less than **Number.MIN_SAFE_INTEGER**, you are advised to use the [getString](#getstring) API to obtain the value without losing precision.
+Obtains the value of the specified column in the current row. If the value type is any of **ValueType**, the value of the specified type is returned; otherwise, error code 14800000 is thrown. If the value type is INTEGER and the value is greater than **Number.MAX_SAFE_INTEGER** or less than **Number.MIN_SAFE_INTEGER**, it is recommended to use [getString](#getstring) to obtain the value without losing precision.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -696,8 +698,7 @@ if (resultSet !== undefined) {
 
 getBlob(columnIndex: number): Uint8Array
 
-
-Obtains the value from the specified column in the current row, and returns it in a byte array.<br>If the type of the value in the specified column is INTEGER, DOUBLE, TEXT, or BLOB, the value will be converted into a byte array and returned. If the column is null/empty, an empty byte array will be returned. If the value is of any other type, 14800000 will be returned.
+Obtains the value of the specified column in the current row as a byte array. If the data type of the current column is INTEGER, DOUBLE, TEXT, or BLOB, the value is converted to a byte array and returned. If the column is empty, an empty byte array is returned. For other data types, error code 14800000 is thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -720,25 +721,25 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800012  | ResultSet is empty or pointer index is out of bounds. |
+| 14800000  | Inner error.<br>Applicable versions: 12+ |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+ |
+| 14800012  | ResultSet is empty or pointer index is out of bounds.<br>Applicable versions: 12+ |
 | 14800013  | Column index is out of bounds. |
-| 14800014  | The target instance is already closed. |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+ |
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+ |
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+ |
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+ |
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+ |
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+ |
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+ |
 
 **Example**:
 
@@ -752,7 +753,7 @@ if (resultSet != undefined) {
 
 getString(columnIndex: number): string
 
-Obtains the value from the specified column in the current row, and returns it in the form of a string.<br>If the type of the value in the specified column is INTEGER, DOUBLE, TEXT, or BLOB, a string will be returned. If the value type is INTEGER and the column is null/empty, an empty string **""** will be returned. If the value is of any other type, 14800000 will be returned. If the value in the current column is of the DOUBLE type, the precision may be lost. You are advised to use [getDouble](#getdouble) to obtain the value.
+Obtains the value of the specified column in the current row as a string. If the value in the current column is of type INTEGER, DOUBLE, TEXT, or BLOB, a string will be returned. If the value in the current column is INTEGER and is empty, an empty string **""** is returned. For other types, error code 14800000 is thrown. If the value in the current column is of type **DOUBLE**, precision loss may occur. It is recommended to use [getDouble](#getdouble) to obtain the value.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -775,25 +776,25 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800012  | ResultSet is empty or pointer index is out of bounds. |
+| 14800000  | Inner error.<br>Applicable versions: 12+ |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+ |
+| 14800012  | ResultSet is empty or pointer index is out of bounds.<br>Applicable versions: 12+ |
 | 14800013  | Column index is out of bounds. |
-| 14800014  | The target instance is already closed. |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+ |
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+ |
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+ |
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+ |
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+ |
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+ |
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+ |
 
 **Example**:
 
@@ -807,7 +808,7 @@ if (resultSet != undefined) {
 
 getLong(columnIndex: number): number
 
-Obtains the value from the specified column in the current row, and returns a value of Long type.<br>If the type of the value in the specified column is INTEGER, DOUBLE, TEXT, or BLOB, a value of Long type will be returned. If the column is null/empty, **0** will be returned. If the value is of any other type, 14800000 will be returned. If the data type in the specified column is INTEGER and the value is greater than **Number.MAX_SAFE_INTEGER** or less than **Number.MIN_SAFE_INTEGER**, you are advised to use the [getString](#getstring) API to obtain the value without losing precision. If the data type in the specified column is DOUBLE, you are advised to use the [getDouble](#getdouble) API to obtain the value without losing precision.
+Obtains the value of the specified column in the current row as a value of Long type. If the data type of the current column is INTEGER, DOUBLE, TEXT, or BLOB, the value is converted to the Long type and returned. If the column is empty, **0** is returned. For other types, error code 14800000 is thrown. If the data type of the current column is INTEGER and the value is greater than **Number.MAX_SAFE_INTEGER** or less than **Number.MIN_SAFE_INTEGER**, it is recommended to use [getString](#getstring) to obtain the value without losing precision. If the data type of the current column is **DOUBLE**, it is recommended to use [getDouble](#getdouble) to obtain the value without losing precision.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -830,25 +831,25 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800012  | ResultSet is empty or pointer index is out of bounds. |
+| 14800000  | Inner error.<br>Applicable versions: 12+ |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+ |
+| 14800012  | ResultSet is empty or pointer index is out of bounds.<br>Applicable versions: 12+ |
 | 14800013  | Column index is out of bounds. |
-| 14800014  | The target instance is already closed. |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+ |
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+ |
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+ |
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+ |
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+ |
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+ |
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+ |
 
 **Example**:
 
@@ -868,7 +869,7 @@ if (resultSet !== undefined) {
 
 getDouble(columnIndex: number): number
 
-Obtains the value from the specified column in the current row, and returns a value of Double type.<br>If the type of the value in the specified column is INTEGER, DOUBLE, TEXT, or BLOB, a value of Double type will be returned. If the column is null/empty, **0.0** will be returned. If the value is of any other type, 14800000 will be returned.
+Obtains the value of the specified column in the current row as a value of Double type. If the data type of the current column is INTEGER, DOUBLE, TEXT, or BLOB, the value is converted to the Double type and returned. If the column content is empty, **0.0** is returned. For other data types, error code 14800000 is thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -891,25 +892,25 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800012  | ResultSet is empty or pointer index is out of bounds. |
+| 14800000  | Inner error.<br>Applicable versions: 12+ |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+ |
+| 14800012  | ResultSet is empty or pointer index is out of bounds.<br>Applicable versions: 12+ |
 | 14800013  | Column index is out of bounds. |
-| 14800014  | The target instance is already closed. |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+ |
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+ |
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+ |
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+ |
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+ |
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+ |
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+ |
 
 **Example**:
 
@@ -929,7 +930,7 @@ if (resultSet !== undefined) {
 
 getAsset(columnIndex: number): Asset
 
-Obtains the value from the specified column in the current row, and returns the value in the [Asset](arkts-apis-data-relationalStore-i.md#asset10) format. If the type of the value in the column is **Asset**, the value of the Asset type is returned. If the value in the column is null, **null** is returned. If the value in the column is of other types, 14800000 is returned.
+Obtains the value of the specified column in the current row as an [Asset](arkts-apis-data-relationalStore-i.md#asset10). If the data type of the current column is Asset, the value of the Asset type is returned. If the value in the current column is **null**, **null** is returned. For other data types, error code 14800000 is thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -952,25 +953,25 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800012  | ResultSet is empty or pointer index is out of bounds. |
+| 14800000 | Inner error.<br>Applicable versions: 12+ |
+| 14800011 | The current operation failed because the database is corrupted.<br>Applicable versions: 12+ |
+| 14800012 | ResultSet is empty or pointer index is out of bounds.<br>Applicable versions: 12+ |
 | 14800013  | Column index is out of bounds. |
-| 14800014  | The target instance is already closed. |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800014 | The target instance is already closed.<br>Applicable versions: 12+ |
+| 14800021 | SQLite: Generic error.<br>Applicable versions: 12+ |
+| 14800022 | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+ |
+| 14800023 | SQLite: Access permission denied.<br>Applicable versions: 12+ |
+| 14800024 | SQLite: The database file is locked.<br>Applicable versions: 12+ |
+| 14800025 | SQLite: A table in the database is locked.<br>Applicable versions: 12+ |
+| 14800026 | SQLite: The database is out of memory.<br>Applicable versions: 12+ |
+| 14800027 | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+ |
+| 14800028 | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+ |
+| 14800029 | SQLite: The database is full.<br>Applicable versions: 12+ |
+| 14800030 | SQLite: Unable to open the database file.<br>Applicable versions: 12+ |
+| 14800031 | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+ |
+| 14800032 | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+ |
+| 14800033 | SQLite: Data type mismatch.<br>Applicable versions: 12+ |
+| 14800034 | SQLite: Library used incorrectly.<br>Applicable versions: 12+ |
 
 **Example**:
 
@@ -984,7 +985,7 @@ if (resultSet != undefined) {
 
 getAssets(columnIndex: number): Assets
 
-Obtains the value from the specified column in the current row, and returns the value in the [Assets](arkts-apis-data-relationalStore-t.md#assets10) format. If the type of the value in the column is **Assets**, the value of the Assets type is returned. If the value in the column is null, **null** is returned. If the value in the column is of other types, 14800000 is returned.
+Obtains the value of the specified column in the current row as [Assets](arkts-apis-data-relationalStore-t.md#assets10). If the data type of the current column is Assets, the value of the Assets type is returned. If the value in the current column is null, null is returned. For other data types, error code 14800000 is thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1007,25 +1008,25 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800012  | ResultSet is empty or pointer index is out of bounds. |
+| 14800000  | Inner error.<br>Applicable versions: 12+ |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+ |
+| 14800012  | ResultSet is empty or pointer index is out of bounds.<br>Applicable versions: 12+ |
 | 14800013  | Column index is out of bounds. |
-| 14800014  | The target instance is already closed. |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+ |
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+ |
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+ |
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+ |
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+ |
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+ |
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+ |
 
 **Example**:
 
@@ -1056,24 +1057,24 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | Column index is out of bounds. |
-| 14800014  | The target instance is already closed. |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+ |
+| 14800012  | ResultSet is empty or pointer index is out of bounds.<br>Applicable versions: 12+ |
+| 14800013  | Column index is out of bounds.<br>Applicable versions: 12+ |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+ |
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+ |
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+ |
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+ |
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+ |
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+ |
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+ |
 
 **Example**:
 
@@ -1198,6 +1199,7 @@ try {
   if (resultSet != undefined) {
     resultSet.goToFirstRow();
     const rowData = resultSet.getCurrentRowData();
+    resultSet.close();
   }
 } catch (err) {
   console.error(`Failed to get row data: code:${err.code}, message:${err.message}`);
@@ -1280,6 +1282,7 @@ try {
       position += rowsData.length;
     }
   }
+  resultSet.close();
 } catch (err) {
   console.error(`Failed to get rows data: code:${err.code}, message:${err.message}`);
 }
@@ -1330,7 +1333,9 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 For details about the definition of **this.context** in the sample code, see the application [context](../apis-ability-kit/js-apis-inner-application-context.md) of the stage model.
 
 <!--code_no_check-->
+
 ```ts
+// EntryAbility.ets
 import { window } from '@kit.ArkUI';
 import { UIAbility } from '@kit.AbilityKit';
 import { relationalStore } from '@kit.ArkData';
@@ -1352,8 +1357,10 @@ async function getDataByName(name: string, context: common.UIAbilityContext) {
   if (resultSet.rowCount > 0) {
     resultSet.goToFirstRow();
     const sendableValuesBucket = resultSet.getSendableRow();
+    resultSet.close();
     return sendableValuesBucket;
   } else {
+    resultSet.close();
     return null;
   }
 }
@@ -1400,25 +1407,25 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------- |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800012  | ResultSet is empty or pointer index is out of bounds. |
+| 14800000  | Inner error.<br>Applicable versions: 12+ |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+ |
+| 14800012  | ResultSet is empty or pointer index is out of bounds.<br>Applicable versions: 12+ |
 | 14800013  | Column index is out of bounds. |
-| 14800014  | The target instance is already closed. |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+ |
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+ |
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+ |
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+ |
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+ |
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+ |
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+ |
 
 **Example**:
 
@@ -1438,7 +1445,7 @@ if (resultSet !== undefined) {
 
 close(): void
 
-Closes this **resultSet** to release memory. If the **resultSet** is not closed, FD or memory leaks may occur.
+Closes the result set. If the result set is not closed, FD or memory leaks may occur.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1456,5 +1463,5 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
-| 14800000  | Inner error. |
+| 14800000  | Inner error.<br>Applicable versions: 12+ |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |

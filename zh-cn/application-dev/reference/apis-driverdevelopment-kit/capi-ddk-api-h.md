@@ -8,7 +8,7 @@
 
 ## 概述
 
-声明主机侧访问的Base DDK接口。
+声明主机侧访问的Base DDK接口。提供共享内存的创建、映射、销毁等功能，支持开发者在驱动程序中高效管理共享内存资源，适用于需要与驱动侧共享数据的场景，有助于简化内存管理、提升数据传输效率。
 
 **引用文件：** <ddk/ddk_api.h>
 
@@ -29,7 +29,7 @@
 | [DDK_RetCode OH_DDK_CreateAshmem(const uint8_t *name, uint32_t size, DDK_Ashmem **ashmem)](#oh_ddk_createashmem) | 创建共享内存。为了防止资源泄漏，应通过调用[OH_DDK_DestroyAshmem](#oh_ddk_destroyashmem)接口来销毁不再需要的共享内存。 |
 | [DDK_RetCode OH_DDK_MapAshmem(DDK_Ashmem *ashmem, const uint8_t ashmemMapType)](#oh_ddk_mapashmem) | 映射创建的共享内存到用户空间。需先调用[OH_DDK_CreateAshmem](#oh_ddk_createashmem)接口创建共享内存。通过调用[OH_DDK_UnmapAshmem](#oh_ddk_unmapashmem)接口取消映射不需要的共享内存。 |
 | [DDK_RetCode OH_DDK_UnmapAshmem(DDK_Ashmem *ashmem)](#oh_ddk_unmapashmem) | 取消映射共享内存。需先调用[OH_DDK_MapAshmem](#oh_ddk_mapashmem)接口映射共享内存。不再访问共享内存时应取消映射，以节省地址空间。 |
-| [DDK_RetCode OH_DDK_DestroyAshmem(DDK_Ashmem *ashmem)](#oh_ddk_destroyashmem) | 销毁共享内存。建议先调用[OH_DDK_UnmapAshmem](#oh_ddk_unmapashmem)接口取消映射。共享内存不再使用时应及时销毁以释放系统资源。 |
+| [DDK_RetCode OH_DDK_DestroyAshmem(DDK_Ashmem *ashmem)](#oh_ddk_destroyashmem) | 销毁由[OH_DDK_CreateAshmem](#oh_ddk_createashmem)创建的共享内存。建议先调用[OH_DDK_UnmapAshmem](#oh_ddk_unmapashmem)接口取消映射。共享内存不再使用时应及时销毁以释放系统资源。 |
 
 ## 函数说明
 
@@ -119,7 +119,7 @@ DDK_RetCode OH_DDK_DestroyAshmem(DDK_Ashmem *ashmem)
 
 **描述**
 
-销毁共享内存。建议先调用[OH_DDK_UnmapAshmem](#oh_ddk_unmapashmem)接口取消映射。共享内存不再使用时应及时销毁以释放系统资源。
+销毁由[OH_DDK_CreateAshmem](#oh_ddk_createashmem)创建的共享内存。建议先调用[OH_DDK_UnmapAshmem](#oh_ddk_unmapashmem)接口取消映射。共享内存不再使用时应及时销毁以释放系统资源。
 
 **起始版本：** 12
 

@@ -1,12 +1,14 @@
 # Property Animation (animation)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=bbc6406dab71d9f75b4831661ca1204731bcdd0c translatedAt=2026-07-30T02:27:57.304Z pushedAt=2026-08-01T06:42:55.861Z -->
 
-With property animations, you can animate changes to certain component properties, such as [width](ts-universal-attributes-size.md#width), [height](ts-universal-attributes-size.md#height), [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [opacity](ts-universal-attributes-opacity.md#opacity), [scale](ts-universal-attributes-transformation.md#scale), [rotate](ts-universal-attributes-transformation.md#rotate) and [translate](ts-universal-attributes-transformation.md#translate). In an animation that involves layout (for example, width and height) changes, a component's content (such as text and [canvas](ts-components-canvas-canvas.md) content) is changed straight to the final state. To enable the content to change with the width and height during the animation process, you can use the [renderFit](ts-universal-attributes-renderfit.md#renderfit) attribute.
+When certain universal attributes of a component change, if no animation is set, the attribute values will jump directly to the target values. Attribute animation can be used to achieve a gradient transition effect, making UI changes more natural and smooth. Supported attributes include [width](ts-universal-attributes-size.md#width), [height](ts-universal-attributes-size.md#height), [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [opacity](ts-universal-attributes-opacity.md#opacity), [scale](ts-universal-attributes-transformation.md#scale), [rotate](ts-universal-attributes-transformation.md#rotate), [translate](ts-universal-attributes-transformation.md#translate), and others. For animations of attributes that change the layout (such as width and height), the content usually jumps directly to the final state, for example, text or content in [Canvas](ts-components-canvas-canvas.md). If you want the content to follow the width and height changes, you can use the [renderFit](ts-universal-attributes-renderfit.md#renderfit) attribute for configuration.
 
 > **NOTE**
 >
@@ -31,9 +33,10 @@ Sets a property animation for the component.
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
+
 | Name  | Type                               | Mandatory| Description                                   |
 | ----- | --------------------------------- | ---- | ------------------------------------- |
-| value | [AnimateParam](ts-explicit-animation.md#animateparam) | Yes   | Animation settings.                          |
+| value | [AnimateParam](ts-explicit-animation.md#animateparam) | Yes    | Animation effect parameters. For details about the value range and meaning of each attribute, see [AnimateParam](ts-explicit-animation.md#animateparam).                           |
 
 **Return value**
 
@@ -72,6 +75,7 @@ struct AnimationExample {
         .margin(30)
         .width(this.widthSize) // Only effective if specified before the animation API.
         .height(this.heightSize) // Only effective if specified before the animation API.
+        // Configure an ease-out curve for the button size change and repeat three times.
         .animation({
           duration: 2000,
           curve: Curve.EaseOut,
@@ -127,6 +131,7 @@ struct AttrAnimationExample {
         })
         .margin(50)
         .rotate({ angle: this.rotateAngle })
+        // Configure a damping curve for the rotation angle change, with a 500 ms delay before starting, and alternating playback in an infinite loop.
         .animation({
           duration: 1200,
           curve: Curve.Friction,

@@ -7,7 +7,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 
-为了增强子组件接受外部参数输入的能力，开发者可以使用\@Param装饰器。
+为了增强子组件接受外部参数输入的能力，开发者可以使用[\@Param](../../reference/apis-arkui/arkui-ts/ts-state-management-param.md#param)装饰器。
 
 
 \@Param不仅可以接受组件外部输入，还可以接受\@Local的同步变化。在阅读本文档前，建议提前阅读：[\@Local](./arkts-new-local.md)。

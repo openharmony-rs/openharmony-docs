@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了增强状态管理框架对状态变量变化的监听能力，开发者可以使用\@SyncMonitor装饰器对状态变量进行监听。
+为了增强状态管理框架对状态变量变化的监听能力，开发者可以使用[\@SyncMonitor](../../reference/apis-arkui/arkui-ts/ts-state-management-syncmonitor.md#syncmonitor)装饰器对状态变量进行监听。
 
 \@SyncMonitor提供了对V2状态变量的同步监听。在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，[\@Local](./arkts-new-local.md)，[\@Monitor](./arkts-new-monitor.md)。
 
@@ -591,6 +591,8 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
 - 在一次事件中多次改变被\@SyncMonitor监听的属性，\@SyncMonitor回调将在该属性每次改变时被调用。
 
   \@SyncMonitor与\@Monitor行为不一样，\@Monitor只被调用一次并以最后一次修改为准。
+
+  <!-- @[syncmonitor_behaves_differently_from_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/SyncMonitorBehavesDifferentlyFromMonitor.ets) -->
   
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -655,7 +657,9 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
 
 - 如果\@SyncMonitor观察的多个属性在不同的赋值操作中发生改变，则每次赋值操作后都会立即调用\@SyncMonitor回调函数。这与\@Monitor的行为相反，后者只调用一次并使用最后一次更改的值。调用Array的API可能会一次改变多个数组元素，但每次只会触发一次\@SyncMonitor装饰的回调函数。
 
-  ``` typescript
+  <!-- @[syncmonitor_array_multi_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/SyncMonitorArrayMultiPath.ets) -->
+  
+  ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
   @Entry
   @ComponentV2
@@ -1166,6 +1170,8 @@ struct DocSampleArrayOfArrays {
 
 - 当@SyncMonitor传入多个路径参数时，以参数的全拼接结果判断是否重复监听。全拼接时会在参数间加空格，以区分不同参数。例如，`'ab', 'c'`的全拼接结果为`'ab c'`，`'a', 'bc'`的全拼接结果为`'a bc'`，二者全拼接不相等。以下示例中，`SyncMonitor 1`、`SyncMonitor 2`与`SyncMonitor 3`都监听了name属性的变化。由于`SyncMonitor 2`与`SyncMonitor 3`的入参全拼接相等（都为`'name position'`），因此`SyncMonitor 2`不生效，仅`SyncMonitor 3`生效。当name属性变化时，将同时触发onNameAgeChange与onNamePositionChangeDuplicate方法。但请注意，`SyncMonitor 2`与`SyncMonitor 3`的写法仍然被视作在一个类中对同一个属性进行多次@SyncMonitor的监听，这是不建议的。
 
+  <!-- @[monitor_duplicate_multiple_paths](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorDuplicateMultiplePaths.ets) -->
+  
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
   
@@ -1297,6 +1303,8 @@ struct DocSampleArrayOfArrays {
 \@SyncMonitor可以监听深层属性的变化，并能够根据更改前后的值做分类处理。
 
 下面的示例中监听了属性value的变化，并根据变化的幅度改变Text组件显示的样式。
+
+<!-- @[monitor_deep_property_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorDeepPropertyChange.ets) -->
 
 ``` TypeScript
 @ObservedV2
@@ -1448,6 +1456,8 @@ struct Index {
 
 当\@SyncMonitor定义在\@ObservedV2装饰的类中时，\@SyncMonitor会在类的实例创建完成后生效，在类的实例销毁时失效。
 
+<!-- @[syncmonitor_class_effective_time](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/SyncMonitorClassEffectiveTime.ets) -->
+
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -1494,6 +1504,8 @@ message change from Index aboutToAppear to Index click to change message
 ```
 
 类中定义的\@SyncMonitor随着类的销毁失效。而由于类的实际销毁释放依赖于垃圾回收机制，因此会出现即使所在自定义组件已经销毁，类却还未及时销毁，导致类中定义的\@SyncMonitor仍在监听变化的情况。
+
+<!-- @[syncmonitor_class_gc_destruction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/SyncMonitorClassGcDestruction.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1583,6 +1595,8 @@ struct Index {
 
 将\@SyncMonitor定义在自定义组件中。由于自定义组件在销毁时，状态管理框架会手动取消\@SyncMonitor的监听，因此在自定义组件调用完aboutToDisappear，尽管自定义组件的数据不一定已经被释放，但\@SyncMonitor回调已不会再被触发。与@Monitor不同的是，当自定义组件即将销毁时，主动置空\@SyncMonitor监听的对象，\@SyncMonitor依然能监听原监听目标的变化。
 
+<!-- @[syncmonitor_component_destruction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/SyncMonitorComponentDestruction.ets) -->
+
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -1671,6 +1685,8 @@ struct Index {
 
 【反例1】
 
+<!-- @[monitor_non_state_variable_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorNonStateVariableNegative.ets) -->
+
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -1679,7 +1695,8 @@ class Info {
   public name: string = 'John';
   @Trace public age: number = 24;
 
-  // 只允许监听状态变量age，监听非状态变量name，会编译告警，提示`Cannot observe non-existent variables or non-state variables, except in wildcard-based monitoring scenarios.`
+  // 只允许监听状态变量age。监听非状态变量name，会编译告警，
+  // 提示：`Cannot observe non-existent variables or non-state variables, except in wildcard-based monitoring scenarios.`
   @SyncMonitor('age', 'name')
   onPropertyChange(monitor: IMonitor) {
     monitor.dirty.forEach((path: string) => {
@@ -1714,6 +1731,8 @@ property path:age change from 24 to 25
 ```
 
 【正例1】
+
+<!-- @[monitor_non_state_variable_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorNonStateVariablePositive.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1751,6 +1770,8 @@ struct Index {
 ```
 
 【反例2】
+
+<!-- @[monitor_non_computed_getter_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorNonComputedGetterNegative.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1836,6 +1857,8 @@ struct Index {
 ```
 
 或直接监听状态变量本身：
+
+<!-- @[monitor_state_variable_directly](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorStateVariableDirectly.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';

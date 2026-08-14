@@ -2,7 +2,7 @@
 
 <!--Kit: Ads Kit-->
 <!--Subsystem: Advertising-->
-<!--Owner: @SukiEvas-->
+<!--Owner: @ctssss-->
 <!--Designer: @zhansf1988-->
 <!--Tester: @hongmei_may-->
 <!--Adviser: @RayShih-->
@@ -35,7 +35,7 @@ showAd(ad: Advertisement, options: AdDisplayOptions, context?: common.UIAbilityC
 
 **参数：**
 
-| **名称** | **类型** | 必填 | 说明 | 
+| 参数名 | 类型 | 必填 | 说明 | 
 | -------- | -------- | -------- | -------- |
 | ad | [Advertisement](js-apis-advertisement.md#advertisement) | 是 | 广告对象。 | 
 | options | [AdDisplayOptions](js-apis-advertising.md#addisplayoptions) | 是 | 广告展示参数。 | 
@@ -84,7 +84,7 @@ getAdRequestBody(adParams: AdRequestParams[], adOptions: AdOptions): Promise&lt;
 
 **参数：**
 
-| **名称** | **类型** | 必填 | 说明 | 
+| 参数名 | 类型 | 必填 | 说明 | 
 | -------- | -------- | -------- | -------- |
 | adParams | [AdRequestParams](js-apis-advertising.md#adrequestparams)[] | 是 | 广告请求参数。<br/>**说明：** 该接口体的adId参数可以为空。 | 
 | adOptions | [AdOptions](js-apis-advertising.md#adoptions) | 是 | 广告配置参数。 | 
@@ -134,7 +134,7 @@ parseAdResponse(adResponse: string, listener: MultiSlotsAdLoadListener, context:
 
 **参数：**
 
-| **名称** | **类型** | 必填 | 说明 | 
+| 参数名 | 类型 | 必填 | 说明 | 
 | -------- | -------- | -------- | -------- |
 | adResponse | string | 是 | 广告响应体。 | 
 | listener | [MultiSlotsAdLoadListener](js-apis-advertising.md#multislotsadloadlistener) | 是 | 请求广告回调监听。 | 
@@ -191,7 +191,7 @@ registerWebAdInterface(controller: web_webview.WebviewController, context: commo
 
 **参数：**
 
-| **名称** | **类型** | 必填 | 说明 | 
+| 参数名 | 类型 | 必填 | 说明 | 
 | -------- | -------- | -------- | -------- |
 | controller | web_webview.[WebviewController](../apis-arkweb/arkts-apis-webview-WebviewController.md) | 是 | Web组件控制器。 |
 | context    | common.[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | UIAbility的上下文环境。 |
@@ -247,7 +247,7 @@ registerWebAdInterface(controller: web_webview.WebviewController, context: commo
 
 **参数：**
 
-| **名称** | **类型** | 必填 | 说明 | 
+| 参数名 | 类型 | 必填 | 说明 | 
 | -------- | -------- | -------- | -------- |
 | controller  | web_webview.[WebviewController](../apis-arkweb/arkts-apis-webview-WebviewController.md) | 是 | Web组件控制器。 |
 | context     | common.[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | UIAbility的上下文环境。 |
@@ -304,7 +304,7 @@ deleteWebAdInterface(controller: web_webview.WebviewController, needRefresh: boo
 
 **参数：**
 
-| **名称** | **类型** | 必填 | 说明 | 
+| 参数名 | 类型 | 必填 | 说明 | 
 | -------- | -------- | -------- | -------- |
 | controller  | web_webview.[WebviewController](../apis-arkweb/arkts-apis-webview-WebviewController.md) | 是 | Web组件控制器。 |
 | needRefresh | boolean | 是 | 是否需要刷新页面（true: 需要；false: 不需要）。 | 
@@ -366,7 +366,7 @@ constructor(context: common.Context)
 
 **参数：**
 
-| **名称** | **类型** | 必填 | 说明 | 
+| 参数名 | 类型 | 必填 | 说明 | 
 | -------- | -------- | -------- | -------- |
 | context | common.[Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | ability或application的上下文环境。 |
 
@@ -397,7 +397,7 @@ loadAd(adParam: AdRequestParams, adOptions: AdOptions, listener: AdLoadListener)
 
 **参数：**
 
-| **名称** | **类型** | 必填 | 说明 | 
+| 参数名 | 类型 | 必填 | 说明 | 
 | -------- | -------- | -------- | -------- |
 | adParam | [AdRequestParams](js-apis-advertising.md#adrequestparams) | 是 | 广告请求参数。 | 
 | adOptions | [AdOptions](js-apis-advertising.md#adoptions) | 是 | 广告配置参数。 | 
@@ -458,7 +458,7 @@ loadAdWithMultiSlots(adParams: AdRequestParams[], adOptions: AdOptions, listener
 
 **参数：**
 
-| **名称** | **类型** | 必填 | 说明 | 
+| 参数名 | 类型 | 必填 | 说明 | 
 | -------- | -------- | -------- | -------- |
 | adParams | [AdRequestParams](js-apis-advertising.md#adrequestparams)[] | 是 | 广告请求参数。 | 
 | adOptions | [AdOptions](js-apis-advertising.md#adoptions) | 是 | 广告配置参数。 | 
@@ -529,7 +529,7 @@ onAdLoadFailure(errorCode: number, errorMsg: string): void
 
 **参数：**
 
-| 名称 | **类型** | 必填 | 说明 | 
+| 参数名 | 类型 | 必填 | 说明 | 
 | -------- | -------- | -------- | -------- |
 | errorCode | number | 是 | 广告请求失败的错误码。 | 
 | errorMsg | string | 是 | 广告请求失败的错误信息。 | 
@@ -562,7 +562,7 @@ onAdLoadSuccess(ads: Array&lt;Advertisement&gt;): void
 
 **参数：** 
 
-| 名称 | **类型** | 必填 | 说明 | 
+| 参数名 | 类型 | 必填 | 说明 | 
 | -------- | -------- | -------- | -------- |
 | ads | Array&lt;[Advertisement](js-apis-advertisement.md#advertisement)&gt; | 是 | 广告数据。 | 
 
@@ -604,7 +604,7 @@ onAdLoadFailure(errorCode: number, errorMsg: string): void
 
 **参数：**  
 
-| 名称 | **类型** | 必填 | 说明 | 
+| 参数名 | 类型 | 必填 | 说明 | 
 | -------- | -------- | -------- | -------- |
 | errorCode | number | 是 | 广告请求失败的错误码。 | 
 | errorMsg | string | 是 | 广告请求失败的错误信息。 | 
@@ -637,7 +637,7 @@ onAdLoadSuccess(adsMap: Map&lt;string, Array&lt;Advertisement&gt;&gt;): void
 
 **参数：** 
 
-| **名称** | **类型** | 必填 | 说明 | 
+| 参数名 | 类型 | 必填 | 说明 | 
 | -------- | -------- | -------- | -------- |
 | adsMap | Map&lt;string, Array&lt;[Advertisement](js-apis-advertisement.md#advertisement)&gt;&gt; | 是 | 广告数据，是以广告位ID为键，存储请求到的广告内容的映射集合。 | 
 
@@ -679,7 +679,7 @@ onStatusChanged(status: string, ad: Advertisement, data: string)
 
 **参数：**
 
-| 名称 | 类型 | 必填 | 说明 | 
+| 参数名 | 类型 | 必填 | 说明 | 
 | -------- | -------- | -------- | -------- |
 | status | string | 是 | 广告展示状态。<br/>- onAdLoad：广告加载成功。<br/>- onAdFail：广告加载失败。<br/>- onAdOpen：打开广告。<br/>- onAdClick：点击广告。<br/>- onAdClose：关闭广告。<br/>- onMediaProgress：广告播放进度。<br/>- onMediaStart：广告开始播放。<br/>- onMediaPause：广告暂停播放。<br/>- onMediaStop：广告停止播放。<br/>- onMediaComplete：广告播放完成。<br/>- onMediaCountDown：广告倒计时。<br/>- onMediaError：广告播放失败。<br/>- onLandscape：竖屏状态下点击全屏按钮。<br/>- onPortrait：全屏状态下点击返回按钮。<br/>- onBackClicked：点击返回按钮。 | 
 | ad | [Advertisement](js-apis-advertisement.md#advertisement) | 是 | 发生状态变化的广告内容。 | 

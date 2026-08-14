@@ -361,7 +361,7 @@ class StaticExample {
 
 ### 方法的重载
 
-方法重载为同一方法名提供多个类型签名，根据传入参数类型分发对应实现。
+方法重载为同一方法名提供多个类型签名，根据传入参数类型分发对应实现。ArkTS的重载采用多个重载签名加一个实现签名的形式：重载签名仅在编译期生效用于类型检查，实现签名对外不可见，调用方只能使用已声明的重载签名；实现签名须兼容所有重载签名，在函数体内通过`typeof`等运行时检查区分不同参数类型的逻辑。
 
 <!-- @[method_overloading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
 
@@ -403,7 +403,7 @@ console.info(`${processor.format(3.14159, 2)}`);    // '3.14'
 
 ### 类的构造函数（构造器重载、参数默认值）
 
-ArkTS类只能定义一个构造函数，可通过可选参数模拟重载，并用静态工厂方法提供多种创建方式。
+ArkTS类只能有一个构造函数实现体，但支持声明多个重载签名（与方法重载同理）。实际开发中常通过可选参数或静态工厂方法提供多种创建方式。
 
 <!-- @[constructor_optional_params](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
 
@@ -773,7 +773,7 @@ chainRect.draw();
 
 ### 方法重写
 
-子类重新定义父类方法实现多态。`override`关键字标记被重写的方法，使编译器在父类方法被重命名或删除时发出错误提示，避免重写方法与父类方法意外脱钩。ArkTS中`override`为可选关键字。
+子类重新定义父类方法实现多态。`override`关键字标记被重写的方法，使编译器在父类方法被重命名或删除时发出错误提示，避免重写方法与父类方法意外脱钩。ArkTS中`override`为可选关键字，推荐在重写父类方法时显式标注`override`，以便编译器检查父类是否存在同名方法。
 
 <!-- @[method_override](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
 
@@ -785,8 +785,8 @@ class Base {
 }
 
 class Derived extends Base {
-  // 使用override标记（可选）
-  override method(): void {
+  // TypeScript使用override标记（可选）
+  method(): void {
     console.info('Derived method');
   }
 }
@@ -1813,6 +1813,8 @@ console.info(`${tsResult}`); // Hello, World
 
 ArkTS替代方式：使用显式类名作为返回类型实现链式调用。
 
+<!-- @[string_builder_explicit_return](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+
 ``` TypeScript
 class StringBuilder {
   public parts: string[] = [];
@@ -1828,8 +1830,8 @@ class StringBuilder {
 }
 
 let sb: StringBuilder = new StringBuilder();
-let result: string = sb.append('Hello').append(', ').append('World').toString();
-console.info(`${result}`); // Hello, World
+let sbResult: string = sb.append('Hello').append(', ').append('World').toString();
+console.info(`${sbResult}`); // Hello, World
 ```
 
 > **说明：**

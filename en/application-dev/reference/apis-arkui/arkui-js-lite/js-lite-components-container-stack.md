@@ -1,10 +1,12 @@
 # stack
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @lanshouren-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=214e29279f37b00be7bd8f1096b2e4dc3af96177 translatedAt=2026-07-31T01:13:21.009Z pushedAt=2026-07-31T12:04:26.586Z -->
 
 The **\<stack>** component provides a stack container where child components are successively stacked and the latter one overwrites the previous one.
 
@@ -12,11 +14,9 @@ The **\<stack>** component provides a stack container where child components are
 >
 > This component is supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
 
-
 ## Child Components
 
 Supported.
-
 
 ## Attributes
 
@@ -27,7 +27,6 @@ Supported.
 | class | string | -    | No   | Style class of the component, which is used to refer to a style table.                         |
 | ref   | string | -    | No   | Reference information of child elements, which is registered with the parent component on **$refs**.|
 
-
 ## Events
 
 | Name                | Parameter                               | Description         |
@@ -35,7 +34,6 @@ Supported.
 | click              | -                                 | Triggered when the component is clicked. |
 | longpress          | -                                 | Triggered when the component is long pressed. |
 | swipe<sup>5+</sup> | [SwipeEvent](js-lite-common-events.md#swipeevent) | Triggered when a user quickly swipes on the component.|
-
 
 ## Styles
 
@@ -45,7 +43,7 @@ Supported.
 | height                             | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | -     | No   | Component height.<br>If this attribute is not set, the default value **0** is used.       |
 | padding                            | &lt;length&gt;                           | 0     | No   | Shorthand attribute to set the padding for all sides.<br>The attribute can have one to four values:<br>- If you set only one value, it specifies the padding for all the four sides.<br>- If you set two values, the first value specifies the top and bottom padding, and the second value specifies the left and right padding.<br>- If you set three values, the first value specifies the top padding, the second value specifies the left and right padding, and the third value specifies the bottom padding.<br>- If you set four values, they respectively specify the padding for top, right, bottom, and left sides (in clockwise order).|
 | padding-[left\|top\|right\|bottom] | &lt;length&gt;                           | 0     | No   | Left, top, right, and bottom padding.                         |
-| margin                             | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | 0     | No   | Shorthand attribute to set the margin for all sides. The attribute can have one to four values:<br>- If you set only one value, it specifies the margin for all the four sides.<br>- If you set two values, the first value specifies the top and bottom margins, and the second value specifies the left and right margins.<br>- If you set three values, the first value specifies the top margin, the second value specifies the left and right margins, and the third value specifies the bottom margin.<br>- If you set four values, they respectively specify the margin for top, right, bottom, and left sides (in clockwise order).|
+| margin | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | 0 | No | Shorthand attribute to set the margin for all sides. The attribute can have one to four values:<br/>- If you set only one value, it specifies the margin for all the four sides.<br/>- If you set two values, the first value specifies the top and bottom margins, and the second value specifies the left and right margins.<br/>- If you set three values, the first value specifies the top margin, the second value specifies the left and right margins, and the third value specifies the bottom margin.<br/>- If you set four values, they respectively specify the margin for top, right, bottom, and left sides (in clockwise order). |
 | margin-[left\|top\|right\|bottom]  | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | 0     | No   | Left, top, right, and bottom margins.                         |
 | border-width                       | &lt;length&gt;                           | 0     | No   | Shorthand attribute to set the border width for all sides.                      |
 | border-color                       | &lt;color&gt;                            | black | No   | Shorthand attribute to set the color for all borders.                      |
@@ -59,9 +57,7 @@ Supported.
 >
 > The absolute positioning does not support a percentage. Therefore, **margin** cannot be set for the child components of the **\<stack>** component.
 
-
 ## Example
-
 
 ```html
 <!-- xxx.hml -->
@@ -71,7 +67,6 @@ Supported.
   <div class="front-child bd-radius"></div>
 </stack>
 ```
-
 
 ```css
 /* xxx.css */

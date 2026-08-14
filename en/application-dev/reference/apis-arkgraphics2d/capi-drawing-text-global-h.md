@@ -1,13 +1,16 @@
 # drawing_text_global.h
+
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @gmiao522-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=26f1a11070a0259938fa2e9b40098b1fb904b6e8 translatedAt=2026-07-25T02:00:58.412Z pushedAt=2026-07-25T09:30:10.872Z -->
+
 ## Overview
 
-This file declares the functions related to global text information, for example, setting the high contrast mode for text rendering.
+Provides APIs for global text information, such as setting the text rendering high contrast mode and the presentation mode of undefined glyphs.
 
 **File to include**: <native_drawing/drawing_text_global.h>
 
@@ -33,7 +36,7 @@ This file declares the functions related to global text information, for example
 | Name| Description|
 | -- | -- |
 | [void OH_Drawing_SetTextHighContrast(OH_Drawing_TextHighContrast action)](#oh_drawing_settexthighcontrast) | Sets the high contrast mode for text rendering.|
-| [void OH_Drawing_SetTextUndefinedGlyphDisplay(OH_Drawing_TextUndefinedGlyphDisplay undefinedGlyphDisplay)](#oh_drawing_settextundefinedglyphdisplay) | Sets how undefined glyphs are displayed. The setting affects all subsequent text rendering.|
+| [void OH_Drawing_SetTextUndefinedGlyphDisplay(OH_Drawing_TextUndefinedGlyphDisplay undefinedGlyphDisplay)](#oh_drawing_settextundefinedglyphdisplay) | Sets the display mode of undefined glyphs. This API affects all subsequently rendered text in the current process. |
 
 ## Enum Description
 
@@ -52,8 +55,8 @@ Defines an enum of the high contrast modes for text rendering.
 | Value| Description|
 | -- | -- |
 | TEXT_FOLLOW_SYSTEM_HIGH_CONTRAST | Follows the high contrast mode for text rendering in the system settings.|
-| TEXT_APP_DISABLE_HIGH_CONTRAST | Disables the high contrast mode for text rendering in the application. This mode takes precedence over the one based on system settings.|
-| TEXT_APP_ENABLE_HIGH_CONTRAST | Enables the high contrast mode for text rendering in the application. The priority of this mode is higher than the mode following the system settings.|
+| TEXT_APP_DISABLE_HIGH_CONTRAST | Disables the app's text rendering high contrast configuration. The priority of this mode is higher than the high contrast text configuration in system settings. |
+| TEXT_APP_ENABLE_HIGH_CONTRAST | Enables the app's text rendering high contrast configuration. The priority of this mode is higher than the high contrast text configuration in system settings. |
 
 ### OH_Drawing_TextUndefinedGlyphDisplay
 
@@ -88,14 +91,13 @@ Sets the high contrast mode for text rendering.
 
 The setting of this API takes effect for the entire process, and all pages in the process share the same mode.
 
-You can call this API to set the high contrast mode, or enable or disable the high contrast mode by toggling the switch on the system settings screen. This API is used to set the high contrast mode for text rendering. The setting of this API takes precedence over the one based on system settings.
+The text rendering high contrast mode can be set by calling this API, or enabled/disabled through the high contrast text configuration switch in the system settings screen. The text rendering high contrast mode set by this API takes precedence over the system settings.
 
 This API does not take effect for the text drawing scenario.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -111,12 +113,11 @@ void OH_Drawing_SetTextUndefinedGlyphDisplay(OH_Drawing_TextUndefinedGlyphDispla
 
 **Description**
 
-Sets how undefined glyphs are displayed. The setting affects all subsequent text rendering.
+Sets the presentation mode of undefined glyphs. After this API is called, it affects all subsequently rendered text in the current process.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 20
-
 
 **Parameters**
 

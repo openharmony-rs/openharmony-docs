@@ -12,7 +12,7 @@
 
 本模块提供三大核心能力：1）通过`connectSystemChannel`建立系统面板与输入法应用之间的通信通道；2）通过`onSystemPanelStatusChange`订阅系统面板状态变化（包括输入类型、面板标志、面板升起状态、功能按钮需求），系统面板据此自适应调整自身布局；3）通过`onSystemPrivateCommand`/`sendPrivateCommand`实现系统面板与输入法应用之间的私有数据双向通信，用于传递自定义指令和配置数据。
 
-当开发输入法系统面板（系统级面板组件）时使用本模块。系统面板需要与系统预置输入法应用协同工作时，须先调用`connectSystemChannel`建立通道，再订阅状态变化和私有命令事件。本模块仅系统应用可调用，且仅支持Stage模型。
+当开发输入法系统面板（系统级面板组件）时使用本模块。系统面板需要与系统预置输入法应用协同工作时，须先调用`connectSystemChannel`建立通道，再订阅状态变化和私有命令事件。
 
 本模块的核心开放能力由以下关键类型承载：
 
@@ -68,6 +68,10 @@ inputMethodSystemPanelManager.offSystemPrivateCommand();
 >
 > `connectSystemChannel`必须在订阅事件和发送命令之前调用，否则相关操作将因通道未连接而返回错误码12800026。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
 **起始版本：** 26.0.0
 
 ## 导入模块
@@ -119,7 +123,7 @@ type CommandDataType = number | string | boolean
 
 ## inputMethodSystemPanelManager.onSystemPrivateCommand
 
-onSystemPrivateCommand(callback: Callback\<Record\<string, CommandDataType\>\>): void
+onSystemPrivateCommand(callback: Callback&lt;Record&lt;string, CommandDataType&gt;&gt;): void
 
 订阅系统预置输入法应用发送私有数据命令的事件。当输入法应用通过[inputMethodEngine.sendPrivateCommand](js-apis-inputmethodengine.md#sendprivatecommand12)（TextInputClient方法）向系统组件发送私有命令时，系统面板会通过此回调接收到该命令数据。
 
@@ -139,7 +143,7 @@ onSystemPrivateCommand(callback: Callback\<Record\<string, CommandDataType\>\>):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback\<Record\<string, [CommandDataType](#commanddatatype)\>\> | 是 | 回调函数，当输入法应用发送私有数据命令时触发。<br>使用场景：必须提供此回调函数以处理输入法应用发送的私有命令数据。<br>使用后效果：回调触发时，参数为Record<string, CommandDataType>格式，其中key为命令名称，value为命令数据值（支持number、string、boolean类型）。<br>说明：回调中的数据格式为键值对映射，开发者需根据key值判断命令类型并执行相应逻辑。 |
+| callback | Callback&lt;Record&lt;string, [CommandDataType](#commanddatatype)&gt;&gt;| 是 | 回调函数，当输入法应用发送私有数据命令时触发。<br>使用场景：必须提供此回调函数以处理输入法应用发送的私有命令数据。<br>使用后效果：回调触发时，参数为Record<string, CommandDataType>格式，其中key为命令名称，value为命令数据值（支持number、string、boolean类型）。<br>说明：回调中的数据格式为键值对映射，开发者需根据key值判断命令类型并执行相应逻辑。 |
 
 **错误码：**
 
@@ -163,7 +167,7 @@ try {
 
 ## inputMethodSystemPanelManager.offSystemPrivateCommand
 
-offSystemPrivateCommand(callback?: Callback\<Record\<string, CommandDataType\>\>): void
+offSystemPrivateCommand(callback?: Callback&lt;Record&lt;string, CommandDataType&gt;&gt;): void
 
 取消订阅系统预置输入法应用发送私有数据命令的事件。
 
@@ -179,7 +183,7 @@ offSystemPrivateCommand(callback?: Callback\<Record\<string, CommandDataType\>\>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback\<Record\<string, [CommandDataType](#commanddatatype)\>\> | 否 | 回调函数。<br>使用场景：传入需要取消的特定回调函数时，仅取消该回调的订阅。<br>默认值：不传入时，取消所有已订阅的onSystemPrivateCommand回调。<br>说明：建议传入需要取消的特定回调函数引用，避免取消所有回调导致其他订阅者的回调也被移除。 |
+| callback | Callback&lt;Record&lt;string, [CommandDataType](#commanddatatype)&gt;&gt; | 否 | 回调函数。<br>使用场景：传入需要取消的特定回调函数时，仅取消该回调的订阅。<br>默认值：不传入时，取消所有已订阅的onSystemPrivateCommand回调。<br>说明：建议传入需要取消的特定回调函数引用，避免取消所有回调导致其他订阅者的回调也被移除。 |
 
 **错误码：**
 
@@ -201,7 +205,7 @@ try {
 
 ## inputMethodSystemPanelManager.onSystemPanelStatusChange
 
-onSystemPanelStatusChange(callback: Callback\<SystemPanelStatus\>): void
+onSystemPanelStatusChange(callback: Callback&lt;SystemPanelStatus&gt;): void
 
 订阅系统面板状态变化事件。当系统面板的输入类型、面板标志、底部抬高状态或功能按钮需求发生变化时，将触发回调通知。
 
@@ -219,7 +223,7 @@ onSystemPanelStatusChange(callback: Callback\<SystemPanelStatus\>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback\<[SystemPanelStatus](#systempanelstatus)\> | 是 | 回调函数，当系统面板状态变化时触发。<br>使用场景：必须提供此回调函数以处理面板状态变化通知。<br>使用后效果：回调触发时，参数为[SystemPanelStatus](#systempanelstatus)对象，开发者可根据其中各属性值调整面板的布局和行为。 |
+| callback | Callback&lt;[SystemPanelStatus](#systempanelstatus)&gt;| 是 | 回调函数，当系统面板状态变化时触发。<br>使用场景：必须提供此回调函数以处理面板状态变化通知。<br>使用后效果：回调触发时，参数为[SystemPanelStatus](#systempanelstatus)对象，开发者可根据其中各属性值调整面板的布局和行为。 |
 
 **错误码：**
 
@@ -243,7 +247,7 @@ try {
 
 ## inputMethodSystemPanelManager.offSystemPanelStatusChange
 
-offSystemPanelStatusChange(callback?: Callback\<SystemPanelStatus\>): void
+offSystemPanelStatusChange(callback?: Callback&lt;SystemPanelStatus&gt;): void
 
 取消订阅系统面板状态变化事件。
 
@@ -259,7 +263,7 @@ offSystemPanelStatusChange(callback?: Callback\<SystemPanelStatus\>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback\<[SystemPanelStatus](#systempanelstatus)\> | 否 | 回调函数。<br>使用场景：传入需要取消的特定回调函数时，仅取消该回调的订阅。<br>默认值：不传入时，取消所有已订阅的onSystemPanelStatusChange回调。<br>说明：建议传入需要取消的特定回调函数引用，避免取消所有回调导致其他订阅者的回调也被移除。 |
+| callback | Callback&lt;[SystemPanelStatus](#systempanelstatus)&gt;| 否 | 回调函数。<br>使用场景：传入需要取消的特定回调函数时，仅取消该回调的订阅。<br>默认值：不传入时，取消所有已订阅的onSystemPanelStatusChange回调。<br>说明：建议传入需要取消的特定回调函数引用，避免取消所有回调导致其他订阅者的回调也被移除。 |
 
 **错误码：**
 
@@ -281,7 +285,7 @@ try {
 
 ## inputMethodSystemPanelManager.sendPrivateCommand
 
-sendPrivateCommand(commandData: Record\<string, CommandDataType\>): Promise&lt;void&gt;
+sendPrivateCommand(commandData: Record&lt;string, CommandDataType&gt;): Promise&lt;void&gt;
 
 发送私有命令给系统预置输入法应用。使用Promise异步回调。
 
@@ -303,7 +307,7 @@ sendPrivateCommand(commandData: Record\<string, CommandDataType\>): Promise&lt;v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| commandData | Record\<string, [CommandDataType](#commanddatatype)\> | 是 | 要发送的命令数据，格式为键值对映射，key为命令名称（string类型），value为命令数据值（支持number、string或boolean类型）。<br>使用场景：用于传输系统面板与输入法应用之间的自定义通信数据。<br>取值范围：总大小最大32KB，键值对数量最多5条。超出此范围时返回错误码12800026。<br>说明：需注意IPC传输数据量的约束与限制，一次接口调用在IPC层的总传输数据量等于应用侧发送的数据量加系统层处理所需的必要数据量，因此实际可发送的最大数据量会小于32KB。 |
+| commandData | Record&lt;string, [CommandDataType](#commanddatatype)&gt; | 是 | 要发送的命令数据，格式为键值对映射，key为命令名称（string类型），value为命令数据值（支持number、string或boolean类型）。<br>使用场景：用于传输系统面板与输入法应用之间的自定义通信数据。<br>取值范围：总大小最大32KB，键值对数量最多5条。超出此范围时返回错误码12800026。<br>说明：需注意IPC传输数据量的约束与限制，一次接口调用在IPC层的总传输数据量等于应用侧发送的数据量加系统层处理所需的必要数据量，因此实际可发送的最大数据量会小于32KB。 |
 
 **返回值：**
 
@@ -318,7 +322,7 @@ sendPrivateCommand(commandData: Record\<string, CommandDataType\>): Promise&lt;v
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 202 | not system application. |
-| 12800026 | input method system panel error. Possible causes: 1. system panel not connected. 2. ipc failed due to large amount of data transferred or other reasons. 3. the caller is not system panel. |
+| 12800026 | input method system panel error. Possible causes: 1. the system panel not connected. 2. ipc failed due to the large amount of data transferred or other reasons. 3. the caller is not system panel. |
 
 **示例：**
 

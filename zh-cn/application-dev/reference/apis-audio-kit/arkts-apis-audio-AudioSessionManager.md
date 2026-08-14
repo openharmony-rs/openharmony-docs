@@ -317,6 +317,7 @@ setDefaultOutputDevice(deviceType: DeviceType): Promise&lt;void&gt;
 >
 > - 本接口适用于以下情况：当设置的[AudioSessionScene](arkts-apis-audio-e.md#audiosessionscene20)为VoIP场景时，激活AudioSession后立即生效。若[AudioSessionScene](arkts-apis-audio-e.md#audiosessionscene20)为非VoIP场景，激活AudioSession时不会生效，仅在启动播放的[StreamUsage](arkts-apis-audio-e.md#streamusage)为语音消息、VoIP语音通话或VoIP视频通话时才生效。支持听筒、扬声器和系统默认设备。
 > - 本接口允许在AudioSessionManager创建后随时调用，系统会记录应用设置的默认本机内置发声设备。但只有激活AudioSession后才能生效。应用启动播放时，若外接设备如蓝牙耳机或有线耳机已接入，系统优先从外接设备发声。否则，系统遵循应用设置的默认本机内置发声设备。
+> - 由于AudioSessionManager是应用级设置，调用本接口设置默认音频输出设备时，会对当前应用所有适用范围内的音频流生效，且会覆盖AudioRenderer的[setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setdefaultoutputdevice12)接口设置的默认音频输出设备信息。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -933,7 +934,7 @@ enableMuteSuggestionWhenMixWithOthers(enable: boolean): void
 
 如果启用此功能，当订阅音频会话状态更改事件后静音建议和取消静音建议提示将通过[AudioSessionStateChangedEvent](arkts-apis-audio-i.md#audiosessionstatechangedevent20)回调发送。收到静音建议表示其他应用程序开始播放音频，且播放的音频和本应用的音频不能混音。
 
-此功能仅支持已设置[AudioSessionScene](./arkts-apis-audio-e.md#audiosessionscene20)并激活模式模式为CONCURRENCY_MIX_WITH_OTHERS的音频会话使用。并且仅在激活音频会话期间生效一次，每次激活音频会话前都必须重新启用。
+此功能仅支持已设置[AudioSessionScene](./arkts-apis-audio-e.md#audiosessionscene20)并激活模式为CONCURRENCY_MIX_WITH_OTHERS的音频会话使用。并且仅在激活音频会话期间生效一次，每次激活音频会话前都必须重新启用。
 
 详细说明请参考[启用混音播放下静音建议通知](../../media/audio/audio-session-management.md#启用混音播放下静音建议通知)。
 

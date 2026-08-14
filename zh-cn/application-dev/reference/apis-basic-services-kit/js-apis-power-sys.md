@@ -290,6 +290,8 @@ API version 12-18，使用该接口无需权限；从 API version 19开始，需
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
+**设备行为差异：** 该接口在Car设备调用返回801错误码，在其他设备中正常调用。
+
 **参数：**
 
 | 参数名    | 类型     | 必填   | 说明    |
@@ -306,6 +308,7 @@ API version 12-18，使用该接口无需权限；从 API version 19开始，需
 | 401     | Parameter error. Possible causes: 1. Parameter verification failed. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
+| 801     | Capability not supported. This API cannot work in car devices. |
 
 **示例：**
 
@@ -374,6 +377,8 @@ refreshActivity(reason: string): void
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
+**设备行为差异：** 该接口在Car设备调用返回801错误码，在其他设备中正常调用。
+
 **参数：**
 
 | 参数名    | 类型     | 必填   | 说明    |
@@ -390,6 +395,7 @@ refreshActivity(reason: string): void
 | 4900201 |The device activity is being refreshed too frequently; the minimum time interval is 100 ms. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
+| 801     | Capability not supported. This API cannot work in car devices. |
 
 **示例：**
 

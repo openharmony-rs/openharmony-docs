@@ -1,10 +1,12 @@
 # ArkUI_NativeDialogAPI_1
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @houguobiao-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=8b7a7d18aa38aad39c3fae4dcbb93ef9e9d5f258 translatedAt=2026-07-17T12:19:47.068Z pushedAt=2026-07-29T01:51:25.317Z -->
 
 ```c
 typedef struct {...} ArkUI_NativeDialogAPI_1
@@ -32,7 +34,7 @@ Provides a collection of native-side custom dialog box APIs provided by ArkUI.
 | [int32_t (\*removeContent)(ArkUI_NativeDialogHandle handle)](#removecontent) | Removes the content of a custom dialog box.|
 | [int32_t (\*setContentAlignment)(ArkUI_NativeDialogHandle handle, int32_t alignment, float offsetX, float offsetY)](#setcontentalignment) | Sets the alignment mode of a custom dialog box.|
 | [int32_t (\*resetContentAlignment)(ArkUI_NativeDialogHandle handle)](#resetcontentalignment) | Resets the alignment mode of a custom dialog box to its default settings.|
-| [int32_t (\*setModalMode)(ArkUI_NativeDialogHandle handle, bool isModal)](#setmodalmode) | Sets the modal mode for a custom dialog box.|
+| [int32_t (\*setModalMode)(ArkUI_NativeDialogHandle handle, bool isModal)](#setmodalmode) | Sets whether to enable the modal mode for a custom dialog box. |
 | [int32_t (\*setAutoCancel)(ArkUI_NativeDialogHandle handle, bool autoCancel)](#setautocancel) | Specifies whether to allow users to touch the mask to dismiss a custom dialog box.|
 | [int32_t (\*setMask)(ArkUI_NativeDialogHandle handle, uint32_t maskColor, const ArkUI_Rect* maskRect)](#setmask) | Sets the mask for a custom dialog box.|
 | [int32_t (\*setBackgroundColor)(ArkUI_NativeDialogHandle handle, uint32_t backgroundColor)](#setbackgroundcolor) | Sets the background color for a custom dialog box.|
@@ -75,8 +77,7 @@ void (*dispose)(ArkUI_NativeDialogHandle handle)
 
 **Description**
 
-
-Destroys a custom dialog box.
+Disposes of a custom dialog box. This API is used in pair with [create](#create) to release the dialog box resources created by **create**. After calling this API, the handle will be released and can no longer be used. To use the dialog box again, call [create](#create) to create a new one.
 
 | Name                                                                               | Description|
 |------------------------------------------------------------------------------------| -- |
@@ -198,7 +199,7 @@ int32_t (*setModalMode)(ArkUI_NativeDialogHandle handle, bool isModal)
 
 **Description**
 
-Sets the modal mode for a custom dialog box.
+Sets whether to enable the modal mode for a custom dialog box.
 
 > **NOTE**
 >
@@ -209,7 +210,7 @@ Sets the modal mode for a custom dialog box.
 | Name| Description|
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
-|  bool isModal | Whether the custom dialog box is a modal, which has a mask applied. The value **true** means that the custom dialog box is a modal, and **false** means the opposite.|
+|  bool isModal | Whether to enable the modal mode. A modal window has a mask, while a non-modal window does not. The value **true** means to enable the modal mode, and **false** means the opposite. |
 
 **Returns**
 
@@ -236,7 +237,7 @@ Specifies whether to allow users to touch the mask to dismiss a custom dialog bo
 | Name| Description|
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
-|  bool autoCancel | Whether to allow users to touch the mask to dismiss the dialog box. The value **true** means to allow users to do so, and **false** means the opposite.|
+|  bool autoCancel | Whether to allow dismissing the dialog box by tapping the mask. The value **true** means the dialog box can be dismissed by tapping the mask, and **false** means the opposite. |
 
 **Returns**
 
@@ -263,8 +264,8 @@ Sets the mask for a custom dialog box.
 | Name                                                                               | Description|
 |------------------------------------------------------------------------------------| -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
-| uint32_t maskColor                                                                 | Mask color, in 0xARGB format.|
-| const [ArkUI_Rect](capi-arkui-nativemodule-arkui-rect.md)* maskRect                                                     | Pointer to the mask area. Events outside the mask area are transparently transmitted, and events within the mask area are not. The parameter type is [ArkUI_Rect](capi-arkui-nativemodule-arkui-rect.md).|
+| uint32_t maskColor                                                                 | Mask color, in 0xARGB format. |
+| const [ArkUI_Rect](capi-arkui-nativemodule-arkui-rect.md)* maskRect                                                     | Pointer to the mask area. Events outside the mask area are transparently transmitted, and events within the mask area are not. The parameter type is [ArkUI_Rect](capi-arkui-nativemodule-arkui-rect.md). |
 
 **Returns**
 
@@ -291,7 +292,7 @@ Sets the background color for a custom dialog box.
 | Name| Description|
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
-|  uint32_t backgroundColor | Background color of the custom dialog box, in 0xARGB format.|
+|  uint32_t backgroundColor | Background color of the dialog box, in 0xARGB format. |
 
 **Returns**
 
@@ -302,7 +303,7 @@ Sets the background color for a custom dialog box.
 ### setCornerRadius()
 
 ```c
-int32_t (*setCornerRadius)(ArkUI_NativeDialogHandle handle, float topLeft, float topRight,float bottomLeft, float bottomRight)
+int32_t (*setCornerRadius)(ArkUI_NativeDialogHandle handle, float topLeft, float topRight, float bottomLeft, float bottomRight)
 ```
 
 **Description**
@@ -320,7 +321,7 @@ Sets the background corner radius for a custom dialog box.
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
 |  float topLeft | Radius of the upper left corner of the background for the custom dialog box, in vp. Default value: 32 vp since API version 12; 24 vp in API version 11 and earlier versions.|
 |  float topRight | Radius of the upper right corner of the background for the custom dialog box, in vp. Default value: 32 vp since API version 12; 24 vp in API version 11 and earlier versions.|
-| float bottomLeft | Radius of the lower left corner of the background for the custom dialog box, in vp. Default value: 32 vp since API version 12; 24 vp in API version 11 and earlier versions.|
+| float bottomLeft | Radius of the lower left corner of the background for the custom dialog box, in vp. Default value: 32 vp since API version 12; 24 vp in API version 11 and earlier versions. |
 |  float bottomRight | Radius of the lower right corner of the background for the custom dialog box, in vp. Default value: 32 vp since API version 12; 24 vp in API version 11 and earlier versions.|
 
 **Returns**
@@ -402,7 +403,7 @@ Specifies whether to use a custom animation for a custom dialog box.
 | Name| Description|
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
-|  bool enableCustomAnimation | Whether to use a custom animation. The value **true** means to use a custom animation, and **false** means to use the default animation.|
+|  bool enableCustomAnimation | Whether to use a custom animation for a custom dialog box. The value **true** means to use a custom animation and disable the system default animation, and **false** means to use the system default animation. Default value: **false**. |
 
 **Returns**
 
@@ -452,7 +453,7 @@ Shows a custom dialog box.
 | Name| Description|
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
-|  bool showInSubWindow | Whether to show the dialog box in a subwindow. **true**: The dialog box is shown in a subwindow. **false**: The dialog box is not shown in a subwindow.|
+|  bool showInSubWindow | Whether to show a dialog box in a sub-window. The value **true** means to show the dialog box in a sub-window, and **false** means to show it in the main window. Default value: **false**. |
 
 **Returns**
 
@@ -468,8 +469,7 @@ int32_t (*close)(ArkUI_NativeDialogHandle handle)
 
 **Description**
 
-
-Closes a custom dialog box. If the dialog box has been closed, this API does not take effect. This API is executed asynchronously in the background. The dialog box node is removed from the tree only after the dismissal animation is complete. If you want to open the dialog box again after closing it, wait for 300 ms and then perform the operation again.
+Closes a custom dialog box. This API is executed asynchronously in the background, and the dialog box node is removed from the tree only after the dismissal animation is complete. If the dialog box is already closed, calling this API will not execute the close operation again. To reopen the dialog box after closing, wait for 300 ms before doing so.
 
 **Parameters**
 
@@ -491,8 +491,7 @@ int32_t (*registerOnWillDismissWithUserData)(ArkUI_NativeDialogHandle handle, vo
 
 **Description**
 
-
-Registers a callback for the dismissal event of a custom dialog box.
+Registers a callback for the dismissal event of a custom dialog box. Difference from [registerOnWillDismiss](#registeronwilldismiss), this API uses **void* userData** and a callback function pointer (with **ArkUI_DialogDismissEvent** as the callback input parameter, and whether to block the dismissal can be set through **OH_ArkUI_DialogDismissEvent_SetShouldBlockDismiss**), suitable for scenarios where a custom data pointer needs to be carried. **registerOnWillDismiss** uses an event handler of the **ArkUI_OnWillDismissEvent** type and determines whether to block the dismissal through the callback return value.
 
 **Parameters**
 

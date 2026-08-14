@@ -14,7 +14,7 @@ For details, see [AES-WRAP encryption and decryption algorithm specifications](c
 **Encryption**
 
 1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.generateSymKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkey-1) to generate a 128-bit AES symmetric key (**SymKey**).
-   
+
    In addition to the example in this topic, [AES](crypto-sym-key-generation-conversion-spec.md#aes) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md) may help you better understand how to generate an AES symmetric key. Note that the input parameters in the reference documents may be different from those in the example below.
 
 2. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) and specify the string parameter **AES128-WRAP** to create a **Cipher** instance of the AES128-WRAP type for encryption.
@@ -34,7 +34,7 @@ For details, see [AES-WRAP encryption and decryption algorithm specifications](c
 - Example (using asynchronous APIs):
 
   <!-- @[encrypt_decrypt_aes_wrap_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesWrap/entry/src/main/ets/pages/aeswrap/AesWrapEncryptionDecryptionAsync.ets) -->   
-  
+
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -97,11 +97,10 @@ For details, see [AES-WRAP encryption and decryption algorithm specifications](c
   }
   ```
 
-
 - Example (using synchronous APIs):
 
   <!-- @[encrypt_decrypt_aes_wrap_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesWrap/entry/src/main/ets/pages/aeswrap/AesWrapEncryptionDecryptionSync.ets) -->
-  
+
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';

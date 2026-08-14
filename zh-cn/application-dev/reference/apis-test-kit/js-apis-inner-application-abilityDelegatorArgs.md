@@ -5,7 +5,7 @@
 <!--Owner: @li-weifeng2024-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 AbilityDelegatorArgs封装和提供测试用例参数的数据，通过AbilityDelegatorRegistry中[getArguments](js-apis-app-ability-abilityDelegatorRegistry.md#abilitydelegatorregistrygetarguments)方法获取，包含bundleName、parameters、testCaseNames等关键测试信息，为测试脚本提供了标准化的参数访问方式。
  
@@ -27,14 +27,14 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：以下各项对应的系统能力均为SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** 以下各项对应的系统能力均为SystemCapability.Ability.AbilityRuntime.Core
 
 | 名称                | 类型                   | 只读 | 可选 | 说明                                                         |
 | ------------------- | ---------------------- | ---- | ---- | ------------------------------------------------------------ |
-| bundleName          | string                 | 否   | 否   | 当前被测试应用的包名。 |
-| parameters          | Record\<string, string> | 否   | 否   | 当前启动单元测试的参数。 |
-| testCaseNames       | string                 | 否   | 否   | 测试用例名称。 |
-| testRunnerClassName | string                 | 否   | 否   | 执行测试用例的测试执行器名称。 |
+| bundleName          | string                 | 否   | 否   | 当前被测试应用的包名。测试框架使用该值定位并启动目标应用进行测试。 |
+| parameters          | Record\<string, string> | 否   | 否   | 当前启动单元测试的参数，包含测试运行所需的配置信息。常见的键值对包括测试配置、运行参数等。 |
+| testCaseNames       | string                 | 否   | 否   | 指定要运行的测试用例名称，用于过滤或选择要执行的测试用例。支持指定单个或多个测试用例，多个测试用例之间使用特定分隔符分隔。 |
+| testRunnerClassName | string                 | 否   | 否   | 执行测试用例的测试执行器名称。测试框架使用该类实例化测试执行器。 |
 
 **示例：**
 

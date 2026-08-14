@@ -10,7 +10,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标标记接口起始版本。
+> 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标标记接口起始版本。
+
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.inputMethodEngine (输入法服务)](js-apis-inputmethodengine.md)。
 
 ## 导入模块
 
@@ -151,11 +153,11 @@ setShadow(radius: number, color: string, offsetX: number, offsetY: number): void
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[输入法框架错误码](errorcode-inputmethod-framework.md)。
 
-| 错误码ID | 错误信息 | 可能原因 | 处理步骤 |
-| -------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| 202 | 不是系统应用。 | 应用未配置为系统应用。 | 请确认应用是否为系统应用，或申请系统应用权限。 |
-| 12800013 | 窗口管理服务错误。 | 系统服务异常或连接失败。 | 请检查系统服务状态，或重启设备后重试。 |
-| 12800017 | 面板类型或面板标志无效。 | 面板标志为FLG_FIXED，不支持该操作。 | 请检查面板类型和标志，使用支持的面板标志。 |
+| 错误码ID | 错误信息                                                |
+| -------- | ------------------------------------------------------- |
+| 202 | not system application. |
+| 12800013  | window manager service error.      |
+| 12800017 | invalid panel type or panel flag. Possible causes: Panel's flag is FLG_FIXED. |
 
 **示例：**
 
@@ -176,17 +178,15 @@ panel.setShadow(20, '#000000', 20, 20);
 | NONE | 0 | 不使用流光模式。 |
 | BACKGROUND_FLUID_LIGHT  | 1 | 开启背景流光模式。系统面板变为透明，流光效果由编辑框宿主应用实现。 |
 
-## EditorAttribute<sup>20+</sup>
+## EditorAttribute
 
 编辑框属性值。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**系统接口：** 此接口为系统接口。
-
 | 名称         | 类型 | 只读 | 可选 | 说明               |
 | ------------ | -------- | ---- | ---- | ------------------ |
-| fluidLightMode | [FluidLightMode](#fluidlightmode20) | 否 | 是 | 流光模式。未设置或设置非法值时，默认不使用流光模式。<br>该属性仅系统应用可以使用。|
+| fluidLightMode<sup>20+</sup> | [FluidLightMode](#fluidlightmode20) | 是 | 是 | 流光模式。未设置或设置非法值时，默认不使用流光模式。<br>该属性仅系统应用可以使用。|
 
 ## ImmersiveEffect<sup>20+</sup>
 
@@ -194,9 +194,7 @@ panel.setShadow(20, '#000000', 20, 20);
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**系统接口：** 此接口为系统接口。
-
 | 名称   | 类型                                  | 只读 | 可选 | 说明           |
 | ------ | ------------------------------------ | ---- | ---- | -------------- |
-| fluidLightMode | [FluidLightMode](#fluidlightmode20) | 否   | 是   | 流光模式，未填充时默认为NONE。<br>该属性仅系统应用可以使用。 |
+| fluidLightMode<sup>20+</sup>  | [FluidLightMode](#fluidlightmode20) | 否   | 是   | 流光模式，未填充时默认为NONE。<br>该属性仅系统应用可以使用。 |
 <!--no_check-->

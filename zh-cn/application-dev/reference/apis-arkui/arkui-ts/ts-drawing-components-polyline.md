@@ -10,7 +10,7 @@
 
 >  **说明：**
 >
->  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 >  该组件从API version 20开始支持使用[AttributeUpdater](../js-apis-arkui-AttributeUpdater.md)类的[updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#属性)接口更新构造参数。
 
@@ -38,7 +38,7 @@ new Polyline(options?: PolylineOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [PolylineOptions](ts-drawing-components-polyline.md#polylineoptions18对象说明) | 否 | Polyline绘制区域。<br/>异常值undefined和null按照无效值处理，本次设置不生效。|
+| options | [PolylineOptions](#polylineoptions18对象说明) | 否 | Polyline绘制区域，用于设置Polyline组件的宽度和高度。当需要指定Polyline的绘制区域大小时传入此参数，不传入时使用默认宽度和高度（均为0）。<br>异常值undefined和null按照无效值处理，本次设置不生效。|
 
 ### Polyline
 
@@ -56,7 +56,7 @@ Polyline(options?: PolylineOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [PolylineOptions](ts-drawing-components-polyline.md#polylineoptions18对象说明) | 否 | Polyline绘制区域。<br/>异常值undefined和null按照无效值处理，本次设置不生效。|
+| options | [PolylineOptions](#polylineoptions18对象说明) | 否 | Polyline绘制区域，用于设置Polyline组件的宽度和高度。当需要指定Polyline的绘制区域大小时传入此参数，不传入时使用默认宽度和高度（均为0）。<br>异常值undefined和null按照无效值处理，本次设置不生效。|
 
 ## PolylineOptions<sup>18+</sup>对象说明
 
@@ -76,8 +76,8 @@ Polyline(options?: PolylineOptions)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| width<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 宽度，取值范围≥0。<br/>默认值：0<br/>默认单位：vp<br/>异常值undefined、null、NaN和Infinity按照默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| height<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 高度，取值范围≥0。<br/>默认值：0<br/>默认单位：vp<br/>异常值undefined、null、NaN和Infinity按照默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| width<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 宽度，取值范围[0, +∞)。<br>默认值：0<br>默认单位：vp<br>若给定值小于0，则按默认值处理。异常值undefined、null、NaN和Infinity按照默认值处理。<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| height<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 高度，取值范围[0, +∞)。<br>默认值：0<br>默认单位：vp<br>若给定值小于0，则按默认值处理。异常值undefined、null、NaN和Infinity按照默认值处理。<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## 属性
 
@@ -87,7 +87,7 @@ Polyline(options?: PolylineOptions)
 
 points(value: Array&lt;any&gt;)
 
-设置折线经过坐标点列表，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
+设置折线经过坐标点列表，支持通过[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -99,7 +99,7 @@ points(value: Array&lt;any&gt;)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                |
 | ------ | ------------------------------------------------------------ | ---- | ----------------------------------- |
-| value  | Array&lt;any&gt; | 是   | 折线经过坐标点列表。使用时传入一个二维数组，每个子数组表示一个顶点的[x, y]坐标。<br/>默认值：[]（空数组）<br/>默认单位：vp <br/>异常值undefined和null按照默认值处理。|
+| value  | Array&lt;any&gt; | 是   | 折线经过坐标点列表。使用时传入一个二维数组，每个子数组表示一个顶点的[x, y]坐标。<br>默认值：[]（空数组）<br>默认单位：vp <br>异常值undefined和null按照默认值处理。|
 
 ## 示例
 

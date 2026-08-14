@@ -1,12 +1,14 @@
-# @ohos.web.webNativeMessagingExtensionManager (Web Native Messaging Extension Manager)
+# @ohos.web.webNativeMessagingExtensionManager
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @weixin_41848015-->
-<!--Designer: @libing23232323-->
+<!--Owner: @csliutt-private-->
+<!--Designer: @ringking0-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=9c41f9fad7f6d910dff2a356347531b943719c3e translatedAt=2026-08-03T09:46:29.780Z pushedAt=2026-08-07T10:53:39.596Z -->
 
-The webNativeMessagingExtensionManager module provides the capability of managing message extensions based on web standards.
+The webNativeMessagingExtensionManager module is a Web native message extension management module provided by ArkWeb. It is used to initiate and manage connections from the app side (caller) to [WebNativeMessagingExtensionAbility](./arkts-apis-web-webNativeMessagingExtensionAbility.md). Developers can call [connectNative](#webnativemessagingextensionmanagerconnectnative) to specify the target extension Ability and establish a connection, use the returned connection ID and [WebExtensionConnectionCallback](#webextensionconnectioncallback) to listen for connection establishment, disconnection, and failure events, and call [disconnectNative](#webnativemessagingextensionmanagerdisconnectnative) to actively release the connection. This module is suitable for scenarios where browser extensions communicate with apps. Before using it, you need to request the [ohos.permission.WEB_NATIVE_MESSAGING](../../security/AccessToken/restricted-permissions.md#ohospermissionweb_native_messaging) permission, and it is available only under the Stage model.
 
 > **NOTE**
 >
@@ -21,6 +23,7 @@ import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
 ```
 
 ## ConnectionNativeInfo
+
 Represents the information about the web native message connection.
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -29,7 +32,7 @@ Represents the information about the web native message connection.
 
 | Name| Type| Read-Only| Optional| Description|
 |------|------|------|------|------|
-| connectionId | number | No| No| Connection ID.|
+| connectionId | number | No | No | Unique identifier of the Web native message extension connection, returned by connectNative() and used to identify and manage the connection. |
 | bundleName | string | No| No| Bundle name of the web native message extension application.|
 | extensionOrigin | string | No| No| Source URL of the browser extension.|
 | extensionPid | number | No| No| Process ID of the web native message extension.|
@@ -43,12 +46,13 @@ Provides the native messaging error codes.
 | Name         | Value| Description                                     |
 | ------------- | -- |----------------------------------------- |
 | PERMISSION_DENY | 17100203 | Permission denied due to missing ohos.permission.WEB_NATIVE_MESSAGING. |
-| WANT_CONTENT_ERROR | 17100202 | The want content is invalid. |
-| INNER_ERROR | 17100201 | Inner error for native messaging.Error code: |
+| WANT_CONTENT_ERROR | 17100202 | The Want content is invalid. |
+| INNER_ERROR | 17100201 | An internal error has occurred. |
 
 ## WebExtensionConnectionCallback
 
 ### onConnect
+
 onConnect(connection: ConnectionNativeInfo): void
 
 Called when a connection is set up.
@@ -61,9 +65,10 @@ Called when a connection is set up.
 
 | Name| Type| Mandatory| Description|
 |------|------|------|------|
-| connection | [ConnectionNativeInfo](#connectionnativeinfo) | Yes| Connection information.|
+| connection | [ConnectionNativeInfo](#connectionnativeinfo) | Yes | Connection information, including the connection ID, extension application bundle name, browser extension source URL, and extension process ID. |
 
 **Example**
+
 ```ts
 import { UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -74,13 +79,13 @@ export default class EntryAbility extends UIAbility {
   onForeground() {
     try {
         let context: common.UIAbilityContext = this.context; // Obtain UIAbilityContext.
-        let want:Want = {
+        let want: Want = {
           bundleName: 'com.example.app',
           abilityName: 'MyWebNativeMessageExtAbility',
           parameters: {
             'ohos.arkweb.messageReadPipe': { 'type': 'FD', 'value': 333 }, // Assume that the pipefd is valid.
             'ohos.arkweb.messageWritePipe': { 'type': 'FD', 'value': 444 }, // Assume that the pipefd is valid.
-            'ohos.arkweb.extensionOrigin': 'chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/' // The plug-in URI is required.
+            'ohos.arkweb.extensionOrigin': 'chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/' // Extension URI required here.
           },
         };
 
@@ -108,6 +113,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 ### onDisconnect
+
 onDisconnect(connection: ConnectionNativeInfo): void
 
 Called when a connection is interrupted.
@@ -120,9 +126,10 @@ Called when a connection is interrupted.
 
 | Name| Type| Mandatory| Description|
 |------|------|------|------|
-| connection | [ConnectionNativeInfo](#connectionnativeinfo) | Yes| Connection information.|
+| connection | [ConnectionNativeInfo](#connectionnativeinfo) | Yes | Connection information, including the connection ID, extension application package name, browser extension source URL, and extension process ID. |
 
 **Example**
+
 ```ts
 import { UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -133,13 +140,13 @@ export default class EntryAbility extends UIAbility {
   onForeground() {
     try {
         let context: common.UIAbilityContext = this.context; // Obtain UIAbilityContext.
-        let want:Want = {
+        let want: Want = {
           bundleName: 'com.example.app',
           abilityName: 'MyWebNativeMessageExtAbility',
           parameters: {
             'ohos.arkweb.messageReadPipe': { 'type': 'FD', 'value': 333 }, // Assume that the pipefd is valid.
             'ohos.arkweb.messageWritePipe': { 'type': 'FD', 'value': 444 }, // Assume that the pipefd is valid.
-            'ohos.arkweb.extensionOrigin': 'chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/' // The plug-in URI is required.
+            'ohos.arkweb.extensionOrigin': 'chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/' // The extension URI is required here.
           },
         };
 
@@ -167,6 +174,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 ### onFailed
+
 onFailed(code: NmErrorCode, errMsg: string): void
 
 Called when the connection fails.
@@ -183,6 +191,7 @@ Called when the connection fails.
 | errMsg | string | Yes| Error message.|
 
 **Example**
+
 ```ts
 import { UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -193,13 +202,13 @@ export default class EntryAbility extends UIAbility {
   onForeground() {
     try {
         let context: common.UIAbilityContext = this.context; // Obtain UIAbilityContext.
-        let want:Want = {
+        let want: Want = {
           bundleName: 'com.example.app',
           abilityName: 'MyWebNativeMessageExtAbility',
           parameters: {
             'ohos.arkweb.messageReadPipe': { 'type': 'FD', 'value': 333 }, // Assume that the pipefd is valid.
             'ohos.arkweb.messageWritePipe': { 'type': 'FD', 'value': 444 }, // Assume that the pipefd is valid.
-            'ohos.arkweb.extensionOrigin': 'chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/' // The plug-in URI is required.
+            'ohos.arkweb.extensionOrigin': 'chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/' // Enter the extension URI here.
           },
         };
 
@@ -227,6 +236,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 ## webNativeMessagingExtensionManager.connectNative
+
 connectNative(context: UIAbilityContext, want: Want, callback: WebExtensionConnectionCallback): number
 
 Connects the current ability to the specified web native message extension ability.
@@ -241,15 +251,15 @@ Connects the current ability to the specified web native message extension abili
 
 | Name| Type| Mandatory| Description|
 |------|------|------|------|
-| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | Yes| Context of the web native message extension.|
-| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | Yes | Context of the calling UIAbility. |
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes | Want information for starting the Ability, whose parameters must include 'ohos.arkweb.messageReadPipe' (read pipe FD), 'ohos.arkweb.messageWritePipe' (write pipe FD), and 'ohos.arkweb.extensionOrigin' (extension URI). |
 | callback | [WebExtensionConnectionCallback](#webextensionconnectioncallback) | Yes| Callback object of the WebExtensionConnection status.|
 
 **Return value**
 
 | Type| Description|
 |------|------|
-| number | Connection ID.|
+| number | ID of the connection, returned by the [connectNative](#webnativemessagingextensionmanagerconnectnative) method, used to uniquely identify a Web native message extension connection. The connection must be released through disconnectNative after being established. |
 
 **Error codes**
 
@@ -260,6 +270,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 801 | Capability not supported. |
 
 **Example**
+
 ```ts
 import { UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -270,13 +281,13 @@ export default class EntryAbility extends UIAbility {
   onForeground() {
     try {
         let context: common.UIAbilityContext = this.context; // Obtain UIAbilityContext.
-        let want:Want = {
+        let want: Want = {
           bundleName: 'com.example.app',
           abilityName: 'MyWebNativeMessageExtAbility',
           parameters: {
             'ohos.arkweb.messageReadPipe': { 'type': 'FD', 'value': 333 }, // Assume that the pipefd is valid.
             'ohos.arkweb.messageWritePipe': { 'type': 'FD', 'value': 444 }, // Assume that the pipefd is valid.
-            'ohos.arkweb.extensionOrigin': 'chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/' // The plug-in URI is required.
+            'ohos.arkweb.extensionOrigin': 'chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/' // The plugin URI is required here.
           },
         };
 
@@ -304,6 +315,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 ## webNativeMessagingExtensionManager.disconnectNative
+
 disconnectNative(connectionId: number): Promise&lt;void&gt;
 
 Disconnects the connection of a specified web native message extension.
@@ -318,7 +330,7 @@ Disconnects the connection of a specified web native message extension.
 
 | Name| Type| Mandatory| Description|
 |------|------|------|------|
-| connectionId | number | Yes| Connection ID.|
+| connectionId | number | Yes | Connection identifier, used to identify a Web native message extension connection, returned by the [connectNative](#webnativemessagingextensionmanagerconnectnative) method. After establishing the connection, it must be released through disconnectNative. A valid connection ID returned by connectNative must be used. |
 
 **Return value**
 
@@ -338,6 +350,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
 
 **Example**
+
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';

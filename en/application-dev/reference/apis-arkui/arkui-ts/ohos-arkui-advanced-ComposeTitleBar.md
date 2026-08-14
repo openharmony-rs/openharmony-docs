@@ -1,14 +1,14 @@
 # ComposeTitleBar
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fengluochenai-->
+<!--Owner: @wangrunsen-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=4c495f520711bb7a7c0f878dd925391606600e97 translatedAt=2026-07-29T02:55:01.639Z pushedAt=2026-08-04T02:46:46.370Z -->
 
-
-**ComposeTitleBar** represents a common title bar that contains a title, subtitle (optional), and profile picture (optional). It can come with a Back button for switching between pages of different levels.
-
+**ComposeTitleBar** is a standard title bar component that supports setting a title, avatar (optional), and subtitle (optional). It can be used on first-level pages, as well as second-level and higher pages to display a back button. It helps quickly build a unified-style title bar, simplifies page development, supports flexible menu item configuration and icon customization, and helps developers quickly implement navigation and operation entry points.
 
 > **NOTE**
 >
@@ -23,7 +23,6 @@
 ```ts
 import { ComposeTitleBar } from '@kit.ArkUI';
 ```
-
 
 ## Child Components
 
@@ -43,10 +42,10 @@ ComposeTitleBar({item?: ComposeTitleBarMenuItem, title: ResourceStr, subtitle?: 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| item | [ComposeTitleBarMenuItem](#composetitlebarmenuitem) | No| A single menu item for the profile picture on the left.|
-| title | [ResourceStr](ts-types.md#resourcestr) | Yes| Title.|
-| subtitle | [ResourceStr](ts-types.md#resourcestr) | No| Subtitle.|
-| menuItems | Array&lt;[ComposeTitleBarMenuItem](#composetitlebarmenuitem)&gt; | No| List of menu items on the right.|
+| item | [ComposeTitleBarMenuItem](#composetitlebarmenuitem) | No | Single menu item for the left avatar. When not set, no avatar is displayed on the left side of the title bar. |
+| title | [ResourceStr](ts-types.md#resourcestr) | Yes | Title text of the title bar. |
+| subtitle | [ResourceStr](ts-types.md#resourcestr) | No | Subtitle. When not set, no subtitle is displayed. |
+| menuItems | Array&lt;[ComposeTitleBarMenuItem](#composetitlebarmenuitem)&gt; | No | List of menu items on the right side. When not set, no menu items are displayed on the right side of the title bar. |
 
 > **NOTE**
 > 
@@ -58,24 +57,29 @@ ComposeTitleBar({item?: ComposeTitleBarMenuItem, title: ResourceStr, subtitle?: 
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
+
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- |---|---| -------- |
-| value | [ResourceStr](ts-types.md#resourcestr) | No| No| Icon resource.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| Yes| Symbol icon resource, which has higher priority than **value**. This parameter is not available for the **item** attribute.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| label<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Icon label.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
-| isEnabled | boolean | No| Yes| Whether to enable the item.<br>Default value: **false**<br> **true**: The item is enabled.<br> **false**: The item is disabled.<br>This property cannot be triggered by the **item** property.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| action | ()&nbsp;=&gt;&nbsp;void | No| Yes| Action to perform. This parameter is not available for the **item** attribute.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| accessibilityLevel<sup>18+</sup>       | string  | No| Yes| Accessibility level. It determines whether the component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: It is treated as "yes" by the system.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| accessibilityText<sup>18+</sup>        | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessibility text, that is, accessible label name. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.<br>Default value: value of the **label** property if it is set and an empty string otherwise.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                    |
-| accessibilityDescription<sup>18+</sup> | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessible description. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.<br>Default value: **"Double-tap to activate"**<br>**Atomic service API**: This API can be used in atomic services since API version 18.          |
+| value | [ResourceStr](ts-types.md#resourcestr) | No | No | Icon resource. If the **symbolStyle** attribute is also set, **symbolStyle** takes precedence.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
+| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No | Yes | Symbol icon resource, which takes precedence over **value**. This attribute is not supported for the avatar on the left of the item. If not set, the icon resource specified by the **value** attribute is used.<br/>**Atomic service API:** This API can be used in atomic services since API version 18. |
+| label<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Icon label description, used to set auxiliary text information for the icon. When **accessibilityText** is not set, **label** can serve as the default value for the accessibility text.<br/>**Atomic service API:** This API can be used in atomic services since API version 13. |
+| isEnabled | boolean | No | Yes | Whether to enable. Default value: **false**.<br/>The value **true** indicates enabled, and **false** indicates disabled.<br/>The **item** parameter does not support triggering the **isEnabled** attribute.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
+| action | ()&nbsp;=&gt;&nbsp;void | No | Yes | Callback invoked when a menu item is tapped. The **item** parameter does not support triggering the action event.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
+| accessibilityLevel<sup>18+</sup>       | string  | No | Yes | Accessibility level of the custom button on the right of the title bar, which controls whether the current item can be recognized by accessibility services. This applies only to **items** in **menuItems**, not to the item parameter.<br/>Supported values:<br/>**"auto"**: equivalent to **"yes"**.<br/>**"yes"**: can be recognized by accessibility services.<br/>**"no"**: cannot be recognized by accessibility services.<br/>**"no-hide-descendants"**: neither the current item nor its child components can be recognized.<br/>Default value: **"auto"**. The item parameter does not support setting this attribute.<br/>**Atomic service API:** This API can be used in atomic services since API version 18. |
+| accessibilityText<sup>18+</sup>        | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility text of the custom button on the right of the title bar. When a component has no text attribute, the screen reader does not announce it. After this attribute is set, the screen reader can announce the content, helping users understand the selected component. The **item** attribute does not support setting this attribute.<br/>Default value: when **label** is set, the default value is the content of the **label** attribute of the current item; when **label** is not set, the default value is an empty string.<br/>**Atomic service API:** This API can be used in atomic services since API version 18.                                     |
+| accessibilityDescription<sup>18+</sup> | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility description of the custom button on the right of the title bar, used to explain the component function and operation consequences to users in detail. When the component is selected, the system announces the text attribute first, and then the accessibility description. The item attribute does not support setting this attribute.<br/>Default value: "Double-tap with one finger to execute".<br/>**Atomic service API:** This API can be used in atomic services since API version 18.           |
 
 ## Events
+
 The [universal events](ts-component-general-events.md) are not supported.
 
 ## Example
 
 ### Example 1: Implementing a Simple Title Bar
+
 This example showcases how to implement a simple title bar, a title bar with a back arrow, and a title bar with a list of menu items on the right side.
+
 ```ts
 import { ComposeTitleBar, Prompt, ComposeTitleBarMenuItem } from '@kit.ArkUI';
 
@@ -152,7 +156,9 @@ struct Index {
 ![image-composetitlebar-example-01](figures/image-composetitlebar-example-01.png)
 
 ### Example 2: Implementing Screen Reader Announcement for the Custom Button on the Right Side
+
 This example customizes the screen reader announcement text by setting the **accessibilityText**, **accessibilityDescription**, and **accessibilityLevel** properties of the custom button on the right side of the title bar. This functionality is supported since API version 18.
+
 ```ts
 import { ComposeTitleBar, Prompt, ComposeTitleBarMenuItem } from '@kit.ArkUI';
 
@@ -324,4 +330,4 @@ struct Index {
 }
 ```
 
-![Setting the symbol icon](figures/image-composetitlebar-demo-03.png)
+![Example 3: Setting the symbol type icon](figures/image-composetitlebar-demo-03.png)

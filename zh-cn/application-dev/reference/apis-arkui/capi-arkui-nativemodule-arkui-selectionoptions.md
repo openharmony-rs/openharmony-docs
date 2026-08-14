@@ -12,7 +12,7 @@ typedef struct ArkUI_SelectionOptions ArkUI_SelectionOptions
 
 ## 概述
 
-定义选择操作的相关选项。
+定义ArkUI中选择操作的配置选项，适用于应用内需要进行选择交互的场景，为开发者提供选择行为的定制能力。
 
 **起始版本：** 23
 

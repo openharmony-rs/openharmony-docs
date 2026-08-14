@@ -44,17 +44,7 @@
 
 - **调度延迟：** 系统会根据内存、功耗、设备温度、用户使用习惯等统一调度，如当系统内存资源不足或温度达到一定档位时，系统将延迟调度该任务。
 
-- **WorkSchedulerExtensionAbility接口调用限制：** 为保障系统安全性和稳定性，防止延迟任务滥用系统资源，对WorkSchedulerExtensionAbility能力进行管控，在WorkSchedulerExtensionAbility中限制以下接口的调用：
-
-  [@ohos.resourceschedule.backgroundTaskManager (后台任务管理)](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md)
-
-  [@ohos.backgroundTaskManager (后台任务管理)](../reference/apis-backgroundtasks-kit/js-apis-backgroundTaskManager.md)
-
-  [@ohos.multimedia.camera (相机管理)](../reference/apis-camera-kit/arkts-apis-camera.md)
-
-  [@ohos.multimedia.audio (音频管理)](../reference/apis-audio-kit/arkts-apis-audio.md)
-
-  [@ohos.multimedia.media (媒体服务)](../reference/apis-media-kit/arkts-apis-media.md)
+- 针对[WorkSchedulerExtensionAbility](../reference/apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionAbility.md)接口调用限制，详细请参考API中的[约束限制](../reference/apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionAbility.md#约束限制)。
 
 
 ## 接口说明
@@ -97,7 +87,7 @@
 
    在工程entry Module对应的ets目录(./entry/src/main/ets)下，新建目录及ArkTS文件，例如新建一个目录并命名为WorkSchedulerAbility。在WorkSchedulerAbility目录下，新建一个ArkTS文件并命名为WorkSchedulerAbility.ets，用以实现延迟任务回调接口。
 
-2. 导入模块。
+2. 导入模块，无需配置权限。
 
    <!-- @[extension_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/WorkSchedulerAbility/WorkSchedulerAbility.ets) -->
    
@@ -206,7 +196,13 @@
 确认延迟任务WorkSchedulerExtensionAbility回调方法onWorkStart、onWorkStop实现是否正确、是否可以成功回调
 
    延迟任务申请成功之后，需要等到条件满足后才可以执行延迟任务回调，为了快速验证延迟任务回调功能是否正确，可以通过以下[hidumper命令](../dfx/hidumper.md)手动触发延迟任务执行回调。
-
+   
+   > **说明：**
+   > 
+   > - `-s 1904`：指向WorkScheduler系统服务发送命令（1904为该服务ID）。
+   > - `-a`：携带附加参数，需用引号包裹。
+   > - `-t`：指定目标应用包名和 ExtensionAbility 名称，示例中的 `com.example.application` 和 `MyWorkSchedulerExtensionAbility` 需替换为实际值。
+   
    ```ts
    $ hidumper -s 1904 -a '-t com.example.application MyWorkSchedulerExtensionAbility'
 

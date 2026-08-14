@@ -82,7 +82,7 @@ Tabs() {
     Text($r('app.string.mine_content'))
       .fontSize(30)
   }
-  // The value in the app.string.mine_content resource file is "Me."
+  // The value in the app.string.mine resource file is "Me."
   .tabBar($r('app.string.mine'))
 }
 ```
@@ -679,7 +679,7 @@ export struct NumberOfCachesTabBar {
           .width(360)
           .height(296)
           .backgroundColor('#F1F3F5')
-          .cachedMaxCount(1, TabsCacheMode.CACHE_BOTH_SIDE)
+          .cachedMaxCount(2, TabsCacheMode.CACHE_BOTH_SIDE)
           // ...
   }
 }
@@ -730,4 +730,9 @@ Based on the preceding example code, the caching behavior in different scenarios
 
    ![cachedMaxCount4](figures/cachedMaxCount4.png)
 
+<!--Del-->## Samples
+
+For more details about the implementation of **Tabs**, see the following example:
+
+- [Common Components and Layouts](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/ArkTSComponents)<!--DelEnd-->
 <!--RP1--><!--RP1End-->

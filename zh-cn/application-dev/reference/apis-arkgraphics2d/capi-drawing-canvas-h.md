@@ -67,7 +67,7 @@
 | [void OH_Drawing_CanvasDrawCircle(OH_Drawing_Canvas* canvas, const OH_Drawing_Point* point, float radius)](#oh_drawing_canvasdrawcircle) | 用于画一个圆形。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>canvas、point任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER；<br>radius小于等于0时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。 |
 | [OH_Drawing_ErrorCode OH_Drawing_CanvasDrawColor(OH_Drawing_Canvas* canvas, uint32_t color,OH_Drawing_BlendMode blendMode)](#oh_drawing_canvasdrawcolor) | 用于以指定的颜色及混合模式填充整个画布。该函数将指定颜色按照blendMode定义的混合规则与画布上已有内容进行合成，不同混合模式产生不同的视觉效果。 |
 | [void OH_Drawing_CanvasDrawOval(OH_Drawing_Canvas* canvas, const OH_Drawing_Rect* rect)](#oh_drawing_canvasdrawoval) | 用于画一个椭圆，椭圆内接于参数rect所指定的矩形区域。本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。canvas、rect任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
-| [void OH_Drawing_CanvasDrawArc(OH_Drawing_Canvas* canvas,const OH_Drawing_Rect* rect, float startAngle, float sweepAngle)](#oh_drawing_canvasdrawarc) | 用于画一个弧，弧线内接于参数rect所定义椭圆的一段弧线。当扫描角度的绝对值大于360度时，本接口绘制的是一个椭圆。与[OH_Drawing_CanvasDrawArcWithCenter](#oh_drawing_canvasdrawarcwithcenter)的区别是，本接口不支持指定圆弧的起点和终点是否连接圆弧的中心点。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>canvas、rect任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [void OH_Drawing_CanvasDrawArc(OH_Drawing_Canvas* canvas,const OH_Drawing_Rect* rect, float startAngle, float sweepAngle)](#oh_drawing_canvasdrawarc) | 用于绘制内接于参数rect所定义椭圆的一段弧线。当扫描角度的绝对值大于360度时，本接口绘制的是一个椭圆。与[OH_Drawing_CanvasDrawArcWithCenter](#oh_drawing_canvasdrawarcwithcenter)的区别是，本接口不支持指定圆弧的起点和终点是否连接圆弧的中心点。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>canvas、rect任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [OH_Drawing_ErrorCode OH_Drawing_CanvasDrawArcWithCenter(OH_Drawing_Canvas* canvas, const OH_Drawing_Rect* rect,float startAngle, float sweepAngle, bool useCenter)](#oh_drawing_canvasdrawarcwithcenter) | 用于绘制一段圆弧，弧线内接于参数rect所定义的椭圆。本接口允许指定圆弧的起始角度、扫描角度以及圆弧的起点和终点是否连接椭圆的中心点（即rect的中心点）。 |
 | [void OH_Drawing_CanvasDrawRoundRect(OH_Drawing_Canvas* canvas, const OH_Drawing_RoundRect* roundRect)](#oh_drawing_canvasdrawroundrect) | 用于画一个圆角矩形。本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。canvas、roundRect任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [OH_Drawing_ErrorCode OH_Drawing_CanvasDrawNestedRoundRect(OH_Drawing_Canvas* canvas, const OH_Drawing_RoundRect* outer,const OH_Drawing_RoundRect* inner)](#oh_drawing_canvasdrawnestedroundrect) | 用于绘制两个嵌套的圆角矩形，外部矩形边界必须包含内部矩形边界，否则无绘制效果。 |
@@ -605,10 +605,10 @@ void OH_Drawing_CanvasDrawLine(OH_Drawing_Canvas* canvas, float x1, float y1, fl
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | 指向画布对象的指针。 |
-| float x1 | 线段起始点的横坐标。 |
-| float y1 | 线段起始点的纵坐标。 |
-| float x2 | 线段结束点的横坐标。 |
-| float y2 | 线段结束点的纵坐标。 |
+| float x1 | 线段起始点的横坐标，单位为物理像素px。 |
+| float y1 | 线段起始点的纵坐标，单位为物理像素px。 |
+| float x2 | 线段结束点的横坐标，单位为物理像素px。 |
+| float y2 | 线段结束点的纵坐标，单位为物理像素px。 |
 
 ### OH_Drawing_CanvasDrawPath()
 
@@ -782,7 +782,7 @@ void OH_Drawing_CanvasDrawPoints(OH_Drawing_Canvas* canvas, OH_Drawing_PointMode
 | [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | 指向画布对象的指针。 |
 | [OH_Drawing_PointMode](#oh_drawing_pointmode) mode | 绘制多个点的方式，支持方式参考[OH_Drawing_PointMode](#oh_drawing_pointmode)。 |
 | uint32_t count | 点的数量，即点数组中点的个数，值必须大于0。 |
-| const [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md)* point2D | 指向多个点的数组。 |
+| const [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md)* point2D | 指向多个点的数组，数组大小需等于count参数值。 |
 
 ### OH_Drawing_CanvasDrawBitmap()
 
@@ -898,7 +898,7 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawColor(OH_Drawing_Canvas* canvas, uint3
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | 指向画布对象[OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)的指针。 |
-| uint32_t color | 表示指定的颜色，用一个32位（ARGB）的变量表示。取值范围[0, 255]。 |
+| uint32_t color | 表示指定的颜色，用一个32位（ARGB）的参数表示。参数整体取值范围[0x00000000, 0xFFFFFFFF]，每个颜色通道（A、R、G、B）取值范围[0, 255]。 |
 | [OH_Drawing_BlendMode](capi-drawing-types-h.md#oh_drawing_blendmode) blendMode | 表示指定的混合模式，用于控制颜色填充画布时的混合方式。 |
 
 **返回：**
@@ -937,7 +937,7 @@ void OH_Drawing_CanvasDrawArc(OH_Drawing_Canvas* canvas,const OH_Drawing_Rect* r
 
 **描述**
 
-用于画一个弧，弧线内接于参数rect所定义椭圆的一段弧线。当扫描角度的绝对值大于360度时，本接口绘制的是一个椭圆。与[OH_Drawing_CanvasDrawArcWithCenter](#oh_drawing_canvasdrawarcwithcenter)的区别是，本接口不支持指定圆弧的起点和终点是否连接圆弧的中心点。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>canvas、rect任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+用于绘制内接于参数rect所定义椭圆的一段弧线。当扫描角度的绝对值大于360度时，本接口绘制的是一个椭圆。与[OH_Drawing_CanvasDrawArcWithCenter](#oh_drawing_canvasdrawarcwithcenter)的区别是，本接口不支持指定圆弧的起点和终点是否连接圆弧的中心点。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>canvas、rect任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -975,7 +975,7 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawArcWithCenter(OH_Drawing_Canvas* canva
 | [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | 指向画布对象[OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)的指针。 |
 | const [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* rect | 指向矩形对象[OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)的指针，用于定义弧所在椭圆的边界矩形。弧将在此矩形定义的椭圆上绘制。 |
 | float startAngle | 弧的起始角度，单位为度。0度时起始点位于椭圆的右端点，为正数时以顺时针方向放置起始点，为负数时以逆时针方向放置起始点。 |
-| float sweepAngle | 弧的扫描角度，单位为度。为正数时顺时针扫描，为负数时逆时针扫描。扫描角度可以超过360度，将绘制一个完整的椭圆。 |
+| float sweepAngle | 弧的扫描角度，单位为度。正数时顺时针扫描，负数时逆时针扫描。扫描角度的有效范围在-360度到360度之间，绝对值大于360度时将绘制一个完整的椭圆。 |
 | bool useCenter | 表示绘制时弧形的起点和终点是否连接弧形的中心点。true表示连接，false表示不连接。 |
 
 **返回：**
@@ -1112,7 +1112,7 @@ void OH_Drawing_CanvasClipRect(OH_Drawing_Canvas* canvas, const OH_Drawing_Rect*
 | [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | 指向画布对象的指针。 |
 | const [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* rect | 指向矩形对象的指针。 |
 | [OH_Drawing_CanvasClipOp](#oh_drawing_canvasclipop) clipOp | 裁剪方式。支持可选的具体裁剪方式可见[OH_Drawing_CanvasClipOp](#oh_drawing_canvasclipop)枚举。 |
-| bool doAntiAlias | 值为true则做抗锯齿处理，值为false不做抗锯齿处理。 |
+| bool doAntiAlias | 表示是否需要做抗锯齿处理，值为true则做抗锯齿处理，值为false不做抗锯齿处理。 |
 
 ### OH_Drawing_CanvasClipRoundRect()
 
@@ -1136,7 +1136,7 @@ void OH_Drawing_CanvasClipRoundRect(OH_Drawing_Canvas* canvas, const OH_Drawing_
 | [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | 指向画布对象的指针。 |
 | const [OH_Drawing_RoundRect](capi-drawing-oh-drawing-roundrect.md)* roundRect | 指向圆角矩形对象的指针。 |
 | [OH_Drawing_CanvasClipOp](#oh_drawing_canvasclipop) clipOp | 裁剪方式。支持可选的具体裁剪方式可见[OH_Drawing_CanvasClipOp](#oh_drawing_canvasclipop)枚举。 |
-| bool doAntiAlias | 表示是否需要做抗锯齿处理，值为true时为需要，为false时为不需要。 |
+| bool doAntiAlias | 表示是否需要做抗锯齿处理，值为true则做抗锯齿处理，值为false不做抗锯齿处理。 |
 
 ### OH_Drawing_CanvasClipPath()
 
@@ -1160,7 +1160,7 @@ void OH_Drawing_CanvasClipPath(OH_Drawing_Canvas* canvas, const OH_Drawing_Path*
 | [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | 指向画布对象的指针。 |
 | const [OH_Drawing_Path](capi-drawing-oh-drawing-path.md)* path | 指向路径对象的指针。 |
 | [OH_Drawing_CanvasClipOp](#oh_drawing_canvasclipop) clipOp | 裁剪方式。支持可选的具体裁剪方式可见[OH_Drawing_CanvasClipOp](#oh_drawing_canvasclipop)枚举。 |
-| bool doAntiAlias | 值为true则做抗锯齿处理，值为false不做抗锯齿处理。 |
+| bool doAntiAlias | 表示是否需要做抗锯齿处理，值为true则做抗锯齿处理，值为false不做抗锯齿处理。 |
 
 ### OH_Drawing_CanvasClipRegion()
 
@@ -1237,8 +1237,8 @@ void OH_Drawing_CanvasRotate(OH_Drawing_Canvas* canvas, float degrees, float px,
 | -- | -- |
 | [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | 指向画布对象的指针。 |
 | float degrees | 旋转角度，单位为度。正值表示顺时针旋转，负值表示逆时针旋转。 |
-| float px | 旋转中心的横坐标。 |
-| float py | 旋转中心的纵坐标。 |
+| float px | 旋转中心的横坐标，单位为物理像素px。 |
+| float py | 旋转中心的纵坐标，单位为物理像素px。 |
 
 ### OH_Drawing_CanvasTranslate()
 
@@ -1453,8 +1453,8 @@ void OH_Drawing_CanvasDrawShadow(OH_Drawing_Canvas* canvas, OH_Drawing_Path* pat
 | [OH_Drawing_Point3D](capi-drawing-oh-drawing-point3d.md) planeParams | 表示遮挡物相对于画布在Z轴上的偏移量，其值取决于x与y坐标。 |
 | [OH_Drawing_Point3D](capi-drawing-oh-drawing-point3d.md) devLightPos | 光线相对于画布的位置，其中x、y表示光源在画布平面上的坐标，z表示光源距离画布平面的高度。 |
 | float lightRadius | 光源半径，单位为物理像素px，取值范围大于等于0。 |
-| uint32_t ambientColor | 环境阴影颜色，用一个32位（ARGB）的变量表示。 |
-| uint32_t spotColor | 点阴影颜色，用一个32位（ARGB）的变量表示。 |
+| uint32_t ambientColor | 环境阴影颜色，用一个32位（ARGB）的参数表示。参数整体取值范围[0x00000000, 0xFFFFFFFF]，每个颜色通道（A、R、G、B）取值范围[0, 255]。 |
+| uint32_t spotColor | 点阴影颜色，用一个32位（ARGB）的参数表示。参数整体取值范围[0x00000000, 0xFFFFFFFF]，每个颜色通道（A、R、G、B）取值范围[0, 255]。 |
 | [OH_Drawing_CanvasShadowFlags](#oh_drawing_canvasshadowflags) flag | 阴影标志。 |
 
 ### OH_Drawing_CanvasClear()
@@ -1477,7 +1477,7 @@ void OH_Drawing_CanvasClear(OH_Drawing_Canvas* canvas, uint32_t color)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | 指向画布对象的指针。 |
-| uint32_t color | 描述颜色的32位（ARGB）变量。 |
+| uint32_t color | 表示指定的颜色，用一个32位（ARGB）的参数表示。参数整体取值范围[0x00000000, 0xFFFFFFFF]，每个颜色通道（A、R、G、B）取值范围[0, 255]。 |
 
 ### OH_Drawing_CanvasSetMatrix()
 

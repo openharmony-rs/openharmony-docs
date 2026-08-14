@@ -631,7 +631,7 @@ struct ChildComponent {
 
 **迁移Repeat**
 
-Repeat需要和状态管理V2一起使用，状态管理V2提供了[@ObservedV2和@Trace](./arkts-new-observedV2-and-trace.md)装饰器对子属性进行深度观测。迁移时，需要将\@Observe和\@ObjectLink装饰器迁移至\@ObserveV2和\@Trace装饰器。
+Repeat需要和状态管理V2一起使用，状态管理V2提供了[@ObservedV2和@Trace](./arkts-new-observedV2-and-trace.md)装饰器对子属性进行深度观测。迁移时，需要将\@Observed和\@ObjectLink装饰器迁移至\@ObservedV2和\@Trace装饰器。
 
 迁移后的示例如下所示。
 
@@ -1285,7 +1285,7 @@ struct MyComponent {
           }
         })
         .key((item: StringData, index: number) => index.toString())
-        .virtualScroll({ reusable: false }) // 关闭Repeat自身的复用功能（API 19）
+        .virtualScroll({ reusable: false }) // 关闭Repeat自身的复用功能（API 18）
     }.cachedCount(5)
   }
 }
@@ -1586,7 +1586,7 @@ struct MyComponent {
           }
         })
         .key((item: StringData, index: number) => index.toString())
-        .virtualScroll({ reusable: false }) // 关闭Repeat自身的复用功能（API 19），避免渲染异常
+        .virtualScroll({ reusable: false }) // 关闭Repeat自身的复用功能（API 18），避免渲染异常
     }.cachedCount(5)
   }
 }

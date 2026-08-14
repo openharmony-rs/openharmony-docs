@@ -1,12 +1,14 @@
 # Monitoring Rotating Crown Events
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=828befee530895124aaf1637c9402999a598c883 translatedAt=2026-07-31T01:11:25.703Z pushedAt=2026-07-31T12:04:26.560Z -->
 
-This module provides APIs to monitor rotating crown events for the page, supporting the registration of page-level rotary crown event monitors. Only devices equipped with a rotating crown are supported.
+This module provides APIs to monitor rotating crown events for the page, supporting the registration of page-level rotary crown event monitors. It is applicable to scenarios where rotating crown operations need to be detected and page-level interaction processing is required. Only devices equipped with a rotating crown are supported.
 
 > **NOTE**
 >
@@ -34,17 +36,15 @@ This monitor is automatically removed when [page routing](../js-apis-router.md) 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| handler | Function | Yes| Callback executed after a rotating crown event occurs. The callback format is **(event)=>{ return false/true; }**.<br>If **true** is returned, the rotating crown event is no longer distributed to the focused component.<br>If **false** is returned, the rotating crown event continues to be distributed to the focused component. If the callback returns an abnormal value, such as **undefined** or no return value, the default value is **false**.<br>The rotating crown event information can be obtained through the input parameter. For event information, see **Table 1 Attributes of the CrownEvent object**.|
-
+| handler | Function | Yes | Callback executed after a rotating crown event occurs. The callback format is **(event)=>{ return false/true; }**.<br>If **true** is returned, the rotating crown event is no longer distributed to the focused component.<br>If **false** is returned, the rotating crown event continues to be distributed to the focused component. If the callback returns an abnormal value, such as **undefined** or no return value, the default value is **false**.<br>The rotating crown event information can be obtained through the input parameter. For details about the event information, see **Table 1 Attributes of the CrownEvent object**. |
 
 **Table 1** Attributes of the CrownEvent object
 
 | Name                  | Type      | Read-Only   |  Optional  |  Description                                |
 | --------------------- | -------- | ------- |--------- |-------------------------------------- |
-| timestamp             | number   |  No    | No   |Timestamp.                                 |
-| angularVelocity       | number   |  No    | No   |Angular velocity in degrees per second.<br>The value is a positive number when the crown is rotated counterclockwise and a negative number when the crown is rotated clockwise.<br>Unit: degree/s     |
-| degree                | number   |  No    | No   |Relative rotation angle.<br>The value is a positive number when the crown is rotated counterclockwise and a negative number when the crown is rotated clockwise.<br>Unit: degree<br>Value range: [-360, 360]    |
-
+| timestamp | number | No | No | Timestamp, in ns. |
+| angularVelocity | number | No | No | Angular velocity, indicating the angle rotated per second.<br>The value is a positive number when the crown is rotated counterclockwise and a negative number when the crown is rotated clockwise.<br>Unit: deg/s |
+| degree | number | No | No | Relative rotation angle.<br>The value is a positive number when the crown is rotated counterclockwise and a negative number when the crown is rotated clockwise.<br>Unit: deg.<br>Value range: [-360, 360] |
 
 ## clearMonitorForCrownEvents
 
@@ -56,14 +56,14 @@ Clears the rotating crown event monitor for the page.
 
 **Model restriction:** This API can be used only in the FA model.
 
-
 ## Example
 
 ### Example 1 (Setting a Rotating Crown Event Monitor)
 
-This example shows how to set a rotating crown event monitor for a page using [setMonitorForCrownEvents](#setmonitorforcrownevents), and control whether the **Slider** component responds to rotating crown events based on the return value of the monitor using a callback.
+This example shows how to set a rotating crown event monitor for a page using [setMonitorForCrownEvents](#setmonitorforcrownevents), and control whether the Slider component responds to rotating crown events based on the return value of the monitor using a callback.
 
 Since API version 24, [setMonitorForCrownEvents](#setmonitorforcrownevents) and [clearMonitorForCrownEvents](#clearmonitorforcrownevents) are added.
+
 ```css
 /* xxx.css */
 .container {
@@ -112,7 +112,7 @@ export default {
             console.error('event.timestamp: ' + event.timestamp + '\n' + 'event.angularVelocity: ' +
             event.angularVelocity + '\n' + 'event.degree:' + event.degree);
             return this.flag;
-        })
+        });
     },
     setValue(e) {
         this.currentValue = e.value;

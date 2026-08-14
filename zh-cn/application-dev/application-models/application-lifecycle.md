@@ -113,3 +113,17 @@ export default class LifecycleAbility extends UIAbility {
   }
 }
 ```
+
+## PC/2in1设备的应用模型特征
+
+module.json5文件的[deviceTypes](../quick-start/module-configuration-file.md#devicetypes标签)仅声明支持PC/2in1设备的应用，其UIAbility的生命周期回调触发机制与其他设备存在差异。
+
+  1. 当用户启动一个UIAbility时，系统会依次触发onCreate()、onWindowStageCreate()、onForeground()生命周期回调，完成组件创建、生命周期驱动等流程。
+
+  2. 当用户从当前应用切换至其他应用时，当前UIAbility会继续保持前台状态。因此，系统不会触发onBackground()生命周期回调。
+
+  3. 当用户再次切换回该UIAbility时，由于其前后台状态未发生变化，系统不会触发任何生命周期回调。
+
+  4. 仅当用户关闭UIAbility时，系统才会触发onBackground()和onDestroy()生命周期回调，完成组件退出和销毁。
+
+应用进程的生命周期与UIAbility组件的生命周期密切相关。因此，应用进程会长期处于前台状态，仅在进程正常退出过程中短暂处于后台状态。相应地，应用也会长期处于前台状态，仅在正常退出过程中短暂处于后台状态。

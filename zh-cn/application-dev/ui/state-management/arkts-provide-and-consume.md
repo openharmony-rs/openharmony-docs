@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-\@Provide和\@Consume，应用于与后代组件的双向数据同步、状态数据在多个层级之间传递的场景。不同于上文提到的父子组件之间通过命名参数机制传递，\@Provide和\@Consume摆脱参数传递机制的束缚，实现跨层级传递。
+[\@Provide](../../reference/apis-arkui/arkui-ts/ts-state-management-provide.md#provide)和[\@Consume](../../reference/apis-arkui/arkui-ts/ts-state-management-consume.md#consume)，应用于与后代组件的双向数据同步、状态数据在多个层级之间传递的场景。不同于上文提到的父子组件之间通过命名参数机制传递，\@Provide和\@Consume摆脱参数传递机制的束缚，实现跨层级传递。
 
 其中\@Provide装饰的变量是在祖先组件中，可以理解为被“提供”给后代的状态变量。\@Consume装饰的变量是在后代组件中，去“消费（绑定）”祖先组件提供的变量。
 
@@ -288,7 +288,7 @@
 
    在非BuilderNode场景中，仍建议配对的\@Provide/\@Consume类型一致。虽然在运行时不会有强校验，但在\@Consume装饰的变量初始化时，会隐式转换成\@Provide装饰变量的类型。
 
-   <!-- @[provide_consume_Builder_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeBuilderNode.ets) --> 
+   <!-- @[provide_consume_Builder_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeBuilderNode.ets) -->
    
    ``` TypeScript
    import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
@@ -320,11 +320,12 @@
    @Entry
    @Component
    struct Index {
-     @Provide message: string = 'hello';
+     @Provide message: string = 'Hello World';
      controller: TextNodeController = new TextNodeController();
    
      build() {
        Column() {
+         Text(`@Provide: ${this.message}`)
          NodeContainer(this.controller)
            .width('100%')
            .height(100)
@@ -334,16 +335,19 @@
      }
    }
    
-   
    @Component
    struct Child {
-     // Child通过BuilderNode上树后，@Consume和Index中的@Provide建立连接时发现类型不一致，抛出运行时错误
-     @Consume message: number = 0;
+     // 错误用法：Child通过BuilderNode上树后，@Consume和Index中的@Provide建立连接时发现类型不一致，抛出运行时错误
+     // @Consume message: number = 0;
+   
+     // 正确用法：@Consume和@Provide保持类型一致
+     @Consume message: string = 'Hello ArkUI';
    
      build() {
        Column() {
-         Text(`@Consume ${this.message}`)
+         Text(`@Consume: ${this.message}`)
        }
+       .width('100%')
      }
    }
    ```

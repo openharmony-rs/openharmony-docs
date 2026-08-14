@@ -31,7 +31,7 @@ Moves a specified file to a given location.
 >
 > This API is deprecated since API version 10 for all device types except lite wearables. Use [fileIo.moveFile](js-apis-file-fs.md#fileiomovefile) instead.
 
-**System Capability**: SystemCapability.FileManagement.File.FileIO.Lite
+**System capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
 **Parameters**
 
@@ -131,7 +131,7 @@ Copies a file to the given URI.
 >
 > This API is deprecated since API version 10 for all device types except lite wearables. Use [fileIo.copyFile](js-apis-file-fs.md#fileiocopyfile) instead.
 
-**System Capability**: SystemCapability.FileManagement.File.FileIO.Lite
+**System capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
 **Parameters**
 
@@ -232,7 +232,7 @@ Obtains all files in the specified directory.
 >
 > This API is deprecated since API version 10 for all device types except lite wearables. Use [fileIo.listFile](js-apis-file-fs.md#fileiolistfile) instead.
 
-**System Capability**: SystemCapability.FileManagement.File.FileIO.Lite
+**System capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
 **Parameters**
 
@@ -331,7 +331,7 @@ Obtains information about a local file.
 >
 > This API is deprecated since API version 10 for all device types except lite wearables. Use [fileIo.stat](js-apis-file-fs.md#fileiostat) instead.
 
-**System Capability**: SystemCapability.FileManagement.File.FileIO.Lite
+**System capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
 **Parameters**
 
@@ -429,7 +429,7 @@ Deletes a local file.
 >
 > This API is deprecated since API version 10 for all device types except lite wearables. Use [fileIo.unlink](js-apis-file-fs.md#fileiounlink) instead.
 
-**System Capability**: SystemCapability.FileManagement.File.FileIO.Lite
+**System capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
 **Parameters**
 
@@ -529,7 +529,7 @@ Writes text into a file. Only text files can be read and written.
 >
 > This API is deprecated since API version 10 for all device types except lite wearables. Use [fileIo.write](js-apis-file-fs.md#fileiowrite) instead.
 
-**System Capability**: SystemCapability.FileManagement.File.FileIO.Lite
+**System capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
 **Parameters**
 
@@ -630,7 +630,7 @@ Writes buffer data into a file. Only text files can be read and written.
 >
 > This API is deprecated since API version 10 for all device types except lite wearables. Use [fileIo.write](js-apis-file-fs.md#fileiowrite) instead.
 
-**System Capability**: SystemCapability.FileManagement.File.FileIO.Lite
+**System capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
 **Parameters**
 
@@ -732,7 +732,7 @@ Reads text from a file. Only text files can be read and written.
 >
 > This API is deprecated since API version 10 for all device types except lite wearables. Use [fileIo.readText](js-apis-file-fs.md#fileioreadtext) instead.
 
-**System Capability**: SystemCapability.FileManagement.File.FileIO.Lite
+**System capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
 **Parameters**
 
@@ -832,7 +832,7 @@ Reads buffer data from a file. Only text files can be read and written.
 >
 > This API is deprecated since API version 10 for all device types except lite wearables. Use [fileIo.read](js-apis-file-fs.md#fileioread) instead.
 
-**System Capability**: SystemCapability.FileManagement.File.FileIO.Lite
+**System capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
 **Parameters**
 
@@ -936,7 +936,7 @@ Checks whether a file or directory exists.
 >
 > This API is deprecated since API version 10 for all device types except lite wearables. Use [fileIo.access](js-apis-file-fs.md#fileioaccess) instead.
 
-**System Capability**: SystemCapability.FileManagement.File.FileIO.Lite
+**System capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
 **Parameters**
 
@@ -1036,7 +1036,7 @@ Creates a directory.
 >
 > This API is deprecated since API version 10 for all device types except lite wearables. Use [fileIo.mkdir](js-apis-file-fs.md#fileiomkdir) instead.
 
-**System Capability**: SystemCapability.FileManagement.File.FileIO.Lite
+**System capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
 **Parameters**
 
@@ -1135,7 +1135,7 @@ Deletes a directory.
 >
 > This API is deprecated since API version 10 for all device types except lite wearables. Use [fileIo.rmdir](js-apis-file-fs.md#fileiormdir) instead.
 
-**System Capability**: SystemCapability.FileManagement.File.FileIO.Lite
+**System capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
 **Parameters**
 

@@ -1,10 +1,12 @@
 # OH_MIDIDeviceInformation
+
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @owen_creeper-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Designer: @trytocalm-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=1961de06e85063963f633ec54a8a4baaf5cb7dc8 translatedAt=2026-07-21T04:01:25.612Z pushedAt=2026-07-21T09:02:38.068Z -->
 
 ```c
 typedef struct {...} OH_MIDIDeviceInformation
@@ -12,7 +14,7 @@ typedef struct {...} OH_MIDIDeviceInformation
 
 ## Overview
 
-This struct defines device information, such as the storage device ID.
+Device information struct that stores the device ID and other related information.
 
 **Since**: 24
 

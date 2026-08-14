@@ -80,7 +80,7 @@ char* OH_NativeBundle_GetAppId()
 
 | 类型 | 说明 |
 | -- | -- |
-| char* | 返回一个新创建的字符串，用于指示appID信息。如果返回的对象为NULL，则表示创建失败。<br> 失败的可能原因是应用程序地址空间已满，导致空间分配失败。 |
+| char* | 返回一个新创建的字符串，用于指示appId信息。如果返回的对象为NULL，则表示创建失败。<br> 失败的可能原因是应用程序地址空间已满，导致空间分配失败。 |
 
 ### OH_NativeBundle_GetAppIdentifier()
 
@@ -114,7 +114,7 @@ OH_NativeBundle_ElementName OH_NativeBundle_GetMainElementName()
 **返回：**
 | 类型 | 说明 |
 | -- | -- |
-| [OH_NativeBundle_ElementName](capi-native-bundle-oh-nativebundle-elementname.md) | 返回新创建的OH_NativeBundle_ElementName对象。如果返回的对象为NULL，则表示创建失败。<br> 失败的可能原因是应用程序地址空间已满，导致空间分配失败。 |
+| [OH_NativeBundle_ElementName](capi-native-bundle-oh-nativebundle-elementname.md) | 返回新创建的OH_NativeBundle_ElementName对象。如果返回的对象中存在为NULL的字段，则表示创建失败。<br> 失败的可能原因是应用程序地址空间已满，导致空间分配失败。 |
 
 
 ### OH_NativeBundle_GetCompatibleDeviceType()
@@ -203,7 +203,7 @@ BundleManager_ErrorCode OH_NativeBundle_GetAbilityResourceInfo(char* fileType, O
 
 | 参数项 | 描述 |
 | -- | -- |
-| char* fileType | 表示待查询的特定文件类型，推荐使用[UTD类型](../../database/uniform-data-type-descriptors.md)，比如：'general.plain-text'、'general.image'。目前也可以兼容使用[MIME type类型](https://www.iana.org/assignments/media-types/media-types.xhtml?utm_source=ld246.com)和文件后缀名称，如：'text/xml' 、 '.png'等。文件后缀与文件类型的映射关系参见[UTD预置列表](../../database/uniform-data-type-list.md)。不支持传'\*/\*'。 |
+| char* fileType | 表示待查询的特定文件类型，推荐使用[UTD类型](../../database/uniform-data-type-descriptors.md)，比如："general.plain-text"、"general.image"。目前也可以兼容使用[MIME type类型](https://www.iana.org/assignments/media-types/media-types.xhtml?utm_source=ld246.com)和文件后缀名称，如："text/xml" 、 ".png"等。文件后缀与文件类型的映射关系参见[UTD预置列表](../../database/uniform-data-type-list.md)。不支持传"\*/\*"。 |
 | [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)** abilityResourceInfo | 表示返回的组件资源信息列表。 |
 | size_t* size | 表示返回的组件资源信息列表大小。 |
 

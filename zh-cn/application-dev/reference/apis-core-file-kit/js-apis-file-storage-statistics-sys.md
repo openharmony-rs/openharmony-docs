@@ -335,7 +335,7 @@ getBundleStats(packageName: string, callback: AsyncCallback&lt;BundleStats&gt;, 
   | -------- | --------------------------------------------------------- | ---- | ------------------------------------ |
   | packageName | string | 是   | 应用包名。 |
   | callback | AsyncCallback&lt;[BundleStats](js-apis-file-storage-statistics.md#bundlestats9)&gt; | 是   | 回调函数，获取指定应用的存储数据的空间大小之后的回调。回调参数包括：err（错误信息，调用成功时为undefined）和bundleStats（指定应用的存储数据的空间大小，单位为Byte）。 |
-  | index<sup>12+</sup> | number | 否   | 分身应用的索引号，取值范围为大于等于0的整数，默认值为0（表示未分身的主应用）。传入小于0的值时返回错误码401。分身应用索引号在分身创建时默认占用从1开始且当前未被占用的最小索引号，并赋值给该应用的[BundleResourceInfo](../apis-ability-kit/js-apis-bundleManager-BundleResourceInfo-sys.md#bundleresourceinfo)的appIndex属性，后续可以通过调用[getBundleResourceInfo](../apis-ability-kit/js-apis-bundleResourceManager-sys.md#bundleresourcemanagergetbundleresourceinfo12)接口获得。|
+  | index<sup>12+</sup> | number | 否   | 分身应用的索引号，取值范围为大于等于0的整数，默认值为0（表示未分身的主应用）。传入不满足范围的值时返回错误码401。分身应用索引号在分身创建时默认占用从1开始且当前未被占用的最小索引号，并赋值给该应用的[BundleResourceInfo](../apis-ability-kit/js-apis-bundleManager-BundleResourceInfo-sys.md#bundleresourceinfo)的appIndex属性，后续可以通过调用[getBundleResourceInfo](../apis-ability-kit/js-apis-bundleResourceManager-sys.md#bundleresourcemanagergetbundleresourceinfo12)接口获得。|
 
 **错误码：**
 

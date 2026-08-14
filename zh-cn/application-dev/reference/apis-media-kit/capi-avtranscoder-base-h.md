@@ -41,7 +41,7 @@
 | -- | -- | -- |
 | [typedef void (\*OH_AVTranscoder_OnStateChange)(OH_AVTranscoder *transcoder, OH_AVTranscoder_State state, void *userData)](#oh_avtranscoder_onstatechange) | OH_AVTranscoder_OnStateChange | 转码过程的状态回调函数。 |
 | [typedef void (\*OH_AVTranscoder_OnError)(OH_AVTranscoder *transcoder, int32_t errorCode, const char *errorMsg, void *userData)](#oh_avtranscoder_onerror) | OH_AVTranscoder_OnError | 转码过程中错误事件的回调函数。 |
-| [typedef void (\*OH_AVTranscoder_OnProgressUpdate)(OH_AVTranscoder *transcoder, int32_t progress, void *userData)](#oh_avtranscoder_onprogressupdate) | OH_AVTranscoder_OnProgressUpdate | 回调转码进度更新时调用。 |
+| [typedef void (\*OH_AVTranscoder_OnProgressUpdate)(OH_AVTranscoder *transcoder, int32_t progress, void *userData)](#oh_avtranscoder_onprogressupdate) | OH_AVTranscoder_OnProgressUpdate | 转码进度更新时的回调函数。 |
 
 ## 枚举类型说明
 
@@ -125,7 +125,7 @@ typedef void (*OH_AVTranscoder_OnProgressUpdate)(OH_AVTranscoder *transcoder, in
 
 **描述**
 
-回调转码进度更新时调用。
+转码进度更新时的回调函数。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
