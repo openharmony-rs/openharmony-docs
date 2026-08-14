@@ -33,12 +33,12 @@
 | [OH_AudioAccessoryInputStream_StopCallback](#oh_audioaccessoryinputstream_stopcallback) | OH_AudioAccessoryInputStream_StopCallback | 输入流停止事件回调函数。 |
 | [OH_AudioAccessoryInputStream_ReleaseCallback](#oh_audioaccessoryinputstream_releasecallback) | OH_AudioAccessoryInputStream_ReleaseCallback | 输入流释放事件回调函数。 |
 | [OH_AudioAccessoryInputStream_GetLatencyCallback](#oh_audioaccessoryinputstream_getlatencycallback) | OH_AudioAccessoryInputStream_GetLatencyCallback | 查询输入流当前时延的回调函数。 |
-| [OH_AudioAccessoryInputStream_GetFramePositionCallback](#oh_audioaccessoryinputstream_getframepositioncallback) | OH_AudioAccessoryInputStream_GetFramePositionCallback | 查询输入流当前采集位置（帧位置）的回调函数。 |
-| [OH_AudioAccessoryInputStreamManager_RegisterStartCallback](#oh_audioaccessoryinputstreammanager_registerstartcallback) | - | 注册输入流启动事件回调函数。 |
-| [OH_AudioAccessoryInputStreamManager_RegisterStopCallback](#oh_audioaccessoryinputstreammanager_registerstopcallback) | - | 注册输入流停止事件回调函数。 |
-| [OH_AudioAccessoryInputStreamManager_RegisterReleaseCallback](#oh_audioaccessoryinputstreammanager_registerreleasecallback) | - | 注册输入流释放事件回调函数。 |
-| [OH_AudioAccessoryInputStreamManager_RegisterLatencyCallback](#oh_audioaccessoryinputstreammanager_registerlatencycallback) | - | 注册输入流时延查询回调函数。 |
-| [OH_AudioAccessoryInputStreamManager_RegisterFramePositionCallback](#oh_audioaccessoryinputstreammanager_registerframepositioncallback) | - | 注册输入流帧位置查询回调函数。 |
+| [OH_AudioAccessoryInputStream_GetFramePositionCallback](#oh_audioaccessoryinputstream_getframepositioncallback) | OH_AudioAccessoryInputStream_GetFramePositionCallback | 查询输入流当前采集位置的回调函数。 |
+| [OH_AudioAccessoryInputStreamManager_RegisterStartCallback](#oh_audioaccessoryinputstreammanager_registerstartcallback) | - | 注册输入流启动事件回调函数。应用需要通过音频配件输入流采集音频时，需注册此回调。如果未注册，音频系统将拒绝创建输入流并清理相关资源。 |
+| [OH_AudioAccessoryInputStreamManager_RegisterStopCallback](#oh_audioaccessoryinputstreammanager_registerstopcallback) | - | 注册输入流停止事件回调函数。应用需要通过音频配件输入流采集音频时，需注册此回调。如果未注册，音频系统将拒绝创建输入流并清理相关资源。 |
+| [OH_AudioAccessoryInputStreamManager_RegisterReleaseCallback](#oh_audioaccessoryinputstreammanager_registerreleasecallback) | - | 注册输入流释放事件回调函数。应用需要通过音频配件输入流采集音频时，需注册此回调。如果未注册，音频系统将拒绝创建输入流并清理相关资源。 |
+| [OH_AudioAccessoryInputStreamManager_RegisterLatencyCallback](#oh_audioaccessoryinputstreammanager_registerlatencycallback) | - | 注册输入流时延查询回调函数。应用需要通过音频配件输入流采集音频时，需注册此回调。如果未注册，音频系统将拒绝创建输入流并清理相关资源。 |
+| [OH_AudioAccessoryInputStreamManager_RegisterFramePositionCallback](#oh_audioaccessoryinputstreammanager_registerframepositioncallback) | - | 注册输入流帧位置查询回调函数，用于查询输入流当前采集位置。应用需要通过音频配件输入流采集音频时，需注册此回调。如果未注册，音频系统将拒绝创建输入流并清理相关资源。 |
 | [OH_AudioAccessoryInputStreamManager_Write](#oh_audioaccessoryinputstreammanager_write) | - | 向音频配件输入流写入音频数据。 |
 | [OH_AudioAccessoryInputStreamManager_GetWritableSize](#oh_audioaccessoryinputstreammanager_getwritablesize) | - | 获取音频配件输入流缓冲区的可写大小。 |
 
@@ -54,13 +54,13 @@ typedef bool (*OH_AudioAccessory_OpenInputStreamCallback)(OH_AudioAccessory *acc
 
 音频配件打开输入流的回调函数。
 
-**触发时机：** 当应用请求从该音频配件采集音频时，音频系统调用此回调。系统传递正在打开的输入流信息，以便配件准备相应的音频数据传输通道。
+触发时机：当应用请求从该音频配件采集音频时，音频系统调用此回调。系统传递正在打开的输入流信息，以便配件准备相应的音频数据传输通道。
 
-**使用要求：** 在此回调中，需注册输入流的启动、停止、释放、时延查询和帧位置查询回调。只能在此回调执行期间注册这些输入流回调。
+使用要求：在此回调中，需注册输入流的启动、停止、释放、时延查询和帧位置查询回调。只能在此回调执行期间注册这些输入流回调。
 
 **起始版本：** 26.0.0
 
-**参数**
+**参数：**
 
 | 名称 | 描述 |
 | -- | -- |
@@ -68,7 +68,7 @@ typedef bool (*OH_AudioAccessory_OpenInputStreamCallback)(OH_AudioAccessory *acc
 | [OH_AudioAccessoryInputStream](capi-ohaudio-oh-audioaccessoryinputstream.md) *stream | 新创建的输入流句柄。使用此句柄注册输入流相关回调。 |
 | [OH_AudioStreamInfo](capi-ohaudio-oh-audiostreaminfo.md) *streamInfo | 正在打开的输入流的音频流信息指针。此参数描述请求的流格式，<br>配件可使用此信息配置音频数据传输通道。 |
 
-**返回值**
+**返回：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -84,18 +84,18 @@ typedef bool (*OH_AudioAccessoryInputStream_StartCallback)(OH_AudioAccessory *ac
 
 输入流启动事件回调函数。
 
-**触发时机：** 输入流成功启动并准备好接收音频数据后触发。此回调返回后，可以调用OH_AudioAccessoryInputStreamManager_Write发送音频数据。
+触发时机：输入流成功启动并准备好接收音频数据后触发。此回调返回后，可以调用OH_AudioAccessoryInputStreamManager_Write发送音频数据。
 
 **起始版本：** 26.0.0
 
-**参数**
+**参数：**
 
 | 名称 | 描述 |
 | -- | -- |
 | [OH_AudioAccessory](capi-ohaudio-oh-audioaccessory.md) *accessory | 该输入流所属的音频配件。 |
 | [OH_AudioAccessoryInputStream](capi-ohaudio-oh-audioaccessoryinputstream.md) *stream | 已启动的输入流句柄。 |
 
-**返回值**
+**返回：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -111,18 +111,18 @@ typedef bool (*OH_AudioAccessoryInputStream_StopCallback)(OH_AudioAccessory *acc
 
 输入流停止事件回调函数。
 
-**触发时机：** 输入流停止后触发。此回调返回后，应停止调用OH_AudioAccessoryInputStreamManager_Write。输入流句柄仍然有效，可以再次启动。
+触发时机：输入流停止后触发。此回调返回后，应停止调用OH_AudioAccessoryInputStreamManager_Write。输入流句柄仍然有效，可以再次启动。
 
 **起始版本：** 26.0.0
 
-**参数**
+**参数：**
 
 | 名称 | 描述 |
 | -- | -- |
 | [OH_AudioAccessory](capi-ohaudio-oh-audioaccessory.md) *accessory | 该输入流所属的音频配件。 |
 | [OH_AudioAccessoryInputStream](capi-ohaudio-oh-audioaccessoryinputstream.md) *stream | 已停止的输入流句柄。 |
 
-**返回值**
+**返回：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -138,18 +138,18 @@ typedef bool (*OH_AudioAccessoryInputStream_ReleaseCallback)(OH_AudioAccessory *
 
 输入流释放事件回调函数。
 
-**触发时机：** 输入流正在释放资源时触发。这是该输入流的最后一个回调。此回调返回后，输入流句柄不再有效，不应继续使用。
+触发时机：输入流正在释放资源时触发。这是该输入流的最后一个回调。此回调返回后，输入流句柄不再有效，不应继续使用。
 
 **起始版本：** 26.0.0
 
-**参数**
+**参数：**
 
 | 名称 | 描述 |
 | -- | -- |
 | [OH_AudioAccessory](capi-ohaudio-oh-audioaccessory.md) *accessory | 该输入流所属的音频配件。 |
 | [OH_AudioAccessoryInputStream](capi-ohaudio-oh-audioaccessoryinputstream.md) *stream | 即将释放的输入流（录音/采集流）句柄。 |
 
-**返回值**
+**返回：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -165,11 +165,11 @@ typedef bool (*OH_AudioAccessoryInputStream_GetLatencyCallback)(OH_AudioAccessor
 
 查询输入流当前时延的回调函数。
 
-**触发时机：** 当系统需要获取音频配件输入流当前时延值时触发。
+触发时机：当系统需要获取音频配件输入流当前时延值时触发。
 
 **起始版本：** 26.0.0
 
-**参数**
+**参数：**
 
 | 名称 | 描述 |
 | -- | -- |
@@ -177,7 +177,7 @@ typedef bool (*OH_AudioAccessoryInputStream_GetLatencyCallback)(OH_AudioAccessor
 | [OH_AudioAccessoryInputStream](capi-ohaudio-oh-audioaccessoryinputstream.md) *stream | 输入流句柄。 |
 | int32_t *latency | 输出参数，返回时延值，单位为毫秒（ms）。 |
 
-**返回值**
+**返回：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -193,11 +193,11 @@ typedef bool (*OH_AudioAccessoryInputStream_GetFramePositionCallback)(OH_AudioAc
 
 查询输入流当前采集位置的回调函数。
 
-**触发时机：** 当系统需要获取该音频配件（外部音频设备）上的输入流当前采集位置时触发。
+触发时机：当系统需要获取该音频配件（外部音频设备）上的输入流当前采集位置时触发。
 
 **起始版本：** 26.0.0
 
-**参数**
+**参数：**
 
 | 名称 | 描述 |
 | -- | -- |
@@ -206,7 +206,7 @@ typedef bool (*OH_AudioAccessoryInputStream_GetFramePositionCallback)(OH_AudioAc
 | int64_t *framePosition | 输出参数，返回自该输入流最近一次成功启动以来已采集的音频帧总数。 |
 | int64_t *timestamp | 输出参数，返回与framePosition对应的采集时间戳。<br>时间戳需使用CLOCK_MONOTONIC时间基准，单位为纳秒（ns），<br>表示采集到该音频帧时的时间点。 |
 
-**返回值**
+**返回：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -226,14 +226,14 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_RegisterStartCallback(
 
 **起始版本：** 26.0.0
 
-**参数**
+**参数：**
 
 | 名称 | 描述 |
 | -- | -- |
 | [OH_AudioAccessoryInputStream](capi-ohaudio-oh-audioaccessoryinputstream.md) *stream | 输入流句柄指针。 |
 | OH_AudioAccessoryInputStream_StartCallback callback | 回调函数指针，不可为空。 |
 
-**返回值**
+**返回：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -253,14 +253,14 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_RegisterStopCallback(O
 
 **起始版本：** 26.0.0
 
-**参数**
+**参数：**
 
 | 名称 | 描述 |
 | -- | -- |
 | [OH_AudioAccessoryInputStream](capi-ohaudio-oh-audioaccessoryinputstream.md) *stream | 输入流句柄指针。 |
 | OH_AudioAccessoryInputStream_StopCallback callback | 回调函数指针，不可为空。 |
 
-**返回值**
+**返回：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -280,14 +280,14 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_RegisterReleaseCallbac
 
 **起始版本：** 26.0.0
 
-**参数**
+**参数：**
 
 | 名称 | 描述 |
 | -- | -- |
 | [OH_AudioAccessoryInputStream](capi-ohaudio-oh-audioaccessoryinputstream.md) *stream | 输入流句柄指针。 |
 | OH_AudioAccessoryInputStream_ReleaseCallback callback | 回调函数指针，不可为空。 |
 
-**返回值**
+**返回：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -307,14 +307,14 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_RegisterLatencyCallbac
 
 **起始版本：** 26.0.0
 
-**参数**
+**参数：**
 
 | 名称 | 描述 |
 | -- | -- |
 | [OH_AudioAccessoryInputStream](capi-ohaudio-oh-audioaccessoryinputstream.md) *stream | 输入流句柄指针。 |
 | OH_AudioAccessoryInputStream_GetLatencyCallback callback | 回调函数指针，不可为空。 |
 
-**返回值**
+**返回：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -334,14 +334,14 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_RegisterFramePositionC
 
 **起始版本：** 26.0.0
 
-**参数**
+**参数：**
 
 | 名称 | 描述 |
 | -- | -- |
 | [OH_AudioAccessoryInputStream](capi-ohaudio-oh-audioaccessoryinputstream.md) *stream | 输入流句柄指针。 |
 | OH_AudioAccessoryInputStream_GetFramePositionCallback callback | 回调函数指针，不可为空。 |
 
-**返回值**
+**返回：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -357,9 +357,14 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_Write(OH_AudioAccessor
 
 向音频配件输入流写入音频数据。
 
-调用后，函数在一帧音频数据写入成功或发生错误后返回。每次调用需写入完整20ms的音频数据。调用方需确保dataSize与当前输入流配置下20ms音频数据对应的字节数一致。如果音频数据帧长度与当前输入流配置不匹配，本函数返回AUDIOCOMMON_RESULT_ERROR_FRAME_LENGTH_MISMATCH。调用方需按20ms间隔调用此函数，即每次提交20ms音频数据，连续两次调用之间的间隔也需为20ms。
-
-如果输入流缓冲区当前没有足够的可写空间容纳一帧数据，本函数将等待可写空间满足要求或返回错误。此接口不支持部分帧写入。如果最后一帧不足20ms的音频数据，调用方可以丢弃该帧或用零填充至20ms后再调用本函数。
+> **说明：**
+>
+> - 调用此函数后，在某一帧音频数据写入成功或发生错误后返回。
+> - 每次调用需写入完整20ms的音频数据。调用方需确保dataSize与当前输入流配置下20ms音频数据对应的字节数一致。如果音频数据帧长度与当前输入流配置不匹配，此函数返回AUDIOCOMMON_RESULT_ERROR_FRAME_LENGTH_MISMATCH。
+> - 调用方需按20ms间隔调用此函数，即每次提交20ms音频数据，连续两次调用之间的间隔也需为20ms。
+> - 如果输入流缓冲区当前没有足够的可写空间容纳一帧数据，此函数将等待可写空间满足要求或返回错误。
+> - 此函数不支持部分帧写入。
+> - 如果最后一帧不足20ms的音频数据，调用方可以丢弃该帧或用零填充至20ms后再调用此函数。
 
 **并发限制：**
 
@@ -367,7 +372,7 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_Write(OH_AudioAccessor
 
 **起始版本：** 26.0.0
 
-**参数**
+**参数：**
 
 | 名称 | 描述 |
 | -- | -- |
@@ -375,7 +380,7 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_Write(OH_AudioAccessor
 | const uint8_t *data | 音频数据缓冲区指针，不可为空。 |
 | uint32_t dataSize | 音频数据大小，单位为字节（Byte），需大于0。 |
 
-**返回值**
+**返回：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -395,14 +400,14 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_GetWritableSize(OH_Aud
 
 **起始版本：** 26.0.0
 
-**参数**
+**参数：**
 
 | 名称 | 描述 |
 | -- | -- |
 | [OH_AudioAccessoryInputStream](capi-ohaudio-oh-audioaccessoryinputstream.md) *stream | 输入流句柄指针。 |
 | uint32_t *writableSize | 输出参数，返回可写入大小，单位为字节（Byte）。 |
 
-**返回值**
+**返回：**
 
 | 类型 | 说明 |
 | -- | -- |

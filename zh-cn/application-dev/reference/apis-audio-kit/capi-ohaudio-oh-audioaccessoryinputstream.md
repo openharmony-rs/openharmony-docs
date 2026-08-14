@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct OH_AudioAccessoryInputStream OH_AudioAccessoryInputStream;
+typedef struct OH_AudioAccessoryInputStream OH_AudioAccessoryInputStream
 ```
 
 ## 概述

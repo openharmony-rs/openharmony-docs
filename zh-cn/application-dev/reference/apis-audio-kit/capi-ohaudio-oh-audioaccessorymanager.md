@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct OH_AudioAccessoryManager OH_AudioAccessoryManager;
+typedef struct OH_AudioAccessoryManager OH_AudioAccessoryManager
 ```
 
 ## 概述
