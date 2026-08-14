@@ -100,8 +100,7 @@ XXX can't support atomicservice application.
 
 **错误信息**
 
-The {apiName} API is supported since SDK version {sinceVersion}. However, the current compatible SDK version is {compatibleSdkVersion}.
-It is recommended to use apiAvailable to safeguard API compatibility.
+The {apiName} API is supported since SDK version {sinceVersion}. However, the current compatible SDK version is {compatibleSdkVersion}.It is recommended to use apiAvailable to safeguard API compatibility.
 
 **错误描述**
 
@@ -127,8 +126,7 @@ It is recommended to use apiAvailable to safeguard API compatibility.
 
 **错误信息**
 
-The {apiName} API is available since SDK version {sinceVersion}. However, the current compatible SDK version is {compatibleSdkVersion}.
-It is recommended to use apiAvailable to safeguard API compatibility.
+The {apiName} API is available since SDK version {sinceVersion}. However, the current compatible SDK version is {compatibleSdkVersion}.It is recommended to use apiAvailable to safeguard API compatibility.
 
 **错误描述**
 
@@ -256,7 +254,7 @@ The runtime OS for the current project is {runtimeOS}. The OS version number {ve
 
 3、确保版本号不含非法字符，且格式完整（M.S.F必须为三段式）。
 
-4、参考API文档说明：[@Available](./apis-basic-services-kit/js-apis-annotation.md)。
+4、参考API文档说明：[Available](./apis-basic-services-kit/js-apis-annotation.md#available)。
 
 ## 11706017 @Available装饰器中的操作系统名称无效
 
@@ -284,6 +282,6 @@ The runtime OS for the current project is {runtimeOS}. @Available is not support
 
 3、确认操作系统名称拼写正确，且为当前运行时所支持的名称。
 
-4、参考API文档说明：[@Available](./apis-basic-services-kit/js-apis-annotation.md)。
+4、参考API文档说明：[Available](./apis-basic-services-kit/js-apis-annotation.md#available)。
 
 <!--RP1--><!--RP1End-->
