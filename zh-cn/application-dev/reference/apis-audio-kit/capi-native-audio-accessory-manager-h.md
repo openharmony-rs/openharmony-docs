@@ -155,7 +155,7 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_SetAssociatedMacAddresses(OH_Audi
 | -- | -- |
 | OH_AudioAccessoryManager *manager | 指向通过OH_AudioManager_GetAccessoryManager获取的音频配件管理器实例。 |
 | OH_AudioAccessory *accessory | 指向主配件句柄的指针。 |
-| const char **macAddresses | 副配件MAC地址数组。<br>**当count为0时可以为空**，表示清除副配件MAC列表（例如所有副配件断开连接时）。<br>每个元素需符合以下规则：<br>- 格式为以冒号分隔的十六进制表示的NUL终止ASCII字符串，例如"00:11:22:33:44:55"。<br>  接受大写和小写十六进制数字（A-F / a-f）。<br>- 需为非空、非零长度字符串。<br>- 同一数组中的重复地址将被忽略，仅每个唯一地址的首次出现生效。 |
+| const char **macAddresses | 副配件MAC地址数组。<br>**当count为0时可以为空**，表示清除副配件MAC列表，适用于所有副配件断开连接的场景。<br>每个元素需符合以下规则：<br>- 格式为以冒号分隔的十六进制表示的NUL终止ASCII字符串。<br>  接受大写和小写十六进制数字（A-F / a-f）。<br>- 需为非空、非零长度字符串。<br>- 同一数组中的重复地址将被忽略，仅每个唯一地址的首次出现生效。 |
 | uint32_t count | MAC地址数组中的元素数量。 |
 
 **返回值**

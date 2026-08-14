@@ -119,7 +119,7 @@ typedef struct OH_AudioAccessoryInfo
 
 | 成员变量 | 描述 |
 | -- | -- |
-| uint32_t structSize | 结构体大小，单位为字节（Byte）。<br>调用方需初始化此字段（例如：info.structSize = sizeof(OH_AudioAccessoryInfo)）。<br>系统通过此字段校验结构体大小。 |
+| uint32_t structSize | 结构体大小，单位为字节（Byte）。<br>调用方需初始化此字段。<br>系统通过此字段校验结构体大小。 |
 | const char *accessoryName | 配件名称（外部音频设备名称），用于UX展示。<br>系统会对此字段进行深拷贝。 |
 | const char *manufacturer | 制造商名称。<br>系统会对此字段进行深拷贝。 |
 | const char *modelNumber | 型号编号。<br>系统会对此字段进行深拷贝。 |
@@ -141,7 +141,7 @@ typedef struct OH_AudioAccessoryNoiseReductionCapability
 
 | 成员变量 | 描述 |
 | -- | -- |
-| uint32_t structSize | 结构体大小，单位为字节（Byte）。<br>调用方需初始化此字段（例如：info.structSize = sizeof(OH_AudioAccessoryNoiseReductionCapability)）。<br>系统通过此字段校验结构体大小。 |
+| uint32_t structSize | 结构体大小，单位为字节（Byte）。<br>调用方需初始化此字段。<br>系统通过此字段校验结构体大小。 |
 | const [OH_AudioNoiseReductionMode](capi-native-audio-common-h.md#oh_audionoisereductionmode) *supportedModes | 支持的降噪模式数组。 |
 | uint32_t supportedModeCount | 支持的降噪模式数量。 |
 | [OH_AudioNoiseReductionMode](capi-native-audio-common-h.md#oh_audionoisereductionmode) currentMode | 设备当前降噪模式。<br>表示注册能力时的初始状态。 |
@@ -162,6 +162,6 @@ typedef struct OH_AudioAccessoryCapabilities
 
 | 成员变量 | 描述 |
 | -- | -- |
-| uint32_t structSize | 结构体大小，单位为字节（Byte）。<br>调用方需初始化此字段（例如：caps.structSize = sizeof(OH_AudioAccessoryCapabilities)）。 |
+| uint32_t structSize | 结构体大小，单位为字节（Byte）。<br>调用方需初始化此字段。 |
 | const [OH_AudioStreamInfo](capi-ohaudio-oh-audiostreaminfo.md) *streamProperties | 支持的音频流配置数组。<br>每个条目表示采样率、采样格式和声道数的有效组合。<br>系统会对此数组进行深拷贝。 |
 | uint32_t streamPropertyCount | 支持的音频流配置数量。 |

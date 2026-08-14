@@ -209,7 +209,7 @@ typedef bool (*OH_AudioAccessoryInputStream_GetFramePositionCallback)(OH_AudioAc
 | OH_AudioAccessory *accessory | 该输入流所属的音频配件（外部音频设备）。 |
 | OH_AudioAccessoryInputStream *stream | 输入流句柄。 |
 | int64_t *framePosition | 输出参数，返回自该输入流最近一次成功启动以来已采集的音频帧总数。 |
-| int64_t *timestamp | 输出参数，返回与framePosition对应的采集时间戳。<br>时间戳需使用CLOCK_MONOTONIC时间基准，单位为纳秒（ns），<br>表示该采集位置对应的音频帧被采集时的单调时钟时间。 |
+| int64_t *timestamp | 输出参数，返回与framePosition对应的采集时间戳。<br>时间戳需使用CLOCK_MONOTONIC时间基准，单位为纳秒（ns），<br>表示采集到该音频帧时的时间点。 |
 
 **返回值**
 
