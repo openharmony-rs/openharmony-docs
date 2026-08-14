@@ -2882,6 +2882,7 @@ try {
       kvStore.getEntries('batch_test_string_key', (err: BusinessError, entries: distributedKVStore.Entry[]) => {
         if (err != undefined) {
           console.error(`Failed to get Entries.code is ${err.code},message is ${err.message}`);
+          return;
         }
         console.info('Succeeded in getting Entries');
         console.info(`entries.length: ${entries.length}`);
