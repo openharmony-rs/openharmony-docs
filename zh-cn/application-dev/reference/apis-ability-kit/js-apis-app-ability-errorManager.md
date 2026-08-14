@@ -400,7 +400,7 @@ on(type: 'globalUnhandledRejectionDetected', observer: GlobalObserver): void
 
 | 参数名     | 类型                                 | 必填 | 说明                                                                                                      |
 |------------|-------------------------------------| -------- |------------------------------------------------------------------------------------------------------|
-| type       | string                              | 是 | 填写'globalUnhandledRejectionDetected'，表示注册被拒绝Promise监听器。<br>回调函数入参：(reason: Error \| any, promise: Promise\<any>) => void，其中reason为被拒绝的理由（通常是Error类型），promise为被拒绝的Promise对象。 |
+| type       | string                              | 是 | 填写'globalUnhandledRejectionDetected'，表示注册被拒绝Promise监听器。|
 | observer   | [GlobalObserver](#globalobserver18) | 是 | 注册被拒绝Promise的callback。                          |
 
 **错误码**：
@@ -576,7 +576,7 @@ off(type: 'loopObserver', observer?: LoopObserver): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 填写'loopObserver'，表示应用主线程观测器。 |
-| observer | [LoopObserver](js-apis-inner-application-loopObserver.md) | 否 | 应用主线程观测器标志。 |
+| observer | [LoopObserver](js-apis-inner-application-loopObserver.md) | 否 | 应用主线程观测器标志。无论是否传入该参数，都会清除通过[errorManager.on('loopObserver')](#errormanageronloopobserver12)方法已注册的observer。|
 
 **错误码**：
 
@@ -590,6 +590,7 @@ off(type: 'loopObserver', observer?: LoopObserver): void
     
 ```ts
 import { errorManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   errorManager.off('loopObserver');
@@ -887,7 +888,7 @@ setDefaultResourceUsageObserver(defaultObserver?: ResourceUsageObserver): Resour
  
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| defaultObserver | [ResourceUsageObserver](#resourceusageobserver24) | 否 | 新注册的资源观察者，缺省时默认值为空。|
+| defaultObserver | [FreezeObserver](#freezeobserver18) | 否 | 新注册的freeze观察者，默认值为空。<br>当参数为空时，后续注册的处理器将无法与前序已注册的处理器建立关联，从而中断链式调用。|
 
 **返回值**：
 
@@ -1327,7 +1328,7 @@ type FreezeObserver = () => void
 
 type GlobalObserver = (reason: GlobalError) => void
 
-定义异常监听，可以作为[errorManager.on('globalErrorOccurred')](#errormanageronglobalerroroccurred18)和[errorManager.on('globalUnhandledRejectionDetected')](#errormanageronglobalunhandledrejectiondetected18)的入参监听当前应用主线程事件处理事件。
+定义异常监听，可以作为[errorManager.on('globalErrorOccurred')](#errormanageronglobalerroroccurred18)和[errorManager.on('globalUnhandledRejectionDetected')](#errormanageronglobalunhandledrejectiondetected18)的入参，用于监听全局异常事件和未捕获的Promise rejection。通过回调机制获取异常详情，帮助开发者及时发现和定位故障问题。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -1384,6 +1385,8 @@ type GlobalObserver = (reason: GlobalError) => void
 ## ErrorHandler<sup>21+</sup>
 
 type ErrorHandler = (errObject: Error) => void
+
+定义错误处理器函数类型，用于处理JS异常，作为[errorManager.setDefaultErrorHandler](#errormanagersetdefaulterrorhandler21)的参数类型，在异常发生时被调用，接收异常对象并执行自定义错误处理逻辑。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 21开始，该接口支持在原子化服务中使用。
 
