@@ -681,7 +681,7 @@ struct ListExample {
 
 鼠标的滚轮是一种可以产生纵向滚动量的输入设备，当用户滚动鼠标滚轮时，系统会产生纵向[轴事件](../reference/apis-arkui/arkui-ts/ts-universal-events-axis.md)上报，应用可在组件上通过[onAxisEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-axis.md#onaxisevent)接口接收轴事件，轴事件中上报的坐标，为鼠标光标所在的位置，而滚轮上报的角度变化可从[BaseEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#baseevent8)的axisVertical获得。
 
-鼠标滚轮轴事件的上报，每次都以[AxisAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#axisaction17).BEGIN类型开始，当停止滚动时以[AxisAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#axisaction17).End结束，慢速滚动时，会产生多段的BEGIN、END上报。当你处理axisVertical时，应确保理解它的数值含义与单位，其有以下特点：
+鼠标滚轮轴事件的上报，每次都以[AxisAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#axisaction17).BEGIN类型开始，当停止滚动时以[AxisAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#axisaction17).END结束，慢速滚动时，会产生多段的BEGIN、END上报。当你处理axisVertical时，应确保理解它的数值含义与单位，其有以下特点：
 - 上报的数值单位为角度，为单次变化量，非总量。
 - 上报数值大小受系统设置中对滚轮放大倍数设置的影响。
 - 系统设置中的放大倍数通过[AxisEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-axis.md#axisevent)中的scrollStep告知。
