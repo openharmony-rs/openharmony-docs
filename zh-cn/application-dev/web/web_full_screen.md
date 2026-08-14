@@ -156,6 +156,7 @@ Web组件全屏模式仅改变内容布局，不触发应用窗口方向切换�
 
 ArkTS-Dyn示例：
 <!-- @[toggle fullscreen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebFullScreen/entry/src/main/ets/pages/Index.ets) -->
+
 ``` TypeScript
 Web({ src:$rawfile("video.html"), controller: this.controller }) // 注意替换
   .domStorageAccess(true)
@@ -172,6 +173,7 @@ Web({ src:$rawfile("video.html"), controller: this.controller }) // 注意替换
 
 ArkTS-Sta示例：
 <!-- @[toggle fullscreen](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebFullScreen/entry/src/main/ets/pages/Index.ets) -->
+
 ``` TypeScript
 Web({ src:$rawfile("video.html"), controller: this.controller }) // 注意替换
   .domStorageAccess(true)
@@ -194,6 +196,7 @@ Web({ src:$rawfile("video.html"), controller: this.controller }) // 注意替换
 
 ArkTS-Dyn示例：
 <!-- @[toggle screen orientation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebFullScreen/entry/src/main/ets/pages/Index.ets) -->
+
 ``` TypeScript
 // 改变设备横竖屏状态
 private changeOrientation(isLandscape: boolean) {
@@ -210,6 +213,7 @@ private changeOrientation(isLandscape: boolean) {
 
 ArkTS-Sta示例：
 <!-- @[toggle screen orientation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebFullScreen/entry/src/main/ets/pages/Index.ets) -->
+
 ``` TypeScript
 // 改变设备横竖屏状态
 private changeOrientation(isLandscape: boolean): void {
@@ -228,6 +232,7 @@ private changeOrientation(isLandscape: boolean): void {
 
 ArkTS-Dyn示例：
 <!-- @[exit full screen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebFullScreen/entry/src/main/ets/pages/Index.ets) -->
+
 ``` TypeScript
  onBackPress(): boolean | void {
     if (this.isFullScreen) {
@@ -263,6 +268,7 @@ onBackPress(): boolean {
 
 ArkTS-Dyn示例：
 <!-- @[switch between portrait and landscape](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebFullScreen/entry/src/main/ets/pages/Index.ets) -->
+
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { window, router } from '@kit.ArkUI';
@@ -323,6 +329,7 @@ struct WebVideo {
 
 ArkTS-Sta示例：
 <!-- @[switch between portrait and landscape](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebFullScreen/entry/src/main/ets/pages/Index.ets) -->
+
 ``` TypeScript
 'use static'
 
