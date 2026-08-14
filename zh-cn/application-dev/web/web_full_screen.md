@@ -178,7 +178,10 @@ ArkTS-Sta示例：
 <!-- @[toggle fullscreen](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebFullScreen/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-Web({ src:$rawfile("video.html"), controller: this.controller }) // 注意替换
+Web({
+  src: $rawfile('video.html'), // 需要替换
+  controller: this.controller
+})
   .domStorageAccess(true)
   .expandSafeArea([SafeAreaType.SYSTEM])
   .onFullScreenEnter((event: FullScreenEnterEvent): void => {
@@ -251,20 +254,21 @@ onBackPress(): boolean | void {
 
 ArkTS-Sta示例：
 <!-- @[exit full screen](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebFullScreen/entry/src/main/ets/pages/Index.ets) -->
+
 ``` TypeScript
 onBackPress(): boolean {
-   if (this.isFullScreen) {
-     this.isFullScreen = false;
-     if (this.handler) {
-       this.handler.exitFullScreen();
-     }
-     this.changeOrientation(false);
-     return true;
-   } else {
-     router.back();
-     return true;
+  if (this.isFullScreen) {
+    this.isFullScreen = false;
+    if (this.handler) {
+      this.handler.exitFullScreen();
     }
+    this.changeOrientation(false);
+    return true;
+  } else {
+    router.back();
+    return true;
   }
+}
 ```
 
 完整示例：
