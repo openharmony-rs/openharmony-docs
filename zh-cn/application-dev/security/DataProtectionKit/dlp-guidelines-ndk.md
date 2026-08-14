@@ -41,8 +41,8 @@
         include(&#36;{PACKAGE_FIND_FILE})
     endif()
     
-    include_directories(&#36;{NATIVERENDER_ROOT_PATH}
-                        &#36;{NATIVERENDER_ROOT_PATH}/include)
+    include_directories(${NATIVERENDER_ROOT_PATH}
+                        ${NATIVERENDER_ROOT_PATH}/include)
     
     add_library(entry SHARED napi_init.cpp)
     target_link_libraries(entry PUBLIC libace_napi.z.so libohdlp_permission.so)
@@ -81,7 +81,7 @@
 
 4. 获取指定DLP文件名的原始文件名。
     <!-- @[dlp_C_GetOriginalFileName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/napi_init.cpp) -->
-    ```
+    ``` C++
     static napi_value GetOriginalFileName(napi_env env, napi_callback_info info)
     {
         const char *fileName = "test.txt.dlp"; // 表示DLP文件名，用以获取原始文件名
@@ -102,7 +102,7 @@
 
 5. 查询当前应用是否运行在DLP沙箱环境。
     <!-- @[dlp_C_IsInSandbox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/napi_init.cpp) -->
-    ```
+    ```C++
     static napi_value IsInSandbox(napi_env env, napi_callback_info info)
     {
         bool isInSandbox = false; // true表示当前应用在沙箱中，false表示应用不在沙箱
@@ -121,7 +121,7 @@
 
 6. 设置沙箱应用配置信息。
     <!-- @[dlp_C_SetSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/napi_init.cpp) -->
-    ```
+    ``` C++
     static napi_value SetSandboxAppConfig(napi_env env, napi_callback_info info)
     {
         const char *configInfo = "configInfo"; // 沙箱应用配置信息，用户可将配置信息json化后传入
@@ -136,7 +136,7 @@
 
 7. 获取沙箱应用配置信息。
     <!-- @[dlp_C_GetSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/napi_init.cpp) --> 
-    ```
+    ``` C++
     static napi_value GetSandboxAppConfig(napi_env env, napi_callback_info info)
     {
         char *configInfo = nullptr; // 输出json化后的沙箱应用配置信息
@@ -156,7 +156,7 @@
 
 8. 清理沙箱应用配置信息。
     <!-- @[dlp_C_CleanSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DlpCApiTest/entry/src/main/cpp/napi_init.cpp) -->
-    ```
+    ``` C++
     static napi_value CleanSandboxAppConfig(napi_env env, napi_callback_info info)
     {
         DLP_ErrCode ret = OH_DLP_CleanSandboxAppConfig();
