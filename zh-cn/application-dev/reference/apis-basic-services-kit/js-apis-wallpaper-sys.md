@@ -2,8 +2,8 @@
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @dreamsky8023-->
-<!--Designer: @dreamsky8023-->
+<!--Owner: @gcw_jQMboB9m-->
+<!--Designer: @gcw_jQMboB9m-->
 <!--Tester: @murphy84-->
 <!--Adviser: @fang-jinxu-->
 
@@ -30,11 +30,11 @@ import { wallpaper } from '@kit.BasicServicesKit';
 **系统接口**：此接口为系统接口。
 
 | 名称 | 值 |说明 |
-| -------- | -------- |-------- |
-| DEFAULT | 0 |默认为图片资源。 |
-| PICTURE | 1 |图片资源。 |
-| VIDEO | 2 |视频资源。 |
-| PACKAGE | 3 |包资源。 |
+| -------- | -------- | -------- |
+| DEFAULT | 0 | 默认为图片资源。 |
+| PICTURE | 1 | 图片资源。 |
+| VIDEO | 2 | 视频资源。 |
+| PACKAGE | 3 | 包资源。 |
 
 ## FoldState<sup>14+</sup>
 
@@ -45,10 +45,10 @@ import { wallpaper } from '@kit.BasicServicesKit';
 **系统接口**：此接口为系统接口。
 
 | 名称 | 值 |说明 |
-| -------- | -------- |-------- |
-| NORMAL | 0 |设备默认状态。 |
-| UNFOLD_ONCE_STATE | 1 |一次展开态。 |
-| UNFOLD_TWICE_STATE | 2 |二次展开态。 |
+| -------- | -------- | -------- |
+| NORMAL | 0 | 设备默认状态。 |
+| UNFOLD_ONCE_STATE | 1 | 一次展开态。 |
+| UNFOLD_TWICE_STATE | 2 | 二次展开态。 |
 
 ## RotateState<sup>14+</sup>
 
@@ -60,8 +60,8 @@ import { wallpaper } from '@kit.BasicServicesKit';
 
 | 名称 | 值 |说明 |
 | -------- | -------- |-------- |
-| PORTRAIT | 0 |设备默认为竖屏状态。 |
-| LANDSCAPE | 1 |横屏状态。 |
+| PORTRAIT | 0 | 设备默认为竖屏状态。 |
+| LANDSCAPE | 1 | 横屏状态。 |
 
 ## WallpaperInfo<sup>14+</sup>
 
@@ -73,9 +73,9 @@ import { wallpaper } from '@kit.BasicServicesKit';
 
 | 名称 | 类型 | 只读 | 可选 |说明 |
 | -------- | -------- |  -------- |  -------- |  -------- |
-| foldState | [FoldState](#foldstate14) | 否 | 否 |表示设备的折展状态。 |
-| rotateState | [RotateState](#rotatestate14)| 否 | 否 |表示设备的横竖屏状态。 |
-| source | string | 否 | 否 |表示壁纸资源uri，只支持应用沙箱目录。 |
+| foldState | [FoldState](#foldstate14) | 否 | 否 | 表示设备的折展状态。 |
+| rotateState | [RotateState](#rotatestate14) | 否 | 否 | 表示设备的横竖屏状态。 |
+| source | string | 否 | 否 | 表示壁纸资源uri，只支持应用沙箱目录。 |
 
 ## wallpaper.setVideo<sup>10+</sup>
 
@@ -112,17 +112,17 @@ setVideo(source: string, wallpaperType: WallpaperType, callback: AsyncCallback&l
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let wallpaperPath = "/data/storage/el2/base/haps/entry/files/test.mp4";
+let wallpaperPath = '/data/storage/el2/base/haps/entry/files/test.mp4';
 try {
     wallpaper.setVideo(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError) => {
         if (error) {
-            console.error(`failed to setVideo. Code: ${error.code}, Message: ${error.message}`);
+            console.error(`Failed to setVideo. Code: ${error.code}, message: ${error.message}`);
             return;
         }
         console.info(`success to setVideo.`);
     });
-} catch (error) {
-    console.error(`failed to setVideo. Code: ${error.code}, Message: ${error.message}`);
+} catch (error: BusinessError) {
+    console.error(`Failed to setVideo. Code: ${error.code}, message: ${error.message}`);
 }
 
 ```
@@ -167,15 +167,12 @@ setVideo(source: string, wallpaperType: WallpaperType): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let wallpaperPath = "/data/storage/el2/base/haps/entry/files/test.mp4";
+let wallpaperPath = '/data/storage/el2/base/haps/entry/files/test.mp4';
 try {
-    wallpaper.setVideo(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
-        console.info(`success to setVideo.`);
-    }).catch((error: BusinessError) => {
-        console.error(`failed to setVideo. Code: ${error.code}, Message: ${error.message}`);
-    });
-} catch (error) {
-    console.error(`failed to setVideo. Code: ${error.code}, Message: ${error.message}`);
+    await wallpaper.setVideo(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM);
+    console.info(`success to setVideo.`);
+} catch (error: BusinessError) {
+    console.error(`Failed to setVideo. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -214,17 +211,17 @@ setCustomWallpaper(source: string, wallpaperType: WallpaperType, callback: Async
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let wallpaperPath = "/data/storage/el2/base/haps/entry/files/test.zip";
+let wallpaperPath = '/data/storage/el2/base/haps/entry/files/test.zip';
 try {
     wallpaper.setCustomWallpaper(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError) => {
         if (error) {
-            console.error(`failed to setCustomWallpaper. Code: ${error.code}, Message: ${error.message}`);
+            console.error(`Failed to setCustomWallpaper. Code: ${error.code}, message: ${error.message}`);
             return;
         }
         console.info(`success to setCustomWallpaper.`);
     });
-} catch (error) {
-    console.error(`failed to setCustomWallpaper. Code: ${error.code}, Message: ${error.message}`);
+} catch (error: BusinessError) {
+    console.error(`Failed to setCustomWallpaper. Code: ${error.code}, message: ${error.message}`);
 }
 
 ```
@@ -245,7 +242,7 @@ setCustomWallpaper(source: string, wallpaperType: WallpaperType): Promise&lt;voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| source | string | 是 | 指定的zip资源包。 |
+| source | string | 是 | 指定的zip资源路径。 |
 | wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
 
 **返回值：**
@@ -269,15 +266,12 @@ setCustomWallpaper(source: string, wallpaperType: WallpaperType): Promise&lt;voi
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let wallpaperPath = "/data/storage/el2/base/haps/entry/files/test.zip";
+let wallpaperPath = '/data/storage/el2/base/haps/entry/files/test.zip';
 try {
-    wallpaper.setCustomWallpaper(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
-        console.info(`success to setCustomWallpaper.`);
-    }).catch((error: BusinessError) => {
-        console.error(`failed to setCustomWallpaper. Code: ${error.code}, Message: ${error.message}`);
-    });
-} catch (error) {
-    console.error(`failed to setCustomWallpaper. Code: ${error.code}, Message: ${error.message}`);
+    await wallpaper.setCustomWallpaper(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM);
+    console.info(`success to setCustomWallpaper.`);
+} catch (error: BusinessError) {
+    console.error(`Failed to setCustomWallpaper. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -310,13 +304,15 @@ on(type: 'wallpaperChange', callback: (wallpaperType: WallpaperType, resourceTyp
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
     let listener = (wallpaperType: wallpaper.WallpaperType, resourceType: wallpaper.WallpaperResourceType): void => {
         console.info(`wallpaper color changed.`);
     };
     wallpaper.on('wallpaperChange', listener);
-} catch (error) {
-    console.error(`failed to on. Code: ${error.code}, Message: ${error.message}`);
+} catch (error: BusinessError) {
+    console.error(`Failed to on. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -349,27 +345,29 @@ off(type: 'wallpaperChange', callback?: (wallpaperType: WallpaperType, resourceT
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let listener = (wallpaperType: wallpaper.WallpaperType, resourceType: wallpaper.WallpaperResourceType): void => {
     console.info(`wallpaper color changed.`);
 };
 try {
     wallpaper.on('wallpaperChange', listener);
-} catch (error) {
-    console.error(`failed to on. Code: ${error.code}, Message: ${error.message}`);
+} catch (error: BusinessError) {
+    console.error(`Failed to on. Code: ${error.code}, message: ${error.message}`);
 }
 
 try {
     // 取消订阅listener
     wallpaper.off('wallpaperChange', listener);
-} catch (error) {
-    console.error(`failed to off. Code: ${error.code}, Message: ${error.message}`);
+} catch (error: BusinessError) {
+    console.error(`Failed to off. Code: ${error.code}, message: ${error.message}`);
 }
 
 try {
     // 取消所有'wallpaperChange'类型的订阅
     wallpaper.off('wallpaperChange');
-} catch (error) {
-    console.error(`failed to off. Code: ${error.code}, Message: ${error.message}`);
+} catch (error: BusinessError) {
+    console.error(`Failed to off. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -393,7 +391,7 @@ getColorsSync(wallpaperType: WallpaperType): Array&lt;RgbaColor&gt;
 | -------- | -------- | -------- | -------- |
 | wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -408,14 +406,16 @@ getColorsSync(wallpaperType: WallpaperType): Array&lt;RgbaColor&gt;
 | 202          | permission verification failed, application which is not a system application uses system API.  |
 | 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
 
-**示例**：
+**示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
     let colors = wallpaper.getColorsSync(wallpaper.WallpaperType.WALLPAPER_SYSTEM);
     console.info(`success to getColorsSync: ${JSON.stringify(colors)}`);
-} catch (error) {
-    console.error(`failed to getColorsSync. Code: ${error.code}, Message: ${error.message}`);
+} catch (error: BusinessError) {
+    console.error(`Failed to getColorsSync. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -446,11 +446,13 @@ getMinHeightSync(): number
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   let minHeight = wallpaper.getMinHeightSync();
   console.info(`success to getMinHeightSync: ${JSON.stringify(minHeight)}`);
-} catch (error) {
-  console.error(`failed to getMinHeightSync. Code: ${error.code}, Message: ${error.message}`);
+} catch (error: BusinessError) {
+  console.error(`Failed to getMinHeightSync. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -481,11 +483,13 @@ getMinWidthSync(): number
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   let minWidth = wallpaper.getMinWidthSync();
   console.info(`success to getMinWidthSync: ${JSON.stringify(minWidth)}`);
-} catch (error) {
-  console.error(`failed to getMinWidthSync. Code: ${error.code}, Message: ${error.message}`);
+} catch (error: BusinessError) {
+  console.error(`Failed to getMinWidthSync. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -525,7 +529,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 wallpaper.restore(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError) => {
     if (error) {
-        console.error(`failed to restore. Code: ${error.code}, Message: ${error.message}`);
+        console.error(`Failed to restore. Code: ${error.code}, message: ${error.message}`);
         return;
     }
     console.info(`success to restore.`);
@@ -571,11 +575,12 @@ restore(wallpaperType: WallpaperType): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
  
-wallpaper.restore(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
+try {
+    await wallpaper.restore(wallpaper.WallpaperType.WALLPAPER_SYSTEM);
     console.info(`success to restore.`);
-  }).catch((error: BusinessError) => {
-    console.error(`failed to restore. Code: ${error.code}, Message: ${error.message}`);
-});
+} catch (error: BusinessError) {
+    console.error(`Failed to restore. Code: ${error.code}, message: ${error.message}`);
+}
 ```
 
 ## wallpaper.setImage<sup>9+</sup>
@@ -615,34 +620,35 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
 // source类型为string
-let wallpaperPath = "/data/storage/el2/base/haps/entry/files/js.jpeg";
+let wallpaperPath = '/data/storage/el2/base/haps/entry/files/js.jpeg';
 wallpaper.setImage(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError) => {
     if (error) {
-        console.error(`failed to setImage. Code: ${error.code}, Message: ${error.message}`);
+        console.error(`Failed to setImage. Code: ${error.code}, message: ${error.message}`);
         return;
      }
     console.info(`success to setImage.`);
 });
   
 // source类型为image.PixelMap
-let imageSource = image.createImageSource("file://" + wallpaperPath);
+let imageSource = image.createImageSource('file://' + wallpaperPath);
 let opts: image.DecodingOptions = {
     desiredSize: {
         height: 3648,
         width: 2736
     }
 };
-imageSource.createPixelMap(opts).then((pixelMap: image.PixelMap) => {
+try {
+    let pixelMap: image.PixelMap = await imageSource.createPixelMap(opts);
     wallpaper.setImage(pixelMap, wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError) => {
         if (error) {
-            console.error(`failed to setImage. Code: ${error.code}, Message: ${error.message}`);
+            console.error(`Failed to setImage. Code: ${error.code}, message: ${error.message}`);
             return;
         }
         console.info(`success to setImage.`);
     });
-}).catch((error: BusinessError) => {
-    console.error(`failed to createPixelMap. Code: ${error.code}, Message: ${error.message}`);
-});
+} catch (error: BusinessError) {
+    console.error(`Failed to createPixelMap. Code: ${error.code}, message: ${error.message}`);
+}
 ```
 
 ## wallpaper.setImage<sup>9+</sup>
@@ -687,30 +693,33 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
 // source类型为string
-let wallpaperPath = "/data/storage/el2/base/haps/entry/files/js.jpeg";
-wallpaper.setImage(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
+let wallpaperPath = '/data/storage/el2/base/haps/entry/files/js.jpeg';
+try {
+    await wallpaper.setImage(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM);
     console.info(`success to setImage.`);
-}).catch((error: BusinessError) => {
-    console.error(`failed to setImage. Code: ${error.code}, Message: ${error.message}`);
-});
+} catch (error: BusinessError) {
+    console.error(`Failed to setImage. Code: ${error.code}, message: ${error.message}`);
+}
 
 // source类型为image.PixelMap
-let imageSource = image.createImageSource("file://" + wallpaperPath);
+let imageSource = image.createImageSource('file://' + wallpaperPath);
 let opts: image.DecodingOptions = {
     desiredSize: {
         height: 3648,
         width: 2736
     }
 };
-imageSource.createPixelMap(opts).then((pixelMap: image.PixelMap) => {
-    wallpaper.setImage(pixelMap, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
+try {
+    let pixelMap: image.PixelMap = await imageSource.createPixelMap(opts);
+    try {
+        await wallpaper.setImage(pixelMap, wallpaper.WallpaperType.WALLPAPER_SYSTEM);
         console.info(`success to setImage.`);
-    }).catch((error: BusinessError) => {
-        console.error(`failed to setImage. Code: ${error.code}, Message: ${error.message}`);
-    });
-}).catch((error: BusinessError) => {
-    console.error(`failed to createPixelMap. Code: ${error.code}, Message: ${error.message}`);
-});
+    } catch (error: BusinessError) {
+        console.error(`Failed to setImage. Code: ${error.code}, message: ${error.message}`);
+    }
+} catch (error: BusinessError) {
+    console.error(`Failed to createPixelMap. Code: ${error.code}, message: ${error.message}`);
+}
 ```
 
 ## wallpaper.getImage<sup>9+</sup>
@@ -750,7 +759,7 @@ import { image } from '@kit.ImageKit';
 
 wallpaper.getImage(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError, data: image.PixelMap) => {
   if (error) {
-    console.error(`failed to getImage. Code: ${error.code}, Message: ${error.message}`);
+    console.error(`Failed to getImage. Code: ${error.code}, message: ${error.message}`);
     return;
   }
   console.info(`success to getImage: ${JSON.stringify(data.getImageInfoSync())}`);
@@ -797,11 +806,12 @@ getImage(wallpaperType: WallpaperType): Promise&lt;image.PixelMap&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
-wallpaper.getImage(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: image.PixelMap) => {
-  console.info(`success to getImage: ${JSON.stringify(data.getImageInfoSync())}`);
-}).catch((error: BusinessError) => {
-  console.error(`failed to getImage. Code: ${error.code}, Message: ${error.message}`);
-});
+try {
+    let data: image.PixelMap = await wallpaper.getImage(wallpaper.WallpaperType.WALLPAPER_SYSTEM);
+    console.info(`success to getImage: ${JSON.stringify(data.getImageInfoSync())}`);
+} catch (error: BusinessError) {
+    console.error(`Failed to getImage. Code: ${error.code}, message: ${error.message}`);
+}
 ```
 ## wallpaper.getWallpaperByState<sup>14+</sup>
 
@@ -843,14 +853,14 @@ getWallpaperByState(wallpaperType:WallpaperType, foldState:FoldState, rotateStat
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { wallpaper } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
-wallpaper.getWallpaperByState(wallpaper.WallpaperType.WALLPAPER_SYSTEM,wallpaper.FoldState.NORMAL,wallpaper.RotateState.PORTRAIT).then((data:image.PixelMap) => {
-  console.info(`success to getWallpaperByState: ${JSON.stringify(data.getImageInfoSync())}`);
-}).catch((error: BusinessError) => {
-  console.error(`failed to getWallpaperByState. Code: ${error.code}, Message: ${error.message}`);
-});
+try {
+    let data: image.PixelMap = await wallpaper.getWallpaperByState(wallpaper.WallpaperType.WALLPAPER_SYSTEM, wallpaper.FoldState.NORMAL, wallpaper.RotateState.PORTRAIT);
+    console.info(`success to getWallpaperByState: ${JSON.stringify(data.getImageInfoSync())}`);
+} catch (error: BusinessError) {
+    console.error(`Failed to getWallpaperByState. Code: ${error.code}, message: ${error.message}`);
+}
 ```
 
 ## wallpaper.setAllWallpapers<sup>14+</sup>
@@ -892,9 +902,8 @@ setAllWallpapers(wallpaperInfos: Array\<WallpaperInfo>\, wallpaperType: Wallpape
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { wallpaper } from '@kit.BasicServicesKit';
 
-let wallpaperInfos: Array<wallpaper.WallpaperInfo>
+let wallpaperInfos: Array<wallpaper.WallpaperInfo>;
 wallpaperInfos = [
   {
     foldState: wallpaper.FoldState.NORMAL,
@@ -912,11 +921,12 @@ wallpaperInfos = [
     source: '/data/storage/el2/base/haps/entry/files/unfold_twice_state.jpeg'
   }
 ];
-wallpaper.setAllWallpapers(wallpaperInfos, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
-  console.info(`success to setAllWallpapers.`);
-}).catch((error: BusinessError) => {
-  console.error(`failed to setAllWallpapers. Code: ${error.code}, Message: ${error.message}`);
-});
+try {
+    await wallpaper.setAllWallpapers(wallpaperInfos, wallpaper.WallpaperType.WALLPAPER_SYSTEM);
+    console.info(`success to setAllWallpapers.`);
+} catch (error: BusinessError) {
+    console.error(`Failed to setAllWallpapers. Code: ${error.code}, message: ${error.message}`);
+}
 ```
 
 ## wallpaper.getPixelMap<sup>(deprecated)</sup>
@@ -950,7 +960,7 @@ import { image } from '@kit.ImageKit';
 
 wallpaper.getPixelMap(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError, data: image.PixelMap) => {
   if (error) {
-    console.error(`failed to getPixelMap. Code: ${error.code}, Message: ${error.message}`);
+    console.error(`Failed to getPixelMap. Code: ${error.code}, message: ${error.message}`);
     return;
   }
   console.info(`success to getPixelMap : ${JSON.stringify(data.getImageInfoSync())}`);
@@ -991,9 +1001,10 @@ getPixelMap(wallpaperType: WallpaperType): Promise&lt;image.PixelMap&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
-wallpaper.getPixelMap(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: image.PixelMap) => {
-  console.info(`success to getPixelMap : ${JSON.stringify(data.getImageInfoSync())}`);
-}).catch((error: BusinessError) => {
-  console.error(`failed to getPixelMap. Code: ${error.code}, Message: ${error.message}`);
-});
+try {
+    let data: image.PixelMap = await wallpaper.getPixelMap(wallpaper.WallpaperType.WALLPAPER_SYSTEM);
+    console.info(`success to getPixelMap : ${JSON.stringify(data.getImageInfoSync())}`);
+} catch (error: BusinessError) {
+    console.error(`Failed to getPixelMap. Code: ${error.code}, message: ${error.message}`);
+}
 ```
