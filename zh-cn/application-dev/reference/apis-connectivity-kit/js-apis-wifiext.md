@@ -163,11 +163,7 @@ getPowerModel(callback: AsyncCallback&lt;PowerModel&gt;): void
 
 setPowerModel(model: PowerModel): boolean
 
- 设置功率模式。可根据不同应用场景选择功率模式：如设备需要降低功耗时使用SLEEPING（睡眠模式），日常正常运行时使用GENERAL（常规模式），需要增强信号穿墙覆盖能力时使用THROUGH_WALL（穿墙模式）。
-
-> **说明：**
->
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManagerExt.setPowerModel](js-apis-wifiManagerExt.md)替代。
+设置功率模式。可根据不同应用场景选择功率模式：如设备需要降低功耗时使用SLEEPING（睡眠模式），日常正常运行时使用GENERAL（常规模式），需要增强信号穿墙覆盖能力时使用THROUGH_WALL（穿墙模式）。
 
 **需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT_EXT
 
@@ -177,7 +173,7 @@ setPowerModel(model: PowerModel): boolean
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | model | [PowerModel](#powermodel) | 是 | 功率模式。取值需为[getSupportedPowerModel](#wifiextgetsupportedpowermodel)返回的设备支持的功率模式之一。 |
+  | model | [PowerModel](#powermodel) | 是 | 功率模式。 |
 
 **返回值：**
 
