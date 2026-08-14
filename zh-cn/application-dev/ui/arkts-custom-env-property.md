@@ -232,8 +232,8 @@ struct CustomValue {
 \@CustomEnv支持简单类型和复杂类型的变量声明。简单类型包括string、number、boolean、enum等；复杂类型包括class、Object等对象类型。
 
 <!-- @[CustomEnvSupportClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomEnvSample/entry/src/main/ets/pages/CustomEnvValueClassPage.ets) -->
-```ts
 
+``` TypeScript
 @ObservedV2
 class CustomVal {
   @Trace public id: number = 123;
@@ -273,8 +273,8 @@ struct ClassIndex {
 当子组件中使用\@CustomEnv装饰的变量向上查找环境变量值但未找到匹配的WithEnv组件时，该变量将使用声明时指定的初始值作为默认值。
 
 <!-- @[CustomEnvDefaultValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomEnvSample/entry/src/main/ets/pages/CustomEnvDefaultValPage.ets) -->
-```ts
 
+``` TypeScript
 const custom = CustomEnvKey.create<string>();
 
 @Entry
@@ -293,7 +293,7 @@ struct DefaultChild {
 
   build() {
     Column() {
-     // 此时Text中的内容显示为: Child: default content 
+      // 此时Text中的内容显示为: Child: default content
       Text(`Child: ${this.customMessage}`);
     }
   }
@@ -356,7 +356,8 @@ struct NearChild {
 当点击更新按钮导致\@Local装饰的变量值发生变化时，WithEnv组件中通过.customEnv()方法设置的值也会通知\@CustomEnv，此时子组件中\@CustomEnv装饰的变量将更新最新值并触发界面重新渲染，实现了完整的响应式更新链路。
 
 <!-- @[CustomEnvUpdateValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomEnvSample/entry/src/main/ets/pages/CustomEnvValUpdatePage.ets) -->
-```ts
+
+``` TypeScript
 import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
 
 const customMsge = CustomEnvKey.create<string>();
@@ -403,7 +404,8 @@ struct UpdateChild {
 在\@Component中，可通过[\@Watch](state-management/arkts-watch.md)监听\@CustomEnv装饰变量的变化。
 
 <!-- @[CustomEnvSupportWatch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomEnvSample/entry/src/main/ets/pages/CustomEnvSupportWatchPage.ets) -->
-```ts
+
+``` TypeScript
 import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -513,7 +515,8 @@ struct Child {
 在\@ComponentV2中，可通过\@Monitor监听\@CustomEnv装饰变量的变化。需要注意的是，仅当\@CustomEnv装饰的变量被整体赋值时才会触发\@Monitor监听回调，其内部属性的变化不会触发回调。
 
 <!-- @[CustomEnvSupportMonitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomEnvSample/entry/src/main/ets/pages/CustomEnvSupportMonitorPage.ets) -->
-```ts
+
+``` TypeScript
 import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -577,7 +580,8 @@ struct MonitorChild {
 需要注意的是：在首次渲染的时候，Tab只会创建当前正在显示的TabContent，当切换所有TabContent后，TabContent才会被全部创建。
 
 <!-- @[CustomEnvSupportFreezed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomEnvSample/entry/src/main/ets/pages/CustomEnvSupportComponentFreezePage.ets) -->
-```ts
+
+``` TypeScript
 import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -994,7 +998,8 @@ struct PageOneChild {
 - \@CustomEnv提供状态管理V2的观察能力，当\@CustomEnv装饰的变量的类型被\@Observed装饰时，需要调用[enableV2Compatibility](../reference/apis-arkui/js-apis-stateManagement.md#enablev2compatibility19)使其具有观察类属性的能力，否则将无法观察类属性的变化。
 
 <!-- @[CustomEnvWithenableV2Compatibility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomEnvSample/entry/src/main/ets/pages/CustomEnvObservedMixV2ToV1WithenableV2CompatibilityPage.ets) -->
-```ts
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
 @Observed
