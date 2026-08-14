@@ -1,8 +1,8 @@
 # @ohos.data.dataShare (数据共享)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @woodenarow-->
-<!--Designer: @woodenarow; @xuelei3-->
+<!--Owner: @lvcong_oh-->
+<!--Designer: @lvcong_oh-->
 <!--Tester: @chenwan188; @logic42-->
 <!--Adviser: @ge-yafang-->
 
@@ -311,7 +311,7 @@ publish(data: ProxyData[], config: DataProxyConfig): Promise&lt;DataProxyResult[
 
 API版本26.0.0之前，每个应用支持最多32个共享配置；从API版本26.0.0开始，每个应用支持最多64个共享配置。
 
-从API版本26.0.0开始，支持发布多值类型配置，一个uri只能对应一种值类型。且配置发布后不允许使用publish更新已发布的多值类型uri。多值类型的操作接口见[putValue](#putvalue)，[removeValue](#removevalue)和[getValues](#getvalues)。
+从API版本26.0.0开始，支持发布多值类型配置，一个URI只能对应一种值类型。且配置发布后不允许使用publish更新已发布的多值类型URI。多值类型的操作接口见[putValue](#putvalue)、[removeValue](#removevalue)和[getValues](#getvalues)。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -587,7 +587,7 @@ removeValue(uri: string, key: number, config: DataProxyConfig): Promise&lt;void&
 | 参数名     | 类型                        | 必填 | 说明                    |
 | -------- | ----------------------------- | ---- | ------------------------ |
 | uri      | string   | 是   | 要操作的数据所对应的URI。固定格式为`"datashareproxy://{bundleName}/{path}"`，其中bundleName为配置发布方应用的bundleName，path可随意填写，但同一应用内不允许重复，字符串长度不超过256个字节。 |
-| key      | number   | 是   | 添加的值所对应的Key。 <br>取值范围为全体整数。 |
+| key      | number   | 是   | 要移除的值所对应的Key。 <br>取值范围为全体整数。 |
 | config   | [DataProxyConfig](#dataproxyconfig20)   | 是   | 表示数据代理操作的配置。 |
 
 **返回值：**

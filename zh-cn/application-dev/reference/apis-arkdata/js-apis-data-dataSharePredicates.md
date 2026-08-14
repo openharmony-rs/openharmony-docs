@@ -1,8 +1,8 @@
 # @ohos.data.dataSharePredicates (数据共享谓词)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @woodenarow-->
-<!--Designer: @woodenarow; @xuelei3-->
+<!--Owner: @lvcong_oh-->
+<!--Designer: @lvcong_oh-->
 <!--Tester: @chenwan188; @logic42-->
 <!--Adviser: @ge-yafang-->
 
@@ -33,7 +33,7 @@ import { dataSharePredicates } from '@kit.ArkData';
 ```
 
 ## DataSharePredicates
-提供用于不同实现不同查询方法的数据共享谓词。该类型不是多线程安全的，如果应用中存在多线程同时操作该类派生出的实例，注意加锁保护。
+提供不同实现不同查询方法的数据共享谓词。该类型不是多线程安全的，如果应用中存在多线程同时操作该类派生出的实例，注意加锁保护。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -328,7 +328,7 @@ or(): DataSharePredicates
 **示例：**
 
 ```ts
-let predicates = new dataSharePredicates.DataSharePredicates()
+let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.equalTo("NAME", "lisi")
     .or()
     .equalTo("NAME", "Rose");
@@ -500,7 +500,7 @@ greaterThanOrEqualTo(field: string, value: ValueType): DataSharePredicates
 
 | 参数名  | 类型      | 必填 | 说明                   |
 | ------- | --------- | ---- | ---------------------- |
-| field   | string    | 是   | 数据库表中的列名。</br>field为undefined或null时，此次调用接口配置的谓词无效。</br>当field为字符串'null'或'undefined'时，此次调用接口配置的谓词匹配结果非预期或抛出异常。     |
+| field   | string    | 是   | 数据库表中的列名。</br>field为undefined或null时，此次调用接口配置的谓词无效。</br>当field为字符串'null'或'undefined'时，键值型数据库和关系型数据库接口使用该谓词时，可能匹配结果非预期或抛出异常。  |
 | value | [ValueType](js-apis-data-valuesBucket.md#valuetype) | 是   | 指示要与谓词匹配的值。</br>value为undefined或null时，此次调用接口配置的谓词无效。 |
 
 **返回值：**

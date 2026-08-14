@@ -1,8 +1,8 @@
 # 数据共享错误码
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @woodenarow-->
-<!--Designer: @woodenarow; @xuelei3-->
+<!--Owner: @lvcong_oh-->
+<!--Designer: @lvcong_oh-->
 <!--Tester: @chenwan188; @logic42-->
 <!--Adviser: @ge-yafang-->
 
@@ -48,19 +48,19 @@ The DataShareHelper fails to be initialized.
 
 **可能原因**
 
-1. 创建DataShareHelper时，接口createDataShareHelper的入参uri不正确。
+1. 创建DataShareHelper时，接口createDataShareHelper的入参URI不正确。
 2. 创建DataShareHelper时，接口createDataShareHelper的入参context不正确。
 3. 创建DataShareHelper时，客户端从后台拉起DataShareExtension时，未配置后台拉起权限。
 
 **处理步骤**
 
-1. 咨询DataShare服务端提供者，获取正确的uri路径。
+1. 咨询DataShare服务端提供者，获取正确的URI路径。
 2. DataShare仅支持Stage模型，检查context是否为Stage模型的context。
-3. 检查客户端是否有数据的读或者写权限，具体步骤如下：<br/>
-    (1) 找到数据提供者包名，在uri的path里面找，例如：uri = "datashareproxy://com.acts.ohos.data.datasharetest/test"。<br/>
-    (2) 根据包名找到配置，例如：bm dump --bundle-name com.acts.ohos.data.datasharetest，在里面找到DataShareExtension的配置，确认数据访问者是否有readPermission或writePermission中配置的权限。
+3. 检查客户端是否有数据的读或者写权限，具体步骤如下：<br>
+    （1） 找到数据提供者包名，在URI的path里面找，例如：uri = "datashareproxy://com.acts.ohos.data.datasharetest/test"。<br>
+    （2） 根据包名找到配置，例如：bm dump --bundle-name com.acts.ohos.data.datasharetest，在里面找到DataShareExtension的配置，确认数据访问者是否有readPermission或writePermission中配置的权限。
 
-## 15700011 uri不存在
+## 15700011 URI不存在
 
 **错误信息**
 
@@ -68,16 +68,16 @@ The URI does not exist.
 
 **错误描述**
 
-添加/删除模板异常或者开启/关闭静默访问传入的uri格式或者路径错误时，系统会产生此错误码。
+添加/删除模板异常或者开启/关闭静默访问传入的URI格式或者路径错误时，系统会产生此错误码。
 
 **可能原因**
 
-1. 入参uri路径不正确。
-2. 入参uri格式不正确。
+1. 入参URI路径不正确。
+2. 入参URI格式不正确。
 
 **处理步骤**
 
-咨询DataShare服务端提供者，获取正确的uri路径。
+咨询DataShare服务端提供者，获取正确的URI路径。
 
 ## 15700012 数据区不存在
 
@@ -150,7 +150,7 @@ The parameter format is incorrect or the value range is invalid.
 
 4. 检查接口传入的proxyData数组的长度是否超过32。
 
-5. 检查接口传入的URI数组或者proxyData数组中的URI是否满足格式校验：<br/>
+5. 检查接口传入的URI数组或者proxyData数组中的URI是否满足格式校验：<br>
     URI的固定格式为`"datashareproxy://{bundleName}/{path}"`，其中bundleName为配置发布方应用的bundleName，path可随意填写。
 
 ## 15700015 访问URI权限错误

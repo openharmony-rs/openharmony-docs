@@ -31,7 +31,7 @@ import { DataShareExtensionAbility } from '@kit.ArkData';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| context<sup>10+</sup> | [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)  | 是 | 否 |表示数据共享扩展能力上下文。 |
+| context<sup>10+</sup> | [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)  | 是 | 否 | 表示数据共享扩展能力上下文。 |
 
 ### onCreate
 
@@ -189,10 +189,10 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
   batchUpdate(operations: Record<string, Array<dataShare.UpdateOperation>>, callback: Function) {
     let recordOps : Record<string, Array<dataShare.UpdateOperation>> = operations;
     let results : Record<string, Array<number>> = {};
-    let a = Object.entries(recordOps);
-    for (let i = 0; i < a.length; i++) {
-      let key = a[i][0];
-      let values = a[i][1];
+    let entries = Object.entries(recordOps);
+    for (let i = 0; i < entries.length; i++) {
+      let key = entries[i][0];
+      let values = entries[i][1];
       let result : number[] = [];
       for (const value of values) {
         rdbStore.update(TBL_NAME, value.values, value.predicates).then(async (rows) => {
@@ -201,7 +201,7 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
         }).catch((err:BusinessError) => {
           console.error(`Failed to Update. Code: ${err.code}, message: ${err.message}`);
           result.push(-1)
-        })
+        });
       }
       results[key] = result;
     }

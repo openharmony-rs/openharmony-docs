@@ -20,7 +20,7 @@
 >
 > - 本模块接口仅可在Stage模型下使用。
 >
-> - 本模块订阅RDB（RelationalStore，关系型数据库）变更的接口on('rdbDataChange')的回调支持不大于10M数据的传输。
+> - 本模块订阅RDB（RelationalStore，关系型数据库）变更的接口on('rdbDataChange')的回调支持不大于10MB数据的传输。
 
 
 ## 导入模块
@@ -105,7 +105,7 @@ createDataShareHelper(context: Context, uri: string, options: DataShareHelperOpt
 | -------- | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md#context)        | 是   | 应用的上下文环境。                                           |
 | uri      | string                                                   | 是   | 要连接的服务端应用的路径。                               |
-| options | [DataShareHelperOptions](#datasharehelperoptions10)| 是   | 指定[DataShareHelper](#datasharehelper)是否在代理模式下，指定非静默访问时的等待拉起时间。<br/>如果不设置，则表示[DataShareHelper](#datasharehelper)不在代理模式下，且非静默访问时的等待拉起时间为2秒。<br/>如果uri以datashareproxy为开头，则必须设置options的isProxy参数，否则DataShareHelper创建失败返回错误。|
+| options | [DataShareHelperOptions](#datasharehelperoptions10)| 是   | 指定[DataShareHelper](#datasharehelper)是否在代理模式下，指定非静默访问时的等待启动时间。<br/>如果不设置，则表示[DataShareHelper](#datasharehelper)不在代理模式下，且非静默访问时的等待拉起时间为2秒。<br/>如果uri以datashareproxy为开头，则必须设置options的isProxy参数，否则DataShareHelper创建失败返回错误。|
 | callback | AsyncCallback&lt;[DataShareHelper](#datasharehelper)&gt; | 是   | 回调函数。当创建DataShareHelper实例成功，err为undefined，data为获取到的DataShareHelper实例；否则为错误对象。 |
 
 **错误码：**
@@ -164,7 +164,7 @@ createDataShareHelper(context: Context, uri: string, options?: DataShareHelperOp
 | ------- | ------------------------------------------------- | ---- | ------------------------------ |
 | context | [Context](../apis-ability-kit/js-apis-inner-application-context.md#context) | 是   | 应用的上下文环境。             |
 | uri     | string                                            | 是   | 要连接的服务端应用的路径。 |
-| options<sup>10+</sup> | [DataShareHelperOptions](#datasharehelperoptions10) | 否 | 可选配置。指定[DataShareHelper](#datasharehelper)是否在代理模式下，指定非静默访问时的等待拉起时间。<br/>如果不设置，则表示[DataShareHelper](#datasharehelper)不在代理模式下，且非静默访问时的等待拉起时间为2秒。<br/>如果uri以datashareproxy为开头，则必须设置options的isProxy参数，否则DataShareHelper创建失败返回错误。|
+| options<sup>10+</sup> | [DataShareHelperOptions](#datasharehelperoptions10) | 否 | 可选配置。指定[DataShareHelper](#datasharehelper)是否在代理模式下，指定非静默访问时的等待启动时间。<br/>如果不设置，则表示[DataShareHelper](#datasharehelper)不在代理模式下，且非静默访问时的等待拉起时间为2秒。<br/>如果uri以datashareproxy为开头，则必须设置options的isProxy参数，否则DataShareHelper创建失败返回错误。|
 
 **返回值：**
 
@@ -322,14 +322,14 @@ export default class EntryAbility extends UIAbility {
 
 ## DataShareHelperOptions<sup>10+</sup>
 
-指定[DataShareHelper](#datasharehelper)的可选参数，包含是否在代理模式下，以及非静默访问的拉起等待时间。
+指定[DataShareHelper](#datasharehelper)的可选参数，包含是否在代理模式下，以及非静默访问的启动等待时间。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| isProxy | boolean | 否 | 是 | 默认为false，如果为true，则要创建的[DataShareHelper](#datasharehelper)处于代理模式，所有操作都不会打开数据提供者APP，除非数据库不存在，当数据库不存在时，[createDataShareHelper](#datasharecreatedatasharehelper10)会拉起数据提供者创建数据库。 |
-| waitTime<sup>18+</sup> | number | 否 | 是 | 拉起数据提供者进程的等待时间（单位：秒），默认值为2秒。取值需大于0。 |
+| isProxy | boolean | 否 | 是 | 默认为false，如果为true，则要创建的[DataShareHelper](#datasharehelper)处于代理模式，所有操作都不会打开数据提供者APP，除非数据库不存在，当数据库不存在时，[createDataShareHelper](#datasharecreatedatasharehelper10)会启动数据提供者创建数据库。 |
+| waitTime<sup>18+</sup> | number | 否 | 是 | 启动数据提供者进程的等待时间（单位：秒），默认值为2秒。取值需大于0。 |
 
 ## TemplateId<sup>10+</sup>
 
@@ -356,7 +356,7 @@ export default class EntryAbility extends UIAbility {
 
 ## RdbDataChangeNode<sup>10+</sup>
 
-订阅/取消订阅RDB数据变更的结果，回调支持传输不大于10M的数据。
+订阅/取消订阅RDB数据变更的结果，回调支持传输不大于10MB的数据。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1017,7 +1017,7 @@ publish(data: Array&lt;PublishedItem&gt;, bundleName: string, callback: AsyncCal
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit'
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let publishCallback: (err: BusinessError, result: Array<dataShare.OperationResult>) => void = (err: BusinessError, result: Array<dataShare.OperationResult>): void => {
   console.info("publishCallback " + JSON.stringify(result));
@@ -1674,7 +1674,7 @@ try {
 
 batchUpdate(operations: Record&lt;string, Array&lt;UpdateOperation&gt;&gt;): Promise&lt;Record&lt;string, Array&lt;number&gt;&gt;&gt;
 
-批量更新数据库中的数据记录，所有操作的总数(即operations对象的键值对)不得超过4000个，超出限制将导致更新失败；该接口的事务性取决于provider（数据提供方）。使用Promise异步回调。暂不支持静默访问。
+批量更新数据库中的数据记录，所有操作的总数（即operations对象的键值对）不得超过4000个，超出限制将导致更新失败；该接口的事务性取决于provider（数据提供方）。使用Promise异步回调。暂不支持静默访问。
 
 非静默场景下，调用此接口时，传入的operations参数的大小不能超过900KB，超出限制将导致操作失败或抛出异常。
 
@@ -1741,10 +1741,10 @@ try {
   if (dataShareHelper != undefined) {
     (dataShareHelper as dataShare.DataShareHelper).batchUpdate(record).then((data: Record<string, Array<number>>) => {
       // 遍历data获取每条数据的更新结果， value为更新成功的数据记录数，若小于0，说明该次更新失败
-      let a = Object.entries(data);
-      for (let i = 0; i < a.length; i++) {
-        let key = a[i][0];
-        let values = a[i][1];
+      let entries = Object.entries(data);
+      for (let i = 0; i < entries.length; i++) {
+        let key = entries[i][0];
+        let values = entries[i][1];
         console.info(`Update uri:${key}`);
         for (const value of values) {
           console.info(`Update result:${value}`);
@@ -1777,7 +1777,7 @@ batchInsert(uri: string, values: Array&lt;ValuesBucket&gt;, callback: AsyncCallb
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | uri      | string                                                       | 是   | 要插入的数据的路径。                                     |
 | values   | Array&lt;[ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)&gt; | 是   | 要插入的数据。                                           |
-| callback | AsyncCallback&lt;number&gt;                                  | 是   | 回调函数。当将批量数据插入数据库成功，err为undefined，data为获取到的插入的数据记录数；否则为错误对象。<br />因部分数据库（如KVDB）的相应接口并不提供相应支持，故若服务端使用此数据库，则此Promise也无法返回插入的数据记录数。 |
+| callback | AsyncCallback&lt;number&gt;                                  | 是   | 回调函数。当将批量数据插入数据库成功，err为undefined，data为获取到的插入的数据记录数；否则为错误对象。<br />因部分数据库（如KVDB）的相应接口并不提供相应支持，故若服务端使用此数据库，则此callback也无法返回插入的数据记录数。 |
 
 **错误码：**
 
@@ -1892,7 +1892,7 @@ close(): Promise &lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[数据共享错误码](errorcode-datashare.md)。
+以下错误码的详细介绍请参见[数据共享错误码](errorcode-datashare.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息     |
 | -------- | ------------ |
@@ -1989,7 +1989,7 @@ if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).normalizeUri(uri).then((data: string) => {
     console.info("normalizeUri = " + data);
   }).catch((err: BusinessError) => {
-    console.info("normalizeUri failed, error message : " + err);
+    console.error(`Failed to normalizeUri URI. Code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
