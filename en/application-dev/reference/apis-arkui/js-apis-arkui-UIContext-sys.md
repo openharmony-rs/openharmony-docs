@@ -1,12 +1,16 @@
 # @ohos.arkui.UIContext (UIContext) (System API)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=8277d7ec9ce419d430e3a38530a6357fa719f95c translatedAt=2026-07-29T09:32:24.511Z pushedAt=2026-08-03T10:40:12.049Z -->
 
-In the stage model, a window stage or window can use the **loadContent** API to load pages, create a UI instance, and render page content to the associated window. Naturally, UI instances and windows are associated on a one-by-one basis. Some global UI APIs are executed in the context of certain UI instances. When calling these APIs, you must identify the UI context, and consequently UI instance, by tracing the call chain. If these APIs are called on a non-UI page or in some asynchronous callback, the current UI context may fail to be identified, resulting in API execution errors.
+In the stage model, a window stage or window can use the [loadContent](arkts-apis-window-Window.md#loadcontent9) API to load pages, create a UI instance, and render page content to the associated window. Naturally, UI instances and windows are associated on a one-by-one basis. Some global UI APIs are executed in the context of certain UI instances. When calling these APIs, you must identify the UI context, and consequently UI instance, by tracing the call chain. If these APIs are called on a non-UI page or in some asynchronous callback not bound to the current UI context, the current UI context may fail to be identified, resulting in API execution errors.
+
+**UIContext** is used to obtain the context associated with a specific UI instance, allowing you to call context-related UI APIs on the corresponding UI instance. This module provides system capabilities such as component dimming and freezing, keyboard style configuration, resource cache clearing, background luminance sampling, image memory recycling for invisible **Image** components, and component snapshot.
 
 > **NOTE**
 >
@@ -28,7 +32,6 @@ setDynamicDimming(id: string, value: number): void
 
 Sets the dynamic dimming degree of the component.
 
-
 > **NOTE**
 >
 > Applying other visual effects after this API is called may result in conflicts.
@@ -42,7 +45,7 @@ Sets the dynamic dimming degree of the component.
 | Name| Type| Mandatory| Description|
 | ------- | ------- | ------- | ------- |
 | id | string | Yes| Component ID.|
-| value | number | Yes| Dynamic dimming degree of the component. The value range is [0, 1]. The component is brighter with a larger value.|
+| value | number | Yes | Component dimming degree. The value range is [0, 1], gradually becoming brighter from 0 to 1. |
 
 **Example**
 
@@ -65,7 +68,8 @@ struct Index {
   }
 }
 ```
-![api-switch-overview](../apis-arkui/figures/dynamicDinning.gif)
+
+![api-switch-overview](../apis-arkui/figures/dynamicDimming.gif)
 
 ### freezeUINode<sup>18+</sup>
 
@@ -74,6 +78,8 @@ freezeUINode(id: string, isFrozen: boolean): void
 Sets whether to freeze a specific component by **id** to prevent it from being marked as dirty and triggering layout updates.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -84,7 +90,7 @@ Sets whether to freeze a specific component by **id** to prevent it from being m
 | Name    | Type   | Mandatory  | Description     |
 | --- | --- | --- | --- |
 | id | string | Yes| ID of the target component.|
-| isFrozen | boolean | Yes| Whether to freeze the component.<br>The value **true** means to freeze the component, and **false** means the opposite.<br>Default value: **false**.|
+| isFrozen | boolean | Yes | Whether to freeze the component.<br>The value **true** means to freeze the component, and **false** means the opposite.<br>The default value is **false**. If `undefined` is passed, it is processed as **false**.|
 
 **Error codes**
 
@@ -149,7 +155,7 @@ struct Index {
             this.getUIContext().freezeUINode('tab1', false);
             // Update the width of the Column node in the tab1 node through the state variable: Set this.columnWidth1 to '20%'.
             this.columnWidth1 = '20%';
-          }, 5000)
+          }, 5000);
         })
 
          TabContent() {
@@ -195,6 +201,8 @@ Sets whether to freeze a specific component by **uniqueId** to prevent it from b
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -204,7 +212,7 @@ Sets whether to freeze a specific component by **uniqueId** to prevent it from b
 | Name    | Type   | Mandatory  | Description     |
 | --- | --- | --- | --- |
 | uniqueId | number | Yes| Unique ID of the component.|
-| isFrozen | boolean | Yes| Whether to freeze the component.<br>The value **true** means to freeze the component, and **false** means the opposite.<br>Default value: **false**.|
+| isFrozen | boolean | Yes | Whether to freeze the component.<br>The value **true** means to freeze the component, and **false** means the opposite.<br>The default value is **false**. If `undefined` is passed, it is processed as **false**.|
 
 **Error codes**
 
@@ -240,16 +248,20 @@ struct Index {
         .onWillHide(() => {
           // Obtain the uniqueId of the node based on its ID.
           const node = this.getUIContext().getFrameNodeById('tab1');
-          const uniqueId = node?.getUniqueId();
-          // Set the freeze state of the node with id 'tab1' based on its uniqueId to true when the TabContent is hidden.
-          this.getUIContext().freezeUINode(uniqueId, true);
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // Set the freeze state of the node to true through uniqueId when the TabContent with id being set to tab1 is hidden.
+            this.getUIContext().freezeUINode(uniqueId, true);
+          }
         })
         .onWillShow(() => {
           // Obtain the uniqueId of the node based on its ID.
           const node = this.getUIContext().getFrameNodeById('tab1');
-          const uniqueId = node?.getUniqueId();
-          // Set the freeze state of the node with id 'tab1' based on its uniqueId to false when the TabContent is shown.
-          this.getUIContext().freezeUINode(uniqueId, false)
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // Set the freeze state of the node to false through uniqueId when the TabContent with id being set to tab1 is displayed.
+            this.getUIContext().freezeUINode(uniqueId, false);
+          }
         })
 
         TabContent() {
@@ -263,25 +275,29 @@ struct Index {
         .onWillHide(() => {
           // Obtain the uniqueId of the node based on its ID.
           const node = this.getUIContext().getFrameNodeById('tab2');
-          const uniqueId = node?.getUniqueId();
-          // Set the freeze state of the node with id 'tab2' based on its uniqueId to true when the TabContent is hidden.
-          this.getUIContext().freezeUINode(uniqueId, true);
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // Set the freeze state of the node to true through uniqueId when the TabContent with id being to tab2 is hidden.
+            this.getUIContext().freezeUINode(uniqueId, true);
+          }
         })
         .onWillShow(() => {
           // Obtain the uniqueId of the node based on its ID.
           const node = this.getUIContext().getFrameNodeById('tab1');
-          const uniqueId = node?.getUniqueId();
-          // When the TabContent with id 'tab2' is shown, set the freeze state of the node with id 'tab1' based on its uniqueId to true.
-          // Change the width of the Column within the node with id 'tab1' via the state variable. Since the node's freeze state is true, dirty marking stops at TabContent and does not trigger layout.
-          this.getUIContext().freezeUINode(uniqueId, true);
-          this.columnWidth1 = '50%';
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // Set the freeze state of the node with id being set to tab1 to true through uniqueId when the TabContent with id being set to tab2 is displayed.
+            // Change the width of the Column node inside the node with id being set to tab1 through a state variable. Since the freeze state of the node with id being set to tab1 is set to true, dirty marking stops at this TabContent, and layout is not triggered from this node.
+            this.getUIContext().freezeUINode(uniqueId, true);
+            this.columnWidth1 = '50%';
 
-          // Configure a delayed task.
-          setTimeout(() => {
-            // Set the freeze state of the node with id 'tab1' to false, re-triggering marking and layout.
-            this.getUIContext().freezeUINode(uniqueId, false);
-            this.columnWidth1 = '20%';
-          }, 5000)
+            // Set a delayed task.
+            setTimeout(() => {
+              // Set the freeze state of the node with id being set to tab1 to false to re-trigger marking and layout.
+              this.getUIContext().freezeUINode(uniqueId, false);
+              this.columnWidth1 = '20%';
+            }, 5000);
+          }
         })
 
          TabContent() {
@@ -295,16 +311,20 @@ struct Index {
         .onWillHide(() => {
           // Obtain the uniqueId of the node based on its ID.
           const node = this.getUIContext().getFrameNodeById('tab3');
-          const uniqueId = node?.getUniqueId();
-          // Set the freeze state of the node with id 'tab3' based on its uniqueId to true when the TabContent is hidden.
-          this.getUIContext().freezeUINode(uniqueId, true);
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // Set the freeze state of the node to true through uniqueId when the TabContent with id being set to tab3 is hidden.
+            this.getUIContext().freezeUINode(uniqueId, true);
+          }
         })
         .onWillShow(() => {
           // Obtain the uniqueId of the node based on its ID.
           const node = this.getUIContext().getFrameNodeById('tab3');
-          const uniqueId = node?.getUniqueId();
-          // Set the freeze state of the node with id 'tab3' based on its uniqueId to false when the TabContent is shown.
-          this.getUIContext().freezeUINode(uniqueId, false);
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // Set the freeze state of the node to false through uniqueId when the TabContent with id being set to tab3 is displayed.
+            this.getUIContext().freezeUINode(uniqueId, false);
+          }
         })
 
       }
@@ -496,6 +516,7 @@ In the following API examples, you must first use [getComponentSnapshot()](arkts
 Transformation properties such as scaling, translation, and rotation only apply to the child components of the target component. Applying these transformation properties directly to the target component itself has no effect; the snapshot will still display the component as it appears before any transformations are applied.
 
 ### getWithRange<sup>20+</sup>
+
 getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>;
 
 Captures a snapshot of the area between two specified components. This API uses a promise to return the result.

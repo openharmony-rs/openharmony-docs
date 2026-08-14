@@ -6,7 +6,7 @@
 <!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=e3c52b80ea412371fb2dea52b278788d7531f840 translatedAt=2026-07-16T06:47:02.382Z pushedAt=2026-07-16T11:43:35.303Z -->
+<!-- md-trans-meta sourceCommit=0c72915c041add8de6d718cf31c5103086e67730 translatedAt=2026-08-11T10:12:11.133Z pushedAt=2026-08-11T11:30:35.088Z -->
 
 ## metadata
 
@@ -60,7 +60,7 @@ Below are several use cases and examples for the **metadata** tag. You can custo
 
 <!--DelEnd-->
 
-```json
+```json5
 {
   "module": {
     "abilities": [{

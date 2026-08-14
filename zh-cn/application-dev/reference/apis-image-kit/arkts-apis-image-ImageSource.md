@@ -291,8 +291,14 @@ async function GetImageProperties(imageSourceObj : image.ImageSource) {
   let key = [image.PropertyKey.IMAGE_WIDTH, image.PropertyKey.IMAGE_LENGTH];
   imageSourceObj.getImageProperties(key).then((data) => {
     console.info(JSON.stringify(data));
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to get the properties, error.code ${err.code}, error.message ${err.message}`);
+  }).catch((err: BusinessError | BusinessError[]) => {
+    if (Array.isArray(err)) {
+      (err as BusinessError[]).forEach(e => {
+        console.error(`Failed to get the properties, error.code ${e.code}, error.message ${e.message}`);
+      });
+    } else {
+      console.error(`Failed to get the properties, error.code ${err.code}, error.message ${err.message}`);
+    }
   });
 }
 ```
@@ -885,7 +891,7 @@ createPicture(options?: DecodingOptionsForPicture): Promise\<Picture>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types; 3.Parameter verification failed. |
+| 401      | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | 7700203  | Unsupported options. For example, unsupported desiredPixelFormat causes a failure in converting an image into the desired pixel format. <br>适用版本：24+ |
 | 7700301  | Decode failed.                                               |
 

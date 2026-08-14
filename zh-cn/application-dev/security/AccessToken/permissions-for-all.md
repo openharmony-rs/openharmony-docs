@@ -781,6 +781,20 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.vehicle.ACCESS_CAR_SECURITY_PRIVACY
+
+允许应用访问车载安全隐私服务的接口。
+
+获取该权限后，应用可以查询整车隐私相关协议或政策、主驾隐私模式、一键除痕状态等。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
 ## ohos.permission.DCAS_RUN_MODEL
 
 允许应用和服务接入端侧模型运行态管理。
@@ -794,3 +808,17 @@
 **支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：26.0.0
+
+## ohos.permission.UPDATE_SCOPE_FONT
+
+允许应用管理应用级和会话级字体。
+
+获取该权限后，应用可使用字体管理接口安装、卸载和查询应用级和会话级字体，并注册字体服务状态监听器。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.1.0

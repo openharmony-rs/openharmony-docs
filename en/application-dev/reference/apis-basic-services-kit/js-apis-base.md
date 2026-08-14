@@ -6,7 +6,7 @@
 <!--Designer: @majiajun518-->
 <!--Tester: @jiyong_sd-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=896110e7291cdc3a48a03f8f59c185f12348fb57 translatedAt=2026-07-29T01:28:45.246Z pushedAt=2026-07-29T11:55:39.808Z -->
+<!-- md-trans-meta sourceCommit=f7a482829a5596cd435cf217903cb200279c5c9f translatedAt=2026-08-04T08:39:48.109Z pushedAt=2026-08-04T09:11:59.530Z -->
 
 The **Base** module defines the public callback types of ArkTS APIs, including the common and error callbacks. These callbacks provide a unified asynchronous processing mechanism for processing asynchronous operation results and error messages. They can help developers simplify the asynchronous programming model and improve code readability and maintainability.
 
@@ -38,7 +38,7 @@ Callback\<T> {
 
 }
 
-Defines a common callback used to return the processing result when an asynchronous operation is complete. You need to customize the callback type.
+Defines a common callback used to return the processing result when an asynchronous operation is successful. You need to define the callback type.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -60,7 +60,7 @@ ErrorCallback\<T extends Error = BusinessError> {
 
 }
 
-Defines a common callback that carries an error parameter, which is used to return error information when the API call fails. The specific error code is defined by each API. For details, please refer to the error code description of the corresponding API.
+Defines a common callback that carries an error parameter. It is used to return error information when an asynchronous operation fails. The specific error code is defined by each API. For details, please refer to the error code description of the corresponding API.
 
 The information returned by the callback is an error parameter of the [BusinessError](#businesserror) type.
 

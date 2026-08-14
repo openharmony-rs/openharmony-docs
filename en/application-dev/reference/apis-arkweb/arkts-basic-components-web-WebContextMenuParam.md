@@ -1,12 +1,20 @@
 # Class (WebContextMenuParam)
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @zourongchun-->
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=579a3b230d60c35cd28258c4ed8312a8dd3cee8c translatedAt=2026-08-07T04:44:06.125Z pushedAt=2026-08-07T08:12:37.989Z -->
 
-Implements a **WebContextMenuParam** object, which is displayed after the user clicks the right mouse button or long presses a specific element, such as an image or a link. For details about the sample code, see [onContextMenuShow](./arkts-basic-components-web-events.md#oncontextmenushow9).
+WebContextMenuParam is a parameter class in the ArkWeb component used to carry context menu information displayed when a user long presses a web element or right-clicks. As the data carrier for the **onContextMenuShow** event callback, it encapsulates key information such as the menu popup position, link address, media type, selected text, and edit state.
+
+When customizing the context menu of a Web component, use WebContextMenuParam to obtain detailed information about the web element at the long press/right-click position (such as the link URL, image content, media type, input field type, and edit state), determine the user operation scenario, and decide whether to intercept the default menu and build custom menu items.
+
+When customizing the long press or right-click menu of a Web component (such as replacing the default menu, providing differentiated menu items based on element types, or previewing images), use WebContextMenuParam in the **onContextMenuShow** event callback to obtain context information.
+
+For sample code, see [onContextMenuShow](./arkts-basic-components-web-events.md#oncontextmenushow9).
 
 > **NOTE**
 >
@@ -28,7 +36,7 @@ Constructs a **WebContextMenuParam** object.
 
 x(): number
 
-Obtains the X coordinate of the context menu.
+X coordinate of the context menu, which is the horizontal distance relative to the upper left corner of the Web component.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -36,13 +44,13 @@ Obtains the X coordinate of the context menu.
 
 | Type    | Description                                |
 | ------ |------------------------------------|
-| number | If the display is normal, a non-negative integer is returned. Otherwise, **-1** is returned.<br>Unit: px (physical pixel)|
+| number | Non-negative integer if successful; -1 otherwise.<br>Unit: px (physical pixel). |
 
 ## y<sup>9+</sup>
 
 y(): number
 
-Obtains the Y coordinate of the context menu.
+Y coordinate of the context menu, which is the vertical distance relative to the upper left corner of the Web component.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -50,13 +58,17 @@ Obtains the Y coordinate of the context menu.
 
 | Type    | Description                |
 | ------ | ------------------ |
-| number | If the display is normal, a non-negative integer is returned. Otherwise, **-1** is returned.<br>Unit: px (physical pixel)|
+| number | Non-negative integer when obtained successfully, and -1 otherwise.<br>Unit: px (physical pixel). |
 
 ## getLinkUrl<sup>9+</sup>
 
 getLinkUrl(): string
 
-Obtains the URL that has passed the security check.
+Obtains the URL link address that has passed the security check. This can be used to provide operations such as "Open Link", "Share Link", and "Copy Link" when building a custom menu.
+
+> **NOTE**
+>
+> Compared with getUnfilteredLinkUrl(), this method performs a security check on the URL. Compared with getSourceUrl(), this method obtains the link URL at the long press position, whereas getSourceUrl() obtains the URL of the **src** attribute of the selected element (such as images, media, and other resources).
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -64,13 +76,13 @@ Obtains the URL that has passed the security check.
 
 | Type    | Description                       |
 | ------ | ------------------------- |
-| string | If it is a link that is being long pressed, the URL that has passed the security check is returned.|
+| string | Security-checked URL if the long-press position is a link; otherwise, an empty string. |
 
 ## getUnfilteredLinkUrl<sup>9+</sup>
 
 getUnfilteredLinkUrl(): string
 
-Obtains the original URL.
+Obtains the original URL link address that has not passed the security check.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -78,13 +90,13 @@ Obtains the original URL.
 
 | Type    | Description                   |
 | ------ | --------------------- |
-| string | If it is a link that is being long pressed, the original URL is returned.|
+| string | If the long-press position is a link, returns the original URL link; otherwise, returns an empty string. |
 
 ## getSourceUrl<sup>9+</sup>
 
 getSourceUrl(): string
 
-Obtains the source URL.
+Obtains the URL link address corresponding to the **src** attribute of the element.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -98,7 +110,7 @@ Obtains the source URL.
 
 existsImageContents(): boolean
 
-Checks whether image content exists.
+Checks whether there is image content at the current long press or right-click position. This is used to provide image-related functions such as "Save Image" in a custom menu.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -106,13 +118,17 @@ Checks whether image content exists.
 
 | Type     | Description                       |
 | ------- | ------------------------- |
-| boolean | The value **true** means that there is image content in the element being long pressed, and **false** means the opposite.|
+| boolean | true if an image exists at the long-press position; false otherwise. |
 
 ## getMediaType<sup>9+</sup>
 
 getMediaType(): ContextMenuMediaType
 
-Obtains the media type of this web page element.
+Obtains the media type of the web element.
+
+> **NOTE**
+>
+> Since API version 22, [getContextMenuMediaType](#getcontextmenumediatype22) provides richer media type identification capabilities.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -126,7 +142,7 @@ Obtains the media type of this web page element.
 
 getSelectionText(): string
 
-Obtains the selected text.
+Obtains the content when right-clicking selected text. This is used to provide text operation functions such as "Copy", "Share", "Translate", and "Search" in a custom menu.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -134,13 +150,13 @@ Obtains the selected text.
 
 | Type    | Description                  |
 | ------ | -------------------- |
-| string | Selected text for the context menu. If no text is selected, null is returned.|
+| string | Selected text content. If selected text exists at the right-click position, the selected text is returned; otherwise, an empty string is returned. |
 
 ## getSourceType<sup>9+</sup>
 
 getSourceType(): ContextMenuSourceType
 
-Obtains the event source of the context menu.
+Obtains the trigger source type of the context menu event (such as mouse right-click, long press, etc.). This is used to adjust the menu display style or provide differentiated menu options based on different sources.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -148,13 +164,13 @@ Obtains the event source of the context menu.
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| [ContextMenuSourceType](./arkts-basic-components-web-e.md#contextmenusourcetype9) | Event source of the context menu.|
+| [ContextMenuSourceType](./arkts-basic-components-web-e.md#contextmenusourcetype9) | Type of the trigger source for the context menu event, including right-click, long press, and other trigger methods. |
 
 ## getInputFieldType<sup>9+</sup>
 
 getInputFieldType(): ContextMenuInputFieldType
 
-Obtains the input field type of this web page element.
+Obtains the input field type of the web element (such as text box, password box, search box, etc.). This is used to provide appropriate editing menu options based on the input field type (such as Paste and Select All for text boxes, and Copy or Hide Password for password boxes).
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -162,13 +178,13 @@ Obtains the input field type of this web page element.
 
 | Type                                      | Description    |
 | ---------------------------------------- | ------ |
-| [ContextMenuInputFieldType](./arkts-basic-components-web-e.md#contextmenuinputfieldtype9) | Input field type.|
+| [ContextMenuInputFieldType](./arkts-basic-components-web-e.md#contextmenuinputfieldtype9) | Type of the web element input field, including text, password, email, and other types. It is used to identify the type of the input element that currently has focus. |
 
 ## isEditable<sup>9+</sup>
 
 isEditable(): boolean
 
-Checks whether a web page element is editable.
+Checks whether a web element is editable. This is used to dynamically show or hide editing-related options in a custom menu (such as displaying Paste, Cut, and Select All when editable, and hiding these options when not editable).
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -176,13 +192,13 @@ Checks whether a web page element is editable.
 
 | Type     | Description                        |
 | ------- | -------------------------- |
-| boolean | **true** is returned if the web page element is editable; otherwise, **false** is returned.|
+| boolean | true if the web element is editable; false otherwise. |
 
 ## getEditStateFlags<sup>9+</sup>
 
 getEditStateFlags(): number
 
-Obtains the edit state flag of this web page element.
+Obtains the edit state flag of the web element. This is used to finely control the display logic of custom menu options (such as displaying corresponding menu items based on whether copying, pasting, or undoing is available).
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -190,7 +206,7 @@ Obtains the edit state flag of this web page element.
 
 | Type    | Description                                      |
 | ------ | ---------------------------------------- |
-| number | Edit state flag of the web page element. For details, see [ContextMenuEditStateFlags](./arkts-basic-components-web-e.md#contextmenueditstateflags9).|
+| number | Obtains the editable flag of the web element. See [ContextMenuEditStateFlags](./arkts-basic-components-web-e.md#contextmenueditstateflags9). |
 
 ## getPreviewWidth<sup>13+</sup>
 
@@ -224,7 +240,7 @@ Obtains the height of a preview image.
 
 getContextMenuMediaType(): ContextMenuDataMediaType
 
-Obtains the type of the web page element that the user taps when the context menu event is reported.
+Obtains the type of the web element that the user long presses or right-clicks when reporting a context menu event.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -232,4 +248,5 @@ Obtains the type of the web page element that the user taps when the context men
 
 | Type    | Description      |
 | ------ | ----------  |
-| [ContextMenuDataMediaType](./arkts-basic-components-web-e.md#contextmenudatamediatype22) | Media type of the web page element.|
+| [ContextMenuDataMediaType](./arkts-basic-components-web-e.md#contextmenudatamediatype22) | Media type of the web element, including image, video, audio, and other types, used to distinguish the type of web element tapped by the user. |
+<!--no_check-->

@@ -394,6 +394,10 @@ int32_t OH_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)
 
 **起始版本：** 13
 
+**废弃版本：** 26.0.0
+
+**替代接口：** OH_NetConn_RegisterCustomDnsResolver
+
 
 **参数：**
 
@@ -420,6 +424,10 @@ int32_t OH_NetConn_UnregisterDnsResolver(void)
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
 **起始版本：** 13
+
+**废弃版本：** 26.0.0
+
+**替代接口：** OH_NetConn_UnregisterCustomDnsResolver
 
 **返回：**
 
@@ -556,7 +564,7 @@ int32_t OH_NetConn_RegisterAppHttpProxyCallback(OH_NetConn_AppHttpProxyChange ap
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_NetConn_AppHttpProxyChange](capi-net-connection-type-h.md#oh_netconn_apphttpproxychange) appHttpProxyChange | 需要注册的监听回调。 |
-| uint32_t *callbackId | 回调注册后生成的id, 关联已注册的回调。 |
+| uint32_t *callbackId | 回调注册后生成的id，关联已注册的回调。 |
 
 **返回：**
 
