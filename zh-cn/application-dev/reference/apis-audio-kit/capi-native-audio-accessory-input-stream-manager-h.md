@@ -24,28 +24,23 @@
 
 ## 汇总
 
-### 函数指针
-
-| 名称 | 描述 |
-| -- | -- |
-| [OH_AudioAccessory_OpenInputStreamCallback](#oh_audioaccessory_openinputstreamcallback) | 音频配件打开输入流的回调函数。 |
-| [OH_AudioAccessoryInputStream_StartCallback](#oh_audioaccessoryinputstream_startcallback) | 输入流启动事件回调函数。 |
-| [OH_AudioAccessoryInputStream_StopCallback](#oh_audioaccessoryinputstream_stopcallback) | 输入流停止事件回调函数。 |
-| [OH_AudioAccessoryInputStream_ReleaseCallback](#oh_audioaccessoryinputstream_releasecallback) | 输入流释放事件回调函数。 |
-| [OH_AudioAccessoryInputStream_GetLatencyCallback](#oh_audioaccessoryinputstream_getlatencycallback) | 查询输入流当前时延的回调函数。 |
-| [OH_AudioAccessoryInputStream_GetFramePositionCallback](#oh_audioaccessoryinputstream_getframepositioncallback) | 查询输入流当前采集位置（帧位置）的回调函数。 |
-
 ### 函数
 
-| 名称 | 描述 |
-| -- | -- |
-| [OH_AudioAccessoryInputStreamManager_RegisterStartCallback](#oh_audioaccessoryinputstreammanager_registerstartcallback) | 注册输入流启动事件回调函数。 |
-| [OH_AudioAccessoryInputStreamManager_RegisterStopCallback](#oh_audioaccessoryinputstreammanager_registerstopcallback) | 注册输入流停止事件回调函数。 |
-| [OH_AudioAccessoryInputStreamManager_RegisterReleaseCallback](#oh_audioaccessoryinputstreammanager_registerreleasecallback) | 注册输入流释放事件回调函数。 |
-| [OH_AudioAccessoryInputStreamManager_RegisterLatencyCallback](#oh_audioaccessoryinputstreammanager_registerlatencycallback) | 注册输入流时延查询回调函数。 |
-| [OH_AudioAccessoryInputStreamManager_RegisterFramePositionCallback](#oh_audioaccessoryinputstreammanager_registerframepositioncallback) | 注册输入流帧位置查询回调函数。 |
-| [OH_AudioAccessoryInputStreamManager_Write](#oh_audioaccessoryinputstreammanager_write) | 向音频配件输入流写入音频数据。 |
-| [OH_AudioAccessoryInputStreamManager_GetWritableSize](#oh_audioaccessoryinputstreammanager_getwritablesize) | 获取音频配件输入流缓冲区的可写大小。 |
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [OH_AudioAccessory_OpenInputStreamCallback](#oh_audioaccessory_openinputstreamcallback) | OH_AudioAccessory_OpenInputStreamCallback | 音频配件打开输入流的回调函数。 |
+| [OH_AudioAccessoryInputStream_StartCallback](#oh_audioaccessoryinputstream_startcallback) | OH_AudioAccessoryInputStream_StartCallback | 输入流启动事件回调函数。 |
+| [OH_AudioAccessoryInputStream_StopCallback](#oh_audioaccessoryinputstream_stopcallback) | OH_AudioAccessoryInputStream_StopCallback | 输入流停止事件回调函数。 |
+| [OH_AudioAccessoryInputStream_ReleaseCallback](#oh_audioaccessoryinputstream_releasecallback) | OH_AudioAccessoryInputStream_ReleaseCallback | 输入流释放事件回调函数。 |
+| [OH_AudioAccessoryInputStream_GetLatencyCallback](#oh_audioaccessoryinputstream_getlatencycallback) | OH_AudioAccessoryInputStream_GetLatencyCallback | 查询输入流当前时延的回调函数。 |
+| [OH_AudioAccessoryInputStream_GetFramePositionCallback](#oh_audioaccessoryinputstream_getframepositioncallback) | OH_AudioAccessoryInputStream_GetFramePositionCallback | 查询输入流当前采集位置（帧位置）的回调函数。 |
+| [OH_AudioAccessoryInputStreamManager_RegisterStartCallback](#oh_audioaccessoryinputstreammanager_registerstartcallback) | - | 注册输入流启动事件回调函数。 |
+| [OH_AudioAccessoryInputStreamManager_RegisterStopCallback](#oh_audioaccessoryinputstreammanager_registerstopcallback) | - | 注册输入流停止事件回调函数。 |
+| [OH_AudioAccessoryInputStreamManager_RegisterReleaseCallback](#oh_audioaccessoryinputstreammanager_registerreleasecallback) | - | 注册输入流释放事件回调函数。 |
+| [OH_AudioAccessoryInputStreamManager_RegisterLatencyCallback](#oh_audioaccessoryinputstreammanager_registerlatencycallback) | - | 注册输入流时延查询回调函数。 |
+| [OH_AudioAccessoryInputStreamManager_RegisterFramePositionCallback](#oh_audioaccessoryinputstreammanager_registerframepositioncallback) | - | 注册输入流帧位置查询回调函数。 |
+| [OH_AudioAccessoryInputStreamManager_Write](#oh_audioaccessoryinputstreammanager_write) | - | 向音频配件输入流写入音频数据。 |
+| [OH_AudioAccessoryInputStreamManager_GetWritableSize](#oh_audioaccessoryinputstreammanager_getwritablesize) | - | 获取音频配件输入流缓冲区的可写大小。 |
 
 ## 函数说明
 
