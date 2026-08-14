@@ -3953,8 +3953,6 @@ try {
         console.info(`entries.length: ${entries.length}`);
         console.info(`entries[0]: ${entries[0]}`);
       });
-    } else {
-      console.error('KvStore is null'); // 后续示例代码与此处保持一致
     }
   });
 } catch (err) {
@@ -3999,8 +3997,6 @@ try {
                   console.info(`entries[0]: ${entries[0]}`);
               }
           });
-      } else {
-          console.error('KvStore is null'); // 后续示例代码与此处保持一致
       }
   });
 } catch (err) {
@@ -7915,7 +7911,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let devManager: distributedDeviceManager.DeviceManager;
 const KEY_TEST_SYNC_ELEMENT = 'key_test_sync';
 const VALUE_TEST_SYNC_ELEMENT = 'value-string-001';
-// create deviceManager
+
 export default class EntryAbility extends UIAbility {
   onCreate() {
     let context = this.context;
@@ -8052,7 +8048,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 const KEY_TEST_SYNC_ELEMENT = 'key_test_sync';
 const VALUE_TEST_SYNC_ELEMENT = 'value-string-001';
-// create deviceManager
+
 export default class EntryAbility extends UIAbility {
   onCreate() {
     let context = this.context;
