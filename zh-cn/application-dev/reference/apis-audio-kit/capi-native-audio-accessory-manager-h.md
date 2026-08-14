@@ -292,7 +292,7 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_Destroy(OH_AudioAccessoryManager 
 
 > **说明：**
 >
-> - 销毁前需先断开配件连接。
+> 销毁前需先断开配件连接。
 
 **起始版本：** 26.0.0
 
