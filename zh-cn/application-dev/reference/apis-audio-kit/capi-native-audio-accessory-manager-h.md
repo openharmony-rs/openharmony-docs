@@ -101,7 +101,13 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_CreateInput(OH_AudioAccessoryMana
 
 创建音频配件实例，并设置其支持的音频流能力。
 
-此函数仅用于创建音频配件实例，不会创建任何输入流。函数执行成功时，系统通过outOwnedAccessory指针返回创建好的OH_AudioAccessory句柄。该音频配件实例需在不再使用时调用OH_AudioAccessoryManager_Destroy释放。当应用请求从该音频配件采集音频时，系统会触发openInputStream回调函数。在一个音频配件的生命周期内，输入流可能被创建和释放多次。
+> **说明：**
+>
+> - 此函数仅用于创建音频配件实例，不会创建任何输入流。
+> - 函数执行成功时，系统通过outOwnedAccessory指针返回创建好的OH_AudioAccessory句柄。
+> - 该音频配件实例需在不再使用时调用OH_AudioAccessoryManager_Destroy释放。
+> - 当应用请求从该音频配件采集音频时，系统会触发openInputStream回调函数。
+> - 在一个音频配件的生命周期内，输入流可能被创建和释放多次。
 
 **起始版本：** 26.0.0
 
@@ -193,7 +199,10 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_SetNoiseReductionMode(OH_AudioAcc
 
 设置音频配件的降噪模式。
 
-此函数由配件关联的服务或应用来调用，更新配件当前降噪模式到系统。通常在通过其他方式（如硬件按钮或配套应用）更改降噪模式时使用，以确保系统侧的降噪模式与配件实际降噪模式保持一致。
+> **说明：**
+>
+> - 此函数由配件关联的服务或应用来调用，用于将配件当前降噪模式同步到系统。
+> - 通常在通过其他方式（如硬件按钮或配套应用）更改降噪模式时使用，以确保系统侧的降噪模式与配件实际降噪模式保持一致。
 
 **起始版本：** 26.0.0
 
@@ -221,10 +230,9 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_Connected(OH_AudioAccessoryManage
 
 将音频配件连接到音频系统。
 
-调用此函数前，需通过OH_AudioManager_GetAccessoryManager获取的音频配件管理器实例，并通过OH_AudioAccessoryManager_CreateInput创建accessory实例。
-
 > **说明：**
 >
+> - 调用此函数前，需通过OH_AudioManager_GetAccessoryManager获取的音频配件管理器实例，并通过OH_AudioAccessoryManager_CreateInput创建accessory实例。
 > - 建议音频配件管理程序优先接入智慧生活应用，为用户提供设备发现与连接体验的一致性。
 > - 若以独立音频配件管理应用方式，需要申请ACL权限ohos.permission.MANAGE_AUDIO_ACCESSORY。
 
@@ -282,7 +290,9 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_Destroy(OH_AudioAccessoryManager 
 
 销毁音频配件实例。
 
-销毁前需先断开配件连接。
+> **说明：**
+>
+> - 销毁前需先断开配件连接。
 
 **起始版本：** 26.0.0
 

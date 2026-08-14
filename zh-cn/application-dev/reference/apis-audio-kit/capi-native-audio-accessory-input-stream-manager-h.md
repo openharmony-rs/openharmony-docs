@@ -222,7 +222,10 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_RegisterStartCallback(
 
 注册输入流启动事件回调函数。应用需要通过音频配件输入流采集音频时，需注册此回调。如果未注册，音频系统将拒绝创建输入流并清理相关资源。
 
-此函数需在OH_AudioAccessory_OpenInputStreamCallback执行期间调用。在其他时间调用此函数将返回AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE。
+> **说明：**
+>
+> - 此函数需在OH_AudioAccessory_OpenInputStreamCallback执行期间调用。
+> - 在其他时间调用此函数将返回AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE。
 
 **起始版本：** 26.0.0
 
@@ -249,7 +252,10 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_RegisterStopCallback(O
 
 注册输入流停止事件回调函数。应用需要通过音频配件输入流采集音频时，需注册此回调。如果未注册，音频系统将拒绝创建输入流并清理相关资源。
 
-此函数需在OH_AudioAccessory_OpenInputStreamCallback执行期间调用。在其他时间调用此函数将返回AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE。
+> **说明：**
+>
+> - 此函数需在OH_AudioAccessory_OpenInputStreamCallback执行期间调用。
+> - 在其他时间调用此函数将返回AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE。
 
 **起始版本：** 26.0.0
 
@@ -276,7 +282,10 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_RegisterReleaseCallbac
 
 注册输入流释放事件回调函数。应用需要通过音频配件输入流采集音频时，需注册此回调。如果未注册，音频系统将拒绝创建输入流并清理相关资源。
 
-此函数需在OH_AudioAccessory_OpenInputStreamCallback执行期间调用。在其他时间调用此函数将返回AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE。
+> **说明：**
+>
+> - 此函数需在OH_AudioAccessory_OpenInputStreamCallback执行期间调用。
+> - 在其他时间调用此函数将返回AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE。
 
 **起始版本：** 26.0.0
 
@@ -303,7 +312,10 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_RegisterLatencyCallbac
 
 注册输入流时延查询回调函数。应用需要通过音频配件输入流采集音频时，需注册此回调。如果未注册，音频系统将拒绝创建输入流并清理相关资源。
 
-此函数需在OH_AudioAccessory_OpenInputStreamCallback执行期间调用。在其他时间调用此函数将返回AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE。
+> **说明：**
+>
+> - 此函数需在OH_AudioAccessory_OpenInputStreamCallback执行期间调用。
+> - 在其他时间调用此函数将返回AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE。
 
 **起始版本：** 26.0.0
 
@@ -330,7 +342,10 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_RegisterFramePositionC
 
 注册输入流帧位置查询回调函数，用于查询输入流当前采集位置。应用需要通过音频配件输入流采集音频时，需注册此回调。如果未注册，音频系统将拒绝创建输入流并清理相关资源。
 
-此函数需在OH_AudioAccessory_OpenInputStreamCallback执行期间调用。在其他时间调用此函数将返回AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE。
+> **说明：**
+>
+> - 此函数需在OH_AudioAccessory_OpenInputStreamCallback执行期间调用。
+> - 在其他时间调用此函数将返回AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE。
 
 **起始版本：** 26.0.0
 
@@ -366,7 +381,7 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_Write(OH_AudioAccessor
 > - 此函数不支持部分帧写入。
 > - 如果最后一帧不足20ms的音频数据，调用方可以丢弃该帧或用零填充至20ms后再调用此函数。
 
-**并发限制：**
+并发限制：
 
 同一输入流不支持并发调用本函数。建议调用方仅使用一个线程串行地向同一输入流写入音频数据。如果本函数与同一输入流的停止或释放回调并发调用，当停止或释放操作先完成时，本函数返回AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE。
 
@@ -396,7 +411,10 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_GetWritableSize(OH_Aud
 
 获取音频配件输入流缓冲区的可写大小。
 
-调用方可使用此函数在调用OH_AudioAccessoryInputStreamManager_Write之前查询当前缓冲区可用空间。返回的可写大小仅反映查询时的状态，函数返回后可能立即发生变化。
+> **说明：**
+>
+> - 调用方可使用此函数在调用OH_AudioAccessoryInputStreamManager_Write之前查询当前缓冲区可用空间。
+> - 返回的可写大小仅反映查询时的状态，函数返回后可能立即发生变化。
 
 **起始版本：** 26.0.0
 
