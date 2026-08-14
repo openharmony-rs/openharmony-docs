@@ -136,25 +136,25 @@ struct Index {
     
     ``` TypeScript
     import { worker, ThreadWorkerGlobalScope, MessageEvents, ErrorEvent } from '@kit.ArkTS';
-
+    
     let workerPort: ThreadWorkerGlobalScope = worker.workerPort;
-
+    
     // 假设模型为：每平米价格 = (model.areaCoefficient * area + model.roomCoefficient * room) * model.basePrice
     class PriceModel {
       public areaCoefficient: number = 0;   // 房屋面积系数
       public roomCoefficient: number = 0;   // 房间数量系数
       public basePrice: number = 0;         // 基础值
     }
-
+    
     // 全局模型实例
     const model: PriceModel = new PriceModel();
-
+    
     // 定义预测函数
     function predict(area: number, room: number): number {
       // 数据举例：80平米4室，房价预计为22400元每平米
       return (model.areaCoefficient * area + model.roomCoefficient * room) * model.basePrice;
     }
-
+    
     // 定义优化器训练过程
     function optimize(): void {
       // 样例主要演示整体流程，训练过程简化处理
@@ -162,7 +162,7 @@ struct Index {
       model.roomCoefficient = 500;
       model.basePrice = 10;
     }
-
+    
     // Worker线程的onmessage逻辑
     workerPort.onmessage = (e: MessageEvents): void => {
       // 根据传输的数据的type选择进行操作

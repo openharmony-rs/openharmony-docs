@@ -155,12 +155,12 @@ struct Index {
     import { worker, ThreadWorkerGlobalScope, MessageEvents } from '@kit.ArkTS';
     // 导入句柄类型
     import Handle from './handle'; 
-
+    
     let workerPort : ThreadWorkerGlobalScope = worker.workerPort;
-
+    
     // 无法传输的句柄，所有操作依赖此句柄
     let handler: Handle = new Handle();
-
+    
     // Worker线程的onmessage逻辑
     workerPort.onmessage = (e : MessageEvents): void => {
       switch (e.data.type as number) {
