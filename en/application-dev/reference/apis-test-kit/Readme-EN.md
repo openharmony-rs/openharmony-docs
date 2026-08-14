@@ -13,9 +13,9 @@
   - [@ohos.UiTest](js-apis-uitest.md)
   - [@ohos.test.PerfTest](js-apis-perftest.md)
   - Dependent Elements and Definitions<!--test-api-interface-depend-->
-    - [abilityDelegator](js-apis-inner-application-abilityDelegator.md)
-    - [abilityDelegatorArgs](js-apis-inner-application-abilityDelegatorArgs.md)
-    - [shellCmdResult](js-apis-inner-application-shellCmdResult.md)
+    - [AbilityDelegator](js-apis-inner-application-abilityDelegator.md)
+    - [AbilityDelegatorArgs](js-apis-inner-application-abilityDelegatorArgs.md)
+    - [ShellCmdResult](js-apis-inner-application-shellCmdResult.md)
   - APIs No Longer Maintained<!--test-arkts-dep-->
     - [@ohos.application.abilityDelegatorRegistry (AbilityDelegatorRegistry)](js-apis-application-abilityDelegatorRegistry.md)
 - Error Codes<!--test-arkts-errcode-->
