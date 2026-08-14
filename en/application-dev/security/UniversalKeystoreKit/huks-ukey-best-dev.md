@@ -1,4 +1,4 @@
-# UKey Process Example Guide
+# UKey Process Example
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->

@@ -1,4 +1,4 @@
-# Clearing UKey PIN Authentication State (ArkTS)
+# Clearing the UKey PIN Authentication Status (ArkTS)
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->

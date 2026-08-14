@@ -36,9 +36,9 @@
 
       - [Importing a Key in Secure Mode (C/C++)](huks-import-wrapped-key-ndk.md)
 
-      - [Key Import Using Digital Envelope (ArkTS)](huks-import-envelop-key-arkts.md)
+      - [Importing a Key Using a Digital Envelope (ArkTS)](huks-import-envelop-key-arkts.md)
 
-      - [Key Import Using Digital Envelope (C/C++)](huks-import-envelop-key-ndk.md)
+      - [Importing a Key Using a Digital Envelope (C/C++)](huks-import-envelop-key-ndk.md)
 
   - Key Use<!--huks-key-use-->
 
@@ -94,9 +94,9 @@
 
       - [HMAC Overview and Algorithm Specifications](huks-hmac-overview.md)
 
-      - [HMAC(ArkTS)](huks-hmac-arkts.md)
+      - [HMAC (ArkTS)](huks-hmac-arkts.md)
 
-      - [HMAC(C/C++)](huks-hmac-ndk.md)<!--RP1--><!--RP1End-->
+      - [HMAC (C/C++)](huks-hmac-ndk.md)<!--RP1--><!--RP1End-->
 
   - Key Deletion <!--huks-delete-key-->
 
@@ -208,7 +208,7 @@
 
     - [Authentication Status Query (C/C++)](huks-query-authentication-status-ndk.md)
 
-    - [Clearing UKey PIN Authentication Status (ArkTS)](huks-clear-pin-auth-state-arkts.md)
+    - [Clearing the UKey PIN Authentication Status (ArkTS)](huks-clear-pin-auth-state-arkts.md)
 
   - Signing and Signature Verification<!--huks-ukey-signing-signature-verification-->
 

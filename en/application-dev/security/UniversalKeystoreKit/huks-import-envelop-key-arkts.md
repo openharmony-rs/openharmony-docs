@@ -1,4 +1,4 @@
-# Key Import Using Digital Envelope (ArkTS)
+# Importing a Key Using a Digital Envelope (ArkTS)
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
