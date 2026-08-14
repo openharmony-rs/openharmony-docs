@@ -18105,7 +18105,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/Common/CommonIndex.ets",
 				"functions":[
 					{
-						"end_line":124,
+						"end_line":123,
 						"name":"Common_CommonIndex",
 						"start_line":18
 					}
