@@ -234,16 +234,16 @@ ArkTS-Dyn示例：
 <!-- @[exit full screen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebFullScreen/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
- onBackPress(): boolean | void {
-    if (this.isFullScreen) {
-      this.isFullScreen = false;
-      this.changeOrientation(false);
-      return true;
-    } else {
-      router.back();
-      return true;
-    }
+onBackPress(): boolean | void {
+  if (this.isFullScreen) {
+    this.isFullScreen = false;
+    this.changeOrientation(false);
+    return true;
+  } else {
+    router.back();
+    return true;
   }
+}
 ```
 
 ArkTS-Sta示例：
