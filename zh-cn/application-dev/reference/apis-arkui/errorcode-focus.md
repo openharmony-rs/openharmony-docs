@@ -14,11 +14,11 @@
 
 **错误信息**
 
-the component cannot be focused.
+The node cannot be focused.
 
 **错误描述**
 
-当前节点无法获得焦点。
+当前节点无法获得焦点。该错误码为string类型。
 
 **可能原因**
 
@@ -36,7 +36,7 @@ This component has an unfocusable ancestor.
 
 **错误描述**
 
-当前节点对应的祖先节点中存在无法获焦节点。
+当前节点对应的祖先节点中存在无法获焦节点。该错误码为string类型。
 
 **可能原因**
 
@@ -50,15 +50,16 @@ This component has an unfocusable ancestor.
 
 **错误信息**
 
-the component is not on tree or does not exist.
+The node is not on the tree or does not exist.
 
 **错误描述**
 
-传入的id指向不存在、未挂树或者不可见节点。
+传入的id指向不存在、未挂树或者不可见节点。该错误码为string类型。
 
 **可能原因**
 
 - 传入id错误、节点已经被销毁等。
+- 对不具有获焦能力的组件请求焦点。具体组件可查询[组件获焦能力说明](../../ui/arkts-common-events-focus-event.md#组件获焦能力说明)。
 
 - 对不具有获焦能力的组件请求焦点。具体组件可查询[组件获焦能力说明](../../ui/arkts-common-events-focus-event.md#组件获焦能力说明)。
 
