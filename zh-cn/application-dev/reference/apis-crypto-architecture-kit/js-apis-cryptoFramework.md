@@ -922,7 +922,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
 | key | string \| Uint8Array | 否   | 否   | 密钥材料。|
 | salt | Uint8Array | 否   | 否   | 盐值。 |
-| info | Uint8Array | 否   | 否   | 拓展信息。 |
+| info | Uint8Array | 否   | 否   | 扩展信息。 |
 | keySize | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 派生得到的密钥字节长度，需要为正整数，单位为bytes。 |
 
 > **说明：**
@@ -5227,7 +5227,7 @@ init(opMode: CryptoMode, key: Key, params: ParamsSpec | null, callback: AsyncCal
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | opMode   | [CryptoMode](#cryptomode) | 是   | 要执行的操作（加密或解密）。                                           |
 | key      | [Key](#key)               | 是   | 用于加密或解密的密钥。                                       |
-| params   | [ParamsSpec](#paramsspec) \| null | 是   | 指定加密或解密的参数，对于ECB等没有参数的算法模式，请传入null。API 10之前只支持ParamsSpec， API 10之后增加支持null。 |
+| params   | [ParamsSpec](#paramsspec) \| null | 是   | 指定加密或解密的参数，对于ECB等没有参数的算法模式，请传入null。API 10之前只支持ParamsSpec，API 10之后增加支持null。 |
 | callback | AsyncCallback\<void>      | 是   | 回调函数。当加解密初始化成功，err为undefined，否则为错误对象。     |
 
 **错误码：**
