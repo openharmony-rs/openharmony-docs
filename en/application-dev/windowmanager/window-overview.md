@@ -123,7 +123,7 @@ If you need to detect changes in the lifecycle of the application's main window,
 
 In the stage model, when the main window of an application moves from the foreground to the background, it also triggers the UIAbility lifecycle transition. You need to pay special attention to the differences in behavior across different types of products.
 
-- **On phones**: When a window moves from the foreground to the background, it triggers the UIAbility to transition to the background.
+- **On phones/TVs/wearables/cars**: When a window moves from the foreground to the background, it triggers the UIAbility to transition to the background.
 
 - **On tablets**:
 
