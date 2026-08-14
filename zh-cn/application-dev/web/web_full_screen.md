@@ -98,9 +98,9 @@ Web({
     this.changeOrientation(false);
   })
 ```
-
-通过Window提供的setPreferredOrientation方法设置横竖屏。
-
+    this.isFullScreen = false;
+    this.changeOrientation(false);
+  })
 <!-- @[toggle screen orientation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebFullScreen/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
@@ -116,9 +116,9 @@ let context: common.UIAbilityContext = this.getUIContext().getHostContext() as c
   });
 }
 ```
-
-自定义侧滑操作时，判断当前视频是否处于全屏状态，若处于全屏状态下则先执行侧滑退出全屏的逻辑。
-
+  }).catch((err: Error) => {
+    console.error(`获取窗口失败: ${err.message}`);
+  });
 <!-- @[exit full screen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebFullScreen/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
@@ -133,9 +133,9 @@ onBackPress(): boolean | void {
   }
 }
 ```
-
-完整示例：
-
+  } else {
+    router.back();
+    return true;
 <!-- @[switch between portrait and landscape](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebFullScreen/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
@@ -188,6 +188,13 @@ struct WebVideo {
           this.isFullScreen = false;
           this.changeOrientation(false);
         })
+    }
+    .height('100%')
+    .width('100%')
+    .backgroundColor('#000000')
+  }
+}
+```
     }
     .height('100%')
     .width('100%')
