@@ -419,7 +419,7 @@ void ThreadFunc()
     if (args == nullptr) {
         return;
     }
-    // 获取启动参数中的entryPrams
+    // 获取启动参数中的entryParams
     char *entryParams = args->entryParams;
     // 获取fd列表
     NativeChildProcess_Fd *current = args->fdList.head;
