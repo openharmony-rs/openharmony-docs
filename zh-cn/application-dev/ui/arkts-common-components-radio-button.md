@@ -62,7 +62,7 @@ Radio({ value: 'Radio2', group: 'radioGroup' })
 
 通过点击Radio切换声音模式。
 
-<!-- @[click_radio_to_change_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/radio/RadioSample.ets) -->
+<!-- @[click_radio_to_change_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/radio/RadioSample.ets) --> 
 
 ``` TypeScript
 // xxx.ets

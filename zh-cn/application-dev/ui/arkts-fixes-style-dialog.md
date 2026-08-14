@@ -448,7 +448,7 @@ export struct TextPickerCNDialogExample {
 
 该示例通过配置width、height、transition等接口，定义了弹窗的样式以及弹出动效。
 
-<!-- @[action_sheet_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/ActionSheet.ets) -->
+<!-- @[action_sheet_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/ActionSheet.ets) --> 
 
 ``` TypeScript
 @Entry
