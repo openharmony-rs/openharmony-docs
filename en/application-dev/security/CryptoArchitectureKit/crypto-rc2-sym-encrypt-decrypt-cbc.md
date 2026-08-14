@@ -6,18 +6,19 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=7bf845a7c8933b8c5015a7da3dfa1923d0e9dc57 translatedAt=2026-08-07T03:31:56.925Z pushedAt=2026-08-10T09:35:13.846Z -->
 
 The Crypto framework supports encryption and decryption with an RC2 symmetric key since API version 26.0.0.
 
-For details about the algorithm specifications, see [Symmetric Key Encryption and Decryption Algorithm Specifications: RC2](crypto-sym-encrypt-decrypt-spec.md#rc2).
+For the corresponding algorithm specifications, see [Symmetric Key Encryption and Decryption Algorithm Specifications: RC2](crypto-encryption-decryption.md#rc2).
 
 **Encryption**
 
 1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator), [SymKeyGenerator.generateSymKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkey-1), or [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to generate a symmetric key (SymKey) with the RC2 algorithm and a key length ranging from 8 bits to 1024 bits (for example, RC2_128).
-   
-   In addition to the example in this topic, [RC2](crypto-sym-key-generation-conversion-spec.md#rc2) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md)/[Converting Binary Data into a Symmetric Key](crypto-convert-binary-data-to-sym-key.md) may help you better understand how to generate an RC2 symmetric key pair. Note that the input parameters in the reference documents may be different from those in the example below.
 
-2. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with the string parameter **'RC2_128|CBC|PKCS7'** to create a **Cipher** instance for encryption. The key type is **RC2**, block cipher mode is **CBC**, and padding mode is **PKCS7**.
+For details on how to generate an RC2 symmetric key, refer to the following example and also see [Symmetric Key Generation and Conversion Specifications: RC2](crypto-key-generation-conversion.md#rc2) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md)/[Converting Binary Data to a Symmetric Key](crypto-convert-binary-data-to-sym-key.md). The referenced documents may differ from the current example in input parameters. Pay attention to these differences when reading.
+
+2. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with a string parameter (for example, **'RC2|CBC|PKCS7'**) to create a **Cipher** instance with the symmetric key type of RC2, the block mode of CBC, and the padding mode of PKCS7, which is used to perform encryption.
 
 3. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. Specifically, set the mode to **cryptoFramework.CryptoMode.ENCRYPT_MODE** (encryption), key to **SymKey** (the key for encryption), and parameter to **IvParamsSpec** (IV length: 8 bytes) corresponding to the CBC mode.
 
@@ -25,15 +26,16 @@ For details about the algorithm specifications, see [Symmetric Key Encryption an
 
 **Decryption**
 
-1. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with the string parameter **'RC2|CBC|PKCS7'** (supporting RC2_8 to RC2_1024) to create a **Cipher** instance for decryption. The key type is **RC2**, block cipher mode is **CBC**, and padding mode is **PKCS7**.
+1. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with a string parameter (for example, **'RC2|CBC|PKCS7'**) to create a **Cipher** instance with the symmetric key type of RC2, the block mode of CBC, and the padding mode of PKCS7, which is used to perform decryption.
 
 2. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. Specifically, set the mode to **cryptoFramework.CryptoMode.DECRYPT_MODE** (decryption), key to **SymKey** (the key for decryption), and parameter to **IvParamsSpec** corresponding to the CBC mode.
 
 3. To decrypt a small amount of data, simply call [Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1).
 
 - Example (using asynchronous APIs):
+
   <!-- @[cbc_encrypt_decrypt_rc2_symkey_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceArkTs/entry/src/main/ets/pages/rc2_cbc_encryption_decryption/rc2_cbc_encryption_decryption_asynchronous.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -100,8 +102,9 @@ For details about the algorithm specifications, see [Symmetric Key Encryption an
   ```
 
 - Example (using synchronous APIs):
+
   <!-- @[cbc_encrypt_decrypt_rc2_symkey_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceArkTs/entry/src/main/ets/pages/rc2_cbc_encryption_decryption/rc2_cbc_encryption_decryption_synchronous.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -166,3 +169,5 @@ For details about the algorithm specifications, see [Symmetric Key Encryption an
     }
   }
   ```
+
+  <!--no_check-->

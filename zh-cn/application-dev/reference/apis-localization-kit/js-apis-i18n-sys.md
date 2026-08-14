@@ -3,7 +3,7 @@
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
-<!--Designer: @sunyaozu-->
+<!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
 
@@ -582,6 +582,43 @@ try {
 } catch(error) {
   let err: BusinessError = error as BusinessError;
   console.error(`call System.getSystemNumberingSystems failed, error code: ${err.code}, message: ${err.message}.`);
+}
+```
+
+### getUsingNumberingSystem<sup>20+</sup>
+
+static getUsingNumberingSystem(): string
+
+获取系统当前使用的数字系统。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Global.I18n
+
+**返回值：**
+
+| 类型                     | 说明    |
+| ---------------------- | ----- |
+| string | 系统当前使用的数字系统。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息                   |
+| ------ | ---------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+
+**示例：**
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { i18n } from '@kit.LocalizationKit';
+
+try {
+  let usingNumberingSystem: string = i18n.System.getUsingNumberingSystem();
+} catch(error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`call System.getUsingNumberingSystem failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
 

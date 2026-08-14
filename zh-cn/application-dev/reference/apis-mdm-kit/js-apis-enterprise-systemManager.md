@@ -122,8 +122,8 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
-  systemManager.getNTPServer(wantTemp);
-  console.info('Succeeded in getting NTP server.');
+  let result: string = systemManager.getNTPServer(wantTemp);
+  console.info(`Succeeded in getting NTP server. result: ${result}`);
 } catch (err) {
   console.error(`Failed to get ntp server. Code is ${err.code}, message is ${err.message}`);
 }
@@ -345,7 +345,7 @@ notifyUpdatePackages(admin: Want, packageInfo: UpdatePackageInfo): Promise&lt;vo
 import { systemManager } from '@kit.MDMKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Want } from '@kit.AbilityKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -367,9 +367,9 @@ let fileDir = "/xxxx/xxxx/";
 let path1: string = "update_sd_base.zip";
 let path2: string = "update_sd_cust_xxxxx_all_cn.zip";
 let path3: string = "update_sd_preload_xxxxx_all_cn_R1.zip";
-let fd1: number = fs.openSync(fileDir + path1, fs.OpenMode.READ_ONLY).fd;
-let fd2: number = fs.openSync(fileDir + "xxxxx/" + path2, fs.OpenMode.READ_ONLY).fd;
-let fd3: number = fs.openSync(fileDir + "xxxxx/" + path3, fs.OpenMode.READ_ONLY).fd;
+let fd1: number = fileIo.openSync(fileDir + path1, fileIo.OpenMode.READ_ONLY).fd;
+let fd2: number = fileIo.openSync(fileDir + "xxxxx/" + path2, fileIo.OpenMode.READ_ONLY).fd;
+let fd3: number = fileIo.openSync(fileDir + "xxxxx/" + path3, fileIo.OpenMode.READ_ONLY).fd;
 let package1: systemManager.Package = {
   // 需根据实际情况进行替换
   "type": systemManager.PackageType.FIRMWARE,
@@ -989,9 +989,11 @@ try {
 
 ## systemManager.getAutoUnlockAfterReboot<sup>20+</sup>
 
-getAutoUnlockAfterReboot(admin: Want | null): boolean
+getAutoUnlockAfterReboot(admin: Want): boolean
 
 获取设备是否重启自动解锁。适用于需要验证设备重启解锁策略是否正确配置的场景，帮助企业管理员确认设备自动解锁功能状态。
+
+本接口通过传入Want查询对应企业设备管理应用设置的策略，如需查询实际生效的策略，请使用[systemManager.getAutoUnlockAfterReboot](#systemmanagergetautounlockafterreboot)接口。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1005,7 +1007,7 @@ getAutoUnlockAfterReboot(admin: Want | null): boolean
 
 | 参数名 | 类型                                                    | 必填 | 说明                   |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。|
 
 **返回值：**
 
@@ -1036,13 +1038,66 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
-  systemManager.getAutoUnlockAfterReboot(wantTemp);
-  console.info('Succeeded in getting auto unlock after reboot.');
+  let result: boolean = systemManager.getAutoUnlockAfterReboot(wantTemp);
+  console.info(`Succeeded in getting auto unlock after reboot. result: ${result}`);
 } catch (err) {
   console.error(`Failed to get auto unlock after reboot. Code is ${err.code}, message is ${err.message}`);
 }
 ```
 
+
+## systemManager.getAutoUnlockAfterReboot
+
+getAutoUnlockAfterReboot(admin: Want | null): boolean
+
+获取设备是否重启自动解锁。适用于需要验证设备重启解锁策略是否正确配置的场景，帮助企业管理员确认设备自动解锁功能状态。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型                                                    | 必填 | 说明                   |
+| ------ | ------------------------------------------------------- | ---- | ---------------------- |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，传入Want时查询对应企业设备管理应用设置的策略，传入null时查询实际生效的策略。|
+
+**返回值：**
+
+| 类型   | 说明                                |
+| ------ | ----------------------------------- |
+| boolean | 返回true表示设备重启后自动解锁，返回false表示设备重启后不自动解锁。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { systemManager } from '@kit.MDMKit';
+
+try {
+  // 参数需根据实际情况进行替换
+  systemManager.getAutoUnlockAfterReboot(null);
+  console.info('Succeeded in getting auto unlock after reboot.');
+} catch (err) {
+  console.error(`Failed to get auto unlock after reboot. Code is ${err.code}, message is ${err.message}`);
+}
+```
 ## systemManager.addKeyEventPolicies<sup>23+</sup>
 
 addKeyEventPolicies(admin: Want, keyPolicies: Array&lt;KeyEventPolicy&gt;): void
@@ -1167,9 +1222,11 @@ try {
 
 ## systemManager.getKeyEventPolicies<sup>23+</sup>
 
-getKeyEventPolicies(admin: Want | null): Array&lt;KeyEventPolicy&gt;
+getKeyEventPolicies(admin: Want): Array&lt;KeyEventPolicy&gt;
 
 获取按键事件处理策略。适用于需要查询当前按键事件处理策略配置的场景，帮助企业管理员验证策略是否正确下发，或在进行策略调整前获取当前配置。
+
+本接口通过传入Want查询对应企业设备管理应用设置的策略，如需查询实际生效的策略，请使用[systemManager.getKeyEventPolicies](#systemmanagergetkeyeventpolicies)接口。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1183,7 +1240,7 @@ getKeyEventPolicies(admin: Want | null): Array&lt;KeyEventPolicy&gt;
 
 | 参数名 | 类型                                                    | 必填 | 说明                   |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。|
 
 **返回值：**
 
@@ -1222,11 +1279,65 @@ try {
 }
 ```
 
+
+## systemManager.getKeyEventPolicies
+
+getKeyEventPolicies(admin: Want | null): Array&lt;KeyEventPolicy&gt;
+
+获取按键事件处理策略。适用于需要查询当前按键事件处理策略配置的场景，帮助企业管理员验证策略是否正确下发，或在进行策略调整前获取当前配置。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型                                                    | 必填 | 说明                   |
+| ------ | ------------------------------------------------------- | ---- | ---------------------- |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，传入Want时查询对应企业设备管理应用设置的策略，传入null时查询实际生效的策略。|
+
+**返回值：**
+
+| 类型   | 说明                                |
+| ------ | ----------------------------------- |
+| Array&lt;[KeyEventPolicy](#keyeventpolicy23)&gt; | 返回当前配置的按键事件策略列表。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { systemManager } from '@kit.MDMKit';
+
+let result: Array<systemManager.KeyEventPolicy> = [];
+try {
+  // 参数需根据实际情况进行替换
+  result = systemManager.getKeyEventPolicies(null);
+  console.info('Succeeded in getting key event policies.');
+} catch (err) {
+  console.error(`Failed to get key event policies. Code is ${err.code}, message is ${err.message}`);
+}
+```
 ## systemManager.startCollectLog<sup>23+</sup>
 
 startCollectLog(admin: Want): Promise&lt;void&gt;
 
-开始收集设备上已生成并存储至硬盘的[FaultType](../apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype)类型的faultlog日志，不支持收集未存储至硬盘的faultlog日志、应用业务日志和系统运行日志。
+开始收集设备上已生成并存储至硬盘的[FaultType](../apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype)类型的faultlog日志，不支持收集未存储至硬盘的faultlog日志、应用业务日志和系统运行日志。使用Promise异步回调。
 
 - 调用接口后，系统会启动一个日志收集任务，任务启动后接口立即返回。任务可能会因为系统性能等原因导致收集失败。
 - 允许多个MDM应用调用，不同MDM应用在不同用户下收集的日志分开保存，互不影响。同一时间只允许一个MDM应用启动日志收集任务，在任务执行完成前调用本接口会返回错误码9201009，任务执行完成后，允许其他MDM应用调用。
@@ -1349,7 +1460,7 @@ try {
 
 setActivationLockDisabled(admin: Want, isDisabled: boolean, credential?: string): Promise&lt;void&gt;
 
-禁用/启用设备激活锁。设备激活锁被禁用后，将无法使用查找设备功能。该功能只适用于特定设备<!--RP5--><!--RP5End-->
+禁用/启用设备激活锁。使用Promise异步回调。设备激活锁被禁用后，将无法使用查找设备功能。该功能只适用于特定设备<!--RP5--><!--RP5End-->
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1416,7 +1527,7 @@ systemManager.setActivationLockDisabled(wantTemp, isDisabled, credential).then((
 
 isActivationLockDisabled(admin: Want): Promise&lt;boolean&gt;
 
-获取设备激活锁禁用状态。适用于需要验证设备激活锁功能状态的场景，帮助企业管理员确认设备的安全配置，特别是在设备转让或回收时需要了解激活锁状态。
+获取设备激活锁禁用状态。使用Promise异步回调。适用于需要验证设备激活锁功能状态的场景，帮助企业管理员确认设备的安全配置，特别是在设备转让或回收时需要了解激活锁状态。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1605,6 +1716,8 @@ try {
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称                | 类型     | 只读  | 可选 | 说明            |
 | ----------------- | ------ | --- | --- |------------- |
 | versionName       | string | 否   | 否 |待更新的系统版本名称。   |
@@ -1616,6 +1729,8 @@ try {
 升级策略。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称         | 类型     | 只读 | 可选 | 说明                            |
 | ----------- | --------| ---- | -----| -------------------------- |
@@ -1633,6 +1748,8 @@ try {
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称                | 值  | 说明    |
 | ----------------- | ---- | ----- |
 | DEFAULT | 0 | 默认升级策略。周期提示用户，用户确认后升级。 |
@@ -1647,6 +1764,8 @@ try {
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称                | 类型     | 只读  | 可选 | 说明            |
 | ----------------- | ------ | --- | ---- |------------- |
 | version       | string | 否   | 否 | 系统更新包版本号。   |
@@ -1660,6 +1779,8 @@ try {
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称                | 类型     | 只读  | 可选 | 说明            |
 | ----------------- | ------ | --- | --- | ------------- |
 | type       | [PackageType](#packagetype) | 否   | 否 |  系统更新包类型。   |
@@ -1672,6 +1793,8 @@ try {
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称                | 类型     | 只读  | 可选 | 说明            |
 | ----------------- | ------ | --- | --- | ------------- |
 | notify       | [NotifyDescription](#notifydescription) | 否   | 是 | 企业自定义更新通知说明。   |
@@ -1681,6 +1804,8 @@ try {
 企业自定义更新通知说明。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称                | 类型     | 只读  |  可选 | 说明            |
 | ----------------- | ------ | --- | ---- | ------------- |
@@ -1692,6 +1817,8 @@ try {
 系统更新结果信息。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称                | 类型   | 只读  | 可选   | 说明            |
 | ----------------- | ------ | ------ | ------ | ------------- |
@@ -1705,6 +1832,8 @@ try {
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称                | 类型     | 只读  | 可选 | 说明            |
 | ----------------- | ------ | ------ | ------ | ------------- |
 | code       | number | 否 | 否 | 错误码。   |
@@ -1716,6 +1845,8 @@ try {
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称                | 值  | 说明    |
 | ----------------- | ---- | ----- |
 | FIRMWARE | 1 | 固件。 |
@@ -1725,6 +1856,8 @@ try {
 系统更新状态。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称               | 值  | 说明    |
 | -----------------  | ---- | ----- |

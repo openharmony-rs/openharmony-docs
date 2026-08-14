@@ -6,7 +6,6 @@
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=e82880fc1b3fb82c03ab5c9c350aff1a7e98d202 translatedAt=2026-07-13T07:24:08.233Z pushedAt=2026-07-13T09:26:22.331Z -->
 
 ## B
 
@@ -16,37 +15,37 @@ A restricted security mode for input method applications. In this mode, only bas
 
 ## C
 
-### Custom Input Box
+### CustomInput
 
 A custom text input control developed by developers. It integrates [InputMethodController](../reference/apis-ime-kit/js-apis-inputmethod.md#inputmethodcontroller) to bind to an input method.
 
 ## D
 
-### Dark Immersive Mode
+### DARK_IMMERSIVE
 
 An immersive mode that applies a dark immersive effect to the input method panel.
 
 ## E
 
-### Editor Box Attribute
+### EditorAttribute
 
 Attributes that describe the characteristics of an editor box, including **textInputType**, **enterKeyType**, and **immersiveMode**.
 
-### Extension Ability Context
+### ExtensionContext
 
 The context of an Extension ability, which provides capabilities for starting, stopping, connecting to, and disconnecting from an Ability.
 
 ## F
 
-### Fixed State
+### FLAG_FIXED
 
 A state in which the input method panel is fixed at the bottom of the screen.
 
-### Floating State
+### FLAG_FLOATING
 
 A state in which the input method panel can float and move.
 
-### Candidate State
+### FLAG_CANDIDATE
 
 A state in which the input method panel displays candidate words for user input.
 
@@ -60,23 +59,23 @@ A full-access mode for input method applications, providing complete input metho
 
 IME Kit establishes a communication channel between the application that contains the editor box and the input method application to support text input collaboration. It also provides input method application management capabilities for system applications.
 
-### Immersive Effect
+### ImmersiveEffect
 
 The visual effect of the input method panel, including gradient mode and streamer mode.
 
-### Immersive Mode
+### ImmersiveMode
 
 The immersive display mode of the input method panel, including light immersive mode and dark immersive mode. This mode is set by the input method application.
 
-### Input Method Extension Ability
+### InputMethodExtensionAbility
 
 An input method Extension ability component that allows you to develop input method applications.
 
-### Input Method Subtype
+### InputMethodSubtype
 
 A specific input mode or language of an input method, such as a Chinese keyboard or English keyboard.
 
-### Subtype Configuration File
+### input_method_config.json
 
 A JSON file that configures input method subtype information. It contains the subtypes array, which defines properties such as `icon`, `id`, `label`, and `locale` for each subtype.
 
@@ -86,48 +85,48 @@ A command-line tool for managing input methods, including querying input methods
 
 ## K
 
-### Keyboard Appearance Mode
+### KeyboardAppearance
 
 The expected keyboard display mode for an editor box, including immersive and non-immersive modes.
 
-### Keyboard Controller
+### KeyboardController
 
 A controller class in an input method that controls soft keyboard display, event listening, and text operations.
 
 ## L
 
-### Light Immersive Mode
+### LIGHT_IMMERSIVE
 
 An immersive mode that applies a light immersive effect to the input method panel.
 
 ## P
 
-### Input Method Panel
+### Panel
 
 A window component created by an input method app to display the soft keyboard or status bar.
 
-### Panel State Type
+### PanelFlag
 
 An enum for input method panel states, including fixed (`FLAG_FIXED`), floating (`FLAG_FLOATING`), and candidate (`FLAG_CANDIDATE`) states.
 
-### Panel Configuration Information
+### PanelInfo
 
 Configuration information for creating an input method panel, including `type` (panel type) and `flag` (panel state).
 
-### Panel Type
+### PanelType
 
 An enum for input method panel types, including soft keyboard (`SOFT_KEYBOARD`) and status bar (`STATUS_BAR`).
 
-### Preview Text
+### PreviewText
 
 A preview function that displays input text before the user confirms the input.
 
 ## S
 
-### Soft Keyboard
+### SOFT_KEYBOARD
 
 A virtual keyboard consisting of keys. It is a panel type used for text input.
 
-### System Panel
+### SystemPanel
 
 A system input method panel in which the input method soft keyboard window is displayed. The soft keyboard window has an offset area relative to the system panel.

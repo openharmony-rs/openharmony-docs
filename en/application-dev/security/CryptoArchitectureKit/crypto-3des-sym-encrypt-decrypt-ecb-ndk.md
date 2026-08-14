@@ -6,9 +6,9 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=8f7dd020d83b5e570ce0a1c601b2d8c4e2eb4949 translatedAt=2026-07-29T04:49:21.471Z pushedAt=2026-07-29T06:23:46.047Z -->
+<!-- md-trans-meta sourceCommit=7bf845a7c8933b8c5015a7da3dfa1923d0e9dc57 translatedAt=2026-08-07T03:23:45.507Z pushedAt=2026-08-07T07:27:14.325Z -->
 
-For details about the algorithm specifications, see [3DES](crypto-sym-encrypt-decrypt-spec.md#3des).
+For the corresponding algorithm specifications, see [Symmetric Key Encryption and Decryption Algorithm Specifications: 3DES](crypto-encryption-decryption.md#3des).
 
 ## Adding the Dynamic Library in the CMake Script
 
@@ -22,7 +22,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 Call [OH_CryptoSymKeyGenerator_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_create) and [OH_CryptoSymKeyGenerator_Generate](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_generate) to generate a symmetric key (**OH_CryptoSymKey**) with the key algorithm being 3DES and the key length being 192 bits.
 
-   In addition to the example in this topic, [3DES](crypto-sym-key-generation-conversion-spec.md#3des) and [Converting Binary Data into a Symmetric Key](crypto-convert-binary-data-to-sym-key-ndk.md) may help you better understand how to generate a 3DES symmetric key. Note that the input parameters in the reference documents may be different from those in the example below.
+    For details on how to generate a 3DES symmetric key, refer to the following example and also see [Symmetric Key Generation and Conversion Specifications: 3DES](crypto-key-generation-conversion.md#3des) and [Converting Binary Data into a Symmetric Key](crypto-convert-binary-data-to-sym-key-ndk.md). Note that the input parameters in the referenced documents may differ from those in the current example.
 
 **Encrypting a Message**
 
@@ -173,3 +173,5 @@ If CBC, CTR, OFB, or CFB mode is used, set the IV. In ECB mode, you don't need t
     }
     // This code only shows the differences between CBC, CTR, OFB, and CFB block cipher modes. For other processes, refer to the development example.
 ```
+
+<!--no_check-->
