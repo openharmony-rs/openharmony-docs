@@ -16963,8 +16963,8 @@ async function buildX509CertChain() {
       }
     };
     let certChainBuildResult = await cert.buildX509CertChain(param);
-    console.info("cert issuer name: " + certChainBuildResult.validationResult.entityCert.getIssuerName().data);
-    console.info("ca subject name: " + certChainBuildResult.validationResult.trustAnchor.CACert?.getSubjectName().data);
+    console.info('cert issuer name: ' + certChainBuildResult.validationResult.entityCert.getIssuerName().data);
+    console.info('ca subject name: ' + certChainBuildResult.validationResult.trustAnchor.CACert?.getSubjectName().data);
   } catch (error) {
     let e: BusinessError = error as BusinessError;
     console.error(`createX509CertChain failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -17125,7 +17125,7 @@ import { cert } from '@kit.DeviceCertificateKit';
 
 function doTestParsePkcs12() {
   try {
-    let p12_cert =
+    let p12Cert =
       new Uint8Array([0x30, 0x82, 0x09, 0x51, 0x02, 0x01, 0x03, 0x30, 0x82, 0x09, 0x17, 0x06, 0x09, 0x2a, 0x86, 0x48,
         0x86, 0xf7, 0x0d, 0x01, 0x07, 0x01, 0xa0, 0x82, 0x09, 0x08, 0x04, 0x82, 0x09, 0x04, 0x30, 0x82,
         0x09, 0x00, 0x30, 0x82, 0x03, 0xb7, 0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x07,
@@ -17284,7 +17284,7 @@ function doTestParsePkcs12() {
       privateKeyFormat: cert.EncodingBaseFormat.DER,
       needsOtherCerts: false
     };
-    let p12: cert.Pkcs12Data = cert.parsePkcs12(p12_cert, conf);
+    let p12: cert.Pkcs12Data = cert.parsePkcs12(p12Cert, conf);
     console.info('parsePKCS12 result: success.');
     if (p12.privateKey) {
       console.info('privateKey:' + p12.privateKey.toString());
@@ -17521,7 +17521,7 @@ import { cert } from '@kit.DeviceCertificateKit';
 
 async function doTestParsePkcs12() {
   try {
-    let p12_cert =
+    let p12Cert =
       new Uint8Array([0x30, 0x82, 0x09, 0x51, 0x02, 0x01, 0x03, 0x30, 0x82, 0x09, 0x17, 0x06, 0x09, 0x2a, 0x86, 0x48,
         0x86, 0xf7, 0x0d, 0x01, 0x07, 0x01, 0xa0, 0x82, 0x09, 0x08, 0x04, 0x82, 0x09, 0x04, 0x30, 0x82,
         0x09, 0x00, 0x30, 0x82, 0x03, 0xb7, 0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x07,
@@ -17673,7 +17673,7 @@ async function doTestParsePkcs12() {
         0x61, 0x09, 0x4f, 0xdc, 0x95, 0xd7, 0x4f, 0x04, 0x08, 0x23, 0xc2, 0xc0, 0xc6, 0x8d, 0x5f, 0x70,
         0x7e, 0x02, 0x02, 0x08, 0x00]);
 
-    let p12: cert.Pkcs12Data = await cert.parsePkcs12(p12_cert, '123456');
+    let p12: cert.Pkcs12Data = await cert.parsePkcs12(p12Cert, '123456');
     console.info('parsePKCS12 result: success.');
     if (p12.privateKey) {
       console.info('privateKey:' + p12.privateKey.toString());
@@ -17952,7 +17952,7 @@ let priKey = '-----BEGIN PRIVATE KEY-----\n' +
   'a20rj9HG4sb8tUIHPBv0dgY=\n' +
   '-----END PRIVATE KEY-----\n';
 
-let othercert = '-----BEGIN CERTIFICATE-----\n' +
+let otherCert = '-----BEGIN CERTIFICATE-----\n' +
   'MIIDZTCCAk0CFAoqA7Irtoo7/3+sfOHy0s91pKkiMA0GCSqGSIb3DQEBCwUAMG8x\n' +
   'CzAJBgNVBAYTAkVOMQ0wCwYDVQQIDARURVNUMQ0wCwYDVQQHDAR4aWFuMQ8wDQYD\n' +
   'VQQKDAZodWF3ZWkxDTALBgNVBAsMBHhpYW4xDTALBgNVBAMMBHhpYW4xEzARBgkq\n' +
@@ -18023,7 +18023,7 @@ async function createX509Cert(certData: string): Promise<cert.X509Cert> {
 }
 
 async function doTestCreatePkcs12() {
-  const caCert = await createX509Cert(othercert);
+  const caCert = await createX509Cert(otherCert);
   const x509Cert = await createX509Cert(certData);
 
   let data: cert.Pkcs12Data = {
@@ -18285,7 +18285,7 @@ let priKey = '-----BEGIN PRIVATE KEY-----\n' +
   'a20rj9HG4sb8tUIHPBv0dgY=\n' +
   '-----END PRIVATE KEY-----\n';
 
-let othercert = '-----BEGIN CERTIFICATE-----\n' +
+let otherCert = '-----BEGIN CERTIFICATE-----\n' +
   'MIIDZTCCAk0CFAoqA7Irtoo7/3+sfOHy0s91pKkiMA0GCSqGSIb3DQEBCwUAMG8x\n' +
   'CzAJBgNVBAYTAkVOMQ0wCwYDVQQIDARURVNUMQ0wCwYDVQQHDAR4aWFuMQ8wDQYD\n' +
   'VQQKDAZodWF3ZWkxDTALBgNVBAsMBHhpYW4xDTALBgNVBAMMBHhpYW4xEzARBgkq\n' +
@@ -18356,7 +18356,7 @@ async function createX509Cert(certData: string): Promise<cert.X509Cert> {
 }
 
 async function doTestCreatePkcs12Sync() {
-  const caCert = await createX509Cert(othercert);
+  const caCert = await createX509Cert(otherCert);
   const x509Cert = await createX509Cert(certData);
 
   let data: cert.Pkcs12Data = {
@@ -20120,7 +20120,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function createCsrTest() {
   let nameStr = '/CN=John Doe/OU=IT Department/O=ACME Inc./L=San Francisco/ST=California/C=US/CN=ALN C/CN=XTS';
-  let prikeyEnstr: string =
+  let priKeyEnstr: string =
     '-----BEGIN RSA PRIVATE KEY-----\n' +
       'Proc-Type: 4,ENCRYPTED\n' +
       'DEK-Info: AES-128-CBC,B5FFA3AEEE7176106FDDB0988B532F07\n\n' +
@@ -20139,7 +20139,7 @@ async function createCsrTest() {
       'd5Y4a6q13V4O5b73T5INmKl8rEbPGIw7WLR7BNj05QuzNcn5kA1aBFIJqsxQv46l\n' +
       '-----END RSA PRIVATE KEY-----\n';
   let priKeyInfo: cert.PrivateKeyInfo = {
-    key: prikeyEnstr,
+    key: priKeyEnstr,
     password: '123abc'
   };
   let keyUsage: cert.CsrAttribute = {
@@ -20921,7 +20921,7 @@ function stringToUint8Array(str: string): Uint8Array {
   return new Uint8Array(arr);
 }
 
-function testcreateCmsGenerator() {
+function testCreateCmsGenerator() {
   let certEncodingBlob: cert.EncodingBlob = {
     data: stringToUint8Array(certData),
     // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
@@ -20934,7 +20934,7 @@ function testcreateCmsGenerator() {
         try {
           let cmsContentType = cert.CmsContentType.SIGNED_DATA;
           cert.createCmsGenerator(cmsContentType);
-          console.info('testcreateCmsGenerator createCmsGenerator result: success.');
+          console.info('testCreateCmsGenerator createCmsGenerator result: success.');
         } catch (err) {
           let e: BusinessError = err as BusinessError;
           console.error(`createCmsGenerator failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -21459,30 +21459,30 @@ function stringToUint8Array(str: string): Uint8Array {
 }
 
 async function testAddRecipientInfo() {
-  let ecccertEncodingBlob: cert.EncodingBlob = {
+  let eccCertEncodingBlob: cert.EncodingBlob = {
     data: stringToUint8Array(eccCertData),
     // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
     encodingFormat: cert.EncodingFormat.FORMAT_PEM
   };
 
-  let rsacertEncodingBlob: cert.EncodingBlob = {
+  let rsaCertEncodingBlob: cert.EncodingBlob = {
     data: stringToUint8Array(rsaCertData),
     // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
     encodingFormat: cert.EncodingFormat.FORMAT_PEM
   };
   try {
-    let eccx509Certcert = await cert.createX509Cert(ecccertEncodingBlob);
-    let rsax509Certcert = await cert.createX509Cert(rsacertEncodingBlob);
+    let eccX509Cert = await cert.createX509Cert(eccCertEncodingBlob);
+    let rsaX509Cert = await cert.createX509Cert(rsaCertEncodingBlob);
     let cmsContentType = cert.CmsContentType.ENVELOPED_DATA;
     let cmsGenerator = cert.createCmsGenerator(cmsContentType);
     console.info(`createCmsGenerator result: success.`);
 
     let eccCert : cert.CmsKeyAgreeRecipientInfo = {
-      cert : eccx509Certcert,
+      cert : eccX509Cert,
       digestAlgorithm : cert.CmsKeyAgreeRecipientDigestAlgorithm.SHA256
     };
     let rsaCert : cert.CmsKeyTransRecipientInfo = {
-      cert : rsax509Certcert
+      cert : rsaX509Cert
     };
     let recipientInfo: cert.CmsRecipientInfo = {
       keyTransInfo : rsaCert,
@@ -22041,20 +22041,20 @@ function stringToUint8Array(str: string): Uint8Array {
 
 async function testGetEncryptedContentData() {
   try {
-    let ecccertEncodingBlob: cert.EncodingBlob = {
+    let eccCertEncodingBlob: cert.EncodingBlob = {
       data: stringToUint8Array(eccCertData),
       // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
       encodingFormat: cert.EncodingFormat.FORMAT_PEM
     };
 
-    let rsacertEncodingBlob: cert.EncodingBlob = {
+    let rsaCertEncodingBlob: cert.EncodingBlob = {
       data: stringToUint8Array(rsaCertData),
       // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
       encodingFormat: cert.EncodingFormat.FORMAT_PEM
     };
 
-    let eccx509Certcert = await cert.createX509Cert(ecccertEncodingBlob);
-    let rsax509Certcert = await cert.createX509Cert(rsacertEncodingBlob);
+    let eccX509Cert = await cert.createX509Cert(eccCertEncodingBlob);
+    let rsaX509Cert = await cert.createX509Cert(rsaCertEncodingBlob);
 
     let cmsContentType = cert.CmsContentType.ENVELOPED_DATA;
     let cmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -22063,11 +22063,11 @@ async function testGetEncryptedContentData() {
     cmsGenerator.setRecipientEncryptionAlgorithm(algorithm);
     console.info(`setRecipientEncryptionAlgorithm result: success.`);
     let eccCert : cert.CmsKeyAgreeRecipientInfo = {
-      cert : eccx509Certcert,
+      cert : eccX509Cert,
       digestAlgorithm : cert.CmsKeyAgreeRecipientDigestAlgorithm.SHA256
     };
     let rsaCert : cert.CmsKeyTransRecipientInfo = {
-      cert : rsax509Certcert
+      cert : rsaX509Cert
     };
     let recipientInfo: cert.CmsRecipientInfo = {
       keyTransInfo : rsaCert,
