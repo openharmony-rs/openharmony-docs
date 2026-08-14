@@ -582,3 +582,18 @@ Web软键盘自动控制模式。
 | TABLET | 'Tablet' |平板，字符串类型。|
 | WATCH        | 'Watch' |手表，字符串类型。|
 | XR        | 'XR' |VR+AR设备，字符串类型。|
+
+## ControllerAttachState<sup>20+</sup>
+
+WebviewController与Web组件的绑定状态。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 值 | 说明 |
+| ------------------------------- | - | ---------- |
+| UNATTACHED | 0 | 未绑定状态。 |
+| ATTACHED   | 1 | 已绑定状态。 |
