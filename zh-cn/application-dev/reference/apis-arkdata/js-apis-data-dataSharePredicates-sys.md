@@ -259,7 +259,7 @@ predicates.glob("NAME", "?h*g");
 
 distinct(): DataSharePredicates
 
-该接口用于配置谓词以过滤重复记录仅保留其中一个。
+该接口用于配置谓词以过滤重复记录并仅保留其中一个。
 
 目前仅关系型数据库支持该谓词。
 
