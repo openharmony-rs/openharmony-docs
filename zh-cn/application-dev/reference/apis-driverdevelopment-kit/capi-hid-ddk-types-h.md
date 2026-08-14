@@ -44,7 +44,7 @@
 | [Hid_DeviceProp](#hid_deviceprop) | Hid_DeviceProp | 输入设备特性定义。 |
 | [Hid_EventType](#hid_eventtype) | Hid_EventType | 事件类型。用于标识HID设备产生的事件类别，在驱动开发中用于事件分类和处理。 |
 | [Hid_SynEvent](#hid_synevent) | Hid_SynEvent | 同步事件编码。 |
-| [Hid_KeyCode](#hid_keycode) | Hid_KeyCode | 键值编码。 |
+| [Hid_KeyCode](#hid_keycode) | Hid_KeyCode | 键值编码。包括键盘、鼠标、触摸屏等输入设备的按键和事件编码。 |
 | [Hid_AbsAxes](#hid_absaxes) | Hid_AbsAxes | 绝对坐标编码。 |
 | [Hid_RelAxes](#hid_relaxes) | Hid_RelAxes | 相对坐标编码。 |
 | [Hid_MscEvent](#hid_mscevent) | Hid_MscEvent | 不适合其他类型的输入事件编码。 |
@@ -230,7 +230,7 @@ enum Hid_KeyCode
 | HID_BTN_TOOL_PEN = 0x140 | 画笔。 |
 | HID_BTN_TOOL_RUBBER = 0x141 | 橡皮擦。 |
 | HID_BTN_TOOL_BRUSH = 0x142 | 笔刷。 |
-| HID_BTN_TOOL_PENCIL = 0x143 | 钢笔。 |
+| HID_BTN_TOOL_PENCIL = 0x143 | 铅笔。 |
 | HID_BTN_TOOL_AIRBRUSH = 0x144 | 喷枪。 |
 | HID_BTN_TOOL_FINGER = 0x145 | 手指。 |
 | HID_BTN_TOOL_MOUSE = 0x146 | 鼠标。 |
@@ -311,8 +311,8 @@ enum Hid_RelAxes
 | HID_REL_WHEEL = 0x08 | 垂直滚轮，表示鼠标垂直滚轮的滚动方向和距离，用于垂直方向的滚动操作。 |
 | HID_REL_MISC = 0x09 | 其他类型的相对坐标事件，用于不适合归入上述分类的特殊相对坐标事件。 |
 | HID_REL_RESERVED = 0x0a | 预留。 |
-| HID_REL_WHEEL_HI_RES = 0x0b | 高分辨率滚轮，表示鼠标高精度滚轮的滚动方向和距离，提供比普通滚轮更高的分辨率和精度。 |
-| HID_REL_HWHEEL_HI_RES = 0x0c | 高分辨率水平滚轮，表示鼠标高精度水平滚轮的滚动方向和距离，提供比普通水平滚轮更高的分辨率和精度。 |
+| HID_REL_WHEEL_HI_RES = 0x0b | 高分辨率滚轮，表示鼠标高分辨率滚轮的滚动方向和距离，提供比普通滚轮更高的分辨率和精度。 |
+| HID_REL_HWHEEL_HI_RES = 0x0c | 高分辨率水平滚轮，表示鼠标高分辨率水平滚轮的滚动方向和距离，提供比普通水平滚轮更高的分辨率和精度。 |
 
 ### Hid_MscEvent
 

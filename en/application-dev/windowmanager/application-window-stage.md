@@ -6,13 +6,13 @@
 <!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=e3c52b80ea412371fb2dea52b278788d7531f840 translatedAt=2026-07-16T06:49:24.729Z pushedAt=2026-07-17T01:29:05.474Z -->
+<!-- md-trans-meta sourceCommit=19d0e8dbccdd9765ceafae62e52b988d19566645 translatedAt=2026-08-11T10:11:26.460Z pushedAt=2026-08-11T10:57:11.365Z -->
 
 ## Basic Concepts
 
 - Window immersive: the ability to control system windows such as the status bar and navigation bar, reducing the abruptness of system UI elements like the status bar and navigation bar, thereby delivering an optimal user experience. The immersive capability takes effect only when the app main window is in full-screen mode. Generally, auxiliary windows of an app (such as subwindows and global floating windows) and the app main window in free window mode cannot use the immersive capability.
 
-- Global floating window: a special type of app auxiliary window that can remain displayed in the foreground even after the app main window and the corresponding UIAbility are moved to the background. Global floating windows can be used to continue displaying UI in a small window after an app is moved to the background, for example, a music app displaying lyrics on the home screen. Before creating a global floating window, an app must apply for the corresponding permission.
+- Global floating window: a special type of app auxiliary window that can remain displayed in the foreground even after the app main window and the corresponding UIAbility are moved to the background. Global floating windows can be used to continue displaying UI in a small window after an app is moved to the background. Before creating a global floating window, an app must apply for the corresponding permission.
 
 ## When to Use
 
@@ -47,7 +47,7 @@ The common APIs involved in the above scenarios are shown in the following table
 | Window         | moveWindowTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void | Moves the current window position. |
 | Window         | resize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void | Resizes the current window. |
 | Window         | setWindowLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt; | Sets whether the layout of the main window or subwindow is immersive. The value `true` indicates immersive layout, and `false` indicates non-immersive layout. |
-| Window         | setWindowSystemBarEnable(names: Array&lt;'status'\|'navigation'&gt;): Promise&lt;void&gt; | <!--RP4-->Sets the visibility mode of the status bar and three-key navigation bar of the main window. The status bar is controlled by `status`, and the three-key navigation bar is controlled by `navigation`<!--RP4End-->.<br>For example, if this parameter is set to `['status',&nbsp;'navigation']`, both are displayed; if set to `[]`, neither is displayed. |
+| Window         | setWindowSystemBarEnable(names: Array&lt;'status'\|'navigation'&gt;): Promise&lt;void&gt; | <!--RP4-->Sets the visibility mode of the status bar and three-key navigation bar of the main window. The status bar is controlled by `status`, and the three-key navigation bar is controlled by `navigation`<!--RP4End-->.<br>For example, if this parameter is set to `['status',&nbsp;'navigation']`, both are displayed; if it is set to `[]`, neither is displayed. |
 | Window         | setWindowSystemBarProperties(systemBarProperties: SystemBarProperties): Promise&lt;void&gt; | Sets the properties of the navigation bar and status bar in the window.<br/>`systemBarProperties`: a collection of properties for the navigation bar and status bar. |
 | Window         | showWindow(callback: AsyncCallback\<void>): void             | Shows the current window. |
 | Window         | on(type: 'touchOutside', callback: Callback&lt;void&gt;): void | Enables listening for tap events outside the current window area. |
@@ -219,7 +219,7 @@ export default class EntryAbility extends UIAbility {
             hilog.error(DOMAIN, TAG, `sub_windowClass is null`);
             return;
           }
-          // 3. Show the subwindow.
+          // 4. Show the subwindow.
           sub_windowClass.showWindow((err: BusinessError) => {
             let errCode: number = err.code;
             if (errCode) {
@@ -238,7 +238,7 @@ export default class EntryAbility extends UIAbility {
       hilog.error(DOMAIN, TAG, `sub_windowClass is null`);
       return;
     }
-    // 4. Destroy the subwindow. When the subwindow is no longer needed, use destroy to destroy it based on the specific implementation logic.
+    // 5. Destroy the subwindow. When the subwindow is no longer needed, destroy it by calling destroy based on the specific implementation logic.
     sub_windowClass.destroyWindow((err: BusinessError) => {
       let errCode: number = err.code;
       if (errCode) {

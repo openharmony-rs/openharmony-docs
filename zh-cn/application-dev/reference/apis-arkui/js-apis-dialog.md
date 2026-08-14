@@ -87,16 +87,16 @@ import { dialog } from '@kit.ArkUI';
 | width                   | [Dimension](arkui-ts/ts-types.md#dimension10)                | 否   | 是   | 弹出框的宽度。<br/>默认值：根据内容自适应。                                               |
 | height                  | [Dimension](arkui-ts/ts-types.md#dimension10)                | 否   | 是   | 弹出框的高度。<br/>默认值：根据内容自适应。                                               |
 | backgroundColor         | [ResourceColor](arkui-ts/ts-types.md#resourcecolor)          | 否   | 是   | 弹出框的背景颜色。<br/>默认值：Color.Transparent<br/>**说明：** 当backgroundColor设置为非透明色时，backgroundBlurStyle必须设置为BlurStyle.NONE。 |
-| backgroundBlurStyle     | [BlurStyle](arkui-ts/ts-universal-attributes-background.md#blurstyle9) | 否   | 是   | 弹出框的背景模糊样式。<br/>默认值：BlurStyle.COMPONENT_ULTRA_THICK<br/>**说明：** 设置为BlurStyle.NONE将禁用背景模糊。 |
-| backgroundBlurStyleOptions | [BackgroundBlurStyleOptions](arkui-ts/ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) | 否   | 是   | 带选项的背景模糊样式。                                       |
-| backgroundEffect        | [BackgroundEffectOptions](arkui-ts/ts-universal-attributes-background.md#backgroundeffectoptions11) | 否   | 是   | 带选项的背景效果。                                           |
+| backgroundBlurStyle     | [BlurStyle](arkui-ts/ts-universal-attributes-background.md#blurstyle9) | 否   | 是   | 弹出框的背景模糊样式。<br/>默认值：BlurStyle.NONE<br/>**说明：** 设置为BlurStyle.NONE即可关闭背景模糊。当设置了backgroundBlurStyle为非NONE值时，则不要设置backgroundColor，否则颜色显示将不符合预期效果。当设置系统材质systemMaterial时，backgroundBlurStyle不生效。 |
+| backgroundBlurStyleOptions | [BackgroundBlurStyleOptions](arkui-ts/ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) | 否   | 是   | 带选项的背景模糊样式。默认值与BackgroundBlurStyleOptions类型说明中的默认值一致。 |
+| backgroundEffect        | [BackgroundEffectOptions](arkui-ts/ts-universal-attributes-background.md#backgroundeffectoptions11) | 否   | 是   | 带选项的背景效果。默认值与BackgroundEffectOptions类型说明中的默认值一致。|
 | borderRadius            | [Dimension](arkui-ts/ts-types.md#dimension10)&nbsp;\|&nbsp;[BorderRadiuses](arkui-ts/ts-types.md#borderradiuses9)&nbsp;\|&nbsp;[LocalizedBorderRadiuses](arkui-ts/ts-types.md#localizedborderradiuses12) | 否   | 是   | 背景的边框圆角半径。<br>默认值：{ topLeft: '32vp', topRight: '32vp', bottomLeft: '32vp', bottomRight: '32vp' } |
 | borderWidth             | [Dimension](arkui-ts/ts-types.md#dimension10)&nbsp;\|&nbsp;[EdgeWidths](arkui-ts/ts-types.md#edgewidths9)&nbsp;\|&nbsp;[LocalizedEdgeWidths](arkui-ts/ts-types.md#localizededgewidths12) | 否   | 是   | 弹出框边框宽度。<br>默认值：0                               |
 | borderColor             | [ResourceColor](arkui-ts/ts-types.md#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](arkui-ts/ts-types.md#edgecolors9)&nbsp;\|&nbsp;[LocalizedEdgeColors](arkui-ts/ts-types.md#localizededgecolors12) | 否   | 是   | 弹出框的边框颜色。<br/>默认值：Color.Black                   |
 | borderStyle             | [BorderStyle](arkui-ts/ts-appendix-enums.md#borderstyle)&nbsp;\|&nbsp;[EdgeStyles](arkui-ts/ts-types.md#edgestyles9) | 否   | 是   | 弹出框边框样式。<br/>默认值：BorderStyle.Solid               |
-| shadow                  | [ShadowOptions](arkui-ts/ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;[ShadowStyle](arkui-ts/ts-universal-attributes-image-effect.md#shadowstyle10枚举说明) | 否   | 是   | 弹出框的阴影。<br/>默认值：系统默认阴影样式。                                               |
+| shadow                  | [ShadowOptions](arkui-ts/ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;[ShadowStyle](arkui-ts/ts-universal-attributes-image-effect.md#shadowstyle10枚举说明) | 否   | 是   | 弹出框的阴影。<br/>当设备为PC/2in1时，默认场景下获焦阴影值为ShadowStyle.OUTER_FLOATING_MD，失焦为ShadowStyle.OUTER_FLOATING_SM。其他设备默认无阴影。 |
 | alignment               | [DialogBaseAlignment](#dialogbasealignment)                  | 否   | 是   | 弹出框的对齐模式。<br/>默认值：DialogBaseAlignment.DEFAULT                                           |
-| offset                  | [Offset](arkui-ts/ts-types.md#offset)                        | 否   | 是   | 弹出框相对于对齐位置的偏移。 <br>默认值：无偏移         |
+| offset                  | [Offset](arkui-ts/ts-types.md#offset)                        | 否   | 是   | 弹出框相对于对齐位置的偏移。 <br/>默认值：{ dx: 0, dy: 0 }         |
 | maskRect                | [Rectangle](arkui-ts/ts-methods-alert-dialog-box.md#rectangle8类型说明) | 否   | 是   | 弹出框的蒙层区域。<br>默认值：{ x: 0, y: 0, width: '100%', height: '100%' } |
 | maskColor               | [ResourceColor](arkui-ts/ts-types.md#resourcecolor)          | 否   | 是   | 弹出框的蒙层颜色。<br/>默认值：跟随系统主题的默认蒙层颜色。                                           |
 | isModal                 | boolean                                                      | 否   | 是   | 弹出框是否为模态。值为true表示为模态且有蒙层，值为false表示为非模态且无蒙层。<br/>默认值：true |
@@ -119,7 +119,7 @@ import { dialog } from '@kit.ArkUI';
 | levelUniqueId           | number                                                       | 否   | 是   | 页面级弹出框显示层下节点的唯一标识。<br/>取值范围：大于等于0的整数。<br/>**说明：** 该参数仅在levelMode为LevelMode.EMBEDDED时生效。 |
 | immersiveMode           | [ImmersiveMode](js-apis-promptAction.md#immersivemode15) | 否   | 是   | 页面级弹出框蒙层效果。<br/>默认值：ImmersiveMode.DEFAULT<br/>**说明：** 该参数仅在levelMode为LevelMode.EMBEDDED时生效。     |
 | levelOrder              | [LevelOrder](js-apis-promptAction.md#levelorder18)           | 否   | 是   | 弹出框的显示顺序。<br/>默认值：`LevelOrder.clamp(0)`返回的值。 |
-| systemMaterial          | [SystemUiMaterial](arkui-ts/ts-universal-attributes-image-effect.md#systemuimaterial) | 否   | 是   | 为弹出框设置系统样式材质，不同的材质有不同的效果，会影响背景色、边框、阴影和弹出框的其他视觉属性。 |
+| systemMaterial          | [SystemUiMaterial](arkui-ts/ts-universal-attributes-image-effect.md#systemuimaterial) | 否   | 是   | 为弹出框设置系统材质，不同的材质有不同的效果，会影响背景色、边框、阴影和弹出框的其他视觉属性。<br/>**说明：**<br/>- 默认值：[ImmersiveOptions](arkts-apis-uimaterial.md#immersiveoptions)的style为ImmersiveStyle.ULTRA_THICK的[ImmersiveMaterial](arkts-apis-uimaterial.md#immersivematerial)对象。设置undefined时与默认值保持一致。<br/>- 该参数影响背景色[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、背景模糊[backgroundBlurStyle](arkui-ts/ts-universal-attributes-background.md#backgroundblurstyle9)、背景效果[backgroundEffect](arkui-ts/ts-universal-attributes-background.md#backgroundeffect11)、边框颜色[borderColor](arkui-ts/ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth)、阴影[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)，当设置系统材质时，上述属性不生效。 |
 
 ## DialogMessage
 
@@ -147,13 +147,13 @@ import { dialog } from '@kit.ArkUI';
 
 | 名称           | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | -------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| title          | [ResourceStr](arkui-ts/ts-types.md#resourcestr)              | 否   | 是   | 弹出框标题。                                                 |
-| subtitle       | [ResourceStr](arkui-ts/ts-types.md#resourcestr)              | 否   | 是   | 弹出框的副标题。                                             |
-| message        | [DialogMessage](#dialogmessage)                              | 否   | 是   | 弹出框的消息内容和文字样式。                                 |
-| buttons        | Array&lt;[DialogButton](#dialogbutton)&gt;                   | 否   | 是   | 弹出框中的按钮数组。提供时，弹出框显示为带有按钮的警报样式弹出框；与sheets一起使用时，按钮显示在工作表项列表下方。 |
+| title          | [ResourceStr](arkui-ts/ts-types.md#resourcestr)              | 否   | 是   | 弹出框标题。<br/>默认值：未设置时不显示标题。               |
+| subtitle       | [ResourceStr](arkui-ts/ts-types.md#resourcestr)              | 否   | 是   | 弹出框的副标题。<br/>默认值：未设置时不显示副标题。         |
+| message        | [DialogMessage](#dialogmessage)                              | 否   | 是   | 弹出框的消息内容和文字样式。<br/>默认值：未设置时不显示消息内容。 |
+| buttons        | Array&lt;[DialogButton](#dialogbutton)&gt;                   | 否   | 是   | 弹出框中的按钮数组。提供时，弹出框显示为带有按钮的警报样式弹出框；与sheets一起使用时，按钮显示在工作表项列表下方。<br/>默认值：未设置时不显示按钮。 |
 | buttonDirection | [DialogButtonOrientation](#dialogbuttonorientation)         | 否   | 是   | 按钮的排列方式。<br/>默认值：DialogButtonOrientation.AUTO     |
-| sheets         | Array&lt;[DialogSheet](#dialogsheet)&gt;                     | 否   | 是   | action-sheet样式的工作表项数组。提供时，弹出框将显示供用户选择的工作表项。 |
-| gridCount      | number                                                       | 否   | 是   | 弹出框中工作表项的网格列数，用于控制工作表项在网格中的分栏显示布局。取值范围：大于0的整数。               |
+| sheets         | Array&lt;[DialogSheet](#dialogsheet)&gt;                     | 否   | 是   | action-sheet样式的工作表项数组。提供时，弹出框将显示供用户选择的工作表项。<br/>默认值：未设置时不显示工作表项。 |
+| gridCount      | number                                                       | 否   | 是   | 弹出框中工作表项的网格列数，用于控制工作表项在网格中的分栏显示布局。<br/>默认值：4<br/>取值范围：大于0的整数。               |
 
 ## DialogCustomOptions
 

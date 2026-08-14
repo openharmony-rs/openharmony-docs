@@ -41,7 +41,7 @@ onAgentInvoked(agentId: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| agentId | string | 是 | 低代码类型的Agent的ID。 |
+| agentId | string | 是 | [LOW_CODE](js-apis-app-agent-agentConstant-sys.md#agentconstantagentcardtype)类型的Agent的ID。 |
 
 **示例：**
 

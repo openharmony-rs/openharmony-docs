@@ -297,15 +297,15 @@
   - Using Text<!--arkts-build-text-ndk-->
     - [Using the Text Component](ndk-use-text-component.md)
     - [Using Styled Strings](ndk-styled-string.md)
-    - [Listening for Text Box Events](ndk-textarea-event.md)
+    - [Adding a Text Event Listener for a Text Box](ndk-textarea-event.md)
   - Media Display<!--arkts-build-media-ndk-->
     - [Image Display (Image)](ndk-image-component.md)
-    - [Using the Swiper Component](ndk-swiper.md)
+    - [Using the Swiper Container](ndk-swiper.md)
     - [Using the Arc Swiper Container (ArcSwiper)](ndk-arc-swiper.md)
   - [Building Form Components](ndk-build-form-components.md)
   - [Building a Dialog Box](ndk-build-pop-up-window.md)
   - Using Animation<!--arkts-use-animation-ndk-->
-    - [Using Animations](ndk-use-animation.md)
+    - [Animation Overview](ndk-use-animation.md)
     - [Animation Development](ndk-use-animation-scene.md)
   - Using Selection Components<!--arkts-build-picker-ndk-->
       - [Using the Sliding Selector Picker](ndk-picker.md)
