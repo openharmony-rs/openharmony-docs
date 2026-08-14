@@ -1015,7 +1015,7 @@ deletePersistentGroup(netId: number): boolean
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | boolean | true:操作执行成功，false:操作执行失败。 |
+  | boolean | 操作是否执行成功。 true:操作执行成功，false:操作执行失败。 |
 
 **示例：**
 ```ts
@@ -1070,7 +1070,7 @@ try {
 
 on(type: "streamChange", callback: Callback&lt;number&gt;): void
 
-注册WLAN流更改事件。
+注册WLAN流更改事件，使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1157,7 +1157,7 @@ off(type: "hotspotStaJoin", callback?: Callback&lt;StationInfo&gt;): void
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"hotspotStaJoin"字符串。 |
-  | callback | Callback&lt;StationInfo&gt; | 否 | 当有设备接入热点时触发的回调函数，返回接入设备的信息。不填写时取消该事件所有已注册的回调。 |
+  | callback | Callback&lt;[StationInfo](#stationinfo7)&gt; | 否 | 当有设备接入热点时触发的回调函数，返回接入设备的信息。不填写时取消该事件所有已注册的回调。 |
 
   **示例：**
 ```ts
@@ -1192,13 +1192,13 @@ on(type: "hotspotStaLeave", callback: Callback&lt;StationInfo&gt;): void
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"hotspotStaLeave"字符串。 |
-  | callback | Callback&lt;StationInfo&gt; | 是 | 当有设备接入热点时触发的回调函数，返回接入设备的信息。 |
+  | callback | Callback&lt;[StationInfo](#stationinfo7)&gt; | 是 | 当有设备接入热点时触发的回调函数，返回接入设备的信息。 |
 
 ## wifi.off('hotspotStaLeave')<sup>7+</sup>
 
 off(type: "hotspotStaLeave", callback?: Callback&lt;StationInfo&gt;): void
 
-取消注册wifi热点sta离开事件。当不传入callback时，取消所有注册；当传入callback时，仅取消与该callback匹配的注册。
+取消注册wlan热点sta离开事件。当不传入callback时，取消所有注册；当传入callback时，仅取消与该callback匹配的注册。
 
 **需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT
 
@@ -1211,7 +1211,7 @@ off(type: "hotspotStaLeave", callback?: Callback&lt;StationInfo&gt;): void
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"hotspotStaLeave"字符串。 |
-  | callback | Callback&lt;StationInfo&gt; | 否 | 当有设备接入热点时触发的回调函数，返回接入设备的信息。 |
+  | callback | Callback&lt;[StationInfo](#stationinfo7)&gt; | 否 | 当有设备接入热点时触发的回调函数，返回接入设备的信息。 |
 
   **示例：**
 ```ts

@@ -418,7 +418,7 @@ getScanInfoList(): Array&lt;WifiScanInfo&gt;
 
 ## WifiScanInfo
 
-WLAN信息元素。
+WLAN热点信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 

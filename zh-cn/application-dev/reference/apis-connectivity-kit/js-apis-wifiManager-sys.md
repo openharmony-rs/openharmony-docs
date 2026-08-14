@@ -985,7 +985,7 @@ try {
 
 enableHotspot(): void
 
-使能热点，异步接口，是否打开成功需要注册并监听hotspotStateChange的回调。调用前建议先通过isOpenSoftApAllowed接口检查当前是否允许操作热点开关，飞行模式等场景下可能无法使能热点。
+使能热点，异步接口，是否打开成功需要注册并监听hotspotStateChange的回调。调用前建议先通过[isOpenSoftApAllowed](#wifimanagerisopensoftapallowed18)接口检查当前是否允许操作热点开关，飞行模式等场景下可能无法使能热点。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1819,7 +1819,7 @@ off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"hotspotStaJoin"字符串。 |
-| callback | Callback&lt;StationInfo&gt; | 否 | 状态改变回调函数。传入该参数时仅取消注册指定回调；不填写该参数时，取消注册该事件的所有已注册回调。 |
+| callback | Callback&lt;[StationInfo](#stationinfo)&gt; | 否 | 状态改变回调函数。传入该参数时仅取消注册指定回调；不填写该参数时，取消注册该事件的所有已注册回调。 |
 
 **错误码：**
 
