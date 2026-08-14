@@ -59,7 +59,7 @@ typedef bool (*OH_AudioAccessory_OpenInputStreamCallback)(OH_AudioAccessory *acc
 
 音频配件打开输入流的回调函数。
 
-**触发时机：** 当应用请求从该音频配件采集音频时，音频框架调用此回调。框架传递正在打开的输入流信息，以便配件准备相应的音频数据传输通道。
+**触发时机：** 当应用请求从该音频配件采集音频时，音频系统调用此回调。系统传递正在打开的输入流信息，以便配件准备相应的音频数据传输通道。
 
 **使用要求：** 在此回调中，需注册输入流的启动、停止、释放、时延查询和帧位置查询回调。只能在此回调执行期间注册这些输入流回调。
 
@@ -170,7 +170,7 @@ typedef bool (*OH_AudioAccessoryInputStream_GetLatencyCallback)(OH_AudioAccessor
 
 查询输入流当前时延的回调函数。
 
-**触发时机：** 当框架需要获取音频配件输入流当前时延值时触发。
+**触发时机：** 当系统需要获取音频配件输入流当前时延值时触发。
 
 **起始版本：** 26.0.0
 
@@ -198,7 +198,7 @@ typedef bool (*OH_AudioAccessoryInputStream_GetFramePositionCallback)(OH_AudioAc
 
 查询输入流当前采集位置的回调函数。
 
-**触发时机：** 当框架需要获取该音频配件（外部音频设备，如大疆 Mic 2）上的输入流当前采集位置时触发。
+**触发时机：** 当系统需要获取该音频配件（外部音频设备）上的输入流当前采集位置时触发。
 
 **起始版本：** 26.0.0
 
@@ -206,7 +206,7 @@ typedef bool (*OH_AudioAccessoryInputStream_GetFramePositionCallback)(OH_AudioAc
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_AudioAccessory *accessory | 该输入流所属的音频配件（外部音频设备，如大疆 Mic 2）。 |
+| OH_AudioAccessory *accessory | 该输入流所属的音频配件（外部音频设备）。 |
 | OH_AudioAccessoryInputStream *stream | 输入流句柄。 |
 | int64_t *framePosition | 输出参数，返回自该输入流最近一次成功启动以来已采集的音频帧总数。 |
 | int64_t *timestamp | 输出参数，返回与framePosition对应的采集时间戳。<br>时间戳需使用CLOCK_MONOTONIC时间基准，单位为纳秒（ns），<br>表示该采集位置对应的音频帧被采集时的单调时钟时间。 |
@@ -227,7 +227,7 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_RegisterStartCallback(
 
 **描述**
 
-注册输入流启动事件回调函数。应用需要通过音频配件输入流采集音频时，需注册此回调。如果未注册，音频框架将拒绝创建输入流并清理相关资源。
+注册输入流启动事件回调函数。应用需要通过音频配件输入流采集音频时，需注册此回调。如果未注册，音频系统将拒绝创建输入流并清理相关资源。
 
 此函数需在OH_AudioAccessory_OpenInputStreamCallback执行期间调用。在其他时间调用此函数将返回AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE。
 
@@ -254,7 +254,7 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_RegisterStopCallback(O
 
 **描述**
 
-注册输入流停止事件回调函数。应用需要通过音频配件输入流采集音频时，需注册此回调。如果未注册，音频框架将拒绝创建输入流并清理相关资源。
+注册输入流停止事件回调函数。应用需要通过音频配件输入流采集音频时，需注册此回调。如果未注册，音频系统将拒绝创建输入流并清理相关资源。
 
 此函数需在OH_AudioAccessory_OpenInputStreamCallback执行期间调用。在其他时间调用此函数将返回AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE。
 
@@ -281,7 +281,7 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_RegisterReleaseCallbac
 
 **描述**
 
-注册输入流释放事件回调函数。应用需要通过音频配件输入流采集音频时，需注册此回调。如果未注册，音频框架将拒绝创建输入流并清理相关资源。
+注册输入流释放事件回调函数。应用需要通过音频配件输入流采集音频时，需注册此回调。如果未注册，音频系统将拒绝创建输入流并清理相关资源。
 
 此函数需在OH_AudioAccessory_OpenInputStreamCallback执行期间调用。在其他时间调用此函数将返回AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE。
 
@@ -308,7 +308,7 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_RegisterLatencyCallbac
 
 **描述**
 
-注册输入流时延查询回调函数。应用需要通过音频配件输入流采集音频时，需注册此回调。如果未注册，音频框架将拒绝创建输入流并清理相关资源。
+注册输入流时延查询回调函数。应用需要通过音频配件输入流采集音频时，需注册此回调。如果未注册，音频系统将拒绝创建输入流并清理相关资源。
 
 此函数需在OH_AudioAccessory_OpenInputStreamCallback执行期间调用。在其他时间调用此函数将返回AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE。
 
@@ -335,7 +335,7 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_RegisterFramePositionC
 
 **描述**
 
-注册输入流帧位置查询回调函数，用于查询输入流当前采集位置。应用需要通过音频配件输入流采集音频时，需注册此回调。如果未注册，音频框架将拒绝创建输入流并清理相关资源。
+注册输入流帧位置查询回调函数，用于查询输入流当前采集位置。应用需要通过音频配件输入流采集音频时，需注册此回调。如果未注册，音频系统将拒绝创建输入流并清理相关资源。
 
 此函数需在OH_AudioAccessory_OpenInputStreamCallback执行期间调用。在其他时间调用此函数将返回AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE。
 
