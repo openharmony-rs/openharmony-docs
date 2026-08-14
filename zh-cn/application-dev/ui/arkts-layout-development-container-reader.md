@@ -38,10 +38,6 @@ ContainerReader提供以下关键能力。
 
 [ContainerReader](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md)作为子组件时，其尺寸由父容器决定。当父容器为Flex、Row或Column时，ContainerReader会根据父容器的布局方向自动撑满父容器剩余空间。
 
-> **说明：** 
->
-> 使用ContainerReader需要同时导入ContainerReaderAttribute，否则会导致编译报错。
-
 <!-- @[FillTheSpace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/layoutSpecifications/FillTheSpace.ets) -->  
 
 ``` TypeScript
@@ -76,10 +72,6 @@ struct Example {
 ![](figures/containerReader-development-demo1.png)
 
 [ContainerReader](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md)作为Flex、Row或Column的子组件使用时，会优先为非ContainerReader类型的子组件测算尺寸，再结合父容器剩余空间与开发者设置为ContainerReader组件分配空间。这在固定内容与自适应内容并存的场景中较为适用。
-
-> **说明：** 
->
-> 使用ContainerReader需要同时导入ContainerReaderAttribute，否则会导致编译报错。
 
 <!-- @[DivideRemainingSpace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/layoutSpecifications/DivideRemainingSpace.ets) -->  
 
@@ -124,10 +116,6 @@ struct Example {
 ![](figures/containerReader-development-remainSize.png)
 
 当Flex、Row或Column容器中有多个[ContainerReader](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md)子组件时，按开发者书写顺序第一个ContainerReader会占满剩余空间，此时其余ContainerReader组件的主轴大小为0。但开发者可以通过layoutWeight属性使多个ContainerReader平分剩余空间。
-
-> **说明：** 
->
-> 使用ContainerReader需要同时导入ContainerReaderAttribute，否则会导致编译报错。
 
 <!-- @[DivideRemainingSpaceEqually](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/layoutSpecifications/DivideRemainingSpaceEqually.ets) -->  
 
@@ -313,11 +301,6 @@ ContainerReader的主要接口包括ContainerReader和breakpointConfig。
 
    以情况一的撑满父容器为例，Flex给子组件ContainerReader分配与Flex等大的空间。
 
-   > **说明：** 
-   >
-   > 使用ContainerReader需要同时导入ContainerReaderAttribute，否则会导致编译报错。
-
-
    <!-- @[DevelopmentSteps](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/developmentSteps/DevelopmentSteps.ets) -->  
    
    ``` TypeScript
@@ -356,10 +339,6 @@ ContainerReader的主要接口包括ContainerReader和breakpointConfig。
 ## 实现独立断点
 
 在同一组件中，可以同时使用多个ContainerReader组件，每个组件可以拥有独立的断点状态，实现更精细化的布局控制。
-
-> **说明：** 
->
-> 使用ContainerReader需要同时导入ContainerReaderAttribute，否则会导致编译报错。
 
 <!-- @[IndependentBreakpoints](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/developmentDemo/IndependentBreakpoints.ets) -->  
 
@@ -426,11 +405,6 @@ struct MultiContainerExample {
 ## 网格组件根据自身容器断点设置列数
 
 在多设备开发中，网格组件（如[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)）可以根据自身容器尺寸设置不同的列数，实现自适应的列表布局。
-
-> **说明：** 
->
-> 使用ContainerReader需要同时导入ContainerReaderAttribute，否则会导致编译报错。
-
 
 <!-- @[GridComponentAdaptiveColumnSettings](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/developmentDemo/GridComponentAdaptiveColumnSettings.ets) -->  
 
@@ -513,10 +487,6 @@ struct GridBreakpointExample {
 
 开发者可以创建自定义组件，组件内部使用ContainerReader来实现自适应的内部布局，使组件在不同的使用场景下都能呈现最佳效果。
 
-> **说明：** 
->
-> 使用ContainerReader需要同时导入ContainerReaderAttribute，否则会导致编译报错。
-
 <!-- @[CustomComponentAdaptiveLayout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/developmentDemo/CustomComponentAdaptiveLayout.ets) -->  
 
 ``` TypeScript
@@ -590,10 +560,6 @@ struct AdaptiveCardExample {
 ## 左右分栏布局自适应
 
 在主从结构页面中，左侧为固定宽度的Tab标签，右侧为自适应的详情区域。右侧详情区域使用ContainerReader，根据剩余宽度自动切换布局：窄屏时上下排列，宽屏时左右排列。
-
-> **说明：** 
->
-> 使用ContainerReader需要同时导入ContainerReaderAttribute，否则会导致编译报错。
 
 <!-- @[LeftOrRightSplitLayout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/developmentDemo/LeftOrRightSplitLayout.ets) -->  
 
