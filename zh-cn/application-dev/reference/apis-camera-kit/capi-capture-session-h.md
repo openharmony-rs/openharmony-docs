@@ -2813,7 +2813,6 @@ Camera_ErrorCode OH_CaptureSession_GetSupportedEffectTypes(Camera_CaptureSession
 
 获取相机控制器支持的效果类型。
 
-调用[OH_CaptureSession_DeleteSupportedEffectTypes](capi-capture-session-h.md#oh_capturesession_deletesupportedeffecttypes)删除相机控制器效果类型列表。
 
 **起始版本：** 20
 
