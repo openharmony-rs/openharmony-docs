@@ -1002,7 +1002,7 @@ CryptoExtensionAbility不支持以下模块的引用。
 | Telephony Kit | [@ohos.telephony.call (拨打电话)](../../reference/apis-telephony-kit/js-apis-call.md) |
 | Telephony Kit | [@ohos.telephony.data (蜂窝数据)](../../reference/apis-telephony-kit/js-apis-telephony-data.md) |
 | Telephony Kit | [@ohos.telephony.esim (eSIM卡管理)](../../reference/apis-telephony-kit/js-apis-esim.md) |
-| Telephony Kit | [@ohos.telephony.observer (observer)](../../reference/apis-telephony-kit/js-apis-observer.md) |
+| Telephony Kit | [@ohos.telephony.observer (电话服务状态监听)](../../reference/apis-telephony-kit/js-apis-observer.md) |
 | Telephony Kit | [@ohos.telephony.radio (网络搜索)](../../reference/apis-telephony-kit/js-apis-radio.md) |
 | Telephony Kit | [@ohos.telephony.sim (SIM卡管理)](../../reference/apis-telephony-kit/js-apis-sim.md) |
 | Telephony Kit | [@ohos.telephony.sms (短信服务)](../../reference/apis-telephony-kit/js-apis-sms.md) |
