@@ -331,9 +331,7 @@ on(type: 'openDLPFile', listener: Callback&lt;AccessedDLPFileInfo&gt;): void
 
 监听打开DLP文件。调用成功后，当DLP文件被打开时会触发回调通知当前应用。仅支持在非DLP沙箱应用中调用。
 
-在页面销毁或不再需要监听时，应调用[off('openDLPFile')](#dlppermissionoffopendlpfile)取消订阅以释放资源。
-
- 当应用需要在DLP文件打开后执行特定操作（如记录日志、更新界面）时，可注册该监听。
+当应用需要在DLP文件打开后执行特定操作（如记录日志、更新界面）时，可注册该监听。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
