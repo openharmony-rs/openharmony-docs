@@ -154,6 +154,7 @@ Web组件全屏模式仅改变内容布局，不触发应用窗口方向切换�
 
 使用Web组件进入全屏模式时，窗口的横竖屏状态不会主动发生变化，需要通过Web组件的[onFullScreenEnter](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfullscreenenter9)和[onFullScreenExit](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfullscreenexit9)方法，监听Web组件进入和退出全屏模式事件。
 
+ArkTS-Dyn示例：
 <!-- @[toggle fullscreen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebFullScreen/entry/src/main/ets/pages/Index.ets) -->
 ``` TypeScript
 Web({ src:$rawfile("video.html"), controller: this.controller }) // 注意替换
@@ -169,8 +170,29 @@ Web({ src:$rawfile("video.html"), controller: this.controller }) // 注意替换
   })
 ```
 
+ArkTS-Sta示例：
+<!-- @[toggle fullscreen](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebFullScreen/entry/src/main/ets/pages/Index.ets) -->
+``` TypeScript
+Web({ src:$rawfile("video.html"), controller: this.controller }) // 注意替换
+  .domStorageAccess(true)
+  .expandSafeArea([SafeAreaType.SYSTEM])
+  .onFullScreenEnter((event: FullScreenEnterEvent): void => {
+    this.isFullScreen = true;
+    this.handler = event.handler;
+    this.changeOrientation(true);
+  })
+  .onFullScreenExit((): void => {
+    if (this.handler) {
+      this.handler.exitFullScreen();
+      this.isFullScreen = false;
+      this.changeOrientation(false);
+    }
+  })
+```
+
 通过Window提供的setPreferredOrientation方法设置横竖屏。
 
+ArkTS-Dyn示例：
 <!-- @[toggle screen orientation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebFullScreen/entry/src/main/ets/pages/Index.ets) -->
 ``` TypeScript
 // 改变设备横竖屏状态
@@ -186,8 +208,25 @@ private changeOrientation(isLandscape: boolean) {
 }
 ```
 
+ArkTS-Sta示例：
+<!-- @[toggle screen orientation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebFullScreen/entry/src/main/ets/pages/Index.ets) -->
+``` TypeScript
+// 改变设备横竖屏状态
+private changeOrientation(isLandscape: boolean): void {
+  // 获取UIAbility实例的上下文信息
+  let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  // 调用该接口手动改变设备横竖屏状态
+  window.getLastWindow(context).then((lastWindow: window.Window): void => {
+    lastWindow.setPreferredOrientation(isLandscape ? window.Orientation.LANDSCAPE : window.Orientation.PORTRAIT);
+  }).catch((err: Error): void => {
+    console.error(`获取窗口失败: ${err.message}`);
+  });
+}
+```
+
 自定义侧滑操作时，判断当前视频是否处于全屏状态，若处于全屏状态下则先执行侧滑退出全屏的逻辑。
 
+ArkTS-Dyn示例：
 <!-- @[exit full screen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebFullScreen/entry/src/main/ets/pages/Index.ets) -->
 ``` TypeScript
  onBackPress(): boolean | void {
@@ -202,8 +241,27 @@ private changeOrientation(isLandscape: boolean) {
   }
 ```
 
+ArkTS-Sta示例：
+<!-- @[exit full screen](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebFullScreen/entry/src/main/ets/pages/Index.ets) -->
+``` TypeScript
+onBackPress(): boolean {
+   if (this.isFullScreen) {
+     this.isFullScreen = false;
+     if (this.handler) {
+       this.handler.exitFullScreen();
+     }
+     this.changeOrientation(false);
+     return true;
+   } else {
+     router.back();
+     return true;
+    }
+  }
+```
+
 完整示例：
 
+ArkTS-Dyn示例：
 <!-- @[switch between portrait and landscape](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebFullScreen/entry/src/main/ets/pages/Index.ets) -->
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -254,6 +312,76 @@ struct WebVideo {
         .onFullScreenExit(() => {
           this.isFullScreen = false;
           this.changeOrientation(false);
+        })
+    }
+    .height('100%')
+    .width('100%')
+    .backgroundColor('#000000')
+  }
+}
+```
+
+ArkTS-Sta示例：
+<!-- @[switch between portrait and landscape](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebFullScreen/entry/src/main/ets/pages/Index.ets) -->
+``` TypeScript
+'use static'
+
+import { window, router } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { common } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct WebVideo {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State isFullScreen: boolean = false;
+  private handler: FullScreenExitHandler = new FullScreenExitHandler();
+
+  // 改变设备横竖屏状态
+  private changeOrientation(isLandscape: boolean): void {
+    // 获取UIAbility实例的上下文信息
+    let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    // 调用该接口手动改变设备横竖屏状态
+    window.getLastWindow(context).then((lastWindow: window.Window): void => {
+      lastWindow.setPreferredOrientation(isLandscape ? window.Orientation.LANDSCAPE : window.Orientation.PORTRAIT);
+    }).catch((err: Error): void => {
+      console.error(`获取窗口失败: ${err.message}`);
+    });
+  }
+
+  onBackPress(): boolean {
+    if (this.isFullScreen) {
+      this.isFullScreen = false;
+      if (this.handler) {
+        this.handler.exitFullScreen();
+      }
+      this.changeOrientation(false);
+      return true;
+    } else {
+      router.back();
+      return true;
+    }
+  }
+
+  build() {
+    Column() {
+      Web({
+        src: $rawfile('video.html'), // 需要替换
+        controller: this.controller
+      })
+        .domStorageAccess(true)
+        .expandSafeArea([SafeAreaType.SYSTEM])
+        .onFullScreenEnter((event: FullScreenEnterEvent): void => {
+          this.isFullScreen = true;
+          this.handler = event.handler;
+          this.changeOrientation(true);
+        })
+        .onFullScreenExit((): void => {
+          if (this.handler) {
+            this.handler.exitFullScreen();
+            this.isFullScreen = false;
+            this.changeOrientation(false);
+          }
         })
     }
     .height('100%')
