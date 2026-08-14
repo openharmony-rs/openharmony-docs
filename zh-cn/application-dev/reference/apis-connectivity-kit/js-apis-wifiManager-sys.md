@@ -329,16 +329,18 @@ connectToDevice(config: WifiDeviceConfig): void
 
 提供WLAN扫描的相关信息。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| networkId | number | 否 | 否 | 网络配置ID。 <br> **系统接口：** 此接口为系统接口。 |
-| chload | number | 否 | 否 | 连接负载，值越大表示负载越高。 <br /> **系统接口：** 此接口为系统接口。 |
-| snr | number | 否 | 否 | 信噪比，单位：dB。 <br /> **系统接口：** 此接口为系统接口。 |
-| suppState | [SuppState](#suppstate) | 否 | 否 | 请求状态。 <br /> **系统接口：** 此接口为系统接口。 |
-| isHiLinkProNetwork<sup>20+</sup> | boolean | 否 | 是 | 是否是HiLinkPro（华为设备互联网络协议）网络。true表示是HiLinkPro网络，false表示不是HiLinkPro网络。<br /> **系统接口：** 此接口为系统接口。 |
-| wifiTxRxValid | boolean | 否 | 是 | **起始版本：** 26.0.0。用于指示Wi-Fi的发送（Tx, Transmitting）和接收（Rx, Receiving）功能是否都在正常工作。<br> **系统接口：** 此接口为系统接口。 |
+| networkId | number | 否 | 否 | 网络配置ID。 |
+| chload | number | 否 | 否 | 连接负载，值越大表示负载越高。 |
+| snr | number | 否 | 否 | 信噪比，单位：dB。 |
+| suppState | [SuppState](#suppstate) | 否 | 否 | 请求状态。 |
+| isHiLinkProNetwork<sup>20+</sup> | boolean | 否 | 是 | 是否是HiLinkPro（华为设备互联网络协议）网络。true表示是HiLinkPro网络，false表示不是HiLinkPro网络。|
+| wifiTxRxValid | boolean | 否 | 是 | **起始版本：** 26.0.0。用于指示Wi-Fi的发送（Tx, Transmitting）和接收（Rx, Receiving）功能是否都在正常工作。|
 
 ## SuppState
 

@@ -392,14 +392,16 @@ try {
 
 提供WLAN连接的相关信息。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 | 名称 | 类型 | 可读 | 可写 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| networkId | number | 是 | 否 | 网络配置ID。 <br> **系统接口：** 此接口为系统接口。 |
-| chload | number | 是 | 否 | 连接负载，值越大表示负载越高。 <br> **系统接口：** 此接口为系统接口。 |
-| snr | number | 是 | 否 | 信噪比。 <br> **系统接口：** 此接口为系统接口。 |
-| suppState | [SuppState](#suppstate) | 是 | 否 | 请求状态。 <br> **系统接口：** 此接口为系统接口。 |
+| networkId | number | 是 | 否 | 网络配置ID。 |
+| chload | number | 是 | 否 | 连接负载，值越大表示负载越高。 |
+| snr | number | 是 | 否 | 信噪比。 |
+| suppState | [SuppState](#suppstate) | 是 | 否 | 请求状态。 |
 
 
 ## SuppState
@@ -1125,7 +1127,7 @@ wifi.off("streamChange", recvStreamChangeFunc);
 
 on(type: "hotspotStaJoin", callback: Callback&lt;StationInfo&gt;): void
 
-注册WLAN热点sta加入事件。
+注册WLAN热点sta加入事件，使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT
 
