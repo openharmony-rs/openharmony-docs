@@ -55,7 +55,7 @@ try {
 
 disableWifi(): boolean
 
-禁用WLAN。
+去使能WLAN。
 
 **系统接口：** 此接口为系统接口。
 
