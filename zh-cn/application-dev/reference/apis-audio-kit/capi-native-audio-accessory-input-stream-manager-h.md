@@ -47,7 +47,7 @@
 | [OH_AudioAccessoryInputStreamManager_Write](#oh_audioaccessoryinputstreammanager_write) | 向音频配件输入流写入音频数据。 |
 | [OH_AudioAccessoryInputStreamManager_GetWritableSize](#oh_audioaccessoryinputstreammanager_getwritablesize) | 获取音频配件输入流缓冲区的可写大小。 |
 
-## 函数指针说明
+## 函数说明
 
 ### OH_AudioAccessory_OpenInputStreamCallback
 
@@ -69,9 +69,9 @@ typedef bool (*OH_AudioAccessory_OpenInputStreamCallback)(OH_AudioAccessory *acc
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_AudioAccessory *accessory | 正在打开输入流的音频配件。 |
-| OH_AudioAccessoryInputStream *stream | 新创建的输入流句柄。使用此句柄注册输入流相关回调。 |
-| OH_AudioStreamInfo *streamInfo | 正在打开的输入流的音频流信息指针。此参数描述请求的流格式，<br>配件可使用此信息配置音频数据传输通道。 |
+| [OH_AudioAccessory](capi-ohaudio-oh-audioaccessory.md) *accessory | 正在打开输入流的音频配件。 |
+| [OH_AudioAccessoryInputStream](capi-ohaudio-oh-audioaccessoryinputstream.md) *stream | 新创建的输入流句柄。使用此句柄注册输入流相关回调。 |
+| [OH_AudioStreamInfo](capi-ohaudio-oh-audiostreaminfo.md) *streamInfo | 正在打开的输入流的音频流信息指针。此参数描述请求的流格式，<br>配件可使用此信息配置音频数据传输通道。 |
 
 **返回值**
 
@@ -97,8 +97,8 @@ typedef bool (*OH_AudioAccessoryInputStream_StartCallback)(OH_AudioAccessory *ac
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_AudioAccessory *accessory | 该输入流所属的音频配件。 |
-| OH_AudioAccessoryInputStream *stream | 已启动的输入流句柄。 |
+| [OH_AudioAccessory](capi-ohaudio-oh-audioaccessory.md) *accessory | 该输入流所属的音频配件。 |
+| [OH_AudioAccessoryInputStream](capi-ohaudio-oh-audioaccessoryinputstream.md) *stream | 已启动的输入流句柄。 |
 
 **返回值**
 
@@ -124,8 +124,8 @@ typedef bool (*OH_AudioAccessoryInputStream_StopCallback)(OH_AudioAccessory *acc
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_AudioAccessory *accessory | 该输入流所属的音频配件。 |
-| OH_AudioAccessoryInputStream *stream | 已停止的输入流句柄。 |
+| [OH_AudioAccessory](capi-ohaudio-oh-audioaccessory.md) *accessory | 该输入流所属的音频配件。 |
+| [OH_AudioAccessoryInputStream](capi-ohaudio-oh-audioaccessoryinputstream.md) *stream | 已停止的输入流句柄。 |
 
 **返回值**
 
@@ -151,8 +151,8 @@ typedef bool (*OH_AudioAccessoryInputStream_ReleaseCallback)(OH_AudioAccessory *
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_AudioAccessory *accessory | 该输入流所属的音频配件。 |
-| OH_AudioAccessoryInputStream *stream | 即将释放的输入流（录音/采集流）句柄。 |
+| [OH_AudioAccessory](capi-ohaudio-oh-audioaccessory.md) *accessory | 该输入流所属的音频配件。 |
+| [OH_AudioAccessoryInputStream](capi-ohaudio-oh-audioaccessoryinputstream.md) *stream | 即将释放的输入流（录音/采集流）句柄。 |
 
 **返回值**
 
@@ -178,8 +178,8 @@ typedef bool (*OH_AudioAccessoryInputStream_GetLatencyCallback)(OH_AudioAccessor
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_AudioAccessory *accessory | 该输入流所属的音频配件。 |
-| OH_AudioAccessoryInputStream *stream | 输入流句柄。 |
+| [OH_AudioAccessory](capi-ohaudio-oh-audioaccessory.md) *accessory | 该输入流所属的音频配件。 |
+| [OH_AudioAccessoryInputStream](capi-ohaudio-oh-audioaccessoryinputstream.md) *stream | 输入流句柄。 |
 | int32_t *latency | 输出参数，返回时延值，单位为毫秒（ms）。 |
 
 **返回值**
@@ -206,8 +206,8 @@ typedef bool (*OH_AudioAccessoryInputStream_GetFramePositionCallback)(OH_AudioAc
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_AudioAccessory *accessory | 该输入流所属的音频配件（外部音频设备）。 |
-| OH_AudioAccessoryInputStream *stream | 输入流句柄。 |
+| [OH_AudioAccessory](capi-ohaudio-oh-audioaccessory.md) *accessory | 该输入流所属的音频配件（外部音频设备）。 |
+| [OH_AudioAccessoryInputStream](capi-ohaudio-oh-audioaccessoryinputstream.md) *stream | 输入流句柄。 |
 | int64_t *framePosition | 输出参数，返回自该输入流最近一次成功启动以来已采集的音频帧总数。 |
 | int64_t *timestamp | 输出参数，返回与framePosition对应的采集时间戳。<br>时间戳需使用CLOCK_MONOTONIC时间基准，单位为纳秒（ns），<br>表示采集到该音频帧时的时间点。 |
 
@@ -216,8 +216,6 @@ typedef bool (*OH_AudioAccessoryInputStream_GetFramePositionCallback)(OH_AudioAc
 | 类型 | 说明 |
 | -- | -- |
 | bool | true：获取帧位置成功。<br>false：获取帧位置失败。 |
-
-## 函数说明
 
 ### OH_AudioAccessoryInputStreamManager_RegisterStartCallback()
 
@@ -237,7 +235,7 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_RegisterStartCallback(
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_AudioAccessoryInputStream *stream | 输入流句柄指针。 |
+| [OH_AudioAccessoryInputStream](capi-ohaudio-oh-audioaccessoryinputstream.md) *stream | 输入流句柄指针。 |
 | OH_AudioAccessoryInputStream_StartCallback callback | 回调函数指针，不可为空。 |
 
 **返回值**
@@ -264,7 +262,7 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_RegisterStopCallback(O
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_AudioAccessoryInputStream *stream | 输入流句柄指针。 |
+| [OH_AudioAccessoryInputStream](capi-ohaudio-oh-audioaccessoryinputstream.md) *stream | 输入流句柄指针。 |
 | OH_AudioAccessoryInputStream_StopCallback callback | 回调函数指针，不可为空。 |
 
 **返回值**
@@ -291,7 +289,7 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_RegisterReleaseCallbac
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_AudioAccessoryInputStream *stream | 输入流句柄指针。 |
+| [OH_AudioAccessoryInputStream](capi-ohaudio-oh-audioaccessoryinputstream.md) *stream | 输入流句柄指针。 |
 | OH_AudioAccessoryInputStream_ReleaseCallback callback | 回调函数指针，不可为空。 |
 
 **返回值**
@@ -318,7 +316,7 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_RegisterLatencyCallbac
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_AudioAccessoryInputStream *stream | 输入流句柄指针。 |
+| [OH_AudioAccessoryInputStream](capi-ohaudio-oh-audioaccessoryinputstream.md) *stream | 输入流句柄指针。 |
 | OH_AudioAccessoryInputStream_GetLatencyCallback callback | 回调函数指针，不可为空。 |
 
 **返回值**
@@ -345,7 +343,7 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_RegisterFramePositionC
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_AudioAccessoryInputStream *stream | 输入流句柄指针。 |
+| [OH_AudioAccessoryInputStream](capi-ohaudio-oh-audioaccessoryinputstream.md) *stream | 输入流句柄指针。 |
 | OH_AudioAccessoryInputStream_GetFramePositionCallback callback | 回调函数指针，不可为空。 |
 
 **返回值**
@@ -378,7 +376,7 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_Write(OH_AudioAccessor
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_AudioAccessoryInputStream *stream | 输入流句柄指针。 |
+| [OH_AudioAccessoryInputStream](capi-ohaudio-oh-audioaccessoryinputstream.md) *stream | 输入流句柄指针。 |
 | const uint8_t *data | 音频数据缓冲区指针，不可为空。 |
 | uint32_t dataSize | 音频数据大小，单位为字节（Byte），需大于0。 |
 
@@ -406,7 +404,7 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_GetWritableSize(OH_Aud
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_AudioAccessoryInputStream *stream | 输入流句柄指针。 |
+| [OH_AudioAccessoryInputStream](capi-ohaudio-oh-audioaccessoryinputstream.md) *stream | 输入流句柄指针。 |
 | uint32_t *writableSize | 输出参数，返回可写入大小，单位为字节（Byte）。 |
 
 **返回值**

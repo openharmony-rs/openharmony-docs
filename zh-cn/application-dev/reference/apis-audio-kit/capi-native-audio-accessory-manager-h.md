@@ -43,7 +43,7 @@
 | [OH_AudioAccessoryManager_Disconnected](#oh_audioaccessorymanager_disconnected) | 断开音频配件连接。 |
 | [OH_AudioAccessoryManager_Destroy](#oh_audioaccessorymanager_destroy) | 销毁音频配件实例。 |
 
-## 函数指针说明
+## 函数说明
 
 ### OH_AudioAccessory_SetNoiseReductionCallback
 
@@ -63,7 +63,7 @@ typedef bool (*OH_AudioAccessory_SetNoiseReductionCallback)(OH_AudioAccessory *a
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_AudioAccessory *accessory | 音频配件。 |
+| [OH_AudioAccessory](capi-ohaudio-oh-audioaccessory.md) *accessory | 音频配件。 |
 | [OH_AudioNoiseReductionMode](capi-native-audio-common-h.md#oh_audionoisereductionmode) mode | 配件当前的降噪模式。 |
 
 **返回值**
@@ -71,8 +71,6 @@ typedef bool (*OH_AudioAccessory_SetNoiseReductionCallback)(OH_AudioAccessory *a
 | 类型 | 说明 |
 | -- | -- |
 | bool | true：请求的降噪模式处理成功。<br>false：请求的降噪模式处理失败。 |
-
-## 函数说明
 
 ### OH_AudioManager_GetAccessoryManager()
 
@@ -90,7 +88,7 @@ OH_AudioCommon_Result OH_AudioManager_GetAccessoryManager(OH_AudioAccessoryManag
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_AudioAccessoryManager **outManager | 指向OH_AudioAccessoryManager指针的地址。该指针地址由系统管理，调用方不得释放，否则可能导致使用异常。 |
+| [OH_AudioAccessoryManager](capi-ohaudio-oh-audioaccessorymanager.md) **outManager | 指向OH_AudioAccessoryManager指针的地址。该指针地址由系统管理，调用方不得释放，否则可能导致使用异常。 |
 
 **返回值**
 
@@ -116,11 +114,11 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_CreateInput(OH_AudioAccessoryMana
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_AudioAccessoryManager *manager | 指向通过OH_AudioManager_GetAccessoryManager获取的音频配件管理器实例。 |
-| const OH_AudioAccessoryInfo *info | 指向配件基本信息的指针，不可为NULL。 |
-| const OH_AudioAccessoryCapabilities *capabilities | 指向配件能力的指针，不可为NULL。 |
+| [OH_AudioAccessoryManager](capi-ohaudio-oh-audioaccessorymanager.md) *manager | 指向通过OH_AudioManager_GetAccessoryManager获取的音频配件管理器实例。 |
+| const [OH_AudioAccessoryInfo](capi-ohaudio-oh-audioaccessoryinfo.md) *info | 指向配件基本信息的指针，不可为NULL。 |
+| const [OH_AudioAccessoryCapabilities](capi-ohaudio-oh-audioaccessorycapabilities.md) *capabilities | 指向配件能力的指针，不可为NULL。 |
 | OH_AudioAccessory_OpenInputStreamCallback openInputStream | 音频配件打开输入流的回调函数，不可为NULL。<br>此回调仅在应用请求从该音频配件采集音频时调用，而非在调用此函数时调用。 |
-| OH_AudioAccessory **outOwnedAccessory | 指向OH_AudioAccessory指针的地址，用于接收创建好的音频配件实例。 |
+| [OH_AudioAccessory](capi-ohaudio-oh-audioaccessory.md) **outOwnedAccessory | 指向OH_AudioAccessory指针的地址，用于接收创建好的音频配件实例。 |
 
 **返回值**
 
@@ -153,8 +151,8 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_SetAssociatedMacAddresses(OH_Audi
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_AudioAccessoryManager *manager | 指向通过OH_AudioManager_GetAccessoryManager获取的音频配件管理器实例。 |
-| OH_AudioAccessory *accessory | 指向主配件句柄的指针。 |
+| [OH_AudioAccessoryManager](capi-ohaudio-oh-audioaccessorymanager.md) *manager | 指向通过OH_AudioManager_GetAccessoryManager获取的音频配件管理器实例。 |
+| [OH_AudioAccessory](capi-ohaudio-oh-audioaccessory.md) *accessory | 指向主配件句柄的指针。 |
 | const char **macAddresses | 副配件MAC地址数组。<br>**当count为0时可以为空**，表示清除副配件MAC列表，适用于所有副配件断开连接的场景。<br>每个元素需符合以下规则：<br>- 格式为以冒号分隔的十六进制表示的NUL终止ASCII字符串。<br>  接受大写和小写十六进制数字（A-F / a-f）。<br>- 需为非空、非零长度字符串。<br>- 同一数组中的重复地址将被忽略，仅每个唯一地址的首次出现生效。 |
 | uint32_t count | MAC地址数组中的元素数量。 |
 
@@ -180,9 +178,9 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_RegisterNoiseReductionCapability(
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_AudioAccessoryManager *manager | 指向通过OH_AudioManager_GetAccessoryManager获取的音频配件管理器实例。 |
-| OH_AudioAccessory *accessory | 指向通过OH_AudioAccessoryManager_CreateInput获取的音频配件实例。 |
-| const OH_AudioAccessoryNoiseReductionCapability *capability | 指向降噪能力的指针，不可为NULL。 |
+| [OH_AudioAccessoryManager](capi-ohaudio-oh-audioaccessorymanager.md) *manager | 指向通过OH_AudioManager_GetAccessoryManager获取的音频配件管理器实例。 |
+| [OH_AudioAccessory](capi-ohaudio-oh-audioaccessory.md) *accessory | 指向通过OH_AudioAccessoryManager_CreateInput获取的音频配件实例。 |
+| const [OH_AudioAccessoryNoiseReductionCapability](capi-ohaudio-oh-audioaccessorynoisereductioncapability.md) *capability | 指向降噪能力的指针，不可为NULL。 |
 | OH_AudioAccessory_SetNoiseReductionCallback onNoiseReduction | 音频配件的降噪模式发生变更时调用的回调函数。<br>如果配件不支持动态模式切换，可以为NULL。 |
 
 **返回值**
@@ -209,8 +207,8 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_SetNoiseReductionMode(OH_AudioAcc
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_AudioAccessoryManager *manager | 指向通过OH_AudioManager_GetAccessoryManager获取的音频配件管理器实例。 |
-| OH_AudioAccessory *accessory | 指向通过OH_AudioAccessoryManager_CreateInput获取的音频配件实例。 |
+| [OH_AudioAccessoryManager](capi-ohaudio-oh-audioaccessorymanager.md) *manager | 指向通过OH_AudioManager_GetAccessoryManager获取的音频配件管理器实例。 |
+| [OH_AudioAccessory](capi-ohaudio-oh-audioaccessory.md) *accessory | 指向通过OH_AudioAccessoryManager_CreateInput获取的音频配件实例。 |
 | [OH_AudioNoiseReductionMode](capi-native-audio-common-h.md#oh_audionoisereductionmode) mode | 要设置的降噪模式。应为通过RegisterNoiseReductionCapability注册的模式之一。 |
 
 **返回值**
@@ -241,8 +239,8 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_Connected(OH_AudioAccessoryManage
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_AudioAccessoryManager *manager | 指向通过OH_AudioManager_GetAccessoryManager获取的音频配件管理器实例。 |
-| OH_AudioAccessory *accessory | 指向通过OH_AudioAccessoryManager_CreateInput获取的音频配件实例。 |
+| [OH_AudioAccessoryManager](capi-ohaudio-oh-audioaccessorymanager.md) *manager | 指向通过OH_AudioManager_GetAccessoryManager获取的音频配件管理器实例。 |
+| [OH_AudioAccessory](capi-ohaudio-oh-audioaccessory.md) *accessory | 指向通过OH_AudioAccessoryManager_CreateInput获取的音频配件实例。 |
 
 **返回值**
 
@@ -268,8 +266,8 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_Disconnected(OH_AudioAccessoryMan
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_AudioAccessoryManager *manager | 指向通过OH_AudioManager_GetAccessoryManager获取的音频配件管理器实例。 |
-| OH_AudioAccessory *accessory | 指向通过OH_AudioAccessoryManager_CreateInput获取的音频配件实例。 |
+| [OH_AudioAccessoryManager](capi-ohaudio-oh-audioaccessorymanager.md) *manager | 指向通过OH_AudioManager_GetAccessoryManager获取的音频配件管理器实例。 |
+| [OH_AudioAccessory](capi-ohaudio-oh-audioaccessory.md) *accessory | 指向通过OH_AudioAccessoryManager_CreateInput获取的音频配件实例。 |
 
 **返回值**
 
@@ -295,8 +293,8 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_Destroy(OH_AudioAccessoryManager 
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_AudioAccessoryManager *manager | 指向通过OH_AudioManager_GetAccessoryManager获取的音频配件管理器实例。 |
-| OH_AudioAccessory *accessory | 指向通过OH_AudioAccessoryManager_CreateInput获取的音频配件实例。 |
+| [OH_AudioAccessoryManager](capi-ohaudio-oh-audioaccessorymanager.md) *manager | 指向通过OH_AudioManager_GetAccessoryManager获取的音频配件管理器实例。 |
+| [OH_AudioAccessory](capi-ohaudio-oh-audioaccessory.md) *accessory | 指向通过OH_AudioAccessoryManager_CreateInput获取的音频配件实例。 |
 
 **返回值**
 
