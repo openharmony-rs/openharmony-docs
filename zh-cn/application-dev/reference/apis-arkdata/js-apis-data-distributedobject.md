@@ -867,6 +867,8 @@ on(type: 'change', callback: DataObserver): void
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 const changeCallback1: distributedDataObject.DataObserver = (sessionId: string, fields: Array<string>) => {
   console.info('change callback1 ' + sessionId);
   if (fields != null && fields != undefined) {
@@ -877,8 +879,8 @@ const changeCallback1: distributedDataObject.DataObserver = (sessionId: string, 
 }
 try {
   g_object.on('change', changeCallback1);
-} catch (error) {
-  console.error(`Failed to execute. Code: ${error.code}, message: ${error.message}`);
+} catch (err: BusinessError) {
+  console.error(`Failed to execute. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -900,6 +902,8 @@ off(type: 'change', callback?: DataObserver): void
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 const changeCallback1: distributedDataObject.DataObserver = (sessionId: string, fields: Array<string>) => {
   console.info('change callback1 ' + sessionId);
   if (fields != null && fields != undefined) {
@@ -927,8 +931,8 @@ try {
   g_object.on('change', changeCallback1);
   g_object.on('change', changeCallback2);
   g_object.off('change');
-} catch (error) {
-  console.error(`Failed to execute. Code: ${error.code}, message: ${error.message}`);
+} catch (err: BusinessError) {
+  console.error(`Failed to execute. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -950,13 +954,15 @@ on(type: 'status', callback: StatusObserver): void
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 const statusCallback1: distributedDataObject.StatusObserver = (sessionId: string, networkId: string, status: string) => {
   console.info('status callback ' + sessionId);
 }
 try {
   g_object.on('status', statusCallback1);
-} catch (error) {
-  console.error(`Failed to execute. Code: ${error.code}, message: ${error.message}`);
+} catch (err: BusinessError) {
+  console.error(`Failed to execute. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -978,6 +984,8 @@ off(type: 'status', callback?: StatusObserver): void
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 const statusCallback1: distributedDataObject.StatusObserver = (sessionId: string, networkId: string, status: string) => {
   console.info('status callback1' + sessionId);
 }
@@ -994,8 +1002,8 @@ try {
   g_object.on('status', statusCallback1);
   g_object.on('status', statusCallback2);
   g_object.off('status');
-} catch (error) {
-  console.error(`Failed to execute. Code: ${error.code}, message: ${error.message}`);
+} catch (err: BusinessError) {
+  console.error(`Failed to execute. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -1017,14 +1025,16 @@ on(type: 'progressChanged', callback: ProgressObserver): void
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 const progressChangedCallback: distributedDataObject.ProgressObserver = (sessionId: string, progress: number) => {
   console.info('progressChanged callback' + sessionId);
   console.info('progressChanged callback' + progress);
 }
 try {
   g_object.on('progressChanged', progressChangedCallback);
-} catch (error) {
-  console.error(`Failed to execute. Code: ${error.code}, message: ${error.message}`);
+} catch (err: BusinessError) {
+  console.error(`Failed to execute. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -1046,6 +1056,8 @@ off(type: 'progressChanged', callback?: ProgressObserver): void
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 const progressChangedCallback1: distributedDataObject.ProgressObserver = (sessionId: string, progress: number) => {
   console.info('progressChanged callback1' + sessionId);
   console.info('progressChanged callback1' + progress);
@@ -1064,8 +1076,8 @@ try {
   g_object.on('progressChanged', progressChangedCallback2);
   // 取消对资产传输进度的所有监听
   g_object.off('progressChanged');
-} catch (error) {
-  console.error(`Failed to execute. Code: ${error.code}, message: ${error.message}`);
+} catch (err: BusinessError) {
+  console.error(`Failed to execute. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 ### setAsset<sup>20+</sup>
@@ -1325,7 +1337,7 @@ setSessionId(sessionId?: string): boolean
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | boolean | true：标识设置sessionId成功。 <br>false：标识设置sessionId失败。 |
+  | boolean | true：表示设置sessionId成功。 <br>false：表示设置sessionId失败。 |
 
 **示例：**
 
@@ -1354,7 +1366,7 @@ g_object.setSessionId('');
 
 on(type: 'change', callback: (sessionId: string, fields: Array&lt;string&gt;) => void): void
 
-监听分布式数据对象的变更。
+监听分布式数据对象的数据变更。
 
 > **说明：**
 >
