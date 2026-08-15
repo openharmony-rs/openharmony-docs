@@ -106,9 +106,9 @@ Web({
 ``` TypeScript
 // 改变设备横竖屏状态
 private changeOrientation(isLandscape: boolean) {
-  // 获取UIAbility实例的上下文信息
-  let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  // 调用该接口手动改变设备横竖屏状态
+// 获取UIAbility实例的上下文信息
+let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+// 调用该接口手动改变设备横竖屏状态
   window.getLastWindow(context).then((lastWindow) => {
     lastWindow.setPreferredOrientation(isLandscape ? window.Orientation.LANDSCAPE : window.Orientation.PORTRAIT);
   }).catch((err: Error) => {
@@ -122,16 +122,16 @@ private changeOrientation(isLandscape: boolean) {
 <!-- @[exit full screen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebFullScreen/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
- onBackPress(): boolean | void {
-    if (this.isFullScreen) {
-      this.isFullScreen = false;
-      this.changeOrientation(false);
-      return true;
-    } else {
-      router.back();
-      return true;
-    }
+onBackPress(): boolean | void {
+  if (this.isFullScreen) {
+    this.isFullScreen = false;
+    this.changeOrientation(false);
+    return true;
+  } else {
+    router.back();
+    return true;
   }
+}
 ```
 
 完整示例：
