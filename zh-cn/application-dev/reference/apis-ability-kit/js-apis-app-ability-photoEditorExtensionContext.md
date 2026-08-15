@@ -25,7 +25,7 @@ import { common } from '@kit.AbilityKit';
 
 saveEditedContentWithUri(uri: string): Promise\<AbilityResult\>
 
-传入编辑过的图片的沙箱路径并保存。使用Promise异步回调。适用于将编辑后的图片已保存到沙箱路径的场景。
+传入编辑过的图片的沙箱路径以保存编辑后的图片。使用Promise异步回调。适用于将编辑后的图片已保存到沙箱路径的场景。
 
 **模型约束：** 此接口仅可在Stage模型下使用。此接口需要在主线程中使用，不要在Worker、TaskPool等子线程中使用。
 
