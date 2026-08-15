@@ -75,7 +75,7 @@
 <div class="container">
     <list class="todo-wrapper" ref="listObj">
         <list-item for="{{todolist}}" class="todo-item">
-            <div style="flex-direction: column;align-items: center;justify-content: center;">
+            <div style="width: 454px;height: 80px;flex-direction: column;align-items: center;justify-content: center;">
                 <text class="todo-title">{{$item.title}}</text>
                 <text class="todo-title">{{$item.date}}</text>
             </div>
