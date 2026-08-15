@@ -30,6 +30,8 @@ startVerticalPanel(context: common.UIAbilityContext, wantParam: Record\<string, 
 
 ![app-startverticalpanel-procedure](../figures/image-verticalpanelmanager-startverticalpanel.png)
 
+**模型约束：**  此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Ability.AppExtension.VerticalPanel
 
 **系统接口：** 此接口为系统接口。
@@ -39,13 +41,13 @@ startVerticalPanel(context: common.UIAbilityContext, wantParam: Record\<string, 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- |  -------- |
 | context | [common.UIAbilityContext](js-apis-inner-application-uiAbilityContext.md) | 是 | 拉起方应用的上下文。 |
-| wantParam | Record<string, Object> | 是 | 表示启动[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)组件时传递的参数。 |
-| panelConfig | [PanelConfig](#panelconfig) | 是 | 垂域应用面板配置参数。 |
+| wantParam | Record<string, Object> | 是 | 表示启动垂域应用面板[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)组件时传递的参数，包括场景类型等信息，用于指定需要拉起的垂域应用面板类型。不同垂域面板类型需要不同的wantParam参数内容，参见相关[VerticalType](#verticaltype)的说明。|
+| panelConfig | [PanelConfig](#panelconfig) | 是 | 垂域应用面板配置参数。|
 | panelStartCallback | [PanelStartCallback](#panelstartcallback) | 是 | 拉起垂域应用面板执行结果的回调。 |
 
 **返回值：**
 
-| 参数名 | 说明 |
+| 类型 | 说明 |
 | -------- |  -------- |
 | Promise\<void> | Promise对象，无返回结果。 |
 
@@ -57,7 +59,7 @@ startVerticalPanel(context: common.UIAbilityContext, wantParam: Record\<string, 
 | -------- | -------- |
 | 202 | The application is not a system application. |
 | 16000050 | Failed to connect to the system service or system server handle failed. |
-| 16000135 | The main window of this ability of this context does not exits. |
+| 16000135 | The main window of this ability of this context does not exist. |
 
 **示例：**
 
@@ -115,7 +117,7 @@ struct Index {
     // Param[3] PanelStartCallback
     let callback: verticalPanelManager.PanelStartCallback = {
       onError: (code: number, name: string, message: string): void => {
-        console.info(`startVerticalPanel onError code ${code} name: ${name} message: ${message}`);
+        console.error(`startVerticalPanel onError code ${code} name: ${name} message: ${message}`);
       },
       onResult: (result: common.AbilityResult): void => {
         console.info(`startVerticalPanel onResult result ${JSON.stringify(result)}`);
@@ -129,10 +131,10 @@ struct Index {
           console.info(`call startVerticalPanel end`);
         })
         .catch((error: BusinessError) => {
-          console.error(`call startVerticalPanel promise catch error : ${error}`);
+          console.error(`call startVerticalPanel promise catch error. Code: ${error.code}, message: ${error.message}`);
         });
     } catch (error) {
-      console.error(`call startVerticalPanel catch error : ${error}`);
+      console.error(`call startVerticalPanel catch error. Code: ${error.code}, message: ${error.message}`);
     }
   }
 }
@@ -141,6 +143,8 @@ struct Index {
 ## PanelConfig
 
 垂域应用面板的配置。
+
+**模型约束：**  此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Ability.AppExtension.VerticalPanel
 
@@ -165,18 +169,22 @@ struct Index {
 
 开启垂域应用面板的回调。
 
+**模型约束：**  此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Ability.AppExtension.VerticalPanel
 
 **系统接口：** 此接口为系统接口。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| onError | [OnErrorFn](#onerrorfn) | 否 | 否 | 拉起垂域应用面板执行失败的回调。 |
-| onResult |  [OnResultFn](#onresultfn) | 否 | 是 | 拉起垂域应用面板终止时的回调。 |
+| onError | [OnErrorFn](#onerrorfn) | 否 | 否 | 拉起垂域应用面板执行失败的回调。当垂域面板拉起过程中出现异常（如权限不足、系统服务异常等）时触发，回调参数包含错误码、错误名称和错误信息，开发者可根据code判断具体错误类型并进行相应处理。 |
+| onResult |  [OnResultFn](#onresultfn) | 否 | 是 | 拉起垂域应用面板结束时的回调，在关闭面板时触发。 |
 
 ## OnErrorFn
 
 type OnErrorFn = (code: number, name: string, message: string) => void
+
+**模型约束：**  此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Ability.AppExtension.VerticalPanel
 
@@ -193,19 +201,23 @@ type OnErrorFn = (code: number, name: string, message: string) => void
 **示例：**
 
 ```ts
+import { common, verticalPanelManager } from '@kit.AbilityKit';
+
 let callback: verticalPanelManager.PanelStartCallback = {
   onError: (code: number, name: string, message: string): void => {
-    console.info(`startVerticalPanel onError code ${code} name: ${name} message: ${message}`);
+    console.error(`startVerticalPanel onError code ${code} name: ${name} message: ${message}`);
   },
-  onResult: (result: common.AbilityResult):void => {
+  onResult: (result: common.AbilityResult): void => {
     console.info(`startVerticalPanel onResult result ${JSON.stringify(result)}`);
   },
-}
+}                    
 ```
 
 ## OnResultFn
 
 type OnResultFn = (parameter: AbilityResult) => void
+
+**模型约束：**  此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Ability.AppExtension.VerticalPanel
 
@@ -220,17 +232,21 @@ type OnResultFn = (parameter: AbilityResult) => void
 **示例：**
 
 ```ts
+import { common, verticalPanelManager } from '@kit.AbilityKit';
+
 let callback: verticalPanelManager.PanelStartCallback = {
   onError: (code: number, name: string, message: string): void => {
-    console.info(`startVerticalPanel onError code ${code} name: ${name} message: ${message}`);
+    console.error(`startVerticalPanel onError code ${code} name: ${name} message: ${message}`);
   },
-  onResult: (result: common.AbilityResult):void => {
+  onResult: (result: common.AbilityResult): void => {
     console.info(`startVerticalPanel onResult result ${JSON.stringify(result)}`);
   },
 }
 ```
 
 ## 常量
+
+**模型约束：**  此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Ability.AppExtension.VerticalPanel
 
@@ -242,4 +258,4 @@ let callback: verticalPanelManager.PanelStartCallback = {
 | SOURCE_APP_MODULE_NAME | string | 'moduleName' | 常量字符串moduleName，表示源应用的模块名。可以作为[sourceAppInfo](#panelconfig)的key值。 |
 | SOURCE_APP_ABILITY_NAME | string | 'abilityName' | 常量字符串abilityName，表示源应用的能力名。可以作为[sourceAppInfo](#panelconfig)的key值。 |
 | SOURCE_APP_WINDOW_ID | string | 'windowId' | 常量字符串windowId，表示源应用的窗口Id。可以作为[sourceAppInfo](#panelconfig)的key值。 |
-| SOURCE_APP_SCREEN_MODE | string | 'screenMode' | 常量字符串screenMode，表示源应用的屏幕模式，当前只在值为'1'的分屏模式下能正常拉起垂类面板。可以作为[sourceAppInfo](#panelconfig)的key值。 |
+| SOURCE_APP_SCREEN_MODE | string | 'screenMode' | 常量字符串screenMode，表示源应用的屏幕模式，当前只在值为'1'的分屏模式下能正常拉起垂域应用面板。可以作为[sourceAppInfo](#panelconfig)的key值。 |

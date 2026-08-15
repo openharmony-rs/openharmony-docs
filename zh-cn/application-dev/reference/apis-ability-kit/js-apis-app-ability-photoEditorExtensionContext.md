@@ -7,7 +7,7 @@
 <!--Tester: @lusq-->
 <!--Adviser: @HelloCrease-->
 
-PhotoEditorExtensionContext是PhotoEditorExtensionAbility的上下文，继承自ExtensionContext，提供PhotoEditorExtensionAbility的相关配置信息以及保存图片接口。
+PhotoEditorExtensionContext 是PhotoEditorExtensionAbility的上下文，继承自ExtensionContext，提供PhotoEditorExtensionAbility的配置信息以及保存图片接口。
 > **说明：**
 > 
 > 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -25,21 +25,21 @@ import { common } from '@kit.AbilityKit';
 
 saveEditedContentWithUri(uri: string): Promise\<AbilityResult\>
 
-传入编辑过的图片的uri并保存。使用Promise异步回调。
+传入编辑过的图片的沙箱路径并保存。使用Promise异步回调。适用于将编辑后的图片已保存到沙箱路径的场景。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。此接口需要在主线程中使用，不要在Worker、TaskPool等子线程中使用。
 
 **系统能力：** SystemCapability.Ability.AppExtension.PhotoEditorExtension
 
 **参数：**
 | 参数名  | 类型  | 必填  | 说明  |
 | ------------ | ------------ | ------------ | ------------ |
-| uri | string  | 是  | 编辑后图片的[uri](../apis-core-file-kit/js-apis-file-fileuri.md)，格式为file://\<bundleName>/\<sandboxPath>。  |
+| uri | string  | 是  | 编辑后图片的沙箱路径。  |
 
 **返回值：**
 |  类型 | 说明  |
 | ------------ | ------------ |
-| Promise\<AbilityResult\> | Promise对象，返回AbilityResult对象，编辑过的图片uri存在want.uri中，[uri](../apis-core-file-kit/js-apis-file-fileuri.md)格式为file://\<bundleName>/\<sandboxPath>。  |
+| Promise\<AbilityResult\> | Promise对象，返回AbilityResult对象，编辑后图片的uri存在want.uri中，[uri](../apis-core-file-kit/js-apis-file-fileuri.md)格式为file://\<bundleName>/\<sandboxPath>。  |
 
 **错误码：**
 
@@ -49,12 +49,12 @@ saveEditedContentWithUri(uri: string): Promise\<AbilityResult\>
 | ------------ | ------------ |
 | 401  | Params error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.  |
 | 29600001  | Internal error. |
-| 29600002  |  Image input error. |
-| 29600003  |  Image too big. |
+| 29600002  | Image input error. |
+| 29600003  | Image too big. |
 
 **示例：**
 ```ts
-import { common, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+import { common, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { image } from '@kit.ImageKit';
@@ -77,31 +77,28 @@ struct Index {
           this.originalImage?.rotate(90).then(() => {
             const imagePackerApi: image.ImagePacker = image.createImagePacker();
             let packOpts: image.PackingOption = { format: 'image/jpeg', quality: 98 };
-            imagePackerApi.packToData(this.originalImage, packOpts).then((data: ArrayBuffer) => {
+            imagePackerApi.packToData(this.originalImage, packOpts).then(async (data: ArrayBuffer) => {
               let context = this.getUIContext().getHostContext() as common.PhotoEditorExtensionContext;
               let filePath = context.filesDir + '/edited.jpg';
               let file: fileIo.File | undefined;
-              try{
+              try {
                 file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE
                 | fileIo.OpenMode.CREATE | fileIo.OpenMode.TRUNC);
                 let writeLen = fileIo.writeSync(file.fd, data);
                 hilog.info(0x0000, TAG, 'write data to file succeed and size is:'
                   + writeLen);
-                fileIo.closeSync(file);
-                context.saveEditedContentWithUri(filePath).then
-                  (data => {
-                    hilog.info(0x0000, TAG,
-                      `saveContentEditingWithUri result: ${JSON.stringify(data)}`);
-                  });
-              } catch (e) {
-                hilog.info(0x0000, TAG, `writeImage failed:${e}`);
+                let result = await context.saveEditedContentWithUri(filePath);
+                hilog.info(0x0000, TAG,
+                  `saveContentEditingWithUri result: ${JSON.stringify(result)}`);
+              } catch (err) {
+                hilog.error(0x0000, TAG, `writeImage failed:${err}`);
               } finally {
-                fileIo.close(file);
+                fileIo.closeSync(file);
               }
             }).catch((error: BusinessError) => {
               hilog.error(0x0000, TAG,
-                'Failed to pack the image. And the error is: ' + String(error));
-            })
+                `Failed to pack the image. Code: ${error.code}, message: ${error.message}`);
+            });
           })
         }).margin({ top: 10 })
       }
@@ -111,24 +108,24 @@ struct Index {
 ```
 ## PhotoEditorExtensionContext.saveEditedContentWithImage
 
-saveEditedContentWithImage(pixeMap: image.PixelMap, option: image.PackingOption): Promise\<AbilityResult\>
+saveEditedContentWithImage(pixelMap: image.PixelMap, option: image.PackingOption): Promise\<AbilityResult\>
 
-传入编辑过的图片的PixelMap对象并保存。使用Promise异步回调。
+传入编辑过的图片的PixelMap对象以保存编辑后的图片。使用Promise异步回调。适用于立即保存PixelMap对象的场景。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。此接口需要在主线程中使用，不要在Worker、TaskPool等子线程中使用。
 
 **系统能力：** SystemCapability.Ability.AppExtension.PhotoEditorExtension
 
 **参数：**
 | 参数名  | 类型  | 必填  | 说明  |
 | ------------ | ------------ | ------------ | ------------ |
-| pixeMap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 是  | 编辑过的图片image.PixelMap。  |
-| option  | [image.PackingOption](..//apis-image-kit/arkts-apis-image-i.md#packingoption)  |  是 | 设置打包参数。  |
+| pixelMap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 是  | 编辑过的图片image.PixelMap。  |
+| option  | [image.PackingOption](../apis-image-kit/arkts-apis-image-i.md#packingoption)  |  是 | 设置图片打包参数，包含format（图片格式）和quality（图片质量）等配置项。  |
 
 **返回值：**
 |  类型 | 说明  |
 | ------------ | ------------ |
-| Promise\<AbilityResult\> | Promise对象，返回AbilityResult对象，编辑过的图片uri存在want.uri中，[uri](../apis-core-file-kit/js-apis-file-fileuri.md)格式为file://\<bundleName>/\<sandboxPath>。  |
+| Promise\<AbilityResult\> | Promise对象，返回AbilityResult对象， 编辑后图片的uri存在want.uri中，[uri](../apis-core-file-kit/js-apis-file-fileuri.md)格式为file://\<bundleName>/\<sandboxPath>。  |
 
 **错误码：**
 
@@ -138,12 +135,12 @@ saveEditedContentWithImage(pixeMap: image.PixelMap, option: image.PackingOption)
 | ------------ | ------------ |
 | 401  | Params error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.  |
 | 29600001  | Internal error. |
-| 29600002  |  Image input error. |
-| 29600003  |  Image too big. |
+| 29600002  | Image input error. |
+| 29600003  | Image too big. |
 
 **示例：**
 ```ts
-import { common, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+import { common, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
@@ -169,12 +166,16 @@ struct Index {
                 packOpts).then(data => {
                   hilog.info(0x0000, TAG,
                     `saveContentEditingWithImage result: ${JSON.stringify(data)}`);
+                }).catch((error: BusinessError) => {
+                  hilog.error(0x0000, TAG, `saveEditedContentWithImage failed: ${error.message}`);
                 });
             } catch (e) {
-              hilog.error(0x0000, TAG, `saveContentEditingWithImage failed:${e}`);
+              hilog.error(0x0000, TAG, `saveEditedContentWithImage failed:${e}`);
               return;
             }
-          })
+          }).catch((error: BusinessError) => {
+            hilog.error(0x0000, TAG, `rotate failed: ${error.message}`);
+          });
         }).margin({ top: 10 })
       }
     }
