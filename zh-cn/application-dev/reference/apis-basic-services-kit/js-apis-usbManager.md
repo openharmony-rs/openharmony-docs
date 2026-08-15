@@ -35,7 +35,7 @@ import { usbManager } from '@kit.BasicServicesKit';
 
 调用[usbManager.closePipe](#usbmanagerclosepipe)关闭设备连接通道。
 
-![usbmanager](../figures/usbManager.png)
+![usbManager](../figures/usbManager.png)
 
 ## usbManager.getDevices
 
