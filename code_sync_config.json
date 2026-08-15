@@ -42131,13 +42131,7 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/TestInstancof.ets",
-				"functions":[
-					{
-						"end_line":37,
-						"name":"test_instanceof",
-						"start_line":15
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/Sendable.ets",
@@ -42171,33 +42165,15 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SoluteMismatchTypeOne.ets",
-				"functions":[
-					{
-						"end_line":29,
-						"name":"define_resolveOne",
-						"start_line":15
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SoluteMismatchTypeTwo.ets",
-				"functions":[
-					{
-						"end_line":29,
-						"name":"define_resolveTwo",
-						"start_line":15
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SoluteMismatchTypeThree.ets",
-				"functions":[
-					{
-						"end_line":35,
-						"name":"define_resolveThree",
-						"start_line":15
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SaveResult.ets",
@@ -42211,13 +42187,7 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SoluteItemInitialized.ets",
-				"functions":[
-					{
-						"end_line":36,
-						"name":"initialize_item",
-						"start_line":15
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/ui.ets",
@@ -42225,6 +42195,56 @@
 					{
 						"end_line":21,
 						"name":"define_normalItem",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/TestInstanceof.ets",
+				"functions":[
+					{
+						"end_line":37,
+						"name":"test_instanceof",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SolveMismatchTypeOne.ets",
+				"functions":[
+					{
+						"end_line":29,
+						"name":"define_resolveOne",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SolveMismatchTypeTwo.ets",
+				"functions":[
+					{
+						"end_line":29,
+						"name":"define_resolveTwo",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SolveMismatchTypeThree.ets",
+				"functions":[
+					{
+						"end_line":35,
+						"name":"define_resolveThree",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SolveItemInitialized.ets",
+				"functions":[
+					{
+						"end_line":36,
+						"name":"initialize_item",
 						"start_line":15
 					}
 				]
@@ -50670,9 +50690,13 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/workers/MyWorker1.ts",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/workers/MyWorker1.ets",
 				"functions":[
 					{
-						"end_line":57,
+						"end_line":67,
 						"name":"interact_main_thread",
 						"start_line":16
 					}
@@ -50949,19 +50973,23 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/workers/MyWorker2.ts",
-				"functions":[
-					{
-						"end_line":46,
-						"name":"worker_handle_associated_sync_task",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/workers/handle.ts",
 				"functions":[
 					{
 						"end_line":29,
+						"name":"worker_handle_associated_sync_task",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/workers/MyWorker2.ets",
+				"functions":[
+					{
+						"end_line":44,
 						"name":"worker_handle_associated_sync_task",
 						"start_line":16
 					}
@@ -50975,11 +51003,6 @@
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/TaskSendDataUsage.ets",
 				"functions":[
-					{
-						"end_line":24,
-						"name":"receive_task_message",
-						"start_line":19
-					},
 					{
 						"end_line":78,
 						"name":"implement_child_thread_task",
