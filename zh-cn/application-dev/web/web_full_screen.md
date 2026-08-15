@@ -83,7 +83,10 @@ Web组件全屏模式仅改变内容布局，不触发应用窗口方向切换�
 <!-- @[toggle fullscreen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebFullScreen/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-Web({ src:$rawfile("video.html"), controller: this.controller }) // 注意替换
+Web({
+  src:$rawfile('video.html'), // 需要替换
+  controller: this.controller
+})
   .domStorageAccess(true)
   .expandSafeArea([SafeAreaType.SYSTEM])
   .onFullScreenEnter(() => {
