@@ -211,8 +211,8 @@ CounterV2InlineStyleOptions定义了数值内联型CounterV2的属性和事件�
 | --------- | ---------------------- | ---- | ---- | ------------------------------------------------------ |
 | value     | ArkTS-Dyn: number <br>ArkTS-Sta: int                 | 否  | 是  | 设置CounterV2的初始值。<br>默认值：0<br>有效值范围：[min, max]，其中min和max分别对应CounterV2的最小值和最大值。<br>值为undefined时，按默认值处理。<br>边界处理：若value小于min则按min处理，若value大于max则按max处理。 |
 | min       | ArkTS-Dyn: number <br>ArkTS-Sta: int                 | 否  | 是  | 设置CounterV2的最小值。<br/>默认值：0<br>取值范围：<br>ArkTS-Dyn：[Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER]。<br>ArkTS-Sta：[Int.MIN_VALUE, Int.MAX_VALUE]内的整数。<br>超出取值范围，按照默认值处理。<br>值为undefined时，按默认值处理。 |
-| max       | ArkTS-Dyn: number <br>ArkTS-Sta: int                 | 否  | 是  | 设置CounterV2的最大值。<br/>默认值：999<br>取值范围：<br>ArkTS-Dyn：[Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER]。<br>ArkTS-Sta：[Int.MIN_VALUE, Int.MAX_VALUE]内的整数，超出取值范围，按照默认值处理。<br>超出取值范围，按照默认值处理。<br>值为undefined时，按默认值处理。 |
-| textWidth | ArkTS-Dyn: number <br>ArkTS-Sta: double                 | 否  | 是  | 设置数值文本的宽度。<br/>默认值：undefined<br/>取值范围：[0, +∞)<br/>单位：vp<br/>不设置该属性或者设置为undefined时，文本宽度由内容自适应撑开。小于0时，按0处理。 |
+| max       | ArkTS-Dyn: number <br>ArkTS-Sta: int                 | 否  | 是  | 设置CounterV2的最大值。<br/>默认值：999<br>取值范围：<br>ArkTS-Dyn：[Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER]。<br>ArkTS-Sta：[Int.MIN_VALUE, Int.MAX_VALUE]内的整数。<br>超出取值范围，按照默认值处理。<br>值为undefined时，按默认值处理。 |
+| textWidth | ArkTS-Dyn: number <br>ArkTS-Sta: double                 | 否  | 是  | 设置数值文本的宽度。<br/>默认值：undefined<br/>值为undefined时，文本宽度由内容自适应撑开。<br/>取值范围：[0, +∞)<br/>单位：vp<br/>小于0时，按0处理。 |
 | onChange  | [OnInlineCounterV2Change](#oninlinecounterv2change) | 否  | 是  | 数值改变时，触发该回调。回调参数value表示当前显示的数值。<br>使用场景：当需要在数值变化时执行自定义操作（如更新关联数据、触发业务逻辑、记录日志等）时传入此回调。<br>默认值：undefined，表示数值改变时不触发该回调。<br>值为undefined时，按默认值处理。 |
 
 > **说明：**

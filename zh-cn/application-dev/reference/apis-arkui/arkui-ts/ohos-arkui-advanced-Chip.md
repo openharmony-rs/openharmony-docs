@@ -84,7 +84,7 @@ ChipOptions定义Chip的样式及具体样式参数。
 | borderRadius    | [Dimension](ts-types.md#dimension10)                         | 否  | 是  | Chip背景圆角半径大小，不支持百分比，传入百分比时按默认值处理。<br>取值范围：[0, +∞) <br>默认值：$r('sys.float.ohos_id_corner_radius_button')。<br>单位：vp<br>值为undefined时，按默认值处理。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
 | allowClose      | boolean                                                      | 否  | 是  | 关闭图标是否显示。<br>默认值：true<br>true：关闭图标显示；false：关闭图标不显示。<br>值为undefined时，按默认值处理。<br>**说明**：当suffixSymbol有传入参数时，allowClose不生效；当suffixSymbol没有传入参数而suffixIcon有传入参数时，allowClose不生效；当suffixSymbol和suffixIcon都没有传入参数时，allowClose决定是否显示关闭图标。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
 | onClose         | ArkTS-Dyn: ()=>void <br/> ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12)                                                     | 否  | 是  | 默认关闭图标点击事件回调，无参数和返回值。当用户点击默认关闭图标时触发该回调。<br>值为undefined时，不触发关闭图标点击事件。<br>**说明**：仅当关闭图标显示时生效，即suffixSymbol和suffixIcon都未传入参数且allowClose为true时。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| onClicked<sup>12+</sup>     | ArkTS-Dyn: Callback\<void> <br/> ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) | 否  | 是  | Chip组件点击事件回调，无参数和返回值。当用户点击Chip组件时触发该回调。<br>值为undefined时，Chip不能被点击。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23        |
+| onClicked<sup>12+</sup>     | ArkTS-Dyn: Callback\<void> <br/> ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) | 否  | 是  | Chip组件点击事件回调，无参数和返回值。当用户点击Chip组件时触发该回调。<br>值为undefined时，不触发回调。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23        |
 | direction<sup>12+</sup> | [Direction](ts-appendix-enums.md#direction) | 否 | 是 | 布局方向。<br>默认值：Direction.Auto。<br>值为undefined时，按默认值处理。<br>**使用场景**：常用于国际化场景，适配阿拉伯语等从右到左（RTL）阅读习惯的语言环境，实现界面镜像效果。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
 | closeOptions<sup>14+</sup> | [CloseOptions](#closeoptions14) | 否 | 是 | 默认关闭图标的功能属性，包括无障碍朗读功能和字体大小等属性。仅在默认关闭图标显示时生效，即allowClose为true且suffixSymbol和suffixIcon均未设置传入参数时。<br>值为undefined时，按默认值处理。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。**ArkTS-Dyn起始版本：** 14 <br/> **ArkTS-Sta起始版本：** 23 |
 | accessibilityDescription<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | Chip组件的无障碍描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的结果。特别是当这些结果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 14 <br/> **ArkTS-Sta起始版本：** 23 |
@@ -260,7 +260,7 @@ ChipSymbolGlyphOptions定义前缀图标和后缀图标的属性。
 
 > **说明：**
 >
-> 不支持使用[SymbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12对象说明)修改动效类型及effectStrategy设置动效。
+> 不支持使用[SymbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12对象说明)修改动效类型及[effectStrategy](ts-basic-components-symbolGlyph.md#effectstrategy)设置动效。
 >
 
 ## LabelOptions
@@ -1664,8 +1664,6 @@ struct ChipMaterialExample {
 ArkTS-Sta示例：
 
 ```ts
-'use static'
-
 import {
   Button,
   Chip,
@@ -1702,7 +1700,7 @@ struct ChipMaterialExample {
         activatedBackgroundSystemMaterial: new uiMaterial.ImmersiveMaterial({
           style: uiMaterial.ImmersiveStyle.THICK
         })
-      })
+      } as ChipOptions)
 
       Button('改变激活状态')
         .onClick(() => {

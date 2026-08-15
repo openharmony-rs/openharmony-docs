@@ -201,7 +201,7 @@
   }
   ```
 
-- @Extend装饰的函数仅限当前文件使用，不支持导出，不支持在其他文件调用。
+- \@Extend装饰的函数仅限当前文件使用，不支持导出，不支持在其他文件调用。
 
   【反例】
 
@@ -319,7 +319,7 @@ struct FancyUse {
 ```
 ![](figures/arkts-extend-2.png)
 
-使用@Extend将样式组合复用，示例如下。
+使用\@Extend将样式组合复用，示例如下。
 <!-- @[Extend_Usage_Scenario_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUsageScenariotwo.ets) --> 
 
 ``` TypeScript

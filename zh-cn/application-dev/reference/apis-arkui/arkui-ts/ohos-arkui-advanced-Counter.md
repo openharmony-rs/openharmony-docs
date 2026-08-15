@@ -754,7 +754,7 @@ struct CounterPage {
       })
         .width('80%')
 
-      //数值型Counter
+      //紧凑型Counter
       CounterComponent({
         options: {
           direction: this.currentDirection,
