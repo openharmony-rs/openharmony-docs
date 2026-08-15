@@ -45,7 +45,7 @@ ContainerReader提供以下关键能力。
 <!-- @[FillTheSpace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/layoutSpecifications/FillTheSpace.ets) -->  
 
 ``` TypeScript
-import {ContainerReader, ContainerReaderAttribute, Size} from '@kit.ArkUI';
+import {ContainerReader,  Size} from '@kit.ArkUI';
 @Entry
 @Component
 struct Example {
@@ -84,7 +84,7 @@ struct Example {
 <!-- @[DivideRemainingSpace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/layoutSpecifications/DivideRemainingSpace.ets) -->  
 
 ``` TypeScript
-import {ContainerReader, ContainerReaderAttribute, Size} from '@kit.ArkUI';
+import {ContainerReader,  Size} from '@kit.ArkUI';
 @Entry
 @Component
 struct Example {
@@ -132,7 +132,7 @@ struct Example {
 <!-- @[DivideRemainingSpaceEqually](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/layoutSpecifications/DivideRemainingSpaceEqually.ets) -->  
 
 ``` TypeScript
-import {ContainerReader, ContainerReaderAttribute, Size} from '@kit.ArkUI';
+import {ContainerReader,  Size} from '@kit.ArkUI';
 @Entry
 @Component
 struct Example {
@@ -321,7 +321,7 @@ ContainerReader的主要接口包括ContainerReader和breakpointConfig。
    <!-- @[DevelopmentSteps](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/developmentSteps/DevelopmentSteps.ets) -->  
    
    ``` TypeScript
-   import {ContainerReader, ContainerReaderAttribute, Size} from '@kit.ArkUI';
+   import {ContainerReader,  Size} from '@kit.ArkUI';
    @Entry
    @Component
    struct Example {
@@ -364,7 +364,7 @@ ContainerReader的主要接口包括ContainerReader和breakpointConfig。
 <!-- @[IndependentBreakpoints](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/developmentDemo/IndependentBreakpoints.ets) -->  
 
 ``` TypeScript
-import {ContainerReader, ContainerReaderAttribute, Size} from '@kit.ArkUI';
+import {ContainerReader,  Size} from '@kit.ArkUI';
 @Entry
 @Component
 struct MultiContainerExample {
@@ -435,7 +435,7 @@ struct MultiContainerExample {
 <!-- @[GridComponentAdaptiveColumnSettings](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/developmentDemo/GridComponentAdaptiveColumnSettings.ets) -->  
 
 ``` TypeScript
-import {ContainerReader, ContainerReaderAttribute, Size} from '@kit.ArkUI';
+import {ContainerReader,  Size} from '@kit.ArkUI';
 @Entry
 @Component
 struct GridBreakpointExample {
@@ -520,7 +520,7 @@ struct GridBreakpointExample {
 <!-- @[CustomComponentAdaptiveLayout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/developmentDemo/CustomComponentAdaptiveLayout.ets) -->  
 
 ``` TypeScript
-import {ContainerReader, ContainerReaderAttribute, Size} from '@kit.ArkUI';
+import {ContainerReader,  Size} from '@kit.ArkUI';
 
 // 自适应卡片组件，内部使用ContainerReader感知容器尺寸
 @Component
@@ -598,7 +598,7 @@ struct AdaptiveCardExample {
 <!-- @[LeftOrRightSplitLayout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/developmentDemo/LeftOrRightSplitLayout.ets) -->  
 
 ``` TypeScript
-import { ContainerReader, ContainerReaderAttribute, Size } from '@kit.ArkUI';
+import { ContainerReader,  Size } from '@kit.ArkUI';
 
 @Entry
 @Component
