@@ -210,7 +210,7 @@ let callback: verticalPanelManager.PanelStartCallback = {
   onResult: (result: common.AbilityResult): void => {
     console.info(`startVerticalPanel onResult result ${JSON.stringify(result)}`);
   },
-}                    
+}
 ```
 
 ## OnResultFn
