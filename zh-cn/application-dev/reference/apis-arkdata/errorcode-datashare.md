@@ -54,7 +54,7 @@ The DataShareHelper fails to be initialized.
 
 **处理步骤**
 
-1. 咨询DataShare服务端提供者，获取正确的URI路径。
+1. 咨询DataShare服务端提供者，获取正确的uri路径。
 2. DataShare仅支持Stage模型，检查context是否为Stage模型的context。
 3. 检查客户端是否有数据的读或者写权限，具体步骤如下：<br>
     （1） 找到数据提供者包名，在uri的path里面找，例如：uri = "datashareproxy://com.acts.ohos.data.datasharetest/test"。<br>
@@ -68,16 +68,16 @@ The URI does not exist.
 
 **错误描述**
 
-添加/删除模板异常或者开启/关闭静默访问传入的URI格式或者路径错误时，系统会产生此错误码。
+添加/删除模板异常或者开启/关闭静默访问传入的uri格式或者路径错误时，系统会产生此错误码。
 
 **可能原因**
 
-1. 入参URI路径不正确。
-2. 入参URI格式不正确。
+1. 入参uri路径不正确。
+2. 入参uri格式不正确。
 
 **处理步骤**
 
-咨询DataShare服务端提供者，获取正确的URI路径。
+咨询DataShare服务端提供者，获取正确的uri路径。
 
 ## 15700012 数据区不存在
 

@@ -311,7 +311,7 @@ publish(data: ProxyData[], config: DataProxyConfig): Promise&lt;DataProxyResult[
 
 API版本26.0.0之前，每个应用支持最多32个共享配置；从API版本26.0.0开始，每个应用支持最多64个共享配置。
 
-从API版本26.0.0开始，支持发布多值类型配置，一个URI只能对应一种值类型。且配置发布后不允许使用publish更新已发布的多值类型URI。多值类型的操作接口见[putValue](#putvalue)、[removeValue](#removevalue)和[getValues](#getvalues)。
+从API版本26.0.0开始，支持发布多值类型配置，一个uri只能对应一种值类型。且配置发布后不允许使用publish更新已发布的多值类型uri。多值类型的操作接口见[putValue](#putvalue)、[removeValue](#removevalue)和[getValues](#getvalues)。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
