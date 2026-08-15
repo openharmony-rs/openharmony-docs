@@ -208,11 +208,11 @@ type EventProcess = (event: string, args: Record\<string, Object>) => void
 
 定义处理事件和参数的通用函数类型。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **ArkTS-Sta起始版本：** 23
+
+**ArkTS-Dyn起始版本：** 26.1.0
 
 **参数：**
 

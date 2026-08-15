@@ -272,7 +272,7 @@ ArkTS-Sta: getSize(): double | long
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: double \| long | 获取WebHttpBodyStream中的数据大小。单位：字节。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: double \| long | 获取WebHttpBodyStream数据大小。单位：字节。 |
 
 **示例：**
 

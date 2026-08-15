@@ -98,7 +98,7 @@ type ArrayUnionType = Array\<Int8Array\> | Array\<Uint8Array\> | Array\<Uint8Cla
 
 ## BufferEncoding
 
-type BufferEncoding = 'ascii' | 'utf8' | 'utf-8' | 'utf16le' | 'ucs2' | 'ucs-2' | 'base64' | 'base64url' | 'latin1' | 'binary' | 'hex'
+type BufferEncoding = | 'ascii' | 'utf8' | 'utf-8' | 'utf16le' | 'ucs2' | 'ucs-2' | 'base64' | 'base64url' | 'latin1' | 'binary' | 'hex'
 
 表示支持的编码格式类型。
 
@@ -144,7 +144,7 @@ ArkTS-Sta: alloc(size: int, fill?: string | Buffer | int | double | long, encodi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| size | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 指定的Buffer对象长度，单位：字节。取值为正整数，最大值为4294967295。 |
+| size | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 指定的Buffer对象长度，单位：字节。取值为正整数，最大值为2^32-1，即4294967295。 |
 | fill | ArkTS-Dyn: string \| [Buffer](#buffer) \| number <br> ArkTS-Sta: string \| [Buffer](#buffer) \| int \| double \| long | 否 | 填充至新缓冲区的值，默认值：0。 |
 | encoding | [BufferEncoding](#bufferencoding) | 否 | 编码格式（当`fill`参数为string时，才有意义）。默认值：'utf8'。 |
 

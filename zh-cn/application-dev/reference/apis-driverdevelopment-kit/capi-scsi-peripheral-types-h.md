@@ -28,9 +28,9 @@
 |--------------------------------------------------------------------------------------| -- | -- |
 | [ScsiPeripheral_DeviceMemMap](capi-scsiperipheralddk-scsiperipheral-devicememmap.md) | ScsiPeripheral_DeviceMemMap | 通过调用[OH_ScsiPeripheral_CreateDeviceMemMap](capi-scsi-peripheral-api-h.md#oh_scsiperipheral_createdevicememmap)创建的设备内存映射。使用该设备内存映射的缓冲区可以提供更好的性能。 |
 | [ScsiPeripheral_IORequest](capi-scsiperipheralddk-scsiperipheral-iorequest.md)       | ScsiPeripheral_IORequest | 读/写操作的请求参数。该结构体定义了SCSI外设进行读/写操作时所需的请求参数，包括逻辑块起始地址、传输长度、控制信息等。 |
-| [ScsiPeripheral_Request](capi-scsiperipheralddk-scsiperipheral-request.md)           | ScsiPeripheral_Request | 请求参数结构体。 |
+| [ScsiPeripheral_Request](capi-scsiperipheralddk-scsiperipheral-request.md)           | ScsiPeripheral_Request | SCSI请求参数结构体，用于构造与SCSI设备交互的请求参数，支持配置命令描述符块、数据缓冲区、超时时间等。 |
 | [ScsiPeripheral_Response](capi-scsiperipheralddk-scsiperipheral-response.md)         | ScsiPeripheral_Response | SCSI响应参数结构体，包含状态、错误诊断数据、传输结果等，用于接收SCSI设备响应数据、判断命令是否成功。 |
-| [ScsiPeripheral_TestUnitReadyRequest](capi-scsiperipheralddk-scsiperipheral-testunitreadyrequest.md) | ScsiPeripheral_TestUnitReadyRequest | SCSI命令（TEST UNIT READY）的请求结构体，通常用于确认设备状态是否就绪。 |
+| [ScsiPeripheral_TestUnitReadyRequest](capi-scsiperipheralddk-scsiperipheral-testunitreadyrequest.md) | ScsiPeripheral_TestUnitReadyRequest | SCSI命令（TEST UNIT READY）的请求结构体，通常用于确认逻辑单元是否就绪（逻辑单元是SCSI设备中可独立寻址的I/O操作实体）。 |
 | [ScsiPeripheral_InquiryRequest](capi-scsiperipheralddk-scsiperipheral-inquiryrequest.md)            | ScsiPeripheral_InquiryRequest | SCSI命令（INQUIRY）的请求结构体，通常用于查询设备的基本信息。 |
 | [ScsiPeripheral_InquiryInfo](capi-scsiperipheralddk-scsiperipheral-inquiryinfo.md)                  | ScsiPeripheral_InquiryInfo | SCSI INQUIRY 数据，用于存储SCSI外设的INQUIRY命令查询结果。 |
 | [ScsiPeripheral_ReadCapacityRequest](capi-scsiperipheralddk-scsiperipheral-readcapacityrequest.md)  | ScsiPeripheral_ReadCapacityRequest | SCSI命令（READ CAPACITY）的请求结构体，用于发送读取存储容量的命令，可帮助获取设备的逻辑块大小和总块数。 |
@@ -38,7 +38,7 @@
 | [ScsiPeripheral_RequestSenseRequest](capi-scsiperipheralddk-scsiperipheral-requestsenserequest.md)  | ScsiPeripheral_RequestSenseRequest | SCSI命令（REQUEST SENSE）的请求结构体，该命令通常用于获取设备的错误信息。 |
 | [ScsiPeripheral_BasicSenseInfo](capi-scsiperipheralddk-scsiperipheral-basicsenseinfo.md)            | ScsiPeripheral_BasicSenseInfo | SCSI Sense Data的基本信息结构体，用于封装SCSI命令执行后返回的sense数据。该结构体包含响应码、状态标志位以及各类信息字段，用于驱动程序获取和分析SCSI设备的错误状态和命令执行结果。 |
 | [ScsiPeripheral_VerifyRequest](capi-scsiperipheralddk-scsiperipheral-verifyrequest.md)              | ScsiPeripheral_VerifyRequest | SCSI命令（VERIFY）的请求结构体，该命令通常用于校验逻辑块的数据完整性。 |
-| [ScsiPeripheral_Device](capi-scsiperipheralddk-scsiperipheral-device.md)                            | ScsiPeripheral_Device | 不透明的SCSI设备结构体。 |
+| [ScsiPeripheral_Device](capi-scsiperipheralddk-scsiperipheral-device.md)                            | ScsiPeripheral_Device | 不透明的SCSI设备结构体，用于表示与SCSI外设交互的设备句柄。 |
 
 ### 枚举
 
@@ -63,7 +63,7 @@ SCSI Peripheral DDK错误码。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| SCSIPERIPHERAL_DDK_NO_PERM = 201 | 没有权限。请确保应用已正确声明相应权限。 |
+| SCSIPERIPHERAL_DDK_NO_PERM = 201 | 没有权限。请确保应用已正确声明所需的权限。 |
 | SCSIPERIPHERAL_DDK_INVALID_PARAMETER = 401 | 非法参数。请检查参数是否符合要求。 |
 | SCSIPERIPHERAL_DDK_SUCCESS = 31700000 | 操作成功。 |
 | SCSIPERIPHERAL_DDK_MEMORY_ERROR = 31700001 | 与内存相关的错误，例如，内存不足、内存数据复制失败或内存申请失败。请检查内存状态和相关参数。 |
@@ -95,7 +95,7 @@ enum ScsiPeripheral_Status
 | SCSIPERIPHERAL_STATUS_RESERVATION_CONFLICT = 0x18 | 资源保留冲突。 |
 | SCSIPERIPHERAL_STATUS_TASK_SET_FULL = 0x28 | 任务集已满。 |
 | SCSIPERIPHERAL_STATUS_ACA_ACTIVE = 0x30 | ACA活动状态。 |
-| SCSIPERIPHERAL_STATUS_TASK_ABORTED = 0x40 | 任务已终止。 |
+| SCSIPERIPHERAL_STATUS_TASK_ABORTED = 0x40 | 任务已中止。 |
 
 ### SCSIPERIPHERAL_MIN_DESCRIPTOR_FORMAT_SENSE
 
@@ -129,7 +129,7 @@ SCSIPERIPHERAL_MAX_CMD_DESC_BLOCK_LEN 16
 
 **描述**
 
-命令描述块的最大长度。
+命令描述符块的最大长度。
 
 **起始版本：** 18
 

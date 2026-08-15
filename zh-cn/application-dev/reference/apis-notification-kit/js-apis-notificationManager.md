@@ -99,9 +99,9 @@ let notificationRequest: notificationManager.NotificationRequest = {
   content: {
     notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
     normal: {
-      title: "test_title",
-      text: "test_text",
-      additionalText: "test_additionalText"
+      title: 'test_title',
+      text: 'test_text',
+      additionalText: 'test_additionalText'
     }
   }
 };
@@ -126,9 +126,9 @@ let notificationRequest: notificationManager.NotificationRequest = {
   content: {
     notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
     normal: {
-      title: "test_title",
-      text: "test_text",
-      additionalText: "test_additionalText"
+      title: 'test_title',
+      text: 'test_text',
+      additionalText: 'test_additionalText'
     }
   }
 };
@@ -196,9 +196,9 @@ let notificationRequest: notificationManager.NotificationRequest = {
   content: {
     notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
     normal: {
-      title: "test_title",
-      text: "test_text",
-      additionalText: "test_additionalText"
+      title: 'test_title',
+      text: 'test_text',
+      additionalText: 'test_additionalText'
     }
   }
 };
@@ -220,9 +220,9 @@ let notificationRequest: notificationManager.NotificationRequest = {
   content: {
     notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
     normal: {
-      title: "test_title",
-      text: "test_text",
-      additionalText: "test_additionalText"
+      title: 'test_title',
+      text: 'test_text',
+      additionalText: 'test_additionalText'
     }
   }
 };
@@ -287,7 +287,7 @@ let cancelCallback = (err: BusinessError): void => {
     console.info(`Succeeded in canceling notification.`);
   } 
 }
-notificationManager.cancel(0, "label", cancelCallback);
+notificationManager.cancel(0, 'label', cancelCallback);
 ```
 
 ArkTS-Sta示例：
@@ -302,7 +302,7 @@ let cancelCallback = (err: BusinessError | null): void => {
     console.info(`Succeeded in canceling notification.`);
   } 
 }
-notificationManager.cancel(0, "label", cancelCallback);
+notificationManager.cancel(0, 'label', cancelCallback);
 ```
 
 ## notificationManager.cancel
@@ -1219,8 +1219,8 @@ isNotificationEnabled(callback: AsyncCallback\<boolean\>): void
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.        |
-| 1600008  | The user does not exist.<br> 适用版本：11+                 |
-| 17700001 | The specified bundle name was not found.<br> 适用版本：11+ |
+| 1600008  | The user does not exist.               |
+| 17700001 | The specified bundle name was not found. |
 
 **示例：**
 
@@ -1285,8 +1285,8 @@ isNotificationEnabled(): Promise\<boolean\>
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.        |
-| 1600008  | The user does not exist.<br> 适用版本：11+                 |
-| 17700001 | The specified bundle name was not found.<br> 适用版本：11+ |
+| 1600008  | The user does not exist.             |
+| 17700001 | The specified bundle name was not found. |
 
 **示例：**
 
@@ -1832,7 +1832,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let id: number = 0;
-let label: string = "";
+let label: string = '';
 notificationManager.getNotificationParameters(id, label).then((data: notificationManager.NotificationParameters) => {
   console.info(`Succeeded in getting notification parameters, data is ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
@@ -1845,7 +1845,7 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let id: int = 0;
-let label: string = "";
+let label: string = '';
 notificationManager.getNotificationParameters(id, label).then((data: notificationManager.NotificationParameters | null) => {
   console.info(`Succeeded in getting notification parameters, data is ${JSON.stringify(data)}`);
 }).catch((err: Error): void => {
@@ -1899,7 +1899,7 @@ let cancelGroupCallback = (err: BusinessError): void => {
     console.info(`Succeeded in canceling group.`);
   }
 }
-let groupName: string = "GroupName";
+let groupName: string = 'GroupName';
 notificationManager.cancelGroup(groupName, cancelGroupCallback);
 ```
 
@@ -1914,7 +1914,7 @@ let cancelGroupCallback = (err: BusinessError | null): void => {
     console.info(`Succeeded in canceling group.`);
   }
 }
-let groupName: string = "GroupName";
+let groupName: string = 'GroupName';
 notificationManager.cancelGroup(groupName, cancelGroupCallback);
 ```
 
@@ -1961,7 +1961,7 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let groupName: string = "GroupName";
+let groupName: string = 'GroupName';
 notificationManager.cancelGroup(groupName).then(() => {
   console.info(`Succeeded in canceling group.`);
 }).catch((err: BusinessError) => {
@@ -1973,7 +1973,7 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let groupName: string = "GroupName";
+let groupName: string = 'GroupName';
 notificationManager.cancelGroup(groupName).then(() => {
   console.info(`Succeeded in canceling group.`);
 }).catch((err: Error): void => {
@@ -2191,7 +2191,7 @@ let requestEnableNotificationCallback = (err: BusinessError | null): void => {
     console.info(`requestEnableNotification1 Promise success!`)
   }
 };
-let testAbilityContext: common.UIAbilityContext = AppStorage.get<common.UIAbilityContext>("UIAbilityContext") as common.UIAbilityContext
+let testAbilityContext: common.UIAbilityContext = AppStorage.get<common.UIAbilityContext>('UIAbilityContext') as common.UIAbilityContext
 notificationManager.requestEnableNotification(testAbilityContext, requestEnableNotificationCallback);
 ```
 
@@ -2275,7 +2275,7 @@ import common from '@ohos.app.ability.common';
 import { AppStorage } from '@ohos.arkui.stateManagement'
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let testAbilityContext: common.UIAbilityContext = AppStorage.get<common.UIAbilityContext>("UIAbilityContext") as common.UIAbilityContext
+let testAbilityContext: common.UIAbilityContext = AppStorage.get<common.UIAbilityContext>('UIAbilityContext') as common.UIAbilityContext
     await notificationManager.requestEnableNotification(testAbilityContext).then(() => {
       console.info(`requestEnableNotification Promise success!`)
     }).catch((err: Error): void => {
@@ -2899,11 +2899,11 @@ notificationManager.isGeofenceEnabled().then((data: boolean) => {
 
 | 名称                 | 值  | 说明                               |
 | --------------------| --- | --------------------------------- |
-| OTHER   | "OTHER"   | 表示通知优先级类型为默认。            |
-| PRIMARY_CONTACT    | "PRIMARY_CONTACT"   | 表示通知优先级类型为重要联系人。                 |
-| AT_ME  | "AT_ME"   | 表示通知优先级类型为@我。            |
-| URGENT_MESSAGE   | "URGENT_MESSAGE"   | 表示通知优先级类型为加急消息。                 |
-| SCHEDULE_REMINDER   | "SCHEDULE_REMINDER"   | 表示通知优先级类型为日程待办。                 |
+| OTHER   | 'OTHER'   | 表示通知优先级类型为默认。            |
+| PRIMARY_CONTACT    | 'PRIMARY_CONTACT'   | 表示通知优先级类型为重要联系人。                 |
+| AT_ME  | 'AT_ME'   | 表示通知优先级类型为@我。            |
+| URGENT_MESSAGE   | 'URGENT_MESSAGE'   | 表示通知优先级类型为加急消息。                 |
+| SCHEDULE_REMINDER   | 'SCHEDULE_REMINDER'   | 表示通知优先级类型为日程待办。                 |
 
 ## BundleOption
 

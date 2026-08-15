@@ -64,7 +64,7 @@ ArkTS-Sta: ContentFormCard({contentFormData: uniformDataStruct.ContentForm, form
 |-------------|---|-------------------|
 | TYPE_BIG | 0 | 表示 4 x 4 的尺寸。默认卡片宽度为200，默认高度为200。 |
 | TYPE_MID | 1 | 表示 4 x 2 的尺寸。默认卡片宽度为200，默认高度为100。 |
-| TYPE_SMALL | 2 | 表示 2 x 1 的尺寸。默认卡片宽度为137， 默认高度为83。 |
+| TYPE_SMALL | 2 | 表示 2 x 1 的尺寸。默认卡片宽度为137，默认高度为83。 |
 
 ## 示例
 

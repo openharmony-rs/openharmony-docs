@@ -99,7 +99,7 @@ ArkTS-Sta: hasSerialRight(portId: int): boolean
 
 | 参数名    | 类型     | 必填 | 说明                                  |
 |--------|--------|----|-------------------------------------|
-| portId | ArkTS-Dyn: number<br> ArkTS-Sta: int  | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，传入无效值时返回错误码31400003。 |
+| portId | ArkTS-Dyn: number<br> ArkTS-Sta: int  | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时抛出错误码31400003异常。 |
 
 **返回值：**
 
@@ -114,8 +114,8 @@ ArkTS-Sta: hasSerialRight(portId: int): boolean
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14400005 | Database operation exception. Possible cause: Invalid portId provided. Solution: Call getPortList to get valid portIds first. |
-| 31400001 | Serial port management exception. Possible causes: 1. Failed to configure serial port; 2. Invalid serial port state; 3. System resource conflict. |
+| 14400005 | Database operation exception. |
+| 31400001 | Serial port management exception. |
 | 31400003 | PortId does not exist. |
 
 **示例：**
@@ -132,7 +132,7 @@ import serialManager from '@ohos.usbManager.serial';
 // 获取串口列表
 function hasSerialRightExample() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
-  console.info('portList: ', JSON.stringify(portList));
+  console.info('portList: '+ JSON.stringify(portList));
   if (portList === undefined || portList.length === 0) {
     console.error('portList is empty');
     return;
@@ -154,7 +154,7 @@ ArkTS-Dyn: requestSerialRight(portId: number): Promise&lt;boolean&gt;
 
 ArkTS-Sta: requestSerialRight(portId: int): Promise&lt;boolean&gt;
 
-请求应用程序访问串口设备的权限。应用退出时自动移除对串口设备的访问权限，在应用重启后需要重新申请授权。使用Promise异步回调。通常在首次访问串口设备前、检测到无权限时调用此接口向用户申请授权。
+请求应用程序访问串口设备的权限。应用退出时自动移除对串口设备的访问权限，在应用重启后需要重新申请授权。使用Promise异步回调。通常在首次访问串口设备前、检测到无权限时调用此接口向用户申请授权，如需移除权限请调用[cancelSerialRight](#serialmanagercancelserialright)。
 
 **前置条件：**
 - 需要先调用[getPortList](#serialmanagergetportlist)获取端口号
@@ -165,7 +165,7 @@ ArkTS-Sta: requestSerialRight(portId: int): Promise&lt;boolean&gt;
 
 | 参数名    | 类型     | 必填 | 说明                                  |
 |--------|--------|----|-------------------------------------|
-| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时返回错误码31400003。 |
+| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时抛出错误码31400003异常。 |
 
 **返回值：**
 
@@ -180,8 +180,8 @@ ArkTS-Sta: requestSerialRight(portId: int): Promise&lt;boolean&gt;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14400005 | Database operation exception. Possible cause: Invalid portId provided. Solution: Call getPortList to get valid portIds first. |
-| 31400001 | Serial port management exception. Possible causes: 1. Failed to configure serial port; 2. Invalid serial port state; 3. System resource conflict. |
+| 14400005 | Database operation exception. |
+| 31400001 | Serial port management exception. |
 | 31400003 | PortId does not exist. |
 
 **示例：**
@@ -248,7 +248,7 @@ ArkTS-Sta: open(portId: int): void
 
 | 参数名    | 类型     | 必填 | 说明          |
 |--------|--------|----|-------------|
-| portId |   ArkTS-Dyn: number<br> ArkTS-Sta: int   | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时返回错误码31400003。 |
+| portId |   ArkTS-Dyn: number<br> ArkTS-Sta: int   | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时抛出错误码31400003异常。 |
 
 **返回值：**
 
@@ -263,7 +263,7 @@ ArkTS-Sta: open(portId: int): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 31400001 | Serial port management exception. Possible causes: 1. Failed to configure serial port; 2. Invalid serial port state; 3. System resource conflict. |
+| 31400001 | Serial port management exception. |
 | 31400002 | Access denied. Call requestSerialRight to request user authorization first. |
 | 31400003 | PortId does not exist. |
 | 31400004 | The serial port device is occupied. |
@@ -302,7 +302,7 @@ async function openExample() {
 
   // 打开设备
   try {
-    serialManager.open(portId)
+    serialManager.open(portId);
     console.info('open usbSerial success, portId: ' + portId);
   } catch (error) {
     const err: BusinessError = error as BusinessError;
@@ -343,7 +343,7 @@ ArkTS-Sta: getAttribute(portId: int): Readonly&lt;[SerialAttribute](#serialattri
 
 | 参数名    | 类型     | 必填 | 说明          |
 |--------|--------|----|-------------|
-| portId |   ArkTS-Dyn: number<br> ArkTS-Sta: int   | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时返回错误码31400003。 |
+| portId |   ArkTS-Dyn: number<br> ArkTS-Sta: int   | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时抛出错误码31400003异常。 |
 
 **返回值：**
 
@@ -358,7 +358,7 @@ ArkTS-Sta: getAttribute(portId: int): Readonly&lt;[SerialAttribute](#serialattri
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 31400001 | Serial port management exception. Possible causes: 1. Failed to configure serial port; 2. Invalid serial port state; 3. System resource conflict. |
+| 31400001 | Serial port management exception. |
 | 31400003 | PortId does not exist. |
 | 31400005 | The serial port device is not opened. Call the open API first. |
 
@@ -396,7 +396,7 @@ async function getAttributeExample() {
 
   // 打开设备
   try {
-    serialManager.open(portId)
+    serialManager.open(portId);
     console.info('open usbSerial success, portId: ' + portId);
   } catch (error) {
     const err: BusinessError = error as BusinessError;
@@ -433,7 +433,7 @@ ArkTS-Dyn: setAttribute(portId: number, attribute: [SerialAttribute](#serialattr
 
 ArkTS-Sta: setAttribute(portId: int, attribute: [SerialAttribute](#serialattribute)): void
 
-设置指定串口的配置参数。需先调用[open](#serialmanageropen)打开串口后才能设置配置。配置参数对象包含波特率（baudRate，必填）、数据位（dataBits，可选，默认8）、校验位（parity，可选，默认None）、停止位（stopBits，可选，默认1）等配置项。通常在设备初始化时、切换通信协议时、或设备需要非默认配置参数时调用此接口。
+设置指定串口的配置参数。需先调用[open](#serialmanageropen)打开串口后才能设置配置。配置参数对象包含波特率（baudRate，必填）、数据位（dataBits，可选，默认8）、校验位（parity，可选，默认PARITY_NONE）、停止位（stopBits，可选，默认1）等配置项。通常在设备初始化时、切换通信协议时、或设备需要非默认配置参数时调用此接口。
 
 **前置条件：**
 - 需要先调用[getPortList](#serialmanagergetportlist)获取端口号
@@ -450,8 +450,8 @@ ArkTS-Sta: setAttribute(portId: int, attribute: [SerialAttribute](#serialattribu
 
 | 参数名       | 类型                                  | 必填 | 说明          |
 |-----------|-------------------------------------|----|-------------|
-| portId    |   ArkTS-Dyn: number<br> ArkTS-Sta: int | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时返回错误码31400003。 |
-| attribute | [SerialAttribute](#serialattribute) | 是  | 串口配置参数对象，包含波特率（baudRate，必填）、数据位（dataBits，可选，默认8）、校验位（parity，可选，默认None）、停止位（stopBits，可选，默认1）。     |
+| portId    |   ArkTS-Dyn: number<br> ArkTS-Sta: int | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时抛出错误码31400003异常。 |
+| attribute | [SerialAttribute](#serialattribute) | 是  | 串口配置参数对象，包含波特率（baudRate，必填）、数据位（dataBits，可选，默认8）、校验位（parity，可选，默认PARITY_NONE）、停止位（stopBits，可选，默认1）。     |
 
 **错误码：**
 
@@ -460,7 +460,7 @@ ArkTS-Sta: setAttribute(portId: int, attribute: [SerialAttribute](#serialattribu
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 31400001 | Serial port management exception. Possible causes: 1. Failed to configure serial port; 2. Invalid serial port state; 3. System resource conflict. |
+| 31400001 | Serial port management exception. |
 | 31400003 | PortId does not exist. |
 | 31400005 | The serial port device is not opened. Call the open API first. |
 
@@ -498,7 +498,7 @@ async function setAttributeExample() {
 
   // 打开设备
   try {
-    serialManager.open(portId)
+    serialManager.open(portId);
     console.info('open usbSerial success, portId: ' + portId);
   } catch (error) {
     const err: BusinessError = error as BusinessError;
@@ -512,7 +512,7 @@ async function setAttributeExample() {
       dataBits: serialManager.DataBits.DATABIT_8,
       parity: serialManager.Parity.PARITY_NONE,
       stopBits: serialManager.StopBits.STOPBIT_1
-    }
+    };
     serialManager.setAttribute(portId, attribute);
     console.info('setAttribute usbSerial success, attribute: ' + JSON.stringify(attribute));
   } catch (error) {
@@ -550,9 +550,9 @@ ArkTS-Sta: read(portId: int, buffer: Uint8Array, timeout?: int): Promise&lt;int&
 
 | 参数名     | 类型         | 必填 | 说明               |
 |---------|------------|----|------------------|
-| portId  | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时返回错误码31400003。      |
+| portId  | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时抛出错误码31400003异常。      |
 | buffer  | Uint8Array | 是  | 读取数据的缓冲区，用于存储从串口设备读取的二进制数据。缓冲区大小应根据预期读取的数据量确定。读取成功后，返回值表示实际读取的数据长度。 |
-| timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 否  | 超时时间（单位：毫秒）。API在目标端口缓冲区无数据时，等待指定时间后返回。默认值0表示不等待直接返回。传入负数时抛出参数错误异常。建议取值范围≥0，具体值需根据设备响应速度和数据量合理设置。 |
+| timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 否  | 超时时间（单位：毫秒）。API在目标端口缓冲区无数据时，等待指定时间后返回。默认值0表示不等待直接返回。传入负数时抛出参数错误异常。取值范围[0, +∞)，具体值需根据设备响应速度和数据量合理设置。 |
 
 **返回值：**
 
@@ -567,7 +567,7 @@ ArkTS-Sta: read(portId: int, buffer: Uint8Array, timeout?: int): Promise&lt;int&
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 31400001 | Serial port management exception. Possible causes: 1. Failed to configure serial port; 2. Invalid serial port state; 3. System resource conflict. |
+| 31400001 | Serial port management exception. |
 | 31400003 | PortId does not exist. |
 | 31400005 | The serial port device is not opened. Call the open API first. |
 | 31400006 | Data transfer timed out. |
@@ -607,7 +607,7 @@ async function readExample() {
 
   // 打开设备
   try {
-    serialManager.open(portId)
+    serialManager.open(portId);
     console.info('open usbSerial success, portId: ' + portId);
   } catch (error) {
     const err: BusinessError = error as BusinessError;
@@ -615,10 +615,15 @@ async function readExample() {
   }
 
   // 异步读取
-  let readBuffer: Uint8Array = new Uint8Array(64);
-  let size: number = await serialManager.read(portId, readBuffer, 2000);
-  if (size > 0) {
-    console.info('read usbSerial success, readBuffer: ' + readBuffer.toString());
+  try {
+    let readBuffer: Uint8Array = new Uint8Array(64);
+    let size: number = await serialManager.read(portId, readBuffer, 2000);
+    if (size > 0) {
+      console.info('read usbSerial success, readBuffer: ' + readBuffer.toString());
+    }
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to read usbSerial. Code: ${err.code}, message: ${err.message}`);
   }
 
   // 关闭串口
@@ -662,9 +667,9 @@ ArkTS-Sta: readSync(portId: int, buffer: Uint8Array, timeout?: int): int
 
 | 参数名     | 类型         | 必填 | 说明               |
 |---------|------------|----|------------------|
-| portId  |  ArkTS-Dyn: number<br> ArkTS-Sta: int      | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时返回错误码31400003。|
+| portId  |  ArkTS-Dyn: number<br> ArkTS-Sta: int      | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时抛出错误码31400003异常。|
 | buffer  | Uint8Array | 是  | 读取数据的缓冲区，用于存储从串口设备读取的二进制数据。缓冲区大小应根据预期读取的数据量确定。读取成功后，返回值表示实际读取的数据长度。 |
-| timeout |  ArkTS-Dyn: number<br> ArkTS-Sta: int      | 否  | 超时时间（单位：毫秒）。API在目标端口缓冲区无数据时，等待指定时间后返回。默认值0表示不等待直接返回。传入负数时抛出参数错误异常。建议取值范围≥0，具体值需根据设备响应速度和数据量合理设置。 |
+| timeout |  ArkTS-Dyn: number<br> ArkTS-Sta: int      | 否  | 超时时间（单位：毫秒）。API在目标端口缓冲区无数据时，等待指定时间后返回。默认值0表示不等待直接返回。传入负数时抛出参数错误异常。取值范围[0, +∞)，具体值需根据设备响应速度和数据量合理设置。 |
 
 **返回值：**
 
@@ -679,7 +684,7 @@ ArkTS-Sta: readSync(portId: int, buffer: Uint8Array, timeout?: int): int
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 31400001 | Serial port management exception. Possible causes: 1. Failed to configure serial port; 2. Invalid serial port state; 3. System resource conflict. |
+| 31400001 | Serial port management exception. |
 | 31400003 | PortId does not exist. |
 | 31400005 | The serial port device is not opened. Call the open API first. |
 | 31400006 | Data transfer timed out. |
@@ -718,7 +723,7 @@ async function readSyncExample() {
 
   // 打开设备
   try {
-    serialManager.open(portId)
+    serialManager.open(portId);
     console.info('open usbSerial success, portId: ' + portId);
   } catch (error) {
     const err: BusinessError = error as BusinessError;
@@ -766,9 +771,9 @@ ArkTS-Sta: write(portId: int, buffer: Uint8Array, timeout?: int): Promise&lt;int
 
 | 参数名     | 类型         | 必填 | 说明               |
 |---------|------------|----|------------------|
-| portId  | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时返回错误码31400003。      |
+| portId  | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时抛出错误码31400003异常。      |
 | buffer  | Uint8Array | 是  | 写入数据的缓冲区，包含要发送到串口设备的二进制数据。每次写入的数据长度不超过4KB，超过会导致数据丢失，长数据建议分包写入。 |
-| timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 否  | 超时时间（单位：毫秒）。API在目标端口缓冲区无数据时，等待指定时间后返回。默认值0表示不等待直接返回。传入负数时抛出参数错误异常。建议取值范围≥0，具体值需根据设备响应速度和数据量合理设置。 |
+| timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 否  | 超时时间（单位：毫秒）。API在写入数据时等待缓冲区可写，在指定时间后返回。默认值0表示不等待直接返回。传入负数时抛出参数错误异常。取值范围[0, +∞)，具体值需根据设备响应速度和数据量合理设置。 |
 
 **返回值：**
 
@@ -783,7 +788,7 @@ ArkTS-Sta: write(portId: int, buffer: Uint8Array, timeout?: int): Promise&lt;int
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 31400001 | Serial port management exception. Possible causes: 1. Failed to configure serial port; 2. Invalid serial port state; 3. System resource conflict. |
+| 31400001 | Serial port management exception. |
 | 31400003 | PortId does not exist. |
 | 31400005 | The serial port device is not opened. Call the open API first. |
 | 31400006 | Data transfer timed out. |
@@ -824,7 +829,7 @@ async function writeExample() {
 
   // 打开设备
   try {
-    serialManager.open(portId)
+    serialManager.open(portId);
     console.info('open usbSerial success, portId: ' + portId);
   } catch (error) {
     const err: BusinessError = error as BusinessError;
@@ -832,10 +837,15 @@ async function writeExample() {
   }
 
   // 异步写入
-  let writeBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer)
-  let size: number = await serialManager.write(portId, writeBuffer, 2000);
-  if (size > 0) {
-    console.info('write usbSerial success, writeBuffer: ' + writeBuffer.toString());
+  try {
+    let writeBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer);
+    let size: number = await serialManager.write(portId, writeBuffer, 2000);
+    if (size > 0) {
+      console.info('write usbSerial success, writeBuffer: ' + writeBuffer.toString());
+    }
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to write usbSerial. Code: ${err.code}, message: ${err.message}`);
   }
 
   // 关闭串口
@@ -873,9 +883,9 @@ ArkTS-Sta: writeSync(portId: int, buffer: Uint8Array, timeout?: int): int
 
 | 参数名     | 类型         | 必填 | 说明               |
 |---------|------------|----|------------------|
-| portId  | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时返回错误码31400003。     |
+| portId  | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时抛出错误码31400003异常。     |
 | buffer  | Uint8Array | 是  | 写入数据的缓冲区，包含要发送到串口设备的二进制数据。每次写入的数据长度不超过4KB，超过会导致数据丢失，长数据建议分包写入。 |
-| timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 否  | 超时时间（单位：毫秒）。API在目标端口缓冲区无数据时，等待指定时间后返回。默认值0表示不等待直接返回。传入负数时抛出参数错误异常。建议取值范围≥0，具体值需根据设备响应速度和数据量合理设置。|
+| timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 否  | 超时时间（单位：毫秒）。API在写入数据时等待缓冲区可写，在指定时间后返回。默认值0表示不等待直接返回。传入负数时抛出参数错误异常。取值范围[0, +∞)，具体值需根据设备响应速度和数据量合理设置。|
 
 **返回值：**
 
@@ -890,7 +900,7 @@ ArkTS-Sta: writeSync(portId: int, buffer: Uint8Array, timeout?: int): int
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 31400001 | Serial port management exception. Possible causes: 1. Failed to configure serial port; 2. Invalid serial port state; 3. System resource conflict. |
+| 31400001 | Serial port management exception. |
 | 31400003 | PortId does not exist. |
 | 31400005 | The serial port device is not opened. Call the open API first. |
 | 31400006 | Data transfer timed out. |
@@ -931,7 +941,7 @@ async function writeSyncExample() {
 
   // 打开设备
   try {
-    serialManager.open(portId)
+    serialManager.open(portId);
     console.info('open usbSerial success, portId: ' + portId);
   } catch (error) {
     const err: BusinessError = error as BusinessError;
@@ -939,7 +949,7 @@ async function writeSyncExample() {
   }
 
   // 同步写入
-  let writeSyncBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer)
+  let writeSyncBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer);
   try {
     serialManager.writeSync(portId, writeSyncBuffer, 2000);
     console.info('writeSync usbSerial success, writeSyncBuffer: ' + writeSyncBuffer.toString());
@@ -986,7 +996,7 @@ ArkTS-Sta: close(portId: int): void
 
 | 参数名    | 类型     | 必填 | 说明          |
 |--------|--------|----|-------------|
-| portId | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时返回错误码31400003。 |
+| portId | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时抛出错误码31400003异常。 |
 
 **返回值：**
 
@@ -1001,7 +1011,7 @@ ArkTS-Sta: close(portId: int): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 31400001 | Serial port management exception. Possible causes: 1. Failed to configure serial port; 2. Invalid serial port state; 3. System resource conflict. |
+| 31400001 | Serial port management exception. |
 | 31400003 | PortId does not exist. |
 | 31400005 | The serial port device is not opened. Call the open API first. |
 
@@ -1040,7 +1050,7 @@ async function closeExample() {
 
   // 打开设备
   try {
-    serialManager.open(portId)
+    serialManager.open(portId);
     console.info('open usbSerial success, portId: ' + portId);
   } catch (error) {
     const err: BusinessError = error as BusinessError;
@@ -1064,7 +1074,7 @@ ArkTS-Dyn: cancelSerialRight(portId: number): void
 
 ArkTS-Sta: cancelSerialRight(portId: int): void
 
-移除应用程序运行时访问串口设备的权限。此接口会调用close关闭已打开的串口。通常在需要主动释放权限、切换访问不同设备、或出于安全考虑时调用此接口。
+移除应用运行时访问串口设备的权限。此接口会调用close关闭已打开的串口。通常在需要主动释放权限、切换访问不同设备、或出于安全考虑时调用此接口。
 
 **前置条件：**
 - 需要先调用[getPortList](#serialmanagergetportlist)获取端口号
@@ -1084,7 +1094,7 @@ ArkTS-Sta: cancelSerialRight(portId: int): void
 
 | 参数名    | 类型     | 必填 | 说明                                  |
 |--------|--------|----|-------------------------------------|
-| portId | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时返回错误码31400003。 |
+| portId | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时抛出错误码31400003异常。 |
 
 **返回值：**
 
@@ -1099,8 +1109,8 @@ ArkTS-Sta: cancelSerialRight(portId: int): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14400005 | Database operation exception. Possible cause: Invalid portId provided. Solution: Call getPortList to get valid portIds first. |
-| 31400001 | Serial port management exception. Possible causes: 1. Failed to configure serial port; 2. Invalid serial port state; 3. System resource conflict. |
+| 14400005 | Database operation exception. |
+| 31400001 | Serial port management exception. |
 | 31400002 | Access denied. Call requestSerialRight to request user authorization first. |
 | 31400003 | PortId does not exist. |
 
@@ -1139,7 +1149,7 @@ async function cancelSerialRightExample() {
   // 取消已经授予的权限
   try {
     serialManager.cancelSerialRight(portId);
-    console.info('cancelSerialRight success, portId: ', portId);
+    console.info('cancelSerialRight success, portId: '+ portId);
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     console.error(`Failed to cancel serial right. Code: ${err.code}, message: ${err.message}`);

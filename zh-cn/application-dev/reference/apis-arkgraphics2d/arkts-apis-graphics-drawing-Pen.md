@@ -69,7 +69,7 @@ constructor(pen: Pen)
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -269,7 +269,7 @@ setColor(color: common2D.Color) : void
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types;3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -482,8 +482,8 @@ import { common2D, drawing } from '@kit.ArkGraphics2D';
 let color : common2D.Color = { alpha: 255, red: 255, green: 0, blue: 0 };
 let pen = new drawing.Pen();
 pen.setColor(color);
-let hex_color = pen.getHexColor();
-console.info('getHexColor: ', hex_color.toString(16));
+let hexColor = pen.getHexColor();
+console.info('getHexColor: ', hexColor.toString(16));
 ```
 
 ## setStrokeWidth
@@ -764,7 +764,6 @@ import { common2D, drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
-    const canvas = context.canvas;
     const pen = new drawing.Pen();
     pen.setStrokeWidth(5);
     pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
@@ -1131,7 +1130,7 @@ class DrawingRenderNode extends RenderNode {
     pen.setStrokeWidth(5);
     pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
     pen.setJoinStyle(drawing.JoinStyle.ROUND_JOIN);
-    let joinStyle = pen.getJoinStyle();
+    pen.getJoinStyle();
   }
 }
 ```
@@ -1245,7 +1244,7 @@ class DrawingRenderNode extends RenderNode {
     pen.setStrokeWidth(5);
     pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
     pen.setCapStyle(drawing.CapStyle.SQUARE_CAP);
-    let capStyle = pen.getCapStyle();
+    pen.getCapStyle();
   }
 }
 ```

@@ -563,7 +563,7 @@ requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permission
 
 用于<!--RP1-->[UIAbility](js-apis-app-ability-uiAbility.md#uiability)<!--RP1End-->拉起弹窗请求[用户授权](../../security/AccessToken/request-user-authorization.md)，返回本次请求权限的授权结果。使用callback异步回调。
 
-适用于应用首次访问受保护资源前主动向用户申请 [user_grant](../../security/AccessToken/app-permission-mgmt-overview.md#user_grant用户授权) 权限的场景。
+适用于应用首次访问受保护资源前主动向用户申请[user_grant](../../security/AccessToken/app-permission-mgmt-overview.md#user_grant用户授权)权限的场景。
 
 如果用户拒绝授权，将无法通过此接口再次拉起授权弹窗。开发者可引导用户前往系统设置界面手动授权，或调用[requestPermissionOnSetting](#requestpermissiononsetting12)拉起权限设置弹窗，引导用户完成授权。
 
@@ -633,7 +633,7 @@ requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permission
 
 用于<!--RP1-->[UIAbility](js-apis-app-ability-uiAbility.md#uiability)<!--RP1End-->拉起弹窗请求[用户授权](../../security/AccessToken/request-user-authorization.md)，返回本次请求权限的授权结果。使用Promise异步回调。
 
-适用于应用首次访问受保护资源前主动向用户申请user_grant权限的场景。
+适用于应用首次访问受保护资源前主动向用户申请[user_grant](../../security/AccessToken/app-permission-mgmt-overview.md#user_grant用户授权)权限的场景。
 
 如果用户拒绝授权，将无法通过此接口再次拉起授权弹窗。开发者可引导用户前往系统设置界面手动授权，或调用[requestPermissionOnSetting](#requestpermissiononsetting12)拉起权限设置弹窗，引导用户完成授权。
 
@@ -925,7 +925,7 @@ openPermissionOnSetting(context: Context, permission: Permissions): Promise&lt;S
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 12100001 | Invalid parameter. Possible causes:<br>1. The context is invalid because it does not belong to the application itself;<br>2. The permission is invalid or not declared in the module.json file. |
-| 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining user operation result. |
+| 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining the user operation result. |
 | 12100014 | Unexpected permission. The permission is not a manual_settings permission. |
 
 **示例：**

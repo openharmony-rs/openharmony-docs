@@ -276,6 +276,22 @@ Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 | GET_ABILITY_INFO_WITH_APP_LINKING | 0x00000040 | 获取通过<!--RP3-->[域名校验](../../application-models/app-linking-startup.md#实现原理)<!--RP3End-->筛选的AbilityInfo。          |
 | GET_ABILITY_INFO_WITH_SKILL       | 0x00000080 | 获取包含skills的AbilityInfo。                    |
 
+## BundleInstallStatus
+
+应用安装状态枚举。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+| 名称 | 值 | 说明 |
+| -------- | ------ | ------------------------------------------------------------ |
+| BUNDLE_NOT_EXIST   | 1 | 应用未安装。 |
+| BUNDLE_INSTALLING  | 2 | 应用正在安装。 |
+| BUNDLE_INSTALLED   | 3 | 应用已安装。 |
+
 ## bundleManager.getBundleInfoForSelf
 
 ArkTS-Dyn: getBundleInfoForSelf(bundleFlags: number): Promise\<BundleInfo>
@@ -1118,7 +1134,7 @@ ArkTS-Sta: getBundleInfo(bundleName: string, bundleFlags: int, userId: int, call
 | bundleName  | string | 是   | 表示要查询的应用Bundle名称。 |
 | bundleFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定返回的BundleInfo所包含的信息，详情请参考[BundleFlag](#bundleflag)。|
 | userId      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。  |
-| callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的bundleInfo；否则为错误对象。 |
+| callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的BundleInfo；否则为错误对象。 |
 
 **错误码：**
 
@@ -1901,7 +1917,6 @@ ArkTS-Sta: getAbilityInfo(uri: string, abilityFlags: int): Promise\<Array\<Abili
 | 错误码ID | 错误信息                             |
 | -------- | ------------------------------------- |
 | 201 | Permission denied. |
-| 17700003 | The ability is not found.    |
 
 **示例：**
 
@@ -1948,6 +1963,80 @@ try {
 } catch (err) {
   let message = (err as BusinessError).message;
   hilog.error(0x0000, 'testTag', 'getAbilityInfo failed. Cause: %{public}s', message);
+}
+```
+
+## bundleManager.getBundleInstallStatus
+
+getBundleInstallStatus(bundleName: string): BundleInstallStatus
+
+获取指定应用的安装状态。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | ------ | ---- | ------------------------------------------------------- |
+| bundleName | string | 是 | 表示应用包名。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ------------ | ------------------------------------ |
+| [BundleInstallStatus](#bundleinstallstatus) | 返回指定应用的安装状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 17700001 | The specified bundle is not found. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 请开发者替换为实际的包名
+let bundleName: string = 'com.ohos.demo';
+
+try {
+  let bundleInstallStatus = bundleManager.getBundleInstallStatus(bundleName);
+  hilog.info(0x0000, 'testTag', 'bundle install status:' + bundleInstallStatus);
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleInstallStatus failed. Cause: %{public}s', message);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 请开发者替换为实际的包名
+let bundleName: string = 'com.ohos.demo';
+
+try {
+  let bundleInstallStatus = bundleManager.getBundleInstallStatus(bundleName);
+  hilog.info(0x0000, 'testTag', 'bundle install status:' + bundleInstallStatus);
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleInstallStatus failed. Cause: %{public}s', message);
 }
 ```
 

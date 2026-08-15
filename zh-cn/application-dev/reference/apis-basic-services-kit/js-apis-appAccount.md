@@ -3853,7 +3853,7 @@ getAuthCallback(sessionId: string, callback: AsyncCallback&lt;AuthCallback&gt;):
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| sessionId | string                                   | 是    | 鉴权会话的标识。 |
+| sessionId | string                                   | 是    | 鉴权会话的标识。最大长度为1024个字符。 |
 | callback  | AsyncCallback&lt;[AuthCallback](#authcallback9)&gt; | 是    | 回调函数。当获取成功时，err为null，data为鉴权会话的认证器回调对象；否则为错误对象。 |
 
 **错误码：**
@@ -3959,7 +3959,7 @@ getAuthCallback(sessionId: string): Promise&lt;AuthCallback&gt;
 
 | 参数名       | 类型     | 必填   | 说明       |
 | --------- | ------ | ---- | -------- |
-| sessionId | string | 是    | 鉴权会话的标识。 |
+| sessionId | string | 是    | 鉴权会话的标识。最大长度为1024个字符。 |
 
 **返回值：**
 
@@ -4868,7 +4868,7 @@ setAuthenticatorProperties(owner: string, callback: AuthCallback): void
 
 | 参数名    | 类型                  | 必填  | 说明                     |
 | -------- | --------------------- | ----- | ----------------------- |
-| owner    | string                | 是    | 认证器的所有者的包名。          |
+| owner    | string                | 是    | 认证器的所有者的包名。最大长度为1024个字符。 |
 | callback | [AuthCallback](#authcallback9) | 是    | 回调函数，返回设置属性的结果。 |
 
 **错误码：**
@@ -4948,7 +4948,7 @@ setAuthenticatorProperties(owner: string, options: SetPropertiesOptions, callbac
 
 | 参数名    | 类型                  | 必填  | 说明                     |
 | -------- | --------------------- | ----- | ----------------------- |
-| owner    | string                | 是    | 认证器的所有者的包名。          |
+| owner    | string                | 是    | 认证器的所有者的包名。最大长度为1024个字符。  |
 | options  | [SetPropertiesOptions](#setpropertiesoptions9)  | 是    | 设置属性的选项。          |
 | callback | [AuthCallback](#authcallback9) | 是    | 认证器回调，返回设置属性的结果。 |
 
@@ -5077,7 +5077,7 @@ addAccount(name: string, extraInfo: string, callback: AsyncCallback&lt;void&gt;)
 | 参数名       | 类型                        | 必填   | 说明                                       |
 | --------- | ------------------------- | ---- | ---------------------------------------- |
 | name      | string                    | 是    | 应用账号的名称。最大长度为512个字符。                              |
-| extraInfo | string                    | 是    | 额外信息(能转换string类型的其它信息)，额外信息不能是应用账号的敏感信息（如应用账号密码、token等）。 |
+| extraInfo | string                    | 是    | 额外信息(能转换string类型的其它信息)，额外信息不能是应用账号的敏感信息（如应用账号密码、token等）。最大长度为1024个字符。 |
 | callback  | AsyncCallback&lt;void&gt; | 是    | 回调函数。当创建成功时，err为null，否则为错误对象。             |
 
 **示例：**
@@ -5110,7 +5110,7 @@ addAccount(name: string, extraInfo?: string): Promise&lt;void&gt;
 | 参数名       | 类型     | 必填   | 说明                                       |
 | --------- | ------ | ---- | ---------------------------------------- |
 | name      | string | 是    | 应用账号的名称。最大长度为512个字符。                            |
-| extraInfo | string | 否    | 额外信息(能转换string类型的其它信息)，额外信息不能是应用账号的敏感信息（如应用账号密码、token等），默认为空，表示创建的该账号无额外信息需要添加。 |
+| extraInfo | string | 否    | 额外信息(能转换string类型的其它信息)，额外信息不能是应用账号的敏感信息（如应用账号密码、token等），默认为空，表示创建的该账号无额外信息需要添加。最大长度为1024个字符。 |
 
 **返回值：**
 
@@ -5606,7 +5606,7 @@ setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback&lt;
 | 参数名       | 类型                        | 必填   | 说明              |
 | --------- | ------------------------- | ---- | --------------- |
 | name      | string                    | 是    | 应用账号的名称。最大长度为512个字符。         |
-| extraInfo | string                    | 是    | 额外信息(能转换string类型的其它信息)，额外信息不能是应用账号的敏感信息（如应用账号密码、token等）。       |
+| extraInfo | string                    | 是    | 额外信息(能转换string类型的其它信息)，额外信息不能是应用账号的敏感信息（如应用账号密码、token等）。最大长度为1024个字符。 |
 | callback  | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置成功时，err为null，否则为错误对象。 |
 
 **示例：**
@@ -5644,7 +5644,7 @@ setAccountExtraInfo(name: string, extraInfo: string): Promise&lt;void&gt;
 | 参数名       | 类型     | 必填   | 说明        |
 | --------- | ------ | ---- | --------- |
 | name      | string | 是    | 应用账号的名称。最大长度为512个字符。   |
-| extraInfo | string | 是    | 额外信息(能转换string类型的其它信息)，额外信息不能是应用账号的敏感信息（如应用账号密码、token等）。 |
+| extraInfo | string | 是    | 额外信息(能转换string类型的其它信息)，额外信息不能是应用账号的敏感信息（如应用账号密码、token等）。最大长度为1024个字符。 |
 
 **返回值：**
 
@@ -5768,8 +5768,8 @@ setAssociatedData(name: string, key: string, value: string, callback: AsyncCallb
 | 参数名      | 类型                        | 必填   | 说明                |
 | -------- | ------------------------- | ---- | ----------------- |
 | name     | string                    | 是    | 应用账号的名称。最大长度为512个字符。           |
-| key      | string                    | 是    | 关联数据的键名。 |
-| value    | string                    | 是    | 关联数据的取值。         |
+| key      | string                    | 是    | 关联数据的键名。最大长度为1024个字符。          |
+| value    | string                    | 是    | 关联数据的取值。最大长度为1024个字符。          |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置与此应用账号关联的数据成功时，err为null，否则为错误对象。 |
 
 **示例：**
@@ -5807,8 +5807,8 @@ setAssociatedData(name: string, key: string, value: string): Promise&lt;void&gt;
 | 参数名   | 类型     | 必填   | 说明                |
 | ----- | ------ | ---- | ----------------- |
 | name  | string | 是    | 应用账号的名称。最大长度为512个字符。           |
-| key      | string | 是    | 关联数据的键名。 |
-| value    | string | 是    | 关联数据的取值。 |
+| key      | string | 是    | 关联数据的键名。最大长度为1024个字符。 |
+| value    | string | 是    | 关联数据的取值。最大长度为1024个字符。 |
 
 **返回值：**
 
@@ -6162,7 +6162,7 @@ getAssociatedData(name: string, key: string, callback: AsyncCallback&lt;string&g
 | 参数名      | 类型                          | 必填   | 说明                |
 | -------- | --------------------------- | ---- | ----------------- |
 | name     | string                      | 是    | 应用账号的名称。最大长度为512个字符。           |
-| key      | string                      | 是    | 关联数据的键名。         |
+| key      | string                      | 是    | 关联数据的键名。最大长度为1024个字符。         |
 | callback | AsyncCallback&lt;string&gt; | 是    | 回调函数。当获取成功时，err为null，data为关联数据的取值；否则为错误对象。 |
 
 **示例：**
@@ -6200,7 +6200,7 @@ getAssociatedData(name: string, key: string): Promise&lt;string&gt;
 | 参数名  | 类型     | 必填   | 说明        |
 | ---- | ------ | ---- | --------- |
 | name | string | 是    | 应用账号的名称。最大长度为512个字符。   |
-| key  | string | 是    | 关联数据的键名。 |
+| key  | string | 是    | 关联数据的键名。最大长度为1024个字符。 |
 
 **返回值：**
 
@@ -6967,7 +6967,7 @@ getAuthenticatorCallback(sessionId: string, callback: AsyncCallback&lt;Authentic
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| sessionId | string                                   | 是    | 鉴权会话的标识。 |
+| sessionId | string                                   | 是    | 鉴权会话的标识。最大长度为1024个字符。 |
 | callback  | AsyncCallback&lt;[AuthenticatorCallback](#authenticatorcallbackdeprecated)&gt; | 是    | 回调函数。当获取鉴权会话的认证器回调函数成功时，err为null，data为认证器回调函数；否则为错误对象。 |
 
 **示例：**
@@ -7016,7 +7016,7 @@ getAuthenticatorCallback(sessionId: string): Promise&lt;AuthenticatorCallback&gt
 
 | 参数名       | 类型     | 必填   | 说明       |
 | --------- | ------ | ---- | -------- |
-| sessionId | string | 是    | 鉴权会话的标识。 |
+| sessionId | string | 是    | 鉴权会话的标识。最大长度为1024个字符。 |
 
 **返回值：**
 

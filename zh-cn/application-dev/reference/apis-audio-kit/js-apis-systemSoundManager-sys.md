@@ -32,7 +32,7 @@ import { systemSoundManager } from '@kit.AudioKit';
 | TONE_CATEGORY_TEXT_MESSAGE<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 2   | 短信铃声类别。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | TONE_CATEGORY_NOTIFICATION<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 4   | 通知铃声类别。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | TONE_CATEGORY_ALARM<sup>12+</sup>        | ArkTS-Dyn: number<br>ArkTS-Sta: int | 8   | 闹钟铃声类别。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
-| TONE_CATEGORY_CONTACTS<sup>20+</sup>     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 16  | 联系人铃声类别。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| TONE_CATEGORY_CONTACTS<sup>20+</sup>     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 16  | 联系人铃声类别。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 | TONE_CATEGORY_NOTIFICATION_APP<sup>22+</sup>     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 32  | 应用级通知铃声类别。<br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 23 |
 
 ## RingtoneType
@@ -49,6 +49,8 @@ import { systemSoundManager } from '@kit.AudioKit';
 | RINGTONE_TYPE_SIM_CARD_0<sup>11+</sup> | 0  | SIM卡1的铃声。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23  |
 | RINGTONE_TYPE_MULTISIM<sup>(deprecated)</sup>          | 1  | 多SIM卡铃声类型。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/> 从 API version 11 开始废弃。建议使用该枚举中的RINGTONE_TYPE_SIM_CARD_1替代。<br>**ArkTS-Dyn起始版本：** 10  |
 | RINGTONE_TYPE_SIM_CARD_1<sup>11+</sup> | 1  | SIM卡2的铃声。 <br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23  |
+| RINGTONE_TYPE_ESIM_CARD_0 | 2  | ESIM卡1的铃声。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| RINGTONE_TYPE_ESIM_CARD_1 | 3  | ESIM卡2的铃声。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## SystemToneType<sup>11+</sup>
 
@@ -66,6 +68,8 @@ import { systemSoundManager } from '@kit.AudioKit';
 | ------------------------------- |-----|------------|
 | SYSTEM_TONE_TYPE_SIM_CARD_0     | 0   | SIM卡1的短信提示音。 |
 | SYSTEM_TONE_TYPE_SIM_CARD_1     | 1   | SIM卡2的短信提示音。 |
+| SYSTEM_TONE_TYPE_ESIM_CARD_0     | 2   | ESIM卡1的短信提示音。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| SYSTEM_TONE_TYPE_ESIM_CARD_1     | 3   | ESIM卡2的短信提示音。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | SYSTEM_TONE_TYPE_NOTIFICATION   | 32  | 通知提示音。     |
 
 ## MediaType<sup>20+</sup>
@@ -569,8 +573,12 @@ let toneAttrs: systemSoundManager.ToneAttrs = systemSoundManager.createCustomize
 | ------------------------|----|--------|
 | CALL_SIM_CARD_0         | 0  | SIM卡1的来电铃声的振动。 |
 | CALL_SIM_CARD_1         | 1  | SIM卡2的来电铃声的振动。 |
+| CALL_ESIM_CARD_0         | 2  | ESIM卡1的来电铃声的振动。 <br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| CALL_ESIM_CARD_1         | 3  | ESIM卡2的来电铃声的振动。 <br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | TEXT_MESSAGE_SIM_CARD_0 | 20 | SIM卡1的短信提示音的振动。 |
 | TEXT_MESSAGE_SIM_CARD_1 | 21 | SIM卡2的短信提示音的振动。 |
+| TEXT_MESSAGE_ESIM_CARD_0 | 22 | ESIM卡1的短信提示音的振动。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| TEXT_MESSAGE_ESIM_CARD_1 | 23 | ESIM卡2的短信提示音的振动。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | NOTIFICATION            | 40 | 通知提示音的振动。 |
 
 ## ToneHapticsMode<sup>14+</sup>
@@ -799,7 +807,7 @@ getGentleFileName(): string | null
 
 | 类型    | 说明  |
 |--------|-----|
-| string \| null | 柔和振动文件名，振动文件为Json格式。如果不存在柔和振动，则振动文件名为空。 |
+| string \| null | 柔和振动文件名，振动文件为JSON格式。如果不存在柔和振动，则振动文件名为空。 |
 
 **错误码：**
 
@@ -2327,9 +2335,9 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, externalUri: string
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400102     | Operation is not allowed, e.g. ringtone to add is not customized. |
 | 5400103  | I/O error. Possible causes: 1. The target file size exceeds 2 GB; 2. Failed to find the specified file; 3. System sound manager service error.|
-| 20700004 | Data size exceeds the limit. Note:This error is returned when the file size is between 200MB and 2GB.|
-| 20700005 | The number of files exceeds the limit. |
-| 20700006 | Insufficient ROM space. |
+| 20700004 | Data size exceeds the limit. Note:This error is returned when the file size is between 200MB and 2GB.<br>适用版本：20+|
+| 20700005 | The number of files exceeds the limit.<br>适用版本：20+ |
+| 20700006 | Insufficient ROM space.<br>适用版本：20+ |
 
 **示例：**
 
@@ -2403,9 +2411,9 @@ ArkTS-Sta: addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, fd: int,
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400102     | Operation is not allowed, e.g. ringtone to add is not customized. |
 | 5400103  | I/O error. Possible causes: 1. The target file size exceeds 2 GB; 2. Failed to find the specified file; 3. Ringtone library error. 4. System sound manager service error.|
-| 20700004 | Data size exceeds the limit. Note: This error is returned when the file size is between 200MB and 2GB.|
-| 20700005 | The number of files exceeds the limit. |
-| 20700006 | Insufficient ROM space. |
+| 20700004 | Data size exceeds the limit. Note: This error is returned when the file size is between 200MB and 2GB.<br>适用版本：20+|
+| 20700005 | The number of files exceeds the limit.<br>适用版本：20+ |
+| 20700006 | Insufficient ROM space.<br>适用版本：20+ |
 
 **示例：**
 
@@ -2774,7 +2782,7 @@ import { common } from '@kit.AbilityKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let hapticsUri = '/data/storage/el2/base/haptics/synchronized/alarms/test.json'; // 需更改为目标统铃音的振动的uri。
+let hapticsUri = '/data/storage/el2/base/haptics/synchronized/alarms/test.json'; // 需更改为目标系统铃音的振动的uri。
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.openToneHaptics(context, hapticsUri).then((value) => {

@@ -6,7 +6,7 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-音频音量和设备管理。
+AudioManager是音频系统的核心管理模块。本模块提供音频系统管理能力，包括音频场景模式获取、音量控制、音频流管理、设备路由、会话管理、空间音频管理、录音管理等。开发者可通过AudioManager获取各个子管理器的实例以完成具体的音频管理任务。
 
 在使用AudioManager的接口之前，需先通过[getAudioManager](arkts-apis-audio-f.md#audiogetaudiomanager)获取AudioManager实例。
 
@@ -46,10 +46,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 audioManager.getAudioScene((err: BusinessError, value: audio.AudioScene) => {
   if (err) {
-    console.error(`Failed to obtain the audio scene mode. ${err}`);
+    console.error(`Failed to obtain the audio scene mode. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info(`Callback invoked to indicate that the audio scene mode is obtained ${value}.`);
+  console.info(`Succeeded in obtaining the audio scene mode, audioScene: ${value}.`);
 });
 ```
 
@@ -77,9 +77,9 @@ getAudioScene\(\): Promise<AudioScene\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioManager.getAudioScene().then((value: audio.AudioScene) => {
-  console.info(`Promise returned to indicate that the audio scene mode is obtained ${value}.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to obtain the audio scene mode ${err}`);
+  console.info(`Succeeded in obtaining the audio scene mode, audioScene: ${value}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to obtain the audio scene mode. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -108,10 +108,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let value: audio.AudioScene = audioManager.getAudioSceneSync();
-  console.info(`indicate that the audio scene mode is obtained ${value}.`);
+  console.info(`Succeeded in obtaining the audio scene mode, audioScene: ${value}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to obtain the audio scene mode ${error}`);
+  console.error(`Failed to obtain the audio scene mode. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -140,7 +140,7 @@ on(type: 'audioSceneChange', callback: Callback\<AudioScene\>): void
 
 ```ts
 audioManager.on('audioSceneChange', (audioScene: audio.AudioScene) => {
-  console.info(`audio scene : ${audioScene}.`);
+  console.info(`Audio scene changed, audioScene: ${audioScene}.`);
 });
 ```
 
@@ -148,7 +148,7 @@ audioManager.on('audioSceneChange', (audioScene: audio.AudioScene) => {
 
 off(type: 'audioSceneChange', callback?: Callback\<AudioScene\>): void
 
-取消监听音频场景变化事件。使用callback异步回调。
+取消监听音频场景变化事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -162,8 +162,8 @@ off(type: 'audioSceneChange', callback?: Callback\<AudioScene\>): void
 
 | 参数名   | 类型                       | 必填 | 说明                                        |
 | :------- | :------------------------- | :--- | :------------------------------------------ |
-| type     | string                     | 是   | 事件回调类型，支持的事件为'audioSceneChange'，当取消监听当前音频场景变化事件时，触发该事件。 |
-| callback | Callback\<[AudioScene](arkts-apis-audio-e.md#audioscene8)> | 否 | 回调函数，返回当前音频场景模式。 |
+| type     | string                     | 是   | 事件回调类型，支持的事件为'audioSceneChange'。 |
+| callback | Callback\<[AudioScene](arkts-apis-audio-e.md#audioscene8)> | 否 | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[on('audioSceneChange')](#onaudioscenechange20)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
 
 **示例：**
 
@@ -173,7 +173,7 @@ audioManager.off('audioSceneChange');
 
 // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
 let audioSceneChangeCallback = (audioScene: audio.AudioScene) => {
-  console.info(`audio scene : ${audioScene}.`);
+  console.info(`Audio scene changed, audioScene: ${audioScene}.`);
 };
 
 audioManager.on('audioSceneChange', audioSceneChangeCallback);
@@ -205,7 +205,7 @@ onAudioSceneChange(callback: Callback\<AudioScene\>): void
 
 ```ts
 audioManager.onAudioSceneChange((audioScene: audio.AudioScene) => {
-  console.info(`audio scene : ${audioScene}.`);
+  console.info(`Audio scene changed, audioScene: ${audioScene}.`);
 });
 ```
 
@@ -213,7 +213,7 @@ audioManager.onAudioSceneChange((audioScene: audio.AudioScene) => {
 
 offAudioSceneChange(callback?: Callback\<AudioScene\>): void
 
-取消监听音频场景变化事件。使用callback异步回调。
+取消监听音频场景变化事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -227,7 +227,7 @@ offAudioSceneChange(callback?: Callback\<AudioScene\>): void
 
 | 参数名   | 类型                       | 必填 | 说明                                        |
 | :------- | :------------------------- | :--- | :------------------------------------------ |
-| callback | Callback\<[AudioScene](arkts-apis-audio-e.md#audioscene8)> | 否 | 回调函数，返回当前音频场景模式。 |
+| callback | Callback\<[AudioScene](arkts-apis-audio-e.md#audioscene8)> | 否 | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[onaudioSceneChange](#onaudioscenechange23)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
 
 **示例：**
 
@@ -237,7 +237,7 @@ audioManager.offAudioSceneChange();
 
 // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
 let audioSceneChangeCallback = (audioScene: audio.AudioScene) => {
-  console.info(`audio scene : ${audioScene}.`);
+  console.info(`Audio scene changed, audioScene: ${audioScene}.`);
 };
 
 audioManager.onAudioSceneChange(audioSceneChangeCallback);
@@ -268,8 +268,6 @@ getVolumeManager(): AudioVolumeManager
 **示例：**
 
 ```ts
-import { audio } from '@kit.AudioKit';
-
 let audioVolumeManager: audio.AudioVolumeManager = audioManager.getVolumeManager();
 ```
 
@@ -294,8 +292,6 @@ getStreamManager(): AudioStreamManager
 **示例：**
 
 ```ts
-import { audio } from '@kit.AudioKit';
-
 let audioStreamManager: audio.AudioStreamManager = audioManager.getStreamManager();
 ```
 
@@ -315,13 +311,11 @@ getRoutingManager(): AudioRoutingManager
 
 | 类型                                       | 说明                          |
 |------------------------------------------| ----------------------------- |
-| [AudioRoutingManager](arkts-apis-audio-AudioRoutingManager.md) | AudioRoutingManager实例。 |
+| [AudioRoutingManager](arkts-apis-audio-AudioRoutingManager.md) | 返回AudioRoutingManager实例。 |
 
 **示例：**
 
 ```ts
-import { audio } from '@kit.AudioKit';
-
 let audioRoutingManager: audio.AudioRoutingManager = audioManager.getRoutingManager();
 ```
 
@@ -348,8 +342,6 @@ getSessionManager(): AudioSessionManager
 **示例：**
 
 ```ts
-import { audio } from '@kit.AudioKit';
-
 let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionManager();
 ```
 
@@ -369,12 +361,11 @@ getSpatializationManager(): AudioSpatializationManager
 
 | 类型                                       | 说明                          |
 |------------------------------------------| ----------------------------- |
-| [AudioSpatializationManager](arkts-apis-audio-AudioSpatializationManager.md) | AudioSpatializationManager实例。 |
+| [AudioSpatializationManager](arkts-apis-audio-AudioSpatializationManager.md) | 返回AudioSpatializationManager实例。 |
 
 **示例：**
 
 ```ts
-import { audio } from '@kit.AudioKit';
 let audioSpatializationManager: audio.AudioSpatializationManager = audioManager.getSpatializationManager();
 ```
 
@@ -382,7 +373,7 @@ let audioSpatializationManager: audio.AudioSpatializationManager = audioManager.
 
 getDeviceEnhanceManager(): AudioDeviceEnhanceManager
 
-获取音频设备增强管理器实例。
+获取音频设备增强管理器。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -396,13 +387,11 @@ getDeviceEnhanceManager(): AudioDeviceEnhanceManager
 
 | 类型 | 说明 |
 | ----------------------------------------------- | -------------------------------- |
-| [AudioDeviceEnhanceManager](arkts-apis-audio-AudioDeviceEnhanceManager.md) | 返回一个AudioDeviceEnhanceManager实例。 |
+| [AudioDeviceEnhanceManager](arkts-apis-audio-AudioDeviceEnhanceManager.md) | 返回AudioDeviceEnhanceManager实例。 |
 
 **示例：**
 
 ```ts
-import { audio } from '@kit.AudioKit';
-
 let audioDeviceEnhanceManager: audio.AudioDeviceEnhanceManager = audioManager.getDeviceEnhanceManager();
 ```
 
@@ -410,7 +399,7 @@ let audioDeviceEnhanceManager: audio.AudioDeviceEnhanceManager = audioManager.ge
 
 getDebuggingManager(): AudioDebuggingManager
 
-获取音频调试管理器实例。
+获取音频调试管理器实例。该实例为单例，获取后可重复使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -422,13 +411,11 @@ getDebuggingManager(): AudioDebuggingManager
 
 | 类型 | 说明 |
 | ---- | ---- |
-| [AudioDebuggingManager](arkts-apis-audio-AudioDebuggingManager.md) | AudioDebuggingManager实例。 |
+| [AudioDebuggingManager](arkts-apis-audio-AudioDebuggingManager.md) | 返回AudioDebuggingManager实例。 |
 
 **示例：**
 
 ```ts
-import { audio } from '@kit.AudioKit';
-
 let debugManager: audio.AudioDebuggingManager = audioManager.getDebuggingManager();
 ```
 
@@ -455,8 +442,6 @@ getRecordingManager(): AudioRecordingManager
 **示例：**
 
 ```ts
-import { audio } from '@kit.AudioKit';
-
 let audioRecordingManager: audio.AudioRecordingManager = audioManager.getRecordingManager();
 ```
 
@@ -495,10 +480,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 audioManager.setAudioParameter('key_example', 'value_example', (err: BusinessError) => {
   if (err) {
-    console.error(`Failed to set the audio parameter. ${err}`);
+    console.error(`Failed to set the audio parameter. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info('Callback invoked to indicate a successful setting of the audio parameter.');
+  console.info('Succeeded in setting the audio parameter.');
 });
 ```
 
@@ -538,8 +523,12 @@ setAudioParameter(key: string, value: string): Promise&lt;void&gt;
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 audioManager.setAudioParameter('key_example', 'value_example').then(() => {
-  console.info('Promise returned to indicate a successful setting of the audio parameter.');
+  console.info('Succeeded in setting the audio parameter.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set the audio parameter. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -575,10 +564,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 audioManager.getAudioParameter('key_example', (err: BusinessError, value: string) => {
   if (err) {
-    console.error(`Failed to obtain the value of the audio parameter. ${err}`);
+    console.error(`Failed to obtain the audio parameter. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info(`Callback invoked to indicate that the value of the audio parameter is obtained ${value}.`);
+  console.info(`Succeeded in obtaining the audio parameter, value: ${value}.`);
 });
 ```
 
@@ -615,8 +604,12 @@ getAudioParameter(key: string): Promise&lt;string&gt;
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 audioManager.getAudioParameter('key_example').then((value: string) => {
-  console.info(`Promise returned to indicate that the value of the audio parameter is obtained ${value}.`);
+  console.info(`Succeeded in obtaining the audio parameter, value: ${value}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to obtain the audio parameter. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -627,6 +620,7 @@ setVolume(volumeType: AudioVolumeType, volume: number, callback: AsyncCallback&l
 设置指定流的音量等级。使用callback异步回调。
 
 > **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[AVVolumePanel](ohos-multimedia-avvolumepanel.md#avvolumepanel)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -654,10 +648,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 audioManager.setVolume(audio.AudioVolumeType.MEDIA, 10, (err: BusinessError) => {
   if (err) {
-    console.error(`Failed to set the volume. ${err}`);
+    console.error(`Failed to set the volume. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info('Callback invoked to indicate a successful volume setting.');
+  console.info('Succeeded in setting the volume.');
 });
 ```
 
@@ -668,6 +662,7 @@ setVolume(volumeType: AudioVolumeType, volume: number): Promise&lt;void&gt;
 设置指定流的音量等级。使用Promise异步回调。
 
 > **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[AVVolumePanel](ohos-multimedia-avvolumepanel.md#avvolumepanel)替代。
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -695,8 +690,12 @@ setVolume(volumeType: AudioVolumeType, volume: number): Promise&lt;void&gt;
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 audioManager.setVolume(audio.AudioVolumeType.MEDIA, 10).then(() => {
-  console.info('Promise returned to indicate a successful volume setting.');
+  console.info('Succeeded in setting the volume.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set the volume. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -729,10 +728,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 audioManager.getVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: number) => {
   if (err) {
-    console.error(`Failed to obtain the volume. ${err}`);
+    console.error(`Failed to obtain the volume. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info('Callback invoked to indicate that the volume is obtained.');
+  console.info(`Succeeded in obtaining the volume, volume: ${value}.`);
 });
 ```
 
@@ -743,6 +742,7 @@ getVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 获取指定流的音量等级。使用Promise异步回调。
 
 > **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19建议使用[getVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getvolumedeprecated)替代；API version 20及以后，建议使用[getVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumebystream20)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -766,8 +766,12 @@ getVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 audioManager.getVolume(audio.AudioVolumeType.MEDIA).then((value: number) => {
-  console.info(`Promise returned to indicate that the volume is obtained ${value} .`);
+  console.info(`Succeeded in obtaining the volume, volume: ${value}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to obtain the volume. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -778,6 +782,7 @@ getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;)
 获取指定流的最小音量等级。使用callback异步回调。
 
 > **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19建议使用[getMinVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getminvolumedeprecated)替代；API version 20及以后，建议使用[getMinVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getminvolumebystream20)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -800,10 +805,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 audioManager.getMinVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: number) => {
   if (err) {
-    console.error(`Failed to obtain the minimum volume. ${err}`);
+    console.error(`Failed to obtain the minimum volume. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info(`Callback invoked to indicate that the minimum volume is obtained. ${value}`);
+  console.info(`Succeeded in obtaining the minimum volume, minVolume: ${value}.`);
 });
 ```
 
@@ -814,6 +819,7 @@ getMinVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 获取指定流的最小音量等级。使用Promise异步回调。
 
 > **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19建议使用[getMinVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getminvolumedeprecated)替代；API version 20及以后，建议使用[getMinVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getminvolumebystream20)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -837,8 +843,12 @@ getMinVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 audioManager.getMinVolume(audio.AudioVolumeType.MEDIA).then((value: number) => {
-  console.info(`Promised returned to indicate that the minimum volume is obtained. ${value}`);
+  console.info(`Succeeded in obtaining the minimum volume, minVolume: ${value}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to obtain the minimum volume. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -849,6 +859,7 @@ getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;)
 获取指定流的最大音量等级。使用callback异步回调。
 
 > **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19建议使用[getMaxVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getmaxvolumedeprecated)替代；API version 20及以后，建议使用[getMaxVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getmaxvolumebystream20)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -871,10 +882,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 audioManager.getMaxVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: number) => {
   if (err) {
-    console.error(`Failed to obtain the maximum volume. ${err}`);
+    console.error(`Failed to obtain the maximum volume. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info(`Callback invoked to indicate that the maximum volume is obtained. ${value}`);
+  console.info(`Succeeded in obtaining the maximum volume, maxVolume: ${value}.`);
 });
 ```
 
@@ -885,6 +896,7 @@ getMaxVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 获取指定流的最大音量等级。使用Promise异步回调。
 
 > **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19建议使用[getMaxVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getmaxvolumedeprecated)替代；API version 20及以后，建议使用[getMaxVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getmaxvolumebystream20)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -908,8 +920,12 @@ getMaxVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 audioManager.getMaxVolume(audio.AudioVolumeType.MEDIA).then((data: number) => {
-  console.info('Promised returned to indicate that the maximum volume is obtained.');
+  console.info(`Succeeded in obtaining the maximum volume, maxVolume: ${data}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to obtain the maximum volume. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -922,6 +938,7 @@ mute(volumeType: AudioVolumeType, mute: boolean, callback: AsyncCallback&lt;void
 当该音量流可设置的最小音量不能为0时，不支持静音操作。例如：闹钟和通话。
 
 > **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[AVVolumePanel](ohos-multimedia-avvolumepanel.md#avvolumepanel)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -945,10 +962,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 audioManager.mute(audio.AudioVolumeType.MEDIA, true, (err: BusinessError) => {
   if (err) {
-    console.error(`Failed to mute the stream. ${err}`);
+    console.error(`Failed to mute the stream. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info('Callback invoked to indicate that the stream is muted.');
+  console.info('Succeeded in muting the stream.');
 });
 ```
 
@@ -961,6 +978,7 @@ mute(volumeType: AudioVolumeType, mute: boolean): Promise&lt;void&gt;
 当该音量流可设置的最小音量不能为0时，不支持静音操作。例如：闹钟和通话。
 
 > **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[AVVolumePanel](ohos-multimedia-avvolumepanel.md#avvolumepanel)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -986,8 +1004,12 @@ mute(volumeType: AudioVolumeType, mute: boolean): Promise&lt;void&gt;
 
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 audioManager.mute(audio.AudioVolumeType.MEDIA, true).then(() => {
-  console.info('Promise returned to indicate that the stream is muted.');
+  console.info('Succeeded in muting the stream.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to mute the stream. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -998,6 +1020,7 @@ isMute(volumeType: AudioVolumeType, callback: AsyncCallback&lt;boolean&gt;): voi
 获取指定音量流的静音状态。使用callback异步回调。
 
 > **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19建议使用[isMute](arkts-apis-audio-AudioVolumeGroupManager.md#ismutedeprecated)替代；API version 20及以后，建议使用[isSystemMutedForStream](arkts-apis-audio-AudioVolumeManager.md#issystemmutedforstream20)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -1020,10 +1043,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 audioManager.isMute(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: boolean) => {
   if (err) {
-    console.error(`Failed to obtain the mute status. ${err}`);
+    console.error(`Failed to check whether the stream is muted. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info(`Callback invoked to indicate that the mute status of the stream is obtained. ${value}`);
+  console.info(`Succeeded in checking whether the stream is muted, isMuted: ${value}.`);
 });
 ```
 
@@ -1034,6 +1057,7 @@ isMute(volumeType: AudioVolumeType): Promise&lt;boolean&gt;
 获取指定音量流的静音状态。使用Promise异步回调。
 
 > **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19建议使用[isMute](arkts-apis-audio-AudioVolumeGroupManager.md#ismutedeprecated)替代；API version 20及以后，建议使用[isSystemMutedForStream](arkts-apis-audio-AudioVolumeManager.md#issystemmutedforstream20)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -1057,8 +1081,12 @@ isMute(volumeType: AudioVolumeType): Promise&lt;boolean&gt;
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 audioManager.isMute(audio.AudioVolumeType.MEDIA).then((value: boolean) => {
-  console.info(`Promise returned to indicate that the mute status of the stream is obtained ${value}.`);
+  console.info(`Succeeded in checking whether the stream is muted, isMuted: ${value}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to check whether the stream is muted. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1069,6 +1097,7 @@ isActive(volumeType: AudioVolumeType, callback: AsyncCallback&lt;boolean&gt;): v
 获取指定音量流的活跃状态。使用callback异步回调。
 
 > **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19建议使用[isActive](arkts-apis-audio-AudioStreamManager.md#isactivedeprecated)替代；API version 20及以后，建议使用[isStreamActive](arkts-apis-audio-AudioStreamManager.md#isstreamactive20)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -1091,10 +1120,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 audioManager.isActive(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: boolean) => {
   if (err) {
-    console.error(`Failed to obtain the active status of the stream. ${err}`);
+    console.error(`Failed to check whether the stream is active. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info(`Callback invoked to indicate that the active status of the stream is obtained ${value}.`);
+  console.info(`Succeeded in checking whether the stream is active, isActive: ${value}.`);
 });
 ```
 
@@ -1105,6 +1134,7 @@ isActive(volumeType: AudioVolumeType): Promise&lt;boolean&gt;
 获取指定音量流的活跃状态。使用Promise异步回调。
 
 > **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19建议使用[isActive](arkts-apis-audio-AudioStreamManager.md#isactivedeprecated)替代；API version 20及以后，建议使用[isStreamActive](arkts-apis-audio-AudioStreamManager.md#isstreamactive20)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -1128,8 +1158,12 @@ isActive(volumeType: AudioVolumeType): Promise&lt;boolean&gt;
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 audioManager.isActive(audio.AudioVolumeType.MEDIA).then((value: boolean) => {
-  console.info(`Promise returned to indicate that the active status of the stream is obtained ${value}.`);
+  console.info(`Succeeded in checking whether the stream is active, isActive: ${value}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to check whether the stream is active. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1167,10 +1201,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 audioManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_NORMAL, (err: BusinessError) => {
   if (err) {
-    console.error(`Failed to set the ringer mode. ${err}`);
+    console.error(`Failed to set the ringer mode. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info('Callback invoked to indicate a successful setting of the ringer mode.');
+  console.info('Succeeded in setting the ringer mode.');
 });
 ```
 
@@ -1209,8 +1243,12 @@ setRingerMode(mode: AudioRingMode): Promise&lt;void&gt;
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 audioManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_NORMAL).then(() => {
-  console.info('Promise returned to indicate a successful setting of the ringer mode.');
+  console.info('Succeeded in setting the ringer mode.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set the ringer mode. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1221,6 +1259,7 @@ getRingerMode(callback: AsyncCallback&lt;AudioRingMode&gt;): void
 获取铃声模式。使用callback异步回调。
 
 > **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[getRingerMode](arkts-apis-audio-AudioVolumeGroupManager.md#getringermode9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -1242,10 +1281,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 audioManager.getRingerMode((err: BusinessError, value: audio.AudioRingMode) => {
   if (err) {
-    console.error(`Failed to obtain the ringer mode. ${err}`);
+    console.error(`Failed to obtain the ringer mode. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info(`Callback invoked to indicate that the ringer mode is obtained ${value}.`);
+  console.info(`Succeeded in obtaining the ringer mode, ringerMode: ${value}.`);
 });
 ```
 
@@ -1256,6 +1295,7 @@ getRingerMode(): Promise&lt;AudioRingMode&gt;
 获取铃声模式。使用Promise异步回调。
 
 > **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[getRingerMode](arkts-apis-audio-AudioVolumeGroupManager.md#getringermode9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -1273,8 +1313,12 @@ getRingerMode(): Promise&lt;AudioRingMode&gt;
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 audioManager.getRingerMode().then((value: audio.AudioRingMode) => {
-  console.info(`Promise returned to indicate that the ringer mode is obtained ${value}.`);
+  console.info(`Succeeded in obtaining the ringer mode, ringerMode: ${value}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to obtain the ringer mode. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1285,6 +1329,7 @@ getDevices(deviceFlag: DeviceFlag, callback: AsyncCallback&lt;AudioDeviceDescrip
 获取音频设备列表。使用callback异步回调。
 
 > **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[getDevices](arkts-apis-audio-AudioRoutingManager.md#getdevices9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -1306,10 +1351,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 audioManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG, (err: BusinessError, value: audio.AudioDeviceDescriptors) => {
   if (err) {
-    console.error(`Failed to obtain the device list. ${err}`);
+    console.error(`Failed to obtain the device list. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info('Callback invoked to indicate that the device list is obtained.');
+  console.info(`Succeeded in obtaining the device list, devices: ${JSON.stringify(value)}.`);
 });
 ```
 
@@ -1320,6 +1365,7 @@ getDevices(deviceFlag: DeviceFlag): Promise&lt;AudioDeviceDescriptors&gt;
 获取音频设备列表。使用Promise异步回调。
 
 > **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[getDevices](arkts-apis-audio-AudioRoutingManager.md#getdevices9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -1343,8 +1389,12 @@ getDevices(deviceFlag: DeviceFlag): Promise&lt;AudioDeviceDescriptors&gt;
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 audioManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).then((data: audio.AudioDeviceDescriptors) => {
-  console.info('Promise returned to indicate that the device list is obtained.');
+  console.info(`Succeeded in obtaining the device list, devices: ${JSON.stringify(data)}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to obtain the device list. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1355,6 +1405,7 @@ setDeviceActive(deviceType: ActiveDeviceType, active: boolean, callback: AsyncCa
 设置设备激活状态。使用callback异步回调。
 
 > **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setCommunicationDevice](arkts-apis-audio-AudioRoutingManager.md#setcommunicationdevice9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -1378,10 +1429,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 audioManager.setDeviceActive(audio.ActiveDeviceType.SPEAKER, true, (err: BusinessError) => {
   if (err) {
-    console.error(`Failed to set the active status of the device. ${err}`);
+    console.error(`Failed to set the active status of the device. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info('Callback invoked to indicate that the device is set to the active status.');
+  console.info('Succeeded in setting the active status of the device.');
 });
 ```
 
@@ -1392,6 +1443,7 @@ setDeviceActive(deviceType: ActiveDeviceType, active: boolean): Promise&lt;void&
 设置设备激活状态。使用Promise异步回调。
 
 > **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setCommunicationDevice](arkts-apis-audio-AudioRoutingManager.md#setcommunicationdevice9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -1417,8 +1469,12 @@ setDeviceActive(deviceType: ActiveDeviceType, active: boolean): Promise&lt;void&
 
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 audioManager.setDeviceActive(audio.ActiveDeviceType.SPEAKER, true).then(() => {
-  console.info('Promise returned to indicate that the device is set to the active status.');
+  console.info('Succeeded in setting the active status of the device.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set the active status of the device. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1429,6 +1485,7 @@ isDeviceActive(deviceType: ActiveDeviceType, callback: AsyncCallback&lt;boolean&
 获取指定设备的激活状态。使用callback异步回调。
 
 > **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[isCommunicationDeviceActive](arkts-apis-audio-AudioRoutingManager.md#iscommunicationdeviceactive9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -1451,10 +1508,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 audioManager.isDeviceActive(audio.ActiveDeviceType.SPEAKER, (err: BusinessError, value: boolean) => {
   if (err) {
-    console.error(`Failed to obtain the active status of the device. ${err}`);
+    console.error(`Failed to check whether the device is active. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info('Callback invoked to indicate that the active status of the device is obtained.');
+  console.info(`Succeeded in checking whether the device is active, isActive: ${value}.`);
 });
 ```
 
@@ -1465,6 +1522,7 @@ isDeviceActive(deviceType: ActiveDeviceType): Promise&lt;boolean&gt;
 获取指定设备的激活状态。使用Promise异步回调。
 
 > **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[isCommunicationDeviceActive](arkts-apis-audio-AudioRoutingManager.md#iscommunicationdeviceactive9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -1488,8 +1546,12 @@ isDeviceActive(deviceType: ActiveDeviceType): Promise&lt;boolean&gt;
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 audioManager.isDeviceActive(audio.ActiveDeviceType.SPEAKER).then((value: boolean) => {
-  console.info(`Promise returned to indicate that the active status of the device is obtained ${value}.`);
+  console.info(`Succeeded in checking whether the device is active, isActive: ${value}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to check whether the device is active. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1525,10 +1587,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 audioManager.setMicrophoneMute(true, (err: BusinessError) => {
   if (err) {
-    console.error(`Failed to mute the microphone. ${err}`);
+    console.error(`Failed to mute the microphone. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info('Callback invoked to indicate that the microphone is muted.');
+  console.info('Succeeded in muting the microphone.');
 });
 ```
 
@@ -1565,8 +1627,12 @@ setMicrophoneMute(mute: boolean): Promise&lt;void&gt;
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 audioManager.setMicrophoneMute(true).then(() => {
-  console.info('Promise returned to indicate that the microphone is muted.');
+  console.info('Succeeded in muting the microphone.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to mute the microphone. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1577,6 +1643,7 @@ isMicrophoneMute(callback: AsyncCallback&lt;boolean&gt;): void
 获取麦克风静音状态。使用callback异步回调。
 
 > **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[isMicrophoneMute](arkts-apis-audio-AudioVolumeGroupManager.md#ismicrophonemute9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -1600,10 +1667,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 audioManager.isMicrophoneMute((err: BusinessError, value: boolean) => {
   if (err) {
-    console.error(`Failed to obtain the mute status of the microphone. ${err}`);
+    console.error(`Failed to check whether the microphone is muted. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info(`Callback invoked to indicate that the mute status of the microphone is obtained ${value}.`);
+  console.info(`Succeeded in checking whether the microphone is muted, isMuted: ${value}.`);
 });
 ```
 
@@ -1614,6 +1681,7 @@ isMicrophoneMute(): Promise&lt;boolean&gt;
 获取麦克风静音状态。使用Promise异步回调。
 
 > **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[isMicrophoneMute](arkts-apis-audio-AudioVolumeGroupManager.md#ismicrophonemute9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -1633,8 +1701,12 @@ isMicrophoneMute(): Promise&lt;boolean&gt;
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 audioManager.isMicrophoneMute().then((value: boolean) => {
-  console.info(`Promise returned to indicate that the mute status of the microphone is obtained ${value}.`);
+  console.info(`Succeeded in checking whether the microphone is muted, isMuted: ${value}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to check whether the microphone is muted. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1645,6 +1717,7 @@ on(type: 'deviceChange', callback: Callback<DeviceChangeAction\>): void
 监听音频设备连接变化事件（当音频设备连接状态发生变化时触发）。使用callback异步回调。
 
 > **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[on('deviceChange')](arkts-apis-audio-AudioRoutingManager.md#ondevicechange9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -1664,10 +1737,7 @@ on(type: 'deviceChange', callback: Callback<DeviceChangeAction\>): void
 
 ```ts
 audioManager.on('deviceChange', (deviceChanged: audio.DeviceChangeAction) => {
-  console.info(`device change type : ${deviceChanged.type} `);
-  console.info(`device descriptor size : ${deviceChanged.deviceDescriptors.length} `);
-  console.info(`device change descriptor : ${deviceChanged.deviceDescriptors[0].deviceRole} `);
-  console.info(`device change descriptor : ${deviceChanged.deviceDescriptors[0].deviceType} `);
+  console.info(`Device changed, deviceChanged: ${JSON.stringify(deviceChanged)}.`);
 });
 ```
 
@@ -1675,9 +1745,10 @@ audioManager.on('deviceChange', (deviceChanged: audio.DeviceChangeAction) => {
 
 off(type: 'deviceChange', callback?: Callback<DeviceChangeAction\>): void
 
-取消监听音频设备连接变化事件。使用callback异步回调。
+取消监听音频设备连接变化事件。
 
 > **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[off('deviceChange')](arkts-apis-audio-AudioRoutingManager.md#offdevicechange9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -1690,8 +1761,8 @@ off(type: 'deviceChange', callback?: Callback<DeviceChangeAction\>): void
 
 | 参数名   | 类型                                                | 必填 | 说明                                       |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
-| type     | string | 是   | 事件回调类型，支持的事件为'deviceChange'，当取消监听音频设备连接变化事件时，触发该事件。 |
-| callback | Callback<[DeviceChangeAction](arkts-apis-audio-i.md#devicechangeaction)> | 否   | 回调函数，返回设备更新详情。 |
+| type     | string | 是   | 事件回调类型，支持的事件为'deviceChange'。 |
+| callback | Callback<[DeviceChangeAction](arkts-apis-audio-i.md#devicechangeaction)> | 否   | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[on('deviceChange')](#ondevicechangedeprecated)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
 
 **示例：**
 
@@ -1701,10 +1772,7 @@ audioManager.off('deviceChange');
 
 // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
 let deviceChangeCallback = (deviceChanged: audio.DeviceChangeAction) => {
-  console.info(`device change type : ${deviceChanged.type} `);
-  console.info(`device descriptor size : ${deviceChanged.deviceDescriptors.length} `);
-  console.info(`device change descriptor : ${deviceChanged.deviceDescriptors[0].deviceRole} `);
-  console.info(`device change descriptor : ${deviceChanged.deviceDescriptors[0].deviceType} `);
+  console.info(`Device changed, deviceChanged: ${JSON.stringify(deviceChanged)}.`);
 };
 
 audioManager.on('deviceChange', deviceChangeCallback);
@@ -1721,6 +1789,7 @@ on(type: 'interrupt', interrupt: AudioInterrupt, callback: Callback\<InterruptAc
 与[on('audioInterrupt')](arkts-apis-audio-AudioRenderer.md#onaudiointerrupt9)作用一致，均用于监听焦点变化。为无音频流的场景（未曾创建AudioRenderer对象），比如FM、语音唤醒等提供焦点变化监听功能。
 
 > **说明：**
+>
 > 从API version 7开始支持，从API version 11开始废弃，建议使用[on('audioInterrupt')](arkts-apis-audio-AudioCapturer.md#onaudiointerrupt10)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -1749,14 +1818,7 @@ let interAudioInterrupt: audio.AudioInterrupt = {
 };
 
 audioManager.on('interrupt', interAudioInterrupt, (interruptAction: audio.InterruptAction) => {
-  if (interruptAction.actionType === 0) {
-    console.info('An event to gain the audio focus starts.');
-    console.info(`Focus hint: ${interruptAction.hint} `);
-  }
-  if (interruptAction.actionType === 1) {
-    console.info('An audio interruption event starts.');
-    console.info(`Audio interruption hint: ${interruptAction.hint} `);
-  }
+  console.info(`Interrupt changed, interruptAction: ${JSON.stringify(interruptAction)}.`);
 });
 ```
 
@@ -1764,9 +1826,10 @@ audioManager.on('interrupt', interAudioInterrupt, (interruptAction: audio.Interr
 
 off(type: 'interrupt', interrupt: AudioInterrupt, callback?: Callback\<InterruptAction>): void
 
-取消监听音频打断事件。使用callback异步回调。
+取消监听音频打断事件。
 
 > **说明：**
+>
 > 从API version 7开始支持，从API version 11开始废弃，建议使用[off('audioInterrupt')](arkts-apis-audio-AudioCapturer.md#offaudiointerrupt10)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -1779,9 +1842,9 @@ off(type: 'interrupt', interrupt: AudioInterrupt, callback?: Callback\<Interrupt
 
 | 参数名    | 类型                                                      | 必填 | 说明                                                         |
 | --------- |---------------------------------------------------------| ---- | ------------------------------------------------------------ |
-| type      | string                                                  | 是   | 事件回调类型，支持的事件为'interrupt'，当取消监听音频打断事件时，触发该事件。 |
+| type      | string                                                  | 是   | 事件回调类型，支持的事件为'interrupt'。 |
 | interrupt | [AudioInterrupt](arkts-apis-audio-i.md#audiointerruptdeprecated)                       | 是   | 音频打断事件类型的参数。                                     |
-| callback  | Callback<[InterruptAction](arkts-apis-audio-i.md#interruptactiondeprecated)> | 否   | 回调函数，返回打断事件信息。 |
+| callback  | Callback<[InterruptAction](arkts-apis-audio-i.md#interruptactiondeprecated)> | 否   | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[on('interrupt')](#oninterruptdeprecated)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
 
 **示例：**
 
@@ -1799,14 +1862,7 @@ audioManager.off('interrupt', interAudioInterrupt);
 
 // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
 let interruptCallback = (interruptAction: audio.InterruptAction) => {
-  if (interruptAction.actionType === 0) {
-    console.info('An event to gain the audio focus starts.');
-    console.info(`Focus hint: ${interruptAction.hint} `);
-  }
-  if (interruptAction.actionType === 1) {
-    console.info('An audio interruption event starts.');
-    console.info(`Audio interruption hint: ${interruptAction.hint} `);
-  }
+  console.info(`Interrupt changed, interruptAction: ${JSON.stringify(interruptAction)}.`);
 };
 
 audioManager.on('interrupt', interAudioInterrupt, interruptCallback);

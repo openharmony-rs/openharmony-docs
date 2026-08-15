@@ -1,4 +1,4 @@
-# SendableLruCache&lt;K, V&gt;
+# Class (SendableLruCache)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->
@@ -43,7 +43,7 @@ let lruCache = new ArkTSUtils.SendableLruCache<number, number>();
 lruCache.put(2, 10);
 lruCache.put(1, 8);
 let result = lruCache.length;
-console.info('result = ' + result);
+console.info(`result = ${result}`);
 // 预期输出：result = 2
 ```
 
@@ -141,7 +141,7 @@ getCapacity(): number
 ```ts
 let lruCache = new ArkTSUtils.SendableLruCache<number, number>();
 let result = lruCache.getCapacity();
-console.info('result = ' + result);
+console.info(`result = ${result}`);
 // 预期输出：result = 64
 ```
 
@@ -163,8 +163,8 @@ lruCache.put(2, 10);
 let result = lruCache.length;
 lruCache.clear();
 let res = lruCache.length;
-console.info('result = ' + result);
-console.info('res = ' + res);
+console.info(`result = ${result}`);
+console.info(`res = ${res}`);
 // 预期输出：result = 1
 // 预期输出：res = 0
 ```
@@ -203,7 +203,7 @@ lru.put(2, 10);
 lru.get(3);
 lru.get(5);
 let res = lru.getCreateCount();
-console.info('res = ' + res);
+console.info(`res = ${res}`);
 // 预期输出：res = 2
 // 执行get操作时，如果键值不存在，调用createDefault接口判断返回值是否等于undefined
 // 如果不等于，则需要把key和返回值作为键值对添加到cache中，并且创建次数加1
@@ -232,7 +232,7 @@ let lruCache = new ArkTSUtils.SendableLruCache<number, number>();
 lruCache.put(2, 10);
 lruCache.get(2);
 let result = lruCache.getMissCount();
-console.info('result = ' + result);
+console.info(`result = ${result}`);
 // 预期输出：result = 0
 ```
 
@@ -260,7 +260,7 @@ lruCache.put(2, 10);
 lruCache.updateCapacity(2);
 lruCache.put(50, 22);
 let result = lruCache.getRemoveCount();
-console.info('result = ' + result);
+console.info(`result = ${result}`);
 // 预期输出：result = 0
 ```
 
@@ -287,7 +287,7 @@ let lruCache = new ArkTSUtils.SendableLruCache<number, number>();
 lruCache.put(2, 10);
 lruCache.get(2);
 let result = lruCache.getMatchCount();
-console.info('result = ' + result);
+console.info(`result = ${result}`);
 // 预期输出：result = 1
 ```
 
@@ -313,7 +313,7 @@ getPutCount(): number
 let lruCache = new ArkTSUtils.SendableLruCache<number, number>();
 lruCache.put(2, 10);
 let result = lruCache.getPutCount();
-console.info('result = ' + result);
+console.info(`result = ${result}`);
 // 预期输出：result = 1
 ```
 
@@ -371,7 +371,7 @@ get(key: K): V | undefined
 let lruCache = new ArkTSUtils.SendableLruCache<number, number>();
 lruCache.put(2, 10);
 let result  = lruCache.get(2);
-console.info('result = ' + result);
+console.info(`result = ${result}`);
 // 预期输出：result = 10
 ```
 
@@ -403,7 +403,7 @@ put(key: K, value: V): V
 ```ts
 let lruCache = new ArkTSUtils.SendableLruCache<number, number>();
 let result = lruCache.put(2, 10);
-console.info('result = ' + result);
+console.info(`result = ${result}`);
 // 预期输出：result = 10
 ```
 
@@ -431,7 +431,7 @@ lruCache.put(2, 10);
 lruCache.put(2, "anhu");
 lruCache.put("afaf", "grfb");
 let result = lruCache.values();
-console.info('result = ' + result);
+console.info(`result = ${result}`);
 // 预期输出：result = anhu,grfb
 ```
 
@@ -458,7 +458,7 @@ let lruCache = new ArkTSUtils.SendableLruCache<number, number>();
 lruCache.put(2, 10);
 lruCache.put(3, 1);
 let result = lruCache.keys();
-console.info('result = ' + result);
+console.info(`result = ${result}`);
 // 预期输出：result = 2,3
 ```
 
@@ -490,7 +490,7 @@ remove(key: K): V | undefined
 let lruCache = new ArkTSUtils.SendableLruCache<number, number>();
 lruCache.put(2, 10);
 let result = lruCache.remove(20);
-console.info('result = ' + result);
+console.info(`result = ${result}`);
 // 预期输出：result = undefined
 ```
 
@@ -522,7 +522,7 @@ contains(key: K): boolean
 let lruCache = new ArkTSUtils.SendableLruCache<number, number>();
 lruCache.put(2, 10);
 let result = lruCache.contains(2);
-console.info('result = ' + result);
+console.info(`result = ${result}`);
 // 预期输出：result = true
 ```
 
@@ -548,10 +548,10 @@ entries(): IterableIterator&lt;[K,V]&gt;
 let lruCache = new ArkTSUtils.SendableLruCache<number, number>();
 lruCache.put(2, 10);
 lruCache.put(3, 15);
-let pair:Iterable<Object[]> = lruCache.entries();
+let pair:Iterable<[number, number]> = lruCache.entries();
 let arrayValue = Array.from(pair);
 for (let value of arrayValue) {
-  console.info(value[0] + ', ' + value[1]);
+  console.info(`${value[0]}, ${value[1]}`);
   // 预期输出：
   // 2, 10
   // 3, 15

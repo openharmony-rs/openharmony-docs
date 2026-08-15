@@ -34,7 +34,7 @@ import { screenshot } from '@kit.ArkUI';
 | ---------------------- | ------------- | ---- | ---- | ------------------------------------------------------------ |
 | screenRect             | [Rect](js-apis-screenshot.md#rect) | 否  | 是 | 表示截取图像的区域，不传值默认返回displayId所在逻辑屏的区域。 <br> **ArkTS-Dyn起始版本：** 7   <br>  **ArkTS-Sta起始版本：** 23      |
 | imageSize              | [Size](#size) | 否 | 是  | 表示截取图像的大小，不传值默认为displayId所在逻辑屏的大小。若screenRect小于imageSize，图像会拉伸至imageSize，反之则压缩至imageSize的大小。 <br> **ArkTS-Dyn起始版本：** 7   <br>  **ArkTS-Sta起始版本：** 23        |
-| rotation               | ArkTs-Dyn: number <br> ArkTs-Sta: int        | 否  | 是 | 表示截取图像后要旋转的角度，当前仅支持0，默认值为0。传入其他值时将使用默认值。 <br> **ArkTS-Dyn起始版本：** 7   <br>  **ArkTS-Sta起始版本：** 23 |
+| rotation               | ArkTs-Dyn: number <br> ArkTs-Sta: int        | 否  | 是 | 表示截取图像后要旋转的角度，单位为度，当前仅支持0，默认值为0。传入其他值时将使用默认值。 <br> **ArkTS-Dyn起始版本：** 7   <br>  **ArkTS-Sta起始版本：** 23 |
 | displayId<sup>8+</sup> | ArkTs-Dyn: number <br> ArkTs-Sta: long        | 否 | 是  | 表示截取图像的显示设备[Display](js-apis-display.md#display)的ID号，该参数应为整数。默认为0。 <br> **ArkTS-Dyn起始版本：** 8   <br>  **ArkTS-Sta起始版本：** 23|
 | isNotificationNeeded<sup>14+</sup>| boolean        | 否  | 是 | 表示截取图像之后是否发送截屏通知，true表示发送截屏通知，false表示不发送截屏通知，默认值为true。截屏通知可以通过[captureStatusChange](js-apis-display.md#displayoncapturestatuschange12)接口监听。  <br> **ArkTS-Dyn起始版本：** 14   <br>  **ArkTS-Sta起始版本：** 23 |
 | isCaptureFullOfScreen<sup>20+</sup> | boolean        | 否  | 是 | 表示是否截取当前Screen上的所有display。对于一个Screen上有多个display的场景，为true表示截取整个Screen，false则只截取displayId所在逻辑屏的区域，默认值为false。 <br> **ArkTS-Dyn起始版本：** 20   <br>  **ArkTS-Sta起始版本：** 23|
@@ -71,6 +71,8 @@ import { screenshot } from '@kit.ArkUI';
 
 **ArkTS-Sta起始版本：** 26.0.0
 
+**系统接口：** 此接口为系统接口。
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | CANONICAL | 0 | 表示指定截图以标准HDR显示属性进行渲染，以优化截图在不同HDR显示器上的显示效果。|
@@ -90,8 +92,8 @@ import { screenshot } from '@kit.ArkUI';
 
 | 名称                 | 类型          |  只读 |  可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| width  | ArkTs-Dyn: number <br> ArkTs-Sta: long | 否   | 否   | 表示截取图像的宽度，单位为px，该参数应为整数。 |
-| height | ArkTs-Dyn: number <br> ArkTs-Sta: long | 否   | 否   | 表示截取图像的高度，单位为px，该参数应为整数。 |
+| width  | ArkTs-Dyn: number <br> ArkTs-Sta: long | 否   | 否   | 表示截取图像的宽度，单位为px，该参数应为正整数。 |
+| height | ArkTs-Dyn: number <br> ArkTs-Sta: long | 否   | 否   | 表示截取图像的高度，单位为px，该参数应为正整数。 |
 
 ## screenshot.save
 
@@ -110,8 +112,8 @@ save(options: ScreenshotOptions, callback: AsyncCallback&lt;image.PixelMap&gt;):
 **ArkTS-Sta起始版本：** 23
 
 **需要权限：**
-- API版本26.1.0+：ohos.permission.CUSTOM_SCREEN_CAPTURE 或 ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
-- API版本22-26.0.0：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
+- API版本26.0.0+：ohos.permission.CUSTOM_SCREEN_CAPTURE 或 ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
+- API版本22-24：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
 - API版本7-21：ohos.permission.CAPTURE_SCREEN。
 
 **参数：**
@@ -212,8 +214,8 @@ save(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 **ArkTS-Sta起始版本：** 23
 
 **需要权限：**
-- API版本26.1.0+：ohos.permission.CUSTOM_SCREEN_CAPTURE 或 ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
-- API版本22-26.0.0：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
+- API版本26.0.0+：ohos.permission.CUSTOM_SCREEN_CAPTURE 或 ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
+- API版本22-24：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
 - API版本7-21：ohos.permission.CAPTURE_SCREEN。
 
 **参数：**
@@ -287,8 +289,8 @@ save(options?: ScreenshotOptions): Promise&lt;image.PixelMap&gt;
 **ArkTS-Sta起始版本：** 23
 
 **需要权限：**
-- API版本26.1.0+：ohos.permission.CUSTOM_SCREEN_CAPTURE 或 ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
-- API版本22-26.0.0：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
+- API版本26.0.0+：ohos.permission.CUSTOM_SCREEN_CAPTURE 或 ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
+- API版本22-24：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
 - API版本7-21：ohos.permission.CAPTURE_SCREEN。
 
 **参数：**
@@ -451,7 +453,7 @@ try {
   promise.then((pixelMapArray: Array<image.PixelMap>) => {
     for (let i = 0; i < pixelMapArray.length; i++) {
       const pixelMap = pixelMapArray[i];
-      console.info(`succeeded in saving screenshot ${i}. Pixel bytes number: ${pixelMap.getPixelBytesNumber()}`);
+      console.info(`Succeeded in saving screenshot ${i}. Pixel bytes number: ${pixelMap.getPixelBytesNumber()}`);
       pixelMap.release();
     }
   }).catch((err: BusinessError) => {

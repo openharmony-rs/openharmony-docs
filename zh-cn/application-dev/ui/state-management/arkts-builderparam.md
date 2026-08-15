@@ -821,32 +821,6 @@ struct HelloWorldPage {
 }
 ```
 
-
-**router_map.json**
-这个文件位于项目的`resources/base/profile`目录下。
-``` TypeScript
-{
-  "routerMap": [
-    {
-      "name": "HelloWorldPage",
-      "buildFunction": "HelloWorldPageBuilder",
-      "pageSourceFile": "src/main/ets/pages/helloworld.ets"
-    }
-  ]
-}
-```
-**module.json5**
-这个文件位于应用模块的根目录下，例如`entry/src/main/module.json5`。
-
-``` TypeScript
-{
-  "module": {
-    "routerMap": "$profile:router_map",
-    ......
-  }
-}   
-```
-
 **图9** 示例效果图
 
 ![builderparam-demo7](figures/builderparam-demo7.gif)
@@ -1583,7 +1557,7 @@ struct ChildPage {
 
 ### @BuilderParam装饰器初始化的值必须为@Builder
 
-使用\@State装饰器装饰的变量，在初始化子组件的\@BuilderParam和`ChildBuilder`变量时，编译时会输出报错信息。
+使用\@State装饰器装饰的变量，在初始化子组件\@BuilderParam装饰的`childBuilder`变量时，编译时会输出报错信息。
 
 【反例】
 
@@ -1601,19 +1575,19 @@ struct CustomBuilderDemo {
 
   build() {
     Column() {
-      // @BuilderParam装饰的变量ChildBuilder接收@State装饰的变量，会出现编译和编辑报错
-      ChildPage({ ChildBuilder: this.message })
+      // @BuilderParam装饰的变量childBuilder接收@State装饰的变量，会出现编译和编辑报错
+      ChildPage({ childBuilder: this.message })
     }
   }
 }
 
 @Component
 struct ChildPage {
-  @BuilderParam ChildBuilder: () => void = globalBuilder;
+  @BuilderParam childBuilder: () => void = globalBuilder;
 
   build() {
     Column() {
-      this.ChildBuilder()
+      this.childBuilder()
     }
   }
 }
