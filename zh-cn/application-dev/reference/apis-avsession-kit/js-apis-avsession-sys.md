@@ -2492,7 +2492,7 @@ struct Index {
   build() {
     Column() {
       Text(this.message)
-        .onClick(() => {
+        .onClick(async () => {
           // 获取当前系统中所有session的描述符。
           let descriptors = await AVSessionManager.getAllSessionDescriptors();
           if (descriptors.length === 0) {
