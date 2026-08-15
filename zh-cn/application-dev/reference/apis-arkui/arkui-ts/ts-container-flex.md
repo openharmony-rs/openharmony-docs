@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -13,7 +13,7 @@ Flex是以弹性方式布局子组件的容器组件，能够高效地排列、�
 > **说明：**
 >
 > - 该组件从API version 7开始支持。后续版本如有新增内容将采用上角标单独标记该内容的起始版本。
-> - Flex组件在渲染时存在二次布局过程，因此在对性能有严格要求的场景下建议使用[Column](ts-container-column.md)、[Row](ts-container-row.md)代替。最佳实践请参考[布局优化指导-合理使用布局组件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/arkts-layout-optimization-guidance#%E5%90%88%E7%90%86%E4%BD%BF%E7%94%A8%E5%B8%83%E5%B1%80%E7%BB%84%E4%BB%B6)。
+> - Flex组件在渲染时存在二次布局过程，因此在对性能有严格要求的场景下建议使用[Column](ts-container-column.md)、[Row](ts-container-row.md)代替。最佳实践请参考布局优化指导-[合理使用布局组件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/arkts-layout-optimization-guidance#合理使用布局组件)。
 > - Flex组件主轴不设置长度时默认撑满父容器，如果包含设置[position](ts-universal-attributes-location.md#position)的子组件，此时Flex组件不会撑满父容器。[Column](ts-container-column.md)、[Row](ts-container-row.md)组件主轴不设置长度时默认跟随子节点大小。
 > - Flex、Column、Row组件在没有子节点且不设置宽高时，默认宽高为-1。
 > - 主轴长度可设置为auto使Flex自适应子组件布局，自适应时，Flex长度受[constraintSize](ts-universal-attributes-size.md#constraintsize)属性以及父容器传递的最大最小长度限制，且constraintSize属性优先级更高。

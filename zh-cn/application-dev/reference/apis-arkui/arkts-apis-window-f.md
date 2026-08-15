@@ -26,7 +26,7 @@ createWindow(config: Configuration, callback: AsyncCallback&lt;Window&gt;): void
 
 非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)。
 
-自由窗口状态下，子窗口参数[decorEnabled](arkts-apis-window-i.md#configuration9)为false时，子窗口创建后为沉浸式布局；子窗口参数decorEnabled为true，子窗口创建后为非沉浸式布局。
+自由窗口状态下，子窗口参数[decorEnabled](arkts-apis-window-i.md#configuration9)为false时，创建后为沉浸式布局；参数decorEnabled为true，创建后为非沉浸式布局。
 
 全局悬浮窗口、模态窗口或系统窗口创建后默认是非沉浸式布局。
 
@@ -51,12 +51,12 @@ createWindow(config: Configuration, callback: AsyncCallback&lt;Window&gt;): void
 | ------- | -------------------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801     | Capability not supported. createWindow can not work correctly due to limited device capabilities.<br/>适用版本：12+ |
-| 1300001 | Repeated operation. Possible cause: The window has been created and can not be created again. |
-| 1300002 | This window state is abnormal. Possible cause: Invalid parent window type, parent window cannot be a subWindow.<br/>适用版本：12+ |
-| 1300004 | Unauthorized operation. Possible cause: The window type in the configuration is invalid.<br/>适用版本：12+ |
+| 801     | Capability not supported. createWindow cannot work correctly due to limited device capabilities.<br>适用版本：12+ |
+| 1300001 | Repeated operation. Possible cause: The window has been created and cannot be created again. |
+| 1300002 | This window state is abnormal. Possible cause: Invalid parent window type, parent window cannot be a subWindow.<br>适用版本：12+ |
+| 1300004 | Unauthorized operation. Possible cause: The window type in the configuration is invalid.<br>适用版本：12+ |
 | 1300006 | This window context is abnormal. |
-| 1300008 | The display device is abnormal.<br/>适用版本：9-16 |
+| 1300008 | The display device is abnormal.<br>适用版本：9-16 |
 | 1300009 | The parent window is invalid. |
 
 **示例：**
@@ -70,7 +70,7 @@ export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     let windowClass: window.Window | undefined = undefined;
     let config: window.Configuration = {
-      name: "test",
+      name: 'test',
       windowType: window.WindowType.TYPE_DIALOG,
       ctx: this.context
     };
@@ -100,7 +100,7 @@ createWindow(config: Configuration): Promise&lt;Window&gt;
 
 非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)。
 
-自由窗口状态下，子窗口参数[decorEnabled](arkts-apis-window-i.md#configuration9)为false时，子窗口创建后为沉浸式布局；子窗口参数decorEnabled为true，子窗口创建后为非沉浸式布局。
+自由窗口状态下，子窗口参数[decorEnabled](arkts-apis-window-i.md#configuration9)为false时，创建后为沉浸式布局；参数decorEnabled为true，创建后为非沉浸式布局。
 
 全局悬浮窗口、模态窗口或系统窗口创建后默认是非沉浸式布局。
 
@@ -130,12 +130,12 @@ createWindow(config: Configuration): Promise&lt;Window&gt;
 | ------- | -------------------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801     | Capability not supported. createWindow can not work correctly due to limited device capabilities.<br/>适用版本：12+ |
-| 1300001 | Repeated operation. Possible cause: The window has been created and can not be created again. |
-| 1300002 | This window state is abnormal. Possible cause: Invalid parent window type, parent window cannot be a subWindow.<br/>适用版本：12+ |
-| 1300004 | Unauthorized operation. Possible cause: The window type in the configuration is invalid.<br/>适用版本：12+ |
+| 801     | Capability not supported. createWindow cannot work correctly due to limited device capabilities.<br>适用版本：12+ |
+| 1300001 | Repeated operation. Possible cause: The window has been created and cannot be created again. |
+| 1300002 | This window state is abnormal. Possible cause: Invalid parent window type, parent window cannot be a subWindow.<br>适用版本：12+ |
+| 1300004 | Unauthorized operation. Possible cause: The window type in the configuration is invalid.<br>适用版本：12+ |
 | 1300006 | This window context is abnormal. |
-| 1300008 | The display device is abnormal.<br/>适用版本：9-16 |
+| 1300008 | The display device is abnormal.<br>适用版本：9-16 |
 | 1300009 | The parent window is invalid. |
 
 **示例：**
@@ -149,7 +149,7 @@ export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     let windowClass: window.Window | undefined = undefined;
     let config: window.Configuration = {
-      name: "test",
+      name: 'test',
       windowType: window.WindowType.TYPE_DIALOG,
       ctx: this.context
     };
@@ -158,7 +158,7 @@ export default class EntryAbility extends UIAbility {
         console.info('Succeeded in creating the window. Data: ' + JSON.stringify(value));
         windowClass = value;
         windowClass.resize(500, 1000);
-      }).catch((err:BusinessError)=> {
+      }).catch((err:BusinessError) => {
         console.error(`Failed to create the window. Cause code: ${err.code}, message: ${err.message}`);
       });
     } catch (exception) {
@@ -188,7 +188,7 @@ findWindow(name: string): Window
 
 | 类型 | 说明 |
 | ----------------- | ------------------- |
-| [Window](arkts-apis-window-Window.md) | 当前查找的窗口对象。如果查找指定名称对应的窗口不存在，则返回1300002错误码。 |
+| [Window](arkts-apis-window-Window.md) | 当前查找的窗口对象。如果查找指定名称对应的窗口不存在，则抛出1300002错误码。 |
 
 **错误码：**
 
@@ -197,7 +197,7 @@ findWindow(name: string): Window
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. |
 
 **示例：**
 
@@ -238,7 +238,7 @@ getLastWindow(ctx: BaseContext, callback: AsyncCallback&lt;Window&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal. Possible cause: 1. Top window or main window is null or destroyed; 2. This window context is abnormal.  |
+| 1300002 | This window state is abnormal. Possible cause: 1. Top window or main window is not created or destroyed; 2. Stage mode without context. |
 | 1300006 | This window context is abnormal. |
 
 **示例：**
@@ -319,7 +319,7 @@ getLastWindow(ctx: BaseContext): Promise&lt;Window&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal. Possible cause: 1. Top window or main window is null or destroyed; 2. This window context is abnormal.   |
+| 1300002 | This window state is abnormal. Possible cause: 1. Top window or main window is not created or destroyed; 2. Stage mode without context.  |
 | 1300006 | This window context is abnormal. |
 
 **示例：**
@@ -368,7 +368,7 @@ export default class EntryAbility extends UIAbility {
 ## window.shiftAppWindowFocus<sup>11+</sup>
 shiftAppWindowFocus(sourceWindowId: number, targetWindowId: number): Promise&lt;void&gt;
 
-在同应用内将窗口焦点从源窗口转移到目标窗口，仅支持应用主窗、子窗范围内的焦点转移。使用Promise异步回调。
+在同应用内将窗口焦点从源窗口转移到目标窗口，仅支持应用主窗口、子窗口范围内的焦点转移。使用Promise异步回调。
 
 目标窗口需确保具有获得焦点的能力（可通过[setWindowFocusable()](arkts-apis-window-Window.md#setwindowfocusable9)设置），并确保调用[showWindow()](arkts-apis-window-Window.md#showwindow9)成功且执行完毕。
 
@@ -376,7 +376,7 @@ shiftAppWindowFocus(sourceWindowId: number, targetWindowId: number): Promise&lt;
 
 > **说明：**
 >
-> 在调用shiftAppWindowFocus()前，建议确保目标窗口已调用[loadContent()](arkts-apis-window-Window.md#loadcontent9)或[setUIContent()](arkts-apis-window-Window.md#setuicontent9)并生效，否则可能会导致不可见窗口获取焦点，造成功能异常或影响用户体验。
+> 在调用shiftAppWindowFocus()前，需确保目标窗口已调用[loadContent()](arkts-apis-window-Window.md#loadcontent9)或[setUIContent()](arkts-apis-window-Window.md#setuicontent9)并生效，否则可能会导致不可见窗口获取焦点，造成功能异常或影响用户体验。
 >
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -387,8 +387,8 @@ shiftAppWindowFocus(sourceWindowId: number, targetWindowId: number): Promise&lt;
 
 | 参数名          | 类型   | 必填  | 说明                    |
 | -------------- | ------ | ----- | ----------------------- |
-| sourceWindowId | number | 是    | 源窗口id，必须是获焦状态。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。|
-| targetWindowId | number | 是    | 目标窗口id。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。|
+| sourceWindowId | number | 是    | 源窗口ID，必须是获焦状态。该参数应为大于0的整数。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口ID属性。|
+| targetWindowId | number | 是    | 目标窗口ID。该参数应为大于0的整数。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口ID属性。|
 
 **返回值：**
 
@@ -492,8 +492,8 @@ shiftAppWindowPointerEvent(sourceWindowId: number, targetWindowId: number): Prom
 
 | 参数名          | 类型   | 必填  | 说明                    |
 | -------------- | ------ | ----- | ----------------------- |
-| sourceWindowId | number | 是    | 源窗口id。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。            |
-| targetWindowId | number | 是    | 目标窗口id。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。             |
+| sourceWindowId | number | 是    | 源窗口ID。该参数应为大于0的整数。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口ID属性。            |
+| targetWindowId | number | 是    | 目标窗口ID。该参数应为大于0的整数。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口ID属性。             |
 
 **返回值：**
 
@@ -521,6 +521,7 @@ import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
+@Component
 struct Index {
   build() {
     Row() {
@@ -564,8 +565,8 @@ shiftAppWindowTouchEvent(sourceWindowId: number, targetWindowId: number, fingerI
 
 | 参数名          | 类型   | 必填  | 说明                    |
 | -------------- | ------ | ----- | ----------------------- |
-| sourceWindowId | number | 是    | 源窗口id。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。该参数应为大于0的整数，小于等于0时会返回错误码1300016。            |
-| targetWindowId | number | 是    | 目标窗口id。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。该参数应为大于0的整数，小于等于0时会返回错误码1300016。             |
+| sourceWindowId | number | 是    | 源窗口ID。该参数应为大于0的整数。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口ID属性。该参数应为大于0的整数，小于等于0时会返回错误码1300016。            |
+| targetWindowId | number | 是    | 目标窗口ID。该参数应为大于0的整数。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口ID属性。该参数应为大于0的整数，小于等于0时会返回错误码1300016。             |
 | fingerId | number | 是    | 触屏事件的手指唯一标识符。推荐使用[TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent对象说明)对象中touches属性获取id。该参数应为大于等于0的整数，小于0时会返回错误码1300016。             |
 
 **返回值：**
@@ -580,7 +581,7 @@ shiftAppWindowTouchEvent(sourceWindowId: number, targetWindowId: number, fingerI
 
 | 错误码ID | 错误信息                                      |
 | ------- | --------------------------------------------- |
-| 801     | Capability not supported. Function shiftAppWindowTouchEvent can not work correctly due to limited device capabilities. |
+| 801     | Capability not supported. Function shiftAppWindowTouchEvent cannot work correctly due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: 1. SourceWindow cannot find: not created or not belong to current process; 2. TargetWindow cannot find: not created or not belong to current process; 3. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only main windows and subwindows are supported; 2. The two windows are not from the same process. |
@@ -594,6 +595,7 @@ import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
+@Component
 struct Index {
   build() {
     Row() {
@@ -639,8 +641,8 @@ getWindowsByCoordinate(displayId: number, windowNumber?: number, x?: number, y?:
 | ------ | ---------- |----|---------------------------------------------------------------------------|
 | displayId   | number| 是  | 查询窗口所在的displayId，该参数应为整数，传入非整数会忽略掉小数部分，可以在窗口属性[WindowProperties](arkts-apis-window-i.md#windowproperties)中获取。 |
 | windowNumber    | number| 否  | 查询的窗口数量，该参数应为大于0的整数，传入非整数会忽略掉小数部分，未设置或小于等于0返回所有满足条件的窗口。                                  |
-| x    | number | 否  | 查询的x坐标，以屏幕左上角为原点，该参数应为非负整数，传入非整数会忽略掉小数部分，未设置或小于0返回所有可见窗口。                                         |
-| y    | number| 否  | 查询的y坐标，以屏幕左上角为原点，该参数应为非负整数，传入非整数会忽略掉小数部分，未设置或小于0返回所有可见窗口。                                         |
+| x    | number | 否  | 查询的x坐标，以屏幕左上角为原点，单位为px，该参数应为非负整数，传入非整数会忽略掉小数部分，未设置或小于0返回所有可见窗口。                                         |
+| y    | number| 否  | 查询的y坐标，以屏幕左上角为原点，单位为px，该参数应为非负整数，传入非整数会忽略掉小数部分，未设置或小于0返回所有可见窗口。                                         |
 
 **返回值：**
 
@@ -723,7 +725,7 @@ getAllWindowLayoutInfo(displayId: number): Promise&lt;Array&lt;WindowLayoutInfo&
 |----------| ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 | 801      | Capability not supported. Function getAllWindowLayoutInfo can not work correctly due to limited device capabilities. |
-| 1300002 | This window state is abnormal.<br/>适用版本：15-18 |
+| 1300002 | This window state is abnormal.<br>适用版本：15-18 |
 | 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
 
 **示例：**
@@ -845,7 +847,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let promise = window.getVisibleWindowInfo();
   promise.then((data) => {
-    data.forEach(windowInfo=>{
+    data.forEach((windowInfo) => {
       console.info(`left:${windowInfo.rect.left}`);
       console.info(`top:${windowInfo.rect.top}`);
       console.info(`width:${windowInfo.rect.width}`);
@@ -858,9 +860,9 @@ try {
       console.info(`displayId:${windowInfo.displayId}`);
       console.info(`globalDisplayRect:${JSON.stringify(windowInfo.globalDisplayRect)}`);
       console.info(`globalRect:${JSON.stringify(windowInfo.globalRect)}`);
-    })
+    });
   }).catch((err: BusinessError) => {
-    console.error('Failed to getWindowInfo. Cause: ' + JSON.stringify(err));
+    console.error(`Failed to getWindowInfo. Cause code: ${err.code}, message: ${err.message}`);
   });
 } catch (exception) {
   console.error(`Failed to get visible window info. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -929,7 +931,7 @@ setWatermarkImageForAppWindows(pixelMap: image.PixelMap | undefined): Promise&lt
 
 | 参数名   | 类型                                                                          | 必填 | 说明                                                                                                           |
 | -------- | ----------------------------------------------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------- |
-| pixelMap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) \| undefined | 是   | 传入`image.PixelMap`表示设置水印图片，传入`undefined`表示取消水印显示。<br/>如果图片尺寸的宽和高同时超过窗口尺寸以及屏幕尺寸的宽和高，返回错误码1300016。<br/>如果图片尺寸的宽或高超过窗口尺寸的宽或高，超出窗口宽或高的部分会被裁剪。<br/>如果图片尺寸的宽或高小于窗口尺寸的宽或高，小于的部分会自动重复补充。|
+| pixelMap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) \| undefined | 是   | 传入`image.PixelMap`表示设置水印图片，传入`undefined`表示取消水印显示。<br>如果图片尺寸的宽和高同时超过窗口尺寸以及屏幕尺寸的宽和高，返回错误码1300016。<br>如果图片尺寸的宽或高超过窗口尺寸的宽或高，超出窗口宽或高的部分会被裁剪。<br>如果图片尺寸的宽或高小于窗口尺寸的宽或高，小于的部分会自动重复补充。|
 
 **返回值：**
 
@@ -943,7 +945,7 @@ setWatermarkImageForAppWindows(pixelMap: image.PixelMap | undefined): Promise&lt
 
 | 错误码 ID | 错误信息                                                                                                                  |
 | --------- | ------------------------------------------------------------------------------------------------------------------------- |
-| 801       | Capability not supported. Function setWatermarkImageForAppWindows can not to work correctly due to limited device capabilities. |
+| 801       | Capability not supported. Function setWatermarkImageForAppWindows can not work correctly due to limited device capabilities. |
 | 1300003   | This window manager service works abnormally.                                                                             |
 | 1300016   | Parameter error. Possible cause: 1. Invalid parameter range.                                                              |
 
@@ -1022,7 +1024,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { ColorMetrics, window } from '@kit.ArkUI';
 
 try {
-  let promise = window.setStartWindowBackgroundColor("entry", "EntryAbility", ColorMetrics.numeric(0xff000000));
+  let promise = window.setStartWindowBackgroundColor('entry', 'EntryAbility', ColorMetrics.numeric(0xff000000));
   promise.then(() => {
     console.info('Succeeded in setting the starting window color.');
   }).catch((err: BusinessError) => {
@@ -1037,7 +1039,7 @@ try {
 
 getAllMainWindowInfo(): Promise&lt;Array&lt;MainWindowInfo&gt;&gt;
 
-获取全部主窗口信息，使用Promise异步回调。
+获取全部应用的主窗口信息，使用Promise异步回调。
 
 **需要权限：** ohos.permission.CUSTOM_SCREEN_CAPTURE
 
@@ -1072,7 +1074,8 @@ export default class EntryAbility extends UIAbility {
     console.info('Ability onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
-        console.error(`Failed to load the content. Cause: ${JSON.stringify(err)}`);
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+        return;
       }
       reqPermissionsFromUser(permissions, this.context);
       console.info('Succeeded in loading the content');
@@ -1082,10 +1085,10 @@ export default class EntryAbility extends UIAbility {
       windowInfoPromise.then((list: Array<window.MainWindowInfo>) => {
         console.info('Get all main window info success.');
       }).catch((err: BusinessError) => {
-        console.error(`Get all main window info failed. Error info: ${JSON.stringify(err)}`);
+        console.error(`Get all main window info failed. Cause code: ${err.code}, message: ${err.message}`);
       });
     } catch (err) {
-      console.error(`Get all main window info failed. Cause info: ${JSON.stringify(err)}`);
+      console.error(`Get all main window info failed. Cause code: ${err.code}, message: ${err.message}`);
     }
   }
 }
@@ -1158,7 +1161,8 @@ export default class EntryAbility extends UIAbility {
     console.info('Ability onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
-        console.error(`Failed to load the content. Cause: JSON.stringify(err)`);
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+        return;
       }
       reqPermissionsFromUser(permissions, this.context);
       console.info('Success in loading the content');
@@ -1179,13 +1183,13 @@ export default class EntryAbility extends UIAbility {
             console.info(`Get main window snapshot, getBytesNumberPerRow: ${list[i]?.getBytesNumberPerRow()}`);
           }
         }).catch((err: BusinessError) => {
-          console.error(`Get main window snapshot failed. Error info: ${JSON.stringify(err)}`);
+          console.error(`Get main window snapshot failed. Cause code: ${err.code}, message: ${err.message}`);
         });
       }).catch((err: BusinessError) => {
-        console.error(`Get all main window info failed. Error info: ${JSON.stringify(err)}`);
+        console.error(`Get all main window info failed. Cause code: ${err.code}, message: ${err.message}`);
       });
     } catch (err) {
-      console.error(`Get all main window info failed. Cause info: ${JSON.stringify(err)}`);
+      console.error(`Get all main window info failed. Cause code: ${err.code}, message: ${err.message}`);
     }
   }
 }
@@ -1236,10 +1240,10 @@ onApplicationFocusStateChange(callback: Callback\<boolean\>): void
 import { window } from '@kit.ArkUI';
 
 try {
-  window.onApplicationFocusStateChange((data) =>{
+  window.onApplicationFocusStateChange((data) => {
       console.info(`Succeeded in enabling the listener for application focus state changes. Data: ${data}`);
   })
-} catch(exception){
+} catch (exception){
   console.error(`Failed to enable the listener for application focus state changes. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
@@ -1276,7 +1280,7 @@ try {
   // 如果通过on开启多个callback进行监听，同时关闭所有监听：
   window.offApplicationFocusStateChange(); 
 } catch (exception) {
-  console.error(`Failed to enable or disable the listener for application focus state changes. Cause code: ${exception.code}, message: ${exception.message}`);
+  console.error(`Failed to disable the listener for application focus state changes. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
 
@@ -1349,7 +1353,7 @@ create(id: string, type: WindowType): Promise&lt;Window&gt;
 
 | 类型                             | 说明                                    |
 | -------------------------------- | --------------------------------------- |
-| Promise&lt;[Window](arkts-apis-window-Window.md)&gt; | Promise对象。返回当前创建的子窗口对象。 |
+| Promise&lt;[Window](arkts-apis-window-Window.md)&gt; | Promise对象。返回当前创建的窗口对象。 |
 
 
 **示例：**
@@ -1386,7 +1390,7 @@ create(ctx: BaseContext, id: string, type: WindowType, callback: AsyncCallback&l
 | ctx      | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是   | 当前应用上下文信息。                 |
 | id       | string                                                  | 是   | 窗口名字，即[Configuration](arkts-apis-window-i.md#configuration9)中的name。   |
 | type     | [WindowType](arkts-apis-window-e.md#windowtype7)                              | 是   | 窗口类型。                           |
-| callback | AsyncCallback&lt;[Window](arkts-apis-window-Window.md)&gt;                  | 是   | 回调函数。返回当前创建的子窗口对象。 |
+| callback | AsyncCallback&lt;[Window](arkts-apis-window-Window.md)&gt;                  | 是   | 回调函数。返回当前创建的窗口对象。 |
 
 
 **示例：**
@@ -1431,7 +1435,7 @@ create(ctx: BaseContext, id: string, type: WindowType): Promise&lt;Window&gt;
 
 | 类型                             | 说明                                    |
 | -------------------------------- | --------------------------------------- |
-| Promise&lt;[Window](arkts-apis-window-Window.md)&gt; | Promise对象。返回当前创建的子窗口对象。 |
+| Promise&lt;[Window](arkts-apis-window-Window.md)&gt; | Promise对象。返回当前创建的窗口对象。 |
 
 
 **示例：**
@@ -1453,7 +1457,7 @@ promise.then((data) => {
 
 find(id: string, callback: AsyncCallback&lt;Window&gt;): void
 
-查找id所对应的窗口，使用callback异步回调。
+根据窗口名称查找对应的窗口，使用callback异步回调。
 
 > **说明：**
 >
@@ -1489,7 +1493,7 @@ window.find('test', (err: BusinessError, data) => {
 
 find(id: string): Promise&lt;Window&gt;
 
-查找id所对应的窗口，使用Promise异步回调。
+根据窗口名称查找对应的窗口，使用Promise异步回调。
 
 > **说明：**
 >

@@ -2,10 +2,11 @@
 
 <!--Kit: Function Flow Runtime Kit-->
 <!--Subsystem: Resourceschedule-->
-<!--Owner: @chuchihtung; @yanleo-->
-<!--Designer: @geoffrey_guo; @huangyouzhong-->
-<!--Tester: @lotsof; @sunxuhao-->
+<!--Owner: @chuchihtung-->
+<!--Designer: @zhanglu161-->
+<!--Tester: @lotsof-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=1bd5d6cdd22374b2fc7c67ab365167018faf622f translatedAt=2026-07-20T01:57:00.773Z pushedAt=2026-07-20T02:24:53.224Z -->
 
 ```c
 typedef struct {...} ffrt_cond_t
@@ -13,7 +14,7 @@ typedef struct {...} ffrt_cond_t
 
 ## Overview
 
-The **ffrt_cond_t** struct describes a condition variable.
+Condition variable struct, used to store the internal data of the condition variable.
 
 **Since**: 10
 
@@ -27,4 +28,4 @@ The **ffrt_cond_t** struct describes a condition variable.
 
 | Name| Description|
 | -- | -- |
-| uint32_t storage[(ffrt_cond_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)] | Storage size of a condition variable.|
+| uint32_t storage[(ffrt_cond_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)] | Internal storage of the condition variable. Do not access it directly. Manage it through APIs such as `ffrt_cond_*`. |

@@ -67,6 +67,7 @@ import { nearlinkConstant } from '@kit.ConnectivityKit';
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
+| DEVICE_INVALID_CLASS | -1 | 无效的设备类型，设备类型信息缺失。 |
 | DEVICE_UNCATEGORIZED | 0x000100 | 未分类设备。 |
 | DEVICE_PHONE | 0x000200 | 电话。 |
 | DEVICE_SMARTPHONE | 0x000201 | 智能手机。 |

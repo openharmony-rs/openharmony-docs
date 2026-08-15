@@ -1,14 +1,14 @@
 # Interface (NativeMediaPlayerBridge)
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @zhangyao75477-->
-<!--Designer: @qiu-gongkai-->
+<!--Designer: @gzweioh-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=4166a00ed5bd25ff483cf28690d41e5067b0c812 translatedAt=2026-08-07T04:23:04.549Z pushedAt=2026-08-07T08:11:06.015Z -->
 
- Instance of the API class between the web media player and the ArkWeb kernel.
-
-The ArkWeb kernel uses an object of this interface class to control the player created by the application to take over web page media.
+NativeMediaPlayerBridge is the return value type of the [CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12) callback function. It is an interface class between the player that takes over web page media and the ArkWeb kernel. The ArkWeb kernel uses an object of this interface class to control the player created by the app to take over web page media. This interface allows the app to use a custom media player to take over media content playback in web pages. It also supports player suspension and resumption mechanisms.
 
 > **NOTE**
 >
@@ -22,7 +22,7 @@ The ArkWeb kernel uses an object of this interface class to control the player c
 
 updateRect(x: number, y: number, width: number, height: number): void
 
-Updates the surface position information.
+Notifies the app of the surface position information. This method is called back by the ArkWeb kernel when the web page layout changes, the page scrolls, or the playback area changes. The app must update the position and size of the native player's rendering surface accordingly.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -30,10 +30,10 @@ Updates the surface position information.
 
 | Name| Type| Mandatory| Description|
 |--------|------|------|------|
-|x|number| Yes|X coordinate of the surface relative to the **Web** component.|
-|y|number| Yes|Y coordinate of the surface relative to the **Web** component.|
-|width|number| Yes|Width of the surface.<br>Unit: pixel|
-|height|number| Yes|Height of the surface.<br>Unit: pixel|
+| x | number | Yes | x coordinate of the surface relative to the Web component.<br>Unit: px. |
+| y | number | Yes | y coordinate of the surface relative to the Web component.<br>Unit: px. |
+| width | number | Yes | Width of the surface.<br>Unit: px. |
+| height | number | Yes | Height of the surface.<br>Unit: px. |
 
 **Example**
 
@@ -43,7 +43,7 @@ For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-
 
 play(): void
 
-Plays this video.
+Plays the media.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -75,7 +75,7 @@ Seeks to a specific time point in the media.
 
 | Name| Type| Mandatory| Description|
 |--------|------|------|------|
-| targetTime | number | Yes| Target time point.<br>Unit: second|
+| targetTime | number | Yes | Target time for seek, calculated from the start of media playback.<br>Unit: seconds. |
 
 **Example**
 
@@ -87,13 +87,13 @@ setVolume(volume: number): void
 
 Sets the playback volume.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Parameters**
 
 | Name| Type| Mandatory| Description|
 |--------|------|------|------|
-| volume | number | Yes| Playback volume.<br>Value range: [0, 1.0]. The value **0** indicates mute, and the value **1.0** indicates the maximum volume.|
-
-**System capability**: SystemCapability.Web.Webview.Core
+| volume | number | Yes | Volume of the player.<br>Value range: [0, 1.0], where 0 indicates mute and 1.0 indicates the maximum volume. If the value is out of range, it is automatically corrected to the boundary value. |
 
 **Example**
 
@@ -129,7 +129,7 @@ Sets the playback rate.
 
 | Name| Type| Mandatory| Description|
 |--------|------|------|------|
-| playbackRate | number | Yes| Playback rate.<br>Value range: [0, 10.0]. The value **1** indicates the original speed of playback.|
+| playbackRate | number | Yes | Playback rate.<br>Value range: [0, 10.0], where 1 indicates the original speed. If the value is out of range, it is automatically corrected to the boundary value. |
 
 **Example**
 
@@ -175,7 +175,7 @@ For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-
 
 resumePlayer?(): void
 
-Resumes the player and its status information.
+Notifies the app to rebuild the player and restore its status information. This method is used only in pair with suspendPlayer.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -187,7 +187,7 @@ For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-
 
 suspendPlayer?(type: SuspendType): void
 
-Suspends the player and save its status information.
+Notifies the app to destroy the player and save its status information. This method is used only in pair with resumePlayer.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -195,7 +195,7 @@ Suspends the player and save its status information.
 
 | Name| Type| Mandatory| Description|
 |--------|------|------|------|
-| type | [SuspendType](./arkts-apis-webview-e.md#suspendtype12) | Yes| Suspension type of the player.|
+| type | [SuspendType](./arkts-apis-webview-e.md#suspendtype12) | Yes | Player suspension type, which specifies how the player is suspended. Different SuspendType values correspond to different suspension scenarios. |
 
 **Example**
 

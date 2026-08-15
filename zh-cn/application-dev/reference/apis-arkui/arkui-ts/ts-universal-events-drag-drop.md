@@ -45,7 +45,7 @@ onDragStart(event: (event: DragEvent, extraParams?: string) => CustomBuilder | D
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**事件优先级：** 长按事件触发时间 < 500ms，长按事件优先拖拽事件响应，长按事件触发时间 >= 500ms，拖拽事件优先长按事件响应。
+**事件优先级：** 长按事件触发时间 < 500ms时，长按事件优先拖拽事件响应，长按事件触发时间 >= 500ms时，拖拽事件优先长按事件响应。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -153,7 +153,7 @@ onDrop(event: (event: DragEvent, extraParams?: string) => void): T
 
 onDrop(eventCallback: OnDragEventCallback, dropOptions?: DropOptions): T
 
-绑定此事件的组件可作为拖拽释放目标，当在本组件范围内停止拖拽行为时，触发回调。如果开发者没有在onDrop中主动调用event.[setResult](#setresult10)()设置拖拽接收的结果，若拖拽组件为系统支持默认拖入的组件，以系统实际处理数据结果为准，其他组件则系统按照数据接收成功处理。
+绑定此事件的组件可作为拖拽释放目标，当在本组件范围内停止拖拽行为时，触发回调。如果开发者没有在onDrop中主动调用event.[setResult](#setresult10)()设置拖拽接收的结果，对于系统支持的默认可拖入组件，处理结果以系统实际处理的数据为准；对于其他组件，系统默认按数据接收成功处理。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -244,7 +244,7 @@ onDragSpringLoading(callback: Callback\<SpringLoadingContext\> | null, configura
 
 | 参数名        | 类型                                      | 必填 | 说明                                           |
 | :------------ | ----------------------------------------- | ---- | ---------------------------------------------- |
-| callback          | Callback\<[SpringLoadingContext](#springloadingcontext20)\> \| null    | 是   | 悬停检测回调函数，当值为null时禁用悬停检测。 |
+| callback          | [Callback](../../../reference/apis-basic-services-kit/js-apis-base.md#callback)\<[SpringLoadingContext](#springloadingcontext20)\> \| null    | 是   | 悬停检测回调函数，当值为null时禁用悬停检测。 |
 | configuration | [DragSpringLoadingConfiguration](../js-apis-arkui-dragController.md#dragspringloadingconfiguration20) | 否   | 悬停检测配置信息。当需要自定义悬停检测的触发时长、更新间隔或通知次数等行为时传入；不传入或为undefined时取[DragSpringLoadingConfiguration](../js-apis-arkui-dragController.md#dragspringloadingconfiguration20)默认值。  |
 
 **返回值：**
@@ -280,7 +280,7 @@ onDragSpringLoading(callback: Callback\<SpringLoadingContext\> | null, configura
 | 名称       | 类型 | 只读 | 可选 | 说明                                                         |
 | ---------- | ---- | ---- | ---- | ------------------------------------------------------------ |
 | onlyForLifting | boolean | 否    | 是    | 自定义配置的预览图是否仅用于浮起。<br> **说明：** <br>默认值为false。true表示自定义预览图仅用于浮起，false表示可用于浮起和拖拽。设置为true时，如果发起长按拖拽，浮起时的预览图为自定义配置的预览图，拖拽时的预览图不使用[dragPreview](ts-universal-attributes-drag-drop.md#dragpreview11)属性，优先使用开发者在[onDragStart](#ondragstart)中返回的预览图，如果[onDragStart](#ondragstart)中没有返回预览图则使用组件自截图。|
-| delayCreating  | boolean | 否    | 是    | 组件预览builder是否在设置时加载。<br>默认值为false。true表示组件预览builder在设置时加载，false表示组件预览builder不在设置时加载。|
+| delayCreating  | boolean | 否    | 是    | 组件预览builder是否延时创建。<br>默认值为false。true表示组件预览builder延迟到需要生成拖拽预览图时创建，false表示组件预览builder在设置时创建。|
 
 ## extraParams说明
 
@@ -1275,7 +1275,6 @@ struct ImageExample {
               } finally {
                 fileIo.closeSync(file.fd);
               }
-              fileIo.writeSync(file.fd, arrayBuffer);
               // 获取图片的uri
               let uri = fileUri.getUriFromPath(filePath);
               let image: unifiedDataChannel.Image = new unifiedDataChannel.Image();
@@ -1345,7 +1344,7 @@ struct ImageExample {
               this.udKey = (event as DragEvent).startDataLoading(options);
               console.info(`udKey: ${this.udKey}`);
             } catch (e) {
-              console.error(`startDataLoading errorCode: ${e.code}, errorMessage: ${e.message}`);
+              console.error(`Failed to start data loading. Code: ${e.code}, message: ${e.message}`);
             }
           }, { disableDataPrefetch: true })
         }
@@ -1359,7 +1358,7 @@ struct ImageExample {
           try {
             this.getUIContext().getDragController().cancelDataLoading(this.udKey);
           } catch (e) {
-            console.error(`cancelDataLoading errorCode: ${e.code}, errorMessage: ${e.message}`);
+            console.error(`Failed to cancel data loading. Code: ${e.code}, message: ${e.message}`);
           }
         })
         .margin({ top: 10 })
@@ -1748,7 +1747,7 @@ struct VideoExample {
                   fileIo.readSync(data.fd, buf, { offset: data.offset, length: bufferSize });
                   fileIo.writeSync(file.fd, buf, { offset: 0, length: bufferSize });
                 } catch (error) {
-                  console.error(`openSync errorCode: ${error.code}, errorMessage: ${error.message}`);
+                  console.error(`Failed to open file. Code: ${error.code}, message: ${error.message}`);
                 } finally {
                   if (file !== null) {
                     fileIo.closeSync(file.fd);

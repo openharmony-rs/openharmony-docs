@@ -16,8 +16,8 @@
     - [@ohos.arkui.inspector (Layout Callback)](js-apis-arkui-inspector.md)
     - [@ohos.arkui.node (Custom Node)](js-apis-arkui-node.md)
     - [@ohos.arkui.observer (Observer)](js-apis-arkui-observer.md)
-    - [@ohos.arkui.prefetcher (Prefetching)](js-apis-arkui-Prefetcher.md)
-    - [@ohos.arkui.shape(Shape)](js-apis-arkui-shape.md)
+    - [@ohos.arkui.Prefetcher (Prefetching)](js-apis-arkui-Prefetcher.md)
+    - [@ohos.arkui.shape (Shape)](js-apis-arkui-shape.md)
     - [@ohos.arkui.theme (Theme)](js-apis-arkui-theme.md)
     - @ohos.arkui.UIContext (UIContext)<!--js-apis-arkui-uicontext-->
       - [Module Description](arkts-apis-uicontext.md)
@@ -704,7 +704,7 @@
     - [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)
     - [ArkUI_StyledString](capi-arkui-nativemodule-arkui-styledstring.md)
     - [ArkUI_TextLayoutManager](capi-arkui-nativemodule-arkui-textlayoutmanager.md)
-    - [ArkUI_TextMarqueeOption](capi-arkui-nativemodule-arkui-textmarqueeoption.md)
+    - [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)
     - [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)
     - [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)
     - [ArkUI_TextContentBaseController](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md)
@@ -791,3 +791,5 @@
     - [Window Error Codes](errorcode-window.md)
   - UI Compilation<!--arkui-compile-arkts-errcode-->
     - [Compilation Error Codes](_ark_ui_compile.md)
+
+<!--no_check-->

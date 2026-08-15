@@ -7,7 +7,7 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
 
-本模块主要提供管理USB设备的相关功能，包括主机端的查询USB设备列表、批量数据传输、控制命令传输、权限控制等；设备端的端口管理、功能切换及查询等。适用于需要与USB外设进行数据交互、管理USB设备权限、动态切换USB设备模式等场景。
+本模块主要提供管理USB设备的相关功能，包括主机端的查询USB设备列表、批量数据传输、控制命令传输、权限控制等；设备端的端口管理、功能切换及查询等。适用于需要与USB设备进行数据交互、管理USB设备权限、动态切换USB设备模式等场景。
 
 > **说明：**
 > 
@@ -33,7 +33,7 @@ import { usbManager } from '@kit.BasicServicesKit';
 
 **在使用接口后：**
 
-调用[usbManager.closePipe](#usbmanagerclosepipe)关闭设备消息控制通道。
+调用[usbManager.closePipe](#usbmanagerclosepipe)关闭设备连接通道。
 
 ```mermaid
 graph LR
@@ -69,7 +69,7 @@ getDevices(): Array&lt;Readonly&lt;USBDevice&gt;&gt;
 
 | 错误码ID | 错误信息                  |
 | -------- | ------------------------- |
-| 801      | Capability not supported. |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 
 **示例：**
 
@@ -133,7 +133,7 @@ console.info(`devicesList = ${devicesList}`);
 
 connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 
-根据getDevices()返回的设备信息打开USB设备，调用成功后建立设备连接通道，可以进行后续的数据传输和设备控制操作。如果USB服务异常，会返回`undefined`，注意需要对接口返回值做判空处理。
+根据getDevices()返回的设备信息打开USB设备，调用成功后建立设备连接通道，可以进行后续的数据传输和设备控制操作。使用完后需要调用[usbManager.closePipe](#usbmanagerclosepipe)关闭设备连接通道。如果USB服务异常，会返回`undefined`，注意需要对接口返回值做判空处理。
 
 1. 调用[usbManager.getDevices](#usbmanagergetdevices)获取设备信息以及USBDevice;
 2. 调用[usbManager.requestRight](#usbmanagerrequestright)请求使用该设备的权限。
@@ -150,7 +150,7 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Readonly&lt;[USBDevicePipe](#usbdevicepipe)&gt; | USB设备消息传输通道对象，用于后续的数据传输和设备控制操作。 |
+| Readonly&lt;[USBDevicePipe](#usbdevicepipe)&gt; | USB设备连接通道对象，用于后续的数据传输和设备控制操作。 |
 
 **错误码：**
 
@@ -159,8 +159,8 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
-| 14400001 | Access right denied. Call requestRight or requestAccessoryRight to get the right first. |
+| 801      | Capability not supported.  <br>适用版本：18+ |
+| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
 
 **示例：**
 
@@ -178,13 +178,13 @@ async function connectDevice() {
     console.error(`request right failed`);
     return;
   }
-  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-  if (devicepipe == undefined) {
+  let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  if (devicePipe == undefined) {
     console.error(`connect device failed`);
     return;
   }
-  console.info(`devicepipe = ${devicepipe}`);
-  usbManager.closePipe(devicepipe);
+  console.info(`devicePipe = ${devicePipe}`);
+  usbManager.closePipe(devicePipe);
 }
 ```
 
@@ -194,7 +194,7 @@ hasRight(deviceName: string): boolean
 
 判断是否有权访问该设备。
 
-如果“使用者”（如各种App或系统）有权访问设备则返回true；无权访问设备则返回false。
+如果应用有权访问设备则返回true；无权访问设备则返回false。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -217,12 +217,12 @@ hasRight(deviceName: string): boolean
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 
 **示例：**
 
 ```ts
-async function hasRight(): boolean {
+async function hasRight(): Promise<boolean> {
   let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
   if (!devicesList || devicesList.length == 0) {
     console.info(`device list is empty`);
@@ -241,7 +241,7 @@ async function hasRight(): boolean {
 
 requestRight(deviceName: string): Promise&lt;boolean&gt;
 
-请求软件包的临时权限以访问设备。使用Promise异步回调。系统应用默认拥有访问设备权限，无需调用此接口申请。
+请求应用访问设备的临时权限。使用Promise异步回调返回结果。系统应用默认拥有访问设备权限，无需调用此接口。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -264,7 +264,7 @@ requestRight(deviceName: string): Promise&lt;boolean&gt;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported.  <br>适用版本：18+  |
 
 **示例：**
 
@@ -290,7 +290,7 @@ function requestRight() {
 
 removeRight(deviceName: string): boolean
 
-移除软件包访问设备的权限。系统应用默认拥有访问设备权限，调用此接口不会产生影响。
+移除应用访问设备的权限。系统应用默认拥有访问设备权限，调用此接口不会产生影响。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -313,7 +313,7 @@ removeRight(deviceName: string): boolean
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported.  <br>适用版本：18+  |
 
 **示例：**
 
@@ -338,13 +338,13 @@ function removeRight(): boolean {
 
 claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): number
 
-声明对USB设备某个接口的控制权。调用成功后应用程序获得该接口的独占控制权可以进行数据传输等操作，其他程序无法访问该接口。使用完后需调用[releaseInterface](#usbmanagerreleaseinterface)释放该接口的控制权。
+声明对USB设备某个接口的控制权。调用成功后应用获得该接口的独占控制权可以进行数据传输等操作，其他程序无法访问该接口。使用完后需调用[releaseInterface](#usbmanagerreleaseinterface)释放该接口的控制权。
 
 **使用场景**：在需要进行USB数据传输时，需要先声明接口控制权以独占访问该接口。例如，在USB存储设备读写、USB摄像头数据采集、USB串口通信等场景中，都需要先声明接口控制权。
 
 > **说明：**
 >
-> 在USB编程中，claim interface是一个常见操作，指的是应用程序请求操作系统将某个USB接口从内核驱动中释放并交由用户空间程序控制。<br>
+> 在USB编程中，claim interface是一个常见操作，指的是应用请求操作系统将某个USB接口从内核驱动中释放并交由用户空间程序控制。<br>
 > 下面用到的claim通信接口都表示claim interface操作。
 
 **系统能力：**  SystemCapability.USB.USBManager
@@ -370,7 +370,7 @@ claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): numb
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 
 **示例：**
 
@@ -388,22 +388,22 @@ async function claimInterface() {
     console.error(`request right failed`);
     return;
   }
-  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-  if (devicepipe == undefined) {
+  let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  if (devicePipe == undefined) {
     console.error(`connect device failed`);
     return;
   }
   let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
-  let ret: number = usbManager.claimInterface(devicepipe, interfaces);
+  let ret: number = usbManager.claimInterface(devicePipe, interfaces);
   if (ret !== 0) {
     console.error(`claim interface failed`);
-    usbManager.closePipe(devicepipe);
+    usbManager.closePipe(devicePipe);
     return;
   }
   console.info(`claimInterface = ${ret}`);
-  ret = usbManager.releaseInterface(devicepipe, interfaces);
+  ret = usbManager.releaseInterface(devicePipe, interfaces);
   console.info(`releaseInterface = ${ret}`);
-  usbManager.closePipe(devicepipe);
+  usbManager.closePipe(devicePipe);
 }
 ```
 
@@ -439,7 +439,7 @@ releaseInterface(pipe: USBDevicePipe, iface: USBInterface): number
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 
 **示例：**
 
@@ -457,21 +457,21 @@ async function releaseInterface() {
     console.error(`request right failed`);
     return;
   }
-  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-  if (devicepipe == undefined) {
+  let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  if (devicePipe == undefined) {
     console.error(`connect device failed`);
     return;
   }
   let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
-  let ret: number = usbManager.claimInterface(devicepipe, interfaces);
+  let ret: number = usbManager.claimInterface(devicePipe, interfaces);
   if (ret !== 0) {
     console.error(`claim interface failed`);
-    usbManager.closePipe(devicepipe);
+    usbManager.closePipe(devicePipe);
     return;
   }
-  ret = usbManager.releaseInterface(devicepipe, interfaces);
+  ret = usbManager.releaseInterface(devicePipe, interfaces);
   console.info(`releaseInterface = ${ret}`);
-  usbManager.closePipe(devicepipe);
+  usbManager.closePipe(devicePipe);
 }
 ```
 
@@ -479,7 +479,11 @@ async function releaseInterface() {
 
 setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): number
 
-设置设备配置。调用成功后设备的配置将被切换为指定的配置，后续的数据传输和设备操作将基于新配置进行。
+设置设备配置。适用于多功能USB设备需要切换工作模式的场景，如打印机+扫描仪组合设备切换为打印模式或扫描模式、设备从低功耗配置切换到高功耗配置以启用全部功能等。调用成功后设备的配置将被切换为指定的配置，后续的数据传输和设备操作将基于新配置进行。
+
+> **说明：**
+>
+> 在调用该接口前需要调用[usbManager.claimInterface](#usbmanagerclaiminterface) claim通信接口。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -494,7 +498,7 @@ setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): number
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 返回设置设备配置操作的结果。设置设备配置成功返回0；设置设备配置失败返回其他错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。<br>- -17：I/O失败。|
+| number | 返回设置设备配置操作的结果。设置设备配置成功返回0；设置设备配置失败返回其他错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。<br>- -17：I/O失败。可能原因：1.设备通信异常导致I/O操作失败；2.数据传输过程中发生中断。|
 
 **错误码：**
 
@@ -503,7 +507,7 @@ setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): number
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 
 **示例：**
 
@@ -521,15 +525,15 @@ async function setConfiguration() {
     console.error(`request right failed`);
     return;
   }
-  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-  if (devicepipe == undefined) {
+  let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  if (devicePipe == undefined) {
     console.error(`connect device failed`);
     return;
   }
   let config: usbManager.USBConfiguration = device.configs?.[0];
-  let ret: number = usbManager.setConfiguration(devicepipe, config);
+  let ret: number = usbManager.setConfiguration(devicePipe, config);
   console.info(`setConfiguration = ${ret}`);
-  usbManager.closePipe(devicepipe);
+  usbManager.closePipe(devicePipe);
 }
 ```
 
@@ -567,7 +571,7 @@ setInterface(pipe: USBDevicePipe, iface: USBInterface): number
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 
 **示例：**
 
@@ -585,21 +589,23 @@ async function setInterface() {
     console.error(`request right failed`);
     return;
   }
-  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-  if (devicepipe == undefined) {
+  let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  if (devicePipe == undefined) {
     console.error(`connect device failed`);
     return;
   }
   let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
-  let ret: number = usbManager.claimInterface(devicepipe, interfaces);
+  let ret: number = usbManager.claimInterface(devicePipe, interfaces);
   if (ret !== 0) {
     console.error(`claim interface failed`);
-    usbManager.closePipe(devicepipe);
+    usbManager.closePipe(devicePipe);
     return;
   }
-  ret = usbManager.setInterface(devicepipe, interfaces);
+  ret = usbManager.setInterface(devicePipe, interfaces);
   console.info(`setInterface = ${ret}`);
-  usbManager.closePipe(devicepipe);
+  ret = usbManager.releaseInterface(devicePipe, interfaces);
+  console.info(`releaseInterface = ${ret}`);
+  usbManager.closePipe(devicePipe);
 }
 ```
 
@@ -630,7 +636,7 @@ getRawDescriptor(pipe: USBDevicePipe): Uint8Array
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported. <br>适用版本：18+   |
 
 **示例：**
 
@@ -647,13 +653,13 @@ async function getRawDescriptor() {
     console.error(`request right failed`);
     return;
   }
-  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
-  if (devicepipe == undefined) {
+  let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
+  if (devicePipe == undefined) {
     console.error(`connect device failed`);
     return;
   }
-  usbManager.getRawDescriptor(devicepipe);
-  usbManager.closePipe(devicepipe);
+  usbManager.getRawDescriptor(devicePipe);
+  usbManager.closePipe(devicePipe);
 }
 ```
 
@@ -684,7 +690,7 @@ getFileDescriptor(pipe: USBDevicePipe): number
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 
 **示例：**
 
@@ -701,14 +707,14 @@ async function getFileDescriptor() {
     console.error(`request right failed`);
     return;
   }
-  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
-  if (devicepipe == undefined) {
+  let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
+  if (devicePipe == undefined) {
     console.error(`connect device failed`);
     return;
   }
-  let ret: number = usbManager.getFileDescriptor(devicepipe);
+  let ret: number = usbManager.getFileDescriptor(devicePipe);
   console.info(`getFileDescriptor = ${ret}`);
-  let closeRet: number = usbManager.closePipe(devicepipe);
+  let closeRet: number = usbManager.closePipe(devicePipe);
   console.info(`closePipe = ${closeRet}`);
 }
 ```
@@ -717,7 +723,7 @@ async function getFileDescriptor() {
 
 usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, timeout ?: number): Promise&lt;number&gt;
 
-控制传输。使用Promise异步回调。
+控制传输。调用成功后完成控制命令的传输，返回传输或接收到的数据块大小。适用于需要与USB设备进行控制命令交互的场景，如获取设备描述符、设置设备地址、发送厂商自定义命令、配置HID设备特性等。使用Promise异步回调。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -742,14 +748,14 @@ usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, ti
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 
 **示例：**
 
 ```ts
 import {BusinessError} from '@kit.BasicServicesKit';
 // 控制传输参数：根据USB协议规范、设备描述符或设备规格文档设置各字段值
-// bmRequestType：请求控制类型，常见取值0x00(标准设备请求)、0x01(类请求)、0x02(厂商请求)
+// bmRequestType：请求控制类型，常见取值示例：0x00（标准请求，主机向设备）、0x20（类请求，主机向设备）、0x40（厂商请求，主机向设备）、0x80（标准请求，设备向主机）
 // bRequest：具体控制请求命令（如获取描述符、设置地址等）
 // wValue：请求参数内容
 // wIndex：请求参数的索引值
@@ -776,17 +782,17 @@ async function usbControlTransfer() {
     console.error(`request right failed`);
     return;
   }
-  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
-  if (devicepipe == undefined) {
+  let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
+  if (devicePipe == undefined) {
     console.error(`connect device failed`);
     return;
   }
-  usbManager.usbControlTransfer(devicepipe, param).then((ret: number) => {
+  usbManager.usbControlTransfer(devicePipe, param).then((ret: number) => {
     console.info(`usbControlTransfer = ${ret}`);
   }).catch((error: BusinessError) => {
     console.error(`usbControlTransfer failed: ${error.code}, message: ${error.message}`);
   }).finally(() => {
-    usbManager.closePipe(devicepipe);
+    usbManager.closePipe(devicePipe);
   });
 }
 ```
@@ -810,7 +816,7 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
-| endpoint | [USBEndpoint](#usbendpoint) | 是 | 用于确定传输的端口，需要调用[getDevices](#usbmanagergetdevices)获取设备信息列表。通过endpoint的address确定端点地址，direction用于确定端点的传输方向（0表示输出，128表示输入），interfaceId用于确定所属接口，当前其他属性不做处理。|
+| endpoint | [USBEndpoint](#usbendpoint) | 是 | 用于确定传输的端点，需要调用[getDevices](#usbmanagergetdevices)获取设备信息列表。通过endpoint的address确定端点地址，direction用于确定端点的传输方向（0表示输出，128表示输入），interfaceId用于确定所属接口，当前其他属性不做处理。|
 | buffer | Uint8Array | 是 | 用于写入或读取数据的缓冲区，数组长度即为缓冲区大小。用于批量传输时写入或读取数据。 |
 | timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待批量传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。用户按需选择。取值范围：[0, +∞)。 |
 
@@ -827,19 +833,19 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 
 **示例：**
 
 > **说明：** 
 >
-> 以下示例代码只是调用bulkTransfer接口的必要流程，实际调用时，设备开发者需要遵循设备相关协议进行调用，确保数据的正确传输和设备的兼容性。
+> 以下示例代码只是调用bulkTransfer接口的必要流程，实际调用时，设备开发者需要遵循目标USB设备的协议规范进行调用，具体协议要求请参考设备的技术文档，确保数据的正确传输和设备的兼容性。
 
 ```ts
 import {BusinessError} from '@kit.BasicServicesKit';
 // usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
-// 把获取到的设备对象作为参数传入usbManager.connectDevice;当usbManager.connectDevice接口成功返回之后；
-// 才可以调用第三个接口usbManager.claimInterface.当usbManager.claimInterface 调用成功以后,再调用该接口。
+// 把获取到的设备对象作为参数传入usbManager.connectDevice；当usbManager.connectDevice接口成功返回之后；
+// 才可以调用第三个接口usbManager.claimInterface。当usbManager.claimInterface 调用成功以后，再调用该接口。
 async function bulkTransfer() {
   let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
   if (!devicesList || devicesList.length == 0) {
@@ -853,8 +859,8 @@ async function bulkTransfer() {
     console.error(`request right fail`);
     return;
   }
-  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-  if (devicepipe == undefined) {
+  let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  if (devicePipe == undefined) {
     console.error(`connect device failed`);
     return;
   }
@@ -862,16 +868,18 @@ async function bulkTransfer() {
     if (device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0]?.attributes == 2) {
       let endpoint: usbManager.USBEndpoint = device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0];
       let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[i];
-      let ret: number = usbManager.claimInterface(devicepipe, interfaces);
+      let ret: number = usbManager.claimInterface(devicePipe, interfaces);
       if (ret !== 0) {
         console.error(`claim interface failed`);
         continue;
       }
-      let buffer =  new Uint8Array(128);
-      usbManager.bulkTransfer(devicepipe, endpoint, buffer).then((ret: number) => {
+      let buffer = new Uint8Array(128);
+      usbManager.bulkTransfer(devicePipe, endpoint, buffer).then((ret: number) => {
         console.info(`bulkTransfer = ${ret}`);
+        ret = usbManager.releaseInterface(devicePipe, interfaces);
+        console.info(`releaseInterface = ${ret}`);
         if (i === device.configs?.[0]?.interfaces.length - 1) {
-          usbManager.closePipe(devicepipe);
+          usbManager.closePipe(devicePipe);
         }
       }).catch((error: BusinessError) => {
         console.error(`Failed to transfer. Code: ${error.code}, message: ${error.message}`);
@@ -908,7 +916,7 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 801 | Capability not supported. |
-| 14400001 | Access right denied. Call requestRight or requestAccessoryRight to get the right first. |
+| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
 | 14400007 | Resource busy. Possible causes: 1. The transfer has already been submitted. 2. The interface is claimed by another program or driver.|
 | 14400008 | No such device (it may have been disconnected). |
 | 14400009 | Insufficient memory. Possible causes: 1. Memory allocation failed. |
@@ -918,7 +926,7 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 
 > **说明：** 
 >
-> 以下示例代码需要放入具体的方法中执行，只是调用usbSubmitTransfer接口的必要流程，实际调用时，设备开发者需要遵循设备相关协议进行调用，确保数据的正确传输和设备的兼容性。
+> 以下示例代码需要放入具体的方法中执行，只是调用usbSubmitTransfer接口的必要流程，实际调用时，设备开发者需要遵循目标USB设备的协议规范进行调用，具体协议要求请参考设备的技术文档，确保数据的正确传输和设备的兼容性。
 
 <!--code_no_check-->
 ```ts
@@ -937,25 +945,25 @@ async function usbSubmitTransfer() {
     console.info(`request right fail`);
     return;
   }
-  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-  if (devicepipe == undefined) {
+  let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  if (devicePipe == undefined) {
     console.error(`connect device failed`);
     return;
   }
   // 获取endpoint端点地址
   let endpoint = device.configs?.[0]?.interfaces?.[0]?.endpoints.find((value) => {
-    return value.direction === 0 && value.type === 2
-  })
-  // 获取设备的第一个id。
-  let ret: number = usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
+    return value.direction === 0 && value.type === 2;
+  });
+  // 声明接口控制权，force参数为true表示强制获取
+  let ret: number = usbManager.claimInterface(devicePipe, device.configs?.[0]?.interfaces?.[0], true);
   if (ret !== 0) {
     console.error(`claim interface failed`);
-    usbManager.closePipe(devicepipe);
+    usbManager.closePipe(devicePipe);
     return;
   }
 
   let transferParams: usbManager.UsbDataTransferParams = {
-    devPipe: devicepipe,
+    devPipe: devicePipe,
     flags: usbManager.UsbTransferFlags.USB_TRANSFER_SHORT_NOT_OK,
     endpoint: 1,
     type: usbManager.UsbEndpointTransferType.TRANSFER_TYPE_BULK,
@@ -967,20 +975,22 @@ async function usbSubmitTransfer() {
     isoPacketCount: 0,
   };
   try {
-    transferParams.endpoint=endpoint?.address as number;
-    transferParams.callback=(err, callbackData: usbManager.SubmitTransferCallback)=>{
+    transferParams.endpoint = endpoint?.address as number;
+    transferParams.callback = (err, callbackData: usbManager.SubmitTransferCallback) => {
+      let relIntfRet: number = usbManager.releaseInterface(devicePipe, interfaces);
+      console.info(`releaseInterface = ${relIntfRet}`);
+      usbManager.closePipe(devicePipe);
       if (err) {
-        console.error('USB transfer failed:', err);
+        console.error(`USB transfer failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
-      console.info('callbackData =' +JSON.stringify(callbackData));
-    }
+      console.info('callbackData =' + JSON.stringify(callbackData));
+    };
     usbManager.usbSubmitTransfer(transferParams); 
     console.info('USB transfer request submitted.');
   } catch (error) {
-    console.error('USB transfer failed:', error);
+    console.error(`USB transfer failed. Code: ${error.code}, message: ${error.message}`);
   }
-  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -988,11 +998,11 @@ async function usbSubmitTransfer() {
 
 usbCancelTransfer(transfer: UsbDataTransferParams): void
 
-取消异步传输请求。
+取消异步传输请求。适用于需要主动终止未完成USB数据传输的场景，如用户手动取消长时间数据传输、传输超时后的错误恢复、应用切换时中止当前传输等。
 
 > **说明：**
 >
-> 该接口的主要作用是主动取消尚未完成的USB数据传输请求（如usbSubmitTransfer提交的传输）。<br>
+> 主动取消尚未完成的USB数据传输请求（如usbSubmitTransfer提交的传输）。<br>
 > 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface) claim通信接口。
 
 **系统能力：**  SystemCapability.USB.USBManager
@@ -1010,7 +1020,7 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 801 | Capability not supported. |
-| 14400001 | Access right denied. Call requestRight or requestAccessoryRight to get the right first. |
+| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
 | 14400008 | No such device (it may have been disconnected). |
 | 14400010 | Other USB error. Possible causes:<br>1. Unrecognized discard error code. |
 | 14400011 | The transfer is not in progress, or is already complete or cancelled.|
@@ -1019,7 +1029,7 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 
 > **说明：** 
 >
-> 以下示例代码需要放入具体的方法中执行，只是调用usbCancelTransfer接口的必要流程，实际调用时，设备开发者需要遵循设备相关协议进行调用，确保数据的正确传输和设备的兼容性。
+> 以下示例代码需要放入具体的方法中执行，只是调用usbCancelTransfer接口的必要流程，实际调用时，设备开发者需要遵循目标USB设备的协议规范进行调用，具体协议要求请参考设备的技术文档，确保数据的正确传输和设备的兼容性。
 
 <!--code_no_check-->
 ```ts
@@ -1038,28 +1048,28 @@ async function usbCancelTransfer() {
     console.error(`request right failed`);
     return;
   }
-  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-  if (devicepipe === undefined) {
+  let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  if (devicePipe === undefined) {
     console.info(`connect device fail`);
     return;
   }
   // 获取endpoint端点地址。
   let endpoint = device.configs?.[0]?.interfaces?.[0]?.endpoints.find((value) => {
-    return value.direction === 0 && value.type === 2
-  })
+    return value.direction === 0 && value.type === 2;
+  });
   if (endpoint === undefined) {
     console.info(`invalid endpoint`);
     return;
   }
-  // 获取设备的第一个id。
-  let ret: number = usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
+  // 声明接口控制权，force参数为true表示强制获取。
+  let ret: number = usbManager.claimInterface(devicePipe, device.configs?.[0]?.interfaces?.[0], true);
   if (ret !== 0) {
     console.error(`claim interface failed`);
-    usbManager.closePipe(devicepipe);
+    usbManager.closePipe(devicePipe);
     return;
   }
   let transferParams: usbManager.UsbDataTransferParams = {
-    devPipe: devicepipe,
+    devPipe: devicePipe,
     flags: usbManager.UsbTransferFlags.USB_TRANSFER_SHORT_NOT_OK,
     endpoint: 1,
     type: usbManager.UsbEndpointTransferType.TRANSFER_TYPE_BULK,
@@ -1071,17 +1081,19 @@ async function usbCancelTransfer() {
     isoPacketCount: 0,
   };
   try {
-    transferParams.endpoint=endpoint?.address as number;
-    transferParams.callback=(err, callBackData: usbManager.SubmitTransferCallback)=>{
-      console.info('callBackData =' +JSON.stringify(callBackData));
-    }
+    transferParams.endpoint = endpoint?.address as number;
+    transferParams.callback = (err, callbackData: usbManager.SubmitTransferCallback)=>{
+      console.info('callbackData =' + JSON.stringify(callbackData));
+    };
     usbManager.usbSubmitTransfer(transferParams);
     usbManager.usbCancelTransfer(transferParams);
     console.info('USB transfer request submitted.');
   } catch (error) {
-    console.error('USB transfer failed:', error);
+    console.error(`USB transfer failed. Code: ${error.code}, message: ${error.message}`);
   }
-  usbManager.closePipe(devicepipe);
+  ret = usbManager.releaseInterface(devicePipe, interfaces);
+  console.info(`releaseInterface = ${ret}`);
+  usbManager.closePipe(devicePipe);
 }
 ```
 
@@ -1089,7 +1101,7 @@ async function usbCancelTransfer() {
 
 closePipe(pipe: USBDevicePipe): number
 
-关闭设备消息控制通道。
+关闭设备连接通道。
 
 1. 调用[usbManager.getDevices](#usbmanagergetdevices)获取设备列表；
 2. 调用[usbManager.requestRight](#usbmanagerrequestright)获取设备请求权限；
@@ -1101,13 +1113,13 @@ closePipe(pipe: USBDevicePipe): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定USB设备消息控制通道，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 关闭设备消息控制通道成功返回0；关闭设备消息控制通道失败返回其他错误码如下：<br>- 22：服务异常。 |
+| number | 关闭设备连接通道成功返回0；关闭设备连接通道失败返回其他错误码如下：<br>- 22：服务异常。可能原因：1.USB服务未正常运行；2.设备连接通道状态异常。 |
 
 **错误码：**
 
@@ -1116,7 +1128,7 @@ closePipe(pipe: USBDevicePipe): number
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 
 **示例：**
 
@@ -1133,12 +1145,12 @@ async function closePipe() {
     console.error(`request right failed`);
     return;
   }
-  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
-  if (devicepipe == undefined) {
+  let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
+  if (devicePipe == undefined) {
     console.error(`connect device failed`);
     return;
   }
-  let ret: number = usbManager.closePipe(devicepipe);
+  let ret: number = usbManager.closePipe(devicePipe);
   console.info(`closePipe = ${ret}`);
 }
 ```
@@ -1147,7 +1159,7 @@ async function closePipe() {
 
 hasAccessoryRight(accessory: USBAccessory): boolean
 
-检查应用程序是否有权访问USB配件。
+检查应用是否有权访问USB配件。
 
 需要调用[usbManager.getAccessoryList](#usbmanagergetaccessorylist14)获取配件列表，得到[USBAccessory](#usbaccessory14)作为参数。
 
@@ -1163,7 +1175,7 @@ hasAccessoryRight(accessory: USBAccessory): boolean
 
 | 类型    | 说明                          |
 | ------- | ----------------------------- |
-| boolean | true表示应用程序有权访问USB配件，false表示应用程序无权访问USB配件。 |
+| boolean | true表示应用有权访问USB配件，false表示应用无权访问USB配件。 |
 
 **错误码：**
 
@@ -1172,20 +1184,20 @@ hasAccessoryRight(accessory: USBAccessory): boolean
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
-| 14400005 | Database operation exception. Possible causes: 1. Database file is corrupted. 2. Database is locked by another process. 3. Insufficient storage space. |
-| 14401001 | The target USBAccessory not matched. Possible causes: 1. The accessory has been disconnected. 2. The accessory information does not match the cached data. |
+| 14400005 | Database operation exception. |
+| 14401001 | The target USBAccessory not matched. |
 
 **示例：**
 
 ```ts
 try {
-  let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-  let flag = usbManager.hasAccessoryRight(accList?.[0])
-  console.info(`hasAccessoryRight success, ret:${flag}`)
+  let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
+  let flag = usbManager.hasAccessoryRight(accList?.[0]);
+  console.info(`hasAccessoryRight success, ret:${flag}`);
 } catch (error) {
-  console.error(`hasAccessoryRight error ${error.code}, message is ${error.message}`)
+  console.error(`hasAccessoryRight error ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -1193,7 +1205,7 @@ try {
 
 requestAccessoryRight(accessory: USBAccessory): Promise&lt;boolean&gt;
 
-为指定应用程序申请访问USB配件的访问权限。使用Promise异步回调。
+为指定应用申请访问USB配件的访问权限。使用Promise异步回调。
 
 需要调用[usbManager.getAccessoryList](#usbmanagergetaccessorylist14)获取配件列表，得到[USBAccessory](#usbaccessory14)作为参数。
 
@@ -1209,7 +1221,7 @@ requestAccessoryRight(accessory: USBAccessory): Promise&lt;boolean&gt;
 
 | 类型             | 说明                          |
 | ---------------- | ----------------------------- |
-| Promise&lt;boolean&gt; | Promise对象，返回应用程序访问配件权限的申请结果。返回true表示权限申请成功；返回false表示权限申请失败。 |
+| Promise&lt;boolean&gt; | Promise对象，返回应用访问配件权限的申请结果。返回true表示权限申请成功；返回false表示权限申请失败。 |
 
 **错误码：**
 
@@ -1218,21 +1230,21 @@ requestAccessoryRight(accessory: USBAccessory): Promise&lt;boolean&gt;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
-| 14400005 | Database operation exception. Possible causes: 1. Database file is corrupted. 2. Database is locked by another process. 3. Insufficient storage space. |
-| 14401001 | The target USBAccessory not matched. Possible causes: 1. The accessory has been disconnected. 2. The accessory information does not match the cached data. |
+| 14400005 | Database operation exception. |
+| 14401001 | The target USBAccessory not matched. |
 
 **示例：**
 
 ```ts
 async function requestAccessoryRight() {
   try {
-    let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-    let flag = await usbManager.requestAccessoryRight(accList?.[0])
-    console.info(`requestAccessoryRight success, ret:${flag}`)
+    let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
+    let flag = await usbManager.requestAccessoryRight(accList?.[0]);
+    console.info(`requestAccessoryRight success, ret:${flag}`);
   } catch (error) {
-    console.error(`requestAccessoryRight error ${error.code}, message is ${error.message}`)
+    console.error(`requestAccessoryRight error ${error.code}, message is ${error.message}`);
   }
 }
 ```
@@ -1241,7 +1253,7 @@ async function requestAccessoryRight() {
 
 cancelAccessoryRight(accessory: USBAccessory): void
 
-取消当前应用程序访问USB配件的权限。与requestAccessoryRight()方法配合使用，用于取消此前通过requestAccessoryRight()申请的配件访问权限。
+取消当前应用访问USB配件的权限。与requestAccessoryRight()方法配合使用，用于取消此前通过requestAccessoryRight()申请的配件访问权限。
 
 需要调用[usbManager.getAccessoryList](#usbmanagergetaccessorylist14)获取配件列表，得到[USBAccessory](#usbaccessory14)作为参数。
 
@@ -1260,10 +1272,10 @@ cancelAccessoryRight(accessory: USBAccessory): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
-| 14400005 | Database operation exception. Possible causes: 1. Database file is corrupted. 2. Database is locked by another process. 3. Insufficient storage space. |
-| 14401001 | The target USBAccessory not matched. Possible causes: 1. The accessory has been disconnected. 2. The accessory information does not match the cached data. |
+| 14400005 | Database operation exception. |
+| 14401001 | The target USBAccessory not matched. |
 
 **示例：**
 
@@ -1271,15 +1283,15 @@ cancelAccessoryRight(accessory: USBAccessory): void
 ```ts
 async function cancelAccessoryRight() {
   try {
-    let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-    let flag = await usbManager.requestAccessoryRight(accList?.[0])
+    let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
+    let flag = await usbManager.requestAccessoryRight(accList?.[0]);
     if (!flag) {
-      return
+      return;
     }
-    usbManager.cancelAccessoryRight(accList?.[0])
-    console.info(`cancelAccessoryRight success`)
+    usbManager.cancelAccessoryRight(accList?.[0]);
+    console.info(`cancelAccessoryRight success`);
   } catch (error) {
-    console.error(`cancelAccessoryRight error ${error.code}, message is ${error.message}`)
+    console.error(`cancelAccessoryRight error ${error.code}, message is ${error.message}`);
   }
 }
 ```
@@ -1304,17 +1316,17 @@ getAccessoryList(): Array<Readonly&lt;USBAccessory&gt;>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
 
 **示例：**
 
 ```ts
 try {
-  let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-  console.info(`getAccessoryList success, accList: ${JSON.stringify(accList)}`)
+  let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
+  console.info(`getAccessoryList success, accList: ${JSON.stringify(accList)}`);
 } catch (error) {
-  console.error(`getAccessoryList error ${error.code}, message is ${error.message}`)
+  console.error(`getAccessoryList error ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -1324,7 +1336,7 @@ openAccessory(accessory: USBAccessory): USBAccessoryHandle
 
 获取配件句柄并打开配件文件描述符。之后可以通过CoreFileKit提供的read/write接口和配件进行通信。使用完后需要调用[closeAccessory](#usbmanagercloseaccessory14)接口关闭文件描述符。
 
-需要调用[usbManager.getAccessoryList](#usbmanagergetaccessorylist14)获取配件列表，得到[USBAccessory](#usbaccessory14)作为参数。
+需要调用[usbManager.getAccessoryList](#usbmanagergetaccessorylist14)获取配件列表，得到[USBAccessory](#usbaccessory14)作为参数。调用前需先调用[usbManager.requestAccessoryRight](#usbmanagerrequestaccessoryright14)请求访问配件权限，权限申请成功（返回true）后方可调用本接口打开配件。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -1347,11 +1359,11 @@ openAccessory(accessory: USBAccessory): USBAccessoryHandle
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
-| 14400001 | Access right denied. Call requestRight or requestAccessoryRight to get the right first. |
+| 801      | Capability not supported.  <br>适用版本：18+ |
+| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
-| 14401001 | The target USBAccessory not matched. Possible causes: 1. The accessory has been disconnected. 2. The accessory information does not match the cached data. |
-| 14401002 | Failed to open the native accessory node. Possible causes: 1. The device node does not exist. 2. The device node is already opened by another process. |
+| 14401001 | The target USBAccessory not matched. |
+| 14401002 | Failed to open the native accessory node. |
 | 14401003 | Cannot reopen the accessory.                                 |
 
 **示例：**
@@ -1361,19 +1373,19 @@ openAccessory(accessory: USBAccessory): USBAccessoryHandle
 import { fileIo } from '@kit.CoreFileKit';
 async function openAccessory() {
   try {
-    let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-    let flag = await usbManager.requestAccessoryRight(accList?.[0])
+    let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
+    let flag = await usbManager.requestAccessoryRight(accList?.[0]);
     if (!flag) {
-      return
+      return;
     }
-    let handle = usbManager.openAccessory(accList?.[0])
-    console.info(`openAccessory success`)
+    let handle = usbManager.openAccessory(accList?.[0]);
+    console.info(`openAccessory success`);
     let arrayBuffer = new ArrayBuffer(4096);
     let readLength = fileIo.readSync(handle.accessoryFd, arrayBuffer, {offset: 0, length: 4096});
     console.info('readSync ret: ' + readLength.toString(10));
-    usbManager.closeAccessory(handle)
+    usbManager.closeAccessory(handle);
   } catch (error) {
-    console.error(`openAccessory error ${error.code}, message is ${error.message}`)
+    console.error(`openAccessory error ${error.code}, message is ${error.message}`);
   }
 }
 ```
@@ -1384,7 +1396,7 @@ closeAccessory(accessoryHandle: USBAccessoryHandle): void
 
 关闭配件文件描述符。
 
-需要调用[usbManager.getAccessoryList](#usbmanagergetaccessorylist14)获取配件列表，然后调用[usbManager.openAccessory](#usbmanageropenaccessory14)获取配件句柄，得到[USBAccessoryHandle](#usbaccessoryhandle14)作为参数。
+需要调用[usbManager.getAccessoryList](#usbmanagergetaccessorylist14)获取配件列表，然后调用[usbManager.requestAccessoryRight](#usbmanagerrequestaccessoryright14)请求访问配件权限，权限申请成功后调用[usbManager.openAccessory](#usbmanageropenaccessory14)获取配件句柄，得到[USBAccessoryHandle](#usbaccessoryhandle14)作为参数。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -1401,7 +1413,7 @@ closeAccessory(accessoryHandle: USBAccessoryHandle): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
 
 **示例：**
@@ -1410,16 +1422,16 @@ closeAccessory(accessoryHandle: USBAccessoryHandle): void
 ```ts
 async function closeAccessory() {
   try {
-    let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-    let flag = await usbManager.requestAccessoryRight(accList?.[0])
+    let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
+    let flag = await usbManager.requestAccessoryRight(accList?.[0]);
     if (!flag) {
-      return
+      return;
     }
-    let handle = usbManager.openAccessory(accList?.[0])
-    usbManager.closeAccessory(handle)
-    console.info(`closeAccessory success`)
+    let handle = usbManager.openAccessory(accList?.[0]);
+    usbManager.closeAccessory(handle);
+    console.info(`closeAccessory success`);
   } catch (error) {
-    console.error(`closeAccessory error ${error.code}, message is ${error.message}`)
+    console.error(`closeAccessory error ${error.code}, message is ${error.message}`);
   }
 }
 ```
@@ -1428,7 +1440,7 @@ async function closeAccessory() {
 
 resetUsbDevice(pipe: USBDevicePipe): boolean
 
-重置USB外设。调用成功后设备将被重置为初始状态，此前设置的配置和接口设置将被清除，设备需要重新初始化。
+重置USB设备。适用于USB设备出现通信异常需要恢复的场景，如设备固件升级后需要重新初始化、设备状态异常需要恢复、调试过程中需要重置设备状态等。调用成功后设备将被重置为初始状态，此前设置的配置和接口设置将被清除，设备需要重新初始化。
 
 > **说明：**
 >
@@ -1459,8 +1471,8 @@ resetUsbDevice(pipe: USBDevicePipe): boolean
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 801 | Capability not supported. |
-| 14400001 | Access right denied. Call requestRight or requestAccessoryRight to get the right first. |
-| 14400004 | Service exception. Possible causes: 1. No device is plugged in. |
+| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
+| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
 | 14400008 | No such device (it may have been disconnected). |
 | 14400010 | Other USB error. Possible causes:<br>1.Unrecognized discard error code. |
 | 14400013 | The USBDevicePipe validity check failed. Possible causes:<br>1. The input parameters fail the validation check.<br>2. The call chain used to obtain the input parameters is not reasonable. |
@@ -1481,18 +1493,18 @@ async function resetUsbDevice() {
     console.error(`request right failed`);
     return;
   }
-  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
-  if (devicepipe == undefined) {
+  let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
+  if (devicePipe == undefined) {
     console.error(`connect device failed`);
     return;
   }
   try {
-    let ret: boolean = usbManager.resetUsbDevice(devicepipe);
+    let ret: boolean = usbManager.resetUsbDevice(devicePipe);
     console.info(`resetUsbDevice  = ${ret}`);
-  } catch (err: BusinessError) {
+  } catch (err) {
     console.error(`Failed to reset USB device. Code: ${err.code}, message: ${err.message}`);
   }
-  usbManager.closePipe(devicepipe);
+  usbManager.closePipe(devicePipe);
 }
 ```
 
@@ -1512,7 +1524,7 @@ controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | USB设备消息传输通道对象，用于确定设备，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | USB设备连接通道对象，用于确定设备，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
 | controlparam | [USBControlParams](#usbcontrolparamsdeprecated) | 是 | 控制传输参数，包含request、target、reqType、value、index、data等字段，参数传参类型请参考USB协议规范，根据具体设备和控制请求类型设置。|
 | timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。用户按需选择。 |
 
@@ -1520,7 +1532,7 @@ controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: 
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其他错误码如下：<br>- -1：驱动异常。|
+| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其他错误码如下：<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。|
 
 **错误码：**
 
@@ -1537,7 +1549,7 @@ import {BusinessError} from '@kit.BasicServicesKit';
 let param: usbManager.USBControlParams = {
   request: 0x06,
   reqType: 0x80,
-  target:0,
+  target: 0,
   value: 0x01 << 8 | 0,
   index: 0,
   data: new Uint8Array(18)
@@ -1555,17 +1567,17 @@ async function controlTransfer() {
     console.error(`request right failed`);
     return;
   }
-  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
-  if (devicepipe == undefined) {
+  let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  if (devicePipe == undefined) {
     console.error(`connect device failed`);
     return;
   }
-  usbManager.controlTransfer(devicepipe, param).then((ret: number) => {
+  usbManager.controlTransfer(devicePipe, param).then((ret: number) => {
     console.info(`controlTransfer = ${ret}`);
   }).catch((error: BusinessError) => {
     console.error(`Failed to transfer. Code: ${error.code}, message: ${error.message}`);
   }).finally(() => {
-    usbManager.closePipe(devicepipe);
+    usbManager.closePipe(devicePipe);
   });
 }
 ```
@@ -1576,7 +1588,7 @@ USB端点，用于主机与设备之间数据传输的通信端点。通过[USBI
 
 >**说明：**
 >
-> 主机控制器按照Endpoint类型调度，不同类型的端点采用不同的调度策略：批量端点(bulk)采用宽带共享调度适合大量数据非实时传输；中断端点(interrupt)采用固定轮询调度适合小数据量实时传输；实时端点(isochronous)采用宽带预留调度，适合音视频等实时数据流。
+> 主机控制器按照Endpoint类型调度，不同类型的端点采用不同的调度策略：批量端点(bulk)采用带宽共享调度适合大量数据非实时传输；中断端点(interrupt)采用固定轮询调度适合小数据量实时传输；实时端点(isochronous)采用带宽预留调度，适合音视频等实时数据流。
 >
 > 协议层打包时依赖type决定传输特性，包括数据包格式、错误处理机制、超时策略等。
 
@@ -1585,11 +1597,11 @@ graph LR
     A[端点类型] --> B[批量端点 bulk]
     A --> C[中断端点 interrupt]
     A --> D[实时端点 isochronous]
-    B --> B1[宽带共享调度]
+    B --> B1[带宽共享调度]
     B1 --> B2[适合大量数据非实时传输]
     C --> C1[固定轮询调度]
     C1 --> C2[适合小数据量实时传输]
-    D --> D1[宽带预留调度]
+    D --> D1[带宽预留调度]
     D1 --> D2[适合音视频等实时数据流]
 ```
 
@@ -1598,7 +1610,7 @@ graph LR
 | 名称            | 类型                                        | 只读  | 可选  |说明            |
 | ------------- | ------------------------------------------- | ---- | ---- |------------- |
 | address       | number                                      | 否   | 否 |端点地址。         |
-| attributes    | number                                      | 否   | 否 |端点属性，表示端点的传输特性，包括传输类型（批量、中断、实时、控制）和同步类型等。取值遵循USB端点描述符规范。 |
+| attributes    | number                                      | 否   | 否 |端点属性，表示端点的传输特性，包括传输类型（批量、中断、实时）和同步类型等。取值遵循USB端点描述符规范。 |
 | interval      | number                                      | 否   | 否 |端点间隔。中断端点和实时端点为时间间隔（单位：毫秒）；批量端点不使用此字段。 |
 | maxPacketSize | number                                      | 否   | 否 |端点最大数据包大小，（单位：字节）。    |
 | direction     | [USBRequestDirection](#usbrequestdirection) | 否   | 否 |端点的方向。        |
@@ -1648,8 +1660,8 @@ USB设备信息。
 | ---------------- | ------------------------------------ | ---- | ---------- |---------- |
 | busNum           | number                               | 否 | 否 |总线地址。      |
 | devAddress       | number                               | 否 | 否 |设备地址。      |
-| serial           | string                               | 否 | 否 |序列号。       |
-| name             | string                               | 否 | 否 |设备名字。      |
+| serial           | string                               | 否 | 否 |序列号。三方应用无法获取此字段的设备序列号信息（该字段对三方应用不可用），如需获取序列号需在申请设备访问权限后自行发起控制传输。|
+| name             | string                               | 否 | 否 |设备名称。      |
 | manufacturerName | string                               | 否 | 否 |设备厂商名称。      |
 | productName      | string                               | 否 | 否 |设备产品名称。      |
 | version          | string                               | 否 | 否 |设备版本号。        |
@@ -1662,7 +1674,7 @@ USB设备信息。
 
 ## USBDevicePipe
 
-USB设备消息传输通道，用于确定总线地址和设备地址。
+USB设备连接通道，用于确定总线地址和设备地址。
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -1679,10 +1691,10 @@ USB设备消息传输通道，用于确定总线地址和设备地址。
 
 | 名称      | 类型                                            | 只读 | 可选               |说明               |
 | ------- | ----------------------------------------------- | ---- | ---------------- |---------------- |
-| bmRequestType | number                                    | 否 | 否   |请求控制类型，用于指定控制传输的方向和类型，取值需遵循USB协议规范，常见取值包括：0x00(标准设备请求)、0x01(类请求)、0x02(厂商请求)。 |
+| bmRequestType | number                                    | 否 | 否   |请求控制类型，用于指定控制传输的方向和类型，取值需遵循USB协议规范，常见取值示例：0x00（标准请求，主机向设备）、0x20（类请求，主机向设备）、0x40（厂商请求，主机向设备）、0x80（标准请求，设备向主机）。|
 | bRequest  | number                                        | 否 | 否   |请求类型，用于指定具体的USB控制请求命令（如获取描述符，设置地址等）。          |
 | wValue | number                                           | 否 | 否   |请求参数，用于向USB设备传递控制请求所需的参数内容。          |
-| wIndex   | number                                         | 否 | 否   |请求参数value对应的索引值，用于指定控制请求的目标接口或端点索引。            |
+| wIndex   | number                                         | 否 | 否   |请求参数wValue对应的索引值，用于指定控制请求的目标接口或端点。            |
 | wLength   | number                                        | 否 | 否   |请求数据的长度，用于指定控制传输中期望接收或发送的数据字节数。 |
 | data    | Uint8Array                                      | 否 | 否   |用于写入或读取的缓冲区，数组长度对应wLength参数指定的数据字节数。用于控制传输时发送或接收数据。 |
 
@@ -1701,7 +1713,7 @@ USB设备消息传输通道，用于确定总线地址和设备地址。
 
 ## USBControlRequestType
 
-控制请求类型。
+控制请求类型，用于指定具体的USB控制请求命令（如获取描述符、设置地址等）。
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -1755,7 +1767,7 @@ USB数据传输参数对象，包含USB数据传输所需的所有参数，用�
 | 名称         | 类型   | 只读  | 可选    |说明    |
 | ---------- | ------ | ---- | ----- |----- |
 | devPipe | [USBDevicePipe](#usbdevicepipe) | 否 | 否 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。 |
-| flags | [UsbTransferFlags](#usbtransferflags18) | 否 |否 | USB传输标志，用于控制传输行为。可选值包括：0（将短帧报告为错误）、1（自动释放传输缓冲区）、2（完成回调后自动传输）、3（传输增加一个额外的数据包）。 |
+| flags | [UsbTransferFlags](#usbtransferflags18) | 否 |否 | USB传输标志，用于控制传输行为。可选值包括：0（将短帧报告为错误）、1（自动释放传输缓冲区）、2（完成回调后自动释放传输资源）、3（传输增加一个额外的数据包）。 |
 | endpoint | number | 否 | 否 | 端点地址，取值范围为[1, 255]的正整数。需要调用[getDevices](#usbmanagergetdevices)获取设备信息，通过endpoint的address属性确定端点信息，通过direction属性确定端点方向。 |
 | type | [UsbEndpointTransferType](#usbendpointtransfertype18) | 否 |否 | 传输类型，指定USB传输的方式。可选值包括：0x1（实时传输，适合音视频等实时数据流）、0x2（批量传输，适合大量数据非实时传输）、0x3（中断传输，适合小数据量实时传输）。 |
 | timeout | number | 否 | 否 | 超时时间（单位：毫秒），指定时间内等待传输完成，若在指定时间内传输完成则正常返回否则返回超时。取值范围为[0, +∞)，设置为0时无限等待直到传输完成。 |
@@ -1780,7 +1792,7 @@ USB传输标志。
 
 ## UsbEndpointTransferType<sup>18+</sup>
 
-Usb传输类型。
+USB传输类型。
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -1792,7 +1804,7 @@ Usb传输类型。
 
 ## SubmitTransferCallback<sup>18+</sup>
 
-Usb异步传输回调。
+USB异步传输回调。
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -1842,9 +1854,9 @@ Usb异步传输回调。
 
 | 名称      | 类型                                            | 只读  | 可选               |说明               |
 | ------- | ----------------------------------------------- | ---- | ---------------- |---------------- |
-| request | number                                          | 否 | 否   |请求类型。            |
+| request | number                                          | 否 | 否   |请求类型，用于指定具体的USB控制请求命令。            |
 | target  | [USBRequestTargetType](#usbrequesttargettype)   | 否 | 否   |请求目标类型。          |
 | reqType | [USBControlRequestType](#usbcontrolrequesttype) | 否 | 否   |请求控制类型。          |
-| value   | number                                          | 否 | 否   |请求参数。            |
-| index   | number                                          | 否 | 否   |请求参数value对应的索引值。 |
+| value   | number                                          | 否 | 否   |请求参数，用于向USB设备传递控制请求所需的参数内容。            |
+| index   | number                                          | 否 | 否   |请求参数value对应的索引值，用于指定控制请求的目标接口或端点。 |
 | data    | Uint8Array                                      | 否 | 否   |用于写入或读取的缓冲区。     |

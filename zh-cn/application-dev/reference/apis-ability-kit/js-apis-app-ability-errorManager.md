@@ -358,7 +358,7 @@ try {
 
 on(type: 'globalUnhandledRejectionDetected', observer: GlobalObserver): void
 
-在进程中任意线程注册被拒绝promise监听器，注册后可以捕获到当前进程中未被捕获到的promise rejection。
+在进程中任意线程注册被拒绝Promise监听器，注册后可以捕获到当前进程中未被捕获到的Promise rejection。
 
 配对调用：与[errorManager.off('globalUnhandledRejectionDetected')](#errormanageroffglobalunhandledrejectiondetected18)方法配合使用，使用完成后可调用off方法注销监听器。
 
@@ -370,8 +370,8 @@ on(type: 'globalUnhandledRejectionDetected', observer: GlobalObserver): void
  
 | 参数名     | 类型                                 | 必填 | 说明                                                                                                      |
 |------------|-------------------------------------| -------- |------------------------------------------------------------------------------------------------------|
-| type       | string                              | 是 | 填写'globalUnhandledRejectionDetected'，表示注册被拒绝promise监听器。<br>回调函数入参：(reason: Error \| any, promise: Promise\<any>) => void，其中reason为被拒绝的理由（通常是Error类型），promise为被拒绝的Promise对象。 |
-| observer   | [GlobalObserver](#globalobserver18) | 是 | 注册被拒绝promise的callback。                          |
+| type       | string                              | 是 | 填写'globalUnhandledRejectionDetected'，表示注册被拒绝Promise监听器。|
+| observer   | [GlobalObserver](#globalobserver18) | 是 | 注册被拒绝Promise的callback。                          |
 
 **错误码**：
 
@@ -410,7 +410,7 @@ let promise1 = new Promise<void>(() => {}).then(() => {
 
 on(type: 'unhandledRejection', observer: UnhandledRejectionObserver): void
 
-注册被拒绝promise监听器。注册后可以捕获到当前线程中未被捕获到的promise rejection。
+注册被拒绝Promise监听器。注册后可以捕获到当前线程中未被捕获到的Promise rejection。
 
 仅在主线程中使用。使用线程出错时，将抛出错误码，因此建议使用try-catch逻辑进行处理。
 
@@ -425,7 +425,7 @@ on(type: 'unhandledRejection', observer: UnhandledRejectionObserver): void
 | 参数名                   | 类型                                                          | 必填 | 说明                                       |
 |-----------------------|-------------------------------------------------------------| -------- |------------------------------------------|
 | type                  | string                                                      | 是 | 填写'unhandledRejection'，表示注册被拒绝Promise监听器。 |
-| observer              | [UnhandledRejectionObserver](#unhandledrejectionobserver12) | 是 | 注册被拒绝promise监听器。                          |
+| observer              | [UnhandledRejectionObserver](#unhandledrejectionobserver12) | 是 | 注册被拒绝Promise监听器。                          |
 
 **错误码**：
 
@@ -530,7 +530,7 @@ off(type: 'loopObserver', observer?: LoopObserver): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 填写'loopObserver'，表示应用主线程观测器。 |
-| observer | [LoopObserver](js-apis-inner-application-loopObserver.md) | 否 | 应用主线程观测器标志。 |
+| observer | [LoopObserver](js-apis-inner-application-loopObserver.md) | 否 | 应用主线程观测器标志。|
 
 **错误码**：
 
@@ -544,6 +544,7 @@ off(type: 'loopObserver', observer?: LoopObserver): void
     
 ```ts
 import { errorManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   errorManager.off('loopObserver');
@@ -558,7 +559,7 @@ try {
 
 off(type: 'globalUnhandledRejectionDetected', observer?: GlobalObserver): void
 
-注销被拒绝promise监听器，注销后无法监听进程中的promise异常。
+注销被拒绝Promise监听器，注销后无法监听进程中的Promise异常。
 
 如果传入的回调不在通过on方法注册的回调队列中，将抛出16300004错误码，因此建议使用try-catch逻辑进行处理。
 
@@ -572,8 +573,8 @@ off(type: 'globalUnhandledRejectionDetected', observer?: GlobalObserver): void
 
 | 参数名                   | 类型                              | 必填 | 说明                                           |
 |-----------------------|---------------------------------|----|----------------------------------------------|
-| type                  | string                          | 是  | 填写'globalUnhandledRejectionDetected'，表示注销被拒绝promise监听器。 |
-| observer              | [GlobalObserver](#globalobserver18) | 否  | 由on接口注册的被拒绝promise的callback。建议使用该参数，缺省时默认清除所有通过on注册的相同虚拟机实例环境（env）的callback，否则删除指定callback。 |
+| type                  | string                          | 是  | 填写'globalUnhandledRejectionDetected'，表示注销被拒绝Promise监听器。 |
+| observer              | [GlobalObserver](#globalobserver18) | 否  | 由on接口注册的被拒绝Promise的callback。建议使用该参数，缺省时默认清除所有通过on注册的相同虚拟机实例环境（env）的callback，否则删除指定callback。 |
 
 **错误码**：
 
@@ -615,7 +616,7 @@ errorManager.off('globalUnhandledRejectionDetected', promiseFunc);
 
 off(type: 'unhandledRejection', observer?: UnhandledRejectionObserver): void
 
-注销被拒绝promise监听器。
+注销被拒绝Promise监听器。
 
 仅在主线程中使用。使用线程出错时，将抛出错误码，因此建议使用try-catch逻辑进行处理。
 
@@ -629,8 +630,8 @@ off(type: 'unhandledRejection', observer?: UnhandledRejectionObserver): void
 
 | 参数名                   | 类型                              | 必填 | 说明                                           |
 |-----------------------|---------------------------------|----|----------------------------------------------|
-| type                  | string                          | 是  | 填写'unhandledRejection'，表示注册被拒绝Promise监听器。 |
-| observer              | [UnhandledRejectionObserver](#unhandledrejectionobserver12) | 否  | 需要注销的被拒绝promise监听器。建议使用该参数，缺省时默认清除所有通过on注册的相同虚拟机实例环境（env）的callback，否则删除指定observer。|
+| type                  | string                          | 是  | 填写'unhandledRejection'，表示注销被拒绝Promise监听器。 |
+| observer              | [UnhandledRejectionObserver](#unhandledrejectionobserver12) | 否  | 需要注销的被拒绝Promise监听器。建议使用该参数，缺省时默认清除所有通过on注册的相同虚拟机实例环境（env）的callback，否则删除指定observer。|
 
 **错误码**：
 
@@ -881,7 +882,7 @@ setDefaultFreezeObserver(defaultObserver?: FreezeObserver) : FreezeObserver
  
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| defaultObserver | [FreezeObserver](#freezeobserver18) | 否 | 新注册的错误处理器，默认值为空。<br>当参数为空时，后续注册的处理器将无法与前序已注册的处理器建立关联，从而中断链式调用。|
+| defaultObserver | [FreezeObserver](#freezeobserver18) | 否 | 新注册的freeze观察者，默认值为空。<br>当参数为空时，后续注册的处理器将无法与前序已注册的处理器建立关联，从而中断链式调用。|
 
 **返回值**：
 
@@ -945,7 +946,7 @@ ErrorObserver模块。该模块定义了错误观测器的接口，包含onUnhan
 
 type LoopObserver = _LoopObserver
 
-LoopObserver模块。定义异常监听，可作为 `errormanager.on` 函数的参数，监听并处理当前应用主线程超时的事件。
+LoopObserver模块。定义异常监听，可作为 `errorManager.on` 函数的参数，监听并处理当前应用主线程超时的事件。
 
 该接口通过在ArkUI事件循环的消息处理前后记录时间戳，计算消息执行时长，当执行时长超过设定的timeout阈值时触发onLoopTimeOut回调。详细监测机制请参见[LoopObserver](js-apis-inner-application-loopObserver.md)。
 
@@ -972,7 +973,7 @@ type UnhandledRejectionObserver = (reason: Error | any, promise: Promise\<any>) 
 | 参数名    | 类型            | 必填 | 说明 |
 |--------|---------------|---| -------- |
 | reason | Error \| any | 是 | 通常是`Error`类型，表示被拒绝的理由。 |
-| promise | Promise\<any> | 是 | 被拒绝的promise。 |
+| promise | Promise\<any> | 是 | 被拒绝的Promise。 |
 
 ## FreezeObserver<sup>18+</sup>
 
@@ -988,7 +989,7 @@ type FreezeObserver = () => void
 
 type GlobalObserver = (reason: GlobalError) => void
 
-定义异常监听，可以作为[errorManager.on('globalErrorOccurred')](#errormanageronglobalerroroccurred18)和[errorManager.on('globalUnhandledRejectionDetected')](#errormanageronglobalunhandledrejectiondetected18)的入参，用于监听应用事件处理超时的情况。通过回调机制实时获取消息实际执行时间，帮助开发者及时发现和定位故障问题。
+定义异常监听，可以作为[errorManager.on('globalErrorOccurred')](#errormanageronglobalerroroccurred18)和[errorManager.on('globalUnhandledRejectionDetected')](#errormanageronglobalunhandledrejectiondetected18)的入参，用于监听全局异常事件和未捕获的Promise rejection。通过回调机制获取异常详情，帮助开发者及时发现和定位故障问题。
 
 **原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -1033,6 +1034,8 @@ type GlobalObserver = (reason: GlobalError) => void
 ## ErrorHandler<sup>21+</sup>
 
 type ErrorHandler = (errObject: Error) => void
+
+定义错误处理器函数类型，用于处理JS异常，作为[errorManager.setDefaultErrorHandler](#errormanagersetdefaulterrorhandler21)的参数类型，在异常发生时被调用，接收异常对象并执行自定义错误处理逻辑。
 
 **原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
 

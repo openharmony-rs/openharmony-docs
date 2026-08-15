@@ -38,7 +38,7 @@ onAxisEvent(event: Callback\<AxisEvent>): T
 
 ## AxisEvent
 
-轴事件的对象说明，继承于[BaseEvent](ts-gesture-customize-judge.md#baseevent8)。
+轴事件的对象说明，继承于[BaseEvent](ts-universal-events-click.md#baseevent8)。
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
 
@@ -109,7 +109,7 @@ getPinchAxisScaleValue(): number
 
 | 类型              |说明       |
 | ------- | --------------------------------- |
-| number | 双指缩放比例。<br> **说明：** 缩放比例指的是触控板双指缩放事件触发过程中双指当前的距离与双指最初按下时的距离的比值。<br>默认值：0<br>取值范围：[0, +∞)<br> |
+| number | 双指缩放比例。<br> **说明：** 缩放比例指的是触控板双指缩放事件触发过程中双指当前的距离与双指最初按下时的距离的比值；当前轴事件不包含捏合轴时，取默认值0。<br>默认值：0<br>取值范围：[0, +∞)<br> |
 
 ### hasAxis<sup>22+</sup>
 
@@ -157,7 +157,7 @@ getCurrentLocalPosition?(): Coordinate2D
 
 ### 示例1（获取轴事件相关参数）
 
-该示例中，对按钮设置轴事件，通过滚动鼠标滚轮可获取轴事件的相关参数。从API version 21开始，该示例通过[axisPinch](./ts-gesture-customize-judge.md#属性)和[getPinchAxisScaleValue](#getpinchaxisscalevalue21)获取双指缩放比例；从API version 22开始，该示例通过[hasAxis](#hasaxis22)判断轴事件是否包含指定的轴类型。
+该示例中，对按钮设置轴事件，通过滚动鼠标滚轮可获取轴事件的相关参数。从API version 21开始，该示例通过[BaseEvent](./ts-universal-events-click.md#baseevent8)的`axisPinch`属性和[getPinchAxisScaleValue](#getpinchaxisscalevalue21)获取双指缩放比例；从API version 22开始，该示例通过[hasAxis](#hasaxis22)判断轴事件是否包含指定的轴类型。
 
 ```ts
 // xxx.ets
@@ -209,7 +209,7 @@ struct GetCurrentLocalPositionExample {
 
   build() {
     Column() {
-      Button('获取滚轮位置相对于当前组件实时位置左上角的坐标').translate({ y: this.textOffsetY })
+      Button('获取鼠标光标位置相对于当前组件实时位置左上角的坐标').translate({ y: this.textOffsetY })
         .onAxisEvent((event?: AxisEvent) => {
           if (event) {
             // 先移动按钮位置，延迟后获取鼠标光标相对于组件实时位置左上角的坐标。

@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-\@Provider和\@Consumer用于跨组件层级数据双向同步，可以使得开发者不用拘泥于组件层级。
+[\@Provider](../../reference/apis-arkui/arkui-ts/ts-state-management-provider.md#provider)和[\@Consumer](../../reference/apis-arkui/arkui-ts/ts-state-management-consumer.md#consumer)用于跨组件层级数据双向同步，可以使得开发者不用拘泥于组件层级。
 
 \@Provider和\@Consumer属于状态管理V2装饰器，所以只能在[\@ComponentV2](./arkts-create-custom-components.md#componentv2)中才能使用，在[\@Component](./arkts-create-custom-components.md)中使用会编译报错。
 
@@ -45,7 +45,7 @@
 | ------------------ | ----------------------------------------------------- |----------------------------------------------------- |
 | \@Consume(r)         |必须本地初始化，当找不到\@Provider时使用本地默认值。| API version 20以前，@Consume禁止本地初始化，当找不到对应\@Provide的时候，会抛出异常；从API version 20开始，@Consume支持设置默认值，如果没有设置默认值，且找不到对应\@Provide时，会抛出异常。 |
 | 支持类型           | 支持function。 | 不支持function。 |
-| 观察能力           | 仅能观察自身赋值变化，如果要观察嵌套场景，配合[\@Trace](arkts-new-observedV2-and-trace.md)一起使用。 | 观察第一层变化，如果要观察嵌套场景，配合[\@Observed和\@ObjectLink](arkts-observed-and-objectlink.md)一起使用。 |
+| 观察能力           | 仅能观察数据本身的变化，如果要观察嵌套场景，配合[\@Trace](arkts-new-observedV2-and-trace.md)一起使用。 | 观察第一层变化，如果要观察嵌套场景，配合[\@Observed和\@ObjectLink](arkts-observed-and-objectlink.md)一起使用。 |
 | alias和属性名         | alias是唯一匹配的key，缺省时默认属性名为alias。 | alias和属性名都为key，优先匹配alias，匹配不到可以匹配属性名。|
 | \@Provide(r) 从父组件初始化      | 不允许。 | 允许。|
 | \@Provide(r)支持重载  | 默认开启，即\@Provider可以重名，\@Consumer向上查找最近的\@Provider。 | 默认关闭，即在组件树上不允许有同名\@Provide。如果需要重载，则需要配置allowOverride。|
@@ -968,6 +968,7 @@ class TextNodeController extends NodeController {
   disposeNode(): void {
     if (this.rootNode && globalBuilderNode) {
       globalBuilderNode.dispose();
+      globalBuilderNode = null;
     }
   }
 }

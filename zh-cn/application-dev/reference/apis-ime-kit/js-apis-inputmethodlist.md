@@ -16,11 +16,11 @@
 
 本模块与输入法框架其他模块的关系如下：
 
-— [@ohos.inputMethod](js-apis-inputmethod.md)：面向普通前台应用，提供输入法的控制与管理能力（如显示/隐藏软键盘、切换输入法等），可通过程序化接口`switchInputMethod`切换输入法，适用于无需交互式选择界面的场景。
+- [@ohos.inputMethod](js-apis-inputmethod.md)：面向普通前台应用，提供输入法的控制与管理能力（如显示/隐藏软键盘、切换输入法等），可通过程序化接口`switchInputMethod`切换输入法，适用于无需交互式选择界面的场景。
 
-— [@ohos.inputMethodEngine](js-apis-inputmethodengine.md)：面向输入法应用，提供创建软键盘窗口、插入/删除字符等输入法服务端能力。
+- [@ohos.inputMethodEngine](js-apis-inputmethodengine.md)：面向输入法应用，提供创建软键盘窗口、插入/删除字符等输入法服务端能力。
 
-— @ohos.inputMethodList（本模块）：面向系统应用和输入法应用，提供可视化的输入法切换列表弹窗控件，适用于需要交互式选择界面的场景。
+- @ohos.inputMethodList（本模块）：面向系统应用和输入法应用，提供可视化的输入法切换列表弹窗控件，适用于需要交互式选择界面的场景。
 
 > **说明：**
 >
@@ -72,8 +72,6 @@ import { InputMethodListDialog } from '@kit.IMEKit';
 
 ## InputMethodListDialog
 
-InputMethodListDialog({controller: CustomDialogController, patternOptions?: PatternOptions})
-
 输入法切换列表弹窗控件。以弹窗形式展示当前系统中已安装的输入法应用列表，支持用户在输入法之间进行切换；对于默认输入法，还提供键盘模式（如单手模式、全屏模式等）的切换入口。
 
 使用场景：当系统应用或输入法应用需要为用户提供可视化的输入法选择和切换功能时使用此控件。例如，在系统设置应用中允许用户选择不同输入法，或在输入法应用中允许用户切换到其他输入法或切换当前输入法的键盘模式。
@@ -87,6 +85,12 @@ InputMethodListDialog({controller: CustomDialogController, patternOptions?: Patt
 注意事项：
 - 前提条件：需先创建[CustomDialogController](../apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)实例并关联InputMethodListDialog，再通过controller的open()方法打开弹窗。
 - 本组件不支持通用属性和通用事件。
+
+## 子组件
+无
+
+## 接口
+InputMethodListDialog({controller: CustomDialogController, patternOptions?: PatternOptions})
 
 **装饰器类型：**@CustomDialog
 

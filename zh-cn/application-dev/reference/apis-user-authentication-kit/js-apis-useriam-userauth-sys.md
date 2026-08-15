@@ -9,7 +9,7 @@
 
 **userAuth**模块是OpenHarmony系统中用于用户身份认证的核心模块，提供了设备解锁、支付验证、应用登录等场景下的身份认证能力。
 
-当前页面仅包含本模块中面向系统应用和认证组件开发者的高级能力。这些API提供了认证组件管理、自定义通知发送、认证结果复用查询、隐私密码认证等系统级功能。
+当前页面仅包含本模块中面向系统应用和认证组件开发者的高级能力。这些API提供了认证组件管理、自定义通知发送、认证结果复用查询、隐私密码认证、远程认证等系统级功能。
 
 主要用于以下场景：
 
@@ -19,6 +19,7 @@
 - 需要查询可复用的认证结果以实现无感认证。
 - 需要使用隐私密码进行认证。
 - 需要指定特定用户或特定凭据进行认证。
+- 需要支持远程认证场景，在远程设备发起认证时获取认证页面参数并返回认证结果。
 
 > **说明：**
 >
@@ -64,7 +65,7 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 | 名称                 | 类型                                | 只读 | 可选 | 说明                                                         |
 | -------------------- | ----------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | windowMode           | [WindowModeType](#windowmodetype10) | 否   | 是   | 用户认证界面的显示类型。DIALOG_BOX适用于大多数认证场景（用户体验较好），FULLSCREEN适用于需要沉浸式认证体验或认证信息较多的场景。不传入时默认为WindowModeType.DIALOG_BOX。<br>**系统接口：** 此接口为系统接口。 |
-| appWindow          | [window.Window](../apis-arkui/arkts-apis-window-Window.md) | 否   | 是   | 应用窗口对象。用于以模应用弹窗方式显示身份认证对话框，适用于需要通过窗口对象控制认证对话框显示的场景。如果已提供此参数，则uiContext将被忽略。<br>**起始版本：** 26.0.0<br>**系统接口：** 此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| appWindow          | [window.Window](../apis-arkui/arkts-apis-window-Window.md) | 否   | 是   | 应用窗口对象。用于以模应用弹窗方式显示身份认证对话框，适用于需要通过窗口对象控制认证对话框显示的场景。如果已提供此参数，则uiContext将被忽略；若不传入此参数，则认证界面的显示由uiContext控制。<br>**起始版本：** 26.0.0<br>**系统接口：** 此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## NoticeType<sup>10+</sup>
 
@@ -535,7 +536,7 @@ type ResultCallback = (challenge: Uint8Array, result: UserAuthResult) => void
 
 registerRemoteAuthCallback(callback: IRemoteAuthCallback): void
 
-注册远程认证回调。该接口用于在远程认证场景下注册回调接口，注册后系统可通过回调获取远程认证所需的页面参数，并在认证完成后接收认证结果。不允许重复注册，在不使用时应调用[unregisterRemoteAuthCallback](#userauthregisterremoteauthcallback)取消注册，避免回调无法释放。
+注册远程认证回调。该接口用于在远程认证场景下注册回调接口，注册后系统可通过回调获取远程认证所需的页面参数，并在认证完成后接收认证结果。不允许重复注册，在不使用时应调用[unregisterRemoteAuthCallback](#userauthunregisterremoteauthcallback)取消注册，避免回调无法释放。
 
 **起始版本：** 26.0.0
 

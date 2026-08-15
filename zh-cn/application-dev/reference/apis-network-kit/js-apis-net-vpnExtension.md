@@ -11,15 +11,11 @@
 
 > **说明：**
 >
-> 本模块首批接口从 API version 11 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。<br>
-> 以下模块不支持在VpnExtensionAbility中引用，可能会导致程序异常退出。<br>
-> - [@ohos.contact (联系人)](../apis-contacts-kit/js-apis-contact.md)<br>
-> - [@ohos.geolocation](../apis-location-kit/js-apis-geolocation.md)、[@ohos.geoLocationManager (位置服务)](../apis-location-kit/js-apis-geoLocationManager.md)<br>
-> - [@ohos.multimedia.audio (音频管理)](../apis-audio-kit/arkts-apis-audio.md)<br>
-> - [@ohos.multimedia.camera (相机管理)](../apis-camera-kit/arkts-apis-camera.md)<br>
-> - [@ohos.telephony.call (拨打电话)](../apis-telephony-kit/js-apis-call.md)<br>
-> - [@ohos.telephony.sim (SIM卡管理)](../apis-telephony-kit/js-apis-sim.md)<br>
-> - [@ohos.telephony.sms (短信服务)](../apis-telephony-kit/js-apis-sms.md)<br>
+> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+
+## 约束限制
+
+为保障系统安全性和稳定性，防止VpnExtensionAbility滥用系统资源，系统对其能力进行管控，不支持部分模块的引用，详情请参考[附录](#附录)。
 
 ## 导入模块
 
@@ -765,11 +761,11 @@ export default class MyVpnExtAbility  extends VpnExtensionAbility {
 | routes              | Array\<[RouteInfo](js-apis-net-connection.md#routeinfo)\>      | 否  | 是 | VPN虚拟网卡的路由信息（API version 23前最多可配置1024条路由；从API version 23开始最多可配置10000条路由）。                  |
 | dnsAddresses        | Array\<string\>                                                 | 否  | 是 | DNS服务器地址信息。当配置DNS服务器地址后，VPN启动状态下被代理的应用上网时，使用配置的DNS服务器做DNS查询。最多可配置64个DNS服务器地址。                                    |
 | searchDomains       | Array\<string\>                                                | 否  | 是 | DNS的搜索域列表。                                     |
-| mtu                 | number                                                         | 否  | 是 | 最大传输单元MTU值（单位：字节）。取值范围：[576，1500]。               |
-| isIPv4Accepted      | boolean                                                         | 否  | 是 | 是否支持IPv4。true表示支持，false表示不支持, 默认值为true。<br>**注意**：若支持IPv4功能，需要在addresses中配置IPv4类型的IP地址。  |
-| isIPv6Accepted      | boolean                                                         | 否  | 是 | 是否支持IPv6。true表示支持，false表示不支持, 默认值为false。<br>**注意**：若支持IPv6功能，需要在addresses中配置IPv6类型的IP地址。  |
-| isInternal          | boolean                                                         | 否  | 是 | 是否支持内置VPN。true表示支持，false表示不支持, 默认值为false。 |
-| isBlocking          | boolean                                                        | 否  | 是 | 是否阻塞模式。true表示阻塞模式，false表示非阻塞模式, 默认值为false。       |
+| mtu                 | number                                                         | 否  | 是 | 最大传输单元MTU值（单位：字节）。取值范围：[576, 1500]。               |
+| isIPv4Accepted      | boolean                                                         | 否  | 是 | 是否支持IPv4。true表示支持，false表示不支持，默认值为true。<br>**注意**：若支持IPv4功能，需要在addresses中配置IPv4类型的IP地址。  |
+| isIPv6Accepted      | boolean                                                         | 否  | 是 | 是否支持IPv6。true表示支持，false表示不支持，默认值为false。<br>**注意**：若支持IPv6功能，需要在addresses中配置IPv6类型的IP地址。  |
+| isInternal          | boolean                                                         | 否  | 是 | 是否支持内置VPN。true表示支持，false表示不支持，默认值为false。 |
+| isBlocking          | boolean                                                        | 否  | 是 | 是否阻塞模式。true表示阻塞模式，false表示非阻塞模式，默认值为false。       |
 | trustedApplications | Array\<string\>                                                | 否  | 是 | 受信任的应用信息列表，string类型表示的包名。当配置该列表后，仅该列表中的应用数据才能根据routes被VPN代理。API version 23前最多可配置64个受信任的应用包名；从API version 23开始最多可配置256个受信任的应用包名。<br>**注意**：trustedApplications和blockedApplications列表不能同时配置。                         |
 | blockedApplications | Array\<string\>                                                 | 否  | 是 | 被阻止的应用信息列表，string类型表示的包名。当配置该列表后，该列表中的应用数据不会被VPN代理，其他应用可以根据routes配置被VPN代理。API version 23前最多可配置64个被阻止的应用包名；从API version 23开始最多可配置256个被阻止的应用包名。<br>**注意**：trustedApplications和blockedApplications列表不能同时配置。                         |
 
@@ -817,3 +813,18 @@ function vpnCreate(){
   })
 }
 ```
+
+## 附录
+
+VpnExtensionAbility不支持以下模块的引用。
+
+| Kit | 模块 |
+|--|--|
+| Contacts Kit | [@ohos.contact (联系人)](../apis-contacts-kit/js-apis-contact.md) |
+| Location Kit | [@ohos.geolocation (位置服务)](../apis-location-kit/js-apis-geolocation.md) |
+| Location Kit | [@ohos.geoLocationManager (位置服务)](../apis-location-kit/js-apis-geoLocationManager.md) |
+| Audio Kit | [@ohos.multimedia.audio (音频管理)](../apis-audio-kit/arkts-apis-audio.md) |
+| Camera Kit | [@ohos.multimedia.camera (相机管理)](../apis-camera-kit/arkts-apis-camera.md) |
+| Telephony Kit | [@ohos.telephony.call (拨打电话)](../apis-telephony-kit/js-apis-call.md) |
+| Telephony Kit | [@ohos.telephony.sim (SIM卡管理)](../apis-telephony-kit/js-apis-sim.md) |
+| Telephony Kit | [@ohos.telephony.sms (短信服务)](../apis-telephony-kit/js-apis-sms.md) |

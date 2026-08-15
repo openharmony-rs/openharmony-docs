@@ -132,7 +132,7 @@ getAppPowerValue(uid: number): number
 
 ```js
 try {
-    let value = batteryStats.getAppPowerValue(10021); // 10021为示例UID，实际使用时需通过bundleManager.getUidByBundleName等接口获取应用UID
+    let value = batteryStats.getAppPowerValue(10021); // 10021为示例UID，实际使用时需通过bundleManager.getBundleInfoForSelf等接口获取应用UID
     console.info('battery statistics value of app is: ' + value);
 } catch (err) {
     console.error(`Failed to get battery statistics value of app. Code: ${err.code}, message: ${err.message}`);

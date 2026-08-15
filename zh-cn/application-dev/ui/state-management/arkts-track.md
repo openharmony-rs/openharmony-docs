@@ -7,7 +7,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 
-\@Track应用于class对象的属性级更新。\@Track装饰的属性变化时，只会触发该属性关联的UI更新。
+[\@Track](../../reference/apis-arkui/arkui-ts/ts-state-management-track.md#track)应用于class对象的属性级更新。\@Track装饰的属性变化时，只会触发该属性关联的UI更新。
 
 
 在阅读本文档之前，建议开发者对状态管理基本观察能力有基本的了解。建议提前阅读：[\@State](./arkts-state.md)。

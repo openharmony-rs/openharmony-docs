@@ -6,8 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-在前文的示例中，可以使用[\@Styles](arkts-style.md)复用样式，在\@Styles的基础上，我们提供了\@Extend，用于扩展组件样式。
-
+在前文的示例中，可以使用[\@Styles](arkts-style.md)复用样式，在\@Styles的基础上，我们提供了[\@Extend](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-extend.md#extend)，用于扩展组件样式。
 
 > **说明：**
 >
@@ -119,7 +118,7 @@
   }
   ```
 
-- \@Extend的参数可以为[状态变量](arkts-state-management-overview.md)，当状态变量改变时，UI可以正常的被刷新渲染。
+- \@Extend的参数可以为[状态变量](arkts-state-management-overview.md)，当状态变量改变时，UI可以正常地被刷新渲染。
   <!-- @[Extend_Refresh_rendering_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUIStateVariable.ets) --> 
   
   ``` TypeScript

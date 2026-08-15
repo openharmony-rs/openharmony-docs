@@ -8,7 +8,7 @@
 <!--Adviser: @zhang_yixin13-->
 <!-- md-trans-meta sourceCommit=62b5c3450a87bdc5e575e58aa760685da7a65e8a translatedAt=2026-07-01T11:08:30.811Z pushedAt=2026-07-02T01:31:39.437Z -->
 
-A large number of data objects need to be encapsulated in large-scale applications. The use of internal status variables of data objects greatly affects the development efficiency of developers. This document describes common problems and solutions of data object state management.
+A large number of data objects need to be encapsulated in large-scale applications. The use of internal state variables of data objects greatly affects the development efficiency of developers. This document describes common problems and solutions of data object state management.
 
 In state management, a class is wrapped by a layer of "proxy." When a member variable of a class is modified, the agent intercepts the operation and performs the following tasks:
 
@@ -142,7 +142,7 @@ In the preceding example, the state variable is changed through a method of the 
 
 ## Failure to Change a State Variable Using an Arrow Function
 
-Changing the state variable in an arrow function does not trigger UI update. This is because the **this** object in the arrow function body is the object to which the scope where the function is defined points, not the object to which the scope where the function is called points. Therefore, in this scenario, **this** of **changeCoverUrl** points to **PlayDetailViewModel** instead of the status variable itself.
+Changing the state variable in an arrow function does not trigger UI update. This is because the **this** object in the arrow function body is the object to which the scope where the function is defined points, not the object to which the scope where the function is called points. Therefore, in this scenario, **this** of **changeCoverUrl** points to **PlayDetailViewModel** instead of the state variable itself.
 
 **Incorrect Usage**
 
@@ -187,7 +187,7 @@ struct PlayDetailPage {
 }
 ```
 
-Solution: Transfer the proxy object of the status variable to the arrow function and call the proxy attribute to assign a value.
+Solution: Transfer the proxy object of the state variable to the arrow function and call the proxy attribute to assign a value.
 
 **Correct Usage**
 

@@ -284,7 +284,7 @@ The form edit page is not in the foreground. The current operation is not suppor
 
 **处理步骤**
 
-检查[半模态卡片编辑页](../../form/arkts-ui-widget-event-formeditextensionability-overview.md#半模态卡片编辑)是否已打开。
+检查[半模态卡片编辑页](../../form/arkts-ui-widget-event-formeditextensionability.md#半模态卡片编辑)是否已打开。
 
 ## 16501015 不能关闭其他应用的半模态卡片编辑页
 
@@ -350,7 +350,7 @@ The requested bundle name does not exist.
 
 **错误描述**
 
-获取请求的应用包名不存在，该错误属于内部错误。
+系统执行获取请求的应用包名不存在，该错误属于内部错误。
 
 **可能原因**
 

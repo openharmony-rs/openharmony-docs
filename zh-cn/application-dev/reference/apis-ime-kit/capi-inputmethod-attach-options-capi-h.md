@@ -45,7 +45,7 @@
 | [InputMethod_AttachOptions *OH_AttachOptions_CreateWithRequestKeyboardReason(bool showKeyboard, InputMethod_RequestKeyboardReason requestKeyboardReason)](#oh_attachoptions_createwithrequestkeyboardreason) | 创建一个InputMethod_AttachOptions实例，同时指定键盘显示状态和请求键盘的原因，适用于需要标识触发输入法拉起场景的绑定场景。 |
 | [void OH_AttachOptions_Destroy(InputMethod_AttachOptions *options)](#oh_attachoptions_destroy) | 销毁一个InputMethod_AttachOptions实例，释放由OH_AttachOptions_Create函数分配的内存资源。 |
 | [InputMethod_ErrorCode OH_AttachOptions_IsShowKeyboard(InputMethod_AttachOptions *options, bool *showKeyboard)](#oh_attachoptions_isshowkeyboard) | 从InputMethod_AttachOptions中获取是否显示键盘的值。 |
-| [InputMethod_ErrorCode OH_AttachOptions_GetRequestKeyboardReason(InputMethod_AttachOptions *options, InputMethod_RequestKeyboardReason *requestKeyboardReason)](#oh_attachoptions_getrequestkeyboardreason) | 从InputMethod_AttachOptions中获取请求键盘的原因。 |
+| [InputMethod_ErrorCode OH_AttachOptions_GetRequestKeyboardReason(InputMethod_AttachOptions *options, int *requestKeyboardReason)](#oh_attachoptions_getrequestkeyboardreason) | 从InputMethod_AttachOptions中获取请求键盘的原因。 |
 
 ## 函数说明
 
@@ -164,7 +164,7 @@ InputMethod_ErrorCode OH_AttachOptions_IsShowKeyboard(InputMethod_AttachOptions 
 ### OH_AttachOptions_GetRequestKeyboardReason()
 
 ```c
-InputMethod_ErrorCode OH_AttachOptions_GetRequestKeyboardReason(InputMethod_AttachOptions *options, InputMethod_RequestKeyboardReason *requestKeyboardReason)
+InputMethod_ErrorCode OH_AttachOptions_GetRequestKeyboardReason(InputMethod_AttachOptions *options, int *requestKeyboardReason)
 ```
 
 **描述**
@@ -179,7 +179,7 @@ InputMethod_ErrorCode OH_AttachOptions_GetRequestKeyboardReason(InputMethod_Atta
 
 | 参数项 | 描述 |
 | -- | -- |
-| [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md) *options | 输入指针，表示被读取值的InputMethod_AttachOptions实例。<br>含义/功能：指定要从哪个AttachOptions实例中读取requestKeyboardReason属性。<br>NULL指针处理：不可为NULL，传入NULL将返回IME_ERR_NULL_POINTER。<br>前提条件：必须通过OH_AttachOptions_Create函数创建的有效实例。若实例通过OH_AttachOptions_Create（而非CreateWithRequestKeyboardReason）创建，读取的requestKeyboardReason默认值为IME_REQUEST_REASON_NONE。 |
+| [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md) *options | 输入指针，表示被读取值的InputMethod_AttachOptions实例。<br>含义/功能：指定要从哪个AttachOptions实例中读取requestKeyboardReason属性。<br>NULL指针处理：不可为NULL，传入NULL将返回IME_ERR_NULL_POINTER。<br>前提条件：必须通过OH_AttachOptions_CreateWithRequestKeyboardReason函数创建的有效实例。若实例通过OH_AttachOptions_Create（而非CreateWithRequestKeyboardReason）创建，读取的requestKeyboardReason默认值为IME_REQUEST_REASON_NONE。 |
 | [InputMethod_RequestKeyboardReason](capi-inputmethod-types-capi-h.md#inputmethod_requestkeyboardreason) *requestKeyboardReason | 输出指针，表示请求键盘输入的原因。<br>含义/功能：输出参数，用于获取触发输入法拉起的场景原因枚举值。<br>使用场景：需要查询AttachOptions的请求键盘原因配置时使用。<br>取值范围：输出值为InputMethod_RequestKeyboardReason枚举：IME_REQUEST_REASON_NONE(0)、IME_REQUEST_REASON_MOUSE(1)、IME_REQUEST_REASON_TOUCH(2)、IME_REQUEST_REASON_OTHER(20)。<br>NULL指针处理：不可为NULL，传入NULL将返回IME_ERR_NULL_POINTER。调用者需确保requestKeyboardReason指向有效的变量。<br>内存分配责任：由调用者分配变量的内存，GetRequestKeyboardReason仅写入值，不分配内存。 |
 
 **返回：**

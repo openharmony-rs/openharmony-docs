@@ -176,7 +176,7 @@ NOTE: Current fault may be caused by the system's low memory or thermal throttli
 **NOTE信息说明：**
 
 - **从API version 20开始**，系统支持输出提示信息：Current fault may be caused by the system's low memory or thermal throttling, you may ignore it and analysis other faults。当整机资源告警（如整机低内存或热限频）时，系统会在NOTE中输出此信息，此时开发者可忽略应用冻屏故障。
-- **从API版本26.0.0开始**，系统支持输出提示信息：Current process has encountered fd leak which may lead to appfreeze, you may refer to resource overlimit event from hiAppEvent for further analysis。支持AppFreeze日志中关联[Resource Leak（资源泄漏）检测](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/resource-leak-guidelines)事件信息，若当前进程在发生冻屏故障前已存在内存泄漏，故障日志将提示泄漏事件，并指出其可能为导致冻屏的诱因，此时开发者可以优先解决资源泄露问题。
+- **从API版本26.0.0开始**，系统支持输出提示信息：Current process has encountered fd leak which may lead to appfreeze, you may refer to resource overlimit event from hiAppEvent for further analysis。支持AppFreeze日志中关联[Resource Leak（资源泄漏）检测](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/resource-leak-guidelines)事件信息，若当前进程在发生冻屏故障前已存在内存泄漏，故障日志将提示泄漏事件，并指出其可能为导致冻屏的诱因，此时开发者可以优先解决资源泄漏问题。
 - **从API版本26.0.0开始**，系统支持输出提示信息：Main thread is blocked by GC, which may be caused by high memory usage or system resource overload。
   - 如果[GC垃圾回收](../arkts-utils/gc-introduction.md)类型是Shared GC，系统不会输出此信息。
   - 如果在[GC垃圾回收](../arkts-utils/gc-introduction.md)期间，发生Appfreeze事件，并且GC垃圾回收类型是非Shared GC，系统会在NOTE中输出此信息，此时开发者可忽略应用冻屏故障。
@@ -341,6 +341,7 @@ state=S, utime=0, stime=0, priority=0, nice=-20, clk=100
 #28 pc 00000000000a9804 /system/lib/ld-musl-aarch64.so.1(libc_start_main_stage2+84)(f1a940981720250b920ee26d2d76af5b)
 ```
 
+<!--RP4--><!--RP4End-->
 大部分情况下，THREAD_BLOCK_6S、LIFECYCLE_TIMEOUT以及APP_INPUT_BLOCK故障的堆栈信息，可以协助开发者定位到异常代码。
 
 其他情况下（比如瞬时栈场景），由于主线程繁忙等问题，导致获取堆栈信息延迟，无法及时捕获到异常代码段，堆栈的栈顶信息并非开发者期望获取的结果。
@@ -366,7 +367,7 @@ state=S, utime=0, stime=0, priority=0, nice=-20, clk=100
 从API version 23开始，在线程号下新增线程状态等信息用于判断系统卡顿问题。其中，state表示线程运行状态，priority和nice表示调度优先级，stime和utime表示运行时间。对比THREAD_BLOCK_3S和THREAD_BLOCK_6S的堆栈运行时间无变化，说明进程未被调度。分析业务代码无阻塞调用后可判断为系统调度问题。线程状态信息获取失败时，以下字段均不显示，线程状态信息在故障日志中格式如下：
 
 ```text
-state=S, utime=0, priority=0, nice=-20, clk=100
+state=S, utime=0, stime=0, priority=0, nice=-20, clk=100
 ```
 
 字段信息解释如下：
@@ -662,7 +663,7 @@ DisplayPowerInfo:powerState:AWAKE
 
    > **说明：**
    >
-   > 由于应用冻屏事件的采样栈会与[MAIN_THREAD_JANK](hiappevent-watcher-mainthreadjank-events.md)冲突，如果应用接入MAIN_THREAD_JANK的setEventConfig接口自定义配置采集堆栈的个数，应用冻屏事件的采集堆栈会与应用当前配置的采集堆栈的个数一致。
+   > 由于应用冻屏事件的采样栈会与[主线程超时检测](apptask-timeout-guidelines.md#主线程超时检测)冲突，如果应用接入MAIN_THREAD_JANK的setEventConfig接口自定义配置采集堆栈的个数，应用冻屏事件的采集堆栈会与应用当前配置的采集堆栈的个数一致。
    >
    > APP_INPUT_BLOCK故障有增强日志的前提是：先发生THREAD_BLOCK_3S或LIFECYCLE_HALF_TIMEOUT。
 
@@ -840,3 +841,68 @@ AppFreeze故障信息聚类方法同Cpp Crash一致，参考[CppCrash聚类](cpp
 增强日志信息聚类规格与AppFreeze故障信息提取堆栈聚类规格一致，该部分参与聚类主要是为了解决AppFreeze故障堆栈信息不足导致的无法聚类问题。
 
 开发者可参考[AppFreeze故障信息聚类](#appfreeze故障信息聚类)方法获取聚类特征，对增强日志信息进行聚类。
+
+## 屏蔽AppFreeze检测
+
+在开发调试阶段，开发者可以通过以下命令屏蔽AppFreeze检测，避免调试过程中的超时检测影响开发调试。
+
+### 环境要求
+
+在使用屏蔽指令前，开发者需要先获取[hdc工具](hdc.md#环境准备)，并通过`hdc shell`进入设备shell。
+
+### 约束与限制
+
+- **应用类型限制**：仅支持debug类型应用屏蔽检测，release类型应用不支持此功能。
+- **执行时机限制**：需在应用启动后执行屏蔽指令。
+
+### 使用方法
+
+**进入调试模式**
+
+```shell
+aa attach -b <bundleName>
+```
+
+例如：
+
+```shell
+aa attach -b com.example.appfreeze
+```
+
+当应用成功进入调试模式时，返回：
+
+```text
+attach app debug successfully.
+```
+
+当给定的`<bundleName>`参数不合法或者不存在时，返回如下内容，更多详细说明请参考：[进入调试模式命令（attach）](../tools/aa-tool.md#进入调试模式命令attach)：
+
+```text
+error: failed to attach app debug.
+```
+
+**退出调试模式**
+
+开发者在调试完成后，使用执行aa detach命令退出调试模式，恢复AppFreeze检测能力，确保应用正常运行时的故障检测不受影响。
+
+```shell
+aa detach -b <bundleName>
+```
+
+例如：
+
+```shell
+aa detach -b com.example.appfreeze
+```
+
+当应用退出调试模式时，返回：
+
+```text
+detach app debug successfully.
+```
+
+当给定的`<bundleName>`参数不合法或者不存在时，返回如下内容，更多详细说明请参考：[退出调试模式命令（detach）](../tools/aa-tool.md#退出调试模式命令detach)：
+
+```text
+error: failed to detach app debug.
+```

@@ -101,7 +101,7 @@ int32_t OH_ArkUI_GetContextFromNapiValue(napi_env env, napi_value value, ArkUI_C
 | 参数项 | 描述 |
 | -- | -- |
 | napi_env env | Node-API的环境指针。 |
-| napi_value value | ArkTS侧创建的context对象。 |
+| napi_value value | ArkTS侧创建的UIContext对象。 |
 | [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md)* context | ArkUI_ContextHandle指针。 |
 
 **返回：**

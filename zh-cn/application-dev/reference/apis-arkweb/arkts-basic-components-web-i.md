@@ -14,30 +14,30 @@
 
 ## WebOptions
 
-通过[接口](./arkts-basic-components-web.md#接口)定义Web选项。
+通过[接口](./arkts-basic-components-web.md#接口)定义Web选项，包括网页资源地址、控制器、渲染方式等。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 | 名称        | 类型                          | 只读     | 可选   | 说明                                     |
 | ---------- | ------------------------------|---- | ---- | ---------------------------------------- |
-| src        | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource)   | 否    | 否    | 网页资源地址。如果访问本地资源文件，请使用$rawfile或者resource协议。如果加载应用包外沙箱路径的本地资源文件（文件支持html和txt类型），请使用file://沙箱文件路径。<br>src不能通过状态变量（例如：@State）动态更改地址，如需更改，请通过[loadUrl()](./arkts-apis-webview-WebviewController.md#loadurl)重新加载。 |
-| controller | [WebController](./arkts-basic-components-web-WebController.md) \| WebviewController  | 否    | 否   | 控制器，通过controller可以控制Web组件各种行为（包括页面导航、生命周期状态、JavaScript交互等行为）。从API version 9开始，WebController不再维护，建议使用[WebviewController](./arkts-basic-components-web-t.md#webviewcontroller9)替代。 |
-| renderMode<sup>12+</sup> | [RenderMode](./arkts-basic-components-web-e.md#rendermode12)| 否    | 是   | 表示当前Web组件的渲染方式，`RenderMode.ASYNC_RENDER`表示Web组件异步渲染，`RenderMode.SYNC_RENDER`表示支持Web组件同步渲染能力，默认值`RenderMode.ASYNC_RENDER`，该模式不支持动态调整。 |
-| incognitoMode<sup>11+</sup> | boolean | 否    | 是 | 表示当前创建的webview是否是隐私模式。true表示创建隐私模式的webview，false表示创建正常模式的webview。<br> 默认值：false。<br>传入undefined或null时为false。<!--RP1--><!--RP1End--> |
-| sharedRenderProcessToken<sup>12+</sup> | string | 否    | 是 | 表示当前Web组件指定共享渲染进程的token，多渲染进程模式下，相同token的Web组件会优先尝试复用与token相绑定的渲染进程。token与渲染进程的绑定发生在渲染进程的初始化阶段。当渲染进程没有关联的Web组件时，其与token绑定关系将被移除。<br> 默认值： ""。  |
-| emulateTouchFromMouseEvent<sup>22+</sup> | boolean | 否    | 是 |  设定鼠标事件是否被转换成触摸事件。<br> 默认值：false。 |
+| src        | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource)   | 否    | 否    | 网页资源地址。如果访问本地资源文件，请使用resource协议或$rawfile资源引用。如果加载应用包外沙箱路径的本地资源文件（文件支持html和txt类型），请使用file://沙箱文件路径。<br>src不能通过状态变量（例如：@State）动态更改地址，如需更改，请通过[loadUrl()](./arkts-apis-webview-WebviewController.md#loadurl)重新加载。 |
+| controller | [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController](./arkts-apis-webview-WebviewController.md)  | 否    | 否   | 控制器，通过controller可以控制Web组件各种行为，包括页面导航、生命周期状态、JavaScript交互等。从API version 9开始，WebController不再维护，建议使用[WebviewController](./arkts-basic-components-web-t.md#webviewcontroller9)替代。 |
+| renderMode<sup>12+</sup> | [RenderMode](./arkts-basic-components-web-e.md#rendermode12)| 否    | 是   | 表示当前Web组件的渲染方式，`RenderMode.ASYNC_RENDER`表示Web组件异步渲染，`RenderMode.SYNC_RENDER`表示Web组件同步渲染，默认值`RenderMode.ASYNC_RENDER`，该模式不支持动态调整。 |
+| incognitoMode<sup>11+</sup> | boolean | 否    | 是 | 表示当前创建的Webview是否是隐私模式。true表示创建隐私模式，false表示创建正常模式。<br> 默认值：false。<br>传入undefined或null时为false。<!--RP1--><!--RP1End--> |
+| sharedRenderProcessToken<sup>12+</sup> | string | 否    | 是 | 表示当前Web组件指定共享渲染进程的token，多渲染进程模式下，相同token的Web组件会优先尝试复用绑定的渲染进程。绑定发生在渲染进程的初始化阶段。当渲染进程没有关联的Web组件时，其绑定关系将被移除。<br> 默认值： ""。  |
+| emulateTouchFromMouseEvent<sup>22+</sup> | boolean | 否    | 是 |  设定鼠标事件是否转换为触摸事件。true表示转换成触摸事件，适用于需要统一触摸和鼠标交互行为的场景；false表示不转换成触摸事件。<br> 默认值：false。 |
 
 ## WebMediaOptions<sup>10+</sup>
 
-Web媒体策略的配置。
+用于配置 Web 组件的媒体策略，包括音频续播有效期、音频独占模式等。适用于需要优化音频播放体验和多实例音频管理的场景，提升媒体播放的稳定性和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 | 名称             | 类型      | 只读 | 可选  | 说明                                       |
 | -------------- | ------- | ---- | ---- | ---------------------------------------- |
-| resumeInterval | number  | 否 | 是 | 被其他应用暂停的Web音视频能够自动续播的有效期，单位：秒。取值范围：[-2147483648, 2147483647]。resumeInterval值为0时，不自动续播；大于0时，将在该时间内尝试续播；小于0时，将在无限时间内尝试续播。由于近似值原因，该有效期可能存在一秒内的误差。 <br>**说明：** <br>HLS视频被打断后，回到前台将自动续播，不受该时间控制。|
-| audioExclusive | boolean | 否 | 是 | 应用内多个Web实例的音频是否独占。<br>true表示应用内多个Web实例的音频独占，false表示应用内多个Web实例的音频不独占。<br>默认值：true。                       |
-| audioSessionType<sup>20+</sup> | [AudioSessionType](./arkts-basic-components-web-e.md#audiosessiontype20) | 否 | 是 | 应用中Web音频类型。默认值对应系统音频流类型[StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)中的STREAM_USAGE_MUSIC。设置该参数会改变组件音频类型与系统音频类型映射关系，进而影响ArkWeb音频焦点策略。|
+| resumeInterval | number  | 否 | 是 | 被其他应用暂停的Web音视频能够自动续播的有效期，单位：秒。取值范围：[-2147483648, 2147483647]。值为0时，不自动续播；大于0时，将在该时间内尝试续播；小于0时，将在无限时间内尝试续播。由于近似值原因，该有效期可能存在一秒内的误差。 <br>**说明：** <br>HLS视频被打断后，回到前台将自动续播，不受该时间控制。<br/>默认值：0。|
+| audioExclusive | boolean | 否 | 是 | 应用内多个Web实例的音频是否独占。<br>true表示应用内多个Web实例的音频独占，false表示不独占。<br>默认值：true。                       |
+| audioSessionType<sup>20+</sup> | [AudioSessionType](./arkts-basic-components-web-e.md#audiosessiontype20) | 否 | 是 | 应用中Web音频类型。默认值对应系统音频流类型[StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)中的STREAM_USAGE_MUSIC。用于改变组件音频类型与系统音频类型映射关系，影响ArkWeb音频焦点策略。|
 
 ## ScriptItem<sup>11+</sup>
 
@@ -48,7 +48,7 @@ Web媒体策略的配置。
 | 名称         | 类型           | 只读 | 可选   | 说明           |
 | ----------- | -------------- | --- | ------|--------------- |
 | script      | string         | 否  |  否    | 需要注入、执行的JavaScript脚本。 |
-| scriptRules | Array\<string> | 否  |  否    | 一组允许来源的匹配规则。<br>1.如果需要允许所有来源的网址，使用通配符“ * ”。<br>2.如果需要精确匹配，则描述网站地址，如"https:\//www\.example.com"。<br>3.如果模糊匹配网址，可以使用“ * ”通配符替代，如"https://*.example.com"。不允许使用"x. * .y.com"、" * foobar.com"等。<br>4.如果来源是ip地址，则使用规则2。<br>5.对于http/https以外的协议（自定义协议），不支持使用精确匹配和模糊匹配，且必须以`://`结尾，例如"resource://"。<br>6.一组scriptRule中，如果其中一条不满足以上规则，则整组scriptRule都不生效。 |
+| scriptRules | Array\<string> | 否  |  否    | 一组允许来源的匹配规则。<br>1.如果需要允许所有来源的网址，使用通配符“\*”。<br>2.如果需要精确匹配，则描述网站地址，如"https:\//www\.example.com"。<br>3.如果模糊匹配网址，可以使用“ * ”通配符替代，如"https://*.example.com"。不允许使用"x. * .y.com"、" * foobar.com"等。<br>4.如果来源是ip地址，则使用规则2。<br>5.对于http/https以外的协议（自定义协议），不支持使用精确匹配和模糊匹配，且必须以`://`结尾，例如"resource://"。<br>6.一组scriptRule中，如果其中一条不满足以上规则，则整组scriptRule都不生效。 |
 | urlRegexRules<sup>23+</sup>  | Array\<[UrlRegexRule](./arkts-basic-components-web-i.md#urlregexrule23)\> | 否  |  是    | 一组允许来源的正则匹配规则。 当scriptRules设置为[]时，才使用urlRegexRules进行匹配。<br> **模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## UrlRegexRule<sup>23+</sup>
@@ -79,14 +79,14 @@ Web媒体策略的配置。
 
 ## NativeMediaPlayerConfig<sup>12+</sup>
 
-用于配置应用接管网页媒体播放功能接口[enableNativeMediaPlayer](./arkts-basic-components-web-attributes.md#enablenativemediaplayer12)的信息。
+用于配置应用接管网页媒体播放功能接口[enableNativeMediaPlayer](./arkts-basic-components-web-attributes.md#enablenativemediaplayer12)的功能，支持是否开启及是否覆盖网页内容。适用于需要自定义媒体播放行为的场景，提升媒体播放的集成度和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------|------|------|------|------|
-|  enable  | boolean | 否 | 否 | 是否开启应用接管网页媒体播放功能。<br/> true表示开启应用接管网页媒体播放功能，false表示关闭应用接管网页媒体播放功能。<br/> 默认值：false。 |
-|  shouldOverlay | boolean | 否 | 否 | 开启应用接管网页媒体播放功能后，应用接管网页视频的播放器画面是否覆盖网页内容。<br/> true表示改变视频图层的高度，使其覆盖网页内容。false表示不覆盖网页内容，跟原视频图层高度一样，嵌入在网页中。<br>默认值：false。 |
+|  enable  | boolean | 否 | 否 | 是否开启应用接管网页媒体播放功能。<br/> true表示开启应用接管网页媒体播放功能，false表示关闭该功能。<br/> 默认值：false。 |
+|  shouldOverlay | boolean | 否 | 否 | 开启应用接管网页媒体播放功能后，应用接管网页视频的播放器画面是否覆盖网页内容。<br/> true表示改变视频图层的层级，覆盖网页内容。false表示保持原层级，嵌入在网页中。<br>默认值：false。 |
 
 ## ExpandedMenuItemOptions<sup>(deprecated)</sup>
 
@@ -143,7 +143,7 @@ Web媒体策略的配置。
 
 ## EmbedOptions<sup>16+</sup>
 
-Web同层渲染的配置。
+Web同层渲染的配置。用于配置Web同层渲染选项，包括支持固定大小和CSS显示属性。适用于需要优化同层元素渲染效果的场景，提升渲染的兼容性和灵活性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -166,7 +166,7 @@ Web同层渲染的配置。
 
 ## OnBeforeUnloadEvent<sup>12+</sup>
 
-定义刷新或关闭场景下，在即将离开当前页面时触发此回调。
+定义刷新或关闭场景下，在即将离开当前页面时触发此回调。适用于表单编辑等场景，允许开发者拦截离开动作并弹窗确认，从而避免用户未提交的数据意外丢失。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -175,7 +175,7 @@ Web同层渲染的配置。
 | url                   | string   | 否 | 否  | 当前显示弹窗所在网页的URL。                 |
 | message               | string   | 否 | 否  | 弹窗中显示的信息。                              |
 | result                | [JsResult](./arkts-basic-components-web-JsResult.md) | 否 | 否 | 通知Web组件用户操作行为。                       |
-| isReload<sup>20+</sup>| boolean | 否 | 是   | 页面是否刷新。<br>当页面因刷新即将离开时，isReload参数被设置为true；当页面因关闭即将离开时，isReload参数被设置为false。<br>默认值：false。|
+| isReload<sup>20+</sup>| boolean | 否 | 是   | 页面是否刷新。<br>当页面因刷新即将离开时，isReload为true；当页面因关闭即将离开时，isReload为false。<br>默认值：false。|
 
 ## OnConfirmEvent<sup>12+</sup>
 
@@ -214,18 +214,18 @@ Web同层渲染的配置。
 
 ## OnErrorReceiveEvent<sup>12+</sup>
 
-定义网页加载遇到错误时触发该回调。
+定义网页加载遇到错误时触发的回调信息，包括请求和错误详情。适用于需要监控和处理网页加载错误的场景，提升错误处理的及时性和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ------|---------------------------------- |
 | request | [WebResourceRequest](./arkts-basic-components-web-WebResourceRequest.md) | 否 | 否 | 网页请求的封装信息。      |
-| error   | [WebResourceError](./arkts-basic-components-web-WebResourceError.md)     | 否 | 否 | 网页加载资源错误的封装信息 。 |
+| error   | [WebResourceError](./arkts-basic-components-web-WebResourceError.md)     | 否 | 否 | 网页加载资源错误的封装信息。 |
 
 ## OnHttpErrorReceiveEvent<sup>12+</sup>
 
-定义网页收到资源加载HTTP错误时触发。
+定义网页收到资源加载HTTP错误时触发的回调信息，包括请求和响应详情。适用于需要监控和处理HTTP错误的场景，提升网络错误诊断的准确性和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -236,7 +236,7 @@ Web同层渲染的配置。
 
 ## OnDownloadStartEvent<sup>12+</sup>
 
-定义通知主应用开始下载一个文件。
+定义通知主应用开始下载文件的回调信息，包括URL、用户代理和文件详情。适用于需要监控和管理文件下载的场景，提升下载流程的可控性和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -246,11 +246,11 @@ Web同层渲染的配置。
 | userAgent          | string | 否 | 否 | 用于下载的用户代理。                          |
 | contentDisposition | string | 否 | 否 | 服务器返回的 Content-Disposition响应头，服务器可能返回空。 |
 | mimetype           | string | 否 | 否 | 服务器返回内容媒体类型（MIME）信息。                |
-| contentLength      | number | 否 | 否 | 服务器返回文件的长度。  单位：字节。                       |
+| contentLength      | number | 否 | 否 | 服务器返回文件的长度。单位：字节。                       |
 
 ## OnRefreshAccessedHistoryEvent<sup>12+</sup>
 
-定义导航完成时触发。
+定义导航完成时触发的回调信息，包括URL和刷新状态。适用于需要监控页面导航历史的场景，提升导航行为跟踪的准确性和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -262,7 +262,7 @@ Web同层渲染的配置。
 
 ## OnRenderExitedEvent<sup>12+</sup>
 
-定义渲染过程退出时触发。
+定义渲染过程退出时触发。适用于需要监控渲染进程异常的场景，提升渲染稳定性和故障排查效率。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -283,7 +283,7 @@ Web同层渲染的配置。
 
 ## OnResourceLoadEvent<sup>12+</sup>
 
-定义加载url时触发。
+定义加载URL时触发的回调信息，包括资源URL。适用于需要监控资源加载行为的场景，提升资源管理的可见性和性能优化。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -304,7 +304,7 @@ Web同层渲染的配置。
 
 ## OnHttpAuthRequestEvent<sup>12+</sup>
 
-定义通知收到http auth认证请求。
+定义收到HTTP认证请求时触发的回调信息，包括主机和域信息。适用于需要处理HTTP身份验证的场景，提升认证流程的灵活性和安全性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -316,7 +316,7 @@ Web同层渲染的配置。
 
 ## OnInterceptRequestEvent<sup>12+</sup>
 
-定义当Web组件加载url之前触发。
+定义Web组件加载URL之前触发的回调信息，包括请求详情。适用于需要拦截或修改网络请求的场景，提升请求控制的灵活性和安全性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -326,7 +326,7 @@ Web同层渲染的配置。
 
 ## OnPermissionRequestEvent<sup>12+</sup>
 
-定义通知收到获取权限请求。
+定义收到权限请求时触发的回调信息，包括请求详情。适用于需要处理权限授予的场景，提升权限管理的灵活性和安全性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -336,7 +336,7 @@ Web同层渲染的配置。
 
 ## OnScreenCaptureRequestEvent<sup>12+</sup>
 
-定义通知收到屏幕捕获请求。
+定义收到屏幕捕获请求时触发的回调信息。适用于需要处理屏幕录制权限的场景，提升录屏流程的可控性和安全性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -357,7 +357,7 @@ Web同层渲染的配置。
 
 ## OnSearchResultReceiveEvent<sup>12+</sup>
 
-定义通知调用方网页页内查找的结果。
+定义网页页内查找结果的回调信息，包括匹配项序号和总数。适用于需要监控页内搜索行为的场景，提升搜索交互的可见性和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -365,7 +365,7 @@ Web同层渲染的配置。
 | ------------------ | ------- | --- | --- |----------------------------- |
 | activeMatchOrdinal | number  | 否  | 否  | 当前匹配的查找项的序号（从0开始）。                       |
 | numberOfMatches    | number  | 否  | 否  | 所有匹配到的关键词的个数。                            |
-| isDoneCounting     | boolean | 否  | 否  | 当次页内查找操作是否结束。<br>true表示当次页内查找操作结束，false表示当次页内查找操作未结束。<br>该方法可能会回调多次，直到isDoneCounting为true为止。 |
+| isDoneCounting     | boolean | 否  | 否  | 当次页内查找操作是否结束。<br>true表示当次页内查找操作结束，false表示未结束。<br>该方法可能回调多次，直到isDoneCounting为true。 |
 
 ## OnScrollEvent<sup>12+</sup>
 
@@ -380,7 +380,7 @@ Web同层渲染的配置。
 
 ## OnSslErrorEventReceiveEvent<sup>12+</sup>
 
-定义网页收到SSL错误时触发。
+定义网页收到SSL错误时触发的回调信息，包括错误码和证书链。适用于需要处理SSL错误的场景，提升安全异常的监控和处理能力。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -392,7 +392,7 @@ Web同层渲染的配置。
 
 ## SslErrorEvent<sup>12+</sup>
 
-用户加载资源时发生SSL错误时触发的回调详情。
+用户加载资源时发生SSL错误时触发的回调详情，包括URL、错误类型和证书链。适用于需要详细分析SSL错误的场景，提升安全问题的诊断和排查效率。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -403,13 +403,13 @@ Web同层渲染的配置。
 | url   | string                                 | 否 | 否    | url地址。           |
 | originalUrl   | string                         | 否 | 否    | 请求的原始url地址。           |
 | referrer   | string                            | 否 | 否    | referrer url地址。           |
-| isFatalError   | boolean                       | 否 | 否    | 是否是致命错误。<br>true表示致命错误，false表示非致命错误。           |
+| isFatalError   | boolean                       | 否 | 否    | 是否是致命错误。致命错误会导致页面无法正常加载和渲染（如证书验证失败、协议错误），非致命错误只影响部分资源的加载（如图片加载失败）。<br>true表示致命错误，false表示非致命错误。           |
 | isMainFrame   | boolean                        | 否 | 否    | 是否是主资源。<br>true表示主资源，false表示非主资源。           |
 | certChainData<sup>20+</sup>   | Array<Uint8Array\>         | 否 | 是 | 证书链数据。           |
 
 ## OnClientAuthenticationEvent<sup>12+</sup>
 
-定义当需要用户提供SSL客户端证书时触发回调。
+定义需要提供SSL客户端证书时触发的回调信息，包括主机、端口和密钥类型。适用于需要处理客户端证书认证的场景，提升认证流程的灵活性和安全性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -417,7 +417,7 @@ Web同层渲染的配置。
 | -------------- | ---- | ---- | ------------|---------------------------- |
 | handler  | [ClientAuthenticationHandler](./arkts-basic-components-web-ClientAuthenticationHandler.md) | 否 | 否 | 通知Web组件用户操作行为。  |
 | host     | string                                   | 否 | 否 | 请求证书服务器的主机名。    |
-| port     | number                                   | 否 | 否 | 请求证书服务器的端口号。    |
+| port     | number                                   | 否 | 否 | 请求证书服务器的端口号。有效范围为0-65535，超出范围时抛出异常。    |
 | keyTypes | Array<string\>                           | 否 | 否 | 可接受的非对称密钥类型。    |
 | issuers  | Array<string\>                           | 否 | 否 | 与私钥匹配的证书可接受颁发者。 |
 
@@ -434,7 +434,7 @@ Web同层渲染的配置。
 
 ## OnWindowNewEvent<sup>12+</sup>
 
-定义网页要求用户创建窗口时触发的回调。
+定义网页要求用户创建窗口时触发的回调信息。从API version 23开始，如需获取更多窗口信息，可使用[OnWindowNewExtEvent](#onwindownewextevent23)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -447,7 +447,7 @@ Web同层渲染的配置。
 
 ## WindowFeatures<sup>23+</sup>
 
-网页请求创建的新窗口特征信息，包括大小和位置。
+提供网页请求创建的新窗口特征信息，包括大小和位置。适用于需要精确控制新窗口属性的场景，提升窗口布局的准确性和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -460,7 +460,7 @@ Web同层渲染的配置。
 
 ## OnWindowNewExtEvent<sup>23+</sup>
 
-定义网页请求用户创建窗口时触发的回调。
+定义网页请求创建窗口时触发的回调信息，包括窗口特征信息和窗口打开方式。适用于需要精细控制新窗口行为的场景，提升窗口管理的定制性和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -475,7 +475,7 @@ Web同层渲染的配置。
 
 ## OnTouchIconUrlReceivedEvent<sup>12+</sup>
 
-定义设置接收到apple-touch-icon url地址时的回调函数。
+定义接收到apple-touch-icon URL时触发的回调信息，包括URL和预合成状态。适用于需要获取网页图标的场景，提升图标管理的灵活性和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -486,7 +486,7 @@ Web同层渲染的配置。
 
 ## OnFaviconReceivedEvent<sup>12+</sup>
 
-定义应用为当前页面接收到新的favicon时的回调函数。
+定义应用接收到新favicon时触发的回调信息，包括图标PixelMap对象。适用于需要获取网页favicon的场景，提升图标管理的灵活性和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -502,11 +502,11 @@ Web同层渲染的配置。
 
 | 名称             | 类型   | 只读   | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
-| url  | string | 否 | 否 | 旧页面不再呈现，新页面即将可见时新页面的url地址。 |
+| url  | string | 否 | 否 | 新页面的URL地址。 |
 
 ## OnDataResubmittedEvent<sup>12+</sup>
 
-定义网页表单可以重新提交时触发的回调函数。
+定义网页表单可以重新提交时触发的回调信息，包括提交句柄。适用于需要处理表单重试提交的场景，提升表单交互的可靠性和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -516,7 +516,7 @@ Web同层渲染的配置。
 
 ## OnAudioStateChangedEvent<sup>12+</sup>
 
-定义网页上的音频播放状态发生改变时的回调函数。
+定义网页音频播放状态改变时触发的回调信息，包括播放状态。适用于需要监控音频播放行为的场景，提升音频管理的可见性和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -526,7 +526,7 @@ Web同层渲染的配置。
 
 ## OnFirstContentfulPaintEvent<sup>12+</sup>
 
-定义网页首次内容绘制回调函数。
+定义网页首次内容绘制的回调信息，包括加载时间和绘制时间。适用于需要监控页面渲染性能的场景，提升性能优化的准确性和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -537,7 +537,7 @@ Web同层渲染的配置。
 
 ## OnLoadInterceptEvent<sup>12+</sup>
 
-定义截获资源加载时触发的回调。
+定义截获资源加载时触发的回调信息，包括请求详情。适用于需要拦截或处理资源加载的场景，提升资源控制的灵活性和安全性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -558,13 +558,13 @@ Web同层渲染的配置。
 
 ## JavaScriptProxy<sup>12+</sup>
 
-定义要注入的JavaScript对象。
+定义要注入的JavaScript对象，包括对象名、方法列表和权限配置。适用于需要实现JavaScript与原生交互的场景，提升跨语言调用的灵活性和安全性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ------------|---------------------------- |
-| object     | object                                   | 否 | 否    | 参与注册的对象。只能声明方法，不能声明属性。                   |
+| object     | object                                   | 否 | 否    | 参与注册的对象。只能声明方法，不能声明属性。方法必须是函数类型。                   |
 | name       | string                                   | 否 | 否    | 注册对象的名称，与window中调用的对象名一致。                |
 | methodList | Array\<string\>                          | 否 | 否    | 参与注册的应用侧JavaScript对象的同步方法。                 |
 | controller | [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController](./arkts-apis-webview-WebviewController.md) | 否 | 否    |  控制器。从API version 9开始，WebController不再维护，建议使用WebviewController替代。 |
@@ -573,27 +573,27 @@ Web同层渲染的配置。
 
 ## OnPageEndEvent<sup>12+</sup>
 
-定义网页加载结束时触发的函数。
+定义网页加载结束时触发的回调信息，包括页面URL。适用于需要监控页面加载完成的场景，提升页面生命周期的管理能力。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ------------|---------------------------- |
-| url | string | 否 | 否 | 页面的URL地址。                       |
+| url | string | 否 | 否 | 网页加载完成后的页面URL地址。                       |
 
 ## OnPageBeginEvent<sup>12+</sup>
 
-定义网页加载开始时触发的函数。
+定义网页加载开始时触发的回调信息，包括页面URL。适用于需要监控页面加载开始的场景，提升页面生命周期的管理能力。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ------------|---------------------------- |
-| url | string | 否 | 否 | 页面的URL地址。                       |
+| url | string | 否 | 否 | 网页加载开始时即将加载的页面URL地址。                       |
 
 ## OnProgressChangeEvent<sup>12+</sup>
 
-定义网页加载进度变化时触发该回调。
+定义网页加载进度变化时触发的回调信息，包括新的进度值。适用于需要监控页面加载进度的场景，提升加载过程的可见性和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -603,7 +603,7 @@ Web同层渲染的配置。
 
 ## OnTitleReceiveEvent<sup>12+</sup>
 
-定义网页document标题更改时触发该回调。
+定义网页标题更改时触发的回调信息，包括标题内容和来源。适用于需要监控页面标题变化的场景，提升页面信息的实时性和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -625,7 +625,7 @@ Web同层渲染的配置。
 
 ## NativeEmbedVisibilityInfo<sup>12+</sup>
 
-提供同层标签的可见性信息。
+提供同层标签的可见性信息，包括可见状态和标签ID。适用于需要监控同层元素可见性的场景，提升渲染状态管理的准确性和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -636,7 +636,7 @@ Web同层渲染的配置。
 
 ## RenderProcessNotRespondingData<sup>12+</sup>
 
-提供渲染进程无响应的详细信息。
+提供渲染进程无响应的详细信息。适用于需要诊断渲染进程异常的场景，提升故障排查的准确性和效率。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -648,7 +648,7 @@ Web同层渲染的配置。
 
 ## FullScreenEnterEvent<sup>12+</sup>
 
-Web组件进入全屏回调事件的详情。
+提供 Web 组件进入全屏的回调信息，包括视频尺寸和退出句柄。适用于需要处理全屏视频的场景，提升视频播放的沉浸式体验和可控性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -660,21 +660,21 @@ Web组件进入全屏回调事件的详情。
 
 ## LoadCommittedDetails<sup>11+</sup>
 
-提供已提交跳转的网页的详细信息。
+提供已提交跳转的网页详细信息，包括是否主文档、导航类型等。适用于需要监控页面导航行为的场景，提升导航状态管理的准确性和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 | 名称             | 类型                                  | 只读 | 可选   | 说明                    |
 | -----------     | ------------------------------------ | ---- | -------|-------------- |
-| isMainFrame     | boolean                              | 否 | 否   | 是否是主文档。<br>true表示是主文档，false表示不是主文档。 |
-| isSameDocument  | boolean                              | 否 | 否    | 是否在不更改文档的情况下进行的网页跳转。<br>true表示在不更改文档的情况下进行的网页跳转，false表示在更改文档的情况下进行的网页跳转。<br>在同文档跳转的示例：1.参考片段跳转；2.pushState或replaceState触发的跳转；3.同一页面历史跳转。  |
+| isMainFrame     | boolean                              | 否 | 否   | 是否是主文档。<br>true表示主文档，false表示非主文档。 |
+| isSameDocument  | boolean                              | 否 | 否    | 是否在不更改文档的情况下进行的网页跳转。<br>true表示在不更改文档的情况下进行的网页跳转，false表示在更改文档的情况下进行的网页跳转。<br>同文档跳转示例：1.参考片段跳转；2.pushState或replaceState触发的跳转；3.同一页面历史跳转。  |
 | didReplaceEntry | boolean                              | 否 | 否    | 是否提交的新节点替换了已有的节点。<br>true表示提交的新节点替换了已有的节点，false表示提交的新节点未替换已有的节点。<br>另外在一些子文档跳转的场景，虽然没有实际替换已有节点，但是有一些属性发生了变更。  |
 | navigationType  | [WebNavigationType](./arkts-basic-components-web-e.md#webnavigationtype11)  | 否 | 否   | 网页跳转的类型。       |
-| url             | string                               | 否 | 否    | 当前跳转网页的URL。          |
+| url             | string                               | 否 | 否    | 跳转到的网页的URL。          |
 
 ## NativeEmbedInfo<sup>11+</sup>
 
-提供同层标签的详细信息。
+提供同层标签的详细信息，包括ID、类型、尺寸和位置等。适用于需要获取同层元素属性的场景，提升同层渲染的定制性和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -687,12 +687,12 @@ Web组件进入全屏回调事件的详情。
 | height            | number                              | 否    | 是 | 同层标签的高，单位为px。          |
 | url               | string                              | 否    | 是 | 同层标签的url信息。            |
 | tag<sup>12+</sup> | string              | 否    | 是 | 标签名，统一为大写字符。              |
-| params<sup>12+</sup>            | Map<string, string> | 否    | 是 | object标签包含的param标签键值对列表，该map本质为Object类型，请使用Object提供的方法操作该对象，即`embed.info?.param?.["name"]`。  |
+| params<sup>12+</sup>            | Map<string, string> | 否    | 是 | object标签包含的params标签键值对列表，请使用Object提供的方法操作该对象，即`embed.info?.params?.["name"]`。 |
 | position<sup>12+</sup>          | Position            | 否    | 是 | 同层标签相对于Web组件左上角为坐标原点的位置信息，此处区别于标准Position，单位为px。 |
 
 ## NativeEmbedParamItem<sup>21+</sup>
 
-提供同层渲染object标签内嵌param元素的详细信息。
+提供同层渲染object标签内嵌param元素的详细信息，包括状态和参数。适用于需要监控param元素变化的场景，提升同层元素管理的灵活性和准确性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -705,7 +705,7 @@ Web组件进入全屏回调事件的详情。
 
 ## IntelligentTrackingPreventionDetails<sup>12+</sup>
 
-提供智能防跟踪拦截的详细信息。
+提供智能防跟踪拦截的详细信息，包括网站域名和追踪者域名。适用于需要监控广告拦截行为的场景，提升隐私保护的透明度和可控性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -716,7 +716,7 @@ Web组件进入全屏回调事件的详情。
 
 ## WebKeyboardCallbackInfo<sup>12+</sup>
 
-拦截网页可编辑元素拉起软键盘的回调入参，其中包括[WebKeyboardController](./arkts-basic-components-web-WebKeyboardController.md)、可编辑元素的属性。
+拦截网页可编辑元素拉起软键盘的回调入参，包括[WebKeyboardController](./arkts-basic-components-web-WebKeyboardController.md)和可编辑元素的属性。适用于需要自定义键盘交互的场景，提升输入体验的定制性和灵活性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -727,7 +727,7 @@ Web组件进入全屏回调事件的详情。
 
 ## WebKeyboardOptions<sup>12+</sup>
 
-拦截网页可编辑元素拉起软键盘的回调返回值，可以指定使用的键盘类型，并返回给web内核，以控制拉起不同类型的软键盘；
+拦截网页可编辑元素拉起软键盘的回调返回值，包括键盘类型和自定义键盘。适用于需要控制软键盘行为的场景。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -740,7 +740,7 @@ Web组件进入全屏回调事件的详情。
 
 ## FirstMeaningfulPaint<sup>12+</sup>
 
-提供网页绘制页面主要内容的详细信息。
+提供网页绘制页面主要内容的详细信息，包括导航时间和绘制时间。适用于需要监控页面渲染性能的场景，提升性能优化的准确性和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -751,7 +751,7 @@ Web组件进入全屏回调事件的详情。
 
 ## LargestContentfulPaint<sup>12+</sup>
 
-提供网页绘制页面最大内容的详细信息。
+提供网页绘制页面最大内容的详细信息，包括导航时间和各类绘制时间。适用于需要监控页面渲染性能的场景，提升性能优化的准确性和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -766,20 +766,20 @@ Web组件进入全屏回调事件的详情。
 
 ## NativeEmbedDataInfo<sup>11+</sup>
 
-提供同层标签生命周期变化的详细信息。
+提供同层标签生命周期变化的详细信息，包括状态和标签信息。适用于需要监控同层元素生命周期的场景，提升渲染状态管理的准确性和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 | 名称             | 类型                                  | 只读 | 可选   | 说明                    |
 | -----------     | ------------------------------------ | ---- | ---- | --------------------- |
 | status     | [NativeEmbedStatus](./arkts-basic-components-web-e.md#nativeembedstatus11)             | 否    | 是    | 同层标签生命周期状态。 |
-| surfaceId  | string                              | 否 | 是    | NativeImage的psurfaceid。  |
+| surfaceId  | string                              | 否 | 是    | NativeImage的surfaceId。 |
 | embedId | string                              | 否 | 是    | 同层标签的唯一id。  |
-| info  | [NativeEmbedInfo](./arkts-basic-components-web-i.md#nativeembedinfo11)  | 否 | 是    | 同层标签的详细信息。       |
+| info  | [NativeEmbedInfo](#nativeembedinfo11)  | 否 | 是    | 同层标签的详细信息。       |
 
 ## NativeEmbedTouchInfo<sup>11+</sup>
 
-提供手指触摸到同层标签的详细信息。
+提供手指触摸同层标签的详细信息，包括标签ID和触摸事件。适用于需要处理同层元素触摸交互的场景，提升触摸体验的定制性和灵活性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -791,7 +791,7 @@ Web组件进入全屏回调事件的详情。
 
 ## NativeEmbedMouseInfo<sup>20+</sup>
 
-提供鼠标/触摸板在同层标签上点击或长按的详细信息。
+提供鼠标/触摸板在同层标签上点击或长按的详细信息，包括标签ID和鼠标事件。适用于需要处理同层元素鼠标交互的场景，提升鼠标体验的定制性和灵活性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -803,19 +803,19 @@ Web组件进入全屏回调事件的详情。
 
 ## NativeEmbedParamDataInfo<sup>21+</sup>
 
-提供同层渲染object标签内嵌param元素变化时同层标签的详细信息。
+提供同层渲染object标签内嵌param元素变化时同层标签的详细信息，包括标签ID和参数项。适用于需要监控param元素变化的场景，提升同层元素管理的灵活性和准确性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 | 名称             | 类型                                  | 只读 | 可选   | 说明                    |
 | -----------     | ------------------------------------ | ---- | ---- | --------------------- |
 | embedId | string                              | 否 | 否    | 同层标签的唯一id。  |
-| objectAttributeId      | string             | 否    | 是 | 同层标签的id信息。             |
-| paramItems  | Array\<[NativeEmbedParamItem](./arkts-basic-components-web-i.md#nativeembedparamitem21)\>   | 否 | 是    | 发生变化的param元素的详细信息，包括每一个param元素的状态变化类型、id、参数名称和参数值。       |
+| objectAttributeId      | string             | 否    | 是 | 同层标签的id信息。 |
+| paramItems  | Array\<[NativeEmbedParamItem](#nativeembedparamitem21)\>   | 否 | 是    | 发生变化的param元素的详细信息，包括每一个param元素的状态变化类型、id、参数名称和参数值。       |
 
 ## OnLoadStartedEvent<sup>20+</sup>
 
-定义网页加载开始时触发的函数。
+定义网页加载开始时触发的回调信息，包括页面URL。适用于需要监控页面加载开始的场景，提升页面生命周期的管理能力。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -825,7 +825,7 @@ Web组件进入全屏回调事件的详情。
 
 ## OnLoadFinishedEvent<sup>20+</sup>
 
-定义网页加载结束时触发的函数。
+定义网页加载结束时触发的回调信息，包括页面URL。适用于需要监控页面加载完成的场景，提升页面生命周期的管理能力。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -856,7 +856,7 @@ Web组件进入全屏回调事件的详情。
 
 ## Header
 
-Web组件返回的请求/响应头对象。
+Web组件返回的请求/响应头对象。适用于需要读取或修改HTTP头的场景，提升网络请求处理的灵活性和可控性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -867,7 +867,7 @@ Web组件返回的请求/响应头对象。
 
 ## ScreenCaptureConfig<sup>10+</sup>
 
-Web屏幕捕获的配置。
+提供 Web 屏幕捕获的配置选项，包括捕获模式。适用于需要自定义网页录屏行为的场景，提升录屏功能的灵活性和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -877,7 +877,7 @@ Web屏幕捕获的配置。
 
 ## BlankScreenDetectionEventInfo<sup>22+</sup>
 
-定义检测到白屏时的事件信息。
+提供检测到白屏时的事件信息，包括URL、原因和细节。适用于需要监控页面白屏问题的场景，提升白屏诊断的准确性和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -885,51 +885,52 @@ Web屏幕捕获的配置。
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
 | url | string | 否 | 否 | 检测到白屏时，页面的url。    |
 | blankScreenReason | [DetectedBlankScreenReason](./arkts-basic-components-web-e.md#detectedblankscreenreason22) | 否 | 否 | 本次检测到白屏时，具体原因与检测的方法相关。    |
-| blankScreenDetails | [BlankScreenDetails](./arkts-basic-components-web-i.md#blankscreendetails22) | 否 | 是 | 本次检测白屏的结果的细节。<br>如当发现近似白屏的现象产生，这个细节就包含具体命中了多少点。否则没有该属性。 |
+| blankScreenDetails | [BlankScreenDetails](#blankscreendetails22) | 否 | 是 | 本次检测白屏的结果的细节。当使用检测有内容的节点检测策略，且检测到的有内容节点数量未超过阈值时，此参数包含当前命中了多少有内容节点等详细信息；未使用该策略或节点数量超过阈值时，此参数为空。 |
 
 ## BlankScreenDetails<sup>22+</sup>
 
-定义检测到白屏时的结果的细节。
+提供检测到白屏时的结果细节，包括有内容节点数量。适用于需要分析白屏原因的场景，提升白屏诊断的详细性和准确性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
-| detectedContentfulNodesCount | number | 否 | 是 | 在使用到检测有内容的节点检测策略时，且开发者自己设置了检测到节点数量阈值时，可能包含该属性。否则没有该属性。<br>表示当前命中了多少有内容的节点。    |
+| detectedContentfulNodesCount | number | 否 | 是 | 在使用到检测有内容的节点检测策略时，且开发者自己设置了检测到节点数量阈值时，可能包含该属性。否则没有该属性。<br>表示当前命中了多少有内容的节点。 |
 
 ## BlankScreenDetectionConfig<sup>22+</sup>
 
-定义白屏检测的策略配置选项。
+提供白屏检测的策略配置选项，包括检测时机、方法和阈值。适用于需要自定义白屏检测行为的场景，提升白屏监控的灵活性和准确性。
+
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
-| enable | boolean | 否 | 否 | 是否使能白屏策略功能。   |
-| detectionTiming | number[] | 否 | 是 | 用以设置需要在加载后多少秒的时机来检测是否白屏。<br>单位：秒。<br>注：<br>1.重复值会忽略。<br>2.需大于0，小于0的值会被忽略。<br/>默认值：[1.0,3.0,5.0]。 |
+| enable | boolean | 否 | 否 | 是否启用白屏策略功能。true表示启用，false表示不启用。   |
+| detectionTiming | number[] | 否 | 是 | 用以设置需要在加载后多少秒的时机来检测是否白屏。<br>单位：秒。<br>注：<br>1.重复值会忽略。<br>2.需大于0，小于0的值会被忽略。<br>默认值：[1.0,3.0,5.0]。 |
 | detectionMethods | [BlankScreenDetectionMethod](./arkts-basic-components-web-e.md#blankscreendetectionmethod22)[] | 否 | 是 | 使用检测策略的方法，是一个数组。<br>注：<br>1.重复值会忽略。  <br/>默认值：[BlankScreenDetectionMethod.DETECTION_CONTENTFUL_NODES_SEVENTEEN]。  |
-| contentfulNodesCountThreshold | number | 否 | 是 | 在使用到检测有内容的节点检测策略时，才会生效。<br/>可以设置0-${检测策略最大节点}，如果小于等于阈值则会触发近似白屏。<br/>默认值：0。|
+| contentfulNodesCountThreshold | number | 否 | 是 | 在使用到检测有内容的节点检测策略时，才会生效。<br/>可以设置0-${检测策略最大节点}，如果小于等于阈值则会触发近似白屏。<br/>默认值：0。<br>注：检测策略最大节点依赖于所选择的检测策略。|
 
 ## CameraCaptureStateChangeInfo<sup>23+</sup>
 
-定义摄像头触发回调时的改变前后的状态信息。
+提供摄像头触发回调时的状态变化信息，包括改变前的状态和新状态。适用于需要监控摄像头状态变化的场景，提升摄像头管理的可见性和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
-| originalState | [CameraCaptureState](./arkts-basic-components-web-e.md#cameracapturestate23) | 否 | 否 | 原来的状态   |
+| originalState | [CameraCaptureState](./arkts-basic-components-web-e.md#cameracapturestate23) | 否 | 否 | 改变前的状态   |
 | newState | [CameraCaptureState](./arkts-basic-components-web-e.md#cameracapturestate23) | 否 | 否 | 改变后的状态   |
 
 ## MicrophoneCaptureStateChangeInfo<sup>23+</sup>
 
-定义麦克风触发回调时的改变前后的状态信息。
+提供麦克风触发回调时的状态变化信息，包括改变前的状态和改变后的状态。适用于需要监控麦克风状态变化的场景，提升麦克风管理的可见性和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
-| originalState | [MicrophoneCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | 否 | 否 | 原来的状态。   |
+| originalState | [MicrophoneCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | 否 | 否 | 改变前的状态。   |
 | newState | [MicrophoneCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | 否 | 否 | 改变后的状态。   |
 
 ## AcceptableFileType<sup>23+</sup>
@@ -945,7 +946,7 @@ Web屏幕捕获的配置。
 
 ## FirstScreenPaint<sup>23+</sup>
 
-检测到首屏渲染时的事件信息。
+提供首屏渲染事件的信息，包括URL和绘制时间。适用于需要监控页面首屏渲染性能的场景，提升性能优化的准确性和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

@@ -1481,7 +1481,7 @@ moveMissionsToForeground(missionIds: Array&lt;number&gt;, topMission: number, ca
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | missionIds | Array&lt;number&gt; | 是 | 任务ID数组。 |
-  | topMission | number | 是 | 待移动到最顶层的任务ID。默认值为-1，表示不指定特定任务，系统按照默认逻辑将任务移动到最顶层。 |
+  | topMission | number | 是 | 待移动到最顶层的任务ID。传入-1表示不指定特定任务，系统按照默认逻辑将任务移动到最顶层。 |
   | callback | AsyncCallback&lt;void&gt; | 是 | 执行结果回调函数。 |
 
 **错误码**：
@@ -1956,7 +1956,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-
 ## missionManager.off('missionEvent')<sup>(deprecated)</sup>
 
 off(type: 'missionEvent', listenerId: number): Promise&lt;void&gt;
@@ -1965,7 +1964,7 @@ off(type: 'missionEvent', listenerId: number): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 10开始废弃，建议使用[missionManager.off('mission')](#missionmanageroffmission)替代。
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[missionManager.off('mission')](#missionmanageroffmission-1)替代。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
@@ -2076,3 +2075,44 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+## MissionInfo<sup>9+</sup>
+
+type MissionInfo = _MissionInfo
+
+表示任务的详细信息。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_MissionInfo](js-apis-inner-application-missionInfo-sys.md) | 表示任务的详细信息。 |
+
+## MissionListener<sup>9+</sup>
+
+type MissionListener = _MissionListener
+
+系统任务状态监听器。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_MissionListener](js-apis-inner-application-missionListener-sys.md) | 系统任务状态监听器。 |
+
+## MissionSnapshot<sup>9+</sup>
+
+type MissionSnapshot = _MissionSnapshot
+
+任务快照信息。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_MissionSnapshot](js-apis-inner-application-missionSnapshot-sys.md) | 任务快照信息。 |

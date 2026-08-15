@@ -86,7 +86,7 @@ class InputMethodExtAbility extends InputMethodExtensionAbility {
 
 ## InputMethodExtensionContext
 
-### destroy<sup>9+</sup>
+### destroy
 
 destroy(callback: AsyncCallback&lt;void&gt;): void
 
@@ -130,7 +130,7 @@ class InputMethodExtAbility extends InputMethodExtensionAbility {
 }
 ```
 
-### destroy<sup>9+</sup>
+### destroy
 
 destroy(): Promise&lt;void&gt;
 
@@ -207,7 +207,7 @@ want参数使用建议：
 
 **错误码：**
 
-以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)，[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)，[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
@@ -260,7 +260,7 @@ class InputMethodExtAbility extends InputMethodExtensionAbility {
     }).catch((err: BusinessError) => {
       console.error(`Failed to destroy context, err code = ${err.code}`);
     });
-}
+  }
 }
 ```
 

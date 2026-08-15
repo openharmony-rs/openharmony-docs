@@ -54,6 +54,9 @@
     - [fileUri](capi-fileuri.md)
     - [CloudDisk](capi-clouddisk.md)
     - [Archive](capi-archive.md)
+    <!--Del-->
+    - [Swapfs (系统接口)](capi-swapfs-sys.md)
+    <!--DelEnd--> 
   - 头文件<!--core-file-headerfile-->
     - [oh_environment.h](capi-oh-environment-h.md)
     - [error_code.h](capi-error-code-h.md)
@@ -64,6 +67,10 @@
     - [cloud_disk_error_code.h](capi-cloud-disk-error-code-h.md)
     - [oh_archive.h](capi-oh-archive-h.md)
     - [oh_archive_errcode.h](capi-oh-archive-errcode-h.md)
+    <!--Del-->
+    - [oh_swapfs.h (系统接口)](capi-oh-swapfs-h-sys.md)
+    - [swapfs_errcode.h (系统接口)](capi-swapfs-errcode-h-sys.md)
+    <!--DelEnd-->
   - 结构体<!--core-file-struct-->
     - [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md)
     - [FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md)
@@ -81,6 +88,14 @@
     - [ArchiveReadCtx](capi-archive-archivereadctx.md)
     - [ArchiveStreamWriteCtx](capi-archive-archivestreamwritectx.md)
     - [ArchiveStreamReadCtx](capi-archive-archivestreamreadctx.md)
+    <!--Del-->
+    - [OH_SwapfsConfig (系统接口)](capi-swapfs-oh-swapfsconfig-sys.md)
+    - [OH_SwapfsDataInfo (系统接口)](capi-swapfs-oh-swapfsdatainfo-sys.md)
+    - [OH_SwapfsManager (系统接口)](capi-swapfs-oh-swapfsmanager-sys.md)
+    - [OH_SwapfsStats (系统接口)](capi-swapfs-oh-swapfsstats-sys.md)
+    - [OH_SwapfsSwapInRequest (系统接口)](capi-swapfs-oh-swapfsswapinrequest-sys.md)
+    - [OH_SwapfsSwapOutRequest (系统接口)](capi-swapfs-oh-swapfsswapoutrequest-sys.md)
+    <!--DelEnd-->
 - 错误码<!--core-file-arkts-errcode-->
   - [文件管理错误码](errorcode-filemanagement.md)
   <!--Del-->

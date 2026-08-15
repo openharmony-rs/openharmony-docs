@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-当开发者创建[自定义组件](./arkts-create-custom-components.md)并需要为其添加特定功能（例如[Navigation](../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)功能）时，如果直接在组件内嵌入事件方法，会导致所有该自定义组件的实例都增加此功能。为了解决此问题，ArkUI引入了\@BuilderParam装饰器。\@BuilderParam用于装饰指向\@Builder方法的变量，开发者可以在初始化自定义组件时，使用不同的方式（如参数修改、尾随闭包、借用箭头函数等）对\@BuilderParam装饰的自定义构建函数进行传参赋值。在自定义组件内部，通过调用\@BuilderParam为组件增加特定功能。
+当开发者创建[自定义组件](./arkts-create-custom-components.md)并需要为其添加特定功能（例如[Navigation](../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)功能）时，如果直接在组件内嵌入事件方法，会导致所有该自定义组件的实例都增加此功能。为了解决此问题，ArkUI引入了[\@BuilderParam](../../reference/apis-arkui/arkui-ts/ts-universal-builderparam-dynamic.md#builderparam)装饰器。\@BuilderParam用于装饰指向\@Builder方法的变量，开发者可以在初始化自定义组件时，使用不同的方式（如参数修改、尾随闭包、借用箭头函数等）对\@BuilderParam装饰的自定义构建函数进行传参赋值。在自定义组件内部，通过调用\@BuilderParam为组件增加特定功能。
 
 在阅读本文档前，建议提前阅读：[\@Builder](./arkts-builder.md)。
 
@@ -499,32 +499,6 @@ struct HelloWorldPage {
 }
 ```
 
-
-**router_map.json**
-这个文件位于项目的`resources/base/profile`目录下。
-```ts
-{
-  "routerMap": [
-    {
-      "name": "HelloWorldPage",
-      "buildFunction": "HelloWorldPageBuilder",
-      "pageSourceFile": "src/main/ets/pages/helloworld.ets"
-    }
-  ]
-}
-```
-**module.json5**
-这个文件位于应用模块的根目录下，例如`entry/src/main/module.json5`。
-
-```ts
-{
-  "module": {
-    "routerMap": "$profile:router_map",
-    ......
-  }
-}   
-```
-
 示例效果图
 
 ![builderparam-demo7](figures/builderparam-demo7.gif)
@@ -834,7 +808,7 @@ function globalBuilder() {
 struct CustomBuilderDemo {
   build() {
     Column() {
-      // 由于未对@Require装饰的变量ChildBuilder进行赋值，此处无论是编译还是编辑，均会报错。
+      // 由于未对@Require装饰的变量ChildBuilder进行赋值，会出现编译和编辑报错。
       ChildPage()
     }
   }
@@ -889,7 +863,7 @@ struct ChildPage {
 
 ### @BuilderParam装饰器初始化的值必须为@Builder
 
-使用\@State装饰器装饰的变量，在初始化子组件的\@BuilderParam和`ChildBuilder`变量时，编译时会输出报错信息。
+使用\@State装饰器装饰的变量，在初始化子组件\@BuilderParam装饰的`childBuilder`变量时，编译时会输出报错信息。
 
 【反例】
 
@@ -906,25 +880,25 @@ struct CustomBuilderDemo {
 
   build() {
     Column() {
-      // @BuilderParam装饰的变量ChildBuilder接收@State装饰的变量，会出现编译和编辑报错
-      ChildPage({ ChildBuilder: this.message })
+      // @BuilderParam装饰的变量childBuilder接收@State装饰的变量，会出现编译和编辑报错
+      ChildPage({ childBuilder: this.message })
     }
   }
 }
 
 @Component
 struct ChildPage {
-  @BuilderParam ChildBuilder: () => void = globalBuilder;
+  @BuilderParam childBuilder: () => void = globalBuilder;
 
   build() {
     Column() {
-      this.ChildBuilder()
+      this.childBuilder()
     }
   }
 }
 ```
 
-使用全局\@Builder装饰的`globalBuilder()`方法为子组件\@BuilderParam装饰的`ChildBuilder`变量初始化，编译无报错，功能正常。
+使用全局\@Builder装饰的`globalBuilder()`方法为子组件\@BuilderParam装饰的`childBuilder`变量初始化，编译无报错，功能正常。
 
 【正例】
 

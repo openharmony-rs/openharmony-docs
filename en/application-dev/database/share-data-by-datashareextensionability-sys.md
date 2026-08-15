@@ -6,7 +6,7 @@
 <!--Designer: @woodenarow; @xuelei3-->
 <!--Tester: @chenwan188; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=45bd746ae860f1fef969073ffaa0af763a0251fa translatedAt=2026-06-29T06:18:44.556Z pushedAt=2026-06-29T09:36:59.095Z -->
+<!-- md-trans-meta sourceCommit=c59f00eb26df888e3e1e1c9bbf1efd8efcc6319a translatedAt=2026-07-28T06:45:36.569Z pushedAt=2026-07-28T08:22:49.248Z -->
 
 ## When to Use
 
@@ -195,7 +195,7 @@ Before implementing a **DataShare** service, you need to create a **DataShareExt
    | -------- | -------- | -------- |
    | name | Ability name, corresponding to the **ExtensionAbility** class name derived from **Ability**.| Yes|
    | type | Ability type. The value **dataShare** indicates that the development is based on the **datashare** template.| Yes|
-   | uri | Unique identifier for the data consumer to access the data provider.| Yes|
+   | uri | Unique identifier for the client to connect to the server. | Yes |
    | exported | Whether it is visible to other applications. Data sharing is allowed only when the value is **true**.| Yes|
    | readPermission | Permission required for accessing data. If this parameter is not set, read permission verification is not performed by default.<br>Note: The permission constraints for **DataShareExtensionAbility** are different from that for silent access. It is important to understand the difference and prevent confusion. For details, see [Silent Access via DatamgrService](share-data-by-silent-access-sys.md).| No|
    | writePermission | Permission required for modifying data. If this parameter is not set, write permission verification is not performed by default.<br>Note: The permission constraints for **DataShareExtensionAbility** are different from that for silent access. It is important to understand the difference and prevent confusion. For details, see [Silent Access via DatamgrService](share-data-by-silent-access-sys.md).| No|
@@ -226,7 +226,7 @@ Before implementing a **DataShare** service, you need to create a **DataShareExt
 
    | Name           | Description                                                    | Mandatory|
    | ------------------- | ------------------------------------------------------------ | ---- |
-   | tableConfig         | Configuration label, which includes **uri** and **crossUserMode**.<br>- **uri**: specifies the range for which the configuration takes effect. The URI supports the following formats in descending order by priority:<br> 1. *****: indicates all databases and tables.<br> 2. **datashare:///{*bundleName*}/{*moduleName*}/{*storeName*}**: specifies a database.<br> 3. **datashare:///{*bundleName*}/{*moduleName*}/{*storeName*}/{*tableName*}**: specifies a table.<br>- **crossUserMode**: Whether to share data between multiple users.<br>The value **1** means to share data between multiple users, and the value **2** means data is isolated between multiple users.| Yes  |
+   | tableConfig         | Configuration label, which includes **uri** and **crossUserMode**.<br>- **uri**: specifies the range for which the configuration takes effect. The URI supports the following formats in descending order by priority:<br> 1. *: indicates all databases and tables.<br> 2. **datashare:///{*bundleName*}/{*moduleName*}/{*storeName*}**: specifies a database.<br> 3. **datashare:///{*bundleName*}/{*moduleName*}/{*storeName*}/{*tableName*}**: specifies a table.<br>- **crossUserMode**: Whether to share data between multiple users.<br>The value **1** means to share data between multiple users, and the value **2** means data is isolated between multiple users.| Yes  |
    | isSilentProxyEnable | Whether to enable silent access for this ExtensionAbility.<br>**false**: Silent access is disabled.<br>**true**: Silent access is enabled.<br>The default value is **true**.<br>If an application has multiple ExtensionAbilities and this field is set to **false** for one of them, silent access is disabled for the application.<br>If the data provider has called **enableSilentProxy** or **disableSilentProxy**, silent access is enabled or disabled based on the API settings. Otherwise, the setting here takes effect.| No  |
    | launchInfos         | Information including **storeId** and **tableNames**.<br>If the data in a table involved in the configuration changes, an extensionAbility will be started based on the URI in **extensionAbilities**. You need to set this parameter only when the service needs to start an extensionAbility to process data that is not actively changed by the service.<br>- **storeId**: database name, excluding the file name extension. For example, if the database name is **test.db**, set this parameter to **test**.<br>- **tableNames**: names of the database tables. Any change in a table will start **extension**.| No  |
 
@@ -362,3 +362,9 @@ Before implementing a **DataShare** service, you need to create a **DataShareExt
      (dsHelper as dataShare.DataShareHelper).close();
    }
    ```
+
+## Samples
+
+For data sharing development, the following sample is available:
+
+- [CrossAppDataShare (ArkTS) (Full SDK) (API9)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/DataManagement/CrossAppDataShare)

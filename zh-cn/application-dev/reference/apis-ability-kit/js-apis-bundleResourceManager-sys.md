@@ -10,9 +10,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 11 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 本模块从API version 12 开始支持查询被禁用应用和设备上已安装应用(不区用户)的图标和名称资源。
+> 本模块从API version 12开始支持查询被禁用应用和设备上已安装应用（不区分用户）的图标和名称资源。
 >
 > 本模块为系统接口。
 
@@ -30,14 +30,14 @@ import { bundleResourceManager } from '@kit.AbilityKit';
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Resource。
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
 
 | 名称                                                     | 值         | 说明                                                         |
 | -------------------------------------------------------- | ---------- | ------------------------------------------------------------ |
 | GET_RESOURCE_INFO_ALL                                    | 0x00000001 | 用于同时获取icon和label信息。                                |
 | GET_RESOURCE_INFO_WITH_LABEL                             | 0x00000002 | 用于获取仅包含label信息，icon信息为空。                      |
 | GET_RESOURCE_INFO_WITH_ICON                              | 0x00000004 | 用于获取仅包含icon信息，label信息为空。                      |
-| GET_RESOURCE_INFO_WITH_SORTED_BY_LABEL                   | 0x00000008 | 用于获取根据label排序后的信息。它不能单独使用需要与GET_RESOURCE_INFO_ALL 或 GET_RESOURCE_INFO_WITH_LABEL一起使用。 |
+| GET_RESOURCE_INFO_WITH_SORTED_BY_LABEL                   | 0x00000008 | 用于获取根据label排序后的信息。它不能单独使用，需要与GET_RESOURCE_INFO_ALL 或 GET_RESOURCE_INFO_WITH_LABEL一起使用。 |
 | GET_RESOURCE_INFO_WITH_DRAWABLE_DESCRIPTOR<sup>12+</sup> | 0x00000010 | 用于获取应用图标的[drawableDescriptor](../apis-arkui/js-apis-arkui-drawableDescriptor-sys.md)对象。 |
 | GET_RESOURCE_INFO_ONLY_WITH_MAIN_ABILITY<sup>20+</sup>   | 0x00000020 | 用于获取仅在桌面上展示图标的Ability资源，它仅在[getLauncherAbilityResourceInfo](#bundleresourcemanagergetlauncherabilityresourceinfo)和[getAllLauncherAbilityResourceInfo](#bundleresourcemanagergetalllauncherabilityresourceinfo)接口中生效。 |
 
@@ -48,7 +48,7 @@ import { bundleResourceManager } from '@kit.AbilityKit';
 
 getBundleResourceInfo(bundleName: string, resourceFlags?: number): [BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)
 
-以同步方法根据给定的bundleName和resourceFlags获取当前应用的BundleResourceInfo。
+以同步方法根据给定的bundleName和resourceFlags获取应用的BundleResourceInfo。
 
 **系统接口：** 此接口为系统接口。
 
@@ -105,7 +105,7 @@ try {
 
 getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: number): Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>
 
-以同步方法根据给定的bundleName和resourceFlags获取当前应用的LauncherAbilityResourceInfo。
+以同步方法根据给定的bundleName和resourceFlags获取应用的LauncherAbilityResourceInfo。
 
 **系统接口：** 此接口为系统接口。
 
@@ -205,6 +205,7 @@ try {
   });
 } catch (err) {
   let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAllBundleResourceInfo failed: %{public}s', message);
 }
 ```
 
@@ -373,7 +374,7 @@ try {
 
 getBundleResourceInfo(bundleName: string, resourceFlags?: number, appIndex?: number): [BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)
 
-以同步方法根据给定的bundleName、resourceFlags和appIndex获取当前应用或分身应用的BundleResourceInfo。
+以同步方法根据给定的bundleName、resourceFlags和appIndex获取应用或分身应用的BundleResourceInfo。
 
 **系统接口：** 此接口为系统接口。
 
@@ -433,7 +434,7 @@ try {
 
 getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: number, appIndex?: number): Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>
 
-以同步方法根据给定的bundleName、resourceFlags和appIndex获取当前应用或分身应用的LauncherAbilityResourceInfo。
+以同步方法根据给定的bundleName、resourceFlags和appIndex获取应用或分身应用的LauncherAbilityResourceInfo。
 
 **系统接口：** 此接口为系统接口。
 

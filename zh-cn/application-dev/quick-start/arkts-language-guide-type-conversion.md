@@ -10,7 +10,7 @@
 
 ## 类型转换的基础概念
 
-ArkTS的类型转换包括类型断言（as）、类型守卫（typeof、instanceof）和联合类型收窄，在编译期确保类型安全。
+ArkTS在类型系统中通过以下机制处理类型：类型守卫（typeof、instanceof）通过运行时检查收窄类型，是最安全的类型缩小方式；类型断言（as）告知编译器值的类型，仅在编译时生效，不改变运行时类型；数据转换（如`Number()`、`String()`）在运行时执行实际的数据类型转换。
 
 ### 类型转换的定义与作用
 
@@ -127,12 +127,12 @@ let length: number = (<string>value).length;
 <!-- @[as_keyword_type_assertion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
 ``` TypeScript
-let asertValue: Object = 'Hello, ArkTS';
+let assertValueObj: Object = 'Hello, ArkTS';
 
 // 使用as关键字进行类型断言
-if (typeof asertValue === 'string') {
-  let asertLength: number = (asertValue as string).length;
-  console.info(`${asertLength}`); // 13
+if (typeof assertValueObj === 'string') {
+  let assertLength: number = (assertValueObj as string).length;
+  console.info(`${assertLength}`); // 13
 }
 
 // 断言为联合类型
@@ -140,33 +140,33 @@ let mixedValue: Object = 42;
 let numValue: number | string = mixedValue as number | string;
 
 // 断言为自定义类型
-interface AsertUser {
+interface AssertUser {
   id: number;
   name: string;
   email: string;
 }
 
-let userData: AsertUser = {
+let userData: AssertUser = {
   id: 1,
   name: 'Alice',
   email: 'alice@example.com'
 };
 
-let asertUser: AsertUser = userData as AsertUser;
-console.info(`${asertUser.name}`); // Alice
+let assertUser: AssertUser = userData as AssertUser;
+console.info(`${assertUser.name}`); // Alice
 ```
 
 ### 类型断言的使用限制
 
 类型断言仅在编译时生效，不改变运行时类型；不能在不相关的类型间直接断言，需要先经过unknown或运行时转换。
 
-<!-- @[assertion_runtime_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
+<!-- @[ts_assertion_runtime_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/TypeConversion.ts) -->
 
 ``` TypeScript
 let runtimeTypeValue: Object = 123;
 
 // 类型断言不会将数字转换为字符串
-let assertedString = runtimeTypeValue as string;
+let assertedString: string = runtimeTypeValue as string;
 
 console.info(`${typeof assertedString}`); // "number"（运行时类型仍然是number）
 assertedString.toUpperCase(); // 运行时错误：toUpperCase is not a function
@@ -189,7 +189,7 @@ let unreasonableValue: string = 'Hello';
 let unreasonableUnsafeNum: number = unreasonableValue as unknown as number;
 ```
 
-类型断言与类型转换有本质区别：断言仅作用于编译期，转换则在运行时执行：
+类型断言与类型转换有本质区别：断言仅作用于编译期，转换则在运行时执行。注意以下示例中`as number`仅告知编译器类型，运行时`assertedNum`仍为string，若直接当number使用会产生运行时错误：
 
 <!-- @[type_assertion_vs_type_conversion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
@@ -207,7 +207,7 @@ console.info(`${typeof convertedNum}`); // "number"（运行时类型已改变�
 
 ### 类型断言的合理使用场景
 
-类型断言适用于类型检查后的安全收窄、外部数据结构的断言（如DOM元素、API响应解析）等需要告知编译器具体类型的场景。
+类型断言适用于类型检查后的安全收窄、外部数据结构的断言（如DOM元素、API响应解析）等需要告知编译器具体类型的场景。注意：在`typeof`等类型守卫已收窄类型后，`as`断言是多余的，可省略。
 
 <!-- @[type_assertion_with_type_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
@@ -238,17 +238,17 @@ interface MockDocument {
   getElementById: (id: string) => HTMLInputElement;
 }
 
-let document: MockDocument = {
+let mockDoc: MockDocument = {
   getElementById: (id: string): HTMLInputElement => {
     let element: HTMLInputElement = { value: '' };
     return element;
   }
 };
-let inputElement = document.getElementById('username') as HTMLInputElement;
+let inputElement = mockDoc.getElementById('username') as HTMLInputElement;
 inputElement.value = 'Alice';
 
 // 或者使用可选链
-let element = document.getElementById('password') as HTMLInputElement | null;
+let element = mockDoc.getElementById('password') as HTMLInputElement | null;
 if (element) {
   console.info(`${element.value}`);
 }
@@ -1529,6 +1529,8 @@ console.info(`${tsA.name}`);
 ### 泛型兼容性
 
 泛型类型参数仅在参与成员结构时影响兼容性。如果泛型参数未在成员中使用，则不影响兼容性。
+
+<!-- @[generic_type_compatibility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
 ``` TypeScript
 interface Empty<T> {

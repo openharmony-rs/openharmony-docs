@@ -41,7 +41,7 @@ createFilter(): Filter
 
 ```ts
 // 创建Filter实例
-let filter : uiEffect.Filter = uiEffect.createFilter();
+let filter: uiEffect.Filter = uiEffect.createFilter();
 ```
 
 ## uiEffect.createEffect
@@ -63,7 +63,7 @@ createEffect(): VisualEffect
 
 ```ts
 // 创建VisualEffect实例
-let visualEffect : uiEffect.VisualEffect = uiEffect.createEffect();
+let visualEffect: uiEffect.VisualEffect = uiEffect.createEffect();
 ```
 
 ## Filter

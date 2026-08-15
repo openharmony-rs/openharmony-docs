@@ -6,7 +6,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-This module provides system APIs to publish common events to specified users, remove sticky common events, enable or disable static subscription events. Sticky common events are retained by the system after being published, allowing new subscribers to receive them. Non-sticky events are delivered only to subscribers who were registered at the time of publication.
+This module provides system APIs to publish common events to specified users, remove sticky common events, enable or disable static subscription events.
 
 > **NOTE**
 >
@@ -46,7 +46,7 @@ Publishes a common event to a specified user. This API uses an asynchronous call
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Common Event Error Codes](./errorcode-CommonEventService.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -101,7 +101,7 @@ Publishes a common event to a specified user and specifies the information to be
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Common Event Error Codes](./errorcode-CommonEventService.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -161,7 +161,7 @@ Removes a sticky common event. This API uses an asynchronous callback to return 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Common Event Error Codes](./errorcode-CommonEventService.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -212,7 +212,7 @@ Removes a sticky common event that has been published. This API uses a promise t
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Common Event Error Codes](./errorcode-CommonEventService.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -256,7 +256,7 @@ Enables or disables static subscription for an app. This API uses an asynchronou
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Common Event Error Codes](./errorcode-CommonEventService.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -305,7 +305,7 @@ Enables or disables static subscription for an app. This API uses a promise to r
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Common Event Error Codes](./errorcode-CommonEventService.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -354,7 +354,7 @@ Enables or disables static subscription to a common event for the current app. T
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Common Event Error Codes](./errorcode-CommonEventService.md).
 
 | ID| Error Message                                              |
 | -------- | ------------------------------------------------------ |

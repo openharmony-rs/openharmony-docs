@@ -44,7 +44,7 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -133,7 +133,7 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt;void&
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -171,7 +171,7 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt;void&
 | 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
-| 16000055 | Installation-free timed out. <br>适用版本：12+ |
+| 16000055 | Installation-free timed out. |
 | 16000067 | The StartOptions check failed. <br>适用版本：12+ |
 | 16000068 | The ability is already running. <br>适用版本：12+ |
 | 16300003 | The target application is not the current application. <br>适用版本：12+ |
@@ -231,7 +231,7 @@ startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -338,7 +338,7 @@ UIAbility被启动后，有如下情况：
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -433,7 +433,7 @@ UIAbility被启动后，有如下情况：
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -533,7 +533,7 @@ UIAbility被启动后，有如下情况：
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -956,7 +956,9 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
+>
+> 该接口不支持应用分身。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1175,7 +1177,7 @@ startAbilityByCall(want: Want): Promise&lt;Caller&gt;
 >
 > - 同设备场景下，要求调用方与目标方为不同应用，且调用方具备ohos.permission.ABILITY_BACKGROUND_COMMUNICATION权限（该权限仅系统应用可申请）。
 >
-> - 此外如果应用需要在后台调用该接口，需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND（该权限仅系统应用可申请）。更多的组件启动规则详见[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> - 此外如果应用需要在后台调用该接口，需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND（该权限仅系统应用可申请）。更多的组件启动规则详见[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1641,7 +1643,9 @@ requestDialogService(want: Want, result: AsyncCallback&lt;dialogRequest.RequestR
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)。
+>
+> 该接口不支持应用分身。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1718,7 +1722,9 @@ requestDialogService(want: Want): Promise&lt;dialogRequest.RequestResult&gt;
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)。
+>
+> 该接口不支持应用分身。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2263,11 +2269,11 @@ openAtomicService(appId: string, options?: AtomicServiceOptions): Promise&lt;Abi
 原子化服务被启动后，有如下情况：
  - 正常情况下原子化服务可以通过[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身，并且返回结果给调用方。
  - 异常情况下比如杀死原子化服务会返回异常结果给调用方，异常结果的resultCode为-1。
- - 如果不同应用多次调用该接口启动同一个原子化服务，当这个原子化服务调用[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身时，只将正常结果返回给最后一个调用方, 其它调用方返回异常结果，异常结果中resultCode为-1。
+ - 如果不同应用多次调用该接口启动同一个原子化服务，当这个原子化服务调用[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身时，只将正常结果返回给最后一个调用方，其它调用方返回异常结果，异常结果中resultCode为-1。
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2355,7 +2361,7 @@ openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;Ab
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2656,7 +2662,9 @@ startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)。
+>
+> 该接口不支持应用分身。
 
 **原子化服务API**：从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -2743,8 +2751,9 @@ connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnect
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)。
 >
+> 该接口不支持应用分身。
 
 **原子化服务API**：从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -2858,7 +2867,7 @@ disconnectUIServiceExtensionAbility(proxy: UIServiceProxy): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)。
 >
 
 **原子化服务API**：从API version 14开始，该接口支持在原子化服务中使用。
@@ -3155,6 +3164,8 @@ startAppServiceExtensionAbility(want: Want): Promise\<void>
 > **说明：**
 >
 > 该接口的调用方必须为[AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md)所属应用或者在AppServiceExtensionAbility支持的应用清单（即[extensionAbilities标签](../../quick-start/module-configuration-file.md#extensionabilities标签)的appIdentifierAllowList属性）中的应用。
+>
+> 该接口不支持应用分身。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -3313,6 +3324,8 @@ connectAppServiceExtensionAbility(want: Want, callback: ConnectOptions): number
 > **说明：**
 >
 > 如果[AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md)实例未启动，该接口的调用方必须为AppServiceExtensionAbility所属应用或者在AppServiceExtensionAbility支持的应用清单（即[extensionAbilities标签](../../quick-start/module-configuration-file.md#extensionabilities标签)的appIdentifierAllowList属性）中的应用。
+>
+> 该接口不支持应用分身。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -3532,6 +3545,8 @@ startSelfUIAbilityInCurrentProcess(want: Want, specifiedFlag: string, options?: 
 > **说明：**
 >- 只能冷启动目标UIAbility，如果目标UIAbility实例已经启动过，则启动失败。
 >- 通过该接口启动的UIAbility实例，将运行在调用方所在的进程中。其他关于目标UIAbility的进程相关的策略（例如在[module.json5配置文件](../../quick-start/module-configuration-file.md)中通过isolationProcess或isolationMode字段来指定进程），均不会生效。
+>
+> 该接口不支持应用分身。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -3593,7 +3608,7 @@ export default class EntryAbility extends UIAbility {
     let instanceFlag = 'instance1';
 
     try {
-      // // 在当前进程中启动应用程序自己的UIAbility
+      // 在当前进程中启动应用程序自己的UIAbility
       this.context.startSelfUIAbilityInCurrentProcess(want, instanceFlag, options);
     } catch (err) {
       // 处理入参错误异常
@@ -3620,6 +3635,8 @@ restartApp(want: Want): Promise\<void>
 > 在原子化服务调用本接口成功后的3秒内，再次调用本接口、[restartSelfAtomicService()](js-apis-app-ability-abilityManager.md#abilitymanagerrestartselfatomicservice20)或[ApplicationContext.restartApp()](js-apis-inner-application-applicationContext.md#applicationcontextrestartapp12)接口中的任一接口，系统将返回错误码16000064。
 >
 > 在应用调用本接口成功后的3秒内，若再次调用本接口或[ApplicationContext.restartApp()](js-apis-inner-application-applicationContext.md#applicationcontextrestartapp12)接口中的任一接口，系统将返回错误码16000064。
+>
+> 该接口不支持通过Want指定appCloneIndex来切换分身，仅支持在当前分身内重启。
 
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
@@ -3781,7 +3798,7 @@ startSelf(): Promise\<void>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **返回值：**
 
@@ -3795,7 +3812,7 @@ startSelf(): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 801 | Capability not supported, because starting self to foreground from background is not supported in current devive or current UIAbility is a non-native UIAbility. |
+| 801 | Capability not supported, because starting self to foreground from background is not supported in current device or current UIAbility is a non-native UIAbility. |
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. Connect to system service failed. |
 | 16000082 | The UIAbility is being started. The UIAbility has not completed onCreate or onWindowStageCreate. |
@@ -3837,6 +3854,8 @@ startSelfUIAbilityInChildProcess(want: Want, specifiedFlag: string): Promise\<vo
 > **说明：**
 >
 > 子进程生命周期跟随父进程，父进程退出时子进程自动退出。
+>
+> 该接口不支持应用分身。
 
 **起始版本：** 26.0.0
 
@@ -3844,7 +3863,7 @@ startSelfUIAbilityInChildProcess(want: Want, specifiedFlag: string): Promise\<vo
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 

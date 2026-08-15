@@ -1,10 +1,12 @@
 # Class (RdbPredicates)
+
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=8af95004d9117739e6649a82566e8756f994e75a translatedAt=2026-07-14T10:32:49.056Z pushedAt=2026-07-17T09:25:07.499Z -->
 
 Defines the predicates for an RDB store. This class determines whether the conditional expression for the RDB store is true or false. Multiple predicates statements can be concatenated by using **and()** by default. **RdbPredicates** cannot be passed across threads using Sendable.
 
@@ -30,7 +32,7 @@ Defines a constructor used to create an **RdbPredicates** object.
 
 | Name| Type  | Mandatory| Description        |
 | ------ | ------ | ---- | ------------ |
-| name   | string | Yes  | Database table name.|
+| name   | string | Yes  | Name of the RDB store table, which cannot be an empty string. |
 
 **Error codes**
 
@@ -50,12 +52,12 @@ let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 
 inDevices(devices: Array&lt;string&gt;): RdbPredicates
 
-Creates an **RdbPredicates** object to specify the remote devices to connect on the network during distributed database sync.
+Creates an **RdbPredicates** object to specify the remote devices to connect on the network during distributed RDB store sync.
 
 > **NOTE**
 >
-> **devices** can be obtained by using [deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync).
-When calling **sync()**, you need to call **inDevices** to specify the devices. If **inDevices** is not used, data will be synced to all devices on the network by default.
+> The devices are obtained by calling [deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync).
+> When [sync](arkts-apis-data-relationalStore-RdbStore.md#sync) is called to synchronize the RDB store, call the **inDevices** API in the input predicate to select devices. If **inDevices** is not called, all devices on the network are connected by default.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -108,8 +110,7 @@ predicates.inDevices(deviceIds);
 
 inAllDevices(): RdbPredicates
 
-Creates an **RdbPredicates** object to specify all remote devices on the network to connect during distributed database sync.
-
+Creates an **RdbPredicates** object to specify all remote devices on the network to connect during distributed RDB store sync.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -130,7 +131,7 @@ predicates.inAllDevices();
 
 equalTo(field: string, value: ValueType): RdbPredicates
 
-Creates an **RdbPredicates** object to search for the records in the specified column that are equal to the given value.
+Creates an **RdbPredicates** object to search for the records in the specified column that are equal to the given value. This method is equivalent to **=** in SQL statements.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -138,8 +139,8 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 
 | Name| Type                   | Mandatory| Description                  |
 | ------ | ----------------------- | ---- | ---------------------- |
-| field  | string                  | Yes  | Column name in the database table.    |
-| value  | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | Yes  | Value to match.|
+| field  | string                  | Yes   | Column name in the RDB store table, which cannot be an empty string.     |
+| value  | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | Yes   | Value to match with the predicate. The length cannot exceed 1024 bytes. |
 
 **Return value**
 
@@ -163,12 +164,11 @@ let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.equalTo("NAME", "Lisa");
 ```
 
-
 ## notEqualTo
 
 notEqualTo(field: string, value: ValueType): RdbPredicates
 
-Creates an **RdbPredicates** object to search for the records in the specified column that are not equal to the given value.
+Creates an **RdbPredicates** object to search for the records in the specified column that are not equal to the given value. This method is equivalent to **!=** in SQL statements.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -176,8 +176,8 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 
 | Name| Type                   | Mandatory| Description                  |
 | ------ | ----------------------- | ---- | ---------------------- |
-| field  | string                  | Yes  | Column name in the database table.    |
-| value  | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | Yes  | Value to match.|
+| field  | string                  | Yes   | Column name in the RDB store table, which cannot be an empty string.     |
+| value  | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | Yes   | Value to match with the predicate. The length cannot exceed 1024 bytes. |
 
 **Return value**
 
@@ -201,7 +201,6 @@ let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.notEqualTo("NAME", "Lisa");
 ```
 
-
 ## beginWrap
 
 beginWrap(): RdbPredicates
@@ -214,7 +213,7 @@ Creates an **RdbPredicates** object to add a left parenthesis.
 
 | Type                                | Description                     |
 | ------------------------------------ | ------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicate with a left parenthesis. |
 
 **Example**:
 
@@ -240,7 +239,7 @@ Creates an **RdbPredicates** object to add a right parenthesis.
 
 | Type                                | Description                     |
 | ------------------------------------ | ------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicate with a right parenthesis. |
 
 **Example**:
 
@@ -266,7 +265,7 @@ Creates an **RdbPredicates** object to add the OR condition.
 
 | Type                                | Description                     |
 | ------------------------------------ | ------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicate with an OR condition. |
 
 **Example**:
 
@@ -290,7 +289,7 @@ Creates an **RdbPredicates** object to add the AND condition.
 
 | Type                                | Description                     |
 | ------------------------------------ | ------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicate with AND conditions. |
 
 **Example**:
 
@@ -306,7 +305,7 @@ predicates.equalTo("NAME", "Lisa")
 
 contains(field: string, value: string): RdbPredicates
 
-Creates an **RdbPredicates** object to search for the records in the specified column that contain the given value.
+Creates an **RdbPredicates** object to search for the records in the specified column that contain the given value. This method is equivalent to **LIKE '%xxx%'** in SQL statements.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -314,8 +313,8 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 
 | Name| Type  | Mandatory| Description                  |
 | ------ | ------ | ---- | ---------------------- |
-| field  | string | Yes  | Column name in the database table.    |
-| value  | string | Yes  | Value to match.|
+| field  | string | Yes   | Column name in the RDB store table, which cannot be an empty string.     |
+| value  | string | Yes   | Value to match with the predicate. The length cannot exceed 1024 bytes. |
 
 **Return value**
 
@@ -343,7 +342,7 @@ predicates.contains("NAME", "os");
 
 beginsWith(field: string, value: string): RdbPredicates
 
-Creates an **RdbPredicates** object to search for the records in the specified column that begin with the given value.
+Creates an **RdbPredicates** object to search for the records in the specified column that begin with the given value. This method is equivalent to **LIKE 'xxx%'** in SQL statements.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -351,8 +350,8 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 
 | Name| Type  | Mandatory| Description                  |
 | ------ | ------ | ---- | ---------------------- |
-| field  | string | Yes  | Column name in the database table.    |
-| value  | string | Yes  | Value to match.|
+| field  | string | Yes   | Column name in the RDB store table, which cannot be an empty string.     |
+| value  | string | Yes   | Value to match with the predicate. The length cannot exceed 1024 bytes. |
 
 **Return value**
 
@@ -380,7 +379,7 @@ predicates.beginsWith("NAME", "Li");
 
 endsWith(field: string, value: string): RdbPredicates
 
-Creates an **RdbPredicates** object to search for the records in the specified column that end with the given value.
+Creates an **RdbPredicates** object to search for the records in the specified column that end with the given value. This method is equivalent to **LIKE '%xxx'** in SQL statements.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -388,8 +387,8 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 
 | Name| Type  | Mandatory| Description                  |
 | ------ | ------ | ---- | ---------------------- |
-| field  | string | Yes  | Column name in the database table.    |
-| value  | string | Yes  | Value to match.|
+| field  | string | Yes  | Column name in the RDB store table, which cannot be an empty string.     |
+| value  | string | Yes  | Value to match with the predicate. The length cannot exceed 1024 bytes. |
 
 **Return value**
 
@@ -417,7 +416,7 @@ predicates.endsWith("NAME", "se");
 
 isNull(field: string): RdbPredicates
 
-Creates an **RdbPredicates** object to search for the records in the specified column that are **null**.
+Creates an **RdbPredicates** object to search for the records in the specified column that are null. This method is equivalent to **IS NULL** in SQL statements.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -425,7 +424,7 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 
 | Name| Type  | Mandatory| Description              |
 | ------ | ------ | ---- | ------------------ |
-| field  | string | Yes  | Column name in the database table.|
+| field  | string  | Yes   | Column name in the RDB store table, which cannot be an empty string. |
 
 **Return value**
 
@@ -441,7 +440,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | --------- |----------------------------------------------------------------------------------------------------------------|
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**:
+**Example**
 
 ```ts
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
@@ -452,7 +451,7 @@ predicates.isNull("NAME");
 
 isNotNull(field: string): RdbPredicates
 
-Creates an **RdbPredicates** object to search for the records in the specified column that are not **null**.
+Creates an **RdbPredicates** object to search for the records in the specified column that are not null. This method is equivalent to **IS NOT NULL** in SQL statements.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -460,7 +459,7 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 
 | Name| Type  | Mandatory| Description              |
 | ------ | ------ | ---- | ------------------ |
-| field  | string | Yes  | Column name in the database table.|
+| field  | string  | Yes   | Column name in the RDB store table, which cannot be an empty string. |
 
 **Return value**
 
@@ -487,7 +486,7 @@ predicates.isNotNull("NAME");
 
 like(field: string, value: string): RdbPredicates
 
-Creates an **RdbPredicates** object to search for the records in the specified column that are similar to the given value.
+Creates an **RdbPredicates** object to search for the records in the specified column that are similar to the given value. This method is equivalent to **LIKE** in SQL statements.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -495,8 +494,8 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 
 | Name| Type  | Mandatory| Description                  |
 | ------ | ------ | ---- | ---------------------- |
-| field  | string | Yes  | Column name in the database table.    |
-| value  | string | Yes  | Condition for fuzzy match. Generally, this parameter is used together with a wildcard. A percent sign (%) represents any character of any length, and an underscore (_) represents a single character.|
+| field  | string | Yes   | Column name in the RDB store table, which cannot be an empty string.     |
+| value  | string | Yes  | Fuzzy match condition. Generally, this parameter is used together with a wildcard. A percent sign (%) represents any character of any length, and an underscore (_) represents a single character.|
 
 **Return value**
 
@@ -524,7 +523,7 @@ predicates.like("NAME", "%os%");
 
 glob(field: string, value: string): RdbPredicates
 
-Creates an **RdbPredicates** object to search for the records in the specified column that match the given string.
+Creates an **RdbPredicates** to match the fields whose data type is string and whose value matches the specified wildcard pattern, where * matches any number of characters and ? matches a single character. This method is equivalent to **GLOB** in SQL statements.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -532,8 +531,8 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| field  | string | Yes  | Column name in the database table.                                          |
-| value  | string | Yes  | Value to match.<br>Wildcards are supported. An asterisk (*) indicates zero, one, or multiple digits or characters, and a question mark (?) indicates a single digit or character.|
+| field  | string | Yes  | Column name in the RDB store table, which cannot be an empty string.                                           |
+| value  | string | Yes  | Value to match with the predicate. The length cannot exceed 1024 bytes.<br>Wildcards are supported, where * indicates 0, 1, or multiple digits or characters, and ? indicates 1 digit or character. |
 
 **Return value**
 
@@ -561,7 +560,7 @@ predicates.glob("NAME", "?h*g");
 
 between(field: string, low: ValueType, high: ValueType): RdbPredicates
 
-Creates an **RdbPredicates** object to search for the records that are within the given range (including the min. and max. values) in the specified column.
+Creates an **RdbPredicates** object to search for the records in the specified column whose value is within the given range (including the boundary values). This method is equivalent to **BETWEEN** in SQL statements.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -569,7 +568,7 @@ Creates an **RdbPredicates** object to search for the records that are within th
 
 | Name| Type                   | Mandatory| Description                      |
 | ------ | ----------------------- | ---- | -------------------------- |
-| field  | string                  | Yes  | Column name in the database table.        |
+| field  | string                  | Yes   | Column name in the RDB store table, which cannot be an empty string.         |
 | low    | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | Yes  | Minimum value of the range to set.  |
 | high   | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | Yes  | Maximum value of the range to set.|
 
@@ -599,7 +598,7 @@ predicates.between("AGE", 10, 50);
 
 notBetween(field: string, low: ValueType, high: ValueType): RdbPredicates
 
-Creates an **RdbPredicates** object to search for the records that are out of the given range (excluding the min. and max. values) in the specified column.
+Creates an **RdbPredicates** object to search for the records in the specified column whose value is outside the given range (excluding the boundary values). This method is equivalent to **NOT BETWEEN** in SQL statements.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -607,9 +606,9 @@ Creates an **RdbPredicates** object to search for the records that are out of th
 
 | Name| Type                   | Mandatory| Description                      |
 | ------ | ----------------------- | ---- | -------------------------- |
-| field  | string                  | Yes  | Column name in the database table.        |
+| field  | string                  | Yes   | Column name in the RDB store table, which cannot be an empty string.         |
 | low    | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | Yes  | Minimum value of the range to set.  |
-| high   | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | Yes  | Maximum value of the range to set.|
+| high   | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | Yes   | Maximum value of the range to set. |
 
 **Return value**
 
@@ -637,7 +636,7 @@ predicates.notBetween("AGE", 10, 50);
 
 greaterThan(field: string, value: ValueType): RdbPredicates
 
-Creates an **RdbPredicates** object to search for the records that are greater than the given value in the specified column.
+Creates an **RdbPredicates** object to search for the records in the specified column whose value is greater than the given value. This method is equivalent to **>** in SQL statements.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -645,8 +644,8 @@ Creates an **RdbPredicates** object to search for the records that are greater t
 
 | Name| Type                   | Mandatory| Description                  |
 | ------ | ----------------------- | ---- | ---------------------- |
-| field  | string                  | Yes  | Column name in the database table.    |
-| value  | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | Yes  | Value to match.|
+| field  | string                  | Yes   | Column name in the RDB store table, which cannot be an empty string.     |
+| value  | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | Yes   | Value to match with the predicate, with a length not exceeding 1024 bytes. |
 
 **Return value**
 
@@ -674,7 +673,7 @@ predicates.greaterThan("AGE", 18);
 
 lessThan(field: string, value: ValueType): RdbPredicates
 
-Creates an **RdbPredicates** object to search for the records that are less than the given value in the specified column.
+Creates an **RdbPredicates** object to search for the records in the specified column whose value is less than the given value. This method is equivalent to **<** in SQL statements.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -682,8 +681,8 @@ Creates an **RdbPredicates** object to search for the records that are less than
 
 | Name| Type                   | Mandatory| Description                  |
 | ------ | ----------------------- | ---- | ---------------------- |
-| field  | string                  | Yes  | Column name in the database table.    |
-| value  | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | Yes  | Value to match.|
+| field  | string                  | Mandatory   | Column name in the RDB store table, which cannot be an empty string.     |
+| value  | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | Mandatory   | Value to match with the predicate. The length cannot exceed 1024 bytes. |
 
 **Return value**
 
@@ -711,7 +710,7 @@ predicates.lessThan("AGE", 20);
 
 greaterThanOrEqualTo(field: string, value: ValueType): RdbPredicates
 
-Creates an **RdbPredicates** object to search for the records that are greater than or equal to the given value in the specified column.
+Creates an **RdbPredicates** object to search for the records in the specified column whose value is greater than or equal to the given value. This method is equivalent to **>=** in SQL statements.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -719,8 +718,8 @@ Creates an **RdbPredicates** object to search for the records that are greater t
 
 | Name| Type                   | Mandatory| Description                  |
 | ------ | ----------------------- | ---- | ---------------------- |
-| field  | string                  | Yes  | Column name in the database table.    |
-| value  | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | Yes  | Value to match.|
+| field  | string                  | Yes   | Column name in the RDB store table, which cannot be an empty string.     |
+| value  | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | Yes   | Value to match with the predicate. The length cannot exceed 1024 bytes. |
 
 **Return value**
 
@@ -748,7 +747,7 @@ predicates.greaterThanOrEqualTo("AGE", 18);
 
 lessThanOrEqualTo(field: string, value: ValueType): RdbPredicates
 
-Creates an **RdbPredicates** object to search for the records that are less than or equal to the given value in the specified column.
+Creates an **RdbPredicates** object to search for the records in the specified column whose value is less than or equal to the given value. This method is equivalent to **<=** in SQL statements.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -756,8 +755,8 @@ Creates an **RdbPredicates** object to search for the records that are less than
 
 | Name| Type                   | Mandatory| Description                  |
 | ------ | ----------------------- | ---- | ---------------------- |
-| field  | string                  | Yes  | Column name in the database table.    |
-| value  | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | Yes  | Value to match.|
+| field  | string                  | Yes   | Column name in the RDB store table, which cannot be an empty string.     |
+| value  | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | Yes   | Value to match with the predicate. The length cannot exceed 1024 bytes. |
 
 **Return value**
 
@@ -785,7 +784,7 @@ predicates.lessThanOrEqualTo("AGE", 20);
 
 orderByAsc(field: string): RdbPredicates
 
-Creates an **RdbPredicates** object to sort the records in the specified column in ascending order.
+Creates an **RdbPredicates** object to sort the records in the specified column in ascending order. This method is equivalent to **ORDER BY ASC** in SQL statements.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -793,7 +792,7 @@ Creates an **RdbPredicates** object to sort the records in the specified column 
 
 | Name| Type  | Mandatory| Description              |
 | ------ | ------ | ---- | ------------------ |
-| field  | string | Yes  | Column name in the database table.|
+| field  | string | Yes  | Column name in the RDB store table, which cannot be an empty string. |
 
 **Return value**
 
@@ -820,7 +819,7 @@ predicates.orderByAsc("NAME");
 
 orderByDesc(field: string): RdbPredicates
 
-Creates an **RdbPredicates** object to sort the records in the specified column in descending order.
+Creates an **RdbPredicates** object to sort the records in the specified column in descending order. This method is equivalent to **ORDER BY DESC** in SQL statements.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -828,7 +827,7 @@ Creates an **RdbPredicates** object to sort the records in the specified column 
 
 | Name| Type  | Mandatory| Description              |
 | ------ | ------ | ---- | ------------------ |
-| field  | string | Yes  | Column name in the database table.|
+| field  | string  | Yes   | Column name in the RDB store table, which cannot be an empty string. |
 
 **Return value**
 
@@ -989,13 +988,13 @@ Creates a **RdbPredicates** object to specify the index column.
 
 | Name| Type  | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| field  | string | Yes  | Name of the index column.|
+| field  | string | Yes  | Name of the index column, which cannot be an empty string. |
 
 **Return value**
 
 | Type                                | Description                                 |
 | ------------------------------------ | ------------------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | **RdbPredicates** object created.|
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicate with the specified index column. |
 
 **Error codes**
 
@@ -1016,7 +1015,7 @@ predicates.indexedBy("SALARY");
 
 in(field: string, value: Array&lt;ValueType&gt;): RdbPredicates
 
-Creates an **RdbPredicates** object to search for the records that are in the given range in the specified column.
+Creates an **RdbPredicates** object to search for the records in the specified column whose value are within the given value set. This method is equivalent to **IN** in SQL statements.
 
 > **NOTE**
 >
@@ -1028,7 +1027,7 @@ Creates an **RdbPredicates** object to search for the records that are in the gi
 
 | Name| Type                                | Mandatory| Description                                   |
 | ------ | ------------------------------------ | ---- | --------------------------------------- |
-| field  | string                               | Yes  | Column name in the database table.                     |
+| field  | string                               | Yes   | Column name in the RDB store table, which cannot be an empty string.                      |
 | value  | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | Yes  | Array of **ValueType**s to match.|
 
 **Return value**
@@ -1048,7 +1047,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**:
 
 ```ts
-// Find records that are within [18, 20] in the AGE column.
+// Match the values in the "AGE" column of the data table that are within [18, 20].
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.in("AGE", [18, 20]);
 ```
@@ -1057,7 +1056,7 @@ predicates.in("AGE", [18, 20]);
 
 notIn(field: string, value: Array&lt;ValueType&gt;): RdbPredicates
 
-Creates an **RdbPredicates** object to search for the records that are out of the given range in the specified column.
+Creates an **RdbPredicates** object to search for the records in the specified column whose value are not within the given value set. This method is equivalent to **NOT IN** in SQL statements.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1065,7 +1064,7 @@ Creates an **RdbPredicates** object to search for the records that are out of th
 
 | Name| Type                                | Mandatory| Description                                 |
 | ------ | ------------------------------------ | ---- | ------------------------------------- |
-| field  | string                               | Yes  | Column name in the database table.                   |
+| field  | string                               | Yes   | Column name in the RDB store table, which cannot be an empty string.                    |
 | value  | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | Yes  | Array of **ValueType**s to match.|
 
 **Return value**
@@ -1102,8 +1101,8 @@ Creates an **RdbPredicates** object to search for the records that do not contai
 
 | Name| Type  | Mandatory| Description                  |
 | ------ | ------ | ---- | ---------------------- |
-| field  | string | Yes  | Column name in the database table.    |
-| value  | string | Yes  | Value to match.|
+| field  | string | Yes  | Column name in the RDB store table, which cannot be an empty string.     |
+| value  | string | Yes  | Value to match with the predicate. The length cannot exceed 1024 bytes. |
 
 **Return value**
 
@@ -1139,7 +1138,7 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 
 | Name| Type  | Mandatory| Description                  |
 | ------ | ------ | ---- | ---------------------- |
-| field  | string | Yes  | Column name in the database table.    |
+| field  | string | Yes   | Column name in the RDB store table, which cannot be an empty string.     |
 | value  | string | Yes  | Condition for fuzzy match. Generally, this parameter is used together with a wildcard. A percent sign (%) represents any character of any length, and an underscore (_) represents a single character.|
 
 **Return value**
@@ -1166,7 +1165,7 @@ predicates.notLike("NAME", "%os%");
 
 ## having<sup>20+</sup>
 
-having(conditions:string, args?: Array\<ValueType>): RdbPredicates
+having(conditions: string, args?: Array\<ValueType>): RdbPredicates
 
 Filters for group data that meets the conditions.
 
@@ -1176,7 +1175,7 @@ Filters for group data that meets the conditions.
 
 | Name| Type  | Mandatory| Description                  |
 | ------ | ------ | ---- | ---------------------- |
-| conditions  | string | Yes  | Condition used to filter the data obtained using [groupBy](#groupby). This parameter cannot be empty and must be used with [groupBy](#groupby).|
+| conditions  | string | Yes   | Conditions used to filter data obtained by [groupBy](#groupby). This parameter cannot be an empty string and must be used together with [groupBy](#groupby).|
 | args  | Array<[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)> | No  | Parameters used in **conditions**, which replace the placeholder in the conditional statement. If this parameter is not specified, the default value is an empty array.|
 
 **Return value**
@@ -1199,8 +1198,9 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 // Pass a complete condition.
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.groupBy(["AGE"]);
-predicates.having("NAME = zhangsan");
+predicates.having("NAME = 'zhangsan'");
 ```
+
 **Example 2**:
 
 ```ts

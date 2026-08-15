@@ -26,7 +26,7 @@ Provides common event constants defined by the system.
 
 | Name| Description|
 | -- | -- |
-| static const char * const COMMON_EVENT_SHUTDOWN = "usual.event.SHUTDOWN" | Indicates the common event that the device is being shut down and the final shutdown will proceed.<br>**Since**: 12<br>**System capability**: SystemCapability.Notification.CommonEvent|
+| static const char * const COMMON_EVENT_SHUTDOWN = "usual.event.SHUTDOWN" | Indicates the common event that the device is being shut down and the final shutdown will proceed.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_BATTERY_CHANGED = "usual.event.BATTERY_CHANGED" | Indicates the common event that the charging state, level, and other information about the battery have changed.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_BATTERY_LOW = "usual.event.BATTERY_LOW" | Indicates the common event that the battery level is low.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_BATTERY_OKAY = "usual.event.BATTERY_OKAY" | Indicates the common event that the battery exits the low state.<br>**Since**: 12|

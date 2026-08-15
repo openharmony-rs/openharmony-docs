@@ -6,19 +6,21 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=7bf845a7c8933b8c5015a7da3dfa1923d0e9dc57 translatedAt=2026-08-07T03:28:04.729Z pushedAt=2026-08-10T08:27:22.308Z -->
 
 This topic uses RSA and SM2 as an example to describe how to generate an asymmetric key pair (**OH_CryptoKeyPair**) and obtain the binary data.
 
 The asymmetric key pair may be used for subsequent operations such as encryption and decryption, and binary data may be used for storage or transmission.
 
 ## Adding the Dynamic Library in the CMake Script
+
 ```txt
 target_link_libraries(entry PUBLIC libohcrypto.so)
 ```
 
 ## Randomly Generating an RSA Key Pair
 
-For details about the algorithm specifications, see [RSA](crypto-asym-key-generation-conversion-spec.md#rsa).
+For the corresponding algorithm specifications, see [Asymmetric Key Generation and Conversion Specifications: RSA](crypto-key-generation-conversion.md#rsa).
 
 1. Call [OH_CryptoAsymKeyGenerator_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_create) with the string parameter **'RSA1024|PRIMES_2'** to create an asymmetric key generator (**OH_CryptoAsymKeyGenerator**) for a 1024-bit RSA key with two primes.
 
@@ -69,10 +71,9 @@ OH_Crypto_ErrCode generateRSAKey()
 }
 ```
 
-
 ## Randomly Generating an SM2 Key Pair
 
-For details about the algorithm specifications, see [SM2](crypto-asym-key-generation-conversion-spec.md#sm2).
+For the corresponding algorithm specifications, see [Asymmetric Key Generation and Conversion Specifications: SM2](crypto-key-generation-conversion.md#sm2).
 
 1. Call [OH_CryptoAsymKeyGenerator_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_create) with the string parameter **'SM2_256'** to create an asymmetric key generator (**OH_CryptoAsymKeyGenerator**) object for a 256-bit SM2 key.
 
@@ -121,3 +122,5 @@ OH_Crypto_ErrCode generateSM2Key()
     return ret;
 }
 ```
+
+<!--no_check-->

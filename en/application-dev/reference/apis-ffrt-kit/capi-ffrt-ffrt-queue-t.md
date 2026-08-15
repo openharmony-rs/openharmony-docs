@@ -2,10 +2,11 @@
 
 <!--Kit: Function Flow Runtime Kit-->
 <!--Subsystem: Resourceschedule-->
-<!--Owner: @chuchihtung; @yanleo-->
-<!--Designer: @geoffrey_guo; @huangyouzhong-->
-<!--Tester: @lotsof; @sunxuhao-->
+<!--Owner: @chuchihtung-->
+<!--Designer: @zhanglu161-->
+<!--Tester: @lotsof-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=1bd5d6cdd22374b2fc7c67ab365167018faf622f translatedAt=2026-07-20T01:57:59.015Z pushedAt=2026-07-20T02:18:33.735Z -->
 
 ```c
 typedef void* ffrt_queue_t
@@ -13,7 +14,7 @@ typedef void* ffrt_queue_t
 
 ## Overview
 
-The **ffrt_queue_t** struct defines the handle to a queue.
+Defines the handle to a queue.
 
 **Since**: 10
 

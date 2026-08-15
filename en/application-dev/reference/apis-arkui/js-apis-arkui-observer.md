@@ -6,8 +6,9 @@
 <!--Designer: @piggyguy; @lushi871202; @hehongyang3-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=d2d180bb8a8dbb27c5a12f721bbaa8fe745c322c translatedAt=2026-07-29T09:32:28.551Z pushedAt=2026-08-03T07:54:59.131Z -->
 
-Provides APIs for listening for UI component behavior changes. [UIObserver](./arkts-apis-uicontext-uiobserver.md) is recommended for component observation.
+Provides APIs for listening for UI component behavior changes, including listening for page states, scroll events, page routing, screen pixel density, layout and drawing, page switching, and **TabContent** state changes. It is suitable for scenarios where UI state changes need to be sensed without intruding into the component service logic. [UIObserver](./arkts-apis-uicontext-uiobserver.md) is recommended for component observation.
 
 > **NOTE**
 >
@@ -16,7 +17,6 @@ Provides APIs for listening for UI component behavior changes. [UIObserver](./ar
 > - The APIs of this module can be used only in the stage model.
 >
 > - UIObserver can only listen for relevant information within the current process and does not support obtaining information in cross-process scenarios<!--Del--> such as [UIExtensionComponent](../../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)<!--DelEnd-->.
-
 
 ## Modules to Import
 
@@ -120,7 +120,6 @@ Provides information about the **Navigation** component.
 
 Provides the scroll event information.
 
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name        | Type                                              | Read-Only| Optional| Description                                        |
@@ -200,6 +199,7 @@ Provides the observer options for the page switching event of the **Navigation**
 | navigationId | [ResourceStr](arkui-ts/ts-types.md#resourcestr) | No| No  | ID of the target **Navigation** component.|
 
 ## TextChangeEventInfo<sup>22+</sup>
+
 Provides information about text changes in input fields.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
@@ -222,11 +222,11 @@ Provides the **TabContent** switching information.
 | ------------ | -------------------------------------------- | ---- | ---- | -------------------------------------------- |
 | tabContentId | string                                       | No  | No  | ID of the **TabContent** component.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                        |
 | tabContentUniqueId | number                                 | No  | No  | Unique ID of the **TabContent** component.<br>**Atomic service API**: This API can be used in atomic services since API version 12.               |
-| state        | [TabContentState](#tabcontentstate12)        | No  | No  | Enumerates the **TabContent** component states.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                   |
+| state        | [TabContentState](#tabcontentstate12)        | No  | No  | State of the **TabContent** component.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                   |
 | index        | number                                       | No  | No  | Index of the **TabContent** component. The index is zero-based.<br>**Atomic service API**: This API can be used in atomic services since API version 12.      |
 | id           | string                                       | No  | No  | ID of the **Tabs** component.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                        |
 | uniqueId     | number                                       | No  | No  | Unique ID of the **Tabs** component.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                     |
-| lastIndex<sup>22+</sup>    | number                                       | No  | Yes  | Index of the previously focused **TabContent** component. The index is zero-based. This parameter is available only in the callback of [on('tabChange')](./arkts-apis-uicontext-uiobserver.md#ontabchange22).<br>**Atomic service API**: This API can be used in atomic services since API version 22.  |
+| lastIndex<sup>22+</sup>    | number                                       | No   | Yes   | Subscript index of the most recently focused **TabContent** component. The index starts from 0. It exists only in the callback of [on('tabChange')](./arkts-apis-uicontext-uiobserver.md#ontabchange22).  <br/>**Atomic service API:** This API can be used in atomic services since API version 22.   |
 
 ## WindowSizeLayoutBreakpointInfo<sup>22+</sup>
 
@@ -240,7 +240,6 @@ Provides information about window size layout breakpoint changes.
 | -------------------- | -------------------------------------------------------| ----- | ---- | ---------------------------------------------- |
 | widthBreakpoint      | [WidthBreakpoint](./arkui-ts/ts-appendix-enums.md#widthbreakpoint13)  | Yes  | No  | Layout breakpoint for window width.       |
 | heightBreakpoint     | [HeightBreakpoint](./arkui-ts/ts-appendix-enums.md#heightbreakpoint13)| Yes  | No  | Layout breakpoint for window height.       |
-
 
 ## uiObserver.on('navDestinationUpdate')
 
@@ -539,7 +538,7 @@ struct Index {
                 .fontSize(16)
                 .textAlign(TextAlign.Center)
                 .margin({ top: 10 })
-            }, (item: string) => item)
+            }, (item: number) => item.toString())
           }.width('100%')
         }
         .id('testId')
@@ -749,7 +748,7 @@ Unregisters the listener for screen pixel density changes.
 | callback | Callback\<[DensityInfo](#densityinfo12)\> | No  | Target listener to unregister. If no parameter is provided, all listeners for the **densityUpdate** event under the current UI context are unregistered.|
 
 ```ts
-import { uiObserver, UIContext } from '@kit.ArkUI';
+import { uiObserver } from '@kit.ArkUI';
 
 @Entry
 @Component

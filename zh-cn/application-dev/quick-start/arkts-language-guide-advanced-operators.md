@@ -347,7 +347,7 @@ capA += 5;  // 先计算右侧表达式，再赋值
 
 // 复合表达式
 let capB: number = 5;
-capA += capB * 2;  // a = a + (b * 2) = 10 + 10 = 20
+capA += capB * 2;  // a = a + (b * 2) = 15 + 10 = 25
 
 // 反例：链式复合赋值
 let capX: number = 10;
@@ -1121,9 +1121,9 @@ console.info(`${obj3.b.c}`);  // 2（独立，不受影响）
 
 TypeScript和ArkTS均不支持运算符重载，通过命名方法（如add、sub）模拟运算符行为。
 
-### TypeScript无原生运算符重载
+### 无原生运算符重载
 
-TypeScript不支持运算符重载，可通过命名方法模拟运算符行为。
+不支持运算符重载，可通过命名方法模拟运算符行为。
 
 <!-- @[ts_operator_overloading_not_supported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/AdvancedOperators.ts) -->
 

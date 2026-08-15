@@ -24,7 +24,7 @@
 ## 导入模块
 
 ```ts
-import { effectKit } from "@kit.ArkGraphics2D";
+import { effectKit } from '@kit.ArkGraphics2D';
 ```
 
 ## PictureComplexityDegree<sup>22+</sup>
@@ -122,8 +122,8 @@ getTopProportionColorsAndPercentage(colorCount: number): Map<Color | null, numbe
 **示例：**
 
 ```js
-import { image } from "@kit.ImageKit";
-import { effectKit } from "@kit.ArkGraphics2D";
+import { image } from '@kit.ImageKit';
+import { effectKit } from '@kit.ArkGraphics2D';
 
 const color = new ArrayBuffer(96);
 let opts: image.InitializationOptions = {
@@ -145,7 +145,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
         console.info('get top proportion colors and percentages: color ' + key + ', percentage ' + value);
       })
     }
-  })
+  });
 });
 ```
 ![Top-Proportion-Colors-And-Percentages.png](figures/Top-Proportion-Colors-And-Percentages.png)
@@ -179,8 +179,8 @@ getShadeDegree(): PictureShadeDegree
 **示例：**
 
 ```js
-import { image } from "@kit.ImageKit";
-import { effectKit } from "@kit.ArkGraphics2D";
+import { image } from '@kit.ImageKit';
+import { effectKit } from '@kit.ArkGraphics2D';
 
 const color = new ArrayBuffer(96);
 let opts: image.InitializationOptions = {
@@ -200,7 +200,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       let shadeDegree: effectKit.PictureShadeDegree = colorPicker.getShadeDegree();
       console.info('The shade degree of the image is ' + shadeDegree);
     }
-  })
+  });
 });
 ```
 
@@ -233,8 +233,8 @@ getComplexityDegree(): PictureComplexityDegree
 **示例：**
 
 ```js
-import { image } from "@kit.ImageKit";
-import { effectKit } from "@kit.ArkGraphics2D";
+import { image } from '@kit.ImageKit';
+import { effectKit } from '@kit.ArkGraphics2D';
 
 const color = new ArrayBuffer(96);
 let opts: image.InitializationOptions = {
@@ -254,7 +254,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       let complexityDegree: effectKit.PictureComplexityDegree = colorPicker.getComplexityDegree();
       console.info('The complexity degree of the image is ' + complexityDegree);
     }
-  })
+  });
 });
 ```
 
@@ -287,8 +287,8 @@ getAlphaZeroTransparentProportion(): number
 **示例：**
 
 ```js
-import { image } from "@kit.ImageKit";
-import { effectKit } from "@kit.ArkGraphics2D";
+import { image } from '@kit.ImageKit';
+import { effectKit } from '@kit.ArkGraphics2D';
 
 const color = new ArrayBuffer(96);
 let opts: image.InitializationOptions = {
@@ -308,7 +308,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
         let percentage: number = colorPicker.getAlphaZeroTransparentProportion();
       console.info('Get proportion of fully transparent pixels: ' + percentage);
     }
-  })
+  });
 });
 ```
 
@@ -337,18 +337,18 @@ getMorandiShadowColor(): Color
 **示例：**
 
 ```ts
-import { image } from "@kit.ImageKit";
-import { effectKit } from "@kit.ArkGraphics2D";
+import { image } from '@kit.ImageKit';
+import { effectKit } from '@kit.ArkGraphics2D';
 
 const color = new ArrayBuffer(96);
-let opts : image.InitializationOptions = {
+let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
   size: {
     height: 4,
     width: 6
   }
-}
+};
 image.createPixelMap(color, opts).then((pixelMap) => {
   effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
     if (error) {
@@ -358,7 +358,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       let color = colorPicker.getMorandiShadowColor();
       console.info('get Morandi shadow color =' + color);
     }
-  })
+  });
 });
 ```
 
@@ -382,23 +382,23 @@ getDeepenImmersionColor(): Color
 
 | 类型     | 说明                                  |
 | :------- | :----------------------------------- |
-|[Color](js-apis-effectKit.md#color)    | Color实例，即图像强沉浸色对应的颜色值。当图像处理失败或无法生成沉浸色时返回null。 |
+| [Color](js-apis-effectKit.md#color)    | Color实例，即图像强沉浸色对应的颜色值。当图像处理失败或无法生成沉浸色时返回null。 |
 
 **示例：**
 
 ```ts
-import { image } from "@kit.ImageKit";
-import { effectKit } from "@kit.ArkGraphics2D";
+import { image } from '@kit.ImageKit';
+import { effectKit } from '@kit.ArkGraphics2D';
 
 const color = new ArrayBuffer(96);
-let opts : image.InitializationOptions = {
+let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
   size: {
     height: 4,
     width: 6
   }
-}
+};
 image.createPixelMap(color, opts).then((pixelMap) => {
   effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
     if (error) {
@@ -408,7 +408,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       let color = colorPicker.getDeepenImmersionColor();
       console.info('get deepen immersion color =' + color);
     }
-  })
+  });
 });
 ```
 
@@ -437,18 +437,18 @@ getImmersiveBackgroundColor(): Color
 **示例：**
 
 ```ts
-import { image } from "@kit.ImageKit";
-import { effectKit } from "@kit.ArkGraphics2D";
+import { image } from '@kit.ImageKit';
+import { effectKit } from '@kit.ArkGraphics2D';
 
 const color = new ArrayBuffer(96);
-let opts : image.InitializationOptions = {
+let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
   size: {
     height: 4,
     width: 6
   }
-}
+};
 image.createPixelMap(color, opts).then((pixelMap) => {
   effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
     if (error) {
@@ -487,18 +487,18 @@ getImmersiveForegroundColor(): Color
 **示例：**
 
 ```ts
-import { image } from "@kit.ImageKit";
-import { effectKit } from "@kit.ArkGraphics2D";
+import { image } from '@kit.ImageKit';
+import { effectKit } from '@kit.ArkGraphics2D';
 
 const color = new ArrayBuffer(96);
-let opts : image.InitializationOptions = {
+let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
   size: {
     height: 4,
     width: 6
   }
-}
+};
 image.createPixelMap(color, opts).then((pixelMap) => {
   effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
     if (error) {
@@ -508,7 +508,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       let color = colorPicker.getImmersiveForegroundColor();
       console.info('get immersive foreground color =' + color);
     }
-  })
+  });
 });
 ```
 
@@ -545,8 +545,8 @@ discriminatePictureLightDegree(): PictureLightDegree
 **示例：**
 
 ```js
-import { image } from "@kit.ImageKit";
-import { effectKit } from "@kit.ArkGraphics2D";
+import { image } from '@kit.ImageKit';
+import { effectKit } from '@kit.ArkGraphics2D';
 
 const color = new ArrayBuffer(96);
 let opts: image.InitializationOptions = {
@@ -566,7 +566,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       let pictureLightDegree: effectKit.PictureLightDegree = colorPicker.discriminatePictureLightDegree();
       console.info('The color light degree of the image is ' + pictureLightDegree);
     }
-  })
+  });
 });
 ```
 
@@ -595,18 +595,18 @@ getReverseColor(): Color
 **示例：**
 
 ```ts
-import { image } from "@kit.ImageKit";
-import { effectKit } from "@kit.ArkGraphics2D";
+import { image } from '@kit.ImageKit';
+import { effectKit } from '@kit.ArkGraphics2D';
 
 const color = new ArrayBuffer(96);
-let opts : image.InitializationOptions = {
+let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
   size: {
     height: 4,
     width: 6
   }
-}
+};
 image.createPixelMap(color, opts).then((pixelMap) => {
   effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
     if (error) {
@@ -616,7 +616,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       let color = colorPicker.getReverseColor();
       console.info('get reverse color =' + color);
     }
-  })
+  });
 });
 ```
 
@@ -646,7 +646,7 @@ ellipticalGradientBlur(blurRadius: number, center: EllipticalMaskCenter, maskRad
 
 | 参数名 | 类型        | 必填 | 说明                                                         |
 | ------ | ----------- | ---- | ------------------------------------------------------------ |
-|  blurRadius   | number | 是   | 模糊半径，取正整数，单位为px，模糊半径大于60px时自动截断。模糊效果与所设置的模糊半径值成正比，值越大效果越明显。 |
+|  blurRadius   | number | 是   | 模糊半径，取正整数，单位为px，模糊半径大于60px时自动截断，小于等于0px时无效果。模糊效果与所设置的模糊半径值成正比，值越大效果越明显。 |
 |  center   | [EllipticalMaskCenter](#ellipticalmaskcenter23) | 是 | 椭圆形遮罩的中心点坐标。 |
 |  maskRadius   | [EllipticalMaskRadius](#ellipticalmaskradius23) | 是 | 椭圆形遮罩在X轴和Y轴方向的半径。 |
 |  fractionStops   | [FractionStop](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#fractionstop12)[] | 是 | 渐变模糊位置与程度数组。数组元素为二元数组，第一个元素表示位置，第二个元素表示模糊程度。位置取值范围为[0, 1]，椭圆中心对应位置0，椭圆边界对应位置1。模糊程度取值范围为[0, 1]，0表示无模糊，大于1的值自动转为1。位置参数值需严格递增，数组长度不能小于2，最大为12。 |
@@ -664,9 +664,9 @@ import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // 传入读取的图片数据
-function ImageEllipticalGradientBlur(Image: ArrayBuffer): Promise<image.PixelMap> {
+function ImageEllipticalGradientBlur(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
   return new Promise((resolve, reject) => {
-    let imageSource = image.createImageSource(Image);
+    let imageSource = image.createImageSource(imageBuffer);
     let blurRadius:number = 25;
     let fractionStops:FractionStop[] = [[0, 0.2], [0.5, 0.7]];
     let maskRadius:effectKit.EllipticalMaskRadius = [1, 1];

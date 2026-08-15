@@ -15,7 +15,7 @@
 
 type ISendable = lang.ISendable
 
-ISendable是所有Sendable类型（除`null`和`undefined`）的父类型。自身没有定义任何必须实现的方法和属性。
+ISendable是所有Sendable类型（除`null`和`undefined`）的父类型。自身没有定义任何必需实现的方法和属性。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -154,9 +154,9 @@ ArkTS TypedArray遍历函数类型，被TypedArray类的forEach()接口使用。
 
 | 参数名  | 类型   | 必填 | 说明                          |
 | ------- | ------ | ---- | --------------------------- |
-| value | ElementType | 否 | 当前遍历的ArkTS TypedArray元素。 |
-| index | number | 否 | 当前遍历的ArkTS TypedArray元素索引，从0开始。 |
-| array | ArrayType | 否 | 当前遍历的ArkTS TypedArray实例。 |
+| value | ElementType | 是 | 当前遍历的ArkTS TypedArray元素。 |
+| index | number | 是 | 当前遍历的ArkTS TypedArray元素索引，从0开始。 |
+| array | ArrayType | 是 | 当前遍历的ArkTS TypedArray实例。 |
 
 ## TypedArrayMapCallback
 type TypedArrayMapCallback\<ElementType, ArrayType> = (value: ElementType, index: number, array: ArrayType) => ElementType
