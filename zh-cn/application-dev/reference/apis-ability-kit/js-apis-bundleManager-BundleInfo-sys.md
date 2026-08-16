@@ -12,7 +12,7 @@
 >
 > 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块首批接口从API version 20 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 当前页面仅包含本模块的系统接口，其他公开接口参见（[BundleInfo](js-apis-bundleManager-bundleInfo.md)）。
 
@@ -75,3 +75,22 @@ import { bundleManager } from '@kit.AbilityKit';
 | bundleName<sup>23+</sup>   | string             | 否   | 是   | 应用包名。默认值为空字符串。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
 | moduleName<sup>23+</sup>   | string             | 否   | 是   | Ability所属的模块名称。默认值为空字符串。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
 | abilityName<sup>23+</sup>  | string             | 否   | 是   | Ability名称。默认值为空字符串。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+
+## AppClonePreference
+
+应用分身偏好设置，用于配置应用启动时主应用和分身应用的选择策略。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称      | 类型           | 只读 | 可选 | 说明                        |
+| --------- | -------------- | ---- | ---- | --------------------------- |
+| mode | [AppClonePreferenceMode](js-apis-bundleManager-sys.md#appclonepreferencemode)         | 否   | 否   | 表示应用分身偏好设置的模式。 |
+| appIndex | ArkTS-Dyn: number<br> ArkTS-Sta: int         | 否   | 是   | 表示应用分身索引。<br>当mode取值为AppClonePreferenceMode.CLONE_APP时为必填参数，用于指定具体的分身应用，取值范围为1~5的整数（系统最多支持5个分身）。   |

@@ -6,7 +6,7 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块提供系统管理能力。
+本模块提供系统管理能力，包括NTP时间服务器设置、OTA升级策略管理、系统更新管理、按键事件处理策略、日志收集、设备激活锁管理等功能。适用于企业设备管理场景，帮助企业管理员统一管控设备系统配置、升级策略和安全策略，提升企业设备管理效率和安全性。
 
 > **说明：**
 > 
@@ -26,7 +26,7 @@ import { systemManager } from '@kit.MDMKit';
 
 setNTPServer(admin: Want, server: string): void
 
-设置NTP(Network Time Protocol)时间服务器。
+设置NTP(Network Time Protocol)时间服务器。设置成功后，系统将使用指定的NTP服务器进行时间同步，校准系统时间。适用于企业设备需要统一时间同步的场景，确保企业设备时间与标准时间保持一致，避免因时间不准确导致的业务问题，如日志时间戳不一致、证书验证失败等。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -79,7 +79,7 @@ try {
 
 getNTPServer(admin: Want): string
 
-获取NTP时间服务器信息。
+获取NTP时间服务器信息。适用于需要查询当前设备配置的NTP服务器地址的场景，用于验证时间同步配置是否正确，或在进行策略调整前获取当前配置。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -122,8 +122,8 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
-  systemManager.getNTPServer(wantTemp);
-  console.info('Succeeded in getting NTP server.');
+  let result: string = systemManager.getNTPServer(wantTemp);
+  console.info(`Succeeded in getting NTP server. result: ${result}`);
 } catch (err) {
   console.error(`Failed to get ntp server. Code is ${err.code}, message is ${err.message}`);
 }
@@ -133,7 +133,7 @@ try {
 
 setOtaUpdatePolicy(admin: Want, policy: OtaUpdatePolicy): void
 
-设置升级策略。内网升级场景下，需要先调用[systemManager.notifyUpdatePackages](#systemmanagernotifyupdatepackages)接口通知系统更新包，再调用该接口设置升级策略。
+设置升级策略。设置成功后，系统将按照指定的策略类型进行OTA升级处理，不同策略类型对应不同的升级行为。内网升级场景下，需要先调用[systemManager.notifyUpdatePackages](#systemmanagernotifyupdatepackages)接口通知系统更新包，再调用该接口设置升级策略。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -175,7 +175,7 @@ let wantTemp: Want = {
 // 默认升级策略
 let otaUpdatePolicy1: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.DEFAULT,
-  "version": "version_1.0.0.0",
+  "version": "version_1.0.0.0"
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy1);
@@ -186,7 +186,7 @@ try {
 // 禁止升级
 let otaUpdatePolicy2: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.PROHIBIT,
-  "version": "version_1.0.0.1",
+  "version": "version_1.0.0.1"
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy2);
@@ -198,7 +198,7 @@ try {
 let otaUpdatePolicy3: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.UPDATE_TO_SPECIFIC_VERSION,
   "version": "version_1.0.0.2",
-  "latestUpdateTime": 1716343200, // 时间戳
+  "latestUpdateTime": 1716343200 // 时间戳
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy3);
@@ -211,7 +211,7 @@ let otaUpdatePolicy4: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.WINDOWS,
   "version": "version_1.0.0.3",
   "installStartTime": 1716281049, // 时间戳
-  "installEndTime": 1716343200, // 时间戳
+  "installEndTime": 1716343200 // 时间戳
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy4);
@@ -223,7 +223,7 @@ try {
 let otaUpdatePolicy5: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.POSTPONE,
   "version": "version_1.0.0.4",
-  "delayUpdateTime": 5, // 单位（小时）
+  "delayUpdateTime": 5 // 单位（小时）
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy5);
@@ -235,7 +235,7 @@ try {
 let otaUpdatePolicy6: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.DEFAULT,
   "version": "version_1.0.0.5",
-  "disableSystemOtaUpdate": true,
+  "disableSystemOtaUpdate": true
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy6);
@@ -249,7 +249,7 @@ try {
 
 getOtaUpdatePolicy(admin: Want): OtaUpdatePolicy
 
-查询升级策略。
+查询升级策略。适用于需要获取当前设备OTA升级策略配置的场景，用于验证策略是否正确下发，或在进行策略调整前获取当前策略配置。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -292,7 +292,7 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
-  let policy: systemManager.OtaUpdatePolicy= systemManager.getOtaUpdatePolicy(wantTemp);
+  let policy: systemManager.OtaUpdatePolicy = systemManager.getOtaUpdatePolicy(wantTemp);
   console.info(`Succeeded in getting update policy: ${JSON.stringify(policy)}`);
 } catch (err) {
   console.error(`Failed to get update policy. Code is ${err.code}, message is ${err.message}`);
@@ -345,7 +345,7 @@ notifyUpdatePackages(admin: Want, packageInfo: UpdatePackageInfo): Promise&lt;vo
 import { systemManager } from '@kit.MDMKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Want } from '@kit.AbilityKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -367,9 +367,9 @@ let fileDir = "/xxxx/xxxx/";
 let path1: string = "update_sd_base.zip";
 let path2: string = "update_sd_cust_xxxxx_all_cn.zip";
 let path3: string = "update_sd_preload_xxxxx_all_cn_R1.zip";
-let fd1: number = fs.openSync(fileDir + path1, fs.OpenMode.READ_ONLY).fd;
-let fd2: number = fs.openSync(fileDir + "xxxxx/" + path2, fs.OpenMode.READ_ONLY).fd;
-let fd3: number = fs.openSync(fileDir + "xxxxx/" + path3, fs.OpenMode.READ_ONLY).fd;
+let fd1: number = fileIo.openSync(fileDir + path1, fileIo.OpenMode.READ_ONLY).fd;
+let fd2: number = fileIo.openSync(fileDir + "xxxxx/" + path2, fileIo.OpenMode.READ_ONLY).fd;
+let fd3: number = fileIo.openSync(fileDir + "xxxxx/" + path3, fileIo.OpenMode.READ_ONLY).fd;
 let package1: systemManager.Package = {
   // 需根据实际情况进行替换
   "type": systemManager.PackageType.FIRMWARE,
@@ -408,7 +408,7 @@ systemManager.notifyUpdatePackages(wantTemp, updatePackageInfo).then(() => {
 
 getUpdateResult(admin: Want, version: string): Promise&lt;UpdateResult&gt;
 
-获取系统更新结果。使用Promise异步回调。
+获取系统更新结果。使用Promise异步回调。适用于需要检查系统更新是否成功的场景，帮助企业管理员了解设备升级状态，及时处理更新失败的情况，确保设备系统版本符合企业要求。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -462,7 +462,7 @@ systemManager.getUpdateResult(wantTemp, "1.0").then((result:systemManager.Update
 
 getUpdateAuthData(admin: Want): Promise&lt;string&gt;
 
-获取系统更新的鉴权数据，用于校验系统更新信息。使用Promise异步回调。
+获取系统更新的鉴权数据，用于校验系统更新信息。使用Promise异步回调。适用于内网升级场景，企业管理员可以通过鉴权数据验证系统更新包的合法性和完整性，防止恶意更新包，提升系统安全性。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -576,15 +576,13 @@ try {
 
 isOtaUpdateNonceEnable(admin: Want): boolean
 
-查询OTA更新Nonce是否启用。
+查询OTA更新Nonce是否启用。适用于需要验证设备OTA更新安全配置的场景，帮助企业管理员确认Nonce校验功能状态，保障系统更新安全性。
 
 **起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-**设备行为差异：** 该接口在PC/2in1企业设备中可正常调用，在其他设备中返回801错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -612,7 +610,6 @@ isOtaUpdateNonceEnable(admin: Want): boolean
 | 9200002  | The administrator application does not have permission to manage the device. |
 | 9200016  | Service timeout. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例：**
 
@@ -703,7 +700,7 @@ try {
 
 removeDisallowedNearLinkProtocols(admin: Want, protocols: Array&lt;NearLinkProtocol&gt;, accountId: number): void
 
-为指定用户移除禁用的星闪协议名单。
+为指定用户移除禁用的星闪协议名单。移除成功后，指定用户可以重新使用移除列表中的星闪协议进行通信，恢复相应的协议连接能力。使用场景：在企业设备管理场景下，管理员可通过此接口移除之前设置的星闪协议禁用策略，允许用户恢复使用星闪协议进行设备间通信。适用于需要恢复特定用户星闪通信能力的场景，帮助企业管理员灵活调整用户设备的星闪协议访问权限，满足不同业务场景的通信需求。
 
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
@@ -766,7 +763,7 @@ try {
 
 getDisallowedNearLinkProtocols(admin: Want, accountId: number): Array&lt;NearLinkProtocol&gt;
 
-获取指定用户下禁用的星闪协议名单。
+获取指定用户下禁用的星闪协议名单。适用于需要查询用户当前星闪协议访问限制的场景，帮助企业管理员验证策略是否正确下发，或在进行策略调整前获取当前配置。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -883,7 +880,7 @@ try {
 
 getInstallLocalEnterpriseAppEnabled(admin: Want | null): boolean
 
-查询是否支持本地安装企业应用。<!--RP8--><!--RP8End-->
+查询是否支持本地安装企业应用。适用于需要验证设备本地安装企业应用功能是否开启的场景，帮助企业管理员确认策略配置状态，确保设备能够正常安装企业应用。<!--RP8--><!--RP8End-->
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -940,7 +937,7 @@ try {
 
 setAutoUnlockAfterReboot(admin: Want, isAllowed: boolean): void
 
-设置设备重启自动解锁，仅针对无锁屏密码设备生效。
+设置设备重启自动解锁，仅针对无锁屏密码设备生效。适用于企业无人值守设备或需要快速重启恢复服务的场景，避免因手动解锁导致的设备停机时间，提升设备运维效率和业务连续性。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -994,7 +991,7 @@ try {
 
 getAutoUnlockAfterReboot(admin: Want | null): boolean
 
-获取设备是否重启自动解锁。
+获取设备是否重启自动解锁。适用于需要验证设备重启解锁策略是否正确配置的场景，帮助企业管理员确认设备自动解锁功能状态。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1039,8 +1036,8 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
-  systemManager.getAutoUnlockAfterReboot(wantTemp);
-  console.info('Succeeded in getting auto unlock after reboot.');
+  let result: boolean = systemManager.getAutoUnlockAfterReboot(wantTemp);
+  console.info(`Succeeded in getting auto unlock after reboot. result: ${result}`);
 } catch (err) {
   console.error(`Failed to get auto unlock after reboot. Code is ${err.code}, message is ${err.message}`);
 }
@@ -1115,7 +1112,7 @@ try {
 
 removeKeyEventPolicies(admin: Want, keyCodes: Array&lt;KeyCode&gt;): void
 
-删除按键事件处理策略。
+删除按键事件处理策略。删除成功后，系统将恢复对指定按键事件的默认处理行为。适用于需要恢复按键默认行为的场景，帮助企业管理员灵活调整设备按键响应策略，满足不同业务场景的需求。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1157,7 +1154,7 @@ let wantTemp: Want = {
 };
 
 let keyCodes: Array<systemManager.KeyCode> = [
-  systemManager.KeyCode.POWER, systemManager.KeyCode.VOLUME_UP,
+  systemManager.KeyCode.POWER, systemManager.KeyCode.VOLUME_UP
 ];
 
 try {
@@ -1172,7 +1169,7 @@ try {
 
 getKeyEventPolicies(admin: Want | null): Array&lt;KeyEventPolicy&gt;
 
-获取按键事件处理策略。
+获取按键事件处理策略。适用于需要查询当前按键事件处理策略配置的场景，帮助企业管理员验证策略是否正确下发，或在进行策略调整前获取当前配置。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1229,7 +1226,7 @@ try {
 
 startCollectLog(admin: Want): Promise&lt;void&gt;
 
-开始收集设备上已生成并存储至硬盘的[FaultType](../apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype)类型的faultlog日志，不支持收集未存储至硬盘的faultlog日志、应用业务日志和系统运行日志。
+开始收集设备上已生成并存储至硬盘的[FaultType](../apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype)类型的faultlog日志，不支持收集未存储至硬盘的faultlog日志、应用业务日志和系统运行日志。使用Promise异步回调。
 
 - 调用接口后，系统会启动一个日志收集任务，任务启动后接口立即返回。任务可能会因为系统性能等原因导致收集失败。
 - 允许多个MDM应用调用，不同MDM应用在不同用户下收集的日志分开保存，互不影响。同一时间只允许一个MDM应用启动日志收集任务，在任务执行完成前调用本接口会返回错误码9201009，任务执行完成后，允许其他MDM应用调用。
@@ -1352,7 +1349,7 @@ try {
 
 setActivationLockDisabled(admin: Want, isDisabled: boolean, credential?: string): Promise&lt;void&gt;
 
-禁用/启用设备激活锁。设备激活锁被禁用后，将无法使用查找设备功能。该功能只适用于特定设备<!--RP5--><!--RP5End-->
+禁用/启用设备激活锁。使用Promise异步回调。设备激活锁被禁用后，将无法使用查找设备功能。该功能只适用于特定设备<!--RP5--><!--RP5End-->
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1419,7 +1416,7 @@ systemManager.setActivationLockDisabled(wantTemp, isDisabled, credential).then((
 
 isActivationLockDisabled(admin: Want): Promise&lt;boolean&gt;
 
-获取设备激活锁禁用状态。
+获取设备激活锁禁用状态。使用Promise异步回调。适用于需要验证设备激活锁功能状态的场景，帮助企业管理员确认设备的安全配置，特别是在设备转让或回收时需要了解激活锁状态。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1546,7 +1543,7 @@ try {
 
 getInstallLocalEnterpriseAppEnabledForAccount(admin: Want | null, accountId: number): boolean
 
-查询指定用户是否支持本地安装企业应用。<!--RP8--><!--RP8End-->
+查询指定用户是否支持本地安装企业应用。适用于需要验证特定用户本地安装企业应用功能是否开启的场景，帮助企业管理员确认策略配置状态，确保用户能够正常安装企业应用。<!--RP8--><!--RP8End-->
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1608,6 +1605,8 @@ try {
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称                | 类型     | 只读  | 可选 | 说明            |
 | ----------------- | ------ | --- | --- |------------- |
 | versionName       | string | 否   | 否 |待更新的系统版本名称。   |
@@ -1619,6 +1618,8 @@ try {
 升级策略。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称         | 类型     | 只读 | 可选 | 说明                            |
 | ----------- | --------| ---- | -----| -------------------------- |
@@ -1636,12 +1637,14 @@ try {
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称                | 值  | 说明    |
 | ----------------- | ---- | ----- |
-| DEFAULT | 0 | 默认升级策略。周期提示用户，用户确认后升级。 |
+| DEFAULT | 0 | 默认升级策略。周期弹框提醒用户升级。周期从24小时开始逐渐延长。 |
 | PROHIBIT  | 1 | 禁止升级策略。 |
-| UPDATE_TO_SPECIFIC_VERSION | 2 | 强制升级策略。需指定最晚升级时间（latestUpdateTime）参数。 |
-| WINDOWS | 3 | 指定时间窗口升级策略。需指定时间窗口参数（installStartTime、installEndTime）。 |
+| UPDATE_TO_SPECIFIC_VERSION | 2 | 强制升级策略。需指定最晚升级时间（latestUpdateTime）参数。1. 距离最晚升级时间大于48小时未升级，提醒弹框每24小时常规提醒一次。2. 距离最晚升级时间小于48小时未升级，每隔X小时周期提醒安装升级，消息处于通知中心，且不可移除。3. 超过最晚升级时间还未升级，弹出闲时强制升级提醒。  |
+| WINDOWS | 3 | 指定时间窗口升级策略。需指定时间窗口参数（installStartTime、installEndTime）。时间窗口必须大于5分钟。1. 配置时间窗口[A，B]，获取到窗口中的随机升级时间C，到达时间后满足空闲条件，自动升级。2. 配置时间窗口[A，B]，获取到窗口中的随机升级时间C，到达时间后不满足空闲条件，B-C大于半小时，在C和B之间重新刷新一个随机时间D，到达D时间后满足空闲条件，自动升级。3. 配置时间窗口[A，B]，获取到窗口中的随机升级时间C，到达时间后不满足空闲条件，B-C大于半小时，在C和B之间重新刷新一个随机时间D，到达D时间后不满足空闲条件，24小时后再检测，即窗口任务推迟到下一个[A，B]窗口。4. 配置时间[A，B]，获取到窗口中的随机升级时间C，到达时间后不满足空闲条件，B-C小于或等于半小时，24小时后再检测，即窗口任务推迟到下一个[A，B]窗口。 |
 | POSTPONE | 4 | 延迟升级策略。延迟指定时间（delayUpdateTime）后进入DEFAULT模式，周期提示用户升级。 |
 
 ## UpdatePackageInfo
@@ -1649,6 +1652,8 @@ try {
 系统更新包信息。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称                | 类型     | 只读  | 可选 | 说明            |
 | ----------------- | ------ | --- | ---- |------------- |
@@ -1663,6 +1668,8 @@ try {
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称                | 类型     | 只读  | 可选 | 说明            |
 | ----------------- | ------ | --- | --- | ------------- |
 | type       | [PackageType](#packagetype) | 否   | 否 |  系统更新包类型。   |
@@ -1675,6 +1682,8 @@ try {
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称                | 类型     | 只读  | 可选 | 说明            |
 | ----------------- | ------ | --- | --- | ------------- |
 | notify       | [NotifyDescription](#notifydescription) | 否   | 是 | 企业自定义更新通知说明。   |
@@ -1684,6 +1693,8 @@ try {
 企业自定义更新通知说明。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称                | 类型     | 只读  |  可选 | 说明            |
 | ----------------- | ------ | --- | ---- | ------------- |
@@ -1695,6 +1706,8 @@ try {
 系统更新结果信息。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称                | 类型   | 只读  | 可选   | 说明            |
 | ----------------- | ------ | ------ | ------ | ------------- |
@@ -1708,6 +1721,8 @@ try {
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称                | 类型     | 只读  | 可选 | 说明            |
 | ----------------- | ------ | ------ | ------ | ------------- |
 | code       | number | 否 | 否 | 错误码。   |
@@ -1719,6 +1734,8 @@ try {
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称                | 值  | 说明    |
 | ----------------- | ---- | ----- |
 | FIRMWARE | 1 | 固件。 |
@@ -1728,6 +1745,8 @@ try {
 系统更新状态。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称               | 值  | 说明    |
 | -----------------  | ---- | ----- |

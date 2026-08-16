@@ -6,7 +6,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-描述通知的请求。
+定义了通知请求的数据结构，用于描述一条通知的全部信息，包括通知内容、标识、展示样式、交互行为等。
 
 > **说明：**
 >
@@ -17,12 +17,14 @@
 
 ## NotificationRequest
 
+定义了通知请求的数据结构，用于描述一条通知的全部信息，包括通知内容、标识、展示样式、交互行为等。
+
 **系统能力**：SystemCapability.Notification.Notification
 
 | 名称                            | 类型                                                    |  只读 | 可选 | 说明                                                                    |
 |-------------------------------| -------------------------------------------------------- | ----- | --- |-----------------------------------------------------------------------|
 | trigger<sup>23+</sup>          | [Trigger](#trigger23) |   否  | 是  | 条件对象。默认为空。 <br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本**：23<br/>**ArkTS-Sta起始版本**：23 |
-| overlayIcon<sup>11+</sup>      | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)             |   否  | 是  | 通知重叠图标，默认为空。图像像素的总字节数不超过192KB。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23                                                 |
+| overlayIcon<sup>11+</sup>      | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)             |   否  | 是  | 通知重叠图标，默认为空。图标像素的总字节数不超过192KB。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23                                                 |
 | classification                | string                                                   |   否  | 是  | 通知分类。<br>**系统接口**：此接口为系统接口。预留能力，暂未支持。<br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：23                                |
 | isRemoveAllowed<sup>8+</sup>   | boolean                                                  |   否  | 是  | 通知是否能被移除（点击通知下方删除按钮无法删除，左滑不出现删除按钮）。默认为true。<br> - true：是。<br> - false：否。<br>**系统接口**：此接口为系统接口。<br>**需要权限**：ohos.permission.SET_UNREMOVABLE_NOTIFICATION <br/>**ArkTS-Dyn起始版本**：8<br/>**ArkTS-Sta起始版本**：23 |
 | source<sup>8+</sup>            | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                                    |   是  | 是  | 通知源。<br>**系统接口**：此接口为系统接口。预留能力，暂未支持。<br/>**ArkTS-Dyn起始版本**：8<br/>**ArkTS-Sta起始版本**：23                                |

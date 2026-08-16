@@ -28,7 +28,7 @@ import { common } from '@kit.AbilityKit';
 ### sendData
 sendData(data: string): void
 
-给AgentExtensionAbility服务端发送数据。
+客户端调用此接口向AgentExtensionAbility服务端发送数据。
 
 **原子化服务API(仅ArkTS-Dyn)**：从 API version 24开始，该接口支持在原子化服务中使用。
 
@@ -70,8 +70,8 @@ struct AgentExtensionAbility {
     onData: (data: string) => {
       console.info(`${TAG} dataCallBack received data: ${data}.`);
     },
-    onAuth: (handShakeData: string): void => {
-      console.info(`onData, data: ${handShakeData}.`);
+    onAuth: (handshakeData: string): void => {
+      console.info(`onAuth, data: ${handshakeData}.`);
     },
     onDisconnect: () => {
       console.info(`${TAG} dataCallBack onDisconnect.`);
@@ -116,7 +116,7 @@ struct AgentExtensionAbility {
       // 连接AgentExtension
       agentManager.connectAgentExtensionAbility(startWant, agentId, this.dataCallBack)
         .then((proxy: common.AgentProxy) => {
-          console.info(TAG + `try to connectAgentExtensionAbility ${proxy}}`);
+          console.info(TAG + `try to connectAgentExtensionAbility ${proxy}`);
           this.comProxy = proxy;
           try {
             console.info(`${TAG} sendData.`);
@@ -145,7 +145,7 @@ struct AgentExtensionAbility {
 
 authorize(handshakeData: string): void
 
-向AgentExtensionAbility服务端发送安全认证请求。
+客户端调用此接口向AgentExtensionAbility服务端发送安全认证请求。
 
 **原子化服务API(仅ArkTS-Dyn)**：从 API version 24开始，该接口支持在原子化服务中使用。
 
@@ -187,8 +187,8 @@ struct AgentExtensionAbility {
     onData: (data: string) => {
       console.info(`${TAG} dataCallBack received data: ${data}.`);
     },
-    onAuth: (handShakeData: string): void => {
-      console.info(`onData, data: ${handShakeData}.`);
+    onAuth: (handshakeData: string): void => {
+      console.info(`onAuth, data: ${handshakeData}.`);
     },
     onDisconnect: () => {
       console.info(`${TAG} dataCallBack onDisconnect.`);
@@ -233,7 +233,7 @@ struct AgentExtensionAbility {
       // 连接AgentExtension
       agentManager.connectAgentExtensionAbility(startWant, agentId, this.dataCallBack)
         .then((proxy: common.AgentProxy) => {
-          console.info(TAG + `try to connectAgentExtensionAbility ${proxy}}`);
+          console.info(TAG + `try to connectAgentExtensionAbility ${proxy}`);
           this.comProxy = proxy;
           try {
             console.info(`${TAG} authorize.`);

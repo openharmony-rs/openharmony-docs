@@ -23,18 +23,21 @@ Invalid Parameter. Error message: messageInfo.
 
 **可能原因**
 
-1. tokenId值为0。
-2. 指定的权限名为空或者权限名长度大于256。
-3. 请求授权/撤销权限的flag取值非法。
-4. 注册监听的参数检查错误。
-5. 指定的Context不属于当前应用。
-6. 请求的权限不属于同一个权限组。
-7. 请求的权限中存在应用未声明的权限。
-8. 请求的全局开关类型非法。
-9. 指定的权限名不是[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)。
-10. 指定的数组成员个数超过1024或成员均为无效值。
-11. 请求查看权限使用记录的起始结束时间不合法。
-12. 指定的权限名未在应用中声明。
+- tokenId值为0。
+- 指定的权限名为空或者权限名长度大于256。
+- 请求授权/撤销权限的flag取值非法。
+- 注册监听的参数检查错误。
+- 指定的Context不属于当前应用。
+- 请求的权限不属于同一个权限组。
+- 请求的权限中存在应用未声明的权限。
+- 请求的全局开关类型非法。
+- 指定的权限名不是[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)。
+- 指定的数组成员个数超过1024或成员均为无效值。
+- 请求查看权限使用记录的起始结束时间不合法。
+- 指定的权限名未在应用中声明。
+<!--Del-->
+- 指定的子身份资料标识符不是大于0的整数、不存在，或不属于当前用户。
+<!--DelEnd-->
 
 **处理步骤**
 
@@ -94,8 +97,12 @@ The API is not used in pair with others.
 
 **可能原因**
 
-1. 当前接口在未解除配套关系前，使用相同入参重复调用。
-2. 当前接口在未配套使用的情况下，单独调用。
+- 当前接口在未解除配套关系前，使用相同入参重复调用。
+- 当前接口在未配套使用的情况下，单独调用。
+<!--Del-->
+- 查询当前用户的权限使用记录开关状态时，未配套调用设置当前用户权限使用记录开关状态的接口。
+- 查询当前用户的权限弹窗开关状态时，未配套调用设置当前用户权限弹窗开关状态的接口。
+<!--DelEnd-->
 
 **处理步骤**
 
@@ -104,12 +111,18 @@ The API is not used in pair with others.
 - 注册监听接口和注销监听接口需配套使用：调用注册监听接口后，在未调用对应注销监听接口前，不可再次使用相同的入参调用注册监听接口；注销监听接口需要在对应注册监听接口调用之后方可调用。
 <!--Del-->
 - 启动记录的接口和停止记录的接口需配套使用：调用启动记录的接口后，在未调用对应停止记录的接口前，不可再次使用相同的入参调用启动记录接口；停止记录的接口需要在对应启动记录的接口调用之后方可调用。
+- 查询当前用户权限使用记录开关状态的接口和设置当前用户权限使用记录开关状态的接口需配套使用。
+- 查询当前用户权限弹窗开关状态的接口和设置当前用户权限弹窗开关状态的接口需配套使用。
 <!--DelEnd-->
 
 相关方法：
 <!--Del-->
 - 开始使用权限：[privacyManager.startUsingPermission](js-apis-privacyManager-sys.md#privacymanagerstartusingpermission)
 - 停止使用权限：[privacyManager.stopUsingPermission](js-apis-privacyManager-sys.md#privacymanagerstopusingpermission)
+- 设置当前用户权限使用记录开关状态：[privacyManager.setPermissionUsedRecordToggleStatus](js-apis-privacyManager-sys.md#privacymanagersetpermissionusedrecordtogglestatus18)
+- 查询当前用户权限使用记录开关状态：[privacyManager.getPermissionUsedRecordToggleStatus](js-apis-privacyManager-sys.md#privacymanagergetpermissionusedrecordtogglestatus18)
+- 设置当前用户权限弹窗开关状态：[setPermissionRequestToggleStatus](js-apis-abilityAccessCtrl-sys.md#setpermissionrequesttogglestatus12)
+- 查询当前用户权限弹窗开关状态：[getPermissionRequestToggleStatus](js-apis-abilityAccessCtrl-sys.md#getpermissionrequesttogglestatus12)
 - 订阅权限使用状态变更事件：[privacyManager.on](js-apis-privacyManager-sys.md#privacymanageron)
 - 取消订阅权限使用状态变更事件：[privacyManager.off](js-apis-privacyManager-sys.md#privacymanageroff)
 <!--DelEnd-->
@@ -136,32 +149,36 @@ The number of listeners exceeds the limit.
 及时释放已注册的无用的监听器。
 
 <!--Del-->
-## 12100006 指定的应用不支持被授予或被取消授予指定的权限
+## 12100006 指定操作不允许
 
 **错误信息**
 
-The specified application does not support the permissions granted or ungranted as specified.
+Operation not allowed.
 
 **错误描述**
 
-当指定的应用不支持被授予或被取消授予指定的权限时，将返回该错误码。
+当调用的操作不满足当前场景的执行条件时，将返回该错误码。
 
 **可能原因**
 
-1. 输入的tokenId是远端设备的身份标识，尚未支持分布式授权和取消授权。
-2. 入参指定的tokenId为沙箱应用，被禁止申请指定的权限。
+1. 授予、撤销授权或查询权限标志场景下，输入的tokenId是远端设备的身份标识，或指定应用为不支持该操作的沙箱应用。
+2. 设置当前用户权限弹窗开关场景下，该权限的开关状态已通过指定子身份资料的接口设置。
+3. 设置指定子身份资料权限弹窗开关场景下，该权限的开关状态已通过当前用户的接口设置。
+4. 设置当前用户权限使用记录开关场景下，开关状态已通过指定子身份资料的接口设置。
+5. 设置指定子身份资料权限使用记录开关场景下，开关状态已通过当前用户的接口设置。
+
 
 **处理步骤**
 
-1. 请确认tokenId的获取方式是否正确。
-2. 确认待授权的沙箱应用是否为特殊的受限沙箱应用进程，部分模式下的沙箱应用被禁止授予大部分权限。
+1. 授予、撤销授权或查询权限标志场景下，请确认tokenId表示本地应用，且目标应用不是受限沙箱应用。
+2. 设置权限弹窗开关或权限使用记录开关场景下，请使用与当前开关状态一致的接口，或先清除另一接口设置的开关状态。
 <!--DelEnd-->
 
 ## 12100007 系统服务工作异常
 
 **错误信息**
 
-The service is abnormal.
+Service exception.
 
 **错误描述**
 

@@ -1,7 +1,7 @@
 # AppServiceExtensionContext (应用后台服务扩展组件上下文)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @yewei0794-->
+<!--Owner: @xialiangwei-->
 <!--Designer: @jsjzju-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
@@ -168,7 +168,7 @@ connectServiceExtensionAbility(want: Want, callback: ConnectOptions): number
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
-| 16000011 | The context does not exist.        |
+| 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
 
 **示例：**
@@ -187,8 +187,8 @@ const TAG: string = '[AppServiceExtensionAbility]';
 export default class AppServiceExtension extends AppServiceExtensionAbility {
   connection: number = 0;
 
-  onCreate(localWant: Want) {
-    let want: Want = {
+  onCreate(want: Want) {
+    let wantInfo: Want = {
       bundleName: 'com.example.myapp',
       abilityName: 'MyAbility'
     };
@@ -207,7 +207,7 @@ export default class AppServiceExtension extends AppServiceExtensionAbility {
 
 
     try {
-      this.connection = this.context.connectServiceExtensionAbility(want, callback);
+      this.connection = this.context.connectServiceExtensionAbility(wantInfo, callback);
     } catch (paramError) {
       commRemote = null;
       // 处理入参错误异常
@@ -288,7 +288,7 @@ disconnectServiceExtensionAbility(connection: number): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| connection | number | 是 | 在[connectServiceExtensionAbility](#connectserviceextensionability)中返回的连接id。 |
+| connection | number | 是 | 在[connectServiceExtensionAbility](#connectserviceextensionability)中返回的连接ID。 |
 
 **返回值：**
 
@@ -302,7 +302,7 @@ disconnectServiceExtensionAbility(connection: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 16000011 | The context does not exist.        |
+| 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
 
 **示例：**
@@ -376,7 +376,7 @@ terminateSelf(): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
-| 16000011 | The context does not exist.        |
+| 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
 
 **示例：**

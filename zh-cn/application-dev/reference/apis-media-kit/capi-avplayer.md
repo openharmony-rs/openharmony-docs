@@ -8,7 +8,7 @@
 
 ## 概述
 
-提供用于播放媒体源的接口。AVPlayer基于状态机设计，支持音频和视频播放、播放控制、播放速率和音量调节等功能。
+提供用于播放媒体源的接口。AVPlayer基于状态机设计，支持音频和视频播放、播放控制、播放速率和音量调节等功能。适用于音乐播放器、视频播放器、在线教育应用、短视频应用等场景。
 
 根据开发需求，参考对应的开发指南及样例。
 
@@ -16,6 +16,8 @@
 - [使用AVPlayer播放视频](../../media/media/using-ndk-avplayer-for-video-playback.md)
 
 **起始版本：** 11
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
 ## 文件汇总
 

@@ -50,7 +50,7 @@
 根据用户交互操作场景，弹窗可分为**模态弹窗**和**非模态弹窗**两种类型，其区别在于用户是否必须对其做出响应。
 
 * **模态弹窗：** 为强交互形式，会中断用户当前的操作流程，要求用户必须做出响应才能继续其他操作，通常用于需要向用户传达重要信息的场景。
-* **非模态弹窗：** 为弱交互形式，不会影响用户当前操作行为，用户可以不对其进行回应，通常都有时间限制，出现一段时间后会自动消失。一般用于告诉用户信息内容外还需要用户进行功能操作的场景。
+* **非模态弹窗：** 为弱交互形式，不会影响用户当前操作行为，用户可以不对其进行回应，通常都有时间限制，出现一段时间后会自动消失。一般仅用于告诉用户信息内容的场景。
 
 > **说明：** 
 >
@@ -60,7 +60,7 @@
 >
 > 系统弹窗由系统弹出，出于安全考虑，不支持自定义样式。
 >
-> 系统弹窗出现时，调用非系统弹窗的显示接口（例如：[promptAction](../reference/apis-arkui/js-apis-promptAction.md)的[openCustomDialog](../reference/apis-arkui/js-apis-promptAction.md#promptactionopencustomdialogdeprecated)、[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)的[open](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#open)等），禁止该类弹窗显示。
+> 系统弹窗出现时，调用非系统弹窗的显示接口（例如：[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12-1)、[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)的[open](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#open)等），禁止该类弹窗显示。
 
 ## 使用场景
 
@@ -74,6 +74,8 @@
 | [绑定模态页面（bindContentCover/bindSheet）](arkts-modal-overview.md)  | 当需要新的界面覆盖在旧的界面上，且旧的界面不消失的一种转场方式时，例如缩略图片点击后查看大图等，应优先考虑使用此弹窗。 |
 |  [即时反馈（Toast）](arkts-create-toast.md)  | 当需要在一个小的窗口中提供用户当前操作的简单反馈时，例如提示文件保存成功等，应优先考虑使用此弹窗。 |
 |  [设置浮层（OverlayManager）](arkts-create-overlaymanager.md)  | 当需要完全自定义内容、行为、样式时，可以使用浮层将UI展示在页面之上，例如音乐/语音播放悬浮球/胶囊等，应优先考虑使用此弹窗。 |
+
+<!--RP1--><!--RP1End-->
 
 ## 规格约束
 

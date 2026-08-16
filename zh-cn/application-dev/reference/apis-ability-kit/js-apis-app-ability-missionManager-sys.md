@@ -2060,7 +2060,7 @@ ArkTS-Sta: moveMissionsToForeground(missionIds: Array&lt;int&gt;, topMission: in
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | missionIds | ArkTS-Dyn: Array&lt;number&gt;<br/>ArkTS-Sta: Array&lt;int> | 是 | 任务ID数组。 |
-| topMission | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 待移动到最顶层的任务ID。默认值为-1，表示不指定特定任务，系统按照默认逻辑将任务移动到最顶层。 |
+| topMission | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 待移动到最顶层的任务ID。传入-1表示不指定特定任务，系统按照默认逻辑将任务移动到最顶层。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 执行结果回调函数。 |
 
 **错误码**：
@@ -2487,3 +2487,57 @@ try {
   console.error(`error: ${code}, ${message} `);
 }
 ```
+
+## MissionInfo<sup>9+</sup>
+
+type MissionInfo = _MissionInfo
+
+表示任务的详细信息。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型 | 说明 |
+| --- | --- |
+| [_MissionInfo](js-apis-inner-application-missionInfo-sys.md) | 表示任务的详细信息。 |
+
+## MissionListener<sup>9+</sup>
+
+type MissionListener = _MissionListener
+
+系统任务状态监听器。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型 | 说明 |
+| --- | --- |
+| [_MissionListener](js-apis-inner-application-missionListener-sys.md) | 系统任务状态监听器。 |
+
+## MissionSnapshot<sup>9+</sup>
+
+type MissionSnapshot = _MissionSnapshot
+
+任务快照信息。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型 | 说明 |
+| --- | --- |
+| [_MissionSnapshot](js-apis-inner-application-missionSnapshot-sys.md) | 任务快照信息。 |

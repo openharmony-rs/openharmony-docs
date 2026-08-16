@@ -12,7 +12,7 @@
 >
 > 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块首批接口从API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块为系统接口。
 
@@ -55,7 +55,7 @@ getRemoteAbilityInfo(elementName: ElementName, callback: AsyncCallback\<RemoteAb
 | 参数名      | 类型                                                         | 必填 | 说明                                                         |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | elementName | [ElementName](js-apis-bundleManager-elementName.md)          | 是   | ElementName信息。                                            |
-| callback    | AsyncCallback<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，调用成功返回err为null，data为RemoteAbilityInfo对象；调用失败err为错误对象, data为undefined。 |
+| callback    | AsyncCallback<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，调用成功返回err为null，data为RemoteAbilityInfo对象；调用失败err为错误对象，data为undefined。 |
 
 **错误码：**
 
@@ -223,7 +223,7 @@ try {
 
 getRemoteAbilityInfo(elementNames: Array\<ElementName>, callback: AsyncCallback\<Array\<RemoteAbilityInfo>>): void
 
-获取由elementName指定的远程设备上的应用的AbilityInfo数组信息。使用callback异步回调。
+获取由elementNames指定的远程设备上的应用的AbilityInfo数组信息。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -239,8 +239,8 @@ getRemoteAbilityInfo(elementNames: Array\<ElementName>, callback: AsyncCallback\
 
 | 参数名       | 类型                                                         | 必填 | 说明                                                         |
 | ------------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| elementNames | Array<[ElementName](js-apis-bundleManager-elementName.md)>   | 是   | ElementName信息,最大数组长度为10。                             |
-| callback     | AsyncCallback\<Array\<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，调用成功返回err为null，data为RemoteAbilityInfo数组对象；调用失败err为错误对象, data为undefined。 |
+| elementNames | Array<[ElementName](js-apis-bundleManager-elementName.md)>   | 是   | ElementName信息，最大数组长度为10。                             |
+| callback     | AsyncCallback\<Array\<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，调用成功返回err为null，data为RemoteAbilityInfo数组对象；调用失败err为错误对象，data为undefined。 |
 
 **错误码：**
 
@@ -331,7 +331,7 @@ try {
 
 getRemoteAbilityInfo(elementNames: Array\<ElementName>): Promise\<Array\<RemoteAbilityInfo>>
 
-获取由elementName指定的远程设备上的应用的AbilityInfo数组信息。使用Promise异步回调。
+获取由elementNames指定的远程设备上的应用的AbilityInfo数组信息。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -353,7 +353,7 @@ getRemoteAbilityInfo(elementNames: Array\<ElementName>): Promise\<Array\<RemoteA
 
 | 类型                                                         | 说明                              |
 | ------------------------------------------------------------ | --------------------------------- |
-| Promise\<Array<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | Promise对象，调用成功返回RemoteAbilityInfo对象；调用失败返回错误对象。 |
+| Promise\<Array<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | Promise对象，调用成功返回RemoteAbilityInfo对象列表；调用失败返回错误对象。 |
 
 **错误码：**
 
@@ -457,7 +457,7 @@ getRemoteAbilityInfo(elementName: ElementName, locale: string, callback: AsyncCa
 | ----------- | ------------------------------------------------------------ | ---- | -------------------------------------------------- |
 | elementName | [ElementName](js-apis-bundleManager-elementName.md)                 | 是   | ElementName信息。                            |
 | locale  | string |是 | 语言地区。 |
-| callback    | AsyncCallback<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，调用成功返回err为null，data为RemoteAbilityInfo对象；调用失败err为错误对象, data为undefined。 |
+| callback    | AsyncCallback<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，调用成功返回err为null，data为RemoteAbilityInfo对象；调用失败err为错误对象，data为undefined。 |
 
 **错误码：**
 
@@ -626,7 +626,7 @@ try {
 
 getRemoteAbilityInfo(elementNames: Array\<ElementName>, locale: string, callback: AsyncCallback\<Array\<RemoteAbilityInfo>>): void
 
-获取由elementName和locale指定的远程设备上的应用的AbilityInfo数组信息。使用callback异步回调。
+获取由elementNames和locale指定的远程设备上的应用的AbilityInfo数组信息。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -642,9 +642,9 @@ getRemoteAbilityInfo(elementNames: Array\<ElementName>, locale: string, callback
 
 | 参数名        | 类型                                                         | 必填 | 说明                                               |
 | ------------ | ------------------------------------------------------------ | ---- | -------------------------------------------------- |
-| elementNames | Array<[ElementName](js-apis-bundleManager-elementName.md)>          | 是   | ElementName信息,最大数组长度为10。                   |
+| elementNames | Array<[ElementName](js-apis-bundleManager-elementName.md)>          | 是   | ElementName信息，最大数组长度为10。                   |
 | locale  | string |是 | 语言地区。 |
-| callback     | AsyncCallback\<Array\<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，调用成功返回err为null，data为RemoteAbilityInfo数组对象；调用失败err为错误对象, data为undefined。 |
+| callback     | AsyncCallback\<Array\<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，调用成功返回err为null，data为RemoteAbilityInfo数组对象；调用失败err为错误对象，data为undefined。 |
 
 **错误码：**
 
@@ -735,7 +735,7 @@ try {
 
 getRemoteAbilityInfo(elementNames: Array\<ElementName>, locale: string): Promise\<Array\<RemoteAbilityInfo>>
 
-获取由elementName和locale指定的远程设备上的应用的AbilityInfo数组信息。使用Promise异步回调。
+获取由elementNames和locale指定的远程设备上的应用的AbilityInfo数组信息。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -751,14 +751,14 @@ getRemoteAbilityInfo(elementNames: Array\<ElementName>, locale: string): Promise
 
 | 参数名        | 类型                                                | 必填 | 说明                    |
 | ------------ | --------------------------------------------------- | ---- | ----------------------- |
-| elementNames | Array<[ElementName](js-apis-bundleManager-elementName.md)> | 是   | ElementName信息,最大数组长度为10。 |
+| elementNames | Array<[ElementName](js-apis-bundleManager-elementName.md)> | 是   | ElementName信息，最大数组长度为10。 |
 | locale  | string |是 | 语言地区。 |
 
 **返回值：**
 
 | 类型                                                         | 说明                              |
 | ------------------------------------------------------------ | --------------------------------- |
-| Promise\<Array<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | Promise对象，调用成功返回RemoteAbilityInfo对象；调用失败返回错误对象。 |
+| Promise\<Array<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | Promise对象，调用成功返回RemoteAbilityInfo对象列表；调用失败返回错误对象。 |
 
 **错误码：**
 
@@ -847,7 +847,7 @@ ArkTS-Dyn: getRemoteBundleVersionCode(deviceId: string, bundleName: string): Pro
 
 ArkTS-Sta: getRemoteBundleVersionCode(deviceId: string, bundleName: string): Promise\<long>
 
-获取指定远程设备上指定包名的应用版本信息。使用Promise异步回调。
+获取指定远程设备上指定包名的应用版本号。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -872,7 +872,7 @@ ArkTS-Sta: getRemoteBundleVersionCode(deviceId: string, bundleName: string): Pro
 
 | 类型                                                         | 说明                              |
 | ------------------------------------------------------------ | --------------------------------- |
-| ArkTS-Dyn: Promise\<number><br>ArkTS-Sta: Promise\<long> | Promise对象，调用成功返回版本信息；调用失败返回错误对象。 |
+| ArkTS-Dyn: Promise\<number><br>ArkTS-Sta: Promise\<long> | Promise对象，调用成功返回版本号；调用失败返回错误对象。 |
 
 **错误码：**
 

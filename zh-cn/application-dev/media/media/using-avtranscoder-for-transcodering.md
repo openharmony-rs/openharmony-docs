@@ -1,4 +1,4 @@
-# 使用AVTranscoder实现视频转码(ArkTS)
+# 使用AVTranscoder实现音视频转码(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @hanzhengshi-->
@@ -309,7 +309,7 @@
    this.avTranscoder!!.fdDst = this.file.fd;
    ```
 
-5. 配置视频转码参数，调用prepare()接口。
+5. 配置音视频转码参数，调用prepare()接口。
 
    > **说明：**
    >

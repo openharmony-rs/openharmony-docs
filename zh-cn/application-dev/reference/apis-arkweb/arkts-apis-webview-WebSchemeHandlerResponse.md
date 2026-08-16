@@ -12,6 +12,8 @@ WebSchemeHandlerResponse与WebResourceHandler配合使用：开发者构造WebSc
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 本Class首批接口从API version 12开始支持。
@@ -32,7 +34,11 @@ Response的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**示例：**
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -43,7 +49,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
-  schemeHandler: webview.WebSchemeHandler = new webview.WebSchemeHandler();
 
   build() {
     Column() {
@@ -76,6 +81,52 @@ struct WebComponent {
 
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+'use static'
+import { webview } from '@kit.ArkWeb';
+import { WebNetErrorList } from '@ohos.web.netErrorList';
+import { State, Entry, Column, Component, Web, Button } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  schemeHandler: webview.WebSchemeHandler = new webview.WebSchemeHandler();
+
+  build() {
+    Column() {
+      Button('response').onClick(() => {
+        let response = new webview.WebSchemeHandlerResponse();
+        try {
+          response.setUrl("http://www.example.com")
+          response.setStatus(200)
+          response.setStatusText("OK")
+          response.setMimeType("text/html")
+          response.setEncoding("utf-8")
+          response.setHeaderByName("header1", "value1", false)
+          response.setNetErrorCode(WebNetErrorList.NET_OK)
+          console.info("[schemeHandler] getUrl:" + response.getUrl())
+          console.info("[schemeHandler] getStatus:" + response.getStatus())
+          console.info("[schemeHandler] getStatusText:" + response.getStatusText())
+          console.info("[schemeHandler] getMimeType:" + response.getMimeType())
+          console.info("[schemeHandler] getEncoding:" + response.getEncoding())
+          console.info("[schemeHandler] getHeaderByValue:" + response.getHeaderByName("header1"))
+          console.info("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
+
+        } catch (error) {
+          console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
+        }
+      })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+    }
+  }
+}
+
+```
+
 ## setUrl<sup>12+</sup>
 
 setUrl(url: string): void
@@ -84,11 +135,15 @@ setUrl(url: string): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型    |  必填  | 说明                       |
 | --------| ------- | ---- | ---------------------------|
-|  url | string | 是   | 即将要跳转的URL。 |
+| url | string | 是 | 重定向或因HSTS而更改后的URL。 |
 
 **示例：**
 
@@ -110,11 +165,15 @@ setNetErrorCode(code: WebNetErrorList): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型    |  必填  | 说明                       |
 | --------| ------- | ---- | ---------------------------|
-|  code | [WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist) | 是   | 网络错误码。 |
+| code | [WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist) | 是 | 网络错误码。 |
 
 **错误码：**
 
@@ -130,17 +189,23 @@ setNetErrorCode(code: WebNetErrorList): void
 
 ## setStatus<sup>12+</sup>
 
-setStatus(code: number): void
+ArkTS-Dyn: setStatus(code: number): void
+
+ArkTS-Sta: setStatus(code: int): void
 
 给当前的Response设置HTTP状态码。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型    |  必填  | 说明                       |
 | --------| ------- | ---- | ---------------------------|
-|  code | number | 是   | HTTP状态码。 |
+| code | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | HTTP状态码。 |
 
 **错误码：**
 
@@ -162,11 +227,15 @@ setStatusText(text: string): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型    |  必填  | 说明                       |
 | --------| ------- | ---- | ---------------------------|
-|  text | string | 是   | 状态文本。 |
+| text | string | 是 | 状态文本。 |
 
 **错误码：**
 
@@ -184,15 +253,19 @@ setStatusText(text: string): void
 
 setMimeType(type: string): void
 
-给当前的Response设置媒体类型。
+给当前的Response设置媒体类型。例如，注入HTML内容时设置为text/html，注入JSON数据时设置为application/json。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型    |  必填  | 说明                       |
 | --------| ------- | ---- | ---------------------------|
-|  type | string | 是   | 媒体类型。 |
+| type | string | 是 | 媒体类型（MIME类型）。 |
 
 **错误码：**
 
@@ -210,15 +283,19 @@ setMimeType(type: string): void
 
 setEncoding(encoding: string): void
 
-给当前的Response设置字符集。
+给当前的Response设置字符编码格式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型    |  必填  | 说明                       |
 | --------| ------- | ---- | ---------------------------|
-|  encoding | string | 是   | 字符集。 |
+| encoding | string | 是 | 字符编码格式。 |
 
 **错误码：**
 
@@ -240,12 +317,16 @@ setHeaderByName(name: string, value: string, overwrite: boolean): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型    |  必填  | 说明                       |
 | --------| ------- | ---- | ---------------------------|
-|  name | string | 是   | 头部（header）的名称。 |
-|  value | string | 是   | 头部（header）的值。 |
+| name | string | 是 | 头部（header）的名称，指定要设置的HTTP响应头字段名。常见值包括'Content-Type'（内容类型）、'Authorization'（授权信息）、'Cache-Control'（缓存控制）等。 |
+| value | string | 是 | 头部（header）的值，指定HTTP响应头字段的具体内容。需要与name参数对应的头部字段匹配，如name为'Content-Type'时，value可以是'text/html; charset=utf-8'。 |
 |  overwrite | boolean | 是   | 如果为true，将覆盖现有的头部，否则不覆盖。 |
 
 **错误码：**
@@ -264,17 +345,21 @@ setHeaderByName(name: string, value: string, overwrite: boolean): void
 
 getUrl(): string
 
-获取重定向或由于HSTS而更改后的URL。
+获取重定向或因HSTS而更改后的URL。
 
-风险提示：如果想获取URL来做JavascriptProxy通信接口认证，请使用[getLastJavascriptProxyCallingFrameUrl<sup>12+</sup>](./arkts-apis-webview-WebviewController.md#getlastjavascriptproxycallingframeurl12)。
+风险提示：若想获取URL来做JavascriptProxy通信接口认证，请使用[getLastJavascriptProxyCallingFrameUrl<sup>12+</sup>](./arkts-apis-webview-WebviewController.md#getlastjavascriptproxycallingframeurl12)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型    | 说明                                     |
 | ------- | --------------------------------------- |
-| string | 获取经过重定向或由于HSTS而更改后的URL。|
+| string | 获取经过重定向或因HSTS而更改后的URL。|
 
 **示例：**
 
@@ -288,11 +373,15 @@ getNetErrorCode(): WebNetErrorList
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型    | 说明                                     |
 | ------- | --------------------------------------- |
-| [WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist) | 获取Response的网络错误码。|
+| [WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist) | 返回Response的网络错误码。|
 
 **示例：**
 
@@ -300,17 +389,23 @@ getNetErrorCode(): WebNetErrorList
 
 ## getStatus<sup>12+</sup>
 
-getStatus(): number
+ArkTS-Dyn: getStatus(): number
+
+ArkTS-Sta: getStatus(): int
 
 获取Response的HTTP状态码。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型    | 说明                                     |
 | ------- | --------------------------------------- |
-| number | 获取Response的HTTP状态码。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回Response的HTTP状态码。|
 
 **示例：**
 
@@ -323,6 +418,10 @@ getStatusText(): string
 获取Response的状态文本。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -342,11 +441,15 @@ getMimeType(): string
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型    | 说明                                     |
 | ------- | --------------------------------------- |
-| string | 媒体类型。|
+| string | 返回响应内容的MIME类型字符串，如'text/html'、'application/json'等。|
 
 **示例：**
 
@@ -356,15 +459,19 @@ getMimeType(): string
 
 getEncoding(): string
 
-获取Response的字符集。
+获取Response的字符编码格式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型    | 说明                                     |
 | ------- | --------------------------------------- |
-| string | 字符集。|
+| string | 返回响应内容的字符编码格式，如'utf-8'、'gbk'等。|
 
 **示例：**
 
@@ -378,18 +485,22 @@ getHeaderByName(name: string): string
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型             | 必填 | 说明                  |
 | ------- | ---------------- | ---- | -------------------- |
-| name     | string | 是   | 头部（header）的名称。      |
+| name     | string | 是   | 要获取的响应头字段名称。      |
 
 
 **返回值：**
 
 | 类型    | 说明                                     |
 | ------- | --------------------------------------- |
-| string | 头部（header）的值。|
+| string | 指定名称的响应头字段对应的值。|
 
 **示例：**
 

@@ -304,7 +304,7 @@ Checks whether a constraint is enabled for this system account. This API uses a 
 
 | Name    | Type  | Mandatory| Description                               |
 | ---------- | ------ | ---- | ---------------------------------- |
-| constraint | string | Yes  | [Constraint](#constraints) to check.|
+| constraint | string | Yes  | [Constraint](appendix-osAccount-constraints.md) to check.|
 
 **Return value**
 
@@ -359,7 +359,7 @@ Checks whether the specified constraint is enabled for a system account. This AP
 | Name    | Type                        | Mandatory| Description                                                              |
 | ---------- | ---------------------------- | ---- | ----------------------------------------------------------------- |
 | localId    | number                       | Yes  | ID of the target system account.                                |
-| constraint | string                       | Yes  | [Constraint](#constraints) to check.                               |
+| constraint | string                       | Yes  | [Constraint](appendix-osAccount-constraints.md) to check.                               |
 | callback   | AsyncCallback&lt;boolean&gt; | Yes  | Callback used to return the result. The value **true** means the specified constraint is enabled; the value **false** means the opposite.|
 
 **Error codes**
@@ -415,7 +415,7 @@ Checks whether the specified constraint is enabled for a system account. This AP
 | Name    | Type  | Mandatory| Description                               |
 | ---------- | ------ | ---- | ---------------------------------- |
 | localId    | number | Yes  | ID of the target system account. |
-| constraint | string | Yes  | [Constraint](#constraints) to check.|
+| constraint | string | Yes  | [Constraint](appendix-osAccount-constraints.md) to check.|
 
 **Return value**
 
@@ -1257,7 +1257,7 @@ Obtains all constraints enabled for a system account. This API uses an asynchron
 | Name  | Type                                    | Mandatory| Description                                                                                          |
 | -------- | ---------------------------------------- | ---- | -------------------------------------------------------------------------------------------- |
 | localId  | number                                   | Yes  | ID of the target system account.                                                                                 |
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is all [constraints](#constraints) obtained. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is all [constraints](appendix-osAccount-constraints.md) obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -1316,7 +1316,7 @@ Obtains all constraints enabled for a system account. This API uses a promise to
 
 | Type                              | Description                                                      |
 | ---------------------------------- | ---------------------------------------------------------- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return all the [constraints](#constraints) enabled for the system account.|
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return all the [constraints](appendix-osAccount-constraints.md) enabled for the system account.|
 
 **Error codes**
 
@@ -2058,7 +2058,7 @@ Checks whether the specified constraint is enabled for a system account. This AP
 | Name    | Type                        | Mandatory| Description                                                               |
 | ---------- | ---------------------------- | ---- | ----------------------------------------------------------------- |
 | localId    | number                       | Yes  | ID of the target system account.                                |
-| constraint | string                       | Yes  | [Constraint](#constraints) to check.                               |
+| constraint | string                       | Yes  | [Constraint](appendix-osAccount-constraints.md) to check.                               |
 | callback   | AsyncCallback&lt;boolean&gt; | Yes  | Callback used to return the result. The value **true** means the specified constraint is enabled; the value **false** means the opposite.|
 
 **Example**: Check whether system account 100 is forbidden to use Wi-Fi.
@@ -2097,7 +2097,7 @@ Checks whether the specified constraint is enabled for a system account. This AP
 | Name    | Type  | Mandatory| Description                                |
 | ---------- | ------ | ---- | ---------------------------------- |
 | localId    | number | Yes  | ID of the target system account. |
-| constraint | string | Yes  | [Constraint](#constraints) to check.|
+| constraint | string | Yes  | [Constraint](appendix-osAccount-constraints.md) to check.|
 
 **Return value**
 
@@ -2596,7 +2596,7 @@ Obtains all constraints enabled for a system account. This API uses an asynchron
 | Name  | Type                                    | Mandatory| Description                                                                                            |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------------------------------------------------------------- |
 | localId  | number                                   | Yes  | ID of the target system account.                                                                                   |
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is a list of all [constraints](#constraints) enabled for the system account. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is a list of all [constraints](appendix-osAccount-constraints.md) enabled for the system account. Otherwise, **err** is an error object.|
 
 **Example**: Obtain all constraints of system account 100.
 
@@ -2638,7 +2638,7 @@ Obtains all constraints enabled for a system account. This API uses a promise to
 
 | Type                              | Description                                                        |
 | :--------------------------------- | :----------------------------------------------------------- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return all the [constraints](#constraints) enabled for the system account.|
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return all the [constraints](appendix-osAccount-constraints.md) enabled for the system account.|
 
 **Example**: Obtain all constraints of system account 100.
 
@@ -3271,7 +3271,7 @@ Represents information about a system account.
 | localId                        | number                                                       | No| No | ID of the target system account.                     |
 | localName                      | string                                                       | No| No | Name of the system account.                   |
 | type                           | [OsAccountType](#osaccounttype)                              | No| No | Type of the system account.                     |
-| constraints                    | Array&lt;string&gt;                                          | No| No | [Constraints](#constraints) of the system account. By default, no value is passed in.|
+| constraints                    | Array&lt;string&gt;                                          | No| No | [Constraints](appendix-osAccount-constraints.md) of the system account. By default, no value is passed in.|
 | isVerified<sup>(deprecated)</sup> | boolean                                                   | No| No | Whether the account has been verified. The value **true** means the specified account has been verified; the value **false** means the opposite.<br>Note: This parameter is supported since API version 7 and deprecated since API version 11. You are advised to use **isUnlocked** instead.          |
 | isUnlocked<sup>11+</sup>      | boolean                                                       | No| No | Whether the account is unlocked (whether the **el2/** directory is decrypted). The value **true** means the specified account is unlocked; the value **false** means the opposite.                     |
 | photo<sup>8+</sup>             | string                                                       | No| No | Avatar of the system account. By default, no value is passed in.                     |
@@ -3631,70 +3631,3 @@ For details about the error codes, see [Account Management Error Codes](errorcod
   });
   ```
 
-## Constraints
-
-| Constraint                                 | Description                          |
-| ------------------------------------- | ------------------------------ |
-| constraint.wifi                       | Disallow the use of Wi-Fi.                 |
-| constraint.wifi.set                   | Disallow setting of Wi-Fi.                 |
-| constraint.locale.set                 | Disallow setting of the language to use.              |
-| constraint.app.accounts               | Disallow addition or deletion of application accounts.        |
-| constraint.apps.install               | Disallow application installation.                  |
-| constraint.apps.uninstall             | Disallow application uninstallation.                  |
-| constraint.location.shared            | Disallow location sharing.              |
-| constraint.unknown.sources.install    | Disallow installation of apps from unknown sources.        |
-| constraint.global.unknown.app.install | Disallow installation of apps from unknown sources for all users.|
-| constraint.bluetooth.set              | Disallow setting of Bluetooth.                  |
-| constraint.bluetooth | Disallow the use of Bluetooth.|
-| constraint.bluetooth.share | Disallow Bluetooth sharing.|
-| constraint.usb.file.transfer | Disallow file transfer over USB.|
-| constraint.credentials.set | Disallow setting of user credentials.|
-| constraint.os.account.remove | Disallow removal of users.|
-| constraint.managed.profile.remove | Disallow removal of the managed profiles of this user.|
-| constraint.debug.features.use | Disallow the use of debugging features.|
-| constraint.vpn.set | Disallow setting of VPN.|
-| constraint.date.time.set | Disallow setting of date, time, or time zone.|
-| constraint.tethering.config | Disallow setting of Tethering.|
-| constraint.network.reset | Disallow reset of network settings.|
-| constraint.factory.reset | Disallow reset to factory settings.|
-| constraint.os.account.create | Disallow creation of new users.|
-| constraint.add.managed.profile | Disallow addition of managed profiles.|
-| constraint.apps.verify.disable | Disallow application verification from being disabled.|
-| constraint.cell.broadcasts.set | Disallow setting of cell broadcasts.|
-| constraint.mobile.networks.set | Disallow setting of mobile networks.|
-| constraint.control.apps | Disallow modification of apps in **Settings** or the boot module.|
-| constraint.physical.media | Disallow mounting of external physical media.|
-| constraint.microphone | Disallow the use of microphones.|
-| constraint.microphone.unmute | Disallow unmuting of the microphone.|
-| constraint.volume.adjust | Disallow adjustment of the volume.|
-| constraint.calls.outgoing | Disallow outgoing calls.|
-| constraint.sms.use | Disallow the use of the short message service (SMS).|
-| constraint.fun | Disallow the use of entertainment features.|
-| constraint.windows.create | Disallow creation of the windows other than application windows.|
-| constraint.system.error.dialogs | Disallow display of error dialogs for crashed or unresponsive apps.|
-| constraint.cross.profile.copy.paste | Disallow pasting of clipboard content to other users or profiles.|
-| constraint.beam.outgoing | Disallow the use of Near Field Communications (NFC) to transfer data from apps.|
-| constraint.wallpaper | Disallow wallpaper management.|
-| constraint.safe.boot | Disallow reboot of the device in safe boot mode.|
-| constraint.parent.profile.app.linking | Disallow the application in the parent profile from handling web links from the managed profiles.|
-| constraint.audio.record | Disallow audio recording.|
-| constraint.camera.use | Disallow the use of cameras.|
-| constraint.os.account.background.run | Disallow background system accounts.|
-| constraint.data.roam | Disallow the use of cellular data when roaming.|
-| constraint.os.account.set.icon | Disallow setting of user icons.|
-| constraint.wallpaper.set | Disallow setting of wallpapers.|
-| constraint.oem.unlock | Disallow the use of OEM unlock.|
-| constraint.device.unmute | Disallow unmuting of the device.|
-| constraint.password.unified | Disallow the use of the unified lock screen challenge for the managed profile with the primary user.|
-| constraint.autofill | Disallow the use of the autofill service.|
-| constraint.content.capture | Disallow capturing of the screen content.|
-| constraint.content.suggestions | Disallow receiving of content suggestions.|
-| constraint.os.account.activate | Disallow activating of system accounts in the foreground.|
-| constraint.location.set | Disallow setting of the location service.|
-| constraint.airplane.mode.set | Disallow setting of the airplane mode.|
-| constraint.brightness.set | Disallow setting of the brightness.|
-| constraint.share.into.profile | Disallow sharing of files, images, and data of the primary user to the managed profiles.|
-| constraint.ambient.display | Disallow display of the ambient environment.|
-| constraint.screen.timeout.set | Disallow setting of the screen-off timeout.|
-| constraint.print | Disallow printing.|
-| constraint.private.dns.set | Disallow setting of the private domain name server (DNS).|

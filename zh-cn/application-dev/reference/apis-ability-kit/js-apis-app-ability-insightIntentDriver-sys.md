@@ -140,7 +140,7 @@ PageIntentInfo用于描述[@InsightIntentPage](./js-apis-app-ability-InsightInte
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- |-------- |
-| uiAbility | string | 是 | 否 | UIAbility名称。 |
+| uiAbility | string | 是 | 否 | UIAbility组件名称。 |
 | pagePath | string | 是 | 否 | 页面名称。 |
 | navigationId | string | 是 | 否 |  表示与意图绑定[Navigation](../apis-arkui/arkui-ts/ts-basic-components-navigation.md)的id。 |
 | navDestinationName | string | 是 | 否 | 表示与意图绑定[navDestination](../apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10)的名称。 |
@@ -365,7 +365,7 @@ EntityInfo继承自[IntentEntityDecoratorInfo](./js-apis-app-ability-InsightInte
 | -------- | -------- | -------- |
 | GET_FULL_INSIGHT_INTENT | 0x00000001 | 查询[InsightIntentInfo](#insightintentinfo20)中的除entities以外的全量意图信息，详见下表。查询entities信息需要使用GET_ENTITY_INFO。 |
 | GET_SUMMARY_INSIGHT_INTENT | 0x00000002 | 查询[InsightIntentInfo](#insightintentinfo20)中的简要意图信息，详见下表。 |
-| GET_ENTITY_INFO | 0x00000004 | 查询[EntityInfo](#entityinfo20)的信息，不可单独使用，必选结合GET_FULL_INSIGHT_INTENT或者GET_SUMMARY_INSIGHT_INTENT使用。例如`GET_FULL_INSIGHT_INTENT \| GET_ENTITY_INFO`。 |
+| GET_ENTITY_INFO | 0x00000004 | 查询[EntityInfo](#entityinfo20)的信息，不可单独使用，必须结合GET_FULL_INSIGHT_INTENT或者GET_SUMMARY_INSIGHT_INTENT使用。例如`GET_FULL_INSIGHT_INTENT \| GET_ENTITY_INFO`。 |
 
 > **说明：**
 >

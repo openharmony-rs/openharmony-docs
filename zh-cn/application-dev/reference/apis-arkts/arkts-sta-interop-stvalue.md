@@ -46,7 +46,7 @@ ArkTS-Dyn示例：
 
 ```typescript
 // stvalue_test.ets
-let studentCls = STValue.findClass('stvalue_accessor.Student');
+let studentCls = STValue.findClass('staHar.src.main.ets.components.stvalue_accessor.Student');
 ```
 
 ArkTS-Sta示例：
@@ -80,7 +80,7 @@ ArkTS-Dyn示例：
 
 ```typescript
 // stvalue_test.ets
-let ns = STValue.findNamespace('stvalue_accessor.MyNamespace');
+let ns = STValue.findNamespace('staHar.src.main.ets.components.stvalue_accessor.MyNamespace');
 ```
 
 ArkTS-Sta示例：
@@ -113,7 +113,7 @@ ArkTS-Dyn示例：
 
 ```ts
 // stvalue_test.ets
-let colorEnum = STValue.findEnum('stvalue_accessor.COLOR');
+let colorEnum = STValue.findEnum('staHar.src.main.ets.components.stvalue_accessor.COLOR');
 ```
 
 ArkTS-Sta示例：
@@ -144,8 +144,8 @@ ArkTS-Dyn示例：
 
 ```typescript
 // stvalue_test.ets
-let subClass = STValue.findClass('stvalue_accessor.Dog');
-let parentClass = subClass.classGetSuperClass();  // 代表父类'stvalue_accessor.Animal'的STValue对象
+let subClass = STValue.findClass('staHar.src.main.ets.components.stvalue_accessor.Dog');
+let parentClass = subClass.classGetSuperClass();  // 代表父类'staHar.src.main.ets.components.stvalue_accessor.Animal'的STValue对象
 ```
 
 ArkTS-Sta示例：
@@ -178,7 +178,7 @@ ArkTS-Dyn示例：
 
 ```typescript
 // stvalue_test.ets
-let tns = STValue.findNamespace('stvalue_accessor.testNameSpace')
+let tns = STValue.findNamespace('staHar.src.main.ets.components.stvalue_accessor.testNameSpace')
 let strArray = tns.namespaceGetVariable('strArray', SType.REFERENCE);
 let arrayLength = strArray.fixedArrayGetLength(); // 3
 ```
@@ -215,7 +215,7 @@ enumGetIndexByName(name: string): number
 ArkTS-Dyn示例：
 
 ```typescript
-let colorEnum = STValue.findEnum('stvalue_accessor.COLOR');
+let colorEnum = STValue.findEnum('staHar.src.main.ets.components.stvalue_accessor.COLOR');
 let redIndex = colorEnum.enumGetIndexByName('Red'); // 0
 ```
 
@@ -253,7 +253,7 @@ enumGetValueByName(name: string, valueType: SType): STValue
 ArkTS-Dyn示例：
 
 ```typescript
-let colorEnum = STValue.findEnum('stvalue_accessor.COLOR');
+let colorEnum = STValue.findEnum('staHar.src.main.ets.components.stvalue_accessor.COLOR');
 let redValue = colorEnum.enumGetValueByName('Red', SType.INT);
 // 获取的枚举值是一个STValue对象，需要拆箱获取对应primitive值
 let unwrapRedValue = redValue.unwrapToNumber(); // 1
@@ -293,7 +293,7 @@ classGetStaticField(name: string, fieldType: SType): STValue
 ArkTS-Dyn示例：
 
 ```typescript
-let personClass = STValue.findClass('stvalue_accessor.Person');
+let personClass = STValue.findClass('staHar.src.main.ets.components.stvalue_accessor.Person');
 let name = personClass.classGetStaticField('name', SType.REFERENCE).unwrapToString(); // 'Person'
 let age = personClass.classGetStaticField('age', SType.INT).unwrapToNumber();  // 18
 ```
@@ -329,7 +329,7 @@ classSetStaticField(name: string, val: STValue, fieldType: SType): void
 ArkTS-Dyn示例：
 
 ```typescript
-let personClass = STValue.findClass('stvalue_accessor.Person');
+let personClass = STValue.findClass('staHar.src.main.ets.components.stvalue_accessor.Person');
 personClass.classSetStaticField('name', STValue.wrapString('Bob'), SType.REFERENCE);
 personClass.classSetStaticField('age', STValue.wrapNumber(21), SType.DOUBLE);
 let name = personClass.classGetStaticField('name', SType.REFERENCE).unwrapToString(); // 'Bob'
@@ -370,7 +370,7 @@ objectGetProperty(name: string, propType: SType): STValue
 ArkTS-Dyn示例：
 
 ```typescript
-let tns = STValue.findNamespace('stvalue_accessor.testNameSpace')
+let tns = STValue.findNamespace('staHar.src.main.ets.components.stvalue_accessor.testNameSpace')
 let alice = tns.namespaceGetVariable('studentAlice', SType.REFERENCE);
 let name = alice.objectGetProperty('name', SType.REFERENCE).unwrapToString(); // 'Alice'
 ```
@@ -412,7 +412,7 @@ objectSetProperty(name: string, val: STValue, propType: SType): void
 ArkTS-Dyn示例：
 
 ```typescript
-let tns = STValue.findNamespace('stvalue_accessor.testNameSpace')
+let tns = STValue.findNamespace('staHar.src.main.ets.components.stvalue_accessor.testNameSpace')
 let alice = tns.namespaceGetVariable('studentAlice', SType.REFERENCE);
 let name = alice.objectSetProperty('name', STValue.wrapString('Bob'), SType.REFERENCE);
 let name = alice.objectGetProperty('name', SType.REFERENCE).unwrapToString(); // 'Bob'
@@ -458,7 +458,7 @@ fixedArrayGet(idx: number, elementType: SType): STValue
 ArkTS-Dyn示例：
 
 ```typescript
-let tns = STValue.findNamespace('stvalue_accessor.testNameSpace');
+let tns = STValue.findNamespace('staHar.src.main.ets.components.stvalue_accessor.testNameSpace');
 let strArray = tns.namespaceGetVariable('strArray', SType.REFERENCE);
 let str = strArray.fixedArrayGet(1, SType.REFERENCE).unwrapToString(); // 'cd'
 ```
@@ -493,7 +493,7 @@ fixedArraySet(idx: number, val: STValue, elementType: SType): void
 ArkTS-Dyn示例：
 
 ```typescript
-let tns = STValue.findNamespace('stvalue_accessor.testNameSpace');
+let tns = STValue.findNamespace('staHar.src.main.ets.components.stvalue_accessor.testNameSpace');
 let strArray = tns.namespaceGetVariable('strArray', SType.REFERENCE);
 strArray.fixedArraySet(1, STValue.wrapString('xy'), SType.REFERENCE);
 let str = strArray.fixedArrayGet(1, SType.REFERENCE).unwrapToString(); // 'xy'
@@ -532,7 +532,7 @@ namespaceGetVariable(name: string, variableType: SType): STValue | null
 ArkTS-Dyn示例：
 
 ```typescript
-let ns = STValue.findNamespace('stvalue_accessor.MyNamespace');
+let ns = STValue.findNamespace('staHar.src.main.ets.components.stvalue_accessor.MyNamespace');
 let data = ns.namespaceGetVariable('data', SType.INT);
 let num = data.unwrapToNumber();  // 42
 ```
@@ -571,7 +571,7 @@ namespaceSetVariable(name: string, value: STValue, variableType: SType): boolean
 ArkTS-Dyn示例：
 
 ```typescript
-let ns = STValue.findNamespace('stvalue_accessor.MyNamespace');
+let ns = STValue.findNamespace('staHar.src.main.ets.components.stvalue_accessor.MyNamespace');
 ns.namespaceSetVariable('data', STValue.wrapInt(0), SType.INT);
 let data = ns.namespaceGetVariable('data', SType.INT);
 let num = data.unwrapToNumber();  // 0
@@ -609,7 +609,7 @@ arrayGet(idx: number): STValue
 ArkTS-Dyn示例：
 
 ```typescript
-let tns = STValue.findNamespace('stvalue_accessor.testNameSpace')
+let tns = STValue.findNamespace('staHar.src.main.ets.components.stvalue_accessor.testNameSpace')
 let intArray = tns.namespaceGetVariable('intArray', SType.REFERENCE);
 let arrayValue0 = intArray.arrayGet(0);
 let num = arrayValue0.objectInvokeMethod('toInt', ':i', []).unwrapToNumber(); // 1
@@ -644,7 +644,7 @@ arraySet(idx: number, val: STValue): void
 ArkTS-Dyn示例：
 
 ```typescript
-let tns = STValue.findNamespace('stvalue_accessor.testNameSpace')
+let tns = STValue.findNamespace('staHar.src.main.ets.components.stvalue_accessor.testNameSpace')
 let intArray = tns.namespaceGetVariable('intArray', SType.REFERENCE);
 let intClass = STValue.findClass('std.core.Int');
 let intObj = intClass.classInstantiate('i:', [STValue.wrapInt(10)]);
@@ -681,7 +681,7 @@ arrayPush(val: STValue): void
 ArkTS-Dyn示例：
 
 ```typescript
-let tns = STValue.findNamespace('stvalue_accessor.testNameSpace')
+let tns = STValue.findNamespace('staHar.src.main.ets.components.stvalue_accessor.testNameSpace')
 let intArray = tns.namespaceGetVariable('intArray', SType.REFERENCE);
 let intClass = STValue.findClass('std.core.Int');
 let intObj = intClass.classInstantiate('i:', [STValue.wrapInt(10)]);
@@ -716,7 +716,7 @@ arrayPop(): STValue
 ArkTS-Dyn示例：
 
 ```typescript
-let tns = STValue.findNamespace('stvalue_accessor.testNameSpace')
+let tns = STValue.findNamespace('staHar.src.main.ets.components.stvalue_accessor.testNameSpace')
 let intArray = tns.namespaceGetVariable('intArray', SType.REFERENCE);
 let intPop = intArray.arrayPop();
 let num = intPop.objectInvokeMethod('toInt', ':i', []).unwrapToNumber(); // 5
@@ -748,7 +748,7 @@ arrayGetLength(): number
 ArkTS-Dyn示例：
 
 ```typescript
-let tns = STValue.findNamespace('stvalue_accessor.testNameSpace')
+let tns = STValue.findNamespace('staHar.src.main.ets.components.stvalue_accessor.testNameSpace')
 let intArray = tns.namespaceGetVariable('intArray', SType.REFERENCE);
 let num = intArray.arrayGetLength(); // 5
 ```
@@ -809,7 +809,7 @@ let isStr = str.isString(); // true
 let num = STValue.wrapInt(42);
 let isStr1 = num.isString(); // false
 
-let ns = STValue.findNamespace('stvalue_check.Check');
+let ns = STValue.findNamespace('staHar.src.main.ets.components.stvalue_check.Check');
 data = ns.namespaceGetVariable('shouldBeString', SType.REFERENCE);
 let isStr2 = str.isString(); // true
 ```
@@ -915,7 +915,7 @@ isEqualTo(other: STValue): boolean
 ArkTS-Dyn示例：
 
 ```typescript
-let ns = STValue.findNamespace('stvalue_check.Check');
+let ns = STValue.findNamespace('staHar.src.main.ets.components.stvalue_check.Check');
 let leftRef = ns.namespaceGetVariable('leftRef', SType.REFERENCE);
 let rightRef = ns.namespaceGetVariable('rightRef', SType.REFERENCE);
 let rightRefNotEqual = ns.namespaceGetVariable('rightRefNotEqual', SType.REFERENCE);
@@ -957,7 +957,7 @@ isStrictlyEqualTo(other: STValue): boolean
 ArkTS-Dyn示例：
 
 ```typescript
-let ns = STValue.findNamespace('stvalue_check.Check');
+let ns = STValue.findNamespace('staHar.src.main.ets.components.stvalue_check.Check');
 let magicNull = STValue.getNull();
 let magicUndefined = STValue.getUndefined();
 let result1 = magicNull.isStrictlyEqualTo(magicUndefined); // false
@@ -1186,8 +1186,8 @@ static typeIsAssignableFrom(fromType: STValue, toType: STValue): boolean
 ArkTS-Dyn示例：
 
 ```typescript
-let studentCls = STValue.findClass('stvalue_example.Student');
-let subStudentCls = STValue.findClass('stvalue_example.SubStudent');
+let studentCls = STValue.findClass('staHar.src.main.ets.components.stvalue_example.Student');
+let subStudentCls = STValue.findClass('staHar.src.main.ets.components.stvalue_example.SubStudent');
 let isAssignable = STValue.typeIsAssignableFrom(subStudentCls, studentCls); // true
 let isAssignable1 = typeIsAssignableFrom(studentCls, subStudentCls); // false
 ```
@@ -1223,7 +1223,7 @@ objectInstanceOf(typeArg: STValue): boolean
 ArkTS-Dyn示例：
 
 ```typescript
-let studentCls = STValue.findClass('stvalue_check.Student');
+let studentCls = STValue.findClass('staHar.src.main.ets.components.stvalue_check.Student');
 let stuObj = studentCls.classInstantiate(':', []);
 let isInstance = stuObj.objectInstanceOf(studentCls); // true
 ```
@@ -1339,7 +1339,7 @@ classInstantiate(ctorSignature: string, args: STValue[]): STValue
 
 |    参数名     |   类型    | 必填 |              说明               |
 | :-----------: | :-------: | :--: | :-----------------------------: |
-| ctorSignature |  string   |  是  | 构造函数（`参数类型:返回类型`）。 |
+| ctorSignature |  string   |  是  | 构造函数签名（`参数类型:返回类型`），遵循[名称修饰符（Mangling）规则](../../quick-start/arkts-sta-interop-interface.md#名称修饰符mangling规则)。 |
 |     args      | STValue[] |  是  |        构造函数参数数组。         |
 
 **返回值:**
@@ -1353,7 +1353,7 @@ classInstantiate(ctorSignature: string, args: STValue[]): STValue
 ArkTS-Dyn示例：
 
 ```typescript
-let studentCls = STValue.findClass('stvalue_instance.Student');
+let studentCls = STValue.findClass('staHar.src.main.ets.components.stvalue_instance.Student');
 let clsObj1 = studentCls.classInstantiate(':', []);
 let obj1Age = clsObj1.objectGetProperty('age', SType.INT).unwrapToNumber(); // 0
 let clsObj2 = studentCls.classInstantiate('i:', [STValue.wrapInt(23)]);
@@ -1395,7 +1395,7 @@ static newFixedArrayPrimitive(length: number, elementType: SType): STValue
 ArkTS-Dyn示例：
 
 ```typescript
-let ns = STValue.findNamespace('stvalue_instance.Instance');
+let ns = STValue.findNamespace('staHar.src.main.ets.components.stvalue_instance.Instance');
 // 创建的SType.BOOLEAN类型数组boolArray初始长度为5，初始值为false
 let boolArray = STValue.newFixedArrayPrimitive(5, SType.BOOLEAN);
 let isArray = ns.namespaceInvokeFunction('checkFixPrimitiveBooleanArray', 'A{z}:z', [boolArray]).unwrapToBoolean(); // true
@@ -1444,7 +1444,7 @@ static newFixedArrayReference(length: number, elementType: STValue, initialEleme
 ArkTS-Dyn示例：
 
 ```typescript
-let ns = STValue.findNamespace('stvalue_instance.Instance');
+let ns = STValue.findNamespace('staHar.src.main.ets.components.stvalue_instance.Instance');
 let intClass = STValue.findClass('std.core.Int');
 let intObj = intClass.classInstantiate('i:', [STValue.wrapInt(5)]);
 // 创建的Int引用类型数组refArray初始长度为3，初始值是一个装箱了值为5的Int引用类型
@@ -1573,7 +1573,7 @@ namespaceInvokeFunction(functionName: string, signature: string, args: STValue[]
 |    参数名    |   类型    | 必填 |                 说明                  |
 | :----------: | :-------: | :--: | :-----------------------------------: |
 | functionName |  string   |  是  |               函数名称。                |
-|  signature   |  string   |  是  | 函数签名（`参数类型:返回类型`）。 |
+|  signature   |  string   |  是  | 函数签名（`参数类型:返回类型`），遵循[名称修饰符（Mangling）规则](../../quick-start/arkts-sta-interop-interface.md#名称修饰符mangling规则)。 |
 |     args     | STValue[] |  是  |             函数参数数组。              |
 
 **返回值:**
@@ -1587,7 +1587,7 @@ namespaceInvokeFunction(functionName: string, signature: string, args: STValue[]
 ArkTS-Dyn示例：
 
 ```typescript
-let nsp = STValue.findNamespace('stvalue_invoke.Invoke');
+let nsp = STValue.findNamespace('staHar.src.main.ets.components.stvalue_invoke.Invoke');
 let b1 = STValue.wrapBoolean(false);
 let b2 = STValue.wrapBoolean(false);
 let b = nsp.namespaceInvokeFunction('BooleanInvoke', 'zz:z', [b1, b2]).unwrapToBoolean(); // false
@@ -1628,7 +1628,7 @@ functionalObjectInvoke(args: STValue[]): STValue
 ArkTS-Dyn示例：
 
 ```typescript
-let nsp = STValue.findNamespace('stvalue_invoke.Invoke');
+let nsp = STValue.findNamespace('staHar.src.main.ets.components.stvalue_invoke.Invoke');
 let getNumberFn = nsp.namespaceGetVariable('getNumberFn', SType.REFERENCE); // 获取的函数式对象getNumberFn为引用类型
 let numRes = getNumberFn.functionalObjectInvoke([]); // 函数调用结果numRes是装箱后的引用类型
 let jsNum = numRes.objectInvokeMethod('toInt', ':i', []); // 将结果转换为STValue装箱的int类型
@@ -1664,7 +1664,7 @@ objectInvokeMethod(name: string, signature: string, args: STValue[]): STValue
 |  参数名   |      类型      | 必填 |                 说明                  |
 | :-------: | :------------: | :--: | :-----------------------------------: |
 |   name    |     string     |  是  |               方法名称。                |
-| signature |     string     |  是  | 方法签名（`参数类型:返回类型`）。 |
+| signature |     string     |  是  | 方法签名（`参数类型:返回类型`），遵循[名称修饰符（Mangling）规则](../../quick-start/arkts-sta-interop-interface.md#名称修饰符mangling规则)。 |
 |   args    | STValue[]     |  是  |             方法参数数组。              |
 
 **返回值:**
@@ -1678,7 +1678,7 @@ objectInvokeMethod(name: string, signature: string, args: STValue[]): STValue
 ArkTS-Dyn示例：
 
 ```typescript
-let studentCls = STValue.findClass('stvalue_invoke.Student');
+let studentCls = STValue.findClass('staHar.src.main.ets.components.stvalue_invoke.Student');
 let clsObj = studentCls.classInstantiate('iC{std.core.String}:', [STValue.wrapInt(18), STValue.wrapString('stu1')]);
 let stuAge = clsObj.objectInvokeMethod('getStudentAge', ':i', []);
 let unwrapStuAge = stuAge.unwrapToNumber(); // 18
@@ -1717,7 +1717,7 @@ classInvokeStaticMethod(name: string, signature: string, args: STValue[]): STVal
 |  参数名   |   类型    | 必填 |                 说明                  |
 | :-------: | :-------: | :--: | :-----------------------------------: |
 |   name    |  string   |  是  |               方法名称。                |
-| signature |  string   |  是  | 方法签名（`参数类型:返回类型`）。 |
+| signature |  string   |  是  | 方法签名（`参数类型:返回类型`），遵循[名称修饰符（Mangling）规则](../../quick-start/arkts-sta-interop-interface.md#名称修饰符mangling规则)。 |
 |   args    | STValue[] |  是  |             方法参数数组。              |
 
 **返回值:**
@@ -1731,7 +1731,7 @@ classInvokeStaticMethod(name: string, signature: string, args: STValue[]): STVal
 ArkTS-Dyn示例：
 
 ```typescript
-let studentCls = STValue.findClass('stvalue_invoke.Student');
+let studentCls = STValue.findClass('staHar.src.main.ets.components.stvalue_invoke.Student');
 let stuId = studentCls.classInvokeStaticMethod('getStudentId', ':i', []);
 let unwrapStuId = stuId.unwrapToNumber(); // 999
 

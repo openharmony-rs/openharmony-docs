@@ -112,7 +112,7 @@
 | [float OH_ArkUI_PointerEvent_GetHistoryTiltY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorytilty) | 从指向性输入事件（如触摸事件）中获取特定历史事件中的相对XZ平面的角度，值的范围[-90, 90]，单位为deg，其中正值是向下倾斜。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | [float OH_ArkUI_PointerEvent_GetHistoryTouchAreaWidth(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorytouchareawidth) | 从指向性输入事件（如触摸事件）中获取特定历史事件中的触屏区域的宽度。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | [float OH_ArkUI_PointerEvent_GetHistoryTouchAreaHeight(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorytouchareaheight) | 从指向性输入事件（如触摸事件）中获取特定历史事件中的触屏区域的高度。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| [double OH_ArkUI_AxisEvent_GetVerticalAxisValue(const ArkUI_UIInputEvent* event)](#oh_arkui_axisevent_getverticalaxisvalue) | 获取当前轴事件的垂直滚动轴的值。通常由鼠标滚轮，或用户在触控板上双指竖向滑动产生。当通过鼠标滚动触发时：1.上报的数值单位为角度，为单次滚动角度增量，非滚动总量；2.上报的数值已与用户配置的放大系数[OH_ArkUI_AxisEvent_GetScrollStep](capi-ui-input-event-h.md#oh_arkui_axisevent_getscrollstep)叠加运算；3.数值的正负代表方向，向前滚动鼠标滚轮时上报数值为正数，向后滚动鼠标滚轮时上报数值为负数；当通过触控板双指竖向滑动时：1.上报的数值单位为PX，为单次滚动增量，非滚动总量；2.上报的数值不受用户配置的放大系数[OH_ArkUI_AxisEvent_GetScrollStep](capi-ui-input-event-h.md#oh_arkui_axisevent_getscrollstep)影响；3.数值的正负代表方向，双指从上往下滑动时上报数值为负数，双指从下往上滑动时上报数值为正数；4.方向会受系统设置中"自然滚动"配置的影响。通常情况下，垂直滚动轴事件只能驱动竖向的滑动手势响应，但当鼠标指针下命中的可滑动手势里，如果可响应的方向都是一致的，那么垂直滚动轴事件可以驱动这些滑动手势得到响应，即使这些手势所定义的方向是横向的。 |
+| [double OH_ArkUI_AxisEvent_GetVerticalAxisValue(const ArkUI_UIInputEvent* event)](#oh_arkui_axisevent_getverticalaxisvalue) | 获取当前轴事件的垂直滚动轴的值。通常由鼠标滚轮，或用户在触控板上双指竖向滑动产生。当通过鼠标滚动触发时：1.上报的数值单位为角度，为单次滚动角度增量，非滚动总量；2.上报的数值已与用户配置的放大系数[OH_ArkUI_AxisEvent_GetScrollStep](capi-ui-input-event-h.md#oh_arkui_axisevent_getscrollstep)叠加运算；3.数值的正负代表方向，向前滚动鼠标滚轮时上报数值为正数，向后滚动鼠标滚轮时上报数值为负数；当通过触控板双指竖向滑动时：1.上报的数值单位为px，为单次滚动增量，非滚动总量；2.上报的数值不受用户配置的放大系数[OH_ArkUI_AxisEvent_GetScrollStep](capi-ui-input-event-h.md#oh_arkui_axisevent_getscrollstep)影响；3.数值的正负代表方向，双指从上往下滑动时上报数值为负数，双指从下往上滑动时上报数值为正数；4.方向会受系统设置中"自然滚动"配置的影响。通常情况下，垂直滚动轴事件只能驱动竖向的滑动手势响应，但当鼠标指针下命中的可滑动手势里，如果可响应的方向都是一致的，那么垂直滚动轴事件可以驱动这些滑动手势得到响应，即使这些手势所定义的方向是横向的。 |
 | [double OH_ArkUI_AxisEvent_GetHorizontalAxisValue(const ArkUI_UIInputEvent* event)](#oh_arkui_axisevent_gethorizontalaxisvalue) | 获取当前轴事件的水平滚动轴的值，通过在触控板上双指横向滑动产生。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | [double OH_ArkUI_AxisEvent_GetPinchAxisScaleValue(const ArkUI_UIInputEvent* event)](#oh_arkui_axisevent_getpinchaxisscalevalue) | 获取当前轴事件的捏合轴缩放的值。通过触控板双指缩放/捏合操作产生。上报的scale数值，为相对于初始状态时的当前scale值。初始状态为系统识别到用户通过触控板发生了捏合操作时的两指位置状态，此时的scale数值为1.0。在手指抬起前的本次捏合操作过程中，所上报的scale数值均将初始状态作为参考系，从初始状态往中心捏合，则上报的scale会从1.0逐步往0.0缩小；当从初始化状态往外扩大双指距离时，会从1.0逐步变大。                                                                                                                                                                                                                                                                                                                                                                   |
 | [int32_t OH_ArkUI_AxisEvent_GetAxisAction(const ArkUI_UIInputEvent* event)](#oh_arkui_axisevent_getaxisaction) | 获取当前轴事件的操作类型。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
@@ -782,7 +782,7 @@ float OH_ArkUI_PointerEvent_GetX(const ArkUI_UIInputEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前指向性输入事件相对于当前组件左上角的X坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回当前指向性输入事件相对于当前组件左上角的X坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetXByIndex()
 
@@ -809,7 +809,7 @@ float OH_ArkUI_PointerEvent_GetXByIndex(const ArkUI_UIInputEvent* event, uint32_
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回指向性输入事件中特定接触点相对于当前组件左上角的X坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回指向性输入事件中特定接触点相对于当前组件左上角的X坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetY()
 
@@ -835,7 +835,7 @@ float OH_ArkUI_PointerEvent_GetY(const ArkUI_UIInputEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前指向性输入事件相对于当前组件左上角的Y坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回当前指向性输入事件相对于当前组件左上角的Y坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetYByIndex()
 
@@ -862,7 +862,7 @@ float OH_ArkUI_PointerEvent_GetYByIndex(const ArkUI_UIInputEvent* event, uint32_
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回指向性输入事件中特定接触点相对于当前组件左上角的Y坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回指向性输入事件中特定接触点相对于当前组件左上角的Y坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetCurrentLocalX()
 
@@ -885,7 +885,7 @@ float OH_ArkUI_PointerEvent_GetCurrentLocalX (const ArkUI_UIInputEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前指向性输入事件相对于当前组件左上角的X坐标；默认单位为px，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化；如果参数异常则返回0.0f。 |
+| float | 返回当前指向性输入事件相对于当前组件左上角的X坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetCurrentLocalXByIndex()
 
@@ -915,7 +915,7 @@ float OH_ArkUI_PointerEvent_GetCurrentLocalXByIndex (const ArkUI_UIInputEvent* e
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回特定接触点相对于当前组件左上角的X坐标；默认单位为px，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化；如果参数异常则返回0.0f。 |
+| float | 返回特定接触点相对于当前组件左上角的X坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetCurrentLocalY()
 
@@ -938,7 +938,7 @@ float OH_ArkUI_PointerEvent_GetCurrentLocalY (const ArkUI_UIInputEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前指向性输入事件相对于当前组件左上角的Y坐标；默认单位为px，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化；如果参数异常则返回0.0f。 |
+| float | 返回当前指向性输入事件相对于当前组件左上角的Y坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetCurrentLocalYByIndex()
 
@@ -968,7 +968,7 @@ float OH_ArkUI_PointerEvent_GetCurrentLocalYByIndex (const ArkUI_UIInputEvent* e
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回特定接触点相对于当前组件左上角的Y坐标；默认单位为px，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化；如果参数异常则返回0.0f。 |
+| float | 返回特定接触点相对于当前组件左上角的Y坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetWindowX()
 
@@ -994,7 +994,7 @@ float OH_ArkUI_PointerEvent_GetWindowX(const ArkUI_UIInputEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前指向性输入事件相对于当前应用窗口左上角的X坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回当前指向性输入事件相对于当前应用窗口左上角的X坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetWindowXByIndex()
 
@@ -1021,7 +1021,7 @@ float OH_ArkUI_PointerEvent_GetWindowXByIndex(const ArkUI_UIInputEvent* event, u
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回指向性输入事件中特定接触点相对于当前应用窗口左上角的X坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回指向性输入事件中特定接触点相对于当前应用窗口左上角的X坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetWindowY()
 
@@ -1047,7 +1047,7 @@ float OH_ArkUI_PointerEvent_GetWindowY(const ArkUI_UIInputEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前指向性输入事件相对于当前应用窗口左上角的Y坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回当前指向性输入事件相对于当前应用窗口左上角的Y坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetWindowYByIndex()
 
@@ -1074,7 +1074,7 @@ float OH_ArkUI_PointerEvent_GetWindowYByIndex(const ArkUI_UIInputEvent* event, u
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回指向性输入事件中特定接触点相对于当前应用窗口左上角的Y坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回指向性输入事件中特定接触点相对于当前应用窗口左上角的Y坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetDisplayX()
 
@@ -1100,7 +1100,7 @@ float OH_ArkUI_PointerEvent_GetDisplayX(const ArkUI_UIInputEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前指向性输入事件相对于当前屏幕左上角的X坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回当前指向性输入事件相对于当前屏幕左上角的X坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetDisplayXByIndex()
 
@@ -1127,7 +1127,7 @@ float OH_ArkUI_PointerEvent_GetDisplayXByIndex(const ArkUI_UIInputEvent* event, 
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回指向性输入事件中特定接触点相对于当前屏幕左上角的X坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回指向性输入事件中特定接触点相对于当前屏幕左上角的X坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetDisplayY()
 
@@ -1153,7 +1153,7 @@ float OH_ArkUI_PointerEvent_GetDisplayY(const ArkUI_UIInputEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前指向性输入事件相对于当前屏幕左上角的Y坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回当前指向性输入事件相对于当前屏幕左上角的Y坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetDisplayYByIndex()
 
@@ -1180,7 +1180,7 @@ float OH_ArkUI_PointerEvent_GetDisplayYByIndex(const ArkUI_UIInputEvent* event, 
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回指向性输入事件中特定接触点相对于当前屏幕左上角的Y坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回指向性输入事件中特定接触点相对于当前屏幕左上角的Y坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetGlobalDisplayX()
 
@@ -1206,7 +1206,7 @@ float OH_ArkUI_PointerEvent_GetGlobalDisplayX(const ArkUI_UIInputEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回相对于全局显示的X坐标，单位为px。如果发生任何参数错误，例如传递的一个事件没有位置信息，则返回0.0f。 |
+| float | 返回相对于全局显示的X坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果发生任何参数错误，例如传递的一个事件没有位置信息，则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetGlobalDisplayXByIndex()
 
@@ -1233,7 +1233,7 @@ float OH_ArkUI_PointerEvent_GetGlobalDisplayXByIndex(const ArkUI_UIInputEvent* e
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回指向性输入事件中特定接触点相对于全局显示的X坐标，单位为px。如果发生任何参数错误，则返回0.0f。 |
+| float | 返回指向性输入事件中特定接触点相对于全局显示的X坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果发生任何参数错误，则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetGlobalDisplayY()
 
@@ -1259,7 +1259,7 @@ float OH_ArkUI_PointerEvent_GetGlobalDisplayY(const ArkUI_UIInputEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回相对于全局显示的Y坐标，单位为px。如果发生任何参数错误，例如传递的一个事件没有位置信息，则返回0.0f。 |
+| float | 返回相对于全局显示的Y坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果发生任何参数错误，例如传递的一个事件没有位置信息，则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetGlobalDisplayYByIndex()
 
@@ -1286,7 +1286,7 @@ float OH_ArkUI_PointerEvent_GetGlobalDisplayYByIndex(const ArkUI_UIInputEvent* e
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回相对于全局显示的Y坐标，单位为px。如果发生任何参数错误，则返回0.0f。 |
+| float | 返回相对于全局显示的Y坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果发生任何参数错误，则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetPressure()
 
@@ -1986,7 +1986,7 @@ double OH_ArkUI_AxisEvent_GetVerticalAxisValue(const ArkUI_UIInputEvent* event)
 **描述：**
 
 
-获取当前轴事件的垂直滚动轴的值。通常由鼠标滚轮，或用户在触控板上双指竖向滑动产生。当通过鼠标滚动触发时：1.上报的数值单位为角度，为单次滚动角度增量，非滚动总量；2.上报的数值已与用户配置的放大系数[OH_ArkUI_AxisEvent_GetScrollStep](capi-ui-input-event-h.md#oh_arkui_axisevent_getscrollstep)叠加运算；3.数值的正负代表方向，向前滚动鼠标滚轮时上报数值为正数，向后滚动鼠标滚轮时上报数值为负数；当通过触控板双指竖向滑动时：1.上报的数值单位为PX，为单次滚动增量，非滚动总量；2.上报的数值不受用户配置的放大系数[OH_ArkUI_AxisEvent_GetScrollStep](capi-ui-input-event-h.md#oh_arkui_axisevent_getscrollstep)影响；3.数值的正负代表方向，双指从上往下滑动时上报数值为负数，双指从下往上滑动时上报数值为正数；4.方向会受系统设置中"自然滚动"配置的影响。通常情况下，垂直滚动轴事件只能驱动竖向的滑动手势响应，但当鼠标指针下命中的可滑动手势里，如果可响应的方向都是一致的，那么垂直滚动轴事件可以驱动这些滑动手势得到响应，即使这些手势所定义的方向是横向的。
+获取当前轴事件的垂直滚动轴的值。通常由鼠标滚轮，或用户在触控板上双指竖向滑动产生。当通过鼠标滚动触发时：1.上报的数值单位为角度，为单次滚动角度增量，非滚动总量；2.上报的数值已与用户配置的放大系数[OH_ArkUI_AxisEvent_GetScrollStep](capi-ui-input-event-h.md#oh_arkui_axisevent_getscrollstep)叠加运算；3.数值的正负代表方向，向前滚动鼠标滚轮时上报数值为正数，向后滚动鼠标滚轮时上报数值为负数；当通过触控板双指竖向滑动时：1.上报的数值单位为px，为单次滚动增量，非滚动总量；2.上报的数值不受用户配置的放大系数[OH_ArkUI_AxisEvent_GetScrollStep](capi-ui-input-event-h.md#oh_arkui_axisevent_getscrollstep)影响；3.数值的正负代表方向，双指从上往下滑动时上报数值为负数，双指从下往上滑动时上报数值为正数；4.方向会受系统设置中"自然滚动"配置的影响。通常情况下，垂直滚动轴事件只能驱动竖向的滑动手势响应，但当鼠标指针下命中的可滑动手势里，如果可响应的方向都是一致的，那么垂直滚动轴事件可以驱动这些滑动手势得到响应，即使这些手势所定义的方向是横向的。
 
 **起始版本：** 12
 
@@ -2012,7 +2012,7 @@ double OH_ArkUI_AxisEvent_GetHorizontalAxisValue(const ArkUI_UIInputEvent* event
 **描述：**
 
 
-获取当前轴事件的水平滚动轴的值，通过在触控板上双指横向滑动产生。1.上报的数值单位为PX，为单次滚动增量，非滚动总量；2.上报的数值不受用户配置的放大系数[OH_ArkUI_AxisEvent_GetScrollStep](capi-ui-input-event-h.md#oh_arkui_axisevent_getscrollstep)影响；3.数值的正负代表方向，双指从左往右滑动时上报数值为负数，双指从右往左滑动时上报数值为正数；4.方向会受系统设置中"自然滚动"配置的影响。
+获取当前轴事件的水平滚动轴的值，通过在触控板上双指横向滑动产生。1.上报的数值单位为px，为单次滚动增量，非滚动总量；2.上报的数值不受用户配置的放大系数[OH_ArkUI_AxisEvent_GetScrollStep](capi-ui-input-event-h.md#oh_arkui_axisevent_getscrollstep)影响；3.数值的正负代表方向，双指从左往右滑动时上报数值为负数，双指从右往左滑动时上报数值为正数；4.方向会受系统设置中"自然滚动"配置的影响。
 
 **起始版本：** 12
 

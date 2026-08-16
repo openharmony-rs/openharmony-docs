@@ -460,7 +460,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetAudioTimestampInfo(OH_AudioRenderer* r
 
 > **说明：**
 >
-> - 当实际播放位置（framePosition）为0时，时间戳（timestamp）是固定值，直到流真正跑起来时才会更新。
+> - 当实际播放位置（framePosition）为0时，时间戳（timestamp）是固定值，直到流真正开始播放时才会更新。
 > - 播放位置（framePosition）单位为采样数，采样数计算方式为采样率乘以时间（例如，当采样率为48000Hz时，20ms音频数据对应的采样数为48000*0.02，即采样点为960）。
 > - 当调用Flush接口时实际播放位置也会被重置。
 > - 在调用此函数之前，确保音频流处于运行状态，并且至少已成功播放一帧数据。
@@ -886,7 +886,7 @@ OH_AudioStream_Result OH_AudioRenderer_SetDefaultOutputDevice(OH_AudioRenderer* 
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>         AUDIOSTREAM_ERROR_INVALID_PARAM：<br>                                                  1. 参数renderer为nullptr;<br>                                                  2. 参数deviceType无效。<br>         AUDIOSTREAM_ERROR_ILLEGAL_STATE：执行状态异常。<br>         AUDIOSTREAM_ERROR_SYSTEM：出现系统错误。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>         AUDIOSTREAM_ERROR_INVALID_PARAM：<br>                                                  1. 参数renderer为nullptr。<br>                                                  2. 参数deviceType无效。<br>         AUDIOSTREAM_ERROR_ILLEGAL_STATE：执行状态异常。<br>         AUDIOSTREAM_ERROR_SYSTEM：出现系统错误。 |
 
 ### OH_AudioRenderer_OnInterruptCallback()
 

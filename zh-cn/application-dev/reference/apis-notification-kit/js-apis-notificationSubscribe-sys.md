@@ -74,7 +74,7 @@ let subscribeCallback = (err: BusinessError) => {
   if (err) {
     console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("subscribe success");
+    console.info('subscribe success');
   }
 }
 let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
@@ -85,7 +85,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 };
 // 不会对bundleNames进行校验，开发者自己确定需要订阅哪些bundleName
 let info: notificationSubscribe.NotificationSubscribeInfo = {
-  bundleNames: ["bundleName1","bundleName2"]
+  bundleNames: ['bundleName1','bundleName2']
 };
 notificationSubscribe.subscribe(subscriber, info, subscribeCallback);
 ```
@@ -99,7 +99,7 @@ let subscribeCallback = (err: BusinessError | null) => {
   if (err) {
     console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("subscribe success");
+    console.info('subscribe success');
   }
 }
 let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
@@ -110,7 +110,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 };
 //不会对bundleNames进行校验，开发者自己确定需要订阅哪些bundleName
 let info: notificationSubscribe.NotificationSubscribeInfo = {
-  bundleNames: ["bundleName1","bundleName2"]
+  bundleNames: ['bundleName1','bundleName2']
 };
 notificationSubscribe.subscribe(subscriber, info, subscribeCallback);
 ```
@@ -166,7 +166,7 @@ let subscribeCallback = (err: BusinessError) => {
   if (err) {
     console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("subscribe success");
+    console.info('subscribe success');
   }
 }
 let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
@@ -186,7 +186,7 @@ let subscribeCallback = (err: BusinessError | null) => {
   if (err) {
     console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("subscribe success");
+    console.info('subscribe success');
   }
 }
 let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
@@ -258,7 +258,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
   onConsume: onConsumeCallback
 };
 notificationSubscribe.subscribe(subscriber).then(() => {
-  console.info("subscribe success");
+  console.info('subscribe success');
 }).catch((err: BusinessError) => {
   console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -273,7 +273,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
   onConsume: onConsumeCallback
 };
 notificationSubscribe.subscribe(subscriber).then(() => {
-  console.info("subscribe success");
+  console.info('subscribe success');
 }).catch((err: Error): void => {
   let error: BusinessError = err as BusinessError;
   console.error(`subscribe failed, code is ${error.code}, message is ${error.message}`);
@@ -335,7 +335,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
   onConsume: onConsumeCallback
 };
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
-  console.info("subscribeNotification success");
+  console.info('subscribeNotification success');
 }).catch((err: BusinessError) => {
   console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -350,7 +350,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
   onConsume: onConsumeCallback
 };
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
-  console.info("subscribeNotification success");
+  console.info('subscribeNotification success');
 }).catch((err: Error) => {
   let error: BusinessError = err as BusinessError;
   console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
@@ -413,10 +413,10 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
   onConsume: onConsumeCallback
 };
 let subscribeInfo: notificationSubscribe.NotificationSubscribeInfo = {
-  bundleNames: ["bundleName1", "bundleName2"],
+  bundleNames: ['bundleName1', 'bundleName2'],
 }
 notificationSubscribe.subscribeNotification(subscriber, subscribeInfo).then(() => {
-  console.info("subscribeNotification success");
+  console.info('subscribeNotification success');
 }).catch((err: BusinessError) => {
   console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -431,10 +431,10 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
   onConsume: onConsumeCallback
 };
 let subscribeInfo: notificationSubscribe.NotificationSubscribeInfo = {
-  bundleNames: ["bundleName1", "bundleName2"],
+  bundleNames: ['bundleName1', 'bundleName2'],
 }
 notificationSubscribe.subscribeNotification(subscriber, subscribeInfo).then(() => {
-  console.info("subscribeNotification success");
+  console.info('subscribeNotification success');
 }).catch((err: Error) => {
   let error: BusinessError = err as BusinessError;
   console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
@@ -493,7 +493,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
   onConsume: onConsumeCallback
 };
 notificationSubscribe.subscribeSelf(subscriber).then(() => {
-  console.info("subscribeSelf success");
+  console.info('subscribeSelf success');
 }).catch((err: BusinessError) => {
   console.error(`subscribeSelf failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -504,13 +504,13 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
-  console.info("Consume callback: " + JSON.stringify(data));
+  console.info('Consume callback: ' + JSON.stringify(data));
 }
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onConsume: onConsumeCallback
 };
 notificationSubscribe.subscribeSelf(subscriber).then(() => {
-  console.info("subscribeSelf success");
+  console.info('subscribeSelf success');
 }).catch((err: Error): void => {
   let error: BusinessError = err as BusinessError;
   console.error(`subscribeSelf failed, code is ${error.code}, message is ${error.message}`);
@@ -561,11 +561,11 @@ let unsubscribeCallback = (err: BusinessError) => {
   if (err) {
     console.error(`unsubscribe failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("unsubscribe success");
+    console.info('unsubscribe success');
   }
 }
 let onDisconnectCallback = () => {
-  console.info("subscribe disconnect");
+  console.info('subscribe disconnect');
 }
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onDisconnect: onDisconnectCallback
@@ -581,11 +581,11 @@ let unsubscribeCallback = (err: BusinessError | null) => {
   if (err) {
     console.error(`unsubscribe failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("unsubscribe success");
+    console.info('unsubscribe success');
   }
 }
 let onDisconnectCallback = () => {
-  console.info("subscribe disconnect");
+  console.info('subscribe disconnect');
 }
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onDisconnect: onDisconnectCallback
@@ -639,30 +639,31 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let onDisconnectCallback = () => {
-  console.info("subscribe disconnect");
+  console.info('subscribe disconnect');
 }
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onDisconnect: onDisconnectCallback
 };
 notificationSubscribe.unsubscribe(subscriber).then(() => {
-  console.info("unsubscribe success");
+  console.info('unsubscribe success');
 }).catch((err: BusinessError) => {
-  console.error(`unsubscribe fail: ${JSON.stringify(err)}`);
+  console.error(`unsubscribe fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
 ArkTS-Sta示例：
 ```ts
 let onDisconnectCallback = () => {
-  console.info("subscribe disconnect");
+  console.info('subscribe disconnect');
 }
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onDisconnect: onDisconnectCallback
 };
 notificationSubscribe.unsubscribe(subscriber).then(() => {
-  console.info("unsubscribe success");
+  console.info('unsubscribe success');
 }).catch((err: Error): void => {
-  console.error(`unsubscribe fail: ${JSON.stringify(err)}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`unsubscribe fail, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -717,15 +718,15 @@ let removeCallback = (err: BusinessError) => {
   if (err) {
     console.error(`remove failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("remove success");
+    console.info('remove success');
   }
 }
 let bundle: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 let notificationKey: notificationSubscribe.NotificationKey = {
   id: 0,
-  label: "label",
+  label: 'label',
 };
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(bundle, notificationKey, reason, removeCallback);
@@ -740,16 +741,16 @@ let removeCallback = (err: BusinessError | null) => {
   if (err) {
     console.error(`remove failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("remove success");
+    console.info('remove success');
   }
 }
 let bundle: notificationManager.BundleOption = {
   // 需根据实际情况进行替换
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 let notificationKey: notificationSubscribe.NotificationKey = {
   id: 0,
-  label: "label",
+  label: 'label',
 };
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(bundle, notificationKey, reason, removeCallback);
@@ -809,17 +810,17 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { notificationManager } from '@kit.NotificationKit';
 
 let bundle: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 let notificationKey: notificationSubscribe.NotificationKey = {
   id: 0,
-  label: "label",
+  label: 'label',
 };
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(bundle, notificationKey, reason).then(() => {
-  console.info("remove success");
+  console.info('remove success');
 }).catch((err: BusinessError) => {
-  console.error(`remove fail: ${JSON.stringify(err)}`);
+  console.error(`remove fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -829,17 +830,18 @@ import { notificationManager } from '@kit.NotificationKit';
 
 let bundle: notificationManager.BundleOption = {
   // 需根据实际情况进行替换
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 let notificationKey: notificationSubscribe.NotificationKey = {
   id: 0,
-  label: "label",
+  label: 'label',
 };
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(bundle, notificationKey, reason).then(() => {
-  console.info("remove success");
-}).catch((err: Error): void  => {
-  console.error(`remove fail: ${JSON.stringify(err)}`);
+  console.info('remove success');
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`remove fail, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -892,7 +894,7 @@ let removeCallback = (err: BusinessError) => {
   if (err) {
     console.error(`remove failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("remove success");
+    console.info('remove success');
   }
 }
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CANCEL_REASON_REMOVE;
@@ -908,7 +910,7 @@ let removeCallback = (err: BusinessError | null) => {
   if (err) {
     console.error(`remove failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("remove success");
+    console.info('remove success');
   }
 }
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CANCEL_REASON_REMOVE;
@@ -967,9 +969,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let hashCode: string = 'hashCode';
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(hashCode, reason).then(() => {
-  console.info("remove success");
+  console.info('remove success');
 }).catch((err: BusinessError) => {
-  console.error(`remove fail: ${JSON.stringify(err)}`);
+  console.error(`remove fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -978,9 +980,10 @@ ArkTS-Sta示例：
 let hashCode: string = 'hashCode';
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(hashCode, reason).then(() => {
-  console.info("remove success");
+  console.info('remove success');
 }).catch((err: Error): void => {
-  console.error(`remove fail: ${JSON.stringify(err)}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`remove fail, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1032,7 +1035,7 @@ let removeCallback = (err: BusinessError) => {
   if (err) {
     console.error(`remove failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("remove success");
+    console.info('remove success');
   }
 }
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CANCEL_REASON_REMOVE;
@@ -1048,7 +1051,7 @@ let removeCallback = (err: BusinessError | null ) => {
   if (err) {
     console.error(`remove failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("remove success");
+    console.info('remove success');
   }
 }
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CANCEL_REASON_REMOVE;
@@ -1106,9 +1109,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let hashCodes: string[] = ['hashCode1','hashCode2'];
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(hashCodes, reason).then(() => {
-  console.info("remove success");
+  console.info('remove success');
 }).catch((err: BusinessError) => {
-  console.error(`remove fail: ${JSON.stringify(err)}`);
+  console.error(`remove fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -1117,9 +1120,10 @@ ArkTS-Sta示例：
 let hashCodes: string[] = ['hashCode1','hashCode2'];
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(hashCodes, reason).then(() => {
-  console.info("remove success");
+  console.info('remove success');
 }).catch((err: Error): void => {
-  console.error(`remove fail: ${JSON.stringify(err)}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`remove fail, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1170,11 +1174,11 @@ let removeAllCallback = (err: BusinessError) => {
   if (err) {
     console.error(`removeAll failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("removeAll success");
+    console.info('removeAll success');
   }
 }
 let bundle: notificationSubscribe.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 notificationSubscribe.removeAll(bundle, removeAllCallback);
 ```
@@ -1187,12 +1191,12 @@ let removeAllCallback = (err: BusinessError | null) => {
   if (err) {
     console.error(`removeAll failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("removeAll success");
+    console.info('removeAll success');
   }
 }
 let bundle: notificationSubscribe.BundleOption = {
   // 需根据实际情况进行替换
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 notificationSubscribe.removeAll(bundle, removeAllCallback);
 ```
@@ -1242,7 +1246,7 @@ let removeAllCallback = (err: BusinessError) => {
     if (err) {
         console.error(`removeAll failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("removeAll success");
+        console.info('removeAll success');
     }
 }
 notificationSubscribe.removeAll(removeAllCallback);
@@ -1256,7 +1260,7 @@ let removeAllCallback = (err: BusinessError | null) => {
     if (err) {
         console.error(`removeAll failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("removeAll success");
+        console.info('removeAll success');
     }
 }
 notificationSubscribe.removeAll(removeAllCallback);
@@ -1312,9 +1316,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 不指定应用时，删除所有通知
 notificationSubscribe.removeAll().then(() => {
-  console.info("removeAll success");
+  console.info('removeAll success');
 }).catch((err: BusinessError) => {
-  console.error(`removeAll fail: ${JSON.stringify(err)}`);
+  console.error(`removeAll fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -1322,9 +1326,10 @@ ArkTS-Sta示例：
 ```ts
 // 不指定应用时，删除所有通知
 notificationSubscribe.removeAll().then(() => {
-  console.info("removeAll success");
+  console.info('removeAll success');
 }).catch((err: Error): void => {
-  console.error(`removeAll fail: ${JSON.stringify(err)}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`removeAll fail, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1377,7 +1382,7 @@ let removeAllCallback = (err: BusinessError) => {
   if (err) {
     console.error(`removeAll failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("removeAll success");
+    console.info('removeAll success');
   }
 }
 // 用户ID，使用时需替换为真实的userId。
@@ -1393,7 +1398,7 @@ let removeAllCallback = (err: BusinessError | null ) => {
   if (err) {
     console.error(`removeAll failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("removeAll success");
+    console.info('removeAll success');
   }
 }
 // 用户ID，使用时需替换为真实的userId。
@@ -1453,9 +1458,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let userId: number = 1;
 notificationSubscribe.removeAll(userId).then(() => {
-  console.info("removeAll success");
+  console.info('removeAll success');
 }).catch((err: BusinessError) => {
-  console.error(`removeAll fail: ${JSON.stringify(err)}`);
+  console.error(`removeAll fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -1463,9 +1468,10 @@ ArkTS-Sta示例：
 ```ts
 let userId: int = 1;
 notificationSubscribe.removeAll(userId).then(() => {
-  console.info("removeAll success");
+  console.info('removeAll success');
 }).catch((err: Error): void => {
-  console.error(`removeAll fail: ${JSON.stringify(err)}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`removeAll fail, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1518,15 +1524,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let hashcode: string = 'hashcode';
 let operationInfo: notificationSubscribe.OperationInfo = {
-  actionName: "actionName",
-  userInput: "userInput",
+  actionName: 'actionName',
+  userInput: 'userInput',
   operationType: 1,
   buttonIndex: 1,
 };
 notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
-  console.info("distributeOperation success");
+  console.info('distributeOperation success');
 }).catch((err: BusinessError) => {
-  console.error(`distributeOperation fail: ${JSON.stringify(err)}`);
+  console.error(`distributeOperation fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -1534,13 +1540,14 @@ ArkTS-Sta示例：
 ```ts
 let hashcode: string = 'hashcode';
 let operationInfo: notificationSubscribe.OperationInfo = {
-  actionName: "actionName",
-  userInput: "userInput",
+  actionName: 'actionName',
+  userInput: 'userInput',
 };
 notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
-  console.info("distributeOperation success");
+  console.info('distributeOperation success');
 }).catch((err: Error): void => {
-  console.error(`distributeOperation fail: ${JSON.stringify(err)}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`distributeOperation fail, code is ${error.code}, message is ${error.message}`);
 });
 ```
 

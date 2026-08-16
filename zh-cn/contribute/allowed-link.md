@@ -24,3 +24,4 @@
 | docs/zh-cn/application-dev/reference/apis-connectivity-kit/js-apis-nfcController.md | [canIUse("SystemCapability.Communication.NFC.Core")](../common/init.md#caniuse) | Connectivity Kit | Nfc | 是 | 2026-06-04 |
 | docs/zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-errorManager.md | [_ErrorObserver.default](js-apis-inner-application-errorObserver.md) | Ability Kit | Ability | 是 | 2026-07-07 |
 | docs/zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-custom-env-property.md            | [CustomEnvKey\<T\>](#customenvkeys) | ArkUI Kit | ArkUI | 是 | 2026-07-15 |
+| docs/zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management.md            | [SubscribedAbstractProperty&lt;S&gt;](#subscribedabstractpropertyt9) | ArkUI Kit | ArkUI | 是 | 2026-08-14 |

@@ -108,7 +108,7 @@ ArkTS-Sta: bindPopup(show: boolean | undefined, popup: PopupOptions | CustomPopu
 | onDidDisappear<sup>23+</sup>          | [VoidCallback](ts-types.md#voidcallback12) | 否   | 是   | 弹出气泡关闭时的回调函数。<br/>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
 | backgroundBlurStyleOptions | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) | 否 | 是 | 背景模糊效果。默认值请参考BackgroundBlurStyleOptions类型说明。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 | backgroundEffect | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) | 否 | 是 | 背景效果参数。默认值请参考BackgroundEffectOptions类型说明。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
-| levelMode | [LevelMode](../js-apis-promptAction.md#levelmode15枚举说明) | 否 | 是 | 设置气泡的显示层级模式。<br/>默认值：LevelMode.OVERLAY<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
+| levelMode | [LevelMode](../js-apis-promptAction.md#levelmode15) | 否 | 是 | 设置气泡的显示层级模式。<br/>默认值：LevelMode.OVERLAY<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 
 ## PopupMessageOptions<sup>10+</sup>类型说明
 
@@ -209,7 +209,7 @@ ArkTS-Sta: bindPopup(show: boolean | undefined, popup: PopupOptions | CustomPopu
 | onDidDisappear<sup>23+</sup>          | [VoidCallback](ts-types.md#voidcallback12) | 否   | 是   | 弹出气泡关闭时的回调函数。<br/>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
 | backgroundBlurStyleOptions | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) | 否 | 是 | 背景模糊效果。默认值请参考BackgroundBlurStyleOptions类型说明。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 | backgroundEffect | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) | 否 | 是 | 背景效果参数。默认值请参考BackgroundEffectOptions类型说明。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
-| levelMode | [LevelMode](../js-apis-promptAction.md#levelmode15枚举说明) | 否 | 是 | 设置气泡的显示层级模式。<br/>默认值：LevelMode.OVERLAY<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
+| levelMode | [LevelMode](../js-apis-promptAction.md#levelmode15) | 否 | 是 | 设置气泡的显示层级模式。<br/>默认值：LevelMode.OVERLAY<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 
 ## PopupCommonOptions<sup>18+</sup>类型说明
 
@@ -254,7 +254,7 @@ ArkTS-Sta: bindPopup(show: boolean | undefined, popup: PopupOptions | CustomPopu
 | onDidDisappear<sup>23+</sup>          | [VoidCallback](ts-types.md#voidcallback12) | 否   | 是   | 弹出气泡关闭时的回调函数。<br/>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
 | backgroundBlurStyleOptions | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) | 否 | 是 | 背景模糊效果。默认值请参考BackgroundBlurStyleOptions类型说明。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 | backgroundEffect | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) | 否 | 是 | 背景效果参数。默认值请参考BackgroundEffectOptions类型说明。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
-| levelMode | [LevelMode](../js-apis-promptAction.md#levelmode15枚举说明) | 否 | 是 | 设置气泡的显示层级模式。<br/>默认值：LevelMode.OVERLAY<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
+| levelMode | [LevelMode](../js-apis-promptAction.md#levelmode15) | 否 | 是 | 设置气泡的显示层级模式。<br/>默认值：LevelMode.OVERLAY<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 
 ## PopupStateChangeParam<sup>18+</sup>类型说明
 
@@ -320,8 +320,6 @@ type PopupStateChangeCallback = (event: PopupStateChangeParam) => void;
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -362,13 +360,26 @@ ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
+/**
+ * 示例1：弹出不同类型的气泡
+ * 用途：演示PopupOptions和CustomPopupOptions两种气泡类型的使用方法
+ * 
+ * PopupOptions：基础气泡类型，通过message属性设置文本内容
+ * CustomPopupOptions：自定义气泡类型，通过builder属性自定义气泡内容
+ */
 @Entry
 @Component
 struct PopupExample {
+  /** 控制PopupOptions类型气泡的显示状态 */
   @State handlePopup: boolean = false;
+  /** 控制CustomPopupOptions类型气泡的显示状态 */
   @State customPopup: boolean = false;
 
-  // Popup构造器定义弹框内容
+  /**
+   * Popup构造器定义自定义弹框内容
+   * 说明：用于CustomPopupOptions类型气泡的内容构建
+   * 返回值：包含图片和文本的Row组件
+   */
   @Builder popupBuilder() {
     Row({ space: 2 }) {
       // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
@@ -379,33 +390,50 @@ struct PopupExample {
 
   build() {
     Flex({ direction: FlexDirection.Column }) {
-      // PopupOptions类型设置弹框内容
+      /**
+       * PopupOptions类型气泡示例
+       * 说明：使用message属性设置气泡文本内容，适合简单的文本提示场景
+       */
       Button('PopupOptions')
         .onClick(() => {
+          // 点击按钮切换气泡显示状态
           this.handlePopup = !this.handlePopup;
         })
         .bindPopup(this.handlePopup, {
+          /** 气泡显示的文本内容 */
           message: 'This is a popup with PopupOptions',
+          /** 气泡显示位置：在按钮上方显示 */
           placement: Placement.Top,
+          /** 是否在子窗中显示，false表示在主窗中显示 */
           showInSubWindow:false,
-          keyboardAvoidMode: KeyboardAvoidMode.DEFAULT, // 设置气泡避让软键盘
+          /** 键盘避让模式：DEFAULT表示气泡会避让软键盘 */
+          keyboardAvoidMode: KeyboardAvoidMode.DEFAULT,
+          /** 主按钮配置 */
           primaryButton: {
-            value: 'confirm',
+            value: 'confirm', // 按钮文本
+            /** 按钮点击回调函数 */
             action: () => {
               this.handlePopup = !this.handlePopup;
               console.info('confirm Button click');
             }
           },
-          // 第二个按钮
+          /** 辅助按钮配置 */
           secondaryButton: {
-            value: 'cancel',
+            value: 'cancel', // 按钮文本
+            /** 按钮点击回调函数 */
             action: () => {
               this.handlePopup = !this.handlePopup;
               console.info('cancel Button click');
             }
           },
+          /**
+           * 气泡状态变化回调函数
+           * @param e - 状态变化事件对象
+           * @param e.isVisible - 气泡是否可见，true表示气泡打开，false表示气泡关闭
+           */
           onStateChange: (e) => {
             console.info(JSON.stringify(e.isVisible))
+            // 气泡关闭时，同步更新状态变量
             if (!e.isVisible) {
               this.handlePopup = false;
             }
@@ -414,20 +442,37 @@ struct PopupExample {
         .position({ x: 100, y: 150 })
 
 
-      // CustomPopupOptions类型设置弹框内容
+      /**
+       * CustomPopupOptions类型气泡示例
+       * 说明：使用builder属性自定义气泡内容，适合复杂的自定义布局场景
+       */
       Button('CustomPopupOptions')
         .onClick(() => {
+          // 点击按钮切换气泡显示状态
           this.customPopup = !this.customPopup;
         })
         .bindPopup(this.customPopup, {
+          /** 自定义气泡内容的构造器 */
           builder: this.popupBuilder,
+          /** 气泡显示位置：在按钮上方显示 */
           placement: Placement.Top,
+          /** 遮罩层配置：设置遮罩层颜色为半透明黑色 */
           mask: {color:'#33000000'},
+          /** 气泡背景颜色 */
           popupColor: Color.Yellow,
+          /** 是否显示气泡箭头 */
           enableArrow: true,
-          keyboardAvoidMode: KeyboardAvoidMode.DEFAULT, // 设置气泡避让软键盘
+          /** 键盘避让模式：DEFAULT表示气泡会避让软键盘 */
+          keyboardAvoidMode: KeyboardAvoidMode.DEFAULT,
+          /** 是否在子窗中显示 */
           showInSubWindow: false,
+          /**
+           * 气泡状态变化回调函数
+           * @param e - 状态变化事件对象
+           * @param e.isVisible - 气泡是否可见
+           */
           onStateChange: (e) => {
+            // 气泡关闭时，同步更新状态变量
             if (!e.isVisible) {
               this.customPopup = false;
             }
@@ -444,17 +489,30 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 // xxx.ets
+/**
+ * 示例1：弹出不同类型的气泡（ArkTS-Sta版本）
+ * 用途：演示PopupOptions和CustomPopupOptions两种气泡类型的使用方法
+ * 
+ * PopupOptions：基础气泡类型，通过message属性设置文本内容
+ * CustomPopupOptions：自定义气泡类型，通过builder属性自定义气泡内容
+ */
 import { Entry, Component, Builder, Row, RowOptions, Flex, Image, Button, Text, Margin, $r,
   FlexDirection, PopupOptions, CustomPopupOptions, Position, Padding, KeyboardAvoidMode,
-  Color, PopupStateChangeParam, Placement} from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+  Color, PopupStateChangeParam, Placement, State } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct PopupExample {
+  /** 控制PopupOptions类型气泡的显示状态 */
   @State handlePopup: boolean = false;
+  /** 控制CustomPopupOptions类型气泡的显示状态 */
   @State customPopup: boolean = false;
 
-  // Popup构造器定义弹框内容
+  /**
+   * Popup构造器定义自定义弹框内容
+   * 说明：用于CustomPopupOptions类型气泡的内容构建
+   * 返回值：包含图片和文本的Row组件
+   */
   @Builder popupBuilder() {
     Row({ space: 2 } as RowOptions) {
       // $r("app.media.startIcon")需要替换为开发者所需的图像资源文件
@@ -465,34 +523,50 @@ struct PopupExample {
 
   build() {
     Flex({ direction: FlexDirection.Column }) {
-      // PopupOptions类型设置弹框内容
+      /**
+       * PopupOptions类型气泡示例
+       * 说明：使用message属性设置气泡文本内容，适合简单的文本提示场景
+       */
       Button('PopupOptions')
         .onClick(() => {
+          // 点击按钮切换气泡显示状态
           this.handlePopup = !this.handlePopup;
         })
         .bindPopup(this.handlePopup, {
+          /** 气泡显示的文本内容 */
           message: 'This is a popup with PopupOptions',
+          /** 气泡显示位置：在按钮上方显示 */
           placement: Placement.Top,
+          /** 是否在子窗中显示，false表示在主窗中显示 */
           showInSubWindow:false,
-          // 设置气泡避让软键盘
+          /** 键盘避让模式：DEFAULT表示气泡会避让软键盘 */
           keyboardAvoidMode: KeyboardAvoidMode.DEFAULT,
+          /** 主按钮配置 */
           primaryButton: {
-            value: 'confirm',
+            value: 'confirm', // 按钮文本
+            /** 按钮点击回调函数 */
             action: () => {
               this.handlePopup = !this.handlePopup;
               console.info('confirm Button click');
             }
           },
-          // 第二个按钮
+          /** 辅助按钮配置 */
           secondaryButton: {
-            value: 'cancel',
+            value: 'cancel', // 按钮文本
+            /** 按钮点击回调函数 */
             action: () => {
               this.handlePopup = !this.handlePopup;
               console.info('cancel Button click');
             }
           },
+          /**
+           * 气泡状态变化回调函数
+           * @param e - 状态变化事件对象，类型为PopupStateChangeParam
+           * @param e.isVisible - 气泡是否可见，true表示气泡打开，false表示气泡关闭
+           */
           onStateChange: (e: PopupStateChangeParam) => {
             console.info(JSON.stringify(e.isVisible))
+            // 气泡关闭时，同步更新状态变量
             if (!e.isVisible) {
               this.handlePopup = false;
             }
@@ -500,21 +574,37 @@ struct PopupExample {
         } as PopupOptions)
         .position({ x: 100, y: 150 } as Position)
 
-      // CustomPopupOptions类型设置弹框内容
+      /**
+       * CustomPopupOptions类型气泡示例
+       * 说明：使用builder属性自定义气泡内容，适合复杂的自定义布局场景
+       */
       Button('CustomPopupOptions')
         .onClick(() => {
+          // 点击按钮切换气泡显示状态
           this.customPopup = !this.customPopup;
         })
         .bindPopup(this.customPopup, {
+          /** 自定义气泡内容的构造器 */
           builder: this.popupBuilder,
+          /** 气泡显示位置：在按钮上方显示 */
           placement: Placement.Top,
+          /** 遮罩层配置：设置遮罩层颜色为半透明黑色 */
           mask: {color:'#33000000'},
+          /** 气泡背景颜色 */
           popupColor: Color.Yellow,
+          /** 是否显示气泡箭头 */
           enableArrow: true,
-          // 设置气泡避让软键盘
+          /** 键盘避让模式：DEFAULT表示气泡会避让软键盘 */
           keyboardAvoidMode: KeyboardAvoidMode.DEFAULT,
+          /** 是否在子窗中显示 */
           showInSubWindow: false,
+          /**
+           * 气泡状态变化回调函数
+           * @param e - 状态变化事件对象，类型为PopupStateChangeParam
+           * @param e.isVisible - 气泡是否可见
+           */
           onStateChange: (e: PopupStateChangeParam) => {
+            // 气泡关闭时，同步更新状态变量
             if (!e.isVisible) {
               this.customPopup = false;
             }
@@ -536,35 +626,53 @@ ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
-
+/**
+ * 示例2：设置气泡的文本样式
+ * 用途：演示如何通过messageOptions属性自定义气泡文本的样式
+ * 
+ * messageOptions属性：用于设置气泡文本的颜色、字体大小、字体样式等
+ */
 @Entry
 @Component
 struct PopupExample {
+  /** 控制气泡的显示状态 */
   @State handlePopup: boolean = false;
 
   build() {
     Column({ space: 100 }) {
       Button('PopupOptions').margin(100)
         .onClick(() => {
+          // 点击按钮切换气泡显示状态
           this.handlePopup = !this.handlePopup;
         })
         .bindPopup(this.handlePopup, {
-          // PopupOptions类型气泡的内容
+          /** PopupOptions类型气泡的文本内容 */
           message: 'This is a popup with PopupOptions',
+          /** 气泡文本样式配置 */
           messageOptions: {
-            // 气泡的文本样式
+            /** 文本颜色：红色 */
             textColor: Color.Red,
+            /** 字体属性配置 */
             font: {
-              size: '14vp',
-              style: FontStyle.Italic,
-              weight: FontWeight.Bolder
+              size: '14vp', // 字体大小
+              style: FontStyle.Italic, // 字体样式：斜体
+              weight: FontWeight.Bolder // 字体粗细：加粗
             }
           },
+          /** 气泡显示位置：在按钮下方显示 */
           placement: Placement.Bottom,
-          enableArrow: false, // 气泡弹出时不显示箭头
+          /** 是否显示箭头：false表示不显示 */
+          enableArrow: false,
+          /** 气泡与宿主节点的间距 */
           targetSpace: '15vp',
+          /**
+           * 气泡状态变化回调函数
+           * @param e - 状态变化事件对象
+           * @param e.isVisible - 气泡是否可见
+           */
           onStateChange: (e) => {
             console.info(JSON.stringify(e.isVisible));
+            // 气泡关闭时，同步更新状态变量
             if (!e.isVisible) {
               this.handlePopup = false;
             }
@@ -580,39 +688,56 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 // xxx.ets
-
+/**
+ * 示例2：设置气泡的文本样式（ArkTS-Sta版本）
+ * 用途：演示如何通过messageOptions属性自定义气泡文本的样式
+ * 
+ * messageOptions属性：用于设置气泡文本的颜色、字体大小、字体样式等
+ */
 import { Entry, Component, Column, ColumnOptions, Button, FontStyle, FontWeight,
-  PopupOptions, Color, PopupStateChangeParam, Placement} from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+  PopupOptions, Color, PopupStateChangeParam, Placement, State } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct PopupExample {
+  /** 控制气泡的显示状态 */
   @State handlePopup: boolean = false;
 
   build() {
     Column({ space: 100 } as ColumnOptions) {
       Button('PopupOptions').margin(100)
         .onClick(() => {
+          // 点击按钮切换气泡显示状态
           this.handlePopup = !this.handlePopup;
         })
         .bindPopup(this.handlePopup, {
-          // PopupOptions类型气泡的内容
+          /** PopupOptions类型气泡的文本内容 */
           message: 'This is a popup with PopupOptions',
+          /** 气泡文本样式配置 */
           messageOptions: {
-            // 气泡的文本样式
+            /** 文本颜色：红色 */
             textColor: Color.Red,
+            /** 字体属性配置 */
             font: {
-              size: '14vp',
-              style: FontStyle.Italic,
-              weight: FontWeight.Bolder
+              size: '14vp', // 字体大小
+              style: FontStyle.Italic, // 字体样式：斜体
+              weight: FontWeight.Bolder // 字体粗细：加粗
             }
           },
+          /** 气泡显示位置：在按钮下方显示 */
           placement: Placement.Bottom,
-          enableArrow: false, // 气泡弹出时不显示箭头
+          /** 是否显示箭头：false表示不显示 */
+          enableArrow: false,
+          /** 气泡与宿主节点的间距 */
           targetSpace: '15vp',
+          /**
+           * 气泡状态变化回调函数
+           * @param e - 状态变化事件对象，类型为PopupStateChangeParam
+           * @param e.isVisible - 气泡是否可见
+           */
           onStateChange: (e: PopupStateChangeParam) => {
             console.info(JSON.stringify(e.isVisible));
+            // 气泡关闭时，同步更新状态变量
             if (!e.isVisible) {
               this.handlePopup = false;
             }
@@ -633,15 +758,32 @@ ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
-
+/**
+ * 示例3：设置气泡的样式
+ * 用途：演示如何自定义气泡箭头和气泡本身的样式
+ * 
+ * 样式属性包括：
+ * - arrowHeight/arrowWidth：设置箭头的高度和宽度
+ * - radius：设置气泡圆角
+ * - shadow：设置气泡阴影
+ * - popupColor：设置气泡背景颜色
+ * - arrowPointPosition：设置箭头位置
+ * - backgroundBlurStyle：设置背景模糊效果
+ */
 @Entry
 @Component
 struct PopupExample {
+  /** 控制第一个气泡的显示状态 */
   @State customPopup: boolean = false;
+  /** 控制第二个气泡的显示状态 */
   @State handlePopup: boolean = false;
 
   build() {
     Column({ space: 100 }) {
+      /**
+       * 第一个气泡示例
+       * 说明：展示气泡箭头和圆角的样式设置
+       */
       Button("popup")
         .margin({ top: 50 })
         .onClick(() => {
@@ -649,23 +791,27 @@ struct PopupExample {
         })
         .bindPopup(this.customPopup!!, {
           message: "this is a popup",
-          arrowHeight: 20, // 设置气泡箭头高度
-          arrowWidth: 20, // 设置气泡箭头宽度
-          radius: 20, // 设置气泡的圆角
-          shadow: ShadowStyle.OUTER_DEFAULT_XS, // 设置气泡的阴影
+          arrowHeight: 20, // 设置气泡箭头高度：20vp
+          arrowWidth: 20, // 设置气泡箭头宽度：20vp
+          radius: 20, // 设置气泡的圆角半径：20vp
+          shadow: ShadowStyle.OUTER_DEFAULT_XS, // 设置气泡的阴影样式
         })
 
+      /**
+       * 第二个气泡示例
+       * 说明：展示气泡宽度、箭头位置、背景色和模糊效果的设置
+       */
       Button('PopupOptions')
         .onClick(() => {
           this.handlePopup = !this.handlePopup;
         })
         .bindPopup(this.handlePopup!!, {
-          width: 300,
+          width: 300, // 气泡宽度：300vp
           message: 'This is a popup with PopupOptions',
-          arrowPointPosition: ArrowPointPosition.START, // 设置箭头的位置
-          backgroundBlurStyle: BlurStyle.NONE, // 关闭气泡的模糊背景
-          popupColor: Color.Red, // 设置气泡的背景色
-          autoCancel: true,
+          arrowPointPosition: ArrowPointPosition.START, // 设置箭头位置：起始位置
+          backgroundBlurStyle: BlurStyle.NONE, // 关闭气泡的模糊背景效果
+          popupColor: Color.Red, // 设置气泡的背景颜色：红色
+          autoCancel: true, // 点击页面其他区域时自动关闭气泡
         })
     }
     .width('100%')
@@ -678,19 +824,35 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 // xxx.ets
-
+/**
+ * 示例3：设置气泡的样式（ArkTS-Sta版本）
+ * 用途：演示如何自定义气泡箭头和气泡本身的样式
+ * 
+ * 样式属性包括：
+ * - arrowHeight/arrowWidth：设置箭头的高度和宽度
+ * - radius：设置气泡圆角
+ * - shadow：设置气泡阴影
+ * - popupColor：设置气泡背景颜色
+ * - arrowPointPosition：设置箭头位置
+ * - backgroundBlurStyle：设置背景模糊效果
+ */
 import { Entry, Component, Column, ColumnOptions, Button, PopupOptions, Color,
-  Margin, ShadowStyle, BlurStyle, ArrowPointPosition} from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+  Margin, ShadowStyle, BlurStyle, ArrowPointPosition, State } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct PopupExample {
+  /** 控制第一个气泡的显示状态 */
   @State customPopup: boolean = false;
+  /** 控制第二个气泡的显示状态 */
   @State handlePopup: boolean = false;
 
   build() {
     Column({ space: 100 } as ColumnOptions) {
+      /**
+       * 第一个气泡示例
+       * 说明：展示气泡箭头和圆角的样式设置
+       */
       Button("popup")
         .margin({ top: 50 } as Margin)
         .onClick(() => {
@@ -698,23 +860,27 @@ struct PopupExample {
         })
         .bindPopup(this.customPopup, {
           message: "this is a popup",
-          arrowHeight: 20, // 设置气泡箭头高度
-          arrowWidth: 20, // 设置气泡箭头宽度
-          radius: 20, // 设置气泡的圆角
-          shadow: ShadowStyle.OUTER_DEFAULT_XS, // 设置气泡的阴影
+          arrowHeight: 20, // 设置气泡箭头高度：20vp
+          arrowWidth: 20, // 设置气泡箭头宽度：20vp
+          radius: 20, // 设置气泡的圆角半径：20vp
+          shadow: ShadowStyle.OUTER_DEFAULT_XS, // 设置气泡的阴影样式
         } as PopupOptions)
 
+      /**
+       * 第二个气泡示例
+       * 说明：展示气泡宽度、箭头位置、背景色和模糊效果的设置
+       */
       Button('PopupOptions')
         .onClick(() => {
           this.handlePopup = !this.handlePopup;
         })
         .bindPopup(this.handlePopup, {
-          width: 300,
+          width: 300, // 气泡宽度：300vp
           message: 'This is a popup with PopupOptions',
-          arrowPointPosition: ArrowPointPosition.START, // 设置箭头的位置
-          backgroundBlurStyle: BlurStyle.NONE, // 关闭气泡的模糊背景
-          popupColor: Color.Red, // 设置气泡的背景色
-          autoCancel: true,
+          arrowPointPosition: ArrowPointPosition.START, // 设置箭头位置：起始位置
+          backgroundBlurStyle: BlurStyle.NONE, // 关闭气泡的模糊背景效果
+          popupColor: Color.Red, // 设置气泡的背景颜色：红色
+          autoCancel: true, // 点击页面其他区域时自动关闭气泡
         } as PopupOptions)
     }
     .width('100%')
@@ -732,13 +898,28 @@ ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
+/**
+ * 示例4：设置气泡的动效
+ * 用途：演示如何通过transition属性自定义气泡显示和退出的动画效果
+ * 
+ * transition属性：用于设置气泡的显示和退出动画
+ * - TransitionEffect.asymmetric：设置不对称的显示和退出动画
+ * - TransitionEffect.OPACITY：透明度动画
+ * - TransitionEffect.translate：平移动画
+ * - TransitionEffect.scale：缩放动画
+ */
 @Entry
 @Component
 struct PopupExample {
+  /** 控制PopupOptions类型气泡的显示状态 */
   @State handlePopup: boolean = false;
+  /** 控制CustomPopupOptions类型气泡的显示状态 */
   @State customPopup: boolean = false;
 
-  // Popup构造器定义弹框内容
+  /**
+   * Popup构造器定义自定义弹框内容
+   * 说明：用于CustomPopupOptions类型气泡的内容构建
+   */
   @Builder
   popupBuilder() {
     Row() {
@@ -748,7 +929,10 @@ struct PopupExample {
 
   build() {
     Flex({ direction: FlexDirection.Column }) {
-      // PopupOptions类型设置弹框内容
+      /**
+       * PopupOptions类型气泡示例
+       * 说明：展示如何设置气泡的显示动效（透明度+平移组合效果）
+       */
       Button('PopupOptions')
         .onClick(() => {
           this.handlePopup = !this.handlePopup;
@@ -757,13 +941,23 @@ struct PopupExample {
           message: 'This is a popup with transitionEffect',
           placement: Placement.Top,
           showInSubWindow: false,
+          /**
+           * 气泡状态变化回调函数
+           * @param e - 状态变化事件对象
+           * @param e.isVisible - 气泡是否可见
+           */
           onStateChange: (e) => {
             console.info(JSON.stringify(e.isVisible))
             if (!e.isVisible) {
               this.handlePopup = false;
             }
           },
-          // 设置气泡显示动效为透明度动效与平移动效的组合效果，无退出动效
+          /**
+           * 设置气泡动效
+           * 说明：使用asymmetric设置不对称的显示和退出动画
+           * 显示动效：透明度动画（1秒）+ 平移动画（x:50, y:50）的组合效果
+           * 退出动效：无动画效果（IDENTITY）
+           */
           transition: TransitionEffect.asymmetric(
             TransitionEffect.OPACITY.animation({ duration: 1000, curve: Curve.Ease }).combine(
               TransitionEffect.translate({ x: 50, y: 50 })),
@@ -771,7 +965,10 @@ struct PopupExample {
         })
         .position({ x: 100, y: 150 })
 
-      // CustomPopupOptions类型设置弹框内容
+      /**
+       * CustomPopupOptions类型气泡示例
+       * 说明：展示如何设置气泡的缩放动画效果
+       */
       Button('CustomPopupOptions')
         .onClick(() => {
           this.customPopup = !this.customPopup;
@@ -780,12 +977,21 @@ struct PopupExample {
           builder: this.popupBuilder,
           placement: Placement.Top,
           showInSubWindow: false,
+          /**
+           * 气泡状态变化回调函数
+           * @param e - 状态变化事件对象
+           * @param e.isVisible - 气泡是否可见
+           */
           onStateChange: (e) => {
             if (!e.isVisible) {
               this.customPopup = false;
             }
           },
-          // 设置气泡显示动效与退出动效为缩放动效
+          /**
+           * 设置气泡动效
+           * 说明：使用scale设置缩放动画
+           * 显示和退出动效：y轴从0缩放到1的动画（500毫秒）
+           */
           transition: TransitionEffect.scale({ x: 1, y: 0 }).animation({ duration: 500, curve: Curve.Ease })
         })
         .position({ x: 80, y: 300 })
@@ -799,18 +1005,31 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 // xxx.ets
-
+/**
+ * 示例4：设置气泡的动效（ArkTS-Sta版本）
+ * 用途：演示如何通过transition属性自定义气泡显示和退出的动画效果
+ * 
+ * transition属性：用于设置气泡的显示和退出动画
+ * - TransitionEffect.asymmetric：设置不对称的显示和退出动画
+ * - TransitionEffect.OPACITY：透明度动画
+ * - TransitionEffect.translate：平移动画
+ * - TransitionEffect.scale：缩放动画
+ */
 import { Entry, Component, Builder, Row, Text, Flex, FlexDirection, Button, CustomPopupOptions,
-Position, PopupOptions, PopupStateChangeParam, TransitionEffect, Padding, Curve, Placement } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+  Position, PopupOptions, PopupStateChangeParam, TransitionEffect, Padding, Curve, Placement, State } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct PopupExample {
+  /** 控制PopupOptions类型气泡的显示状态 */
   @State handlePopup: boolean = false;
+  /** 控制CustomPopupOptions类型气泡的显示状态 */
   @State customPopup: boolean = false;
 
-  // Popup构造器定义弹框内容
+  /**
+   * Popup构造器定义自定义弹框内容
+   * 说明：用于CustomPopupOptions类型气泡的内容构建
+   */
   @Builder popupBuilder() {
     Row() {
       Text('Custom Popup with transitionEffect').fontSize(10)
@@ -819,7 +1038,10 @@ struct PopupExample {
 
   build() {
     Flex({ direction: FlexDirection.Column }) {
-      // PopupOptions类型设置弹框内容
+      /**
+       * PopupOptions类型气泡示例
+       * 说明：展示如何设置气泡的显示动效（透明度+平移组合效果）
+       */
       Button('PopupOptions')
         .onClick(() => {
           this.handlePopup = !this.handlePopup;
@@ -828,13 +1050,23 @@ struct PopupExample {
           message: 'This is a popup with transitionEffect',
           placement: Placement.Top,
           showInSubWindow: false,
+          /**
+           * 气泡状态变化回调函数
+           * @param e - 状态变化事件对象，类型为PopupStateChangeParam
+           * @param e.isVisible - 气泡是否可见
+           */
           onStateChange: (e: PopupStateChangeParam) => {
             console.info(JSON.stringify(e.isVisible))
             if (!e.isVisible) {
               this.handlePopup = false;
             }
           },
-          // 设置气泡显示动效为透明度动效与平移动效的组合效果，无退出动效
+          /**
+           * 设置气泡动效
+           * 说明：使用asymmetric设置不对称的显示和退出动画
+           * 显示动效：透明度动画（1秒）+ 平移动画（x:50, y:50）的组合效果
+           * 退出动效：无动画效果（IDENTITY）
+           */
           transition:TransitionEffect.asymmetric(
             TransitionEffect.OPACITY.animation({ duration: 1000, curve: Curve.Ease }).combine(
               TransitionEffect.translate({ x: 50, y: 50 })),
@@ -842,7 +1074,10 @@ struct PopupExample {
         } as PopupOptions)
         .position({ x: 100, y: 150 } as Position)
 
-      // CustomPopupOptions类型设置弹框内容
+      /**
+       * CustomPopupOptions类型气泡示例
+       * 说明：展示如何设置气泡的缩放动画效果
+       */
       Button('CustomPopupOptions')
         .onClick(() => {
           this.customPopup = !this.customPopup;
@@ -851,12 +1086,21 @@ struct PopupExample {
           builder: this.popupBuilder,
           placement: Placement.Top,
           showInSubWindow: false,
+          /**
+           * 气泡状态变化回调函数
+           * @param e - 状态变化事件对象，类型为PopupStateChangeParam
+           * @param e.isVisible - 气泡是否可见
+           */
           onStateChange: (e: PopupStateChangeParam) => {
             if (!e.isVisible) {
               this.customPopup = false;
             }
           },
-          // 设置气泡显示动效与退出动效为缩放动效
+          /**
+           * 设置气泡动效
+           * 说明：使用scale设置缩放动画
+           * 显示和退出动效：y轴从0缩放到1的动画（500毫秒）
+           */
           transition:TransitionEffect.scale({ x: 1, y: 0 }).animation({ duration: 500, curve: Curve.Ease })
         } as CustomPopupOptions)
         .position({ x: 80, y: 300 } as Position)
@@ -875,19 +1119,34 @@ ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
-
+/**
+ * 示例5：为气泡添加事件
+ * 用途：演示如何通过onWillDismiss属性拦截气泡退出事件并执行回调函数
+ * 
+ * onWillDismiss属性：
+ * - 设置为boolean类型时：true表示响应退出事件，false表示拦截退出事件
+ * - 设置为函数类型时：拦截退出事件并执行回调函数，可通过reason判断退出原因
+ * 
+ * DismissReason枚举：
+ * - PRESS_BACK：点击三键back、侧滑、键盘ESC
+ * - TOUCH_OUTSIDE：点击遮罩层
+ * - CLOSE_BUTTON：点击关闭按钮
+ */
 @Entry
 @Component
 struct PopupExample {
+  /** 控制气泡的显示状态 */
   @State handlePopup: boolean = false;
   build() {
     Column() {
       Button('PopupOptions')
         .onClick(() => {
+          // 点击按钮显示气泡
           this.handlePopup = true;
         })
         .bindPopup(this.handlePopup, {
           message: 'This is a popup with PopupOptions',
+          /** 气泡文本样式配置 */
           messageOptions: {
             textColor: Color.Red,
             font: {
@@ -896,21 +1155,33 @@ struct PopupExample {
               weight: FontWeight.Bolder
             }
           },
+          /** 气泡显示位置：在按钮下方 */
           placement: Placement.Bottom,
+          /** 是否显示箭头 */
           enableArrow: false,
+          /** 气泡与按钮的间距 */
           targetSpace: '15vp',
+          /**
+           * 气泡状态变化回调函数
+           * @param e - 状态变化事件对象
+           * @param e.isVisible - 气泡是否可见
+           */
           onStateChange: (e) => {
+            // 气泡关闭时，同步更新状态变量
             if (!e.isVisible) {
               this.handlePopup = false;
             }
           },
           /**
-           * 气泡即将关闭前拦截回调
-           * dismissPopupAction：气泡关闭行为对象，包含关闭原因与关闭方法
+           * 气泡即将关闭前的拦截回调
+           * @param dismissPopupAction - 气泡关闭行为对象
+           * @param dismissPopupAction.reason - 关闭原因，类型为DismissReason枚举
+           * @param dismissPopupAction.dismiss - 关闭气泡的方法，需要手动调用才会关闭
            */
           onWillDismiss: (
             (dismissPopupAction: DismissPopupAction) => {
               console.info("dismissReason:" + JSON.stringify(dismissPopupAction.reason));
+              // 只有当退出原因为PRESS_BACK时才关闭气泡
               if (dismissPopupAction.reason === DismissReason.PRESS_BACK) {
                 dismissPopupAction.dismiss();
               }
@@ -927,23 +1198,37 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 // xxx.ets
-
+/**
+ * 示例5：为气泡添加事件（ArkTS-Sta版本）
+ * 用途：演示如何通过onWillDismiss属性拦截气泡退出事件并执行回调函数
+ * 
+ * onWillDismiss属性：
+ * - 设置为boolean类型时：true表示响应退出事件，false表示拦截退出事件
+ * - 设置为函数类型时：拦截退出事件并执行回调函数，可通过reason判断退出原因
+ * 
+ * DismissReason枚举：
+ * - PRESS_BACK：点击三键back、侧滑、键盘ESC
+ * - TOUCH_OUTSIDE：点击遮罩层
+ * - CLOSE_BUTTON：点击关闭按钮
+ */
 import { Entry, Component, Column, Button, PopupOptions, PopupStateChangeParam, FontWeight,
-  FontStyle, Color, DismissPopupAction, Placement, DismissReason } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+  FontStyle, Color, DismissPopupAction, Placement, DismissReason, State } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct PopupExample {
+  /** 控制气泡的显示状态 */
   @State handlePopup: boolean = false;
   build() {
     Column() {
       Button('PopupOptions')
         .onClick(() => {
+          // 点击按钮显示气泡
           this.handlePopup = true;
         })
         .bindPopup(this.handlePopup, {
           message: 'This is a popup with PopupOptions',
+          /** 气泡文本样式配置 */
           messageOptions: {
             textColor: Color.Red,
             font: {
@@ -952,21 +1237,33 @@ struct PopupExample {
               weight: FontWeight.Bolder
             }
           },
+          /** 气泡显示位置：在按钮下方 */
           placement: Placement.Bottom,
+          /** 是否显示箭头 */
           enableArrow: false,
+          /** 气泡与按钮的间距 */
           targetSpace: '15vp',
+          /**
+           * 气泡状态变化回调函数
+           * @param e - 状态变化事件对象，类型为PopupStateChangeParam
+           * @param e.isVisible - 气泡是否可见
+           */
           onStateChange: (e: PopupStateChangeParam) => {
+            // 气泡关闭时，同步更新状态变量
             if (!e.isVisible) {
               this.handlePopup = false;
             }
           },
           /**
-           * 气泡即将关闭前拦截回调
-           * dismissPopupAction：气泡关闭行为对象，包含关闭原因与关闭方法
+           * 气泡即将关闭前的拦截回调
+           * @param dismissPopupAction - 气泡关闭行为对象，类型为DismissPopupAction
+           * @param dismissPopupAction.reason - 关闭原因，类型为DismissReason枚举
+           * @param dismissPopupAction.dismiss - 关闭气泡的方法，需要手动调用才会关闭
            */
           onWillDismiss: (
             (dismissPopupAction: DismissPopupAction) => {
               console.info("dismissReason:" + JSON.stringify(dismissPopupAction.reason));
+              // 只有当退出原因为PRESS_BACK时才关闭气泡
               if (dismissPopupAction.reason === DismissReason.PRESS_BACK) {
                 dismissPopupAction.dismiss();
               }
@@ -988,21 +1285,31 @@ ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
-
+/**
+ * 示例6：为气泡拦截退出事件
+ * 用途：演示如何拦截气泡的退出事件，并设置气泡跟随宿主组件变换
+ * 
+ * onWillDismiss属性：设置为false时，气泡不响应任何退出事件，仅通过show参数控制
+ * followTransformOfTarget属性：设置为true时，气泡跟随宿主组件的变换（平移、缩放等）
+ */
 @Entry
 @Component
 struct PopupExample {
+  /** 控制气泡的显示状态 */
   @State handlePopup: boolean = false;
+  /** 定时器ID，用于延迟关闭气泡 */
   private timer: number = -1;
 
   build() {
     Column() {
       Button('PopupOptions')
         .onClick(() => {
+          // 点击按钮显示气泡
           this.handlePopup = true;
         })
         .bindPopup(this.handlePopup, {
           message: 'This is a popup with PopupOptions',
+          /** 气泡文本样式配置 */
           messageOptions: {
             textColor: Color.Red,
             font: {
@@ -1011,17 +1318,27 @@ struct PopupExample {
               weight: FontWeight.Bolder
             }
           },
+          /** 气泡显示位置：在按钮下方 */
           placement: Placement.Bottom,
+          /** 是否显示箭头 */
           enableArrow: false,
+          /** 气泡与按钮的间距 */
           targetSpace: '15vp',
-          // 气泡跟随按钮的平移、缩放等变换同步变动
+          /** 气泡跟随按钮的平移、缩放等变换同步变动 */
           followTransformOfTarget: true,
+          /**
+           * 气泡状态变化回调函数
+           * @param e - 状态变化事件对象
+           * @param e.isVisible - 气泡是否可见
+           */
           onStateChange: (e) => {
+            // 气泡显示时，设置6秒后自动关闭
             if (e.isVisible) {
               this.timer = setTimeout(() => {
                 this.handlePopup = false;
               }, 6000);
             } else {
+              // 气泡关闭时，清除定时器并重置状态
               this.handlePopup = false;
               if (this.timer !== -1) {
                 clearTimeout(this.timer);
@@ -1029,7 +1346,11 @@ struct PopupExample {
               }
             }
           },
-          // 不响应点击、侧滑（左滑/右滑）、三键back、路由跳转或键盘ESC退出事件，仅当设置“气泡显示状态”参数值为false时才退出
+          /** 
+           * 拦截退出事件
+           * 设置为false时，不响应点击、侧滑、三键back、路由跳转或键盘ESC退出事件
+           * 仅当设置"气泡显示状态"参数show值为false时才退出
+           */
           onWillDismiss: false
         })
     }.margin(20)
@@ -1042,24 +1363,32 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 // xxx.ets
-
+/**
+ * 示例6：为气泡拦截退出事件（ArkTS-Sta版本）
+ * 用途：演示如何拦截气泡的退出事件，并设置气泡跟随宿主组件变换
+ * 
+ * onWillDismiss属性：设置为false时，气泡不响应任何退出事件，仅通过show参数控制
+ * followTransformOfTarget属性：设置为true时，气泡跟随宿主组件的变换（平移、缩放等）
+ */
 import { Entry, Component, Column, Button, PopupOptions, PopupStateChangeParam, FontWeight,
-  FontStyle, Color, Placement } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+  FontStyle, Color, Placement, State } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct PopupExample {
+  /** 控制气泡的显示状态 */
   @State handlePopup: boolean = false;
 
   build() {
     Column() {
       Button('PopupOptions')
         .onClick(() => {
+          // 点击按钮显示气泡
           this.handlePopup = true;
         })
         .bindPopup(this.handlePopup, {
           message: 'This is a popup with PopupOptions',
+          /** 气泡文本样式配置 */
           messageOptions: {
             textColor: Color.Red,
             font: {
@@ -1068,21 +1397,35 @@ struct PopupExample {
               weight: FontWeight.Bolder
             }
           },
+          /** 气泡显示位置：在按钮下方 */
           placement: Placement.Bottom,
+          /** 是否显示箭头 */
           enableArrow: false,
+          /** 气泡与按钮的间距 */
           targetSpace: '15vp',
-          // 气泡跟随按钮的平移、缩放等变换同步变动
+          /** 气泡跟随按钮的平移、缩放等变换同步变动 */
           followTransformOfTarget: true,
+          /**
+           * 气泡状态变化回调函数
+           * @param e - 状态变化事件对象，类型为PopupStateChangeParam
+           * @param e.isVisible - 气泡是否可见
+           */
           onStateChange: (e: PopupStateChangeParam) => {
+            // 气泡显示时，设置6秒后自动关闭
             let timer = setTimeout(() => {
               this.handlePopup = false;
             }, 6000);
+            // 气泡关闭时，清除定时器并重置状态
             if (!e.isVisible) {
               this.handlePopup = false;
               clearTimeout(timer);
             }
           },
-          // 不响应点击、侧滑（左滑/右滑）、三键back、路由跳转或键盘ESC退出事件，仅当设置“气泡显示状态”参数值为false时才退出
+          /** 
+           * 拦截退出事件
+           * 设置为false时，不响应点击、侧滑、三键back、路由跳转或键盘ESC退出事件
+           * 仅当设置"气泡显示状态"参数show值为false时才退出
+           */
           onWillDismiss: false
         } as PopupOptions)
     }.margin(20)
@@ -1102,39 +1445,59 @@ ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
+/**
+ * 示例7：为气泡内外描边设置线性渐变
+ * 用途：演示如何为气泡设置内外描边的线性渐变效果
+ * 
+ * 描边属性：
+ * - outlineWidth：外描边宽度
+ * - outlineLinearGradient：外描边线性渐变配置
+ * - borderWidth：内描边宽度
+ * - borderLinearGradient：内描边线性渐变配置
+ * 
+ * 渐变配置：
+ * - direction：渐变方向
+ * - colors：颜色和位置数组，[颜色, 位置]格式，位置范围为[0.0, 1.0]
+ */
 @Entry
 @Component
 struct PopupExample {
+  /** 控制气泡的显示状态 */
   @State handlePopup: boolean = false
 
   build() {
     Flex({ direction: FlexDirection.Column }) {
       Button('PopupOptions')
         .onClick(() => {
+          // 点击按钮切换气泡显示状态
           this.handlePopup = !this.handlePopup
         })
         /**
          * 为按钮绑定气泡
-         * 第一个参数：气泡显隐控制变量
-         * message：气泡内部展示文本
-         * placement.Top：气泡从按钮上方弹出
-         * outlineWidth：外描边线宽度1vp
-         * outlineLinearGradient：外描边垂直从上到下黄到绿线性渐变
-         * borderWidth：弹窗内部边框宽度1vp
-         * borderLinearGradient：内边框垂直从下到上红到蓝线性渐变
+         * @param handlePopup - 气泡显隐控制变量
+         * 
+         * PopupOptions配置：
+         * - message：气泡内部展示文本
+         * - placement.Top：气泡从按钮上方弹出
+         * - outlineWidth：外描边线宽度1vp
+         * - outlineLinearGradient：外描边垂直从上到下黄到绿线性渐变
+         * - borderWidth：弹窗内部边框宽度1vp
+         * - borderLinearGradient：内边框垂直从下到上红到蓝线性渐变
          */
         .bindPopup(this.handlePopup!!, {
           message: 'This is a popup with PopupOptions',
           placement: Placement.Top,
           outlineWidth: 1, // 设置外描边宽度为1vp
+          /** 外描边线性渐变配置 */
           outlineLinearGradient: {
-            direction: GradientDirection.Top,
-            colors: [[Color.Yellow, 0.0], [Color.Green, 1.0]]
+            direction: GradientDirection.Top, // 渐变方向：从上到下
+            colors: [[Color.Yellow, 0.0], [Color.Green, 1.0]] // 黄色到绿色
           },
           borderWidth: 1, // 设置内描边宽度为1vp
+          /** 内描边线性渐变配置 */
           borderLinearGradient: {
-            direction: GradientDirection.Bottom,
-            colors: [[Color.Red, 0.0], [Color.Blue, 1.0]]
+            direction: GradientDirection.Bottom, // 渐变方向：从下到上
+            colors: [[Color.Red, 0.0], [Color.Blue, 1.0]] // 红色到蓝色
           }
         })
         .position({ x: 100, y: 150 })
@@ -1147,42 +1510,61 @@ ArkTS-Sta示例：
 
 ```ts
 // xxx.ets
-import { Entry, Component, ClickEvent, Flex, FlexDirection, Column, Row, Button, Text, Color, Position, Padding, Placement, PopupOptions, GradientDirection } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+/**
+ * 示例7：为气泡内外描边设置线性渐变（ArkTS-Sta版本）
+ * 用途：演示如何为气泡设置内外描边的线性渐变效果
+ * 
+ * 描边属性：
+ * - outlineWidth：外描边宽度
+ * - outlineLinearGradient：外描边线性渐变配置
+ * - borderWidth：内描边宽度
+ * - borderLinearGradient：内描边线性渐变配置
+ * 
+ * 渐变配置：
+ * - direction：渐变方向
+ * - colors：颜色和位置数组，[颜色, 位置]格式，位置范围为[0.0, 1.0]
+ */
+import { Entry, Component, ClickEvent, Flex, FlexDirection, Column, Row, Button, Text, Color, Position, Padding, Placement, PopupOptions, GradientDirection, State } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct MyStateSample {
+  /** 控制气泡的显示状态 */
   @State handlePopup: boolean = false
 
   build() {
     Flex({ direction: FlexDirection.Column }) {
       Button('PopupOptions')
         .onClick(() => {
+          // 点击按钮切换气泡显示状态
           this.handlePopup = !this.handlePopup
         })
         /**
          * 为按钮绑定气泡
-         * 第一个参数：气泡显隐控制变量
-         * message：气泡内部展示文本
-         * placement.Top：气泡从按钮上方弹出
-         * outlineWidth：外描边线宽度1vp
-         * outlineLinearGradient：外描边垂直从上到下黄到绿线性渐变
-         * borderWidth：弹窗内部边框宽度1vp
-         * borderLinearGradient：内边框垂直从下到上红到蓝线性渐变
+         * @param handlePopup - 气泡显隐控制变量
+         * 
+         * PopupOptions配置：
+         * - message：气泡内部展示文本
+         * - placement.Top：气泡从按钮上方弹出
+         * - outlineWidth：外描边线宽度1vp
+         * - outlineLinearGradient：外描边垂直从上到下黄到绿线性渐变
+         * - borderWidth：弹窗内部边框宽度1vp
+         * - borderLinearGradient：内边框垂直从下到上红到蓝线性渐变
          */
         .bindPopup(this.handlePopup, {
           message: 'This is a popup with PopupOptions',
           placement: Placement.Top,
           outlineWidth: 1, // 设置外描边宽度为1vp
+          /** 外描边线性渐变配置 */
           outlineLinearGradient: {
-            direction: GradientDirection.Top,
-            colors: [[Color.Yellow, 0.0], [Color.Green, 1.0]]
+            direction: GradientDirection.Top, // 渐变方向：从上到下
+            colors: [[Color.Yellow, 0.0], [Color.Green, 1.0]] // 黄色到绿色
           },
           borderWidth: 1, // 设置内描边宽度为1vp
+          /** 内描边线性渐变配置 */
           borderLinearGradient: {
-            direction: GradientDirection.Bottom,
-            colors: [[Color.Red, 0.0], [Color.Blue, 1.0]]
+            direction: GradientDirection.Bottom, // 渐变方向：从下到上
+            colors: [[Color.Red, 0.0], [Color.Blue, 1.0]] // 红色到蓝色
           }
         } as PopupOptions)
         .position({ x: 100, y: 150 } as Position)
@@ -1203,21 +1585,37 @@ ArkTS-Dyn示例：
 
 ``` ts
 // xxx.ets
+/**
+ * 示例8：为气泡设置避让宿主模式
+ * 用途：演示如何设置气泡在避让时是否覆盖其绑定的宿主组件
+ * 
+ * avoidTarget属性：
+ * - AvoidanceMode.COVER_TARGET：气泡可以覆盖宿主组件（默认值）
+ * - AvoidanceMode.AVOID_AROUND_TARGET：气泡避让宿主组件，四周空间不足时会压缩气泡高度
+ */
 @Entry
 @Component
 struct PopupExample {
+  /** 控制气泡的显示状态 */
   @State handlePopup: boolean = false;
 
   build() {
     Flex({ direction: FlexDirection.Column }) {
       Button('PopupOptions')
         .onClick(() => {
+          // 点击按钮切换气泡显示状态
           this.handlePopup = !this.handlePopup
         })
         .bindPopup(this.handlePopup!!, {
+          /** 气泡消息内容，使用repeat重复拼接形成长文本 */
           message: 'popup message '.repeat(200),
+          /** 气泡显示位置：在按钮上方 */
           placement: Placement.Top,
-          // 设置本参数后，四周空间不足以放下Popup时，Popup会自动压缩自身高度
+          /** 
+           * 避让模式设置
+           * AVOID_AROUND_TARGET：四周空间不足以放下Popup时，Popup会自动压缩自身高度
+           * 注意：使用此模式时，气泡内容需结合Scroll使用，否则会出现遮挡
+           */
           avoidTarget: AvoidanceMode.AVOID_AROUND_TARGET,
         })
         .position({ x: 100, y: 150 })
@@ -1231,24 +1629,39 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 // xxx.ets
-import { Entry, Component, Flex, FlexDirection, Button, AvoidanceMode, Placement, PopupOptions, Position, Padding } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+/**
+ * 示例8：为气泡设置避让宿主模式（ArkTS-Sta版本）
+ * 用途：演示如何设置气泡在避让时是否覆盖其绑定的宿主组件
+ * 
+ * avoidTarget属性：
+ * - AvoidanceMode.COVER_TARGET：气泡可以覆盖宿主组件（默认值）
+ * - AvoidanceMode.AVOID_AROUND_TARGET：气泡避让宿主组件，四周空间不足时会压缩气泡高度
+ */
+import { Entry, Component, Flex, FlexDirection, Button, AvoidanceMode, Placement, PopupOptions, Position, Padding, State } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct PopupExample {
+  /** 控制气泡的显示状态 */
   @State handlePopup: boolean = false;
 
   build() {
     Flex({ direction: FlexDirection.Column }) {
       Button('PopupOptions')
         .onClick(() => {
+          // 点击按钮切换气泡显示状态
           this.handlePopup = !this.handlePopup
         })
         .bindPopup(this.handlePopup, {
+          /** 气泡消息内容，使用repeat重复拼接形成长文本 */
           message: 'popup message '.repeat(200),
+          /** 气泡显示位置：在按钮上方 */
           placement: Placement.Top,
-          // 设置本参数后，四周空间不足以放下Popup时，Popup会自动压缩自身高度
+          /** 
+           * 避让模式设置
+           * AVOID_AROUND_TARGET：四周空间不足以放下Popup时，Popup会自动压缩自身高度
+           * 注意：使用此模式时，气泡内容需结合Scroll使用，否则会出现遮挡
+           */
           avoidTarget: AvoidanceMode.AVOID_AROUND_TARGET,
         } as PopupOptions)
         .position({ x: 100, y: 150 } as Position)
@@ -1269,25 +1682,50 @@ ArkTS-Dyn示例：
 
 ``` ts
 // xxx.ets
+/**
+ * 示例10：自定义气泡背景效果参数
+ * 用途：演示如何使用backgroundBlurStyleOptions和backgroundEffect自定义气泡背景效果
+ * 
+ * backgroundBlurStyleOptions：系统标准化磨砂模糊样式配置
+ * - colorMode：主题颜色模式
+ * - adaptiveColor：自适应颜色模式
+ * - scale：磨砂通透缩放系数
+ * - blurOptions.grayscale：灰度滤镜参数
+ * 
+ * backgroundEffect：完全自定义混合背景特效配置
+ * - radius：背景模糊半径
+ * - saturation：饱和度
+ * - brightness：亮度
+ * - color：叠加底色
+ * - blurOptions.grayscale：灰度滤镜参数
+ */
 @Entry
 @Component
 struct PopupExample {
+  /** 控制气泡的显示状态 */
   @State handlePopup: boolean = false;
 
   build() {
     Flex({ direction: FlexDirection.Column }) {
+      /**
+       * 第一个气泡示例
+       * 说明：使用系统标准化磨砂模糊样式
+       */
       Button('Popup自定义背景效果1')
         .onClick(() => {
           this.handlePopup = !this.handlePopup
         })
         /**
          * 绑定气泡，使用系统标准化磨砂模糊样式
-         * message：气泡长文本内容，重复拼接加长文本用于测试换行与模糊透出效果
-         * backgroundBlurStyleOptions：系统沉浸式模糊配置项
-         * colorMode.LIGHT：浅色主题调色模式
-         * adaptiveColor.AVERAGE：取底层背景平均色作为磨砂底色
-         * scale：磨砂通透缩放系数0.5
-         * blurOptions.grayscale：灰度滤镜区间[最小值,最大值]
+         * @param handlePopup - 气泡显隐控制变量
+         * 
+         * 配置说明：
+         * - message：气泡长文本内容，重复拼接用于测试换行与模糊透出效果
+         * - backgroundBlurStyleOptions：系统沉浸式模糊配置项
+         *   - colorMode.LIGHT：浅色主题调色模式
+         *   - adaptiveColor.AVERAGE：取底层背景平均色作为磨砂底色
+         *   - scale：磨砂通透缩放系数0.5
+         *   - blurOptions.grayscale：灰度滤镜区间[最小值,最大值]
          */
         .bindPopup(this.handlePopup!!, {
           message: 'popup message '.repeat(20),
@@ -1300,17 +1738,26 @@ struct PopupExample {
         })
         .position({ x: 100, y: 150 }) 
 
+      /**
+       * 第二个气泡示例
+       * 说明：使用完全自定义混合背景特效
+       */
       Button('Popup自定义背景效果2')
         .onClick(() => {
           this.handlePopup = !this.handlePopup
         })
         /**
          * 绑定气泡，使用完全自定义混合背景特效
-         * radius：背景模糊半径60，模糊程度更高
-         * saturation：饱和度0，画面去色黑白化
-         * brightness：亮度1，保持原始亮度不变
-         * color：叠加粉色底色
-         * blurOptions.grayscale：灰度滤镜参数
+         * @param handlePopup - 气泡显隐控制变量
+         * 
+         * 配置说明：
+         * - message：气泡长文本内容
+         * - backgroundEffect：自定义背景特效配置
+         *   - radius：背景模糊半径60，模糊程度更高
+         *   - saturation：饱和度0，画面去色黑白化
+         *   - brightness：亮度1，保持原始亮度不变
+         *   - color：叠加粉色底色
+         *   - blurOptions.grayscale：灰度滤镜参数
          */
         .bindPopup(this.handlePopup!!, {
           message: 'popup message '.repeat(20),
@@ -1335,28 +1782,53 @@ ArkTS-Sta示例：
 
 ``` ts
 // xxx.ets
+/**
+ * 示例10：自定义气泡背景效果参数（ArkTS-Sta版本）
+ * 用途：演示如何使用backgroundBlurStyleOptions和backgroundEffect自定义气泡背景效果
+ * 
+ * backgroundBlurStyleOptions：系统标准化磨砂模糊样式配置
+ * - colorMode：主题颜色模式
+ * - adaptiveColor：自适应颜色模式
+ * - scale：磨砂通透缩放系数
+ * - blurOptions.grayscale：灰度滤镜参数
+ * 
+ * backgroundEffect：完全自定义混合背景特效配置
+ * - radius：背景模糊半径
+ * - saturation：饱和度
+ * - brightness：亮度
+ * - color：叠加底色
+ * - blurOptions.grayscale：灰度滤镜参数
+ */
 import { Entry, Component, Flex, FlexDirection, Button, AvoidanceMode, Placement, PopupOptions, Position, Padding,
   BackgroundBlurStyleOptions, BackgroundEffectOptions, ThemeColorMode, AdaptiveColor, Color, $r, State} from '@kit.ArkUI';
 
 @Entry
 @Component
 struct PopupExample {
+  /** 控制气泡的显示状态 */
   @State handlePopup: boolean = false;
 
   build() {
     Flex({ direction: FlexDirection.Column }) {
+      /**
+       * 第一个气泡示例
+       * 说明：使用系统标准化磨砂模糊样式
+       */
       Button('Popup自定义背景效果1')
         .onClick(() => {
           this.handlePopup = !this.handlePopup
         })
         /**
          * 绑定气泡，使用系统标准化磨砂模糊样式
-         * message：气泡长文本内容，重复拼接加长文本用于测试换行与模糊透出效果
-         * backgroundBlurStyleOptions：系统沉浸式模糊配置项
-         * colorMode.LIGHT：浅色主题调色模式
-         * adaptiveColor.AVERAGE：取底层背景平均色作为磨砂底色
-         * scale：磨砂通透缩放系数0.5
-         * blurOptions.grayscale：灰度滤镜区间[最小值,最大值]
+         * @param handlePopup - 气泡显隐控制变量
+         * 
+         * 配置说明：
+         * - message：气泡长文本内容，重复拼接用于测试换行与模糊透出效果
+         * - backgroundBlurStyleOptions：系统沉浸式模糊配置项
+         *   - colorMode.LIGHT：浅色主题调色模式
+         *   - adaptiveColor.AVERAGE：取底层背景平均色作为磨砂底色
+         *   - scale：磨砂通透缩放系数0.5
+         *   - blurOptions.grayscale：灰度滤镜区间[最小值,最大值]
          */
         .bindPopup(this.handlePopup, {
           message: 'popup message '.repeat(20),
@@ -1369,17 +1841,26 @@ struct PopupExample {
         } as PopupOptions)
         .position({ x: 100, y: 150 }) 
 
+      /**
+       * 第二个气泡示例
+       * 说明：使用完全自定义混合背景特效
+       */
       Button('Popup自定义背景效果2')
         .onClick(() => {
           this.handlePopup = !this.handlePopup
         })
         /**
          * 绑定气泡，使用完全自定义混合背景特效
-         * radius：背景模糊半径60，模糊程度更高
-         * saturation：饱和度0，画面去色黑白化
-         * brightness：亮度1，保持原始亮度不变
-         * color：叠加粉色底色
-         * blurOptions.grayscale：灰度滤镜参数
+         * @param handlePopup - 气泡显隐控制变量
+         * 
+         * 配置说明：
+         * - message：气泡长文本内容
+         * - backgroundEffect：自定义背景特效配置
+         *   - radius：背景模糊半径60，模糊程度更高
+         *   - saturation：饱和度0，画面去色黑白化
+         *   - brightness：亮度1，保持原始亮度不变
+         *   - color：叠加粉色底色
+         *   - blurOptions.grayscale：灰度滤镜参数
          */
         .bindPopup(this.handlePopup, {
           message: 'popup message '.repeat(20),
@@ -1413,9 +1894,18 @@ ArkTS-Dyn示例：
 ``` ts
 import { LevelMode } from '@kit.ArkUI';
 
+/**
+ * 示例11：设置气泡的显示层级模式
+ * 用途：演示如何通过levelMode属性控制气泡的显示层级
+ * 
+ * levelMode属性：
+ * - LevelMode.OVERLAY：覆盖模式（默认值），气泡显示在页面之上
+ * - LevelMode.EMBEDDED：嵌入式模式，气泡隶属于当前页面，页面跳转时气泡同步销毁
+ */
 @Entry
 @Component
 struct PopupExample {
+  /** 控制气泡的显示状态 */
   @State handlePopup: boolean = false;
 
   build() {
@@ -1434,9 +1924,11 @@ struct PopupExample {
         })
         /**
          * 绑定气泡到当前按钮
-         * 第一个参数：气泡显示控制布尔值
-         * message：气泡内展示文本
-         * levelMode: EMBEDDED 嵌入式模式，气泡隶属于当前页面，页面跳转气泡同步销毁
+         * @param handlePopup - 气泡显示控制布尔值
+         * 
+         * 配置说明：
+         * - message：气泡内展示文本
+         * - levelMode: EMBEDDED 嵌入式模式，气泡隶属于当前页面，页面跳转气泡同步销毁
          */
         .bindPopup(this.handlePopup!!, {
           message: 'This is an embedded popup',
@@ -1466,11 +1958,20 @@ ArkTS-Sta示例：
 
 ``` ts
 'use static'
+/**
+ * 示例11：设置气泡的显示层级模式（ArkTS-Sta版本）
+ * 用途：演示如何通过levelMode属性控制气泡的显示层级
+ * 
+ * levelMode属性：
+ * - LevelMode.OVERLAY：覆盖模式（默认值），气泡显示在页面之上
+ * - LevelMode.EMBEDDED：嵌入式模式，气泡隶属于当前页面，页面跳转时气泡同步销毁
+ */
 import { Entry, Component, Column, Button, LevelMode, State } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct PopupExample {
+  /** 控制气泡的显示状态 */
   @State handlePopup: boolean = false;
 
   build() {
@@ -1489,9 +1990,11 @@ struct PopupExample {
         })
         /**
          * 绑定气泡到当前按钮
-         * 第一个参数：气泡显示控制布尔值
-         * message：气泡内展示文本
-         * levelMode: EMBEDDED 嵌入式模式，气泡隶属于当前页面，页面跳转气泡同步销毁
+         * @param handlePopup - 气泡显示控制布尔值
+         * 
+         * 配置说明：
+         * - message：气泡内展示文本
+         * - levelMode: EMBEDDED 嵌入式模式，气泡隶属于当前页面，页面跳转气泡同步销毁
          */
         .bindPopup(this.handlePopup!!, {
           message: 'This is an embedded popup',

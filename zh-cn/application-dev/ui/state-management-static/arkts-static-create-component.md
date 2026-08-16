@@ -24,7 +24,7 @@
 
 以下示例展示了自定义组件的基本用法。
 
-<!-- @[ComponentBasicUsage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CreateComponent/entry/src/main/ets/pages/ComponentBasicUsage.ets) -->   
+<!-- @[ComponentBasicUsage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CreateComponent/entry/src/main/ets/pages/ComponentBasicUsage.ets) -->     
 
 ``` TypeScript
 import { Column, Component, Divider, Entry, State, Text } from '@kit.ArkUI';
@@ -37,9 +37,9 @@ struct HelloComponent {
     // HelloComponent自定义组件组合系统组件Row和Text
     Column() {
       Text(this.message)
-        .onClick(() => {
         .fontSize(20)
         .margin(10)
+        .onClick(() => {
           this.message = 'Hello, ArkUI!';
         })
     }
@@ -127,8 +127,12 @@ build()函数用于定义自定义组件的声明式UI描述，自定义组件�
 | 参数名   | 类型   | 必填 | 说明                                                           |
 | ------ | ------ | ------------------------------------------------------------- | ------------------------------------------------------------- |
 | routeName | string | 否 | 表示作为命名路由页面的名字。 |
-| storage | string | 否 | 返回[LocalStorage](../state-management/arkts-localstorage.md)实例对象的函数名。 |
-| useSharedStorage | boolean | 否 | 是否使用UIContext.getSharedLocalStorage()接口返回的共享的[LocalStorage](../state-management/arkts-localstorage.md)实例对象，默认值false。<br>true表示使用共享的[LocalStorage](../state-management/arkts-localstorage.md)实例对象。<br>false表示不使用共享的[LocalStorage](../state-management/arkts-localstorage.md)实例对象。 |
+| storage | string | 否 | 返回[LocalStorage](../state-management-static/arkts-static-localstorage.md)实例对象的函数名。 |
+| useSharedStorage | boolean | 否 | 是否使用UIContext.getSharedLocalStorage()接口返回的共享的LocalStorage实例对象，默认值false。值为true时：若loadContent传入了LocalStorage实例，则使用该LocalStorage实例对象，否则会新建一个LocalStorage实例。值为false时：不使用共享的LocalStorage实例对象。 |
+
+> **说明：**
+>
+> 当useSharedStorage设置为true且storage已赋值时，useSharedStorage的优先级高于storage参数，此时无论loadContent中是否传入LocalStorage实例，都不会使用传入的storage参数。
 
 
 <!-- @[EntryDecorator](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CreateComponent/entry/src/main/ets/pages/EntryDecorator.ets) -->    
@@ -228,7 +232,7 @@ struct ChildComponent {
 
 ### build()函数支持写非UI的逻辑
 
-`build()`函数支持编写非 UI 逻辑，如变量声明、[`switch/case`](../../quick-start/introduction-to-arkts.md) 语句和打印日志。但是，不能执行耗时操作，否则会阻塞 UI 主线程，影响应用界面的渲染性能。
+`build()`函数支持编写非 UI 逻辑，如变量声明、[`switch/case`](../../quick-start/arkts-language-guide-control-statements.md#switch语句) 语句和打印日志。但是，不能执行耗时操作，否则会阻塞 UI 主线程，影响应用界面的渲染性能。
 **建议用法**
 
 **在build()根节点中进行变量声明**
@@ -542,8 +546,8 @@ struct MyComponent {
 
 ## 支持自定义组件扩展
 
-从API version 23开始，开发者可以在自定义组件中重写通用属性的方法，并使用[`super`](../../quick-start/introduction-to-arkts.md)关键字调用基类的通用属性的方法。当使用"."链式调用自定义组件方法时，需注意以下事项：
-1. 实现链式调用的关键是：每个方法必须返回[`this`](../../quick-start/introduction-to-arkts.md#this)，以允许连续调用。如果某个方法未返回`this`，则无法作为链式调用的中间步骤，导致后续调用无法解析，从而引发编译错误。
+从API version 23开始，开发者可以在自定义组件中重写通用属性的方法，并使用[`super`](../../quick-start/arkts-language-guide-inheritance.md#super关键字的用途与概念)关键字调用基类的通用属性的方法。当使用"."链式调用自定义组件方法时，需注意以下事项：
+1. 实现链式调用的关键是：每个方法必须返回[`this`](../../quick-start/arkts-language-guide-classes.md#this类型)，以允许连续调用。如果某个方法未返回`this`，则无法作为链式调用的中间步骤，导致后续调用无法解析，从而引发编译错误。
 2. 通过链式调用的方法，其调用时机是在创建自定义组件时，所以在方法内，不能改变关联其他组件或方法的状态变量，否则会有运行时报错。
 
 示例如下。

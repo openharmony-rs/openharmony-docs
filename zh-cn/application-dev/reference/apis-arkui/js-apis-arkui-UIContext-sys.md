@@ -49,7 +49,7 @@ ArkTS-Sta: setDynamicDimming(id: string, value: double): void
 | 参数名 | 类型 | 必填 | 说明 |
 | ------- | ------- | ------- | ------- |
 | id | string | 是 | 组件id。 |
-| value | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是 | 组件压暗程度取值范围[0,1], 由0到1逐渐变亮。 |
+| value | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是 | 组件压暗程度取值范围[0, 1]，由0到1逐渐变亮。 |
 
 **示例：**
 
@@ -79,8 +79,6 @@ struct Index {
 freezeUINode(id: string, isFrozen: boolean): void
 
 通过id设置组件冻结状态，防止组件被标记为脏从而触发布局更新。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 18 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -205,8 +203,6 @@ ArkTS-Dyn: freezeUINode(uniqueId: number, isFrozen: boolean): void
 ArkTS-Sta: freezeUINode(uniqueId: int, isFrozen: boolean): void
 
 通过uniqueId设置组件的冻结状态，防止组件被标记为脏从而触发布局更新。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 18 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -525,8 +521,6 @@ getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean, optio
 >
 > start对应的组件和end对应的组件必须为同一棵组件树上的组件，且start对应的组件需要为end对应的组件的祖先组件。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。 
@@ -554,7 +548,7 @@ getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean, optio
 | ------ | ------- |
 | 202    | The caller is not a system application. |
 | 100001 | Invalid ID detected. |
-| 160003 | Unsupported color space or dynamic range mode in snapshot options. |
+| 160003 | Unsupported color space or dynamic range mode in snapshot options.<br>适用版本：23+ |
 
 **示例：** 
 
@@ -631,4 +625,3 @@ struct SnapshotExample {
 ```
 
 ![zh-cn_image_getWithRange](figures/image-getWithRange.gif)
-

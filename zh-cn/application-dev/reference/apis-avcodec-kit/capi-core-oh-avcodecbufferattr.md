@@ -29,7 +29,7 @@ typedef struct OH_AVCodecBufferAttr {...} OH_AVCodecBufferAttr
 | -- | -- |
 | int64_t pts | 此缓冲区的显示时间戳（以微秒为单位）。 |
 | int32_t size | 缓冲区中包含的数据的大小（以字节为单位）。 |
-| int32_t offset | 此缓冲区中有效数据的起始偏移量。 |
+| int32_t offset | 此缓冲区中有效数据的起始偏移量（以字节为单位）。 |
 | uint32_t flags | 此缓冲区具有的标志，请参阅[OH_AVCodecBufferFlags](capi-native-avbuffer-info-h.md#oh_avcodecbufferflags)。 |
 
 

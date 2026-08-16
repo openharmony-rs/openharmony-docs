@@ -10,6 +10,8 @@ ProxyConfig是ArkWeb框架中用于配置网络代理规则的类，配合[Proxy
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 本Class首批接口从API version 15开始支持。
@@ -20,7 +22,7 @@ ProxyConfig是ArkWeb框架中用于配置网络代理规则的类，配合[Proxy
 
 insertProxyRule(proxyRule: string, schemeFilter?: ProxySchemeFilter): void
 
-插入一条代理规则，与schemeFilter匹配的URL都会使用指定代理。如果schemeFilter为空，所有URL都将使用指定代理。
+插入一条代理规则，与schemeFilter匹配的URL都会使用指定代理。如果未指定schemeFilter参数，将使用默认值MATCH_ALL_SCHEMES，所有URL都将使用指定代理。
 
 代理格式为[scheme://]host[:port]。
 
@@ -40,6 +42,10 @@ host是带括号的IPv6字面量、IPv4字面量或由点分隔的一个或多�
 - [10:20:30:40:50:60:70:80]
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -64,9 +70,17 @@ host是带括号的IPv6字面量、IPv4字面量或由点分隔的一个或多�
 
 insertDirectRule(schemeFilter?: ProxySchemeFilter): void
 
-插入一条代理规则，指明符合schemeFilter条件的URL将直接连接到服务器。
+插入一条直连规则，指明符合schemeFilter条件的URL将直接连接到服务器。
+
+> **说明：**
+>
+> - 与[insertBypassRule](#insertbypassrule15)和[bypassHostnamesWithoutPeriod](#bypasshostnameswithoutperiod15)均可实现URL直连，区别在于匹配维度：本方法通过schemeFilter按协议类型匹配；insertBypassRule通过bypassRule字符串按URL模式匹配；bypassHostnamesWithoutPeriod无需传参，自动对不含点号的域名直连。可根据需要直连的URL范围选择合适的方法。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -90,15 +104,19 @@ insertDirectRule(schemeFilter?: ProxySchemeFilter): void
 
 insertBypassRule(bypassRule: string): void
 
-插入一条bypass规则，指明哪些URL应该绕过代理并直接连接到服务器。
+插入一条bypass规则，指明哪些URL应该绕过代理并直接连接到服务器。当[enableReverseBypass](#enablereversebypass15)设置为true时，与bypassRule匹配的URL会使用代理而非绕过代理。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名          | 类型     |  必填  | 说明           |
 | ---------------| ------- | ---- | ------------- |
-| bypassRule     | string  | 是   | 与bypassRule匹配的URL会绕过代理。 |
+| bypassRule     | string  | 是   | bypass规则字符串，用于指定绕过代理的URL匹配规则，支持主机名或域名格式（如"example.com"匹配该域名及其子域名）。与bypassRule匹配的URL会绕过代理。 |
 
 **错误码：**
 
@@ -116,9 +134,13 @@ insertBypassRule(bypassRule: string): void
 
 bypassHostnamesWithoutPeriod(): void
 
-没有点字符的域名将跳过代理并直接连接到服务器。
+没有点字符的域名将绕过代理并直接连接到服务器。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -132,6 +154,10 @@ clearImplicitRules(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **示例：**
 
 完整示例代码参考[removeProxyOverride](./arkts-apis-webview-ProxyController.md#removeproxyoverride15)。
@@ -143,6 +169,10 @@ enableReverseBypass(reverse: boolean): void
 反转bypass规则。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -170,6 +200,10 @@ getBypassRules(): Array\<string\>
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型   | 说明                      |
@@ -188,11 +222,15 @@ getProxyRules(): Array\<ProxyRule\>
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| Array\<[ProxyRule](./arkts-apis-webview-ProxyRule.md)\> | 代理规则。 |
+| Array\<[ProxyRule](./arkts-apis-webview-ProxyRule.md)\> | 代理规则，每个ProxyRule对象表示一条已配置的代理规则。 |
 
 **示例：**
 
@@ -205,6 +243,10 @@ isReverseBypassEnabled(): boolean
 获取[enableReverseBypass](#enablereversebypass15)的参数值，详见[enableReverseBypass](#enablereversebypass15)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 

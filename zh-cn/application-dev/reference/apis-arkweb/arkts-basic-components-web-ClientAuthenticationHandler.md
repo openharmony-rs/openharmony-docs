@@ -10,6 +10,8 @@ ClientAuthenticationHandler是Web组件中处理SSL客户端证书认证请求�
 
 > **说明：**
 >
+> - 该组件同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 本Class首批接口从API version 9开始支持。
@@ -24,6 +26,10 @@ ClientAuthenticationHandler的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 ## confirm<sup>9+</sup>
 
 confirm(priKeyFile : string, certChainFile : string): void
@@ -32,24 +38,30 @@ confirm(priKeyFile : string, certChainFile : string): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名           | 类型   | 必填   | 说明               |
 | ------------- | ------ | ---- | ------------------ |
-| priKeyFile    | string | 是    | 存放私钥文件的完整路径。  |
+| priKeyFile    | string | 是    | 存放私钥文件的完整路径。 |
 | certChainFile | string | 是    | 存放证书链文件的完整路径。 |
 
 ## confirm<sup>10+</sup>
 
 confirm(authUri : string): void
 
-通知Web组件使用指定的凭据(从证书管理模块获得)。
+通知Web组件使用指定的凭据（从证书管理模块获得）。
 
-> **说明：**
->
-> 需要配置权限：ohos.permission.ACCESS_CERT_MANAGER。
+**需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -74,7 +86,9 @@ confirm(authUri : string): void
 
 confirm(identity: string, credentialTypeOrCertChainFile: CredentialType \| string): void
 
-通知Web组件使用从证书管理模块获取的指定凭据和凭据类型。   
+通知Web组件使用从证书管理模块获取的指定凭据和凭据类型。
+
+**需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -87,7 +101,7 @@ confirm(identity: string, credentialTypeOrCertChainFile: CredentialType \| strin
 | 参数名     | 类型   | 必填   | 说明    |
 | ------- | ------ | ---- | ------- |
 | identity | string | 是    | 用于识别凭据的唯一标识值。 |
-| credentialTypeOrCertChainFile | [CredentialType](./arkts-basic-components-web-e.md#credentialtype22) \| string | 是 | 类型为[CredentialType](./arkts-basic-components-web-e.md#credentialtype22)时，代表凭据类型；类型为string时，表示证书链文件路径。 |
+| credentialTypeOrCertChainFile | [CredentialType](./arkts-basic-components-web-e.md#credentialtype22) \| string | 是 | 类型为CredentialType时，代表凭据类型；类型为string时，表示证书链文件路径。 |
 
 **错误码：**
 
@@ -101,9 +115,13 @@ confirm(identity: string, credentialTypeOrCertChainFile: CredentialType \| strin
 
 cancel(): void
 
-通知Web组件取消服务器发送的客户端证书请求事件。同时，相同host和port服务器的请求，不重复上报该事件。
+通知Web组件取消客户端证书请求事件。对来自相同host和port服务器的后续请求，不再重复上报该事件。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 ## ignore<sup>9+</sup>
 
@@ -112,3 +130,7 @@ ignore(): void
 通知Web组件忽略本次请求。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23

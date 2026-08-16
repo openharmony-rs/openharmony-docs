@@ -383,7 +383,7 @@ setWantAgentMultithreading(isMultithreadingSupported: boolean) : void
 
 | 错误码ID    | 错误信息            |
 |-----------|--------------------|
-| 202       | Not system app. Interface caller is not a system app. |
+| 202       | Not System App. Interface caller is not a system app. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例**：
@@ -533,7 +533,7 @@ triggerAsync(agent: WantAgent, triggerInfo: TriggerInfo, context: Context): Prom
 
 | 类型                                                        | 说明                                                         |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CompleteData](js-apis-app-ability-wantAgent.md#completedata)\> | Promise对象，返回主动激发WantAgent获得的数据。 |
+| Promise\<[CompleteData](js-apis-app-ability-wantAgent.md#completedata)\> | Promise对象，返回主动触发WantAgent获得的数据。 |
 
 **错误码：**
 
@@ -791,7 +791,7 @@ isLocalWantAgent(agent: WantAgent): boolean
 **示例：**
 
 ```ts
-import { wantAgent } from '@kit.AbilityKit';
+import { wantAgent, Want } from '@kit.AbilityKit';
 import type { WantAgent } from '@kit.AbilityKit';
 
 // 声明wantAgent实例
@@ -845,7 +845,7 @@ try {
 
 | 名称                      | 值 | 说明                                            |
 |-------------------------|---|-----------------------------------------------|
-| START_SERVICE_EXTENSION<sup>12+</sup> | 6 | 开启一个ServiceExtension。<br/>**系统接口**：该接口为系统接口。 |
+| START_SERVICE_EXTENSION<sup>12+</sup> | 6 | 启动一个ServiceExtension。<br/>**系统接口**：该接口为系统接口。 |
 
 ## LocalWantAgentInfo<sup>20+</sup>
 

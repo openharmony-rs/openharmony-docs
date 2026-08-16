@@ -291,7 +291,7 @@ let wantTemp: Want = {
 let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
 
 try {
-  bundleManager.removeDisallowedInstallBundlesSync(wantTemp, appIds, 100)
+  bundleManager.removeDisallowedInstallBundlesSync(wantTemp, appIds, 100);
   console.info('Succeeded in removing disallowed install bundles.');
 } catch (err) {
   console.error(`Failed to remove disallowed install bundles. Code is ${err.code}, message is ${err.message}`);
@@ -321,7 +321,7 @@ getDisallowedInstallBundlesSync(admin: Want | null, accountId?: number): Array&l
 
 | 类型                | 说明                           |
 | ------------------- | ------------------------------ |
-| Array&lt;string&gt; | 返回当前/指定用户下的应用程序包安装允许名单。 |
+| Array&lt;string&gt; | 返回当前/指定用户下的应用程序包安装禁止名单。 |
 
 **错误码**：
 
@@ -490,7 +490,7 @@ getDisallowedUninstallBundlesSync(admin: Want | null, accountId?: number): Array
 
 | 类型                | 说明                           |
 | ------------------- | ------------------------------ |
-| Array&lt;string&gt; | 返回当前/指定用户下的应用程序包安装允许名单。 |
+| Array&lt;string&gt; | 返回当前/指定用户下的包卸载禁止名单。 |
 
 **错误码**：
 
@@ -528,7 +528,7 @@ try {
 
 uninstall(admin: Want, bundleName: string, userId?: number, isKeepData?: boolean): Promise&lt;void&gt;
 
-卸载当前/指定用户下的指定包接口，选择是否保留包数据（由isKeepData指定）。使用Promise异步回调。
+卸载当前/指定用户下的指定包，选择是否保留包数据（由isKeepData指定）。使用Promise异步回调。调用成功后，应用被卸载，数据根据isKeepData参数保留或删除。
 
 > **说明：**
 >
@@ -591,7 +591,7 @@ bundleManager.uninstall(wantTemp, 'bundleName', 100, true).then(() => {
 
 install(admin: Want, hapFilePaths: Array\<string>, installParam?: InstallParam): Promise\<void>
 
-安装指定路径下的应用包。使用Promise异步回调。</br>此接口只能安装分发类型为enterprise_mdm（MDM应用）和enterprise_normal（普通企业应用）类型的应用，可以通过[getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)接口查询应用自身的[BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md)，其中BundleInfo.appInfo.appDistributionType为应用的分发类型。自API版本26.0.0起，建议使用[installForResult](#bundlemanagerinstallforresult)，以获取更详细的错误码返回值。
+安装指定路径下的应用包。使用Promise异步回调。<br/>此接口只能安装分发类型为enterprise_mdm（MDM应用）和enterprise_normal（普通企业应用）类型的应用，可以通过[getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)接口查询应用自身的[BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md)，其中BundleInfo.appInfo.appDistributionType为应用的分发类型。自API版本26.0.0起，建议使用[installForResult](#bundlemanagerinstallforresult)，以获取更详细的错误码返回值。
 > **说明：**
 > 
 > 该接口比较耗时，当调用此接口后，后续如果在应用主线程调用其他同步接口时需要等待该接口异步返回。
@@ -607,7 +607,7 @@ install(admin: Want, hapFilePaths: Array\<string>, installParam?: InstallParam):
 | 参数名       | 类型                                                    | 必填 | 说明                   |
 | ------------ | ------------------------------------------------------- | ---- | ---------------------- |
 | admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。         |
-| hapFilePaths | Array\<string>                                          | 是   | 待安装应用包路径数组。应用包路径为应用沙箱路径(应用沙箱路径和真实路径的对应关系可参见：[应用沙箱路径和真实物理路径的对应关系](../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系))等应用有权限访问的路径。 |
+| hapFilePaths | Array\<string>                                          | 是   | 待安装应用包路径数组。应用包路径为应用沙箱路径(应用沙箱路径和真实路径的对应关系可参见：[应用沙箱路径和真实物理路径的对应关系](../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系))等应用有权限访问的路径，所有路径必须属于同一应用。 |
 | installParam | [InstallParam](#installparam)                           | 否   | 应用包安装参数。       |
 
 **返回值：**
@@ -815,7 +815,7 @@ getInstalledBundleList(admin: Want, accountId: number): Promise\<Array\<BundleIn
 | 参数名       | 类型                                                    | 必填 | 说明                   |
 | ------------ | ------------------------------------------------------- | ---- | ---------------------- |
 | admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
-| accountId    | number                                                  | 是   | 用户ID，取值为正整数，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
+| accountId    | number                                                  | 是   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
 **返回值：**
 
@@ -871,7 +871,7 @@ getInstalledBundleList(admin: Want, accountId: number, bundleInfoGetFlag: number
 | 参数名       | 类型                                                    | 必填 | 说明                   |
 | ------------ | ------------------------------------------------------- | ---- | ---------------------- |
 | admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。         |
-| accountId    | number                                                  | 是   | 用户ID，取值为正整数，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
+| accountId    | number                                                  | 是   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 | [bundleInfoGetFlag](js-apis-enterprise-bundleManager.md#bundleinfogetflag23)    | number              | 是   | 指定返回的BundleInfo所包含的信息。 |
 
 **返回值：**
@@ -1065,7 +1065,8 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
-  let result: Array<bundleManager.AppDistributionType> = bundleManager.getInstallationAllowedAppDistributionTypes(wantTemp);
+  let result: Array<bundleManager.AppDistributionType> =
+    bundleManager.getInstallationAllowedAppDistributionTypes(wantTemp);
   console.info(`Succeeded in getting allowed appDistributionTypes. Result: ${JSON.stringify(result)}`);
 } catch (err) {
   console.error(`Failed to get allowed appDistributionTypes. Code: ${err.code}, message: ${err.message}`);
@@ -1118,11 +1119,11 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
-let bundleNames: Array<string> = [ 'com.huaweicloud.m' ];
+let bundleNames: Array<string> = ['com.huaweicloud.m'];
 try {
   bundleManager.installMarketApps(wantTemp, bundleNames);
   console.info(`Succeeded in installing market apps.`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to install market apps. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1207,7 +1208,7 @@ bundleManager.getInstalledBundleStorageStats(wantTemp, bundleNames, accountId).t
     "dataSize": 1216566
   },
   // ...
-]
+];
 ```
 
 
@@ -1216,6 +1217,8 @@ bundleManager.getInstalledBundleStorageStats(wantTemp, bundleNames, accountId).t
 应用包安装需指定的参数信息。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称                     | 类型                   | 只读 | 可选 | 说明                                                         |
 | ------------------------ | ---------------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -1228,6 +1231,8 @@ bundleManager.getInstalledBundleStorageStats(wantTemp, bundleNames, accountId).t
 应用程序签名证书的分发类型。详细介绍请参见[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的appDistributionType属性。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称         | 值 | 说明                            |
 | ----------- | -------- | ------------------------------- |
@@ -1243,6 +1248,8 @@ bundleManager.getInstalledBundleStorageStats(wantTemp, bundleNames, accountId).t
 描述应用包信息。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称                              | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | --------------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
@@ -1266,6 +1273,8 @@ bundleManager.getInstalledBundleStorageStats(wantTemp, bundleNames, accountId).t
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称      | 类型           | 只读 | 可选 | 说明                        |
 | --------- | -------------- | ---- | ---- | --------------------------- |
 | appId     | string         | 是   | 否   | 应用的appId，表示应用的唯一标识，详情信息可参考[什么是appId](../../quick-start/common-problem-of-application.md#什么是appid)。                 |
@@ -1279,6 +1288,8 @@ bundleManager.getInstalledBundleStorageStats(wantTemp, bundleNames, accountId).t
 应用程序信息。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称                       | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | -------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
@@ -1316,6 +1327,8 @@ bundleManager.getInstalledBundleStorageStats(wantTemp, bundleNames, accountId).t
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称         | 类型     | 只读   | 可选  |说明          |
 | ---------- | ------ | ----- | ----  | ---------------|
 | bundleName | string | 否    | 否 | 应用的bundle名称。 |
@@ -1327,6 +1340,8 @@ bundleManager.getInstalledBundleStorageStats(wantTemp, bundleNames, accountId).t
 包信息获取标志，指示需要获取的包信息的内容。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称                           | 值        | 说明                                                         |
 | --------------------------    | ---------- | ------------------------------------------------------------ |
@@ -1350,3 +1365,4 @@ bundleManager.getInstalledBundleStorageStats(wantTemp, bundleNames, accountId).t
 | bundleName| string         | 否   | 否   | 应用的包名。                 |
 | appSize   | number         | 否   | 否   | 应用安装文件大小，单位为Byte。<br/>应用安装文件保存在以下目录：<br/>/data/storage/el1/bundle         |
 | dataSize  | number         | 否   | 否   | 应用的本地数据、分布式数据和数据库数据大小，单位为Byte。<br/>本地文件保存在以下目录（注意缓存文件目录为以下目录的子目录）：<br/>/data/storage/\${el1-el5}/base<br/>分布式文件保存在以下目录：<br/>/data/storage/el2/distributedfiles<br/>数据库文件保存在以下目录：<br/>/data/storage/\${el1-el5}/database<br/> **说明：**\${el1-el5}指的是[el1，el2，el3，el4，el5目录](../../../application-dev/file-management/app-sandbox-directory.md#应用文件目录与应用文件路径)。 |
+

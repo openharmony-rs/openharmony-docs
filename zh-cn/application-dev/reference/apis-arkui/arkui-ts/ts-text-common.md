@@ -14,7 +14,7 @@
 >
 > - 本模块接口仅可在Stage模型下使用。
 >
-> - 文本类组件公共接口。
+> - 文本类组件公共接口提供了文本处理的基础能力，包括光标样式设置、布局管理、文本选择控制、菜单项定制等功能。该模块适用于需要对文本组件进行精细控制的场景，例如文本编辑器、富文本应用、输入表单等。通过这些接口，开发者可以自定义光标样式、获取文本布局信息、处理文本选择、定制编辑菜单等，提升应用的文本交互体验。
 
 ## CaretStyle<sup>10+</sup>
 
@@ -30,8 +30,8 @@
 
 | 名称 | 类型                                   | 只读 | 可选 | 说明 |
 | ------ | ------------------------------------------ | ---- | ---- | -------- |
-| width  | [Length](ts-types.md#length)               | 否   | 是 | 光标尺寸，不支持百分比。<br/>默认值：'2vp' |
-| color  | [ResourceColor](ts-types.md#resourcecolor) | 否   | 是   | 光标颜色。<br/>默认值：'#ff007dff' |
+| width  | [Length](ts-types.md#length)               | 否   | 是 | 光标尺寸，不支持百分比。<br>默认值：'2vp' |
+| color  | [ResourceColor](ts-types.md#resourcecolor) | 否   | 是   | 光标颜色。<br>默认值：'#ff007dff'，表示蓝色。 |
 
 ## LayoutManager<sup>12+</sup>
 
@@ -56,6 +56,10 @@ ArkTS-Sta: getLineCount(): int | undefined
 
 获取组件内容的总行数。
 
+> **说明：**
+>
+> 文本内容变更后，需等待布局完成才可获取到最新的总行数。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -68,7 +72,7 @@ ArkTS-Sta: getLineCount(): int | undefined
 
 | 类型     | 说明        |
 | ------ | --------- |
-| ArkTS-Dyn: number <br/> ArkTS-Sta: int \| undefined | 组件内容的总行数。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int \| undefined | 组件内容的总行数。当[LayoutManager](#layoutmanager12)没有和组件绑定时，返回0。 |
 
 ### getGlyphPositionAtCoordinate<sup>12+</sup>
 
@@ -76,7 +80,13 @@ ArkTS-Dyn: getGlyphPositionAtCoordinate(x: number, y: number): PositionWithAffin
 
 ArkTS-Sta: getGlyphPositionAtCoordinate(x: double, y: double): PositionWithAffinity | undefined
 
-获取较为接近给定坐标的字形的位置信息。
+获取较为接近给定坐标的字符位置信息。
+
+> **说明：**
+>
+> - 本接口实际获取的是UTF-16字符偏移量，而非字形偏移量。
+>
+> - 文本内容变更后，需等待布局完成才可获取到最新的位置信息。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -90,14 +100,14 @@ ArkTS-Sta: getGlyphPositionAtCoordinate(x: double, y: double): PositionWithAffin
 
 | 参数名    | 类型   | 必填   | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| x | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 相对于组件的横坐标。<br/>单位：[px](ts-pixel-units.md#基本像素单位) |
-| y | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 相对于组件的纵坐标。<br/>单位：[px](ts-pixel-units.md#基本像素单位) |
+| x | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是    | 相对于组件的横坐标。<br>单位：[px](ts-pixel-units.md#基本像素单位) |
+| y | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是    | 相对于组件的纵坐标。<br>单位：[px](ts-pixel-units.md#基本像素单位) |
 
 **返回值：**
 
 | 类型                                          | 说明        |
 | --------------------------------------------- | ----------- |
-| ArkTS-Dyn: [PositionWithAffinity](#positionwithaffinity12) <br/> ArkTS-Sta: [PositionWithAffinity](#positionwithaffinity12) \| undefined | 字形位置信息。|
+| ArkTS-Dyn: [PositionWithAffinity](#positionwithaffinity12) <br> ArkTS-Sta: [PositionWithAffinity](#positionwithaffinity12) \| undefined | 字符位置信息。当[LayoutManager](#layoutmanager12)没有和组件绑定时，返回无效值。|
 
 ### getCharacterPositionAtCoordinate<sup>24+</sup>
 
@@ -106,6 +116,12 @@ ArkTS-Dyn: getCharacterPositionAtCoordinate(x: number, y: number): PositionWithA
 ArkTS-Sta: getCharacterPositionAtCoordinate(x: double, y: double): PositionWithAffinity | undefined
 
 获取距离指定坐标最近的字符的位置信息。
+
+> **说明：**
+>
+> - 文本内容变更后，需等待布局完成才可获取到最新的位置信息。
+>
+> - 本接口返回的字符位置为UTF-8编码偏移量。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
@@ -121,8 +137,44 @@ ArkTS-Sta: getCharacterPositionAtCoordinate(x: double, y: double): PositionWithA
 
 | 参数名    | 类型   | 必填   | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| x | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 相对于组件的横坐标。<br/>单位：[px](ts-pixel-units.md#基本像素单位) |
-| y | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 相对于组件的纵坐标。<br/>单位：[px](ts-pixel-units.md#基本像素单位) |
+| x | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是    | 相对于组件的横坐标。<br>单位：[px](ts-pixel-units.md#基本像素单位) |
+| y | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是    | 相对于组件的纵坐标。<br>单位：[px](ts-pixel-units.md#基本像素单位) |
+
+**返回值：**
+
+| 类型                                          | 说明        |
+| --------------------------------------------- | ----------- |
+| [PositionWithAffinity](#positionwithaffinity12) \| undefined | 字符的位置信息。当[LayoutManager](#layoutmanager12)没有和组件绑定时，该接口会返回undefined。|
+
+### getCharacterPositionAtCoordinate
+
+ArkTS-Dyn: getCharacterPositionAtCoordinate(x: number, y: number, encoding?: TextEncoding): PositionWithAffinity | undefined
+
+ArkTS-Sta: getCharacterPositionAtCoordinate(x: double, y: double, encoding?: TextEncoding): PositionWithAffinity | undefined
+
+根据指定编码类型，获取距离指定坐标最近的字符位置信息。
+
+> **说明：**
+>
+> 文本内容变更后，需等待布局完成才可获取到最新的位置信息。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                 |
+| ------ | ------ | ---- | -------------------- |
+| x | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是    | 相对于组件的横坐标。<br>单位：[px](ts-pixel-units.md#基本像素单位) |
+| y | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是    | 相对于组件的纵坐标。<br>单位：[px](ts-pixel-units.md#基本像素单位) |
+| encoding | [TextEncoding](#textencoding) | 否 | 字符位置使用的编码类型。UTF-8编码时，字符位置以字节为单位；UTF-16编码时，字符位置以UTF-16码元为单位。<br>默认值：TextEncoding.TEXT_ENCODING_UTF8 |
 
 **返回值：**
 
@@ -134,7 +186,20 @@ ArkTS-Sta: getCharacterPositionAtCoordinate(x: double, y: double): PositionWithA
 
 getGlyphRangeForCharacterRange(charRange: [TextRange](#textrange12)): Array&lt;[TextRange](#textrange12)&gt; | undefined
 
-根据给定的文本字符范围来获取范围内的字形范围，以及实际的字符范围。例如文本为"世界Hello"，其中文本"世"的字形索引范围为[0, 1]，一个汉字占三个字符，所以其对应的字符索引范围为[0, 3]。如果指定的字符索引范围是[0, 1]，但无法解析出三分之一个汉字，所以实际的字符索引范围是[0, 3]。
+根据给定的文本字符范围来获取范围内的字形范围，以及实际的字符范围。本接口的字符偏移量为UTF-8编码。
+
+> **说明：**
+>
+> 文本内容变更后，需等待布局完成才可获取到最新的字形范围信息。
+
+以文本“世界Hello”为例，UTF-8编码下其字形索引与字符索引的对应关系如下：
+
+| 文本 | 世 | 界 | H | e | l | l | o |
+|---|---|---|---|---|---|---|---|
+| 字形索引范围 | [0, 1] | [1, 2] | [2, 3] | [3, 4] | [4, 5] | [5, 6] | [6, 7] |
+| 字符索引范围（UTF-8） | [0, 3] | [3, 6] | [6, 7] | [7, 8] | [8, 9] | [9, 10] | [10, 11] |
+
+其中文本“世”的字形索引范围为[0, 1]，一个汉字占3个字节，所以其对应的字符索引范围为[0, 3]。如果指定的字符索引范围是[0, 1]，但无法解析出三分之一个汉字，所以实际的字符索引范围是[0, 3]。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
@@ -156,13 +221,71 @@ getGlyphRangeForCharacterRange(charRange: [TextRange](#textrange12)): Array&lt;[
 
 | 类型                                          | 说明        |
 | --------------------------------------------- | ----------- |
-|  Array&lt;[TextRange](#textrange12)&gt; \| undefined | 数组中含有两个元素，第一个元素是字形范围，第二个元素是实际的字符范围，当返回的范围是异常值时，范围内元素为-1。当[LayoutManager](#layoutmanager12)没有和组件绑定时，该接口会返回undefined。|
+|  Array&lt;[TextRange](#textrange12)&gt; \| undefined | 数组中含有两个元素，第一个元素是字形范围，第二个元素是实际的字符范围。<br>当返回的范围是异常值时，范围内元素为-1。<br>当[LayoutManager](#layoutmanager12)没有和组件绑定时，该接口会返回undefined。|
+
+### getGlyphRangeForCharacterRange
+
+getGlyphRangeForCharacterRange(charRange: TextRange, encoding?: TextEncoding): Array&lt;TextRange&gt; | undefined
+
+根据指定编码类型和文本字符范围，获取字形范围以及实际的字符范围。
+
+> **说明：**
+>
+> 文本内容变更后，需等待布局完成才可获取到最新的字形范围信息。
+
+以文本“世界Hello”为例，不同编码类型下其字形索引与字符索引的对应关系如下：
+
+| 文本 | 世 | 界 | H | e | l | l | o |
+|---|---|---|---|---|---|---|---|
+| 字形索引范围 | [0, 1] | [1, 2] | [2, 3] | [3, 4] | [4, 5] | [5, 6] | [6, 7] |
+| 字符索引范围（UTF-8） | [0, 3] | [3, 6] | [6, 7] | [7, 8] | [8, 9] | [9, 10] | [10, 11] |
+| 字符索引范围（UTF-16） | [0, 1] | [1, 2] | [2, 3] | [3, 4] | [4, 5] | [5, 6] | [6, 7] |
+
+UTF-8编码时，一个汉字占3个字节，“世”的字形索引范围为[0, 1]，其对应的字符索引范围为[0, 3]。如果指定的字符索引范围是[0, 1]，但无法解析出三分之一个汉字，所以实际的字符索引范围是[0, 3]。
+
+UTF-16编码时，字符索引以UTF-16码元为单位，BMP字符（如“世”）占1个码元（2个字节），补充平面字符（如emoji）占2个码元（4字节代理对）。“世”的字形索引范围为[0, 1]，其对应的字符索引范围为[0, 1]。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                 |
+| ------ | ------ | ---- | -------------------- |
+| charRange | [TextRange](#textrange12) | 是    | 文本的字符范围。|
+| encoding | [TextEncoding](#textencoding) | 否 | 字符范围使用的编码类型。UTF-8编码时，字符索引以字节为单位；UTF-16编码时，字符索引以UTF-16码元为单位。<br>默认值：TextEncoding.TEXT_ENCODING_UTF8 |
+
+**返回值：**
+
+| 类型                                          | 说明        |
+| --------------------------------------------- | ----------- |
+|  Array&lt;[TextRange](#textrange12)&gt; \| undefined | 数组中含有两个元素，第一个元素是字形范围，第二个元素是实际的字符范围。<br>当返回的范围是异常值时，范围内元素为-1。<br>当[LayoutManager](#layoutmanager12)没有和组件绑定时，该接口会返回undefined。|
 
 ### getCharacterRangeForGlyphRange<sup>24+</sup>
 
 getCharacterRangeForGlyphRange(glyphRange: [TextRange](#textrange12)): Array&lt;[TextRange](#textrange12)&gt; | undefined
 
-根据给定的文本字形范围来获取范围内的字符范围，以及实际的字形范围。例如文本为"世界Hello"，其字形索引范围为[0, 7]，一个汉字占三个字符，所以其对应的字符索引范围为[0, 11]。如果指定的索引范围是[0, 11]，但字形一共只有7个，所以实际的字形索引范围是[0, 7]。
+根据给定的文本字形范围来获取范围内的字符范围，以及实际的字形范围。本接口的字符偏移量为UTF-8编码。
+
+> **说明：**
+>
+> 文本内容变更后，需等待布局完成才可获取到最新的字符范围信息。
+
+以文本“世界Hello”为例，UTF-8编码下其字形索引与字符索引的对应关系如下：
+
+| 文本 | 世 | 界 | H | e | l | l | o |
+|---|---|---|---|---|---|---|---|
+| 字形索引范围 | [0, 1] | [1, 2] | [2, 3] | [3, 4] | [4, 5] | [5, 6] | [6, 7] |
+| 字符索引范围（UTF-8） | [0, 3] | [3, 6] | [6, 7] | [7, 8] | [8, 9] | [9, 10] | [10, 11] |
+
+其字形索引范围为[0, 7]，一个汉字占3个字节，所以其对应的字符索引范围为[0, 11]。如果指定的字形索引范围是[0, 11]，但字形一共只有7个，所以实际的字形索引范围是[0, 7]。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
@@ -184,7 +307,52 @@ getCharacterRangeForGlyphRange(glyphRange: [TextRange](#textrange12)): Array&lt;
 
 | 类型                                          | 说明        |
 | --------------------------------------------- | ----------- |
-| Array&lt;[TextRange](#textrange12)&gt; \| undefined | 数组中含有两个元素，第一个元素是字符范围，第二个元素是实际的字形范围，当返回的范围是异常值时，范围内元素为-1。当[LayoutManager](#layoutmanager12)没有和组件绑定时，该接口会返回undefined。|
+| Array&lt;[TextRange](#textrange12)&gt; \| undefined | 数组中含有两个元素，第一个元素是字符范围，第二个元素是实际的字形范围。<br>当返回的范围是异常值时，范围内元素为-1。<br>当[LayoutManager](#layoutmanager12)没有和组件绑定时，该接口会返回undefined。|
+
+### getCharacterRangeForGlyphRange
+
+getCharacterRangeForGlyphRange(glyphRange: TextRange, encoding?: TextEncoding): Array&lt;TextRange&gt; | undefined
+
+根据指定编码类型和文本字形范围，获取字符范围以及实际的字形范围。
+
+> **说明：**
+>
+> 文本内容变更后，需等待布局完成才可获取到最新的字符范围信息。
+
+以文本“世界Hello”为例，不同编码类型下其字形索引与字符索引的对应关系如下：
+
+| 文本 | 世 | 界 | H | e | l | l | o |
+|---|---|---|---|---|---|---|---|
+| 字形索引范围 | [0, 1] | [1, 2] | [2, 3] | [3, 4] | [4, 5] | [5, 6] | [6, 7] |
+| 字符索引范围（UTF-8） | [0, 3] | [3, 6] | [6, 7] | [7, 8] | [8, 9] | [9, 10] | [10, 11] |
+| 字符索引范围（UTF-16） | [0, 1] | [1, 2] | [2, 3] | [3, 4] | [4, 5] | [5, 6] | [6, 7] |
+
+UTF-8编码时，其字形索引范围为[0, 7]，一个汉字占3个字节，对应的字符索引范围为[0, 11]。如果指定的字形索引范围超出实际字形数量（如[0, 11]），由于字形一共只有7个，返回的实际字形索引范围为[0, 7]。
+
+UTF-16编码时，字符索引以UTF-16码元为单位，BMP字符（如“世”）占1个码元（2个字节），补充平面字符（如emoji）占2个码元（4字节代理对）。其字形索引范围为[0, 7]，对应的字符索引范围为[0, 7]。如果指定的字形索引范围超出实际字形数量（如[0, 10]），由于字形一共只有7个，返回的实际字形索引范围为[0, 7]。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                 |
+| ------ | ------ | ---- | -------------------- |
+| glyphRange | [TextRange](#textrange12) | 是    | 文本的字形范围。|
+| encoding | [TextEncoding](#textencoding) | 否 | 字符范围使用的编码类型。UTF-8编码时，字符索引以字节为单位；UTF-16编码时，字符索引以UTF-16码元为单位。<br>默认值：TextEncoding.TEXT_ENCODING_UTF8 |
+
+**返回值：**
+
+| 类型                                          | 说明        |
+| --------------------------------------------- | ----------- |
+| Array&lt;[TextRange](#textrange12)&gt; \| undefined | 数组中含有两个元素，第一个元素是字符范围，第二个元素是实际的字形范围。<br>当返回的范围是异常值时，范围内元素为-1。<br>当[LayoutManager](#layoutmanager12)没有和组件绑定时，该接口会返回undefined。|
 
 ### getLineMetrics<sup>12+</sup>
 
@@ -193,6 +361,10 @@ ArkTS-Dyn: getLineMetrics(lineNumber: number): LineMetrics
 ArkTS-Sta: getLineMetrics(lineNumber: int): LineMetrics | undefined
 
 获取指定行的行信息、文本样式信息、以及字体属性信息。
+
+> **说明：**
+>
+> 文本内容变更后，需等待布局完成才可获取到最新的行信息。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -206,13 +378,13 @@ ArkTS-Sta: getLineMetrics(lineNumber: int): LineMetrics | undefined
 
 | 参数名    | 类型   | 必填   | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| lineNumber | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 行号，从0开始。 |
+| lineNumber | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 行号，取值范围[0, 实际行数-1]，从0开始。当行号小于0或超出实际行数时，返回无效值。 |
 
 **返回值：**
 
 | 类型                                       | 说明       |
 | ---------------------------------------- | -------- |
-| ArkTS-Dyn: [LineMetrics](#linemetrics12) <br/> ArkTS-Sta: [LineMetrics](#linemetrics12) \| undefined | 行信息、文本样式信息、以及字体属性信息。<br/>当行号小于0或超出实际行，返回无效值。 |
+| ArkTS-Dyn: [LineMetrics](#linemetrics12) <br> ArkTS-Sta: [LineMetrics](#linemetrics12) \| undefined | 行信息、文本样式信息、以及字体属性信息。<br>当行号小于0或超出实际行，返回无效值。当[LayoutManager](#layoutmanager12)没有和组件绑定时，返回无效值。 |
 
 ### getRectsForRange<sup>14+</sup>
 
@@ -220,7 +392,13 @@ ArkTS-Dyn: getRectsForRange(range: TextRange, widthStyle: RectWidthStyle, height
 
 ArkTS-Sta: getRectsForRange(range: TextRange, widthStyle: RectWidthStyle, heightStyle: RectHeightStyle): Array\<TextBox> | undefined
 
-获取给定的矩形区域宽度以及矩形区域高度的规格下，文本中任意区间范围内的字符或占位符所占的绘制区域信息。
+根据给定的矩形区域宽度样式和高度样式，获取文本中任意区间范围内的字符或占位符所占的绘制区域信息。
+
+> **说明：**
+>
+> - 文本内容变更后，需等待布局完成才可获取到最新的绘制区域信息。
+>
+> - 参数range的[TextRange](#textrange12)为UTF-16字符偏移量。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -235,14 +413,14 @@ ArkTS-Sta: getRectsForRange(range: TextRange, widthStyle: RectWidthStyle, height
 | 参数名      | 类型                                 | 必填 | 说明                     |
 | ----------- | ----------------------------------- | ---- | ------------------------ |
 | range       | [TextRange](#textrange12)| 是   | 需要获取的区域的文本区间。  |
-| widthStyle  | [RectWidthStyle](#rectwidthstyle14)   | 是   | 返回的矩形区域的宽度的规格。|
-| heightStyle | [RectHeightStyle](#rectheightstyle14) | 是   | 返回的矩形区域的高度的规格。|
+| widthStyle  | [RectWidthStyle](#rectwidthstyle14)   | 是   | 返回的矩形区域的宽度规格，用于控制返回矩形的宽度计算方式，不同规格值会影响矩形的宽度边界。|
+| heightStyle | [RectHeightStyle](#rectheightstyle14) | 是   | 返回的矩形区域的高度规格，用于控制返回矩形的高度计算方式，不同规格值会影响矩形的高度边界。|
 
 **返回值：**
 
 | 类型                         | 说明        |
 | --------------------------- | ----------- |
-| ArkTS-Dyn: Array\<[TextBox](#textbox14)> <br/> ArkTS-Sta: Array\<[TextBox](#textbox14)> \| undefined | 矩形区域数组。|
+| ArkTS-Dyn: Array\<[TextBox](#textbox14)> <br> ArkTS-Sta: Array\<[TextBox](#textbox14)> \| undefined | 矩形区域数组。当[LayoutManager](#layoutmanager12)没有和组件绑定时，返回空数组。|
 
 ## PositionWithAffinity<sup>12+</sup>
 
@@ -258,8 +436,8 @@ ArkTS-Sta: getRectsForRange(range: TextRange, widthStyle: RectWidthStyle, height
 
 | 名称      | 类型                   | 只读 | 可选 | 说明                      |
 | --------- | --------------------- | ---- | ---- | ------------------------ |
-| position  | ArkTS-Dyn: number<br/>ArkTS-Sta: int                | 否   | 否   | 字形或字符相对于组件内容的索引，整数。  |
-| affinity  | [Affinity](#affinity12) | 否   | 否   | 位置亲和度。             |
+| position  | ArkTS-Dyn: number<br>ArkTS-Sta: int                | 否   | 否   | 字形或字符相对于组件内容的索引，整数。  |
+| affinity  | [Affinity](#affinity12) | 否   | 否   | 位置亲和度，表示光标位置在字形边界处的倾向性，具体取值请参见Affinity枚举。 |
 
 ## TextMenuItemId<sup>12+</sup>
 
@@ -275,24 +453,24 @@ ArkTS-Sta: getRectsForRange(range: TextRange, widthStyle: RectWidthStyle, height
 
 | 名称           | 类型              | 只读   | 可选  | 说明     |
 | ------------ |---------------------| ---- | ---- | ------ |
-| CUT  | [TextMenuItemId](#textmenuitemid12) |  是  |  否 | 默认剪切，为一级菜单项。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23 |
-| COPY  | [TextMenuItemId](#textmenuitemid12) |  是  |  否  | 默认复制，为一级菜单项。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23 |
-| PASTE | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 默认粘贴，为一级菜单项。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23 |
-| SELECT_ALL   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 默认全选，为一级菜单项。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23 |
-| COLLABORATION_SERVICE   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 互通服务，为一级菜单项。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23 |
-| CAMERA_INPUT   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否   | 拍摄输入，为一级菜单项。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23 |
-| AI_WRITER<sup>13+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | <!--RP1--><!--RP1End-->可对选中的文本进行润色、摘要提取、排版等，为一级菜单项。该菜单项依赖大模型能力，否则不生效。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23 |
-| TRANSLATE<sup>15+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 翻译，为一级菜单项。对选中的文本提供翻译服务。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 15 <br>**ArkTS-Sta起始版本：** 23 |
-| SHARE<sup>18+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 分享，为一级菜单项。对选中的文本提供分享服务，拉起分享窗口分享选中文本内容。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18 <br>**ArkTS-Sta起始版本：** 23 |
-| SEARCH<sup>18+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 搜索，为一级菜单项。对选中的文本提供搜索服务，拉起浏览器搜索选中文本内容。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18 <br>**ArkTS-Sta起始版本：** 23 |
-| url<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 打开链接，为一级菜单项。对选中的URL提供跳转服务，拉起浏览器搜索或者应用页面。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br>**ArkTS-Dyn起始版本：** 20 |
-| email<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 新建邮件，为一级菜单项。对选中的邮箱地址提供跳转服务，拉起邮箱应用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br>**ArkTS-Dyn起始版本：** 20 |
-| phoneNumber<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 呼叫，为一级菜单项。对选中的电话号码提供跳转服务，拉起电话拨号页面。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br>**ArkTS-Dyn起始版本：** 20 |
-| address<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 导航前往，为一级菜单项。对选中的地址提供跳转服务，拉起地图应用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br>**ArkTS-Dyn起始版本：** 20 |
-| dateTime<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 新建日程，为一级菜单项。对选中的日期和时间提供跳转服务，拉起新建日程页面。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br>**ArkTS-Dyn起始版本：** 20 |
-| askAI<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | <!--RP2--><!--RP2End-->对选中的文本提供AI问询能力，为一级菜单项。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br>**ArkTS-Dyn起始版本：** 20 |
-| autoFill<sup>23+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 自动填充，为一级菜单项。点击后会展开二级菜单项“密码保险箱”，仅支持[Search](ts-basic-components-search.md)、[TextInput](ts-basic-components-textinput.md)、[TextArea](ts-basic-components-textarea.md)或[RichEditor](ts-basic-components-richeditor.md)。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23 <br>**ArkTS-Sta起始版本：** 23 |
-| passwordVault<sup>23+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 密码保险箱，为二级菜单项。点击该菜单项后会拉起密码保险箱应用，该应用提供自动填充账号密码能力，仅支持[Search](ts-basic-components-search.md)、[TextInput](ts-basic-components-textinput.md)、[TextArea](ts-basic-components-textarea.md)或[RichEditor](ts-basic-components-richeditor.md)。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 23 <br>**ArkTS-Sta起始版本：** 23 |
+| CUT  | [TextMenuItemId](#textmenuitemid12) |  是  |  否 | 默认剪切，为一级菜单项。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23 |
+| COPY  | [TextMenuItemId](#textmenuitemid12) |  是  |  否  | 默认复制，为一级菜单项。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23 |
+| PASTE | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 默认粘贴，为一级菜单项。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23 |
+| SELECT_ALL   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 默认全选，为一级菜单项。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23 |
+| COLLABORATION_SERVICE   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 互通服务，为一级菜单项。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23 |
+| CAMERA_INPUT   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否   | 拍摄输入，为一级菜单项。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23 |
+| AI_WRITER<sup>13+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | <!--RP1--><!--RP1End-->可对选中的文本进行润色、摘要提取、排版等，为一级菜单项。该菜单项依赖大模型能力，否则不生效。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23 |
+| TRANSLATE<sup>15+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 翻译，为一级菜单项。对选中的文本提供翻译服务。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 15 <br>**ArkTS-Sta起始版本：** 23 |
+| SHARE<sup>18+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 分享，为一级菜单项。对选中的文本提供分享服务，拉起分享窗口分享选中文本内容。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18 <br>**ArkTS-Sta起始版本：** 23 |
+| SEARCH<sup>18+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 搜索，为一级菜单项。对选中的文本提供搜索服务，拉起浏览器搜索选中文本内容。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18 <br>**ArkTS-Sta起始版本：** 23 |
+| url<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 打开链接，为一级菜单项。对选中的URL提供跳转服务，拉起浏览器搜索或者应用页面。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br>**ArkTS-Dyn起始版本：** 20 |
+| email<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 新建邮件，为一级菜单项。对选中的邮箱地址提供跳转服务，拉起邮箱应用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br>**ArkTS-Dyn起始版本：** 20 |
+| phoneNumber<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 呼叫，为一级菜单项。对选中的电话号码提供跳转服务，拉起电话拨号页面。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br>**ArkTS-Dyn起始版本：** 20 |
+| address<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 导航前往，为一级菜单项。对选中的地址提供跳转服务，拉起地图应用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br>**ArkTS-Dyn起始版本：** 20 |
+| dateTime<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 新建日程，为一级菜单项。对选中的日期和时间提供跳转服务，拉起新建日程页面。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br>**ArkTS-Dyn起始版本：** 20 |
+| askAI<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | <!--RP2--><!--RP2End-->对选中的文本提供AI问询能力，为一级菜单项。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br>**ArkTS-Dyn起始版本：** 20 |
+| autoFill<sup>23+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 自动填充，为一级菜单项。点击后会展开二级菜单项“密码保险箱”，仅支持[Search](ts-basic-components-search.md)、[TextInput](ts-basic-components-textinput.md)、[TextArea](ts-basic-components-textarea.md)或[RichEditor](ts-basic-components-richeditor.md)。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23 <br>**ArkTS-Sta起始版本：** 23 |
+| passwordVault<sup>23+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 密码保险箱，为二级菜单项。点击该菜单项后会拉起密码保险箱应用，该应用提供自动填充账号密码能力，仅支持[Search](ts-basic-components-search.md)、[TextInput](ts-basic-components-textinput.md)、[TextArea](ts-basic-components-textarea.md)或[RichEditor](ts-basic-components-richeditor.md)。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 23 <br>**ArkTS-Sta起始版本：** 23 |
 ### of
 
 static of(id: ResourceStr): TextMenuItemId
@@ -311,13 +489,13 @@ static of(id: ResourceStr): TextMenuItemId
 
 | 参数名  | 类型                              | 必填 | 说明                                                         |
 | ------- | --------------------------------- | ---- | ------------------------------------------------------------ |
-| id | [ResourceStr](ts-types.md#resourcestr) | 是   | 菜单的id。 |
+| id | [ResourceStr](ts-types.md#resourcestr) | 是   | 菜单项标识，用于创建TextMenuItemId对象以识别菜单选项。 |
 
 **返回值：**
 
 | 类型              |       说明       |
 | ------- | --------------------------------- |
-| [TextMenuItemId](#textmenuitemid12) | TextMenuItemId的对象。 |
+| [TextMenuItemId](#textmenuitemid12) | 根据传入id创建的菜单项标识对象，用于识别菜单选项。 |
 
 ### equals
 
@@ -337,13 +515,13 @@ equals(id: TextMenuItemId): boolean
 
 | 参数名  | 类型                              | 必填 | 说明                                                         |
 | ------- | --------------------------------- | ---- | ------------------------------------------------------------ |
-| id | [TextMenuItemId](#textmenuitemid12) | 是   | TextMenuItemId的id。 |
+| id | [TextMenuItemId](#textmenuitemid12) | 是   | 需要比较的TextMenuItemId对象。 |
 
 **返回值：**
 
 | 类型              |       说明       |
 | ------- | --------------------------------- |
-| boolean | 两个TextMenuItemId是否相等。<br/>true表示相等，false表示不相等。 |
+| boolean | 两个TextMenuItemId是否相等。<br>true表示相等，false表示不相等。 |
 
 ## TextMenuItem<sup>12+</sup>对象说明
 
@@ -353,10 +531,10 @@ equals(id: TextMenuItemId): boolean
 
 | 名称  | 类型                              | 只读 | 可选 | 说明   |
 | ------- | --------------------------------- | ---- | ---- | --------------------------------- |
-| content | [ResourceStr](ts-types.md#resourcestr) | 否   | 否 | 菜单名称。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
-| icon | [ResourceStr](ts-types.md#resourcestr) | 否   | 是 | 菜单图标。<br/>不支持网络图片。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
-| id | [TextMenuItemId](#textmenuitemid12) |  否   | 否  | 菜单id。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
-| labelInfo<sup>15+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否   | 是 | 快捷键提示。<br/>该字段仅2in1设备支持。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
+| content | [ResourceStr](ts-types.md#resourcestr) | 否   | 否 | 菜单名称。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| icon | [ResourceStr](ts-types.md#resourcestr) | 否   | 是 | 菜单图标。<br>不支持网络图片。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| id | [TextMenuItemId](#textmenuitemid12) |  否   | 否  | 菜单id。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| labelInfo<sup>15+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否   | 是 | 快捷键提示。<br>该字段仅2in1设备支持。<br>默认值：undefined，不显示快捷键提示。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 15<br>**ArkTS-Sta起始版本：** 23 |
 
 ## EditMenuOptions
 
@@ -370,9 +548,9 @@ equals(id: TextMenuItemId): boolean
 
 | 名称  | 类型   | 只读 | 可选   | 说明  |
 | ------- | ------ | ---- | ----- | ----- |
-| onPrepareMenu<sup>20+</sup> | [OnPrepareMenuCallback](#onpreparemenucallback20) | 否 | 是  | 当文本选择区域变化后显示菜单之前触发该回调，可在该回调中进行菜单数据设置。 </br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20 <br>**ArkTS-Sta起始版本：** 24|
-| onCreateMenu<sup>23+</sup> |ArkTS-Sta: [OnCreateMenuCallback](#oncreatemenucallback23) \| undefined | 否 | 否  | 在菜单创建时触发该回调，可在该回调中进行菜单数据设置。入参和返回值只包含一级菜单项，不包含二级菜单项。 <br/>取值为undefined时，不使用回调函数。<br/>**ArkTS模式：** 该属性仅适用于ArkTS-Sta。<br>**ArkTS-Sta起始版本：** 23|
-| onMenuItemClick<sup>23+</sup> |ArkTS-Sta: [OnMenuItemClickCallback](#onmenuitemclickcallback23) \| undefined| 否 | 否  | 菜单项功能函数。 <br/>取值为undefined时，不使用回调函数。<br/>**ArkTS模式：** 该属性仅适用于ArkTS-Sta。<br>**ArkTS-Sta起始版本：** 23|
+| onPrepareMenu<sup>20+</sup> | [OnPrepareMenuCallback](#onpreparemenucallback20) | 否 | 是  | 当文本选择区域变化后显示菜单之前触发该回调，可在该回调中进行菜单数据设置。<br>与[onCreateMenu](#oncreatemenu12)功能相似但触发时机不同：onCreateMenu在菜单创建时触发，适用于初始化菜单项；本接口在每次选择区域变化后、菜单显示前触发，适用于根据选择内容动态调整菜单。两者可同时使用。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20 <br>**ArkTS-Sta起始版本：** 24|
+| onCreateMenu<sup>23+</sup> |ArkTS-Sta: [OnCreateMenuCallback](#oncreatemenucallback23) \| undefined | 否 | 否  | 在菜单创建时触发该回调，可在该回调中进行菜单数据设置。入参和返回值只包含一级菜单项，不包含二级菜单项。 <br>取值为undefined时，不使用回调函数。<br>**ArkTS模式：** 该属性仅适用于ArkTS-Sta。<br>**ArkTS-Sta起始版本：** 23|
+| onMenuItemClick<sup>23+</sup> |ArkTS-Sta: [OnMenuItemClickCallback](#onmenuitemclickcallback23) \| undefined| 否 | 否  | 在菜单项被点击时触发该回调，用于处理菜单项的点击行为。 <br>取值为undefined时，不使用回调函数。<br>**ArkTS模式：** 该属性仅适用于ArkTS-Sta。<br>**ArkTS-Sta起始版本：** 23|
 
 ### onCreateMenu<sup>12+</sup>
 
@@ -392,7 +570,7 @@ onCreateMenu(menuItems: Array\<TextMenuItem>): Array\<TextMenuItem\>
 
 | 参数名  | 类型                              | 必填 | 说明   |
 | ------- | --------------------------------- | ---- | --------------------------------- |
-| menuItems | Array<[TextMenuItem](#textmenuitem12对象说明)> | 是   |  将要显示的菜单项。<br/>**说明：** <br/>对默认菜单项的名称、图标、快捷键提示修改不生效。 |
+| menuItems | Array<[TextMenuItem](#textmenuitem12对象说明)> | 是   |  将要显示的菜单项。<br>**说明：** <br>对默认菜单项的名称、图标、快捷键提示修改不生效。 |
 
 **返回值：**
 
@@ -404,7 +582,7 @@ onCreateMenu(menuItems: Array\<TextMenuItem>): Array\<TextMenuItem\>
 
 onMenuItemClick(menuItem: TextMenuItem, range: TextRange): boolean
 
-菜单项功能函数。
+在菜单项被点击时触发该回调，用于处理菜单项的点击行为。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -418,14 +596,14 @@ onMenuItemClick(menuItem: TextMenuItem, range: TextRange): boolean
 
 | 参数名  | 类型                              | 必填 | 说明   |
 | ------- | --------------------------------- | ---- | --------------------------------- |
-| menuItem | [TextMenuItem](#textmenuitem12对象说明) | 是   | 菜单项。<br/>**说明：** <br/>从API version 23开始，对于具备可展开二级菜单能力的一级菜单项，例如自动填充，仅执行系统默认逻辑，不会执行用户自定义逻辑。 |
+| menuItem | [TextMenuItem](#textmenuitem12对象说明) | 是   | 菜单项。<br>**说明：** <br>从API version 23开始，对于具备可展开二级菜单能力的一级菜单项，例如自动填充，仅执行系统默认逻辑，不会执行用户自定义逻辑。 |
 | range | [TextRange](#textrange12) | 是   | 选中的文本信息。 |
 
 **返回值：**
 
 | 类型              |       说明       |
 | ------- | --------------------------------- |
-| boolean | 菜单项的执行逻辑。<br/>返回为true，拦截系统默认逻辑，仅执行自定义逻辑。<br/>返回为false，先执行自定义逻辑，再执行系统逻辑。 |
+| boolean | 菜单项的执行逻辑。<br>返回为true，拦截系统默认逻辑，仅执行自定义逻辑。<br>返回为false，先执行自定义逻辑，再执行系统逻辑。 |
 
 ## OnCreateMenuCallback<sup>23+</sup>
 
@@ -443,7 +621,7 @@ type OnCreateMenuCallback = (menuItems: Array\<TextMenuItem\>) => Array\<TextMen
 
 | 参数名  | 类型                              | 必填 | 说明   |
 | ------- | --------------------------------- | ---- | --------------------------------- |
-| menuItems | Array<[TextMenuItem](#textmenuitem12对象说明)> | 是   |  将要显示的菜单项。<br/>**说明：** <br/>对默认菜单项的名称、图标、快捷键提示修改不生效。 |
+| menuItems | Array<[TextMenuItem](#textmenuitem12对象说明)> | 是   |  将要显示的菜单项。<br>**说明：** <br>对默认菜单项的名称、图标、快捷键提示修改不生效。 |
 
 **返回值：**
 
@@ -455,9 +633,7 @@ type OnCreateMenuCallback = (menuItems: Array\<TextMenuItem\>) => Array\<TextMen
 
 type OnMenuItemClickCallback = (menuItem: TextMenuItem, range: TextRange) => boolean
 
-菜单项功能函数。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+在菜单项被点击时触发该回调，用于处理菜单项的点击行为。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -469,14 +645,14 @@ type OnMenuItemClickCallback = (menuItem: TextMenuItem, range: TextRange) => boo
 
 | 参数名  | 类型                              | 必填 | 说明   |
 | ------- | --------------------------------- | ---- | --------------------------------- |
-| menuItem | [TextMenuItem](#textmenuitem12对象说明) | 是   | 菜单项。<br/>**说明：** <br/>从API version 23开始，对于具备可展开二级菜单能力的一级菜单项，例如自动填充，仅执行系统默认逻辑，不会执行用户自定义逻辑。 |
+| menuItem | [TextMenuItem](#textmenuitem12对象说明) | 是   | 菜单项。<br>**说明：** <br>从API version 23开始，对于具备可展开二级菜单能力的一级菜单项，例如自动填充，仅执行系统默认逻辑，不会执行用户自定义逻辑。 |
 | range | [TextRange](#textrange12) | 是   | 选中的文本信息。 |
 
 **返回值：**
 
 | 类型              |       说明       |
 | ------- | --------------------------------- |
-| boolean | 菜单项的执行逻辑。<br/>返回为true，拦截系统默认逻辑，仅执行自定义逻辑。<br/>返回为false，先执行自定义逻辑，再执行系统逻辑。 |
+| boolean | 菜单项的执行逻辑。<br>返回为true，拦截系统默认逻辑，仅执行自定义逻辑。<br>返回为false，先执行自定义逻辑，再执行系统逻辑。 |
 
 ## OnPrepareMenuCallback<sup>20+</sup>
 
@@ -496,7 +672,7 @@ type OnPrepareMenuCallback = (menuItems: Array\<TextMenuItem\>) => Array\<TextMe
 
 | 参数名  | 类型                              | 必填 | 说明   |
 | ------- | --------------------------------- | ---- | --------------------------------- |
-| menuItems | Array<[TextMenuItem](#textmenuitem12对象说明)> | 是   | 将要显示的菜单项。<br/>**说明：** <br/>对默认菜单项的名称、图标、快捷键提示修改不生效。 |
+| menuItems | Array<[TextMenuItem](#textmenuitem12对象说明)> | 是   | 将要显示的菜单项。<br>**说明：** <br>对默认菜单项的名称、图标、快捷键提示修改不生效。 |
 
 **返回值：**
 
@@ -518,8 +694,8 @@ type OnPrepareMenuCallback = (menuItems: Array\<TextMenuItem\>) => Array\<TextMe
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -- | -- | -- | -- | -- |
-| start | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 起始索引。 |
-| end | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 结束索引。 |
+| start | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 起始索引，从0开始。 |
+| end | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 结束索引，从0开始。 |
 
 ## EditableTextOnChangeCallback<sup>12+</sup>
 
@@ -553,11 +729,11 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 
 | 名称  | 值   | 说明                               |
 | ----- | ----- | --------------------------------- |
-| PHONE_NUMBER  | 0 | 电话号码<br/> **ArkTS-Dyn起始版本：** 11<br/> **ArkTS-Sta起始版本：** 23 |
-| URL | 1 | 链接<br/> **ArkTS-Dyn起始版本：** 11<br/> **ArkTS-Sta起始版本：** 23 |
-| EMAIL | 2 | 邮箱<br/> **ArkTS-Dyn起始版本：** 11<br/> **ArkTS-Sta起始版本：** 23 |
-| ADDRESS | 3 | 地址<br/> **ArkTS-Dyn起始版本：** 11<br/> **ArkTS-Sta起始版本：** 23 |
-| DATE_TIME<sup>12+</sup> | 4 | 日期时间<br/> **ArkTS-Dyn起始版本：** 12<br/> **ArkTS-Sta起始版本：** 23 |
+| PHONE_NUMBER  | 0 | 电话号码<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 23 |
+| URL | 1 | 链接<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 23 |
+| EMAIL | 2 | 邮箱<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 23 |
+| ADDRESS | 3 | 地址<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 23 |
+| DATE_TIME<sup>12+</sup> | 4 | 日期时间<br> **ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 23 |
 
 ## TextDeleteDirection<sup>12+</sup>枚举说明
 
@@ -646,16 +822,16 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 
 | 名称    | 类型                          | 只读 | 可选 | 说明                                                         |
 | ------- | ----------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| insertOffset  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否 | 插入的值的位置信息。 |
+| insertOffset  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否 | 插入的值的位置索引，从0开始。 |
 | insertValue  | string | 否   | 否   | 插入的值。 |
 
 ## IncrementalUpdatePolicy
 
 文本渲染的增量更新策略。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -682,23 +858,23 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 
 | 名称    | 类型                                                    | 只读 | 可选 | 说明                                                    |
 | ------- | ----------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| deleteOffset  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否 | 删除的值的位置信息。 |
+| deleteOffset  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否 | 删除的值的位置索引，从0开始。 |
 | direction  | [TextDeleteDirection](#textdeletedirection12枚举说明) | 否   | 否   | 删除值的方向。 |
 | deleteValue  | string | 否   | 否   | 删除的值。 |
 
 ## TextDataDetectorConfig<sup>11+</sup>对象说明
 
-文本识别配置项。该配置只支持[Text](ts-basic-components-text.md)组件和[RichEditor](ts-basic-components-richeditor.md)组件。
+该配置只支持[Text](ts-basic-components-text.md)组件和[RichEditor](ts-basic-components-richeditor.md)组件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型  | 只读 | 可选 | 说明  |
 | ------ | -------- | ---- | ---- | ------------------------------------------- |
-| types   | ArkTS-Dyn: [TextDataDetectorType](ts-text-common.md#textdatadetectortype11枚举说明)[]<br/>ArkTS-Sta: [TextDataDetectorType](ts-text-common.md#textdatadetectortype11枚举说明)[] \| undefined \| null | 否 | 否  | 设置文本识别的实体类型。设置types为null或者undefined或者[]时，识别所有类型的实体，否则只识别指定类型的实体。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
-| onDetectResultUpdate   | Callback\<string> | 否 | 是  | 文本识别成功后，触发onDetectResultUpdate回调。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
-| color<sup>12+</sup>   | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是   | 设置文本识别成功后的实体颜色。<br/>默认值：'#ff0a59f7'<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23 |
-| decoration<sup>12+</sup>  | [DecorationStyleInterface](ts-universal-styled-string.md#decorationstyleinterface)| 否 | 是   | 设置文本识别成功后的实体装饰线样式。<br/>默认值：<br/>{<br/>&nbsp;type:&nbsp;TextDecorationType.Underline,<br/>&nbsp;color:&nbsp;与实体颜色一致,<br/>&nbsp;style:&nbsp;TextDecorationStyle.SOLID&nbsp;<br/>}<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23 |
-| enablePreviewMenu<sup>20+</sup>   | boolean | 否 | 是   | 设置是否开启文本识别长按显示预览菜单。true表示开启，false表示未开启。<br/>默认值：false<br/>当[copyOptions](ts-basic-components-richeditor.md#copyoptions)设置为None时，若enablePreviewMenu设置为true，长按AI实体也不能显示预览菜单。<br/>**设备行为差异：** 该参数在Phone、Tablet中可正常调用，在PC/2in1、TV和Wearable等其他设备类型中无效果。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
+| types   | ArkTS-Dyn: [TextDataDetectorType](ts-text-common.md#textdatadetectortype11枚举说明)[]<br>ArkTS-Sta: [TextDataDetectorType](ts-text-common.md#textdatadetectortype11枚举说明)[] \| undefined \| null | 否 | 否  | 设置文本识别的实体类型。设置types为null或者[]时，识别所有类型的实体，否则只识别指定类型的实体。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
+| onDetectResultUpdate   | Callback\<string> | 否 | 是  | 文本识别成功后，触发onDetectResultUpdate回调。<br>默认值：undefined，不触发回调。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
+| color<sup>12+</sup>   | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是   | 设置文本识别成功后的实体颜色。<br>默认值：'#ff0a59f7'，表示蓝色（不透明度为100%）<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23 |
+| decoration<sup>12+</sup>  | [DecorationStyleInterface](ts-universal-styled-string.md#decorationstyleinterface)| 否 | 是   | 设置文本识别成功后的实体装饰线样式。<br>默认值：<br>{<br>&nbsp;type:&nbsp;TextDecorationType.Underline,<br>&nbsp;color:&nbsp;与实体颜色一致,<br>&nbsp;style:&nbsp;TextDecorationStyle.SOLID&nbsp;<br>}<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23 |
+| enablePreviewMenu<sup>20+</sup>   | boolean | 否 | 是   | 设置是否开启文本识别长按显示预览菜单。true表示开启，false表示未开启。<br>默认值：false<br>当[copyOptions](ts-basic-components-richeditor.md#copyoptions)设置为None时，若enablePreviewMenu设置为true，长按AI实体也不能显示预览菜单。<br>**设备行为差异：** 本接口实际支持的设备类型范围（Phone、Tablet）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car、Wearable）。因硬件形态限制，该接口在PC/2in1、TV、Car、Wearable设备中调用功能不生效。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 24 |
 
 ## PreviewText<sup>12+</sup>
 
@@ -714,7 +890,7 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 
 | 名称     | 类型                                             | 只读 | 可选 | 说明                                                     |
 | -------- | ------------------------------------------------ | ---- | ---- | -------------------------------------------------------- |
-| offset | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否 | 预上屏内容的起始位置。 |
+| offset | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否 | 预上屏内容的起始位置索引，从0开始。 |
 | value    | string         | 否   | 否   | 预上屏的内容。         |
 
 ## FontSettingOptions<sup>12+</sup>对象说明
@@ -733,7 +909,7 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 
 | 名称     | 类型                                             | 只读 | 可选 | 说明                                                     |
 | -------- | ------------------------------------------------ | ---- | ---- | -------------------------------------------------------- |
-| enableVariableFontWeight | boolean | 否 | 是  | 是否启用可变字重调节。字体配置项作为[fontWeight](./ts-basic-components-text.md#fontweight12)接口的入参，fontWeight接口中weight取值为[100, 900]内非整百数值时，enableVariableFontWeight用于设置weight的值是否生效。<br/>默认值：false <br/>true：启用可变字重调节。此时如果weight取值为[100, 900]范围内任意整数，字重取值为weight。<br/>false：禁用可变字重调节。此时如果weight取值为[100, 900]范围内的整百数值，字重取值为weight；weight是非整百数值时，字重取默认值400。|
+| enableVariableFontWeight | boolean | 否 | 是  | 是否启用可变字重调节。字体配置项作为[fontWeight](./ts-basic-components-text.md#fontweight12)接口的入参，fontWeight接口中weight取值为[100, 900]内非整百数值时，enableVariableFontWeight用于设置weight的值是否生效。<br>默认值：false <br>true：启用可变字重调节。此时如果weight取值为[100, 900]范围内任意整数，字重取值为weight，否则取默认值400。<br>false：禁用可变字重调节。此时如果weight取值为[100, 900]范围内的整百数值，字重取值为weight；weight是非整百数值时，字重取默认值400。|
 
 ## FontConfigs<sup>24+</sup>对象说明
 
@@ -751,7 +927,7 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 
 | 名称     | 类型                                             | 只读 | 可选 | 说明                                                     |
 | -------- | ------------------------------------------------ | ---- | ---- | -------------------------------------------------------- |
-| fontWeightConfigs | [FontWeightConfigs](#fontweightconfigs24对象说明) | 否 | 是 | 字体粗细配置。默认值继承[FontWeightConfigs](#fontweightconfigs24对象说明)。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| fontWeightConfigs | [FontWeightConfigs](#fontweightconfigs24对象说明) | 否 | 是 | 字体粗细配置。默认值继承[FontWeightConfigs](#fontweightconfigs24对象说明)。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## FontWeightConfigs<sup>24+</sup>对象说明
 
@@ -769,8 +945,8 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 
 | 名称     | 类型                                             | 只读 | 可选 | 说明                                                     |
 | -------- | ------------------------------------------------ | ---- | ---- | -------------------------------------------------------- |
-| enableVariableFontWeight | boolean | 否 | 是 | 是否启用可变字重调节。当设置字体粗细的值weight为[100, 900]内非整百数值时，enableVariableFontWeight用于设置weight的值是否生效。<br/>默认值：false <br/>true：启用可变字重调节。此时如果weight取值为[100, 900]范围内任意整数，字重取值为weight，否则取默认值400。<br/>false：禁用可变字重调节。此时如果weight取值为[100, 900]范围内的整百数值，字重取值为weight；weight是非整百数值时，字重取默认值400。|
-| enableDeviceFontWeightCategory | boolean | 否 | 是 | 是否随设备的字体粗细级别自动更新字重。<br/>默认值：true <br/>true：当设备的字体粗细级别发生变化时，字重会自动更新。<br/>false：当设备的字体粗细级别发生变化时，字重不会自动更新。 |
+| enableVariableFontWeight | boolean | 否 | 是 | 是否启用可变字重调节。当设置字体粗细的值weight为[100, 900]内非整百数值时，enableVariableFontWeight用于设置weight的值是否生效。<br>默认值：false <br>true：启用可变字重调节。此时如果weight取值为[100, 900]范围内任意整数，字重取值为weight，否则取默认值400。<br>false：禁用可变字重调节。此时如果weight取值为[100, 900]范围内的整百数值，字重取值为weight；weight是非整百数值时，字重取默认值400。|
+| enableDeviceFontWeightCategory | boolean | 否 | 是 | 是否随设备的字体粗细级别自动更新字重。<br>默认值：true <br>true：当设备的字体粗细级别发生变化时，字重会自动更新。<br>false：当设备的字体粗细级别发生变化时，字重不会自动更新。 |
 
 ## OnDidChangeCallback<sup>12+</sup>
 
@@ -807,8 +983,8 @@ type OnDidChangeCallback = (rangeBefore: TextRange, rangeAfter: TextRange) => vo
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -- | -- | -- | -- | -- |
-| onWillChange | Callback<[StyledStringChangeValue](#styledstringchangevalue12), boolean> | 否 | 是 | 文本内容将要变化回调函数。 |
-| onDidChange | [OnDidChangeCallback](#ondidchangecallback12) | 否 | 是 | 文本内容完成变化回调函数。 |
+| onWillChange | Callback<[StyledStringChangeValue](#styledstringchangevalue12), boolean> | 否 | 是 | 文本内容将要变化回调函数。<br>默认值：null，不触发回调。<br>返回true表示允许文本内容变更，返回false表示阻止文本内容变更。 |
+| onDidChange | [OnDidChangeCallback](#ondidchangecallback12) | 否 | 是 | 文本内容完成变化回调函数。<br>默认值：null，不触发回调。 |
 
 ## StyledStringChangeValue<sup>12+</sup>
 
@@ -826,11 +1002,11 @@ type OnDidChangeCallback = (rangeBefore: TextRange, rangeAfter: TextRange) => vo
 | -- | -- | -- | -- | -- |
 | range | [TextRange](#textrange12) | 否 | 否 | 即将被替换的属性字符串子串在原字符串中的范围。 |
 | replacementString | [StyledString](ts-universal-styled-string.md#styledstring) | 否 | 否 | 用于替换的属性字符串。 |
-| previewText | [StyledString](ts-universal-styled-string.md#styledstring) | 否 | 是 | 预览内容属性字符串。<br/> 该属性用于表示语音输入、拍摄输入、输入法预上屏场景下的未提交上屏的临时输入内容。|
+| previewText | [StyledString](ts-universal-styled-string.md#styledstring) | 否 | 是 | 预览内容属性字符串。<br>默认值：null，表示无预览内容。<br> 该属性用于表示语音输入、拍摄输入、输入法预上屏场景下的未提交上屏的临时输入内容。|
 
 ## AutoCapitalizationMode<sup>20+</sup>枚举说明
 
-自动大小写模式类型，只提供接口能力，具体实现以输入法应用为主。
+自动大小写模式类型，只提供接口能力，具体实现由输入法应用决定。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -842,7 +1018,7 @@ type OnDidChangeCallback = (rangeBefore: TextRange, rangeAfter: TextRange) => vo
 
 | 名称 | 值 | 说明 |
 | ------- | ---- | ------------------- |
-| NONE | 0 | 默认状态无效。|
+| NONE | 0 | 默认状态，不进行自动大小写处理。|
 | WORDS | 1 | 按单词自动大小写，即输入单词的首个字符大写，其他字符小写。|
 | SENTENCES | 2 | 按句子自动大小写，即输入句子的首个字符大写，其他字符小写。|
 | ALL_CHARACTERS | 3 | 按全字符自动大小写。|
@@ -871,7 +1047,7 @@ selectionStart和selectionEnd均为-1时表示全选。
 
 未获焦时调用该接口不产生选中效果。
 
-从API version 12开始，在2in1设备中，无论options取何值，调用setSelection接口都不会弹出菜单，此外，如果组件中已经存在菜单，调用setSelection接口会关闭菜单。
+从API version 12开始，在PC/2in1设备中，无论options取何值，调用setSelection接口都不会弹出菜单，此外，如果组件中已经存在菜单，调用setSelection接口会关闭菜单。
 
 在非2in1设备中，options取值为MenuPolicy.DEFAULT时，遵循以下规则：
 
@@ -893,8 +1069,8 @@ selectionStart和selectionEnd均为-1时表示全选。
 
 | 参数名            | 类型   | 必填   | 说明    |
 | -------------- | ------ | ---- | ------- |
-| selectionStart | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 选中开始位置。<br/>取值小于0时，按0处理。 |
-| selectionEnd   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 选中结束位置。<br/>取值大于文本长度时，按当前文本长度处理。 |
+| selectionStart | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 选中开始位置。<br>取值小于0时，按0处理。取值大于文本长度时，按当前文本长度处理。<br>特殊取值效果：当selectionStart和selectionEnd均为-1时，表示全选。 |
+| selectionEnd   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 选中结束位置。<br>取值小于0时，按0处理。取值大于文本长度时，按当前文本长度处理。<br>特殊取值效果：当selectionStart和selectionEnd均为-1时，表示全选。 |
 | options   | [SelectionOptions](ts-universal-attributes-text-style.md#selectionoptions12对象说明) | 否    | 选择项配置。 默认值继承[SelectionOptions](ts-universal-attributes-text-style.md#selectionoptions12对象说明)。|
 
 ### closeSelectionMenu<sup>12+</sup>
@@ -931,7 +1107,7 @@ ArkTS-Sta: getLayoutManager(): LayoutManager | undefined
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| ArkTS-Dyn: [LayoutManager](ts-text-common.md#layoutmanager12) <br/> ArkTS-Sta: [LayoutManager](ts-text-common.md#layoutmanager12) \| undefined | 布局管理器对象。 |
+| ArkTS-Dyn: [LayoutManager](ts-text-common.md#layoutmanager12) <br> ArkTS-Sta: [LayoutManager](ts-text-common.md#layoutmanager12) \| undefined | 布局管理器对象，用于获取文本布局信息，如行数、行度量、字形位置等。 |
 
 ## TextEditControllerEx<sup>12+</sup>
 
@@ -963,7 +1139,7 @@ ArkTS-Sta: isEditing(): boolean | undefined
 
 | 类型    | 说明                          |
 | ------- | ----------------------------- |
-| ArkTS-Dyn: boolean <br/> ArkTS-Sta: boolean \| undefined | true为编辑态，false为非编辑态。 |
+| ArkTS-Dyn: boolean <br> ArkTS-Sta: boolean \| undefined | true为编辑态，false为非编辑态。 |
 
 ### stopEditing<sup>12+</sup>
 
@@ -999,7 +1175,7 @@ ArkTS-Sta: getCaretOffset(): int | undefined
 
 | 类型     | 说明        |
 | ------ | --------- |
-| ArkTS-Dyn: number <br/> ArkTS-Sta: int \| undefined | 当前光标所在位置。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int \| undefined | 当前光标所在位置。 |
 
 ### setCaretOffset<sup>12+</sup>
 
@@ -1021,13 +1197,13 @@ ArkTS-Sta: setCaretOffset(offset: int): boolean | undefined
 
 | 参数名    | 类型   | 必填   | 说明                |
 | ------ | ------ | ---- | -------------------- |
-| offset | ArkTS-Dyn: number<br/> ArkTS-Sta: int | 是    | 光标偏移位置。超出所有内容范围时，设置失败。 |
+| offset | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是    | 光标偏移位置，取值范围[0, 文本长度]。超出所有内容范围时，设置失败。 |
 
 **返回值：**
 
 | 类型      | 说明        |
 | ------- | --------- |
-| ArkTS-Dyn: boolean <br/> ArkTS-Sta: boolean \| undefined | 光标是否设置成功。<br/>true表示光标设置成功，false表示设置失败。 |
+| ArkTS-Dyn: boolean <br> ArkTS-Sta: boolean \| undefined | 光标是否设置成功。<br>true表示光标设置成功，false表示设置失败。 |
 
 ### getPreviewText<sup>12+</sup>
 
@@ -1049,7 +1225,7 @@ ArkTS-Sta: getPreviewText(): PreviewText | undefined
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| ArkTS-Dyn: [PreviewText](#previewtext12) <br/> ArkTS-Sta: [PreviewText](#previewtext12) \| undefined | 预上屏信息。 |
+| ArkTS-Dyn: [PreviewText](#previewtext12) <br> ArkTS-Sta: [PreviewText](#previewtext12) \| undefined | 预上屏信息，包含预上屏起始位置索引和预上屏文本内容。 |
 
 ## StyledStringController<sup>12+</sup>
 
@@ -1081,7 +1257,7 @@ setStyledString(styledString: StyledString): void
 
 | 参数名   | 类型   | 必填   | 说明                |
 | ----- | ------ | ---- | ------------------- |
-| styledString | [StyledString](ts-universal-styled-string.md#styledstring) | 是    | 属性字符串。<br/>**说明：** <br/>StyledString的子类[MutableStyledString](ts-universal-styled-string.md#mutablestyledstring)也可以作为入参值。 |
+| styledString | [StyledString](ts-universal-styled-string.md#styledstring) | 是    | 属性字符串。<br>**说明：** <br>StyledString的子类[MutableStyledString](ts-universal-styled-string.md#mutablestyledstring)也可以作为入参值。 |
 
 ### getStyledString<sup>12+</sup>
 
@@ -1103,7 +1279,7 @@ ArkTS-Sta: getStyledString(): MutableStyledString | undefined
 
 | 类型    | 说明                          |
 | ------- | ----------------------------- |
-| ArkTS-Dyn: [MutableStyledString](ts-universal-styled-string.md#mutablestyledstring) <br/> ArkTS-Sta: [MutableStyledString](ts-universal-styled-string.md#mutablestyledstring) \| undefined | 富文本组件显示的属性字符串。 |
+| ArkTS-Dyn: [MutableStyledString](ts-universal-styled-string.md#mutablestyledstring) <br> ArkTS-Sta: [MutableStyledString](ts-universal-styled-string.md#mutablestyledstring) \| undefined | 富文本组件显示的属性字符串。 |
 
 ## DecorationStyleResult<sup>12+</sup>
 
@@ -1115,10 +1291,10 @@ ArkTS-Sta: getStyledString(): MutableStyledString | undefined
 
 | 名称  | 类型                              | 只读 | 可选 | 说明   |
 | ------- | --------------------------------- | ---- | ---- | --------------------------------- |
-| type | [TextDecorationType](ts-appendix-enums.md#textdecorationtype) | 否   | 否 | 装饰线类型。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
-| color | [ResourceColor](ts-types.md#resourcecolor) | 否   | 否   | 装饰线颜色。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
-| style | [TextDecorationStyle](ts-appendix-enums.md#textdecorationstyle12) | 否   | 是   | 装饰线样式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
-| thicknessScale<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 是   | 装饰线粗细缩放比例。<br/>默认值：1.0<br/>取值范围：[0, +∞) <br/>**说明：** 负值按默认值处理。<br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
+| type | [TextDecorationType](ts-appendix-enums.md#textdecorationtype) | 否   | 否 | 装饰线类型。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| color | [ResourceColor](ts-types.md#resourcecolor) | 否   | 否   | 装饰线颜色。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| style | [TextDecorationStyle](ts-appendix-enums.md#textdecorationstyle12) | 否   | 是   | 装饰线样式。<br>默认值：TextDecorationStyle.SOLID<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| thicknessScale<sup>20+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 是   | 装饰线粗细缩放比例。<br>默认值：1.0<br>取值范围：[0, +∞) <br>**说明：** 负值按默认值处理。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 24 |
 
 ## LineMetrics<sup>12+</sup>
 
@@ -1138,7 +1314,7 @@ ArkTS-Sta: type LineMetrics = text.LineMetrics
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| ArkTS-Dyn: import('../api/@ohos.graphics.text').default.[LineMetrics](../../apis-arkgraphics2d/js-apis-graphics-text.md#linemetrics) <br/>ArkTS-Sta: text.[LineMetrics](../../apis-arkgraphics2d/js-apis-graphics-text.md#linemetrics)| 用于描述文本布局中单行文字的度量信息。 |
+| ArkTS-Dyn: import('../api/@ohos.graphics.text').default.[LineMetrics](../../apis-arkgraphics2d/js-apis-graphics-text.md#linemetrics) <br>ArkTS-Sta: text.[LineMetrics](../../apis-arkgraphics2d/js-apis-graphics-text.md#linemetrics)| 用于描述文本布局中单行文字的度量信息。 |
 
 ## Affinity<sup>12+</sup>
 
@@ -1158,7 +1334,7 @@ ArkTS-Sta: type Affinity = text.Affinity
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| ArkTS-Dyn: import('../api/@ohos.graphics.text').default.[Affinity](../../apis-arkgraphics2d/js-apis-graphics-text.md#affinity) <br/>ArkTS-Sta: text.[Affinity](../../apis-arkgraphics2d/js-apis-graphics-text.md#affinity) | 位置亲和度枚举。 |
+| ArkTS-Dyn: import('../api/@ohos.graphics.text').default.[Affinity](../../apis-arkgraphics2d/js-apis-graphics-text.md#affinity) <br>ArkTS-Sta: text.[Affinity](../../apis-arkgraphics2d/js-apis-graphics-text.md#affinity) | 位置亲和度枚举。 |
 
 ## TextBox<sup>14+</sup>
 
@@ -1178,7 +1354,7 @@ ArkTS-Sta: type TextBox = text.TextBox
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| ArkTS-Dyn: import('../api/@ohos.graphics.text').default.[TextBox](../../apis-arkgraphics2d/js-apis-graphics-text.md#textbox) <br/>ArkTS-Sta: text.[TextBox](../../apis-arkgraphics2d/js-apis-graphics-text.md#textbox) | 文本矩形区域。 |
+| ArkTS-Dyn: import('../api/@ohos.graphics.text').default.[TextBox](../../apis-arkgraphics2d/js-apis-graphics-text.md#textbox) <br>ArkTS-Sta: text.[TextBox](../../apis-arkgraphics2d/js-apis-graphics-text.md#textbox) | 文本矩形区域。 |
 
 ## Paragraph<sup>20+</sup>
 
@@ -1198,7 +1374,7 @@ ArkTS-Sta: type Paragraph = text.Paragraph
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| ArkTS-Dyn: import('../api/@ohos.graphics.text').default.[Paragraph](../../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph) <br/>ArkTS-Sta: text.[Paragraph](../../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph) | 保存文本内容及样式的载体，支持排版与绘制操作。 |
+| ArkTS-Dyn: import('../api/@ohos.graphics.text').default.[Paragraph](../../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph) <br>ArkTS-Sta: text.[Paragraph](../../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph) | 保存文本内容及样式的载体，支持排版与绘制操作。 |
 
 ## RectHeightStyle<sup>14+</sup>
 
@@ -1218,7 +1394,7 @@ ArkTS-Sta: type RectHeightStyle = text.RectHeightStyle
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| ArkTS-Dyn: import('../api/@ohos.graphics.text').default.[RectHeightStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectheightstyle) <br/>ArkTS-Sta: text.[RectHeightStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectheightstyle) | 矩形区域高度规格枚举。 |
+| ArkTS-Dyn: import('../api/@ohos.graphics.text').default.[RectHeightStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectheightstyle) <br>ArkTS-Sta: text.[RectHeightStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectheightstyle) | 矩形区域高度规格枚举。 |
 
 ## RectWidthStyle<sup>14+</sup>
 
@@ -1238,11 +1414,30 @@ ArkTS-Sta: type RectWidthStyle = text.RectWidthStyle
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| ArkTS-Dyn: import('../api/@ohos.graphics.text').default.[RectWidthStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectwidthstyle) <br/>ArkTS-Sta: text.[RectWidthStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectwidthstyle) | 矩形区域宽度规格枚举。 |
+| ArkTS-Dyn: import('../api/@ohos.graphics.text').default.[RectWidthStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectwidthstyle) <br>ArkTS-Sta: text.[RectWidthStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectwidthstyle) | 矩形区域宽度规格枚举。 |
+
+## TextEncoding
+
+文本布局查询接口支持的文本编码类型。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称 | 值 | 说明 |
+| ------- | ---- | ------------------- |
+| TEXT_ENCODING_UTF8 | 0 | UTF-8编码。 |
+| TEXT_ENCODING_UTF16 | 1 | UTF-16编码。 |
 
 ## TextChangeOptions<sup>15+</sup>对象说明
 
-变化前的文本信息，以及变化后的选区范围。
+文本变化相关信息，包括变化前后的选区范围、变化前的文本内容等。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -1274,8 +1469,8 @@ ArkTS-Sta: type RectWidthStyle = text.RectWidthStyle
 | 名称    | 类型                                                    | 只读 | 可选 | 说明                                                    |
 | ------- | ----------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | content  | string | 否   | 否 | 当前的文本内容。 |
-| previewText  | [PreviewText](#previewtext12) | 否   | 是   | 预上屏的内容信息。 |
-| options  | [TextChangeOptions](#textchangeoptions15对象说明) | 否   | 是   | 变化的文本内容信息。 |
+| previewText  | [PreviewText](#previewtext12) | 否   | 是   | 预上屏的内容信息。<br>默认值：undefined，表示无预上屏内容。 |
+| options  | [TextChangeOptions](#textchangeoptions15对象说明) | 否   | 是   | 变化的文本内容信息。<br>默认值：undefined。 |
 
 ## TextMenuShowMode<sup>16+</sup>
 
@@ -1291,8 +1486,8 @@ ArkTS-Sta: type RectWidthStyle = text.RectWidthStyle
 
 | 名称 | 值 | 说明 |
 | ------- | ---- | ------------------- |
-| DEFAULT | 0 | 显示在当前窗口中。<br/>|
-| PREFER_WINDOW | 1 | 优先显示在独立窗口中，若不支持独立窗口，则显示在当前窗口中。<br/>**说明：** <br/>除应用主窗口、应用子窗口、系统模态窗口及系统桌面类型的窗口外，其他类型的窗口不支持将文本选择菜单显示在独立窗口中。<br/>在预览器中不支持将文本选择菜单显示在独立窗口中。<br/>在[UIExtension](../js-apis-arkui-uiExtension.md)中不支持将文本选择菜单显示在独立窗口中。<br/>当文本类组件已经显示在子窗类型的[Popup](./ohos-arkui-advanced-Popup.md)、[Dialog](./ohos-arkui-advanced-Dialog.md)、[Toast](../../../ui/arkts-create-toast.md)、[Menu](./ts-basic-components-menu.md)中时，不支持将其对应的文本选择菜单显示在独立窗口中。<br/>当TextInput、TextArea可支持拉起AutoFill时，不支持将其对应的文本选择菜单显示在独立窗口中。<br/>|
+| DEFAULT | 0 | 显示在当前窗口中。<br>|
+| PREFER_WINDOW | 1 | 优先显示在独立窗口中，若不支持独立窗口，则显示在当前窗口中。<br>**说明：** <br>除应用主窗口、应用子窗口、系统模态窗口及系统桌面类型的窗口外，其他类型的窗口不支持将文本选择菜单显示在独立窗口中。<br>在预览器中不支持将文本选择菜单显示在独立窗口中。<br>在[UIExtension](../js-apis-arkui-uiExtension.md)中不支持将文本选择菜单显示在独立窗口中。<br>当文本类组件已经显示在子窗类型的[Popup](./ohos-arkui-advanced-Popup.md)、[Dialog](./ohos-arkui-advanced-Dialog.md)、[Toast](../../../ui/arkts-create-toast.md)、[Menu](./ts-basic-components-menu.md)中时，不支持将其对应的文本选择菜单显示在独立窗口中。<br>当TextInput、TextArea可支持拉起AutoFill时，不支持将其对应的文本选择菜单显示在独立窗口中。<br>|
 
 ## TextMenuOptions<sup>16+</sup>对象说明
 
@@ -1308,7 +1503,7 @@ ArkTS-Sta: type RectWidthStyle = text.RectWidthStyle
 
 | 名称    | 类型                                                    | 只读 | 可选 | 说明                                                    |
 | ------- | ----------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| showMode  | [TextMenuShowMode](#textmenushowmode16) | 否   | 是 | 菜单的显示模式。<br/>默认值：TextMenuShowMode.DEFAULT |
+| showMode  | [TextMenuShowMode](#textmenushowmode16) | 否   | 是 | 菜单的显示模式。<br>默认值：TextMenuShowMode.DEFAULT |
 
 ## ShaderStyle<sup>20+</sup>
 
@@ -1352,7 +1547,7 @@ ArkTS-Sta: type RectWidthStyle = text.RectWidthStyle
 
 | 名称  | 类型   | 只读 | 可选   | 说明  |
 | ------- | ------ | ---- | ----- | ----- |
-| options | [LinearGradientOptions](../arkui-ts/ts-universal-attributes-gradient-color.md#lineargradientoptions18对象说明) | 否 | 否  | 显示为线性渐变效果。<br/>[LinearGradientOptions](../arkui-ts/ts-universal-attributes-gradient-color.md#lineargradientoptions18对象说明)中的direction默认值按[GradientDirection](ts-appendix-enums.md#gradientdirection)中的NONE处理。 |
+| options | [LinearGradientOptions](../arkui-ts/ts-universal-attributes-gradient-color.md#lineargradientoptions18对象说明) | 否 | 否  | 显示为线性渐变效果。 |
 
 ### constructor<sup>20+</sup>
 
@@ -1374,7 +1569,7 @@ constructor(options: LinearGradientOptions)
 
 | 参数名  | 类型   | 必填   | 说明  |
 | ------- | ------ | ---- | ----- |
-| options | [LinearGradientOptions](../arkui-ts/ts-universal-attributes-gradient-color.md#lineargradientoptions18对象说明) | 是    | 显示为线性渐变效果。 |
+| options | [LinearGradientOptions](../arkui-ts/ts-universal-attributes-gradient-color.md#lineargradientoptions18对象说明) | 是    | 显示为线性渐变效果。<br>[LinearGradientOptions](../arkui-ts/ts-universal-attributes-gradient-color.md#lineargradientoptions18对象说明)中的direction默认值按[GradientDirection](ts-appendix-enums.md#gradientdirection)中的NONE处理。 |
 
 ## RadialGradientStyle<sup>20+</sup>
 
@@ -1496,7 +1691,7 @@ constructor(color: ResourceColor)
 
 | 名称    | 类型                                                    | 只读 | 可选 | 说明                                                    |
 | ------- | ----------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| nodeId  | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否  | 否 | 当前输入控件的组件UniqueId。取值范围大于等于0。 |
+| nodeId  | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否  | 否 | 当前输入控件的组件UniqueId。取值范围大于等于0。 |
 
 ### setExtraConfig<sup>22+</sup>
 
@@ -1516,7 +1711,7 @@ setExtraConfig(config: InputMethodExtraConfig): void
 
 | 参数名 | 类型                                                         | 必填 | 说明               |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| config  | ArkTS-Dyn: [InputMethodExtraConfig](#inputmethodextraconfig22)<br/>ArkTS-Sta: [InputMethodExtraConfig](../../apis-ime-kit/js-apis-inputmethod-extraconfig.md#inputmethodextraconfig)| 是   | 输入法扩展信息。 |
+| config  | ArkTS-Dyn: [InputMethodExtraConfig](#inputmethodextraconfig22)<br>ArkTS-Sta: [InputMethodExtraConfig](../../apis-ime-kit/js-apis-inputmethod-extraconfig.md#inputmethodextraconfig)| 是   | 输入法扩展信息。 |
 
 ## MaxLinesOptions<sup>20+</sup>对象说明
 
@@ -1573,7 +1768,7 @@ TextArea组件在文本超长时显示效果。默认值为CLIP，按最大行�
 
 | 名称 | 类型                                                         | 只读 | 可选 | 说明             |
 | ------ | ------------------------------------------------------------ | ---- | ---- | ---------------- |
-| onlyBetweenLines  | boolean | 否   | 是 | 文本的行间距是否仅在行与行之间生效。<br/>当设置为true时，行间距仅适用于行与行之间，首行上方和尾行下方无额外的行间距。当设置为false时，首行上方和尾行下方均会存在行间距。<br/>默认值：false |
+| onlyBetweenLines  | boolean | 否   | 是 | 文本的行间距是否仅在行与行之间生效。<br>当设置为true时，行间距仅适用于行与行之间，首行上方和尾行下方无额外的行间距。当设置为false时，首行上方和尾行下方均会存在行间距。<br>默认值：false |
 
 ## TextVerticalAlign<sup>20+</sup>
 
@@ -1721,7 +1916,7 @@ constructor(options?: NumericTextTransitionOptions)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| color | [ResourceColor](ts-types.md#resourcecolor)  | 否 | 是 | 用于设置文本拖拽时的背板颜色。<br/>默认值：跟随主题。默认主题时，浅色模式显示白色，深色模式显示黑色。 |
+| color | [ResourceColor](ts-types.md#resourcecolor)  | 否 | 是 | 用于设置文本拖拽时的背板颜色。<br>默认值：跟随主题。默认主题时，浅色模式显示白色，深色模式显示黑色。 |
 
 ## TextContentAlign<sup>21+</sup>
 
@@ -1747,9 +1942,9 @@ constructor(options?: NumericTextTransitionOptions)
 
 定义线条拐角的样式，即在绘制折线时线段拐角处的画笔样式。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1771,10 +1966,10 @@ constructor(options?: NumericTextTransitionOptions)
 
 | 名称                   | 值  | 说明                  |
 | --------------------- | -------  | ------------------- |
-| LTR                   | 0  | 文本排版方向从左到右。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23 |
-| RTL                   | 1  | 文本排版方向从右到左。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23 |
-| DEFAULT<sup>23+</sup> | 2  | 文本排版方向遵循组件布局方向。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
-| AUTO<sup>23+</sup>    | 3  | 遵循自身实际文本内容的排版方向，如果文本为 RTL（Right-to-Left）类语言（如藏文、维吾尔文），文本排版方向为从右到左。如果为 LTR（Left-to-Right）类语言（如中文、英文），文本排版方向为从左到右。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
+| LTR                   | 0  | 文本排版方向从左到右。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 23 |
+| RTL                   | 1  | 文本排版方向从右到左。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 23 |
+| DEFAULT<sup>23+</sup> | 2  | 文本排版方向遵循组件布局方向。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| AUTO<sup>23+</sup>    | 3  | 遵循自身实际文本内容的排版方向，如果文本为 RTL（Right-to-Left）类语言（如藏文、维吾尔文），文本排版方向为从右到左。如果为 LTR（Left-to-Right）类语言（如中文、英文），文本排版方向为从左到右。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
 
 ## InputMethodExtraConfig<sup>22+</sup>
 
@@ -1810,13 +2005,13 @@ Span的无障碍朗读功能属性。
 
 **ArkTS-Sta起始版本：** 23
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car、Wearable）。因硬件能力限制，该接口在Wearable设备中调用应用程序将运行异常，异常信息中提示接口未定义。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ---------- | ---- | ------------------ | ------------------ |
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 无障碍文本属性。组件无文本属性时，屏幕朗读选中此组件不会播报。设置该属性后可为此类组件设置无障碍文本，屏幕朗读时将播报该文本，帮助使用者明确选中了什么组件。<br>默认值：''<br>值为undefined时，按默认值处理。 |
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 无障碍说明属性。此描述用于向用户详细解释当前组件，开发人员应提供详尽的文本说明，以协助用户理解即将执行的操作及其后果，尤其当这些后果无法仅从组件的属性和无障碍文本中直接获取时。<br>默认值：''<br>值为undefined时，按默认值处理。 |
-| accessibilityLevel | string | 否 | 是 | 无障碍重要性。用于设置组件是否可被无障碍辅助服务识别。<br>支持取值如下：<br>"auto"：当前组件由无障碍辅助服务和ArkUI进行综合判断组件是否可被无障碍辅助服务所识别。<br>"yes"：当前组件可被无障碍辅助服务识别。<br>"no"：当前组件不可被无障碍辅助服务识别。<br>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br>默认值："auto"<br>值为undefined时，按默认值处理。<br/>**说明：**<br/>当accessibilityLevel设置成"auto"时，组件是否可被无障碍辅助服务所识别取决于以下多方面因素：<br/>1. 组件是否可被识别由无障碍辅助服务内部判断，自行选择。<br/>2. 若组件的父组件accessibilityGroup属性中isGroup设置为true，无障碍服务将不再关注其子组件内容，组件不可被无障碍辅助服务所识别。<br/>3. 若组件的父组件accessibilityLevel属性设置为"no-hide-descendants"，组件不可被无障碍辅助服务所识别。 |
+| accessibilityLevel | string | 否 | 是 | 无障碍重要性。用于设置组件是否可被无障碍辅助服务识别。<br>支持取值如下：<br>"auto"：当前组件由无障碍辅助服务和ArkUI进行综合判断组件是否可被无障碍辅助服务所识别。<br>"yes"：当前组件可被无障碍辅助服务识别。<br>"no"：当前组件不可被无障碍辅助服务识别。<br>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br>默认值："auto"<br>值为undefined时，按默认值处理。<br>**说明：**<br>当accessibilityLevel设置成"auto"时，组件是否可被无障碍辅助服务所识别取决于以下多方面因素：<br>1. 组件是否可被识别由无障碍辅助服务内部判断，自行选择。<br>2. 若组件的父组件accessibilityGroup属性中isGroup设置为true，无障碍服务将不再关注其子组件内容，组件不可被无障碍辅助服务所识别。<br>3. 若组件的父组件accessibilityLevel属性设置为"no-hide-descendants"，组件不可被无障碍辅助服务所识别。 |
 
 ## FontVariation
 
@@ -1838,4 +2033,4 @@ ArkTS-Sta: type FontVariation = text.FontVariation
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| ArkTS-Dyn: import('../api/@ohos.graphics.text').default.[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation) <br/>ArkTS-Sta: text.[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation) | 可变字体的属性。 |
+| ArkTS-Dyn: import('../api/@ohos.graphics.text').default.[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation) <br>ArkTS-Sta: text.[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation) | 可变字体的属性。 |

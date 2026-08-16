@@ -41,7 +41,7 @@ enterKioskMode(context: UIAbilityContext): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | 需要进入kiosk模式的UIAbility的上下文，用于指定执行进入Kiosk模式的Ability实例。 |
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | 需要进入Kiosk模式的UIAbility的上下文，用于指定执行进入Kiosk模式的Ability实例。 |
 
 **返回值：**
 
@@ -59,7 +59,7 @@ enterKioskMode(context: UIAbilityContext): Promise&lt;void&gt;
 | 16000050 | Failed to connect to the system service. |
 | 16000110 | The current application is not in Kiosk app list and cannot enter Kiosk mode. |
 | 16000111 | The system is already in Kiosk mode and cannot enter Kiosk mode again. |
-| 16000113 | Current ability is not in foreground. |
+| 16000113 | Current ability is not in foreground. <br>适用版本：20-26.0.0 |
 
 **示例**：
 
@@ -151,7 +151,7 @@ exitKioskMode(context: UIAbilityContext): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | 需要退出kiosk模式的UIAbility的上下文，用于指定执行退出Kiosk模式的Ability实例。 |
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | 需要退出Kiosk模式的UIAbility的上下文，用于指定执行退出Kiosk模式的Ability实例。 |
 
 **返回值：**
 

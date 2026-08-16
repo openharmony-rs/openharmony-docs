@@ -28,7 +28,7 @@ ArkTS-Dyn: hasPrivateWindow(displayId: number): boolean
 
 ArkTS-Sta: hasPrivateWindow(displayId: long): boolean
 
-查询指定display对象上是否有可见的隐私窗口。可通过[setWindowPrivacyMode()](arkts-apis-window-Window.md#setwindowprivacymode9)接口设置隐私窗口。隐私窗口内容将无法被截屏或录屏。
+查询指定display对象上是否有可见的隐私窗口。可通过[setWindowPrivacyMode()](arkts-apis-window-Window.md#setwindowprivacymode9)接口设置窗口隐私模式。隐私窗口内容将无法被截屏或录屏。
 
 **系统接口：** 此接口为系统接口。
 
@@ -72,19 +72,16 @@ try {
   // 获取默认Display对象
   displayClass = display.getDefaultDisplaySync();
 
-  let ret: boolean | undefined = undefined;
+  let hasPrivateWindow: boolean = false;
   try {
     // 查询默认屏幕上是否有隐私窗口
-    ret = display.hasPrivateWindow(displayClass.id);
+    hasPrivateWindow = display.hasPrivateWindow(displayClass.id);
   } catch (exception) {
     console.error(`Failed to check has privateWindow or not. Code: ${exception.code}, message: ${exception.message}`);
   }
-  if (ret == undefined) {
-    console.error('Failed to check has privateWindow or not.');
-  }
-  if (ret) {
+  if (hasPrivateWindow) {
     console.info('There has privateWindow.');
-  } else if (!ret) {
+  } else if (!hasPrivateWindow) {
     console.info('There has no privateWindow.');
   }
 } catch (exception) {
@@ -143,7 +140,7 @@ on(type: 'privateModeChange', callback: Callback&lt;boolean&gt;): void
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
 | type     | string                                   | 是   | 监听事件，固定为'privateModeChange'，表示屏幕隐私模式状态发生变化。 |
-| callback | Callback&lt;boolean&gt; | 是   | 回调函数。表示屏幕隐私模式是否改变。true表示屏幕由非隐私窗口模式变为隐私模式，false表示屏幕由隐私模式变为非隐私模式。 |
+| callback | Callback&lt;boolean&gt; | 是   | 回调函数。表示屏幕隐私模式是否改变。true表示屏幕由非隐私模式变为隐私模式，false表示屏幕由隐私模式变为非隐私模式。 |
 
 **错误码：**
 
@@ -190,7 +187,7 @@ onPrivateModeChange(callback: Callback&lt;boolean&gt;): void
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| callback | Callback&lt;boolean&gt; | 是   | 回调函数。表示屏幕隐私模式是否改变。true表示屏幕由非隐私窗口模式变为隐私模式，false表示屏幕由隐私模式变为非隐私模式。 |
+| callback | Callback&lt;boolean&gt; | 是   | 回调函数。表示屏幕隐私模式是否改变。true表示屏幕由非隐私模式变为隐私模式，false表示屏幕由隐私模式变为非隐私模式。 |
 
 **错误码：**
 
@@ -220,7 +217,7 @@ try {
 
 off(type: 'privateModeChange', callback?: Callback&lt;boolean&gt;): void
 
-关闭屏幕隐私模式变化的监听。当屏幕前台有隐私窗口，则屏幕处于隐私模式，屏幕中的隐私窗口内容无法被截屏或录屏。
+关闭屏幕隐私模式变化的监听。
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
@@ -237,7 +234,7 @@ off(type: 'privateModeChange', callback?: Callback&lt;boolean&gt;): void
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
 | type     | string                                   | 是   | 监听事件，固定为'privateModeChange'，表示屏幕隐私模式状态发生变化。 |
-| callback | Callback&lt;boolean&gt; | 否   | 需要取消注册的回调函数。表示屏幕隐私模式是否改变。true表示屏幕由非隐私窗口模式变为隐私模式，false表示屏幕由隐私模式变为非隐私模式。若无此参数，则取消注册屏幕隐私模式变化监听的所有回调函数。|
+| callback | Callback&lt;boolean&gt; | 否   | 需要取消注册的回调函数。表示屏幕隐私模式是否改变。true表示屏幕由非隐私模式变为隐私模式，false表示屏幕由隐私模式变为非隐私模式。若无此参数，则取消注册屏幕隐私模式变化监听的所有回调函数。|
 
 **错误码：**
 
@@ -263,7 +260,7 @@ try {
 
 offPrivateModeChange(callback?: Callback&lt;boolean&gt;): void
 
-关闭屏幕隐私模式变化的监听。当屏幕前台有隐私窗口，则屏幕处于隐私模式，屏幕中的隐私窗口内容无法被截屏或录屏。
+关闭屏幕隐私模式变化的监听。
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
@@ -279,7 +276,7 @@ offPrivateModeChange(callback?: Callback&lt;boolean&gt;): void
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| callback | Callback&lt;boolean&gt; | 否   | 需要取消注册的回调函数。表示屏幕隐私模式是否改变。true表示屏幕由非隐私窗口模式变为隐私模式，false表示屏幕由隐私模式变为非隐私模式。若无此参数，则取消注册屏幕隐私模式变化监听的所有回调函数。|
+| callback | Callback&lt;boolean&gt; | 否   | 需要取消注册的回调函数。表示屏幕隐私模式是否改变。true表示屏幕由非隐私模式变为隐私模式，false表示屏幕由隐私模式变为非隐私模式。若无此参数，则取消注册屏幕隐私模式变化监听的所有回调函数。|
 
 **错误码：**
 
@@ -426,7 +423,7 @@ try {
 ## display.setFoldStatusLocked<sup>11+</sup>
 setFoldStatusLocked(locked: boolean): void
 
-设置可折叠设备当前折叠状态的锁定状态。
+设置可折叠设备当前折叠状态是否锁定。
 
 **系统接口：** 此接口为系统接口。
 
@@ -435,6 +432,8 @@ setFoldStatusLocked(locked: boolean): void
 **ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
+
+**设备行为差异：** 该接口在折叠设备中可正常调用，在其他设备中不生效也不报错。
 
 **参数：**
 
@@ -501,13 +500,13 @@ ArkTS-Sta: addVirtualScreenBlocklist(windowIds: Array\<int>): Promise\<void>
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| windowIds     | ArkTs-Dyn: Array&lt;number&gt; <br> ArkTs-Sta: Array&lt;int&gt;  | 是   | 窗口id列表，传入子窗窗口id时不生效。窗口id为大于0的整数。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。|
+| windowIds     | ArkTs-Dyn: Array&lt;number&gt; <br> ArkTs-Sta: Array&lt;int&gt;  | 是   | 窗口id列表，传入子窗口id时不生效。窗口id为大于0的整数。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | ------------------- | ------------------------ |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -525,6 +524,7 @@ ArkTS-Sta: addVirtualScreenBlocklist(windowIds: Array\<int>): Promise\<void>
 ArkTS-Dyn示例：
 
 ```ts
+import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { display, window } from '@kit.ArkUI';
 
@@ -589,13 +589,13 @@ ArkTS-Sta: removeVirtualScreenBlocklist(windowIds: Array\<int>): Promise\<void>
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| windowIds     | ArkTS-Dyn: Array\<number> <br> ArkTS-Sta: Array\<int> | 是   | 窗口id列表，传入子窗窗口id时不生效。窗口id为大于0的整数。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。|
+| windowIds     | ArkTS-Dyn: Array\<number> <br> ArkTS-Sta: Array\<int> | 是   | 窗口id列表，传入子窗口id时不生效。窗口id为大于0的整数。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | ------------------- | ------------------------ |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -613,6 +613,7 @@ ArkTS-Sta: removeVirtualScreenBlocklist(windowIds: Array\<int>): Promise\<void>
 ArkTS-Dyn示例：
 
 ```ts
+import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { display, window } from '@kit.ArkUI';
 
@@ -627,16 +628,15 @@ export default class EntryAbility extends UIAbility {
     let promise = display.addVirtualScreenBlocklist(windowIds);
     promise.then(() => {
       console.info('Succeeded in adding virtual screen blocklist.');
+      // 将窗口从禁止投屏显示的名单移除
+      promise = display.removeVirtualScreenBlocklist(windowIds);
+      promise.then(() => {
+        console.info('Succeeded in removing virtual screen blocklist.');
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to remove virtual screen blocklist. Code: ${err.code}, message: ${err.message}`);
+      });
     }).catch((err: BusinessError) => {
       console.error(`Failed to add virtual screen blocklist. Code: ${err.code}, message: ${err.message}`);
-    });
-
-    // 将窗口从禁止投屏显示的名单移除
-    promise = display.removeVirtualScreenBlocklist(windowIds);
-    promise.then(() => {
-      console.info('Succeeded in removing virtual screen blocklist.');
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to remove virtual screen blocklist. Code: ${err.code}, message: ${err.message}`);
     });
   }
 }
@@ -684,9 +684,9 @@ ArkTS-Sta: addVirtualScreenSurface(screenId: long, surfaceId: string, surfaceReg
 
 **ArkTS-Sta起始版本：** 26.0.0
 
-**系统能力：** SystemCapability.Window.SessionManager
-
 **系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Window.SessionManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -695,14 +695,14 @@ ArkTS-Sta: addVirtualScreenSurface(screenId: long, surfaceId: string, surfaceReg
 | 参数名    | 类型   | 必填 | 说明          |
 | --------- | ------ | ---- | ------------- |
 | screenId  | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是   | 虚拟屏幕ID，与创建的虚拟屏幕ID保持一致，即使用[createVirtualScreen()](js-apis-display.md#displaycreatevirtualscreen16)接口成功创建对应虚拟屏幕时的返回值，该参数仅支持整数输入。 |
-| surfaceId | string | 是   | 虚拟屏幕绑定的surfaceId，由用户指定某一实际存在的surface对应的surfaceId。该参数最大长度为4096个字节，超出最大长度时则取前4096个字节。 |
+| surfaceId | string | 是   | 虚拟屏幕绑定的surfaceId，由用户指定某一实际存在的surface对应的surfaceId。可通过[getXComponentSurfaceId](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9)方法获取。该参数最大长度为4096个字节，超出最大长度时则取前4096个字节。 |
 | surfaceRegion | [Rect](js-apis-display.md#rect9) | 否   | surface中显示虚拟屏幕的矩形区域。如果虚拟屏幕未通过[setVirtualScreenSurface()](js-apis-display.md#displaysetvirtualscreensurface16)或[addVirtualScreenSurface()](#displayaddvirtualscreensurface)绑定过surface，surfaceRegion无效，默认全屏。在镜像模式下，surfaceRegion无效，默认全屏；在异源模式下，surfaceRegion有效。以虚拟屏幕左顶点为原点，当指定的surfaceRegion区域与虚拟屏幕无重叠区域时，返回1400004错误码。 |
 
 **返回值：**
 
 | 类型                | 说明                    |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -768,14 +768,15 @@ struct Index {
   xComponentController: XComponentController = new XComponentController();
 
   addVirtualScreenSurface = () => {
+    // 虚拟屏ID需从createVirtualScreen()返回值获取
     let screenId: number = 1;
     let surfaceId = this.xComponentController.getXComponentSurfaceId();
     display.addVirtualScreenSurface(screenId, surfaceId).then(() => {
       console.info('Succeeded in adding surface for the virtual screen.');
     }).catch((err: BusinessError) => {
-      console.error(`Failed to add surface for the virtual screen. Code:${err.code}, message is ${err.message}`);
+      console.error(`Failed to add surface for the virtual screen. Code: ${err.code}, message: ${err.message}`);
     });
-  }
+  };
   build() {
     RelativeContainer() {
       XComponent({
@@ -806,9 +807,9 @@ ArkTS-Sta: removeVirtualScreenSurface(screenId: long, surfaceId: string): Promis
 
 **ArkTS-Sta起始版本：** 26.0.0
 
-**系统能力：** SystemCapability.Window.SessionManager
-
 **系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Window.SessionManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -817,13 +818,13 @@ ArkTS-Sta: removeVirtualScreenSurface(screenId: long, surfaceId: string): Promis
 | 参数名    | 类型   | 必填 | 说明          |
 | --------- | ------ | ---- | ------------- |
 | screenId  | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是   | 虚拟屏幕ID，与创建的虚拟屏幕ID保持一致，即使用[createVirtualScreen()](js-apis-display.md#displaycreatevirtualscreen16)接口成功创建对应虚拟屏幕时的返回值，该参数仅支持整数输入。 |
-| surfaceId | string | 是   | 虚拟屏幕绑定的surfaceId，由用户指定某一实际存在的surface对应的surfaceId。该参数最大长度为4096个字节，超出最大长度时则取前4096个字节。 |
+| surfaceId | string | 是   | 虚拟屏幕绑定的surfaceId，由用户指定某一实际存在的surface对应的surfaceId。可通过[getXComponentSurfaceId](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9)方法获取。该参数最大长度为4096个字节，超出最大长度时则取前4096个字节。 |
 
 **返回值：**
 
 | 类型                | 说明                    |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -889,14 +890,15 @@ struct Index {
   xComponentController: XComponentController = new XComponentController();
 
   removeVirtualScreenSurface = () => {
+    // 虚拟屏ID需从createVirtualScreen()返回值获取
     let screenId: number = 1;
     let surfaceId = this.xComponentController.getXComponentSurfaceId();
     display.removeVirtualScreenSurface(screenId, surfaceId).then(() => {
       console.info('Succeeded in removing surface for the virtual screen.');
     }).catch((err: BusinessError) => {
-      console.error(`Failed to remove surface for the virtual screen. Code:${err.code}, message is ${err.message}`);
+      console.error(`Failed to remove surface for the virtual screen. Code: ${err.code}, message: ${err.message}`);
     });
-  }
+  };
   build() {
     RelativeContainer() {
       XComponent({
@@ -946,7 +948,7 @@ hasImmersiveWindow(callback: AsyncCallback&lt;boolean&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API. |
-| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1400001 | Invalid display or screen. |
 | 1400003 | This display manager service works abnormally. |
 
@@ -1016,7 +1018,7 @@ hasImmersiveWindow(): Promise&lt;boolean&gt;
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API. |
-| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1400001 | Invalid display or screen. |
 | 1400003 | This display manager service works abnormally. |
 

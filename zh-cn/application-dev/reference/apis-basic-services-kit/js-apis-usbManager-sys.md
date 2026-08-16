@@ -7,7 +7,7 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
 
-本模块主要提供管理USB设备的相关功能，包括主机上查询USB设备列表、批量数据传输、控制命令传输、权限控制等；设备上端口管理、功能切换及查询等。适用于需要与USB外设进行数据交互、管理USB设备权限、动态切换USB设备模式等场景。作为系统接口，本模块提供系统级权限控制机制，帮助系统应用实现灵活的USB设备管理，满足不同业务场景下的USB通信需求。
+本模块主要提供管理USB设备的相关功能，包括主机上查询USB设备列表、批量数据传输、控制命令传输、权限控制等；设备上端口管理、功能切换及查询等。适用于需要与USB外设进行数据交互、管理USB设备权限、动态切换USB设备模式等场景。作为系统接口，本模块提供系统级权限控制机制、设备侧USB功能配置能力以及端口角色管理能力，帮助系统应用实现灵活的USB设备管理，满足不同业务场景下的USB通信需求。
 
 > **说明：**
 > 
@@ -24,7 +24,7 @@ import usbManager from '@ohos.usbManager';
 
 usbFunctionsFromString(funcs: string): number
 
-在设备模式下，将字符串形式的USB功能列表转化为数字掩码。适用于需要将配置文件或用户输入的字符串形式USB功能列表转换为系统内部使用的数字掩码的场景，以便后续调用setDeviceFunctions等接口设置USB功能。
+在设备模式下，将字符串形式的USB功能列表转换为数字掩码。适用于需要将配置文件或用户输入的字符串形式USB功能列表转换为系统内部使用的数字掩码的场景，以便后续调用setDeviceFunctions等接口设置USB功能。
 
 > **说明：**
 >
@@ -38,13 +38,13 @@ usbFunctionsFromString(funcs: string): number
 
 | 参数名 | 类型   | 必填 | 说明                   |
 | ------ | ------ | ---- | ---------------------- |
-| funcs  | string | 是   | 字符串形式的功能列表，可用值包括：'acm'，'ecm'，'hdc'，'mtp'，'ptp'等，可通过英文逗号分隔多个功能。 |
+| funcs  | string | 是   | 字符串形式的功能列表，可用值包括：'none'、'acm'、'ecm'、'hdc'、'mtp'、'ptp'、'rndis'、'midi'、'audio_source'、'ncm'，可通过英文逗号分隔多个功能。传入无效字符串时抛出异常。 |
 
 **返回值：**
 
 | 类型   | 说明               |
 | ------ | ------------------ |
-| number | 转化后的功能列表对应的数字掩码。 |
+| number | 转换后的功能列表对应的数字掩码。 |
 
 **错误码：**
 
@@ -52,8 +52,7 @@ usbFunctionsFromString(funcs: string): number
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. Solution: Check the parameter types and ensure all required parameters are provided. |
-| 202      | Permission denied. Normal application do not have permission to use system api. Possible causes: The application is not a system application or does not have required system permissions. Solution: Apply for the required system permissions or use public APIs. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -68,7 +67,7 @@ let ret: number = usbManager.usbFunctionsFromString(funcs);
 
 usbFunctionsToString(funcs: FunctionType): string
 
-在设备模式下，将数字掩码形式的USB功能列表转化为字符串。适用于需要将当前USB功能状态以字符串形式显示或保存的场景，如在日志中记录当前功能配置、在UI界面展示当前功能等。
+在设备模式下，将数字掩码形式的USB功能列表转换为字符串。适用于需要将当前USB功能状态以字符串形式显示或保存的场景，如在日志中记录当前功能配置、在UI界面展示当前功能等。
 
 > **说明：**
 >
@@ -88,7 +87,7 @@ usbFunctionsToString(funcs: FunctionType): string
 
 | 类型   | 说明                           |
 | ------ | ------------------------------ |
-| string | 转化后的字符串形式的功能列表。 |
+| string | 转换后的字符串形式的功能列表。 |
 
 **错误码：**
 
@@ -96,8 +95,7 @@ usbFunctionsToString(funcs: FunctionType): string
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. Solution: Check the parameter types and ensure all required parameters are provided. |
-| 202      | Permission denied. Normal application do not have permission to use system api. Possible causes: The application is not a system application or does not have required system permissions. Solution: Apply for the required system permissions or use public APIs. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -140,13 +138,13 @@ setCurrentFunctions(funcs: FunctionType): Promise\<void\>
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. Solution: Check the parameter types and ensure all required parameters are provided. |
-| 14400002 | Permission denied. The HDC is disabled by the system. Possible causes: The HDC (HarmonyOS Device Connector) feature is disabled in developer settings. Solution: Enable HDC in developer settings or check system configuration. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 14400002 | Permission denied. The HDC is disabled by the system. |
 
 **示例：**
 
 ```ts
-import {BusinessError} from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // 设置USB功能类型为HDC
 let funcs: usbManager.FunctionType = usbManager.FunctionType.HDC;
 // 异步设置当前USB功能
@@ -177,15 +175,6 @@ getCurrentFunctions(): FunctionType
 | ----------------------------- | --------------------------------- |
 | [FunctionType](#functiontype) | 当前的USB功能列表的数字组合掩码。如果开发者模式关闭且没有设备接入，则返回undefined，需要对返回值做判空处理。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                                        |
-| -------- | ------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: No parameters are required for this interface. Solution: Remove any unnecessary parameters and call the interface without parameters. |
-| 202      | Permission denied. Normal application do not have permission to use system api. Possible causes: The application is not a system application or does not have required system permissions. Solution: Apply for the required system permissions or use public APIs. |
-
 **示例：**
 
 ```ts
@@ -213,15 +202,6 @@ getPorts(): Array\<USBPort\>
 | -------------------------- | --------------------- |
 | Array<[USBPort](#usbport)> | USB端口描述信息列表。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                                        |
-| -------- | ------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: No parameters are required for this interface. Solution: Remove any unnecessary parameters and call the interface without parameters. |
-| 202      | Permission denied. Normal application do not have permission to use system api. Possible causes: The application is not a system application or does not have required system permissions. Solution: Apply for the required system permissions or use public APIs. |
-
 **示例：**
 
 ```ts
@@ -233,7 +213,7 @@ let ret: Array<usbManager.USBPort> = usbManager.getPorts();
 
 getSupportedModes(portId: number): PortModeType
 
-获取指定的端口支持的模式列表的组合掩码。适用于系统应用需要查询USB-C端口能力判断是否支持特定模式（如Host，Device或DRP模式）的场景。返回值为PortModeType的组合掩码，可通过位运算判断端口是否支持特定模式。PortModeType包括：NONE(0，无模式)、UFP(1，上行端口模式，dataRole为DEVICE)、DFP(2，下行端口模式，dataRole为HOST)、DRP(3，双角色模式，可在UFP和DFP间切换)。开发者可根据返回值判断端口是否支持所需的电源角色和数据角色组合。
+获取指定的端口支持的模式列表的组合掩码。适用于系统应用需要查询USB-C端口能力判断是否支持特定模式（如UFP、DFP或DRP模式）的场景。返回值为PortModeType的组合掩码，可通过位运算判断端口是否支持特定模式。PortModeType包括：NONE（0，无模式）、UFP（1，上行端口模式，dataRole为DEVICE）、DFP（2，下行端口模式，dataRole为HOST）、DRP（3，双角色模式，可在UFP和DFP间切换）、NUM_MODES（4，当前不支持）。开发者可根据返回值判断端口是否支持所需的电源角色和数据传输角色组合。
 
 > **说明：**
 >
@@ -261,8 +241,7 @@ getSupportedModes(portId: number): PortModeType
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. Solution: Check the parameter types and ensure all required parameters are provided. |
-| 202      | Permission denied. Normal application do not have permission to use system api. Possible causes: The application is not a system application or does not have required system permissions. Solution: Apply for the required system permissions or use public APIs. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -275,7 +254,7 @@ let ret: usbManager.PortModeType = usbManager.getSupportedModes(0);
 
 setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): Promise\<void\>
 
-设置指定端口当前的角色模式，包含充电角色、数据传输角色。使用Promise异步回调。调用成功后端口角色将切换为指定的角色。适用于系统应用需要动态切换USB端口角色的场景。开发者模式关闭时，如果没有设备接入，操作可能会失败，调用失败时抛出异常。
+设置指定端口当前的角色模式，包含电源角色、数据传输角色。使用Promise异步回调。调用成功后端口角色将切换为指定的角色。适用于系统应用需要动态切换USB端口角色的场景。开发者模式关闭时，如果没有设备接入，操作可能会失败，调用失败时抛出异常。
 
 > **说明：**
 >
@@ -290,8 +269,8 @@ setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): 
 | 参数名    | 类型                            | 必填 | 说明             |
 | --------- | ------------------------------- | ---- | ---------------- |
 | portId    | number                          | 是   | USB端口号，取值范围为非负整数，可通过[getPortList](#getportlist12)获取端口列表后得到。|
-| powerRole | [PowerRoleType](#powerroletype) | 是   | 充电角色类型，可选值包括：NONE(无)、SOURCE(对外提供电源)、SINK(需要外部供电)。|
-| dataRole  | [DataRoleType](#dataroletype)   | 是   | 数据传输角色类型，可选值包括：NONE(无)、HOST(主机角色)、DEVICE(设备角色)。|
+| powerRole | [PowerRoleType](#powerroletype) | 是   | 电源角色类型，可选值包括：NONE（无）、SOURCE（对外提供电源）、SINK（需要外部供电）。|
+| dataRole  | [DataRoleType](#dataroletype)   | 是   | 数据传输角色类型，可选值包括：NONE（无）、HOST（主机角色）、DEVICE（设备角色）。|
 
 **返回值：**
 
@@ -305,7 +284,7 @@ setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): 
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. Solution: Check the parameter types and ensure all required parameters are provided. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -313,7 +292,7 @@ setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): 
 import {BusinessError} from '@kit.BasicServicesKit';
 // 定义端口号
 let portId: number = 1;
-// 设置端口角色：充电角色为SOURCE，数据角色为HOST
+// 设置端口角色：电源角色为SOURCE，数据角色为HOST
 usbManager.setPortRoles(portId, usbManager.PowerRoleType.SOURCE, usbManager.DataRoleType.HOST).then(() => {
     console.info('usb setPortRoles successfully.');
 }).catch((err: BusinessError) => {
@@ -325,7 +304,7 @@ usbManager.setPortRoles(portId, usbManager.PowerRoleType.SOURCE, usbManager.Data
 
 addDeviceAccessRight(tokenId: string, deviceName: string): boolean
 
-添加应用程序访问设备的权限。系统应用默认拥有访问设备权限，调用此接口不会产生影响。适用于系统设置应用、设备管理应用等需要为第三方应用授权访问USB设备的场景。
+添加应用访问设备的权限。系统应用默认拥有访问设备权限，调用此接口不会产生影响。适用于系统设置应用、设备管理应用等需要为第三方应用授权访问USB设备的场景。授权立即生效并持久化存储，设备重启后仍然有效。授权范围为指定的USB设备实例，多个应用可以同时获得同一设备的访问权限。
 
 [usbManager.requestRight](js-apis-usbManager.md#usbmanagerrequestright)会触发弹框请求用户授权；addDeviceAccessRight不会触发弹框，而是直接添加应用程序访问设备的权限。
 
@@ -343,7 +322,7 @@ addDeviceAccessRight(tokenId: string, deviceName: string): boolean
 
 | 参数名     | 类型   | 必填 | 说明            |
 | ---------- | ------ | ---- | --------------- |
-| tokenId    | string | 是   | 应用程序的唯一标识符，可通过[bundleManager.getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)获取。 |
+| tokenId    | string | 是   | 应用的唯一标识符，可通过[bundleManager.getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)获取。 |
 | deviceName | string | 是   | 设备名称，格式为'bus-port'，例如'1-1'，可通过[getDevices](js-apis-usbManager.md#usbmanagergetdevices)接口获取设备列表后得到设备名称。|
 
 **返回值：**
@@ -358,10 +337,10 @@ addDeviceAccessRight(tokenId: string, deviceName: string): boolean
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. Solution: Check the parameter types and ensure all required parameters are provided. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 202      | Permission denied. Normal application do not have permission to use system api. Possible causes: The application is not a system application or does not have required system permissions. Solution: Apply for the required system permissions or use public APIs. |
-| 801      | Capability not supported. Possible causes: The current device or system does not support this USB capability. Solution: Check if the device supports this capability and ensure the system version meets the requirements. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.   <br>适用版本：18+ |
+| 202      | Permission denied. Normal application do not have permission to use system api. |
+| 801      | Capability not supported.   <br>适用版本：18+ |
 
 **示例：**
 
@@ -400,7 +379,7 @@ ArkTS-Dyn: getFunctionsFromString(funcs: string): number
 
 ArkTS-Sta: getFunctionsFromString(funcs: string): int
 
-在设备模式下，将字符串形式的USB功能列表转化为数字掩码。适用于需要将配置文件或用户输入的字符串形式USB功能列表转换为系统内部使用的数字掩码的场景，以便后续调用setDeviceFunctions等接口设置USB功能。
+在设备模式下，将字符串形式的USB功能列表转换为数字掩码。适用于需要将配置文件或用户输入的字符串形式USB功能列表转换为系统内部使用的数字掩码的场景，以便后续调用setDeviceFunctions等接口设置USB功能。
 
 **系统接口：** 此接口为系统接口。
 
@@ -416,13 +395,13 @@ ArkTS-Sta: getFunctionsFromString(funcs: string): int
 
 | 参数名 | 类型   | 必填 | 说明                   |
 | ------ | ------ | ---- | ---------------------- |
-| funcs  | string | 是   | 字符串形式的功能列表。可用值包括：'acm'，'ecm'，'hdc'，'mtp'，'ptp'等，可通过英文逗号分隔多个功能。 |
+| funcs  | string | 是   | 字符串形式的功能列表。可用值包括：'none'、'acm'、'ecm'、'hdc'、'mtp'、'ptp'、'rndis'、'midi'、'audio_source'、'ncm'，可通过英文逗号分隔多个功能。 |
 
 **返回值：**
 
 | 类型   | 说明               |
 | ------ | ------------------ |
-| ArkTS-Dyn: number<br> ArkTS-Sta: int | 转化后的功能列表对应的数字掩码。 |
+| ArkTS-Dyn: number<br> ArkTS-Sta: int | 转换后的功能列表对应的数字掩码。 |
 
 **错误码：**
 
@@ -430,16 +409,16 @@ ArkTS-Sta: getFunctionsFromString(funcs: string): int
 
 | 错误码ID | 错误信息                                                                        |
 | -------- | ------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. Solution: Check the parameter types and ensure all required parameters are provided. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 202      | Permission denied. Normal application do not have permission to use system api. Possible causes: The application is not a system application or does not have required system permissions. Solution: Apply for the required system permissions or use public APIs. |
-| 801      | Capability not supported. Possible causes: The current device or system does not support this USB capability. Solution: Check if the device supports this capability and ensure the system version meets the requirements. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  <br>适用版本：18+ |
+| 202      | Permission denied. Normal application do not have permission to use system api. |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 
 **示例：**
 
 ```ts
 // 定义USB功能字符串
-let funcs: string = "acm";
+let funcs: string ='acm';
 // 将字符串转化为数字掩码
 let ret: int = usbManager.getFunctionsFromString(funcs);
 ```
@@ -450,7 +429,7 @@ ArkTS-Dyn: getStringFromFunctions(funcs: FunctionType): string
 
 ArkTS-Sta: getStringFromFunctions(funcs: int): string
 
-在设备模式下，将数字掩码形式的USB功能列表转化为字符串。适用于需要将当前USB功能状态以字符串形式显示或保存的场景，如在日志中记录当前功能配置、在UI界面展示当前功能等。
+在设备模式下，将数字掩码形式的USB功能列表转换为字符串。适用于需要将当前USB功能状态以字符串形式显示或保存的场景，如在日志中记录当前功能配置、在UI界面展示当前功能等。
 
 **系统接口：** 此接口为系统接口。
 
@@ -466,13 +445,13 @@ ArkTS-Sta: getStringFromFunctions(funcs: int): string
 
 | 参数名 | 类型                          | 必填 | 说明              |
 | ------ | ----------------------------- | ---- | ----------------- |
-| funcs  | ArkTS-Dyn:  [FunctionType](#functiontype)<br> ArkTS-Sta: int| 是   | 功能列表对应的数字掩码，可通过位运算组合多个功能。 |
+| funcs  | ArkTS-Dyn:  [FunctionType](#functiontype)<br> ArkTS-Sta: int| 是   | 功能列表对应的数字掩码，可通过位运算组合多个功能。部分功能值当前暂不支持，具体参见[FunctionType](#functiontype)。 |
 
 **返回值：**
 
 | 类型   | 说明                           |
 | ------ | ------------------------------ |
-| string | 转化后的字符串形式的功能列表。 |
+| string | 转换后的字符串形式的功能列表。 |
 
 **错误码：**
 
@@ -480,10 +459,9 @@ ArkTS-Sta: getStringFromFunctions(funcs: int): string
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. Solution: Check the parameter types and ensure all required parameters are provided. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 202      | Permission denied. Normal application do not have permission to use system api. Possible causes: The application is not a system application or does not have required system permissions. Solution: Apply for the required system permissions or use public APIs. |
-| 801      | Capability not supported. Possible causes: The current device or system does not support this USB capability. Solution: Check if the device supports this capability and ensure the system version meets the requirements. |
+| 201      | Permission denied. |
+| 202      | Permission denied. Normal application do not have permission to use system api. |
+| 801      | Capability not supported. |
 
 **示例：**
 
@@ -518,7 +496,7 @@ ArkTS-Sta: setDeviceFunctions(funcs: int): Promise\<void\>
 
 | 参数名 | 类型                          | 必填 | 说明              |
 | ------ | ----------------------------- | ---- | ----------------- |
-| funcs  | ArkTS-Dyn:  [FunctionType](#functiontype)<br> ArkTS-Sta: int| 是   | 功能列表对应的数字掩码，可通过位运算组合多个功能。 |
+| funcs  | ArkTS-Dyn:  [FunctionType](#functiontype)<br> ArkTS-Sta: int| 是   | 功能列表对应的数字掩码，可通过位运算组合多个功能。部分功能可能不被当前设备支持，具体参见[FunctionType](#functiontype)。 |
 
 **返回值：**
 
@@ -532,12 +510,11 @@ ArkTS-Sta: setDeviceFunctions(funcs: int): Promise\<void\>
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. Solution: Check the parameter types and ensure all required parameters are provided. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 202      | Permission denied. Normal application do not have permission to use system api. Possible causes: The application is not a system application or does not have required system permissions. Solution: Apply for the required system permissions or use public APIs. |
-| 801      | Capability not supported. Possible causes: The current device or system does not support this USB capability. Solution: Check if the device supports this capability and ensure the system version meets the requirements. |
-| 14400002 | Permission denied. The HDC is disabled by the system. Possible causes: The HDC (HarmonyOS Device Connector) feature is disabled in developer settings. Solution: Enable HDC in developer settings or check system configuration. |
-| 14400006 | Unsupported operation. The function is not supported. Possible causes: The current device does not support this USB function. Solution: Check device capabilities and ensure the function is supported. |
+| 201      | Permission denied. |
+| 202      | Permission denied. Normal application do not have permission to use system api. |
+| 801      | Capability not supported. |
+| 14400002 | Permission denied. The HDC is disabled by the system. |
+| 14400006 | Unsupported operation. The function is not supported. |
 
 **示例：**
 
@@ -588,15 +565,15 @@ ArkTS-Sta: getDeviceFunctions(): int
 
 | 错误码ID | 错误信息                                                                        |
 | -------- | ------------------------------------------------------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 202      | Permission denied. Normal application do not have permission to use system api. Possible causes: The application is not a system application or does not have required system permissions. Solution: Apply for the required system permissions or use public APIs. |
-| 801      | Capability not supported. Possible causes: The current device or system does not support this USB capability. Solution: Check if the device supports this capability and ensure the system version meets the requirements. |
+| 201      | Permission denied. |
+| 202      | Permission denied. Normal application do not have permission to use system api. |
+| 801      | Capability not supported. |
 | 14400004 | Service exception. Possible causes: <br>1. No accessory is plugged in.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Sta。 |
 
 **示例：**
 
 ```ts
-// 获取当前USB设备的数字掩码
+// 获取当前USB功能的数字掩码
 let ret: int = usbManager.getDeviceFunctions();
 ```
 
@@ -604,7 +581,7 @@ let ret: int = usbManager.getDeviceFunctions();
 
 getPortList(): Array\<USBPort\>
 
-获取所有物理USB端口描述信息。适用于需要枚举USB端口、进行端口管理、设备连接诊断、或查询端口配置信息的场景。开发者模式关闭时，如果没有设备接入，接口返回`undefined`，注意需要对接口返回值做判空处理。
+获取指定的端口支持的模式列表的组合掩码。适用于系统应用需要查询USB-C端口能力判断是否支持特定模式（如UFP，DFP或DRP模式）的场景。开发者模式关闭时，如果没有设备接入，接口返回undefined，注意需要对接口返回值做判空处理。详细枚举值参见[PortModeType](#portmodetype)。
 
 > **说明：**
 >
@@ -633,10 +610,10 @@ getPortList(): Array\<USBPort\>
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 202      | Permission denied. Normal application do not have permission to use system api. Possible causes: The application is not a system application or does not have required system permissions. Solution: Apply for the required system permissions or use public APIs. |
-| 801      | Capability not supported. Possible causes: The current device or system does not support this USB capability. Solution: Check if the device supports this capability and ensure the system version meets the requirements. |
-| 14400004 | Service exception. Possible causes: <br>1. No accessory is plugged in.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Sta。 |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：18+ |
+| 202      | Permission denied. Normal application do not have permission to use system api. |
+| 801      | Capability not supported.   <br>适用版本：18+ |
+| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Sta。<br>适用版本：23+  |
 
 **示例：**
 
@@ -685,10 +662,10 @@ ArkTS-Sta: getPortSupportModes(portId: int): PortModeType
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. Solution: Check the parameter types and ensure all required parameters are provided. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 202      | Permission denied. Normal application do not have permission to use system api. Possible causes: The application is not a system application or does not have required system permissions. Solution: Apply for the required system permissions or use public APIs. |
-| 801      | Capability not supported. Possible causes: The current device or system does not support this USB capability. Solution: Check if the device supports this capability and ensure the system version meets the requirements. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.   <br>适用版本：18+ |
+| 202      | Permission denied. Normal application do not have permission to use system api. |
+| 801      | Capability not supported.   <br>适用版本：18+ |
 
 **示例：**
 
@@ -703,7 +680,7 @@ ArkTS-Dyn: setPortRoleTypes(portId: number, powerRole: PowerRoleType, dataRole: 
 
 ArkTS-Sta: setPortRoleTypes(portId: int, powerRole: PowerRoleType, dataRole: DataRoleType): Promise\<void\>
 
-设置指定端口当前的角色模式，包含充电角色、数据传输角色。使用Promise异步回调。调用成功后端口的充电角色和数据传输角色将切换为指定的角色。适用于系统应用需要动态切换USB端口角色的场景。开发者模式关闭时，如果没有设备接入，操作可能会失败，调用失败时抛出异常。
+设置指定端口当前的角色类型，包含电源角色、数据传输角色。使用Promise异步回调。调用成功后端口的电源角色和数据传输角色将切换为指定的角色。适用于系统应用需要动态切换USB端口角色的场景。开发者模式关闭时，如果没有设备接入，操作可能会失败，调用失败时抛出异常。角色约束详情参见[USBPortStatus](#usbportstatus)。
 
 **使用建议：**
 - 建议先调用[getPortList](#getportlist12)获取端口列表，得到有效的portId
@@ -729,8 +706,8 @@ ArkTS-Sta: setPortRoleTypes(portId: int, powerRole: PowerRoleType, dataRole: Dat
 | 参数名    | 类型                            | 必填 | 说明             |
 | --------- | ------------------------------- | ---- | ---------------- |
 | portId    | ArkTS-Dyn: number<br> ArkTS-Sta: int   | 是   | 端口号，可通过[getPortList](#getportlist12)获取端口列表后得到。 |
-| powerRole | [PowerRoleType](#powerroletype) | 是   | 充电角色类型，可选值包括：NONE(无)、SOURCE(对外提供电源)、SINK(需要外部供电)。 |
-| dataRole  | [DataRoleType](#dataroletype)   | 是   | 数据传输角色类型，可选值包括：NONE(无)、HOST(主机角色)、DEVICE(设备角色)。 |
+| powerRole | [PowerRoleType](#powerroletype) | 是   | 电源角色类型，可选值包括：NONE（无）、SOURCE（对外提供电源）、SINK（需要外部供电）。 |
+| dataRole  | [DataRoleType](#dataroletype)   | 是   | 数据传输角色类型，可选值包括：NONE（无）、HOST（主机角色）、DEVICE（设备角色）。 |
 
 **返回值：**
 
@@ -744,11 +721,11 @@ ArkTS-Sta: setPortRoleTypes(portId: int, powerRole: PowerRoleType, dataRole: Dat
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. Solution: Check the parameter types and ensure all required parameters are provided. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 202      | Permission denied. Normal application do not have permission to use system api. Possible causes: The application is not a system application or does not have required system permissions. Solution: Apply for the required system permissions or use public APIs. |
-| 801      | Capability not supported. Possible causes: The current device or system does not support this USB capability. Solution: Check if the device supports this capability and ensure the system version meets the requirements. |
-| 14400003 | Unsupported operation. The current device does not support port role switching. Possible causes: The hardware does not support USB Type-C port role switching. Solution: Check device hardware capabilities. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.   <br>适用版本：18+ |
+| 202      | Permission denied. Normal application do not have permission to use system api. |
+| 801      | Capability not supported.   <br>适用版本：18+ |
+| 14400003 | Unsupported operation. The current device does not support port role switching. |
 
 **示例：**
 
@@ -756,7 +733,7 @@ ArkTS-Sta: setPortRoleTypes(portId: int, powerRole: PowerRoleType, dataRole: Dat
 import { BusinessError } from '@kit.BasicServicesKit';
 // 定义端口号
 let portId: int = 1;
-// 设置端口角色类型：充电角色为SOURCE，数据角色为HOST
+// 设置端口角色类型：电源角色为SOURCE，数据角色为HOST
 usbManager.setPortRoleTypes(portId, usbManager.PowerRoleType.SOURCE, usbManager.DataRoleType.HOST).then(() => {
   console.info('usb setPortRoleTypes successfully.');
 }).catch((err : BusinessError) => {
@@ -799,7 +776,7 @@ usbManager.requestAccessoryRight会触发弹窗请求用户授权；addAccessory
 
 | 类型      | 说明          |
 | --------- | ------------- |
-| void      | 调用成功后，应用程序获得USB配件访问权限；调用失败时抛出异常。 |
+| void      | 无返回值，调用成功后，应用程序获得USB配件访问权限；调用失败时抛出异常。 |
 
 **错误码：**
 
@@ -807,18 +784,17 @@ usbManager.requestAccessoryRight会触发弹窗请求用户授权；addAccessory
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 202      | Permission denied. Normal application do not have permission to use system api. Possible causes: The application is not a system application or does not have required system permissions. Solution: Apply for the required system permissions or use public APIs. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. Solution: Check the parameter types and ensure all required parameters are provided. |
-| 801      | Capability not supported. Possible causes: The current device or system does not support this USB capability. Solution: Check if the device supports this capability and ensure the system version meets the requirements. |
-| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. Solution: Ensure the USB accessory is properly plugged into the device and try again. |
-| 14400005 | Database operation exception. Possible causes: Database corruption or insufficient storage space. Solution: Check device storage space, clear cache, or restart the device. If the problem persists, contact support. |
+| 201      | The permission check failed. |
+| 202      | Permission denied. Normal application do not have permission to use system api. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801      | Capability not supported.   <br>适用版本：18+ |
+| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
+| 14400005 | Database operation exception. |
 
 **示例：**
 
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 async function addAccessoryRightExample() {
   // 为指定应用添加USB配件访问权限
   try {
@@ -838,7 +814,7 @@ async function addAccessoryRightExample() {
     // 为应用添加USB配件访问权限
     usbManager.addAccessoryRight(tokenId, accList[0])
     console.info(`addAccessoryRight success`)
-  } catch (error: BusinessError) {
+  } catch (error) {
     console.error(`addAccessoryRight error ${error.code}, message is ${error.message}`);
   }
 }
@@ -864,7 +840,7 @@ USB设备端口。
 
 ## USBPortStatus
 
-USB设备端口角色信息。currentMode表示端口的当前USB模式，其值应在USBPort的supportedModes范围内。currentPowerRole表示当前充电角色，currentDataRole表示当前数据传输角色。这些字段之间存在对应关系：在DFP模式下，dataRole通常为HOST、powerRole通常为SOURCE；在UFP模式下，dataRole通常为DEVICE、powerRole通常为SINK。端口状态变更受硬件和系统约束，某些模式或角色组合可能不被支持。
+USB设备端口角色信息。currentMode表示端口的当前USB模式，其值应在USBPort的supportedModes范围内。currentPowerRole表示当前电源角色，currentDataRole表示当前数据传输角色。这些字段之间存在对应关系：在DFP模式下，dataRole通常为HOST、powerRole通常为SOURCE；在UFP模式下，dataRole通常为DEVICE、powerRole通常为SINK。端口状态变更受硬件和系统约束，某些模式或角色组合可能不被支持。
 
 **系统接口：** 此接口为系统接口。
 
@@ -876,9 +852,9 @@ USB设备端口角色信息。currentMode表示端口的当前USB模式，其值
 
 | 名称             | 类型 | 只读 | 可选 | 说明                   |
 | ---------------- | ------| ---- | ----| ---------------------- |
-| currentMode      | ArkTS-Dyn: number<br> ArkTS-Sta: int| 否   | 否     | 当前的USB模式。|
-| currentPowerRole | ArkTS-Dyn: number<br> ArkTS-Sta: int| 否   | 否      | 当前设备充电模式。|
-| currentDataRole  | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否   | 否      | 当前设备数据传输模式。 |
+| currentMode      | ArkTS-Dyn: number<br> ArkTS-Sta: int| 否   | 否     | 当前的USB模式，取值参见[PortModeType](#portmodetype)。|
+| currentPowerRole | ArkTS-Dyn: number<br> ArkTS-Sta: int| 否   | 否      | 当前设备电源角色，取值参见[PowerRoleType](#powerroletype)。|
+| currentDataRole  | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否   | 否      | 当前设备数据传输角色，取值参见[DataRoleType](#dataroletype)。 |
 
 
 ## FunctionType
@@ -923,7 +899,7 @@ USB端口模式类型。
 | NONE      | 0  | 无。                                                 |
 | UFP       | 1  | 数据上行，需要外部供电。                             |
 | DFP       | 2  | 数据下行，对外提供电源。                             |
-| DRP       | 3  | 既可以做DFP(Host)，也可以做UFP(Device)，当前不支持。 |
+| DRP       | 3  | 既可以做DFP（HOST），也可以做UFP（DEVICE），当前不支持。 |
 | NUM_MODES | 4  | 当前不支持。                                         |
 
 ## PowerRoleType

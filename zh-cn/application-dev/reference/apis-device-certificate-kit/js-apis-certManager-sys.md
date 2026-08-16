@@ -30,7 +30,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | 名称       | 值 |  说明      |
 | ---------- | ------ | --------- |
 | CM_ERROR_NOT_SYSTEM_APP   | 202      | 表示应用程序不是系统应用程序。 <br> **系统接口：** 此接口为系统接口。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
-| CM_ERROR_PASSWORD_IS_ERR   | 17500008      | 表示密码错误。 <br> **系统接口：** 此接口为系统接口。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0 |
+| CM_ERROR_PASSWORD_IS_ERR   | 17500008      | 表示密码错误。 <br> **系统接口：** 此接口为系统接口。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## certificateManager.getAllAppPrivateCertificates
 
@@ -63,7 +63,7 @@ getAllAppPrivateCertificates(callback: AsyncCallback\<CMResult>): void
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 
 **示例**：
 ```ts
@@ -119,7 +119,7 @@ getAllAppPrivateCertificates(): Promise\<CMResult>
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 
 **示例**：
 ```ts
@@ -175,7 +175,7 @@ getAllSystemAppCertificates(): Promise\<CMResult>
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 
 **示例**：
 ```ts
@@ -216,6 +216,8 @@ getSystemTrustedCertificate(certUri: string): Promise\<CMResult>
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用
 
 **参数**：
 
@@ -280,6 +282,8 @@ getSystemTrustedCertificateList(): Promise\<CMResult>
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用
+
 **返回值**：
 
 | 类型                            | 说明                                                         |
@@ -335,6 +339,8 @@ setCertificateStatus(certUri: string, certType: CertType, enabled: boolean) : Pr
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用
 
 **参数**：
 
@@ -397,6 +403,8 @@ uninstallAllUserTrustedCertificate() : Promise\<void>
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用
+
 **返回值**：
 
 | 类型                            | 说明                                                         |
@@ -445,6 +453,8 @@ installPublicCertificate(keystore: Uint8Array, keystorePwd: string) : Promise\<C
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用
 
 **参数**：
 
@@ -513,6 +523,8 @@ uninstallPublicCertificate(keyUri: string) : Promise\<void>
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用
+
 **参数**：
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
@@ -572,6 +584,8 @@ getAllPublicCertificates() : Promise\<CMResult>
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用
+
 **返回值**：
 
 | 类型                            | 说明                                                         |
@@ -628,6 +642,8 @@ grantPublicCertificate(keyUri: string, clientAppUid: number) : Promise\<CMResult
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用
 
 **参数**：
 
@@ -690,6 +706,8 @@ getAuthorizedAppList(keyUri: string) : Promise\<CMResult>
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用
 
 **参数**：
 
@@ -755,6 +773,8 @@ removeGrantedPublicCertificate(keyUri: string, clientAppUid: number) : Promise\<
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用
+
 **参数**：
 
 | 参数名       | 类型       | 必填 |说明                                            |
@@ -815,6 +835,8 @@ getAllAppPrivateCertificatesByUid(appUid: number) : Promise\<CMResult>
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用
 
 **参数**：
 
@@ -879,6 +901,8 @@ installSystemAppCertificate(keystore: Uint8Array, keystorePwd: string): Promise\
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用
 
 **参数**：
 
@@ -947,6 +971,8 @@ getSystemAppCertificate(keyUri: string) : Promise\<CMResult>
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用
+
 **参数**：
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
@@ -1011,6 +1037,8 @@ uninstallSystemAppCertificate(keyUri: string) : Promise\<void>
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用
+
 **参数**：
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
@@ -1069,6 +1097,8 @@ uninstallAllAppCertificate() : Promise\<void>
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用
 
 **返回值**：
 

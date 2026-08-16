@@ -10,6 +10,8 @@ WebSchemeHandlerRequest类模块定义了通过WebSchemeHandler拦截到的资�
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 本Class首批接口从API version 12开始支持。
@@ -23,6 +25,10 @@ getHeader(): Array\<WebHeader\>
 获取资源请求头信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -42,6 +48,10 @@ getRequestUrl(): string
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明            |
@@ -59,6 +69,10 @@ getRequestMethod(): string
 获取请求方法。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -78,6 +92,10 @@ getReferrer(): string
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明            |
@@ -92,15 +110,19 @@ getReferrer(): string
 
 isMainFrame(): boolean
 
-判断资源请求是否为主frame。
+判断资源请求是否为主Frame。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型     | 说明            |
 | ------ | ------------- |
-| boolean | 判断资源请求是否为主frame，如果资源请求是主frame则返回true，否则返回false。 |
+| boolean | 判断资源请求是否为主Frame，如果资源请求是主Frame则返回true，否则返回false。 |
 
 **示例：**
 
@@ -114,11 +136,15 @@ hasGesture(): boolean
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明            |
 | ------ | ------------- |
-| boolean | 返回资源请求是否与手势（如点击）相关联，如果返回资源请求与手势相关联则返回true，否则返回false。 |
+| boolean | 返回资源请求是否与手势（如点击）相关联，如果资源请求与手势相关联则返回true，否则返回false。 |
 
 **示例：**
 
@@ -131,6 +157,10 @@ getHttpBodyStream(): WebHttpBodyStream | null
 获取资源请求中的WebHttpBodyStream。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -150,6 +180,10 @@ getRequestResourceType(): WebResourceType
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明            |
@@ -167,6 +201,10 @@ getFrameUrl(): string
 获取触发此请求的Frame的URL。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 

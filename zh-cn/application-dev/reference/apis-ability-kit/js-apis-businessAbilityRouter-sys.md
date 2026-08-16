@@ -160,3 +160,21 @@ try {
   console.error('queryBusinessAbilityInfo failed ' + message);
 }
 ```
+
+## BusinessAbilityInfo<sup>23+</sup>
+
+type BusinessAbilityInfo = _BusinessAbilityInfo
+
+业务路由信息。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型 | 说明 |
+| --- | --- |
+| [_BusinessAbilityInfo.BusinessAbilityInfo](js-apis-bundleManager-businessAbilityInfo-sys.md#businessabilityinfo) | 业务路由信息。 |

@@ -1061,7 +1061,7 @@ type ModifierKeyStateGetter = (keys: Array\<string>) => boolean
 
 ## DividerStyleOptions<sup>12+</sup>
 
-分割线样式属性集合, 用于描述分割线相关信息。
+分割线样式属性集合，用于描述分割线相关信息。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 

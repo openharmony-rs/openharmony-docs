@@ -64,7 +64,7 @@ import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
 
 let childProcessPid = 33333;
 try {
-    backgroundProcessManager.setProcessPriority(childProcessPid,
+    await backgroundProcessManager.setProcessPriority(childProcessPid,
         backgroundProcessManager.ProcessPriority.PROCESS_INACTIVE);
 } catch (error) {
     console.error(`setProcessPriority failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
@@ -105,7 +105,7 @@ import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
 
 let childProcessPid = 33333;
 try {
-    backgroundProcessManager.resetProcessPriority(childProcessPid); 
+    await backgroundProcessManager.resetProcessPriority(childProcessPid); 
 } catch (error) {
     console.error(`resetProcessPriority failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
@@ -138,7 +138,7 @@ ArkTS-Sta: setPowerSaveMode(pid: int, powerSaveMode: PowerSaveMode): Promise&lt;
 
 | 参数名      | 类型      | 必填      | 说明      |
 |-------------|-----------|-----------|-----------|
-| pid         | ArkTS-Dyn: number <br> ArkTS-Sta: int    | 是        | 进程号。  |
+| pid         | ArkTS-Dyn: number <br> ArkTS-Sta: int    | 是        | 进程号。<br>取值为正整数。  |
 | powerSaveMode | [PowerSaveMode](#powersavemode) | 是 | 能效模式。 |
 
 **返回值：**
@@ -165,11 +165,15 @@ ArkTS-Sta: setPowerSaveMode(pid: int, powerSaveMode: PowerSaveMode): Promise&lt;
 import { BusinessError } from '@kit.BasicServicesKit';
 import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
 
-let pid = 33333;
+let pid = 33333;  // 请开发者替换为实际的进程号
 try {
-    backgroundProcessManager.setPowerSaveMode(pid, backgroundProcessManager.PowerSaveMode.EFFICIENCY_MODE); 
+  backgroundProcessManager.setPowerSaveMode(pid, backgroundProcessManager.PowerSaveMode.EFFICIENCY_MODE).then(() => {
+    console.info('setPowerSaveMode promise');
+  }).catch((err: BusinessError) => {
+    console.error(`setPowerSaveMode failed, promise errCode: ${err.code}, message: ${err.message}`);
+  });
 } catch (error) {
-    console.error(`setPowerSaveMode failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+  console.error(`setPowerSaveMode failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -195,7 +199,7 @@ ArkTS-Sta: isPowerSaveMode(pid: int): Promise&lt;boolean&gt;
 
 | 参数名      | 类型      | 必填      | 说明      |
 |-------------|-----------|-----------|-----------|
-| pid         | ArkTS-Dyn: number <br> ArkTS-Sta: int    | 是        | 进程号。  |
+| pid         | ArkTS-Dyn: number <br> ArkTS-Sta: int    | 是        | 进程号。<br>取值为正整数。  |
 
 **返回值：**
 
@@ -219,13 +223,15 @@ ArkTS-Sta: isPowerSaveMode(pid: int): Promise&lt;boolean&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
 
-let pid = 33333;
+let pid = 33333;  // 请开发者替换为实际的进程号
 try {
-    backgroundProcessManager.isPowerSaveMode(pid).then((result: boolean) => {
-        console.info("isPowerSaveMode: " + result.toString());
-    });
+  backgroundProcessManager.isPowerSaveMode(pid).then((result: boolean) => {
+    console.info(`isPowerSaveMode: ${result}`);
+  }).catch((err: BusinessError) => {
+    console.error(`isPowerSaveMode failed, promise errCode: ${err.code}, message: ${err.message}`);
+  });
 } catch (error) {
-    console.error(`isPowerSaveMode failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+  console.error(`isPowerSaveMode failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -251,7 +257,7 @@ ArkTS-Sta: getPowerSaveMode(pid: int): Promise&lt;PowerSaveMode&gt;
 
 | 参数名      | 类型      | 必填      | 说明      |
 |-------------|-----------|-----------|-----------|
-| pid         | ArkTS-Dyn: number <br> ArkTS-Sta: int    | 是        | 进程号。<br>取值范围：大于0的整数。  |
+| pid         | ArkTS-Dyn: number <br> ArkTS-Sta: int    | 是        | 进程号。<br>取值为正整数。  |
 
 **返回值：**
 
@@ -274,14 +280,16 @@ ArkTS-Sta: getPowerSaveMode(pid: int): Promise&lt;PowerSaveMode&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
-// 请开发者替换为实际的进程号
-let pid = 33333;
+
+let pid = 33333;  // 请开发者替换为实际的进程号
 try {
-    backgroundProcessManager.getPowerSaveMode(pid).then((result: backgroundProcessManager.PowerSaveMode) => {
-        console.info("getPowerSaveMode: " + result.toString());
-    });
+  backgroundProcessManager.getPowerSaveMode(pid).then((result: backgroundProcessManager.PowerSaveMode) => {
+    console.info(`getPowerSaveMode: ${result}`);
+  }).catch((err: BusinessError) => {
+    console.error(`getPowerSaveMode failed, promise errCode: ${err.code}, message: ${err.message}`);
+  });
 } catch (error) {
-    console.error(`getPowerSaveMode failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+  console.error(`getPowerSaveMode failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 

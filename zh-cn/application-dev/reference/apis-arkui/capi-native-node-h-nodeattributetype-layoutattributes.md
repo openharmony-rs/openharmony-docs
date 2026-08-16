@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3; @zju_ljz; @camlostshi-->
-<!--Designer: @hehongyang3; @lanshouren-->
+<!--Designer: @hehongyang3; @fenglinbailu-->
 <!--Tester: @liuli0427; @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -274,19 +274,19 @@ NODE_BORDER_COLOR = 19
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 设置上侧边框颜色，使用0xargb表示，默认值为`0xFF000000`。 |
-| .value[1].u32 | 设置右侧边框颜色，使用0xargb表示，默认值为`0xFF000000`。 |
-| .value[2].u32 | 设置下侧边框颜色，使用0xargb表示，默认值为`0xFF000000`。 |
-| .value[3].u32 | 设置左侧边框颜色，使用0xargb表示，默认值为`0xFF000000`。 |
+| .value[0].u32 | 设置上侧边框颜色，使用0xARGB表示，默认值为`0xFF000000`。 |
+| .value[1].u32 | 设置右侧边框颜色，使用0xARGB表示，默认值为`0xFF000000`。 |
+| .value[2].u32 | 设置下侧边框颜色，使用0xARGB表示，默认值为`0xFF000000`。 |
+| .value[3].u32 | 设置左侧边框颜色，使用0xARGB表示，默认值为`0xFF000000`。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 上侧边框颜色，使用0xargb表示，如`0xFFFF11FF`。 |
-| .value[1].u32 | 右侧边框颜色，使用0xargb表示，如`0xFFFF11FF`。 |
-| .value[2].u32 | 下侧边框颜色，使用0xargb表示，如`0xFFFF11FF`。 |
-| .value[3].u32 | 左侧边框颜色，使用0xargb表示，如`0xFFFF11FF`。 |
+| .value[0].u32 | 上侧边框颜色，使用0xARGB表示，如`0xFFFF11FF`。 |
+| .value[1].u32 | 右侧边框颜色，使用0xARGB表示，如`0xFFFF11FF`。 |
+| .value[2].u32 | 下侧边框颜色，使用0xARGB表示，如`0xFFFF11FF`。 |
+| .value[3].u32 | 左侧边框颜色，使用0xARGB表示，如`0xFFFF11FF`。 |
 
 ## NODE_BORDER_STYLE
 
@@ -686,7 +686,7 @@ NODE_WIDTH_PERCENT = 71
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].f32 | 设置宽度数值，单位为百分比。 |
+| .value[0].f32 | 设置宽度数值，单位为百分比。取值范围：(0, +∞)。无默认值，不设置时由组件布局决定尺寸，使用子组件自身内容需要的宽度。传入异常值时返回错误码。 |
 
 **返回：**
 
@@ -709,7 +709,7 @@ NODE_HEIGHT_PERCENT = 72
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].f32 | 设置高度数值，单位为百分比。 |
+| .value[0].f32 | 设置高度数值，单位为百分比。取值范围：(0, +∞)。无默认值，不设置时由组件布局决定尺寸，使用子组件自身内容需要的高度。传入异常值时返回错误码。 |
 
 **返回：**
 

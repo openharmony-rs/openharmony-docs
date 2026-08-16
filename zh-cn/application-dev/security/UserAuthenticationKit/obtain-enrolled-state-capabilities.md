@@ -26,7 +26,7 @@
 以查询用户人脸注册凭据的状态为例：
 
 ArkTS-Dyn示例：
-<!-- @[obtain_enrolled_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[obtain_enrolled_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 obtainingEnrolledCredentialInformation() {
@@ -43,7 +43,7 @@ obtainingEnrolledCredentialInformation() {
 ```
 
 ArkTS-Sta示例：
-<!-- @[obtain_enrolled_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @[obtain_enrolled_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 obtainingEnrolledCredentialInformation() {
@@ -52,7 +52,7 @@ obtainingEnrolledCredentialInformation() {
     Logger.info('get current enrolled state successfully.');
     return enrolledState.credentialDigest;
   } catch (error) {
-      Logger.error(`get current enrolled state failed, code is ${error.code}, message is ${error.message}`);
+    Logger.error(`get current enrolled state failed, code is ${error.code}, message is ${error.message}`);
     return false;
   }
 }
@@ -60,5 +60,5 @@ obtainingEnrolledCredentialInformation() {
 
 ## 示例代码
 
-  - [查询用户注册凭据的状态(ArkTS-Dyn)](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
-  - [查询用户注册凭据的状态(ArkTS-Sta)](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta)
+  - [查询用户注册凭据的状态(ArkTS-Dyn)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)
+  - [查询用户注册凭据的状态(ArkTS-Sta)](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta)

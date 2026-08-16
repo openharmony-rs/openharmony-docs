@@ -17,7 +17,7 @@
 
 一条指令由操作码（指令名称）和指令入参列表组成。操作码包含无前缀的操作码和有前缀的操作码两种。寄存器、立即数以及 `type_id` / `method_id` / `field_id` / `string_id` / `literalarray_id` 均可以作为指令的入参。部分指令以累加器（accumulator）作为隐式源操作数或目标操作数。
 
-- 本文中所有采用代码形式描述的内容均遵循 [ArkTS 语言规范](../quick-start/introduction-to-arkts.md)。
+- 本文中所有采用代码形式描述的内容均遵循 [ArkTS语法](../quick-start/arkts-language-guide-basics.md)。
 - 本文仅适用于版本号为 **0.1.0.7** 的字节码（版本号为方舟编译器内部保留字段，开发者无需关注）。
 
 ## 字节码构成
