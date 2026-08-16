@@ -59,7 +59,7 @@ int (*putText)(OH_VBucket *bucket, const char *field, const char *value)
 
 | 参数项             | 描述                           |
 | ------------------ | ------------------------------ |
-| OH_VBucket *bucket | 表示指向OH_VBucket实例的指针。 |
+| [OH_VBucket](#oh_vbucket) *bucket | 表示指向OH_VBucket实例的指针。 |
 | const char *field  | 数据库表中的列名，不能为空指针。               |
 | const char *value  | 数据库表中指定列名对应的值。   |
 
@@ -85,7 +85,7 @@ int (*putInt64)(OH_VBucket *bucket, const char *field, int64_t value)
 
 | 参数项             | 描述                           |
 | ------------------ | ------------------------------ |
-| OH_VBucket *bucket | 表示指向OH_VBucket实例的指针。 |
+| [OH_VBucket](#oh_vbucket) *bucket | 表示指向OH_VBucket实例的指针。 |
 | const char *field  | 数据库表中的列名，不能为空指针。               |
 | int64_t value      | 数据库表中指定列名对应的值。   |
 
@@ -111,7 +111,7 @@ int (*putReal)(OH_VBucket *bucket, const char *field, double value)
 
 | 参数项             | 描述                           |
 | ------------------ | ------------------------------ |
-| OH_VBucket *bucket | 表示指向OH_VBucket实例的指针。 |
+| [OH_VBucket](#oh_vbucket) *bucket | 表示指向OH_VBucket实例的指针。 |
 | const char *field  | 数据库表中的列名，不能为空指针。               |
 | double value       | 数据库表中指定列名对应的值。   |
 
@@ -137,10 +137,10 @@ int (*putBlob)(OH_VBucket *bucket, const char *field, const uint8_t *value, uint
 
 | 参数项             | 描述                           |
 | ------------------ | ------------------------------ |
-| OH_VBucket *bucket | 表示指向OH_VBucket实例的指针。 |
+| [OH_VBucket](#oh_vbucket) *bucket | 表示指向OH_VBucket实例的指针。 |
 | const char *field  | 数据库表中的列名，不能为空指针。               |
 | const uint8_t *value | 数据库表中指定列名对应的值。 |
-| uint32_t size      | 表示value的长度。              |
+| uint32_t size      | 表示value的字节长度。              |
 
 **返回：**
 
@@ -164,7 +164,7 @@ int (*putNull)(OH_VBucket *bucket, const char *field)
 
 | 参数项             | 描述                           |
 | ------------------ | ------------------------------ |
-| OH_VBucket *bucket | 表示指向OH_VBucket实例的指针。 |
+| [OH_VBucket](#oh_vbucket) *bucket | 表示指向OH_VBucket实例的指针。 |
 | const char *field  | 数据库表中的列名，不能为空指针。               |
 
 **返回：**
@@ -181,7 +181,7 @@ int (*clear)(OH_VBucket *bucket)
 
 **描述**
 
-清空[OH_VBucket](capi-rdb-oh-vbucket.md)对象。
+清空[OH_VBucket](#oh_vbucket)对象。
 
 **起始版本：** 10
 
@@ -189,7 +189,7 @@ int (*clear)(OH_VBucket *bucket)
 
 | 参数项             | 描述                           |
 | ------------------ | ------------------------------ |
-| OH_VBucket *bucket | 表示指向OH_VBucket实例的指针。 |
+| [OH_VBucket](#oh_vbucket) *bucket | 表示指向OH_VBucket实例的指针。 |
 
 **返回：**
 
@@ -205,7 +205,7 @@ int (*destroy)(OH_VBucket *bucket)
 
 **描述**
 
-销毁[OH_VBucket](capi-rdb-oh-vbucket.md)对象，并回收该对象占用的内存。
+销毁[OH_VBucket](#oh_vbucket)对象，并回收该对象占用的内存。
 
 **起始版本：** 10
 
@@ -213,7 +213,7 @@ int (*destroy)(OH_VBucket *bucket)
 
 | 参数项             | 描述                           |
 | ------------------ | ------------------------------ |
-| OH_VBucket *bucket | 表示指向OH_VBucket实例的指针。 |
+| [OH_VBucket](#oh_vbucket) *bucket | 表示指向OH_VBucket实例的指针。 |
 
 **返回：**
 

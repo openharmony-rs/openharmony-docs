@@ -282,7 +282,7 @@ predicates.equalTo("NAME", "Lisa")
 
 and(): RdbPredicates
 
-向谓词添加和条件。
+向谓词添加AND条件。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 

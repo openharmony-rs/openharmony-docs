@@ -405,7 +405,7 @@ OH_Cursor *OH_RdbTrans_Query(OH_Rdb_Transaction *trans, const OH_Predicates *pre
 
 | 类型                           | 说明                                                         |
 | ------------------------------ | ------------------------------------------------------------ |
-| [OH_Cursor](capi-rdb-oh-cursor.md) * | 如果执行成功，则返回指向[OH_Cursor](capi-rdb-oh-cursor.md)实例的指针。如果数据库已关闭或数据库没有响应，则返回空。 |
+| [OH_Cursor](capi-rdb-oh-cursor.md) * | 如果执行成功，则返回指向[OH_Cursor](capi-rdb-oh-cursor.md)实例的指针。如果数据库已关闭或数据库没有响应，则返回NULL。 |
 
 ### OH_RdbTrans_QuerySql()
 
@@ -432,7 +432,7 @@ OH_Cursor *OH_RdbTrans_QuerySql(OH_Rdb_Transaction *trans, const char *sql, cons
 
 | 类型                           | 说明                                                         |
 | ------------------------------ | ------------------------------------------------------------ |
-| [OH_Cursor](capi-rdb-oh-cursor.md) * | 如果执行成功，则返回指向[OH_Cursor](capi-rdb-oh-cursor.md)实例的指针。如果数据库已关闭或数据库没有响应，则返回空。 |
+| [OH_Cursor](capi-rdb-oh-cursor.md) * | 如果执行成功，则返回指向[OH_Cursor](capi-rdb-oh-cursor.md)实例的指针。如果数据库已关闭或数据库没有响应，则返回NULL。 |
 
 ### OH_RdbTrans_Execute()
 
