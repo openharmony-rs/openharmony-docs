@@ -348,12 +348,12 @@ The module name does not exist.
 **可能原因**
 
 1. 传入的moduleName参数为空。
-2. HAP包中不存在moduleName对应的模块。
+2. HAP/HSP包中不存在moduleName对应的模块。
 
 **处理步骤**
 
 1. 确保传入的moduleName参数不为空。
-2. 确保传入的moduleName是在HAP包中存在的模块名。
+2. 确保传入的moduleName是在HAP/HSP包中存在的模块名。
 
 ## 16000050 内部错误
 
