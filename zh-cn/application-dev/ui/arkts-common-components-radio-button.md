@@ -62,7 +62,7 @@ Radio({ value: 'Radio2', group: 'radioGroup' })
 
 通过点击Radio切换声音模式。
 
-<!-- @[click_radio_to_change_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/radio/RadioSample.ets) -->
+<!-- @[click_radio_to_change_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/radio/RadioSample.ets) --> 
 
 ``` TypeScript
 // xxx.ets
@@ -88,7 +88,7 @@ export struct RadioExample {
                   // 切换为响铃模式
                   await this.getUIContext().getPromptAction().openToast(this.rst);
                 } catch (err) {
-                  console.error('Failed to show toast: ${err.code}');
+                  console.error(`Failed to show toast: ${err.code}`);
                 }
               }
             })
@@ -105,7 +105,7 @@ export struct RadioExample {
                   // 切换为振动模式
                   await this.getUIContext().getPromptAction().openToast(this.vst);
                 } catch (err) {
-                  console.error('Failed to show toast: ${err.code}');
+                  console.error(`Failed to show toast: ${err.code}`);
                 }
               }
             })
@@ -122,7 +122,7 @@ export struct RadioExample {
                   // 切换为静音模式
                   await this.getUIContext().getPromptAction().openToast(this.sst);
                 } catch (err) {
-                  console.error('Failed to show toast: ${err.code}');
+                  console.error(`Failed to show toast: ${err.code}`);
                 }
               }
             })
