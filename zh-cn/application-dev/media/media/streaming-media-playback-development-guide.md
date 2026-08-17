@@ -73,16 +73,9 @@
 
 <!-- @[bufferingUpdate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
-import { media } from '@kit.MediaKit';
-// 类成员定义avPlayer
-private avPlayer: media.AVPlayer | null = null;
-
-// 创建avPlayer实例对象。
-this.avPlayer = await media.createAVPlayer();
-// 监听当前bufferingUpdate缓冲状态。
-this.avPlayer.on('bufferingUpdate', (infoType : media.BufferingInfoType, value : number) => {
-  console.info(`AVPlayer bufferingUpdate, infoType is ${infoType}, value is ${value}.`);
+``` TypeScript
+this.avPlayer.on('bufferingUpdate', (infoType: media.BufferingInfoType, value: number) => {
+  console.info(`${this.tag}: bufferingUpdate called, infoType value: ${infoType}, value:${value}}`);
 })
 ```
 
