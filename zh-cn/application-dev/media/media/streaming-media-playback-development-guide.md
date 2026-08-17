@@ -138,7 +138,7 @@ this.avPlayer.on('trackChange', (index: number, isSelect: boolean) => {
 2. 调用[getTrackDescription](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#gettrackdescription9)获取所有音视频轨道列表。开发者可根据实际需求，基于[MediaDescription](../../reference/apis-media-kit/arkts-apis-media-i.md#mediadescription8)各字段信息，确定目标轨道索引。
 
    <!-- @[getTrackDescription](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
-   
+
    ``` TypeScript
    this.avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
      if (arrList != null) {
@@ -160,7 +160,7 @@ this.avPlayer.on('trackChange', (index: number, isSelect: boolean) => {
 3. 在音视频播放过程中调用[selectTrack](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#selecttrack12)选择对应的音视频轨道，或者调用[deselectTrack](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#deselecttrack12)取消选择的音视频轨道。
 
    <!-- @[selectTrack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
-   
+
    ``` TypeScript
    // 切换至目标视频轨道
    try {
