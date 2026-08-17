@@ -84,7 +84,7 @@ this.avPlayer.on('bufferingUpdate', (infoType: media.BufferingInfoType, value: n
 当前流媒体HLS协议流支持多码率播放，默认情况下，播放器会根据网络下载速度选择合适的码率。
 
 1. 通过[on('availableBitrates')](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#onavailablebitrates9)监听当前HLS协议流可用的码率。如果监听的码率列表长度为0，则不支持设置指定码率。
-
+   
    <!-- @[availableBitrates](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -96,16 +96,16 @@ this.avPlayer.on('bufferingUpdate', (infoType: media.BufferingInfoType, value: n
 
 2. 通过[setBitrate](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#setbitrate9)接口设置播放码率。若用户设置的码率不在可用码率中，播放器将选择最小且最接近的码率。该接口只能在prepared/playing/paused/completed状态下调用，可通过监听[bitrateDone](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#onbitratedone9)事件确认是否生效。
 
-  <!-- @[setBitrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[setBitrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
   
-  ``` TypeScript
-  // 设置播放码率
-  try {
-    this.avPlayer.setBitrate(bitrate);
-  } catch (error) {
-    console.error(`${this.tag}: setBitrate failed, error message is = ${JSON.stringify(error.message)}`);
-  }
-  ```
+   ``` TypeScript
+   // 设置播放码率
+   try {
+     this.avPlayer.setBitrate(bitrate);
+   } catch (error) {
+     console.error(`${this.tag}: setBitrate failed, error message is = ${JSON.stringify(error.message)}`);
+   }
+   ```
 
 ### DASH设置视频起播策略
 
@@ -126,14 +126,14 @@ this.avPlayer.setMediaSource(mediaSource, playbackStrategy);
 DASH流媒体资源包含多路不同分辨率、码率、采样率、编码格式的音频、视频及字幕资源。默认情况下，AVPlayer会依据网络状况自动切换不同码率的视频轨道。开发者可根据需求选择指定的音视频轨道播放，此时自适应码率切换策略将失效。
 
 1. 设置selectTrack生效的监听事件[trackChange](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#ontrackchange12)。
+   
+   <!-- @[trackChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
 
-<!-- @[trackChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-this.avPlayer.on('trackChange', (index: number, isSelect: boolean) => {
-  console.info(`trackChange info, index: ${index}, isSelect: ${isSelect}`);
-})
-```
+   ``` TypeScript
+   this.avPlayer.on('trackChange', (index: number, isSelect: boolean) => {
+   console.info(`trackChange info, index: ${index}, isSelect: ${isSelect}`);
+   })
+   ```
 
 2. 调用[getTrackDescription](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#gettrackdescription9)获取所有音视频轨道列表。开发者可根据实际需求，基于[MediaDescription](../../reference/apis-media-kit/arkts-apis-media-i.md#mediadescription8)各字段信息，确定目标轨道索引。
 
@@ -158,7 +158,7 @@ this.avPlayer.on('trackChange', (index: number, isSelect: boolean) => {
    ```
 
 3. 在音视频播放过程中调用[selectTrack](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#selecttrack12)选择对应的音视频轨道，或者调用[deselectTrack](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#deselecttrack12)取消选择的音视频轨道。
-
+   
    <!-- @[selectTrack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
