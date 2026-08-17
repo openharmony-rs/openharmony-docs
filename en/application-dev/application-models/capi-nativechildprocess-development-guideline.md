@@ -206,7 +206,7 @@ libchild_process.so
 
 5. (Main process) Add build dependencies.
 
-    Modify the **CMaklist.txt** file to add the dependencies. The following assumes that the main process is implemented in the library file named **libmainprocesssample.so**. (The implementation of the main process and child processes can be compiled to the same dynamic link library file.)
+    Modify the **CMakeList.txt** file to add the dependencies. The following assumes that the main process is implemented in the library file named **libmainprocesssample.so**. (The implementation of the main process and child processes can be compiled to the same dynamic link library file.)
 
     ```txt
     target_link_libraries(mainprocesssample PUBLIC
@@ -264,7 +264,7 @@ libchild_process.so
      */
     void Main(NativeChildProcess_Args args)
     {
-        // Obtain the input entryPrams.
+        // Obtain the input entryParams.
         char *entryParams = args.entryParams;
         // Obtain the input FD list.
         NativeChildProcess_Fd *current = args.fdList.head;
@@ -359,7 +359,7 @@ libchild_process.so
 
 4. (Main process) Add build dependencies.
 
-    Modify the **CMaklist.txt** file to add the dependencies. The following assumes that the main process is implemented in the library file named **libmainprocesssample.so**. (The implementation of the main process and child processes can be compiled to the same dynamic link library file.)
+    Modify the **CMakeList.txt** file to add the dependencies. The following assumes that the main process is implemented in the library file named **libmainprocesssample.so**. (The implementation of the main process and child processes can be compiled to the same dynamic link library file.)
 
     ```txt
     target_link_libraries(mainprocesssample PUBLIC
@@ -419,7 +419,7 @@ void ThreadFunc()
     if (args == nullptr) {
         return;
     }
-    // Obtain the value of entryPrams in the startup parameters.
+    // Obtain the value of entryParams in the startup parameters.
     char *entryParams = args->entryParams;
     // Obtain the FD list.
     NativeChildProcess_Fd *current = args->fdList.head;
