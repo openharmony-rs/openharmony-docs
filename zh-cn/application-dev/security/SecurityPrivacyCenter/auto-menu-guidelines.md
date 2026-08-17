@@ -37,7 +37,7 @@
 
 ## 修改应用配置文件
 
-各模块的module.json5配置文件中，承载了该模块UIAbility组件和ExtensionAbility组件的描述信息、应用运行过程中所需的权限等信息。接入安全隐私框架需将一下相关字段配置到module.json5中。
+各模块的module.json5配置文件中，承载了该模块UIAbility组件和ExtensionAbility组件的描述信息、应用运行过程中所需的权限等信息。接入安全隐私框架需将以下相关字段配置到module.json5中。
 
 ### 配置action
 
