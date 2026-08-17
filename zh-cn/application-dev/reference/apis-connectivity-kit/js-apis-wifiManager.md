@@ -680,7 +680,7 @@ WAPI认证方式的枚举。
 | WIFI6 | 2 | Wifi6。 |
 | WIFI6_PLUS | 3 | Wifi6+。 |
 | WIFI7<sup>15+</sup> | 4 | Wi-Fi7。 |
-| WIFI7_PLUS<sup>15+</sup> | 5 | Wi-Fi+。 |
+| WIFI7_PLUS<sup>15+</sup> | 5 | Wi-Fi7+。 |
 
 ## ConnectSettings
 
