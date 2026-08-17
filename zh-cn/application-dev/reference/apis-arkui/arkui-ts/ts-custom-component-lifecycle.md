@@ -8,7 +8,7 @@
 
 自定义组件的生命周期回调函数用于通知用户该自定义组件的生命周期，这些回调函数是私有的，在运行时由开发框架在特定的时间进行调用，不能从应用中主动调用。通过这些回调，开发者可以在组件创建时初始化数据和状态变量，在组件销毁时释放资源，在页面显示和隐藏时更新页面状态、刷新数据或暂停恢复任务，在组件复用时传递参数与更新状态等，从而实现组件的精细化管理。不要在多个窗口复用同一个自定义组件节点，其生命周期可能会紊乱。
 
->**说明：**
+> **说明：**
 >
 >- 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >- 本模块首批接口从API version 7开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -97,7 +97,7 @@ aboutToDisappear函数在自定义组件析构销毁时执行。不允许在abou
 
 onPageShow?(): void
 
-router路由页面（即[\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry)装饰的自定义组件）每次显示时触发一次，包括路由跳转、应用进入前台等场景。
+router路由页面（即[\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry)装饰的自定义组件）每次显示时触发一次，包括路由跳转、应用进入前台等场景。建议在该回调函数内避免执行高耗时操作阻塞主线程，以免影响页面显示性能。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -129,7 +129,7 @@ router路由页面（即[\@Entry](../../../../application-dev/ui/state-managemen
 
 onBackPress?(): void | boolean
 
-在router路由页面（即[\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry)装饰的自定义组件）生效，当用户点击返回按钮时触发。返回true表示页面自己处理返回逻辑，不进行页面路由；返回false表示使用默认的路由返回逻辑，不设置返回值按照false处理。
+在router路由页面（即[\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry)装饰的自定义组件）生效，当用户点击返回按钮时触发。返回true表示页面自己处理返回逻辑，不进行页面路由；返回false表示使用默认的路由返回逻辑，不设置返回值按照false处理。典型使用场景包括：页面有未保存的编辑内容时阻止返回以提示用户保存、弹出自定义确认对话框替代系统默认返回行为等。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -204,7 +204,7 @@ ArkTS-Sta: onNewParam?(param: object | undefined | null): void
 
 | 参数名 | 类型     | 必填     |             说明         |
 |-------|----------|----------|---------------------------|
-| param | ArkTS-Dyn: ESObject<br/>ArkTS-Sta: object \| undefined \| null |是 | 路由跳转时传递到目标页面的数据。|
+| param | ArkTS-Dyn: ESObject<br/>ArkTS-Sta: object \| undefined \| null |是 | 路由跳转时传递到目标页面的数据，与router.pushUrl()中params字段传递的数据一致，数据结构由开发者自定义。|
 
 ``` TypeScript
 // pages/Index.ets
@@ -612,7 +612,7 @@ struct Child {
 
 onWillApplyTheme?(theme: Theme): void
 
-onWillApplyTheme函数用于获取当前组件上下文的Theme对象，在创建自定义组件的新实例后、其build()函数执行之前调用。允许在onWillApplyTheme函数中改变状态变量，更改将在后续执行build()函数中生效。
+onWillApplyTheme函数用于获取当前组件上下文的Theme对象，在创建自定义组件的新实例后，在执行其build()函数之前执行。与aboutToAppear不同，onWillApplyTheme用于基于Theme对象初始化状态变量，aboutToAppear用于通用初始化逻辑。允许在onWillApplyTheme函数中改变状态变量，更改将在后续执行build()函数中生效。
 
 > **说明：**
 >
@@ -632,7 +632,7 @@ onWillApplyTheme函数用于获取当前组件上下文的Theme对象，在创�
 
 | 参数名    | 类型                                       | 必填    | 说明         |
 |--------|------------------------------------------|------------|-------------------------|
-| theme | [Theme](../js-apis-arkui-theme.md#theme) | 是     | 自定义组件当前生效的Theme对象。|
+| theme | [Theme](../js-apis-arkui-theme.md#theme) | 是     | 自定义组件当前生效的Theme对象，可在回调中通过该对象获取主题配色等资源，用于更新组件的样式变量。|
 
 ## Theme<sup>12+</sup>
 
