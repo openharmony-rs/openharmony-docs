@@ -195,7 +195,7 @@ static JSVM_Value WasmDemo(JSVM_Env env, JSVM_CallbackInfo info)
     // 通过将 wasm cache 赋值来模拟 cache 持久化，实际使用场景可能将 wasm cache 保存到文件
     std::vector<uint8_t> cacheBuffer(wasmCacheData, wasmCacheData + wasmCacheLength);
 
-    // cache 一旦保存完成后，需要显式释放，以免发生内存泄露
+    // cache 一旦保存完成后，需要显式释放，以免发生内存泄漏
     // 注意：传入的 JSVM_CacheType 必须匹配
     status = OH_JSVM_ReleaseCache(env, wasmCacheData, JSVM_CACHE_TYPE_WASM);
     CHECK_STATUS(status == JSVM_OK);

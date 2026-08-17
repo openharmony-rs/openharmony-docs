@@ -209,7 +209,7 @@ static JSVM_Value HasProperty(JSVM_Env env, JSVM_CallbackInfo info)
     size_t argc = 2;
     JSVM_Value args[2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
-    // 将参数传入OH_JSVM_HasProperty方法中，若接口调用成功则将结果转化为JSVM_Value类型抛出，否则抛出错误
+    // 将参数传入OH_JSVM_HasProperty方法中，若接口调用成功则将结果转换为JSVM_Value类型抛出，否则抛出错误
     bool result = false;
     JSVM_Status status = OH_JSVM_HasProperty(env, args[0], args[1], &result);
     if (status != JSVM_OK) {
@@ -218,7 +218,7 @@ static JSVM_Value HasProperty(JSVM_Env env, JSVM_CallbackInfo info)
     } else {
         OH_LOG_INFO(LOG_APP, "JSVM OH_JSVM_HasProperty success:%{public}d", result);
     }
-    // 若传入属性存在传入对象中，则输出true将结果转化为JSVM_Value类型抛出
+    // 若传入属性存在传入对象中，则输出true将结果转换为JSVM_Value类型抛出
     JSVM_Value returnResult = nullptr;
     OH_JSVM_GetBoolean(env, result, &returnResult);
     return returnResult;
