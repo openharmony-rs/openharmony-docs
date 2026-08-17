@@ -103,23 +103,15 @@ console.info('availableBitrates called, and availableBitrates length is: ' + bit
 2. 通过[setBitrate](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#setbitrate9)接口设置播放码率。若用户设置的码率不在可用码率中，播放器将选择最小且最接近的码率。该接口只能在prepared/playing/paused/completed状态下调用，可通过监听[bitrateDone](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#onbitratedone9)事件确认是否生效。
 
   <!-- @[setBitrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
-
-```ts
-import { media } from '@kit.MediaKit';
-// 类成员定义avPlayer
-private avPlayer: media.AVPlayer | null = null;
-private bitrate: number = 0;
-
-// 创建avPlayer实例对象。
-this.avPlayer = await media.createAVPlayer();
-// 监听码率设置是否生效。
-this.avPlayer.on('bitrateDone', (bitrate: number) => {
-console.info('bitrateDone called, and bitrate value is: ' + bitrate);
-})
-// 设置播放码率。
-this.bitrate = 96000;
-this.avPlayer.setBitrate(this.bitrate);
-```
+  
+  ``` TypeScript
+  // 设置播放码率
+  try {
+    this.avPlayer.setBitrate(bitrate);
+  } catch (error) {
+    console.error(`${this.tag}: setBitrate failed, error message is = ${JSON.stringify(error.message)}`);
+  }
+  ```
 
 ### DASH设置视频起播策略
 
