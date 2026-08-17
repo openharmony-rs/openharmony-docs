@@ -677,8 +677,8 @@ WAPI认证方式的枚举。
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | DEFAULT | 1 | Default。Wi-Fi6以下的WLAN类别。 |
-| WIFI6 | 2 | Wifi6。 |
-| WIFI6_PLUS | 3 | Wifi6+。 |
+| WIFI6 | 2 | Wi-Fi6。 |
+| WIFI6_PLUS | 3 | Wi-Fi6+。 |
 | WIFI7<sup>15+</sup> | 4 | Wi-Fi7。 |
 | WIFI7_PLUS<sup>15+</sup> | 5 | Wi-Fi7+。 |
 
