@@ -10,7 +10,7 @@ export function getCalendar(locale: string, type?: string): Calendar
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -25,7 +25,7 @@ export function getCalendar(locale: string, type?: string): Calendar
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | locale | string | 是 | [表示区域ID的字符串](../../../internationalization/i18n-locale-culture.md#实现原理)，由语言、脚本、国家地区组成，例 如zh-Hans-CN。 |
-| type | string | 否 | 表示历法，取值包括：buddhist, chinese, coptic, ethiopic, hebrew, gregory, indian, islamic_civil,  islamic_tbla, islamic_umalqura, japanese, persian。 &lt;br&gt;默认值：区域默认的历法。不同取值代表的含义和使用场景请参考[设置日历和历法](../../../internationalization/i18n-calendar.md)。 |
+| type | string | 否 | 表示历法，取值包括：buddhist, chinese, coptic, ethiopic, hebrew, gregory, indian, islamic_civil,  islamic_tbla, islamic_umalqura, japanese, persian。 <br>默认值：区域默认的历法。不同取值代表的含义和使用场景请参考[设置日历和历法](../../../internationalization/i18n-calendar.md)。 |
 
 **返回值：**
 

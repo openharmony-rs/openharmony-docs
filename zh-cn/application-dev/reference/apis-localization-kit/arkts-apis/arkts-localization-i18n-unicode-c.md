@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ static detectEncoding(bytes: Uint8Array): EncodingInfo
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -44,7 +44,7 @@ static detectEncoding(bytes: Uint8Array): EncodingInfo
 
 | 类型 | 说明 |
 | --- | --- |
-| [EncodingInfo](arkts-localization-i18n-encodinginfo-i.md) | 编码信息，包含编码名称和置信度。 |
+| [EncodingInfo](../../apis-na/arkts-apis/arkts-na-i18n-encodinginfo-i.md) | 编码信息，包含编码名称和置信度。 |
 
 ## 示例
 
@@ -65,7 +65,7 @@ static getType(ch: string): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -85,7 +85,7 @@ static getType(ch: string): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 输入字符的一般类别值。取值包括： &lt;br&gt;U_UNASSIGNED： 表示未分配和非字符代码点对应类别。 &lt;br&gt;U_GENERAL_OTHER_TYPES： 与 U_UNASSIGNED 一致。 &lt;br&gt;U_UPPERCASE_LETTER： 表示大写字母。 &lt;br&gt;U_LOWERCASE_LETTER： 表示小写字母。 &lt;br&gt;U_TITLECASE_LETTER： 表示首字母大写。 &lt;br&gt;U_MODIFIER_LETTER： 表示字母修饰符。 &lt;br&gt;U_OTHER_LETTER： 表示其它字母，不属于大写字母、小写字母、首字母大写或修饰符字母的字母。 &lt;br&gt;U_NON_SPACING_MARK： 表示非间距标记，例如重音符号'，变音符号#。 &lt;br&gt;U_ENCLOSING_MARK： 表示封闭标记和能围住其它字符的标记，如圆圈、方框等。 &lt;br&gt;U_COMBINING_SPACING_MARK： 表示间距标记，例如元音符号[ ]。 &lt;br&gt;U_DECIMAL_DIGIT_NUMBER： 表示十进制数字。 &lt;br&gt;U_LETTER_NUMBER： 表示字母数字，罗马数字。 &lt;br&gt;U_OTHER_NUMBER： 表示其它作为加密符号和记号的数字，非阿拉伯数字的数字表示符，例如 |
+| string | 输入字符的一般类别值。取值包括： <br>U_UNASSIGNED： 表示未分配和非字符代码点对应类别。 <br>U_GENERAL_OTHER_TYPES： 与 U_UNASSIGNED 一致。 <br>U_UPPERCASE_LETTER： 表示大写字母。 <br>U_LOWERCASE_LETTER： 表示小写字母。 <br>U_TITLECASE_LETTER： 表示首字母大写。 <br>U_MODIFIER_LETTER： 表示字母修饰符。 <br>U_OTHER_LETTER： 表示其它字母，不属于大写字母、小写字母、首字母大写或修饰符字母的字母。 <br>U_NON_SPACING_MARK： 表示非间距标记，例如重音符号'，变音符号#。 <br>U_ENCLOSING_MARK： 表示封闭标记和能围住其它字符的标记，如圆圈、方框等。 <br>U_COMBINING_SPACING_MARK： 表示间距标记，例如元音符号[ ]。 <br>U_DECIMAL_DIGIT_NUMBER： 表示十进制数字。 <br>U_LETTER_NUMBER： 表示字母数字，罗马数字。 <br>U_OTHER_NUMBER： 表示其它作为加密符号和记号的数字，非阿拉伯数字的数字表示符，例如 |
 
 ## 示例
 
@@ -105,7 +105,7 @@ static isDigit(ch: string): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -145,7 +145,7 @@ static isIdeograph(ch: string): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -185,7 +185,7 @@ static isLetter(ch: string): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -225,7 +225,7 @@ static isLowerCase(ch: string): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -265,7 +265,7 @@ static isRTL(ch: string): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -305,7 +305,7 @@ static isSpaceChar(ch: string): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -345,7 +345,7 @@ static isUpperCase(ch: string): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -385,7 +385,7 @@ static isWhitespace(ch: string): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

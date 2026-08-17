@@ -10,11 +10,11 @@ declare function symlinkSync(target: string, srcPath: string): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [symlinkSync](arkts-corefile-file-fs-symlinksync-f.md#symlinkSync)
+**替代接口：** [symlinkSync](arkts-corefile-file-fs-symlinksync-f.md#symlinksync)
 
 <!--Device-unnamed-declare function symlinkSync(target: string, srcPath: string): void--><!--Device-unnamed-declare function symlinkSync(target: string, srcPath: string): void-End-->
 

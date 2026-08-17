@@ -4,7 +4,7 @@ Defines the parameters of the center of gravity.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -20,13 +20,13 @@ Defines the parameters of the center of gravity.
 gravityCenter?: boolean
 ```
 
-Specifies whether the current component is the center of gravity. &lt;br&gt;Default value:false.
+Specifies whether the current component is the center of gravity. <br>Default value:false.
 
 **类型：** boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -44,13 +44,13 @@ Specifies whether the current component is the center of gravity. &lt;br&gt;Defa
 gravityIntensity?: double
 ```
 
-Defines the gravitational strength of the attraction/repulsion force at the gravitational center. &lt;br&gt;Default value:0. &lt;br&gt;Negative numbers are repulsion, positive numbers are attractionn.
+Defines the gravitational strength of the attraction/repulsion force at the gravitational center. <br>Default value:0. <br>Negative numbers are repulsion, positive numbers are attractionn.
 
 **类型：** double
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

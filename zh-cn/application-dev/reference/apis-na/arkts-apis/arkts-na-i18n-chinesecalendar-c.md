@@ -1,12 +1,12 @@
 # ChineseCalendar
 
-提供农历相关的能力，包括设置农历时间、判断指定年份某月是否存在闰月。 继承自[Calendar](../../apis-localization-kit/arkts-apis/arkts-localization-i18n-calendar-c.md#Calendar)，支持[Calendar](../../apis-localization-kit/arkts-apis/arkts-localization-i18n-calendar-c.md#Calendar)的方法。
+提供农历相关的能力，包括设置农历时间、判断指定年份某月是否存在闰月。 继承自[Calendar](arkts-na-i18n-calendar-c.md#calendar)，支持[Calendar](arkts-na-i18n-calendar-c.md#calendar)的方法。
 
-**继承/实现关系：** ChineseCalendar extends [Calendar](../../apis-localization-kit/arkts-apis/arkts-localization-i18n-calendar-c.md#Calendar)
+**继承/实现关系：** ChineseCalendar extends [Calendar](arkts-na-i18n-calendar-c.md#calendar)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ public static checkLeapMonth(gregorianYear: int, cyclicalYear: int, month: int):
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -40,9 +40,9 @@ public static checkLeapMonth(gregorianYear: int, cyclicalYear: int, month: int):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| gregorianYear | int | 是 | 公历的年。 &lt;br&gt;取值范围：[1900, 2100]。 |
-| cyclicalYear | int | 是 | 农历的干支年。 &lt;br&gt;取值范围：[1, 60]。 |
-| month | int | 是 | 农历的月。 &lt;br&gt;**说明：** &lt;br&gt;月份从0开始计数，0表示一月。 |
+| gregorianYear | int | 是 | 公历的年。 <br>取值范围：[1900, 2100]。 |
+| cyclicalYear | int | 是 | 农历的干支年。 <br>取值范围：[1, 60]。 |
+| month | int | 是 | 农历的月。 <br>**说明：** <br>月份从0开始计数，0表示一月。 |
 
 **返回值：**
 
@@ -66,7 +66,7 @@ public setChineseCalendarTime(chineseCalendarTime: ChineseCalendarTime): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -82,5 +82,5 @@ public setChineseCalendarTime(chineseCalendarTime: ChineseCalendarTime): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| chineseCalendarTime | [ChineseCalendarTime](../../apis-localization-kit/arkts-apis/arkts-localization-i18n-chinesecalendartime-i.md) | 是 | 农历时间对象。 |
+| chineseCalendarTime | [ChineseCalendarTime](arkts-na-i18n-chinesecalendartime-i.md) | 是 | 农历时间对象。 |
 

@@ -10,11 +10,11 @@ function deleteContact(key: string, callback: AsyncCallback<void>): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** [deleteContact](#deleteContact)(context: Context, key: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [deleteContact](#deletecontact)(context: Context, key: string, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
@@ -61,7 +61,7 @@ function deleteContact(context: Context, key: string, callback: AsyncCallback<vo
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -121,11 +121,11 @@ function deleteContact(key: string): Promise<void>
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** [deleteContact](#deleteContact)(context: Context, key: string)
+**替代接口：** [deleteContact](#deletecontact)(context: Context, key: string)
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
@@ -171,7 +171,7 @@ function deleteContact(context: Context, key: string): Promise<void>
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 

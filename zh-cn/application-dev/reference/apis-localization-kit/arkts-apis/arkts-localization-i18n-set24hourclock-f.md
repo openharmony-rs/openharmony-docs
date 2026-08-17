@@ -10,11 +10,11 @@ export function set24HourClock(option: boolean): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [set24HourClock](arkts-localization-i18n-system-c-sys.md#set24HourClock)
+**替代接口：** [set24HourClock](../../apis-na/arkts-apis/arkts-na-i18n-system-c-sys.md#set24hourclock)
 
 **需要权限：** ohos.permission.UPDATE_CONFIGURATION
 
@@ -33,4 +33,13 @@ export function set24HourClock(option: boolean): boolean
 | 类型 | 说明 |
 | --- | --- |
 | boolean | true表示修改成功，false表示修改失败。 |
+
+## 示例
+
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+
+// 将系统时间设置为24小时制
+let success: boolean = i18n.set24HourClock(true);
+```
 

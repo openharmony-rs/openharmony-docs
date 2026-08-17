@@ -10,11 +10,11 @@ function getScreenOffTime(admin: Want, callback: AsyncCallback<number>): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getValue](arkts-mdm-devicesettings-getvalue-f.md#getValue)
+**替代接口：** [getValue](arkts-mdm-devicesettings-getvalue-f.md#getvalue)
 
 **需要权限：** ohos.permission.ENTERPRISE_GET_SETTINGS
 
@@ -75,11 +75,11 @@ function getScreenOffTime(admin: Want): Promise<number>
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getValue](arkts-mdm-devicesettings-getvalue-f.md#getValue)
+**替代接口：** [getValue](arkts-mdm-devicesettings-getvalue-f.md#getvalue)
 
 **需要权限：** ohos.permission.ENTERPRISE_GET_SETTINGS
 

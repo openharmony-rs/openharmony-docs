@@ -1,6 +1,6 @@
 # Web
 
-Defines Web Component. <p><strong>API Note</strong>: <strong>Performance Note</strong>: <p>For details about how to optimize the compilation, resource loading, and JSBridge performance, see Optimizing Web Page Loading <p>When the white screen duration is long due to complex web page parsing, you can enable optimizeParserBudget to reduce the first frame rendering content.</p> </p>
+定义 Web 组件。 <p><strong>API Note</strong>: <strong>Performance Note</strong>: <p>For details about how to optimize the compilation, resource loading, and JSBridge performance, see Optimizing Web Page Loading <p>When the white screen duration is long due to complex web page parsing, you can enable [optimizeParserBudget](arkts-arkweb-web-attribute.md#optimizeparserbudget) to reduce the first frame rendering content.</p> </p>
 
 ## Web
 
@@ -8,11 +8,11 @@ Defines Web Component. <p><strong>API Note</strong>: <strong>Performance Note</s
 Web(value: WebOptions)
 ```
 
-Sets Value.
+Sets Value. > **说明：** > > - 在HTML5侧，调用console.log或console.info对应ConsoleMessage的信息级别都为MessageLevel.Info。
 
-**起始版本：** 11
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ Sets Value.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [WebOptions](arkts-arkweb-weboptions-i.md) | 是 |  |
+| value | [WebOptions](arkts-arkweb-weboptions-i.md) | 是 | Web组件的初始化配置选项，用于设置加载的网页资源（src）、绑定的控制器（controller）以及渲染模式等行为参数。具体属性结构请参考WebOptions接口定义。 |
 
 ## 汇总
 

@@ -133,7 +133,7 @@ LowPowerVideoSink流切换调用该方法，包含在[OH_LowPowerVideoSinkCallba
 | 参数项 | 描述 |
 | -- | -- |
 | (OH_LowPowerVideoSink\* sink | OH_LowPowerVideoSink instance |
-| OH_AVFormat\* format | Carrying changing parameters and corresponding values |
+| [OH_AVFormat](../AVCodecKit/capi-core-oh-avformat.md)\* format | Carrying changing parameters and corresponding values |
 | void\* userData | User specific data |
 
 ### OH_LowPowerVideoSink_OnFirstFrameDecoded()

@@ -10,11 +10,11 @@ function getActiveNotifications(callback: AsyncCallback<Array<NotificationReques
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [getActiveNotifications](arkts-notification-notificationmanager-getactivenotifications-f.md#getActiveNotifications)
+**替代接口：** [getActiveNotifications](arkts-notification-notificationmanager-getactivenotifications-f.md#getactivenotifications)
 
 <!--Device-notification-function getActiveNotifications(callback: AsyncCallback<Array<NotificationRequest>>): void--><!--Device-notification-function getActiveNotifications(callback: AsyncCallback<Array<NotificationRequest>>): void-End-->
 
@@ -37,11 +37,11 @@ function getActiveNotifications(): Promise<Array<NotificationRequest>>
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [getActiveNotifications](arkts-notification-notificationmanager-getactivenotifications-f.md#getActiveNotifications)
+**替代接口：** [getActiveNotifications](arkts-notification-notificationmanager-getactivenotifications-f.md#getactivenotifications)
 
 <!--Device-notification-function getActiveNotifications(): Promise<Array<NotificationRequest>>--><!--Device-notification-function getActiveNotifications(): Promise<Array<NotificationRequest>>-End-->
 

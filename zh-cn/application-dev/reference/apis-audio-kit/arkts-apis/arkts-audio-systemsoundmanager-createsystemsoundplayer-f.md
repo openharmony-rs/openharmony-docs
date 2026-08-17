@@ -10,7 +10,7 @@ function createSystemSoundPlayer(): Promise<SystemSoundPlayer | null>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -38,8 +38,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let systemSoundPlayer: systemSoundManager.SystemSoundPlayer | null = null;
 
 systemSoundManager.createSystemSoundPlayer().then((systemSoundPlayerInstance) => {
-  console.info('Succeeded in creating the system sound player.');
   systemSoundPlayer = systemSoundPlayerInstance;
+  console.info('Succeeded in creating the system sound player.');
 }).catch((err: BusinessError) => {
   console.error(`Failed to create the system sound player. Code: ${err.code}, message: ${err.message}`);
 });

@@ -4,7 +4,7 @@
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 10
 
@@ -22,7 +22,7 @@ static access(options: FileAccessOption): void
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 10
 
@@ -129,11 +129,11 @@ static copy(options: FileCopyOption): void
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 10
 
-**替代接口：** [copyFile](arkts-corefile-file-fs-copyfile-f.md#copyFile)
+**替代接口：** [copyFile](arkts-corefile-file-fs-copyfile-f.md#copyfile)
 
 <!--Device-File-static copy(options: FileCopyOption): void--><!--Device-File-static copy(options: FileCopyOption): void-End-->
 
@@ -238,7 +238,7 @@ static delete(options: FileDeleteOption): void
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 10
 
@@ -345,7 +345,7 @@ static get(options: FileGetOption): void
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 10
 
@@ -452,11 +452,11 @@ static list(options: FileListOption): void
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 10
 
-**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listFile)
+**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
 
 <!--Device-File-static list(options: FileListOption): void--><!--Device-File-static list(options: FileListOption): void-End-->
 
@@ -559,7 +559,7 @@ static mkdir(options: FileMkdirOption): void
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 10
 
@@ -666,11 +666,11 @@ static move(options: FileMoveOption): void
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 10
 
-**替代接口：** [moveFile](arkts-corefile-file-fs-movefile-f.md#moveFile)
+**替代接口：** [moveFile](arkts-corefile-file-fs-movefile-f.md#movefile)
 
 <!--Device-File-static move(options: FileMoveOption): void--><!--Device-File-static move(options: FileMoveOption): void-End-->
 
@@ -775,7 +775,7 @@ static readArrayBuffer(options: FileReadArrayBufferOption): void
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 10
 
@@ -886,11 +886,11 @@ static readText(options: FileReadTextOption): void
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 10
 
-**替代接口：** [readText](arkts-corefile-file-fs-readtext-f.md#readText)
+**替代接口：** [readText](arkts-corefile-file-fs-readtext-f.md#readtext)
 
 <!--Device-File-static readText(options: FileReadTextOption): void--><!--Device-File-static readText(options: FileReadTextOption): void-End-->
 
@@ -993,7 +993,7 @@ static rmdir(options: FileRmdirOption): void
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 10
 
@@ -1100,7 +1100,7 @@ static writeArrayBuffer(options: FileWriteArrayBufferOption): void
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 10
 
@@ -1209,7 +1209,7 @@ static writeText(options: FileWriteTextOption): void
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 10
 

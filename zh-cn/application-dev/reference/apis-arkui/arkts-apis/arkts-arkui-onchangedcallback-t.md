@@ -8,7 +8,7 @@ declare type OnChangedCallback = (callbackParam: CallbackParamV2) => void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -24,5 +24,5 @@ declare type OnChangedCallback = (callbackParam: CallbackParamV2) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackParam | [CallbackParamV2](../../apis-na/arkts-apis/arkts-na-arkui-advanced-treeviewv2-callbackparamv2-i.md) | 是 | The result of event. |
+| callbackParam | [CallbackParamV2](arkts-arkui-arkui-advanced-treeviewv2-callbackparamv2-i.md) | 是 | The result of event. |
 

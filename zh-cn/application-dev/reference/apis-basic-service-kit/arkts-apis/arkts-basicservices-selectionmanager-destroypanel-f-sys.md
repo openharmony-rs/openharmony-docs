@@ -6,11 +6,11 @@
 function destroyPanel(panel: Panel): Promise<void>
 ```
 
-销毁划词面板。与[createPanel](arkts-basicservices-selectionmanager-createpanel-f-sys.md#createPanel（系统接口）)搭配使用，用于销毁由createPanel()创建的面板对象。使用Promise异步回调。
+销毁划词面板。与[createPanel](arkts-basicservices-selectionmanager-createpanel-f-sys.md#createpanel系统接口)搭配使用，用于销毁由createPanel()创建的面板对象。使用Promise异步回调。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 

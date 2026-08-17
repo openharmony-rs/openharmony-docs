@@ -1,10 +1,10 @@
 # VibratorPatternBuilder
 
-提供添加长振、短振事件和生成VibratorPattern对象的方法。使用流程：先通过 [addContinuousEvent](#addContinuousEvent)或 [addTransientEvent](#addTransientEvent)添加振动事件，再通过 [build](#build)方法生成VibratorPattern对象，最后将该对象作为 [VibrateFromPattern](arkts-sensorservice-vibrator-vibratefrompattern-i.md#VibrateFromPattern)的pattern参数传入 [vibrator.startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startVibration) 接口触发振动。 当开发者需要通过灵活组合振动事件（长振和短振）构建自定义振动序列时使用此接口。适用于需要动态排列振动事件的交互反馈场景（如表情包拟真效果、游戏场景反馈），相比VibrateFromFile以文件描述符方式传递振动事件， VibratorPatternBuilder以振动事件数组形式传递，支持更灵活的振动事件排列组合。
+提供添加长振、短振事件和生成VibratorPattern对象的方法。使用流程：先通过 [addContinuousEvent](#addcontinuousevent)或 [addTransientEvent](#addtransientevent)添加振动事件，再通过 [build](#build)方法生成VibratorPattern对象，最后将该对象作为 [VibrateFromPattern](arkts-sensorservice-vibrator-vibratefrompattern-i.md#vibratefrompattern)的pattern参数传入 [vibrator.startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startvibration) 接口触发振动。 当开发者需要通过灵活组合振动事件（长振和短振）构建自定义振动序列时使用此接口。适用于需要动态排列振动事件的交互反馈场景（如表情包拟真效果、游戏场景反馈），相比VibrateFromFile以文件描述符方式传递振动事件， VibratorPatternBuilder以振动事件数组形式传递，支持更灵活的振动事件排列组合。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ addContinuousEvent(time: int, duration: int, options?: ContinuousParam): Vibrato
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -34,8 +34,8 @@ addContinuousEvent(time: int, duration: int, options?: ContinuousParam): Vibrato
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| time | int | 是 | 长振事件的起始时间。单位：ms。取值范围：[0,1800000]区间内所有整数。使用场景：用于指定长振事件在振动序列中的起始时间点，多个事件间time值不能重叠。 |
-| duration | int | 是 | 长振事件的持续时间。单位：ms。取值范围：(0,5000]区间内所有整数。 |
+| time | int | 是 | 长振事件的起始时间。单位：ms（毫秒）。取值范围：[0,1800000]区间内所有整数。使用场景：用于指定长振事件在振动序列中的起始时间点，多个事件间time值不能重叠。 |
+| duration | int | 是 | 长振事件的持续时间。单位：ms（毫秒）。取值范围：(0,5000]区间内所有整数。 |
 | options | [ContinuousParam](arkts-sensorservice-vibrator-continuousparam-i.md) | 否 | 可选参数，用于指定长振事件的振动强度、频率、振动调节曲线和通道编号。不填时使用各参数的默认值（intensity默认100，frequency默认50，index 默认0）。 |
 
 **返回值：**
@@ -48,7 +48,7 @@ addContinuousEvent(time: int, duration: int, options?: ContinuousParam): Vibrato
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## 示例
 
@@ -130,11 +130,11 @@ try {
 addTransientEvent(time: int, options?: TransientParam): VibratorPatternBuilder
 ```
 
-添加短振事件的方法, 添加后使用[build](#build)方法生成 [VibratorPattern](arkts-sensorservice-vibrator-vibratorpattern-i.md#VibratorPattern)对象。适用于点击、按键等短促振动反馈场景，返回VibratorPatternBuilder对象，支持链式调用继续添加振动事件。
+添加短振事件的方法，添加后使用[build](#build)方法生成 [VibratorPattern](arkts-sensorservice-vibrator-vibratorpattern-i.md#vibratorpattern)对象。适用于点击、按键等短促振动反馈场景，返回VibratorPatternBuilder对象，支持链式调用继续添加振动事件。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -146,7 +146,7 @@ addTransientEvent(time: int, options?: TransientParam): VibratorPatternBuilder
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| time | int | 是 | 短振事件的起始时间。单位：ms。取值范围：[0,1800000]区间内所有整数。使用场景：用于指定短振事件在振动序列中的起始时间点，多个事件间time值不能重叠。 |
+| time | int | 是 | 短振事件的起始时间。单位：ms（毫秒）。取值范围：[0,1800000]区间内所有整数。使用场景：用于指定短振事件在振动序列中的起始时间点，多个事件间time值不能重叠。 |
 | options | [TransientParam](arkts-sensorservice-vibrator-transientparam-i.md) | 否 | 可选参数，用于指定短振事件的振动强度、频率和通道编号。不填时使用各参数的默认值（intensity默认100，frequency默认50，index默认0）。 |
 
 **返回值：**
@@ -159,7 +159,7 @@ addTransientEvent(time: int, options?: TransientParam): VibratorPatternBuilder
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## 示例
 
@@ -213,11 +213,11 @@ try {
 build(): VibratorPattern
 ```
 
-构造组合短事件或长事件的振动序列的方法。 适用于需要将自定义振动事件组合为振动序列后，通过[VibrateFromPattern](arkts-sensorservice-vibrator-vibratefrompattern-i.md#VibrateFromPattern)触发马达振动的场景。需先通过 [addContinuousEvent](#addContinuousEvent)或 [addTransientEvent](#addTransientEvent)添加振动事件后，再调用本方法生成VibratorPattern对象。返回 VibratorPattern对象，包含振动序列的起始时间和振动事件数组。该对象可作为VibrateFromPattern的pattern参数传入 [startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startVibration) 接口触发振动。需先通过[addContinuousEvent](#addContinuousEvent)或 [addTransientEvent](#addTransientEvent)添加至少一个振动事件后调用本方法，否则生成的VibratorPattern 为空序列。
+构造组合短事件或长事件的振动序列的方法。 适用于需要将自定义振动事件组合为振动序列后，通过[VibrateFromPattern](arkts-sensorservice-vibrator-vibratefrompattern-i.md#vibratefrompattern)触发马达振动的场景。需先通过 [addContinuousEvent](#addcontinuousevent)或 [addTransientEvent](#addtransientevent)添加振动事件后，再调用本方法生成VibratorPattern对象。返回 VibratorPattern对象，包含振动序列的起始时间和振动事件数组。该对象可作为VibrateFromPattern的pattern参数传入 [startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startvibration) 接口触发振动。需先通过[addContinuousEvent](#addcontinuousevent)或 [addTransientEvent](#addtransientevent)添加至少一个振动事件后调用本方法，否则生成的VibratorPattern 为空序列。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

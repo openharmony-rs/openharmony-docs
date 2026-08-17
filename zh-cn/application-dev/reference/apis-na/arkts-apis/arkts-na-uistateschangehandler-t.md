@@ -8,7 +8,7 @@ UI状态变化处理函数，返回当前UI状态，值为结果 的所有当前
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -23,5 +23,5 @@ UI状态变化处理函数，返回当前UI状态，值为结果 的所有当前
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | node | [FrameNode](arkts-na-framenode-c.md) | 是 | 触发UI状态变化的节点。 |
-| currentUIStates | int | 是 | 回调触发时当前的UI状态。可以通过位与运算判断当前包含哪些[UIState](arkts-na-framenode-uistate-e.md#UIState)状态。位与运算方法：if (currentState & UIState.PRESSED == UIState.PRESSED)。一般的UIState状态检查可以直接判断：if (currentState == UIState.PRESSED)。 <br>取值限定为整数。 |
+| currentUIStates | int | 是 | 回调触发时当前的UI状态。可以通过位与运算判断当前包含哪些[UIState](arkts-na-framenode-uistate-e.md#uistate)状态。位与运算方法：if (currentState & UIState.PRESSED == UIState.PRESSED)。一般的UIState状态检查可以直接判断：if (currentState == UIState.PRESSED)。 <br>取值限定为整数。 |
 

@@ -1,10 +1,10 @@
 # PinVerifyResult
 
-Enum type supplied to [PinVerifyResult](#PinVerifyResult) when VerifyPinHandler#confirm being called.
+PIN码认证结果，用于标识PIN码验证的执行状态。
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -18,11 +18,11 @@ Enum type supplied to [PinVerifyResult](#PinVerifyResult) when VerifyPinHandler#
 PIN_VERIFICATION_SUCCESS = 0
 ```
 
-SUCCESS.
+成功。
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -36,11 +36,11 @@ SUCCESS.
 PIN_VERIFICATION_FAILED = 1
 ```
 
-FAILED.
+失败。
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 

@@ -6,7 +6,7 @@ Context是Stage模型的上下文基类，主要用于访问特定应用程序�
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -20,15 +20,15 @@ Context是Stage模型的上下文基类，主要用于访问特定应用程序�
 createBundleContext(bundleName: string): Context
 ```
 
-根据Bundle名称创建安装包的上下文。 > **说明：** > > - stage模型多module的情况下可能发生资源id冲突的情况，建议使用 > [application.createModuleContext](arkts-ability-application-createmodulecontext-f.md#createModuleContext)替代。
+根据Bundle名称创建安装包的上下文。 > **说明：** > > - stage模型多module的情况下可能发生资源id冲突的情况，建议使用 > [application.createModuleContext](arkts-ability-application-createmodulecontext-f.md#createmodulecontext)替代。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 12
 
-**替代接口：** [createBundleContext](arkts-ability-application-createbundlecontext-f-sys.md#createBundleContext（系统接口）)
+**替代接口：** [createBundleContext](arkts-ability-application-createbundlecontext-f-sys.md#createbundlecontext系统接口)
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -89,11 +89,11 @@ createModuleContext(bundleName: string, moduleName: string): Context
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 12
 
-**替代接口：** [createModuleContext](arkts-ability-application-createmodulecontext-f.md#createModuleContext)
+**替代接口：** [createModuleContext](arkts-ability-application-createmodulecontext-f.md#createmodulecontext)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -151,7 +151,7 @@ createModuleResourceManager(bundleName: string, moduleName: string): resmgr.Reso
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -176,7 +176,7 @@ createModuleResourceManager(bundleName: string, moduleName: string): resmgr.Reso
 
 | 类型 | 说明 |
 | --- | --- |
-| resmgr.ResourceManager | Object for resource management. |
+| resmgr.ResourceManager | 资源管理对象。 |
 
 **错误码：**
 
@@ -212,11 +212,11 @@ export default class EntryAbility extends UIAbility {
 createSystemHspModuleResourceManager(bundleName: string, moduleName: string): resmgr.ResourceManager
 ```
 
-该接口用于OEM厂商预置的[系统级HSP](../../../quick-start/application-package-glossary.md#系统级hsp)创建自己的 [ResourceManager](../../apis-localization-kit/arkts-apis/arkts-resourcemanager.md#@ohos.resourceManager)。
+该接口用于OEM厂商预置的[系统级HSP](../../../quick-start/application-package-glossary.md#系统级hsp)创建自己的 [ResourceManager](../../apis-localization-kit/arkts-apis/arkts-resourcemanager.md#ohosresourcemanager)。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -239,7 +239,7 @@ createSystemHspModuleResourceManager(bundleName: string, moduleName: string): re
 
 | 类型 | 说明 |
 | --- | --- |
-| resmgr.ResourceManager | Returns the system HSP module resource manager. |
+| resmgr.ResourceManager | 系统HSP模块资源管理对象。 |
 
 **错误码：**
 

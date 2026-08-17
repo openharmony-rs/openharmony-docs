@@ -6,11 +6,11 @@
 export function off(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callback?: Callback<NavDestinationInfo>): void
 ```
 
-取消监听NavDestination组件的状态变化。与[uiObserver.off](#off_navDestinationUpdate)相比，新增了options参数，即支持指定监听的Navigation的id。
+取消监听NavDestination组件的状态变化。与[uiObserver.off](#offnavdestinationupdate)相比，新增了options参数，即支持指定监听的Navigation的id。
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -41,7 +41,7 @@ export function off(type: 'navDestinationUpdate', callback?: Callback<NavDestina
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 

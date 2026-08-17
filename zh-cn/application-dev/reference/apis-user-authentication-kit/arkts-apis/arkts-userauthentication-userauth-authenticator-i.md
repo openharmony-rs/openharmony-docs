@@ -4,11 +4,11 @@
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 
-**替代接口：** [AuthInstance](arkts-userauthentication-userauth-authinstance-i.md#AuthInstance)
+**替代接口：** [AuthInstance](arkts-userauthentication-userauth-authinstance-i.md#authinstance)
 
 <!--Device-userAuth-interface Authenticator--><!--Device-userAuth-interface Authenticator-End-->
 
@@ -24,7 +24,7 @@ execute(type: AuthType, level: SecureLevel, callback: AsyncCallback<number>): vo
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 
@@ -40,9 +40,9 @@ execute(type: AuthType, level: SecureLevel, callback: AsyncCallback<number>): vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | AuthType | 是 | 认证类型，当前只支持"FACE_ONLY"。&lt;br/&gt;ALL为预留参数。当前版本暂不支持ALL类型的认证。 |
-| level | [SecureLevel](arkts-userauthentication-userauth-securelevel-t.md) | 是 | 安全级别，对应认证的安全级别，有效值为"S1"（最低）、"S2"、"S3"、"S4"（最高）。&lt;br/&gt;具备3D人脸识别能力的设备支持"S3"及以下安全级别的认证。 &lt;br/&gt;具备2D人脸识别能力的设备支持"S2"及以下安全级别的认证。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数。number表示认证结果，参见 [AuthenticationResult](arkts-userauthentication-userauth-authenticationresult-e.md#AuthenticationResult)。 |
+| type | AuthType | 是 | 认证类型，当前只支持"FACE_ONLY"。<br/>ALL为预留参数。当前版本暂不支持ALL类型的认证。 |
+| level | [SecureLevel](arkts-userauthentication-userauth-securelevel-t.md) | 是 | 安全级别，对应认证的安全级别，有效值为"S1"（最低）、"S2"、"S3"、"S4"（最高）。<br/>具备3D人脸识别能力的设备支持"S3"及以下安全级别的认证。 <br/>具备2D人脸识别能力的设备支持"S2"及以下安全级别的认证。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数。number表示认证结果，参见 [AuthenticationResult](arkts-userauthentication-userauth-authenticationresult-e.md#authenticationresult)。 |
 
 ## 示例
 
@@ -69,7 +69,7 @@ execute(type: AuthType, level: SecureLevel): Promise<number>
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 
@@ -85,8 +85,8 @@ execute(type: AuthType, level: SecureLevel): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | AuthType | 是 | 认证类型，当前只支持"FACE_ONLY"。&lt;br/&gt;ALL为预留参数。当前版本暂不支持ALL类型的认证。 |
-| level | [SecureLevel](arkts-userauthentication-userauth-securelevel-t.md) | 是 | 安全级别，对应认证的安全级别，有效值为"S1"（最低）、"S2"、"S3"、"S4"（最高）。&lt;br/&gt;具备3D人脸识别能力的设备支持"S3"及以下安全级别的认证。 &lt;br/&gt;具备2D人脸识别能力的设备支持"S2"及以下安全级别的认证。 |
+| type | AuthType | 是 | 认证类型，当前只支持"FACE_ONLY"。<br/>ALL为预留参数。当前版本暂不支持ALL类型的认证。 |
+| level | [SecureLevel](arkts-userauthentication-userauth-securelevel-t.md) | 是 | 安全级别，对应认证的安全级别，有效值为"S1"（最低）、"S2"、"S3"、"S4"（最高）。<br/>具备3D人脸识别能力的设备支持"S3"及以下安全级别的认证。 <br/>具备2D人脸识别能力的设备支持"S2"及以下安全级别的认证。 |
 
 **返回值：**
 

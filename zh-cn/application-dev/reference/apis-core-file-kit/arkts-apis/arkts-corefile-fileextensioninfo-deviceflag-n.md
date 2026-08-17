@@ -4,7 +4,7 @@
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
@@ -23,7 +23,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [SUPPORTS_READ](arkts-corefile-deviceflag-con-sys.md#SUPPORTS_READ) | 此设备支持读。 |
-| [SUPPORTS_WRITE](arkts-corefile-deviceflag-con-sys.md#SUPPORTS_WRITE) | 此设备支持写。 |
+| [SUPPORTS_READ](arkts-corefile-deviceflag-con-sys.md#supportsread) | 此设备支持读。 |
+| [SUPPORTS_WRITE](arkts-corefile-deviceflag-con-sys.md#supportswrite) | 此设备支持写。 |
 <!--DelEnd-->
 

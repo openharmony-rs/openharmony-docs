@@ -4,11 +4,11 @@
 export type ResourceUsageObserver = (resourceType: ResourceType, resourceSize: long, detailInfo?: Record<string, long>) => void
 ```
 
-定义应用资源使用情况的观察者回调函数，作为 [errorManager.setDefaultResourceUsageObserver](arkts-ability-errormanager-setdefaultresourceusageobserver-f.md#setDefaultResourceUsageObserver)的入参，用于监听各类资源占用变化， 并支持应用执行自定义资源处理逻辑。
+定义应用资源使用情况的观察者回调函数，作为 [errorManager.setDefaultResourceUsageObserver](arkts-ability-errormanager-setdefaultresourceusageobserver-f.md#setdefaultresourceusageobserver)的入参，用于监听各类资源占用变化， 并支持应用执行自定义资源处理逻辑。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 

@@ -4,7 +4,7 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ groupTitle?: string
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -44,13 +44,13 @@ groupTitle?: string
 isGroupIcon?: boolean
 ```
 
-是否使用该通知[NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md#NotificationRequest)中的smallIcon字段作为通知成组后 展示的组图标。当该通知是通知组中最新的一条通知，且开发者传入smallIcon时，是否使用smallIcon作为组图标。默认值为false。 - true：使用smallIcon作为组通知的图标。 - false：不使用smallIcon作为组通知的图标。
+是否使用该通知[NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md#notificationrequest)中的smallIcon字段作为通知成组后 展示的组图标。当该通知是通知组中最新的一条通知，且开发者传入smallIcon时，是否使用smallIcon作为组图标。默认值为false。 - true：使用smallIcon作为组通知的图标。 - false：不使用smallIcon作为组通知的图标。
 
 **类型：** boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

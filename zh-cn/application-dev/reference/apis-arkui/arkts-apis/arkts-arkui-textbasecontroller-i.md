@@ -4,7 +4,7 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ closeSelectionMenu(): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -44,7 +44,7 @@ getLayoutManager(): LayoutManager
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -72,7 +72,7 @@ setSelection(selectionStart: number, selectionEnd: number, options?: SelectionOp
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -88,7 +88,7 @@ setSelection(selectionStart: number, selectionEnd: number, options?: SelectionOp
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| selectionStart | number | 是 | 选中开始位置。 &lt;br&gt;取值小于0时，按0处理。取值大于文本长度时，按当前文本长度处理。 &lt;br&gt;特殊取值效果：当selectionStart和selectionEnd均为-1时，表示全选。 |
-| selectionEnd | number | 是 | 选中结束位置。 &lt;br&gt;取值小于0时，按0处理。取值大于文本长度时，按当前文本长度处理。 &lt;br&gt;特殊取值效果：当selectionStart和selectionEnd均为-1时，表示全选。 |
+| selectionStart | number | 是 | 选中开始位置。 <br>取值小于0时，按0处理。取值大于文本长度时，按当前文本长度处理。 <br>特殊取值效果：当selectionStart和selectionEnd均为-1时，表示全选。 |
+| selectionEnd | number | 是 | 选中结束位置。 <br>取值小于0时，按0处理。取值大于文本长度时，按当前文本长度处理。 <br>特殊取值效果：当selectionStart和selectionEnd均为-1时，表示全选。 |
 | options | SelectionOptions | 否 | 选择项配置。 默认值继承SelectionOptions。 |
 

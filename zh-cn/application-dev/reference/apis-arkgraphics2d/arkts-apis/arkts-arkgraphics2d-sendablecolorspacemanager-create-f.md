@@ -10,7 +10,7 @@ function create(colorSpaceName: colorSpaceManager.ColorSpace): ColorSpaceManager
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -22,13 +22,13 @@ function create(colorSpaceName: colorSpaceManager.ColorSpace): ColorSpaceManager
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| colorSpaceName | colorSpaceManager.ColorSpace | 是 | 标准色域类型枚举值。 &lt;br&gt;UNKNOWN与CUSTOM不可用于直接创建色域对象。 |
+| colorSpaceName | colorSpaceManager.ColorSpace | 是 | 标准色域类型枚举值。 <br>UNKNOWN与CUSTOM不可用于直接创建色域对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ColorSpaceManager | 返回当前创建的可共享的色彩管理实例。 &lt;br&gt;该实例继承ISendable，可以在ArkTS并发实例间（包括主线程、TaskPool&Worker工作线程）传递，传递的行为是引用传递，参考 [Sendable使用场景](../../../arkts-utils/sendable-guide.md)。 |
+| ColorSpaceManager | 返回当前创建的可共享的色彩管理实例。 <br>该实例继承ISendable，可以在ArkTS并发实例间（包括主线程、TaskPool&Worker工作线程）传递，传递的行为是引用传递，参考 [Sendable使用场景](../../../arkts-utils/sendable-guide.md)。 |
 
 **错误码：**
 
@@ -57,7 +57,7 @@ function create(primaries: colorSpaceManager.ColorSpacePrimaries, gamma: number)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -76,7 +76,7 @@ function create(primaries: colorSpaceManager.ColorSpacePrimaries, gamma: number)
 
 | 类型 | 说明 |
 | --- | --- |
-| ColorSpaceManager | 返回当前创建的可共享的色彩管理实例。 &lt;br&gt;色域类型定义为[colorSpaceManager.ColorSpace]{ |
+| ColorSpaceManager | 返回当前创建的可共享的色彩管理实例。 <br>色域类型定义为[colorSpaceManager.ColorSpace]{ |
 
 **错误码：**
 

@@ -10,11 +10,11 @@ declare function rmdirSync(path: string): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [rmdirSync](arkts-corefile-file-fs-rmdirsync-f.md#rmdirSync)
+**替代接口：** [rmdirSync](arkts-corefile-file-fs-rmdirsync-f.md#rmdirsync)
 
 <!--Device-unnamed-declare function rmdirSync(path: string): void--><!--Device-unnamed-declare function rmdirSync(path: string): void-End-->
 

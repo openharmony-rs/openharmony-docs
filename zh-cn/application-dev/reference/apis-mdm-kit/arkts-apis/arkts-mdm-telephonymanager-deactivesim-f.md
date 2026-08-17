@@ -10,7 +10,7 @@ function deactiveSim(admin: Want, slotId: number): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -57,9 +57,9 @@ let slotId: number = 0;
 try {
   // 停用指定卡槽的SIM卡
   telephonyManager.deactiveSim(wantTemp, slotId);
-  console.info(`success to deactive SIM`);
+  console.info(`success in deactivating SIM card on slot ${slotId}`);
 } catch (err) {
-  console.error(`Failed to deactive SIM. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to deactivate SIM on slot ${slotId}. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 

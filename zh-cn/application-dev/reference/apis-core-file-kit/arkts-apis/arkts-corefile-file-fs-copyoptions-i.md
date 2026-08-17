@@ -4,7 +4,7 @@
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -20,11 +20,11 @@ copySignal?: TaskSignal
 
 取消拷贝信号。
 
-**类型：** [TaskSignal](arkts-corefile-file-fs-tasksignal-c.md)
+**类型：** [TaskSignal](../../apis-na/arkts-apis/arkts-na-tasksignal-t.md)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -44,7 +44,7 @@ progressListener?: ProgressListener
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 

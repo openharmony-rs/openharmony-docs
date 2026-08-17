@@ -4,11 +4,11 @@
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 11
 
-**替代接口：** [IAuthCallback](arkts-userauthentication-userauth-iauthcallback-i.md#IAuthCallback)
+**替代接口：** [IAuthCallback](arkts-userauthentication-userauth-iauthcallback-i.md#iauthcallback)
 
 <!--Device-userAuth-interface AuthEvent--><!--Device-userAuth-interface AuthEvent-End-->
 
@@ -24,11 +24,11 @@ callback(result: EventInfo): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 11
 
-**替代接口：** [onResult](arkts-userauthentication-userauth-iauthcallback-i.md#onResult)(result: UserAuthResult)
+**替代接口：** [onResult](arkts-userauthentication-userauth-iauthcallback-i.md#onresult)(result: UserAuthResult)
 
 <!--Device-AuthEvent-callback(result: EventInfo): void--><!--Device-AuthEvent-callback(result: EventInfo): void-End-->
 

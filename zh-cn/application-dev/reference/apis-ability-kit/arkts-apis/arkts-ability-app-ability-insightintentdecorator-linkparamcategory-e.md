@@ -4,7 +4,7 @@
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ LINK = 'link'
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -40,11 +40,11 @@ LINK = 'link'
 WANT = 'want'
 ```
 
-表示意图参数类别为'want'。意图参数将通过[Want](arkts-ability-app-ability-want-want-c.md#Want)的parameters字段传给应用。
+表示意图参数类别为'want'。意图参数将通过[Want](arkts-ability-app-ability-want-want-c.md#want)的parameters字段传给应用。
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 

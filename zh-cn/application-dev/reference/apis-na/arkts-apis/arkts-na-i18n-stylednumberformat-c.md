@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ constructor(numberFormat: Intl.NumberFormat | SimpleNumberFormat, options?: Styl
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -36,8 +36,8 @@ constructor(numberFormat: Intl.NumberFormat | SimpleNumberFormat, options?: Styl
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| numberFormat | Intl.NumberFormat \| [SimpleNumberFormat](../../apis-localization-kit/arkts-apis/arkts-localization-i18n-simplenumberformat-c.md) | 是 | 用于格式化数字的对象。 |
-| options | [StyledNumberFormatOptions](../../apis-localization-kit/arkts-apis/arkts-localization-i18n-stylednumberformatoptions-i.md) | 否 | 指定数字格式化对象的配置项。默认值：默认的文本样式。 |
+| numberFormat | Intl.NumberFormat \| [SimpleNumberFormat](arkts-na-i18n-simplenumberformat-c.md) | 是 | 用于格式化数字的对象。 |
+| options | [StyledNumberFormatOptions](arkts-na-i18n-stylednumberformatoptions-i.md) | 否 | 指定数字格式化对象的配置项。默认值：默认的文本样式。 |
 
 ## format
 
@@ -49,7 +49,7 @@ format(value: double): StyledString
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

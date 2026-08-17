@@ -10,7 +10,7 @@ function setApplicationEnabledSync(bundleName: string, isEnabled: boolean): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -67,7 +67,7 @@ function setApplicationEnabledSync(bundleName: string, appIndex: int, isEnabled:
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -86,7 +86,7 @@ function setApplicationEnabledSync(bundleName: string, appIndex: int, isEnabled:
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 应用包名 |
-| appIndex | int | 是 | 应用的分身索引 &lt;br&gt;取值范围为全体整数。 |
+| appIndex | int | 是 | 应用的分身索引 <br>取值范围为全体整数。 |
 | isEnabled | boolean | 是 | true表示启用应用程序，false表示启用应用程序。 |
 | killProcess | boolean | 是 | true表示应用进程在禁用时杀死应用程序进程，而值为false表示禁用时不会杀死应用程序进程 |
 

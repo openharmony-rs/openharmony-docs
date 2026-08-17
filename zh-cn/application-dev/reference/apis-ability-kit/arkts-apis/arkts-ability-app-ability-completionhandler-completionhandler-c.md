@@ -1,10 +1,10 @@
 # CompletionHandler
 
-CompletionHandler提供了 [onRequestSuccess](#onRequestSuccess)和 [onRequestFailure](#onRequestFailure)两个回调函数，分别用来处理拉 起应用成功和失败时的结果。
+CompletionHandler提供了 [onRequestSuccess](#onrequestsuccess)和 [onRequestFailure](#onrequestfailure)两个回调函数，分别用来处理拉 起应用成功和失败时的结果。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ onRequestFailure(elementName: ElementName, message: string): void
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -99,7 +99,7 @@ onRequestSuccess(elementName: ElementName, message: string): void
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -120,7 +120,7 @@ onRequestSuccess(elementName: ElementName, message: string): void
 
 ## 示例
 
-参见[onRequestFailure](#onRequestFailure)接口的示例。
+参见[onRequestFailure](#onrequestfailure)接口的示例。
 
 ## onRequestFailure
 
@@ -134,7 +134,7 @@ onRequestFailure: OnRequestFailureFn
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -156,7 +156,7 @@ onRequestSuccess: OnRequestSuccessFn
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

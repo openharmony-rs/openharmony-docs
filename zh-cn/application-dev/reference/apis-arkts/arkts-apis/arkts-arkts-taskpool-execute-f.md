@@ -10,7 +10,7 @@ function execute(func: Function, ...args: Object[]): Promise<Object>
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -67,7 +67,7 @@ function execute<A extends Array<Object>, R>(func: (...args: A) => R | Promise<R
 
 **起始版本：** 13
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
+**ArkTS模式：** 起始版本为13。
 
 **废弃版本：** -1
 
@@ -140,7 +140,7 @@ function execute(task: Task, priority?: Priority): Promise<Object>
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -208,7 +208,7 @@ function execute<A extends Array<Object>, R>(task: GenericsTask<A, R>, priority?
 
 **起始版本：** 13
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
+**ArkTS模式：** 起始版本为13。
 
 **废弃版本：** -1
 
@@ -274,7 +274,7 @@ function execute(group: TaskGroup, priority?: Priority): Promise<Object[]>
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -344,7 +344,7 @@ function execute(task: Task, configs: Configs): Promise<Object>
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -414,7 +414,7 @@ function execute<A extends Array<Object>, R>(task: GenericsTask<A, R>, configs: 
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -484,7 +484,7 @@ function execute(group: TaskGroup, configs: Configs): Promise<Object[]>
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 

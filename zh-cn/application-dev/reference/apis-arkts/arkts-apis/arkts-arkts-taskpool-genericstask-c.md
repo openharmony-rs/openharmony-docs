@@ -2,11 +2,11 @@
 
 表示泛型任务。**GenericsTask**继承自 [Task](arkts-arkts-taskpool-execute-f.md#execute)。 相比创建Task，创建GenericsTask可以在编译阶段校验并发函数的传参和返回值类型。其余行为与Task相同。
 
-**继承/实现关系：** GenericsTask extends [Task](arkts-arkts-taskpool-task-c.md#Task)
+**继承/实现关系：** GenericsTask extends [Task](arkts-arkts-taskpool-task-c.md#task)
 
 **起始版本：** 13
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
+**ArkTS模式：** 起始版本为13。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ GenericsTask的构造函数，用于创建一个**GenericsTask**对象。
 
 **起始版本：** 13
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
+**ArkTS模式：** 起始版本为13。
 
 **废弃版本：** -1
 
@@ -83,7 +83,7 @@ GenericsTask的构造函数，用于创建一个**GenericsTask**实例，并可�
 
 **起始版本：** 13
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
+**ArkTS模式：** 起始版本为13。
 
 **废弃版本：** -1
 

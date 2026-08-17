@@ -4,7 +4,7 @@
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ certChains?: Array<string>
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -40,13 +40,13 @@ certChains?: Array<string>
 outData?: Uint8Array
 ```
 
-表示 [initSession](arkts-universalkeystore-huks-initsession-f.md#initSession) 操作之后获取到的challenge信息。默认为undefined。
+表示 [initSession](arkts-universalkeystore-huks-initsession-f.md#initsession) 操作之后获取到的challenge信息。默认为undefined。
 
 **类型：** Uint8Array
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -62,13 +62,13 @@ outData?: Uint8Array
 properties?: Array<HuksParam>
 ```
 
-表示 [initSession](arkts-universalkeystore-huks-initsession-f.md#initSession) 操作之后获取到的challenge信息。默认为undefined。
+表示 [initSession](arkts-universalkeystore-huks-initsession-f.md#initsession) 操作之后获取到的challenge信息。默认为undefined。
 
 **类型：** Array&lt;[HuksParam](arkts-universalkeystore-huks-huksparam-i.md)&gt;
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -90,7 +90,7 @@ sharedSecret?: Uint8Array
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

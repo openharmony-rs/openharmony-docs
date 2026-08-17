@@ -6,11 +6,11 @@
 function addAsUser(userId: number, attributes: AssetMap): Promise<void>
 ```
 
-在指定用户空间中新增一条关键资产。使用Promise异步回调。 设置[Tag.IS_PERSISTENT](arkts-assetstore-asset-tagtype-e.md#TagType)属性，需申请ohos.permission.STORE_PERSISTENT_DATA权限，申请方式请参 考[声明权限](../../../security/AccessToken/declare-permissions.md)。
+在指定用户空间中新增一条关键资产。使用Promise异步回调。 设置[Tag.IS_PERSISTENT](arkts-assetstore-asset-tagtype-e.md#tagtype)属性，需申请ohos.permission.STORE_PERSISTENT_DATA权限， 申请方式请参考[声明权限](../../../security/AccessToken/declare-permissions.md)。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

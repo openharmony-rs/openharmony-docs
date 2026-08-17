@@ -4,7 +4,7 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ constructor(lineSpacing: LengthMetrics, options?: LineSpacingOptions)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -36,8 +36,8 @@ constructor(lineSpacing: LengthMetrics, options?: LineSpacingOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| lineSpacing | [LengthMetrics](arkts-arkui-lengthmetrics-t.md) | 是 | 文本的行间距。&lt;br/&gt;默认值：0.0&lt;br/&gt;取值范围： [0, +∞)&lt;br/&gt;**说明：** LengthMetrics的value值小于0时，取默认值0.0。 |
-| options | [LineSpacingOptions](arkts-arkui-textcommon-linespacingoptions-i.md) | 否 | 行间距的配置项。&lt;br/&gt;默认值：{ onlyBetweenLines: false } |
+| lineSpacing | [LengthMetrics](arkts-arkui-lengthmetrics-t.md) | 是 | 文本的行间距。<br/>默认值：0.0<br/>取值范围： [0, +∞)<br/>**说明：** LengthMetrics的value值小于0时，取默认值0.0。 |
+| options | [LineSpacingOptions](arkts-arkui-textcommon-linespacingoptions-i.md) | 否 | 行间距的配置项。<br/>默认值：{ onlyBetweenLines: false } |
 
 ## lineSpacing
 
@@ -51,7 +51,7 @@ readonly lineSpacing: double
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -73,7 +73,7 @@ readonly options?: LineSpacingOptions
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

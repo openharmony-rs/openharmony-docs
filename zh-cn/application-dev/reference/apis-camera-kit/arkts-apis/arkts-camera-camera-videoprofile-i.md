@@ -1,12 +1,12 @@
 # VideoProfile
 
-视频配置信息项，继承[Profile](arkts-camera-camera-profile-i.md#Profile)。
+视频配置信息项，继承[Profile](arkts-camera-camera-profile-i.md#profile)。
 
-**继承/实现关系：** VideoProfile extends [Profile](arkts-camera-camera-profile-i.md#Profile)
+**继承/实现关系：** VideoProfile extends [Profile](arkts-camera-camera-profile-i.md#profile)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ readonly frameRateRange: FrameRateRange
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

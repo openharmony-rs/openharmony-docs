@@ -18,7 +18,7 @@
 | 名称 | 说明 |
 | --- | --- |
 | [CustomComponentInvokeOptions](arkts-na-customcomponent-customcomponentinvokeoptions-i.md) | Defining interface for _invokeImpl options. |
-| [CustomComponentLifecycle](arkts-na-customcomponent-customcomponentlifecycle-i.md) | CustomComponentLifecycle用于监控自定义组件生命周期的变化，开发者可以通过 [UIUtils.getLifecycle](../../apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-uiutils-c.md#getLifecycle)获取CustomComponentLifecycle实例。 |
+| [CustomComponentLifecycle](arkts-na-customcomponent-customcomponentlifecycle-i.md) | CustomComponentLifecycle用于监控自定义组件生命周期的变化，开发者可以通过 [UIUtils.getLifecycle](../../apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-uiutils-c.md#getlifecycle)获取CustomComponentLifecycle实例。 |
 | [CustomComponentLifecycleObserver](arkts-na-customcomponent-customcomponentlifecycleobserver-i.md) | 用户注册自定义组件生命周期回调后，当该自定义组件的生命周期发生变化时，将触发监听器中相应的生命周期回调。 |
 | [LayoutCallbacks](arkts-na-customcomponent-layoutcallbacks-i.md) | Defining interface of LayoutCallbacks for custom component, when decorate with @Layoutable. |
 | [PageLifeCycle](arkts-na-customcomponent-pagelifecycle-i.md) | Defining interface of PageLifeCycle for custom component, when decorate with @Entry. |

@@ -6,7 +6,7 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -20,11 +20,11 @@
 enableAnalyzer(enable: boolean)
 ```
 
-设置是否启用AI图像分析器，支持主体识别、文字识别和查找对象。 要使设置生效，此属性必须与XComponentController的[StartImageAnalyzer](arkts-arkui-xcomponentcontroller-c.md#startImageAnalyzer)和[StopImageAnalyzer](arkts-arkui-xcomponentcontroller-c.md#stopImageAnalyzer)一起使用。 此特性不能与[overlay](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-overlay.md#overlay)属性同时使用。 如果两者都设置，overlay中的CustomBuilder属性将不生效。此特性还依赖于设备能力。
+设置是否启用AI图像分析器，支持主体识别、文字识别和查找对象。 要使设置生效，此属性必须与XComponentController的[StartImageAnalyzer](arkts-arkui-xcomponentcontroller-c.md#startimageanalyzer)和[StopImageAnalyzer](arkts-arkui-xcomponentcontroller-c.md#stopimageanalyzer)一起使用。 此特性不能与[overlay](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-overlay.md#overlay)属性同时使用。 如果两者都设置，overlay中的CustomBuilder属性将不生效。此特性还依赖于设备能力。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -40,7 +40,7 @@ enableAnalyzer(enable: boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enable | boolean | 是 | 是否启用AI图像分析器。&lt;br&gt;**true**：启用；**false**：禁用。&lt;br&gt; 默认值：**false**。 |
+| enable | boolean | 是 | 是否启用AI图像分析器。<br>**true**：启用；**false**：禁用。<br> 默认值：**false**。 |
 
 ## enableSecure
 
@@ -52,7 +52,7 @@ enableSecure(isSecure: boolean)
 
 **起始版本：** 13
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
+**ArkTS模式：** 起始版本为13。
 
 **废弃版本：** -1
 
@@ -68,7 +68,7 @@ enableSecure(isSecure: boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isSecure | boolean | 是 | 是否启用安全surface。&lt;br&gt;值**true**表示启用安全surface，**false**表示相反的情况。&lt;br&gt; 默认值：**false**。 |
+| isSecure | boolean | 是 | 是否启用安全surface。<br>值**true**表示启用安全surface，**false**表示相反的情况。<br> 默认值：**false**。 |
 
 ## hdrBrightness
 
@@ -76,11 +76,11 @@ enableSecure(isSecure: boolean)
 hdrBrightness(brightness: number, type?: HdrType)
 ```
 
-用于调整组件显示HDR内容时的亮度。&lt;br/&gt;当参数type设置为非**HdrType**.DEFAULT时，调用该接口前需先检查Display的hdrFormats属性是否包含对应的HDRFormat。 仅当hdrFormats包含对应的HDRFormat时，当前设备才支持对应的HDR类型，参数设置才会生效；否则将使用默认值**HdrType**.DEFAULT。 其映射关系如下：&lt;br/&gt;| type取值 | hdrFormats需包含的HDRFormat | &lt;br/&gt;| -------- | -------- | &lt;br/&gt;| **HdrType**.AIHDR | HDRFormat.VIDEO_AIHDR | **说明：** 仅XComponent构造参数中的type为**XComponentType**.SURFACE时该接口生效，否则该接口不生效。
+用于调整组件显示HDR内容时的亮度。<br/>当参数type设置为非**HdrType**.DEFAULT时，调用该接口前需先检查Display的hdrFormats属性是否包含对应的HDRFormat。 仅当hdrFormats包含对应的HDRFormat时，当前设备才支持对应的HDR类型，参数设置才会生效；否则将使用默认值**HdrType**.DEFAULT。 其映射关系如下：<br/>| type取值 | hdrFormats需包含的HDRFormat | <br/>| -------- | -------- | <br/>| **HdrType**.AIHDR | HDRFormat.VIDEO_AIHDR | **说明：** 仅XComponent构造参数中的type为**XComponentType**.SURFACE时该接口生效，否则该接口不生效。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -96,8 +96,8 @@ hdrBrightness(brightness: number, type?: HdrType)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| brightness | number | 是 | HDR内容的亮度。&lt;br/&gt;取值范围：[0.0, 1.0]。小于0.0的值按0.0处理，大于1.0的值按1.0处理，其他异常值按1.0处理。 &lt;br/&gt;**0.0**表示内容按照SDR亮度显示，**1.0**表示内容按照当前允许的最高HDR亮度显示。&lt;br/&gt;默认值：**1.0**。 |
-| type | [HdrType](arkts-arkui-hdrtype-e.md) | 否 | 显示HDR内容时的HDR类型。&lt;br/&gt;默认值：**HdrType.DEFAULT |
+| brightness | number | 是 | HDR内容的亮度。<br/>取值范围：[0.0, 1.0]。小于0.0的值按0.0处理，大于1.0的值按1.0处理，其他异常值按1.0处理。 <br/>**0.0**表示内容按照SDR亮度显示，**1.0**表示内容按照当前允许的最高HDR亮度显示。<br/>默认值：**1.0**。 |
+| type | [HdrType](arkts-arkui-hdrtype-e.md) | 否 | 显示HDR内容时的HDR类型。<br/>默认值：**HdrType.DEFAULT |
 
 ## onDestroy
 
@@ -109,7 +109,7 @@ onDestroy(event: VoidCallback)
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -135,7 +135,7 @@ onLoad(callback: OnNativeLoadCallback)
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 

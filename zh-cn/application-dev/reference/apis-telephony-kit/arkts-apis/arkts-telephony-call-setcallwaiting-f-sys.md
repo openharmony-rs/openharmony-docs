@@ -10,7 +10,7 @@ function setCallWaiting(slotId: int, activate: boolean, callback: AsyncCallback<
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -26,8 +26,8 @@ function setCallWaiting(slotId: int, activate: boolean, callback: AsyncCallback<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| slotId | int | 是 | 卡槽ID。&lt;br/&gt;- 0：卡槽1。&lt;br/&gt;- 1：卡槽2。 |
-| activate | boolean | 是 | 呼叫等待是否处于启用状态。&lt;br/&gt;- false：禁用呼叫等待。&lt;br/&gt;- true：启用呼叫等待。 |
+| slotId | int | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| activate | boolean | 是 | 呼叫等待是否处于启用状态。<br/>- false：禁用呼叫等待。<br/>- true：启用呼叫等待。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 以回调函数的方式返回设置呼叫等待的结果。 |
 
 **错误码：**
@@ -67,7 +67,7 @@ function setCallWaiting(slotId: int, activate: boolean): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -83,8 +83,8 @@ function setCallWaiting(slotId: int, activate: boolean): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| slotId | int | 是 | 卡槽ID。&lt;br/&gt;- 0：卡槽1。&lt;br/&gt;- 1：卡槽2。 |
-| activate | boolean | 是 | 呼叫等待是否处于启用状态。&lt;br/&gt;- false：禁用呼叫等待。&lt;br/&gt;- true：启用呼叫等待。 |
+| slotId | int | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| activate | boolean | 是 | 呼叫等待是否处于启用状态。<br/>- false：禁用呼叫等待。<br/>- true：启用呼叫等待。 |
 
 **返回值：**
 

@@ -10,7 +10,7 @@ function controlCamera(callId: int, cameraId: string): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -27,7 +27,7 @@ function controlCamera(callId: int, cameraId: string): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callId | int | 是 | 呼叫Id。可以通过订阅callDetailsChange事件获得。 |
-| cameraId | string | 是 | 相机ID。cameraId获取方式可参考相机管理 [getSupportedCameras](../../apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#getSupportedCameras)接口。 |
+| cameraId | string | 是 | 相机ID。cameraId获取方式可参考相机管理 [getSupportedCameras](../../apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#getsupportedcameras)接口。 |
 
 **返回值：**
 

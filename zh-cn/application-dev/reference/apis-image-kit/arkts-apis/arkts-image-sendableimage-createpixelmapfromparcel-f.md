@@ -10,7 +10,7 @@ Creates a PixelMap object based on MessageSequence parameter.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -48,32 +48,32 @@ Creates a PixelMap object based on MessageSequence parameter.
 
 ```TypeScript
 // EntryAbility.ets
-import { sendableImage } from '@kit.ImageKit';
 import { image } from '@kit.ImageKit';
 import { rpc } from '@kit.IPCKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 class MySequence implements rpc.Parcelable {
-  pixel_map: sendableImage.PixelMap;
-  constructor(conPixelmap: sendableImage.PixelMap) {
-    this.pixel_map = conPixelmap;
+  pixelMap: sendableImage.PixelMap;
+  constructor(pixelMap: sendableImage.PixelMap) {
+    this.pixelMap = pixelMap;
   }
   marshalling(messageSequence: rpc.MessageSequence) {
-    this.pixel_map.marshalling(messageSequence);
+    this.pixelMap.marshalling(messageSequence);
     return true;
   }
   unmarshalling(messageSequence: rpc.MessageSequence) {
     try {
-      this.pixel_map = sendableImage.createPixelMapFromParcel(messageSequence);
-    } catch(e) {
-      let error = e as BusinessError;
-      console.error(`Failed to create a PixelMap from a parcel. Code: ${error.code}, message: ${error.message}.`);
+      this.pixelMap = sendableImage.createPixelMapFromParcel(messageSequence);
+    } catch (e) {
+      const err = e as BusinessError;
+      console.error(`Failed to create the PixelMap from parcel. Code: ${err.code}, message: ${err.message}`);
       return false;
     }
     return true;
   }
 }
-async function CreatePixelMapFromParcel() {
+
+async function createPixelMapFromParcel() {
   const color: ArrayBuffer = new ArrayBuffer(96);
   let bufferArr: Uint8Array = new Uint8Array(color);
   for (let i = 0; i < bufferArr.length; i++) {
@@ -81,14 +81,11 @@ async function CreatePixelMapFromParcel() {
   }
   let opts: image.InitializationOptions = {
     editable: true,
-    pixelFormat: 4,
+    pixelFormat: image.PixelMapFormat.BGRA_8888,
     size: { height: 4, width: 6 },
-    alphaType: 3
-  }
-  let pixelMap: sendableImage.PixelMap | undefined = undefined;
-  await sendableImage.createPixelMap(color, opts).then((srcPixelMap: sendableImage.PixelMap) => {
-    pixelMap = srcPixelMap;
-  })
+    alphaType: image.AlphaType.UNPREMUL
+  };
+  const pixelMap: sendableImage.PixelMap | undefined = await sendableImage.createPixelMap(color, opts);
   if (pixelMap != undefined) {
     // 序列化。
     let parcelable: MySequence = new MySequence(pixelMap);
@@ -96,11 +93,14 @@ async function CreatePixelMapFromParcel() {
     data.writeParcelable(parcelable);
 
     // 反序列化rpc获取到data。
-    let ret: MySequence = new MySequence(pixelMap);
-    data.readParcelable(ret);
+    let seq: MySequence = new MySequence(pixelMap);
+    data.readParcelable(seq);
 
     // 获取到PixelMap。
-    let newPixelMap = ret.pixel_map;
+    let newPixelMap = seq.pixelMap;
+    if (newPixelMap != undefined) {
+      console.info('Succeeded in getting the PixelMap.');
+    }
   }
 }
 ```

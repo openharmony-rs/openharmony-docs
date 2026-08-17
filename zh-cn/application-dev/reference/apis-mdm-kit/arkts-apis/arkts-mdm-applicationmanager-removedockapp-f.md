@@ -10,7 +10,7 @@ function removeDockApp(admin: Want, bundleName: string, abilityName: string): vo
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -59,7 +59,7 @@ try {
   let abilityName: string = 'EntryAbility';
   applicationManager.removeDockApp(wantTemp, bundleName, abilityName);
   console.info('Succeeded in removing dock app.');
-} catch(err) {
+} catch (err) {
   console.error(`Failed to remove dock app. Code: ${err.code}, message: ${err.message}`);
 }
 ```

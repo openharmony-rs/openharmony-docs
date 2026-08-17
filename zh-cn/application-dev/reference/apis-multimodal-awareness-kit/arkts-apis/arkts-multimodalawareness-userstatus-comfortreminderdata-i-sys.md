@@ -1,12 +1,12 @@
 # ComfortReminderData（系统接口）
 
-舒适提醒数据。
+表示舒适提醒数据。
 
-**继承/实现关系：** ComfortReminderData extends [UserStatusData](arkts-multimodalawareness-userstatus-userstatusdata-i-sys.md#UserStatusData（系统接口）)
+**继承/实现关系：** ComfortReminderData extends [UserStatusData](arkts-multimodalawareness-userstatus-userstatusdata-i-sys.md#userstatusdata系统接口)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -22,13 +22,13 @@
 eventType: int
 ```
 
-事件类型。取值范围为0到1。0：注视事件，1：环境声音事件。
+表示事件类型。取值为0或1，0表示注视事件，1表示环境音事件。
 
 **类型：** int
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -46,13 +46,13 @@ eventType: int
 fusionReminderData: ReminderLevel
 ```
 
-融合提醒数据。
+表示综合检测后的提醒级别。
 
 **类型：** [ReminderLevel](arkts-multimodalawareness-userstatus-reminderlevel-e-sys.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -70,13 +70,13 @@ fusionReminderData: ReminderLevel
 swingReminderData: ReminderLevel
 ```
 
-摆动提醒数据。
+表示注视屏幕时提醒级别。
 
 **类型：** [ReminderLevel](arkts-multimodalawareness-userstatus-reminderlevel-e-sys.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

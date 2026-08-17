@@ -10,7 +10,7 @@ function uninstallUserCertificate(admin: Want, certUri: string): Promise<void>
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -27,7 +27,7 @@ function uninstallUserCertificate(admin: Want, certUri: string): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| certUri | string | 是 | 证书uri，由安装用户证书接口[installUserCertificate](arkts-mdm-securitymanager-installusercertificate-f.md#installUserCertificate)设置 返回。 |
+| certUri | string | 是 | 证书uri，由安装用户证书接口[installUserCertificate](arkts-mdm-securitymanager-installusercertificate-f.md#installusercertificate)设置 返回。 |
 
 **返回值：**
 

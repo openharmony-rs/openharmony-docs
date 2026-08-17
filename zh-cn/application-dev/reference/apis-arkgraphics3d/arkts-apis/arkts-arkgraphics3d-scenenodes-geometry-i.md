@@ -2,11 +2,11 @@
 
 定义Geometry接口.
 
-**继承/实现关系：** Geometry extends [Node](arkts-arkgraphics3d-scenenodes-node-i.md#Node)
+**继承/实现关系：** Geometry extends [Node](arkts-arkgraphics3d-scenenodes-node-i.md#node)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ readonly mesh: Mesh
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -46,7 +46,7 @@ Morpher目标定义.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

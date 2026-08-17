@@ -232,10 +232,10 @@ enum OH_AVScreenCaptureStateCode
 | OH_SCREEN_CAPTURE_STATE_ENTER_PRIVATE_SCENE = 8 | Current captured screen has private window |
 | OH_SCREEN_CAPTURE_STATE_EXIT_PRIVATE_SCENE = 9 | Private window disappeared on current captured screen |
 | OH_SCREEN_CAPTURE_STATE_STOPPED_BY_USER_SWITCHES = 10 | ScreenCapture stopped by user switches |
-| OH_SCREEN_CAPTURE_STATE_PAUSED_BY_USER = 11 | Screen capture paused by user<br>**起始版本：** 26.0.0 |
-| OH_SCREEN_CAPTURE_STATE_RESUMED_BY_USER = 12 | Screen capture resumed by user<br>**起始版本：** 26.0.0 |
-| OH_SCREEN_CAPTURE_STATE_PAUSED_BY_APP = 13 | Screen capture paused by app<br>**起始版本：** 26.0.0 |
-| OH_SCREEN_CAPTURE_STATE_RESUMED_BY_APP = 14 | Screen capture resumed by app<br>**起始版本：** 26.0.0 |
+| OH_SCREEN_CAPTURE_STATE_PAUSED_BY_USER = 11 | 用户暂停屏幕录制。<br>**起始版本：** 26.0.0 |
+| OH_SCREEN_CAPTURE_STATE_RESUMED_BY_USER = 12 | 用户恢复屏幕录制。<br>**起始版本：** 26.0.0 |
+| OH_SCREEN_CAPTURE_STATE_PAUSED_BY_APP = 13 | 应用暂停屏幕录制。<br>**起始版本：** 26.0.0 |
+| OH_SCREEN_CAPTURE_STATE_RESUMED_BY_APP = 14 | 应用恢复屏幕录制。<br>**起始版本：** 26.0.0 |
 
 ### OH_AVScreenCaptureBufferType
 

@@ -1,10 +1,10 @@
 # ArrayBuffer
 
-ArkTS TypedArray（Int8Array、 Uint8Array、 Int16Array、 Uint16Array、 Int32Array、 Uint32Array、 Uint8ClampedArray、 Float32Array）的底层数据结构。 > **说明：**> > - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。 > **装饰器类型**：\@Sendable
+ArkTS TypedArray（[Int8Array](arkts-collections.md#arktscollections)、 [Uint8Array](arkts-collections.md#arktscollections)、 [Int16Array](arkts-collections.md#arktscollections)、 [Uint16Array](arkts-collections.md#arktscollections)、 [Int32Array](arkts-collections.md#arktscollections)、 [Uint32Array](arkts-collections.md#arktscollections)、 [Uint8ClampedArray](arkts-collections.md#arktscollections)、 [Float32Array](arkts-collections.md#arktscollections)）的底层数据结构。 > **说明：**> > - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。 > **装饰器类型**：\@Sendable
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ constructor(byteLength: number)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -54,7 +54,7 @@ slice(begin: number, end?: number): ArrayBuffer
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -68,7 +68,7 @@ slice(begin: number, end?: number): ArrayBuffer
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| begin | number | 是 | 开始索引。如果`begin < 0`，则会从`begin + arrayBuffer.byteLength`位置开始。 如果`begin < -arrayBuffer.byteLength`，则从0开始。默认值为0。 |
+| begin | number | 是 | 开始索引。如果`begin &lt; 0`，则会从`begin + arrayBuffer.byteLength`位置开始。 如果`begin &lt; -arrayBuffer.byteLength`，则从0开始。默认值为0。 |
 | end | number | 否 | 结束索引（不包括该元素）。如果`end &lt; 0`，则会到`end + arrayBuffer.byteLength`位置结束。 如果`end &gt; arrayBuffer.byteLength`，则截取到arrayBuffer.byteLength位置。默认为原ArkTS ArrayBuffer的长度。 |
 
 **返回值：**
@@ -96,7 +96,7 @@ buffer所占的字节数。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

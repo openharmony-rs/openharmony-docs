@@ -10,7 +10,7 @@ function setEthernetConfig(admin: Want, networkInterface: string, config: Interf
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -49,7 +49,7 @@ import { networkManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 let config: networkManager.InterfaceConfig = {
   // 需根据实际情况进行替换
@@ -58,7 +58,7 @@ let config: networkManager.InterfaceConfig = {
   "gateway": "192.168.1.1",
   "netMask": "255.255.255.0",
   "dnsServers": "192.168.1.1"
-}
+};
 let networkInterface: string = "eth0"; // 需根据实际情况进行替换
 try {
   networkManager.setEthernetConfig(wantTemp, networkInterface, config);

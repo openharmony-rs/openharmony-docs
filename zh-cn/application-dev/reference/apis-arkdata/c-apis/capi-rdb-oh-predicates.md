@@ -68,7 +68,7 @@ OH_Predicates *(*equalTo)(OH_Predicates *predicates, const char *field, OH_VObje
 | -- | -- |
 | [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 表示指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针。 |
 |  const char *field | 表示数据库表中的列名。 |
-|  OH_VObject *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针。 |
+|  [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针。 |
 
 **返回：**
 
@@ -99,7 +99,7 @@ OH_Predicates *(*notEqualTo)(OH_Predicates *predicates, const char *field, OH_VO
 | -- | -- |
 | [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 表示指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针。 |
 |  const char *field | 表示数据库表中的列名。 |
-|  OH_VObject *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针。 |
+|  [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针。 |
 
 **返回：**
 
@@ -306,7 +306,7 @@ OH_Predicates *(*like)(OH_Predicates *predicates, const char *field, OH_VObject 
 | -- | -- |
 | [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 表示指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针。 |
 |  const char *field | 表示数据库表中的列名。 |
-|  OH_VObject *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针。 |
+|  [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针。 |
 
 **返回：**
 
@@ -337,7 +337,7 @@ OH_Predicates *(*between)(OH_Predicates *predicates, const char *field, OH_VObje
 | -- | -- |
 | [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 表示指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针。 |
 |  const char *field | 表示数据库表中的列名。 |
-|  OH_VObject *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针。 |
+|  [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针。 |
 
 **返回：**
 
@@ -368,7 +368,7 @@ OH_Predicates *(*notBetween)(OH_Predicates *predicates, const char *field, OH_VO
 | -- | -- |
 | [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 表示指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针。 |
 |  const char *field | 表示数据库表中的列名。 |
-|  OH_VObject *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针。 |
+|  [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针。 |
 
 **返回：**
 
@@ -399,7 +399,7 @@ OH_Predicates *(*greaterThan)(OH_Predicates *predicates, const char *field, OH_V
 | -- | -- |
 | [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 表示指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针。 |
 |  const char *field | 表示数据库表中的列名。 |
-|  OH_VObject *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针。 |
+|  [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针。 |
 
 **返回：**
 
@@ -430,7 +430,7 @@ OH_Predicates *(*lessThan)(OH_Predicates *predicates, const char *field, OH_VObj
 | -- | -- |
 | [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 表示指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针。 |
 |  const char *field | 表示数据库表中的列名。 |
-|  OH_VObject *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针。 |
+|  [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针。 |
 
 **返回：**
 
@@ -461,7 +461,7 @@ OH_Predicates *(*greaterThanOrEqualTo)(OH_Predicates *predicates, const char *fi
 | -- | -- |
 | [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 表示指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针。 |
 |  const char *field | 表示数据库表中的列名。 |
-|  OH_VObject *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针。 |
+|  [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针。 |
 
 **返回：**
 
@@ -492,7 +492,7 @@ OH_Predicates *(*lessThanOrEqualTo)(OH_Predicates *predicates, const char *field
 | -- | -- |
 | [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 表示指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针。 |
 |  const char *field | 表示数据库表中的列名。 |
-|  OH_VObject *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针。 |
+|  [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针。 |
 
 **返回：**
 
@@ -674,7 +674,7 @@ OH_Predicates *(*in)(OH_Predicates *predicates, const char *field, OH_VObject *v
 | -- | -- |
 | [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 表示指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针。 |
 |  const char *field | 表示数据库表中的列名。 |
-|  OH_VObject *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针。 |
+|  [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针。 |
 
 **返回：**
 
@@ -705,7 +705,7 @@ OH_Predicates *(*notIn)(OH_Predicates *predicates, const char *field, OH_VObject
 | -- | -- |
 | [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 表示指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针。 |
 |  const char *field | 表示数据库表中的列名。 |
-|  OH_VObject *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针。 |
+|  [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针。 |
 
 **返回：**
 

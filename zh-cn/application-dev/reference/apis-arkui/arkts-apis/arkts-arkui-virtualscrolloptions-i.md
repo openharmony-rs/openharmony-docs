@@ -4,7 +4,7 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ onLazyLoading?(index: number): void
 
 **起始版本：** 19
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+**ArkTS模式：** 起始版本为19。
 
 **废弃版本：** -1
 
@@ -38,7 +38,7 @@ onLazyLoading?(index: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 需要加载的数据项对应的索引。 &lt;br&gt;取值范围：自然数。 |
+| index | number | 是 | 需要加载的数据项对应的索引。 <br>取值范围：自然数。 |
 
 ## 示例
 
@@ -61,11 +61,11 @@ List() {
 onTotalCount?(): number
 ```
 
-可选方法，计算期望加载的数据项总数。需要开发者给定计算方法，其返回值可以不等于数据源长度（实际传入Repeat的数组的长度）。 [totalCount](#totalCount)和onTotalCount()的返回值都表示期望加载的数据项总数。开发者可直接设置totalCount属性，给出期望加载的数据项 总数，也可以通过onTotalCount()设定自定义方法，计算期望加载的数据项总数。totalCount与onTotalCount()最多设置一个。如果均未设置，则采用默认值：数据源长度；如果同时设置，则忽略 totalCount。 onTotalCount()不同返回值的数据加载处理规则与totalCount一致，具体如下： - onTotalCount()返回值 = 0时，不加载数据。 - 0 < onTotalCount()返回值 &lt;= 数据源长度时，只加载区间[0, onTotalCount()返回值 - 1]索引范围内的数据。 - onTotalCount()返回值 &gt; 数据源长度时，代表Repeat期望加载区间[0, onTotalCount()返回值 - 1]索引范围内的数据，容器组件滚动条样式根据onTotalCount()返回值变化。在容器组件滚 动过程中，应用需要保证在列表即将滑动到数据源末尾时请求后续数据。开发者需要对数据请求的错误场景（如网络延迟）进行保护操作，直到数据源全部加载完成，否则列表滑动过程中会出现滚动效果异常。建议配合使用 [onLazyLoading](#onLazyLoading)实现数据懒加载。 - onTotalCount()返回值是非自然数时，由数据源长度取代其返回值。
+可选方法，计算期望加载的数据项总数。需要开发者给定计算方法，其返回值可以不等于数据源长度（实际传入Repeat的数组的长度）。 [totalCount](#totalcount)和onTotalCount()的返回值都表示期望加载的数据项总数。开发者可直接设置totalCount属性，给出期望加载的数据项 总数，也可以通过onTotalCount()设定自定义方法，计算期望加载的数据项总数。totalCount与onTotalCount()最多设置一个。如果均未设置，则采用默认值：数据源长度；如果同时设置，则忽略 totalCount。 onTotalCount()不同返回值的数据加载处理规则与totalCount一致，具体如下： - onTotalCount()返回值 = 0时，不加载数据。 - 0 &lt; onTotalCount()返回值 &lt;= 数据源长度时，只加载区间[0, onTotalCount()返回值 - 1]索引范围内的数据。 - onTotalCount()返回值 &gt; 数据源长度时，代表Repeat期望加载区间[0, onTotalCount()返回值 - 1]索引范围内的数据，容器组件滚动条样式根据onTotalCount()返回值变化。在容器组件滚 动过程中，应用需要保证在列表即将滑动到数据源末尾时请求后续数据。开发者需要对数据请求的错误场景（如网络延迟）进行保护操作，直到数据源全部加载完成，否则列表滑动过程中会出现滚动效果异常。建议配合使用 [onLazyLoading](#onlazyloading)实现数据懒加载。 - onTotalCount()返回值是非自然数时，由数据源长度取代其返回值。
 
 **起始版本：** 19
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+**ArkTS模式：** 起始版本为19。
 
 **废弃版本：** -1
 
@@ -81,7 +81,7 @@ onTotalCount?(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 期望加载的数据项总数。 &lt;br&gt;取值范围：自然数。 |
+| number | 期望加载的数据项总数。 <br>取值范围：自然数。 |
 
 ## memoryOptimizationStrategy
 
@@ -89,13 +89,13 @@ onTotalCount?(): number
 memoryOptimizationStrategy?: RepeatMemOptStrategy
 ```
 
-Repeat的内存优化策略。该参数在创建Repeat时设定，不支持动态修改。 默认值：[DEFAULT](arkts-arkui-repeatmemoptstrategy-e.md#RepeatMemOptStrategy)
+Repeat的内存优化策略。该参数在创建Repeat时设定，不支持动态修改。 默认值：[DEFAULT](arkts-arkui-repeatmemoptstrategy-e.md#repeatmemoptstrategy)
 
 **类型：** [RepeatMemOptStrategy](arkts-arkui-repeatmemoptstrategy-e.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -119,7 +119,7 @@ reusable?: boolean
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -137,13 +137,13 @@ reusable?: boolean
 totalCount?: number
 ```
 
-期望加载的数据项总数，可以不等于数据源长度（实际传入Repeat的数组的长度）。 取值范围：自然数。 totalCount与onTotalCount()最多设置一个；如果均未设置，则采用默认值：数据源长度；如果同时设置，则忽略totalCount。 totalCount缺省或超出取值范围时，totalCount取值为数据源长度，列表正常滚动。 totalCount = 0时，不加载数据。 0 < totalCount &lt;= 数据源长度时，界面中只渲染区间[0, totalCount - 1]范围内的数据。 totalCount &gt; 数据源长度时，Repeat将渲染区间[0, totalCount - 1]范围内的数据，容器组件滚动条样式根据totalCount值变化。在容器组件滚动过程中，应用需要保证在列表即将滑动到数据源末尾时请求 后续数据。开发者需要对数据请求的错误场景（如网络延迟）进行保护操作，直到数据源全部加载完成，否则列表滑动过程中会出现滚动效果异常。建议配合使用 [onLazyLoading](#onLazyLoading)实现数据懒加载。 除totalCount属性外，开发者也可以通过[onTotalCount](#onTotalCount)方法设置自定义方法，计算期望加载的数据项总数。
+期望加载的数据项总数，可以不等于数据源长度（实际传入Repeat的数组的长度）。 取值范围：自然数。 totalCount与onTotalCount()最多设置一个；如果均未设置，则采用默认值：数据源长度；如果同时设置，则忽略totalCount。 totalCount缺省或超出取值范围时，totalCount取值为数据源长度，列表正常滚动。 totalCount = 0时，不加载数据。 0 &lt; totalCount &lt;= 数据源长度时，界面中只渲染区间[0, totalCount - 1]范围内的数据。 totalCount &gt; 数据源长度时，Repeat将渲染区间[0, totalCount - 1]范围内的数据，容器组件滚动条样式根据totalCount值变化。在容器组件滚动过程中，应用需要保证在列表即将滑动到数据源末尾时请求 后续数据。开发者需要对数据请求的错误场景（如网络延迟）进行保护操作，直到数据源全部加载完成，否则列表滑动过程中会出现滚动效果异常。建议配合使用 [onLazyLoading](#onlazyloading)实现数据懒加载。 除totalCount属性外，开发者也可以通过[onTotalCount](#ontotalcount)方法设置自定义方法，计算期望加载的数据项总数。
 
 **类型：** number
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

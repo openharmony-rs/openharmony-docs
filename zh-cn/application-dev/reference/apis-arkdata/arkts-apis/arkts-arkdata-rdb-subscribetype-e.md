@@ -4,11 +4,11 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [SubscribeType](arkts-arkdata-relationalstore-subscribetype-e.md#SubscribeType)
+**替代接口：** [SubscribeType](arkts-arkdata-relationalstore-subscribetype-e.md#subscribetype)
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -26,11 +26,11 @@ SUBSCRIBE_TYPE_REMOTE = 0
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [SUBSCRIBE_TYPE_REMOTE](arkts-arkdata-relationalstore-subscribetype-e.md#SUBSCRIBE_TYPE_REMOTE)
+**替代接口：** [SUBSCRIBE_TYPE_REMOTE](arkts-arkdata-relationalstore-subscribetype-e.md#subscribetyperemote)
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 

@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -20,11 +20,11 @@
 IMMERSIVE = 2
 ```
 
-沉浸式材质类型。仅用于[MaterialInfo](arkts-na-uimaterial-materialinfo-i.md#MaterialInfo)接口的type属性标识当前配置的材质类型，不映射到底层功能。实际材质效果通过 [ImmersiveMaterial](arkts-na-uimaterial-immersivematerial-c.md#ImmersiveMaterial)类实现。
+沉浸式材质类型。仅用于[MaterialInfo](arkts-na-uimaterial-materialinfo-i.md#materialinfo)接口的type属性标识当前配置的材质类型，不映射到底层功能。实际材质效果通过 [ImmersiveMaterial](arkts-na-uimaterial-immersivematerial-c.md#immersivematerial)类实现。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

@@ -10,7 +10,7 @@ function removeFreezeExemptedApps(admin: Want, applicationInstances: Array<commo
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -62,7 +62,7 @@ let applicationInstances: Array<common.ApplicationInstance> = [
 try {
   applicationManager.removeFreezeExemptedApps(wantTemp, applicationInstances);
   console.info('Succeeded in removing FreezeExempted applications.');
-} catch(err) {
+} catch (err) {
   console.error(`Failed to remove FreezeExempted applications. Code: ${err.code}, message: ${err.message}`);
 }
 ```

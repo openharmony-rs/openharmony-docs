@@ -4,11 +4,11 @@
 export type GlobalObserver = (reason: GlobalError) => void
 ```
 
-定义异常监听，可以作为 [errorManager.on('globalErrorOccurred')](arkts-ability-errormanager-onerror-f.md#on_error) 和 [errorManager.on('globalUnhandledRejectionDetected')](arkts-ability-errormanager-onerror-f.md#on_error) 的入参监听当前应用主线程事件处理事件。
+定义异常监听，可以作为 [errorManager.on('globalErrorOccurred')](arkts-ability-errormanager-onerror-f.md#onerror) 和 [errorManager.on('globalUnhandledRejectionDetected')](arkts-ability-errormanager-onerror-f.md#onerror) 的入参监听当前应用主线程事件处理事件。
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 

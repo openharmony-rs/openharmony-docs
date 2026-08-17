@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@
 onClick?: Callback<ClickEvent>
 ```
 
-[ClickEvent](../arkts-components/arkts-arkui-clickevent-i.md#ClickEvent)为用户点击事件。 点击完成时回调事件。 双击时，第一次点击触发回调事件。
+[ClickEvent](../arkts-components/arkts-arkui-clickevent-i.md#clickevent)为用户点击事件。 点击完成时回调事件。 双击时，第一次点击触发回调事件。
 
 **类型：** [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;[ClickEvent](../arkts-components/arkts-arkui-clickevent-i.md)&gt;
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -46,7 +46,7 @@ onLongPress?: Callback<GestureEvent>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

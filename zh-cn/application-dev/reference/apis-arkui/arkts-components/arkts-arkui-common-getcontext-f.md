@@ -10,11 +10,11 @@ Obtains the Context object associated with a component on the page.
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** 18
 
-**替代接口：** [getHostContext](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#getHostContext)
+**替代接口：** [getHostContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#gethostcontext)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -6,11 +6,11 @@
 function off(type: 'selectionCompleted', callback?: Callback<SelectionInfo>): void
 ```
 
-取消订阅划词完成事件，与 [on('selectionCompleted')](arkts-basicservices-selectionmanager-onselectioncompleted-f-sys.md#on_selectionCompleted) 搭配使用。
+取消订阅划词完成事件，与 [on('selectionCompleted')](arkts-basicservices-selectionmanager-onselectioncompleted-f-sys.md#onselectioncompleted) 搭配使用。
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 

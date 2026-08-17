@@ -4,7 +4,7 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -20,7 +20,7 @@
 status: bundle.InstallErrorCode
 ```
 
-表示安装或卸载错误状态码。取值范围：枚举值[InstallErrorCode](arkts-ability-bundle-installerrorcode-e.md#InstallErrorCode)。
+表示安装或卸载错误状态码。取值范围：枚举值[InstallErrorCode](arkts-ability-bundle-installerrorcode-e.md#installerrorcode)。
 
 **类型：** bundle.InstallErrorCode
 
@@ -28,7 +28,7 @@ status: bundle.InstallErrorCode
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -52,7 +52,7 @@ statusMessage: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

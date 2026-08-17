@@ -74,7 +74,8 @@
   - [DLPFileAccess](arkts-dataprotection-dlppermission-dlpfileaccess-e.md)
   <!--Del-->
   - [GatheringPolicyType(系统接口)](arkts-dataprotection-dlppermission-gatheringpolicytype-e-sys.md)<!--DelEnd-->
-- [@ohos.dlpSetDlpFeature](arkts-dlpsetdlpfeature.md)
+<!--Del-->
+- [@ohos.dlpSetDlpFeature](arkts-dlpsetdlpfeature.md)<!--DelEnd-->
   <!--Del-->
   - [setDlpFeature(系统接口)](arkts-dataprotection-dlpsetdlpfeature-setdlpfeature-f-sys.md)<!--DelEnd-->
   <!--Del-->

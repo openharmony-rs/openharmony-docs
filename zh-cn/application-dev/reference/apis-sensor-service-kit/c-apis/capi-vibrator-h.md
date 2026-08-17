@@ -2,7 +2,7 @@
 
 ## 概述
 
-为您提供标准的开放API，用于控制马达振动的启停。支持简单持续振动和自定义振动序列两种模式。适用于闹钟、通知提醒、游戏反馈等场景，帮助开发者实现精准的振动控制，提升用户交互体验。
+为您提供标准的开放API，用于控制马达振动的启停。支持简单持续振动和自定义振动序列两种模式。其中，简单持续振动适用于固定时长的单一振动场景，如闹钟、计时提醒等，只需指定振动时长即可实现；自定义振动序列适用于需要复杂振动模式的场景，如通知提醒、游戏反馈等，通过定义振动序列文件可实现丰富的触觉效果。帮助开发者实现精准的振动控制，提升用户交互体验。
 
 **库：** libohvibrator.z.so
 
@@ -42,14 +42,20 @@ int32_t OH_Vibrator_PlayVibration(int32_t duration, Vibrator_Attribute attribute
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t duration | 振动时长，单位：毫秒。用于控制马达振动的持续时间。取值范围[1, 60000]。 |
+| int32_t duration | 振动时长，单位：ms（毫秒）。用于控制马达振动的持续时间。取值范围[1, 60000]。 |
 | [Vibrator_Attribute](capi-vibrator-vibrator-attribute.md) attribute | 振动属性，用于配置振动的强度、模式等特性。请参考[Vibrator_Attribute](capi-vibrator-vibrator-attribute.md)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 如果操作成功，则返回0；否则返回 [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode) 中的错误码。 |
+| int32_t | 如果操作成功，则返回0；否则返回 [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode) 中的错误码。常见错误码：PERMISSION_DENIED（201，权限校验失败）、<br>     PARAMETER_ERROR（401，参数检查失败）、UNSUPPORTED（801，设备不支持）。 |
+
+**参考：**
+
+[OH_Vibrator_Cancel](capi-vibrator-h.md#oh_vibrator_cancel) 停止当前正在进行的振动。
+[OH_Vibrator_PlayVibrationCustom](capi-vibrator-h.md#oh_vibrator_playvibrationcustom) 播放自定义振动序列。
+
 
 ### OH_Vibrator_PlayVibrationCustom()
 
@@ -77,6 +83,11 @@ int32_t OH_Vibrator_PlayVibrationCustom(Vibrator_FileDescription fileDescription
 | 类型 | 说明 |
 | -- | -- |
 | int32_t | 如果操作成功，则返回0；否则返回 [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode) 中的错误码。常见错误码包括：参数错误时请检查fileDescription和vibrateAttribute参数是否合法；<br>     设备不支持振动功能时请检查设备能力。详细错误码说明请参考 [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode)。 |
+
+**参考：**
+
+[OH_Vibrator_Cancel](capi-vibrator-h.md#oh_vibrator_cancel) 停止当前正在进行的振动。
+
 
 ### OH_Vibrator_Cancel()
 

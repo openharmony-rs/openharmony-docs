@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ onResult(result: UserAuthResult): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -36,7 +36,7 @@ onResult(result: UserAuthResult): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| result | UserAuthResult | 是 | 认证结果。包含认证结果码、认证令牌（成功时）、认证类型和凭据状态等信息。应用应检查result.result字段判断认证是否成功： &lt;br&gt;- 若result.result为SUCCESS(12500000)，表示认证通过，可使用result.token进行后续操作。 &lt;br&gt;- 若result.result为其他值，表示认证不通过，应根据具体错误码进行处理。 |
+| result | UserAuthResult | 是 | 认证结果。包含认证结果码、认证令牌（成功时）、认证类型和凭据状态等信息。应用应检查result.result字段判断认证是否成功： <br>- 若result.result为SUCCESS(12500000)，表示认证通过，可使用result.token进行后续操作。 <br>- 若result.result为其他值，表示认证不通过，应根据具体错误码进行处理。 |
 
 ## 示例
 
@@ -321,7 +321,7 @@ onResult: AuthCallbackOnResultFunc
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

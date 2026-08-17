@@ -10,7 +10,7 @@ function createMessage(pdu: Array<int>, specification: string, callback: AsyncCa
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -23,7 +23,7 @@ function createMessage(pdu: Array<int>, specification: string, callback: AsyncCa
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | pdu | Array&lt;int&gt; | 是 | 协议数据单元，从收到的信息中获取。 |
-| specification | string | 是 | 短信协议类型。&lt;br/&gt;- 3gpp：表示GSM/UMTS/LTE SMS。&lt;br/&gt;- 3gpp2：表示CDMA SMS。 |
+| specification | string | 是 | 短信协议类型。<br/>- 3gpp：表示GSM/UMTS/LTE SMS。<br/>- 3gpp2：表示CDMA SMS。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[ShortMessage](arkts-telephony-sms-shortmessage-i.md)&gt; | 是 | 获取短信实例的回调函数。 |
 
 **错误码：**
@@ -46,7 +46,11 @@ const specification: string = '3gpp';
 // 以数组的形式显示协议数据单元(PDU)，类型为number。
 const pdu: Array<number> = [0x01, 0x00, 0x05, 0x81, 0x01, 0x80, 0xF6, 0x00, 0x00, 0x05, 0xE8, 0x32, 0x9B, 0xFD, 0x06];
 sms.createMessage(pdu, specification, (err: BusinessError, data: sms.ShortMessage) => {
-    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    if (err) {
+        console.error('callback: err->${JSON.stringify(err)}');
+        return;
+    }
+    console.info('callback: data->${JSON.stringify(data)}');
 });
 ```
 
@@ -61,7 +65,7 @@ function createMessage(pdu: Array<int>, specification: string): Promise<ShortMes
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -74,7 +78,7 @@ function createMessage(pdu: Array<int>, specification: string): Promise<ShortMes
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | pdu | Array&lt;int&gt; | 是 | 协议数据单元，从收到的信息中获取。 |
-| specification | string | 是 | 短信协议类型。&lt;br/&gt;- 3gpp：表示GSM/UMTS/LTE SMS。&lt;br/&gt;- 3gpp2：表示CDMA SMS。 |
+| specification | string | 是 | 短信协议类型。<br/>- 3gpp：表示GSM/UMTS/LTE SMS。<br/>- 3gpp2：表示CDMA SMS。 |
 
 **返回值：**
 
@@ -104,7 +108,7 @@ const pdu: Array<number> = [0x01, 0x00, 0x05, 0x81, 0x01, 0x80, 0xF6, 0x00, 0x00
 sms.createMessage(pdu, specification).then((data: sms.ShortMessage) => {
     console.info(`createMessage success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-    console.error(`createMessage failed, promise: err->${JSON.stringify(err)}`);
+    console.error(`createMessage failed, promise: errCode:${err.code},errMsg:${err.message}`);
 });
 ```
 

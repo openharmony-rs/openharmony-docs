@@ -1,10 +1,10 @@
 # NativeMediaPlayerBridge
 
-[CreateNativeMediaPlayerCallback](../../apis-na/arkts-apis/arkts-na-webview-createnativemediaplayercallback-t.md#CreateNativeMediaPlayerCallback)回调函数的返回值类型。接管网页媒体 的播放器和ArkWeb内核之间的一个接口类。 ArkWeb内核通过该接口类的实例对象来控制应用创建的用来接管网页媒体的播放器。 > **说明：** > > - 本Interface首批接口从API version 12开始支持。 > > - 示例效果请以真机运行为准。
+NativeMediaPlayerBridge 是[CreateNativeMediaPlayerCallback](arkts-arkweb-webview-createnativemediaplayercallback-t.md#createnativemediaplayercallback)回调函数的返回值类 型，是接管网页媒体的播放器和 ArkWeb 内核之间的一个接口类。ArkWeb 内核通过该接口类的实例对象控制应用创建的用于接管网页媒体的播放器。该接口允许应用使用自定义的媒体播放器接管网页中的媒体内容播放，同时，该接口还支持播放 器的挂起和恢复机制。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -18,11 +18,11 @@
 enterFullscreen(): void
 ```
 
-播放器进入全屏。
+使播放器进入全屏。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -38,11 +38,11 @@ enterFullscreen(): void
 exitFullscreen(): void
 ```
 
-播放器退出全屏。
+使播放器退出全屏。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -62,7 +62,7 @@ pause(): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -82,7 +82,7 @@ play(): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -102,7 +102,7 @@ release(): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -118,11 +118,11 @@ release(): void
 resumePlayer?(): void
 ```
 
-通知应用重建播放器，并恢复播放器的状态信息。
+通知应用重建播放器，并恢复播放器的状态信息。仅与 suspendPlayer 成对出现。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -140,7 +140,7 @@ seek(targetTime: number): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -154,7 +154,7 @@ seek(targetTime: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| targetTime | number | 是 | 播放跳转到的时间点。&lt;br&gt;单位：秒。 |
+| targetTime | number | 是 | 播放跳转到的时间点，从媒体开始播放时计算。 <br>单位：秒。 |
 
 ## setMuted
 
@@ -166,7 +166,7 @@ setMuted(muted: boolean): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -180,7 +180,7 @@ setMuted(muted: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| muted | boolean | 是 | 是否静音。&lt;br&gt;true表示静音，false表示未静音。 |
+| muted | boolean | 是 | 是否静音。 <br>true表示静音，false表示未静音。 |
 
 ## setPlaybackRate
 
@@ -192,7 +192,7 @@ setPlaybackRate(playbackRate: number): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -206,7 +206,7 @@ setPlaybackRate(playbackRate: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| playbackRate | number | 是 | 播放速率。&lt;br&gt;取值范围：[0, 10.0]，其中1表示原速播放。 |
+| playbackRate | number | 是 | 播放速率。 <br>取值范围：[0, 10.0]，其中1表示原速播放。超出取值范围时，按边界值自动修正。 |
 
 ## setVolume
 
@@ -218,7 +218,7 @@ setVolume(volume: number): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -232,7 +232,7 @@ setVolume(volume: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volume | number | 是 | 播放器的音量。&lt;br&gt;取值范围：[0, 1.0]，其中0表示静音，1.0表示最大音量。 |
+| volume | number | 是 | 播放器的音量。 <br>取值范围：[0, 1.0]，其中0表示静音，1.0表示最大音量。超出取值范围时，按边界值自动修正。 |
 
 ## suspendPlayer
 
@@ -240,11 +240,11 @@ setVolume(volume: number): void
 suspendPlayer?(type: SuspendType): void
 ```
 
-通知应用销毁播放器，并保存播放器的状态信息。
+通知应用销毁播放器，并保存播放器的状态信息。仅与 resumePlayer 成对出现。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -256,7 +256,7 @@ suspendPlayer?(type: SuspendType): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [SuspendType](../../apis-na/arkts-apis/arkts-na-webview-suspendtype-e.md) | 是 | 播放器挂起类型。 |
+| type | [SuspendType](arkts-arkweb-webview-suspendtype-e.md) | 是 | 播放器挂起类型，用于指定播放器挂起的方式。不同 SuspendType 取值对应不同的挂起场景。 |
 
 ## updateRect
 
@@ -264,11 +264,11 @@ suspendPlayer?(type: SuspendType): void
 updateRect(x: number, y: number, width: number, height: number): void
 ```
 
-更新surface位置信息。
+向应用通知 surface 位置信息。当网页布局变化、页面滚动或播放区域发生改变时由 ArkWeb 内核回调此方法，应用需据此更新原生播放器渲染表面的位置和大小。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -282,8 +282,8 @@ updateRect(x: number, y: number, width: number, height: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | number | 是 | surface相对于Web组件的x坐标信息。&lt;br&gt;单位：px。 |
-| y | number | 是 | surface相对于Web组件的y坐标信息。&lt;br&gt;单位：px。 |
-| width | number | 是 | surface的宽度。&lt;br&gt;单位：px。 |
-| height | number | 是 | surface的高度。&lt;br&gt;单位：px。 |
+| x | number | 是 | surface相对于Web组件的x坐标信息。 <br>单位：px。 |
+| y | number | 是 | surface相对于Web组件的y坐标信息。 <br>单位：px。 |
+| width | number | 是 | surface的宽度。 <br>单位：px。 |
+| height | number | 是 | surface的高度。 <br>单位：px。 |
 

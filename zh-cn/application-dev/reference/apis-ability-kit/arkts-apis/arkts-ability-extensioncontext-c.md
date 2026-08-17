@@ -1,12 +1,12 @@
 # ExtensionContext
 
-ExtensionContext是[ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md#ExtensionAbility)的上下文环境，继承自 [Context](arkts-ability-context-c.md#Context)。 ExtensionContext模块提供访问特定[ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md#ExtensionAbility)的资源的能力。
+ExtensionContext是[ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md#extensionability)的上下文环境，继承自 [Context](arkts-ability-context-c.md#context)。 ExtensionContext模块提供访问特定[ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md#extensionability)的资源的能力。
 
 **继承/实现关系：** ExtensionContext extends Context
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -20,13 +20,13 @@ ExtensionContext是[ExtensionAbility](arkts-ability-app-ability-extensionability
 config: Configuration
 ```
 
-所属Module的配置信息。
+当前ExtensionAbility的配置信息，可用于获取语言、颜色模式等配置。
 
 **类型：** [Configuration](arkts-ability-app-ability-configuration-configuration-i.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -44,13 +44,13 @@ config: Configuration
 currentHapModuleInfo: HapModuleInfo
 ```
 
-所属Hap包的信息。
+当前ExtensionAbility所属HAP模块的信息，包含模块名称、类型、描述等。
 
 **类型：** [HapModuleInfo](arkts-ability-hapmoduleinfo-i.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -68,13 +68,13 @@ currentHapModuleInfo: HapModuleInfo
 extensionAbilityInfo: ExtensionAbilityInfo
 ```
 
-所属[ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md#ExtensionAbility)的信息。
+当前[ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md#extensionability)的信息，包含名称、类型、标签ID等。
 
 **类型：** [ExtensionAbilityInfo](arkts-ability-extensionabilityinfo-i.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

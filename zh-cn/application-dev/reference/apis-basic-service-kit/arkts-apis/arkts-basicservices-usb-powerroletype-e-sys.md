@@ -4,11 +4,11 @@
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 9
 
-**替代接口：** [PowerRoleType](arkts-basicservices-usbmanager-powerroletype-e-sys.md#PowerRoleType（系统接口）)
+**替代接口：** [PowerRoleType](arkts-basicservices-usbmanager-powerroletype-e-sys.md#powerroletype系统接口)
 
 <!--Device-usb-export enum PowerRoleType--><!--Device-usb-export enum PowerRoleType-End-->
 
@@ -26,11 +26,11 @@ NONE = 0
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 9
 
-**替代接口：** [NONE](arkts-basicservices-usbmanager-powerroletype-e-sys.md#NONE)
+**替代接口：** [NONE](arkts-basicservices-usbmanager-powerroletype-e-sys.md#none)
 
 <!--Device-PowerRoleType-NONE = 0--><!--Device-PowerRoleType-NONE = 0-End-->
 
@@ -48,11 +48,11 @@ SOURCE = 1
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 9
 
-**替代接口：** [SOURCE](arkts-basicservices-usbmanager-powerroletype-e-sys.md#SOURCE)
+**替代接口：** [SOURCE](arkts-basicservices-usbmanager-powerroletype-e-sys.md#source)
 
 <!--Device-PowerRoleType-SOURCE = 1--><!--Device-PowerRoleType-SOURCE = 1-End-->
 
@@ -70,11 +70,11 @@ SINK = 2
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 9
 
-**替代接口：** [SINK](arkts-basicservices-usbmanager-powerroletype-e-sys.md#SINK)
+**替代接口：** [SINK](arkts-basicservices-usbmanager-powerroletype-e-sys.md#sink)
 
 <!--Device-PowerRoleType-SINK = 2--><!--Device-PowerRoleType-SINK = 2-End-->
 

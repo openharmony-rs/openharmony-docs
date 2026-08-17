@@ -1,12 +1,12 @@
 # MagneticFieldResponse
 
-磁场传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md#Response)。
+磁场传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md#response)。
 
-**继承/实现关系：** MagneticFieldResponse extends [Response](arkts-sensorservice-sensor-response-i.md#Response)
+**继承/实现关系：** MagneticFieldResponse extends [Response](arkts-sensorservice-sensor-response-i.md#response)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ x轴方向的环境磁场强度。单位：μT（微特斯拉）。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -46,7 +46,7 @@ y轴方向的环境磁场强度。单位：μT（微特斯拉）。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -66,7 +66,7 @@ z轴方向的环境磁场强度。单位：μT（微特斯拉）。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

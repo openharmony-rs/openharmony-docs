@@ -4,7 +4,7 @@
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -20,13 +20,13 @@
 fluidLightMode?: KeyboardFluidLightMode
 ```
 
-键盘的流光效果。&lt;br/&gt;默认值：KeyboardFluidLightMode.NONE
+键盘的流光效果。<br/>默认值：KeyboardFluidLightMode.NONE
 
 **类型：** [KeyboardFluidLightMode](arkts-arkui-textcommon-keyboardfluidlightmode-e-sys.md)
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -44,13 +44,13 @@ fluidLightMode?: KeyboardFluidLightMode
 gradientMode?: KeyboardGradientMode
 ```
 
-键盘的渐变模糊效果。&lt;br/&gt;默认值：KeyboardGradientMode.NONE
+键盘的渐变模糊效果。<br/>默认值：KeyboardGradientMode.NONE
 
 **类型：** [KeyboardGradientMode](arkts-arkui-textcommon-keyboardgradientmode-e-sys.md)
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 

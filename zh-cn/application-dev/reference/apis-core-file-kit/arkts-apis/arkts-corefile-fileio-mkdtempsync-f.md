@@ -10,11 +10,11 @@ declare function mkdtempSync(prefix: string): string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [mkdtempSync](arkts-corefile-file-fs-mkdtempsync-f.md#mkdtempSync)
+**替代接口：** [mkdtempSync](arkts-corefile-file-fs-mkdtempsync-f.md#mkdtempsync)
 
 <!--Device-unnamed-declare function mkdtempSync(prefix: string): string--><!--Device-unnamed-declare function mkdtempSync(prefix: string): string-End-->
 

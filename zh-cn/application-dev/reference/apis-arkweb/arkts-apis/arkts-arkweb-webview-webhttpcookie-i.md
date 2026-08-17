@@ -1,10 +1,10 @@
 # WebHttpCookie
 
-Defines the Web's HTTPCookie. &lt;p&gt;&lt;strong&gt;API Note&lt;/strong&gt;:&lt;br&gt; The maximum length allowed for each attribute value in a cookie string is 1024. &lt;/p&gt;
+cookie的相关字段。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@ Defines the Web's HTTPCookie. &lt;p&gt;&lt;strong&gt;API Note&lt;/strong&gt;:&lt
 domain: string
 ```
 
-获取cookie的域名
+指定哪些域名可以访问该cookie。
 
 **类型：** string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -38,13 +38,13 @@ domain: string
 expiresDate: string
 ```
 
-获取cookie的失效日期
+cookie的过期时间。时间格式详见[Date](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Reference/Headers/Date)。传入不符合该格式的时间字符串 时，该cookie设置不生效。
 
 **类型：** string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -58,13 +58,13 @@ expiresDate: string
 isHttpOnly: boolean
 ```
 
-获取当前cookie是否被标记了HttpOnly
+标记该cookie是否只能通过HTTP请求访问。 true表示仅能通过HTTP访问，不能通过JavaScript访问，false表示可以通过JavaScript访问。
 
 **类型：** boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -78,13 +78,13 @@ isHttpOnly: boolean
 isSecure: boolean
 ```
 
-获取当前cookie是否是secure cookie
+标记该cookie是否只能通过HTTPS发送。 true表示仅能通过HTTPS发送，不能通过HTTP发送，false表示可以通过HTTP发送。
 
 **类型：** boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -98,13 +98,13 @@ isSecure: boolean
 isSessionCookie: boolean
 ```
 
-获取是否是session cookie
+标记该cookie是否是session cookie。 true表示是session cookie，false表示不是session cookie。
 
 **类型：** boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -118,13 +118,13 @@ isSessionCookie: boolean
 name: string
 ```
 
-获取cookie的name
+cookie的名称。
 
 **类型：** string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -138,13 +138,13 @@ name: string
 path: string
 ```
 
-获取cookie的path
+cookie的路径。
 
 **类型：** string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -158,13 +158,13 @@ path: string
 samesitePolicy: WebHttpCookieSameSitePolicy
 ```
 
-获取当前cookie的samesite策略
+cookie的同站策略。
 
-**类型：** [WebHttpCookieSameSitePolicy](../../apis-na/arkts-apis/arkts-na-webview-webhttpcookiesamesitepolicy-e.md)
+**类型：** [WebHttpCookieSameSitePolicy](arkts-arkweb-webview-webhttpcookiesamesitepolicy-e.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -178,13 +178,13 @@ samesitePolicy: WebHttpCookieSameSitePolicy
 value: string
 ```
 
-获取cookie的value
+cookie的值。
 
 **类型：** string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

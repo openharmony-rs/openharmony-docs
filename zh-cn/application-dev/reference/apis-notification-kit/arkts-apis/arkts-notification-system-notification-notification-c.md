@@ -4,11 +4,11 @@
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 7
 
-**替代接口：** [notification/notification](arkts-notification.md#@ohos.notification)
+**替代接口：** [notification/notification](arkts-notification.md#ohosnotification)
 
 <!--Device-unnamed-declare class Notification--><!--Device-unnamed-declare class Notification-End-->
 
@@ -17,7 +17,8 @@
 ## 导入模块
 
 ```TypeScript
-import { ActionResult, ShowNotificationOptions } from '@kit.NotificationKit';
+import { ActionResult } from 'ActionResult';
+import { ShowNotificationOptions } from 'ShowNotificationOptions';
 ```
 
 ## show
@@ -30,11 +31,11 @@ static show(options?: ShowNotificationOptions): void
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 7
 
-**替代接口：** [notification/notification](arkts-notification.md#@ohos.notification)
+**替代接口：** [notification/notification](arkts-notification.md#ohosnotification)
 
 <!--Device-Notification-static show(options?: ShowNotificationOptions): void--><!--Device-Notification-static show(options?: ShowNotificationOptions): void-End-->
 

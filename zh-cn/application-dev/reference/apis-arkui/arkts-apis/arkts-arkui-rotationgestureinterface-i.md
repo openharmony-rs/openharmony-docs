@@ -6,7 +6,7 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -20,11 +20,11 @@
 (value?: { fingers?: number; angle?: number }): RotationGestureInterface
 ```
 
-继承自[GestureInterface&lt;T&gt;](arkts-arkui-gestureinterface-i.md#GestureInterface)，设置旋转手势事件。
+继承自[GestureInterface&lt;T&gt;](arkts-arkui-gestureinterface-i.md#gestureinterface)，设置旋转手势事件。
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -38,7 +38,7 @@
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | { fingers?: number; angle?: number } | 否 | 设置旋转手势事件参数。 &lt;br&gt; - fingers：触发旋转手势所需的最少手指数，&nbsp;最小为2指，最大为5指。&lt;br/&gt;默认值：2 &lt;br/&gt;取值范围：[2, 5]。当设置的值小于2或大于5时，会被转化 为默认值。&lt;br/&gt;触发手势时手指数量可以多于fingers参数值，但仅最先落下的两指参与手势计算。 &lt;br&gt; - angle：触发旋转手势所需的最小角度变化，单位为deg。&lt;br/&gt;默认值：1 &lt;br/&gt;**说明：** &lt;br/&gt;当改变度数的值小于等于0或大于360时，会被转化为默认值。 |
+| value | { fingers?: number; angle?: number } | 否 | 设置旋转手势事件参数。 <br> - fingers：触发旋转手势所需的最少手指数，&nbsp;最小为2指，最大为5指。<br/>默认值：2 <br/>取值范围：[2, 5]。当设置的值小于2或大于5时，会被转化 为默认值。<br/>触发手势时手指数量可以多于fingers参数值，但仅最先落下的两指参与手势计算。 <br> - angle：触发旋转手势所需的最小角度变化，单位为deg。<br/>默认值：1 <br/>**说明：** <br/>当改变度数的值小于等于0或大于360时，会被转化为默认值。 |
 
 **返回值：**
 
@@ -56,7 +56,7 @@
 
 **起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+**ArkTS模式：** 起始版本为15。
 
 **废弃版本：** -1
 
@@ -90,7 +90,7 @@ Rotation手势识别成功，接收到触摸取消事件触发的回调。该回
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -122,7 +122,7 @@ Rotation手势识别成功，接收到触摸取消事件触发的回调。与onA
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -156,7 +156,7 @@ Rotation手势识别成功，当抬起最后一根满足手势触发条件的手
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -188,7 +188,7 @@ Rotation手势识别成功后触发的回调。
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -220,7 +220,7 @@ Rotation手势移动过程中触发的回调。
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 

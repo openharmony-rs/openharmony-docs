@@ -19,6 +19,6 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [LazyVWaterFlowLayout](arkts-arkui-arkui-components-arklazywaterflowlayout-con.md#LazyVWaterFlowLayout) | 定义LazyVWaterFlowLayout组件。 |
-| [LazyVWaterFlowLayoutInstance](arkts-arkui-arkui-components-arklazywaterflowlayout-con.md#LazyVWaterFlowLayoutInstance) | 定义LazyVWaterFlowLayout组件实例。 |
+| [LazyVWaterFlowLayout](arkts-arkui-arkui-components-arklazywaterflowlayout-con.md#lazyvwaterflowlayout) | 定义LazyVWaterFlowLayout组件。 |
+| [LazyVWaterFlowLayoutInstance](arkts-arkui-arkui-components-arklazywaterflowlayout-con.md#lazyvwaterflowlayoutinstance) | 定义LazyVWaterFlowLayout组件实例。 |
 

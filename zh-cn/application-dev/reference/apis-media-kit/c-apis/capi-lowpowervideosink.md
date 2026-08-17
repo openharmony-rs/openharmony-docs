@@ -2,7 +2,7 @@
 
 ## 概述
 
-The LowPowerVideoSink submodule provides variables, properties, and functionsfor lowpower video sink.
+LowPowerVideoSink子模块提供低功耗视频输出的变量、属性和函数。
 
 **起始版本：** 20
 ## 文件汇总

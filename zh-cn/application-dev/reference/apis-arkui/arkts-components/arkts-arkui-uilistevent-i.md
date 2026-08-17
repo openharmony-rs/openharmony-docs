@@ -1,12 +1,12 @@
 # UIListEvent
 
-frameNode中[getEvent('List')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getEvent)方法的返 回值，可用于给List节点设置滚动事件。 UIListEvent继承于UIScrollableCommonEvent。
+frameNode中[getEvent('List')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent)方法的返 回值，可用于给List节点设置滚动事件。 UIListEvent继承于UIScrollableCommonEvent。
 
 **继承/实现关系：** UIListEvent extends UIScrollableCommonEvent
 
 **起始版本：** 19
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+**ArkTS模式：** 起始版本为19。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ setOnDidScroll(callback: OnScrollCallback | undefined): void
 
 **起始版本：** 19
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+**ArkTS模式：** 起始版本为19。
 
 **废弃版本：** -1
 
@@ -52,7 +52,7 @@ setOnScrollIndex(callback: OnListScrollIndexCallback | undefined): void
 
 **起始版本：** 19
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+**ArkTS模式：** 起始版本为19。
 
 **废弃版本：** -1
 
@@ -80,7 +80,7 @@ setOnScrollVisibleContentChange(callback: OnScrollVisibleContentChangeCallback |
 
 **起始版本：** 19
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+**ArkTS模式：** 起始版本为19。
 
 **废弃版本：** -1
 
@@ -108,7 +108,7 @@ setOnWillScroll(callback: OnWillScrollCallback | undefined): void
 
 **起始版本：** 19
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+**ArkTS模式：** 起始版本为19。
 
 **废弃版本：** -1
 

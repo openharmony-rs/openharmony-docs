@@ -6,11 +6,11 @@
 function enableAbilityWithCallback(name: string, capability: Array<accessibility.Capability>, connectCallback: ConnectCallback): Promise<void>
 ```
 
-启用辅助扩展，并指定[ConnectCallback](arkts-accessibility-config-connectcallback-i-sys.md#ConnectCallback（系统接口）)作为辅助扩展应用状态变化的回调函数。使用Promise异步回调。
+启用辅助扩展，并指定[ConnectCallback](arkts-accessibility-config-connectcallback-i-sys.md#connectcallback系统接口)作为辅助扩展连接断开事件的回调函数。使用Promise异步回调。 当辅助扩展进程异常断开连接时，将触发ConnectCallback的onDisconnect回调。需与[config.disableAbility](arkts-accessibility-config-disableability-f-sys.md#disableability系统接口)配对使用。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -30,7 +30,7 @@ function enableAbilityWithCallback(name: string, capability: Array<accessibility
 | --- | --- | --- | --- |
 | name | string | 是 | 辅助扩展应用的名称，格式为：'bundleName/abilityName'。 |
 | capability | Array&lt;accessibility.Capability&gt; | 是 | 辅助扩展应用的能力属性。 |
-| connectCallback | [ConnectCallback](arkts-accessibility-config-connectcallback-i-sys.md) | 是 | 辅助扩展应用的状态发生变化时调用的回调函数。 |
+| connectCallback | [ConnectCallback](arkts-accessibility-config-connectcallback-i-sys.md) | 是 | 辅助扩展应用连接断开时调用的回调函数，用于监听辅助扩展的断开连接事件。 |
 
 **返回值：**
 

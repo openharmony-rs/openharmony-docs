@@ -2,7 +2,7 @@
 
 ## 概述
 
-Defines APIs for AVMediaSource.
+定义AVMediaSource的接口。
 
 **起始版本：** 23
 ## 文件汇总

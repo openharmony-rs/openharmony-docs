@@ -10,11 +10,11 @@ function selectContact(callback: AsyncCallback<Array<Contact>>): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** [selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectContacts)(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**替代接口：** [selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectcontacts)(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 <!--Device-contact-function selectContact(callback: AsyncCallback<Array<Contact>>): void--><!--Device-contact-function selectContact(callback: AsyncCallback<Array<Contact>>): void-End-->
 
@@ -53,11 +53,11 @@ function selectContact(): Promise<Array<Contact>>
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** [selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectContacts)()
+**替代接口：** [selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectcontacts)()
 
 <!--Device-contact-function selectContact(): Promise<Array<Contact>>--><!--Device-contact-function selectContact(): Promise<Array<Contact>>-End-->
 

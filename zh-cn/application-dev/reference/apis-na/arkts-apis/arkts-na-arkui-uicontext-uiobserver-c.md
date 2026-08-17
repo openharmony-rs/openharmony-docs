@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -23,7 +23,7 @@ addGlobalGestureListener(type: GestureListenerType,
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -37,9 +37,9 @@ addGlobalGestureListener(type: GestureListenerType,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [GestureListenerType](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-gesturelistenertype-e.md) | 是 | 要监听的手势类型 |
-| option | [GestureObserverConfigs](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-gestureobserverconfigs-i.md) | 是 | 全局监听的选项 |
-| callback | [GestureListenerCallback](../../apis-arkui/arkts-apis/arkts-arkui-gesturelistenercallback-t.md) | 是 | 监听回调函数 |
+| type | [GestureListenerType](arkts-na-arkui-uicontext-gesturelistenertype-e.md) | 是 | 要监听的手势类型 |
+| option | [GestureObserverConfigs](arkts-na-arkui-uicontext-gestureobserverconfigs-i.md) | 是 | 全局监听的选项 |
+| callback | [GestureListenerCallback](arkts-na-gesturelistenercallback-t.md) | 是 | 监听回调函数 |
 
 ## offAfterPanEnd
 
@@ -51,7 +51,7 @@ offAfterPanEnd(callback?: PanListenerCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -65,7 +65,7 @@ offAfterPanEnd(callback?: PanListenerCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [PanListenerCallback](../../apis-arkui/arkts-apis/arkts-arkui-panlistenercallback-t.md) | 否 | 要移除的回调函数。如果未提供该参数，则将移除给定事件类型的所有回调函数。 |
+| callback | [PanListenerCallback](arkts-na-panlistenercallback-t.md) | 否 | 要移除的回调函数。如果未提供该参数，则将移除给定事件类型的所有回调函数。 |
 
 ## offAfterPanStart
 
@@ -77,7 +77,7 @@ offAfterPanStart(callback?: PanListenerCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -91,7 +91,7 @@ offAfterPanStart(callback?: PanListenerCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [PanListenerCallback](../../apis-arkui/arkts-apis/arkts-arkui-panlistenercallback-t.md) | 否 | 要移除的回调函数。如果未提供该参数，则将移除给定事件类型的所有回调函数。 |
+| callback | [PanListenerCallback](arkts-na-panlistenercallback-t.md) | 否 | 要移除的回调函数。如果未提供该参数，则将移除给定事件类型的所有回调函数。 |
 
 ## offBeforePanEnd
 
@@ -103,7 +103,7 @@ offBeforePanEnd(callback?: PanListenerCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -117,7 +117,7 @@ offBeforePanEnd(callback?: PanListenerCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [PanListenerCallback](../../apis-arkui/arkts-apis/arkts-arkui-panlistenercallback-t.md) | 否 | 要移除的回调函数。如果未提供该参数，则将移除给定事件类型的所有回调函数。 |
+| callback | [PanListenerCallback](arkts-na-panlistenercallback-t.md) | 否 | 要移除的回调函数。如果未提供该参数，则将移除给定事件类型的所有回调函数。 |
 
 ## offBeforePanStart
 
@@ -129,7 +129,7 @@ offBeforePanStart(callback?: PanListenerCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -143,7 +143,7 @@ offBeforePanStart(callback?: PanListenerCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [PanListenerCallback](../../apis-arkui/arkts-apis/arkts-arkui-panlistenercallback-t.md) | 否 | 要移除的回调函数。如果未提供该参数，则将移除给定事件类型的所有回调函数。 |
+| callback | [PanListenerCallback](arkts-na-panlistenercallback-t.md) | 否 | 要移除的回调函数。如果未提供该参数，则将移除给定事件类型的所有回调函数。 |
 
 ## offDensityUpdate
 
@@ -155,7 +155,7 @@ Removes a callback function that was previously registered with `on()`.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -181,7 +181,7 @@ offDidClick(callback?: ClickEventListenerCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -195,7 +195,7 @@ offDidClick(callback?: ClickEventListenerCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [ClickEventListenerCallback](../../apis-arkui/arkts-apis/arkts-arkui-clickeventlistenercallback-t.md) | 否 | 要移除的回调函数。如果未提供该参数，则将移除给定事件类型的所有回调函数。 |
+| callback | [ClickEventListenerCallback](arkts-na-clickeventlistenercallback-t.md) | 否 | 要移除的回调函数。如果未提供该参数，则将移除给定事件类型的所有回调函数。 |
 
 ## offDidLayout
 
@@ -207,7 +207,7 @@ Removes a callback function that was previously registered with `on()`.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -233,7 +233,7 @@ offDidTap(callback?: GestureEventListenerCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -247,7 +247,7 @@ offDidTap(callback?: GestureEventListenerCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [GestureEventListenerCallback](../../apis-arkui/arkts-apis/arkts-arkui-gestureeventlistenercallback-t.md) | 否 | 要移除的回调函数。如果未提供该参数，则将移除给定事件类型的所有回调函数。 |
+| callback | [GestureEventListenerCallback](arkts-na-gestureeventlistenercallback-t.md) | 否 | 要移除的回调函数。如果未提供该参数，则将移除给定事件类型的所有回调函数。 |
 
 ## offNavDestinationSizeChange
 
@@ -259,7 +259,7 @@ offNavDestinationSizeChange(callback?: Callback<observer.NavDestinationInfo>): v
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -285,7 +285,7 @@ offNavDestinationSizeChangeByUniqueId(navigationUniqueId: int, callback?: Callba
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -299,7 +299,7 @@ offNavDestinationSizeChangeByUniqueId(navigationUniqueId: int, callback?: Callba
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| navigationUniqueId | int | 是 | 希望监听的NavDestination所属的Navigation的唯一ID，可以通过queryNavigationInfo获取。 &lt;br&gt;取值限定为整数。 |
+| navigationUniqueId | int | 是 | 希望监听的NavDestination所属的Navigation的唯一ID，可以通过queryNavigationInfo获取。 <br>取值限定为整数。 |
 | callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;observer.NavDestinationInfo&gt; | 否 | 需要被删除的callback，如果没提供删除所有注册的回调。 |
 
 ## offNavDestinationSwitch
@@ -312,7 +312,7 @@ Removes a callback function that was previously registered with `onNavDestinatio
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -341,7 +341,7 @@ Removes a callback function that was previously registered with `onNavDestinatio
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -371,7 +371,7 @@ Removes a callback function that was previously registered with `onNavDestinatio
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -398,7 +398,7 @@ Removes a callback function that was previously registered with `onNavDestinatio
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -424,7 +424,7 @@ Removes a callback function that was previously registered with `onNavDestinatio
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -451,7 +451,7 @@ offNodeRenderState(nodeIdentity: NodeIdentity, callback?: NodeRenderStateChangeC
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -465,8 +465,8 @@ offNodeRenderState(nodeIdentity: NodeIdentity, callback?: NodeRenderStateChangeC
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| nodeIdentity | [NodeIdentity](../../apis-arkui/arkts-apis/arkts-arkui-nodeidentity-t.md) | 是 | The identity of the target node |
-| callback | [NodeRenderStateChangeCallback](../../apis-arkui/arkts-apis/arkts-arkui-noderenderstatechangecallback-t.md) | 否 | 要移除的回调函数。如果未提供该参数，则将移除给定事件类型的所有回调函数。 |
+| nodeIdentity | [NodeIdentity](arkts-na-nodeidentity-t.md) | 是 | The identity of the target node |
+| callback | [NodeRenderStateChangeCallback](arkts-na-noderenderstatechangecallback-t.md) | 否 | 要移除的回调函数。如果未提供该参数，则将移除给定事件类型的所有回调函数。 |
 
 ## offRouterPageSizeChange
 
@@ -478,7 +478,7 @@ offRouterPageSizeChange(callback?: Callback<observer.RouterPageInfo>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -504,7 +504,7 @@ Removes a callback function that was previously registered with `onRouterPageUpd
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -530,7 +530,7 @@ Removes a callback function that was previously registered with `onScrollEvent()
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -557,7 +557,7 @@ Removes a callback function that was previously registered with `onScrollEvent()
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -583,7 +583,7 @@ offSwiperContentUpdate(callback?: Callback<SwiperContentInfo>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -597,7 +597,7 @@ offSwiperContentUpdate(callback?: Callback<SwiperContentInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[SwiperContentInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-swipercontentinfo-i.md)&gt; | 否 | 需要被注销的回调函数。不传参数时，取消该Swiper上所有的监听回调。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[SwiperContentInfo](arkts-na-arkui-uicontext-swipercontentinfo-i.md)&gt; | 否 | 需要被注销的回调函数。不传参数时，取消该Swiper上所有的监听回调。 |
 
 ## offSwiperContentUpdate
 
@@ -609,7 +609,7 @@ offSwiperContentUpdate(config: observer.ObserverOptions, callback?: Callback<Swi
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -624,7 +624,7 @@ offSwiperContentUpdate(config: observer.ObserverOptions, callback?: Callback<Swi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | config | observer.ObserverOptions | 是 | 指定监听的Swiper组件信息。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[SwiperContentInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-swipercontentinfo-i.md)&gt; | 否 | 需要被注销的回调函数。不传参数时，取消该Swiper上所有的监听回调。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[SwiperContentInfo](arkts-na-arkui-uicontext-swipercontentinfo-i.md)&gt; | 否 | 需要被注销的回调函数。不传参数时，取消该Swiper上所有的监听回调。 |
 
 ## offTabChange
 
@@ -636,7 +636,7 @@ offTabChange(config: observer.ObserverOptions, callback?: Callback<observer.TabC
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -663,7 +663,7 @@ offTabChange(callback?: Callback<observer.TabContentInfo>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -689,7 +689,7 @@ Removes a callback function that was previously registered with `on()`.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -716,7 +716,7 @@ Removes a callback function that was previously registered with `on()`.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -742,7 +742,7 @@ offTextChange(callback?: Callback<observer.TextChangeEventInfo>): void
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -768,7 +768,7 @@ offTextChange(identity: observer.ObserverOptions, callback?: Callback<observer.T
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -795,7 +795,7 @@ offWillClick(callback?: ClickEventListenerCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -809,7 +809,7 @@ offWillClick(callback?: ClickEventListenerCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [ClickEventListenerCallback](../../apis-arkui/arkts-apis/arkts-arkui-clickeventlistenercallback-t.md) | 否 | 要移除的回调函数。如果未提供该参数，则将移除给定事件类型的所有回调函数。 |
+| callback | [ClickEventListenerCallback](arkts-na-clickeventlistenercallback-t.md) | 否 | 要移除的回调函数。如果未提供该参数，则将移除给定事件类型的所有回调函数。 |
 
 ## offWillDraw
 
@@ -821,7 +821,7 @@ Removes a callback function that was previously registered with `on()`.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -847,7 +847,7 @@ offWillTap(callback?: GestureEventListenerCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -861,7 +861,7 @@ offWillTap(callback?: GestureEventListenerCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [GestureEventListenerCallback](../../apis-arkui/arkts-apis/arkts-arkui-gestureeventlistenercallback-t.md) | 否 | 要移除的回调函数。如果未提供该参数，则将移除给定事件类型的所有回调函数。 |
+| callback | [GestureEventListenerCallback](arkts-na-gestureeventlistenercallback-t.md) | 否 | 要移除的回调函数。如果未提供该参数，则将移除给定事件类型的所有回调函数。 |
 
 ## offWindowSizeLayoutBreakpointChange
 
@@ -873,7 +873,7 @@ offWindowSizeLayoutBreakpointChange(callback?: Callback<observer.WindowSizeLayou
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -899,7 +899,7 @@ onAfterPanEnd(callback: PanListenerCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -913,7 +913,7 @@ onAfterPanEnd(callback: PanListenerCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [PanListenerCallback](../../apis-arkui/arkts-apis/arkts-arkui-panlistenercallback-t.md) | 是 | 无感监听回调函数 |
+| callback | [PanListenerCallback](arkts-na-panlistenercallback-t.md) | 是 | 无感监听回调函数 |
 
 ## onAfterPanStart
 
@@ -925,7 +925,7 @@ onAfterPanStart(callback: PanListenerCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -939,7 +939,7 @@ onAfterPanStart(callback: PanListenerCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [PanListenerCallback](../../apis-arkui/arkts-apis/arkts-arkui-panlistenercallback-t.md) | 是 | 滑动手势无感监听回调函数 |
+| callback | [PanListenerCallback](arkts-na-panlistenercallback-t.md) | 是 | 滑动手势无感监听回调函数 |
 
 ## onBeforePanEnd
 
@@ -951,7 +951,7 @@ onBeforePanEnd(callback: PanListenerCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -965,7 +965,7 @@ onBeforePanEnd(callback: PanListenerCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [PanListenerCallback](../../apis-arkui/arkts-apis/arkts-arkui-panlistenercallback-t.md) | 是 | 滑动手势无感监听回调函数 |
+| callback | [PanListenerCallback](arkts-na-panlistenercallback-t.md) | 是 | 滑动手势无感监听回调函数 |
 
 ## onBeforePanStart
 
@@ -977,7 +977,7 @@ onBeforePanStart(callback: PanListenerCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -991,7 +991,7 @@ onBeforePanStart(callback: PanListenerCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [PanListenerCallback](../../apis-arkui/arkts-apis/arkts-arkui-panlistenercallback-t.md) | 是 | 监听滑动手势事件的无感监听回调函数 |
+| callback | [PanListenerCallback](arkts-na-panlistenercallback-t.md) | 是 | 监听滑动手势事件的无感监听回调函数 |
 
 ## onDensityUpdate
 
@@ -1003,7 +1003,7 @@ onDensityUpdate(callback: Callback<observer.DensityInfo>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1029,7 +1029,7 @@ onDidClick(callback: ClickEventListenerCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -1043,7 +1043,7 @@ onDidClick(callback: ClickEventListenerCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [ClickEventListenerCallback](../../apis-arkui/arkts-apis/arkts-arkui-clickeventlistenercallback-t.md) | 是 | 无感监听回调函数 |
+| callback | [ClickEventListenerCallback](arkts-na-clickeventlistenercallback-t.md) | 是 | 无感监听回调函数 |
 
 ## onDidLayout
 
@@ -1055,7 +1055,7 @@ onDidLayout(callback: Callback<void>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1081,7 +1081,7 @@ onDidTap(callback: GestureEventListenerCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -1095,7 +1095,7 @@ onDidTap(callback: GestureEventListenerCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [GestureEventListenerCallback](../../apis-arkui/arkts-apis/arkts-arkui-gestureeventlistenercallback-t.md) | 是 | 注册无感监听回调函数 |
+| callback | [GestureEventListenerCallback](arkts-na-gestureeventlistenercallback-t.md) | 是 | 注册无感监听回调函数 |
 
 ## onNavDestinationSizeChange
 
@@ -1107,7 +1107,7 @@ onNavDestinationSizeChange(callback: Callback<observer.NavDestinationInfo>): voi
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1133,7 +1133,7 @@ onNavDestinationSizeChangeByUniqueId(navigationUniqueId: int, callback: Callback
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1147,7 +1147,7 @@ onNavDestinationSizeChangeByUniqueId(navigationUniqueId: int, callback: Callback
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| navigationUniqueId | int | 是 | 希望监听NavDestination所属的Navigation的唯一ID，可以通过queryNavigationInfo 获取。 &lt;br&gt;取值限定为整数。 |
+| navigationUniqueId | int | 是 | 希望监听NavDestination所属的Navigation的唯一ID，可以通过queryNavigationInfo 获取。 <br>取值限定为整数。 |
 | callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;observer.NavDestinationInfo&gt; | 是 | 回调函数。携带NavDestinationInfo，返回NavDestination的信息。 |
 
 ## onNavDestinationSwitch
@@ -1160,7 +1160,7 @@ onNavDestinationSwitch(callback: Callback<observer.NavDestinationSwitchInfo>): v
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1189,7 +1189,7 @@ onNavDestinationSwitch(
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1219,7 +1219,7 @@ onNavDestinationUpdate(
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1246,7 +1246,7 @@ onNavDestinationUpdate(callback: Callback<observer.NavDestinationInfo>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1272,7 +1272,7 @@ onNavDestinationUpdateByUniqueId(navigationUniqueId: int, callback: Callback<obs
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1299,7 +1299,7 @@ onNodeRenderState(nodeIdentity: NodeIdentity, callback: NodeRenderStateChangeCal
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -1313,8 +1313,8 @@ onNodeRenderState(nodeIdentity: NodeIdentity, callback: NodeRenderStateChangeCal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| nodeIdentity | [NodeIdentity](../../apis-arkui/arkts-apis/arkts-arkui-nodeidentity-t.md) | 是 | 目标节点的标识 |
-| callback | [NodeRenderStateChangeCallback](../../apis-arkui/arkts-apis/arkts-arkui-noderenderstatechangecallback-t.md) | 是 | 当组件节点的渲染状态发生变化时执行的回调函数 |
+| nodeIdentity | [NodeIdentity](arkts-na-nodeidentity-t.md) | 是 | 目标节点的标识 |
+| callback | [NodeRenderStateChangeCallback](arkts-na-noderenderstatechangecallback-t.md) | 是 | 当组件节点的渲染状态发生变化时执行的回调函数 |
 
 **错误码：**
 
@@ -1332,7 +1332,7 @@ onRouterPageSizeChange(callback: Callback<observer.RouterPageInfo>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1358,7 +1358,7 @@ onRouterPageUpdate(callback: Callback<observer.RouterPageInfo>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1384,7 +1384,7 @@ onScrollEvent(options: observer.ObserverOptions, callback: Callback<observer.Scr
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1411,7 +1411,7 @@ onScrollEvent(callback: Callback<observer.ScrollEventInfo>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1437,7 +1437,7 @@ onSwiperContentUpdate(callback: Callback<SwiperContentInfo>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1451,7 +1451,7 @@ onSwiperContentUpdate(callback: Callback<SwiperContentInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[SwiperContentInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-swipercontentinfo-i.md)&gt; | 是 | 回调函数。携带SwiperContentInfo，返回Swiper内容切换的信息。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[SwiperContentInfo](arkts-na-arkui-uicontext-swipercontentinfo-i.md)&gt; | 是 | 回调函数。携带SwiperContentInfo，返回Swiper内容切换的信息。 |
 
 ## onSwiperContentUpdate
 
@@ -1463,7 +1463,7 @@ onSwiperContentUpdate(config: observer.ObserverOptions, callback: Callback<Swipe
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1478,7 +1478,7 @@ onSwiperContentUpdate(config: observer.ObserverOptions, callback: Callback<Swipe
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | config | observer.ObserverOptions | 是 | 指定监听的Swiper组件信息。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[SwiperContentInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-swipercontentinfo-i.md)&gt; | 是 | 回调函数。携带SwiperContentInfo，返回Swiper内容切换的信息。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[SwiperContentInfo](arkts-na-arkui-uicontext-swipercontentinfo-i.md)&gt; | 是 | 回调函数。携带SwiperContentInfo，返回Swiper内容切换的信息。 |
 
 ## onTabChange
 
@@ -1490,7 +1490,7 @@ onTabChange(config: observer.ObserverOptions, callback: Callback<observer.TabCon
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1517,7 +1517,7 @@ onTabChange(callback: Callback<observer.TabContentInfo>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1543,7 +1543,7 @@ onTabContentUpdate(options: observer.ObserverOptions, callback: Callback<observe
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1570,7 +1570,7 @@ onTabContentUpdate(callback: Callback<observer.TabContentInfo>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1596,7 +1596,7 @@ onTextChange(callback: Callback<observer.TextChangeEventInfo>): void
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -1622,7 +1622,7 @@ onTextChange(identity: observer.ObserverOptions, callback: Callback<observer.Tex
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -1649,7 +1649,7 @@ onWillClick(callback: ClickEventListenerCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -1663,7 +1663,7 @@ onWillClick(callback: ClickEventListenerCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [ClickEventListenerCallback](../../apis-arkui/arkts-apis/arkts-arkui-clickeventlistenercallback-t.md) | 是 | 点击事件触发时的回调函数 |
+| callback | [ClickEventListenerCallback](arkts-na-clickeventlistenercallback-t.md) | 是 | 点击事件触发时的回调函数 |
 
 ## onWillDraw
 
@@ -1675,7 +1675,7 @@ onWillDraw(callback: Callback<void>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1701,7 +1701,7 @@ onWillTap(callback: GestureEventListenerCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -1715,7 +1715,7 @@ onWillTap(callback: GestureEventListenerCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [GestureEventListenerCallback](../../apis-arkui/arkts-apis/arkts-arkui-gestureeventlistenercallback-t.md) | 是 | 无感监听回调函数 |
+| callback | [GestureEventListenerCallback](arkts-na-gestureeventlistenercallback-t.md) | 是 | 无感监听回调函数 |
 
 ## onWindowSizeLayoutBreakpointChange
 
@@ -1727,7 +1727,7 @@ onWindowSizeLayoutBreakpointChange(callback: Callback<observer.WindowSizeLayoutB
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -1741,7 +1741,7 @@ onWindowSizeLayoutBreakpointChange(callback: Callback<observer.WindowSizeLayoutB
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;observer.WindowSizeLayoutBreakpointInfo&gt; | 是 | 当窗口大小布局断点更改时调用的回调函数。回调函数接收到一个包含当前宽度和高度断点类型的[WindowSizeLayoutBreakpointInfo](../../apis-arkui/arkts-apis/arkts-arkui-uiobserver-windowsizelayoutbreakpointinfo-c.md#WindowSizeLayoutBreakpointInfo)对象。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;observer.WindowSizeLayoutBreakpointInfo&gt; | 是 | 当窗口大小布局断点更改时调用的回调函数。回调函数接收到一个包含当前宽度和高度断点类型的[WindowSizeLayoutBreakpointInfo](arkts-na-uiobserver-windowsizelayoutbreakpointinfo-i.md#windowsizelayoutbreakpointinfo)对象。 |
 
 ## removeGlobalGestureListener
 
@@ -1753,7 +1753,7 @@ removeGlobalGestureListener(type: GestureListenerType, callback?: GestureListene
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -1767,6 +1767,6 @@ removeGlobalGestureListener(type: GestureListenerType, callback?: GestureListene
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [GestureListenerType](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-gesturelistenertype-e.md) | 是 | 要监听的事件类型 |
-| callback | [GestureListenerCallback](../../apis-arkui/arkts-apis/arkts-arkui-gesturelistenercallback-t.md) | 否 | 要移除的回调函数。如果未提供该参数，则将移除给定事件类型的所有回调函数。 |
+| type | [GestureListenerType](arkts-na-arkui-uicontext-gesturelistenertype-e.md) | 是 | 要监听的事件类型 |
+| callback | [GestureListenerCallback](arkts-na-gesturelistenercallback-t.md) | 否 | 要移除的回调函数。如果未提供该参数，则将移除给定事件类型的所有回调函数。 |
 

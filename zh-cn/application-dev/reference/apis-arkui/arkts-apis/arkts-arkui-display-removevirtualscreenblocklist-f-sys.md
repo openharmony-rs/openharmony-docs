@@ -10,7 +10,7 @@ function removeVirtualScreenBlocklist(windowIds: Array<int>): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -46,6 +46,7 @@ function removeVirtualScreenBlocklist(windowIds: Array<int>): Promise<void>
 ArkTS-Dyn示例：
 
 ```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { display, window } from '@kit.ArkUI';
 
@@ -60,16 +61,15 @@ export default class EntryAbility extends UIAbility {
     let promise = display.addVirtualScreenBlocklist(windowIds);
     promise.then(() => {
       console.info('Succeeded in adding virtual screen blocklist.');
+      // 将窗口从禁止投屏显示的名单移除
+      promise = display.removeVirtualScreenBlocklist(windowIds);
+      promise.then(() => {
+        console.info('Succeeded in removing virtual screen blocklist.');
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to remove virtual screen blocklist. Code: ${err.code}, message: ${err.message}`);
+      });
     }).catch((err: BusinessError) => {
       console.error(`Failed to add virtual screen blocklist. Code: ${err.code}, message: ${err.message}`);
-    });
-
-    // 将窗口从禁止投屏显示的名单移除
-    promise = display.removeVirtualScreenBlocklist(windowIds);
-    promise.then(() => {
-      console.info('Succeeded in removing virtual screen blocklist.');
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to remove virtual screen blocklist. Code: ${err.code}, message: ${err.message}`);
     });
   }
 }

@@ -10,7 +10,7 @@ declare function lstatSync(path: string): Stat
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ declare function lstatSync(path: string): Stat
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| path | string | 是 | 文件的应用沙箱路径path或URI。&lt;br&gt;**说明：**从API version 22开始，支持传入URI。 |
+| path | string | 是 | 文件的应用沙箱路径path或URI。<br>**说明：**从API version 22开始，支持传入URI。 |
 
 **返回值：**
 

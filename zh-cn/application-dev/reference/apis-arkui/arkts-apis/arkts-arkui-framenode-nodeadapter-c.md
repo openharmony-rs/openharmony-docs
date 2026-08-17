@@ -4,7 +4,7 @@ NodeAdapter提供FrameNode的数据懒加载能力，通过LazyForEach实现接�
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ static attachNodeAdapter(adapter: NodeAdapter, node: FrameNode): boolean
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -57,7 +57,7 @@ NodeAdapter的构造函数。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -79,7 +79,7 @@ static detachNodeAdapter(node: FrameNode): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -107,7 +107,7 @@ dispose(): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -129,7 +129,7 @@ getAllAvailableItems(): Array<FrameNode>
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -157,7 +157,7 @@ insertItem(start: number, count: number): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -173,8 +173,8 @@ insertItem(start: number, count: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| start | number | 是 | 新增的节点开始索引值。&lt;br/&gt;取值范围：0, +∞) |
-| count | number | 是 | 新增数据节点的数量。&lt;br/&gt;取值范围：[0, +∞) |
+| start | number | 是 | 新增的节点开始索引值。<br/>取值范围：0, +∞) |
+| count | number | 是 | 新增数据节点的数量。<br/>取值范围：[0, +∞) |
 
 ## isDisposed
 
@@ -186,7 +186,7 @@ isDisposed(): boolean
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -218,7 +218,7 @@ moveItem(from: number, to: number): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -234,8 +234,8 @@ moveItem(from: number, to: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| from | number | 是 | 数据移动的原始索引值。&lt;br/&gt;取值范围：[0, +∞) |
-| to | number | 是 | 数据移动的目的索引值。&lt;br/&gt;取值范围：[0, +∞) |
+| from | number | 是 | 数据移动的原始索引值。<br/>取值范围：[0, +∞) |
+| to | number | 是 | 数据移动的目的索引值。<br/>取值范围：[0, +∞) |
 
 ## onAttachToNode
 
@@ -243,11 +243,11 @@ moveItem(from: number, to: number): void
 onAttachToNode?(target: FrameNode): void
 ```
 
-FrameNode绑定NodeAdapter时回调。 > **说明：** > > 在API版本26.0.0之前，该回调在宿主节点挂载到主树时触发。如果通过动态赋值方式设置该回调，开发者可以在调用[attachNodeAdapter](../../apis-na/arkts-apis/arkts-na-framenode-nodeadapter-c.md#attachNodeAdapter)后 > 、宿主节点挂载到主树前完成设置，并在宿主节点挂载到主树时收到该回调。 > > 从API版本26.0.0开始，该回调会在NodeAdapter绑定到宿主节点时立即触发，而不是在宿主节点挂载到主节点树时触发。此时宿主节点可能尚未挂载到主节点树。如果回调逻辑依赖节点已挂载（例如访问布局信息或执行动画），建议在 > 该回调中注册onAppear，并将相关逻辑放入onAppear中执行。如果通过动态赋值方式设置该回调，请在调用 > [attachNodeAdapter](../../apis-na/arkts-apis/arkts-na-framenode-nodeadapter-c.md#attachNodeAdapter)前完成设置，否则回调可能无法触发。
+FrameNode绑定NodeAdapter时回调。 > **说明：** > > 在API版本26.0.0之前，该回调在宿主节点挂载到主树时触发。如果通过动态赋值方式设置该回调，开发者可以在调用[attachNodeAdapter](../../apis-na/arkts-apis/arkts-na-framenode-nodeadapter-c.md#attachnodeadapter)后 > 、宿主节点挂载到主树前完成设置，并在宿主节点挂载到主树时收到该回调。 > > 从API版本26.0.0开始，该回调会在NodeAdapter绑定到宿主节点时立即触发，而不是在宿主节点挂载到主节点树时触发。此时宿主节点可能尚未挂载到主节点树。如果回调逻辑依赖节点已挂载（例如访问布局信息或执行动画），建议在 > 该回调中注册onAppear，并将相关逻辑放入onAppear中执行。如果通过动态赋值方式设置该回调，请在调用 > [attachNodeAdapter](../../apis-na/arkts-apis/arkts-na-framenode-nodeadapter-c.md#attachnodeadapter)前完成设置，否则回调可能无法触发。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -275,7 +275,7 @@ onCreateChild?(index: number): FrameNode
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -291,7 +291,7 @@ onCreateChild?(index: number): FrameNode
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 加载节点索引值。&lt;br/&gt;取值范围：[0, +∞) |
+| index | number | 是 | 加载节点索引值。<br/>取值范围：[0, +∞) |
 
 **返回值：**
 
@@ -309,7 +309,7 @@ onDetachFromNode?(): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -331,7 +331,7 @@ onDisposeChild?(id: number, node: FrameNode): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -360,7 +360,7 @@ onGetChildId?(index: number): number
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -376,7 +376,7 @@ onGetChildId?(index: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 加载节点索引值。&lt;br/&gt;取值范围：[0, +∞) |
+| index | number | 是 | 加载节点索引值。<br/>取值范围：[0, +∞) |
 
 **返回值：**
 
@@ -394,7 +394,7 @@ onUpdateChild?(id: number, node: FrameNode): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -423,7 +423,7 @@ reloadAllItems(): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -445,7 +445,7 @@ reloadItem(start: number, count: number): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -461,8 +461,8 @@ reloadItem(start: number, count: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| start | number | 是 | 重新加载的节点开始索引值。&lt;br/&gt;取值范围：[0, +∞) |
-| count | number | 是 | 重新加载数据节点的数量。&lt;br/&gt;取值范围：[0, +∞) |
+| start | number | 是 | 重新加载的节点开始索引值。<br/>取值范围：[0, +∞) |
+| count | number | 是 | 重新加载数据节点的数量。<br/>取值范围：[0, +∞) |
 
 ## removeItem
 
@@ -474,7 +474,7 @@ removeItem(start: number, count: number): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -490,6 +490,6 @@ removeItem(start: number, count: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| start | number | 是 | 删除的节点开始索引值。&lt;br/&gt;取值范围：[0, +∞) |
-| count | number | 是 | 删除数据节点的数量。&lt;br/&gt;取值范围：[0, +∞) |
+| start | number | 是 | 删除的节点开始索引值。<br/>取值范围：[0, +∞) |
+| count | number | 是 | 删除数据节点的数量。<br/>取值范围：[0, +∞) |
 

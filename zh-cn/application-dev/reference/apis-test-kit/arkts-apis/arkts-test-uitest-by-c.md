@@ -1,14 +1,14 @@
 # By
 
-UiTest框架通过By类提供了丰富的控件特征描述API，用于进行控件筛选来匹配/查找出目标控件。 By提供的API能力具有以下几个特点： 1、支持单属性匹配和多属性组合匹配，例如同时指定目标控件text和id。 2、控件属性支持多种匹配模式。 3、支持控件绝对定位，相对定位，可通过[By.isBefore&lt;sup&gt;(deprecated)&lt;/sup&gt;](#isBefore)和 [By.isAfter&lt;sup&gt;(deprecated)&lt;/sup&gt;](#isAfter)等API限定邻近控件特征进行辅助定位。 By类提供的所有API均为同步接口，建议使用者通过静态构造器BY来链式创建By对象。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[On&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-on-c.md#On)替代。
+UiTest框架通过By类提供了丰富的控件特征描述API，用于进行控件筛选来匹配/查找出目标控件。 By提供的API能力具有以下几个特点： 1、支持单属性匹配和多属性组合匹配，例如同时指定目标控件text和id。 2、控件属性支持多种匹配模式。 3、支持控件绝对定位，相对定位，可通过[By.isBefore&lt;sup&gt;(deprecated)&lt;/sup&gt;](#isbefore)和 [By.isAfter&lt;sup&gt;(deprecated)&lt;/sup&gt;](#isafter)等API限定邻近控件特征进行辅助定位。 By类提供的所有API均为同步接口，建议使用者通过静态构造器BY来链式创建By对象。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[On&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-on-c.md#on)替代。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [On](arkts-test-uitest-on-c.md#On)
+**替代接口：** [On](arkts-test-uitest-on-c.md#on)
 
 <!--Device-unnamed-declare class By--><!--Device-unnamed-declare class By-End-->
 
@@ -24,7 +24,7 @@ clickable(b?: boolean): By
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -65,7 +65,7 @@ enabled(b?: boolean): By
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -106,7 +106,7 @@ focused(b?: boolean): By
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -147,7 +147,7 @@ id(id: number): By
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -184,15 +184,15 @@ let by: By = BY.id(123); // 使用静态构造器BY创建by对象，指定目标
 isAfter(by: By): By
 ```
 
-指定目标控件位于给出的特征属性控件之后，返回By对象自身。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[isAfter&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-on-c.md#isAfter)替代。
+指定目标控件位于给出的特征属性控件之后，返回By对象自身。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[isAfter&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-on-c.md#isafter)替代。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [isAfter](arkts-test-uitest-on-c.md#isAfter)(on: On)
+**替代接口：** [isAfter](arkts-test-uitest-on-c.md#isafter)(on: On)
 
 <!--Device-By-isAfter(by: By): By--><!--Device-By-isAfter(by: By): By-End-->
 
@@ -226,15 +226,15 @@ let by: By = BY.type('Text').isAfter(BY.text('123')); // 查找text为123之后�
 isBefore(by: By): By
 ```
 
-指定目标控件位于给出的特征属性控件之前，返回By对象自身。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[isBefore&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-on-c.md#isBefore)替代。
+指定目标控件位于给出的特征属性控件之前，返回By对象自身。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[isBefore&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-on-c.md#isbefore)替代。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [isBefore](arkts-test-uitest-on-c.md#isBefore)(on: On)
+**替代接口：** [isBefore](arkts-test-uitest-on-c.md#isbefore)(on: On)
 
 <!--Device-By-isBefore(by: By): By--><!--Device-By-isBefore(by: By): By-End-->
 
@@ -272,7 +272,7 @@ key(key: string): By
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -313,7 +313,7 @@ scrollable(b?: boolean): By
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -354,7 +354,7 @@ selected(b?: boolean): By
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -395,7 +395,7 @@ text(txt: string, pattern?: MatchPattern): By
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -410,7 +410,7 @@ text(txt: string, pattern?: MatchPattern): By
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | txt | string | 是 | 指定控件文本，用于匹配目标控件文本。 |
-| pattern | [MatchPattern](arkts-test-uitest-matchpattern-e.md) | 否 | 指定的文本匹配模式，默认为[EQUALS](arkts-test-uitest-matchpattern-e.md#MatchPattern)。 |
+| pattern | [MatchPattern](arkts-test-uitest-matchpattern-e.md) | 否 | 指定的文本匹配模式，默认为[EQUALS](arkts-test-uitest-matchpattern-e.md#matchpattern)。 |
 
 **返回值：**
 
@@ -437,7 +437,7 @@ type(tp: string): By
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 

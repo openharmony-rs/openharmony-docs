@@ -10,7 +10,7 @@ function emit(event: InnerEvent, data?: EventData): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ function emit(event: InnerEvent, data?: EventData): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | [InnerEvent](arkts-basicservices-emitter-innerevent-i.md) | 是 | 发送的事件，其中[EventPriority](arkts-basicservices-emitter-eventpriority-e.md#EventPriority)用于指定事件被发送的优先级。 |
+| event | [InnerEvent](arkts-basicservices-emitter-innerevent-i.md) | 是 | 发送的事件，其中[EventPriority](arkts-basicservices-emitter-eventpriority-e.md#eventpriority)用于指定事件被发送的优先级。 |
 | data | [EventData](arkts-basicservices-emitter-eventdata-i.md) | 否 | 事件携带的数据，默认为空。 |
 
 ## 示例

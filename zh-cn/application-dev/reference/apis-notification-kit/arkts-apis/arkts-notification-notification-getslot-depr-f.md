@@ -10,11 +10,11 @@ function getSlot(slotType: SlotType, callback: AsyncCallback<NotificationSlot>):
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [getSlot](arkts-notification-notificationmanager-getslot-f.md#getSlot)
+**替代接口：** [getSlot](arkts-notification-notificationmanager-getslot-f.md#getslot)
 
 <!--Device-notification-function getSlot(slotType: SlotType, callback: AsyncCallback<NotificationSlot>): void--><!--Device-notification-function getSlot(slotType: SlotType, callback: AsyncCallback<NotificationSlot>): void-End-->
 
@@ -38,11 +38,11 @@ function getSlot(slotType: SlotType): Promise<NotificationSlot>
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [getSlot](arkts-notification-notificationmanager-getslot-f.md#getSlot)
+**替代接口：** [getSlot](arkts-notification-notificationmanager-getslot-f.md#getslot)
 
 <!--Device-notification-function getSlot(slotType: SlotType): Promise<NotificationSlot>--><!--Device-notification-function getSlot(slotType: SlotType): Promise<NotificationSlot>-End-->
 

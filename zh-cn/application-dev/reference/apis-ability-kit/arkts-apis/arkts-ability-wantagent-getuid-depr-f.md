@@ -10,11 +10,11 @@ function getUid(agent: WantAgent, callback: AsyncCallback<number>): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [getUid](arkts-ability-wantagent-getuid-f.md#getUid)
+**替代接口：** [getUid](arkts-ability-wantagent-getuid-f.md#getuid)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -94,11 +94,11 @@ function getUid(agent: WantAgent): Promise<number>
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [getUid](arkts-ability-wantagent-getuid-f.md#getUid)
+**替代接口：** [getUid](arkts-ability-wantagent-getuid-f.md#getuid)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

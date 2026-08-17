@@ -8,7 +8,7 @@ declare type ImageMatrix = import ('../api/@ohos.matrix4').default.Matrix4Transi
 
 **起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+**ArkTS模式：** 起始版本为15。
 
 **废弃版本：** -1
 

@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,16 +18,16 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [Brush](arkts-arkgraphics2d-drawing-brush-c.md) | 画刷对象，用于设置图形的填充样式，包括颜色、抗锯齿、混合模式、颜色滤波器、蒙版滤波器、着色器效果、阴影层效果及图像滤波器等，并支持获取颜色、透明度、抗锯齿等属性及重置画刷为初始状态。 画刷需通过Canvas的[attachBrush](arkts-arkgraphics2d-drawing-canvas-c.md#attachBrush)方法绑定到画布后生效，绘制完成后通过 [detachBrush](arkts-arkgraphics2d-drawing-canvas-c.md#detachBrush)方法解绑；画刷用于图形填充，画笔（Pen）用于图形描边，详见[Pen](arkts-arkgraphics2d-drawing-pen-c.md#Pen)。 |
+| [Brush](arkts-arkgraphics2d-drawing-brush-c.md) | 画刷对象，用于设置图形的填充样式，包括颜色、抗锯齿、混合模式、颜色滤波器、蒙版滤波器、着色器效果、阴影层效果及图像滤波器等，并支持获取颜色、透明度、抗锯齿等属性及重置画刷为初始状态。 画刷需通过Canvas的[attachBrush](arkts-arkgraphics2d-drawing-canvas-c.md#attachbrush)方法绑定到画布后生效，绘制完成后通过 [detachBrush](arkts-arkgraphics2d-drawing-canvas-c.md#detachbrush)方法解绑；画刷用于图形填充，画笔（Pen）用于图形描边，详见[Pen](arkts-arkgraphics2d-drawing-pen-c.md#pen)。 |
 | [Canvas](arkts-arkgraphics2d-drawing-canvas-c.md) | 承载绘制内容与绘制状态的载体。Canvas提供矩形、圆形、椭圆、弧线、路径、文字、图片等多种图形的绘制能力，支持通过画笔和画刷设置绘制样式，支持画布裁剪、矩阵变换、画布状态保存与恢复等功能。 |
 | [ColorFilter](arkts-arkgraphics2d-drawing-colorfilter-c.md) | 颜色滤波器，用于对图像或图形的颜色进行变换和处理，支持创建混合模式颜色滤波器、组合颜色滤波器、矩阵颜色滤波器、伽马颜色空间转换滤波器、亮度颜色滤波器和光照颜色滤波器等多种类型。 |
 | [Font](arkts-arkgraphics2d-drawing-font-c.md) | Font类用于描述字型绘制时所使用的属性（如大小、字体、粗细、倾斜、缩放等），并支持文本测量、字形转换、路径轮廓获取、主题字体跟随等能力。 |
 | [ImageFilter](arkts-arkgraphics2d-drawing-imagefilter-c.md) | 图像滤波器，用于对图像应用各种滤波效果，支持创建模糊、颜色混合、级联组合、偏移、基于着色器等多种图像滤波器。 |
-| [Lattice](arkts-arkgraphics2d-drawing-lattice-c.md) | 矩形网格对象。该对象用于将图像按照矩形网格进行划分，支持固定指定网格区域、缩放其余网格实现局部拉伸、自定义网格绘制类型、网格颜色填充以及指定绘制边界矩形等能力。创建Lattice对象后，需配合 [Canvas.drawImageLattice](arkts-arkgraphics2d-drawing-canvas-c.md#drawImageLattice)方法使用以实现图像的局部拉伸绘制。 |
+| [Lattice](arkts-arkgraphics2d-drawing-lattice-c.md) | 矩形网格对象。该对象用于将图像按照矩形网格进行划分，支持固定指定网格区域、缩放其余网格实现局部拉伸、自定义网格绘制类型、网格颜色填充以及指定绘制边界矩形等能力。创建Lattice对象后，需配合 [Canvas.drawImageLattice](arkts-arkgraphics2d-drawing-canvas-c.md#drawimagelattice)方法使用以实现图像的局部拉伸绘制。 |
 | [MaskFilter](arkts-arkgraphics2d-drawing-maskfilter-c.md) | 蒙版滤镜对象，用于对绘制内容施加模糊效果。 |
 | [Matrix](arkts-arkgraphics2d-drawing-matrix-c.md) | 矩阵对象，用于图形的坐标变换，支持平移、旋转、缩放和倾斜等变换操作。通过矩阵变换可实现不同坐标系之间的映射。 表示为3×3的矩阵，如下图所示：  矩阵中的元素从左到右，从上到下分别表示水平缩放因子、水平倾斜系数、水平位移系数、垂直倾斜系数、垂直缩放因子、垂直位移系数、x轴透视系数、y轴透视系数、透视缩放因子。 设(x&lt;sub&gt;1&lt;/sub&gt;, y&lt;sub&gt;1&lt;/sub&gt;)为源坐标点，(x&lt;sub&gt;2&lt;/sub&gt;, y&lt;sub&gt;2&lt;/sub&gt;)为源坐标点通过矩阵变换后的坐标点，则两个坐标点的关系如下：  |
-| [Path](arkts-arkgraphics2d-drawing-path-c.md) | Path是Drawing模块提供的复合几何路径类，由直线、圆弧、圆锥曲线、二阶贝塞尔、三阶贝塞尔等基本图元组成， 支持路径的构造、变换、布尔运算、SVG路径解析与转换、测量与片段截取等能力。 未设置填充类型时，默认填充类型为WINDING，可通过[setFillType](arkts-arkgraphics2d-drawing-path-c.md#setFillType)修改。 |
-| [PathEffect](arkts-arkgraphics2d-drawing-patheffect-c.md) | 路径效果对象，用于创建多种路径效果，包括虚线、圆角、离散、叠加和组合路径效果等。可通过[Pen.setPathEffect](arkts-arkgraphics2d-drawing-pen-c.md#setPathEffect)将其应用到画笔上，从而在绘制路径时改变路 径的渲染样式。 |
+| [Path](arkts-arkgraphics2d-drawing-path-c.md) | Path是Drawing模块提供的复合几何路径类，由直线、圆弧、圆锥曲线、二阶贝塞尔、三阶贝塞尔等基本图元组成， 支持路径的构造、变换、布尔运算、SVG路径解析与转换、测量与片段截取等能力。 未设置填充类型时，默认填充类型为WINDING，可通过[setFillType](arkts-arkgraphics2d-drawing-path-c.md#setfilltype)修改。 |
+| [PathEffect](arkts-arkgraphics2d-drawing-patheffect-c.md) | 路径效果对象，用于创建多种路径效果，包括虚线、圆角、离散、叠加和组合路径效果等。可通过[Pen.setPathEffect](arkts-arkgraphics2d-drawing-pen-c.md#setpatheffect)将其应用到画笔上，从而在绘制路径时改变路 径的渲染样式。 |
 | [PathIterator](arkts-arkgraphics2d-drawing-pathiterator-c.md) | 表示路径操作迭代器，可通过遍历迭代器逐段读取路径的操作指令。 迭代器按顺序遍历路径中的操作指令，便于实现对路径的细粒度分析与自定义处理。 |
 | [Pen](arkts-arkgraphics2d-drawing-pen-c.md) | 画笔对象，用于描述所绘制图形形状的轮廓信息，支持设置颜色、线宽、抗锯齿、透明度、混合模式、转角样式、线帽样式，以及颜色滤波器、蒙版滤波器、路径效果、着色器、阴影层等绘制效果。 |
 | [PointUtils](arkts-arkgraphics2d-drawing-pointutils-c.md) | 本Class是提供处理坐标点的工具类，支持对坐标点进行取反、偏移等操作，适用于需要对坐标点进行变换处理的图形绘制场景。 |
@@ -38,7 +38,7 @@
 | [ShaderEffect](arkts-arkgraphics2d-drawing-shadereffect-c.md) | 着色器，用于在绘图中填充颜色和渐变效果。画刷和画笔设置着色器后，会使用着色器效果而不是颜色属性去绘制，但此时画刷和画笔的透明度属性仍然生效。 着色器支持创建单色着色器、线性渐变、径向渐变、扇形渐变、锥形渐变、图片着色器及混合着色器等多种类型。 |
 | [ShadowLayer](arkts-arkgraphics2d-drawing-shadowlayer-c.md) | 阴影层对象，通过设置模糊半径、偏移量和颜色，可为图形、文本等绘制内容添加阴影渲染效果。 |
 | [TextBlob](arkts-arkgraphics2d-drawing-textblob-c.md) | TextBlob是由一个或多个具有相同字型的字符组成的字块。支持通过文本、字符串、RunBuffer等多种方式创建字形集合，适用于需要批量渲染文本或获取文字边界框的场景。 |
-| [Tool](arkts-arkgraphics2d-drawing-tool-c.md) | 本模块定义的工具类，仅提供静态的方法，主要完成其他模块和[common2D](arkts-graphics-common2d.md#@ohos.graphics.common2D)中定义的数据结构的转换功能。 |
+| [Tool](arkts-arkgraphics2d-drawing-tool-c.md) | 本模块定义的工具类，仅提供静态的方法，主要完成其他模块和[common2D](arkts-graphics-common2d.md#ohosgraphicscommon2d)中定义的数据结构的转换功能。 |
 | [Typeface](arkts-arkgraphics2d-drawing-typeface-c.md) | Typeface类用于表示和管理字体对象。支持的字体操作包括：获取字体族名、从字体文件或rawfile资源构造字体、结合字体属性构造新字体，以及检查字体的加粗、斜体状态等。 |
 | [TypefaceArguments](arkts-arkgraphics2d-drawing-typefacearguments-c.md) | 提供字体属性配置的类，用于配置可变字体的属性参数（如字重维度等轴标签及对应属性值）。 |
 
@@ -71,7 +71,7 @@
 | [PathMeasureMatrixFlags](arkts-arkgraphics2d-drawing-pathmeasurematrixflags-e.md) | 路径测量中的矩阵信息维度枚举，常用于控制物体沿路径移动的动画场景。位置矩阵包含路径上某点的坐标平移信息； 切线矩阵包含路径上某点切线方向的旋转变换信息；位置和切线矩阵同时包含位置和切线信息，提供完整的路径几何信息。 |
 | [PathOp](arkts-arkgraphics2d-drawing-pathop-e.md) | 路径操作类型枚举，可用于合并或裁剪路径等功能。 |
 | [PointMode](arkts-arkgraphics2d-drawing-pointmode-e.md) | 绘制点数组的方式的枚举。 |
-| [RectType](arkts-arkgraphics2d-drawing-recttype-e.md) | 定义填充网格的矩形类型的枚举，用于在图像分割绘制时指定各个矩形区域的填充方式。仅在[Lattice](arkts-arkgraphics2d-drawing-lattice-c.md#Lattice)中使用。 |
+| [RectType](arkts-arkgraphics2d-drawing-recttype-e.md) | 定义填充网格的矩形类型的枚举，用于在图像分割绘制时指定各个矩形区域的填充方式。仅在[Lattice](arkts-arkgraphics2d-drawing-lattice-c.md#lattice)中使用。 |
 | [RegionOp](arkts-arkgraphics2d-drawing-regionop-e.md) | 两个区域合并时的操作的枚举。常用于图形编辑、裁剪区域计算等需要组合多个区域的场景。 |
 | [ScaleToFit](arkts-arkgraphics2d-drawing-scaletofit-e.md) | 源矩形到目标矩形的缩放方式枚举。 |
 | [ShadowFlag](arkts-arkgraphics2d-drawing-shadowflag-e.md) | 控制阴影绘制行为的枚举。 |

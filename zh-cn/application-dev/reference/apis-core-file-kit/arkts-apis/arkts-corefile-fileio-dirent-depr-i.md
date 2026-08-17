@@ -4,11 +4,11 @@
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
-**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listFile)
+**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
 
 <!--Device-unnamed-declare interface Dirent--><!--Device-unnamed-declare interface Dirent-End-->
 
@@ -24,11 +24,11 @@ isBlockDevice(): boolean
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
-**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listFile)
+**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
 
 <!--Device-Dirent-isBlockDevice(): boolean--><!--Device-Dirent-isBlockDevice(): boolean-End-->
 
@@ -57,11 +57,11 @@ isCharacterDevice(): boolean
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
-**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listFile)
+**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
 
 <!--Device-Dirent-isCharacterDevice(): boolean--><!--Device-Dirent-isCharacterDevice(): boolean-End-->
 
@@ -90,11 +90,11 @@ isDirectory(): boolean
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
-**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listFile)
+**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
 
 <!--Device-Dirent-isDirectory(): boolean--><!--Device-Dirent-isDirectory(): boolean-End-->
 
@@ -123,11 +123,11 @@ isFIFO(): boolean
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
-**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listFile)
+**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
 
 <!--Device-Dirent-isFIFO(): boolean--><!--Device-Dirent-isFIFO(): boolean-End-->
 
@@ -156,11 +156,11 @@ isFile(): boolean
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
-**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listFile)
+**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
 
 <!--Device-Dirent-isFile(): boolean--><!--Device-Dirent-isFile(): boolean-End-->
 
@@ -189,11 +189,11 @@ isSocket(): boolean
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
-**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listFile)
+**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
 
 <!--Device-Dirent-isSocket(): boolean--><!--Device-Dirent-isSocket(): boolean-End-->
 
@@ -222,11 +222,11 @@ isSymbolicLink(): boolean
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
-**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listFile)
+**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
 
 <!--Device-Dirent-isSymbolicLink(): boolean--><!--Device-Dirent-isSymbolicLink(): boolean-End-->
 
@@ -257,11 +257,11 @@ readonly name: string
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
-**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listFile)
+**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
 
 <!--Device-Dirent-readonly name: string--><!--Device-Dirent-readonly name: string-End-->
 

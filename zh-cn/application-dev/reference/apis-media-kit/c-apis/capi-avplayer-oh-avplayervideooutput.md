@@ -6,7 +6,7 @@ typedef struct OH_AVPlayerVideoOutput OH_AVPlayerVideoOutput
 
 ## 概述
 
-OH_AVPlayerVideoOutput field.
+OH_AVPlayerVideoOutput字段声明。
 
 **起始版本：** 26.0.0
 

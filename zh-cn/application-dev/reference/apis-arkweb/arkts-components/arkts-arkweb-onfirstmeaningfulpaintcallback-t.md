@@ -4,11 +4,11 @@
 type OnFirstMeaningfulPaintCallback = (firstMeaningfulPaint: FirstMeaningfulPaint) => void
 ```
 
-网页绘制页面度量信息的回调，当网页加载完页面主要内容时会触发该回调。
+网页首次绘制页面主要内容度量的回调，当网页加载完页面主要内容时会触发此回调。与OnLargestContentfulPaintCallback关注最大内容元素绘制时间、OnFirstScreenPaintCallback关注首屏可见内 容渲染完成相比，本回调更关注主要内容是否加载完成，适合评估用户可见内容的加载体验。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

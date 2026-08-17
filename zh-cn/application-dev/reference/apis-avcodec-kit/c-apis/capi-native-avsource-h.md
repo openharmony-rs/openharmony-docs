@@ -170,7 +170,7 @@ OH_AVErrCode OH_AVSource_Destroy(OH_AVSource *source)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：操作成功。<br>         AV_ERR_INVALID_VAL：<br>                          1. source指针无效，空指针。<br>                          2. 非OH_AVSource实例。 |
+| OH_AVErrCode | AV_ERR_OK：操作成功。<br>         AV_ERR_INVALID_VAL：<br>                          1. source指针无效，空指针。<br>                          2. 非OH_AVSource实例。 |
 
 ### OH_AVSource_GetSourceFormat()
 

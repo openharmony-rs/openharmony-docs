@@ -1,8 +1,10 @@
 # ArkTS API<!--arkts-userauthenticationkit-->
 
-- [@ohos.app.ability.UserAuthExtensionAbility](arkts-app-ability-userauthextensionability.md)
+<!--Del-->
+- [@ohos.app.ability.UserAuthExtensionAbility](arkts-app-ability-userauthextensionability.md)<!--DelEnd-->
   - [UserAuthExtensionAbility](arkts-userauthentication-app-ability-userauthextensionability-userauthextensionability-c.md)
-- [@ohos.userIAM.companionDeviceAuth](arkts-useriam-companiondeviceauth.md)
+<!--Del-->
+- [@ohos.userIAM.companionDeviceAuth](arkts-useriam-companiondeviceauth.md)<!--DelEnd-->
   <!--Del-->
   - [getStatusMonitor(系统接口)](arkts-userauthentication-companiondeviceauth-getstatusmonitor-f-sys.md)<!--DelEnd-->
   <!--Del-->

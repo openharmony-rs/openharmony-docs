@@ -10,11 +10,11 @@ function dial(phoneNumber: string, options: DialOptions, callback: AsyncCallback
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
-**替代接口：** [dialCall](arkts-telephony-call-dialcall-f-sys.md#dialCall（系统接口）)
+**替代接口：** [dialCall](arkts-telephony-call-dialcall-f-sys.md#dialcall系统接口)
 
 **需要权限：** ohos.permission.PLACE_CALL
 
@@ -37,7 +37,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let dialOptions: call.DialOptions = {
     extras: false
-}
+};
 call.dial("138xxxxxxxx", dialOptions, (err: BusinessError, data: boolean) => {
     console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
@@ -54,11 +54,11 @@ function dial(phoneNumber: string, options?: DialOptions): Promise<boolean>
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
-**替代接口：** [dialCall](arkts-telephony-call-dialcall-f-sys.md#dialCall（系统接口）)
+**替代接口：** [dialCall](arkts-telephony-call-dialcall-f-sys.md#dialcall系统接口)
 
 **需要权限：** ohos.permission.PLACE_CALL
 
@@ -86,11 +86,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let dialOptions: call.DialOptions = {
     extras: false
-}
+};
 call.dial("138xxxxxxxx", dialOptions).then((data: boolean) => {
     console.info(`dial success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-    console.error(`dial fail, promise: err->${JSON.stringify(err)}`);
+    console.error(`dial fail, promise: 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
 });
 ```
 
@@ -105,11 +105,11 @@ function dial(phoneNumber: string, callback: AsyncCallback<boolean>): void
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
-**替代接口：** [dialCall](arkts-telephony-call-dialcall-f-sys.md#dialCall（系统接口）)
+**替代接口：** [dialCall](arkts-telephony-call-dialcall-f-sys.md#dialcall系统接口)
 
 **需要权限：** ohos.permission.PLACE_CALL
 

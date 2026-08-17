@@ -10,7 +10,7 @@ function operateDevice(admin: Want, operate: string, addition?: string): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -27,7 +27,7 @@ function operateDevice(admin: Want, operate: string, addition?: string): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| operate | string | 是 | 要执行的操作。仅支持以下操作类型：&lt;br/&gt;- resetFactory：设备恢复出厂设置。接口调用后，设备将立即恢复出厂设置。恢复完成后，整机设备数据将全部被擦除且无法恢 复。企业需要做好应用的安全设计，防止应用被攻击导致企业数据丢失。已经通过 [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy)接口禁用了恢复出厂，需要先解除禁用。&lt; br/&gt;- reboot：设备重启。&lt;br/&gt;- shutDown：设备关机。&lt;br/&gt;- lockScreen：设备锁屏。 |
+| operate | string | 是 | 要执行的操作。仅支持以下操作类型：<br/>- resetFactory：设备恢复出厂设置。接口调用后，设备将立即恢复出厂设置。恢复完成后，整机设备数据将全部被擦除且无法恢 复。企业需要做好应用的安全设计，防止应用被攻击导致企业数据丢失。已经通过 [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy)接口禁用了恢复出厂，需要先解除禁用。&lt; br/&gt;- reboot：设备重启。<br/>- shutDown：设备关机。<br/>- lockScreen：设备锁屏。 |
 | addition | string | 否 | 执行时附加参数。当前为预留参数，无需传入。 |
 
 **错误码：**
@@ -70,7 +70,7 @@ function operateDevice(admin: Want, operation: Operation, addition?: string): vo
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

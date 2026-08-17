@@ -7,6 +7,6 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [UIServiceExtensionContext](arkts-na-uiserviceextensioncontext-c-sys.md) | UIServiceExtensionContext模块是 [UIServiceExtension](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md#UIServiceExtensionAbility（系统接口）)的上下文环境，继承自 [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md#ExtensionContext)。 UIServiceExtensionContext模块提供访问 [UIServiceExtension](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md#UIServiceExtensionAbility（系统接口）)特定资源以及具有的能力，包括启 动、停止、绑定、解绑Ability。 |
+| [UIServiceExtensionContext](arkts-na-uiserviceextensioncontext-c-sys.md) | UIServiceExtensionContext模块是 [UIServiceExtension](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md#uiserviceextensionability系统接口)的上下文环境，继承自 [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md#extensioncontext)。 UIServiceExtensionContext模块提供访问 [UIServiceExtension](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md#uiserviceextensionability系统接口)特定资源以及具有的能力，包括启 动、停止、绑定、解绑Ability。 |
 <!--DelEnd-->
 

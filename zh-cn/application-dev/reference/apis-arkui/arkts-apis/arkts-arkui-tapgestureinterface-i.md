@@ -6,7 +6,7 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -20,11 +20,11 @@
 (value?: TapGestureParameters): TapGestureInterface
 ```
 
-创建点击手势对象。继承自[GestureInterface&lt;T&gt;](arkts-arkui-gestureinterface-i.md#GestureInterface)。 触发点击手势事件的设备类型为键盘或手柄时，事件的SourceTool值为Unknown，事件的SourceType值为KEY或JOYSTICK。
+创建点击手势对象。继承自[GestureInterface&lt;T&gt;](arkts-arkui-gestureinterface-i.md#gestureinterface)。 触发点击手势事件的设备类型为键盘或手柄时，事件的SourceTool值为Unknown，事件的SourceType值为KEY或JOYSTICK。
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -56,7 +56,7 @@ onAction(event: (event: GestureEvent) => void): TapGestureInterface
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 

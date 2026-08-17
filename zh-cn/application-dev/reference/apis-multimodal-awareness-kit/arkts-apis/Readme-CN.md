@@ -111,7 +111,8 @@
   - [EventType(系统接口)](arkts-multimodalawareness-onscreen-eventtype-e-sys.md)<!--DelEnd-->
   <!--Del-->
   - [Scenario(系统接口)](arkts-multimodalawareness-onscreen-scenario-e-sys.md)<!--DelEnd-->
-- [@ohos.multimodalAwareness.spatialAwareness](arkts-multimodalawareness-spatialawareness.md)
+<!--Del-->
+- [@ohos.multimodalAwareness.spatialAwareness](arkts-multimodalawareness-spatialawareness.md)<!--DelEnd-->
   <!--Del-->
   - [offDistanceMeasure(系统接口)](arkts-multimodalawareness-spatialawareness-offdistancemeasure-f-sys.md)<!--DelEnd-->
   <!--Del-->

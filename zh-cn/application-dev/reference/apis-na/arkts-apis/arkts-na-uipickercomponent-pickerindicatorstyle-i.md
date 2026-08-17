@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ backgroundColor?: ResourceColor
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -40,13 +40,13 @@ backgroundColor?: ResourceColor
 borderRadius?: LengthMetrics | BorderRadiuses | LocalizedBorderRadiuses
 ```
 
-选中项背景的边框圆角半径。 默认值：{ value:12, unit:LengthUnit.vp }，即四个圆角半径均为12vp。 取值范围：取选中项的宽和高之中较小的边长为x，最大不超过x的一半。当取值小于0时，使用默认值；当取值大于最大值时，使用最大值。 **说明：** 1. 当type为PickerIndicatorType.BACKGROUND时生效。 2. [LengthMetrics](arkts-na-graphics-lengthmetrics-c.md#LengthMetrics)：统一设置四个圆角半径的大小和单位。 3. BorderRadiuses：单独设置四个圆角半径的大小（单位为vp）。 4. LocalizedBorderRadiuses：单独设置四个圆角半径的大小和单位。
+选中项背景的边框圆角半径。 默认值：{ value:12, unit:LengthUnit.vp }，即四个圆角半径均为12vp。 取值范围：取选中项的宽和高之中较小的边长为x，最大不超过x的一半。当取值小于0时，使用默认值；当取值大于最大值时，使用最大值。 **说明：** 1. 当type为PickerIndicatorType.BACKGROUND时生效。 2. [LengthMetrics](../../apis-arkui/arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md#lengthmetrics)：统一设置四个圆角半径的大小和单位。 3. BorderRadiuses：单独设置四个圆角半径的大小（单位为vp）。 4. LocalizedBorderRadiuses：单独设置四个圆角半径的大小和单位。
 
-**类型：** [LengthMetrics](arkts-na-graphics-lengthmetrics-c.md) \| [BorderRadiuses](../../apis-arkui/arkts-apis/arkts-arkui-borderradiuses-t.md) \| [LocalizedBorderRadiuses](../../apis-arkui/arkts-apis/arkts-arkui-localizedborderradiuses-i.md)
+**类型：** [LengthMetrics](../../apis-arkui/arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md) \| [BorderRadiuses](../../apis-arkui/arkts-apis/arkts-arkui-borderradiuses-t.md) \| [LocalizedBorderRadiuses](../../apis-arkui/arkts-apis/arkts-arkui-localizedborderradiuses-i.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -68,7 +68,7 @@ dividerColor?: ResourceColor
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -86,11 +86,11 @@ endMargin?: LengthMetrics
 
 分割线与UIPickerComponent容器侧边结束端的距离。 默认值：0 单位：与LengthMetrics一致。 取值范围：startMargin与endMargin之和不得超过UIPickerComponent容器的宽度。设置小于0或startMargin与endMargin之和超过 UIPickerComponent容器的宽度时，使用默认值。不支持“百分比”类型。 **说明：** 当type为PickerIndicatorType.DIVIDER时生效。
 
-**类型：** [LengthMetrics](arkts-na-graphics-lengthmetrics-c.md)
+**类型：** [LengthMetrics](../../apis-arkui/arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -108,11 +108,11 @@ startMargin?: LengthMetrics
 
 分割线与UIPickerComponent容器侧边起始端的距离。 默认值：0 单位：与LengthMetrics一致。 取值范围：startMargin与endMargin之和不得超过UIPickerComponent容器的宽度。设置小于0或startMargin与endMargin之和超过 UIPickerComponent容器的宽度时，使用默认值。不支持“百分比”类型。 **说明：** 当type为PickerIndicatorType.DIVIDER时生效。
 
-**类型：** [LengthMetrics](arkts-na-graphics-lengthmetrics-c.md)
+**类型：** [LengthMetrics](../../apis-arkui/arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -130,11 +130,11 @@ strokeWidth?: LengthMetrics
 
 分割线的线宽。 默认值：2.0px 单位：与LengthMetrics一致。 取值范围：[0, 选中项高度的一半（即20vp）]。strokeWidth小于0或大于选中项高度的一半时使用默认值。不支持“百分比”类型。 **说明：** 1. 当type为PickerIndicatorType.DIVIDER时生效。 2. 通过LengthMetrics.resource方式设置时，使用非长度属性的值会按照0vp处理。
 
-**类型：** [LengthMetrics](arkts-na-graphics-lengthmetrics-c.md)
+**类型：** [LengthMetrics](../../apis-arkui/arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -156,7 +156,7 @@ type: PickerIndicatorType
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

@@ -4,7 +4,7 @@ Define the options of shadow
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ Color of the shadow. Default value: **Black**
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -40,7 +40,7 @@ Color of the shadow. Default value: **Black**
 fill?: boolean
 ```
 
-Whether to fill the inside of the component with shadow. **true**: Fill the inside of the component with shadow. &lt;br&gt;**false**: Do not fill the inside of the component with shadow. &lt;br&gt;The default value is **false**. &lt;br&gt;**NOTE：**&lt;br&gt;This attribute does not take effect in textShadow.
+Whether to fill the inside of the component with shadow. **true**: Fill the inside of the component with shadow. <br>**false**: Do not fill the inside of the component with shadow. <br>The default value is **false**. <br>**NOTE：**<br>This attribute does not take effect in textShadow.
 
 **类型：** boolean
 
@@ -48,7 +48,7 @@ Whether to fill the inside of the component with shadow. **true**: Fill the insi
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -70,7 +70,7 @@ Offset of the shadow along the x-axis. Unit is px. Default value is 0.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -92,7 +92,7 @@ Offset of the shadow along the y-axis. Unit is px. Default value is 0.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -114,7 +114,7 @@ Blur radius of the shadow. Default value: 0px.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -130,7 +130,7 @@ Blur radius of the shadow. Default value: 0px.
 type?: ShadowType
 ```
 
-Shadow type. &lt;br&gt;Default value: **COLOR**.
+Shadow type. <br>Default value: **COLOR**.
 
 **类型：** [ShadowType](arkts-na-common-shadowtype-e.md)
 
@@ -138,7 +138,7 @@ Shadow type. &lt;br&gt;Default value: **COLOR**.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

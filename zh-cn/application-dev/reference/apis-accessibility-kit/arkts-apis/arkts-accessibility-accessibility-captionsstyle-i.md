@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@
 backgroundColor: int | string
 ```
 
-描述字幕背景颜色。 number：HEX 格式颜色，支持 rgb 或 argb。 string：支持 '#rrggbb', '#rrggbbaa', '#rgb', '#rgba' 格式。 例：不透明红色，number: 0xffff0000，string: '#ff0000', '#ff0000ff', '#f00', '#f00f'。
+描述字幕背景颜色。 number：HEX格式颜色，支持rgb或argb。 string：支持 '#rrggbb', '#rrggbbaa', '#rgb', '#rgba' 格式。 例：不透明红色，number：0xffff0000，string：'#ff0000', '#ff0000ff', '#f00', '#f00f'。
 
 **类型：** int \| string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -42,13 +42,13 @@ backgroundColor: int | string
 fontColor: int | string
 ```
 
-描述字幕字体颜色。 number：HEX 格式颜色，支持 rgb 或 argb。 string：支持 '#rrggbb', '#rrggbbaa', '#rgb', '#rgba' 格式。 例：不透明红色，number: 0xffff0000，string: '#ff0000', '#ff0000ff', '#f00', '#f00f'。
+描述字幕字体颜色。 number：HEX格式颜色，支持rgb或argb。 string：支持 '#rrggbb', '#rrggbbaa', '#rgb', '#rgba' 格式。 例：不透明红色，number：0xffff0000，string：'#ff0000', '#ff0000ff', '#f00', '#f00f'。
 
 **类型：** int \| string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -72,7 +72,7 @@ fontEdgeType: CaptionsFontEdgeType
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -96,7 +96,7 @@ fontFamily: CaptionsFontFamily
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -120,7 +120,7 @@ fontScale: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -138,13 +138,13 @@ fontScale: int
 windowColor: int | string
 ```
 
-描述字幕窗口颜色。 number：HEX 格式颜色，支持 rgb 或 argb。 string：支持 '#rrggbb', '#rrggbbaa', '#rgb', '#rgba' 格式。 例：不透明红色，number: 0xffff0000，string: '#ff0000', '#ff0000ff', '#f00', '#f00f'。
+描述字幕窗口颜色。 number：HEX格式颜色，支持rgb或argb。 string：支持 '#rrggbb', '#rrggbbaa', '#rgb', '#rgba' 格式。 例：不透明红色，number：0xffff0000，string：'#ff0000', '#ff0000ff', '#f00', '#f00f'。
 
 **类型：** int \| string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

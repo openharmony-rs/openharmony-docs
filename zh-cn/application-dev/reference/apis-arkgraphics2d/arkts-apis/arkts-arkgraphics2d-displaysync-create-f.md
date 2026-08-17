@@ -10,7 +10,7 @@ function create(): DisplaySync
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -27,7 +27,6 @@ function create(): DisplaySync
 ## 示例
 
 ```TypeScript
-// 创建DisplaySync对象
 let backDisplaySync: displaySync.DisplaySync = displaySync.create();
 ```
 

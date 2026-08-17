@@ -6,7 +6,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [SelectionContainer](arkts-na-arkui-components-selectioncontainer-selectioncontainer-f.md#SelectionContainer) | 创建一个SelectionContainer组件。需要在组件属性设置开始时调用setSelectionContainerOptions，并在组件属性设置结束时调用applyAttributesFinish。 |
+| [SelectionContainer](arkts-na-arkui-components-selectioncontainer-selectioncontainer-f.md#selectioncontainer) | 创建一个SelectionContainer组件。需要在组件属性设置开始时调用setSelectionContainerOptions，并在组件属性设置结束时调用applyAttributesFinish。 |
 
 ### 接口
 

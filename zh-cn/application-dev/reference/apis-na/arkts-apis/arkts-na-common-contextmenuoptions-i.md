@@ -4,7 +4,7 @@ Defines the context menu options.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ Callback triggered when the menu is about to appear.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -46,7 +46,7 @@ Callback triggered when the menu is about to disappear.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -70,7 +70,7 @@ Defines the menu position.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -86,7 +86,7 @@ Defines the menu position.
 arrowOffset?: Length
 ```
 
-Offset of the arrow relative to the context menu. The offset settings take effect only when the value is valid, can be converted to a number greater than 0, and does not cause the arrow to extend beyond the safe area of the context menu. &lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: &lt;br&gt;The safe distance of the arrow from the four sides of the menu is the sum of the menu's corner radius and half the width of the arrow. The value of placement determines whether the offset is horizontal or vertical. When the arrow is in the horizontal direction of the menu, the offset is the distance from the arrow to the leftmost arrow's safe distance. When the arrow is in the vertical direction of the menu, the offset is the distance from the arrow to the topmost arrow's safe distance. The default position where the arrow is displayed varies with the value of placement: Without any avoidance by the menu, when placement is set to Placement.Top or Placement.Bottom, the arrow is displayed horizontally and is centered by default; when placement is set to Placement.Left or Placement.Right, the arrow is displayed vertically and is centered by default; when placement is set to Placement.TopLeft or Placement.BottomLeft, the arrow is displayed horizontally by default, and the distance from the arrow to the left edge of the menu is the arrow's safe distance; when placement is set to Placement.TopRight or Placement.BottomRight, the arrow is displayed horizontally by default, and the distance from the arrow to the right edge of the menu is the arrow's safe distance; when placement is set to Placement.LeftTop or Placement.RightTop, the arrow is displayed vertically by default, and the distance from the arrow to the top edge of the menu is the arrow's safe distance; when placement is set to Placement.LeftBottom or Placement.RightBottom, the arrow is displayed vertically by default, and the distance from the arrow to the bottom edge of the menu is the arrow's safe distance. &lt;br&gt;This API is supported in bindContextMenu since API version 10 and bindMenu since API version 12. &lt;/p&gt;
+Offset of the arrow relative to the context menu. The offset settings take effect only when the value is valid, can be converted to a number greater than 0, and does not cause the arrow to extend beyond the safe area of the context menu. &lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: <br>The safe distance of the arrow from the four sides of the menu is the sum of the menu's corner radius and half the width of the arrow. The value of placement determines whether the offset is horizontal or vertical. When the arrow is in the horizontal direction of the menu, the offset is the distance from the arrow to the leftmost arrow's safe distance. When the arrow is in the vertical direction of the menu, the offset is the distance from the arrow to the topmost arrow's safe distance. The default position where the arrow is displayed varies with the value of placement: Without any avoidance by the menu, when placement is set to Placement.Top or Placement.Bottom, the arrow is displayed horizontally and is centered by default; when placement is set to Placement.Left or Placement.Right, the arrow is displayed vertically and is centered by default; when placement is set to Placement.TopLeft or Placement.BottomLeft, the arrow is displayed horizontally by default, and the distance from the arrow to the left edge of the menu is the arrow's safe distance; when placement is set to Placement.TopRight or Placement.BottomRight, the arrow is displayed horizontally by default, and the distance from the arrow to the right edge of the menu is the arrow's safe distance; when placement is set to Placement.LeftTop or Placement.RightTop, the arrow is displayed vertically by default, and the distance from the arrow to the top edge of the menu is the arrow's safe distance; when placement is set to Placement.LeftBottom or Placement.RightBottom, the arrow is displayed vertically by default, and the distance from the arrow to the bottom edge of the menu is the arrow's safe distance. <br>This API is supported in bindContextMenu since API version 10 and bindMenu since API version 12. &lt;/p&gt;
 
 **类型：** [Length](../../apis-arkui/arkts-apis/arkts-arkui-length-t.md)
 
@@ -94,7 +94,7 @@ Offset of the arrow relative to the context menu. The offset settings take effec
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -116,7 +116,7 @@ Defines the available layout area of preview.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -140,7 +140,7 @@ Background blur style of the menu.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -162,7 +162,7 @@ Defines the menu's background blur style with options
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -186,7 +186,7 @@ Background color of the menu.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -208,7 +208,7 @@ Defines the menu's background effect with options
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -224,7 +224,7 @@ Defines the menu's background effect with options
 borderRadius?: Length | BorderRadiuses | LocalizedBorderRadiuses
 ```
 
-Border radius of the menu. &lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: &lt;br&gt;The value can be in percentage. &lt;br&gt;If the sum of the two maximum corner radii in the horizontal direction exceeds the menu's width, or if the sum of the two maximum corner radii in the vertical direction exceeds the menu's height, the default corner radius of the menu will be used. &lt;/p&gt;
+Border radius of the menu. &lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: <br>The value can be in percentage. <br>If the sum of the two maximum corner radii in the horizontal direction exceeds the menu's width, or if the sum of the two maximum corner radii in the vertical direction exceeds the menu's height, the default corner radius of the menu will be used. &lt;/p&gt;
 
 **类型：** [Length](../../apis-arkui/arkts-apis/arkts-arkui-length-t.md) \| [BorderRadiuses](../../apis-arkui/arkts-apis/arkts-arkui-borderradiuses-t.md) \| [LocalizedBorderRadiuses](../../apis-arkui/arkts-apis/arkts-arkui-localizedborderradiuses-i.md)
 
@@ -232,7 +232,7 @@ Border radius of the menu. &lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: &lt;br&gt
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -256,7 +256,7 @@ Define the menu theme color mode.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -272,7 +272,7 @@ Define the menu theme color mode.
 enableArrow?: boolean
 ```
 
-whether show arrow belong to the menu. &lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: &lt;br&gt;When enableArrow is true, an arrow is displayed in the position specified by placement. &lt;br&gt;If placement is not set or its value is invalid, the arrow is displayed above the target. &lt;br&gt;If the position is insufficient for holding the arrow, it is automatically adjusted. &lt;br&gt;When enableArrow is undefined, no arrow is displayed. &lt;br&gt;This API is supported in bindContextMenu since API version 10 and bindMenu since API version 12. &lt;/p&gt;
+whether show arrow belong to the menu. &lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: <br>When enableArrow is true, an arrow is displayed in the position specified by placement. <br>If placement is not set or its value is invalid, the arrow is displayed above the target. <br>If the position is insufficient for holding the arrow, it is automatically adjusted. <br>When enableArrow is undefined, no arrow is displayed. <br>This API is supported in bindContextMenu since API version 10 and bindMenu since API version 12. &lt;/p&gt;
 
 **类型：** boolean
 
@@ -280,7 +280,7 @@ whether show arrow belong to the menu. &lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -304,7 +304,7 @@ Determine if it is compatible menu's half folded.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -326,7 +326,7 @@ Define grid style of menu. Only fixed-style menus are effective. For example, us
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -350,7 +350,7 @@ Defines the haptic feedback mode of menu.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -374,7 +374,7 @@ Determine the mode of menu how to avoid keyboard. No avoiding by default
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -396,7 +396,7 @@ The margin of menu's layoutRegion.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -420,7 +420,7 @@ Whether it is a menu without mask.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -438,11 +438,11 @@ maxHeight?: LengthMetrics
 
 Defines the max height of menu.
 
-**类型：** [LengthMetrics](arkts-na-graphics-lengthmetrics-c.md)
+**类型：** [LengthMetrics](../../apis-arkui/arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -460,11 +460,11 @@ minKeyboardAvoidDistance?: LengthMetrics
 
 Defines the minimum distance between menu and keyboard.
 
-**类型：** [LengthMetrics](arkts-na-graphics-lengthmetrics-c.md)
+**类型：** [LengthMetrics](../../apis-arkui/arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -488,7 +488,7 @@ Defines modal mode of menu.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -504,7 +504,7 @@ Defines modal mode of menu.
 offset?: Position
 ```
 
-Offset for showing the context menu, which should not cause the menu to extend beyond the screen. &lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: &lt;br&gt;When the menu is displayed relative to the parent component area, the width or height of the area is automatically counted into the offset based on the placement attribute of the menu. When the menu is displayed above the parent component (that is, placement is set to Placement.TopLeft, Placement.Top, or Placement.TopRight), a positive value of x indicates rightward movement relative to the parent component, and a positive value of y indicates upward movement. When the menu is displayed below the parent component (that is, placement is set to Placement.BottomLeft, Placement.Bottom, or Placement.BottomRight), a positive value of x indicates rightward movement relative to the parent component, and a positive value of y indicates downward movement. When the menu is displayed on the left of the parent component (that is, placement is set to Placement.LeftTop, Placement.Left, or Placement.LeftBottom), a positive value of x indicates leftward movement relative to the parent component, and a positive value of y indicates downward movement. When the menu is displayed on the right of the parent component (that is, placement is set to Placement.RightTop, Placement.Right, or Placement.RightBottom), a positive value of x indicates rightward movement relative to the parent component, and a positive value of y indicates downward movement. If the display position of the menu is adjusted (different from the main direction of the initial placement value), the offset value is invalid. &lt;/p&gt;
+Offset for showing the context menu, which should not cause the menu to extend beyond the screen. &lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: <br>When the menu is displayed relative to the parent component area, the width or height of the area is automatically counted into the offset based on the placement attribute of the menu. When the menu is displayed above the parent component (that is, placement is set to Placement.TopLeft, Placement.Top, or Placement.TopRight), a positive value of x indicates rightward movement relative to the parent component, and a positive value of y indicates upward movement. When the menu is displayed below the parent component (that is, placement is set to Placement.BottomLeft, Placement.Bottom, or Placement.BottomRight), a positive value of x indicates rightward movement relative to the parent component, and a positive value of y indicates downward movement. When the menu is displayed on the left of the parent component (that is, placement is set to Placement.LeftTop, Placement.Left, or Placement.LeftBottom), a positive value of x indicates leftward movement relative to the parent component, and a positive value of y indicates downward movement. When the menu is displayed on the right of the parent component (that is, placement is set to Placement.RightTop, Placement.Right, or Placement.RightBottom), a positive value of x indicates rightward movement relative to the parent component, and a positive value of y indicates downward movement. If the display position of the menu is adjusted (different from the main direction of the initial placement value), the offset value is invalid. &lt;/p&gt;
 
 **类型：** [Position](../../apis-arkui/arkts-apis/arkts-arkui-position-i.md)
 
@@ -512,7 +512,7 @@ Offset for showing the context menu, which should not cause the menu to extend b
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -534,7 +534,7 @@ Callback triggered when the menu is displayed.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -556,7 +556,7 @@ Callback function when the menu appears.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -578,7 +578,7 @@ Callback function when the menu disappears.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -600,7 +600,7 @@ Callback function when the context menu disappear.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -622,7 +622,7 @@ Callback function before the menu openAnimation starts.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -644,7 +644,7 @@ Callback function before the menu closeAnimation starts.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -668,7 +668,7 @@ The color of menu's outer border.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -692,7 +692,7 @@ The width of menu's outer border. If outline effects are required, outlineWidth 
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -708,7 +708,7 @@ The width of menu's outer border. If outline effects are required, outlineWidth 
 placement?: Placement
 ```
 
-Preferred position of the context menu. If the set position is insufficient for holding the component, it will be automatically adjusted. &lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: &lt;br&gt;If a menu is displayed by pressing and holding or right-clicking, the menu is displayed at the clicked position. &lt;/p&gt;
+Preferred position of the context menu. If the set position is insufficient for holding the component, it will be automatically adjusted. &lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: <br>If a menu is displayed by pressing and holding or right-clicking, the menu is displayed at the clicked position. &lt;/p&gt;
 
 **类型：** [Placement](../../apis-arkui/arkts-apis/arkts-arkui-placement-e.md)
 
@@ -716,7 +716,7 @@ Preferred position of the context menu. If the set position is insufficient for 
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -732,7 +732,7 @@ Preferred position of the context menu. If the set position is insufficient for 
 preview?: MenuPreviewMode | CustomBuilder
 ```
 
-Preview displayed when the context menu is triggered by a long-press or use the isShown variable of bindContextMenu to display the preview content style of the menu. &lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: &lt;br&gt;This parameter has no effect when responseType is set to ResponseType.RightClick. &lt;br&gt;If preview is set to MenuPreviewMode.NONE or is not set, the enableArrow parameter is effective. &lt;br&gt;If preview is set to MenuPreviewMode.IMAGE or CustomBuilder, no arrow will be displayed even when enableArrow is true. &lt;/p&gt;
+Preview displayed when the context menu is triggered by a long-press or use the isShown variable of bindContextMenu to display the preview content style of the menu. &lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: <br>This parameter has no effect when responseType is set to ResponseType.RightClick. <br>If preview is set to MenuPreviewMode.NONE or is not set, the enableArrow parameter is effective. <br>If preview is set to MenuPreviewMode.IMAGE or CustomBuilder, no arrow will be displayed even when enableArrow is true. &lt;/p&gt;
 
 **类型：** [MenuPreviewMode](arkts-na-common-menupreviewmode-e.md) \| CustomBuilder
 
@@ -740,7 +740,7 @@ Preview displayed when the context menu is triggered by a long-press or use the 
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -762,7 +762,7 @@ The preview animator options.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -784,7 +784,7 @@ Defines the border radius for preview of menu.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -808,7 +808,7 @@ Defines the scaling mode for custom preview of contextMenu.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -832,7 +832,7 @@ Defines the scroll bar state of menu.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -854,7 +854,7 @@ Set system-styled materials for menu. The material effect behaves differently on
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -872,11 +872,11 @@ targetSpace?: LengthMetrics
 
 Sets the space between the menu and target. When both targetSpace and offset are set, they take effect additively. It is recommended to use targetSpace to set the space between the menu and target, and use offset for additional offset.
 
-**类型：** [LengthMetrics](arkts-na-graphics-lengthmetrics-c.md)
+**类型：** [LengthMetrics](../../apis-arkui/arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -898,7 +898,7 @@ Defines the transition effect of menu opening and closing.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

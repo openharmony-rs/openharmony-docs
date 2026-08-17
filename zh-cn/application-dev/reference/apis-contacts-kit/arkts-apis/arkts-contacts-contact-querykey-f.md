@@ -10,11 +10,11 @@ function queryKey(id: number, callback: AsyncCallback<string>): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** [queryKey](#queryKey)(context: Context, id: number, callback: AsyncCallback&lt;string&gt;)
+**替代接口：** [queryKey](#querykey)(context: Context, id: number, callback: AsyncCallback&lt;string&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -55,7 +55,7 @@ function queryKey(context: Context, id: number, callback: AsyncCallback<string>)
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -111,11 +111,11 @@ function queryKey(id: number, holder: Holder, callback: AsyncCallback<string>): 
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** [queryKey](#queryKey)(context: Context, id: number, holder: Holder, callback: AsyncCallback&lt;string&gt;)
+**替代接口：** [queryKey](#querykey)(context: Context, id: number, holder: Holder, callback: AsyncCallback&lt;string&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -161,7 +161,7 @@ function queryKey(context: Context, id: number, holder: Holder, callback: AsyncC
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -222,11 +222,11 @@ function queryKey(id: number, holder?: Holder): Promise<string>
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** [queryKey](#queryKey)(context: Context, id: number, holder?: Holder)
+**替代接口：** [queryKey](#querykey)(context: Context, id: number, holder?: Holder)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -273,7 +273,7 @@ function queryKey(context: Context, id: number, holder?: Holder): Promise<string
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 

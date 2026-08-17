@@ -10,7 +10,7 @@ function addApn(admin: Want, apnInfo: Record<string, string>): void
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -27,7 +27,7 @@ function addApn(admin: Want, apnInfo: Record<string, string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| apnInfo | Record&lt;string, string&gt; | 是 | 需要添加的APN参数信息。设置后系统将使用这些参数配置移动数据网络的接入点，影响网络连接方式和数据传输路径。&lt;br/&gt;- apnName： APN配置的名称标识符，必选。&lt;br/&gt;- mcc：3位数字的移动国家代码，必选。&lt;br/&gt;- mnc：2-3位数字的移动网络代码，必选。&lt;br/&gt;- apn：接入点名称，必选。&lt;br/&gt;- type：APN的服务类型，可 选。&lt;br/&gt;- user：APN身份验证的用户名，可选。&lt;br/&gt;- password：APN身份验证的密码，可选。&lt;br/&gt;- proxy：普通数据连接的代理服务器地址，可选。&lt;br/&gt;- mmsproxy：彩信服务的 专用代理地址，可选。&lt;br/&gt;- authType：APN的认证协议类型，可选。 |
+| apnInfo | Record&lt;string, string&gt; | 是 | 需要添加的APN参数信息。设置后系统将使用这些参数配置移动数据网络的接入点，影响网络连接方式和数据传输路径。<br/>- apnName： APN配置的名称标识符，必选。<br/>- mcc：3位数字的移动国家代码，必选。<br/>- mnc：2-3位数字的移动网络代码，必选。<br/>- apn：接入点名称，必选。<br/>- type：APN的服务类型，可 选。<br/>- user：APN身份验证的用户名，可选。<br/>- password：APN身份验证的密码，可选。<br/>- proxy：普通数据连接的代理服务器地址，可选。<br/>- mmsproxy：彩信服务的 专用代理地址，可选。<br/>- authType：APN的认证协议类型，可选。 |
 
 **错误码：**
 
@@ -46,14 +46,14 @@ import { networkManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 let apnInfo: Record<string, string> = {
   // 需根据实际情况进行替换
   "apnName": "CTNET",
   "apn": "CTNET",
   "mnc": "11",
-  "mcc": "460",
+  "mcc": "460"
 };
 try {
   networkManager.addApn(wantTemp, apnInfo);

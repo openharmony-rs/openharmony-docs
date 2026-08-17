@@ -16,7 +16,7 @@
 
 **起始版本：** 21
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+**ArkTS模式：** 起始版本为21。
 
 **废弃版本：** -1
 
@@ -30,7 +30,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [scanFile](arkts-dataprotection-identifysensitivecontent-scanfile-f.md#scanFile) | 根据设置的策略，识别指定文件中的敏感内容，返回识别的结果数组，包含匹配的敏感标签、匹配内容及匹配数量。使用Promise异步回调。 |
+| [scanFile](arkts-dataprotection-identifysensitivecontent-scanfile-f.md#scanfile) | 根据设置的策略，识别指定文件中的敏感内容，返回识别的结果数组，包含匹配的敏感标签、匹配内容及匹配数量。使用Promise异步回调。 |
 
 ### 接口
 

@@ -4,7 +4,7 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ buttonType?: ButtonType
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -42,13 +42,13 @@ buttonType?: ButtonType
 icon?: PasteIconStyle
 ```
 
-设置粘贴控件的图标风格。 默认值：不显示图标。 &lt;br&gt;若同时也不传text，控件将显示为默认样式。
+设置粘贴控件的图标风格。 默认值：不显示图标。 <br>若同时也不传text，控件将显示为默认样式。
 
 **类型：** [PasteIconStyle](arkts-arkui-pasteiconstyle-e.md)
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -66,13 +66,13 @@ icon?: PasteIconStyle
 text?: PasteDescription
 ```
 
-设置粘贴控件的文本描述。 默认值：不显示文本描述。 &lt;br&gt;若同时也不传icon，控件将显示为默认样式。
+设置粘贴控件的文本描述。 默认值：不显示文本描述。 <br>若同时也不传icon，控件将显示为默认样式。
 
 **类型：** [PasteDescription](arkts-arkui-pastedescription-e.md)
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 

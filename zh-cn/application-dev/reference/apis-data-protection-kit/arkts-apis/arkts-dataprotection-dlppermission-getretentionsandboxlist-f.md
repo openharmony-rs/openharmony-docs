@@ -10,7 +10,7 @@ function getRetentionSandboxList(bundleName?: string): Promise<Array<RetentionSa
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -62,7 +62,7 @@ function getRetentionSandboxList(bundleName: string, callback: AsyncCallback<Arr
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -91,7 +91,7 @@ function getRetentionSandboxList(bundleName: string, callback: AsyncCallback<Arr
 ```TypeScript
 import { dlpPermission } from '@kit.DataProtectionKit';
 
-dlpPermission.getRetentionSandboxList("bundleName", (err, sandboxList) => {
+dlpPermission.getRetentionSandboxList('bundleName', (err, sandboxList) => {
   if (err) {
     console.error(`Failed to get retention sandbox list. Code: ${err.code}, message: ${err.message}`);
   } else {
@@ -111,7 +111,7 @@ function getRetentionSandboxList(callback: AsyncCallback<Array<RetentionSandboxI
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -141,7 +141,7 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 
 dlpPermission.getRetentionSandboxList((err, retentionSandboxList) => {
   if (err) {
-    console.error('getRetentionSandboxList error,', err.code, err.message);
+    console.error(`Failed to get retention sandbox list. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('retentionSandboxList', JSON.stringify(retentionSandboxList));
   }

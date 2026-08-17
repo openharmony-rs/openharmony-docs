@@ -112,7 +112,7 @@ OH_AVErrCode OH_AVMetadataExtractor_SetMediaSource(OH_AVMetadataExtractor *extra
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：输入的extractor为空指针或输入的source无效。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：输入的extractor为空指针或输入的source无效。 |
 
 ### OH_AVMetadataExtractor_Create()
 
@@ -157,7 +157,7 @@ OH_AVErrCode OH_AVMetadataExtractor_SetFDSource(OH_AVMetadataExtractor* extracto
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL： 输入的extractor为空指针或参数无效。<br> AV_ERR_OPERATE_NOT_PERMIT：操作被禁止。<br> AV_ERR_NO_MEMORY：内部内存分配失败。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL： 输入的extractor为空指针或参数无效。<br> AV_ERR_OPERATE_NOT_PERMIT：操作被禁止。<br> AV_ERR_NO_MEMORY：内部内存分配失败。 |
 
 ### OH_AVMetadataExtractor_FetchMetadata()
 
@@ -182,7 +182,7 @@ OH_AVErrCode OH_AVMetadataExtractor_FetchMetadata(OH_AVMetadataExtractor* extrac
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL： 输入的extractor为空指针或参数无效。<br> AV_ERR_OPERATE_NOT_PERMIT：操作被禁止。<br> AV_ERR_UNSUPPORTED_FORMAT：格式不支持。<br> AV_ERR_NO_MEMORY：内部内存分配失败。<br> AV_ERR_IO_CLEARTEXT_NOT_PERMITTED：（API version 23新增）不允许HTTP明文流量。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL： 输入的extractor为空指针或参数无效。<br> AV_ERR_OPERATE_NOT_PERMIT：操作被禁止。<br> AV_ERR_UNSUPPORTED_FORMAT：格式不支持。<br> AV_ERR_NO_MEMORY：内部内存分配失败。<br> AV_ERR_IO_CLEARTEXT_NOT_PERMITTED：（API version 23新增）不允许HTTP明文流量。 |
 
 ### OH_AVMetadataExtractor_FetchAlbumCover()
 
@@ -207,7 +207,7 @@ OH_AVErrCode OH_AVMetadataExtractor_FetchAlbumCover(OH_AVMetadataExtractor* extr
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL： 输入的extractor为空指针或参数无效。<br> AV_ERR_OPERATE_NOT_PERMIT：操作被禁止。<br> AV_ERR_UNSUPPORTED_FORMAT：格式不支持。<br> AV_ERR_NO_MEMORY：内部内存分配失败。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL： 输入的extractor为空指针或参数无效。<br> AV_ERR_OPERATE_NOT_PERMIT：操作被禁止。<br> AV_ERR_UNSUPPORTED_FORMAT：格式不支持。<br> AV_ERR_NO_MEMORY：内部内存分配失败。 |
 
 ### OH_AVMetadataExtractor_FetchFrameByTime()
 
@@ -235,7 +235,7 @@ OH_AVErrCode OH_AVMetadataExtractor_FetchFrameByTime(OH_AVMetadataExtractor *ext
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：输入参数无效。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不允许。<br> AV_ERR_UNSUPPORTED_FORMAT：格式不支持。<br> AV_ERR_SERVICE_DIED：服务已终止。<br> AV_ERR_IO_CLEARTEXT_NOT_PERMITTED：不允许HTTP明文流量。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br> AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：输入参数无效。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不允许。<br> AV_ERR_UNSUPPORTED_FORMAT：格式不支持。<br> AV_ERR_SERVICE_DIED：服务已终止。<br> AV_ERR_IO_CLEARTEXT_NOT_PERMITTED：不允许HTTP明文流量。 |
 
 ### OH_AVMetadataExtractor_OnFrameFetched()
 
@@ -277,7 +277,7 @@ OH_AVErrCode OH_AVMetadataExtractor_FetchFramesByTimes(OH_AVMetadataExtractor *e
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：输入参数无效。<br> AV_ERR_SERVICE_DIED：服务已终止。<br> AV_ERR_IO_CLEARTEXT_NOT_PERMITTED：不允许HTTP明文流量。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不允许。由onFrameInfoCallback返回。<br> AV_ERR_UNSUPPORTED_FORMAT：格式不支持。由onFrameInfoCallback返回。<br> AV_ERR_TIMEOUT：执行超时。由onFrameInfoCallback返回。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br> AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：输入参数无效。<br> AV_ERR_SERVICE_DIED：服务已终止。<br> AV_ERR_IO_CLEARTEXT_NOT_PERMITTED：不允许HTTP明文流量。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不允许。由onFrameInfoCallback返回。<br> AV_ERR_UNSUPPORTED_FORMAT：格式不支持。由onFrameInfoCallback返回。<br> AV_ERR_TIMEOUT：执行超时。由onFrameInfoCallback返回。 |
 
 ### OH_AVMetadataExtractor_CancelAllFetchFrames()
 
@@ -319,7 +319,7 @@ OH_AVErrCode OH_AVMetadataExtractor_Release(OH_AVMetadataExtractor* extractor)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL： 输入的extractor为空指针或参数无效。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL： 输入的extractor为空指针或参数无效。 |
 
 ### OH_AVMetadataExtractor_OutputParam_Create()
 

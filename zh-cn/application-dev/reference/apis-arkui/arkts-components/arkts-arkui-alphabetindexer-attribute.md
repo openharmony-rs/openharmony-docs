@@ -6,7 +6,7 @@ width属性设置"auto"时表示自适应宽度，宽度会随索引项最大宽
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ alignStyle(value: IndexerAlign, offset?: Length)
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -38,8 +38,8 @@ alignStyle(value: IndexerAlign, offset?: Length)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [IndexerAlign](arkts-arkui-indexeralign-e.md) | 是 | 索引条提示弹窗的对齐样式，支持弹窗显示在索引条右侧和左侧。&lt;br/&gt;默认值：IndexerAlign.END |
-| offset | Length | 否 | 提示弹窗与索引条之间间距，大于等于0为有效值，在不设置或设置为小于0的情况下间距与popupPosition.x相同。与 [popupPosition](#popupPosition)同时设置时，水平方向上offset生效，竖直方向上popupPosition.y生 效。<br>**起始版本：** 10 |
+| value | [IndexerAlign](arkts-arkui-indexeralign-e.md) | 是 | 索引条提示弹窗的对齐样式，支持弹窗显示在索引条右侧和左侧。<br/>默认值：IndexerAlign.END |
+| offset | Length | 否 | 提示弹窗与索引条之间间距，大于等于0为有效值，在不设置或设置为小于0的情况下间距与popupPosition.x相同。与 [popupPosition](#popupposition)同时设置时，水平方向上offset生效，竖直方向上popupPosition.y生 效。<br>**起始版本：** 10 |
 
 ## autoCollapse
 
@@ -47,11 +47,11 @@ alignStyle(value: IndexerAlign, offset?: Length)
 autoCollapse(value: boolean)
 ```
 
-设置是否使用自适应折叠模式。 如果索引项第一项为“#”，当除去第一项后剩余索引项数量 <= 9时，选择全显示模式（所有索引项完整显示）；9 < 剩余索引项数量 &lt;= 13时，根据索引条高度自适应选择全显示模式或者短折叠模式； 剩余索引项数量 &gt; 13时，根据索引条高度自适应选择短折叠模式或者长折叠模式。 如果索引项第一项不为“#”，当所有索引项数量 &lt;= 9时，选择全显示模式（所有索引项完整显示）；9 < 所有索引项数量 <= 13时，根据索引条高度自适应选择全显示模式或者短折叠模式； 所有索引项数量 > 13时，根据索引条高度自适应选择短折叠模式或者长折叠模式。 > **说明：** &gt;&lt; 所有索引项数量 <= 13时，根据索引条高度自适应选择全显示模式或者短折叠模式； 所有索引项数量 > 13时，根据索引条高度自适应选择短折叠模式或者长折叠模式。 &gt;&lt;= 13时，根据索引条高度自适应选择全显示模式或者短折叠模式； 所有索引项数量 &gt; 13时，根据索引条高度自适应选择短折叠模式或者长折叠模式。 > **说明：** > 从API version 12开始，该接口支持在attributeModifier中调用。
+设置是否使用自适应折叠模式。 如果索引项第一项为“#”，当除去第一项后剩余索引项数量 &lt;= 9时，选择全显示模式（所有索引项完整显示）；9 &lt; 剩余索引项数量 &lt;= 13时，根据索引条高度自适应选择全显示模式或者短折叠模式； 剩余索引项数量 &gt; 13时，根据索引条高度自适应选择短折叠模式或者长折叠模式。 如果索引项第一项不为“#”，当所有索引项数量 &lt;= 9时，选择全显示模式（所有索引项完整显示）；9 < 所有索引项数量 <= 13时，根据索引条高度自适应选择全显示模式或者短折叠模式； 所有索引项数量 > 13时，根据索引条高度自适应选择短折叠模式或者长折叠模式。 > **说明：** &gt; 从API version 12开始，该接口支持在attributeModifier中调用。
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -67,7 +67,7 @@ autoCollapse(value: boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | boolean | 是 | 是否使用自适应折叠模式。&lt;br/&gt;默认值：&lt;br /&gt;API version 12之前：false &lt;br /&gt;API version 12及之后：true &lt;br/&gt; true：使用自适应折叠模式。&lt;br/&gt;false：不使用自适应折叠模式。 |
+| value | boolean | 是 | 是否使用自适应折叠模式。<br/>默认值：&lt;br /&gt;API version 12之前：false &lt;br /&gt;API version 12及之后：true <br/> true：使用自适应折叠模式。<br/>false：不使用自适应折叠模式。 |
 
 ## color
 
@@ -79,7 +79,7 @@ color(value: ResourceColor)
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -93,7 +93,7 @@ color(value: ResourceColor)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ResourceColor | 是 | 未选中项文本颜色。&lt;br/&gt;默认值：0x99182431，显示为略带透明的棕色。 |
+| value | ResourceColor | 是 | 未选中项文本颜色。<br/>默认值：0x99182431，显示为略带透明的棕色。 |
 
 ## enableHapticFeedback
 
@@ -105,7 +105,7 @@ enableHapticFeedback(value: boolean)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -121,7 +121,7 @@ enableHapticFeedback(value: boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | boolean | 是 | 是否支持触控反馈。&lt;br/&gt;true：支持触控反馈。&lt;br/&gt;false：不支持触控反馈。&lt;br/&gt;默认值：true&lt;br/&gt;开启触控反馈时，需要在工程的 [module.json5](../../../quick-start/module-configuration-file.md)中配置requestPermissions字段开启振动权限，配置如下：&lt;br/&gt;" requestPermissions": [{"name": "ohos.permission.VIBRATE"}] |
+| value | boolean | 是 | 是否支持触控反馈。<br/>true：支持触控反馈。<br/>false：不支持触控反馈。<br/>默认值：true<br/>开启触控反馈时，需要在工程的 [module.json5](../../../quick-start/module-configuration-file.md)中配置requestPermissions字段开启振动权限，配置如下：<br/>" requestPermissions": [{"name": "ohos.permission.VIBRATE"}] |
 
 ## font
 
@@ -133,7 +133,7 @@ font(value: Font)
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -147,7 +147,7 @@ font(value: Font)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Font | 是 | 未选中索引项文本样式。&lt;br/&gt;默认值：&lt;br/&gt;API version 11及以前：&lt;br/&gt;{&lt;br/&gt;size:'12.0fp',&lt;br/&gt; style: FontStyle.Normal,&lt;br/&gt; weight:FontWeight.Regular,&lt;br/&gt; family:'HarmonyOS Sans'&lt;br/&gt;}&lt;br/&gt;API version 12及以后：&lt;br/ &gt;{&lt;br/&gt;size:'10.0vp',&lt;br/&gt; style:FontStyle.Normal,&lt;br/&gt; weight:FontWeight.Medium,&lt;br/&gt; family:'HarmonyOS Sans'&lt; br/&gt;} |
+| value | Font | 是 | 未选中索引项文本样式。<br/>默认值：<br/>API version 11及以前：<br/>{<br/>size:'12.0fp',<br/> style: FontStyle.Normal,<br/> weight:FontWeight.Regular,<br/> family:'HarmonyOS Sans'<br/>}<br/>API version 12及以后：&lt;br/ &gt;{<br/>size:'10.0vp',<br/> style:FontStyle.Normal,<br/> weight:FontWeight.Medium,<br/> family:'HarmonyOS Sans'&lt; br/&gt;} |
 
 ## itemBorderRadius
 
@@ -159,7 +159,7 @@ itemBorderRadius(value: number)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -175,7 +175,7 @@ itemBorderRadius(value: number)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 设置索引项背板圆角半径。&lt;br/&gt;。 &lt;br&gt;单位为：vp。 |
+| value | number | 是 | 设置索引项背板圆角半径。<br/>。 <br>单位为：vp。 |
 
 ## itemSize
 
@@ -187,7 +187,7 @@ itemSize(value: string | number)
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -201,7 +201,7 @@ itemSize(value: string | number)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | string \| number | 是 | 索引项区域大小，索引项区域为正方形，即正方形边长。不支持设置为百分比。&lt;br/&gt;实际取值会受到组件尺寸的约束，索引项宽度最大为组件宽度-左右 padding，索引项高度最大为（组件高度-上下padding）/索引项个数。传入值小于等于0时，按照 默认值处理。&lt;br/&gt;默认值：16.0&lt;br/&gt;单位：vp |
+| value | string \| number | 是 | 索引项区域大小，索引项区域为正方形，即正方形边长。不支持设置为百分比。<br/>实际取值会受到组件尺寸的约束，索引项宽度最大为组件宽度-左右 padding，索引项高度最大为（组件高度-上下padding）/索引项个数。传入值小于等于0时，按照 默认值处理。<br/>默认值：16.0<br/>单位：vp |
 
 ## onPopupSelect
 
@@ -209,11 +209,11 @@ itemSize(value: string | number)
 onPopupSelect(callback: OnAlphabetIndexerPopupSelectCallback)
 ```
 
-提示弹窗二级索引选中事件，回调参数为当前选中二级索引项索引。仅在[usingPopup](#usingPopup)为true时触发。
+提示弹窗二级索引选中事件，回调参数为当前选中二级索引项索引。仅在[usingPopup](#usingpopup)为true时触发。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -227,7 +227,7 @@ onPopupSelect(callback: OnAlphabetIndexerPopupSelectCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnAlphabetIndexerPopupSelectCallback](arkts-arkui-onalphabetindexerpopupselectcallback-t.md) | 是 | 回调函数，用于处理提示弹窗二级索引选中事件。 需先设置[usingPopup](#usingPopup)为true。<br>**起始版本：** 18 |
+| callback | [OnAlphabetIndexerPopupSelectCallback](arkts-arkui-onalphabetindexerpopupselectcallback-t.md) | 是 | 回调函数，用于处理提示弹窗二级索引选中事件。 需先设置[usingPopup](#usingpopup)为true。<br>**起始版本：** 18 |
 
 ## onRequestPopupData
 
@@ -239,7 +239,7 @@ onRequestPopupData(callback: OnAlphabetIndexerRequestPopupDataCallback)
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -253,7 +253,7 @@ onRequestPopupData(callback: OnAlphabetIndexerRequestPopupDataCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnAlphabetIndexerRequestPopupDataCallback](arkts-arkui-onalphabetindexerrequestpopupdatacallback-t.md) | 是 | 回调函数，用于提供提示弹窗二级索引项内容。 需先设置[usingPopup](#usingPopup)为true。<br>**起始版本：** 18 |
+| callback | [OnAlphabetIndexerRequestPopupDataCallback](arkts-arkui-onalphabetindexerrequestpopupdatacallback-t.md) | 是 | 回调函数，用于提供提示弹窗二级索引项内容。 需先设置[usingPopup](#usingpopup)为true。<br>**起始版本：** 18 |
 
 ## onSelect
 
@@ -265,7 +265,7 @@ onSelect(callback: OnAlphabetIndexerSelectCallback)
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -287,15 +287,15 @@ onSelect(callback: OnAlphabetIndexerSelectCallback)
 onSelected(callback: (index: number) => void)
 ```
 
-注册索引项选中事件回调，回调参数为当前选中项索引。 > **说明：** > 从API version 7开始支持，从API version 8开始废弃，建议使用[onSelect](#onSelect)替代。
+注册索引项选中事件回调，回调参数为当前选中项索引。 > **说明：** > 从API version 7开始支持，从API version 8开始废弃，建议使用[onSelect](#onselect)替代。
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 8
 
-**替代接口：** [onSelect](#onSelect)
+**替代接口：** [onSelect](#onselect)
 
 <!--Device-AlphabetIndexerAttribute-onSelected(callback: (index: number) => void): AlphabetIndexerAttribute--><!--Device-AlphabetIndexerAttribute-onSelected(callback: (index: number) => void): AlphabetIndexerAttribute-End-->
 
@@ -313,11 +313,11 @@ onSelected(callback: (index: number) => void)
 popupBackground(value: ResourceColor)
 ```
 
-设置提示弹窗背景颜色。 该接口未被主动调用或参数value传入undefined时： API version 11及以前版本，提示弹窗背景颜色默认为0xFFFFFFFF，显示为白色。 对于API version 12至API version 24版本，默认为#66808080，显示为半透明的灰色。 从API版本26.0.0开始，如果[popupBackground](#popupBackground) [popupBackgroundBlurStyle](#popupBackgroundBlurStyle)均未被主动调用或 参数value传入undefined，高档、中档算力设备默认显示为沉浸式材质 [ImmersiveStyle](../../../reference/apis-arkui/arkts-apis-uimaterial.md#immersivestyle)的THIN样式，低档算力设备默认显示为白色背景。
+设置提示弹窗背景颜色。 该接口未被主动调用或参数value传入undefined时： API version 11及以前版本，提示弹窗背景颜色默认为0xFFFFFFFF，显示为白色。 对于API version 12至API version 24版本，默认为#66808080，显示为半透明的灰色。 从API版本26.0.0开始，如果[popupBackground](#popupbackground) [popupBackgroundBlurStyle](#popupbackgroundblurstyle)均未被主动调用或 参数value传入undefined，高档、中档算力设备默认显示为沉浸式材质 [ImmersiveStyle](../../../reference/apis-arkui/arkts-apis-uimaterial.md#immersivestyle)的THIN样式，低档算力设备默认显示为白色背景。
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -331,7 +331,7 @@ popupBackground(value: ResourceColor)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ResourceColor | 是 | 提示弹窗背景颜色。&lt;br/&gt;弹窗的背景模糊材质效果会对背景色产生影响，可通过设置 [popupBackgroundBlurStyle](#popupBackgroundBlurStyle)属性值为NONE关闭背景模糊材质效果。&lt;br/&gt; |
+| value | ResourceColor | 是 | 提示弹窗背景颜色。<br/>弹窗的背景模糊材质效果会对背景色产生影响，可通过设置 [popupBackgroundBlurStyle](#popupbackgroundblurstyle)属性值为NONE关闭背景模糊材质效果。<br/> |
 
 ## popupBackgroundBlurStyle
 
@@ -339,11 +339,11 @@ popupBackground(value: ResourceColor)
 popupBackgroundBlurStyle(value: BlurStyle)
 ```
 
-设置提示弹窗的背景模糊材质。API版本26.0.0之前版本，未通过该接口设置时，默认为组件普通材质模糊，对应取值为BlurStyle中的COMPONENT_REGULAR。从API版本26.0.0开始， [popupBackground](#popupBackground)和popupBackgroundBlurStyle均未被主动调用或者传入undefined时，在高档 、中档算力设备默认显示为沉浸式材质[ImmersiveStyle](../../../reference/apis-arkui/arkts-apis-uimaterial.md#immersivestyle)的THIN样式，低档 算力设备默认显示为白色背景。
+设置提示弹窗的背景模糊材质。API版本26.0.0之前版本，未通过该接口设置时，默认为组件普通材质模糊，对应取值为BlurStyle中的COMPONENT_REGULAR。从API版本26.0.0开始， [popupBackground](#popupbackground)和popupBackgroundBlurStyle均未被主动调用或者传入undefined时，在高档 、中档算力设备默认显示为沉浸式材质[ImmersiveStyle](../../../reference/apis-arkui/arkts-apis-uimaterial.md#immersivestyle)的THIN样式，低档 算力设备默认显示为白色背景。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -359,7 +359,7 @@ popupBackgroundBlurStyle(value: BlurStyle)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | BlurStyle | 是 | 设置提示弹窗的背景模糊材质。&lt;br/&gt;弹窗的背景模糊材质效果会对背景色 [popupBackground](#popupBackground)产生影响，可通过设置属性值为NONE关闭背景模糊材质效果。 |
+| value | BlurStyle | 是 | 设置提示弹窗的背景模糊材质。<br/>弹窗的背景模糊材质效果会对背景色 [popupBackground](#popupbackground)产生影响，可通过设置属性值为NONE关闭背景模糊材质效果。 |
 
 ## popupColor
 
@@ -371,7 +371,7 @@ popupColor(value: ResourceColor)
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -385,7 +385,7 @@ popupColor(value: ResourceColor)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ResourceColor | 是 | 提示弹窗一级索引项文本颜色。&lt;br/&gt;默认值：0xFF007DFF，显示为蓝色。 |
+| value | ResourceColor | 是 | 提示弹窗一级索引项文本颜色。<br/>默认值：0xFF007DFF，显示为蓝色。 |
 
 ## popupFont
 
@@ -397,7 +397,7 @@ popupFont(value: Font)
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -411,7 +411,7 @@ popupFont(value: Font)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Font | 是 | 提示弹窗一级索引文本样式。&lt;br/&gt;默认值：&lt;br/&gt;{&lt;br/&gt;size:'24.0vp',&lt;br/&gt; style:FontStyle.Normal,&lt;br/&gt; weight: FontWeight.Medium,&lt;br/&gt; family:'HarmonyOS Sans'&lt;br/&gt;} |
+| value | Font | 是 | 提示弹窗一级索引文本样式。<br/>默认值：<br/>{<br/>size:'24.0vp',<br/> style:FontStyle.Normal,<br/> weight: FontWeight.Medium,<br/> family:'HarmonyOS Sans'<br/>} |
 
 ## popupItemBackgroundColor
 
@@ -423,7 +423,7 @@ popupItemBackgroundColor(value: ResourceColor)
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -439,7 +439,7 @@ popupItemBackgroundColor(value: ResourceColor)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ResourceColor | 是 | 提示弹窗二级索引项背景颜色。 &lt;br/&gt;默认值：&lt;br /&gt;API version 11及以前：#FFFFFFFF，显示为白色。&lt;br /&gt;API version 12及以后：#00000000，显示为透明色。 |
+| value | ResourceColor | 是 | 提示弹窗二级索引项背景颜色。 <br/>默认值：&lt;br /&gt;API version 11及以前：#FFFFFFFF，显示为白色。&lt;br /&gt;API version 12及以后：#00000000，显示为透明色。 |
 
 ## popupItemBorderRadius
 
@@ -451,7 +451,7 @@ popupItemBorderRadius(value: number)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -467,7 +467,7 @@ popupItemBorderRadius(value: number)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 设置提示弹窗索引项背板圆角半径。 默认值：24vp 不支持百分比，小于0时按照0设置。 提示弹窗背板圆角自适应变化（索引项圆角半径+4vp）。 &lt;br&gt;单位为：vp。 |
+| value | number | 是 | 设置提示弹窗索引项背板圆角半径。 默认值：24vp 不支持百分比，小于0时按照0设置。 提示弹窗背板圆角自适应变化（索引项圆角半径+4vp）。 <br>单位为：vp。 |
 
 ## popupItemFont
 
@@ -479,7 +479,7 @@ popupItemFont(value: Font)
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -495,7 +495,7 @@ popupItemFont(value: Font)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Font | 是 | 提示弹窗二级索引项文本样式。 &lt;br/&gt;默认值：&lt;br/&gt;{&lt;br/&gt;size:24,&lt;br/&gt;weight:FontWeight.Medium&lt;br/&gt;} |
+| value | Font | 是 | 提示弹窗二级索引项文本样式。 <br/>默认值：<br/>{<br/>size:24,<br/>weight:FontWeight.Medium<br/>} |
 
 ## popupPosition
 
@@ -507,7 +507,7 @@ popupPosition(value: Position)
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -521,7 +521,7 @@ popupPosition(value: Position)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Position | 是 | 弹出窗口相对于索引条上边框中点的位置。与[alignStyle](#alignStyle)同时设置时， 水平方向由[alignStyle](#alignStyle)的offset参数控制，竖直方向上value.y生效。&lt;br/&gt;默认值：{x: 60.0, y: 48.0}&lt;br/&gt;单位：vp |
+| value | Position | 是 | 弹出窗口相对于索引条上边框中点的位置。与[alignStyle](#alignstyle)同时设置时， 水平方向由[alignStyle](#alignstyle)的offset参数控制，竖直方向上value.y生效。<br/>默认值：{x: 60.0, y: 48.0}<br/>单位：vp |
 
 ## popupSelectedColor
 
@@ -533,7 +533,7 @@ popupSelectedColor(value: ResourceColor)
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -549,7 +549,7 @@ popupSelectedColor(value: ResourceColor)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ResourceColor | 是 | 提示弹窗二级索引选中项文本颜色。 &lt;br/&gt;默认值：#FF182431，显示为深暗蓝色。 |
+| value | ResourceColor | 是 | 提示弹窗二级索引选中项文本颜色。 <br/>默认值：#FF182431，显示为深暗蓝色。 |
 
 ## popupTitleBackground
 
@@ -561,7 +561,7 @@ popupTitleBackground(value: ResourceColor)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -577,7 +577,7 @@ popupTitleBackground(value: ResourceColor)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ResourceColor | 是 | 设置提示弹窗一级索引项背景颜色。&lt;br/&gt;默认值：&lt;br/&gt;提示弹窗只有一个索引项：#00FFFFFF。&lt;br/&gt;提示弹窗有多个索引项：#0c182431。 |
+| value | ResourceColor | 是 | 设置提示弹窗一级索引项背景颜色。<br/>默认值：<br/>提示弹窗只有一个索引项：#00FFFFFF。<br/>提示弹窗有多个索引项：#0c182431。 |
 
 ## popupUnselectedColor
 
@@ -589,7 +589,7 @@ popupUnselectedColor(value: ResourceColor)
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -605,7 +605,7 @@ popupUnselectedColor(value: ResourceColor)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ResourceColor | 是 | 提示弹窗二级索引未选中项文本颜色。 &lt;br/&gt;默认值：#FF182431，显示为深暗蓝色。 |
+| value | ResourceColor | 是 | 提示弹窗二级索引未选中项文本颜色。 <br/>默认值：#FF182431，显示为深暗蓝色。 |
 
 ## selected
 
@@ -617,7 +617,7 @@ selected(index: number)
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -631,7 +631,7 @@ selected(index: number)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 选中项索引值。&lt;br/&gt;取值范围：[0, [arrayValue](arkts-arkui-alphabetindexeroptions-i.md#AlphabetIndexerOptions).length-1] &lt;br/&gt;若超出索引值范围，则取默认值0。&lt;br/&gt;默认值：0 |
+| index | number | 是 | 选中项索引值。<br/>取值范围：[0, [arrayValue](arkts-arkui-alphabetindexeroptions-i.md#alphabetindexeroptions).length-1] <br/>若超出索引值范围，则取默认值0。<br/>默认值：0 |
 
 ## selectedBackgroundColor
 
@@ -643,7 +643,7 @@ selectedBackgroundColor(value: ResourceColor)
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -657,7 +657,7 @@ selectedBackgroundColor(value: ResourceColor)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ResourceColor | 是 | 选中项背景颜色。&lt;br/&gt;默认值：0x1A007DFF，显示为半透明的蓝绿色。 |
+| value | ResourceColor | 是 | 选中项背景颜色。<br/>默认值：0x1A007DFF，显示为半透明的蓝绿色。 |
 
 ## selectedColor
 
@@ -669,7 +669,7 @@ selectedColor(value: ResourceColor)
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -683,7 +683,7 @@ selectedColor(value: ResourceColor)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ResourceColor | 是 | 选中项文本颜色。&lt;br/&gt;默认值：0xFF007DFF，显示为蓝色。 |
+| value | ResourceColor | 是 | 选中项文本颜色。<br/>默认值：0xFF007DFF，显示为蓝色。 |
 
 ## selectedFont
 
@@ -695,7 +695,7 @@ selectedFont(value: Font)
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -709,7 +709,7 @@ selectedFont(value: Font)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Font | 是 | 选中项文本样式。&lt;br/&gt;默认值：&lt;br/&gt;API version 11及以前：&lt;br/&gt;{&lt;br/&gt;size:'12.0fp',&lt;br/&gt; style: FontStyle.Normal,&lt;br/&gt; weight:FontWeight.Regular,&lt;br/&gt; family:'HarmonyOS Sans'&lt;br/&gt;}&lt;br/&gt;API version 12及以后：&lt;br/ &gt;{&lt;br/&gt;size:'10.0vp',&lt;br/&gt; style:FontStyle.Normal,&lt;br/&gt; weight:FontWeight.Medium,&lt;br/&gt; family:'HarmonyOS Sans'&lt; br/&gt;} |
+| value | Font | 是 | 选中项文本样式。<br/>默认值：<br/>API version 11及以前：<br/>{<br/>size:'12.0fp',<br/> style: FontStyle.Normal,<br/> weight:FontWeight.Regular,<br/> family:'HarmonyOS Sans'<br/>}<br/>API version 12及以后：&lt;br/ &gt;{<br/>size:'10.0vp',<br/> style:FontStyle.Normal,<br/> weight:FontWeight.Medium,<br/> family:'HarmonyOS Sans'&lt; br/&gt;} |
 
 ## usingPopup
 
@@ -721,7 +721,7 @@ usingPopup(value: boolean)
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -735,5 +735,5 @@ usingPopup(value: boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | boolean | 是 | 是否显示提示弹窗。&lt;br/&gt;默认值：false &lt;br/&gt;true：显示提示弹窗。&lt;br/&gt;false：不显示提示弹窗。 |
+| value | boolean | 是 | 是否显示提示弹窗。<br/>默认值：false <br/>true：显示提示弹窗。<br/>false：不显示提示弹窗。 |
 

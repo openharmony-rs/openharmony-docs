@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,7 +18,7 @@
 position?: BadgePosition | Position
 ```
 
-设置提示点显示位置。 默认值：BadgePosition.RightTop。 undefined **说明：** 对于位置类型，不支持百分比值。 &lt;br&gt;如果设置了无效值，则使用默认值（0,0）。 表示组件的左上角，将使用。 &lt;br&gt;使用BadgePosition类型时，位置将基于方向属性进行镜像。
+设置提示点显示位置。 默认值：BadgePosition.RightTop。 undefined **说明：** 对于位置类型，不支持百分比值。 <br>如果设置了无效值，则使用默认值（0,0）。 表示组件的左上角，将使用。 <br>使用BadgePosition类型时，位置将基于方向属性进行镜像。
 
 **类型：** [BadgePosition](arkts-na-badge-badgeposition-e.md) \| [Position](../../apis-arkui/arkts-apis/arkts-arkui-position-i.md)
 
@@ -26,7 +26,7 @@ position?: BadgePosition | Position
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -48,7 +48,7 @@ Badge组件可设置样式，支持设置文本颜色、尺寸、圆点颜色和
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

@@ -1,10 +1,10 @@
 # NativeEmbedDataInfo
 
-提供同层标签生命周期变化的详细信息。
+提供同层标签生命周期变化的详细信息，包括状态和标签信息。适用于需要监控同层元素生命周期的场景，提升渲染状态管理的准确性和用户体验。
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@
 embedId?: string
 ```
 
-同层标签的id信息。
+同层标签的唯一id。
 
 **类型：** string
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -46,7 +46,7 @@ info?: NativeEmbedInfo
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -68,7 +68,7 @@ status?: NativeEmbedStatus
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -84,13 +84,13 @@ status?: NativeEmbedStatus
 surfaceId?: string
 ```
 
-NativeImage的psurfaceid。
+NativeImage的surfaceId。
 
 **类型：** string
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 

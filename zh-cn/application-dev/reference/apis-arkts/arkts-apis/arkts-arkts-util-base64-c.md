@@ -4,11 +4,11 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [Base64Helper](arkts-arkts-util-base64helper-c.md#Base64Helper)
+**替代接口：** [Base64Helper](arkts-arkts-util-base64helper-c.md#base64helper)
 
 <!--Device-util-class Base64--><!--Device-util-class Base64-End-->
 
@@ -24,7 +24,7 @@ constructor()
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -33,6 +33,12 @@ constructor()
 <!--Device-Base64-constructor()--><!--Device-Base64-constructor()-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 示例
+
+```TypeScript
+let base64 = new  util.Base64();
+```
 
 ## decode
 
@@ -44,7 +50,7 @@ decode(src: Uint8Array | string): Promise<Uint8Array>
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -66,6 +72,17 @@ decode(src: Uint8Array | string): Promise<Uint8Array>
 | --- | --- |
 | Promise&lt;Uint8Array&gt; | 用于返回获取到的 Uint8Array 对象的 promise。 |
 
+## 示例
+
+```TypeScript
+let base64 = new util.Base64();
+let array = new Uint8Array([99,122,69,122]);
+base64.decode(array).then((val) => {
+  console.info(val.toString());
+  // 输出结果：115,49,51
+})
+```
+
 ## decodeSync
 
 ```TypeScript
@@ -76,11 +93,11 @@ decodeSync(src: Uint8Array | string): Uint8Array
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [decodeSync](arkts-arkts-util-base64helper-c.md#decodeSync)
+**替代接口：** [decodeSync](arkts-arkts-util-base64helper-c.md#decodesync)
 
 <!--Device-Base64-decodeSync(src: Uint8Array | string): Uint8Array--><!--Device-Base64-decodeSync(src: Uint8Array | string): Uint8Array-End-->
 
@@ -98,6 +115,16 @@ decodeSync(src: Uint8Array | string): Uint8Array
 | --- | --- |
 | Uint8Array | 获取到的 Uint8Array 对象。 |
 
+## 示例
+
+```TypeScript
+let base64 = new util.Base64();
+let buff = 'czEz';
+let result = base64.decodeSync(buff);
+console.info("result = " + result);
+// 输出结果：result = 115,49,51
+```
+
 ## encode
 
 ```TypeScript
@@ -108,7 +135,7 @@ encode(src: Uint8Array): Promise<Uint8Array>
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -130,6 +157,17 @@ encode(src: Uint8Array): Promise<Uint8Array>
 | --- | --- |
 | Promise&lt;Uint8Array&gt; | 用于返回获取到的 Uint8Array 对象的 promise。 |
 
+## 示例
+
+```TypeScript
+let base64 = new util.Base64();
+let array = new Uint8Array([115,49,51]);
+base64.encode(array).then((val) => {
+  console.info(val.toString());
+  // 输出结果：99,122,69,122
+})
+```
+
 ## encodeSync
 
 ```TypeScript
@@ -140,11 +178,11 @@ encodeSync(src: Uint8Array): Uint8Array
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [encodeSync](arkts-arkts-util-base64helper-c.md#encodeSync)
+**替代接口：** [encodeSync](arkts-arkts-util-base64helper-c.md#encodesync)
 
 <!--Device-Base64-encodeSync(src: Uint8Array): Uint8Array--><!--Device-Base64-encodeSync(src: Uint8Array): Uint8Array-End-->
 
@@ -162,6 +200,16 @@ encodeSync(src: Uint8Array): Uint8Array
 | --- | --- |
 | Uint8Array | 获取到的 Uint8Array 对象。 |
 
+## 示例
+
+```TypeScript
+let base64 = new util.Base64();
+let array = new Uint8Array([115,49,51]);
+let result = base64.encodeSync(array);
+console.info("result = " + result);
+// 输出结果：result = 99,122,69,122
+```
+
 ## encodeToString
 
 ```TypeScript
@@ -172,11 +220,11 @@ encodeToString(src: Uint8Array): Promise<string>
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [encodeToString](arkts-arkts-util-base64helper-c.md#encodeToString)
+**替代接口：** [encodeToString](arkts-arkts-util-base64helper-c.md#encodetostring)
 
 <!--Device-Base64-encodeToString(src: Uint8Array): Promise<string>--><!--Device-Base64-encodeToString(src: Uint8Array): Promise<string>-End-->
 
@@ -194,6 +242,17 @@ encodeToString(src: Uint8Array): Promise<string>
 | --- | --- |
 | Promise&lt;string&gt; | 用于返回获取到的字符串的 promise。 |
 
+## 示例
+
+```TypeScript
+let base64 = new util.Base64();
+let array = new Uint8Array([115,49,51]);
+base64.encodeToString(array).then((val) => {
+    console.info(val);
+    // 输出结果：czEz
+})
+```
+
 ## encodeToStringSync
 
 ```TypeScript
@@ -204,11 +263,11 @@ encodeToStringSync(src: Uint8Array): string
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [encodeToStringSync](arkts-arkts-util-base64helper-c.md#encodeToStringSync)
+**替代接口：** [encodeToStringSync](arkts-arkts-util-base64helper-c.md#encodetostringsync)
 
 <!--Device-Base64-encodeToStringSync(src: Uint8Array): string--><!--Device-Base64-encodeToStringSync(src: Uint8Array): string-End-->
 
@@ -225,4 +284,14 @@ encodeToStringSync(src: Uint8Array): string
 | 类型 | 说明 |
 | --- | --- |
 | string | 获取到的字符串。 |
+
+## 示例
+
+```TypeScript
+let base64 = new util.Base64();
+let array = new Uint8Array([115,49,51]);
+let result = base64.encodeToStringSync(array);
+console.info("result = " + result);
+// 输出结果：result = czEz
+```
 

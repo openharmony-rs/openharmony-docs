@@ -4,7 +4,7 @@ Defines the align rule options of relative container.
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ bias?: Bias
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -46,13 +46,13 @@ bias?: Bias
 bottom?: VerticalAlignParam
 ```
 
-设置底部对齐的参数。&lt;br/&gt;API version 23之前，入参类型为{ anchor: string, align: VerticalAlign}
+设置底部对齐的参数。<br/>API version 23之前，入参类型为{ anchor: string, align: VerticalAlign}
 
 **类型：** [VerticalAlignParam](arkts-arkui-verticalalignparam-i.md)
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -70,13 +70,13 @@ bottom?: VerticalAlignParam
 center?: VerticalAlignParam
 ```
 
-设置纵向居中对齐方式的参数。&lt;br/&gt;API version 23，之前入参类型为{ anchor: string, align: VerticalAlign }
+设置纵向居中对齐方式的参数。<br/>API version 23，之前入参类型为{ anchor: string, align: VerticalAlign }
 
 **类型：** [VerticalAlignParam](arkts-arkui-verticalalignparam-i.md)
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -94,13 +94,13 @@ center?: VerticalAlignParam
 left?: HorizontalAlignParam
 ```
 
-设置左对齐参数。&lt;br/&gt;API version 23之前，入参类型为{ anchor: string, align: HorizontalAlign }
+设置左对齐参数。<br/>API version 23之前，入参类型为{ anchor: string, align: HorizontalAlign }
 
 **类型：** [HorizontalAlignParam](arkts-arkui-horizontalalignparam-i.md)
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -118,13 +118,13 @@ left?: HorizontalAlignParam
 middle?: HorizontalAlignParam
 ```
 
-设置横向居中对齐方式的参数。&lt;br/&gt;API version 23之前，入参类型为{ anchor: string, align: HorizontalAlign }
+设置横向居中对齐方式的参数。<br/>API version 23之前，入参类型为{ anchor: string, align: HorizontalAlign }
 
 **类型：** [HorizontalAlignParam](arkts-arkui-horizontalalignparam-i.md)
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -142,13 +142,13 @@ middle?: HorizontalAlignParam
 right?: HorizontalAlignParam
 ```
 
-设置右对齐参数。&lt;br/&gt;API version 23之前，入参类型为{ anchor: string, align: HorizontalAlign}
+设置右对齐参数。<br/>API version 23之前，入参类型为{ anchor: string, align: HorizontalAlign}
 
 **类型：** [HorizontalAlignParam](arkts-arkui-horizontalalignparam-i.md)
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -166,13 +166,13 @@ right?: HorizontalAlignParam
 top?: VerticalAlignParam
 ```
 
-设置顶部对齐的参数。&lt;br/&gt;API version 23之前，入参类型为{ anchor: string, align: VerticalAlign}
+设置顶部对齐的参数。<br/>API version 23之前，入参类型为{ anchor: string, align: VerticalAlign}
 
 **类型：** [VerticalAlignParam](arkts-arkui-verticalalignparam-i.md)
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 

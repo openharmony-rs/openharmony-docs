@@ -1,10 +1,10 @@
 # WebOptions
 
-Defines the Web options.
+通过[接口](../../../reference/apis-arkweb/arkts-basic-components-web.md#接口)定义Web选项，包括网页资源地址、控制器、渲染方式等。
 
-**起始版本：** 12
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@ Defines the Web options.
 controller: WebController | WebviewController
 ```
 
-Sets the controller of the Web.
+控制器，通过controller可以控制Web组件各种行为，包括页面导航、生命周期状态、JavaScript交互等。从API version 9开始，WebController不再维护，建议使用 [WebviewController](arkts-arkweb-webviewcontroller-t.md#webviewcontroller)替代。
 
 **类型：** [WebController](arkts-arkweb-webcontroller-c.md) \| [WebviewController](arkts-arkweb-webviewcontroller-t.md)
 
-**起始版本：** 11
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -40,13 +40,13 @@ Sets the controller of the Web.
 emulateTouchFromMouseEvent? : boolean
 ```
 
-设定鼠标事件是否被转换成触摸事件。 默认值：false。
+设定鼠标事件是否转换为触摸事件。true表示转换成触摸事件，适用于需要统一触摸和鼠标交互行为的场景；false表示不转换成触摸事件。 默认值：false。
 
 **类型：** boolean
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -60,17 +60,17 @@ emulateTouchFromMouseEvent? : boolean
 incognitoMode? : boolean
 ```
 
-Sets the incognito mode of the Web, the parameter is optional and default value is false. When the Web is in incognito mode, cookies, records of websites, geolocation permissions will not save in persistent files.
+表示当前创建的Webview是否是隐私模式。true表示创建隐私模式，false表示创建正常模式。 默认值：false。 传入undefined或null时为false。&lt;!--RP1--&gt;&lt;!--RP1End--&gt;
 
 **类型：** boolean
 
-**起始版本：** 18
+**起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebOptions-incognitoMode? : boolean--><!--Device-WebOptions-incognitoMode? : boolean-End-->
 
@@ -82,13 +82,13 @@ Sets the incognito mode of the Web, the parameter is optional and default value 
 renderMode? : RenderMode
 ```
 
-Sets the render mode of the web.
+表示当前Web组件的渲染方式，`RenderMode.ASYNC_RENDER`表示Web组件异步渲染，`RenderMode.SYNC_RENDER`表示Web组件同步渲染，默认值 `RenderMode.ASYNC_RENDER`，该模式不支持动态调整。
 
 **类型：** [RenderMode](arkts-arkweb-rendermode-e.md)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -104,13 +104,13 @@ Sets the render mode of the web.
 sharedRenderProcessToken? : string
 ```
 
-Sets the shared render process token of the web. When the web is in multiprocess mode, web with the same sharedRenderProcessToken will attempt to reuse the same render process. The shared render process will remain active until all associated web are destroyed.
+表示当前Web组件指定共享渲染进程的token，多渲染进程模式下，相同token的Web组件会优先尝试复用绑定的渲染进程。绑定发生在渲染进程的初始化阶段。当渲染进程没有关联的Web组件时，其绑定关系将被移除。 默认值： ""。
 
 **类型：** string
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -124,13 +124,13 @@ Sets the shared render process token of the web. When the web is in multiprocess
 src: string | Resource
 ```
 
-Sets the address of the web page to be displayed.
+网页资源地址。如果访问本地资源文件，请使用resource协议或\$rawfile资源引用。如果加载应用包外沙箱路径的本地资源文件（文件支持html和txt类型），请使用file://沙箱文件路径。 src不能通过状态变量（例如：@State）动态更改地址，如需更改，请通过[loadUrl()](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#loadurl)重新加载。
 
 **类型：** string \| Resource
 
-**起始版本：** 11
+**起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 

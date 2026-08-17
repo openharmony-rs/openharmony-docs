@@ -1,10 +1,10 @@
 # RenderProcessNotRespondingReason
 
-Enum type supplied to [RenderProcessNotRespondingData](arkts-arkweb-renderprocessnotrespondingdata-i.md#RenderProcessNotRespondingData) when onRenderProcessNotResponding is called.
+触发渲染进程无响应回调的原因。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -18,11 +18,11 @@ Enum type supplied to [RenderProcessNotRespondingData](arkts-arkweb-renderproces
 INPUT_TIMEOUT = 0
 ```
 
-Timeout for input sent to render process.
+发送给渲染进程的input事件响应超时。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -36,11 +36,11 @@ Timeout for input sent to render process.
 NAVIGATION_COMMIT_TIMEOUT = 1
 ```
 
-Timeout for navigation commit.
+新的网页加载导航响应超时。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

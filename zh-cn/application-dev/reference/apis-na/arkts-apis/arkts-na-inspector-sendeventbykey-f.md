@@ -10,7 +10,7 @@ function sendEventByKey(id: string, action: int, params: string): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -25,7 +25,7 @@ function sendEventByKey(id: string, action: int, params: string): boolean
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | id | string | 是 | 要触发事件的组件id。 |
-| action | int | 是 | 要触发的事件类型，当前支持取值：&lt;br/&gt;点击事件Click：10。&lt;br/&gt;长按事件LongClick：11。 |
+| action | int | 是 | 要触发的事件类型，当前支持取值：<br/>点击事件Click：10。<br/>长按事件LongClick：11。 |
 | params | string | 是 | 事件参数，无参数时传空字符串""。 |
 
 **返回值：**

@@ -4,7 +4,7 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -18,11 +18,11 @@
 LEFT = 0
 ```
 
-屏障在其所有[referencedId](arkts-arkui-barrierstyle-i.md#BarrierStyle)的最左侧。
+屏障在其所有[referencedId](arkts-arkui-barrierstyle-i.md#barrierstyle)的最左侧。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -40,11 +40,11 @@ LEFT = 0
 RIGHT = 1
 ```
 
-屏障在其所有[referencedId](arkts-arkui-barrierstyle-i.md#BarrierStyle)的最右侧。
+屏障在其所有[referencedId](arkts-arkui-barrierstyle-i.md#barrierstyle)的最右侧。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -62,11 +62,11 @@ RIGHT = 1
 TOP = 2
 ```
 
-屏障在其所有[referencedId](arkts-arkui-barrierstyle-i.md#BarrierStyle)的最上方。
+屏障在其所有[referencedId](arkts-arkui-barrierstyle-i.md#barrierstyle)的最上方。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -84,11 +84,11 @@ TOP = 2
 BOTTOM = 3
 ```
 
-屏障在其所有[referencedId](arkts-arkui-barrierstyle-i.md#BarrierStyle)的最下方。
+屏障在其所有[referencedId](arkts-arkui-barrierstyle-i.md#barrierstyle)的最下方。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

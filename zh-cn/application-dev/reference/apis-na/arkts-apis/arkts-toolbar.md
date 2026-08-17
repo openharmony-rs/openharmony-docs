@@ -6,8 +6,8 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [ToolBarItem](arkts-na-toolbar-toolbaritem-f.md#ToolBarItem) | 定义ToolBarItem组件。 |
-| [ToolBarItem](arkts-na-toolbar-toolbaritem-f.md#ToolBarItem) | 定义ToolBarItem组件。需要在组件属性设置开始时调用setToolBarItemOptions， 并在组件属性设置结束时调用applyAttributeFinish。 |
+| [ToolBarItem](arkts-na-toolbar-toolbaritem-f.md#toolbaritem) | 定义ToolBarItem组件。 |
+| [ToolBarItem](arkts-na-toolbar-toolbaritem-f.md#toolbaritem) | 定义ToolBarItem组件。需要在组件属性设置开始时调用setToolBarItemOptions， 并在组件属性设置结束时调用applyAttributeFinish。 |
 
 ### 接口
 

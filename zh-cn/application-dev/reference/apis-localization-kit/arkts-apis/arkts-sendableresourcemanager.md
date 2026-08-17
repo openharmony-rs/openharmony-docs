@@ -1,10 +1,10 @@
 # @ohos.sendableResourceManager
 
-本模块提供[Resource](arkts-localization-sendableresourcemanager-resource-t.md#Resource)对象与 [SendableResource](arkts-localization-sendableresourcemanager-sendableresource-t.md#SendableResource)对象之间的相互转换功能。SendableResource实现了 [ISendable](../../../arkts-utils/arkts-sendable.md#isendable)接口，支持跨线程传输。跨线程传输后，SendableResource对象可以再转换为Resource对象，作为 参数传递给[资源管理](arkts-resourcemanager.md#@ohos.resourceManager)接口以获取资源。
+本模块提供[Resource](arkts-localization-sendableresourcemanager-resource-t.md#resource)对象与 [SendableResource](arkts-localization-sendableresourcemanager-sendableresource-t.md#sendableresource)对象之间的相互转换功能。SendableResource实现了 [ISendable](../../../arkts-utils/arkts-sendable.md#isendable)接口，支持跨线程传输。跨线程传输后，SendableResource对象可以再转换为Resource对象，作为 参数传递给[资源管理](arkts-resourcemanager.md#ohosresourcemanager)接口以获取资源。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -18,8 +18,8 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [resourceToSendableResource](arkts-localization-sendableresourcemanager-resourcetosendableresource-f.md#resourceToSendableResource) | 将Resource对象转换为可用于跨线程传输的SendableResource对象。 |
-| [sendableResourceToResource](arkts-localization-sendableresourcemanager-sendableresourcetoresource-f.md#sendableResourceToResource) | 将跨线程传输的SendableResource对象转换为Resource对象。 |
+| [resourceToSendableResource](arkts-localization-sendableresourcemanager-resourcetosendableresource-f.md#resourcetosendableresource) | 将Resource对象转换为可用于跨线程传输的SendableResource对象。 |
+| [sendableResourceToResource](arkts-localization-sendableresourcemanager-sendableresourcetoresource-f.md#sendableresourcetoresource) | 将跨线程传输的SendableResource对象转换为Resource对象。 |
 
 ### 类型
 

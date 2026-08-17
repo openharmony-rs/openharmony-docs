@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ onHeartBeat(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -72,7 +72,7 @@ onProgress(progress : DataMigrationProgress): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -126,7 +126,7 @@ onResult(result : int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -140,7 +140,7 @@ onResult(result : int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| result | int | 是 | 数据迁移结果。 &lt;br&gt;0：数据迁移成功。 &lt;br&gt;1：无需进行数据迁移。 &lt;br&gt;2：获取用户ID失败。 &lt;br&gt;3：检查目录失败。 &lt;br&gt;4：初始化缓存目录失败。 &lt;br&gt;5：打开源文件失败。 &lt;br&gt;6：拷贝失败。 &lt;br&gt;7：文件重命名失败。 &lt;br&gt;8：文件删除失败。 |
+| result | int | 是 | 数据迁移结果。 <br>0：数据迁移成功。 <br>1：无需进行数据迁移。 <br>2：获取用户ID失败。 <br>3：检查目录失败。 <br>4：初始化缓存目录失败。 <br>5：打开源文件失败。 <br>6：拷贝失败。 <br>7：文件重命名失败。 <br>8：文件删除失败。 |
 
 ## 示例
 

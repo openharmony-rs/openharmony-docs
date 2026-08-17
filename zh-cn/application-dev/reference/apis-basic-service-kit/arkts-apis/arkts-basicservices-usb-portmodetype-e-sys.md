@@ -4,11 +4,11 @@ USB端口模式类型。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 9
 
-**替代接口：** [PortModeType](arkts-basicservices-usbmanager-portmodetype-e-sys.md#PortModeType（系统接口）)
+**替代接口：** [PortModeType](arkts-basicservices-usbmanager-portmodetype-e-sys.md#portmodetype系统接口)
 
 <!--Device-usb-export enum PortModeType--><!--Device-usb-export enum PortModeType-End-->
 
@@ -26,11 +26,11 @@ NONE = 0
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 9
 
-**替代接口：** [NONE](arkts-basicservices-usbmanager-portmodetype-e-sys.md#NONE)
+**替代接口：** [NONE](arkts-basicservices-usbmanager-portmodetype-e-sys.md#none)
 
 <!--Device-PortModeType-NONE = 0--><!--Device-PortModeType-NONE = 0-End-->
 
@@ -48,11 +48,11 @@ UFP = 1
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 9
 
-**替代接口：** [UFP](arkts-basicservices-usbmanager-portmodetype-e-sys.md#UFP)
+**替代接口：** [UFP](arkts-basicservices-usbmanager-portmodetype-e-sys.md#ufp)
 
 <!--Device-PortModeType-UFP = 1--><!--Device-PortModeType-UFP = 1-End-->
 
@@ -70,11 +70,11 @@ DFP = 2
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 9
 
-**替代接口：** [DFP](arkts-basicservices-usbmanager-portmodetype-e-sys.md#DFP)
+**替代接口：** [DFP](arkts-basicservices-usbmanager-portmodetype-e-sys.md#dfp)
 
 <!--Device-PortModeType-DFP = 2--><!--Device-PortModeType-DFP = 2-End-->
 
@@ -92,11 +92,11 @@ DRP = 3
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 9
 
-**替代接口：** [DRP](arkts-basicservices-usbmanager-portmodetype-e-sys.md#DRP)
+**替代接口：** [DRP](arkts-basicservices-usbmanager-portmodetype-e-sys.md#drp)
 
 <!--Device-PortModeType-DRP = 3--><!--Device-PortModeType-DRP = 3-End-->
 
@@ -114,11 +114,11 @@ NUM_MODES = 4
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 9
 
-**替代接口：** [NUM_MODES](arkts-basicservices-usbmanager-portmodetype-e-sys.md#NUM_MODES)
+**替代接口：** [NUM_MODES](arkts-basicservices-usbmanager-portmodetype-e-sys.md#nummodes)
 
 <!--Device-PortModeType-NUM_MODES = 4--><!--Device-PortModeType-NUM_MODES = 4-End-->
 

@@ -4,11 +4,11 @@
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 10
 
-**替代接口：** [Layoutable](arkts-arkui-layoutable-i.md#Layoutable)
+**替代接口：** [Layoutable](arkts-arkui-layoutable-i.md#layoutable)
 
 <!--Device-unnamed-declare interface LayoutInfo--><!--Device-unnamed-declare interface LayoutInfo-End-->
 
@@ -26,11 +26,11 @@ constraint: ConstraintSizeOptions
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 10
 
-**替代接口：** [Layoutable](arkts-arkui-layoutable-i.md#Layoutable)
+**替代接口：** [Layoutable](arkts-arkui-layoutable-i.md#layoutable)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
@@ -50,11 +50,11 @@ position: Position
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 10
 
-**替代接口：** [Layoutable](arkts-arkui-layoutable-i.md#Layoutable)
+**替代接口：** [Layoutable](arkts-arkui-layoutable-i.md#layoutable)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 

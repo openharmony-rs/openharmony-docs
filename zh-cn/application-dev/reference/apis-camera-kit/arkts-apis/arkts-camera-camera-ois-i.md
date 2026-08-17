@@ -2,11 +2,11 @@
 
 OIS (Optical Image Stabilization) interface.
 
-**继承/实现关系：** OIS extends [OISQuery](arkts-camera-camera-oisquery-i.md#OISQuery)
+**继承/实现关系：** OIS extends [OISQuery](arkts-camera-camera-oisquery-i.md#oisquery)
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ Sets the OIS mode.
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -59,7 +59,7 @@ Sets custom OIS bias values for each axis.
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 

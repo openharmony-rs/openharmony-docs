@@ -10,7 +10,7 @@ DLP管理应用调用该接口，将明文文件加密生成DLPFile管理对象�
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -100,7 +100,7 @@ DLP管理应用调用该接口，将明文文件加密生成权限受控文件�
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -160,7 +160,7 @@ let dlpProperty: dlpPermission.DLPProperty = {
 };
 dlpPermission.generateDLPFile(file, dlp, dlpProperty, (err, res) => { // 生成DLP文件。
   if (err) {
-    console.error('generateDLPFile error,', err.code, err.message);
+    console.error(`Failed to generate DLPFile. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('res', JSON.stringify(res));
   }

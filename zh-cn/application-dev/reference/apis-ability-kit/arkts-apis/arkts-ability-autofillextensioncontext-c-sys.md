@@ -1,12 +1,12 @@
 # AutoFillExtensionContext（系统接口）
 
-AutoFillExtensionContext模块是AutoFillExtensionAbility的上下文环境，继承自 [ExtensionContext](arkts-ability-extensioncontext-c.md#ExtensionContext)。
+AutoFillExtensionContext模块是AutoFillExtensionAbility的上下文环境，继承自 [ExtensionContext](arkts-ability-extensioncontext-c.md#extensioncontext)。
 
 **继承/实现关系：** AutoFillExtensionContext extends ExtensionContext
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,11 +22,11 @@ AutoFillExtensionContext模块是AutoFillExtensionAbility的上下文环境，�
 reloadInModal(customData: CustomData): Promise<void>
 ```
 
-拉起模态页面。使用Promise异步回调。
+重新拉起模态页面。使用Promise异步回调。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

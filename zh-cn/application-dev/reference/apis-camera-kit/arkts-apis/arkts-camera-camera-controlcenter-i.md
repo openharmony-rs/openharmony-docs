@@ -1,12 +1,12 @@
 # ControlCenter
 
-ControlCenter继承自[ControlCenterQuery](arkts-camera-camera-controlcenterquery-i.md#ControlCenterQuery)。 控制中心类，用于使能相机控制器。
+ControlCenter继承自[ControlCenterQuery](arkts-camera-camera-controlcenterquery-i.md#controlcenterquery)。 控制中心类，用于使能相机控制器。
 
-**继承/实现关系：** ControlCenter extends [ControlCenterQuery](arkts-camera-camera-controlcenterquery-i.md#ControlCenterQuery)
+**继承/实现关系：** ControlCenter extends [ControlCenterQuery](arkts-camera-camera-controlcenterquery-i.md#controlcenterquery)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ enableControlCenter(enabled: boolean): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

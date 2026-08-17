@@ -16,11 +16,11 @@
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
-**替代接口：** [wantConstant/wantConstant](arkts-app-ability-wantconstant.md#@ohos.app.ability.wantConstant)
+**替代接口：** [wantConstant/wantConstant](arkts-app-ability-wantconstant.md#ohosappabilitywantconstant)
 
 <!--Device-unnamed-declare namespace wantConstant--><!--Device-unnamed-declare namespace wantConstant-End-->
 

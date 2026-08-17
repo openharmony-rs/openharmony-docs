@@ -2,7 +2,7 @@
 
 ## 概述
 
-文件中定义了与自定义路径相关的功能函数，能够高效构建复杂几何路径、支持SVG数据交换实现跨平台兼容，并通过配对创建与销毁机制保障内存安全。主要支持以下能力：
+文件中定义了与自定义路径相关的功能函数，能够高效构建复杂几何路径、支持SVG数据交换实现跨平台兼容，并通过配对创建与销毁机制保障内存安全。主要支持以下能力：<ul><li>路径的创建、拷贝与销毁。</li><li>添加线段、弧线、贝塞尔曲线、圆锥曲线、矩形、椭圆、圆形、多边形等几何图形。</li><li>路径的矩阵变换、偏移、合并与闭合等操作。</li><li>路径长度、边界、包含关系等查询和测量能力。</li></ul>
 
 **库：** libnative_drawing.so
 
@@ -59,9 +59,9 @@
 | [void OH_Drawing_PathAddCircle(OH_Drawing_Path* path, float x, float y, float radius, OH_Drawing_PathDirection pathDirection)](#oh_drawing_pathaddcircle) | 按指定方向，向路径添加圆形。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>path为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER；<br>radius小于等于0时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE；<br>pathDirection不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。 |
 | [bool OH_Drawing_PathBuildFromSvgString(OH_Drawing_Path* path, const char* str)](#oh_drawing_pathbuildfromsvgstring) | 解析SVG字符串表示的路径。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>path、str任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [OH_Drawing_ErrorCode OH_Drawing_PathConvertToSvgString(const OH_Drawing_Path* path, char* str, size_t* strSize)](#oh_drawing_pathconverttosvgstring) | 将路径转换为SVG路径数据字符串。 |
-| [OH_Drawing_ErrorCode OH_Drawing_PathGetPointData(const OH_Drawing_Path* path, OH_Drawing_Point2D* points, uint32_t* count)](#oh_drawing_pathgetpointdata) | 获取路径的点数据。<br>在路径（path）图元中，点数据以数值序列的形式存在，与verb指令一一对应，用来精确指定绘图操作的几何坐标位置。<br>点数据的主要类型包括如下： |
-| [OH_Drawing_ErrorCode OH_Drawing_PathGetVerbData(const OH_Drawing_Path* path, OH_Drawing_PathIteratorVerb* verbs, uint32_t* count)](#oh_drawing_pathgetverbdata) | 获取路径的指令数据(verb)。在路径（path）图元中，指令数据verb用于描述路径构造过程中的基本绘图动作。<br>指令数据以枚举的形式存在，每个取值对应一种几何操作类型，例如： |
-| [OH_Drawing_ErrorCode OH_Drawing_PathGetConicWeightData(const OH_Drawing_Path* path, float* conicWeights, uint32_t* count)](#oh_drawing_pathgetconicweightdata) | 获取路径的圆锥曲线权重数据。<br>路径的圆锥曲线权重数据用于描述路径中圆锥曲线的权重信息。<br>在路径（path）图元中，圆锥曲线数据采用有理贝塞尔曲线（Rational Bézier Curve）形式表示，其中每个控制点附带一个权重值（weight）。权重属于曲线定义的几何参数，作用如下： |
+| [OH_Drawing_ErrorCode OH_Drawing_PathGetPointData(const OH_Drawing_Path* path, OH_Drawing_Point2D* points, uint32_t* count)](#oh_drawing_pathgetpointdata) | 获取路径的点数据。<br>在路径（path）图元中，点数据以数值序列的形式存在，与verb指令一一对应，用来精确指定绘图操作的几何坐标位置。<br>点数据的主要类型包括如下：<ul><li>终点坐标：[OH_Drawing_PathMoveTo](capi-drawing-path-h.md#oh_drawing_pathmoveto)、[OH_Drawing_PathLineTo](capi-drawing-path-h.md#oh_drawing_pathlineto)等指令配合，定义线段或移动的目标位置。</li><li>控制点坐标：与曲线指令配合，用于定义贝塞尔曲线的形状（如三阶贝塞尔曲线需要两个控制点和一个终点）。</li><li>闭合点：通常不单独提供坐标，由[OH_Drawing_PathClose](capi-drawing-path-h.md#oh_drawing_pathclose)指令隐式使用路径起点。</li></ul> |
+| [OH_Drawing_ErrorCode OH_Drawing_PathGetVerbData(const OH_Drawing_Path* path, OH_Drawing_PathIteratorVerb* verbs, uint32_t* count)](#oh_drawing_pathgetverbdata) | 获取路径的指令数据(verb)。在路径（path）图元中，指令数据verb用于描述路径构造过程中的基本绘图动作。<br>指令数据以枚举的形式存在，每个取值对应一种几何操作类型，例如：<ul><li>[OH_Drawing_PathMoveTo](capi-drawing-path-h.md#oh_drawing_pathmoveto)：将当前绘图点移至指定坐标，不产生线段。</li><li>[OH_Drawing_PathLineTo](capi-drawing-path-h.md#oh_drawing_pathlineto)：从当前点向指定点绘制直线段。</li><li>[OH_Drawing_PathQuadTo](capi-drawing-path-h.md#oh_drawing_pathquadto)：从当前点向指定点绘制二阶贝塞尔曲线。</li></ul> |
+| [OH_Drawing_ErrorCode OH_Drawing_PathGetConicWeightData(const OH_Drawing_Path* path, float* conicWeights, uint32_t* count)](#oh_drawing_pathgetconicweightdata) | 获取路径的圆锥曲线权重数据。<br>路径的圆锥曲线权重数据用于描述路径中圆锥曲线的权重信息。<br>在路径（path）图元中，圆锥曲线数据采用有理贝塞尔曲线（Rational Bézier Curve）形式表示，其中每个控制点附带一个权重值（weight）。权重属于曲线定义的几何参数，作用如下：<ul><li>形状调控：权重值越大，曲线越靠近对应控制点；权重为1时退化为标准贝塞尔曲线；权重为0时该控制点不起作用。</li><li>精确表示圆锥曲线：通过组合权重与二次贝塞尔曲线，可以精确表示圆弧、椭圆弧、抛物线等圆锥曲线段，无需使用分段逼近或专用椭圆弧指令。</li><li>数据组织：权重通常以数组形式与点数据并列，按顺序对应每个控制点，与相应的指令verb（如[OH_Drawing_PathConicTo](capi-drawing-path-h.md#oh_drawing_pathconicto)）配合使用。</li></ul> |
 | [bool OH_Drawing_PathContains(OH_Drawing_Path* path, float x, float y)](#oh_drawing_pathcontains) | 判断指定坐标点是否被路径包含，判定规则参考[OH_Drawing_PathFillType](capi-drawing-path-h.md#oh_drawing_pathfilltype)。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>path为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [void OH_Drawing_PathTransform(OH_Drawing_Path* path, const OH_Drawing_Matrix* matrix)](#oh_drawing_pathtransform) | 对路径进行矩阵变换，变换结果直接修改当前路径对象。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>path、matrix任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [void OH_Drawing_PathTransformWithPerspectiveClip(OH_Drawing_Path* src, const OH_Drawing_Matrix* matrix, OH_Drawing_Path* dst, bool applyPerspectiveClip)](#oh_drawing_pathtransformwithperspectiveclip) | 对路径进行矩阵变换。用转换后的路径替换目标路径，如果目标路径为NULL，则替换源路径。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>src、matrix任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
@@ -870,7 +870,7 @@ OH_Drawing_ErrorCode OH_Drawing_PathGetPointData(const OH_Drawing_Path* path, OH
 
 **描述**
 
-获取路径的点数据。<br>在路径（path）图元中，点数据以数值序列的形式存在，与verb指令一一对应，用来精确指定绘图操作的几何坐标位置。<br>点数据的主要类型包括如下：
+获取路径的点数据。<br>在路径（path）图元中，点数据以数值序列的形式存在，与verb指令一一对应，用来精确指定绘图操作的几何坐标位置。<br>点数据的主要类型包括如下：<ul><li>终点坐标：[OH_Drawing_PathMoveTo](capi-drawing-path-h.md#oh_drawing_pathmoveto)、[OH_Drawing_PathLineTo](capi-drawing-path-h.md#oh_drawing_pathlineto)等指令配合，定义线段或移动的目标位置。</li><li>控制点坐标：与曲线指令配合，用于定义贝塞尔曲线的形状（如三阶贝塞尔曲线需要两个控制点和一个终点）。</li><li>闭合点：通常不单独提供坐标，由[OH_Drawing_PathClose](capi-drawing-path-h.md#oh_drawing_pathclose)指令隐式使用路径起点。</li></ul>
 
 **起始版本：** 26.0.0
 
@@ -896,7 +896,7 @@ OH_Drawing_ErrorCode OH_Drawing_PathGetVerbData(const OH_Drawing_Path* path, OH_
 
 **描述**
 
-获取路径的指令数据(verb)。在路径（path）图元中，指令数据verb用于描述路径构造过程中的基本绘图动作。<br>指令数据以枚举的形式存在，每个取值对应一种几何操作类型，例如：
+获取路径的指令数据(verb)。在路径（path）图元中，指令数据verb用于描述路径构造过程中的基本绘图动作。<br>指令数据以枚举的形式存在，每个取值对应一种几何操作类型，例如：<ul><li>[OH_Drawing_PathMoveTo](capi-drawing-path-h.md#oh_drawing_pathmoveto)：将当前绘图点移至指定坐标，不产生线段。</li><li>[OH_Drawing_PathLineTo](capi-drawing-path-h.md#oh_drawing_pathlineto)：从当前点向指定点绘制直线段。</li><li>[OH_Drawing_PathQuadTo](capi-drawing-path-h.md#oh_drawing_pathquadto)：从当前点向指定点绘制二阶贝塞尔曲线。</li></ul>
 
 **起始版本：** 26.0.0
 
@@ -922,7 +922,7 @@ OH_Drawing_ErrorCode OH_Drawing_PathGetConicWeightData(const OH_Drawing_Path* pa
 
 **描述**
 
-获取路径的圆锥曲线权重数据。<br>路径的圆锥曲线权重数据用于描述路径中圆锥曲线的权重信息。<br>在路径（path）图元中，圆锥曲线数据采用有理贝塞尔曲线（Rational Bézier Curve）形式表示，其中每个控制点附带一个权重值（weight）。权重属于曲线定义的几何参数，作用如下：
+获取路径的圆锥曲线权重数据。<br>路径的圆锥曲线权重数据用于描述路径中圆锥曲线的权重信息。<br>在路径（path）图元中，圆锥曲线数据采用有理贝塞尔曲线（Rational Bézier Curve）形式表示，其中每个控制点附带一个权重值（weight）。权重属于曲线定义的几何参数，作用如下：<ul><li>形状调控：权重值越大，曲线越靠近对应控制点；权重为1时退化为标准贝塞尔曲线；权重为0时该控制点不起作用。</li><li>精确表示圆锥曲线：通过组合权重与二次贝塞尔曲线，可以精确表示圆弧、椭圆弧、抛物线等圆锥曲线段，无需使用分段逼近或专用椭圆弧指令。</li><li>数据组织：权重通常以数组形式与点数据并列，按顺序对应每个控制点，与相应的指令verb（如[OH_Drawing_PathConicTo](capi-drawing-path-h.md#oh_drawing_pathconicto)）配合使用。</li></ul>
 
 **起始版本：** 26.0.0
 

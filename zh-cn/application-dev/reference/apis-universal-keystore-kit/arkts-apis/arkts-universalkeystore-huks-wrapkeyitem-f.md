@@ -6,11 +6,11 @@
 function wrapKeyItem(keyAlias: string, params: HuksOptions): Promise<HuksReturnResult>
 ```
 
-加密导出密钥。使用Promise异步回调。 > **说明：** > > 加密导出[HuksKeySecurityLevel](arkts-universalkeystore-huks-hukskeysecuritylevel-e.md#HuksKeySecurityLevel)中定义的SE安全级别密钥需要ohos.permission.ACCESS_SE_KEY权限。 &lt;!--Del--&gt;该功能暂不支持。&lt;!--DelEnd--&gt;
+加密导出密钥。使用Promise异步回调。 > **说明：** > > 加密导出[HuksKeySecurityLevel](arkts-universalkeystore-huks-hukskeysecuritylevel-e.md#hukskeysecuritylevel)中定义的SE安全级别密钥需要ohos.permission.ACCESS_SE_KEY权限。 &lt;!--Del--&gt;该功能暂不支持。&lt;!--DelEnd--&gt;
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 

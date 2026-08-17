@@ -1,10 +1,10 @@
 # LineTypeset
 
-保存文本内容及样式的载体，可用于计算单行排版信息。 下列API示例中都需先使用[ParagraphBuilder](arkts-arkgraphics2d-text-paragraphbuilder-c.md#ParagraphBuilder)类的 [buildLineTypeset()](arkts-arkgraphics2d-text-paragraphbuilder-c.md#buildLineTypeset)接口获取到LineTypeset对象实例，再通过此实例调用对应方法。
+保存文本内容及样式的载体，可用于计算单行排版信息。 下列API示例中都需先使用[ParagraphBuilder](arkts-arkgraphics2d-text-paragraphbuilder-c.md#paragraphbuilder)类的 [buildLineTypeset()](arkts-arkgraphics2d-text-paragraphbuilder-c.md#buildlinetypeset)接口获取到LineTypeset对象实例，再通过此实例调用对应方法。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ createLine(startIndex: int, count: int): TextLine
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -37,7 +37,7 @@ createLine(startIndex: int, count: int): TextLine
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | startIndex | int | 是 | 开始计算排版的起始位置，整数，取值范围为[0, 文本字符总数)。 |
-| count | int | 是 | 从指定起始位置开始进行排版的字符个数，取值为 [0,文本字符总数)的整数，startIndex和count之和不能大于文本字符总数。当count为0时，表示排版区间为[startIndex, 文本的最后一个字符位置]。 可以先使用[getLineBreak](#getLineBreak)获取合理的排版字符总数。 |
+| count | int | 是 | 从指定起始位置开始进行排版的字符个数，取值为 [0,文本字符总数)的整数，startIndex和count之和不能大于文本字符总数。当count为0时，表示排版区间为[startIndex, 文本的最后一个字符位置]。 可以先使用[getLineBreak](#getlinebreak)获取合理的排版字符总数。 |
 
 **返回值：**
 
@@ -70,7 +70,7 @@ getLineBreak(startIndex: int, width: double): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

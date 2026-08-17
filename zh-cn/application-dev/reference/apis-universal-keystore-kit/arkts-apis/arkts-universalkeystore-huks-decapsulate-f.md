@@ -11,7 +11,7 @@ Post-Quantum Cryptography密钥解封装操作，支持HUKS密钥管理 或由�
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

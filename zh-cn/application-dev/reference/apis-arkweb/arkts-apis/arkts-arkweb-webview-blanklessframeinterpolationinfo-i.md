@@ -1,10 +1,10 @@
 # BlanklessFrameInterpolationInfo
 
-1.定义插帧状态信息 2.ArkWeb使能白屏插帧优化的场景 设备行为差异:仅支持手机平台，其他平台返回801
+无白屏加载插帧状态信息，作为[BlanklessLoadingParam](arkts-arkweb-webview-blanklessloadingparam-i.md#blanklessloadingparam)中的回调入参使用。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@
 key: string
 ```
 
-1.唯一标识本页面的key值 设备行为差异:仅支持手机平台，其他平台返回801
+唯一标识插帧页面的key值。与[setBlanklessLoadingWithParams](arkts-arkweb-webview-webviewcontroller-c.md#setblanklessloadingwithparams)的key 值相同。
 
 **类型：** string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -40,13 +40,13 @@ key: string
 reason: string
 ```
 
-插帧失败的原因 设备行为差异:仅支持手机平台，其他平台返回801
+插帧失败的原因。
 
 **类型：** string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -62,13 +62,13 @@ reason: string
 state: BlanklessFrameInterpolationState
 ```
 
-1.当前插帧状态 设备行为差异:仅支持手机平台，其他平台返回801
+当前插帧状态。
 
-**类型：** [BlanklessFrameInterpolationState](../../apis-na/arkts-apis/arkts-na-webview-blanklessframeinterpolationstate-e.md)
+**类型：** [BlanklessFrameInterpolationState](arkts-arkweb-webview-blanklessframeinterpolationstate-e.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -84,13 +84,13 @@ state: BlanklessFrameInterpolationState
 timestamp: number
 ```
 
-帧插入或者移除的时间点 设备行为差异:仅支持手机平台，其他平台返回801 取值限定为整数。
+插帧成功、失败或移除的时间点，UTC时间，单位ms。
 
 **类型：** number
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

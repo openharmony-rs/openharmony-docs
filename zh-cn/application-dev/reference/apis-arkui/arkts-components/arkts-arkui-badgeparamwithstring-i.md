@@ -1,12 +1,12 @@
 # BadgeParamWithString
 
-BadgeParamWithNumber继承自[BadgeParam](arkts-arkui-badgeparam-i.md#BadgeParam)，具有BadgeParam的全部属性。
+BadgeParamWithNumber继承自[BadgeParam](arkts-arkui-badgeparam-i.md#badgeparam)，具有BadgeParam的全部属性。
 
-**继承/实现关系：** BadgeParamWithString extends [BadgeParam](arkts-arkui-badgeparam-i.md#BadgeParam)
+**继承/实现关系：** BadgeParamWithString extends [BadgeParam](arkts-arkui-badgeparam-i.md#badgeparam)
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ value: ResourceStr
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 

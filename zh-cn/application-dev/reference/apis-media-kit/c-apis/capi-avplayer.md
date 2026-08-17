@@ -2,7 +2,7 @@
 
 ## 概述
 
-Provides APIs of Playback capability for Media Source.
+提供媒体源的播放能力接口。
 
 **起始版本：** 11
 ## 文件汇总

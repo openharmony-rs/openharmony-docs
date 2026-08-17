@@ -10,7 +10,7 @@ function moveMainWindowToTargetDisplay(displayId: long, windowId: int, userId?: 
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -26,8 +26,8 @@ function moveMainWindowToTargetDisplay(displayId: long, windowId: int, userId?: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| displayId | long | 是 | 目标屏幕的ID，用于指定要迁移到的屏幕。该参数应为非负整数，可通过 [getWindowProperties](arkts-arkui-window-window-i.md#getWindowProperties)接口获取到 [properties](arkts-arkui-window-windowproperties-i.md#WindowProperties)后，再通过properties.displayId获取；也可通过获取 [Display](arkts-arkui-display-displaystate-e.md#DisplayState)对象的 [id](arkts-display.md#@ohos.display)属性获取此参数。 |
-| windowId | int | 是 | 目标主窗口的ID，用于指定要迁移的窗口。该参数应为大于0的整数，通过 [getWindowProperties](arkts-arkui-window-window-i.md#getWindowProperties)接口获取到 [properties](arkts-arkui-window-windowproperties-i.md#WindowProperties)后，再通过properties.id获取。 |
+| displayId | long | 是 | 目标屏幕的ID，用于指定要迁移到的屏幕。该参数应为非负整数，可通过 [getWindowProperties](arkts-arkui-window-window-i.md#getwindowproperties)接口获取到 [properties](arkts-arkui-window-windowproperties-i.md#windowproperties)后，再通过properties.displayId获取；也可通过获取 [Display](arkts-arkui-display-displaystate-e.md#displaystate)对象的 [id](arkts-display.md#ohosdisplay)属性获取此参数。 |
+| windowId | int | 是 | 目标主窗口的ID，用于指定要迁移的窗口。该参数应为大于0的整数，通过 [getWindowProperties](arkts-arkui-window-window-i.md#getwindowproperties)接口获取到 [properties](arkts-arkui-window-windowproperties-i.md#windowproperties)后，再通过properties.id获取。 |
 | userId | int | 否 |  |
 
 **返回值：**

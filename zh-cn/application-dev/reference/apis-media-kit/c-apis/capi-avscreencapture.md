@@ -2,7 +2,7 @@
 
 ## 概述
 
-Provides APIs of request capability for Screen Capture.
+提供屏幕录制的请求能力接口。
 
 **起始版本：** 10
 ## 文件汇总

@@ -1,12 +1,12 @@
 # ChipV2PrefixImageIconConfig
 
-ChipV2PrefixImageIconConfig定义前缀图标的属性配置。 继承自[ChipV2ImageIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2imageiconconfig-i.md#ChipV2ImageIconConfig)。
+ChipV2PrefixImageIconConfig定义前缀图标的属性配置。 继承自[ChipV2ImageIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2imageiconconfig-i.md#chipv2imageiconconfig)。
 
-**继承/实现关系：** ChipV2PrefixImageIconConfig extends [ChipV2ImageIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2imageiconconfig-i.md#ChipV2ImageIconConfig)
+**继承/实现关系：** ChipV2PrefixImageIconConfig extends [ChipV2ImageIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2imageiconconfig-i.md#chipv2imageiconconfig)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

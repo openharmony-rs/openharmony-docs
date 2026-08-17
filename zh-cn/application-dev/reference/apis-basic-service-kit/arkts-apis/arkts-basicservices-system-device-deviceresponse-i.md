@@ -4,7 +4,7 @@
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 6
 
@@ -24,7 +24,7 @@ apiVersion: number
 
 **起始版本：** 4
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为4。
+**ArkTS模式：** 起始版本为4。
 
 **废弃版本：** 6
 
@@ -44,7 +44,7 @@ brand: string
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 6
 
@@ -64,7 +64,7 @@ deviceType: string
 
 **起始版本：** 4
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为4。
+**ArkTS模式：** 起始版本为4。
 
 **废弃版本：** 6
 
@@ -84,7 +84,7 @@ language: string
 
 **起始版本：** 4
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为4。
+**ArkTS模式：** 起始版本为4。
 
 **废弃版本：** 6
 
@@ -104,7 +104,7 @@ manufacturer: string
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 6
 
@@ -124,7 +124,7 @@ model: string
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 6
 
@@ -144,7 +144,7 @@ product: string
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 6
 
@@ -164,7 +164,7 @@ region: string
 
 **起始版本：** 4
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为4。
+**ArkTS模式：** 起始版本为4。
 
 **废弃版本：** 6
 
@@ -184,7 +184,7 @@ screenDensity: number
 
 **起始版本：** 4
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为4。
+**ArkTS模式：** 起始版本为4。
 
 **废弃版本：** 6
 
@@ -204,7 +204,7 @@ screenShape: 'rect' | 'circle'
 
 **起始版本：** 4
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为4。
+**ArkTS模式：** 起始版本为4。
 
 **废弃版本：** 6
 
@@ -224,7 +224,7 @@ windowHeight: number
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 6
 
@@ -244,7 +244,7 @@ windowWidth: number
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 6
 

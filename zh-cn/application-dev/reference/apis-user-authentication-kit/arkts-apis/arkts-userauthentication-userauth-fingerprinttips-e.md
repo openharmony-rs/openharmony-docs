@@ -4,7 +4,7 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 11
 
@@ -22,7 +22,7 @@ FINGERPRINT_AUTH_TIP_GOOD = 0
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 11
 
@@ -40,7 +40,7 @@ FINGERPRINT_AUTH_TIP_DIRTY = 1
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 11
 
@@ -58,7 +58,7 @@ FINGERPRINT_AUTH_TIP_INSUFFICIENT = 2
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 11
 
@@ -76,7 +76,7 @@ FINGERPRINT_AUTH_TIP_PARTIAL = 3
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 11
 
@@ -94,7 +94,7 @@ FINGERPRINT_AUTH_TIP_TOO_FAST = 4
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 11
 
@@ -112,7 +112,7 @@ FINGERPRINT_AUTH_TIP_TOO_SLOW = 5
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 11
 

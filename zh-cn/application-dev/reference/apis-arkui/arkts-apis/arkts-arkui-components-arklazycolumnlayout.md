@@ -18,6 +18,6 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [LazyColumnLayout](arkts-arkui-arkui-components-arklazycolumnlayout-con.md#LazyColumnLayout) | 定义懒式列布局组件。 |
-| [LazyColumnLayoutInstance](arkts-arkui-arkui-components-arklazycolumnlayout-con.md#LazyColumnLayoutInstance) | 定义懒加载列布局组件实例。 |
+| [LazyColumnLayout](arkts-arkui-arkui-components-arklazycolumnlayout-con.md#lazycolumnlayout) | 定义懒式列布局组件。 |
+| [LazyColumnLayoutInstance](arkts-arkui-arkui-components-arklazycolumnlayout-con.md#lazycolumnlayoutinstance) | 定义懒加载列布局组件实例。 |
 

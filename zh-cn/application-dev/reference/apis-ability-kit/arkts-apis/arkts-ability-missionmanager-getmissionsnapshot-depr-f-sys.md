@@ -10,11 +10,11 @@ function getMissionSnapShot(deviceId: string, missionId: number, callback: Async
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [getMissionSnapShot](arkts-ability-missionmanager-getmissionsnapshot-f-sys.md#getMissionSnapShot（系统接口）)
+**替代接口：** [getMissionSnapShot](arkts-ability-missionmanager-getmissionsnapshot-f-sys.md#getmissionsnapshot系统接口)
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
@@ -65,11 +65,11 @@ function getMissionSnapShot(deviceId: string, missionId: number): Promise<Missio
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [getMissionSnapShot](arkts-ability-missionmanager-getmissionsnapshot-f-sys.md#getMissionSnapShot（系统接口）)
+**替代接口：** [getMissionSnapShot](arkts-ability-missionmanager-getmissionsnapshot-f-sys.md#getmissionsnapshot系统接口)
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 

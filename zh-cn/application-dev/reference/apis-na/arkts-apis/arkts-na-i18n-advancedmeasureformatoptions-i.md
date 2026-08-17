@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -20,11 +20,11 @@ unitUsage?: UnitUsage
 
 单位格式化使用场景的枚举。
 
-**类型：** [UnitUsage](../../apis-localization-kit/arkts-apis/arkts-localization-i18n-unitusage-e.md)
+**类型：** [UnitUsage](arkts-na-i18n-unitusage-e.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

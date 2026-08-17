@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ constructor(antialias?: boolean)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -36,5 +36,5 @@ constructor(antialias?: boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| antialias | boolean | 否 | 表明canvas是否开启抗锯齿。&lt;br&gt;异常值undefined按默认值处理。 &lt;br&gt;false：表示不开启抗锯齿功能，true：表示开启抗锯齿。&lt;br&gt;默认值：false |
+| antialias | boolean | 否 | 表明canvas是否开启抗锯齿。<br>异常值undefined按默认值处理。 <br>false：表示不开启抗锯齿功能，true：表示开启抗锯齿。<br>默认值：false |
 

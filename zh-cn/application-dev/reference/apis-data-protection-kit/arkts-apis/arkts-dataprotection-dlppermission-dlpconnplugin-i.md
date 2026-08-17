@@ -1,10 +1,10 @@
 # DlpConnPlugin
 
-被用于registerPlugin接口中，将回调能力注册到SA（System Ability）中。 > **说明：** > > [registerPlugin](arkts-dataprotection-dlppermission-dlpconnmanager-c.md#registerPlugin)接口的参数需要继承该接口， > [connectServer](#connectServer)由SA（System Ability）侧调用，通过callback进行回传参数。
+被用于registerPlugin接口中，将回调能力注册到SA（System Ability）中。 > **说明：** > > [registerPlugin](arkts-dataprotection-dlppermission-dlpconnmanager-c.md#registerplugin)接口的参数需要继承该接口， > [connectServer](#connectserver)由SA（System Ability）侧调用，通过callback进行回传参数。
 
 **起始版本：** 21
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+**ArkTS模式：** 起始版本为21。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ connectServer(requestId: string, requestData: string, callback: Callback<string>
 
 **起始版本：** 21
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+**ArkTS模式：** 起始版本为21。
 
 **废弃版本：** -1
 

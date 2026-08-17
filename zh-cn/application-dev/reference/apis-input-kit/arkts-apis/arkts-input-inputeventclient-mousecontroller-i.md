@@ -4,7 +4,7 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ beginAxis(axis: Axis, value: int): Promise<void>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -102,7 +102,7 @@ endAxis(axis: Axis): Promise<void>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -136,7 +136,7 @@ endAxis(axis: Axis): Promise<void>
 
 ## 示例
 
-参见[beginAxis](#beginAxis)示例。
+参见[beginAxis](#beginaxis)示例。
 
 ## moveTo
 
@@ -148,7 +148,7 @@ moveTo(displayId: int, displayX: int, displayY: int): Promise<void>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -221,7 +221,7 @@ pressButton(button: Button): Promise<void>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -296,7 +296,7 @@ releaseButton(button: Button): Promise<void>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -330,7 +330,7 @@ releaseButton(button: Button): Promise<void>
 
 ## 示例
 
-参见[pressButton](#pressButton)示例。
+参见[pressButton](#pressbutton)示例。
 
 ## updateAxis
 
@@ -342,7 +342,7 @@ updateAxis(axis: Axis, value: int): Promise<void>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -377,5 +377,5 @@ updateAxis(axis: Axis, value: int): Promise<void>
 
 ## 示例
 
-参见[beginAxis](#beginAxis)示例。
+参见[beginAxis](#beginaxis)示例。
 

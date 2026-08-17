@@ -1,10 +1,10 @@
 # GesturePath
 
-GesturePath表示手势路径信息。 本模块用于创建辅助功能注入手势所需的手势路径信息。
+GesturePath表示手势路径信息。 本模块用于创建手势路径信息，供辅助功能注入手势使用。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -18,11 +18,11 @@ GesturePath表示手势路径信息。 本模块用于创建辅助功能注入�
 constructor(durationTime: long)
 ```
 
-构造函数。
+通过传入手势总耗时创建手势路径对象。创建GesturePath实例后，还需设置必填属性points。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 12
 
@@ -34,7 +34,7 @@ constructor(durationTime: long)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| durationTime | long | 是 | 手势总耗时，单位为毫秒。 |
+| durationTime | long | 是 | 手势总耗时，单位：ms。取值需大于0。 |
 
 ## 示例
 
@@ -53,13 +53,13 @@ gesturePath.points = [startPoint, endPoint];
 durationTime: long
 ```
 
-手势总耗时，单位为毫秒。
+手势总耗时，单位：ms。取值需大于0。
 
 **类型：** long
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -73,13 +73,13 @@ durationTime: long
 points: Array<GesturePoint>
 ```
 
-手势触摸点。
+手势路径上的触摸点序列，用于构成手势的移动轨迹。每个触摸点表示路径中的一个坐标位置。数组长度需大于0。
 
 **类型：** Array&lt;[GesturePoint](arkts-accessibility-accessibility-gesturepoint-gesturepoint-c.md)&gt;
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 

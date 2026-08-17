@@ -2,7 +2,7 @@
 
 ## 概述
 
-Provides the enums, structs, and error codes used in the vibrator APIs.
+提供振动API中使用的枚举、结构体和错误码。
 
 **起始版本：** 11
 ## 文件汇总
@@ -10,4 +10,4 @@ Provides the enums, structs, and error codes used in the vibrator APIs.
 | 名称 | 描述 |
 | -- | -- |
 | [vibrator_type.h](capi-vibrator-type-h.md) | 提供标准的开放API，用于控制马达振动。该API支持多种振动场景（如报警、铃声、通知、通信、触摸、媒体、物理反馈、模拟现实等），通过设置振动优先级，能够满足不同场景下的振动需求，提升用户交互体验和设备使用体验。 |
-| [vibrator.h](capi-vibrator-h.md) | 为您提供标准的开放API，用于控制马达振动的启停。支持简单持续振动和自定义振动序列两种模式。适用于闹钟、通知提醒、游戏反馈等场景，帮助开发者实现精准的振动控制，提升用户交互体验。 |
+| [vibrator.h](capi-vibrator-h.md) | 为您提供标准的开放API，用于控制马达振动的启停。支持简单持续振动和自定义振动序列两种模式。其中，简单持续振动适用于固定时长的单一振动场景，如闹钟、计时提醒等，只需指定振动时长即可实现；自定义振动序列适用于需要复杂振动模式的场景，如通知提醒、游戏反馈等，通过定义振动序列文件可实现丰富的触觉效果。帮助开发者实现精准的振动控制，提升用户交互体验。 |

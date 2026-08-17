@@ -4,7 +4,7 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ ShapeClip的构造函数。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -44,7 +44,7 @@ setCircleShape(circle: Circle): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -60,7 +60,7 @@ setCircleShape(circle: Circle): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| circle | [Circle](../../apis-na/arkts-apis/arkts-na-graphics-circle-i.md) | 是 | 圆形的形状。 |
+| circle | [Circle](arkts-arkui-graphics-circle-i.md) | 是 | 圆形的形状。 |
 
 ## 示例
 
@@ -124,7 +124,7 @@ setCommandPath(path: CommandPath): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -140,7 +140,7 @@ setCommandPath(path: CommandPath): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| path | [CommandPath](../../apis-na/arkts-apis/arkts-na-graphics-commandpath-i.md) | 是 | 路径绘制指令。 |
+| path | [CommandPath](arkts-arkui-graphics-commandpath-i.md) | 是 | 路径绘制指令。 |
 
 ## 示例
 
@@ -203,7 +203,7 @@ setOvalShape(oval: Rect): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -219,7 +219,7 @@ setOvalShape(oval: Rect): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| oval | [Rect](../../apis-na/arkts-apis/arkts-na-rect-t.md) | 是 | 椭圆形的形状。 |
+| oval | [Rect](arkts-arkui-rect-t.md) | 是 | 椭圆形的形状。 |
 
 ## 示例
 
@@ -287,7 +287,7 @@ setRectShape(rect: Rect): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -303,7 +303,7 @@ setRectShape(rect: Rect): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rect | [Rect](../../apis-na/arkts-apis/arkts-na-rect-t.md) | 是 | 矩形的形状。 |
+| rect | [Rect](arkts-arkui-rect-t.md) | 是 | 矩形的形状。 |
 
 ## 示例
 
@@ -374,7 +374,7 @@ setRoundRectShape(roundRect: RoundRect): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -390,7 +390,7 @@ setRoundRectShape(roundRect: RoundRect): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| roundRect | [RoundRect](../../apis-na/arkts-apis/arkts-na-graphics-roundrect-i.md) | 是 | 圆角矩形的形状。 |
+| roundRect | [RoundRect](arkts-arkui-graphics-roundrect-i.md) | 是 | 圆角矩形的形状。 |
 
 ## 示例
 

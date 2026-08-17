@@ -4,7 +4,7 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -20,11 +20,11 @@ maxSize: Size
 
 最大尺寸。
 
-**类型：** [Size](../../apis-na/arkts-apis/arkts-na-graphics-size-i.md)
+**类型：** [Size](arkts-arkui-graphics-size-i.md)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -44,11 +44,11 @@ minSize: Size
 
 最小尺寸。
 
-**类型：** [Size](../../apis-na/arkts-apis/arkts-na-graphics-size-i.md)
+**类型：** [Size](arkts-arkui-graphics-size-i.md)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -68,11 +68,11 @@ percentReference: Size
 
 子节点计算百分比时的尺寸基准。
 
-**类型：** [Size](../../apis-na/arkts-apis/arkts-na-graphics-size-i.md)
+**类型：** [Size](arkts-arkui-graphics-size-i.md)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

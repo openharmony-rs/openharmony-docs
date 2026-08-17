@@ -1,10 +1,10 @@
 # WebDataBase
 
-Web组件数据库管理对象。 > **说明：** > > - 本Class首批接口从API version 9开始支持。 > > - 示例效果请以真机运行为准。 > > - 目前调用WebDataBase下的方法，都需要先加载Web组件。
+Web组件数据库管理对象。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ static deleteHttpAuthCredentials(): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -42,7 +42,7 @@ static existHttpAuthCredentials(): boolean
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -56,7 +56,7 @@ static existHttpAuthCredentials(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 是否存在任何已保存的HTTP身份验证凭据。 &lt;br&gt;存在返回true，不存在返回false。 |
+| boolean | 是否存在任何已保存的HTTP身份验证凭据。 <br>存在返回true，不存在返回false。 |
 
 ## getHttpAuthCredentials
 
@@ -68,7 +68,7 @@ static getHttpAuthCredentials(host: string, realm: string): Array<string>
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -82,8 +82,8 @@ static getHttpAuthCredentials(host: string, realm: string): Array<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| host | string | 是 | HTTP身份验证凭据应用的主机。 |
-| realm | string | 是 | HTTP身份验证凭据应用的域。 |
+| host | string | 是 | HTTP身份验证凭据应用的主机地址，格式如'www.example.com'或'192.168.1.1'，不包含协议和端口号。 |
+| realm | string | 是 | HTTP身份验证凭据应用的认证域，表示在同一主机下进行身份验证的范围或保护区域，通常由服务器返回的WWW-Authenticate头指定。 |
 
 **返回值：**
 
@@ -95,7 +95,7 @@ static getHttpAuthCredentials(host: string, realm: string): Array<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
 ## saveHttpAuthCredentials
 
@@ -107,7 +107,7 @@ static saveHttpAuthCredentials(host: string, realm: string, username: string, pa
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -121,14 +121,14 @@ static saveHttpAuthCredentials(host: string, realm: string, username: string, pa
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| host | string | 是 | HTTP身份验证凭据应用的主机。 |
-| realm | string | 是 | HTTP身份验证凭据应用的域。 |
-| username | string | 是 | 用户名。 |
-| password | string | 是 | 密码。 |
+| host | string | 是 | HTTP身份验证凭据应用的主机，用于匹配凭据对应的主机。 |
+| realm | string | 是 | HTTP身份验证凭据应用的域，用于匹配凭据对应的认证域。 |
+| username | string | 是 | 用于HTTP身份验证的用户名，表示访问受保护资源的身份标识。 |
+| password | string | 是 | 用于HTTP身份验证的密码，配合用户名完成身份验证。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 

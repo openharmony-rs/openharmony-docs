@@ -16,7 +16,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -30,5 +30,5 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [getChannelId](arkts-basicservices-customconfig-getchannelid-f.md#getChannelId) | 获取应用的预装渠道号。 |
+| [getChannelId](arkts-basicservices-customconfig-getchannelid-f.md#getchannelid) | 获取应用的预装渠道号。 |
 

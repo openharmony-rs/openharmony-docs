@@ -1,10 +1,10 @@
 # OffscreenCanvasRenderingContext2D
 
-**继承/实现关系：** OffscreenCanvasRenderingContext2D extends [CanvasRenderer](arkts-arkui-canvasrenderer-c.md#CanvasRenderer)
+**继承/实现关系：** OffscreenCanvasRenderingContext2D extends [CanvasRenderer](arkts-arkui-canvasrenderer-c.md#canvasrenderer)
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -20,7 +20,7 @@ constructor(width: number, height: number, settings?: RenderingContextSettings)
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -36,9 +36,9 @@ constructor(width: number, height: number, settings?: RenderingContextSettings)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| width | number | 是 | 离屏画布的宽度，默认单位：vp。 &lt;br&gt;异常值NaN和Infinity按无效值处理。 |
-| height | number | 是 | 离屏画布的高度，默认单位：vp。 &lt;br&gt;异常值NaN和Infinity按无效值处理。 |
-| settings | [RenderingContextSettings](arkts-arkui-renderingcontextsettings-c.md) | 否 | 用来配置OffscreenCanvasRenderingContext2D对象的参数， 见RenderingContextSettings接口描述。 &lt;br&gt;异常值undefined按RenderingContextSettings的默认值处理。 &lt;br&gt;默认值：null。 |
+| width | number | 是 | 离屏画布的宽度，默认单位：vp。 <br>异常值NaN和Infinity按无效值处理。 |
+| height | number | 是 | 离屏画布的高度，默认单位：vp。 <br>异常值NaN和Infinity按无效值处理。 |
+| settings | [RenderingContextSettings](arkts-arkui-renderingcontextsettings-c.md) | 否 | 用来配置OffscreenCanvasRenderingContext2D对象的参数， 见RenderingContextSettings接口描述。 <br>异常值undefined按RenderingContextSettings的默认值处理。 <br>默认值：null。 |
 
 ## constructor
 
@@ -50,7 +50,7 @@ constructor(width: number, height: number, settings?: RenderingContextSettings, 
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -68,10 +68,10 @@ constructor(width: number, height: number, settings?: RenderingContextSettings, 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| width | number | 是 | 离屏画布的宽度，默认单位：vp。 &lt;br&gt;异常值NaN和Infinity按无效值处理。 |
-| height | number | 是 | 离屏画布的高度，默认单位：vp。 &lt;br&gt;异常值NaN和Infinity按无效值处理。 |
-| settings | [RenderingContextSettings](arkts-arkui-renderingcontextsettings-c.md) | 否 | 用来配置OffscreenCanvasRenderingContext2D对象的参数， 见RenderingContextSettings接口描述。 &lt;br&gt;异常值undefined按RenderingContextSettings的默认值处理。 &lt;br&gt;默认值：null。 |
-| unit | LengthMetricsUnit | 否 | 用来配置OffscreenCanvasRenderingContext2D对象的单位模式， 配置后无法动态更改，配置方法同 [CanvasRenderingContext2D](../../../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)。 &lt;br&gt;异常值undefined、NaN和Infinity按默认值处理。 &lt;br&gt;默认值：DEFAULT。 |
+| width | number | 是 | 离屏画布的宽度，默认单位：vp。 <br>异常值NaN和Infinity按无效值处理。 |
+| height | number | 是 | 离屏画布的高度，默认单位：vp。 <br>异常值NaN和Infinity按无效值处理。 |
+| settings | [RenderingContextSettings](arkts-arkui-renderingcontextsettings-c.md) | 否 | 用来配置OffscreenCanvasRenderingContext2D对象的参数， 见RenderingContextSettings接口描述。 <br>异常值undefined按RenderingContextSettings的默认值处理。 <br>默认值：null。 |
+| unit | LengthMetricsUnit | 否 | 用来配置OffscreenCanvasRenderingContext2D对象的单位模式， 配置后无法动态更改，配置方法同 [CanvasRenderingContext2D](../../../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)。 <br>异常值undefined、NaN和Infinity按默认值处理。 <br>默认值：DEFAULT。 |
 
 ## toDataURL
 
@@ -83,7 +83,7 @@ toDataURL(type?: string, quality?: any): string
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -99,8 +99,8 @@ toDataURL(type?: string, quality?: any): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | string | 否 | 用于指定图像格式。 &lt;br&gt;可选参数为："image/png"（无损压缩，适合需要精确像素的场景）、"image/jpeg"（有损压缩，适合照片类图像）、"image/webp"（高效压缩，适合网络传输场景）。 &lt;br&gt;异常值undefined或null按默认值处理。 &lt;br&gt;默认值：image/png |
-| quality | any | 否 | 在指定图片格式为image/jpeg或image/webp的情况下，可以从0到1的区间内选择图片的质量，0-0.5适合快速传输或低带宽场景，0.6-0.8适合普通场景，0.9-1. 0适合高质量需求。如果超出取值范围，将会使用默认值0.92。 &lt;br&gt;异常值undefined、null、NaN和Infinity按默认值处理。 &lt;br&gt;默认值：0.92 |
+| type | string | 否 | 用于指定图像格式。 <br>可选参数为："image/png"（无损压缩，适合需要精确像素的场景）、"image/jpeg"（有损压缩，适合照片类图像）、"image/webp"（高效压缩，适合网络传输场景）。 <br>异常值undefined或null按默认值处理。 <br>默认值：image/png |
+| quality | any | 否 | 在指定图片格式为image/jpeg或image/webp的情况下，可以从0到1的区间内选择图片的质量，0-0.5适合快速传输或低带宽场景，0.6-0.8适合普通场景，0.9-1. 0适合高质量需求。如果超出取值范围，将会使用默认值0.92。 <br>异常值undefined、null、NaN和Infinity按默认值处理。 <br>默认值：0.92 |
 
 **返回值：**
 
@@ -118,7 +118,7 @@ transferToImageBitmap(): ImageBitmap
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 

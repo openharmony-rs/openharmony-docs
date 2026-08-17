@@ -6,15 +6,15 @@
 function stop(stopMode: VibratorStopMode): Promise<void>
 ```
 
-按照指定模式停止马达的振动。 > **说明：** > > 从API version 8 开始支持，从API version 9 开始废弃，建议使用 > [vibrator.stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopVibration)替代。
+按照指定模式停止马达的振动。 > **说明：** > > 从API version 8 开始支持，从API version 9 开始废弃，建议使用 > [vibrator.stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration)替代。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopVibration)(stopMode: VibratorStopMode)
+**替代接口：** [stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration)(stopMode: VibratorStopMode)
 
 **需要权限：** ohos.permission.VIBRATE
 
@@ -63,15 +63,15 @@ vibrator.stop(vibrator.VibratorStopMode.VIBRATOR_STOP_MODE_PRESET).then(() => {
 function stop(stopMode: VibratorStopMode, callback?: AsyncCallback<void>): void
 ```
 
-按照指定模式停止马达的振动。 > **说明：** > > 从API version 8 开始支持，从API version 9 开始废弃，建议使用 > [vibrator.stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopVibration) > 替代。
+按照指定模式停止马达的振动。 > **说明：** > > 从API version 8 开始支持，从API version 9 开始废弃，建议使用 > [vibrator.stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration) > 替代。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopVibration)(stopMode: VibratorStopMode, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration)(stopMode: VibratorStopMode, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.VIBRATE
 

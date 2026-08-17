@@ -4,11 +4,11 @@
 export type AbilityStageContext = _AbilityStageContext
 ```
 
-[AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md#AbilityStage)组件上下文，继承自Context。
+[AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md#abilitystage)组件上下文，继承自Context。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

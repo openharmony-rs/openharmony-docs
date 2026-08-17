@@ -10,7 +10,7 @@ function isEmergencyPhoneNumber(phoneNumber: string, options: EmergencyNumberOpt
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -41,10 +41,10 @@ function isEmergencyPhoneNumber(phoneNumber: string, options: EmergencyNumberOpt
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let options: call.EmergencyNumberOptions = {slotId: 1}
+let options: call.EmergencyNumberOptions = {slotId: 1};
 call.isEmergencyPhoneNumber("112", options, (err: BusinessError, data: boolean) => {
     if (err) {
-        console.error(`isEmergencyPhoneNumber fail, err->${JSON.stringify(err)}`);
+        console.error(`isEmergencyPhoneNumber fail, 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
     } else {
         console.info(`isEmergencyPhoneNumber success, data->${JSON.stringify(data)}`);
     }
@@ -62,7 +62,7 @@ function isEmergencyPhoneNumber(phoneNumber: string, options?: EmergencyNumberOp
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -98,11 +98,11 @@ function isEmergencyPhoneNumber(phoneNumber: string, options?: EmergencyNumberOp
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let options: call.EmergencyNumberOptions = {slotId: 1}
+let options: call.EmergencyNumberOptions = {slotId: 1};
 call.isEmergencyPhoneNumber("138xxxxxxxx", options).then((data: boolean) => {
     console.info(`isEmergencyPhoneNumber success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-    console.error(`isEmergencyPhoneNumber fail, promise: err->${JSON.stringify(err)}`);
+    console.error(`isEmergencyPhoneNumber fail, promise: 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
 });
 ```
 
@@ -117,7 +117,7 @@ function isEmergencyPhoneNumber(phoneNumber: string, callback: AsyncCallback<boo
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -149,7 +149,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 call.isEmergencyPhoneNumber("138xxxxxxxx", (err: BusinessError, data: boolean) => {
     if (err) {
-        console.error(`isEmergencyPhoneNumber fail, err->${JSON.stringify(err)}`);
+        console.error(`isEmergencyPhoneNumber fail, 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
     } else {
         console.info(`isEmergencyPhoneNumber success, data->${JSON.stringify(data)}`);
     }

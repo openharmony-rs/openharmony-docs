@@ -4,7 +4,7 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@
 fontWeightConfigs?: FontWeightConfigs
 ```
 
-字体粗细配置。默认值继承[FontWeightConfigs](arkts-arkui-textcommon-fontweightconfigs-i.md#FontWeightConfigs)。
+字体粗细配置。默认值继承[FontWeightConfigs](arkts-arkui-textcommon-fontweightconfigs-i.md#fontweightconfigs)。
 
 **类型：** [FontWeightConfigs](arkts-arkui-textcommon-fontweightconfigs-i.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

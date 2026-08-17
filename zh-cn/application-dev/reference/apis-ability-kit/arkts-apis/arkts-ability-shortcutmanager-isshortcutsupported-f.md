@@ -10,7 +10,7 @@ function isShortcutSupported(): boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ function isShortcutSupported(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 表示当前设备是否支持快捷方式。&lt;br/&gt;返回值为true表示当前设备支持快捷方式；返回值为false表示当前设备不支持快捷方式。 |
+| boolean | 表示当前设备是否支持快捷方式。<br/>返回值为true表示当前设备支持快捷方式；返回值为false表示当前设备不支持快捷方式。 |
 
 ## 示例
 

@@ -10,7 +10,7 @@ export function customCurve(interpolate: (fraction: double) => double): ICurve
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ export function customCurve(interpolate: (fraction: double) => double): ICurve
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| interpolate | (fraction: double) =&gt; double | 是 | 用户自定义的插值回调函数。&lt;br/&gt;fraction为动画开始时的插值输入x值。取值范围：[0,1]&lt;br/&gt;返回值为曲线的y值。取值范围：[0,1]&lt;br /&gt;**说明：**&lt;br /&gt;fraction等于0时，返回值为0对应动画起点，返回不为0，动画在起点处有跳变效果。&lt;br/&gt;fraction等于1时，返回值为1对应动画终点，返回值不为1将导致动画的终值不是状态变量的 值，出现大于或者小于状态变量值，再跳变到状态变量值的效果。 |
+| interpolate | (fraction: double) =&gt; double | 是 | 用户自定义的插值回调函数。<br/>fraction为动画开始时的插值输入x值。取值范围：[0,1]<br/>返回值为曲线的y值。取值范围：[0,1]&lt;br /&gt;**说明：**&lt;br /&gt;fraction等于0时，返回值为0对应动画起点，返回不为0，动画在起点处有跳变效果。<br/>fraction等于1时，返回值为1对应动画终点，返回值不为1将导致动画的终值不是状态变量的 值，出现大于或者小于状态变量值，再跳变到状态变量值的效果。 |
 
 **返回值：**
 

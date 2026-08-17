@@ -1,10 +1,10 @@
 # UserAgentMetadata
 
-Holds User-Agent metadata information and uses to generate User-Agent client hints.
+UserAgentMetadata是ArkWeb框架中用于配置User-Agent Client Hints（UA客户端提示）完整元数据的类。User-Agent Client Hints是一种现代化的HTTP请求标头机制，通过一 组Sec-CH-UA系列标头向服务器报告客户端信息，替代传统User-Agent字符串实现更安全、更细粒度的浏览器身份标识。通过UserAgentMetadata，应用可以自定义Web组件向服务器报告的所有客户端信息字段。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -18,11 +18,11 @@ Holds User-Agent metadata information and uses to generate User-Agent client hin
 getArchitecture(): string
 ```
 
-Gets the value for sec-ch-ua-architecture.
+获取平台的架构类型。不调用对应的[setArchitecture](#setarchitecture)设置时，架构类型默认值：""。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -36,7 +36,7 @@ Gets the value for sec-ch-ua-architecture.
 
 | 类型 | 说明 |
 | --- | --- |
-| string | Returns the value for sec-ch-ua-architecture. |
+| string | 平台架构类型。 |
 
 ## getBitness
 
@@ -44,11 +44,11 @@ Gets the value for sec-ch-ua-architecture.
 getBitness(): string
 ```
 
-Gets the value for the sec-ch-ua-bitness.
+获取平台的位数类型。不调用对应的[setBitness](#setbitness)设置时，位数类型默认值：Desktop："64"，其他设备：""。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -62,7 +62,7 @@ Gets the value for the sec-ch-ua-bitness.
 
 | 类型 | 说明 |
 | --- | --- |
-| string | Returns the value for the sec-ch-ua-bitness. |
+| string | 平台位数。 |
 
 ## getBrandVersionList
 
@@ -70,11 +70,11 @@ Gets the value for the sec-ch-ua-bitness.
 getBrandVersionList(): Array<UserAgentBrandVersion>
 ```
 
-Returns the current list of UserAgentBrandVersion which are used to generate the User-Agent client hints sec-ch-ua and sec-ch-ua-full-version-list.
+获取品牌和版本信息列表。不调用对应的[setBrandVersionList](#setbrandversionlist)进行设置时，列表默认值： [{"brand":"Chromium","version":[ChromeCompatibleVersion](../../../web/web-default-userAgent.md#默认user-agent结构)}, {"brand":"ArkWeb","version":[OSVersion](../../../web/web-default-userAgent.md#默认user-agent结构)}]。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -88,7 +88,7 @@ Returns the current list of UserAgentBrandVersion which are used to generate the
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;[UserAgentBrandVersion](../../apis-na/arkts-apis/arkts-na-webview-useragentbrandversion-c.md)&gt; | Returns the current list of UserAgentBrandVersion. |
+| Array&lt;[UserAgentBrandVersion](arkts-arkweb-webview-useragentbrandversion-c.md)&gt; | 品牌和版本信息列表。 |
 
 ## getFormFactors
 
@@ -96,11 +96,11 @@ Returns the current list of UserAgentBrandVersion which are used to generate the
 getFormFactors(): Array<UserAgentFormFactor>
 ```
 
-Gets the value for the sec-ch-ua-form-factors.
+获取设备形态信息，如手机、平板等。不调用对应的[setFormFactors](#setformfactors)进行设置时，形态信息默认值：手机："Mobile"、 手表："Watch"、车机："Automotive"、PC："Desktop"、平板："Tablet"。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -114,7 +114,7 @@ Gets the value for the sec-ch-ua-form-factors.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;[UserAgentFormFactor](../../apis-na/arkts-apis/arkts-na-webview-useragentformfactor-e.md)&gt; | Returns the form factors. |
+| Array&lt;[UserAgentFormFactor](arkts-arkweb-webview-useragentformfactor-e.md)&gt; | 设备形态信息。 |
 
 ## getFullVersion
 
@@ -122,11 +122,11 @@ Gets the value for the sec-ch-ua-form-factors.
 getFullVersion(): string
 ```
 
-Gets the value for the sec-ch-ua-full-version.
+获取完整版本号。不调用对应的[setFullVersion](#setfullversion)设置时，版本号默认值：""。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -140,7 +140,7 @@ Gets the value for the sec-ch-ua-full-version.
 
 | 类型 | 说明 |
 | --- | --- |
-| string | Returns the value for the sec-ch-ua-full-version. |
+| string | 完整版本号。 |
 
 ## getMobile
 
@@ -148,11 +148,11 @@ Gets the value for the sec-ch-ua-full-version.
 getMobile(): boolean
 ```
 
-Gets the value for the sec-ch-ua-mobile.
+获取是否为移动设备。不调用对应的[setMobile](#setmobile)设置时，默认值：手机: true，手表、车机、平板、大屏: false。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -166,7 +166,7 @@ Gets the value for the sec-ch-ua-mobile.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns the value for the sec-ch-ua-mobile. |
+| boolean | 是否为移动设备，true为移动设备，false为不是移动设备。 |
 
 ## getModel
 
@@ -174,11 +174,11 @@ Gets the value for the sec-ch-ua-mobile.
 getModel(): string
 ```
 
-Gets the value for the sec-ch-ua-model.
+获取设备型号。不调用对应的[setModel](#setmodel)设置时，型号默认值：手机根据const.product.model取设备型号；手表、大屏、车机、 PC、平板：""。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -192,7 +192,7 @@ Gets the value for the sec-ch-ua-model.
 
 | 类型 | 说明 |
 | --- | --- |
-| string | Returns the value for the sec-ch-ua-model. |
+| string | 设备型号。 |
 
 ## getPlatform
 
@@ -200,11 +200,11 @@ Gets the value for the sec-ch-ua-model.
 getPlatform(): string
 ```
 
-Gets the value for the sec-ch-ua-platform.
+获取操作系统名称。不调用对应的[setPlatform](#setplatform)设置时，名称默认值："OpenHarmony" 。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -218,7 +218,7 @@ Gets the value for the sec-ch-ua-platform.
 
 | 类型 | 说明 |
 | --- | --- |
-| string | Returns the value for the sec-ch-ua-platform. |
+| string | 操作系统名称。 |
 
 ## getPlatformVersion
 
@@ -226,11 +226,11 @@ Gets the value for the sec-ch-ua-platform.
 getPlatformVersion(): string
 ```
 
-Gets the value for the sec-ch-ua-platform-version.
+获取操作系统版本号。不调用对应的[setPlatformVersion](#setplatformversion)设置时，版本号默认值：按OpenHarmony平台 版本号规则，同const.product.os.dist.version。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -244,7 +244,7 @@ Gets the value for the sec-ch-ua-platform-version.
 
 | 类型 | 说明 |
 | --- | --- |
-| string | Returns the value for the sec-ch-ua-platform-version. |
+| string | 操作系统版本号。 |
 
 ## getWow64
 
@@ -252,11 +252,11 @@ Gets the value for the sec-ch-ua-platform-version.
 getWow64(): boolean
 ```
 
-Gets the value for the sec-ch-ua-wow64.
+获取二进制文件是否是在64位Windows上以32位模式运行。不调用对应的[setWow64](#setwow64)设置时，默认值为false。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -270,7 +270,7 @@ Gets the value for the sec-ch-ua-wow64.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns the value for the sec-ch-ua-wow64. |
+| boolean | 表示二进制文件是否在64位Windows上以32位模式运行。true为是，false为不是。 |
 
 ## setArchitecture
 
@@ -278,11 +278,11 @@ Gets the value for the sec-ch-ua-wow64.
 setArchitecture(arch: string): void
 ```
 
-Sets User-Agent metadata architecture. &lt;p&gt;&lt;strong&gt;API Note&lt;/strong&gt;:&lt;br&gt; The default value is empty string which means the system default value will be used. &lt;/p&gt;
+设置平台的架构类型。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -296,7 +296,7 @@ Sets User-Agent metadata architecture. &lt;p&gt;&lt;strong&gt;API Note&lt;/stron
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| arch | string | 是 | The arch is used to generate User-Agent client hints sec-ch-ua-architecture. |
+| arch | string | 是 | 对应请求标头的Sec-CH-UA-Arch。空代表使用ArkWeb默认值。 |
 
 ## setBitness
 
@@ -304,11 +304,11 @@ Sets User-Agent metadata architecture. &lt;p&gt;&lt;strong&gt;API Note&lt;/stron
 setBitness(bitness: string): void
 ```
 
-Sets User-Agent metadata bitness default is "".
+设置平台的位数类型。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -322,7 +322,7 @@ Sets User-Agent metadata bitness default is "".
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bitness | string | 是 | The bitness is used to generate User-Agent client hints sec-ch-ua-bitness. |
+| bitness | string | 是 | 对应请求标头的Sec-CH-UA-Bitness。空代表使用ArkWeb默认值。 |
 
 ## setBrandVersionList
 
@@ -330,11 +330,11 @@ Sets User-Agent metadata bitness default is "".
 setBrandVersionList(brandVersionList: Array<UserAgentBrandVersion>): void
 ```
 
-Sets User-Agent metadata brands and their versions. &lt;p&gt;&lt;strong&gt;API Note&lt;/strong&gt;:&lt;br&gt; The default value is an empty list which means the system default User-Agent metadata brands and versions will be used to generate the User-Agent client hints. &lt;/p&gt;
+设置品牌和版本信息。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -348,7 +348,7 @@ Sets User-Agent metadata brands and their versions. &lt;p&gt;&lt;strong&gt;API N
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| brandVersionList | Array&lt;[UserAgentBrandVersion](../../apis-na/arkts-apis/arkts-na-webview-useragentbrandversion-c.md)&gt; | 是 | The brandVersionList is used to generate User-Agent client hints sec-ch-ua-full-version-list. |
+| brandVersionList | Array&lt;[UserAgentBrandVersion](arkts-arkweb-webview-useragentbrandversion-c.md)&gt; | 是 | 对应请求标头的Sec-CH-UA-Full-Version-List。空代表使用ArkWeb默认值。 |
 
 ## setFormFactors
 
@@ -356,11 +356,11 @@ Sets User-Agent metadata brands and their versions. &lt;p&gt;&lt;strong&gt;API N
 setFormFactors(formFactors: Array<UserAgentFormFactor>): void
 ```
 
-Sets User-Agent metadata form factors. &lt;p&gt;&lt;strong&gt;API Note&lt;/strong&gt;:&lt;br&gt; The default value is empty list which means the system default value will be used. Form factor value should be one or more of DESKTOP, AUTOMOTIVE, MOBILE, TABLET, XR, EINK, WATCH. &lt;/p&gt;
+设置设备形态信息，如手机、平板等。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -374,7 +374,7 @@ Sets User-Agent metadata form factors. &lt;p&gt;&lt;strong&gt;API Note&lt;/stron
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| formFactors | Array&lt;[UserAgentFormFactor](../../apis-na/arkts-apis/arkts-na-webview-useragentformfactor-e.md)&gt; | 是 | The formFactors is used to generate User-Agent client hints sec-ch-ua-form-factors. |
+| formFactors | Array&lt;[UserAgentFormFactor](arkts-arkweb-webview-useragentformfactor-e.md)&gt; | 是 | 对应请求标头的Sec-CH-UA-Form-Factor。空代表使用ArkWeb默认值。 |
 
 ## setFullVersion
 
@@ -382,11 +382,11 @@ Sets User-Agent metadata form factors. &lt;p&gt;&lt;strong&gt;API Note&lt;/stron
 setFullVersion(fullVersion: string): void
 ```
 
-Sets User-Agent metadata full version. &lt;p&gt;&lt;strong&gt;API Note&lt;/strong&gt;:&lt;br&gt; The default value is empty string which means the system default value will be used. &lt;/p&gt;
+设置完整版本号。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -400,7 +400,7 @@ Sets User-Agent metadata full version. &lt;p&gt;&lt;strong&gt;API Note&lt;/stron
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fullVersion | string | 是 | The fullVersion is used to generate User-Agent client hints sec-ch-ua-full-version. |
+| fullVersion | string | 是 | 对应请求标头的Sec-CH-UA-Full-Version。空代表使用ArkWeb默认值。 |
 
 ## setMobile
 
@@ -408,11 +408,11 @@ Sets User-Agent metadata full version. &lt;p&gt;&lt;strong&gt;API Note&lt;/stron
 setMobile(isMobile: boolean): void
 ```
 
-Sets User-Agent metadata mobile, default is true.
+设置是否为移动设备。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -426,7 +426,7 @@ Sets User-Agent metadata mobile, default is true.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isMobile | boolean | 是 | The isMobile is used to generate User-Agent client hints sec-ch-ua-mobile. |
+| isMobile | boolean | 是 | 对应请求标头的Sec-CH-UA-Mobile。表示设备是否为移动设备。true为是移动设备，false为不是移动设备。 |
 
 ## setModel
 
@@ -434,11 +434,11 @@ Sets User-Agent metadata mobile, default is true.
 setModel(model: string): void
 ```
 
-Sets User-Agent metadata model. &lt;p&gt;&lt;strong&gt;API Note&lt;/strong&gt;:&lt;br&gt; The default value is empty string which means the system default value will be used. &lt;/p&gt;
+设置设备型号。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -452,7 +452,7 @@ Sets User-Agent metadata model. &lt;p&gt;&lt;strong&gt;API Note&lt;/strong&gt;:&
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| model | string | 是 | The model is used to generate User-Agent client hints sec-ch-ua-model. |
+| model | string | 是 | 对应请求标头的Sec-CH-UA-Model。 空代表使用ArkWeb默认值。 |
 
 ## setPlatform
 
@@ -460,11 +460,11 @@ Sets User-Agent metadata model. &lt;p&gt;&lt;strong&gt;API Note&lt;/strong&gt;:&
 setPlatform(platform: string): void
 ```
 
-Sets User-Agent metadata platform. &lt;p&gt;&lt;strong&gt;API Note&lt;/strong&gt;:&lt;br&gt; The default value is empty string which means the system default value will be used. &lt;/p&gt;
+设置操作系统名称。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -478,7 +478,7 @@ Sets User-Agent metadata platform. &lt;p&gt;&lt;strong&gt;API Note&lt;/strong&gt
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| platform | string | 是 | The platform is used to generate User-Agent client hints sec-ch-ua-platform. |
+| platform | string | 是 | 对应请求标头的Sec-CH-UA-Platform。空代表使用ArkWeb默认值。 |
 
 ## setPlatformVersion
 
@@ -486,11 +486,11 @@ Sets User-Agent metadata platform. &lt;p&gt;&lt;strong&gt;API Note&lt;/strong&gt
 setPlatformVersion(platformVersion: string): void
 ```
 
-Sets User-Agent metadata platform version. &lt;p&gt;&lt;strong&gt;API Note&lt;/strong&gt;:&lt;br&gt; The default value is empty string which means the system default value will be used. &lt;/p&gt;
+设置操作系统版本号。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -504,7 +504,7 @@ Sets User-Agent metadata platform version. &lt;p&gt;&lt;strong&gt;API Note&lt;/s
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| platformVersion | string | 是 | The platformVersion is used to generate User-Agent client hints sec-ch-ua-platform-version. |
+| platformVersion | string | 是 | 对应请求标头的Sec-CH-UA-Platform-Version。空代表使用ArkWeb默认值。 |
 
 ## setWow64
 
@@ -512,11 +512,11 @@ Sets User-Agent metadata platform version. &lt;p&gt;&lt;strong&gt;API Note&lt;/s
 setWow64(isWow64: boolean): void
 ```
 
-Sets User-Agent metadata wow64, default is false.
+设置二进制文件是否在64位Windows上以32位模式运行。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -530,5 +530,5 @@ Sets User-Agent metadata wow64, default is false.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isWow64 | boolean | 是 | The wow64 is used to generate User-Agent client hints sec-ch-ua-wow64. |
+| isWow64 | boolean | 是 | 对应请求标头的Sec-CH-UA-WoW64。表示二进制文件是否在64位Windows上以32位模式运行。true为是，false为不是。 |
 

@@ -6,11 +6,11 @@
 function setAppShareOptions(intention: Intention, shareOptions: ShareOptions): void
 ```
 
-设置应用内拖拽通道数据可使用的范围[ShareOptions](arkts-arkdata-unifieddatachannel-shareoptions-e.md#ShareOptions)，目前仅支持DRAG类型数据通道的管控设置。调用成功后，应用内拖拽通道数据的使用范围被设 置为指定的ShareOptions值。
+设置应用内拖拽通道数据可使用的范围[ShareOptions](arkts-arkdata-unifieddatachannel-shareoptions-e.md#shareoptions)，目前仅支持DRAG类型数据通道的管控设置。调用成功后，应用内拖拽通道数据的使用范围被设 置为指定的ShareOptions值。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -30,7 +30,7 @@ function setAppShareOptions(intention: Intention, shareOptions: ShareOptions): v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | intention | [Intention](arkts-arkdata-unifieddatachannel-intention-e.md) | 是 | 表示数据操作相关的数据通路类型，目前仅支持DRAG类型数据通道。 |
-| shareOptions | [ShareOptions](arkts-arkdata-unifieddatachannel-shareoptions-e.md) | 是 | 指示[UnifiedData](arkts-arkdata-unifieddatachannel-unifieddata-c.md#UnifiedData)支持的设备内使用范围。 |
+| shareOptions | [ShareOptions](arkts-arkdata-unifieddatachannel-shareoptions-e.md) | 是 | 指示[UnifiedData](arkts-arkdata-unifieddatachannel-unifieddata-c.md#unifieddata)支持的设备内使用范围。 |
 
 **错误码：**
 

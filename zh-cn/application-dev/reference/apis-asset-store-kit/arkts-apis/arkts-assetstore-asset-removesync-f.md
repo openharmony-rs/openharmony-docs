@@ -10,7 +10,7 @@ function removeSync(query: AssetMap): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -30,7 +30,7 @@ function removeSync(query: AssetMap): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types. 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [24000015](../errorcode-asset.md#24000015-获取系统时间失败) | Getting the system time failed. |
 | [24000012](../errorcode-asset.md#24000012-账号系统服务异常) | Calling the OS Account service failed. |
 | [24000013](../errorcode-asset.md#24000013-访问控制服务异常) | Calling the Access Token service failed. |

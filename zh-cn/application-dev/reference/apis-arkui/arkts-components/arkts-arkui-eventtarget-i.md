@@ -1,10 +1,10 @@
 # EventTarget
 
-[BaseEvent](arkts-arkui-baseevent-i.md#BaseEvent)中参数target的类型。 触发事件的元素对象的显示区域。
+[BaseEvent](arkts-arkui-baseevent-i.md#baseevent)中参数target的类型。 触发事件的元素对象的显示区域。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ area: Area
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -48,7 +48,7 @@ id?: string
 
 **起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+**ArkTS模式：** 起始版本为15。
 
 **废弃版本：** -1
 

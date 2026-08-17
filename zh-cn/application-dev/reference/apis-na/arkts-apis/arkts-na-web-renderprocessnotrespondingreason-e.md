@@ -1,10 +1,10 @@
 # RenderProcessNotRespondingReason
 
-Enum type supplied to [RenderProcessNotRespondingData](arkts-na-web-renderprocessnotrespondingdata-i.md#RenderProcessNotRespondingData) when onRenderProcessNotResponding is called.
+Enum type supplied to [RenderProcessNotRespondingData](arkts-na-web-renderprocessnotrespondingdata-i.md#renderprocessnotrespondingdata) when onRenderProcessNotResponding is called.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ Timeout for input sent to render process.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -40,7 +40,7 @@ The new webpage loading navigation response timed out.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

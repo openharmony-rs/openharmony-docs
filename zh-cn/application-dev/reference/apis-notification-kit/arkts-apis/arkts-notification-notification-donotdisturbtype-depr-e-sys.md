@@ -4,11 +4,11 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [DoNotDisturbType](arkts-notification-notificationmanager-donotdisturbtype-e-sys.md#DoNotDisturbType（系统接口）)
+**替代接口：** [DoNotDisturbType](arkts-notification-notificationmanager-donotdisturbtype-e-sys.md#donotdisturbtype系统接口)
 
 <!--Device-notification-export enum DoNotDisturbType--><!--Device-notification-export enum DoNotDisturbType-End-->
 
@@ -26,11 +26,11 @@ TYPE_NONE = 0
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [TYPE_NONE](arkts-notification-notificationmanager-donotdisturbtype-e-sys.md#TYPE_NONE)
+**替代接口：** [TYPE_NONE](arkts-notification-notificationmanager-donotdisturbtype-e-sys.md#typenone)
 
 <!--Device-DoNotDisturbType-TYPE_NONE = 0--><!--Device-DoNotDisturbType-TYPE_NONE = 0-End-->
 
@@ -48,11 +48,11 @@ TYPE_ONCE = 1
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [TYPE_ONCE](arkts-notification-notificationmanager-donotdisturbtype-e-sys.md#TYPE_ONCE)
+**替代接口：** [TYPE_ONCE](arkts-notification-notificationmanager-donotdisturbtype-e-sys.md#typeonce)
 
 <!--Device-DoNotDisturbType-TYPE_ONCE = 1--><!--Device-DoNotDisturbType-TYPE_ONCE = 1-End-->
 
@@ -70,11 +70,11 @@ TYPE_DAILY = 2
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [TYPE_DAILY](arkts-notification-notificationmanager-donotdisturbtype-e-sys.md#TYPE_DAILY)
+**替代接口：** [TYPE_DAILY](arkts-notification-notificationmanager-donotdisturbtype-e-sys.md#typedaily)
 
 <!--Device-DoNotDisturbType-TYPE_DAILY = 2--><!--Device-DoNotDisturbType-TYPE_DAILY = 2-End-->
 
@@ -92,11 +92,11 @@ TYPE_CLEARLY = 3
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [TYPE_CLEARLY](arkts-notification-notificationmanager-donotdisturbtype-e-sys.md#TYPE_CLEARLY)
+**替代接口：** [TYPE_CLEARLY](arkts-notification-notificationmanager-donotdisturbtype-e-sys.md#typeclearly)
 
 <!--Device-DoNotDisturbType-TYPE_CLEARLY = 3--><!--Device-DoNotDisturbType-TYPE_CLEARLY = 3-End-->
 

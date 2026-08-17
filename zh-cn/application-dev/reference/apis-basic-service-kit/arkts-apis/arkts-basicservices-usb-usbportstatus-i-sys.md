@@ -4,11 +4,11 @@ USB设备端口角色信息。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 9
 
-**替代接口：** [USBPortStatus](arkts-basicservices-usbmanager-usbportstatus-i-sys.md#USBPortStatus（系统接口）)
+**替代接口：** [USBPortStatus](arkts-basicservices-usbmanager-usbportstatus-i-sys.md#usbportstatus系统接口)
 
 <!--Device-usb-interface USBPortStatus--><!--Device-usb-interface USBPortStatus-End-->
 
@@ -28,11 +28,11 @@ currentDataRole: number
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 9
 
-**替代接口：** [currentDataRole](arkts-basicservices-usbmanager-usbportstatus-i-sys.md#currentDataRole)
+**替代接口：** [currentDataRole](arkts-basicservices-usbmanager-usbportstatus-i-sys.md#currentdatarole)
 
 <!--Device-USBPortStatus-currentDataRole: number--><!--Device-USBPortStatus-currentDataRole: number-End-->
 
@@ -52,11 +52,11 @@ currentMode: number
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 9
 
-**替代接口：** [currentMode](arkts-basicservices-usbmanager-usbportstatus-i-sys.md#currentMode)
+**替代接口：** [currentMode](arkts-basicservices-usbmanager-usbportstatus-i-sys.md#currentmode)
 
 <!--Device-USBPortStatus-currentMode: number--><!--Device-USBPortStatus-currentMode: number-End-->
 
@@ -76,11 +76,11 @@ currentPowerRole: number
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 9
 
-**替代接口：** [currentPowerRole](arkts-basicservices-usbmanager-usbportstatus-i-sys.md#currentPowerRole)
+**替代接口：** [currentPowerRole](arkts-basicservices-usbmanager-usbportstatus-i-sys.md#currentpowerrole)
 
 <!--Device-USBPortStatus-currentPowerRole: number--><!--Device-USBPortStatus-currentPowerRole: number-End-->
 

@@ -10,7 +10,7 @@ export function getTimeZone(zoneID?: string): TimeZone
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -30,5 +30,13 @@ export function getTimeZone(zoneID?: string): TimeZone
 
 | 类型 | 说明 |
 | --- | --- |
-| [TimeZone](arkts-localization-i18n-timezone-c.md) | 时区ID对应的时区对象。 |
+| [TimeZone](../../apis-na/arkts-apis/arkts-na-i18n-timezone-c.md) | 时区ID对应的时区对象。 |
+
+## 示例
+
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+
+let timezone: i18n.TimeZone = i18n.getTimeZone('Asia/Shanghai');
+```
 

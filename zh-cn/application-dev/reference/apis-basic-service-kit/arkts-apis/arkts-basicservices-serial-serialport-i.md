@@ -4,7 +4,7 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ close(): Promise<void>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -55,7 +55,7 @@ drain(): Promise<void>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -89,7 +89,7 @@ flush串口缓冲区。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -123,7 +123,7 @@ getCts(): Promise<boolean>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -157,7 +157,7 @@ getDsr(): Promise<boolean>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -191,7 +191,7 @@ offDataRead(callback?: Callback<Uint8Array>): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -205,7 +205,7 @@ offDataRead(callback?: Callback<Uint8Array>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](arkts-basicservices-callback-t.md)&lt;Uint8Array&gt; | 否 | 回调函数，返回串口端口接收到的数据 &lt;br&gt;默认值:缺省行为：清除串口端口接收数据事件的所有监听。 |
+| callback | [Callback](arkts-basicservices-callback-t.md)&lt;Uint8Array&gt; | 否 | 回调函数，返回串口端口接收到的数据 <br>默认值:缺省行为：清除串口端口接收数据事件的所有监听。 |
 
 **错误码：**
 
@@ -224,7 +224,7 @@ offDisconnect(callback?: Callback<void>): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -238,7 +238,7 @@ offDisconnect(callback?: Callback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](arkts-basicservices-callback-t.md)&lt;void&gt; | 否 | USB虚拟串口断开的回调函数。 &lt;br&gt;默认值：清除所有USB虚拟串口断开事件的回调函数。 |
+| callback | [Callback](arkts-basicservices-callback-t.md)&lt;void&gt; | 否 | USB虚拟串口断开的回调函数。 <br>默认值：清除所有USB虚拟串口断开事件的回调函数。 |
 
 **错误码：**
 
@@ -257,7 +257,7 @@ onDataRead(callback: Callback<Uint8Array>): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -291,7 +291,7 @@ onDisconnect(callback: Callback<void>): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -324,7 +324,7 @@ open(config?: SerialConfigs): Promise<void>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -338,7 +338,7 @@ open(config?: SerialConfigs): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| config | [SerialConfigs](arkts-basicservices-serial-serialconfigs-i.md) | 否 | 串口通信参数 &lt;br&gt;默认值:默认值：参考SerialConfigs的默认值。 &lt;br&gt;Default value: Refer to the default value of SerialConfigs.. |
+| config | [SerialConfigs](arkts-basicservices-serial-serialconfigs-i.md) | 否 | 串口通信参数 <br>默认值:默认值：参考SerialConfigs的默认值。 <br>Default value: Refer to the default value of SerialConfigs.. |
 
 **返回值：**
 
@@ -366,7 +366,7 @@ sendBrk(): Promise<void>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -400,7 +400,7 @@ setDtr(enable: boolean): Promise<void>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -440,7 +440,7 @@ setRts(enable: boolean): Promise<void>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -480,7 +480,7 @@ write(data: Uint8Array, timeout?: int): Promise<int>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -494,8 +494,8 @@ write(data: Uint8Array, timeout?: int): Promise<int>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | Uint8Array | 是 | 要发送的数据 &lt;br&gt;长度范围:(0,4096]。 |
-| timeout | int | 否 | 超时时间 &lt;br&gt;长度范围:[0,300000]。取值限定为整数。单位:毫秒。默认值:0。 &lt;br&gt;表示端口无法写入数据时不等待，直接返回。 |
+| data | Uint8Array | 是 | 要发送的数据 <br>长度范围:(0,4096]。 |
+| timeout | int | 否 | 超时时间 <br>长度范围:[0,300000]。取值限定为整数。单位:毫秒。默认值:0。 <br>表示端口无法写入数据时不等待，直接返回。 |
 
 **返回值：**
 
@@ -525,7 +525,7 @@ readonly portInfo: SerialPortInfo
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

@@ -18,7 +18,7 @@
 | -- | -- | -- |
 | [MediaKeySession](capi-avplayer-mediakeysession.md) | MediaKeySession | MediaKeySession类型。 |
 | [DRM_MediaKeySystemInfo](capi-avplayer-drm-mediakeysysteminfo.md) | DRM_MediaKeySystemInfo | DRM_MediaKeySystemInfo类型。 |
-| [OH_AVPlayerVideoOutput](capi-avplayer-oh-avplayervideooutput.md) | OH_AVPlayerVideoOutput | OH_AVPlayerVideoOutput field. |
+| [OH_AVPlayerVideoOutput](capi-avplayer-oh-avplayervideooutput.md) | OH_AVPlayerVideoOutput | OH_AVPlayerVideoOutput字段声明。 |
 
 ### 函数
 
@@ -101,8 +101,8 @@
 | [OH_AVErrCode OH_AVPlayer_SetMediaSource(OH_AVPlayer *player, OH_AVMediaSource *source)](#oh_avplayer_setmediasource) | - | 将OH_AVMediaSource设置给播放器。 |
 | [uint32_t OH_AVPlayer_GetTrackCount(OH_AVPlayer *player)](#oh_avplayer_gettrackcount) | - | 获取播放器媒体源的轨道数量。 |
 | [OH_AVFormat *OH_AVPlayer_GetTrackFormat(OH_AVPlayer *player, uint32_t trackIndex)](#oh_avplayer_gettrackformat) | - | 通过索引获取播放器轨道信息。 |
-| [OH_AVPlayerVideoOutput* OH_AVPlayer_SetVideoSideOutput(OH_AVPlayer *player, OHNativeWindow *window)](#oh_avplayer_setvideosideoutput) | - | Method to set video decoded frame output callback. This API can be called onlywhen the avplayer is in the idle or initalized state. |
-| [OH_VideoOutputResult OH_AVPlayerVideoOutput_GetNewestVideoSample(OH_AVPlayerVideoOutput *videoOutput)](#oh_avplayervideooutput_getnewestvideosample) | - | Method to get one video decoded frame. This API can be called only when the avplayer isin the paused or playing state. |
+| [OH_AVPlayerVideoOutput* OH_AVPlayer_SetVideoSideOutput(OH_AVPlayer *player, OHNativeWindow *window)](#oh_avplayer_setvideosideoutput) | - | 设置视频解码帧输出回调的方法。此接口仅在播放器处于空闲或已初始化状态时可调用。 |
+| [OH_VideoOutputResult OH_AVPlayerVideoOutput_GetNewestVideoSample(OH_AVPlayerVideoOutput *videoOutput)](#oh_avplayervideooutput_getnewestvideosample) | - | 获取一个已解码视频帧的方法。此接口仅在播放器处于暂停或播放状态时可调用。 |
 
 ## 函数说明
 
@@ -2024,7 +2024,7 @@ OH_AVPlayerVideoOutput* OH_AVPlayer_SetVideoSideOutput(OH_AVPlayer *player, OHNa
 
 **描述**
 
-Method to set video decoded frame output callback. This API can be called onlywhen the avplayer is in the idle or initalized state.
+设置视频解码帧输出回调的方法。此接口仅在播放器处于空闲或已初始化状态时可调用。
 
 **起始版本：** 26.0.0
 
@@ -2049,7 +2049,7 @@ OH_VideoOutputResult OH_AVPlayerVideoOutput_GetNewestVideoSample(OH_AVPlayerVide
 
 **描述**
 
-Method to get one video decoded frame. This API can be called only when the avplayer isin the paused or playing state.
+获取一个已解码视频帧的方法。此接口仅在播放器处于暂停或播放状态时可调用。
 
 **起始版本：** 26.0.0
 

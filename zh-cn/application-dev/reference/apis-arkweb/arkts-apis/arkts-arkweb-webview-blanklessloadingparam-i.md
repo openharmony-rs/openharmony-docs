@@ -1,10 +1,10 @@
 # BlanklessLoadingParam
 
-1.插帧加载参数 设备行为差异:仅支持手机平台，其他平台返回801
+无白屏加载插帧方案的加载参数。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@
 callback?: Callback<BlanklessFrameInterpolationInfo>
 ```
 
-白屏插帧回调函数，用于返回白屏插帧信息 设备行为差异:仅支持手机平台，其他平台返回801
+插帧成功、失败或移除后执行的回调。 只有在enable为true时生效。可选，不设置则不进行任何操作。
 
-**类型：** [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[BlanklessFrameInterpolationInfo](../../apis-na/arkts-apis/arkts-na-webview-blanklessframeinterpolationinfo-i.md)&gt;
+**类型：** [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[BlanklessFrameInterpolationInfo](arkts-arkweb-webview-blanklessframeinterpolationinfo-i.md)&gt;
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -40,13 +40,13 @@ callback?: Callback<BlanklessFrameInterpolationInfo>
 duration?: number
 ```
 
-本次插入帧的存续时间，单位ms 有效时长范围为 {0} 和[200, 2000]的并集 设备行为差异:仅支持手机平台，其他平台返回801 取值限定为整数。
+插帧持续时间。 取值范围：[200, 2000] ∪ {0}，其中0表示不指定持续时间，由系统自动设置合适的持续时间。 单位：ms。
 
 **类型：** number
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -62,13 +62,13 @@ duration?: number
 enable: boolean
 ```
 
-本次是否使能开始插帧，true：使能，false：不使能 设备行为差异:仅支持手机平台，其他平台返回801
+是否启用无白屏加载插帧方案。 true表示启用，false表示不启用。
 
 **类型：** boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -84,13 +84,13 @@ enable: boolean
 expirationTime?: number
 ```
 
-历史帧失效时间，UTC时间，单位：ms。用T表示当前UTC时间，同时已知30天为2592000000ms，取值范围：(T, T + 2592000000] 和 {0}的并集，其中0表示不指定失效时间，采用系统默认失效时间（7天）。 设备行为差异:仅支持手机平台，其他平台返回801
+历史帧失效时间，UTC时间。 用T表示当前UTC时间，同时已知30天为2592000000ms，取值范围：(T, T + 2592000000] ∪ {0}，其中0表示不指定失效时间，采用系统默认失效时间（7天）。 单位：ms。
 
 **类型：** number
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

@@ -10,7 +10,7 @@ function makeCallWithToken(phoneNumber: string, options?: MakeCallOptions): Prom
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -46,17 +46,18 @@ function makeCallWithToken(phoneNumber: string, options?: MakeCallOptions): Prom
 
 ```TypeScript
 import { call } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-// 设置通话结束后是否返回当前App与应用是否开启自定义无障碍功能
+// 设置是否隐藏拨号界面与应用是否开启自定义无障碍功能
 let makeOptions: call.MakeCallOptions = {
   isHideDialScreen: true,
-  isCustomAccessibility : true
-}
+  isCustomAccessibility: true
+};
 
 call.makeCallWithToken("138xxxxxxxx", makeOptions).then(() => {
   console.info(`makeCallWithToken success`);
 }).catch((err: BusinessError) => {
-  console.error(`makeCallWithToken fail, promise: err->${JSON.stringify(err)}`);
+  console.error(`makeCallWithToken fail, promise: 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
 });
 ```
 

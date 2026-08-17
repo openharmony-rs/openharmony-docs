@@ -1,10 +1,10 @@
 # AuxiliaryPictureType
 
-表示辅助图的图像类型的枚举。 辅助图不直接参与图片显示，且并非所有图片中都含有辅助图。 在获取和使用特定辅助图前，应首先调用Picture的[getAuxiliaryPicture](arkts-image-image-picture-i.md#getAuxiliaryPicture)方法尝试获取该辅助图。
+表示辅助图的图像类型的枚举。 辅助图不直接参与图片显示，且并非所有图片中都含有辅助图。 在获取和使用特定辅助图前，应首先调用Picture的[getAuxiliaryPicture](arkts-image-image-picture-i.md#getauxiliarypicture)方法尝试获取该辅助图。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,11 +18,11 @@
 GAINMAP = 1
 ```
 
-增益图（Gain Map）。 用于更准确地生成HDR图像。 HDR合成通常需要同时使用SDR主图、增益图和HDR元数据（[getMetadata](arkts-image-image-pixelmap-i.md#getMetadata)）共同计算亮度映射关系。
+增益图（Gain Map）。 用于更准确地生成HDR图像。 HDR合成通常需要同时使用SDR主图、增益图和HDR元数据（[getMetadata](arkts-image-image-pixelmap-i.md#getmetadata)）共同计算亮度映射关系。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -40,7 +40,7 @@ DEPTH_MAP = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -58,7 +58,7 @@ UNREFOCUS_MAP = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -76,7 +76,7 @@ LINEAR_MAP = 4
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -94,7 +94,7 @@ FRAGMENT_MAP = 5
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -112,7 +112,7 @@ LHDR_GAINMAP = 10
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

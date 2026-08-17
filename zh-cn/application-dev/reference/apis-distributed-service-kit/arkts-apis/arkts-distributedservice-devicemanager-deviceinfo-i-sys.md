@@ -4,11 +4,11 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
-**替代接口：** [DeviceBasicInfo](arkts-distributedservice-distributeddevicemanager-devicebasicinfo-i.md#DeviceBasicInfo)
+**替代接口：** [DeviceBasicInfo](arkts-distributedservice-distributeddevicemanager-devicebasicinfo-i.md#devicebasicinfo)
 
 <!--Device-deviceManager-interface DeviceInfo--><!--Device-deviceManager-interface DeviceInfo-End-->
 
@@ -28,7 +28,7 @@ authForm: AuthForm
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 11
 
@@ -50,11 +50,11 @@ deviceId: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
-**替代接口：** [deviceId](arkts-distributedservice-distributeddevicemanager-devicebasicinfo-i.md#deviceId)
+**替代接口：** [deviceId](arkts-distributedservice-distributeddevicemanager-devicebasicinfo-i.md#deviceid)
 
 <!--Device-DeviceInfo-deviceId: string--><!--Device-DeviceInfo-deviceId: string-End-->
 
@@ -74,11 +74,11 @@ deviceName: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
-**替代接口：** [deviceName](arkts-distributedservice-distributeddevicemanager-devicebasicinfo-i.md#deviceName)
+**替代接口：** [deviceName](arkts-distributedservice-distributeddevicemanager-devicebasicinfo-i.md#devicename)
 
 <!--Device-DeviceInfo-deviceName: string--><!--Device-DeviceInfo-deviceName: string-End-->
 
@@ -98,11 +98,11 @@ deviceType: DeviceType
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
-**替代接口：** [deviceType](arkts-distributedservice-distributeddevicemanager-devicebasicinfo-i.md#deviceType)
+**替代接口：** [deviceType](arkts-distributedservice-distributeddevicemanager-devicebasicinfo-i.md#devicetype)
 
 <!--Device-DeviceInfo-deviceType: DeviceType--><!--Device-DeviceInfo-deviceType: DeviceType-End-->
 
@@ -122,11 +122,11 @@ networkId: string
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 11
 
-**替代接口：** [networkId](arkts-distributedservice-distributeddevicemanager-devicebasicinfo-i.md#networkId)
+**替代接口：** [networkId](arkts-distributedservice-distributeddevicemanager-devicebasicinfo-i.md#networkid)
 
 <!--Device-DeviceInfo-networkId: string--><!--Device-DeviceInfo-networkId: string-End-->
 
@@ -146,7 +146,7 @@ range: number
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 11
 

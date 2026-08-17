@@ -2,7 +2,7 @@
 
 ## 概述
 
-Provides APIs to define common sensor attributes.
+提供用于定义通用传感器属性的API。
 
 **起始版本：** 11
 ## 文件汇总

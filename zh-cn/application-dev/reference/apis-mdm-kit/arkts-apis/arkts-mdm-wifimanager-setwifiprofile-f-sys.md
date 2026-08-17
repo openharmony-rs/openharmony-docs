@@ -10,11 +10,11 @@ function setWifiProfile(admin: Want, profile: WifiProfile, callback: AsyncCallba
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setWifiProfileSync](arkts-mdm-wifimanager-setwifiprofilesync-f.md#setWifiProfileSync)
+**替代接口：** [setWifiProfileSync](arkts-mdm-wifimanager-setwifiprofilesync-f.md#setwifiprofilesync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_WIFI
 
@@ -82,11 +82,11 @@ function setWifiProfile(admin: Want, profile: WifiProfile): Promise<void>
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setWifiProfileSync](arkts-mdm-wifimanager-setwifiprofilesync-f.md#setWifiProfileSync)
+**替代接口：** [setWifiProfileSync](arkts-mdm-wifimanager-setwifiprofilesync-f.md#setwifiprofilesync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_WIFI
 

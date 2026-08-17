@@ -4,11 +4,11 @@
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 8
 
-**替代接口：** [WearDetectionResponse](arkts-sensorservice-sensor-weardetectionresponse-i.md#WearDetectionResponse)
+**替代接口：** [WearDetectionResponse](arkts-sensorservice-sensor-weardetectionresponse-i.md#weardetectionresponse)
 
 <!--Device-unnamed-export interface OnBodyStateResponse--><!--Device-unnamed-export interface OnBodyStateResponse-End-->
 
@@ -26,7 +26,7 @@ value: boolean
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 8
 

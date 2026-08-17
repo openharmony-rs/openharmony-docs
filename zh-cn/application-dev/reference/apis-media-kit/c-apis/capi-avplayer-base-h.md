@@ -30,7 +30,7 @@
 | [AVPlayerOnInfoType](#avplayeroninfotype) | AVPlayerOnInfoType | OnInfo类型。可用于OH_AVPlayerOnInfoCallback和OH_AVPlayerOnInfo(已废弃)，用于表示收到的播放器信息类型。从API version 12开始，推荐用户使用[OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback)。不同的OnInfo类型，可获取到不同信息（infoBody），infoBody中包含key-value关系表，详见下述枚举值表。使用API version 11版本的开发者，需要使用旧接口。针对已废弃接口OH_AVPlayerOnInfo中使用的对应关系，可直接参考[OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo)的API说明。 |
 | [AVPlayerBufferingType](#avplayerbufferingtype) | AVPlayerBufferingType | 播放缓冲消息类型定义。 |
 | [AVPlayerTrackSwitchMode](#avplayertrackswitchmode) | AVPlayerTrackSwitchMode | 枚举轨道切换模式。 |
-| [OH_VideoOutputResult](#oh_videooutputresult) | OH_VideoOutputResult | Result of Video output. |
+| [OH_VideoOutputResult](#oh_videooutputresult) | OH_VideoOutputResult | 视频输出的结果。 |
 
 ### 函数
 
@@ -38,7 +38,7 @@
 | -- | -- | -- |
 | [typedef void (\*OH_AVPlayerOnInfo)(OH_AVPlayer *player, AVPlayerOnInfoType type, int32_t extra)](#oh_avplayeroninfo) | OH_AVPlayerOnInfo | 收到播放器消息时调用。(API12废弃) |
 | [typedef void (\*OH_AVPlayerOnInfoCallback)(OH_AVPlayer *player, AVPlayerOnInfoType type, OH_AVFormat* infoBody, void *userData)](#oh_avplayeroninfocallback) | OH_AVPlayerOnInfoCallback | 收到播放器消息时被调用。如果应用成功设置该回调，则不会回调OH_AVPlayerOnInfo函数。 |
-| [typedef void (\*OH_AVPlayerOnError)(OH_AVPlayer *player, int32_t errorCode, const char *errorMsg)](#oh_avplayeronerror) | OH_AVPlayerOnError | 在API version 9以上的版本发生错误时调用。(API12废弃) |
+| [typedef void (\*OH_AVPlayerOnError)(OH_AVPlayer *player, int32_t errorCode, const char *errorMsg)](#oh_avplayeronerror) | OH_AVPlayerOnError | 在API version 11以上的版本发生错误时调用。(API12废弃) |
 | [typedef void (\*OH_AVPlayerOnErrorCallback)(OH_AVPlayer *player, int32_t errorCode, const char *errorMsg, void *userData)](#oh_avplayeronerrorcallback) | OH_AVPlayerOnErrorCallback | 发生错误时被调用。如果应用成功设置该回调，则不会调用OH_AVPlayerOnError函数。 |
 | [typedef void (\*OH_AVPlayerOnAmplitudeUpdateCallback)(OH_AVPlayer *player, double *amplitudes, uint32_t size, void *userData)](#oh_avplayeronamplitudeupdatecallback) | OH_AVPlayerOnAmplitudeUpdateCallback | 当计算出最大音频电平值时调用。 |
 | [typedef void (\*OH_AVPlayerOnSeiMessageReceivedCallback)(OH_AVPlayer *player, OH_AVSeiMessageArray *message, int32_t playbackPosition, void *userData)](#oh_avplayeronseimessagereceivedcallback) | OH_AVPlayerOnSeiMessageReceivedCallback | 用于获取SEI消息的回调处理函数。在订阅SEI消息事件时使用，回调返回详细的SEI信息。 |
@@ -135,7 +135,7 @@ enum AVPlayerSeekMode
 | 枚举项 | 描述 |
 | -- | -- |
 | AV_SEEK_NEXT_SYNC = 0 | sync to keyframes after the time point. |
-| AV_SEEK_PREVIOUS_SYNC | sync to keyframes before the time point. |
+| AV_SEEK_PREVIOUS_SYNC = 1 | sync to keyframes before the time point. |
 | AV_SEEK_CLOSEST = 2 | 同步到距离指定时间点最近的帧。<br>**起始版本：** 12 |
 | AV_SEEK_CONTINUOUS = 3 | 连续拖动模式下的跳转（seek）。该模式可提供更流畅的拖拽体验，但要求设备支持对当前流执行连续跳转。在调用连续跳转前，请先检查是否支持，参见{@link OH_AVPlayer_IsSeekContinuousSupported}。**起始版本：** 23 |
 
@@ -153,16 +153,16 @@ enum AVPlaybackSpeed
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AV_SPEED_FORWARD_0_75_X | Video playback at 0.75x normal speed |
-| AV_SPEED_FORWARD_1_00_X | Video playback at normal speed |
-| AV_SPEED_FORWARD_1_25_X | Video playback at 1.25x normal speed |
-| AV_SPEED_FORWARD_1_75_X | Video playback at 1.75x normal speed |
-| AV_SPEED_FORWARD_2_00_X | Video playback at 2.0x normal speed |
-| AV_SPEED_FORWARD_0_50_X | 0.5倍速播放。<br>**起始版本：** 12 |
-| AV_SPEED_FORWARD_1_50_X | 1.5倍速播放。<br>**起始版本：** 12 |
-| AV_SPEED_FORWARD_3_00_X | 3.0倍速播放。<br>**起始版本：** 13 |
-| AV_SPEED_FORWARD_0_25_X | 0.25倍速播放。<br>**起始版本：** 13 |
-| AV_SPEED_FORWARD_0_125_X | 0.125倍速播放。<br>**起始版本：** 13 |
+| AV_SPEED_FORWARD_0_75_X = 0 | Video playback at 0.75x normal speed |
+| AV_SPEED_FORWARD_1_00_X = 1 | Video playback at normal speed |
+| AV_SPEED_FORWARD_1_25_X = 2 | Video playback at 1.25x normal speed |
+| AV_SPEED_FORWARD_1_75_X = 3 | Video playback at 1.75x normal speed |
+| AV_SPEED_FORWARD_2_00_X = 4 | Video playback at 2.0x normal speed |
+| AV_SPEED_FORWARD_0_50_X = 5 | 0.5倍速播放。<br>**起始版本：** 12 |
+| AV_SPEED_FORWARD_1_50_X = 6 | 1.5倍速播放。<br>**起始版本：** 12 |
+| AV_SPEED_FORWARD_3_00_X = 7 | 3.0倍速播放。<br>**起始版本：** 13 |
+| AV_SPEED_FORWARD_0_25_X = 8 | 0.25倍速播放。<br>**起始版本：** 13 |
+| AV_SPEED_FORWARD_0_125_X = 9 | 0.125倍速播放。<br>**起始版本：** 13 |
 
 ### AVPlayerOnInfoType
 
@@ -244,14 +244,14 @@ enum OH_VideoOutputResult
 
 **描述**
 
-Result of Video output.
+视频输出的结果。
 
 **起始版本：** 26.0.0
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_VIDEO_OUTPUT_OK = 0 | Output one decoded video frame.<br>**起始版本：** 26.0.0 |
-| OH_VIDEO_OUTPUT_NO_IMAGE = 1 | No frame ready to render.<br>**起始版本：** 26.0.0 |
+| OH_VIDEO_OUTPUT_OK = 0 | 输出一个已解码的视频帧。<br>**起始版本：** 26.0.0 |
+| OH_VIDEO_OUTPUT_NO_IMAGE = 1 | 无帧可渲染。<br>**起始版本：** 26.0.0 |
 
 
 ## 函数说明
@@ -298,7 +298,7 @@ typedef void (*OH_AVPlayerOnInfoCallback)(OH_AVPlayer *player, AVPlayerOnInfoTyp
 | -- | -- |
 | (OH_AVPlayer \*player | 指向OH_AVPlayer实例的指针。 |
 | [AVPlayerOnInfoType](capi-avplayer-base-h.md#avplayeroninfotype) type | 信息类型。具体请参见[AVPlayerOnInfoType](capi-avplayer-base-h.md#avplayeroninfotype)。 |
-| [OH_AVFormat](../AVCodecKit/capi-core-oh-avformat.md)\* infoBody | 指向携带具体消息的指针，仅在该回调方法内有效。 |
+| [OH_AVFormat](capi-core-oh-avformat.md)\* infoBody | 指向携带具体消息的指针，仅在该回调方法内有效。 |
 | void \*userData | 指向应用调用者设置该回调函数时提供的实例的指针。 |
 
 ### OH_AVPlayerOnError()
@@ -309,7 +309,7 @@ typedef void (*OH_AVPlayerOnError)(OH_AVPlayer *player, int32_t errorCode, const
 
 **描述**
 
-在API version 9以上的版本发生错误时调用。
+在API version 11以上的版本发生错误时调用。
 
 **起始版本：** 11
 

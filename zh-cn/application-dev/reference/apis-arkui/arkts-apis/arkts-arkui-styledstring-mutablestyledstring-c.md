@@ -1,12 +1,12 @@
 # MutableStyledString
 
-继承于[StyledString](arkts-arkui-styledstring-styledstring-c.md#StyledString)类。 > **以下接口异常入参处理统一说明：** > > 当start和length越界或者必填传入undefined时，会抛出异常； > > 当styledKey和styledValue传入异常值或者两者对应关系不匹配时，会抛出异常。
+继承于[StyledString](arkts-arkui-styledstring-styledstring-c.md#styledstring)类。 > **以下接口异常入参处理统一说明：** > > 当start和length越界或者必填传入undefined时，会抛出异常； > > 当styledKey和styledValue传入异常值或者两者对应关系不匹配时，会抛出异常。
 
-**继承/实现关系：** MutableStyledString extends [StyledString](arkts-arkui-styledstring-styledstring-c.md#StyledString)
+**继承/实现关系：** MutableStyledString extends [StyledString](arkts-arkui-styledstring-styledstring-c.md#styledstring)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ appendStyledString(other: StyledString): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -50,7 +50,7 @@ clearStyles(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -70,7 +70,7 @@ constructor(value: string | ImageAttachment | CustomSpan, styles?: Array<StyleOp
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -84,8 +84,8 @@ constructor(value: string | ImageAttachment | CustomSpan, styles?: Array<StyleOp
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | string \| [ImageAttachment](arkts-arkui-styledstring-imageattachment-c.md) \| [CustomSpan](arkts-arkui-styledstring-customspan-c.md) | 是 | 属性字符串文本内容。&lt;br/&gt;**说明：** &lt;br/&gt;当value的类型为ImageAttachment或 CustomSpan时，styles参数不生效。&lt;br/&gt;需要设置styles时，通过[setStyle](#setStyle)等方法实现。 |
-| styles | Array&lt;[StyleOptions](arkts-arkui-styledstring-styleoptions-i.md)&gt; | 否 | 属性字符串初始化选项。&lt;br/&gt;**说明：** &lt;br/&gt;start为异常值时，按默认值0处理；&lt;br/&gt;当length为异常值时， length等于属性字符串在start后的实际长度；&lt;br/&gt;当StyledStringKey与StyledStringValue不匹配时，styles不生效。 |
+| value | string \| [ImageAttachment](arkts-arkui-styledstring-imageattachment-c.md) \| [CustomSpan](arkts-arkui-styledstring-customspan-c.md) | 是 | 属性字符串文本内容。<br/>**说明：** <br/>当value的类型为ImageAttachment或 CustomSpan时，styles参数不生效。<br/>需要设置styles时，通过[setStyle](#setstyle)等方法实现。 |
+| styles | Array&lt;[StyleOptions](arkts-arkui-styledstring-styleoptions-i.md)&gt; | 否 | 属性字符串初始化选项。<br/>**说明：** <br/>start为异常值时，按默认值0处理；<br/>当length为异常值时， length等于属性字符串在start后的实际长度；<br/>当StyledStringKey与StyledStringValue不匹配时，styles不生效。 |
 
 ## insertString
 
@@ -97,7 +97,7 @@ insertString(start: int, other: string): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -111,14 +111,14 @@ insertString(start: int, other: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| start | int | 是 | 插入位置的下标。&lt;br/&gt;取值范围：大于等于0。 |
-| other | string | 是 | 插入的新文本内容。&lt;br/&gt;**说明：** &lt;br/&gt;插入的字符串使用的是start-1位置字符的样式。若start-1位置字符未设置样式，则使用start位置字符样式。 |
+| start | int | 是 | 插入位置的下标。<br/>取值范围：大于等于0。 |
+| other | string | 是 | 插入的新文本内容。<br/>**说明：** <br/>插入的字符串使用的是start-1位置字符的样式。若start-1位置字符未设置样式，则使用start位置字符样式。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: &lt;br&gt; 1. Mandatory parameters are left unspecified. &lt;br&gt; 2. Incorrect parameters types. &lt;br&gt; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## insertStyledString
 
@@ -130,7 +130,7 @@ insertStyledString(start: int, other: StyledString): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -144,14 +144,14 @@ insertStyledString(start: int, other: StyledString): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| start | int | 是 | 开始插入位置的下标。&lt;br/&gt;取值范围：大于等于0。 |
+| start | int | 是 | 开始插入位置的下标。<br/>取值范围：大于等于0。 |
 | other | [StyledString](arkts-arkui-styledstring-styledstring-c.md) | 是 | 新的属性字符串对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: &lt;br&gt; 1. Mandatory parameters are left unspecified. &lt;br&gt; 2. Incorrect parameters types. &lt;br&gt; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## removeString
 
@@ -159,11 +159,11 @@ insertStyledString(start: int, other: StyledString): void
 removeString(start: int, length: int): void
 ```
 
-移除指定范围的字符串。 当属性字符串中包含图片或[CustomSpan](arkts-arkui-styledstring-customspan-c.md#CustomSpan)时，同样生效。
+移除指定范围的字符串。 当属性字符串中包含图片或[CustomSpan](arkts-arkui-styledstring-customspan-c.md#customspan)时，同样生效。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -177,14 +177,14 @@ removeString(start: int, length: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| start | int | 是 | 指定范围的下标。&lt;br/&gt;取值范围：大于等于0。 |
-| length | int | 是 | 指定范围的长度。&lt;br/&gt;取值范围：大于等于0。 |
+| start | int | 是 | 指定范围的下标。<br/>取值范围：大于等于0。 |
+| length | int | 是 | 指定范围的长度。<br/>取值范围：大于等于0。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: &lt;br&gt; 1. Mandatory parameters are left unspecified. &lt;br&gt; 2. Incorrect parameters types. &lt;br&gt; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## removeStyle
 
@@ -196,7 +196,7 @@ removeStyle(start: int, length: int, styledKey: StyledStringKey): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -210,15 +210,15 @@ removeStyle(start: int, length: int, styledKey: StyledStringKey): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| start | int | 是 | 指定范围开始位置的下标。&lt;br/&gt;取值范围：大于等于0。 |
-| length | int | 是 | 指定范围的长度。&lt;br/&gt;取值范围：大于等于0。 |
+| start | int | 是 | 指定范围开始位置的下标。<br/>取值范围：大于等于0。 |
+| length | int | 是 | 指定范围的长度。<br/>取值范围：大于等于0。 |
 | styledKey | [StyledStringKey](arkts-arkui-styledstring-styledstringkey-e.md) | 是 | 样式类型枚举值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: &lt;br&gt; 1. Mandatory parameters are left unspecified. &lt;br&gt; 2. Incorrect parameters types. &lt;br&gt; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## removeStyles
 
@@ -230,7 +230,7 @@ removeStyles(start: int, length: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -244,14 +244,14 @@ removeStyles(start: int, length: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| start | int | 是 | 指定范围开始位置的下标。&lt;br/&gt;取值范围：大于等于0。 |
-| length | int | 是 | 指定范围的长度。&lt;br/&gt;取值范围：大于等于0。 |
+| start | int | 是 | 指定范围开始位置的下标。<br/>取值范围：大于等于0。 |
+| length | int | 是 | 指定范围的长度。<br/>取值范围：大于等于0。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: &lt;br&gt; 1. Mandatory parameters are left unspecified. &lt;br&gt; 2. Incorrect parameters types. &lt;br&gt; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## replaceString
 
@@ -263,7 +263,7 @@ replaceString(start: int, length: int, other: string): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -277,15 +277,15 @@ replaceString(start: int, length: int, other: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| start | int | 是 | 指定范围的下标。&lt;br/&gt;取值范围：大于等于0。 |
-| length | int | 是 | 指定范围的长度。&lt;br/&gt;取值范围：大于等于0。 |
-| other | string | 是 | 替换的新文本内容。&lt;br/&gt;**说明：** &lt;br/&gt;替换的字符串使用的是start位置字符的样式。 |
+| start | int | 是 | 指定范围的下标。<br/>取值范围：大于等于0。 |
+| length | int | 是 | 指定范围的长度。<br/>取值范围：大于等于0。 |
+| other | string | 是 | 替换的新文本内容。<br/>**说明：** <br/>替换的字符串使用的是start位置字符的样式。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: &lt;br&gt; 1. Mandatory parameters are left unspecified. &lt;br&gt; 2. Incorrect parameters types. &lt;br&gt; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## replaceStyle
 
@@ -297,7 +297,7 @@ replaceStyle(spanStyle: SpanStyle): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -311,13 +311,13 @@ replaceStyle(spanStyle: SpanStyle): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| spanStyle | [SpanStyle](arkts-arkui-styledstring-spanstyle-i.md) | 是 | 样式对象。&lt;br/&gt;**说明：** &lt;br/&gt;默认清空原有样式，替换为新样式。&lt;br/&gt;当SpanStyle的styledKey为IMAGE或 CUSTOM_SPAN时，只有当start的位置当前是image或CustomSpan且长度为1，才会生效，其余情况无效果。 |
+| spanStyle | [SpanStyle](arkts-arkui-styledstring-spanstyle-i.md) | 是 | 样式对象。<br/>**说明：** <br/>默认清空原有样式，替换为新样式。<br/>当SpanStyle的styledKey为IMAGE或 CUSTOM_SPAN时，只有当start的位置当前是image或CustomSpan且长度为1，才会生效，其余情况无效果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: &lt;br&gt; 1. Mandatory parameters are left unspecified. &lt;br&gt; 2. Incorrect parameters types. &lt;br&gt; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## replaceStyledString
 
@@ -329,7 +329,7 @@ replaceStyledString(start: int, length: int, other: StyledString): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -343,15 +343,15 @@ replaceStyledString(start: int, length: int, other: StyledString): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| start | int | 是 | 指定范围开始位置的下标。&lt;br/&gt;取值范围：大于等于0。 |
-| length | int | 是 | 指定范围的长度。&lt;br/&gt;取值范围：大于等于0。 |
+| start | int | 是 | 指定范围开始位置的下标。<br/>取值范围：大于等于0。 |
+| length | int | 是 | 指定范围的长度。<br/>取值范围：大于等于0。 |
 | other | [StyledString](arkts-arkui-styledstring-styledstring-c.md) | 是 | 新的属性字符串对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: &lt;br&gt; 1. Mandatory parameters are left unspecified. &lt;br&gt; 2. Incorrect parameters types. &lt;br&gt; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## setStyle
 
@@ -363,7 +363,7 @@ setStyle(spanStyle: SpanStyle): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -377,7 +377,7 @@ setStyle(spanStyle: SpanStyle): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| spanStyle | [SpanStyle](arkts-arkui-styledstring-spanstyle-i.md) | 是 | 样式对象。&lt;br/&gt;默认不清空原有样式，叠加新样式。如果StyledStringValue类型相同，则新样式将覆盖旧样式。&lt;br/&gt;当SpanStyle的 styledKey为IMAGE或CUSTOM_SPAN时，只有当start的位置当前是image或CustomSpan且长度为1，才会生效，其余情况无效果。 |
+| spanStyle | [SpanStyle](arkts-arkui-styledstring-spanstyle-i.md) | 是 | 样式对象。<br/>默认不清空原有样式，叠加新样式。如果StyledStringValue类型相同，则新样式将覆盖旧样式。<br/>当SpanStyle的 styledKey为IMAGE或CUSTOM_SPAN时，只有当start的位置当前是image或CustomSpan且长度为1，才会生效，其余情况无效果。 |
 
 **错误码：**
 

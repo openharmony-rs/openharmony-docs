@@ -10,7 +10,7 @@ function getCallTransferInfo(type: CallTransferType, number: string): Promise<Ca
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -59,7 +59,7 @@ call.getCallTransferInfo(type, number)
         console.info(`getCallTransferInfo success, data->${JSON.stringify(data)}`);
     })
     .catch((err:BusinessError) => {
-        console.error(`getCallTransferInfo fail, err->${JSON.stringify(err)}`);
+        console.error(`getCallTransferInfo fail, 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
     });
 ```
 

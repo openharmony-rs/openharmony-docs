@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from '@kit.NotificationKit';
+import { notificationManager } from 'notificationManager';
 ```
 
 ## snoozeNotification
@@ -16,7 +16,7 @@ function snoozeNotification(hashCode: string, delayTime: long): Promise<void>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -35,7 +35,7 @@ function snoozeNotification(hashCode: string, delayTime: long): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | hashCode | string | 是 | 需要设置稍后提醒通知的唯一标识。 |
-| delayTime | long | 是 | 稍后提醒的时间间隔。&lt;br&gt;单位：秒。 |
+| delayTime | long | 是 | 稍后提醒的时间间隔。<br>单位：秒。 |
 
 **返回值：**
 

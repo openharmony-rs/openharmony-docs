@@ -10,7 +10,7 @@ Sets timeout configuration for all tasks. Used when task-specific timeout config
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ Sets timeout configuration for all tasks. Used when task-specific timeout config
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [TimeoutOptions](arkts-basicservices-cachedownload-timeoutoptions-i.md) | 否 | Task timeout configuration. &lt;br&gt;Default value: Refer to the default value of TimeoutOptions. |
+| options | [TimeoutOptions](arkts-basicservices-cachedownload-timeoutoptions-i.md) | 否 | Task timeout configuration. <br>Default value: Refer to the default value of TimeoutOptions. |
 
 ## 示例
 

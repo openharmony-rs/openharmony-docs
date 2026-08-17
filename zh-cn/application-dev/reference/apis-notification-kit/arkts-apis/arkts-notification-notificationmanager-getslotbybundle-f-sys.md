@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from '@kit.NotificationKit';
+import { notificationManager } from 'notificationManager';
 ```
 
 ## getSlotByBundle
@@ -12,11 +12,11 @@ import { notificationManager } from '@kit.NotificationKit';
 function getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise<NotificationSlot>
 ```
 
-获取指定应用指定类型的通知渠道。使用Promise异步回调。 获取前需要先通过[addSlot](arkts-notification-notificationmanager-addslot-f.md#addSlot)创建通知渠道。
+获取指定应用指定类型的通知渠道。使用Promise异步回调。 获取前需要先通过[addSlot](arkts-notification-notificationmanager-addslot-f.md#addslot)创建通知渠道。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -62,11 +62,11 @@ function getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise<Noti
 function getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise<NotificationSlot|null>
 ```
 
-获取指定应用指定类型的通知渠道。使用Promise异步回调。 获取前需要先通过[addSlot](arkts-notification-notificationmanager-addslot-f.md#addSlot)创建通知渠道。
+获取指定应用指定类型的通知渠道。使用Promise异步回调。 获取前需要先通过[addSlot](arkts-notification-notificationmanager-addslot-f.md#addslot)创建通知渠道。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

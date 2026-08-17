@@ -4,7 +4,7 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -20,20 +20,20 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [createClient](arkts-connectivity-ssap-createclient-f.md#createClient) | 创建SSAP客户端实例。 |
-| [createServer](arkts-connectivity-ssap-createserver-f.md#createServer) | 创建SSAP服务端实例。 |
+| [createClient](arkts-connectivity-ssap-createclient-f.md#createclient) | 创建SSAP客户端实例。 |
+| [createServer](arkts-connectivity-ssap-createserver-f.md#createserver) | 创建SSAP服务端实例。 |
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
-| [Client](arkts-connectivity-ssap-client-i.md) | 管理SSAP客户端。在调用ssap客户端方法之前，必须使用[createClient](arkts-connectivity-ssap-createclient-f.md#createClient)创建ssap客户端实例。 |
+| [Client](arkts-connectivity-ssap-client-i.md) | 管理SSAP客户端。在调用ssap客户端方法之前，必须使用[createClient](arkts-connectivity-ssap-createclient-f.md#createclient)创建ssap客户端实例。 |
 | [ConnectionChangeState](arkts-connectivity-ssap-connectionchangestate-i.md) | 描述SSAP连接状态。 |
 | [Property](arkts-connectivity-ssap-property-i.md) | SSAP属性。 |
 | [PropertyDescriptor](arkts-connectivity-ssap-propertydescriptor-i.md) | 属性的SSAP描述符。 |
 | [PropertyReadRequest](arkts-connectivity-ssap-propertyreadrequest-i.md) | SSAP客户端属性读请求参数说明。 |
 | [PropertyWriteRequest](arkts-connectivity-ssap-propertywriterequest-i.md) | SSAP客户端属性写请求参数说明。 |
-| [Server](arkts-connectivity-ssap-server-i.md) | 管理SSAP服务端。在调用SSAP服务端方法之前，必须使用[createServer](arkts-connectivity-ssap-createserver-f.md#createServer)创建SSAP服务端实例。 |
+| [Server](arkts-connectivity-ssap-server-i.md) | 管理SSAP服务端。在调用SSAP服务端方法之前，必须使用[createServer](arkts-connectivity-ssap-createserver-f.md#createserver)创建SSAP服务端实例。 |
 | [ServerResponse](arkts-connectivity-ssap-serverresponse-i.md) | 服务端对指定读或写请求的响应的参数。 |
 | [Service](arkts-connectivity-ssap-service-i.md) | SSAP服务。 |
 
@@ -42,7 +42,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [Client](arkts-connectivity-ssap-client-i-sys.md) | 管理SSAP客户端。在调用ssap客户端方法之前，必须使用[createClient](arkts-connectivity-ssap-createclient-f.md#createClient)创建ssap客户端实例。 |
+| [Client](arkts-connectivity-ssap-client-i-sys.md) | 管理SSAP客户端。在调用ssap客户端方法之前，必须使用[createClient](arkts-connectivity-ssap-createclient-f.md#createclient)创建ssap客户端实例。 |
 | [Event](arkts-connectivity-ssap-event-i-sys.md) | SSAP事件。 |
 | [Method](arkts-connectivity-ssap-method-i-sys.md) | SSAP方法。 |
 | [Service](arkts-connectivity-ssap-service-i-sys.md) | SSAP服务。 |

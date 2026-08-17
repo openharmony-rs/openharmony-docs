@@ -1,12 +1,12 @@
 # TextEditControllerEx
 
-文本扩展编辑控制器。 继承自[TextBaseController](arkts-arkui-textcommon-textbasecontroller-i.md#TextBaseController)。
+文本扩展编辑控制器。 继承自[TextBaseController](arkts-arkui-textcommon-textbasecontroller-i.md#textbasecontroller)。
 
-**继承/实现关系：** TextEditControllerEx extends [TextBaseController](arkts-arkui-textcommon-textbasecontroller-i.md#TextBaseController)
+**继承/实现关系：** TextEditControllerEx extends [TextBaseController](arkts-arkui-textcommon-textbasecontroller-i.md#textbasecontroller)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ getCaretOffset(): int | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -48,7 +48,7 @@ getPreviewText(): PreviewText | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -74,7 +74,7 @@ isEditing(): boolean | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -100,7 +100,7 @@ setCaretOffset(offset: int): boolean | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -120,7 +120,7 @@ setCaretOffset(offset: int): boolean | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 光标是否设置成功。&lt;br/&gt;true表示光标设置成功，false表示设置失败。 |
+| boolean | 光标是否设置成功。<br/>true表示光标设置成功，false表示设置失败。 |
 
 ## stopEditing
 
@@ -132,7 +132,7 @@ stopEditing(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

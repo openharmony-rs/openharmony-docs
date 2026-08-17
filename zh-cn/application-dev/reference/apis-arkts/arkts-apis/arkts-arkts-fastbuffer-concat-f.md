@@ -10,7 +10,7 @@ function concat(list: FastBuffer[] | Uint8Array[], totalLength?: number): FastBu
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -25,7 +25,7 @@ function concat(list: FastBuffer[] | Uint8Array[], totalLength?: number): FastBu
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | list | [FastBuffer](arkts-arkts-fastbuffer-fastbuffer-c.md)[] \| Uint8Array[] | 是 | 待拼接的FastBuffer或Uint8Array实例数组，数组中所有对象的内容将被依次复制到新的FastBuffer对象中。 |
-| totalLength | number | 否 | 需要复制的总字节长度，默认值为数组中所有对象的长度总和。取值范围：0 <= totalLength <= UINT32_MAX。 |
+| totalLength | number | 否 | 需要复制的总字节长度，默认值为数组中所有对象的长度总和。取值范围：0 &lt;= totalLength &lt;= UINT32_MAX。 |
 
 **返回值：**
 

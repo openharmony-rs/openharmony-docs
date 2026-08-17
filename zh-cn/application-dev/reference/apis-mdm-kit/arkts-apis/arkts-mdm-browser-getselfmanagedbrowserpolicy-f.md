@@ -10,7 +10,7 @@ function getSelfManagedBrowserPolicy(): ArrayBuffer
 
 **起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+**ArkTS模式：** 起始版本为15。
 
 **废弃版本：** -1
 
@@ -38,7 +38,7 @@ try {
   let decoder: util.TextDecoder = util.TextDecoder.create('utf-8');
   let stringData: string = decoder.decodeToString(intBuffer);
   console.info(`Succeeded in getting self managed browser policy, result : ${stringData}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to get self managed browser policy. Code is ${err.code}, message is ${err.message}`);
 }
 ```

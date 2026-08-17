@@ -1,12 +1,12 @@
 # MetadataOutput
 
-metadata流。继承[CameraOutput](arkts-camera-camera-cameraoutput-i.md#CameraOutput)。
+metadata流。继承[CameraOutput](arkts-camera-camera-cameraoutput-i.md#cameraoutput)。
 
-**继承/实现关系：** MetadataOutput extends [CameraOutput](arkts-camera-camera-cameraoutput-i.md#CameraOutput)
+**继承/实现关系：** MetadataOutput extends [CameraOutput](arkts-camera-camera-cameraoutput-i.md#cameraoutput)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ addMetadataObjectTypes(types: Array<MetadataObjectType>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -61,7 +61,7 @@ removeMetadataObjectTypes(types: Array<MetadataObjectType>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

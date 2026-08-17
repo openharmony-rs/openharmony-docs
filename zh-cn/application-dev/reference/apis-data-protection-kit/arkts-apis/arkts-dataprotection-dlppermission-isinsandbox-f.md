@@ -10,7 +10,7 @@ function isInSandbox(): Promise<boolean>
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -54,7 +54,7 @@ function isInSandbox(callback: AsyncCallback<boolean>): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -83,7 +83,7 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 
 dlpPermission.isInSandbox((err, isInSandbox) => {
   if (err) {
-    console.error('isInSandbox error', err.code, err.message);
+    console.error(`Failed to check sandbox status. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('isInSandbox：', JSON.stringify(isInSandbox));
   }

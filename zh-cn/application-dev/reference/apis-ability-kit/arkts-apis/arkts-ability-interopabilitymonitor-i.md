@@ -1,0 +1,230 @@
+# InteropAbilityMonitor
+
+本模块提供监听指定[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md#uiability)生命周期状态变化的能力。开发者可以将InteropAbilityMonitor作为abilityDelegator. addInteropAbilityMonitorSync 的入参来注册监听。
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 起始版本为26.0.0。
+
+**废弃版本：** -1
+
+<!--Device-unnamed-export interface InteropAbilityMonitor--><!--Device-unnamed-export interface InteropAbilityMonitor-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## abilityName
+
+```TypeScript
+abilityName: string
+```
+
+被监听的UIAbility对象名称。
+
+**类型：** string
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 起始版本为26.0.0。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-InteropAbilityMonitor-abilityName: string--><!--Device-InteropAbilityMonitor-abilityName: string-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## moduleName
+
+```TypeScript
+moduleName?: string
+```
+
+被监听的UIAbility对象所属模块名称。
+
+**类型：** string
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 起始版本为26.0.0。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-InteropAbilityMonitor-moduleName?: string--><!--Device-InteropAbilityMonitor-moduleName?: string-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## onAbilityBackground
+
+```TypeScript
+onAbilityBackground?: AbilityCallbackFn
+```
+
+UIAbility对象状态变成后台时，触发该回调函数。
+
+**类型：** [AbilityCallbackFn](arkts-ability-abilitycallbackfn-t.md)
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 起始版本为26.0.0。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-InteropAbilityMonitor-onAbilityBackground?: AbilityCallbackFn--><!--Device-InteropAbilityMonitor-onAbilityBackground?: AbilityCallbackFn-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## onAbilityCreate
+
+```TypeScript
+onAbilityCreate?: AbilityCallbackFn
+```
+
+UIAbility对象被创建时，触发该回调函数。
+
+**类型：** [AbilityCallbackFn](arkts-ability-abilitycallbackfn-t.md)
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 起始版本为26.0.0。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-InteropAbilityMonitor-onAbilityCreate?: AbilityCallbackFn--><!--Device-InteropAbilityMonitor-onAbilityCreate?: AbilityCallbackFn-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## onAbilityDestroy
+
+```TypeScript
+onAbilityDestroy?: AbilityCallbackFn
+```
+
+UIAbility对象被销毁前，触发该回调函数。
+
+**类型：** [AbilityCallbackFn](arkts-ability-abilitycallbackfn-t.md)
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 起始版本为26.0.0。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-InteropAbilityMonitor-onAbilityDestroy?: AbilityCallbackFn--><!--Device-InteropAbilityMonitor-onAbilityDestroy?: AbilityCallbackFn-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## onAbilityForeground
+
+```TypeScript
+onAbilityForeground?: AbilityCallbackFn
+```
+
+UIAbility对象状态变成前台时，触发该回调函数。
+
+**类型：** [AbilityCallbackFn](arkts-ability-abilitycallbackfn-t.md)
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 起始版本为26.0.0。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-InteropAbilityMonitor-onAbilityForeground?: AbilityCallbackFn--><!--Device-InteropAbilityMonitor-onAbilityForeground?: AbilityCallbackFn-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## onWindowStageCreate
+
+```TypeScript
+onWindowStageCreate?: AbilityCallbackFn
+```
+
+当WindowStage实例被创建时，触发该回调函数。
+
+**类型：** [AbilityCallbackFn](arkts-ability-abilitycallbackfn-t.md)
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 起始版本为26.0.0。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-InteropAbilityMonitor-onWindowStageCreate?: AbilityCallbackFn--><!--Device-InteropAbilityMonitor-onWindowStageCreate?: AbilityCallbackFn-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## onWindowStageDestroy
+
+```TypeScript
+onWindowStageDestroy?: AbilityCallbackFn
+```
+
+当WindowStage被销毁前，触发该回调函数。
+
+**类型：** [AbilityCallbackFn](arkts-ability-abilitycallbackfn-t.md)
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 起始版本为26.0.0。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-InteropAbilityMonitor-onWindowStageDestroy?: AbilityCallbackFn--><!--Device-InteropAbilityMonitor-onWindowStageDestroy?: AbilityCallbackFn-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## onWindowStageRestore
+
+```TypeScript
+onWindowStageRestore?: AbilityCallbackFn
+```
+
+当UIAbility跨端迁移时，目标端UIAbility恢复页面栈时，触发该回调函数。
+
+**类型：** [AbilityCallbackFn](arkts-ability-abilitycallbackfn-t.md)
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 起始版本为26.0.0。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-InteropAbilityMonitor-onWindowStageRestore?: AbilityCallbackFn--><!--Device-InteropAbilityMonitor-onWindowStageRestore?: AbilityCallbackFn-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+

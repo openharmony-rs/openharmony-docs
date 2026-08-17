@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,21 +18,21 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [compressFile](arkts-basicservices-zlib-compressfile-f.md#compressFile) | 压缩文件，压缩的结果。使用callback异步回调。 |
-| [compressFile](arkts-basicservices-zlib-compressfile-f.md#compressFile) | 压缩文件，压缩的结果。使用Promise异步回调。 |
-| [compressFiles](arkts-basicservices-zlib-compressfiles-f.md#compressFiles) | 压缩指定的多个文件。使用Promise异步回调。 |
-| [createChecksum](arkts-basicservices-zlib-createchecksum-f.md#createChecksum) | 创建校验对象。使用Promise异步回调。 |
-| [createChecksumSync](arkts-basicservices-zlib-createchecksumsync-f.md#createChecksumSync) | 创建校验对象。成功时返回Checksum对象实例。 |
-| [createGZip](arkts-basicservices-zlib-creategzip-f.md#createGZip) | 创建GZip对象。使用Promise异步回调。 |
-| [createGZipSync](arkts-basicservices-zlib-creategzipsync-f.md#createGZipSync) | 创建GZip对象。成功时返回GZip对象实例。 |
-| [createZip](arkts-basicservices-zlib-createzip-f.md#createZip) | 创建压缩解压缩对象实例。使用Promise异步回调。 |
-| [createZipSync](arkts-basicservices-zlib-createzipsync-f.md#createZipSync) | 创建压缩解压缩对象实例，成功时返回压缩解压缩对象实例。 |
-| [decompressFile](arkts-basicservices-zlib-decompressfile-f.md#decompressFile) | 解压文件，解压的结果。使用callback异步回调。 |
-| [decompressFile](arkts-basicservices-zlib-decompressfile-f.md#decompressFile) | 解压文件，解压的结果。使用callback异步回调。 |
-| [decompressFile](arkts-basicservices-zlib-decompressfile-f.md#decompressFile) | 解压文件，解压的结果。使用Promise异步回调。 |
-| [getOriginalSize](arkts-basicservices-zlib-getoriginalsize-f.md#getOriginalSize) | 获取压缩文件的原始大小。使用Promise异步回调。 |
-| [unzipFile](arkts-basicservices-zlib-unzipfile-f.md#unzipFile) | 解压文件，解压完成后返回执行结果。使用Promise异步回调。 |
-| [zipFile](arkts-basicservices-zlib-zipfile-f.md#zipFile) | 压缩接口，压缩完成后返回执行结果。使用Promise异步回调。 |
+| [compressFile](arkts-basicservices-zlib-compressfile-f.md#compressfile) | 压缩文件，压缩的结果。使用callback异步回调。 |
+| [compressFile](arkts-basicservices-zlib-compressfile-f.md#compressfile) | 压缩文件，压缩的结果。使用Promise异步回调。 |
+| [compressFiles](arkts-basicservices-zlib-compressfiles-f.md#compressfiles) | 压缩指定的多个文件。使用Promise异步回调。 |
+| [createChecksum](arkts-basicservices-zlib-createchecksum-f.md#createchecksum) | 创建校验对象。使用Promise异步回调。 |
+| [createChecksumSync](arkts-basicservices-zlib-createchecksumsync-f.md#createchecksumsync) | 创建校验对象。成功时返回Checksum对象实例。 |
+| [createGZip](arkts-basicservices-zlib-creategzip-f.md#creategzip) | 创建GZip对象。使用Promise异步回调。 |
+| [createGZipSync](arkts-basicservices-zlib-creategzipsync-f.md#creategzipsync) | 创建GZip对象。成功时返回GZip对象实例。 |
+| [createZip](arkts-basicservices-zlib-createzip-f.md#createzip) | 创建压缩解压缩对象实例。使用Promise异步回调。 |
+| [createZipSync](arkts-basicservices-zlib-createzipsync-f.md#createzipsync) | 创建压缩解压缩对象实例，成功时返回压缩解压缩对象实例。 |
+| [decompressFile](arkts-basicservices-zlib-decompressfile-f.md#decompressfile) | 解压文件，解压的结果。使用callback异步回调。 |
+| [decompressFile](arkts-basicservices-zlib-decompressfile-f.md#decompressfile) | 解压文件，解压的结果。使用callback异步回调。 |
+| [decompressFile](arkts-basicservices-zlib-decompressfile-f.md#decompressfile) | 解压文件，解压的结果。使用Promise异步回调。 |
+| [getOriginalSize](arkts-basicservices-zlib-getoriginalsize-f.md#getoriginalsize) | 获取压缩文件的原始大小。使用Promise异步回调。 |
+| [unzipFile](arkts-basicservices-zlib-unzipfile-f.md#unzipfile) | 解压文件，解压完成后返回执行结果。使用Promise异步回调。 |
+| [zipFile](arkts-basicservices-zlib-zipfile-f.md#zipfile) | 压缩接口，压缩完成后返回执行结果。使用Promise异步回调。 |
 
 ### 接口
 
@@ -57,12 +57,12 @@
 | [CompressFlushMode](arkts-basicservices-zlib-compressflushmode-e.md) | 压缩刷新模式。 |
 | [CompressLevel](arkts-basicservices-zlib-compresslevel-e.md) | 压缩等级。 |
 | [CompressMethod](arkts-basicservices-zlib-compressmethod-e.md) | 压缩模式。 |
-| [CompressStrategy](arkts-basicservices-zlib-compressstrategy-e.md) | CompressStrategy作为[Options](arkts-basicservices-zlib-options-i.md#Options)的一个属性，用于指定压缩时的压缩策略。 |
+| [CompressStrategy](arkts-basicservices-zlib-compressstrategy-e.md) | CompressStrategy作为[Options](arkts-basicservices-zlib-options-i.md#options)的一个属性，用于指定压缩时的压缩策略。 |
 | [ErrorCode](arkts-basicservices-zlib-errorcode-e.md) | 错误码。 |
 | [MemLevel](arkts-basicservices-zlib-memlevel-e.md) | 内存等级。 |
 | [OffsetReferencePoint](arkts-basicservices-zlib-offsetreferencepoint-e.md) | 偏移参考点。 |
-| [ParallelStrategy](arkts-basicservices-zlib-parallelstrategy-e.md) | ParallelStrategy作为[Options](arkts-basicservices-zlib-options-i.md#Options)的一个属性，用于指定压缩或解压时的串行或并行策略。 |
-| [PathSeparatorStrategy](arkts-basicservices-zlib-pathseparatorstrategy-e.md) | PathSeparatorStrategy作为[Options](arkts-basicservices-zlib-options-i.md#Options)的一个属性，用于指定解压时目标压缩包内文件路径中分隔符的处理策略。 |
+| [ParallelStrategy](arkts-basicservices-zlib-parallelstrategy-e.md) | ParallelStrategy作为[Options](arkts-basicservices-zlib-options-i.md#options)的一个属性，用于指定压缩或解压时的串行或并行策略。 |
+| [PathSeparatorStrategy](arkts-basicservices-zlib-pathseparatorstrategy-e.md) | PathSeparatorStrategy作为[Options](arkts-basicservices-zlib-options-i.md#options)的一个属性，用于指定解压时目标压缩包内文件路径中分隔符的处理策略。 |
 | [ReturnStatus](arkts-basicservices-zlib-returnstatus-e.md) | 压缩/解压缩函数的返回代码。 |
 
 ### 类型

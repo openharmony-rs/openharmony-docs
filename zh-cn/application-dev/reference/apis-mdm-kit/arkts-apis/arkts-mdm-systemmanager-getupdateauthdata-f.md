@@ -10,7 +10,7 @@ function getUpdateAuthData(admin: Want): Promise<string>
 
 **起始版本：** 19
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+**ArkTS模式：** 起始版本为19。
 
 **废弃版本：** -1
 

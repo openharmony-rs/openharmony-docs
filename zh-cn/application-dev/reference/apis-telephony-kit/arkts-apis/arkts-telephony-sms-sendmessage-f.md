@@ -10,11 +10,11 @@ function sendMessage(options: SendMessageOptions): void
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 10
 
-**替代接口：** [sendShortMessage](arkts-telephony-sms-sendshortmessage-f.md#sendShortMessage)
+**替代接口：** [sendShortMessage](arkts-telephony-sms-sendshortmessage-f.md#sendshortmessage)
 
 **需要权限：** ohos.permission.SEND_MESSAGES
 
@@ -26,7 +26,7 @@ function sendMessage(options: SendMessageOptions): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [SendMessageOptions](arkts-telephony-sms-sendmessageoptions-i.md) | 是 | 发送短信的参数和回调，参考[SendMessageOptions](arkts-telephony-sms-sendmessageoptions-i.md#SendMessageOptions)。 |
+| options | [SendMessageOptions](arkts-telephony-sms-sendmessageoptions-i.md) | 是 | 发送短信的参数和回调，参考[SendMessageOptions](arkts-telephony-sms-sendmessageoptions-i.md#sendmessageoptions)。 |
 
 **错误码：**
 
@@ -46,10 +46,18 @@ import { sms } from '@kit.TelephonyKit';
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
 let sendCallback: AsyncCallback<sms.ISendShortMessageCallback> = (err: BusinessError, data: sms.ISendShortMessageCallback) => {
-    console.info(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`); 
+    if (err) {
+        console.error('sendCallback: err->${JSON.stringify(err)}');
+        return;
+    }
+    console.info('sendCallback: data->${JSON.stringify(data)}');
 };
 let deliveryCallback: AsyncCallback<sms.IDeliveryShortMessageCallback> = (err: BusinessError, data: sms.IDeliveryShortMessageCallback) => {
-    console.info(`deliveryCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`); 
+    if (err) {
+        console.error('deliveryCallback: err->${JSON.stringify(err)}');
+        return;
+    }
+    console.info('deliveryCallback: data->${JSON.stringify(data)}'); 
 };
 let options: sms.SendMessageOptions = {
     slotId: 0,

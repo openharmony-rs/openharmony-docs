@@ -6,7 +6,7 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ analyzerConfig(config: ImageAnalyzerConfig)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -52,7 +52,7 @@ autoPlay(value: boolean)
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -66,7 +66,7 @@ autoPlay(value: boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | boolean | 是 | 是否自动播放。 &lt;br&gt;true：开启自动播放；false：关闭自动播放。 &lt;br&gt;默认值：false |
+| value | boolean | 是 | 是否自动播放。 <br>true：开启自动播放；false：关闭自动播放。 <br>默认值：false |
 
 ## controls
 
@@ -78,7 +78,7 @@ controls(value: boolean)
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -92,7 +92,7 @@ controls(value: boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | boolean | 是 | 控制视频播放的控制栏是否显示。 &lt;br&gt;true：控制栏显示；false：控制栏不显示。 &lt;br&gt;默认值：true &lt;br&gt;**说明：** &lt;br&gt;如需使用[enableAnalyzer](#enableAnalyzer)功能进行AI分析，需设置为false使用自定义控制栏。 |
+| value | boolean | 是 | 控制视频播放的控制栏是否显示。 <br>true：控制栏显示；false：控制栏不显示。 <br>默认值：true <br>**说明：** <br>如需使用[enableAnalyzer](#enableanalyzer)功能进行AI分析，需设置为false使用自定义控制栏。 |
 
 ## enableAnalyzer
 
@@ -104,7 +104,7 @@ enableAnalyzer(enable: boolean)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -120,7 +120,7 @@ enableAnalyzer(enable: boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enable | boolean | 是 | 是否启用AI分析功能。 &lt;br&gt;true：开启AI分析功能；false：关闭AI分析功能。 &lt;br&gt;默认值：false &lt;br&gt;**说明：** &lt;br&gt;不支持与overlay属性同时使用，两者同时设置时overlay中 [CustomBuilder](../../../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8)属性会失效。 |
+| enable | boolean | 是 | 是否启用AI分析功能。 <br>true：开启AI分析功能；false：关闭AI分析功能。 <br>默认值：false <br>**说明：** <br>不支持与overlay属性同时使用，两者同时设置时overlay中 [CustomBuilder](../../../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8)属性会失效。 |
 
 ## enableShortcutKey
 
@@ -132,7 +132,7 @@ enableShortcutKey(enabled: boolean)
 
 **起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+**ArkTS模式：** 起始版本为15。
 
 **废弃版本：** -1
 
@@ -148,7 +148,7 @@ enableShortcutKey(enabled: boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | boolean | 是 | 是否启用快捷键响应。 &lt;br&gt;true：开启快捷键响应；false：关闭快捷键响应。 &lt;br&gt;默认值：false &lt;br&gt;**说明：** &lt;br&gt;enabled设置为false且controls属性设置为true时，仍然可以通过左右方向键控制进度条快进或快退。 |
+| enabled | boolean | 是 | 是否启用快捷键响应。 <br>true：开启快捷键响应；false：关闭快捷键响应。 <br>默认值：false <br>**说明：** <br>enabled设置为false且controls属性设置为true时，仍然可以通过左右方向键控制进度条快进或快退。 |
 
 ## loop
 
@@ -160,7 +160,7 @@ loop(value: boolean)
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -174,7 +174,7 @@ loop(value: boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | boolean | 是 | 是否单个视频循环播放。 &lt;br&gt;true：开启循环播放；false：关闭循环播放。 &lt;br&gt;默认值：false |
+| value | boolean | 是 | 是否单个视频循环播放。 <br>true：开启循环播放；false：关闭循环播放。 <br>默认值：false |
 
 ## muted
 
@@ -186,7 +186,7 @@ muted(value: boolean)
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -200,7 +200,7 @@ muted(value: boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | boolean | 是 | 视频是否静音。 &lt;br&gt;true：开启静音；false：关闭静音。 &lt;br&gt;默认值：false |
+| value | boolean | 是 | 视频是否静音。 <br>true：开启静音；false：关闭静音。 <br>默认值：false |
 
 ## objectFit
 
@@ -212,7 +212,7 @@ objectFit(value: ImageFit)
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -226,7 +226,7 @@ objectFit(value: ImageFit)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ImageFit | 是 | 视频填充模式。 &lt;br&gt;默认值：ImageFit.Cover &lt;br&gt;约束：不支持ImageFit类型中的枚举值MATRIX，若设置，则作用效果与ImageFit.Cover一致。 &lt;br&gt;异常值：若设置异常值undefined、null，或不在ImageFit枚举范围内的值，作用效果均与ImageFit.Cover一致。 |
+| value | ImageFit | 是 | 视频填充模式。 <br>默认值：ImageFit.Cover <br>约束：不支持ImageFit类型中的枚举值MATRIX，若设置，则作用效果与ImageFit.Cover一致。 <br>异常值：若设置异常值undefined、null，或不在ImageFit枚举范围内的值，作用效果均与ImageFit.Cover一致。 |
 
 ## onError
 
@@ -238,7 +238,7 @@ onError(event: VoidCallback | import('../api/@ohos.base').ErrorCallback)
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -252,7 +252,7 @@ onError(event: VoidCallback | import('../api/@ohos.base').ErrorCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | VoidCallback \| import('../api/@ohos.base').ErrorCallback | 是 | 视频播放失败时的回调函数。其中 [ErrorCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-errorcallback-t.md#ErrorCallback)类型入参的回调函数用于接收异常信息，回调返回的错误码详细介绍请参见 [Video组件错误码](../errorcode-video.md)和 [Media错误码](../../apis-media-kit/errorcode-media.md)。<br>**起始版本：** 20 |
+| event | VoidCallback \| import('../api/@ohos.base').ErrorCallback | 是 | 视频播放失败时的回调函数。其中 [ErrorCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-errorcallback-t.md#errorcallback)类型入参的回调函数用于接收异常信息，回调返回的错误码详细介绍请参见 [Video组件错误码](../errorcode-video.md)和 [Media错误码](../../apis-media-kit/errorcode-media.md)。<br>**起始版本：** 20 |
 
 ## onFinish
 
@@ -264,7 +264,7 @@ onFinish(event: VoidCallback)
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -290,7 +290,7 @@ onFullscreenChange(callback: Callback<FullscreenInfo>)
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -316,7 +316,7 @@ onPause(event: VoidCallback)
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -342,7 +342,7 @@ onPrepared(callback: Callback<PreparedInfo>)
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -368,7 +368,7 @@ onSeeked(callback: Callback<PlaybackInfo>)
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -394,7 +394,7 @@ onSeeking(callback: Callback<PlaybackInfo>)
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -420,7 +420,7 @@ onStart(event: VoidCallback)
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -446,7 +446,7 @@ onStop(event: Callback<void>)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -474,7 +474,7 @@ onUpdate(callback: Callback<PlaybackInfo>)
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 

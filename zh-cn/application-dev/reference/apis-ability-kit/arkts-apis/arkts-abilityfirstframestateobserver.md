@@ -7,6 +7,6 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [AbilityFirstFrameStateObserver](arkts-ability-abilityfirstframestateobserver-i-sys.md) | 定义了Ability首帧绘制完成事件监听对象，可以作为 [on](arkts-ability-appmanager-onapplicationstate-f.md#on_applicationState) 的入参，用于监听Ability首帧绘制完成事件。 |
+| [AbilityFirstFrameStateObserver](arkts-ability-abilityfirstframestateobserver-i-sys.md) | 定义了Ability首帧绘制完成事件监听对象，可以作为 [on](arkts-ability-appmanager-onapplicationstate-f.md#onapplicationstate) 的入参，用于监听Ability首帧绘制完成事件。 |
 <!--DelEnd-->
 

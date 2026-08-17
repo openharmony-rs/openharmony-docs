@@ -1,10 +1,10 @@
 # JsGeolocation
 
-Defines the js geolocation request.
+JsGeolocation是Web组件在收到网页地理位置权限请求时，提供给应用的授权响应对象。当网页通过JavaScript调用地理位置接口（如navigator.geolocation）请求获取设备位置信息时，应用需要决定是否授权该 请求。JsGeolocation通过invoke方法允许应用对指定源的网页授予或拒绝地理位置权限，同时可选择将该权限决策保存到系统中，避免后续同一源再次请求时重复弹出授权提示。 JsGeolocation适用于Web组件中网页主动请求地理位置权限的场景。应用需先注册[onGeolocationShow事件](arkts-arkweb-web-attribute.md#ongeolocationshow)，当网页发起地理位置权限请求 时，该事件回调会将JsGeolocation对象传递给应用，应用在回调中调用invoke方法完成授权响应。使用时还需配置"ohos.permission.LOCATION"、" ohos.permission.APPROXIMATELY_LOCATION"权限。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -18,11 +18,11 @@ Defines the js geolocation request.
 constructor()
 ```
 
-Constructor.
+JsGeolocation的构造函数。构造函数本身不直接被应用调用，通常通过[onGeolocationShow事件](arkts-arkweb-web-attribute.md#ongeolocationshow)回调获取JsGeolocation实 例。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -38,11 +38,11 @@ Constructor.
 invoke(origin: string, allow: boolean, retain: boolean): void
 ```
 
-Report the geolocation permission status from users.
+设置网页地理位置权限状态。该方法需在[onGeolocationShow事件](arkts-arkweb-web-attribute.md#ongeolocationshow)回调中调用，用于对发起地理位置权限请求的网页进行授权响应。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -56,7 +56,7 @@ Report the geolocation permission status from users.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| origin | string | 是 | Index of the origin. |
-| allow | boolean | 是 | Geolocation permission status. {@code true} means to allow geolocation permission; {@code false} means to disallow geolocation permission. |
-| retain | boolean | 是 | Whether the geolocation permission status can be saved to the system. {@code true} means to allow the geolocation permission status to be saved to the system; {@code false} means to disallow the geolocation permission status to be saved to the system. You can manage the geolocation permissions saved to the system through [GeolocationPermissions](../../apis-na/arkts-apis/arkts-na-webview-geolocationpermissions-c.md#GeolocationPermissions). |
+| origin | string | 是 | 发起地理位置权限请求的网页源，用于标识特定网站的地理位置请求来源。 <br>origin格式必须遵循RFC 6454中定义的格式。 |
+| allow | boolean | 是 | 设置的地理位置权限状态。 <br>true表示开启地理位置权限，false表示不开启地理位置权限。 |
+| retain | boolean | 是 | 是否允许将地理位置权限状态保存到系统中。可通过 [GeolocationPermissions](../arkts-apis/arkts-arkweb-webview-geolocationpermissions-c.md#geolocationpermissions)接口管理保存到系统的地理位置权限。 <br>true表示保存地理位置权限状态到系统，false表示不保存到系统。 |
 

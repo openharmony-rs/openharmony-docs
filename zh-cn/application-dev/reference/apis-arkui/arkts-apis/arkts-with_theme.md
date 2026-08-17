@@ -39,6 +39,6 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [WithTheme](arkts-arkui-with-theme-con.md#WithTheme) | Defines WithTheme Logic Component. |
-| [WithThemeInstance](arkts-arkui-with-theme-con.md#WithThemeInstance) | Defines WithTheme Logic Component Instance. |
+| [WithTheme](arkts-arkui-with-theme-con.md#withtheme) | Defines WithTheme Logic Component. |
+| [WithThemeInstance](arkts-arkui-with-theme-con.md#withthemeinstance) | Defines WithTheme Logic Component Instance. |
 

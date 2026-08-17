@@ -10,11 +10,11 @@ function getDeviceIds(callback: AsyncCallback<Array<number>>): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [getDeviceList](arkts-input-inputdevice-getdevicelist-f.md#getDeviceList)
+**替代接口：** [getDeviceList](arkts-input-inputdevice-getdevicelist-f.md#getdevicelist)
 
 <!--Device-inputDevice-function getDeviceIds(callback: AsyncCallback<Array<number>>): void--><!--Device-inputDevice-function getDeviceIds(callback: AsyncCallback<Array<number>>): void-End-->
 
@@ -64,11 +64,11 @@ function getDeviceIds(): Promise<Array<number>>
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [getDeviceList](arkts-input-inputdevice-getdevicelist-f.md#getDeviceList)
+**替代接口：** [getDeviceList](arkts-input-inputdevice-getdevicelist-f.md#getdevicelist)
 
 <!--Device-inputDevice-function getDeviceIds(): Promise<Array<number>>--><!--Device-inputDevice-function getDeviceIds(): Promise<Array<number>>-End-->
 

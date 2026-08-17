@@ -11,11 +11,11 @@ function importWrappedKeyItem(
   ): void
 ```
 
-Imports a wrapped key. This API uses an asynchronous callback to return the result. > **说明：** > > 导入[HuksKeySecurityLevel](arkts-universalkeystore-huks-hukskeysecuritylevel-e.md#HuksKeySecurityLevel)中定义的SE安全级别加密密钥需要ohos.permission.ACCESS_SE_KEY权限。
+Imports a wrapped key. This API uses an asynchronous callback to return the result. > **说明：** > > 导入[HuksKeySecurityLevel](arkts-universalkeystore-huks-hukskeysecuritylevel-e.md#hukskeysecuritylevel)中定义的SE安全级别加密密钥需要ohos.permission.ACCESS_SE_KEY权限。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -241,11 +241,11 @@ function huksImportWrappedKey() {
 function importWrappedKeyItem(keyAlias: string, wrappingKeyAlias: string, options: HuksOptions): Promise<void>
 ```
 
-Imports a wrapped key. This API uses a promise to return the result. > **说明：** > > 导入[HuksKeySecurityLevel](arkts-universalkeystore-huks-hukskeysecuritylevel-e.md#HuksKeySecurityLevel)中定义的SE安全级别加密密钥需要ohos.permission.ACCESS_SE_KEY权限。
+Imports a wrapped key. This API uses a promise to return the result. > **说明：** > > 导入[HuksKeySecurityLevel](arkts-universalkeystore-huks-hukskeysecuritylevel-e.md#hukskeysecuritylevel)中定义的SE安全级别加密密钥需要ohos.permission.ACCESS_SE_KEY权限。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 

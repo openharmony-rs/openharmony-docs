@@ -1,0 +1,50 @@
+# VideoMode
+
+枚举，视频文件的log模式。
+
+**起始版本：** 23
+
+**ArkTS模式：** 起始版本为23。
+
+**废弃版本：** -1
+
+<!--Device-photoAccessHelper-export enum VideoMode--><!--Device-photoAccessHelper-export enum VideoMode-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## DEFAULT
+
+```TypeScript
+DEFAULT = 0
+```
+
+默认类型。 取值为0表示当前视频非log模式或未判断类型，后续部分视频判断后字段会更新为1，因此不建议使用此字段进行查询。
+
+**起始版本：** 23
+
+**ArkTS模式：** 起始版本为23。
+
+**废弃版本：** -1
+
+<!--Device-VideoMode-DEFAULT = 0--><!--Device-VideoMode-DEFAULT = 0-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## LOG_VIDEO
+
+```TypeScript
+LOG_VIDEO = 1
+```
+
+log模式视频的文件类型。
+
+**起始版本：** 23
+
+**ArkTS模式：** 起始版本为23。
+
+**废弃版本：** -1
+
+<!--Device-VideoMode-LOG_VIDEO = 1--><!--Device-VideoMode-LOG_VIDEO = 1-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+

@@ -1,10 +1,10 @@
 # WebContextMenuParam
 
-定义上下文菜单参数，关联[WebContextMenuParam](#WebContextMenuParam)方法。
+WebContextMenuParam是ArkWeb组件中用于承载长按页面元素或鼠标右键弹出的上下文菜单信息的参数类，作为`onContextMenuShow`事件回调的数据载体，封装了菜单弹出位置、链接地址、媒体类型、选中文本、编辑 状态等关键信息。 自定义Web组件上下文菜单时，使用WebContextMenuParam获取用户长按/右击位置的网页元素详细信息（如链接URL、图片内容、媒体类型、输入框类型、编辑状态等），判断用户操作场景，决定是否拦截默认菜单并构建自定义菜单项。 自定义Web组件长按或右键菜单（如替换默认菜单、根据不同元素类型提供差异化菜单项、预览图片等）时，在`onContextMenuShow`事件回调中使用WebContextMenuParam获取上下文信息。 示例代码参考[onContextMenuShow](arkts-arkweb-web-attribute.md#oncontextmenushow)。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ WebContextMenuParam的构造函数。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -38,11 +38,11 @@ WebContextMenuParam的构造函数。
 existsImageContents(): boolean
 ```
 
-长按菜单所在位置是否包含图片内容。
+判断当前长按或右键位置是否存在图像内容，用于在自定义菜单中提供"保存图片"等图片相关功能。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -56,7 +56,7 @@ existsImageContents(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 返回当前上下文菜单位置是否存在图片内容。 |
+| boolean | 长按位置存在图片返回true，否则返回false。 |
 
 ## getContextMenuMediaType
 
@@ -64,11 +64,11 @@ existsImageContents(): boolean
 getContextMenuMediaType(): ContextMenuDataMediaType
 ```
 
-返回上下文节点的类型。
+在上报上下文菜单事件时，获取用户长按或者右键点击的网页元素类型。
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -80,7 +80,7 @@ getContextMenuMediaType(): ContextMenuDataMediaType
 
 | 类型 | 说明 |
 | --- | --- |
-| [ContextMenuDataMediaType](arkts-arkweb-contextmenudatamediatype-e.md) | 返回上下文节点的类型。 |
+| [ContextMenuDataMediaType](arkts-arkweb-contextmenudatamediatype-e.md) | 网页元素的媒体类型，包括图片、视频、音频等不同类型，用于区分用户点击的网页元素种类。 |
 
 ## getEditStateFlags
 
@@ -88,11 +88,11 @@ getContextMenuMediaType(): ContextMenuDataMediaType
 getEditStateFlags(): number
 ```
 
-返回上下文可编辑状态标记 [ContextMenuEditStateFlags](arkts-arkweb-contextmenueditstateflags-e.md#ContextMenuEditStateFlags)。
+获取网页元素的可编辑标识，用于精细控制自定义菜单选项的显示逻辑（如根据是否可复制、可粘贴、可撤销等显示对应的菜单项）。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -106,7 +106,7 @@ getEditStateFlags(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 获取网页元素可编辑标识，参照[ContextMenuEditStateFlags]{ |
 
 ## getInputFieldType
 
@@ -114,11 +114,11 @@ getEditStateFlags(): number
 getInputFieldType(): ContextMenuInputFieldType
 ```
 
-若上下文菜单在输入框上触发，则返回输入框类型。
+获取网页元素的输入框类型（如文本框、密码框、搜索框等），用于根据输入框类型提供合适的编辑菜单选项（如文本框提供粘贴、全选，密码框只提供复制或隐藏密码等）。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -132,7 +132,7 @@ getInputFieldType(): ContextMenuInputFieldType
 
 | 类型 | 说明 |
 | --- | --- |
-| [ContextMenuInputFieldType](arkts-arkweb-contextmenuinputfieldtype-e.md) | 输入框上触发菜单时返回输入框类型。 |
+| [ContextMenuInputFieldType](arkts-arkweb-contextmenuinputfieldtype-e.md) | 网页元素输入框的类型，包括文本框、密码框、邮箱框等不同类型，用于识别当前焦点所在的输入元素种类。 |
 
 ## getLinkUrl
 
@@ -140,11 +140,11 @@ getInputFieldType(): ContextMenuInputFieldType
 getLinkUrl(): string
 ```
 
-若长按位置为链接，则返回经过安全校验的链接 URL。
+获取经过安全检查的URL链接地址，可用于构建自定义菜单时提供"打开链接"、"分享链接"、"复制链接"等操作。 > **说明：** > > 与getUnfilteredLinkUrl()相比，该方法会对URL进行安全检查；与getSourceUrl()相比，该方法获取的是长按位置处的链接URL，而getSourceUrl()获取的是选中元素的src属性URL（如图 > 像、媒体等资源）。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -158,7 +158,7 @@ getLinkUrl(): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 关联链接时返回链接地址，否则返回 null。 |
+| string | 如果长按位置是链接，返回经过安全检查的URL链接，否则返回空字符串。 |
 
 ## getMediaType
 
@@ -166,11 +166,11 @@ getLinkUrl(): string
 getMediaType(): ContextMenuMediaType
 ```
 
-返回上下文节点的类型。
+获取网页元素的媒体类型。 > **说明：** > > 从API version 22开始，[getContextMenuMediaType](#getcontextmenumediatype)提供更丰富的媒体类型识别能力。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -184,7 +184,7 @@ getMediaType(): ContextMenuMediaType
 
 | 类型 | 说明 |
 | --- | --- |
-| [ContextMenuMediaType](arkts-arkweb-contextmenumediatype-e.md) | 返回上下文节点的类型。 |
+| [ContextMenuMediaType](arkts-arkweb-contextmenumediatype-e.md) | 网页元素媒体类型。 |
 
 ## getPreviewHeight
 
@@ -192,11 +192,11 @@ getMediaType(): ContextMenuMediaType
 getPreviewHeight(): number
 ```
 
-返回选择菜单预览高度。
+获取预览图的高。
 
 **起始版本：** 13
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
+**ArkTS模式：** 起始版本为13。
 
 **废弃版本：** -1
 
@@ -208,7 +208,7 @@ getPreviewHeight(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 预览菜单高度。单位：像素。 |
+| number | 预览图的高。 <br>单位：px（物理像素）。 |
 
 ## getPreviewWidth
 
@@ -216,11 +216,11 @@ getPreviewHeight(): number
 getPreviewWidth(): number
 ```
 
-返回选择菜单预览宽度。
+获取预览图的宽。
 
 **起始版本：** 13
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
+**ArkTS模式：** 起始版本为13。
 
 **废弃版本：** -1
 
@@ -232,7 +232,7 @@ getPreviewWidth(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 菜单预览宽度。单位：像素。 |
+| number | 预览图的宽。 <br>单位：px（物理像素）。 |
 
 ## getSelectionText
 
@@ -240,11 +240,11 @@ getPreviewWidth(): number
 getSelectionText(): string
 ```
 
-返回选中的文本内容。
+获取右键单击已选中文本时的内容，用于在自定义菜单中提供"复制"、"分享"、"翻译"、"搜索"等文本操作功能。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -258,7 +258,7 @@ getSelectionText(): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 返回选中文本，未选中任何文本时返回 null。 |
+| string | 选中文本内容。如果右键单击位置存在选中的文本，返回选中的文本内容；不存在则返回空字符串。 |
 
 ## getSourceType
 
@@ -266,11 +266,11 @@ getSelectionText(): string
 getSourceType(): ContextMenuSourceType
 ```
 
-* 返回上下文菜单的来源类型。
+获取上下文菜单事件的触发来源类型（如鼠标右键、长按操作等），用于根据不同来源调整菜单展示样式或提供差异化的菜单选项。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -284,7 +284,7 @@ getSourceType(): ContextMenuSourceType
 
 | 类型 | 说明 |
 | --- | --- |
-| [ContextMenuSourceType](arkts-arkweb-contextmenusourcetype-e.md) |  |
+| [ContextMenuSourceType](arkts-arkweb-contextmenusourcetype-e.md) | 菜单事件的触发来源类型，包括鼠标右键、长按等不同的触发方式。 |
 
 ## getSourceUrl
 
@@ -292,11 +292,11 @@ getSourceType(): ContextMenuSourceType
 getSourceUrl(): string
 ```
 
-若选中元素包含 SRC 属性，则返回其资源地址 URL。
+获取元素的src属性对应的URL链接地址。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -310,7 +310,7 @@ getSourceUrl(): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 若当前上下文菜单源自元素 src 属性，则返回资源链接地址，否则返回 null。 |
+| string | 如果选中的元素有src属性，返回src的URL。返回URL的最大上限为2MB，超出上限时返回空字符串。 |
 
 ## getUnfilteredLinkUrl
 
@@ -318,11 +318,11 @@ getSourceUrl(): string
 getUnfilteredLinkUrl(): string
 ```
 
-若长按位置为链接，则返回该链接的原始 URL。
+获取未经安全检查的原始URL链接地址。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -336,7 +336,7 @@ getUnfilteredLinkUrl(): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 关联链接时返回未过滤的链接地址，否则返回 null。 |
+| string | 如果长按位置是链接，返回原始的URL链接，否则返回空字符串。 |
 
 ## isEditable
 
@@ -344,11 +344,11 @@ getUnfilteredLinkUrl(): string
 isEditable(): boolean
 ```
 
-* 返回当前上下文是否可编辑。
+判断网页元素是否可编辑。用于在自定义菜单中动态显示或隐藏编辑相关选项（如可编辑时显示粘贴、剪切、全选，不可编辑时隐藏这些选项）。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -362,7 +362,7 @@ isEditable(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean |  |
+| boolean | 网页元素可编辑返回true，否则返回false。 |
 
 ## x
 
@@ -370,11 +370,11 @@ isEditable(): boolean
 x(): number
 ```
 
-菜单在Web组件内的水平偏移坐标。
+弹出菜单的x坐标，相对于Web组件左上角的水平距离。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -388,7 +388,7 @@ x(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 上下文菜单X坐标。 正常情况下返回非负整数，否则返回 -1。 单位：像素。 |
+| number | 获取成功时返回非负整数，失败时返回-1。 <br>单位：px（物理像素）。 |
 
 ## y
 
@@ -396,11 +396,11 @@ x(): number
 y(): number
 ```
 
-菜单在Web组件内的垂直偏移坐标。
+弹出菜单的y坐标，相对于Web组件左上角的垂直距离。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -414,5 +414,5 @@ y(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 上下文菜单Y坐标。 正常情况下返回非负整数，否则返回 -1。 单位：像素。 |
+| number | 获取成功时返回非负整数，失败时返回-1。 <br>单位：px（物理像素）。 |
 

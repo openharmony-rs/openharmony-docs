@@ -6,15 +6,15 @@
 function getStateByIndex(index: number): RouterState | undefined
 ```
 
-通过索引值获取对应页面的状态信息。 > **说明：** > > - 从API version 12开始支持，从API version 18开始废弃，建议使用 > [getStateByIndex](arkts-arkui-arkui-uicontext-router-c.md#getStateByIndex)替代。getStateByIndex需先通过 > [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md#UIContext)中的 > [getRouter](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取 > [Router](arkts-arkui-arkui-uicontext-uicontext-c.md#UIContext)实例，然后通过该实例进行调用。 > > - 从API version 12开始，可以通过使用[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md#UIContext)中的 > [getRouter](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的 > [Router](arkts-arkui-arkui-uicontext-uicontext-c.md#UIContext)对象。
+通过索引值获取对应页面的状态信息。 > **说明：** > > - 从API version 12开始支持，从API version 18开始废弃，建议使用 > [getStateByIndex](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-router-c.md#getstatebyindex)替代。getStateByIndex需先通过 > [UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#uicontext)中的 > [getRouter](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取 > [Router](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#uicontext)实例，然后通过该实例进行调用。 > > - 从API version 12开始，可以通过使用[UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#uicontext)中的 > [getRouter](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的 > [Router](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#uicontext)对象。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** 18
 
-**替代接口：** [getStateByIndex](arkts-arkui-arkui-uicontext-router-c.md#getStateByIndex)
+**替代接口：** [getStateByIndex](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-router-c.md#getstatebyindex)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

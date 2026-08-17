@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,27 +18,27 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [activatePermission](arkts-corefile-fileshare-activatepermission-f.md#activatePermission) | 激活多个已持久化授权的文件或目录，使用Promise异步回调。 |
-| [checkPersistentPermission](arkts-corefile-fileshare-checkpersistentpermission-f.md#checkPersistentPermission) | 校验所选择的多个文件或目录URI是否已持久化授权，使用Promise异步回调。 |
-| [deactivatePermission](arkts-corefile-fileshare-deactivatepermission-f.md#deactivatePermission) | 取消激活多个已持久化授权的文件或目录，使用Promise异步回调。 |
-| [persistPermission](arkts-corefile-fileshare-persistpermission-f.md#persistPermission) | 对所选择的多个文件或目录URI进行持久化授权，使用Promise异步回调。 |
-| [revokePermission](arkts-corefile-fileshare-revokepermission-f.md#revokePermission) | 对所选择的多个文件或目录URI取消持久化授权，使用Promise异步回调。 |
+| [activatePermission](arkts-corefile-fileshare-activatepermission-f.md#activatepermission) | 激活多个已持久化授权的文件或目录，使用Promise异步回调。 |
+| [checkPersistentPermission](arkts-corefile-fileshare-checkpersistentpermission-f.md#checkpersistentpermission) | 校验所选择的多个文件或目录URI是否已持久化授权，使用Promise异步回调。 |
+| [deactivatePermission](arkts-corefile-fileshare-deactivatepermission-f.md#deactivatepermission) | 取消激活多个已持久化授权的文件或目录，使用Promise异步回调。 |
+| [persistPermission](arkts-corefile-fileshare-persistpermission-f.md#persistpermission) | 对所选择的多个文件或目录URI进行持久化授权，使用Promise异步回调。 |
+| [revokePermission](arkts-corefile-fileshare-revokepermission-f.md#revokepermission) | 对所选择的多个文件或目录URI取消持久化授权，使用Promise异步回调。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [checkPathPermission](arkts-corefile-fileshare-checkpathpermission-f-sys.md#checkPathPermission) | 异步方法校验所选择的多个文件或目录是否有临时或持久化授权，使用Promise异步回调。 |
-| [getPersistentPolicy](arkts-corefile-fileshare-getpersistentpolicy-f-sys.md#getPersistentPolicy) | 获取应用程序的持久化授权策略，使用Promise异步回调。 |
-| [getSharedDirectoryInfo](arkts-corefile-fileshare-getshareddirectoryinfo-f-sys.md#getSharedDirectoryInfo) | 获取所有应用捐献的沙箱目录。使用Promise异步回调。 |
-| [grantSharedDirectoryPermission](arkts-corefile-fileshare-grantshareddirectorypermission-f-sys.md#grantSharedDirectoryPermission) | 授予应用捐献目录的临时访问权限。使用Promise异步回调。 |
-| [grantUriPermission](arkts-corefile-fileshare-granturipermission-f-sys.md#grantUriPermission) | 为应用授予公共目录文件URI的临时访问权限，使用Callback异步回调。 |
-| [grantUriPermission](arkts-corefile-fileshare-granturipermission-f-sys.md#grantUriPermission（系统接口）) | 为应用授予公共目录文件URI的临时访问权限，使用Promise异步回调。 |
-| [grantUriPermission](arkts-corefile-fileshare-granturipermission-f-sys.md#grantUriPermission（系统接口）) | 给应用授予目标文件临时权限，使用Promise异步回调。 |
-| [revokePermission](arkts-corefile-fileshare-revokepermission-f-sys.md#revokePermission（系统接口）) | 撤销指定应用的全部持久化文件授权，使用Promise异步回调。 |
-| [revokePermission](arkts-corefile-fileshare-revokepermission-f-sys.md#revokePermission（系统接口）) | 撤销指定应用对URI的持久化授权，使用Promise异步回调。 |
-| [revokeSharedDirectoryPermission](arkts-corefile-fileshare-revokeshareddirectorypermission-f-sys.md#revokeSharedDirectoryPermission) | 撤销应用的捐献目录临时访问权限。使用Promise异步回调。 |
+| [checkPathPermission](arkts-corefile-fileshare-checkpathpermission-f-sys.md#checkpathpermission) | 异步方法校验所选择的多个文件或目录是否有临时或持久化授权，使用Promise异步回调。 |
+| [getPersistentPolicy](arkts-corefile-fileshare-getpersistentpolicy-f-sys.md#getpersistentpolicy) | 获取应用程序的持久化授权策略，使用Promise异步回调。 |
+| [getSharedDirectoryInfo](arkts-corefile-fileshare-getshareddirectoryinfo-f-sys.md#getshareddirectoryinfo) | 获取所有应用捐献的沙箱目录。使用Promise异步回调。 |
+| [grantSharedDirectoryPermission](arkts-corefile-fileshare-grantshareddirectorypermission-f-sys.md#grantshareddirectorypermission) | 授予应用捐献目录的临时访问权限。使用Promise异步回调。 |
+| [grantUriPermission](arkts-corefile-fileshare-granturipermission-f-sys.md#granturipermission) | 为应用授予公共目录文件URI的临时访问权限，使用Callback异步回调。 |
+| [grantUriPermission](arkts-corefile-fileshare-granturipermission-f-sys.md#granturipermission系统接口) | 为应用授予公共目录文件URI的临时访问权限，使用Promise异步回调。 |
+| [grantUriPermission](arkts-corefile-fileshare-granturipermission-f-sys.md#granturipermission系统接口) | 给应用授予目标文件临时权限，使用Promise异步回调。 |
+| [revokePermission](arkts-corefile-fileshare-revokepermission-f-sys.md#revokepermission系统接口) | 撤销指定应用的全部持久化文件授权，使用Promise异步回调。 |
+| [revokePermission](arkts-corefile-fileshare-revokepermission-f-sys.md#revokepermission系统接口) | 撤销指定应用对URI的持久化授权，使用Promise异步回调。 |
+| [revokeSharedDirectoryPermission](arkts-corefile-fileshare-revokeshareddirectorypermission-f-sys.md#revokeshareddirectorypermission) | 撤销应用的捐献目录临时访问权限。使用Promise异步回调。 |
 <!--DelEnd-->
 
 ### 接口

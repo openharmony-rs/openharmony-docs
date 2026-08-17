@@ -1,14 +1,14 @@
 # DeviceOrientationResponse
 
-设备方向传感器数据变化后的回调函数的响应对象，包含设备方向的三个旋转角度数据。
+设备方向传感器数据变化后的回调函数的响应对象，包含设备方向的三个旋转角度数据。 **设备行为差异**：该接口在Wearable、Lite Wearable中可正常调用，在其他设备类型中无效果。
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 
-**替代接口：** [OrientationResponse](arkts-sensorservice-sensor-orientationresponse-i.md#OrientationResponse)
+**替代接口：** [OrientationResponse](arkts-sensorservice-sensor-orientationresponse-i.md#orientationresponse)
 
 <!--Device-unnamed-export interface DeviceOrientationResponse--><!--Device-unnamed-export interface DeviceOrientationResponse-End-->
 
@@ -20,13 +20,13 @@
 alpha: number
 ```
 
-当设备坐标X/Y和地球X/Y重合时，绕着Z轴转动的夹角。单位：度（°）。取值范围：[0, 360)。
+当设备坐标X/Y和地球X/Y重合时，绕着Z轴转动的夹角。单位：°（度）。取值范围：[0, 360)。
 
 **类型：** number
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 
@@ -44,13 +44,13 @@ alpha: number
 beta: number
 ```
 
-当设备坐标Y/Z和地球Y/Z重合时，绕着X轴转动的夹角。单位：度（°）。取值范围：[-180, 180)。
+当设备坐标Y/Z和地球Y/Z重合时，绕着X轴转动的夹角。单位：°（度）。取值范围：[-180, 180)。
 
 **类型：** number
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 
@@ -68,13 +68,13 @@ beta: number
 gamma: number
 ```
 
-当设备X/Z和地球X/Z重合时，绕着Y轴转动的夹角。单位：度（°）。取值范围：[-90, 90)。
+当设备X/Z和地球X/Z重合时，绕着Y轴转动的夹角。单位：°（度）。取值范围：[-90, 90)。
 
 **类型：** number
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 

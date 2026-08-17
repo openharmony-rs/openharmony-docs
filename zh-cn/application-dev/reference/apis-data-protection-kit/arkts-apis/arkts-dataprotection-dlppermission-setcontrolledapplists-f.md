@@ -10,7 +10,7 @@ function setControlledAppLists(appLists: Array<string>, userId?: number): Promis
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -26,8 +26,8 @@ function setControlledAppLists(appLists: Array<string>, userId?: number): Promis
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| appLists | Array&lt;string&gt; | 是 | 被管控的应用的appIdentifier列表。 &lt;br&gt;数组最大长度为100，超过最大长度返回19100001错误码。 &lt;br&gt;数组中每个元素为应用的appIdentifier，获取方法参见获取应用的appIdentifier，单个appIdentifier最 大长度为4096字节，超过最大长度返回19100001错误码。 |
-| userId | number | 否 | 为其配置受控应用列表的用户ID。 &lt;br&gt;若参数未指定，则默认使用当前用户。 |
+| appLists | Array&lt;string&gt; | 是 | 被管控的应用的appIdentifier列表。 <br>数组最大长度为100，超过最大长度返回19100001错误码。 <br>数组中每个元素为应用的appIdentifier，获取方法参见获取应用的appIdentifier，单个appIdentifier最 大长度为4096字节，超过最大长度返回19100001错误码。 |
+| userId | number | 否 | 为其配置受控应用列表的用户ID。 <br>若参数未指定，则默认使用当前用户。 |
 
 **返回值：**
 
@@ -52,7 +52,7 @@ function setControlledAppLists(appLists: Array<string>, userId?: number): Promis
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let appList: Array<string> = ["appId1", "appId2"];
+let appList: Array<string> = ['appId1', 'appId2'];
 let userId: number = 100;
 dlpPermission.setControlledAppLists(appList, userId).then(() => {
   console.info("Successfully set controlled appLists.");

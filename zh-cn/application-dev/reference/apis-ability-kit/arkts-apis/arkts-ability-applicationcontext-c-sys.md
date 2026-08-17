@@ -6,7 +6,7 @@ ApplicationContext作为应用上下文，继承自Context，提供了应用生�
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -14,17 +14,91 @@ ApplicationContext作为应用上下文，继承自Context，提供了应用生�
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
+## getProcessRunningInformation
+
+```TypeScript
+getProcessRunningInformation(): Promise<Array<ProcessInformation>>
+```
+
+获取运行中的进程信息。使用Promise异步回调。
+
+**起始版本：** 9
+
+**ArkTS模式：** 起始版本为9。
+
+**废弃版本：** 10
+
+**替代接口：** [getRunningProcessInformation](arkts-ability-applicationcontext-c.md#getrunningprocessinformation)
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ApplicationContext-getProcessRunningInformation(): Promise<Array<ProcessInformation>>--><!--Device-ApplicationContext-getProcessRunningInformation(): Promise<Array<ProcessInformation>>-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**系统接口：** 此接口为系统接口。
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;Array&lt;ProcessInformation&gt;&gt; | Promise对象，返回接口运行结果及有关运行进程的信息，可进行错误处理或其他自定义处理。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
+| [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
+
+## getProcessRunningInformation
+
+```TypeScript
+getProcessRunningInformation(callback: AsyncCallback<Array<ProcessInformation>>): void
+```
+
+获取运行中的进程信息。使用callback异步回调。
+
+**起始版本：** 9
+
+**ArkTS模式：** 起始版本为9。
+
+**废弃版本：** 10
+
+**替代接口：** [getRunningProcessInformation](arkts-ability-applicationcontext-c.md#getrunningprocessinformation)
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ApplicationContext-getProcessRunningInformation(callback: AsyncCallback<Array<ProcessInformation>>): void--><!--Device-ApplicationContext-getProcessRunningInformation(callback: AsyncCallback<Array<ProcessInformation>>): void-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | AsyncCallback&lt;Array&lt;ProcessInformation&gt;&gt; | 是 | 回调函数，返回有关运行进程的信息。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
+| [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
+
 ## preloadUIExtensionAbility
 
 ```TypeScript
 preloadUIExtensionAbility(want: Want): Promise<void>
 ```
 
-Preload UIExtensionAbility.
+预加载指定UIExtensionAbility实例。使用Promise异步回调。 被预加载的UIExtensionAbility实例会执行到UIExtensionAbility的onCreate生命周期，然后等待被当前应用正式加载。 被预加载的UIExtensionAbility实例会执行到UIExtensionAbility的onCreate生命周期，然后等待被当前应用正式加载。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -42,13 +116,13 @@ Preload UIExtensionAbility.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | Want | 是 | Indicates the want of target UIExtensionAbility. |
+| want | Want | 是 | 预加载UIExtensionAbility的want信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | The promise returned by the function. |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -146,4 +220,222 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
+## registerAbilityLifecycleCallback
+
+```TypeScript
+registerAbilityLifecycleCallback(abilityLifecycleCallback: AbilityLifecycleCallback): number
+```
+
+注册监听应用内UIAbility的生命周期。使用callback异步回调。 &lt;p&gt;**说明：**: <br>仅支持主线程调用。 &lt;/p&gt;
+
+**起始版本：** 9
+
+**ArkTS模式：** 起始版本为9。
+
+**废弃版本：** 10
+
+**替代接口：** [on](arkts-ability-applicationcontext-c.md#onabilitylifecycle)(type: 'abilityLifecycle', callback: AbilityLifecycleCallback)
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ApplicationContext-registerAbilityLifecycleCallback(abilityLifecycleCallback: AbilityLifecycleCallback): number--><!--Device-ApplicationContext-registerAbilityLifecycleCallback(abilityLifecycleCallback: AbilityLifecycleCallback): number-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| abilityLifecycleCallback | [AbilityLifecycleCallback](arkts-ability-app-ability-abilitylifecyclecallback-abilitylifecyclecallback-c.md) | 是 | UIAbility生命周期变化时触发的回调方法。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| number | 返回此次注册的callbackID，该ID用于在 [ApplicationContext.unregisterAbilityLifecycleCallback()]{ |
+
+## registerEnvironmentCallback
+
+```TypeScript
+registerEnvironmentCallback(environmentCallback: EnvironmentCallback): number
+```
+
+注册对系统环境变化的监听。使用callback异步回调。 &lt;p&gt;**说明：**: <br>仅支持主线程调用。 &lt;/p&gt;
+
+**起始版本：** 9
+
+**ArkTS模式：** 起始版本为9。
+
+**废弃版本：** 10
+
+**替代接口：** [on](arkts-ability-applicationcontext-c.md#onabilitylifecycle)(type: 'environment', callback: EnvironmentCallback)
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ApplicationContext-registerEnvironmentCallback(environmentCallback: EnvironmentCallback): number--><!--Device-ApplicationContext-registerEnvironmentCallback(environmentCallback: EnvironmentCallback): number-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| environmentCallback | [EnvironmentCallback](../../apis-na/arkts-apis/arkts-na-app-ability-environmentcallback-environmentcallback-i.md) | 是 | 系统环境变化时触发的回调方法。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| number | 返回此次注册的callbackID，该ID用于在 [ApplicationContext.unregisterEnvironmentCallback]{ |
+
+## unregisterAbilityLifecycleCallback
+
+```TypeScript
+unregisterAbilityLifecycleCallback(callbackId: number, callback: AsyncCallback<void>): void
+```
+
+取消监听应用内UIAbility的生命周期。使用callback异步回调。 &lt;p&gt;**说明：**: <br>仅支持主线程调用。 &lt;/p&gt;
+
+**起始版本：** 9
+
+**ArkTS模式：** 起始版本为9。
+
+**废弃版本：** 10
+
+**替代接口：** [off](arkts-ability-applicationcontext-c.md#offabilitylifecycle)(type: 'abilityLifecycle', callbackId: number, callback: AsyncCallback&lt;void&gt;)
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ApplicationContext-unregisterAbilityLifecycleCallback(callbackId: number, callback: AsyncCallback<void>): void--><!--Device-ApplicationContext-unregisterAbilityLifecycleCallback(callbackId: number, callback: AsyncCallback<void>): void-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callbackId | number | 是 | 通过 [ApplicationContext.registerAbilityLifecycleCallback](#registerabilitylifecyclecallback) 接口注册监听应用内UIAbility的生命周期时返回的ID。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调方法。当取消监听应用内生命周期成功，err为undefined，否则为错误对象。 |
+
+## unregisterAbilityLifecycleCallback
+
+```TypeScript
+unregisterAbilityLifecycleCallback(callbackId: number): Promise<void>
+```
+
+取消监听应用内UIAbility的生命周期。使用Promise异步回调。 &lt;p&gt;**说明：**: <br>仅支持主线程调用。 &lt;/p&gt;
+
+**起始版本：** 9
+
+**ArkTS模式：** 起始版本为9。
+
+**废弃版本：** 10
+
+**替代接口：** off(type: 'abilityLifecycle', callbackId: number): Promise&lt;void&gt;;
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ApplicationContext-unregisterAbilityLifecycleCallback(callbackId: number): Promise<void>--><!--Device-ApplicationContext-unregisterAbilityLifecycleCallback(callbackId: number): Promise<void>-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callbackId | number | 是 | 通过 [ApplicationContext.registerAbilityLifecycleCallback](#registerabilitylifecyclecallback) 接口注册监听应用内UIAbility的生命周期时返回的ID。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+
+## unregisterEnvironmentCallback
+
+```TypeScript
+unregisterEnvironmentCallback(callbackId: number, envcallback: AsyncCallback<void>): void
+```
+
+取消对系统环境变化的监听。使用callback异步回调。 &lt;p&gt;**说明：**: <br>仅支持主线程调用。 &lt;/p&gt;
+
+**起始版本：** 9
+
+**ArkTS模式：** 起始版本为9。
+
+**废弃版本：** 10
+
+**替代接口：** [off](arkts-ability-applicationcontext-c.md#offabilitylifecycle)(type: 'environment', callbackId: number, callback: AsyncCallback&lt;void&gt;)
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ApplicationContext-unregisterEnvironmentCallback(callbackId: number, envcallback: AsyncCallback<void>): void--><!--Device-ApplicationContext-unregisterEnvironmentCallback(callbackId: number, envcallback: AsyncCallback<void>): void-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callbackId | number | 是 | 通过 [ApplicationContext.registerEnvironmentCallback](#registerenvironmentcallback) 接口注册监听系统环境变化时返回的ID。 |
+| envcallback | AsyncCallback&lt;void&gt; | 是 | 回调方法。当取消对系统环境变化的监听成功，err为undefined，否则为错误对象。 |
+
+## unregisterEnvironmentCallback
+
+```TypeScript
+unregisterEnvironmentCallback(callbackId: number): Promise<void>
+```
+
+取消对系统环境变化的监听。使用Promise异步回调。
+
+**起始版本：** 9
+
+**ArkTS模式：** 起始版本为9。
+
+**废弃版本：** 10
+
+**替代接口：** off(type: 'environment', callbackId: number): Promise&lt;void&gt;;
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ApplicationContext-unregisterEnvironmentCallback(callbackId: number): Promise<void>--><!--Device-ApplicationContext-unregisterEnvironmentCallback(callbackId: number): Promise<void>-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callbackId | number | 是 | 通过 [ApplicationContext.registerEnvironmentCallback](#registerenvironmentcallback) 接口注册监听系统环境变化时返回的ID。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 

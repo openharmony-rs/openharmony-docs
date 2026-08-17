@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,10 +18,10 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [getFreeSize](arkts-corefile-statfs-getfreesize-f.md#getFreeSize) | 异步方法获取指定文件系统空闲字节数，以Promise形式返回结果。 |
-| [getFreeSize](arkts-corefile-statfs-getfreesize-f.md#getFreeSize) | 异步方法获取指定文件系统空闲字节数，使用callback形式返回结果。 |
-| [getFreeSizeSync](arkts-corefile-statfs-getfreesizesync-f.md#getFreeSizeSync) | 以同步方法获取指定文件系统空闲字节数。 |
-| [getTotalSize](arkts-corefile-statfs-gettotalsize-f.md#getTotalSize) | 异步方法获取指定文件系统总字节数，以Promise形式返回结果。 |
-| [getTotalSize](arkts-corefile-statfs-gettotalsize-f.md#getTotalSize) | 异步方法获取指定文件系统总字节数，使用callback形式返回结果。 |
-| [getTotalSizeSync](arkts-corefile-statfs-gettotalsizesync-f.md#getTotalSizeSync) | 以同步方法获取指定文件系统总字节数。 |
+| [getFreeSize](arkts-corefile-statfs-getfreesize-f.md#getfreesize) | 异步方法获取指定文件系统空闲字节数，以Promise形式返回结果。 |
+| [getFreeSize](arkts-corefile-statfs-getfreesize-f.md#getfreesize) | 异步方法获取指定文件系统空闲字节数，使用callback形式返回结果。 |
+| [getFreeSizeSync](arkts-corefile-statfs-getfreesizesync-f.md#getfreesizesync) | 以同步方法获取指定文件系统空闲字节数。 |
+| [getTotalSize](arkts-corefile-statfs-gettotalsize-f.md#gettotalsize) | 异步方法获取指定文件系统总字节数，以Promise形式返回结果。 |
+| [getTotalSize](arkts-corefile-statfs-gettotalsize-f.md#gettotalsize) | 异步方法获取指定文件系统总字节数，使用callback形式返回结果。 |
+| [getTotalSizeSync](arkts-corefile-statfs-gettotalsizesync-f.md#gettotalsizesync) | 以同步方法获取指定文件系统总字节数。 |
 

@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ static createHDRColor(colorSpace: ColorSpace, red: double, green: double, blue: 
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -48,7 +48,7 @@ static createHDRColor(colorSpace: ColorSpace, red: double, green: double, blue: 
 
 | 类型 | 说明 |
 | --- | --- |
-| [ColorMetrics](arkts-na-graphics-colormetrics-c.md) | 带有HDR颜色的ColorMetrics类实例。 |
+| [ColorMetrics](../../apis-arkui/arkts-apis/arkts-arkui-graphics-colormetrics-c.md) | 带有HDR颜色的ColorMetrics类实例。 |
 
 ## createHDRColorWithLinearExposure
 
@@ -61,7 +61,7 @@ static createHDRColorWithLinearExposure(linearExposure: double, colorSpace: Colo
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -88,7 +88,7 @@ static createHDRColorWithLinearExposure(linearExposure: double, colorSpace: Colo
 
 | 类型 | 说明 |
 | --- | --- |
-| [ColorMetrics](arkts-na-graphics-colormetrics-c.md) | 带有HDR颜色的ColorMetrics类实例。 |
+| [ColorMetrics](../../apis-arkui/arkts-apis/arkts-arkui-graphics-colormetrics-c.md) | 带有HDR颜色的ColorMetrics类实例。 |
 
 ## createHDRColorWithLogExposure
 
@@ -101,7 +101,7 @@ static createHDRColorWithLogExposure(exposure: double, colorSpace: ColorSpace,
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -128,7 +128,7 @@ static createHDRColorWithLogExposure(exposure: double, colorSpace: ColorSpace,
 
 | 类型 | 说明 |
 | --- | --- |
-| [ColorMetrics](arkts-na-graphics-colormetrics-c.md) | 带有HDR颜色的ColorMetrics类实例。 |
+| [ColorMetrics](../../apis-arkui/arkts-apis/arkts-arkui-graphics-colormetrics-c.md) | 带有HDR颜色的ColorMetrics类实例。 |
 
 ## getBlueValue
 
@@ -140,7 +140,7 @@ getBlueValue(): double
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -168,7 +168,7 @@ getColorSpace(): ColorSpace
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -196,7 +196,7 @@ getGreenValue(): double
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -224,7 +224,7 @@ getRedValue(): double
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -252,7 +252,7 @@ isHDR(): boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

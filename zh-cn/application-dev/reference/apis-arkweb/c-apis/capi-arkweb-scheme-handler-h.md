@@ -40,7 +40,7 @@ arkweb_scheme_handler.h是ArkWeb中用于拦截和自定义网络请求的完整
 | [typedef void (\*ArkWeb_OnRequestStart)(const ArkWeb_SchemeHandler* schemeHandler, ArkWeb_ResourceRequest* resourceRequest, const ArkWeb_ResourceHandler* resourceHandler, bool* intercept)](#arkweb_onrequeststart) | ArkWeb_OnRequestStart | 请求开始的回调，这将在IO线程上被调用。用于在请求开始时拦截和处理指定scheme的网络请求，开发者可通过此回调实现自定义协议处理、本地资源替换、数据加密传输等功能。 |
 | [typedef void (\*ArkWeb_OnRequestStop)(const ArkWeb_SchemeHandler* schemeHandler, const ArkWeb_ResourceRequest* resourceRequest)](#arkweb_onrequeststop) | ArkWeb_OnRequestStop | 请求完成时的回调函数。这将在IO线程上被调用。用于在请求完成时进行资源清理、状态更新或日志记录等操作。<br>应该使用OH_ArkWebResourceRequest_Destroy销毁resourceRequest，并使用OH_ArkWebResourceHandler_Destroy销毁在ArkWeb_OnRequestStart中接收到的ArkWeb_ResourceHandler。 |
 | [typedef void (\*ArkWeb_HttpBodyStreamReadCallback)(const ArkWeb_HttpBodyStream* httpBodyStream, uint8_t* buffer, int bytesRead)](#arkweb_httpbodystreamreadcallback) | ArkWeb_HttpBodyStreamReadCallback | 当OH_ArkWebHttpBodyStream_Read读取操作完成时的回调函数。该回调函数会在ArkWeb工作线程中运行。 |
-| [typedef void (\*ArkWeb_HttpBodyStreamAsyncReadCallback)(const ArkWeb_HttpBodyStream *httpBodyStream, uint8_t *buffer, int bytesRead)](#arkweb_httpbodystreamasyncreadcallback) | ArkWeb_HttpBodyStreamAsyncReadCallback | 当OH_ArkWebHttpBodyStream_AsyncRead读取操作完成时的回调函数。该回调函数会在ArkWeb工作线程中运行。 |
+| [typedef void (\*ArkWeb_HttpBodyStreamAsyncReadCallback)(const ArkWeb_HttpBodyStream* httpBodyStream, uint8_t* buffer, int bytesRead)](#arkweb_httpbodystreamasyncreadcallback) | ArkWeb_HttpBodyStreamAsyncReadCallback | 当OH_ArkWebHttpBodyStream_AsyncRead读取操作完成时的回调函数。该回调函数会在ArkWeb工作线程中运行。 |
 | [typedef void (\*ArkWeb_HttpBodyStreamInitCallback)(const ArkWeb_HttpBodyStream* httpBodyStream, ArkWeb_NetError result)](#arkweb_httpbodystreaminitcallback) | ArkWeb_HttpBodyStreamInitCallback | ArkWeb_HttpBodyStream初始化操作完成时回调函数。 |
 | [void OH_ArkWebRequestHeaderList_Destroy(ArkWeb_RequestHeaderList* requestHeaderList)](#oh_arkwebrequestheaderlist_destroy) | - | 销毁ArkWeb_RequestHeaderList对象。 |
 | [int32_t OH_ArkWebRequestHeaderList_GetSize(const ArkWeb_RequestHeaderList* requestHeaderList)](#oh_arkwebrequestheaderlist_getsize) | - | 获取请求头列表的大小。 |
@@ -141,7 +141,7 @@ custom scheme的配置信息。
 | ARKWEB_SCHEME_OPTION_DISPLAY_ISOLATED = 1 << 2 | 如果设置了ARKWEB_SCHEME_OPTION_DISPLAY_ISOLATED，则该scheme的请求只能由使用相同scheme加载的页面中发起。 |
 | ARKWEB_SCHEME_OPTION_SECURE = 1 << 3 | 如果设置了ARKWEB_SCHEME_OPTION_SECURE，则将使用与“https” URL相同的安全规则来处理该scheme。 |
 | ARKWEB_SCHEME_OPTION_CORS_ENABLED = 1 << 4 | 如果设置了ARKWEB_SCHEME_OPTION_CORS_ENABLED，则该scheme可以发送CORS请求。在大多数情况下，当设置了ARKWEB_SCHEME_OPTION_STANDARD时，应该设置此值。 |
-| ARKWEB_SCHEME_OPTION_CSP_BYPASSING = 1 << 5 | 如果设置了ARKWEB_SCHEME_OPTION_CSP_BYPASSING，则该scheme可以绕过内容安全策略（CSP）检查。 |
+| ARKWEB_SCHEME_OPTION_CSP_BYPASSING = 1 << 5 | 如果设置了ARKWEB_SCHEME_OPTION_CSP_BYPASSING，则该scheme可以绕过内容安全策略（CSP）检查。在大多数情况下，当设置了ARKWEB_SCHEME_OPTION_STANDARD时，此值不应被设置。 |
 | ARKWEB_SCHEME_OPTION_FETCH_ENABLED = 1 << 6 | 如果设置了ARKWEB_SCHEME_OPTION_FETCH_ENABLED，则可以发起该scheme的FETCH API请求。 |
 | ARKWEB_SCHEME_OPTION_CODE_CACHE_ENABLED = 1 << 7 | 如果设置了ARKWEB_SCHEME_OPTION_CODE_CACHE_ENABLED，则该scheme的js资源支持生成code cache。 |
 
@@ -174,7 +174,7 @@ enum ArkWeb_ResourceType
 | SHARED_WORKER = 10 | 共享工作线程的主资源。 |
 | PREFETCH = 11 | 明确的预取请求。 |
 | FAVICON = 12 | 网站图标。 |
-| XHR = 13 | XMLHttpRequest. |
+| XHR = 13 | XMLHttpRequest。 |
 | PING = 14 | sendBeacon的Ping请求。 |
 | SERVICE_WORKER = 15 | service worker的主资源。 |
 | CSP_REPORT = 16 | 内容安全策略违规报告。 |
@@ -252,7 +252,7 @@ typedef void (*ArkWeb_HttpBodyStreamReadCallback)(const ArkWeb_HttpBodyStream* h
 ### ArkWeb_HttpBodyStreamAsyncReadCallback()
 
 ```c
-typedef void (*ArkWeb_HttpBodyStreamAsyncReadCallback)(const ArkWeb_HttpBodyStream *httpBodyStream, uint8_t *buffer, int bytesRead)
+typedef void (*ArkWeb_HttpBodyStreamAsyncReadCallback)(const ArkWeb_HttpBodyStream* httpBodyStream, uint8_t* buffer, int bytesRead)
 ```
 
 **描述**
@@ -265,8 +265,8 @@ typedef void (*ArkWeb_HttpBodyStreamAsyncReadCallback)(const ArkWeb_HttpBodyStre
 
 | 参数项 | 描述 |
 | -- | -- |
-| (const ArkWeb_HttpBodyStream \*httpBodyStream | ArkWeb_HttpBodyStream。 |
-| uint8_t \*buffer | 接收数据的缓冲区。 |
+| (const ArkWeb_HttpBodyStream\* httpBodyStream | ArkWeb_HttpBodyStream。 |
+| uint8_t\* buffer | 接收数据的缓冲区。 |
 | int bytesRead | 标识异步读取操作执行结果的字节计数值。如果bytesRead大于0，则表示buffer已填充了bytesRead字节的数据。开发者可以从buffer中读取数据，如果OH_ArkWebHttpBodyStream_IsEof的返回值为false，则开发者可以继续读取剩余的数据。 |
 
 ### ArkWeb_HttpBodyStreamInitCallback()
@@ -1867,7 +1867,7 @@ int32_t OH_ArkWebErrorInfo_SetCompleteIfNoResponse(ArkWeb_ErrorInfo* errorInfo, 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | {@link ARKWEB_NET_OK} 0 -成功。<br> {@link ARKWEB_INVALID_PARAM} 17100101 -参数无效，errorInfo为nullptr。 |
+| int32_t | {@link ARKWEB_NET_OK} 0 -成功。<br> [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 17100101 -参数无效，errorInfo为nullptr。 |
 
 ### OH_ArkWebErrorInfo_GetCompleteIfNoResponse()
 
@@ -1916,7 +1916,7 @@ int32_t OH_ArkWebErrorInfo_SetCustomErrorCode(ArkWeb_ErrorInfo* errorInfo, int32
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | {@link ARKWEB_NET_OK} 0 -成功。<br> {@link ARKWEB_INVALID_PARAM} 17100101 -参数无效，errorInfo为nullptr。 |
+| int32_t | {@link ARKWEB_NET_OK} 0 -成功。<br> [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 17100101 -参数无效，errorInfo为nullptr。 |
 
 ### OH_ArkWebErrorInfo_GetCustomErrorCode()
 
@@ -1965,7 +1965,7 @@ int32_t OH_ArkWebErrorInfo_SetErrorCode(ArkWeb_ErrorInfo* errorInfo, ArkWeb_NetE
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | {@link ARKWEB_NET_OK} 0 -成功。<br> {@link ARKWEB_INVALID_PARAM} 17100101 -参数无效，errorInfo为nullptr。 |
+| int32_t | {@link ARKWEB_NET_OK} 0 -成功。<br> [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 17100101 -参数无效，errorInfo为nullptr。 |
 
 ### OH_ArkWebErrorInfo_GetErrorCode()
 
@@ -2014,7 +2014,7 @@ int32_t OH_ArkWebResponse_SetErrorInfo(ArkWeb_Response* response, ArkWeb_ErrorIn
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | {@link ARKWEB_NET_OK} 0 -成功。<br> {@link ARKWEB_INVALID_PARAM} 17100101 -参数无效。 |
+| int32_t | {@link ARKWEB_NET_OK} 0 -成功。<br> [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 17100101 -参数无效。 |
 
 ### OH_ArkWebResponse_GetErrorInfo()
 

@@ -16,7 +16,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -31,6 +31,6 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [deactivateUserKey](arkts-corefile-keymanager-deactivateuserkey-f-sys.md#deactivateUserKey) | 用户锁屏时，同步卸载指定用户对应密钥。**（该接口目前仅开放给锁屏应用）** |
+| [deactivateUserKey](arkts-corefile-keymanager-deactivateuserkey-f-sys.md#deactivateuserkey) | 用户锁屏时，同步卸载指定用户对应密钥。**（该接口目前仅开放给锁屏应用）** |
 <!--DelEnd-->
 

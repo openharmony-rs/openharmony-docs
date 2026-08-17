@@ -4,7 +4,7 @@
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 20
 
@@ -24,7 +24,7 @@ constructor()
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 20
 
@@ -57,7 +57,7 @@ constructor(locale: string | Array<string>, options?: DateTimeOptions)
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 20
 
@@ -76,7 +76,7 @@ constructor(locale: string | Array<string>, options?: DateTimeOptions)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | locale | string \| Array&lt;string&gt; | 是 | 区域ID或区域ID数组。输入是区域ID数组时，使用第一个有效的区域ID。 |
-| options | DateTimeOptions | 否 | 创建时间日期格式化对象时可设置的配置项。 &lt;br&gt;若所有选项均未设置时，year、month、day三个属性的默认值为numeric。 &lt;br&gt;默认值：所有属性都取默认值时的配置项。 |
+| options | DateTimeOptions | 否 | 创建时间日期格式化对象时可设置的配置项。 <br>若所有选项均未设置时，year、month、day三个属性的默认值为numeric。 <br>默认值：所有属性都取默认值时的配置项。 |
 
 ## 示例
 
@@ -100,7 +100,7 @@ format(date: Date): string
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 20
 
@@ -118,7 +118,7 @@ format(date: Date): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| date | Date | 是 | 时间日期。 &lt;br&gt;**说明：** &lt;br&gt;月份从0开始计数，0表示一月。 |
+| date | Date | 是 | 时间日期。 <br>**说明：** <br>月份从0开始计数，0表示一月。 |
 
 **返回值：**
 
@@ -151,7 +151,7 @@ formatRange(startDate: Date, endDate: Date): string
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 20
 
@@ -169,8 +169,8 @@ formatRange(startDate: Date, endDate: Date): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| startDate | Date | 是 | 时间日期的开始。 &lt;br&gt;**说明：** &lt;br&gt;月份从0开始计数，0表示一月。 |
-| endDate | Date | 是 | 时间日期的结束。 &lt;br&gt;**说明：** &lt;br&gt;月份从0开始计数，0表示一月。 |
+| startDate | Date | 是 | 时间日期的开始。 <br>**说明：** <br>月份从0开始计数，0表示一月。 |
+| endDate | Date | 是 | 时间日期的结束。 <br>**说明：** <br>月份从0开始计数，0表示一月。 |
 
 **返回值：**
 
@@ -200,7 +200,7 @@ resolvedOptions(): DateTimeOptions
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 20
 

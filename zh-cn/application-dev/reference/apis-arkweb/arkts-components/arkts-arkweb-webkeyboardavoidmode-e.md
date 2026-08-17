@@ -1,10 +1,10 @@
 # WebKeyboardAvoidMode
 
-Enum type supplied to keyboardAvoidMode for setting the web keyboard avoid mode.
+软键盘避让的模式。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -18,11 +18,11 @@ Enum type supplied to keyboardAvoidMode for setting the web keyboard avoid mode.
 RESIZE_VISUAL = 0
 ```
 
-Resize the visual viewport when keyboard avoidance occurs.
+软键盘避让时，仅调整可视视口大小，不调整布局视口大小。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -38,11 +38,11 @@ Resize the visual viewport when keyboard avoidance occurs.
 RESIZE_CONTENT = 1
 ```
 
-Resize the visual and layout viewport when keyboard avoidance occurs.
+默认值，软键盘避让时，同时调整可视视口和布局视口的大小。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -58,11 +58,11 @@ Resize the visual and layout viewport when keyboard avoidance occurs.
 OVERLAYS_CONTENT = 2
 ```
 
-Do not resize any viewport when keyboard avoidance occurs.
+不调整任何视口大小，不会触发软键盘避让。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -78,11 +78,11 @@ Do not resize any viewport when keyboard avoidance occurs.
 RETURN_TO_UICONTEXT = 3
 ```
 
-When the soft keyboard avoids, follow the avoid result of UIContext.
+Web组件的软键盘避让行为将跟随UIcontext设置的[KeyboardAvoidMode](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-keyboardavoidmode-e.md#keyboardavoidmode)模式，Web组件不再处理组件的避让。
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 

@@ -16,7 +16,7 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -37,7 +37,7 @@
 | --- | --- |
 | [begin](arkts-arkui-performancemonitor-begin-f-sys.md#begin) | 用于标记用户场景开始，用户场景开始时调用此接口。 |
 | [end](arkts-arkui-performancemonitor-end-f-sys.md#end) | 用于标记用户场景结束，用户场景结束时调用此接口。 |
-| [recordInputEventTime](arkts-arkui-performancemonitor-recordinputeventtime-f-sys.md#recordInputEventTime) | 记录动效场景开始前，用户输入触发事件类型与时间。 |
+| [recordInputEventTime](arkts-arkui-performancemonitor-recordinputeventtime-f-sys.md#recordinputeventtime) | 记录动效场景开始前，用户输入触发事件类型与时间。 |
 <!--DelEnd-->
 
 <!--Del-->

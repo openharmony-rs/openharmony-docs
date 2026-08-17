@@ -2,7 +2,7 @@
 
 ## 概述
 
-Provides APIs of metadata capability for Media Source.
+提供媒体源的元数据能力接口。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 

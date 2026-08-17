@@ -4,11 +4,11 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [SyncMode](arkts-arkdata-relationalstore-syncmode-e.md#SyncMode)
+**替代接口：** [SyncMode](arkts-arkdata-relationalstore-syncmode-e.md#syncmode)
 
 <!--Device-rdb-enum SyncMode--><!--Device-rdb-enum SyncMode-End-->
 
@@ -24,11 +24,11 @@ SYNC_MODE_PUSH = 0
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [SYNC_MODE_PUSH](arkts-arkdata-relationalstore-syncmode-e.md#SYNC_MODE_PUSH)
+**替代接口：** [SYNC_MODE_PUSH](arkts-arkdata-relationalstore-syncmode-e.md#syncmodepush)
 
 <!--Device-SyncMode-SYNC_MODE_PUSH = 0--><!--Device-SyncMode-SYNC_MODE_PUSH = 0-End-->
 
@@ -44,11 +44,11 @@ SYNC_MODE_PULL = 1
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [SYNC_MODE_PULL](arkts-arkdata-relationalstore-syncmode-e.md#SYNC_MODE_PULL)
+**替代接口：** [SYNC_MODE_PULL](arkts-arkdata-relationalstore-syncmode-e.md#syncmodepull)
 
 <!--Device-SyncMode-SYNC_MODE_PULL = 1--><!--Device-SyncMode-SYNC_MODE_PULL = 1-End-->
 

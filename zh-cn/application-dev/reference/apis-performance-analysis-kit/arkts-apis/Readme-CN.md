@@ -19,7 +19,8 @@
     - [write](arkts-performanceanalysis-hiappevent-write-depr-f.md)
     - [ConfigOption](arkts-performanceanalysis-hiappevent-configoption-depr-i.md)
     - [EventType](arkts-performanceanalysis-hiappevent-eventtype-depr-e.md)
-- [@ohos.hiSysEvent](arkts-hisysevent.md)
+<!--Del-->
+- [@ohos.hiSysEvent](arkts-hisysevent.md)<!--DelEnd-->
   <!--Del-->
   - [addWatcher(系统接口)](arkts-performanceanalysis-hisysevent-addwatcher-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -218,7 +219,8 @@
   - [watch](arkts-performanceanalysis-jsleakwatcher-watch-f.md)
   - [LeakWatcherConfig](arkts-performanceanalysis-jsleakwatcher-leakwatcherconfig-i.md)
   - [MonitorObjectType](arkts-performanceanalysis-jsleakwatcher-monitorobjecttype-e.md)
-- [@ohos.logLibrary](arkts-loglibrary.md)
+<!--Del-->
+- [@ohos.logLibrary](arkts-loglibrary.md)<!--DelEnd-->
   <!--Del-->
   - [copy(系统接口)](arkts-performanceanalysis-loglibrary-copy-f-sys.md)<!--DelEnd-->
   <!--Del-->

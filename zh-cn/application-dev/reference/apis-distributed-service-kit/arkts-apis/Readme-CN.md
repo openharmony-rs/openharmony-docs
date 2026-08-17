@@ -4,7 +4,8 @@
   - [DistributedExtensionAbility](arkts-distributedservice-application-distributedextensionability-distributedextensionability-c.md)
 - [@ohos.application.DistributedExtensionContext](arkts-application-distributedextensioncontext.md)
   - [DistributedExtensionContext](arkts-distributedservice-application-distributedextensioncontext-distributedextensioncontext-c.md)
-- [@ohos.cooperate](arkts-cooperate.md)
+<!--Del-->
+- [@ohos.cooperate](arkts-cooperate.md)<!--DelEnd-->
   <!--Del-->
   - [activate(系统接口)](arkts-distributedservice-cooperate-activate-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -118,7 +119,8 @@
   - [ExchangeMedium(系统接口)](arkts-distributedservice-devicemanager-exchangemedium-e-sys.md)<!--DelEnd-->
   <!--Del-->
   - [SubscribeCap(系统接口)](arkts-distributedservice-devicemanager-subscribecap-e-sys.md)<!--DelEnd-->
-- [@ohos.distributedHardware.hardwareManager](arkts-distributedhardware-hardwaremanager.md)
+<!--Del-->
+- [@ohos.distributedHardware.hardwareManager](arkts-distributedhardware-hardwaremanager.md)<!--DelEnd-->
   <!--Del-->
   - [pauseDistributedHardware(系统接口)](arkts-distributedservice-hardwaremanager-pausedistributedhardware-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -131,7 +133,8 @@
   - [DistributedHardwareErrorCode(系统接口)](arkts-distributedservice-hardwaremanager-distributedhardwareerrorcode-e-sys.md)<!--DelEnd-->
   <!--Del-->
   - [DistributedHardwareType(系统接口)](arkts-distributedservice-hardwaremanager-distributedhardwaretype-e-sys.md)<!--DelEnd-->
-- [@ohos.distributedSoftBus.conversation](arkts-distributedsoftbus-conversation.md)
+<!--Del-->
+- [@ohos.distributedSoftBus.conversation](arkts-distributedsoftbus-conversation.md)<!--DelEnd-->
   <!--Del-->
   - [getTrustedDevices(系统接口)](arkts-distributedservice-conversation-gettrusteddevices-f-sys.md)<!--DelEnd-->
   <!--Del-->

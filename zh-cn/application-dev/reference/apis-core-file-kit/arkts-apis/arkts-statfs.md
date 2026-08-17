@@ -4,11 +4,11 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [statfs](arkts-file-statvfs.md#@ohos.file.statvfs)
+**替代接口：** [statfs](arkts-file-statvfs.md#ohosfilestatvfs)
 
 <!--Device-unnamed-declare namespace Statfs--><!--Device-unnamed-declare namespace Statfs-End-->
 
@@ -20,8 +20,8 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [getFreeBytes](arkts-corefile-statfs-getfreebytes-depr-f.md#getFreeBytes) | 异步方法获取指定文件系统空闲字节数，使用callback形式返回结果。 |
-| [getFreeBytes](arkts-corefile-statfs-getfreebytes-depr-f.md#getFreeBytes) | 异步方法获取指定文件系统空闲字节数，以Promise形式返回结果。 |
-| [getTotalBytes](arkts-corefile-statfs-gettotalbytes-depr-f.md#getTotalBytes) | 异步方法获取指定文件系统总字节数，使用callback形式返回结果。 |
-| [getTotalBytes](arkts-corefile-statfs-gettotalbytes-depr-f.md#getTotalBytes) | 异步方法获取指定文件系统总字节数，以Promise形式返回结果。 |
+| [getFreeBytes](arkts-corefile-statfs-getfreebytes-depr-f.md#getfreebytes) | 异步方法获取指定文件系统空闲字节数，使用callback形式返回结果。 |
+| [getFreeBytes](arkts-corefile-statfs-getfreebytes-depr-f.md#getfreebytes) | 异步方法获取指定文件系统空闲字节数，以Promise形式返回结果。 |
+| [getTotalBytes](arkts-corefile-statfs-gettotalbytes-depr-f.md#gettotalbytes) | 异步方法获取指定文件系统总字节数，使用callback形式返回结果。 |
+| [getTotalBytes](arkts-corefile-statfs-gettotalbytes-depr-f.md#gettotalbytes) | 异步方法获取指定文件系统总字节数，以Promise形式返回结果。 |
 

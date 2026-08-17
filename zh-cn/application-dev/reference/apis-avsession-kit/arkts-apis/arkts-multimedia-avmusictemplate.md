@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -20,59 +20,59 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [createAVMusicTemplate](arkts-avsession-avmusictemplate-createavmusictemplate-f.md#createAVMusicTemplate) | 创建音频模板，返回音频模板实例。 |
+| [createAVMusicTemplate](arkts-avsession-avmusictemplate-createavmusictemplate-f.md#createavmusictemplate) | 创建音频模板，返回音频模板实例。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [createAVMusicTemplateController](arkts-avsession-avmusictemplate-createavmusictemplatecontroller-f-sys.md#createAVMusicTemplateController) | 创建音频模板控制器，返回音频模板控制器对象。 |
-| [getAllAVMusicTemplateDescriptors](arkts-avsession-avmusictemplate-getallavmusictemplatedescriptors-f-sys.md#getAllAVMusicTemplateDescriptors) | 获取所有的音频模板描述，返回音频模板描述的集合。 |
-| [offAVMusicTemplateCreate](arkts-avsession-avmusictemplate-offavmusictemplatecreate-f-sys.md#offAVMusicTemplateCreate) | 注销音频模板创建监听。 |
-| [offAVMusicTemplateDestroy](arkts-avsession-avmusictemplate-offavmusictemplatedestroy-f-sys.md#offAVMusicTemplateDestroy) | 注销音频模板销毁监听。 |
-| [onAVMusicTemplateCreate](arkts-avsession-avmusictemplate-onavmusictemplatecreate-f-sys.md#onAVMusicTemplateCreate) | 注册音频模板创建的监听。使用callback异步回调。 |
-| [onAVMusicTemplateDestroy](arkts-avsession-avmusictemplate-onavmusictemplatedestroy-f-sys.md#onAVMusicTemplateDestroy) | 注册音频模板销毁监听。使用callback异步回调。 |
+| [createAVMusicTemplateController](arkts-avsession-avmusictemplate-createavmusictemplatecontroller-f-sys.md#createavmusictemplatecontroller) | 创建音频模板控制器，返回音频模板控制器对象。 |
+| [getAllAVMusicTemplateDescriptors](arkts-avsession-avmusictemplate-getallavmusictemplatedescriptors-f-sys.md#getallavmusictemplatedescriptors) | 获取所有的音频模板描述，返回音频模板描述的集合。 |
+| [offAVMusicTemplateCreate](arkts-avsession-avmusictemplate-offavmusictemplatecreate-f-sys.md#offavmusictemplatecreate) | 注销音频模板创建监听。 |
+| [offAVMusicTemplateDestroy](arkts-avsession-avmusictemplate-offavmusictemplatedestroy-f-sys.md#offavmusictemplatedestroy) | 注销音频模板销毁监听。 |
+| [onAVMusicTemplateCreate](arkts-avsession-avmusictemplate-onavmusictemplatecreate-f-sys.md#onavmusictemplatecreate) | 注册音频模板创建的监听。使用callback异步回调。 |
+| [onAVMusicTemplateDestroy](arkts-avsession-avmusictemplate-onavmusictemplatedestroy-f-sys.md#onavmusictemplatedestroy) | 注册音频模板销毁监听。使用callback异步回调。 |
 <!--DelEnd-->
 
 ### 类
 
 | 名称 | 说明 |
 | --- | --- |
-| [AVMusicTemplate](arkts-avsession-avmusictemplate-avmusictemplate-c.md) | 调用[avMusicTemplate.createAVMusicTemplate](arkts-avsession-avmusictemplate-createavmusictemplate-f.md#createAVMusicTemplate)获取实例后，可获取其ID，启动音频模板界面，并配置数据获取 方法。随后，同步数据给模板控制方，以完成后续操作。 |
+| [AVMusicTemplate](arkts-avsession-avmusictemplate-avmusictemplate-c.md) | 调用[avMusicTemplate.createAVMusicTemplate](arkts-avsession-avmusictemplate-createavmusictemplate-f.md#createavmusictemplate)获取实例后，可获取其ID，启动音频模板界面，并配置数据获取 方法。随后，同步数据给模板控制方，以完成后续操作。 |
 | [AVMusicTemplateController](arkts-avsession-avmusictemplate-avmusictemplatecontroller-c.md) | 音频模板控制器，可以获得音频模板控制器唯一的标识，用于与接入音频模板的媒体应用数据交互。 |
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
-| [Album](arkts-avsession-avmusictemplate-album-i.md) | 专辑的定义。继承自[MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md#MediaEntity)。 |
-| [Banner](arkts-avsession-avmusictemplate-banner-i.md) | 海报的定义。继承自[MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md#MediaEntity)。 |
-| [Compilation](arkts-avsession-avmusictemplate-compilation-i.md) | 合集的定义。继承自[OperResult](arkts-avsession-avmusictemplate-operresult-i.md#OperResult)。 |
-| [CustomElement](arkts-avsession-avmusictemplate-customelement-i.md) | “我的主页”自定义元素的定义。继承自[OperResult](arkts-avsession-avmusictemplate-operresult-i.md#OperResult)。 |
+| [Album](arkts-avsession-avmusictemplate-album-i.md) | 专辑的定义。继承自[MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md#mediaentity)。 |
+| [Banner](arkts-avsession-avmusictemplate-banner-i.md) | 海报的定义。继承自[MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md#mediaentity)。 |
+| [Compilation](arkts-avsession-avmusictemplate-compilation-i.md) | 合集的定义。继承自[OperResult](arkts-avsession-avmusictemplate-operresult-i.md#operresult)。 |
+| [CustomElement](arkts-avsession-avmusictemplate-customelement-i.md) | “我的主页”自定义元素的定义。继承自[OperResult](arkts-avsession-avmusictemplate-operresult-i.md#operresult)。 |
 | [DialogActionInfo](arkts-avsession-avmusictemplate-dialogactioninfo-i.md) | 对话框动作信息的定义。 |
 | [DialogButtonInfo](arkts-avsession-avmusictemplate-dialogbuttoninfo-i.md) | 对话框按钮信息的定义。 |
 | [DialogInfo](arkts-avsession-avmusictemplate-dialoginfo-i.md) | 对话框信息的定义。 |
 | [EpisodeRange](arkts-avsession-avmusictemplate-episoderange-i.md) | 剧集的范围的定义。 |
 | [FavoriteData](arkts-avsession-avmusictemplate-favoritedata-i.md) | 收藏/订阅的定义。 |
 | [MediaElement](arkts-avsession-avmusictemplate-mediaelement-i.md) | 媒体元素Singer/Radio/Banner结构体定义 |
-| [MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md) | 媒体实例的定义。继承自[OperResult](arkts-avsession-avmusictemplate-operresult-i.md#OperResult)。 |
+| [MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md) | 媒体实例的定义。继承自[OperResult](arkts-avsession-avmusictemplate-operresult-i.md#operresult)。 |
 | [MediaTab](arkts-avsession-avmusictemplate-mediatab-i.md) | 媒体标签页的定义。 |
-| [MediaTabContent](arkts-avsession-avmusictemplate-mediatabcontent-i.md) | 媒体标签页内容的定义。继承自[OperResult](arkts-avsession-avmusictemplate-operresult-i.md#OperResult)。 |
+| [MediaTabContent](arkts-avsession-avmusictemplate-mediatabcontent-i.md) | 媒体标签页内容的定义。继承自[OperResult](arkts-avsession-avmusictemplate-operresult-i.md#operresult)。 |
 | [MemberPurchaseInfo](arkts-avsession-avmusictemplate-memberpurchaseinfo-i.md) | 会员购买信息的定义。 |
 | [OperResult](arkts-avsession-avmusictemplate-operresult-i.md) | 操作结果的定义。 |
-| [PageMediaEntity](arkts-avsession-avmusictemplate-pagemediaentity-i.md) | 标签页媒体的定义。继承自[OperResult](arkts-avsession-avmusictemplate-operresult-i.md#OperResult)。 |
+| [PageMediaEntity](arkts-avsession-avmusictemplate-pagemediaentity-i.md) | 标签页媒体的定义。继承自[OperResult](arkts-avsession-avmusictemplate-operresult-i.md#operresult)。 |
 | [PlayInfo](arkts-avsession-avmusictemplate-playinfo-i.md) | 播放信息的定义。 |
 | [QrCodeInfo](arkts-avsession-avmusictemplate-qrcodeinfo-i.md) | 二维码信息的定义。 |
 | [QueryMediaEntityParam](arkts-avsession-avmusictemplate-querymediaentityparam-i.md) | 查询媒体实例参数的定义。 |
-| [Ranking](arkts-avsession-avmusictemplate-ranking-i.md) | 排行榜的定义。继承自[MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md#MediaEntity)。 |
+| [Ranking](arkts-avsession-avmusictemplate-ranking-i.md) | 排行榜的定义。继承自[MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md#mediaentity)。 |
 | [SearchPlayInfo](arkts-avsession-avmusictemplate-searchplayinfo-i.md) | 搜播信息的定义。 |
 | [SearchPlayMusicInfo](arkts-avsession-avmusictemplate-searchplaymusicinfo-i.md) | 搜播的音频信息的定义。 |
 | [SearchPlayMusicItem](arkts-avsession-avmusictemplate-searchplaymusicitem-i.md) | 搜播的音频项目的定义。 |
 | [SearchPlayVideoInfo](arkts-avsession-avmusictemplate-searchplayvideoinfo-i.md) | 搜播的视频信息的定义。 |
 | [SettingContent](arkts-avsession-avmusictemplate-settingcontent-i.md) | 设置内容的定义（音频模板里有定义设置页面，设置内容用于设置页的填充）。 |
 | [SettingItem](arkts-avsession-avmusictemplate-settingitem-i.md) | 设置项的定义。 |
-| [Single](arkts-avsession-avmusictemplate-single-i.md) | 单曲的定义。继承自[MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md#MediaEntity)。 |
+| [Single](arkts-avsession-avmusictemplate-single-i.md) | 单曲的定义。继承自[MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md#mediaentity)。 |
 | [UserInfo](arkts-avsession-avmusictemplate-userinfo-i.md) | 用户信息的定义。 |
 
 <!--Del-->

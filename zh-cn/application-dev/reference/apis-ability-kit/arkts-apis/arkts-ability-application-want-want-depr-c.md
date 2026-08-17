@@ -4,11 +4,11 @@ Want是对象间信息传递的载体，可以用于应用组件间的信息传�
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [Want/Want](arkts-ability-app-ability-want-want-c.md#Want)
+**替代接口：** [Want/Want](arkts-ability-app-ability-want-want-c.md#want)
 
 <!--Device-unnamed-export default class Want--><!--Device-unnamed-export default class Want-End-->
 
@@ -26,11 +26,11 @@ abilityName?: string
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [abilityName](arkts-ability-app-ability-want-want-c.md#abilityName)
+**替代接口：** [abilityName](arkts-ability-app-ability-want-want-c.md#abilityname)
 
 <!--Device-Want-abilityName?: string--><!--Device-Want-abilityName?: string-End-->
 
@@ -42,13 +42,13 @@ abilityName?: string
 action?: string
 ```
 
-表示要执行的通用操作（如：查看、分享、应用详情）。在隐式Want中，您可以定义该字段，配合uri或parameters来表示对数据要执行的操作。具体参考： [action说明](arkts-ability-wantconstant-action-depr-e.md#Action)。隐式Want定义及匹配规则参考： [显式Want与隐式Want匹配规则](../../../application-models/explicit-implicit-want-mappings.md)。
+表示要执行的通用操作（如：查看、分享、应用详情）。在隐式Want中，您可以定义该字段，配合uri或parameters来表示对数据要执行的操作。具体参考： [action说明](arkts-ability-wantconstant-action-depr-e.md#action)。隐式Want定义及匹配规则参考： [显式Want与隐式Want匹配规则](../../../application-models/explicit-implicit-want-mappings.md)。
 
 **类型：** string
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -70,11 +70,11 @@ bundleName?: string
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [bundleName](arkts-ability-app-ability-want-want-c.md#bundleName)
+**替代接口：** [bundleName](arkts-ability-app-ability-want-want-c.md#bundlename)
 
 <!--Device-Want-bundleName?: string--><!--Device-Want-bundleName?: string-End-->
 
@@ -92,11 +92,11 @@ deviceId?: string
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [deviceId](arkts-ability-app-ability-want-want-c.md#deviceId)
+**替代接口：** [deviceId](arkts-ability-app-ability-want-want-c.md#deviceid)
 
 <!--Device-Want-deviceId?: string--><!--Device-Want-deviceId?: string-End-->
 
@@ -108,13 +108,13 @@ deviceId?: string
 entities?: Array<string>
 ```
 
-表示目标Ability额外的类别信息（如：浏览器、视频播放器）。在隐式Want中是对action字段的补充。在隐式Want中，您可以定义该字段，来过滤匹配Ability类型。具体参考： [entity说明](arkts-ability-wantconstant-entity-depr-e.md#Entity)。
+表示目标Ability额外的类别信息（如：浏览器、视频播放器）。在隐式Want中是对action字段的补充。在隐式Want中，您可以定义该字段，来过滤匹配Ability类型。具体参考： [entity说明](arkts-ability-wantconstant-entity-depr-e.md#entity)。
 
 **类型：** Array&lt;string&gt;
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -130,13 +130,13 @@ entities?: Array<string>
 flags?: number
 ```
 
-表示处理Want的方式。默认传数字，具体参考：[flags说明](arkts-ability-wantconstant-flags-depr-e.md#Flags)。
+表示处理Want的方式。默认传数字，具体参考：[flags说明](arkts-ability-wantconstant-flags-depr-e.md#flags)。
 
 **类型：** number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -158,7 +158,7 @@ parameters?: { [key: string]: any }
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -180,7 +180,7 @@ type?: string
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -202,7 +202,7 @@ uri?: string
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 

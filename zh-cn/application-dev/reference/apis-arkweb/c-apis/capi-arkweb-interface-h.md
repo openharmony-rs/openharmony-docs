@@ -54,7 +54,7 @@ enum ArkWeb_NativeAPIVariantKind
 | ARKWEB_NATIVE_WEB_MESSAGE_PORT | WebMessagePort相关API类型。 |
 | ARKWEB_NATIVE_WEB_MESSAGE | WebMessage相关API类型。 |
 | ARKWEB_NATIVE_COOKIE_MANAGER | CookieManager相关API类型。 |
-| ARKWEB_NATIVE_JAVASCRIPT_VALUE | API type related to ArkWeb JavaScript value.<br>**起始版本：** 18 |
+| ARKWEB_NATIVE_JAVASCRIPT_VALUE | JavaScriptValue相关API类型。<br>**起始版本：** 18 |
 
 
 ## 函数说明
@@ -68,8 +68,6 @@ ArkWeb_AnyNativeAPI* OH_ArkWeb_GetNativeAPI(ArkWeb_NativeAPIVariantKind type)
 **描述**
 
 根据传入的API类型，获取对应的Native API结构体。用于在Native代码中获取Controller以控制Web组件行为、获取CookieManager以管理Cookie、获取WebMessagePort以实现消息通信、获取JavaScriptValue以操作JavaScript对象等场景。
-
-**系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 12
 

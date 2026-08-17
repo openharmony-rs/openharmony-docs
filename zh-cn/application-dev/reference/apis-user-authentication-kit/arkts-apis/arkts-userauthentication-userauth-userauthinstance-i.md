@@ -1,10 +1,10 @@
 # UserAuthInstance
 
-用于执行用户身份认证，并支持使用统一用户身份认证控件。该接口提供了完整的用户认证能力，包括订阅认证结果、订阅认证中间状态、启动认证和取消认证等操作。通过统一认证控件，可以为用户提供标准化的认证界面和一致的认证体验。 使用以下接口前，需先通过[getUserAuthInstance](arkts-userauthentication-userauth-getuserauthinstance-f.md#getUserAuthInstance)方法获取UserAuthInstance对象。 > **说明：** > > 每个UserAuthInstance实例只能用于一次认证过程。若需要再次认证，必须重新获取UserAuthInstance实例。
+用于执行用户身份认证，并支持使用统一用户身份认证控件。该接口提供了完整的用户认证能力，包括订阅认证结果、订阅认证中间状态、启动认证和取消认证等操作。通过统一认证控件，可以为用户提供标准化的认证界面和一致的认证体验。 使用以下接口前，需先通过[getUserAuthInstance](arkts-userauthentication-userauth-getuserauthinstance-f.md#getuserauthinstance)方法获取UserAuthInstance对象。 > **说明：** > > 每个UserAuthInstance实例只能用于一次认证过程。若需要再次认证，必须重新获取UserAuthInstance实例。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ cancel(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -38,7 +38,7 @@ cancel(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: &lt;br&gt;1. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [12500002](../errorcode-useriam.md#12500002-身份认证系统通用错误码) | General operation error. |
 
@@ -91,11 +91,11 @@ try {
 offAuthTip(callback?: AuthTipCallback): void
 ```
 
-取消订阅用户身份认证中间状态。 > **说明：** > > 需要使用已经成功订阅事件的[UserAuthInstance](#UserAuthInstance)对象调用该接口进行取消订阅。
+取消订阅用户身份认证中间状态。 > **说明：** > > 需要使用已经成功订阅事件的[UserAuthInstance](#userauthinstance)对象调用该接口进行取消订阅。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -163,11 +163,11 @@ try {
 offResult(callback?: IAuthCallback): void
 ```
 
-取消订阅用户身份认证的结果。 > **说明：** > > 需要使用已经成功订阅事件的[UserAuthInstance](#UserAuthInstance)对象调用该接口进行取消订阅。
+取消订阅用户身份认证的结果。 > **说明：** > > 需要使用已经成功订阅事件的[UserAuthInstance](#userauthinstance)对象调用该接口进行取消订阅。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -185,7 +185,7 @@ offResult(callback?: IAuthCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: &lt;br&gt;1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. &lt;br&gt;3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | [12500002](../errorcode-useriam.md#12500002-身份认证系统通用错误码) | General operation error. |
 
 ## 示例
@@ -238,11 +238,11 @@ try {
 off(type: 'authTip', callback?: AuthTipCallback): void
 ```
 
-取消订阅用户身份认证中间状态。该接口常用于以下场景：认证完成后清理订阅监听释放资源；不再需要监听认证过程中的提示信息时取消订阅；页面销毁或组件卸载时取消订阅。 > **说明：** > > 需要使用已经成功订阅事件的[UserAuthInstance](#UserAuthInstance)对象调用该接口进行取消订阅。
+取消订阅用户身份认证中间状态。该接口常用于以下场景：认证完成后清理订阅监听释放资源；不再需要监听认证过程中的提示信息时取消订阅；页面销毁或组件卸载时取消订阅。 > **说明：** > > 需要使用已经成功订阅事件的[UserAuthInstance](#userauthinstance)对象调用该接口进行取消订阅。
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -256,8 +256,8 @@ off(type: 'authTip', callback?: AuthTipCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'authTip' | 是 | 取消订阅的事件类型，支持的事件为'authTip'，当[start()](#start)调用完成，发起身份认 证并调用[on('authTip')](#on_result)订阅该事件后，调用该 方法可取消订阅，不会再触发该事件。 |
-| callback | [AuthTipCallback](arkts-userauthentication-userauth-authtipcallback-t.md) | 否 | 认证接口的回调函数，用于返回认证中间状态。 当不传该参数时默认值为调用 [on('authTip')](#on_result)接口时传递的参数值。 |
+| type | 'authTip' | 是 | 取消订阅的事件类型，支持的事件为'authTip'，当[start()](#start)调用完成，发起身份认 证并调用[on('authTip')](#onresult)订阅该事件后，调用该 方法可取消订阅，不会再触发该事件。 |
+| callback | [AuthTipCallback](arkts-userauthentication-userauth-authtipcallback-t.md) | 否 | 认证接口的回调函数，用于返回认证中间状态。 当不传该参数时默认值为调用 [on('authTip')](#onresult)接口时传递的参数值。 |
 
 **错误码：**
 
@@ -313,11 +313,11 @@ try {
 off(type: 'result', callback?: IAuthCallback): void
 ```
 
-取消订阅用户身份认证的结果。该接口常用于以下场景：页面销毁或组件卸载时取消订阅；不再需要监听认证结果时释放资源。 > **说明：** > > 需要使用已经成功订阅事件的[UserAuthInstance](#UserAuthInstance)对象调用该接口进行取消订阅。
+取消订阅用户身份认证的结果。该接口常用于以下场景：页面销毁或组件卸载时取消订阅；不再需要监听认证结果时释放资源。 > **说明：** > > 需要使用已经成功订阅事件的[UserAuthInstance](#userauthinstance)对象调用该接口进行取消订阅。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -332,13 +332,13 @@ off(type: 'result', callback?: IAuthCallback): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'result' | 是 | 订阅事件类型，表明该事件用来返回认证结果。 |
-| callback | [IAuthCallback](arkts-userauthentication-userauth-iauthcallback-i.md) | 否 | 认证接口的回调函数，用于返回认证结果。当不传该参数时默认值为调用 [on('result')](#on_result)接口时传递的参数值。 |
+| callback | [IAuthCallback](arkts-userauthentication-userauth-iauthcallback-i.md) | 否 | 认证接口的回调函数，用于返回认证结果。当不传该参数时默认值为调用 [on('result')](#onresult)接口时传递的参数值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: &lt;br&gt;1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. &lt;br&gt;3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | [12500002](../errorcode-useriam.md#12500002-身份认证系统通用错误码) | General operation error. |
 
 ## 示例
@@ -395,7 +395,7 @@ onAuthTip(callback: AuthTipCallback): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -466,11 +466,11 @@ try {
 onResult(callback: IAuthCallback): void
 ```
 
-订阅用户身份认证的最终结果。通过该接口获取到的是用户在认证控件完成身份认证交互后的最终身份认证结果。认证控件消失前，用户中间的认证失败尝试并不会通过该接口返回。 如果需要感知整个认证过程中用户的每一次认证失败尝试，请通过[on('authTip')](#on_authTip)接口订阅。
+订阅用户身份认证的最终结果。通过该接口获取到的是用户在认证控件完成身份认证交互后的最终身份认证结果。认证控件消失前，用户中间的认证失败尝试并不会通过该接口返回。 如果需要感知整个认证过程中用户的每一次认证失败尝试，请通过[on('authTip')](#onauthtip)接口订阅。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -488,7 +488,7 @@ onResult(callback: IAuthCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: &lt;br&gt;1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. &lt;br&gt;3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | [12500002](../errorcode-useriam.md#12500002-身份认证系统通用错误码) | General operation error. |
 
 ## 示例
@@ -611,11 +611,11 @@ struct Index {
 on(type: 'authTip', callback: AuthTipCallback): void
 ```
 
-订阅身份认证过程中的提示信息。通过该接口可以获取到认证过程中控件的拉起和退出提示，以及认证过程中用户的每一次认证不通过尝试。使用callback异步回调。 > **说明：** > > 在PC/2in1设备上，应用如果使用模应用弹窗方式发起认证（即配置用户界面参数[widgetParam](arkts-userauthentication-userauth-widgetparam-i.md#WidgetParam)时传入了有效的uiContext），收到认证结果后，若需弹出其 > 他窗口，应先获取控件弹窗释放的标志消息，通过 > [on('authTip')](#on_result)接口订阅控件释放消息（ > authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED）。
+订阅身份认证过程中的提示信息。通过该接口可以获取到认证过程中控件的拉起和退出提示，以及认证过程中用户的每一次认证不通过尝试。使用callback异步回调。 > **说明：** > > 在PC/2in1设备上，应用如果使用模应用弹窗方式发起认证（即配置用户界面参数[widgetParam](arkts-userauthentication-userauth-widgetparam-i.md#widgetparam)时传入了有效的uiContext），收到认证结果后，若需弹出其 > 他窗口，应先获取控件弹窗释放的标志消息，通过 > [on('authTip')](#onresult)接口订阅控件释放消息（ > authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED）。
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -689,11 +689,11 @@ try {
 on(type: 'result', callback: IAuthCallback): void
 ```
 
-订阅用户身份认证的最终结果。通过该接口获取到的是用户在认证控件完成身份认证交互后的最终身份认证结果。认证控件消失前，用户中间的认证不通过尝试并不会通过该接口返回，只有最终的认证结果（成功或最终失败）会通过此接口返回。如果需要感 知整个认证过程中用户的每一次认证不通过尝试和中间状态，请通过 [on('authTip')](#on_result)接口订阅。 > **说明：** > > 在PC/2in1设备上，应用如果使用模应用弹窗方式发起认证（即配置用户界面参数[widgetParam](arkts-userauthentication-userauth-widgetparam-i.md#WidgetParam)时传入了有效的uiContext），收到认证结果后，若需弹出其 > 他窗口，应先获取控件弹窗释放的标志消息，通过 > [on('authTip')](#on_result)接口订阅控件释放消息（ > authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED）。
+订阅用户身份认证的最终结果。通过该接口获取到的是用户在认证控件完成身份认证交互后的最终身份认证结果。认证控件消失前，用户中间的认证不通过尝试并不会通过该接口返回，只有最终的认证结果（成功或最终失败）会通过此接口返回。如果需要感 知整个认证过程中用户的每一次认证不通过尝试和中间状态，请通过 [on('authTip')](#onresult)接口订阅。 > **说明：** > > 在PC/2in1设备上，应用如果使用模应用弹窗方式发起认证（即配置用户界面参数[widgetParam](arkts-userauthentication-userauth-widgetparam-i.md#widgetparam)时传入了有效的uiContext），收到认证结果后，若需弹出其 > 他窗口，应先获取控件弹窗释放的标志消息，通过 > [on('authTip')](#onresult)接口订阅控件释放消息（ > authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED）。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -714,7 +714,7 @@ on(type: 'result', callback: IAuthCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: &lt;br&gt;1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. &lt;br&gt;3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | [12500002](../errorcode-useriam.md#12500002-身份认证系统通用错误码) | General operation error. |
 
 ## start
@@ -727,7 +727,7 @@ start(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -745,8 +745,8 @@ start(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Possible causes: &lt;br&gt;1. No permission to access biometric. &lt;br&gt;2. No permission to start authentication from background. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: &lt;br&gt;1. Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Possible causes: <br>1. No permission to access biometric. <br>2. No permission to start authentication from background. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Incorrect parameter types. |
 | [12500013](../errorcode-useriam.md#12500013-密码过期) | Operation failed because of PIN expired.<br>**适用版本：** 12+ |
 | [12500010](../errorcode-useriam.md#12500010-该类型的凭据没有录入) | The type of credential has not been enrolled. |
 | [12500011](../errorcode-useriam.md#12500011-提示通知切换自定义认证) | Switched to the customized authentication process. |

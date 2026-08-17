@@ -4,7 +4,7 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ ChipV2Options的构造函数
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -36,5 +36,5 @@ ChipV2Options的构造函数
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| config | [IChipV2OptionsConfig](arkts-na-arkui-advanced-chipv2-ichipv2optionsconfig-i.md) | 是 | Chip的选项 |
+| config | [IChipV2OptionsConfig](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-chipv2-ichipv2optionsconfig-i.md) | 是 | Chip的选项 |
 

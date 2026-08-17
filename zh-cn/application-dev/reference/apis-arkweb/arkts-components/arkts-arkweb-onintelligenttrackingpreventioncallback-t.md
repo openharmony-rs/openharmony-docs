@@ -4,11 +4,11 @@
 type OnIntelligentTrackingPreventionCallback = (details: IntelligentTrackingPreventionDetails) => void
 ```
 
-The callback of Intelligent Tracking Prevention.
+当跟踪者cookie被拦截时触发的回调。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -22,5 +22,5 @@ The callback of Intelligent Tracking Prevention.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| details | [IntelligentTrackingPreventionDetails](arkts-arkweb-intelligenttrackingpreventiondetails-i.md) | 是 | callback information of onIntelligentTrackingPrevention. |
+| details | [IntelligentTrackingPreventionDetails](arkts-arkweb-intelligenttrackingpreventiondetails-i.md) | 是 | 提供智能防跟踪拦截的详细信息。 |
 

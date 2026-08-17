@@ -4,11 +4,11 @@
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 8
 
-**替代接口：** [PedometerResponse](arkts-sensorservice-sensor-pedometerresponse-i.md#PedometerResponse)
+**替代接口：** [PedometerResponse](arkts-sensorservice-sensor-pedometerresponse-i.md#pedometerresponse)
 
 **需要权限：** ohos.permission.ACTIVITY_MOTION
 
@@ -28,7 +28,7 @@ steps: number
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 8
 

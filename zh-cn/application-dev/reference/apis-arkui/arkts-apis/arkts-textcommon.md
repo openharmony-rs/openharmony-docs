@@ -6,11 +6,11 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [ColorShaderStyle](arkts-arkui-textcommon-colorshaderstyle-c.md) | 显示为纯色。ColorShaderStyle继承自[ShaderStyle](arkts-arkui-textcommon-shaderstyle-c.md#ShaderStyle)。 |
+| [ColorShaderStyle](arkts-arkui-textcommon-colorshaderstyle-c.md) | 显示为纯色。ColorShaderStyle继承自[ShaderStyle](arkts-arkui-textcommon-shaderstyle-c.md#shaderstyle)。 |
 | [ContentTransition](arkts-arkui-textcommon-contenttransition-c.md) | 文本动效基类。 |
-| [LinearGradientStyle](arkts-arkui-textcommon-lineargradientstyle-c.md) | 显示为线性渐变。LinearGradientStyle继承自[ShaderStyle](arkts-arkui-textcommon-shaderstyle-c.md#ShaderStyle)。 |
-| [NumericTextTransition](arkts-arkui-textcommon-numerictexttransition-c.md) | 数字翻牌动效。仅限正整数，不支持小数和负数。不支持渐变色和Text跑马灯模式。不支持选中， [copyOption](../../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9)属性无效。当文本存在子组件时或通过属性字符串设置 时，数字翻牌失效。 NumericTextTransition继承自[ContentTransition](arkts-arkui-textcommon-contenttransition-c.md#ContentTransition)。 |
-| [RadialGradientStyle](arkts-arkui-textcommon-radialgradientstyle-c.md) | 显示为径向渐变。RadialGradientStyle继承自[ShaderStyle](arkts-arkui-textcommon-shaderstyle-c.md#ShaderStyle)。 |
+| [LinearGradientStyle](arkts-arkui-textcommon-lineargradientstyle-c.md) | 显示为线性渐变。LinearGradientStyle继承自[ShaderStyle](arkts-arkui-textcommon-shaderstyle-c.md#shaderstyle)。 |
+| [NumericTextTransition](arkts-arkui-textcommon-numerictexttransition-c.md) | 数字翻牌动效。仅限正整数，不支持小数和负数。不支持渐变色和Text跑马灯模式。不支持选中， [copyOption](../../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9)属性无效。当文本存在子组件时或通过属性字符串设置 时，数字翻牌失效。 NumericTextTransition继承自[ContentTransition](arkts-arkui-textcommon-contenttransition-c.md#contenttransition)。 |
+| [RadialGradientStyle](arkts-arkui-textcommon-radialgradientstyle-c.md) | 显示为径向渐变。RadialGradientStyle继承自[ShaderStyle](arkts-arkui-textcommon-shaderstyle-c.md#shaderstyle)。 |
 | [ShaderStyle](arkts-arkui-textcommon-shaderstyle-c.md) | 文本着色器效果基类。 |
 | [TextMenuItemId](arkts-arkui-textcommon-textmenuitemid-c.md) | 自定义菜单项的Id值。用于识别菜单选项，内置菜单项Id值见下列属性表格。 |
 
@@ -42,7 +42,7 @@
 | [TextBaseController](arkts-arkui-textcommon-textbasecontroller-i.md) | 文本选择控制器。 |
 | [TextChangeOptions](arkts-arkui-textcommon-textchangeoptions-i.md) | 变化前的文本信息，以及变化后的选区范围。 |
 | [TextDataDetectorConfig](arkts-arkui-textcommon-textdatadetectorconfig-i.md) | 文本识别配置项。该配置只支持[Text](../../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)组件和 [RichEditor](../../../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md)组件。 |
-| [TextEditControllerEx](arkts-arkui-textcommon-texteditcontrollerex-i.md) | 文本扩展编辑控制器。 继承自[TextBaseController](arkts-arkui-textcommon-textbasecontroller-i.md#TextBaseController)。 |
+| [TextEditControllerEx](arkts-arkui-textcommon-texteditcontrollerex-i.md) | 文本扩展编辑控制器。 继承自[TextBaseController](arkts-arkui-textcommon-textbasecontroller-i.md#textbasecontroller)。 |
 | [TextLayoutOptions](arkts-arkui-textcommon-textlayoutoptions-i.md) | 文本布局选项。 |
 | [TextMenuItem](arkts-arkui-textcommon-textmenuitem-i.md) | TextMenuItem |
 | [TextMenuOptions](arkts-arkui-textcommon-textmenuoptions-i.md) | 菜单选项。 |

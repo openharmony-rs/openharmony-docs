@@ -10,7 +10,7 @@ declare function readLinesSync(filePath: string, options?: Options): ReaderItera
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -23,7 +23,7 @@ declare function readLinesSync(filePath: string, options?: Options): ReaderItera
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | filePath | string | 是 | 文件的应用沙箱路径。 |
-| options | [Options](arkts-corefile-file-fs-options-i.md) | 否 | 可选项。支持以下选项：&lt;br/&gt;- encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认'utf-8'，仅支持'utf-8' 。 |
+| options | [Options](../../apis-na/arkts-apis/arkts-na-file-fs-options-i.md) | 否 | 可选项。支持以下选项：<br/>- encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认'utf-8'，仅支持'utf-8' 。 |
 
 **返回值：**
 

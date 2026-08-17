@@ -4,7 +4,7 @@
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 6
 
@@ -24,11 +24,11 @@ charging: boolean
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 6
 
-**替代接口：** [chargingStatus](arkts-basicservices-batteryinfo-con.md#chargingStatus)
+**替代接口：** [chargingStatus](arkts-basicservices-batteryinfo-chargingstatus-f.md#chargingstatus)
 
 <!--Device-BatteryResponse-charging: boolean--><!--Device-BatteryResponse-charging: boolean-End-->
 
@@ -46,11 +46,11 @@ level: number
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 6
 
-**替代接口：** [batterySOC](arkts-basicservices-batteryinfo-con.md#batterySOC)
+**替代接口：** [batterySOC](arkts-basicservices-batteryinfo-batterysoc-f.md#batterysoc)
 
 <!--Device-BatteryResponse-level: number--><!--Device-BatteryResponse-level: number-End-->
 

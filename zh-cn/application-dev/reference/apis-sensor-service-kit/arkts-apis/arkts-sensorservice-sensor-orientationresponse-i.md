@@ -1,12 +1,12 @@
 # OrientationResponse
 
-方向传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md#Response)。
+方向传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md#response)。
 
-**继承/实现关系：** OrientationResponse extends [Response](arkts-sensorservice-sensor-response-i.md#Response)
+**继承/实现关系：** OrientationResponse extends [Response](arkts-sensorservice-sensor-response-i.md#response)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -20,13 +20,13 @@
 alpha: double
 ```
 
-设备围绕Z轴的旋转角度，即方位角。单位：degree（度）；取值范围：[0, 360]。
+设备围绕Z轴的旋转角度，即方位角。单位：°（度）；取值范围：[0, 360]。
 
 **类型：** double
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -42,13 +42,13 @@ alpha: double
 beta: double
 ```
 
-设备围绕X轴的旋转角度，即俯仰角。单位：degree（度）；取值范围：[-180, 180]。
+设备围绕X轴的旋转角度，即俯仰角。单位：°（度）；取值范围：[-180, 180]。
 
 **类型：** double
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -64,13 +64,13 @@ beta: double
 gamma: double
 ```
 
-设备围绕Y轴的旋转角度，即翻转角。单位：degree（度）；取值范围：[-90, 90]。
+设备围绕Y轴的旋转角度，即翻转角。单位：°（度）；取值范围：[-90, 90]。
 
 **类型：** double
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

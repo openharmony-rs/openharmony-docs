@@ -6,11 +6,11 @@
 function setMagnificationState(state: boolean): void
 ```
 
-触发或者关闭放大手势功能的放大效果，使用前需要保证放大手势功能已开启。
+设置放大效果的启用状态。放大效果依赖放大手势功能，仅在放大手势功能已启用的前提下，本接口的设置才会生效。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ function setMagnificationState(state: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| state | boolean | 是 | 表示放大手势功能的放大效果的启用状态。&lt;br&gt;-true：表示触发放大效果。&lt;br&gt;-false：表示关闭放大效果。 |
+| state | boolean | 是 | 表示放大效果的启用状态。 <br>- true：表示启用放大效果。 <br>- false：表示关闭放大效果。 |
 
 **错误码：**
 

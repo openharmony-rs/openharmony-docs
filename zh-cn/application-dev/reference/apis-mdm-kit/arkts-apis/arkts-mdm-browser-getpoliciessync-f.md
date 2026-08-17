@@ -10,7 +10,7 @@ function getPoliciesSync(admin: Want, appId: string): string
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -40,6 +40,29 @@ function getPoliciesSync(admin: Want, appId: string): string
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 
+## 示例
+
+```TypeScript
+import { browser } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+// 此处参数appId的赋值应替换为开发者自己指定的浏览器的应用ID
+let appId: string = 'com.example.******_******/******5t5CoBM=';
+
+try {
+  let result: string = browser.getPoliciesSync(wantTemp, appId);
+  console.info(`Succeeded in getting browser policies, result : ${JSON.stringify(result)}`);
+} catch (err) {
+  console.error(`Failed to get browser policies. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
 
 ## getPoliciesSync
 
@@ -51,7 +74,7 @@ function getPoliciesSync(admin: Want | null, appId: string): string
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -85,19 +108,13 @@ function getPoliciesSync(admin: Want | null, appId: string): string
 
 ```TypeScript
 import { browser } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
 
 // 此处参数appId的赋值应替换为开发者自己指定的浏览器的应用ID
 let appId: string = 'com.example.******_******/******5t5CoBM=';
 
 try {
-  let result: string = browser.getPoliciesSync(wantTemp, appId);
+  // 参数需根据实际情况进行替换
+  let result: string = browser.getPoliciesSync(null, appId);
   console.info(`Succeeded in getting browser policies, result : ${JSON.stringify(result)}`);
 } catch(err) {
   console.error(`Failed to get browser policies. Code is ${err.code}, message is ${err.message}`);

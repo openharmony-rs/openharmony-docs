@@ -4,7 +4,7 @@ Defines the first screen paint info.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ The first screen paint time of the url.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -38,13 +38,13 @@ The first screen paint time of the url.
 navigationStartTime: long
 ```
 
-The navigation start time of the url. &lt;br&gt;Unit:milliseconds.
+The navigation start time of the url. <br>Unit:milliseconds.
 
 **类型：** long
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -58,13 +58,13 @@ The navigation start time of the url. &lt;br&gt;Unit:milliseconds.
 url: string
 ```
 
-The url of first screen paint info. &lt;br&gt;Unit:milliseconds.
+The url of first screen paint info. <br>Unit:milliseconds.
 
 **类型：** string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

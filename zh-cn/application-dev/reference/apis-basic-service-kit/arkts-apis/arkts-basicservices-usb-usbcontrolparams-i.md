@@ -4,11 +4,11 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [USBControlParams](arkts-basicservices-usbmanager-usbcontrolparams-i.md#USBControlParams)
+**替代接口：** [USBControlParams](arkts-basicservices-usbmanager-usbcontrolparams-i.md#usbcontrolparams)
 
 <!--Device-usb-interface USBControlParams--><!--Device-usb-interface USBControlParams-End-->
 
@@ -26,7 +26,7 @@ data: Uint8Array
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -48,7 +48,7 @@ index: number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -70,11 +70,11 @@ reqType: USBControlRequestType
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [reqType](arkts-basicservices-usbmanager-usbcontrolparams-i.md#reqType)
+**替代接口：** [reqType](arkts-basicservices-usbmanager-usbcontrolparams-i.md#reqtype)
 
 <!--Device-USBControlParams-reqType: USBControlRequestType--><!--Device-USBControlParams-reqType: USBControlRequestType-End-->
 
@@ -92,7 +92,7 @@ request: number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -114,7 +114,7 @@ target: USBRequestTargetType
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -136,7 +136,7 @@ value: number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 

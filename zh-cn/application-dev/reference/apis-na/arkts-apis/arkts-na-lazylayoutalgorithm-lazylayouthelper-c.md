@@ -4,7 +4,7 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ getLazyLayoutDirection(): LazyLayoutDirection
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -48,7 +48,7 @@ getViewEnd(): int
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -62,7 +62,7 @@ getViewEnd(): int
 
 | 类型 | 说明 |
 | --- | --- |
-| int | The end position of the visible view. &lt;br&gt;Unit: px. |
+| int | The end position of the visible view. <br>Unit: px. |
 
 ## getViewStart
 
@@ -74,7 +74,7 @@ getViewStart(): int
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -88,7 +88,7 @@ getViewStart(): int
 
 | 类型 | 说明 |
 | --- | --- |
-| int | The start position of the visible view. &lt;br&gt;Unit: px. |
+| int | The start position of the visible view. <br>Unit: px. |
 
 ## setAdjustedOffset
 
@@ -100,7 +100,7 @@ setAdjustedOffset(offset: int): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -114,7 +114,7 @@ setAdjustedOffset(offset: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 是 | 设置要的调整偏移值。 &lt;br&gt;单位:单位：px。 |
+| offset | int | 是 | 设置要的调整偏移值。 <br>单位:单位：px。 |
 
 ## setChildrenInactive
 
@@ -126,7 +126,7 @@ setChildrenInactive(children: int[]): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

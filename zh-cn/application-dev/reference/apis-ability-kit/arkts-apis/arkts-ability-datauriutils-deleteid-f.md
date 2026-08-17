@@ -10,7 +10,7 @@ function deleteId(uri: string): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -45,7 +45,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let uri = dataUriUtils.deleteId('com.example.dataUriUtils/1221');
   console.info(`delete id with the uri is: ${uri}`);
-} catch(err) {
+} catch (err) {
   console.error(`delete id err, code: ${(err as BusinessError).code}, msg: ${(err as BusinessError).message}`);
 }
 ```

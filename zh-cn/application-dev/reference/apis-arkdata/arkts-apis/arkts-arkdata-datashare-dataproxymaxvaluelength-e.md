@@ -1,10 +1,10 @@
 # DataProxyMaxValueLength
 
-[共享配置](arkts-arkdata-datashare-proxydata-i.md#ProxyData)的值允许的最大长度的枚举值。
+[共享配置](arkts-arkdata-datashare-proxydata-i.md#proxydata)的值允许的最大长度的枚举值。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ MAX_LENGTH_4K = 4096
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -42,7 +42,7 @@ MAX_LENGTH_100K = 102400
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

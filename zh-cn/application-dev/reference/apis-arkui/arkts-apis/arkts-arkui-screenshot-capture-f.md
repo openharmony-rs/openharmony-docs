@@ -10,7 +10,7 @@ function capture(options?: CaptureOption): Promise<image.PixelMap>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -55,7 +55,7 @@ import { image } from '@kit.ImageKit';
 
 // 配置截图参数，指定截取displayId为0的屏幕
 let captureOption: screenshot.CaptureOption = {
-  "displayId": 0
+  displayId: 0
 };
 try {
   // 调用capture接口获取全屏截图

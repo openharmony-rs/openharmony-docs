@@ -4,7 +4,7 @@
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
@@ -23,9 +23,9 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [REPRESENTS_FILE](arkts-corefile-documentflag-con-sys.md#REPRESENTS_FILE) | 代表文件。 |
-| [REPRESENTS_DIR](arkts-corefile-documentflag-con-sys.md#REPRESENTS_DIR) | 代表目录。 |
-| [SUPPORTS_READ](arkts-corefile-documentflag-con-sys.md#SUPPORTS_READ) | 此设备支持读。 |
-| [SUPPORTS_WRITE](arkts-corefile-documentflag-con-sys.md#SUPPORTS_WRITE) | 此设备支持写。 |
+| [REPRESENTS_FILE](arkts-corefile-documentflag-con-sys.md#representsfile) | 代表文件。 |
+| [REPRESENTS_DIR](arkts-corefile-documentflag-con-sys.md#representsdir) | 代表目录。 |
+| [SUPPORTS_READ](arkts-corefile-documentflag-con-sys.md#supportsread) | 此设备支持读。 |
+| [SUPPORTS_WRITE](arkts-corefile-documentflag-con-sys.md#supportswrite) | 此设备支持写。 |
 <!--DelEnd-->
 

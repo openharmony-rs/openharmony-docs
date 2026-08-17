@@ -14,7 +14,7 @@ export declare function ParallelizeUI(
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -47,7 +47,7 @@ export declare function ParallelizeUI<T>(
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -82,7 +82,7 @@ export declare function ParallelizeUI<V, T>(
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -98,6 +98,6 @@ export declare function ParallelizeUI<V, T>(
 | --- | --- | --- | --- |
 | options | [ParallelOption](arkts-arkui-arkui-parallelize-paralleloption-i.md) \| undefined | 是 | 使用ParallelizeUI方法创建组件时选择是否开启并行化的参数，当options参数为undefined时，默认开启并行化创建。 |
 | arr | Array&lt;V&gt; | 是 | 数据源，为Array类型的数组。 |
-| param | (item: V, index: int) =&gt; T | 是 | 参数生成函数，用于生成content_调用时的参数。该函数会在UI线程调用，开发者可将并行创建需要用到的数据在此处进行拷贝。避免数据多线程读写 引发的安全性问题。&lt;br/&gt;说明：&lt;br/&gt;- item是当前数据项，index是数据项索引值。 |
+| param | (item: V, index: int) =&gt; T | 是 | 参数生成函数，用于生成content_调用时的参数。该函数会在UI线程调用，开发者可将并行创建需要用到的数据在此处进行拷贝。避免数据多线程读写 引发的安全性问题。<br/>说明：<br/>- item是当前数据项，index是数据项索引值。 |
 | content_ | CustomBuilderT&lt;T&gt; | 是 | 定义要创建的UI内容。param参数为param函数调用后返回的对象。 |
 

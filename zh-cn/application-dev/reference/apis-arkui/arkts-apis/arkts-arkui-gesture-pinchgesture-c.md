@@ -2,11 +2,11 @@
 
 用于触发捏合手势，最少需要2指，最多5指，最小识别距离为5vp。在支持鼠标和键盘输入的设备上，通过“Ctrl+鼠标滚轮”也可以触发捏合手势。 > **说明：** > > 捏合手势触发成功后，抬起手指直至不再满足触发条件。再次满足条件时，可重新触发捏合手势。
 
-**继承/实现关系：** PinchGesture extends [Gesture](arkts-arkui-gesture-gesture-c.md#Gesture)
+**继承/实现关系：** PinchGesture extends [Gesture](arkts-arkui-gesture-gesture-c.md#gesture)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -20,11 +20,11 @@
 static $_instantiate(factory: () => PinchGesture, value?: PinchGestureHandlerOptions): PinchGesture
 ```
 
-设置捏合手势事件。继承自[Gesture](arkts-arkui-gesture-gesture-c.md#Gesture)。
+设置捏合手势事件。继承自[Gesture](arkts-arkui-gesture-gesture-c.md#gesture)。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -53,11 +53,11 @@ static $_instantiate(factory: () => PinchGesture, value?: PinchGestureHandlerOpt
 onActionCancel(event: Callback<GestureEvent>): this
 ```
 
-Pinch手势识别成功并接收到触摸取消事件的回调。与[onActionCancel](#onActionCancel)相比，该回调返回手势事件信息。
+Pinch手势识别成功并接收到触摸取消事件的回调。与[onActionCancel](#onactioncancel)相比，该回调返回手势事件信息。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -89,7 +89,7 @@ Pinch手势识别成功，当抬起最后一根满足手势触发条件的手指
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -121,7 +121,7 @@ Pinch手势识别成功后触发回调。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -153,7 +153,7 @@ Pinch手势移动过程中回调。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

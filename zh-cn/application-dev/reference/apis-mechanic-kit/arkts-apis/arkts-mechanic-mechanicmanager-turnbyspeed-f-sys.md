@@ -10,7 +10,7 @@ function turnBySpeed(mechId: int, angleSpeed: double, duration: int): Promise<Re
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -24,9 +24,9 @@ function turnBySpeed(mechId: int, angleSpeed: double, duration: int): Promise<Re
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mechId | int | 是 | 具身设备ID。 &lt;br&gt;取值限定为整数。 |
+| mechId | int | 是 | 具身设备ID。 <br>取值限定为整数。 |
 | angleSpeed | double | 是 | 角速度。 |
-| duration | int | 是 | 转动时长，单位ms。 &lt;br&gt;取值限定为整数。 |
+| duration | int | 是 | 转动时长，单位ms。 <br>取值限定为整数。 |
 
 **返回值：**
 

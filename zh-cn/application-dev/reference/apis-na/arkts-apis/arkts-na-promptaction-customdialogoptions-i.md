@@ -2,11 +2,11 @@
 
 自定义弹窗的内容，继承自BaseDialogOptions。
 
-**继承/实现关系：** CustomDialogOptions extends [BaseDialogOptions](arkts-na-promptaction-basedialogoptions-i.md#BaseDialogOptions)
+**继承/实现关系：** CustomDialogOptions extends [BaseDialogOptions](arkts-na-promptaction-basedialogoptions-i.md#basedialogoptions)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -20,7 +20,7 @@
 backgroundBlurStyle?: BlurStyle
 ```
 
-弹窗背板模糊材质。 &lt;br/&gt;默认值：从API版本26.0.0开始，为BlurStyle.NONE，API版本26.0.0之前，为BlurStyle.COMPONENT_ULTRA_THICK。 &lt;br/&gt;**说明：** &lt;br/&gt;设置为BlurStyle.NONE即可关闭背景虚化。当设置了backgroundBlurStyle为非NONE值时，则不要设置backgroundColor， 否则颜色显示将不符合预期效果。
+弹窗背板模糊材质。 <br/>默认值：从API版本26.0.0开始，为BlurStyle.NONE，API版本26.0.0之前，为BlurStyle.COMPONENT_ULTRA_THICK。 <br/>**说明：** <br/>设置为BlurStyle.NONE即可关闭背景虚化。当设置了backgroundBlurStyle为非NONE值时，则不要设置backgroundColor， 否则颜色显示将不符合预期效果。
 
 **类型：** BlurStyle
 
@@ -28,7 +28,7 @@ backgroundBlurStyle?: BlurStyle
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -44,13 +44,13 @@ backgroundBlurStyle?: BlurStyle
 backgroundColor?: ResourceColor
 ```
 
-设置弹窗背板颜色。&lt;br/&gt;默认值：Color.Transparent &lt;br/&gt;**说明：** &lt;br/&gt;当设置了backgroundColor为非透明色时，backgroundBlurStyle需要设置为BlurStyle.NONE，否则颜色显示将不符合预期效果。
+设置弹窗背板颜色。<br/>默认值：Color.Transparent <br/>**说明：** <br/>当设置了backgroundColor为非透明色时，backgroundBlurStyle需要设置为BlurStyle.NONE，否则颜色显示将不符合预期效果。
 
 **类型：** ResourceColor
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -66,13 +66,13 @@ backgroundColor?: ResourceColor
 borderColor?: ResourceColor | EdgeColors
 ```
 
-设置弹窗背板的边框颜色。&lt;br/&gt;默认值：Color.Black&lt;br/&gt; 如果使用borderColor属性，需要和borderWidth属性一起使用。
+设置弹窗背板的边框颜色。<br/>默认值：Color.Black<br/> 如果使用borderColor属性，需要和borderWidth属性一起使用。
 
 **类型：** ResourceColor \| EdgeColors
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -88,13 +88,13 @@ borderColor?: ResourceColor | EdgeColors
 borderStyle?: BorderStyle | EdgeStyles
 ```
 
-设置弹窗背板的边框样式。&lt;br/&gt;默认值：BorderStyle.Solid&lt;br/&gt; 如果使用borderStyle属性，需要和borderWidth属性一起使用。
+设置弹窗背板的边框样式。<br/>默认值：BorderStyle.Solid<br/> 如果使用borderStyle属性，需要和borderWidth属性一起使用。
 
 **类型：** BorderStyle \| EdgeStyles
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -116,7 +116,7 @@ borderWidth?: Dimension | EdgeWidths
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -132,13 +132,13 @@ borderWidth?: Dimension | EdgeWidths
 builder: CustomBuilder
 ```
 
-设置自定义弹窗的内容。&lt;br/&gt;**说明：** &lt;br/&gt;builder需要赋值为箭头函数，格式如下：() => { this.XXX() }，其中XXX是内部builder名。 &lt;br/&gt;全局builder需要在组件内部创建，并在内部builder中调用。 &lt;br/&gt;builder根节点宽高百分比相对弹窗容器大小。 &lt;br/&gt;builder非根节点宽高百分比相对父节点大小。
+设置自定义弹窗的内容。<br/>**说明：** <br/>builder需要赋值为箭头函数，格式如下：() => { this.XXX() }，其中XXX是内部builder名。 <br/>全局builder需要在组件内部创建，并在内部builder中调用。 <br/>builder根节点宽高百分比相对弹窗容器大小。 <br/>builder非根节点宽高百分比相对父节点大小。
 
 **类型：** CustomBuilder
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -160,7 +160,7 @@ cornerRadius?: Dimension | BorderRadiuses
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -182,7 +182,7 @@ height?: Dimension
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -204,7 +204,7 @@ shadow?: ShadowOptions | ShadowStyle
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -220,13 +220,13 @@ shadow?: ShadowOptions | ShadowStyle
 width?: Dimension
 ```
 
-设置弹窗背板的宽度。&lt;br /&gt;**说明：**&lt;br&gt;- 弹窗宽度默认最大值：400vp &lt;br /&gt;- 百分比参数方式：弹窗参考宽度基于所在窗口的宽度的基础上调整。
+设置弹窗背板的宽度。&lt;br /&gt;**说明：**<br>- 弹窗宽度默认最大值：400vp &lt;br /&gt;- 百分比参数方式：弹窗参考宽度基于所在窗口的宽度的基础上调整。
 
 **类型：** Dimension
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

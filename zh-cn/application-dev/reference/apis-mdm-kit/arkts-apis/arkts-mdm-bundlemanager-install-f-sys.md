@@ -10,7 +10,7 @@ function install(admin: Want, hapFilePaths: Array<string>, callback: AsyncCallba
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 26.0.0
 
@@ -79,7 +79,7 @@ function install(admin: Want, hapFilePaths: Array<string>, installParam: Install
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 26.0.0
 

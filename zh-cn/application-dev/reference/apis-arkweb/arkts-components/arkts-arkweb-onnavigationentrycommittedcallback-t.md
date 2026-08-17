@@ -4,11 +4,11 @@
 type OnNavigationEntryCommittedCallback = (loadCommittedDetails: LoadCommittedDetails) => void
 ```
 
-The callback of load committed.
+导航条目提交时触发的回调。
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -22,5 +22,5 @@ The callback of load committed.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| loadCommittedDetails | [LoadCommittedDetails](arkts-arkweb-loadcommitteddetails-i.md) | 是 | callback information of onNavigationEntryCommitted. |
+| loadCommittedDetails | [LoadCommittedDetails](arkts-arkweb-loadcommitteddetails-i.md) | 是 | 提供已提交跳转的网页的详细信息。 |
 

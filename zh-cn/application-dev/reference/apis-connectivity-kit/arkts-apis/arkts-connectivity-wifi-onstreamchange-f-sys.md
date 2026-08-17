@@ -1,0 +1,33 @@
+# on_streamChange（系统接口）
+
+## on_streamChange
+
+```TypeScript
+function on(type: 'streamChange', callback: Callback<number>): void
+```
+
+订阅WLAN数据流改变事件。
+
+**起始版本：** 7
+
+**ArkTS模式：** 起始版本为7。
+
+**废弃版本：** 9
+
+**替代接口：** streamChange
+
+**需要权限：** ohos.permission.MANAGE_WIFI_CONNECTION
+
+<!--Device-wifi-function on(type: 'streamChange', callback: Callback<number>): void--><!--Device-wifi-function on(type: 'streamChange', callback: Callback<number>): void-End-->
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'streamChange' | 是 | 事件名称。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;number&gt; | 是 | 状态改变回调函数。1:向下，2:向上，3:双向 |
+

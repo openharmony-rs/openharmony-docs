@@ -1,10 +1,10 @@
 # ScrollOffset
 
-Defines the scroll offset of the webpage in view port, the unit is virtual pixel. Related to [getScrollOffset](arkts-na-webview-webviewcontroller-c.md#getScrollOffset) method.
+Defines the scroll offset of the webpage in view port, the unit is virtual pixel. Related to [getScrollOffset](../../apis-arkweb/arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#getscrolloffset) method.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ Get the horizontal offset. The unit is vp
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -44,7 +44,7 @@ Get the vertical offset. The unit is vp
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

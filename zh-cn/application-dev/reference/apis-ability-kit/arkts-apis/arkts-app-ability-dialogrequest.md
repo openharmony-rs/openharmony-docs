@@ -4,7 +4,7 @@ dialogRequest模块用于处理模态弹框的能力，包括获取RequestInfo�
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,8 +18,8 @@ dialogRequest模块用于处理模态弹框的能力，包括获取RequestInfo�
 
 | 名称 | 说明 |
 | --- | --- |
-| [getRequestCallback](arkts-ability-dialogrequest-getrequestcallback-f.md#getRequestCallback) | 从Want中获取请求方的RequestCallback。 |
-| [getRequestInfo](arkts-ability-dialogrequest-getrequestinfo-f.md#getRequestInfo) | 从Want中获取请求方的RequestInfo。 |
+| [getRequestCallback](arkts-ability-dialogrequest-getrequestcallback-f.md#getrequestcallback) | 从Want中获取请求方的RequestCallback。 |
+| [getRequestInfo](arkts-ability-dialogrequest-getrequestinfo-f.md#getrequestinfo) | 从Want中获取请求方的RequestInfo。 |
 
 ### 接口
 

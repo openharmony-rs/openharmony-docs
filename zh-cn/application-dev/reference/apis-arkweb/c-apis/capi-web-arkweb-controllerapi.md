@@ -34,10 +34,10 @@ ArkWeb_ControllerAPI是Controller相关Native API结构体。该结构体提供�
 | [void (\*registerAsyncJavaScriptProxy)(const char* webTag, const ArkWeb_ProxyObject* proxyObject)](#registerasyncjavascriptproxy) | 注入JavaScript对象到window对象中，并在window对象中调用该对象的异步方法。需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取该接口。该方法通过消息队列机制实现异步调用，避免阻塞主线程。与registerJavaScriptProxy相比，此方法适用于耗时操作或不需要同步获取返回值的场景，若需要同步获取返回值，建议使用registerJavaScriptProxy。 |
 | [ArkWeb_WebMessagePortPtr* (\*createWebMessagePorts)(const char* webTag, size_t* size)](#createwebmessageports) | 创建Post Message端口。Post Message端口提供双向通信机制，允许Native层与Web层安全地交换数据消息。需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取该接口。使用场景：例如实现跨上下文消息通道，支持iframe与主页面、Web与Worker之间的数据传递。 |
 | [void (\*destroyWebMessagePorts)(ArkWeb_WebMessagePortPtr** ports, size_t size)](#destroywebmessageports) | 销毁端口。该方法会关闭端口连接，释放相关系统资源，停止消息传输。需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取该接口。使用场景：例如通信结束、组件生命周期结束时释放端口资源以避免泄漏。 |
-| [ArkWeb_ErrorCode (\*postWebMessage)(const char* webTag, const char* name, ArkWeb_WebMessagePortPtr* webMessagePorts, size_t size, const char* url)](#postwebmessage) | Post message ports to main frame. |
+| [ArkWeb_ErrorCode (\*postWebMessage)(const char* webTag, const char* name, ArkWeb_WebMessagePortPtr* webMessagePorts, size_t size, const char* url)](#postwebmessage) | 将端口发送到HTML主页面。该方法通过消息传递机制将Post Message端口传递给指定的HTML页面，建立跨域通信通道。需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取该接口。使用场景：例如在主页面与iframe之间建立双向消息通道、跨框架推送消息等。 |
 | [const char* (\*getLastJavascriptProxyCallingFrameUrl)()](#getlastjavascriptproxycallingframeurl) | 获取调用JavaScriptProxy最后一帧的url。该方法通过帧栈追踪机制，记录最后一次JavaScript调用的frame上下文。在JavaScriptProxy调用的线程上调用。通过registerJavaScriptProxy或者JavaScriptProxy注入JavaScript对象到window对象中。该接口可以获取最后一次调用注入对象frame的url，如果从未调用过注入对象，返回值未定义。在被调用函数内部获取url才能获取到正确值，可以在函数内部获取url后保存下来。需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取该接口。 |
-| [void (\*registerJavaScriptProxyEx)(const char* webTag, const ArkWeb_ProxyObjectWithResult* proxyObject,const char* permission)](#registerjavascriptproxyex) | Register the JavaScript object and method list, the method is callback function that has a return value. |
-| [void (\*registerAsyncJavaScriptProxyEx)(const char* webTag, const ArkWeb_ProxyObject* proxyObject,const char* permission)](#registerasyncjavascriptproxyex) | Register the JavaScript object and async method list. |
+| [void (\*registerJavaScriptProxyEx)(const char* webTag, const ArkWeb_ProxyObjectWithResult* proxyObject,const char* permission)](#registerjavascriptproxyex) | 注入JavaScript对象到window对象中，并在window对象中调用该对象的同步方法。该对象的同步方法可以带返回值。该方法通过同步桥接机制实现JavaScript与Native的双向数据传递和同步调用。与registerJavaScriptProxy相比，此方法增加了permission参数用于配置JSBridge的权限限制，适用于需要权限控制或同步获取返回值的场景。需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取该接口。使用场景：例如需要在JS调用Native时同步获取返回结果的业务场景。 |
+| [void (\*registerAsyncJavaScriptProxyEx)(const char* webTag, const ArkWeb_ProxyObject* proxyObject,const char* permission)](#registerasyncjavascriptproxyex) | 注入JavaScript对象到window对象中，并在window对象中调用该对象的异步方法。需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取该接口。该方法通过消息队列机制实现异步调用，避免阻塞主线程。与registerAsyncJavaScriptProxy相比，此方法增加了permission参数用于配置JSBridge的权限限制，适用于需要权限控制的异步操作场景。<br> |
 
 ## 成员函数说明
 
@@ -131,22 +131,22 @@ ArkWeb_ErrorCode (*postWebMessage)(const char* webTag, const char* name, ArkWeb_
 
 **描述**
 
-Post message ports to main frame.
+将端口发送到HTML主页面。该方法通过消息传递机制将Post Message端口传递给指定的HTML页面，建立跨域通信通道。需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取该接口。使用场景：例如在主页面与iframe之间建立双向消息通道、跨框架推送消息等。
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char* webTag | The name of the web component. |
-|  const char* name | Name of the message to be sent. |
-|  size_t size | The quantity of message ports. |
-|  const char* url | Indicates the URI for receiving the message. |
+| const char* webTag | Web组件名称。需要与已绑定的Web组件匹配，否则会返回ARKWEB_INIT_ERROR。 |
+|  const char* name | 发送给HTML的消息名称。 |
+|  size_t size | 端口数量。 |
+|  const char* url | 接收到消息的页面url。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkWeb_ErrorCode | Post web message result code.<br>             {@link ARKWEB_SUCCESS} post web message success.<br>             {@link ARKWEB_INVALID_PARAM} the parameter verification fails.<br>             {@link ARKWEB_INIT_ERROR} no web associated with this webTag. |
+| [ArkWeb_ErrorCode](capi-arkweb-error-code-h.md#arkweb_errorcode) | 返回值错误码。<br>             [ARKWEB_SUCCESS](capi-arkweb-error-code-h.md#arkweb_errorcode) 执行成功。<br>             [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 参数无效。<br>             [ARKWEB_INIT_ERROR](capi-arkweb-error-code-h.md#arkweb_errorcode) 初始化失败，没有找到与webTag绑定的Web组件。 |
 
 ### getLastJavascriptProxyCallingFrameUrl()
 
@@ -174,7 +174,7 @@ void (*registerJavaScriptProxyEx)(const char* webTag, const ArkWeb_ProxyObjectWi
 
 **描述**
 
-Register the JavaScript object and method list, the method is callback function that has a return value.
+注入JavaScript对象到window对象中，并在window对象中调用该对象的同步方法。该对象的同步方法可以带返回值。该方法通过同步桥接机制实现JavaScript与Native的双向数据传递和同步调用。与registerJavaScriptProxy相比，此方法增加了permission参数用于配置JSBridge的权限限制，适用于需要权限控制或同步获取返回值的场景。需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取该接口。使用场景：例如需要在JS调用Native时同步获取返回结果的业务场景。
 
 **起始版本：** 18
 
@@ -182,9 +182,9 @@ Register the JavaScript object and method list, the method is callback function 
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char* webTag | The name of the web component. |
-|  const [ArkWeb_ProxyObjectWithResult](capi-web-arkweb-proxyobjectwithresult.md)* proxyObject | The JavaScript object to register, the object has callback functions with return value. |
-| const char* permission | The JSON string, which defaults to null, is used to configure the permission control forJSBridge, allowing for the definition of URL whitelists at the object and method levels. |
+| const char* webTag | Web组件名称。 |
+|  const [ArkWeb_ProxyObjectWithResult](capi-web-arkweb-proxyobjectwithresult.md)* proxyObject | 要注册的代理对象，该对象将被注入到window对象中，并可通过JavaScript调用其同步方法，且方法可返回执行结果。 |
+| const char* permission | JSON格式字符串，默认值为空。该字符串用来配置JSBridge的权限限制，可以配置对象和方法级别。 |
 
 ### registerAsyncJavaScriptProxyEx()
 
@@ -194,7 +194,7 @@ void (*registerAsyncJavaScriptProxyEx)(const char* webTag, const ArkWeb_ProxyObj
 
 **描述**
 
-Register the JavaScript object and async method list.
+注入JavaScript对象到window对象中，并在window对象中调用该对象的异步方法。需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取该接口。该方法通过消息队列机制实现异步调用，避免阻塞主线程。与registerAsyncJavaScriptProxy相比，此方法增加了permission参数用于配置JSBridge的权限限制，适用于需要权限控制的异步操作场景。<br>
 
 **起始版本：** 18
 
@@ -202,8 +202,8 @@ Register the JavaScript object and async method list.
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char* webTag | The name of the web component. |
-|  const [ArkWeb_ProxyObject](capi-web-arkweb-proxyobject.md)* proxyObject | The JavaScript object to register. |
-| const char* permission | The JSON string, which defaults to null, is used to configure the permission controlfor JSBridge, allowing for the definition of URL whitelists at the object and method levels. |
+| const char* webTag | Web组件名称。 |
+|  const [ArkWeb_ProxyObject](capi-web-arkweb-proxyobject.md)* proxyObject | 注册的对象。 |
+| const char* permission | JSON格式字符串，默认值为空。该字符串用来配置JSBridge的权限限制，可以配置对象和方法级别。 |
 
 

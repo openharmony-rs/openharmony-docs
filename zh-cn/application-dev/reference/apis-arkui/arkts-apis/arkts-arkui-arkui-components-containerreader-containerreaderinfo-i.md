@@ -4,7 +4,7 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@
 heightBreakpoint?: HeightBreakpoint
 ```
 
-容器的高度断点，为获取到的当前ContainerReader组件在不同高宽比阈值下对应的高度断点枚举值。&lt;br/&gt;**说明：**&lt;br/&gt;该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。绑定后组件高度断点值变化时，heightBreakpoint绑定的变量值会自动更新。
+容器的高度断点，为获取到的当前ContainerReader组件在不同高宽比阈值下对应的高度断点枚举值。<br/>**说明：**<br/>该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。绑定后组件高度断点值变化时，heightBreakpoint绑定的变量值会自动更新。
 
 **类型：** HeightBreakpoint
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -44,13 +44,13 @@ heightBreakpoint?: HeightBreakpoint
 size: Size
 ```
 
-获取到的当前ContainerReader组件的尺寸，用于布局分析和断点计算。&lt;br/&gt;**说明：**&lt;br/&gt;该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。绑定后组件尺寸值变化时，size绑定的变量值会自动更新。
+获取到的当前ContainerReader组件的尺寸，用于布局分析和断点计算。<br/>**说明：**<br/>该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。绑定后组件尺寸值变化时，size绑定的变量值会自动更新。
 
-**类型：** [Size](../../apis-na/arkts-apis/arkts-na-graphics-size-i.md)
+**类型：** [Size](arkts-arkui-graphics-size-i.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -70,13 +70,13 @@ size: Size
 widthBreakpoint?: WidthBreakpoint
 ```
 
-容器的宽度断点，为获取到的当前ContainerReader组件的宽度断点枚举值。&lt;br/&gt;**说明：**&lt;br/&gt;该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。绑定后组件宽度断点值变化时，widthBreakpoint绑定的变量值会自动更新。
+容器的宽度断点，为获取到的当前ContainerReader组件的宽度断点枚举值。<br/>**说明：**<br/>该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。绑定后组件宽度断点值变化时，widthBreakpoint绑定的变量值会自动更新。
 
 **类型：** WidthBreakpoint
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

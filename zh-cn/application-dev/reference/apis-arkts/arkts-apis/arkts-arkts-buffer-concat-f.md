@@ -10,7 +10,7 @@ function concat(list: Buffer[] | Uint8Array[], totalLength?: int): Buffer
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -37,7 +37,7 @@ function concat(list: Buffer[] | Uint8Array[], totalLength?: int): Buffer
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "length" is out of range. It must be >= 0 and <= uint32 max. Received value is: [length] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "length" is out of range. It must be >= 0 and &lt;= uint32 max. Received value is: [length] |
 
 ## 示例
 

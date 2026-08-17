@@ -16,7 +16,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -32,14 +32,14 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [cubicBezierCurve](arkts-arkui-curves-cubicbeziercurve-f.md#cubicBezierCurve) | 构造三阶贝塞尔曲线对象，确保曲线的值在0到1之间。 |
-| [customCurve](arkts-arkui-curves-customcurve-f.md#customCurve) | 构造自定义曲线对象。 |
-| [initCurve](arkts-arkui-curves-initcurve-f.md#initCurve) | 插值曲线的初始化函数，可以根据入参创建一个插值曲线对象。 |
-| [interpolatingSpring](arkts-arkui-curves-interpolatingspring-f.md#interpolatingSpring) | 构造插值器弹簧曲线对象，生成一条从0到1的动画曲线，实际动画值根据曲线进行插值计算。动画时间由曲线参数决定，不受animation、animateTo中的duration参数控制。 |
-| [responsiveSpringMotion](arkts-arkui-curves-responsivespringmotion-f.md#responsiveSpringMotion) | 构造弹性跟手动画曲线对象，是springMotion的一种特例，仅默认 参数不同，可与springMotion混合使用。 |
-| [springCurve](arkts-arkui-curves-springcurve-f.md#springCurve) | 构造弹簧曲线对象，曲线形状由弹簧参数决定，动画时长受animation、animateTo中的duration参数控制。 |
-| [springMotion](arkts-arkui-curves-springmotion-f.md#springMotion) | 构造弹性动画曲线对象。如果对同一对象的同一属性进行多个弹性动画，每个动画会替换掉前一个动画，并继承之前的速度。 |
-| [stepsCurve](arkts-arkui-curves-stepscurve-f.md#stepsCurve) | 构造阶梯曲线对象。 |
+| [cubicBezierCurve](arkts-arkui-curves-cubicbeziercurve-f.md#cubicbeziercurve) | 构造三阶贝塞尔曲线对象，确保曲线的值在0到1之间。 |
+| [customCurve](arkts-arkui-curves-customcurve-f.md#customcurve) | 构造自定义曲线对象。 |
+| [initCurve](arkts-arkui-curves-initcurve-f.md#initcurve) | 插值曲线的初始化函数，可以根据入参创建一个插值曲线对象。 |
+| [interpolatingSpring](arkts-arkui-curves-interpolatingspring-f.md#interpolatingspring) | 构造插值器弹簧曲线对象，生成一条从0到1的动画曲线，实际动画值根据曲线进行插值计算。动画时间由曲线参数决定，不受animation、animateTo中的duration参数控制。 |
+| [responsiveSpringMotion](arkts-arkui-curves-responsivespringmotion-f.md#responsivespringmotion) | 构造弹性跟手动画曲线对象，是springMotion的一种特例，仅默认 参数不同，可与springMotion混合使用。 |
+| [springCurve](arkts-arkui-curves-springcurve-f.md#springcurve) | 构造弹簧曲线对象，曲线形状由弹簧参数决定，动画时长受animation、animateTo中的duration参数控制。 |
+| [springMotion](arkts-arkui-curves-springmotion-f.md#springmotion) | 构造弹性动画曲线对象。如果对同一对象的同一属性进行多个弹性动画，每个动画会替换掉前一个动画，并继承之前的速度。 |
+| [stepsCurve](arkts-arkui-curves-stepscurve-f.md#stepscurve) | 构造阶梯曲线对象。 |
 
 ### 接口
 

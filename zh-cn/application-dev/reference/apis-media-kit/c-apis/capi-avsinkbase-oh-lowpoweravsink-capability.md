@@ -6,7 +6,7 @@ typedef struct OH_LowPowerAVSink_Capability OH_LowPowerAVSink_Capability
 
 ## 概述
 
-Forward declaration of OH_LowPowerAVSink_Capability.
+OH_LowPowerAVSink_Capability的前向声明。
 
 **起始版本：** 20
 

@@ -4,11 +4,11 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [USBControlRequestType](arkts-basicservices-usbmanager-usbcontrolrequesttype-e.md#USBControlRequestType)
+**替代接口：** [USBControlRequestType](arkts-basicservices-usbmanager-usbcontrolrequesttype-e.md#usbcontrolrequesttype)
 
 <!--Device-usb-export enum USBControlRequestType--><!--Device-usb-export enum USBControlRequestType-End-->
 
@@ -24,11 +24,11 @@ USB_REQUEST_TYPE_STANDARD = 0
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [USB_REQUEST_TYPE_STANDARD](arkts-basicservices-usbmanager-usbcontrolrequesttype-e.md#USB_REQUEST_TYPE_STANDARD)
+**替代接口：** [USB_REQUEST_TYPE_STANDARD](arkts-basicservices-usbmanager-usbcontrolrequesttype-e.md#usbrequesttypestandard)
 
 <!--Device-USBControlRequestType-USB_REQUEST_TYPE_STANDARD = 0--><!--Device-USBControlRequestType-USB_REQUEST_TYPE_STANDARD = 0-End-->
 
@@ -44,11 +44,11 @@ USB_REQUEST_TYPE_CLASS = 1
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [USB_REQUEST_TYPE_CLASS](arkts-basicservices-usbmanager-usbcontrolrequesttype-e.md#USB_REQUEST_TYPE_CLASS)
+**替代接口：** [USB_REQUEST_TYPE_CLASS](arkts-basicservices-usbmanager-usbcontrolrequesttype-e.md#usbrequesttypeclass)
 
 <!--Device-USBControlRequestType-USB_REQUEST_TYPE_CLASS = 1--><!--Device-USBControlRequestType-USB_REQUEST_TYPE_CLASS = 1-End-->
 
@@ -64,11 +64,11 @@ USB_REQUEST_TYPE_VENDOR = 2
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [USB_REQUEST_TYPE_VENDOR](arkts-basicservices-usbmanager-usbcontrolrequesttype-e.md#USB_REQUEST_TYPE_VENDOR)
+**替代接口：** [USB_REQUEST_TYPE_VENDOR](arkts-basicservices-usbmanager-usbcontrolrequesttype-e.md#usbrequesttypevendor)
 
 <!--Device-USBControlRequestType-USB_REQUEST_TYPE_VENDOR = 2--><!--Device-USBControlRequestType-USB_REQUEST_TYPE_VENDOR = 2-End-->
 

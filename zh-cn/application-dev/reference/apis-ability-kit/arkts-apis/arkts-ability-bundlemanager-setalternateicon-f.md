@@ -10,7 +10,7 @@ function setAlternateIcon(alternateIconName: string): Promise<void>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ function setAlternateIcon(alternateIconName: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| alternateIconName | string | 是 | 要设置的备用图标名称。备用图标名称须在app.json5中 [alternateIcons标签](../../../quick-start/app-configuration-file.md#alternateicons标签)的name字段内。&lt;br/&gt; alternateIconName为空时表示取消备用图标。 |
+| alternateIconName | string | 是 | 要设置的备用图标名称。备用图标名称须在app.json5中 [alternateIcons标签](../../../quick-start/app-configuration-file.md#alternateicons标签)的name字段内。<br/> alternateIconName为空时表示取消备用图标。 |
 
 **返回值：**
 

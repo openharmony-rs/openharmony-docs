@@ -4,11 +4,11 @@
 export type UIAbilityContext = _UIAbilityContext
 ```
 
-[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md#UIAbility)组件上下文，继承自Context。
+[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md#uiability)组件上下文，继承自Context。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

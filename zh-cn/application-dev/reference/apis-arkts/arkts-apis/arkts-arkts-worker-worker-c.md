@@ -2,15 +2,15 @@
 
 Worker类包含所有Worker功能。
 
-**继承/实现关系：** Worker implements [EventTarget](arkts-arkts-worker-eventtarget-i.md#EventTarget)
+**继承/实现关系：** Worker implements [EventTarget](arkts-arkts-worker-eventtarget-i.md#eventtarget)
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [ThreadWorker](arkts-arkts-worker-threadworker-c.md#ThreadWorker)
+**替代接口：** [ThreadWorker](arkts-arkts-worker-threadworker-c.md#threadworker)
 
 <!--Device-worker-class Worker--><!--Device-worker-class Worker-End-->
 
@@ -26,7 +26,7 @@ constructor(scriptURL: string, options?: WorkerOptions)
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -65,7 +65,7 @@ off(type: string, listener?: EventListener): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -103,7 +103,7 @@ on(type: string, listener: EventListener): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -142,7 +142,7 @@ once(type: string, listener: EventListener): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -181,7 +181,7 @@ postMessage(message: Object, transfer: ArrayBuffer[]): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -220,7 +220,7 @@ postMessage(message: Object, options?: PostMessageOptions): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -261,7 +261,7 @@ terminate(): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -293,7 +293,7 @@ onerror?: (err: ErrorEvent) => void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -315,7 +315,7 @@ onexit?: (code: number) => void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -337,7 +337,7 @@ onmessage?: (event: MessageEvent) => void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -359,7 +359,7 @@ onmessageerror?: (event: MessageEvent) => void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

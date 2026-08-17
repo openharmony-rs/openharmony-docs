@@ -6,7 +6,7 @@ typedef struct NativeChildProcess_FdList {...} NativeChildProcess_FdList
 
 ## 概述
 
-The struct describes a list of file descriptors passed to the child process. The list can contain a maximumof 16 entries.
+传递给子进程的文件描述符信息列表，文件描述符记录个数不能超过16个。
 
 **起始版本：** 13
 
@@ -20,6 +20,6 @@ The struct describes a list of file descriptors passed to the child process. The
 
 | 名称 | 描述 |
 | -- | -- |
-| struct [NativeChildProcess_Fd*](capi-childprocess-nativechildprocess-fd.md) head |  |
+| struct [NativeChildProcess_Fd*](capi-childprocess-nativechildprocess-fd.md) head | 子进程文件描述符记录链表中的第一个记录。 |
 
 

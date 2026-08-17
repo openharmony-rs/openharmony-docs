@@ -1,10 +1,10 @@
 # OnConsoleEvent
 
-Defines the triggered function when the web page receives a JavaScript console message.
+定义通知宿主应用JavaScript console消息。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ message: ConsoleMessage
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

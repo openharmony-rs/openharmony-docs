@@ -1,10 +1,10 @@
 # StartAbilityParameter
 
-定义启动Ability参数，可以作为入参，调用 [startAbility](arkts-ability-featureability-startability-f.md#startAbility) 启动指定的Ability。
+定义启动Ability参数，可以作为入参，调用 [startAbility](arkts-ability-featureability-startability-f.md#startability) 启动指定的Ability。
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ abilityStartSetting?: { [key: string]: any }
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** -1
 
@@ -46,7 +46,7 @@ abilityStartSettings?: Record<string, Object>
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -68,7 +68,7 @@ want: Want
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** -1
 

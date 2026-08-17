@@ -10,7 +10,7 @@ IsolatedComponent用于支持在本页面内嵌入显示独立Abc（方舟字节
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -32,7 +32,7 @@ declare const IsolatedComponentInstance: IsolatedComponentAttribute
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

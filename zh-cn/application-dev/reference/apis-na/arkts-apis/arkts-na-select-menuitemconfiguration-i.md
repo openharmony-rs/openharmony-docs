@@ -6,7 +6,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -20,11 +20,11 @@
 triggerSelect(index: int, value: string): void
 ```
 
-下拉菜单选中某一项的回调函数。 &lt;br/&gt;index：选中菜单项的索引。 &lt;br/&gt;value：选中菜单项的文本。 &lt;br/&gt;**说明：** &lt;br/&gt;index会赋值给事件[onSelect](arkts-na-onselectcallback-t.md#OnSelectCallback)回调中的索引参数； value会返回给Select组件显示，同时会赋值给事件[onSelect](arkts-na-onselectcallback-t.md#OnSelectCallback)回调中的文本参数。
+下拉菜单选中某一项的回调函数。 <br/>index：选中菜单项的索引。 <br/>value：选中菜单项的文本。 <br/>**说明：** <br/>index会赋值给事件[onSelect](arkts-na-onselectcallback-t.md#onselectcallback)回调中的索引参数； value会返回给Select组件显示，同时会赋值给事件[onSelect](arkts-na-onselectcallback-t.md#onselectcallback)回调中的文本参数。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -53,7 +53,7 @@ icon?: ResourceStr
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -75,7 +75,7 @@ index: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -97,7 +97,7 @@ selected: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -115,11 +115,11 @@ symbolIcon?: SymbolGlyphModifier
 
 下拉选项Symbol图片。 symbolIcon优先级高于icon。 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**类型：** [SymbolGlyphModifier](../../apis-arkui/arkts-components/arkts-arkui-symbolglyphmodifier-t.md)
+**类型：** SymbolGlyphModifier
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -141,7 +141,7 @@ value: ResourceStr
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

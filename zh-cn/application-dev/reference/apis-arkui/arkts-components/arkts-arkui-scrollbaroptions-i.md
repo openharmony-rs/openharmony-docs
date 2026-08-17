@@ -4,7 +4,7 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@
 direction?: ScrollBarDirection
 ```
 
-滚动条的方向，控制可滚动组件对应方向的滚动。&lt;br/&gt;默认值：ScrollBarDirection.Vertical
+滚动条的方向，控制可滚动组件对应方向的滚动。<br/>默认值：ScrollBarDirection.Vertical
 
 **类型：** [ScrollBarDirection](arkts-arkui-scrollbardirection-e.md)
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -46,7 +46,7 @@ scroller: Scroller
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -62,13 +62,13 @@ scroller: Scroller
 state?: BarState
 ```
 
-滚动条状态。&lt;br/&gt;默认值：BarState.Auto
+滚动条状态。<br/>默认值：BarState.Auto
 
 **类型：** BarState
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 

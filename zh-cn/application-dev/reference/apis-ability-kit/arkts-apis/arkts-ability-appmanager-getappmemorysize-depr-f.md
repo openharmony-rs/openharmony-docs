@@ -10,11 +10,11 @@ function getAppMemorySize(): Promise<number>
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [getAppMemorySize](arkts-ability-appmanager-getappmemorysize-f.md#getAppMemorySize)
+**替代接口：** [getAppMemorySize](arkts-ability-appmanager-getappmemorysize-f.md#getappmemorysize)
 
 <!--Device-appManager-function getAppMemorySize(): Promise<number>--><!--Device-appManager-function getAppMemorySize(): Promise<number>-End-->
 
@@ -50,11 +50,11 @@ function getAppMemorySize(callback: AsyncCallback<number>): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [getAppMemorySize](arkts-ability-appmanager-getappmemorysize-f.md#getAppMemorySize)
+**替代接口：** [getAppMemorySize](arkts-ability-appmanager-getappmemorysize-f.md#getappmemorysize)
 
 <!--Device-appManager-function getAppMemorySize(callback: AsyncCallback<number>): void--><!--Device-appManager-function getAppMemorySize(callback: AsyncCallback<number>): void-End-->
 

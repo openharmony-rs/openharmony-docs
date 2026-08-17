@@ -11,7 +11,7 @@ function anonAttestKeyItemOfflineAsUser(userId: number, keyAlias: string,
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -29,7 +29,7 @@ function anonAttestKeyItemOfflineAsUser(userId: number, keyAlias: string,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| userId | number | 是 | 用户ID &lt;br&gt;取值范围为全体整数。 |
+| userId | number | 是 | 用户ID <br>取值范围为全体整数。 |
 | keyAlias | string | 是 | 密钥的别名。 |
 | params | [HuksParam](arkts-universalkeystore-huks-huksparam-i.md)[] | 是 | 表示密钥证明操作的选项。 |
 

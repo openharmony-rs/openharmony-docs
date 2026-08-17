@@ -2,11 +2,11 @@
 
 Define ISubscribedWatches interface.
 
-**继承/实现关系：** ISubscribedWatches extends [IWatchSubscriberRegister](arkts-na-decorator-iwatchsubscriberregister-i.md#IWatchSubscriberRegister)
+**继承/实现关系：** ISubscribedWatches extends [IWatchSubscriberRegister](arkts-na-decorator-iwatchsubscriberregister-i.md#iwatchsubscriberregister)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ Execute the watch function callback.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

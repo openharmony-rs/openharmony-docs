@@ -384,7 +384,8 @@
   - [SourceType(系统接口)](arkts-notification-notificationmanager-sourcetype-e-sys.md)<!--DelEnd-->
   <!--Del-->
   - [SwitchState(系统接口)](arkts-notification-notificationmanager-switchstate-e-sys.md)<!--DelEnd-->
-- [@ohos.notificationSubscribe](arkts-notificationsubscribe.md)
+<!--Del-->
+- [@ohos.notificationSubscribe](arkts-notificationsubscribe.md)<!--DelEnd-->
   <!--Del-->
   - [distributeOperation(系统接口)](arkts-notification-notificationsubscribe-distributeoperation-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -519,13 +520,16 @@
     - [NotificationSlot](arkts-notification-notificationslot-notificationslot-i.md)
     <!--Del-->
     - [NotificationSlot(系统接口)](arkts-notification-notificationslot-notificationslot-i-sys.md)<!--DelEnd-->
-  - [notificationSorting](arkts-notificationsorting.md)
+  <!--Del-->
+  - [notificationSorting](arkts-notificationsorting.md)<!--DelEnd-->
     <!--Del-->
     - [NotificationSorting(系统接口)](arkts-notification-notificationsorting-notificationsorting-i-sys.md)<!--DelEnd-->
-  - [notificationSortingMap](arkts-notificationsortingmap.md)
+  <!--Del-->
+  - [notificationSortingMap](arkts-notificationsortingmap.md)<!--DelEnd-->
     <!--Del-->
     - [NotificationSortingMap(系统接口)](arkts-notification-notificationsortingmap-notificationsortingmap-i-sys.md)<!--DelEnd-->
-  - [notificationSubscribeInfo](arkts-notificationsubscribeinfo.md)
+  <!--Del-->
+  - [notificationSubscribeInfo](arkts-notificationsubscribeinfo.md)<!--DelEnd-->
     <!--Del-->
     - [NotificationSubscribeInfo(系统接口)](arkts-notification-notificationsubscribeinfo-notificationsubscribeinfo-i-sys.md)<!--DelEnd-->
     <!--Del-->

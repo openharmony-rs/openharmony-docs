@@ -1,10 +1,10 @@
 # WebController
 
-Defines the Web controller.
+* WebController是ArkWeb组件的控制器类，用于控制Web组件的各种行为。一个WebController对象只能与一个Web组件绑定，绑定后开发者可通过该控制器对Web组件进行页面导航（前进/后退/加载）、焦点控制、缩放调 整、页面刷新与停止、Cookie管理、JavaScript注入与执行等操作。 WebController适用于需要在应用侧对嵌入式Web组件进行主动控制的场景，例如实现浏览器式的前进后退导航、在应用侧与网页侧之间建立JavaScript交互通道、动态加载网页内容或管理Cookie数据。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -20,11 +20,11 @@ Defines the Web controller.
 accessBackward(): boolean
 ```
 
-Checks whether the web page can go back.
+当前页面是否可后退，即当前页面是否有返回历史记录。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -38,7 +38,7 @@ Checks whether the web page can go back.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Whether the web page can go back. |
+| boolean | 可以后退返回true，否则返回false。 |
 
 ## accessForward
 
@@ -46,11 +46,11 @@ Checks whether the web page can go back.
 accessForward(): boolean
 ```
 
-Checks whether the web page can go forward.
+当前页面是否可前进，即当前页面是否有前进历史记录。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -64,7 +64,7 @@ Checks whether the web page can go forward.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean |  |
+| boolean | 返回true表示当前页面可以前进，返回false表示当前页面不可以前进。 |
 
 ## accessStep
 
@@ -72,11 +72,11 @@ Checks whether the web page can go forward.
 accessStep(step: number): boolean
 ```
 
-Checks whether the web page can go back or forward the given number of steps.
+检查当前页面是否可前进或者后退给定的step步。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -90,13 +90,13 @@ Checks whether the web page can go back or forward the given number of steps.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| step | number | 是 | The number of steps. |
+| step | number | 是 | 要跳转的步数，正数代表前进，负数代表后退。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean |  |
+| boolean | 页面是否可以前进或后退给定的step步。true表示可以，false为不可以。 |
 
 ## backward
 
@@ -104,11 +104,11 @@ Checks whether the web page can go back or forward the given number of steps.
 backward()
 ```
 
-Goes back in the history of the web page.
+按照历史栈，后退一个页面。建议在调用backward前先调用 [accessBackward&lt;sup&gt;9+&lt;/sup&gt;](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#accessbackward)检查当前页面是否可后退。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -124,11 +124,11 @@ Goes back in the history of the web page.
 clearHistory(): void
 ```
 
-Clears the history in the Web.
+删除所有前进后退记录。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -144,11 +144,11 @@ Clears the history in the Web.
 constructor()
 ```
 
-Constructor.
+WebController的构造函数。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -164,11 +164,11 @@ Constructor.
 deleteJavaScriptRegister(name: string)
 ```
 
-Deletes a registered JavaScript object with given name.
+删除通过registerJavaScriptProxy注册到window上的指定name的应用侧JavaScript对象。删除后立即生效，无须调用[refresh](#refresh)接口。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -182,7 +182,7 @@ Deletes a registered JavaScript object with given name.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| name | string | 是 | The name of a registered JavaScript object to be deleted. |
+| name | string | 是 | 注册对象的名称，可在网页侧JavaScript中通过此名称调用应用侧JavaScript对象。 |
 
 ## forward
 
@@ -190,11 +190,11 @@ Deletes a registered JavaScript object with given name.
 forward()
 ```
 
-Goes forward in the history of the web page.
+按照历史栈，前进一个页面。建议在调用forward前先调用 [accessForward&lt;sup&gt;9+&lt;/sup&gt;](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#accessforward)检查当前页面是否可前进。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -210,15 +210,15 @@ Goes forward in the history of the web page.
 getCookieManager(): WebCookie
 ```
 
-Gets network cookie manager
+获取Web组件cookie管理对象。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 9
 
-**替代接口：** [WebCookieManager](../../apis-na/arkts-apis/arkts-na-webview-webcookiemanager-c.md#WebCookieManager)
+**替代接口：** [WebCookieManager](../arkts-apis/arkts-arkweb-webview-webcookiemanager-c.md#webcookiemanager)
 
 <!--Device-WebController-getCookieManager(): WebCookie--><!--Device-WebController-getCookieManager(): WebCookie-End-->
 
@@ -228,7 +228,7 @@ Gets network cookie manager
 
 | 类型 | 说明 |
 | --- | --- |
-| [WebCookie](arkts-arkweb-webcookie-c.md) |  |
+| [WebCookie](arkts-arkweb-webcookie-c.md) | Web组件cookie管理对象，参考[WebCookie]{ |
 
 ## getHitTest
 
@@ -236,15 +236,15 @@ Gets network cookie manager
 getHitTest(): HitTestType
 ```
 
-获取点击测试类型。
+获取当前被点击区域的元素类型。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** getHitTest
+**替代接口：** [getHitTest](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#gethittest)
 
 <!--Device-WebController-getHitTest(): HitTestType--><!--Device-WebController-getHitTest(): HitTestType-End-->
 
@@ -254,7 +254,7 @@ getHitTest(): HitTestType
 
 | 类型 | 说明 |
 | --- | --- |
-| [HitTestType](arkts-arkweb-hittesttype-e.md) | 点击测试类型。 |
+| [HitTestType](arkts-arkweb-hittesttype-e.md) | 被点击区域的元素类型。 |
 
 ## loadData
 
@@ -262,11 +262,11 @@ getHitTest(): HitTestType
 loadData(options: { data: string, mimeType: string, encoding: string, baseUrl?: string, historyUrl?: string })
 ```
 
-Loads the data or URL.
+baseUrl为空时，通过“data”协议加载指定的一段字符串。 当baseUrl为“data”协议时，编码后的data字符串将被Web组件作为“data”协议加载。 当baseUrl为“http/https”协议时，编码后的data字符串将被Web组件以类似loadUrl的方式以非编码字符串处理。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -288,11 +288,11 @@ Loads the data or URL.
 loadUrl(options: { url: string | Resource, headers?: Array<Header> })
 ```
 
-Loads the given URL.
+使用指定的HTTP头加载指定的URL。 通过loadUrl注入的对象只在当前document有效，即通过loadUrl导航到新的页面会无效。 而通过registerJavaScriptProxy注入的对象，在loadUrl导航到新的页面也会有效。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -314,11 +314,11 @@ Loads the given URL.
 onActive(): void
 ```
 
-Let the Web active. It is no longer maintained since API version 9, and it is recommended to use [onActive](#onActive) instead.
+调用此接口通知Web组件进入前台激活状态。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -334,11 +334,11 @@ Let the Web active. It is no longer maintained since API version 9, and it is re
 onInactive(): void
 ```
 
-Let the Web inactive. It is no longer maintained since API version 9, and it is recommended to use [onInactive](#onInactive) instead.
+调用此接口通知Web组件进入未激活状态。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -354,11 +354,11 @@ Let the Web inactive. It is no longer maintained since API version 9, and it is 
 refresh()
 ```
 
-refreshes the current URL.
+调用此接口通知Web组件刷新网页。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -374,11 +374,11 @@ refreshes the current URL.
 registerJavaScriptProxy(options: { object: object, name: string, methodList: Array<string> })
 ```
 
-Registers the JavaScript object and method list.
+注入JavaScript对象到window对象中，并在window对象中调用该对象的方法。注入的对象在页面下一次（重新）加载前不会出现在JavaScript中。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -400,11 +400,11 @@ Registers the JavaScript object and method list.
 requestFocus()
 ```
 
-Gets the request focus.
+使当前Web页面获取焦点。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -420,11 +420,11 @@ Gets the request focus.
 runJavaScript(options: { script: string, callback?: (result: string) => void })
 ```
 
-Asynchronously execute JavaScript in the context of the currently displayed page. The result of the script execution will be returned through an asynchronous callback. This method must be used on the UI thread, and the callback will also be invoked on the UI thread. &lt;p&gt;&lt;strong&gt;API Note&lt;/strong&gt;:&lt;br&gt; The state of JavaScript is no longer persisted across navigations like loadUrl. For example, global variables and functions defined before calling loadUrl will not exist in the loaded page. It is recommended that applications use registerJavaScriptProxy to ensure that the JavaScript state can be persisted across page navigations. &lt;p&gt;
+异步执行JavaScript脚本，并通过回调方式返回脚本执行的结果。runJavaScript需要在loadUrl完成后，比如onPageEnd中调用。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -446,11 +446,11 @@ Asynchronously execute JavaScript in the context of the currently displayed page
 stop()
 ```
 
-Stops the current load.
+停止页面加载。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -466,15 +466,15 @@ Stops the current load.
 zoom(factor: number): void
 ```
 
-对网页进行缩放。
+调整当前网页的缩放比例。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** zoom
+**替代接口：** [zoom](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#zoom)
 
 <!--Device-WebController-zoom(factor: number): void--><!--Device-WebController-zoom(factor: number): void-End-->
 
@@ -484,5 +484,5 @@ zoom(factor: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| factor | number | 是 | 缩放系数。 |
+| factor | number | 是 | The zoom factor. |
 

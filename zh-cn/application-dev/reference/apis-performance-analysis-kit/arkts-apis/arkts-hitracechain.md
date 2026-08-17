@@ -16,7 +16,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -31,15 +31,15 @@
 | 名称 | 说明 |
 | --- | --- |
 | [begin](arkts-performanceanalysis-hitracechain-begin-f.md#begin) | 开始跟踪，同步接口。用于在业务流程的起始节点启动分布式跟踪，例如在用户点击按钮发起请求、服务端收到请求开始处理、启动后台任务等场景。 当前线程TLS（Thread Local Storage，线程本地存储）中不存在有效的HiTraceId时，生成有效的HiTraceId并设置到当前线程TLS中，返回该 HiTraceId。当前线程TLS中已存在有效的HiTraceId时，不会开始新的跟踪，返回各属性值均为0的无效HiTraceId。 |
-| [clearId](arkts-performanceanalysis-hitracechain-clearid-f.md#clearId) | 清除跟踪标识，同步接口。用于在需要切断当前跟踪链的场景，例如业务逻辑分支不再需要跟踪、任务完成后清理跟踪标识、或者在开始新的跟踪前清理旧的 跟踪标识。 将当前线程TLS中的HiTraceId设置为无效。 |
-| [createSpan](arkts-performanceanalysis-hitracechain-createspan-f.md#createSpan) | 创建跟踪分支，同步接口。用于在业务流程中标记重要的子流程，例如在请求处理过程中的关键步骤、服务端处理链中的各个阶段、或者需要重点关注的业务 分支。 创建一个HiTraceId，使用当前线程TLS中的chainId、spanId初始化HiTraceId的chainId、parentSpanId，并为HiTraceId生成一个新的spanId， 返回该HiTraceId。 |
-| [enableFlag](arkts-performanceanalysis-hitracechain-enableflag-f.md#enableFlag) | 启用HiTraceId中指定的跟踪标志，同步接口。用于在业务流程中动态调整跟踪行为，例如在调试时启用TP_INFO标志以打印埋点信息、在需要跟踪异步调用时 启用INCLUDE_ASYNC标志、在需要禁用日志关联时启用DISABLE_LOG标志。 |
+| [clearId](arkts-performanceanalysis-hitracechain-clearid-f.md#clearid) | 清除跟踪标识，同步接口。用于在需要切断当前跟踪链的场景，例如业务逻辑分支不再需要跟踪、任务完成后清理跟踪标识、或者在开始新的跟踪前清理旧的 跟踪标识。 将当前线程TLS中的HiTraceId设置为无效。 |
+| [createSpan](arkts-performanceanalysis-hitracechain-createspan-f.md#createspan) | 创建跟踪分支，同步接口。用于在业务流程中标记重要的子流程，例如在请求处理过程中的关键步骤、服务端处理链中的各个阶段、或者需要重点关注的业务 分支。 创建一个HiTraceId，使用当前线程TLS中的chainId、spanId初始化HiTraceId的chainId、parentSpanId，并为HiTraceId生成一个新的spanId， 返回该HiTraceId。 |
+| [enableFlag](arkts-performanceanalysis-hitracechain-enableflag-f.md#enableflag) | 启用HiTraceId中指定的跟踪标志，同步接口。用于在业务流程中动态调整跟踪行为，例如在调试时启用TP_INFO标志以打印埋点信息、在需要跟踪异步调用时 启用INCLUDE_ASYNC标志、在需要禁用日志关联时启用DISABLE_LOG标志。 |
 | [end](arkts-performanceanalysis-hitracechain-end-f.md#end) | 结束跟踪，同步接口。用于在业务流程的结束节点终止分布式跟踪，例如在请求处理完成返回结果、用户操作流程结束、后台任务执行完毕等场景。 若给定的HiTraceId有效，且等于当前线程TLS中的HiTraceId，结束跟踪并将当前线程TLS中的HiTraceId设置为无效。 若给定的HiTraceId无效，或不等于当前线程TLS中的HiTraceId，结束跟踪失败，打印结束跟踪失败hilog日志。 |
-| [getId](arkts-performanceanalysis-hitracechain-getid-f.md#getId) | 获取跟踪标识，同步接口。用于在需要传递当前跟踪标识的场景，例如将跟踪标识传递给子线程、传递给其他进程、或者在日志中记录当前跟踪标识。 获取当前线程TLS中的HiTraceId。若当前线程TLS中不存在有效的HiTraceId，返回各属性值均为0的无效HiTraceId。 |
-| [isFlagEnabled](arkts-performanceanalysis-hitracechain-isflagenabled-f.md#isFlagEnabled) | 判断HiTraceId是否启用了跟踪标志flag，同步接口。用于在业务逻辑中根据跟踪标志进行不同处理，例如检查是否启用了INCLUDE_ASYNC标志以决定是否 等待异步操作完成、检查是否启用了TP_INFO标志以决定是否打印调试信息。 |
-| [isValid](arkts-performanceanalysis-hitracechain-isvalid-f.md#isValid) | 判断HiTraceId是否有效，同步接口。 |
-| [setId](arkts-performanceanalysis-hitracechain-setid-f.md#setId) | 设置跟踪标识，同步接口。用于在需要将外部跟踪标识设置到当前线程的场景，例如从父线程继承跟踪标识、从其他进程接收跟踪标识、从设备间通信获取跟踪 标识。 将给定的HiTraceId设置到当前线程TLS中。若给定的HiTraceId无效，则不执行任何操作。 |
-| [tracepoint](arkts-performanceanalysis-hitracechain-tracepoint-f.md#tracepoint) | [@ohos.hiTraceMeter (性能打点)](arkts-hitracemeter.md#@ohos.hiTraceMeter(性能打点))跟踪信息埋点，同步接口。 本接口与HiTraceMeter模块协同工作，HiTraceChain负责跟踪链的管理，HiTraceMeter负责性能数据的采集和统计。当type为客户端发送CS且服务端 接收到SR时，进行同步HiTraceMeter开始打点；当type为服务端发送SS且客户端接收到CR时，进行同步HiTraceMeter结束打点；CS和CR以及SR和SS的 信息埋点需配套使用。否则，HiTraceMeter开始与结束打点无法正常匹配；当type为通用类型GENERAL时，不会进行HiTraceMeter打点。 |
+| [getId](arkts-performanceanalysis-hitracechain-getid-f.md#getid) | 获取跟踪标识，同步接口。用于在需要传递当前跟踪标识的场景，例如将跟踪标识传递给子线程、传递给其他进程、或者在日志中记录当前跟踪标识。 获取当前线程TLS中的HiTraceId。若当前线程TLS中不存在有效的HiTraceId，返回各属性值均为0的无效HiTraceId。 |
+| [isFlagEnabled](arkts-performanceanalysis-hitracechain-isflagenabled-f.md#isflagenabled) | 判断HiTraceId是否启用了跟踪标志flag，同步接口。用于在业务逻辑中根据跟踪标志进行不同处理，例如检查是否启用了INCLUDE_ASYNC标志以决定是否 等待异步操作完成、检查是否启用了TP_INFO标志以决定是否打印调试信息。 |
+| [isValid](arkts-performanceanalysis-hitracechain-isvalid-f.md#isvalid) | 判断HiTraceId是否有效，同步接口。 |
+| [setId](arkts-performanceanalysis-hitracechain-setid-f.md#setid) | 设置跟踪标识，同步接口。用于在需要将外部跟踪标识设置到当前线程的场景，例如从父线程继承跟踪标识、从其他进程接收跟踪标识、从设备间通信获取跟踪 标识。 将给定的HiTraceId设置到当前线程TLS中。若给定的HiTraceId无效，则不执行任何操作。 |
+| [tracepoint](arkts-performanceanalysis-hitracechain-tracepoint-f.md#tracepoint) | [@ohos.hiTraceMeter (性能打点)](arkts-hitracemeter.md#ohoshitracemeter性能打点)跟踪信息埋点，同步接口。 本接口与HiTraceMeter模块协同工作，HiTraceChain负责跟踪链的管理，HiTraceMeter负责性能数据的采集和统计。当type为客户端发送CS且服务端 接收到SR时，进行同步HiTraceMeter开始打点；当type为服务端发送SS且客户端接收到CR时，进行同步HiTraceMeter结束打点；CS和CR以及SR和SS的 信息埋点需配套使用。否则，HiTraceMeter开始与结束打点无法正常匹配；当type为通用类型GENERAL时，不会进行HiTraceMeter打点。 |
 
 ### 接口
 

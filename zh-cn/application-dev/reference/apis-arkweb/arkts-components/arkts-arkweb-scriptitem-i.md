@@ -1,10 +1,10 @@
 # ScriptItem
 
-Defines the contents of the JavaScript to be injected.
+通过[javaScriptOnDocumentStart](arkts-arkweb-web-attribute.md#javascriptondocumentstart)属性注入到Web组件的ScriptItem对象。
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ script: string
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -40,13 +40,13 @@ script: string
 scriptRules: Array<string>
 ```
 
-一组允许来源的匹配规则。. 1.如果需要允许所有来源的网址，使用通配符“ * ”。 2.如果需要精确匹配，则描述网站地址，如"https://www.example.com"。 3.如果模糊匹配网址，可以使用“ * ”通配符替代，如"https://*.example.com"。不允许使用"x. * .y.com"、" * foobar.com"等。 4.如果来源是ip地址，则使用规则2。 5.对于http/https以外的协议（自定义协议），不支持使用精确匹配和模糊匹配，且必须以`://`结尾，例如"resource://"。 6.一组scriptRule中，如果其中一条不满足以上规则，则整组scriptRule都不生效。
+一组允许来源的匹配规则。 1.如果需要允许所有来源的网址，使用通配符“*”。 2.如果需要精确匹配，则描述网站地址，如"https://www.example.com"。 3.如果模糊匹配网址，可以使用“ * ”通配符替代，如"https://*.example.com"。不允许使用"x. * .y.com"、" * foobar.com"等。 4.如果来源是ip地址，则使用规则2。 5.对于http/https以外的协议（自定义协议），不支持使用精确匹配和模糊匹配，且必须以`://`结尾，例如"resource://"。 6.一组scriptRule中，如果其中一条不满足以上规则，则整组scriptRule都不生效。
 
 **类型：** Array&lt;string&gt;
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -68,7 +68,7 @@ urlRegexRules? : Array<UrlRegexRule>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

@@ -2,11 +2,11 @@
 
 TypedArray 继承 Int8Array 的特性与方法。
 
-**继承/实现关系：** TypedArray extends [Int8Array](arkts-arkts-collections-int8array-c.md#Int8Array)
+**继承/实现关系：** TypedArray extends [Int8Array](arkts-arkts-collections-int8array-c.md#int8array)
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 

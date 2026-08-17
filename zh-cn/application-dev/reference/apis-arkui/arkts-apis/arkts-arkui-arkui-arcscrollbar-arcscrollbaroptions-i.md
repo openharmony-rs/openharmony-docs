@@ -4,7 +4,7 @@ ArcScrollBar的构造函数参数。 > **说明：** > > ArcScrollBar与可滚�
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ scroller: Scroller
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -40,13 +40,13 @@ scroller: Scroller
 state?: BarState
 ```
 
-滚动条状态。&lt;br/&gt;默认值：BarState.Auto
+滚动条状态。<br/>默认值：BarState.Auto
 
 **类型：** BarState
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 

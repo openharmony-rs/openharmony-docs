@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ constructor()
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -42,7 +42,7 @@ length(): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -68,7 +68,7 @@ push(section: SectionOptions): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -100,7 +100,7 @@ splice(start: int, deleteCount?: int, sections?: Array<SectionOptions>): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -114,8 +114,8 @@ splice(start: int, deleteCount?: int, sections?: Array<SectionOptions>): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| start | int | 是 | 从0开始计算的索引，会转换为整数，表示要开始改变分组的位置。&lt;br/&gt;**说明：** &lt;br/&gt;1. 如果索引是负数，则从末尾开始计算，使用 `start + WaterFlowSections.length()`。&lt;br/&gt;2. 如果 `start &lt; -WaterFlowSections.length()`，则使用0。<br/>3. 如果 `start &gt;&lt;br/&gt;3. 如果 `start >= WaterFlowSections.length()`，则在最后添加新分组。 &lt;br&gt;取值限定为整数。 |
-| deleteCount | int | 否 | 从0开始计算的索引，会转换为整数，表示要开始改变分组的位置。&lt;br/&gt;**说明：** &lt;br/&gt;1. 如果索引是负数，则从末尾开始计算，使用 `start + WaterFlowSections.length()`。&lt;br/&gt;2. 如果 `start &lt; -WaterFlowSections.length()`，则使用0。<br/>3. 如果 `start &gt;&lt;br/&gt;3. 如果 `start >= WaterFlowSections.length()`，则在最后添加新分组。 &lt;br&gt;取值限定为整数。 |
+| start | int | 是 | 从0开始计算的索引，会转换为整数，表示要开始改变分组的位置。<br/>**说明：** <br/>1. 如果索引是负数，则从末尾开始计算，使用 `start + WaterFlowSections.length()`。<br/>2. 如果 `start &lt; -WaterFlowSections.length()`，则使用0。<br/>3. 如果 `start &gt;= WaterFlowSections.length()`，则在最后添加新分组。 <br>取值限定为整数。 |
+| deleteCount | int | 否 | 从0开始计算的索引，会转换为整数，表示要开始改变分组的位置。<br/>**说明：** <br/>1. 如果索引是负数，则从末尾开始计算，使用 `start + WaterFlowSections.length()`。<br/>2. 如果 `start &lt; -WaterFlowSections.length()`，则使用0。<br/>3. 如果 `start &gt;= WaterFlowSections.length()`，则在最后添加新分组。 <br>取值限定为整数。 |
 | sections | Array&lt;[SectionOptions](arkts-na-waterflow-sectionoptions-c.md)&gt; | 否 | 表示要从start开始加入的分组。如果不指定，`splice()`将只从瀑布流中删除分组。 |
 
 **返回值：**
@@ -134,7 +134,7 @@ update(sectionIndex: int, section: SectionOptions): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -148,7 +148,7 @@ update(sectionIndex: int, section: SectionOptions): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sectionIndex | int | 是 | 从0开始计算的索引，会转换为整数，表示要修改的分组的位置。&lt;br/&gt;**说明：** &lt;br/&gt;1. 如果索引是负数，则从末尾开始计算，使用 `sectionIndex + WaterFlowSections.length()`。&lt;br/&gt;2. 如果`sectionIndex &lt; -WaterFlowSections.length()`，则使用0。<br/> 3. 如果`sectionIndex &gt;&lt;br/&gt; 3. 如果`sectionIndex >= WaterFlowSections.length()`，则在最后添加新分组。 &lt;br&gt;取值限定为整数。 |
+| sectionIndex | int | 是 | 从0开始计算的索引，会转换为整数，表示要修改的分组的位置。<br/>**说明：** <br/>1. 如果索引是负数，则从末尾开始计算，使用 `sectionIndex + WaterFlowSections.length()`。<br/>2. 如果`sectionIndex &lt; -WaterFlowSections.length()`，则使用0。<br/> 3. 如果`sectionIndex &gt;= WaterFlowSections.length()`，则在最后添加新分组。 <br>取值限定为整数。 |
 | section | [SectionOptions](arkts-na-waterflow-sectionoptions-c.md) | 是 | 新的分组信息。 |
 
 **返回值：**
@@ -167,7 +167,7 @@ values(): Array<SectionOptions>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

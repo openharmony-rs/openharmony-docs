@@ -4,7 +4,7 @@ Tabs自定义切换动画相关信息。
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -18,7 +18,7 @@ Tabs自定义切换动画相关信息。
 timeout?: number
 ```
 
-自定义切换动画超时时间。如果到达该时间后，开发者仍未调用[TabContentTransitionProxy](arkts-arkui-tabcontenttransitionproxy-i.md#TabContentTransitionProxy)的 finishTransition接口通知Tabs组件自定义动画结束，那么组件就会认为此次自定义动画已结束，直接执行后续操作。 默认值：1000 单位：ms 取值范围：[0, +∞)。设置为小于0的值时，按默认值显示。
+自定义切换动画超时时间。如果到达该时间后，开发者仍未调用[TabContentTransitionProxy](arkts-arkui-tabcontenttransitionproxy-i.md#tabcontenttransitionproxy)的 finishTransition接口通知Tabs组件自定义动画结束，那么组件就会认为此次自定义动画已结束，直接执行后续操作。 默认值：1000 单位：ms 取值范围：[0, +∞)。设置为小于0的值时，按默认值显示。
 
 **类型：** number
 
@@ -26,7 +26,7 @@ timeout?: number
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -52,7 +52,7 @@ transition: Callback<TabContentTransitionProxy>
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 

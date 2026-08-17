@@ -4,7 +4,7 @@ The module provides capabilities related to startup tasks in [AppStartup](../../
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ init(context: AbilityStageContext): Promise<Object | void>
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -36,7 +36,7 @@ init(context: AbilityStageContext): Promise<Object | void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [AbilityStageContext](arkts-ability-abilitystagecontext-c.md) | 是 | [AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md#AbilityStage)的上下文环境 |
+| context | [AbilityStageContext](arkts-ability-abilitystagecontext-c.md) | 是 | [AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md#abilitystage)的上下文环境 |
 
 **返回值：**
 
@@ -78,7 +78,7 @@ onDependencyCompleted?(dependency: string, result: Object): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

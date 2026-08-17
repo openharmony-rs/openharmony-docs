@@ -1,12 +1,12 @@
 # EmbeddableUIAbility
 
-EmbeddableUIAbility组件是为原子化服务提供可嵌入式的UIAbility组件，继承自[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md#UIAbility)。 开发者通过实现EmbeddableUIAbility，为其他应用提供跳出式启动和嵌入式启动原子化服务方式。 各类Ability的继承关系详见继承关系说明。
+EmbeddableUIAbility组件是为原子化服务提供可嵌入式的UIAbility组件，继承自[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md#uiability)。 开发者通过实现EmbeddableUIAbility，为其他应用提供跳出式启动和嵌入式启动原子化服务方式。 各类Ability的继承关系详见继承关系说明。
 
-**继承/实现关系：** EmbeddableUIAbility extends [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md#UIAbility)
+**继承/实现关系：** EmbeddableUIAbility extends [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md#uiability)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ EmbeddableUIAbility组件的上下文。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

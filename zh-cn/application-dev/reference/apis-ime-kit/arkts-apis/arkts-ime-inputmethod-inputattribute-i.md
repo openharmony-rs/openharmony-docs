@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ abilityName?: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -38,7 +38,7 @@ abilityName?: string
 consumeKeyEvents?: boolean
 ```
 
-编辑框是否具有完整处理字母、字符、功能等按键的能力。默认值为false。 - 值为true，表示具备此能力。 - 值为false，表示不具备此能力。 - 该字段在调用 [attach](arkts-ime-inputmethod-inputmethodcontroller-i.md#attach) / [InputAttribute](#InputAttribute)时提供给输入法应用。
+编辑框是否具有完整处理字母、字符、功能等按键的能力。默认值为false。 - 值为true，表示具备此能力。 - 值为false，表示不具备此能力。 - 该字段在调用 [attach](arkts-ime-inputmethod-inputmethodcontroller-i.md#attach) / [InputAttribute](#inputattribute)时提供给输入法应用。
 
 **类型：** boolean
 
@@ -46,7 +46,7 @@ consumeKeyEvents?: boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -68,7 +68,7 @@ Enter键功能类型。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -88,7 +88,7 @@ placeholder?: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -108,7 +108,7 @@ textInputType: TextInputType
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

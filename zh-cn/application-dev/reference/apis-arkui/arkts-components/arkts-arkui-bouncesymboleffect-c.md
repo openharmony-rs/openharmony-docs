@@ -2,11 +2,11 @@
 
 BounceSymbolEffect继承自父类SymbolEffect。
 
-**继承/实现关系：** BounceSymbolEffect extends [SymbolEffect](arkts-arkui-symboleffect-c.md#SymbolEffect)
+**继承/实现关系：** BounceSymbolEffect extends [SymbolEffect](arkts-arkui-symboleffect-c.md#symboleffect)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ ScaleSymbolEffect的构造函数，缩放动效。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -42,8 +42,8 @@ ScaleSymbolEffect的构造函数，缩放动效。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scope | [EffectScope](arkts-arkui-effectscope-e.md) | 否 | 动效范围。具体枚举值及说明请参考EffectScope枚举说明。 &lt;br&gt;默认值：EffectScope.LAYER |
-| direction | [EffectDirection](arkts-arkui-effectdirection-e.md) | 否 | 动效方向。具体枚举值及说明请参考EffectDirection枚举说明。 &lt;br&gt;默认值：EffectDirection.DOWN |
+| scope | [EffectScope](arkts-arkui-effectscope-e.md) | 否 | 动效范围。具体枚举值及说明请参考EffectScope枚举说明。 <br>默认值：EffectScope.LAYER |
+| direction | [EffectDirection](arkts-arkui-effectdirection-e.md) | 否 | 动效方向。具体枚举值及说明请参考EffectDirection枚举说明。 <br>默认值：EffectDirection.DOWN |
 
 ## direction
 
@@ -57,7 +57,7 @@ direction?: EffectDirection
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -83,7 +83,7 @@ scope?: EffectScope
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

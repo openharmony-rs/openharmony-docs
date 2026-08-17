@@ -4,7 +4,7 @@
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ addDependency(...tasks: Task[]): void
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -89,7 +89,7 @@ Task的构造函数。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -134,7 +134,7 @@ Task的构造函数用于创建任务，并可指定任务名称。
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -182,7 +182,7 @@ static isCanceled(): boolean
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -256,7 +256,7 @@ isDone(): boolean
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -315,7 +315,7 @@ onEnqueued(callback: CallbackFunction): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -370,7 +370,7 @@ onExecutionFailed(callback: CallbackFunctionWithError): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -429,7 +429,7 @@ onExecutionSucceeded(callback: CallbackFunction): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -480,11 +480,11 @@ taskpool.execute(task).then(() => {
 onReceiveData(callback?: Function): void
 ```
 
-为任务注册回调函数，接收并处理任务池工作线程的数据。使用此方法前，需构造Task。 > **说明：** > > 该方法与[sendData](#sendData)配对使用。 > > 不支持为同一任务定义多种回调函数。如果多次赋值，只有最后一次赋值的回调函数会生效。
+为任务注册回调函数，接收并处理任务池工作线程的数据。使用此方法前，需构造Task。 > **说明：** > > 该方法与[sendData](#senddata)配对使用。 > > 不支持为同一任务定义多种回调函数。如果多次赋值，只有最后一次赋值的回调函数会生效。
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -537,7 +537,7 @@ onStartExecution(callback: CallbackFunction): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -592,7 +592,7 @@ removeDependency(...tasks: Task[]): void
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -663,7 +663,7 @@ static sendData(...args: Object[]): void
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -751,11 +751,11 @@ taskpoolTest();
 setCloneList(cloneList: Object[] | ArrayBuffer[]): void
 ```
 
-设置任务的拷贝列表。在使用该方法前，需先构造**Task**对象。 > **说明：** > > - 此接口与[setTransferList](#setTransferList)互斥：同一个ArrayBuffer不能同时设置在transfer列表和clone列表中。 > > 该接口需搭配 > [@Sendable装饰器](../../../arkts-utils/arkts-sendable.md#sendable装饰器)使用，否则会抛异常。建议开发者使用该装饰器以避免异常。
+设置任务的拷贝列表。在使用该方法前，需先构造**Task**对象。 > **说明：** > > - 此接口与[setTransferList](#settransferlist)互斥：同一个ArrayBuffer不能同时设置在transfer列表和clone列表中。 > > 该接口需搭配 > [@Sendable装饰器](../../../arkts-utils/arkts-sendable.md#sendable装饰器)使用，否则会抛异常。建议开发者使用该装饰器以避免异常。
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -769,7 +769,7 @@ setCloneList(cloneList: Object[] | ArrayBuffer[]): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| cloneList | Object[] \| ArrayBuffer[] | 是 | 传入数组的类型必须为 [Sendable支持的数据类型](../../../arkts-utils/arkts-sendable.md#sendable支持的数据类型)或ArrayBuffer。&lt;br&gt;- 所有传入 **cloneList**的[Sendable class](../../../arkts-utils/arkts-sendable.md#sendable-class)实例或ArrayBuffer类型对象， 在线程间传输的行为都会变成拷贝传递，即修改传输后的对象不会对原有对象产生任何影响。 |
+| cloneList | Object[] \| ArrayBuffer[] | 是 | 传入数组的类型必须为 [Sendable支持的数据类型](../../../arkts-utils/arkts-sendable.md#sendable支持的数据类型)或ArrayBuffer。<br>- 所有传入 **cloneList**的[Sendable class](../../../arkts-utils/arkts-sendable.md#sendable-class)实例或ArrayBuffer类型对象， 在线程间传输的行为都会变成拷贝传递，即修改传输后的对象不会对原有对象产生任何影响。 |
 
 **错误码：**
 
@@ -912,11 +912,11 @@ struct Index {
 setTransferList(transfer?: ArrayBuffer[]): void
 ```
 
-设置任务的传输列表。使用该方法前需要先构造**Task**。不调用该接口，则传给任务的数据中的ArrayBuffer默认transfer转移。 > **说明：** > > - 此接口与[setCloneList](#setCloneList)互斥：同一个ArrayBuffer不能同时设置在transfer列表和clone列表中。 > > 此接口可以设置任务池中ArrayBuffer的transfer列表，transfer列表中的ArrayBuffer对象在传输时不会复制buffer内容到工作线程， > 而是转移buffer控制权至工作线程，传输后当前的ArrayBuffer失效。若ArrayBuffer为空，则不会transfer转移。
+设置任务的传输列表。使用该方法前需要先构造**Task**。不调用该接口，则传给任务的数据中的ArrayBuffer默认transfer转移。 > **说明：** > > - 此接口与[setCloneList](#setclonelist)互斥：同一个ArrayBuffer不能同时设置在transfer列表和clone列表中。 > > 此接口可以设置任务池中ArrayBuffer的transfer列表，transfer列表中的ArrayBuffer对象在传输时不会复制buffer内容到工作线程， > 而是转移buffer控制权至工作线程，传输后当前的ArrayBuffer失效。若ArrayBuffer为空，则不会transfer转移。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -979,13 +979,13 @@ console.info("testTransfer view3 byteLength: " + view1.byteLength);
 arguments?: Object[]
 ```
 
-创建任务传入函数所需的参数，支持的参数类型请参考序列化支持类型。默认值为undefined。&lt;br&gt; 从API version 11开始，该接口支持在原子化服务中使用。
+创建任务传入函数所需的参数，支持的参数类型请参考序列化支持类型。默认值为undefined。<br> 从API version 11开始，该接口支持在原子化服务中使用。
 
 **类型：** Object[]
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -1001,7 +1001,7 @@ arguments?: Object[]
 cpuDuration: number
 ```
 
-执行任务CPU耗时。单位：ms。不建议修改此值。&lt;br&gt; 从API version 11开始，该接口支持在原子化服务中使用。
+执行任务CPU耗时。单位：ms。不建议修改此值。<br> 从API version 11开始，该接口支持在原子化服务中使用。
 
 **类型：** number
 
@@ -1009,7 +1009,7 @@ cpuDuration: number
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -1025,13 +1025,13 @@ cpuDuration: number
 function: Function
 ```
 
-待执行的函数，必须使用[@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰， 支持的函数返回值类型请参考序列化支持类型。&lt;br&gt; 从API version 11开始，该接口支持在原子化服务中使用。
+待执行的函数，必须使用[@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰， 支持的函数返回值类型请参考序列化支持类型。<br> 从API version 11开始，该接口支持在原子化服务中使用。
 
 **类型：** Function
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -1047,7 +1047,7 @@ function: Function
 ioDuration: number
 ```
 
-执行任务异步IO耗时。单位：ms。不建议修改此值。&lt;br&gt; 从API version 11开始，该接口支持在原子化服务中使用。
+执行任务异步IO耗时。单位：ms。不建议修改此值。<br> 从API version 11开始，该接口支持在原子化服务中使用。
 
 **类型：** number
 
@@ -1055,7 +1055,7 @@ ioDuration: number
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -1071,13 +1071,13 @@ ioDuration: number
 name: string
 ```
 
-创建任务时指定的任务名称。不建议修改此值。&lt;br&gt; 从API version 11开始，该接口支持在原子化服务中使用。
+创建任务时指定的任务名称。不建议修改此值。<br> 从API version 11开始，该接口支持在原子化服务中使用。
 
 **类型：** string
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -1093,7 +1093,7 @@ name: string
 taskId: number
 ```
 
-任务的ID。系统默认提供全局唯一值，不建议修改此值。&lt;br&gt; 从API version 18开始，该接口支持在原子化服务中使用。
+任务的ID。系统默认提供全局唯一值，不建议修改此值。<br> 从API version 18开始，该接口支持在原子化服务中使用。
 
 **类型：** number
 
@@ -1101,7 +1101,7 @@ taskId: number
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -1117,7 +1117,7 @@ taskId: number
 totalDuration: number
 ```
 
-执行任务总耗时。单位：ms。不建议修改此值。&lt;br&gt; 从API version 11开始，该接口支持在原子化服务中使用。
+执行任务总耗时。单位：ms。不建议修改此值。<br> 从API version 11开始，该接口支持在原子化服务中使用。
 
 **类型：** number
 
@@ -1125,7 +1125,7 @@ totalDuration: number
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 

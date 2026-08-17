@@ -10,11 +10,11 @@ function unregisterApplicationStateObserver(observerId: number, callback: AsyncC
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [off](arkts-ability-appmanager-offapplicationstate-f.md#off_applicationState)
+**替代接口：** [off](arkts-ability-appmanager-offapplicationstate-f.md#offapplicationstate)
 
 **需要权限：** ohos.permission.RUNNING_STATE_OBSERVER
 
@@ -60,11 +60,11 @@ function unregisterApplicationStateObserver(observerId: number): Promise<void>
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [off](arkts-ability-appmanager-offapplicationstate-f.md#off_applicationState)
+**替代接口：** [off](arkts-ability-appmanager-offapplicationstate-f.md#offapplicationstate)
 
 **需要权限：** ohos.permission.RUNNING_STATE_OBSERVER
 

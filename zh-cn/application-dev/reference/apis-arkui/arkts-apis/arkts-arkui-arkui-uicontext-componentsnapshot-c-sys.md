@@ -1,10 +1,10 @@
 # ComponentSnapshot
 
-提供获取组件截图的能力，包括已加载的组件的截图和没有加载的组件的截图。 > **说明：** > > - 本Class首批接口从API version 12开始支持。 > > - 以下API需先使用UIContext中的[getComponentSnapshot()](arkts-arkui-arkui-uicontext-uicontext-c.md#getComponentSnapshot)方法获取ComponentSnapshot对象，再通过此实例调用对应方法。 > > - 缩放、平移、旋转等图形变换属性只对被截图组件的子组件生效；对目标组件本身应用图形变换属性不生效，显示的还是图形变换前的效果。
+提供获取组件截图的能力，包括已加载的组件的截图和没有加载的组件的截图。 > **说明：** > > - 本Class首批接口从API version 12开始支持。 > > - 以下API需先使用UIContext中的[getComponentSnapshot()](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#getcomponentsnapshot)方法获取ComponentSnapshot对象，再通过此实例调用对应方法。 > > - 缩放、平移、旋转等图形变换属性只对被截图组件的子组件生效；对目标组件本身应用图形变换属性不生效，显示的还是图形变换前的效果。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -23,7 +23,7 @@ getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean,
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -39,9 +39,9 @@ getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| start | [NodeIdentity](arkts-arkui-nodeidentity-t.md) | 是 | 范围开始的组件的ID。 |
-| end | [NodeIdentity](arkts-arkui-nodeidentity-t.md) | 是 | 范围结束的组件的ID。 |
-| isStartRect | boolean | 是 | 范围是否以开始组件的外接矩形为准。&lt;br/&gt;true表示以开始组件的外接矩形为准，false表示以结束组件的外接矩形为准。&lt;br/&gt;默认值为true。 |
+| start | [NodeIdentity](../../apis-na/arkts-apis/arkts-na-nodeidentity-t.md) | 是 | 范围开始的组件的ID。 |
+| end | [NodeIdentity](../../apis-na/arkts-apis/arkts-na-nodeidentity-t.md) | 是 | 范围结束的组件的ID。 |
+| isStartRect | boolean | 是 | 范围是否以开始组件的外接矩形为准。<br/>true表示以开始组件的外接矩形为准，false表示以结束组件的外接矩形为准。<br/>默认值为true。 |
 | options | componentSnapshot.SnapshotOptions | 否 | 截图相关的自定义参数，不支持region参数。 |
 
 **返回值：**

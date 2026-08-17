@@ -4,7 +4,7 @@ DrawingRenderingContext的尺寸信息。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@ DrawingRenderingContext的尺寸信息。
 height: number
 ```
 
-获取DrawingRenderingContext的高度，其值为关联的Canvas组件的高度。 &lt;br&gt;支持单位：vp、px。 &lt;br&gt;默认单位为vp。
+获取DrawingRenderingContext的高度，其值为关联的Canvas组件的高度。 <br>支持单位：vp、px。 <br>默认单位为vp。
 
 **类型：** number
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -42,13 +42,13 @@ height: number
 width: number
 ```
 
-获取DrawingRenderingContext的宽度，其值为关联的Canvas组件的宽度。 &lt;br&gt;支持单位：vp、px。 &lt;br&gt;默认单位为vp。
+获取DrawingRenderingContext的宽度，其值为关联的Canvas组件的宽度。 <br>支持单位：vp、px。 <br>默认单位为vp。
 
 **类型：** number
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

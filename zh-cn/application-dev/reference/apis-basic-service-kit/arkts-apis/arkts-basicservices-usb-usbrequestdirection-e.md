@@ -4,11 +4,11 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [USBRequestDirection](arkts-basicservices-usbmanager-usbrequestdirection-e.md#USBRequestDirection)
+**替代接口：** [USBRequestDirection](arkts-basicservices-usbmanager-usbrequestdirection-e.md#usbrequestdirection)
 
 <!--Device-usb-export enum USBRequestDirection--><!--Device-usb-export enum USBRequestDirection-End-->
 
@@ -24,11 +24,11 @@ USB_REQUEST_DIR_TO_DEVICE = 0
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [USB_REQUEST_DIR_TO_DEVICE](arkts-basicservices-usbmanager-usbrequestdirection-e.md#USB_REQUEST_DIR_TO_DEVICE)
+**替代接口：** [USB_REQUEST_DIR_TO_DEVICE](arkts-basicservices-usbmanager-usbrequestdirection-e.md#usbrequestdirtodevice)
 
 <!--Device-USBRequestDirection-USB_REQUEST_DIR_TO_DEVICE = 0--><!--Device-USBRequestDirection-USB_REQUEST_DIR_TO_DEVICE = 0-End-->
 
@@ -44,11 +44,11 @@ USB_REQUEST_DIR_FROM_DEVICE = 0x80
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [USB_REQUEST_DIR_FROM_DEVICE](arkts-basicservices-usbmanager-usbrequestdirection-e.md#USB_REQUEST_DIR_FROM_DEVICE)
+**替代接口：** [USB_REQUEST_DIR_FROM_DEVICE](arkts-basicservices-usbmanager-usbrequestdirection-e.md#usbrequestdirfromdevice)
 
 <!--Device-USBRequestDirection-USB_REQUEST_DIR_FROM_DEVICE = 0x80--><!--Device-USBRequestDirection-USB_REQUEST_DIR_FROM_DEVICE = 0x80-End-->
 

@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ footer?: CustomBuilder
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -46,7 +46,7 @@ footerContent?: ComponentContentBase
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -70,7 +70,7 @@ layoutMode?: WaterFlowLayoutMode
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -86,13 +86,13 @@ layoutMode?: WaterFlowLayoutMode
 scroller?: Scroller
 ```
 
-可滚动组件的控制器，与可滚动组件绑定。 &lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt;。 &lt;br&gt;不允许和其他滚动类组件，如ArcList、List、Grid、Scroll绑定同一个滚动控制对象。 &lt;/p&gt;
+可滚动组件的控制器，与可滚动组件绑定。 &lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt;。 <br>不允许和其他滚动类组件，如ArcList、List、Grid、Scroll绑定同一个滚动控制对象。 &lt;/p&gt;
 
 **类型：** [Scroller](../../apis-arkui/arkts-components/arkts-arkui-scroller-c.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -108,13 +108,13 @@ scroller?: Scroller
 sections?: WaterFlowSections
 ```
 
-瀑布流项分组，不同分组可以设置不同的列数。 &lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt;。 &lt;br&gt;1. 使用分组时，columnsTemplate和rowsTemplate属性将被忽略。 &lt;br&gt;2. 使用分组时不支持单独设置footer，可以使用最后一个分组作为尾部组件。 &lt;/p&gt;
+瀑布流项分组，不同分组可以设置不同的列数。 &lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt;。 <br>1. 使用分组时，columnsTemplate和rowsTemplate属性将被忽略。 <br>2. 使用分组时不支持单独设置footer，可以使用最后一个分组作为尾部组件。 &lt;/p&gt;
 
 **类型：** [WaterFlowSections](arkts-na-waterflow-waterflowsections-c.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

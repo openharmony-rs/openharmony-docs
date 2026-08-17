@@ -10,11 +10,11 @@ function isMyCard(id: number, callback: AsyncCallback<boolean>): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** [isMyCard](#isMyCard)(context: Context, id: number, callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [isMyCard](#ismycard)(context: Context, id: number, callback: AsyncCallback&lt;boolean&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -56,7 +56,7 @@ function isMyCard(context: Context, id: number, callback: AsyncCallback<boolean>
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -112,11 +112,11 @@ function isMyCard(id: number): Promise<boolean>
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** [isMyCard](#isMyCard)(context: Context, id: number)
+**替代接口：** [isMyCard](#ismycard)(context: Context, id: number)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -159,7 +159,7 @@ function isMyCard(context: Context, id: number): Promise<boolean>
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 

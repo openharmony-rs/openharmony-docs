@@ -215,7 +215,7 @@ int OH_RdbTrans_Insert(OH_Rdb_Transaction *trans, const char *table, const OH_VB
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | 指向[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)实例的指针。 |
 | const char *table | 要插入的目标表名。 |
-| [const OH_VBucket](capi-rdb-oh-vbucket.md) *row | 要插入到表中的数据行。 |
+| const OH_VBucket *row | 要插入到表中的数据行。 |
 | int64_t *rowId | 输出参数，表示插入后返回的行号。 |
 
 **返回：**
@@ -242,7 +242,7 @@ int OH_RdbTrans_InsertWithConflictResolution(OH_Rdb_Transaction *trans, const ch
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | 指向[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)实例的指针。 |
 | const char *table | 要插入的目标表名。 |
-| [const OH_VBucket](capi-rdb-oh-vbucket.md) *row | 表示要插入到表中的数据。 |
+| const OH_VBucket *row | 表示要插入到表中的数据。 |
 | Rdb_ConflictResolution resolution | 表示发生冲突时的解决策略。 |
 | int64_t *rowId | 输出参数，表示插入成功后返回的行号。 |
 
@@ -270,7 +270,7 @@ int OH_RdbTrans_BatchInsert(OH_Rdb_Transaction *trans, const char *table, const 
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | 指向[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)实例的指针。 |
 | const char *table | 要插入的目标表名。 |
-| [const OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md) *rows | 表示要插入到表中的一组数据。 |
+| const OH_Data_VBuckets *rows | 表示要插入到表中的一组数据。 |
 | int64_t *changes | 输出参数，表示插入成功的次数。 |
 
 **返回：**
@@ -296,8 +296,8 @@ int OH_RdbTrans_Update(OH_Rdb_Transaction *trans, const OH_VBucket *row, const O
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | 指向[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)实例的指针。 |
-| [const OH_VBucket](capi-rdb-oh-vbucket.md) *row | 表示要更新到表中的数据行。 |
-| const OH_Predicates *predicates | 表示[OH_Predicates](capi-rdb-oh-predicates.md)指定的更新条件。 |
+| const OH_VBucket *row | 表示要更新到表中的数据行。 |
+| [const OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 表示[OH_Predicates](capi-rdb-oh-predicates.md)指定的更新条件。 |
 | int64_t *changes | 输出参数，表示更新成功的行数。 |
 
 **返回：**
@@ -323,8 +323,8 @@ int OH_RdbTrans_UpdateWithConflictResolution(OH_Rdb_Transaction *trans, const OH
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | 指向[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)实例的指针。 |
-| [const OH_VBucket](capi-rdb-oh-vbucket.md) *row | 表示要更新到表中的数据。 |
-| const OH_Predicates *predicates | 表示[OH_Predicates](capi-rdb-oh-predicates.md)指定的更新条件。 |
+| const OH_VBucket *row | 表示要更新到表中的数据。 |
+| [const OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 表示[OH_Predicates](capi-rdb-oh-predicates.md)指定的更新条件。 |
 | Rdb_ConflictResolution resolution | 表示发生冲突时的解决策略。 |
 | int64_t *changes | 输出参数，表示更新成功的行数。 |
 
@@ -351,7 +351,7 @@ int OH_RdbTrans_Delete(OH_Rdb_Transaction *trans, const OH_Predicates *predicate
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | 指向[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)实例的指针。 |
-| const OH_Predicates *predicates | 表示[OH_Predicates](capi-rdb-oh-predicates.md)指定的删除条件。 |
+| [const OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 表示[OH_Predicates](capi-rdb-oh-predicates.md)指定的删除条件。 |
 | int64_t *changes | 表示删除成功的次数。 |
 
 **返回：**
@@ -377,7 +377,7 @@ OH_Cursor *OH_RdbTrans_Query(OH_Rdb_Transaction *trans, const OH_Predicates *pre
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | 指向[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)实例的指针。 |
-| const OH_Predicates *predicates | 表示[OH_Predicates](capi-rdb-oh-predicates.md)指定的查询条件。 |
+| [const OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 表示[OH_Predicates](capi-rdb-oh-predicates.md)指定的查询条件。 |
 | const char *columns[] | 表示要查询的列。如果值为空数组，则查询适用于所有列。 |
 | int len | 传入的columns数组的长度。若len大于columns数组的实际长度，则会访问越界。 |
 
@@ -404,7 +404,7 @@ OH_Cursor *OH_RdbTrans_QueryWithoutRowCount(OH_Rdb_Transaction *trans, const OH_
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | 指向[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)实例的指针。 |
-| const OH_Predicates *predicates | [OH_Predicates](capi-rdb-oh-predicates.md)指定的查询条件。 |
+| [const OH_Predicates](capi-rdb-oh-predicates.md) *predicates | [OH_Predicates](capi-rdb-oh-predicates.md)指定的查询条件。 |
 | const char *const columns[] | 要查询的列，如果传入空值，则查询所有列。 |
 | int len | 传入的columns数组的长度。若len大于columns数组的实际长度，则会访问越界。 |
 
@@ -432,7 +432,7 @@ OH_Cursor *OH_RdbTrans_QuerySql(OH_Rdb_Transaction *trans, const char *sql, cons
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | 指向[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)实例的指针。 |
 | const char *sql | 表示要执行的SQL语句。 |
-| const OH_Data_Values *args | 指向[OH_Data_Values](capi-rdb-oh-data-values.md)的指针。 |
+| [const OH_Data_Values](capi-rdb-oh-data-values.md) *args | 指向[OH_Data_Values](capi-rdb-oh-data-values.md)的指针。 |
 
 **返回：**
 
@@ -458,7 +458,7 @@ OH_Cursor *OH_RdbTrans_QuerySqlWithoutRowCount(OH_Rdb_Transaction *trans, const 
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | 指向[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)实例的指针。 |
 | const char *sql | 要执行的SQL语句。 |
-| const OH_Data_Values *args | 指向[OH_Data_Values](capi-rdb-oh-data-values.md)的指针。 |
+| [const OH_Data_Values](capi-rdb-oh-data-values.md) *args | 指向[OH_Data_Values](capi-rdb-oh-data-values.md)的指针。 |
 
 **返回：**
 
@@ -484,7 +484,7 @@ int OH_RdbTrans_Execute(OH_Rdb_Transaction *trans, const char *sql, const OH_Dat
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | 指向[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)实例的指针。 |
 | const char *sql | 表示要执行的SQL语句。 |
-| const OH_Data_Values *args | SQL语句中包含的参数。 |
+| [const OH_Data_Values](capi-rdb-oh-data-values.md) *args | SQL语句中包含的参数。 |
 | OH_Data_Value **result | 执行成功时指向[OH_Data_Value](capi-rdb-oh-data-value.md)实例的指针。使用完成后，必须通过[OH_Value_Destroy](capi-oh-data-value-h.md#oh_value_destroy)接口释放内存。 |
 
 **返回：**
@@ -540,7 +540,7 @@ int OH_RdbTrans_BatchInsert(OH_Rdb_Transaction *trans, const char *table, const 
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | 指向[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)实例的指针。 |
 | const char *table | 要插入的目标表名。 |
-| [const OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md) *rows | 表示要插入到表中的一组数据。 |
+| const OH_Data_VBuckets *rows | 表示要插入到表中的一组数据。 |
 | Rdb_ConflictResolution resolution | 表示发生冲突时的解决策略。 |
 | int64_t *changes | 输出参数，表示插入成功的次数。 |
 
@@ -568,7 +568,7 @@ int OH_RdbTrans_BatchInsertWithReturning(OH_Rdb_Transaction *trans, const char *
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | 指向[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)实例的指针。 |
 | const char *table | 要插入的目标表名。 |
-| [const OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md) *rows | 要插入到表中的行数据。 |
+| const OH_Data_VBuckets *rows | 要插入到表中的行数据。 |
 | Rdb_ConflictResolution resolution | 发生冲突时的解决策略{@link Rdb_ConflictResolution}，不建议使用RDB_CONFLICT_FAIL，因为失败时会抛异常，<br>无法正常获取实际的变更数据。 |
 | OH_RDB_ReturningContext *context | 指向{@link OH_RDB_ReturningContext}实例的指针。 |
 
@@ -600,8 +600,8 @@ int OH_RdbTrans_UpdateWithReturning(OH_Rdb_Transaction *trans, OH_VBucket *row, 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | 指向[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)实例的指针。 |
-| [OH_VBucket](capi-rdb-oh-vbucket.md) *row | 要更新到表中的行数据。 |
-| OH_Predicates *predicates | 指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针。 |
+| OH_VBucket *row | 要更新到表中的行数据。 |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针。 |
 | Rdb_ConflictResolution resolution | 发生冲突时的解决策略{@link Rdb_ConflictResolution}，不建议使用RDB_CONFLICT_FAIL，因为失败时会抛异常，<br>无法正常获取实际的变更数据。 |
 | OH_RDB_ReturningContext *context | 指向{@link OH_RDB_ReturningContext}实例的指针。 |
 
@@ -633,7 +633,7 @@ int OH_RdbTrans_DeleteWithReturning(OH_Rdb_Transaction *trans, OH_Predicates *pr
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | 指向[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)实例的指针。 |
-| OH_Predicates *predicates | 指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针。 |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针。 |
 | OH_RDB_ReturningContext *context | 指向{@link OH_RDB_ReturningContext}实例的指针。 |
 
 **返回：**

@@ -10,7 +10,7 @@ Searching for a specified target.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -31,7 +31,7 @@ Searching for a specified target.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[SearchResult](arkts-mechanic-mechanicmanager-searchresult-i-sys.md)&gt; | Promise that return the Search result. |
+| Promise&lt;SearchResult&gt; | Promise that return the Search result. |
 
 **错误码：**
 

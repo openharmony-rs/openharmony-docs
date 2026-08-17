@@ -10,11 +10,11 @@ function setUserRestrictionForAccount(admin: Want, settingsItem: string, account
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setUserRestrictionForAccount](#setUserRestrictionForAccount)(admin: Want, settingsItem: SettingsForAccount, accountId: int, restricted: boolean)
+**替代接口：** [setUserRestrictionForAccount](#setuserrestrictionforaccount)(admin: Want, settingsItem: SettingsForAccount, accountId: int, restricted: boolean)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_USER_RESTRICTION
 
@@ -29,8 +29,8 @@ function setUserRestrictionForAccount(admin: Want, settingsItem: string, account
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| settingsItem | string | 是 | 行为名称。&lt;br/&gt;- modifyWallpaper：修改壁纸，包含锁屏壁纸和桌面壁纸。 |
-| accountId | int | 是 | 用户ID，取值范围：大于等于0。&lt;br/&gt;accountId可以通过 [getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getOsAccountLocalId)等接口来获取。 &lt;br&gt;取值限定为整数。 |
+| settingsItem | string | 是 | 行为名称。<br/>- modifyWallpaper：修改壁纸，包含锁屏壁纸和桌面壁纸。 |
+| accountId | int | 是 | 用户ID，取值范围：大于等于0。<br/>accountId可以通过 [getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)等接口来获取。 <br>取值限定为整数。 |
 | restricted | boolean | 是 | 是否禁用行为。true表示禁用，false表示不禁用。 |
 
 **错误码：**
@@ -75,7 +75,7 @@ function setUserRestrictionForAccount(admin: Want, settingsItem: SettingsForAcco
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -93,7 +93,7 @@ function setUserRestrictionForAccount(admin: Want, settingsItem: SettingsForAcco
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | settingsItem | [SettingsForAccount](arkts-mdm-restrictions-settingsforaccount-e.md) | 是 | 指定要限制修改的用户设置项。 |
-| accountId | int | 是 | 用户ID，取值范围：大于等于0。 &lt;br&gt;取值限定为整数。 &lt;br&gt;accountId可以通过 [getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getOsAccountLocalId)等接口来获取。 |
+| accountId | int | 是 | 用户ID，取值范围：大于等于0。 <br>取值限定为整数。 <br>accountId可以通过 [getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)等接口来获取。 |
 | restricted | boolean | 是 | true表示禁用，false表示不禁用。 |
 
 **错误码：**

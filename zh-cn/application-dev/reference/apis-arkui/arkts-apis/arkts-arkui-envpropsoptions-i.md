@@ -1,10 +1,10 @@
 # EnvPropsOptions
 
-用于指定环境变量名称及其默认值的键值对对象，作为[envProps](../../apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-eccsignaturespec-i.md#s)参数传入。
+用于指定环境变量名称及其默认值的键值对对象，作为[envProps](arkts-arkui-environment-c.md#envprops)参数传入。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ defaultValue: number | string | boolean
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -40,13 +40,13 @@ defaultValue: number | string | boolean
 key: string
 ```
 
-环境变量名称，支持的范围详见[内置环境变量说明](arkts-arkui-environment-c.md#Environment)。
+环境变量名称，支持的范围详见[内置环境变量说明](arkts-arkui-environment-c.md#environment)。
 
 **类型：** string
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 

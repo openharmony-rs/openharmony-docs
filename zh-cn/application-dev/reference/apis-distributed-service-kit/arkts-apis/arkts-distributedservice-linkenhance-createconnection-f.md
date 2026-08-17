@@ -6,11 +6,11 @@
 function createConnection(deviceId: string, name: string): Connection
 ```
 
-作为客户端的设备创建连接对象，以便后续向服务端设备发起连接。
+作为客户端的设备创建连接对象。创建Connection对象后，订阅on('connectResult')，然后调用connect()方法向服务端设备发起连接，连接成功后，可通过sendData()发送数据，当连接不需要使用，可调用 close()销毁连接对象释放资源。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -26,8 +26,8 @@ function createConnection(deviceId: string, name: string): Connection
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deviceId | string | 是 | 连接的目标设备的deviceId，即对端设备的BLE MAC地址。BLE MAC的获取方法，请参考 [查找设备](../../../connectivity/bluetooth/ble-development-guide.md)。 |
-| name | string | 是 | 连接的目标设备的服务名，非空字符串，最大长度255字节。 |
+| deviceId | string | 是 | 连接的对端设备的deviceId，即对端设备的BLE MAC地址。BLE MAC的获取方法，请参考 [查找设备](../../../connectivity/bluetooth/ble-development-guide.md)。 |
+| name | string | 是 | 连接的目标设备的服务名，非空字符串，最大长度255字节。超出长度限制或传入空字符串时返回错误码32390206。 |
 
 **返回值：**
 
@@ -40,7 +40,7 @@ function createConnection(deviceId: string, name: string): Connection
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [32390206](../../apis-distributedservice-kit/errorcode-link-enhance.md#32390206-参数非法) | Invalid parameter. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because the linkEnhance function has been trimmed<br>**适用版本：** 26.0.0+ |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because the linkEnhance function has been trimmed.<br>**适用版本：** 26.0.0+ |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
 ## 示例

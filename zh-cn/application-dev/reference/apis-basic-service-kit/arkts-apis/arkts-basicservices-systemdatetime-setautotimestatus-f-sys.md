@@ -10,7 +10,7 @@ function setAutoTimeStatus(status: boolean): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ function setAutoTimeStatus(status: boolean): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| status | boolean | 是 | 设置自动设置时间开关状态。&lt;br/&gt;- true：表示打开自动设置时间开关。 &lt;br/&gt;- false：表示关闭自动设置时间开关。 |
+| status | boolean | 是 | 设置自动设置时间开关状态。<br/>- true：表示打开自动设置时间开关。 <br/>- false：表示关闭自动设置时间开关。 |
 
 **返回值：**
 

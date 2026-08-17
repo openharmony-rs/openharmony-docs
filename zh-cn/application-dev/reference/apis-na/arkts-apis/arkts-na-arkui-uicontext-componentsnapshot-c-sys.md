@@ -4,7 +4,7 @@ class ComponentSnapshot
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -23,7 +23,7 @@ getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean,
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -39,8 +39,8 @@ getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| start | [NodeIdentity](../../apis-arkui/arkts-apis/arkts-arkui-nodeidentity-t.md) | 是 | the start component ID, set by developer through .id attribute or the unique ID get from FrameNode. |
-| end | [NodeIdentity](../../apis-arkui/arkts-apis/arkts-arkui-nodeidentity-t.md) | 是 | the end component ID, set by developer through.id attribute or the unique ID get from FrameNode. |
+| start | [NodeIdentity](arkts-na-nodeidentity-t.md) | 是 | the start component ID, set by developer through .id attribute or the unique ID get from FrameNode. |
+| end | [NodeIdentity](arkts-na-nodeidentity-t.md) | 是 | the end component ID, set by developer through.id attribute or the unique ID get from FrameNode. |
 | isStartRect | boolean | 是 | indicating the snapshot rect to use, true for using the rect of the start component, false for using the rect of the end component. |
 | options | componentSnapshot.SnapshotOptions | 否 | Define the snapshot options. |
 

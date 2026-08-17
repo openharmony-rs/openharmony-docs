@@ -3,7 +3,8 @@
 ## 导入模块
 
 ```TypeScript
-import { ActionResult, ShowNotificationOptions } from '@kit.NotificationKit';
+import { ActionResult } from 'ActionResult';
+import { ShowNotificationOptions } from 'ShowNotificationOptions';
 ```
 
 ## 汇总

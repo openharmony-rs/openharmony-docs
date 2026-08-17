@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,11 +22,11 @@
 | 名称 | 说明 |
 | --- | --- |
 | [get](arkts-basicservices-systemparameterenhance-get-f-sys.md#get) | 获取系统参数key对应的值，使用callback异步回调。 |
-| [get](arkts-basicservices-systemparameterenhance-get-f-sys.md#get（系统接口）) | 获取系统参数Key对应的值，使用callback异步回调。 |
-| [get](arkts-basicservices-systemparameterenhance-get-f-sys.md#get（系统接口）) | 获取系统参数key对应的值，使用Promise异步回调。 |
-| [getSync](arkts-basicservices-systemparameterenhance-getsync-f-sys.md#getSync) | 获取系统参数key对应的值。 |
+| [get](arkts-basicservices-systemparameterenhance-get-f-sys.md#get系统接口) | 获取系统参数Key对应的值，使用callback异步回调。 |
+| [get](arkts-basicservices-systemparameterenhance-get-f-sys.md#get系统接口) | 获取系统参数key对应的值，使用Promise异步回调。 |
+| [getSync](arkts-basicservices-systemparameterenhance-getsync-f-sys.md#getsync) | 获取系统参数key对应的值。 |
 | [set](arkts-basicservices-systemparameterenhance-set-f-sys.md#set) | 设置系统参数key对应的值，使用callback异步回调。 |
-| [set](arkts-basicservices-systemparameterenhance-set-f-sys.md#set（系统接口）) | 设置系统参数key对应的值，使用Promise异步回调。 |
-| [setSync](arkts-basicservices-systemparameterenhance-setsync-f-sys.md#setSync) | 设置系统参数key对应的值。 |
+| [set](arkts-basicservices-systemparameterenhance-set-f-sys.md#set系统接口) | 设置系统参数key对应的值，使用Promise异步回调。 |
+| [setSync](arkts-basicservices-systemparameterenhance-setsync-f-sys.md#setsync) | 设置系统参数key对应的值。 |
 <!--DelEnd-->
 

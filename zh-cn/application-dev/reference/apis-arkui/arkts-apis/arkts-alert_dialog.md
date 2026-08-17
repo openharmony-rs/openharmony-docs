@@ -27,11 +27,11 @@
 | 名称 | 说明 |
 | --- | --- |
 | [AlertDialogButtonBaseOptions](arkts-arkui-alertdialogbuttonbaseoptions-i.md) | 警告弹窗中按钮的样式。 @since版本号高于内层元素版本号的情况，但这不影响接口的使用。 |
-| [AlertDialogButtonOptions](arkts-arkui-alertdialogbuttonoptions-i.md) | 继承自[AlertDialogButtonBaseOptions](arkts-arkui-alertdialogbuttonbaseoptions-i.md#AlertDialogButtonBaseOptions)。 |
+| [AlertDialogButtonOptions](arkts-arkui-alertdialogbuttonoptions-i.md) | 继承自[AlertDialogButtonBaseOptions](arkts-arkui-alertdialogbuttonbaseoptions-i.md#alertdialogbuttonbaseoptions)。 |
 | [AlertDialogParam](arkts-arkui-alertdialogparam-i.md) | 警告弹窗的样式。 |
-| [AlertDialogParamWithButtons](arkts-arkui-alertdialogparamwithbuttons-i.md) | 继承自[AlertDialogParam](arkts-arkui-alertdialogparam-i.md#AlertDialogParam)。 |
-| [AlertDialogParamWithConfirm](arkts-arkui-alertdialogparamwithconfirm-i.md) | 继承自[AlertDialogParam](arkts-arkui-alertdialogparam-i.md#AlertDialogParam)。 confirm参数优先级：fontColor、backgroundColor > style > defaultFocus |
-| [AlertDialogParamWithOptions](arkts-arkui-alertdialogparamwithoptions-i.md) | 继承自[AlertDialogParam](arkts-arkui-alertdialogparam-i.md#AlertDialogParam)。 |
+| [AlertDialogParamWithButtons](arkts-arkui-alertdialogparamwithbuttons-i.md) | 继承自[AlertDialogParam](arkts-arkui-alertdialogparam-i.md#alertdialogparam)。 |
+| [AlertDialogParamWithConfirm](arkts-arkui-alertdialogparamwithconfirm-i.md) | 继承自[AlertDialogParam](arkts-arkui-alertdialogparam-i.md#alertdialogparam)。 confirm参数优先级：fontColor、backgroundColor > style > defaultFocus |
+| [AlertDialogParamWithOptions](arkts-arkui-alertdialogparamwithoptions-i.md) | 继承自[AlertDialogParam](arkts-arkui-alertdialogparam-i.md#alertdialogparam)。 |
 | [DismissDialogAction](arkts-arkui-dismissdialogaction-i.md) | Dialog关闭的信息。 |
 | [TextStyle](arkts-arkui-textstyle-i.md) | 弹窗中message的文本样式，包含文本截断方式等。 |
 

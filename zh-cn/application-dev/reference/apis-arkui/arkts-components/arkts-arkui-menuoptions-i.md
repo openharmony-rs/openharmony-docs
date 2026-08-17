@@ -1,12 +1,12 @@
 # MenuOptions
 
-配置弹出菜单的参数，继承自[ContextMenuOptions](arkts-arkui-contextmenuoptions-i.md#ContextMenuOptions)。
+配置弹出菜单的参数，继承自[ContextMenuOptions](arkts-arkui-contextmenuoptions-i.md#contextmenuoptions)。
 
-**继承/实现关系：** MenuOptions extends [ContextMenuOptions](arkts-arkui-contextmenuoptions-i.md#ContextMenuOptions)
+**继承/实现关系：** MenuOptions extends [ContextMenuOptions](arkts-arkui-contextmenuoptions-i.md#contextmenuoptions)
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -28,7 +28,7 @@ showInSubWindow?: boolean
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -46,13 +46,13 @@ showInSubWindow?: boolean
 title?: ResourceStr
 ```
 
-菜单标题。 **说明：** 仅在content设置为Array&lt;[MenuElement](arkts-arkui-menuelement-i.md#MenuElement)&gt; 时生效。
+菜单标题。 **说明：** 仅在content设置为Array&lt;[MenuElement](arkts-arkui-menuelement-i.md#menuelement)&gt; 时生效。
 
 **类型：** ResourceStr
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 

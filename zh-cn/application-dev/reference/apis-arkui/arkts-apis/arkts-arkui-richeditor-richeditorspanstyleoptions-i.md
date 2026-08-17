@@ -1,12 +1,12 @@
 # RichEditorSpanStyleOptions
 
-文本样式选项。 继承自[RichEditorRange](arkts-arkui-richeditor-richeditorrange-i.md#RichEditorRange)。
+文本样式选项。 继承自[RichEditorRange](arkts-arkui-richeditor-richeditorrange-i.md#richeditorrange)。
 
-**继承/实现关系：** RichEditorSpanStyleOptions extends [RichEditorRange](arkts-arkui-richeditor-richeditorrange-i.md#RichEditorRange)
+**继承/实现关系：** RichEditorSpanStyleOptions extends [RichEditorRange](arkts-arkui-richeditor-richeditorrange-i.md#richeditorrange)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

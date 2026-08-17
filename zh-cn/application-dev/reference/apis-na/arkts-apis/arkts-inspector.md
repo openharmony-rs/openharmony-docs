@@ -15,6 +15,6 @@ inspector的性能分析（Profiler）工具。
 
 | 名称 | 说明 |
 | --- | --- |
-| [setAppBgColor](arkts-na-inspector-setappbgcolor-f-sys.md#setAppBgColor（系统接口）) | 设置应用背景颜色。 |
+| [setAppBgColor](arkts-na-inspector-setappbgcolor-f-sys.md#setappbgcolor系统接口) | 设置应用背景颜色。 |
 <!--DelEnd-->
 

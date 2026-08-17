@@ -8,7 +8,7 @@ Search组件的控制器继承自TextContentControllerBase，涉及的接口有 
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ caretPosition(value: number): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -52,7 +52,7 @@ SearchController的构造函数。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -72,7 +72,7 @@ setTextSelection(selectionStart: number, selectionEnd: number, options?: Selecti
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -88,9 +88,9 @@ setTextSelection(selectionStart: number, selectionEnd: number, options?: Selecti
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| selectionStart | number | 是 | 文本选择区域起始位置，文本框中文字的起始位置为0。 &lt;br&gt;当selectionStart小于0时，按照0处理；当selectionStart大于文字最大长度时，按照文字最大长度处理。 |
-| selectionEnd | number | 是 | 文本选择区域结束位置。 &lt;br&gt;当selectionEnd小于0时、按照0处理；当selectionEnd大于文字最大长度时、按照文字最大长度处理。 |
-| options | SelectionOptions | 否 | 选中文字时的配置。 &lt;br&gt;默认值：MenuPolicy.DEFAULT。 |
+| selectionStart | number | 是 | 文本选择区域起始位置，文本框中文字的起始位置为0。 <br>当selectionStart小于0时，按照0处理；当selectionStart大于文字最大长度时，按照文字最大长度处理。 |
+| selectionEnd | number | 是 | 文本选择区域结束位置。 <br>当selectionEnd小于0时、按照0处理；当selectionEnd大于文字最大长度时、按照文字最大长度处理。 |
+| options | SelectionOptions | 否 | 选中文字时的配置。 <br>默认值：MenuPolicy.DEFAULT。 |
 
 ## stopEditing
 
@@ -102,7 +102,7 @@ stopEditing(): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 

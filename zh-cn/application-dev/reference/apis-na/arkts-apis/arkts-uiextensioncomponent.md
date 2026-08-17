@@ -7,8 +7,8 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [UIExtensionComponent](arkts-na-uiextensioncomponent-uiextensioncomponent-f-sys.md#UIExtensionComponent（系统接口）) | 定义UIExtensionComponent组件。 |
-| [UIExtensionComponent](arkts-na-uiextensioncomponent-uiextensioncomponent-f-sys.md#UIExtensionComponent（系统接口）) | 定义UIExtensionComponent组件。它要求在组件属性设置开始时调用setUIExtensionComponentOptions， 并在组件属性设置结束时调用applyAttributeFinish。 |
+| [UIExtensionComponent](arkts-na-uiextensioncomponent-uiextensioncomponent-f-sys.md#uiextensioncomponent系统接口) | 定义UIExtensionComponent组件。 |
+| [UIExtensionComponent](arkts-na-uiextensioncomponent-uiextensioncomponent-f-sys.md#uiextensioncomponent系统接口) | 定义UIExtensionComponent组件。它要求在组件属性设置开始时调用setUIExtensionComponentOptions， 并在组件属性设置结束时调用applyAttributeFinish。 |
 <!--DelEnd-->
 
 <!--Del-->

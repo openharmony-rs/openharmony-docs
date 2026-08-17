@@ -6,8 +6,8 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [AlphabetIndexer](arkts-na-alphabetindexer-alphabetindexer-f.md#AlphabetIndexer) | 创建索引条组件。 |
-| [AlphabetIndexer](arkts-na-alphabetindexer-alphabetindexer-f.md#AlphabetIndexer) | 定义AlphabetIndexer组件 |
+| [AlphabetIndexer](arkts-na-alphabetindexer-alphabetindexer-f.md#alphabetindexer) | 创建索引条组件。 |
+| [AlphabetIndexer](arkts-na-alphabetindexer-alphabetindexer-f.md#alphabetindexer) | 定义AlphabetIndexer组件 |
 
 ### 接口
 

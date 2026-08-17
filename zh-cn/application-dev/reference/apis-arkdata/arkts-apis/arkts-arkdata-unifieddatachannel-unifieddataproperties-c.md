@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ extras?: Record<string, RecordData>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -46,7 +46,7 @@ getDelayData?: GetDelayData
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -64,13 +64,13 @@ getDelayData?: GetDelayData
 shareOptions?: ShareOptions
 ```
 
-指示[UnifiedData](arkts-arkdata-unifieddatachannel-unifieddata-c.md#UnifiedData)支持的设备内使用范围，非必填字段，默认值为CROSS_APP。
+指示[UnifiedData](arkts-arkdata-unifieddatachannel-unifieddata-c.md#unifieddata)支持的设备内使用范围，非必填字段，默认值为CROSS_APP。
 
 **类型：** [ShareOptions](arkts-arkdata-unifieddatachannel-shareoptions-e.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -94,7 +94,7 @@ tag?: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -112,13 +112,13 @@ tag?: string
 readonly timestamp?: Date
 ```
 
-[UnifiedData](arkts-arkdata-unifieddatachannel-unifieddata-c.md#UnifiedData)的生成时间戳。默认值为1970年1月1日（UTC）。
+[UnifiedData](arkts-arkdata-unifieddatachannel-unifieddata-c.md#unifieddata)的生成时间戳。默认值为1970年1月1日（UTC）。
 
 **类型：** Date
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -136,13 +136,13 @@ readonly timestamp?: Date
 uriAuthorizationPolicies?: Array<UriPermission>
 ```
 
-用于拖拽场景的URI授权策略。默认值为READ+WRITE+PERSIST，只对单次数据生效，优先级较低，具体策略见[UriPermission](arkts-arkdata-unifieddatachannel-uripermission-e.md#UriPermission) 。
+用于拖拽场景的URI授权策略。默认值为READ+WRITE+PERSIST，只对单次数据生效，优先级较低，具体策略见[UriPermission](arkts-arkdata-unifieddatachannel-uripermission-e.md#uripermission) 。
 
 **类型：** Array&lt;[UriPermission](arkts-arkdata-unifieddatachannel-uripermission-e.md)&gt;
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

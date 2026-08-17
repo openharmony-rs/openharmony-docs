@@ -4,7 +4,7 @@ BaseContext抽象类用于表示继承的子类Context是Stage模型还是FA模�
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@ BaseContext抽象类用于表示继承的子类Context是Stage模型还是FA模�
 stageMode: boolean
 ```
 
-表示是否Stage模型。&lt;br&gt;true：[Stage模型](../../../application-models/ability-terminology.md#stage模型)。&lt;br&gt;false： [FA模型](../../../application-models/ability-terminology.md#fa模型)。
+表示是否Stage模型。<br>true：[Stage模型](../../../application-models/ability-terminology.md#stage模型)。<br>false： [FA模型](../../../application-models/ability-terminology.md#fa模型)。
 
 **类型：** boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

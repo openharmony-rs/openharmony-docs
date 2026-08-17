@@ -1,12 +1,12 @@
 # HTML
 
-HTML类型数据，是[Text](arkts-arkdata-unifieddatachannel-text-c.md#Text)的子类，用于描述超文本标记语言数据。
+HTML类型数据，是[Text](arkts-arkdata-unifieddatachannel-text-c.md#text)的子类，用于描述超文本标记语言数据。
 
-**继承/实现关系：** HTML extends [Text](arkts-arkdata-unifieddatachannel-text-c.md#Text)
+**继承/实现关系：** HTML extends [Text](arkts-arkdata-unifieddatachannel-text-c.md#text)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ plainContent?: string
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 

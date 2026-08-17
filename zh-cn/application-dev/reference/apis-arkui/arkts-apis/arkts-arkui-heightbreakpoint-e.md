@@ -4,7 +4,7 @@ Type of window height breakpoint.
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -18,11 +18,11 @@ Type of window height breakpoint.
 HEIGHT_SM = 0
 ```
 
-Window aspectRatio < 0.8 type.
+Window aspectRatio &lt; 0.8 type.
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -40,11 +40,11 @@ Window aspectRatio < 0.8 type.
 HEIGHT_MD = 1
 ```
 
-Window aspectRatio >= 0.8 and < 1.2 type.
+Window aspectRatio >= 0.8 and &lt; 1.2 type.
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -66,7 +66,7 @@ Window aspectRatio >= 1.2 type.
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 

@@ -10,7 +10,7 @@ function open(path: string, mode?: int): Promise<File>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -23,7 +23,7 @@ function open(path: string, mode?: int): Promise<File>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 文件或目录的应用沙箱路径或文件URI。 |
-| mode | int | 否 | 打开文件或目录的[OpenMode](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileio-openmode-n.md#OpenMode)，必须指定如下选项中的一个，默认以只读方式打开：&lt;br/&gt; - OpenMode.READ_ONLY(0o0)：只读打开。&lt;br/&gt;- OpenMode.WRITE_ONLY(0o1)：只写打开。&lt;br/&gt; - OpenMode.READ_WRITE(0o2)：读写打开。&lt;br/&gt;可以追加以下功能选项，以按位或的方式组合，默认情况下不追加任何额外选项。&lt;br/&gt; - OpenMode.CREATE(0o100)：如果文件不存在，则创建文件。&lt;br/&gt; - OpenMode.TRUNC(0o1000)：如果文件存在且文件具有写权限，则将其长度裁剪为零。&lt;br/&gt; - OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到文件末尾。&lt;br/&gt; - OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续 IO 进行非阻塞操作。&lt;br/&gt; - OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。&lt;br/&gt; - OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。&lt;br/&gt; - OpenMode.SYNC(0o4010000)：以同步IO方式打开文件。&lt;br/&gt; - OpenMode.UNCACHE(0o10000000000)：读写文件不进行页缓存，从API版本26.0.0开始支持此选项。 |
+| mode | int | 否 | 打开文件或目录的[OpenMode](arkts-na-fileio-openmode-n.md#openmode)，必须指定如下选项中的一个，默认以只读方式打开：<br/> - OpenMode.READ_ONLY(0o0)：只读打开。<br/>- OpenMode.WRITE_ONLY(0o1)：只写打开。<br/> - OpenMode.READ_WRITE(0o2)：读写打开。<br/>可以追加以下功能选项，以按位或的方式组合，默认情况下不追加任何额外选项。<br/> - OpenMode.CREATE(0o100)：如果文件不存在，则创建文件。<br/> - OpenMode.TRUNC(0o1000)：如果文件存在且文件具有写权限，则将其长度裁剪为零。<br/> - OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到文件末尾。<br/> - OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续 IO 进行非阻塞操作。<br/> - OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。<br/> - OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/> - OpenMode.SYNC(0o4010000)：以同步IO方式打开文件。<br/> - OpenMode.UNCACHE(0o10000000000)：读写文件不进行页缓存，从API版本26.0.0开始支持此选项。 |
 
 **返回值：**
 
@@ -74,7 +74,7 @@ function open(path: string, callback: AsyncCallback<File>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -131,7 +131,7 @@ function open(path: string, mode: int, callback: AsyncCallback<File>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -144,7 +144,7 @@ function open(path: string, mode: int, callback: AsyncCallback<File>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 文件或目录的应用沙箱路径或URI。 |
-| mode | int | 是 | 打开文件或目录的[OpenMode](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileio-openmode-n.md#OpenMode)，必须指定如下选项中的一个，默认以只读方式打开：&lt;br/&gt; - OpenMode.READ_ONLY(0o0)：只读打开。&lt;br/&gt;- OpenMode.WRITE_ONLY(0o1)：只写打开。&lt;br/&gt; - OpenMode.READ_WRITE(0o2)：读写打开。&lt;br/&gt;可以追加以下功能选项，以按位或的方式组合，默认情况下不追加任何额外选项。&lt;br/&gt; - OpenMode.CREATE(0o100)：如果文件不存在，则创建文件。&lt;br/&gt; - OpenMode.TRUNC(0o1000)：如果文件存在且文件具有写权限，则将其长度裁剪为零。&lt;br/&gt; - OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到文件末尾。&lt;br/&gt; - OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续 IO 进行非阻塞操作。&lt;br/&gt; - OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。&lt;br/&gt; - OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。&lt;br/&gt; - OpenMode.SYNC(0o4010000)：以同步IO方式打开文件。&lt;br/&gt; - OpenMode.UNCACHE(0o10000000000)：读写文件不进行页缓存，从API版本26.0.0开始支持此选项。 |
+| mode | int | 是 | 打开文件或目录的[OpenMode](arkts-na-fileio-openmode-n.md#openmode)，必须指定如下选项中的一个，默认以只读方式打开：<br/> - OpenMode.READ_ONLY(0o0)：只读打开。<br/>- OpenMode.WRITE_ONLY(0o1)：只写打开。<br/> - OpenMode.READ_WRITE(0o2)：读写打开。<br/>可以追加以下功能选项，以按位或的方式组合，默认情况下不追加任何额外选项。<br/> - OpenMode.CREATE(0o100)：如果文件不存在，则创建文件。<br/> - OpenMode.TRUNC(0o1000)：如果文件存在且文件具有写权限，则将其长度裁剪为零。<br/> - OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到文件末尾。<br/> - OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续 IO 进行非阻塞操作。<br/> - OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。<br/> - OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/> - OpenMode.SYNC(0o4010000)：以同步IO方式打开文件。<br/> - OpenMode.UNCACHE(0o10000000000)：读写文件不进行页缓存，从API版本26.0.0开始支持此选项。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[File](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-file-i.md)&gt; | 是 | 回调函数，返回File对象。 |
 
 **错误码：**

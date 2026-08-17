@@ -1,10 +1,10 @@
 # @ohos.xml
 
-本模块提供XML生成和解析的接口，支持多种方式的XML文本生成与解析，可帮助开发者高效处理结构化XML数据。 本模块提供了两种生成XML文件的方式: * [XmlSerializer](arkts-arkts-xml-xmlserializer-c.md#XmlSerializer)：适用于已知XML文本大小的情况。需要开发者自行创建ArrayBuffer作为缓存区域，需确保缓存区域足以容纳生成的文本内容。 * [XmlDynamicSerializer&lt;sup&gt;20+&lt;/sup&gt;](arkts-arkts-xml-xmldynamicserializer-c.md#XmlDynamicSerializer)：适用于未知XML文本大小的情况。无需自行创建ArrayBuffer，程序动态扩容，但序列化结果字符串长度上限为100000。 本模块提供了两种解析XML文件的方式: * [XmlPullParser](arkts-arkts-xml-xmlpullparser-c.md#XmlPullParser)：适用于对XML文本进行随机访问和灵活解析的场景。 * [XmlSAXParser&lt;sup&gt;24+&lt;/sup&gt;](arkts-arkts-xml-xmlsaxparser-c.md#XmlSAXParser)：适用于流式解析XML文本的场景，当XML文本较大，其他解析方式会消耗较多内存，建议采用流式解析。 > **说明：** > > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+本模块提供XML生成和解析的接口，支持多种方式的XML文本生成与解析，可帮助开发者高效处理结构化XML数据。 本模块提供了两种生成XML文件的方式: * [XmlSerializer](arkts-arkts-xml-xmlserializer-c.md#xmlserializer)：适用于已知XML文本大小的情况。需要开发者自行创建ArrayBuffer作为缓存区域，需确保缓存区域足以容纳生成的文本内容。 * [XmlDynamicSerializer&lt;sup&gt;20+&lt;/sup&gt;](arkts-arkts-xml-xmldynamicserializer-c.md#xmldynamicserializer)：适用于未知XML文本大小的情况。无需自行创建ArrayBuffer，程序动态扩容，但序列化结果字符串长度上限为100000。 本模块提供了两种解析XML文件的方式: * [XmlPullParser](arkts-arkts-xml-xmlpullparser-c.md#xmlpullparser)：适用于对XML文本进行随机访问和灵活解析的场景。 * [XmlSAXParser&lt;sup&gt;24+&lt;/sup&gt;](arkts-arkts-xml-xmlsaxparser-c.md#xmlsaxparser)：适用于流式解析XML文本的场景，当XML文本较大，其他解析方式会消耗较多内存，建议采用流式解析。 > **说明：** > > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -20,7 +20,7 @@
 | --- | --- |
 | [XmlDynamicSerializer](arkts-arkts-xml-xmldynamicserializer-c.md) | XmlDynamicSerializer类用于动态生成XML字符串。当无法确定XML内容长度时，推荐使用该类。 |
 | [XmlPullParser](arkts-arkts-xml-xmlpullparser-c.md) | XmlPullParser接口用于解析现有的XML文件，适用于对XML文本进行随机访问和灵活解析的场景。 |
-| [XmlSAXParser](arkts-arkts-xml-xmlsaxparser-c.md) | XmlSAXParser类用于以流式方式解析XML文本。适用于需要边读取边处理的场景，支持从[stream.Readable](arkts-arkts-stream-readable-c.md#Readable) 流中读取XML数据并 进行解析。 |
+| [XmlSAXParser](arkts-arkts-xml-xmlsaxparser-c.md) | XmlSAXParser类用于以流式方式解析XML文本。适用于需要边读取边处理的场景，支持从[stream.Readable](arkts-arkts-stream-readable-c.md#readable) 流中读取XML数据并 进行解析。 |
 | [XmlSerializer](arkts-arkts-xml-xmlserializer-c.md) | XmlSerializer接口用于生成XML文件。该接口基于预分配的ArrayBuffer缓存区域，通过顺序调用元素写入方法（如startElement、setAttributes、setText和endElement）将XML文本写入缓存。 |
 
 ### 接口

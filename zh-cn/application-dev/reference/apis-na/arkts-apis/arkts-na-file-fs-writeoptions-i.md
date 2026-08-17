@@ -1,12 +1,12 @@
 # WriteOptions
 
-可选项类型，支持write接口使用，WriteOptions继承自[Options](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-options-i.md#Options)。
+可选项类型，支持write接口使用，WriteOptions继承自[Options](arkts-na-file-fs-options-i.md#options)。
 
-**继承/实现关系：** WriteOptions extends [Options](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-options-i.md#Options)
+**继承/实现关系：** WriteOptions extends [Options](arkts-na-file-fs-options-i.md#options)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ length?: long
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -46,7 +46,7 @@ offset?: long
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

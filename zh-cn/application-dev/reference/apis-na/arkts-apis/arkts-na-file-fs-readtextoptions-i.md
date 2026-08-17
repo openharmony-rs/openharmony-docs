@@ -1,12 +1,12 @@
 # ReadTextOptions
 
-可选项类型，支持readText接口使用，ReadTextOptions继承自[ReadOptions](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-readoptions-i.md#ReadOptions)。
+可选项类型，支持readText接口使用，ReadTextOptions继承自[ReadOptions](arkts-na-file-fs-readoptions-i.md#readoptions)。
 
-**继承/实现关系：** ReadTextOptions extends [ReadOptions](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-readoptions-i.md#ReadOptions)
+**继承/实现关系：** ReadTextOptions extends [ReadOptions](arkts-na-file-fs-readoptions-i.md#readoptions)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ encoding?: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

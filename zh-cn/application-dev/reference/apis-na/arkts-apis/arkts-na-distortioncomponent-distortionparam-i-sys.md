@@ -4,7 +4,7 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -22,13 +22,13 @@ barrelDistortion: Vector4
 
 四条边的桶形扭曲程度参数。 Vector4中四个值分别控制：x是左边，y是右边，z是上边，w是下边。 默认值：[0, 0, 0, 0] 正数表示边向外凸出的扭曲，负数表示边向内凹陷的扭曲。扭曲参数绝对值达到1时，扭曲程度为极端扭曲。 x、y、z、w 各值建议设置范围：[-1, 1]
 
-**类型：** [Vector4](arkts-na-graphics-vector4-i.md)
+**类型：** [Vector4](../../apis-arkui/arkts-apis/arkts-arkui-graphics-vector4-i.md)
 
 **默认值：** [0, 0, 0, 0]
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -48,13 +48,13 @@ bottomLeft: Vector2
 
 左下角的坐标。 默认值：[0, 1]
 
-**类型：** [Vector2](arkts-na-graphics-vector2-i.md)
+**类型：** [Vector2](../../apis-arkui/arkts-apis/arkts-arkui-graphics-vector2-i.md)
 
 **默认值：** [0, 0]
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -74,13 +74,13 @@ bottomRight: Vector2
 
 右下角的坐标。 默认值：[1, 1]
 
-**类型：** [Vector2](arkts-na-graphics-vector2-i.md)
+**类型：** [Vector2](../../apis-arkui/arkts-apis/arkts-arkui-graphics-vector2-i.md)
 
 **默认值：** [0, 0]
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -100,13 +100,13 @@ topLeft: Vector2
 
 左上角的坐标。 默认值：[0, 0]
 
-**类型：** [Vector2](arkts-na-graphics-vector2-i.md)
+**类型：** [Vector2](../../apis-arkui/arkts-apis/arkts-arkui-graphics-vector2-i.md)
 
 **默认值：** [0, 0]
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -126,13 +126,13 @@ topRight: Vector2
 
 右上角的坐标。 默认值：[1, 0]
 
-**类型：** [Vector2](arkts-na-graphics-vector2-i.md)
+**类型：** [Vector2](../../apis-arkui/arkts-apis/arkts-arkui-graphics-vector2-i.md)
 
 **默认值：** [0, 0]
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

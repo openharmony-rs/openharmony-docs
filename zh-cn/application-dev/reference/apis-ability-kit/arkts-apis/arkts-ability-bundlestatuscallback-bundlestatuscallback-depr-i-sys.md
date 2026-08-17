@@ -4,11 +4,11 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [bundleMonitor/bundleMonitor](arkts-bundle-bundlemonitor.md#@ohos.bundle.bundleMonitor)
+**替代接口：** [bundleMonitor/bundleMonitor](arkts-bundle-bundlemonitor.md#ohosbundlebundlemonitor)
 
 **需要权限：** ohos.permission.LISTEN_BUNDLE_CHANGE
 
@@ -30,11 +30,11 @@ add: (bundleName: string, userId: number) => void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [BundleChangedInfo](arkts-ability-bundlemonitor-bundlechangedinfo-i-sys.md#BundleChangedInfo（系统接口）)
+**替代接口：** [BundleChangedInfo](arkts-ability-bundlemonitor-bundlechangedinfo-i-sys.md#bundlechangedinfo系统接口)
 
 **需要权限：** ohos.permission.LISTEN_BUNDLE_CHANGE
 
@@ -56,11 +56,11 @@ remove: (bundleName: string, userId: number) => void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [BundleChangedInfo](arkts-ability-bundlemonitor-bundlechangedinfo-i-sys.md#BundleChangedInfo（系统接口）)
+**替代接口：** [BundleChangedInfo](arkts-ability-bundlemonitor-bundlechangedinfo-i-sys.md#bundlechangedinfo系统接口)
 
 **需要权限：** ohos.permission.LISTEN_BUNDLE_CHANGE
 
@@ -82,11 +82,11 @@ update: (bundleName: string, userId: number) => void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [BundleChangedInfo](arkts-ability-bundlemonitor-bundlechangedinfo-i-sys.md#BundleChangedInfo（系统接口）)
+**替代接口：** [BundleChangedInfo](arkts-ability-bundlemonitor-bundlechangedinfo-i-sys.md#bundlechangedinfo系统接口)
 
 **需要权限：** ohos.permission.LISTEN_BUNDLE_CHANGE
 

@@ -8,7 +8,7 @@ type GetDelayData = (type: string) => UnifiedData
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ type GetDelayData = (type: string) => UnifiedData
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | string | 是 | 作为延迟数据类型的标识，用于区分不同类型的数据。取值见 [UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md#UniformDataType)， 如'general.plain-text'表示纯文本类型。 |
+| type | string | 是 | 作为延迟数据类型的标识，用于区分不同类型的数据。取值见 [UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md#uniformdatatype)， 如'general.plain-text'表示纯文本类型。 |
 
 **返回值：**
 

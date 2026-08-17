@@ -10,7 +10,7 @@ export declare function borderRadiuses(all: double): NodeBorderRadiuses
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ export declare function borderRadiuses(all: double): NodeBorderRadiuses
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| all | double | 是 | 边框圆角。&lt;br/&gt;单位：vp&lt;br/&gt;。 &lt;br&gt;取值范围：[0, +∞)。 |
+| all | double | 是 | 边框圆角。<br/>单位：vp<br/>。 <br>取值范围：[0, +∞)。 |
 
 **返回值：**
 

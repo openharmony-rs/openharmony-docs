@@ -4,7 +4,7 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -18,7 +18,7 @@
 baudRate?: int
 ```
 
-波特率 取值限定为整数。 取值约束:标准波特率。 &lt;br&gt;单位:bps。 &lt;br&gt;默认值:115200。
+波特率 取值限定为整数。 取值约束:标准波特率。 <br>单位:bps。 <br>默认值:115200。
 
 **类型：** int
 
@@ -26,7 +26,7 @@ baudRate?: int
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -42,7 +42,7 @@ baudRate?: int
 dataBits?: DataBits
 ```
 
-数据位 &lt;br&gt;默认值:EIGHT。
+数据位 <br>默认值:EIGHT。
 
 **类型：** DataBits
 
@@ -50,7 +50,7 @@ dataBits?: DataBits
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -66,7 +66,7 @@ dataBits?: DataBits
 parity?: Parity
 ```
 
-校验位 &lt;br&gt;默认值:NONE。
+校验位 <br>默认值:NONE。
 
 **类型：** Parity
 
@@ -74,7 +74,7 @@ parity?: Parity
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -90,7 +90,7 @@ parity?: Parity
 rtscts?: boolean
 ```
 
-是否开启硬件自动流控 &lt;br&gt;默认值:false。
+是否开启硬件自动流控 <br>默认值:false。
 
 **类型：** boolean
 
@@ -98,7 +98,7 @@ rtscts?: boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -114,7 +114,7 @@ rtscts?: boolean
 stopBits?: StopBits
 ```
 
-停止位 &lt;br&gt;默认值:ONE。
+停止位 <br>默认值:ONE。
 
 **类型：** StopBits
 
@@ -122,7 +122,7 @@ stopBits?: StopBits
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -138,7 +138,7 @@ stopBits?: StopBits
 xany?: boolean
 ```
 
-是否启用XANY软件流控 &lt;br&gt;默认值:false。
+是否启用XANY软件流控 <br>默认值:false。
 
 **类型：** boolean
 
@@ -146,7 +146,7 @@ xany?: boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -162,7 +162,7 @@ xany?: boolean
 xoff?: boolean
 ```
 
-是否启用XOFF软件流控接收 &lt;br&gt;默认值:false。
+是否启用XOFF软件流控接收 <br>默认值:false。
 
 **类型：** boolean
 
@@ -170,7 +170,7 @@ xoff?: boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -186,7 +186,7 @@ xoff?: boolean
 xon?: boolean
 ```
 
-是否启用XON软件流控发送 &lt;br&gt;默认值:false。
+是否启用XON软件流控发送 <br>默认值:false。
 
 **类型：** boolean
 
@@ -194,7 +194,7 @@ xon?: boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ header?: ComponentContentBase
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -38,13 +38,13 @@ header?: ComponentContentBase
 initialIndex?: int
 ```
 
-设置当前ArcList初次加载时视窗起始位置显示的item的索引值。&lt;br/&gt;。 取值限定为整数。默认值：0&lt;br/&gt;设置为负数或超过了当前ArcList最后一个item的索引值时视为无效取值，无效取值按默认值显示。
+设置当前ArcList初次加载时视窗起始位置显示的item的索引值。<br/>。 取值限定为整数。默认值：0<br/>设置为负数或超过了当前ArcList最后一个item的索引值时视为无效取值，无效取值按默认值显示。
 
 **类型：** int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -58,13 +58,13 @@ initialIndex?: int
 scroller?: Scroller
 ```
 
-可滚动组件的控制器。与ArcList绑定后，可以通过它控制ArcList的滚动。&lt;br/&gt;不允许和其他滚动类组件绑定同一个滚动控制对象。
+可滚动组件的控制器。与ArcList绑定后，可以通过它控制ArcList的滚动。<br/>不允许和其他滚动类组件绑定同一个滚动控制对象。
 
 **类型：** Scroller
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

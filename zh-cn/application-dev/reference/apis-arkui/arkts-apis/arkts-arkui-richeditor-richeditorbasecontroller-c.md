@@ -6,7 +6,7 @@ RichEditor组件控制器基类。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ closeSelectionMenu(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -44,7 +44,7 @@ deleteBackward(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -64,7 +64,7 @@ getCaretOffset(): int | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -78,7 +78,7 @@ getCaretOffset(): int | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 当前光标所在位置。&lt;br/&gt;返回undefined时表示controller未与组件绑定。 |
+| int | 当前光标所在位置。<br/>返回undefined时表示controller未与组件绑定。 |
 
 ## getCaretRect
 
@@ -90,7 +90,7 @@ getCaretRect(): RectResult | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -116,7 +116,7 @@ getLayoutManager(): LayoutManager | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -130,7 +130,7 @@ getLayoutManager(): LayoutManager | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| [LayoutManager](arkts-arkui-textcommon-layoutmanager-i.md) | 布局管理器对象。&lt;br/&gt;返回undefined时表示controller未与组件绑定。 |
+| [LayoutManager](arkts-arkui-textcommon-layoutmanager-i.md) | 布局管理器对象。<br/>返回undefined时表示controller未与组件绑定。 |
 
 ## getPreviewText
 
@@ -142,7 +142,7 @@ getPreviewText(): PreviewText | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -156,7 +156,7 @@ getPreviewText(): PreviewText | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| [PreviewText](arkts-arkui-textcommon-previewtext-i.md) | 预上屏信息。&lt;br/&gt;返回undefined时表示controller未与组件绑定。 |
+| [PreviewText](arkts-arkui-textcommon-previewtext-i.md) | 预上屏信息。<br/>返回undefined时表示controller未与组件绑定。 |
 
 ## getTypingStyle
 
@@ -168,7 +168,7 @@ getTypingStyle(): RichEditorTextStyle | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -182,7 +182,7 @@ getTypingStyle(): RichEditorTextStyle | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| [RichEditorTextStyle](arkts-arkui-richeditor-richeditortextstyle-i.md) | 用户预设样式。&lt;br/&gt;返回undefined时表示controller未与组件绑定。 |
+| [RichEditorTextStyle](arkts-arkui-richeditor-richeditortextstyle-i.md) | 用户预设样式。<br/>返回undefined时表示controller未与组件绑定。 |
 
 ## isEditing
 
@@ -194,7 +194,7 @@ isEditing(): boolean | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -208,7 +208,7 @@ isEditing(): boolean | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | true为编辑态，false为非编辑态。&lt;br/&gt;返回undefined时表示controller未与组件绑定。 |
+| boolean | true为编辑态，false为非编辑态。<br/>返回undefined时表示controller未与组件绑定。 |
 
 ## scrollToVisible
 
@@ -220,7 +220,7 @@ scrollToVisible(range?: TextRange): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -244,7 +244,7 @@ setCaretOffset(offset: int): boolean | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -264,7 +264,7 @@ setCaretOffset(offset: int): boolean | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 光标是否设置成功。&lt;br/&gt;true表示光标位置设置成功，false表示未成功。&lt;br/&gt;返回undefined时表示controller未与组件绑定。 |
+| boolean | 光标是否设置成功。<br/>true表示光标位置设置成功，false表示未成功。<br/>返回undefined时表示controller未与组件绑定。 |
 
 ## setSelection
 
@@ -276,7 +276,7 @@ setSelection(selectionStart: int, selectionEnd: int, options?: SelectionOptions)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -292,7 +292,7 @@ setSelection(selectionStart: int, selectionEnd: int, options?: SelectionOptions)
 | --- | --- | --- | --- |
 | selectionStart | int | 是 | 选中开始位置。 |
 | selectionEnd | int | 是 | 选中结束位置。 |
-| options | [SelectionOptions](../arkts-components/arkts-arkui-selectionoptions-i.md) | 否 | 选择项配置。&lt;br/&gt;缺省时，按照 [SelectionOptions](../arkts-components/arkts-arkui-selectionoptions-i.md#SelectionOptions)中的默认值处理。 |
+| options | [SelectionOptions](../arkts-components/arkts-arkui-selectionoptions-i.md) | 否 | 选择项配置。<br/>缺省时，按照 [SelectionOptions](../arkts-components/arkts-arkui-selectionoptions-i.md#selectionoptions)中的默认值处理。 |
 
 ## setStyledPlaceholder
 
@@ -304,7 +304,7 @@ setStyledPlaceholder(styledString: StyledString): void
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -318,7 +318,7 @@ setStyledPlaceholder(styledString: StyledString): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| styledString | [StyledString](arkts-arkui-styledstring-styledstring-c.md) | 是 | 设置属性字符串样式的提示文本，其优先级高于placeholder属 性设置的提示文本。&lt;br&gt;提示文本不支持触发属性字符串[GestureStyle](arkts-arkui-gesturestyle-c.md#GestureStyle)样式 绑定的手势事件，以及[UrlStyle](arkts-arkui-urlstyle-c.md#UrlStyle)样式的超链接跳转能力。 |
+| styledString | [StyledString](arkts-arkui-styledstring-styledstring-c.md) | 是 | 设置属性字符串样式的提示文本，其优先级高于placeholder属 性设置的提示文本。<br>提示文本不支持触发属性字符串[GestureStyle](arkts-arkui-gesturestyle-c.md#gesturestyle)样式 绑定的手势事件，以及[UrlStyle](arkts-arkui-urlstyle-c.md#urlstyle)样式的超链接跳转能力。 |
 
 ## setTypingParagraphStyle
 
@@ -330,7 +330,7 @@ setTypingParagraphStyle(style: RichEditorParagraphStyle | undefined): void
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -344,7 +344,7 @@ setTypingParagraphStyle(style: RichEditorParagraphStyle | undefined): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| style | [RichEditorParagraphStyle](arkts-arkui-richeditor-richeditorparagraphstyle-i.md) \| undefined | 是 | 预设段落样式。&lt;br/&gt;取值为undefined时，与上一段落的段落样式一致。 |
+| style | [RichEditorParagraphStyle](arkts-arkui-richeditor-richeditorparagraphstyle-i.md) \| undefined | 是 | 预设段落样式。<br/>取值为undefined时，与上一段落的段落样式一致。 |
 
 ## setTypingStyle
 
@@ -356,7 +356,7 @@ setTypingStyle(value: RichEditorTextStyle): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -382,7 +382,7 @@ stopEditing(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

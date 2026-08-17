@@ -1,12 +1,12 @@
 # ReadonlySystemEnvKey
 
-定义只读的系统环境变量Key，继承自[SystemEnvKey\&lt;T\&gt;](arkts-arkui-systemenvkey-c.md#SystemEnvKey)。
+定义只读的系统环境变量Key，继承自[SystemEnvKey\&lt;T\&gt;](arkts-arkui-systemenvkey-c.md#systemenvkey)。
 
 **继承/实现关系：** ReadonlySystemEnvKey extends SystemEnvKey<T>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

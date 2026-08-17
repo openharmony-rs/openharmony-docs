@@ -6,7 +6,7 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ customContentTransition(transition: ArcSwiperContentAnimatedTransition | undefin
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -48,7 +48,7 @@ digitalCrownSensitivity(sensitivity: CrownSensitivity | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -74,7 +74,7 @@ disableSwipe(disabled: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -100,7 +100,7 @@ disableTransitionAnimation(disabled: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -126,7 +126,7 @@ duration(duration: int | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -152,7 +152,7 @@ effectMode(edgeEffect: EdgeEffect | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -178,7 +178,7 @@ index(index: int | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -204,7 +204,7 @@ indicator(style: ArcDotIndicator | boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -230,7 +230,7 @@ onAnimationEnd(handler: AnimationEndHandler | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -240,7 +240,7 @@ onAnimationEnd(handler: AnimationEndHandler | undefined): this
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handler | [AnimationEndHandler](arkts-na-animationendhandler-t.md) \| undefined | 是 |  |
+| handler | [AnimationEndHandler](../../apis-arkui/arkts-apis/arkts-arkui-animationendhandler-t.md) \| undefined | 是 |  |
 
 **返回值：**
 
@@ -256,7 +256,7 @@ onAnimationStart(handler: AnimationStartHandler | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -266,7 +266,7 @@ onAnimationStart(handler: AnimationStartHandler | undefined): this
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handler | [AnimationStartHandler](arkts-na-animationstarthandler-t.md) \| undefined | 是 |  |
+| handler | [AnimationStartHandler](../../apis-arkui/arkts-apis/arkts-arkui-animationstarthandler-t.md) \| undefined | 是 |  |
 
 **返回值：**
 
@@ -282,7 +282,7 @@ onChange(handler: IndexChangedHandler | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -292,7 +292,7 @@ onChange(handler: IndexChangedHandler | undefined): this
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handler | [IndexChangedHandler](arkts-na-indexchangedhandler-t.md) \| undefined | 是 |  |
+| handler | [IndexChangedHandler](../../apis-arkui/arkts-apis/arkts-arkui-indexchangedhandler-t.md) \| undefined | 是 |  |
 
 **返回值：**
 
@@ -308,7 +308,7 @@ onGestureSwipe(handler: GestureSwipeHandler | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -318,7 +318,7 @@ onGestureSwipe(handler: GestureSwipeHandler | undefined): this
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handler | [GestureSwipeHandler](arkts-na-gestureswipehandler-t.md) \| undefined | 是 |  |
+| handler | [GestureSwipeHandler](../../apis-arkui/arkts-apis/arkts-arkui-gestureswipehandler-t.md) \| undefined | 是 |  |
 
 **返回值：**
 
@@ -334,7 +334,7 @@ setArcSwiperOptions(controller?: ArcSwiperController): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -344,7 +344,7 @@ setArcSwiperOptions(controller?: ArcSwiperController): this
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| controller | [ArcSwiperController](arkts-na-arkui-arcswiper-arcswipercontroller-c.md) | 否 |  |
+| controller | [ArcSwiperController](../../apis-arkui/arkts-apis/arkts-arkui-arkui-arcswiper-arcswipercontroller-c.md) | 否 |  |
 
 **返回值：**
 
@@ -360,7 +360,7 @@ vertical(isVertical: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -388,7 +388,7 @@ default
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

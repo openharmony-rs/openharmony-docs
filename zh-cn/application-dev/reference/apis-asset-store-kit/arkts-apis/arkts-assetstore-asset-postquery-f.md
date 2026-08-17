@@ -6,11 +6,11 @@
 function postQuery(handle: AssetMap): Promise<void>
 ```
 
-查询的后置处理，用于需要用户认证的关键资产（与[asset.preQuery](arkts-assetstore-asset-prequery-f.md#preQuery)函数成对出现）。使用Promise异步回调。
+查询的后置处理，用于需要用户认证的关键资产（与[asset.preQuery](arkts-assetstore-asset-prequery-f.md#prequery)函数成对出现）。使用Promise异步回调。
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ function postQuery(handle: AssetMap): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handle | [AssetMap](arkts-assetstore-asset-assetmap-t.md) | 是 | 待处理的查询句柄，包含[asset.preQuery](arkts-assetstore-asset-prequery-f.md#preQuery)执行成功返回的挑战值。 |
+| handle | [AssetMap](arkts-assetstore-asset-assetmap-t.md) | 是 | 待处理的查询句柄，包含[asset.preQuery](arkts-assetstore-asset-prequery-f.md#prequery)执行成功返回的挑战值。 |
 
 **返回值：**
 

@@ -8,7 +8,7 @@ declare type ParticleTuple<T1, T2> = [T1, T2]
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 

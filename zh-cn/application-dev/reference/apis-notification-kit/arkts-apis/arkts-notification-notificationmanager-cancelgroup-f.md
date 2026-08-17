@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from '@kit.NotificationKit';
+import { notificationManager } from 'notificationManager';
 ```
 
 ## cancelGroup
@@ -16,7 +16,7 @@ function cancelGroup(groupName: string, callback: AsyncCallback<void>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -28,7 +28,7 @@ function cancelGroup(groupName: string, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| groupName | string | 是 | 通知组名称，此名称需要在发布通知时通过 [NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md#NotificationRequest)对象指定。 |
+| groupName | string | 是 | 通知组名称，此名称需要在发布通知时通过 [NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md#notificationrequest)对象指定。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当取消当前应用指定组下的通知成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -85,7 +85,7 @@ function cancelGroup(groupName: string): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -97,7 +97,7 @@ function cancelGroup(groupName: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| groupName | string | 是 | 通知组名称，此名称需要在发布通知时通过 [NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md#NotificationRequest)对象指定。 |
+| groupName | string | 是 | 通知组名称，此名称需要在发布通知时通过 [NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md#notificationrequest)对象指定。 |
 
 **返回值：**
 

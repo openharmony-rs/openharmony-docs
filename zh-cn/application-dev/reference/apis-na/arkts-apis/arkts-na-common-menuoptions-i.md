@@ -2,11 +2,11 @@
 
 Defines the menu options.
 
-**继承/实现关系：** MenuOptions extends [ContextMenuOptions](arkts-na-common-contextmenuoptions-i.md#ContextMenuOptions)
+**继承/实现关系：** MenuOptions extends [ContextMenuOptions](arkts-na-common-contextmenuoptions-i.md#contextmenuoptions)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -28,7 +28,7 @@ Whether to display in the sub window.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -50,7 +50,7 @@ Sets the title of the menu window.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

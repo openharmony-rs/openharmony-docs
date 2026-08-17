@@ -1,10 +1,10 @@
 # @ohos.arkui.uiExtension
 
-用于[EmbeddedUIExtensionAbility](../../../application-models/embeddeduiextensionability.md)（或 [UIExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensionability-uiextensionability-c.md#UIExtensionAbility)）中获取宿主应用的窗口信息或对应的 EmbeddedComponent&lt;!--Del--&gt;（或 UIExtensionComponent）&lt;!--DelEnd--&gt;组件的信息。 > **说明：**> > 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+用于[EmbeddedUIExtensionAbility](../../../application-models/embeddeduiextensionability.md)（或 [UIExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensionability-uiextensionability-c.md#uiextensionability)）中获取宿主应用的窗口信息或对应的 EmbeddedComponent&lt;!--Del--&gt;（或 UIExtensionComponent）&lt;!--DelEnd--&gt;组件的信息。 > **说明：**> > 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

@@ -10,7 +10,7 @@ function hasCall(callback: AsyncCallback<boolean>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -31,7 +31,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 call.hasCall((err: BusinessError, data: boolean) => {
     if (err) {
-        console.error(`hasCall fail, err->${JSON.stringify(err)}`);
+        console.error(`hasCall fail, 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
     } else {
         console.info(`hasCall success, data->${JSON.stringify(data)}`);
     }
@@ -49,7 +49,7 @@ function hasCall(): Promise<boolean>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -71,7 +71,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 call.hasCall().then(() => {
     console.info(`hasCall success`);
 }).catch((err: BusinessError) => {
-    console.error(`hasCall fail, promise: err->${JSON.stringify(err)}`);
+    console.error(`hasCall fail, promise: 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
 });
 ```
 

@@ -10,7 +10,7 @@ function getColors(wallpaperType: WallpaperType, callback: AsyncCallback<Array<R
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -50,7 +50,7 @@ function getColors(wallpaperType: WallpaperType): Promise<Array<RgbaColor>>
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

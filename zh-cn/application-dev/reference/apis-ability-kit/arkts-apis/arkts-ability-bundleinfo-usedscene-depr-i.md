@@ -1,14 +1,14 @@
 # UsedScene
 
-> **说明：** > > 从API version 7开始支持，从API version 9开始废弃，建议使用[UsedScene](#UsedScene)替代。 描述权限使用的场景和时机。
+> **说明：** > > 从API version 7开始支持，从API version 9开始废弃，建议使用[UsedScene](#usedscene)替代。 描述权限使用的场景和时机。
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [UsedScene](#UsedScene)
+**替代接口：** [UsedScene](#usedscene)
 
 <!--Device-unnamed-export interface UsedScene--><!--Device-unnamed-export interface UsedScene-End-->
 
@@ -28,7 +28,7 @@ abilities: Array<string>
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -52,7 +52,7 @@ when: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

@@ -10,11 +10,11 @@ function getPorts(): Array<USBPort>
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 12
 
-**替代接口：** [getPortList](arkts-basicservices-usbmanager-getportlist-f-sys.md#getPortList（系统接口）)()
+**替代接口：** [getPortList](arkts-basicservices-usbmanager-getportlist-f-sys.md#getportlist系统接口)()
 
 <!--Device-usbManager-function getPorts(): Array<USBPort>--><!--Device-usbManager-function getPorts(): Array<USBPort>-End-->
 

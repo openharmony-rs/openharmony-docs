@@ -1,12 +1,12 @@
 # Aperture（系统接口）
 
-Provides the APIs for aperture settings. It inherits from [ApertureQuery](arkts-camera-camera-aperturequery-i-sys.md#ApertureQuery（系统接口）).
+物理光圈对象。 Aperture继承自ApertureQuery。
 
-**继承/实现关系：** Aperture extends [ApertureQuery](arkts-camera-camera-aperturequery-i-sys.md#ApertureQuery（系统接口）)
+**继承/实现关系：** Aperture extends [ApertureQuery](arkts-camera-camera-aperturequery-i-sys.md#aperturequery系统接口)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,11 +22,11 @@ Provides the APIs for aperture settings. It inherits from [ApertureQuery](arkts-
 getPhysicalAperture(): double
 ```
 
-Gets current physical aperture value.
+获取当前物理光圈值。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -42,7 +42,7 @@ Gets current physical aperture value.
 
 | 类型 | 说明 |
 | --- | --- |
-| double | The current physical aperture value. |
+| double | 当前物理光圈值。 |
 
 **错误码：**
 
@@ -58,11 +58,11 @@ Gets current physical aperture value.
 getVirtualAperture(): double
 ```
 
-Obtains the virtual aperture in use.
+获取当前设置的虚拟光圈值。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -76,7 +76,7 @@ Obtains the virtual aperture in use.
 
 | 类型 | 说明 |
 | --- | --- |
-| double | Virtual aperture. |
+| double | 当前设置的虚拟光圈值。 |
 
 **错误码：**
 
@@ -100,11 +100,11 @@ function getVirtualAperture(session: camera.PortraitPhotoSession): number {
 setPhysicalAperture(aperture: double): void
 ```
 
-Sets physical aperture value.
+设置物理光圈值。需要先通过getSupportedPhysicalApertures接口获取不同焦段支持的可设置光圈值，再通过调整焦段范围，设置支持的物理光圈值。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -120,7 +120,7 @@ Sets physical aperture value.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| aperture | double | 是 | physical aperture value. The supported physical aperture range can be obtained by calling [getSupportedPhysicalApertures](arkts-camera-camera-aperturequery-i-sys.md#getSupportedPhysicalApertures) |
+| aperture | double | 是 | 物理光圈值。 |
 
 **错误码：**
 
@@ -136,11 +136,11 @@ Sets physical aperture value.
 setVirtualAperture(aperture: double): void
 ```
 
-Sets a virtual aperture. Before the setting, call [getSupportedVirtualApertures](arkts-camera-camera-aperturequery-i-sys.md#getSupportedVirtualApertures) to obtain the supported virtual apertures.
+设置虚拟光圈。可以先通过getSupportedVirtualApertures获取当前设备所支持的虚拟光圈列表。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -154,7 +154,7 @@ Sets a virtual aperture. Before the setting, call [getSupportedVirtualApertures]
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| aperture | double | 是 | virtual aperture value |
+| aperture | double | 是 | 虚拟光圈值，通过getSupportedVirtualApertures接口获取。 |
 
 **错误码：**
 

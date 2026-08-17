@@ -10,11 +10,11 @@ function registerApplicationStateObserver(observer: ApplicationStateObserver): n
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [on](arkts-ability-appmanager-onapplicationstate-f.md#on_applicationState)
+**替代接口：** [on](arkts-ability-appmanager-onapplicationstate-f.md#onapplicationstate)
 
 **需要权限：** ohos.permission.RUNNING_STATE_OBSERVER
 
@@ -28,7 +28,7 @@ function registerApplicationStateObserver(observer: ApplicationStateObserver): n
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| observer | [ApplicationStateObserver](arkts-ability-applicationstateobserver-c.md) | 是 | 表示程序状态观测器，用于观测应用的生命周期变化。 |
+| observer | [ApplicationStateObserver](../../apis-na/arkts-apis/arkts-na-applicationstateobserver-i.md) | 是 | 表示程序状态观测器，用于观测应用的生命周期变化。 |
 
 **返回值：**
 

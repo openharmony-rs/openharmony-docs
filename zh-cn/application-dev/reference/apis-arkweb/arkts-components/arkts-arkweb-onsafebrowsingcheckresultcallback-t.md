@@ -4,11 +4,11 @@
 type OnSafeBrowsingCheckResultCallback = (threatType: ThreatType) => void
 ```
 
-The callback of safe browsing check.
+网站安全风险检查触发的回调。
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -22,5 +22,5 @@ The callback of safe browsing check.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| threatType | [ThreatType](arkts-arkweb-threattype-e.md) | 是 | callback information of onSafeBrowsingCheckResult. |
+| threatType | [ThreatType](arkts-arkweb-threattype-e.md) | 是 | 定义网站threat类型。 |
 

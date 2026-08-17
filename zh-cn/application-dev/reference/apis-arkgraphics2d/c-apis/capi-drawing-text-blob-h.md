@@ -100,7 +100,7 @@ OH_Drawing_TextBlob* OH_Drawing_TextBlobCreateFromPosText(const void* text, size
 | -- | -- |
 | const void* text | 指向文本的指针。 |
 | size_t byteLength | 文本的字节长度。 |
-| [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md)* point2D | 二维点OH_Drawing_Point2D数组首地址，数组个数由{@link OH_Drawing_FontCountText}的计算结果决定。 |
+| [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md)* point2D | 二维点OH_Drawing_Point2D数组首地址，数组个数由{@link drawing_font.h#OH_Drawing_FontCountText}的计算结果决定。 |
 | [const OH_Drawing_Font](capi-drawing-oh-drawing-font.md)* font | 指向字体对象OH_Drawing_Font的指针。 |
 | [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) textEncoding | 文本编码类型OH_Drawing_TextEncoding。 |
 

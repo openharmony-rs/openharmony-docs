@@ -6,15 +6,15 @@
 function on(type: 'cooperation', callback: AsyncCallback<{ deviceDescriptor: string, eventMsg: EventMsg }>): void
 ```
 
-注册监听键鼠穿越状态，使用callback异步回调。 > **说明：** > > 从 API version 9开始支持，从API version 23开始废弃。建议使用 > [cooperate.on](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-oncooperate-f-sys.md#on_cooperate) > 替代。
+注册监听键鼠穿越状态，使用callback异步回调。 > **说明：** > > 从 API version 9开始支持，从API version 23开始废弃。建议使用 > [cooperate.on](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-oncooperate-f-sys.md#oncooperate) > 替代。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
-**替代接口：** [on](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-oncooperate-f-sys.md#on_cooperate)
+**替代接口：** [on](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-oncooperate-f-sys.md#oncooperate)
 
 <!--Device-inputDeviceCooperate-function on(type: 'cooperation', callback: AsyncCallback<{ deviceDescriptor: string, eventMsg: EventMsg }>): void--><!--Device-inputDeviceCooperate-function on(type: 'cooperation', callback: AsyncCallback<{ deviceDescriptor: string, eventMsg: EventMsg }>): void-End-->
 
@@ -33,7 +33,7 @@ function on(type: 'cooperation', callback: AsyncCallback<{ deviceDescriptor: str
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt;2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api.<br>**适用版本：** 12+ |
 
 ## 示例

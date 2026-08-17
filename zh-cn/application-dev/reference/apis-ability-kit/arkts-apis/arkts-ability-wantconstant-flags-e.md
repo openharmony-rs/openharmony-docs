@@ -4,7 +4,7 @@ Want.flags字段常用的系统预置关键字。开发者可以通过这些预�
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ FLAG_AUTH_READ_URI_PERMISSION = 0x00000001
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -42,7 +42,7 @@ FLAG_AUTH_WRITE_URI_PERMISSION = 0x00000002
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -58,11 +58,11 @@ FLAG_AUTH_WRITE_URI_PERMISSION = 0x00000002
 FLAG_AUTH_PERSISTABLE_URI_PERMISSION = 0x00000040
 ```
 
-表示该URI可被接收方持久化。目标应用可以通过[fileShare.persistPermission](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileshare-persistpermission-f.md#persistPermission)接口进行权限持久化。
+表示该URI可被接收方持久化。目标应用可以通过[fileShare.persistPermission](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileshare-persistpermission-f.md#persistpermission)接口进行权限持久化。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -80,7 +80,7 @@ FLAG_INSTALL_ON_DEMAND = 0x00000800
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -96,11 +96,11 @@ FLAG_INSTALL_ON_DEMAND = 0x00000800
 FLAG_ABILITY_ON_COLLABORATE = 0x00002000
 ```
 
-在多设备协同场景下，调用方应用通过DMS系统发起请求并且通过Flags字段携带此标志，协同方应用才会触发生命周期回调方法 [onCollaborate()](arkts-ability-app-ability-uiability-uiability-c.md#onCollaborate)。
+在多设备协同场景下，调用方应用通过DMS系统发起请求并且通过Flags字段携带此标志，协同方应用才会触发生命周期回调方法 [onCollaborate()](arkts-ability-app-ability-uiability-uiability-c.md#oncollaborate)。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -118,7 +118,7 @@ FLAG_START_WITHOUT_TIPS = 0x40000000
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

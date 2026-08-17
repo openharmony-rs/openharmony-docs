@@ -4,11 +4,11 @@
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 11
 
-**替代接口：** [AuthTipInfo](arkts-userauthentication-userauth-authtipinfo-i.md#AuthTipInfo)
+**替代接口：** [AuthTipInfo](arkts-userauthentication-userauth-authtipinfo-i.md#authtipinfo)
 
 <!--Device-userAuth-interface TipInfo--><!--Device-userAuth-interface TipInfo-End-->
 
@@ -26,11 +26,11 @@ module: number
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 11
 
-**替代接口：** [tipType](arkts-userauthentication-userauth-authtipinfo-i.md#tipType)
+**替代接口：** [tipType](arkts-userauthentication-userauth-authtipinfo-i.md#tiptype)
 
 <!--Device-TipInfo-module: number--><!--Device-TipInfo-module: number-End-->
 
@@ -48,11 +48,11 @@ tip: number
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 11
 
-**替代接口：** [tipCode](arkts-userauthentication-userauth-authtipinfo-i.md#tipCode)
+**替代接口：** [tipCode](arkts-userauthentication-userauth-authtipinfo-i.md#tipcode)
 
 <!--Device-TipInfo-tip: number--><!--Device-TipInfo-tip: number-End-->
 

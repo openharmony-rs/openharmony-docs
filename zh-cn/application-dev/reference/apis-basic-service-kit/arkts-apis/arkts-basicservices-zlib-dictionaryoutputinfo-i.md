@@ -4,7 +4,7 @@ InflateGetDictionary和deflateGetDictionary这两个函数会返回值的相关�
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ dictionaryLength: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -40,13 +40,13 @@ dictionaryLength: int
 status: ReturnStatus
 ```
 
-参考[ReturnStatus枚举定义](arkts-basicservices-zlib-returnstatus-e.md#ReturnStatus)。
+参考[ReturnStatus枚举定义](arkts-basicservices-zlib-returnstatus-e.md#returnstatus)。
 
 **类型：** [ReturnStatus](arkts-basicservices-zlib-returnstatus-e.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

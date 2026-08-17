@@ -6,11 +6,11 @@
 function isAutoStartupSupported(): boolean
 ```
 
-检查当前设备是否支持开机自启动。 > **说明：** > > 建议在调用[autoStartupManager.getAutoStartupStatusForSelf](arkts-ability-autostartupmanager-getautostartupstatusforself-f.md#getAutoStartupStatusForSelf) 之前，先调 > 用该接口检查设备能力。如果返回false，则表明当前设备不支持开机自启动。
+检查当前设备是否支持开机自启动。 > **说明：** > > 建议在调用[autoStartupManager.getAutoStartupStatusForSelf](arkts-ability-autostartupmanager-getautostartupstatusforself-f.md#getautostartupstatusforself) 之前，先调 > 用该接口检查设备能力。如果返回false，则表明当前设备不支持开机自启动。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

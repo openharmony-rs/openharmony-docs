@@ -1,10 +1,10 @@
 # ErrorObserver
 
-定义异常监听，可以作为 [errorManager.on('error')](arkts-ability-errormanager-onerror-f.md#on_error) 的入参监听当前应用发生的异常。
+定义异常监听，可以作为 [errorManager.on('error')](arkts-ability-errormanager-onerror-f.md#onerror) 的入参监听当前应用发生的异常。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ onException?(errObject: Error): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -45,8 +45,8 @@ import { errorManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let observer: errorManager.ErrorObserver = {
-  onUnhandledException(errorMsg) {
-    console.error('onUnhandledException, errorMsg: ', errorMsg);
+  onUnhandledException(errObject) {
+    console.error('onUnhandledException, errObject: ', errObject);
   },
   onException(errorObj) {
     console.error('onException, name: ', errorObj.name);
@@ -74,7 +74,7 @@ onUnhandledException(errMsg: string): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -97,8 +97,8 @@ import { errorManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let observer: errorManager.ErrorObserver = {
-  onUnhandledException(errorMsg) {
-    console.error('onUnhandledException, errorMsg: ', errorMsg);
+  onUnhandledException(errMsg) {
+    console.error('onUnhandledException, errMsg: ', errMsg);
   }
 };
 

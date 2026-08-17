@@ -7,7 +7,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [DepthComponent](arkts-na-depthcomponent-depthcomponent-f-sys.md#DepthComponent（系统接口）) | 创建景深组件。 |
+| [DepthComponent](arkts-na-depthcomponent-depthcomponent-f-sys.md#depthcomponent系统接口) | 创建景深组件。 |
 <!--DelEnd-->
 
 ### 接口

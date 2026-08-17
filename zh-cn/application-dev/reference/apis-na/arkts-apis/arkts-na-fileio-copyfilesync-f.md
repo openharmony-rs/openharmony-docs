@@ -10,7 +10,7 @@ function copyFileSync(src: string | int, dest: string | int, mode?: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ function copyFileSync(src: string | int, dest: string | int, mode?: int): void
 | --- | --- | --- | --- |
 | src | string \| int | 是 | 待复制文件的路径或待复制文件的文件描述符。 |
 | dest | string \| int | 是 | 目标文件路径或目标文件的文件描述符。 |
-| mode | int | 否 | mode提供覆盖文件的选项，当前仅支持0，且默认为0。&lt;br/&gt;0：完全覆盖目标文件，未覆盖部分将被裁剪掉。 |
+| mode | int | 否 | mode提供覆盖文件的选项，当前仅支持0，且默认为0。<br/>0：完全覆盖目标文件，未覆盖部分将被裁剪掉。 |
 
 **错误码：**
 

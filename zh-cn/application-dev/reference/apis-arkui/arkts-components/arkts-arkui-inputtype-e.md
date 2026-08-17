@@ -4,7 +4,7 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ Normal
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -42,7 +42,7 @@ Number
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -62,7 +62,7 @@ PhoneNumber
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -82,7 +82,7 @@ Email
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -102,7 +102,7 @@ Password
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -122,7 +122,7 @@ NUMBER_PASSWORD = 8
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -140,11 +140,11 @@ NUMBER_PASSWORD = 8
 USER_NAME = 10
 ```
 
-用户名输入模式，无特殊限制。 在已启用密码保险箱的情况下，支持用户名的自动保存和自动填充，用于配合[InputType.Password](#InputType)、 [InputType.NUMBER_PASSWORD](#InputType)、[InputType.NEW_PASSWORD](#InputType)完成用户名密码配对填充。
+用户名输入模式，无特殊限制。 在已启用密码保险箱的情况下，支持用户名的自动保存和自动填充，用于配合[InputType.Password](#inputtype)、 [InputType.NUMBER_PASSWORD](#inputtype)、[InputType.NEW_PASSWORD](#inputtype)完成用户名密码配对填充。
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -166,7 +166,7 @@ NEW_PASSWORD = 11
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -188,7 +188,7 @@ NUMBER_DECIMAL = 12
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -210,7 +210,7 @@ URL = 13
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -232,7 +232,7 @@ ONE_TIME_CODE = 14
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 

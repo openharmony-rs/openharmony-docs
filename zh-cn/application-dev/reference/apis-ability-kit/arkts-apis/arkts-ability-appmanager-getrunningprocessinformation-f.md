@@ -10,7 +10,7 @@ function getRunningProcessInformation(): Promise<Array<ProcessInformation>>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -59,7 +59,7 @@ function getRunningProcessInformation(callback: AsyncCallback<Array<ProcessInfor
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

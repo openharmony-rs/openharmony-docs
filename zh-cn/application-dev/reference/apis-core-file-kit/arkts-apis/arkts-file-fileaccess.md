@@ -4,11 +4,11 @@ fileAccess模块是基于[extension](../../../application-models/extensionabilit
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
-**替代接口：** [fileIo](arkts-corefile-fileio-n.md#fileIo)
+**替代接口：** [fileIo](../../apis-na/arkts-apis/arkts-na-fileio-n.md#fileio)
 
 <!--Device-unnamed-declare namespace fileAccess--><!--Device-unnamed-declare namespace fileAccess-End-->
 
@@ -21,10 +21,10 @@ fileAccess模块是基于[extension](../../../application-models/extensionabilit
 
 | 名称 | 说明 |
 | --- | --- |
-| [createFileAccessHelper](arkts-corefile-fileaccess-createfileaccesshelper-f-sys.md#createFileAccessHelper) | 以同步方法创建连接当前系统内所有文件管理服务的helper对象。 |
-| [createFileAccessHelper](arkts-corefile-fileaccess-createfileaccesshelper-f-sys.md#createFileAccessHelper（系统接口）) | 以同步方法创建连接指定wants的helper对象。 |
-| [getFileAccessAbilityInfo](arkts-corefile-fileaccess-getfileaccessabilityinfo-f-sys.md#getFileAccessAbilityInfo) | 以异步方法获取系统内extension配置为fileAccess类型的所有Want信息。使用callback异步回调。 |
-| [getFileAccessAbilityInfo](arkts-corefile-fileaccess-getfileaccessabilityinfo-f-sys.md#getFileAccessAbilityInfo（系统接口）) | 以异步方法获取系统内extension配置为fileAccess类型的所有Want信息。使用Promise异步回调。 |
+| [createFileAccessHelper](arkts-corefile-fileaccess-createfileaccesshelper-f-sys.md#createfileaccesshelper) | 以同步方法创建连接当前系统内所有文件管理服务的helper对象。 |
+| [createFileAccessHelper](arkts-corefile-fileaccess-createfileaccesshelper-f-sys.md#createfileaccesshelper系统接口) | 以同步方法创建连接指定wants的helper对象。 |
+| [getFileAccessAbilityInfo](arkts-corefile-fileaccess-getfileaccessabilityinfo-f-sys.md#getfileaccessabilityinfo) | 以异步方法获取系统内extension配置为fileAccess类型的所有Want信息。使用callback异步回调。 |
+| [getFileAccessAbilityInfo](arkts-corefile-fileaccess-getfileaccessabilityinfo-f-sys.md#getfileaccessabilityinfo系统接口) | 以异步方法获取系统内extension配置为fileAccess类型的所有Want信息。使用Promise异步回调。 |
 <!--DelEnd-->
 
 <!--Del-->
@@ -57,6 +57,6 @@ fileAccess模块是基于[extension](../../../application-models/extensionabilit
 
 | 名称 | 说明 |
 | --- | --- |
-| [DEVICES_URI](arkts-corefile-fileaccess-con-sys.md#DEVICES_URI) | 监听设备上线，下线通知，作为注册监听的URI。 |
+| [DEVICES_URI](arkts-corefile-fileaccess-con-sys.md#devicesuri) | 监听设备上线，下线通知，作为注册监听的URI。 |
 <!--DelEnd-->
 

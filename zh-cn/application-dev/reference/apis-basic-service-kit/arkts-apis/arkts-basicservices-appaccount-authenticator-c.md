@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -23,15 +23,15 @@ addAccountImplicitly(
     ): void
 ```
 
-根据指定的鉴权类型和可选项，隐式地添加应用账号。使用callback异步回调。 > **说明：** > > 从API version 8开始支持, 从API version 9开始废弃。建议使用[createAccountImplicitly](#createAccountImplicitly)替代。
+根据指定的鉴权类型和可选项，隐式地添加应用账号。使用callback异步回调。 > **说明：** > > 从API version 8开始支持, 从API version 9开始废弃。建议使用[createAccountImplicitly](#createaccountimplicitly)替代。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [createAccountImplicitly](#createAccountImplicitly)(options: CreateAccountImplicitlyOptions, callback: AuthCallback)
+**替代接口：** [createAccountImplicitly](#createaccountimplicitly)(options: CreateAccountImplicitlyOptions, callback: AuthCallback)
 
 <!--Device-Authenticator-addAccountImplicitly(      authType: string,      callerBundleName: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void--><!--Device-Authenticator-addAccountImplicitly(      authType: string,      callerBundleName: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void-End-->
 
@@ -56,7 +56,7 @@ auth(name: string, authType: string, options: Record<string, Object>, callback: 
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -83,7 +83,7 @@ auth(name: string, authType: string, options: Record<string, RecordData>, callba
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -116,7 +116,7 @@ authenticate(
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -146,7 +146,7 @@ checkAccountLabels(name: string, labels: Array<string>, callback: AuthCallback):
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -164,7 +164,7 @@ checkAccountLabels(name: string, labels: Array<string>, callback: AuthCallback):
 
 ## 示例
 
-接口需组合使用，请查看[getRemoteObject](#getRemoteObject)中的示例。
+接口需组合使用，请查看[getRemoteObject](#getremoteobject)中的示例。
 
 ## checkAccountRemovable
 
@@ -176,7 +176,7 @@ checkAccountRemovable(name: string, callback: AuthCallback): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -193,7 +193,7 @@ checkAccountRemovable(name: string, callback: AuthCallback): void
 
 ## 示例
 
-接口需组合使用，请查看[getRemoteObject](#getRemoteObject)中的示例。
+接口需组合使用，请查看[getRemoteObject](#getremoteobject)中的示例。
 
 ## createAccountImplicitly
 
@@ -205,7 +205,7 @@ createAccountImplicitly(options: CreateAccountImplicitlyOptions, callback: AuthC
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -230,7 +230,7 @@ getRemoteObject(): rpc.RemoteObject
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -417,7 +417,7 @@ setProperties(options: SetPropertiesOptions, callback: AuthCallback): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -434,7 +434,7 @@ setProperties(options: SetPropertiesOptions, callback: AuthCallback): void
 
 ## 示例
 
-接口需组合使用，请查看[getRemoteObject](#getRemoteObject)中的示例。
+接口需组合使用，请查看[getRemoteObject](#getremoteobject)中的示例。
 
 ## verifyCredential
 
@@ -446,7 +446,7 @@ verifyCredential(name: string, options: VerifyCredentialOptions, callback: AuthC
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -464,5 +464,5 @@ verifyCredential(name: string, options: VerifyCredentialOptions, callback: AuthC
 
 ## 示例
 
-接口需组合使用，请查看[getRemoteObject](#getRemoteObject)中的示例。
+接口需组合使用，请查看[getRemoteObject](#getremoteobject)中的示例。
 

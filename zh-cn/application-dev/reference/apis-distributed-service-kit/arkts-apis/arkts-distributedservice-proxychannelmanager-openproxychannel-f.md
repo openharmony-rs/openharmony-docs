@@ -6,11 +6,11 @@
 function openProxyChannel(channelInfo: ChannelInfo): Promise<int>
 ```
 
-打开代理通道，使用Promise异步回调返回结果。
+打开代理通道，使用Promise异步回调。基于ChannelInfo中配置的链路类型和对端设备信息，通过蓝牙BR协议与对端设备协商建立双向数据通道，并返回唯一标识该通道的channelId。适用于手机侧应用需要与穿戴设备侧应用建立 双向数据通道的场景，例如消息通知转发等。调用此方法后，必须在不再使用代理通道时调用[closeProxyChannel](arkts-distributedservice-proxychannelmanager-closeproxychannel-f.md#closeproxychannel)关闭通道以释放资源。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -26,13 +26,13 @@ function openProxyChannel(channelInfo: ChannelInfo): Promise<int>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| channelInfo | [ChannelInfo](arkts-distributedservice-proxychannelmanager-channelinfo-i.md) | 是 | 对端设备及服务的MAC和UUID信息。 |
+| channelInfo | [ChannelInfo](arkts-distributedservice-proxychannelmanager-channelinfo-i.md) | 是 | 代理通道的链路类型及对端设备的MAC地址和对端监听服务的UUID信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;int&gt; | 返回代理通道的channelId，取值范围为1~2147483647。channelId的生命周期和代理通道生命周期相同， 不关闭代理时，传入相同入参将返回相同channelId。 |
+| Promise&lt;int&gt; | 打开代理通道成功时resolve，返回代理通道的channelId，取值范围为1~2147483647，channelId的生命周期和代理通道生命周期相同，不关闭代理时，传入相同 入参将返回相同channelId；失败时reject返回错误信息，错误码详见错误码表。 |
 
 **错误码：**
 

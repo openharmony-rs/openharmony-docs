@@ -4,11 +4,11 @@
 type OnProxyConfigChangeCallback = () => void
 ```
 
-The callback for proxy changed.
+回调函数，在代理配置发生改变时被调用，回调成功表示代理设置成功。
 
 **起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+**ArkTS模式：** 起始版本为15。
 
 **废弃版本：** -1
 

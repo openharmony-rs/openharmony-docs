@@ -1,10 +1,10 @@
 # @ohos.app.ability.autoFillManager
 
-autoFillManager模块提供账号密码保存等功能。 不同于页面切换时触发的系统自动保存功能，该功能需要由用户手动触发。例如用户在网站上输入了账号密码，并点击“保存”按钮，才能触发相应的自动保存操作。
+autoFillManager模块为应用提供账号、密码、地址、电话号码等用户信息的自动填充能力。 不同于页面切换时触发的系统自动保存功能，该功能需要由用户手动触发。例如用户在网站上输入了账号密码，并点击“保存”按钮，才能触发相应的自动保存操作。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -20,7 +20,7 @@ autoFillManager模块提供账号密码保存等功能。 不同于页面切换�
 
 | 名称 | 说明 |
 | --- | --- |
-| [requestAutoSave](arkts-ability-autofillmanager-requestautosave-f.md#requestAutoSave) | 请求保存表单数据。使用callback异步回调。 如果当前表单没有提供表单切换的功能，可以通过此接口保存历史表单输入数据，保存请求完成时会触发该回调。 |
+| [requestAutoSave](arkts-ability-autofillmanager-requestautosave-f.md#requestautosave) | 请求保存表单数据。使用callback异步回调。 如果当前表单没有提供表单切换的功能，可以通过此接口保存历史表单输入数据，保存请求完成时会触发该回调。 |
 
 ### 接口
 

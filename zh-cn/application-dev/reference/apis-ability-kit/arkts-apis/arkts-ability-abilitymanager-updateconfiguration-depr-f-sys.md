@@ -10,11 +10,11 @@ function updateConfiguration(config: Configuration, callback: AsyncCallback<void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [updateConfiguration](arkts-ability-abilitymanager-updateconfiguration-f-sys.md#updateConfiguration（系统接口）)
+**替代接口：** [updateConfiguration](arkts-ability-abilitymanager-updateconfiguration-f-sys.md#updateconfiguration系统接口)
 
 **需要权限：** ohos.permission.UPDATE_CONFIGURATION
 
@@ -42,11 +42,11 @@ function updateConfiguration(config: Configuration): Promise<void>
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [updateConfiguration](arkts-ability-abilitymanager-updateconfiguration-f-sys.md#updateConfiguration（系统接口）)
+**替代接口：** [updateConfiguration](arkts-ability-abilitymanager-updateconfiguration-f-sys.md#updateconfiguration系统接口)
 
 **需要权限：** ohos.permission.UPDATE_CONFIGURATION
 

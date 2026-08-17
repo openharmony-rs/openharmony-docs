@@ -296,12 +296,14 @@
 - multimedia<!--arkts-audiokit-multimedia-->
   - [SystemSoundPlayer](arkts-systemsoundplayer.md)
     - [SystemSoundPlayer](arkts-audio-systemsoundplayer-i.md)
-  - [ringtonePlayer](arkts-ringtoneplayer.md)
+  <!--Del-->
+  - [ringtonePlayer](arkts-ringtoneplayer.md)<!--DelEnd-->
     <!--Del-->
     - [RingtoneOptions(系统接口)](arkts-audio-ringtoneplayer-ringtoneoptions-i-sys.md)<!--DelEnd-->
     <!--Del-->
     - [RingtonePlayer(系统接口)](arkts-audio-ringtoneplayer-ringtoneplayer-i-sys.md)<!--DelEnd-->
-  - [systemTonePlayer](arkts-systemtoneplayer.md)
+  <!--Del-->
+  - [systemTonePlayer](arkts-systemtoneplayer.md)<!--DelEnd-->
     <!--Del-->
     - [SystemToneOptions(系统接口)](arkts-audio-systemtoneplayer-systemtoneoptions-i-sys.md)<!--DelEnd-->
     <!--Del-->

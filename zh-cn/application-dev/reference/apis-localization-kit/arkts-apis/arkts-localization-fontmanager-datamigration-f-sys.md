@@ -10,7 +10,7 @@ function dataMigration(callback: DataMigrationCallback): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -32,7 +32,7 @@ function dataMigration(callback: DataMigrationCallback): int
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 迁移任务启动结果。 &lt;br&gt;- 0：迁移任务启动成功，迁移任务将在后台执行并通过回调通知进度和结果。 &lt;br&gt;- 其他值：迁移任务启动失败，请根据错误码排查原因。 |
+| int | 迁移任务启动结果。 <br>- 0：迁移任务启动成功，迁移任务将在后台执行并通过回调通知进度和结果。 <br>- 其他值：迁移任务启动失败，请根据错误码排查原因。 |
 
 **错误码：**
 

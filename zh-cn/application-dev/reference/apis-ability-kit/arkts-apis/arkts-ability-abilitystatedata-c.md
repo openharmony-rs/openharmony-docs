@@ -1,10 +1,10 @@
 # AbilityStateData
 
-AbilityStateData是Ability状态信息的数据结构。使用 [on](arkts-ability-appmanager-onapplicationstate-f.md#on_applicationState) 注册生命周期变化监听后，可以通过ApplicationStateObserver的onAbilityStateChanged回调的入参获取该数据结构。
+AbilityStateData是Ability状态信息的数据结构。使用 [on](arkts-ability-appmanager-onapplicationstate-f.md#onapplicationstate) 注册生命周期变化监听后，可以通过ApplicationStateObserver的onAbilityStateChanged回调的入参获取该数据结构。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ Ability名称。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -38,13 +38,13 @@ Ability名称。
 abilityType: int
 ```
 
-[Ability类型](#abilityType)： [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md#UIAbility)或 [ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md#ExtensionAbility)等。
+[Ability类型](#abilitytype)： [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md#uiability)或 [ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md#extensionability)等。
 
 **类型：** int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -64,7 +64,7 @@ appCloneIndex?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -84,7 +84,7 @@ bundleName: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -104,7 +104,7 @@ Ability创建时的拉起方Bundle名称。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -124,7 +124,7 @@ isAtomicService: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -144,7 +144,7 @@ Ability所属的模块名称。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -164,7 +164,7 @@ pid: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -178,13 +178,13 @@ pid: int
 state: int
 ```
 
-Ability状态。 - [Stage模型](../../../application-models/ability-terminology.md#stage模型)： [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md#UIAbility)的状态参见 UIAbility状态； [ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md#ExtensionAbility)的状态参见 ExtensionAbility状态 ；[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md#UIExtensionAbility)的状态参见 UIExtensionAbility状态 。 - [FA模型](../../../application-models/ability-terminology.md#fa模型)：参见 Ability状态。
+Ability状态。 - [Stage模型](../../../application-models/ability-terminology.md#stage模型)： [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md#uiability)的状态参见 UIAbility状态； [ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md#extensionability)的状态参见 ExtensionAbility状态 ；[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md#uiextensionability)的状态参见 UIExtensionAbility状态 。 - [FA模型](../../../application-models/ability-terminology.md#fa模型)：参见 Ability状态。
 
 **类型：** int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -204,7 +204,7 @@ uid: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

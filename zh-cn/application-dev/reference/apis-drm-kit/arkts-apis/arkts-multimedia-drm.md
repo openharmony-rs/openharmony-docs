@@ -16,7 +16,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -30,13 +30,13 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [createMediaKeySystem](arkts-drm-drm-createmediakeysystem-f.md#createMediaKeySystem) | Creates a MediaKeySystem instance. |
-| [createMediaKeySystem](arkts-drm-drm-createmediakeysystem-f.md#createMediaKeySystem) | Creates a MediaKeySystem instance. |
-| [getMediaKeySystemUuid](arkts-drm-drm-getmediakeysystemuuid-f.md#getMediaKeySystemUuid) | Get a MediaKeySystem's UUID. |
-| [getMediaKeySystems](arkts-drm-drm-getmediakeysystems-f.md#getMediaKeySystems) | Get all media key systems supported. |
-| [isMediaKeySystemSupported](arkts-drm-drm-ismediakeysystemsupported-f.md#isMediaKeySystemSupported) | Judge whether a system that specifies name, mimetype and content protection level is supported. |
-| [isMediaKeySystemSupported](arkts-drm-drm-ismediakeysystemsupported-f.md#isMediaKeySystemSupported) | Judge whether a system that specifies name, mimetype is supported. |
-| [isMediaKeySystemSupported](arkts-drm-drm-ismediakeysystemsupported-f.md#isMediaKeySystemSupported) | Judge whether a system that specifies name is supported. |
+| [createMediaKeySystem](arkts-drm-drm-createmediakeysystem-f.md#createmediakeysystem) | Creates a MediaKeySystem instance. |
+| [createMediaKeySystem](arkts-drm-drm-createmediakeysystem-f.md#createmediakeysystem) | Creates a MediaKeySystem instance. |
+| [getMediaKeySystemUuid](arkts-drm-drm-getmediakeysystemuuid-f.md#getmediakeysystemuuid) | Get a MediaKeySystem's UUID. |
+| [getMediaKeySystems](arkts-drm-drm-getmediakeysystems-f.md#getmediakeysystems) | Get all media key systems supported. |
+| [isMediaKeySystemSupported](arkts-drm-drm-ismediakeysystemsupported-f.md#ismediakeysystemsupported) | Judge whether a system that specifies name, mimetype and content protection level is supported. |
+| [isMediaKeySystemSupported](arkts-drm-drm-ismediakeysystemsupported-f.md#ismediakeysystemsupported) | Judge whether a system that specifies name, mimetype is supported. |
+| [isMediaKeySystemSupported](arkts-drm-drm-ismediakeysystemsupported-f.md#ismediakeysystemsupported) | Judge whether a system that specifies name is supported. |
 
 ### 接口
 
@@ -45,9 +45,9 @@
 | [EventInfo](arkts-drm-drm-eventinfo-i.md) | 事件信息。 |
 | [KeysInfo](arkts-drm-drm-keysinfo-i.md) | 媒体密钥中密钥信息。 |
 | [MediaKeyRequest](arkts-drm-drm-mediakeyrequest-i.md) | 媒体密钥请求参数。 |
-| [MediaKeySession](arkts-drm-drm-mediakeysession-i.md) | 支持媒体密钥管理。在调用MediaKeySession方法之前，必须使用 [createMediaKeySession](arkts-drm-drm-mediakeysystem-i.md#createMediaKeySession) 获取一个MediaKeySession实例。 |
+| [MediaKeySession](arkts-drm-drm-mediakeysession-i.md) | 支持媒体密钥管理。在调用MediaKeySession方法之前，必须使用 [createMediaKeySession](arkts-drm-drm-mediakeysystem-i.md#createmediakeysession) 获取一个MediaKeySession实例。 |
 | [MediaKeyStatus](arkts-drm-drm-mediakeystatus-i.md) | 媒体密钥状态。 |
-| [MediaKeySystem](arkts-drm-drm-mediakeysystem-i.md) | 支持MediaKeySystem实例管理、设备证书申请与处理、会话创建、离线媒体密钥管理、获取DRM度量记录、设备属性等。在调用MediaKeySystem方法之前，必须使用 [createMediaKeySystem](arkts-drm-drm-createmediakeysystem-f.md#createMediaKeySystem)创建一个MediaKeySystem实例。 |
+| [MediaKeySystem](arkts-drm-drm-mediakeysystem-i.md) | 支持MediaKeySystem实例管理、设备证书申请与处理、会话创建、离线媒体密钥管理、获取DRM度量记录、设备属性等。在调用MediaKeySystem方法之前，必须使用 [createMediaKeySystem](arkts-drm-drm-createmediakeysystem-f.md#createmediakeysystem)创建一个MediaKeySystem实例。 |
 | [MediaKeySystemDescription](arkts-drm-drm-mediakeysystemdescription-i.md) | 插件信息。 |
 | [MediaKeySystemInfo](arkts-drm-drm-mediakeysysteminfo-i.md) | 加密媒体内容的DRM信息。 |
 | [OptionsData](arkts-drm-drm-optionsdata-i.md) | 设备证书请求的可选数据。 |

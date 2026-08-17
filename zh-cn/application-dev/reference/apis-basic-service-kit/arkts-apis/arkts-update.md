@@ -2,7 +2,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -19,9 +19,9 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [getLocalUpdater](arkts-basicservices-update-getlocalupdater-f-sys.md#getLocalUpdater) | 获取本地升级对象，用于从本地存储设备（如SD卡）执行系统升级。调用此方法后，系统返回LocalUpdater工具类对象，提供本地升级包校验、安装等功能。 典型流程为：开发者准备升级包（格式为.zip或.bin）和证书文件（格式为.cert或.der） → 系统校验包签名和完整性 → 系统安装升级包 → 系统重启以应用新版本。 **原理说明**： 该方法获取本地升级工具对象，封装了升级包校验（验证数字签名、文件完整性、版本兼容性）和安装（解压写入系统分区）等功能。本地升级不依赖网络，从设备本地存储读取升级包。 **约束和限制**： - 升级包必须从设备厂商官网或官方渠道下载，确保来源可信。 - 安装前必须先校验升级包（调用verifyUpgradePackage），未校验的包可能导致系统损坏。 - 升级过程中设备会重启，应用需做好状态保存。 - 调用getLocalUpdater相关接口时，需要权限ohos.permission.UPDATE_SYSTEM。 - 升级包文件路径长度不超过255字符。超出255字符时将抛出异常。 |
-| [getOnlineUpdater](arkts-basicservices-update-getonlineupdater-f-sys.md#getOnlineUpdater) | 获取在线升级对象，可用于在线检查新版本、下载升级包、安装升级包等操作。适用于设备厂商的OTA(详见[术语](../../../basic-services/update/update-kit-term.md))升级客户端应用、在 线系统升级等场景，帮助用户及时获取系统更新，提升升级效率和用户体验。 **原理说明**： 该方法通过系统服务接口获取在线升级对象，该对象提供检查新版本、下载升级包、安装升级包等核心功能。 **约束和限制**： - 检查新版本和下载升级包都必须依赖设备厂商部署的升级包管理服务器。 |
-| [getRestorer](arkts-basicservices-update-getrestorer-f-sys.md#getRestorer) | 获取恢复出厂设置对象，用于执行恢复出厂设置相关操作。调用此方法后，系统返回Restorer工具类对象，提供三种恢复出厂方式： - factoryReset（普通恢复出厂，用于清除用户数据分区。详见[术语](../../../basic-services/update/update-kit-term.md)）。 - forceFactoryReset（强制恢复出厂，用于清除用户数据分区并同步清除文件密钥。详见[术语](../../../basic-services/update/update-kit-term.md)）。 - deepFactoryReset（深度恢复出厂，用于通过scope参数指定清除范围：DATA仅清除用户数据分区，DATA_AND_OS同时清除用户数据和操作系统分区。详见[术语](../../../basic-services/update/update-kit-term.md)）。 获取对象后可调用相应方法执行恢复出厂操作，设备将重启恢复到出厂初始状态。 **原理说明**： 该方法通过系统服务接口获取恢复出厂设置对象，封装了数据分区清除、密钥清除、系统分区清理等核心功能。 **约束和限制**： - 恢复出厂操作不可逆，将永久删除用户数据，需提前提醒用户备份重要数据。 - 调用factoryReset，deepFactoryReset和getDeepFactoryResetInfo接口时，需要权限ohos.permission.FACTORY_RESET。 - 调用forceFactoryReset接口时，需要权限ohos.permission.FORCE_FACTORY_RESET。 - 操作过程中设备会自动重启，应用需做好状态保存。 - 深度恢复出厂(deepFactoryReset)耗时较长（根据设备存储容量，可能需要1-4小时），必须确保设备电量充足(建议电量>50%)。 - 建议在用户通过对话框或界面点击确认按钮后，再执行恢复出厂操作。 |
+| [getLocalUpdater](arkts-basicservices-update-getlocalupdater-f-sys.md#getlocalupdater) | 获取本地升级对象，用于从本地存储设备（如SD卡）执行系统升级。调用此方法后，系统返回LocalUpdater工具类对象，提供本地升级包校验、安装等功能。 典型流程为：开发者准备升级包（格式为.zip或.bin）和证书文件（格式为.cert或.der） → 系统校验包签名和完整性 → 系统安装升级包 → 系统重启以应用新版本。 **原理说明**： 该方法获取本地升级工具对象，封装了升级包校验（验证数字签名、文件完整性、版本兼容性）和安装（解压写入系统分区）等功能。本地升级不依赖网络，从设备本地存储读取升级包。 **约束和限制**： - 升级包必须从设备厂商官网或官方渠道下载，确保来源可信。 - 安装前必须先校验升级包（调用verifyUpgradePackage），未校验的包可能导致系统损坏。 - 升级过程中设备会重启，应用需做好状态保存。 - 调用getLocalUpdater相关接口时，需要权限ohos.permission.UPDATE_SYSTEM。 - 升级包文件路径长度不超过255字符。超出255字符时将抛出异常。 |
+| [getOnlineUpdater](arkts-basicservices-update-getonlineupdater-f-sys.md#getonlineupdater) | 获取在线升级对象，可用于在线检查新版本、下载升级包、安装升级包等操作。适用于设备厂商的OTA(详见[术语](../../../basic-services/update/update-kit-term.md))升级客户端应用、在 线系统升级等场景，帮助用户及时获取系统更新，提升升级效率和用户体验。 **原理说明**： 该方法通过系统服务接口获取在线升级对象，该对象提供检查新版本、下载升级包、安装升级包等核心功能。 **约束和限制**： - 检查新版本和下载升级包都必须依赖设备厂商部署的升级包管理服务器。 |
+| [getRestorer](arkts-basicservices-update-getrestorer-f-sys.md#getrestorer) | 获取恢复出厂设置对象，用于执行恢复出厂设置相关操作。调用此方法后，系统返回Restorer工具类对象，提供三种恢复出厂方式： - factoryReset（普通恢复出厂，用于清除用户数据分区。详见[术语](../../../basic-services/update/update-kit-term.md)）。 - forceFactoryReset（强制恢复出厂，用于清除用户数据分区并同步清除文件密钥。详见[术语](../../../basic-services/update/update-kit-term.md)）。 - deepFactoryReset（深度恢复出厂，用于通过scope参数指定清除范围：DATA仅清除用户数据分区，DATA_AND_OS同时清除用户数据和操作系统分区。详见[术语](../../../basic-services/update/update-kit-term.md)）。 获取对象后可调用相应方法执行恢复出厂操作，设备将重启恢复到出厂初始状态。 **原理说明**： 该方法通过系统服务接口获取恢复出厂设置对象，封装了数据分区清除、密钥清除、系统分区清理等核心功能。 **约束和限制**： - 恢复出厂操作不可逆，将永久删除用户数据，需提前提醒用户备份重要数据。 - 调用factoryReset，deepFactoryReset和getDeepFactoryResetInfo接口时，需要权限ohos.permission.FACTORY_RESET。 - 调用forceFactoryReset接口时，需要权限ohos.permission.FORCE_FACTORY_RESET。 - 操作过程中设备会自动重启，应用需做好状态保存。 - 深度恢复出厂(deepFactoryReset)耗时较长（根据设备存储容量，可能需要1-4小时），必须确保设备电量充足(建议电量>50%)。 - 建议在用户通过对话框或界面点击确认按钮后，再执行恢复出厂操作。 |
 <!--DelEnd-->
 
 <!--Del-->

@@ -16,7 +16,7 @@
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+**ArkTS模式：** 起始版本为26.1.0。
 
 **废弃版本：** -1
 
@@ -32,10 +32,10 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [finishTask](arkts-backgroundtasks-backgroundloader-finishtask-f.md#finishTask) | 结束后台加载任务。 |
-| [getTaskInfo](arkts-backgroundtasks-backgroundloader-gettaskinfo-f.md#getTaskInfo) | 获取后台预取任务信息。 |
-| [registerTask](arkts-backgroundtasks-backgroundloader-registertask-f.md#registerTask) | 注册后台加载任务。 使用 callee.on(ON_START)来接受系统测触发的任务 |
-| [unregisterTask](arkts-backgroundtasks-backgroundloader-unregistertask-f.md#unregisterTask) | 取消注册后台加载任务。 |
+| [finishTask](arkts-backgroundtasks-backgroundloader-finishtask-f.md#finishtask) | 结束后台加载任务。 |
+| [getTaskInfo](arkts-backgroundtasks-backgroundloader-gettaskinfo-f.md#gettaskinfo) | 获取后台预取任务信息。 |
+| [registerTask](arkts-backgroundtasks-backgroundloader-registertask-f.md#registertask) | 注册后台加载任务。 使用 callee.on(ON_START)来接受系统测触发的任务 |
+| [unregisterTask](arkts-backgroundtasks-backgroundloader-unregistertask-f.md#unregistertask) | 取消注册后台加载任务。 |
 
 ### 接口
 
@@ -54,6 +54,6 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [ON_START](arkts-backgroundtasks-backgroundloader-con.md#ON_START) | 监听任务启动的方法 |
-| [ON_STOP](arkts-backgroundtasks-backgroundloader-con.md#ON_STOP) | 监听任务结束的方法 |
+| [ON_START](arkts-backgroundtasks-backgroundloader-con.md#onstart) | 监听任务启动的方法 |
+| [ON_STOP](arkts-backgroundtasks-backgroundloader-con.md#onstop) | 监听任务结束的方法 |
 

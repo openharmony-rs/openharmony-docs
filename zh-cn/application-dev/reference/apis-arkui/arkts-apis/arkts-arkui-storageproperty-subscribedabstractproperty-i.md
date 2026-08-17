@@ -1,12 +1,12 @@
 # SubscribedAbstractProperty
 
-继承自[AbstractProperty&lt;T&gt;](arkts-arkui-storageproperty-abstractproperty-i.md#AbstractProperty)。
+继承自[AbstractProperty&lt;T&gt;](arkts-arkui-storageproperty-abstractproperty-i.md#abstractproperty)。
 
 **继承/实现关系：** SubscribedAbstractProperty extends AbstractProperty<T>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ aboutToBeDeleted(): void
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -38,7 +38,7 @@ default
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

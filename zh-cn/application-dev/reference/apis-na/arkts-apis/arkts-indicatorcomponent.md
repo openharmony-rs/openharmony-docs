@@ -6,7 +6,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [IndicatorComponent](arkts-na-indicatorcomponent-indicatorcomponent-f.md#IndicatorComponent) | 定义IndicatorComponent组件 |
+| [IndicatorComponent](arkts-na-indicatorcomponent-indicatorcomponent-f.md#indicatorcomponent) | 定义IndicatorComponent组件 |
 
 ### 类
 

@@ -1,10 +1,10 @@
 # OnWindowNewEvent
 
-定义网页要求用户创建窗口时触发的回调。
+定义网页要求用户创建窗口时触发的回调。从API version 23开始，如需获取更多窗口信息，可使用[OnWindowNewExtEvent](arkts-arkweb-onwindownewextevent-i.md#onwindownewextevent)。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@
 handler: ControllerHandler
 ```
 
-Lets you set the WebviewController instance for creating a new window.
+用于设置新建窗口的WebviewController实例。
 
 **类型：** [ControllerHandler](arkts-arkweb-controllerhandler-c.md)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -40,13 +40,13 @@ Lets you set the WebviewController instance for creating a new window.
 isAlert: boolean
 ```
 
-true indicates the request to create a dialog and false indicates a new tab.
+true代表请求创建对话框，false代表新标签页。
 
 **类型：** boolean
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -62,13 +62,13 @@ true indicates the request to create a dialog and false indicates a new tab.
 isUserTrigger: boolean
 ```
 
-true indicates that it is triggered by the user, and false indicates that it is triggered by a non-user.
+true代表用户触发，false代表非用户触发。
 
 **类型：** boolean
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -84,13 +84,13 @@ true indicates that it is triggered by the user, and false indicates that it is 
 targetUrl: string
 ```
 
-Destination URL.
+目标url。
 
 **类型：** string
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

@@ -10,7 +10,7 @@ Specifies the original text for the target Component. If the accessibility prope
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -23,7 +23,7 @@ Specifies the original text for the target Component. If the accessibility prope
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | text | string | 是 | the original text value. |
-| pattern | [MatchPattern](arkts-test-uitest-matchpattern-e.md) | 否 | the [MatchPattern](arkts-test-uitest-matchpattern-e.md#MatchPattern) of the text value, Set it default [EQUALS](arkts-test-uitest-matchpattern-e.md#EQUALS) if null or undefined. |
+| pattern | [MatchPattern](arkts-test-uitest-matchpattern-e.md) | 否 | the [MatchPattern](arkts-test-uitest-matchpattern-e.md#matchpattern) of the text value, Set it default [EQUALS](arkts-test-uitest-matchpattern-e.md#equals) if null or undefined. |
 
 **返回值：**
 

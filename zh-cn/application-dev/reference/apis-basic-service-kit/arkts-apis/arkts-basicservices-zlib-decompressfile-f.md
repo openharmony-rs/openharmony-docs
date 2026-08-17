@@ -10,7 +10,7 @@ function decompressFile(inFile: string, outFile: string, options: Options, callb
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -53,7 +53,7 @@ let options: zlib.Options = {
 
 try {
   zlib.decompressFile(inFile, outFileDir, options, (errData: BusinessError) => {
-    if (errData !== null) {
+    if (errData) {
       console.error(`decompressFile errData is errCode:${errData.code}  message:${errData.message}`);
     } else {
       console.info(`decompressFile success.`);
@@ -77,7 +77,7 @@ function decompressFile(inFile: string, outFile: string, callback: AsyncCallback
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -115,7 +115,7 @@ let outFileDir = '/data/storage/el2/base/temp';
 
 try {
   zlib.decompressFile(inFile, outFileDir, (errData: BusinessError) => {
-    if (errData !== null) {
+    if (errData) {
       console.error(`decompressFile failed. code is ${errData.code}, message is ${errData.message}`);
     } else {
       console.info(`decompressFile success.`);
@@ -139,7 +139,7 @@ function decompressFile(inFile: string, outFile: string, options?: Options): Pro
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

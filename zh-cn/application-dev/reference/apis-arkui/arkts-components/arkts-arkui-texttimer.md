@@ -14,7 +14,7 @@ TextTimer(options?: TextTimerOptions)
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -30,7 +30,7 @@ TextTimer(options?: TextTimerOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [TextTimerOptions](arkts-arkui-texttimeroptions-i.md) | 否 | 通过文本显示计时信息并控制其计时器状态的组件参数。当需要自定义计时器配置（如设置倒计时开关、计时时间、初始时间、控制器等）时传入此参数；不传入时使用 TextTimerOptions的默认配置。 <br>默认值继承[TextTimerOptions](arkts-arkui-texttimeroptions-i.md#TextTimerOptions) 。 |
+| options | [TextTimerOptions](arkts-arkui-texttimeroptions-i.md) | 否 | 通过文本显示计时信息并控制其计时器状态的组件参数。当需要自定义计时器配置（如设置倒计时开关、计时时间、初始时间、控制器等）时传入此参数；不传入时使用 TextTimerOptions的默认配置。 <br>默认值继承[TextTimerOptions](arkts-arkui-texttimeroptions-i.md#texttimeroptions) 。 |
 
 ## 汇总
 

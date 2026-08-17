@@ -1,0 +1,45 @@
+# getDeviceMacAddress（系统接口）
+
+## getDeviceMacAddress
+
+```TypeScript
+function getDeviceMacAddress(): string[]
+```
+
+获取设备的MAC地址。WLAN必须已使能。 &lt;p&gt;MAC地址是唯一的，无法更改。
+
+**起始版本：** 7
+
+**ArkTS模式：** 起始版本为7。
+
+**废弃版本：** 9
+
+**替代接口：** [getDeviceMacAddress](arkts-connectivity-wifimanager-getdevicemacaddress-f.md#getdevicemacaddress)
+
+**需要权限：** ohos.permission.GET_WIFI_LOCAL_MAC and ohos.permission.GET_WIFI_INFO
+
+<!--Device-wifi-function getDeviceMacAddress(): string[]--><!--Device-wifi-function getDeviceMacAddress(): string[]-End-->
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**系统接口：** 此接口为系统接口。
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| string[] | MAC地址。 |
+
+## 示例
+
+```TypeScript
+import wifi from '@ohos.wifi';
+
+try {
+    let ret = wifi.getDeviceMacAddress();
+    console.info("deviceMacAddress:" + JSON.stringify(ret));
+}catch(error){
+    console.error("failed:" + JSON.stringify(error));
+}
+```
+

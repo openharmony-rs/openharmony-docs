@@ -6,11 +6,11 @@
 function enableAbility(name: string, capability: Array<accessibility.Capability>): Promise<void>
 ```
 
-启用辅助扩展。使用Promise异步回调。
+启用辅助扩展，需与[config.disableAbility](arkts-accessibility-config-disableability-f-sys.md#disableability系统接口)配对使用。使用Promise异步回调。 与[config.enableAbilityWithCallback](arkts-accessibility-config-enableabilitywithcallback-f-sys.md#enableabilitywithcallback系统接口)相比，本接口仅启用辅助扩展，不监听辅助扩展的连接状态变化；若需要监听辅助扩展断开 连接事件，请使用[config.enableAbilityWithCallback](arkts-accessibility-config-enableabilitywithcallback-f-sys.md#enableabilitywithcallback系统接口)。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -26,8 +26,8 @@ function enableAbility(name: string, capability: Array<accessibility.Capability>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| name | string | 是 | 辅助应用的名称，格式为：'bundleName/abilityName'。 |
-| capability | Array&lt;accessibility.Capability&gt; | 是 | 辅助应用的能力属性。 |
+| name | string | 是 | 辅助扩展应用的名称，格式为：'bundleName/abilityName'。 |
+| capability | Array&lt;accessibility.Capability&gt; | 是 | 辅助扩展应用的能力属性。 |
 
 **返回值：**
 
@@ -72,11 +72,11 @@ function enableAbility(
   ): void
 ```
 
-启用辅助扩展，使用callback异步回调。
+启用辅助扩展，需与[config.disableAbility](arkts-accessibility-config-disableability-f-sys.md#disableability系统接口)配对使用。使用callback异步回调。 与[config.enableAbilityWithCallback](arkts-accessibility-config-enableabilitywithcallback-f-sys.md#enableabilitywithcallback系统接口)相比，本接口仅启用辅助扩展，不监听辅助扩展的连接状态变化；若需要监听辅助扩展断开 连接事件，请使用[config.enableAbilityWithCallback](arkts-accessibility-config-enableabilitywithcallback-f-sys.md#enableabilitywithcallback系统接口)。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -92,9 +92,9 @@ function enableAbility(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| name | string | 是 | 辅助应用的名称，格式为：'bundleName/abilityName'。 |
-| capability | Array&lt;accessibility.Capability&gt; | 是 | 辅助应用的能力属性。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。 |
+| name | string | 是 | 辅助扩展应用的名称，格式为：'bundleName/abilityName'。 |
+| capability | Array&lt;accessibility.Capability&gt; | 是 | 辅助扩展应用的能力属性。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当启用辅助扩展成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 

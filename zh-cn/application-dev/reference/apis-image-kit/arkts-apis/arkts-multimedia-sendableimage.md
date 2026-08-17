@@ -4,7 +4,7 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -18,24 +18,24 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [convertFromPixelMap](arkts-image-sendableimage-convertfrompixelmap-f.md#convertFromPixelMap) | Creates a sendable image PixelMap from image PixelMap. |
-| [convertToPixelMap](arkts-image-sendableimage-converttopixelmap-f.md#convertToPixelMap) | Creates a image PixelMap from sendable image PixelMap. |
-| [createImageReceiver](arkts-image-sendableimage-createimagereceiver-f.md#createImageReceiver) | 通过图片大小、图片格式、容量创建ImageReceiver实例。 由于图片占用内存较大，所以当ImageReceiver实例使用完成后，应主动调用[release](arkts-image-sendableimage-pixelmap-i.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行 完成，且后续不再使用该实例。 |
-| [createImageSource](arkts-image-sendableimage-createimagesource-f.md#createImageSource) | 通过传入的uri创建ImageSource实例。 由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](arkts-image-sendableimage-pixelmap-i.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完 成，且后续不再使用该实例。 |
-| [createImageSource](arkts-image-sendableimage-createimagesource-f.md#createImageSource) | 通过传入文件描述符来创建ImageSource实例。 由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](arkts-image-sendableimage-pixelmap-i.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完 成，且后续不再使用该实例。 |
-| [createImageSource](arkts-image-sendableimage-createimagesource-f.md#createImageSource) | 通过缓冲区创建ImageSource实例。buf数据是未解码的数据，不可以传入类似于RBGA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用 [sendableImage.createPixelMap](arkts-image-sendableimage-createpixelmap-f.md#createPixelMap)这一类方法。 由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](arkts-image-sendableimage-pixelmap-i.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完 成，且后续不再使用该实例。 |
-| [createPixelMap](arkts-image-sendableimage-createpixelmap-f.md#createPixelMap) | Create PixelMap by data buffer. |
-| [createPixelMapFromParcel](arkts-image-sendableimage-createpixelmapfromparcel-f.md#createPixelMapFromParcel) | Creates a PixelMap object based on MessageSequence parameter. |
-| [createPixelMapFromSurface](arkts-image-sendableimage-createpixelmapfromsurface-f.md#createPixelMapFromSurface) | Creates a PixelMap object from surface id. |
-| [createPixelMapSync](arkts-image-sendableimage-createpixelmapsync-f.md#createPixelMapSync) | Create PixelMap by data buffer. |
+| [convertFromPixelMap](arkts-image-sendableimage-convertfrompixelmap-f.md#convertfrompixelmap) | Creates a sendable image PixelMap from image PixelMap. |
+| [convertToPixelMap](arkts-image-sendableimage-converttopixelmap-f.md#converttopixelmap) | Creates a image PixelMap from sendable image PixelMap. |
+| [createImageReceiver](arkts-image-sendableimage-createimagereceiver-f.md#createimagereceiver) | 通过图片大小、图片格式、容量创建ImageReceiver实例。 由于图片占用内存较大，所以当ImageReceiver实例使用完成后，应主动调用[release](arkts-image-sendableimage-pixelmap-i.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行 完成，且后续不再使用该实例。 |
+| [createImageSource](arkts-image-sendableimage-createimagesource-f.md#createimagesource) | 通过传入的uri创建ImageSource实例。 由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](arkts-image-sendableimage-pixelmap-i.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完 成，且后续不再使用该实例。 |
+| [createImageSource](arkts-image-sendableimage-createimagesource-f.md#createimagesource) | 通过传入文件描述符来创建ImageSource实例。 由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](arkts-image-sendableimage-pixelmap-i.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完 成，且后续不再使用该实例。 |
+| [createImageSource](arkts-image-sendableimage-createimagesource-f.md#createimagesource) | 通过缓冲区创建ImageSource实例。buf数据是未解码的数据，不可以传入类似于RBGA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用 [sendableImage.createPixelMap](arkts-image-sendableimage-createpixelmap-f.md#createpixelmap)这一类方法。 由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](arkts-image-sendableimage-pixelmap-i.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完 成，且后续不再使用该实例。 |
+| [createPixelMap](arkts-image-sendableimage-createpixelmap-f.md#createpixelmap) | Create PixelMap by data buffer. |
+| [createPixelMapFromParcel](arkts-image-sendableimage-createpixelmapfromparcel-f.md#createpixelmapfromparcel) | Creates a PixelMap object based on MessageSequence parameter. |
+| [createPixelMapFromSurface](arkts-image-sendableimage-createpixelmapfromsurface-f.md#createpixelmapfromsurface) | Creates a PixelMap object from surface id. |
+| [createPixelMapSync](arkts-image-sendableimage-createpixelmapsync-f.md#createpixelmapsync) | Create PixelMap by data buffer. |
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
-| [Image](arkts-image-sendableimage-image-i.md) | 提供基本的图像操作，包括获取图像信息、读写图像数据。调用[readNextImage](arkts-image-sendableimage-imagereceiver-i.md#readNextImage)和 [readLatestImage](arkts-image-sendableimage-imagereceiver-i.md#readLatestImage)接口时会返回Image。继承自 [ISendable](../../../arkts-utils/arkts-sendable.md#isendable)。 由于图片占用内存较大，所以当Image实例使用完成后，应主动调用[release](arkts-image-sendableimage-pixelmap-i.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再 使用该实例。 |
+| [Image](arkts-image-sendableimage-image-i.md) | 提供基本的图像操作，包括获取图像信息、读写图像数据。调用[readNextImage](arkts-image-sendableimage-imagereceiver-i.md#readnextimage)和 [readLatestImage](arkts-image-sendableimage-imagereceiver-i.md#readlatestimage)接口时会返回Image。继承自 [ISendable](../../../arkts-utils/arkts-sendable.md#isendable)。 由于图片占用内存较大，所以当Image实例使用完成后，应主动调用[release](arkts-image-sendableimage-pixelmap-i.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再 使用该实例。 |
 | [ImageReceiver](arkts-image-sendableimage-imagereceiver-i.md) | 图像接收类，用于获取组件Surface ID，接收最新的图片和读取下一张图片，以及释放ImageReceiver实例。 在调用以下方法前需要先创建ImageReceiver实例。 |
-| [ImageSource](arkts-image-sendableimage-imagesource-i.md) | ImageSource类，用于获取图片相关信息。在调用ImageSource的方法前，需要先通过 [sendableImage.createImageSource](arkts-image-sendableimage-createimagesource-f.md#createImageSource)构建一个ImageSource实例。 由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](arkts-image-sendableimage-pixelmap-i.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行 完成，且后续不再使用该实例。 |
+| [ImageSource](arkts-image-sendableimage-imagesource-i.md) | ImageSource类，用于获取图片相关信息。在调用ImageSource的方法前，需要先通过 [sendableImage.createImageSource](arkts-image-sendableimage-createimagesource-f.md#createimagesource)构建一个ImageSource实例。 由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](arkts-image-sendableimage-pixelmap-i.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行 完成，且后续不再使用该实例。 |
 | [PixelMap](arkts-image-sendableimage-pixelmap-i.md) | Sendable PixelMap instance. |
 | [Region](arkts-image-sendableimage-region-i.md) | 表示区域信息。 继承自[lang.ISendable](../../../arkts-utils/arkts-sendable.md#isendable)。 |
 | [Size](arkts-image-sendableimage-size-i.md) | 表示图片尺寸。 继承自[lang.ISendable](../../../arkts-utils/arkts-sendable.md#isendable)。 |

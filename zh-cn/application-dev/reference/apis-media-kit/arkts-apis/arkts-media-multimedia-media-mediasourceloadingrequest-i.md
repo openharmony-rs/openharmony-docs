@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ finishLoading(uuid: long, state: LoadingRequestError): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -49,7 +49,7 @@ respondData(uuid: number, offset: number, buffer: ArrayBuffer): number
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -65,13 +65,13 @@ respondData(uuid: number, offset: number, buffer: ArrayBuffer): number
 | --- | --- | --- | --- |
 | uuid | number | 是 | 资源句柄的标识。来源是SourceOpenCallback。 |
 | offset | number | 是 | 当前媒体数据相对于资源起始位置的偏移量。offset不能小于0。 |
-| buffer | ArrayBuffer | 是 | 响应播放器的媒体数据。&lt;br/&gt;**注意：** 不要传输无关数据，会影响正常数据解析和播放。 |
+| buffer | ArrayBuffer | 是 | 响应播放器的媒体数据。<br/>**注意：** 不要传输无关数据，会影响正常数据解析和播放。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 当前服务端接受的字节数。 &lt;br&gt;- 返回值小于0表示操作失败。 &lt;br&gt;- 返回值为-2时，表示播放器不再需要当前数据，客户端应停止当前读取过程。 &lt;br&gt;- 返回值为-3时，表示播放器的缓冲区已满，客户端应等待下一次读取。 |
+| number | 当前服务端接受的字节数。 <br>- 返回值小于0表示操作失败。 <br>- 返回值为-2时，表示播放器不再需要当前数据，客户端应停止当前读取过程。 <br>- 返回值为-3时，表示播放器的缓冲区已满，客户端应等待下一次读取。 |
 
 ## respondData
 
@@ -83,7 +83,7 @@ The interface for application used to send requested data to AVPlayer.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -111,11 +111,11 @@ The interface for application used to send requested data to AVPlayer.
 respondHeader(uuid: long, header?: Record<string, string>, redirectUrl?: string): void
 ```
 
-用于应用程序向播放器发送响应头信息，应在第一次调用 [respondData](#respondData) 方法之前调用。
+用于应用程序向播放器发送响应头信息，应在第一次调用 [respondData](#responddata) 方法之前调用。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -130,7 +130,7 @@ respondHeader(uuid: long, header?: Record<string, string>, redirectUrl?: string)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uuid | long | 是 | 资源句柄的标识。来源是SourceOpenCallback。 |
-| header | Record&lt;string, string&gt; | 否 | HTTP响应中的头部信息。应用可将头部信息字段与底层支持解析字段取交集传递或直接传入对应的所有头部信息。&lt;br&gt; - 底层播放需要解析的 字段包括Transfer-Encoding、Location、Content-Type、Content-Range、Content-Encode、Accept-Ranges、content-length。 |
+| header | Record&lt;string, string&gt; | 否 | HTTP响应中的头部信息。应用可将头部信息字段与底层支持解析字段取交集传递或直接传入对应的所有头部信息。<br> - 底层播放需要解析的 字段包括Transfer-Encoding、Location、Content-Type、Content-Range、Content-Encode、Accept-Ranges、content-length。 |
 | redirectUrl | string | 否 | 如果存在，为HTTP响应中的重定向URL。 |
 
 ## header
@@ -145,7 +145,7 @@ header?: Record<string, string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -167,7 +167,7 @@ url: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

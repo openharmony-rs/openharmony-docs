@@ -1,12 +1,12 @@
 # TypedFrameNode
 
-TypedFrameNode继承自[FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md#FrameNode)，用于声明具体类型的FrameNode，支持Text、Image、Button、Column等多种组件类型，适用于通过代码动态创建具体类型组件节 点的场景。
+TypedFrameNode继承自[FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md#framenode)，用于声明具体类型的FrameNode，支持Text、Image、Button、Column等多种组件类型，适用于通过代码动态创建具体类型组件节 点的场景。
 
-**继承/实现关系：** TypedFrameNode extends [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md#FrameNode)
+**继承/实现关系：** TypedFrameNode extends [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md#framenode)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ readonly attribute: T
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -50,7 +50,7 @@ initialize: C
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

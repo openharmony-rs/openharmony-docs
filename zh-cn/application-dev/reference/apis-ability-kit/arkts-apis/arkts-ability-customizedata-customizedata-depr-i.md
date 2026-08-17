@@ -1,14 +1,14 @@
 # CustomizeData
 
-自定义元数据。 > **说明：** > > 从API version 9开始，该模块不再维护，建议使用[Metadata](arkts-ability-metadata-i.md#Metadata)替代。
+自定义元数据。 > **说明：** > > 从API version 9开始，该模块不再维护，建议使用[Metadata](arkts-ability-metadata-i.md#metadata)替代。
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [Metadata](arkts-ability-metadata-i.md#Metadata)
+**替代接口：** [Metadata](arkts-ability-metadata-i.md#metadata)
 
 <!--Device-unnamed-export interface CustomizeData--><!--Device-unnamed-export interface CustomizeData-End-->
 
@@ -28,7 +28,7 @@ extra: string
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -52,7 +52,7 @@ name: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -76,7 +76,7 @@ value: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

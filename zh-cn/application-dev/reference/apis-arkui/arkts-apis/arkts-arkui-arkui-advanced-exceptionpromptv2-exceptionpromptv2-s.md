@@ -4,7 +4,7 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -21,11 +21,11 @@
 
 点击右侧图标按钮的回调函数。缺省时不执行任何操作。
 
-**类型：** [OnActionTextClickCallback](arkts-arkui-onactiontextclickcallback-t.md)
+**类型：** [OnActionTextClickCallback](../../apis-na/arkts-apis/arkts-na-onactiontextclickcallback-t.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -46,11 +46,11 @@
 
 点击左侧提示文本的回调函数，缺省时不执行任何操作。
 
-**类型：** [OnTipClickCallback](arkts-arkui-ontipclickcallback-t.md)
+**类型：** [OnTipClickCallback](../../apis-na/arkts-apis/arkts-na-ontipclickcallback-t.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -71,11 +71,11 @@
 
 指定当前异常提示的配置信息。
 
-**类型：** [PromptOptionsV2](arkts-arkui-arkui-advanced-exceptionpromptv2-promptoptionsv2-c.md)
+**类型：** [PromptOptionsV2](../../apis-na/arkts-apis/arkts-na-arkui-advanced-exceptionpromptv2-promptoptionsv2-c.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

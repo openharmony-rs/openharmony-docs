@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,35 +18,35 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [emit_InnerEvent](arkts-basicservices-emitter-emitinnerevent-f.md#emit_InnerEvent) | 发送指定事件。 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../../arkts-utils/serializable-overview.md)。目前不支持使用 [@State装饰器](../../../ui/state-management/arkts-state.md)、 [@Observed装饰器](../../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。 |
-| [emit_string](arkts-basicservices-emitter-emitstring-f.md#emit_string) | 发送指定事件。 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../../arkts-utils/serializable-overview.md)。目前不支持使用 [@State装饰器](../../../ui/state-management/arkts-state.md)、 [@Observed装饰器](../../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。 |
-| [emit_string](arkts-basicservices-emitter-emitstring-f.md#emit_string) | 发送指定事件。 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见ArkTS-Sta并发迁移规则 |
-| [emit_string](arkts-basicservices-emitter-emitstring-f.md#emit_string) | 发送指定事件。 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见ArkTS-Sta并发迁移规则 |
-| [emit_string](arkts-basicservices-emitter-emitstring-f.md#emit_string) | 发送指定事件。 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../../arkts-utils/serializable-overview.md)。目前不支持使用 [@State装饰器](../../../ui/state-management/arkts-state.md)、 [@Observed装饰器](../../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。 |
-| [emit_string](arkts-basicservices-emitter-emitstring-f.md#emit_string) | 发送指定事件。 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见ArkTS-Sta并发迁移规则 |
-| [emit_string](arkts-basicservices-emitter-emitstring-f.md#emit_string) | 发送指定优先级事件。 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../../arkts-utils/serializable-overview.md)。目前不支持使用 [@State装饰器](../../../ui/state-management/arkts-state.md)、 [@Observed装饰器](../../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。 |
-| [emit_string](arkts-basicservices-emitter-emitstring-f.md#emit_string) | 发送指定优先级事件。 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见ArkTS-Sta并发迁移规则 |
-| [emit_string](arkts-basicservices-emitter-emitstring-f.md#emit_string) | 发送指定优先级事件。 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见ArkTS-Sta并发迁移规则 |
-| [emit_string](arkts-basicservices-emitter-emitstring-f.md#emit_string) | 发送指定优先级事件。 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../../arkts-utils/serializable-overview.md)。目前不支持使用 [@State装饰器](../../../ui/state-management/arkts-state.md)、 [@Observed装饰器](../../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。 |
-| [emit_string](arkts-basicservices-emitter-emitstring-f.md#emit_string) | 发送指定优先级事件。 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见ArkTS-Sta并发迁移规则 |
-| [getListenerCount](arkts-basicservices-emitter-getlistenercount-f.md#getListenerCount) | 获取指定事件的订阅数。 |
-| [offEventData](arkts-basicservices-emitter-offeventdata-f.md#offEventData) | 取消事件ID为eventId且回调处理函数为callback的订阅。仅当已使用 [onEventData](arkts-basicservices-emitter-oneventdata-f.md#onEventData)或 [onceEventData](arkts-basicservices-emitter-onceeventdata-f.md#onceEventData)接口订阅callback时，该接口才生效。 使用该接口取消某个事件订阅后，已通过emit接口发布但尚未被执行的事件将被取消。 |
-| [offGenericEventData](arkts-basicservices-emitter-offgenericeventdata-f.md#offGenericEventData) | 取消订阅当前Emitter类实例的事件。仅当已使用 onGenericEventData或 onceGenericEventData接口订阅了事件ID为eventId且回调处理函数为callback的事件时，该接口才生效。 使用该接口取消事件订阅后，已通过emit接口发布但尚未执行的事件将被取消。 |
-| [off_long](arkts-basicservices-emitter-offlong-f.md#off_long) | 取消事件ID为eventId的所有订阅。 使用该接口取消某个事件订阅后，已通过emit接口发布但尚未被执行的事件将被取消。 |
-| [off_long](arkts-basicservices-emitter-offlong-f.md#off_long) | 取消事件ID为eventId且回调处理函数为callback的订阅。仅当已使用[on](arkts-basicservices-emitter-oninnerevent-f.md#on_InnerEvent)或 once接口订阅callback时，该接口才生效。 使用该接口取消某个事件订阅后，已通过emit接口发布但尚未被执行的事件将被取消。 |
-| [off_string](arkts-basicservices-emitter-offstring-f.md#off_string) | 取消事件ID为eventId的所有订阅。 使用该接口取消某个事件订阅后，已通过emit接口发布但尚未被执行的事件将被取消。 |
-| [off_string](arkts-basicservices-emitter-offstring-f.md#off_string) | 取消事件ID为eventId且回调处理函数为callback的订阅。仅当已使用[on](arkts-basicservices-emitter-oninnerevent-f.md#on_InnerEvent)或 once接口订阅callback时，该接口才生效。 使用该接口取消某个事件订阅后，已通过emit接口发布但尚未被执行的事件将被取消。 |
-| [off_string](arkts-basicservices-emitter-offstring-f.md#off_string) | 取消事件ID为eventId且回调处理函数为callback的订阅。仅当已使用 on或 once接口订阅callback时，该接口才生效。 使用该接口取消某个事件订阅后，已通过emit接口发布但尚未被执行的事件将被取消。 |
-| [onEventData](arkts-basicservices-emitter-oneventdata-f.md#onEventData) | 持续订阅指定的事件，并在接收到该事件时，使用callback异步回调。 |
-| [onGenericEventData](arkts-basicservices-emitter-ongenericeventdata-f.md#onGenericEventData) | 持续订阅指定的事件，并在接收到该事件时，使用callback异步回调。 |
-| [on_InnerEvent](arkts-basicservices-emitter-oninnerevent-f.md#on_InnerEvent) | 持续订阅指定的事件，并在接收到该事件时，执行对应的回调处理函数。 |
-| [on_string](arkts-basicservices-emitter-onstring-f.md#on_string) | 持续订阅指定的事件，并在接收到该事件时，执行对应的回调处理函数。 |
-| [on_string](arkts-basicservices-emitter-onstring-f.md#on_string) | 持续订阅指定的事件，并在接收到该事件时，执行对应的回调处理函数。 |
-| [onceEventData](arkts-basicservices-emitter-onceeventdata-f.md#onceEventData) | 单次订阅指定的事件，在接收到该事件且执行完对应的回调函数后，自动取消订阅。 |
-| [onceGenericEventData](arkts-basicservices-emitter-oncegenericeventdata-f.md#onceGenericEventData) | 单次订阅当前Emitter类实例指定的事件，在接收到该事件且执行完相应的回调函数后，自动取消订阅。使用callback异步回调。 |
-| [once_InnerEvent](arkts-basicservices-emitter-onceinnerevent-f.md#once_InnerEvent) | 单次订阅指定的事件，在接收到该事件且执行完对应的回调处理函数后，自动取消订阅。 |
-| [once_string](arkts-basicservices-emitter-oncestring-f.md#once_string) | 单次订阅指定的事件，在接收到该事件且执行完对应的回调处理函数后，自动取消订阅。 |
-| [once_string](arkts-basicservices-emitter-oncestring-f.md#once_string) | 单次订阅指定的事件，在接收到该事件且执行完对应的回调处理函数后，自动取消订阅。 |
+| [emit_InnerEvent](arkts-basicservices-emitter-emitinnerevent-f.md#emitinnerevent) | 发送指定事件。 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../../arkts-utils/serializable-overview.md)。目前不支持使用 [@State装饰器](../../../ui/state-management/arkts-state.md)、 [@Observed装饰器](../../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。 |
+| [emit_string](arkts-basicservices-emitter-emitstring-f.md#emitstring) | 发送指定事件。 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../../arkts-utils/serializable-overview.md)。目前不支持使用 [@State装饰器](../../../ui/state-management/arkts-state.md)、 [@Observed装饰器](../../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。 |
+| [emit_string](arkts-basicservices-emitter-emitstring-f.md#emitstring-1) | 发送指定事件。 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见ArkTS-Sta并发迁移规则 |
+| [emit_string](arkts-basicservices-emitter-emitstring-f.md#emitstring-2) | 发送指定事件。 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见ArkTS-Sta并发迁移规则 |
+| [emit_string](arkts-basicservices-emitter-emitstring-f.md#emitstring-3) | 发送指定事件。 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../../arkts-utils/serializable-overview.md)。目前不支持使用 [@State装饰器](../../../ui/state-management/arkts-state.md)、 [@Observed装饰器](../../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。 |
+| [emit_string](arkts-basicservices-emitter-emitstring-f.md#emitstring-4) | 发送指定事件。 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见ArkTS-Sta并发迁移规则 |
+| [emit_string](arkts-basicservices-emitter-emitstring-f.md#emitstring-5) | 发送指定优先级事件。 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../../arkts-utils/serializable-overview.md)。目前不支持使用 [@State装饰器](../../../ui/state-management/arkts-state.md)、 [@Observed装饰器](../../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。 |
+| [emit_string](arkts-basicservices-emitter-emitstring-f.md#emitstring-6) | 发送指定优先级事件。 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见ArkTS-Sta并发迁移规则 |
+| [emit_string](arkts-basicservices-emitter-emitstring-f.md#emitstring-7) | 发送指定优先级事件。 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见ArkTS-Sta并发迁移规则 |
+| [emit_string](arkts-basicservices-emitter-emitstring-f.md#emitstring-8) | 发送指定优先级事件。 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../../arkts-utils/serializable-overview.md)。目前不支持使用 [@State装饰器](../../../ui/state-management/arkts-state.md)、 [@Observed装饰器](../../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。 |
+| [emit_string](arkts-basicservices-emitter-emitstring-f.md#emitstring-9) | 发送指定优先级事件。 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见ArkTS-Sta并发迁移规则 |
+| [getListenerCount](arkts-basicservices-emitter-getlistenercount-f.md#getlistenercount) | 获取指定事件的订阅数。 |
+| [offEventData](arkts-basicservices-emitter-offeventdata-f.md#offeventdata) | 取消事件ID为eventId且回调处理函数为callback的订阅。仅当已使用 [onEventData](arkts-basicservices-emitter-oneventdata-f.md#oneventdata)或 [onceEventData](arkts-basicservices-emitter-onceeventdata-f.md#onceeventdata)接口订阅callback时，该接口才生效。 使用该接口取消某个事件订阅后，已通过emit接口发布但尚未被执行的事件将被取消。 |
+| [offGenericEventData](arkts-basicservices-emitter-offgenericeventdata-f.md#offgenericeventdata) | 取消订阅当前Emitter类实例的事件。仅当已使用 onGenericEventData或 onceGenericEventData接口订阅了事件ID为eventId且回调处理函数为callback的事件时，该接口才生效。 使用该接口取消事件订阅后，已通过emit接口发布但尚未执行的事件将被取消。 |
+| [off_long](arkts-basicservices-emitter-offlong-f.md#offlong) | 取消事件ID为eventId的所有订阅。 使用该接口取消某个事件订阅后，已通过emit接口发布但尚未被执行的事件将被取消。 |
+| [off_long](arkts-basicservices-emitter-offlong-f.md#offlong-1) | 取消事件ID为eventId且回调处理函数为callback的订阅。仅当已使用[on](arkts-basicservices-emitter-oninnerevent-f.md#oninnerevent)或 once接口订阅callback时，该接口才生效。 使用该接口取消某个事件订阅后，已通过emit接口发布但尚未被执行的事件将被取消。 |
+| [off_string](arkts-basicservices-emitter-offstring-f.md#offstring) | 取消事件ID为eventId的所有订阅。 使用该接口取消某个事件订阅后，已通过emit接口发布但尚未被执行的事件将被取消。 |
+| [off_string](arkts-basicservices-emitter-offstring-f.md#offstring-1) | 取消事件ID为eventId且回调处理函数为callback的订阅。仅当已使用[on](arkts-basicservices-emitter-oninnerevent-f.md#oninnerevent)或 once接口订阅callback时，该接口才生效。 使用该接口取消某个事件订阅后，已通过emit接口发布但尚未被执行的事件将被取消。 |
+| [off_string](arkts-basicservices-emitter-offstring-f.md#offstring-2) | 取消事件ID为eventId且回调处理函数为callback的订阅。仅当已使用 on或 once接口订阅callback时，该接口才生效。 使用该接口取消某个事件订阅后，已通过emit接口发布但尚未被执行的事件将被取消。 |
+| [onEventData](arkts-basicservices-emitter-oneventdata-f.md#oneventdata) | 持续订阅指定的事件，并在接收到该事件时，使用callback异步回调。 |
+| [onGenericEventData](arkts-basicservices-emitter-ongenericeventdata-f.md#ongenericeventdata) | 持续订阅指定的事件，并在接收到该事件时，使用callback异步回调。 |
+| [on_InnerEvent](arkts-basicservices-emitter-oninnerevent-f.md#oninnerevent) | 持续订阅指定的事件，并在接收到该事件时，执行对应的回调处理函数。 |
+| [on_string](arkts-basicservices-emitter-onstring-f.md#onstring) | 持续订阅指定的事件，并在接收到该事件时，执行对应的回调处理函数。 |
+| [on_string](arkts-basicservices-emitter-onstring-f.md#onstring-1) | 持续订阅指定的事件，并在接收到该事件时，执行对应的回调处理函数。 |
+| [onceEventData](arkts-basicservices-emitter-onceeventdata-f.md#onceeventdata) | 单次订阅指定的事件，在接收到该事件且执行完对应的回调函数后，自动取消订阅。 |
+| [onceGenericEventData](arkts-basicservices-emitter-oncegenericeventdata-f.md#oncegenericeventdata) | 单次订阅当前Emitter类实例指定的事件，在接收到该事件且执行完相应的回调函数后，自动取消订阅。使用callback异步回调。 |
+| [once_InnerEvent](arkts-basicservices-emitter-onceinnerevent-f.md#onceinnerevent) | 单次订阅指定的事件，在接收到该事件且执行完对应的回调处理函数后，自动取消订阅。 |
+| [once_string](arkts-basicservices-emitter-oncestring-f.md#oncestring) | 单次订阅指定的事件，在接收到该事件且执行完对应的回调处理函数后，自动取消订阅。 |
+| [once_string](arkts-basicservices-emitter-oncestring-f.md#oncestring-1) | 单次订阅指定的事件，在接收到该事件且执行完对应的回调处理函数后，自动取消订阅。 |
 
 ### 类
 

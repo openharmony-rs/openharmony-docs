@@ -4,7 +4,7 @@ Defines the options of Shadow.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ Offset on the x-axis. Unit: vp.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -50,7 +50,7 @@ Offset on the y-axis. Unit: vp.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -66,7 +66,7 @@ Offset on the y-axis. Unit: vp.
 radius?: double | Resource
 ```
 
-Shadow blur radius. Unit: vp. &lt;p&gt;**NOTE：**: &lt;br&gt;A value less than or equal to 0 is handled as the default value. &lt;/p&gt;
+Shadow blur radius. Unit: vp. &lt;p&gt;**NOTE：**: <br>A value less than or equal to 0 is handled as the default value. &lt;/p&gt;
 
 **类型：** double \| [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md)
 
@@ -74,7 +74,7 @@ Shadow blur radius. Unit: vp. &lt;p&gt;**NOTE：**: &lt;br&gt;A value less than 
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

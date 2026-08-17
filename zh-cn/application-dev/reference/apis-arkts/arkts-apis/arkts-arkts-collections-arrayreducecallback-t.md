@@ -9,7 +9,7 @@ ArkTS Array归约函数类型，被Array类的'reduceRight'接口使用。
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 

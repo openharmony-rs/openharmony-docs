@@ -6,11 +6,11 @@
 function search(callback: AsyncCallback<Array<string>>): void
 ```
 
-根据默认[Filter](arkts-basicservices-agent-filter-i.md#Filter)过滤条件查找任务id，即查询调用 时刻至24小时前的所有任务的任务id。使用callback异步回调。
+根据默认[Filter](arkts-basicservices-agent-filter-i.md#filter)过滤条件查找任务id，即查询调用 时刻至24小时前的所有任务的任务id。使用callback异步回调。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -28,7 +28,7 @@ function search(callback: AsyncCallback<Array<string>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: &lt;br&gt; 1. Incorrect parameter type. &lt;br&gt; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br> 1. Incorrect parameter type. <br> 2. Parameter verification failed. |
 | [13400003](../../apis-basic-services-kit/errorcode-request.md#13400003-服务异常) | Task service ability error. |
 
 ## 示例
@@ -54,11 +54,11 @@ request.agent.search((err: BusinessError<void> | null, data: Array<string> | und
 function search(filter: Filter, callback: AsyncCallback<Array<string>>): void
 ```
 
-根据[Filter](arkts-basicservices-agent-filter-i.md#Filter)过滤条件查找任务id。使用 callback异步回调。
+根据[Filter](arkts-basicservices-agent-filter-i.md#filter)过滤条件查找任务id。使用 callback异步回调。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -77,7 +77,7 @@ function search(filter: Filter, callback: AsyncCallback<Array<string>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: &lt;br&gt; 1. Incorrect parameter type. &lt;br&gt; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br> 1. Incorrect parameter type. <br> 2. Parameter verification failed. |
 | [13400003](../../apis-basic-services-kit/errorcode-request.md#13400003-服务异常) | Task service ability error. |
 
 ## 示例
@@ -107,11 +107,11 @@ request.agent.search(filter, (err: BusinessError<void> | null, data: Array<strin
 function search(filter?: Filter): Promise<Array<string>>
 ```
 
-根据[Filter](arkts-basicservices-agent-filter-i.md#Filter)过滤条件查找任务id。使用 Promise异步回调。
+根据[Filter](arkts-basicservices-agent-filter-i.md#filter)过滤条件查找任务id。使用 Promise异步回调。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -135,7 +135,7 @@ function search(filter?: Filter): Promise<Array<string>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: &lt;br&gt; 1. Incorrect parameter type. &lt;br&gt; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br> 1. Incorrect parameter type. <br> 2. Parameter verification failed. |
 | [13400003](../../apis-basic-services-kit/errorcode-request.md#13400003-服务异常) | Task service ability error. |
 
 ## 示例

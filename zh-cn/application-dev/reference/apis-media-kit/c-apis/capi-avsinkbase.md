@@ -2,7 +2,7 @@
 
 ## 概述
 
-The AVSinkBase module provides variables, properties, and functionsfor lowpower audio sink and lowpower video sink.
+AVSinkBase模块提供低功耗音频输出和低功耗视频输出的变量、属性和函数。
 
 **起始版本：** 20
 ## 文件汇总

@@ -4,7 +4,7 @@ UI侧的系统材质对象。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ Material的构造函数。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -40,5 +40,5 @@ Material的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [MaterialOptions](arkts-na-uimaterial-materialoptions-i-sys.md) | 否 | 系统材质配置选项，包括材质类型。&lt;br/&gt;默认值：{type:MaterialType.NONE} |
+| options | [MaterialOptions](arkts-na-uimaterial-materialoptions-i-sys.md) | 否 | 系统材质配置选项，包括材质类型。<br/>默认值：{type:MaterialType.NONE} |
 

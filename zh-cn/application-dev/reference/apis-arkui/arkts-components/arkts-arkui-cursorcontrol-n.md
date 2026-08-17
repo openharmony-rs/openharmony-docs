@@ -4,7 +4,7 @@
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -20,6 +20,6 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [setCursor](arkts-arkui-cursorcontrol-setcursor-f.md#setCursor) | 方法语句中可使用的全局接口，调用该接口可更改当前的鼠标光标样式。 |
-| [restoreDefault](arkts-arkui-cursorcontrol-restoredefault-f.md#restoreDefault) | 方法语句中可使用的全局接口，调用此接口可将鼠标光标恢复成默认箭头样式。 |
+| [setCursor](arkts-arkui-cursorcontrol-setcursor-f.md#setcursor) | 方法语句中可使用的全局接口，调用该接口可更改当前的鼠标光标样式。 |
+| [restoreDefault](arkts-arkui-cursorcontrol-restoredefault-f.md#restoredefault) | 方法语句中可使用的全局接口，调用此接口可将鼠标光标恢复成默认箭头样式。 |
 

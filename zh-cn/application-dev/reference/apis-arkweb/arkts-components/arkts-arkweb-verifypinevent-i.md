@@ -1,10 +1,10 @@
 # VerifyPinEvent
 
-Defines the event for PIN verification.
+定义当需要用户进行PIN码认证时触发回调。
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@ Defines the event for PIN verification.
 handler: VerifyPinHandler
 ```
 
-Handle the result of PIN verification.
+通知Web组件用户操作行为。
 
 **类型：** [VerifyPinHandler](arkts-arkweb-verifypinhandler-c.md)
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -38,13 +38,13 @@ Handle the result of PIN verification.
 identity: string
 ```
 
-The identity of the Credential.
+用于认证的证书凭据标识。
 
 **类型：** string
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 

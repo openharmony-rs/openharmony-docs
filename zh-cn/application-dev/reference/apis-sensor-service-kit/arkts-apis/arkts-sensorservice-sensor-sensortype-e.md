@@ -1,14 +1,14 @@
 # SensorType
 
-表示要订阅或取消订阅的传感器类型。 > **说明：** > > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId](arkts-sensorservice-sensor-sensorid-e.md#SensorId)替代。
+表示要订阅或取消订阅的传感器类型。 > **说明：** > > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId](arkts-sensorservice-sensor-sensorid-e.md#sensorid)替代。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [SensorId](arkts-sensorservice-sensor-sensorid-e.md#SensorId)
+**替代接口：** [SensorId](arkts-sensorservice-sensor-sensorid-e.md#sensorid)
 
 <!--Device-sensor-enum SensorType--><!--Device-sensor-enum SensorType-End-->
 
@@ -24,11 +24,11 @@ SENSOR_TYPE_ID_ACCELEROMETER = 1
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [ACCELEROMETER](arkts-sensorservice-sensor-sensorid-e.md#ACCELEROMETER)
+**替代接口：** [ACCELEROMETER](arkts-sensorservice-sensor-sensorid-e.md#accelerometer)
 
 <!--Device-SensorType-SENSOR_TYPE_ID_ACCELEROMETER = 1--><!--Device-SensorType-SENSOR_TYPE_ID_ACCELEROMETER = 1-End-->
 
@@ -44,11 +44,11 @@ SENSOR_TYPE_ID_GYROSCOPE = 2
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [GYROSCOPE](arkts-sensorservice-sensor-sensorid-e.md#GYROSCOPE)
+**替代接口：** [GYROSCOPE](arkts-sensorservice-sensor-sensorid-e.md#gyroscope)
 
 <!--Device-SensorType-SENSOR_TYPE_ID_GYROSCOPE = 2--><!--Device-SensorType-SENSOR_TYPE_ID_GYROSCOPE = 2-End-->
 
@@ -64,11 +64,11 @@ SENSOR_TYPE_ID_AMBIENT_LIGHT = 5
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [AMBIENT_LIGHT](arkts-sensorservice-sensor-sensorid-e.md#AMBIENT_LIGHT)
+**替代接口：** [AMBIENT_LIGHT](arkts-sensorservice-sensor-sensorid-e.md#ambientlight)
 
 <!--Device-SensorType-SENSOR_TYPE_ID_AMBIENT_LIGHT = 5--><!--Device-SensorType-SENSOR_TYPE_ID_AMBIENT_LIGHT = 5-End-->
 
@@ -84,11 +84,11 @@ SENSOR_TYPE_ID_MAGNETIC_FIELD = 6
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [MAGNETIC_FIELD](arkts-sensorservice-sensor-sensorid-e.md#MAGNETIC_FIELD)
+**替代接口：** [MAGNETIC_FIELD](arkts-sensorservice-sensor-sensorid-e.md#magneticfield)
 
 <!--Device-SensorType-SENSOR_TYPE_ID_MAGNETIC_FIELD = 6--><!--Device-SensorType-SENSOR_TYPE_ID_MAGNETIC_FIELD = 6-End-->
 
@@ -104,11 +104,11 @@ SENSOR_TYPE_ID_BAROMETER = 8
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [BAROMETER](arkts-sensorservice-sensor-sensorid-e.md#BAROMETER)
+**替代接口：** [BAROMETER](arkts-sensorservice-sensor-sensorid-e.md#barometer)
 
 <!--Device-SensorType-SENSOR_TYPE_ID_BAROMETER = 8--><!--Device-SensorType-SENSOR_TYPE_ID_BAROMETER = 8-End-->
 
@@ -124,11 +124,11 @@ SENSOR_TYPE_ID_HALL = 10
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [HALL](arkts-sensorservice-sensor-sensorid-e.md#HALL)
+**替代接口：** [HALL](arkts-sensorservice-sensor-sensorid-e.md#hall)
 
 <!--Device-SensorType-SENSOR_TYPE_ID_HALL = 10--><!--Device-SensorType-SENSOR_TYPE_ID_HALL = 10-End-->
 
@@ -144,11 +144,11 @@ SENSOR_TYPE_ID_PROXIMITY = 12
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [PROXIMITY](arkts-sensorservice-sensor-sensorid-e.md#PROXIMITY)
+**替代接口：** [PROXIMITY](arkts-sensorservice-sensor-sensorid-e.md#proximity)
 
 <!--Device-SensorType-SENSOR_TYPE_ID_PROXIMITY = 12--><!--Device-SensorType-SENSOR_TYPE_ID_PROXIMITY = 12-End-->
 
@@ -164,11 +164,11 @@ SENSOR_TYPE_ID_HUMIDITY = 13
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [HUMIDITY](arkts-sensorservice-sensor-sensorid-e.md#HUMIDITY)
+**替代接口：** [HUMIDITY](arkts-sensorservice-sensor-sensorid-e.md#humidity)
 
 <!--Device-SensorType-SENSOR_TYPE_ID_HUMIDITY = 13--><!--Device-SensorType-SENSOR_TYPE_ID_HUMIDITY = 13-End-->
 
@@ -184,11 +184,11 @@ SENSOR_TYPE_ID_ORIENTATION = 256
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [ORIENTATION](arkts-sensorservice-sensor-sensorid-e.md#ORIENTATION)
+**替代接口：** [ORIENTATION](arkts-sensorservice-sensor-sensorid-e.md#orientation)
 
 <!--Device-SensorType-SENSOR_TYPE_ID_ORIENTATION = 256--><!--Device-SensorType-SENSOR_TYPE_ID_ORIENTATION = 256-End-->
 
@@ -204,11 +204,11 @@ SENSOR_TYPE_ID_GRAVITY = 257
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [GRAVITY](arkts-sensorservice-sensor-sensorid-e.md#GRAVITY)
+**替代接口：** [GRAVITY](arkts-sensorservice-sensor-sensorid-e.md#gravity)
 
 <!--Device-SensorType-SENSOR_TYPE_ID_GRAVITY = 257--><!--Device-SensorType-SENSOR_TYPE_ID_GRAVITY = 257-End-->
 
@@ -224,11 +224,11 @@ SENSOR_TYPE_ID_LINEAR_ACCELERATION = 258
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [LINEAR_ACCELEROMETER](arkts-sensorservice-sensor-sensorid-e.md#LINEAR_ACCELEROMETER)
+**替代接口：** [LINEAR_ACCELEROMETER](arkts-sensorservice-sensor-sensorid-e.md#linearaccelerometer)
 
 <!--Device-SensorType-SENSOR_TYPE_ID_LINEAR_ACCELERATION = 258--><!--Device-SensorType-SENSOR_TYPE_ID_LINEAR_ACCELERATION = 258-End-->
 
@@ -244,11 +244,11 @@ SENSOR_TYPE_ID_ROTATION_VECTOR = 259
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [ROTATION_VECTOR](arkts-sensorservice-sensor-sensorid-e.md#ROTATION_VECTOR)
+**替代接口：** [ROTATION_VECTOR](arkts-sensorservice-sensor-sensorid-e.md#rotationvector)
 
 <!--Device-SensorType-SENSOR_TYPE_ID_ROTATION_VECTOR = 259--><!--Device-SensorType-SENSOR_TYPE_ID_ROTATION_VECTOR = 259-End-->
 
@@ -264,11 +264,11 @@ SENSOR_TYPE_ID_AMBIENT_TEMPERATURE = 260
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [AMBIENT_TEMPERATURE](arkts-sensorservice-sensor-sensorid-e.md#AMBIENT_TEMPERATURE)
+**替代接口：** [AMBIENT_TEMPERATURE](arkts-sensorservice-sensor-sensorid-e.md#ambienttemperature)
 
 <!--Device-SensorType-SENSOR_TYPE_ID_AMBIENT_TEMPERATURE = 260--><!--Device-SensorType-SENSOR_TYPE_ID_AMBIENT_TEMPERATURE = 260-End-->
 
@@ -284,11 +284,11 @@ SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED = 261
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [MAGNETIC_FIELD_UNCALIBRATED](arkts-sensorservice-sensor-sensorid-e.md#MAGNETIC_FIELD_UNCALIBRATED)
+**替代接口：** [MAGNETIC_FIELD_UNCALIBRATED](arkts-sensorservice-sensor-sensorid-e.md#magneticfielduncalibrated)
 
 <!--Device-SensorType-SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED = 261--><!--Device-SensorType-SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED = 261-End-->
 
@@ -304,11 +304,11 @@ SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED = 263
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [GYROSCOPE_UNCALIBRATED](arkts-sensorservice-sensor-sensorid-e.md#GYROSCOPE_UNCALIBRATED)
+**替代接口：** [GYROSCOPE_UNCALIBRATED](arkts-sensorservice-sensor-sensorid-e.md#gyroscopeuncalibrated)
 
 <!--Device-SensorType-SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED = 263--><!--Device-SensorType-SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED = 263-End-->
 
@@ -324,11 +324,11 @@ SENSOR_TYPE_ID_SIGNIFICANT_MOTION = 264
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [SIGNIFICANT_MOTION](arkts-sensorservice-sensor-sensorid-e.md#SIGNIFICANT_MOTION)
+**替代接口：** [SIGNIFICANT_MOTION](arkts-sensorservice-sensor-sensorid-e.md#significantmotion)
 
 <!--Device-SensorType-SENSOR_TYPE_ID_SIGNIFICANT_MOTION = 264--><!--Device-SensorType-SENSOR_TYPE_ID_SIGNIFICANT_MOTION = 264-End-->
 
@@ -344,11 +344,11 @@ SENSOR_TYPE_ID_PEDOMETER_DETECTION = 265
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [PEDOMETER_DETECTION](arkts-sensorservice-sensor-sensorid-e.md#PEDOMETER_DETECTION)
+**替代接口：** [PEDOMETER_DETECTION](arkts-sensorservice-sensor-sensorid-e.md#pedometerdetection)
 
 <!--Device-SensorType-SENSOR_TYPE_ID_PEDOMETER_DETECTION = 265--><!--Device-SensorType-SENSOR_TYPE_ID_PEDOMETER_DETECTION = 265-End-->
 
@@ -364,11 +364,11 @@ SENSOR_TYPE_ID_PEDOMETER = 266
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [PEDOMETER](arkts-sensorservice-sensor-sensorid-e.md#PEDOMETER)
+**替代接口：** [PEDOMETER](arkts-sensorservice-sensor-sensorid-e.md#pedometer)
 
 <!--Device-SensorType-SENSOR_TYPE_ID_PEDOMETER = 266--><!--Device-SensorType-SENSOR_TYPE_ID_PEDOMETER = 266-End-->
 
@@ -384,11 +384,11 @@ SENSOR_TYPE_ID_HEART_RATE = 278
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [HEART_RATE](arkts-sensorservice-sensor-sensorid-e.md#HEART_RATE)
+**替代接口：** [HEART_RATE](arkts-sensorservice-sensor-sensorid-e.md#heartrate)
 
 <!--Device-SensorType-SENSOR_TYPE_ID_HEART_RATE = 278--><!--Device-SensorType-SENSOR_TYPE_ID_HEART_RATE = 278-End-->
 
@@ -404,11 +404,11 @@ SENSOR_TYPE_ID_WEAR_DETECTION = 280
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [WEAR_DETECTION](arkts-sensorservice-sensor-sensorid-e.md#WEAR_DETECTION)
+**替代接口：** [WEAR_DETECTION](arkts-sensorservice-sensor-sensorid-e.md#weardetection)
 
 <!--Device-SensorType-SENSOR_TYPE_ID_WEAR_DETECTION = 280--><!--Device-SensorType-SENSOR_TYPE_ID_WEAR_DETECTION = 280-End-->
 
@@ -424,11 +424,11 @@ SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED = 281
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [ACCELEROMETER_UNCALIBRATED](arkts-sensorservice-sensor-sensorid-e.md#ACCELEROMETER_UNCALIBRATED)
+**替代接口：** [ACCELEROMETER_UNCALIBRATED](arkts-sensorservice-sensor-sensorid-e.md#accelerometeruncalibrated)
 
 <!--Device-SensorType-SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED = 281--><!--Device-SensorType-SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED = 281-End-->
 

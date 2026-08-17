@@ -6,11 +6,11 @@
 function batchUpdate(sourceAttributes: Array<AssetMap>, destAttributes: Array<AssetMap>): Promise<BatchResult>
 ```
 
-批量更新符合条件的关键资产。使用Promise异步回调。 批量更新的关键资产必须具有相同的[Tag.GROUP_ID](arkts-assetstore-asset-tagtype-e.md#TagType)和[Tag.REQUIRE_ATTR_ENCRYPTED](arkts-assetstore-asset-tagtype-e.md#TagType)属性。 批量更新的关键资产数量最大值为100。
+批量更新符合条件的关键资产。使用Promise异步回调。 批量更新的关键资产必须具有相同的[Tag.GROUP_ID](arkts-assetstore-asset-tagtype-e.md#tagtype)和[Tag.REQUIRE_ATTR_ENCRYPTED](arkts-assetstore-asset-tagtype-e.md#tagtype)属性。 批量更新的关键资产数量最大值为100。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -43,7 +43,7 @@ function batchUpdate(sourceAttributes: Array<AssetMap>, destAttributes: Array<As
 | [24000008](../errorcode-asset.md#24000008-数据库操作失败) | The database operation failed. |
 | [24000006](../errorcode-asset.md#24000006-系统内存不足) | Insufficient memory. |
 | [24000007](../errorcode-asset.md#24000007-关键资产损坏) | The asset is corrupted. |
-| [24000019](../errorcode-asset.md#24000019-属性值不一致) | Each value of [GROUP_ID](arkts-assetstore-asset-tag-e.md#GROUP_ID) and [REQUIRE_ATTR_ENCRYPTED](arkts-assetstore-asset-tag-e.md#REQUIRE_ATTR_ENCRYPTED) in the array is not consistent. |
+| [24000019](../errorcode-asset.md#24000019-属性值不一致) | Each value of [GROUP_ID](arkts-assetstore-asset-tag-e.md#groupid) and [REQUIRE_ATTR_ENCRYPTED](arkts-assetstore-asset-tag-e.md#requireattrencrypted) in the array is not consistent. |
 | [24000001](../errorcode-asset.md#24000001-关键资产服务不可用) | The ASSET service is unavailable. |
 
 ## 示例

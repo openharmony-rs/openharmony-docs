@@ -10,7 +10,7 @@ function addWatcher(watcher: Watcher): AppEventPackageHolder
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -36,10 +36,10 @@ function addWatcher(watcher: Watcher): AppEventPackageHolder
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; &lt;br&gt;2. Incorrect parameter types. |
-| [11102001](../errorcode-hiappevent.md#11102001-非法的观察者名称) | Invalid watcher name. Possible causes: 1. Contain invalid characters; &lt;br&gt;2. Length is invalid. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
+| [11102001](../errorcode-hiappevent.md#11102001-非法的观察者名称) | Invalid watcher name. Possible causes: 1. Contain invalid characters; <br>2. Length is invalid. |
 | [11102003](../errorcode-hiappevent.md#11102003-非法的条数值) | Invalid row value. Possibly caused by the row value is less than zero. |
-| [11102002](../errorcode-hiappevent.md#11102002-非法的过滤事件领域) | Invalid filtering event domain. Possible causes: 1. Contain invalid characters; &lt;br&gt;2. Length is invalid. |
+| [11102002](../errorcode-hiappevent.md#11102002-非法的过滤事件领域) | Invalid filtering event domain. Possible causes: 1. Contain invalid characters; <br>2. Length is invalid. |
 | [11102005](../errorcode-hiappevent.md#11102005-非法的超时值) | Invalid timeout value. Possibly caused by the timeout value is less than zero. |
 | [11102004](../errorcode-hiappevent.md#11102004-非法的大小值) | Invalid size value. Possibly caused by the size value is less than zero. |
 

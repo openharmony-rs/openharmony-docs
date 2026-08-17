@@ -2,11 +2,11 @@
 
 可扩展组件，是自定义组件和自定义对话框的基类。
 
-**继承/实现关系：** ExtendableComponent implements [LifeCycle](arkts-na-extendablecomponent-lifecycle-i.md#LifeCycle), [IVariableOwner](arkts-na-decorator-ivariableowner-i.md#IVariableOwner)
+**继承/实现关系：** ExtendableComponent implements [LifeCycle](arkts-na-extendablecomponent-lifecycle-i.md#lifecycle), [IVariableOwner](arkts-na-decorator-ivariableowner-i.md#ivariableowner)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ The dialog controller of the custom component.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -50,7 +50,7 @@ getUIContext(): UIContext
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -64,7 +64,7 @@ getUIContext(): UIContext
 
 | 类型 | 说明 |
 | --- | --- |
-| [UIContext](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md) | 返回UIContext实例对象。在异步调用的回调方法中使用该接口，或者该接口的起始调用不在当前页面时，可能导致接口调用发生在自定义组件销毁之后，返回undefined。 |
+| [UIContext](arkts-na-arkui-uicontext-uicontext-c.md) | 返回UIContext实例对象。在异步调用的回调方法中使用该接口，或者该接口的起始调用不在当前页面时，可能导致接口调用发生在自定义组件销毁之后，返回undefined。 |
 
 ## getUniqueId
 
@@ -76,7 +76,7 @@ getUniqueId(): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -102,7 +102,7 @@ onWillApplyTheme函数用于获取当前组件上下文的Theme对象，在创�
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -128,7 +128,7 @@ queryNavDestinationInfo(): NavDestinationInfo | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -154,7 +154,7 @@ queryNavDestinationInfo(isInner: boolean | undefined): NavDestinationInfo | unde
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -186,7 +186,7 @@ queryNavigationInfo(): NavigationInfo | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -212,7 +212,7 @@ queryRouterPageInfo(): RouterPageInfo | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

@@ -10,7 +10,7 @@ function removeAllowedRunningBundles(admin: Want, appIdentifiers: Array<string>,
 
 **起始版本：** 21
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+**ArkTS模式：** 起始版本为21。
 
 **废弃版本：** -1
 
@@ -27,8 +27,8 @@ function removeAllowedRunningBundles(admin: Want, appIdentifiers: Array<string>,
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| appIdentifiers | Array&lt;string&gt; | 是 | 应用 [唯一标识符](../../../quick-start/common-problem-of-application.md#什么是appidentifier)的数组。可以通过接口 [bundleManager.getInstalledBundleList](arkts-mdm-bundlemanager-getinstalledbundlelist-f.md#getInstalledBundleList) 获取bundleInfo.signatureInfo.appIdentifier。取值范围：数组长度不能超过200。 |
-| accountId | number | 是 | 用户ID，取值范围：大于等于0。 &lt;br&gt; accountId可以通过@ohos.account.osAccount中的 [getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getOsAccountLocalId)等接口来获取。 |
+| appIdentifiers | Array&lt;string&gt; | 是 | 应用 [唯一标识符](../../../quick-start/common-problem-of-application.md#什么是appidentifier)的数组。可以通过接口 [bundleManager.getInstalledBundleList](arkts-mdm-bundlemanager-getinstalledbundlelist-f.md#getinstalledbundlelist) 获取bundleInfo.signatureInfo.appIdentifier。取值范围：数组长度不能超过200。 |
+| accountId | number | 是 | 用户ID，取值范围：大于等于0。 <br> accountId可以通过@ohos.account.osAccount中的 [getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)等接口来获取。 |
 
 **错误码：**
 

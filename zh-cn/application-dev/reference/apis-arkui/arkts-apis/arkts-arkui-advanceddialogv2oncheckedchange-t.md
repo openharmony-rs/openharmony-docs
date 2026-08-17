@@ -8,7 +8,7 @@ export declare type AdvancedDialogV2OnCheckedChange = (checked: boolean) => void
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 

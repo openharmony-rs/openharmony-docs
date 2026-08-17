@@ -10,11 +10,11 @@ function getThreadPriority(v: number): number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [getThreadPriority](arkts-arkts-process-processmanager-c.md#getThreadPriority)
+**替代接口：** [getThreadPriority](arkts-arkts-process-processmanager-c.md#getthreadpriority)
 
 <!--Device-process-function getThreadPriority(v: number): number--><!--Device-process-function getThreadPriority(v: number): number-End-->
 

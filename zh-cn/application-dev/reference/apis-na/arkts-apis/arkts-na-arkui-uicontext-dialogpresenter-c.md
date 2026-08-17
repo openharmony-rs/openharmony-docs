@@ -4,7 +4,7 @@
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.1.0。
+**ArkTS模式：** 起始版本为26.1.0。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ Dismisses a dialog box. Accepts either the dialog ID (returned by present) or th
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.1.0。
+**ArkTS模式：** 起始版本为26.1.0。
 
 **废弃版本：** -1
 
@@ -61,7 +61,7 @@ Presents a fixed-style dialog box.
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.1.0。
+**ArkTS模式：** 起始版本为26.1.0。
 
 **废弃版本：** -1
 
@@ -100,7 +100,7 @@ Presents a custom-style dialog box with the provided content. content参数支�
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.1.0。
+**ArkTS模式：** 起始版本为26.1.0。
 
 **废弃版本：** -1
 
@@ -114,7 +114,7 @@ Presents a custom-style dialog box with the provided content. content参数支�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | CustomBuilder \| [CustomBuilderWithId](../../apis-arkui/arkts-apis/arkts-arkui-custombuilderwithid-t.md) \| ComponentContent&lt;Object&gt; | 是 | Custom dialog content. |
+| content | CustomBuilder \| [CustomBuilderWithId](arkts-na-custombuilderwithid-t.md) \| ComponentContent&lt;Object&gt; | 是 | Custom dialog content. |
 | options | dialog.DialogCustomOptions | 否 | Custom dialog options. |
 
 **返回值：**
@@ -142,7 +142,7 @@ Updates a presented custom dialog box.
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.1.0。
+**ArkTS模式：** 起始版本为26.1.0。
 
 **废弃版本：** -1
 

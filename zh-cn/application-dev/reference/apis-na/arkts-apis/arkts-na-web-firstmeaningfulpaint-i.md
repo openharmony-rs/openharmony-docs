@@ -4,7 +4,7 @@ Provides detailed information about the first meaningful paint.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@ Provides detailed information about the first meaningful paint.
 firstMeaningfulPaintTime?: long
 ```
 
-Paint time of first meaningful content. &lt;br&gt;Unit:microseconds.
+Paint time of first meaningful content. <br>Unit:microseconds.
 
 **类型：** long
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -38,13 +38,13 @@ Paint time of first meaningful content. &lt;br&gt;Unit:microseconds.
 navigationStartTime?: long
 ```
 
-Start time of navigation. &lt;br&gt;Unit:microseconds.
+Start time of navigation. <br>Unit:microseconds.
 
 **类型：** long
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

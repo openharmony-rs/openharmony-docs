@@ -14,7 +14,7 @@ export declare function SideBarContainer(
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -28,8 +28,8 @@ export declare function SideBarContainer(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [SideBarContainerType](arkts-na-sidebar-sidebarcontainertype-e.md) | 否 | 设置侧边栏的显示类型。&lt;br/&gt;默认值：SideBarContainerType.Embed |
-| content_ | CustomBuilder | 否 | 可以包含子组件。&lt;br/&gt;**说明：** &lt;br/&gt;1. 子组件类型：系统组件和自定义组件，不支持渲染控制类型（ [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、 [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)和 [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)）。&lt;br/&gt;2. 子组件个数：必须且仅包含2个子组件。&lt; br/&gt;3. 子组件个数异常时：3个或以上子组件，显示第一个和第二个。1个子组件，显示侧边栏，内容区为空白。&lt;br/&gt;4. SideBarContainer走焦时，先在内容区走焦，再在侧边栏走焦。 |
+| type | [SideBarContainerType](arkts-na-sidebar-sidebarcontainertype-e.md) | 否 | 设置侧边栏的显示类型。<br/>默认值：SideBarContainerType.Embed |
+| content_ | CustomBuilder | 否 | 可以包含子组件。<br/>**说明：** <br/>1. 子组件类型：系统组件和自定义组件，不支持渲染控制类型（ [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、 [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)和 [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)）。<br/>2. 子组件个数：必须且仅包含2个子组件。&lt; br/&gt;3. 子组件个数异常时：3个或以上子组件，显示第一个和第二个。1个子组件，显示侧边栏，内容区为空白。<br/>4. SideBarContainer走焦时，先在内容区走焦，再在侧边栏走焦。 |
 
 **返回值：**
 
@@ -52,7 +52,7 @@ export declare function SideBarContainer(
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

@@ -6,11 +6,11 @@
 function setSeniorModeStateForSelf(state: boolean): Promise<void>
 ```
 
-Set this application's senior mode.
+设置应用是否开启“长辈模式”。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -24,13 +24,13 @@ Set this application's senior mode.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| state | boolean | 是 | Indicates whether to enable senior mode for this application. |
+| state | boolean | 是 | 设置应用是否开启“长辈模式”状态，true表示开启“长辈模式”，false表示关闭“长辈模式”。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | The promise returned by the function. |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

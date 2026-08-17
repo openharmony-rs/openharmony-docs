@@ -1,12 +1,12 @@
 # ColorResponse（系统接口）
 
-颜色传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md#Response)。用于表示颜色传感器上报的响应数据，包含光照强度和色温信息。
+颜色传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md#response)。用于表示颜色传感器上报的响应数据，包含光照强度和色温信息。
 
-**继承/实现关系：** ColorResponse extends [Response](arkts-sensorservice-sensor-response-i.md#Response)
+**继承/实现关系：** ColorResponse extends [Response](arkts-sensorservice-sensor-response-i.md#response)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -28,7 +28,7 @@ colorTemperature: double
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -50,7 +50,7 @@ lightIntensity: double
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

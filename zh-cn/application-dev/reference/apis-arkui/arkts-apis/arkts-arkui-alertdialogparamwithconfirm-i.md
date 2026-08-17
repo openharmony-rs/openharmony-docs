@@ -1,12 +1,12 @@
 # AlertDialogParamWithConfirm
 
-继承自[AlertDialogParam](arkts-arkui-alertdialogparam-i.md#AlertDialogParam)。 confirm参数优先级：fontColor、backgroundColor > style > defaultFocus
+继承自[AlertDialogParam](arkts-arkui-alertdialogparam-i.md#alertdialogparam)。 confirm参数优先级：fontColor、backgroundColor > style > defaultFocus
 
-**继承/实现关系：** AlertDialogParamWithConfirm extends [AlertDialogParam](arkts-arkui-alertdialogparam-i.md#AlertDialogParam)
+**继承/实现关系：** AlertDialogParamWithConfirm extends [AlertDialogParam](arkts-arkui-alertdialogparam-i.md#alertdialogparam)
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ confirm?: AlertDialogButtonBaseOptions
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 

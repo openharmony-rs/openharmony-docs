@@ -1,10 +1,10 @@
 # JsResult
 
-定义 JS 返回结果。
+JsResult是Web组件在处理JavaScript弹窗事件时返回的结果处理对象，适用于开发者拦截并自定义处理`window.alert`、`window.confirm`、`window.prompt`等弹窗场景。开发者可在 [onAlert](arkts-arkweb-web-attribute.md#onalert)、[onConfirm](arkts-arkweb-web-attribute.md#onconfirm)或 [onPrompt](arkts-arkweb-web-attribute.md#onprompt)等事件回调中，通过该对象向Web组件反馈用户的确认、取消或输入内容等操作结果，从而控制弹窗的后续行为。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -18,11 +18,11 @@
 constructor()
 ```
 
-JsResult的构造函数。
+JsResult的构造函数。用于处理JavaScript弹窗事件。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -38,11 +38,11 @@ JsResult的构造函数。
 handleCancel(): void
 ```
 
-若取消弹窗，则处理用户的JavaScript执行结果。
+通知Web组件用户取消弹窗操作。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -58,11 +58,11 @@ handleCancel(): void
 handleConfirm(): void
 ```
 
-确认弹窗后，处理用户的 JavaScript 执行结果。
+通知Web组件用户确认弹窗操作。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -78,11 +78,11 @@ handleConfirm(): void
 handlePromptConfirm(result: string): void
 ```
 
-确认提示框后，处理用户的 JavaScript 执行结果。
+通知Web组件用户确认弹窗操作并传递对话框内容。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -96,5 +96,5 @@ handlePromptConfirm(result: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| result | string | 是 | The content of the dialog box entered by the user. |
+| result | string | 是 | 用户输入的对话框内容。 |
 

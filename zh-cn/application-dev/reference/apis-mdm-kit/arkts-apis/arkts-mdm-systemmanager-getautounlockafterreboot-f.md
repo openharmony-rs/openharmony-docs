@@ -10,7 +10,7 @@ function getAutoUnlockAfterReboot(admin: Want): boolean
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -43,6 +43,25 @@ function getAutoUnlockAfterReboot(admin: Want): boolean
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
+## 示例
+
+```TypeScript
+import { Want } from '@kit.AbilityKit';
+import { systemManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+try {
+  let result: boolean = systemManager.getAutoUnlockAfterReboot(wantTemp);
+  console.info(`Succeeded in getting auto unlock after reboot. result: ${result}`);
+} catch (err) {
+  console.error(`Failed to get auto unlock after reboot. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
 
 ## getAutoUnlockAfterReboot
 
@@ -54,7 +73,7 @@ function getAutoUnlockAfterReboot(admin: Want | null): boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -90,16 +109,11 @@ function getAutoUnlockAfterReboot(admin: Want | null): boolean
 ## 示例
 
 ```TypeScript
-import { Want } from '@kit.AbilityKit';
 import { systemManager } from '@kit.MDMKit';
 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
 try {
-  systemManager.getAutoUnlockAfterReboot(wantTemp);
+  // 参数需根据实际情况进行替换
+  systemManager.getAutoUnlockAfterReboot(null);
   console.info('Succeeded in getting auto unlock after reboot.');
 } catch (err) {
   console.error(`Failed to get auto unlock after reboot. Code is ${err.code}, message is ${err.message}`);

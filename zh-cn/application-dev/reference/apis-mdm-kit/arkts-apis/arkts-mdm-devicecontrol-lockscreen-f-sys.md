@@ -10,11 +10,11 @@ function lockScreen(admin: Want): void
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [operateDevice](arkts-mdm-devicecontrol-operatedevice-f.md#operateDevice)(admin: Want, operation: Operation, addition?: string)
+**替代接口：** [operateDevice](arkts-mdm-devicecontrol-operatedevice-f.md#operatedevice)(admin: Want, operation: Operation, addition?: string)
 
 **需要权限：** ohos.permission.ENTERPRISE_LOCK_DEVICE
 

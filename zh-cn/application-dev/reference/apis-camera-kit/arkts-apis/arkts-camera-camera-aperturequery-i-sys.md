@@ -1,10 +1,10 @@
 # ApertureQuery（系统接口）
 
-Provides the aperture query capability.
+物理光圈查询对象。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -20,11 +20,11 @@ Provides the aperture query capability.
 getSupportedPhysicalApertures(): Array<PhysicalAperture>
 ```
 
-Gets the supported physical apertures. Move to ApertureQuery interface from Aperture since 12.
+获取支持的物理光圈。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -40,7 +40,7 @@ Gets the supported physical apertures. Move to ApertureQuery interface from Aper
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;[PhysicalAperture](arkts-camera-camera-physicalaperture-i-sys.md)&gt; | The array of supported physical apertures. |
+| Array&lt;[PhysicalAperture](arkts-camera-camera-physicalaperture-i-sys.md)&gt; | 支持的物理光圈数组。 |
 
 **错误码：**
 
@@ -56,11 +56,11 @@ Gets the supported physical apertures. Move to ApertureQuery interface from Aper
 getSupportedVirtualApertures(): Array<double>
 ```
 
-Obtains the supported virtual apertures.
+获取支持的虚拟光圈列表。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -74,7 +74,7 @@ Obtains the supported virtual apertures.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;double&gt; | Array of virtual apertures supported. |
+| Array&lt;double&gt; | 支持的虚拟光圈列表。 |
 
 **错误码：**
 

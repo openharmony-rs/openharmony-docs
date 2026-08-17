@@ -10,11 +10,11 @@ export function is24HourClock(): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [is24HourClock](arkts-localization-i18n-system-c.md#is24HourClock)
+**替代接口：** [is24HourClock](../../apis-na/arkts-apis/arkts-na-i18n-system-c.md#is24hourclock)
 
 <!--Device-i18n-export function is24HourClock(): boolean--><!--Device-i18n-export function is24HourClock(): boolean-End-->
 
@@ -25,4 +25,12 @@ export function is24HourClock(): boolean
 | 类型 | 说明 |
 | --- | --- |
 | boolean | true表示系统24小时开关开启，false表示系统24小时开关关闭。 |
+
+## 示例
+
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+
+let is24HourClock: boolean = i18n.is24HourClock();
+```
 

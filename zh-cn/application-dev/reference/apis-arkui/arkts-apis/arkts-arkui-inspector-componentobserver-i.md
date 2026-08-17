@@ -4,7 +4,7 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ offDrawChildren(callback?: Callback<int[]>): void
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -87,7 +87,7 @@ offLayoutChildren(callback?: Callback<void>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -107,7 +107,7 @@ offLayoutChildren(callback?: Callback<void>): void
 
 ## 示例
 
-以下示例展示了inspector注册组件布局和组件绘制送显完成回调通知能力的基本用法。同时，通过[onLayoutChildren23+](#onLayoutChildren)接口监听子树中的节点完成布局时的回调事件。
+以下示例展示了inspector注册组件布局和组件绘制送显完成回调通知能力的基本用法。同时，通过[onLayoutChildren23+](#onlayoutchildren)接口监听子树中的节点完成布局时的回调事件。
 
 ```TypeScript
 import { inspector } from '@kit.ArkUI';
@@ -184,7 +184,7 @@ off(type: 'draw', callback?: () => void): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -200,7 +200,7 @@ off(type: 'draw', callback?: () => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'draw' | 是 | 必须填写字符串'draw'。&lt;br/&gt;draw：组件绘制送显完成。<br>**起始版本：** 12 |
+| type | 'draw' | 是 | 必须填写字符串'draw'。<br/>draw：组件绘制送显完成。<br>**起始版本：** 12 |
 | callback | () =&gt; void | 否 | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和on('draw')方法中的callback为相同对象时才能取消回调成功。<br>**起始版本：** 12 |
 
 ## off_drawChildren
@@ -213,7 +213,7 @@ off(type: 'drawChildren', callback?: Callback<void>): void
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -229,7 +229,7 @@ off(type: 'drawChildren', callback?: Callback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'drawChildren' | 是 | 必须填写字符串'drawChildren'。&lt;br/&gt;drawChildren：子组件绘制送显完成。 |
+| type | 'drawChildren' | 是 | 必须填写字符串'drawChildren'。<br/>drawChildren：子组件绘制送显完成。 |
 | callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 否 | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。 callback需要和on('drawChildren')方法中的callback为相同对象时才能取消回调成功。 |
 
 ## off_layout
@@ -242,7 +242,7 @@ off(type: 'layout', callback?: () => void): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -258,7 +258,7 @@ off(type: 'layout', callback?: () => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'layout' | 是 | 必须填写字符串'layout'。&lt;br/&gt;layout：组件布局完成。<br>**起始版本：** 12 |
+| type | 'layout' | 是 | 必须填写字符串'layout'。<br/>layout：组件布局完成。<br>**起始版本：** 12 |
 | callback | () =&gt; void | 否 | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和on('layout')方法中的callback为相同对象时才能取消回调成功。<br>**起始版本：** 12 |
 
 ## onDrawChildren
@@ -271,7 +271,7 @@ onDrawChildren(callback: Callback<int[]>): void
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -291,7 +291,7 @@ onDrawChildren(callback: Callback<int[]>): void
 
 ## 示例
 
-以下示例展示了inspector注册组件绘制送显完成回调通知能力的基本用法。通过[onDrawChildren24+](#onDrawChildren)接口注册回调，当子树内节点完成渲染时，回调返回该节点的uniqueId信息。
+以下示例展示了inspector注册组件绘制送显完成回调通知能力的基本用法。通过[onDrawChildren24+](#ondrawchildren)接口注册回调，当子树内节点完成渲染时，回调返回该节点的uniqueId信息。
 
 ```TypeScript
 import { inspector } from '@kit.ArkUI';
@@ -336,7 +336,7 @@ onLayoutChildren(callback: Callback<void>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -364,7 +364,7 @@ on(type: 'draw', callback: () => void): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -380,7 +380,7 @@ on(type: 'draw', callback: () => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'draw' | 是 | 必须填写字符串'draw'。&lt;br/&gt;draw：组件绘制送显完成。<br>**起始版本：** 12 |
+| type | 'draw' | 是 | 必须填写字符串'draw'。<br/>draw：组件绘制送显完成。<br>**起始版本：** 12 |
 | callback | () =&gt; void | 是 | 监听draw的回调。<br>**起始版本：** 12 |
 
 ## on_drawChildren
@@ -393,7 +393,7 @@ on(type: 'drawChildren', callback: Callback<void>): void
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -409,7 +409,7 @@ on(type: 'drawChildren', callback: Callback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'drawChildren' | 是 | 必须填写字符串'drawChildren'。&lt;br/&gt;drawChildren：子组件绘制送显完成。 |
+| type | 'drawChildren' | 是 | 必须填写字符串'drawChildren'。<br/>drawChildren：子组件绘制送显完成。 |
 | callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 是 | 监听drawChildren的回调。 |
 
 ## on_layout
@@ -422,7 +422,7 @@ on(type: 'layout', callback: () => void): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -438,6 +438,6 @@ on(type: 'layout', callback: () => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'layout' | 是 | 必须填写字符串'layout'。&lt;br/&gt;layout：组件布局完成。<br>**起始版本：** 12 |
+| type | 'layout' | 是 | 必须填写字符串'layout'。<br/>layout：组件布局完成。<br>**起始版本：** 12 |
 | callback | () =&gt; void | 是 | 监听layout的回调。<br>**起始版本：** 12 |
 

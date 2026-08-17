@@ -10,7 +10,7 @@ function createClient(address: string): Client
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ function createClient(address: string): Client
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| address | string | 是 | 服务端的设备地址。例如，“11:22:33:AA:BB:FF” &lt;br&gt;长度必须为17，由16进制数字和冒号组成，形如 "11:22:33:AA:BB:FF"。 |
+| address | string | 是 | 服务端的设备地址。例如，“11:22:33:AA:BB:FF” <br>长度必须为17，由16进制数字和冒号组成，形如 "11:22:33:AA:BB:FF"。 |
 
 **返回值：**
 

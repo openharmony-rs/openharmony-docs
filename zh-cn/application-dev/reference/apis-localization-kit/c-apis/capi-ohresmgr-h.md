@@ -303,7 +303,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptor(const NativeR
 | -- | -- |
 | [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | uint32_t resId | 输入参数。资源ID。 |
-| [ArkUI_DrawableDescriptor](../ArkUI/capi-arkui-nativemodule-arkui-drawabledescriptor.md) **drawableDescriptor | 输出参数。返回指向DrawableDescriptor对象的指针。 |
+| ArkUI_DrawableDescriptor **drawableDescriptor | 输出参数。返回指向DrawableDescriptor对象的指针。 |
 | density | 输入参数，可选。屏幕密度，取值范围请参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)。默认值为0，表示使用当前系统屏幕密度。 |
 | type | 输入参数，可选。图标类型，默认值为0。<br>0：表示应用自身图标。<br>1：表示应用主题图标。 |
 
@@ -331,7 +331,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorData(const Nat
 | -- | -- |
 | [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | uint32_t resId | 输入参数。资源ID。 |
-| [ArkUI_DrawableDescriptor](../ArkUI/capi-arkui-nativemodule-arkui-drawabledescriptor.md) **drawableDescriptor | 输出参数。返回指向DrawableDescriptor对象的指针。 |
+| ArkUI_DrawableDescriptor **drawableDescriptor | 输出参数。返回指向DrawableDescriptor对象的指针。 |
 | uint32_t density | 输入参数。屏幕密度，取值范围请参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)。值为0表示使用当前系统屏幕密度。若不需要特定密度，请将此参数设置为0。 |
 | uint32_t type | 输入参数。图标类型，若不需要特定图标类型，请将该参数设置为0。<br>0：表示应用自身图标。<br>1：表示应用主题图标。 |
 
@@ -359,7 +359,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorByName(const N
 | -- | -- |
 | [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | const char *resName | 输入参数。资源名称。 |
-| [ArkUI_DrawableDescriptor](../ArkUI/capi-arkui-nativemodule-arkui-drawabledescriptor.md) **drawableDescriptor | 输出参数。返回指向DrawableDescriptor对象的指针。 |
+| ArkUI_DrawableDescriptor **drawableDescriptor | 输出参数。返回指向DrawableDescriptor对象的指针。 |
 | density | 输入参数，可选。屏幕密度，取值范围请参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)。默认值为0，表示使用当前系统屏幕密度。 |
 | type | 输入参数，可选。图标类型，默认值为0。<br>0：表示应用自身图标。<br>1：表示应用主题图标。<br>2：表示应用动态图标。 |
 
@@ -387,7 +387,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorDataByName(con
 | -- | -- |
 | [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)函数获取。 |
 | const char *resName | 输入参数。资源名称。 |
-| [ArkUI_DrawableDescriptor](../ArkUI/capi-arkui-nativemodule-arkui-drawabledescriptor.md) **drawableDescriptor | 输出参数。返回指向DrawableDescriptor对象的指针。 |
+| ArkUI_DrawableDescriptor **drawableDescriptor | 输出参数。返回指向DrawableDescriptor对象的指针。 |
 | uint32_t density | 输入参数，屏幕密度，取值范围请参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)。值为0表示使用当前系统屏幕密度。若不需要特定密度，请将此参数设置为0。 |
 | uint32_t type | 输入参数。图标类型，若不需要特定图标类型，请将该参数设置为0。<br>0：表示应用自身图标。<br>1：表示应用主题图标。<br>2：表示应用动态图标。 |
 

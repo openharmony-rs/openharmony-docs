@@ -1,10 +1,10 @@
 # AccessibilityElement
 
-无障碍节点元素。在调用 **AccessibilityElement** 的 API 之前，应该调用 [AccessibilityExtensionContext.getAccessibilityFocusedElement()](arkts-accessibility-accessibilityextensioncontext-c-sys.md#getAccessibilityFocusedElement) 或 [AccessibilityExtensionContext.getRootInActiveWindow()](arkts-accessibility-accessibilityextensioncontext-c-sys.md#getRootInActiveWindow) 来获取一个 **AccessibilityElement** 实例。
+无障碍节点元素，提供查询父/子元素、按内容或焦点方向查找元素、执行无障碍操作等能力，适用于无障碍辅助应用需要与界面节点交互和操作的场景。 调用AccessibilityElement的方法前，先通过 [AccessibilityExtensionContext.getFocusElement()](arkts-accessibility-accessibilityextensioncontext-c.md#getfocuselement) 或 [AccessibilityExtensionContext.getWindowRootElement()](arkts-accessibility-accessibilityextensioncontext-c.md#getwindowrootelement) 获取AccessibilityElement实例。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,11 +18,11 @@
 actionNames(callback: AsyncCallback<Array<string>>): void
 ```
 
-获取节点元素支持的所有操作名称，使用callback异步回调。
+获取节点元素支持的所有操作名称。使用callback异步回调。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 12
 
@@ -34,7 +34,7 @@ actionNames(callback: AsyncCallback<Array<string>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回节点元素支持的所有操作名称。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;string&gt;&gt; | 是 | 回调函数。当获取操作名称成功，err为undefined，data为节点元素支持的所有操作名称；否则为错误对象。 |
 
 ## 示例
 
@@ -57,11 +57,11 @@ rootElement.actionNames((err: BusinessError, data: string[]) => {
 actionNames(): Promise<Array<string>>
 ```
 
-获取节点元素支持的所有操作名称，使用Promise异步回调。
+获取节点元素支持的所有操作名称。使用Promise异步回调。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 12
 
@@ -94,11 +94,11 @@ rootElement.actionNames().then((data: string[]) => {
 attributeNames<T extends keyof ElementAttributeValues>(callback: AsyncCallback<Array<T>>): void
 ```
 
-获取节点元素的所有属性名称，使用callback异步回调。
+获取节点元素的所有属性名称。使用callback异步回调。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 12
 
@@ -110,7 +110,7 @@ attributeNames<T extends keyof ElementAttributeValues>(callback: AsyncCallback<A
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;T&gt;&gt; | 是 | 回调函数，返回节点元素的所有属性名称。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;T&gt;&gt; | 是 | 回调函数。当获取属性名称成功，err为undefined，data为节点元素的所有属性名称；否则为错误对象。 |
 
 ## 示例
 
@@ -134,11 +134,11 @@ rootElement.attributeNames((err: BusinessError, data: ElementAttributeKeys[]) =>
 attributeNames<T extends keyof ElementAttributeValues>(): Promise<Array<T>>
 ```
 
-获取节点元素的所有属性名称，使用Promise异步回调。
+获取节点元素的所有属性名称。使用Promise异步回调。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 12
 
@@ -179,7 +179,7 @@ attributeValue<T extends keyof ElementAttributeValues>(
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 12
 
@@ -192,7 +192,7 @@ attributeValue<T extends keyof ElementAttributeValues>(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | attributeName | T | 是 | 表示属性的名称。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;ElementAttributeValues[T]&gt; | 是 | 回调函数，返回根据节点属性名称获取的属性值。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;ElementAttributeValues[T]&gt; | 是 | 回调函数。当获取属性值成功，err为undefined，data为对应属性的值；否则为错误对象。 |
 
 **错误码：**
 
@@ -225,11 +225,11 @@ rootElement.attributeValue(attributeName, (err: BusinessError, data: string) => 
 attributeValue<T extends keyof ElementAttributeValues>(attributeName: T): Promise<ElementAttributeValues[T]>
 ```
 
-根据属性名称获取属性值，使用Promise异步回调。
+根据属性名称获取属性值。使用Promise异步回调。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 12
 
@@ -282,7 +282,7 @@ findElement(type: 'content', condition: string, callback: AsyncCallback<Array<Ac
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 12
 
@@ -294,9 +294,9 @@ findElement(type: 'content', condition: string, callback: AsyncCallback<Array<Ac
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'content' | 是 | 固定为'content',表示查找的类型为节点元素内容。 |
-| condition | string | 是 | 表示查找的条件。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md)&gt;&gt; | 是 | 回调函数，返回满足指定查询关键字的所有节点元素。 |
+| type | 'content' | 是 | 固定为'content'，表示查找的类型为节点元素内容。 |
+| condition | string | 是 | 表示查找的关键字条件，用于匹配节点元素的文本内容。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md)&gt;&gt; | 是 | 回调函数。当查找节点元素成功，err为undefined，data为满足指定查询关键字的所有节点元 素；否则为错误对象。 |
 
 **错误码：**
 
@@ -328,11 +328,11 @@ rootElement.findElement('content', condition, (err: BusinessError, data: Accessi
 findElement(type: 'content', condition: string): Promise<Array<AccessibilityElement>>
 ```
 
-根据节点内容查询所有节点元素，使用Promise异步回调。
+根据节点内容查询所有节点元素。使用Promise异步回调。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 12
 
@@ -344,8 +344,8 @@ findElement(type: 'content', condition: string): Promise<Array<AccessibilityElem
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'content' | 是 | 固定为'content', 表示查找的类型为节点元素内容。 |
-| condition | string | 是 | 表示查找的条件。 |
+| type | 'content' | 是 | 固定为'content'，表示查找的类型为节点元素内容。 |
+| condition | string | 是 | 表示查找的关键字条件，用于匹配节点元素的文本内容。 |
 
 **返回值：**
 
@@ -381,11 +381,11 @@ rootElement.findElement('content', condition).then((data: AccessibilityElement[]
 findElement(type: 'focusType', condition: FocusType, callback: AsyncCallback<AccessibilityElement>): void
 ```
 
-根据焦点元素类型查询节点元素，使用callback异步回调。
+根据焦点元素类型查询节点元素。使用callback异步回调。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 12
 
@@ -399,7 +399,7 @@ findElement(type: 'focusType', condition: FocusType, callback: AsyncCallback<Acc
 | --- | --- | --- | --- |
 | type | 'focusType' | 是 | 固定为'focusType'，表示查询的类型为节点的焦点元素类型。 |
 | condition | [FocusType](arkts-accessibility-focustype-t.md) | 是 | 表示查询焦点元素的类型。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md)&gt; | 是 | 回调函数，返回满足指定查询焦点元素类型的节点元素。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md)&gt; | 是 | 回调函数。当查找节点元素成功，err为undefined，data为满足指定查询焦点元素类型的节点元素；否则为错误 对象。 |
 
 **错误码：**
 
@@ -431,11 +431,11 @@ rootElement.findElement('focusType', condition, (err: BusinessError, data: Acces
 findElement(type: 'focusType', condition: FocusType): Promise<AccessibilityElement>
 ```
 
-根据焦点元素类型查询节点元素，使用Promise异步回调。
+根据焦点元素类型查询节点元素。使用Promise异步回调。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 12
 
@@ -484,11 +484,11 @@ rootElement.findElement('focusType', condition).then((data: AccessibilityElement
 findElement(type: 'focusDirection', condition: FocusDirection, callback: AsyncCallback<AccessibilityElement>): void
 ```
 
-根据下一焦点元素方向查询节点元素，使用callback异步回调。
+根据下一焦点元素方向查询节点元素。使用callback异步回调。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 12
 
@@ -500,9 +500,9 @@ findElement(type: 'focusDirection', condition: FocusDirection, callback: AsyncCa
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'focusDirection' | 是 | 固定为'focusDirection', 表示查询的类型为节点的下一焦点元素方向。 |
-| condition | [FocusDirection](arkts-accessibility-focusdirection-t.md) | 是 | 表示下一查询焦点元素的方向。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md)&gt; | 是 | 回调函数，返回满足指定查询下一焦点元素方向的节点元素。 |
+| type | 'focusDirection' | 是 | 固定为'focusDirection'，表示查询的类型为节点的下一焦点元素方向。 |
+| condition | [FocusDirection](arkts-accessibility-focusdirection-t.md) | 是 | 表示查询下一焦点元素的方向。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md)&gt; | 是 | 回调函数。当查找节点元素成功，err为undefined，data为满足指定查询下一焦点元素方向的节点元素；否则为 错误对象。 |
 
 **错误码：**
 
@@ -534,11 +534,11 @@ rootElement.findElement('focusDirection', condition, (err: BusinessError, data: 
 findElement(type: 'focusDirection', condition: FocusDirection): Promise<AccessibilityElement>
 ```
 
-根据下一焦点元素方向查询节点元素，使用Promise异步回调。
+根据下一焦点元素方向查询节点元素。使用Promise异步回调。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 12
 
@@ -587,11 +587,11 @@ rootElement.findElement('focusDirection', condition).then((data: AccessibilityEl
 performAction(actionName: string, parameters: object, callback: AsyncCallback<void>): void
 ```
 
-根据操作名称执行某个操作，使用callback异步回调。
+对无障碍节点元素执行指定操作。使用callback异步回调。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 12
 
@@ -603,9 +603,9 @@ performAction(actionName: string, parameters: object, callback: AsyncCallback<vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| actionName | string | 是 | 表示属性的名称，取值参考[Action](arkts-accessibility-accessibility-action-t.md#Action)。 |
-| parameters | object | 是 | 表示执行操作时所需要的参数；默认为空。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，表示执行指定操作的回调。 |
+| actionName | string | 是 | 表示操作的名称，取值参考[Action](arkts-accessibility-accessibility-action-t.md#action)。 |
+| parameters | object | 是 | 表示执行操作时所需要的参数。不同操作类型所需的参数结构不同，具体参数格式参见各Action的说明，如setSelection需传入selectTextBegin、 selectTextEnd、selectTextInForWard参数，setCursorPosition需传入offset参数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当执行操作成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -638,11 +638,11 @@ rootElement.performAction(actionName, parameters, (err: BusinessError) => {
 performAction(actionName: string, parameters?: object): Promise<void>
 ```
 
-根据操作名称执行某个操作，使用Promise异步回调。
+对无障碍节点元素执行指定操作。使用Promise异步回调。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 12
 
@@ -654,8 +654,8 @@ performAction(actionName: string, parameters?: object): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| actionName | string | 是 | 表示属性的名称，取值参考[Action](arkts-accessibility-accessibility-action-t.md#Action)。 |
-| parameters | object | 否 | 表示执行操作时所需要的参数；默认为空。 |
+| actionName | string | 是 | 表示操作的名称，取值参考[Action](arkts-accessibility-accessibility-action-t.md#action)。 |
+| parameters | object | 否 | 表示执行操作时所需要的参数。不同操作需要的参数键名和值类型不同，具体取值原则参见各Action定义，如setSelection需传入selectTextBegin、 selectTextEnd、selectTextInForWard参数，setCursorPosition需传入offset参数。不传则默认为空。 |
 
 **返回值：**
 
@@ -726,11 +726,11 @@ rootElement.performAction('setCursorPosition', {
 performAction(actionName: string, callback: AsyncCallback<void>): void
 ```
 
-根据操作名称执行某个操作，使用callback异步回调。
+对无障碍节点元素执行指定操作。使用callback异步回调。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 12
 
@@ -742,8 +742,8 @@ performAction(actionName: string, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| actionName | string | 是 | 表示属性的名称，取值参考[Action](arkts-accessibility-accessibility-action-t.md#Action)。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，表示执行指定操作的回调。 |
+| actionName | string | 是 | 表示操作的名称，取值参考[Action](arkts-accessibility-accessibility-action-t.md#action)。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当执行操作成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 

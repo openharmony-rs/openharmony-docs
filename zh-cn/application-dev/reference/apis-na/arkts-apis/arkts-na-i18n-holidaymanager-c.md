@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ constructor(icsPath: String)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -55,7 +55,7 @@ getHolidayInfoItemArray(year?: int): Array<HolidayInfoItem>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -69,13 +69,13 @@ getHolidayInfoItemArray(year?: int): Array<HolidayInfoItem>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| year | int | 否 | 年，例如2023。 &lt;br&gt;默认值：当前年份。 |
+| year | int | 否 | 年，例如2023。 <br>默认值：当前年份。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;[HolidayInfoItem](../../apis-localization-kit/arkts-apis/arkts-localization-i18n-holidayinfoitem-i.md)&gt; | 返回节假日信息列表。 |
+| Array&lt;[HolidayInfoItem](arkts-na-i18n-holidayinfoitem-i.md)&gt; | 返回节假日信息列表。 |
 
 **错误码：**
 
@@ -94,7 +94,7 @@ isHoliday(date?: Date): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -108,7 +108,7 @@ isHoliday(date?: Date): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| date | Date | 否 | 时间日期。 &lt;br&gt;**说明：** &lt;br&gt;月份从0开始计数，0表示一月。 &lt;br&gt;默认值：当前日期。 |
+| date | Date | 否 | 时间日期。 <br>**说明：** <br>月份从0开始计数，0表示一月。 <br>默认值：当前日期。 |
 
 **返回值：**
 

@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,11 +22,11 @@ URL的构造函数。与parseURL方法功能相同，但parseURL为静态工厂�
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [parseURL](#parseURL)
+**替代接口：** [parseURL](#parseurl)
 
 <!--Device-URL-constructor(url: string, base?: string | URL)--><!--Device-URL-constructor(url: string, base?: string | URL)-End-->
 
@@ -36,8 +36,25 @@ URL的构造函数。与parseURL方法功能相同，但parseURL为静态工厂�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| url | string | 是 | 一个表示绝对URL或相对URL的字符串，必须是合法的URL格式。 &lt;br/&gt;如果url是相对URL，则需要指定base，用于解析最终的URL。 &lt;br/&gt;如果 url是绝对URL，则给定的base将不会生效。 |
-| base | string \| URL | 否 | 入参字符串或者对象，默认值是undefined。&lt;br&gt;- string：表示基础URL的字符串， 当url为相对URL时需为合法URL格式。&lt;br&gt;- URL：已解析的URL对象，用作相对URL解析的基础地址。 |
+| url | string | 是 | 一个表示绝对URL或相对URL的字符串，必须是合法的URL格式。 <br/>如果url是相对URL，则需要指定base，用于解析最终的URL。 <br/>如果 url是绝对URL，则给定的base将不会生效。 |
+| base | string \| URL | 否 | 入参字符串或者对象，默认值是undefined。<br>- string：表示基础URL的字符串， 当url为相对URL时需为合法URL格式。<br>- URL：已解析的URL对象，用作相对URL解析的基础地址。 |
+
+## 示例
+
+```TypeScript
+let baseUrl = 'https://username:password@host:8080';
+let rootPathUrl = new url.URL("/", baseUrl); // Output 'https://username:password@host:8080/';
+let absoluteUrl = new url.URL(baseUrl); // Output 'https://username:password@host:8080/';
+new url.URL('path/path1', absoluteUrl); // Output 'https://username:password@host:8080/path/path1';
+let relativePathUrl = new url.URL('/path/path1', absoluteUrl);  // Output 'https://username:password@host:8080/path/path1'; 
+new url.URL('/path/path1', relativePathUrl); // Output 'https://username:password@host:8080/path/path1';
+new url.URL('/path/path1', rootPathUrl); // Output 'https://username:password@host:8080/path/path1';
+new url.URL('/path/path1', "https://www.exampleUrl/fr-FR/toot"); // Output https://www.exampleUrl/path/path1
+new url.URL('/path/path1', ''); // Raises a TypeError exception as '' is not a valid URL
+new url.URL('/path/path1'); // Raises a TypeError exception as '/path/path1' is not a valid URL
+new url.URL('https://www.example.com', ); // Output https://www.example.com/
+new url.URL('https://www.example.com', absoluteUrl); // Output https://www.example.com/
+```
 
 ## constructor
 
@@ -49,7 +66,7 @@ URL的无参构造函数，不建议直接调用。请使用parseURL方法创建
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -75,7 +92,7 @@ static parseURL(url: string, base?: string | URL): URL
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -89,8 +106,8 @@ static parseURL(url: string, base?: string | URL): URL
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| url | string | 是 | 一个表示绝对URL或相对URL的字符串。 &lt;br/&gt;如果 url 是相对URL，则需要指定 base，用于解析最终的URL。 &lt;br/&gt;如果 url 是绝对URL，则给定的 base 将不会生效。 |
-| base | string \| URL | 否 | 入参字符串或者对象，默认值是undefined。&lt;br/&gt;- string：字符串。当第一个参数是相对URL时，该参数需符合URL标准。&lt;br/&gt;- URL：URL对象。&lt;br/&gt;- 在url是相对URL时使用，url为绝对URL时此参数不会生效。 |
+| url | string | 是 | 一个表示绝对URL或相对URL的字符串。 <br/>如果 url 是相对URL，则需要指定 base，用于解析最终的URL。 <br/>如果 url 是绝对URL，则给定的 base 将不会生效。 |
+| base | string \| URL | 否 | 入参字符串或者对象，默认值是undefined。<br/>- string：字符串。当第一个参数是相对URL时，该参数需符合URL标准。<br/>- URL：URL对象。<br/>- 在url是相对URL时使用，url为绝对URL时此参数不会生效。 |
 
 **返回值：**
 
@@ -131,7 +148,7 @@ toJSON(): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -166,7 +183,7 @@ toString(): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -201,7 +218,7 @@ hash: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -223,7 +240,7 @@ host: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -245,7 +262,7 @@ hostname: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -267,7 +284,7 @@ href: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -289,7 +306,7 @@ readonly origin: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -311,7 +328,7 @@ readonly params: URLParams
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -333,7 +350,7 @@ password: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -355,7 +372,7 @@ pathname: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -377,7 +394,7 @@ port: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -399,7 +416,7 @@ protocol: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -421,7 +438,7 @@ search: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -443,11 +460,11 @@ readonly searchParams: URLSearchParams
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [URLParams](arkts-arkts-url-urlparams-c.md#URLParams)
+**替代接口：** [URLParams](arkts-arkts-url-urlparams-c.md#urlparams)
 
 <!--Device-URL-readonly searchParams: URLSearchParams--><!--Device-URL-readonly searchParams: URLSearchParams-End-->
 
@@ -465,7 +482,7 @@ username: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 

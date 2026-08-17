@@ -14,7 +14,7 @@ export declare function Button(
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -28,8 +28,8 @@ export declare function Button(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| label | [ResourceStr](../../apis-arkui/arkts-apis/arkts-arkui-resourcestr-t.md) | 是 | 按钮文本内容。&lt;br/&gt;**说明：** 当文本字符的长度超过按钮本身的宽度时，文本将会被截断。 |
-| options | [ButtonOptions](arkts-na-button-buttonoptions-i.md) | 否 | 配置按钮的显示样式。&lt;br/&gt; 未设置时，则按照ButtonOptions中各参数的默认值配置。 |
+| label | [ResourceStr](../../apis-arkui/arkts-apis/arkts-arkui-resourcestr-t.md) | 是 | 按钮文本内容。<br/>**说明：** 当文本字符的长度超过按钮本身的宽度时，文本将会被截断。 |
+| options | [ButtonOptions](arkts-na-button-buttonoptions-i.md) | 否 | 配置按钮的显示样式。<br/> 未设置时，则按照ButtonOptions中各参数的默认值配置。 |
 | content_ | CustomBuilder | 否 | container |
 
 **返回值：**
@@ -53,7 +53,7 @@ Defines Button Component.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

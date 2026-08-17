@@ -1,10 +1,10 @@
 # OverlayManager
 
-提供绘制浮层的能力。 > **说明：** > > - 本Class首批接口从API version 12开始支持。 > - 以下API需先使用UIContext中的[getOverlayManager()](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#getOverlayManager)方法获取到 > OverlayManager对象，再通过该对象调用对应方法。 > > - OverlayManager上节点的层级在Page页面层级之上，在Dialog、Popup、Menu、BindSheet、BindContentCover和Toast等之下。 > > - OverlayManager上节点安全区域内外的绘制方式与Page一致，键盘避让方式与Page一致。 > > - 与OverlayManager相关的属性推荐采用AppStorage来进行应用全局存储，以免切换页面后属性值发生变化从而导致业务错误。
+提供绘制浮层的能力。 > **说明：** > > - 本Class首批接口从API version 12开始支持。 > - 以下API需先使用UIContext中的[getOverlayManager()](arkts-na-arkui-uicontext-uicontext-c.md#getoverlaymanager)方法获取到 > OverlayManager对象，再通过该对象调用对应方法。 > > - OverlayManager上节点的层级在Page页面层级之上，在Dialog、Popup、Menu、BindSheet、BindContentCover和Toast等之下。 > > - OverlayManager上节点安全区域内外的绘制方式与Page一致，键盘避让方式与Page一致。 > > - 与OverlayManager相关的属性推荐采用AppStorage来进行应用全局存储，以免切换页面后属性值发生变化从而导致业务错误。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ addComponentContent<T>(content: ComponentContent<T>, index?: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -36,7 +36,7 @@ addComponentContent<T>(content: ComponentContent<T>, index?: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | ComponentContent&lt;T&gt; | 是 | 在OverlayManager的指定节点上添加此content。 &lt;br&gt;**说明：** &lt;br/&gt; 新增的节点默认处于页面居中，按层级堆叠。 |
+| content | ComponentContent&lt;T&gt; | 是 | 在OverlayManager的指定节点上添加此content。 <br>**说明：** <br/> 新增的节点默认处于页面居中，按层级堆叠。 |
 | index | int | 否 |  |
 
 ## addComponentContentWithOrder
@@ -49,7 +49,7 @@ addComponentContentWithOrder<T>(content: ComponentContent<T>, levelOrder?: Level
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -63,7 +63,7 @@ addComponentContentWithOrder<T>(content: ComponentContent<T>, levelOrder?: Level
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | ComponentContent&lt;T&gt; | 是 | 在OverlayManager的指定节点上添加此content。 &lt;br&gt;**说明：** &lt;br/&gt; 新增的节点默认处于页面居中位置，按层级堆叠。 |
+| content | ComponentContent&lt;T&gt; | 是 | 在OverlayManager的指定节点上添加此content。 <br>**说明：** <br/> 新增的节点默认处于页面居中位置，按层级堆叠。 |
 | levelOrder | [LevelOrder](arkts-na-promptaction-levelorder-c.md) | 否 |  |
 
 ## hideAllComponentContents
@@ -76,7 +76,7 @@ hideAllComponentContents(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -96,7 +96,7 @@ hideComponentContent<T>(content: ComponentContent<T>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -122,7 +122,7 @@ openOrderOverlay(content: ComponentContent<Object>, options?: OrderOverlayOption
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -137,7 +137,7 @@ openOrderOverlay(content: ComponentContent<Object>, options?: OrderOverlayOption
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | content | ComponentContent&lt;Object&gt; | 是 | 该内容将被添加到OverlayManager中。 |
-| options | [OrderOverlayOptions](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-orderoverlayoptions-i.md) | 否 | Options for the overlay. |
+| options | [OrderOverlayOptions](arkts-na-arkui-uicontext-orderoverlayoptions-i.md) | 否 | Options for the overlay. |
 
 **返回值：**
 
@@ -161,7 +161,7 @@ removeComponentContent<T>(content: ComponentContent<T>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -187,7 +187,7 @@ showAllComponentContents(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -207,7 +207,7 @@ showComponentContent<T>(content: ComponentContent<T>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

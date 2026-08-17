@@ -4,7 +4,7 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ customComponentFreezeMode?: LazyForEachCustomComponentFreezeMode
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -48,7 +48,7 @@ LazyForEach的内存优化策略。该参数在创建LazyForEach时设定，不�
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -64,7 +64,7 @@ LazyForEach的内存优化策略。该参数在创建LazyForEach时设定，不�
 releaseStrategy?: LazyForEachReleaseStrategy
 ```
 
-LazyForEach缓存节点的资源释放策略。默认值：LazyForEachReleaseStrategy.BATCH。 &lt;br&gt;默认值:默认值：LazyForEachReleaseStrategy.BATCH。
+LazyForEach缓存节点的资源释放策略。默认值：LazyForEachReleaseStrategy.BATCH。 <br>默认值:默认值：LazyForEachReleaseStrategy.BATCH。
 
 **类型：** [LazyForEachReleaseStrategy](arkts-na-lazyforeach-lazyforeachreleasestrategy-e.md)
 
@@ -72,7 +72,7 @@ LazyForEach缓存节点的资源释放策略。默认值：LazyForEachReleaseStr
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

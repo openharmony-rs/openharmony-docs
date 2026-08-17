@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ get(): Promise<T>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -66,11 +66,11 @@ config.highContrastText.get().then((data: boolean) => {
 get(callback: AsyncCallback<T>): void
 ```
 
-获取属性，使用callback异步回调。
+获取属性。使用callback异步回调。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -84,7 +84,7 @@ get(callback: AsyncCallback<T>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;T&gt; | 是 | 回调函数，返回属性值。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;T&gt; | 是 | 回调函数。当获取属性成功，err为undefined，data为属性值；否则为错误对象。 |
 
 **错误码：**
 
@@ -130,11 +130,11 @@ config.highContrastText.get((err: BusinessError | null, data: boolean | undefine
 off(callback?: Callback<T>): void
 ```
 
-取消属性变化监听，使用callback异步回调。
+取消属性变化监听。使用callback异步回调。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -177,11 +177,11 @@ config.highContrastText.off(callback);
 on(callback: Callback<T>): void
 ```
 
-添加属性变化监听，使用callback异步回调。
+添加属性变化监听。使用callback异步回调。 需与[off](#offcallbackt)配对使用，在不需要监听时调用off取消注册，避免资源泄漏。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -227,7 +227,7 @@ set(value: T): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -243,7 +243,7 @@ set(value: T): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | T | 是 | 设置的属性值。 |
+| value | T | 是 | 设置的属性值，值类型与对应Config属性的类型一致。 |
 
 **返回值：**
 
@@ -280,11 +280,11 @@ config.highContrastText.set(value).then(() => {
 set(value: T, callback: AsyncCallback<void>): void
 ```
 
-设置属性，使用callback异步回调。
+设置属性。使用callback异步回调。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -300,8 +300,8 @@ set(value: T, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | T | 是 | 设置的属性值。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。 |
+| value | T | 是 | 设置的属性值，值类型与对应Config属性的类型一致。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当设置属性成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 

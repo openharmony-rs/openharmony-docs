@@ -20,9 +20,9 @@ typedef struct Camera_Rect {...} Camera_Rect
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t topLeftX |  |
-| int32_t topLeftY |  |
-| int32_t width |  |
-| int32_t height |  |
+| int32_t topLeftX | 矩形左上角的X坐标。<br>取值范围：[0, 预览流宽度]，例如对于1920*1440的预览流，取值范围为[0,1920]。<br>**起始版本：** 11 |
+| int32_t topLeftY | 矩形左上角的Y坐标。<br>取值范围：[0, 预览流高度]，例如对于 1920*1440 的预览流，取值范围为[0,1440]。<br>**起始版本：** 11 |
+| int32_t width | 矩形宽度。<br>该值不超过坐标系X轴的上限，即topLeftX的最大值。<br>**起始版本：** 11 |
+| int32_t height | 矩形高度。<br>该值不超过坐标系Y轴的上限，即topLeftY的最大值。<br>**起始版本：** 11 |
 
 

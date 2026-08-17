@@ -10,11 +10,11 @@ function queryMyCard(callback: AsyncCallback<Contact>): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** [queryMyCard](#queryMyCard)(context: Context, callback: AsyncCallback&lt;Contact&gt;)
+**替代接口：** [queryMyCard](#querymycard)(context: Context, callback: AsyncCallback&lt;Contact&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -55,7 +55,7 @@ function queryMyCard(context: Context, callback: AsyncCallback<Contact>): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -110,11 +110,11 @@ function queryMyCard(attrs: ContactAttributes, callback: AsyncCallback<Contact>)
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** [queryMyCard](#queryMyCard)(context: Context, attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;)
+**替代接口：** [queryMyCard](#querymycard)(context: Context, attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -158,7 +158,7 @@ function queryMyCard(context: Context, attrs: ContactAttributes, callback: Async
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -216,11 +216,11 @@ function queryMyCard(attrs?: ContactAttributes): Promise<Contact>
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** [queryMyCard](#queryMyCard)(context: Context, attrs?: ContactAttributes)
+**替代接口：** [queryMyCard](#querymycard)(context: Context, attrs?: ContactAttributes)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -265,7 +265,7 @@ function queryMyCard(context: Context, attrs?: ContactAttributes): Promise<Conta
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 

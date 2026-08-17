@@ -1,10 +1,10 @@
 # NodeRenderType
 
-节点渲染类型枚举。 > **说明：** > > - RENDER_TYPE_TEXTURE类型目前仅在[BuilderNode](arkts-arkui-buildernode-c.md#BuilderNode)持有组件树的根节点为自定义组件时以及 > [XComponentNode](arkts-arkui-xcomponentnode-c.md#XComponentNode)中设置生效。 > > - 在[BuilderNode](arkts-arkui-buildernode-c.md#BuilderNode)的情况下，目前在作为根节点的自定义组件中支持纹理导出的有以下组件：Badge > 、Blank、Button、 > CanvasGradient、CanvasPattern、 > CanvasRenderingContext2D、 > Canvas、CheckboxGroup、 > Checkbox、Circle、 > ColumnSplit、Column、 > ContainerSpan、 > Counter、DataPanel、 > Divider、Ellipse、 > Flex、Gauge、 > Hyperlink、ImageBitmap、 > ImageData、Image、 > Line、LoadingProgress、 > Marquee、Matrix2D、 > OffscreenCanvasRenderingContext2D、 > OffscreenCanvas、Path2D、 > Path、PatternLock、 > Polygon、Polyline、 > Progress、QRCode、 > Radio、Rating、 > Rect、 > RelativeContainer、 > RowSplit、Row、 > Shape、Slider、 > Span、Stack、 > TextArea、TextClock、 > TextInput、TextTimer、 > Text、Toggle、 > Video（不含全屏播放能力）、Web、 > XComponent。 > > - 从API version 12开始，新增以下组件支持纹理导出：DatePicker、 > ForEach、Grid、 > [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、 > LazyForEach、List、 > Scroll、Swiper、 > TimePicker、 > [@Component](../../../ui/state-management/arkts-create-custom-components.md#component)修饰的自定义组件、 > NodeContainer以及 > NodeContainer下挂载的FrameNode和 > [RenderNode](arkts-arkui-rendernode-c.md#RenderNode)。 > > - 使用方式可参考[同层渲染绘制](../../../web/web-same-layer.md)。
+节点渲染类型枚举。 > **说明：** > > - RENDER_TYPE_TEXTURE类型目前仅在[BuilderNode](../../apis-na/arkts-apis/arkts-na-buildernode-c.md#buildernode)持有组件树的根节点为自定义组件时以及 > [XComponentNode](arkts-arkui-xcomponentnode-c.md#xcomponentnode)中设置生效。 > > - 在[BuilderNode](../../apis-na/arkts-apis/arkts-na-buildernode-c.md#buildernode)的情况下，目前在作为根节点的自定义组件中支持纹理导出的有以下组件：Badge > 、Blank、Button、 > CanvasGradient、CanvasPattern、 > CanvasRenderingContext2D、 > Canvas、CheckboxGroup、 > Checkbox、Circle、 > ColumnSplit、Column、 > ContainerSpan、 > Counter、DataPanel、 > Divider、Ellipse、 > Flex、Gauge、 > Hyperlink、ImageBitmap、 > ImageData、Image、 > Line、LoadingProgress、 > Marquee、Matrix2D、 > OffscreenCanvasRenderingContext2D、 > OffscreenCanvas、Path2D、 > Path、PatternLock、 > Polygon、Polyline、 > Progress、QRCode、 > Radio、Rating、 > Rect、 > RelativeContainer、 > RowSplit、Row、 > Shape、Slider、 > Span、Stack、 > TextArea、TextClock、 > TextInput、TextTimer、 > Text、Toggle、 > Video（不含全屏播放能力）、Web、 > XComponent。 > > - 从API version 12开始，新增以下组件支持纹理导出：DatePicker、 > ForEach、Grid、 > [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、 > LazyForEach、List、 > Scroll、Swiper、 > TimePicker、 > [@Component](../../../ui/state-management/arkts-create-custom-components.md#component)修饰的自定义组件、 > NodeContainer以及 > NodeContainer下挂载的FrameNode和 > [RenderNode](../../apis-na/arkts-apis/arkts-na-rendernode-c.md#rendernode)。 > > - 使用方式可参考[同层渲染绘制](../../../web/web-same-layer.md)。
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ RENDER_TYPE_DISPLAY = 0
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -44,7 +44,7 @@ RENDER_TYPE_TEXTURE = 1
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 

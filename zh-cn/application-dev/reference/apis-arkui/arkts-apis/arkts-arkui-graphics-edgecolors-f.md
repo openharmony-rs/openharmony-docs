@@ -10,7 +10,7 @@ export function edgeColors(all: number): Edges<number>
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ export function edgeColors(all: number): Edges<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| all | number | 是 | 边框颜色，ARGB格式，示例：0xffff00ff。 &lt;br&gt;取值范围：[0, 0xffffffff] &lt;br&gt;超出范围时按边界值处理。 |
+| all | number | 是 | 边框颜色，ARGB格式，示例：0xffff00ff。 <br>取值范围：[0, 0xffffffff] <br>超出范围时按边界值处理。 |
 
 **返回值：**
 

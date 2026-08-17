@@ -6,11 +6,11 @@
 function preQuerySync(query: AssetMap): Uint8Array
 ```
 
-查询的预处理，用于需要用户认证的关键资产。在用户认证成功后，应当随后调用[asset.querySync](arkts-assetstore-asset-querysync-f.md#querySync)、 [asset.postQuerySync](arkts-assetstore-asset-postquerysync-f.md#postQuerySync)。使用同步方式返回结果。
+查询的预处理，用于需要用户认证的关键资产。在用户认证成功后，应当随后调用[asset.querySync](arkts-assetstore-asset-querysync-f.md#querysync)、 [asset.postQuerySync](arkts-assetstore-asset-postquerysync-f.md#postquerysync)。使用同步方式返回结果。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -30,7 +30,7 @@ function preQuerySync(query: AssetMap): Uint8Array
 
 | 类型 | 说明 |
 | --- | --- |
-| Uint8Array | 挑战值。 &lt;br&gt;**说明：** 挑战值用于后续用户认证。 |
+| Uint8Array | 挑战值。 <br>**说明：** 挑战值用于后续用户认证。 |
 
 **错误码：**
 
@@ -47,7 +47,7 @@ function preQuerySync(query: AssetMap): Uint8Array
 | [24000005](../errorcode-asset.md#24000005-锁屏状态不匹配) | The screen lock status does not match. |
 | [24000002](../errorcode-asset.md#24000002-未找到关键资产) | The asset is not found. |
 | [24000001](../errorcode-asset.md#24000001-关键资产服务不可用) | The ASSET service is unavailable. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types. 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [24000016](../errorcode-asset.md#24000016-缓存数量超限) | The cache exceeds the limit. |
 | [24000017](../errorcode-asset.md#24000017-该子功能不支持) | The capability is not supported. |
 

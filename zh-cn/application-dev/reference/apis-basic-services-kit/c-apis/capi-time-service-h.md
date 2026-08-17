@@ -2,7 +2,7 @@
 
 ## 概述
 
-Declares the APIs for obtaining the time zone information.
+声明获取时间时区信息的API。
 
 **库：** libtime_service_ndk.so
 
@@ -43,8 +43,8 @@ enum TimeService_ErrCode
 | 枚举项 | 描述 |
 | -- | -- |
 | TIMESERVICE_ERR_OK = 0 | 成功。 |
-| TIMESERVICE_ERR_INTERNAL_ERROR = 13000001 | 获取系统参数失败。 |
-| TIMESERVICE_ERR_INVALID_PARAMETER = 13000002 | 无效的参数。 |
+| TIMESERVICE_ERR_INTERNAL_ERROR = 13000001 | 获取系统参数失败。请稍后重试，若问题持续存在请检查系统服务状态。 |
+| TIMESERVICE_ERR_INVALID_PARAMETER = 13000002 | 无效的参数。请检查timeZone是否为NULL指针，或时区名称（不包括结束字符（'\0'））的大小是否大于或等于len。 |
 
 
 ## 函数说明
@@ -67,13 +67,13 @@ TimeService_ErrCode OH_TimeService_GetTimeZone(char *timeZone, uint32_t len)
 
 | 参数项 | 描述 |
 | -- | -- |
-| char *timeZone | 用于写入一个时区ID字符串的缓冲区，成功时写入当前系统时区ID字符串，失败时写入空字符串，字符串以'\0'结尾。 |
-| uint32_t len | 参数timeZone所指向缓冲区的容量，单位为字节，包含结束字符'\0'。当前时区字符串没有最大长度规格，建议分配至少31字节。 |
+| char *timeZone | 时区ID字符数组，成功时写入当前系统时区ID字符串，当timeZone不为NULL且操作失败时写入空字符串，字符串以'\0'结尾。 |
+| uint32_t len | 时区ID字符数组分配的内存大小，当前时区字符串没有最大长度规格，建议申请足够多的内存，至少不能低于31字节。当len小于或等于实际时区字符串长度（不含结束符）时，返回TIMESERVICE_ERR_INVALID_PARAMETER。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [TimeService_ErrCode](capi-time-service-h.md#timeservice_errcode) | 返回`TIMESERVICE_ERR_OK`表示成功。<br>     <br>返回`TIMESERVICE_ERR_INTERNAL_ERROR`表示获取系统参数失败。<br>     <br>返回`TIMESERVICE_ERR_INVALID_PARAMETER`表示timeZone为NULL指针或时区名称（不包括结束字符（'\0'））的大小大于或等于len。 |
+| [TimeService_ErrCode](capi-time-service-h.md#timeservice_errcode) | 返回`TIMESERVICE_ERR_OK`表示成功。<br>     <br>返回`TIMESERVICE_ERR_INTERNAL_ERROR`表示获取系统参数失败。请稍后重试，若问题持续存在请检查系统服务状态。<br>     <br>返回`TIMESERVICE_ERR_INVALID_PARAMETER`表示timeZone为NULL指针或时区名称（不包括结束字符（'\0'））的大小大于或等于len。<br>     请确保timeZone为有效指针且len大于时区ID的实际长度。 |
 
 

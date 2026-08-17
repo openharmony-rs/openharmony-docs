@@ -4,7 +4,7 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ SUCCESS = 0
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -44,7 +44,7 @@ TEMPORARY_AUTHORIZATION_FAILED = 1
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -62,11 +62,11 @@ TEMPORARY_AUTHORIZATION_FAILED = 1
 CANCELED_BY_USER = 2
 ```
 
-保存控件点击后，弹窗中用户取消授权。仅在调用[userCancelEvent](arkts-arkui-savebutton-attribute.md#userCancelEvent)并设置参数为true时，回调结果中才会返回该值。
+保存控件点击后，弹窗中用户取消授权。仅在调用[userCancelEvent](arkts-arkui-savebutton-attribute.md#usercancelevent)并设置参数为true时，回调结果中才会返回该值。
 
 **起始版本：** 21
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+**ArkTS模式：** 起始版本为21。
 
 **废弃版本：** -1
 

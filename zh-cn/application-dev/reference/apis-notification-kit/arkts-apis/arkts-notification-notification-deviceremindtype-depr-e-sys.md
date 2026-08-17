@@ -4,11 +4,11 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [DeviceRemindType](arkts-notification-notificationmanager-deviceremindtype-e-sys.md#DeviceRemindType（系统接口）)
+**替代接口：** [DeviceRemindType](arkts-notification-notificationmanager-deviceremindtype-e-sys.md#deviceremindtype系统接口)
 
 <!--Device-notification-export enum DeviceRemindType--><!--Device-notification-export enum DeviceRemindType-End-->
 
@@ -26,11 +26,11 @@ IDLE_DONOT_REMIND = 0
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [IDLE_DONOT_REMIND](arkts-notification-notificationmanager-deviceremindtype-e-sys.md#IDLE_DONOT_REMIND)
+**替代接口：** [IDLE_DONOT_REMIND](arkts-notification-notificationmanager-deviceremindtype-e-sys.md#idledonotremind)
 
 <!--Device-DeviceRemindType-IDLE_DONOT_REMIND = 0--><!--Device-DeviceRemindType-IDLE_DONOT_REMIND = 0-End-->
 
@@ -48,11 +48,11 @@ IDLE_REMIND = 1
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [IDLE_REMIND](arkts-notification-notificationmanager-deviceremindtype-e-sys.md#IDLE_REMIND)
+**替代接口：** [IDLE_REMIND](arkts-notification-notificationmanager-deviceremindtype-e-sys.md#idleremind)
 
 <!--Device-DeviceRemindType-IDLE_REMIND = 1--><!--Device-DeviceRemindType-IDLE_REMIND = 1-End-->
 
@@ -70,11 +70,11 @@ ACTIVE_DONOT_REMIND = 2
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [ACTIVE_DONOT_REMIND](arkts-notification-notificationmanager-deviceremindtype-e-sys.md#ACTIVE_DONOT_REMIND)
+**替代接口：** [ACTIVE_DONOT_REMIND](arkts-notification-notificationmanager-deviceremindtype-e-sys.md#activedonotremind)
 
 <!--Device-DeviceRemindType-ACTIVE_DONOT_REMIND = 2--><!--Device-DeviceRemindType-ACTIVE_DONOT_REMIND = 2-End-->
 
@@ -92,11 +92,11 @@ ACTIVE_REMIND = 3
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [ACTIVE_REMIND](arkts-notification-notificationmanager-deviceremindtype-e-sys.md#ACTIVE_REMIND)
+**替代接口：** [ACTIVE_REMIND](arkts-notification-notificationmanager-deviceremindtype-e-sys.md#activeremind)
 
 <!--Device-DeviceRemindType-ACTIVE_REMIND = 3--><!--Device-DeviceRemindType-ACTIVE_REMIND = 3-End-->
 

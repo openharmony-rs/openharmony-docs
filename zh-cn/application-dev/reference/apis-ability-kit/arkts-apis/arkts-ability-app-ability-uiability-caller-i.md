@@ -1,10 +1,10 @@
 # Caller
 
-调用方Caller UIAbility通过[startAbilityByCall](arkts-ability-uiabilitycontext-c.md#startAbilityByCall)接口 拉起目标Callee UIAbility，目标UIAbility启动成功后，返回一个Caller对象给调用方进行通信。
+调用方Caller UIAbility通过[startAbilityByCall](arkts-ability-uiabilitycontext-c.md#startabilitybycall)接口 拉起目标Callee UIAbility，目标UIAbility启动成功后，返回一个Caller对象给调用方进行通信。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ Caller UIAbility向Callee UIAbility发送双方约定好的序列化的数据。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -185,7 +185,7 @@ Caller UIAbility向Callee UIAbility发送消息，Callee UIAbility处理完成�
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -350,11 +350,11 @@ export default class MainUIAbility extends UIAbility {
 offRelease(callback: OnReleaseCallback): void
 ```
 
-取消注册Callee UIAbility断开的通知，与[Caller.onRelease](#onRelease)是反向操作。
+取消注册Callee UIAbility断开的通知，与[Caller.onRelease](#onrelease)是反向操作。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -414,11 +414,11 @@ export default class MainUIAbility extends UIAbility {
 offRelease(): void
 ```
 
-取消注册Callee UIAbility断开的通知，与[Caller.onRelease](#onRelease)是反向操作。
+取消注册Callee UIAbility断开的通知，与[Caller.onRelease](#onrelease)是反向操作。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -472,11 +472,11 @@ export default class MainUIAbility extends UIAbility {
 off(type: 'release', callback: OnReleaseCallback): void
 ```
 
-取消注册Callee UIAbility断开通知的监听，与[on('release')](#on_release)是反向操作，当前暂未支持。
+取消注册Callee UIAbility断开通知的监听，与[on('release')](#onrelease)是反向操作，当前暂未支持。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -537,11 +537,11 @@ export default class MainUIAbility extends UIAbility {
 off(type: 'release'): void
 ```
 
-取消注册Callee UIAbility断开通知的监听，与[Caller.on('release')](#on_release)是反向操作，当前暂未支持。
+取消注册Callee UIAbility断开通知的监听，与[Caller.on('release')](#onrelease)是反向操作，当前暂未支持。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -606,7 +606,7 @@ Caller UIAbility可使用该接口注册与Callee UIAbility连接断开通知的
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -669,7 +669,7 @@ onRemoteStateChange(callback: OnRemoteStateChangeCallback): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -735,7 +735,7 @@ Caller UIAbility可使用该接口注册与Callee UIAbility连接断开通知的
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -800,7 +800,7 @@ Caller主动释放与Callee UIAbility的连接。调用该接口后，Caller不�
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

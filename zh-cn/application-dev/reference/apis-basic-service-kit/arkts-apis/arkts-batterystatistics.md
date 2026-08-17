@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -21,12 +21,12 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [getAppPowerPercent](arkts-basicservices-batterystats-getapppowerpercent-f-sys.md#getAppPowerPercent) | 获取应用的耗电百分比。 |
-| [getAppPowerValue](arkts-basicservices-batterystats-getapppowervalue-f-sys.md#getAppPowerValue) | 获取应用的耗电量，单位毫安时。 |
-| [getBatteryStats](arkts-basicservices-batterystats-getbatterystats-f-sys.md#getBatteryStats) | 获取耗电信息列表。使用Promise异步回调。 |
-| [getBatteryStats](arkts-basicservices-batterystats-getbatterystats-f-sys.md#getBatteryStats（系统接口）) | 获取耗电信息列表。使用callback异步回调。 |
-| [getHardwareUnitPowerPercent](arkts-basicservices-batterystats-gethardwareunitpowerpercent-f-sys.md#getHardwareUnitPowerPercent) | 根据耗电类型获取硬件单元的耗电百分比。 |
-| [getHardwareUnitPowerValue](arkts-basicservices-batterystats-gethardwareunitpowervalue-f-sys.md#getHardwareUnitPowerValue) | 根据耗电类型获取硬件单元的耗电量，单位毫安时。 |
+| [getAppPowerPercent](arkts-basicservices-batterystats-getapppowerpercent-f-sys.md#getapppowerpercent) | 获取应用的耗电百分比。 |
+| [getAppPowerValue](arkts-basicservices-batterystats-getapppowervalue-f-sys.md#getapppowervalue) | 获取应用的耗电量，单位毫安时。 |
+| [getBatteryStats](arkts-basicservices-batterystats-getbatterystats-f-sys.md#getbatterystats) | 获取耗电信息列表。使用Promise异步回调。 |
+| [getBatteryStats](arkts-basicservices-batterystats-getbatterystats-f-sys.md#getbatterystats系统接口) | 获取耗电信息列表。使用callback异步回调。 |
+| [getHardwareUnitPowerPercent](arkts-basicservices-batterystats-gethardwareunitpowerpercent-f-sys.md#gethardwareunitpowerpercent) | 根据耗电类型获取硬件单元的耗电百分比。 |
+| [getHardwareUnitPowerValue](arkts-basicservices-batterystats-gethardwareunitpowervalue-f-sys.md#gethardwareunitpowervalue) | 根据耗电类型获取硬件单元的耗电量，单位毫安时。 |
 <!--DelEnd-->
 
 <!--Del-->

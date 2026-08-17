@@ -10,7 +10,7 @@ function setDefaultSmsSlotId(slotId: int, callback: AsyncCallback<void>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ function setDefaultSmsSlotId(slotId: int, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| slotId | int | 是 | SIM卡槽ID。&lt;br/&gt;- 0：卡槽1&lt;br/&gt;- 1：卡槽2&lt;br/&gt;- -1：清除默认配置 |
+| slotId | int | 是 | SIM卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2<br/>- -1：清除默认配置 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 设置发送短信的默认SIM卡槽ID的回调函数。 |
 
 **错误码：**
@@ -64,7 +64,7 @@ function setDefaultSmsSlotId(slotId: int): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -80,7 +80,7 @@ function setDefaultSmsSlotId(slotId: int): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| slotId | int | 是 | SIM卡槽ID。&lt;br/&gt;- 0：卡槽1&lt;br/&gt;- 1：卡槽2&lt;br/&gt;- -1：清除默认配置 |
+| slotId | int | 是 | SIM卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2<br/>- -1：清除默认配置 |
 
 **返回值：**
 

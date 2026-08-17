@@ -1,10 +1,10 @@
 # HttpAuthHandler
 
-Defines the http auth request result, related to onHttpAuthRequest method.
+HttpAuthHandler是Web组件用于处理HTTP认证请求的处理类。当服务器返回401 Unauthorized要求身份认证时，Web组件通过onHttpAuthRequest事件回调获取HttpAuthHandler实例，由 应用决定是否提供认证凭据。示例代码参考[onHttpAuthRequest](arkts-arkweb-web-attribute.md#onhttpauthrequest)事件。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ cancel(): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -42,7 +42,7 @@ confirm(userName: string, password: string): boolean
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -56,14 +56,14 @@ confirm(userName: string, password: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| userName | string | 是 | HTTP认证用户名。 |
-| password | string | 是 | HTTP认证密码。 |
+| userName | string | 是 | HTTP认证用户名，需为非空字符串。 |
+| password | string | 是 | HTTP认证密码，需为非空字符串。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | true** is returned if the authentication is successful; otherwise, **false** is returned. |
+| boolean | 认证成功时返回true，失败返回false。 |
 
 ## constructor
 
@@ -71,11 +71,11 @@ confirm(userName: string, password: string): boolean
 constructor()
 ```
 
-Constructor.
+HttpAuthHandler的构造函数。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -91,11 +91,11 @@ Constructor.
 isHttpAuthInfoSaved(): boolean
 ```
 
-通知Web组件用户使用服务器缓存的账号密码认证。
+检查当前主机存储的凭据是否适用，如果凭据在当前请求中曾被服务器拒绝过，则不适用。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -109,5 +109,5 @@ isHttpAuthInfoSaved(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | true** is suitable for use; otherwise, **false** is not suitable for use. |
+| boolean | 存储的凭据适用时返回true，其他返回false。 |
 

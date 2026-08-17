@@ -7,8 +7,8 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [DynamicComponent](arkts-na-dynamiccomponent-dynamiccomponent-f-sys.md#DynamicComponent（系统接口）) | 创建DynamicComponent组件，用于显示Worker线程中运行的Abc UI。 |
-| [DynamicComponent](arkts-na-dynamiccomponent-dynamiccomponent-f-sys.md#DynamicComponent（系统接口）) | 定义DynamicComponent组件。要求在组件属性设置开始时调用setDynamicComponentOptions， 在组件属性设置结束时 调用applyAttributeFinish。 |
+| [DynamicComponent](arkts-na-dynamiccomponent-dynamiccomponent-f-sys.md#dynamiccomponent系统接口) | 创建DynamicComponent组件，用于显示Worker线程中运行的Abc UI。 |
+| [DynamicComponent](arkts-na-dynamiccomponent-dynamiccomponent-f-sys.md#dynamiccomponent系统接口) | 定义DynamicComponent组件。要求在组件属性设置开始时调用setDynamicComponentOptions， 在组件属性设置结束时 调用applyAttributeFinish。 |
 <!--DelEnd-->
 
 ### 接口

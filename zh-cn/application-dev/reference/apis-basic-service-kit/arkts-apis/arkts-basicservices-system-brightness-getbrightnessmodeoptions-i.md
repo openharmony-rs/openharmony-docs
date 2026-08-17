@@ -4,7 +4,7 @@
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 7
 
@@ -24,7 +24,7 @@ complete?: () => void
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 7
 
@@ -44,7 +44,7 @@ fail?: (data: string, code: number) => void
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 7
 
@@ -58,13 +58,13 @@ fail?: (data: string, code: number) => void
 success?: (data: BrightnessModeResponse) => void
 ```
 
-接口调用成功的回调函数。data为[BrightnessModeResponse](arkts-basicservices-system-brightness-brightnessmoderesponse-i.md#BrightnessModeResponse)类型的返回值。
+接口调用成功的回调函数。data为[BrightnessModeResponse](arkts-basicservices-system-brightness-brightnessmoderesponse-i.md#brightnessmoderesponse)类型的返回值。
 
 **类型：** (data: BrightnessModeResponse) =&gt; void
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 7
 

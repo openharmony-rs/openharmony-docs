@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,11 +18,11 @@
 UNLIT_SHADOW_ALPHA = 100
 ```
 
-仅对阴影进行绘制，当材质开启[Blend](arkts-arkgraphics3d-sceneresources-blend-i.md#Blend)属性，与背景融合模拟透明材质效果。
+仅对阴影进行绘制，当材质开启[Blend](arkts-arkgraphics3d-sceneresources-blend-i.md#blend)属性，与背景融合模拟透明材质效果。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

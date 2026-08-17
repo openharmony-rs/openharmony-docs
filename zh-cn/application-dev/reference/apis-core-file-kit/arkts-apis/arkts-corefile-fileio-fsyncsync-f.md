@@ -10,11 +10,11 @@ declare function fsyncSync(fd: number): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [fsyncSync](arkts-corefile-file-fs-fsyncsync-f.md#fsyncSync)
+**替代接口：** [fsyncSync](arkts-corefile-file-fs-fsyncsync-f.md#fsyncsync)
 
 <!--Device-unnamed-declare function fsyncSync(fd: number): void--><!--Device-unnamed-declare function fsyncSync(fd: number): void-End-->
 

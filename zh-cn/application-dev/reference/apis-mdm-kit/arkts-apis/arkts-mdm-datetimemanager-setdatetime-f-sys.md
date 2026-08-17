@@ -10,11 +10,11 @@ function setDateTime(admin: Want, time: number, callback: AsyncCallback<void>): 
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setValue](arkts-mdm-devicesettings-setvalue-f.md#setValue)
+**替代接口：** [setValue](arkts-mdm-devicesettings-setvalue-f.md#setvalue)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_DATETIME
 
@@ -77,11 +77,11 @@ function setDateTime(admin: Want, time: number): Promise<void>
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setValue](arkts-mdm-devicesettings-setvalue-f.md#setValue)
+**替代接口：** [setValue](arkts-mdm-devicesettings-setvalue-f.md#setvalue)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_DATETIME
 

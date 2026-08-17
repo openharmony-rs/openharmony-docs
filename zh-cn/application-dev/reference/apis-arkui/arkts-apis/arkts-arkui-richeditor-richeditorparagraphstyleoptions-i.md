@@ -1,12 +1,12 @@
 # RichEditorParagraphStyleOptions
 
-段落样式选项。 继承自[RichEditorRange](arkts-arkui-richeditor-richeditorrange-i.md#RichEditorRange)。 > **说明：** > > 接口作用的范围：设定的区间所涉及的段落。
+段落样式选项。 继承自[RichEditorRange](arkts-arkui-richeditor-richeditorrange-i.md#richeditorrange)。 > **说明：** > > 接口作用的范围：设定的区间所涉及的段落。
 
-**继承/实现关系：** RichEditorParagraphStyleOptions extends [RichEditorRange](arkts-arkui-richeditor-richeditorrange-i.md#RichEditorRange)
+**继承/实现关系：** RichEditorParagraphStyleOptions extends [RichEditorRange](arkts-arkui-richeditor-richeditorrange-i.md#richeditorrange)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ style: RichEditorParagraphStyle
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

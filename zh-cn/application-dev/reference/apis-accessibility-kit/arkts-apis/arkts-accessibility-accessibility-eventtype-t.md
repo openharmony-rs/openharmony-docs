@@ -12,7 +12,7 @@ type EventType = 'accessibilityFocus' | 'accessibilityFocusClear' |
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -44,5 +44,5 @@ type EventType = 'accessibilityFocus' | 'accessibilityFocusClear' |
 | 'scrolling' | 表示滚动视图中有item被滚出屏幕的事件。 [since 18] |
 | 'pageActive' | 表示页面变化的事件，值固定为'pageActive'字符串。 [since 23] |
 | 'notificationUpdate' | 表示通知变化的事件，值固定为'notificationUpdate'字符串。 [since 26.0.0] |
-| 'focusInvisible' | [since 26.0.0] |
+| 'focusInvisible' | 表示焦点变为不可见状态，值固定为'focusInvisible'字符串。 [since 26.0.0] |
 

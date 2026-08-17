@@ -1,10 +1,10 @@
 # BackForwardList
 
-Provides back and forward history list information method. related to [HistoryItem](../../apis-na/arkts-apis/arkts-na-webview-historyitem-i.md#HistoryItem).
+BackForwardList是ArkWeb框架中用于访问Web组件浏览历史列表的接口，通过 [getBackForwardEntries](arkts-arkweb-webview-webviewcontroller-c.md#getbackforwardentries)方法获取。该接口提供对页面导航历史记录的只读访问能力，开发者可以获取当前历 史列表的基本信息（当前索引和历史条目总数），以及通过索引获取指定历史记录项的详细信息。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -18,11 +18,11 @@ Provides back and forward history list information method. related to [HistoryIt
 getItemAtIndex(index: number): HistoryItem
 ```
 
-获取历史列表中指定索引的历史记录项信息。
+获取历史列表中指定索引的历史记录项信息。需先通过[getBackForwardEntries](arkts-arkweb-webview-webviewcontroller-c.md#getbackforwardentries)方法获取 BackForwardList实例。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -42,13 +42,13 @@ getItemAtIndex(index: number): HistoryItem
 
 | 类型 | 说明 |
 | --- | --- |
-| [HistoryItem](../../apis-na/arkts-apis/arkts-na-webview-historyitem-i.md) | 历史记录项。 |
+| [HistoryItem](arkts-arkweb-webview-historyitem-i.md) | 历史记录项。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
 ## currentIndex
 
@@ -62,7 +62,7 @@ currentIndex: number
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -78,13 +78,13 @@ currentIndex: number
 size: number
 ```
 
-历史列表中索引的数量，最多保存50条，超过时起始记录会被覆盖。
+历史列表中历史记录的数量，最多保存50条，超过时起始记录会被覆盖。
 
 **类型：** number
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 

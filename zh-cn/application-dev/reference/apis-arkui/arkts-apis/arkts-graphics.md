@@ -6,10 +6,10 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [borderRadiuses](arkts-arkui-graphics-borderradiuses-f.md#borderRadiuses) | 用于生成边框圆角均设置为传入值的边框圆角对象。 |
-| [borderStyles](arkts-arkui-graphics-borderstyles-f.md#borderStyles) | 用于生成边框样式均设置为传入值的边框样式对象。 |
-| [edgeColors](arkts-arkui-graphics-edgecolors-f.md#edgeColors) | 用于生成边框颜色均设置为传入值的边框颜色对象。 |
-| [edgeWidths](arkts-arkui-graphics-edgewidths-f.md#edgeWidths) | 用于生成边框宽度均设置为传入值的边框宽度对象。 |
+| [borderRadiuses](arkts-arkui-graphics-borderradiuses-f.md#borderradiuses) | 用于生成边框圆角均设置为传入值的边框圆角对象。 |
+| [borderStyles](arkts-arkui-graphics-borderstyles-f.md#borderstyles) | 用于生成边框样式均设置为传入值的边框样式对象。 |
+| [edgeColors](arkts-arkui-graphics-edgecolors-f.md#edgecolors) | 用于生成边框颜色均设置为传入值的边框颜色对象。 |
+| [edgeWidths](arkts-arkui-graphics-edgewidths-f.md#edgewidths) | 用于生成边框宽度均设置为传入值的边框宽度对象。 |
 
 ### 类
 
